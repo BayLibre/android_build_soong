@@ -16,6 +16,24 @@
       "revId": "048c7c5da96a33fafe121357030f985433be5574",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c5d2031_6a4b376f",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-02-04T01:13:53Z",
+      "side": 1,
+      "message": "Stem is referring to the name without the .so suffix",
+      "parentUuid": "bc6318f1_89731936",
+      "revId": "048c7c5da96a33fafe121357030f985433be5574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
