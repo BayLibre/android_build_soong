@@ -34,6 +34,24 @@
       "revId": "048c7c5da96a33fafe121357030f985433be5574",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c5d2031_4aaf537e",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-02-04T01:31:54Z",
+      "side": 1,
+      "message": "I\u0027ve always read stem to mean suffix (i.e. \u0027$(name)$(stem).$(ext)\u0027), but talking to others in the office it seems I\u0027m just wrong, so the name is fine.",
+      "parentUuid": "7c5d2031_6a4b376f",
+      "revId": "048c7c5da96a33fafe121357030f985433be5574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
