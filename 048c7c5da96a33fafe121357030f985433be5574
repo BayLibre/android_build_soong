@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc6318f1_89731936",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-02-04T01:11:02Z",
+      "side": 1,
+      "message": "LOCAL_MODULE_STEM isn\u0027t really a stem, it\u0027s the whole name, so I don\u0027t think the new attribute should be \"stem\". (I think stem is really what people want, but if we\u0027re trying to preserve semantics for now and fixup later I vote for a different name until then.)",
+      "revId": "048c7c5da96a33fafe121357030f985433be5574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
