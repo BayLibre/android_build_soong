@@ -1,0 +1,743 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "770544fd_9ce7e558",
+        "filename": "cc/arm64_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "Two of these?",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "770544fd_5f482f88",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": ".s too?",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37110c43_3a2fc1be",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": ".cc",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7220f282_58890db8",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "Clang?",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7220f282_785de9c4",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "This check is redundant, isn\u0027t it?",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37110c43_3a8b411e",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "Where does libgcc fit in to this?",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "770544fd_5f802fc9",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "+1",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "770544fd_ff0a5bd5",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "Capitals and underscores?",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7220f282_f31bbaa4",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "Does this actually need to vary by arch?",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7220f282_f332da24",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "Note that the default behavior for host builds is to pass neither (which is the same as -frtti).",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7220f282_935a865c",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "This one doesn\u0027t need to vary by arch.",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37110c43_dade85db",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "Standard template library library.",
+      "range": {
+        "startLine": 186,
+        "startChar": 24,
+        "endLine": 186,
+        "endChar": 35
+      },
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37110c43_5afcb542",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "Using anything but the default for an NDK module (anything with LOCAL_SDK_VERSION set) should be an error. Using cxx_stl: ndk for a non-NDK module should also be an error.\n\nAlso, we could just rename this to stl. There isn\u0027t an STL for anything but C++.",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "770544fd_1f1507c2",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "Why return anything?",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "770544fd_bfea931e",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "Ah. So, as I said above, this actually changes the existing behavior. Current behavior is for the host build to ignore LOCAL_RTTI_FLAG and just pass neither. If the user wants to disable rtti, they add -fno-rtti to the cppflags directly.",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d70d102d_171bb4a6",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "These could really just be extraSharedLibs",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37110c43_baeab11e",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "What\u0027s the difference between HostOrDevice().Host() and HostSupported()? I don\u0027t see any other difference between this and the above.",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7220f282_33e0f298",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "Depend on _all_ of the STLs?",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3233dad8_d0007402",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "If this is the link order of these, libatomic should probably be just before libgcc.",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d75b503d_6aa8d78d",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "will has",
+      "range": {
+        "startLine": 581,
+        "startChar": 84,
+        "endLine": 581,
+        "endChar": 88
+      },
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7220f282_61c1b197",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "Pretty unclear what this was until I tracked down the definition (which takes some doing in gerrit). Might want to rewrite this to take named constants at some point.",
+      "range": {
+        "startLine": 611,
+        "startChar": 65,
+        "endLine": 611,
+        "endChar": 71
+      },
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7220f282_64153f3d",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "Else error?",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "376d8ced_7a343964",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "Might want to add a comment for the rationale behind not using -shared on gcc:\n\nGCC for Android assumes that -shared means -Bsymbolic.",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77a1c45d_bf3393c5",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 917,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "Isn\u0027t is `static_executable: true`?",
+      "range": {
+        "startLine": 917,
+        "startChar": 28,
+        "endLine": 917,
+        "endChar": 44
+      },
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77a1c45d_9f19f72b",
+        "filename": "cc/clang.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "Does go not have a library function for this? Or a set type?",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "579cc029_9e601982",
+        "filename": "cc/target_arm/arm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "A lot of these should be in the global flags. At least the global device flags, if not host and device.",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77a1c45d_7f02eb73",
+        "filename": "cc/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "No library func for this?",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77a1c45d_ff9b5bb9",
+        "filename": "cc/x86_linux_host.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "Looking at the bug I\u0027m pretty sure we can get rid of this now. We don\u0027t support anything prior to glibc 2.15.",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5775a0b7_d319b4fc",
+        "filename": "common/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "Most of these aren\u0027t actually arch things. Maybe \"variants\"?",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 8
+      },
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "579cc029_a1f4dad7",
+        "filename": "common/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "I think \u0027os\u0027 is a better name, with s/device/android/",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "579cc029_0126eee6",
+        "filename": "common/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "I\u0027m not sure this is ever a useful case. If we have no windows target for a module, this is just \u003d\u003d darwin. If we have a windows target for a module, this is windows || darwin, which isn\u0027t going to share any os specific configs...",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "579cc029_4134f611",
+        "filename": "common/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "Don\u0027t think we\u0027ll need this either.",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77a1c45d_02f82ec9",
+        "filename": "common/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "This, OTOH, probably has uses.",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "579cc029_c11fa684",
+        "filename": "common/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "Pretty sure anything that depends on this is a bug.",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77a1c45d_e2ff42ab",
+        "filename": "common/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "There is no compiling on a windows host. Assuming this means compiling on linux with mingw for windows, how is this different from target?",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "777aa4ab_14195475",
+        "filename": "common/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "I can never keep the first/second arch stuff straight... isn\u0027t the \"first\" arch on a 32-bit system the 32-bit arch?",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7def0f5_cfffbdab",
+        "filename": "common/glob.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "Is there an isalnum?",
+      "range": {
+        "startLine": 124,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 23
+      },
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17d5e8ce_31c7d0e2",
+        "filename": "common/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "Could maybe use this as an easier way to track which projects get built for Windows. Right now it\u0027s a list in the build system plus their dependencies. If each module had to explicitly set `target: { windows: { disabled: false } }` it\u0027d be more clear.",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7c5fc25_ee2f1f88",
+        "filename": "common/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "When would HostAndDeviceSupported be true but HostSupported isn\u0027t?",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97c0f816_ad1fdd84",
+        "filename": "common/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "Propagate the error?",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97c0f816_ada27da6",
+        "filename": "common/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-05T22:46:25Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 283,
+        "startChar": 54,
+        "endLine": 283,
+        "endChar": 59
+      },
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
