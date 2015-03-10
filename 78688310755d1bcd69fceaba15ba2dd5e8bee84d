@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3c0f31b3_8a902b48",
+        "filename": "cc/arm64_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "Yes, init() is a go-ism, they run after all global variable initializations, and you can have as many as you want in a package or file.",
+      "parentUuid": "770544fd_9ce7e558",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "770544fd_5f482f88",
         "filename": "cc/builder.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2015-03-05T22:46:25Z",
       "side": 1,
       "message": ".s too?",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc40d5d5_1fdb236b",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "770544fd_5f482f88",
       "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "dc40d5d5_3fd8676b",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37110c43_3a2fc1be",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7220f282_58890db8",
         "filename": "cc/builder.go",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2015-03-05T22:46:25Z",
       "side": 1,
       "message": "Clang?",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc40d5d5_ffe8bf01",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "Coming in a future patch",
+      "parentUuid": "7220f282_58890db8",
       "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "bc47a1eb_dee38523",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7220f282_785de9c4",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37110c43_3a8b411e",
         "filename": "cc/builder.go",
         "patchSetId": 1
@@ -98,6 +188,24 @@
       "writtenOn": "2015-03-05T22:46:25Z",
       "side": 1,
       "message": "Where does libgcc fit in to this?",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc40d5d5_df0e1b69",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "libgcc is handled by cc.go, and should already be in staticLibs",
+      "parentUuid": "37110c43_3a8b411e",
       "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -138,6 +246,24 @@
     },
     {
       "key": {
+        "uuid": "dc40d5d5_1f2483dc",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "The capital is needed to make it public so it can be accessed via reflection, which is how blueprint fills in this struct.  It will appear as \"include_dirs\" in the Blueprints files.",
+      "parentUuid": "770544fd_ff0a5bd5",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7220f282_f31bbaa4",
         "filename": "cc/cc.go",
         "patchSetId": 1
@@ -149,6 +275,24 @@
       "writtenOn": "2015-03-05T22:46:25Z",
       "side": 1,
       "message": "Does this actually need to vary by arch?",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c42dddc_3dd86f6b",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "Yes, see CRT_LEGACY_WORKAROUND in bionic/libc",
+      "parentUuid": "7220f282_f31bbaa4",
       "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -172,6 +316,24 @@
     },
     {
       "key": {
+        "uuid": "7c51a9a7_bc67a124",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7220f282_f332da24",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7220f282_935a865c",
         "filename": "cc/cc.go",
         "patchSetId": 1
@@ -183,6 +345,24 @@
       "writtenOn": "2015-03-05T22:46:25Z",
       "side": 1,
       "message": "This one doesn\u0027t need to vary by arch.",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc47a1eb_1e800df5",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "arch_variant is used for all variants (host vs. device, device arch, host os).  I could explicitly tag each one with the type of variants it supports, or take arch out of the tag.  libcxx varies host_ldlibs for darwin vs linux",
+      "parentUuid": "7220f282_935a865c",
       "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -212,6 +392,30 @@
     },
     {
       "key": {
+        "uuid": "9c42dddc_7d511730",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "Yes, but that seemed clearer than \"select the STL to use\"",
+      "parentUuid": "37110c43_dade85db",
+      "range": {
+        "startLine": 186,
+        "startChar": 24,
+        "endLine": 186,
+        "endChar": 35
+      },
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37110c43_5afcb542",
         "filename": "cc/cc.go",
         "patchSetId": 1
@@ -223,6 +427,24 @@
       "writtenOn": "2015-03-05T22:46:25Z",
       "side": 1,
       "message": "Using anything but the default for an NDK module (anything with LOCAL_SDK_VERSION set) should be an error. Using cxx_stl: ndk for a non-NDK module should also be an error.\n\nAlso, we could just rename this to stl. There isn\u0027t an STL for anything but C++.",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc47a1eb_5e09b52b",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "OK, and NDK support isn\u0027t done yet.",
+      "parentUuid": "37110c43_5afcb542",
       "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -246,6 +468,24 @@
     },
     {
       "key": {
+        "uuid": "7c51a9a7_3c2151cd",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "This is an extension of blueprint.DynamicDependerModule which takes a []string containing global namespace dependencies as the return value, from before I added namespaced dependencies",
+      "parentUuid": "770544fd_1f1507c2",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "770544fd_bfea931e",
         "filename": "cc/cc.go",
         "patchSetId": 1
@@ -257,6 +497,24 @@
       "writtenOn": "2015-03-05T22:46:25Z",
       "side": 1,
       "message": "Ah. So, as I said above, this actually changes the existing behavior. Current behavior is for the host build to ignore LOCAL_RTTI_FLAG and just pass neither. If the user wants to disable rtti, they add -fno-rtti to the cppflags directly.",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c51a9a7_5c6d3d03",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "770544fd_bfea931e",
       "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -280,6 +538,24 @@
     },
     {
       "key": {
+        "uuid": "9c42dddc_1ddc9307",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d70d102d_171bb4a6",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37110c43_baeab11e",
         "filename": "cc/cc.go",
         "patchSetId": 1
@@ -291,6 +567,24 @@
       "writtenOn": "2015-03-05T22:46:25Z",
       "side": 1,
       "message": "What\u0027s the difference between HostOrDevice().Host() and HostSupported()? I don\u0027t see any other difference between this and the above.",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc47a1eb_fe4e8147",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "HostOrDevice() can only be used in GenerateAndroidBuildActions, the module hasn\u0027t been split into a host variant and a device variant when AndroidDynamicDependencies is running so it has to handled both.",
+      "parentUuid": "37110c43_baeab11e",
       "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -314,6 +608,24 @@
     },
     {
       "key": {
+        "uuid": "7c51a9a7_5c9f7d5f",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "This creates a blueprint dependency, which just makes sure the STLs are available when compiling this module.  collectDeps checks these dependencies against the stl property to determine which one to actually link against, and ignores the rest.",
+      "parentUuid": "7220f282_33e0f298",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3233dad8_d0007402",
         "filename": "cc/cc.go",
         "patchSetId": 1
@@ -325,6 +637,24 @@
       "writtenOn": "2015-03-05T22:46:25Z",
       "side": 1,
       "message": "If this is the link order of these, libatomic should probably be just before libgcc.",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c42dddc_5d577bde",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3233dad8_d0007402",
       "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -377,6 +707,30 @@
     },
     {
       "key": {
+        "uuid": "3c0f31b3_cacbc34f",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "Yeah",
+      "parentUuid": "7220f282_61c1b197",
+      "range": {
+        "startLine": 611,
+        "startChar": 65,
+        "endLine": 611,
+        "endChar": 71
+      },
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7220f282_64153f3d",
         "filename": "cc/cc.go",
         "patchSetId": 1
@@ -394,6 +748,24 @@
     },
     {
       "key": {
+        "uuid": "3c0f31b3_caf2a39d",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "Not an error, in a combined shared/static library compile we may have added blueprint dependencies on crtbegin_so and crtend_so that need to be ignored for the static library.",
+      "parentUuid": "7220f282_64153f3d",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "376d8ced_7a343964",
         "filename": "cc/cc.go",
         "patchSetId": 1
@@ -405,6 +777,24 @@
       "writtenOn": "2015-03-05T22:46:25Z",
       "side": 1,
       "message": "Might want to add a comment for the rationale behind not using -shared on gcc:\n\nGCC for Android assumes that -shared means -Bsymbolic.",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c0f31b3_ea90c723",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "376d8ced_7a343964",
       "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -434,6 +824,30 @@
     },
     {
       "key": {
+        "uuid": "1c20ad2c_d9bcf304",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 917,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77a1c45d_bf3393c5",
+      "range": {
+        "startLine": 917,
+        "startChar": 28,
+        "endLine": 917,
+        "endChar": 44
+      },
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77a1c45d_9f19f72b",
         "filename": "cc/clang.go",
         "patchSetId": 1
@@ -445,6 +859,24 @@
       "writtenOn": "2015-03-05T22:46:25Z",
       "side": 1,
       "message": "Does go not have a library function for this? Or a set type?",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc1679db_7800412f",
+        "filename": "cc/clang.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "You can use a map[string]bool or map[string]struct{} for a set, but that seemed inefficient for very short lists.  Go generally doesn\u0027t provide library functions for trivial cases like this, especially because there are no generics.",
+      "parentUuid": "77a1c45d_9f19f72b",
       "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -468,6 +900,24 @@
     },
     {
       "key": {
+        "uuid": "5c4ce513_7b27dfe3",
+        "filename": "cc/target_arm/arm.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "This file is actually obsolete, replaced cc/arm_device.go.\n\nOnce this is working we can do a pass to remove common flags from per-device cflags.",
+      "parentUuid": "579cc029_9e601982",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77a1c45d_7f02eb73",
         "filename": "cc/util.go",
         "patchSetId": 1
@@ -485,6 +935,24 @@
     },
     {
       "key": {
+        "uuid": "fc1679db_38a649be",
+        "filename": "cc/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "Nope",
+      "parentUuid": "77a1c45d_7f02eb73",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77a1c45d_ff9b5bb9",
         "filename": "cc/x86_linux_host.go",
         "patchSetId": 1
@@ -496,6 +964,24 @@
       "writtenOn": "2015-03-05T22:46:25Z",
       "side": 1,
       "message": "Looking at the bug I\u0027m pretty sure we can get rid of this now. We don\u0027t support anything prior to glibc 2.15.",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c2a8915_f4c1b87f",
+        "filename": "cc/x86_linux_host.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "Fix it in aosp and I\u0027ll try to pick it up here",
+      "parentUuid": "77a1c45d_ff9b5bb9",
       "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -525,6 +1011,30 @@
     },
     {
       "key": {
+        "uuid": "7c2a8915_74ce08ae",
+        "filename": "common/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "This only applies to the ones that are arch",
+      "parentUuid": "5775a0b7_d319b4fc",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 40,
+        "endChar": 8
+      },
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "579cc029_a1f4dad7",
         "filename": "common/arch.go",
         "patchSetId": 1
@@ -536,6 +1046,24 @@
       "writtenOn": "2015-03-05T22:46:25Z",
       "side": 1,
       "message": "I think \u0027os\u0027 is a better name, with s/device/android/",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c25c541_134ecc93",
+        "filename": "common/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "I like device -\u003e android, but I think that target makes more sense than os here, because os host is confusing.",
+      "parentUuid": "579cc029_a1f4dad7",
       "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -559,6 +1087,24 @@
     },
     {
       "key": {
+        "uuid": "7c2a8915_5430ace9",
+        "filename": "common/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "579cc029_0126eee6",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "579cc029_4134f611",
         "filename": "common/arch.go",
         "patchSetId": 1
@@ -570,6 +1116,24 @@
       "writtenOn": "2015-03-05T22:46:25Z",
       "side": 1,
       "message": "Don\u0027t think we\u0027ll need this either.",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c25c541_732700e4",
+        "filename": "common/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "579cc029_4134f611",
       "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -610,6 +1174,24 @@
     },
     {
       "key": {
+        "uuid": "5c25c541_b33ef8de",
+        "filename": "common/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "579cc029_c11fa684",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77a1c45d_e2ff42ab",
         "filename": "common/arch.go",
         "patchSetId": 1
@@ -627,6 +1209,24 @@
     },
     {
       "key": {
+        "uuid": "7c2a8915_74dfe8fe",
+        "filename": "common/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77a1c45d_e2ff42ab",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "777aa4ab_14195475",
         "filename": "common/arch.go",
         "patchSetId": 1
@@ -638,6 +1238,24 @@
       "writtenOn": "2015-03-05T22:46:25Z",
       "side": 1,
       "message": "I can never keep the first/second arch stuff straight... isn\u0027t the \"first\" arch on a 32-bit system the 32-bit arch?",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c2a8915_f47c5873",
+        "filename": "common/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "Yeah, this is all hardcoded for arm64 primary arm secondary for now, until we have a configuration file to store what the current device target is",
+      "parentUuid": "777aa4ab_14195475",
       "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -667,6 +1285,30 @@
     },
     {
       "key": {
+        "uuid": "bc30817f_7605b0c5",
+        "filename": "common/glob.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "Only for unicode",
+      "parentUuid": "d7def0f5_cfffbdab",
+      "range": {
+        "startLine": 124,
+        "startChar": 5,
+        "endLine": 126,
+        "endChar": 23
+      },
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17d5e8ce_31c7d0e2",
         "filename": "common/module.go",
         "patchSetId": 1
@@ -678,6 +1320,24 @@
       "writtenOn": "2015-03-05T22:46:25Z",
       "side": 1,
       "message": "Could maybe use this as an easier way to track which projects get built for Windows. Right now it\u0027s a list in the build system plus their dependencies. If each module had to explicitly set `target: { windows: { disabled: false } }` it\u0027d be more clear.",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c82d151_b23ee0de",
+        "filename": "common/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "I plan to do something like that, although it might be a separate property instead of a variant property",
+      "parentUuid": "17d5e8ce_31c7d0e2",
       "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -701,6 +1361,24 @@
     },
     {
       "key": {
+        "uuid": "1c20ad2c_39272fb3",
+        "filename": "common/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "a.commonproperties.hostordevicesupported is set by the value passed to InitAndroidModule, and is generally set to HostAndDeviceSupported.  a.hostAndDeviceProperties.DeviceSupported is defaulted to true, and HostSupported is defaulted to false.  Modules can then set hostSupported: true.\n\nBasically, commonProperties.HostOrDeviceSupported is whether or not the module _type_ (ccLibrary) supports one or both, and hostAndDeviceProperties is whether a specific module supports each.\n\nThis got really messy, and is one of the things I\u0027m working on cleaning up.",
+      "parentUuid": "b7c5fc25_ee2f1f88",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97c0f816_ad1fdd84",
         "filename": "common/module.go",
         "patchSetId": 1
@@ -718,6 +1396,24 @@
     },
     {
       "key": {
+        "uuid": "dc8e1580_2fd8496b",
+        "filename": "common/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "No need, ctx.Failed() is triggered by ctx.ModuleErrorf(), which has already logged the error for display to the user.  We just don\u0027t want to continue working on this module because some of the data we rely on may not have been set.",
+      "parentUuid": "97c0f816_ad1fdd84",
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97c0f816_ada27da6",
         "filename": "common/module.go",
         "patchSetId": 1
@@ -729,6 +1425,30 @@
       "writtenOn": "2015-03-05T22:46:25Z",
       "side": 1,
       "message": "?",
+      "range": {
+        "startLine": 283,
+        "startChar": 54,
+        "endLine": 283,
+        "endChar": 59
+      },
+      "revId": "78688310755d1bcd69fceaba15ba2dd5e8bee84d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc75e13f_2ed8476b",
+        "filename": "common/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-10T21:22:00Z",
+      "side": 1,
+      "message": "There\u0027s no way to configure what device is being built for right now, that\u0027s a reminder to me to fix it once we have device targets.",
+      "parentUuid": "97c0f816_ada27da6",
       "range": {
         "startLine": 283,
         "startChar": 54,
