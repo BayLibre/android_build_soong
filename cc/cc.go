@@ -86,6 +86,8 @@ func init() {
 		strings.Join(clangFilterUnknownCflags(deviceGlobalCflags), " "))
 	pctx.StaticVariable("hostClangGlobalCflags",
 		strings.Join(clangFilterUnknownCflags(hostGlobalCflags), " "))
+        pctx.StaticVariable("commonClangGlobalCppflags",
+                strings.Join(clangFilterUnknownCflags(commonGlobalCppflags), " "))
 
 	// Everything in this list is a crime against abstraction and dependency tracking.
 	// Do not add anything to this list.
@@ -342,9 +344,11 @@ func (c *ccBase) setCompilerFlags(ctx common.AndroidModuleContext, cflags []stri
 		flags.asFlags = append(flags.asFlags, "-D__ASSEMBLY__")
 
 		if flags.clang {
+                        flags.cppFlags = append(flags.cppFlags, "${commonClangGlobalCppflags}")
 			flags.cppFlags = append(flags.cppFlags, c.toolchain.ClangCppflags())
 			flags.ldFlags = append(flags.ldFlags, c.toolchain.ClangLdflags())
 		} else {
+                        flags.cppFlags = append(flags.cppFlags, "${commonGlobalCppflags}")
 			flags.cppFlags = append(flags.cppFlags, c.toolchain.Cppflags())
 			flags.ldFlags = append(flags.ldFlags, c.toolchain.Ldflags())
 		}
