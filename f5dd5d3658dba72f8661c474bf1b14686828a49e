@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc3de1a0_4e7793d0",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1038928
+      },
+      "writtenOn": "2015-03-11T03:02:55Z",
+      "side": 1,
+      "message": "This method name doesn\u0027t make it very clear what this does. It seems to add the dynamic dependencies, but the name makes it seem like it just gets retrieves them when all it does is return nil.",
+      "range": {
+        "startLine": 235,
+        "startChar": 17,
+        "endLine": 235,
+        "endChar": 43
+      },
+      "revId": "f5dd5d3658dba72f8661c474bf1b14686828a49e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc53d9fa_90919450",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1038928
+      },
+      "writtenOn": "2015-03-11T03:02:55Z",
+      "side": 1,
+      "message": "again, forgive my ignorance, but how can a static lib be a dynamic dependency?",
+      "range": {
+        "startLine": 240,
+        "startChar": 29,
+        "endLine": 240,
+        "endChar": 40
+      },
+      "revId": "f5dd5d3658dba72f8661c474bf1b14686828a49e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc53d9fa_109f6460",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1038928
+      },
+      "writtenOn": "2015-03-11T03:02:55Z",
+      "side": 1,
+      "message": "won\u0027t this always just be nil?",
+      "range": {
+        "startLine": 488,
+        "startChar": 18,
+        "endLine": 488,
+        "endChar": 44
+      },
+      "revId": "f5dd5d3658dba72f8661c474bf1b14686828a49e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc53d9fa_70ac306e",
+        "filename": "common/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1038928
+      },
+      "writtenOn": "2015-03-11T03:02:55Z",
+      "side": 1,
+      "message": "forgive my ignorance but what\u0027s the benefit of nesting this way rather than just having AndroidModule fields directly in here?",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 7
+      },
+      "revId": "f5dd5d3658dba72f8661c474bf1b14686828a49e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
