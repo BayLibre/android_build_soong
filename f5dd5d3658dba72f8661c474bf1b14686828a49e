@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7c47e93e_4c86bfe3",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-11T03:28:23Z",
+      "side": 1,
+      "message": "Yeah, I\u0027m not a big fan of the name, but it\u0027s an extension of blueprint.DynamicDependencies.  It\u0027s used to dynamically add dependencies (meaning dependencies that are not listed in a deps: property that Blueprint already knows about).",
+      "parentUuid": "bc3de1a0_4e7793d0",
+      "range": {
+        "startLine": 235,
+        "startChar": 17,
+        "endLine": 235,
+        "endChar": 43
+      },
+      "revId": "f5dd5d3658dba72f8661c474bf1b14686828a49e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc53d9fa_90919450",
         "filename": "cc/cc.go",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2015-03-11T03:02:55Z",
       "side": 1,
       "message": "again, forgive my ignorance, but how can a static lib be a dynamic dependency?",
+      "range": {
+        "startLine": 240,
+        "startChar": 29,
+        "endLine": 240,
+        "endChar": 40
+      },
+      "revId": "f5dd5d3658dba72f8661c474bf1b14686828a49e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c47e93e_ac6723d6",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-11T03:28:23Z",
+      "side": 1,
+      "message": "\"dynamic\" in this context means dynamic to blueprint (added by the build logic), not dynamic linkage.  Blame Jamie for the name.",
+      "parentUuid": "fc53d9fa_90919450",
       "range": {
         "startLine": 240,
         "startChar": 29,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7c47e93e_2c3b33a0",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-11T03:28:23Z",
+      "side": 1,
+      "message": "For now, yes.  blueprint.DynamicDepenencies (which this wraps) uses a returned []string as a list of global-namespace dependencies.  Since everything in here is namespaced, it gets added through AddNamespacedDependencies instead of returned.  If we added any global namespaced dependencies (for example, see ccBinary\u0027s AndroidDynamicDependencies) then they would be returned in deps.",
+      "parentUuid": "fc53d9fa_109f6460",
+      "range": {
+        "startLine": 488,
+        "startChar": 18,
+        "endLine": 488,
+        "endChar": 44
+      },
+      "revId": "f5dd5d3658dba72f8661c474bf1b14686828a49e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc53d9fa_70ac306e",
         "filename": "common/module.go",
         "patchSetId": 4
@@ -82,6 +154,30 @@
       "writtenOn": "2015-03-11T03:02:55Z",
       "side": 1,
       "message": "forgive my ignorance but what\u0027s the benefit of nesting this way rather than just having AndroidModule fields directly in here?",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 7
+      },
+      "revId": "f5dd5d3658dba72f8661c474bf1b14686828a49e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc53d9fa_107da432",
+        "filename": "common/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-11T03:28:23Z",
+      "side": 1,
+      "message": "AndroidModule is an interface, and a variable whose type is an interface is a pointer to anything that satisifies that interface.  In this case, it\u0027s a pointer to the AndroidModule that contains this AndroidModuleBase (for example ccBase), and is used so that methods implemented on AndroidModuleBase can call methods implemented by ccBase.",
+      "parentUuid": "fc53d9fa_70ac306e",
       "range": {
         "startLine": 141,
         "startChar": 1,
