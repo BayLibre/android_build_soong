@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "012da676_b1e94205",
+        "filename": "cc/builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-13T17:59:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c178ee71_9d3624b3",
+      "revId": "32c0dc458a27f7ffc5cf14f9043377601facc3f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "012da676_680fe32d",
         "filename": "cc/cc.go",
         "patchSetId": 8
@@ -30,6 +48,30 @@
       "writtenOn": "2015-03-13T09:43:06Z",
       "side": 1,
       "message": "ldflags",
+      "range": {
+        "startLine": 214,
+        "startChar": 15,
+        "endLine": 214,
+        "endChar": 21
+      },
+      "revId": "32c0dc458a27f7ffc5cf14f9043377601facc3f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "012da676_11876e12",
+        "filename": "cc/cc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-13T17:59:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "012da676_680fe32d",
       "range": {
         "startLine": 214,
         "startChar": 15,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "012da676_512ba67e",
+        "filename": "cc/cc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-13T17:59:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2168ea9d_4c085228",
+      "range": {
+        "startLine": 243,
+        "startChar": 11,
+        "endLine": 243,
+        "endChar": 14
+      },
+      "revId": "32c0dc458a27f7ffc5cf14f9043377601facc3f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2168ea9d_8c126a54",
         "filename": "cc/cc.go",
         "patchSetId": 8
@@ -76,6 +142,30 @@
       "writtenOn": "2015-03-13T09:43:06Z",
       "side": 1,
       "message": "I\u0027m not crazy about this name either given that it returns flags as well.",
+      "range": {
+        "startLine": 248,
+        "startChar": 33,
+        "endLine": 248,
+        "endChar": 37
+      },
+      "revId": "32c0dc458a27f7ffc5cf14f9043377601facc3f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "012da676_f1d49aed",
+        "filename": "cc/cc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-13T17:59:54Z",
+      "side": 1,
+      "message": "I changed it to collectDeps, and added a comment to the interface explaining why it modifies flags",
+      "parentUuid": "2168ea9d_8c126a54",
       "range": {
         "startLine": 248,
         "startChar": 33,
@@ -122,6 +212,24 @@
     },
     {
       "key": {
+        "uuid": "86052c00_62459204",
+        "filename": "cc/cc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-13T17:59:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "012da676_482bff7e",
+      "revId": "32c0dc458a27f7ffc5cf14f9043377601facc3f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c178ee71_1ddbf4ec",
         "filename": "cc/cc.go",
         "patchSetId": 8
@@ -133,6 +241,24 @@
       "writtenOn": "2015-03-13T09:43:06Z",
       "side": 1,
       "message": "Why is this commented out? The prebuilt should just be there.",
+      "revId": "32c0dc458a27f7ffc5cf14f9043377601facc3f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86052c00_6274724f",
+        "filename": "cc/cc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-13T17:59:54Z",
+      "side": 1,
+      "message": "It should only be added as a dependency if coverage is enabled for the module",
+      "parentUuid": "c178ee71_1ddbf4ec",
       "revId": "32c0dc458a27f7ffc5cf14f9043377601facc3f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -167,6 +293,24 @@
       "writtenOn": "2015-03-13T09:43:06Z",
       "side": 1,
       "message": "Isn\u0027t this clobbering the user\u0027s option?",
+      "revId": "32c0dc458a27f7ffc5cf14f9043377601facc3f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86052c00_c2ba264f",
+        "filename": "cc/cc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1086,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-13T17:59:54Z",
+      "side": 1,
+      "message": "These module factory functions are what creates the property structs to be filled in by a module definition in a Blueprints file, so there aren\u0027t any user values yet.  This sets the default to a magic value, so we can tell if the user set the property to \"\" to remove all system shared libs.",
+      "parentUuid": "2168ea9d_8cc42a3c",
       "revId": "32c0dc458a27f7ffc5cf14f9043377601facc3f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
