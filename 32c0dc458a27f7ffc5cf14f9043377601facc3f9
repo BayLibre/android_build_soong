@@ -265,6 +265,24 @@
     },
     {
       "key": {
+        "uuid": "86052c00_2593145b",
+        "filename": "cc/cc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-13T18:02:48Z",
+      "side": 1,
+      "message": "That works. It\u0027s always on for the current build system because it\u0027s also needed if any of the static libraries used enabled coverage, but we should be able to be smarter than that here.",
+      "parentUuid": "86052c00_6274724f",
+      "revId": "32c0dc458a27f7ffc5cf14f9043377601facc3f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c178ee71_5ddd6cdb",
         "filename": "cc/cc.go",
         "patchSetId": 8
