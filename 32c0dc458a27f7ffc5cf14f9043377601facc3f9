@@ -1,0 +1,175 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c178ee71_9d3624b3",
+        "filename": "cc/builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-13T09:43:06Z",
+      "side": 1,
+      "message": "Seeing this again without having recently read the ninja rules, I think this maybe deserves a comment explaining what transforming objs to and obj means. Probably going to confuse anyone that hasn\u0027t reviewed the whole system.",
+      "revId": "32c0dc458a27f7ffc5cf14f9043377601facc3f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "012da676_680fe32d",
+        "filename": "cc/cc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-13T09:43:06Z",
+      "side": 1,
+      "message": "ldflags",
+      "range": {
+        "startLine": 214,
+        "startChar": 15,
+        "endLine": 214,
+        "endChar": 21
+      },
+      "revId": "32c0dc458a27f7ffc5cf14f9043377601facc3f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2168ea9d_4c085228",
+        "filename": "cc/cc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-13T09:43:06Z",
+      "side": 1,
+      "message": "Needs a better name. addStlToFlags maybe.",
+      "range": {
+        "startLine": 243,
+        "startChar": 11,
+        "endLine": 243,
+        "endChar": 14
+      },
+      "revId": "32c0dc458a27f7ffc5cf14f9043377601facc3f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2168ea9d_8c126a54",
+        "filename": "cc/cc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-13T09:43:06Z",
+      "side": 1,
+      "message": "I\u0027m not crazy about this name either given that it returns flags as well.",
+      "range": {
+        "startLine": 248,
+        "startChar": 33,
+        "endLine": 248,
+        "endChar": 37
+      },
+      "revId": "32c0dc458a27f7ffc5cf14f9043377601facc3f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "012da676_083107ef",
+        "filename": "cc/cc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-13T09:43:06Z",
+      "side": 1,
+      "message": "Oops. Had missed that this wasn\u0027t here before.",
+      "revId": "32c0dc458a27f7ffc5cf14f9043377601facc3f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "012da676_482bff7e",
+        "filename": "cc/cc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-13T09:43:06Z",
+      "side": 1,
+      "message": "I don\u0027t think the order of the things in this block actually matters. The set for the device could be unconditional, with the toolchain and sysroot being for HostOrDevice.Host().",
+      "revId": "32c0dc458a27f7ffc5cf14f9043377601facc3f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c178ee71_1ddbf4ec",
+        "filename": "cc/cc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-13T09:43:06Z",
+      "side": 1,
+      "message": "Why is this commented out? The prebuilt should just be there.",
+      "revId": "32c0dc458a27f7ffc5cf14f9043377601facc3f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c178ee71_5ddd6cdb",
+        "filename": "cc/cc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-13T09:43:06Z",
+      "side": 1,
+      "message": "This is so much better (and also faster) than the messy way we do this in make...",
+      "revId": "32c0dc458a27f7ffc5cf14f9043377601facc3f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2168ea9d_8cc42a3c",
+        "filename": "cc/cc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1086,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-13T09:43:06Z",
+      "side": 1,
+      "message": "Isn\u0027t this clobbering the user\u0027s option?",
+      "revId": "32c0dc458a27f7ffc5cf14f9043377601facc3f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
