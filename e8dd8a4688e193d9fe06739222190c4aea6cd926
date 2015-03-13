@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c178ee71_966d2133",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-13T18:05:50Z",
+      "side": 1,
+      "message": "Run gofmt.",
+      "revId": "e8dd8a4688e193d9fe06739222190c4aea6cd926",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
