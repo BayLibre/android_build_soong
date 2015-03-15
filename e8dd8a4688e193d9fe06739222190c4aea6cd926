@@ -16,6 +16,23 @@
       "revId": "e8dd8a4688e193d9fe06739222190c4aea6cd926",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66191872_dfe54e4d",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-15T05:58:09Z",
+      "side": 1,
+      "message": "can you put these next to flags.globalFlags?",
+      "revId": "e8dd8a4688e193d9fe06739222190c4aea6cd926",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
