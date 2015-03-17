@@ -22,6 +22,30 @@
       "revId": "9454bfafcb0e4394acc83914414815939c391db3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66bd98c9_1f70c603",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-17T23:06:43Z",
+      "side": 1,
+      "message": "LOCAL_BUILT_MODULE is equivalent to the outputFile member of the struct of each module type, right now there is no global way to get to it because it is so specific to the type of dependency.  We can make the apk rules use the jar for the checkbuild file.",
+      "parentUuid": "66bd98c9_3c191035",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 16
+      },
+      "revId": "9454bfafcb0e4394acc83914414815939c391db3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
