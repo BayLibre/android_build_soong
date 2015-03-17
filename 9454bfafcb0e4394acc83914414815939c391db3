@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66bd98c9_3c191035",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-03-17T21:56:02Z",
+      "side": 1,
+      "message": "In the makefile build system, actually a module can define 3 targets:\n1) LOCAL_INSTALLED_MODULE , the final installed file a  product can depend on;\n2) LOCAL_BUILT_MODULE, the build result in the intermediate directory;\n3) LOCAL_CHECKED_MODULE, the file to build when you just want to check the build. Usually LOCAL_CHECKED_MODULE is the same as LOCAL_BUILT_MODULE. But for an apk actually the build system set LOCAL_CHECKED_MODULE to the output of javac, so that when you do checkbuild we just run javac and skip dx\u0027ing/aapt-packaging/etc, which are presumably more time-consuming and less error-prone.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 16
+      },
+      "revId": "9454bfafcb0e4394acc83914414815939c391db3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
