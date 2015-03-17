@@ -1,0 +1,7 @@
+Code-Review+2: Tim Kilbourn <tkilbourn@google.com>
+Verified+1: Tim Kilbourn <tkilbourn@google.com>
+Submitted-by: Colin Cross <ccross@google.com>
+Submitted-at: Tue, 17 Mar 2015 17:50:48 +0000
+Reviewed-on: https://android-review.googlesource.com/142171
+Project: platform/build/soong
+Branch: refs/heads/master-soong
