@@ -1,0 +1,7 @@
+Code-Review+2: Ying Wang <wangying@android.com>
+Verified+1: Colin Cross <ccross@google.com>
+Submitted-by: Colin Cross <ccross@google.com>
+Submitted-at: Tue, 17 Mar 2015 23:50:24 +0000
+Reviewed-on: https://android-review.googlesource.com/142182
+Project: platform/build/soong
+Branch: refs/heads/master-soong
