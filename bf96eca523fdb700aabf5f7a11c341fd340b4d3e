@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46e6d429_f8f2e9b3",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1163,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-18T22:07:56Z",
+      "side": 1,
+      "message": "you can directly reference non-shadowed members of the embedded ccBinary struct.",
+      "range": {
+        "startLine": 1163,
+        "startChar": 62,
+        "endLine": 1163,
+        "endChar": 70
+      },
+      "revId": "bf96eca523fdb700aabf5f7a11c341fd340b4d3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a6d4f037_2dcf0ddb",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1169,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-18T22:07:56Z",
+      "side": 1,
+      "message": "I tweaked the way these get initialized, see NewCCBinary()",
+      "revId": "bf96eca523fdb700aabf5f7a11c341fd340b4d3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
