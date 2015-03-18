@@ -54,19 +54,20 @@ var (
 		"-Wl,--allow-shlib-undefined",
 	}
 
-	armArmCflags = []string{
-		"-O2",
-		"-fomit-frame-pointer",
-		"-fstrict-aliasing",
-		"-funswitch-loops",
-	}
-
-	armThumbCflags = []string{
-		"-mthumb",
-		"-Os",
-		"-fomit-frame-pointer",
-		"-fno-strict-aliasing",
-	}
+        armArchIsaCflags = map[string][]string{
+                "arm": []string{
+                        "-O2",
+                        "-fomit-frame-pointer",
+                        "-fstrict-aliasing",
+                        "-funswitch-loops",
+                },
+                "thumb": []string {
+                        "-mthumb",
+                        "-Os",
+                        "-fomit-frame-pointer",
+                        "-fno-strict-aliasing",
+                },
+        }
 
 	armArchVariantCflags = map[string][]string{
 		"armv5te": []string{
@@ -113,6 +114,10 @@ var (
 	armClangArchVariantCflags = armArchVariantCflags
 )
 
+const (
+        defaultIsa = "thumb"
+)
+
 func init() {
 	replaceFirst := func(slice []string, from, to string) {
 		if slice[0] != from {
@@ -148,10 +153,6 @@ func init() {
 	}, " "))
 
 	// Extended cflags
-
-	// ARM mode vs. Thumb mode
-	pctx.StaticVariable("armArmCflags", strings.Join(armArmCflags, " "))
-	pctx.StaticVariable("armThumbCflags", strings.Join(armThumbCflags, " "))
 
 	// Architecture variant cflags
 	pctx.StaticVariable("armArmv5TECflags", strings.Join(armArchVariantCflags["armv5te"], " "))
@@ -256,6 +257,14 @@ func (t *toolchainArm) IncludeFlags() string {
 	return "${armIncludeFlags}"
 }
 
+func (t *toolchainArm) IsaFlags(isa string) string {
+        if f := armArchIsaCflags[isa]; f != nil {
+                return strings.Join(f, " ")
+        } else {
+                return strings.Join(armArchIsaCflags[defaultIsa], " ")
+        }
+}
+
 func (t *toolchainArm) ClangTriple() string {
 	return "${armGccTriple}"
 }
@@ -277,7 +286,6 @@ func armToolchainFactory(archVariant string, cpuVariant string) toolchain {
 		cflags: strings.Join([]string{
 			"${armCflags}",
 			"${armIncludeFlags}",
-			"${armThumbCflags}",
 			armArchVariantCflagsVar[archVariant],
 			armCpuVariantCflagsVar[cpuVariant],
 		}, " "),
@@ -288,7 +296,6 @@ func armToolchainFactory(archVariant string, cpuVariant string) toolchain {
 		clangCflags: strings.Join([]string{
 			"${armClangCflags}",
 			"${armIncludeFlags}",
-			"${armThumbCflags}",
 			armClangArchVariantCflagsVar[archVariant],
 			armClangCpuVariantCflagsVar[cpuVariant],
 		}, " "),

@@ -112,6 +112,10 @@ func (t *toolchainArm64) IncludeFlags() string {
 	return "${arm64IncludeFlags}"
 }
 
+func (t *toolchainArm64) IsaFlags(isa string) string {
+        return ""
+}
+
 func (t *toolchainArm64) ClangTriple() string {
 	return "${arm64GccTriple}"
 }

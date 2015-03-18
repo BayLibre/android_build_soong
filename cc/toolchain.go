@@ -38,6 +38,7 @@ type toolchain interface {
 	Cppflags() string
 	Ldflags() string
 	IncludeFlags() string
+        IsaFlags(string) string
 
 	ClangTriple() string
 	ClangCflags() string

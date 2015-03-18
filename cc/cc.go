@@ -126,6 +126,10 @@ type ccProperties struct {
 	// ldflags: list of module-specific flags that will be used for all link steps
 	Ldflags []string `android:"arch_variant"`
 
+        // isa: the instruction set architecture to use to compile the C/C++
+        // module.
+        Isa string `android:"arch_variant"`
+
 	// include_dirs: list of directories relative to the root of the source tree that will
 	// be added to the include path using -I.
 	// If possible, don't use this.  If adding paths from the current directory use
@@ -347,6 +351,8 @@ func (c *ccBase) flags(ctx common.AndroidModuleContext, toolchain toolchain) ccF
 		flags.clang = true
 	}
 
+        isa := c.properties.Isa
+
 	if flags.clang {
 		flags.cFlags = clangFilterUnknownCflags(flags.cFlags)
 		flags.cFlags = append(flags.cFlags, c.properties.Clang_cflags...)
@@ -399,6 +405,7 @@ func (c *ccBase) flags(ctx common.AndroidModuleContext, toolchain toolchain) ccF
 			flags.globalFlags = []string{
 				"${commonGlobalIncludes}",
 				toolchain.IncludeFlags(),
+                                toolchain.IsaFlags(isa),
 				toolchain.ClangCflags(),
 				"${commonClangGlobalCflags}",
 				fmt.Sprintf("${%sClangGlobalCflags}", arch.HostOrDevice),
@@ -408,6 +415,7 @@ func (c *ccBase) flags(ctx common.AndroidModuleContext, toolchain toolchain) ccF
 			flags.globalFlags = []string{
 				"${commonGlobalIncludes}",
 				toolchain.IncludeFlags(),
+                                toolchain.IsaFlags(isa),
 				toolchain.Cflags(),
 				"${commonGlobalCflags}",
 				fmt.Sprintf("${%sGlobalCflags}", arch.HostOrDevice),
