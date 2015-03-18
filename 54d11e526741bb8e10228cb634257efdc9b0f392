@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "66de785c_6ef62fde",
+        "filename": "cc/arm_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1052708
+      },
+      "writtenOn": "2015-03-18T23:37:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46e6d429_181b6da0",
+      "revId": "54d11e526741bb8e10228cb634257efdc9b0f392",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6d9e470_ce92c3a7",
         "filename": "cc/arm_device.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2015-03-18T22:03:35Z",
       "side": 1,
       "message": "This is going to silently ignore typos in the instruction set property.  Can you only fall back to defaultIsa if isa \u003d\u003d \"\", and otherwise return an error that gets reported using ctx.ModuleErrorf in cc.go?",
+      "revId": "54d11e526741bb8e10228cb634257efdc9b0f392",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66de785c_8b5a6d85",
+        "filename": "cc/arm_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1052708
+      },
+      "writtenOn": "2015-03-18T23:37:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6d9e470_ce92c3a7",
       "revId": "54d11e526741bb8e10228cb634257efdc9b0f392",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "2612c0d8_69bbc526",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1052708
+      },
+      "writtenOn": "2015-03-18T23:37:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46e6d429_78fdd9af",
+      "range": {
+        "startLine": 131,
+        "startChar": 8,
+        "endLine": 131,
+        "endChar": 11
+      },
+      "revId": "54d11e526741bb8e10228cb634257efdc9b0f392",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46e6d429_785a7957",
         "filename": "cc/toolchain.go",
         "patchSetId": 1
@@ -70,6 +130,24 @@
       "writtenOn": "2015-03-18T22:03:35Z",
       "side": 1,
       "message": "Since most architectures don\u0027t support multiple instruction sets, you could add a toolchainBase struct to toolchain64Bit and toolchain32Bit, and implement a default IsaFlags on it.",
+      "revId": "54d11e526741bb8e10228cb634257efdc9b0f392",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66de785c_aedbf76a",
+        "filename": "cc/toolchain.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1052708
+      },
+      "writtenOn": "2015-03-18T23:37:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46e6d429_785a7957",
       "revId": "54d11e526741bb8e10228cb634257efdc9b0f392",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
