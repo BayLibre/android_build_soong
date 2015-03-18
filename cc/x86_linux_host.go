@@ -180,6 +180,10 @@ func (t *toolchainLinux) IncludeFlags() string {
 	return ""
 }
 
+func (t *toolchainLinux) IsaFlags(isa string) string {
+	return ""
+}
+
 func (t *toolchainLinuxX86) ClangTriple() string {
 	return "i686-linux-gnu"
 }
