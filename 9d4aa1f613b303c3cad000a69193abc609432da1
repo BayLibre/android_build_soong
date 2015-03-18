@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66de785c_8e115bdb",
+        "filename": "cc/arm64_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-18T23:56:39Z",
+      "side": 1,
+      "message": "This should just be able to inherit the base one, right?",
+      "revId": "9d4aa1f613b303c3cad000a69193abc609432da1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
