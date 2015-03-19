@@ -16,6 +16,24 @@
       "revId": "5049f02e6040f38aff9722579fc7cc8c05ff9885",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "461df4f5_5af695dd",
+        "filename": "common/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-19T19:33:59Z",
+      "side": 1,
+      "message": "I can\u0027t, go doesn\u0027t allow a newline between ) (, so this is the only reasonable place to put a newline.",
+      "parentUuid": "c64724eb_64065ed8",
+      "revId": "5049f02e6040f38aff9722579fc7cc8c05ff9885",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
