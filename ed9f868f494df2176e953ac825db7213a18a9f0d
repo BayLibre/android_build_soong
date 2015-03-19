@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e640a8d5_25ab7a83",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-19T18:36:27Z",
+      "side": 1,
+      "message": "This looks out of place. Where is this being done for the static library dependencies? Shouldn\u0027t this just be a part of ccBase.collectDeps?",
+      "revId": "ed9f868f494df2176e953ac825db7213a18a9f0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
