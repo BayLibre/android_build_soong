@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c64724eb_64065ed8",
+        "filename": "common/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-19T18:28:38Z",
+      "side": 1,
+      "message": "Reflow these two lines.",
+      "revId": "5049f02e6040f38aff9722579fc7cc8c05ff9885",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
