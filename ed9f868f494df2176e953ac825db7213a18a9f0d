@@ -16,6 +16,24 @@
       "revId": "ed9f868f494df2176e953ac825db7213a18a9f0d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c64724eb_72a2a0f0",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-19T19:35:39Z",
+      "side": 1,
+      "message": "I guess the ccBase collectDeps, and then just ignore deps.sharedLibs for static libraries",
+      "parentUuid": "e640a8d5_25ab7a83",
+      "revId": "ed9f868f494df2176e953ac825db7213a18a9f0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
