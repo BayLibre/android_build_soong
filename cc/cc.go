@@ -1155,7 +1155,7 @@ func (c *ccTest) collectDeps(ctx common.AndroidModuleContext, flags ccFlags) (cc
 	}
 
 	// TODO(danalbert): Make gtest export its dependencies.
-	flags.includeDirs = append(flags.includeDirs, "external/gtest/include")
+	flags.includeDirs = append(flags.includeDirs, filepath.Join(ctx.Config().(Config).SrcDir(), "external/gtest/include"))
 
 	_, staticLibs, _ := c.collectDepsFromList(ctx, gtestLibs)
 	deps.staticLibs = append(deps.staticLibs, staticLibs...)
