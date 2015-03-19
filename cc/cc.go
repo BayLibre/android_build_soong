@@ -252,17 +252,19 @@ type CCDeps struct {
 }
 
 type CCFlags struct {
-	GlobalFlags []string
-	AsFlags     []string
-	CFlags      []string
-	ConlyFlags  []string
-	CppFlags    []string
-	LdFlags     []string
-	LdLibs      []string
-	IncludeDirs []string
-	Nocrt       bool
-	Toolchain   Toolchain
-	Clang       bool
+	GlobalFlags        []string
+	AsFlags            []string
+	CFlags             []string
+	ConlyFlags         []string
+	CppFlags           []string
+	LdDirs             []string
+	LdFlags            []string
+	LdLibs             []string
+	IncludeDirs        []string
+	Nocrt              bool
+	PrebuiltStaticLibs []string
+	Toolchain          Toolchain
+	Clang              bool
 }
 
 // ccBase contains the properties and members used by all C/C++ module types, and implements
@@ -395,6 +397,20 @@ func (c *ccBase) AndroidDynamicDependencies(ctx common.AndroidDynamicDependerMod
 	return ret
 }
 
+func getNdkSysroot(ctx common.AndroidModuleContext, toolchain Toolchain, version string) string {
+	ndk_root := ctx.Config().(Config).SrcDir() + "/prebuilts/ndk"
+	arch := toolchain.Name()
+	return fmt.Sprintf("%s/current/platforms/android-%s/arch-%s", ndk_root, version, arch)
+}
+
+func getNdkIncludeDir(ctx common.AndroidModuleContext, toolchain Toolchain, version string) string {
+	return fmt.Sprintf("%s/usr/include", getNdkSysroot(ctx, toolchain, version))
+}
+
+func getNdkLibDir(ctx common.AndroidModuleContext, toolchain Toolchain, version string) string {
+	return fmt.Sprintf("%s/usr/lib", getNdkSysroot(ctx, toolchain, version))
+}
+
 // Create a ccFlags struct that collects the compile flags from global values,
 // per-target values, module type values, and per-module Blueprints properties
 func (c *ccBase) collectFlags(ctx common.AndroidModuleContext, toolchain Toolchain) CCFlags {
@@ -467,6 +483,12 @@ func (c *ccBase) collectFlags(ctx common.AndroidModuleContext, toolchain Toolcha
 
 		if c.properties.Sdk_version == "" {
 			flags.IncludeDirs = append(flags.IncludeDirs, "${SrcDir}/libnativehelper/include/nativehelper")
+		} else if ctx.Device() {
+			ndkInclude := getNdkIncludeDir(ctx, toolchain, c.properties.Sdk_version)
+			flags.IncludeDirs = append([]string{ndkInclude}, flags.IncludeDirs...)
+
+			ndkLibs := getNdkLibDir(ctx, c.findToolchain(ctx), c.properties.Sdk_version)
+			flags.LdDirs = append([]string{ndkLibs}, flags.LdDirs...)
 		}
 
 		if ctx.Device() && !c.properties.Allow_undefined_symbols {
@@ -533,6 +555,10 @@ func (c *ccBase) collectFlags(ctx common.AndroidModuleContext, toolchain Toolcha
 }
 
 func (c *ccBase) stl(ctx common.AndroidBaseContext) string {
+	if c.properties.Sdk_version != "" {
+		return "ndk"
+	}
+
 	switch c.properties.Stl {
 	case "libc++", "libc++_static",
 		"stlport", "stlport_static",
@@ -542,12 +568,79 @@ func (c *ccBase) stl(ctx common.AndroidBaseContext) string {
 		return ""
 	case "":
 		return "libc++" // TODO: mingw needs libstdc++
-	case "ndk":
-		panic("TODO: stl: ndk")
 	default:
 		ctx.ModuleErrorf("stl: %q is not a supported STL", c.properties.Stl)
 		return ""
 	}
+}
+
+func (c *ccBase) addNdkStlFlags(ctx common.AndroidModuleContext, flags CCFlags) CCFlags {
+	// TODO(danalbert): Find a real definition of this somewhere.
+	toolchain := c.findToolchain(ctx)
+	abi := "armeabi-v7a"
+	if toolchain.Is64Bit() {
+		abi = "arm64-v8a"
+	}
+
+	gccVersion := toolchain.GccVersion()
+
+	stlIncludes := map[string][]string{
+		"system":  []string{"cxx-stl/system/include"},
+		"stlport": []string{"cxx-stl/stlport/stlport"},
+		"c++":     []string{
+			"cxx-stl/llvm-libc++/libcxx/include",
+			"cxx-stl/llvm-libc++/gabi++/include",
+			"android/support/include",
+		},
+		"gnustl":  []string{
+			fmt.Sprintf("cxx-stl/gnu-libstdc++/%s/libs/%s/include", gccVersion, abi),
+			fmt.Sprintf("cxx-stl/gnu-libstdc++/%s/include", gccVersion),
+		},
+	}
+
+	stlLibs := map[string]string{
+		"stlport": "cxx-stl/stlport/libs",
+		"c++":     "cxx-stl/llvm-libc++/libs",
+		"gnustl":  fmt.Sprintf("cxx-stl/gnu-libstdc++/%s/libs", gccVersion),
+	}
+
+	stl := c.properties.Stl
+	var stlName string
+	switch stl {
+	case "system", "":
+		stlName = "system"
+	case "stlport_shared", "stlport_static":
+		stlName = "stlport"
+	case "c++_shared", "c++_static":
+		stlName = "c++"
+
+		// TODO(danalbert): This really shouldn't be here...
+		flags.CppFlags = append(flags.CppFlags, "-std=c++11")
+	case "gnustl_static":
+		stlName = "gnustl"
+	default:
+		ctx.ModuleErrorf(fmt.Sprintf("Unknown NDK STL: %s", stl))
+	}
+
+	ndkSrcRoot := ctx.Config().(Config).SrcDir() + "/prebuilts/ndk/current/sources"
+	for _, includeDir := range(stlIncludes[stlName]) {
+		flags.IncludeDirs = append(flags.IncludeDirs, fmt.Sprintf("%s/%s", ndkSrcRoot, includeDir))
+	}
+
+	isStatic := strings.HasSuffix(stl, "_static")
+	libDir := fmt.Sprintf("%s/%s/%s", ndkSrcRoot, stlLibs[stlName], abi)
+	if isStatic {
+		libPath := fmt.Sprintf("%s/lib%s.a", libDir, stl)
+		flags.PrebuiltStaticLibs = append(flags.PrebuiltStaticLibs, libPath)
+	} else {
+		// For system, libstdc++ is linked by ccDynamic.systemSharedLibs
+		if stlName != "system" {
+			flags.LdDirs = append(flags.LdDirs, libDir)
+			flags.LdLibs = append(flags.LdLibs, "-l" + stl)
+		}
+	}
+
+	return flags
 }
 
 func (c *ccBase) Flags(ctx common.AndroidModuleContext, flags CCFlags) CCFlags {
@@ -573,7 +666,7 @@ func (c *ccBase) Flags(ctx common.AndroidModuleContext, flags CCFlags) CCFlags {
 				"${SrcDir}/bionic")
 		}
 	case "ndk":
-		panic("TODO")
+		flags = c.addNdkStlFlags(ctx, flags)
 	case "libstdc++":
 		// Using bionic's basic libstdc++. Not actually an STL. Only around until the
 		// tree is in good enough shape to not need it.
@@ -767,7 +860,12 @@ func (c *ccDynamic) systemSharedLibs(ctx common.AndroidBaseContext) []string {
 		if ctx.Host() {
 			return []string{}
 		} else {
-			return []string{"libc", "libm"}
+			libs := []string{"libc", "libm"}
+			stl := c.properties.Stl
+			if c.properties.Sdk_version != "" && (stl == "system" || stl == "") {
+				libs = append([]string{"libstdc++"}, libs...)
+			}
+			return libs
 		}
 	}
 	return c.properties.System_shared_libs
@@ -943,8 +1041,8 @@ func (c *CCLibrary) compileSharedLibrary(ctx common.AndroidModuleContext,
 	outputFile := filepath.Join(common.ModuleOutDir(ctx), ctx.ModuleName()+sharedLibraryExtension)
 
 	TransformObjToDynamicBinary(ctx, objFiles, deps.SharedLibs, deps.StaticLibs,
-		deps.LateStaticLibs, deps.WholeStaticLibs, deps.CrtBegin, deps.CrtEnd,
-		ccFlagsToBuilderFlags(flags), outputFile)
+		flags.PrebuiltStaticLibs, deps.LateStaticLibs, deps.WholeStaticLibs, deps.CrtBegin,
+		deps.CrtEnd, ccFlagsToBuilderFlags(flags), outputFile)
 
 	c.out = outputFile
 	c.exportIncludeDirs = pathtools.PrefixPaths(c.properties.Export_include_dirs,
@@ -1127,8 +1225,8 @@ func (c *CCBinary) compileModule(ctx common.AndroidModuleContext,
 	c.out = outputFile
 
 	TransformObjToDynamicBinary(ctx, objFiles, deps.SharedLibs, deps.StaticLibs,
-		deps.LateStaticLibs, deps.WholeStaticLibs, deps.CrtBegin, deps.CrtEnd,
-		ccFlagsToBuilderFlags(flags), outputFile)
+		flags.PrebuiltStaticLibs, deps.LateStaticLibs, deps.WholeStaticLibs, deps.CrtBegin,
+		deps.CrtEnd, ccFlagsToBuilderFlags(flags), outputFile)
 }
 
 func (c *CCBinary) installModule(ctx common.AndroidModuleContext, flags CCFlags) {

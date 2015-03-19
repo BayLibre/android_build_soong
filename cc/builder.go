@@ -79,17 +79,19 @@ var (
 )
 
 type builderFlags struct {
-	globalFlags string
-	asFlags     string
-	cFlags      string
-	conlyFlags  string
-	cppFlags    string
-	ldFlags     string
-	ldLibs      string
-	incFlags    string
-	nocrt       bool
-	toolchain   Toolchain
-	clang       bool
+	globalFlags        string
+	asFlags            string
+	cFlags             string
+	conlyFlags         string
+	cppFlags           string
+	ldDirs             []string
+	ldFlags            string
+	ldLibs             string
+	incFlags           string
+	nocrt              bool
+	prebuiltStaticLibs []string
+	toolchain          Toolchain
+	clang              bool
 }
 
 // Generate rules for compiling multiple .c, .cpp, or .S files to individual .o files
@@ -184,7 +186,7 @@ func TransformObjToStaticLib(ctx common.AndroidModuleContext, objFiles []string,
 // Generate a rule for compiling multiple .o files, plus static libraries, whole static libraries,
 // and shared libraires, to a shared library (.so) or dynamic executable
 func TransformObjToDynamicBinary(ctx common.AndroidModuleContext,
-	objFiles, sharedLibs, staticLibs, lateStaticLibs, wholeStaticLibs []string,
+	objFiles, sharedLibs, staticLibs, prebuiltStaticLibs, lateStaticLibs, wholeStaticLibs []string,
 	crtBegin, crtEnd string, flags builderFlags, outputFile string) {
 
 	var ldCmd string
@@ -204,6 +206,7 @@ func TransformObjToDynamicBinary(ctx common.AndroidModuleContext,
 	}
 
 	libFlagsList = append(libFlagsList, staticLibs...)
+	libFlagsList = append(libFlagsList, prebuiltStaticLibs...)
 
 	for _, lib := range sharedLibs {
 		dir, file := filepath.Split(lib)
@@ -236,7 +239,7 @@ func TransformObjToDynamicBinary(ctx common.AndroidModuleContext,
 		Implicits: deps,
 		Args: map[string]string{
 			"ldCmd":      ldCmd,
-			"ldDirFlags": ldDirsToFlags(ldDirs),
+			"ldDirFlags": ldDirsToFlags(append(flags.ldDirs, ldDirs...)),
 			"crtBegin":   crtBegin,
 			"libFlags":   strings.Join(libFlagsList, " "),
 			"ldFlags":    flags.ldFlags,

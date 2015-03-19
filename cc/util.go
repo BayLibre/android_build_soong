@@ -81,16 +81,18 @@ func moduleToLibName(module string) (string, error) {
 
 func ccFlagsToBuilderFlags(in CCFlags) builderFlags {
 	return builderFlags{
-		globalFlags: strings.Join(in.GlobalFlags, " "),
-		asFlags:     strings.Join(in.AsFlags, " "),
-		cFlags:      strings.Join(in.CFlags, " "),
-		conlyFlags:  strings.Join(in.ConlyFlags, " "),
-		cppFlags:    strings.Join(in.CppFlags, " "),
-		ldFlags:     strings.Join(in.LdFlags, " "),
-		ldLibs:      strings.Join(in.LdLibs, " "),
-		incFlags:    includeDirsToFlags(in.IncludeDirs),
-		nocrt:       in.Nocrt,
-		toolchain:   in.Toolchain,
-		clang:       in.Clang,
+		globalFlags:        strings.Join(in.GlobalFlags, " "),
+		asFlags:            strings.Join(in.AsFlags, " "),
+		cFlags:             strings.Join(in.CFlags, " "),
+		conlyFlags:         strings.Join(in.ConlyFlags, " "),
+		cppFlags:           strings.Join(in.CppFlags, " "),
+		ldDirs:             in.LdDirs,
+		ldFlags:            strings.Join(in.LdFlags, " "),
+		ldLibs:             strings.Join(in.LdLibs, " "),
+		incFlags:           includeDirsToFlags(in.IncludeDirs),
+		nocrt:              in.Nocrt,
+		prebuiltStaticLibs: in.PrebuiltStaticLibs,
+		toolchain:          in.Toolchain,
+		clang:              in.Clang,
 	}
 }
