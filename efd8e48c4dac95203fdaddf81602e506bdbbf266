@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e640a8d5_02998c7b",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-19T17:56:47Z",
+      "side": 1,
+      "message": "I had tried making this an int, but blueprint wasn\u0027t happy with that. Needed to be marked with a mutator or something.",
+      "revId": "efd8e48c4dac95203fdaddf81602e506bdbbf266",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c64724eb_e4ba6e05",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-19T17:56:47Z",
+      "side": 1,
+      "message": "Where is the mess of other default headers? I would expect this to be next to them.",
+      "revId": "efd8e48c4dac95203fdaddf81602e506bdbbf266",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
