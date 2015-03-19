@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a64230dc_80e9182c",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-19T18:01:39Z",
+      "side": 1,
+      "message": "I added int support to blueprint, but there was no need for it in blueprints files at the time so I didn\u0027t add it to the parser.  It is restricted to properties that ar added by a mutator (tagged with `blueprint:\"mutated\"`), and can\u0027t be used in a Blueprints file",
+      "parentUuid": "e640a8d5_02998c7b",
+      "revId": "efd8e48c4dac95203fdaddf81602e506bdbbf266",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c64724eb_e4ba6e05",
         "filename": "cc/cc.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2015-03-19T17:56:47Z",
       "side": 1,
       "message": "Where is the mess of other default headers? I would expect this to be next to them.",
+      "revId": "efd8e48c4dac95203fdaddf81602e506bdbbf266",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e640a8d5_02c66c49",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-19T18:01:39Z",
+      "side": 1,
+      "message": "The other headers come through ${commonGlobalIncludes} below, which is used to keep the build.ninja size down by not specifying -I .... for every module.",
+      "parentUuid": "c64724eb_e4ba6e05",
       "revId": "efd8e48c4dac95203fdaddf81602e506bdbbf266",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
