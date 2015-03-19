@@ -22,6 +22,30 @@
       "revId": "d7e5a216b6790fef686f873c31b1d378a3be8f02",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c64724eb_7ea83156",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1158,
+      "author": {
+        "id": 1052708
+      },
+      "writtenOn": "2015-03-19T17:15:51Z",
+      "side": 1,
+      "message": "Done. Then ran gofmt which I always forget to do.",
+      "parentUuid": "e640a8d5_df961b24",
+      "range": {
+        "startLine": 1158,
+        "startChar": 46,
+        "endLine": 1158,
+        "endChar": 47
+      },
+      "revId": "d7e5a216b6790fef686f873c31b1d378a3be8f02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
