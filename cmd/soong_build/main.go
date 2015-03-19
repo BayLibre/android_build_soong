@@ -47,6 +47,7 @@ func main() {
 	ctx.RegisterModuleType("cc_test", cc.CCTestFactory)
 
 	ctx.RegisterModuleType("toolchain_library", cc.ToolchainLibraryFactory)
+	ctx.RegisterModuleType("ndk_prebuilt_library", cc.NdkPrebuiltLibraryFactory)
 
 	ctx.RegisterModuleType("cc_library_host_static", cc.CCLibraryHostStaticFactory)
 	ctx.RegisterModuleType("cc_library_host_shared", cc.CCLibraryHostSharedFactory)
