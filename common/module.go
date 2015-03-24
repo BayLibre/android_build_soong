@@ -32,6 +32,9 @@ type AndroidModuleContext interface {
 	blueprint.ModuleContext
 
 	Arch() Arch
+	Host() bool
+	Device() bool
+	Debug() bool
 	InstallFile(installPath, srcPath string)
 	CheckbuildFile(srcPath string)
 }
@@ -328,6 +331,18 @@ func (a *androidModuleContext) Build(pctx *blueprint.PackageContext, params blue
 
 func (a *androidModuleContext) Arch() Arch {
 	return a.arch
+}
+
+func (a *androidModuleContext) Host() bool {
+	return a.arch.HostOrDevice.Host()
+}
+
+func (a *androidModuleContext) Device() bool {
+	return a.arch.HostOrDevice.Device()
+}
+
+func (a *androidModuleContext) Debug() bool {
+	return false
 }
 
 func (a *androidModuleContext) InstallFile(installPath, srcPath string) {
