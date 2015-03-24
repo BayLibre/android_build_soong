@@ -227,10 +227,16 @@ type unusedProperties struct {
 type CCModuleType interface {
 	common.AndroidModule
 
-	// Modify the ccFlags that are specific to this _type_ of module
-	ModuleTypeFlags(common.AndroidModuleContext, CCFlags) CCFlags
+	// Modify the ccFlags
+	Flags(common.AndroidModuleContext, CCFlags) CCFlags
 
-	// Create a ccDeps struct that collects the module dependency info.  Can also
+	// Return list of dependencies for use in AndroidDynamicDependencies and in collectDeps
+	StaticLibraryDeps(common.AndroidBaseContext) []string
+	WholeStaticLibraryDeps(common.AndroidBaseContext) []string
+	LateStaticLibraryDeps(common.AndroidBaseContext) []string
+	SharedLibraryDeps(common.AndroidBaseContext) []string
+	ObjDeps(common.AndroidBaseContext) []string
+
 	// modify ccFlags in order to add dependency include directories, etc.
 	collectDeps(common.AndroidModuleContext, CCFlags) (ccDeps, CCFlags)
 
@@ -262,9 +268,6 @@ type CCFlags struct {
 	Nocrt       bool
 	Toolchain   Toolchain
 	Clang       bool
-
-	ExtraStaticLibs []string
-	ExtraSharedLibs []string
 }
 
 // ccBase contains the properties and members used by all C/C++ module types, and implements
@@ -296,17 +299,12 @@ func (c *ccBase) GenerateAndroidBuildActions(ctx common.AndroidModuleContext) {
 		return
 	}
 
-	flags := c.flags(ctx, toolchain)
+	flags := c.collectFlags(ctx, toolchain)
 	if ctx.Failed() {
 		return
 	}
 
-	flags = c.addStlFlags(ctx, flags)
-	if ctx.Failed() {
-		return
-	}
-
-	deps, flags := c.ccModuleType().collectDeps(ctx, flags)
+	deps, flags := c.module.collectDeps(ctx, flags)
 	if ctx.Failed() {
 		return
 	}
@@ -352,21 +350,45 @@ func (c *ccBase) findToolchain(ctx common.AndroidModuleContext) Toolchain {
 	return factory(arch.ArchVariant, arch.CpuVariant)
 }
 
-func (c *ccBase) ModuleTypeFlags(ctx common.AndroidModuleContext, flags CCFlags) CCFlags {
+func (c *ccBase) Flags(ctx common.AndroidModuleContext, flags CCFlags) CCFlags {
 	return flags
 }
 
-func (c *ccBase) AndroidDynamicDependencies(ctx common.AndroidDynamicDependerModuleContext) []string {
-	ctx.AddVariationDependencies([]blueprint.Variation{{"link", "static"}}, c.properties.Whole_static_libs...)
-	ctx.AddVariationDependencies([]blueprint.Variation{{"link", "static"}}, c.properties.Static_libs...)
-	ctx.AddVariationDependencies([]blueprint.Variation{{"link", "shared"}}, c.properties.Shared_libs...)
+func (c *ccBase) StaticLibraryDeps(ctx common.AndroidBaseContext) []string {
+	return c.properties.Static_libs
+}
 
+func (c *ccBase) WholeStaticLibraryDeps(ctx common.AndroidBaseContext) []string {
+	return c.properties.Whole_static_libs
+}
+
+func (c *ccBase) LateStaticLibraryDeps(ctx common.AndroidBaseContext) []string {
 	return nil
+}
+
+func (c *ccBase) SharedLibraryDeps(ctx common.AndroidBaseContext) []string {
+	return c.properties.Shared_libs
+}
+
+func (c *ccBase) ObjDeps(ctx common.AndroidBaseContext) []string {
+	return nil
+}
+
+func (c *ccBase) AndroidDynamicDependencies(ctx common.AndroidDynamicDependerModuleContext) []string {
+	staticLibs := c.module.WholeStaticLibraryDeps(ctx)
+	staticLibs = append(staticLibs, c.module.StaticLibraryDeps(ctx)...)
+	staticLibs = append(staticLibs, c.module.LateStaticLibraryDeps(ctx)...)
+	ctx.AddVariationDependencies([]blueprint.Variation{{"link", "static"}}, staticLibs...)
+
+	sharedLibs := c.module.SharedLibraryDeps(ctx)
+	ctx.AddVariationDependencies([]blueprint.Variation{{"link", "shared"}}, sharedLibs...)
+
+	return c.module.ObjDeps(ctx)
 }
 
 // Create a ccFlags struct that collects the compile flags from global values,
 // per-target values, module type values, and per-module Blueprints properties
-func (c *ccBase) flags(ctx common.AndroidModuleContext, toolchain Toolchain) CCFlags {
+func (c *ccBase) collectFlags(ctx common.AndroidModuleContext, toolchain Toolchain) CCFlags {
 	flags := CCFlags{
 		CFlags:     c.properties.Cflags,
 		CppFlags:   c.properties.Cppflags,
@@ -487,7 +509,7 @@ func (c *ccBase) flags(ctx common.AndroidModuleContext, toolchain Toolchain) CCF
 		}
 	}
 
-	flags = c.ccModuleType().ModuleTypeFlags(ctx, flags)
+	flags = c.ccModuleType().Flags(ctx, flags)
 
 	// Optimization to reduce size of build.ninja
 	// Replace the long list of flags for each file with a module-local variable
@@ -498,69 +520,6 @@ func (c *ccBase) flags(ctx common.AndroidModuleContext, toolchain Toolchain) CCF
 	flags.CppFlags = []string{"$cppflags"}
 	flags.AsFlags = []string{"$asflags"}
 
-	return flags
-}
-
-// Modify ccFlags structs with STL library info
-func (c *ccBase) addStlFlags(ctx common.AndroidModuleContext, flags CCFlags) CCFlags {
-	if !c.properties.No_default_compiler_flags {
-		stl := "libc++" // TODO: mingw needs libstdc++
-		if c.properties.Stl != "" {
-			stl = c.properties.Stl
-		}
-
-		stlStatic := false
-		if strings.HasSuffix(stl, "_static") {
-			stlStatic = true
-		}
-
-		switch stl {
-		case "libc++", "libc++_static":
-			flags.CFlags = append(flags.CFlags, "-D_USING_LIBCXX")
-			flags.IncludeDirs = append(flags.IncludeDirs, "${SrcDir}/external/libcxx/include")
-			if ctx.Host() {
-				flags.CppFlags = append(flags.CppFlags, "-nostdinc++")
-				flags.LdFlags = append(flags.LdFlags, "-nodefaultlibs")
-				flags.LdLibs = append(flags.LdLibs, "-lc", "-lm", "-lpthread")
-			}
-			if stlStatic {
-				flags.ExtraStaticLibs = append(flags.ExtraStaticLibs, "libc++_static")
-			} else {
-				flags.ExtraSharedLibs = append(flags.ExtraSharedLibs, "libc++")
-			}
-		case "stlport", "stlport_static":
-			if ctx.Device() {
-				flags.IncludeDirs = append(flags.IncludeDirs,
-					"${SrcDir}/external/stlport/stlport",
-					"${SrcDir}/bionic/libstdc++/include",
-					"${SrcDir}/bionic")
-				if stlStatic {
-					flags.ExtraStaticLibs = append(flags.ExtraStaticLibs, "libstdc++", "libstlport_static")
-				} else {
-					flags.ExtraSharedLibs = append(flags.ExtraSharedLibs, "libstdc++", "libstlport")
-				}
-			}
-		case "ndk":
-			panic("TODO")
-		case "libstdc++":
-			// Using bionic's basic libstdc++. Not actually an STL. Only around until the
-			// tree is in good enough shape to not need it.
-			// Host builds will use GNU libstdc++.
-			if ctx.Device() {
-				flags.IncludeDirs = append(flags.IncludeDirs, "${SrcDir}/bionic/libstdc++/include")
-				flags.ExtraSharedLibs = append(flags.ExtraSharedLibs, "libstdc++")
-			}
-		case "none":
-			if ctx.Host() {
-				flags.CppFlags = append(flags.CppFlags, "-nostdinc++")
-				flags.LdFlags = append(flags.LdFlags, "-nodefaultlibs")
-				flags.LdLibs = append(flags.LdLibs, "-lc", "-lm")
-			}
-		default:
-			ctx.ModuleErrorf("stl: %q is not a supported STL", stl)
-		}
-
-	}
 	return flags
 }
 
@@ -669,15 +628,36 @@ func (c *ccBase) collectDeps(ctx common.AndroidModuleContext, flags CCFlags) (cc
 	var deps ccDeps
 	var newIncludeDirs []string
 
-	wholeStaticLibNames := c.properties.Whole_static_libs
+	wholeStaticLibNames := c.module.WholeStaticLibraryDeps(ctx)
 	_, deps.wholeStaticLibs, newIncludeDirs = c.collectDepsFromList(ctx, wholeStaticLibNames)
-
 	deps.includeDirs = append(deps.includeDirs, newIncludeDirs...)
 
-	staticLibNames := c.properties.Static_libs
-	staticLibNames = append(staticLibNames, flags.ExtraStaticLibs...)
+	staticLibNames := c.module.StaticLibraryDeps(ctx)
 	_, deps.staticLibs, newIncludeDirs = c.collectDepsFromList(ctx, staticLibNames)
 	deps.includeDirs = append(deps.includeDirs, newIncludeDirs...)
+
+	lateStaticLibNames := c.module.LateStaticLibraryDeps(ctx)
+	_, deps.lateStaticLibs, newIncludeDirs = c.collectDepsFromList(ctx, lateStaticLibNames)
+	deps.includeDirs = append(deps.includeDirs, newIncludeDirs...)
+
+	sharedLibNames := c.module.SharedLibraryDeps(ctx)
+	_, deps.sharedLibs, newIncludeDirs = c.collectDepsFromList(ctx, sharedLibNames)
+	deps.includeDirs = append(deps.includeDirs, newIncludeDirs...)
+
+	ctx.VisitDirectDeps(func(m blueprint.Module) {
+		if obj, ok := m.(*ccObject); ok {
+			otherName := ctx.OtherModuleName(m)
+			if strings.HasPrefix(otherName, "crtbegin") {
+				if !c.properties.Nocrt {
+					deps.crtBegin = obj.outputFile()
+				}
+			} else if strings.HasPrefix(otherName, "crtend") {
+				if !c.properties.Nocrt {
+					deps.crtEnd = obj.outputFile()
+				}
+			}
+		}
+	})
 
 	return deps, flags
 }
@@ -717,78 +697,125 @@ var (
 	stlStaticHostLibs = []string{"libc++_static"}
 )
 
-func (c *ccDynamic) AndroidDynamicDependencies(ctx common.AndroidDynamicDependerModuleContext) []string {
-	deps := c.ccBase.AndroidDynamicDependencies(ctx)
-
-	if ctx.Device() {
-		ctx.AddVariationDependencies([]blueprint.Variation{{"link", "shared"}}, c.systemSharedLibs(ctx)...)
-		ctx.AddVariationDependencies([]blueprint.Variation{{"link", "static"}},
-			"libcompiler_rt-extras",
-			"libgcov",
-			"libatomic",
-			"libgcc")
-
-		if c.properties.Stl != "none" {
-			ctx.AddVariationDependencies([]blueprint.Variation{{"link", "shared"}}, stlSharedLibs...)
-			ctx.AddVariationDependencies([]blueprint.Variation{{"link", "static"}}, stlStaticLibs...)
-		}
-	} else {
-		if c.properties.Stl != "none" {
-			ctx.AddVariationDependencies([]blueprint.Variation{{"link", "shared"}}, stlSharedHostLibs...)
-			ctx.AddVariationDependencies([]blueprint.Variation{{"link", "static"}}, stlStaticHostLibs...)
-		}
+func (c *ccDynamic) stl(ctx common.AndroidBaseContext) string {
+	if c.properties.No_default_compiler_flags {
+		return ""
 	}
 
-	return deps
+	switch c.properties.Stl {
+	case "libc++", "libc++_static",
+		"stlport", "stlport_static",
+		"libstdc++":
+		return c.properties.Stl
+	case "none":
+		return ""
+	case "":
+		return "libc++" // TODO: mingw needs libstdc++
+	case "ndk":
+		panic("TODO: stl: ndk")
+	default:
+		ctx.ModuleErrorf("stl: %q is not a supported STL", c.properties.Stl)
+		return ""
+	}
 }
 
-func (c *ccDynamic) collectDeps(ctx common.AndroidModuleContext, flags CCFlags) (ccDeps, CCFlags) {
-	var newIncludeDirs []string
-
-	deps, flags := c.ccBase.collectDeps(ctx, flags)
-
-	systemSharedLibs := c.systemSharedLibs(ctx)
-	sharedLibNames := make([]string, 0, len(c.properties.Shared_libs)+len(systemSharedLibs)+
-		len(flags.ExtraSharedLibs))
-	sharedLibNames = append(sharedLibNames, c.properties.Shared_libs...)
-	sharedLibNames = append(sharedLibNames, systemSharedLibs...)
-	sharedLibNames = append(sharedLibNames, flags.ExtraSharedLibs...)
-	_, deps.sharedLibs, newIncludeDirs = c.collectDepsFromList(ctx, sharedLibNames)
-	deps.includeDirs = append(deps.includeDirs, newIncludeDirs...)
+func (c *ccDynamic) StaticLibraryDeps(ctx common.AndroidBaseContext) []string {
+	ret := c.ccBase.StaticLibraryDeps(ctx)
 
 	if ctx.Device() {
-		var staticLibs []string
-		staticLibNames := []string{"libcompiler_rt-extras"}
-		_, staticLibs, newIncludeDirs = c.collectDepsFromList(ctx, staticLibNames)
-		deps.staticLibs = append(deps.staticLibs, staticLibs...)
-		deps.includeDirs = append(deps.includeDirs, newIncludeDirs...)
-
-		// libgcc and libatomic have to be last on the command line
-		staticLibNames = []string{"libgcov", "libatomic", "libgcc"}
-		_, staticLibs, newIncludeDirs = c.collectDepsFromList(ctx, staticLibNames)
-		deps.lateStaticLibs = append(deps.lateStaticLibs, staticLibs...)
-		deps.includeDirs = append(deps.includeDirs, newIncludeDirs...)
+		ret = append(ret, "libcompiler_rt-extras")
 	}
 
-	ctx.VisitDirectDeps(func(m blueprint.Module) {
-		if obj, ok := m.(*ccObject); ok {
-			otherName := ctx.OtherModuleName(m)
-			if strings.HasPrefix(otherName, "crtbegin") {
-				if !c.properties.Nocrt {
-					deps.crtBegin = obj.outputFile()
-				}
-			} else if strings.HasPrefix(otherName, "crtend") {
-				if !c.properties.Nocrt {
-					deps.crtEnd = obj.outputFile()
-				}
-			} else {
-				ctx.ModuleErrorf("object module type only support for crtbegin and crtend, found %q",
-					ctx.OtherModuleName(m))
-			}
-		}
-	})
+	stl := c.stl(ctx)
+	switch stl {
+	case "libc++_static":
+		ret = append(ret, stl)
+	case "stlport_static":
+		ret = append(ret, "libstdc++", "libstlport_static")
+	}
+	return ret
+}
 
-	return deps, flags
+func (c *ccDynamic) WholeStaticLibraryDeps(ctx common.AndroidBaseContext) []string {
+	return c.properties.Whole_static_libs
+}
+
+func (c *ccDynamic) LateStaticLibraryDeps(ctx common.AndroidBaseContext) []string {
+	ret := c.ccBase.LateStaticLibraryDeps(ctx)
+
+	if ctx.Device() {
+		// libgcc and libatomic have to be last on the command line
+		ret = append(ret, "libgcov", "libatomic", "libgcc")
+	}
+
+	return ret
+}
+
+func (c *ccDynamic) SharedLibraryDeps(ctx common.AndroidBaseContext) []string {
+	ret := c.ccBase.SharedLibraryDeps(ctx)
+
+	if ctx.Device() {
+		ret = append(ret, c.systemSharedLibs(ctx)...)
+	}
+
+	stl := c.stl(ctx)
+	switch stl {
+	case "libc++", "libstdc++":
+		ret = append(ret, stl)
+	case "stlport":
+		ret = append(ret, "libstdc++", "libstlport")
+	}
+
+	return ret
+}
+
+// Modify ccFlags structs with STL library info
+func (c *ccDynamic) ModuleTypeFlags(ctx common.AndroidModuleContext, flags CCFlags) CCFlags {
+	flags = c.ccBase.Flags(ctx, flags)
+
+	if !c.properties.No_default_compiler_flags {
+		stl := "libc++" // TODO: mingw needs libstdc++
+		if c.properties.Stl != "" {
+			stl = c.properties.Stl
+		}
+
+		switch stl {
+		case "libc++", "libc++_static":
+			flags.CFlags = append(flags.CFlags, "-D_USING_LIBCXX")
+			flags.IncludeDirs = append(flags.IncludeDirs, "${SrcDir}/external/libcxx/include")
+			if ctx.Host() {
+				flags.CppFlags = append(flags.CppFlags, "-nostdinc++")
+				flags.LdFlags = append(flags.LdFlags, "-nodefaultlibs")
+				flags.LdLibs = append(flags.LdLibs, "-lc", "-lm", "-lpthread")
+			}
+		case "stlport", "stlport_static":
+			if ctx.Device() {
+				flags.IncludeDirs = append(flags.IncludeDirs,
+					"${SrcDir}/external/stlport/stlport",
+					"${SrcDir}/bionic/libstdc++/include",
+					"${SrcDir}/bionic")
+			}
+		case "ndk":
+			panic("TODO")
+		case "libstdc++":
+			// Using bionic's basic libstdc++. Not actually an STL. Only around until the
+			// tree is in good enough shape to not need it.
+			// Host builds will use GNU libstdc++.
+			if ctx.Device() {
+				flags.IncludeDirs = append(flags.IncludeDirs, "${SrcDir}/bionic/libstdc++/include")
+			}
+		case "none":
+			if ctx.Host() {
+				flags.CppFlags = append(flags.CppFlags, "-nostdinc++")
+				flags.LdFlags = append(flags.LdFlags, "-nodefaultlibs")
+				flags.LdLibs = append(flags.LdLibs, "-lc", "-lm")
+			}
+		default:
+			ctx.ModuleErrorf("stl: %q is not a supported STL", stl)
+		}
+
+	}
+	return flags
 }
 
 type ccExportedIncludeDirsProducer interface {
@@ -860,21 +887,33 @@ func CCLibraryFactory() (blueprint.Module, []interface{}) {
 	return NewCCLibrary(module, module, common.HostAndDeviceSupported)
 }
 
-func (c *CCLibrary) AndroidDynamicDependencies(ctx common.AndroidDynamicDependerModuleContext) []string {
-	if c.LibraryProperties.IsShared {
-		deps := c.ccDynamic.AndroidDynamicDependencies(ctx)
-		if ctx.Device() {
-			deps = append(deps, "crtbegin_so", "crtend_so")
-		}
-		return deps
+func (c *CCLibrary) StaticLibraryDeps(ctx common.AndroidBaseContext) []string {
+	if c.shared() {
+		return c.ccDynamic.StaticLibraryDeps(ctx)
 	} else {
-		return c.ccBase.AndroidDynamicDependencies(ctx)
+		return c.ccBase.StaticLibraryDeps(ctx)
 	}
 }
 
+func (c *CCLibrary) SharedLibraryDeps(ctx common.AndroidBaseContext) []string {
+	if c.shared() {
+		return c.ccDynamic.SharedLibraryDeps(ctx)
+	} else {
+		return c.ccBase.SharedLibraryDeps(ctx)
+	}
+}
+
+func (c *CCLibrary) ObjDeps(ctx common.AndroidBaseContext) []string {
+	if c.LibraryProperties.IsShared && ctx.Device() {
+		return []string{"crtbegin_so", "crtend_so"}
+	}
+	return nil
+}
+
 func (c *CCLibrary) collectDeps(ctx common.AndroidModuleContext, flags CCFlags) (ccDeps, CCFlags) {
+	deps, flags := c.ccBase.collectDeps(ctx, flags)
+
 	if c.LibraryProperties.IsStatic {
-		deps, flags := c.ccBase.collectDeps(ctx, flags)
 		wholeStaticLibNames := c.properties.Whole_static_libs
 		wholeStaticLibs, _, _ := c.collectDepsFromList(ctx, wholeStaticLibNames)
 
@@ -885,18 +924,9 @@ func (c *CCLibrary) collectDeps(ctx common.AndroidModuleContext, flags CCFlags) 
 				ctx.ModuleErrorf("module %q not a static library", ctx.OtherModuleName(m))
 			}
 		}
-
-		// Collect exported includes from shared lib dependencies
-		sharedLibNames := c.properties.Shared_libs
-		_, _, newIncludeDirs := c.collectDepsFromList(ctx, sharedLibNames)
-		deps.includeDirs = append(deps.includeDirs, newIncludeDirs...)
-
-		return deps, flags
-	} else if c.LibraryProperties.IsShared {
-		return c.ccDynamic.collectDeps(ctx, flags)
-	} else {
-		panic("Not shared or static")
 	}
+
+	return deps, flags
 }
 
 func (c *CCLibrary) outputFile() string {
@@ -911,7 +941,9 @@ func (c *CCLibrary) exportedIncludeDirs() []string {
 	return c.exportIncludeDirs
 }
 
-func (c *CCLibrary) ModuleTypeFlags(ctx common.AndroidModuleContext, flags CCFlags) CCFlags {
+func (c *CCLibrary) Flags(ctx common.AndroidModuleContext, flags CCFlags) CCFlags {
+	flags = c.ccDynamic.ModuleTypeFlags(ctx, flags)
+
 	flags.CFlags = append(flags.CFlags, "-fPIC")
 
 	if c.LibraryProperties.IsShared {
@@ -945,11 +977,8 @@ func (c *CCLibrary) compileStaticLibrary(ctx common.AndroidModuleContext,
 
 	objFiles = append(objFiles, objFilesStatic...)
 
-	var includeDirs []string
-
 	wholeStaticLibNames := c.properties.Whole_static_libs
-	wholeStaticLibs, _, newIncludeDirs := c.collectDepsFromList(ctx, wholeStaticLibNames)
-	includeDirs = append(includeDirs, newIncludeDirs...)
+	wholeStaticLibs, _, _ := c.collectDepsFromList(ctx, wholeStaticLibNames)
 
 	for _, m := range wholeStaticLibs {
 		if staticLib, ok := m.(ccLibraryInterface); ok && staticLib.static() {
@@ -958,19 +987,6 @@ func (c *CCLibrary) compileStaticLibrary(ctx common.AndroidModuleContext,
 			ctx.ModuleErrorf("module %q not a static library", ctx.OtherModuleName(m))
 		}
 	}
-
-	staticLibNames := c.properties.Static_libs
-	_, _, newIncludeDirs = c.collectDepsFromList(ctx, staticLibNames)
-	includeDirs = append(includeDirs, newIncludeDirs...)
-
-	ctx.VisitDirectDeps(func(m blueprint.Module) {
-		if obj, ok := m.(*ccObject); ok {
-			otherName := ctx.OtherModuleName(m)
-			if !strings.HasPrefix(otherName, "crtbegin") && !strings.HasPrefix(otherName, "crtend") {
-				objFiles = append(objFiles, obj.outputFile())
-			}
-		}
-	})
 
 	outputFile := filepath.Join(common.ModuleOutDir(ctx), ctx.ModuleName()+staticLibraryExtension)
 
@@ -1128,16 +1144,15 @@ func (c *CCBinary) getStem(ctx common.AndroidModuleContext) string {
 	return ctx.ModuleName()
 }
 
-func (c *CCBinary) AndroidDynamicDependencies(ctx common.AndroidDynamicDependerModuleContext) []string {
-	deps := c.ccDynamic.AndroidDynamicDependencies(ctx)
+func (c *CCBinary) ObjDeps(ctx common.AndroidBaseContext) []string {
 	if ctx.Device() {
 		if c.BinaryProperties.Static_executable {
-			deps = append(deps, "crtbegin_static", "crtend_android")
+			return []string{"crtbegin_static", "crtend_android"}
 		} else {
-			deps = append(deps, "crtbegin_dynamic", "crtend_android")
+			return []string{"crtbegin_dynamic", "crtend_android"}
 		}
 	}
-	return deps
+	return nil
 }
 
 func NewCCBinary(binary *CCBinary, module CCModuleType,
@@ -1153,7 +1168,9 @@ func CCBinaryFactory() (blueprint.Module, []interface{}) {
 	return NewCCBinary(module, module, common.HostAndDeviceSupported)
 }
 
-func (c *CCBinary) ModuleTypeFlags(ctx common.AndroidModuleContext, flags CCFlags) CCFlags {
+func (c *CCBinary) Flags(ctx common.AndroidModuleContext, flags CCFlags) CCFlags {
+	flags = c.ccDynamic.ModuleTypeFlags(ctx, flags)
+
 	flags.CFlags = append(flags.CFlags, "-fpie")
 
 	if ctx.Device() {
@@ -1204,12 +1221,8 @@ type ccTest struct {
 	}
 }
 
-var (
-	gtestLibs = []string{"libgtest", "libgtest_main"}
-)
-
-func (c *ccTest) collectDeps(ctx common.AndroidModuleContext, flags CCFlags) (ccDeps, CCFlags) {
-	deps, flags := c.CCBinary.collectDeps(ctx, flags)
+func (c *ccTest) Flags(ctx common.AndroidModuleContext, flags CCFlags) CCFlags {
+	flags = c.CCBinary.Flags(ctx, flags)
 
 	flags.CFlags = append(flags.CFlags, "-DGTEST_HAS_STD_STRING")
 	if ctx.Host() {
@@ -1221,16 +1234,13 @@ func (c *ccTest) collectDeps(ctx common.AndroidModuleContext, flags CCFlags) (cc
 	flags.IncludeDirs = append(flags.IncludeDirs,
 		filepath.Join(ctx.Config().(Config).SrcDir(), "external/gtest/include"))
 
-	_, staticLibs, _ := c.collectDepsFromList(ctx, gtestLibs)
-	deps.staticLibs = append(deps.staticLibs, staticLibs...)
-
-	return deps, flags
+	return flags
 }
 
-func (c *ccTest) AndroidDynamicDependencies(ctx common.AndroidDynamicDependerModuleContext) []string {
-	ctx.AddVariationDependencies([]blueprint.Variation{{"link", "static"}}, gtestLibs...)
-	deps := c.CCBinary.AndroidDynamicDependencies(ctx)
-	return append(deps, gtestLibs...)
+func (c *ccTest) StaticLibraryDeps(ctx common.AndroidBaseContext) []string {
+	ret := c.CCBinary.StaticLibraryDeps(ctx)
+	ret = append(ret, "libgtest", "libgtest_main")
+	return ret
 }
 
 func (c *ccTest) installModule(ctx common.AndroidModuleContext, flags CCFlags) {
