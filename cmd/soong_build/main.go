@@ -23,6 +23,7 @@ import (
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/bootstrap"
 
+	"android/soong/art"
 	"android/soong/cc"
 	"android/soong/common"
 	"android/soong/config"
@@ -52,6 +53,8 @@ func main() {
 	ctx.RegisterModuleType("cc_binary_host", cc.CCBinaryHostFactory)
 
 	ctx.RegisterModuleType("gensrcs", genrule.GenSrcsFactory)
+
+	ctx.RegisterModuleType("art_cc_library", art.ArtCCLibraryFactory)
 
 	// Mutators
 	ctx.RegisterEarlyMutator("arch", common.ArchMutator)
