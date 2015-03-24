@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3fb9632_53c4a690",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-24T23:36:52Z",
+      "side": 1,
+      "message": "Use ccDynamic.stl() so we don\u0027t have to duplicate the error handling code?",
+      "revId": "9cbfd10a19f64a6400b33ec26ae88f0ace4d18bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
