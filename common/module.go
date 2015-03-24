@@ -32,6 +32,9 @@ type AndroidModuleContext interface {
 	blueprint.ModuleContext
 
 	Arch() Arch
+	Host() bool
+	Device() bool
+	Debug() bool
 	InstallFile(installPath, srcPath string)
 	CheckbuildFile(srcPath string)
 }
@@ -52,6 +55,10 @@ type AndroidDynamicDepender interface {
 
 type AndroidDynamicDependerModuleContext interface {
 	blueprint.DynamicDependerModuleContext
+
+	Host() bool
+	Device() bool
+	Debug() bool
 }
 
 type commonProperties struct {
@@ -330,6 +337,18 @@ func (a *androidModuleContext) Arch() Arch {
 	return a.arch
 }
 
+func (a *androidModuleContext) Host() bool {
+	return a.arch.HostOrDevice.Host()
+}
+
+func (a *androidModuleContext) Device() bool {
+	return a.arch.HostOrDevice.Device()
+}
+
+func (a *androidModuleContext) Debug() bool {
+	return false
+}
+
 func (a *androidModuleContext) InstallFile(installPath, srcPath string) {
 	var fullInstallPath string
 	if a.arch.HostOrDevice.Device() {
@@ -358,6 +377,18 @@ func (a *androidModuleContext) CheckbuildFile(srcPath string) {
 type androidDynamicDependerContext struct {
 	blueprint.DynamicDependerModuleContext
 	module *AndroidModuleBase
+}
+
+func (a *androidDynamicDependerContext) Host() bool {
+	return a.module.HostOrDevice().Host()
+}
+
+func (a *androidDynamicDependerContext) Device() bool {
+	return a.module.HostOrDevice().Device()
+}
+
+func (a *androidDynamicDependerContext) Debug() bool {
+	return false
 }
 
 type fileInstaller interface {
