@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "834c3e8c_07d958f8",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-25T20:51:08Z",
+      "side": 1,
+      "message": "Dropped the unused CCFlags input and output, and took it out of the CCModuleType interface since it is only used from ccBase",
+      "parentUuid": "834c3e8c_a4b9625b",
+      "range": {
+        "startLine": 237,
+        "startChar": 36,
+        "endLine": 237,
+        "endChar": 73
+      },
+      "revId": "155dad7bbece17e5a1c8b1531e7748eecc99892a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2362b2ee_61dd915d",
         "filename": "cc/cc.go",
         "patchSetId": 7
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "834c3e8c_e7dd1ce5",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-25T20:51:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2362b2ee_61dd915d",
+      "revId": "155dad7bbece17e5a1c8b1531e7748eecc99892a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "834c3e8c_2457b261",
         "filename": "cc/cc.go",
         "patchSetId": 7
@@ -53,6 +95,30 @@
       "writtenOn": "2015-03-25T20:45:49Z",
       "side": 1,
       "message": "Confusing that these have the same names but are completely different things.",
+      "range": {
+        "startLine": 709,
+        "startChar": 1,
+        "endLine": 709,
+        "endChar": 38
+      },
+      "revId": "155dad7bbece17e5a1c8b1531e7748eecc99892a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c352b622_604c6ea1",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-25T20:51:08Z",
+      "side": 1,
+      "message": "Renamed wholeStaticLibs to wholeStaticLibModules, and deps to depPaths",
+      "parentUuid": "834c3e8c_2457b261",
       "range": {
         "startLine": 709,
         "startChar": 1,
