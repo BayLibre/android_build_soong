@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "834c3e8c_a4b9625b",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-25T20:45:49Z",
+      "side": 1,
+      "message": "This isn\u0027t the whole truth. It also returns the CCFlags.\n\nNot sure about the name of the function, since it also operates on flags...",
+      "range": {
+        "startLine": 237,
+        "startChar": 36,
+        "endLine": 237,
+        "endChar": 73
+      },
+      "revId": "155dad7bbece17e5a1c8b1531e7748eecc99892a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2362b2ee_61dd915d",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-25T20:45:49Z",
+      "side": 1,
+      "message": "Add a space above this.",
+      "revId": "155dad7bbece17e5a1c8b1531e7748eecc99892a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "834c3e8c_2457b261",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-25T20:45:49Z",
+      "side": 1,
+      "message": "Confusing that these have the same names but are completely different things.",
+      "range": {
+        "startLine": 709,
+        "startChar": 1,
+        "endLine": 709,
+        "endChar": 38
+      },
+      "revId": "155dad7bbece17e5a1c8b1531e7748eecc99892a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
