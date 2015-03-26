@@ -102,12 +102,14 @@ type archProperties struct {
 		Lib64 interface{}
 	}
 	Target struct {
-		Host        interface{}
-		Android     interface{}
-		Linux       interface{}
-		Darwin      interface{}
-		Windows     interface{}
-		Not_windows interface{}
+		Host          interface{}
+		Android       interface{}
+		Android_64bit interface{}
+		Android_32bit interface{}
+		Linux         interface{}
+		Darwin        interface{}
+		Windows       interface{}
+		Not_windows   interface{}
 	}
 }
 
@@ -401,6 +403,28 @@ func (a *AndroidModuleBase) setArchProperties(ctx blueprint.EarlyMutatorContext,
 				reflect.ValueOf(a.archProperties[i].Target).FieldByName("Not_windows").Elem().Elem())
 		}
 
+		// Handle 64-bit device properties in the form:
+		// target {
+		//     android_64bit {
+		//         key: value,
+		//     },
+		//     android_32bit {
+		//         key: value,
+		//     },
+		// },
+		// WARNING: this is probably not what you want to use in your blueprints file, it selects
+		// options for all targets on a device that supports 64-bit binaries, not just the targets
+		// that are being compiled for 64-bit.  Its expected use case is binaries like linker and
+		// debuggerd that need to know when they are a 32-bit process running on a 64-bit device
+		if hod.Device() {
+			if true /* && target_is_64_bit */ {
+				extendProperties(ctx, "target", "android_64bit", generalPropsValue,
+					reflect.ValueOf(a.archProperties[i].Target).FieldByName("Android_64bit").Elem().Elem())
+			} else {
+				extendProperties(ctx, "target", "android_32bit", generalPropsValue,
+					reflect.ValueOf(a.archProperties[i].Target).FieldByName("Android_32bit").Elem().Elem())
+			}
+		}
 		if ctx.Failed() {
 			return
 		}
