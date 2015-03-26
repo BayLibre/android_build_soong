@@ -22,6 +22,30 @@
       "revId": "f7531f1a21aaa56ef53cb1714e954e487528109f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c352b622_e3b065d1",
+        "filename": "bootstrap.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-26T00:16:39Z",
+      "side": 1,
+      "message": "It\u0027s not unlikely that soong.bootstrap.in will change, but at least we have the ability to update soong.bash to either work with an old .soong.bootstrap, or to detect when .soong.bootstrap is out of date and notify the user or automatically rebootstrap",
+      "parentUuid": "c352b622_438f392d",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 67
+      },
+      "revId": "f7531f1a21aaa56ef53cb1714e954e487528109f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
