@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "834c3e8c_0e416c16",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-26T05:50:40Z",
+      "side": 1,
+      "message": "you don\u0027t use this",
+      "revId": "f23cc09500a7e917dd24a6867a04cd4e6aa5358e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c352b622_01f499d2",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-26T05:50:40Z",
+      "side": 1,
+      "message": "builder.go doesn\u0027t care about where the libraries came from, it only cares about things that need to be treated differently.  Combine prebuiltStaticLibs into staticLibs before calling TransformObjToDynamicBinary",
+      "revId": "f23cc09500a7e917dd24a6867a04cd4e6aa5358e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2362b2ee_2010a951",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-26T05:50:40Z",
+      "side": 1,
+      "message": "you shouldn\u0027t need this either, just pass in a full path to a .so and the loop above will convert it to -Ldir -lname",
+      "revId": "f23cc09500a7e917dd24a6867a04cd4e6aa5358e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c352b622_e1f05de0",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-26T05:50:40Z",
+      "side": 1,
+      "message": "this is already available through flags.Toolchain, although you shouldn\u0027t need it",
+      "revId": "f23cc09500a7e917dd24a6867a04cd4e6aa5358e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2362b2ee_000da536",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-26T05:50:40Z",
+      "side": 1,
+      "message": "attach this to common.Arch, which you can access there through ctx.Arch()",
+      "revId": "f23cc09500a7e917dd24a6867a04cd4e6aa5358e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "834c3e8c_8ecafc1c",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-26T05:50:40Z",
+      "side": 1,
+      "message": "ModuleErrorf already handles format strings",
+      "range": {
+        "startLine": 622,
+        "startChar": 19,
+        "endLine": 622,
+        "endChar": 30
+      },
+      "revId": "f23cc09500a7e917dd24a6867a04cd4e6aa5358e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "834c3e8c_ae37f8ad",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-26T05:50:40Z",
+      "side": 1,
+      "message": "This could just add full paths to static libraries to deps.StaticLibs and shared libraries to deps.SharedLibs, but there currently isn\u0027t a step that runs after names have been converted to paths.  Maybe add a DepPaths step?",
+      "range": {
+        "startLine": 630,
+        "startChar": 1,
+        "endLine": 641,
+        "endChar": 2
+      },
+      "revId": "f23cc09500a7e917dd24a6867a04cd4e6aa5358e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
