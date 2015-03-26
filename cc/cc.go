@@ -1119,6 +1119,9 @@ type CCBinary struct {
 		// stem: set the name of the output
 		Stem string `android:"arch_variant"`
 
+		// suffix: append to the name of the output
+		Suffix string `android:"arch_variant"`
+
 		// prefix_symbols: if set, add an extra objcopy --prefix-symbols= step
 		Prefix_symbols string
 	}
@@ -1135,6 +1138,8 @@ func (c *CCBinary) buildShared() bool {
 func (c *CCBinary) getStem(ctx common.AndroidModuleContext) string {
 	if c.BinaryProperties.Stem != "" {
 		return c.BinaryProperties.Stem
+	} else if c.BinaryProperties.Suffix != "" {
+		return ctx.ModuleName() + c.BinaryProperties.Suffix
 	}
 	return ctx.ModuleName()
 }
