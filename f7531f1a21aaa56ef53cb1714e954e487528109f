@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c352b622_438f392d",
+        "filename": "bootstrap.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-03-26T00:13:35Z",
+      "side": 1,
+      "message": "If soong.bootstrap.in changes, you\u0027ll still need to manually rebootstrap :-)\nPerhaps the chance is slim. But how about just \"echo SRCDIR\u003d${SRCDIR} \u003e .soong.bootstrap\" here so people won\u0027t put more things in soong.bootstrap.in?",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 67
+      },
+      "revId": "f7531f1a21aaa56ef53cb1714e954e487528109f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
