@@ -1210,10 +1210,11 @@ func (c *CCBinary) DepNames(ctx common.AndroidBaseContext, depNames CCDeps) CCDe
 }
 
 func NewCCBinary(binary *CCBinary, module CCModuleType,
-	hod common.HostOrDeviceSupported) (blueprint.Module, []interface{}) {
+	hod common.HostOrDeviceSupported, props ...interface{}) (blueprint.Module, []interface{}) {
 
-	return newCCDynamic(&binary.ccLinked, module, hod, common.MultilibFirst,
-		&binary.BinaryProperties)
+	props = append(props, &binary.BinaryProperties)
+
+	return newCCDynamic(&binary.ccLinked, module, hod, common.MultilibFirst, props...)
 }
 
 func CCBinaryFactory() (blueprint.Module, []interface{}) {
@@ -1330,8 +1331,8 @@ func (c *ccTest) installModule(ctx common.AndroidModuleContext, flags CCFlags) {
 
 func CCTestFactory() (blueprint.Module, []interface{}) {
 	module := &ccTest{}
-	return newCCDynamic(&module.ccLinked, module, common.HostAndDeviceSupported,
-		common.MultilibFirst, &module.BinaryProperties, &module.testProperties)
+	return NewCCBinary(&module.CCBinary, module, common.HostAndDeviceSupported,
+		&module.testProperties)
 }
 
 func TestPerSrcMutator(mctx blueprint.EarlyMutatorContext) {
@@ -1402,6 +1403,16 @@ func CCBinaryHostFactory() (blueprint.Module, []interface{}) {
 	module := &CCBinary{}
 
 	return NewCCBinary(module, module, common.HostSupported)
+}
+
+//
+// Host Tests
+//
+
+func CCTestHostFactory() (blueprint.Module, []interface{}) {
+	module := &ccTest{}
+	return NewCCBinary(&module.CCBinary, module, common.HostSupported,
+		&module.testProperties)
 }
 
 //
