@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "837a7ea8_d79f5e63",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-27T00:46:26Z",
+      "side": 1,
+      "message": "case",
+      "range": {
+        "startLine": 625,
+        "startChar": 28,
+        "endLine": 625,
+        "endChar": 37
+      },
+      "revId": "630638e11b7e12af79807908a2f994bbda44ba87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03dccefb_f33dca8f",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-27T00:46:26Z",
+      "side": 1,
+      "message": "case \"ndk_system\"",
+      "range": {
+        "startLine": 628,
+        "startChar": 25,
+        "endLine": 628,
+        "endChar": 38
+      },
+      "revId": "630638e11b7e12af79807908a2f994bbda44ba87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
