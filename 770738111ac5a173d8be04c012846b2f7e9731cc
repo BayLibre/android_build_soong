@@ -22,6 +22,30 @@
       "revId": "770738111ac5a173d8be04c012846b2f7e9731cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43d246e8_08ec02bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-27T23:03:42Z",
+      "side": 1,
+      "message": "OK, I\u0027ll override ModuleContext.ContainsProperty in AndroidModuleContext, and have extendProperties track the properties it overrode.",
+      "parentUuid": "63a3ca80_6c41eaf9",
+      "range": {
+        "startLine": 16,
+        "startChar": 33,
+        "endLine": 17,
+        "endChar": 9
+      },
+      "revId": "770738111ac5a173d8be04c012846b2f7e9731cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
