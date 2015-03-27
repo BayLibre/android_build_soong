@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63a3ca80_6c41eaf9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-27T22:57:12Z",
+      "side": 1,
+      "message": "We definitely rely on this atm.",
+      "range": {
+        "startLine": 16,
+        "startChar": 33,
+        "endLine": 17,
+        "endChar": 9
+      },
+      "revId": "770738111ac5a173d8be04c012846b2f7e9731cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
