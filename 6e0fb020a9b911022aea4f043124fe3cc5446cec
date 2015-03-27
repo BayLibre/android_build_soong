@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43d246e8_d018f1fc",
+        "filename": "common/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-27T05:13:34Z",
+      "side": 1,
+      "message": "I\u0027d probably name them android64 and android32, but I\u0027m just bike shedding.",
+      "range": {
+        "startLine": 408,
+        "startChar": 9,
+        "endLine": 408,
+        "endChar": 22
+      },
+      "revId": "6e0fb020a9b911022aea4f043124fe3cc5446cec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
