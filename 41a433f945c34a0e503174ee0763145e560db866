@@ -1,0 +1,204 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a37b02ac_49f891f8",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-27T00:12:32Z",
+      "side": 1,
+      "message": "return \"ndk_\u003ctype\u003e\"",
+      "revId": "41a433f945c34a0e503174ee0763145e560db866",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a37b02ac_89ab09d5",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-27T00:12:32Z",
+      "side": 1,
+      "message": "libs :\u003d []string {\n     \"ndk_libc.\" + c.properties.Sdk_version,\n     \"ndk_libm.\" + c.properties.Sdk_version,\n }",
+      "revId": "41a433f945c34a0e503174ee0763145e560db866",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43d246e8_b7df6703",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 803,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-27T00:12:32Z",
+      "side": 1,
+      "message": "if c.stl(ctx) \u003d\u003d \"ndk_system\"",
+      "revId": "41a433f945c34a0e503174ee0763145e560db866",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a37b02ac_094e19c6",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1349,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-27T00:12:32Z",
+      "side": 1,
+      "message": "combine with getNdkSysroot",
+      "revId": "41a433f945c34a0e503174ee0763145e560db866",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63758ab8_4db5fd30",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1374,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-27T00:12:32Z",
+      "side": 1,
+      "message": "NewCCLibrary",
+      "range": {
+        "startLine": 1374,
+        "startChar": 8,
+        "endLine": 1374,
+        "endChar": 17
+      },
+      "revId": "41a433f945c34a0e503174ee0763145e560db866",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63758ab8_cd6eed27",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1420,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-27T00:12:32Z",
+      "side": 1,
+      "message": "NewCCLibrary",
+      "range": {
+        "startLine": 1420,
+        "startChar": 8,
+        "endLine": 1420,
+        "endChar": 17
+      },
+      "revId": "41a433f945c34a0e503174ee0763145e560db866",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a37b02ac_64e33420",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1428,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-27T00:12:32Z",
+      "side": 1,
+      "message": "unnecessary",
+      "revId": "41a433f945c34a0e503174ee0763145e560db866",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a37b02ac_84e8d0f9",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1430,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-27T00:12:32Z",
+      "side": 1,
+      "message": "NewCCLibrary",
+      "range": {
+        "startLine": 1430,
+        "startChar": 8,
+        "endLine": 1430,
+        "endChar": 17
+      },
+      "revId": "41a433f945c34a0e503174ee0763145e560db866",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43d246e8_d7046bcf",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1466,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-27T00:12:32Z",
+      "side": 1,
+      "message": "sharedLibraryExtension",
+      "range": {
+        "startLine": 1466,
+        "startChar": 11,
+        "endLine": 1466,
+        "endChar": 15
+      },
+      "revId": "41a433f945c34a0e503174ee0763145e560db866",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43d246e8_97fa633b",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1468,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-03-27T00:12:32Z",
+      "side": 1,
+      "message": "staticLibraryExtension",
+      "range": {
+        "startLine": 1468,
+        "startChar": 11,
+        "endLine": 1468,
+        "endChar": 14
+      },
+      "revId": "41a433f945c34a0e503174ee0763145e560db866",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
