@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63758ab8_1f9646c9",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1144,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-27T05:09:42Z",
+      "side": 1,
+      "message": "Could actually just add it here and not need the else if.",
+      "revId": "67b4add5ae810f72b2b6d8d9ff6067c70e065cc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
