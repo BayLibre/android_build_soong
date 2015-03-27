@@ -46,6 +46,30 @@
       "revId": "770738111ac5a173d8be04c012846b2f7e9731cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43d246e8_488beaeb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-03-27T23:06:16Z",
+      "side": 1,
+      "message": "The only thing we\u0027re using it for atm is to keep the clang buildbots building as much of the tree as possible.\n\nThere are some projects that don\u0027t build with clang for only a given architecture, so we disable it there but keep it for the others so that we can keep the coverage.\n\nIn other words, it isn\u0027t critical since the fact that we rely on it at all is actually just a bug in the compiler, but we don\u0027t have all the issues fixed yet.",
+      "parentUuid": "43d246e8_08ec02bc",
+      "range": {
+        "startLine": 16,
+        "startChar": 33,
+        "endLine": 17,
+        "endChar": 9
+      },
+      "revId": "770738111ac5a173d8be04c012846b2f7e9731cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
