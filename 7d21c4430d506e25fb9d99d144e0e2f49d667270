@@ -22,6 +22,30 @@
       "revId": "7d21c4430d506e25fb9d99d144e0e2f49d667270",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63de6a5c_59e7ae55",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-02T23:35:37Z",
+      "side": 1,
+      "message": "Yes:\nprebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.15-4.8/bin/x86_64-linux-ar --help\n...\n  @\u003cfile\u003e      - read options from \u003cfile\u003e\n\nRunning ar repeatedly will work, but this is cleaner and more reliable.  I plan to special case Darwin later, maybe wrapping ar in a script that supports @ files and execs ar.",
+      "parentUuid": "e3bdfae6_92bbbbb1",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 27
+      },
+      "revId": "7d21c4430d506e25fb9d99d144e0e2f49d667270",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
