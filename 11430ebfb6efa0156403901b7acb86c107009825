@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63f74ae2_583209a2",
+        "filename": "common/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-04-03T20:43:58Z",
+      "side": 1,
+      "message": "Is there a mechanism to specify just a module name as dependency (LOCAL_REQUIRED_MODULES), and resole it to installed files only after the dependency module definitions are also loaded?",
+      "range": {
+        "startLine": 384,
+        "startChar": 1,
+        "endLine": 384,
+        "endChar": 6
+      },
+      "revId": "11430ebfb6efa0156403901b7acb86c107009825",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63f74ae2_f8c9b52a",
+        "filename": "common/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-04-03T20:43:58Z",
+      "side": 1,
+      "message": "ToDo: a module should also be able to specify what partition to install.",
+      "range": {
+        "startLine": 390,
+        "startChar": 54,
+        "endLine": 390,
+        "endChar": 63
+      },
+      "revId": "11430ebfb6efa0156403901b7acb86c107009825",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
