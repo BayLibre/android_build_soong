@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e3bdfae6_f04e5dc4",
+        "filename": "Blueprints",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-03T22:57:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3bdfae6_7247f57f",
+      "revId": "be423f95807aff0cfedff266c03e33080b70b9ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3bdfae6_f09d3d6b",
         "filename": "androidmk/cmd/androidmk/android.go",
         "patchSetId": 3
@@ -30,6 +48,30 @@
       "writtenOn": "2015-04-03T22:28:38Z",
       "side": 1,
       "message": "Is there some javac convention for the *opts naming? Otherwise, why break convention?",
+      "range": {
+        "startLine": 44,
+        "startChar": 33,
+        "endLine": 44,
+        "endChar": 42
+      },
+      "revId": "be423f95807aff0cfedff266c03e33080b70b9ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3bdfae6_6bbf00f4",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-03T22:57:47Z",
+      "side": 1,
+      "message": "I followed Bazel convention, but I can use javacflags if you prefer",
+      "parentUuid": "e3bdfae6_f09d3d6b",
       "range": {
         "startLine": 44,
         "startChar": 33,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "63f74ae2_859939fa",
+        "filename": "cmd/soong_jar/soong_jar.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-03T22:57:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3bdfae6_b2d7cdea",
+      "range": {
+        "startLine": 56,
+        "startChar": 90,
+        "endLine": 56,
+        "endChar": 92
+      },
+      "revId": "be423f95807aff0cfedff266c03e33080b70b9ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23c4727c_c9385d9f",
         "filename": "cmd/soong_jar/soong_jar.go",
         "patchSetId": 3
@@ -76,6 +142,24 @@
       "writtenOn": "2015-04-03T22:28:38Z",
       "side": 1,
       "message": "This is soong-jar, not soong-glob.",
+      "revId": "be423f95807aff0cfedff266c03e33080b70b9ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63f74ae2_2513a510",
+        "filename": "cmd/soong_jar/soong_jar.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-03T22:57:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23c4727c_c9385d9f",
       "revId": "be423f95807aff0cfedff266c03e33080b70b9ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "23c4727c_8ffee5e5",
+        "filename": "java/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-03T22:57:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23c4727c_c403a43b",
+      "range": {
+        "startLine": 17,
+        "startChar": 3,
+        "endLine": 17,
+        "endChar": 62
+      },
+      "revId": "be423f95807aff0cfedff266c03e33080b70b9ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3bdfae6_f06f7df3",
         "filename": "java/java.go",
         "patchSetId": 3
@@ -116,6 +224,30 @@
       "writtenOn": "2015-04-03T22:28:38Z",
       "side": 1,
       "message": "Nope.",
+      "range": {
+        "startLine": 17,
+        "startChar": 53,
+        "endLine": 17,
+        "endChar": 58
+      },
+      "revId": "be423f95807aff0cfedff266c03e33080b70b9ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63f74ae2_8582599a",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-03T22:57:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3bdfae6_f06f7df3",
       "range": {
         "startLine": 17,
         "startChar": 53,
