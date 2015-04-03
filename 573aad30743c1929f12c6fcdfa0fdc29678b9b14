@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "63f74ae2_c2672720",
+        "filename": "common/glob.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-04-03T22:01:35Z",
+      "side": 1,
+      "message": "So we\u0027ll still do all the globbings every time you run soong. That would be quite expensive when the tree is big and file system cache is cold. I have been thinking to forbid globbing outright in the build system, though it might not be welcomed by the developers.",
+      "range": {
+        "startLine": 37,
+        "startChar": 52,
+        "endLine": 38,
+        "endChar": 69
+      },
+      "revId": "573aad30743c1929f12c6fcdfa0fdc29678b9b14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63f74ae2_4ff120e2",
         "filename": "glob/glob.go",
         "patchSetId": 1
