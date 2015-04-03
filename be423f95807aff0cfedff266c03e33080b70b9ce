@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3bdfae6_7247f57f",
+        "filename": "Blueprints",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-04-03T22:28:38Z",
+      "side": 1,
+      "message": "Missed a blank line.",
+      "revId": "be423f95807aff0cfedff266c03e33080b70b9ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3bdfae6_f09d3d6b",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-04-03T22:28:38Z",
+      "side": 1,
+      "message": "Is there some javac convention for the *opts naming? Otherwise, why break convention?",
+      "range": {
+        "startLine": 44,
+        "startChar": 33,
+        "endLine": 44,
+        "endChar": 42
+      },
+      "revId": "be423f95807aff0cfedff266c03e33080b70b9ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3bdfae6_b2d7cdea",
+        "filename": "cmd/soong_jar/soong_jar.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-04-03T22:28:38Z",
+      "side": 1,
+      "message": "I don\u0027t see -c anywhere in the file.",
+      "range": {
+        "startLine": 56,
+        "startChar": 90,
+        "endLine": 56,
+        "endChar": 92
+      },
+      "revId": "be423f95807aff0cfedff266c03e33080b70b9ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23c4727c_c9385d9f",
+        "filename": "cmd/soong_jar/soong_jar.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-04-03T22:28:38Z",
+      "side": 1,
+      "message": "This is soong-jar, not soong-glob.",
+      "revId": "be423f95807aff0cfedff266c03e33080b70b9ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23c4727c_c403a43b",
+        "filename": "java/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-04-03T22:28:38Z",
+      "side": 1,
+      "message": "Liar.",
+      "range": {
+        "startLine": 17,
+        "startChar": 3,
+        "endLine": 17,
+        "endChar": 62
+      },
+      "revId": "be423f95807aff0cfedff266c03e33080b70b9ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3bdfae6_f06f7df3",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-04-03T22:28:38Z",
+      "side": 1,
+      "message": "Nope.",
+      "range": {
+        "startLine": 17,
+        "startChar": 53,
+        "endLine": 17,
+        "endChar": 58
+      },
+      "revId": "be423f95807aff0cfedff266c03e33080b70b9ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
