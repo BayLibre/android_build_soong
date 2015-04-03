@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "23c4727c_de101555",
+        "filename": "common/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-03T20:53:35Z",
+      "side": 1,
+      "message": "not yet, but it should be pretty easy to do.  installDeps already tracks dependencies to make them install first, its just a matter of inserting dependencies on modules and making sure a C compile doesn\u0027t get confused when it finds a dependency on a Java module, etc.",
+      "parentUuid": "63f74ae2_583209a2",
+      "range": {
+        "startLine": 384,
+        "startChar": 1,
+        "endLine": 384,
+        "endChar": 6
+      },
+      "revId": "11430ebfb6efa0156403901b7acb86c107009825",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63f74ae2_f8c9b52a",
         "filename": "common/module.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-04-03T20:43:58Z",
       "side": 1,
       "message": "ToDo: a module should also be able to specify what partition to install.",
+      "range": {
+        "startLine": 390,
+        "startChar": 54,
+        "endLine": 390,
+        "endChar": 63
+      },
+      "revId": "11430ebfb6efa0156403901b7acb86c107009825",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3bdfae6_1cb57031",
+        "filename": "common/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-03T20:53:35Z",
+      "side": 1,
+      "message": "The context and the config are available here, so it should be able to compute vendor vs. system automatically.  I haven\u0027t thought much yet about how to deal with /data.",
+      "parentUuid": "63f74ae2_f8c9b52a",
       "range": {
         "startLine": 390,
         "startChar": 54,
