@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "e3bdfae6_8bc01430",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-04-03T23:02:50Z",
+      "side": 1,
+      "message": "No strong preference.",
+      "parentUuid": "e3bdfae6_6bbf00f4",
+      "range": {
+        "startLine": 44,
+        "startChar": 33,
+        "endLine": 44,
+        "endChar": 42
+      },
+      "revId": "be423f95807aff0cfedff266c03e33080b70b9ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3bdfae6_b2d7cdea",
         "filename": "cmd/soong_jar/soong_jar.go",
         "patchSetId": 3
