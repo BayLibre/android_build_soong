@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63f74ae2_4ff120e2",
+        "filename": "glob/glob.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-04-03T21:22:27Z",
+      "side": 1,
+      "message": "Maybe pick a name that doesn\u0027t shadow the outer one.",
+      "range": {
+        "startLine": 68,
+        "startChar": 6,
+        "endLine": 68,
+        "endChar": 11
+      },
+      "revId": "573aad30743c1929f12c6fcdfa0fdc29678b9b14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
