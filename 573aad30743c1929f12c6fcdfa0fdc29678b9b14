@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "63f74ae2_02577fb2",
+        "filename": "common/glob.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-03T22:16:05Z",
+      "side": 1,
+      "message": "Yeah, it will only glob if a file has been added or removed from the directory, and then only regenerate the manifest if the list of globbed files changes",
+      "parentUuid": "23c4727c_043f5c88",
+      "range": {
+        "startLine": 37,
+        "startChar": 52,
+        "endLine": 38,
+        "endChar": 69
+      },
+      "revId": "573aad30743c1929f12c6fcdfa0fdc29678b9b14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63f74ae2_4ff120e2",
         "filename": "glob/glob.go",
         "patchSetId": 1
