@@ -57,6 +57,7 @@ var standardProperties = map[string]struct {
 	"LOCAL_AIDL_INCLUDES":         {"aidl_includes", bpparser.List},
 	"LOCAL_AAPT_FLAGS":            {"aaptflags", bpparser.List},
 	"LOCAL_PACKAGE_SPLITS":        {"package_splits", bpparser.List},
+	"LOCAL_PROGUARD_FLAG_FILES":   {"proguard.flag_files", bpparser.List},
 
 	// Bool properties
 	"LOCAL_IS_HOST_MODULE":          {"host", bpparser.Bool},
@@ -79,6 +80,7 @@ var rewriteProperties = map[string]struct {
 	"LOCAL_C_INCLUDES":            {localIncludeDirs},
 	"LOCAL_EXPORT_C_INCLUDE_DIRS": {exportIncludeDirs},
 	"LOCAL_MODULE_STEM":           {stem},
+	"LOCAL_PROGUARD_ENABLED":      {proguard},
 }
 
 func localAbsPath(value bpparser.Value) (*bpparser.Value, error) {
@@ -264,6 +266,44 @@ func stem(file *bpFile, prefix string, value *mkparser.MakeString, appendVariabl
 	}
 
 	return setVariable(file, appendVariable, prefix, varName, val, true)
+}
+
+func proguard(file *bpFile, prefix string, value *mkparser.MakeString, appendVariable bool) error {
+	val := strings.TrimSpace(value.Value(file.scope))
+	// TODO: handle default value for packages ("full") vs. libraries ("disabled")
+	if val == "disabled" || val == "" {
+		return nil
+	}
+
+	trueValue, err := makeVariableToBlueprint(file, mkparser.SimpleMakeString("true", file.pos), bpparser.Bool)
+	if err != nil {
+		return err
+	}
+
+	err = setVariable(file, appendVariable, prefix, "proguard.enabled", trueValue, true)
+	if err != nil {
+		return err
+	}
+
+	flags := strings.Split(val, " ")
+	for _, flag := range flags {
+		switch flag {
+		case "full":
+			// nothing
+		case "custom":
+			err = setVariable(file, appendVariable, prefix, "proguard.no_aapt", trueValue, true)
+		case "nosystem":
+			err = setVariable(file, appendVariable, prefix, "proguard.no_system", trueValue, true)
+		case "obfuscation":
+			err = setVariable(file, appendVariable, prefix, "proguard.obfuscation", trueValue, true)
+		case "optimization":
+			err = setVariable(file, appendVariable, prefix, "proguard.optimization", trueValue, true)
+		default:
+			return fmt.Errorf("unknown proguard flag %q", flag)
+		}
+	}
+
+	return nil
 }
 
 var deleteProperties = map[string]struct{}{

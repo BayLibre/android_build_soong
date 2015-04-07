@@ -72,6 +72,13 @@ var (
 		},
 		"rulesFile")
 
+	proguard = pctx.StaticRule("proguard",
+		blueprint.RuleParams{
+			Command:     "$proguardCmd -injars $in -outjars $out $proguardFlags",
+			Description: "proguard $out",
+		},
+		"proguardFlags")
+
 	extractPrebuilt = pctx.StaticRule("extractPrebuilt",
 		blueprint.RuleParams{
 			Command: `rm -rf $outDir && unzip -qo $in -d $outDir && ` +
@@ -87,6 +94,7 @@ func init() {
 	pctx.StaticVariable("commonJdkFlags", "-source 1.7 -target 1.7 -Xmaxerrs 9999999")
 	pctx.StaticVariable("javacCmd", "javac -J-Xmx1024M $commonJdkFlags")
 	pctx.StaticVariable("jarCmd", filepath.Join(bootstrap.BinDir, "soong_jar"))
+	pctx.StaticVariable("proguardCmd", "${srcDir}/external/proguard/bin/proguard.sh")
 	pctx.VariableFunc("dxCmd", func(c interface{}) (string, error) {
 		return c.(common.Config).HostBinTool("dx")
 	})
@@ -97,7 +105,6 @@ func init() {
 
 type javaBuilderFlags struct {
 	javacFlags    string
-	dxFlags       string
 	bootClasspath string
 	classpath     string
 	aidlFlags     string
@@ -170,7 +177,7 @@ func TransformClassesToJar(ctx common.AndroidModuleContext, classes []jarSpec,
 }
 
 func TransformClassesJarToDex(ctx common.AndroidModuleContext, classesJar string,
-	flags javaBuilderFlags) jarSpec {
+	dxFlags string) jarSpec {
 
 	outDir := filepath.Join(common.ModuleOutDir(ctx), "dex")
 	outputFile := filepath.Join(common.ModuleOutDir(ctx), "dex.filelist")
@@ -181,7 +188,7 @@ func TransformClassesJarToDex(ctx common.AndroidModuleContext, classesJar string
 		Inputs:    []string{classesJar},
 		Implicits: []string{"$dxCmd"},
 		Args: map[string]string{
-			"dxFlags": flags.dxFlags,
+			"dxFlags": dxFlags,
 			"outDir":  outDir,
 		},
 	})
@@ -227,6 +234,21 @@ func TransformJarJar(ctx common.AndroidModuleContext, classesJar string, rulesFi
 		Implicits: []string{"$jarjarCmd"},
 		Args: map[string]string{
 			"rulesFile": rulesFile,
+		},
+	})
+
+	return outputFile
+}
+
+func TransformProguard(ctx common.AndroidModuleContext, inJar string, proguardFlags string) string {
+	outputFile := filepath.Join(common.ModuleOutDir(ctx), "proguard.classes.jar")
+	ctx.Build(pctx, blueprint.BuildParams{
+		Rule:      proguard,
+		Outputs:   []string{outputFile},
+		Inputs:    []string{inJar},
+		Implicits: []string{"$proguardCmd"},
+		Args: map[string]string{
+			"proguardFlags": proguardFlags,
 		},
 	})
 
