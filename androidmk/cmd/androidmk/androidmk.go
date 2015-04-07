@@ -232,6 +232,8 @@ func handleAssignment(file *bpFile, assignment mkparser.Assignment, c *condition
 		err = setVariable(file, assignment.Value, assignment.Type == "+=", prefix, prop, bpparser.Bool, true)
 	} else if _, ok := deleteProperties[name]; ok {
 		return
+	} else if f, ok := funcProperties[name]; ok {
+		err = f(file, assignment.Value.Value(file.scope), assignment.Type == "+=", prefix)
 	} else {
 		if name == "LOCAL_PATH" {
 			// Nothing to do, except maybe avoid the "./" in paths?

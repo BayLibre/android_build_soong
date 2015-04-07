@@ -1,9 +1,12 @@
 package main
 
 import (
-	"android/soong/androidmk/parser"
 	"fmt"
 	"strings"
+
+	mkparser "android/soong/androidmk/parser"
+
+	bpparser "github.com/google/blueprint/parser"
 )
 
 const (
@@ -55,6 +58,7 @@ var listProperties = map[string]string{
 	"LOCAL_AIDL_INCLUDES":         "aidl_includes",
 	"LOCAL_AAPT_FLAGS":            "aaptflags",
 	"LOCAL_PACKAGE_SPLITS":        "package_splits",
+	"LOCAL_PROGUARD_FLAG_FILES":   "proguard.flag_files",
 }
 
 var boolProperties = map[string]string{
@@ -70,6 +74,10 @@ var boolProperties = map[string]string{
 	"LOCAL_NO_STANDARD_LIBRARIES": "no_standard_libraries",
 
 	"LOCAL_EXPORT_PACKAGE_RESOURCES": "export_package_resources",
+}
+
+var funcProperties = map[string]func(file *bpFile, val string, plusequals bool, prefix string) error{
+	"LOCAL_PROGUARD_ENABLED": proguard,
 }
 
 var deleteProperties = map[string]struct{}{
@@ -151,8 +159,8 @@ var moduleTypes = map[string]string{
 
 var soongModuleTypes = map[string]bool{}
 
-func androidScope() parser.Scope {
-	globalScope := parser.NewScope(nil)
+func androidScope() mkparser.Scope {
+	globalScope := mkparser.NewScope(nil)
 	globalScope.Set("CLEAR_VARS", clear_vars)
 	globalScope.SetFunc("my-dir", mydir)
 	globalScope.SetFunc("all-java-files-under", allJavaFilesUnder)
@@ -164,4 +172,41 @@ func androidScope() parser.Scope {
 	}
 
 	return globalScope
+}
+
+func proguard(file *bpFile, val string, plusequals bool, prefix string) error {
+	val = strings.TrimSpace(val)
+	if val == "disabled" || val == "" {
+		return nil
+	}
+
+	err := setVariable(file, mkparser.SimpleMakeString("true", file.pos), plusequals, prefix,
+		"proguard.enabled", bpparser.Bool, true)
+	if err != nil {
+		return err
+	}
+
+	flags := strings.Split(val, " ")
+	for _, flag := range flags {
+		switch flag {
+		case "full":
+			// nothing
+		case "custom":
+			err = setVariable(file, mkparser.SimpleMakeString("true", file.pos), plusequals, prefix,
+				"proguard.no_aapt", bpparser.Bool, true)
+		case "nosystem":
+			err = setVariable(file, mkparser.SimpleMakeString("true", file.pos), plusequals, prefix,
+				"proguard.no_system", bpparser.Bool, true)
+		case "obfuscation":
+			err = setVariable(file, mkparser.SimpleMakeString("true", file.pos), plusequals, prefix,
+				"proguard.obfuscation", bpparser.Bool, true)
+		case "optimization":
+			err = setVariable(file, mkparser.SimpleMakeString("true", file.pos), plusequals, prefix,
+				"proguard.optimization", bpparser.Bool, true)
+		default:
+			return fmt.Errorf("unknown proguard flag %q", flag)
+		}
+	}
+
+	return nil
 }
