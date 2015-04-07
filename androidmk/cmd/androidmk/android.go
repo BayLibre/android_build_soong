@@ -76,40 +76,39 @@ var deleteProperties = map[string]struct{}{
 	"LOCAL_CPP_EXTENSION": struct{}{},
 }
 
-var propertySuffixes = []struct {
-	suffix string
-	class  string
-}{
-	{"arm", "arch"},
-	{"arm64", "arch"},
-	{"mips", "arch"},
-	{"mips64", "arch"},
-	{"x86", "arch"},
-	{"x86_64", "arch"},
-	{"32", "multilib"},
-	{"64", "multilib"},
+var propertyPrefixes = map[string]string{
+	"arm":    "arch.arm",
+	"arm64":  "arm.arm64",
+	"mips":   "arch.mips",
+	"mips64": "arch.mips64",
+	"x86":    "arch.x86",
+	"x86_64": "arch.x86_64",
+	"32":     "multilib.lib32",
+	"64":     "multilib.lib64",
 }
 
-var propertySuffixTranslations = map[string]string{
-	"32": "lib32",
-	"64": "lib64",
-}
-
-var conditionalTranslations = map[string]struct {
-	class  string
-	suffix string
-}{
-	"($(HOST_OS),darwin)":   {"target", "darwin"},
-	"($(HOST_OS), darwin)":  {"target", "darwin"},
-	"($(HOST_OS),windows)":  {"target", "windows"},
-	"($(HOST_OS), windows)": {"target", "windows"},
-	"($(HOST_OS),linux)":    {"target", "linux"},
-	"($(HOST_OS), linux)":   {"target", "linux"},
-	"($(BUILD_OS),darwin)":  {"target", "darwin"},
-	"($(BUILD_OS), darwin)": {"target", "darwin"},
-	"($(BUILD_OS),linux)":   {"target", "linux"},
-	"($(BUILD_OS), linux)":  {"target", "linux"},
-	"USE_MINGW":             {"target", "windows"},
+var conditionalTranslations = map[string]string{
+	"($(HOST_OS),darwin)":    "target.darwin",
+	"($(HOST_OS), darwin)":   "target.darwin",
+	"!($(HOST_OS),darwin)":   "target.not_darwin",
+	"!($(HOST_OS), darwin)":  "target.not_darwin",
+	"($(HOST_OS),windows)":   "target.windows",
+	"($(HOST_OS), windows)":  "target.windows",
+	"!($(HOST_OS),windows)":  "target.not_windows",
+	"!($(HOST_OS), windows)": "target.not_windows",
+	"($(HOST_OS),linux)":     "target.linux",
+	"($(HOST_OS), linux)":    "target.linux",
+	"!($(HOST_OS),linux)":    "target.not_linux",
+	"!($(HOST_OS), linux)":   "target.not_linux",
+	"($(BUILD_OS),darwin)":   "target.darwin",
+	"($(BUILD_OS), darwin)":  "target.darwin",
+	"!($(BUILD_OS),darwin)":  "target.not_darwin",
+	"!($(BUILD_OS), darwin)": "target.not_darwin",
+	"($(BUILD_OS),linux)":    "target.linux",
+	"($(BUILD_OS), linux)":   "target.linux",
+	"!($(BUILD_OS),linux)":   "target.not_linux",
+	"!($(BUILD_OS), linux)":  "target.not_linux",
+	"USE_MINGW":              "target.windows",
 }
 
 func mydir(args []string) string {
