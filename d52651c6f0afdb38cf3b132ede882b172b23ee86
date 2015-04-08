@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03868e96_467f6627",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-04-08T21:42:53Z",
+      "side": 1,
+      "message": "is set",
+      "range": {
+        "startLine": 9,
+        "startChar": 16,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "d52651c6f0afdb38cf3b132ede882b172b23ee86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03868e96_86624e83",
+        "filename": "config/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-04-08T21:42:53Z",
+      "side": 1,
+      "message": "HostJavaTool",
+      "range": {
+        "startLine": 204,
+        "startChar": 3,
+        "endLine": 204,
+        "endChar": 14
+      },
+      "revId": "d52651c6f0afdb38cf3b132ede882b172b23ee86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
