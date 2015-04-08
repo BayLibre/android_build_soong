@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "237f124e_f5566062",
+        "filename": "cc/gen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-04-08T21:52:52Z",
+      "side": 1,
+      "message": "What about the hpp file?",
+      "revId": "c47576e928c5eefc92a25ce38b6b65efd5d92750",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "237f124e_35ba8821",
+        "filename": "cc/gen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-04-08T21:52:52Z",
+      "side": 1,
+      "message": "Else error?",
+      "revId": "c47576e928c5eefc92a25ce38b6b65efd5d92750",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
