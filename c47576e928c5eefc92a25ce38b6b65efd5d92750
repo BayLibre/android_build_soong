@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "03868e96_e9504db9",
+        "filename": "cc/gen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-04-08T22:02:43Z",
+      "side": 1,
+      "message": "Ah, had skipped right over that line.",
+      "parentUuid": "83c43ed3_8d51a9ee",
+      "revId": "c47576e928c5eefc92a25ce38b6b65efd5d92750",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "237f124e_35ba8821",
         "filename": "cc/gen.go",
         "patchSetId": 1
