@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "237f124e_d0f6caa7",
+        "filename": "root.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-04-08T21:58:25Z",
+      "side": 1,
+      "message": "Wrong CL.",
+      "revId": "938a5d7467fedfb64acee674818d860ada2f3fca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
