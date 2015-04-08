@@ -140,6 +140,30 @@
       "revId": "7f303e0e45e89bec04c2174bd65201d4c35a0bd7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03868e96_7af159e2",
+        "filename": "java/gen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-04-08T23:06:01Z",
+      "side": 1,
+      "message": "Even though it\u0027s cheap to add new module type, there may be big number of such cases. It would be much easier (especially for the developers) to do it in just blueprint file like:\ngenrule {\n  srcs: [...],\n  deps: [...],\n  cmd: [...],\n  \n}\n\nI have the same concern about the above list of directories. People won\u0027t want to dig into the .go files to find where to add a directory.",
+      "parentUuid": "03868e96_8f0d0139",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 4
+      },
+      "revId": "7f303e0e45e89bec04c2174bd65201d4c35a0bd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
