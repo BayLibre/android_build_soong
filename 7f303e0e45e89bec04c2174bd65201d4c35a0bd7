@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03868e96_cfbe29f7",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-04-08T22:41:24Z",
+      "side": 1,
+      "message": "I believe this is just for the SDK framework.aidl files.\nIn the current makefile build system, we just refer to the source file in prebuilts/sdk. Not sure if it\u0027s worth adding a new module type.",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 66
+      },
+      "revId": "7f303e0e45e89bec04c2174bd65201d4c35a0bd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03868e96_54654c44",
+        "filename": "java/gen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-04-08T22:41:24Z",
+      "side": 1,
+      "message": "Shouldn\u0027t they be defined in a .blurprints file?",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 29
+      },
+      "revId": "7f303e0e45e89bec04c2174bd65201d4c35a0bd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "237f124e_566f12f5",
+        "filename": "java/gen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-04-08T22:41:24Z",
+      "side": 1,
+      "message": "Do we support more general genrule yet?\nI think aidl-preocess is run only once in the whole build process. It maybe overkill to have a new module type for this.",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 4
+      },
+      "revId": "7f303e0e45e89bec04c2174bd65201d4c35a0bd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
