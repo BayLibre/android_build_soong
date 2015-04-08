@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "83c43ed3_8d51a9ee",
+        "filename": "cc/gen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-08T21:58:56Z",
+      "side": 1,
+      "message": "For some reason we copy the .hpp file to a .h file and use that everywhere.  The yacc rule above includes the copy.",
+      "parentUuid": "237f124e_f5566062",
+      "revId": "c47576e928c5eefc92a25ce38b6b65efd5d92750",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "237f124e_35ba8821",
         "filename": "cc/gen.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2015-04-08T21:52:52Z",
       "side": 1,
       "message": "Else error?",
+      "revId": "c47576e928c5eefc92a25ce38b6b65efd5d92750",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03868e96_e9d3edd9",
+        "filename": "cc/gen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-08T21:58:56Z",
+      "side": 1,
+      "message": "This gets called with all sources, the default case is to leave the source file alone",
+      "parentUuid": "237f124e_35ba8821",
       "revId": "c47576e928c5eefc92a25ce38b6b65efd5d92750",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
