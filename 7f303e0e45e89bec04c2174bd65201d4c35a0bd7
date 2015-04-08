@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "83c43ed3_13f956c3",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-08T22:52:30Z",
+      "side": 1,
+      "message": "I used the module type to make it easy to use the output of of a aidl_preprocess module or aidl_prebuilt module in javaBase.collectDeps through the aidlDependency interface.",
+      "parentUuid": "03868e96_cfbe29f7",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 66
+      },
+      "revId": "7f303e0e45e89bec04c2174bd65201d4c35a0bd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03868e96_54654c44",
         "filename": "java/gen.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "03868e96_af948545",
+        "filename": "java/gen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-08T22:52:30Z",
+      "side": 1,
+      "message": "Just moving the data into a blueprints file isn\u0027t that different from having it here.  I could create a new aidl exporter module type that lists these directories and gets added as an implicit dependency to aidl compiles, but I\u0027m not sure what that buys us over this.",
+      "parentUuid": "03868e96_54654c44",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 29
+      },
+      "revId": "7f303e0e45e89bec04c2174bd65201d4c35a0bd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "237f124e_566f12f5",
         "filename": "java/gen.go",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2015-04-08T22:41:24Z",
       "side": 1,
       "message": "Do we support more general genrule yet?\nI think aidl-preocess is run only once in the whole build process. It maybe overkill to have a new module type for this.",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 4
+      },
+      "revId": "7f303e0e45e89bec04c2174bd65201d4c35a0bd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03868e96_8f0d0139",
+        "filename": "java/gen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-08T22:52:30Z",
+      "side": 1,
+      "message": "There is a simple gensrcs rule that can take a single input file and produce a single output file that can be used as a C source file, but this one takes multiple inputs and produces something with type safety to be consumed by javaBase.collectDeps, so it isn\u0027t reusable.  A module type is pretty cheap.",
+      "parentUuid": "237f124e_566f12f5",
       "range": {
         "startLine": 65,
         "startChar": 1,
