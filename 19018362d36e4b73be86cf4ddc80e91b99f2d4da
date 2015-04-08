@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83c43ed3_edd3fdd9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-04-08T22:01:56Z",
+      "side": 1,
+      "message": "subtracting",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 18
+      },
+      "revId": "19018362d36e4b73be86cf4ddc80e91b99f2d4da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
