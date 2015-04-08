@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "03868e96_ba94c145",
+        "filename": "java/gen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-08T23:12:03Z",
+      "side": 1,
+      "message": "I suppose I can add an aidl_export_dirs to framework.jar blueprint, and then anybody who links against framework.jar will get the aidl include dirs.  That\u0027s not exactly the same as the current logic, anybody who sets no_default_libraries won\u0027t get the include directories, but that\u0027s probably OK.",
+      "parentUuid": "03868e96_af948545",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 29
+      },
+      "revId": "7f303e0e45e89bec04c2174bd65201d4c35a0bd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "237f124e_566f12f5",
         "filename": "java/gen.go",
         "patchSetId": 2
@@ -155,6 +179,30 @@
       "side": 1,
       "message": "Even though it\u0027s cheap to add new module type, there may be big number of such cases. It would be much easier (especially for the developers) to do it in just blueprint file like:\ngenrule {\n  srcs: [...],\n  deps: [...],\n  cmd: [...],\n  \n}\n\nI have the same concern about the above list of directories. People won\u0027t want to dig into the .go files to find where to add a directory.",
       "parentUuid": "03868e96_8f0d0139",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 4
+      },
+      "revId": "7f303e0e45e89bec04c2174bd65201d4c35a0bd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03868e96_fa9f2934",
+        "filename": "java/gen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-08T23:12:03Z",
+      "side": 1,
+      "message": "The problem with a genrule is knowing what the output is.  A java library will end up with a blueprint dependency on the framework.aidl genrule module, but it needs to know that the result is a preprocessed aidl that should be passed to -p, and not a generated aidl source file that should be passed as an input to aidl, and that is assuming that we guess that it is an aidl file based on the extension.",
+      "parentUuid": "03868e96_7af159e2",
       "range": {
         "startLine": 65,
         "startChar": 1,
