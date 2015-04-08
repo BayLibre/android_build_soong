@@ -67,6 +67,8 @@ func main() {
 	ctx.RegisterModuleType("java_binary", java.JavaBinaryFactory)
 	ctx.RegisterModuleType("java_binary_host", java.JavaBinaryHostFactory)
 	ctx.RegisterModuleType("prebuilt_java_library", java.JavaPrebuiltFactory)
+	ctx.RegisterModuleType("aidl_preprocess", java.AidlPreprocessFactory)
+	ctx.RegisterModuleType("aidl_prebuilt", java.AidlPrebuiltFactory)
 
 	// Mutators
 	ctx.RegisterEarlyMutator("arch", common.ArchMutator)

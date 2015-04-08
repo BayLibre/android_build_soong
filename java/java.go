@@ -85,6 +85,9 @@ type javaBase struct {
 
 		// jarjar_rules: if not blank, run jarjar using the specified rules file
 		Jarjar_rules string
+
+		// aidl_includes: directories to pass to aidl tool
+		Aidl_includes []string
 	}
 
 	// output file suitable for inserting into the classpath of another compile
@@ -153,11 +156,33 @@ func (j *javaBase) AndroidDynamicDependencies(ctx common.AndroidDynamicDependerM
 	deps = append(deps, j.properties.Java_libs...)
 	deps = append(deps, j.properties.Java_static_libs...)
 
+	switch j.properties.Sdk_version {
+	case "system", "system_current":
+		deps = append(deps, "framework_aidl")
+	case "":
+		// Nothing
+	default:
+		deps = append(deps, "sdk_v"+j.properties.Sdk_version+"_aidl")
+	}
+
 	return deps
 }
 
+func (j *javaBase) aidlFlags(ctx common.AndroidModuleContext, aidlPreprocess string) string {
+	var flags []string
+	if aidlPreprocess != "" {
+		flags = append(flags, "-p"+aidlPreprocess)
+	} else {
+		flags = append(flags, "${platformAidlIncludes}")
+	}
+	flags = append(flags, common.JoinWithPrefix(j.properties.Aidl_includes, "-I"))
+	flags = append(flags, "-I"+common.ModuleSrcDir(ctx),
+		"-I"+filepath.Join(common.ModuleSrcDir(ctx), "src"))
+	return strings.Join(flags, " ")
+}
+
 func (j *javaBase) collectDeps(ctx common.AndroidModuleContext) (classpath []string,
-	bootClasspath string, classJarSpecs, resourceJarSpecs []jarSpec) {
+	bootClasspath string, classJarSpecs, resourceJarSpecs []jarSpec, aidl_preprocess string) {
 
 	ctx.VisitDirectDeps(func(module blueprint.Module) {
 		otherName := ctx.OtherModuleName(module)
@@ -173,12 +198,17 @@ func (j *javaBase) collectDeps(ctx common.AndroidModuleContext) (classpath []str
 			} else {
 				panic(fmt.Errorf("unknown dependency %q for %q", otherName, ctx.ModuleName()))
 			}
+		} else if aidlDep, ok := module.(aidlDependency); ok {
+			if aidl_preprocess != "" {
+				ctx.ModuleErrorf("multiple aidl dependencies")
+			}
+			aidl_preprocess = aidlDep.aidlOutputFile()
 		} else {
 			ctx.ModuleErrorf("unknown dependency module type for %q", otherName)
 		}
 	})
 
-	return classpath, bootClasspath, classJarSpecs, resourceJarSpecs
+	return classpath, bootClasspath, classJarSpecs, resourceJarSpecs, aidl_preprocess
 }
 
 func (j *javaBase) GenerateAndroidBuildActions(ctx common.AndroidModuleContext) {
@@ -186,15 +216,15 @@ func (j *javaBase) GenerateAndroidBuildActions(ctx common.AndroidModuleContext) 
 }
 
 func (j *javaBase) GenerateJavaBuildActions(ctx common.AndroidModuleContext) {
+
+	classpath, bootClasspath, classJarSpecs, resourceJarSpecs, aidlPreprocess := j.collectDeps(ctx)
+
 	flags := javaBuilderFlags{
 		javacFlags: strings.Join(j.properties.Javacflags, " "),
+		aidlFlags:  j.aidlFlags(ctx, aidlPreprocess),
 	}
 
 	var javacDeps []string
-
-	srcFiles := common.ExpandSources(ctx, j.properties.Srcs)
-
-	classpath, bootClasspath, classJarSpecs, resourceJarSpecs := j.collectDeps(ctx)
 
 	if bootClasspath != "" {
 		flags.bootClasspath = "-bootclasspath " + bootClasspath
@@ -205,6 +235,10 @@ func (j *javaBase) GenerateJavaBuildActions(ctx common.AndroidModuleContext) {
 		flags.classpath = "-classpath " + strings.Join(classpath, ":")
 		javacDeps = append(javacDeps, classpath...)
 	}
+
+	srcFiles := common.ExpandSources(ctx, j.properties.Srcs)
+
+	srcFiles = genSources(ctx, srcFiles, flags)
 
 	// Compile java sources into .class files
 	classes := TransformJavaToClasses(ctx, srcFiles, flags, javacDeps)
@@ -404,6 +438,77 @@ func JavaPrebuiltFactory() (blueprint.Module, []interface{}) {
 
 	return common.InitAndroidArchModule(module, common.HostAndDeviceSupported,
 		common.MultilibCommon, &module.properties)
+}
+
+//
+// Aidl Prebuilts
+//
+
+type aidlDependency interface {
+	aidlOutputFile() string
+}
+
+type aidlPrebuilt struct {
+	common.AndroidModuleBase
+
+	properties struct {
+		Srcs []string
+	}
+
+	outputFile string
+}
+
+func AidlPrebuiltFactory() (blueprint.Module, []interface{}) {
+	module := &aidlPrebuilt{}
+
+	return common.InitAndroidArchModule(module, common.DeviceSupported, common.MultilibCommon,
+		&module.properties)
+}
+
+func (a *aidlPrebuilt) GenerateAndroidBuildActions(ctx common.AndroidModuleContext) {
+	if len(a.properties.Srcs) != 1 {
+		ctx.ModuleErrorf("expected exactly one aidl in srcs")
+		return
+	}
+
+	a.outputFile = filepath.Join(common.ModuleSrcDir(ctx), a.properties.Srcs[0])
+}
+
+func (a *aidlPrebuilt) aidlOutputFile() string {
+	return a.outputFile
+}
+
+//
+// AIDL Preprocessor
+//
+
+type aidlPreprocess struct {
+	common.AndroidModuleBase
+
+	properties struct {
+		Srcs []string
+	}
+
+	outputFile string
+}
+
+func AidlPreprocessFactory() (blueprint.Module, []interface{}) {
+	module := &aidlPreprocess{}
+
+	return common.InitAndroidArchModule(module, common.DeviceSupported, common.MultilibCommon,
+		&module.properties)
+}
+
+func (a *aidlPreprocess) GenerateAndroidBuildActions(ctx common.AndroidModuleContext) {
+	srcFiles := common.ExpandSources(ctx, a.properties.Srcs)
+
+	a.outputFile = preprocessAidl(ctx, srcFiles)
+
+	ctx.CheckbuildFile(a.outputFile)
+}
+
+func (a *aidlPreprocess) aidlOutputFile() string {
+	return a.outputFile
 }
 
 func inList(s string, l []string) bool {
