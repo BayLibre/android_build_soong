@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3214287_d9afc3de",
+        "filename": "common/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-04-10T23:07:25Z",
+      "side": 1,
+      "message": "Not quoted.",
+      "revId": "2d224fad6ba620362118b5771176d0561610419c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
