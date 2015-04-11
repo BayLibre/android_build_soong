@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3214287_faf1cd66",
+        "filename": "java/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-04-11T01:40:38Z",
+      "side": 1,
+      "message": "If it generates multiple .dex files for a module, how do you track the dependency in the ninja file?\nThe number of the output .dex unknown until dx has finished running.\nThe current build system uses the first output dex file (classes.dex) as dependency, but it will package up any classes*.dex in the same dir to the final apk/jar.",
+      "range": {
+        "startLine": 61,
+        "startChar": 30,
+        "endLine": 61,
+        "endChar": 46
+      },
+      "revId": "f960fe3f3d6c40d1f718b16f9c66243a83891ff5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
