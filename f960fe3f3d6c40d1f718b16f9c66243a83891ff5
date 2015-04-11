@@ -22,6 +22,30 @@
       "revId": "f960fe3f3d6c40d1f718b16f9c66243a83891ff5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0fb5e32_3e71e98b",
+        "filename": "java/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-11T05:05:40Z",
+      "side": 1,
+      "message": "You\u0027re right, I\u0027ll have to use a filelist here too.\n\nI\u0027d like to modify all these tools (dx, aapt, protoc, etc.) to just write all the files they wrote into a filelist directly, and remove the find mess after each tool runs.",
+      "parentUuid": "a3214287_faf1cd66",
+      "range": {
+        "startLine": 61,
+        "startChar": 30,
+        "endLine": 61,
+        "endChar": 46
+      },
+      "revId": "f960fe3f3d6c40d1f718b16f9c66243a83891ff5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
