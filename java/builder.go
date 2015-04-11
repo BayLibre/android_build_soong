@@ -58,7 +58,7 @@ var (
 
 	dx = pctx.StaticRule("dx",
 		blueprint.RuleParams{
-			Command:     "$dxCmd --dex --output=$out $dxFlags $in",
+			Command:     "$dxCmd --dex --output=$outDir $dxFlags $in",
 			Description: "dex $out",
 		},
 		"outDir", "dxFlags")
@@ -175,6 +175,7 @@ func TransformClassesJarToDex(ctx common.AndroidModuleContext, classesJar string
 		Implicits: []string{"$dxCmd"},
 		Args: map[string]string{
 			"dxFlags": flags.dxFlags,
+			"outDir": common.ModuleOutDir(ctx),
 		},
 	})
 
