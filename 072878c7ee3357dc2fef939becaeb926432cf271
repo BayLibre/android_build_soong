@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9033a6f4_7b778b03",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-04-13T19:34:31Z",
+      "side": 1,
+      "message": "The requirement of such statement makes go confusing to me.",
+      "range": {
+        "startLine": 365,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 40
+      },
+      "revId": "072878c7ee3357dc2fef939becaeb926432cf271",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
