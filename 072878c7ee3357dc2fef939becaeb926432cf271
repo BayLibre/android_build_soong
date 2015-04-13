@@ -46,6 +46,30 @@
       "revId": "072878c7ee3357dc2fef939becaeb926432cf271",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9033a6f4_860bfe5c",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-04-13T19:41:28Z",
+      "side": 1,
+      "message": "Yeah, I got that point after I read http://golang.org/doc/effective_go.html#blank_implements .\nBut I was puzzled why you could assign a pointer type to a value type, until I saw logtags() below.\nBtw, the pointer-type-v.s.-value-type of Go is also confusing. I am still trying to get used to everything of Go.",
+      "parentUuid": "b0242aae_59fbb68d",
+      "range": {
+        "startLine": 365,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 40
+      },
+      "revId": "072878c7ee3357dc2fef939becaeb926432cf271",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
