@@ -121,7 +121,6 @@ type JavaDependency interface {
 	ClassJarSpecs() []jarSpec
 	ResourceJarSpecs() []jarSpec
 	AidlIncludeDirs() []string
-	AidlPreprocessed() string
 }
 
 func NewJavaBase(base *javaBase, module JavaModuleType, hod common.HostOrDeviceSupported,
@@ -209,13 +208,15 @@ func (j *javaBase) collectDeps(ctx common.AndroidModuleContext) (classpath []str
 			} else {
 				panic(fmt.Errorf("unknown dependency %q for %q", otherName, ctx.ModuleName()))
 			}
-			aidlIncludeDirs = append(aidlIncludeDirs, j.AidlIncludeDirs()...)
-			if j.AidlPreprocessed() != "" {
-				if aidlPreprocess != "" {
-					ctx.ModuleErrorf("multiple dependencies with preprocessed aidls:\n %q\n %q",
-						aidlPreprocess, j.AidlPreprocessed())
-				} else {
-					aidlPreprocess = j.AidlPreprocessed()
+			aidlIncludeDirs = append(aidlIncludeDirs, javaDep.AidlIncludeDirs()...)
+			if sdkDep, ok := module.(sdkDependency); ok {
+				if sdkDep.AidlPreprocessed() != "" {
+					if aidlPreprocess != "" {
+						ctx.ModuleErrorf("multiple dependencies with preprocessed aidls:\n %q\n %q",
+							aidlPreprocess, sdkDep.AidlPreprocessed())
+					} else {
+						aidlPreprocess = sdkDep.AidlPreprocessed()
+					}
 				}
 			}
 		} else {
@@ -358,10 +359,6 @@ func (j *javaBase) AidlIncludeDirs() []string {
 	return j.exportAidlIncludeDirs
 }
 
-func (j *javaBase) AidlPreprocessed() string {
-	return ""
-}
-
 var _ logtagsProducer = (*javaBase)(nil)
 
 func (j *javaBase) logtags() []string {
@@ -488,6 +485,46 @@ func JavaPrebuiltFactory() (blueprint.Module, []interface{}) {
 
 	return common.InitAndroidArchModule(module, common.HostAndDeviceSupported,
 		common.MultilibCommon, &module.properties)
+}
+
+//
+// SDK java prebuilts (.jar containing resources plus framework.aidl)
+//
+
+type sdkDependency interface {
+	JavaDependency
+	AidlPreprocessed() string
+}
+
+var _ sdkDependency = (*sdkPrebuilt)(nil)
+
+type sdkPrebuilt struct {
+	JavaPrebuilt
+
+	sdkProperties struct {
+		Aidl_preprocessed string
+	}
+
+	aidlPreprocessed string
+}
+
+func (j *sdkPrebuilt) GenerateAndroidBuildActions(ctx common.AndroidModuleContext) {
+	j.JavaPrebuilt.GenerateAndroidBuildActions(ctx)
+
+	if j.sdkProperties.Aidl_preprocessed != "" {
+		j.aidlPreprocessed = filepath.Join(common.ModuleSrcDir(ctx), j.sdkProperties.Aidl_preprocessed)
+	}
+}
+
+func (j *sdkPrebuilt) AidlPreprocessed() string {
+	return j.aidlPreprocessed
+}
+
+func SdkPrebuiltFactory() (blueprint.Module, []interface{}) {
+	module := &sdkPrebuilt{}
+
+	return common.InitAndroidArchModule(module, common.HostAndDeviceSupported,
+		common.MultilibCommon, &module.properties, &module.sdkProperties)
 }
 
 func inList(s string, l []string) bool {
