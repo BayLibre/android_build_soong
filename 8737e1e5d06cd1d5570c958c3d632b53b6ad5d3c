@@ -147,6 +147,30 @@
     },
     {
       "key": {
+        "uuid": "10597645_d4e4f252",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-17T07:16:12Z",
+      "side": 1,
+      "message": "Actually, range is only evaluated once at the beginning of the loop, so I can get rid of numResourceDirs, but I\u0027ll add a comment too",
+      "parentUuid": "10597645_54f922fa",
+      "range": {
+        "startLine": 216,
+        "startChar": 42,
+        "endLine": 216,
+        "endChar": 61
+      },
+      "revId": "8737e1e5d06cd1d5570c958c3d632b53b6ad5d3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10597645_f48936f7",
         "filename": "java/app.go",
         "patchSetId": 3
