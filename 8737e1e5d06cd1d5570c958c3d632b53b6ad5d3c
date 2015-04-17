@@ -82,6 +82,24 @@
     },
     {
       "key": {
+        "uuid": "506daeeb_741be82b",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-17T07:12:11Z",
+      "side": 1,
+      "message": "There is a copy builtin, but it doesn\u0027t do what you want.  This is the idiomatic way of making a new copy of a slice.",
+      "parentUuid": "904c868c_b399a2c6",
+      "revId": "8737e1e5d06cd1d5570c958c3d632b53b6ad5d3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "904c868c_f36a7a18",
         "filename": "java/app.go",
         "patchSetId": 3
@@ -93,6 +111,30 @@
       "writtenOn": "2015-04-17T06:23:45Z",
       "side": 1,
       "message": "Why?",
+      "range": {
+        "startLine": 216,
+        "startChar": 42,
+        "endLine": 216,
+        "endChar": 61
+      },
+      "revId": "8737e1e5d06cd1d5570c958c3d632b53b6ad5d3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10597645_54f922fa",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-17T07:12:11Z",
+      "side": 1,
+      "message": "The loop is appending overlay directories to resourceDirs, but we only want to loop over the original entries.  I\u0027ll make an  originalResourceDirs slice instead, I think it will be clearer",
+      "parentUuid": "904c868c_f36a7a18",
       "range": {
         "startLine": 216,
         "startChar": 42,
