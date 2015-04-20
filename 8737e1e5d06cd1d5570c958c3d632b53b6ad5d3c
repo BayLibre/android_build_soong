@@ -130,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "d06c3e17_60c93b2c",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-04-20T17:52:46Z",
+      "side": 1,
+      "message": "Yes, we do need LOCAL_JAVA_RESOURCE_DIRS in app.\nActually we used to forbid LOCAL_JAVA_RESOURCE_DIRS in app, but then requirement emerged when an app used third-party library (IIRC, it\u0027s an unbundled app), and we found no reason to forbid it.\n(P.S. I found the bug 6892294.)",
+      "parentUuid": "d0435e7f_a157d8e0",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 21
+      },
+      "revId": "8737e1e5d06cd1d5570c958c3d632b53b6ad5d3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b03eeaea_461b882b",
         "filename": "java/app.go",
         "patchSetId": 3
@@ -452,6 +476,30 @@
       "side": 1,
       "message": "Allowing random rules to generate into the same directory causes dependency problems that lead to cleanspecs, because they might leave old files there and we would have no way to know to remove them.  I use a separate directory for every rule, and then pass the filelist to whatever javac command is used to compile it with @filelist.",
       "parentUuid": "f03ce2f3_82d3bcd7",
+      "range": {
+        "startLine": 33,
+        "startChar": 13,
+        "endLine": 33,
+        "endChar": 29
+      },
+      "revId": "8737e1e5d06cd1d5570c958c3d632b53b6ad5d3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "305cba63_53afbc95",
+        "filename": "java/app_builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-04-20T17:52:46Z",
+      "side": 1,
+      "message": "Great",
+      "parentUuid": "b03eeaea_06622086",
       "range": {
         "startLine": 33,
         "startChar": 13,
