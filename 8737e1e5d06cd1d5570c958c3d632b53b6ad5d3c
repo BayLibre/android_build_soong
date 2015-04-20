@@ -178,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "f055c239_e03b9349",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-04-20T18:34:41Z",
+      "side": 1,
+      "message": "It may be reasonable to disallow apk with its own Java resources, in the spirit of replacing them with Android resources.\nBut for static Java libraries, I think both Java resources and Android resources are in active use. To support Android resource for static java library is another story, see http://b/issue?id\u003d5714516.\nI think we need to distinguish these two resources. java_resource_dirs v.s. app_resource_dirs ( android_resource_dirs may be better) sounds good to me.",
+      "parentUuid": "f055c239_ec90afc8",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 21
+      },
+      "revId": "8737e1e5d06cd1d5570c958c3d632b53b6ad5d3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b03eeaea_461b882b",
         "filename": "java/app.go",
         "patchSetId": 3
