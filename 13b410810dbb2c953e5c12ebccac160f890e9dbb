@@ -70,6 +70,30 @@
       "revId": "13b410810dbb2c953e5c12ebccac160f890e9dbb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d01a7eb3_4d18ca76",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-20T23:39:26Z",
+      "side": 1,
+      "message": "For more complicated cases we can do things like art/build/art.go",
+      "parentUuid": "302afabf_fd084f5c",
+      "range": {
+        "startLine": 207,
+        "startChar": 5,
+        "endLine": 210,
+        "endChar": 98
+      },
+      "revId": "13b410810dbb2c953e5c12ebccac160f890e9dbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
