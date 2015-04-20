@@ -46,6 +46,30 @@
       "revId": "13b410810dbb2c953e5c12ebccac160f890e9dbb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "302afabf_fd084f5c",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-04-20T23:15:05Z",
+      "side": 1,
+      "message": "Yes, I can imagine that would make the blueprint module definition much more complicated. But I can see many places where we need to establish file-level dependency between modules. Just search for \"\u003ctarget\u003e : \u003cdep\u003e\" pattern in Android.mks.\nCan we have support for per-module soong extension (or plugin)? i.e. a module provides a snippet of go code that can alter the regular module build process. I mean the go code should be separate from the core soong code. Ideally they should exist in the module\u0027s own project.",
+      "parentUuid": "f02302ea_ad14e9c6",
+      "range": {
+        "startLine": 207,
+        "startChar": 5,
+        "endLine": 210,
+        "endChar": 98
+      },
+      "revId": "13b410810dbb2c953e5c12ebccac160f890e9dbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
