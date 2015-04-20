@@ -154,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "f055c239_ec90afc8",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-20T18:03:40Z",
+      "side": 1,
+      "message": "I think resources in static java libraries should already work, because I start with the jarFile produced by javaBase which already includes resources+classes.dex, then add the aapt resources to it.\n\nAs a non-java developer, JAVA_RESOURCE_DIRS vs. RESOURCE_DIRS is already confusing, and it seems simpler to have resource_dirs property that does what you expect for a java library and for an android app.  If that\u0027s not possible, then maybe java_resource_dirs and app_resource_dirs would be a little clearer, as well as some documentation on what the difference is.",
+      "parentUuid": "d06c3e17_60c93b2c",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 21
+      },
+      "revId": "8737e1e5d06cd1d5570c958c3d632b53b6ad5d3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b03eeaea_461b882b",
         "filename": "java/app.go",
         "patchSetId": 3
