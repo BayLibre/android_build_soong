@@ -48,12 +48,12 @@ var (
 	ld = pctx.StaticRule("ld",
 		blueprint.RuleParams{
 			Command: "$ldCmd ${ldDirFlags} ${crtBegin} @${out}.rsp " +
-				"${libFlags} ${crtEnd} -o ${out} ${ldFlags} ${ldLibs}",
+				"${libFlags} ${crtEnd} -o ${out} ${ldFlags}",
 			Description:    "ld $out",
 			Rspfile:        "${out}.rsp",
 			RspfileContent: "${in}",
 		},
-		"ldCmd", "ldDirFlags", "crtBegin", "libFlags", "crtEnd", "ldFlags", "ldLibs")
+		"ldCmd", "ldDirFlags", "crtBegin", "libFlags", "crtEnd", "ldFlags")
 
 	partialLd = pctx.StaticRule("partialLd",
 		blueprint.RuleParams{
@@ -97,7 +97,6 @@ type builderFlags struct {
 	conlyFlags  string
 	cppFlags    string
 	ldFlags     string
-	ldLibs      string
 	incFlags    string
 	yaccFlags   string
 	nocrt       bool
@@ -275,7 +274,6 @@ func TransformObjToDynamicBinary(ctx common.AndroidModuleContext,
 			"libFlags":   strings.Join(libFlagsList, " "),
 			"ldFlags":    flags.ldFlags,
 			"crtEnd":     crtEnd,
-			"ldLibs":     flags.ldLibs,
 		},
 	})
 }
