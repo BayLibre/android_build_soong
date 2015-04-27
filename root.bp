@@ -1,4 +1,27 @@
+<<<<<<< HEAD   (5a2a48 Merge "Refactor mixed build allowlist handling")
 // Soong finds all Android.bp and Blueprints files in the source tree,
 // subdirs= and optional_subdirs= are obsolete and this file no longer
 // needs a list of the top level directories that may contain Android.bp
 // files.
+=======
+subdirs = [
+    "art",
+    "build/blueprint",
+    "build/soong",
+    "bionic",
+    "dalvik",
+    "external/*",
+    "frameworks/base",
+    "frameworks/native/libs/*",
+    "hardware/*",
+    "libcore",
+    "libnativehelper",
+    "prebuilts/ndk",
+    "prebuilts/sdk",
+    "system/core/*",
+    "packages/apps/HTMLViewer",
+    "build/tools/*",
+    "system/security/*",
+    "system/keymaster",
+]
+>>>>>>> CHANGE (1fc2e8 Add system/security and system/keymaster to root Blueprints)
