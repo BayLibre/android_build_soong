@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0f222e5_db4029f7",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-04-28T22:24:44Z",
+      "side": 1,
+      "message": "These will need to be in the user\u0027s path anyway. This works until we grow our own envsetup.sh though.",
+      "revId": "274266ce9c755887bc41dd37c952952dd00290d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0f222e5_9bebc124",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-04-28T22:24:44Z",
+      "side": 1,
+      "message": "Check these args. Not all of them are the same between genrule and gensrcs.",
+      "revId": "274266ce9c755887bc41dd37c952952dd00290d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0f222e5_dba4a92e",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2015-04-28T22:24:44Z",
+      "side": 1,
+      "message": "p",
+      "range": {
+        "startLine": 153,
+        "startChar": 24,
+        "endLine": 153,
+        "endChar": 40
+      },
+      "revId": "274266ce9c755887bc41dd37c952952dd00290d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
