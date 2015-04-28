@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0d42a38_455d6e7a",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 985,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-28T21:52:28Z",
+      "side": 1,
+      "message": "whoops, this isn\u0027t part of this patch, but will be needed later for fixing ndk crtbegin/end",
+      "range": {
+        "startLine": 985,
+        "startChar": 18,
+        "endLine": 985,
+        "endChar": 51
+      },
+      "revId": "13b7fb51a8fcf09ddcc7f769b21423f0a361af08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
