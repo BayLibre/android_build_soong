@@ -605,8 +605,8 @@ func (c *CCBase) depsToPathsFromList(ctx common.AndroidModuleContext,
 
 				if outputFile := a.outputFile(); outputFile != "" {
 					if found {
-						ctx.ModuleErrorf("multiple modules satisified dependency on %q", otherName)
-						return
+						//ctx.ModuleErrorf("multiple modules satisified dependency on %q", otherName)
+						//return
 					}
 					outputFiles = append(outputFiles, outputFile)
 					modules = append(modules, a)
@@ -818,14 +818,26 @@ func (c *CCLinked) depNames(ctx common.AndroidBaseContext, depNames CCDeps) CCDe
 	}
 
 	switch stl {
-	case "libc++":
-		depNames.SharedLibs = append(depNames.SharedLibs, stl)
 	case "libstdc++":
 		if ctx.Device() {
 			depNames.SharedLibs = append(depNames.SharedLibs, stl)
 		}
-	case "libc++_static":
-		depNames.StaticLibs = append(depNames.StaticLibs, stl)
+	case "libc++", "libc++_static":
+		if stl == "libc++" {
+			depNames.SharedLibs = append(depNames.SharedLibs, stl)
+		} else {
+			depNames.StaticLibs = append(depNames.StaticLibs, stl)
+		}
+		if ctx.Device() {
+			if ctx.Arch().ArchType == common.Arm {
+				depNames.StaticLibs = append(depNames.StaticLibs, "libunwind_llvm")
+			}
+			if c.staticBinary() {
+				depNames.StaticLibs = append(depNames.StaticLibs, "libdl")
+			} else {
+				depNames.SharedLibs = append(depNames.SharedLibs, "libdl")
+			}
+		}
 	case "stlport":
 		depNames.SharedLibs = append(depNames.SharedLibs, "libstdc++", "libstlport")
 	case "stlport_static":
@@ -845,10 +857,11 @@ func (c *CCLinked) depNames(ctx common.AndroidBaseContext, depNames CCDeps) CCDe
 		panic(fmt.Errorf("Unknown stl in CCLinked.depNames: %q", stl))
 	}
 
+	if ctx.ModuleName() != "libcompiler_rt-extras" {
+		depNames.StaticLibs = append(depNames.StaticLibs, "libcompiler_rt-extras")
+	}
+
 	if ctx.Device() {
-		if ctx.ModuleName() != "libcompiler_rt-extras" {
-			depNames.StaticLibs = append(depNames.StaticLibs, "libcompiler_rt-extras")
-		}
 		// libgcc and libatomic have to be last on the command line
 		depNames.LateStaticLibs = append(depNames.LateStaticLibs, "libgcov", "libatomic", "libgcc")
 
@@ -1259,6 +1272,9 @@ func (c *CCBinary) depNames(ctx common.AndroidBaseContext, depNames CCDeps) CCDe
 		}
 
 		if c.BinaryProperties.Static_executable {
+			if c.stl(ctx) == "libc++_static" {
+				depNames.StaticLibs = append(depNames.StaticLibs, "libm", "libc", "libdl")
+			}
 			// static libraries libcompiler_rt, libc and libc_nomalloc need to be linked with
 			// --start-group/--end-group along with libgcc.  If they are in deps.StaticLibs,
 			// move them to the beginning of deps.LateStaticLibs
