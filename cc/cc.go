@@ -1187,6 +1187,7 @@ func (c *ccObject) outputFile() string {
 type CCBinary struct {
 	CCLinked
 	out              string
+	installFile      string
 	BinaryProperties struct {
 		// static_executable: compile executable with -static
 		Static_executable bool
@@ -1325,7 +1326,11 @@ func (c *CCBinary) compileModule(ctx common.AndroidModuleContext,
 }
 
 func (c *CCBinary) installModule(ctx common.AndroidModuleContext, flags CCFlags) {
-	ctx.InstallFile(filepath.Join("bin", c.Properties.Relative_install_path), c.out)
+	c.installFile = ctx.InstallFile(filepath.Join("bin", c.Properties.Relative_install_path), c.out)
+}
+
+func (c *CCBinary) HostToolPath() string {
+	return c.installFile
 }
 
 type CCTest struct {
