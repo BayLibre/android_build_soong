@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d0d99e70_9b44db7c",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-04-29T01:24:50Z",
+      "side": 1,
+      "message": "Do we really want to expand $PATH when soong is run? Does that mean if $PATH changes the build.ninja will be automatically updated?\nMaybe we want to defer the expansion to when ninja is run, by changing it to \"$$PATH\".",
+      "range": {
+        "startLine": 34,
+        "startChar": 9,
+        "endLine": 34,
+        "endChar": 31
+      },
+      "revId": "274266ce9c755887bc41dd37c952952dd00290d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0f222e5_db4029f7",
         "filename": "genrule/genrule.go",
         "patchSetId": 2
@@ -13,6 +36,24 @@
       "writtenOn": "2015-04-28T22:24:44Z",
       "side": 1,
       "message": "These will need to be in the user\u0027s path anyway. This works until we grow our own envsetup.sh though.",
+      "revId": "274266ce9c755887bc41dd37c952952dd00290d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0d42a38_a91d0491",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-04-29T01:24:50Z",
+      "side": 1,
+      "message": "We added HostBin to $PATH.\nPerhaps we don\u0027t need to add $PATH in init(), just use \"PATH\u003d$$PATH:$path\" here.",
+      "parentUuid": "f0f222e5_db4029f7",
       "revId": "274266ce9c755887bc41dd37c952952dd00290d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
