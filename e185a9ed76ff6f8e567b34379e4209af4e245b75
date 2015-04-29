@@ -45,6 +45,30 @@
       "revId": "e185a9ed76ff6f8e567b34379e4209af4e245b75",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70f8f2fa_c4a4340a",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1333,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-29T22:03:03Z",
+      "side": 1,
+      "message": "Fixed to return \"\" if it is not a host module.\n\nI don\u0027t have a good solution yet for combined modules - I can\u0027t just add a dependency on the \"host\" variant, because it might be a 32-bit variant or a 64-bit variant or a common variant.  For now, this has to be a cc_binary_host.",
+      "parentUuid": "f0f222e5_8d16e6f9",
+      "range": {
+        "startLine": 1333,
+        "startChar": 1,
+        "endLine": 1333,
+        "endChar": 21
+      },
+      "revId": "e185a9ed76ff6f8e567b34379e4209af4e245b75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
