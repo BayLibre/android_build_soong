@@ -262,6 +262,23 @@
       "revId": "b8abbd876f0be016037bc9f7d6169b19c17a10bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70f8f2fa_752348a2",
+        "filename": "androidbp/cmd/soong.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-29T23:26:07Z",
+      "side": 1,
+      "message": "I suggest changing these to map[string]struct{string, bpparser.ValueType}, and putting them all in one list.  Maybe androidmk should do the same.",
+      "revId": "b8abbd876f0be016037bc9f7d6169b19c17a10bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
