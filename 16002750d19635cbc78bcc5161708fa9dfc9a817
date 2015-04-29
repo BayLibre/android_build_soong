@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0f222e5_99bd0447",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 990,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-29T17:23:22Z",
+      "side": 1,
+      "message": "Remove",
+      "revId": "16002750d19635cbc78bcc5161708fa9dfc9a817",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
