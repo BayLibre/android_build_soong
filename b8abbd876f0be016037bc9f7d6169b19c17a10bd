@@ -1,0 +1,267 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70f8f2fa_aa71ef5e",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-29T23:25:02Z",
+      "side": 1,
+      "message": "Make this anonymous (just *bufio.Writer), and then you can use w.WriteString everywhere",
+      "revId": "b8abbd876f0be016037bc9f7d6169b19c17a10bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "300cbaed_b31cd86a",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-29T23:25:02Z",
+      "side": 1,
+      "message": "Either fmt.Fprintf(w, \"fmt\", args), or define:\n\nfunc (w *androidMkWriter) WriteStringf(fmt string, args ...interface{}) {\n    fmt.Fprintf(w, fmt, args...)\n}",
+      "range": {
+        "startLine": 25,
+        "startChar": 2,
+        "endLine": 25,
+        "endChar": 35
+      },
+      "revId": "b8abbd876f0be016037bc9f7d6169b19c17a10bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "300cbaed_68c08b99",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-29T23:25:02Z",
+      "side": 1,
+      "message": "If comments become a problem I would just strip them - the results of this translator does not need to be particularly human-readable.  As long as they work easily you might as well leave them in though.",
+      "revId": "b8abbd876f0be016037bc9f7d6169b19c17a10bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70f8f2fa_2a395f52",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-29T23:25:02Z",
+      "side": 1,
+      "message": "standardProps \u003d append(standardProps, fmt.Sprintf...)\n\nYou\u0027ll also need to leave standardProps uninitialized, or make it a zero-length but preset capacity slice with make([]string, 0, len(module.Properties))",
+      "range": {
+        "startLine": 50,
+        "startChar": 6,
+        "endLine": 50,
+        "endChar": 19
+      },
+      "revId": "b8abbd876f0be016037bc9f7d6169b19c17a10bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "300cbaed_333f2888",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-29T23:25:02Z",
+      "side": 1,
+      "message": "You do this whole switch + convert to string twice, extract converting a blueprint value to a string into a separate function.",
+      "revId": "b8abbd876f0be016037bc9f7d6169b19c17a10bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70f8f2fa_6acec7df",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-29T23:25:02Z",
+      "side": 1,
+      "message": "You can extract this outside the switch statement.  You\u0027ll lose the type-checking, but I think that is OK - this translator should only be running on valid Blueprints files.",
+      "range": {
+        "startLine": 53,
+        "startChar": 6,
+        "endLine": 54,
+        "endChar": 64
+      },
+      "revId": "b8abbd876f0be016037bc9f7d6169b19c17a10bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "300cbaed_73eb60f3",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-29T23:25:02Z",
+      "side": 1,
+      "message": "You\u0027ll need to support +\u003d here, look at assignment.Assigner to see if you need \":\u003d\" or \"+\u003d\"",
+      "revId": "b8abbd876f0be016037bc9f7d6169b19c17a10bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "300cbaed_5371fcd8",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-29T23:25:02Z",
+      "side": 1,
+      "message": "use OrigValue, Value will be the final value after later +\u003d assignments.",
+      "range": {
+        "startLine": 106,
+        "startChar": 19,
+        "endLine": 106,
+        "endChar": 24
+      },
+      "revId": "b8abbd876f0be016037bc9f7d6169b19c17a10bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70f8f2fa_8afeb32f",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-29T23:25:02Z",
+      "side": 1,
+      "message": "Go uses backticks for raw strings, and then you don\u0027t need to escape quotes: `\"%t\"`",
+      "range": {
+        "startLine": 108,
+        "startChar": 35,
+        "endLine": 108,
+        "endChar": 43
+      },
+      "revId": "b8abbd876f0be016037bc9f7d6169b19c17a10bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "300cbaed_5358dc5a",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-29T23:25:02Z",
+      "side": 1,
+      "message": "Might as well use `\"%s\"` here for consistency, but for future reference you can also use %q to produce a quoted string",
+      "range": {
+        "startLine": 110,
+        "startChar": 35,
+        "endLine": 110,
+        "endChar": 43
+      },
+      "revId": "b8abbd876f0be016037bc9f7d6169b19c17a10bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "300cbaed_d3d22c86",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-29T23:25:02Z",
+      "side": 1,
+      "message": "this is fine, but a more go-ish way to handle this would be with a channel:\n\nfunc iter() \u003c-chan interface{} {\n    ch :\u003d make(chan interface{})\n    go func() {\n        \u003cloop through the comments and defs, sending each through the channel\u003e\n        ch \u003c- commentOrDef\n    }()\n    return ch\n}\n\nIn write, use for block :\u003d range iter()",
+      "revId": "b8abbd876f0be016037bc9f7d6169b19c17a10bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70f8f2fa_95eed401",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-29T23:25:02Z",
+      "side": 1,
+      "message": "Blueprint currently only allows lists to contain strings.\n\nI suggest just looping through list building up a slice of strings, and then strings.Join(strList, `\\`)",
+      "revId": "b8abbd876f0be016037bc9f7d6169b19c17a10bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90fd66eb_30555021",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-04-29T23:25:02Z",
+      "side": 1,
+      "message": "You might want Parse instead of ParseAndEval?",
+      "range": {
+        "startLine": 222,
+        "startChar": 24,
+        "endLine": 222,
+        "endChar": 36
+      },
+      "revId": "b8abbd876f0be016037bc9f7d6169b19c17a10bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
