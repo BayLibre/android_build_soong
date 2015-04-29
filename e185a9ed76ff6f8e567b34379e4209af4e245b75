@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0f222e5_6d1bc22c",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1329,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-04-29T01:24:58Z",
+      "side": 1,
+      "message": "This can also be a target/device module.",
+      "range": {
+        "startLine": 1329,
+        "startChar": 1,
+        "endLine": 1329,
+        "endChar": 17
+      },
+      "revId": "e185a9ed76ff6f8e567b34379e4209af4e245b75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0f222e5_8d16e6f9",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1333,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-04-29T01:24:58Z",
+      "side": 1,
+      "message": "Perhaps check if current is host module.\nWhat will happen if it\u0027s a combined module with both target and host?",
+      "range": {
+        "startLine": 1333,
+        "startChar": 1,
+        "endLine": 1333,
+        "endChar": 21
+      },
+      "revId": "e185a9ed76ff6f8e567b34379e4209af4e245b75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
