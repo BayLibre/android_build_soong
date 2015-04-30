@@ -46,6 +46,30 @@
       "revId": "3d7678f9d6e69f07f5d09c3d4ec00f4213a65691",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "70f8f2fa_9668906a",
+        "filename": "java/resources.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-04-30T21:55:29Z",
+      "side": 1,
+      "message": "Oh, I looked at the old glob.GlobWithDepFile() you just replaced in the other change.",
+      "parentUuid": "90fd66eb_bc613611",
+      "range": {
+        "startLine": 50,
+        "startChar": 10,
+        "endLine": 50,
+        "endChar": 44
+      },
+      "revId": "3d7678f9d6e69f07f5d09c3d4ec00f4213a65691",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
