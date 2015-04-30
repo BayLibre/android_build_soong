@@ -72,6 +72,19 @@ func (w *androidMkWriter) handleModule(module *bpparser.Module) {
 				standardProps = append(standardProps, fmt.Sprintf("%s := %s", mkProp.string,
 					w.valueToString(prop.Value)))
 			}
+
+            if suffixMap, ok := suffixProperties[prop.Name.Name]; ok {
+                for _, suffixProp := range prop.Value.MapValue {
+                    if suffix, ok := suffixMap[suffixProp.Name.Name]; ok {
+                        for _, stdProp := range suffixProp.Value.MapValue {
+                            if mkProp, ok := standardProperties[stdProp.Name.Name]; ok {
+                                standardProps = append(standardProps, fmt.Sprintf("%s_%s := %s", mkProp.string, suffix,
+                                    w.valueToString(stdProp.Value)))
+                            }
+                        }
+                    }
+                }
+            }
 		}
 
 		mkModule := strings.Join(standardProps, "\n")
