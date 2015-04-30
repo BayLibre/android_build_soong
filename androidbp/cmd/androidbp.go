@@ -57,27 +57,90 @@ func (w *androidMkWriter) errorf(format string, values ...interface{}) {
 func (w *androidMkWriter) handleComment(comment *bpparser.Comment) {
 	for _, c := range comment.Comment {
 		mkComment := strings.Replace(c, "//", "#", 1)
-		// TODO: handle /* comments?
+		if !strings.Contains(mkComment, "#") {
+			mkComment = strings.Replace(mkComment, "/*", "", 1)
+			mkComment = strings.Replace(mkComment, "*", "", 1)
+			mkComment = strings.Replace(mkComment, "*/", "", 1)
+			mkComment = "#" + mkComment
+		}
 		fmt.Fprintf(w, "%s\n", mkComment)
 	}
 }
 
 func (w *androidMkWriter) handleModule(module *bpparser.Module) {
-	if moduleName, ok := moduleTypes[module.Type.Name]; ok {
+	if moduleRule, ok := moduleTypeToRule[module.Type.Name]; ok {
+		hostSupported := false
 		w.WriteString("include $(CLEAR_VARS)\n")
 		standardProps := make([]string, 0, len(module.Properties))
-		//condProps := make([]string, len(module.Properties))
+		disabledTargets := make(map[string]bool)
 		for _, prop := range module.Properties {
 			if mkProp, ok := standardProperties[prop.Name.Name]; ok {
-				standardProps = append(standardProps, fmt.Sprintf("%s := %s", mkProp.string,
-					w.valueToString(prop.Value)))
+				standardProps = append(standardProps, fmt.Sprintf("%s := %s",
+					mkProp.string, w.valueToString(prop.Value)))
+			} else if suffixMap, ok := suffixProperties[prop.Name.Name]; ok {
+				for _, suffixProp := range prop.Value.MapValue {
+					if suffix, ok := suffixMap[suffixProp.Name.Name]; ok {
+						for _, stdProp := range suffixProp.Value.MapValue {
+							if mkProp, ok :=
+								standardProperties[stdProp.Name.Name]; ok {
+								standardProps = append(standardProps,
+									fmt.Sprintf("%s_%s := %s", mkProp.string, suffix,
+										w.valueToString(stdProp.Value)))
+							}
+						}
+					}
+				}
+			} else if "target" == prop.Name.Name {
+				for _, target := range prop.Value.MapValue {
+					if conditional, ok := targetScopedPropertyConditionals[target.Name.Name]; ok {
+						var scopedProps []string
+						for _, targetScopedProp := range target.Value.MapValue {
+							if mkProp, ok := standardProperties[targetScopedProp.Name.Name]; ok {
+								scopedProps = append(scopedProps, fmt.Sprintf("%s += %s",
+									mkProp.string, w.valueToString(targetScopedProp.Value)))
+							} else if "disabled" == targetScopedProp.Name.Name {
+								if targetScopedProp.Value.BoolValue {
+									disabledTargets[target.Name.Name] = true
+								} else {
+									delete(disabledTargets, target.Name.Name)
+								}
+							}
+						}
+
+						if len(scopedProps) > 0 {
+							standardProps = append(standardProps, conditional)
+							standardProps = append(standardProps, scopedProps...)
+							standardProps = append(standardProps, "endif")
+						}
+					}
+				}
+			} else if "host_supported" == prop.Name.Name {
+				hostSupported = prop.Value.BoolValue
 			}
 		}
 
+		// write out target build
 		mkModule := strings.Join(standardProps, "\n")
-		w.WriteString(mkModule)
+		fmt.Fprintf(w, "%s\n", mkModule)
+		fmt.Fprintf(w, "include $(%s)\n\n", moduleRule)
 
-		fmt.Fprintf(w, "include $(%s)\n\n", moduleName)
+		if hostSupported {
+			conditionals := make([]string, 0, len(disabledTargets))
+			for disabledTarget, _ := range disabledTargets {
+				if conditional, ok := disabledTargetConditionals[disabledTarget]; ok {
+					conditionals = append(conditionals, conditional)
+				}
+			}
+
+			fmt.Fprintf(w, "%s\n", strings.Join(conditionals, "\n"))
+			fmt.Fprintf(w, "include $(CLEAR_VARS)\n")
+			fmt.Fprintf(w, "%s\n", mkModule)
+			fmt.Fprintf(w, "include $(%s)\n\n", targetToHostModuleRule[moduleRule])
+
+			for _, _ = range conditionals {
+				fmt.Fprintf(w, "endif\n")
+			}
+		}
 	} else {
 		w.errorf("Unsupported module %s", module.Type.Name)
 	}
@@ -134,7 +197,7 @@ func (w *androidMkWriter) iter() <-chan interface{} {
 }
 
 func (w *androidMkWriter) write() {
-	outFilePath := fmt.Sprintf("%s/Android.mk.out", w.path)
+	outFilePath := fmt.Sprintf("%s/Androidbp.mk", w.path)
 	fmt.Printf("Writing %s\n", outFilePath)
 
 	f, err := os.Create(outFilePath)
