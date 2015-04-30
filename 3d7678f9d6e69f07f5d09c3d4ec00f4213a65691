@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70f8f2fa_09a58828",
+        "filename": "java/resources.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-04-30T19:14:54Z",
+      "side": 1,
+      "message": "Isn\u0027t it that common.Glob() returns only files?\nWhat do we expect it to return here? how do you handle files in just resourceDir?",
+      "range": {
+        "startLine": 50,
+        "startChar": 10,
+        "endLine": 50,
+        "endChar": 44
+      },
+      "revId": "3d7678f9d6e69f07f5d09c3d4ec00f4213a65691",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
