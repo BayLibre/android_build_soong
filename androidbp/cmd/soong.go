@@ -19,6 +19,7 @@ var standardProperties = map[string]struct {
 	"manifest":     {"LOCAL_JAR_MANIFEST", bpparser.String},
 	"jarjar_rules": {"LOCAL_JARJAR_RULES", bpparser.String},
 	"certificate":  {"LOCAL_CERTIFICATE", bpparser.String},
+	"suffix":       {"LOCAL_MODULE_SUFFIX", bpparser.String},
 	//"name":             "LOCAL_PACKAGE_NAME", TODO
 
 	// ==== LIST PROPERTIES ====
@@ -77,4 +78,10 @@ var moduleTypes = map[string]string{
 	"java_library_host_dalvik": "BUILD_HOST_DALVIK_JAVA_LIBRARY",
 	"android_app":              "BUILD_PACKAGE",
 	"prebuilt":                 "BUILD_PREBUILT",
+}
+
+var suffixProperties = map[string]map[string]string{
+	"multilib": {"lib32": "32", "lib64": "64"},
+	"arch": {"arm": "arm", "arm64": "arm64", "mips": "mips", "mips64": "mips64",
+		"x86": "x86", "x86_64": "x86_64"},
 }
