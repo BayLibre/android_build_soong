@@ -15,6 +15,8 @@ type androidMkWriter struct {
 
 	file *bpparser.File
 	path string
+
+	mapScope map[string][]*bpparser.Property
 }
 
 func (w *androidMkWriter) valueToString(value bpparser.Value) string {
@@ -29,67 +31,181 @@ func (w *androidMkWriter) valueToString(value bpparser.Value) string {
 		case bpparser.List:
 			return fmt.Sprintf("\\\n%s\n", w.listToMkString(value.ListValue))
 		case bpparser.Map:
-			w.errorf("maps not supported in assignment")
-			return "ERROR: unsupported type map in assignment"
+			return fmt.Sprintf("ERROR can't convert map to string")
+		default:
+			return fmt.Sprintf("ERROR: unsupported type %d", value.Type)
 		}
 	}
-
-	return ""
 }
 
 func (w *androidMkWriter) listToMkString(list []bpparser.Value) string {
 	lines := make([]string, 0, len(list))
 	for _, tok := range list {
-		lines = append(lines, fmt.Sprintf("\t\"%s\"", tok.StringValue))
+		if tok.Type == bpparser.String {
+			lines = append(lines, fmt.Sprintf("\t\"%s\"", tok.StringValue))
+		} else {
+			lines = append(lines, fmt.Sprintf("# ERROR: unsupported type %s in list",
+				tok.Type.String()))
+		}
 	}
 
 	return strings.Join(lines, " \\\n")
 }
 
-func (w *androidMkWriter) errorf(format string, values ...interface{}) {
-	s := fmt.Sprintf(format, values)
-	w.WriteString("# ANDROIDBP ERROR:\n")
-	for _, line := range strings.Split(s, "\n") {
-		fmt.Fprintf(w, "# %s\n", line)
-	}
-}
-
 func (w *androidMkWriter) handleComment(comment *bpparser.Comment) {
 	for _, c := range comment.Comment {
-		mkComment := strings.Replace(c, "//", "#", 1)
-		// TODO: handle /* comments?
-		fmt.Fprintf(w, "%s\n", mkComment)
+		fmt.Fprintf(w, "#%s\n", c)
 	}
 }
 
-func (w *androidMkWriter) handleModule(module *bpparser.Module) {
-	if moduleName, ok := moduleTypes[module.Type.Name]; ok {
-		w.WriteString("include $(CLEAR_VARS)\n")
-		standardProps := make([]string, 0, len(module.Properties))
-		//condProps := make([]string, len(module.Properties))
-		for _, prop := range module.Properties {
-			if mkProp, ok := standardProperties[prop.Name.Name]; ok {
-				standardProps = append(standardProps, fmt.Sprintf("%s := %s", mkProp.string,
-					w.valueToString(prop.Value)))
+func (w *androidMkWriter) writeModule(moduleRule string, props []string,
+	disabledBuilds map[string]bool, isHostRule bool) {
+	disabledCount := 0
+	for build, _ := range disabledBuilds {
+		if isHostRule {
+			if conditional, ok := disabledHostConditionals[build]; ok {
+				fmt.Fprintf(w, "%s\n", conditional)
+				disabledCount++
+			}
+		} else {
+			if conditional, ok := disabledTargetConditionals[build]; ok {
+				fmt.Fprintf(w, "%s\n", conditional)
+				disabledCount++
+			}
+		}
+	}
+
+	fmt.Fprintf(w, "include $(CLEAR_VARS)\n")
+	fmt.Fprintf(w, "%s\n", strings.Join(props, "\n"))
+	fmt.Fprintf(w, "include $(%s)\n\n", moduleRule)
+
+	for i := 0; i < disabledCount; i++ {
+		fmt.Fprintf(w, "endif\n")
+	}
+}
+
+func (w *androidMkWriter) handleTargetConditionals(props []*bpparser.Property,
+	disabledBuilds *map[string]bool, isHostRule bool) (computedProps []string) {
+	for _, target := range props {
+		conditional := ""
+		var ok bool
+		if isHostRule {
+			if conditional, ok = hostScopedPropertyConditionals[target.Name.Name]; !ok {
+				// not found
+				conditional = fmt.Sprintf(
+					"ifeq(true, true) # ERROR: unsupported conditional host [%s]",
+					target.Name.Name)
+			}
+		} else {
+			if conditional, ok = targetScopedPropertyConditionals[target.Name.Name]; !ok {
+				conditional = fmt.Sprintf(
+					"ifeq(true, true) # ERROR: unsupported conditional target [%s]",
+					target.Name.Name)
 			}
 		}
 
-		mkModule := strings.Join(standardProps, "\n")
-		w.WriteString(mkModule)
+		var scopedProps []string
+		for _, targetScopedProp := range target.Value.MapValue {
+			if mkProp, ok := standardProperties[targetScopedProp.Name.Name]; ok {
+				scopedProps = append(scopedProps, fmt.Sprintf("%s += %s",
+					mkProp.string, w.valueToString(targetScopedProp.Value)))
+			} else if "disabled" == targetScopedProp.Name.Name {
+				if targetScopedProp.Value.BoolValue {
+					(*disabledBuilds)[target.Name.Name] = true
+				} else {
+					delete(*disabledBuilds, target.Name.Name)
+				}
+			}
+		}
 
-		fmt.Fprintf(w, "include $(%s)\n\n", moduleName)
+		if len(scopedProps) > 0 {
+			computedProps = append(computedProps, conditional)
+			computedProps = append(computedProps, scopedProps...)
+			computedProps = append(computedProps, "endif")
+		}
+	}
+
+	return
+}
+
+func (w *androidMkWriter) handleSuffixProperties(parent bpparser.Value,
+	suffixMap map[string]string) (computedProps []string) {
+
+	var suffixProps []*bpparser.Property
+	if parent.Variable != "" {
+		suffixProps = w.mapScope[parent.Variable]
 	} else {
-		w.errorf("Unsupported module %s", module.Type.Name)
+		suffixProps = parent.MapValue
+	}
+	for _, suffixProp := range suffixProps {
+		if suffix, ok := suffixMap[suffixProp.Name.Name]; ok {
+			for _, stdProp := range suffixProp.Value.MapValue {
+				if mkProp, ok :=
+					standardProperties[stdProp.Name.Name]; ok {
+					computedProps = append(computedProps,
+						fmt.Sprintf("%s_%s := %s", mkProp.string, suffix,
+							w.valueToString(stdProp.Value)))
+				}
+			}
+		}
+	}
+	return
+}
+
+func (w *androidMkWriter) handleModule(module *bpparser.Module) {
+	moduleRule := fmt.Sprintf(module.Type.Name)
+	if translation, ok := moduleTypeToRule[module.Type.Name]; ok {
+		moduleRule = translation
+	}
+
+	isHostRule := strings.Contains(moduleRule, "HOST")
+	hostSupported := false
+	standardProps := make([]string, 0, len(module.Properties))
+	disabledBuilds := make(map[string]bool)
+	for _, prop := range module.Properties {
+		if mkProp, ok := standardProperties[prop.Name.Name]; ok {
+			standardProps = append(standardProps, fmt.Sprintf("%s := %s",
+				mkProp.string, w.valueToString(prop.Value)))
+		} else if suffixMap, ok := suffixProperties[prop.Name.Name]; ok {
+			standardProps = append(standardProps,
+				w.handleSuffixProperties(prop.Value, suffixMap)...)
+		} else if "target" == prop.Name.Name {
+			standardProps = append(standardProps,
+				w.handleTargetConditionals(prop.Value.MapValue, &disabledBuilds, isHostRule)...)
+		} else if "host_supported" == prop.Name.Name {
+			hostSupported = prop.Value.BoolValue
+		} else {
+			standardProps = append(standardProps,
+				fmt.Sprintf("# ERROR: Unsupported property %s",
+					prop.Name.Name))
+		}
+	}
+
+	// write out target build
+	w.writeModule(moduleRule, standardProps, disabledBuilds, isHostRule)
+	if hostSupported {
+		hostModuleRule := "NO CORRESPONDING HOST RULE" + moduleRule
+		if trans, ok := targetToHostModuleRule[moduleRule]; ok {
+			hostModuleRule = trans
+		}
+		w.writeModule(hostModuleRule, standardProps,
+			disabledBuilds, true)
 	}
 }
 
 func (w *androidMkWriter) handleAssignment(assignment *bpparser.Assignment) {
-	assigner := ":="
-	if assignment.Assigner != "=" {
-		assigner = assignment.Assigner
+	if assignment.OrigValue.Type == bpparser.Map {
+		// maps may be assigned in Soong, but can only be translated to .mk
+		// in the context of the module
+		w.mapScope[assignment.Name.Name] = assignment.OrigValue.MapValue
+	} else {
+		assigner := ":="
+		if assignment.Assigner != "=" {
+			assigner = assignment.Assigner
+		}
+		fmt.Fprintf(w, "%s %s %s\n", assignment.Name.Name, assigner,
+			w.valueToString(assignment.OrigValue))
 	}
-	fmt.Fprintf(w, "%s %s %s\n", assignment.Name.Name, assigner,
-		w.valueToString(assignment.OrigValue))
 }
 
 func (w *androidMkWriter) iter() <-chan interface{} {
@@ -134,7 +250,7 @@ func (w *androidMkWriter) iter() <-chan interface{} {
 }
 
 func (w *androidMkWriter) write() {
-	outFilePath := fmt.Sprintf("%s/Android.mk.out", w.path)
+	outFilePath := fmt.Sprintf("%s/Androidbp.mk", w.path)
 	fmt.Printf("Writing %s\n", outFilePath)
 
 	f, err := os.Create(outFilePath)
@@ -143,9 +259,7 @@ func (w *androidMkWriter) write() {
 	}
 
 	defer func() {
-		if err := f.Close(); err != nil {
-			panic(err)
-		}
+		f.Close()
 	}()
 
 	w.Writer = bufio.NewWriter(f)
@@ -187,8 +301,9 @@ func main() {
 	}
 
 	writer := &androidMkWriter{
-		file: file,
-		path: path.Dir(os.Args[1]),
+		file:     file,
+		path:     path.Dir(os.Args[1]),
+		mapScope: make(map[string][]*bpparser.Property),
 	}
 
 	writer.write()
