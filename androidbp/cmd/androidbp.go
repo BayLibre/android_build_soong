@@ -57,27 +57,100 @@ func (w *androidMkWriter) errorf(format string, values ...interface{}) {
 func (w *androidMkWriter) handleComment(comment *bpparser.Comment) {
 	for _, c := range comment.Comment {
 		mkComment := strings.Replace(c, "//", "#", 1)
-		// TODO: handle /* comments?
+		if !strings.Contains(mkComment, "#") {
+			mkComment = strings.Replace(mkComment, "/*", "", 1)
+			mkComment = strings.Replace(mkComment, "*", "", 1)
+			mkComment = strings.Replace(mkComment, "*/", "", 1)
+			mkComment = "#" + mkComment
+		}
 		fmt.Fprintf(w, "%s\n", mkComment)
 	}
 }
 
+func (w *androidMkWriter) writeModule(moduleRule string, props []string,
+	disabledBuilds map[string]bool, isHostRule bool) {
+	disabledCount := 0
+	for build, _ := range disabledBuilds {
+		if isHostRule {
+			if conditional, ok := disabledHostConditionals[build]; ok {
+				fmt.Fprintf(w, "%s\n", conditional)
+				disabledCount++
+			}
+		} else {
+			if conditional, ok := disabledTargetConditionals[build]; ok {
+				fmt.Fprintf(w, "%s\n", conditional)
+				disabledCount++
+			}
+		}
+	}
+
+	fmt.Fprintf(w, "include $(CLEAR_VARS)\n")
+	fmt.Fprintf(w, "%s\n", strings.Join(props, "\n"))
+	fmt.Fprintf(w, "include $(%s)\n\n", moduleRule)
+
+	for i := 0; i < disabledCount; i++ {
+		fmt.Fprintf(w, "endif\n")
+	}
+}
+
 func (w *androidMkWriter) handleModule(module *bpparser.Module) {
-	if moduleName, ok := moduleTypes[module.Type.Name]; ok {
-		w.WriteString("include $(CLEAR_VARS)\n")
+	if moduleRule, ok := moduleTypeToRule[module.Type.Name]; ok {
+		isHostRule := strings.Contains(moduleRule, "HOST")
+		hostSupported := false
 		standardProps := make([]string, 0, len(module.Properties))
-		//condProps := make([]string, len(module.Properties))
+		disabledBuilds := make(map[string]bool)
 		for _, prop := range module.Properties {
 			if mkProp, ok := standardProperties[prop.Name.Name]; ok {
-				standardProps = append(standardProps, fmt.Sprintf("%s := %s", mkProp.string,
-					w.valueToString(prop.Value)))
+				standardProps = append(standardProps, fmt.Sprintf("%s := %s",
+					mkProp.string, w.valueToString(prop.Value)))
+			} else if suffixMap, ok := suffixProperties[prop.Name.Name]; ok {
+				for _, suffixProp := range prop.Value.MapValue {
+					if suffix, ok := suffixMap[suffixProp.Name.Name]; ok {
+						for _, stdProp := range suffixProp.Value.MapValue {
+							if mkProp, ok :=
+								standardProperties[stdProp.Name.Name]; ok {
+								standardProps = append(standardProps,
+									fmt.Sprintf("%s_%s := %s", mkProp.string, suffix,
+										w.valueToString(stdProp.Value)))
+							}
+						}
+					}
+				}
+			} else if "target" == prop.Name.Name {
+				for _, target := range prop.Value.MapValue {
+					if conditional, ok := targetScopedPropertyConditionals[target.Name.Name]; ok {
+						var scopedProps []string
+						for _, targetScopedProp := range target.Value.MapValue {
+							if mkProp, ok := standardProperties[targetScopedProp.Name.Name]; ok {
+								scopedProps = append(scopedProps, fmt.Sprintf("%s += %s",
+									mkProp.string, w.valueToString(targetScopedProp.Value)))
+							} else if "disabled" == targetScopedProp.Name.Name {
+								if targetScopedProp.Value.BoolValue {
+									disabledBuilds[target.Name.Name] = true
+								} else {
+									delete(disabledBuilds, target.Name.Name)
+								}
+							}
+						}
+
+						if len(scopedProps) > 0 {
+							standardProps = append(standardProps, conditional)
+							standardProps = append(standardProps, scopedProps...)
+							standardProps = append(standardProps, "endif")
+						}
+					}
+				}
+			} else if "host_supported" == prop.Name.Name {
+				hostSupported = prop.Value.BoolValue
 			}
 		}
 
-		mkModule := strings.Join(standardProps, "\n")
-		w.WriteString(mkModule)
-
-		fmt.Fprintf(w, "include $(%s)\n\n", moduleName)
+		// write out target build
+		w.writeModule(moduleRule, standardProps, disabledBuilds, isHostRule)
+		if hostSupported {
+			w.writeModule(targetToHostModuleRule[moduleRule], standardProps,
+				disabledBuilds, true)
+		}
 	} else {
 		w.errorf("Unsupported module %s", module.Type.Name)
 	}
@@ -134,7 +207,7 @@ func (w *androidMkWriter) iter() <-chan interface{} {
 }
 
 func (w *androidMkWriter) write() {
-	outFilePath := fmt.Sprintf("%s/Android.mk.out", w.path)
+	outFilePath := fmt.Sprintf("%s/Androidbp.mk", w.path)
 	fmt.Printf("Writing %s\n", outFilePath)
 
 	f, err := os.Create(outFilePath)
