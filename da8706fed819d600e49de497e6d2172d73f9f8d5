@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "706d52b3_13cdacb4",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-01T18:03:49Z",
+      "side": 1,
+      "message": "add a \"default:\" case with an error or a panic to the switch above and you should be able to drop this return",
+      "revId": "da8706fed819d600e49de497e6d2172d73f9f8d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0734a93_b5e4e027",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-01T18:03:49Z",
+      "side": 1,
+      "message": "panic or error if tok.Type !\u003d bpparser.String",
+      "revId": "da8706fed819d600e49de497e6d2172d73f9f8d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "504a0e43_12cdacb4",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-01T18:03:49Z",
+      "side": 1,
+      "message": "write out all the properties whether or not module.Type.Name is recognized, and then skip the include $(BUILD_*) if module.Type.Name is unknown",
+      "revId": "da8706fed819d600e49de497e6d2172d73f9f8d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "504a0e43_12f4ccd0",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-01T18:03:49Z",
+      "side": 1,
+      "message": "it\u0027s probably not worth handling errors from close, just defer f.Close()",
+      "revId": "da8706fed819d600e49de497e6d2172d73f9f8d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
