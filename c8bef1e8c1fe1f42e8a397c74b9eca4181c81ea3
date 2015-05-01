@@ -16,6 +16,24 @@
       "revId": "c8bef1e8c1fe1f42e8a397c74b9eca4181c81ea3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "300cbaed_98b9d5df",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-01T02:32:26Z",
+      "side": 1,
+      "message": "Whoops, workaround for an earlier issue, but taking it out exposes one more issue to fix (libraries duplicated in the dependency list)",
+      "parentUuid": "70f8f2fa_6287fe13",
+      "revId": "c8bef1e8c1fe1f42e8a397c74b9eca4181c81ea3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
