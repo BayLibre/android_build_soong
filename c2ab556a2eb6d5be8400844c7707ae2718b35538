@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b0734a93_f54018f7",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1038928
+      },
+      "writtenOn": "2015-05-02T00:01:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0734a93_950a8458",
+      "revId": "c2ab556a2eb6d5be8400844c7707ae2718b35538",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "706d52b3_33f1c8e1",
         "filename": "androidbp/cmd/androidbp.go",
         "patchSetId": 10
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "706d52b3_1304ccce",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1038928
+      },
+      "writtenOn": "2015-05-02T00:01:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "706d52b3_33f1c8e1",
+      "revId": "c2ab556a2eb6d5be8400844c7707ae2718b35538",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "706d52b3_13f4ccd0",
         "filename": "androidbp/cmd/soong.go",
         "patchSetId": 10
@@ -47,6 +83,30 @@
       "writtenOn": "2015-05-01T18:12:34Z",
       "side": 1,
       "message": "these conditionals should only apply to host modules",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 45
+      },
+      "revId": "c2ab556a2eb6d5be8400844c7707ae2718b35538",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "706d52b3_3301c8bf",
+        "filename": "androidbp/cmd/soong.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1038928
+      },
+      "writtenOn": "2015-05-02T00:01:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "706d52b3_13f4ccd0",
       "range": {
         "startLine": 91,
         "startChar": 0,
