@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"path"
+	"regexp"
 	"strings"
 
 	bpparser "github.com/google/blueprint/parser"
@@ -27,7 +28,7 @@ func valueToString(value bpparser.Value) string {
 		case bpparser.Bool:
 			return fmt.Sprintf(`"%t"`, value.BoolValue)
 		case bpparser.String:
-			return fmt.Sprintf(`"%s"`, value.StringValue)
+			return fmt.Sprintf(`"%s"`, processWildcards(value.StringValue))
 		case bpparser.List:
 			return fmt.Sprintf("\\\n%s\n", listToMkString(value.ListValue))
 		case bpparser.Map:
@@ -38,11 +39,24 @@ func valueToString(value bpparser.Value) string {
 	}
 }
 
+// TODO: handle non-recursive wildcards?
+func processWildcards(s string) string {
+	re := regexp.MustCompile("(.*)/\\*\\*/(.*)")
+	submatches := re.FindAllStringSubmatch(s, -1)
+	if submatches != nil && len(submatches[0]) > 2 {
+		// Found a wildcard rule
+		return fmt.Sprintf("$(call find-files-in-subdirs, $(LOCAL_PATH), %s, %s)",
+			submatches[0][2], submatches[0][1])
+	}
+
+	return s
+}
+
 func listToMkString(list []bpparser.Value) string {
 	lines := make([]string, 0, len(list))
 	for _, tok := range list {
 		if tok.Type == bpparser.String {
-			lines = append(lines, fmt.Sprintf("\t\"%s\"", tok.StringValue))
+			lines = append(lines, fmt.Sprintf("\t\"%s\"", processWildcards(tok.StringValue)))
 		} else {
 			lines = append(lines, fmt.Sprintf("# ERROR: unsupported type %s in list",
 				tok.Type.String()))
@@ -190,8 +204,21 @@ func (w *androidMkWriter) handleModule(module *bpparser.Module) {
 	}
 }
 
+func (w *androidMkWriter) handleSubdirs(value bpparser.Value) {
+	switch value.Type {
+	case bpparser.String:
+		fmt.Fprintf(w, "$(call all-makefiles-under, %s)\n", value.StringValue)
+	case bpparser.List:
+		for _, tok := range value.ListValue {
+			fmt.Fprintf(w, "$(call all-makefiles-under, %s)\n", tok.StringValue)
+		}
+	}
+}
+
 func (w *androidMkWriter) handleAssignment(assignment *bpparser.Assignment) {
-	if assignment.OrigValue.Type == bpparser.Map {
+	if "subdirs" == assignment.Name.Name {
+		w.handleSubdirs(assignment.OrigValue)
+	} else if assignment.OrigValue.Type == bpparser.Map {
 		// maps may be assigned in Soong, but can only be translated to .mk
 		// in the context of the module
 		w.mapScope[assignment.Name.Name] = assignment.OrigValue.MapValue
