@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d026fe9b_35fc5ab1",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-05-04T23:49:24Z",
+      "side": 1,
+      "message": "I remember long time ago we used to repeat the static module names to satisfy circular dependency between static libraries in some cases. Not sure we still have such cases in the tree. Even if we have, we can use LOCAL_GROUP_STATIC_LIBRARIES now.",
+      "range": {
+        "startLine": 368,
+        "startChar": 30,
+        "endLine": 368,
+        "endChar": 76
+      },
+      "revId": "725364caee387fa7b5114fac8ddddda6f0b70cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "105fb6fa_add1eb7d",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1774,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-05-04T23:49:24Z",
+      "side": 1,
+      "message": "Perhaps better to move to a utility package.",
+      "range": {
+        "startLine": 1774,
+        "startChar": 5,
+        "endLine": 1774,
+        "endChar": 23
+      },
+      "revId": "725364caee387fa7b5114fac8ddddda6f0b70cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "105fb6fa_ad19eb2e",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1776,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-05-04T23:49:24Z",
+      "side": 1,
+      "message": "This can be totalSkip too.",
+      "range": {
+        "startLine": 1776,
+        "startChar": 30,
+        "endLine": 1776,
+        "endChar": 31
+      },
+      "revId": "725364caee387fa7b5114fac8ddddda6f0b70cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
