@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "102df676_0f2ae632",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-05T00:02:42Z",
+      "side": 1,
+      "message": "Yeah, if it comes up again I\u0027ll have to figure out a different solution.  We only want to have one module dependency, even if it means including the same library multiple times on the command line.  Maybe dedupe here, but use the original lists in depNamesToPaths",
+      "parentUuid": "d026fe9b_35fc5ab1",
+      "range": {
+        "startLine": 368,
+        "startChar": 30,
+        "endLine": 368,
+        "endChar": 76
+      },
+      "revId": "725364caee387fa7b5114fac8ddddda6f0b70cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "105fb6fa_add1eb7d",
         "filename": "cc/cc.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "30683a9e_93d534e1",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1774,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-05T00:02:42Z",
+      "side": 1,
+      "message": "I figured I\u0027d move it later if I found more users of it.  It\u0027s current behavior (keeping the last copy of each element) is fairly specific to C compiling.",
+      "parentUuid": "105fb6fa_add1eb7d",
+      "range": {
+        "startLine": 1774,
+        "startChar": 5,
+        "endLine": 1774,
+        "endChar": 23
+      },
+      "revId": "725364caee387fa7b5114fac8ddddda6f0b70cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "105fb6fa_ad19eb2e",
         "filename": "cc/cc.go",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2015-05-04T23:49:24Z",
       "side": 1,
       "message": "This can be totalSkip too.",
+      "range": {
+        "startLine": 1776,
+        "startChar": 30,
+        "endLine": 1776,
+        "endChar": 31
+      },
+      "revId": "725364caee387fa7b5114fac8ddddda6f0b70cad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d026fe9b_f529e23e",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1776,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-05T00:02:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "105fb6fa_ad19eb2e",
       "range": {
         "startLine": 1776,
         "startChar": 30,
