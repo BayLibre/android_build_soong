@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "102df676_8f2df63f",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-05T20:33:44Z",
+      "side": 1,
+      "message": "maps are reference types, you don\u0027t need a pointer",
+      "range": {
+        "startLine": 56,
+        "startChar": 16,
+        "endLine": 56,
+        "endChar": 32
+      },
+      "revId": "643e88a415f194243431463a55c7e7485348c21b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0218a87_0558125a",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-05T20:33:44Z",
+      "side": 1,
+      "message": "does this need to print an error on !ok?",
+      "revId": "643e88a415f194243431463a55c7e7485348c21b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0218a87_855c025c",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-05T20:33:44Z",
+      "side": 1,
+      "message": "Go uses a soft 100 character limit, you may be able to get rid of some wrapping",
+      "revId": "643e88a415f194243431463a55c7e7485348c21b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d026fe9b_f7f55c99",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-05T20:33:44Z",
+      "side": 1,
+      "message": "a little bit weird, but you could put defer fmt.Fprintf(w, \"endif\\n\") here",
+      "revId": "643e88a415f194243431463a55c7e7485348c21b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "105fb6fa_24d897f3",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-05T20:33:44Z",
+      "side": 1,
+      "message": "if all you are deferring is a function call then you don\u0027t need an anonymous func, just:\n\n   defer f.Close()",
+      "revId": "643e88a415f194243431463a55c7e7485348c21b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
