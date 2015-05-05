@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0218a87_7f2dcf3c",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-05T20:44:35Z",
+      "side": 1,
+      "message": "Put this in a global so it isn\u0027t compiled every time",
+      "revId": "bed40057be390aa9a99de566e24aebc51193c148",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d026fe9b_f780fcd0",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-05T20:44:35Z",
+      "side": 1,
+      "message": "I think you want FindStringSubmatch",
+      "range": {
+        "startLine": 45,
+        "startChar": 22,
+        "endLine": 45,
+        "endChar": 25
+      },
+      "revId": "bed40057be390aa9a99de566e24aebc51193c148",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d026fe9b_778dec02",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-05T20:44:35Z",
+      "side": 1,
+      "message": "subdirs has to be a list",
+      "revId": "bed40057be390aa9a99de566e24aebc51193c148",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0218a87_9f00cb89",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-05T20:44:35Z",
+      "side": 1,
+      "message": "all-makefiles under just returns a list, you need include $(call ...) to actually include them.\n\nThe blueprint subdirs behavior is not to traverse subdirectories, use all-named-subdir-makefiles instead and pass the whole list at once.",
+      "revId": "bed40057be390aa9a99de566e24aebc51193c148",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d026fe9b_377c5433",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-05T20:44:35Z",
+      "side": 1,
+      "message": "Eventually I want to write these Android.mk files to the output directory somewhere, which means they will need a hardcoded LOCAL_PATH based on where the Blueprints file came from.  We would need some way to figure out where the top of the tree is though.  Maybe using the same logic as gettop in build/envsetup.sh?",
+      "revId": "bed40057be390aa9a99de566e24aebc51193c148",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
