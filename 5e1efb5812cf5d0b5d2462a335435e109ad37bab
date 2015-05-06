@@ -16,6 +16,24 @@
       "revId": "5e1efb5812cf5d0b5d2462a335435e109ad37bab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d1e2d58_43f5f0ff",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-06T01:03:08Z",
+      "side": 0,
+      "message": "They were already in x86_linux_host.go, in linuxClangCflags and linuxClangLdflags",
+      "parentUuid": "6d19f971_0ddcc5e4",
+      "revId": "5e1efb5812cf5d0b5d2462a335435e109ad37bab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
