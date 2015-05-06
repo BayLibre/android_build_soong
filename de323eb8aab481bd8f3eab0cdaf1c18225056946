@@ -46,6 +46,30 @@
       "revId": "de323eb8aab481bd8f3eab0cdaf1c18225056946",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d1e2d58_a9f6db5c",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-05-06T22:15:37Z",
+      "side": 1,
+      "message": "The pure purpose is to test correctness of this function. Sounds like something we should put in testing code.",
+      "parentUuid": "8d1e2d58_46ef3431",
+      "range": {
+        "startLine": 424,
+        "startChar": 1,
+        "endLine": 430,
+        "endChar": 2
+      },
+      "revId": "de323eb8aab481bd8f3eab0cdaf1c18225056946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
