@@ -22,6 +22,30 @@
       "revId": "de323eb8aab481bd8f3eab0cdaf1c18225056946",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d1e2d58_46ef3431",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-06T21:52:12Z",
+      "side": 1,
+      "message": "This makes sure we don\u0027t have a bug where we silently drop object files",
+      "parentUuid": "8d1e2d58_2afe40ab",
+      "range": {
+        "startLine": 424,
+        "startChar": 1,
+        "endLine": 430,
+        "endChar": 2
+      },
+      "revId": "de323eb8aab481bd8f3eab0cdaf1c18225056946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
