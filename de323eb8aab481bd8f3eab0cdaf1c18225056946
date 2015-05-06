@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d1e2d58_2afe40ab",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-05-06T19:17:46Z",
+      "side": 1,
+      "message": "This is for debugging only?",
+      "range": {
+        "startLine": 424,
+        "startChar": 1,
+        "endLine": 430,
+        "endChar": 2
+      },
+      "revId": "de323eb8aab481bd8f3eab0cdaf1c18225056946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
