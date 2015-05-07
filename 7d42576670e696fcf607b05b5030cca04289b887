@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d36f5df_bbbbbb4f",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1491,
+      "author": {
+        "id": 1038928
+      },
+      "writtenOn": "2015-05-07T23:02:25Z",
+      "side": 1,
+      "message": "return c.CCBinary.flags(ctx, flags)?",
+      "range": {
+        "startLine": 1491,
+        "startChar": 8,
+        "endLine": 1491,
+        "endChar": 13
+      },
+      "revId": "7d42576670e696fcf607b05b5030cca04289b887",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
