@@ -22,6 +22,30 @@
       "revId": "7d42576670e696fcf607b05b5030cca04289b887",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d1e2d58_2134100e",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1491,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-07T23:10:09Z",
+      "side": 1,
+      "message": "Actually, I don\u0027t need to override flags at all",
+      "parentUuid": "4d36f5df_bbbbbb4f",
+      "range": {
+        "startLine": 1491,
+        "startChar": 8,
+        "endLine": 1491,
+        "endChar": 13
+      },
+      "revId": "7d42576670e696fcf607b05b5030cca04289b887",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
