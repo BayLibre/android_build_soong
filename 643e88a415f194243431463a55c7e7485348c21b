@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4d6d15ec_8fbd45fb",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1038928
+      },
+      "writtenOn": "2015-05-08T22:35:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "102df676_8f2df63f",
+      "range": {
+        "startLine": 56,
+        "startChar": 16,
+        "endLine": 56,
+        "endChar": 32
+      },
+      "revId": "643e88a415f194243431463a55c7e7485348c21b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0218a87_0558125a",
         "filename": "androidbp/cmd/androidbp.go",
         "patchSetId": 15
@@ -36,6 +60,24 @@
       "writtenOn": "2015-05-05T20:33:44Z",
       "side": 1,
       "message": "does this need to print an error on !ok?",
+      "revId": "643e88a415f194243431463a55c7e7485348c21b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d70e1c2_0db5c12d",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1038928
+      },
+      "writtenOn": "2015-05-08T22:35:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0218a87_0558125a",
       "revId": "643e88a415f194243431463a55c7e7485348c21b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "0d679d0f_815a00d4",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1038928
+      },
+      "writtenOn": "2015-05-08T22:35:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0218a87_855c025c",
+      "revId": "643e88a415f194243431463a55c7e7485348c21b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d026fe9b_f7f55c99",
         "filename": "androidbp/cmd/androidbp.go",
         "patchSetId": 15
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "2d70e1c2_a82043c7",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1038928
+      },
+      "writtenOn": "2015-05-08T22:35:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d026fe9b_f7f55c99",
+      "revId": "643e88a415f194243431463a55c7e7485348c21b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "105fb6fa_24d897f3",
         "filename": "androidbp/cmd/androidbp.go",
         "patchSetId": 15
@@ -87,6 +165,24 @@
       "writtenOn": "2015-05-05T20:33:44Z",
       "side": 1,
       "message": "if all you are deferring is a function call then you don\u0027t need an anonymous func, just:\n\n   defer f.Close()",
+      "revId": "643e88a415f194243431463a55c7e7485348c21b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d679d0f_0166f09c",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1038928
+      },
+      "writtenOn": "2015-05-08T22:35:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "105fb6fa_24d897f3",
       "revId": "643e88a415f194243431463a55c7e7485348c21b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
