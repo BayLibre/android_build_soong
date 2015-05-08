@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d679d0f_01c350b9",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-08T22:35:17Z",
+      "side": 1,
+      "message": "no func() necessary",
+      "revId": "1fa1c89b9c8472cb282e02e95b4e1b59fc8b5138",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
