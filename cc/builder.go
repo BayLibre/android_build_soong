@@ -44,7 +44,7 @@ var (
 		blueprint.RuleParams{
 			Depfile:     "${out}.d",
 			Deps:        blueprint.DepsGCC,
-			Command:     "$ccCmd -c $cFlags -MD -MF ${out}.d -o $out $in",
+			Command:     "$ccacheCmd $ccCmd -c $cFlags -MD -MF ${out}.d -o $out $in",
 			Description: "cc $out",
 		},
 		"ccCmd", "cFlags")

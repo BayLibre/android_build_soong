@@ -103,6 +103,13 @@ func init() {
 	}, " "))
 
 	pctx.StaticVariable("clangPath", "${SrcDir}/prebuilts/clang/${HostPrebuiltTag}/host/3.6/bin/")
+	pctx.VariableFunc("ccacheCmd", func(c interface{}) (string, error) {
+		if c.(common.Config).Getenv("USE_CCACHE") == "1" {
+			return "${SrcDir}/prebuilts/misc/${HostPrebuiltTag}/ccache/ccache", nil
+		} else {
+			return "", nil
+		}
+	})
 }
 
 // Building C/C++ code is handled by objects that satisfy this interface via composition
