@@ -23,6 +23,8 @@ else
     SRCDIR="${BUILDDIR}/${SRCDIR_IN}"
 fi
 
+source "${SRCDIR}/build/soong/soong_ccache.bash"
+
 # Let Blueprint know that the Ninja we're using performs multiple passes that
 # can regenerate the build manifest.
 export BLUEPRINT_NINJA_HAS_MULTIPASS=1

@@ -190,6 +190,18 @@ func TransformSourceToObj(ctx common.AndroidModuleContext, subdir string, srcFil
 
 		deps = append([]string{ccCmd}, deps...)
 
+		if ctx.AConfig().Getenv("USE_CCACHE") != "" {
+			var ccacheCmd string
+			var ccWrapper []string
+			ccacheCmd = "${SrcDir}/prebuilts/misc/${HostPrebuiltTag}/ccache/ccache"
+			ccWrapper = []string{
+				ccacheCmd,
+				ccCmd,
+			}
+			ccCmd = strings.Join(ccWrapper, " ")
+			deps = append([]string{ccacheCmd}, deps...)
+		}
+
 		ctx.Build(pctx, blueprint.BuildParams{
 			Rule:      cc,
 			Outputs:   []string{objFile},
