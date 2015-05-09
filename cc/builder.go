@@ -106,6 +106,8 @@ var (
 			Description: "copy gcc $out",
 		},
 		"ccCmd", "cFlags", "libName")
+
+	ccacheCmd = pctx.StaticVariable("ccacheCmd", "${SrcDir}/prebuilts/misc/${HostPrebuiltTag}/ccache/ccache")
 )
 
 type builderFlags struct {
@@ -189,6 +191,12 @@ func TransformSourceToObj(ctx common.AndroidModuleContext, subdir string, srcFil
 		}
 
 		objDeps := append([]string{ccCmd}, deps...)
+
+		if ctx.AConfig().Getenv("USE_CCACHE") != "" {
+			ccacheCmdVar := "${ccacheCmd}"
+			ccCmd = ccacheCmdVar + " " + ccCmd
+			objDeps = append([]string{ccacheCmdVar}, objDeps...)
+		}
 
 		ctx.Build(pctx, blueprint.BuildParams{
 			Rule:      cc,
