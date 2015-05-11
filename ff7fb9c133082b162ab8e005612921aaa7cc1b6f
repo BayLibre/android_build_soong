@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d679d0f_93eb2ba8",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-11T19:38:48Z",
+      "side": 1,
+      "message": "Nothing here changes the current directory?\n\nFor loops like this, I generally prefer a the form\n\n  for {\n  }\n\nor \n\n  for (condition) {\n  }\n\nto avoid putting in os.Getwd() in the initialization and the loop.\n\nCan you do this without changing the current directory at all?  filepath.Join(dir, \"..\") should return one directory up, although I\u0027m not sure what it will do with a relative path if you hit the root before finding topfile.",
+      "revId": "ff7fb9c133082b162ab8e005612921aaa7cc1b6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d6d15ec_57801846",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-11T19:38:48Z",
+      "side": 1,
+      "message": "$(wildcard %s/Android.mk)",
+      "range": {
+        "startLine": 222,
+        "startChar": 25,
+        "endLine": 222,
+        "endChar": 56
+      },
+      "revId": "ff7fb9c133082b162ab8e005612921aaa7cc1b6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d70e1c2_6a3f75d9",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-11T19:38:48Z",
+      "side": 1,
+      "message": "This needs to be a relative path from top:\nrel, err :\u003d filepath.Rel(top, w.path)",
+      "range": {
+        "startLine": 301,
+        "startChar": 34,
+        "endLine": 301,
+        "endChar": 37
+      },
+      "revId": "ff7fb9c133082b162ab8e005612921aaa7cc1b6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
