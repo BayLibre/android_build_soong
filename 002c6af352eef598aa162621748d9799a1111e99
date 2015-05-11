@@ -33,6 +33,24 @@
       "revId": "002c6af352eef598aa162621748d9799a1111e99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d6d15ec_8fb8d4d8",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-05-11T20:49:56Z",
+      "side": 1,
+      "message": "Yes, please keep it consistent with the makefile.",
+      "parentUuid": "0d679d0f_158e2300",
+      "revId": "002c6af352eef598aa162621748d9799a1111e99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
