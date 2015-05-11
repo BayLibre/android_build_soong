@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd43c57f_211e2862",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-11T23:39:46Z",
+      "side": 1,
+      "message": "This will work for absolute paths, but not relative paths.",
+      "revId": "888eb8d63453172cdb081edde496188f6046b373",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad3e91ea_8091f852",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-11T23:39:46Z",
+      "side": 1,
+      "message": "if _, err :\u003d os.Stat(expected); err \u003d\u003d nil {",
+      "revId": "888eb8d63453172cdb081edde496188f6046b373",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad3e91ea_c0030010",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-11T23:39:46Z",
+      "side": 1,
+      "message": "I don\u0027t think you want cwd here, you want to start from the directory of the input Android.mk file",
+      "range": {
+        "startLine": 301,
+        "startChar": 33,
+        "endLine": 301,
+        "endChar": 36
+      },
+      "revId": "888eb8d63453172cdb081edde496188f6046b373",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
