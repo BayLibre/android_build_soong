@@ -40,21 +40,23 @@ type HostToolProvider interface {
 	HostToolPath() string
 }
 
+type generatorProperties struct {
+	// cmd: command to run on one or more input files.  Available variables for substitution:
+	// $in: one or more input files
+	// $out: a single output file
+	// $srcDir: the root directory of the source tree
+	// The host bin directory will be in the path
+	Cmd string
+
+	// tool: name of the module (if any) that produces the host executable.   Leave empty for
+	// prebuilts or scripts that do not need a module to build them.
+	Tool string
+}
+
 type generator struct {
 	common.AndroidModuleBase
 
-	properties struct {
-		// cmd: command to run on one or more input files.  Available variables for substitution:
-		// $in: one or more input files
-		// $out: a single output file
-		// $srcDir: the root directory of the source tree
-		// The host bin directory will be in the path
-		Cmd string
-
-		// tool: name of the module (if any) that produces the host executable.   Leave empty for
-		// prebuilts or scripts that do not need a module to build them.
-		Tool string
-	}
+	properties generatorProperties
 
 	tasks taskFunc
 
