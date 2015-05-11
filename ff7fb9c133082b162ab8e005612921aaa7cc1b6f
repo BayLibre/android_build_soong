@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0d679d0f_b392efa4",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1038928
+      },
+      "writtenOn": "2015-05-11T20:18:26Z",
+      "side": 1,
+      "message": "Done. Don\u0027t know how it sort of worked before without cd .. at the end as I thought it had.",
+      "parentUuid": "0d679d0f_93eb2ba8",
+      "revId": "ff7fb9c133082b162ab8e005612921aaa7cc1b6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d6d15ec_57801846",
         "filename": "androidbp/cmd/androidbp.go",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "4d6d15ec_024a5cb1",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1038928
+      },
+      "writtenOn": "2015-05-11T20:18:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d6d15ec_57801846",
+      "range": {
+        "startLine": 222,
+        "startChar": 25,
+        "endLine": 222,
+        "endChar": 56
+      },
+      "revId": "ff7fb9c133082b162ab8e005612921aaa7cc1b6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d70e1c2_6a3f75d9",
         "filename": "androidbp/cmd/androidbp.go",
         "patchSetId": 2
@@ -53,6 +95,30 @@
       "writtenOn": "2015-05-11T19:38:48Z",
       "side": 1,
       "message": "This needs to be a relative path from top:\nrel, err :\u003d filepath.Rel(top, w.path)",
+      "range": {
+        "startLine": 301,
+        "startChar": 34,
+        "endLine": 301,
+        "endChar": 37
+      },
+      "revId": "ff7fb9c133082b162ab8e005612921aaa7cc1b6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d70e1c2_cde6db30",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1038928
+      },
+      "writtenOn": "2015-05-11T20:18:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d70e1c2_6a3f75d9",
       "range": {
         "startLine": 301,
         "startChar": 34,
