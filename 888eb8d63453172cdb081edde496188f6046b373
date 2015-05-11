@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ad3e91ea_40a7f035",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1038928
+      },
+      "writtenOn": "2015-05-11T23:56:09Z",
+      "side": 1,
+      "message": "Making sure I don\u0027t pass in relative paths.",
+      "parentUuid": "cd43c57f_211e2862",
+      "revId": "888eb8d63453172cdb081edde496188f6046b373",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad3e91ea_8091f852",
         "filename": "androidbp/cmd/androidbp.go",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "2d338121_24d75c78",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1038928
+      },
+      "writtenOn": "2015-05-11T23:56:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad3e91ea_8091f852",
+      "revId": "888eb8d63453172cdb081edde496188f6046b373",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad3e91ea_c0030010",
         "filename": "androidbp/cmd/androidbp.go",
         "patchSetId": 4
@@ -47,6 +83,30 @@
       "writtenOn": "2015-05-11T23:39:46Z",
       "side": 1,
       "message": "I don\u0027t think you want cwd here, you want to start from the directory of the input Android.mk file",
+      "range": {
+        "startLine": 301,
+        "startChar": 33,
+        "endLine": 301,
+        "endChar": 36
+      },
+      "revId": "888eb8d63453172cdb081edde496188f6046b373",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad3e91ea_c09ae0e9",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1038928
+      },
+      "writtenOn": "2015-05-11T23:56:09Z",
+      "side": 1,
+      "message": "my bad, what I have now is what I wanted.",
+      "parentUuid": "ad3e91ea_c0030010",
       "range": {
         "startLine": 301,
         "startChar": 33,
