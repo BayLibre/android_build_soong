@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d679d0f_158e2300",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-11T17:48:18Z",
+      "side": 1,
+      "message": "The make build uses !\u003d \"\"",
+      "revId": "002c6af352eef598aa162621748d9799a1111e99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
