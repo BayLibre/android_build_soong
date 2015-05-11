@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "4d6d15ec_6e76a957",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-11T17:49:04Z",
+      "side": 1,
+      "message": "Can you put this in builder.go since it is only used there?",
+      "revId": "002c6af352eef598aa162621748d9799a1111e99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d679d0f_158e2300",
         "filename": "cc/cc.go",
         "patchSetId": 1
