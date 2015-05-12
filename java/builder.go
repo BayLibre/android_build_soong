@@ -56,6 +56,13 @@ var (
 		},
 		"jarCmd", "jarArgs")
 
+	proguard = pctx.StaticRule("proguard",
+		blueprint.RuleParams{
+			Command:     `$proguardCmd -injars $in -outjars $out $proguardArgs`,
+			Description: "proguard $out",
+		},
+		"proguardCmd", "proguardArgs")
+
 	dx = pctx.StaticRule("dx",
 		blueprint.RuleParams{
 			Command: `rm -rf "$outDir" && mkdir -p "$outDir" && ` +
@@ -93,6 +100,7 @@ func init() {
 	pctx.VariableFunc("jarjarCmd", func(c interface{}) (string, error) {
 		return c.(common.Config).HostJavaTool("jarjar.jar")
 	})
+	pctx.StaticVariable("proguardCmd", "${srcDir}/external/proguard/bin/proguard.sh")
 }
 
 type javaBuilderFlags struct {
@@ -105,6 +113,13 @@ type javaBuilderFlags struct {
 
 type jarSpec struct {
 	fileList, dir string
+}
+
+type proguardBuilderSpec struct {
+	proguard          []string
+	proguardFlags     []string
+	proguardFlagFiles []string
+	java_Libs         []string
 }
 
 func (j jarSpec) soongJarArgs() string {
@@ -163,6 +178,80 @@ func TransformClassesToJar(ctx common.AndroidModuleContext, classes []jarSpec,
 		Implicits: deps,
 		Args: map[string]string{
 			"jarArgs": strings.Join(jarArgs, " "),
+		},
+	})
+
+	return outputFile
+}
+
+func HasProguardType(proguardList []string, proguard string) bool {
+	if len(proguardList) == 0 {
+		if proguard == "disabled" {
+			return true
+		}
+		return false
+	}
+	for _, p := range(proguardList) {
+		if proguard == p {
+			return true
+		}
+	}
+	return false
+}
+
+func TransformJarToProguard(ctx common.AndroidModuleContext, classesJar string,
+	flags proguardBuilderSpec) string {
+
+	deps := []string{}
+	proguardArgs := []string{}
+
+	dictionary := filepath.Join(common.ModuleOutDir(ctx), "proguard_dictionary")
+
+	for _, filename := range(flags.java_Libs) {
+		proguardArgs = append(proguardArgs, "-libraryjars")
+		proguardArgs = append(proguardArgs, filename)
+	}
+
+	proguardArgs = append(proguardArgs, "-forceprocessing")
+	proguardArgs = append(proguardArgs, "-printmapping")
+	proguardArgs = append(proguardArgs, dictionary)
+
+	if !HasProguardType(flags.proguard, "nosystem") {
+		proguardArgs = append(proguardArgs,
+				"-include ${srcDir}/build/core/proguard.flags")
+	}
+
+	if !HasProguardType(flags.proguard, "shrinktests") {
+		proguardArgs = append(proguardArgs, "-dontshrink")
+	}
+
+	if !HasProguardType(flags.proguard, "obfuscation") {
+		proguardArgs = append(proguardArgs, "-dontobfuscate")
+	}
+
+	if !HasProguardType(flags.proguard, "optimization") {
+		proguardArgs = append(proguardArgs, "-dontoptimize")
+	}
+
+	for _, filename := range(flags.proguardFlagFiles) {
+		proguardArgs = append(proguardArgs, "-include")
+		proguardArgs = append(proguardArgs,
+				filepath.Join(common.ModuleSrcDir(ctx), filename))
+	}
+
+	proguardArgs = append(flags.proguardFlags, proguardArgs...)
+
+	deps = append(deps, "$proguardCmd")
+
+	outputFile := filepath.Join(common.ModuleOutDir(ctx), "proguard.classes.jar")
+
+	ctx.Build(pctx, blueprint.BuildParams{
+		Rule:      proguard,
+		Outputs:   []string{outputFile},
+		Inputs:    []string{classesJar},
+		Implicits: deps,
+		Args: map[string]string{
+			"proguardArgs": strings.Join(proguardArgs, " "),
 		},
 	})
 

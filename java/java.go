@@ -96,6 +96,10 @@ type javaBase struct {
 		// aidl_export_include_dirs: directories that should be added as include directories
 		// for any aidl sources of modules that depend on this module
 		Export_aidl_include_dirs []string
+
+		Proguard []string
+		Proguardflags []string
+		Proguardflag_files []string
 	}
 
 	// output file suitable for inserting into the classpath of another compile
@@ -341,6 +345,19 @@ func (j *javaBase) GenerateJavaBuildActions(ctx common.AndroidModuleContext) {
 
 		classes, _ := TransformPrebuiltJarToClasses(ctx, outputFile)
 		classJarSpecs = []jarSpec{classes}
+	}
+
+	if !HasProguardType(j.properties.Proguard, "disabled") {
+		var proguardFlags proguardBuilderSpec
+		proguardFlags.proguard = j.properties.Proguard
+		proguardFlags.proguardFlags = j.properties.Proguardflags
+		proguardFlags.proguardFlagFiles = j.properties.Proguardflag_files
+		proguardFlags.java_Libs = j.properties.Java_libs
+
+		outputFile = TransformJarToProguard(ctx, outputFile, proguardFlags)
+		if ctx.Failed() {
+			return
+		}
 	}
 
 	j.resourceJarSpecs = resourceJarSpecs
