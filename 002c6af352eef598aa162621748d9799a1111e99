@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ada93160_68bd5bf8",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1005082
+      },
+      "writtenOn": "2015-05-12T06:13:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d6d15ec_6e76a957",
+      "revId": "002c6af352eef598aa162621748d9799a1111e99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d679d0f_158e2300",
         "filename": "cc/cc.go",
         "patchSetId": 1
@@ -47,6 +65,24 @@
       "writtenOn": "2015-05-11T20:49:56Z",
       "side": 1,
       "message": "Yes, please keep it consistent with the makefile.",
+      "parentUuid": "0d679d0f_158e2300",
+      "revId": "002c6af352eef598aa162621748d9799a1111e99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8da8ed5c_e49dfab1",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1005082
+      },
+      "writtenOn": "2015-05-12T06:13:45Z",
+      "side": 1,
+      "message": "Done",
       "parentUuid": "0d679d0f_158e2300",
       "revId": "002c6af352eef598aa162621748d9799a1111e99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
