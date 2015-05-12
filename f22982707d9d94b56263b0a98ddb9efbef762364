@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd43c57f_fbcce8e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-05-12T19:21:47Z",
+      "side": 1,
+      "message": "Is this advisory or mandatory? We do have include paths that get created only after the code generation is done, such as generated protocol buffer head files.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 42
+      },
+      "revId": "f22982707d9d94b56263b0a98ddb9efbef762364",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
