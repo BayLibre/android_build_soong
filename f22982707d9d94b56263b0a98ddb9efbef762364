@@ -22,6 +22,30 @@
       "revId": "f22982707d9d94b56263b0a98ddb9efbef762364",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d338121_4df0bc91",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-12T19:26:31Z",
+      "side": 1,
+      "message": "This is mandatory, but it is only checking the values that are in the property, so we can avoid checking values that are inserted by the build system.",
+      "parentUuid": "cd43c57f_fbcce8e6",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 42
+      },
+      "revId": "f22982707d9d94b56263b0a98ddb9efbef762364",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
