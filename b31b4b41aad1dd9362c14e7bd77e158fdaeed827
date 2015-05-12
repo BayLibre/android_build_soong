@@ -22,6 +22,30 @@
       "revId": "b31b4b41aad1dd9362c14e7bd77e158fdaeed827",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd43c57f_e7d2904f",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-12T00:44:30Z",
+      "side": 1,
+      "message": "This is just a fallback in case we couldn\u0027t convert the paths to local paths, for example if they came from a variable.  I figured it was better to write out what we have than just give up.  I\u0027ll add a comment here, and I\u0027m also going to add a check that the exported directory exists when building, which will catch if this happens.",
+      "parentUuid": "ad3e91ea_e3d2864f",
+      "range": {
+        "startLine": 245,
+        "startChar": 2,
+        "endLine": 245,
+        "endChar": 93
+      },
+      "revId": "b31b4b41aad1dd9362c14e7bd77e158fdaeed827",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
