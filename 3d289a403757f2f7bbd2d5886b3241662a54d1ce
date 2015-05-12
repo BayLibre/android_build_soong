@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d338121_236469ca",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-05-12T22:05:22Z",
+      "side": 1,
+      "message": "I would normalize the conditional after parsing the conditionals. Otherwise, you may also need to handle cases like:\nifeq (darwin,$(HOST_OS))\n...",
+      "range": {
+        "startLine": 285,
+        "startChar": 1,
+        "endLine": 290,
+        "endChar": 30
+      },
+      "revId": "3d289a403757f2f7bbd2d5886b3241662a54d1ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd43c57f_2f08c658",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-05-12T22:05:22Z",
+      "side": 1,
+      "message": "What does \"target\" mean here? what\u0027s the opposite?\nThis \"target\" prefix is confusing, given it means device-side in the makefile build system. How about renaming it to \"os\"?",
+      "range": {
+        "startLine": 292,
+        "startChar": 10,
+        "endLine": 292,
+        "endChar": 16
+      },
+      "revId": "3d289a403757f2f7bbd2d5886b3241662a54d1ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
