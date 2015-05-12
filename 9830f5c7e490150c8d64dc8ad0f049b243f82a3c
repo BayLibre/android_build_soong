@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d338121_6dbe6048",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-05-12T19:49:24Z",
+      "side": 1,
+      "message": "This is a function added by you recently. I can see the ID of your change in git history \"Ief696ec85cf33ad5fb187227d215c1c2e894f962\". But I couldn\u0027t find it in gerrit. Do we submit blueprint change in upstream with a separate gerrit or something? I\u0027d like to see code reviews in the blueprint project too.",
+      "range": {
+        "startLine": 80,
+        "startChar": 6,
+        "endLine": 80,
+        "endChar": 33
+      },
+      "revId": "9830f5c7e490150c8d64dc8ad0f049b243f82a3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
