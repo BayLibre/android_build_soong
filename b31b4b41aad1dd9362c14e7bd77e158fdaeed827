@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad3e91ea_e3d2864f",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-05-12T00:05:31Z",
+      "side": 1,
+      "message": "so we are appending the global paths (relative to the root of the source tree) to the local paths. How will you distinguish them when you process the list later?",
+      "range": {
+        "startLine": 245,
+        "startChar": 2,
+        "endLine": 245,
+        "endChar": 93
+      },
+      "revId": "b31b4b41aad1dd9362c14e7bd77e158fdaeed827",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
