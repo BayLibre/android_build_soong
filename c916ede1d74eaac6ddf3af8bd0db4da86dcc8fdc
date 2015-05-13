@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4d27d5f4_aa904f1b",
+        "filename": "cc/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1005082
+      },
+      "writtenOn": "2015-05-13T01:43:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd43c57f_053a1193",
+      "range": {
+        "startLine": 196,
+        "startChar": 16,
+        "endLine": 196,
+        "endChar": 73
+      },
+      "revId": "c916ede1d74eaac6ddf3af8bd0db4da86dcc8fdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd43c57f_854e2148",
         "filename": "cc/builder.go",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2015-05-12T17:42:14Z",
       "side": 1,
       "message": "Allocating a slice in order to join two strings seems unnecesary, just use\n\n  ccCmd \u003d ccacheCmd + \" \" + ccCmd",
+      "range": {
+        "startLine": 197,
+        "startChar": 3,
+        "endLine": 201,
+        "endChar": 39
+      },
+      "revId": "c916ede1d74eaac6ddf3af8bd0db4da86dcc8fdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d27d5f4_8a8d8b05",
+        "filename": "cc/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1005082
+      },
+      "writtenOn": "2015-05-13T01:43:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd43c57f_854e2148",
       "range": {
         "startLine": 197,
         "startChar": 3,
@@ -77,6 +125,24 @@
       "side": 1,
       "message": "It should fine.",
       "parentUuid": "ad3e91ea_151b5ff4",
+      "revId": "c916ede1d74eaac6ddf3af8bd0db4da86dcc8fdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d2aa1bf_89875914",
+        "filename": "soong_ccache.bash",
+        "patchSetId": 6
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1005082
+      },
+      "writtenOn": "2015-05-13T01:43:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad3e91ea_50e69531",
       "revId": "c916ede1d74eaac6ddf3af8bd0db4da86dcc8fdc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
