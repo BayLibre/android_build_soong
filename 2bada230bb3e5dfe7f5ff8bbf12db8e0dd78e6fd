@@ -70,6 +70,30 @@
       "revId": "2bada230bb3e5dfe7f5ff8bbf12db8e0dd78e6fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad15b184_7fe56fd2",
+        "filename": "java/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-05-13T16:53:43Z",
+      "side": 1,
+      "message": "Young-Ho\u0027s comment reminds me that we should add dependency on the proguard flag files.",
+      "parentUuid": "cd1ae5b3_5a6b65ed",
+      "range": {
+        "startLine": 249,
+        "startChar": 2,
+        "endLine": 249,
+        "endChar": 38
+      },
+      "revId": "2bada230bb3e5dfe7f5ff8bbf12db8e0dd78e6fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
