@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed2329ea_27fbfaf7",
+        "filename": "java/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-05-13T01:37:12Z",
+      "side": 1,
+      "message": "This kind of dependency has little use, for the $proguardCmd is just a shell that calls a prebuilt jar in the same directory. Also there is very rare update to ProGuard. I am not sure if it\u0027s worth tracking such dependencies.\nSimilarly it\u0027s questionable to have dependency on prebuilt tools like ccache. \nMaybe nothing to worry about Ninja\u0027s performance with this extra bit of dependencies. But it adds to the verbosity of the ninja file.\n\n I agree it\u0027s good idea to have object files depend on the prebuilt gcc/clang, which are prone to frequent updates.",
+      "range": {
+        "startLine": 249,
+        "startChar": 2,
+        "endLine": 249,
+        "endChar": 38
+      },
+      "revId": "2bada230bb3e5dfe7f5ff8bbf12db8e0dd78e6fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
