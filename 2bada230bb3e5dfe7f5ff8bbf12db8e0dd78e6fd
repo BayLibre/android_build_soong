@@ -22,6 +22,30 @@
       "revId": "2bada230bb3e5dfe7f5ff8bbf12db8e0dd78e6fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4dcc357d_85c72496",
+        "filename": "java/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-13T02:01:12Z",
+      "side": 1,
+      "message": "For locally built jars, soong makes sure the shell script always has a newer timestamp than the jar.  For prebuilt jars maybe we should manually add a dependency on the jar, or skip the shell script and execute java directly?\n\nIf a new version of the tool might result in a different output file contents then we should have a dependency.  That will keep incremental builds 100% reproducible and reliable.  Other than parsing time, the cost in ninja should be very small - it internally builds a build graph, then stats each node once, so it will only have to stat the proguard jar once.\n\nThe dependency on ccache is less useful, since a new version of ccache shouldn\u0027t result in a different output file, but I left the dependency in because ccache should fast if only the ccache binary has changed.  I\u0027d be fine with removing it.",
+      "parentUuid": "ed2329ea_27fbfaf7",
+      "range": {
+        "startLine": 249,
+        "startChar": 2,
+        "endLine": 249,
+        "endChar": 38
+      },
+      "revId": "2bada230bb3e5dfe7f5ff8bbf12db8e0dd78e6fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
