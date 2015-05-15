@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eda6c9c2_398af8b2",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-15T22:51:56Z",
+      "side": 1,
+      "message": "This is fine, but I usually find fmt.Errorf more convenient.",
+      "range": {
+        "startLine": 48,
+        "startChar": 13,
+        "endLine": 48,
+        "endChar": 55
+      },
+      "revId": "8ae47de451a6a5861a1ab8b7a75f323306959f4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
