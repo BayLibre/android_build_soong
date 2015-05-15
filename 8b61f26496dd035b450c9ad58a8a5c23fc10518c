@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eda6c9c2_59717c06",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-15T23:02:12Z",
+      "side": 1,
+      "message": "This assumes that val.Variable is set, can you print a more verbose error if val is a string constant?",
+      "revId": "8b61f26496dd035b450c9ad58a8a5c23fc10518c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eda6c9c2_d95e4c77",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-15T23:02:12Z",
+      "side": 1,
+      "message": "This assumes that firstOperand is a Variable, but it could easily be an expression or a string constant",
+      "revId": "8b61f26496dd035b450c9ad58a8a5c23fc10518c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd8d8546_f8778587",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-05-15T23:02:12Z",
+      "side": 1,
+      "message": "We don\u0027t want to hard-code full paths into all Blueprint files.  Ideally we can convert all modules to use relative paths to a default install path based on module type, perhaps selecting system vs. vendor vs. oem based on Blueprints file location (under vendor/), or a boolean property for oem vs. vendor.",
+      "revId": "8b61f26496dd035b450c9ad58a8a5c23fc10518c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
