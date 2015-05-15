@@ -77,6 +77,7 @@ type commonProperties struct {
 	Name string
 	Deps []string
 	Tags []string
+	InstallPath string
 
 	// disabled: don't emit any build rules for this module
 	Disabled bool `android:"arch_variant"`
@@ -321,6 +322,7 @@ func (a *AndroidModuleBase) GenerateBuildActions(ctx blueprint.ModuleContext) {
 			hod:    a.commonProperties.CompileHostOrDevice,
 			config: ctx.Config().(Config),
 		},
+		installPath:        a.commonProperties.InstallPath,
 		installDeps:        a.computeInstallDeps(ctx),
 		installFiles:       a.installFiles,
 		extendedProperties: a.extendedProperties,
@@ -354,6 +356,7 @@ type androidBaseContextImpl struct {
 type androidModuleContext struct {
 	blueprint.ModuleContext
 	androidBaseContextImpl
+	installPath        string
 	installDeps        []string
 	installFiles       []string
 	checkbuildFiles    []string
@@ -406,13 +409,18 @@ func (a *androidModuleContext) InstallFileName(installPath, name, srcPath string
 
 	config := a.AConfig()
 	var fullInstallPath string
-	if a.hod.Device() {
-		// TODO: replace unset with a device name once we have device targeting
-		fullInstallPath = filepath.Join(config.DeviceOut(), "system",
-			installPath, name)
+
+	if a.installPath == "" {
+		if a.hod.Device() {
+			// TODO: replace unset with a device name once we have device targeting
+			installPath = filepath.Join(config.DeviceOut(), "system", installPath)
+		} else {
+			installPath = filepath.Join(config.HostOut(), installPath)
+		}
 	} else {
-		fullInstallPath = filepath.Join(config.HostOut(), installPath, name)
+		installPath = a.installPath
 	}
+	fullInstallPath = filepath.Join(installPath, name)
 
 	deps = append(deps, a.installDeps...)
 
