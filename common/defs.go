@@ -58,4 +58,80 @@ var (
 			Description: "symlink $out",
 		},
 		"fromPath")
+
+	ProductOut = pctx.VariableFunc("ProductOut", func(c interface{}) (string, error) {
+		return c.(Config).DeviceOut(), nil
+	})
+	LibDir = pctx.VariableFunc("LibDir", func(c interface{}) (string, error) {
+		if true /* && target_is_64_bit */ {
+			return "lib64", nil
+		} else {
+			return "lib", nil
+		}
+	})
+
+	TargetRootOut = pctx.StaticVariable("TargetRootOut", "${ProductOut}/root")
+	TargetRootBin = pctx.StaticVariable("TargetRootBin", "${TargetRootOut}/bin")
+	TargetRootSbin = pctx.StaticVariable("TargetRootSbin", "${TargetRootOut}/sbin")
+	TargetRootEtc = pctx.StaticVariable("TargetRootEtc", "${TargetRootOut}/etc")
+	TargetRootUsr = pctx.StaticVariable("TargetRootUsr", "${TargetRootOut}/usr")
+
+	SystemOut = pctx.StaticVariable("SystemOut", "${ProductOut}/system")
+	SystemBin = pctx.StaticVariable("SystemBin", "${SystemOut}/bin")
+	SystemXbin = pctx.StaticVariable("SystemXbin", "${SystemOut}/xbin")
+	SystemLib = pctx.StaticVariable("SystemLib", "$SystemOut}/${LibDir}")
+	SystemJavaLib = pctx.StaticVariable("SystemJavaLib", "${SystemOut}/framework")
+	SystemApp = pctx.StaticVariable("SystemApp", "${SystemOut}/app")
+	SystemPrivApp = pctx.StaticVariable("SystemPrivApp", "${SystemOut}/priv-app")
+	SystemKeyLayout = pctx.StaticVariable("SystemKeyLayout", "${SystemOut}/usr/keylayout")
+	SystemKeyChars = pctx.StaticVariable("SystemKeyChars", "${SystemOut}/usr/keychars")
+	SystemEtc = pctx.StaticVariable("SystemEtc", "${SystemOut}/etc")
+	SystemFake = pctx.StaticVariable("SystemFake", "${ProductOut}/fake_packages")
+
+	DataOut = pctx.StaticVariable("DataOut", "${ProductOut}/data")
+	DataBin = pctx.StaticVariable("DataBin", "${SystemBin}")
+	DataLib = pctx.StaticVariable("DataLib", "${SystemLib}")
+	DataJavaLib = pctx.StaticVariable("DataJavaLib", "${DataOut}/framework")
+	DataApp = pctx.StaticVariable("DataApp", "${DataOut}/app")
+	DataKeyLayout = pctx.StaticVariable("DataKeyLayout", "${SystemKeyLayout}")
+	DataKeyChars = pctx.StaticVariable("DataKeyChars", "${SystemKeyChars}")
+	DataEtc = pctx.StaticVariable("DataEtc", "${SystemEtc}")
+	DataFake = pctx.StaticVariable("DataFake", "${DataOut}/fake_packages")
+
+	CacheOut = pctx.StaticVariable("CacheOut", "${ProductOut}/cache")
+
+	VendorOut = pctx.StaticVariable("VendorOut", "${ProductOut}/vendor")
+	VendorBin = pctx.StaticVariable("VendorBin", "${VendorOut}/bin")
+	VendorXbin = pctx.StaticVariable("VendorXbin", "${VendorOut}/xbin")
+	VendorLib = pctx.StaticVariable("VendorLib", "${VendorOut}/${LibDir}")
+	VendorJavaLib = pctx.StaticVariable("VendorJavaLib", "${VendorOut}/framework")
+	VendorApp = pctx.StaticVariable("VendorApp", "${VendorOut}/app")
+	VendorEtc = pctx.StaticVariable("VendorEtc", "${VendorOut}/etc")
+
+	OemOut = pctx.StaticVariable("OemOut", "${ProductOut}/vendor")
+	OemBin = pctx.StaticVariable("OemBin", "${OemOut}/bin")
+	OemLib = pctx.StaticVariable("OemLib", "${OemOut}/${LibDir}")
+	OemApp = pctx.StaticVariable("OemApp", "${OemOut}/app")
+	OemEtc = pctx.StaticVariable("OemEtc", "${OemOut}/etc")
+
+	RecoveryOut = pctx.StaticVariable("RecoveryOut", "${ProductOut}/recovery")
+	RecoveryRoot = pctx.StaticVariable("RecoveryRoot", "${RecoveryOut}/root")
+
+	SysloaderOut = pctx.StaticVariable("SysloaderOut", "${ProductOut}/sysloader")
+	SysloaderRoot = pctx.StaticVariable("SysloaderRoot", "${SysloaderOut}/root")
+	SysloaderSystem = pctx.StaticVariable("SysloaderSystem", "${SysloaderRoot}/system")
+
+	InstallerOut = pctx.StaticVariable("InstallerOut", "${ProductOut}/installer")
+	InstallerData = pctx.StaticVariable("InstallerData", "${InstallerOut}/data")
+	InstallerRoot = pctx.StaticVariable("InstallerRoot", "${InstallerOut}/root")
+	InstallerSystem = pctx.StaticVariable("InstallerSystem", "${InstallerRoot}/system")
+
+	HostOut = pctx.VariableFunc("HostOut", func(c interface{}) (string, error) {
+		return c.(Config).HostOut(), nil
+	})
+	HostBin = pctx.StaticVariable("HostBin", "${HostOut}/bin")
+	HostLib = pctx.StaticVariable("HostLib", "${HostOut}/lib64")
+	HostJavaLib = pctx.StaticVariable("HostJavaLib", "${HostOut}/framework")
+	HostSdkAddon = pctx.StaticVariable("HostSdkAddon", "${HostOut}/sdk_addon")
+	HostFake = pctx.StaticVariable("HostFake", "${HostOut}/fake_packages")
 )
