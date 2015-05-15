@@ -79,6 +79,7 @@ var rewriteProperties = map[string]struct {
 	"LOCAL_C_INCLUDES":            {localIncludeDirs},
 	"LOCAL_EXPORT_C_INCLUDE_DIRS": {exportIncludeDirs},
 	"LOCAL_MODULE_STEM":           {stem},
+	"LOCAL_MODULE_PATH":           {installPath},
 }
 
 func localAbsPath(value bpparser.Value) (*bpparser.Value, error) {
@@ -261,6 +262,107 @@ func stem(file *bpFile, prefix string, value *mkparser.MakeString, appendVariabl
 		val.Expression.Args[0].Variable == "LOCAL_MODULE" {
 		varName = "suffix"
 		val = &val.Expression.Args[1]
+	}
+
+	return setVariable(file, appendVariable, prefix, varName, val, true)
+}
+
+var pathPrefixes = map[string]string{
+	"TARGET_ROOT_OUT":      "${TargetRootOut}",
+	"TARGET_ROOT_BIN":      "${TargetRootBin}",
+	"TARGET_ROOT_SBIN":     "${TargetRootSbin}",
+	"TARGET_ROOT_ETC":      "${TargetRootEtc}",
+	"TARGET_ROOT_USR":      "${TargetRootUsr}",
+
+	"TARGET_OUT":                           "${SystemOut}",
+	"TARGET_OUT_EXECUTABLES":               "${SystemBin}",
+	"TARGET_OUT_OPTIONAL_EXECUTABLES":      "${SystemXbin}",
+	"TARGET_OUT_SHARED_LIBRARIES":          "${SystemLib}",
+	"TARGET_OUT_JAVA_LIBRARIES":            "${SystemJavaLib}",
+	"TARGET_OUT_APPS":                      "${SystemApp}",
+	"TARGET_OUT_APPS_PRIVILEGED":           "${SystemPrivApp}",
+	"TARGET_OUT_KEYLAYOUT":                 "${SystemKeyLayout}",
+	"TARGET_OUT_KEYCHARS":                  "${SystemKeyChars}",
+	"TARGET_OUT_ETC":                       "${SystemEtc}",
+	"TARGET_OUT_FAKE":                      "${SystemFake}",
+
+	"TARGET_OUT_DATA":                      "${DataOut}}",
+	"TARGET_OUT_DATA_EXECUTABLES":          "${DataBin}",
+	"TARGET_OUT_DATA_SHARED_LIBRARIES":     "${DataLib}",
+	"TARGET_OUT_DATA_JAVA_LIBRARIES":       "${DataJavaLib}",
+	"TARGET_OUT_DATA_APP":                  "${DataApp}",
+	"TARGET_OUT_DATA_KEYLAYOUT":            "${DataKeyLayout}",
+	"TARGET_OUT_DATA_KEYCHARS":             "${DataKeyChars}",
+	"TARGET_OUT_DATA_ETC":                  "${DataEtc}",
+	"TARGET_OUT_DATA_FAKE":                 "${DataFake}",
+
+	"TARGET_OUT_CACHE":    "${CacheOut}",
+
+	"TARGET_OUT_VENDOR":                            "${VendorOut}",
+	"TARGET_OUT_VENDOR_EXECUTABLES":                "${VendorBin}",
+	"TARGET_OUT_VENDOR_OPTIONAL_EXECUTABLES":       "${VendorXbin}",
+	"TARGET_OUT_VENDOR_SHARED_LIBRARIES":           "${VendorLib}",
+	"TARGET_OUT_VENDOR_JAVA_LIBRARIES":             "${VendorJavaLib}",
+	"TARGET_OUT_VENDOR_APPS":                       "${VendorApp}",
+	"TARGET_OUT_VENDOR_ETC":                        "${VendorEtc}",
+
+	"TARGET_OUT_OEM":			"${OemOut}",
+	"TARGET_OUT_OEM_EXECUTABLES":		"${OemBin}",
+	"TARGET_OUT_OEM_SHARED_LIBRARIES":	"${OemLib}",
+	"TARGET_OUT_OEM_APPS":			"${OemApp}",
+	"TARGET_OUT_OEM_ETC":			"${OemEtc}",
+
+	"TARGET_RECOVERY_OUT":          "${RecoveryOut}",
+	"TARGET_RECOVERY_ROOT_OUT":     "${RecoveryRoot}",
+
+	"TARGET_SYSLOADER_OUT":         "${SysloaderOut}",
+	"TARGET_SYSLOADER_ROOT_OUT":    "${SysloaderRoot}",
+	"TARGET_SYSLOADER_SYSTEM_OUT":  "${SysloaderSystem}",
+
+	"TARGET_INSTALLER_OUT":         "${InstallerOut}",
+	"TARGET_INSTALLER_DATA_OUT":    "${InstallerData}",
+	"TARGET_INSTALLER_ROOT_OUT":    "${InstallerRoot}",
+	"TARGET_INSTALLER_SYSTEM_OUT":  "${InstallerSystem}",
+
+	"HOST_OUT":                     "${HostOut}",
+	"HOST_OUT_EXECUTABLES":         "${HostBin}",
+	"HOST_OUT_SHARED_LIBRARIES":	"${HostLib}",
+	"HOST_OUT_JAVA_LIBRARIES":      "${HostJavaLib}",
+	"HOST_OUT_SDK_ADDON":           "${HostSdkAddon}",
+	"HOST_OUT_FAKE":                "${HostFake}",
+}
+
+func installPath(file *bpFile, prefix string, value *mkparser.MakeString, appendVariable bool) error {
+	val, err := makeVariableToBlueprint(file, value, bpparser.String)
+	if err != nil {
+		return err
+	}
+	varName := "installPath"
+
+	if val.Expression == nil {
+		if val.StringValue != "" || pathPrefixes[val.Variable] == "" {
+			return fmt.Errorf("unsupported location assignment")
+		}
+
+		val = &bpparser.Value{
+			Type:        bpparser.String,
+			StringValue: pathPrefixes[val.Variable],
+		}
+	} else {
+		if val.Expression.Operator != '+' {
+			return fmt.Errorf("unsupported operator: %s", val.Expression.Operator)
+		}
+
+		firstOperand := val.Expression.Args[0]
+		if firstOperand.StringValue != "" ||
+				pathPrefixes[firstOperand.Variable] == "" {
+			return fmt.Errorf("unsupported location assignment")
+		}
+
+		val.Expression.Args[0] = bpparser.Value{
+			Type:        bpparser.String,
+			StringValue: pathPrefixes[firstOperand.Variable],
+		}
 	}
 
 	return setVariable(file, appendVariable, prefix, varName, val, true)
