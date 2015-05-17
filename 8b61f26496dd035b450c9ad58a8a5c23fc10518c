@@ -104,6 +104,24 @@
       "revId": "8b61f26496dd035b450c9ad58a8a5c23fc10518c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ada691d3_9dfe437a",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1005082
+      },
+      "writtenOn": "2015-05-17T18:38:50Z",
+      "side": 1,
+      "message": "I added \"InstallRoot\" properties for determine installation path\nAnd removed relative paths variable from common/defs.go",
+      "parentUuid": "6db0190a_bb2c67c6",
+      "revId": "8b61f26496dd035b450c9ad58a8a5c23fc10518c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
