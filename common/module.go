@@ -95,6 +95,8 @@ type commonProperties struct {
 
 	// Set by InitAndroidModule
 	HostOrDeviceSupported HostOrDeviceSupported `blueprint:"mutated"`
+
+	InstallRoot, InstallPath string
 }
 
 type hostAndDeviceProperties struct {
@@ -321,6 +323,8 @@ func (a *AndroidModuleBase) GenerateBuildActions(ctx blueprint.ModuleContext) {
 			hod:    a.commonProperties.CompileHostOrDevice,
 			config: ctx.Config().(Config),
 		},
+		installRoot:        a.commonProperties.InstallRoot,
+		installPath:        a.commonProperties.InstallPath,
 		installDeps:        a.computeInstallDeps(ctx),
 		installFiles:       a.installFiles,
 		extendedProperties: a.extendedProperties,
@@ -354,6 +358,7 @@ type androidBaseContextImpl struct {
 type androidModuleContext struct {
 	blueprint.ModuleContext
 	androidBaseContextImpl
+	installRoot, installPath string
 	installDeps        []string
 	installFiles       []string
 	checkbuildFiles    []string
@@ -406,9 +411,16 @@ func (a *androidModuleContext) InstallFileName(installPath, name, srcPath string
 
 	config := a.AConfig()
 	var fullInstallPath string
+	if a.installPath != "" {
+		installPath = a.installPath
+	}
 	if a.hod.Device() {
+		InstallRoot := "system"
+		if a.installRoot != "" {
+			InstallRoot = a.installRoot
+		}
 		// TODO: replace unset with a device name once we have device targeting
-		fullInstallPath = filepath.Join(config.DeviceOut(), "system",
+		fullInstallPath = filepath.Join(config.DeviceOut(), InstallRoot,
 			installPath, name)
 	} else {
 		fullInstallPath = filepath.Join(config.HostOut(), installPath, name)
