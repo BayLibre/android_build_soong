@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ada691d3_1da91389",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1005082
+      },
+      "writtenOn": "2015-05-17T15:14:40Z",
+      "side": 1,
+      "message": "I update that checked whether val.StringValue.\nIn Android.mk, they must bestarted with Variable.\n\nCan you tell me what you mean \"a more verbose error\"?",
+      "parentUuid": "eda6c9c2_59717c06",
+      "revId": "8b61f26496dd035b450c9ad58a8a5c23fc10518c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eda6c9c2_d95e4c77",
         "filename": "androidmk/cmd/androidmk/android.go",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "8db54dfa_fc5b0961",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1005082
+      },
+      "writtenOn": "2015-05-17T15:14:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eda6c9c2_d95e4c77",
+      "revId": "8b61f26496dd035b450c9ad58a8a5c23fc10518c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd8d8546_f8778587",
         "filename": "androidmk/cmd/androidmk/android.go",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2015-05-15T23:02:12Z",
       "side": 1,
       "message": "We don\u0027t want to hard-code full paths into all Blueprint files.  Ideally we can convert all modules to use relative paths to a default install path based on module type, perhaps selecting system vs. vendor vs. oem based on Blueprints file location (under vendor/), or a boolean property for oem vs. vendor.",
+      "revId": "8b61f26496dd035b450c9ad58a8a5c23fc10518c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6db0190a_bb2c67c6",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1005082
+      },
+      "writtenOn": "2015-05-17T15:14:40Z",
+      "side": 1,
+      "message": "I added relative paths variable for install location in common/defs.go and use it.\n\nBut some of Android.mk files use non-qualified path.\n\n\nHere is LOCAL_MODULE_PATH usages on master-soong branch\n\nhttps://gist.github.com/ganadist/5a40cca5680ea94c82e7",
+      "parentUuid": "cd8d8546_f8778587",
       "revId": "8b61f26496dd035b450c9ad58a8a5c23fc10518c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
