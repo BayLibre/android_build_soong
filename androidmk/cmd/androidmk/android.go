@@ -79,6 +79,7 @@ var rewriteProperties = map[string]struct {
 	"LOCAL_C_INCLUDES":            {localIncludeDirs},
 	"LOCAL_EXPORT_C_INCLUDE_DIRS": {exportIncludeDirs},
 	"LOCAL_MODULE_STEM":           {stem},
+	"LOCAL_MODULE_PATH":           {installPath},
 }
 
 func localAbsPath(value bpparser.Value) (*bpparser.Value, error) {
@@ -261,6 +262,146 @@ func stem(file *bpFile, prefix string, value *mkparser.MakeString, appendVariabl
 		val.Expression.Args[0].Variable == "LOCAL_MODULE" {
 		varName = "suffix"
 		val = &val.Expression.Args[1]
+	}
+
+	return setVariable(file, appendVariable, prefix, varName, val, true)
+}
+
+var outPath = "/"
+var rootPath = "/root"
+var systemPath = "" // default path for target
+var dataPath = "/data"
+var cachePath = "/cache"
+var vendorPath = "/vendor"
+var oemPath = "/oem"
+var recoveryPath = "/recovery"
+var sysloaderPath = "/sysloader"
+var installerPath = "/installer"
+var hostOutPath = "" // default path for host
+
+var pathPrefixes = map[string][2]string{
+	"PRODUCT_OUT":          {outPath, "/"},
+
+	"TARGET_ROOT_OUT":      {rootPath, "/"},
+	"TARGET_ROOT_BIN":      {rootPath, "/bin"},
+	"TARGET_ROOT_SBIN":     {rootPath, "/sbin"},
+	"TARGET_ROOT_ETC":      {rootPath, "/etc"},
+	"TARGET_ROOT_USR":      {rootPath, "/usr"},
+
+	"TARGET_OUT":                           {systemPath, "/"},
+	"TARGET_OUT_EXECUTABLES":               {systemPath, "/bin"},
+	"TARGET_OUT_OPTIONAL_EXECUTABLES":      {systemPath, "/xbin"},
+	"TARGET_OUT_SHARED_LIBRARIES":          {systemPath, "/${LibDir}"},
+	"TARGET_OUT_JAVA_LIBRARIES":            {systemPath, "/framework"},
+	"TARGET_OUT_APPS":                      {systemPath, "/app"},
+	"TARGET_OUT_APPS_PRIVILEGED":           {systemPath, "/priv-app"},
+	"TARGET_OUT_KEYLAYOUT":                 {systemPath, "/usr/keylayout"},
+	"TARGET_OUT_KEYCHARS":                  {systemPath, "/usr/keychar"},
+	"TARGET_OUT_ETC":                       {systemPath, "/etc"},
+	"TARGET_OUT_FAKE":                      {outPath, "/fake_packages"},
+
+	"TARGET_OUT_DATA":                      {dataPath, "/"},
+	"TARGET_OUT_DATA_EXECUTABLES":          {systemPath, "/bin"},
+	"TARGET_OUT_DATA_SHARED_LIBRARIES":     {systemPath, "/${LibDir}"},
+	"TARGET_OUT_DATA_JAVA_LIBRARIES":       {systemPath, "/framework"},
+	"TARGET_OUT_DATA_APP":                  {dataPath, "/app"},
+	"TARGET_OUT_DATA_KEYLAYOUT":            {systemPath, "/usr/keylayout"},
+	"TARGET_OUT_DATA_KEYCHARS":             {systemPath, "/usr/keychar"},
+	"TARGET_OUT_DATA_ETC":                  {systemPath, "/etc"},
+	"TARGET_OUT_DATA_FAKE":                 {dataPath, "/fake_packages"},
+
+	"TARGET_OUT_CACHE":    {cachePath, "/"},
+
+	"TARGET_OUT_VENDOR":                            {vendorPath, "/"},
+	"TARGET_OUT_VENDOR_EXECUTABLES":                {vendorPath, "/bin"},
+	"TARGET_OUT_VENDOR_OPTIONAL_EXECUTABLES":       {vendorPath, "/xbin"},
+	"TARGET_OUT_VENDOR_SHARED_LIBRARIES":           {vendorPath, "/${LibDir}"},
+	"TARGET_OUT_VENDOR_JAVA_LIBRARIES":             {vendorPath, "/framework"},
+	"TARGET_OUT_VENDOR_APPS":                       {vendorPath, "/app"},
+	"TARGET_OUT_VENDOR_ETC":                        {vendorPath, "/etc"},
+
+	"TARGET_OUT_OEM":			{oemPath, "/"},
+	"TARGET_OUT_OEM_EXECUTABLES":		{oemPath, "/bin"},
+	"TARGET_OUT_OEM_SHARED_LIBRARIES":	{oemPath, "/${LibDir}"},
+	"TARGET_OUT_OEM_APPS":			{oemPath, "/app"},
+	"TARGET_OUT_OEM_ETC":			{oemPath, "/etc"},
+
+	"TARGET_RECOVERY_OUT":          {recoveryPath, "/"},
+	"TARGET_RECOVERY_ROOT_OUT":     {recoveryPath, "/root"},
+
+	"TARGET_SYSLOADER_OUT":         {sysloaderPath, "/"},
+	"TARGET_SYSLOADER_ROOT_OUT":    {sysloaderPath, "/root"},
+	"TARGET_SYSLOADER_SYSTEM_OUT":  {sysloaderPath, "/root/system"},
+
+	"TARGET_INSTALLER_OUT":         {installerPath, "/"},
+	"TARGET_INSTALLER_DATA_OUT":    {installerPath, "/data"},
+	"TARGET_INSTALLER_ROOT_OUT":    {installerPath, "/root"},
+	"TARGET_INSTALLER_SYSTEM_OUT":  {installerPath, "/root/system"},
+
+	"HOST_OUT":                     {hostOutPath, "/"},
+	"HOST_OUT_EXECUTABLES":         {hostOutPath, "/bin"},
+	"HOST_OUT_SHARED_LIBRARIES":	{hostOutPath, "/lib64"},
+	"HOST_OUT_JAVA_LIBRARIES":      {hostOutPath, "/framework"},
+	"HOST_OUT_SDK_ADDON":           {hostOutPath, "/sdk_addon"},
+	"HOST_OUT_FAKE":                {hostOutPath, "/fake_packages"},
+}
+
+func parseInstallPathValue(val *bpparser.Value) (string, string, error) {
+	var path [2]string
+	var ok bool
+	if val.StringValue == "" {
+		if path, ok = pathPrefixes[val.Variable]; ok {
+			return path[0], path[1], nil
+		}
+	}
+	return "", "", fmt.Errorf("unsupported location assignment")
+}
+
+func installPath(file *bpFile, prefix string, value *mkparser.MakeString, appendVariable bool) error {
+	val, err := makeVariableToBlueprint(file, value, bpparser.String)
+	if err != nil {
+		return err
+	}
+	var varName, installRoot, installPath string
+	varName = "installPath"
+
+	if val.Expression == nil {
+		if installRoot, installPath, err = parseInstallPathValue(val); err != nil {
+			return err
+		}
+
+		val = &bpparser.Value{
+			Type:        bpparser.String,
+			StringValue: installPath,
+		}
+	} else {
+		if val.Expression.Operator != '+' {
+			return fmt.Errorf("unsupported operator: %s", val.Expression.Operator)
+		}
+
+		if installRoot, installPath, err = parseInstallPathValue(&val.Expression.Args[0]); err != nil {
+			return err
+		}
+
+		val.Expression.Args[0] = bpparser.Value{
+			Type:        bpparser.String,
+			StringValue: installPath,
+		}
+	}
+
+	err = setVariable(file, appendVariable, prefix, varName, val, true)
+	if err != nil {
+		return err
+	}
+
+	if (installRoot == "") {
+		return nil
+	}
+
+	varName = "installRoot"
+	val = &bpparser.Value{
+		Type:        bpparser.String,
+		StringValue: installRoot,
 	}
 
 	return setVariable(file, appendVariable, prefix, varName, val, true)
