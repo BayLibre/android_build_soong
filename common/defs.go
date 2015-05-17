@@ -58,4 +58,12 @@ var (
 			Description: "symlink $out",
 		},
 		"fromPath")
+
+	LibDir = pctx.VariableFunc("LibDir", func(c interface{}) (string, error) {
+		if true /* && target_is_64_bit */ {
+			return "lib64", nil
+		} else {
+			return "lib", nil
+		}
+	})
 )
