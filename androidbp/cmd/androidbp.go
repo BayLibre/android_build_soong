@@ -309,6 +309,7 @@ func (w *androidMkWriter) handleLocalPath() error {
 	}
 
 	w.WriteString("LOCAL_PATH := " + rel + "\n")
+	w.WriteString("LOCAL_MODULE_MAKEFILE := $(lastword $(MAKEFILE_LIST))\n\n")
 	return nil
 }
 
