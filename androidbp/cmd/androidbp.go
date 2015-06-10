@@ -20,6 +20,7 @@ type androidMkWriter struct {
 
 	blueprint *bpparser.File
 	path      string
+	androidMk string
 
 	mapScope map[string][]*bpparser.Property
 }
@@ -302,6 +303,7 @@ func (w *androidMkWriter) handleLocalPath() error {
 	}
 
 	w.WriteString("LOCAL_PATH := " + rel + "\n")
+	w.WriteString("LOCAL_MODULE_MAKEFILE := " + w.androidMk + "\n")
 	return nil
 }
 
@@ -369,6 +371,7 @@ func main() {
 	writer := &androidMkWriter{
 		blueprint: blueprint,
 		path:      path.Dir(androidBp),
+		androidMk: androidMk,
 		mapScope:  make(map[string][]*bpparser.Property),
 	}
 
