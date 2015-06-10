@@ -29,7 +29,6 @@ var standardProperties = map[string]struct {
 	"whole_static_libs":   {"LOCAL_WHOLE_STATIC_LIBRARIES", bpparser.List},
 	"system_shared_libs":  {"LOCAL_SYSTEM_SHARED_LIBRARIES", bpparser.List},
 	"include_dirs":        {"LOCAL_C_INCLUDES", bpparser.List},
-	"export_include_dirs": {"LOCAL_EXPORT_C_INCLUDE_DIRS", bpparser.List},
 	"asflags":             {"LOCAL_ASFLAGS", bpparser.List},
 	"clang_asflags":       {"LOCAL_CLANG_ASFLAGS", bpparser.List},
 	"cflags":              {"LOCAL_CFLAGS", bpparser.List},
@@ -61,6 +60,13 @@ var standardProperties = map[string]struct {
 	"rtti":                     {"LOCAL_RTTI_FLAG", bpparser.Bool},
 	"no_standard_libraries":    {"LOCAL_NO_STANDARD_LIBRARIES", bpparser.Bool},
 	"export_package_resources": {"LOCAL_EXPORT_PACKAGE_RESOURCES", bpparser.Bool},
+}
+
+var rewriteProperties = map[string]struct {
+	f func(prop *bpparser.Property, suffix *string) (computedProps []string)
+}{
+	"local_include_dirs":  {localIncludeDirs},
+	"export_include_dirs": {exportIncludeDirs},
 }
 
 var moduleTypeToRule = map[string]string{
