@@ -194,6 +194,11 @@ type AndroidModuleBase struct {
 	noAddressSanitizer bool
 	installFiles       []string
 	checkbuildFiles    []string
+
+	// Used by checkbuildSingleton to create checkbuild and per-directory build targets
+	// Only set on the final variant of each module
+	moduleTarget string
+	blueprintDir string
 }
 
 func (a *AndroidModuleBase) base() *AndroidModuleBase {
@@ -293,6 +298,9 @@ func (a *AndroidModuleBase) generateModuleTarget(ctx blueprint.ModuleContext) {
 			Implicits: deps,
 			Optional:  true,
 		})
+
+		a.blueprintDir = ctx.ModuleDir()
+		a.moduleTarget = ctx.ModuleName()
 	}
 }
 

@@ -15,6 +15,8 @@
 package common
 
 import (
+	"path/filepath"
+
 	"github.com/google/blueprint"
 )
 
@@ -26,10 +28,16 @@ type checkbuildSingleton struct{}
 
 func (c *checkbuildSingleton) GenerateBuildActions(ctx blueprint.SingletonContext) {
 	deps := []string{}
+
+	dirModules := make(map[string][]string)
+
 	ctx.VisitAllModules(func(module blueprint.Module) {
 		if a, ok := module.(AndroidModule); ok {
-			if len(a.base().checkbuildFiles) > 0 {
-				deps = append(deps, ctx.ModuleName(module)+"-checkbuild")
+			moduleTarget := a.base().moduleTarget
+			if moduleTarget != "" {
+				blueprintDir := a.base().blueprintDir
+				deps = append(deps, moduleTarget)
+				dirModules[blueprintDir] = append(dirModules[blueprintDir], moduleTarget)
 			}
 		}
 	})
@@ -41,4 +49,14 @@ func (c *checkbuildSingleton) GenerateBuildActions(ctx blueprint.SingletonContex
 		// HACK: checkbuild should be an optional build, but force it enabled for now
 		//Optional:  true,
 	})
+
+	dirs := sortedKeys(dirModules)
+	for _, dir := range dirs {
+		ctx.Build(pctx, blueprint.BuildParams{
+			Rule:      blueprint.Phony,
+			Outputs:   []string{filepath.Join("mm", dir)},
+			Implicits: dirModules[dir],
+			Optional:  true,
+		})
+	}
 }
