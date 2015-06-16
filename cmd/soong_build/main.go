@@ -81,7 +81,7 @@ func main() {
 	ctx.RegisterEarlyMutator("test_per_src", cc.TestPerSrcMutator)
 
 	// Singletons
-	ctx.RegisterSingletonType("checkbuild", common.CheckbuildSingleton)
+	ctx.RegisterSingletonType("android", common.AndroidSingleton)
 	ctx.RegisterSingletonType("env", common.EnvSingleton)
 	ctx.RegisterSingletonType("logtags", java.LogtagsSingleton)
 
