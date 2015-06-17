@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "393668c8_128cd2b9",
+        "filename": "common/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-06-17T22:29:06Z",
+      "side": 1,
+      "message": "Does it make sense to put this in common.Glob still? So that you can pass a container directory instead of using the internal globToString api in all the callers?",
+      "range": {
+        "startLine": 509,
+        "startChar": 50,
+        "endLine": 509,
+        "endChar": 84
+      },
+      "revId": "9361f9f949db15a8507d24ec0c001df4cc764afd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
