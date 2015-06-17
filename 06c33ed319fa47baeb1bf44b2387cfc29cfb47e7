@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "796d40b3_f2fd81e7",
+        "filename": "common/checkbuild.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-06-17T00:51:43Z",
+      "side": 1,
+      "message": "I see what you mean.  We don\u0027t have any idea of an installed vs. not installed module yet, only installed vs. not installed files.  For example, .a files never get installed, and if an installed file doesn\u0027t depend on them they won\u0027t get built.  So we call all .a files checkbuild files, and soong checkbuild builds them.\n\nI\u0027ll fix it so checkbuild depends on the installable file instead of the installed file.",
+      "parentUuid": "b98a589d_31a52a8c",
+      "revId": "06c33ed319fa47baeb1bf44b2387cfc29cfb47e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b98a589d_712092d2",
         "filename": "common/checkbuild.go",
         "patchSetId": 1
