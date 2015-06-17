@@ -15,6 +15,7 @@
 package common
 
 import (
+	"android/soong"
 	"path/filepath"
 	"runtime"
 
@@ -477,6 +478,10 @@ func ExpandSources(ctx AndroidModuleContext, srcFiles []string) []string {
 
 	srcFiles = expandGlobs(ctx, srcFiles)
 	return srcFiles
+}
+
+func init() {
+	soong.RegisterSingletonType("buildtarget", BuildTargetSingleton)
 }
 
 func BuildTargetSingleton() blueprint.Singleton {
