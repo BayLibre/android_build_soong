@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "393668c8_58e2e9c1",
+        "filename": "common/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-06-17T23:58:58Z",
+      "side": 1,
+      "message": "I assume this needs a Blueprint change.  An alternative would be to assume that all Android modules are defined in an Android.bp file, and just use filepath.Join(ctx.ModuleDir(), \"Android.bp\")",
+      "range": {
+        "startLine": 314,
+        "startChar": 24,
+        "endLine": 314,
+        "endChar": 34
+      },
+      "revId": "d9a50d6d9ab10e62f0e769ec4bffff2a81409045",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9262c9c_35a29a32",
+        "filename": "common/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-06-17T23:58:58Z",
+      "side": 1,
+      "message": "if you don\u0027t need the sort (see below), then bpFiles can be a map and you can just use bpFiles[bpFile] \u003d true",
+      "revId": "d9a50d6d9ab10e62f0e769ec4bffff2a81409045",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "192d2477_91819ed8",
+        "filename": "common/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-06-17T23:58:58Z",
+      "side": 1,
+      "message": "this sort (and my sort above) are probably not necessary, i think blueprint already sorts the build rules",
+      "revId": "d9a50d6d9ab10e62f0e769ec4bffff2a81409045",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
