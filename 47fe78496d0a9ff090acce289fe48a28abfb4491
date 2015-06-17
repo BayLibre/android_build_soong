@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "594a3c43_b28135d8",
+        "filename": "common/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-06-17T01:21:28Z",
+      "side": 1,
+      "message": "androidSingleton",
+      "range": {
+        "startLine": 198,
+        "startChar": 12,
+        "endLine": 198,
+        "endChar": 31
+      },
+      "revId": "47fe78496d0a9ff090acce289fe48a28abfb4491",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
