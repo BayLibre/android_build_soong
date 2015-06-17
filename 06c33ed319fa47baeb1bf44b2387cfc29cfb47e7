@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "594a3c43_af5f0e6c",
+        "filename": "common/checkbuild.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-06-17T00:16:54Z",
+      "side": 1,
+      "message": "This would cause checkbuild to depend on the installed files in addition to the checkbuild targets",
+      "revId": "06c33ed319fa47baeb1bf44b2387cfc29cfb47e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b98a589d_712092d2",
+        "filename": "common/checkbuild.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-06-17T00:16:54Z",
+      "side": 1,
+      "message": "I think this singleton should either be split or renamed -- I don\u0027t associate \u0027mm\u0027 with \u0027checkbuild\u0027",
+      "revId": "06c33ed319fa47baeb1bf44b2387cfc29cfb47e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
