@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe5bd63c_07615607",
+        "filename": "common/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-06-18T01:39:52Z",
+      "side": 1,
+      "message": "nil",
+      "range": {
+        "startLine": 583,
+        "startChar": 52,
+        "endLine": 583,
+        "endChar": 62
+      },
+      "revId": "3fcf6ccea06182fba5de93874d98973fe3086cf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de29b286_ee75ff45",
+        "filename": "common/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-06-18T01:39:52Z",
+      "side": 1,
+      "message": "I suggest\n\n filepath.Join(\"androidmk\", filepath.Dir(origBp), \"Android.mk\")",
+      "revId": "3fcf6ccea06182fba5de93874d98973fe3086cf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
