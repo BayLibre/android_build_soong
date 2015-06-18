@@ -98,6 +98,24 @@
       "revId": "d9a50d6d9ab10e62f0e769ec4bffff2a81409045",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99203484_ed383d00",
+        "filename": "common/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-06-18T00:08:42Z",
+      "side": 1,
+      "message": "We don\u0027t want the build.ninja file to change every time it is regenerated, so if it is unsorted then you should keep the sort.  I guess modules/singletons are sorted, but the rules inside each is in code order.",
+      "parentUuid": "393668c8_58fca936",
+      "revId": "d9a50d6d9ab10e62f0e769ec4bffff2a81409045",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
