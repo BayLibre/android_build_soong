@@ -46,6 +46,30 @@
       "revId": "bf9207aceba418cc55ddc2a780d4dfea07b88673",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e67ca0f_55d57bb0",
+        "filename": "common/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-06-18T23:58:24Z",
+      "side": 1,
+      "message": "Thanks. I saw the other pending change by ccross.",
+      "parentUuid": "3e700ec3_cee9fff3",
+      "range": {
+        "startLine": 583,
+        "startChar": 26,
+        "endLine": 583,
+        "endChar": 42
+      },
+      "revId": "bf9207aceba418cc55ddc2a780d4dfea07b88673",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
