@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d9262c9c_b5968a9d",
+        "filename": "common/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-06-18T00:06:03Z",
+      "side": 1,
+      "message": "Yeah: https://github.com/google/blueprint/pull/34",
+      "parentUuid": "393668c8_58e2e9c1",
+      "range": {
+        "startLine": 314,
+        "startChar": 24,
+        "endLine": 314,
+        "endChar": 34
+      },
+      "revId": "d9a50d6d9ab10e62f0e769ec4bffff2a81409045",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9262c9c_35a29a32",
         "filename": "common/module.go",
         "patchSetId": 1
@@ -53,6 +77,24 @@
       "writtenOn": "2015-06-17T23:58:58Z",
       "side": 1,
       "message": "this sort (and my sort above) are probably not necessary, i think blueprint already sorts the build rules",
+      "revId": "d9a50d6d9ab10e62f0e769ec4bffff2a81409045",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "393668c8_58fca936",
+        "filename": "common/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-06-18T00:06:03Z",
+      "side": 1,
+      "message": "When I remove it, it becomes unsorted. But it really doesn\u0027t matter if this is sorted or not, so I\u0027ll remove this and simplify",
+      "parentUuid": "192d2477_91819ed8",
       "revId": "d9a50d6d9ab10e62f0e769ec4bffff2a81409045",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
