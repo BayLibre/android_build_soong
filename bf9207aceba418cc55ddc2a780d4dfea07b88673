@@ -22,6 +22,30 @@
       "revId": "bf9207aceba418cc55ddc2a780d4dfea07b88673",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e700ec3_cee9fff3",
+        "filename": "common/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-06-18T23:01:09Z",
+      "side": 1,
+      "message": "It\u0027s a place to store the dependency information so that everything gets regenerated if an Android.mk file disappears or appears.",
+      "parentUuid": "1e67ca0f_df83ec86",
+      "range": {
+        "startLine": 583,
+        "startChar": 26,
+        "endLine": 583,
+        "endChar": 42
+      },
+      "revId": "bf9207aceba418cc55ddc2a780d4dfea07b88673",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
