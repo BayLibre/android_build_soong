@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e67ca0f_2d667b20",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-06-19T19:37:31Z",
+      "side": 1,
+      "message": "I think these can share an implementation if you get the bp property name from prop.Name.Name and convert it to the Android.mk property name.",
+      "revId": "6364dc69325ef6396b1117abfd538c0dec6e7934",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
