@@ -70,6 +70,30 @@
       "revId": "cdd1a99096e574d497e4bbaa1d02ea727422b507",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ebe4e91_789f6d3c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-06-20T05:03:21Z",
+      "side": 1,
+      "message": "Ah, that explains it. With this change:\n- if a/b/Android.mk doesn\u0027t exist, the dependency looks like:\nbuild.ninja -\u003e fileListFile -\u003e dir a/b\n- if a/b/Android.mk exists, the dependency is:\nbuild.ninja -\u003e a/b/Android.mk.\n\nThanks!",
+      "parentUuid": "1eb50aac_f12dba49",
+      "range": {
+        "startLine": 10,
+        "startChar": 27,
+        "endLine": 11,
+        "endChar": 11
+      },
+      "revId": "cdd1a99096e574d497e4bbaa1d02ea727422b507",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
