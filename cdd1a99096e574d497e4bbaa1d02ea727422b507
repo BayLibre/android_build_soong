@@ -46,6 +46,30 @@
       "revId": "cdd1a99096e574d497e4bbaa1d02ea727422b507",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1eb50aac_f12dba49",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-06-20T02:25:54Z",
+      "side": 1,
+      "message": "The Glob function adds dependencies on directories that were searched by globs - anything that was searched by a \u0027*\u0027, or where constant path was missing.  If it finds a file at a non-wildcard path, for example a full path to an Android.mk with no wildcards, it doesn\u0027t add any dependencies because it assumes you will use that file and depend on it.\n\nSo if you glob for a/Android.mk and it doesn\u0027t exist, the glob will depend on a/.  If you glob for a/Android.mk and it does exist, the glob won\u0027t have any dependency.  This patch adds the dependency on Android.mk in that case.\n\nA dependency on Android.mk is not exactly what we want, we want a dependency on Android.mk being deleted.  We can accomplish that by depending on the directory or depending on the Android.mk file, and depending on the Android.mk file seems like it will cause fewer rebuilds.",
+      "parentUuid": "1e67ca0f_7100c5bd",
+      "range": {
+        "startLine": 10,
+        "startChar": 27,
+        "endLine": 11,
+        "endChar": 11
+      },
+      "revId": "cdd1a99096e574d497e4bbaa1d02ea727422b507",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
