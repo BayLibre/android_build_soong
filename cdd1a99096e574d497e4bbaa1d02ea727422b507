@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e67ca0f_7100c5bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-06-20T01:50:26Z",
+      "side": 1,
+      "message": "Sorry, I am a bit confused: which implicit dependencies are you talking about? why it doesn\u0027t handle the removing Android.mk?",
+      "range": {
+        "startLine": 10,
+        "startChar": 27,
+        "endLine": 11,
+        "endChar": 11
+      },
+      "revId": "cdd1a99096e574d497e4bbaa1d02ea727422b507",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
