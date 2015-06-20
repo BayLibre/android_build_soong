@@ -22,6 +22,30 @@
       "revId": "cdd1a99096e574d497e4bbaa1d02ea727422b507",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e7adaa8_000343cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-06-20T02:25:34Z",
+      "side": 1,
+      "message": "Glob only adds dependencies for directory changes that could cause the result to change. But, it doesn\u0027t add a dependency in this case, since it\u0027s expected that you\u0027ll be adding a dependency of your own for the processing that you\u0027re doing. Since this is doing the opposite -- not doing anything if we find it, then this change is needed. At least that\u0027s the rough explanation I got from Colin.\n\nBut some of the glob test cases don\u0027t fully agree with that -- I\u0027d expect \u0027a/a/a\u0027 and \u0027[a]/a/a\u0027 to have similar dependencies (even if we don\u0027t optimize the single-option case).\n\nWhen that file exists, the non-wild version doesn\u0027t contain any dependencies, where the wild one will return \u0027.\u0027, \u0027a\u0027, \u0027a/a\u0027. The necessary dependency in either case would be \u0027a/a/a\u0027, though \u0027a/a\u0027 would work. With low optimizations, then \u0027.\u0027 and \u0027a\u0027 would be understandable.\n\nHmm, and this change would force a ninja file rebuild on any modification of the Android.mk too, where it really only needs to rebuild if the file appears or disappears.",
+      "parentUuid": "1e67ca0f_7100c5bd",
+      "range": {
+        "startLine": 10,
+        "startChar": 27,
+        "endLine": 11,
+        "endChar": 11
+      },
+      "revId": "cdd1a99096e574d497e4bbaa1d02ea727422b507",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
