@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "def37219_414f7486",
+        "filename": "androidbp/cmd/androidbp_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-06-24T23:44:20Z",
+      "side": 1,
+      "message": "Perhaps aesthetically we can add indentation here and strim the lines in expect()?\nAlso the formatting details (such as the last blank line) would make the test fragile.",
+      "range": {
+        "startLine": 66,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 31
+      },
+      "revId": "0394137ea2f885fb0aba0418a974cc1cd30cc9a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
