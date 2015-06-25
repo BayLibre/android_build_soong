@@ -22,6 +22,30 @@
       "revId": "700640e7e5b10e8e0d40f56231005638c9a52325",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe6116bc_1df853bb",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-06-25T23:25:42Z",
+      "side": 1,
+      "message": "The range operator is guaranteed to evaluate it\u0027s argument once, so this will iterate up to the original length of modules.  It gets a little strange, because the append may reallocate the array underneath the modules slice, but the range will continue iterating over a slice pointing to the original array.  In this case it will be fine.",
+      "parentUuid": "9e99fafb_bfae73ef",
+      "range": {
+        "startLine": 307,
+        "startChar": 2,
+        "endLine": 307,
+        "endChar": 30
+      },
+      "revId": "700640e7e5b10e8e0d40f56231005638c9a52325",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
