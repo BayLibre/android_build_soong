@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e99fafb_5f772fb3",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-06-25T22:31:40Z",
+      "side": 1,
+      "message": "You can leave it for later, but cc_library will need support for static.cflags and shared.cflags properties.",
+      "revId": "404abcb4fd662d443360743638b7acbd57c88ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
