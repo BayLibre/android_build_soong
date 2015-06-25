@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e99fafb_bfae73ef",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-06-25T23:17:50Z",
+      "side": 1,
+      "message": "In Go are you able to append to a slice while ranging over it? Will the newly appended elements be ranged over?",
+      "range": {
+        "startLine": 307,
+        "startChar": 2,
+        "endLine": 307,
+        "endChar": 30
+      },
+      "revId": "700640e7e5b10e8e0d40f56231005638c9a52325",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
