@@ -22,6 +22,30 @@
       "revId": "3dbae5ba0459147893683133e3e68d1adc6f337d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1eea6a20_e9eaed22",
+        "filename": "bootstrap.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-06-25T01:25:15Z",
+      "side": 1,
+      "message": "It currently only adds a second to our bootstrap process (not every build), and is passing the -test.short flag in so that long tests may opt out of this.\n\nI\u0027m hoping it will give an early warning to end users that their build system is bad, though it\u0027s definitely more useful for people editing the go files themselves.",
+      "parentUuid": "def37219_240fd636",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 21
+      },
+      "revId": "3dbae5ba0459147893683133e3e68d1adc6f337d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
