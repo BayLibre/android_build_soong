@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "def37219_240fd636",
+        "filename": "bootstrap.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-06-25T01:19:53Z",
+      "side": 1,
+      "message": "I am not sure if it\u0027s good idea for every end user to run these tests.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 21
+      },
+      "revId": "3dbae5ba0459147893683133e3e68d1adc6f337d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
