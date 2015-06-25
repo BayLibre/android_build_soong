@@ -94,6 +94,30 @@
       "revId": "3dbae5ba0459147893683133e3e68d1adc6f337d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e252642_b30cb843",
+        "filename": "bootstrap.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-06-25T03:20:44Z",
+      "side": 1,
+      "message": "We should have this on at least until we have real presubmit checks and continuous integration testing.  Once we have those we can decide if we want to turn this off, but it seems helpful to have because you can find and fix failures during development.",
+      "parentUuid": "1eea6a20_741870a5",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 21
+      },
+      "revId": "3dbae5ba0459147893683133e3e68d1adc6f337d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
