@@ -70,6 +70,30 @@
       "revId": "3dbae5ba0459147893683133e3e68d1adc6f337d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1eea6a20_741870a5",
+        "filename": "bootstrap.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-06-25T02:00:09Z",
+      "side": 1,
+      "message": "I\u0027m far more worried about the confusion that a buggy build system could result in -- some random compile failure partway through a build that is much harder to trace back to the build system.\n\nI don\u0027t disagree that these are entirely the build system\u0027s problems to deal with, and we should make sure users never see these tests fail. There\u0027s also a small chance that we can uncover inconsistent build system checkouts (syncing art but not build/soong) with these tests too.\n\nMy main goal right now is to get these tests running somewhere in a regular fashion. Nobody has been running all of the soong tests on a regular basis.",
+      "parentUuid": "9efd7aeb_027d6e65",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 21
+      },
+      "revId": "3dbae5ba0459147893683133e3e68d1adc6f337d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
