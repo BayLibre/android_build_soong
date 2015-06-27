@@ -148,3 +148,11 @@ var targetToHostModuleRule = map[string]string{
 	"BUILD_NATIVE_TEST":    "BUILD_HOST_NATIVE_TEST",
 	"BUILD_JAVA_LIBRARY":   "BUILD_HOST_JAVA_LIBRARY",
 }
+
+var ccLibraryLinkageCopy = map[string]string{
+	"srcs":              "srcs",
+	"static_libs":       "static_libs",
+	"shared_libs":       "shared_libs",
+	"cflags":            "cflags",
+	"whole_static_libs": "whole_static_libs",
+}
