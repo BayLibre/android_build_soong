@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93fbb585_5bd40fb3",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-06-29T23:53:49Z",
+      "side": 1,
+      "message": "What is the purpose of this Sprintf?",
+      "revId": "3a4045d3b15ffb3f293f8c34b2e856016e799b66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
