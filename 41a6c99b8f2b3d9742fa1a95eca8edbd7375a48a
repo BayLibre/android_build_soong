@@ -16,6 +16,24 @@
       "revId": "41a6c99b8f2b3d9742fa1a95eca8edbd7375a48a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93fbb585_ef31bdf4",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-06-29T20:52:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "132185e2_08ca4714",
+      "revId": "41a6c99b8f2b3d9742fa1a95eca8edbd7375a48a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
