@@ -16,6 +16,24 @@
       "revId": "404abcb4fd662d443360743638b7acbd57c88ffb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "332a09c0_8f3479e6",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-06-29T22:04:56Z",
+      "side": 1,
+      "message": "Yep, I\u0027ve got this working, it\u0027ll be a follow on patch",
+      "parentUuid": "9e99fafb_5f772fb3",
+      "revId": "404abcb4fd662d443360743638b7acbd57c88ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
