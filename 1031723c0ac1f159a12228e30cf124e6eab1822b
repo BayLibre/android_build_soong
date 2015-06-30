@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33c4c97c_3f884fa6",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-06-30T21:50:16Z",
+      "side": 1,
+      "message": "We don\u0027t need to support cases like \"LOCAL_SRC_FILES  :\u003d $(var)\" where $(var) contains excluded items?",
+      "range": {
+        "startLine": 308,
+        "startChar": 2,
+        "endLine": 308,
+        "endChar": 38
+      },
+      "revId": "1031723c0ac1f159a12228e30cf124e6eab1822b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
