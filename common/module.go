@@ -551,6 +551,8 @@ func (c *buildTargetSingleton) GenerateBuildActions(ctx blueprint.SingletonConte
 		}
 	})
 
+	checkbuildDeps = append(checkbuildDeps, "androidmk")
+
 	// Create a top-level checkbuild target that depends on all modules
 	ctx.Build(pctx, blueprint.BuildParams{
 		Rule:      blueprint.Phony,
