@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d3d44d30_96b18c01",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-06-30T19:37:10Z",
+      "side": 1,
+      "message": "For functiosn with complicated return vavlues, the names are useful to document the purpose of each value.",
+      "parentUuid": "93fbb585_41b3808a",
+      "range": {
+        "startLine": 530,
+        "startChar": 42,
+        "endLine": 530,
+        "endChar": 76
+      },
+      "revId": "d221a3980ff5af1d902ab980c120128ffa89aaae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53ccdd7c_82b2ba01",
         "filename": "androidbp/cmd/androidbp.go",
         "patchSetId": 1
@@ -64,6 +88,30 @@
         "startChar": 38,
         "endLine": 540,
         "endChar": 48
+      },
+      "revId": "d221a3980ff5af1d902ab980c120128ffa89aaae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "339be98e_a179de71",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-06-30T19:37:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53ccdd7c_82b2ba01",
+      "range": {
+        "startLine": 540,
+        "startChar": 5,
+        "endLine": 540,
+        "endChar": 23
       },
       "revId": "d221a3980ff5af1d902ab980c120128ffa89aaae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
