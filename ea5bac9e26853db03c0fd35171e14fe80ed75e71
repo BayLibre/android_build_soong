@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d3d44d30_965f4c40",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-06-30T19:37:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93fbb585_a142240d",
+      "revId": "ea5bac9e26853db03c0fd35171e14fe80ed75e71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "132185e2_1757fed2",
         "filename": "androidbp/cmd/androidbp.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2015-06-30T01:20:40Z",
       "side": 1,
       "message": "There should be an error in an else case here",
+      "revId": "ea5bac9e26853db03c0fd35171e14fe80ed75e71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "339be98e_a1a79e94",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-06-30T19:37:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "132185e2_1757fed2",
       "revId": "ea5bac9e26853db03c0fd35171e14fe80ed75e71",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "5383fd1c_4a853359",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-06-30T19:37:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53277df4_fe14c9f9",
+      "revId": "ea5bac9e26853db03c0fd35171e14fe80ed75e71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "132185e2_3c8029d3",
         "filename": "androidbp/cmd/androidbp.go",
         "patchSetId": 1
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "d3d44d30_d655c421",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-06-30T19:37:02Z",
+      "side": 1,
+      "message": "These errors shouldn\u0027t really happen, since the files should have already been parsed successfully to build androidbp.  I considered squashing all the errors into a single error, but decided it wasn\u0027t worth it.",
+      "parentUuid": "132185e2_3c8029d3",
+      "revId": "ea5bac9e26853db03c0fd35171e14fe80ed75e71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "132185e2_dcc90d4b",
         "filename": "androidbp/cmd/androidbp_test.go",
         "patchSetId": 1
@@ -81,6 +153,24 @@
       "writtenOn": "2015-06-30T01:20:40Z",
       "side": 1,
       "message": "This should check for errors now",
+      "revId": "ea5bac9e26853db03c0fd35171e14fe80ed75e71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3d44d30_f637a00c",
+        "filename": "androidbp/cmd/androidbp_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-06-30T19:37:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "132185e2_dcc90d4b",
       "revId": "ea5bac9e26853db03c0fd35171e14fe80ed75e71",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
