@@ -27,9 +27,9 @@ var valueTestCases = []struct {
 	},
 	{
 		blueprint: `test = ["a", "b"]`,
-		expected: `\
-			   a \
-			   b`,
+		expected: `a \
+		           b \
+		           `,
 	},
 	{
 		blueprint: `test = Var + "b"`,
@@ -37,9 +37,9 @@ var valueTestCases = []struct {
 	},
 	{
 		blueprint: `test = ["a"] + ["b"]`,
-		expected: `\
-			   a\
-			   b`,
+		expected: `a \
+		           b \
+		           `,
 	},
 }
 

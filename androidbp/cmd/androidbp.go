@@ -96,7 +96,7 @@ func valueToString(value bpparser.Value) (string, error) {
 			if err != nil {
 				return "", err
 			}
-			return fmt.Sprintf("\\\n%s", val), nil
+			return val, nil
 		case bpparser.Map:
 			return "", fmt.Errorf("Can't convert map to string")
 		default:
@@ -139,16 +139,16 @@ func processWildcards(s string) string {
 }
 
 func listToMkString(list []bpparser.Value) (string, error) {
-	lines := make([]string, 0, len(list))
+	var ret []byte
 	for _, tok := range list {
 		val, err := valueToString(tok)
 		if err != nil {
 			return "", err
 		}
-		lines = append(lines, fmt.Sprintf("    %s", val))
+		ret = append(ret, fmt.Sprintf("    %s \\\n", val)...)
 	}
 
-	return strings.Join(lines, " \\\n"), nil
+	return string(ret), nil
 }
 
 func translateTargetConditionals(props []*bpparser.Property,
@@ -247,7 +247,7 @@ func prependLocalPath(name string, prop *bpparser.Property, suffix *string) ([]s
 		return nil, err
 	}
 	return []string{
-		fmt.Sprintf("%s := $(addprefix $(LOCAL_PATH)/,%s)\n", name, val),
+		fmt.Sprintf("%s := $(addprefix $(LOCAL_PATH)/,%s)", name, val),
 	}, nil
 }
 
@@ -260,7 +260,7 @@ func prependLocalModule(name string, prop *bpparser.Property, suffix *string) ([
 		return nil, err
 	}
 	return []string{
-		fmt.Sprintf("%s := $(LOCAL_MODULE)%s\n", name, val),
+		fmt.Sprintf("%s := $(LOCAL_MODULE)%s", name, val),
 	}, nil
 }
 
