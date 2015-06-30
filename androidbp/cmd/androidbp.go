@@ -248,15 +248,6 @@ func prependLocalModule(name string, prop *bpparser.Property, suffix *string) ([
 	}, nil
 }
 
-func (w *androidMkWriter) lookupMap(parent bpparser.Value) (mapValue []*bpparser.Property) {
-	if parent.Variable != "" {
-		mapValue = w.mapScope[parent.Variable]
-	} else {
-		mapValue = parent.MapValue
-	}
-	return
-}
-
 func (w *androidMkWriter) writeModule(moduleRule string, props []string,
 	disabledBuilds map[string]bool, isHostRule bool) {
 	disabledConditionals := disabledTargetConditionals
@@ -292,15 +283,13 @@ func (w *androidMkWriter) parsePropsAndWriteModule(module *Module) error {
 			}
 			standardProps = append(standardProps, props...)
 		} else if suffixMap, ok := suffixProperties[prop.Name.Name]; ok {
-			suffixProps := w.lookupMap(prop.Value)
-			props, err := translateSuffixProperties(suffixProps, suffixMap)
+			props, err := translateSuffixProperties(prop.Value.MapValue, suffixMap)
 			if err != nil {
 				return err
 			}
 			standardProps = append(standardProps, props...)
 		} else if "target" == prop.Name.Name {
-			suffixProps := w.lookupMap(prop.Value)
-			props, err := translateTargetConditionals(suffixProps, disabledBuilds, module.isHostRule)
+			props, err := translateTargetConditionals(prop.Value.MapValue, disabledBuilds, module.isHostRule)
 			if err != nil {
 				return err
 			}
@@ -316,8 +305,25 @@ func (w *androidMkWriter) parsePropsAndWriteModule(module *Module) error {
 	return nil
 }
 
+func (w *androidMkWriter) evalMapVars(props Properties) {
+	for _, prop := range *props.props {
+		if prop.Value.Variable != "" {
+			if mapValue, ok := w.mapScope[prop.Value.Variable]; ok {
+				prop.Value.Variable = ""
+				prop.Value.Type = bpparser.Map
+				prop.Value.MapValue = copyBPProperties(mapValue)
+			}
+		}
+		if prop.Value.Type == bpparser.Map {
+			w.evalMapVars(Properties{&prop.Value.MapValue})
+		}
+	}
+}
+
 func (w *androidMkWriter) mutateModule(module *Module) (modules []*Module, err error) {
 	modules = []*Module{module}
+
+	w.evalMapVars(module.Properties())
 
 	if module.bpname == "cc_library" {
 		modules = []*Module{

@@ -158,6 +158,17 @@ var moduleTestCases = []struct {
 					cc_library { name: "test", host_supported: true, }`,
 		androidmk: ``,
 	},
+	// Map variables
+	{
+		blueprint: `innermap = { srcs: ["a"], }
+			    map = { lib32: innermap, }
+			    cc_library_shared { name: "test", multilib: map }`,
+		androidmk: `include $(CLEAR_VARS)
+			    LOCAL_MODULE := test
+			    LOCAL_SRC_FILES_32 := \
+			    a
+			    include $(BUILD_SHARED_LIBRARY)`,
+	},
 }
 
 func TestModules(t *testing.T) {
@@ -172,11 +183,10 @@ func TestModules(t *testing.T) {
 			blueprint: blueprint,
 			path:      "",
 			mapScope:  make(map[string][]*bpparser.Property),
-			Writer:    buf,
+			printedLocalPath: true,
 		}
 
-		module := blueprint.Defs[0].(*bpparser.Module)
-		err := writer.handleModule(module)
+		err := writer.write(buf)
 		if err != nil {
 			t.Errorf("Unexpected error %s", err.Error())
 		}
