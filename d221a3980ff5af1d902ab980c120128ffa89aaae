@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93fbb585_41b3808a",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-06-30T01:36:13Z",
+      "side": 1,
+      "message": "unnecessary names",
+      "range": {
+        "startLine": 530,
+        "startChar": 42,
+        "endLine": 530,
+        "endChar": 76
+      },
+      "revId": "d221a3980ff5af1d902ab980c120128ffa89aaae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53ccdd7c_82b2ba01",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-06-30T01:36:13Z",
+      "side": 1,
+      "message": "It feels strange to return a string from a question",
+      "range": {
+        "startLine": 540,
+        "startChar": 5,
+        "endLine": 540,
+        "endChar": 23
+      },
+      "revId": "d221a3980ff5af1d902ab980c120128ffa89aaae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "132185e2_5726967a",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-06-30T01:36:13Z",
+      "side": 1,
+      "message": "unnecessary return name",
+      "range": {
+        "startLine": 540,
+        "startChar": 38,
+        "endLine": 540,
+        "endChar": 48
+      },
+      "revId": "d221a3980ff5af1d902ab980c120128ffa89aaae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
