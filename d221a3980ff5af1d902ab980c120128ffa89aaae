@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d3d44d30_96506cd8",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-06-30T20:04:36Z",
+      "side": 1,
+      "message": "Yeah, I don\u0027t feel that these give much more context than the (string, bool, error) return values above, but I\u0027m not that picky.",
+      "parentUuid": "d3d44d30_96b18c01",
+      "range": {
+        "startLine": 530,
+        "startChar": 42,
+        "endLine": 530,
+        "endChar": 76
+      },
+      "revId": "d221a3980ff5af1d902ab980c120128ffa89aaae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53ccdd7c_82b2ba01",
         "filename": "androidbp/cmd/androidbp.go",
         "patchSetId": 1
