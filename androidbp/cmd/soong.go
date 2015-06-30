@@ -22,7 +22,6 @@ var standardProperties = map[string]struct {
 	//"name":             "LOCAL_PACKAGE_NAME", TODO
 
 	// ==== LIST PROPERTIES ====
-	"srcs":               {"LOCAL_SRC_FILES", bpparser.List},
 	"shared_libs":        {"LOCAL_SHARED_LIBRARIES", bpparser.List},
 	"static_libs":        {"LOCAL_STATIC_LIBRARIES", bpparser.List},
 	"whole_static_libs":  {"LOCAL_WHOLE_STATIC_LIBRARIES", bpparser.List},
@@ -69,6 +68,7 @@ var rewriteProperties = map[string]struct {
 	"local_include_dirs":  {"LOCAL_C_INCLUDES", prependLocalPath},
 	"export_include_dirs": {"LOCAL_EXPORT_C_INCLUDE_DIRS", prependLocalPath},
 	"suffix":              {"LOCAL_MODULE_STEM", prependLocalModule},
+	"srcs":                {"LOCAL_SRC_FILES", excludeMinus},
 }
 
 var ignoredProperties = map[string]bool{
