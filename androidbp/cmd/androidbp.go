@@ -12,6 +12,7 @@ import (
 	"strings"
 	"text/scanner"
 
+	"github.com/google/blueprint"
 	bpparser "github.com/google/blueprint/parser"
 )
 
@@ -580,27 +581,34 @@ func (w *androidMkWriter) write(writer io.Writer) (err error) {
 	return nil
 }
 
-func translate(androidBp, androidMk string) error {
-	reader, err := os.Open(androidBp)
-	if err != nil {
-		return err
-	}
+func translate(rootFile, androidBp, androidMk string) error {
 
-	scope := bpparser.NewScope(nil)
-	blueprint, errs := bpparser.Parse(androidBp, reader, scope)
+	ctx := blueprint.NewContext()
+
+	var blueprintFile *bpparser.File
+
+	_, errs := ctx.WalkBlueprintsFiles(rootFile, func(file *bpparser.File) {
+		if file.Name == androidBp {
+			blueprintFile = file
+		}
+	})
 	if len(errs) > 0 {
 		return errs[0]
 	}
 
+	if blueprintFile == nil {
+		return fmt.Errorf("File %q wasn't parsed from %q", androidBp, rootFile)
+	}
+
 	writer := &androidMkWriter{
-		blueprint: blueprint,
+		blueprint: blueprintFile,
 		path:      path.Dir(androidBp),
 		mapScope:  make(map[string][]*bpparser.Property),
 	}
 
 	buf := &bytes.Buffer{}
 
-	err = writer.write(buf)
+	err := writer.write(buf)
 	if err != nil {
 		os.Remove(androidMk)
 		return err
@@ -623,11 +631,16 @@ func main() {
 		os.Exit(1)
 	}
 
-	androidBp := os.Args[1]
-	androidMk := os.Args[2]
+	rootFile := os.Args[1]
+	androidBp, err := filepath.Rel(filepath.Dir(rootFile), os.Args[2])
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Android.bp file %q is not relative to %q: %s\n",
+			os.Args[2], rootFile, err.Error())
+		os.Exit(1)
+	}
+	androidMk := os.Args[3]
 
-	err := translate(androidBp, androidMk)
-
+	err = translate(rootFile, androidBp, androidMk)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error translating %s: %s\n", androidBp, err.Error())
 		os.Exit(1)
