@@ -16,6 +16,24 @@
       "revId": "3a4045d3b15ffb3f293f8c34b2e856016e799b66",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73f6419f_94a00af4",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-06-30T00:01:23Z",
+      "side": 1,
+      "message": "Good question. It\u0027s refactored from the same thing on line 276. Which appears to have been introduced with I6aec388e72d960d80943620024c2d16d51a0b095",
+      "parentUuid": "93fbb585_5bd40fb3",
+      "revId": "3a4045d3b15ffb3f293f8c34b2e856016e799b66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
