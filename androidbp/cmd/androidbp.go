@@ -277,6 +277,56 @@ func prependLocalModule(name string, prop *bpparser.Property, suffix *string) ([
 	}, nil
 }
 
+func excludeMinus(name string, prop *bpparser.Property, suffix *string) ([]string, error) {
+	var nameSuffix string
+	if suffix != nil {
+		nameSuffix = "_" + *suffix
+	}
+
+	if prop.Value.Variable == "" && prop.Value.Expression == nil {
+		if prop.Value.Type != bpparser.List {
+			return nil, fmt.Errorf("Expected list argument to %q, got %d", prop.Name.Name)
+		}
+		var ret []string
+		include, exclude := filterMinus(prop.Value.ListValue)
+		if len(include) > 0 {
+			val, err := listToMkString(include)
+			if err != nil {
+				return nil, err
+			}
+			ret = append(ret, fmt.Sprintf("%s%s := %s", name, nameSuffix, val))
+		}
+		if len(exclude) > 0 {
+			val, err := listToMkString(exclude)
+			if err != nil {
+				return nil, err
+			}
+			ret = append(ret, fmt.Sprintf("%s_EXCLUDE%s := %s", name, nameSuffix, val))
+		}
+		return ret, nil
+	} else {
+		val, err := valueToString(prop.Value)
+		if err != nil {
+			return nil, err
+		}
+		return []string{fmt.Sprintf("%s%s := %s", name, nameSuffix, val)}, nil
+	}
+}
+
+func filterMinus(list []bpparser.Value) (include, exclude []bpparser.Value) {
+	for _, tok := range list {
+		if tok.Type == bpparser.String && tok.Variable == "" && tok.Expression == nil &&
+			strings.HasPrefix(tok.StringValue, "-") {
+			tok.StringValue = strings.TrimPrefix(tok.StringValue, "-")
+			exclude = append(exclude, tok)
+		} else {
+			include = append(include, tok)
+		}
+	}
+
+	return
+}
+
 func modulePropBool(module *bpparser.Module, name string) bool {
 	for _, prop := range module.Properties {
 		if name == prop.Name.Name {
