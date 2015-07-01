@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "9351f5aa_a506a424",
+        "filename": "androidbp/cmd/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-07-01T21:57:51Z",
+      "side": 1,
+      "message": "Oh yeah.  I\u0027d suggest moving it to blueprint/parser as Copy() methods.",
+      "parentUuid": "531dbdf5_bd7ecb5e",
+      "revId": "fcd4904fc224ae101b3a3294c527de4f4f7bbeb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3320492d_f938d75f",
         "filename": "androidbp/cmd/module.go",
         "patchSetId": 1
