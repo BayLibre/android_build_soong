@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1317c5d9_3b43a363",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-07-01T21:22:20Z",
+      "side": 1,
+      "message": "All Values returned by the parser should already be evaluated - the Value.*Value properties already take the values from the Variable or Expression into account.\n\nIf you want this to be a perfect Value when you\u0027re done, you want to create a new Value object, combine the *Value properties into the new one, and then set Expression on the new one to point to the two previous ones.",
+      "revId": "fcd4904fc224ae101b3a3294c527de4f4f7bbeb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f319510f_377658fc",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-07-01T21:22:20Z",
+      "side": 1,
+      "message": "The subProps properties should already have been validated by the build that produced androidmk, and the names inside static{} or shared{} should always match the top level names, so why not just iterate over subProps and append to the matching top level property?",
+      "revId": "fcd4904fc224ae101b3a3294c527de4f4f7bbeb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9351f5aa_df613f35",
+        "filename": "androidbp/cmd/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-07-01T21:22:20Z",
+      "side": 1,
+      "message": "Can reflect.DeepCopy replace all of this?  If not, implement it as Copy() methods in blueprint/parser.",
+      "revId": "fcd4904fc224ae101b3a3294c527de4f4f7bbeb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3320492d_f938d75f",
+        "filename": "androidbp/cmd/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-07-01T21:22:20Z",
+      "side": 1,
+      "message": "This will create a zeroed object, and then copy over it.\n\n ret :\u003d *e\n return \u0026ret\n\nmight avoid zeroing.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 10
+      },
+      "revId": "fcd4904fc224ae101b3a3294c527de4f4f7bbeb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
