@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33c4c97c_3302c83e",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-07-01T00:40:41Z",
+      "side": 1,
+      "message": "why are you making this change?",
+      "revId": "6fc14326c95cf7677f82e78b42c11a11c8a489e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "339be98e_75fdd030",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-07-01T00:40:41Z",
+      "side": 1,
+      "message": "4 (and update the error text)",
+      "range": {
+        "startLine": 549,
+        "startChar": 19,
+        "endLine": 549,
+        "endChar": 20
+      },
+      "revId": "6fc14326c95cf7677f82e78b42c11a11c8a489e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
