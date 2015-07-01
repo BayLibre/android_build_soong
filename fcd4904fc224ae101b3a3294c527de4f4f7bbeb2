@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f319510f_fa32052d",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-07-01T21:46:18Z",
+      "side": 1,
+      "message": "Yep, this was written before everything was evaluated.\n\nThat\u0027s what I was doing at the end of this function. But to keep everything evaluated, now I\u0027ll just return an error if both aren\u0027t strings or lists.\n\nDone",
+      "parentUuid": "1317c5d9_3b43a363",
+      "revId": "fcd4904fc224ae101b3a3294c527de4f4f7bbeb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f319510f_377658fc",
         "filename": "androidbp/cmd/androidbp.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2015-07-01T21:22:20Z",
       "side": 1,
       "message": "The subProps properties should already have been validated by the build that produced androidmk, and the names inside static{} or shared{} should always match the top level names, so why not just iterate over subProps and append to the matching top level property?",
+      "revId": "fcd4904fc224ae101b3a3294c527de4f4f7bbeb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9351f5aa_428b16f3",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-07-01T21:46:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f319510f_377658fc",
       "revId": "fcd4904fc224ae101b3a3294c527de4f4f7bbeb2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "531dbdf5_bd7ecb5e",
+        "filename": "androidbp/cmd/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-07-01T21:46:18Z",
+      "side": 1,
+      "message": "I couldn\u0027t find a reflect.DeepCopy -- only a reflect.DeepEqual. The closest I found was passing the data structures through gob to encode/decode to an intermediate format.\n\nShould I go down that route, or just move it to blueprint/parser? (Or both?)",
+      "parentUuid": "9351f5aa_df613f35",
+      "revId": "fcd4904fc224ae101b3a3294c527de4f4f7bbeb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3320492d_f938d75f",
         "filename": "androidbp/cmd/module.go",
         "patchSetId": 1
@@ -64,6 +118,30 @@
       "writtenOn": "2015-07-01T21:22:20Z",
       "side": 1,
       "message": "This will create a zeroed object, and then copy over it.\n\n ret :\u003d *e\n return \u0026ret\n\nmight avoid zeroing.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 10
+      },
+      "revId": "fcd4904fc224ae101b3a3294c527de4f4f7bbeb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1317c5d9_1b157ff3",
+        "filename": "androidbp/cmd/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-07-01T21:46:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3320492d_f938d75f",
       "range": {
         "startLine": 24,
         "startChar": 0,
