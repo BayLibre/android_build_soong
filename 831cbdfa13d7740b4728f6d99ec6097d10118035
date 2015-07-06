@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "534a1d43_75d0a23b",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-07-06T20:49:19Z",
+      "side": 1,
+      "message": "put this in an else, or everything in a switch with a default: to make it clear that this is the error case",
+      "revId": "831cbdfa13d7740b4728f6d99ec6097d10118035",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "135425e3_33c0f21e",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-07-06T20:49:19Z",
+      "side": 1,
+      "message": "dest.Type.String()",
+      "range": {
+        "startLine": 62,
+        "startChar": 79,
+        "endLine": 62,
+        "endChar": 88
+      },
+      "revId": "831cbdfa13d7740b4728f6d99ec6097d10118035",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
