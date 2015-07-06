@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "736d61b3_b994d795",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-07-06T22:54:27Z",
+      "side": 1,
+      "message": "We can easily add more sources to the build for the shared library. Since the output of the static library is being used for both the static library and the shared library, we can\u0027t add sources that are only included in the static library.\n\nIf we defined 3 modules for every cc_library, we could support static-only sources. One base module would contain all of the common sources, then the static module would use the base as a whole static library, then compile the static-only sources. But that\u0027s probably not worth it.",
+      "parentUuid": "534a1d43_15c3d62d",
+      "range": {
+        "startLine": 305,
+        "startChar": 3,
+        "endLine": 305,
+        "endChar": 34
+      },
+      "revId": "dd99f82c4305cccfb6626852ad6d9b3436830c80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "334da95a_54b722c0",
         "filename": "androidbp/cmd/androidbp.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-07-06T22:07:22Z",
       "side": 1,
       "message": "Probably also check \"exclude_srcs\"?",
+      "range": {
+        "startLine": 306,
+        "startChar": 4,
+        "endLine": 306,
+        "endChar": 29
+      },
+      "revId": "dd99f82c4305cccfb6626852ad6d9b3436830c80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f356b1ec_f260262f",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-07-06T22:54:27Z",
+      "side": 1,
+      "message": "In soong, static.exclude_srcs doesn\u0027t affect srcs, and exclude_srcs doesn\u0027t affect static.srcs. So if static.srcs doesn\u0027t exist, static.exclude_srcs doesn\u0027t do anything, so we don\u0027t need to check for it.\n\nUnfortunately, this distinction isn\u0027t kept when translating to Android.mk files. So some work is needed to properly support these edge cases -- likely by evaluating the exclude rules in androidbp.",
+      "parentUuid": "334da95a_54b722c0",
       "range": {
         "startLine": 306,
         "startChar": 4,
