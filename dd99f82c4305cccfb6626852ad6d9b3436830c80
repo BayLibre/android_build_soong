@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "334da95a_749ee669",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-07-06T21:33:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "334da95a_94a26ab7",
+      "range": {
+        "startLine": 317,
+        "startChar": 16,
+        "endLine": 317,
+        "endChar": 19
+      },
+      "revId": "dd99f82c4305cccfb6626852ad6d9b3436830c80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "736d61b3_d94b532e",
         "filename": "androidbp/cmd/androidbp.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-07-06T21:31:37Z",
       "side": 1,
       "message": "err?",
+      "range": {
+        "startLine": 321,
+        "startChar": 16,
+        "endLine": 321,
+        "endChar": 19
+      },
+      "revId": "dd99f82c4305cccfb6626852ad6d9b3436830c80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "736d61b3_39d607ba",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-07-06T21:33:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "736d61b3_d94b532e",
       "range": {
         "startLine": 321,
         "startChar": 16,
