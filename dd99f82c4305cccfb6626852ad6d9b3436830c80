@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "534a1d43_15c3d62d",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-07-06T22:07:22Z",
+      "side": 1,
+      "message": "Why do we only check \"srcs\" for the static library module?",
+      "range": {
+        "startLine": 305,
+        "startChar": 3,
+        "endLine": 305,
+        "endChar": 34
+      },
+      "revId": "dd99f82c4305cccfb6626852ad6d9b3436830c80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "334da95a_54b722c0",
+        "filename": "androidbp/cmd/androidbp.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-07-06T22:07:22Z",
+      "side": 1,
+      "message": "Probably also check \"exclude_srcs\"?",
+      "range": {
+        "startLine": 306,
+        "startChar": 4,
+        "endLine": 306,
+        "endChar": 29
+      },
+      "revId": "dd99f82c4305cccfb6626852ad6d9b3436830c80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "334da95a_94a26ab7",
         "filename": "androidbp/cmd/androidbp.go",
         "patchSetId": 2
