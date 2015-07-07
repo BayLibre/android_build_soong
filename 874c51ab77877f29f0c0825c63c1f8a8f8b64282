@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "736d61b3_87297640",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1094,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-07-07T01:01:48Z",
+      "side": 1,
+      "message": "The dependency needs to be added to the linker build params too",
+      "revId": "874c51ab77877f29f0c0825c63c1f8a8f8b64282",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
