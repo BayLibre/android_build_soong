@@ -947,6 +947,9 @@ type CCLibraryProperties struct {
 		Static_libs       []string `android:"arch_variant"`
 		Shared_libs       []string `android:"arch_variant"`
 	} `android:"arch_variant"`
+
+	// local file name to pass to the linker as --version_script
+	Version_script string `android:"arch_variant"`
 }
 
 type CCLibrary struct {
@@ -1083,6 +1086,11 @@ func (c *CCLibrary) flags(ctx common.AndroidModuleContext, flags CCFlags) CCFlag
 				sharedFlag,
 				"-Wl,-soname,"+libName+sharedLibraryExtension,
 			)
+		}
+
+		if c.LibraryProperties.Version_script != "" {
+			flags.LdFlags = append(flags.LdFlags, "-Wl,--version-script,"+
+				filepath.Join(common.ModuleSrcDir(ctx), c.LibraryProperties.Version_script))
 		}
 	}
 
