@@ -38,6 +38,16 @@ func NewFileConfigurableOptions() FileConfigurableOptions {
 
 type Config struct {
 	*config
+
+	dontCreateNinjaFile bool
+}
+
+func (c Config) CreateNinjaFile() bool {
+	return !c.dontCreateNinjaFile
+}
+
+func (c *Config) SetCreateNinjaFile(b bool) {
+	c.dontCreateNinjaFile = !b
 }
 
 // A config object represents the entire build configuration for Blue.

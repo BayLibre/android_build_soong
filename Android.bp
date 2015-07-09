@@ -93,6 +93,7 @@ bootstrap_go_package {
         "soong-glob",
     ],
     srcs: [
+        "common/androidmk.go",
         "common/arch.go",
         "common/config.go",
         "common/defs.go",
@@ -115,6 +116,7 @@ bootstrap_go_package {
         "soong-genrule",
     ],
     srcs: [
+        "cc/androidmk.go",
         "cc/builder.go",
         "cc/cc.go",
         "cc/clang.go",
@@ -165,6 +167,7 @@ bootstrap_go_package {
         "soong-genrule",
     ],
     srcs: [
+        "java/androidmk.go",
         "java/app_builder.go",
         "java/app.go",
         "java/builder.go",
