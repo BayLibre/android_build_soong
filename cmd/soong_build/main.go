@@ -30,6 +30,14 @@ import (
 	"android/soong/java"
 )
 
+var (
+	createAndroidMk bool
+)
+
+func init() {
+	flag.BoolVar(&createAndroidMk, "androidmk", false, "create Android.mk files for prebuilts")
+}
+
 func main() {
 	flag.Parse()
 
@@ -81,6 +89,7 @@ func main() {
 	ctx.RegisterEarlyMutator("test_per_src", cc.TestPerSrcMutator)
 
 	// Singletons
+	ctx.RegisterSingletonType("androidmk", common.AndroidMkSingleton)
 	ctx.RegisterSingletonType("buildtarget", common.BuildTargetSingleton)
 	ctx.RegisterSingletonType("env", common.EnvSingleton)
 	ctx.RegisterSingletonType("logtags", java.LogtagsSingleton)
@@ -94,5 +103,15 @@ func main() {
 	// Temporary hack
 	//ctx.SetIgnoreUnknownModuleTypes(true)
 
+	configuration.SetCreateNinjaFile(!createAndroidMk)
+
 	bootstrap.Main(ctx, configuration, common.ConfigFileName)
+
+	if createAndroidMk {
+		err := common.CreateAndroidMkFiles(ctx, flag.Args()[1:])
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "%s", err)
+			os.Exit(1)
+		}
+	}
 }
