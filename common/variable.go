@@ -15,7 +15,9 @@
 package common
 
 import (
+	"fmt"
 	"reflect"
+	"strings"
 
 	"android/soong"
 
@@ -42,6 +44,9 @@ type variableProperties struct {
 			Whole_static_libs []string
 			Include_dirs      []string
 		}
+		Dlmalloc_alignment struct {
+			Cflags []string
+		}
 	}
 }
 
@@ -49,16 +54,22 @@ var zeroVariableProperties variableProperties
 
 var productVariables = []struct {
 	property, variant string
+	variableValue     interface{}
 	value             func(*AndroidModuleBase) reflect.Value
 }{
-	{"product_variables.device_uses_logd", "device_uses_logd",
+	{"product_variables.device_uses_logd", "device_uses_logd", nil,
 		func(a *AndroidModuleBase) reflect.Value {
 			return reflect.ValueOf(a.variableProperties.Product_variables.Device_uses_logd)
 		},
 	},
-	{"product_variables.device_uses_jemalloc", "device_uses_jemalloc",
+	{"product_variables.device_uses_jemalloc", "device_uses_jemalloc", nil,
 		func(a *AndroidModuleBase) reflect.Value {
 			return reflect.ValueOf(a.variableProperties.Product_variables.Device_uses_jemalloc)
+		},
+	},
+	{"product_variables.dlmalloc_alignment", "dlmalloc_alignment", 16,
+		func(a *AndroidModuleBase) reflect.Value {
+			return reflect.ValueOf(a.variableProperties.Product_variables.Dlmalloc_alignment)
 		},
 	},
 }
@@ -74,18 +85,59 @@ func VariableMutator(mctx blueprint.EarlyMutatorContext) {
 	a := module.base()
 	for _, v := range productVariables {
 		if mctx.ContainsProperty(v.property) {
-			a.setVariableProperties(mctx, v.property, v.value(a))
+			a.setVariableProperties(mctx, v.property, v.value(a), v.variableValue)
 		}
 	}
 }
 
 func (a *AndroidModuleBase) setVariableProperties(ctx blueprint.EarlyMutatorContext,
-	prefix string, value reflect.Value) {
+	prefix string, productVariablePropertyValue reflect.Value, variableValue interface{}) {
 
 	generalPropertyValues := make([]reflect.Value, len(a.generalProperties))
 	for i := range a.generalProperties {
 		generalPropertyValues[i] = reflect.ValueOf(a.generalProperties[i]).Elem()
 	}
 
-	extendProperties(ctx, "", prefix, generalPropertyValues, value, nil)
+	if variableValue != nil {
+		printfIntoProperties(productVariablePropertyValue, variableValue)
+	}
+
+	extendProperties(ctx, "", prefix, generalPropertyValues, productVariablePropertyValue, nil)
+}
+
+func printfIntoProperties(productVariablePropertyValue reflect.Value, variableValue interface{}) {
+	for i := 0; i < productVariablePropertyValue.NumField(); i++ {
+		propertyValue := productVariablePropertyValue.Field(i)
+		switch propertyValue.Kind() {
+		case reflect.String:
+			printfIntoProperty(propertyValue, variableValue)
+		case reflect.Slice:
+			for j := 0; j < propertyValue.Len(); j++ {
+				printfIntoProperty(propertyValue.Index(j), variableValue)
+			}
+		case reflect.Struct:
+			printfIntoProperties(propertyValue, variableValue)
+		default:
+			panic(fmt.Errorf("unsupported field kind %q", propertyValue.Kind()))
+		}
+	}
+}
+
+func printfIntoProperty(propertyValue reflect.Value, variableValue interface{}) {
+	s := propertyValue.String()
+	// For now, we only support int formats
+	var i int
+	if strings.Contains(s, "%d") {
+		switch v := variableValue.(type) {
+		case int:
+			i = v
+		case bool:
+			if v {
+				i = 1
+			}
+		default:
+			panic(fmt.Errorf("unsupported type %T", variableValue))
+		}
+		propertyValue.Set(reflect.ValueOf(fmt.Sprintf(s, i)))
+	}
 }
