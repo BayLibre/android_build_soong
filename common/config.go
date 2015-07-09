@@ -38,6 +38,8 @@ func (f *FileConfigurableOptions) SetDefaultConfig() {
 
 type Config struct {
 	*config
+
+	dontCreateNinjaFile bool
 }
 
 // A config object represents the entire build configuration for Blue.
@@ -156,6 +158,10 @@ func (c *config) BuildDir() string {
 
 func (c *config) IntermediatesDir() string {
 	return filepath.Join(c.BuildDir(), ".intermediates")
+}
+
+func (c *config) RemoveAbandonedFiles() bool {
+	return false
 }
 
 // PrebuiltOS returns the name of the host OS used in prebuilts directories
