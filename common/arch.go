@@ -428,16 +428,11 @@ func ArchMutator(mctx AndroidBottomUpMutatorContext) {
 		return
 	}
 
-	hostArches, deviceArches, err := decodeArchProductVariables(mctx.Config().(Config).ProductVariables)
-	if err != nil {
-		mctx.ModuleErrorf("%s", err.Error())
-	}
-
 	moduleArches := []Arch{}
 	multilib := module.base().commonProperties.Compile_multilib
 
 	if module.base().HostSupported() && module.base().HostOrDevice().Host() {
-		hostModuleArches, err := decodeMultilib(multilib, hostArches)
+		hostModuleArches, err := decodeMultilib(multilib, mctx.Config().(Config).HostArches)
 		if err != nil {
 			mctx.ModuleErrorf("%s", err.Error())
 		}
@@ -446,7 +441,7 @@ func ArchMutator(mctx AndroidBottomUpMutatorContext) {
 	}
 
 	if module.base().DeviceSupported() && module.base().HostOrDevice().Device() {
-		deviceModuleArches, err := decodeMultilib(multilib, deviceArches)
+		deviceModuleArches, err := decodeMultilib(multilib, mctx.Config().(Config).DeviceArches)
 		if err != nil {
 			mctx.ModuleErrorf("%s", err.Error())
 		}

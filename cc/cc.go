@@ -1054,6 +1054,7 @@ type CCLibrary struct {
 	objFiles      []string
 	exportFlags   []string
 	out           string
+	systemLibs    []string
 
 	LibraryProperties CCLibraryProperties
 }
@@ -1117,6 +1118,8 @@ func (c *CCLibrary) depNames(ctx common.AndroidBaseContext, depNames CCDeps) CCD
 		depNames.StaticLibs = append(depNames.StaticLibs, c.LibraryProperties.Shared.Static_libs...)
 		depNames.SharedLibs = append(depNames.SharedLibs, c.LibraryProperties.Shared.Shared_libs...)
 	}
+
+	c.systemLibs = c.systemSharedLibs(ctx)
 
 	return depNames
 }
