@@ -41,6 +41,10 @@ func EnvSingleton() blueprint.Singleton {
 type envSingleton struct{}
 
 func (c *envSingleton) GenerateBuildActions(ctx blueprint.SingletonContext) {
+	if !ctx.Config().(Config).CreateNinjaFile() {
+		return
+	}
+
 	envDeps := ctx.Config().(Config).EnvDeps()
 
 	envFile := filepath.Join(ctx.Config().(Config).BuildDir(), ".soong.environment")

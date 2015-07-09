@@ -38,6 +38,16 @@ func (f *FileConfigurableOptions) SetDefaultConfig() {
 
 type Config struct {
 	*config
+
+	dontCreateNinjaFile bool
+}
+
+func (c Config) CreateNinjaFile() bool {
+	return !c.dontCreateNinjaFile
+}
+
+func (c *Config) SetCreateNinjaFile(b bool) {
+	c.dontCreateNinjaFile = !b
 }
 
 // A config object represents the entire build configuration for Blue.
@@ -158,6 +168,10 @@ func (c *config) IntermediatesDir() string {
 	return filepath.Join(c.BuildDir(), ".intermediates")
 }
 
+func (c *config) RemoveAbandonedFiles() bool {
+	return false
+}
+
 // PrebuiltOS returns the name of the host OS used in prebuilts directories
 func (c *config) PrebuiltOS() string {
 	switch runtime.GOOS {
@@ -223,12 +237,12 @@ func (c *config) DeviceUsesClang() bool {
 
 // DeviceOut returns the path to out directory for device targets
 func (c *config) DeviceOut() string {
-	return filepath.Join(c.BuildDir(), "target/product", c.DeviceName())
+	return filepath.Join(c.BuildDir(), "soong-install/target/product", c.DeviceName())
 }
 
 // HostOut returns the path to out directory for host targets
 func (c *config) HostOut() string {
-	return filepath.Join(c.BuildDir(), "host", c.PrebuiltOS())
+	return filepath.Join(c.BuildDir(), "soong-install/host", c.PrebuiltOS())
 }
 
 // HostBin returns the path to bin directory for host targets

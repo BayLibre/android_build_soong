@@ -27,6 +27,14 @@ import (
 	"android/soong/common"
 )
 
+var (
+	createAndroidMk string
+)
+
+func init() {
+	flag.StringVar(&createAndroidMk, "androidmk", "", "create Android.mk files for prebuilts")
+}
+
 func main() {
 	flag.Parse()
 
@@ -44,5 +52,15 @@ func main() {
 	// Temporary hack
 	//ctx.SetIgnoreUnknownModuleTypes(true)
 
+	configuration.SetCreateNinjaFile(createAndroidMk == "")
+
 	bootstrap.Main(ctx, configuration, configuration.ConfigFileName, configuration.ProductVariablesFileName)
+
+	if createAndroidMk != "" {
+		err := common.CreateAndroidMkFiles(ctx, createAndroidMk, flag.Args()[1:])
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "%s", err)
+			os.Exit(1)
+		}
+	}
 }
