@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "586ddaeb_295af950",
+        "filename": "common/variable.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-07-10T02:19:20Z",
+      "side": 1,
+      "message": "I am worried about how will this scale.\nYou can define arbitrary board config variables that can affect how a module gets built.",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "4f45e0e97a17a684648f30a654ac89890747e23d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8970a01_b934081b",
+        "filename": "common/variable.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-07-10T02:19:20Z",
+      "side": 1,
+      "message": "Also device_use_dlmalloc?",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 3
+      },
+      "revId": "4f45e0e97a17a684648f30a654ac89890747e23d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
