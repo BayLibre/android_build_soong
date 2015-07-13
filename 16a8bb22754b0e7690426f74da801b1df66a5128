@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58987a8f_02a2cab9",
+        "filename": "cc/arm_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-07-13T20:48:10Z",
+      "side": 1,
+      "message": "copyVariantFlags",
+      "range": {
+        "startLine": 109,
+        "startChar": 5,
+        "endLine": 109,
+        "endChar": 12
+      },
+      "revId": "16a8bb22754b0e7690426f74da801b1df66a5128",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
