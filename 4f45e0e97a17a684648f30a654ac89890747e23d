@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "18dc42fc_2a8bd377",
+        "filename": "common/variable.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-07-13T19:21:14Z",
+      "side": 1,
+      "message": "That\u0027s part of the problem with the current system - there is no way to know how a module is built without a very manual inspection process.  This way, we can use variants to split modules based on the various combinations of flags that affect the module and are set by the selected projects.\n\nIf Go had the ability to create structures on the fly (for example if https://go-review.googlesource.com/#/c/9251/ makes it into Go 1.6), we could do something less code-like and more data driven, but for now this seemed like the best combination of blueprint-compatibility and reasonable module syntax I could come up with, but I\u0027d be happy to see a different syntax if you can come up with a better one.",
+      "parentUuid": "586ddaeb_295af950",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 2
+      },
+      "revId": "4f45e0e97a17a684648f30a654ac89890747e23d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8970a01_b934081b",
         "filename": "common/variable.go",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2015-07-10T02:19:20Z",
       "side": 1,
       "message": "Also device_use_dlmalloc?",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 3
+      },
+      "revId": "4f45e0e97a17a684648f30a654ac89890747e23d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78753eb8_42d38ccc",
+        "filename": "common/variable.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-07-13T19:21:14Z",
+      "side": 1,
+      "message": "This list is ones I\u0027m manually turning on for now for testing, and will be generated later based on product config.",
+      "parentUuid": "d8970a01_b934081b",
       "range": {
         "startLine": 63,
         "startChar": 1,
