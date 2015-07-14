@@ -1,9 +1,12 @@
 #!/bin/bash
 
-export BOOTSTRAP="${BASH_SOURCE[0]}"
-export SRCDIR=$(dirname "${BASH_SOURCE[0]}")
+set -e
+
+export BOOTSTRAP="bootstrap.bash"
+export SRCDIR="."
+export BUILDDIR
 export TOPNAME="Android.bp"
-export BOOTSTRAP_MANIFEST="${SRCDIR}/build/soong/build.ninja.in"
+export BOOTSTRAP_MANIFEST="build/soong/build.ninja.in"
 export RUN_TESTS="-t"
 
 case $(uname) in
@@ -17,20 +20,56 @@ case $(uname) in
 	;;
     *) echo "unknown OS:" $(uname) && exit 1;;
 esac
-export GOROOT="${SRCDIR}/prebuilts/go/$PREBUILTOS/"
+export GOROOT="prebuilts/go/$PREBUILTOS/"
 export GOARCH="amd64"
 export GOCHAR="6"
 
-if [[ $(find . -maxdepth 1 -name $(basename "${BOOTSTRAP}")) ]]; then
-  echo "FAILED: Tried to run "$(basename "${BOOTSTRAP}")" from "$(pwd)""
+if [[ $(dirname "${BASH_SOURCE[0]}") != "." ]]; then
+  echo "FAILED: bootstrap.bash must be run as './bootstrap.bash' from the soruce directory"
   exit 1
 fi
 
-if [[ $# -eq 0 ]]; then
-    sed -e "s|@@SrcDir@@|${SRCDIR}|" \
-        -e "s|@@PrebuiltOS@@|${PREBUILTOS}|" \
-        "${SRCDIR}/build/soong/soong.bootstrap.in" > .soong.bootstrap
-    ln -sf "${SRCDIR}/build/soong/soong.bash" soong
+# Parse command line flags, but fail back to blueprint's bootstrap.bash
+CREATEFILES=1
+BUILDDIR=""
+while getopts ":b:" opt; do
+  case $opt in
+    b) BUILDDIR="$OPTARG";;
+    \?) CREATEFILES=0;;
+    :)
+      echo "Option -$OPTARG requires an argument." >&2
+      exit 1
+      ;;
+  esac
+done
+
+if [[ "$BUILDDIR" == "" ]]; then
+  echo "FAILED: Must provide a build output directory with -b <builddir>"
+  exit 1
 fi
 
-"${SRCDIR}/build/blueprint/bootstrap.bash" "$@"
+if [[ $CREATEFILES -eq 1 ]]; then
+    mkdir -p $BUILDDIR
+
+    if [[ $(find $BUILDDIR -maxdepth 1 -name ${BOOTSTRAP}) ]]; then
+      echo "FAILED: The build directory must not be a source directory"
+      exit 1
+    fi
+
+    if [[ ${BUILDDIR:0:1} == '/' ]]; then
+      export SRCDIR_FROM_BUILDDIR=$(realpath ${SRCDIR})
+    else
+      export SRCDIR_FROM_BUILDDIR=$(python -c "import os; print os.path.relpath('.', '$BUILDDIR')")
+    fi
+
+    echo "BUILDDIR=$BUILDDIR"
+    echo "SRCDIR_FROM_BUILDDIR=$SRCDIR_FROM_BUILDDIR"
+
+    sed -e "s|@@BuildDir@@|${BUILDDIR}|" \
+        -e "s|@@SrcDirFromBuildDir@@|${SRCDIR_FROM_BUILDDIR}|" \
+        -e "s|@@PrebuiltOS@@|${PREBUILTOS}|" \
+        "build/soong/soong.bootstrap.in" > $BUILDDIR/.soong.bootstrap
+    ln -sf "${SRCDIR_FROM_BUILDDIR}/build/soong/soong.bash" $BUILDDIR/soong
+fi
+
+"build/blueprint/bootstrap.bash" "$@"

@@ -40,7 +40,7 @@ func main() {
 
 	ctx := soong.NewContext()
 
-	configuration, err := common.NewConfig(srcDir)
+	configuration, err := common.NewConfig(srcDir, bootstrap.BuildDir)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "%s", err)
 		os.Exit(1)
@@ -49,5 +49,5 @@ func main() {
 	// Temporary hack
 	//ctx.SetIgnoreUnknownModuleTypes(true)
 
-	bootstrap.Main(ctx, configuration, common.ConfigFileName)
+	bootstrap.Main(ctx, configuration, filepath.Join(bootstrap.BuildDir, common.ConfigFileName))
 }

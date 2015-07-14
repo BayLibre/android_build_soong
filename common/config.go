@@ -44,7 +44,8 @@ type Config struct {
 type config struct {
 	FileConfigurableOptions
 
-	srcDir string // the path of the root source directory
+	srcDir   string // the path of the root source directory
+	buildDir string // the path of the build output directory
 
 	envLock sync.Mutex
 	envDeps map[string]string
@@ -56,7 +57,7 @@ func loadFromConfigFile(config *config) error {
 	var configProxy FileConfigurableOptions
 
 	// Try to open the file
-	configFileReader, err := os.Open(ConfigFileName)
+	configFileReader, err := os.Open(filepath.Join(config.buildDir, ConfigFileName))
 	defer configFileReader.Close()
 	if os.IsNotExist(err) {
 		// Need to create a file, so that blueprint & ninja don't get in
@@ -107,12 +108,13 @@ func saveToConfigFile(config FileConfigurableOptions) error {
 
 // New creates a new Config object.  The srcDir argument specifies the path to
 // the root source directory. It also loads the config file, if found.
-func NewConfig(srcDir string) (Config, error) {
+func NewConfig(srcDir, buildDir string) (Config, error) {
 	// Make a config with default options
 	config := Config{
 		config: &config{
-			srcDir:  srcDir,
-			envDeps: make(map[string]string),
+			srcDir:   srcDir,
+			buildDir: buildDir,
+			envDeps:  make(map[string]string),
 		},
 	}
 
@@ -129,8 +131,12 @@ func (c *config) SrcDir() string {
 	return c.srcDir
 }
 
+func (c *config) BuildDir() string {
+	return c.buildDir
+}
+
 func (c *config) IntermediatesDir() string {
-	return ".intermediates"
+	return filepath.Join(c.BuildDir(), ".intermediates")
 }
 
 // HostGoOS returns the OS of the system that the Go toolchain is being run on.
@@ -190,12 +196,12 @@ func (c *config) DeviceName() string {
 
 // DeviceOut returns the path to out directory for device targets
 func (c *config) DeviceOut() string {
-	return filepath.Join("target/product", c.DeviceName())
+	return filepath.Join(c.BuildDir(), "target/product", c.DeviceName())
 }
 
 // HostOut returns the path to out directory for host targets
 func (c *config) HostOut() string {
-	return filepath.Join("host", c.PrebuiltOS())
+	return filepath.Join(c.BuildDir(), "host", c.PrebuiltOS())
 }
 
 // HostBin returns the path to bin directory for host targets
