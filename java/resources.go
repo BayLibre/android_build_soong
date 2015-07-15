@@ -49,6 +49,7 @@ func ResourceDirsToJarSpecs(ctx common.AndroidModuleContext, resourceDirs, exclu
 
 	var jarSpecs []jarSpec
 
+	srcDir := ctx.AConfig().SrcDir()
 	for _, resourceDir := range resourceDirs {
 		if isStringInSlice(resourceDir, excludeDirs) {
 			continue
@@ -56,7 +57,11 @@ func ResourceDirsToJarSpecs(ctx common.AndroidModuleContext, resourceDirs, exclu
 		resourceDir := filepath.Join(common.ModuleSrcDir(ctx), resourceDir)
 		dirs := ctx.Glob("java_resources", resourceDir, nil)
 		for _, dir := range dirs {
-			fileListFile := filepath.Join(common.ModuleOutDir(ctx), "res", dir, "resources.list")
+			relDir, err := filepath.Rel(srcDir, dir)
+			if err != nil {
+				panic(err)
+			}
+			fileListFile := filepath.Join(common.ModuleOutDir(ctx), "res", relDir, "resources.list")
 			depFile := fileListFile + ".d"
 
 			glob := filepath.Join(dir, "**/*")
