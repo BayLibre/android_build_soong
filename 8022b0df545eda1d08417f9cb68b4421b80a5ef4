@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b8709650_67c8ae98",
+        "filename": "bootstrap.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-07-17T22:08:04Z",
+      "side": 1,
+      "message": "Yes, we already have such a script in the source tree:\nndk/realpath",
+      "parentUuid": "188c4286_eac30b00",
+      "range": {
+        "startLine": 60,
+        "startChar": 36,
+        "endLine": 60,
+        "endChar": 44
+      },
+      "revId": "8022b0df545eda1d08417f9cb68b4421b80a5ef4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "586b1a6a_19683799",
         "filename": "bootstrap.bash",
         "patchSetId": 1
