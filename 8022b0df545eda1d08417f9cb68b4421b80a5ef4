@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "188c4286_eac30b00",
+        "filename": "bootstrap.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-07-17T22:00:30Z",
+      "side": 1,
+      "message": "Hmm, what do we use to get the absolute path then? I could just call into python like I had to for relative paths.",
+      "parentUuid": "787a9e34_9fcde32b",
+      "range": {
+        "startLine": 60,
+        "startChar": 36,
+        "endLine": 60,
+        "endChar": 44
+      },
+      "revId": "8022b0df545eda1d08417f9cb68b4421b80a5ef4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "586b1a6a_19683799",
         "filename": "bootstrap.bash",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-07-17T21:43:03Z",
       "side": 1,
       "message": "Do you have a blueprint change that substitue the new BUILDDIR?\nOtherwise I don\u0027t see where BUILDDIR is passed to build.ninja.\nAlso I guess build/soong/build.ninja.in should be changed accordingly too.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 37
+      },
+      "revId": "8022b0df545eda1d08417f9cb68b4421b80a5ef4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "386e667b_3d65e7c1",
+        "filename": "bootstrap.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-07-17T22:00:30Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s all referenced and done in the parent change: https://android-review.googlesource.com/159833",
+      "parentUuid": "586b1a6a_19683799",
       "range": {
         "startLine": 75,
         "startChar": 0,
