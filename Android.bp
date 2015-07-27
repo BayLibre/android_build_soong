@@ -16,12 +16,8 @@ bootstrap_go_binary {
         "blueprint",
         "blueprint-bootstrap",
         "soong",
-        "soong-art",
-        "soong-cc",
         "soong-common",
         "soong-env",
-        "soong-genrule",
-        "soong-java",
     ],
     srcs: [
         "cmd/soong_build/main.go",
@@ -131,6 +127,7 @@ bootstrap_go_package {
     testSrcs: [
         "cc/cc_test.go",
     ],
+    plugin: true,
 }
 
 bootstrap_go_package {
@@ -145,6 +142,7 @@ bootstrap_go_package {
     srcs: [
         "genrule/genrule.go",
     ],
+    plugin: true,
 }
 
 bootstrap_go_binary {
@@ -172,6 +170,7 @@ bootstrap_go_package {
         "java/java.go",
         "java/resources.go",
     ],
+    plugin: true,
 }
 
 //
