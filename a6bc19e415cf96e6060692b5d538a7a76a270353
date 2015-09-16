@@ -16,6 +16,24 @@
       "revId": "a6bc19e415cf96e6060692b5d538a7a76a270353",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "044a2242_46a6928e",
+        "filename": "common/variable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-09-16T21:24:25Z",
+      "side": 1,
+      "message": "Line 93 dereferences the pointer now, so this is int instead of *int",
+      "parentUuid": "043302d8_53a80ec1",
+      "revId": "a6bc19e415cf96e6060692b5d538a7a76a270353",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
