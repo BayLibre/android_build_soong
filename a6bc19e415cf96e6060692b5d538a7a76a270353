@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "043302d8_53a80ec1",
+        "filename": "common/variable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-09-16T21:22:31Z",
+      "side": 1,
+      "message": "It\u0027s actually failing in this switch statement. I\u0027ll upload some Android.bp files.",
+      "revId": "a6bc19e415cf96e6060692b5d538a7a76a270353",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
