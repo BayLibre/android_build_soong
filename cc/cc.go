@@ -318,11 +318,12 @@ type CCBase struct {
 	Properties CCBaseProperties
 
 	unused struct {
-		Asan            bool
-		Native_coverage bool
-		Strip           string
-		Tags            []string
-		Required        []string
+		Sanitize         []string
+		Sanitize_recover []string
+		Native_coverage  bool
+		Strip            string
+		Tags             []string
+		Required         []string
 	}
 
 	installPath string
