@@ -34,6 +34,24 @@
       "revId": "a6bc19e415cf96e6060692b5d538a7a76a270353",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64383eb1_53565c6b",
+        "filename": "common/variable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-09-16T21:27:51Z",
+      "side": 1,
+      "message": "Yep, missed that. Works now",
+      "parentUuid": "044a2242_46a6928e",
+      "revId": "a6bc19e415cf96e6060692b5d538a7a76a270353",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
