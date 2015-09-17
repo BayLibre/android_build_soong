@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29bd3fca_f6dede78",
+        "filename": "bootstrap.bash",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-09-17T23:37:07Z",
+      "side": 1,
+      "message": "Leave this",
+      "revId": "400cdad13413b2998b5895857a7d94e3b94b281b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "89df0b23_415514eb",
+        "filename": "bootstrap.bash",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-09-17T23:37:07Z",
+      "side": 1,
+      "message": "And default this to relpath(pwd)",
+      "revId": "400cdad13413b2998b5895857a7d94e3b94b281b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9a3c3b1_33015246",
+        "filename": "bootstrap.bash",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-09-17T23:37:07Z",
+      "side": 1,
+      "message": "Leave SRCDIR",
+      "revId": "400cdad13413b2998b5895857a7d94e3b94b281b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "69c3b75a_9b1f9320",
+        "filename": "bootstrap.bash",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-09-17T23:37:07Z",
+      "side": 1,
+      "message": "Remove this error",
+      "revId": "400cdad13413b2998b5895857a7d94e3b94b281b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "29bd3fca_56395268",
+        "filename": "bootstrap.bash",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-09-17T23:37:07Z",
+      "side": 1,
+      "message": "Should we use the python prebuilts?",
+      "revId": "400cdad13413b2998b5895857a7d94e3b94b281b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
