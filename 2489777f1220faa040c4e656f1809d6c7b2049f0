@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "69dad736_c0cda046",
+        "filename": "common/variable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-09-17T22:32:31Z",
+      "side": 1,
+      "message": "There is no way to tell JSON it is required, and leaving out omitEmpty will just put DeviceArch: null in the file, which isn\u0027t helpful.  In a later patch I might make it never write out soong.variables, and leave that to the makefiles, and apply defaults on top of the read-in file for unset values.",
+      "parentUuid": "69c3b75a_98a7998b",
+      "revId": "2489777f1220faa040c4e656f1809d6c7b2049f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "89df0b23_5e397568",
         "filename": "common/variable.go",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2015-09-17T22:07:09Z",
       "side": 1,
       "message": "\u0026[]string{\"\"} works fine",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 1
+      },
+      "revId": "2489777f1220faa040c4e656f1809d6c7b2049f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "69c3b75a_181629e2",
+        "filename": "common/variable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-09-17T22:32:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89df0b23_5e397568",
       "range": {
         "startLine": 87,
         "startChar": 0,
