@@ -3,14 +3,21 @@
 set -e
 
 ORIG_SRCDIR=$(dirname "${BASH_SOURCE[0]}")
-BUILDDIR=""
 if [[ "$ORIG_SRCDIR" != "." ]]; then
-  if [[ ${SRCDIR:0:1} == '/' ]]; then
-    BUILDDIR=$PWD
+  if [[ ! -z "$BUILDDIR" ]]; then
+    echo "error: To use BUILDDIR, run from the source directory"
+    exit 1
+  fi
+  if [[ ${ORIG_SRCDIR:0:1} == '/' ]]; then
+    export BUILDDIR=$PWD
   else
-    BUILDDIR=$(python -c "import os; print os.path.relpath('.', '$ORIG_SRCDIR')")
+    export BUILDDIR=$(python -c "import os; print os.path.relpath('.', '$ORIG_SRCDIR')")
   fi
   cd $ORIG_SRCDIR
+fi
+if [[ -z "$BUILDDIR" ]]; then
+  echo "error: Run ${BASH_SOURCE[0]} from the build output directory"
+  exit 1
 fi
 export SRCDIR="."
 export BOOTSTRAP="${SRCDIR}/bootstrap.bash"
@@ -34,35 +41,7 @@ export GOROOT="${SRCDIR}/prebuilts/go/$PREBUILTOS/"
 export GOARCH="amd64"
 export GOCHAR="6"
 
-if [[ $BUILDDIR == "" ]]; then
-  # Parse command line flags, but fail back to blueprint's bootstrap.bash
-  NOCREATEFILES=0
-  while getopts ":b:i:r" opt; do
-    case $opt in
-      b) BUILDDIR="$OPTARG";;
-      i) NOCREATEFILES=1;;
-      r) NOCREATEFILES=1;;
-      \?) NOCREATEFILES=1;;
-      :)
-        echo "Option -$OPTARG requires an argument." >&2
-        exit 1
-        ;;
-    esac
-  done
-
-  if [[ "$BUILDDIR" == "" ]]; then
-    echo "FAILED: Must provide a build output directory"
-    echo "  Either run bootstrap.bash from the output directory"
-    echo "  or run from $$TOP and pass -b <output>"
-    exit 1
-  fi
-else
-  NOCREATEFILES=$#
-fi
-
-export BUILDDIR
-
-if [[ $NOCREATEFILES -eq 0 ]]; then
+if [[ $# -eq 0 ]]; then
     mkdir -p $BUILDDIR
 
     if [[ $(find $BUILDDIR -maxdepth 1 -name Android.bp) ]]; then
