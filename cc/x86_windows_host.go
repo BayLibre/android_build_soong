@@ -64,8 +64,8 @@ var (
 func init() {
 	pctx.StaticVariable("windowsGccVersion", "4.8")
 
-	pctx.StaticVariable("windowsGccRoot",
-		"${SrcDir}/prebuilts/gcc/${HostPrebuiltTag}/host/x86_64-w64-mingw32-${windowsGccVersion}")
+	pctx.SourcePathVariable("windowsGccRoot",
+		"prebuilts/gcc/${HostPrebuiltTag}/host/x86_64-w64-mingw32-${windowsGccVersion}")
 
 	pctx.StaticVariable("windowsGccTriple", "x86_64-w64-mingw32")
 

@@ -133,7 +133,7 @@ func init() {
 
 	pctx.StaticVariable("x86_64GccVersion", "4.9")
 
-	pctx.StaticVariable("x86_64GccRoot",
+	pctx.SourcePathVariable("x86_64GccRoot",
 		"prebuilts/gcc/${HostPrebuiltTag}/x86/x86_64-linux-android-${armGccVersion}")
 
 	pctx.StaticVariable("x86_64GccTriple", "x86_64-linux-android")
