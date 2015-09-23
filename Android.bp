@@ -101,6 +101,9 @@ bootstrap_go_package {
         "common/util.go",
         "common/variable.go",
     ],
+    testSrcs: [
+        "common/paths_test.go",
+    ],
 }
 
 bootstrap_go_package {
