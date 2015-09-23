@@ -25,8 +25,6 @@ var (
 	cpPreserveSymlinks = pctx.VariableConfigMethod("cpPreserveSymlinks",
 		Config.CpPreserveSymlinksFlags)
 
-	srcDir = pctx.VariableConfigMethod("srcDir", Config.SrcDir)
-
 	// A phony rule that is not the built-in Ninja phony rule.  The built-in
 	// phony rule has special behavior that is sometimes not desired.  See the
 	// Ninja docs for more details.

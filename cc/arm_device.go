@@ -150,8 +150,8 @@ func init() {
 
 	pctx.StaticVariable("armGccVersion", "4.9")
 
-	pctx.StaticVariable("armGccRoot",
-		"prebuilts/gcc/${HostPrebuiltTag}/arm/arm-linux-androideabi-${armGccVersion}")
+	pctx.VariableFunc("armGccRoot",
+		common.SourcePathVariableFunc("prebuilts/gcc/${HostPrebuiltTag}/arm/arm-linux-androideabi-${armGccVersion}"))
 
 	pctx.StaticVariable("armGccTriple", "arm-linux-androideabi")
 

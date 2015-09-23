@@ -103,8 +103,8 @@ var (
 func init() {
 	pctx.StaticVariable("linuxGccVersion", "4.8")
 
-	pctx.StaticVariable("linuxGccRoot",
-		"${SrcDir}/prebuilts/gcc/${HostPrebuiltTag}/host/x86_64-linux-glibc2.15-${linuxGccVersion}")
+	pctx.VariableFunc("linuxGccRoot", common.SourcePathVariableFunc(
+		"prebuilts/gcc/${HostPrebuiltTag}/host/x86_64-linux-glibc2.15-${linuxGccVersion}"))
 
 	pctx.StaticVariable("linuxGccTriple", "x86_64-linux")
 

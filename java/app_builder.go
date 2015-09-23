@@ -19,7 +19,6 @@ package java
 // functions.
 
 import (
-	"path/filepath"
 	"strings"
 
 	"github.com/google/blueprint"
@@ -83,47 +82,41 @@ var (
 )
 
 func init() {
-	pctx.StaticVariable("androidManifestMergerCmd", "${srcDir}/prebuilts/devtools/tools/lib/manifest-merger.jar")
-	pctx.VariableFunc("aaptCmd", func(c interface{}) (string, error) {
-		return c.(common.Config).HostBinTool("aapt")
-	})
-	pctx.VariableFunc("zipalignCmd", func(c interface{}) (string, error) {
-		return c.(common.Config).HostBinTool("zipalign")
-	})
-	pctx.VariableFunc("signapkCmd", func(c interface{}) (string, error) {
-		return c.(common.Config).HostJavaTool("signapk.jar")
-	})
+	pctx.VariableFunc("androidManifestMergerCmd", common.SourcePathVariableFunc("prebuilts/devtools/tools/lib/manifest-merger.jar"))
+	pctx.VariableFunc("aaptCmd", common.HostBinToolVariableFunc("aapt"))
+	pctx.VariableFunc("zipalignCmd", common.HostBinToolVariableFunc("zipalign"))
+	pctx.VariableFunc("signapkCmd", common.HostJavaToolVariableFunc("signapk.jar"))
 }
 
 func CreateResourceJavaFiles(ctx common.AndroidModuleContext, flags []string,
-	deps []string) (string, string, string) {
-	javaDir := filepath.Join(common.ModuleGenDir(ctx), "R")
-	javaFileList := filepath.Join(common.ModuleOutDir(ctx), "R.filelist")
-	publicResourcesFile := filepath.Join(common.ModuleOutDir(ctx), "public_resources.xml")
-	proguardOptionsFile := filepath.Join(common.ModuleOutDir(ctx), "proguard.options")
+	deps common.Paths) (common.Path, common.Path, common.Path) {
+	javaDir := common.PathForModuleGen(ctx, "R")
+	javaFileList := common.PathForModuleOut(ctx, "R.filelist")
+	publicResourcesFile := common.PathForModuleOut(ctx, "public_resources.xml")
+	proguardOptionsFile := common.PathForModuleOut(ctx, "proguard.options")
 
-	ctx.Build(pctx, blueprint.BuildParams{
+	ctx.ModuleBuild(pctx, common.ModuleBuildParams{
 		Rule:      aaptCreateResourceJavaFile,
-		Outputs:   []string{publicResourcesFile, proguardOptionsFile, javaFileList},
+		Outputs:   common.Paths{publicResourcesFile, proguardOptionsFile, javaFileList},
 		Implicits: deps,
 		Args: map[string]string{
 			"aaptFlags":           strings.Join(flags, " "),
-			"publicResourcesFile": publicResourcesFile,
-			"proguardOptionsFile": proguardOptionsFile,
-			"javaDir":             javaDir,
-			"javaFileList":        javaFileList,
+			"publicResourcesFile": publicResourcesFile.String(),
+			"proguardOptionsFile": proguardOptionsFile.String(),
+			"javaDir":             javaDir.String(),
+			"javaFileList":        javaFileList.String(),
 		},
 	})
 
 	return publicResourcesFile, proguardOptionsFile, javaFileList
 }
 
-func CreateExportPackage(ctx common.AndroidModuleContext, flags []string, deps []string) string {
-	outputFile := filepath.Join(common.ModuleOutDir(ctx), "package-export.apk")
+func CreateExportPackage(ctx common.AndroidModuleContext, flags []string, deps common.Paths) common.ModuleOutPath {
+	outputFile := common.PathForModuleOut(ctx, "package-export.apk")
 
-	ctx.Build(pctx, blueprint.BuildParams{
+	ctx.ModuleBuild(pctx, common.ModuleBuildParams{
 		Rule:      aaptCreateAssetsPackage,
-		Outputs:   []string{outputFile},
+		Outputs:   common.Paths{outputFile},
 		Implicits: deps,
 		Args: map[string]string{
 			"aaptFlags": strings.Join(flags, " "),
@@ -133,42 +126,42 @@ func CreateExportPackage(ctx common.AndroidModuleContext, flags []string, deps [
 	return outputFile
 }
 
-func CreateAppPackage(ctx common.AndroidModuleContext, flags []string, jarFile string,
-	certificates []string) string {
+func CreateAppPackage(ctx common.AndroidModuleContext, flags []string, jarFile common.Path,
+	certificates []string) common.Path {
 
-	resourceApk := filepath.Join(common.ModuleOutDir(ctx), "resources.apk")
+	resourceApk := common.PathForModuleOut(ctx, "resources.apk")
 
-	ctx.Build(pctx, blueprint.BuildParams{
+	ctx.ModuleBuild(pctx, common.ModuleBuildParams{
 		Rule:    aaptAddResources,
-		Outputs: []string{resourceApk},
-		Inputs:  []string{jarFile},
+		Outputs: common.Paths{resourceApk},
+		Inputs:  common.Paths{jarFile},
 		Args: map[string]string{
 			"aaptFlags": strings.Join(flags, " "),
 		},
 	})
 
-	signedApk := filepath.Join(common.ModuleOutDir(ctx), "signed.apk")
+	signedApk := common.PathForModuleOut(ctx, "signed.apk")
 
 	var certificateArgs []string
 	for _, c := range certificates {
 		certificateArgs = append(certificateArgs, c+".x509.pem", c+".pk8")
 	}
 
-	ctx.Build(pctx, blueprint.BuildParams{
+	ctx.ModuleBuild(pctx, common.ModuleBuildParams{
 		Rule:    signapk,
-		Outputs: []string{signedApk},
-		Inputs:  []string{resourceApk},
+		Outputs: common.Paths{signedApk},
+		Inputs:  common.Paths{resourceApk},
 		Args: map[string]string{
 			"certificates": strings.Join(certificateArgs, " "),
 		},
 	})
 
-	outputFile := filepath.Join(common.ModuleOutDir(ctx), "package.apk")
+	outputFile := common.PathForModuleOut(ctx, "package.apk")
 
-	ctx.Build(pctx, blueprint.BuildParams{
+	ctx.ModuleBuild(pctx, common.ModuleBuildParams{
 		Rule:    zipalign,
-		Outputs: []string{outputFile},
-		Inputs:  []string{signedApk},
+		Outputs: common.Paths{outputFile},
+		Inputs:  common.Paths{signedApk},
 		Args: map[string]string{
 			"zipalignFlags": "",
 		},

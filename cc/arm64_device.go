@@ -74,8 +74,8 @@ var (
 func init() {
 	pctx.StaticVariable("arm64GccVersion", "4.9")
 
-	pctx.StaticVariable("arm64GccRoot",
-		"prebuilts/gcc/${HostPrebuiltTag}/aarch64/aarch64-linux-android-${arm64GccVersion}")
+	pctx.VariableFunc("arm64GccRoot",
+		common.SourcePathVariableFunc("prebuilts/gcc/${HostPrebuiltTag}/aarch64/aarch64-linux-android-${arm64GccVersion}"))
 
 	pctx.StaticVariable("arm64GccTriple", "aarch64-linux-android")
 
