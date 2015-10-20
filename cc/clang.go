@@ -30,6 +30,8 @@ var clangUnknownCflags = []string{
 	"-Wno-unused-local-typedefs",
 	"-Wunused-but-set-parameter",
 	"-Wunused-but-set-variable",
+	"-fdiagnostics-color",
+	"-fdebug-prefix-map=/proc/self/cwd=",
 
 	// arm + arm64 + mips + mips64
 	"-fgcse-after-reload",
@@ -88,6 +90,10 @@ func init() {
 		// Disable -Winconsistent-missing-override until we can clean up the existing
 		// codebase for it.
 		"-Wno-inconsistent-missing-override",
+
+		// Force clang to always output color diagnostics. Ninja will strip the ANSI
+		// color codes if it is not running in a terminal.
+		"-fcolor-diagnostics",
 	}, " "))
 
 	pctx.StaticVariable("clangExtraConlyflags", strings.Join([]string{
