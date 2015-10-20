@@ -16,6 +16,24 @@
       "revId": "c3a5831a998ee598f55fe35535adb04d627cce7e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99f3ea1a_85050153",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-10-20T22:50:39Z",
+      "side": 1,
+      "message": "because the init function in clang.go must run before the init function in cc.go for clangFilterUnknownCflags to work. I\u0027m open to other suggestions, but we\u0027re already reliant on the ordering, since cc/arm_device.go uses that function in it\u0027s initialization context too",
+      "parentUuid": "791716fc_5e3109ce",
+      "revId": "c3a5831a998ee598f55fe35535adb04d627cce7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
