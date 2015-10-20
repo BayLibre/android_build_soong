@@ -52,6 +52,24 @@
       "revId": "c3a5831a998ee598f55fe35535adb04d627cce7e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "791716fc_c9ba81ab",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-10-20T23:50:47Z",
+      "side": 1,
+      "message": "Done. This actually changed the builds a bit, since x86_linux_host.go uses the filter function in the var initialization.",
+      "parentUuid": "39111e0a_3c3d30f6",
+      "revId": "c3a5831a998ee598f55fe35535adb04d627cce7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
