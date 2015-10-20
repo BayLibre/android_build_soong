@@ -34,6 +34,24 @@
       "revId": "c3a5831a998ee598f55fe35535adb04d627cce7e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39111e0a_3c3d30f6",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-10-20T23:07:14Z",
+      "side": 1,
+      "message": "hm, they have updated the golang spec to clarify the init function order, but they also suggest always passing files to the compiler in lexical order to get reproducible behavior.  If we rely on order here, building things with go build or go test will get different results.  Maybe we should sort go files if go build does.\n\nIf the only dependency is that the sort.Strings(clangUnknownCflags) has to run first, make a helper function that takes a []string and returns a sorted []string, and put it in the var clangUnknownCflags initialization.",
+      "parentUuid": "99f3ea1a_85050153",
+      "revId": "c3a5831a998ee598f55fe35535adb04d627cce7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
