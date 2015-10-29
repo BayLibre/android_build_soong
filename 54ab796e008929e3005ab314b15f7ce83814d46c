@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7643a650_ef02a1e5",
+        "filename": "common/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-10-29T21:19:00Z",
+      "side": 1,
+      "message": "I would have assumed that PropertyErrorf would already prepend this, but apparently not :-/",
+      "range": {
+        "startLine": 449,
+        "startChar": 29,
+        "endLine": 449,
+        "endChar": 40
+      },
+      "revId": "54ab796e008929e3005ab314b15f7ce83814d46c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
