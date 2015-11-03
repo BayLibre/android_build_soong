@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6bb729e_8da22567",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-11-03T23:59:43Z",
+      "side": 1,
+      "message": "why is this exported?",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 2
+      },
+      "revId": "552c1769528a9787503f72bd0cd5f615f80806f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
