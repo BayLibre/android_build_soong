@@ -22,6 +22,30 @@
       "revId": "02c01f0b95fb70885fd7c6bce95938286292e200",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16a98a5f_47917076",
+        "filename": "common/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-11-03T23:46:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76df26f3_150e347e",
+      "range": {
+        "startLine": 442,
+        "startChar": 30,
+        "endLine": 442,
+        "endChar": 41
+      },
+      "revId": "02c01f0b95fb70885fd7c6bce95938286292e200",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
