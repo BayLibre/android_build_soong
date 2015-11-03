@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76df26f3_150e347e",
+        "filename": "common/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-11-03T23:36:13Z",
+      "side": 1,
+      "message": "do we still need this with your PropertyErrorf change?",
+      "range": {
+        "startLine": 442,
+        "startChar": 30,
+        "endLine": 442,
+        "endChar": 41
+      },
+      "revId": "02c01f0b95fb70885fd7c6bce95938286292e200",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
