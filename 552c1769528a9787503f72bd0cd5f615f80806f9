@@ -22,6 +22,30 @@
       "revId": "552c1769528a9787503f72bd0cd5f615f80806f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16d0aae3_15c0764e",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-11-04T00:02:59Z",
+      "side": 1,
+      "message": "This is expected be overriden by specialized modules like art.",
+      "parentUuid": "d6bb729e_8da22567",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 152,
+        "endChar": 2
+      },
+      "revId": "552c1769528a9787503f72bd0cd5f615f80806f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
