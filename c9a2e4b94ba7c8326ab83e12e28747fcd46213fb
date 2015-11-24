@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db271bf3_642206e6",
+        "filename": "common/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-11-24T00:28:11Z",
+      "side": 1,
+      "message": "Add a blank line here?",
+      "revId": "c9a2e4b94ba7c8326ab83e12e28747fcd46213fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
