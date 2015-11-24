@@ -16,6 +16,24 @@
       "revId": "ccff84730ec379e1afe72dd4e17da6d6b3058a46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b2123e5_5215018c",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-11-24T00:57:08Z",
+      "side": 1,
+      "message": "I haven\u0027t seen a need for clang toolchain ldflags, I think because clang is saner and gets all the info it needs from the triple?  mips and x86 pass -m32 or -Wl,-melf32ltsmip, but clang already gets that from the triple.",
+      "parentUuid": "5b1b2bb8_8d0f6278",
+      "revId": "ccff84730ec379e1afe72dd4e17da6d6b3058a46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
