@@ -1,0 +1,7 @@
+Code-Review+2: Dan Willemsen <dwillemsen@google.com>
+Verified+1: Colin Cross <ccross@android.com>
+Submitted-by: Colin Cross <ccross@android.com>
+Submitted-at: Tue, 24 Nov 2015 20:21:24 +0000
+Reviewed-on: https://android-review.googlesource.com/183863
+Project: platform/build/soong
+Branch: refs/heads/master
