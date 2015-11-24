@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fbf69f9c_6097982b",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-11-24T00:44:49Z",
+      "side": 1,
+      "message": "The ldflags may be different between gcc and clang -- should we always be using g++ here?",
+      "revId": "ce480115293b219af00547c2e15bbb67d93e9d07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
