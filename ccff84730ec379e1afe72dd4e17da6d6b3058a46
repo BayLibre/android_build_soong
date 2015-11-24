@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b1b2bb8_8d0f6278",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-11-24T00:40:54Z",
+      "side": 1,
+      "message": "Why toolchain ldflags only for !clang?",
+      "revId": "ccff84730ec379e1afe72dd4e17da6d6b3058a46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
