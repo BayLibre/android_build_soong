@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3bed97ca_87557a05",
+        "filename": "cc/x86_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-11-24T00:34:25Z",
+      "side": 1,
+      "message": "copyright header?",
+      "revId": "53c736db01d44b31c1df8d41296f80e72db330c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
