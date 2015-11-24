@@ -546,6 +546,13 @@ func (c *CCBase) collectFlags(ctx common.AndroidModuleContext, toolchain Toolcha
 		flags.LdFlags = append(flags.LdFlags, target, gccPrefix)
 	}
 
+	if flags.Clang {
+		flags.GlobalFlags = append(flags.GlobalFlags, toolchain.ToolchainClangCflags())
+	} else {
+		flags.GlobalFlags = append(flags.GlobalFlags, toolchain.ToolchainCflags())
+		flags.LdFlags = append(flags.LdFlags, toolchain.ToolchainLdflags())
+	}
+
 	if !Bool(c.Properties.No_default_compiler_flags) {
 		if ctx.Device() && !Bool(c.Properties.Allow_undefined_symbols) {
 			flags.LdFlags = append(flags.LdFlags, "-Wl,--no-undefined")
