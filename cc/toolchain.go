@@ -22,15 +22,21 @@ import (
 
 type toolchainFactory func(arch common.Arch) Toolchain
 
-var toolchainFactories = map[common.HostOrDevice]map[common.ArchType]toolchainFactory{
-	common.Host:   make(map[common.ArchType]toolchainFactory),
-	common.Device: make(map[common.ArchType]toolchainFactory),
+var toolchainFactories = map[common.HostOrDevice]map[common.HostType]map[common.ArchType]toolchainFactory{
+	common.Host: map[common.HostType]map[common.ArchType]toolchainFactory{
+		common.Linux:   make(map[common.ArchType]toolchainFactory),
+		common.Darwin:  make(map[common.ArchType]toolchainFactory),
+		common.Windows: make(map[common.ArchType]toolchainFactory),
+	},
+	common.Device: map[common.HostType]map[common.ArchType]toolchainFactory{
+		common.NoHostType: make(map[common.ArchType]toolchainFactory),
+	},
 }
 
-func registerToolchainFactory(hod common.HostOrDevice, arch common.ArchType,
-	factory toolchainFactory) {
+func registerToolchainFactory(hod common.HostOrDevice, ht common.HostType,
+	arch common.ArchType, factory toolchainFactory) {
 
-	toolchainFactories[hod][arch] = factory
+	toolchainFactories[hod][ht][arch] = factory
 }
 
 type Toolchain interface {
@@ -47,6 +53,7 @@ type Toolchain interface {
 	IncludeFlags() string
 	InstructionSetFlags(string) (string, error)
 
+	ClangSupported() bool
 	ClangTriple() string
 	ToolchainClangCflags() string
 	ClangCflags() string
@@ -84,6 +91,10 @@ func (toolchainBase) ToolchainLdflags() string {
 
 func (toolchainBase) ToolchainClangCflags() string {
 	return ""
+}
+
+func (toolchainBase) ClangSupported() bool {
+	return true
 }
 
 type toolchain64Bit struct {

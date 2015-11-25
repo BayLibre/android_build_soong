@@ -256,5 +256,5 @@ func x86_64ToolchainFactory(arch common.Arch) Toolchain {
 }
 
 func init() {
-	registerToolchainFactory(common.Device, common.X86_64, x86_64ToolchainFactory)
+	registerToolchainFactory(common.Device, common.NoHostType, common.X86_64, x86_64ToolchainFactory)
 }

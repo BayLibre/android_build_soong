@@ -29,6 +29,7 @@ func init() {
 	RegisterTopDownMutator("defaults", defaultsMutator)
 
 	RegisterBottomUpMutator("host_or_device", HostOrDeviceMutator)
+	RegisterBottomUpMutator("host_type", HostTypeMutator)
 	RegisterBottomUpMutator("arch", ArchMutator)
 }
 
@@ -261,6 +262,8 @@ type archProperties struct {
 		Darwin_x86_64 interface{} `blueprint:"filter(android:\"arch_variant\")"`
 		// Properties for module variants being built to run on windows hosts
 		Windows interface{} `blueprint:"filter(android:\"arch_variant\")"`
+		// Properties for module variants being built to run on windows x86 hosts
+		Windows_x86 interface{} `blueprint:"filter(android:\"arch_variant\")"`
 		// Properties for module variants being built to run on linux or darwin hosts
 		Not_windows interface{} `blueprint:"filter(android:\"arch_variant\")"`
 	}
@@ -383,6 +386,52 @@ var hostOrDeviceName = map[HostOrDevice]string{
 	Host:   "host",
 }
 
+type HostType int
+
+const (
+	NoHostType HostType = iota
+	Linux
+	Darwin
+	Windows
+)
+
+func currentHostType() HostType {
+	switch runtime.GOOS {
+	case "linux":
+		return Linux
+	case "darwin":
+		return Darwin
+	default:
+		panic(fmt.Sprintf("unsupported OS: %s", runtime.GOOS))
+	}
+}
+
+func (ht HostType) String() string {
+	switch ht {
+	case Linux:
+		return "linux"
+	case Darwin:
+		return "darwin"
+	case Windows:
+		return "windows"
+	default:
+		panic(fmt.Sprintf("unexpected HostType value %d", ht))
+	}
+}
+
+func (ht HostType) Field() string {
+	switch ht {
+	case Linux:
+		return "Linux"
+	case Darwin:
+		return "Darwin"
+	case Windows:
+		return "Windows"
+	default:
+		panic(fmt.Sprintf("unexpected HostType value %d", ht))
+	}
+}
+
 var (
 	commonArch = Arch{
 		ArchType: Common,
@@ -421,6 +470,34 @@ func HostOrDeviceMutator(mctx AndroidBottomUpMutatorContext) {
 	}
 }
 
+func HostTypeMutator(mctx AndroidBottomUpMutatorContext) {
+	var module AndroidModule
+	var ok bool
+	if module, ok = mctx.Module().(AndroidModule); !ok {
+		return
+	}
+
+	if !module.base().HostSupported() || !module.base().HostOrDevice().Host() {
+		return
+	}
+
+	buildTypes, err := decodeHostTypesProductVariables(mctx.Config().(Config).ProductVariables)
+	if err != nil {
+		mctx.ModuleErrorf("%s", err.Error())
+		return
+	}
+
+	typeNames := []string{}
+	for _, ht := range buildTypes {
+		typeNames = append(typeNames, ht.String())
+	}
+
+	modules := mctx.CreateVariations(typeNames...)
+	for i, m := range modules {
+		m.(AndroidModule).base().SetHostType(buildTypes[i])
+	}
+}
+
 func ArchMutator(mctx AndroidBottomUpMutatorContext) {
 	var module AndroidModule
 	var ok bool
@@ -437,7 +514,7 @@ func ArchMutator(mctx AndroidBottomUpMutatorContext) {
 	multilib := module.base().commonProperties.Compile_multilib
 
 	if module.base().HostSupported() && module.base().HostOrDevice().Host() {
-		hostModuleArches, err := decodeMultilib(multilib, hostArches)
+		hostModuleArches, err := decodeMultilib(multilib, hostArches[module.base().HostType()])
 		if err != nil {
 			mctx.ModuleErrorf("%s", err.Error())
 		}
@@ -560,6 +637,7 @@ func (a *AndroidModuleBase) appendProperties(ctx AndroidBottomUpMutatorContext,
 func (a *AndroidModuleBase) setArchProperties(ctx AndroidBottomUpMutatorContext) {
 	arch := a.commonProperties.CompileArch
 	hod := a.commonProperties.CompileHostOrDevice
+	ht := a.commonProperties.CompileHostType
 
 	if arch.ArchType == Common {
 		return
@@ -654,30 +732,21 @@ func (a *AndroidModuleBase) setArchProperties(ctx AndroidBottomUpMutatorContext)
 		//         key: value,
 		//     },
 		// },
-		var osList = []struct {
-			goos  string
-			field string
-		}{
-			{"darwin", "Darwin"},
-			{"linux", "Linux"},
-			{"windows", "Windows"},
-		}
-
 		if hod.Host() {
-			for _, v := range osList {
-				if v.goos == runtime.GOOS {
-					field := v.field
-					prefix := "target." + v.goos
-					a.appendProperties(ctx, genProps, archProps.Target, field, prefix)
-					t := arch.ArchType
-					field = v.field + "_" + t.Name
-					prefix = "target." + v.goos + "_" + t.Name
-					a.appendProperties(ctx, genProps, archProps.Target, field, prefix)
-				}
-			}
-			field := "Not_windows"
-			prefix := "target.not_windows"
+			field := ht.Field()
+			prefix := "target." + ht.String()
 			a.appendProperties(ctx, genProps, archProps.Target, field, prefix)
+
+			t := arch.ArchType
+			field = ht.Field() + "_" + t.Name
+			prefix = "target." + ht.String() + "_" + t.Name
+			a.appendProperties(ctx, genProps, archProps.Target, field, prefix)
+
+			if ht != Windows {
+				field := "Not_windows"
+				prefix := "target.not_windows"
+				a.appendProperties(ctx, genProps, archProps.Target, field, prefix)
+			}
 		}
 
 		// Handle 64-bit device properties in the form:
@@ -742,8 +811,24 @@ func forEachInterface(v reflect.Value, f func(reflect.Value)) {
 	}
 }
 
+// Get a list of HostTypes from the product variables
+func decodeHostTypesProductVariables(variables productVariables) ([]HostType, error) {
+	ret := []HostType{currentHostType()}
+
+	if variables.SecondHost != nil && *variables.SecondHost != "" {
+		switch *variables.SecondHost {
+		case "windows":
+			ret = append(ret, Windows)
+		default:
+			return nil, fmt.Errorf("Unsupported secondary host: %s", *variables.SecondHost)
+		}
+	}
+
+	return ret, nil
+}
+
 // Convert the arch product variables into a list of host and device Arch structs
-func decodeArchProductVariables(variables productVariables) ([]Arch, []Arch, error) {
+func decodeArchProductVariables(variables productVariables) (map[HostType][]Arch, []Arch, error) {
 	if variables.HostArch == nil {
 		return nil, nil, fmt.Errorf("No host primary architecture set")
 	}
@@ -761,6 +846,38 @@ func decodeArchProductVariables(variables productVariables) ([]Arch, []Arch, err
 			return nil, nil, err
 		}
 		hostArches = append(hostArches, hostSecondaryArch)
+	}
+
+	hostTypeArches := map[HostType][]Arch{
+		currentHostType(): hostArches,
+	}
+
+	if variables.SecondHost != nil && *variables.SecondHost != "" {
+		if variables.SecondHostArch == nil || *variables.SecondHostArch == "" {
+			return nil, nil, fmt.Errorf("No second host primary architecture set")
+		}
+
+		secondHostArch, err := decodeArch(*variables.SecondHostArch, nil, nil, nil)
+		if err != nil {
+			return nil, nil, err
+		}
+
+		secondHostArches := []Arch{secondHostArch}
+
+		if variables.SecondHostSecondaryArch != nil && *variables.SecondHostSecondaryArch != "" {
+			secondHostSecondaryArch, err := decodeArch(*variables.SecondHostSecondaryArch, nil, nil, nil)
+			if err != nil {
+				return nil, nil, err
+			}
+			secondHostArches = append(secondHostArches, secondHostSecondaryArch)
+		}
+
+		switch *variables.SecondHost {
+		case "windows":
+			hostTypeArches[Windows] = secondHostArches
+		default:
+			return nil, nil, fmt.Errorf("Unsupported secondary host: %s", *variables.SecondHost)
+		}
 	}
 
 	if variables.DeviceArch == nil {
@@ -785,7 +902,7 @@ func decodeArchProductVariables(variables productVariables) ([]Arch, []Arch, err
 		deviceArches = append(deviceArches, deviceSecondaryArch)
 	}
 
-	return hostArches, deviceArches, nil
+	return hostTypeArches, deviceArches, nil
 }
 
 // Convert a set of strings from product variables into a single Arch struct

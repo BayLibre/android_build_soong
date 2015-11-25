@@ -21,7 +21,6 @@ package cc
 import (
 	"fmt"
 	"path/filepath"
-	"runtime"
 	"strings"
 
 	"github.com/google/blueprint"
@@ -82,7 +81,7 @@ var (
 		"-Wno-unused",
 		"-Winit-self",
 		"-Wpointer-arith",
-		"-fdiagnostics-color",
+		// TODO: "-fdiagnostics-color",
 		"-fdebug-prefix-map=/proc/self/cwd=",
 
 		// COMMON_RELEASE_CFLAGS
@@ -407,9 +406,10 @@ func (c *CCBase) ccModuleType() CCModuleType {
 func (c *CCBase) findToolchain(ctx common.AndroidModuleContext) Toolchain {
 	arch := ctx.Arch()
 	hod := ctx.HostOrDevice()
-	factory := toolchainFactories[hod][arch.ArchType]
+	ht := ctx.HostType()
+	factory := toolchainFactories[hod][ht][arch.ArchType]
 	if factory == nil {
-		ctx.ModuleErrorf("Toolchain not found for %s arch %q", hod.String(), arch.String())
+		ctx.ModuleErrorf("Toolchain not found for %s %s arch %q", hod.String(), ht.String(), arch.String())
 		return nil
 	}
 	return factory(arch)
@@ -510,6 +510,10 @@ func (c *CCBase) collectFlags(ctx common.AndroidModuleContext, toolchain Toolcha
 		if ctx.Device() && ctx.AConfig().DeviceUsesClang() {
 			flags.Clang = true
 		}
+	}
+
+	if !toolchain.ClangSupported() {
+		flags.Clang = false
 	}
 
 	instructionSet := c.Properties.Instruction_set
@@ -827,16 +831,26 @@ func (c *CCLinked) stl(ctx common.AndroidBaseContext) string {
 	}
 
 	switch c.Properties.Stl {
-	case "libc++", "libc++_static",
-		"libstdc++":
+	case "libc++", "libc++_static":
+		if ctx.HostType() == common.Windows {
+			// libc++ is not supported on mingw
+			return "libstdc++"
+		}
+		return c.Properties.Stl
+	case "libstdc++":
 		return c.Properties.Stl
 	case "none":
 		return ""
 	case "":
-		if c.static() {
-			return "libc++_static"
+		if ctx.HostType() == common.Windows {
+			// libc++ is not supported on mingw.
+			return "libstdc++"
 		} else {
-			return "libc++" // TODO: mingw needs libstdc++
+			if c.static() {
+				return "libc++_static"
+			} else {
+				return "libc++"
+			}
 		}
 	default:
 		ctx.ModuleErrorf("stl: %q is not a supported STL", c.Properties.Stl)
@@ -844,15 +858,21 @@ func (c *CCLinked) stl(ctx common.AndroidBaseContext) string {
 	}
 }
 
-var hostDynamicGccLibs, hostStaticGccLibs []string
+var hostDynamicGccLibs, hostStaticGccLibs map[common.HostType][]string
 
 func init() {
-	if runtime.GOOS == "darwin" {
-		hostDynamicGccLibs = []string{"-lc", "-lSystem"}
-		hostStaticGccLibs = []string{"NO_STATIC_HOST_BINARIES_ON_DARWIN"}
-	} else {
-		hostDynamicGccLibs = []string{"-lgcc_s", "-lgcc", "-lc", "-lgcc_s", "-lgcc"}
-		hostStaticGccLibs = []string{"-Wl,--start-group", "-lgcc", "-lgcc_eh", "-lc", "-Wl,--end-group"}
+	hostDynamicGccLibs = map[common.HostType][]string{
+		common.Linux:  []string{"-lgcc_s", "-lgcc", "-lc", "-lgcc_s", "-lgcc"},
+		common.Darwin: []string{"-lc", "-lSystem"},
+		common.Windows: []string{"-lmsvcr110", "-lmingw32", "-lgcc", "-lmoldname",
+			"-lmingwex", "-lmsvcrt", "-ladvapi32", "-lshell32", "-luser32",
+			"-lkernel32", "-lmingw32", "-lgcc", "-lmoldname", "-lmingwex",
+			"-lmsvcrt"},
+	}
+	hostStaticGccLibs = map[common.HostType][]string{
+		common.Linux:   []string{"-Wl,--start-group", "-lgcc", "-lgcc_eh", "-lc", "-Wl,--end-group"},
+		common.Darwin:  []string{"NO_STATIC_HOST_BINARIES_ON_DARWIN"},
+		common.Windows: []string{"NO_STATIC_HOST_BINARIES_ON_WINDOWS"},
 	}
 }
 
@@ -870,9 +890,9 @@ func (c *CCLinked) flags(ctx common.AndroidModuleContext, flags CCFlags) CCFlags
 			flags.LdFlags = append(flags.LdFlags, "-nodefaultlibs")
 			flags.LdFlags = append(flags.LdFlags, "-lm", "-lpthread")
 			if c.staticBinary() {
-				flags.LdFlags = append(flags.LdFlags, hostStaticGccLibs...)
+				flags.LdFlags = append(flags.LdFlags, hostStaticGccLibs[ctx.HostType()]...)
 			} else {
-				flags.LdFlags = append(flags.LdFlags, hostDynamicGccLibs...)
+				flags.LdFlags = append(flags.LdFlags, hostDynamicGccLibs[ctx.HostType()]...)
 			}
 		} else {
 			if ctx.Arch().ArchType == common.Arm {
@@ -900,9 +920,9 @@ func (c *CCLinked) flags(ctx common.AndroidModuleContext, flags CCFlags) CCFlags
 			flags.CppFlags = append(flags.CppFlags, "-nostdinc++")
 			flags.LdFlags = append(flags.LdFlags, "-nodefaultlibs")
 			if c.staticBinary() {
-				flags.LdFlags = append(flags.LdFlags, hostStaticGccLibs...)
+				flags.LdFlags = append(flags.LdFlags, hostStaticGccLibs[ctx.HostType()]...)
 			} else {
-				flags.LdFlags = append(flags.LdFlags, hostDynamicGccLibs...)
+				flags.LdFlags = append(flags.LdFlags, hostDynamicGccLibs[ctx.HostType()]...)
 			}
 		}
 	default:
@@ -1148,7 +1168,12 @@ func (c *CCLibrary) exportedFlags() []string {
 func (c *CCLibrary) flags(ctx common.AndroidModuleContext, flags CCFlags) CCFlags {
 	flags = c.CCLinked.flags(ctx, flags)
 
-	flags.CFlags = append(flags.CFlags, "-fPIC")
+	// MinGW spits out warnings about -fPIC even for -fpie?!) being ignored because
+	// all code is position independent, and then those warnings get promoted to
+	// errors.
+	if ctx.HostType() != common.Windows {
+		flags.CFlags = append(flags.CFlags, "-fPIC")
+	}
 
 	if c.static() {
 		flags.CFlags = append(flags.CFlags, c.LibraryProperties.Static.Cflags...)
@@ -1448,7 +1473,19 @@ func (c *CCBinary) ModifyProperties(ctx CCModuleContext) {
 func (c *CCBinary) flags(ctx common.AndroidModuleContext, flags CCFlags) CCFlags {
 	flags = c.CCLinked.flags(ctx, flags)
 
-	flags.CFlags = append(flags.CFlags, "-fpie")
+	if ctx.Host() {
+		flags.LdFlags = append(flags.LdFlags, "-pie")
+		if ctx.HostType() == common.Windows {
+			flags.LdFlags = append(flags.LdFlags, "-Wl,-e_mainCRTStartup")
+		}
+	}
+
+	// MinGW spits out warnings about -fPIC even for -fpie?!) being ignored because
+	// all code is position independent, and then those warnings get promoted to
+	// errors.
+	if ctx.HostType() != common.Windows {
+		flags.CFlags = append(flags.CFlags, "-fpie")
+	}
 
 	if ctx.Device() {
 		if Bool(c.BinaryProperties.Static_executable) {

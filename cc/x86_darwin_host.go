@@ -1,7 +1,6 @@
 package cc
 
 import (
-	"runtime"
 	"strings"
 
 	"android/soong/common"
@@ -207,8 +206,6 @@ func darwinX8664ToolchainFactory(arch common.Arch) Toolchain {
 }
 
 func init() {
-	if runtime.GOOS == "darwin" {
-		registerToolchainFactory(common.Host, common.X86, darwinX86ToolchainFactory)
-		registerToolchainFactory(common.Host, common.X86_64, darwinX8664ToolchainFactory)
-	}
+	registerToolchainFactory(common.Host, common.Darwin, common.X86, darwinX86ToolchainFactory)
+	registerToolchainFactory(common.Host, common.Darwin, common.X86_64, darwinX8664ToolchainFactory)
 }
