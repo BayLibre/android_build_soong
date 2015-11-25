@@ -1,7 +1,6 @@
 package cc
 
 import (
-	"runtime"
 	"strings"
 
 	"android/soong/common"
@@ -195,6 +194,10 @@ func (t *toolchainDarwinX8664) ClangLdflags() string {
 	return "${darwinClangLdflags} ${darwinX8664ClangLdflags}"
 }
 
+func (t *toolchainDarwin) ShlibSuffix() string {
+	return ".dylib"
+}
+
 var toolchainDarwinX86Singleton Toolchain = &toolchainDarwinX86{}
 var toolchainDarwinX8664Singleton Toolchain = &toolchainDarwinX8664{}
 
@@ -207,8 +210,6 @@ func darwinX8664ToolchainFactory(arch common.Arch) Toolchain {
 }
 
 func init() {
-	if runtime.GOOS == "darwin" {
-		registerToolchainFactory(common.Host, common.X86, darwinX86ToolchainFactory)
-		registerToolchainFactory(common.Host, common.X86_64, darwinX8664ToolchainFactory)
-	}
+	registerToolchainFactory(common.Host, common.Darwin, common.X86, darwinX86ToolchainFactory)
+	registerToolchainFactory(common.Host, common.Darwin, common.X86_64, darwinX8664ToolchainFactory)
 }
