@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb2a67bd_b5d26b4e",
+        "filename": "common/androidmk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2015-11-25T01:24:51Z",
+      "side": 1,
+      "message": "Where do these Android.mk in the intermediatesDir come from?",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 94,
+        "endChar": 3
+      },
+      "revId": "83c8d06a1c703dd606b44732948a3522913f311a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
