@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b153384_2ec74894",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-11-25T01:04:22Z",
+      "side": 1,
+      "message": "Can you wrap pctx and add SourcePath helpers to it?  The VariableFunc(\"...\", common.SourcePathVariableFunc(\"...\")) pattern shows up a lot",
+      "revId": "7280e2be8c9e865a3544788dc4b3d9695616842b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b153384_aed2184e",
+        "filename": "common/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-11-25T01:04:22Z",
+      "side": 1,
+      "message": "as long as we\u0027re wrapping ctx.Build, what about supporting both Outputs: and Output:, etc., to avoid the boilerplate of common.Paths{...} everywhere?  Not sure if they should be mutually exclusive, or if Output: should just get appended to the probably-nil common.Paths.\n\nAlso, could this be WritablePaths to provide type-safety on writable vs. non-writable parameters?",
+      "revId": "7280e2be8c9e865a3544788dc4b3d9695616842b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3bed97ca_79359285",
+        "filename": "common/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-11-25T01:04:22Z",
+      "side": 1,
+      "message": "Godoc prefers starting each function documentation with the function name, so \"GenPathWithExt derives...\"",
+      "revId": "7280e2be8c9e865a3544788dc4b3d9695616842b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3bed97ca_79c0f29f",
+        "filename": "common/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-11-25T01:04:22Z",
+      "side": 1,
+      "message": "operate",
+      "range": {
+        "startLine": 107,
+        "startChar": 44,
+        "endLine": 107,
+        "endChar": 53
+      },
+      "revId": "7280e2be8c9e865a3544788dc4b3d9695616842b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
