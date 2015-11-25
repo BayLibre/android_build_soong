@@ -22,6 +22,30 @@
       "revId": "83c8d06a1c703dd606b44732948a3522913f311a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fbb05f0b_84d82748",
+        "filename": "common/androidmk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-11-25T01:30:11Z",
+      "side": 1,
+      "message": "These are Android.mk files in the source tree, not the intermediates directory.  The intermediatesDir in the call to Glob is where glob stores its intermediates, not where it searches.\n\nThe purpose is to not generate prebuilts modules for anything that is still defined in an Android.mk file.",
+      "parentUuid": "bb2a67bd_b5d26b4e",
+      "range": {
+        "startLine": 88,
+        "startChar": 2,
+        "endLine": 94,
+        "endChar": 3
+      },
+      "revId": "83c8d06a1c703dd606b44732948a3522913f311a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
