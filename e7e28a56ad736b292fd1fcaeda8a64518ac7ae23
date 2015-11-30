@@ -230,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "9b1763d8_bbfa539c",
+        "filename": "common/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-11-30T23:20:37Z",
+      "side": 1,
+      "message": "Yeah, i think it is a rather small risk as long as the empty variants are thought about and used in moderation. But I\u0027m fine leaving the entire path in as well (which is more consistent with our current builds).",
+      "parentUuid": "9bf043de_1650dcdc",
+      "revId": "e7e28a56ad736b292fd1fcaeda8a64518ac7ae23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb1267d6_0c7e9745",
         "filename": "common/variable.go",
         "patchSetId": 2
