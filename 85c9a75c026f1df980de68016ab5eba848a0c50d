@@ -34,6 +34,24 @@
       "revId": "85c9a75c026f1df980de68016ab5eba848a0c50d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1be45325_525674dd",
+        "filename": "common/arch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-11-30T23:29:15Z",
+      "side": 1,
+      "message": "Yep, without a paired blueprint change. Done.",
+      "parentUuid": "1be45325_522d5467",
+      "revId": "85c9a75c026f1df980de68016ab5eba848a0c50d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
