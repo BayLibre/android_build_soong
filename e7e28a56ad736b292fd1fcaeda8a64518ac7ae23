@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b0923b2_0b09e106",
+        "filename": "cc/arm64_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-11-30T22:01:45Z",
+      "side": 1,
+      "message": "registerDeviceToolchainFactory?",
+      "revId": "e7e28a56ad736b292fd1fcaeda8a64518ac7ae23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb1267d6_6c9e33d6",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-11-30T22:01:45Z",
+      "side": 1,
+      "message": "Just move this to deviceGlobalCflags and the darwin and linux toolchains?",
+      "revId": "e7e28a56ad736b292fd1fcaeda8a64518ac7ae23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db0f1bb0_90fcdc29",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 835,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-11-30T22:01:45Z",
+      "side": 1,
+      "message": "Would this be cleaner with the windows checks outside the switch?",
+      "revId": "e7e28a56ad736b292fd1fcaeda8a64518ac7ae23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb1267d6_6c875380",
+        "filename": "cc/x86_darwin_host.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-11-30T22:01:45Z",
+      "side": 1,
+      "message": "registerHostToolchainFactory",
+      "revId": "e7e28a56ad736b292fd1fcaeda8a64518ac7ae23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fbde9f59_8e1b9bfd",
+        "filename": "cc/x86_windows_host.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-11-30T22:01:45Z",
+      "side": 1,
+      "message": "panic?",
+      "revId": "e7e28a56ad736b292fd1fcaeda8a64518ac7ae23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b0923b2_6b305dc5",
+        "filename": "common/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-11-30T22:01:45Z",
+      "side": 1,
+      "message": "could this be combined into the host_or_device so we don\u0027t end up with an extra variant in the path for the normal case?",
+      "revId": "e7e28a56ad736b292fd1fcaeda8a64518ac7ae23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb1267d6_0c7e9745",
+        "filename": "common/variable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-11-30T22:01:45Z",
+      "side": 1,
+      "message": "second and secondary is confusing, maybe CrossHost?",
+      "revId": "e7e28a56ad736b292fd1fcaeda8a64518ac7ae23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
