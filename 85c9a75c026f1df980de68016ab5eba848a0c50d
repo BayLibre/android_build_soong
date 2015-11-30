@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fbde9f59_f1f3200c",
+        "filename": "common/arch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-11-30T23:20:37Z",
+      "side": 1,
+      "message": "Should I remove this logic then?",
+      "revId": "85c9a75c026f1df980de68016ab5eba848a0c50d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
