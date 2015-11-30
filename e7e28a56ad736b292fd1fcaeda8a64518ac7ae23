@@ -212,6 +212,24 @@
     },
     {
       "key": {
+        "uuid": "9bf043de_1650dcdc",
+        "filename": "common/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-11-30T23:11:12Z",
+      "side": 1,
+      "message": "That might make variantName non-unique, which seems risky.  We can tweak this later if we don\u0027t like the paths.",
+      "parentUuid": "9bf043de_56ff841b",
+      "revId": "e7e28a56ad736b292fd1fcaeda8a64518ac7ae23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb1267d6_0c7e9745",
         "filename": "common/variable.go",
         "patchSetId": 2
