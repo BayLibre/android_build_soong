@@ -16,6 +16,24 @@
       "revId": "85c9a75c026f1df980de68016ab5eba848a0c50d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1be45325_522d5467",
+        "filename": "common/arch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-11-30T23:26:07Z",
+      "side": 1,
+      "message": "might as well remove it, doesn\u0027t it leave double underscores in the path?",
+      "parentUuid": "fbde9f59_f1f3200c",
+      "revId": "85c9a75c026f1df980de68016ab5eba848a0c50d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
