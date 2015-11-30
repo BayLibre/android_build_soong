@@ -353,7 +353,7 @@ type androidModuleContext struct {
 	checkbuildFiles []string
 }
 
-func (a *androidModuleContext) Build(pctx *blueprint.PackageContext, params blueprint.BuildParams) {
+func (a *androidModuleContext) Build(pctx blueprint.PackageContext, params blueprint.BuildParams) {
 	params.Optional = true
 	a.ModuleContext.Build(pctx, params)
 }
