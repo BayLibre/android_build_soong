@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dbae3bf9_95a8864e",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-12-01T23:46:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b153384_2ec74894",
+      "revId": "7280e2be8c9e865a3544788dc4b3d9695616842b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b153384_aed2184e",
         "filename": "common/module.go",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2015-11-25T01:04:22Z",
       "side": 1,
       "message": "as long as we\u0027re wrapping ctx.Build, what about supporting both Outputs: and Output:, etc., to avoid the boilerplate of common.Paths{...} everywhere?  Not sure if they should be mutually exclusive, or if Output: should just get appended to the probably-nil common.Paths.\n\nAlso, could this be WritablePaths to provide type-safety on writable vs. non-writable parameters?",
+      "revId": "7280e2be8c9e865a3544788dc4b3d9695616842b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b1deb19_79034352",
+        "filename": "common/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-12-01T23:46:44Z",
+      "side": 1,
+      "message": "Done. Implemented as an append.",
+      "parentUuid": "1b153384_aed2184e",
       "revId": "7280e2be8c9e865a3544788dc4b3d9695616842b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "9bb8433f_53ef5617",
+        "filename": "common/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-12-01T23:46:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bed97ca_79359285",
+      "revId": "7280e2be8c9e865a3544788dc4b3d9695616842b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3bed97ca_79c0f29f",
         "filename": "common/paths.go",
         "patchSetId": 2
@@ -64,6 +118,30 @@
       "writtenOn": "2015-11-25T01:04:22Z",
       "side": 1,
       "message": "operate",
+      "range": {
+        "startLine": 107,
+        "startChar": 44,
+        "endLine": 107,
+        "endChar": 53
+      },
+      "revId": "7280e2be8c9e865a3544788dc4b3d9695616842b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ba24b12_7758827e",
+        "filename": "common/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-12-01T23:46:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bed97ca_79c0f29f",
       "range": {
         "startLine": 107,
         "startChar": 44,
