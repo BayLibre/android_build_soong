@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b1deb19_bc7149c7",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-12-02T02:11:36Z",
+      "side": 1,
+      "message": "linux",
+      "range": {
+        "startLine": 301,
+        "startChar": 50,
+        "endLine": 301,
+        "endChar": 57
+      },
+      "revId": "a4aecf640fe4972813cb77633936f895262125fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b18372c_be9dbd7d",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-12-02T02:11:36Z",
+      "side": 1,
+      "message": "darwin",
+      "range": {
+        "startLine": 305,
+        "startChar": 50,
+        "endLine": 305,
+        "endChar": 57
+      },
+      "revId": "a4aecf640fe4972813cb77633936f895262125fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
