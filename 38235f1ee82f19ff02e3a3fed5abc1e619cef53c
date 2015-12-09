@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "454eea83_68f69bfd",
+        "filename": "common/paths.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-12-09T22:26:02Z",
+      "side": 1,
+      "message": "if p \u003d\u003d nil might be better, that way if Paths is nil Strings returns nil, but if Paths is empty Strings returns an empty slice.",
+      "revId": "38235f1ee82f19ff02e3a3fed5abc1e619cef53c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
