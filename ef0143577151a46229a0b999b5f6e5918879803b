@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "65984e34_e4c2ee08",
+        "filename": "common/paths.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-12-09T22:23:52Z",
+      "side": 1,
+      "message": "Done. Also optimized the case where we make a slice, and always fill the entire thing without skipping any. (Using len instead of cap, and array indexing instead of append)",
+      "parentUuid": "a5596647_ced5970f",
+      "revId": "ef0143577151a46229a0b999b5f6e5918879803b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "855c6237_caca23c7",
         "filename": "common/paths.go",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2015-12-09T22:00:14Z",
       "side": 1,
       "message": "same",
+      "revId": "ef0143577151a46229a0b999b5f6e5918879803b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a567a60d_38e9e938",
+        "filename": "common/paths.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-12-09T22:23:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "855c6237_caca23c7",
       "revId": "ef0143577151a46229a0b999b5f6e5918879803b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
