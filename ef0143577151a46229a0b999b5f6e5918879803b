@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5596647_ced5970f",
+        "filename": "common/paths.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-12-09T22:00:14Z",
+      "side": 1,
+      "message": "return nil if p is nil.  You call this on all the Paths objects in ModuleBuild, many of which might be nil, and this will generate extra garbage.",
+      "revId": "ef0143577151a46229a0b999b5f6e5918879803b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "855c6237_caca23c7",
+        "filename": "common/paths.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-12-09T22:00:14Z",
+      "side": 1,
+      "message": "same",
+      "revId": "ef0143577151a46229a0b999b5f6e5918879803b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
