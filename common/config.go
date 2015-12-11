@@ -228,6 +228,10 @@ func (c *config) EnvDeps() map[string]string {
 	return c.envDeps
 }
 
+func (c *config) EmbeddedInMake() bool {
+	return c.Getenv("SOONG_EMBEDDED_IN_MAKE") != ""
+}
+
 // DeviceName returns the name of the current device target
 // TODO: take an AndroidModuleContext to select the device name for multi-device builds
 func (c *config) DeviceName() string {
