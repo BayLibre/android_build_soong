@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05107294_464c341d",
+        "filename": "common/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-12-11T23:58:41Z",
+      "side": 1,
+      "message": "This is going to be unset if you ever run soong manually in  a directory that was bootstrapped by make, which is convenient for debugging.  What about putting it in soong.variables instead?",
+      "revId": "fab0ec9c440cfb416139c6466898fe935f0d9296",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
