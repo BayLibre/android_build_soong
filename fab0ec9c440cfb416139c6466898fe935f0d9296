@@ -16,6 +16,24 @@
       "revId": "fab0ec9c440cfb416139c6466898fe935f0d9296",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05e5d2f2_6f53d91d",
+        "filename": "common/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-12-15T00:15:49Z",
+      "side": 1,
+      "message": ":-/ But then you can\u0027t copy the soong.variables file from make to use as a product definition in standalone soong builds (without changing this value)",
+      "parentUuid": "05107294_464c341d",
+      "revId": "fab0ec9c440cfb416139c6466898fe935f0d9296",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
