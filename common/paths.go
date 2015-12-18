@@ -29,6 +29,7 @@ import (
 // Path methods.
 type PathContext interface {
 	Config() interface{}
+	AddNinjaFileDeps(deps ...string)
 }
 
 var _ PathContext = blueprint.SingletonContext(nil)
@@ -177,6 +178,20 @@ func PathsForSource(ctx PathContext, paths []string) Paths {
 	return ret
 }
 
+// PathsForOptionalSource returns a list of Paths rooted from SrcDir that are
+// found in the tree. If any are not found, they are omitted from the list,
+// and dependencies are added so that we're re-run when they are added.
+func PathsForOptionalSource(ctx PathContext, intermediates string, paths []string) Paths {
+	ret := make(Paths, 0, len(paths))
+	for _, path := range paths {
+		p := OptionalPathForSource(ctx, intermediates, path)
+		if p.Valid() {
+			ret = append(ret, p.Path())
+		}
+	}
+	return ret
+}
+
 // PathsForModuleSrc returns Paths rooted from the module's local source
 // directory
 func PathsForModuleSrc(ctx AndroidModuleContext, paths []string) Paths {
@@ -319,7 +334,12 @@ func PathForSource(ctx PathContext, paths ...string) SourcePath {
 // OptionalPathForSource returns an OptionalPath with the SourcePath if the
 // path exists, or an empty OptionalPath if it doesn't exist. Dependencies are added
 // so that the ninja file will be regenerated if the state of the path changes.
-func OptionalPathForSource(ctx blueprint.SingletonContext, intermediates string, paths ...string) OptionalPath {
+func OptionalPathForSource(ctx PathContext, intermediates string, paths ...string) OptionalPath {
+	if len(paths) == 0 {
+		// For when someone forgets the 'intermediates' argument
+		panic("Missing path(s)")
+	}
+
 	p := validatePath(ctx, paths...)
 	path := SourcePath{basePath{p, pathConfig(ctx)}}
 
@@ -338,16 +358,34 @@ func OptionalPathForSource(ctx blueprint.SingletonContext, intermediates string,
 		return OptionalPath{}
 	}
 
-	// Use glob to produce proper dependencies, even though we only want
-	// a single file.
-	files, err := Glob(ctx, PathForIntermediates(ctx, intermediates).String(), path.String(), nil)
-	if err != nil {
-		reportPathError(ctx, "glob: %s", err.Error())
-		return OptionalPath{}
-	}
+	if gctx, ok := ctx.(globContext); ok {
+		// Use glob to produce proper dependencies, even though we only want
+		// a single file.
+		files, err := Glob(gctx, PathForIntermediates(ctx, intermediates).String(), path.String(), nil)
+		if err != nil {
+			reportPathError(ctx, "glob: %s", err.Error())
+			return OptionalPath{}
+		}
 
-	if len(files) == 0 {
-		return OptionalPath{}
+		if len(files) == 0 {
+			return OptionalPath{}
+		}
+	} else {
+		// We cannot add build statements in this context, so we fall back to
+		// AddNinjaFileDeps
+		files, dirs, err := pathtools.Glob(path.String())
+		if err != nil {
+			reportPathError(ctx, "glob: %s", err.Error())
+			return OptionalPath{}
+		}
+
+		ctx.AddNinjaFileDeps(dirs...)
+
+		if len(files) == 0 {
+			return OptionalPath{}
+		}
+
+		ctx.AddNinjaFileDeps(path.String())
 	}
 	return OptionalPathForPath(path)
 }
