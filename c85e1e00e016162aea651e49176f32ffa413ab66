@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa593347_dc6c2d4c",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-12-18T21:11:33Z",
+      "side": 1,
+      "message": "where\u0027s the second argument?",
+      "range": {
+        "startLine": 744,
+        "startChar": 48,
+        "endLine": 744,
+        "endChar": 58
+      },
+      "revId": "c85e1e00e016162aea651e49176f32ffa413ab66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
