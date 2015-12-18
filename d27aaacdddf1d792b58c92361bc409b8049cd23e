@@ -16,6 +16,24 @@
       "revId": "d27aaacdddf1d792b58c92361bc409b8049cd23e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a2adb7b_d13546d0",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-12-18T02:03:57Z",
+      "side": 1,
+      "message": "/ just make sure that there\u0027s at least one entry in the local missing deps list",
+      "parentUuid": "ea5fab25_4dcd2d3d",
+      "revId": "d27aaacdddf1d792b58c92361bc409b8049cd23e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
