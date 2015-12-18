@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea5fab25_4dcd2d3d",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-12-18T02:00:19Z",
+      "side": 1,
+      "message": "Are there cases when we\u0027d need to make sure that this dependency is listed in missingDeps?",
+      "revId": "d27aaacdddf1d792b58c92361bc409b8049cd23e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
