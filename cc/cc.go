@@ -1509,17 +1509,18 @@ func (c *CCBinary) depNames(ctx common.AndroidBaseContext, depNames CCDeps) CCDe
 }
 
 func NewCCBinary(binary *CCBinary, module CCModuleType,
-	hod common.HostOrDeviceSupported, props ...interface{}) (blueprint.Module, []interface{}) {
+	hod common.HostOrDeviceSupported, multilib common.Multilib,
+	props ...interface{}) (blueprint.Module, []interface{}) {
 
 	props = append(props, &binary.BinaryProperties)
 
-	return newCCDynamic(&binary.CCLinked, module, hod, common.MultilibFirst, props...)
+	return newCCDynamic(&binary.CCLinked, module, hod, multilib, props...)
 }
 
 func CCBinaryFactory() (blueprint.Module, []interface{}) {
 	module := &CCBinary{}
 
-	return NewCCBinary(module, module, common.HostAndDeviceSupported)
+	return NewCCBinary(module, module, common.HostAndDeviceSupported, common.MultilibFirst)
 }
 
 func (c *CCBinary) ModifyProperties(ctx CCModuleContext) {
@@ -1652,17 +1653,35 @@ func testPerSrcMutator(mctx common.AndroidBottomUpMutatorContext) {
 	}
 }
 
+type CCTestProperties struct {
+	// if set, don't build against gtest
+	No_gtest bool
+}
+
 type CCTest struct {
 	CCBinary
+
+	TestProperties CCTestProperties
 }
 
 func (c *CCTest) flags(ctx common.AndroidModuleContext, flags CCFlags) CCFlags {
 	flags = c.CCBinary.flags(ctx, flags)
+	if c.TestProperties.No_gtest {
+		return flags
+	}
 
 	flags.CFlags = append(flags.CFlags, "-DGTEST_HAS_STD_STRING")
 	if ctx.Host() {
 		flags.CFlags = append(flags.CFlags, "-O0", "-g")
-		flags.LdFlags = append(flags.LdFlags, "-lpthread")
+
+		if ctx.HostType() == common.Windows {
+			flags.CFlags = append(flags.CFlags, "-DGTEST_OS_WINDOWS")
+		} else {
+			flags.CFlags = append(flags.CFlags, "-DGTEST_OS_LINUX")
+			flags.LdFlags = append(flags.LdFlags, "-lpthread")
+		}
+	} else {
+		flags.CFlags = append(flags.CFlags, "-DGTEST_OS_LINUX_ANDROID")
 	}
 
 	// TODO(danalbert): Make gtest export its dependencies.
@@ -1673,7 +1692,9 @@ func (c *CCTest) flags(ctx common.AndroidModuleContext, flags CCFlags) CCFlags {
 }
 
 func (c *CCTest) depNames(ctx common.AndroidBaseContext, depNames CCDeps) CCDeps {
-	depNames.StaticLibs = append(depNames.StaticLibs, "libgtest_main", "libgtest")
+	if !c.TestProperties.No_gtest {
+		depNames.StaticLibs = append(depNames.StaticLibs, "libgtest_main", "libgtest")
+	}
 	depNames = c.CCBinary.depNames(ctx, depNames)
 	return depNames
 }
@@ -1683,21 +1704,19 @@ func (c *CCTest) InstallInData() bool {
 }
 
 func (c *CCTest) installModule(ctx common.AndroidModuleContext, flags CCFlags) {
-	if ctx.Device() {
-		installDir := "nativetest"
-		if flags.Toolchain.Is64Bit() {
-			installDir = "nativetest64"
-		}
-		ctx.InstallFile(common.PathForModuleInstall(ctx, installDir, ctx.ModuleName()), c.out)
-	} else {
-		c.CCBinary.installModule(ctx, flags)
+	installDir := "nativetest"
+	if flags.Toolchain.Is64Bit() {
+		installDir = "nativetest64"
 	}
+	ctx.InstallFile(common.PathForModuleInstall(ctx, installDir, ctx.ModuleName()), c.out)
 }
 
 func NewCCTest(test *CCTest, module CCModuleType,
 	hod common.HostOrDeviceSupported, props ...interface{}) (blueprint.Module, []interface{}) {
 
-	return NewCCBinary(&test.CCBinary, module, hod, props...)
+	props = append(props, &test.TestProperties)
+
+	return NewCCBinary(&test.CCBinary, module, hod, common.MultilibBoth, props...)
 }
 
 func CCTestFactory() (blueprint.Module, []interface{}) {
@@ -1735,7 +1754,7 @@ func (c *CCBenchmark) installModule(ctx common.AndroidModuleContext, flags CCFla
 func NewCCBenchmark(test *CCBenchmark, module CCModuleType,
 	hod common.HostOrDeviceSupported, props ...interface{}) (blueprint.Module, []interface{}) {
 
-	return NewCCBinary(&test.CCBinary, module, hod, props...)
+	return NewCCBinary(&test.CCBinary, module, hod, common.MultilibFirst, props...)
 }
 
 func CCBenchmarkFactory() (blueprint.Module, []interface{}) {
@@ -1795,7 +1814,7 @@ func CCLibraryHostSharedFactory() (blueprint.Module, []interface{}) {
 func CCBinaryHostFactory() (blueprint.Module, []interface{}) {
 	module := &CCBinary{}
 
-	return NewCCBinary(module, module, common.HostSupported)
+	return NewCCBinary(module, module, common.HostSupported, common.MultilibFirst)
 }
 
 //
@@ -1804,7 +1823,7 @@ func CCBinaryHostFactory() (blueprint.Module, []interface{}) {
 
 func CCTestHostFactory() (blueprint.Module, []interface{}) {
 	module := &CCTest{}
-	return NewCCBinary(&module.CCBinary, module, common.HostSupported)
+	return NewCCTest(module, module, common.HostSupported)
 }
 
 //
@@ -1813,7 +1832,7 @@ func CCTestHostFactory() (blueprint.Module, []interface{}) {
 
 func CCBenchmarkHostFactory() (blueprint.Module, []interface{}) {
 	module := &CCBenchmark{}
-	return NewCCBinary(&module.CCBinary, module, common.HostSupported)
+	return NewCCBinary(&module.CCBinary, module, common.HostSupported, common.MultilibFirst)
 }
 
 //
@@ -1834,6 +1853,7 @@ func CCDefaultsFactory() (blueprint.Module, []interface{}) {
 		&CCBaseProperties{},
 		&CCLibraryProperties{},
 		&CCBinaryProperties{},
+		&CCTestProperties{},
 		&CCUnusedProperties{},
 	}
 
