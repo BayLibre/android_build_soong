@@ -69,6 +69,16 @@ var commonValidatePathTestCases = []strsTestCase{
 		out: "",
 		err: []error{errors.New("Path is outside directory: /a")},
 	},
+	{
+		in:  []string{"a", "../b"},
+		out: "",
+		err: []error{errors.New("Path is outside directory: ../b")},
+	},
+	{
+		in:  []string{"a", "b/../../c"},
+		out: "",
+		err: []error{errors.New("Path is outside directory: ../c")},
+	},
 }
 
 var validateSafePathTestCases = append(commonValidatePathTestCases, []strsTestCase{
