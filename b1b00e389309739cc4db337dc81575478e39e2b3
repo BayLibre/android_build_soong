@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a2f9f8d_0a682ef5",
+        "filename": "common/paths_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-12-21T23:13:47Z",
+      "side": 1,
+      "message": "Add a test for ./..",
+      "revId": "b1b00e389309739cc4db337dc81575478e39e2b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
