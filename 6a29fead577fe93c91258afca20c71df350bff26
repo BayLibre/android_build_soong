@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea27abf2_0aa6bb7d",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1658,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2015-12-22T01:49:32Z",
+      "side": 1,
+      "message": "To avoid all the extra negatives you could make this Gtest, and then initialize it to true in NewCCTest",
+      "revId": "6a29fead577fe93c91258afca20c71df350bff26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
