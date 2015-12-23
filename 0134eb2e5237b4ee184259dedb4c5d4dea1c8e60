@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ca2ae7be_4fd6014b",
+        "filename": "cc/x86_darwin_host.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-12-23T00:00:14Z",
+      "side": 1,
+      "message": "Yeah, maybe. I think that should be another patch though, since we\u0027ll need to support that with just a PackageContext available.\n\nProbably by deferring the Build() call until a late singleton that writes them all out, or by implementing a new Context with Build() for inside variable initializations. (Implementing Build() on PackageContext seems like it could be abused too much)",
+      "parentUuid": "8a0b8f60_720ad66e",
+      "revId": "0134eb2e5237b4ee184259dedb4c5d4dea1c8e60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eafecb6e_f58a3200",
         "filename": "cc/x86_darwin_host.go",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2015-12-22T19:29:13Z",
       "side": 1,
       "message": "string(bytes)?",
+      "range": {
+        "startLine": 143,
+        "startChar": 28,
+        "endLine": 143,
+        "endChar": 52
+      },
+      "revId": "0134eb2e5237b4ee184259dedb4c5d4dea1c8e60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa2133e4_4e0f277d",
+        "filename": "cc/x86_darwin_host.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2015-12-23T00:00:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eafecb6e_f58a3200",
       "range": {
         "startLine": 143,
         "startChar": 28,
