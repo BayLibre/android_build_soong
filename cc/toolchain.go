@@ -69,6 +69,8 @@ type Toolchain interface {
 
 	ShlibSuffix() string
 	ExecutableSuffix() string
+
+	AddressSanitizerRuntimeLibrary() string
 }
 
 type toolchainBase struct {
@@ -109,6 +111,10 @@ func (toolchainBase) ShlibSuffix() string {
 }
 
 func (toolchainBase) ExecutableSuffix() string {
+	return ""
+}
+
+func (toolchainBase) AddressSanitizerRuntimeLibrary() string {
 	return ""
 }
 

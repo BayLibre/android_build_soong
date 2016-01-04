@@ -83,6 +83,9 @@ type productVariables struct {
 
 	Unbundled_build *bool `json:",omitempty"`
 	Brillo          *bool `json:",omitempty"`
+
+	SanitizeHost   *[]string `json:",omitempty"`
+	SanitizeDevice *[]string `json:",omitempty"`
 }
 
 func boolPtr(v bool) *bool {

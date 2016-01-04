@@ -338,6 +338,10 @@ func (t *toolchainArm) ClangInstructionSetFlags(isa string) (string, error) {
 	}
 }
 
+func (toolchainArm) AddressSanitizerRuntimeLibrary() string {
+	return "libclang_rt.asan-arm-android"
+}
+
 func armToolchainFactory(arch common.Arch) Toolchain {
 	var fixCortexA8 string
 	switch arch.CpuVariant {
