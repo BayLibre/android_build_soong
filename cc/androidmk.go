@@ -21,15 +21,47 @@ import (
 	"android/soong/common"
 )
 
-func (c *CCLibrary) AndroidMk() (ret common.AndroidMkData) {
-	if c.static() {
+func (c *Module) AndroidMk() (ret common.AndroidMkData) {
+	ret.OutputFile = c.outputFile
+	ret.Extra = append(ret.Extra, func(name, prefix string, outputFile common.Path, arch common.Arch) (ret []string) {
+		ret = append(ret, "LOCAL_SHARED_LIBRARIES_"+arch.ArchType.String()+" := "+strings.Join(c.deps.SharedLibs, " "))
+		return ret
+	})
+
+	callSubAndroidMk := func(obj interface{}) {
+		if obj != nil {
+			if androidmk, ok := obj.(interface {
+				AndroidMk(*common.AndroidMkData)
+			}); ok {
+				androidmk.AndroidMk(&ret)
+			}
+		}
+	}
+
+	for _, feature := range c.features {
+		callSubAndroidMk(feature)
+	}
+
+	callSubAndroidMk(c.compiler)
+	callSubAndroidMk(c.linker)
+	callSubAndroidMk(c.installer)
+
+	return ret
+}
+
+func (library *baseLinker) AndroidMk(ret *common.AndroidMkData) {
+	if library.static() {
 		ret.Class = "STATIC_LIBRARIES"
 	} else {
 		ret.Class = "SHARED_LIBRARIES"
 	}
-	ret.OutputFile = c.outputFile()
-	ret.Extra = func(name, prefix string, outputFile common.Path, arch common.Arch) (ret []string) {
-		exportedIncludes := c.exportedFlags()
+}
+
+func (library *libraryLinker) AndroidMk(ret *common.AndroidMkData) {
+	library.baseLinker.AndroidMk(ret)
+
+	ret.Extra = append(ret.Extra, func(name, prefix string, outputFile common.Path, arch common.Arch) (ret []string) {
+		exportedIncludes := library.exportedFlags()
 		for i := range exportedIncludes {
 			exportedIncludes[i] = strings.TrimPrefix(exportedIncludes[i], "-I")
 		}
@@ -38,45 +70,41 @@ func (c *CCLibrary) AndroidMk() (ret common.AndroidMkData) {
 		}
 
 		ret = append(ret, "LOCAL_MODULE_SUFFIX := "+outputFile.Ext())
-		ret = append(ret, "LOCAL_SHARED_LIBRARIES_"+arch.ArchType.String()+" := "+strings.Join(c.savedDepNames.SharedLibs, " "))
-
-		if c.Properties.Relative_install_path != "" {
-			ret = append(ret, "LOCAL_MODULE_RELATIVE_PATH := "+c.Properties.Relative_install_path)
-		}
 
 		// These are already included in LOCAL_SHARED_LIBRARIES
 		ret = append(ret, "LOCAL_CXX_STL := none")
 		ret = append(ret, "LOCAL_SYSTEM_SHARED_LIBRARIES :=")
 
 		return
-	}
-	return
+	})
 }
 
-func (c *ccObject) AndroidMk() (ret common.AndroidMkData) {
-	ret.OutputFile = c.outputFile()
+func (object *objectLinker) AndroidMk(ret *common.AndroidMkData) {
 	ret.Custom = func(w io.Writer, name, prefix string) {
-		out := c.outputFile().Path()
+		out := ret.OutputFile.Path()
 
 		io.WriteString(w, "$("+prefix+"TARGET_OUT_INTERMEDIATE_LIBRARIES)/"+name+objectExtension+": "+out.String()+" | $(ACP)\n")
 		io.WriteString(w, "\t$(copy-file-to-target)\n")
 	}
-	return
 }
 
-func (c *CCBinary) AndroidMk() (ret common.AndroidMkData) {
+func (binary *binaryLinker) AndroidMk(ret *common.AndroidMkData) {
 	ret.Class = "EXECUTABLES"
-	ret.Extra = func(name, prefix string, outputFile common.Path, arch common.Arch) []string {
-		ret := []string{
+	ret.Extra = append(ret.Extra, func(name, prefix string, outputFile common.Path, arch common.Arch) []string {
+		return []string{
 			"LOCAL_CXX_STL := none",
 			"LOCAL_SYSTEM_SHARED_LIBRARIES :=",
-			"LOCAL_SHARED_LIBRARIES_" + arch.ArchType.String() + " += " + strings.Join(c.savedDepNames.SharedLibs, " "),
 		}
-		if c.Properties.Relative_install_path != "" {
-			ret = append(ret, "LOCAL_MODULE_RELATIVE_PATH_"+arch.ArchType.String()+" := "+c.Properties.Relative_install_path)
+	})
+}
+
+func (installer *baseInstaller) AndroidMk(ret *common.AndroidMkData) {
+	ret.Extra = append(ret.Extra, func(name, prefix string, outputFile common.Path, arch common.Arch) []string {
+		if installer.Properties.Relative_install_path != "" {
+			return []string{
+				"LOCAL_MODULE_RELATIVE_PATH := " + installer.Properties.Relative_install_path,
+			}
 		}
-		return ret
-	}
-	ret.OutputFile = c.outputFile()
-	return
+		return nil
+	})
 }

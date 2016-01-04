@@ -295,3 +295,17 @@ func (c *config) DefaultAppCertificate(ctx PathContext) SourcePath {
 func (c *config) AllowMissingDependencies() bool {
 	return Bool(c.ProductVariables.Unbundled_build)
 }
+
+func (c *config) SanitizeHost() []string {
+	if c.ProductVariables.SanitizeHost == nil {
+		return nil
+	}
+	return *c.ProductVariables.SanitizeHost
+}
+
+func (c *config) SanitizeDevice() []string {
+	if c.ProductVariables.SanitizeDevice == nil {
+		return nil
+	}
+	return *c.ProductVariables.SanitizeDevice
+}

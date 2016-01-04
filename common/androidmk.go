@@ -41,7 +41,7 @@ type AndroidMkData struct {
 
 	Custom func(w io.Writer, name, prefix string)
 
-	Extra func(name, prefix string, outputFile Path, arch Arch) []string
+	Extra []func(name, prefix string, outputFile Path, arch Arch) []string
 }
 
 func AndroidMkSingleton() blueprint.Singleton {
@@ -224,8 +224,8 @@ func translateAndroidMkModule(ctx blueprint.SingletonContext, w io.Writer, mod b
 			src:  data.OutputFile.Path(),
 		}
 
-		if data.Extra != nil {
-			src.extra = data.Extra(name, prefix, src.src, arch)
+		for _, extra := range data.Extra {
+			src.extra = append(src.extra, extra(name, prefix, src.src, arch)...)
 		}
 
 		if srcs[hC] == nil {

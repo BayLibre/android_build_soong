@@ -155,6 +155,10 @@ func (t *toolchainArm64) ClangLdflags() string {
 	return "${arm64Ldflags}"
 }
 
+func (toolchainArm64) AddressSanitizerRuntimeLibrary() string {
+	return "libclang_rt.asan-aarch64-android"
+}
+
 func arm64ToolchainFactory(arch common.Arch) Toolchain {
 	return toolchainArm64Singleton
 }
