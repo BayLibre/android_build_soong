@@ -37,12 +37,13 @@ type AndroidMkDataProvider interface {
 }
 
 type AndroidMkData struct {
+	Name       string
 	Class      string
 	OutputFile OptionalPath
 
 	Custom func(w io.Writer, name, prefix string) error
 
-	Extra func(w io.Writer, outputFile Path) error
+	Extra []func(w io.Writer, outputFile Path) error
 }
 
 func AndroidMkSingleton() blueprint.Singleton {
@@ -123,8 +124,6 @@ func translateAndroidMk(ctx blueprint.SingletonContext, mkFile string, mods []An
 }
 
 func translateAndroidMkModule(ctx blueprint.SingletonContext, w io.Writer, mod blueprint.Module) error {
-	name := ctx.ModuleName(mod)
-
 	provider, ok := mod.(AndroidMkDataProvider)
 	if !ok {
 		return nil
@@ -138,6 +137,10 @@ func translateAndroidMkModule(ctx blueprint.SingletonContext, w io.Writer, mod b
 
 	if !amod.Enabled() {
 		return err
+	}
+
+	if data.Name == "" {
+		data.Name = ctx.ModuleName(mod)
 	}
 
 	hostCross := false
@@ -163,7 +166,7 @@ func translateAndroidMkModule(ctx blueprint.SingletonContext, w io.Writer, mod b
 			}
 		}
 
-		return data.Custom(w, name, prefix)
+		return data.Custom(w, data.Name, prefix)
 	}
 
 	if !data.OutputFile.Valid() {
@@ -171,7 +174,7 @@ func translateAndroidMkModule(ctx blueprint.SingletonContext, w io.Writer, mod b
 	}
 
 	fmt.Fprintln(w, "\ninclude $(CLEAR_VARS)")
-	fmt.Fprintln(w, "LOCAL_MODULE :=", name)
+	fmt.Fprintln(w, "LOCAL_MODULE :=", data.Name)
 	fmt.Fprintln(w, "LOCAL_MODULE_CLASS :=", data.Class)
 	fmt.Fprintln(w, "LOCAL_MULTILIB :=", amod.commonProperties.Compile_multilib)
 	fmt.Fprintln(w, "LOCAL_SRC_FILES :=", data.OutputFile.String())
@@ -189,8 +192,8 @@ func translateAndroidMkModule(ctx blueprint.SingletonContext, w io.Writer, mod b
 		fmt.Fprintln(w, "LOCAL_MODULE_TARGET_ARCH :=", archStr)
 	}
 
-	if data.Extra != nil {
-		err = data.Extra(w, data.OutputFile.Path())
+	for _, extra := range data.Extra {
+		err = extra(w, data.OutputFile.Path())
 		if err != nil {
 			return err
 		}
