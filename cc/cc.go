@@ -60,6 +60,12 @@ func init() {
 	common.RegisterBottomUpMutator("link", linkageMutator)
 	common.RegisterBottomUpMutator("test_per_src", testPerSrcMutator)
 	common.RegisterBottomUpMutator("deps", depsMutator)
+
+	common.RegisterTopDownMutator("asan_deps", sanitizerDepsMutator(asan))
+	common.RegisterBottomUpMutator("asan", sanitizerMutator(asan))
+
+	common.RegisterTopDownMutator("tsan_deps", sanitizerDepsMutator(tsan))
+	common.RegisterBottomUpMutator("tsan", sanitizerMutator(tsan))
 }
 
 var (
@@ -209,6 +215,7 @@ type Flags struct {
 	Clang     bool
 
 	RequiredInstructionSet string
+	DynamicLinker          string
 }
 
 type BaseCompilerProperties struct {
@@ -362,6 +369,8 @@ type LibraryLinkerProperties struct {
 	// don't link in crt_begin and crt_end.  This flag should only be necessary for
 	// compiling crt or libc.
 	Nocrt *bool `android:"arch_variant"`
+
+	VariantName string `blueprint:"mutated"`
 }
 
 type LibraryPrebuiltLinkerProperties struct {
@@ -418,12 +427,10 @@ type InstallerProperties struct {
 }
 
 type UnusedProperties struct {
-	Native_coverage  *bool
-	Required         []string
-	Sanitize         []string `android:"arch_variant"`
-	Sanitize_recover []string
-	Strip            string
-	Tags             []string
+	Native_coverage *bool
+	Required        []string
+	Strip           string
+	Tags            []string
 }
 
 type ModuleContextIntf interface {
@@ -496,8 +503,10 @@ type Module struct {
 	linker     linker
 	installer  installer
 	stl        *stl
+	sanitize   *sanitize
 
-	deps       Deps
+	androidMkSharedLibDeps []string
+
 	outputFile common.OptionalPath
 
 	cachedToolchain Toolchain
@@ -519,6 +528,9 @@ func (c *Module) Init() (blueprint.Module, []interface{}) {
 	}
 	if c.stl != nil {
 		props = append(props, c.stl.props()...)
+	}
+	if c.sanitize != nil {
+		props = append(props, c.sanitize.props()...)
 	}
 	for _, feature := range c.features {
 		props = append(props, feature.props()...)
@@ -600,6 +612,7 @@ func newBaseModule(hod common.HostOrDeviceSupported, multilib common.Multilib) *
 func newModule(hod common.HostOrDeviceSupported, multilib common.Multilib) *Module {
 	module := newBaseModule(hod, multilib)
 	module.stl = &stl{}
+	module.sanitize = &sanitize{}
 	return module
 }
 
@@ -616,7 +629,6 @@ func (c *Module) GenerateAndroidBuildActions(actx common.AndroidModuleContext) {
 		Toolchain: c.toolchain(ctx),
 		Clang:     c.clang(ctx),
 	}
-
 	if c.compiler != nil {
 		flags = c.compiler.flags(ctx, flags)
 	}
@@ -625,6 +637,9 @@ func (c *Module) GenerateAndroidBuildActions(actx common.AndroidModuleContext) {
 	}
 	if c.stl != nil {
 		flags = c.stl.flags(ctx, flags)
+	}
+	if c.sanitize != nil {
+		flags = c.sanitize.flags(ctx, flags)
 	}
 	for _, feature := range c.features {
 		flags = feature.flags(ctx, flags)
@@ -646,10 +661,14 @@ func (c *Module) GenerateAndroidBuildActions(actx common.AndroidModuleContext) {
 	flags.CppFlags = []string{"$cppflags"}
 	flags.AsFlags = []string{"$asflags"}
 
-	deps := c.depsToPaths(actx, c.deps)
+	// TODO(ccross): avoid recomputing deps using dependency tagging
+	depNames := c.deps(ctx)
+	deps := c.depsToPaths(actx, depNames)
 	if ctx.Failed() {
 		return
 	}
+
+	c.androidMkSharedLibDeps = depNames.SharedLibs
 
 	flags.CFlags = append(flags.CFlags, deps.Cflags...)
 
@@ -707,9 +726,40 @@ func (c *Module) begin(ctx BaseModuleContext) {
 	if c.stl != nil {
 		c.stl.begin(ctx)
 	}
+	if c.sanitize != nil {
+		c.sanitize.begin(ctx)
+	}
 	for _, feature := range c.features {
 		feature.begin(ctx)
 	}
+}
+
+func (c *Module) deps(ctx BaseModuleContext) Deps {
+	deps := Deps{}
+
+	if c.compiler != nil {
+		deps = c.compiler.deps(ctx, deps)
+	}
+	if c.linker != nil {
+		deps = c.linker.deps(ctx, deps)
+	}
+	if c.stl != nil {
+		deps = c.stl.deps(ctx, deps)
+	}
+	if c.sanitize != nil {
+		deps = c.sanitize.deps(ctx, deps)
+	}
+	for _, feature := range c.features {
+		deps = feature.deps(ctx, deps)
+	}
+
+	deps.WholeStaticLibs = lastUniqueElements(deps.WholeStaticLibs)
+	deps.StaticLibs = lastUniqueElements(deps.StaticLibs)
+	deps.LateStaticLibs = lastUniqueElements(deps.LateStaticLibs)
+	deps.SharedLibs = lastUniqueElements(deps.SharedLibs)
+	deps.LateSharedLibs = lastUniqueElements(deps.LateSharedLibs)
+
+	return deps
 }
 
 func (c *Module) depsMutator(actx common.AndroidBottomUpMutatorContext) {
@@ -727,42 +777,23 @@ func (c *Module) depsMutator(actx common.AndroidBottomUpMutatorContext) {
 
 	c.begin(ctx)
 
-	c.deps = Deps{}
+	deps := c.deps(ctx)
 
-	if c.compiler != nil {
-		c.deps = c.compiler.deps(ctx, c.deps)
-	}
-	if c.linker != nil {
-		c.deps = c.linker.deps(ctx, c.deps)
-	}
-	if c.stl != nil {
-		c.deps = c.stl.deps(ctx, c.deps)
-	}
-	for _, feature := range c.features {
-		c.deps = feature.deps(ctx, c.deps)
-	}
-
-	c.deps.WholeStaticLibs = lastUniqueElements(c.deps.WholeStaticLibs)
-	c.deps.StaticLibs = lastUniqueElements(c.deps.StaticLibs)
-	c.deps.LateStaticLibs = lastUniqueElements(c.deps.LateStaticLibs)
-	c.deps.SharedLibs = lastUniqueElements(c.deps.SharedLibs)
-	c.deps.LateSharedLibs = lastUniqueElements(c.deps.LateSharedLibs)
-
-	staticLibs := c.deps.WholeStaticLibs
-	staticLibs = append(staticLibs, c.deps.StaticLibs...)
-	staticLibs = append(staticLibs, c.deps.LateStaticLibs...)
+	staticLibs := deps.WholeStaticLibs
+	staticLibs = append(staticLibs, deps.StaticLibs...)
+	staticLibs = append(staticLibs, deps.LateStaticLibs...)
 	actx.AddVariationDependencies([]blueprint.Variation{{"link", "static"}}, staticLibs...)
 
-	sharedLibs := c.deps.SharedLibs
-	sharedLibs = append(sharedLibs, c.deps.LateSharedLibs...)
+	sharedLibs := deps.SharedLibs
+	sharedLibs = append(sharedLibs, deps.LateSharedLibs...)
 	actx.AddVariationDependencies([]blueprint.Variation{{"link", "shared"}}, sharedLibs...)
 
-	actx.AddDependency(ctx.module(), c.deps.ObjFiles.Strings()...)
-	if c.deps.CrtBegin != "" {
-		actx.AddDependency(ctx.module(), c.deps.CrtBegin)
+	actx.AddDependency(ctx.module(), deps.ObjFiles.Strings()...)
+	if deps.CrtBegin != "" {
+		actx.AddDependency(ctx.module(), deps.CrtBegin)
 	}
-	if c.deps.CrtEnd != "" {
-		actx.AddDependency(ctx.module(), c.deps.CrtEnd)
+	if deps.CrtEnd != "" {
+		actx.AddDependency(ctx.module(), deps.CrtEnd)
 	}
 }
 
@@ -792,6 +823,8 @@ func (c *Module) clang(ctx BaseModuleContext) bool {
 	return clang
 }
 
+// TODO(ccross): add tagged dependencies to blueprint so that this can get the dependencies
+// without the names argument
 func (c *Module) depsToPathsFromList(ctx common.AndroidModuleContext,
 	names []string) (modules []common.AndroidModule,
 	outputFiles common.Paths, exportedFlags []string) {
@@ -914,6 +947,18 @@ func (c *Module) InstallInData() bool {
 		return false
 	}
 	return c.installer.inData()
+}
+
+func (c *Module) appendVariantName(name string) {
+	if c.linker == nil {
+		return
+	}
+
+	if l, ok := c.linker.(interface {
+		appendVariantName(string)
+	}); ok {
+		l.appendVariantName(name)
+	}
 }
 
 // Compiler
@@ -1226,6 +1271,10 @@ func (linker *baseLinker) setStatic(static bool) {
 	linker.dynamicProperties.VariantIsStatic = static
 }
 
+func (linker *baseLinker) isDependencyRoot() bool {
+	return false
+}
+
 type baseLinkerInterface interface {
 	// Returns true if the build options for the module have selected a static or shared build
 	buildStatic() bool
@@ -1239,6 +1288,10 @@ type baseLinkerInterface interface {
 
 	// Returns whether a module is a static binary
 	staticBinary() bool
+
+	// Returns true for dependency roots (binaries)
+	// TODO(ccross): also handle dlopenable libraries
+	isDependencyRoot() bool
 }
 
 type baseInstaller struct {
@@ -1339,13 +1392,15 @@ func (library *libraryCompiler) flags(ctx ModuleContext, flags Flags) Flags {
 func (library *libraryCompiler) compile(ctx ModuleContext, flags Flags) common.Paths {
 	var objFiles common.Paths
 
-	if library.reuseFrom != library && library.reuseFrom.Properties.Static.Cflags == nil &&
-		library.Properties.Shared.Cflags == nil {
-		objFiles = append(common.Paths(nil), library.reuseFrom.reuseObjFiles...)
-	} else {
-		objFiles = library.baseCompiler.compile(ctx, flags)
-		library.reuseObjFiles = objFiles
-	}
+	// TODO(ccross): setting reuseFrom on the module fails if there are any variations created after
+	// the linkageMutator
+	//	if library.reuseFrom != library && library.reuseFrom.Properties.Static.Cflags == nil &&
+	//		library.Properties.Shared.Cflags == nil {
+	//		objFiles = append(common.Paths(nil), library.reuseFrom.reuseObjFiles...)
+	//	} else {
+	objFiles = library.baseCompiler.compile(ctx, flags)
+	// library.reuseObjFiles = objFiles
+	//	}
 
 	if library.linker.static() {
 		objFiles = append(objFiles, library.compileObjs(ctx, flags, common.DeviceStaticLibrary,
@@ -1454,7 +1509,8 @@ func (library *libraryLinker) linkStatic(ctx ModuleContext,
 	objFiles = append(objFiles, deps.WholeStaticLibObjFiles...)
 	library.objFiles = objFiles
 
-	outputFile := common.PathForModuleOut(ctx, ctx.ModuleName()+staticLibraryExtension)
+	outputFile := common.PathForModuleOut(ctx,
+		ctx.ModuleName()+library.Properties.VariantName+staticLibraryExtension)
 
 	if ctx.Darwin() {
 		TransformDarwinObjToStaticLib(ctx, objFiles, flagsToBuilderFlags(flags), outputFile)
@@ -1472,7 +1528,8 @@ func (library *libraryLinker) linkStatic(ctx ModuleContext,
 func (library *libraryLinker) linkShared(ctx ModuleContext,
 	flags Flags, deps PathDeps, objFiles common.Paths) common.Path {
 
-	outputFile := common.PathForModuleOut(ctx, ctx.ModuleName()+flags.Toolchain.ShlibSuffix())
+	outputFile := common.PathForModuleOut(ctx,
+		ctx.ModuleName()+library.Properties.VariantName+flags.Toolchain.ShlibSuffix())
 
 	var linkerDeps common.Paths
 
@@ -1548,6 +1605,10 @@ func (library *libraryLinker) buildShared() bool {
 
 func (library *libraryLinker) getWholeStaticMissingDeps() []string {
 	return library.wholeStaticMissingDeps
+}
+
+func (library *libraryLinker) appendVariantName(variant string) {
+	library.Properties.VariantName += variant
 }
 
 type libraryPrebuiltLinker struct {
@@ -1779,6 +1840,10 @@ func (binary *binaryLinker) deps(ctx BaseModuleContext, deps Deps) Deps {
 	return deps
 }
 
+func (binary *binaryLinker) isDependencyRoot() bool {
+	return true
+}
+
 func NewBinary(hod common.HostOrDeviceSupported) *Module {
 	module := newModule(hod, common.MultilibFirst)
 	module.compiler = &baseCompiler{}
@@ -1837,16 +1902,17 @@ func (binary *binaryLinker) flags(ctx ModuleContext, flags Flags) Flags {
 			)
 
 		} else {
-			linker := "/system/bin/linker"
-			if flags.Toolchain.Is64Bit() {
-				linker += "64"
+			if flags.DynamicLinker == "" {
+				flags.DynamicLinker = "/system/bin/linker"
+				if flags.Toolchain.Is64Bit() {
+					flags.DynamicLinker += "64"
+				}
 			}
 
 			flags.LdFlags = append(flags.LdFlags,
 				"-pie",
 				"-nostdlib",
 				"-Bdynamic",
-				fmt.Sprintf("-Wl,-dynamic-linker,%s", linker),
 				"-Wl,--gc-sections",
 				"-Wl,-z,nocopyreloc",
 			)
@@ -1878,6 +1944,10 @@ func (binary *binaryLinker) link(ctx ModuleContext,
 
 	sharedLibs := deps.SharedLibs
 	sharedLibs = append(sharedLibs, deps.LateSharedLibs...)
+
+	if flags.DynamicLinker != "" {
+		flags.LdFlags = append(flags.LdFlags, " -Wl,-dynamic-linker,"+flags.DynamicLinker)
+	}
 
 	TransformObjToDynamicBinary(ctx, objFiles, sharedLibs, deps.StaticLibs,
 		deps.LateStaticLibs, deps.WholeStaticLibs, linkerDeps, deps.CrtBegin, deps.CrtEnd, true,
@@ -2110,6 +2180,7 @@ func defaultsFactory() (blueprint.Module, []interface{}) {
 		&TestLinkerProperties{},
 		&UnusedProperties{},
 		&StlProperties{},
+		&SanitizeProperties{},
 	}
 
 	_, propertyStructs = common.InitAndroidArchModule(module, common.HostAndDeviceDefault,
