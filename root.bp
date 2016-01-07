@@ -3,6 +3,7 @@ subname = "Android.bp"
 subdirs = [
     "art",
     "build/blueprint",
+    "build/kati",
     "build/soong",
     "bionic",
     "dalvik",
