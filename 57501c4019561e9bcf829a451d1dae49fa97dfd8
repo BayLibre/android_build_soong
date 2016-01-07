@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0a4ddf0f_189b348f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-01-07T22:19:31Z",
+      "side": 1,
+      "message": "That was supposed to be split out",
+      "parentUuid": "4a4357e2_f27b0e08",
+      "revId": "57501c4019561e9bcf829a451d1dae49fa97dfd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a4357e2_5c92140b",
         "filename": "cc/cc.go",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2016-01-07T22:02:28Z",
       "side": 1,
       "message": "Init",
+      "range": {
+        "startLine": 436,
+        "startChar": 30,
+        "endLine": 436,
+        "endChar": 31
+      },
+      "revId": "57501c4019561e9bcf829a451d1dae49fa97dfd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca202730_62b96701",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-01-07T22:19:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a4357e2_5c92140b",
       "range": {
         "startLine": 436,
         "startChar": 30,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "8a41cfd9_6baf0ce5",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-01-07T22:19:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a1aaf01_a0fc5b24",
+      "range": {
+        "startLine": 440,
+        "startChar": 41,
+        "endLine": 440,
+        "endChar": 42
+      },
+      "revId": "57501c4019561e9bcf829a451d1dae49fa97dfd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa3e9347_27d85917",
         "filename": "cc/cc.go",
         "patchSetId": 2
@@ -76,6 +142,30 @@
       "writtenOn": "2016-01-07T22:02:28Z",
       "side": 1,
       "message": "Why is this a linker wrapper, and not a Customizer or feature?",
+      "range": {
+        "startLine": 1695,
+        "startChar": 0,
+        "endLine": 1698,
+        "endChar": 1
+      },
+      "revId": "57501c4019561e9bcf829a451d1dae49fa97dfd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a1aaf01_80c27779",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1698,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-01-07T22:19:31Z",
+      "side": 1,
+      "message": "because there isn\u0027t a good way for testPerSrcMutator to get to identify a module as having a specific feature",
+      "parentUuid": "aa3e9347_27d85917",
       "range": {
         "startLine": 1695,
         "startChar": 0,
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "ea1debf7_b5233781",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1773,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-01-07T22:19:31Z",
+      "side": 1,
+      "message": "consistency?",
+      "parentUuid": "0a4ddf0f_fd499a13",
+      "range": {
+        "startLine": 1771,
+        "startChar": 0,
+        "endLine": 1773,
+        "endChar": 1
+      },
+      "revId": "57501c4019561e9bcf829a451d1dae49fa97dfd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea1debf7_d5aa6b41",
         "filename": "cc/cc.go",
         "patchSetId": 2
@@ -122,6 +236,30 @@
       "writtenOn": "2016-01-07T22:02:28Z",
       "side": 1,
       "message": "Benchmark?",
+      "range": {
+        "startLine": 1794,
+        "startChar": 14,
+        "endLine": 1794,
+        "endChar": 20
+      },
+      "revId": "57501c4019561e9bcf829a451d1dae49fa97dfd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca202730_4293037f",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1794,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-01-07T22:19:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea1debf7_d5aa6b41",
       "range": {
         "startLine": 1794,
         "startChar": 14,
@@ -157,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "8a41cfd9_2b4fc417",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1857,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-01-07T22:19:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a481bfe_e5eb452b",
+      "range": {
+        "startLine": 1857,
+        "startChar": 14,
+        "endLine": 1857,
+        "endChar": 20
+      },
+      "revId": "57501c4019561e9bcf829a451d1dae49fa97dfd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea1debf7_24a05bb0",
         "filename": "cc/stl.go",
         "patchSetId": 2
@@ -168,6 +330,30 @@
       "writtenOn": "2016-01-07T22:02:28Z",
       "side": 1,
       "message": "6?",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "57501c4019561e9bcf829a451d1dae49fa97dfd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a4ddf0f_9853c468",
+        "filename": "cc/stl.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-01-07T22:19:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea1debf7_24a05bb0",
       "range": {
         "startLine": 1,
         "startChar": 16,
