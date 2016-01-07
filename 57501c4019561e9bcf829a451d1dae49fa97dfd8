@@ -178,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "ca202730_85bcc585",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1698,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-01-07T23:06:04Z",
+      "side": 1,
+      "message": "It would be nice to have a generic helper function, but that would require using the reflection api instead of just a type assertion, since you can\u0027t pass types AFAIK.\n\nWouldn\u0027t this work?\n\n  func getTestFeature(mod *Module) (*testFeature, bool) {\n    for _, feature :\u003d range mod.features {\n      if test, ok :\u003d feature.(*testFeature); ok {\n        return test, true\n      }\n    }\n    return nil, false\n  }\n\n  if test, ok :\u003d getTestFeature(m); ok {",
+      "parentUuid": "8a1aaf01_80c27779",
+      "range": {
+        "startLine": 1695,
+        "startChar": 0,
+        "endLine": 1698,
+        "endChar": 1
+      },
+      "revId": "57501c4019561e9bcf829a451d1dae49fa97dfd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a4ddf0f_fd499a13",
         "filename": "cc/cc.go",
         "patchSetId": 2
