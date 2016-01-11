@@ -173,6 +173,9 @@ func (installer *baseInstaller) AndroidMk(ctx AndroidMkContext, ret *android.And
 		stem := strings.TrimSuffix(file, filepath.Ext(file))
 		fmt.Fprintln(w, "LOCAL_MODULE_PATH := $(OUT_DIR)/"+filepath.Clean(dir))
 		fmt.Fprintln(w, "LOCAL_MODULE_STEM := "+stem)
+		if len(installer.Properties.Symlinks) > 0 {
+			fmt.Fprintln(w, "LOCAL_MODULE_SYMLINKS := "+strings.Join(installer.Properties.Symlinks, " "))
+		}
 		return nil
 	})
 }
