@@ -35,6 +35,7 @@ const productVariablesFileName = "soong.variables"
 // A FileConfigurableOptions contains options which can be configured by the
 // config file. These will be included in the config struct.
 type FileConfigurableOptions struct {
+	Mega_device *bool `json:",omitempty"`
 }
 
 func (f *FileConfigurableOptions) SetDefaultConfig() {
@@ -177,6 +178,13 @@ func NewConfig(srcDir, buildDir string) (Config, error) {
 	hostArches, deviceArches, err := decodeArchProductVariables(config.ProductVariables)
 	if err != nil {
 		return Config{}, err
+	}
+
+	if Bool(config.Mega_device) {
+		deviceArches, err = decodeMegaDevice()
+		if err != nil {
+			return Config{}, err
+		}
 	}
 
 	config.HostArches = hostArches
