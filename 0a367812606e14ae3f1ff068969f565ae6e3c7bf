@@ -16,6 +16,24 @@
       "revId": "0a367812606e14ae3f1ff068969f565ae6e3c7bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "274e5eac_b9cc28e6",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1895,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-01-13T20:26:37Z",
+      "side": 1,
+      "message": "That would just the default though, wouldn\u0027t it? An Android.bp could still set clang: true, which wouldn\u0027t be correct, since we hardcode gcc below.",
+      "parentUuid": "07623a24_6d12d937",
+      "revId": "0a367812606e14ae3f1ff068969f565ae6e3c7bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
