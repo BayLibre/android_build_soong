@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07623a24_6d12d937",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1895,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-01-13T08:46:53Z",
+      "side": 1,
+      "message": "you can do this without adding ModifyProperties by settings module.Properties.Clang in ToolchainLibraryFactory",
+      "revId": "0a367812606e14ae3f1ff068969f565ae6e3c7bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
