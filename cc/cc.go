@@ -1890,6 +1890,11 @@ func ToolchainLibraryFactory() (blueprint.Module, []interface{}) {
 		&module.LibraryProperties)
 }
 
+func (c *toolchainLibrary) ModifyProperties(ctx CCModuleContext) {
+	// toolchain libraries use GCC
+	c.Properties.Clang = proptools.BoolPtr(false)
+}
+
 func (c *toolchainLibrary) compileModule(ctx common.AndroidModuleContext,
 	flags CCFlags, deps CCPathDeps, objFiles common.Paths) {
 
