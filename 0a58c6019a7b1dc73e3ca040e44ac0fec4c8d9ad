@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "07623a24_bcd6e046",
+        "filename": "common/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 914,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-01-13T22:41:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87562a44_c0e2cfbd",
+      "revId": "0a58c6019a7b1dc73e3ca040e44ac0fec4c8d9ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "678e9643_82faaa5f",
         "filename": "common/module.go",
         "patchSetId": 1
@@ -72,6 +90,30 @@
       "side": 1,
       "message": "Good idea, I\u0027ll also disable install for the make-in-soong case.",
       "parentUuid": "678e9643_82faaa5f",
+      "range": {
+        "startLine": 522,
+        "startChar": 19,
+        "endLine": 522,
+        "endChar": 30
+      },
+      "revId": "0a58c6019a7b1dc73e3ca040e44ac0fec4c8d9ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e759a674_1a92727b",
+        "filename": "common/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-01-13T22:41:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "676db610_33279f5c",
       "range": {
         "startLine": 522,
         "startChar": 19,
