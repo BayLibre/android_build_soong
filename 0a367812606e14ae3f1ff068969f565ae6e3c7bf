@@ -52,6 +52,24 @@
       "revId": "0a367812606e14ae3f1ff068969f565ae6e3c7bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07495aa4_6494bb6d",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1895,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-01-13T21:02:23Z",
+      "side": 1,
+      "message": "If I was to move this up, I\u0027d want to add an assert below to verify !clang. It\u0027s rather easy to mess up, and wasn\u0027t obvious until I rearranged the clang cflags and added a new warning to gcc based on those flags. Does that sound better?",
+      "parentUuid": "274e5eac_f9d6b075",
+      "revId": "0a367812606e14ae3f1ff068969f565ae6e3c7bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
