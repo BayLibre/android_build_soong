@@ -70,6 +70,24 @@
       "revId": "0a367812606e14ae3f1ff068969f565ae6e3c7bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07623a24_bce260bc",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1895,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-01-13T21:25:07Z",
+      "side": 1,
+      "message": "sure",
+      "parentUuid": "07495aa4_6494bb6d",
+      "revId": "0a367812606e14ae3f1ff068969f565ae6e3c7bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
