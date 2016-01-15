@@ -563,7 +563,7 @@ func (c *CCBase) collectFlags(ctx common.AndroidModuleContext, toolchain Toolcha
 			flags.LdFlags = append(flags.LdFlags, "-Wl,--no-undefined")
 		}
 
-		flags.GlobalFlags = append(flags.GlobalFlags, instructionSetFlags)
+		flags.CFlags = append(flags.CFlags, instructionSetFlags)
 
 		if flags.Clang {
 			flags.AsFlags = append(flags.AsFlags, toolchain.ClangAsflags())
