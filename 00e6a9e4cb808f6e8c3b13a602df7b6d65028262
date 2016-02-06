@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "518b14a3_e0f21c89",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-02-06T00:41:26Z",
+      "side": 1,
+      "message": "We do actually have this in make already -- LOCAL_MODULE_HOST_CROSS_ARCH.\n\nBut I also switched the ordering between 64-bit and 32-bit for the make implementation so that \u0027first\u0027 picks the architecture that is better supported. That should only be a one line change of the default here.",
+      "range": {
+        "startLine": 10,
+        "startChar": 13,
+        "endLine": 11,
+        "endChar": 64
+      },
+      "revId": "00e6a9e4cb808f6e8c3b13a602df7b6d65028262",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
