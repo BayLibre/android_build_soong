@@ -2,8 +2,12 @@ subname = "Android.bp"
 
 subdirs = [
     "build/blueprint",
-    "build/kati",
     "build/soong",
+]
+
+optional_subdirs = [
+    "build/kati",
+    "build/tools/*",
     "bionic/*",
     "dalvik",
     "external/*",
@@ -15,7 +19,6 @@ subdirs = [
     "prebuilts/sdk",
     "system/core/*",
     "packages/apps/HTMLViewer",
-    "build/tools/*",
     "system/security/*",
     "system/keymaster",
 ]
