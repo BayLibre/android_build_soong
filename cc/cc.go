@@ -791,6 +791,7 @@ func (c *CCBase) depsToPaths(ctx common.AndroidModuleContext, depNames CCDeps) C
 
 	for _, m := range wholeStaticLibModules {
 		if staticLib, ok := m.(ccLibraryInterface); ok && staticLib.static() {
+			ctx.AddMissingDependencies(staticLib.getWholeStaticMissingDeps())
 			depPaths.WholeStaticLibObjFiles =
 				append(depPaths.WholeStaticLibObjFiles, staticLib.allObjFiles()...)
 		} else {
@@ -1136,6 +1137,10 @@ type CCLibrary struct {
 	out           common.Path
 	systemLibs    []string
 
+	// If we're used as a whole_static_lib, our missing dependencies need
+	// to be given
+	wholeStaticMissingDeps []string
+
 	LibraryProperties CCLibraryProperties
 }
 
@@ -1154,6 +1159,7 @@ type ccLibraryInterface interface {
 	getReuseFrom() ccLibraryInterface
 	getReuseObjFiles() common.Paths
 	allObjFiles() common.Paths
+	getWholeStaticMissingDeps() []string
 }
 
 var _ ccLibraryInterface = (*CCLibrary)(nil)
@@ -1222,6 +1228,10 @@ func (c *CCLibrary) getReuseFrom() ccLibraryInterface {
 
 func (c *CCLibrary) allObjFiles() common.Paths {
 	return c.objFiles
+}
+
+func (c *CCLibrary) getWholeStaticMissingDeps() []string {
+	return c.wholeStaticMissingDeps
 }
 
 func (c *CCLibrary) exportedFlags() []string {
@@ -1293,6 +1303,8 @@ func (c *CCLibrary) compileStaticLibrary(ctx common.AndroidModuleContext,
 	} else {
 		TransformObjToStaticLib(ctx, objFiles, ccFlagsToBuilderFlags(flags), outputFile)
 	}
+
+	c.wholeStaticMissingDeps = ctx.GetMissingDependencies()
 
 	c.objFiles = objFiles
 	c.out = outputFile
