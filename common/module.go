@@ -390,6 +390,10 @@ func (a *AndroidModuleBase) GenerateBuildActions(ctx blueprint.ModuleContext) {
 		missingDeps:            ctx.GetMissingDependencies(),
 	}
 
+	if a.HostOrDevice() == neither {
+		return
+	}
+
 	if !a.Enabled() {
 		return
 	}

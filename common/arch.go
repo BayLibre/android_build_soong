@@ -346,6 +346,7 @@ const (
 	_ HostOrDevice = iota
 	Host
 	Device
+	neither
 )
 
 func (hod HostOrDevice) String() string {
@@ -454,11 +455,12 @@ func HostOrDeviceMutator(mctx AndroidBottomUpMutatorContext) {
 		hods = append(hods, Host)
 	}
 
-	if module.base().DeviceSupported() {
+	if module.base().DeviceSupported() && len(mctx.Config().(Config).DeviceArches) > 0 {
 		hods = append(hods, Device)
 	}
 
 	if len(hods) == 0 {
+		module.base().SetHostOrDevice(neither)
 		return
 	}
 
@@ -879,7 +881,7 @@ func decodeArchProductVariables(variables productVariables) (map[HostType][]Arch
 	}
 
 	if variables.DeviceArch == nil {
-		return nil, nil, fmt.Errorf("No device primary architecture set")
+		return hostTypeArches, nil, nil
 	}
 
 	deviceArch, err := decodeArch(*variables.DeviceArch, variables.DeviceArchVariant,
