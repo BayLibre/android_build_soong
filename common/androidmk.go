@@ -136,6 +136,10 @@ func translateAndroidMkModule(ctx blueprint.SingletonContext, w io.Writer, mod b
 		return err
 	}
 
+	if amod.HostOrDevice() == Neither {
+		return err
+	}
+
 	if !amod.Enabled() {
 		return err
 	}
