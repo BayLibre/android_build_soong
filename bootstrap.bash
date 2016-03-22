@@ -52,7 +52,25 @@ if [[ $# -eq 0 ]]; then
     if [[ ${BUILDDIR:0:1} == '/' ]]; then
       export SRCDIR_FROM_BUILDDIR=$PWD
     else
-      export SRCDIR_FROM_BUILDDIR=$(python -c "import os; print os.path.relpath('.', '$BUILDDIR')")
+      # We'd like to use relative paths here so that the source and build
+      # directories can be moved around without rebuilding as long as they stay
+      # in the same relative position. But relative paths don't always work when
+      # there are symlinks involved:
+      #
+      # If BUILDDIR is a symlink to another directory in the same parent
+      # directory (out -> out.angler), then using out and .. as relative paths
+      # to get back and forth work fine.
+      #
+      # But if BUILDDIR is a symlink to another directory altogher (out ->
+      # /mnt/ssd/out.master), then we shouldn't be relying on relative paths (so
+      # that the source directory can still be moved).
+      export SRCDIR_FROM_BUILDDIR=$(python -c "import os
+realpath_relpath = os.path.relpath(os.path.realpath('.'), os.path.realpath('$BUILDDIR'))
+relpath = os.path.relpath('.', '$BUILDDIR')
+if realpath_relpath != relpath:
+  print os.path.abspath('.')
+else:
+  print relpath")
     fi
 
     sed -e "s|@@BuildDir@@|${BUILDDIR}|" \
