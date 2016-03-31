@@ -222,6 +222,10 @@ func (t *toolchainX86) ClangTriple() string {
 	return "${x86GccTriple}"
 }
 
+func (t *toolchainX86) ToolchainClangLdflags() string {
+	return "${x86ToolchainLdflags}"
+}
+
 func (t *toolchainX86) ToolchainClangCflags() string {
 	return t.toolchainClangCflags
 }

@@ -146,6 +146,7 @@ func init() {
 	pctx.StaticVariable("mipsClangCflags", strings.Join(clangFilterUnknownCflags(mipsCflags), " "))
 	pctx.StaticVariable("mipsClangLdflags", strings.Join(clangFilterUnknownCflags(mipsLdflags), " "))
 	pctx.StaticVariable("mipsClangCppflags", strings.Join(clangFilterUnknownCflags(mipsCppflags), " "))
+	pctx.StaticVariable("mipsClangToolchainLdflags", strings.Join(clangFilterUnknownCflags(mipsToolchainLdflags), " "))
 
 	// Extended cflags
 
@@ -205,6 +206,10 @@ func (t *toolchainMips) IncludeFlags() string {
 
 func (t *toolchainMips) ClangTriple() string {
 	return "${mipsClangTriple}"
+}
+
+func (t *toolchainMips) ToolchainClangLdflags() string {
+	return "${mipsClangToolchainLdflags}"
 }
 
 func (t *toolchainMips) ToolchainClangCflags() string {
