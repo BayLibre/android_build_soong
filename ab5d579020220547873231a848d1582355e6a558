@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ec61432_3d6ebb8c",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-04-04T20:03:38Z",
+      "side": 1,
+      "message": "I was worried this feature stuff would cause problems like this, where the feature isn\u0027t actually independent.  Maybe features shouldn\u0027t be a list of interfaces, they should be struct pointers that may be nil?",
+      "revId": "ab5d579020220547873231a848d1582355e6a558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
