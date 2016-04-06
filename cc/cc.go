@@ -35,6 +35,7 @@ func init() {
 	soong.RegisterModuleType("cc_library_static", libraryStaticFactory)
 	soong.RegisterModuleType("cc_library_shared", librarySharedFactory)
 	soong.RegisterModuleType("cc_library", libraryFactory)
+	soong.RegisterModuleType("cc_library_prebuilt", libraryPrebuiltFactory)
 	soong.RegisterModuleType("cc_object", objectFactory)
 	soong.RegisterModuleType("cc_binary", binaryFactory)
 	soong.RegisterModuleType("cc_test", testFactory)
@@ -363,6 +364,18 @@ type LibraryLinkerProperties struct {
 	Nocrt *bool `android:"arch_variant"`
 }
 
+type LibraryPrebuiltLinkerProperties struct {
+	Static struct {
+		Prebuilt    string   `android:"arch_variant"`
+		Shared_libs []string `android:"arch_variant"`
+	} `android:"arch_variant"`
+
+	Shared struct {
+		Prebuilt    string   `android:"arch_variant"`
+		Shared_libs []string `android:"arch_variant"`
+	} `android:"arch_variant"`
+}
+
 type BinaryLinkerProperties struct {
 	// compile executable with -static
 	Static_executable *bool
@@ -648,6 +661,11 @@ func (c *Module) GenerateAndroidBuildActions(actx common.AndroidModuleContext) {
 		if ctx.Failed() {
 			return
 		}
+
+		if outputFile == nil {
+			return
+		}
+
 		c.outputFile = common.OptionalPathForPath(outputFile)
 
 		if c.installer != nil {
@@ -1521,6 +1539,49 @@ func (library *libraryLinker) getWholeStaticMissingDeps() []string {
 	return library.wholeStaticMissingDeps
 }
 
+type libraryPrebuiltLinker struct {
+	libraryLinker
+	Properties LibraryPrebuiltLinkerProperties
+}
+
+func (library *libraryPrebuiltLinker) props() []interface{} {
+	props := library.baseLinker.props()
+	return append(props,
+		&library.Properties,
+		&library.dynamicProperties,
+		&library.flagExporter.Properties)
+}
+
+func (library *libraryPrebuiltLinker) flags(ctx ModuleContext, flags Flags) Flags {
+	return flags
+}
+
+func (library *libraryPrebuiltLinker) deps(ctx BaseModuleContext, deps Deps) Deps {
+	if library.static() {
+		deps.SharedLibs = append(deps.SharedLibs, library.Properties.Static.Shared_libs...)
+	} else {
+		deps.SharedLibs = append(deps.SharedLibs, library.Properties.Shared.Shared_libs...)
+	}
+
+	return deps
+}
+
+func (library *libraryPrebuiltLinker) link(ctx ModuleContext,
+	flags Flags, deps PathDeps, objFiles common.Paths) common.Path {
+	// TODO: verify architecture and dependencies
+	var prebuilt string
+	if library.static() {
+		prebuilt = library.Properties.Static.Prebuilt
+	} else {
+		prebuilt = library.Properties.Shared.Prebuilt
+	}
+	if prebuilt != "" {
+		return common.PathForModuleSrc(ctx, prebuilt)
+	}
+
+	return nil
+}
+
 type libraryInstaller struct {
 	baseInstaller
 
@@ -1557,6 +1618,25 @@ func NewLibrary(hod common.HostOrDeviceSupported, shared, static bool) *Module {
 
 func libraryFactory() (blueprint.Module, []interface{}) {
 	module := NewLibrary(common.HostAndDeviceSupported, true, true)
+	return module.Init()
+}
+
+func libraryPrebuiltFactory() (blueprint.Module, []interface{}) {
+	module := newBaseModule(common.HostAndDeviceSupported, common.MultilibBoth)
+
+	linker := &libraryPrebuiltLinker{}
+	linker.dynamicProperties.BuildShared = true
+	linker.dynamicProperties.BuildStatic = true
+	module.linker = linker
+
+	module.installer = &libraryInstaller{
+		baseInstaller: baseInstaller{
+			dir:   "lib",
+			dir64: "lib64",
+		},
+		linker: &linker.libraryLinker,
+	}
+
 	return module.Init()
 }
 
@@ -2014,6 +2094,7 @@ func defaultsFactory() (blueprint.Module, []interface{}) {
 		&LibraryCompilerProperties{},
 		&FlagExporterProperties{},
 		&LibraryLinkerProperties{},
+		&LibraryPrebuiltLinkerProperties{},
 		&BinaryLinkerProperties{},
 		&TestLinkerProperties{},
 		&UnusedProperties{},
