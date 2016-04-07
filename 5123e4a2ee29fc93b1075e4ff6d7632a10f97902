@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae9b108c_12ec4c6a",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-04-07T23:13:28Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be removed?",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 359,
+        "endChar": 54
+      },
+      "revId": "5123e4a2ee29fc93b1075e4ff6d7632a10f97902",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
