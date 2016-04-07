@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae9b108c_122fac81",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1578,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-04-07T23:10:34Z",
+      "side": 1,
+      "message": "Shouldn\u0027t prebuilt \u003d\u003d \"\" be an error? or at least disables the module before now so that anything depending on it would fail?",
+      "range": {
+        "startLine": 1578,
+        "startChar": 4,
+        "endLine": 1578,
+        "endChar": 18
+      },
+      "revId": "cc5c7ed3b22cdcc9c9a9e4c86fcc793bff97dd6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
