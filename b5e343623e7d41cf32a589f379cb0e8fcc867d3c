@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bb2eaf7_9da4e3cd",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-04-12T21:09:26Z",
+      "side": 1,
+      "message": "this needs rewording",
+      "range": {
+        "startLine": 800,
+        "startChar": 3,
+        "endLine": 800,
+        "endChar": 30
+      },
+      "revId": "b5e343623e7d41cf32a589f379cb0e8fcc867d3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
