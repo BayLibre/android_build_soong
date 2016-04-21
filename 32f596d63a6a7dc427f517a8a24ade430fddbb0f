@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "68683071_a44c5b47",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 959,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-04-21T23:42:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae9b108c_32ad1061",
+      "range": {
+        "startLine": 957,
+        "startChar": 22,
+        "endLine": 959,
+        "endChar": 2
+      },
+      "revId": "32f596d63a6a7dc427f517a8a24ade430fddbb0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae9b108c_ef38df82",
         "filename": "cc/sanitize.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-04-07T22:53:18Z",
       "side": 1,
       "message": "6",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "32f596d63a6a7dc427f517a8a24ade430fddbb0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68683071_64466328",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-04-21T23:42:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae9b108c_ef38df82",
       "range": {
         "startLine": 1,
         "startChar": 16,
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "68683071_04844793",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-04-21T23:42:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae9b108c_8f483309",
+      "revId": "32f596d63a6a7dc427f517a8a24ade430fddbb0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae9b108c_4f534bbe",
         "filename": "cc/sanitize.go",
         "patchSetId": 1
@@ -76,6 +142,30 @@
       "writtenOn": "2016-04-07T22:53:18Z",
       "side": 1,
       "message": "this needs updating",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 85
+      },
+      "revId": "32f596d63a6a7dc427f517a8a24ade430fddbb0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68683071_24894bab",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-04-21T23:42:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae9b108c_4f534bbe",
       "range": {
         "startLine": 45,
         "startChar": 1,
