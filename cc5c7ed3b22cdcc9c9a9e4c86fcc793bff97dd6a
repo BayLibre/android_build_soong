@@ -22,6 +22,30 @@
       "revId": "cc5c7ed3b22cdcc9c9a9e4c86fcc793bff97dd6a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68683071_64fbc320",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1578,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-04-21T23:37:11Z",
+      "side": 1,
+      "message": "The blank prebuilt case happens when a module doesn\u0027t declare a prebuilt for a specific architecture, but the archMutator splits it anyways.\n\nWe don\u0027t actually need library prebuilts yet, so I\u0027ll drop this patch for now",
+      "parentUuid": "ae9b108c_122fac81",
+      "range": {
+        "startLine": 1578,
+        "startChar": 4,
+        "endLine": 1578,
+        "endChar": 18
+      },
+      "revId": "cc5c7ed3b22cdcc9c9a9e4c86fcc793bff97dd6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
