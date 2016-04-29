@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8e6a926_18524dce",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2016-04-29T01:53:53Z",
+      "side": 1,
+      "message": "I would probably add a space before ${args}.",
+      "range": {
+        "startLine": 110,
+        "startChar": 86,
+        "endLine": 110,
+        "endChar": 88
+      },
+      "revId": "7d2ea5cf5c047b0c49900d6e32548b3725dedee1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8e6a926_d8304591",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2016-04-29T01:53:53Z",
+      "side": 1,
+      "message": "Unused. Shall we move it to the shell script?",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 15
+      },
+      "revId": "7d2ea5cf5c047b0c49900d6e32548b3725dedee1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8e6a926_784b991c",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2016-04-29T01:53:53Z",
+      "side": 1,
+      "message": "missing space.",
+      "range": {
+        "startLine": 436,
+        "startChar": 10,
+        "endLine": 436,
+        "endChar": 13
+      },
+      "revId": "7d2ea5cf5c047b0c49900d6e32548b3725dedee1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8e6a926_38f191de",
+        "filename": "scripts/strip.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2016-04-29T01:53:53Z",
+      "side": 1,
+      "message": "At first this looks odd to me, as I would set up the dependency in the ninja rule. But since you handle all the options in this script and the deps may differ depending on the options, it makes sense.",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 36
+      },
+      "revId": "7d2ea5cf5c047b0c49900d6e32548b3725dedee1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8e6a926_381ab108",
+        "filename": "scripts/strip.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2016-04-29T01:53:53Z",
+      "side": 1,
+      "message": "extra whitespaces.",
+      "range": {
+        "startLine": 91,
+        "startChar": 2,
+        "endLine": 91,
+        "endChar": 5
+      },
+      "revId": "7d2ea5cf5c047b0c49900d6e32548b3725dedee1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8e6a926_1817edde",
+        "filename": "scripts/strip.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2016-04-29T01:53:53Z",
+      "side": 1,
+      "message": "not defined.",
+      "range": {
+        "startLine": 102,
+        "startChar": 4,
+        "endLine": 102,
+        "endChar": 24
+      },
+      "revId": "7d2ea5cf5c047b0c49900d6e32548b3725dedee1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
