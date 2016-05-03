@@ -416,16 +416,21 @@ func TransformBinaryPrefixSymbols(ctx common.AndroidModuleContext, prefix string
 func TransformStrip(ctx common.AndroidModuleContext, inputFile common.Path,
 	outputFile common.WritablePath, flags builderFlags) {
 
-	crossCompile := gccCmd(flags.toolchain, "")
-	args := ""
-	if flags.stripAddGnuDebuglink {
-		args += " --add-gnu-debuglink"
-	}
-	if flags.stripKeepMiniDebugInfo {
-		args += " --keep-mini-debug-info"
-	}
-	if flags.stripKeepSymbols {
-		args += " --keep-symbols"
+	var crossCompile string
+	var args string
+	if runtime.GOOS != "darwin" {
+		crossCompile = gccCmd(flags.toolchain, "")
+		if flags.stripAddGnuDebuglink {
+			args += " --add-gnu-debuglink"
+		}
+		if flags.stripKeepMiniDebugInfo {
+			args += " --keep-mini-debug-info"
+		}
+		if flags.stripKeepSymbols {
+			args += " --keep-symbols"
+		}
+	} else {
+		crossCompile = "${macToolchainRoot}/usr/bin/"
 	}
 
 	ctx.ModuleBuild(pctx, common.ModuleBuildParams{
