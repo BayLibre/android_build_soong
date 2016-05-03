@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2d448b87_7eb571fe",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1977,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-05-03T21:10:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d448b87_9ed67dd3",
+      "range": {
+        "startLine": 1977,
+        "startChar": 8,
+        "endLine": 1977,
+        "endChar": 38
+      },
+      "revId": "5e2140921e46d355b79b0870e99374e35ac1b3f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d448b87_5e7195d0",
         "filename": "cc/cc.go",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "2d448b87_beced990",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1983,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-05-03T21:10:51Z",
+      "side": 1,
+      "message": "Added a todo.  For now make will do the stripping correctly.",
+      "parentUuid": "2d448b87_5e7195d0",
+      "range": {
+        "startLine": 1983,
+        "startChar": 1,
+        "endLine": 1983,
+        "endChar": 34
+      },
+      "revId": "5e2140921e46d355b79b0870e99374e35ac1b3f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d448b87_1e50ad22",
         "filename": "scripts/strip.sh",
         "patchSetId": 5
@@ -59,6 +107,24 @@
       "writtenOn": "2016-05-03T20:21:07Z",
       "side": 1,
       "message": "for build variant !\u003d user, make also adds --add-gnu-debuglink\u003d... here (See TARGET_STRIP_KEEP_SYMBOLS_EXTRA)",
+      "revId": "5e2140921e46d355b79b0870e99374e35ac1b3f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d448b87_3ebbe9f5",
+        "filename": "scripts/strip.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-05-03T21:10:51Z",
+      "side": 1,
+      "message": "The script does the debuglink as a postprocessing step",
+      "parentUuid": "2d448b87_1e50ad22",
       "revId": "5e2140921e46d355b79b0870e99374e35ac1b3f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
