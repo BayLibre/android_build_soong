@@ -128,6 +128,24 @@
       "revId": "5e2140921e46d355b79b0870e99374e35ac1b3f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d448b87_5e88752e",
+        "filename": "scripts/strip.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-05-03T21:17:22Z",
+      "side": 1,
+      "message": "In make, this isn\u0027t controlled by the same no_debuglink flag, but it\u0027s not possible for the user to specify both no_debuglink and keep_symbols at the same time there.\n\nSo this should be fine, since we\u0027re not exposing the no_debuglink to users (but I\u0027m assuming you\u0027re keeping it for the prebuilt shared libraries, which is the only usecase in make)",
+      "parentUuid": "2d448b87_3ebbe9f5",
+      "revId": "5e2140921e46d355b79b0870e99374e35ac1b3f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
