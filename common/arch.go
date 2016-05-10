@@ -186,6 +186,8 @@ type archProperties struct {
 			Ivybridge   interface{} `blueprint:"filter(android:\"arch_variant\")"`
 			Sandybridge interface{} `blueprint:"filter(android:\"arch_variant\")"`
 			Silvermont  interface{} `blueprint:"filter(android:\"arch_variant\")"`
+			// Generic variant for X86 on X86_64
+			X86_64      interface{} `blueprint:"filter(android:\"arch_variant\")"`
 
 			// X86 arch features
 			Ssse3  interface{} `blueprint:"filter(android:\"arch_variant\")"`
