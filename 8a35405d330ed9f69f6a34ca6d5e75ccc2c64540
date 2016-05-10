@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "926e7879_92ac02b4",
+        "filename": "cc/x86_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-05-10T22:55:04Z",
+      "side": 1,
+      "message": "This naming will be a little bit confusing, because it will show up in the .intermediates directory as device_x86_x86_64.   Maybe just call it prescott?",
+      "revId": "8a35405d330ed9f69f6a34ca6d5e75ccc2c64540",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
