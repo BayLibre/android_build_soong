@@ -16,6 +16,24 @@
       "revId": "8a35405d330ed9f69f6a34ca6d5e75ccc2c64540",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "926e7879_5da1bba6",
+        "filename": "cc/x86_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-05-10T23:04:16Z",
+      "side": 1,
+      "message": "prescott just happens to be our minimum based on what bionic requires -- it\u0027s changed a few times, so I\u0027m not sure it\u0027s a great naming source. That also doesn\u0027t differentiate it from the generic case.",
+      "parentUuid": "926e7879_92ac02b4",
+      "revId": "8a35405d330ed9f69f6a34ca6d5e75ccc2c64540",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
