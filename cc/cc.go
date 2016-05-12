@@ -1540,7 +1540,7 @@ func (library *libraryLinker) deps(ctx BaseModuleContext, deps Deps) Deps {
 func (library *libraryLinker) linkStatic(ctx ModuleContext,
 	flags Flags, deps PathDeps, objFiles common.Paths) common.Path {
 
-	objFiles = append(objFiles, deps.WholeStaticLibObjFiles...)
+	objFiles = append(deps.WholeStaticLibObjFiles, objFiles...)
 	library.objFiles = objFiles
 
 	outputFile := common.PathForModuleOut(ctx,
