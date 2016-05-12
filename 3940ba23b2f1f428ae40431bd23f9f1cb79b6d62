@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7254a4e4_c566f842",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1543,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-05-12T20:07:41Z",
+      "side": 1,
+      "message": "I worry about lines like this, as this could modify the backing array of deps.WholeStaticLibObjFiles, and it\u0027s not clear who owns that backing array.  Maybe append both to a nil slice?",
+      "revId": "3940ba23b2f1f428ae40431bd23f9f1cb79b6d62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
