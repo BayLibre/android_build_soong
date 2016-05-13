@@ -120,6 +120,12 @@ var (
 		},
 		"args", "crossCompile")
 
+	touch = pctx.StaticRule("touch",
+		blueprint.RuleParams{
+			Command:     "touch ${out}",
+			Description: "touch $out",
+		})
+
 	copyGccLibPath = pctx.SourcePathVariable("copyGccLibPath", "build/soong/scripts/copygcclib.sh")
 
 	copyGccLib = pctx.StaticRule("copyGccLib",
@@ -260,6 +266,17 @@ func TransformDarwinObjToStaticLib(ctx common.AndroidModuleContext, objFiles com
 	flags builderFlags, outputPath common.ModuleOutPath) {
 
 	arFlags := "cqs"
+
+	if len(objFiles) == 0 {
+		dummy := common.PathForModuleOut(ctx, "dummy" + objectExtension)
+
+		ctx.ModuleBuild(pctx, common.ModuleBuildParams{
+			Rule:   touch,
+			Output: dummy,
+		})
+
+		objFiles = common.Paths{dummy}
+	}
 
 	// ARG_MAX on darwin is 262144, use half that to be safe
 	objFilesLists, err := splitListForSize(objFiles.Strings(), 131072)
