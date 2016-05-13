@@ -22,6 +22,30 @@
       "revId": "f4489854eb77eb405dc4b56b9370dcb8cb6ff8a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7254a4e4_dc916a56",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-05-13T21:52:50Z",
+      "side": 1,
+      "message": "It\u0027s actually an error, not a warning, so I\u0027ll upload another patch. We do get a warning when we create this library:\n\n  [ 12% 95/737] ar out/soong/.intermediates/external/gtest/libgtest_prod/host_darwin_x86_static/libgtest_prod.a\nwarning: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib: warning for library: out/soong/.intermediates/external/gtest/libgtest_prod/host_darwin_x86_static/libgtest_prod.a the table of contents is empty (no object file members in the library define global symbols)\n\nThough other static libraries are warning-dense on darwin too:\n\n  [ 13% 101/737] ar out/soong/.intermediates/external/libcxx/libc++_static/host_darwin_x86_64_static/libc++_static.a\n  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib: file: out/soong/.intermediates/external/libcxx/libc++_static/host_darwin_x86_64_static/libc++_static.a(cxa_thread_atexit.o) has no symbols\n  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib: file: out/soong/.intermediates/external/libcxx/libc++_static/host_darwin_x86_64_static/libc++_static.a(cxa_unexpected.o) has no symbols\n  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib: file: out/soong/.intermediates/external/libcxx/libc++_static/host_darwin_x86_64_static/libc++_static.a(typeinfo.o) has no symbols",
+      "parentUuid": "7254a4e4_e19da9ca",
+      "range": {
+        "startLine": 270,
+        "startChar": 1,
+        "endLine": 279,
+        "endChar": 2
+      },
+      "revId": "f4489854eb77eb405dc4b56b9370dcb8cb6ff8a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
