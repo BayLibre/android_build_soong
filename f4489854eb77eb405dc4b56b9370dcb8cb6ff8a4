@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7254a4e4_e19da9ca",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1003981
+      },
+      "writtenOn": "2016-05-13T21:23:16Z",
+      "side": 1,
+      "message": "We don\u0027t delete dummy.o from the .a?\nThe linker gives a warning when it sees zero-sized file in the .a file, IIRC.",
+      "range": {
+        "startLine": 270,
+        "startChar": 1,
+        "endLine": 279,
+        "endChar": 2
+      },
+      "revId": "f4489854eb77eb405dc4b56b9370dcb8cb6ff8a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
