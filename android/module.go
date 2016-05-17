@@ -22,6 +22,7 @@ import (
 	"android/soong/glob"
 
 	"github.com/google/blueprint"
+	"github.com/google/blueprint/proptools"
 )
 
 var (
@@ -100,8 +101,9 @@ type Module interface {
 }
 
 type commonProperties struct {
-	Name string
-	Deps []string
+	// The name of the module
+	Name *string `android:"arch_variant"`
+
 	Tags []string
 
 	// emit build rules for this module
@@ -177,7 +179,9 @@ func InitAndroidModule(m Module,
 	base := m.base()
 	base.module = m
 
-	propertyStructs = append(propertyStructs, &base.commonProperties, &base.variableProperties)
+	propertyStructs = append(propertyStructs,
+		&base.commonProperties,
+		&base.variableProperties)
 
 	return m, propertyStructs
 }
@@ -268,6 +272,10 @@ type ModuleBase struct {
 	blueprintDir     string
 
 	hooks hooks
+}
+
+func (a *ModuleBase) Name() string {
+	return proptools.String(a.commonProperties.Name)
 }
 
 func (a *ModuleBase) base() *ModuleBase {
