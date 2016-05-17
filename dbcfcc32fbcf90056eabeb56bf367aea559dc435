@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77f2d656_b49cf877",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2309,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-05-17T20:50:34Z",
+      "side": 1,
+      "message": "Did you want to leave a comment along the lines of \"aarch64 is not a multilib target\"?",
+      "revId": "dbcfcc32fbcf90056eabeb56bf367aea559dc435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
