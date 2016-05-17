@@ -2302,8 +2302,12 @@ func (*toolchainLibraryLinker) installable() bool {
 // than to the system image).
 
 func getNdkLibDir(ctx common.AndroidModuleContext, toolchain Toolchain, version string) common.SourcePath {
-	return common.PathForSource(ctx, fmt.Sprintf("prebuilts/ndk/current/platforms/android-%s/arch-%s/usr/lib",
-		version, toolchain.Name()))
+	suffix := ""
+	if toolchain.Is64Bit() && ctx.Arch().ArchType != common.Arm64 {
+		suffix = "64"
+	}
+	return common.PathForSource(ctx, fmt.Sprintf("prebuilts/ndk/current/platforms/android-%s/arch-%s/usr/lib%s",
+		version, toolchain.Name(), suffix))
 }
 
 func ndkPrebuiltModuleToPath(ctx common.AndroidModuleContext, toolchain Toolchain,
