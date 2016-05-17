@@ -100,8 +100,9 @@ type Module interface {
 }
 
 type commonProperties struct {
+	// The name of the module
 	Name string
-	Deps []string
+
 	Tags []string
 
 	// emit build rules for this module
@@ -177,7 +178,9 @@ func InitAndroidModule(m Module,
 	base := m.base()
 	base.module = m
 
-	propertyStructs = append(propertyStructs, &base.commonProperties, &base.variableProperties)
+	propertyStructs = append(propertyStructs,
+		&base.commonProperties,
+		&base.variableProperties)
 
 	return m, propertyStructs
 }
@@ -268,6 +271,10 @@ type ModuleBase struct {
 	blueprintDir     string
 
 	hooks hooks
+}
+
+func (a *ModuleBase) Name() string {
+	return a.commonProperties.Name
 }
 
 func (a *ModuleBase) base() *ModuleBase {
