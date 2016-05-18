@@ -51,15 +51,20 @@ type SanitizeProperties struct {
 		Never bool `android:"arch_variant"`
 
 		// main sanitizers
-		Address bool `android:"arch_variant"`
-		Thread  bool `android:"arch_variant"`
+		Address    bool `android:"arch_variant"`
+		No_address bool `android:"arch_variant"`
+		Thread     bool `android:"arch_variant"`
+		No_thread  bool `android:"arch_variant"`
 
 		// local sanitizers
 		Undefined      bool     `android:"arch_variant"`
+		No_undefined   bool     `android:"arch_variant"`
 		All_undefined  bool     `android:"arch_variant"`
 		Misc_undefined []string `android:"arch_variant"`
 		Coverage       bool     `android:"arch_variant"`
-		SafeStack      bool     `android:"arch_variant"`
+		No_coverage    bool     `android:"arch_variant"`
+		Safestack      bool     `android:"arch_variant"`
+		No_safestack   bool     `android:"arch_variant"`
 
 		// value to pass to -fsantitize-recover=
 		Recover []string
@@ -107,8 +112,6 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 
 	// The sanitizer specified by the environment wins over the module.
 	if len(globalSanitizers) > 0 {
-		// wipe the enabled sanitizers
-		sanitize.Properties = SanitizeProperties{}
 		var found bool
 		if found, globalSanitizers = removeFromList("undefined", globalSanitizers); found {
 			sanitize.Properties.Sanitize.All_undefined = true
@@ -129,7 +132,7 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 		}
 
 		if found, globalSanitizers = removeFromList("safe-stack", globalSanitizers); found {
-			sanitize.Properties.Sanitize.SafeStack = true
+			sanitize.Properties.Sanitize.Safestack = true
 		}
 
 		if len(globalSanitizers) > 0 {
@@ -138,10 +141,32 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 		sanitize.Properties.SanitizerEnabled = true
 	}
 
+	if sanitize.Properties.Sanitize.No_address {
+		sanitize.Properties.Sanitize.Address = false
+	}
+
+	if sanitize.Properties.Sanitize.No_thread {
+		sanitize.Properties.Sanitize.Thread = false
+	}
+
+	if sanitize.Properties.Sanitize.No_undefined {
+		sanitize.Properties.Sanitize.Undefined = false
+		sanitize.Properties.Sanitize.All_undefined = false
+		sanitize.Properties.Sanitize.Misc_undefined = nil
+	}
+
+	if sanitize.Properties.Sanitize.No_coverage {
+		sanitize.Properties.Sanitize.Coverage = false
+	}
+
+	if sanitize.Properties.Sanitize.No_safestack {
+		sanitize.Properties.Sanitize.Safestack = false
+	}
+
 	if !ctx.toolchain().Is64Bit() {
 		// TSAN and SafeStack are not supported on 32-bit architectures
 		sanitize.Properties.Sanitize.Thread = false
-		sanitize.Properties.Sanitize.SafeStack = false
+		sanitize.Properties.Sanitize.Safestack = false
 		// TODO(ccross): error for compile_multilib = "32"?
 	}
 
@@ -245,7 +270,7 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 		flags.CFlags = append(flags.CFlags, "-fsanitize-coverage=edge,indirect-calls,8bit-counters,trace-cmp")
 	}
 
-	if sanitize.Properties.Sanitize.SafeStack {
+	if sanitize.Properties.Sanitize.Safestack {
 		sanitizers = append(sanitizers, "safe-stack")
 	}
 
