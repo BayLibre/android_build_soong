@@ -24,9 +24,15 @@ import (
 )
 
 func (c *Module) AndroidMk() (ret android.AndroidMkData, err error) {
+	if c.Properties.HideFromMake {
+		ret.Disabled = true
+		return ret, nil
+	}
+
 	ret.OutputFile = c.outputFile
 	ret.Extra = append(ret.Extra, func(w io.Writer, outputFile android.Path) (err error) {
 		fmt.Fprintln(w, "LOCAL_SANITIZE := never")
+		fmt.Fprintln(w, "LOCAL_MODULE_SUFFIX := "+outputFile.Ext())
 		if len(c.Properties.AndroidMkSharedLibs) > 0 {
 			fmt.Fprintln(w, "LOCAL_SHARED_LIBRARIES := "+strings.Join(c.Properties.AndroidMkSharedLibs, " "))
 		}
@@ -78,8 +84,6 @@ func (library *libraryLinker) AndroidMk(ret *android.AndroidMkData) {
 			fmt.Fprintln(w, "LOCAL_EXPORT_C_INCLUDE_DIRS :=", strings.Join(exportedIncludes, " "))
 		}
 
-		fmt.Fprintln(w, "LOCAL_MODULE_SUFFIX := "+outputFile.Ext())
-
 		// These are already included in LOCAL_SHARED_LIBRARIES
 		fmt.Fprintln(w, "LOCAL_CXX_STL := none")
 		fmt.Fprintln(w, "LOCAL_SYSTEM_SHARED_LIBRARIES :=")
@@ -119,7 +123,6 @@ func (library *toolchainLibraryLinker) AndroidMk(ret *android.AndroidMkData) {
 	library.baseLinker.AndroidMk(ret)
 
 	ret.Extra = append(ret.Extra, func(w io.Writer, outputFile android.Path) error {
-		fmt.Fprintln(w, "LOCAL_MODULE_SUFFIX := "+outputFile.Ext())
 		fmt.Fprintln(w, "LOCAL_CXX_STL := none")
 		fmt.Fprintln(w, "LOCAL_SYSTEM_SHARED_LIBRARIES :=")
 
@@ -134,6 +137,7 @@ func (installer *baseInstaller) AndroidMk(ret *android.AndroidMkData) {
 		stem := strings.TrimSuffix(file, filepath.Ext(file))
 		fmt.Fprintln(w, "LOCAL_MODULE_PATH := $(OUT_DIR)/"+filepath.Clean(dir))
 		fmt.Fprintln(w, "LOCAL_MODULE_STEM := "+stem)
+		fmt.Fprintln(w, "LOCAL_BUILT_MODULE_STEM := $(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)")
 		return nil
 	})
 }

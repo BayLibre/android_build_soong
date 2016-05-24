@@ -427,6 +427,7 @@ type BaseProperties struct {
 	No_default_compiler_flags *bool
 
 	AndroidMkSharedLibs []string `blueprint:"mutated"`
+	HideFromMake        bool     `blueprint:"mutated"`
 }
 
 type InstallerProperties struct {
