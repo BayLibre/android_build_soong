@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c24c3f2_3b9f8fcb",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-05-24T23:09:16Z",
+      "side": 1,
+      "message": "why? It looks like you don\u0027t need this since you\u0027re using $(LOCAL_MODULE) below.",
+      "range": {
+        "startLine": 45,
+        "startChar": 36,
+        "endLine": 45,
+        "endChar": 45
+      },
+      "revId": "471c5df55ef9bf88ee93703c64865754ef662e4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
