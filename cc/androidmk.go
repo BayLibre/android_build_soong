@@ -24,9 +24,15 @@ import (
 )
 
 func (c *Module) AndroidMk() (ret android.AndroidMkData, err error) {
+	if c.Properties.HideFromMake {
+		ret.Disabled = true
+		return ret, nil
+	}
+
 	ret.OutputFile = c.outputFile
 	ret.Extra = append(ret.Extra, func(w io.Writer, outputFile android.Path) (err error) {
 		fmt.Fprintln(w, "LOCAL_SANITIZE := never")
+		fmt.Fprintln(w, "LOCAL_MODULE_SUFFIX := "+outputFile.Ext())
 		if len(c.Properties.AndroidMkSharedLibs) > 0 {
 			fmt.Fprintln(w, "LOCAL_SHARED_LIBRARIES := "+strings.Join(c.Properties.AndroidMkSharedLibs, " "))
 		}
@@ -36,9 +42,9 @@ func (c *Module) AndroidMk() (ret android.AndroidMkData, err error) {
 	callSubAndroidMk := func(obj interface{}) {
 		if obj != nil {
 			if androidmk, ok := obj.(interface {
-				AndroidMk(*android.AndroidMkData)
+				AndroidMk(*android.AndroidMkData, *Module)
 			}); ok {
-				androidmk.AndroidMk(&ret)
+				androidmk.AndroidMk(&ret, c)
 			}
 		}
 	}
@@ -56,7 +62,7 @@ func (c *Module) AndroidMk() (ret android.AndroidMkData, err error) {
 	return ret, nil
 }
 
-func (library *baseLinker) AndroidMk(ret *android.AndroidMkData) {
+func (library *baseLinker) AndroidMk(ret *android.AndroidMkData, c *Module) {
 	if library.static() {
 		ret.Class = "STATIC_LIBRARIES"
 	} else {
@@ -64,8 +70,8 @@ func (library *baseLinker) AndroidMk(ret *android.AndroidMkData) {
 	}
 }
 
-func (library *libraryLinker) AndroidMk(ret *android.AndroidMkData) {
-	library.baseLinker.AndroidMk(ret)
+func (library *libraryLinker) AndroidMk(ret *android.AndroidMkData, c *Module) {
+	library.baseLinker.AndroidMk(ret, c)
 
 	ret.Extra = append(ret.Extra, func(w io.Writer, outputFile android.Path) error {
 		var exportedIncludes []string
@@ -78,8 +84,6 @@ func (library *libraryLinker) AndroidMk(ret *android.AndroidMkData) {
 			fmt.Fprintln(w, "LOCAL_EXPORT_C_INCLUDE_DIRS :=", strings.Join(exportedIncludes, " "))
 		}
 
-		fmt.Fprintln(w, "LOCAL_MODULE_SUFFIX := "+outputFile.Ext())
-
 		// These are already included in LOCAL_SHARED_LIBRARIES
 		fmt.Fprintln(w, "LOCAL_CXX_STL := none")
 		fmt.Fprintln(w, "LOCAL_SYSTEM_SHARED_LIBRARIES :=")
@@ -88,7 +92,7 @@ func (library *libraryLinker) AndroidMk(ret *android.AndroidMkData) {
 	})
 }
 
-func (object *objectLinker) AndroidMk(ret *android.AndroidMkData) {
+func (object *objectLinker) AndroidMk(ret *android.AndroidMkData, c *Module) {
 	ret.Custom = func(w io.Writer, name, prefix string) error {
 		out := ret.OutputFile.Path()
 
@@ -99,7 +103,7 @@ func (object *objectLinker) AndroidMk(ret *android.AndroidMkData) {
 	}
 }
 
-func (binary *binaryLinker) AndroidMk(ret *android.AndroidMkData) {
+func (binary *binaryLinker) AndroidMk(ret *android.AndroidMkData, c *Module) {
 	ret.Class = "EXECUTABLES"
 	ret.Extra = append(ret.Extra, func(w io.Writer, outputFile android.Path) error {
 		fmt.Fprintln(w, "LOCAL_CXX_STL := none")
@@ -108,18 +112,17 @@ func (binary *binaryLinker) AndroidMk(ret *android.AndroidMkData) {
 	})
 }
 
-func (test *testLinker) AndroidMk(ret *android.AndroidMkData) {
-	test.binaryLinker.AndroidMk(ret)
+func (test *testLinker) AndroidMk(ret *android.AndroidMkData, c *Module) {
+	test.binaryLinker.AndroidMk(ret, c)
 	if Bool(test.Properties.Test_per_src) {
 		ret.SubName = test.binaryLinker.Properties.Stem
 	}
 }
 
-func (library *toolchainLibraryLinker) AndroidMk(ret *android.AndroidMkData) {
-	library.baseLinker.AndroidMk(ret)
+func (library *toolchainLibraryLinker) AndroidMk(ret *android.AndroidMkData, c *Module) {
+	library.baseLinker.AndroidMk(ret, c)
 
 	ret.Extra = append(ret.Extra, func(w io.Writer, outputFile android.Path) error {
-		fmt.Fprintln(w, "LOCAL_MODULE_SUFFIX := "+outputFile.Ext())
 		fmt.Fprintln(w, "LOCAL_CXX_STL := none")
 		fmt.Fprintln(w, "LOCAL_SYSTEM_SHARED_LIBRARIES :=")
 
@@ -127,13 +130,14 @@ func (library *toolchainLibraryLinker) AndroidMk(ret *android.AndroidMkData) {
 	})
 }
 
-func (installer *baseInstaller) AndroidMk(ret *android.AndroidMkData) {
+func (installer *baseInstaller) AndroidMk(ret *android.AndroidMkData, c *Module) {
 	ret.Extra = append(ret.Extra, func(w io.Writer, outputFile android.Path) error {
 		path := installer.path.RelPathString()
 		dir, file := filepath.Split(path)
 		stem := strings.TrimSuffix(file, filepath.Ext(file))
 		fmt.Fprintln(w, "LOCAL_MODULE_PATH := $(OUT_DIR)/"+filepath.Clean(dir))
 		fmt.Fprintln(w, "LOCAL_MODULE_STEM := "+stem)
+		fmt.Fprintln(w, "LOCAL_BUILT_MODULE_STEM := $(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)")
 		return nil
 	})
 }
