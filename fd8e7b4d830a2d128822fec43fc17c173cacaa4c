@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1c037f92_bb533bd2",
+        "filename": "cc/check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-05-26T00:54:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c037f92_1b07ef10",
+      "range": {
+        "startLine": 26,
+        "startChar": 74,
+        "endLine": 26,
+        "endChar": 76
+      },
+      "revId": "fd8e7b4d830a2d128822fec43fc17c173cacaa4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c037f92_bb045b08",
         "filename": "cc/check.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-05-26T00:36:44Z",
       "side": 1,
       "message": "ctx.PropertyErrorf?  It doesn\u0027t always point to the right property in the case of append, but it will usually be right.",
+      "range": {
+        "startLine": 32,
+        "startChar": 7,
+        "endLine": 32,
+        "endChar": 19
+      },
+      "revId": "fd8e7b4d830a2d128822fec43fc17c173cacaa4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c037f92_9b0f5fd4",
+        "filename": "cc/check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-05-26T00:54:09Z",
+      "side": 1,
+      "message": "Yeah, it\u0027s probably better. Done.",
+      "parentUuid": "1c037f92_bb045b08",
       "range": {
         "startLine": 32,
         "startChar": 7,
