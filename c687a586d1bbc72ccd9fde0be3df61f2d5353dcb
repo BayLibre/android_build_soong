@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "193e319c_7408a01f",
+        "filename": "android/arch_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-06-02T23:05:30Z",
+      "side": 1,
+      "message": "6",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "c687a586d1bbc72ccd9fde0be3df61f2d5353dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "193e319c_5418046a",
+        "filename": "android/arch_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-06-02T23:05:30Z",
+      "side": 1,
+      "message": "It seems like this depends a bit too much on our default configuration being arm64 + arm.",
+      "revId": "c687a586d1bbc72ccd9fde0be3df61f2d5353dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "193e319c_94226c92",
+        "filename": "android/arch_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-06-02T23:05:30Z",
+      "side": 1,
+      "message": "Should we also assert that this is the architecture variant we think it is?",
+      "revId": "c687a586d1bbc72ccd9fde0be3df61f2d5353dcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
