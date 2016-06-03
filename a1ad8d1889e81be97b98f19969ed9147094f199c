@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26c67231_f1c06244",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-06-03T02:10:44Z",
+      "side": 1,
+      "message": "This is the new section to fix the panic",
+      "range": {
+        "startLine": 426,
+        "startChar": 2,
+        "endLine": 429,
+        "endChar": 3
+      },
+      "revId": "a1ad8d1889e81be97b98f19969ed9147094f199c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
