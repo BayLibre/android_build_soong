@@ -32,6 +32,8 @@ func CheckBadCompilerFlags(ctx ModuleContext, prop string, flags []string) {
 			ctx.PropertyErrorf(prop, "Flag `%s` must start with `-`", flag)
 		} else if strings.HasPrefix(flag, "-I") || strings.HasPrefix(flag, "-isystem") {
 			ctx.PropertyErrorf(prop, "Bad flag `%s`, use local_include_dirs or include_dirs instead", flag)
+		} else if flag == "-frtti" || flag == "-fno-rtti" {
+			ctx.PropertyErrorf(prop, "Bad flag `%s`, use rtti property instead", flag)
 		} else if inList(flag, illegalFlags) {
 			ctx.PropertyErrorf(prop, "Illegal flag `%s`", flag)
 		} else if strings.Contains(flag, " ") {
