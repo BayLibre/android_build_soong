@@ -1302,7 +1302,7 @@ func (linker *baseLinker) deps(ctx BaseModuleContext, deps Deps) Deps {
 		deps.StaticLibs = append(deps.StaticLibs, "libcompiler_rt-extras")
 	}
 
-	if ctx.Device() {
+	if ctx.toolchain().Bionic() {
 		// libgcc and libatomic have to be last on the command line
 		deps.LateStaticLibs = append(deps.LateStaticLibs, "libatomic")
 		if !Bool(linker.Properties.No_libgcc) {
@@ -1569,7 +1569,7 @@ func (library *libraryLinker) flags(ctx ModuleContext, flags Flags) Flags {
 		if flags.Clang || ctx.Host() {
 			sharedFlag = "-shared"
 		}
-		if ctx.Device() {
+		if ctx.toolchain().Bionic() {
 			flags.LdFlags = append(flags.LdFlags,
 				"-nostdlib",
 				"-Wl,--gc-sections",
@@ -1601,7 +1601,7 @@ func (library *libraryLinker) deps(ctx BaseModuleContext, deps Deps) Deps {
 		deps.StaticLibs = append(deps.StaticLibs, library.Properties.Static.Static_libs...)
 		deps.SharedLibs = append(deps.SharedLibs, library.Properties.Static.Shared_libs...)
 	} else {
-		if ctx.Device() && !Bool(library.Properties.Nocrt) {
+		if ctx.toolchain().Bionic() && !Bool(library.Properties.Nocrt) {
 			if !ctx.sdk() {
 				deps.CrtBegin = "crtbegin_so"
 				deps.CrtEnd = "crtend_so"
@@ -1791,7 +1791,7 @@ type objectLinker struct {
 }
 
 func objectFactory() (blueprint.Module, []interface{}) {
-	module := newBaseModule(android.DeviceSupported, android.MultilibBoth)
+	module := newBaseModule(android.HostAndDeviceSupported, android.MultilibBoth)
 	module.compiler = &baseCompiler{}
 	module.linker = &objectLinker{}
 	return module.Init()
@@ -1881,7 +1881,7 @@ func (binary *binaryLinker) getStem(ctx BaseModuleContext) string {
 
 func (binary *binaryLinker) deps(ctx BaseModuleContext, deps Deps) Deps {
 	deps = binary.baseLinker.deps(ctx, deps)
-	if ctx.Device() {
+	if ctx.toolchain().Bionic() {
 		if !ctx.sdk() {
 			if binary.buildStatic() {
 				deps.CrtBegin = "crtbegin_static"
@@ -1979,6 +1979,10 @@ func (binary *binaryLinker) flags(ctx ModuleContext, flags Flags) Flags {
 		flags.CFlags = append(flags.CFlags, "-fpie")
 	}
 
+	if flags.Toolchain.Bionic() {
+		flags.LdFlags = append(flags.LdFlags, "-nostdlib")
+	}
+
 	if ctx.Device() {
 		if binary.buildStatic() {
 			// Clang driver needs -static to create static executable.
@@ -1990,7 +1994,6 @@ func (binary *binaryLinker) flags(ctx ModuleContext, flags Flags) Flags {
 			}
 
 			flags.LdFlags = append(flags.LdFlags,
-				"-nostdlib",
 				"-Bstatic",
 				"-Wl,--gc-sections",
 			)
@@ -2005,7 +2008,6 @@ func (binary *binaryLinker) flags(ctx ModuleContext, flags Flags) Flags {
 
 			flags.LdFlags = append(flags.LdFlags,
 				"-pie",
-				"-nostdlib",
 				"-Bdynamic",
 				"-Wl,--gc-sections",
 				"-Wl,-z,nocopyreloc",
@@ -2141,7 +2143,6 @@ func (test *testLinker) flags(ctx ModuleContext, flags Flags) Flags {
 			flags.CFlags = append(flags.CFlags, "-DGTEST_OS_WINDOWS")
 		case android.Linux:
 			flags.CFlags = append(flags.CFlags, "-DGTEST_OS_LINUX")
-			flags.LdFlags = append(flags.LdFlags, "-lpthread")
 		case android.Darwin:
 			flags.CFlags = append(flags.CFlags, "-DGTEST_OS_MAC")
 			flags.LdFlags = append(flags.LdFlags, "-lpthread")
@@ -2352,7 +2353,7 @@ func (*toolchainLibraryLinker) buildShared() bool {
 }
 
 func toolchainLibraryFactory() (blueprint.Module, []interface{}) {
-	module := newBaseModule(android.DeviceSupported, android.MultilibBoth)
+	module := newBaseModule(android.HostAndDeviceSupported, android.MultilibBoth)
 	module.compiler = &baseCompiler{}
 	module.linker = &toolchainLibraryLinker{}
 	module.Properties.Clang = proptools.BoolPtr(false)

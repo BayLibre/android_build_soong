@@ -235,6 +235,7 @@ bootstrap_go_package {
 
 toolchain_library {
     name: "libatomic",
+    host_supported: true,
     arch: {
         arm: {
             instruction_set: "arm",
@@ -244,6 +245,7 @@ toolchain_library {
 
 toolchain_library {
     name: "libgcc",
+    host_supported: true,
     arch: {
         arm: {
             instruction_set: "arm",
@@ -253,6 +255,7 @@ toolchain_library {
 
 toolchain_library {
     name: "libgcov",
+    host_supported: true,
     arch: {
         arm: {
             instruction_set: "arm",

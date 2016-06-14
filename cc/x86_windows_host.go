@@ -187,6 +187,10 @@ func (t *toolchainWindows) ExecutableSuffix() string {
 	return ".exe"
 }
 
+func (t *toolchainWindows) Bionic() bool {
+	return false
+}
+
 var toolchainWindowsX86Singleton Toolchain = &toolchainWindowsX86{}
 var toolchainWindowsX8664Singleton Toolchain = &toolchainWindowsX8664{}
 

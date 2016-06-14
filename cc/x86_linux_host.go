@@ -64,13 +64,11 @@ var (
 
 	linuxClangCflags = append(clangFilterUnknownCflags(linuxCflags), []string{
 		"--gcc-toolchain=${linuxGccRoot}",
-		"--sysroot ${linuxGccRoot}/sysroot",
 		"-fstack-protector-strong",
 	}...)
 
 	linuxClangLdflags = append(clangFilterUnknownCflags(linuxLdflags), []string{
 		"--gcc-toolchain=${linuxGccRoot}",
-		"--sysroot ${linuxGccRoot}/sysroot",
 	}...)
 
 	linuxX86ClangLdflags = append(clangFilterUnknownCflags(linuxX86Ldflags), []string{
@@ -81,13 +79,9 @@ var (
 
 	linuxX8664ClangLdflags = append(clangFilterUnknownCflags(linuxX8664Ldflags), []string{
 		"-B${linuxGccRoot}/lib/gcc/${linuxGccTriple}/${linuxGccVersion}",
-		"-L${linuxGccRoot}/lib/gcc/${linuxGccTriple}/${linuxGccVersion}",
-		"-L${linuxGccRoot}/${linuxGccTriple}/lib64",
 	}...)
 
 	linuxClangCppflags = []string{
-		"-isystem ${linuxGccRoot}/${linuxGccTriple}/include/c++/${linuxGccVersion}",
-		"-isystem ${linuxGccRoot}/${linuxGccTriple}/include/c++/${linuxGccVersion}/backward",
 	}
 
 	linuxX86ClangCppflags = []string{
@@ -95,7 +89,6 @@ var (
 	}
 
 	linuxX8664ClangCppflags = []string{
-		"-isystem ${linuxGccRoot}/${linuxGccTriple}/include/c++/${linuxGccVersion}/${linuxGccTriple}",
 	}
 
 	linuxAvailableLibraries = addPrefix([]string{
@@ -137,6 +130,14 @@ func init() {
 	pctx.StaticVariable("linuxX8664Cflags", strings.Join(linuxX8664Cflags, " "))
 	pctx.StaticVariable("linuxX86Ldflags", strings.Join(linuxX86Ldflags, " "))
 	pctx.StaticVariable("linuxX8664Ldflags", strings.Join(linuxX8664Ldflags, " "))
+
+	pctx.StaticVariable("linuxX8664IncludeFlags", strings.Join([]string{
+		"-isystem ${LibcRoot}/arch-x86_64/include",
+		"-isystem ${LibcRoot}/include",
+		"-isystem ${LibcRoot}/kernel/uapi",
+		"-isystem ${LibcRoot}/kernel/common",
+		"-isystem ${LibcRoot}/kernel/uapi/asm-x86",
+	}, " "))
 
 	pctx.StaticVariable("linuxX86ClangCflags",
 		strings.Join(clangFilterUnknownCflags(linuxX86Cflags), " "))
@@ -206,6 +207,10 @@ func (t *toolchainLinux) IncludeFlags() string {
 	return ""
 }
 
+func (t *toolchainLinuxX8664) IncludeFlags() string {
+	return "${linuxX8664IncludeFlags}"
+}
+
 func (t *toolchainLinuxX86) ClangTriple() string {
 	return "i686-linux-gnu"
 }
@@ -254,6 +259,5 @@ func linuxX8664ToolchainFactory(arch android.Arch) Toolchain {
 }
 
 func init() {
-	registerToolchainFactory(android.Linux, android.X86, linuxX86ToolchainFactory)
 	registerToolchainFactory(android.Linux, android.X86_64, linuxX8664ToolchainFactory)
 }

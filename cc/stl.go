@@ -183,7 +183,7 @@ var hostDynamicGccLibs, hostStaticGccLibs map[android.OsType][]string
 
 func init() {
 	hostDynamicGccLibs = map[android.OsType][]string{
-		android.Linux:  []string{"-lgcc_s", "-lgcc", "-lc", "-lgcc_s", "-lgcc"},
+		android.Linux:  []string{},
 		android.Darwin: []string{"-lc", "-lSystem"},
 		android.Windows: []string{"-lmsvcr110", "-lmingw32", "-lgcc", "-lmoldname",
 			"-lmingwex", "-lmsvcrt", "-ladvapi32", "-lshell32", "-luser32",
@@ -191,7 +191,7 @@ func init() {
 			"-lmsvcrt"},
 	}
 	hostStaticGccLibs = map[android.OsType][]string{
-		android.Linux:   []string{"-Wl,--start-group", "-lgcc", "-lgcc_eh", "-lc", "-Wl,--end-group"},
+		android.Linux:   []string{},
 		android.Darwin:  []string{"NO_STATIC_HOST_BINARIES_ON_DARWIN"},
 		android.Windows: []string{"NO_STATIC_HOST_BINARIES_ON_WINDOWS"},
 	}
