@@ -163,6 +163,11 @@ func translateAndroidMkModule(ctx blueprint.SingletonContext, w io.Writer, mod b
 		return nil
 	}
 
+	// Make does not understand LinuxBionic
+	if amod.Os() == LinuxBionic {
+		return nil
+	}
+
 	if data.SubName != "" {
 		name += data.SubName
 	}
