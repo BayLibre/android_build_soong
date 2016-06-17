@@ -58,6 +58,7 @@ func init() {
 	// the Go initialization order because this package depends on common, so common's init
 	// functions will run first.
 	android.RegisterBottomUpMutator("link", linkageMutator)
+	android.RegisterBottomUpMutator("ndk_api", ndkApiMutator)
 	android.RegisterBottomUpMutator("test_per_src", testPerSrcMutator)
 	android.RegisterBottomUpMutator("deps", depsMutator)
 
@@ -544,6 +545,8 @@ var (
 	crtBeginDepTag     = dependencyTag{name: "crtbegin"}
 	crtEndDepTag       = dependencyTag{name: "crtend"}
 	reuseObjTag        = dependencyTag{name: "reuse objects"}
+	ndkStubDepTag      = dependencyTag{name: "ndk stub", library: true}
+	ndkLateStubDepTag  = dependencyTag{name: "ndk late stub", library: true}
 )
 
 // Module contains the properties and members used by all C/C++ module types, and implements
@@ -857,20 +860,43 @@ func (c *Module) depsMutator(actx android.BottomUpMutatorContext) {
 	c.Properties.AndroidMkSharedLibs = append(c.Properties.AndroidMkSharedLibs, deps.SharedLibs...)
 	c.Properties.AndroidMkSharedLibs = append(c.Properties.AndroidMkSharedLibs, deps.LateSharedLibs...)
 
+	variantNdkLibs := []string{}
+	variantLateNdkLibs := []string{}
 	if ctx.sdk() {
-		version := "." + ctx.sdkVersion()
+		version := ctx.sdkVersion()
 
-		rewriteNdkLibs := func(list []string) []string {
-			for i, entry := range list {
+		// Rewrites the names of shared libraries into the names of the NDK
+		// libraries where appropriate. This returns two slices.
+		//
+		// The first is a list of non-variant shared libraries (either rewritten
+		// NDK libraries to the modules in prebuilts/ndk, or not rewritten
+		// because they are not NDK libraries).
+		//
+		// The second is a list of ndk_library modules. These need to be
+		// separated because they are a variation dependency and must be added
+		// in a different manner.
+		rewriteNdkLibs := func(list []string) ([]string, []string) {
+			// These libraries have migrated over to the new ndk_library, which
+			// is added as a variation dependency via depsMutator.
+			migratedLibs := []string{"libc", "libm"}
+			variantLibs := []string{}
+			nonvariantLibs := []string{}
+			for _, entry := range list {
 				if inList(entry, ndkPrebuiltSharedLibraries) {
-					list[i] = "ndk_" + entry + version
+					if !inList(entry, migratedLibs) {
+						nonvariantLibs = append(nonvariantLibs, entry+".ndk."+version)
+					} else {
+						variantLibs = append(variantLibs, entry+ndkLibrarySuffix)
+					}
+				} else {
+					nonvariantLibs = append(variantLibs, entry)
 				}
 			}
-			return list
+			return nonvariantLibs, variantLibs
 		}
 
-		deps.SharedLibs = rewriteNdkLibs(deps.SharedLibs)
-		deps.LateSharedLibs = rewriteNdkLibs(deps.LateSharedLibs)
+		deps.SharedLibs, variantNdkLibs = rewriteNdkLibs(deps.SharedLibs)
+		deps.LateSharedLibs, variantLateNdkLibs = rewriteNdkLibs(deps.LateSharedLibs)
 	}
 
 	actx.AddVariationDependencies([]blueprint.Variation{{"link", "static"}}, wholeStaticDepTag,
@@ -909,6 +935,12 @@ func (c *Module) depsMutator(actx android.BottomUpMutatorContext) {
 	if deps.CrtEnd != "" {
 		actx.AddDependency(c, crtEndDepTag, deps.CrtEnd)
 	}
+
+	version := ctx.sdkVersion()
+	actx.AddVariationDependencies([]blueprint.Variation{
+		{"ndk_api", version}, {"link", "shared"}}, ndkStubDepTag, variantNdkLibs...)
+	actx.AddVariationDependencies([]blueprint.Variation{
+		{"ndk_api", version}, {"link", "shared"}}, ndkLateStubDepTag, variantLateNdkLibs...)
 }
 
 func depsMutator(ctx android.BottomUpMutatorContext) {
@@ -962,6 +994,11 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 		}
 		if _, ok := to.linker.(*ndkPrebuiltStlLinker); ok {
 			// These are allowed, but don't set sdk_version
+			return true
+		}
+		if _, ok := to.linker.(*stubLinker); ok {
+			// These aren't real libraries, but are the stub shared libraries that are included in
+			// the NDK.
 			return true
 		}
 		return to.Properties.Sdk_version != ""
@@ -1047,9 +1084,9 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 		var depPtr *android.Paths
 
 		switch tag {
-		case sharedDepTag, sharedExportDepTag:
+		case ndkStubDepTag, sharedDepTag, sharedExportDepTag:
 			depPtr = &depPaths.SharedLibs
-		case lateSharedDepTag:
+		case lateSharedDepTag, ndkLateStubDepTag:
 			depPtr = &depPaths.LateSharedLibs
 		case staticDepTag, staticExportDepTag:
 			depPtr = &depPaths.StaticLibs
@@ -1588,6 +1625,9 @@ type libraryLinker struct {
 
 	// For whole_static_libs
 	objFiles android.Paths
+
+	// Uses the module's name if nil, but can be overridden. Does not include shlib suffix.
+	libName string
 }
 
 var _ linker = (*libraryLinker)(nil)
@@ -1611,7 +1651,10 @@ func (library *libraryLinker) flags(ctx ModuleContext, flags Flags) Flags {
 	flags = library.baseLinker.flags(ctx, flags)
 
 	if !library.static() {
-		libName := ctx.ModuleName() + library.Properties.VariantName
+		libName := library.libName
+		if libName == "" {
+			libName = ctx.ModuleName() + library.Properties.VariantName
+		}
 		// GCC for Android assumes that -shared means -Bsymbolic, use -Wl,-shared instead
 		sharedFlag := "-Wl,-shared"
 		if flags.Clang || ctx.Host() {
@@ -1731,7 +1774,11 @@ func (library *libraryLinker) linkShared(ctx ModuleContext,
 		}
 	}
 
-	fileName := ctx.ModuleName() + library.Properties.VariantName + flags.Toolchain.ShlibSuffix()
+	libName := library.libName
+	if libName == "" {
+		libName = ctx.ModuleName() + library.Properties.VariantName
+	}
+	fileName := libName + flags.Toolchain.ShlibSuffix()
 	outputFile := android.PathForModuleOut(ctx, fileName)
 	ret := outputFile
 
@@ -2580,10 +2627,6 @@ func ndkPrebuiltLibraryFactory() (blueprint.Module, []interface{}) {
 func (ndk *ndkPrebuiltLibraryLinker) link(ctx ModuleContext, flags Flags,
 	deps PathDeps, objFiles android.Paths) android.Path {
 	// A null build step, but it sets up the output path.
-	if !strings.HasPrefix(ctx.ModuleName(), "ndk_lib") {
-		ctx.ModuleErrorf("NDK prebuilts must have an ndk_lib prefixed name")
-	}
-
 	ndk.exportIncludes(ctx, "-isystem")
 
 	return ndkPrebuiltModuleToPath(ctx, flags.Toolchain, flags.Toolchain.ShlibSuffix(),
