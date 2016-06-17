@@ -18,6 +18,7 @@ import (
 	"fmt"
 	"io"
 	"path/filepath"
+	"strconv"
 	"strings"
 
 	"android/soong/android"
@@ -179,6 +180,36 @@ func (installer *baseInstaller) AndroidMk(ctx AndroidMkContext, ret *android.And
 		if len(installer.Properties.Symlinks) > 0 {
 			fmt.Fprintln(w, "LOCAL_MODULE_SYMLINKS := "+strings.Join(installer.Properties.Symlinks, " "))
 		}
+		return nil
+	})
+}
+
+func (c *stubCompiler) AndroidMk(ctx AndroidMkContext, ret *android.AndroidMkData) {
+	ret.SubName = "." + strconv.Itoa(c.properties.ApiLevel)
+}
+
+func (installer *stubInstaller) AndroidMk(ctx AndroidMkContext, ret *android.AndroidMkData) {
+	installer.baseInstaller.AndroidMk(ctx, ret)
+	ret.Extra = append(ret.Extra, func(w io.Writer, outputFile android.Path) error {
+		libDir := ctx.Target().Arch.ArchType.Multilib
+		if libDir != "lib32" && libDir != "lib64" {
+			panic(fmt.Errorf("Unexpected Multilib value: %q", libDir))
+		}
+		if libDir == "lib32" {
+			libDir = "lib"
+		}
+
+		path := installer.baseInstaller.path.RelPathString()
+		_, file := filepath.Split(path)
+		apiLevel := installer.compiler.properties.ApiLevel
+		modulePath := fmt.Sprintf("$(OUT_DIR)/ndk/sysroot/usr/%s/android-%d/%s",
+			libDir, apiLevel, file)
+		fmt.Fprintln(w, "LOCAL_MODULE_PATH := "+modulePath)
+
+		// Prevent make from installing the libraries to obj/lib (since we have
+		// dozens of libraries with the same name, they'll clobber each other
+		// and the real versions of the libraries from the platform).
+		fmt.Fprintln(w, "LOCAL_COPY_TO_INTERMEDIATE_LIBRARIES := false")
 		return nil
 	})
 }
