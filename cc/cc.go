@@ -1320,6 +1320,7 @@ func (linker *baseLinker) deps(ctx BaseModuleContext, deps Deps) Deps {
 
 		if ctx.sdk() {
 			version := ctx.sdkVersion()
+			// TODO(danalbert): Create a dummy ndk.libc.current and friends.
 			deps.SharedLibs = append(deps.SharedLibs,
 				"ndk_libc."+version,
 				"ndk_libm."+version,
