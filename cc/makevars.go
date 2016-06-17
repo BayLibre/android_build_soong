@@ -50,6 +50,8 @@ func makeVarsProvider(ctx android.MakeVarsContext) {
 	ctx.StrictRaw("SRC_HEADERS", strings.Join(includes, " "))
 	ctx.StrictRaw("SRC_SYSTEM_HEADERS", strings.Join(systemIncludes, " "))
 
+	ctx.Strict("NDK_MIGRATED_LIBS", strings.Join(ndkMigratedLibs, " "))
+
 	hostTargets := ctx.Config().Targets[android.Host]
 	makeVarsToolchain(ctx, "", hostTargets[0])
 	if len(hostTargets) > 1 {
