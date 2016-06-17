@@ -58,6 +58,7 @@ func init() {
 	// the Go initialization order because this package depends on common, so common's init
 	// functions will run first.
 	android.RegisterBottomUpMutator("link", linkageMutator)
+	android.RegisterBottomUpMutator("api", apiMutator)
 	android.RegisterBottomUpMutator("test_per_src", testPerSrcMutator)
 	android.RegisterBottomUpMutator("deps", depsMutator)
 
@@ -544,6 +545,7 @@ var (
 	crtBeginDepTag     = dependencyTag{name: "crtbegin"}
 	crtEndDepTag       = dependencyTag{name: "crtend"}
 	reuseObjTag        = dependencyTag{name: "reuse objects"}
+	apiTag             = dependencyTag{name: "api", library: true}
 )
 
 // Module contains the properties and members used by all C/C++ module types, and implements
@@ -858,15 +860,23 @@ func (c *Module) depsMutator(actx android.BottomUpMutatorContext) {
 	c.Properties.AndroidMkSharedLibs = append(c.Properties.AndroidMkSharedLibs, deps.LateSharedLibs...)
 
 	if ctx.sdk() {
-		version := "." + ctx.sdkVersion()
+		version := ctx.sdkVersion()
 
 		rewriteNdkLibs := func(list []string) []string {
-			for i, entry := range list {
+			// These libraries have migrated over to the new ndk_library, which
+			// is added as a variation dependency via depsMutator.
+			migratedLibs := []string{"libc", "libm"}
+			newList := []string{}
+			for _, entry := range list {
 				if inList(entry, ndkPrebuiltSharedLibraries) {
-					list[i] = "ndk_" + entry + version
+					if !inList(entry, migratedLibs) {
+						newList = append(newList, entry+".ndk."+version)
+					} // Else added by depsMutator.
+				} else {
+					newList = append(newList, entry)
 				}
 			}
-			return list
+			return newList
 		}
 
 		deps.SharedLibs = rewriteNdkLibs(deps.SharedLibs)
@@ -908,6 +918,16 @@ func (c *Module) depsMutator(actx android.BottomUpMutatorContext) {
 	}
 	if deps.CrtEnd != "" {
 		actx.AddDependency(c, crtEndDepTag, deps.CrtEnd)
+	}
+
+	// The prebuilt CRT objects shouldn't depend on the libraries.
+	if _, ok := c.linker.(*ndkPrebuiltObjectLinker); !ok {
+		if ctx.sdk() {
+			version := ctx.sdkVersion()
+			ndkLibs := []string{"libc.ndk", "libm.ndk"}
+			actx.AddVariationDependencies([]blueprint.Variation{
+				{"api", version}, {"link", "shared"}}, apiTag, ndkLibs...)
+		}
 	}
 }
 
@@ -962,6 +982,11 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 		}
 		if _, ok := to.linker.(*ndkPrebuiltStlLinker); ok {
 			// These are allowed, but don't set sdk_version
+			return true
+		}
+		if _, ok := to.linker.(*stubLinker); ok {
+			// These aren't real libraries, but are the stub shared libraries that are included in
+			// the NDK.
 			return true
 		}
 		return to.Properties.Sdk_version != ""
@@ -1047,7 +1072,7 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 		var depPtr *android.Paths
 
 		switch tag {
-		case sharedDepTag, sharedExportDepTag:
+		case apiTag, sharedDepTag, sharedExportDepTag:
 			depPtr = &depPaths.SharedLibs
 		case lateSharedDepTag:
 			depPtr = &depPaths.LateSharedLibs
@@ -2580,10 +2605,6 @@ func ndkPrebuiltLibraryFactory() (blueprint.Module, []interface{}) {
 func (ndk *ndkPrebuiltLibraryLinker) link(ctx ModuleContext, flags Flags,
 	deps PathDeps, objFiles android.Paths) android.Path {
 	// A null build step, but it sets up the output path.
-	if !strings.HasPrefix(ctx.ModuleName(), "ndk_lib") {
-		ctx.ModuleErrorf("NDK prebuilts must have an ndk_lib prefixed name")
-	}
-
 	ndk.exportIncludes(ctx, "-isystem")
 
 	return ndkPrebuiltModuleToPath(ctx, flags.Toolchain, flags.Toolchain.ShlibSuffix(),
