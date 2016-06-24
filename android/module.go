@@ -228,7 +228,7 @@ type ModuleBase struct {
 	variableProperties      variableProperties
 	hostAndDeviceProperties hostAndDeviceProperties
 	generalProperties       []interface{}
-	archProperties          []*archProperties
+	archProperties          []interface{}
 
 	noAddressSanitizer bool
 	installFiles       Paths
