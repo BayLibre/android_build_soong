@@ -123,7 +123,7 @@ const (
 )
 
 func init() {
-	android.RegisterArchFeatures(android.Mips, "mips32r6",
+	android.RegisterArchVariantFeatures(android.Mips, "mips32r6",
 		"rev6")
 
 	pctx.StaticVariable("mipsGccVersion", mipsGccVersion)

@@ -76,3 +76,17 @@ func sortedKeys(m map[string][]string) []string {
 	sort.Strings(s)
 	return s
 }
+
+func indexList(s string, list []string) int {
+	for i, l := range list {
+		if l == s {
+			return i
+		}
+	}
+
+	return -1
+}
+
+func inList(s string, list []string) bool {
+	return indexList(s, list) != -1
+}
