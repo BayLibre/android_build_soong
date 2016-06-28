@@ -1,0 +1,5 @@
+cc_library {
+    name: "libfoo",
+    srcs: ["foo.cpp"],
+    sdk_version: "current",
+}

@@ -276,3 +276,5 @@ toolchain_library {
         },
     },
 }
+
+subdirs = ["sample-ndk"]
