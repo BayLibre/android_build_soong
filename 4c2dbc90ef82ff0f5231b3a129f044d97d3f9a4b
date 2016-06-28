@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20df3ff4_b2409e90",
+        "filename": "ndk/libs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-06-28T20:06:40Z",
+      "side": 1,
+      "message": "dwillemsen: There has to be a better way, but I don\u0027t know what that was is. This was all last week so it\u0027s not fresh in my memory, but iirc I wasn\u0027t allowed to access any of the static variables for clang from cc.go (even with the import).",
+      "revId": "4c2dbc90ef82ff0f5231b3a129f044d97d3f9a4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
