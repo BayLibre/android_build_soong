@@ -24,6 +24,17 @@ type toolchainFactory func(arch android.Arch) Toolchain
 
 var toolchainFactories = make(map[android.OsType]map[android.ArchType]toolchainFactory)
 
+func GetToolchain(ctx android.ModuleContext) Toolchain {
+	arch := ctx.Arch()
+	os := ctx.Os()
+	factory := toolchainFactories[os][arch.ArchType]
+	if factory == nil {
+		ctx.ModuleErrorf("Toolchain not found for %s arch %q", os.String(), arch.String())
+		return nil
+	}
+	return factory(arch)
+}
+
 func registerToolchainFactory(os android.OsType, arch android.ArchType, factory toolchainFactory) {
 	if toolchainFactories[os] == nil {
 		toolchainFactories[os] = make(map[android.ArchType]toolchainFactory)

@@ -59,6 +59,12 @@ var (
 		},
 		"ldCmd", "ldDirFlags", "crtBegin", "libFlags", "crtEnd", "ldFlags")
 
+	CcAndLink = pctx.StaticRule("CcAndLink",
+		blueprint.RuleParams{
+			Command:     "$ccCmd $flags -o $out $in",
+			Description: "genStubSrc $out",
+		}, "ccCmd", "flags")
+
 	partialLd = pctx.StaticRule("partialLd",
 		blueprint.RuleParams{
 			Command:     "$ldCmd -nostdlib -Wl,-r ${in} -o ${out} ${ldFlags}",

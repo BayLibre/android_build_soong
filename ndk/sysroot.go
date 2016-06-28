@@ -68,8 +68,10 @@ var (
 
 func init() {
 	soong.RegisterModuleType("ndk_headers", ndkHeadersFactory)
+	soong.RegisterModuleType("ndk_library", ndkLibraryFactory)
 	soong.RegisterSingletonType("ndk", NdkSingleton)
 
+	pctx.Import("android/soong/cc")
 	pctx.Import("android/soong/common")
 }
 
@@ -91,6 +93,13 @@ func (n *ndkSingleton) GenerateBuildActions(ctx blueprint.SingletonContext) {
 			installPaths = append(installPaths, m.installPaths...)
 			for _, header := range m.installPaths {
 				fmt.Printf("Collecting header %q\n", header)
+			}
+		}
+
+		if m, ok := module.(*libraryModule); ok {
+			installPaths = append(installPaths, m.installPaths...)
+			for _, lib := range m.installPaths {
+				fmt.Printf("Collecting library %q\n", lib)
 			}
 		}
 	})
