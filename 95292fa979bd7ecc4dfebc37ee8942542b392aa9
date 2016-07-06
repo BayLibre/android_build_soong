@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3d8cca86_d094bcb3",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2016-07-06T23:40:20Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "3d8cca86_f058e047",
+      "revId": "95292fa979bd7ecc4dfebc37ee8942542b392aa9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d8cca86_904dd488",
         "filename": "cc/sanitize.go",
         "patchSetId": 5
@@ -53,6 +71,30 @@
       "writtenOn": "2016-07-06T23:34:20Z",
       "side": 1,
       "message": "We\u0027ve already got that in the cc module (at the bottom of cc.go), so it should be usable here.",
+      "parentUuid": "3d8cca86_904dd488",
+      "range": {
+        "startLine": 166,
+        "startChar": 4,
+        "endLine": 166,
+        "endChar": 5
+      },
+      "revId": "95292fa979bd7ecc4dfebc37ee8942542b392aa9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d8cca86_10580410",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2016-07-06T23:40:20Z",
+      "side": 1,
+      "message": "It works without the declaration somehow.",
       "parentUuid": "3d8cca86_904dd488",
       "range": {
         "startLine": 166,
