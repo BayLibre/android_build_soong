@@ -33,6 +33,24 @@
       "revId": "3ac542e70d5aad511780aca366218e29a33bd0c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5db89ed4_62c76708",
+        "filename": "android/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-07-06T22:33:46Z",
+      "side": 1,
+      "message": "yeah, it definitely makes sense to cache these types. StructOf already does some caching, but it does a lot of work first.\n\nI was considering modulating createArchType based on HostOrDeviceSupported as well, so that we can filter out some of the properties based on the possible types.",
+      "parentUuid": "5db89ed4_ce4e9fb0",
+      "revId": "3ac542e70d5aad511780aca366218e29a33bd0c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
