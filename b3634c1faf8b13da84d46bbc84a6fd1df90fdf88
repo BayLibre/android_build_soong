@@ -118,6 +118,30 @@
       "revId": "b3634c1faf8b13da84d46bbc84a6fd1df90fdf88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5db89ed4_42434334",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-07-06T22:50:28Z",
+      "side": 1,
+      "message": "Can you upload your change so far and I\u0027ll take a look?",
+      "parentUuid": "5db89ed4_22964f04",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 42
+      },
+      "revId": "b3634c1faf8b13da84d46bbc84a6fd1df90fdf88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
