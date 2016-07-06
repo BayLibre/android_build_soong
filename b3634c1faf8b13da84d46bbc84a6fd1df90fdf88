@@ -94,6 +94,30 @@
       "revId": "b3634c1faf8b13da84d46bbc84a6fd1df90fdf88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5db89ed4_22964f04",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2016-07-06T22:31:39Z",
+      "side": 1,
+      "message": "I don\u0027t understand what\u0027s going on in this code. Apparently, there are instances of SanitizeProperties that never go though begin() - I see that the bool pointers may be nil in sanitizerDepsMutator even though they are initialized on all paths through begin(), and I can not track down where they come from.",
+      "parentUuid": "5db89ed4_9317743b",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 42
+      },
+      "revId": "b3634c1faf8b13da84d46bbc84a6fd1df90fdf88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
