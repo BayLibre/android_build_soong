@@ -46,6 +46,30 @@
       "revId": "b3634c1faf8b13da84d46bbc84a6fd1df90fdf88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5db89ed4_930054fe",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-07-06T19:42:42Z",
+      "side": 1,
+      "message": "You\u0027d specify false/true in the Android.bp:\n\n  sanitize: {\n    address: true,     -\u003e Sanitize.Address \u003d \u0026true\n    address: false,    -\u003e Sanitize.Address \u003d \u0026false\n    \u003cnot set\u003e          -\u003e Sanitize.Address \u003d nil\n  },\n\nit does make it a little more annoying to use from Go, since you have to explicitly check for nil first. We\u0027ve got a helper (Bool(*bool) bool) that returns false in the nil case, or you could just dereference it after you\u0027ve applied the global state (getting rid of any nils).",
+      "parentUuid": "5db89ed4_9353f426",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 42
+      },
+      "revId": "b3634c1faf8b13da84d46bbc84a6fd1df90fdf88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
