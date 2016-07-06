@@ -39,6 +39,30 @@
       "revId": "95292fa979bd7ecc4dfebc37ee8942542b392aa9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d8cca86_300c2835",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-07-06T23:34:20Z",
+      "side": 1,
+      "message": "We\u0027ve already got that in the cc module (at the bottom of cc.go), so it should be usable here.",
+      "parentUuid": "3d8cca86_904dd488",
+      "range": {
+        "startLine": 166,
+        "startChar": 4,
+        "endLine": 166,
+        "endChar": 5
+      },
+      "revId": "95292fa979bd7ecc4dfebc37ee8942542b392aa9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
