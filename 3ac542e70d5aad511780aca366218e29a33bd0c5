@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5db89ed4_6e067374",
+        "filename": "android/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-07-06T20:57:27Z",
+      "side": 1,
+      "message": "This should go in arm_device.go",
+      "revId": "3ac542e70d5aad511780aca366218e29a33bd0c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5db89ed4_ce4e9fb0",
+        "filename": "android/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-07-06T20:57:27Z",
+      "side": 1,
+      "message": "This is going to be fairly expensive, just the prop.Field(i) in filterArchStruct is expensive because of the generated garbage for the Index field, plus this creates 6 types (which is likely a lot of information) for every property struct of every variant of every module.  Can you cache the generated type?",
+      "revId": "3ac542e70d5aad511780aca366218e29a33bd0c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
