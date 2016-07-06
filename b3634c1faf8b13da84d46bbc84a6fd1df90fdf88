@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5db89ed4_937cd49d",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-07-06T19:26:26Z",
+      "side": 1,
+      "message": "This should probably be:\n\n   Address *bool\n\nThen we\u0027ve got a tri-state: No, Yes, unspecified. Unspecified can be affected by the global options, yes would force it on, no would force it off. Does this make sense for what you need?",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 42
+      },
+      "revId": "b3634c1faf8b13da84d46bbc84a6fd1df90fdf88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
