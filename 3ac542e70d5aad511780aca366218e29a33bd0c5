@@ -51,6 +51,24 @@
       "revId": "3ac542e70d5aad511780aca366218e29a33bd0c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5db89ed4_02414b25",
+        "filename": "android/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-07-06T22:51:21Z",
+      "side": 1,
+      "message": "SGTM, the more we can filter the better error checking we will get",
+      "parentUuid": "5db89ed4_62c76708",
+      "revId": "3ac542e70d5aad511780aca366218e29a33bd0c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
