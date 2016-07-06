@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3d8cca86_108a4484",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2016-07-06T23:45:54Z",
+      "side": 1,
+      "message": "Do you mean the case when a blueprint file has both\nnever:true\naddress: true\n?\nThat should probably be an error.",
+      "parentUuid": "3d8cca86_30b0a852",
+      "revId": "95292fa979bd7ecc4dfebc37ee8942542b392aa9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d8cca86_f058e047",
         "filename": "cc/sanitize.go",
         "patchSetId": 5
