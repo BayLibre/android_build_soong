@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "3d8cca86_30b0a852",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-07-06T23:43:32Z",
+      "side": 1,
+      "message": "I think you still need these lines to overwrite any true values from the blueprint file",
+      "revId": "95292fa979bd7ecc4dfebc37ee8942542b392aa9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d8cca86_f058e047",
         "filename": "cc/sanitize.go",
         "patchSetId": 5
