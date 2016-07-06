@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d8cca86_f058e047",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-07-06T23:22:58Z",
+      "side": 1,
+      "message": "In the common case, where globalSanitizers is empty and the property is not set, this is going to cause the allocation of a 6 bools on the heap for every variant of every module, which seems unnecessary.  Could boolPtr be replaced with a function that returns nil for false?",
+      "revId": "95292fa979bd7ecc4dfebc37ee8942542b392aa9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d8cca86_904dd488",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-07-06T23:22:58Z",
+      "side": 1,
+      "message": "These would all have to be replaced with proptools.Bool.  In other places I\u0027ve used:\n\n var Bool \u003d proptools.Bool\n\nto create a local shortcut to proptools.Bool.",
+      "range": {
+        "startLine": 166,
+        "startChar": 4,
+        "endLine": 166,
+        "endChar": 5
+      },
+      "revId": "95292fa979bd7ecc4dfebc37ee8942542b392aa9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
