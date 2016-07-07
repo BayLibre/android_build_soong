@@ -1,0 +1,7 @@
+Code-Review+2: Dan Willemsen <dwillemsen@google.com>
+Verified+1: Evgenii Stepanov <eugenis@google.com>
+Submitted-by: Evgenii Stepanov <eugenis@google.com>
+Submitted-at: Thu, 07 Jul 2016 17:43:28 +0000
+Reviewed-on: https://android-review.googlesource.com/246358
+Project: platform/build/soong
+Branch: refs/heads/master
