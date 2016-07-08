@@ -451,7 +451,6 @@ type UnusedProperties struct {
 }
 
 type ModuleContextIntf interface {
-	module() *Module
 	static() bool
 	staticBinary() bool
 	clang() bool
@@ -597,10 +596,6 @@ type moduleContext struct {
 type moduleContextImpl struct {
 	mod *Module
 	ctx BaseModuleContext
-}
-
-func (ctx *moduleContextImpl) module() *Module {
-	return ctx.mod
 }
 
 func (ctx *moduleContextImpl) clang() bool {
@@ -866,16 +861,16 @@ func (c *Module) depsMutator(actx android.BottomUpMutatorContext) {
 	actx.AddVariationDependencies([]blueprint.Variation{{"link", "shared"}}, lateSharedDepTag,
 		deps.LateSharedLibs...)
 
-	actx.AddDependency(ctx.module(), genSourceDepTag, deps.GeneratedSources...)
-	actx.AddDependency(ctx.module(), genHeaderDepTag, deps.GeneratedHeaders...)
+	actx.AddDependency(c, genSourceDepTag, deps.GeneratedSources...)
+	actx.AddDependency(c, genHeaderDepTag, deps.GeneratedHeaders...)
 
-	actx.AddDependency(ctx.module(), objDepTag, deps.ObjFiles...)
+	actx.AddDependency(c, objDepTag, deps.ObjFiles...)
 
 	if deps.CrtBegin != "" {
-		actx.AddDependency(ctx.module(), crtBeginDepTag, deps.CrtBegin)
+		actx.AddDependency(c, crtBeginDepTag, deps.CrtBegin)
 	}
 	if deps.CrtEnd != "" {
-		actx.AddDependency(ctx.module(), crtEndDepTag, deps.CrtEnd)
+		actx.AddDependency(c, crtEndDepTag, deps.CrtEnd)
 	}
 }
 
