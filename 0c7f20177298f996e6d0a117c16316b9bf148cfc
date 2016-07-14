@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3ab8503d_731b7ac5",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2050,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-07-14T23:10:54Z",
+      "side": 1,
+      "message": "I was mostly doing this for consistency with shared libs",
+      "parentUuid": "3ab8503d_d3322650",
+      "range": {
+        "startLine": 2047,
+        "startChar": 0,
+        "endLine": 2050,
+        "endChar": 52
+      },
+      "revId": "0c7f20177298f996e6d0a117c16316b9bf148cfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ab8503d_93289ee4",
         "filename": "cc/cc.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-07-14T23:09:21Z",
       "side": 1,
       "message": "This doesn\u0027t change anything -- it\u0027s still putting the above ldflags last.",
+      "range": {
+        "startLine": 2086,
+        "startChar": 0,
+        "endLine": 2086,
+        "endChar": 44
+      },
+      "revId": "0c7f20177298f996e6d0a117c16316b9bf148cfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ab8503d_131e6eb5",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2086,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-07-14T23:10:54Z",
+      "side": 1,
+      "message": "Ha, I guess I\u0027ll drop this patch for now, it doesn\u0027t seem to be necessary.",
+      "parentUuid": "3ab8503d_93289ee4",
       "range": {
         "startLine": 2086,
         "startChar": 0,
