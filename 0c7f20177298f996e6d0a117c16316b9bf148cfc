@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ab8503d_d3322650",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2050,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-07-14T23:09:21Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this already handle the problem?",
+      "range": {
+        "startLine": 2047,
+        "startChar": 0,
+        "endLine": 2050,
+        "endChar": 52
+      },
+      "revId": "0c7f20177298f996e6d0a117c16316b9bf148cfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ab8503d_93289ee4",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2086,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-07-14T23:09:21Z",
+      "side": 1,
+      "message": "This doesn\u0027t change anything -- it\u0027s still putting the above ldflags last.",
+      "range": {
+        "startLine": 2086,
+        "startChar": 0,
+        "endLine": 2086,
+        "endChar": 44
+      },
+      "revId": "0c7f20177298f996e6d0a117c16316b9bf148cfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
