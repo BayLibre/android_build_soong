@@ -33,6 +33,24 @@
       "revId": "e5d0acecf0333762add40fe1bbeb5cb89c77c502",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ab8503d_7327faa7",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-07-14T23:44:47Z",
+      "side": 1,
+      "message": "i guess as long as we give two relative paths from the current directory, ln will find a minimal relative path, so we\u0027re probably fine",
+      "parentUuid": "3ab8503d_b3efa253",
+      "revId": "e5d0acecf0333762add40fe1bbeb5cb89c77c502",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
