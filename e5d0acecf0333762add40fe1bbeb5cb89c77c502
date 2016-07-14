@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ab8503d_533916de",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-07-14T23:38:31Z",
+      "side": 1,
+      "message": "Hmm, ninja doesn\u0027t really deal well with symlinks as nodes in the build graph, but at least this centralizes the problem.",
+      "revId": "e5d0acecf0333762add40fe1bbeb5cb89c77c502",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ab8503d_b3efa253",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-07-14T23:38:31Z",
+      "side": 1,
+      "message": "is this actually a relative path? or a device absolute path?",
+      "revId": "e5d0acecf0333762add40fe1bbeb5cb89c77c502",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
