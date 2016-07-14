@@ -2041,6 +2041,7 @@ func (binary *binaryLinker) flags(ctx ModuleContext, flags Flags) Flags {
 		flags.CFlags = append(flags.CFlags, "-fpie")
 	}
 
+	var f []string
 	if ctx.Device() {
 		if binary.buildStatic() {
 			// Clang driver needs -static to create static executable.
@@ -2048,10 +2049,10 @@ func (binary *binaryLinker) flags(ctx ModuleContext, flags Flags) Flags {
 			// Linker for x86 targets does not allow coexistance of -static and -shared,
 			// so we add -static only if -shared is not used.
 			if !inList("-shared", flags.LdFlags) {
-				flags.LdFlags = append(flags.LdFlags, "-static")
+				f = append(f, "-static")
 			}
 
-			flags.LdFlags = append(flags.LdFlags,
+			f = append(f,
 				"-nostdlib",
 				"-Bstatic",
 				"-Wl,--gc-sections",
@@ -2065,7 +2066,7 @@ func (binary *binaryLinker) flags(ctx ModuleContext, flags Flags) Flags {
 				}
 			}
 
-			flags.LdFlags = append(flags.LdFlags,
+			f = append(f,
 				"-pie",
 				"-nostdlib",
 				"-Bdynamic",
@@ -2075,12 +2076,14 @@ func (binary *binaryLinker) flags(ctx ModuleContext, flags Flags) Flags {
 		}
 	} else {
 		if binary.staticBinary() {
-			flags.LdFlags = append(flags.LdFlags, "-static")
+			f = append(f, "-static")
 		}
 		if ctx.Darwin() {
-			flags.LdFlags = append(flags.LdFlags, "-Wl,-headerpad_max_install_names")
+			f = append(f, "-Wl,-headerpad_max_install_names")
 		}
 	}
+
+	flags.LdFlags = append(flags.LdFlags, f...)
 
 	return flags
 }
