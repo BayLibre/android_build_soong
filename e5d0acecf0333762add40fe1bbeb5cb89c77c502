@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3ab8503d_bf0923de",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-07-15T19:24:10Z",
+      "side": 1,
+      "message": "We\u0027re not using this part yet, we can deal with any issues when we start installing using soong.",
+      "parentUuid": "3ab8503d_533916de",
+      "revId": "e5d0acecf0333762add40fe1bbeb5cb89c77c502",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ab8503d_b3efa253",
         "filename": "android/module.go",
         "patchSetId": 1
