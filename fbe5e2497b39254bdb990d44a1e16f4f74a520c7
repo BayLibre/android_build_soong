@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ab8503d_70e1a531",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-07-18T19:28:09Z",
+      "side": 1,
+      "message": "Comments section would be good",
+      "revId": "fbe5e2497b39254bdb990d44a1e16f4f74a520c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ab8503d_d0ce91c3",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-07-18T19:28:09Z",
+      "side": 1,
+      "message": "We should probably describe cc_defaults",
+      "revId": "fbe5e2497b39254bdb990d44a1e16f4f74a520c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ab8503d_90e40944",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-07-18T19:28:09Z",
+      "side": 1,
+      "message": "tabs -\u003e spaces. Do we want to list that as a style?",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 120,
+        "endChar": 3
+      },
+      "revId": "fbe5e2497b39254bdb990d44a1e16f4f74a520c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ab8503d_3049dd1f",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-07-18T19:28:09Z",
+      "side": 1,
+      "message": "This is internal-only afaict. We should list android-building@googlegroups.com for external users, maybe point internal users to go/soong, and we can have a custom landing page there that can describe branch availability and internal contacts.",
+      "revId": "fbe5e2497b39254bdb990d44a1e16f4f74a520c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
