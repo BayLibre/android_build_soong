@@ -141,6 +141,11 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 			ctx.ModuleErrorf("unknown global sanitizer option %s", globalSanitizers[0])
 		}
 	}
+
+	if ctx.staticBinary() {
+		sanitize.Properties.Sanitize.Address = nil
+	}
+
 	if Bool(s.All_undefined) || Bool(s.Undefined) || Bool(s.Address) ||
 		Bool(s.Thread) || Bool(s.Coverage) || Bool(s.Safestack) {
 		sanitize.Properties.SanitizerEnabled = true
