@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca2763b0_cd2b69e5",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2016-07-18T23:08:34Z",
+      "side": 1,
+      "message": "Darwin\u0027s linker doesn\u0027t have --start-group. I believe that they automatically group all the dependencies by default (which increases link time, but prevents silly bugs like what we were chasing anyways).",
+      "revId": "1034786c379dcdc930c641ccbe8bd04936cce1f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
