@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a2d6b96_ee817f2a",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-07-19T07:00:54Z",
+      "side": 1,
+      "message": "So, these two haven\u0027t *actually* been moved yet. I just used the current libc version script for testing. It verifies that all this is working, just overdefines the contents of the stub libs. I need to write some more tooling to merge the old crap we have in development/ndk into the new format before these will actually be ready.\n\nI think doing them one at a time is probably the way to go with this. If it\u0027s okay with you two, I\u0027d like to just clear this list and get it submitted earlier rather than later so I can avoid having to rebase this over and over.\n\nElse I can try to find the simplest library to migrate for use.",
+      "revId": "d157a85d0fa85e9062326508af13aba46d26731a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2d6b96_2e1f8715",
+        "filename": "cc/ndk_headers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-07-19T07:00:54Z",
+      "side": 1,
+      "message": "Until I actually get *all* the NDK headers moved over to ndk_headers, we can\u0027t actually use the headers generated here in the platform build. This is still useful before that since we want to use the headers generated here directly in the NDK.",
+      "revId": "d157a85d0fa85e9062326508af13aba46d26731a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2d6b96_ee085fd8",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-07-19T07:00:54Z",
+      "side": 1,
+      "message": "I found PlatformSdkVersion(), but it\u0027s currently set to 22 and we currently have 24 in the NDK. Understandable that it\u0027s not 24 in aosp (24 is \"current\", sort of), but shouldn\u0027t it at least be 23?",
+      "revId": "d157a85d0fa85e9062326508af13aba46d26731a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2d6b96_ae125704",
+        "filename": "cc/ndk_sysroot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-07-19T07:00:54Z",
+      "side": 1,
+      "message": "Not until we actually start using these in the NDK though. This can be submitted before this is resolved; my tools in the NDK will reject the package if they don\u0027t have the license info.",
+      "revId": "d157a85d0fa85e9062326508af13aba46d26731a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
