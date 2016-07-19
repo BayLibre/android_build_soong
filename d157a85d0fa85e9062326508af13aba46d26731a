@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8a2d6b96_0ef28bd5",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-07-19T07:10:46Z",
+      "side": 1,
+      "message": "libdl is probably a trivial one to migrate, so I could just do that.",
+      "parentUuid": "8a2d6b96_ee817f2a",
+      "revId": "d157a85d0fa85e9062326508af13aba46d26731a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a2d6b96_2e1f8715",
         "filename": "cc/ndk_headers.go",
         "patchSetId": 2
