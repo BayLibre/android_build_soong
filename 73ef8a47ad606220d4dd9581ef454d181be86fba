@@ -1,0 +1,300 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a2d6b96_31924853",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-07-19T17:47:23Z",
+      "side": 1,
+      "message": "apiMutator is pretty generic, maybe ndkApiMutator?",
+      "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2d6b96_34a0f68a",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-07-19T17:47:23Z",
+      "side": 1,
+      "message": "ndkStubDepTag",
+      "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2d6b96_d4b652d7",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 927,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-07-19T17:47:23Z",
+      "side": 1,
+      "message": "You are unconditionally adding libc and libm as dependencies to all ndk modules, which is requiring the ugly ndkPrebuiltObjectLinker check above.  Make rewriteNdkLibs return two slices, one of rewritten regular deps and one of migrated deps, and use the second one here",
+      "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2d6b96_b4b3c6e5",
+        "filename": "cc/gen_stub_libs.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-07-19T17:47:23Z",
+      "side": 1,
+      "message": "This seems unnecessary, and we already have enough places to update if the list of architectures changes.",
+      "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2d6b96_14f3baa2",
+        "filename": "cc/ndk_headers.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-07-19T17:47:23Z",
+      "side": 1,
+      "message": "filepath.Rel can replace the HasPrefix/TrimPrefix combo",
+      "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2d6b96_741b1eda",
+        "filename": "cc/ndk_headers.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-07-19T17:47:23Z",
+      "side": 1,
+      "message": "did you try MultilibCommon here?",
+      "range": {
+        "startLine": 91,
+        "startChar": 77,
+        "endLine": 91,
+        "endChar": 90
+      },
+      "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2d6b96_94356a43",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-07-19T17:47:23Z",
+      "side": 1,
+      "message": "Use a ninja variable:\n\n    toolPath \u003d pctx.SourcePathVariable(\"toolPath\", \"build/soong/cc/gen_stub_libs.py\")",
+      "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2d6b96_34fc7662",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-07-19T17:47:23Z",
+      "side": 1,
+      "message": "$toolPath",
+      "range": {
+        "startLine": 31,
+        "startChar": 16,
+        "endLine": 31,
+        "endChar": 24
+      },
+      "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2d6b96_f415ce98",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-07-19T17:47:23Z",
+      "side": 1,
+      "message": "Add:\n\n    CommandDeps: []string{\"$toolPath\"},",
+      "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2d6b96_f42eeef6",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-07-19T17:47:23Z",
+      "side": 1,
+      "message": "Remove",
+      "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2d6b96_7469de29",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-07-19T17:47:23Z",
+      "side": 1,
+      "message": "If this is always a substring of name, enforce the format of name and extract it?",
+      "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2d6b96_7450be63",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-07-19T17:47:23Z",
+      "side": 1,
+      "message": "I usually use fmt.Errorf inside panics",
+      "range": {
+        "startLine": 109,
+        "startChar": 12,
+        "endLine": 109,
+        "endChar": 19
+      },
+      "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2d6b96_34c116fc",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-07-19T17:47:23Z",
+      "side": 1,
+      "message": "nil check is unnecessary, two-value type asserting a nil interface will not panic",
+      "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2d6b96_b4ebc674",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-07-19T17:47:23Z",
+      "side": 1,
+      "message": "Use ctx.ModuleBuild, which is a Soong wrapper around ctx.Build that takes an android.ModuleBuildParams",
+      "range": {
+        "startLine": 142,
+        "startChar": 5,
+        "endLine": 142,
+        "endChar": 10
+      },
+      "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2d6b96_b4d4e6ba",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-07-19T17:47:23Z",
+      "side": 1,
+      "message": "You can use Input: to avoid having to create a slice",
+      "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2d6b96_54e382a1",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-07-19T17:47:23Z",
+      "side": 1,
+      "message": "You can drop this if you use CommandDeps on the rule",
+      "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
