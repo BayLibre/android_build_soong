@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8a2d6b96_54b6e2f4",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-07-19T22:48:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a2d6b96_31924853",
+      "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a2d6b96_34a0f68a",
         "filename": "cc/cc.go",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2016-07-19T17:47:23Z",
       "side": 1,
       "message": "ndkStubDepTag",
+      "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2d6b96_34bb56dd",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-07-19T22:48:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a2d6b96_34a0f68a",
       "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "8a2d6b96_74b1defa",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 927,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-07-19T22:48:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a2d6b96_d4b652d7",
+      "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a2d6b96_b4b3c6e5",
         "filename": "cc/gen_stub_libs.py",
         "patchSetId": 3
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "8a2d6b96_14c05a45",
+        "filename": "cc/gen_stub_libs.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-07-19T22:48:59Z",
+      "side": 1,
+      "message": "Is there an alternative place to get the list?",
+      "parentUuid": "8a2d6b96_b4b3c6e5",
+      "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a2d6b96_14f3baa2",
         "filename": "cc/ndk_headers.go",
         "patchSetId": 3
@@ -81,6 +153,24 @@
       "writtenOn": "2016-07-19T17:47:23Z",
       "side": 1,
       "message": "filepath.Rel can replace the HasPrefix/TrimPrefix combo",
+      "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2d6b96_3fee8fba",
+        "filename": "cc/ndk_headers.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-07-19T22:48:59Z",
+      "side": 1,
+      "message": "That won\u0027t actually enforce that things are contained here though: https://play.golang.org/p/7xu0s7nqj6\n\nAh, but it looks like Soong enforces that pointing outside my path will fail anyway.",
+      "parentUuid": "8a2d6b96_14f3baa2",
       "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -110,6 +200,30 @@
     },
     {
       "key": {
+        "uuid": "8a2d6b96_9aca319b",
+        "filename": "cc/ndk_headers.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-07-19T22:48:59Z",
+      "side": 1,
+      "message": "Causes:\n\nninja: error: out/soong/build.ninja:2408: multiple rules generate out/soong/.intermediates/bionic/libc/common_libc/android_common/src_glob/glob/bionic/libc/include/h.glob [-w dupbuild\u003derr]",
+      "parentUuid": "8a2d6b96_741b1eda",
+      "range": {
+        "startLine": 91,
+        "startChar": 77,
+        "endLine": 91,
+        "endChar": 90
+      },
+      "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a2d6b96_94356a43",
         "filename": "cc/ndk_library.go",
         "patchSetId": 3
@@ -121,6 +235,24 @@
       "writtenOn": "2016-07-19T17:47:23Z",
       "side": 1,
       "message": "Use a ninja variable:\n\n    toolPath \u003d pctx.SourcePathVariable(\"toolPath\", \"build/soong/cc/gen_stub_libs.py\")",
+      "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2d6b96_2530c203",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-07-19T22:48:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a2d6b96_94356a43",
       "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -150,6 +282,30 @@
     },
     {
       "key": {
+        "uuid": "8a2d6b96_452bce99",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-07-19T22:48:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a2d6b96_34fc7662",
+      "range": {
+        "startLine": 31,
+        "startChar": 16,
+        "endLine": 31,
+        "endChar": 24
+      },
+      "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a2d6b96_f415ce98",
         "filename": "cc/ndk_library.go",
         "patchSetId": 3
@@ -161,6 +317,24 @@
       "writtenOn": "2016-07-19T17:47:23Z",
       "side": 1,
       "message": "Add:\n\n    CommandDeps: []string{\"$toolPath\"},",
+      "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2d6b96_6526cad3",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-07-19T22:48:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a2d6b96_f415ce98",
       "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -184,6 +358,24 @@
     },
     {
       "key": {
+        "uuid": "8a2d6b96_e54aba7d",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-07-19T22:48:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a2d6b96_f42eeef6",
+      "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a2d6b96_7469de29",
         "filename": "cc/ndk_library.go",
         "patchSetId": 3
@@ -195,6 +387,24 @@
       "writtenOn": "2016-07-19T17:47:23Z",
       "side": 1,
       "message": "If this is always a substring of name, enforce the format of name and extract it?",
+      "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2d6b96_054ee693",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-07-19T22:48:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a2d6b96_7469de29",
       "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -224,6 +434,30 @@
     },
     {
       "key": {
+        "uuid": "8a2d6b96_4534ee01",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-07-19T22:48:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a2d6b96_7450be63",
+      "range": {
+        "startLine": 109,
+        "startChar": 12,
+        "endLine": 109,
+        "endChar": 19
+      },
+      "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a2d6b96_34c116fc",
         "filename": "cc/ndk_library.go",
         "patchSetId": 3
@@ -235,6 +469,24 @@
       "writtenOn": "2016-07-19T17:47:23Z",
       "side": 1,
       "message": "nil check is unnecessary, two-value type asserting a nil interface will not panic",
+      "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2d6b96_653feae1",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-07-19T22:48:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a2d6b96_34c116fc",
       "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -264,6 +516,30 @@
     },
     {
       "key": {
+        "uuid": "8a2d6b96_853ad6ef",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-07-19T22:48:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a2d6b96_b4ebc674",
+      "range": {
+        "startLine": 142,
+        "startChar": 5,
+        "endLine": 142,
+        "endChar": 10
+      },
+      "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a2d6b96_b4d4e6ba",
         "filename": "cc/ndk_library.go",
         "patchSetId": 3
@@ -281,6 +557,24 @@
     },
     {
       "key": {
+        "uuid": "8a2d6b96_c570dedb",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-07-19T22:48:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a2d6b96_b4d4e6ba",
+      "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a2d6b96_54e382a1",
         "filename": "cc/ndk_library.go",
         "patchSetId": 3
@@ -292,6 +586,24 @@
       "writtenOn": "2016-07-19T17:47:23Z",
       "side": 1,
       "message": "You can drop this if you use CommandDeps on the rule",
+      "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2d6b96_e563da13",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-07-19T22:48:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a2d6b96_54e382a1",
       "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
