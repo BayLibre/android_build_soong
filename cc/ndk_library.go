@@ -80,8 +80,8 @@ func intMin(a int, b int) int {
 }
 
 func generateStubApiVariants(mctx android.BottomUpMutatorContext, c *stubCompiler) {
-	minVersion := 9  // Minimum version supported by the NDK.
-	maxVersion := 24 // TODO(danalbert): Find a real definition of this.
+	minVersion := 9 // Minimum version supported by the NDK.
+	maxVersion := mctx.AConfig().PlatformSdkVersion()
 	firstArchVersions := map[string]int{
 		"arm":    9,
 		"arm64":  21,

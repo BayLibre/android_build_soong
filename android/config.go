@@ -20,6 +20,7 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
+	"strconv"
 	"strings"
 	"sync"
 
@@ -277,8 +278,12 @@ func (c *config) PlatformVersion() string {
 	return "M"
 }
 
-func (c *config) PlatformSdkVersion() string {
-	return "22"
+func (c *config) PlatformSdkVersion() int {
+	return 22
+}
+
+func (c *config) PlatformSdkVersionString() string {
+	return strconv.Itoa(c.PlatformSdkVersion())
 }
 
 func (c *config) BuildNumber() string {

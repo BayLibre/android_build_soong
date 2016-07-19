@@ -249,14 +249,14 @@ func (a *AndroidApp) aaptFlags(ctx android.ModuleContext) ([]string, android.Pat
 
 	sdkVersion := a.properties.Sdk_version
 	if sdkVersion == "" {
-		sdkVersion = ctx.AConfig().PlatformSdkVersion()
+		sdkVersion = ctx.AConfig().PlatformSdkVersionString()
 	}
 
 	aaptFlags = append(aaptFlags, "--min-sdk-version "+sdkVersion)
 	aaptFlags = append(aaptFlags, "--target-sdk-version "+sdkVersion)
 
 	if !hasVersionCode {
-		aaptFlags = append(aaptFlags, "--version-code "+ctx.AConfig().PlatformSdkVersion())
+		aaptFlags = append(aaptFlags, "--version-code "+ctx.AConfig().PlatformSdkVersionString())
 	}
 
 	if !hasVersionName {
