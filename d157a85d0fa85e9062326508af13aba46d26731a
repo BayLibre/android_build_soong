@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "8a2d6b96_34347601",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-07-19T17:56:01Z",
+      "side": 1,
+      "message": "We are less likely to break it if there is something in the list",
+      "parentUuid": "8a2d6b96_0ef28bd5",
+      "revId": "d157a85d0fa85e9062326508af13aba46d26731a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a2d6b96_2e1f8715",
         "filename": "cc/ndk_headers.go",
         "patchSetId": 2
@@ -65,6 +83,24 @@
       "writtenOn": "2016-07-19T07:00:54Z",
       "side": 1,
       "message": "I found PlatformSdkVersion(), but it\u0027s currently set to 22 and we currently have 24 in the NDK. Understandable that it\u0027s not 24 in aosp (24 is \"current\", sort of), but shouldn\u0027t it at least be 23?",
+      "revId": "d157a85d0fa85e9062326508af13aba46d26731a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2d6b96_d44ad27d",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-07-19T17:56:01Z",
+      "side": 1,
+      "message": "Yes, it was updated in version_defaults.mk but not soong.",
+      "parentUuid": "8a2d6b96_ee085fd8",
       "revId": "d157a85d0fa85e9062326508af13aba46d26731a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
