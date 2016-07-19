@@ -295,6 +295,29 @@
       "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2d6b96_947faaba",
+        "filename": "cc/ndk_sysroot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-07-19T17:49:09Z",
+      "side": 1,
+      "message": "Touch?",
+      "range": {
+        "startLine": 92,
+        "startChar": 21,
+        "endLine": 92,
+        "endChar": 26
+      },
+      "revId": "73ef8a47ad606220d4dd9581ef454d181be86fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
