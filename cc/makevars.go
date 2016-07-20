@@ -42,6 +42,13 @@ func makeVarsProvider(ctx android.MakeVarsContext) {
 	ctx.Strict("GLOBAL_CLANG_CPPFLAGS_NO_OVERRIDE", "")
 	ctx.Strict("NDK_PREBUILT_SHARED_LIBRARIES", strings.Join(ndkPrebuiltSharedLibs, " "))
 
+	includeFlags, err := ctx.Eval("${commonGlobalIncludes}")
+	if err != nil {
+		panic(err)
+	}
+	ctx.StrictRaw("SRC_SYSTEM_HEADERS", strings.Replace(includeFlags, "-isystem ", "", -1))
+	ctx.StrictRaw("SRC_HEADERS", "")
+
 	hostTargets := ctx.Config().Targets[android.Host]
 	makeVarsToolchain(ctx, "", hostTargets[0])
 	if len(hostTargets) > 1 {
@@ -115,7 +122,8 @@ func makeVarsToolchain(ctx android.MakeVarsContext, secondPrefix string,
 	if err != nil {
 		panic(err)
 	}
-	ctx.StrictRaw(makePrefix+"C_INCLUDES", strings.Replace(includeFlags, "-isystem ", "", -1))
+	ctx.StrictRaw(makePrefix+"C_SYSTEM_INCLUDES", strings.Replace(includeFlags, "-isystem ", "", -1))
+	ctx.StrictRaw(makePrefix+"C_INCLUDES", "")
 
 	if target.Arch.ArchType == android.Arm {
 		flags, err := toolchain.InstructionSetFlags("arm")
