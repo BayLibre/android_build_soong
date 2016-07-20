@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a2d6b96_3408f1f6",
+        "filename": "cc/ndk_headers.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-07-20T06:21:20Z",
+      "side": 1,
+      "message": "Do we need to export this?",
+      "range": {
+        "startLine": 26,
+        "startChar": 5,
+        "endLine": 26,
+        "endChar": 6
+      },
+      "revId": "e54beca36326e685ead075fd8947094944670be7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2d6b96_74fe79d6",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-07-20T06:21:20Z",
+      "side": 1,
+      "message": "We\u0027ve been putting all of these in cc/androidmk.go",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 1
+      },
+      "revId": "e54beca36326e685ead075fd8947094944670be7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a2d6b96_54037ddc",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-07-20T06:21:20Z",
+      "side": 1,
+      "message": "We shouldn\u0027t ever be installing these, right?",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 2
+      },
+      "revId": "e54beca36326e685ead075fd8947094944670be7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
