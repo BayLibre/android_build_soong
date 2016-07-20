@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "caef63c1_d06e22c4",
+        "filename": "cc/ndk_headers.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-07-20T20:13:31Z",
+      "side": 1,
+      "message": "Nope. A relic of when I was trying to put all this in a separate \"ndk\" package.",
+      "parentUuid": "8a2d6b96_3408f1f6",
+      "range": {
+        "startLine": 26,
+        "startChar": 5,
+        "endLine": 26,
+        "endChar": 6
+      },
+      "revId": "e54beca36326e685ead075fd8947094944670be7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a2d6b96_74fe79d6",
         "filename": "cc/ndk_library.go",
         "patchSetId": 4
@@ -59,6 +83,30 @@
       "writtenOn": "2016-07-20T06:21:20Z",
       "side": 1,
       "message": "We shouldn\u0027t ever be installing these, right?",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 2
+      },
+      "revId": "e54beca36326e685ead075fd8947094944670be7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "caef63c1_f0719ea6",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-07-20T20:13:31Z",
+      "side": 1,
+      "message": "We should, but you\u0027re right that this would install to the wrong location. This is fixed by the latest ps.",
+      "parentUuid": "8a2d6b96_54037ddc",
       "range": {
         "startLine": 205,
         "startChar": 0,
