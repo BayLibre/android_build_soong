@@ -337,3 +337,11 @@ func (c *config) Android64() bool {
 
 	return false
 }
+
+func (c *config) LibartImgHostBaseAddress() string {
+	return "0x60000000"
+}
+
+func (c *config) LibartImgDeviceBaseAddress() string {
+	return "0x70000000"
+}
