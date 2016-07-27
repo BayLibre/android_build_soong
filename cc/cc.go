@@ -879,7 +879,7 @@ func (c *Module) depsMutator(actx android.BottomUpMutatorContext) {
 		rewriteNdkLibs := func(list []string) ([]string, []string) {
 			// These libraries have migrated over to the new ndk_library, which
 			// is added as a variation dependency via depsMutator.
-			migratedLibs := []string{}
+			migratedLibs := []string{"libc", "libm"}
 			variantLibs := []string{}
 			nonvariantLibs := []string{}
 			for _, entry := range list {
