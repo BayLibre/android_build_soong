@@ -74,7 +74,7 @@ var (
 
 	// These libraries have migrated over to the new ndk_library, which is added
 	// as a variation dependency via depsMutator.
-	ndkMigratedLibs = []string{}
+	ndkMigratedLibs = []string{"libc", "libm"}
 )
 
 // Flags used by lots of devices.  Putting them in package static variables will save bytes in
