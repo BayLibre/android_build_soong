@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2fed7107_1698dc0b",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1132,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-07-27T23:19:07Z",
+      "side": 1,
+      "message": "Can we put these flags through CheckBadCompilerFlags? (Could be a followup)",
+      "revId": "d1d995436b7449b16888fe0458c8d13790d7ed45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2fed7107_96604c0d",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1136,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-07-27T23:19:07Z",
+      "side": 1,
+      "message": "same",
+      "revId": "d1d995436b7449b16888fe0458c8d13790d7ed45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2fed7107_367080da",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1351,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-07-27T23:19:07Z",
+      "side": 1,
+      "message": "CheckBadLinkerFlags here",
+      "revId": "d1d995436b7449b16888fe0458c8d13790d7ed45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
