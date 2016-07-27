@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f601d1d_8d7f7576",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-07-27T18:01:44Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "1c49de9eea224986ce061b51dcf7b87ae0701137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f601d1d_ed56e901",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-07-27T18:01:44Z",
+      "side": 1,
+      "message": "filepath.Base",
+      "range": {
+        "startLine": 381,
+        "startChar": 22,
+        "endLine": 381,
+        "endChar": 27
+      },
+      "revId": "1c49de9eea224986ce061b51dcf7b87ae0701137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f601d1d_6d84996c",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-07-27T18:01:44Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "1c49de9eea224986ce061b51dcf7b87ae0701137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
