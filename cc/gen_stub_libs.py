@@ -68,7 +68,7 @@ class Stack(object):
 def get_tags(line):
     """Returns a list of all tags on this line."""
     _, _, all_tags = line.strip().partition('#')
-    return re.split(r'\s+', all_tags)
+    return [e for e in re.split(r'\s+', all_tags) if e.strip()]
 
 
 def get_tag_value(tag):
