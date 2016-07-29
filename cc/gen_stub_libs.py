@@ -16,6 +16,7 @@
 #
 """Generates source for stub shared libraries for the NDK."""
 import argparse
+import logging
 import os
 import re
 
@@ -28,6 +29,11 @@ ALL_ARCHITECTURES = (
     'x86',
     'x86_64',
 )
+
+
+def logger():
+    """Return the main logger for this module."""
+    return logging.getLogger(__name__)
 
 
 class Scope(object):
@@ -132,14 +138,16 @@ def leave_version(scope, line, version_file):
     assert scope.top == Scope.Top
 
 
-def enter_visibility(scope, line, version_file):
+def enter_visibility(scope, line):
     """Enters a new visibility block scope."""
     leave_visibility(scope)
     visibility = line.split(':')[0].strip()
     if visibility == 'local':
         scope.push(Scope.Local)
     elif visibility == 'global':
-        version_file.write(line)
+        # This label will be written by handle_global_scope iff there are
+        # actually any symbols left after pruning for tags. Empty sections are
+        # not allowed in version scripts.
         scope.push(Scope.Global)
     else:
         raise RuntimeError('Unknown visiblity label: ' + visibility)
@@ -169,7 +177,7 @@ def handle_private_scope(scope, line, version_file):
 def handle_local_scope(scope, line, version_file):
     """Eats all input."""
     if ':' in line:
-        enter_visibility(scope, line, version_file)
+        enter_visibility(scope, line)
     elif '}' in line:
         leave_version(scope, line, version_file)
 
@@ -234,15 +242,27 @@ def symbol_versioned_in_api(tags, api):
     return True
 
 
+def finish_global_section(version_file, symbols):
+    """Writes out the global visibility section if it has symbols."""
+    if symbols:
+        version_file.write('  global:\n')
+        for symbol in symbols:
+            version_file.write('    {};\n'.format(symbol))
 
-def handle_global_scope(scope, line, src_file, version_file, arch, api):
-    """Emits present symbols to the version file and stub source file."""
+
+def parse_symbol_line(scope, line, symbols, src_file, version_file, arch, api):
+    """Processes a single line of a global symbol section.
+
+    Returns: True if we've finished the section, False if we need to continue.
+    """
     if ':' in line:
-        enter_visibility(scope, line, version_file)
-        return
+        finish_global_section(version_file, symbols)
+        enter_visibility(scope, line)
+        return True
     if '}' in line:
+        finish_global_section(version_file, symbols)
         leave_version(scope, line, version_file)
-        return
+        return True
 
     if ';' not in line:
         raise RuntimeError('Expected ; to terminate symbol: ' + line)
@@ -255,9 +275,9 @@ def handle_global_scope(scope, line, src_file, version_file, arch, api):
     tags = get_tags(line)
 
     if not symbol_in_arch(tags, arch):
-        return
+        return False
     if not symbol_in_api(tags, arch, api):
-        return
+        return False
 
     if 'var' in tags:
         src_file.write('int {} = 0;\n'.format(symbol_name))
@@ -265,7 +285,23 @@ def handle_global_scope(scope, line, src_file, version_file, arch, api):
         src_file.write('void {}() {{}}\n'.format(symbol_name))
 
     if symbol_versioned_in_api(tags, api):
-        version_file.write(line)
+        symbols.append(symbol_name)
+
+
+def handle_global_scope(scope, line, input_file, src_file, version_file, arch,
+                        api):
+    """Emits present symbols to the version file and stub source file."""
+    symbols = []
+    while True:
+        logger().debug('handle_global_scope: line: "%s"', line)
+
+        exit_loop = parse_symbol_line(
+            scope, line, symbols, src_file, version_file, arch, api)
+
+        if exit_loop:
+            break
+
+        line = next(input_file)
 
 
 def generate(symbol_file, src_file, version_file, arch, api):
@@ -282,16 +318,19 @@ def generate(symbol_file, src_file, version_file, arch, api):
         elif scope.top == Scope.Local:
             handle_local_scope(scope, line, version_file)
         elif scope.top == Scope.Global:
-            handle_global_scope(scope, line, src_file, version_file, arch, api)
+            handle_global_scope(scope, line, symbol_file, src_file, version_file, arch, api)
 
 
 def parse_args():
     """Parses and returns command line arguments."""
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--api', type=int, help='API level being targeted.')
+    parser.add_argument('-v', '--verbose', action='count', default=0)
+
     parser.add_argument(
-        '--arch', choices=ALL_ARCHITECTURES,
+        '--api', type=int, required=True, help='API level being targeted.')
+    parser.add_argument(
+        '--arch', choices=ALL_ARCHITECTURES, required=True,
         help='Architecture being targeted.')
 
     parser.add_argument(
@@ -309,6 +348,12 @@ def parse_args():
 def main():
     """Program entry point."""
     args = parse_args()
+
+    verbose_map = (logging.WARNING, logging.INFO, logging.DEBUG)
+    verbosity = args.verbose
+    if verbosity > 2:
+        verbosity = 2
+    logging.basicConfig(level=verbose_map[verbosity])
 
     with open(args.symbol_file) as symbol_file:
         with open(args.stub_src, 'w') as src_file:
