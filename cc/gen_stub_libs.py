@@ -135,11 +135,11 @@ def leave_version(scope, line, version_file):
 def enter_visibility(scope, line, version_file):
     """Enters a new visibility block scope."""
     leave_visibility(scope)
-    version_file.write(line)
     visibility = line.split(':')[0].strip()
     if visibility == 'local':
         scope.push(Scope.Local)
     elif visibility == 'global':
+        version_file.write(line)
         scope.push(Scope.Global)
     else:
         raise RuntimeError('Unknown visiblity label: ' + visibility)
@@ -167,13 +167,11 @@ def handle_private_scope(scope, line, version_file):
 
 
 def handle_local_scope(scope, line, version_file):
-    """Passes through input."""
+    """Eats all input."""
     if ':' in line:
         enter_visibility(scope, line, version_file)
     elif '}' in line:
         leave_version(scope, line, version_file)
-    else:
-        version_file.write(line)
 
 
 def symbol_in_arch(tags, arch):
