@@ -58,7 +58,7 @@ var (
 
 	// These libraries have migrated over to the new ndk_library, which is added
 	// as a variation dependency via depsMutator.
-	ndkMigratedLibs = []string{}
+	ndkMigratedLibs = []string{"libc", "libm"}
 )
 
 // Creates a stub shared library based on the provided version file.
