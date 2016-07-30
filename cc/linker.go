@@ -14,6 +14,11 @@
 
 package cc
 
+import (
+	"android/soong/android"
+	"fmt"
+)
+
 // This file contains the basic functionality for linking against static libraries and shared
 // libraries.  Final linking into libraries or executables is handled in library.go, binary.go, etc.
 
@@ -61,20 +66,17 @@ type BaseLinkerProperties struct {
 	// list of static libraries to re-export include directories from. Entries must be
 	// present in static_libs.
 	Export_static_lib_headers []string `android:"arch_variant"`
+}
 
-	// don't link in crt_begin and crt_end.  This flag should only be necessary for
-	// compiling crt or libc.
-	Nocrt *bool `android:"arch_variant"`
+func NewBaseLinker() *baseLinker {
+	return &baseLinker{}
 }
 
 // baseLinker provides support for shared_libs, static_libs, and whole_static_libs properties
 type baseLinker struct {
 	Properties        BaseLinkerProperties
 	dynamicProperties struct {
-		VariantIsShared       bool     `blueprint:"mutated"`
-		VariantIsStatic       bool     `blueprint:"mutated"`
-		VariantIsStaticBinary bool     `blueprint:"mutated"`
-		RunPaths              []string `blueprint:"mutated"`
+		RunPaths []string `blueprint:"mutated"`
 	}
 }
 
@@ -84,9 +86,9 @@ func (linker *baseLinker) appendLdflags(flags []string) {
 
 func (linker *baseLinker) linkerInit(ctx BaseModuleContext) {
 	if ctx.toolchain().Is64Bit() {
-		linker.dynamicProperties.RunPaths = []string{"../lib64", "lib64"}
+		linker.dynamicProperties.RunPaths = append(linker.dynamicProperties.RunPaths, "../lib64", "lib64")
 	} else {
-		linker.dynamicProperties.RunPaths = []string{"../lib", "lib"}
+		linker.dynamicProperties.RunPaths = append(linker.dynamicProperties.RunPaths, "../lib", "lib")
 	}
 }
 
@@ -113,7 +115,7 @@ func (linker *baseLinker) linkerDeps(ctx BaseModuleContext, deps Deps) Deps {
 			deps.LateStaticLibs = append(deps.LateStaticLibs, "libgcc")
 		}
 
-		if !linker.static() {
+		if !ctx.static() {
 			if linker.Properties.System_shared_libs != nil {
 				deps.LateSharedLibs = append(deps.LateSharedLibs,
 					linker.Properties.System_shared_libs...)
@@ -135,8 +137,6 @@ func (linker *baseLinker) linkerDeps(ctx BaseModuleContext, deps Deps) Deps {
 
 func (linker *baseLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 	toolchain := ctx.toolchain()
-
-	flags.Nocrt = Bool(linker.Properties.Nocrt)
 
 	if !ctx.noDefaultCompilerFlags() {
 		if ctx.Device() && !Bool(linker.Properties.Allow_undefined_symbols) {
@@ -160,7 +160,7 @@ func (linker *baseLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 
 	flags.LdFlags = append(flags.LdFlags, linker.Properties.Ldflags...)
 
-	if ctx.Host() && !linker.static() {
+	if ctx.Host() {
 		rpath_prefix := `\$$ORIGIN/`
 		if ctx.Darwin() {
 			rpath_prefix = "@loader_path/"
@@ -180,37 +180,11 @@ func (linker *baseLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 	return flags
 }
 
-func (linker *baseLinker) static() bool {
-	return linker.dynamicProperties.VariantIsStatic
-}
-
-func (linker *baseLinker) staticBinary() bool {
-	return linker.dynamicProperties.VariantIsStaticBinary
-}
-
-func (linker *baseLinker) setStatic(static bool) {
-	linker.dynamicProperties.VariantIsStatic = static
+func (linker *baseLinker) link(ctx ModuleContext,
+	flags Flags, deps PathDeps, objFiles android.Paths) android.Path {
+	panic(fmt.Errorf("baseLinker doesn't know how to link"))
 }
 
 func (linker *baseLinker) isDependencyRoot() bool {
 	return false
-}
-
-type baseLinkerInterface interface {
-	// Returns true if the build options for the module have selected a static or shared build
-	buildStatic() bool
-	buildShared() bool
-
-	// Sets whether a specific variant is static or shared
-	setStatic(bool)
-
-	// Returns whether a specific variant is a static library or binary
-	static() bool
-
-	// Returns whether a module is a static binary
-	staticBinary() bool
-
-	// Returns true for dependency roots (binaries)
-	// TODO(ccross): also handle dlopenable libraries
-	isDependencyRoot() bool
 }
