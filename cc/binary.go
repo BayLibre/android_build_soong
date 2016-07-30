@@ -16,6 +16,7 @@ package cc
 
 import (
 	"github.com/google/blueprint"
+	"github.com/google/blueprint/proptools"
 
 	"android/soong"
 	"android/soong/android"
@@ -33,6 +34,10 @@ type BinaryLinkerProperties struct {
 
 	// if set, add an extra objcopy --prefix-symbols= step
 	Prefix_symbols string
+
+	// don't link in crt_begin and crt_end.  This flag should only be necessary for
+	// compiling crt or libc.
+	Nocrt *bool `android:"arch_variant"`
 }
 
 func init() {
@@ -56,8 +61,8 @@ func binaryHostFactory() (blueprint.Module, []interface{}) {
 // Executables
 //
 
-type binaryLinker struct {
-	baseLinker
+type binaryDecorator struct {
+	linker
 	stripper
 
 	Properties BinaryLinkerProperties
@@ -65,24 +70,16 @@ type binaryLinker struct {
 	hostToolPath android.OptionalPath
 }
 
-var _ linker = (*binaryLinker)(nil)
+var _ linker = (*binaryDecorator)(nil)
 
-func (binary *binaryLinker) linkerProps() []interface{} {
-	return append(binary.baseLinker.linkerProps(),
+func (binary *binaryDecorator) linkerProps() []interface{} {
+	return append(binary.linker.linkerProps(),
 		&binary.Properties,
 		&binary.stripper.StripProperties)
 
 }
 
-func (binary *binaryLinker) buildStatic() bool {
-	return binary.baseLinker.staticBinary()
-}
-
-func (binary *binaryLinker) buildShared() bool {
-	return !binary.baseLinker.staticBinary()
-}
-
-func (binary *binaryLinker) getStem(ctx BaseModuleContext) string {
+func (binary *binaryDecorator) getStem(ctx BaseModuleContext) string {
 	stem := ctx.ModuleName()
 	if binary.Properties.Stem != "" {
 		stem = binary.Properties.Stem
@@ -91,19 +88,19 @@ func (binary *binaryLinker) getStem(ctx BaseModuleContext) string {
 	return stem + binary.Properties.Suffix
 }
 
-func (binary *binaryLinker) linkerDeps(ctx BaseModuleContext, deps Deps) Deps {
-	deps = binary.baseLinker.linkerDeps(ctx, deps)
+func (binary *binaryDecorator) linkerDeps(ctx BaseModuleContext, deps Deps) Deps {
+	deps = binary.linker.linkerDeps(ctx, deps)
 	if ctx.Device() {
-		if !Bool(binary.baseLinker.Properties.Nocrt) {
+		if !Bool(binary.Properties.Nocrt) {
 			if !ctx.sdk() {
-				if binary.buildStatic() {
+				if Bool(binary.Properties.Static_executable) {
 					deps.CrtBegin = "crtbegin_static"
 				} else {
 					deps.CrtBegin = "crtbegin_dynamic"
 				}
 				deps.CrtEnd = "crtend_android"
 			} else {
-				if binary.buildStatic() {
+				if Bool(binary.Properties.Static_executable) {
 					deps.CrtBegin = "ndk_crtbegin_static." + ctx.sdkVersion()
 				} else {
 					if Bool(binary.Properties.Static_executable) {
@@ -116,7 +113,7 @@ func (binary *binaryLinker) linkerDeps(ctx BaseModuleContext, deps Deps) Deps {
 			}
 		}
 
-		if binary.buildStatic() {
+		if Bool(binary.Properties.Static_executable) {
 			if inList("libc++_static", deps.StaticLibs) {
 				deps.StaticLibs = append(deps.StaticLibs, "libm", "libc", "libdl")
 			}
@@ -130,55 +127,54 @@ func (binary *binaryLinker) linkerDeps(ctx BaseModuleContext, deps Deps) Deps {
 		}
 	}
 
-	if binary.buildShared() && inList("libc", deps.StaticLibs) {
+	if !Bool(binary.Properties.Static_executable) && inList("libc", deps.StaticLibs) {
 		ctx.ModuleErrorf("statically linking libc to dynamic executable, please remove libc\n" +
 			"from static libs or set static_executable: true")
 	}
 	return deps
 }
 
-func (*binaryLinker) installable() bool {
-	return true
-}
-
-func (binary *binaryLinker) isDependencyRoot() bool {
+func (binary *binaryDecorator) isDependencyRoot() bool {
 	return true
 }
 
 func NewBinary(hod android.HostOrDeviceSupported) *Module {
 	module := newModule(hod, android.MultilibFirst)
-	module.compiler = &baseCompiler{}
-	module.linker = &binaryLinker{}
-	module.installer = &baseInstaller{
-		dir: "bin",
+	binary := &binaryDecorator{
+		linker: module.linker,
 	}
+	module.linker = binary
+	module.installer.setDir("bin", "", InstallInSystem)
 	return module
 }
 
-func (binary *binaryLinker) linkerInit(ctx BaseModuleContext) {
-	binary.baseLinker.linkerInit(ctx)
+func (binary *binaryDecorator) linkerInit(ctx BaseModuleContext) {
+	binary.linker.linkerInit(ctx)
 
-	static := Bool(binary.Properties.Static_executable)
 	if ctx.Host() {
 		if ctx.Os() == android.Linux {
 			if binary.Properties.Static_executable == nil && Bool(ctx.AConfig().ProductVariables.HostStaticBinaries) {
-				static = true
+				binary.Properties.Static_executable = proptools.BoolPtr(true)
 			}
 		} else {
 			// Static executables are not supported on Darwin or Windows
-			static = false
+			binary.Properties.Static_executable = nil
 		}
-	}
-	if static {
-		binary.dynamicProperties.VariantIsStatic = true
-		binary.dynamicProperties.VariantIsStaticBinary = true
 	}
 }
 
-func (binary *binaryLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
-	flags = binary.baseLinker.linkerFlags(ctx, flags)
+func (binary *binaryDecorator) static() bool {
+	return Bool(binary.Properties.Static_executable)
+}
 
-	if ctx.Host() && !binary.staticBinary() {
+func (binary *binaryDecorator) staticBinary() bool {
+	return binary.static()
+}
+
+func (binary *binaryDecorator) linkerFlags(ctx ModuleContext, flags Flags) Flags {
+	flags = binary.linker.linkerFlags(ctx, flags)
+
+	if ctx.Host() && !Bool(binary.Properties.Static_executable) {
 		flags.LdFlags = append(flags.LdFlags, "-pie")
 		if ctx.Os() == android.Windows {
 			flags.LdFlags = append(flags.LdFlags, "-Wl,-e_mainCRTStartup")
@@ -193,7 +189,7 @@ func (binary *binaryLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 	}
 
 	if ctx.Device() {
-		if binary.buildStatic() {
+		if Bool(binary.Properties.Static_executable) {
 			// Clang driver needs -static to create static executable.
 			// However, bionic/linker uses -shared to overwrite.
 			// Linker for x86 targets does not allow coexistance of -static and -shared,
@@ -225,7 +221,7 @@ func (binary *binaryLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 			)
 		}
 	} else {
-		if binary.staticBinary() {
+		if Bool(binary.Properties.Static_executable) {
 			flags.LdFlags = append(flags.LdFlags, "-static")
 		}
 		if ctx.Darwin() {
@@ -236,7 +232,7 @@ func (binary *binaryLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 	return flags
 }
 
-func (binary *binaryLinker) link(ctx ModuleContext,
+func (binary *binaryDecorator) link(ctx ModuleContext,
 	flags Flags, deps PathDeps, objFiles android.Paths) android.Path {
 
 	fileName := binary.getStem(ctx) + flags.Toolchain.ExecutableSuffix()
@@ -277,6 +273,10 @@ func (binary *binaryLinker) link(ctx ModuleContext,
 	return ret
 }
 
-func (binary *binaryLinker) HostToolPath() android.OptionalPath {
+func (binary *binaryDecorator) HostToolPath() android.OptionalPath {
 	return binary.hostToolPath
+}
+
+func (binary *binaryDecorator) binary() *binaryDecorator {
+	return binary
 }

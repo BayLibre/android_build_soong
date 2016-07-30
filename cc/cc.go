@@ -188,13 +188,24 @@ type linker interface {
 
 	link(ctx ModuleContext, flags Flags, deps PathDeps, objFiles android.Paths) android.Path
 	appendLdflags([]string)
-	installable() bool
+
+	// Returns true for dependency roots (binaries)
+	// TODO(ccross): also handle dlopenable libraries
+	isDependencyRoot() bool
+
+	library() libraryInterface
+	binary() *binaryDecorator
+	static() bool
+	staticBinary() bool
+	addRunpath(...string)
 }
 
 type installer interface {
 	installerProps() []interface{}
 	install(ctx ModuleContext, path android.Path)
 	inData() bool
+
+	setDir(string, string, installLocation)
 }
 
 type dependencyTag struct {
@@ -251,6 +262,8 @@ type Module struct {
 	outputFile android.OptionalPath
 
 	cachedToolchain config.Toolchain
+
+	subAndroidMkOnce map[subAndroidMkProvider]bool
 }
 
 func (c *Module) Init() (blueprint.Module, []interface{}) {
@@ -321,25 +334,17 @@ func (ctx *moduleContextImpl) toolchain() config.Toolchain {
 }
 
 func (ctx *moduleContextImpl) static() bool {
-	if ctx.mod.linker == nil {
-		panic(fmt.Errorf("static called on module %q with no linker", ctx.ctx.ModuleName()))
+	if ctx.mod.linker != nil {
+		return ctx.mod.linker.static()
 	}
-	if linker, ok := ctx.mod.linker.(baseLinkerInterface); ok {
-		return linker.static()
-	} else {
-		panic(fmt.Errorf("static called on module %q that doesn't use base linker", ctx.ctx.ModuleName()))
-	}
+	return false
 }
 
 func (ctx *moduleContextImpl) staticBinary() bool {
-	if ctx.mod.linker == nil {
-		panic(fmt.Errorf("staticBinary called on module %q with no linker", ctx.ctx.ModuleName()))
+	if ctx.mod.linker != nil {
+		return ctx.mod.linker.staticBinary()
 	}
-	if linker, ok := ctx.mod.linker.(baseLinkerInterface); ok {
-		return linker.staticBinary()
-	} else {
-		panic(fmt.Errorf("staticBinary called on module %q that doesn't use base linker", ctx.ctx.ModuleName()))
-	}
+	return false
 }
 
 func (ctx *moduleContextImpl) noDefaultCompilerFlags() bool {
@@ -369,8 +374,11 @@ func (ctx *moduleContextImpl) selectedStl() string {
 
 func newBaseModule(hod android.HostOrDeviceSupported, multilib android.Multilib) *Module {
 	return &Module{
-		hod:      hod,
-		multilib: multilib,
+		hod:       hod,
+		multilib:  multilib,
+		compiler:  &baseCompiler{},
+		linker:    &baseLinker{},
+		installer: &baseInstaller{},
 	}
 }
 
@@ -452,7 +460,7 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		}
 		c.outputFile = android.OptionalPathForPath(outputFile)
 
-		if c.installer != nil && c.linker.installable() {
+		if c.installer != nil {
 			c.installer.install(ctx, outputFile)
 			if ctx.Failed() {
 				return
@@ -663,7 +671,7 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			// Platform code can link to anything
 			return true
 		}
-		if _, ok := to.linker.(*toolchainLibraryLinker); ok {
+		if _, ok := to.linker.(*toolchainLibraryDecorator); ok {
 			// These are always allowed
 			return true
 		}
@@ -675,7 +683,7 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			// These are allowed, but don't set sdk_version
 			return true
 		}
-		if _, ok := to.linker.(*stubLinker); ok {
+		if _, ok := to.linker.(*stubDecorator); ok {
 			// These aren't real libraries, but are the stub shared libraries that are included in
 			// the NDK.
 			return true
@@ -741,7 +749,7 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 
 		if tag == reuseObjTag {
 			depPaths.ObjFiles = append(depPaths.ObjFiles,
-				cc.compiler.(*libraryCompiler).reuseObjFiles...)
+				cc.compiler.(libraryInterface).reuseObjs()...)
 			return
 		}
 
@@ -773,7 +781,7 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			depPtr = &depPaths.LateStaticLibs
 		case wholeStaticDepTag:
 			depPtr = &depPaths.WholeStaticLibs
-			staticLib, _ := cc.linker.(libraryInterface)
+			staticLib := cc.linker.library()
 			if staticLib == nil || !staticLib.static() {
 				ctx.ModuleErrorf("module %q not a static library", name)
 				return
@@ -831,9 +839,8 @@ func defaultsFactory() (blueprint.Module, []interface{}) {
 		&BaseProperties{},
 		&BaseCompilerProperties{},
 		&BaseLinkerProperties{},
-		&LibraryCompilerProperties{},
+		&LibraryProperties{},
 		&FlagExporterProperties{},
-		&LibraryLinkerProperties{},
 		&BinaryLinkerProperties{},
 		&TestLinkerProperties{},
 		&UnusedProperties{},
@@ -846,58 +853,6 @@ func defaultsFactory() (blueprint.Module, []interface{}) {
 		android.MultilibDefault, propertyStructs...)
 
 	return android.InitDefaultsModule(module, module, propertyStructs...)
-}
-
-//
-// Device libraries shipped with gcc
-//
-
-type toolchainLibraryLinker struct {
-	baseLinker
-}
-
-var _ baseLinkerInterface = (*toolchainLibraryLinker)(nil)
-
-func (*toolchainLibraryLinker) linkerDeps(ctx BaseModuleContext, deps Deps) Deps {
-	// toolchain libraries can't have any dependencies
-	return deps
-}
-
-func (*toolchainLibraryLinker) buildStatic() bool {
-	return true
-}
-
-func (*toolchainLibraryLinker) buildShared() bool {
-	return false
-}
-
-func toolchainLibraryFactory() (blueprint.Module, []interface{}) {
-	module := newBaseModule(android.DeviceSupported, android.MultilibBoth)
-	module.compiler = &baseCompiler{}
-	module.linker = &toolchainLibraryLinker{}
-	module.Properties.Clang = proptools.BoolPtr(false)
-	return module.Init()
-}
-
-func (library *toolchainLibraryLinker) link(ctx ModuleContext,
-	flags Flags, deps PathDeps, objFiles android.Paths) android.Path {
-
-	libName := ctx.ModuleName() + staticLibraryExtension
-	outputFile := android.PathForModuleOut(ctx, libName)
-
-	if flags.Clang {
-		ctx.ModuleErrorf("toolchain_library must use GCC, not Clang")
-	}
-
-	CopyGccLib(ctx, libName, flagsToBuilderFlags(flags), outputFile)
-
-	ctx.CheckbuildFile(outputFile)
-
-	return outputFile
-}
-
-func (*toolchainLibraryLinker) installable() bool {
-	return false
 }
 
 // lastUniqueElements returns all unique elements of a slice, keeping the last copy of each

@@ -32,13 +32,16 @@ func init() {
 }
 
 type objectLinker struct {
+	linker
 	Properties ObjectLinkerProperties
 }
 
 func objectFactory() (blueprint.Module, []interface{}) {
 	module := newBaseModule(android.DeviceSupported, android.MultilibBoth)
-	module.compiler = &baseCompiler{}
-	module.linker = &objectLinker{}
+	module.linker = &objectLinker{
+		linker: module.linker,
+	}
+	module.installer = nil
 	return module.Init()
 }
 
@@ -83,8 +86,4 @@ func (object *objectLinker) link(ctx ModuleContext,
 
 	ctx.CheckbuildFile(outputFile)
 	return outputFile
-}
-
-func (*objectLinker) installable() bool {
-	return false
 }

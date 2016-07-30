@@ -30,12 +30,19 @@ type InstallerProperties struct {
 	Symlinks []string `android:"arch_variant"`
 }
 
+type installLocation int
+
+const (
+	InstallInSystem installLocation = 0
+	InstallInData                   = iota
+)
+
 type baseInstaller struct {
 	Properties InstallerProperties
 
-	dir   string
-	dir64 string
-	data  bool
+	dir      string
+	dir64    string
+	location installLocation
 
 	path android.OutputPath
 }
@@ -62,5 +69,11 @@ func (installer *baseInstaller) install(ctx ModuleContext, file android.Path) {
 }
 
 func (installer *baseInstaller) inData() bool {
-	return installer.data
+	return installer.location == InstallInData
+}
+
+func (installer *baseInstaller) setDir(dir string, dir64 string, location installLocation) {
+	installer.dir = dir
+	installer.dir64 = dir64
+	installer.location = location
 }

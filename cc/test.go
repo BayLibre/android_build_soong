@@ -73,8 +73,8 @@ func benchmarkHostFactory() (blueprint.Module, []interface{}) {
 
 func testPerSrcMutator(mctx android.BottomUpMutatorContext) {
 	if m, ok := mctx.Module().(*Module); ok {
-		if test, ok := m.linker.(*testBinaryLinker); ok {
-			if Bool(test.testLinker.Properties.Test_per_src) {
+		if test, ok := m.linker.(*testDecorator); ok && m.linker.binary() != nil {
+			if Bool(test.Properties.Test_per_src) {
 				testNames := make([]string, len(m.compiler.(*baseCompiler).Properties.Srcs))
 				for i, src := range m.compiler.(*baseCompiler).Properties.Srcs {
 					testNames[i] = strings.TrimSuffix(filepath.Base(src), filepath.Ext(src))
@@ -82,18 +82,22 @@ func testPerSrcMutator(mctx android.BottomUpMutatorContext) {
 				tests := mctx.CreateLocalVariations(testNames...)
 				for i, src := range m.compiler.(*baseCompiler).Properties.Srcs {
 					tests[i].(*Module).compiler.(*baseCompiler).Properties.Srcs = []string{src}
-					tests[i].(*Module).linker.(*testBinaryLinker).binaryLinker.Properties.Stem = testNames[i]
+					tests[i].(*Module).linker.binary().Properties.Stem = testNames[i]
 				}
 			}
 		}
 	}
 }
 
-type testLinker struct {
+type testDecorator struct {
 	Properties TestLinkerProperties
+	linker
+	installer
 }
 
-func (test *testLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
+func (test *testDecorator) linkerFlags(ctx ModuleContext, flags Flags) Flags {
+	flags = test.linker.linkerFlags(ctx, flags)
+
 	if !test.Properties.Gtest {
 		return flags
 	}
@@ -119,7 +123,7 @@ func (test *testLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 	return flags
 }
 
-func (test *testLinker) linkerDeps(ctx BaseModuleContext, deps Deps) Deps {
+func (test *testDecorator) linkerDeps(ctx BaseModuleContext, deps Deps) Deps {
 	if test.Properties.Gtest {
 		if ctx.sdk() && ctx.Device() {
 			switch ctx.selectedStl() {
@@ -134,123 +138,93 @@ func (test *testLinker) linkerDeps(ctx BaseModuleContext, deps Deps) Deps {
 			deps.StaticLibs = append(deps.StaticLibs, "libgtest_main", "libgtest")
 		}
 	}
+
+	deps = test.linker.linkerDeps(ctx, deps)
+
 	return deps
 }
 
-type testBinaryLinker struct {
-	testLinker
-	binaryLinker
-}
-
-func (test *testBinaryLinker) linkerInit(ctx BaseModuleContext) {
-	test.binaryLinker.linkerInit(ctx)
+func (test *testDecorator) linkerInit(ctx BaseModuleContext) {
+	test.linker.linkerInit(ctx)
 	runpath := "../../lib"
 	if ctx.toolchain().Is64Bit() {
 		runpath += "64"
 	}
-	test.dynamicProperties.RunPaths = append([]string{runpath}, test.dynamicProperties.RunPaths...)
+	test.linker.addRunpath(runpath)
 }
 
-func (test *testBinaryLinker) linkerProps() []interface{} {
-	return append(test.binaryLinker.linkerProps(), &test.testLinker.Properties)
+func (test *testDecorator) linkerProps() []interface{} {
+	return append(test.linker.linkerProps(), &test.Properties)
 }
 
-func (test *testBinaryLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
-	flags = test.binaryLinker.linkerFlags(ctx, flags)
-	flags = test.testLinker.linkerFlags(ctx, flags)
-	return flags
-}
-
-func (test *testBinaryLinker) linkerDeps(ctx BaseModuleContext, deps Deps) Deps {
-	deps = test.testLinker.linkerDeps(ctx, deps)
-	deps = test.binaryLinker.linkerDeps(ctx, deps)
-	return deps
-}
-
-type testLibraryLinker struct {
-	testLinker
-	*libraryLinker
-}
-
-func (test *testLibraryLinker) linkerProps() []interface{} {
-	return append(test.libraryLinker.linkerProps(), &test.testLinker.Properties)
-}
-
-func (test *testLibraryLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
-	flags = test.libraryLinker.linkerFlags(ctx, flags)
-	flags = test.testLinker.linkerFlags(ctx, flags)
-	return flags
-}
-
-func (test *testLibraryLinker) linkerDeps(ctx BaseModuleContext, deps Deps) Deps {
-	deps = test.testLinker.linkerDeps(ctx, deps)
-	deps = test.libraryLinker.linkerDeps(ctx, deps)
-	return deps
-}
-
-type testInstaller struct {
-	baseInstaller
-}
-
-func (installer *testInstaller) install(ctx ModuleContext, file android.Path) {
-	installer.dir = filepath.Join(installer.dir, ctx.ModuleName())
-	installer.dir64 = filepath.Join(installer.dir64, ctx.ModuleName())
-	installer.baseInstaller.install(ctx, file)
+func (test *testDecorator) install(ctx ModuleContext, file android.Path) {
+	test.installer.setDir(filepath.Join("nativetest", ctx.ModuleName()),
+		filepath.Join("nativetest64", ctx.ModuleName()),
+		InstallInData)
+	test.installer.install(ctx, file)
 }
 
 func NewTest(hod android.HostOrDeviceSupported) *Module {
-	module := newModule(hod, android.MultilibBoth)
-	module.compiler = &baseCompiler{}
-	linker := &testBinaryLinker{}
-	linker.testLinker.Properties.Gtest = true
-	module.linker = linker
-	module.installer = &testInstaller{
-		baseInstaller: baseInstaller{
-			dir:   "nativetest",
-			dir64: "nativetest64",
-			data:  true,
-		},
+	module := NewBinary(hod)
+	module.multilib = android.MultilibBoth
+
+	test := &testDecorator{
+		linker:    module.linker,
+		installer: module.installer,
 	}
+	test.Properties.Gtest = true
+	module.linker = test
+	module.installer = test
 	return module
 }
 
 func NewTestLibrary(hod android.HostOrDeviceSupported) *Module {
-	module := NewLibrary(android.HostAndDeviceSupported, false, true)
-	linker := &testLibraryLinker{
-		libraryLinker: module.linker.(*libraryLinker),
+	module, _ := NewLibrary(android.HostAndDeviceSupported, false, true)
+	test := &testDecorator{
+		linker:    module.linker,
+		installer: module.installer,
 	}
-	linker.testLinker.Properties.Gtest = true
-	module.linker = linker
-	module.installer = &testInstaller{
-		baseInstaller: baseInstaller{
-			dir:   "nativetest",
-			dir64: "nativetest64",
-			data:  true,
-		},
-	}
+	test.Properties.Gtest = true
+	module.linker = test
+	module.installer = test
 	return module
 }
 
-type benchmarkLinker struct {
-	testBinaryLinker
+type benchmarkDecorator struct {
+	linker
+	installer
 }
 
-func (benchmark *benchmarkLinker) linkerDeps(ctx BaseModuleContext, deps Deps) Deps {
-	deps = benchmark.testBinaryLinker.linkerDeps(ctx, deps)
+func (benchmark *benchmarkDecorator) linkerInit(ctx BaseModuleContext) {
+	benchmark.linker.linkerInit(ctx)
+	runpath := "../../lib"
+	if ctx.toolchain().Is64Bit() {
+		runpath += "64"
+	}
+	benchmark.linker.addRunpath(runpath)
+}
+
+func (benchmark *benchmarkDecorator) install(ctx ModuleContext, file android.Path) {
+	benchmark.installer.setDir(filepath.Join("nativetest", ctx.ModuleName()),
+		filepath.Join("nativetest64", ctx.ModuleName()),
+		InstallInData)
+	benchmark.installer.install(ctx, file)
+}
+
+func (benchmark *benchmarkDecorator) linkerDeps(ctx BaseModuleContext, deps Deps) Deps {
+	deps = benchmark.linker.linkerDeps(ctx, deps)
 	deps.StaticLibs = append(deps.StaticLibs, "libgoogle-benchmark")
 	return deps
 }
 
 func NewBenchmark(hod android.HostOrDeviceSupported) *Module {
-	module := newModule(hod, android.MultilibFirst)
-	module.compiler = &baseCompiler{}
-	module.linker = &benchmarkLinker{}
-	module.installer = &testInstaller{
-		baseInstaller: baseInstaller{
-			dir:   "nativetest",
-			dir64: "nativetest64",
-			data:  true,
-		},
+	module := NewBinary(hod)
+	module.multilib = android.MultilibBoth
+	benchmark := &benchmarkDecorator{
+		linker:    module.linker,
+		installer: module.installer,
 	}
+	module.linker = benchmark
+	module.installer = benchmark
 	return module
 }
