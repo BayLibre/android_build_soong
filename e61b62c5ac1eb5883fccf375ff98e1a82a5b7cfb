@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af1de14e_6be352ce",
+        "filename": "cc/gen_stub_libs.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1041673
+      },
+      "writtenOn": "2016-08-01T23:29:42Z",
+      "side": 1,
+      "message": "version script?",
+      "range": {
+        "startLine": 145,
+        "startChar": 28,
+        "endLine": 145,
+        "endChar": 39
+      },
+      "revId": "e61b62c5ac1eb5883fccf375ff98e1a82a5b7cfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af1de14e_cb88c6cb",
+        "filename": "cc/gen_stub_libs.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1041673
+      },
+      "writtenOn": "2016-08-01T23:29:42Z",
+      "side": 1,
+      "message": "2 spaces?",
+      "range": {
+        "startLine": 289,
+        "startChar": 43,
+        "endLine": 289,
+        "endChar": 47
+      },
+      "revId": "e61b62c5ac1eb5883fccf375ff98e1a82a5b7cfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af1de14e_6b8272a7",
+        "filename": "cc/gen_stub_libs.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1041673
+      },
+      "writtenOn": "2016-08-01T23:29:42Z",
+      "side": 1,
+      "message": "4 spaces?",
+      "range": {
+        "startLine": 292,
+        "startChar": 47,
+        "endLine": 292,
+        "endChar": 55
+      },
+      "revId": "e61b62c5ac1eb5883fccf375ff98e1a82a5b7cfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
