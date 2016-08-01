@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "af1de14e_eb34a204",
+        "filename": "cc/gen_stub_libs.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-08-01T23:33:52Z",
+      "side": 1,
+      "message": "I was trying to differentiate the input \"symbol file\" from the output \"version script\" here. The former might be a valid version script, but it isn\u0027t valid to be used as the version script for the library in question because it hasn\u0027t been processed to handle the tags yet.\n\nI\u0027m open to a better name if anyone has ideas.",
+      "parentUuid": "af1de14e_6be352ce",
+      "range": {
+        "startLine": 145,
+        "startChar": 28,
+        "endLine": 145,
+        "endChar": 39
+      },
+      "revId": "e61b62c5ac1eb5883fccf375ff98e1a82a5b7cfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af1de14e_cb88c6cb",
         "filename": "cc/gen_stub_libs.py",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-08-01T23:29:42Z",
       "side": 1,
       "message": "2 spaces?",
+      "range": {
+        "startLine": 289,
+        "startChar": 43,
+        "endLine": 289,
+        "endChar": 47
+      },
+      "revId": "e61b62c5ac1eb5883fccf375ff98e1a82a5b7cfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af1de14e_6b499287",
+        "filename": "cc/gen_stub_libs.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-08-01T23:33:52Z",
+      "side": 1,
+      "message": "Doesn\u0027t really make a difference since this is just for an intermediate build output. Keeping to four means the indentation in the tests matches the rest of the file.",
+      "parentUuid": "af1de14e_cb88c6cb",
       "range": {
         "startLine": 289,
         "startChar": 43,
