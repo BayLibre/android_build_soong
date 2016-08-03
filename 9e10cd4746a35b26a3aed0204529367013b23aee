@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94dd9660_eb0c5142",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-08-03T21:38:12Z",
+      "side": 1,
+      "message": "One thing I should note here: \"current\" isn\u0027t actually valid yet. I can replace this with a TODO if anyone would prefer I didn\u0027t speculatively add this check, but this is safe as-is and should be correct once I do get to adding it.",
+      "revId": "9e10cd4746a35b26a3aed0204529367013b23aee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
