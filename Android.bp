@@ -194,6 +194,32 @@ bootstrap_go_package {
     pluginFor: ["soong_build"],
 }
 
+bootstrap_go_package {
+    name: "soong-zip",
+    pkgPath: "android/zip",
+    srcs: [
+        "zip/reader.go",
+        "zip/register.go",
+        "zip/struct.go",
+        "zip/writer.go",
+
+        "zip/android.go",
+    ],
+    testSrcs: [
+        "zip/reader_test.go",
+        "zip/writer_test.go",
+        "zip/zip_test.go",
+    ],
+}
+
+blueprint_go_binary {
+    name: "zip2zip",
+    deps: ["soong-zip"],
+    srcs: [
+        "cmd/zip2zip/zip2zip.go",
+    ],
+}
+
 blueprint_go_binary {
     name: "soong_jar",
     srcs: [
