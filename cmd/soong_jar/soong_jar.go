@@ -15,16 +15,29 @@
 package main
 
 import (
-	"archive/zip"
+	"bytes"
+	"compress/flate"
 	"flag"
 	"fmt"
+	"hash/crc32"
 	"io"
 	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
+	"sync"
 	"time"
+
+	"android/zip"
 )
+
+type nopCloser struct {
+	io.Writer
+}
+
+func (nopCloser) Close() error {
+	return nil
+}
 
 type fileArg struct {
 	relativeRoot, file string
@@ -56,6 +69,7 @@ var (
 	relativeRoot = flag.String("C", "", "path to use as relative root of files in next -f or -l argument")
 	listFiles    fileArgs
 	files        fileArgs
+	// TODO(dwillemsen): flag for compression level
 )
 
 func init() {
@@ -74,7 +88,15 @@ type zipWriter struct {
 	createdDirs map[string]bool
 	directories bool
 
-	w *zip.Writer
+	errors   chan error
+	writeOps chan chan *zipEntry
+
+	rateLimit *RateLimit
+}
+
+type zipEntry struct {
+	fh *zip.FileHeader
+	r  io.ReadCloser
 }
 
 func main() {
@@ -91,7 +113,6 @@ func main() {
 		directories: *directories,
 	}
 
-	// TODO: Go's zip implementation doesn't support increasing the compression level yet
 	err := w.write(*out, listFiles, *manifest)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err.Error())
@@ -112,31 +133,91 @@ func (z *zipWriter) write(out string, listFiles fileArgs, manifest string) error
 		}
 	}()
 
-	z.w = zip.NewWriter(f)
-	defer z.w.Close()
+	z.errors = make(chan error)
+	defer close(z.errors)
+	// This channel size can be essentially unlimited -- it's just used
+	// as a fifo queue. The actual rate limit is handled by the RateLimit
+	z.writeOps = make(chan chan *zipEntry, 10000)
 
-	for _, listFile := range listFiles {
-		err = z.writeListFile(listFile)
-		if err != nil {
+	z.rateLimit = NewRateLimit(0)
+	defer z.rateLimit.Stop()
+
+	go func() {
+		defer close(z.writeOps)
+
+		for _, listFile := range listFiles {
+			err = z.writeListFile(listFile)
+			if err != nil {
+				z.errors <- err
+				return
+			}
+		}
+
+		for _, file := range files {
+			err = z.writeRelFile(file.relativeRoot, file.file)
+			if err != nil {
+				z.errors <- err
+				return
+			}
+		}
+
+		if manifest != "" {
+			err = z.writeFile("META-INF/MANIFEST.MF", manifest)
+			if err != nil {
+				z.errors <- err
+				return
+			}
+		}
+	}()
+
+	zipw := zip.NewWriter(f)
+	defer zipw.Close()
+
+loop:
+	for {
+		select {
+		case writeOp, ok := <-z.writeOps:
+			if !ok {
+				break loop
+			}
+
+			select {
+			case op := <-writeOp:
+				var out io.WriteCloser
+				if op.fh.Method == zip.Deflate {
+					out, err = zipw.CreateCompressedHeader(op.fh)
+				} else {
+					var zw io.Writer
+					zw, err = zipw.CreateHeader(op.fh)
+					out = nopCloser{zw}
+				}
+				if err != nil {
+					return err
+				}
+
+				if op.r != nil {
+					_, err = io.Copy(out, op.r)
+					op.r.Close()
+					if err != nil {
+						return err
+					}
+				}
+
+				out.Close()
+			case err = <-z.errors:
+				return err
+			}
+		case err = <-z.errors:
 			return err
 		}
 	}
 
-	for _, file := range files {
-		err = z.writeRelFile(file.relativeRoot, file.file)
-		if err != nil {
-			return err
-		}
+	select {
+	case err = <-z.errors:
+		return err
+	default:
+		return nil
 	}
-
-	if manifest != "" {
-		err = z.writeFile("META-INF/MANIFEST.MF", manifest)
-		if err != nil {
-			return err
-		}
-	}
-
-	return nil
 }
 
 func (z *zipWriter) writeListFile(listFile fileArg) error {
@@ -205,23 +286,89 @@ func (z *zipWriter) writeFile(rel, file string) error {
 	}
 	fileHeader.SetModTime(z.time)
 
-	out, err := z.w.CreateHeader(fileHeader)
-	if err != nil {
-		return err
-	}
+	compressChan := make(chan *zipEntry, 1)
+	z.writeOps <- compressChan
 
-	in, err := os.Open(file)
-	if err != nil {
-		return err
-	}
-	defer in.Close()
+	request := z.rateLimit.RequestExecution()
 
-	_, err = io.Copy(out, in)
-	if err != nil {
-		return err
-	}
+	go z.compressFile(fileHeader, file, request, compressChan)
 
 	return nil
+}
+
+var compressorPool sync.Pool
+
+func getCompressor(w io.Writer) (*flate.Writer, error) {
+	fw, ok := compressorPool.Get().(*flate.Writer)
+	if ok {
+		fw.Reset(w)
+		return fw, nil
+	} else {
+		return flate.NewWriter(w, 6)
+	}
+}
+
+func (z *zipWriter) compressFile(fh *zip.FileHeader, file string, request ExecutionRequest, compressChan chan *zipEntry) {
+	r, err := os.Open(file)
+	if err != nil {
+		z.errors <- err
+		return
+	}
+
+	exec := request.Wait()
+	defer exec.Finish()
+
+	crc := crc32.NewIEEE()
+	count, err := io.Copy(crc, r)
+	if err != nil {
+		r.Close()
+		z.errors <- err
+		return
+	}
+
+	fh.CRC32 = crc.Sum32()
+	fh.UncompressedSize64 = uint64(count)
+
+	_, err = r.Seek(0, 0)
+	if err != nil {
+		r.Close()
+		z.errors <- err
+		return
+	}
+
+	buf := new(bytes.Buffer)
+	fw, err := getCompressor(buf)
+	if err != nil {
+		r.Close()
+		z.errors <- err
+		return
+	}
+
+	_, err = io.Copy(fw, r)
+	if err != nil {
+		r.Close()
+		z.errors <- err
+		return
+	}
+	fw.Close()
+	compressorPool.Put(fw)
+
+	ze := &zipEntry{fh: fh}
+
+	if uint64(buf.Len()) < fh.UncompressedSize64 {
+		ze.r = ioutil.NopCloser(buf)
+		r.Close()
+	} else {
+		_, err = r.Seek(0, 0)
+		if err != nil {
+			z.errors <- err
+		}
+
+		ze.fh.Method = zip.Store
+		ze.r = r
+	}
+
+	compressChan <- ze
 }
 
 func (z *zipWriter) writeDirectory(dir string) error {
@@ -238,10 +385,11 @@ func (z *zipWriter) writeDirectory(dir string) error {
 		dirHeader.SetMode(0700 | os.ModeDir)
 		dirHeader.SetModTime(z.time)
 
-		_, err := z.w.CreateHeader(dirHeader)
-		if err != nil {
-			return err
+		ze := make(chan *zipEntry, 1)
+		ze <- &zipEntry{
+			fh: dirHeader,
 		}
+		z.writeOps <- ze
 
 		dir, _ = filepath.Split(dir)
 	}
@@ -263,16 +411,20 @@ func (z *zipWriter) writeSymlink(rel, file string) error {
 	fileHeader.SetModTime(z.time)
 	fileHeader.SetMode(0700 | os.ModeSymlink)
 
-	out, err := z.w.CreateHeader(fileHeader)
-	if err != nil {
-		return err
-	}
-
 	dest, err := os.Readlink(file)
 	if err != nil {
 		return err
 	}
 
-	_, err = io.WriteString(out, dest)
-	return err
+	readerChan := make(chan io.ReadCloser, 1)
+	readerChan <- ioutil.NopCloser(bytes.NewBufferString(dest))
+
+	ze := make(chan *zipEntry, 1)
+	ze <- &zipEntry{
+		fh: fileHeader,
+		r:  ioutil.NopCloser(bytes.NewBufferString(dest)),
+	}
+	z.writeOps <- ze
+
+	return nil
 }
