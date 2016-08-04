@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3414ead3_07e1a09a",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-08-04T20:06:03Z",
+      "side": 1,
+      "message": "idk how early we actually want this to run. As long as it\u0027s before depsMutator it\u0027s good enough for my purposes (and the most behavior preserving).",
+      "revId": "066ca0879e3bd492004b7bdf74a26bcfef110539",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
