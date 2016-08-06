@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d97e679c_e480a42a",
+        "filename": "cmd/soong_jar/rate_limit.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-08-06T01:07:54Z",
+      "side": 1,
+      "message": "bool or struct{}",
+      "range": {
+        "startLine": 23,
+        "startChar": 15,
+        "endLine": 23,
+        "endChar": 18
+      },
+      "revId": "1ab4cefae2d5b4c69abb56c4a847a99a403ab88c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d97e679c_c4fa48a7",
+        "filename": "cmd/soong_jar/soong_jar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-08-06T01:07:54Z",
+      "side": 1,
+      "message": "I think this should do the wait, which will prevent spawning a goroutine per file and then leaving most of them blocked.",
+      "revId": "1ab4cefae2d5b4c69abb56c4a847a99a403ab88c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
