@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d97e679c_2481bc5e",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-08-06T00:41:15Z",
+      "side": 1,
+      "message": "Put this in the zip directory?",
+      "revId": "8ec7078340bc160035c4106adadc44e74b315bee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
