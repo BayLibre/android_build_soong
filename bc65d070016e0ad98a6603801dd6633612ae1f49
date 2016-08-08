@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9dd872d_80c39805",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-08-08T17:48:12Z",
+      "side": 1,
+      "message": "[]interface{}, the caller doesn\u0027t care about the type and there might be more than one",
+      "range": {
+        "startLine": 260,
+        "startChar": 32,
+        "endLine": 260,
+        "endChar": 50
+      },
+      "revId": "bc65d070016e0ad98a6603801dd6633612ae1f49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9dd872d_a0c7b410",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-08-08T17:48:12Z",
+      "side": 1,
+      "message": "[]interface{\u0026stub.properties}",
+      "range": {
+        "startLine": 273,
+        "startChar": 16,
+        "endLine": 273,
+        "endChar": 32
+      },
+      "revId": "bc65d070016e0ad98a6603801dd6633612ae1f49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9dd872d_c0c4c00e",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-08-08T17:48:12Z",
+      "side": 1,
+      "message": "properties...",
+      "range": {
+        "startLine": 279,
+        "startChar": 24,
+        "endLine": 279,
+        "endChar": 34
+      },
+      "revId": "bc65d070016e0ad98a6603801dd6633612ae1f49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
