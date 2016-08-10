@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f927ab96_462a1284",
+        "filename": "cmd/soong_jar/rate_limit.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-08-10T23:56:19Z",
+      "side": 1,
+      "message": "I\u0027d make requests an output channel from here, and then select case requests \u003c- true.  It will only trigger when RequestExecution() is blocking on reading from it.",
+      "revId": "cfaa8a217de7eeae4884eacd8c3e26d3574420d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
