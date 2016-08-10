@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f927ab96_2613566c",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-08-10T23:45:09Z",
+      "side": 1,
+      "message": "This is a little unfortunate",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 24
+      },
+      "revId": "562f6f68abd968344250b54e6b57ada39982f48a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
