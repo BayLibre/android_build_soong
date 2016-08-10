@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f927ab96_c6044221",
+        "filename": "third_party/zip/android.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-08-10T23:47:36Z",
+      "side": 1,
+      "message": "Put an Android license header in here",
+      "revId": "6132946594266fba527d9c41c3d74da194ee0558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
