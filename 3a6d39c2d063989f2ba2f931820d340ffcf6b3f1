@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f927ab96_a9fe39cf",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-08-11T04:34:14Z",
+      "side": 1,
+      "message": "Fine for now, but add a TODO here to move this to blueprint files or stl.go in the future when we get prebuilt support.",
+      "revId": "3a6d39c2d063989f2ba2f931820d340ffcf6b3f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
