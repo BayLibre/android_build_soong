@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f927ab96_6959a12e",
+        "filename": "cmd/soong_jar/rate_limit.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-08-11T04:31:15Z",
+      "side": 1,
+      "message": "I don\u0027t see the point of the Execution type, Release is implemented on RateLimit, why not have Finish implemented on RateLimit?",
+      "revId": "a169de21c613490b357d848cb61b24a6e9cd60a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f927ab96_c98a956a",
+        "filename": "cmd/soong_jar/rate_limit.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-08-11T04:31:15Z",
+      "side": 1,
+      "message": "Having Finish increase the pending buffer size and Release decrement it seems strange to me.  I guess the problems it that you have two stages of completion, cpu work done and memory freed.  Could you get a similar parallelism with a single completion for cpu+memory? Maybe by doubling the number of goroutines to make sure the ones waiting for memory to be released don\u0027t prevent spawning new cpu work?",
+      "revId": "a169de21c613490b357d848cb61b24a6e9cd60a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f927ab96_a9ac79f3",
+        "filename": "cmd/soong_jar/soong_jar.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-08-11T04:31:15Z",
+      "side": 1,
+      "message": "this makes more sense in the main thread to me",
+      "revId": "a169de21c613490b357d848cb61b24a6e9cd60a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f927ab96_499f85a4",
+        "filename": "cmd/soong_jar/soong_jar.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-08-11T04:31:15Z",
+      "side": 1,
+      "message": "The structure of this loop is very confusing.  It is effectively using a state machine for flow control by setting channels to nil.\n\nI\u0027d suggest restructuring this as a pipeline (https://blog.golang.org/pipelines).  Have the main thread iterate through files and create structs describing what to do.  The first stage gets descriptor structs and ratelimits them.  It calls functions to start any necessary work, collecting a future if necessary.  The future could take the form of the Reader half of a io.Pipe, and the parallel block compression could wrap the PipeReaders in an io.MultiReader, so the interface is always an io.Reader.\n\nIt puts the futures into a struct and passes it to the 3rd stage.  The 3rd stage gets a futures struct, waits on the futures it needs, and writes to the file.",
+      "revId": "a169de21c613490b357d848cb61b24a6e9cd60a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f927ab96_e98f5177",
+        "filename": "cmd/soong_jar/soong_jar.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-08-11T04:31:15Z",
+      "side": 1,
+      "message": "This seems like more precision on ratelimiting than necessary.  You don\u0027t need to ensure you have exactly as many goroutines as cpus, you just need to make sure that the number of pending files to be zipped doesn\u0027t far outstrip the number of cpus so that you have some chance of finishing the next zip file and freeing its memory in a reasonable amount of time.",
+      "revId": "a169de21c613490b357d848cb61b24a6e9cd60a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f927ab96_09a58dfc",
+        "filename": "cmd/soong_jar/soong_jar.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-08-11T04:31:15Z",
+      "side": 1,
+      "message": "Why read the file into memory?  Why not pass a File to compressWholeFile?",
+      "revId": "a169de21c613490b357d848cb61b24a6e9cd60a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
