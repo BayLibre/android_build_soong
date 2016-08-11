@@ -22,6 +22,30 @@
       "revId": "562f6f68abd968344250b54e6b57ada39982f48a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f927ab96_4675b28f",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-08-11T00:06:12Z",
+      "side": 1,
+      "message": "Yeah, I renamed it to android-archive-zip.",
+      "parentUuid": "f927ab96_2613566c",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 24
+      },
+      "revId": "562f6f68abd968344250b54e6b57ada39982f48a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
