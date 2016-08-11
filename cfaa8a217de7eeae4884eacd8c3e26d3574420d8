@@ -16,6 +16,24 @@
       "revId": "cfaa8a217de7eeae4884eacd8c3e26d3574420d8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f927ab96_6659ce2e",
+        "filename": "cmd/soong_jar/rate_limit.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-08-11T00:05:40Z",
+      "side": 1,
+      "message": "Ah, now that it\u0027s unbuffered that\u0027ll work. Done (and moved it from chan bool to chan struct{})",
+      "parentUuid": "f927ab96_462a1284",
+      "revId": "cfaa8a217de7eeae4884eacd8c3e26d3574420d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
