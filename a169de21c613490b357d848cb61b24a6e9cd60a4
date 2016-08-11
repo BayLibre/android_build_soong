@@ -177,6 +177,24 @@
     },
     {
       "key": {
+        "uuid": "f927ab96_69ad2198",
+        "filename": "cmd/soong_jar/soong_jar.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-08-11T09:10:58Z",
+      "side": 1,
+      "message": "With PS5 and another benchmarking run, I\u0027m actually seeing better results with higher -j values. Though some of that may be because -j48 on a 48 (logical) core machine is using 3x the maximum memory usage of -j40 / -j56 or higher for some reason.",
+      "parentUuid": "f927ab96_49d78515",
+      "revId": "a169de21c613490b357d848cb61b24a6e9cd60a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f927ab96_09a58dfc",
         "filename": "cmd/soong_jar/soong_jar.go",
         "patchSetId": 4
@@ -206,6 +224,24 @@
       "side": 1,
       "message": "Mainly for ease of not having to worry about Close-ing it later. I\u0027ll try passing it down further -- unless we switch the main zip writer to taking io.ReadClosers and wrap all other usecases with a NopCloser, we may still need to create a copy if we decide that Store produces a better result that Deflate.",
       "parentUuid": "f927ab96_09a58dfc",
+      "revId": "a169de21c613490b357d848cb61b24a6e9cd60a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f927ab96_49b065f1",
+        "filename": "cmd/soong_jar/soong_jar.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-08-11T09:10:58Z",
+      "side": 1,
+      "message": "Done. This actually saves about 10% of the total time with my test case.",
+      "parentUuid": "f927ab96_8915fdf4",
       "revId": "a169de21c613490b357d848cb61b24a6e9cd60a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
