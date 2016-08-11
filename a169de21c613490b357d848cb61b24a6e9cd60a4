@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f927ab96_09d74d48",
+        "filename": "cmd/soong_jar/rate_limit.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-08-11T08:08:37Z",
+      "side": 1,
+      "message": "It was some enforcement that you could only call Finish if you had already called RequestExecution. With that view, I probably should have found some way to panic if Finish was called twice for the same Execution.\n\nI didn\u0027t implement Release the same way because I didn\u0027t want to pipe through an object from the compression goroutine to the writer (that\u0027s just an io.Reader right now). Ideally it would go through to ensure that the bufferSize matched.\n\nBut yeah, Finish() could go on to RateLimit.",
+      "parentUuid": "f927ab96_6959a12e",
+      "revId": "a169de21c613490b357d848cb61b24a6e9cd60a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f927ab96_c98a956a",
         "filename": "cmd/soong_jar/rate_limit.go",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2016-08-11T04:31:15Z",
       "side": 1,
       "message": "Having Finish increase the pending buffer size and Release decrement it seems strange to me.  I guess the problems it that you have two stages of completion, cpu work done and memory freed.  Could you get a similar parallelism with a single completion for cpu+memory? Maybe by doubling the number of goroutines to make sure the ones waiting for memory to be released don\u0027t prevent spawning new cpu work?",
+      "revId": "a169de21c613490b357d848cb61b24a6e9cd60a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f927ab96_89433d19",
+        "filename": "cmd/soong_jar/rate_limit.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-08-11T08:08:37Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand -- when asking to begin the execution, we don\u0027t know how big our buffer is going to be, and that buffer is grown during the CPU work.\n\n\u003e Maybe by doubling the number of goroutines to make sure the ones waiting for memory to be released don\u0027t prevent spawning new cpu work?\n\nThe CPU work and ones waiting for memory are the same. We\u0027re trying to accomplish two things: don\u0027t thrash the CPUs, and don\u0027t let the CPUs get too far ahead of the writer and use up all of your memory.",
+      "parentUuid": "f927ab96_c98a956a",
       "revId": "a169de21c613490b357d848cb61b24a6e9cd60a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "f927ab96_c94d3543",
+        "filename": "cmd/soong_jar/soong_jar.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-08-11T08:08:37Z",
+      "side": 1,
+      "message": "yeah, I looked at doing that a few times. Since it\u0027s not implemented a single select loop, you\u0027ve got to check for errors in the pipeline much more often, otherwise you run into the danger of filling up the queues and blocking. That\u0027s still somewhat of a problem now, but since it\u0027s not on the main thread, as long as we print out the error, this goroutine can get stuck and we\u0027ll still be fine.",
+      "parentUuid": "f927ab96_a9ac79f3",
+      "revId": "a169de21c613490b357d848cb61b24a6e9cd60a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f927ab96_499f85a4",
         "filename": "cmd/soong_jar/soong_jar.go",
         "patchSetId": 4
@@ -64,6 +118,24 @@
       "writtenOn": "2016-08-11T04:31:15Z",
       "side": 1,
       "message": "The structure of this loop is very confusing.  It is effectively using a state machine for flow control by setting channels to nil.\n\nI\u0027d suggest restructuring this as a pipeline (https://blog.golang.org/pipelines).  Have the main thread iterate through files and create structs describing what to do.  The first stage gets descriptor structs and ratelimits them.  It calls functions to start any necessary work, collecting a future if necessary.  The future could take the form of the Reader half of a io.Pipe, and the parallel block compression could wrap the PipeReaders in an io.MultiReader, so the interface is always an io.Reader.\n\nIt puts the futures into a struct and passes it to the 3rd stage.  The 3rd stage gets a futures struct, waits on the futures it needs, and writes to the file.",
+      "revId": "a169de21c613490b357d848cb61b24a6e9cd60a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f927ab96_2955e9c5",
+        "filename": "cmd/soong_jar/soong_jar.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-08-11T08:08:37Z",
+      "side": 1,
+      "message": "Yes, it was a more \"standard\" control flow with embedded for loops, which would have mapped to pipelines by just replacing some of that with goroutines and channels. But then I refactored into this after looking at the advanced go concurrency patterns slides: https://blog.golang.org/advanced-go-concurrency-patterns\n\nio.Pipe isn\u0027t particularly useful here -- it would require another Copy. We need to have buffers, otherwise we can\u0027t parallelize any of this. So we\u0027ll be writing into a buffer as a result of the compression. Currently, that completed buffer is just passed as an io.Reader, and we Copy it in the main thread over to the zip writer. If the compression goroutine wanted to return the reader half of the Pipe, it would need to create the Pipe, then Copy the buffer into the pipe, and stay blocked waiting for a reader. Then the main thread would need to Copy from the pipe into the zip writer. And since the Pipe is in the middle, the second io.Copy can\u0027t use the buffer\u0027s WriteTo implementation, so it will allocate an extra temporary buffer.",
+      "parentUuid": "f927ab96_499f85a4",
       "revId": "a169de21c613490b357d848cb61b24a6e9cd60a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "f927ab96_49d78515",
+        "filename": "cmd/soong_jar/soong_jar.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-08-11T08:08:37Z",
+      "side": 1,
+      "message": "How would you loosen it up? You\u0027d still want to block within this for loop so that 20 1MB files behaved similarly to 1 20MB file, since the compression load is similar.\n\nYou also want compressions that started first not to get delayed by ones that started later in case we are starving the writer, but that\u0027s not a case I\u0027m seeing (but maybe you\u0027d see it on a smaller # of core machine with an SSD or tmpfs).\n\nNot caring about # of CPUs can be tested with this code rather easily (-j9999). When I first implemented this, I saw ~50% performance improvement over no rate limit. Now that it\u0027s also limited based on outstanding buffers, allowing more compression goroutines than cpu threads does speed up total time by a couple percent in my tests, but adds some more variability as well.\n\nIt\u0027s also handy if you want to parallelize your zip file, but not take over your entire machine :) But I suppose that can also be implemented by setting GOMAXPROCS.",
+      "parentUuid": "f927ab96_e98f5177",
+      "revId": "a169de21c613490b357d848cb61b24a6e9cd60a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f927ab96_09a58dfc",
         "filename": "cmd/soong_jar/soong_jar.go",
         "patchSetId": 4
@@ -98,6 +188,24 @@
       "writtenOn": "2016-08-11T04:31:15Z",
       "side": 1,
       "message": "Why read the file into memory?  Why not pass a File to compressWholeFile?",
+      "revId": "a169de21c613490b357d848cb61b24a6e9cd60a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f927ab96_8915fdf4",
+        "filename": "cmd/soong_jar/soong_jar.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-08-11T08:08:37Z",
+      "side": 1,
+      "message": "Mainly for ease of not having to worry about Close-ing it later. I\u0027ll try passing it down further -- unless we switch the main zip writer to taking io.ReadClosers and wrap all other usecases with a NopCloser, we may still need to create a copy if we decide that Store produces a better result that Deflate.",
+      "parentUuid": "f927ab96_09a58dfc",
       "revId": "a169de21c613490b357d848cb61b24a6e9cd60a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
