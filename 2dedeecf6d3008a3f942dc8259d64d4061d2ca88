@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fbc6c32f_eed5df44",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-08-15T23:38:18Z",
+      "side": 1,
+      "message": "No need to add this if you are not accessing anything on t",
+      "range": {
+        "startLine": 187,
+        "startChar": 6,
+        "endLine": 187,
+        "endChar": 9
+      },
+      "revId": "2dedeecf6d3008a3f942dc8259d64d4061d2ca88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
