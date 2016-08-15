@@ -226,8 +226,8 @@ func (t *toolchainMips) ClangLdflags() string {
 	return "${config.MipsClangLdflags}"
 }
 
-func (toolchainMips) AddressSanitizerRuntimeLibrary() string {
-	return "libclang_rt.asan-mips-android.so"
+func (t *toolchainMips) SanitizerRuntimeLibraryArch() string {
+	return "mips"
 }
 
 func mipsToolchainFactory(arch android.Arch) Toolchain {
