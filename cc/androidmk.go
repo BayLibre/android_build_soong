@@ -64,6 +64,9 @@ func (c *Module) AndroidMk() (ret android.AndroidMkData, err error) {
 			// These are already included in LOCAL_SHARED_LIBRARIES
 			fmt.Fprintln(w, "LOCAL_CXX_STL := none")
 		}
+		if len(c.Properties.Required) > 0 {
+			fmt.Fprintln(w, "LOCAL_REQUIRED_MODULES := "+strings.Join(c.Properties.Required, " "))
+		}
 		return nil
 	})
 

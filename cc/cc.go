@@ -118,13 +118,15 @@ type BaseProperties struct {
 	// cppflags, conlyflags, ldflags, or include_dirs
 	No_default_compiler_flags *bool
 
+	// names of other modules to install if this module is installed
+	Required []string
+
 	AndroidMkSharedLibs []string `blueprint:"mutated"`
 	HideFromMake        bool     `blueprint:"mutated"`
 }
 
 type UnusedProperties struct {
 	Native_coverage *bool
-	Required        []string
 	Tags            []string
 }
 
