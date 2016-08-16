@@ -65,8 +65,14 @@ type SanitizeProperties struct {
 		Misc_undefined []string `android:"arch_variant"`
 		Coverage       *bool    `android:"arch_variant"`
 		Safestack      *bool    `android:"arch_variant"`
+		Cfi            *bool    `android:"arch_variant"`
 
-		// value to pass to -fsantitize-recover=
+		// List of sanitizers to run in diagnostic mode (as opposed to the release mode).
+		// Supported in cfi and undefined sanitizers (and may be others in the future),
+		// replaces abort() on error with a human-readable error message.
+		Diag []string
+
+		// value to pass to -fsanitize-recover=
 		Recover []string
 
 		// value to pass to -fsanitize-blacklist
@@ -134,6 +140,10 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 			s.Safestack = boolPtr(true)
 		}
 
+		if found, globalSanitizers = removeFromList("cfi", globalSanitizers); found && s.Cfi == nil {
+			s.Cfi = boolPtr(true)
+		}
+
 		if len(globalSanitizers) > 0 {
 			ctx.ModuleErrorf("unknown global sanitizer option %s", globalSanitizers[0])
 		}
@@ -157,7 +167,7 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 	}
 
 	if Bool(s.All_undefined) || Bool(s.Undefined) || Bool(s.Address) ||
-		Bool(s.Thread) || Bool(s.Coverage) || Bool(s.Safestack) {
+		Bool(s.Thread) || Bool(s.Coverage) || Bool(s.Safestack) || Bool(s.Cfi) {
 		sanitize.Properties.SanitizerEnabled = true
 	}
 
@@ -267,6 +277,15 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 		sanitizers = append(sanitizers, "safe-stack")
 	}
 
+	if Bool(sanitize.Properties.Sanitize.Cfi) {
+		sanitizers = append(sanitizers, "cfi")
+		cfiFlags := []string{"-flto", "-fsanitize=cfi", "-fsanitize-cfi-cross-dso"}
+		flags.CFlags = append(flags.CFlags, cfiFlags...)
+		flags.CFlags = append(flags.CFlags, "-fvisibility=default")
+		flags.LdFlags = append(flags.LdFlags, cfiFlags...)
+		flags.LdFlags = append(flags.LdFlags, "-Wl,-plugin-opt,O1", "-Wl,-export-dynamic-symbol=__cfi_check")
+	}
+
 	if sanitize.Properties.Sanitize.Recover != nil {
 		flags.CFlags = append(flags.CFlags, "-fsanitize-recover="+
 			strings.Join(sanitize.Properties.Sanitize.Recover, ","))
@@ -283,6 +302,21 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 			flags.CFlags = append(flags.CFlags, "-fsanitize-trap=all", "-ftrap-function=abort")
 			if Bool(sanitize.Properties.Sanitize.Address) || Bool(sanitize.Properties.Sanitize.Thread) {
 				flags.CFlags = append(flags.CFlags, "-fno-sanitize-trap=address,thread")
+			}
+		}
+	}
+
+	if sanitize.Properties.Sanitize.Diag != nil {
+		// FIXME: enable RTTI if diag + (cfi or vptr)
+		flags.CFlags = append(flags.CFlags, "-fno-sanitize-trap="+
+			strings.Join(sanitize.Properties.Sanitize.Diag, ","))
+
+		// ASan and TSan have all the diagnostic support in their runtime libraries already.
+		// Other sanitizers (when not accompanied by ASan or TSan) need an extra library.
+		if !Bool(sanitize.Properties.Sanitize.Address) && !Bool(sanitize.Properties.Sanitize.Thread) {
+			runtimeLibrary := config.UndefinedBehaviorSanitizerRuntimeLibrary(ctx.toolchain())
+			if runtimeLibrary != "" {
+				flags.libFlags = append(flags.libFlags, "${config.ClangAsanLibDir}/"+runtimeLibrary)
 			}
 		}
 	}
