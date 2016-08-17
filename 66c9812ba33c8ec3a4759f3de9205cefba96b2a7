@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b718f56_49e581cd",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-08-17T23:13:45Z",
+      "side": 1,
+      "message": "This seems like it should be an initializer, not going into the unexported values field directly. (And everything using OncePer would need a map[interface{}]interface{}, wouldn\u0027t it?)",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 176,
+        "endChar": 50
+      },
+      "revId": "66c9812ba33c8ec3a4759f3de9205cefba96b2a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b718f56_c9a2d193",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-08-17T23:13:45Z",
+      "side": 1,
+      "message": "I suspect we\u0027ll want to unexport this and force people to go through deviceConfig",
+      "range": {
+        "startLine": 218,
+        "startChar": 8,
+        "endLine": 218,
+        "endChar": 9
+      },
+      "revId": "66c9812ba33c8ec3a4759f3de9205cefba96b2a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b718f56_29ae0d78",
+        "filename": "android/onceper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-08-17T23:13:45Z",
+      "side": 1,
+      "message": "6",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "66c9812ba33c8ec3a4759f3de9205cefba96b2a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
