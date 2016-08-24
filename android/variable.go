@@ -101,6 +101,7 @@ type productVariables struct {
 	Cpusets                    *bool `json:",omitempty"`
 	Schedboost                 *bool `json:",omitempty"`
 	Binder32bit                *bool `json:",omitempty"`
+	Prefer32BitExecutables     *bool `json:",omitempty"`
 
 	SanitizeHost   *[]string `json:",omitempty"`
 	SanitizeDevice *[]string `json:",omitempty"`
