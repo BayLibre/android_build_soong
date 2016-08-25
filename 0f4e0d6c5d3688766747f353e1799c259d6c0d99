@@ -70,6 +70,24 @@
       "revId": "0f4e0d6c5d3688766747f353e1799c259d6c0d99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6536b211_848f487e",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-08-25T21:37:49Z",
+      "side": 1,
+      "message": "Yeah... we\u0027ll need to fix this later, but good enough for now",
+      "parentUuid": "6536b211_c475d0d8",
+      "revId": "0f4e0d6c5d3688766747f353e1799c259d6c0d99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
