@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6536b211_44ca6051",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-08-25T21:01:45Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be in deviceConfig now?",
+      "revId": "0f4e0d6c5d3688766747f353e1799c259d6c0d99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
