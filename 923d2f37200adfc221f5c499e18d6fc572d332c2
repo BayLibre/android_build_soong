@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6536b211_e1f8c6dc",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-08-25T20:44:29Z",
+      "side": 1,
+      "message": "I believe MIPS is different from this...\n\ncs/android/build/core/dex_preopt_libart.mk?q\u003dp:android+0x3000000\u0026l\u003d48\u0026ct\u003drc\u0026cd\u003d9\u0026dr\u003dC",
+      "range": {
+        "startLine": 368,
+        "startChar": 1,
+        "endLine": 368,
+        "endChar": 20
+      },
+      "revId": "923d2f37200adfc221f5c499e18d6fc572d332c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
