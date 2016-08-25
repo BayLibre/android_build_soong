@@ -16,6 +16,24 @@
       "revId": "0f4e0d6c5d3688766747f353e1799c259d6c0d99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6536b211_c461503e",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-08-25T21:09:16Z",
+      "side": 1,
+      "message": "I\u0027m rethinking my commitment to DeviceConfig.  It won\u0027t work here, because this goes into a cc_defaults that will apply across all devices.",
+      "parentUuid": "6536b211_44ca6051",
+      "revId": "0f4e0d6c5d3688766747f353e1799c259d6c0d99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
