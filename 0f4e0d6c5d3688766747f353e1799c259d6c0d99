@@ -52,6 +52,24 @@
       "revId": "0f4e0d6c5d3688766747f353e1799c259d6c0d99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6536b211_c475d0d8",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-08-25T21:16:28Z",
+      "side": 1,
+      "message": "It\u0027s used outside art as a parameter to dexopting",
+      "parentUuid": "6536b211_8451086b",
+      "revId": "0f4e0d6c5d3688766747f353e1799c259d6c0d99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
