@@ -13,6 +13,7 @@
 subdirs = [
     "androidmk",
     "cmd/*",
+    "ninja",
     "third_party/zip",
 ]
 

@@ -1,0 +1,15 @@
+#test = a
+#builddir = out # testing
+ #test
+#
+#subninja out/soong/$
+#  build.ninja
+#subninja $
+#  out/build-aosp_arm64.ninja
+
+rule a
+ command = /bin/echo ${b}c
+ #b = rule
+
+build default: a
+ b = test$
