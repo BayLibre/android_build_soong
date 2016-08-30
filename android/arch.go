@@ -137,6 +137,7 @@ type archProperties struct {
 			// Arm64 cpu variants
 			Cortex_a53 interface{} `blueprint:"filter(android:\"arch_variant\")"`
 			Denver64   interface{} `blueprint:"filter(android:\"arch_variant\")"`
+			Kryo   interface{} `blueprint:"filter(android:\"arch_variant\")"`
 		}
 
 		// Properties for module variants being built to run on mips (host or device)
@@ -806,6 +807,7 @@ func decodeMegaDevice() ([]Target, error) {
 		{"arm", "armv7-a-neon", "denver", []string{"armeabi-v7a"}},
 		{"arm", "armv7-a-neon", "krait", []string{"armeabi-v7a"}},
 		{"arm64", "armv8-a", "cortex-a53", []string{"arm64-v8a"}},
+		{"arm64", "armv8-a", "kryo", []string{"arm64-v8a"}},
 		{"arm64", "armv8-a", "denver64", []string{"arm64-v8a"}},
 		{"mips", "mips32-fp", "", []string{"mips"}},
 		{"mips", "mips32r2-fp", "", []string{"mips"}},
