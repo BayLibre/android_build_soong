@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6efbfc0_90393a31",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-09-06T20:30:09Z",
+      "side": 1,
+      "message": "This is a little unfortunate, but it is required to avoid an error when specifying target.android.compile_multilib in a blueprints file - otherwise blueprint tries to apply it to the arch properties version and fails.  This also means that the top level compile_multilib value will be set to the arch variant version after the arch mutator runs.",
+      "range": {
+        "startLine": 121,
+        "startChar": 25,
+        "endLine": 121,
+        "endChar": 49
+      },
+      "revId": "69617d3b7d2383d8cfdf02b62fc5b7355779dacf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

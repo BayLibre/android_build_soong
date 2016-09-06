@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6efbfc0_30be8685",
+        "filename": "android/androidmk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-09-06T20:30:09Z",
+      "side": 0,
+      "message": "This is redundant, we already specify LOCAL_MODULE_*_ARCH below, and breaks when soong has more flexible multilib options than make can handle.",
+      "revId": "20780c80a0bba03122c682cb6955a07dbee31b1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
