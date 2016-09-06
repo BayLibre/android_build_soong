@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6efbfc0_0da7f117",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-09-06T19:21:53Z",
+      "side": 1,
+      "message": "In other cases, target.host also applies to the HostCross OsClass",
+      "revId": "dc70d7a2d84617d2a88bec27ab7030f85d51c10f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6efbfc0_8db2c152",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-09-06T19:21:53Z",
+      "side": 1,
+      "message": "We\u0027re currently using target.android, not target.device",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 17
+      },
+      "revId": "dc70d7a2d84617d2a88bec27ab7030f85d51c10f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
