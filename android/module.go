@@ -120,6 +120,17 @@ type commonProperties struct {
 	// platform
 	Compile_multilib string
 
+	Target struct {
+		Host struct {
+			Compile_multilib string
+		}
+		Device struct {
+			Compile_multilib string
+		}
+	}
+
+	Default_multilib string `blueprint:"mutated"`
+
 	// whether this is a proprietary vendor module, and should be installed into /vendor
 	Proprietary bool
 
@@ -182,7 +193,7 @@ func InitAndroidArchModule(m Module, hod HostOrDeviceSupported, defaultMultilib 
 
 	base := m.base()
 	base.commonProperties.HostOrDeviceSupported = hod
-	base.commonProperties.Compile_multilib = string(defaultMultilib)
+	base.commonProperties.Default_multilib = string(defaultMultilib)
 
 	switch hod {
 	case HostAndDeviceSupported:
