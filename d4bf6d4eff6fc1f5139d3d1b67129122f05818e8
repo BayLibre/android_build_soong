@@ -16,6 +16,24 @@
       "revId": "d4bf6d4eff6fc1f5139d3d1b67129122f05818e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1691b3ce_cd7ab517",
+        "filename": "android/arch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-09-08T20:51:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1691b3ce_3248d855",
+      "revId": "d4bf6d4eff6fc1f5139d3d1b67129122f05818e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
