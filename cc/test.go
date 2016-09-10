@@ -73,44 +73,6 @@ func benchmarkHostFactory() (blueprint.Module, []interface{}) {
 	return module.Init()
 }
 
-type testPerSrc interface {
-	testPerSrc() bool
-	srcs() []string
-	setSrc(string, string)
-}
-
-func (test *testBinary) testPerSrc() bool {
-	return Bool(test.Properties.Test_per_src)
-}
-
-func (test *testBinary) srcs() []string {
-	return test.baseCompiler.Properties.Srcs
-}
-
-func (test *testBinary) setSrc(name, src string) {
-	test.baseCompiler.Properties.Srcs = []string{src}
-	test.binaryDecorator.Properties.Stem = name
-}
-
-var _ testPerSrc = (*testBinary)(nil)
-
-func testPerSrcMutator(mctx android.BottomUpMutatorContext) {
-	if m, ok := mctx.Module().(*Module); ok {
-		if test, ok := m.linker.(testPerSrc); ok {
-			if test.testPerSrc() && len(test.srcs()) > 0 {
-				testNames := make([]string, len(test.srcs()))
-				for i, src := range test.srcs() {
-					testNames[i] = strings.TrimSuffix(filepath.Base(src), filepath.Ext(src))
-				}
-				tests := mctx.CreateLocalVariations(testNames...)
-				for i, src := range test.srcs() {
-					tests[i].(*Module).linker.(testPerSrc).setSrc(testNames[i], src)
-				}
-			}
-		}
-	}
-}
-
 type testDecorator struct {
 	Properties TestProperties
 	linker     *baseLinker
@@ -205,6 +167,19 @@ func (test *testBinary) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 	flags = test.binaryDecorator.linkerFlags(ctx, flags)
 	flags = test.testDecorator.linkerFlags(ctx, flags)
 	return flags
+}
+
+func (test *testBinary) linkerPerSrc(ctx ModuleContext) bool {
+	return Bool(test.Properties.Test_per_src)
+}
+
+func (test *testBinary) link(ctx ModuleContext, flags Flags, deps PathDeps,
+	objFiles android.Paths) android.Path {
+	if Bool(test.Properties.Test_per_src) {
+		name := strings.TrimSuffix(filepath.Base(objFiles[0].String()), objFiles[0].Ext())
+		test.binaryDecorator.Properties.Stem = name
+	}
+	return test.binaryDecorator.link(ctx, flags, deps, objFiles)
 }
 
 func (test *testBinary) install(ctx ModuleContext, file android.Path) {

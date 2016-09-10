@@ -26,6 +26,11 @@ type InstallerProperties struct {
 	// install to a subdirectory of the default install path for the module
 	Relative_install_path string
 
+	// install to a specific subdirectory of the default partition for the module.
+	// Partitions are /system, /vendor, or /data.  To install to /system/fake-libs, set
+	// override_install_path to "fake-libs".
+	Override_install_path string `android:"arch_variant"`
+
 	// install symlinks to the module
 	Symlinks []string `android:"arch_variant"`
 }

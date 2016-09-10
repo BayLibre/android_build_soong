@@ -40,7 +40,6 @@ func init() {
 	// functions will run first.
 	android.RegisterBottomUpMutator("link", linkageMutator).Parallel()
 	android.RegisterBottomUpMutator("ndk_api", ndkApiMutator).Parallel()
-	android.RegisterBottomUpMutator("test_per_src", testPerSrcMutator).Parallel()
 	android.RegisterBottomUpMutator("begin", beginMutator).Parallel()
 	android.RegisterBottomUpMutator("deps", depsMutator).Parallel()
 
@@ -183,6 +182,7 @@ type linker interface {
 	linkerDeps(ctx BaseModuleContext, deps Deps) Deps
 	linkerFlags(ctx ModuleContext, flags Flags) Flags
 	linkerProps() []interface{}
+	linkerPerSrc(ctx ModuleContext) bool
 
 	link(ctx ModuleContext, flags Flags, deps PathDeps, objFiles android.Paths) android.Path
 	appendLdflags([]string)
@@ -451,17 +451,31 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		}
 	}
 
-	if c.linker != nil {
+	linkAndInstall := func(objFiles android.Paths) (ret android.OptionalPath) {
 		outputFile := c.linker.link(ctx, flags, deps, objFiles)
 		if ctx.Failed() {
 			return
 		}
-		c.outputFile = android.OptionalPathForPath(outputFile)
 
 		if c.installer != nil {
 			c.installer.install(ctx, outputFile)
 			if ctx.Failed() {
 				return
+			}
+		}
+
+		return android.OptionalPathForPath(outputFile)
+	}
+
+	if c.linker != nil {
+		if !c.linker.linkerPerSrc(ctx) {
+			c.outputFile = linkAndInstall(objFiles)
+		} else {
+			for i := range objFiles {
+				linkAndInstall(objFiles[i : i+1])
+				if ctx.Failed() {
+					return
+				}
 			}
 		}
 	}

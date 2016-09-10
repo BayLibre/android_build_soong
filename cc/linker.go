@@ -188,3 +188,7 @@ func (linker *baseLinker) link(ctx ModuleContext,
 	flags Flags, deps PathDeps, objFiles android.Paths) android.Path {
 	panic(fmt.Errorf("baseLinker doesn't know how to link"))
 }
+
+func (linker *baseLinker) linkerPerSrc(ctx ModuleContext) bool {
+	return false
+}
