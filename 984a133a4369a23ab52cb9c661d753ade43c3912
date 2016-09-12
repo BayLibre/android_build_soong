@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b1e5af2_4320eca8",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-09-12T19:20:41Z",
+      "side": 1,
+      "message": "I assume we\u0027ve got to save references to all of these output files",
+      "revId": "984a133a4369a23ab52cb9c661d753ade43c3912",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b1e5af2_e32b408c",
+        "filename": "cc/installer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-09-12T19:20:41Z",
+      "side": 1,
+      "message": "Unrelated?",
+      "revId": "984a133a4369a23ab52cb9c661d753ade43c3912",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
