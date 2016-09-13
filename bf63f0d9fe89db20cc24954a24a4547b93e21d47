@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b672ea1_ad39a9f9",
+        "filename": "android/hooks.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-09-13T21:21:57Z",
+      "side": 1,
+      "message": "Docs on this?",
+      "revId": "bf63f0d9fe89db20cc24954a24a4547b93e21d47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
