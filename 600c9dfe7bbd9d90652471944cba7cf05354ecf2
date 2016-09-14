@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b672ea1_064f6fbd",
+        "filename": "cc/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-09-14T20:28:46Z",
+      "side": 1,
+      "message": "Isn\u0027t this Bool(test.Properties.Gtest)?",
+      "range": {
+        "startLine": 120,
+        "startChar": 8,
+        "endLine": 120,
+        "endChar": 70
+      },
+      "revId": "600c9dfe7bbd9d90652471944cba7cf05354ecf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
