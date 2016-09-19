@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b2aa261_80f5bc4a",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-09-19T20:58:45Z",
+      "side": 1,
+      "message": "Can this be a structure containing bools instead of freeform strings?",
+      "revId": "026547fa2a66ac6ebb060c465222f493725c5873",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
