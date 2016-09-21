@@ -16,6 +16,24 @@
       "revId": "026547fa2a66ac6ebb060c465222f493725c5873",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90bccb98_f19cd7bb",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2016-09-21T01:03:25Z",
+      "side": 1,
+      "message": "Does it look better now?\nI\u0027ve also factored out the setting of the runtime library to make it clear that we only link one of those at a time.",
+      "parentUuid": "4b2aa261_80f5bc4a",
+      "revId": "026547fa2a66ac6ebb060c465222f493725c5873",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
