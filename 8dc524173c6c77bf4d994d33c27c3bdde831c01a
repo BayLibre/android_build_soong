@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "425b693f_8a12eb10",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-09-29T22:12:13Z",
+      "side": 1,
+      "message": "here too",
+      "revId": "8dc524173c6c77bf4d994d33c27c3bdde831c01a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "425b693f_4a46330c",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-09-29T22:12:13Z",
+      "side": 1,
+      "message": "And here",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 77
+      },
+      "revId": "8dc524173c6c77bf4d994d33c27c3bdde831c01a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
