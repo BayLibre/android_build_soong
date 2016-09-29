@@ -134,6 +134,9 @@ func (binary *binaryDecorator) AndroidMk(ctx AndroidMkContext, ret *android.Andr
 		if Bool(binary.Properties.Static_executable) {
 			fmt.Fprintln(w, "LOCAL_FORCE_STATIC_EXECUTABLE := true")
 		}
+		if ctx.Target().Os.Class == android.Host {
+			fmt.Fprintln(w, "$(OUT_DIR)/"+binary.baseInstaller.path.RelPathString()+":", binary.baseInstaller.path.String())
+		}
 		return nil
 	})
 }
