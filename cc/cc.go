@@ -64,6 +64,8 @@ type Deps struct {
 	GeneratedSources []string
 	GeneratedHeaders []string
 
+	ReexportGeneratedHeaders []string
+
 	CrtBegin, CrtEnd string
 }
 
@@ -202,6 +204,7 @@ var (
 	wholeStaticDepTag  = dependencyTag{name: "whole static", library: true, reexportFlags: true}
 	genSourceDepTag    = dependencyTag{name: "gen source"}
 	genHeaderDepTag    = dependencyTag{name: "gen header"}
+	genHeaderExportDepTag = dependencyTag{name: "gen header", reexportFlags: true}
 	objDepTag          = dependencyTag{name: "obj"}
 	crtBeginDepTag     = dependencyTag{name: "crtbegin"}
 	crtEndDepTag       = dependencyTag{name: "crtend"}
@@ -503,6 +506,12 @@ func (c *Module) deps(ctx BaseModuleContext) Deps {
 		}
 	}
 
+	for _, gen := range deps.ReexportGeneratedHeaders {
+		if !inList(gen, deps.GeneratedHeaders) {
+			ctx.PropertyErrorf("export_generated_headers", "Generated header module not in generated_headers: '%s'", gen)
+		}
+	}
+
 	return deps
 }
 
@@ -594,7 +603,14 @@ func (c *Module) depsMutator(actx android.BottomUpMutatorContext) {
 		deps.LateSharedLibs...)
 
 	actx.AddDependency(c, genSourceDepTag, deps.GeneratedSources...)
-	actx.AddDependency(c, genHeaderDepTag, deps.GeneratedHeaders...)
+
+	for _, gen := range deps.GeneratedHeaders {
+		depTag := genHeaderDepTag
+		if inList(gen, deps.ReexportGeneratedHeaders) {
+			depTag = genHeaderExportDepTag
+		}
+		actx.AddDependency(c, depTag, gen)
+	}
 
 	actx.AddDependency(c, objDepTag, deps.ObjFiles...)
 
@@ -736,12 +752,15 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 				} else {
 					ctx.ModuleErrorf("module %q is not a gensrcs or genrule", name)
 				}
-			case genHeaderDepTag:
+			case genHeaderDepTag, genHeaderExportDepTag:
 				if genRule, ok := m.(genrule.SourceFileGenerator); ok {
 					depPaths.GeneratedHeaders = append(depPaths.GeneratedHeaders,
 						genRule.GeneratedSourceFiles()...)
-					depPaths.Flags = append(depPaths.Flags,
-						includeDirsToFlags(android.Paths{genRule.GeneratedHeaderDir()}))
+					flags := includeDirsToFlags(android.Paths{genRule.GeneratedHeaderDir()})
+					depPaths.Flags = append(depPaths.Flags, flags)
+					if tag == genHeaderExportDepTag {
+						depPaths.ReexportedFlags = append(depPaths.ReexportedFlags, flags)
+					}
 				} else {
 					ctx.ModuleErrorf("module %q is not a genrule", name)
 				}
