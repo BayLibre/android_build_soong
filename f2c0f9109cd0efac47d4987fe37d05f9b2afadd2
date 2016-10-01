@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "425b693f_a67de33e",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-10-01T01:18:22Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 417,
+        "startChar": 0,
+        "endLine": 417,
+        "endChar": 2
+      },
+      "revId": "f2c0f9109cd0efac47d4987fe37d05f9b2afadd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "425b693f_86d77f19",
+        "filename": "scripts/toc.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-10-01T01:18:22Z",
+      "side": 1,
+      "message": "I\u0027ve been using -eu recently, to catch undefined variables.",
+      "revId": "f2c0f9109cd0efac47d4987fe37d05f9b2afadd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "425b693f_46d18721",
+        "filename": "scripts/toc.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-10-01T01:18:22Z",
+      "side": 1,
+      "message": "Mixes of tabs and spaces in this file",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 1
+      },
+      "revId": "f2c0f9109cd0efac47d4987fe37d05f9b2afadd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "425b693f_2640d3ea",
+        "filename": "scripts/toc.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-10-01T01:18:22Z",
+      "side": 1,
+      "message": "infile is a duplicate here, since it\u0027s an explicit input already.\n\nShould we include readelf here, like the strip script?",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 14
+      },
+      "revId": "f2c0f9109cd0efac47d4987fe37d05f9b2afadd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "425b693f_0635cf90",
+        "filename": "scripts/toc.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-10-01T01:18:22Z",
+      "side": 1,
+      "message": "This works for host tools, but is incorrect for device builds on Darwin.",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 16
+      },
+      "revId": "f2c0f9109cd0efac47d4987fe37d05f9b2afadd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
