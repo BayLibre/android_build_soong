@@ -445,15 +445,10 @@ func (library *libraryDecorator) linkShared(ctx ModuleContext,
 		deps.StaticLibs, deps.LateStaticLibs, deps.WholeStaticLibs,
 		linkerDeps, deps.CrtBegin, deps.CrtEnd, false, builderFlags, outputFile)
 
-	if ctx.Device() {
-		// For device targets, optimize out relinking against shared
-		// libraries whose interface hasn't changed by depending on
-		// a table of contents file instead of the library itself.
-		// For host targets, the library might be part of a host tool
-		// that is run during the build, use the library directly so
-		// that the timestamp of the binary changes whenever a library
-		// changes and any necessary tools get re-run.
-		tocPath := outputFile.String()
+	if !ctx.Darwin() {
+		// Optimize out relinking against shared libraries whose interface hasn't changed by
+		// depending on a table of contents file instead of the library itself.
+		tocPath := outputFile.RelPathString()
 		tocPath = pathtools.ReplaceExtension(tocPath, flags.Toolchain.ShlibSuffix()[1:]+".toc")
 		tocFile := android.PathForOutput(ctx, tocPath)
 		library.tocFile = android.OptionalPathForPath(tocFile)
