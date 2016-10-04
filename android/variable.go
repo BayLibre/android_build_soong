@@ -40,6 +40,7 @@ type variableProperties struct {
 		} `android:"arch_variant"`
 
 		Brillo struct {
+			Cflags         []string
 			Version_script *string `android:"arch_variant"`
 		} `android:"arch_variant"`
 
@@ -64,6 +65,23 @@ type variableProperties struct {
 		}
 
 		Debuggable struct {
+			Cflags   []string
+			Cppflags []string
+		}
+
+		Allow_egl_hibernation struct {
+			Cflags []string
+		}
+
+		Max_egl_cache_entry_size struct {
+			Cflags []string
+		}
+
+		Max_egl_cache_key_size struct {
+			Cflags []string
+		}
+
+		Max_egl_cache_size struct {
 			Cflags []string
 		}
 	} `android:"arch_variant"`
@@ -113,6 +131,11 @@ type productVariables struct {
 
 	SanitizeHost   *[]string `json:",omitempty"`
 	SanitizeDevice *[]string `json:",omitempty"`
+
+	Allow_egl_hibernation    *bool `json:",omitempty"`
+	Max_egl_cache_entry_size *int  `json:",omitempty"`
+	Max_egl_cache_key_size   *int  `json:",omitempty"`
+	Max_egl_cache_size       *int  `json:",omitempty"`
 }
 
 func boolPtr(v bool) *bool {
