@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f0db02c_7a4e55c7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-10-05T19:58:46Z",
+      "side": 1,
+      "message": "frameworks/native/include?",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "ae1c276459dacc6872c6a380036e29cf8e8570ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
