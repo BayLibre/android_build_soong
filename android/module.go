@@ -145,6 +145,8 @@ type commonProperties struct {
 	// Set by InitAndroidModule
 	HostOrDeviceSupported HostOrDeviceSupported `blueprint:"mutated"`
 	ArchSpecific          bool                  `blueprint:"mutated"`
+
+	SkipInstall bool `blueprint:"mutated"`
 }
 
 type hostAndDeviceProperties struct {
@@ -273,7 +275,14 @@ type ModuleBase struct {
 	hooks hooks
 }
 
+// Name returns the name of the module.  It may be overridden by individual module types, for
+// example prebuilts will prepend prebuilt_ to the name.
 func (a *ModuleBase) Name() string {
+	return a.commonProperties.Name
+}
+
+// BaseModuleName returns the name of the module as specified in the blueprints file.
+func (a *ModuleBase) BaseModuleName() string {
 	return a.commonProperties.Name
 }
 
@@ -342,6 +351,10 @@ func (a *ModuleBase) Enabled() bool {
 		return a.Os().Class != HostCross
 	}
 	return *a.commonProperties.Enabled
+}
+
+func (a *ModuleBase) SkipInstall() {
+	a.commonProperties.SkipInstall = true
 }
 
 func (a *ModuleBase) computeInstallDeps(
