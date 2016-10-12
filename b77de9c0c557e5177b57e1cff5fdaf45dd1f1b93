@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcbf42c0_34613008",
+        "filename": "android/mutator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-10-12T22:18:25Z",
+      "side": 1,
+      "message": "Should we do this, or expose the Register* functions on a context object that gets passed to the lamdas?",
+      "revId": "b77de9c0c557e5177b57e1cff5fdaf45dd1f1b93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dcbf42c0_74b2c899",
+        "filename": "android/mutator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-10-12T22:18:25Z",
+      "side": 1,
+      "message": "canRegisterMutators \u003d false",
+      "revId": "b77de9c0c557e5177b57e1cff5fdaf45dd1f1b93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
