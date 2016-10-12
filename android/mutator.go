@@ -16,6 +16,54 @@ package android
 
 import "github.com/google/blueprint"
 
+// Mutator phases:
+//   Pre-arch
+//   Arch
+//   Pre-deps
+//   Deps
+//   PostDeps
+
+var canRegisterMutators bool
+
+func registerMutators() {
+	canRegisterMutators = true
+
+	register := func(funcs []func()) {
+		for _, f := range funcs {
+			f()
+		}
+	}
+
+	RegisterTopDownMutator("load_hooks", loadHookMutator).Parallel()
+	RegisterBottomUpMutator("defaults_deps", defaultsDepsMutator).Parallel()
+	RegisterTopDownMutator("defaults", defaultsMutator).Parallel()
+
+	register(preArch)
+
+	RegisterBottomUpMutator("arch", archMutator).Parallel()
+	RegisterTopDownMutator("arch_hooks", archHookMutator).Parallel()
+
+	register(preDeps)
+
+	RegisterBottomUpMutator("deps", depsMutator).Parallel()
+
+	register(postDeps)
+}
+
+var preArch, preDeps, postDeps []func()
+
+func PreArch(f func()) {
+	preArch = append(preArch, f)
+}
+
+func PreDeps(f func()) {
+	preDeps = append(preDeps, f)
+}
+
+func PostDeps(f func()) {
+	postDeps = append(postDeps, f)
+}
+
 type AndroidTopDownMutator func(TopDownMutatorContext)
 
 type TopDownMutatorContext interface {
@@ -41,6 +89,9 @@ type androidBottomUpMutatorContext struct {
 }
 
 func RegisterBottomUpMutator(name string, m AndroidBottomUpMutator) MutatorHandle {
+	if !canRegisterMutators {
+		panic("mutators should be registered inside lambdas passed to PreArch, PreDeps, or PostDeps")
+	}
 	f := func(ctx blueprint.BottomUpMutatorContext) {
 		if a, ok := ctx.Module().(Module); ok {
 			actx := &androidBottomUpMutatorContext{
@@ -56,6 +107,9 @@ func RegisterBottomUpMutator(name string, m AndroidBottomUpMutator) MutatorHandl
 }
 
 func RegisterTopDownMutator(name string, m AndroidTopDownMutator) MutatorHandle {
+	if !canRegisterMutators {
+		panic("mutators should be registered inside lambdas passed to PreArch, PreDeps, or PostDeps")
+	}
 	f := func(ctx blueprint.TopDownMutatorContext) {
 		if a, ok := ctx.Module().(Module); ok {
 			actx := &androidTopDownMutatorContext{
@@ -77,4 +131,10 @@ type MutatorHandle interface {
 func (mutator *mutator) Parallel() MutatorHandle {
 	mutator.parallel = true
 	return mutator
+}
+
+func depsMutator(ctx BottomUpMutatorContext) {
+	if m, ok := ctx.Module().(Module); ok {
+		m.DepsMutator(ctx)
+	}
 }
