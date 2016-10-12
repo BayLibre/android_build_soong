@@ -22,6 +22,30 @@
       "revId": "c0c262411b0a988bb5b30ad3b0c3585ec12b3ce1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dcbf42c0_1429948f",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-10-12T22:32:55Z",
+      "side": 1,
+      "message": "Oops, left over from a much earlier version",
+      "parentUuid": "dcbf42c0_142ef4b0",
+      "range": {
+        "startLine": 105,
+        "startChar": 5,
+        "endLine": 105,
+        "endChar": 38
+      },
+      "revId": "c0c262411b0a988bb5b30ad3b0c3585ec12b3ce1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
