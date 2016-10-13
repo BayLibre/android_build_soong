@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcbf42c0_9a6eadbb",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-10-13T02:38:42Z",
+      "side": 1,
+      "message": "so this is only used by AndroidMk?",
+      "revId": "cc6ee8b3dd7e71ded7535ac526efa47e69170591",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dcbf42c0_fa65e1d6",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-10-13T02:38:42Z",
+      "side": 1,
+      "message": "reexportFlags / reexportDeps too?",
+      "revId": "cc6ee8b3dd7e71ded7535ac526efa47e69170591",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dcbf42c0_1aa45d10",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-10-13T02:38:42Z",
+      "side": 1,
+      "message": "Add TODOs for: toc, relocation packing, stripping",
+      "revId": "cc6ee8b3dd7e71ded7535ac526efa47e69170591",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
