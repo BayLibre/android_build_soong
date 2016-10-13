@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dc4e620b_7c3a79cf",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-10-13T21:35:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcbf42c0_9a6eadbb",
+      "revId": "cc6ee8b3dd7e71ded7535ac526efa47e69170591",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dcbf42c0_fa65e1d6",
         "filename": "cc/prebuilt.go",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "7c3ad656_212cceb0",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-10-13T21:35:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcbf42c0_fa65e1d6",
+      "revId": "cc6ee8b3dd7e71ded7535ac526efa47e69170591",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dcbf42c0_1aa45d10",
         "filename": "cc/prebuilt.go",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2016-10-13T02:38:42Z",
       "side": 1,
       "message": "Add TODOs for: toc, relocation packing, stripping",
+      "revId": "cc6ee8b3dd7e71ded7535ac526efa47e69170591",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c49da01_dea38508",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-10-13T21:35:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcbf42c0_1aa45d10",
       "revId": "cc6ee8b3dd7e71ded7535ac526efa47e69170591",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
