@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc4e620b_fc01a96c",
+        "filename": "android/prebuilt_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-10-13T21:52:01Z",
+      "side": 1,
+      "message": "prebuilt",
+      "range": {
+        "startLine": 29,
+        "startChar": 12,
+        "endLine": 29,
+        "endChar": 19
+      },
+      "revId": "1fbdac0e416bd070da1e38453b136e749cc20ec9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
