@@ -15,6 +15,8 @@
 package android
 
 import (
+	"io/ioutil"
+	"os"
 	"testing"
 
 	"github.com/google/blueprint"
@@ -84,6 +86,12 @@ var prebuiltsTests = []struct {
 }
 
 func TestPrebuilts(t *testing.T) {
+	buildDir, err := ioutil.TempDir("", "soong_prebuilt_test")
+	if err != nil {
+		t.Fatal(err)
+	}
+	config := TestConfig(buildDir)
+
 	for _, test := range prebuiltsTests {
 		t.Run(test.name, func(t *testing.T) {
 			ctx := NewContext()
@@ -97,8 +105,6 @@ func TestPrebuilts(t *testing.T) {
 					}
 					` + test.modules),
 			})
-
-			config := TestConfig()
 
 			_, errs := ctx.ParseBlueprintsFiles("Blueprints")
 			fail(t, errs)
@@ -130,6 +136,7 @@ func TestPrebuilts(t *testing.T) {
 		})
 	}
 
+	os.RemoveAll(buildDir)
 }
 
 type prebuiltModule struct {
