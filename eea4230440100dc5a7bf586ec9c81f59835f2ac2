@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc9ec720_3ca791a5",
+        "filename": "android/prebuilt_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-10-15T00:05:50Z",
+      "side": 1,
+      "message": "defer os.RemoveAll(buildDir)",
+      "revId": "eea4230440100dc5a7bf586ec9c81f59835f2ac2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
