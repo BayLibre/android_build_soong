@@ -277,13 +277,22 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags) Flag
 		flags.GlobalFlags = append(flags.GlobalFlags, tc.ToolchainCflags())
 	}
 
-	if ctx.Host() && !flags.Clang {
+	cStd := config.CStdVersion
+	cppStd := config.CppStdVersion
+
+	if !flags.Clang {
+		// GCC uses an invalid C++14 ABI (emits calls to
+		// __cxa_throw_bad_array_length, which is not a valid C++ RT ABI).
+		// http://b/25022512
+		cppStd = config.GccCppStdVersion
+	} else if ctx.Host() && !flags.Clang {
 		// The host GCC doesn't support C++14 (and is deprecated, so likely
 		// never will). Build these modules with C++11.
-		flags.CppFlags = append(flags.CppFlags, "-std=gnu++11")
-	} else {
-		flags.CppFlags = append(flags.CppFlags, "-std=gnu++14")
+		cppStd = config.GccCppStdVersion
 	}
+
+	flags.ConlyFlags = append([]string{"-std=" + cStd}, flags.ConlyFlags...)
+	flags.CppFlags = append([]string{"-std=" + cppStd}, flags.CppFlags...)
 
 	// We can enforce some rules more strictly in the code we own. strict
 	// indicates if this is code that we can be stricter with. If we have
