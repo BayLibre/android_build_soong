@@ -84,6 +84,9 @@ type BaseCompilerProperties struct {
 	// pass -frtti instead of -fno-rtti
 	Rtti *bool
 
+	// if set to false, use -std=c++* instead of -std=gnu++*
+	Gnu_extensions *bool
+
 	Debug, Release struct {
 		// list of module-specific flags that will be used for C and C++ compiles in debug or
 		// release builds
@@ -291,8 +294,13 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags) Flag
 		cppStd = config.GccCppStdVersion
 	}
 
-	flags.ConlyFlags = append([]string{"-std=" + cStd}, flags.ConlyFlags...)
-	flags.CppFlags = append([]string{"-std=" + cppStd}, flags.CppFlags...)
+	if compiler.Properties.Gnu_extensions != nil && *compiler.Properties.Gnu_extensions == false {
+		cStd = gnuToCReplacer.Replace(cStd)
+		cppStd = gnuToCReplacer.Replace(cppStd)
+	}
+
+	flags.ConlyFlags = append(flags.ConlyFlags, "-std="+cStd)
+	flags.CppFlags = append(flags.CppFlags, "-std="+cppStd)
 
 	// We can enforce some rules more strictly in the code we own. strict
 	// indicates if this is code that we can be stricter with. If we have
@@ -312,6 +320,8 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags) Flag
 
 	return flags
 }
+
+var gnuToCReplacer = strings.NewReplacer("gnu", "c")
 
 func ndkPathDeps(ctx ModuleContext) android.Paths {
 	if ctx.sdk() {
