@@ -155,10 +155,10 @@ func (stl *stl) flags(ctx ModuleContext, flags Flags) Flags {
 		ndkSrcRoot := android.PathForSource(ctx, "prebuilts/ndk/current/sources/cxx-stl/system/include")
 		flags.CFlags = append(flags.CFlags, "-isystem "+ndkSrcRoot.String())
 	case "ndk_libc++_shared", "ndk_libc++_static":
-		// TODO(danalbert): This really shouldn't be here...
-		flags.CppFlags = append(flags.CppFlags, "-std=c++11")
-	case "ndk_libstlport_shared", "ndk_libstlport_static", "ndk_libgnustl_static":
 		// Nothing
+	case "ndk_libstlport_shared", "ndk_libstlport_static", "ndk_libgnustl_static":
+		// TODO(danalbert): This really shouldn't be here...
+		flags.CppFlags = append(flags.CppFlags, "-std=c++98")
 	case "":
 		// None or error.
 		if ctx.Host() {

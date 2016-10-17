@@ -277,14 +277,12 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags) Flag
 		flags.GlobalFlags = append(flags.GlobalFlags, tc.ToolchainCflags())
 	}
 
-	if !ctx.sdk() {
-		if ctx.Host() && !flags.Clang {
-			// The host GCC doesn't support C++14 (and is deprecated, so likely
-			// never will). Build these modules with C++11.
-			flags.CppFlags = append(flags.CppFlags, "-std=gnu++11")
-		} else {
-			flags.CppFlags = append(flags.CppFlags, "-std=gnu++14")
-		}
+	if ctx.Host() && !flags.Clang {
+		// The host GCC doesn't support C++14 (and is deprecated, so likely
+		// never will). Build these modules with C++11.
+		flags.CppFlags = append(flags.CppFlags, "-std=gnu++11")
+	} else {
+		flags.CppFlags = append(flags.CppFlags, "-std=gnu++14")
 	}
 
 	// We can enforce some rules more strictly in the code we own. strict
