@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c0a735e_846f2a6f",
+        "filename": "scripts/build-ndk-prebuilts.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-10-19T21:26:31Z",
+      "side": 1,
+      "message": "This comment doesn\u0027t make sense here (it was saying that we built these tools in the original script)",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 32
+      },
+      "revId": "ad8a7e9088188bd516aee51646798978ced7433d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
