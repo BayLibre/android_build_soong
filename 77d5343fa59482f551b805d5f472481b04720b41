@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c0a735e_84bd6aa3",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-10-19T21:29:09Z",
+      "side": 1,
+      "message": "var config []archConfig\nif Bool(config.Mega_device) {\n    config \u003d getMegaDeviceConfig()\n} else if Bool(config.Ndk_abis) {\n    config \u003d getNdkAbisConfig()\n}\n\nif config !\u003d nil {\n    deviceTargets, err :\u003d decodeArchSettings(config)\n    if err !\u003d nil {\n        return Config{}, err\n    }\n    targets[Device] \u003d deviceTargets\n}",
+      "revId": "77d5343fa59482f551b805d5f472481b04720b41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
