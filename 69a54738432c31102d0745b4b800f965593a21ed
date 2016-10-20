@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fc7c072f_9262bc53",
+        "filename": "cc/ndk_headers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-10-20T08:42:12Z",
+      "side": 1,
+      "message": "enh: is there any particular reason why we do this in bionic? Are the NOTICE files in libm and libdl specifically for the source rather than the headers (i.e. we don\u0027t need to worry about them from the perspective of the NDK)? Alternatively, any reason we don\u0027t just have one NOTICE file to rule them all?\n\nAllowing empty ndk_headers modules isn\u0027t too bad. In theory if anyone screws up their module and accidentally some headers they\u0027ll have tests that stop building.",
+      "range": {
+        "startLine": 74,
+        "startChar": 20,
+        "endLine": 76,
+        "endChar": 32
+      },
+      "revId": "69a54738432c31102d0745b4b800f965593a21ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
