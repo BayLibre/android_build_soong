@@ -46,6 +46,9 @@ type headerProperies struct {
 
 	// List of headers to install. Glob compatible. Common case is "include/**/*.h".
 	Srcs []string
+
+	// Path to the NOTICE file associated with the headers.
+	License string
 }
 
 type headerModule struct {
@@ -54,12 +57,19 @@ type headerModule struct {
 	properties headerProperies
 
 	installPaths []string
+	licensePath  android.ModuleSrcPath
 }
 
 func (m *headerModule) DepsMutator(ctx android.BottomUpMutatorContext) {
 }
 
 func (m *headerModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	if m.properties.License == "" {
+		ctx.PropertyErrorf("license", "field is required")
+	}
+
+	m.licensePath = android.PathForModuleSrc(ctx, m.properties.License)
+
 	srcFiles := ctx.ExpandSources(m.properties.Srcs, nil)
 	for _, header := range srcFiles {
 		// Output path is the sysroot base + "usr/include" + to directory + directory component
@@ -100,6 +110,6 @@ func (m *headerModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 func ndkHeadersFactory() (blueprint.Module, []interface{}) {
 	module := &headerModule{}
-	return android.InitAndroidArchModule(module, android.HostSupported, android.MultilibFirst,
+	return android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibFirst,
 		&module.properties)
 }
