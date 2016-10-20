@@ -22,6 +22,29 @@
       "revId": "69a54738432c31102d0745b4b800f965593a21ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc7c072f_d59b4e00",
+        "filename": "cc/ndk_headers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-10-20T16:16:36Z",
+      "side": 1,
+      "message": "account\n\nwe moved the headers together because it made life slightly easier. i\u0027ve never really thought about the NOTICE files. if there\u0027s no \"each library/executable should have its own notice\" restriction -- and now you mention it, i\u0027ve never heard of such a thing -- then, yeah, just having one NOTICE file sounds like a good idea.",
+      "range": {
+        "startLine": 76,
+        "startChar": 50,
+        "endLine": 76,
+        "endChar": 57
+      },
+      "revId": "69a54738432c31102d0745b4b800f965593a21ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
