@@ -46,6 +46,9 @@ type headerProperies struct {
 
 	// List of headers to install. Glob compatible. Common case is "include/**/*.h".
 	Srcs []string
+
+	// Path to the NOTICE file associated with the headers.
+	License string
 }
 
 type headerModule struct {
@@ -54,12 +57,25 @@ type headerModule struct {
 	properties headerProperies
 
 	installPaths []string
+	licensePath  android.ModuleSrcPath
 }
 
 func (m *headerModule) DepsMutator(ctx android.BottomUpMutatorContext) {
 }
 
 func (m *headerModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	if m.properties.License == "" {
+		ctx.PropertyErrorf("license", "field is required")
+	}
+
+	m.licensePath = android.PathForModuleSrc(ctx, m.properties.License)
+
+	// Possibly empty. There are a few unusual ndk_headers modules such as those
+	// in bionic where the NOTICE files are spread out in all three of the libc,
+	// libm, and libdl directories, but all the headers themselves are in a
+	// single directory and module. We still need to accoutn for the licenses
+	// for the other directories, so these have an empty ndk_headers module just
+	// for marking the license file.
 	srcFiles := ctx.ExpandSources(m.properties.Srcs, nil)
 	for _, header := range srcFiles {
 		// Output path is the sysroot base + "usr/include" + to directory + directory component
@@ -92,14 +108,10 @@ func (m *headerModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		installPath := ctx.InstallFile(installDir, header)
 		m.installPaths = append(m.installPaths, installPath.String())
 	}
-
-	if len(m.installPaths) == 0 {
-		ctx.ModuleErrorf("srcs %q matched zero files", m.properties.Srcs)
-	}
 }
 
 func ndkHeadersFactory() (blueprint.Module, []interface{}) {
 	module := &headerModule{}
-	return android.InitAndroidArchModule(module, android.HostSupported, android.MultilibFirst,
+	return android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibFirst,
 		&module.properties)
 }
