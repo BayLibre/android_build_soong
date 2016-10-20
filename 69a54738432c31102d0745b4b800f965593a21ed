@@ -45,6 +45,24 @@
       "revId": "69a54738432c31102d0745b4b800f965593a21ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc7c072f_bb3eb320",
+        "filename": "cc/ndk_headers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-10-20T19:47:36Z",
+      "side": 1,
+      "message": "In Make, we associate modules with NOTICE files either via LOCAL_NOTICE_FILE, or looking for a file called NOTICE in the same directory as the Android.mk that defines the module. NOTICE files aren\u0027t always the same as the license, but that\u0027s the common case.",
+      "parentUuid": "fc7c072f_d59b4e00",
+      "revId": "69a54738432c31102d0745b4b800f965593a21ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
