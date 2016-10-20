@@ -176,6 +176,8 @@ type builderFlags struct {
 	toolchain   config.Toolchain
 	clang       bool
 
+	protoFlags string
+
 	stripKeepSymbols       bool
 	stripKeepMiniDebugInfo bool
 	stripAddGnuDebuglink   bool

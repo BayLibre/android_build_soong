@@ -100,6 +100,8 @@ type Flags struct {
 	LdFlags     []string // Flags that apply to linker command lines
 	libFlags    []string // Flags to add libraries early to the link order
 
+	protoFlags []string
+
 	Toolchain config.Toolchain
 	Clang     bool
 
