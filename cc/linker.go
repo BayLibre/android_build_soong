@@ -150,7 +150,7 @@ func (linker *baseLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 	toolchain := ctx.toolchain()
 
 	if !ctx.noDefaultCompilerFlags() {
-		if ctx.Device() && !Bool(linker.Properties.Allow_undefined_symbols) {
+		if !Bool(linker.Properties.Allow_undefined_symbols) {
 			flags.LdFlags = append(flags.LdFlags, "-Wl,--no-undefined")
 		}
 
