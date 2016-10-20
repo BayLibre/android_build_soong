@@ -45,6 +45,23 @@
       "revId": "7d1e784a393b2ed2d9169a07f5ff529f1ed522eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc7c072f_f571aac3",
+        "filename": "cc/ndk_sysroot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-10-20T16:43:40Z",
+      "side": 1,
+      "message": "This is a little precarious in go, append may or may not modify the underlying storage of installPaths, without modifying the length field of installPaths.  It is better to do\n\n   installPaths \u003d append(installPaths, combinedLicense.String())",
+      "revId": "7d1e784a393b2ed2d9169a07f5ff529f1ed522eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
