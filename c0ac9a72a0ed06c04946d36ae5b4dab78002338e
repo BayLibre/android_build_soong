@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1d83cb2_10b14ce8",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-10-26T21:34:28Z",
+      "side": 1,
+      "message": "why in a separate group?",
+      "revId": "c0ac9a72a0ed06c04946d36ae5b4dab78002338e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1d83cb2_30ef30d4",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-10-26T21:34:28Z",
+      "side": 1,
+      "message": "Why not with these options? We\u0027ve got Yacc flags here...",
+      "revId": "c0ac9a72a0ed06c04946d36ae5b4dab78002338e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1d83cb2_50bbc4c5",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-10-26T21:34:28Z",
+      "side": 1,
+      "message": "Hmm, wasn\u0027t this used two patches up in the stack?",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 25
+      },
+      "revId": "c0ac9a72a0ed06c04946d36ae5b4dab78002338e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1d83cb2_50946429",
+        "filename": "cc/proto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-10-26T21:34:28Z",
+      "side": 1,
+      "message": "Isn\u0027t this done?",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 44
+      },
+      "revId": "c0ac9a72a0ed06c04946d36ae5b4dab78002338e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
