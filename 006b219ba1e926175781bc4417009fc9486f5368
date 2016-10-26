@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1d83cb2_90289c4e",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-10-26T21:11:04Z",
+      "side": 1,
+      "message": "Why even keep this function?",
+      "range": {
+        "startLine": 363,
+        "startChar": 0,
+        "endLine": 367,
+        "endChar": 64
+      },
+      "revId": "006b219ba1e926175781bc4417009fc9486f5368",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
