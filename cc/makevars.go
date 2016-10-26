@@ -227,7 +227,7 @@ func makeVarsToolchain(ctx android.MakeVarsContext, secondPrefix string,
 		ctx.Strict(makePrefix+"NM", gccCmd(toolchain, "nm"))
 	}
 
-	if target.Os == android.Windows {
+	if target.Os == android.Windows || target.Os.Class == android.Device {
 		ctx.Strict(makePrefix+"OBJDUMP", gccCmd(toolchain, "objdump"))
 	}
 
@@ -238,6 +238,7 @@ func makeVarsToolchain(ctx android.MakeVarsContext, secondPrefix string,
 		ctx.Strict(makePrefix+"GCC_VERSION", toolchain.GccVersion())
 		ctx.Strict(makePrefix+"NDK_GCC_VERSION", toolchain.GccVersion())
 		ctx.Strict(makePrefix+"NDK_TRIPLE", toolchain.ClangTriple())
+		ctx.Strict(makePrefix+"CPPFILT", gccCmd(toolchain, "c++filt"))
 	}
 
 	ctx.Strict(makePrefix+"TOOLCHAIN_ROOT", toolchain.GccRoot())
