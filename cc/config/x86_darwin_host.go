@@ -85,11 +85,9 @@ var (
 	darwinX8664ClangLdflags = ClangFilterUnknownCflags(darwinX8664Ldflags)
 
 	darwinSupportedSdkVersions = []string{
-		"10.8",
-		"10.9",
 		"10.10",
 		"10.11",
-                "10.12",
+		"10.12",
 	}
 
 	darwinAvailableLibraries = append(
@@ -119,7 +117,7 @@ func init() {
 	pctx.VariableFunc("macSdkRoot", func(config interface{}) (string, error) {
 		return xcrunSdk(config.(android.Config), "--show-sdk-path")
 	})
-	pctx.StaticVariable("macSdkVersion", darwinSupportedSdkVersions[0])
+	pctx.StaticVariable("macSdkVersion", "10.8")
 	pctx.VariableFunc("MacArPath", func(config interface{}) (string, error) {
 		bytes, err := exec.Command("xcrun", "--find", "ar").Output()
 		return strings.TrimSpace(string(bytes)), err
