@@ -22,6 +22,30 @@
       "revId": "6684a061df996332d569664ab31362c34e922d56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81ce44ee_fda28b94",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-10-27T22:45:33Z",
+      "side": 0,
+      "message": "We generate the yacc header file into a subdirectory based on the source path, so these directories weren\u0027t correct anyways.  The existing hidl yacc files only include the generated header from the generated source file in the same directory.",
+      "parentUuid": "c1d83cb2_7097e82f",
+      "range": {
+        "startLine": 165,
+        "startChar": 3,
+        "endLine": 165,
+        "endChar": 49
+      },
+      "revId": "6684a061df996332d569664ab31362c34e922d56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
