@@ -40,6 +40,24 @@
       "revId": "006b219ba1e926175781bc4417009fc9486f5368",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a16b489a_5bb72e8c",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-10-28T03:58:13Z",
+      "side": 1,
+      "message": "I didn\u0027t want to keep TransformSourceToObj as the API used by all the different module types, as it is more likely to change.",
+      "parentUuid": "e19380d8_a48ae331",
+      "revId": "006b219ba1e926175781bc4417009fc9486f5368",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
