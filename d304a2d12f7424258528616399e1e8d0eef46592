@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86ed7a09_f01c4080",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-10-31T23:10:21Z",
+      "side": 1,
+      "message": "As long as you are creating a new interface, Objects.Copy()?",
+      "revId": "d304a2d12f7424258528616399e1e8d0eef46592",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
