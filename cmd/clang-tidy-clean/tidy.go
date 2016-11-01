@@ -29,6 +29,12 @@ func filter(pipe io.Reader, output io.Writer, pathToRemove string) error {
 	scanner := bufio.NewScanner(pipe)
 	for scanner.Scan() {
 		line := scanner.Text()
+		if line == "1 warning generated." ||
+			line == "Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well." ||
+			strings.HasSuffix(line, " warnings generated.") {
+
+			continue
+		}
 		if pathToRemove != "" && strings.HasPrefix(line, pathToRemove) {
 			line = line[len(pathToRemove):]
 		}

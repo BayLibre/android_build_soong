@@ -29,6 +29,28 @@ func TestFilter(t *testing.T) {
 			in:  "/abspath/external/libcxx/src/include/atomic_support.h:42:1:\n",
 			out: "external/libcxx/src/include/atomic_support.h:42:1:\n",
 		},
+		{
+			in: `404 warnings generated.
+Suppressed 389 warnings (380 in non-user code, 8 NOLINT, 1 with check filters).
+Use -header-filter=.* to display errors from all non-system headers. Use -system-headers to display errors from system headers as well.
+`,
+			out: "Suppressed 389 warnings (380 in non-user code, 8 NOLINT, 1 with check filters).\n",
+		},
+		{
+			in: `1 warning generated.
+Suppressed 1 warnings (1 with check filters).
+`,
+			out: "Suppressed 1 warnings (1 with check filters).\n",
+		},
+		{
+			in: `1 warning generated.
+Other error
+Suppressed 1 warnings (1 with check filters).
+`,
+			out: `Other error
+Suppressed 1 warnings (1 with check filters).
+`,
+		},
 	}
 
 	for _, testCase := range testCases {
