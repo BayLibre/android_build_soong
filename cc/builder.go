@@ -149,8 +149,8 @@ var (
 
 	clangTidy = pctx.AndroidStaticRule("clangTidy",
 		blueprint.RuleParams{
-			Command:     "rm -f $out && ${config.ClangBin}/clang-tidy $tidyFlags $in -- $cFlags && touch $out",
-			CommandDeps: []string{"${config.ClangBin}/clang-tidy"},
+			Command:     "rm -f $out && ${clangTidyCmd} ${config.ClangBin}/clang-tidy $tidyFlags $in -- $cFlags && touch $out",
+			CommandDeps: []string{"${clangTidyCmd}", "${config.ClangBin}/clang-tidy"},
 		},
 		"cFlags", "tidyFlags")
 
@@ -246,6 +246,7 @@ func init() {
 	}
 
 	pctx.HostBinToolVariable("SoongZipCmd", "soong_zip")
+	pctx.HostBinToolVariable("clangTidyCmd", "clang-tidy-clean")
 }
 
 type builderFlags struct {
