@@ -34,6 +34,24 @@
       "revId": "72635735bbba2929f1ee02b6cf828221ca457f3f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06a98af7_55e3beed",
+        "filename": "build.ninja.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-11-02T20:08:59Z",
+      "side": 1,
+      "message": "I was thinking of disabling the singleton for the bootstrap.bash -r case",
+      "parentUuid": "06a98af7_f5d10a15",
+      "revId": "72635735bbba2929f1ee02b6cf828221ca457f3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
