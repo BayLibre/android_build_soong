@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06a98af7_fbdf3bef",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-11-02T22:38:46Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be required anymore, since we\u0027re no longer passing GlobRules through this function.",
+      "range": {
+        "startLine": 510,
+        "startChar": 28,
+        "endLine": 510,
+        "endChar": 62
+      },
+      "revId": "bb1e2b2123a4b5de812c458fb93596cf470384b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
