@@ -16,6 +16,24 @@
       "revId": "72635735bbba2929f1ee02b6cf828221ca457f3f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06a98af7_f5d10a15",
+        "filename": "build.ninja.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-11-02T20:04:21Z",
+      "side": 1,
+      "message": ":( It\u0027s because we load all the blueprint files when generating this file, even though we only write rules out for the special modules in build/blueprint.\n\nI guess it\u0027s time to figure out how to limit that to just loading build/blueprint/Blueprints (and maybe even unifying this build.ninja.in to a test-enabled one in blueprint instead of two copies)",
+      "parentUuid": "06a98af7_55229e6a",
+      "revId": "72635735bbba2929f1ee02b6cf828221ca457f3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
