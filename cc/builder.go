@@ -183,6 +183,7 @@ type builderFlags struct {
 	yaccFlags   string
 	protoFlags  string
 	tidyFlags   string
+	aidlFlags   string
 	toolchain   config.Toolchain
 	clang       bool
 	tidy        bool
