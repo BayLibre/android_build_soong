@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab04074e_fae05d14",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-11-04T23:39:39Z",
+      "side": 1,
+      "message": "Haven\u0027t you moved the art ones to symlinks?",
+      "revId": "182e0a71fb9ab5c736debfd33f01e9d99eb909dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab04074e_dadd9954",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-11-04T23:39:39Z",
+      "side": 1,
+      "message": "Should we ensure that there isn\u0027t another tool by that name in the map already?",
+      "revId": "182e0a71fb9ab5c736debfd33f01e9d99eb909dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab04074e_3a54a5de",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-11-04T23:39:39Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "182e0a71fb9ab5c736debfd33f01e9d99eb909dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
