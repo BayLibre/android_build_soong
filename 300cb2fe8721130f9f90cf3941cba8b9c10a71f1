@@ -16,6 +16,24 @@
       "revId": "300cb2fe8721130f9f90cf3941cba8b9c10a71f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab04074e_9addd1c7",
+        "filename": "cc/gen_stub_libs.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-11-04T22:48:50Z",
+      "side": 1,
+      "message": "From the version script.\n\n    LIBC_DEPRECATED { # platform-only",
+      "parentUuid": "ab04074e_ba1b75e1",
+      "revId": "300cb2fe8721130f9f90cf3941cba8b9c10a71f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
