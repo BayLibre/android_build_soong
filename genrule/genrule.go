@@ -34,6 +34,7 @@ var (
 func init() {
 	pctx.SourcePathVariable("srcDir", "")
 	pctx.HostBinToolVariable("hostBin", "")
+	pctx.HostBinToolVariable("sboxCmd", "sbox")
 }
 
 type SourceFileGenerator interface {
@@ -124,7 +125,7 @@ func (g *generator) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		case "srcDir":
 			return "${srcDir}"
 		case "genDir":
-			return g.genPath.String()
+			return "__SBOX_GEN_PATH__"
 		default:
 			ctx.PropertyErrorf("cmd", "unknown variable '%s'", name)
 		}
@@ -132,7 +133,8 @@ func (g *generator) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	})
 
 	g.rule = ctx.Rule(pctx, "generator", blueprint.RuleParams{
-		Command: "PATH=$$PATH:$hostBin " + cmd,
+		Command: "PATH=$$PATH:$hostBin $sboxCmd " + g.genPath.String() + " $out -- " + cmd,
+		//CommandDeps: ["$sboxCmd"],
 	}, "tool")
 
 	var tool string
