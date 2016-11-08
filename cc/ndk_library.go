@@ -109,7 +109,11 @@ func intMax(a int, b int) int {
 	}
 }
 
-func normalizeNdkApiLevel(apiLevel string, arch android.Arch) (int, error) {
+func normalizeNdkApiLevel(apiLevel string, arch android.Arch) (string, error) {
+	if apiLevel == "current" {
+		return apiLevel, nil
+	}
+
 	minVersion := 9 // Minimum version supported by the NDK.
 	firstArchVersions := map[string]int{
 		"arm":    9,
@@ -125,7 +129,7 @@ func normalizeNdkApiLevel(apiLevel string, arch android.Arch) (int, error) {
 	// supported version here instead.
 	version, err := strconv.Atoi(apiLevel)
 	if err != nil {
-		return -1, fmt.Errorf("API level must be an integer (is %q)", apiLevel)
+		return "", fmt.Errorf("API level must be an integer (is %q)", apiLevel)
 	}
 	version = intMax(version, minVersion)
 
@@ -135,7 +139,7 @@ func normalizeNdkApiLevel(apiLevel string, arch android.Arch) (int, error) {
 		panic(fmt.Errorf("Arch %q not found in firstArchVersions", archStr))
 	}
 
-	return intMax(version, firstArchVersion), nil
+	return strconv.Itoa(intMax(version, firstArchVersion)), nil
 }
 
 func generateStubApiVariants(mctx android.BottomUpMutatorContext, c *stubDecorator) {
@@ -156,11 +160,27 @@ func generateStubApiVariants(mctx android.BottomUpMutatorContext, c *stubDecorat
 		mctx.PropertyErrorf("first_version", err.Error())
 	}
 
-	versionStrs := make([]string, maxVersion-firstVersion+2)
-	for version := firstVersion; version <= maxVersion; version++ {
-		versionStrs[version-firstVersion] = strconv.Itoa(version)
+	var numVersions int
+	var firstVersionInt int
+	if firstVersion == "current" {
+		firstVersionInt = maxVersion + 1
+		numVersions = 1
+	} else {
+		var err error
+		firstVersionInt, err = strconv.Atoi(firstVersion)
+		if err != nil {
+			// In theory this is impossible because we've already run this
+			// through normalizeNdkApiLevel above.
+			mctx.PropertyErrorf("first_version", err.Error())
+		}
+		numVersions = maxVersion - firstVersionInt + 2
 	}
-	versionStrs[maxVersion-firstVersion+1] = "current"
+
+	versionStrs := make([]string, numVersions)
+	for version := firstVersionInt; version <= maxVersion; version++ {
+		versionStrs[version-firstVersionInt] = strconv.Itoa(version)
+	}
+	versionStrs[numVersions-1] = "current"
 
 	modules := mctx.CreateVariations(versionStrs...)
 	for i, module := range modules {
