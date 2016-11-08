@@ -72,6 +72,7 @@ type SanitizeProperties struct {
 		Coverage       *bool    `android:"arch_variant"`
 		Safestack      *bool    `android:"arch_variant"`
 		Cfi            *bool    `android:"arch_variant"`
+		Integer        *bool    `android:"arch_variant"`
 
 		// Sanitizers to run in the diagnostic mode (as opposed to the release mode).
 		// Replaces abort() on error with a human-readable error message.
@@ -179,7 +180,7 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 	}
 
 	if Bool(s.All_undefined) || Bool(s.Undefined) || Bool(s.Address) ||
-		Bool(s.Thread) || Bool(s.Coverage) || Bool(s.Safestack) || Bool(s.Cfi) {
+		Bool(s.Thread) || Bool(s.Coverage) || Bool(s.Safestack) || Bool(s.Cfi) || Bool(s.Integer) {
 		sanitize.Properties.SanitizerEnabled = true
 	}
 
@@ -312,6 +313,10 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 		if Bool(sanitize.Properties.Sanitize.Diag.Cfi) {
 			diagSanitizers = append(diagSanitizers, "cfi")
 		}
+	}
+
+	if Bool(sanitize.Properties.Sanitize.Integer) {
+		sanitizers = append(sanitizers, "integer")
 	}
 
 	if sanitize.Properties.Sanitize.Recover != nil {
