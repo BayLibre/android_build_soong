@@ -69,6 +69,7 @@ type SanitizeProperties struct {
 		Undefined      *bool    `android:"arch_variant"`
 		All_undefined  *bool    `android:"arch_variant"`
 		Misc_undefined []string `android:"arch_variant"`
+		Integer        *bool    `android:"arch_variant"`
 		Coverage       *bool    `android:"arch_variant"`
 		Safestack      *bool    `android:"arch_variant"`
 		Cfi            *bool    `android:"arch_variant"`
@@ -136,6 +137,10 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 			s.Undefined = boolPtr(true)
 		}
 
+		if found, globalSanitizers = removeFromList("integer", globalSanitizers); found && s.Integer == nil {
+			s.Integer = boolPtr(true)
+		}
+
 		if found, globalSanitizers = removeFromList("address", globalSanitizers); found && s.Address == nil {
 			s.Address = boolPtr(true)
 		}
@@ -179,7 +184,7 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 	}
 
 	if Bool(s.All_undefined) || Bool(s.Undefined) || Bool(s.Address) ||
-		Bool(s.Thread) || Bool(s.Coverage) || Bool(s.Safestack) || Bool(s.Cfi) {
+		Bool(s.Thread) || Bool(s.Coverage) || Bool(s.Safestack) || Bool(s.Cfi) || Bool(s.Integer) {
 		sanitize.Properties.SanitizerEnabled = true
 	}
 
@@ -251,6 +256,10 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 			)
 		}
 		sanitizers = append(sanitizers, sanitize.Properties.Sanitize.Misc_undefined...)
+	}
+
+	if Bool(sanitize.Properties.Sanitize.Integer) {
+		sanitizers = append(sanitizers, "integer")
 	}
 
 	if Bool(sanitize.Properties.Sanitize.Diag.Undefined) &&
