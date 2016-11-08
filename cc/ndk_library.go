@@ -88,7 +88,7 @@ type libraryProperties struct {
 	First_version string
 
 	// Private property for use by the mutator that splits per-API level.
-	ApiLevel int `blueprint:"mutated"`
+	ApiLevel string `blueprint:"mutated"`
 }
 
 type stubDecorator struct {
@@ -156,14 +156,15 @@ func generateStubApiVariants(mctx android.BottomUpMutatorContext, c *stubDecorat
 		mctx.PropertyErrorf("first_version", err.Error())
 	}
 
-	versionStrs := make([]string, maxVersion-firstVersion+1)
+	versionStrs := make([]string, maxVersion-firstVersion+2)
 	for version := firstVersion; version <= maxVersion; version++ {
 		versionStrs[version-firstVersion] = strconv.Itoa(version)
 	}
+	versionStrs[maxVersion-firstVersion+1] = "current"
 
 	modules := mctx.CreateVariations(versionStrs...)
 	for i, module := range modules {
-		module.(*Module).compiler.(*stubDecorator).properties.ApiLevel = firstVersion + i
+		module.(*Module).compiler.(*stubDecorator).properties.ApiLevel = versionStrs[i]
 	}
 }
 
@@ -197,7 +198,7 @@ func (c *stubDecorator) compile(ctx ModuleContext, flags Flags, deps PathDeps) O
 			ndkLibrarySuffix)
 	}
 	libName := strings.TrimSuffix(ctx.ModuleName(), ndkLibrarySuffix)
-	fileBase := fmt.Sprintf("%s.%s.%d", libName, arch, c.properties.ApiLevel)
+	fileBase := fmt.Sprintf("%s.%s.%s", libName, arch, c.properties.ApiLevel)
 	stubSrcName := fileBase + ".c"
 	stubSrcPath := android.PathForModuleGen(ctx, stubSrcName)
 	versionScriptName := fileBase + ".map"
@@ -210,7 +211,7 @@ func (c *stubDecorator) compile(ctx ModuleContext, flags Flags, deps PathDeps) O
 		Input:   symbolFilePath,
 		Args: map[string]string{
 			"arch":     arch,
-			"apiLevel": strconv.Itoa(c.properties.ApiLevel),
+			"apiLevel": c.properties.ApiLevel,
 		},
 	})
 
@@ -261,7 +262,7 @@ func (stub *stubDecorator) install(ctx ModuleContext, path android.Path) {
 	}
 
 	installDir := getNdkInstallBase(ctx).Join(ctx, fmt.Sprintf(
-		"platforms/android-%d/arch-%s/usr/%s", apiLevel, arch, libDir))
+		"platforms/android-%s/arch-%s/usr/%s", apiLevel, arch, libDir))
 	stub.installPath = ctx.InstallFile(installDir, path).String()
 }
 
