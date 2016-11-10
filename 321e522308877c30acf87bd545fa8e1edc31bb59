@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b612fbb_baf76ddd",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-11-10T21:29:29Z",
+      "side": 1,
+      "message": "This is simpler, and much less prone to off-by-one errors:\n\n    var versionStrs []string\n    for version :\u003d firstVersion; version \u003c\u003d maxVersion; version++ {\n        versionStrs \u003d append(versionStrs, strconv.Itoa(version))\n    }\n    versionStrs \u003d append(versionStrs, \"current\")",
+      "revId": "321e522308877c30acf87bd545fa8e1edc31bb59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
