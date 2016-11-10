@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b612fbb_9a5389f7",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-11-10T21:31:46Z",
+      "side": 1,
+      "message": "Same comment as the previous patch, use append instead of a preallocating the array.  Also means you can stop tracking numVersions.",
+      "revId": "7c4ec9f237898a044f453e8de42d5641db52d2b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
