@@ -119,20 +119,20 @@ func (linker *baseLinker) linkerDeps(ctx BaseModuleContext, deps Deps) Deps {
 		deps.LateStaticLibs = append(deps.LateStaticLibs, "libcompiler_rt-extras")
 	}
 
+	if !ctx.static() {
+		if linker.Properties.System_shared_libs != nil {
+			deps.LateSharedLibs = append(deps.LateSharedLibs,
+				linker.Properties.System_shared_libs...)
+		} else if !ctx.sdk() {
+			deps.LateSharedLibs = append(deps.LateSharedLibs, "libc", "libm")
+		}
+	}
+
 	if ctx.Device() {
 		// libgcc and libatomic have to be last on the command line
 		deps.LateStaticLibs = append(deps.LateStaticLibs, "libatomic")
 		if !Bool(linker.Properties.No_libgcc) {
 			deps.LateStaticLibs = append(deps.LateStaticLibs, "libgcc")
-		}
-
-		if !ctx.static() {
-			if linker.Properties.System_shared_libs != nil {
-				deps.LateSharedLibs = append(deps.LateSharedLibs,
-					linker.Properties.System_shared_libs...)
-			} else if !ctx.sdk() {
-				deps.LateSharedLibs = append(deps.LateSharedLibs, "libc", "libm")
-			}
 		}
 
 		if ctx.sdk() {
