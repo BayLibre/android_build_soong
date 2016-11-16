@@ -216,3 +216,34 @@ toolchain_library {
         },
     },
 }
+
+cc_prebuilt_shared_library {
+    name: "libc",
+    host_supported: true,
+    system_shared_libs: [],
+    stl: "none",
+    sanitize: {
+        never: true,
+    },
+    target: {
+        linux: {
+            srcs: ["linux_libc.link"],
+        },
+    },
+}
+
+cc_prebuilt_shared_library {
+    name: "libm",
+    host_supported: true,
+    system_shared_libs: [],
+    stl: "none",
+    sanitize: {
+        never: true,
+    },
+    target: {
+        linux: {
+            srcs: ["linux_libm.link"],
+            enabled: true,
+        },
+    },
+}

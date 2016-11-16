@@ -1,0 +1,1 @@
+INPUT (-lrt -lpthread -lgcc_s -lgcc -lc -lgcc_s -lgcc)
