@@ -16,6 +16,24 @@
       "revId": "0a37a2a2b8a88759e3e5dccec9dfc05ac2eb375e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "108c6449_1047ea97",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-11-17T19:02:09Z",
+      "side": 1,
+      "message": "That\u0027s what I had first, but then it breaks the current behavior of NoOsType.",
+      "parentUuid": "108c6449_1071aaff",
+      "revId": "0a37a2a2b8a88759e3e5dccec9dfc05ac2eb375e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
