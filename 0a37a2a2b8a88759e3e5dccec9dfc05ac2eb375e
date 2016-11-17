@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "108c6449_1071aaff",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-11-17T18:57:34Z",
+      "side": 1,
+      "message": "Invert this to DefaultEnabled to remove the double negatives everywhere",
+      "revId": "0a37a2a2b8a88759e3e5dccec9dfc05ac2eb375e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
