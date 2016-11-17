@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "108c6449_309dc6f8",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-11-17T18:59:04Z",
+      "side": 1,
+      "message": "Should we do this in go instead?  Is there ever going to be a case where we want linux_bionic + host?",
+      "revId": "00fcbde4013a1289a5bd3f7e19ce81eb70b6c707",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
