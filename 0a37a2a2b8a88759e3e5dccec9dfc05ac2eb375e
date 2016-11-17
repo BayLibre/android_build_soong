@@ -34,6 +34,24 @@
       "revId": "0a37a2a2b8a88759e3e5dccec9dfc05ac2eb375e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "108c6449_90e75a26",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-11-17T19:21:36Z",
+      "side": 1,
+      "message": "Why?  Doesn\u0027t NoOsType just need to be the zero value of OsType?",
+      "parentUuid": "108c6449_1047ea97",
+      "revId": "0a37a2a2b8a88759e3e5dccec9dfc05ac2eb375e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
