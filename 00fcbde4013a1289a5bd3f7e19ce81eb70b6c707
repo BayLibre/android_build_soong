@@ -16,6 +16,24 @@
       "revId": "00fcbde4013a1289a5bd3f7e19ce81eb70b6c707",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "108c6449_90083a4c",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-11-17T19:07:37Z",
+      "side": 1,
+      "message": "Maybe? That\u0027s one reason I put this here instead of in bionic, which will likely be the main user.\n\nAnd yes, basically anything that is currently a host tool will want linux_bionic.enabled: true instead of this. I\u0027d contemplate making that a default too, so that once we got enough things working, we could flip the switch in go and remove the contents of the default, then start removing the default usage.",
+      "parentUuid": "108c6449_309dc6f8",
+      "revId": "00fcbde4013a1289a5bd3f7e19ce81eb70b6c707",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
