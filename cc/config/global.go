@@ -157,3 +157,8 @@ func bionicHeaders(bionicArch, kernelArch string) string {
 		"-isystem bionic/libc/kernel/android/uapi",
 	}, " ")
 }
+
+func VndkLibraries() []string {
+	return []string{
+	}
+}
