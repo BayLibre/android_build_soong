@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "102f0424_7b0837da",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-11-22T22:14:17Z",
+      "side": 1,
+      "message": "This really belongs in the other patch",
+      "range": {
+        "startLine": 169,
+        "startChar": 10,
+        "endLine": 169,
+        "endChar": 43
+      },
+      "revId": "b1f0f441cfdc6b4a96d0d1d23a196cf0970e4094",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "102f0424_3b12bf0a",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-11-22T22:14:17Z",
+      "side": 1,
+      "message": "These are redundant, aren\u0027t they?",
+      "range": {
+        "startLine": 211,
+        "startChar": 2,
+        "endLine": 214,
+        "endChar": 26
+      },
+      "revId": "b1f0f441cfdc6b4a96d0d1d23a196cf0970e4094",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
