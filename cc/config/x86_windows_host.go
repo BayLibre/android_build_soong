@@ -80,11 +80,13 @@ var (
 	windowsAvailableLibraries = addPrefix([]string{
 		"gdi32",
 		"imagehlp",
+		"m",
 		"ole32",
 		"psapi",
 		"pthread",
 		"userenv",
 		"uuid",
+		"version",
 		"ws2_32",
 	}, "-l")
 )
