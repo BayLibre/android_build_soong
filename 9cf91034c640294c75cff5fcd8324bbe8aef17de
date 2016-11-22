@@ -16,6 +16,24 @@
       "revId": "9cf91034c640294c75cff5fcd8324bbe8aef17de",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "102f0424_5b421b7c",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-11-22T21:02:39Z",
+      "side": 1,
+      "message": "Since we\u0027re setting DepsGCC, ninja can\u0027t currently support more than one output file anyways.",
+      "parentUuid": "102f0424_bb96cfd7",
+      "revId": "9cf91034c640294c75cff5fcd8324bbe8aef17de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
