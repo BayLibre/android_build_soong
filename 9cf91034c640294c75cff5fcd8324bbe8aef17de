@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "102f0424_bb96cfd7",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-11-22T20:49:02Z",
+      "side": 1,
+      "message": "\"${out}.d\" doesn\u0027t work for the genrule case where ${out} may be multiple files, but \"deps.d\" doesn\u0027t work for the gensrcs case where the rule may be used multiple times, I\u0027ll have to come up with a better solution.",
+      "revId": "9cf91034c640294c75cff5fcd8324bbe8aef17de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
