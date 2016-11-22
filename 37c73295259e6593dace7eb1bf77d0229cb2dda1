@@ -16,6 +16,24 @@
       "revId": "37c73295259e6593dace7eb1bf77d0229cb2dda1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "102f0424_feaaf5b9",
+        "filename": "cc/config/x86_windows_host.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-11-22T23:41:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "102f0424_5b3c5b84",
+      "revId": "37c73295259e6593dace7eb1bf77d0229cb2dda1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
