@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "903a1454_0f1c4350",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-11-22T02:57:13Z",
+      "side": 1,
+      "message": "If gerrit is wrapping the lines it\u0027s probably time to start breaking them.",
+      "revId": "df622ba23a887664967aa83b1df63a84a5c63ba3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
