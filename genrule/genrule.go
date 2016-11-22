@@ -34,7 +34,7 @@ var (
 
 type SourceFileGenerator interface {
 	GeneratedSourceFiles() android.Paths
-	GeneratedHeaderDir() android.Path
+	GeneratedHeaderDirs() android.Paths
 }
 
 type HostToolProvider interface {
@@ -65,6 +65,9 @@ type generatorProperties struct {
 
 	// Local file that is used as the tool
 	Tool_files []string
+
+	// List of directories to export generated headers from
+	Export_include_dirs []string
 }
 
 type generator struct {
@@ -77,7 +80,7 @@ type generator struct {
 	deps android.Paths
 	rule blueprint.Rule
 
-	genPath android.Path
+	exportedIncludeDirs android.Paths
 
 	outputFiles android.Paths
 }
@@ -93,8 +96,8 @@ func (g *generator) GeneratedSourceFiles() android.Paths {
 	return g.outputFiles
 }
 
-func (g *generator) GeneratedHeaderDir() android.Path {
-	return g.genPath
+func (g *generator) GeneratedHeaderDirs() android.Paths {
+	return g.exportedIncludeDirs
 }
 
 func (g *generator) DepsMutator(ctx android.BottomUpMutatorContext) {
@@ -113,7 +116,10 @@ func (g *generator) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		return
 	}
 
-	g.genPath = android.PathForModuleGen(ctx, "")
+	for _, dir := range g.properties.Export_include_dirs {
+		g.exportedIncludeDirs = append(g.exportedIncludeDirs,
+			android.PathForModuleGen(ctx, ctx.ModuleDir(), dir))
+	}
 
 	tools := map[string]android.Path{}
 
