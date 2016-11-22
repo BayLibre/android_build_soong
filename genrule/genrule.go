@@ -16,6 +16,7 @@ package genrule
 
 import (
 	"fmt"
+	"path/filepath"
 	"strings"
 
 	"github.com/google/blueprint"
@@ -47,6 +48,7 @@ type generatorProperties struct {
 	// $(location <label>): the path to the tool or tool_file with name <label>
 	// $(in): one or more input files
 	// $(out): a single output file
+	// $(deps): a file to which dependencies will be written, if the deps_file property is set to true
 	// $(genDir): the sandbox directory for this tool; contains $(out)
 	// $$: a literal $
 	//
@@ -54,6 +56,9 @@ type generatorProperties struct {
 	// command will be missing proper dependencies to re-run if the files
 	// change.
 	Cmd string
+
+	// Enable reading a file containing dependencies in gcc format after the command completes
+	Deps_file bool
 
 	// name of the modules (if any) that produces the host executable.   Leave empty for
 	// prebuilts or scripts that do not need a module to build them.
@@ -156,6 +161,11 @@ func (g *generator) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			return "${in}", nil
 		case "out":
 			return "${out}", nil
+		case "deps":
+			if !g.properties.Deps_file {
+				return "", fmt.Errorf("$(deps) used without deps_file property")
+			}
+			return filepath.Join(g.genPath.String(), "deps.d"), nil
 		case "genDir":
 			return g.genPath.String(), nil
 		default:
@@ -175,9 +185,14 @@ func (g *generator) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		ctx.PropertyErrorf("cmd", "%s", err.Error())
 	}
 
-	g.rule = ctx.Rule(pctx, "generator", blueprint.RuleParams{
+	ruleParams := blueprint.RuleParams{
 		Command: cmd,
-	})
+	}
+	if g.properties.Deps_file {
+		ruleParams.Deps = blueprint.DepsGCC
+		ruleParams.Depfile = filepath.Join(g.genPath.String(), "deps.d")
+	}
+	g.rule = ctx.Rule(pctx, "generator", ruleParams)
 
 	for _, task := range g.tasks(ctx) {
 		g.generateSourceFile(ctx, task)
