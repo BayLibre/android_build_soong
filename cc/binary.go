@@ -66,6 +66,8 @@ type binaryDecorator struct {
 	*baseInstaller
 	stripper
 
+	sanitize *sanitize
+
 	Properties BinaryLinkerProperties
 
 	toolPath android.OptionalPath
@@ -122,6 +124,9 @@ func (binary *binaryDecorator) linkerDeps(ctx BaseModuleContext, deps Deps) Deps
 				}
 			}
 		}
+		if Bool(binary.sanitize.Properties.Sanitize.Safestack) {
+			deps.WholeStaticLibs = append(deps.WholeStaticLibs, "note_safestack")
+		}
 
 		if binary.static() {
 			if inList("libc++_static", deps.StaticLibs) {
@@ -153,6 +158,7 @@ func NewBinary(hod android.HostOrDeviceSupported) (*Module, *binaryDecorator) {
 	binary := &binaryDecorator{
 		baseLinker:    NewBaseLinker(),
 		baseInstaller: NewBaseInstaller("bin", "", InstallInSystem),
+		sanitize:      module.sanitize,
 	}
 	module.compiler = NewBaseCompiler()
 	module.linker = binary

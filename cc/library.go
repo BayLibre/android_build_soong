@@ -347,6 +347,9 @@ func (library *libraryDecorator) linkerDeps(ctx BaseModuleContext, deps Deps) De
 				deps.CrtEnd = "ndk_crtend_so." + version
 			}
 		}
+		if ctx.Device() && Bool(library.sanitize.Properties.Sanitize.Safestack) {
+			deps.WholeStaticLibs = append(deps.WholeStaticLibs, "note_safestack")
+		}
 		deps.WholeStaticLibs = append(deps.WholeStaticLibs, library.Properties.Shared.Whole_static_libs...)
 		deps.StaticLibs = append(deps.StaticLibs, library.Properties.Shared.Static_libs...)
 		deps.SharedLibs = append(deps.SharedLibs, library.Properties.Shared.Shared_libs...)
