@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d3dc7bc_b332c24d",
+        "filename": "android/mutator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-11-29T23:57:16Z",
+      "side": 1,
+      "message": "select",
+      "range": {
+        "startLine": 49,
+        "startChar": 23,
+        "endLine": 49,
+        "endChar": 30
+      },
+      "revId": "9918f1b220209aa74b1b343e3906d007bdb3a0b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6def8770_36146508",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-11-29T23:57:16Z",
+      "side": 1,
+      "message": "d.",
+      "range": {
+        "startLine": 109,
+        "startChar": 75,
+        "endLine": 109,
+        "endChar": 77
+      },
+      "revId": "9918f1b220209aa74b1b343e3906d007bdb3a0b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
