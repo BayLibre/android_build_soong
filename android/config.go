@@ -393,6 +393,13 @@ func (c *config) UseGoma() bool {
 	return Bool(c.ProductVariables.UseGoma)
 }
 
+func (c *config) GomaccPath() string {
+	if c.ProductVariables.GomaccPath == nil {
+		return ""
+	}
+	return *c.ProductVariables.GomaccPath
+}
+
 func (c *config) ClangTidy() bool {
 	return Bool(c.ProductVariables.ClangTidy)
 }

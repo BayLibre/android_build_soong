@@ -109,8 +109,10 @@ type productVariables struct {
 	Cpusets                    *bool `json:",omitempty"`
 	Schedboost                 *bool `json:",omitempty"`
 	Binder32bit                *bool `json:",omitempty"`
-	UseGoma                    *bool `json:",omitempty"`
 	Debuggable                 *bool `json:",omitempty"`
+
+	UseGoma    *bool   `json:",omitempty"`
+	GomaccPath *string `json:",omitempty"`
 
 	ClangTidy  *bool   `json:",omitempty"`
 	TidyChecks *string `json:",omitempty"`
