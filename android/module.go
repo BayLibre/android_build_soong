@@ -627,7 +627,7 @@ func (a *androidModuleContext) InstallFileName(installPath OutputPath, name stri
 	a.module.base().hooks.runInstallHooks(a, fullInstallPath, false)
 
 	if !a.module.base().commonProperties.SkipInstall &&
-		(a.Host() || !a.AConfig().SkipDeviceInstall()) {
+		(!a.Device() || !a.AConfig().SkipDeviceInstall()) {
 
 		deps = append(deps, a.installDeps...)
 
@@ -665,7 +665,7 @@ func (a *androidModuleContext) InstallSymlink(installPath OutputPath, name strin
 	a.module.base().hooks.runInstallHooks(a, fullInstallPath, true)
 
 	if !a.module.base().commonProperties.SkipInstall &&
-		(a.Host() || !a.AConfig().SkipDeviceInstall()) {
+		(!a.Device() || !a.AConfig().SkipDeviceInstall()) {
 
 		a.ModuleBuild(pctx, ModuleBuildParams{
 			Rule:      Symlink,
