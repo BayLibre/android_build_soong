@@ -316,6 +316,11 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags) Flag
 		flags.CppFlags = append([]string{"-std=" + cppStd}, flags.CppFlags...)
 	}
 
+	if ctx.AConfig().GomaccPath() != "" {
+
+		flags.CFlags = append([]string{"--gomacc-path=" + ctx.AConfig().GomaccPath()}, flags.CFlags...)
+	}
+
 	// We can enforce some rules more strictly in the code we own. strict
 	// indicates if this is code that we can be stricter with. If we have
 	// rules that we want to apply to *our* code (but maybe can't for
