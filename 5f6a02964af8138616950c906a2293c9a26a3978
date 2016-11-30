@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6def8770_4643b47f",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-11-30T18:39:59Z",
+      "side": 1,
+      "message": "Is -Wl,--gc-sections bionic-specific somehow, or should it stay in device?",
+      "revId": "5f6a02964af8138616950c906a2293c9a26a3978",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
