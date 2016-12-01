@@ -16,6 +16,24 @@
       "revId": "5f6a02964af8138616950c906a2293c9a26a3978",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d506749_bb5b933f",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-12-01T00:51:04Z",
+      "side": 1,
+      "message": "AFAIK, it\u0027s not bionic specific, I don\u0027t see why we shouldn\u0027t enable it for everything. Though then we should enable -ffunction-sections in all the cflags too, which is currently just in each device (and I copied from x86_64_device to the linux_bionic device).\n\nThe instance of this in cc/binary.go was already moved to a Bionic check since it was grouped with -nostdlib/etc as well.",
+      "parentUuid": "6def8770_4643b47f",
+      "revId": "5f6a02964af8138616950c906a2293c9a26a3978",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
