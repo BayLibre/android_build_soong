@@ -38,7 +38,8 @@ type variableProperties struct {
 		// unbundled_build is a catch-all property to annotate modules that don't build in one or
 		// more unbundled branches, usually due to dependencies missing from the manifest.
 		Unbundled_build struct {
-			Enabled *bool `android:"arch_variant"`
+			Enabled     *bool   `android:"arch_variant"`
+			Sdk_version *string `android:"arch_variant"`
 		} `android:"arch_variant"`
 
 		Brillo struct {
