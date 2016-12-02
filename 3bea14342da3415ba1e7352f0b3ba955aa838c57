@@ -16,6 +16,24 @@
       "revId": "3bea14342da3415ba1e7352f0b3ba955aa838c57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d506749_dfbaac07",
+        "filename": "cc/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-12-02T00:47:08Z",
+      "side": 1,
+      "message": "Yeah, it didn\u0027t seem related to the other bools",
+      "parentUuid": "6d506749_4d7b9968",
+      "revId": "3bea14342da3415ba1e7352f0b3ba955aa838c57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
