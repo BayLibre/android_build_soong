@@ -81,6 +81,17 @@ type variableProperties struct {
 			Cflags   []string
 			Cppflags []string
 		}
+
+		BtHciUseMct struct {
+			Cflags []string
+		}
+		BtUseTestAsVendor struct {
+			Enabled bool
+			Cflags  []string
+		}
+		BtHaveBtLinux struct {
+			Enabled bool
+		}
 	} `android:"arch_variant"`
 }
 
@@ -137,7 +148,12 @@ type productVariables struct {
 	SanitizeDevice     []string `json:",omitempty"`
 	SanitizeDeviceArch []string `json:",omitempty"`
 
-	ArtUseReadBarrier *bool `json:",omitempty"`
+	ArtUseReadBarrier  *bool   `json:",omitempty"`
+	BtConfigIncludeDir *string `json:",omitempty"`
+	BtHcilpIncluded    *string `json:",omitempty"`
+	BtHciUseMct        *bool   `json:",omitempty"`
+	BtUseTestAsVendor  *bool   `json:",omitempty"`
+	BtHaveBtLinux      *bool   `json:",omitempty"`
 }
 
 func boolPtr(v bool) *bool {
