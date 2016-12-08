@@ -29,6 +29,7 @@ import (
 )
 
 var Bool = proptools.Bool
+var String = proptools.String
 
 // The configuration file name
 const configFileName = "soong.config"
@@ -459,4 +460,16 @@ func (c *deviceConfig) VndkVersion() string {
 		return ""
 	}
 	return *c.config.ProductVariables.DeviceVndkVersion
+}
+
+func (c *config) BtConfigIncludeDir() string {
+	return String(c.ProductVariables.BtConfigIncludeDir)
+}
+
+func (c *config) BtHcilpIncluded() string {
+	return String(c.ProductVariables.BtHcilpIncluded)
+}
+
+func (c *config) BtHciUseMct() bool {
+	return Bool(c.ProductVariables.BtHciUseMct)
 }
