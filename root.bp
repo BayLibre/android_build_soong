@@ -30,6 +30,7 @@ optional_subdirs = [
     "prebuilts/sdk",
     "system/*",
     "system/tools/*",
+    "system/bt",
     "test/vts",
     "vendor/*/*",
 ]
