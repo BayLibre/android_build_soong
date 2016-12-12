@@ -16,6 +16,24 @@
       "revId": "2106cdadd04c24659fbeaadfb7e73dc1fa3ad4d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba37f7d9_e39bcd5b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1072728
+      },
+      "writtenOn": "2016-12-12T22:29:21Z",
+      "side": 1,
+      "message": "PS2 catches that.",
+      "parentUuid": "ba37f7d9_c31d6929",
+      "revId": "2106cdadd04c24659fbeaadfb7e73dc1fa3ad4d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
