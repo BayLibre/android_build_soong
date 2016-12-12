@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba37f7d9_c31d6929",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-12-12T22:23:14Z",
+      "side": 1,
+      "message": "This is a cherry-pick, where\u0027s the cherry-pick line produced via -x?",
+      "revId": "2106cdadd04c24659fbeaadfb7e73dc1fa3ad4d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
