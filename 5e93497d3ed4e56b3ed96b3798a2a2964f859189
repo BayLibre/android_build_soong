@@ -39,6 +39,24 @@
       "revId": "5e93497d3ed4e56b3ed96b3798a2a2964f859189",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a7867ff_2995691d",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-12-13T23:03:35Z",
+      "side": 1,
+      "message": "I think this is good enough for now, but maybe a future version should separate it out of library and give it its own properties so they don\u0027t all have to be checked.",
+      "parentUuid": "3a7867ff_06aeda81",
+      "revId": "5e93497d3ed4e56b3ed96b3798a2a2964f859189",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
