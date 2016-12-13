@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a7867ff_2628364b",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-12-13T22:41:03Z",
+      "side": 1,
+      "message": "cc_library_headers?",
+      "range": {
+        "startLine": 284,
+        "startChar": 31,
+        "endLine": 284,
+        "endChar": 48
+      },
+      "revId": "d3f625822024de41005b4efbbd35496b4e846051",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
