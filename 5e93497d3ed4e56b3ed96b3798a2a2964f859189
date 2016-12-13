@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a7867ff_e6c1be3d",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-12-13T22:56:13Z",
+      "side": 1,
+      "message": "headers",
+      "range": {
+        "startLine": 284,
+        "startChar": 48,
+        "endLine": 284,
+        "endChar": 49
+      },
+      "revId": "5e93497d3ed4e56b3ed96b3798a2a2964f859189",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a7867ff_06aeda81",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-12-13T22:56:13Z",
+      "side": 1,
+      "message": "Should we check generated_sources too?\n\nAnd what about other dependencies? (shared/static libraries, whole static libs, etc)",
+      "revId": "5e93497d3ed4e56b3ed96b3798a2a2964f859189",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
