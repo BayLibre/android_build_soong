@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a7867ff_6fca0140",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-12-14T01:38:42Z",
+      "side": 1,
+      "message": "We should just switch the users of GeneratedSourceFiles over to this new method.",
+      "revId": "c3273829d1493aff87e4b07237e7381df5cde4e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
