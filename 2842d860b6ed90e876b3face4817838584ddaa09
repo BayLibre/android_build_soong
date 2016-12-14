@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a7867ff_2cb3b7e6",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-12-14T01:28:13Z",
+      "side": 1,
+      "message": "This belongs in the next patch",
+      "range": {
+        "startLine": 829,
+        "startChar": 40,
+        "endLine": 829,
+        "endChar": 52
+      },
+      "revId": "2842d860b6ed90e876b3face4817838584ddaa09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
