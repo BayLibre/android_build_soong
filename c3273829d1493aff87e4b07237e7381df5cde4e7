@@ -16,6 +16,24 @@
       "revId": "c3273829d1493aff87e4b07237e7381df5cde4e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a7867ff_cf01356f",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2016-12-14T01:50:00Z",
+      "side": 1,
+      "message": "I plan to do that in a future change, as well as move all users of generated_sources properties to srcs properties.",
+      "parentUuid": "3a7867ff_6fca0140",
+      "revId": "c3273829d1493aff87e4b07237e7381df5cde4e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
