@@ -34,6 +34,7 @@ optional_subdirs = [
     "system/hwservicemanager",
     "system/libhidl",
     "system/libhwbinder",
+    "system/libfmq",
     "system/media/*",
     "system/security/*",
     "system/tools/*",
