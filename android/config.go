@@ -456,3 +456,7 @@ func (c *deviceConfig) VndkVersion() string {
 	}
 	return *c.config.ProductVariables.DeviceVndkVersion
 }
+
+func (c *config) ArtUseReadBarrier() bool {
+	return Bool(c.ProductVariables.ArtUseReadBarrier)
+}
