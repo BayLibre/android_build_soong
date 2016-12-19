@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77b2fac6_ab26f528",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2016-12-19T23:24:47Z",
+      "side": 1,
+      "message": "Could you move ArtUseReadBarrier() up here with the rest of the config methods? (instead of under the deviceConfig methods)",
+      "revId": "d67d8581bbfe058ac5e4779c5757beebae927969",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
