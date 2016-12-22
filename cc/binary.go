@@ -235,6 +235,16 @@ func (binary *binaryDecorator) linkerFlags(ctx ModuleContext, flags Flags) Flags
 				}
 			}
 
+			if vndkVersion := ctx.DeviceConfig().VndkVersion(); !ctx.Host() && vndkVersion != "" {
+				if ctx.toolchain().Is64Bit() {
+					flags.LdFlags = append(flags.LdFlags,
+						"-Wl,-rpath,/system/lib64/vndk-"+vndkVersion)
+				} else {
+					flags.LdFlags = append(flags.LdFlags,
+						"-Wl,-rpath,/system/lib/vndk-"+vndkVersion)
+				}
+			}
+
 			flags.LdFlags = append(flags.LdFlags,
 				"-pie",
 				"-nostdlib",
