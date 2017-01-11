@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77a11aaa_82835fed",
+        "filename": "android/variable.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-01-11T00:54:43Z",
+      "side": 1,
+      "message": "Instead of directly using these in your go extension, can you wrap them in DeviceConfig methods? (see the bottom of config.go)\n\nThat way we can refactor this code to support multiple device configurations in one build, and your code won\u0027t need to change.",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 47
+      },
+      "revId": "00511cd0792a7011830c4e9f87771b71c9ea6115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
