@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "237845b1_8900e9b9",
+        "filename": "android/variable.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2017-01-12T00:04:50Z",
+      "side": 1,
+      "message": "Sure. Adding the flag to fluoride_defaults should be fine.",
+      "parentUuid": "237845b1_6e86b340",
+      "revId": "7a67e3e1729670c2c7659d35929504bbc936b01a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "237845b1_aed5ab27",
         "filename": "android/variable.go",
         "patchSetId": 4
@@ -30,6 +48,42 @@
       "writtenOn": "2017-01-11T21:43:46Z",
       "side": 1,
       "message": "Add a blank line above the bluetooth stuff",
+      "revId": "7a67e3e1729670c2c7659d35929504bbc936b01a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "237845b1_290515c8",
+        "filename": "android/variable.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2017-01-12T00:04:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "237845b1_aed5ab27",
+      "revId": "7a67e3e1729670c2c7659d35929504bbc936b01a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "237845b1_5b2854b3",
+        "filename": "android/variable.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2017-01-12T00:04:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "237845b1_aed5ab27",
       "revId": "7a67e3e1729670c2c7659d35929504bbc936b01a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
