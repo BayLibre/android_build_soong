@@ -479,3 +479,7 @@ func (c *deviceConfig) BtHcilpIncluded() string {
 func (c *deviceConfig) BtHciUseMct() bool {
 	return Bool(c.config.ProductVariables.BtHciUseMct)
 }
+
+func (c *deviceConfig) SameProcessHalDeps() []string {
+	return append([]string(nil), c.config.ProductVariables.SameProcessHalDeps...)
+}
