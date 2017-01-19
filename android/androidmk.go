@@ -227,6 +227,9 @@ func translateAndroidMkModule(ctx blueprint.SingletonContext, w io.Writer, mod b
 		if amod.commonProperties.Proprietary {
 			fmt.Fprintln(w, "LOCAL_PROPRIETARY_MODULE := true")
 		}
+		if len(amod.commonProperties.Extends_module) > 0 {
+			fmt.Fprintln(w, "LOCAL_EXTENDS_MODULE := ", amod.commonProperties.Extends_module)
+		}
 	}
 
 	if host {
