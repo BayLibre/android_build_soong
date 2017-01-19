@@ -161,6 +161,10 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 		}
 	}
 
+	if !cts.AConfig().EnableCFI() {
+		s.Cfi = nil
+	}
+
 	if ctx.staticBinary() {
 		s.Address = nil
 		s.Coverage = nil
