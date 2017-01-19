@@ -174,5 +174,15 @@ func bionicHeaders(bionicArch, kernelArch string) string {
 }
 
 func VndkLibraries() []string {
-	return []string{}
+	// TODO(jiyong): just for experiment. not final.
+	return []string{"libcutils"}
+}
+
+func VndkIndirectLibraries() []string {
+	// TODO(jiyong): just for experiment. not final.
+	return []string{"libbase"}
+}
+
+func IsVndkLibrary(name string) bool {
+	return inList(name, VndkLibraries()) || inList(name, VndkIndirectLibraries())
 }
