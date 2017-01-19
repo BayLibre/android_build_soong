@@ -143,6 +143,8 @@ type productVariables struct {
 	BtConfigIncludeDir *string `json:",omitempty"`
 	BtHcilpIncluded    *string `json:",omitempty"`
 	BtHciUseMct        *bool   `json:",omitempty"`
+
+	SameProcessHalDeps []string `json:",omitempty"`
 }
 
 func boolPtr(v bool) *bool {
