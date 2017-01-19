@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a856d212_c39b2560",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2017-01-19T22:17:45Z",
+      "side": 1,
+      "message": "I think it\u0027s better to clear the cfi flag earlier, somewhere around line 163.",
+      "revId": "629e1359fb7cc82b1ee416247fa43f01c397384c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
