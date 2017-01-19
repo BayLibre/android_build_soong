@@ -587,6 +587,23 @@ func (library *libraryDecorator) toc() android.OptionalPath {
 
 func (library *libraryDecorator) install(ctx ModuleContext, file android.Path) {
 	if !ctx.static() {
+		if ctx.Device() {
+			if ctx.isNdk() {
+				// NDK libraries are always installed to /system/lib because some
+				// apps are using the absolute path.
+				library.baseInstaller.subDir = ""
+				// TODO(jiyong): abort if this is marked as proprietary
+			} else if ctx.isVndk() {
+				library.baseInstaller.subDir = "vndk"
+			} else if ctx.isSameProcessHal() {
+				library.baseInstaller.subDir = "sameprocess"
+			} else {
+				var aospInSystem = !ctx.Proprietary() && !ctx.InstallInData()
+				if aospInSystem {
+					library.baseInstaller.subDir = "framework"
+				}
+			}
+		}
 		library.baseInstaller.install(ctx, file)
 	}
 }
