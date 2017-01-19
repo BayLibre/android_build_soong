@@ -91,6 +91,7 @@ type ModuleContext interface {
 	InstallInData() bool
 
 	RequiredModuleNames() []string
+	ExtendsModule() string
 }
 
 type Module interface {
@@ -136,6 +137,9 @@ type commonProperties struct {
 
 	// whether this is a proprietary vendor module, and should be installed into /vendor
 	Proprietary bool
+
+	// module name that this module is extending
+	Extends_module string
 
 	// *.logtags files, to combine together in order to generate the /system/etc/event-log-tags
 	// file
@@ -622,6 +626,10 @@ func (a *androidModuleContext) Proprietary() bool {
 
 func (a *androidModuleContext) InstallInData() bool {
 	return a.module.InstallInData()
+}
+
+func (a *androidModuleContext) ExtendsModule() string {
+	return a.module.base().commonProperties.Extends_module
 }
 
 func (a *androidModuleContext) InstallFileName(installPath OutputPath, name string, srcPath Path,

@@ -21,6 +21,7 @@ import (
 	"github.com/google/blueprint/pathtools"
 
 	"android/soong/android"
+	"android/soong/cc/config"
 )
 
 type LibraryProperties struct {
@@ -335,7 +336,11 @@ type libraryInterface interface {
 func (library *libraryDecorator) getLibName(ctx ModuleContext) string {
 	name := library.libName
 	if name == "" {
-		name = ctx.baseModuleName()
+		if ctx.Device() && (inList(ctx.ExtendsModule(), config.VndkLibraries()) || inList(ctx.ExtendsModule(), config.VndkIndirectLibraries())) {
+			name = ctx.ExtendsModule()
+		} else {
+			name = ctx.baseModuleName()
+		}
 	}
 
 	if ctx.Host() && Bool(library.Properties.Unique_host_soname) {
@@ -587,6 +592,25 @@ func (library *libraryDecorator) toc() android.OptionalPath {
 
 func (library *libraryDecorator) install(ctx ModuleContext, file android.Path) {
 	if !ctx.static() {
+		if ctx.Device() {
+			if inList(ctx.baseModuleName(), ndkPrebuiltSharedLibraries) {
+				// NDK libraries are always installed to /system/lib because some
+				// apps are using the absolute path.
+				library.baseInstaller.subDir = ""
+				// TODO(jiyong): abort if this is marked as proprietary
+			} else if inList(ctx.baseModuleName(), config.VndkLibraries()) || inList(ctx.baseModuleName(), config.VndkIndirectLibraries()) {
+				library.baseInstaller.subDir = "vndk"
+			} else if inList(ctx.ExtendsModule(), config.VndkLibraries()) || inList(ctx.ExtendsModule(), config.VndkIndirectLibraries()) {
+				library.baseInstaller.subDir = "vndk-ext"
+			} else if inList(ctx.baseModuleName(), ctx.DeviceConfig().SameProcessHalDeps()) {
+				library.baseInstaller.subDir = "sameprocess"
+			} else {
+				var aospInSystem = !ctx.Proprietary() && !ctx.InstallInData()
+				if aospInSystem {
+					library.baseInstaller.subDir = "framework"
+				}
+			}
+		}
 		library.baseInstaller.install(ctx, file)
 	}
 }
