@@ -301,7 +301,8 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 		sanitizers = append(sanitizers, "safe-stack")
 	}
 
-	if Bool(sanitize.Properties.Sanitize.Cfi) {
+	if Bool(sanitize.Properties.Sanitize.Cfi) &&
+		Bool(ctx.AConfig().EnableCFI()) {
 		sanitizers = append(sanitizers, "cfi")
 		cfiFlags := []string{"-flto", "-fsanitize=cfi", "-fsanitize-cfi-cross-dso"}
 		flags.CFlags = append(flags.CFlags, cfiFlags...)
