@@ -166,3 +166,11 @@ func bionicHeaders(bionicArch, kernelArch string) string {
 func VndkLibraries() []string {
 	return []string{}
 }
+
+func SameprocessHalPrefixes() []string {
+	return []string{
+		"libEGL",
+		"libGLESv1_CM",
+		"libGLESv2",
+	}
+}

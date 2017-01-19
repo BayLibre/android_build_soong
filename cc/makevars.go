@@ -52,6 +52,7 @@ func makeVarsProvider(ctx android.MakeVarsContext) {
 		ctx.Strict("BOARD_VNDK_VERSION", "")
 	}
 	ctx.Strict("VNDK_LIBRARIES", strings.Join(config.VndkLibraries(), " "))
+	ctx.Strict("SAMEPROCSS_HAL_LIBRARIES_PREFIXES", strings.Join(config.SameprocessHalPrefixes(), " "))
 
 	ctx.Strict("ADDRESS_SANITIZER_CONFIG_EXTRA_CFLAGS", asanCflags)
 	ctx.Strict("ADDRESS_SANITIZER_CONFIG_EXTRA_LDFLAGS", asanLdflags)

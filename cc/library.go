@@ -15,12 +15,14 @@
 package cc
 
 import (
+	"regexp"
 	"strings"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/pathtools"
 
 	"android/soong/android"
+	"android/soong/cc/config"
 )
 
 type LibraryProperties struct {
@@ -573,8 +575,37 @@ func (library *libraryDecorator) toc() android.OptionalPath {
 	return library.tocFile
 }
 
+func IsSameprocessHal(s string) bool {
+	var list = config.SameprocessHalPrefixes()
+	for i := range list {
+		var pattern = regexp.MustCompile("^" + list[i] + "_[a-zA-Z0-9]+$")
+		if pattern.FindString(s) != "" {
+			return true
+		}
+	}
+	return false
+}
+
 func (library *libraryDecorator) install(ctx ModuleContext, file android.Path) {
 	if !ctx.static() {
+		if ctx.Device() {
+			if inList(ctx.baseModuleName(), ndkPrebuiltSharedLibraries) {
+				// NDK libraries are always installed to /system/lib because some
+				// apps are using the absolute path.
+				library.baseInstaller.relative = ""
+				// TODO(jiyong): abort if this is marked as proprietary
+			} else if inList(ctx.baseModuleName(), config.VndkLibraries()) {
+				library.baseInstaller.relative = "vndk"
+			} else if IsSameprocessHal(ctx.baseModuleName()) {
+				library.baseInstaller.relative = "sameprocess"
+				// TODO(jiyong): abort if this is not marked as proprietary
+			} else {
+				var aospInSystem = !ctx.Proprietary() && !ctx.InstallInData()
+				if aospInSystem {
+					library.baseInstaller.relative = "framework"
+				}
+			}
+		}
 		library.baseInstaller.install(ctx, file)
 	}
 }
