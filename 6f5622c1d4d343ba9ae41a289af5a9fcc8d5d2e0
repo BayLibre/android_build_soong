@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a856d212_be4a86b9",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2017-01-19T22:38:51Z",
+      "side": 1,
+      "message": "Looks good. Could also clean s.Diag.Cfi, but that does not appear to be necessary.",
+      "revId": "6f5622c1d4d343ba9ae41a289af5a9fcc8d5d2e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
