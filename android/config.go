@@ -486,3 +486,7 @@ func (c *deviceConfig) CoverageEnabledForPath(path string) bool {
 	}
 	return false
 }
+
+func (c *deviceConfig) SameProcessHalDeps() []string {
+	return append([]string(nil), c.config.ProductVariables.SameProcessHalDeps...)
+}

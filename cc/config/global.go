@@ -174,5 +174,11 @@ func bionicHeaders(bionicArch, kernelArch string) string {
 }
 
 func VndkLibraries() []string {
-	return []string{}
+	// TODO(jiyong): just for experiment. not final.
+	return []string{"libcutils"}
+}
+
+func VndkIndirectLibraries() []string {
+	// TODO(jiyong): just for experiment. not final.
+	return []string{"libbase"}
 }
