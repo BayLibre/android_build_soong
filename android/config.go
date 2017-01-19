@@ -471,3 +471,7 @@ func (c *deviceConfig) VndkVersion() string {
 func (c *deviceConfig) BtConfigIncludeDir() string {
 	return String(c.config.ProductVariables.BtConfigIncludeDir)
 }
+
+func (c *deviceConfig) SameProcessHalDeps() []string {
+	return append([]string(nil), c.config.ProductVariables.SameProcessHalDeps...)
+}
