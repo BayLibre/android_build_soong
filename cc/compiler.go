@@ -424,3 +424,10 @@ func compileObjs(ctx android.ModuleContext, flags builderFlags,
 
 	return TransformSourceToObj(ctx, subdir, srcFiles, flags, deps)
 }
+
+// Create abi dumps from  a list of source files into objects a specified subdirectory
+func createHeaderDumps(ctx android.ModuleContext, flags builderFlags,
+	subdir string, srcFiles android.Paths) {
+
+	TransformSourceToDump(ctx, subdir, srcFiles, flags)
+}

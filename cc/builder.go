@@ -159,6 +159,14 @@ var (
 		},
 		"cFlags", "tidyFlags")
 
+	abiDump = pctx.AndroidStaticRule("abiDump",
+		blueprint.RuleParams{
+			Command:     "echo attempting ast dump && rm -f $out && header-abi-dumper -o ${out} $in -- $cFlags && touch $out",
+			CommandDeps: []string{"header-abi-dumper"},
+			Description: "header-abi-dumper -o $out",
+		},
+		"cFlags")
+
 	yasmCmd = pctx.SourcePathVariable("yasmCmd", "prebuilts/misc/${config.HostPrebuiltTag}/yasm/yasm")
 
 	yasm = pctx.AndroidStaticRule("yasm",
@@ -335,6 +343,74 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 		objFiles:  objFiles,
 		tidyFiles: tidyFiles,
 	}
+}
+
+func TransformSourceToDump(ctx android.ModuleContext, subdir string, srcFiles android.Paths,
+	flags builderFlags) {
+
+	dumpFiles := make(android.Paths, len(srcFiles))
+
+	cflags := flags.globalFlags + " " + flags.cFlags + " " + flags.conlyFlags
+	cppflags := flags.globalFlags + " " + flags.cFlags + " " + flags.cppFlags
+	asflags := flags.globalFlags + " " + flags.asFlags
+
+	if flags.clang {
+		cflags += " ${config.NoOverrideClangGlobalCflags}"
+		cppflags += " ${config.NoOverrideClangGlobalCflags}"
+	} else {
+		cflags += " ${config.NoOverrideGlobalCflags}"
+		cppflags += " ${config.NoOverrideGlobalCflags}"
+	}
+
+	for i, srcFile := range srcFiles {
+		dumpFile := android.ObjPathWithExt(ctx, subdir, srcFile, "dump")
+
+		dumpFiles[i] = dumpFile
+
+		var moduleCflags string
+		var ccCmd string
+
+		switch srcFile.Ext() {
+		case ".S", ".s":
+			ccCmd = "gcc"
+			moduleCflags = asflags
+		case ".c":
+			ccCmd = "gcc"
+			moduleCflags = cflags
+		case ".cpp", ".cc", ".mm":
+			ccCmd = "g++"
+			moduleCflags = cppflags
+		default:
+			ctx.ModuleErrorf("File %s has unknown extension", srcFile)
+			continue
+		}
+
+		if flags.clang {
+			switch ccCmd {
+			case "gcc":
+				ccCmd = "clang"
+			case "g++":
+				ccCmd = "clang++"
+			default:
+				panic("unrecoginzied ccCmd")
+			}
+
+			ccCmd = "${config.ClangBin}/" + ccCmd
+		} else {
+			ccCmd = gccCmd(flags.toolchain, ccCmd)
+		}
+
+		ctx.ModuleBuild(pctx, android.ModuleBuildParams{
+			Rule:   abiDump,
+			Output: dumpFile,
+			Input:  srcFile,
+			Args: map[string]string{
+				"cFlags": moduleCflags,
+			},
+		})
+
+	}
+
 }
 
 // Generate a rule for compiling multiple .o files to a static library (.a)
