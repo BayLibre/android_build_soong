@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2812e29d_a41522bb",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-01-24T08:10:20Z",
+      "side": 1,
+      "message": "I\u0027d expect your ABI call to happen here base on a builderFlag entry, instead of copying the rest of this file.",
+      "revId": "0980f44e0e57f9fd6b64ee08d4b7e4decfba4716",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2812e29d_e41f1ad5",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-01-24T08:10:20Z",
+      "side": 1,
+      "message": "This is the wrong import order I think",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 10
+      },
+      "revId": "0980f44e0e57f9fd6b64ee08d4b7e4decfba4716",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
