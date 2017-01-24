@@ -16,6 +16,23 @@
       "revId": "8a049f9a7c32f756302b295791ba8d305216de9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "74cd35c8_08ebb1c6",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1068404
+      },
+      "writtenOn": "2017-01-24T23:14:05Z",
+      "side": 1,
+      "message": "Ugh sorry, bad switching across branches. Thanks for double checking - and apologies.\n\nDone.",
+      "revId": "8a049f9a7c32f756302b295791ba8d305216de9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
