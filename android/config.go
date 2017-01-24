@@ -398,8 +398,8 @@ func (c *config) SanitizeDeviceArch() []string {
 	return append([]string(nil), c.ProductVariables.SanitizeDeviceArch...)
 }
 
-func (c *config) EnableCFI() bool {
-	return Bool(c.ProductVariables.EnableCFI)
+func (c *config) DisableCFI() bool {
+	return Bool(c.ProductVariables.DisableCFI)
 }
 
 func (c *config) Android64() bool {
