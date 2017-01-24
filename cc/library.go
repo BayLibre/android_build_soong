@@ -15,10 +15,9 @@
 package cc
 
 import (
-	"strings"
-
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/pathtools"
+	"strings"
 
 	"android/soong/android"
 )
@@ -300,10 +299,13 @@ func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 		srcs := android.PathsForModuleSrc(ctx, library.Properties.Static.Srcs)
 		objs = objs.Append(compileObjs(ctx, buildFlags, android.DeviceStaticLibrary,
 			srcs, library.baseCompiler.deps))
+		createHeaderDumps(ctx, buildFlags, android.DeviceSharedLibrary, srcs)
+
 	} else {
 		srcs := android.PathsForModuleSrc(ctx, library.Properties.Shared.Srcs)
 		objs = objs.Append(compileObjs(ctx, buildFlags, android.DeviceSharedLibrary,
 			srcs, library.baseCompiler.deps))
+		createHeaderDumps(ctx, buildFlags, android.DeviceSharedLibrary, srcs)
 	}
 
 	return objs
