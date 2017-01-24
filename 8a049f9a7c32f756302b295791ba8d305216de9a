@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "705bb5ab_e1941237",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-01-24T23:10:48Z",
+      "side": 1,
+      "message": "This won\u0027t compile",
+      "revId": "8a049f9a7c32f756302b295791ba8d305216de9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
