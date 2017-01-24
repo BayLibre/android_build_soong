@@ -43,6 +43,7 @@ func boolPtr(v bool) *bool {
 const (
 	asan sanitizerType = iota + 1
 	tsan
+	intsan
 )
 
 func (t sanitizerType) String() string {
@@ -51,6 +52,8 @@ func (t sanitizerType) String() string {
 		return "asan"
 	case tsan:
 		return "tsan"
+	case intsan:
+		return "intsan"
 	default:
 		panic(fmt.Errorf("unknown sanitizerType %d", t))
 	}
@@ -72,6 +75,7 @@ type SanitizeProperties struct {
 		Coverage       *bool    `android:"arch_variant"`
 		Safestack      *bool    `android:"arch_variant"`
 		Cfi            *bool    `android:"arch_variant"`
+		IntOverflow    *bool    `android:"arch_variant"`
 
 		// Sanitizers to run in the diagnostic mode (as opposed to the release mode).
 		// Replaces abort() on error with a human-readable error message.
@@ -156,6 +160,10 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 			s.Cfi = boolPtr(true)
 		}
 
+		if found, globalSanitizers = removeFromList("intoverflow", globalSanitizers); found && s.IntOverflow == nil {
+			s.IntOverflow = boolPtr(true)
+		}
+
 		if len(globalSanitizers) > 0 {
 			ctx.ModuleErrorf("unknown global sanitizer option %s", globalSanitizers[0])
 		}
@@ -183,7 +191,7 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 		// TODO(ccross): error for compile_multilib = "32"?
 	}
 
-	if Bool(s.All_undefined) || Bool(s.Undefined) || Bool(s.Address) ||
+	if Bool(s.All_undefined) || Bool(s.Undefined) || Bool(s.Address) || Bool(s.IntOverflow) ||
 		Bool(s.Thread) || Bool(s.Coverage) || Bool(s.Safestack) || Bool(s.Cfi) {
 		sanitize.Properties.SanitizerEnabled = true
 	}
@@ -306,6 +314,14 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 		sanitizers = append(sanitizers, "safe-stack")
 	}
 
+	if Bool(sanitize.Properties.Sanitize.IntOverflow) {
+		if !prefixInList(ctx.ModuleDir(), config.IOSanitizeExcludes) {
+			sanitizers = append(sanitizers, "unsigned-integer-overflow")
+			sanitizers = append(sanitizers, "signed-integer-overflow")
+
+		}
+	}
+
 	if Bool(sanitize.Properties.Sanitize.Cfi) {
 		sanitizers = append(sanitizers, "cfi")
 		cfiFlags := []string{"-flto", "-fsanitize=cfi", "-fsanitize-cfi-cross-dso"}
@@ -377,6 +393,8 @@ func (sanitize *sanitize) Sanitizer(t sanitizerType) bool {
 		return Bool(sanitize.Properties.Sanitize.Address)
 	case tsan:
 		return Bool(sanitize.Properties.Sanitize.Thread)
+	case intsan:
+		return Bool(sanitize.Properties.Sanitize.IntOverflow)
 	default:
 		panic(fmt.Errorf("unknown sanitizerType %d", t))
 	}
@@ -391,6 +409,8 @@ func (sanitize *sanitize) SetSanitizer(t sanitizerType, b bool) {
 		}
 	case tsan:
 		sanitize.Properties.Sanitize.Thread = boolPtr(b)
+	case intsan:
+		sanitize.Properties.Sanitize.IntOverflow = boolPtr(b)
 	default:
 		panic(fmt.Errorf("unknown sanitizerType %d", t))
 	}

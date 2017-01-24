@@ -75,6 +75,15 @@ func removeFromList(s string, list []string) (bool, []string) {
 	}
 }
 
+func prefixInList(s string, list []string) bool {
+	for i := range list {
+		if strings.HasPrefix(s, list[i]) {
+			return true
+		}
+	}
+	return false
+}
+
 var libNameRegexp = regexp.MustCompile(`^lib(.*)$`)
 
 func moduleToLibName(module string) (string, error) {

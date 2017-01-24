@@ -84,6 +84,7 @@ bootstrap_go_package {
         "cc/config/global.go",
         "cc/config/tidy.go",
         "cc/config/toolchain.go",
+        "cc/config/iosanitization.go",
 
         "cc/config/arm_device.go",
         "cc/config/arm64_device.go",
