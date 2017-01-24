@@ -167,7 +167,7 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 		}
 	}
 
-	if !ctx.AConfig().EnableCFI() {
+	if ctx.AConfig().EnableCFI() {
 		s.Cfi = nil
 		s.Diag.Cfi = nil
 	}
