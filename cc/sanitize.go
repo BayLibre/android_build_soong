@@ -189,8 +189,8 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 		// TODO(ccross): error for compile_multilib = "32"?
 	}
 
-	if Bool(s.All_undefined) || Bool(s.Undefined) || Bool(s.Address) ||
-		Bool(s.Thread) || Bool(s.Coverage) || Bool(s.Safestack) || Bool(s.Cfi) {
+	if ctx.Os() != android.Windows && (Bool(s.All_undefined) || Bool(s.Undefined) || Bool(s.Address) || Bool(s.Thread) ||
+		Bool(s.Coverage) || Bool(s.Safestack) || Bool(s.Cfi) || len(s.Misc_undefined) > 0) {
 		sanitize.Properties.SanitizerEnabled = true
 	}
 
