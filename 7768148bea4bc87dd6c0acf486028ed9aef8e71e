@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cceb62e4_0b07a718",
+        "filename": "cmd/microfactory/microfactory.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-01-30T22:33:42Z",
+      "side": 1,
+      "message": "Could we have a comment saying something like \"compile the dependencies using potentially many threads\"?\n\n(though actually what I would do would be to move it into a separate method called compileDependencies and use the method name itself as the documentation)",
+      "range": {
+        "startLine": 99,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 4
+      },
+      "revId": "7768148bea4bc87dd6c0acf486028ed9aef8e71e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32c1d255_c3b51b3b",
+        "filename": "cmd/microfactory/microfactory.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-01-30T22:33:42Z",
+      "side": 1,
+      "message": "Could we have a comment saying something like \u0027hash the results of the building each dependency\u0027?",
+      "range": {
+        "startLine": 107,
+        "startChar": 8,
+        "endLine": 107,
+        "endChar": 9
+      },
+      "revId": "7768148bea4bc87dd6c0acf486028ed9aef8e71e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54d9223d_3666448a",
+        "filename": "cmd/microfactory/microfactory.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-01-30T22:33:42Z",
+      "side": 1,
+      "message": "Could we have a comment saying something like \u0027hash the contents of the input files\u0027?",
+      "revId": "7768148bea4bc87dd6c0acf486028ed9aef8e71e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f94bc53_3ff20a7b",
+        "filename": "cmd/microfactory/microfactory.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-01-30T22:33:42Z",
+      "side": 1,
+      "message": "Is a Go program able to access its own file name programmatically? Will this rebuild the program if a source file is renamed? I would be inclined to add the filename into the hash too",
+      "range": {
+        "startLine": 134,
+        "startChar": 11,
+        "endLine": 134,
+        "endChar": 13
+      },
+      "revId": "7768148bea4bc87dd6c0acf486028ed9aef8e71e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "567dc887_6e32cbd4",
+        "filename": "cmd/microfactory/microfactory.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-01-30T22:33:42Z",
+      "side": 1,
+      "message": "Does the oldSha variable refer to the hash of the inputs? If so, can we rename it to oldInputSha to distinguish it from a hash of the outputs?",
+      "range": {
+        "startLine": 150,
+        "startChar": 12,
+        "endLine": 150,
+        "endChar": 13
+      },
+      "revId": "7768148bea4bc87dd6c0acf486028ed9aef8e71e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adedb096_ab0cc81e",
+        "filename": "cmd/microfactory/microfactory.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-01-30T22:33:42Z",
+      "side": 1,
+      "message": "It looks to me like this Link method relies on p.hashResult being computed correctly before it gets run, which is currently done in the Compile method.\n\nCan we check that p.hashResult is non-null (unless ioutil already does that)?\n\nAlternatively we could move hashResult (and potentially the other changing fields, such as compiled, failed, and rebuilt) out of the GoPackage data structure and make it a parameter of the Compile and of the Link methods (and have it be computed in another method) to make it super clear that it needs to be computed beforehand (this seems like the cleanest approach to me although I suspect this is more work than we want).",
+      "range": {
+        "startLine": 239,
+        "startChar": 15,
+        "endLine": 239,
+        "endChar": 24
+      },
+      "revId": "7768148bea4bc87dd6c0acf486028ed9aef8e71e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "482d9bf7_232cd582",
+        "filename": "cmd/microfactory/microfactory.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-01-30T22:33:42Z",
+      "side": 1,
+      "message": "Could we rename checkForRebuild to something like checkForRebuildingSelf or considerRebuildingSelf?",
+      "range": {
+        "startLine": 245,
+        "startChar": 5,
+        "endLine": 245,
+        "endChar": 20
+      },
+      "revId": "7768148bea4bc87dd6c0acf486028ed9aef8e71e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "990cd515_7ef4defb",
+        "filename": "cmd/microfactory/microfactory.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-01-30T22:33:42Z",
+      "side": 1,
+      "message": "Why\u0027s it called \"microfactory\"? I wonder about using \"goBuilder\" instead",
+      "range": {
+        "startLine": 291,
+        "startChar": 37,
+        "endLine": 291,
+        "endChar": 40
+      },
+      "revId": "7768148bea4bc87dd6c0acf486028ed9aef8e71e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "704cf8c6_62577b06",
+        "filename": "soong_ui.bash",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-01-30T22:33:42Z",
+      "side": 1,
+      "message": "When the Go code detects that %N isn\u0027t supported, what does it do?",
+      "range": {
+        "startLine": 18,
+        "startChar": 24,
+        "endLine": 18,
+        "endChar": 25
+      },
+      "revId": "7768148bea4bc87dd6c0acf486028ed9aef8e71e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
