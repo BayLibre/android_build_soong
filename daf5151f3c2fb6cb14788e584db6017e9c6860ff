@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0dd32c90_6511b40f",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-01-31T01:43:41Z",
+      "side": 1,
+      "message": "Can we add \u0027 Specify --make-mode.\u0027 to the error message?",
+      "range": {
+        "startLine": 48,
+        "startChar": 57,
+        "endLine": 48,
+        "endChar": 58
+      },
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a003225d_297ed6e4",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-01-31T01:43:41Z",
+      "side": 1,
+      "message": "Maybe extract \"build/soong/root.bp\" into a variable",
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4862bdb_2c9fcf31",
+        "filename": "ui/build/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-01-31T01:43:41Z",
+      "side": 1,
+      "message": "Can we have a comment either one of \"because we haven\u0027t figured out how to move them yet\" or \"and it doesn\u0027t seem urgent to figure out how to move them yet\" or \"we can\u0027t move them yet because we\u0027re not on Python 3.2\"?\n\nhttp://stackoverflow.com/questions/3522079/changing-the-directory-where-pyc-files-are-created",
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c180c633_cd2ecedf",
+        "filename": "ui/build/signal.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-01-31T01:43:41Z",
+      "side": 1,
+      "message": "Could we have a comment telling why we want to cancel specifically the first signal?",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 9
+      },
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "500b270e_7bbb80fe",
+        "filename": "ui/logger/logger.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-01-31T01:43:41Z",
+      "side": 1,
+      "message": "Is this file copied from somewhere else, or written anew? (If it\u0027s copied from somewhere else, where?)",
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
