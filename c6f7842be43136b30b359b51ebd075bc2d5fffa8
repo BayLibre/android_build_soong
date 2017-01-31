@@ -1,0 +1,216 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84fc195f_e085d029",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-01-31T01:00:16Z",
+      "side": 1,
+      "message": "These flags aren\u0027t often going to be invoked by many people, right? So we don\u0027t have to spend a lot of time explaining them, and we can also change them fairly easily?\n\n(It seems to me that if the number of build targets were larger, then we would separate out the \u0027only\u0027 from the \u0027only-config\u0027 and \u0027only-soong\u0027 to address the fact that multiple \u0027only\u0027 targets would have contradictory meanings. I would expect instead a flag called \u0027build\u0027 for which the default value was \u0027config,soong,kati\u0027, and \u0027only-soong\u0027 would be an alias for \u0027build\u003dsoong\u0027 and \u0027only-kati\u0027 would be an alias for \u0027build\u003dkati\u0027 (and in both cases, soong depends on config and ends up requiring it to be run too) if we wanted something super easy for users to use)",
+      "range": {
+        "startLine": 44,
+        "startChar": 13,
+        "endLine": 44,
+        "endChar": 14
+      },
+      "revId": "c6f7842be43136b30b359b51ebd075bc2d5fffa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b906de4_17847cdc",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-01-31T01:00:16Z",
+      "side": 1,
+      "message": "Extract the string \"build/soong/root.bp\" into a variable?",
+      "range": {
+        "startLine": 60,
+        "startChar": 98,
+        "endLine": 60,
+        "endChar": 101
+      },
+      "revId": "c6f7842be43136b30b359b51ebd075bc2d5fffa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7cb2e1d_ac6d63e3",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-01-31T01:00:16Z",
+      "side": 1,
+      "message": "What\u0027s the data type of \u0027cancel\u0027? Would it be equally correct to call it \u0027cancellationHandler\u0027?",
+      "revId": "c6f7842be43136b30b359b51ebd075bc2d5fffa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9909e2d4_fb0bfbbd",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-01-31T01:00:16Z",
+      "side": 1,
+      "message": "If the Go process gets cancelled/killed while running, is it possible for it to leave intermediate files in its destination?\n\nI imagine that instead of creating OutDir()/multiproduct-xxxx, and deleting it when done, we would create OutDir()/multiproduct, and would delete it both before the build starts (just in case) and also when it completes.",
+      "range": {
+        "startLine": 89,
+        "startChar": 8,
+        "endLine": 89,
+        "endChar": 17
+      },
+      "revId": "c6f7842be43136b30b359b51ebd075bc2d5fffa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "504a78c1_0b7ce090",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-01-31T01:00:16Z",
+      "side": 1,
+      "message": "I wonder if we should make a \u0027DumpMakeVar\u0027 method that returns the variable rather than a dictionary, to simplify line 104",
+      "range": {
+        "startLine": 100,
+        "startChar": 20,
+        "endLine": 100,
+        "endChar": 32
+      },
+      "revId": "c6f7842be43136b30b359b51ebd075bc2d5fffa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9871c006_2e83a668",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-01-31T01:00:16Z",
+      "side": 1,
+      "message": "Can we have a comment here that looks something like \"Build the products\"?",
+      "revId": "c6f7842be43136b30b359b51ebd075bc2d5fffa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "209aebab_debe6787",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-01-31T01:00:16Z",
+      "side": 1,
+      "message": "How is this different from calling \u0027wg.Wait()\u0027 and then calling \u0027close(productConfigs)\u0027? Can \u0027wg.Wait\u0027 throw an exception for which we still want to close(productConfigs) ?",
+      "range": {
+        "startLine": 148,
+        "startChar": 5,
+        "endLine": 148,
+        "endChar": 9
+      },
+      "revId": "c6f7842be43136b30b359b51ebd075bc2d5fffa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a13ade8_df8a4782",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-01-31T01:00:16Z",
+      "side": 1,
+      "message": "I wonder if we can rename \u0027parallel\u0027 to \u0027numParallelProcesses\u0027 to clarify that it\u0027s an int and not a boolean",
+      "range": {
+        "startLine": 152,
+        "startChar": 18,
+        "endLine": 152,
+        "endChar": 26
+      },
+      "revId": "c6f7842be43136b30b359b51ebd075bc2d5fffa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e0b4080_93aeeca1",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-01-31T01:00:16Z",
+      "side": 1,
+      "message": "Does this build every product for every value of i?",
+      "range": {
+        "startLine": 156,
+        "startChar": 18,
+        "endLine": 156,
+        "endChar": 23
+      },
+      "revId": "c6f7842be43136b30b359b51ebd075bc2d5fffa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29182647_e9f5f6ed",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-01-31T01:00:16Z",
+      "side": 1,
+      "message": "Could you elaborate? Does Kati throw an exception?",
+      "revId": "c6f7842be43136b30b359b51ebd075bc2d5fffa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
