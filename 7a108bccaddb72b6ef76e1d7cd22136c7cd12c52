@@ -16,6 +16,23 @@
       "revId": "7a108bccaddb72b6ef76e1d7cd22136c7cd12c52",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "42b6ebdb_0037e4f9",
+        "filename": "cc/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-01-31T07:57:32Z",
+      "side": 1,
+      "message": "It will affect clang windows builds, but so did the old LOCAL_NO_FPIE flag set in external/clang/tools/driver/Android.mk.",
+      "revId": "7a108bccaddb72b6ef76e1d7cd22136c7cd12c52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
