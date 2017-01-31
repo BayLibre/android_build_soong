@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b5019f4_2a7bc571",
+        "filename": "cc/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-01-31T07:46:25Z",
+      "side": 1,
+      "message": "Wait, is this going to affect the Clang Windows build? I don\u0027t want to break that build in the process of fixing Goma.",
+      "revId": "7a108bccaddb72b6ef76e1d7cd22136c7cd12c52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
