@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3c13e63_4743ea30",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-01-31T17:36:44Z",
+      "side": 1,
+      "message": "This means a module using clang: false will silently turn off all sanitizers.  How about we disable on windows instead?",
+      "range": {
+        "startLine": 192,
+        "startChar": 4,
+        "endLine": 192,
+        "endChar": 15
+      },
+      "revId": "7f9f0385f76e4fd98266db2c4af11d340a9b8d0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
