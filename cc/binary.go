@@ -196,8 +196,8 @@ func (binary *binaryDecorator) staticBinary() bool {
 func (binary *binaryDecorator) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 	flags = binary.baseLinker.linkerFlags(ctx, flags)
 
-	if ctx.Host() && !binary.static() {
-		if !ctx.AConfig().IsEnvTrue("DISABLE_HOST_PIE") {
+	if !binary.static() {
+		if !(ctx.Host() && ctx.AConfig().IsEnvTrue("DISABLE_HOST_PIE")) {
 			flags.LdFlags = append(flags.LdFlags, "-pie")
 			if ctx.Os() == android.Windows {
 				flags.LdFlags = append(flags.LdFlags, "-Wl,-e_mainCRTStartup")
