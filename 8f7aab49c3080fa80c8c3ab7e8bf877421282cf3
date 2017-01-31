@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95afc316_b79b46a0",
+        "filename": "ui/build/context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-01-31T01:20:51Z",
+      "side": 1,
+      "message": "Is \u0027name\u0027 the name of the activity being started/completed? Can we name it something like \u0027activityName\u0027, \u0027taskName\u0027, \u0027stepName\u0027?",
+      "revId": "8f7aab49c3080fa80c8c3ab7e8bf877421282cf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21ad98af_e25380f9",
+        "filename": "ui/tracer/tracer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-01-31T01:20:51Z",
+      "side": 1,
+      "message": "Why is there both a logger in New and a Gzip writer in SetOutput? Is the Gzip writer more verbose? Can we give them longer names to distinguish their purposes?",
+      "range": {
+        "startLine": 96,
+        "startChar": 9,
+        "endLine": 96,
+        "endChar": 19
+      },
+      "revId": "8f7aab49c3080fa80c8c3ab7e8bf877421282cf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
