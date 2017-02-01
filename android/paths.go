@@ -437,7 +437,7 @@ func (p SourcePath) Join(ctx PathContext, paths ...string) SourcePath {
 func (p SourcePath) OverlayPath(ctx ModuleContext, path Path) OptionalPath {
 	var relDir string
 	if moduleSrcPath, ok := path.(ModuleSrcPath); ok {
-		relDir = moduleSrcPath.sourcePath.path
+		relDir = moduleSrcPath.path
 	} else if srcPath, ok := path.(SourcePath); ok {
 		relDir = srcPath.path
 	} else {
@@ -507,9 +507,8 @@ func PathForIntermediates(ctx PathContext, paths ...string) OutputPath {
 
 // ModuleSrcPath is a Path representing a file rooted from a module's local source dir
 type ModuleSrcPath struct {
-	basePath
-	sourcePath SourcePath
-	moduleDir  string
+	SourcePath
+	moduleDir string
 }
 
 var _ Path = ModuleSrcPath{}
@@ -521,7 +520,7 @@ var _ resPathProvider = ModuleSrcPath{}
 // module's local source directory.
 func PathForModuleSrc(ctx ModuleContext, paths ...string) ModuleSrcPath {
 	path := validatePath(ctx, paths...)
-	return ModuleSrcPath{basePath{path, ctx.AConfig()}, PathForSource(ctx, ctx.ModuleDir(), path), ctx.ModuleDir()}
+	return ModuleSrcPath{PathForSource(ctx, ctx.ModuleDir(), path), ctx.ModuleDir()}
 }
 
 // OptionalPathForModuleSrc returns an OptionalPath. The OptionalPath contains a
@@ -531,10 +530,6 @@ func OptionalPathForModuleSrc(ctx ModuleContext, p *string) OptionalPath {
 		return OptionalPath{}
 	}
 	return OptionalPathForPath(PathForModuleSrc(ctx, *p))
-}
-
-func (p ModuleSrcPath) String() string {
-	return p.sourcePath.String()
 }
 
 func (p ModuleSrcPath) genPathWithExt(ctx ModuleContext, subdir, ext string) ModuleGenPath {
