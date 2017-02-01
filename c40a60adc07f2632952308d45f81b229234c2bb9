@@ -16,6 +16,23 @@
       "revId": "c40a60adc07f2632952308d45f81b229234c2bb9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f981049_1d40493b",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-01T23:09:34Z",
+      "side": 1,
+      "message": "This is https://golang.org/doc/effective_go.html#embedding",
+      "revId": "c40a60adc07f2632952308d45f81b229234c2bb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
