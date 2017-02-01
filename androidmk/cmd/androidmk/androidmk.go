@@ -149,23 +149,23 @@ func convertFile(filename string, buffer *bytes.Buffer) (string, []error) {
 				if len(conds) == 0 {
 					file.errorf(x, "missing if before else")
 					continue
-				} else if conds[len(conds)-1] == nil {
+				} else if conds[len(conds) - 1] == nil {
 					file.errorf(x, "else from unsupported contitional")
 					continue
 				}
-				conds[len(conds)-1].eq = !conds[len(conds)-1].eq
+				conds[len(conds) - 1].eq = !conds[len(conds) - 1].eq
 			case "endif":
 				if len(conds) == 0 {
 					file.errorf(x, "missing if before endif")
 					continue
-				} else if conds[len(conds)-1] == nil {
+				} else if conds[len(conds) - 1] == nil {
 					file.errorf(x, "endif from unsupported contitional")
-					conds = conds[:len(conds)-1]
+					conds = conds[:len(conds) - 1]
 				} else {
-					if assignmentCond == conds[len(conds)-1] {
+					if assignmentCond == conds[len(conds) - 1] {
 						assignmentCond = nil
 					}
-					conds = conds[:len(conds)-1]
+					conds = conds[:len(conds) - 1]
 				}
 			default:
 				file.errorf(x, "unsupported directive")
@@ -233,28 +233,16 @@ func handleAssignment(file *bpFile, assignment *mkparser.Assignment, c *conditio
 	appendVariable := assignment.Type == "+="
 
 	var err error
-	if prop, ok := standardProperties[name]; ok {
-		var val bpparser.Expression
-		val, err = makeVariableToBlueprint(file, assignment.Value, prop.Type)
-		if err == nil {
-			err = setVariable(file, appendVariable, prefix, prop.string, val, true)
-		}
-	} else if prop, ok := rewriteProperties[name]; ok {
-		err = prop.f(file, prefix, assignment.Value, appendVariable)
-	} else if _, ok := deleteProperties[name]; ok {
-		return
+	if prop, ok := rewriteProperties[name]; ok {
+		err = prop(variableAssignmentContext{file, prefix, assignment.Value, appendVariable})
 	} else {
 		switch {
-		case name == "LOCAL_PATH":
-			// Nothing to do, except maybe avoid the "./" in paths?
 		case name == "LOCAL_ARM_MODE":
 			// This is a hack to get the LOCAL_ARM_MODE value inside
 			// of an arch: { arm: {} } block.
 			armModeAssign := assignment
 			armModeAssign.Name = mkparser.SimpleMakeString("LOCAL_ARM_MODE_HACK_arm", assignment.Name.Pos())
 			handleAssignment(file, armModeAssign, c)
-		case name == "LOCAL_ADDITIONAL_DEPENDENCIES":
-			// TODO: check for only .mk files?
 		case strings.HasPrefix(name, "LOCAL_"):
 			file.errorf(assignment, "unsupported assignment to %s", name)
 			return
@@ -362,8 +350,8 @@ func setVariable(file *bpFile, plusequals bool, prefix, name string, value bppar
 			names := strings.Split(name, ".")
 			container := &file.module.Properties
 
-			for i, n := range names[:len(names)-1] {
-				fqn := strings.Join(names[0:i+1], ".")
+			for i, n := range names[:len(names) - 1] {
+				fqn := strings.Join(names[0:i + 1], ".")
 				prop := file.localAssignments[fqn]
 				if prop == nil {
 					prop = &bpparser.Property{
@@ -380,7 +368,7 @@ func setVariable(file *bpFile, plusequals bool, prefix, name string, value bppar
 			}
 
 			prop := &bpparser.Property{
-				Name:    names[len(names)-1],
+				Name:    names[len(names) - 1],
 				NamePos: pos,
 				Value:   value,
 			}
