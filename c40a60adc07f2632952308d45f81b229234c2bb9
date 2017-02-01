@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6fffcaf_64e9685e",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-02-01T22:57:53Z",
+      "side": 1,
+      "message": "Do we need give SourcePath a member name? I am little confused how Go can directly find .path from the top level name: moduleSrcPath.",
+      "revId": "c40a60adc07f2632952308d45f81b229234c2bb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
