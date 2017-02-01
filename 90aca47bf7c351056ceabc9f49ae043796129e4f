@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1cadad88_9f964cb8",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-01T23:48:37Z",
+      "side": 1,
+      "message": "You can run a function during initialization by putting it inside a func init() {}\n\nIn the cases you need to assign to an unused variable (for example when ignoring one value of a multi-value return) you can use the special variable _",
+      "revId": "90aca47bf7c351056ceabc9f49ae043796129e4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a66eca7_32b40ea0",
+        "filename": "androidmk/cmd/androidmk/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-01T23:48:37Z",
+      "side": 1,
+      "message": "Run through gofmt, I expect it will convert this back to no spaces",
+      "range": {
+        "startLine": 152,
+        "startChar": 30,
+        "endLine": 152,
+        "endChar": 33
+      },
+      "revId": "90aca47bf7c351056ceabc9f49ae043796129e4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b750043_2a22d898",
+        "filename": "androidmk/cmd/androidmk/androidmk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-01T23:48:37Z",
+      "side": 1,
+      "message": "Can you get it not to insert the blank line when it removes the property?",
+      "revId": "90aca47bf7c351056ceabc9f49ae043796129e4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
