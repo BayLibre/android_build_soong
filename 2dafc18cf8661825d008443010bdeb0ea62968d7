@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ac83e78_c4423045",
+        "filename": "scripts/setup_go_workspace_for_soong.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-02-01T23:10:33Z",
+      "side": 1,
+      "message": "Should we give it a argument which can be specified by user? instead of hard-coding \"go-workspace\"",
+      "revId": "2dafc18cf8661825d008443010bdeb0ea62968d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
