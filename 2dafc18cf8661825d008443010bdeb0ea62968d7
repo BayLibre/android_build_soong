@@ -16,6 +16,23 @@
       "revId": "2dafc18cf8661825d008443010bdeb0ea62968d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45f625a7_c2d88441",
+        "filename": "scripts/setup_go_workspace_for_soong.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-02T18:02:07Z",
+      "side": 1,
+      "message": "Do you know if there\u0027s anyone that would be better served by an argument instead of a hardcoded path?\n\nI was thinking we\u0027d expand this script if/when more people expressed interest in using it.",
+      "revId": "2dafc18cf8661825d008443010bdeb0ea62968d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
