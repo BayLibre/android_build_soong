@@ -68,6 +68,24 @@
       "revId": "2dafc18cf8661825d008443010bdeb0ea62968d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f311c82_c1e30a43",
+        "filename": "scripts/setup_go_workspace_for_soong.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-02T22:10:04Z",
+      "side": 1,
+      "message": "That\u0027s fine too",
+      "parentUuid": "76d53a76_2c05271c",
+      "revId": "2dafc18cf8661825d008443010bdeb0ea62968d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
