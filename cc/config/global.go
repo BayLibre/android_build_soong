@@ -143,6 +143,13 @@ func init() {
 	})
 	pctx.StaticVariable("ClangAsanLibDir", "${ClangPath}/lib64/clang/${ClangShortVersion}/lib/linux")
 
+	//RenderScript.
+	pctx.SourcePathVariable("RSClangBase", "prebuilts/clang/host")
+	pctx.SourcePathVariable("RSClangVersion", "clang-3289846")
+	pctx.SourcePathVariable("RSReleaseVersion", "3.8")
+	pctx.StaticVariable("RSClangPath", "${RSClangBase}/${HostPrebuiltTag}/${RSClangVersion}")
+	pctx.StaticVariable("RSIncludePath", "${RSClangPath}/lib64/clang/${RSReleaseVersion}/include")
+
 	pctx.VariableFunc("CcWrapper", func(config interface{}) (string, error) {
 		if override := config.(android.Config).Getenv("CC_WRAPPER"); override != "" {
 			return override + " ", nil
