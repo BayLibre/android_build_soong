@@ -236,12 +236,12 @@ func InitAndroidArchModule(m Module, hod HostOrDeviceSupported, defaultMultilib 
 // For example:
 //
 //     import (
-//         "android/soong/common"
+//         "android/soong/android"
 //         "github.com/google/blueprint"
 //     )
 //
 //     type myModule struct {
-//         common.AndroidModuleBase
+//         android.ModuleBase
 //         properties struct {
 //             MyProperty string
 //         }
@@ -249,10 +249,10 @@ func InitAndroidArchModule(m Module, hod HostOrDeviceSupported, defaultMultilib 
 //
 //     func NewMyModule() (blueprint.Module, []interface{}) {
 //         m := &myModule{}
-//         return common.InitAndroidModule(m, &m.properties)
+//         return android.InitAndroidModule(m, &m.properties)
 //     }
 //
-//     func (m *myModule) GenerateAndroidBuildActions(ctx common.AndroidModuleContext) {
+//     func (m *myModule) GenerateAndroidBuildActions(ctx android.AndroidModuleContext) {
 //         // Get the CPU architecture for the current build variant.
 //         variantArch := ctx.Arch()
 //
