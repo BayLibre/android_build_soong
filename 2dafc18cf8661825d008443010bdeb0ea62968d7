@@ -33,6 +33,23 @@
       "revId": "2dafc18cf8661825d008443010bdeb0ea62968d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc09b025_a4641105",
+        "filename": "scripts/setup_go_workspace_for_soong.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-02T18:43:37Z",
+      "side": 1,
+      "message": "Could you parse the first directory out of GOPATH and use that if present, otherwise fall back to go-workspace?  I use ../soong, and I\u0027d rather not reconfigure all my projects to use a new directory.",
+      "revId": "2dafc18cf8661825d008443010bdeb0ea62968d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
