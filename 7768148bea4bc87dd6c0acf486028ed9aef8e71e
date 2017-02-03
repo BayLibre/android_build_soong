@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "52365a32_7e0fbb17",
+        "filename": "cmd/microfactory/microfactory.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:25:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cceb62e4_0b07a718",
+      "revId": "7768148bea4bc87dd6c0acf486028ed9aef8e71e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "32c1d255_c3b51b3b",
         "filename": "cmd/microfactory/microfactory.go",
         "patchSetId": 3
@@ -48,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "b086c25d_e1701f0e",
+        "filename": "cmd/microfactory/microfactory.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:25:48Z",
+      "side": 1,
+      "message": "This did more than that, but I\u0027ve moved the hashing down to the dependency loop below, where we are adding them to the command line. Then it\u0027s a common pattern of \u003cappending args\u003e, \u003cwriting to hash\u003e.",
+      "parentUuid": "32c1d255_c3b51b3b",
+      "revId": "7768148bea4bc87dd6c0acf486028ed9aef8e71e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "54d9223d_3666448a",
         "filename": "cmd/microfactory/microfactory.go",
         "patchSetId": 3
@@ -62,6 +98,24 @@
       "revId": "7768148bea4bc87dd6c0acf486028ed9aef8e71e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1462a9f_9192fc2f",
+        "filename": "cmd/microfactory/microfactory.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:25:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54d9223d_3666448a",
+      "revId": "7768148bea4bc87dd6c0acf486028ed9aef8e71e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "dcf30926_44f1afeb",
+        "filename": "cmd/microfactory/microfactory.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:25:48Z",
+      "side": 1,
+      "message": "As far as I know, only via stacktrace-like information, usually in logging/debugging. But good idea, Done.",
+      "parentUuid": "8f94bc53_3ff20a7b",
+      "revId": "7768148bea4bc87dd6c0acf486028ed9aef8e71e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "567dc887_6e32cbd4",
         "filename": "cmd/microfactory/microfactory.go",
         "patchSetId": 3
@@ -105,6 +177,24 @@
         "endLine": 150,
         "endChar": 13
       },
+      "revId": "7768148bea4bc87dd6c0acf486028ed9aef8e71e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dfd66d2_d86380a9",
+        "filename": "cmd/microfactory/microfactory.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:25:48Z",
+      "side": 1,
+      "message": "We only hash the inputs, not the outputs. Ideally I\u0027d embed the input hash directly into the output file, but I didn\u0027t want all the code to parse the buildID (https://golang.org/src/cmd/go/note.go). Instead I save it into a file (\u003coutput\u003e.hash), so this is reading the sha from the last build.",
+      "parentUuid": "567dc887_6e32cbd4",
       "revId": "7768148bea4bc87dd6c0acf486028ed9aef8e71e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -134,6 +224,24 @@
     },
     {
       "key": {
+        "uuid": "4bebdbb8_708de097",
+        "filename": "cmd/microfactory/microfactory.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:25:48Z",
+      "side": 1,
+      "message": "Yes, Compile must always be called before Link. This isn\u0027t a library, so I\u0027m not overly concerned about someone getting this wrong. The next version also has a FindDeps function that must be called before Compile, just because that simplified things.\n\nEven if p.hashResult is nil, then it\u0027s just an empty slice, so it\u0027ll write an empty file.",
+      "parentUuid": "adedb096_ab0cc81e",
+      "revId": "7768148bea4bc87dd6c0acf486028ed9aef8e71e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "482d9bf7_232cd582",
         "filename": "cmd/microfactory/microfactory.go",
         "patchSetId": 3
@@ -154,6 +262,24 @@
       "revId": "7768148bea4bc87dd6c0acf486028ed9aef8e71e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81b60b81_8bdb9f73",
+        "filename": "cmd/microfactory/microfactory.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:25:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "482d9bf7_232cd582",
+      "revId": "7768148bea4bc87dd6c0acf486028ed9aef8e71e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -180,6 +306,24 @@
     },
     {
       "key": {
+        "uuid": "6fae95f2_0b66c691",
+        "filename": "cmd/microfactory/microfactory.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:25:48Z",
+      "side": 1,
+      "message": "It\u0027s rather tiny, so \"micro\". I had also been playing with a larger \"factory\" as a more generic build graph/executor, but that hasn\u0027t gone anywhere.",
+      "parentUuid": "990cd515_7ef4defb",
+      "revId": "7768148bea4bc87dd6c0acf486028ed9aef8e71e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "704cf8c6_62577b06",
         "filename": "soong_ui.bash",
         "patchSetId": 3
@@ -200,6 +344,24 @@
       "revId": "7768148bea4bc87dd6c0acf486028ed9aef8e71e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc5cde24_53bc62be",
+        "filename": "soong_ui.bash",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:25:48Z",
+      "side": 1,
+      "message": "it checks to see if this env variable ends in N and skips the startup time calculation, since it\u0027s usually going to be 0 or 1 seconds, which isn\u0027t that useful.",
+      "parentUuid": "704cf8c6_62577b06",
+      "revId": "7768148bea4bc87dd6c0acf486028ed9aef8e71e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
