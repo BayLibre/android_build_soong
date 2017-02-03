@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "540122c9_c774364f",
+        "filename": "ui/build/context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:26:34Z",
+      "side": 1,
+      "message": "name is whatever we want it to be, it\u0027s the text field in the event that shows up in the trace bar if there\u0027s enough room, or in the details at the bottom. You could call this the Event Name, but that seems nearly as generic and somewhat redundant.\n\nThe only restriction is that when using Begin/End, if you want them to match up, the name should be the same.",
+      "parentUuid": "95afc316_b79b46a0",
+      "revId": "8f7aab49c3080fa80c8c3ab7e8bf877421282cf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "21ad98af_e25380f9",
         "filename": "ui/tracer/tracer.go",
         "patchSetId": 1
@@ -36,6 +54,24 @@
         "endLine": 96,
         "endChar": 19
       },
+      "revId": "8f7aab49c3080fa80c8c3ab7e8bf877421282cf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a649307_7f29dd96",
+        "filename": "ui/tracer/tracer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:26:34Z",
+      "side": 1,
+      "message": "The logger in new is kept around for error messages and the like. Partially so that we don\u0027t have to pass it in everywhere, but also for logging in some long-running processes that I\u0027ll be adding later (recording cpu/memory stats).\n\nThe File and Gzip writer here is for the actual trace output, which is a compressed json stream of start/stop/complete events.\n\nI\u0027ll write some godoc about this entire interface later today.",
+      "parentUuid": "21ad98af_e25380f9",
       "revId": "8f7aab49c3080fa80c8c3ab7e8bf877421282cf3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
