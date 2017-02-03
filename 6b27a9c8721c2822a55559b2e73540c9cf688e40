@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a11517a3_1aa65f16",
+        "filename": "cc/compiler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-03T20:33:18Z",
+      "side": 1,
+      "message": "baseCompiler shouldn\u0027t be storing ctx, and you\u0027re not using it",
+      "revId": "6b27a9c8721c2822a55559b2e73540c9cf688e40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
