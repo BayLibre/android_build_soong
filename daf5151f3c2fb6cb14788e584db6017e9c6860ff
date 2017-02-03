@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "01eecd76_a1e92f59",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:24:49Z",
+      "side": 1,
+      "message": "No user should ever be typing --make-mode, this is meant to discourage that. make-mode is so that we can emulate make using the current \u0027make\u0027/\u0027m\u0027/\u0027mm\u0027/etc interfaces, which will automatically add --make-mode to the arguments.\n\nThen once we want to do something different we\u0027ll have this to differentiate whether a user is calling us directly, or whether they need the old behavior.",
+      "parentUuid": "0dd32c90_6511b40f",
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a003225d_297ed6e4",
         "filename": "cmd/soong_ui/main.go",
         "patchSetId": 3
@@ -36,6 +54,24 @@
       "writtenOn": "2017-01-31T01:43:41Z",
       "side": 1,
       "message": "Maybe extract \"build/soong/root.bp\" into a variable",
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4939bcd5_f2684072",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:24:49Z",
+      "side": 1,
+      "message": "Done. (and extracted to NewConfig so that it isn\u0027t copies in multiproduct_kati too)",
+      "parentUuid": "a003225d_297ed6e4",
       "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -65,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "1bf12170_b6ea4df9",
+        "filename": "ui/build/build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:24:49Z",
+      "side": 1,
+      "message": "Yeah, I\u0027d like to do the jack pool and pull out the local_pool as well, but I was trying not to make too many changes to how we were building in the first change.\n\nDone (moved to text/template)",
+      "parentUuid": "5ec47779_b3311af8",
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "932b03d0_4f7e13c2",
         "filename": "ui/build/config.go",
         "patchSetId": 3
@@ -88,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "bf60ff43_b8ffdbf9",
+        "filename": "ui/build/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "932b03d0_4f7e13c2",
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f4862bdb_2c9fcf31",
         "filename": "ui/build/config.go",
         "patchSetId": 3
@@ -99,6 +171,24 @@
       "writtenOn": "2017-01-31T01:43:41Z",
       "side": 1,
       "message": "Can we have a comment either one of \"because we haven\u0027t figured out how to move them yet\" or \"and it doesn\u0027t seem urgent to figure out how to move them yet\" or \"we can\u0027t move them yet because we\u0027re not on Python 3.2\"?\n\nhttp://stackoverflow.com/questions/3522079/changing-the-directory-where-pyc-files-are-created",
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7280208_9ebc01d1",
+        "filename": "ui/build/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:24:49Z",
+      "side": 1,
+      "message": "We don\u0027t have any consistent python guidance right now, there\u0027s a mix of 2\u00263, and no enforcement of versions within those. I expect this will get better once we\u0027ve got real python packaging support, but even then I don\u0027t know if we\u0027ll be able to move everyone to 3. Even with 3, it looks like __pycache__ just replaces the .pyc in the same relative location, which doesn\u0027t help when we don\u0027t want to write to the source directory at all.\n\nThis comment is copied from build/make/core/config.mk (originally added in 2010).",
+      "parentUuid": "f4862bdb_2c9fcf31",
       "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -122,6 +212,24 @@
     },
     {
       "key": {
+        "uuid": "b46177c5_91a6cb9a",
+        "filename": "ui/build/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:24:49Z",
+      "side": 1,
+      "message": "But flag doesn\u0027t support `-j` or `-j2`, only `-j 2`. And it doesn\u0027t easily support mixing extra arguments with options (though it\u0027s possible by catching the error and feeding it back through, at which point it seems nearly as simple to write our own that behaves like we want)",
+      "parentUuid": "3bec6c2b_7bf6f935",
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aff3cd70_e0f6b7a6",
         "filename": "ui/build/config.go",
         "patchSetId": 3
@@ -136,6 +244,24 @@
       "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ee98952_a1bc8ea3",
+        "filename": "ui/build/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:24:49Z",
+      "side": 1,
+      "message": "Right now I\u0027m running this through makeparallel with --ninja, so following ninja seems sane. That\u0027s a good point for when I remove the makeparallel wrapper though.\n\nI did get the behavior wrong here as well, this should default to 1, not 0. And I wasn\u0027t using it at all when running ninja. So that\u0027s fixed.",
+      "parentUuid": "aff3cd70_e0f6b7a6",
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
@@ -156,6 +282,24 @@
         "endLine": 218,
         "endChar": 15
       },
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13e4b819_1bd182b5",
+        "filename": "ui/build/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d0ccfe2_5c146021",
       "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -185,6 +329,24 @@
     },
     {
       "key": {
+        "uuid": "15dfc3de_d974a7b9",
+        "filename": "ui/build/context.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc5adf32_6409dbbe",
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5d2a6d7_96954409",
         "filename": "ui/build/context.go",
         "patchSetId": 3
@@ -208,6 +370,24 @@
     },
     {
       "key": {
+        "uuid": "b3ecfa35_56b839f9",
+        "filename": "ui/build/context.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5d2a6d7_96954409",
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "92c788a7_41e556ee",
         "filename": "ui/build/environment.go",
         "patchSetId": 3
@@ -219,6 +399,24 @@
       "writtenOn": "2017-02-03T19:28:23Z",
       "side": 1,
       "message": "Might want to deal with -1 here?",
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca593fe4_4304fad0",
+        "filename": "ui/build/environment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92c788a7_41e556ee",
       "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -248,6 +446,24 @@
     },
     {
       "key": {
+        "uuid": "ba2d2ae8_12aebf06",
+        "filename": "ui/build/environment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "defce69c_f2894f87",
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8ff53aa_f3ab3989",
         "filename": "ui/build/environment.go",
         "patchSetId": 3
@@ -271,6 +487,24 @@
     },
     {
       "key": {
+        "uuid": "23daab2f_b8a63310",
+        "filename": "ui/build/environment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8ff53aa_f3ab3989",
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90e4a4fe_3e2f67d0",
         "filename": "ui/build/environment.go",
         "patchSetId": 3
@@ -288,6 +522,24 @@
     },
     {
       "key": {
+        "uuid": "16b61e15_64059ff8",
+        "filename": "ui/build/environment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:24:49Z",
+      "side": 1,
+      "message": "I don\u0027t believe that\u0027s safe to do while ranging over that slice, since it\u0027ll be copying the latter part of the slice one forward every time.  But there\u0027s a similar way that I\u0027ve converted to based on https://github.com/golang/go/wiki/SliceTricks#filtering-without-allocating",
+      "parentUuid": "90e4a4fe_3e2f67d0",
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b19f5929_0d072629",
         "filename": "ui/build/environment.go",
         "patchSetId": 3
@@ -299,6 +551,24 @@
       "writtenOn": "2017-02-03T19:28:23Z",
       "side": 1,
       "message": "Check that len(cmd) \u003d\u003d 2",
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "58faecf0_3fed3168",
+        "filename": "ui/build/environment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b19f5929_0d072629",
       "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -328,6 +598,24 @@
     },
     {
       "key": {
+        "uuid": "3e1c0d8d_973720f6",
+        "filename": "ui/build/environment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0600b311_4212e080",
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fd697fe_91703b18",
         "filename": "ui/build/environment.go",
         "patchSetId": 3
@@ -339,6 +627,24 @@
       "writtenOn": "2017-02-03T19:28:23Z",
       "side": 1,
       "message": "Split this on \u003d using the helper from above and then unquote each side",
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0331178e_75d2037f",
+        "filename": "ui/build/environment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fd697fe_91703b18",
       "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -368,6 +674,24 @@
     },
     {
       "key": {
+        "uuid": "d51ff796_f5b5bfe2",
+        "filename": "ui/build/environment_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d7de276_9b3e99ea",
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93a3b7b0_b68d6685",
         "filename": "ui/build/kati.go",
         "patchSetId": 3
@@ -385,6 +709,24 @@
         "endLine": 72,
         "endChar": 91
       },
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a69a7f9_85e99983",
+        "filename": "ui/build/kati.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93a3b7b0_b68d6685",
       "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -414,6 +756,24 @@
     },
     {
       "key": {
+        "uuid": "e5526922_fbfe0203",
+        "filename": "ui/build/make.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:24:49Z",
+      "side": 1,
+      "message": "Yeah, let\u0027s make that a separate CL.",
+      "parentUuid": "0a28b873_5b416c32",
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef9f3b7f_7b53ebea",
         "filename": "ui/build/make.go",
         "patchSetId": 3
@@ -431,6 +791,24 @@
         "endLine": 65,
         "endChar": 84
       },
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ea16c67_4013cbfb",
+        "filename": "ui/build/make.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef9f3b7f_7b53ebea",
       "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -460,6 +838,24 @@
     },
     {
       "key": {
+        "uuid": "a20aaf48_fa916ab6",
+        "filename": "ui/build/signal.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:24:49Z",
+      "side": 1,
+      "message": "This is assuming that you\u0027re using the standard context cancellation function, which only does something once, so calling it twice is useless. The second signal is triggering a panic, which is quickly fatal. I made a longer comment on SetupSignals above to describe this.\n\nDoing something better here would be nice, this was basically the minimum necessary. Using a timeout instead of waiting for another signal may be a good idea. It would be nice if we the first kill didn\u0027t do anything to print out more about what didn\u0027t die. Same thing with the first alarm signal -- do some debug prints, then kill things.",
+      "parentUuid": "c180c633_cd2ecedf",
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "500b270e_7bbb80fe",
         "filename": "ui/logger/logger.go",
         "patchSetId": 3
@@ -471,6 +867,24 @@
       "writtenOn": "2017-01-31T01:43:41Z",
       "side": 1,
       "message": "Is this file copied from somewhere else, or written anew? (If it\u0027s copied from somewhere else, where?)",
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80d38685_058f778a",
+        "filename": "ui/logger/logger.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:24:49Z",
+      "side": 1,
+      "message": "This is written anew, but a lot of it is based on the \"log\" package since it\u0027s wrapping two of those at the end of the day.",
+      "parentUuid": "500b270e_7bbb80fe",
       "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -494,6 +908,24 @@
         "endLine": 204,
         "endChar": 27
       },
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a8c4a8f_0d6f2210",
+        "filename": "ui/logger/logger.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:24:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "695be230_e8016e00",
       "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
