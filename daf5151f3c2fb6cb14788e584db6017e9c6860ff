@@ -368,6 +368,75 @@
     },
     {
       "key": {
+        "uuid": "93a3b7b0_b68d6685",
+        "filename": "ui/build/kati.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-03T20:56:13Z",
+      "side": 1,
+      "message": "This seems worth an IsFalse() helper on config.Environment()",
+      "range": {
+        "startLine": 72,
+        "startChar": 4,
+        "endLine": 72,
+        "endChar": 91
+      },
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a28b873_5b416c32",
+        "filename": "ui/build/make.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-03T20:56:13Z",
+      "side": 1,
+      "message": "we should change this to build/make/core at some point",
+      "range": {
+        "startLine": 44,
+        "startChar": 16,
+        "endLine": 44,
+        "endChar": 26
+      },
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef9f3b7f_7b53ebea",
+        "filename": "ui/build/make.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-03T20:56:13Z",
+      "side": 1,
+      "message": "Use the unquote helper",
+      "range": {
+        "startLine": 65,
+        "startChar": 25,
+        "endLine": 65,
+        "endChar": 84
+      },
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c180c633_cd2ecedf",
         "filename": "ui/build/signal.go",
         "patchSetId": 3
@@ -405,6 +474,29 @@
       "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "695be230_e8016e00",
+        "filename": "ui/logger/logger.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-03T20:56:13Z",
+      "side": 1,
+      "message": "This seems worth a helper",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 27
+      },
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
