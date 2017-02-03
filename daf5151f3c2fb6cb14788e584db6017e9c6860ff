@@ -42,6 +42,52 @@
     },
     {
       "key": {
+        "uuid": "5ec47779_b3311af8",
+        "filename": "ui/build/build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-03T19:28:23Z",
+      "side": 1,
+      "message": "Maybe overkill, but text/template might make this more readable.\n\nAlso, if we handled local_pool here we could rewrite it every time to match the -j value",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 2
+      },
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "932b03d0_4f7e13c2",
+        "filename": "ui/build/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-03T19:28:23Z",
+      "side": 1,
+      "message": "No need to wrap the varargs in a []string and then expand them with ...",
+      "range": {
+        "startLine": 48,
+        "startChar": 19,
+        "endLine": 48,
+        "endChar": 28
+      },
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f4862bdb_2c9fcf31",
         "filename": "ui/build/config.go",
         "patchSetId": 3
@@ -56,6 +102,269 @@
       "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bec6c2b_7bf6f935",
+        "filename": "ui/build/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-03T19:28:23Z",
+      "side": 1,
+      "message": "The flag package would handle this for you",
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aff3cd70_e0f6b7a6",
+        "filename": "ui/build/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-03T19:28:23Z",
+      "side": 1,
+      "message": "In make the -k is boolean, only ninja uses a number",
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d0ccfe2_5c146021",
+        "filename": "ui/build/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-03T19:28:23Z",
+      "side": 1,
+      "message": "verb?",
+      "range": {
+        "startLine": 217,
+        "startChar": 36,
+        "endLine": 218,
+        "endChar": 15
+      },
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc5adf32_6409dbbe",
+        "filename": "ui/build/context.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-03T19:28:23Z",
+      "side": 1,
+      "message": "Stdio for consistency with Stdin?",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 10
+      },
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5d2a6d7_96954409",
+        "filename": "ui/build/context.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-03T19:28:23Z",
+      "side": 1,
+      "message": "stdin?",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 6
+      },
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "92c788a7_41e556ee",
+        "filename": "ui/build/environment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-03T19:28:23Z",
+      "side": 1,
+      "message": "Might want to deal with -1 here?",
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "defce69c_f2894f87",
+        "filename": "ui/build/environment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-03T19:28:23Z",
+      "side": 1,
+      "message": "You can drop the 0 to say \"from the beginning\"",
+      "range": {
+        "startLine": 40,
+        "startChar": 9,
+        "endLine": 40,
+        "endChar": 10
+      },
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8ff53aa_f3ab3989",
+        "filename": "ui/build/environment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-03T19:28:23Z",
+      "side": 1,
+      "message": "Add a helper function that returns key and value",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 41,
+        "endChar": 21
+      },
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90e4a4fe_3e2f67d0",
+        "filename": "ui/build/environment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-03T19:28:23Z",
+      "side": 1,
+      "message": "This function would be simpler if you split out an index function to find the index of a key in the list, and then:\n\n   *e \u003d append(*e[:idx], *e[idx+1:]...)",
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b19f5929_0d072629",
+        "filename": "ui/build/environment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-03T19:28:23Z",
+      "side": 1,
+      "message": "Check that len(cmd) \u003d\u003d 2",
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0600b311_4212e080",
+        "filename": "ui/build/environment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-03T19:28:23Z",
+      "side": 1,
+      "message": "split this out into an unquote for clarity?  It\u0027s too bad strconv.Unquote errors on a multi-character single quoted string.",
+      "range": {
+        "startLine": 103,
+        "startChar": 11,
+        "endLine": 103,
+        "endChar": 36
+      },
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fd697fe_91703b18",
+        "filename": "ui/build/environment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-03T19:28:23Z",
+      "side": 1,
+      "message": "Split this on \u003d using the helper from above and then unquote each side",
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d7de276_9b3e99ea",
+        "filename": "ui/build/environment_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-03T19:28:23Z",
+      "side": 1,
+      "message": "make AppendFromKati take a []byte, and callers can use ioutil.ReadAll directly?  Or make an appendFromKati that takes []byte and AppendFromKati that wraps it with a ReadAll?  Or make it take an io.Reader.",
+      "range": {
+        "startLine": 81,
+        "startChar": 30,
+        "endLine": 81,
+        "endChar": 44
+      },
+      "revId": "daf5151f3c2fb6cb14788e584db6017e9c6860ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
