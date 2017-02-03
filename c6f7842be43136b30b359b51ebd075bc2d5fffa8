@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "8b956fb0_b3bcbf12",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:26:03Z",
+      "side": 1,
+      "message": "Yeah, I think I was the only user of the previous tool, and I expect these to change as we reconfigure the build steps. I mainly intend for this to be a debugging/manual test tool, and anything more custom should probably be it\u0027s own executable.",
+      "parentUuid": "84fc195f_e085d029",
+      "revId": "c6f7842be43136b30b359b51ebd075bc2d5fffa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2b906de4_17847cdc",
         "filename": "cmd/multiproduct_kati/main.go",
         "patchSetId": 3
@@ -48,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "637bd1cb_247bddad",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:26:03Z",
+      "side": 1,
+      "message": "Hmm, I think this should probably move to NewConfig so that it\u0027s not copied everywhere. (And I extracted the string)",
+      "parentUuid": "2b906de4_17847cdc",
+      "revId": "c6f7842be43136b30b359b51ebd075bc2d5fffa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c7cb2e1d_ac6d63e3",
         "filename": "cmd/multiproduct_kati/main.go",
         "patchSetId": 3
@@ -59,6 +95,24 @@
       "writtenOn": "2017-01-31T01:00:16Z",
       "side": 1,
       "message": "What\u0027s the data type of \u0027cancel\u0027? Would it be equally correct to call it \u0027cancellationHandler\u0027?",
+      "revId": "c6f7842be43136b30b359b51ebd075bc2d5fffa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c48abf8_8c31cd38",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:26:03Z",
+      "side": 1,
+      "message": "It\u0027s a CancelFunc (a func()) normally called cancel",
+      "parentUuid": "c7cb2e1d_ac6d63e3",
       "revId": "c6f7842be43136b30b359b51ebd075bc2d5fffa8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -88,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "af276695_6ed5a968",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:26:03Z",
+      "side": 1,
+      "message": "Yes, it\u0027s possible, and normal if something failed so that you can inspect the intermediates.\n\nI chose a TempDir so that it was a bit easier to run it twice and compare the results, while also supporting use cases like running kati twice without removing the intermediates (to simulate incremental builds, etc).",
+      "parentUuid": "9909e2d4_fb0bfbbd",
+      "revId": "c6f7842be43136b30b359b51ebd075bc2d5fffa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "504a78c1_0b7ce090",
         "filename": "cmd/multiproduct_kati/main.go",
         "patchSetId": 3
@@ -111,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "7f518da9_b00f31be",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:26:03Z",
+      "side": 1,
+      "message": "It\u0027s not that common to only want one make variable, so lets look at this once we\u0027ve got more users. Line 104 wouldn\u0027t be that much simpler with a dedicated function, since we\u0027d still need to call strings.Fields().",
+      "parentUuid": "504a78c1_0b7ce090",
+      "revId": "c6f7842be43136b30b359b51ebd075bc2d5fffa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9871c006_2e83a668",
         "filename": "cmd/multiproduct_kati/main.go",
         "patchSetId": 3
@@ -125,6 +215,24 @@
       "revId": "c6f7842be43136b30b359b51ebd075bc2d5fffa8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6aa6cbb6_8ce869c5",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:26:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9871c006_2e83a668",
+      "revId": "c6f7842be43136b30b359b51ebd075bc2d5fffa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -151,6 +259,24 @@
     },
     {
       "key": {
+        "uuid": "e86c3efb_8750dded",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:26:03Z",
+      "side": 1,
+      "message": "It\u0027s essentially the same, I just try to use defer in general so that if something changes it\u0027s still correct without having to worry about it. Not necessarily the best for performance, but that\u0027s not the bottleneck here.\n\nIf wg.Wait calls panic() then it doesn\u0027t matter if we close the productConfigs, since it won\u0027t be caught in that goroutine and will trigger a crash of the entire process.",
+      "parentUuid": "209aebab_debe6787",
+      "revId": "c6f7842be43136b30b359b51ebd075bc2d5fffa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a13ade8_df8a4782",
         "filename": "cmd/multiproduct_kati/main.go",
         "patchSetId": 3
@@ -171,6 +297,24 @@
       "revId": "c6f7842be43136b30b359b51ebd075bc2d5fffa8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5815caae_d94d14be",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:26:03Z",
+      "side": 1,
+      "message": "Done. (to numJobs)",
+      "parentUuid": "1a13ade8_df8a4782",
+      "revId": "c6f7842be43136b30b359b51ebd075bc2d5fffa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -197,6 +341,24 @@
     },
     {
       "key": {
+        "uuid": "861b24af_81ec84c9",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:26:03Z",
+      "side": 1,
+      "message": "No, productConfigs is a channel, so this is popping a struct off of the channel. Each goroutine will get a unique product until the channel closes and the for loop exits.",
+      "parentUuid": "0e0b4080_93aeeca1",
+      "revId": "c6f7842be43136b30b359b51ebd075bc2d5fffa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29182647_e9f5f6ed",
         "filename": "cmd/multiproduct_kati/main.go",
         "patchSetId": 3
@@ -208,6 +370,24 @@
       "writtenOn": "2017-01-31T01:00:16Z",
       "side": 1,
       "message": "Could you elaborate? Does Kati throw an exception?",
+      "revId": "c6f7842be43136b30b359b51ebd075bc2d5fffa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "424ada5c_76b4eec5",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-03T23:26:03Z",
+      "side": 1,
+      "message": "It exits unsuccessfully after printing a message about the opendir() call failing. What\u0027s happening here is that kati walks the entire tree at startup creating an in memory representation of the filesystem. That way, later when we would execute a find call, we can do it entirely in memory instead of asking the filesystem. When we do a lot of find calls, that adds up. But it\u0027s apparently not very safe to remove a directory when that scan is happening.",
+      "parentUuid": "29182647_e9f5f6ed",
       "revId": "c6f7842be43136b30b359b51ebd075bc2d5fffa8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
