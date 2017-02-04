@@ -22,6 +22,30 @@
       "revId": "d1b8d760b5913c1b32201c7bbb88dd8c8bb93ca6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bed1ec47_101d460e",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-04T23:36:51Z",
+      "side": 1,
+      "message": "Yeah we should, and I should audit the rest of the code for these too",
+      "parentUuid": "90bd63e9_6d74c245",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 46
+      },
+      "revId": "d1b8d760b5913c1b32201c7bbb88dd8c8bb93ca6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
