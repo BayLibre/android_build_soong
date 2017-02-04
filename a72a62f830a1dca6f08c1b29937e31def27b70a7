@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "7c6efb4e_58df0413",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-04T23:51:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "548cd3c4_fe266b44",
+      "revId": "a72a62f830a1dca6f08c1b29937e31def27b70a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "888ffb08_6a830d8c",
         "filename": "cmd/microfactory/microfactory.go",
         "patchSetId": 4
@@ -48,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "e27c0116_d8fd99a3",
+        "filename": "cmd/microfactory/microfactory.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-04T23:51:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "888ffb08_6a830d8c",
+      "revId": "a72a62f830a1dca6f08c1b29937e31def27b70a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7490aad0_836b513b",
         "filename": "cmd/microfactory/microfactory.go",
         "patchSetId": 4
@@ -59,6 +95,24 @@
       "writtenOn": "2017-02-04T00:23:51Z",
       "side": 1,
       "message": "check that len(foundPkgs) \u003d\u003d 1\n\nalso worth a comment, this is really confusing unless you know that foundPkgs is a map, and you can only tell that by looking at the parser.ParseDir documentation",
+      "revId": "a72a62f830a1dca6f08c1b29937e31def27b70a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a3ac8ca_9c8bffda",
+        "filename": "cmd/microfactory/microfactory.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-04T23:51:20Z",
+      "side": 1,
+      "message": "That check is just above this, but I reorganized it a bit and added some comments.",
+      "parentUuid": "7490aad0_836b513b",
       "revId": "a72a62f830a1dca6f08c1b29937e31def27b70a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -82,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "cdb0be28_200192e8",
+        "filename": "cmd/microfactory/microfactory.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-04T23:51:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f46e36af_87409cc1",
+      "revId": "a72a62f830a1dca6f08c1b29937e31def27b70a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3f419c5_3397355f",
         "filename": "soong_ui.bash",
         "patchSetId": 4
@@ -93,6 +165,24 @@
       "writtenOn": "2017-02-04T00:23:51Z",
       "side": 1,
       "message": "You could share most of the command line arguments by setting\n\n mf_cmd\u003d\"${GOROOT}/bin/go\" run \"${mf_src}/microfactory.go\"\n\n mf_cmd\u003d${mf_bin}",
+      "revId": "a72a62f830a1dca6f08c1b29937e31def27b70a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e466756d_48382701",
+        "filename": "soong_ui.bash",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-04T23:51:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3f419c5_3397355f",
       "revId": "a72a62f830a1dca6f08c1b29937e31def27b70a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
