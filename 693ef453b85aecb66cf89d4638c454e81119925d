@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86b8b1bf_956bda12",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2017-02-04T00:17:37Z",
+      "side": 1,
+      "message": "Let the bike shedding begin.",
+      "range": {
+        "startLine": 90,
+        "startChar": 5,
+        "endLine": 90,
+        "endChar": 18
+      },
+      "revId": "693ef453b85aecb66cf89d4638c454e81119925d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
