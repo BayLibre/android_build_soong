@@ -1,0 +1,8 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: Evgenii Stepanov <eugenis@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Submitted-by: Evgenii Stepanov <eugenis@google.com>
+Submitted-at: Sat, 04 Feb 2017 00:04:23 +0000
+Reviewed-on: https://android-review.googlesource.com/331053
+Project: platform/build/soong
+Branch: refs/heads/master
