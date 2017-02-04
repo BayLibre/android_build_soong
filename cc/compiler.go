@@ -86,6 +86,16 @@ type BaseCompilerProperties struct {
 	// pass -frtti instead of -fno-rtti
 	Rtti *bool
 
+	// C standard version to use. Can be a specific version (such as "gnu11"),
+	// "bleeding-edge" (which will use draft versions like C1x when
+	// available), or the empty string (which will use the default).
+	C_std string
+
+	// C++ standard version to use. Can be a specific version (such as
+	// "gnu++11"), "bleeding-edge" (which will use draft versions like C++1z
+	// when available), or the empty string (which will use the default).
+	Cpp_std string
+
 	// if set to false, use -std=c++* instead of -std=gnu++*
 	Gnu_extensions *bool
 
@@ -307,7 +317,18 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags) Flag
 
 	if !ctx.sdk() {
 		cStd := config.CStdVersion
+		if compiler.Properties.C_std == "bleeding-edge" {
+			cStd = config.BleedingEdgeCStdVersion
+		} else if compiler.Properties.C_std != "" {
+			cStd = compiler.Properties.C_std
+		}
+
 		cppStd := config.CppStdVersion
+		if compiler.Properties.Cpp_std == "bleeding-edge" {
+			cppStd = config.BleedingEdgeCppStdVersion
+		} else if compiler.Properties.Cpp_std != "" {
+			cppStd = compiler.Properties.Cpp_std
+		}
 
 		if !flags.Clang {
 			// GCC uses an invalid C++14 ABI (emits calls to

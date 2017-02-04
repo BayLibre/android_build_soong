@@ -65,9 +65,11 @@ var (
 		"-w",
 	}
 
-	CStdVersion      = "gnu99"
-	CppStdVersion    = "gnu++14"
-	GccCppStdVersion = "gnu++11"
+	CStdVersion               = "gnu99"
+	CppStdVersion             = "gnu++14"
+	GccCppStdVersion          = "gnu++11"
+	BleedingEdgeCStdVersion   = "gnu11"
+	BleedingEdgeCppStdVersion = "gnu++1z"
 )
 
 var pctx = android.NewPackageContext("android/soong/cc/config")
