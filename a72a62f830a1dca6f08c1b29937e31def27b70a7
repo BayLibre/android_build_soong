@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "548cd3c4_fe266b44",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-04T00:23:51Z",
+      "side": 1,
+      "message": "this isn\u0027t correct any more",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "a72a62f830a1dca6f08c1b29937e31def27b70a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "888ffb08_6a830d8c",
+        "filename": "cmd/microfactory/microfactory.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-04T00:23:51Z",
+      "side": 1,
+      "message": "verb",
+      "range": {
+        "startLine": 30,
+        "startChar": 66,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "a72a62f830a1dca6f08c1b29937e31def27b70a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7490aad0_836b513b",
+        "filename": "cmd/microfactory/microfactory.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-04T00:23:51Z",
+      "side": 1,
+      "message": "check that len(foundPkgs) \u003d\u003d 1\n\nalso worth a comment, this is really confusing unless you know that foundPkgs is a map, and you can only tell that by looking at the parser.ParseDir documentation",
+      "revId": "a72a62f830a1dca6f08c1b29937e31def27b70a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f46e36af_87409cc1",
+        "filename": "cmd/microfactory/microfactory.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-04T00:23:51Z",
+      "side": 1,
+      "message": "Put this above the continue on line 159?",
+      "revId": "a72a62f830a1dca6f08c1b29937e31def27b70a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3f419c5_3397355f",
+        "filename": "soong_ui.bash",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-04T00:23:51Z",
+      "side": 1,
+      "message": "You could share most of the command line arguments by setting\n\n mf_cmd\u003d\"${GOROOT}/bin/go\" run \"${mf_src}/microfactory.go\"\n\n mf_cmd\u003d${mf_bin}",
+      "revId": "a72a62f830a1dca6f08c1b29937e31def27b70a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
