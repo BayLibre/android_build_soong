@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90bd63e9_6d74c245",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-04T21:43:03Z",
+      "side": 1,
+      "message": "Should we clean this up by switching to dependency tags instead of guessing based on type?",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 46
+      },
+      "revId": "d1b8d760b5913c1b32201c7bbb88dd8c8bb93ca6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
