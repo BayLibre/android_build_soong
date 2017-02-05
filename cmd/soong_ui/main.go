@@ -70,8 +70,16 @@ func main() {
 
 	log.SetVerbose(config.IsVerbose())
 	build.SetupOutDir(buildCtx, config)
-	log.SetOutput(filepath.Join(config.OutDir(), "build.log"))
-	trace.SetOutput(filepath.Join(config.OutDir(), "build.trace"))
+
+	if config.Dist() {
+		os.MkdirAll(config.DistDir(), 0777)
+		// Our buildbots already have a logs/build.log, so rename it to build_system.log
+		log.SetOutput(filepath.Join(config.DistDir(), "logs", "build_system.log"))
+		trace.SetOutput(filepath.Join(config.DistDir(), "logs", "build.trace"))
+	} else {
+		log.SetOutput(filepath.Join(config.OutDir(), "build.log"))
+		trace.SetOutput(filepath.Join(config.OutDir(), "build.trace"))
+	}
 
 	if start, ok := os.LookupEnv("TRACE_BEGIN_SOONG"); ok {
 		if !strings.HasSuffix(start, "N") {
