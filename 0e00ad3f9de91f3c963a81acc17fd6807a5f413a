@@ -16,6 +16,24 @@
       "revId": "0e00ad3f9de91f3c963a81acc17fd6807a5f413a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02b4caad_88db4760",
+        "filename": "cc/cmakelists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1083168
+      },
+      "writtenOn": "2017-02-06T21:41:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b23c366_c9fdecbe",
+      "revId": "0e00ad3f9de91f3c963a81acc17fd6807a5f413a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
