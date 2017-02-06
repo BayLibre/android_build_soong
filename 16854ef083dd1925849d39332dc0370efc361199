@@ -16,6 +16,24 @@
       "revId": "16854ef083dd1925849d39332dc0370efc361199",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06c98ac4_99f40b64",
+        "filename": "scripts/setup_go_workspace_for_soong.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-06T23:41:38Z",
+      "side": 1,
+      "message": "This just echos the command before doing it. It slightly resembles what comes from \u0027set -e\u0027 except that it prints the resolved values for the variables instead of the values written in the code",
+      "parentUuid": "ee1bbf3c_9f9ed6b8",
+      "revId": "16854ef083dd1925849d39332dc0370efc361199",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
