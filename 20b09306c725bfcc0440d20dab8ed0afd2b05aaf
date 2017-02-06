@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "96515af4_6037d98c",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-02-06T20:50:11Z",
+      "side": 1,
+      "message": "Phony module will share the same field with non-phony modules:\nhttps://cs.corp.google.com/android/build/soong/android/module.go?rcl\u003d9644f06b27f9c621df557f8c01e186f86f4347bc\u0026l\u003d145\n\nThe naming style is just to be consistent with Proprietary() in line89. Let\u0027s wait Dan and Colin to see if I actually need this Required() function",
+      "parentUuid": "487f3146_d634ab51",
+      "revId": "20b09306c725bfcc0440d20dab8ed0afd2b05aaf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "47d94302_17436038",
         "filename": "phony/phony.go",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "0e3d0af0_f8a8a661",
+        "filename": "phony/phony.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-02-06T20:50:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47d94302_17436038",
+      "revId": "20b09306c725bfcc0440d20dab8ed0afd2b05aaf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da0e7709_464f59c5",
         "filename": "phony/phony.go",
         "patchSetId": 2
@@ -50,6 +86,24 @@
       "revId": "20b09306c725bfcc0440d20dab8ed0afd2b05aaf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f371c720_74ac644a",
+        "filename": "phony/phony.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-02-06T20:50:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da0e7709_464f59c5",
+      "revId": "20b09306c725bfcc0440d20dab8ed0afd2b05aaf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
