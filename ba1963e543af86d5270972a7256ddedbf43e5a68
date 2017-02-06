@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f10a0ed_46e18dea",
+        "filename": "cc/binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-06T20:51:31Z",
+      "side": 1,
+      "message": "We already append -pie here...",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 11
+      },
+      "revId": "ba1963e543af86d5270972a7256ddedbf43e5a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
