@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db85cb2e_95a33036",
+        "filename": "android/androidmk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-06T21:03:46Z",
+      "side": 1,
+      "message": "Are phony modules the first modules to need to support dependencies? Do we know how non-phony modules do it? (can we consolidate the variables across both?)",
+      "revId": "826036fb062dceba671c749348a40916eb980701",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63c8c259_504f6dc3",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-06T21:03:46Z",
+      "side": 1,
+      "message": "Can we replace this \u0027Required\u0027 with something clearer such as \u0027RequiredModuleNames\u0027?",
+      "revId": "826036fb062dceba671c749348a40916eb980701",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
