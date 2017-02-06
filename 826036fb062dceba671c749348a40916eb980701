@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "05393678_906bfe4c",
+        "filename": "android/androidmk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-02-06T21:57:19Z",
+      "side": 1,
+      "message": "This is a good question for Dan \u0026 Colin. AndroidMkData is used for writing out Android.mk file which will goes into Kaki. Different modules can have difference rules for how to write to the androidmk. THe Custom func gives the different modules flexibility to customize the content when they writing out rules to androidmk. I removed the last argument based on Dan\u0027s suggestion.",
+      "parentUuid": "db85cb2e_95a33036",
+      "revId": "826036fb062dceba671c749348a40916eb980701",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "63c8c259_504f6dc3",
         "filename": "android/module.go",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "826036fb062dceba671c749348a40916eb980701",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7964079d_7b5cbb7b",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-02-06T21:57:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63c8c259_504f6dc3",
+      "revId": "826036fb062dceba671c749348a40916eb980701",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -56,6 +92,24 @@
       "revId": "826036fb062dceba671c749348a40916eb980701",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c286d9d_92aea169",
+        "filename": "phony/phony.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-02-06T21:57:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dca938fe_25f05296",
+      "revId": "826036fb062dceba671c749348a40916eb980701",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
