@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36d2db39_38c4ddcc",
+        "filename": "cc/cmakelists.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-06T21:46:51Z",
+      "side": 1,
+      "message": "You should also replace $$ with $ to undo ninja escaping.  Maybe also add a TODO to provide a NinjaAndShellUnescape in blueprint?",
+      "revId": "9963b44b8bc62e91218a10c063676c9584103158",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
