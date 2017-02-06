@@ -22,6 +22,30 @@
       "revId": "ba1963e543af86d5270972a7256ddedbf43e5a68",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "832a47db_c2f7939e",
+        "filename": "cc/binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-06T20:56:20Z",
+      "side": 1,
+      "message": "Huh, don\u0027t know how I missed that.\n\nWe will end up with double -pie for host bionic builds, and DISABLE_HOST_PIE won\u0027t work, but maybe that\u0027s a feature.",
+      "parentUuid": "9f10a0ed_46e18dea",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 11
+      },
+      "revId": "ba1963e543af86d5270972a7256ddedbf43e5a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
