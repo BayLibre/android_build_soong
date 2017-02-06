@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "487f3146_d634ab51",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-06T18:51:29Z",
+      "side": 1,
+      "message": "Would this be more accurately described as \"LocalDependencyNames\"? And if so, then how do non-phony modules store their dependencies? (is there an existing field we can reuse?)",
+      "revId": "20b09306c725bfcc0440d20dab8ed0afd2b05aaf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47d94302_17436038",
+        "filename": "phony/phony.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-06T18:51:29Z",
+      "side": 1,
+      "message": "Is the reason to disallow a phony module without dependencies because then the module wouldn\u0027t do anything? Can we append something like \" in order to be useful (and therefore permitted)\" to the error message?",
+      "revId": "20b09306c725bfcc0440d20dab8ed0afd2b05aaf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da0e7709_464f59c5",
+        "filename": "phony/phony.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-06T18:51:29Z",
+      "side": 1,
+      "message": "Can we rename \u0027required\u0027 to something like \u0027requiredPropertyNames\u0027 or \u0027requiredModuleNames\u0027 or something like that to clarify the meaning?",
+      "revId": "20b09306c725bfcc0440d20dab8ed0afd2b05aaf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
