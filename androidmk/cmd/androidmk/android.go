@@ -18,7 +18,7 @@ type bpVariable struct {
 }
 
 type variableAssignmentContext struct {
-	file    *bpFile
+	file    *bpFileBuilder
 	prefix  string
 	mkvalue *mkparser.MakeString
 	append  bool
@@ -202,7 +202,7 @@ func splitBpList(val bpparser.Expression, keyFunc listSplitFunc) (lists map[stri
 func splitLocalGlobalPath(value bpparser.Expression) (string, bpparser.Expression, error) {
 	switch v := value.(type) {
 	case *bpparser.Variable:
-		if v.Name == "LOCAL_PATH" {
+		if v.NameNode.Text == "LOCAL_PATH" {
 			return "local", &bpparser.String{
 				Value: ".",
 			}, nil
@@ -215,7 +215,7 @@ func splitLocalGlobalPath(value bpparser.Expression) (string, bpparser.Expressio
 			return "", nil, fmt.Errorf("splitLocalGlobalPath expected a string, got %s", value.Type)
 		}
 
-		if v.Operator != '+' {
+		if v.Operator.Text != "+" {
 			return "global", value, nil
 		}
 
@@ -229,7 +229,7 @@ func splitLocalGlobalPath(value bpparser.Expression) (string, bpparser.Expressio
 			return "global", value, nil
 		}
 
-		if variable, ok := firstOperand.(*bpparser.Variable); !ok || variable.Name != "LOCAL_PATH" {
+		if variable, ok := firstOperand.(*bpparser.Variable); !ok || variable.NameNode.Text != "LOCAL_PATH" {
 			return "global", value, nil
 		}
 
@@ -314,8 +314,8 @@ func stem(ctx variableAssignmentContext) error {
 	}
 	varName := "stem"
 
-	if exp, ok := val.(*bpparser.Operator); ok && exp.Operator == '+' {
-		if variable, ok := exp.Args[0].(*bpparser.Variable); ok && variable.Name == "LOCAL_MODULE" {
+	if exp, ok := val.(*bpparser.Operator); ok && exp.Operator.Text == "+" {
+		if variable, ok := exp.Args[0].(*bpparser.Variable); ok && variable.Name() == "LOCAL_MODULE" {
 			varName = "suffix"
 			val = exp.Args[1]
 		}
@@ -484,7 +484,7 @@ func ldflags(ctx variableAssignmentContext) error {
 			return "ldflags", value, nil
 		}
 
-		if v, ok := exp2.Args[1].(*bpparser.Variable); !ok || v.Name != "LOCAL_PATH" {
+		if v, ok := exp2.Args[1].(*bpparser.Variable); !ok || v.Name() != "LOCAL_PATH" {
 			ctx.file.errorf(ctx.mkvalue, "Unrecognized version-script")
 			return "ldflags", value, nil
 		}
@@ -546,6 +546,13 @@ func includeVariableNow(bpVar bpVariable, ctx variableAssignmentContext) error {
 	if err == nil {
 		err = setVariable(ctx.file, ctx.append, ctx.prefix, bpVar.name, val, true)
 	}
+
+	// copy all the comments from the Makefile into the Blueprint file
+	//var mkComments = ctx.file.mkSyntaxTree.GetAllComments(ctx.mkvalue)
+	//for _, comment := range mkComments {
+	//	ctx.file.addNodeComment(val, bpparser.NewFullLineComment(comment.Text))
+	//}
+
 	return err
 }
 

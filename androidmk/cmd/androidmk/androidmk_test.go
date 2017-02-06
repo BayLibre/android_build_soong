@@ -36,9 +36,9 @@ var testCases = []struct {
 # Copyright
 #
 
-# Module Comment
+# Module Text
 include $(CLEAR_VARS)
-# Name Comment
+# Name Text
 LOCAL_MODULE := test
 # Source comment
 LOCAL_SRC_FILES_EXCLUDE := a.c
@@ -50,9 +50,9 @@ include $(BUILD_SHARED_LIBRARY)`,
 // Copyright
 //
 
-// Module Comment
+// Module Text
 cc_library_shared {
-    // Name Comment
+    // Name Text
     name: "test",
     // Source comment
     exclude_srcs: ["a.c"] + ["b.c"], // Second source comment
@@ -97,19 +97,19 @@ cc_library_shared {
 		in: `
 input := testing/include
 include $(CLEAR_VARS)
-# Comment 1
+# Text 1
 LOCAL_C_INCLUDES := $(LOCAL_PATH) $(LOCAL_PATH)/include system/core/include $(input)
-# Comment 2
+# Text 2
 LOCAL_C_INCLUDES += $(TOP)/system/core/include $(LOCAL_PATH)/test/include
-# Comment 3
+# Text 3
 include $(BUILD_SHARED_LIBRARY)`,
 		expected: `
 input = ["testing/include"]
 cc_library_shared {
-    // Comment 1
-    include_dirs: ["system/core/include"] + input + ["system/core/include"], // Comment 2
+    // Text 1
+    include_dirs: ["system/core/include"] + input + ["system/core/include"], // Text 2
     local_include_dirs: ["."] + ["include"] + ["test/include"],
-    // Comment 3
+    // Text 3
 }`,
 	},
 	{
@@ -361,13 +361,16 @@ cc_library_shared {
 		desc: "Remove LOCAL_MODULE_TAGS optional",
 		in: `
 include $(CLEAR_VARS)
+LOCAL_MODULE := myFavoriteModule
 LOCAL_MODULE_TAGS := optional
+LOCAL_C_INCLUDES := includeMe
 include $(BUILD_SHARED_LIBRARY)
 `,
 
 		expected: `
 cc_library_shared {
-
+    name: "myFavoriteModule",
+    include_dirs: ["includeMe"],
 }
 `,
 	},
@@ -375,38 +378,80 @@ cc_library_shared {
 		desc: "Keep LOCAL_MODULE_TAGS non-optional",
 		in: `
 include $(CLEAR_VARS)
+LOCAL_MODULE := mySecondFavoriteModule # comment 1
+# another comment
 LOCAL_MODULE_TAGS := debug
+LOCAL_C_INCLUDES := includeMe
 include $(BUILD_SHARED_LIBRARY)
 `,
 
 		expected: `
 cc_library_shared {
+	name: "mySecondFavoriteModule ", // comment 1
+	// another comment
 	tags: ["debug"],
+	include_dirs: ["includeMe"],
 }
+
 `,
 	},
 }
 
+var latestTestCases = []struct {
+	desc     string
+	in       string
+	expected string
+}{
+	{
+		desc: "basic cc_library_shared with comments",
+		in: `
+#
+# Copyright
+#
+
+# Module Text
+include $(CLEAR_VARS)
+# Name Text
+LOCAL_MODULE := test
+# Source comment
+LOCAL_SRC_FILES_EXCLUDE := a.c
+# Second source comment
+LOCAL_SRC_FILES_EXCLUDE += b.c
+include $(BUILD_SHARED_LIBRARY)`,
+		expected: `
+//
+// Copyright
+//
+
+// Module Text
+cc_library_shared {
+    // Name Text
+    name: "test",
+    // Source comment
+    exclude_srcs: ["a.c"] + ["b.c"], // Second source comment
+
+}`,
+	},
+}
+
 func reformatBlueprint(input string) string {
-	file, errs := bpparser.Parse("<testcase>", bytes.NewBufferString(input), bpparser.NewScope(nil))
+	tree, errs := bpparser.ParseStrict("<testcase>", bytes.NewBufferString(input), bpparser.NewScope(nil))
 	if len(errs) > 0 {
 		for _, err := range errs {
 			fmt.Fprintln(os.Stderr, err)
 		}
-		panic(fmt.Sprintf("%d parsing errors in testcase:\n%s", len(errs), input))
+		panic(fmt.Sprintf("%d parse error while trying to parse expected Blueprint output: %s", len(errs), input))
 	}
 
-	res, err := bpparser.Print(file)
-	if err != nil {
-		panic(fmt.Sprintf("Error printing testcase: %q", err))
-	}
+	res := bpparser.PrintTree(&tree)
 
 	return string(res)
 }
 
 func TestEndToEnd(t *testing.T) {
 	for i, test := range testCases {
-		expected := reformatBlueprint(test.expected)
+		//expected := reformatBlueprint(test.expected)
+		expected := test.expected
 
 		got, errs := convertFile(fmt.Sprintf("<testcase %d>", i), bytes.NewBufferString(test.in))
 		if len(errs) > 0 {

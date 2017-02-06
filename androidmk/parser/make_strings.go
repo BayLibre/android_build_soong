@@ -17,28 +17,18 @@ import (
 // of Variables.  The raw string list is always one longer than the variable
 // list.
 type MakeString struct {
-	StringPos Pos
 	Strings   []string
 	Variables []Variable
 }
 
-func SimpleMakeString(s string, pos Pos) *MakeString {
+func SimpleMakeString(s string) *MakeString {
 	return &MakeString{
-		StringPos: pos,
-		Strings:   []string{s},
+		Strings: []string{s},
 	}
 }
 
-func (ms *MakeString) Pos() Pos {
-	return ms.StringPos
-}
-
-func (ms *MakeString) End() Pos {
-	pos := ms.StringPos
-	if len(ms.Strings) > 1 {
-		pos = ms.Variables[len(ms.Variables)-1].End()
-	}
-	return Pos(int(pos) + len(ms.Strings[len(ms.Strings)-1]))
+func (ms MakeString) Children() []ParseNode {
+	return []ParseNode{} // TODO: implement
 }
 
 func (ms *MakeString) appendString(s string) {
@@ -80,7 +70,7 @@ func (ms *MakeString) Value(scope Scope) string {
 	}
 }
 
-func (ms *MakeString) Dump() string {
+func (ms MakeString) Dump() string {
 	if len(ms.Strings) == 0 {
 		return ""
 	} else {
@@ -108,7 +98,7 @@ func (ms *MakeString) Split(sep string) []*MakeString {
 func (ms *MakeString) SplitN(sep string, n int) []*MakeString {
 	ret := []*MakeString{}
 
-	curMs := SimpleMakeString("", ms.Pos())
+	curMs := SimpleMakeString("")
 
 	var i int
 	var s string
@@ -126,7 +116,7 @@ func (ms *MakeString) SplitN(sep string, n int) []*MakeString {
 
 			for _, r := range split[1:] {
 				ret = append(ret, curMs)
-				curMs = SimpleMakeString(r, ms.Pos())
+				curMs = SimpleMakeString(r)
 			}
 		} else {
 			curMs.appendString(s)
@@ -142,9 +132,7 @@ func (ms *MakeString) SplitN(sep string, n int) []*MakeString {
 }
 
 func (ms *MakeString) TrimLeftSpaces() {
-	l := len(ms.Strings[0])
 	ms.Strings[0] = strings.TrimLeftFunc(ms.Strings[0], unicode.IsSpace)
-	ms.StringPos += Pos(len(ms.Strings[0]) - l)
 }
 
 func (ms *MakeString) TrimRightSpaces() {

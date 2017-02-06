@@ -32,10 +32,7 @@ func addValues(val1, val2 bpparser.Expression) (bpparser.Expression, error) {
 		return nil, fmt.Errorf("cannot add mismatched types")
 	}
 
-	return &bpparser.Operator{
-		Operator: '+',
-		Args:     [2]bpparser.Expression{val1, val2},
-	}, nil
+	return bpparser.NewOperator("+", [2]bpparser.Expression{val1, val2}), nil
 }
 
 func makeToStringExpression(ms *mkparser.MakeString, scope mkparser.Scope) (bpparser.Expression, error) {
@@ -55,12 +52,9 @@ func makeToStringExpression(ms *mkparser.MakeString, scope mkparser.Scope) (bppa
 			if !name.Const() {
 				return nil, fmt.Errorf("Unsupported non-const variable name %s", name.Dump())
 			}
-			tmp := &bpparser.Variable{
-				Name:  name.Value(nil),
-				Value: &bpparser.String{},
-			}
+			tmp := bpparser.NewVariable(name.Value(nil), &bpparser.String{})
 
-			if tmp.Name == "TOP" {
+			if tmp.Name() == "TOP" {
 				if s[0] == '/' {
 					s = s[1:]
 				} else {
@@ -127,10 +121,7 @@ func makeToListExpression(ms *mkparser.MakeString, scope mkparser.Scope) (bppars
 					if len(listValue.Values) > 0 {
 						listOfListValues = append(listOfListValues, listValue)
 					}
-					listOfListValues = append(listOfListValues, &bpparser.Variable{
-						Name:  f.Variables[0].Name.Value(nil),
-						Value: &bpparser.List{},
-					})
+					listOfListValues = append(listOfListValues, bpparser.NewVariable(f.Variables[0].Name.Value(nil), &bpparser.List{}))
 					listValue = &bpparser.List{}
 				}
 			}
@@ -192,10 +183,7 @@ func makeToBoolExpression(ms *mkparser.MakeString) (bpparser.Expression, error) 
 			if !name.Const() {
 				return nil, fmt.Errorf("unsupported non-const variable name")
 			}
-			return &bpparser.Variable{
-				Name:  name.Value(nil),
-				Value: &bpparser.Bool{},
-			}, nil
+			return bpparser.NewVariable(name.Value(nil), &bpparser.Bool{}), nil
 		} else {
 			return nil, fmt.Errorf("non-const bool expression %s", ms.Dump())
 		}

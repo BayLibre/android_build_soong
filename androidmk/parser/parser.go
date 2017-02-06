@@ -21,36 +21,102 @@ func (e *ParseError) Error() string {
 	return fmt.Sprintf("%s: %s", e.Pos, e.Err)
 }
 
-func (p *parser) Parse() ([]Node, []error) {
-	defer func() {
-		if r := recover(); r != nil {
-			if r == errTooManyErrors {
-				return
-			}
-			panic(r)
-		}
-	}()
-
-	p.parseLines()
-	p.accept(scanner.EOF)
-	p.nodes = append(p.nodes, p.comments...)
-	sort.Sort(byPosition(p.nodes))
-
-	return p.nodes, p.errors
-}
+//func (p *parser) appendComment(commentNode *Comment) {
+//	p.addPendingComment(commentNode)
+//}
 
 type parser struct {
-	scanner  scanner.Scanner
-	tok      rune
-	errors   []error
-	comments []Node
-	nodes    []Node
-	lines    []int
+	scanner    scanner.Scanner
+	tok        rune
+	errors     []error
+	syntaxTree SyntaxTree
+	//currentNode     ParseNode
+	pendingComments [](*Comment)
+	Strict          bool
+}
+
+func (p *parser) addNodeComment(existingNode ParseNode, commentNode *Comment) {
+	if existingNode == nil {
+		panic("Illegal nil value passed for existingNode")
+	}
+	//if existingNode == commentNode {
+	//	panic("a comment cannot follow itself")
+	//}
+	var commentContainer = p.syntaxTree.getComments(existingNode)
+	fmt.Printf("androidmk parser.go adding node comment : %v at %p after %#v (%p)\n", *commentNode, *commentNode, existingNode, existingNode)
+	commentContainer.addPostComment(*commentNode)
+	if p.syntaxTree.getComments(existingNode).PostComments() < 1 {
+		panic("failed to add comment")
+	}
+}
+
+func (p *parser) addPendingComment(commentNode *Comment) {
+	fmt.Println("androidmk/parser adding 1 pending comment: ", commentNode)
+	p.pendingComments = append(p.pendingComments, commentNode)
+}
+
+func (p *parser) attachUnassociatedCommentsTo(parseNode ParseNode) {
+	var pendingComments = p.pendingComments
+	if len(pendingComments) > 0 {
+		var commentContainer = p.syntaxTree.getComments(parseNode)
+		fmt.Println("parser.go flushing ", len(pendingComments), " comments to attach to ", parseNode)
+
+		for _, comment := range pendingComments {
+			fmt.Printf("flushing comment '%v', adding before %#v\n", comment.Dump(), parseNode)
+			commentContainer.addPreComment(*comment)
+		}
+		if len(p.syntaxTree.getComments(parseNode).preComments) < 1 {
+			panic("failed to add pending comments")
+		}
+		fmt.Println("done flushing comments")
+	}
+}
+
+func (p *parser) dumpUnassociatedComments() {
+	var pendingComments = p.pendingComments
+	if len(pendingComments) > 0 {
+		fmt.Println("android/parser dumping ", len(pendingComments), " comments")
+		p.pendingComments = make([](*Comment), 0)
+		for _, comment := range pendingComments {
+			p.addNode(comment)
+		}
+	}
+}
+
+func (p *parser) addNode(node ParseNode) {
+	p.dumpUnassociatedComments()
+	p.syntaxTree.addNode(node)
+	//p.currentNode = node
+	//fmt.Printf("saved currentNode as %#v", node)
+	//panic("stack")
+	//p.attachUnassociatedCommentsTo(node)
+}
+
+func (p *parser) Parse() (SyntaxTree, []error) {
+	if !p.Strict {
+		defer func() {
+			if r := recover(); r != nil {
+				if r == errTooManyErrors {
+					return
+				}
+				panic(r)
+			}
+		}()
+	}
+	p.parseLines()
+	p.accept(scanner.EOF)
+
+	return p.syntaxTree, p.errors
+}
+
+func NewSyntaxTree() (tree SyntaxTree) {
+	tree.comments = map[ParseNode]*CommentPair{}
+	return tree
 }
 
 func NewParser(filename string, r io.Reader) *parser {
 	p := &parser{}
-	p.lines = []int{0}
+	p.syntaxTree = NewSyntaxTree()
 	p.scanner.Init(r)
 	p.scanner.Error = func(sc *scanner.Scanner, msg string) {
 		p.errorf(msg)
@@ -65,25 +131,6 @@ func NewParser(filename string, r io.Reader) *parser {
 	p.scanner.Filename = filename
 	p.next()
 	return p
-}
-
-func (p *parser) Unpack(pos Pos) scanner.Position {
-	offset := int(pos)
-	line := sort.Search(len(p.lines), func(i int) bool { return p.lines[i] > offset }) - 1
-	return scanner.Position{
-		Filename: p.scanner.Filename,
-		Line:     line + 1,
-		Column:   offset - p.lines[line] + 1,
-		Offset:   offset,
-	}
-}
-
-func (p *parser) pos() Pos {
-	pos := p.scanner.Position
-	if !pos.IsValid() {
-		pos = p.scanner.Pos()
-	}
-	return Pos(pos.Offset)
 }
 
 func (p *parser) errorf(format string, args ...interface{}) {
@@ -115,9 +162,6 @@ func (p *parser) next() {
 		for p.tok == '\r' {
 			p.tok = p.scanner.Scan()
 		}
-	}
-	if p.tok == '\n' {
-		p.lines = append(p.lines, p.scanner.Position.Offset+1)
 	}
 }
 
@@ -161,7 +205,7 @@ func (p *parser) parseLines() {
 		case '#', '\n', scanner.EOF:
 			ident.TrimRightSpaces()
 			if v, ok := toVariable(ident); ok {
-				p.nodes = append(p.nodes, &v)
+				p.syntaxTree.addNode(v)
 			} else if !ident.Empty() {
 				p.errorf("expected directive, rule, or assignment after ident " + ident.Dump())
 			}
@@ -171,7 +215,9 @@ func (p *parser) parseLines() {
 			case '\n':
 				p.accept('\n')
 			case '#':
-				p.parseComment()
+				var comment = p.parseComment()
+				p.addPendingComment(comment)
+
 			}
 		default:
 			p.errorf("expected assignment or rule definition, found %s\n",
@@ -179,6 +225,7 @@ func (p *parser) parseLines() {
 			return
 		}
 	}
+	p.dumpUnassociatedComments()
 }
 
 func (p *parser) parseDirective() bool {
@@ -187,33 +234,34 @@ func (p *parser) parseDirective() bool {
 	}
 
 	d := p.scanner.TokenText()
-	pos := p.pos()
 	p.accept(scanner.Ident)
-	endPos := NoPos
 
-	expression := SimpleMakeString("", pos)
+	expression := SimpleMakeString("")
 
 	switch d {
 	case "endif", "endef", "else":
 		// Nothing
 	case "define":
-		expression, endPos = p.parseDefine()
+		expression = p.parseDefine()
 	default:
 		p.ignoreSpaces()
 		expression = p.parseExpression()
 	}
 
-	p.nodes = append(p.nodes, &Directive{
-		NamePos: pos,
-		Name:    d,
-		Args:    expression,
-		EndPos:  endPos,
+	if d == "include" && expression.Dump() == "$(CLEAR_VARS)" {
+		p.dumpUnassociatedComments()
+	}
+
+	p.syntaxTree.addNode(&Directive{
+		Name: d,
+		Args: expression,
 	})
+	fmt.Printf("parsed directive %#v\n", expression.Dump())
 	return true
 }
 
-func (p *parser) parseDefine() (*MakeString, Pos) {
-	value := SimpleMakeString("", p.pos())
+func (p *parser) parseDefine() *MakeString {
+	value := SimpleMakeString("")
 
 loop:
 	for {
@@ -252,7 +300,7 @@ loop:
 		}
 	}
 
-	return value, p.pos()
+	return value
 }
 
 func (p *parser) parseEscape() {
@@ -262,7 +310,7 @@ func (p *parser) parseEscape() {
 }
 
 func (p *parser) parseExpression(end ...rune) *MakeString {
-	value := SimpleMakeString("", p.pos())
+	value := SimpleMakeString("")
 
 	endParen := false
 	for _, r := range end {
@@ -307,7 +355,10 @@ loop:
 			}
 			p.accept(p.tok)
 		case '#':
-			p.parseComment()
+			var comment = p.parseComment()
+			comment.ApplicableTo = value
+			p.addNodeComment(value, comment)
+			//p.addPendingComment(comment)
 			break loop
 		case '$':
 			var variable Variable
@@ -334,16 +385,15 @@ loop:
 }
 
 func (p *parser) parseVariable() Variable {
-	pos := p.pos()
 	p.accept('$')
 	var name *MakeString
 	switch p.tok {
 	case '(':
-		return p.parseBracketedVariable('(', ')', pos)
+		return p.parseBracketedVariable('(', ')')
 	case '{':
-		return p.parseBracketedVariable('{', '}', pos)
+		return p.parseBracketedVariable('{', '}')
 	case '$':
-		name = SimpleMakeString("__builtin_dollar", NoPos)
+		name = SimpleMakeString("__builtin_dollar")
 	case scanner.EOF:
 		p.errorf("expected variable name, found %s",
 			scanner.TokenString(p.tok))
@@ -354,7 +404,7 @@ func (p *parser) parseVariable() Variable {
 	return p.nameToVariable(name)
 }
 
-func (p *parser) parseBracketedVariable(start, end rune, pos Pos) Variable {
+func (p *parser) parseBracketedVariable(start, end rune) Variable {
 	p.accept(start)
 	name := p.parseExpression(end)
 	p.accept(end)
@@ -371,7 +421,6 @@ func (p *parser) parseRule(target *MakeString) {
 	prerequisites, newLine := p.parseRulePrerequisites(target)
 
 	recipe := ""
-	recipePos := p.pos()
 loop:
 	for {
 		if newLine {
@@ -406,11 +455,10 @@ loop:
 	}
 
 	if prerequisites != nil {
-		p.nodes = append(p.nodes, &Rule{
+		p.syntaxTree.addNode(&Rule{
 			Target:        target,
 			Prerequisites: prerequisites,
 			Recipe:        recipe,
-			RecipePos:     recipePos,
 		})
 	}
 }
@@ -427,7 +475,11 @@ func (p *parser) parseRulePrerequisites(target *MakeString) (*MakeString, bool) 
 		p.accept('\n')
 		newLine = true
 	case '#':
-		p.parseComment()
+		var comment = p.parseComment()
+		comment.ApplicableTo = prerequisites
+		//p.addNodeComment(prerequisites, comment)
+		p.addPendingComment(comment)
+
 		newLine = true
 	case ';':
 		p.accept(';')
@@ -450,19 +502,18 @@ func (p *parser) parseRulePrerequisites(target *MakeString) (*MakeString, bool) 
 	return prerequisites, newLine
 }
 
-func (p *parser) parseComment() {
-	pos := p.pos()
+func (p *parser) parseComment() *Comment {
 	p.accept('#')
-	comment := ""
+	commentText := ""
 loop:
 	for {
 		switch p.tok {
 		case '\\':
 			p.parseEscape()
 			if p.tok == '\n' {
-				comment += "\n"
+				commentText += "\n"
 			} else {
-				comment += "\\" + p.scanner.TokenText()
+				commentText += "\\" + p.scanner.TokenText()
 			}
 			p.accept(p.tok)
 		case '\n':
@@ -471,22 +522,22 @@ loop:
 		case scanner.EOF:
 			break loop
 		default:
-			comment += p.scanner.TokenText()
+			commentText += p.scanner.TokenText()
 			p.accept(p.tok)
 		}
 	}
 
-	p.comments = append(p.comments, &Comment{
-		CommentPos: pos,
-		Comment:    comment,
-	})
+	fmt.Println(fmt.Sprintf("parser parsed comment '%v'", commentText))
+	return &Comment{commentText, nil}
 }
 
 func (p *parser) parseAssignment(t string, target *MakeString, ident *MakeString) {
+	fmt.Println("parser starting to parse assignment")
 	// The value of an assignment is everything including and after the first
 	// non-whitespace character after the = until the end of the logical line,
 	// which may included escaped newlines
 	p.accept('=')
+	p.dumpUnassociatedComments()
 	value := p.parseExpression()
 	value.TrimLeftSpaces()
 	if ident.EndsWith('+') && t == "=" {
@@ -496,12 +547,16 @@ func (p *parser) parseAssignment(t string, target *MakeString, ident *MakeString
 
 	ident.TrimRightSpaces()
 
-	p.nodes = append(p.nodes, &Assignment{
+	p.attachUnassociatedCommentsTo(value)
+
+	p.addNode(&Assignment{
 		Name:   ident,
 		Value:  value,
 		Target: target,
 		Type:   t,
 	})
+	fmt.Println("reassigned currentNode to ", value)
+	fmt.Println("parser done parsing assignment")
 }
 
 type androidMkModule struct {
