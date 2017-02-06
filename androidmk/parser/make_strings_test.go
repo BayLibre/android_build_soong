@@ -19,31 +19,31 @@ var splitNTestCases = []struct {
 				" h i j",
 			},
 			Variables: []Variable{
-				Variable{Name: SimpleMakeString("var1", NoPos)},
-				Variable{Name: SimpleMakeString("var2", NoPos)},
+				Variable{Name: SimpleMakeString("var1")},
+				Variable{Name: SimpleMakeString("var2")},
 			},
 		},
 		sep: " ",
 		n:   -1,
 		expected: []*MakeString{
-			SimpleMakeString("a", NoPos),
-			SimpleMakeString("b", NoPos),
+			SimpleMakeString("a"),
+			SimpleMakeString("b"),
 			&MakeString{
 				Strings: []string{"c", "d"},
 				Variables: []Variable{
-					Variable{Name: SimpleMakeString("var1", NoPos)},
+					Variable{Name: SimpleMakeString("var1")},
 				},
 			},
-			SimpleMakeString("e", NoPos),
+			SimpleMakeString("e"),
 			&MakeString{
 				Strings: []string{"f", ""},
 				Variables: []Variable{
-					Variable{Name: SimpleMakeString("var2", NoPos)},
+					Variable{Name: SimpleMakeString("var2")},
 				},
 			},
-			SimpleMakeString("h", NoPos),
-			SimpleMakeString("i", NoPos),
-			SimpleMakeString("j", NoPos),
+			SimpleMakeString("h"),
+			SimpleMakeString("i"),
+			SimpleMakeString("j"),
 		},
 	},
 	{
@@ -54,20 +54,20 @@ var splitNTestCases = []struct {
 				" h i j",
 			},
 			Variables: []Variable{
-				Variable{Name: SimpleMakeString("var1", NoPos)},
-				Variable{Name: SimpleMakeString("var2", NoPos)},
+				Variable{Name: SimpleMakeString("var1")},
+				Variable{Name: SimpleMakeString("var2")},
 			},
 		},
 		sep: " ",
 		n:   3,
 		expected: []*MakeString{
-			SimpleMakeString("a", NoPos),
-			SimpleMakeString("b", NoPos),
+			SimpleMakeString("a"),
+			SimpleMakeString("b"),
 			&MakeString{
 				Strings: []string{"c", "d e f", " h i j"},
 				Variables: []Variable{
-					Variable{Name: SimpleMakeString("var1", NoPos)},
-					Variable{Name: SimpleMakeString("var2", NoPos)},
+					Variable{Name: SimpleMakeString("var1")},
+					Variable{Name: SimpleMakeString("var2")},
 				},
 			},
 		},
