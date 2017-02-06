@@ -33,6 +33,24 @@
       "revId": "2d58ca7f6cfcbcb35e75e305bb887042ebec99c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17b4de03_cfd72497",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-06T21:13:57Z",
+      "side": 1,
+      "message": "No, we always keep failed output files for debugging purposes. This keeps folders that we\u0027d otherwise delete as they were successful.",
+      "parentUuid": "459b23b3_bf037ee9",
+      "revId": "2d58ca7f6cfcbcb35e75e305bb887042ebec99c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
