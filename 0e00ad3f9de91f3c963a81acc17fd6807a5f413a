@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b23c366_c9fdecbe",
+        "filename": "cc/cmakelists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-06T21:13:20Z",
+      "side": 1,
+      "message": "This has gone through NinjaAndShellEscape in build/blueprint/proptools/escape.go, so more unescaping may be necessary.",
+      "revId": "0e00ad3f9de91f3c963a81acc17fd6807a5f413a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
