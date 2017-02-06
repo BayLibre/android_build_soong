@@ -241,6 +241,7 @@ build $
         ${g.bootstrap.srcDir}/build/blueprint/parser/parser.go $
         ${g.bootstrap.srcDir}/build/blueprint/parser/printer.go $
         ${g.bootstrap.srcDir}/build/blueprint/parser/sort.go $
+        ${g.bootstrap.srcDir}/build/blueprint/parser/ast_test.go $
         ${g.bootstrap.srcDir}/build/blueprint/parser/parser_test.go $
         ${g.bootstrap.srcDir}/build/blueprint/parser/printer_test.go | $
         ${g.bootstrap.compileCmd}
@@ -250,6 +251,7 @@ default $
 
 build ${g.bootstrap.buildDir}/.bootstrap/blueprint-parser/test/test.go: $
         g.bootstrap.gotestmain $
+        ${g.bootstrap.srcDir}/build/blueprint/parser/ast_test.go $
         ${g.bootstrap.srcDir}/build/blueprint/parser/parser_test.go $
         ${g.bootstrap.srcDir}/build/blueprint/parser/printer_test.go | $
         ${g.bootstrap.goTestMainCmd}

@@ -8,49 +8,159 @@ import (
 	"text/scanner"
 )
 
+// The parser defined in this file parses Makefiles and returns a syntaxTree that is essentially a list of statements
+
 var errTooManyErrors = errors.New("too many errors")
 
 const maxErrors = 100
 
 type ParseError struct {
 	Err error
-	Pos scanner.Position
 }
 
 func (e *ParseError) Error() string {
-	return fmt.Sprintf("%s: %s", e.Pos, e.Err)
+	return fmt.Sprintf("%s", e.Err)
+}
+func (e *ParseError) Children() []ParseNode {
+	return make([]ParseNode, 0)
+}
+func (e *ParseError) Dump() string {
+	return fmt.Sprintf("%s", e.Err)
 }
 
-func (p *parser) Parse() ([]Node, []error) {
-	defer func() {
-		if r := recover(); r != nil {
-			if r == errTooManyErrors {
-				return
-			}
-			panic(r)
-		}
-	}()
+type ParseTree struct {
+	*SyntaxTree
 
-	p.parseLines()
-	p.accept(scanner.EOF)
-	p.nodes = append(p.nodes, p.comments...)
-	sort.Sort(byPosition(p.nodes))
+	// sourcePositions tells where tokens were originally found in the source text
+	// Because an androidmk SyntaxTree is never generated programatically and is only ever generated via a parse,
+	// it would still be ok to move this information to each individual ParseNode
+	// However, the Blueprint SyntaxTree can be created programatically (in fact, androidmk creates one)
+	// and the position doesn't always make sense, so in Blueprint it's stored separately.
+	// The reason androidmk does this is to be easy to remember by mirroring Blueprint
+	sourcePositions map[ParseNode]scanner.Position
+}
 
-	return p.nodes, p.errors
+func NewParseTree() *ParseTree {
+	tree := &ParseTree{}
+	tree.SyntaxTree = NewSyntaxTree()
+	tree.sourcePositions = make(map[ParseNode]scanner.Position, 0)
+	return tree
+}
+func (p *ParseTree) GetSourcePosition(node ParseNode) scanner.Position {
+	return p.sourcePositions[node]
+}
+func (p *ParseTree) setPosition(parseNode ParseNode, pos scanner.Position) {
+	p.sourcePositions[parseNode] = pos
 }
 
 type parser struct {
-	scanner  scanner.Scanner
-	tok      rune
-	errors   []error
-	comments []Node
-	nodes    []Node
-	lines    []int
+	// low-level token scanner
+	scanner scanner.Scanner
+	// current token being parsed
+	tok rune
+	// problems with parsing
+	errors []error
+
+	// the resultant parse
+	parseTree *ParseTree
+
+	// comments that have been parsed but that haven't yet been attached to other statements (generally comments get attached to the statement following them)
+	pendingComments [](*Comment)
+	// whether to throw an exception on the first error
+	Strict bool
+	// line number of current token
+	lineNumber int
+	// location of previous token
+	prevPosition scanner.Position
+	// the latest position at which the parse stack was empty
+	prevRootLocation scanner.Position
+}
+
+func (p *parser) addCommentAfter(existingNode ParseNode, commentNode *Comment) {
+	p.parseTree.getComments(existingNode).addPostComment(*commentNode)
+}
+
+func (p *parser) addPendingComment(commentNode *Comment) {
+	p.pendingComments = append(p.pendingComments, commentNode)
+}
+
+func (p *parser) attachUnassociatedCommentsBefore(parseNode ParseNode) {
+	var pendingComments = p.pullPendingComments()
+	if len(pendingComments) > 0 {
+		var commentContainer = p.parseTree.getComments(parseNode)
+		for _, comment := range pendingComments {
+			commentContainer.addPreComment(*comment)
+		}
+	}
+}
+
+func (p *parser) dumpUnassociatedComments() {
+	var pendingComments = p.pullPendingComments()
+	if len(pendingComments) > 0 {
+		for _, comment := range pendingComments {
+			p.addNode(comment)
+		}
+	}
+}
+
+func (p *parser) pullPendingComments() [](*Comment) {
+	var pendingComments = p.pendingComments
+	p.pendingComments = make([](*Comment), 0)
+	return pendingComments
+}
+
+func (p *parser) addNode(node ParseNode) {
+	p.dumpUnassociatedComments()
+
+	p.parseTree.addNode(node)
+
+	// TODO always assign the exact line number to a node, rather than using the end-of-line default assigned here
+	p.setDefaultNodePosition(node)
+}
+
+func (p *parser) setDefaultNodePosition(node ParseNode) {
+
+	p.useNodePositionIfEmpty(node, p.prevRootLocation)
+}
+
+func (p *parser) useNodePositionIfEmpty(node ParseNode, position scanner.Position) {
+	existingPos, found := p.parseTree.sourcePositions[node]
+	if found {
+		position = existingPos
+	}
+	p.parseTree.sourcePositions[node] = position
+	for _, child := range node.Children() {
+		p.useNodePositionIfEmpty(child, position)
+	}
+}
+
+func (p *parser) Parse() (*ParseTree, []error) {
+	if !p.Strict {
+		defer func() {
+			if r := recover(); r != nil {
+				if r == errTooManyErrors {
+					return
+				}
+				panic(r)
+			}
+		}()
+	}
+	p.parseLines()
+	p.accept(scanner.EOF)
+
+	return p.parseTree, p.errors
+}
+
+func NewSyntaxTree() (tree *SyntaxTree) {
+	tree = &SyntaxTree{}
+	tree.comments = map[ParseNode]*CommentPair{}
+	return tree
 }
 
 func NewParser(filename string, r io.Reader) *parser {
 	p := &parser{}
-	p.lines = []int{0}
+	p.parseTree = NewParseTree()
+
 	p.scanner.Init(r)
 	p.scanner.Error = func(sc *scanner.Scanner, msg string) {
 		p.errorf(msg)
@@ -63,36 +173,20 @@ func NewParser(filename string, r io.Reader) *parser {
 	}
 	p.scanner.Mode = scanner.ScanIdents
 	p.scanner.Filename = filename
+	p.lineNumber = 1
 	p.next()
 	return p
-}
-
-func (p *parser) Unpack(pos Pos) scanner.Position {
-	offset := int(pos)
-	line := sort.Search(len(p.lines), func(i int) bool { return p.lines[i] > offset }) - 1
-	return scanner.Position{
-		Filename: p.scanner.Filename,
-		Line:     line + 1,
-		Column:   offset - p.lines[line] + 1,
-		Offset:   offset,
-	}
-}
-
-func (p *parser) pos() Pos {
-	pos := p.scanner.Position
-	if !pos.IsValid() {
-		pos = p.scanner.Pos()
-	}
-	return Pos(pos.Offset)
 }
 
 func (p *parser) errorf(format string, args ...interface{}) {
 	err := &ParseError{
 		Err: fmt.Errorf(format, args...),
-		Pos: p.scanner.Position,
 	}
+	p.parseTree.setPosition(err, p.scanner.Position)
 	p.errors = append(p.errors, err)
+	p.addNode(err)
 	if len(p.errors) >= maxErrors {
+		fmt.Println(err)
 		panic(errTooManyErrors)
 	}
 }
@@ -100,7 +194,7 @@ func (p *parser) errorf(format string, args ...interface{}) {
 func (p *parser) accept(toks ...rune) bool {
 	for _, tok := range toks {
 		if p.tok != tok {
-			p.errorf("expected %s, found %s", scanner.TokenString(tok),
+			p.errorf("'accept' method expected %s, found %s", scanner.TokenString(tok),
 				scanner.TokenString(p.tok))
 			return false
 		}
@@ -111,19 +205,31 @@ func (p *parser) accept(toks ...rune) bool {
 
 func (p *parser) next() {
 	if p.tok != scanner.EOF {
+		p.prevPosition = p.scanner.Position
 		p.tok = p.scanner.Scan()
 		for p.tok == '\r' {
 			p.tok = p.scanner.Scan()
 		}
-	}
-	if p.tok == '\n' {
-		p.lines = append(p.lines, p.scanner.Position.Offset+1)
+		p.lineNumber = p.scanner.Line
 	}
 }
 
 func (p *parser) parseLines() {
+loop:
 	for {
+
+		var prevLineNumber = p.prevPosition.Line
+
 		p.ignoreWhitespace()
+
+		p.prevRootLocation = p.scanner.Position
+
+		var newLineNumber = p.lineNumber
+
+		if newLineNumber > prevLineNumber+1 {
+			p.addPendingComment(newBlankLine())
+		}
+		p.dumpUnassociatedComments()
 
 		if p.parseDirective() {
 			continue
@@ -161,17 +267,19 @@ func (p *parser) parseLines() {
 		case '#', '\n', scanner.EOF:
 			ident.TrimRightSpaces()
 			if v, ok := toVariable(ident); ok {
-				p.nodes = append(p.nodes, &v)
+				p.addNode(v)
 			} else if !ident.Empty() {
-				p.errorf("expected directive, rule, or assignment after ident " + ident.Dump())
+				p.errorf("expected directive, rule, or assignment after ident '" + ident.Dump() + "'")
+				break
 			}
 			switch p.tok {
 			case scanner.EOF:
-				return
+				break loop
 			case '\n':
 				p.accept('\n')
 			case '#':
-				p.parseComment()
+				var comment = p.parseComment()
+				p.addPendingComment(comment)
 			}
 		default:
 			p.errorf("expected assignment or rule definition, found %s\n",
@@ -179,6 +287,8 @@ func (p *parser) parseLines() {
 			return
 		}
 	}
+	p.dumpUnassociatedComments()
+
 }
 
 func (p *parser) parseDirective() bool {
@@ -187,33 +297,31 @@ func (p *parser) parseDirective() bool {
 	}
 
 	d := p.scanner.TokenText()
-	pos := p.pos()
 	p.accept(scanner.Ident)
-	endPos := NoPos
 
-	expression := SimpleMakeString("", pos)
+	expression := SimpleMakeString("")
 
 	switch d {
 	case "endif", "endef", "else":
 		// Nothing
 	case "define":
-		expression, endPos = p.parseDefine()
+		expression = p.parseDefine()
 	default:
 		p.ignoreSpaces()
 		expression = p.parseExpression()
+		expression.TrimRightSpaces()
 	}
 
-	p.nodes = append(p.nodes, &Directive{
-		NamePos: pos,
-		Name:    d,
-		Args:    expression,
-		EndPos:  endPos,
-	})
+	directive := &Directive{
+		Name: d,
+		Args: expression,
+	}
+	p.addNode(directive)
 	return true
 }
 
-func (p *parser) parseDefine() (*MakeString, Pos) {
-	value := SimpleMakeString("", p.pos())
+func (p *parser) parseDefine() *MakeString {
+	value := SimpleMakeString("")
 
 loop:
 	for {
@@ -252,17 +360,18 @@ loop:
 		}
 	}
 
-	return value, p.pos()
+	return value
 }
 
 func (p *parser) parseEscape() {
+	prevMode := p.scanner.Mode
 	p.scanner.Mode = 0
 	p.accept('\\')
-	p.scanner.Mode = scanner.ScanIdents
+	p.scanner.Mode = prevMode
 }
 
 func (p *parser) parseExpression(end ...rune) *MakeString {
-	value := SimpleMakeString("", p.pos())
+	value := SimpleMakeString("")
 
 	endParen := false
 	for _, r := range end {
@@ -307,7 +416,8 @@ loop:
 			}
 			p.accept(p.tok)
 		case '#':
-			p.parseComment()
+			var comment = p.parseComment()
+			p.addCommentAfter(value, comment)
 			break loop
 		case '$':
 			var variable Variable
@@ -334,16 +444,15 @@ loop:
 }
 
 func (p *parser) parseVariable() Variable {
-	pos := p.pos()
 	p.accept('$')
 	var name *MakeString
 	switch p.tok {
 	case '(':
-		return p.parseBracketedVariable('(', ')', pos)
+		return p.parseBracketedVariable('(', ')')
 	case '{':
-		return p.parseBracketedVariable('{', '}', pos)
+		return p.parseBracketedVariable('{', '}')
 	case '$':
-		name = SimpleMakeString("__builtin_dollar", NoPos)
+		name = SimpleMakeString("__builtin_dollar")
 	case scanner.EOF:
 		p.errorf("expected variable name, found %s",
 			scanner.TokenString(p.tok))
@@ -354,7 +463,7 @@ func (p *parser) parseVariable() Variable {
 	return p.nameToVariable(name)
 }
 
-func (p *parser) parseBracketedVariable(start, end rune, pos Pos) Variable {
+func (p *parser) parseBracketedVariable(start, end rune) Variable {
 	p.accept(start)
 	name := p.parseExpression(end)
 	p.accept(end)
@@ -370,10 +479,11 @@ func (p *parser) nameToVariable(name *MakeString) Variable {
 func (p *parser) parseRule(target *MakeString) {
 	prerequisites, newLine := p.parseRulePrerequisites(target)
 
+	inlineComments := make([]*Comment, 0)
 	recipe := ""
-	recipePos := p.pos()
 loop:
 	for {
+
 		if newLine {
 			if p.tok == '\t' {
 				p.accept('\t')
@@ -381,6 +491,9 @@ loop:
 				continue loop
 			} else if p.parseDirective() {
 				newLine = false
+				continue
+			} else if p.tok == '#' {
+				inlineComments = append(inlineComments, p.parseComment())
 				continue
 			} else {
 				break loop
@@ -406,12 +519,16 @@ loop:
 	}
 
 	if prerequisites != nil {
-		p.nodes = append(p.nodes, &Rule{
+		rule := &Rule{
 			Target:        target,
 			Prerequisites: prerequisites,
 			Recipe:        recipe,
-			RecipePos:     recipePos,
-		})
+		}
+		p.addNode(rule)
+	}
+	// inline comments are to be added after the rule
+	for _, comment := range inlineComments {
+		p.addPendingComment(comment)
 	}
 }
 
@@ -427,7 +544,9 @@ func (p *parser) parseRulePrerequisites(target *MakeString) (*MakeString, bool) 
 		p.accept('\n')
 		newLine = true
 	case '#':
-		p.parseComment()
+		var comment = p.parseComment()
+		p.addPendingComment(comment)
+
 		newLine = true
 	case ';':
 		p.accept(';')
@@ -450,19 +569,18 @@ func (p *parser) parseRulePrerequisites(target *MakeString) (*MakeString, bool) 
 	return prerequisites, newLine
 }
 
-func (p *parser) parseComment() {
-	pos := p.pos()
+func (p *parser) parseComment() *Comment {
 	p.accept('#')
-	comment := ""
+	commentText := ""
 loop:
 	for {
 		switch p.tok {
 		case '\\':
 			p.parseEscape()
 			if p.tok == '\n' {
-				comment += "\n"
+				commentText += "\n"
 			} else {
-				comment += "\\" + p.scanner.TokenText()
+				commentText += "\\" + p.scanner.TokenText()
 			}
 			p.accept(p.tok)
 		case '\n':
@@ -471,15 +589,19 @@ loop:
 		case scanner.EOF:
 			break loop
 		default:
-			comment += p.scanner.TokenText()
+			commentText += p.scanner.TokenText()
 			p.accept(p.tok)
 		}
 	}
 
-	p.comments = append(p.comments, &Comment{
-		CommentPos: pos,
-		Comment:    comment,
-	})
+	return newFulllineComment(commentText)
+}
+
+func newFulllineComment(text string) (comment *Comment) {
+	return &Comment{text, FullLineText}
+}
+func newBlankLine() (comment *Comment) {
+	return &Comment{"\n", FullLineBlank}
 }
 
 func (p *parser) parseAssignment(t string, target *MakeString, ident *MakeString) {
@@ -489,6 +611,7 @@ func (p *parser) parseAssignment(t string, target *MakeString, ident *MakeString
 	p.accept('=')
 	value := p.parseExpression()
 	value.TrimLeftSpaces()
+	value.TrimRightSpaces()
 	if ident.EndsWith('+') && t == "=" {
 		ident.TrimRightOne()
 		t = "+="
@@ -496,7 +619,9 @@ func (p *parser) parseAssignment(t string, target *MakeString, ident *MakeString
 
 	ident.TrimRightSpaces()
 
-	p.nodes = append(p.nodes, &Assignment{
+	p.attachUnassociatedCommentsBefore(value)
+
+	p.addNode(&Assignment{
 		Name:   ident,
 		Value:  value,
 		Target: target,
