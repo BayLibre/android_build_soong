@@ -6,7 +6,6 @@ import (
 	"io/ioutil"
 	"os"
 	"strings"
-	"text/scanner"
 
 	mkparser "android/soong/androidmk/parser"
 
@@ -15,54 +14,125 @@ import (
 
 // TODO: non-expanded variables with expressions
 
-type bpFile struct {
-	comments          []*bpparser.CommentGroup
-	defs              []bpparser.Definition
-	localAssignments  map[string]*bpparser.Property
-	globalAssignments map[string]*bpparser.Expression
-	scope             mkparser.Scope
-	module            *bpparser.Module
-
-	mkPos scanner.Position // Position of the last handled line in the makefile
-	bpPos scanner.Position // Position of the last emitted line to the blueprint file
-
-	inModule bool
+type bpFromMkBuilder struct {
+	//bpBuilder      bpparser.SyntaxTree
+	bpBuilder            bpparser.Builder
+	localAssignments     map[string]*bpparser.Property
+	globalAssignments    map[string]*bpparser.Expression
+	scope                mkparser.Scope
+	module               *bpparser.Module
+	latestNode           bpparser.ParseNode
+	inModule             bool
+	commentsWithinModule map[bpparser.ParseNode](*bpparser.CommentPair)
+	pendingComments      [](*bpparser.Comment)
+	mkSyntaxTree         *mkparser.ParseTree
 }
 
-func (f *bpFile) insertComment(s string) {
-	f.comments = append(f.comments, &bpparser.CommentGroup{
-		Comments: []*bpparser.Comment{
-			&bpparser.Comment{
-				Comment: []string{s},
-				Slash:   f.bpPos,
-			},
-		},
-	})
-	f.bpPos.Offset += len(s)
+func newBpFromMkBuilder() *bpFromMkBuilder {
+	return &bpFromMkBuilder{
+		scope:             androidScope(),
+		localAssignments:  make(map[string]*bpparser.Property),
+		globalAssignments: make(map[string]*bpparser.Expression),
+		bpBuilder:         bpparser.NewBuilder(),
+	}
+
 }
 
-func (f *bpFile) insertExtraComment(s string) {
-	f.insertComment(s)
-	f.bpPos.Line++
+func (b *bpFromMkBuilder) addNode(node bpparser.ParseNode) {
+	b.dumpPendingComments()
+	b.bpBuilder.AddNode(node)
 }
 
-func (f *bpFile) errorf(node mkparser.Node, s string, args ...interface{}) {
-	orig := node.Dump()
+func (b *bpFromMkBuilder) appendComment(commentNode *bpparser.Comment) {
+	b.bpBuilder.AddNode(commentNode)
+}
+
+func (b *bpFromMkBuilder) addModuleComment(module *bpparser.Module, commentNode *bpparser.Comment) {
+	b.addNodeComment(module.Type, commentNode)
+}
+
+func (b *bpFromMkBuilder) addNodeComment(existingNode bpparser.ParseNode, commentNode *bpparser.Comment) {
+	if existingNode == nil {
+		panic("Illegal nil value passed for existingNode")
+	}
+	b.bpBuilder.AppendPostComment(existingNode, commentNode)
+}
+
+func (b *bpFromMkBuilder) addPendingComment(commentNode *bpparser.Comment) {
+	b.pendingComments = append(b.pendingComments, commentNode)
+}
+
+func (b *bpFromMkBuilder) attachUnassociatedCommentsBefore(parseNode bpparser.ParseNode) {
+	var pendingComments = b.pullPendingComments()
+	b.bpBuilder.AppendPreComments(parseNode, pendingComments)
+}
+
+func (b *bpFromMkBuilder) attachUnassociatedCommentsAfter(parseNode bpparser.ParseNode) {
+	var pendingComments = b.pullPendingComments()
+	b.bpBuilder.AppendPostComments(parseNode, pendingComments)
+}
+
+func (b *bpFromMkBuilder) attachUnassociatedCommentsAround(parseNode bpparser.ParseNode) {
+	pendingComments := b.pullPendingComments()
+	b.bpBuilder.AddCommentsAround(parseNode, pendingComments)
+}
+
+func (b *bpFromMkBuilder) dumpPendingComments() {
+	var pendingComments = b.pullPendingComments()
+	for _, comment := range pendingComments {
+		b.appendComment(comment)
+	}
+}
+
+func (b *bpFromMkBuilder) pullPendingComments() [](*bpparser.Comment) {
+	var pendingComments = b.pendingComments
+	b.pendingComments = make([](*bpparser.Comment), 0)
+	return pendingComments
+}
+
+func (b *bpFromMkBuilder) errorf(node mkparser.ParseNode, s string, args ...interface{}) {
+	originalText := node.Dump()
 	s = fmt.Sprintf(s, args...)
-	f.insertExtraComment(fmt.Sprintf("// ANDROIDMK TRANSLATION ERROR: %s", s))
+	var newComments = make([](*bpparser.Comment), 0)
+	sourcePos := b.mkSyntaxTree.GetSourcePosition(node)
+	errorComment := bpparser.NewFullLineComment(fmt.Sprintf(" ANDROIDMK TRANSLATION ERROR at %v:%v : %s", sourcePos.Line, sourcePos.Column, s))
+	newComments = append(newComments, bpparser.NewBlankLine(), errorComment)
 
-	lines := strings.Split(orig, "\n")
-	for _, l := range lines {
-		f.insertExtraComment("// " + l)
+	lines := strings.Split(originalText, "\n")
+	for _, line := range lines {
+		if len(line) > 0 {
+			line = " " + line
+		}
+		if strings.HasSuffix(line, " ") {
+			line = line[:len(line)-1]
+		}
+		newComments = append(newComments, bpparser.NewFullLineComment(line))
+	}
+	newComments = append(newComments, bpparser.NewBlankLine())
+
+	for _, comment := range newComments {
+		if b.inModule {
+			b.appendComment(comment)
+		} else {
+			b.addPendingComment(comment)
+		}
 	}
 }
 
-func (f *bpFile) setMkPos(pos, end scanner.Position) {
-	if pos.Line < f.mkPos.Line {
-		panic(fmt.Errorf("out of order lines, %q after %q", pos, f.mkPos))
+func makeCommentToBlueprint(makeComment *mkparser.Comment) (blueprintComment *bpparser.Comment) {
+	switch makeComment.Type {
+	case mkparser.FullLineText:
+		return bpparser.NewFullLineComment(makeComment.Text)
+	case mkparser.FullLineBlank:
+		return bpparser.NewBlankLine()
+	default:
+		panic(fmt.Sprintf("Unrecognized comment %#v of type %#v", makeComment, makeComment.Type))
 	}
-	f.bpPos.Line += (pos.Line - f.mkPos.Line)
-	f.mkPos = end
+}
+
+type attemptedConditional interface {
+	IsConditional()
+	Text() string
 }
 
 type conditional struct {
@@ -70,11 +140,27 @@ type conditional struct {
 	eq   bool
 }
 
+func (c *conditional) IsConditional() {
+}
+func (c *conditional) Text() (text string) {
+	return c.cond
+}
+
+type malformedConditional struct {
+	text string
+}
+
+func (m *malformedConditional) IsConditional() {
+}
+func (m *malformedConditional) Text() (text string) {
+	return m.text
+}
+
 func main() {
 	b, err := ioutil.ReadFile(os.Args[1])
 	if err != nil {
 		fmt.Println(err.Error())
-		return
+		os.Exit(1)
 	}
 
 	output, errs := convertFile(os.Args[1], bytes.NewBuffer(b))
@@ -88,43 +174,64 @@ func main() {
 	fmt.Print(output)
 }
 
-func convertFile(filename string, buffer *bytes.Buffer) (string, []error) {
-	p := mkparser.NewParser(filename, buffer)
+func convertFile(filePath string, buffer *bytes.Buffer) (result string, errs []error) {
+	result, errs, _, _ = convertFileImpl(filePath, buffer)
+	return result, errs
+}
 
-	nodes, errs := p.Parse()
-	if len(errs) > 0 {
-		return "", errs
-	}
+// The reason convertFileImpl is separate from convertFile is make it easy to obtain debugging information from within a test and still be sure that the test is testing the correct process
+// In most cases, the correct function to call is actually convertFile
+func convertFileImpl(filePath string, buffer *bytes.Buffer) (result string, errs []error, mkParse *mkparser.ParseTree, bpTree *bpparser.SyntaxTree) {
+	succeeded := false
 
-	file := &bpFile{
-		scope:             androidScope(),
-		localAssignments:  make(map[string]*bpparser.Property),
-		globalAssignments: make(map[string]*bpparser.Expression),
-	}
+	defer func() {
+		if !succeeded {
+			os.Stderr.WriteString(fmt.Sprintf("\nandroidmk.go failed to convert %s with %v errors %s\n\n", filePath, len(errs), errs))
+		}
+	}()
 
-	var conds []*conditional
+	p := mkparser.NewParser(filePath, buffer)
+	p.Strict = true
+
+	mkParse, errs = p.Parse()
+
+	builder := newBpFromMkBuilder()
+	builder.mkSyntaxTree = mkParse
+
+	var unclosedIfs []attemptedConditional
 	var assignmentCond *conditional
 
-	for _, node := range nodes {
-		file.setMkPos(p.Unpack(node.Pos()), p.Unpack(node.End()))
+	var allowDanglingComments = false
+
+	for _, node := range mkParse.Nodes {
+
+		sourcePos := mkParse.GetSourcePosition(node)
 
 		switch x := node.(type) {
 		case *mkparser.Comment:
-			file.insertComment("//" + x.Comment)
+			bpComment := makeCommentToBlueprint(x)
+			builder.addPendingComment(bpComment)
 		case *mkparser.Assignment:
-			handleAssignment(file, x, assignmentCond)
+			handleAssignment(builder, x, assignmentCond)
+		case *mkparser.ParseError:
+			builder.addPendingComment(bpparser.NewFullLineComment(fmt.Sprintf(" ANDROID MK PARSE ERROR at %v:%v: %s", sourcePos.Line, sourcePos.Column, x.Dump())))
 		case *mkparser.Directive:
 			switch x.Name {
 			case "include":
-				val := x.Args.Value(file.scope)
+				val := x.Args.Value(builder.scope)
 				switch {
 				case soongModuleTypes[val]:
-					handleModuleConditionals(file, x, conds)
-					makeModule(file, val)
+					handleModuleConditionals(builder, x, unclosedIfs)
+					makeModule(builder, val)
 				case val == clear_vars:
-					resetModule(file)
+					if builder.inModule {
+						builder.errorf(x, "cleared module before finishing its definition")
+						// TODO if a module is malformed and gets skipped, but also has comments (including errors that generate comments) should we output them anyway?
+						allowDanglingComments = true
+					}
+					resetModule(builder)
 				default:
-					file.errorf(x, "unsupported include")
+					builder.errorf(x, "unsupported include")
 					continue
 				}
 			case "ifeq", "ifneq", "ifdef", "ifndef":
@@ -132,62 +239,72 @@ func convertFile(filename string, buffer *bytes.Buffer) (string, []error) {
 				eq := x.Name == "ifeq" || x.Name == "ifdef"
 				if _, ok := conditionalTranslations[args]; ok {
 					newCond := conditional{args, eq}
-					conds = append(conds, &newCond)
-					if file.inModule {
+					unclosedIfs = append(unclosedIfs, &newCond)
+					if builder.inModule {
 						if assignmentCond == nil {
 							assignmentCond = &newCond
 						} else {
-							file.errorf(x, "unsupported nested conditional in module")
+							builder.errorf(x, "unsupported nested conditional in module")
 						}
 					}
 				} else {
-					file.errorf(x, "unsupported conditional")
-					conds = append(conds, nil)
-					continue
+					builder.errorf(x, "unsupported conditional")
+					unclosedIfs = append(unclosedIfs, &malformedConditional{args})
 				}
 			case "else":
-				if len(conds) == 0 {
-					file.errorf(x, "missing if before else")
+				if len(unclosedIfs) == 0 {
+					builder.errorf(x, "missing if before else")
 					continue
-				} else if conds[len(conds)-1] == nil {
-					file.errorf(x, "else from unsupported contitional")
-					continue
-				}
-				conds[len(conds)-1].eq = !conds[len(conds)-1].eq
-			case "endif":
-				if len(conds) == 0 {
-					file.errorf(x, "missing if before endif")
-					continue
-				} else if conds[len(conds)-1] == nil {
-					file.errorf(x, "endif from unsupported contitional")
-					conds = conds[:len(conds)-1]
 				} else {
-					if assignmentCond == conds[len(conds)-1] {
-						assignmentCond = nil
+					lastItem := unclosedIfs[len(unclosedIfs)-1]
+					_, ok := lastItem.(*conditional)
+					if !ok {
+						builder.errorf(x, "else from unsupported conditional '%s' ", lastItem.Text())
+						continue
 					}
-					conds = conds[:len(conds)-1]
 				}
+			case "endif":
+				if len(unclosedIfs) == 0 {
+					builder.errorf(x, "missing if before endif")
+					continue
+				} else {
+					lastItem := unclosedIfs[len(unclosedIfs)-1]
+					if _, ok := lastItem.(*conditional); ok {
+						if assignmentCond == unclosedIfs[len(unclosedIfs)-1] {
+							assignmentCond = nil
+						}
+					} else {
+						builder.errorf(x, fmt.Sprintf("endif from unsupported conditional: %s", lastItem.Text()))
+					}
+					unclosedIfs = unclosedIfs[:len(unclosedIfs)-1]
+				}
+
 			default:
-				file.errorf(x, "unsupported directive")
-				continue
+				builder.errorf(x, "unsupported directive")
 			}
 		default:
-			file.errorf(x, "unsupported line")
+			builder.errorf(x, "unsupported line")
 		}
 	}
-
-	out, err := bpparser.Print(&bpparser.File{
-		Defs:     file.defs,
-		Comments: file.comments,
-	})
-	if err != nil {
-		return "", []error{err}
+	builder.dumpPendingComments()
+	if builder.inModule {
+		allowDanglingComments = true
+	}
+	if allowDanglingComments {
+		// if a module was left unfinished, then we might have given the Blueprint tree builder some unattached comments that are ok to skip
+		builder.bpBuilder.AllowDanglingComments()
 	}
 
-	return string(out), nil
+	bpTree = builder.bpBuilder.BuildAndAttemptToReformat()
+	printer := bpparser.NewPrinter(bpTree)
+	out := string(printer.PrintTree())
+
+	succeeded = true
+
+	return out, errs, mkParse, bpTree
 }
 
-func handleAssignment(file *bpFile, assignment *mkparser.Assignment, c *conditional) {
+func handleAssignment(file *bpFromMkBuilder, assignment *mkparser.Assignment, c *conditional) {
 	if !assignment.Name.Const() {
 		file.errorf(assignment, "unsupported non-const variable name")
 		return
@@ -216,7 +333,7 @@ func handleAssignment(file *bpFile, assignment *mkparser.Assignment, c *conditio
 			} else {
 				var ok bool
 				if prefix, ok = conditionalTranslations[c.cond][c.eq]; !ok {
-					panic("unknown conditional")
+					panic(fmt.Sprintf("unknown conditional %s found in %s\n", c, assignment))
 				}
 			}
 		}
@@ -241,7 +358,7 @@ func handleAssignment(file *bpFile, assignment *mkparser.Assignment, c *conditio
 			// This is a hack to get the LOCAL_ARM_MODE value inside
 			// of an arch: { arm: {} } block.
 			armModeAssign := assignment
-			armModeAssign.Name = mkparser.SimpleMakeString("LOCAL_ARM_MODE_HACK_arm", assignment.Name.Pos())
+			armModeAssign.Name = mkparser.SimpleMakeString("LOCAL_ARM_MODE_HACK_arm")
 			handleAssignment(file, armModeAssign, c)
 		case strings.HasPrefix(name, "LOCAL_"):
 			file.errorf(assignment, "unsupported assignment to %s", name)
@@ -250,7 +367,7 @@ func handleAssignment(file *bpFile, assignment *mkparser.Assignment, c *conditio
 			var val bpparser.Expression
 			val, err = makeVariableToBlueprint(file, assignment.Value, bpparser.ListType)
 			if err == nil {
-				err = setVariable(file, appendVariable, prefix, name, val, false)
+				_, err = setVariable(file, appendVariable, prefix, name, val, false)
 			}
 		}
 	}
@@ -259,9 +376,11 @@ func handleAssignment(file *bpFile, assignment *mkparser.Assignment, c *conditio
 	}
 }
 
-func handleModuleConditionals(file *bpFile, directive *mkparser.Directive, conds []*conditional) {
-	for _, c := range conds {
-		if c == nil {
+func handleModuleConditionals(file *bpFromMkBuilder, directive *mkparser.Directive, conds []attemptedConditional) {
+	for _, attemptedConditional := range conds {
+
+		c, isConditional := attemptedConditional.(*conditional)
+		if !isConditional {
 			continue
 		}
 
@@ -272,9 +391,9 @@ func handleModuleConditionals(file *bpFile, directive *mkparser.Directive, conds
 		disabledPrefix := conditionalTranslations[c.cond][!c.eq]
 
 		// Create a fake assignment with enabled = false
-		val, err := makeVariableToBlueprint(file, mkparser.SimpleMakeString("false", mkparser.NoPos), bpparser.BoolType)
+		val, err := makeVariableToBlueprint(file, mkparser.SimpleMakeString("false"), bpparser.BoolType)
 		if err == nil {
-			err = setVariable(file, false, disabledPrefix, "enabled", val, true)
+			_, err = setVariable(file, false, disabledPrefix, "enabled", val, true)
 		}
 		if err != nil {
 			file.errorf(directive, err.Error())
@@ -282,22 +401,27 @@ func handleModuleConditionals(file *bpFile, directive *mkparser.Directive, conds
 	}
 }
 
-func makeModule(file *bpFile, t string) {
-	file.module.Type = t
-	file.module.TypePos = file.module.LBracePos
-	file.module.RBracePos = file.bpPos
-	file.defs = append(file.defs, file.module)
+func makeModule(file *bpFromMkBuilder, t string) {
+	if !file.inModule {
+		// if the input Android.mk file forgot to reset the module, then do it now
+		resetModule(file)
+	}
+	file.module.Type = &bpparser.Token{t}
+	file.attachUnassociatedCommentsAfter(file.module.Map.MapBody)
+	file.addNode(file.module)
+
 	file.inModule = false
 }
 
-func resetModule(file *bpFile) {
+func resetModule(file *bpFromMkBuilder) {
+	file.dumpPendingComments()
 	file.module = &bpparser.Module{}
-	file.module.LBracePos = file.bpPos
+	file.module.Map = bpparser.NewMap([]*bpparser.Property{})
 	file.localAssignments = make(map[string]*bpparser.Property)
 	file.inModule = true
 }
 
-func makeVariableToBlueprint(file *bpFile, val *mkparser.MakeString,
+func makeVariableToBlueprint(file *bpFromMkBuilder, val *mkparser.MakeString,
 	typ bpparser.Type) (bpparser.Expression, error) {
 
 	var exp bpparser.Expression
@@ -313,6 +437,15 @@ func makeVariableToBlueprint(file *bpFile, val *mkparser.MakeString,
 		panic("unknown type")
 	}
 
+	// get all the comments in the Makefile that apply to this expression and copy them onto the blueprint expression
+	var comments = file.mkSyntaxTree.GetAllComments(val)
+	for _, comment := range comments.PreComments() {
+		file.bpBuilder.AppendPreComment(exp, bpparser.NewFullLineComment(comment.Text))
+	}
+	for _, comment := range comments.PostComments() {
+		file.bpBuilder.AppendPostComment(exp, bpparser.NewFullLineComment(comment.Text))
+	}
+
 	if err != nil {
 		return nil, err
 	}
@@ -320,84 +453,96 @@ func makeVariableToBlueprint(file *bpFile, val *mkparser.MakeString,
 	return exp, nil
 }
 
-func setVariable(file *bpFile, plusequals bool, prefix, name string, value bpparser.Expression, local bool) error {
-
+func setVariable(builder *bpFromMkBuilder, plusequals bool, prefix, name string, value bpparser.Expression, local bool) (bpparser.ParseNode, error) {
 	if prefix != "" {
 		name = prefix + "." + name
 	}
 
-	pos := file.bpPos
-
 	var oldValue *bpparser.Expression
 	if local {
-		oldProp := file.localAssignments[name]
+		oldProp := builder.localAssignments[name]
 		if oldProp != nil {
 			oldValue = &oldProp.Value
 		}
 	} else {
-		oldValue = file.globalAssignments[name]
+		oldValue = builder.globalAssignments[name]
 	}
 
 	if local {
 		if oldValue != nil && plusequals {
-			val, err := addValues(*oldValue, value)
+			newValue, err := addValues(*oldValue, value)
 			if err != nil {
-				return fmt.Errorf("unsupported addition: %s", err.Error())
+				return nil, fmt.Errorf("unsupported addition: %s", err.Error())
 			}
-			val.(*bpparser.Operator).OperatorPos = pos
-			*oldValue = val
+			*oldValue = newValue
+			var prop = builder.localAssignments[name]
+
+			// adjust the comments slightly and attach them
+			comments := builder.pullPendingComments()
+			// If a list was constructed with a '+=' operator and the comments were few and started with a newline,
+			// then we don't need persist the newline in Blueprint since it's more annoying than relevant
+			if len(comments) > 0 && comments[0].Type == bpparser.FullLineBlank && len(comments) <= 2 {
+				comments = comments[1:]
+			}
+			// If there's only one comment, then make it into a slash-star comment that can be less intrusive
+			if len(comments) == 1 {
+				for _, comment := range comments {
+					if comment.Type == bpparser.FullLineText {
+						comment.Type = bpparser.InlineText
+						comment.Text += " "
+					}
+				}
+			}
+			// put comments in front of the value
+			builder.bpBuilder.AppendPreComments(value, comments)
+			builder.latestNode = prop
+			return prop, nil
 		} else {
 			names := strings.Split(name, ".")
-			container := &file.module.Properties
+			if !builder.inModule {
+				// the input Android.mk file forgot to start the module via 'include $(CLEAR_VARS)' ; start the module now
+				resetModule(builder)
+			}
+			var module = builder.module
+			var container = &module.Properties
 
 			for i, n := range names[:len(names)-1] {
 				fqn := strings.Join(names[0:i+1], ".")
-				prop := file.localAssignments[fqn]
+				prop := builder.localAssignments[fqn]
 				if prop == nil {
 					prop = &bpparser.Property{
-						Name:    n,
-						NamePos: pos,
-						Value: &bpparser.Map{
-							Properties: []*bpparser.Property{},
-						},
+						Name:  n,
+						Value: bpparser.NewMap([]*bpparser.Property{}),
 					}
-					file.localAssignments[fqn] = prop
+					builder.localAssignments[fqn] = prop
 					*container = append(*container, prop)
 				}
 				container = &prop.Value.(*bpparser.Map).Properties
 			}
 
 			prop := &bpparser.Property{
-				Name:    names[len(names)-1],
-				NamePos: pos,
-				Value:   value,
+				Name:  names[len(names)-1],
+				Value: value,
 			}
-			file.localAssignments[name] = prop
+			builder.localAssignments[name] = prop
 			*container = append(*container, prop)
+			builder.attachUnassociatedCommentsBefore(prop)
+			builder.latestNode = prop
+			// if any comments were put on the value, then move them to the property line instead
+			builder.bpBuilder.MoveComments(value, prop)
+			return prop, nil
 		}
 	} else {
+		var a *bpparser.Assignment
 		if oldValue != nil && plusequals {
-			a := &bpparser.Assignment{
-				Name:      name,
-				NamePos:   pos,
-				Value:     value,
-				OrigValue: value,
-				EqualsPos: pos,
-				Assigner:  "+=",
-			}
-			file.defs = append(file.defs, a)
+			a = bpparser.NewAssignment(name, value, value, "+=", false)
+			builder.addNode(a)
 		} else {
-			a := &bpparser.Assignment{
-				Name:      name,
-				NamePos:   pos,
-				Value:     value,
-				OrigValue: value,
-				EqualsPos: pos,
-				Assigner:  "=",
-			}
-			file.globalAssignments[name] = &a.Value
-			file.defs = append(file.defs, a)
+			a = bpparser.NewAssignment(name, value, value, "=", false)
+			builder.globalAssignments[name] = &a.Value
+			builder.addNode(a)
 		}
+		builder.attachUnassociatedCommentsBefore(a)
+		return a, nil
 	}
-	return nil
 }
