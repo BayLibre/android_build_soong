@@ -22,6 +22,30 @@
       "revId": "c0d58b4a0fa6ecd8cfc5e2cb15eabca29b9742a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea311700_91d31aaf",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-06T23:51:45Z",
+      "side": 1,
+      "message": "It\u0027s not a zero-value config, it\u0027s TestConfig().  I figured it was better to initialize it on the fly than copy the initialization to TestConfig().",
+      "parentUuid": "c5de867e_56f40943",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 286,
+        "endChar": 2
+      },
+      "revId": "c0d58b4a0fa6ecd8cfc5e2cb15eabca29b9742a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
