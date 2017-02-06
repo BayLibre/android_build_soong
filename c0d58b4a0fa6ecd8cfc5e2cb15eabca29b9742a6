@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5de867e_56f40943",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-06T23:49:43Z",
+      "side": 1,
+      "message": "Is it really valid to use a zero-valued config, or should we just fix the mutex unlock?",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 286,
+        "endChar": 2
+      },
+      "revId": "c0d58b4a0fa6ecd8cfc5e2cb15eabca29b9742a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
