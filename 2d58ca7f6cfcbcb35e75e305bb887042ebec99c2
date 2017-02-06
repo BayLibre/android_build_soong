@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ca558c7_8aeea693",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-06T18:14:00Z",
+      "side": 1,
+      "message": "Does this round down? I think we either want to round up or to put a floor check on it below (rounding up probably would be clearer)",
+      "revId": "2d58ca7f6cfcbcb35e75e305bb887042ebec99c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "459b23b3_bf037ee9",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-06T18:14:00Z",
+      "side": 1,
+      "message": "Is this suppose to be \u0027keep failed output files\u0027?",
+      "revId": "2d58ca7f6cfcbcb35e75e305bb887042ebec99c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
