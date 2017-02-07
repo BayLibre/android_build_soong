@@ -46,6 +46,24 @@
       "revId": "59f6121c86d9147887d009240f0e0f8accad76f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f80849e_4d1583c3",
+        "filename": "ui/build/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-07T18:27:08Z",
+      "side": 1,
+      "message": "I really should have left a TODO here :) I agree that dist isn\u0027t great here. It misses all of the non-dist builds (llvm, build-tools, etc), and misses the installclean for all the incremental builds.\n\nWe don\u0027t have a great way to check for the buildbots today -- we could make some bad assumptions about our specific environment, (USER \u003d\u003d android-build / TOP ~\u003d ...), but I think this just goes into our wishlist for buildbot improvements.\n\nAnd right now in the buildbots, we only get DIST_DIR set if dist is passed :( , so we can\u0027t proactively set things to the DIST_DIR in those case. Though we could fix the installclean issue by copying all the old logs/traces from OUT_DIR to DIST_DIR when we have it...",
+      "parentUuid": "371f9baa_40268899",
+      "revId": "59f6121c86d9147887d009240f0e0f8accad76f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
