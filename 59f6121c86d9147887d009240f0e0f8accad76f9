@@ -22,6 +22,30 @@
       "revId": "59f6121c86d9147887d009240f0e0f8accad76f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93ff2d95_f4de26d3",
+        "filename": "ui/build/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-07T18:22:57Z",
+      "side": 1,
+      "message": "I\u0027m in agreement with Colin about it being odd to have a BuildServer() method.\n\nHow many things are there that configure themselves based on config.BuildServer() ? How does a person discover how many things there are that configure themselves based on config.BuildServer() (I guess in this case since it was added in this patch I know it\u0027s only one, but still)? How often is there an error on the build server that doesn\u0027t happen on a developer\u0027s computer?\n\nI would think that the question of \"Am I running on a build server\" wouldn\u0027t be stored in a variable at all, because if it were, then it means anyone that isn\u0027t intimately familiar with the build system will have to spend more effort if they want to discover what it does or doesn\u0027t affect. Of course, the answer to that question will probably be a short answer, but it\u0027s still less convenient than not having the question in the first place, especially because those people won\u0027t know in which places to look to piece together the answer.\n\nI think instead we want there to be a \"--build-server\" command-line flag that\u0027s just an alias for a bunch of other flags (all of which are listed in one place), and perhaps those flags would be \"--fail-if-dist-unset --do-not-show-ui-alerts --non-interactive --minimize-duration-of-entire-build-rather-than-time-to-reach-first-failing-step --add-a-few-extra-special-checks --include-actual-git-hash-for-production-rather-than-hardcoded-git-hash-for-speed\"\nThen if we want to move the dist directory I would make that a second flag, maybe \"--dist-dir\u003d./out\"\n\nAlternatively if we explicitly want to disallow configuring each switch separately then we could just have the --build-server argument modify a bunch of separate config variables that don\u0027t have corresponding command-line flags, which still makes it clear what it does and also leaves us the opportunity to add command-line flags for them later.\n\nI don\u0027t know which of these flags will or won\u0027t actually get used, but I also wouldn\u0027t imagine it\u0027d be that hard to add the extra level of abstraction either.",
+      "parentUuid": "371f9baa_40268899",
+      "range": {
+        "startLine": 211,
+        "startChar": 21,
+        "endLine": 211,
+        "endChar": 32
+      },
+      "revId": "59f6121c86d9147887d009240f0e0f8accad76f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
