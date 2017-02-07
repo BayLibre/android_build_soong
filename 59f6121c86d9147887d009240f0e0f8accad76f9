@@ -64,6 +64,24 @@
       "revId": "59f6121c86d9147887d009240f0e0f8accad76f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "383e8aa1_a2b15fc9",
+        "filename": "ui/build/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-07T19:30:47Z",
+      "side": 1,
+      "message": "There\u0027s a few other things that we\u0027d eventually like to do on the build server now, which is controlled by \"dist\" currently -- see b/35090212 (killing/uninstalling/reinstalling jack server).\n\nTheoretically that\u0027s something that could be better done in the buildbot itself, but it\u0027s a slow moving target that has to handle a lot of different build types / branches / etc, and rather hard to make a source change and configure the build server to use it everywhere that source is. We need to improve that, but not as part of this change.\n\nI\u0027ll change this over to \"Dist()\" and we can bikeshed over build server behavior/improvements later :)",
+      "parentUuid": "9f80849e_4d1583c3",
+      "revId": "59f6121c86d9147887d009240f0e0f8accad76f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
