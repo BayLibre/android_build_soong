@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b220a979_3357d1e8",
+        "filename": "Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-07T01:04:27Z",
+      "side": 1,
+      "message": "You\u0027re not using this package",
+      "revId": "17caa8f333fc76436746230c28a47a9394dd7f15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fa576f7_a69ebe1f",
+        "filename": "Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-07T01:04:27Z",
+      "side": 1,
+      "message": "Or this one",
+      "revId": "17caa8f333fc76436746230c28a47a9394dd7f15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8dee845a_ed935acc",
+        "filename": "android/androidmk.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-07T01:04:27Z",
+      "side": 1,
+      "message": "This is the blueprint file, not the directory that contains it.  Do you need filepath.Dir()?",
+      "range": {
+        "startLine": 188,
+        "startChar": 38,
+        "endLine": 188,
+        "endChar": 61
+      },
+      "revId": "17caa8f333fc76436746230c28a47a9394dd7f15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
