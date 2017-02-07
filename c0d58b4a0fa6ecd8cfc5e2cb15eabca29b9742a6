@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b50487f0_3d5d574a",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-07T00:42:29Z",
+      "side": 1,
+      "message": "See https://blog.golang.org/defer-panic-and-recover:\nPanic is a built-in function that stops the ordinary flow of control and begins panicking. When the function F calls panic, execution of F stops, any deferred functions in F are executed normally, and then F returns to its caller. To the caller, F then behaves like a call to panic.",
+      "parentUuid": "d45d09ce_814504ac",
+      "revId": "c0d58b4a0fa6ecd8cfc5e2cb15eabca29b9742a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c5de867e_56f40943",
         "filename": "android/config.go",
         "patchSetId": 1
