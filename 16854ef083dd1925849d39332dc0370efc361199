@@ -2,6 +2,86 @@
   "comments": [
     {
       "key": {
+        "uuid": "c9340b87_05f9f1f2",
+        "filename": "scripts/setup_go_workspace_for_soong.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-07T01:00:38Z",
+      "side": 1,
+      "message": "If you require that this script be used after running lunch you can assume $ANDROID_BUILD_TOP is already set",
+      "revId": "16854ef083dd1925849d39332dc0370efc361199",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57016452_22c0a2f3",
+        "filename": "scripts/setup_go_workspace_for_soong.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-07T01:00:38Z",
+      "side": 1,
+      "message": "This isn\u0027t used any more",
+      "revId": "16854ef083dd1925849d39332dc0370efc361199",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6608c88f_4494fda1",
+        "filename": "scripts/setup_go_workspace_for_soong.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-07T01:00:38Z",
+      "side": 1,
+      "message": "GOPATH is often set to multiple directories separated by :, you should take the first one.",
+      "range": {
+        "startLine": 19,
+        "startChar": 17,
+        "endLine": 19,
+        "endChar": 23
+      },
+      "revId": "16854ef083dd1925849d39332dc0370efc361199",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d622e52_2b5476f8",
+        "filename": "scripts/setup_go_workspace_for_soong.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-07T01:00:38Z",
+      "side": 1,
+      "message": "maybe Y/n and accept blank for yes?",
+      "range": {
+        "startLine": 25,
+        "startChar": 17,
+        "endLine": 25,
+        "endChar": 20
+      },
+      "revId": "16854ef083dd1925849d39332dc0370efc361199",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee1bbf3c_9f9ed6b8",
         "filename": "scripts/setup_go_workspace_for_soong.sh",
         "patchSetId": 3
