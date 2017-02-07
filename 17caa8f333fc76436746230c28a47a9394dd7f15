@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b5b1dc52_6fc59920",
+        "filename": "Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-02-07T01:21:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b220a979_3357d1e8",
+      "revId": "17caa8f333fc76436746230c28a47a9394dd7f15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fa576f7_a69ebe1f",
         "filename": "Android.bp",
         "patchSetId": 7
@@ -30,6 +48,24 @@
       "writtenOn": "2017-02-07T01:04:27Z",
       "side": 1,
       "message": "Or this one",
+      "revId": "17caa8f333fc76436746230c28a47a9394dd7f15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da372cc7_7bace6eb",
+        "filename": "Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-02-07T01:21:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fa576f7_a69ebe1f",
       "revId": "17caa8f333fc76436746230c28a47a9394dd7f15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
         "endLine": 188,
         "endChar": 61
       },
+      "revId": "17caa8f333fc76436746230c28a47a9394dd7f15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "120d12dd_452299c2",
+        "filename": "android/androidmk.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-02-07T01:21:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dee845a_ed935acc",
       "revId": "17caa8f333fc76436746230c28a47a9394dd7f15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
