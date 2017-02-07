@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "d45d09ce_814504ac",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-02-07T00:28:33Z",
+      "side": 1,
+      "message": "I am just confused that \"defer\" avoid holding the mutex after panic. Does that mean \"defer\" operation will be automatically revoked once the \"panic\" get thrown out in surrounding function calls?",
+      "revId": "c0d58b4a0fa6ecd8cfc5e2cb15eabca29b9742a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c5de867e_56f40943",
         "filename": "android/config.go",
         "patchSetId": 1
