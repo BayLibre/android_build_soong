@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "371f9baa_40268899",
+        "filename": "ui/build/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-07T07:44:08Z",
+      "side": 1,
+      "message": "Historically we\u0027ve avoided equating dist with build server.  Do we want to admit it means build server, or call it DistributingArtifacts or something?",
+      "range": {
+        "startLine": 211,
+        "startChar": 21,
+        "endLine": 211,
+        "endChar": 32
+      },
+      "revId": "59f6121c86d9147887d009240f0e0f8accad76f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
