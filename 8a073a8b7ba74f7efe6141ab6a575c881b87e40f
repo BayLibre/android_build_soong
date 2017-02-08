@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16df82c5_beb079b3",
+        "filename": "ui/build/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-02-08T18:20:24Z",
+      "side": 1,
+      "message": "Do we need a const string for \"dist\" so that it can be used by both line 94 and line 193?",
+      "revId": "8a073a8b7ba74f7efe6141ab6a575c881b87e40f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
