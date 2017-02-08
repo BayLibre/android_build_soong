@@ -70,6 +70,8 @@ var (
 	GccCppStdVersion          = "gnu++11"
 	ExperimentalCStdVersion   = "gnu11"
 	ExperimentalCppStdVersion = "gnu++1z"
+
+	VndkLibraryMap = map[string]bool{}
 )
 
 var pctx = android.NewPackageContext("android/soong/cc/config")
@@ -77,6 +79,10 @@ var pctx = android.NewPackageContext("android/soong/cc/config")
 func init() {
 	if android.BuildOs == android.Linux {
 		commonGlobalCflags = append(commonGlobalCflags, "-fdebug-prefix-map=/proc/self/cwd=")
+	}
+
+	for _, library := range VndkLibraries() {
+		VndkLibraryMap[library] = true
 	}
 
 	pctx.StaticVariable("CommonGlobalCflags", strings.Join(commonGlobalCflags, " "))
@@ -153,6 +159,9 @@ func init() {
 	pctx.StaticVariable("RSLLVMPrebuiltsPath", "${RSClangBase}/${HostPrebuiltTag}/${RSClangVersion}/bin")
 	pctx.StaticVariable("RSIncludePath", "${RSLLVMPrebuiltsPath}/../lib64/clang/${RSReleaseVersion}/include")
 
+	// Vndk Abi Dump root directory
+	pctx.StaticVariable("VndkAbiDumpRootPath", "vndk/dumps/")
+
 	pctx.VariableFunc("CcWrapper", func(config interface{}) (string, error) {
 		if override := config.(android.Config).Getenv("CC_WRAPPER"); override != "" {
 			return override + " ", nil
@@ -174,5 +183,10 @@ func bionicHeaders(bionicArch, kernelArch string) string {
 }
 
 func VndkLibraries() []string {
-	return []string{}
+	return []string{"libc", "libsuspend", "libjpeg"}
+}
+
+func VndkMapContains(libName string) bool {
+	_, ok := VndkLibraryMap[libName]
+	return ok
 }
