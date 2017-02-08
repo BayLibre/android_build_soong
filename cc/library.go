@@ -200,10 +200,23 @@ type libraryDecorator struct {
 	// shlib suffix.
 	libName string
 
+	// Whether to produce linked dumps or not. Similar to the AbiDump flag
+	// while compiling sources.
+	linkSAbiDumps bool
+
+	// Whether to create an abi compliance report for this shared library.
+	createSourceAbiReport bool
+
 	sanitize *sanitize
 
 	// Output archive of gcno coverage information files
 	coverageOutputFile android.OptionalPath
+
+	// linked Source Abi Dump
+	sAbiOutputFile android.OptionalPath
+
+	// Source Abi Diff
+	sAbiDiff android.OptionalPath
 
 	// Decorated interafaces
 	*baseCompiler
@@ -299,6 +312,21 @@ func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 		return Objects{}
 	}
 
+	if ctx.createVndkSourceAbiDump() {
+		exportIncludeDirs := android.PathsForModuleSrc(ctx, library.flagExporter.Properties.Export_include_dirs)
+		var SourceAbiFlags []string
+		for _, dir := range exportIncludeDirs.Strings() {
+			SourceAbiFlags = append(SourceAbiFlags, "-I "+dir)
+		}
+		if SourceAbiFlags != nil {
+			flags.SAbiFlags = SourceAbiFlags
+			total_length := len(library.baseCompiler.Properties.Srcs) + len(deps.GeneratedSources) + len(library.Properties.Shared.Srcs) +
+				len(library.Properties.Static.Srcs)
+			if total_length > 0 {
+				flags.SAbiDump = true
+			}
+		}
+	}
 	objs := library.baseCompiler.compile(ctx, flags, deps)
 	library.reuseObjects = objs
 	buildFlags := flagsToBuilderFlags(flags)
@@ -510,6 +538,15 @@ func (library *libraryDecorator) linkShared(ctx ModuleContext,
 	linkerDeps = append(linkerDeps, deps.LateSharedLibsDeps...)
 	linkerDeps = append(linkerDeps, objs.tidyFiles...)
 
+	//Also take into account object re-use.
+	if len(objs.sAbiDumpFiles) > 0 {
+		refSourceDumpFile := android.PathForVndkRefAbiDump(ctx, fileName, true)
+		library.sAbiOutputFile = TransformDumpToLinkedDump(ctx, objs.sAbiDumpFiles, fileName)
+		if refSourceDumpFile.Valid() {
+			library.sAbiDiff = SourceAbiDiff(ctx, library.sAbiOutputFile.Path(), refSourceDumpFile.Path(), fileName)
+			//library.createSourceAbiReport = true
+		}
+	}
 	TransformObjToDynamicBinary(ctx, objs.objFiles, sharedLibs,
 		deps.StaticLibs, deps.LateStaticLibs, deps.WholeStaticLibs,
 		linkerDeps, deps.CrtBegin, deps.CrtEnd, false, builderFlags, outputFile)

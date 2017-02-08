@@ -98,11 +98,13 @@ func flagsToBuilderFlags(in Flags) builderFlags {
 		ldFlags:     strings.Join(in.LdFlags, " "),
 		libFlags:    strings.Join(in.libFlags, " "),
 		tidyFlags:   strings.Join(in.TidyFlags, " "),
+		sAbiFlags:   strings.Join(in.SAbiFlags, " "),
 		yasmFlags:   strings.Join(in.YasmFlags, " "),
 		toolchain:   in.Toolchain,
 		clang:       in.Clang,
 		coverage:    in.Coverage,
 		tidy:        in.Tidy,
+		sAbiDump:    in.SAbiDump,
 
 		groupStaticLibs: in.GroupStaticLibs,
 	}
