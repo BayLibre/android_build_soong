@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0235d689_ef43d822",
+        "filename": "scripts/setup_go_workspace_for_soong.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-08T02:24:25Z",
+      "side": 1,
+      "message": "Hmm. If I use $ANDROID_BUILD_TOP then I\u0027d want the script to check that the variable is set and if not then print an error message and exit.\n\nI think it also requires the user to make a selection from the lunch menu before running this script (and this script doesn\u0027t require building for any particular device (so I often don\u0027t even bother running lunch in any of my several terminals))\n\nDo you think it\u0027s worth the extra complexity/confusion to guard against the possibility of this script moving in the future?",
+      "parentUuid": "c9340b87_05f9f1f2",
+      "revId": "16854ef083dd1925849d39332dc0370efc361199",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57016452_22c0a2f3",
         "filename": "scripts/setup_go_workspace_for_soong.sh",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2017-02-07T01:00:38Z",
       "side": 1,
       "message": "This isn\u0027t used any more",
+      "revId": "16854ef083dd1925849d39332dc0370efc361199",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59c7e9bd_b3906bba",
+        "filename": "scripts/setup_go_workspace_for_soong.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-08T02:24:25Z",
+      "side": 1,
+      "message": "oops",
+      "parentUuid": "57016452_22c0a2f3",
       "revId": "16854ef083dd1925849d39332dc0370efc361199",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -59,6 +95,24 @@
     },
     {
       "key": {
+        "uuid": "3d01d06d_f8585141",
+        "filename": "scripts/setup_go_workspace_for_soong.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-08T02:24:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6608c88f_4494fda1",
+      "revId": "16854ef083dd1925849d39332dc0370efc361199",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d622e52_2b5476f8",
         "filename": "scripts/setup_go_workspace_for_soong.sh",
         "patchSetId": 3
@@ -76,6 +130,24 @@
         "endLine": 25,
         "endChar": 20
       },
+      "revId": "16854ef083dd1925849d39332dc0370efc361199",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61ab3590_764faa33",
+        "filename": "scripts/setup_go_workspace_for_soong.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-08T02:24:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d622e52_2b5476f8",
       "revId": "16854ef083dd1925849d39332dc0370efc361199",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
