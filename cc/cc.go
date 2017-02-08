@@ -106,12 +106,14 @@ type Flags struct {
 	LdFlags     []string // Flags that apply to linker command lines
 	libFlags    []string // Flags to add libraries early to the link order
 	TidyFlags   []string // Flags that apply to clang-tidy
+	SAbiFlags   []string // Flags that apply to header-abi-dumper
 	YasmFlags   []string // Flags that apply to yasm assembly source files
 
 	Toolchain config.Toolchain
 	Clang     bool
 	Tidy      bool
 	Coverage  bool
+	SAbiDump  bool
 
 	RequiredInstructionSet string
 	DynamicLinker          string
@@ -160,6 +162,7 @@ type ModuleContextIntf interface {
 	sdk() bool
 	sdkVersion() string
 	vndk() bool
+	createVndkSourceAbiDump() bool
 	selectedStl() string
 	baseModuleName() string
 }
@@ -391,6 +394,12 @@ func (ctx *moduleContextImpl) vndk() bool {
 		return ctx.mod.Properties.Use_vndk
 	}
 	return false
+}
+
+// Create source abi dumps if the module belongs to the list of VndkLibraries.
+// Also create them if the set is empty. This case facilitates reference dump creation.
+func (ctx *moduleContextImpl) createVndkSourceAbiDump() bool {
+	return ctx.ctx.Device() && inList(ctx.baseModuleName(), config.VndkLibraries())
 }
 
 func (ctx *moduleContextImpl) selectedStl() string {
