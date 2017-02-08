@@ -70,6 +70,8 @@ var (
 	GccCppStdVersion          = "gnu++11"
 	ExperimentalCStdVersion   = "gnu11"
 	ExperimentalCppStdVersion = "gnu++1z"
+
+	VndkLibraryMap = map[string]bool{}
 )
 
 var pctx = android.NewPackageContext("android/soong/cc/config")
@@ -77,6 +79,10 @@ var pctx = android.NewPackageContext("android/soong/cc/config")
 func init() {
 	if android.BuildOs == android.Linux {
 		commonGlobalCflags = append(commonGlobalCflags, "-fdebug-prefix-map=/proc/self/cwd=")
+	}
+
+	for _, library := range VndkLibraries() {
+		VndkLibraryMap[library] = true
 	}
 
 	pctx.StaticVariable("CommonGlobalCflags", strings.Join(commonGlobalCflags, " "))
@@ -175,4 +181,9 @@ func bionicHeaders(bionicArch, kernelArch string) string {
 
 func VndkLibraries() []string {
 	return []string{}
+}
+
+func VndkMapContains(libName string) bool {
+	_, ok := VndkLibraryMap[libName]
+	return ok
 }

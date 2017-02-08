@@ -103,11 +103,13 @@ type Flags struct {
 	LdFlags     []string // Flags that apply to linker command lines
 	libFlags    []string // Flags to add libraries early to the link order
 	TidyFlags   []string // Flags that apply to clang-tidy
+	AbiFlags    []string // Flags that apply to header-abi-dumper
 	YasmFlags   []string // Flags that apply to yasm assembly source files
 
 	Toolchain config.Toolchain
 	Clang     bool
 	Tidy      bool
+	AbiDump   bool
 
 	RequiredInstructionSet string
 	DynamicLinker          string
@@ -139,6 +141,7 @@ type BaseProperties struct {
 
 	AndroidMkSharedLibs []string `blueprint:"mutated"`
 	HideFromMake        bool     `blueprint:"mutated"`
+	IsVndkCandidate     bool     `blueprint:"mutated"`
 	PreventInstall      bool     `blueprint:"mutated"`
 	Vndk_version        string   `blueprint:"mutated"`
 }
@@ -157,6 +160,7 @@ type ModuleContextIntf interface {
 	sdk() bool
 	sdkVersion() string
 	vndk() bool
+	isVndkCandidate() bool
 	selectedStl() string
 	baseModuleName() string
 }
@@ -386,6 +390,13 @@ func (ctx *moduleContextImpl) vndk() bool {
 	return false
 }
 
+func (ctx *moduleContextImpl) isVndkCandidate() bool {
+	if ctx.ctx.Device() {
+		return ctx.mod.Properties.IsVndkCandidate
+	}
+	return false
+}
+
 func (ctx *moduleContextImpl) selectedStl() string {
 	if stl := ctx.mod.stl; stl != nil {
 		return stl.Properties.SelectedStl
@@ -545,6 +556,9 @@ func (c *Module) begin(ctx BaseModuleContext) {
 			ctx.ModuleErrorf("Bad BOARD_VNDK_VERSION: %s", err.Error())
 		}
 		c.Properties.Vndk_version = version
+	}
+	if config.VndkMapContains(ctx.ModuleName()) {
+		c.Properties.IsVndkCandidate = true
 	}
 }
 

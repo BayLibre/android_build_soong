@@ -107,6 +107,10 @@ func (library *libraryDecorator) AndroidMk(ctx AndroidMkContext, ret *android.An
 			fmt.Fprintln(w, "LOCAL_EXPORT_C_INCLUDE_DEPS :=", strings.Join(exportedIncludeDeps.Strings(), " "))
 		}
 
+		if library.linkAbiDumps && !library.static() {
+			fmt.Fprintln(w, "LOCAL_ADDITIONAL_DEPENDENCIES := ", ret.OutputFile.Path().String()+"lsdump")
+		}
+
 		fmt.Fprintln(w, "LOCAL_BUILT_MODULE_STEM := $(LOCAL_MODULE)"+outputFile.Ext())
 
 		fmt.Fprintln(w, "LOCAL_SYSTEM_SHARED_LIBRARIES :=")

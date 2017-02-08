@@ -197,6 +197,10 @@ type libraryDecorator struct {
 	// shlib suffix.
 	libName string
 
+	// Whether to produce linked dumps or not. Similar to the AbiDump flag
+	// while compiling sources.
+	linkAbiDumps bool
+
 	sanitize *sanitize
 
 	// Decorated interafaces
@@ -292,6 +296,18 @@ func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 		return Objects{}
 	}
 
+	if ctx.isVndkCandidate() {
+		exportIncludeDirs := android.PathsForModuleSrc(ctx, library.flagExporter.Properties.Export_include_dirs)
+		var AbiFlags []string
+		for _, dir := range exportIncludeDirs.Strings() {
+			AbiFlags = append(AbiFlags, "-I "+dir)
+		}
+		if AbiFlags != nil {
+			flags.AbiFlags = AbiFlags
+			flags.AbiDump = true
+			library.linkAbiDumps = flags.AbiDump
+		}
+	}
 	objs := library.baseCompiler.compile(ctx, flags, deps)
 	library.reuseObjects = objs
 	buildFlags := flagsToBuilderFlags(flags)
@@ -501,6 +517,12 @@ func (library *libraryDecorator) linkShared(ctx ModuleContext,
 	linkerDeps = append(linkerDeps, deps.SharedLibsDeps...)
 	linkerDeps = append(linkerDeps, deps.LateSharedLibsDeps...)
 	linkerDeps = append(linkerDeps, objs.tidyFiles...)
+	linkerDeps = append(linkerDeps, objs.abiDumpFiles...)
+
+	if library.linkAbiDumps {
+		linkedDumpFile := android.PathForModuleOut(ctx, fileName+"lsdump")
+		TransformDumpToLinkedDump(ctx, objs.abiDumpFiles, linkedDumpFile)
+	}
 
 	TransformObjToDynamicBinary(ctx, objs.objFiles, sharedLibs,
 		deps.StaticLibs, deps.LateStaticLibs, deps.WholeStaticLibs,
