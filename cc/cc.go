@@ -103,11 +103,13 @@ type Flags struct {
 	LdFlags     []string // Flags that apply to linker command lines
 	libFlags    []string // Flags to add libraries early to the link order
 	TidyFlags   []string // Flags that apply to clang-tidy
+	AbiFlags    []string // Flags that apply to header-abi-dumper
 	YasmFlags   []string // Flags that apply to yasm assembly source files
 
 	Toolchain config.Toolchain
 	Clang     bool
 	Tidy      bool
+	AbiDump   bool
 
 	RequiredInstructionSet string
 	DynamicLinker          string

@@ -21,6 +21,7 @@ import (
 	"github.com/google/blueprint/pathtools"
 
 	"android/soong/android"
+	"android/soong/cc/config"
 )
 
 type LibraryProperties struct {
@@ -196,6 +197,9 @@ type libraryDecorator struct {
 	// Uses the module's name if empty, but can be overridden. Does not include
 	// shlib suffix.
 	libName string
+	// Whether to produce linked dumps or not. Similar to the AbiDump flag
+	// while compiling sources.
+	DumpAbi bool
 
 	sanitize *sanitize
 
@@ -292,6 +296,23 @@ func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 		return Objects{}
 	}
 
+	// TODO: It might be worth putting this as a property of a library / module.
+	if config.VndkMapContains(ctx.ModuleName()) && ctx.Device() {
+		// Need a better way to do this, duplicated code.
+		exportIncludeDirs := android.PathsForModuleSrc(ctx, library.flagExporter.Properties.Export_include_dirs)
+		var AbiFlags []string
+		for _, dir := range exportIncludeDirs.Strings() {
+			AbiFlags = append(AbiFlags, "-I "+dir)
+		}
+		// To check if there aren't any exported headers. libcutils uses export_header_lib_headers
+		// which doesn't show up in export include dirs.
+		if AbiFlags != nil {
+			flags.AbiFlags = AbiFlags
+			flags.AbiDump = true
+			// Set somewhere more apt ?
+			library.DumpAbi = flags.AbiDump
+		}
+	}
 	objs := library.baseCompiler.compile(ctx, flags, deps)
 	library.reuseObjects = objs
 	buildFlags := flagsToBuilderFlags(flags)
@@ -501,6 +522,12 @@ func (library *libraryDecorator) linkShared(ctx ModuleContext,
 	linkerDeps = append(linkerDeps, deps.SharedLibsDeps...)
 	linkerDeps = append(linkerDeps, deps.LateSharedLibsDeps...)
 	linkerDeps = append(linkerDeps, objs.tidyFiles...)
+	linkerDeps = append(linkerDeps, objs.abiDumpFiles...)
+
+	if library.DumpAbi {
+		linkedDumpFile := android.PathForModuleOut(ctx, fileName+"ldump")
+		TransformDumpToLinkedDump(ctx, objs.abiDumpFiles, linkedDumpFile)
+	}
 
 	TransformObjToDynamicBinary(ctx, objs.objFiles, sharedLibs,
 		deps.StaticLibs, deps.LateStaticLibs, deps.WholeStaticLibs,

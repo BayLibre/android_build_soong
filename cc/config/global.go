@@ -70,6 +70,15 @@ var (
 	GccCppStdVersion          = "gnu++11"
 	ExperimentalCStdVersion   = "gnu11"
 	ExperimentalCppStdVersion = "gnu++1z"
+
+	// This needs to be kept in sync with VndkLibraries, might not be the
+	// best way to do this. No built-in go function to do "contains".
+	// No "set" in go.
+	VndkLibraryMap = map[string]bool{
+		"libjpeg":    true,
+		"libcutils":  true,
+		"libsuspend": true,
+	}
 )
 
 var pctx = android.NewPackageContext("android/soong/cc/config")
@@ -174,5 +183,10 @@ func bionicHeaders(bionicArch, kernelArch string) string {
 }
 
 func VndkLibraries() []string {
-	return []string{}
+	return []string{"libjpeg", "libcutils", "libsuspend"}
+}
+
+func VndkMapContains(libName string) bool {
+	_, ok := VndkLibraryMap[libName]
+	return ok
 }

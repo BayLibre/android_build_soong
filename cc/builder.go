@@ -168,6 +168,23 @@ var (
 			Description: "yasm $out",
 		},
 		"asFlags")
+
+	builtInLD = pctx.SourcePathVariable("builtInLD", "out/host/linux-x86/bin")
+
+	abiDump = pctx.AndroidStaticRule("abiDump",
+		blueprint.RuleParams{
+			Command:     "echo attempting ast dump $exportDirs && rm -f $out && header-abi-dumper -o ${out} $in $exportDirs -- $cFlags -isystem ${config.RSIncludePath} touch $out",
+			CommandDeps: []string{"$builtInLD/header-abi-dumper"}, // TODO: Correct this once you figure of $OUT.
+			Description: "header-abi-dumper -o $out",
+		},
+		"cFlags", "exportDirs")
+
+	abiLink = pctx.AndroidStaticRule("abiLink",
+		blueprint.RuleParams{
+			Command:     "echo attempting ast dump link && header-abi-linker -o ${out} $in",
+			CommandDeps: []string{"$builtInLD/header-abi-linker"}, // TODO: Correct this once you figure of $OUT.
+			Description: "header-abi-linker $in -o $out",
+		})
 )
 
 func init() {
@@ -193,11 +210,13 @@ type builderFlags struct {
 	yaccFlags   string
 	protoFlags  string
 	tidyFlags   string
+	abiFlags    string
 	yasmFlags   string
 	aidlFlags   string
 	toolchain   config.Toolchain
 	clang       bool
 	tidy        bool
+	abiDump     bool
 
 	groupStaticLibs bool
 
@@ -207,21 +226,24 @@ type builderFlags struct {
 }
 
 type Objects struct {
-	objFiles  android.Paths
-	tidyFiles android.Paths
+	objFiles     android.Paths
+	tidyFiles    android.Paths
+	abiDumpFiles android.Paths
 }
 
 func (a Objects) Copy() Objects {
 	return Objects{
-		objFiles:  append(android.Paths{}, a.objFiles...),
-		tidyFiles: append(android.Paths{}, a.tidyFiles...),
+		objFiles:     append(android.Paths{}, a.objFiles...),
+		tidyFiles:    append(android.Paths{}, a.tidyFiles...),
+		abiDumpFiles: append(android.Paths{}, a.abiDumpFiles...),
 	}
 }
 
 func (a Objects) Append(b Objects) Objects {
 	return Objects{
-		objFiles:  append(a.objFiles, b.objFiles...),
-		tidyFiles: append(a.tidyFiles, b.tidyFiles...),
+		objFiles:     append(a.objFiles, b.objFiles...),
+		tidyFiles:    append(a.tidyFiles, b.tidyFiles...),
+		abiDumpFiles: append(a.abiDumpFiles, b.abiDumpFiles...),
 	}
 }
 
@@ -233,6 +255,11 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 	var tidyFiles android.Paths
 	if flags.tidy && flags.clang {
 		tidyFiles = make(android.Paths, 0, len(srcFiles))
+	}
+
+	var abiDumpFiles android.Paths
+	if flags.abiDump && flags.clang {
+		abiDumpFiles = make(android.Paths, 0, len(srcFiles))
 	}
 
 	cflags := flags.globalFlags + " " + flags.cFlags + " " + flags.conlyFlags
@@ -268,12 +295,14 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 		var moduleCflags string
 		var ccCmd string
 		tidy := flags.tidy && flags.clang
+		dump := flags.abiDump && flags.clang
 
 		switch srcFile.Ext() {
 		case ".S", ".s":
 			ccCmd = "gcc"
 			moduleCflags = asflags
 			tidy = false
+			dump = false
 		case ".c":
 			ccCmd = "gcc"
 			moduleCflags = cflags
@@ -329,11 +358,28 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 			})
 		}
 
+		if dump {
+			abiDumpFile := android.ObjPathWithExt(ctx, subdir, srcFile, "dump")
+			abiDumpFiles = append(abiDumpFiles, abiDumpFile)
+
+			ctx.ModuleBuild(pctx, android.ModuleBuildParams{
+				Rule:     abiDump,
+				Output:   abiDumpFile,
+				Input:    srcFile,
+				Implicit: objFile,
+				Args: map[string]string{
+					"cFlags":     moduleCflags,
+					"exportDirs": flags.abiFlags,
+				},
+			})
+		}
+
 	}
 
 	return Objects{
-		objFiles:  objFiles,
-		tidyFiles: tidyFiles,
+		objFiles:     objFiles,
+		tidyFiles:    tidyFiles,
+		abiDumpFiles: abiDumpFiles,
 	}
 }
 
@@ -505,6 +551,17 @@ func TransformObjToDynamicBinary(ctx android.ModuleContext,
 			"ldFlags":  flags.ldFlags,
 			"crtEnd":   crtEnd.String(),
 		},
+	})
+}
+
+// Generate a rule to combine .dump abi dump files from multiple source files
+// into a single .ldump abi dump file
+func TransformDumpToLinkedDump(ctx android.ModuleContext,
+	abiDumps android.Paths, abiLinkedFile android.WritablePath) {
+	ctx.ModuleBuild(pctx, android.ModuleBuildParams{
+		Rule:   abiLink,
+		Output: abiLinkedFile,
+		Inputs: abiDumps,
 	})
 }
 
