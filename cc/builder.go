@@ -168,6 +168,34 @@ var (
 			Description: "yasm $out",
 		},
 		"asFlags")
+
+	sAbiDumper = pctx.HostBinToolVariable("sAbiDumper", "header-abi-dumper")
+	// -Wno-unreachable-code temporary work-around for http://b/35845221.
+	sAbiDump = pctx.AndroidStaticRule("sAbiDump",
+		blueprint.RuleParams{
+			Command:     "rm -f $out && $sAbiDumper -o ${out} $in $exportDirs -- $cFlags -Wno-unreachable-code -isystem ${config.RSIncludePath}",
+			CommandDeps: []string{"$sAbiDumper"},
+			Description: "header-abi-dumper $in -o $out $exportDirs",
+		},
+		"cFlags", "exportDirs")
+
+	sAbiLinker = pctx.HostBinToolVariable("sAbiLinker", "header-abi-linker")
+
+	sAbiLink = pctx.AndroidStaticRule("sAbiLink",
+		blueprint.RuleParams{
+			Command:     "rm -f $out && $sAbiLinker -o ${out} $in",
+			CommandDeps: []string{"$sAbiLinker"},
+			Description: "header-abi-linker $in -o $out",
+		})
+
+	sAbiDiffer = pctx.HostBinToolVariable("sAbiDiffer", "header-abi-diff")
+	sAbiDiff   = pctx.AndroidStaticRule("sAbiDiff",
+		blueprint.RuleParams{
+			Command:     "$sAbiDiffer -o $out -new $in -old $ReferenceDump",
+			CommandDeps: []string{"$sAbiDiffer"},
+			Description: "header-abi-diff -o $out -new $in -old $ReferenceDump",
+		},
+		"ReferenceDump")
 )
 
 func init() {
@@ -193,12 +221,14 @@ type builderFlags struct {
 	yaccFlags   string
 	protoFlags  string
 	tidyFlags   string
+	sAbiFlags   string
 	yasmFlags   string
 	aidlFlags   string
 	toolchain   config.Toolchain
 	clang       bool
 	tidy        bool
 	coverage    bool
+	sAbiDump    bool
 
 	groupStaticLibs bool
 
@@ -211,6 +241,7 @@ type Objects struct {
 	objFiles      android.Paths
 	tidyFiles     android.Paths
 	coverageFiles android.Paths
+	sAbiDumpFiles android.Paths
 }
 
 func (a Objects) Copy() Objects {
@@ -218,6 +249,7 @@ func (a Objects) Copy() Objects {
 		objFiles:      append(android.Paths{}, a.objFiles...),
 		tidyFiles:     append(android.Paths{}, a.tidyFiles...),
 		coverageFiles: append(android.Paths{}, a.coverageFiles...),
+		sAbiDumpFiles: append(android.Paths{}, a.sAbiDumpFiles...),
 	}
 }
 
@@ -226,6 +258,7 @@ func (a Objects) Append(b Objects) Objects {
 		objFiles:      append(a.objFiles, b.objFiles...),
 		tidyFiles:     append(a.tidyFiles, b.tidyFiles...),
 		coverageFiles: append(a.coverageFiles, b.coverageFiles...),
+		sAbiDumpFiles: append(a.sAbiDumpFiles, b.sAbiDumpFiles...),
 	}
 }
 
@@ -241,6 +274,11 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 	var coverageFiles android.Paths
 	if flags.coverage {
 		coverageFiles = make(android.Paths, 0, len(srcFiles))
+	}
+
+	var sAbiDumpFiles android.Paths
+	if flags.sAbiDump && flags.clang {
+		sAbiDumpFiles = make(android.Paths, 0, len(srcFiles))
 	}
 
 	cflags := flags.globalFlags + " " + flags.cFlags + " " + flags.conlyFlags
@@ -277,6 +315,7 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 		var ccCmd string
 		tidy := flags.tidy && flags.clang
 		coverage := flags.coverage
+		dump := flags.sAbiDump && flags.clang
 
 		switch srcFile.Ext() {
 		case ".S", ".s":
@@ -284,6 +323,7 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 			moduleCflags = asflags
 			tidy = false
 			coverage = false
+			dump = false
 		case ".c":
 			ccCmd = "gcc"
 			moduleCflags = cflags
@@ -347,12 +387,29 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 			})
 		}
 
+		if dump {
+			sAbiDumpFile := android.ObjPathWithExt(ctx, subdir, srcFile, "sdump")
+			sAbiDumpFiles = append(sAbiDumpFiles, sAbiDumpFile)
+
+			ctx.ModuleBuild(pctx, android.ModuleBuildParams{
+				Rule:     sAbiDump,
+				Output:   sAbiDumpFile,
+				Input:    srcFile,
+				Implicit: objFile,
+				Args: map[string]string{
+					"cFlags":     moduleCflags,
+					"exportDirs": flags.sAbiFlags,
+				},
+			})
+		}
+
 	}
 
 	return Objects{
 		objFiles:      objFiles,
 		tidyFiles:     tidyFiles,
 		coverageFiles: coverageFiles,
+		sAbiDumpFiles: sAbiDumpFiles,
 	}
 }
 
@@ -530,6 +587,36 @@ func TransformObjToDynamicBinary(ctx android.ModuleContext,
 			"crtEnd":   crtEnd.String(),
 		},
 	})
+}
+
+// Generate a rule to combine .dump sAbi dump files from multiple source files
+// into a single .ldump sAbi dump file
+func TransformDumpToLinkedDump(ctx android.ModuleContext,
+	sAbiDumps android.Paths, baseName string) android.OptionalPath {
+	outputFile := android.PathForModuleOut(ctx, baseName+".lsdump")
+	ctx.ModuleBuild(pctx, android.ModuleBuildParams{
+		Rule:   sAbiLink,
+		Output: outputFile,
+		Inputs: sAbiDumps,
+	})
+
+	return android.OptionalPathForPath(outputFile)
+}
+
+func SourceAbiDiff(ctx android.ModuleContext, inputDump android.Path, referenceDump android.Path,
+	baseName string) android.OptionalPath {
+	outputFile := android.PathForModuleOut(ctx, baseName+".abidiff")
+	ctx.ModuleBuild(pctx, android.ModuleBuildParams{
+		Rule:     sAbiDiff,
+		Output:   outputFile,
+		Input:    inputDump,
+		Implicit: referenceDump,
+		Args: map[string]string{
+			"ReferenceDump": referenceDump.String(),
+		},
+	})
+
+	return android.OptionalPathForPath(outputFile)
 }
 
 // Generate a rule for extract a table of contents from a shared library (.so)
