@@ -16,6 +16,24 @@
       "revId": "8a073a8b7ba74f7efe6141ab6a575c881b87e40f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db7d8fcb_273a06e4",
+        "filename": "ui/build/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-08T18:34:58Z",
+      "side": 1,
+      "message": "No, one is a target, and the other is a folder, they don\u0027t really need to be the same (and with DIST_DIR, often aren\u0027t)",
+      "parentUuid": "16df82c5_beb079b3",
+      "revId": "8a073a8b7ba74f7efe6141ab6a575c881b87e40f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
