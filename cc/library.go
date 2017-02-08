@@ -200,6 +200,13 @@ type libraryDecorator struct {
 	// shlib suffix.
 	libName string
 
+	// Whether to produce linked dumps or not. Similar to the AbiDump flag
+	// while compiling sources.
+	linkAbiDumps bool
+
+	// Whether to create an abi compliance report for this shared library.
+	createAbiReport bool
+
 	sanitize *sanitize
 
 	// Output archive of gcno coverage information files
@@ -299,6 +306,21 @@ func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 		return Objects{}
 	}
 
+	if ctx.isVndkCandidate() {
+		exportIncludeDirs := android.PathsForModuleSrc(ctx, library.flagExporter.Properties.Export_include_dirs)
+		var AbiFlags []string
+		for _, dir := range exportIncludeDirs.Strings() {
+			AbiFlags = append(AbiFlags, "-I "+dir)
+		}
+		if AbiFlags != nil {
+			flags.AbiFlags = AbiFlags
+			total_length := len(library.baseCompiler.Properties.Srcs) + len(deps.GeneratedSources) + len(library.Properties.Shared.Srcs) +
+				len(library.Properties.Static.Srcs)
+			if total_length > 0 {
+				flags.AbiDump = true
+			}
+		}
+	}
 	objs := library.baseCompiler.compile(ctx, flags, deps)
 	library.reuseObjects = objs
 	buildFlags := flagsToBuilderFlags(flags)
@@ -510,6 +532,18 @@ func (library *libraryDecorator) linkShared(ctx ModuleContext,
 	linkerDeps = append(linkerDeps, deps.LateSharedLibsDeps...)
 	linkerDeps = append(linkerDeps, objs.tidyFiles...)
 
+	//Also take into account object re-use.
+	if len(objs.abiDumpFiles) > 0 {
+		linkedDumpFile := android.PathForModuleOut(ctx, fileName+".lsdump")
+		abiDiffFile := android.PathForModuleOut(ctx, fileName+".abidiff")
+		refDumpFile := android.PathForVndkRefDump(ctx, fileName)
+		TransformDumpToLinkedDump(ctx, objs.abiDumpFiles, linkedDumpFile)
+		library.linkAbiDumps = true
+		if refDumpFile.Valid() {
+			AbiDiff(ctx, linkedDumpFile, refDumpFile.Path(), abiDiffFile)
+			library.createAbiReport = true
+		}
+	}
 	TransformObjToDynamicBinary(ctx, objs.objFiles, sharedLibs,
 		deps.StaticLibs, deps.LateStaticLibs, deps.WholeStaticLibs,
 		linkerDeps, deps.CrtBegin, deps.CrtEnd, false, builderFlags, outputFile)

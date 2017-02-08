@@ -576,6 +576,18 @@ type ModuleOutPath struct {
 
 var _ Path = ModuleOutPath{}
 
+// PathForVndkRefDump returns an OptionalPath representing the path of the reference
+// abi dump for the given module. This is not guaranteed to be valid.
+func PathForVndkRefDump(ctx ModuleContext, fileName string) OptionalPath {
+	targetProduct := ctx.AConfig().Getenv("TARGET_PRODUCT")
+	targetBuildVariant := ctx.AConfig().Getenv("TARGET_BUILD_VARIANT")
+	archTypeName := ctx.Arch().ArchType.Name
+	// TODO : Global variable for dump root path.
+	refDumpFileStr := "vndk/dumps/" + targetProduct + "-" + targetBuildVariant +
+		"/" + archTypeName + "/" + fileName + ".lsdump"
+	return OptionalPathForSource(ctx, "", refDumpFileStr)
+}
+
 // PathForModuleOut returns a Path representing the paths... under the module's
 // output directory.
 func PathForModuleOut(ctx ModuleContext, paths ...string) ModuleOutPath {
