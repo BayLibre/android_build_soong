@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b18b840d_7c16caa2",
+        "filename": "cmd/javac_wrapper/javac_wrapper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-09T22:39:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5c1db51_471b8163",
+      "range": {
+        "startLine": 15,
+        "startChar": 54,
+        "endLine": 15,
+        "endChar": 59
+      },
+      "revId": "303c9d3994e428d7d0a947754a73010e8a30c98d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "939ae11b_ffb753c6",
         "filename": "cmd/javac_wrapper/javac_wrapper.go",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2017-02-09T03:02:40Z",
       "side": 1,
       "message": "How about: func applyColor(line, color string, re *regexp.Regexp) ?",
+      "revId": "303c9d3994e428d7d0a947754a73010e8a30c98d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1af6bb84_59c99839",
+        "filename": "cmd/javac_wrapper/javac_wrapper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-09T22:39:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "939ae11b_ffb753c6",
       "revId": "303c9d3994e428d7d0a947754a73010e8a30c98d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
