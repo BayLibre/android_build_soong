@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5c1db51_471b8163",
+        "filename": "cmd/javac_wrapper/javac_wrapper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-09T02:17:00Z",
+      "side": 1,
+      "message": "So it\u0027s a filter and not a wrapper?",
+      "range": {
+        "startLine": 15,
+        "startChar": 54,
+        "endLine": 15,
+        "endChar": 59
+      },
+      "revId": "303c9d3994e428d7d0a947754a73010e8a30c98d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
