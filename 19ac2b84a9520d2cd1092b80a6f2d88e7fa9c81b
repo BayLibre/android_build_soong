@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a49351cb_93da1b67",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-02-10T01:52:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e6548f6_e00ce7e0",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 75
+      },
+      "revId": "19ac2b84a9520d2cd1092b80a6f2d88e7fa9c81b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "068b71ba_d1495f31",
         "filename": "cc/builder.go",
         "patchSetId": 2
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "0633f432_f529ee33",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-02-10T01:52:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "068b71ba_d1495f31",
+      "range": {
+        "startLine": 176,
+        "startChar": 17,
+        "endLine": 176,
+        "endChar": 57
+      },
+      "revId": "19ac2b84a9520d2cd1092b80a6f2d88e7fa9c81b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48651a83_4141b5b3",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-02-10T01:52:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9963b949_30ea5d8a",
+      "range": {
+        "startLine": 176,
+        "startChar": 158,
+        "endLine": 176,
+        "endChar": 169
+      },
+      "revId": "19ac2b84a9520d2cd1092b80a6f2d88e7fa9c81b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0d838f8d_7d24fdeb",
         "filename": "cc/builder.go",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2017-02-09T19:27:45Z",
       "side": 1,
       "message": "$abiDumper",
+      "range": {
+        "startLine": 177,
+        "startChar": 27,
+        "endLine": 177,
+        "endChar": 54
+      },
+      "revId": "19ac2b84a9520d2cd1092b80a6f2d88e7fa9c81b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c94caff_e8ab930c",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-02-10T01:52:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d838f8d_7d24fdeb",
       "range": {
         "startLine": 177,
         "startChar": 27,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "c06a3d66_25b2eecf",
+        "filename": "cc/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-02-10T01:52:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca0d555a_f940383a",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 2
+      },
+      "revId": "19ac2b84a9520d2cd1092b80a6f2d88e7fa9c81b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9da82a30_09479f98",
         "filename": "cc/config/global.go",
         "patchSetId": 2
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "108faa74_95586d3f",
+        "filename": "cc/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-02-10T01:52:05Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "9da82a30_09479f98",
+      "range": {
+        "startLine": 186,
+        "startChar": 16,
+        "endLine": 186,
+        "endChar": 54
+      },
+      "revId": "19ac2b84a9520d2cd1092b80a6f2d88e7fa9c81b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cb10e096_d4083774",
         "filename": "cc/library.go",
         "patchSetId": 2
@@ -151,6 +295,30 @@
       "writtenOn": "2017-02-09T19:27:45Z",
       "side": 1,
       "message": "Yeah, we\u0027ll want some flags and/or accessors to ask if this module is part of one of the library sets, or whether we\u0027re building against one of the sets.",
+      "range": {
+        "startLine": 299,
+        "startChar": 0,
+        "endLine": 299,
+        "endChar": 77
+      },
+      "revId": "19ac2b84a9520d2cd1092b80a6f2d88e7fa9c81b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6314f41e_0fb1a143",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-02-10T01:52:05Z",
+      "side": 1,
+      "message": "Added a flag to BaseProperties which signifies if a library is a candidate.",
+      "parentUuid": "cb10e096_d4083774",
       "range": {
         "startLine": 299,
         "startChar": 0,
