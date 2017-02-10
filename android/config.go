@@ -479,3 +479,18 @@ func (c *deviceConfig) BtHcilpIncluded() string {
 func (c *deviceConfig) BtHciUseMct() bool {
 	return Bool(c.config.ProductVariables.BtHciUseMct)
 }
+
+func (c *deviceConfig) NativeCoverageEnabled() bool {
+	return Bool(c.config.ProductVariables.NativeCoverage)
+}
+
+func (c *deviceConfig) CoverageEnabledForPath(path string) bool {
+	if c.config.ProductVariables.CoveragePaths != nil {
+		for _, prefix := range *c.config.ProductVariables.CoveragePaths {
+			if strings.HasPrefix(path, prefix) {
+				return true
+			}
+		}
+	}
+	return false
+}
