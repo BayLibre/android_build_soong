@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21cfb430_c7cdabcf",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1071489
+      },
+      "writtenOn": "2017-02-10T00:17:45Z",
+      "side": 0,
+      "message": "Not part of this CL: presumably you will remove also the\ncode around -DHCILP_INCLUDED\u003d and -DHCI_USE_MCT\ninside system/bt/build/fluoride.go ?",
+      "range": {
+        "startLine": 475,
+        "startChar": 0,
+        "endLine": 480,
+        "endChar": 51
+      },
+      "revId": "62944779e21c4488e99d9a8a91326129acb77eeb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
