@@ -79,6 +79,9 @@ type binaryDecorator struct {
 
 	// Names of symlinks to be installed for use in LOCAL_MODULE_SYMLINKS
 	symlinks []string
+
+	// Output archive of gcno coverage information
+	coverageOutputFile android.OptionalPath
 }
 
 var _ linker = (*binaryDecorator)(nil)
@@ -298,6 +301,20 @@ func (binary *binaryDecorator) link(ctx ModuleContext,
 	TransformObjToDynamicBinary(ctx, objs.objFiles, sharedLibs, deps.StaticLibs,
 		deps.LateStaticLibs, deps.WholeStaticLibs, linkerDeps, deps.CrtBegin, deps.CrtEnd, true,
 		builderFlags, outputFile)
+
+	objs.coverageFiles = append(objs.coverageFiles, deps.StaticLibObjs.coverageFiles...)
+	objs.coverageFiles = append(objs.coverageFiles, deps.WholeStaticLibObjs.coverageFiles...)
+	if len(objs.coverageFiles) > 0 {
+		coverageFile := android.PathForModuleOut(ctx, binary.getStem(ctx)+".gcnodir")
+
+		if ctx.Darwin() {
+			TransformDarwinObjToStaticLib(ctx, objs.coverageFiles, builderFlags, coverageFile, nil)
+		} else {
+			TransformObjToStaticLib(ctx, objs.coverageFiles, builderFlags, coverageFile, nil)
+		}
+
+		binary.coverageOutputFile = android.OptionalPathForPath(coverageFile)
+	}
 
 	return ret
 }

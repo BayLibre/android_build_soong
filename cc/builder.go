@@ -198,6 +198,7 @@ type builderFlags struct {
 	toolchain   config.Toolchain
 	clang       bool
 	tidy        bool
+	coverage    bool
 
 	groupStaticLibs bool
 
@@ -207,21 +208,24 @@ type builderFlags struct {
 }
 
 type Objects struct {
-	objFiles  android.Paths
-	tidyFiles android.Paths
+	objFiles      android.Paths
+	tidyFiles     android.Paths
+	coverageFiles android.Paths
 }
 
 func (a Objects) Copy() Objects {
 	return Objects{
-		objFiles:  append(android.Paths{}, a.objFiles...),
-		tidyFiles: append(android.Paths{}, a.tidyFiles...),
+		objFiles:      append(android.Paths{}, a.objFiles...),
+		tidyFiles:     append(android.Paths{}, a.tidyFiles...),
+		coverageFiles: append(android.Paths{}, a.coverageFiles...),
 	}
 }
 
 func (a Objects) Append(b Objects) Objects {
 	return Objects{
-		objFiles:  append(a.objFiles, b.objFiles...),
-		tidyFiles: append(a.tidyFiles, b.tidyFiles...),
+		objFiles:      append(a.objFiles, b.objFiles...),
+		tidyFiles:     append(a.tidyFiles, b.tidyFiles...),
+		coverageFiles: append(a.coverageFiles, b.coverageFiles...),
 	}
 }
 
@@ -233,6 +237,10 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 	var tidyFiles android.Paths
 	if flags.tidy && flags.clang {
 		tidyFiles = make(android.Paths, 0, len(srcFiles))
+	}
+	var coverageFiles android.Paths
+	if flags.coverage {
+		coverageFiles = make(android.Paths, 0, len(srcFiles))
 	}
 
 	cflags := flags.globalFlags + " " + flags.cFlags + " " + flags.conlyFlags
@@ -268,12 +276,14 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 		var moduleCflags string
 		var ccCmd string
 		tidy := flags.tidy && flags.clang
+		coverage := flags.coverage
 
 		switch srcFile.Ext() {
 		case ".S", ".s":
 			ccCmd = "gcc"
 			moduleCflags = asflags
 			tidy = false
+			coverage = false
 		case ".c":
 			ccCmd = "gcc"
 			moduleCflags = cflags
@@ -300,11 +310,19 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 			ccCmd = gccCmd(flags.toolchain, ccCmd)
 		}
 
+		var implicitOutputs android.WritablePaths
+		if coverage {
+			gcnoFile := android.ObjPathWithExt(ctx, subdir, srcFile, "gcno")
+			implicitOutputs = append(implicitOutputs, gcnoFile)
+			coverageFiles = append(coverageFiles, gcnoFile)
+		}
+
 		ctx.ModuleBuild(pctx, android.ModuleBuildParams{
-			Rule:      cc,
-			Output:    objFile,
-			Input:     srcFile,
-			OrderOnly: deps,
+			Rule:            cc,
+			Output:          objFile,
+			ImplicitOutputs: implicitOutputs,
+			Input:           srcFile,
+			OrderOnly:       deps,
 			Args: map[string]string{
 				"cFlags": moduleCflags,
 				"ccCmd":  ccCmd,
@@ -332,8 +350,9 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 	}
 
 	return Objects{
-		objFiles:  objFiles,
-		tidyFiles: tidyFiles,
+		objFiles:      objFiles,
+		tidyFiles:     tidyFiles,
+		coverageFiles: coverageFiles,
 	}
 }
 

@@ -199,6 +199,9 @@ type libraryDecorator struct {
 
 	sanitize *sanitize
 
+	// Output archive of gcno coverage information files
+	coverageOutputFile android.OptionalPath
+
 	// Decorated interafaces
 	*baseCompiler
 	*baseLinker
@@ -393,11 +396,25 @@ func (library *libraryDecorator) linkStatic(ctx ModuleContext,
 
 	outputFile := android.PathForModuleOut(ctx,
 		ctx.ModuleName()+library.Properties.VariantName+staticLibraryExtension)
+	builderFlags := flagsToBuilderFlags(flags)
 
 	if ctx.Darwin() {
-		TransformDarwinObjToStaticLib(ctx, library.objects.objFiles, flagsToBuilderFlags(flags), outputFile, objs.tidyFiles)
+		TransformDarwinObjToStaticLib(ctx, library.objects.objFiles, builderFlags, outputFile, objs.tidyFiles)
 	} else {
-		TransformObjToStaticLib(ctx, library.objects.objFiles, flagsToBuilderFlags(flags), outputFile, objs.tidyFiles)
+		TransformObjToStaticLib(ctx, library.objects.objFiles, builderFlags, outputFile, objs.tidyFiles)
+	}
+
+	if len(library.objects.coverageFiles) > 0 {
+		coverageFile := android.PathForModuleOut(ctx,
+			ctx.ModuleName()+library.Properties.VariantName+".gcnodir")
+
+		if ctx.Darwin() {
+			TransformDarwinObjToStaticLib(ctx, library.objects.coverageFiles, builderFlags, coverageFile, nil)
+		} else {
+			TransformObjToStaticLib(ctx, library.objects.coverageFiles, builderFlags, coverageFile, nil)
+		}
+
+		library.coverageOutputFile = android.OptionalPathForPath(coverageFile)
 	}
 
 	library.wholeStaticMissingDeps = ctx.GetMissingDependencies()
@@ -505,6 +522,20 @@ func (library *libraryDecorator) linkShared(ctx ModuleContext,
 	TransformObjToDynamicBinary(ctx, objs.objFiles, sharedLibs,
 		deps.StaticLibs, deps.LateStaticLibs, deps.WholeStaticLibs,
 		linkerDeps, deps.CrtBegin, deps.CrtEnd, false, builderFlags, outputFile)
+
+	objs.coverageFiles = append(objs.coverageFiles, deps.StaticLibObjs.coverageFiles...)
+	objs.coverageFiles = append(objs.coverageFiles, deps.WholeStaticLibObjs.coverageFiles...)
+	if len(objs.coverageFiles) > 0 {
+		coverageFile := android.PathForModuleOut(ctx, library.getLibName(ctx)+".gcnodir")
+
+		if ctx.Darwin() {
+			TransformDarwinObjToStaticLib(ctx, objs.coverageFiles, builderFlags, coverageFile, nil)
+		} else {
+			TransformObjToStaticLib(ctx, objs.coverageFiles, builderFlags, coverageFile, nil)
+		}
+
+		library.coverageOutputFile = android.OptionalPathForPath(coverageFile)
+	}
 
 	return ret
 }
