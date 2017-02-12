@@ -84,14 +84,6 @@ var (
 	}
 
 	armArchVariantCflags = map[string][]string{
-		"armv5te": []string{
-			"-march=armv5te",
-			"-mtune=xscale",
-			"-D__ARM_ARCH_5__",
-			"-D__ARM_ARCH_5T__",
-			"-D__ARM_ARCH_5E__",
-			"-D__ARM_ARCH_5TE__",
-		},
 		"armv7-a": []string{
 			"-march=armv7-a",
 			"-mfloat-abi=softfp",
@@ -146,7 +138,6 @@ const (
 
 func init() {
 	android.RegisterArchVariants(android.Arm,
-		"armv5te",
 		"armv7_a",
 		"armv7_a_neon",
 		"cortex_a7",
@@ -187,7 +178,6 @@ func init() {
 	pctx.StaticVariable("ArmThumbCflags", strings.Join(armThumbCflags, " "))
 
 	// Architecture variant cflags
-	pctx.StaticVariable("ArmArmv5TECflags", strings.Join(armArchVariantCflags["armv5te"], " "))
 	pctx.StaticVariable("ArmArmv7ACflags", strings.Join(armArchVariantCflags["armv7-a"], " "))
 	pctx.StaticVariable("ArmArmv7ANeonCflags", strings.Join(armArchVariantCflags["armv7-a-neon"], " "))
 
@@ -209,8 +199,6 @@ func init() {
 	pctx.StaticVariable("ArmClangThumbCflags", strings.Join(ClangFilterUnknownCflags(armThumbCflags), " "))
 
 	// Clang arch variant cflags
-	pctx.StaticVariable("ArmClangArmv5TECflags",
-		strings.Join(armClangArchVariantCflags["armv5te"], " "))
 	pctx.StaticVariable("ArmClangArmv7ACflags",
 		strings.Join(armClangArchVariantCflags["armv7-a"], " "))
 	pctx.StaticVariable("ArmClangArmv7ANeonCflags",
@@ -231,7 +219,6 @@ func init() {
 
 var (
 	armArchVariantCflagsVar = map[string]string{
-		"armv5te":      "${config.ArmArmv5TECflags}",
 		"armv7-a":      "${config.ArmArmv7ACflags}",
 		"armv7-a-neon": "${config.ArmArmv7ANeonCflags}",
 	}
@@ -248,7 +235,6 @@ var (
 	}
 
 	armClangArchVariantCflagsVar = map[string]string{
-		"armv5te":      "${config.ArmClangArmv5TECflags}",
 		"armv7-a":      "${config.ArmClangArmv7ACflags}",
 		"armv7-a-neon": "${config.ArmClangArmv7ANeonCflags}",
 	}
@@ -379,8 +365,6 @@ func armToolchainFactory(arch android.Arch) Toolchain {
 			variantOrDefault(armClangCpuVariantCflagsVar, arch.CpuVariant))
 	case "armv7-a":
 		fixCortexA8 = "-Wl,--fix-cortex-a8"
-	case "armv5te":
-		// Nothing extra for armv5te
 	default:
 		panic(fmt.Sprintf("Unknown ARM architecture version: %q", arch.ArchVariant))
 	}
