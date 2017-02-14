@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d1c83529_82f46337",
+        "filename": "cc/coverage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-14T21:21:21Z",
+      "side": 1,
+      "message": "Yeah, I can use that. This was copying what Context.Static() does.",
+      "parentUuid": "16711462_6a0932c5",
+      "range": {
+        "startLine": 83,
+        "startChar": 32,
+        "endLine": 85,
+        "endChar": 5
+      },
+      "revId": "5b64ae9f6ce703d87062bf720a6330e2d893e8ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19265abf_1af2f097",
         "filename": "cc/library.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-02-14T00:49:34Z",
       "side": 1,
       "message": "It\u0027s hard to tell, but could all or part of this be factored out and reused between static lib, shared lib, and binary?",
+      "range": {
+        "startLine": 526,
+        "startChar": 0,
+        "endLine": 538,
+        "endChar": 2
+      },
+      "revId": "5b64ae9f6ce703d87062bf720a6330e2d893e8ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "29aedfd6_a707d164",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-14T21:21:21Z",
+      "side": 1,
+      "message": "Yeah, I abstracted it out to a TransformCoverageFilesToLib, but the bigger improvement was to hide TransformDarwinObjToStaticLib and just make TransformObjToStaticLib do the right thing.",
+      "parentUuid": "19265abf_1af2f097",
       "range": {
         "startLine": 526,
         "startChar": 0,
