@@ -225,13 +225,13 @@ func (library *libraryDecorator) linkerFlags(ctx ModuleContext, flags Flags) Fla
 		flags.CFlags = append(flags.CFlags, "-fPIC")
 	}
 
-	if library.static() {
-		flags.CFlags = append(flags.CFlags, library.Properties.Static.Cflags...)
-	} else {
+	if library.shared() {
 		flags.CFlags = append(flags.CFlags, library.Properties.Shared.Cflags...)
+	} else if library.static() {
+		flags.CFlags = append(flags.CFlags, library.Properties.Static.Cflags...)
 	}
 
-	if !library.static() {
+	if library.shared() {
 		libName := library.getLibName(ctx)
 		// GCC for Android assumes that -shared means -Bsymbolic, use -Wl,-shared instead
 		sharedFlag := "-Wl,-shared"
@@ -300,7 +300,7 @@ func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 		srcs := android.PathsForModuleSrc(ctx, library.Properties.Static.Srcs)
 		objs = objs.Append(compileObjs(ctx, buildFlags, android.DeviceStaticLibrary,
 			srcs, library.baseCompiler.deps))
-	} else {
+	} else if library.shared() {
 		srcs := android.PathsForModuleSrc(ctx, library.Properties.Shared.Srcs)
 		objs = objs.Append(compileObjs(ctx, buildFlags, android.DeviceSharedLibrary,
 			srcs, library.baseCompiler.deps))
@@ -321,7 +321,8 @@ type libraryInterface interface {
 	buildShared() bool
 
 	// Sets whether a specific variant is static or shared
-	setStatic(bool)
+	setStatic()
+	setShared()
 }
 
 func (library *libraryDecorator) getLibName(ctx ModuleContext) string {
@@ -359,7 +360,7 @@ func (library *libraryDecorator) linkerDeps(ctx DepsContext, deps Deps) Deps {
 			library.Properties.Static.Whole_static_libs...)
 		deps.StaticLibs = append(deps.StaticLibs, library.Properties.Static.Static_libs...)
 		deps.SharedLibs = append(deps.SharedLibs, library.Properties.Static.Shared_libs...)
-	} else {
+	} else if library.shared() {
 		if ctx.toolchain().Bionic() && !Bool(library.baseLinker.Properties.Nocrt) {
 			if !ctx.sdk() && !ctx.vndk() {
 				deps.CrtBegin = "crtbegin_so"
@@ -515,7 +516,7 @@ func (library *libraryDecorator) link(ctx ModuleContext,
 	objs = objs.Append(deps.Objs)
 
 	var out android.Path
-	if library.static() {
+	if library.static() || library.header() {
 		out = library.linkStatic(ctx, flags, deps, objs)
 	} else {
 		out = library.linkShared(ctx, flags, deps, objs)
@@ -583,8 +584,22 @@ func (library *libraryDecorator) static() bool {
 	return library.Properties.VariantIsStatic
 }
 
-func (library *libraryDecorator) setStatic(static bool) {
-	library.Properties.VariantIsStatic = static
+func (library *libraryDecorator) shared() bool {
+	return library.Properties.VariantIsShared
+}
+
+func (library *libraryDecorator) header() bool {
+	return !library.static() && !library.shared()
+}
+
+func (library *libraryDecorator) setStatic() {
+	library.Properties.VariantIsStatic = true
+	library.Properties.VariantIsShared = false
+}
+
+func (library *libraryDecorator) setShared() {
+	library.Properties.VariantIsStatic = false
+	library.Properties.VariantIsShared = true
 }
 
 func (library *libraryDecorator) BuildOnlyStatic() {
@@ -630,8 +645,8 @@ func linkageMutator(mctx android.BottomUpMutatorContext) {
 				static := modules[0].(*Module)
 				shared := modules[1].(*Module)
 
-				static.linker.(libraryInterface).setStatic(true)
-				shared.linker.(libraryInterface).setStatic(false)
+				static.linker.(libraryInterface).setStatic()
+				shared.linker.(libraryInterface).setShared()
 
 				if staticCompiler, ok := static.compiler.(*libraryDecorator); ok {
 					sharedCompiler := shared.compiler.(*libraryDecorator)
@@ -645,10 +660,10 @@ func linkageMutator(mctx android.BottomUpMutatorContext) {
 				}
 			} else if library.buildStatic() {
 				modules = mctx.CreateLocalVariations("static")
-				modules[0].(*Module).linker.(libraryInterface).setStatic(true)
+				modules[0].(*Module).linker.(libraryInterface).setStatic()
 			} else if library.buildShared() {
 				modules = mctx.CreateLocalVariations("shared")
-				modules[0].(*Module).linker.(libraryInterface).setStatic(false)
+				modules[0].(*Module).linker.(libraryInterface).setShared()
 			}
 		}
 	}
