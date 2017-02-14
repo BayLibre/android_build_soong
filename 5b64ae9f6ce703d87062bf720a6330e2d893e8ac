@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16711462_6a0932c5",
+        "filename": "cc/coverage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-14T00:49:34Z",
+      "side": 1,
+      "message": "libraryInterface?",
+      "range": {
+        "startLine": 83,
+        "startChar": 32,
+        "endLine": 85,
+        "endChar": 5
+      },
+      "revId": "5b64ae9f6ce703d87062bf720a6330e2d893e8ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19265abf_1af2f097",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-02-14T00:49:34Z",
+      "side": 1,
+      "message": "It\u0027s hard to tell, but could all or part of this be factored out and reused between static lib, shared lib, and binary?",
+      "range": {
+        "startLine": 526,
+        "startChar": 0,
+        "endLine": 538,
+        "endChar": 2
+      },
+      "revId": "5b64ae9f6ce703d87062bf720a6330e2d893e8ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
