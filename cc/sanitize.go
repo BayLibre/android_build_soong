@@ -324,7 +324,8 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 			flags.LdFlags = append(flags.LdFlags, "-march=armv7-a")
 		}
 		sanitizers = append(sanitizers, "cfi")
-		cfiFlags := []string{"-flto", "-fsanitize=cfi", "-fsanitize-cfi-cross-dso"}
+		cfiFlags := []string{"-flto", "-fsanitize=cfi", "-fsanitize-cfi-cross-dso",
+			"-fsanitize-blacklist=external/compiler-rt/lib/cfi/cfi_blacklist.txt"}
 		flags.CFlags = append(flags.CFlags, cfiFlags...)
 		flags.CFlags = append(flags.CFlags, "-fvisibility=default")
 		flags.LdFlags = append(flags.LdFlags, cfiFlags...)
