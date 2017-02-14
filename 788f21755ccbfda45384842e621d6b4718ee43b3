@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60e9a11f_9a72fcfc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-14T23:47:57Z",
+      "side": 1,
+      "message": ".so",
+      "range": {
+        "startLine": 37,
+        "startChar": 43,
+        "endLine": 37,
+        "endChar": 45
+      },
+      "revId": "788f21755ccbfda45384842e621d6b4718ee43b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b74140d4_f302c693",
+        "filename": "android/module.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-14T23:47:57Z",
+      "side": 1,
+      "message": "I think we\u0027re going to want a separate module type for vndk extensions instead of adding this to the common property struct.\n\n  vndk_ext_library {\n    name: \"libjpeg-my-vendor\",\n    extends: \"libjpeg\",\n    ...\n  }",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 22
+      },
+      "revId": "788f21755ccbfda45384842e621d6b4718ee43b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "452d7b37_839690ff",
+        "filename": "cc/library.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-14T23:47:57Z",
+      "side": 1,
+      "message": "For the vndk_ext_library module type, we can just set library.libName after verifying that the extended module exists and is a vndk library.",
+      "range": {
+        "startLine": 331,
+        "startChar": 21,
+        "endLine": 331,
+        "endChar": 138
+      },
+      "revId": "788f21755ccbfda45384842e621d6b4718ee43b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ec4da7e_f55f4748",
+        "filename": "cc/library.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-14T23:47:57Z",
+      "side": 1,
+      "message": "a common .isNdk() .isVndk() .isVndkExt .isSameProcessHal seems useful here.",
+      "range": {
+        "startLine": 584,
+        "startChar": 6,
+        "endLine": 584,
+        "endChar": 62
+      },
+      "revId": "788f21755ccbfda45384842e621d6b4718ee43b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
