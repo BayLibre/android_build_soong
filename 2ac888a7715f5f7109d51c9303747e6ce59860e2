@@ -70,6 +70,30 @@
       "revId": "2ac888a7715f5f7109d51c9303747e6ce59860e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "743f7f0a_ae95eb74",
+        "filename": "docs/clion.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1083168
+      },
+      "writtenOn": "2017-02-16T17:58:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bfe56a7_70a13bd0",
+      "range": {
+        "startLine": 35,
+        "startChar": 26,
+        "endLine": 35,
+        "endChar": 28
+      },
+      "revId": "2ac888a7715f5f7109d51c9303747e6ce59860e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
