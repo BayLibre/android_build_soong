@@ -1,0 +1,10 @@
+Code-Review+1: Fabien Sanglard <sanglardf@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Autosubmit+1: Fabien Sanglard <sanglardf@google.com>
+Verified+1: Fabien Sanglard <sanglardf@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Fabien Sanglard <sanglardf@google.com>
+Submitted-at: Thu, 16 Feb 2017 22:00:47 +0000
+Reviewed-on: https://android-review.googlesource.com/335506
+Project: platform/build/soong
+Branch: refs/heads/master
