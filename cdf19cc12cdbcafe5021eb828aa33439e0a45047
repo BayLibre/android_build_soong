@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "546f7db1_e24e64ed",
+        "filename": "cc/ndk_headers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2017-02-16T04:23:35Z",
+      "side": 1,
+      "message": "Yeah, I think there might be some changes needed to the versioner to make any of this actually nice. The way its driver currently works wasn\u0027t designed to be used in the build system, but to be run ad-hoc. Might be something to fix up, but I don\u0027t think jmgao has the time right now.",
+      "parentUuid": "03f6d390_d3ba71d7",
+      "range": {
+        "startLine": 215,
+        "startChar": 1,
+        "endLine": 216,
+        "endChar": 28
+      },
+      "revId": "cdf19cc12cdbcafe5021eb828aa33439e0a45047",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "09e6ce48_3846b1e6",
         "filename": "cc/ndk_headers.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-02-16T04:15:11Z",
       "side": 1,
       "message": "Seems like this should be an argument (but I realize that there\u0027s a lot of other changes necessary to work on other libraries too). I wouldn\u0027t be surprised if this concept is expanded to more libraries, especially as we add the various vndk stability concepts.",
+      "range": {
+        "startLine": 217,
+        "startChar": 40,
+        "endLine": 217,
+        "endChar": 76
+      },
+      "revId": "cdf19cc12cdbcafe5021eb828aa33439e0a45047",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b263849b_951e0a62",
+        "filename": "cc/ndk_headers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2017-02-16T04:23:35Z",
+      "side": 1,
+      "message": "I think things would have to change significantly enough to make this work for other users that it might not be worth worrying about right now. I think if we wanted to use this for anything other than bionic we\u0027d need to make it operate on the partially built ndk sysroot rather than on the source directory. versioner-dependencies is basically the bionic sysroot less the directory that this is currently processing, and I think we\u0027d need to have the full bionic sysroot in place (already preprocessed) if we wanted to extend this to, say, liblog.",
+      "parentUuid": "09e6ce48_3846b1e6",
       "range": {
         "startLine": 217,
         "startChar": 40,
