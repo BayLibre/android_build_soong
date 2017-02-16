@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03f6d390_d3ba71d7",
+        "filename": "cc/ndk_headers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-16T04:15:11Z",
+      "side": 1,
+      "message": "We can\u0027t really ensure rebuilds when symlinks change, since ninja just uses stat for dependencies instead of lstat. So symlinks don\u0027t work very well.",
+      "range": {
+        "startLine": 215,
+        "startChar": 1,
+        "endLine": 216,
+        "endChar": 28
+      },
+      "revId": "cdf19cc12cdbcafe5021eb828aa33439e0a45047",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09e6ce48_3846b1e6",
+        "filename": "cc/ndk_headers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-16T04:15:11Z",
+      "side": 1,
+      "message": "Seems like this should be an argument (but I realize that there\u0027s a lot of other changes necessary to work on other libraries too). I wouldn\u0027t be surprised if this concept is expanded to more libraries, especially as we add the various vndk stability concepts.",
+      "range": {
+        "startLine": 217,
+        "startChar": 40,
+        "endLine": 217,
+        "endChar": 76
+      },
+      "revId": "cdf19cc12cdbcafe5021eb828aa33439e0a45047",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
