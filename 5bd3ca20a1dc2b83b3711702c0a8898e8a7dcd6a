@@ -22,6 +22,30 @@
       "revId": "5bd3ca20a1dc2b83b3711702c0a8898e8a7dcd6a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43f2c5f1_8b7fbc30",
+        "filename": "root.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1076123
+      },
+      "writtenOn": "2017-02-16T17:09:49Z",
+      "side": 1,
+      "message": "My understanding is that hikey includes hikey/Android.bp and hikey/* includes hikey/*/Android.bp",
+      "parentUuid": "0da69b85_da2515e8",
+      "range": {
+        "startLine": 17,
+        "startChar": 24,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "5bd3ca20a1dc2b83b3711702c0a8898e8a7dcd6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
