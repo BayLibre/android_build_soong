@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a88876fe_b7f81562",
+        "filename": "cc/library.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-16T18:35:43Z",
+      "side": 1,
+      "message": "If we\u0027re confident that the different types will all be distinct, then there\u0027s also the option of using an enum http://stackoverflow.com/questions/14426366/what-is-an-idiomatic-way-of-representing-enums-in-go",
+      "revId": "c66fe3b216b0ce8c7f071962c866da9c8d520b20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b10df469_1acb0ad3",
+        "filename": "cc/vndk_library.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-16T18:35:43Z",
+      "side": 1,
+      "message": "2017? :)",
+      "revId": "c66fe3b216b0ce8c7f071962c866da9c8d520b20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46712c0b_b4739e63",
+        "filename": "cc/vndk_library.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-16T18:35:43Z",
+      "side": 1,
+      "message": "I wonder if we want to make a helper method of in config called something sort of like \"isNameVndk\" to consolidate this line with cc.go line 415",
+      "revId": "c66fe3b216b0ce8c7f071962c866da9c8d520b20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a6a2c05_ea4c3cf2",
+        "filename": "cc/vndk_library.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-16T18:35:43Z",
+      "side": 1,
+      "message": "Do we know when this if-statement\u0027s condition is supposed to evaluate to false? (the filename \"vndk_library.go\" suggests to me that entities created with this file are vndk libraries, but the if-statement seems to be checking whether it\u0027s listed as a vndk library)",
+      "revId": "c66fe3b216b0ce8c7f071962c866da9c8d520b20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
