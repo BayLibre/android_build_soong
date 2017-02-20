@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8c170e7f_e627fb96",
+        "filename": "cc/library.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-02-20T06:35:47Z",
+      "side": 1,
+      "message": "yes the types will all be distinct. but I don\u0027t understand why we should use enums here. To remove these if/else? Well, enum can help removing if/else from this place, but we will have them in other place because we still need them in a function like getLibraryType() that gives the enum values.",
+      "parentUuid": "a88876fe_b7f81562",
+      "revId": "c66fe3b216b0ce8c7f071962c866da9c8d520b20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b10df469_1acb0ad3",
         "filename": "cc/vndk_library.go",
         "patchSetId": 14
@@ -30,6 +48,24 @@
       "writtenOn": "2017-02-16T18:35:43Z",
       "side": 1,
       "message": "2017? :)",
+      "revId": "c66fe3b216b0ce8c7f071962c866da9c8d520b20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28edb171_8146cfd0",
+        "filename": "cc/vndk_library.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-02-20T06:35:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b10df469_1acb0ad3",
       "revId": "c66fe3b216b0ce8c7f071962c866da9c8d520b20",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "007f02a4_10efb1df",
+        "filename": "cc/vndk_library.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-02-20T06:35:47Z",
+      "side": 1,
+      "message": "Done. config.isVndkLibrary()",
+      "parentUuid": "46712c0b_b4739e63",
+      "revId": "c66fe3b216b0ce8c7f071962c866da9c8d520b20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5a6a2c05_ea4c3cf2",
         "filename": "cc/vndk_library.go",
         "patchSetId": 14
@@ -64,6 +118,24 @@
       "writtenOn": "2017-02-16T18:35:43Z",
       "side": 1,
       "message": "Do we know when this if-statement\u0027s condition is supposed to evaluate to false? (the filename \"vndk_library.go\" suggests to me that entities created with this file are vndk libraries, but the if-statement seems to be checking whether it\u0027s listed as a vndk library)",
+      "revId": "c66fe3b216b0ce8c7f071962c866da9c8d520b20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62489560_869b6829",
+        "filename": "cc/vndk_library.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-02-20T06:35:47Z",
+      "side": 1,
+      "message": "the condition will be evaluated to false when a vndk_ext_library{...} exists but didn\u0027t set \u0027extends\u0027 attribute.\n\nThis is not an error. There are two types of vndk_ext library.\n\n1) by extending existing AOSP VNDK library (such as libbase). In this case, \u0027extends: \u003cexisting_vndk_lib_name\u003e\u0027.\n\n2) when a non-AOSP library need to be a VNDK library. In this case, \u0027extends\u0027 attribute should not set (because it is not extending any existing lib)\n\nI slightly modified the if-else structure and added comments to be clear on this.",
+      "parentUuid": "5a6a2c05_ea4c3cf2",
       "revId": "c66fe3b216b0ce8c7f071962c866da9c8d520b20",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
