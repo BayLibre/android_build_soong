@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "68672d7b_2ddec1d0",
+        "filename": "cc/cc.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-21T18:52:20Z",
+      "side": 1,
+      "message": "Is the method \u0027isVndk\u0027 supposed to return the same value as the method \u0027vndk\u0027 on line 392? I wonder if we can consolidate them, rename them, or at least comment them.\n\nSame question for \u0027isNdk\u0027 and \u0027ndk\u0027",
+      "revId": "c66fe3b216b0ce8c7f071962c866da9c8d520b20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a88876fe_b7f81562",
         "filename": "cc/library.go",
         "patchSetId": 14
@@ -31,6 +48,24 @@
       "side": 1,
       "message": "yes the types will all be distinct. but I don\u0027t understand why we should use enums here. To remove these if/else? Well, enum can help removing if/else from this place, but we will have them in other place because we still need them in a function like getLibraryType() that gives the enum values.",
       "parentUuid": "a88876fe_b7f81562",
+      "revId": "c66fe3b216b0ce8c7f071962c866da9c8d520b20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4dccca3_ec09df30",
+        "filename": "cc/library.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-21T18:52:20Z",
+      "side": 1,
+      "message": "Yeah that\u0027s fine. The advantage I imagine for an enum over a getter is that the enum makes it even more obvious that exactly one of isNdk, isVndk, and isSameProcessHal should return true, by moving the type information into one object.\n\nThis is more concise though so on second thought it seems good to me.",
+      "parentUuid": "8c170e7f_e627fb96",
       "revId": "c66fe3b216b0ce8c7f071962c866da9c8d520b20",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
