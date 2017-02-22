@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "b92e1001_0ec32484",
+        "filename": "cc/ndk_headers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2017-02-22T22:53:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ed485be_e8ab87b7",
+      "range": {
+        "startLine": 215,
+        "startChar": 1,
+        "endLine": 216,
+        "endChar": 28
+      },
+      "revId": "cdf19cc12cdbcafe5021eb828aa33439e0a45047",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "09e6ce48_3846b1e6",
         "filename": "cc/ndk_headers.go",
         "patchSetId": 1
