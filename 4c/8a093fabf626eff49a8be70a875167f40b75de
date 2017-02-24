@@ -1,0 +1,9 @@
+Autosubmit+1: Josh Gao <jmgao@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Josh Gao <jmgao@google.com>
+Verified+1: Elliott Hughes <enh@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Fri, 24 Feb 2017 22:38:02 +0000
+Reviewed-on: https://android-review.googlesource.com/343969
+Project: platform/build/soong
+Branch: refs/heads/sdk-release
