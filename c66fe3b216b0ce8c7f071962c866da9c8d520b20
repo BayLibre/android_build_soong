@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4fdd2a1b_a9cde95e",
+        "filename": "cc/cc.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-02-24T09:30:10Z",
+      "side": 1,
+      "message": "yes, for clarity, they need to be renamed to isUsingVndk and isUsingNdk. Furthermore, the attributes \u0027vndk\u0027 and \u0027ndk\u0027 are also ambiguous and I think they need to be changed to \u0027usesVndk\u0027 and \u0027usesNdk\u0027. I will do that as a follow-up patch.",
+      "parentUuid": "68672d7b_2ddec1d0",
+      "revId": "c66fe3b216b0ce8c7f071962c866da9c8d520b20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a88876fe_b7f81562",
         "filename": "cc/library.go",
         "patchSetId": 14
