@@ -176,6 +176,14 @@ func main() {
 	pathMappings := []pathMapping{}
 	set := make(map[string]string)
 
+	// also include the usual files that are to be added directly.
+	for _, f := range files {
+		if err := fillPathPairs(f.rootPrefix, f.relativeRoot,
+			f.file, set, &pathMappings); err != nil {
+			log.Fatal(err)
+		}
+	}
+
 	// load listFiles, which specify other files to include.
 	for _, l := range listFiles {
 		list, err := ioutil.ReadFile(l.file)
@@ -189,14 +197,6 @@ func main() {
 				set, &pathMappings); err != nil {
 				log.Fatal(err)
 			}
-		}
-	}
-
-	// also include the usual files that are to be added directly.
-	for _, f := range files {
-		if err := fillPathPairs(f.rootPrefix, f.relativeRoot,
-			f.file, set, &pathMappings); err != nil {
-			log.Fatal(err)
 		}
 	}
 

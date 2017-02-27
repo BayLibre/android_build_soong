@@ -217,7 +217,10 @@ func translateAndroidMkModule(ctx blueprint.SingletonContext, w io.Writer, mod b
 	host := false
 	switch amod.Os().Class {
 	case Host:
-		fmt.Fprintln(w, "LOCAL_MODULE_HOST_ARCH :=", archStr)
+		// Make cannot identify LOCAL_MODULE_HOST_ARCH:= common.
+		if archStr != "common" {
+			fmt.Fprintln(w, "LOCAL_MODULE_HOST_ARCH :=", archStr)
+		}
 		host = true
 	case HostCross:
 		fmt.Fprintln(w, "LOCAL_MODULE_HOST_CROSS_ARCH :=", archStr)
