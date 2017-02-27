@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81569036_be44ae8d",
+        "filename": "python/python.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-27T21:37:34Z",
+      "side": 1,
+      "message": "I\u0027m inclined to have a comment saying something like \"what the user specifies about the module\" (distinct from the model of the module itself (which has paths resolved, validated, canonicalized, etc))",
+      "revId": "130e3afbad41ce744d18c53161034ed2533aca9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6e211cc_36c95e3d",
+        "filename": "python/python.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-27T21:37:34Z",
+      "side": 1,
+      "message": "If it\u0027s easy to refactor, I\u0027d be inclined to make a new class called something like \u0027fileReference\u0027 whose meaning is what the comment says, and then change this property to \"Srcs []fileReference\" so the data type becomes a self-documenting comment",
+      "revId": "130e3afbad41ce744d18c53161034ed2533aca9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0be92c8c_af3115fe",
+        "filename": "python/python.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-27T21:37:34Z",
+      "side": 1,
+      "message": "I\u0027d clarify it by saying \"the package path within the output artifact at which to place the source/data files of the current module...\"",
+      "revId": "130e3afbad41ce744d18c53161034ed2533aca9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9186b938_5d12f2d5",
+        "filename": "python/python.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-27T21:37:34Z",
+      "side": 1,
+      "message": "Does pythonBaseModule model the pre-split Python module, the post-split Python module, both, or something else?",
+      "revId": "130e3afbad41ce744d18c53161034ed2533aca9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "448d2dd4_10a56c1b",
+        "filename": "python/python.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-27T21:37:34Z",
+      "side": 1,
+      "message": "Should \"versionsRequired\" be \"versionsSupported\"? I think it would be clearer to model which versions are supported and then validate each dependency. Then if the dependency requires a different version than can be provided, then the error message can include the dependency in the message in addition to just the module being depended on\n\n(If we want to lazily initialize the list of versions supported, I imagine we could have a version called \"AUTO\" that says that the module supports all versions of Python that its dependencies support (though I\u0027m thinking it might still be clearer to encourage people to specify the version as \"PY3\" or \"PY2,PY3\" or something like that anyway))",
+      "revId": "130e3afbad41ce744d18c53161034ed2533aca9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b73595a_8bca93de",
+        "filename": "python/python.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-27T21:37:34Z",
+      "side": 1,
+      "message": "Can we include the path in the error message?",
+      "revId": "130e3afbad41ce744d18c53161034ed2533aca9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20d5fc82_9d7d5efc",
+        "filename": "python/python.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-27T21:37:34Z",
+      "side": 1,
+      "message": "What\u0027s the empty string for?",
+      "revId": "130e3afbad41ce744d18c53161034ed2533aca9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b04ff7e_967a4569",
+        "filename": "python/python.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-27T21:37:34Z",
+      "side": 1,
+      "message": "If more versions of Python (Python4, or possibly different minor versions of Python2 and Python3) are ever released, what happens to the number of version strings that exist in this model?\n\n(These objects seem to me to be modeling version compatibility, which I would expect would be modeled with a version range object or a list of bools or a list of enums or something like that)",
+      "revId": "130e3afbad41ce744d18c53161034ed2533aca9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec1aff45_f479fac6",
+        "filename": "python/python.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-27T21:37:34Z",
+      "side": 1,
+      "message": "I\u0027d expect we\u0027d make shorten this by making a variable called allPythonVersions and calling stringInSlice(interp_version, allPythonVersions)",
+      "revId": "130e3afbad41ce744d18c53161034ed2533aca9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61c8e739_869da6a5",
+        "filename": "python/python.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-27T21:37:34Z",
+      "side": 1,
+      "message": "I think this error could be clarified by replacing \"versionsRequired\" with versionsSupported and then mentioning both the dependant and the dependency modules",
+      "revId": "130e3afbad41ce744d18c53161034ed2533aca9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "602c4700_ad92623d",
+        "filename": "python/python.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-27T21:37:34Z",
+      "side": 1,
+      "message": "I think that a better error message would be for each individual subModule to have a specific type, and for each module that depends on base.subModule to generate an error if the version it requires is different than the actual version of the subModule.\n\n(It looks to me like the need for this error message in the first place is because base.subModule is represented as the same type as base rather than being implemented as its own class)",
+      "revId": "130e3afbad41ce744d18c53161034ed2533aca9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
