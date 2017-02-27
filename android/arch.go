@@ -991,7 +991,10 @@ func decodeMultilib(multilib string, targets []Target, prefer32 bool) ([]Target,
 	}
 	switch multilib {
 	case "common":
-		buildTargets = append(buildTargets, commonTarget)
+		// TODO: libs don't distinguish between "32bit" and "64bit". But Make cannot
+		// identify LOCAL_MODULE_HOST_ARCH:= common, so use "lib32" to work around this
+		// for now.
+		buildTargets = append(buildTargets, filterMultilibTargets(targets, "lib32")...)
 	case "both":
 		if prefer32 {
 			buildTargets = append(buildTargets, filterMultilibTargets(targets, "lib32")...)
