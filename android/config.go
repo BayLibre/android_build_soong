@@ -477,12 +477,20 @@ func (c *deviceConfig) NativeCoverageEnabled() bool {
 }
 
 func (c *deviceConfig) CoverageEnabledForPath(path string) bool {
+	coverage := false
 	if c.config.ProductVariables.CoveragePaths != nil {
 		for _, prefix := range *c.config.ProductVariables.CoveragePaths {
 			if strings.HasPrefix(path, prefix) {
-				return true
+				coverage = true
 			}
 		}
 	}
-	return false
+	if c.config.ProductVariables.CoverageExcludePaths != nil {
+		for _, prefix := range *c.config.ProductVariables.CoverageExcludePaths {
+			if strings.HasPrefix(path, prefix) {
+				coverage = false
+			}
+		}
+	}
+	return coverage
 }
