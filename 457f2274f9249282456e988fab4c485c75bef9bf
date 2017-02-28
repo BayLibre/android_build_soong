@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06976986_dfe21099",
+        "filename": "cc/cc.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-28T01:50:00Z",
+      "side": 1,
+      "message": "config.IsVndkLibrary(ctx.baseModuleName())?",
+      "range": {
+        "startLine": 415,
+        "startChar": 8,
+        "endLine": 415,
+        "endChar": 124
+      },
+      "revId": "457f2274f9249282456e988fab4c485c75bef9bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50cf5aa1_902f3693",
+        "filename": "cc/config/global.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-28T01:50:00Z",
+      "side": 1,
+      "message": "Let\u0027s remove this before submission",
+      "range": {
+        "startLine": 178,
+        "startChar": 17,
+        "endLine": 178,
+        "endChar": 28
+      },
+      "revId": "457f2274f9249282456e988fab4c485c75bef9bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7ea9897_7387853d",
+        "filename": "cc/config/global.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-28T01:50:00Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 183,
+        "startChar": 17,
+        "endLine": 183,
+        "endChar": 26
+      },
+      "revId": "457f2274f9249282456e988fab4c485c75bef9bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd9a202f_72c5d493",
+        "filename": "cc/library.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-28T01:50:00Z",
+      "side": 1,
+      "message": "Will this be done before submission? The same check could be done for same process hals. This should just be a conditional and a call to ctx.ModuleErrorf()",
+      "range": {
+        "startLine": 595,
+        "startChar": 0,
+        "endLine": 595,
+        "endChar": 59
+      },
+      "revId": "457f2274f9249282456e988fab4c485c75bef9bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe0b565d_c8234d57",
+        "filename": "cc/vndk_library.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-28T01:50:00Z",
+      "side": 1,
+      "message": "Yeah, this can\u0027t happen within linkerFlags, that\u0027s too late.\n\nNormally, with a new shared library dependency, you\u0027d add it to the Deps structure in compilerDeps/linkerDeps. But this isn\u0027t a normal dependency, so we\u0027d either need to pipe it through the DepsMutator, or run our own mutator pass specific to vndk ext libraries (which sounds like a better idea to me). But this can happen in a follow up patch.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 7
+      },
+      "revId": "457f2274f9249282456e988fab4c485c75bef9bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8556d35a_73f23e9f",
+        "filename": "cc/vndk_library.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-02-28T01:50:00Z",
+      "side": 1,
+      "message": "Lets make this an error, at least for now. There\u0027s no reason that those can\u0027t be normal framework or vendor libraries.",
+      "revId": "457f2274f9249282456e988fab4c485c75bef9bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
