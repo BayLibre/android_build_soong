@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "480b5449_237586ae",
+        "filename": "cc/cc.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-02-28T12:10:00Z",
+      "side": 1,
+      "message": "good catch. thanks.",
+      "parentUuid": "06976986_dfe21099",
+      "range": {
+        "startLine": 415,
+        "startChar": 8,
+        "endLine": 415,
+        "endChar": 124
+      },
+      "revId": "457f2274f9249282456e988fab4c485c75bef9bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "50cf5aa1_902f3693",
         "filename": "cc/config/global.go",
         "patchSetId": 16
@@ -36,6 +60,30 @@
       "writtenOn": "2017-02-28T01:50:00Z",
       "side": 1,
       "message": "Let\u0027s remove this before submission",
+      "range": {
+        "startLine": 178,
+        "startChar": 17,
+        "endLine": 178,
+        "endChar": 28
+      },
+      "revId": "457f2274f9249282456e988fab4c485c75bef9bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64a41d3e_0bab9e84",
+        "filename": "cc/config/global.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-02-28T12:10:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50cf5aa1_902f3693",
       "range": {
         "startLine": 178,
         "startChar": 17,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "206ee0d9_6190454a",
+        "filename": "cc/config/global.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-02-28T12:10:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7ea9897_7387853d",
+      "range": {
+        "startLine": 183,
+        "startChar": 17,
+        "endLine": 183,
+        "endChar": 26
+      },
+      "revId": "457f2274f9249282456e988fab4c485c75bef9bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dd9a202f_72c5d493",
         "filename": "cc/library.go",
         "patchSetId": 16
@@ -82,6 +154,30 @@
       "writtenOn": "2017-02-28T01:50:00Z",
       "side": 1,
       "message": "Will this be done before submission? The same check could be done for same process hals. This should just be a conditional and a call to ctx.ModuleErrorf()",
+      "range": {
+        "startLine": 595,
+        "startChar": 0,
+        "endLine": 595,
+        "endChar": 59
+      },
+      "revId": "457f2274f9249282456e988fab4c485c75bef9bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ad11719_df28be97",
+        "filename": "cc/library.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-02-28T12:10:00Z",
+      "side": 1,
+      "message": "Done for all types of libraries.\n(note. sameprocess hal is the opposite. it should be proprietary)",
+      "parentUuid": "dd9a202f_72c5d493",
       "range": {
         "startLine": 595,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "d01e3dc5_8576067a",
+        "filename": "cc/vndk_library.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-02-28T12:10:00Z",
+      "side": 1,
+      "message": "ok. I think I need to study on the mutator.",
+      "parentUuid": "fe0b565d_c8234d57",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 7
+      },
+      "revId": "457f2274f9249282456e988fab4c485c75bef9bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8556d35a_73f23e9f",
         "filename": "cc/vndk_library.go",
         "patchSetId": 16
@@ -128,6 +248,24 @@
       "writtenOn": "2017-02-28T01:50:00Z",
       "side": 1,
       "message": "Lets make this an error, at least for now. There\u0027s no reason that those can\u0027t be normal framework or vendor libraries.",
+      "revId": "457f2274f9249282456e988fab4c485c75bef9bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f86526e3_08b57a79",
+        "filename": "cc/vndk_library.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-02-28T12:10:00Z",
+      "side": 1,
+      "message": "As discussed in b/35410737? Ok.",
+      "parentUuid": "8556d35a_73f23e9f",
       "revId": "457f2274f9249282456e988fab4c485c75bef9bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
