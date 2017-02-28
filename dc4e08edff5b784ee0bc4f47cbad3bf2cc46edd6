@@ -42,6 +42,46 @@
     },
     {
       "key": {
+        "uuid": "86a3d260_7565e006",
+        "filename": "python/python.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-28T18:40:36Z",
+      "side": 1,
+      "message": "What if there is Python code written in Python2 that can either be autoconverted to Python3 or that can be run directly in Python2?\nWhat if there is another Python module written in Python2 for which it is known that the autoconversion to Python3 fails?\n\nAs a user, if I saw a string value of \"PY2ONLY\", I wouldn\u0027t be able to guess the existence of \"PY2ANDPY3\". However, if I saw a list value of\n[\"PY2\"] then I would be likely to guess that either [\"PY3\"] or [\"PY2\", \"PY3\"] would be supported\n\nI think that really this property describes the interpreter that is valid to use against the included code. So I think it should be a list, and that the valid elements of the list should be [\"PY2\", \"PY3\"], and that \"PY2TO3\" would be another valid element of the list (whose meaning is \"run the python2-to-python3 upgrader on this and then use the python3 interpreter on the result\")\n\n\nI could see it making sense for there to be special-case strings that make the common cases shorter by a couple characters. For example maybe if the value was a string then it would be converted to a list whose only element was that string. I could also imagine there being a couple other options like \"\", \"DEFAULT\", and \"ALL\" if we need them.\n\nYou could definitely make the argument that \"PY2ONLY\" corresponds to \"PY2\",  \"PY2ANDPY3\" corresponds to \"ALL\", and \"PY3ONLY\" corresponds to \"PY3\". I think it\u0027d be more intuitive to model it as an object that is normally a list but that has a few conveniently-named defaults (normally I\u0027d implement them as enums but I suspect we\u0027d have to implement them as strings that get converted), so it\u0027s super clear what to do if other combinations get invented (as opposed to slightly clear)",
+      "revId": "dc4e08edff5b784ee0bc4f47cbad3bf2cc46edd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7790bfee_f0a24a09",
+        "filename": "python/python.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-28T18:40:36Z",
+      "side": 1,
+      "message": "Does pythonBaseModule model both to the multi-versioned, pre-split module and also to the versioned, post-split module? (Basically it seems to me like the data model is denormalized and I\u0027m looking for confirmation before I think about it more and suggest either a comment explaining that it was convenient for us to take advantage of Blueprint module-splitting, or a refactoring or something like that)",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 49,
+        "endChar": 21
+      },
+      "revId": "dc4e08edff5b784ee0bc4f47cbad3bf2cc46edd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c92bcf39_b667816c",
         "filename": "python/python.go",
         "patchSetId": 8
@@ -59,6 +99,23 @@
         "endLine": 95,
         "endChar": 21
       },
+      "revId": "dc4e08edff5b784ee0bc4f47cbad3bf2cc46edd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25dc0337_e9d351cf",
+        "filename": "python/python.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-28T18:40:36Z",
+      "side": 1,
+      "message": "Although I can eventually figure out what you mean by the two separate types of versions (p.properties.Srcs_version distinct from p.versionsSupported), it seems to me that it\u0027d be even better if we can clarify the distinctions upfront with enums or something like that. I think we\u0027d also want a separate method that does the parsing to clarify what\u0027s going on. Something similar to (but more complete than) :\n\nfunc parseSupportedVersions(input interface{}) {\n  myString, ok :\u003d input.(string)\n  if ok {\n    if myString \u003d\u003d \"\" {\n      return defaultInterpreterVersions\n    }\n    if myString \u003d\u003d \"ALL\" {\n      return [\"PY2\", \"PY3\"]\n    }\n    return parseSupportedVersions([myString])\n  }\n  results \u003d []\n  for _, item :\u003d range input {\n    switch item {\n      case \"PY2\":\n      results \u003d append(results, interpreterPy2)\n      case \"PY3\":\n      results \u003d append(results, interpreterPy2)\n    }\n  }\n  return results  \n}\n\n\n(the exact details will probably depend on what we do about the p.properties.Srcs_version discussion on line 45)",
       "revId": "dc4e08edff5b784ee0bc4f47cbad3bf2cc46edd6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -203,6 +260,23 @@
     },
     {
       "key": {
+        "uuid": "ece3402e_b1a4c50f",
+        "filename": "python/python.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-28T18:40:36Z",
+      "side": 1,
+      "message": "Could you make a constant called something like UNKNOWN or AUTO or something like that and use it as the first element of the interpreter_versions list? I\u0027m hoping that that will explain to me why \"\" is an option in the list of versions",
+      "revId": "dc4e08edff5b784ee0bc4f47cbad3bf2cc46edd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "82d89b1a_4ec40da3",
         "filename": "python/python.go",
         "patchSetId": 8
@@ -220,6 +294,40 @@
         "endLine": 230,
         "endChar": 51
       },
+      "revId": "dc4e08edff5b784ee0bc4f47cbad3bf2cc46edd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f2f52c5_10407c43",
+        "filename": "python/python.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-28T18:40:36Z",
+      "side": 1,
+      "message": "Do we want to print out here the list of versions that the dependency supports? Then user will know what the other options are even if they don\u0027t know how this code works (and they don\u0027t know that there\u0027s a non-emptyness check right above).\n\nThen we\u0027d be able to remove the above non-emptyness check too",
+      "revId": "dc4e08edff5b784ee0bc4f47cbad3bf2cc46edd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01384b9c_36243382",
+        "filename": "python/python.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-02-28T18:40:36Z",
+      "side": 1,
+      "message": "Can we move lines 277-280 into the implementation of mctx.CreateVariations? It seems to me like something we always want to happen (including on line 274 (which probably isn\u0027t strictly required but probably would improve consistency))",
       "revId": "dc4e08edff5b784ee0bc4f47cbad3bf2cc46edd6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
