@@ -674,7 +674,7 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 						variantLibs = append(variantLibs, entry+ndkLibrarySuffix)
 					}
 				} else {
-					nonvariantLibs = append(variantLibs, entry)
+					nonvariantLibs = append(nonvariantLibs, entry)
 				}
 			}
 			return nonvariantLibs, variantLibs

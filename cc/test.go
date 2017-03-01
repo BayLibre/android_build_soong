@@ -159,7 +159,7 @@ func (test *testDecorator) linkerDeps(ctx BaseModuleContext, deps Deps) Deps {
 		if ctx.sdk() && ctx.Device() {
 			switch ctx.selectedStl() {
 			case "ndk_libc++_shared", "ndk_libc++_static":
-				deps.StaticLibs = append(deps.StaticLibs, "libgtest_main_ndk_libcxx", "libgtest_ndk_libcxx")
+				deps.StaticLibs = append(deps.StaticLibs, "libgtest_main_ndk_c++", "libgtest_ndk_c++")
 			case "ndk_libgnustl_static":
 				deps.StaticLibs = append(deps.StaticLibs, "libgtest_main_ndk_gnustl", "libgtest_ndk_gnustl")
 			default:
