@@ -145,6 +145,7 @@ bootstrap_go_package {
         "cc/ndk_headers.go",
         "cc/ndk_library.go",
         "cc/ndk_sysroot.go",
+        "cc/ndk_compatible_binary.go",
     ],
     testSrcs: [
         "cc/cc_test.go",
