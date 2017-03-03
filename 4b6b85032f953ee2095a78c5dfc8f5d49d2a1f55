@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5e7eaebf_bfd6fcc3",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-03-03T03:45:12Z",
+      "side": 1,
+      "message": "I\u0027m not sure that make sense, since it really can\u0027t change anyway. But I do see a way to simplify this and remove a copy.",
+      "parentUuid": "64ac58ec_467da038",
+      "revId": "4b6b85032f953ee2095a78c5dfc8f5d49d2a1f55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d9455e1d_f2971cb6",
         "filename": "ui/build/config.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2017-03-03T00:35:08Z",
       "side": 1,
       "message": "Is the reason that this is implemented in Go and also in Bash because there are several levels of bootstrapping of builds, and some levels use one and some use the other?",
+      "revId": "4b6b85032f953ee2095a78c5dfc8f5d49d2a1f55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "988b550f_cb60404a",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-03-03T03:45:12Z",
+      "side": 1,
+      "message": "Yeah, that bash script is what actually ensure this Go code is built, and it needs to put its output somewhere. But I\u0027d prefer not to put much build logic in it, since this code is also used in library form without that script (like multiproduct_kati).",
+      "parentUuid": "d9455e1d_f2971cb6",
       "revId": "4b6b85032f953ee2095a78c5dfc8f5d49d2a1f55",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
