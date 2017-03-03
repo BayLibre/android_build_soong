@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "64ac58ec_467da038",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-03T00:38:21Z",
+      "side": 1,
+      "message": "Do we need make a \"OUT_DIR\" a global const, and then can re-use that string?",
+      "revId": "4b6b85032f953ee2095a78c5dfc8f5d49d2a1f55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d9455e1d_f2971cb6",
         "filename": "ui/build/config.go",
         "patchSetId": 1
