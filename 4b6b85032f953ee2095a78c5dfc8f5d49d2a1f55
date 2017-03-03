@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9455e1d_f2971cb6",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-03T00:35:08Z",
+      "side": 1,
+      "message": "Is the reason that this is implemented in Go and also in Bash because there are several levels of bootstrapping of builds, and some levels use one and some use the other?",
+      "revId": "4b6b85032f953ee2095a78c5dfc8f5d49d2a1f55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
