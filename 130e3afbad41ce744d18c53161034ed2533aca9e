@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "50fe0777_93dd265c",
+        "filename": "python/python.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-06T19:16:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81569036_be44ae8d",
+      "revId": "130e3afbad41ce744d18c53161034ed2533aca9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6e211cc_36c95e3d",
         "filename": "python/python.go",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2017-02-27T21:37:34Z",
       "side": 1,
       "message": "If it\u0027s easy to refactor, I\u0027d be inclined to make a new class called something like \u0027fileReference\u0027 whose meaning is what the comment says, and then change this property to \"Srcs []fileReference\" so the data type becomes a self-documenting comment",
+      "revId": "130e3afbad41ce744d18c53161034ed2533aca9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35afb549_74e89eea",
+        "filename": "python/python.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-06T19:16:33Z",
+      "side": 1,
+      "message": "That\u0027s a good suggestion. But I doubt that if blueprint can support this since blueprint will automatically fill in these customized properties based on static member type. And string, bool, string array, and map are the only type supported right now.",
+      "parentUuid": "a6e211cc_36c95e3d",
       "revId": "130e3afbad41ce744d18c53161034ed2533aca9e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "ef994b3e_7cc9269d",
+        "filename": "python/python.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-06T19:16:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0be92c8c_af3115fe",
+      "revId": "130e3afbad41ce744d18c53161034ed2533aca9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9186b938_5d12f2d5",
         "filename": "python/python.go",
         "patchSetId": 6
@@ -64,6 +118,24 @@
       "writtenOn": "2017-02-27T21:37:34Z",
       "side": 1,
       "message": "Does pythonBaseModule model the pre-split Python module, the post-split Python module, both, or something else?",
+      "revId": "130e3afbad41ce744d18c53161034ed2533aca9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e6ba5de_593e93e5",
+        "filename": "python/python.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-06T19:16:33Z",
+      "side": 1,
+      "message": "pythonBaseModule model the both pre-split and post-split. the fields \"versionsRequired\" and \"versionSplit\" are used to store additional information during/after the split.",
+      "parentUuid": "9186b938_5d12f2d5",
       "revId": "130e3afbad41ce744d18c53161034ed2533aca9e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "a3edd79e_97bbe799",
+        "filename": "python/python.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-06T19:16:33Z",
+      "side": 1,
+      "message": "As per discussion offline, we don\u0027t need this field.",
+      "parentUuid": "448d2dd4_10a56c1b",
+      "revId": "130e3afbad41ce744d18c53161034ed2533aca9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8b73595a_8bca93de",
         "filename": "python/python.go",
         "patchSetId": 6
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "928961d7_22b1073f",
+        "filename": "python/python.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-06T19:16:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b73595a_8bca93de",
+      "revId": "130e3afbad41ce744d18c53161034ed2533aca9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20d5fc82_9d7d5efc",
         "filename": "python/python.go",
         "patchSetId": 6
@@ -115,6 +223,24 @@
       "writtenOn": "2017-02-27T21:37:34Z",
       "side": 1,
       "message": "What\u0027s the empty string for?",
+      "revId": "130e3afbad41ce744d18c53161034ed2533aca9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c6c1177_b6256320",
+        "filename": "python/python.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-06T19:16:33Z",
+      "side": 1,
+      "message": "As per discussion offline, we don\u0027t need this empty string.",
+      "parentUuid": "20d5fc82_9d7d5efc",
       "revId": "130e3afbad41ce744d18c53161034ed2533aca9e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -138,6 +264,24 @@
     },
     {
       "key": {
+        "uuid": "31e32bf4_4298d59d",
+        "filename": "python/python.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-06T19:16:33Z",
+      "side": 1,
+      "message": "As per discussion offline, we don\u0027t need source_version array.",
+      "parentUuid": "7b04ff7e_967a4569",
+      "revId": "130e3afbad41ce744d18c53161034ed2533aca9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec1aff45_f479fac6",
         "filename": "python/python.go",
         "patchSetId": 6
@@ -149,6 +293,24 @@
       "writtenOn": "2017-02-27T21:37:34Z",
       "side": 1,
       "message": "I\u0027d expect we\u0027d make shorten this by making a variable called allPythonVersions and calling stringInSlice(interp_version, allPythonVersions)",
+      "revId": "130e3afbad41ce744d18c53161034ed2533aca9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c19e5ec1_41a0f791",
+        "filename": "python/python.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-06T19:16:33Z",
+      "side": 1,
+      "message": "this function has been refactored dramatically.",
+      "parentUuid": "ec1aff45_f479fac6",
       "revId": "130e3afbad41ce744d18c53161034ed2533aca9e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -172,6 +334,24 @@
     },
     {
       "key": {
+        "uuid": "76f7b69e_8bd60a15",
+        "filename": "python/python.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-06T19:16:33Z",
+      "side": 1,
+      "message": "we don\u0027t need \"versionsRequired\" any more.",
+      "parentUuid": "61c8e739_869da6a5",
+      "revId": "130e3afbad41ce744d18c53161034ed2533aca9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "602c4700_ad92623d",
         "filename": "python/python.go",
         "patchSetId": 6
@@ -183,6 +363,24 @@
       "writtenOn": "2017-02-27T21:37:34Z",
       "side": 1,
       "message": "I think that a better error message would be for each individual subModule to have a specific type, and for each module that depends on base.subModule to generate an error if the version it requires is different than the actual version of the subModule.\n\n(It looks to me like the need for this error message in the first place is because base.subModule is represented as the same type as base rather than being implemented as its own class)",
+      "revId": "130e3afbad41ce744d18c53161034ed2533aca9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71bef1fa_9339bc2f",
+        "filename": "python/python.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-06T19:16:33Z",
+      "side": 1,
+      "message": "this function has been refactored dramatically.",
+      "parentUuid": "602c4700_ad92623d",
       "revId": "130e3afbad41ce744d18c53161034ed2533aca9e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true

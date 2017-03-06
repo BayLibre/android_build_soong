@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a89530a1_5774891b",
+        "filename": "python/binary.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-06T19:16:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "127a5d0a_aea15102",
+      "revId": "dc4e08edff5b784ee0bc4f47cbad3bf2cc46edd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3ba549d_f2bcbc46",
         "filename": "python/python.go",
         "patchSetId": 8
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "65630157_5d5ddb50",
+        "filename": "python/python.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-06T19:16:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3ba549d_f2bcbc46",
+      "range": {
+        "startLine": 15,
+        "startChar": 56,
+        "endLine": 15,
+        "endChar": 57
+      },
+      "revId": "dc4e08edff5b784ee0bc4f47cbad3bf2cc46edd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86a3d260_7565e006",
         "filename": "python/python.go",
         "patchSetId": 8
@@ -53,6 +95,24 @@
       "writtenOn": "2017-02-28T18:40:36Z",
       "side": 1,
       "message": "What if there is Python code written in Python2 that can either be autoconverted to Python3 or that can be run directly in Python2?\nWhat if there is another Python module written in Python2 for which it is known that the autoconversion to Python3 fails?\n\nAs a user, if I saw a string value of \"PY2ONLY\", I wouldn\u0027t be able to guess the existence of \"PY2ANDPY3\". However, if I saw a list value of\n[\"PY2\"] then I would be likely to guess that either [\"PY3\"] or [\"PY2\", \"PY3\"] would be supported\n\nI think that really this property describes the interpreter that is valid to use against the included code. So I think it should be a list, and that the valid elements of the list should be [\"PY2\", \"PY3\"], and that \"PY2TO3\" would be another valid element of the list (whose meaning is \"run the python2-to-python3 upgrader on this and then use the python3 interpreter on the result\")\n\n\nI could see it making sense for there to be special-case strings that make the common cases shorter by a couple characters. For example maybe if the value was a string then it would be converted to a list whose only element was that string. I could also imagine there being a couple other options like \"\", \"DEFAULT\", and \"ALL\" if we need them.\n\nYou could definitely make the argument that \"PY2ONLY\" corresponds to \"PY2\",  \"PY2ANDPY3\" corresponds to \"ALL\", and \"PY3ONLY\" corresponds to \"PY3\". I think it\u0027d be more intuitive to model it as an object that is normally a list but that has a few conveniently-named defaults (normally I\u0027d implement them as enums but I suspect we\u0027d have to implement them as strings that get converted), so it\u0027s super clear what to do if other combinations get invented (as opposed to slightly clear)",
+      "revId": "dc4e08edff5b784ee0bc4f47cbad3bf2cc46edd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "473dccca_3633a2e8",
+        "filename": "python/python.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-06T19:16:33Z",
+      "side": 1,
+      "message": "Thanks Jeff. As per our discussion before, we changed to use embedded struct to represent the version.",
+      "parentUuid": "86a3d260_7565e006",
       "revId": "dc4e08edff5b784ee0bc4f47cbad3bf2cc46edd6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -105,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "58f4fb80_2e846666",
+        "filename": "python/python.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-06T19:16:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c92bcf39_b667816c",
+      "range": {
+        "startLine": 95,
+        "startChar": 20,
+        "endLine": 95,
+        "endChar": 21
+      },
+      "revId": "dc4e08edff5b784ee0bc4f47cbad3bf2cc46edd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "25dc0337_e9d351cf",
         "filename": "python/python.go",
         "patchSetId": 8
@@ -122,6 +206,24 @@
     },
     {
       "key": {
+        "uuid": "241d6dd1_c48b4a98",
+        "filename": "python/python.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-06T19:16:33Z",
+      "side": 1,
+      "message": "This Function has been refactored dramatically.",
+      "parentUuid": "25dc0337_e9d351cf",
+      "revId": "dc4e08edff5b784ee0bc4f47cbad3bf2cc46edd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0ce1ac32_f0dc203d",
         "filename": "python/python.go",
         "patchSetId": 8
@@ -133,6 +235,30 @@
       "writtenOn": "2017-02-28T06:19:11Z",
       "side": 1,
       "message": "Instead of making the submodule call back to the GeneratePythonBuildActions below, why wouldn\u0027t this method call the base\u0027s GeneratePythonBuildActions directly?",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 129,
+        "endChar": 44
+      },
+      "revId": "dc4e08edff5b784ee0bc4f47cbad3bf2cc46edd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae547875_41828dea",
+        "filename": "python/python.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-06T19:16:33Z",
+      "side": 1,
+      "message": "Within subModule.GeneratePythonBuildActions(ctx), it can have its own customized build actions after the base.buildactions like:\nfunc (p *PythonBinary) GeneratePythonBuildActions(ctx android.ModuleContext) {\n\ta, b :\u003d p.pythonBaseModule.GeneratePythonBuildActions(ctx)\n\t// begin its own customized build actions generation.\n        .......process a, and b.\n}",
+      "parentUuid": "0ce1ac32_f0dc203d",
       "range": {
         "startLine": 129,
         "startChar": 1,
@@ -168,6 +294,30 @@
     },
     {
       "key": {
+        "uuid": "642fd8f6_c23b3ebd",
+        "filename": "python/python.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-06T19:16:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c4b8470_c8122681",
+      "range": {
+        "startLine": 145,
+        "startChar": 3,
+        "endLine": 145,
+        "endChar": 14
+      },
+      "revId": "dc4e08edff5b784ee0bc4f47cbad3bf2cc46edd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe447f31_87430314",
         "filename": "python/python.go",
         "patchSetId": 8
@@ -188,6 +338,30 @@
       "revId": "dc4e08edff5b784ee0bc4f47cbad3bf2cc46edd6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "360d945e_a1878d8f",
+        "filename": "python/python.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-06T19:16:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe447f31_87430314",
+      "range": {
+        "startLine": 163,
+        "startChar": 2,
+        "endLine": 164,
+        "endChar": 42
+      },
+      "revId": "dc4e08edff5b784ee0bc4f47cbad3bf2cc46edd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -214,6 +388,30 @@
     },
     {
       "key": {
+        "uuid": "e25c95c6_e330775c",
+        "filename": "python/python.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-06T19:16:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df5b1ffc_472ef04c",
+      "range": {
+        "startLine": 165,
+        "startChar": 3,
+        "endLine": 165,
+        "endChar": 37
+      },
+      "revId": "dc4e08edff5b784ee0bc4f47cbad3bf2cc46edd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c632f21b_68afc1d5",
         "filename": "python/python.go",
         "patchSetId": 8
@@ -234,6 +432,30 @@
       "revId": "dc4e08edff5b784ee0bc4f47cbad3bf2cc46edd6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d74421ec_b391c99b",
+        "filename": "python/python.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-06T19:16:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c632f21b_68afc1d5",
+      "range": {
+        "startLine": 169,
+        "startChar": 2,
+        "endLine": 170,
+        "endChar": 37
+      },
+      "revId": "dc4e08edff5b784ee0bc4f47cbad3bf2cc46edd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -260,6 +482,30 @@
     },
     {
       "key": {
+        "uuid": "42a3ccea_ed65d5bf",
+        "filename": "python/python.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-06T19:16:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7441be1d_5f3a0aab",
+      "range": {
+        "startLine": 172,
+        "startChar": 4,
+        "endLine": 172,
+        "endChar": 43
+      },
+      "revId": "dc4e08edff5b784ee0bc4f47cbad3bf2cc46edd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ece3402e_b1a4c50f",
         "filename": "python/python.go",
         "patchSetId": 8
@@ -271,6 +517,24 @@
       "writtenOn": "2017-02-28T18:40:36Z",
       "side": 1,
       "message": "Could you make a constant called something like UNKNOWN or AUTO or something like that and use it as the first element of the interpreter_versions list? I\u0027m hoping that that will explain to me why \"\" is an option in the list of versions",
+      "revId": "dc4e08edff5b784ee0bc4f47cbad3bf2cc46edd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "752c8d48_8f8a9f23",
+        "filename": "python/python.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-06T19:16:33Z",
+      "side": 1,
+      "message": "Thanks Jeff. We don\u0027t need interpreter_versions any more.",
+      "parentUuid": "ece3402e_b1a4c50f",
       "revId": "dc4e08edff5b784ee0bc4f47cbad3bf2cc46edd6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -300,6 +564,30 @@
     },
     {
       "key": {
+        "uuid": "66859d42_a436a510",
+        "filename": "python/python.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-06T19:16:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82d89b1a_4ec40da3",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 51
+      },
+      "revId": "dc4e08edff5b784ee0bc4f47cbad3bf2cc46edd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f2f52c5_10407c43",
         "filename": "python/python.go",
         "patchSetId": 8
@@ -317,6 +605,24 @@
     },
     {
       "key": {
+        "uuid": "eb8368b2_402dc011",
+        "filename": "python/python.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-06T19:16:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f2f52c5_10407c43",
+      "revId": "dc4e08edff5b784ee0bc4f47cbad3bf2cc46edd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "01384b9c_36243382",
         "filename": "python/python.go",
         "patchSetId": 8
@@ -328,6 +634,24 @@
       "writtenOn": "2017-02-28T18:40:36Z",
       "side": 1,
       "message": "Can we move lines 277-280 into the implementation of mctx.CreateVariations? It seems to me like something we always want to happen (including on line 274 (which probably isn\u0027t strictly required but probably would improve consistency))",
+      "revId": "dc4e08edff5b784ee0bc4f47cbad3bf2cc46edd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "808202cb_5347de1a",
+        "filename": "python/python.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-06T19:16:33Z",
+      "side": 1,
+      "message": "This is function has be removed already.",
+      "parentUuid": "01384b9c_36243382",
       "revId": "dc4e08edff5b784ee0bc4f47cbad3bf2cc46edd6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
