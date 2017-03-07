@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64aff56c_d31fd2ac",
+        "filename": "python/python.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-07T10:14:00Z",
+      "side": 1,
+      "message": "I\u0027d word this as \u0027all the \"srcs\" or Python dependencies that are to be used only for Python2\u0027",
+      "revId": "aefd2e859d04084c9ee4ce3eca4f32a1f57ac1c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce6aff9e_9ffc692d",
+        "filename": "python/python.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-07T10:14:00Z",
+      "side": 1,
+      "message": "(\"hidden\" rather than \"hided\")",
+      "range": {
+        "startLine": 87,
+        "startChar": 26,
+        "endLine": 87,
+        "endChar": 31
+      },
+      "revId": "aefd2e859d04084c9ee4ce3eca4f32a1f57ac1c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c53f80cb_33e60473",
+        "filename": "python/python.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-07T10:14:00Z",
+      "side": 1,
+      "message": "If we replace ActualVersion\u0027s type with (*PythonVersionProperties) and point it at either Version_py2 or Version_py3 then we can save some code in a few spots.",
+      "revId": "aefd2e859d04084c9ee4ce3eca4f32a1f57ac1c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "450aa5f0_f8e944e7",
+        "filename": "python/python.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-07T10:14:00Z",
+      "side": 1,
+      "message": "Could we include the specific offending value in the error message too?",
+      "revId": "aefd2e859d04084c9ee4ce3eca4f32a1f57ac1c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "653b3fff_515d1c2c",
+        "filename": "python/python.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-07T10:14:00Z",
+      "side": 1,
+      "message": "Are the values in the map the absolute file paths? Should we include the pre-existing and the new map value in the eror message?",
+      "revId": "aefd2e859d04084c9ee4ce3eca4f32a1f57ac1c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ee8b9da_c8a15028",
+        "filename": "python/python_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-07T10:14:00Z",
+      "side": 1,
+      "message": "nice (referring to the fact that there\u0027s a test)",
+      "revId": "aefd2e859d04084c9ee4ce3eca4f32a1f57ac1c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
