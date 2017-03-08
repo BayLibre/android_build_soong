@@ -37,30 +37,10 @@ var (
 
 	ndkLibrarySuffix = ".ndk"
 
-	ndkPrebuiltSharedLibs = []string{
-		"android",
-		"c",
-		"dl",
-		"EGL",
-		"GLESv1_CM",
-		"GLESv2",
-		"GLESv3",
-		"jnigraphics",
-		"log",
-		"mediandk",
-		"m",
-		"OpenMAXAL",
-		"OpenSLES",
-		"stdc++",
-		"vulkan",
-		"z",
-	}
-	ndkPrebuiltSharedLibraries = addPrefix(append([]string(nil), ndkPrebuiltSharedLibs...), "lib")
-
 	// These libraries have migrated over to the new ndk_library, which is added
 	// as a variation dependency via depsMutator.
-	ndkMigratedLibs     = []string{}
-	ndkMigratedLibsLock sync.Mutex // protects ndkMigratedLibs writes during parallel beginMutator
+	ndkStubLibs     = []string{}
+	ndkStubLibsLock sync.Mutex // protects ndkStubLibs writes during parallel beginMutator
 )
 
 // Creates a stub shared library based on the provided version file.
@@ -227,14 +207,14 @@ func (c *stubDecorator) compilerInit(ctx BaseModuleContext) {
 	c.baseCompiler.compilerInit(ctx)
 
 	name := strings.TrimSuffix(ctx.ModuleName(), ".ndk")
-	ndkMigratedLibsLock.Lock()
-	defer ndkMigratedLibsLock.Unlock()
-	for _, lib := range ndkMigratedLibs {
+	ndkStubLibsLock.Lock()
+	defer ndkStubLibsLock.Unlock()
+	for _, lib := range ndkStubLibs {
 		if lib == name {
 			return
 		}
 	}
-	ndkMigratedLibs = append(ndkMigratedLibs, name)
+	ndkStubLibs = append(ndkStubLibs, name)
 }
 
 func (c *stubDecorator) compile(ctx ModuleContext, flags Flags, deps PathDeps) Objects {

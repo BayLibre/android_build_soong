@@ -651,8 +651,6 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 	variantNdkLibs := []string{}
 	variantLateNdkLibs := []string{}
 	if ctx.sdk() || ctx.vndk() {
-		version := ctx.sdkVersion()
-
 		// Rewrites the names of shared libraries into the names of the NDK
 		// libraries where appropriate. This returns two slices.
 		//
@@ -667,14 +665,10 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 			variantLibs := []string{}
 			nonvariantLibs := []string{}
 			for _, entry := range list {
-				if inList(entry, ndkPrebuiltSharedLibraries) {
-					if !inList(entry, ndkMigratedLibs) {
-						nonvariantLibs = append(nonvariantLibs, entry+".ndk."+version)
-					} else {
-						variantLibs = append(variantLibs, entry+ndkLibrarySuffix)
-					}
+				if inList(entry, ndkStubLibs) {
+					variantLibs = append(variantLibs, entry+ndkLibrarySuffix)
 				} else {
-					nonvariantLibs = append(variantLibs, entry)
+					nonvariantLibs = append(nonvariantLibs, entry)
 				}
 			}
 			return nonvariantLibs, variantLibs
