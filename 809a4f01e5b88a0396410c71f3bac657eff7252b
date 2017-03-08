@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78991ec4_c8c69289",
+        "filename": "python/python.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-08T22:02:52Z",
+      "side": 1,
+      "message": "oops",
+      "revId": "809a4f01e5b88a0396410c71f3bac657eff7252b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dc8227f_14e34abf",
+        "filename": "python/python_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-08T22:02:52Z",
+      "side": 1,
+      "message": "I\u0027m inclined to have the error message clarify the meanining of the mentioned data structures, something like \"Found two files to be placed at the same runfiles location %s. First file: in module %s at path %s. Second file: in module %s at path %s.",
+      "revId": "809a4f01e5b88a0396410c71f3bac657eff7252b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2720aca_f8691d66",
+        "filename": "python/python_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-08T22:02:52Z",
+      "side": 1,
+      "message": "Do we want to include the actual number of errors in the message? Something like \"Got (%d) errors, expected (%d) errors\"?",
+      "revId": "809a4f01e5b88a0396410c71f3bac657eff7252b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
