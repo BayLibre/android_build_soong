@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df698fac_cc0338e5",
+        "filename": "python/python.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-09T20:53:42Z",
+      "side": 1,
+      "message": "Does the \u0027blueprint:\"mutated\" \u0027 annotation work on a PythonVersionProperties struct too? I\u0027d expect that each PythonVersionProperties would know its own version and that callers would check PythonBaseModuleProperties.ActualVersionProps.Version (possibly using a getter if it helps)\n\nThat way it\u0027s extra obvious that ActualVersionProps is the source of truth of version-specific details",
+      "revId": "f3bca4d5b87cabe15fdec8ba51d830159f7e1002",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac4f554e_f4809881",
+        "filename": "python/python.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-09T20:53:42Z",
+      "side": 1,
+      "message": "Is this now handled by line 261?",
+      "revId": "f3bca4d5b87cabe15fdec8ba51d830159f7e1002",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3212c857_57ce1f16",
+        "filename": "python/python.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-09T20:53:42Z",
+      "side": 1,
+      "message": "Is this handled by line 261 too?",
+      "revId": "f3bca4d5b87cabe15fdec8ba51d830159f7e1002",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bfde9ea_0b719506",
+        "filename": "python/python.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-09T20:53:42Z",
+      "side": 1,
+      "message": "I\u0027m inclined to remove \"upstream\"",
+      "revId": "f3bca4d5b87cabe15fdec8ba51d830159f7e1002",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e590dfe9_e57e2543",
+        "filename": "python/python.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-09T20:53:42Z",
+      "side": 1,
+      "message": "I wonder if we should move this function up above DepsMutator if it executes first",
+      "revId": "f3bca4d5b87cabe15fdec8ba51d830159f7e1002",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
