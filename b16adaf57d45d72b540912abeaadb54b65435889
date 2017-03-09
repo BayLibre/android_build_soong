@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0bf7ccd9_362d94c6",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-03-09T18:45:08Z",
+      "side": 1,
+      "message": "This creates reference dumps for all device libraries assuming any library in the AOSP can be a candidate to be a part of the vndk-core. This might condition might be too relaxed, will also create dumps unnecessarily for everyone till the vndk-core superset is known.",
+      "range": {
+        "startLine": 400,
+        "startChar": 27,
+        "endLine": 400,
+        "endChar": 86
+      },
+      "revId": "b16adaf57d45d72b540912abeaadb54b65435889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
