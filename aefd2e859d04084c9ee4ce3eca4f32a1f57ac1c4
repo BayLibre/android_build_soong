@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "76677bcb_b2e5d59c",
+        "filename": "python/python.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-10T21:24:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64aff56c_d31fd2ac",
+      "revId": "aefd2e859d04084c9ee4ce3eca4f32a1f57ac1c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce6aff9e_9ffc692d",
         "filename": "python/python.go",
         "patchSetId": 11
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "16b0fe62_10170673",
+        "filename": "python/python.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-10T21:24:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce6aff9e_9ffc692d",
+      "range": {
+        "startLine": 87,
+        "startChar": 26,
+        "endLine": 87,
+        "endChar": 31
+      },
+      "revId": "aefd2e859d04084c9ee4ce3eca4f32a1f57ac1c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c53f80cb_33e60473",
         "filename": "python/python.go",
         "patchSetId": 11
@@ -53,6 +95,24 @@
       "writtenOn": "2017-03-07T10:14:00Z",
       "side": 1,
       "message": "If we replace ActualVersion\u0027s type with (*PythonVersionProperties) and point it at either Version_py2 or Version_py3 then we can save some code in a few spots.",
+      "revId": "aefd2e859d04084c9ee4ce3eca4f32a1f57ac1c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73959efb_d53c5954",
+        "filename": "python/python.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-10T21:24:04Z",
+      "side": 1,
+      "message": "Thanks Jeff! I am not sure it is a convention to put a pointer (*PythonVersionProperties) in our properties struct (since it is usually user specific) for our programming convenience.  I think it might be good to keep properties struct as clean as possible. And if we put the pointer there I suspect that user might have access to it. And another thing is that when the module does a second, or third time module split, the creation of variations will not just do a copy of the pointer value but also a deep copy for the content the pointer originally points to. So I am also concerned about that might consume some unnecessary memories.\n\nLet\u0027s wait Dan and Colin to see if they have some opinions",
+      "parentUuid": "c53f80cb_33e60473",
       "revId": "aefd2e859d04084c9ee4ce3eca4f32a1f57ac1c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "4b0404a8_29218e1e",
+        "filename": "python/python.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-10T21:24:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "450aa5f0_f8e944e7",
+      "revId": "aefd2e859d04084c9ee4ce3eca4f32a1f57ac1c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "653b3fff_515d1c2c",
         "filename": "python/python.go",
         "patchSetId": 11
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "bdc2ecb9_1d88552e",
+        "filename": "python/python.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-10T21:24:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "653b3fff_515d1c2c",
+      "revId": "aefd2e859d04084c9ee4ce3eca4f32a1f57ac1c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ee8b9da_c8a15028",
         "filename": "python/python_test.go",
         "patchSetId": 11
@@ -107,6 +203,24 @@
       "revId": "aefd2e859d04084c9ee4ce3eca4f32a1f57ac1c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "375fb2dd_e7d531f9",
+        "filename": "python/python_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-10T21:24:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9ee8b9da_c8a15028",
+      "revId": "aefd2e859d04084c9ee4ce3eca4f32a1f57ac1c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
