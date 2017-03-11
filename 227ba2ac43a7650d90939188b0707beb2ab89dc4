@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9dde830c_2ea53dd0",
+        "filename": "python/python.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-11T01:24:55Z",
+      "side": 1,
+      "message": "It seems to me that the above properties deserve some more distinction from ActualVersion below since they come from different places and have different numbers of values (the above have one per pre-split module whereas ActualVersion has one per post-split module).\n\nI took a look at context.go and it doesn\u0027t seem to me like it would really take that long to add support in Blueprint to dynamically create new modules of a different type. I expect it would just entail making a new method in context.go similar to createVariations and taking one extra parameter that is a factory method that creates new instances, and then refactoring createVariations to pass in a \u0027clone\u0027 method into it, and then calling the new method instead (on line 148, below). Then it\u0027d be easy to split PythonBaseModuleProperties into two separate types. That sounds to me like less effort than having to explain to people why there are extra fields that are sometimes unused, and why there are different copies of PythonBaseModuleProperties that have different uses, and how the variant splitting interacts with module dependencies. I expect it to have no effect on the user-written Android.bp files - if we want to keep the ability for an Android.bp file to specify a dependency on either a presplit or a postsplit module then we can still do that with type assertions - I only expect it to keep the code cleaner and more flexible because the different cases are called out explicitly and you always know which one you\u0027re getting (in addition to the fact that it prevents the need to clone the above member variables).\n\n\n\nAlternatively, for an even quicker solution, I could also see it making sense to move the above variables (Pkg_path through Version_py3) into a separate struct, possibly named PythonVariantFactoryProperties, and embed that struct here, to make it easy to tell which properties describe the pre-split module (which are inside that embedded struct) and which properties describe the post-split module (which are in ActualVersion (which for now is just a single string)).\n\nI think that library.go similarly organizes properties by separately declaring the LibraryProperties struct from the LibraryMutatedProperties struct.",
+      "revId": "227ba2ac43a7650d90939188b0707beb2ab89dc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67648aa3_ebcf4a27",
+        "filename": "python/python.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-11T01:24:55Z",
+      "side": 1,
+      "message": "A quick option for keeping the usage concise (and easily refactored) without directly storing a pointer would be to create a getter method with a signature like\n\nfunc (p *PythonBaseModuleProperties) VersionSpecific_ActiveProperties() (props *PythonVersionProperties)\n\nand then using it on for example line 165.",
+      "revId": "227ba2ac43a7650d90939188b0707beb2ab89dc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
