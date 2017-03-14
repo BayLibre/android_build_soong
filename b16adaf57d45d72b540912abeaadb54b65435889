@@ -95,6 +95,78 @@
     },
     {
       "key": {
+        "uuid": "89225639_3be01c55",
+        "filename": "android/paths.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-03-14T20:51:18Z",
+      "side": 1,
+      "message": "Incorrect: acknowledged above.",
+      "parentUuid": "2a432f42_4ac041b1",
+      "range": {
+        "startLine": 592,
+        "startChar": 35,
+        "endLine": 592,
+        "endChar": 75
+      },
+      "revId": "b16adaf57d45d72b540912abeaadb54b65435889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c02412a6_d8851edd",
+        "filename": "android/paths.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-03-14T20:51:18Z",
+      "side": 1,
+      "message": "https://cs.corp.google.com/aosp-master/development/vndk/tools/abi-tool/vndk_abi_tool.py currently creates binary reference dumps in this directory by creating it. Its probably better to have all vndk tool related things in development/vndk. I\u0027m changing this.",
+      "parentUuid": "8d6de735_f1d541f2",
+      "range": {
+        "startLine": 592,
+        "startChar": 20,
+        "endLine": 592,
+        "endChar": 30
+      },
+      "revId": "b16adaf57d45d72b540912abeaadb54b65435889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d58c777_979a239e",
+        "filename": "android/paths.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-03-14T20:51:18Z",
+      "side": 1,
+      "message": "I believe my comment incorrectly represents the current scenario, vndk-core will be a super-set so it will be present for each library regardless of whether it has an extension or not.This probably needs to change to ctx.Arch().String().",
+      "parentUuid": "e6aded8e_45b44854",
+      "range": {
+        "startLine": 592,
+        "startChar": 35,
+        "endLine": 592,
+        "endChar": 75
+      },
+      "revId": "b16adaf57d45d72b540912abeaadb54b65435889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0bf7ccd9_362d94c6",
         "filename": "cc/cc.go",
         "patchSetId": 7
