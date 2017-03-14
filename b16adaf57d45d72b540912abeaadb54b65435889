@@ -115,6 +115,30 @@
       "revId": "b16adaf57d45d72b540912abeaadb54b65435889",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cef1160_e9668703",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-03-14T05:35:16Z",
+      "side": 1,
+      "message": "This was just so that we could run a script to copy the set of abi dumps contained in VndkLibraries after one build. Otherwise we would have to run the vndk-def tool, and do another build (which would just execute the targets to dump abis for these libraries, and not anything else). Just to cut the number of steps (even though the last step isn\u0027t rebuilding everything)",
+      "parentUuid": "9c67cd55_94b77775",
+      "range": {
+        "startLine": 400,
+        "startChar": 27,
+        "endLine": 400,
+        "endChar": 86
+      },
+      "revId": "b16adaf57d45d72b540912abeaadb54b65435889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
