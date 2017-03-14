@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "2a432f42_4ac041b1",
+        "filename": "android/paths.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-03-14T05:39:44Z",
+      "side": 1,
+      "message": "https://b.corp.google.com/issues/33185435. Can\u0027t vendors have their own subset of vndk-core ? One product might have an extended vndk-core library and the other might not ?",
+      "parentUuid": "e6aded8e_45b44854",
+      "range": {
+        "startLine": 592,
+        "startChar": 35,
+        "endLine": 592,
+        "endChar": 75
+      },
+      "revId": "b16adaf57d45d72b540912abeaadb54b65435889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0bf7ccd9_362d94c6",
         "filename": "cc/cc.go",
         "patchSetId": 7
