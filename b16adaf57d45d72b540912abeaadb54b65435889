@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "1834f27d_a717ccb2",
+        "filename": "android/paths.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-03-14T05:26:53Z",
+      "side": 1,
+      "message": "These should be coming through dedicated AConfig() (or more likely DeviceConfig) methods. So they\u0027d come through the JSON file, not the environment variables that may or may not be set.",
+      "range": {
+        "startLine": 582,
+        "startChar": 0,
+        "endLine": 583,
+        "endChar": 67
+      },
+      "revId": "b16adaf57d45d72b540912abeaadb54b65435889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d6de735_f1d541f2",
+        "filename": "android/paths.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-03-14T05:26:53Z",
+      "side": 1,
+      "message": "This path isn\u0027t part of the source tree -- where is it supposed to come from?",
+      "range": {
+        "startLine": 592,
+        "startChar": 20,
+        "endLine": 592,
+        "endChar": 30
+      },
+      "revId": "b16adaf57d45d72b540912abeaadb54b65435889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6aded8e_45b44854",
+        "filename": "android/paths.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-03-14T05:26:53Z",
+      "side": 1,
+      "message": "The VNDK ABI may not change per product or build variant -- why would these be in the paths?",
+      "range": {
+        "startLine": 592,
+        "startChar": 35,
+        "endLine": 592,
+        "endChar": 75
+      },
+      "revId": "b16adaf57d45d72b540912abeaadb54b65435889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0bf7ccd9_362d94c6",
         "filename": "cc/cc.go",
         "patchSetId": 7
@@ -22,6 +91,30 @@
       "revId": "b16adaf57d45d72b540912abeaadb54b65435889",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c67cd55_94b77775",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-03-14T05:26:53Z",
+      "side": 1,
+      "message": "What\u0027s the point in dumping these if we don\u0027t know the VNDK set? We won\u0027t be defining an ABI set until after we know the VNDK.",
+      "parentUuid": "0bf7ccd9_362d94c6",
+      "range": {
+        "startLine": 400,
+        "startChar": 27,
+        "endLine": 400,
+        "endChar": 86
+      },
+      "revId": "b16adaf57d45d72b540912abeaadb54b65435889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
