@@ -235,6 +235,30 @@
       "revId": "b16adaf57d45d72b540912abeaadb54b65435889",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e083df2c_81ec6b68",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-03-14T23:59:15Z",
+      "side": 1,
+      "message": "On reconsideration, even this would be unnecessary taking into account, the fact that the superset of vndk-core will always be constant, leading to a constant set of reference dumps.",
+      "parentUuid": "6cef1160_e9668703",
+      "range": {
+        "startLine": 400,
+        "startChar": 27,
+        "endLine": 400,
+        "endChar": 86
+      },
+      "revId": "b16adaf57d45d72b540912abeaadb54b65435889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
