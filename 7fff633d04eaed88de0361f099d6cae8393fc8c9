@@ -22,6 +22,30 @@
       "revId": "7fff633d04eaed88de0361f099d6cae8393fc8c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66ad77e0_983f1435",
+        "filename": "cc/library.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-03-14T00:15:27Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "8d7c6f38_933643b6",
+      "range": {
+        "startLine": 607,
+        "startChar": 10,
+        "endLine": 607,
+        "endChar": 15
+      },
+      "revId": "7fff633d04eaed88de0361f099d6cae8393fc8c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
