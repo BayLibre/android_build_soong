@@ -1,0 +1,208 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87bf34a5_a66cb5e4",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-15T22:30:31Z",
+      "side": 1,
+      "message": "Do you think it makes sense to move this type down to line 81 where the type methods are defined?",
+      "revId": "fb62e62edaab45b1d37d496eafdb8954185d26b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3c8374e_afb20a6f",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-15T22:30:31Z",
+      "side": 1,
+      "message": "Could we move this comment into the body of the method next to the code that it refers to (or remove this comment)? Then could we add a comment telling the method\u0027s purpose (or rename the method)?\n\nI found the example in the commit message to be informative. It seems to me that the example would be better off moved into the code as a comment, to make it easier for people to find it.",
+      "revId": "fb62e62edaab45b1d37d496eafdb8954185d26b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8d39065_afc1ba7f",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-15T22:30:31Z",
+      "side": 1,
+      "message": "I\u0027m inclined to rename the \u0027Set\u0027 method to \u0027ParseFiles\u0027 to clarify what it does, and then if we still need a \u0027Set\u0027 method, then make a short \u0027Set\u0027 method that just calls \u0027ParseFiles\u0027",
+      "revId": "fb62e62edaab45b1d37d496eafdb8954185d26b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3af44db_4fc8ece3",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-15T22:30:31Z",
+      "side": 1,
+      "message": "Is this a user-visible error message? If so, I imagine we want the message to reference the command-line arguments somehow, and if not, then I imagine we want it to say something like \u0027fmt.Errorf(\"already called Set on %s\\n\", d)\u0027",
+      "revId": "fb62e62edaab45b1d37d496eafdb8954185d26b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cab2df5_967ed230",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-15T22:30:31Z",
+      "side": 1,
+      "message": "How about extracting lines 94 through 112 into another method perhaps called \u0027LoadFile\u0027 to clarify what\u0027s going on?",
+      "revId": "fb62e62edaab45b1d37d496eafdb8954185d26b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3f0dddd_bab9de4c",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-15T22:30:31Z",
+      "side": 1,
+      "message": "I\u0027d be inclined to either put a comment saying \"parse each line\" (or alternatively to extract lines 100 through 111 into a parseLine method, using the method name as the documentation)",
+      "revId": "fb62e62edaab45b1d37d496eafdb8954185d26b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34187b75_521beab5",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-15T22:30:31Z",
+      "side": 1,
+      "message": "Sometimes I see error messages explain the proper format with a regex, such as \"must match regex [^:]*:[^:]*:[^:]*\"",
+      "revId": "fb62e62edaab45b1d37d496eafdb8954185d26b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b46ff1b1_9bcc10ef",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-15T22:30:31Z",
+      "side": 1,
+      "message": "sweet",
+      "revId": "fb62e62edaab45b1d37d496eafdb8954185d26b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df0bb9b3_014f9ead",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-15T22:30:31Z",
+      "side": 1,
+      "message": "I also like the name \"sourceMap\" or \"sourceMappings\" or \"fileMappings\" but I don\u0027t have a super strong opinion",
+      "revId": "fb62e62edaab45b1d37d496eafdb8954185d26b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3b67e66_99696bb9",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-15T22:30:31Z",
+      "side": 1,
+      "message": "Could we move the second sentence into the first one, to get something like \"comma-separated list of files not to be included directly but which instead contains lines of the form \u0027\u003czip\u003edest:src\u0027, describing other files to be added to the zip\"?",
+      "revId": "fb62e62edaab45b1d37d496eafdb8954185d26b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b42b31a_fdcad713",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-15T22:30:31Z",
+      "side": 1,
+      "message": "Can we get a comment reminding why there are two \u0027for\u0027 loops? Something like \u0027load the listFiles, which specify other files to include\u0027? and then below on line 209 another comment like \u0027also add the usual files that are to be added directly (distinct from the files that list other files to add)\u0027?\n\nEven better, it seems to me that it would be preferable to split this into two pieces, one piece that determines the files to include, and the other piece that does the inclusion, which would then deduplicate lines 212-217 from lines 198-217. I imagine this would be one method called perhaps \u0027findFilesToInclude\u0027 that returns a list of objects (each having a base path, src, and dest), and another method called perhaps \u0027includeFiles\u0027 that validates the paths and adds them to resultant map.",
+      "revId": "fb62e62edaab45b1d37d496eafdb8954185d26b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f2c0196_dc9ae065",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-15T22:30:31Z",
+      "side": 1,
+      "message": "Is `fmt.Fprintln \u0026\u0026 os.Exit` better than \u0027panic\u0027? \u0027panic\u0027 does have the advantage of giving a stacktrace",
+      "revId": "fb62e62edaab45b1d37d496eafdb8954185d26b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
