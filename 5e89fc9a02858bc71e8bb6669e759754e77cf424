@@ -46,6 +46,23 @@
       "revId": "5e89fc9a02858bc71e8bb6669e759754e77cf424",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3542586e_a45e3d03",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-03-16T20:52:36Z",
+      "side": 1,
+      "message": "Add this only if flags.arFlags is not blank",
+      "revId": "5e89fc9a02858bc71e8bb6669e759754e77cf424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
