@@ -22,6 +22,30 @@
       "revId": "5e89fc9a02858bc71e8bb6669e759754e77cf424",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3965d1a_77e26d00",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1068404
+      },
+      "writtenOn": "2017-03-16T20:31:21Z",
+      "side": 1,
+      "message": "If you look at binary.mk and definitions.mk in build/make/core, there\u0027s a PRIVATE_ARFLAGS, which allows you to set my_arflags. It\u0027s currently only used in config_sanitizers.mk (for the same reason that I was looking to add these).",
+      "parentUuid": "960eac15_8fc91688",
+      "range": {
+        "startLine": 9,
+        "startChar": 54,
+        "endLine": 10,
+        "endChar": 35
+      },
+      "revId": "5e89fc9a02858bc71e8bb6669e759754e77cf424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
