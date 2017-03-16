@@ -357,6 +357,7 @@ func (z *zipWriter) writeRelFile(root, file string) error {
 
 func (z *zipWriter) writeFile(rel, file string) error {
 	var fileSize int64
+	var executable bool
 
 	if s, err := os.Lstat(file); err != nil {
 		return err
@@ -371,6 +372,7 @@ func (z *zipWriter) writeFile(rel, file string) error {
 		return fmt.Errorf("%s is not a file, directory, or symlink", file)
 	} else {
 		fileSize = s.Size()
+		executable = s.Mode()&0100 != 0
 	}
 
 	if z.directories {
@@ -395,6 +397,9 @@ func (z *zipWriter) writeFile(rel, file string) error {
 		},
 	}
 	ze.fh.SetModTime(z.time)
+	if executable {
+		ze.fh.SetMode(0700)
+	}
 
 	r, err := os.Open(file)
 	if err != nil {
