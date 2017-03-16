@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "960eac15_8fc91688",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-03-16T20:25:34Z",
+      "side": 1,
+      "message": "What are you referring to in Make? We\u0027ve only got global flags in make in order to deal with Darwin, AFAICT, we don\u0027t support per-module ar flags.",
+      "range": {
+        "startLine": 9,
+        "startChar": 54,
+        "endLine": 10,
+        "endChar": 35
+      },
+      "revId": "5e89fc9a02858bc71e8bb6669e759754e77cf424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
