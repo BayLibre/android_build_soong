@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f26dabd_898ba151",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-03-16T02:30:00Z",
+      "side": 1,
+      "message": "What happens when the path actually has a comma in it? Normally we\u0027d make this a repeated argument.",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 52
+      },
+      "revId": "406f029b6080feb6e8eb271dba8c318e7f903e91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf731b49_78e9fe85",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-03-16T02:30:00Z",
+      "side": 1,
+      "message": "Similarly, I\u0027m worried about : as a separator -- we use this a lot in Make right now, but I\u0027ve had people try to use it for real files recently until they got really strange errors.\n\nDo we actually need the full src:dst functionality, or should we do addRoot in addition to relativeRoot?\n\nI do like switching away from writeListFile/writeRelFile though, those were always annoying.",
+      "range": {
+        "startLine": 103,
+        "startChar": 33,
+        "endLine": 103,
+        "endChar": 37
+      },
+      "revId": "406f029b6080feb6e8eb271dba8c318e7f903e91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76c28e15_163cc034",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-03-16T02:30:00Z",
+      "side": 1,
+      "message": "This should happen after the cpu profiling /tracing is running",
+      "revId": "406f029b6080feb6e8eb271dba8c318e7f903e91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0e9e5c3_34f866b5",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-03-16T02:30:00Z",
+      "side": 1,
+      "message": "Iterations over maps don\u0027t have a guaranteed order. The current version of soong_zip at least produces repeatable zip files since it iterates over all the list args in order, then all the file args in order. Ideally we\u0027d iterate over each arg\u0027s files in the order the were specified.\n\nSo for `-l a -f b -l c -f d`, right now we do $(a) $(c) b d, ideally it would be $(a) b $(c) d.",
+      "range": {
+        "startLine": 308,
+        "startChar": 2,
+        "endLine": 308,
+        "endChar": 33
+      },
+      "revId": "406f029b6080feb6e8eb271dba8c318e7f903e91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
