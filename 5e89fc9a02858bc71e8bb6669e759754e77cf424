@@ -63,6 +63,24 @@
       "revId": "5e89fc9a02858bc71e8bb6669e759754e77cf424",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71dde38e_068b98ff",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1068404
+      },
+      "writtenOn": "2017-03-16T21:08:11Z",
+      "side": 1,
+      "message": "Makes sense. Done.",
+      "parentUuid": "3542586e_a45e3d03",
+      "revId": "5e89fc9a02858bc71e8bb6669e759754e77cf424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
