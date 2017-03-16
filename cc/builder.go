@@ -184,6 +184,7 @@ func init() {
 
 type builderFlags struct {
 	globalFlags string
+	arFlags     string
 	asFlags     string
 	cFlags      string
 	conlyFlags  string
@@ -366,7 +367,7 @@ func TransformObjToStaticLib(ctx android.ModuleContext, objFiles android.Paths,
 	}
 
 	arCmd := gccCmd(flags.toolchain, "ar")
-	arFlags := "crsPD"
+	arFlags := "crsPD" + " " + flags.arFlags
 
 	ctx.ModuleBuild(pctx, android.ModuleBuildParams{
 		Rule:      ar,
