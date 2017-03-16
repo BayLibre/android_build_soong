@@ -167,6 +167,54 @@
     },
     {
       "key": {
+        "uuid": "6a5ce3e4_9c5e83f7",
+        "filename": "android/paths.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-03-16T00:38:00Z",
+      "side": 1,
+      "message": "No, there\u0027s one vndk-core, it only changes by arch / version.",
+      "parentUuid": "89225639_3be01c55",
+      "range": {
+        "startLine": 592,
+        "startChar": 35,
+        "endLine": 592,
+        "endChar": 75
+      },
+      "revId": "b16adaf57d45d72b540912abeaadb54b65435889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2e795b0_c8b26411",
+        "filename": "android/paths.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-03-16T00:38:00Z",
+      "side": 1,
+      "message": "We\u0027re going to need new repositories to store vndk prebuilts as well, I suspect the dumps should be near that, not under development.",
+      "parentUuid": "c02412a6_d8851edd",
+      "range": {
+        "startLine": 592,
+        "startChar": 20,
+        "endLine": 592,
+        "endChar": 30
+      },
+      "revId": "b16adaf57d45d72b540912abeaadb54b65435889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0bf7ccd9_362d94c6",
         "filename": "cc/cc.go",
         "patchSetId": 7
@@ -250,6 +298,30 @@
       "side": 1,
       "message": "On reconsideration, even this would be unnecessary taking into account, the fact that the superset of vndk-core will always be constant, leading to a constant set of reference dumps.",
       "parentUuid": "6cef1160_e9668703",
+      "range": {
+        "startLine": 400,
+        "startChar": 27,
+        "endLine": 400,
+        "endChar": 86
+      },
+      "revId": "b16adaf57d45d72b540912abeaadb54b65435889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83817620_901b9e9b",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-03-16T00:38:00Z",
+      "side": 1,
+      "message": "There reference dumps are only done a few times a year by someone here, optimizing that process seems premature. I suspect the process will be leaving it entirely open for most of the time, and only doing a reference dump once we believe this VNDK ABI will be stable (so near-ish to release). Then we\u0027ll be confirming that release branch used for security updates matches that ABI.",
+      "parentUuid": "e083df2c_81ec6b68",
       "range": {
         "startLine": 400,
         "startChar": 27,

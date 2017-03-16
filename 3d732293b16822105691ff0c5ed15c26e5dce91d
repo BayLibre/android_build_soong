@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4965816f_551ffa1c",
+        "filename": "cc/builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-03-16T00:38:00Z",
+      "side": 1,
+      "message": "Are you generating the output file the build system knows about as well? If you don\u0027t, we\u0027re going to run this way more than necessary, since it\u0027ll always be missing. (So rm -f ${out} \u0026\u0026 header-abi-diff ... \u0026\u0026 touch ${out})",
+      "range": {
+        "startLine": 191,
+        "startChar": 1,
+        "endLine": 193,
+        "endChar": 22
+      },
+      "revId": "3d732293b16822105691ff0c5ed15c26e5dce91d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
