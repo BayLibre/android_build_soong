@@ -22,6 +22,30 @@
       "revId": "7a5b46db91651f52c45130ec93d3cf0ab5ce9655",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82fecadf_5ad33318",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1068404
+      },
+      "writtenOn": "2017-03-17T00:13:37Z",
+      "side": 1,
+      "message": "I was working under that assumption - it seems like a sane one to me.  I\u0027ll defer to Evgenii\u0027s opinion here though.",
+      "parentUuid": "bef0bdff_579436fc",
+      "range": {
+        "startLine": 37,
+        "startChar": 24,
+        "endLine": 37,
+        "endChar": 64
+      },
+      "revId": "7a5b46db91651f52c45130ec93d3cf0ab5ce9655",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
