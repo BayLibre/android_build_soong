@@ -588,12 +588,7 @@ func (library *libraryDecorator) toc() android.OptionalPath {
 func (library *libraryDecorator) install(ctx ModuleContext, file android.Path) {
 	if !ctx.static() {
 		if ctx.Device() {
-			if ctx.isNdk() {
-				library.baseInstaller.subDir = "ndk"
-				if ctx.Proprietary() {
-					ctx.ModuleErrorf("NDK library must not be proprietary")
-				}
-			} else if ctx.isVndk() {
+			if ctx.isVndk() {
 				library.baseInstaller.subDir = "vndk"
 				if ctx.Proprietary() {
 					ctx.ModuleErrorf("VNDK library must not be proprietary")
