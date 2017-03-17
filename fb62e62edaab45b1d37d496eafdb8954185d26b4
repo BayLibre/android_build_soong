@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4c5bdf3d_387944ee",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-17T21:26:36Z",
+      "side": 1,
+      "message": "removed this type",
+      "parentUuid": "87bf34a5_a66cb5e4",
+      "revId": "fb62e62edaab45b1d37d496eafdb8954185d26b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d3c8374e_afb20a6f",
         "filename": "cmd/soong_zip/soong_zip.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2017-03-15T22:30:31Z",
       "side": 1,
       "message": "Could we move this comment into the body of the method next to the code that it refers to (or remove this comment)? Then could we add a comment telling the method\u0027s purpose (or rename the method)?\n\nI found the example in the commit message to be informative. It seems to me that the example would be better off moved into the code as a comment, to make it easier for people to find it.",
+      "revId": "fb62e62edaab45b1d37d496eafdb8954185d26b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0daafcb2_0a1cbfff",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-17T21:26:36Z",
+      "side": 1,
+      "message": "Removed this function.",
+      "parentUuid": "d3c8374e_afb20a6f",
       "revId": "fb62e62edaab45b1d37d496eafdb8954185d26b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "b5e999ec_a9f2d4b2",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-17T21:26:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8d39065_afc1ba7f",
+      "revId": "fb62e62edaab45b1d37d496eafdb8954185d26b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3af44db_4fc8ece3",
         "filename": "cmd/soong_zip/soong_zip.go",
         "patchSetId": 1
@@ -67,6 +121,24 @@
       "revId": "fb62e62edaab45b1d37d496eafdb8954185d26b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa011fc4_77e1b0fc",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-17T21:26:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3af44db_4fc8ece3",
+      "revId": "fb62e62edaab45b1d37d496eafdb8954185d26b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "64be76d0_59f0f712",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-17T21:26:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cab2df5_967ed230",
+      "revId": "fb62e62edaab45b1d37d496eafdb8954185d26b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3f0dddd_bab9de4c",
         "filename": "cmd/soong_zip/soong_zip.go",
         "patchSetId": 1
@@ -101,6 +191,24 @@
       "revId": "fb62e62edaab45b1d37d496eafdb8954185d26b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac5ce1ef_dca60696",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-17T21:26:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3f0dddd_bab9de4c",
+      "revId": "fb62e62edaab45b1d37d496eafdb8954185d26b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "8428e87c_9491dfc0",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-17T21:26:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34187b75_521beab5",
+      "revId": "fb62e62edaab45b1d37d496eafdb8954185d26b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b46ff1b1_9bcc10ef",
         "filename": "cmd/soong_zip/soong_zip.go",
         "patchSetId": 1
@@ -138,6 +264,24 @@
     },
     {
       "key": {
+        "uuid": "67c1859d_68141d0d",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-17T21:26:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b46ff1b1_9bcc10ef",
+      "revId": "fb62e62edaab45b1d37d496eafdb8954185d26b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df0bb9b3_014f9ead",
         "filename": "cmd/soong_zip/soong_zip.go",
         "patchSetId": 1
@@ -149,6 +293,24 @@
       "writtenOn": "2017-03-15T22:30:31Z",
       "side": 1,
       "message": "I also like the name \"sourceMap\" or \"sourceMappings\" or \"fileMappings\" but I don\u0027t have a super strong opinion",
+      "revId": "fb62e62edaab45b1d37d496eafdb8954185d26b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9312f3f0_31069360",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-17T21:26:36Z",
+      "side": 1,
+      "message": "removed this dtsMap.",
+      "parentUuid": "df0bb9b3_014f9ead",
       "revId": "fb62e62edaab45b1d37d496eafdb8954185d26b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -172,6 +334,24 @@
     },
     {
       "key": {
+        "uuid": "5ae58d4d_61bf636f",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-17T21:26:36Z",
+      "side": 1,
+      "message": "removed this flag.",
+      "parentUuid": "c3b67e66_99696bb9",
+      "revId": "fb62e62edaab45b1d37d496eafdb8954185d26b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9b42b31a_fdcad713",
         "filename": "cmd/soong_zip/soong_zip.go",
         "patchSetId": 1
@@ -189,6 +369,24 @@
     },
     {
       "key": {
+        "uuid": "9163bef0_eef83cf8",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-17T21:26:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b42b31a_fdcad713",
+      "revId": "fb62e62edaab45b1d37d496eafdb8954185d26b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f2c0196_dc9ae065",
         "filename": "cmd/soong_zip/soong_zip.go",
         "patchSetId": 1
@@ -200,6 +398,24 @@
       "writtenOn": "2017-03-15T22:30:31Z",
       "side": 1,
       "message": "Is `fmt.Fprintln \u0026\u0026 os.Exit` better than \u0027panic\u0027? \u0027panic\u0027 does have the advantage of giving a stacktrace",
+      "revId": "fb62e62edaab45b1d37d496eafdb8954185d26b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3cb2e4a_f58b7599",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-17T21:26:36Z",
+      "side": 1,
+      "message": "It seems panic when somthing goes horrbly wrong, probably a programmer error.\nos.Exit(1) want an orderly exit on an error that is expected(user input error)",
+      "parentUuid": "4f2c0196_dc9ae065",
       "revId": "fb62e62edaab45b1d37d496eafdb8954185d26b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
