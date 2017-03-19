@@ -50,6 +50,10 @@ func (c *Module) AndroidMk() (ret android.AndroidMkData, err error) {
 		return ret, nil
 	}
 
+	if c.Properties.IsVndk {
+		ret.SubName = ".vndk"
+	}
+
 	ret.OutputFile = c.outputFile
 	ret.Extra = append(ret.Extra, func(w io.Writer, outputFile android.Path) (err error) {
 		fmt.Fprintln(w, "LOCAL_SANITIZE := never")
@@ -62,6 +66,9 @@ func (c *Module) AndroidMk() (ret android.AndroidMkData, err error) {
 		} else {
 			// These are already included in LOCAL_SHARED_LIBRARIES
 			fmt.Fprintln(w, "LOCAL_CXX_STL := none")
+		}
+		if c.Properties.UseVndk {
+			fmt.Fprintln(w, "LOCAL_USE_VNDK := true")
 		}
 		return nil
 	})

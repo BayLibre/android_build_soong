@@ -174,7 +174,7 @@ func bionicHeaders(bionicArch, kernelArch string) string {
 }
 
 func VndkLibraries() []string {
-	return []string{}
+	return []string{"libc++"}
 }
 
 // This needs to be kept up to date with the list in system/core/rootdir/etc/ld.config.txt:

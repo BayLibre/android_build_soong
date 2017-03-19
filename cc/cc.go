@@ -35,6 +35,7 @@ func init() {
 
 	android.PreDepsMutators(func(ctx android.RegisterMutatorsContext) {
 		ctx.BottomUp("link", linkageMutator).Parallel()
+		ctx.BottomUp("vndk", vndkMutator).Parallel()
 		ctx.BottomUp("ndk_api", ndkApiMutator).Parallel()
 		ctx.BottomUp("test_per_src", testPerSrcMutator).Parallel()
 		ctx.BottomUp("begin", beginMutator).Parallel()
@@ -142,6 +143,9 @@ type BaseProperties struct {
 	AndroidMkSharedLibs []string `blueprint:"mutated"`
 	HideFromMake        bool     `blueprint:"mutated"`
 	PreventInstall      bool     `blueprint:"mutated"`
+
+	UseVndk bool `blueprint:"mutated"`
+	IsVndk  bool `blueprint:"mutated"`
 }
 
 type UnusedProperties struct {
@@ -157,6 +161,7 @@ type ModuleContextIntf interface {
 	sdk() bool
 	sdkVersion() string
 	vndk() bool
+	isVndk() bool
 	selectedStl() string
 	baseModuleName() string
 }
@@ -384,7 +389,11 @@ func (ctx *moduleContextImpl) sdkVersion() string {
 }
 
 func (ctx *moduleContextImpl) vndk() bool {
-	return ctx.ctx.Os() == android.Android && ctx.ctx.Proprietary() && ctx.ctx.DeviceConfig().CompileVndk()
+	return ctx.mod.Properties.UseVndk
+}
+
+func (ctx *moduleContextImpl) isVndk() bool {
+	return ctx.mod.Properties.IsVndk
 }
 
 func (ctx *moduleContextImpl) selectedStl() string {
@@ -633,9 +642,10 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 
 	variantNdkLibs := []string{}
 	variantLateNdkLibs := []string{}
+	variantVndkLibs := []string{}
+	variantLateVndkLibs := []string{}
+	version := ctx.sdkVersion()
 	if ctx.Os() == android.Android {
-		version := ctx.sdkVersion()
-
 		// Rewrites the names of shared libraries into the names of the NDK
 		// libraries where appropriate. This returns two slices.
 		//
@@ -646,8 +656,9 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 		// The second is a list of ndk_library modules. These need to be
 		// separated because they are a variation dependency and must be added
 		// in a different manner.
-		rewriteNdkLibs := func(list []string) ([]string, []string) {
+		rewriteNdkLibs := func(list []string) ([]string, []string, []string) {
 			variantLibs := []string{}
+			vndkLibs := []string{}
 			nonvariantLibs := []string{}
 			for _, entry := range list {
 				if ctx.sdk() && inList(entry, ndkPrebuiltSharedLibraries) {
@@ -658,15 +669,17 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 					}
 				} else if ctx.vndk() && inList(entry, config.LLndkLibraries()) {
 					nonvariantLibs = append(nonvariantLibs, entry+llndkLibrarySuffix)
+				} else if inList(entry, config.VndkLibraries()) {
+					vndkLibs = append(vndkLibs, entry)
 				} else {
-					nonvariantLibs = append(variantLibs, entry)
+					nonvariantLibs = append(nonvariantLibs, entry)
 				}
 			}
-			return nonvariantLibs, variantLibs
+			return nonvariantLibs, variantLibs, vndkLibs
 		}
 
-		deps.SharedLibs, variantNdkLibs = rewriteNdkLibs(deps.SharedLibs)
-		deps.LateSharedLibs, variantLateNdkLibs = rewriteNdkLibs(deps.LateSharedLibs)
+		deps.SharedLibs, variantNdkLibs, variantVndkLibs = rewriteNdkLibs(deps.SharedLibs)
+		deps.LateSharedLibs, variantLateNdkLibs, variantLateVndkLibs = rewriteNdkLibs(deps.LateSharedLibs)
 	}
 
 	for _, lib := range deps.HeaderLibs {
@@ -721,11 +734,27 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 		actx.AddDependency(c, crtEndDepTag, deps.CrtEnd)
 	}
 
-	version := ctx.sdkVersion()
 	actx.AddVariationDependencies([]blueprint.Variation{
 		{"ndk_api", version}, {"link", "shared"}}, ndkStubDepTag, variantNdkLibs...)
 	actx.AddVariationDependencies([]blueprint.Variation{
 		{"ndk_api", version}, {"link", "shared"}}, ndkLateStubDepTag, variantLateNdkLibs...)
+
+	vndkVariant := blueprint.Variation{"vndk", ""}
+	if ctx.vndk() {
+		vndkVariant.Variation = "vndk"
+	}
+
+	for _, lib := range variantVndkLibs {
+		depTag := sharedDepTag
+		if inList(lib, deps.ReexportSharedLibHeaders) {
+			depTag = sharedExportDepTag
+		}
+		actx.AddVariationDependencies([]blueprint.Variation{vndkVariant, {"link", "shared"}},
+			depTag, lib)
+	}
+
+	actx.AddVariationDependencies([]blueprint.Variation{
+		vndkVariant, {"link", "shared"}}, lateSharedDepTag, variantLateVndkLibs...)
 }
 
 func beginMutator(ctx android.BottomUpMutatorContext) {
@@ -1057,6 +1086,25 @@ func DefaultsFactory(props ...interface{}) (blueprint.Module, []interface{}) {
 	)
 
 	return android.InitDefaultsModule(module, module, props...)
+}
+
+func vndkMutator(mctx android.BottomUpMutatorContext) {
+	// Only apply the VNDK to Android modules that are compiling against the VNDK.
+	if !mctx.DeviceConfig().CompileVndk() || mctx.Os() != android.Android {
+		return
+	}
+
+	if _, ok := mctx.Module().(*Module); ok {
+		if inList(mctx.ModuleName(), config.VndkLibraries()) {
+			modules := mctx.CreateLocalVariations("", "vndk")
+			vndk := modules[1].(*Module)
+			vndk.Properties.UseVndk = true
+			vndk.Properties.IsVndk = true
+		} else if mctx.Proprietary() {
+			m := mctx.CreateLocalVariations("vndk")
+			m[0].(*Module).Properties.UseVndk = true
+		}
+	}
 }
 
 // lastUniqueElements returns all unique elements of a slice, keeping the last copy of each
