@@ -77,23 +77,23 @@ func (c *Module) AndroidMk() (ret android.AndroidMkData, err error) {
 	return ret, nil
 }
 
-func (library *libraryDecorator) AndroidMk(ctx AndroidMkContext, ret *android.AndroidMkData) {
-	writeExportedIncludes := func(w io.Writer) {
-		var exportedIncludes []string
-		for _, flag := range library.exportedFlags() {
-			if strings.HasPrefix(flag, "-I") {
-				exportedIncludes = append(exportedIncludes, strings.TrimPrefix(flag, "-I"))
-			}
-		}
-		if len(exportedIncludes) > 0 {
-			fmt.Fprintln(w, "LOCAL_EXPORT_C_INCLUDE_DIRS :=", strings.Join(exportedIncludes, " "))
-		}
-		exportedIncludeDeps := library.exportedFlagsDeps()
-		if len(exportedIncludeDeps) > 0 {
-			fmt.Fprintln(w, "LOCAL_EXPORT_C_INCLUDE_DEPS :=", strings.Join(exportedIncludeDeps.Strings(), " "))
+func (library *libraryDecorator) androidMkWriteExportedIncludes(w io.Writer) {
+	var exportedIncludes []string
+	for _, flag := range library.exportedFlags() {
+		if strings.HasPrefix(flag, "-I") {
+			exportedIncludes = append(exportedIncludes, strings.TrimPrefix(flag, "-I"))
 		}
 	}
+	if len(exportedIncludes) > 0 {
+		fmt.Fprintln(w, "LOCAL_EXPORT_C_INCLUDE_DIRS :=", strings.Join(exportedIncludes, " "))
+	}
+	exportedIncludeDeps := library.exportedFlagsDeps()
+	if len(exportedIncludeDeps) > 0 {
+		fmt.Fprintln(w, "LOCAL_EXPORT_C_INCLUDE_DEPS :=", strings.Join(exportedIncludeDeps.Strings(), " "))
+	}
+}
 
+func (library *libraryDecorator) AndroidMk(ctx AndroidMkContext, ret *android.AndroidMkData) {
 	if library.static() {
 		ret.Class = "STATIC_LIBRARIES"
 	} else if library.shared() {
@@ -125,7 +125,7 @@ func (library *libraryDecorator) AndroidMk(ctx AndroidMkContext, ret *android.An
 				fmt.Fprintln(w, "LOCAL_IS_HOST_MODULE := true")
 			}
 
-			writeExportedIncludes(w)
+			library.androidMkWriteExportedIncludes(w)
 			fmt.Fprintln(w, "include $(BUILD_HEADER_LIBRARY)")
 
 			return nil
@@ -135,7 +135,7 @@ func (library *libraryDecorator) AndroidMk(ctx AndroidMkContext, ret *android.An
 	}
 
 	ret.Extra = append(ret.Extra, func(w io.Writer, outputFile android.Path) error {
-		writeExportedIncludes(w)
+		library.androidMkWriteExportedIncludes(w)
 
 		fmt.Fprintln(w, "LOCAL_BUILT_MODULE_STEM := $(LOCAL_MODULE)"+outputFile.Ext())
 
@@ -291,6 +291,22 @@ func (c *stubDecorator) AndroidMk(ctx AndroidMkContext, ret *android.AndroidMkDa
 		// dozens of libraries with the same name, they'll clobber each other
 		// and the real versions of the libraries from the platform).
 		fmt.Fprintln(w, "LOCAL_COPY_TO_INTERMEDIATE_LIBRARIES := false")
+		return nil
+	})
+}
+
+func (c *llndkStubDecorator) AndroidMk(ctx AndroidMkContext, ret *android.AndroidMkData) {
+	ret.Class = "SHARED_LIBRARIES"
+
+	ret.Extra = append(ret.Extra, func(w io.Writer, outputFile android.Path) error {
+		c.libraryDecorator.androidMkWriteExportedIncludes(w)
+
+		fmt.Fprintln(w, "LOCAL_BUILT_MODULE_STEM := $(LOCAL_MODULE)"+outputFile.Ext())
+		//fmt.Fprintln(w, "LOCAL_COPY_TO_INTERMEDIATE_LIBRARIES := false")
+		fmt.Fprintln(w, "LOCAL_STRIP_MODULE := false")
+		fmt.Fprintln(w, "LOCAL_SYSTEM_SHARED_LIBRARIES :=")
+		fmt.Fprintln(w, "LOCAL_UNINSTALLABLE_MODULE := true")
+
 		return nil
 	})
 }
