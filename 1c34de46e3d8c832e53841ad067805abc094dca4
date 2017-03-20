@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "93e29b77_177de736",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-20T20:46:20Z",
+      "side": 1,
+      "message": "Thanks Jeff. I will create separate CL to address naming issues since it is related to untouched code(relativeRoot).",
+      "parentUuid": "69ff6aab_39bbe52b",
+      "revId": "1c34de46e3d8c832e53841ad067805abc094dca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "303dad4d_225d200f",
         "filename": "cmd/soong_zip/soong_zip.go",
         "patchSetId": 6
