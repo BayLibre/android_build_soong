@@ -280,6 +280,24 @@
       "revId": "1c34de46e3d8c832e53841ad067805abc094dca4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6926987f_9b0d1e62",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-20T20:44:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fc30e552_a41da30b",
+      "revId": "1c34de46e3d8c832e53841ad067805abc094dca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
