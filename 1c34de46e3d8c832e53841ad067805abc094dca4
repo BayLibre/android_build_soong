@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "69ff6aab_39bbe52b",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-20T20:14:33Z",
+      "side": 1,
+      "message": "In that case can we rename \u0027rootPrefix\u0027 to something like \u0027sourceRootPrefix\u0027 or \u0027sourceRoot\u0027, and \u0027relativeRoot\u0027 to \u0027outputRoot\u0027 or \u0027outputRootPrefix\u0027 or something like that?",
+      "parentUuid": "b01a3e26_97f23bcd",
+      "revId": "1c34de46e3d8c832e53841ad067805abc094dca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "303dad4d_225d200f",
         "filename": "cmd/soong_zip/soong_zip.go",
         "patchSetId": 6
@@ -241,6 +259,24 @@
       "side": 1,
       "message": "slice is the reference of the array, but due to the structure of append(), I have to use pointers in order to modify the reference directly within the func  body without return a new slice to outside.. \nhttps://golang.org/src/builtin/builtin.go?s\u003d4716:4763#L124",
       "parentUuid": "65bfa08a_8e2689ca",
+      "revId": "1c34de46e3d8c832e53841ad067805abc094dca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc30e552_a41da30b",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-20T20:14:33Z",
+      "side": 1,
+      "message": "oh ok; you\u0027re right",
+      "parentUuid": "8365f0f4_411306bf",
       "revId": "1c34de46e3d8c832e53841ad067805abc094dca4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
