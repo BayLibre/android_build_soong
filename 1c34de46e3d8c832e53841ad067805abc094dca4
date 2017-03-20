@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b01a3e26_97f23bcd",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-20T18:00:39Z",
+      "side": 1,
+      "message": "rootPrefix is the prefix added to the output path. relativeRoot is the prefix of input path, and will be stripped off.",
+      "parentUuid": "99d91331_c046f168",
+      "revId": "1c34de46e3d8c832e53841ad067805abc094dca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "303dad4d_225d200f",
         "filename": "cmd/soong_zip/soong_zip.go",
         "patchSetId": 6
@@ -33,6 +51,24 @@
       "revId": "1c34de46e3d8c832e53841ad067805abc094dca4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0a67494_a23a07aa",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-20T18:00:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "303dad4d_225d200f",
+      "revId": "1c34de46e3d8c832e53841ad067805abc094dca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "de24d923_2d1c44de",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-20T18:00:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "734941be_ec36cf09",
+      "revId": "1c34de46e3d8c832e53841ad067805abc094dca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a11dde80_f3f98bc3",
         "filename": "cmd/soong_zip/soong_zip.go",
         "patchSetId": 6
@@ -67,6 +121,24 @@
       "revId": "1c34de46e3d8c832e53841ad067805abc094dca4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04cf5c77_b5e79666",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-20T18:00:39Z",
+      "side": 1,
+      "message": "Thanks Jeff!",
+      "parentUuid": "a11dde80_f3f98bc3",
+      "revId": "1c34de46e3d8c832e53841ad067805abc094dca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "baa48e8a_af649fb9",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-20T18:00:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "51fb7d37_4607284f",
+      "revId": "1c34de46e3d8c832e53841ad067805abc094dca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0da70a02_e0055116",
         "filename": "cmd/soong_zip/soong_zip.go",
         "patchSetId": 6
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "1e359af4_b70eaa5e",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-20T18:00:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0da70a02_e0055116",
+      "revId": "1c34de46e3d8c832e53841ad067805abc094dca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65bfa08a_8e2689ca",
         "filename": "cmd/soong_zip/soong_zip.go",
         "patchSetId": 6
@@ -115,6 +223,24 @@
       "writtenOn": "2017-03-18T00:28:05Z",
       "side": 1,
       "message": "I think that pathPairs is a slice, and I think that means it contains its own reference to the backing array, so I think you can replace \"*pathPairs\" with \"pathPairs\" and \"*[]pathPair\" with \"[]pathPair\"\n\nAt least, given that this line of code works, that should be the case",
+      "revId": "1c34de46e3d8c832e53841ad067805abc094dca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8365f0f4_411306bf",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-20T18:00:39Z",
+      "side": 1,
+      "message": "slice is the reference of the array, but due to the structure of append(), I have to use pointers in order to modify the reference directly within the func  body without return a new slice to outside.. \nhttps://golang.org/src/builtin/builtin.go?s\u003d4716:4763#L124",
+      "parentUuid": "65bfa08a_8e2689ca",
       "revId": "1c34de46e3d8c832e53841ad067805abc094dca4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
