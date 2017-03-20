@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "bde42d21_181e4fec",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-20T20:49:43Z",
+      "side": 1,
+      "message": "sounds good to me\n\nthanks",
+      "parentUuid": "93e29b77_177de736",
+      "revId": "1c34de46e3d8c832e53841ad067805abc094dca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "303dad4d_225d200f",
         "filename": "cmd/soong_zip/soong_zip.go",
         "patchSetId": 6
