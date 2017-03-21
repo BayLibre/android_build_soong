@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec5d6e86_6c06f266",
+        "filename": "cc/cmakelists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-03-21T17:29:00Z",
+      "side": 1,
+      "message": "you don\u0027t need to initialize slices, just remove these 2 lines",
+      "revId": "c21c568dc8bce6d525d6adc58c1a9dec15895ddf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "55732cd5_5edd7dd9",
+        "filename": "cc/cmakelists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-03-21T17:29:00Z",
+      "side": 1,
+      "message": "wrap long line",
+      "revId": "c21c568dc8bce6d525d6adc58c1a9dec15895ddf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aefc40f6_6ba95dbb",
+        "filename": "cc/cmakelists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-03-21T17:29:00Z",
+      "side": 1,
+      "message": "wrap long line",
+      "revId": "c21c568dc8bce6d525d6adc58c1a9dec15895ddf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
