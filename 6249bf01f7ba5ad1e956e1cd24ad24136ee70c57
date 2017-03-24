@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5661a988_f320ce9e",
+        "filename": "python/python.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-24T21:22:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aaf8ee1a_66bb5a91",
+      "revId": "6249bf01f7ba5ad1e956e1cd24ad24136ee70c57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ce840cb_6bdcb087",
         "filename": "python/python.go",
         "patchSetId": 18
@@ -30,6 +48,30 @@
       "writtenOn": "2017-03-16T21:42:06Z",
       "side": 1,
       "message": "I try to avoid magic strings wherever possible in blueprint files.  Do you expect there to be many more converters in the future?  If not, consider:\n\n Converter struct {\n    To2 bool\n    To3 bool\n  }\n\nUnfortunately properties can\u0027t start with a number, so you wouldn\u0027t be able to use 2to3.",
+      "range": {
+        "startLine": 43,
+        "startChar": 26,
+        "endLine": 43,
+        "endChar": 30
+      },
+      "revId": "6249bf01f7ba5ad1e956e1cd24ad24136ee70c57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b1fd6547_b9c086e1",
+        "filename": "python/python.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-24T21:22:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ce840cb_6bdcb087",
       "range": {
         "startLine": 43,
         "startChar": 26,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "d4adad72_1f381b1e",
+        "filename": "python/python.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-24T21:22:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5899067_79dbad09",
+      "range": {
+        "startLine": 50,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 8
+      },
+      "revId": "6249bf01f7ba5ad1e956e1cd24ad24136ee70c57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "640c4cfe_27fe4292",
         "filename": "python/python.go",
         "patchSetId": 18
@@ -76,6 +142,30 @@
       "writtenOn": "2017-03-16T21:42:06Z",
       "side": 1,
       "message": "Can you depend on binaries?",
+      "range": {
+        "startLine": 53,
+        "startChar": 31,
+        "endLine": 53,
+        "endChar": 43
+      },
+      "revId": "6249bf01f7ba5ad1e956e1cd24ad24136ee70c57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad8a1d90_e60cddd3",
+        "filename": "python/python.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-24T21:22:08Z",
+      "side": 1,
+      "message": "Since python is not a compiling language, so theoretically we can depend on a py_binary by just fetching the src and data files from that py_binary. I removed py_binaries here to not encourage user to do that.",
+      "parentUuid": "640c4cfe_27fe4292",
       "range": {
         "startLine": 53,
         "startChar": 31,
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "341847d0_ef38e69e",
+        "filename": "python/python.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-24T21:22:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1eb11ac7_a348a66e",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 8
+      },
+      "revId": "6249bf01f7ba5ad1e956e1cd24ad24136ee70c57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba7f45da_a437c0cf",
         "filename": "python/python.go",
         "patchSetId": 18
@@ -122,6 +236,24 @@
       "writtenOn": "2017-03-16T21:42:06Z",
       "side": 1,
       "message": "Rewrite to make sense in the context of go/Android.bp:\nProperties that apply to python libraries and binaries.",
+      "revId": "6249bf01f7ba5ad1e956e1cd24ad24136ee70c57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a0ceb68_79bd196b",
+        "filename": "python/python.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-24T21:22:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba7f45da_a437c0cf",
       "revId": "6249bf01f7ba5ad1e956e1cd24ad24136ee70c57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -145,6 +277,24 @@
     },
     {
       "key": {
+        "uuid": "7e81bc78_b3d519a8",
+        "filename": "python/python.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-24T21:22:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "931b34fa_277da565",
+      "revId": "6249bf01f7ba5ad1e956e1cd24ad24136ee70c57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fde42ee7_f7a53bc3",
         "filename": "python/python.go",
         "patchSetId": 18
@@ -156,6 +306,24 @@
       "writtenOn": "2017-03-16T21:42:06Z",
       "side": 1,
       "message": "If you are not passing a variation use AddDependency instead.  AddDependency takes ctx.Module() as the first argument for some reason.",
+      "revId": "6249bf01f7ba5ad1e956e1cd24ad24136ee70c57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e900a75b_bd15076c",
+        "filename": "python/python.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-24T21:22:08Z",
+      "side": 1,
+      "message": "Since I split modules to create variations within PreDeps, so when I add dependencies within DepsMutator, the dependencies are variations.",
+      "parentUuid": "fde42ee7_f7a53bc3",
       "revId": "6249bf01f7ba5ad1e956e1cd24ad24136ee70c57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -185,6 +353,30 @@
     },
     {
       "key": {
+        "uuid": "3657ece4_413bd63d",
+        "filename": "python/python.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-24T21:22:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92e443f6_2353b648",
+      "range": {
+        "startLine": 195,
+        "startChar": 4,
+        "endLine": 195,
+        "endChar": 44
+      },
+      "revId": "6249bf01f7ba5ad1e956e1cd24ad24136ee70c57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ca59c73_d1b1c089",
         "filename": "python/python.go",
         "patchSetId": 18
@@ -196,6 +388,24 @@
       "writtenOn": "2017-03-16T21:42:06Z",
       "side": 1,
       "message": "This would be simpler if you built a list of all unexpanded sources first, and then called ctx.ExpandSources once.",
+      "revId": "6249bf01f7ba5ad1e956e1cd24ad24136ee70c57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d4d94af_804eb9b8",
+        "filename": "python/python.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-24T21:22:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ca59c73_d1b1c089",
       "revId": "6249bf01f7ba5ad1e956e1cd24ad24136ee70c57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -225,6 +435,30 @@
     },
     {
       "key": {
+        "uuid": "c4ec6433_2d2268fc",
+        "filename": "python/python.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-24T21:22:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "238a2f16_d5bf0490",
+      "range": {
+        "startLine": 255,
+        "startChar": 44,
+        "endLine": 255,
+        "endChar": 62
+      },
+      "revId": "6249bf01f7ba5ad1e956e1cd24ad24136ee70c57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "176f8e11_efe2b38c",
         "filename": "python/python_test.go",
         "patchSetId": 18
@@ -236,6 +470,30 @@
       "writtenOn": "2017-03-16T21:42:06Z",
       "side": 1,
       "message": "This is going to register all the module types, singletons, and mutators, which can cause strange interactions with config.TestConfig.  I wonder if you could use blueprint.NewContext(), and then use ctx.RegisterModuleType, ctx.RegisterBottomUpMutator, etc. to set up a more minimal test context.",
+      "range": {
+        "startLine": 325,
+        "startChar": 18,
+        "endLine": 325,
+        "endChar": 28
+      },
+      "revId": "6249bf01f7ba5ad1e956e1cd24ad24136ee70c57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "469c0cd7_1a59e296",
+        "filename": "python/python_test.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-03-24T21:22:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "176f8e11_efe2b38c",
       "range": {
         "startLine": 325,
         "startChar": 18,
