@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4604676e_7061af95",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-03-27T21:44:02Z",
+      "side": 1,
+      "message": "You can just drop this entire sequence",
+      "range": {
+        "startLine": 112,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 5
+      },
+      "revId": "43a485cfb1975d3265b7350a74229e5069ef9d08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
