@@ -16,6 +16,7 @@
 #
 """Generates source for stub shared libraries for the NDK."""
 import argparse
+import json
 import logging
 import os
 import re
@@ -321,6 +322,24 @@ class Generator(object):
                 self.version_script.write('}' + base + ';\n')
 
 
+def decode_api_level(api, api_map):
+    """Decodes the API level argument into the API level number.
+
+    For the average case, this just decodes the integer value from the string,
+    but for unreleased APIs we need to translate from the API codename (like
+    "O") to the future API level for that codename.
+    """
+    try:
+        return int(api)
+    except ValueError:
+        pass
+
+    if api == "current":
+        return FUTURE_API_LEVEL
+
+    return api_map[api]
+
+
 def parse_args():
     """Parses and returns command line arguments."""
     parser = argparse.ArgumentParser()
@@ -328,11 +347,14 @@ def parse_args():
     parser.add_argument('-v', '--verbose', action='count', default=0)
 
     parser.add_argument(
-        '--api', type=api_level_arg, required=True,
-        help='API level being targeted.')
+        '--api', required=True, help='API level being targeted.')
     parser.add_argument(
         '--arch', choices=ALL_ARCHITECTURES, required=True,
         help='Architecture being targeted.')
+
+    parser.add_argument(
+        '--api-map', type=os.path.realpath, required=True,
+        help='Path to the API level map JSON file.')
 
     parser.add_argument(
         'symbol_file', type=os.path.realpath, help='Path to symbol file.')
@@ -350,6 +372,8 @@ def main():
     """Program entry point."""
     args = parse_args()
 
+    api = decode_api_level(args.api, args.api_map)
+
     verbose_map = (logging.WARNING, logging.INFO, logging.DEBUG)
     verbosity = args.verbose
     if verbosity > 2:
@@ -361,7 +385,7 @@ def main():
 
     with open(args.stub_src, 'w') as src_file:
         with open(args.version_script, 'w') as version_file:
-            generator = Generator(src_file, version_file, args.arch, args.api)
+            generator = Generator(src_file, version_file, args.arch, api)
             generator.write(versions)
 
 
