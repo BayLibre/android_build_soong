@@ -165,6 +165,12 @@ func saveToConfigFile(config jsonConfigurable, filename string) error {
 func TestConfig(buildDir string) Config {
 	return Config{&config{
 		buildDir: buildDir,
+
+		// android/prebuilt_test.go is running arbitrary singletons, so we need
+		// *some* initialization of this or the test panics.
+		ProductVariables: productVariables{
+			Platform_version_all_codenames: &[]string{},
+		},
 	}}
 }
 
@@ -351,6 +357,10 @@ func (c *config) PlatformSdkVersionInt() int {
 
 func (c *config) PlatformSdkVersion() string {
 	return strconv.Itoa(c.PlatformSdkVersionInt())
+}
+
+func (c *config) PlatformVersionAllCodenames() []string {
+	return *c.ProductVariables.Platform_version_all_codenames
 }
 
 func (c *config) BuildNumber() string {
