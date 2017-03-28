@@ -65,8 +65,8 @@ func (n *Node) scan() bool {
 
 	// Calculate SHA256.
 	f, err := os.Open(n.path)
-	if err != nil {
-		// If the file can't be read, it's probably a symlink to an absolute path...
+	if err != nil || !n.stat.Mode().IsRegular() {
+		// If the file can't be read or isn't a regular file.
 		// Returns the following to mimic the behavior of fileslist.py.
 		n.SHA256 = "----------------------------------------------------------------"
 		return true
