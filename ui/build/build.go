@@ -63,8 +63,15 @@ const (
 // Build the tree. The 'what' argument can be used to chose which components of
 // the build to run.
 func Build(ctx Context, config Config, what int) {
+
 	ctx.Verboseln("Starting build with args:", config.Arguments())
 	ctx.Verboseln("Environment:", config.Environment().Environ())
+
+	// make sure that no other Soong process is running in the same 'out' directory
+	defer SurrenderSingleton(config)
+	if BecomeSingleton(config) != nil {
+		os.Exit(1)
+	}
 
 	if inList("help", config.Arguments()) {
 		cmd := exec.CommandContext(ctx.Context, "make", "-f", "build/core/help.mk")
