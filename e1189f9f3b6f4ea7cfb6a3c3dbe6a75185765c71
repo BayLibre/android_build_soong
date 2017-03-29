@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b52af16_24a28ecd",
+        "filename": "cmd/fileslist/fileslist.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-03-29T16:34:06Z",
+      "side": 1,
+      "message": "We still need to f.Close() if err \u003d\u003d nil",
+      "revId": "e1189f9f3b6f4ea7cfb6a3c3dbe6a75185765c71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
