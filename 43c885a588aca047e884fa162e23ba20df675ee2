@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df978577_66438e0f",
+        "filename": "ui/build/build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-29T01:18:03Z",
+      "side": 1,
+      "message": "hmm it looks like multiproduct_kati makes multiple calls to this in multiple goroutines but I need to figure out how to invoke multiproduct_kati",
+      "revId": "43c885a588aca047e884fa162e23ba20df675ee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
