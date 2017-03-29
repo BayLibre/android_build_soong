@@ -77,6 +77,9 @@ func Build(ctx Context, config Config, what int) {
 		return
 	}
 
+	// Make sure that no other Soong process is running with the same output directory
+	buildLock := BecomeSingletonOrFail(ctx, config)
+
 	SetupOutDir(ctx, config)
 
 	if what&BuildProductConfig != 0 {
@@ -102,4 +105,6 @@ func Build(ctx Context, config Config, what int) {
 		// Run ninja
 		runNinja(ctx, config)
 	}
+
+	buildLock.unlock()
 }
