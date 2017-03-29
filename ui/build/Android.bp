@@ -28,6 +28,7 @@ bootstrap_go_package {
         "kati.go",
         "make.go",
         "ninja.go",
+        "proc_sync.go",
         "signal.go",
         "soong.go",
         "util.go",
