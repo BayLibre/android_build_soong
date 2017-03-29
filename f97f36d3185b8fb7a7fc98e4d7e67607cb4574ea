@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2621008d_b50ed172",
+        "filename": "android/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-03-29T23:34:22Z",
+      "side": 1,
+      "message": "This will fix the panic, but phony attempts to set data.Custom which would prevent getting here so I expect there is another issue too",
+      "revId": "f97f36d3185b8fb7a7fc98e4d7e67607cb4574ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
