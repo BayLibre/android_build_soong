@@ -1,0 +1,9 @@
+Code-Review+2: Dan Willemsen <dwillemsen@google.com>
+Verified+1: Dan Albert <danalbert@google.com>
+Autosubmit+1: Dan Albert <danalbert@google.com>
+Presubmit-Ready+1: Dan Albert <danalbert@google.com>
+Submitted-by: Dan Albert <danalbert@google.com>
+Submitted-at: Wed, 29 Mar 2017 19:03:34 +0000
+Reviewed-on: https://android-review.googlesource.com/358338
+Project: platform/build/soong
+Branch: refs/heads/master
