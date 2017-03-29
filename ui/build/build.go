@@ -75,6 +75,10 @@ func Build(ctx Context, config Config, what int) {
 		return
 	}
 
+	// Make sure that no other Soong process is running with the same output directory
+	buildLock := BecomeSingletonOrFail(ctx, config)
+	defer buildLock.unlock()
+
 	SetupOutDir(ctx, config)
 
 	if what&BuildProductConfig != 0 {
