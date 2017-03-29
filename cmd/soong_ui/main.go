@@ -91,5 +91,9 @@ func main() {
 		}
 	}
 
+	// make sure that no other Soong process is running with the same output directory
+	defer build.TrySurrenderSingleton(config, buildCtx.Logger)
+	build.BecomeSingletonOrFail(config, buildCtx.Logger)
+
 	build.Build(buildCtx, config, build.BuildAll)
 }

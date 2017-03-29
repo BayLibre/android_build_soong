@@ -107,6 +107,10 @@ func main() {
 	log.SetOutput(filepath.Join(config.OutDir(), "soong.log"))
 	trace.SetOutput(filepath.Join(config.OutDir(), "build.trace"))
 
+	// Make sure that no other Soong process is running with the same output directory
+	defer build.TrySurrenderSingleton(config, buildCtx.Logger)
+	build.BecomeSingletonOrFail(config, buildCtx.Logger)
+
 	vars, err := build.DumpMakeVars(buildCtx, config, nil, nil, []string{"all_named_products"})
 	if err != nil {
 		log.Fatal(err)
