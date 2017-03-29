@@ -128,13 +128,9 @@ func (binary *binaryDecorator) linkerDeps(ctx DepsContext, deps Deps) Deps {
 				if binary.static() {
 					deps.CrtBegin = "ndk_crtbegin_static." + version
 				} else {
-					if binary.static() {
-						deps.CrtBegin = "ndk_crtbegin_static." + version
-					} else {
-						deps.CrtBegin = "ndk_crtbegin_dynamic." + version
-					}
-					deps.CrtEnd = "ndk_crtend_android." + version
+					deps.CrtBegin = "ndk_crtbegin_dynamic." + version
 				}
+				deps.CrtEnd = "ndk_crtend_android." + version
 			}
 		}
 
