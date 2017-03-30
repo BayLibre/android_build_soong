@@ -16,6 +16,24 @@
       "revId": "43c885a588aca047e884fa162e23ba20df675ee2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e57688f_34c652ff",
+        "filename": "ui/build/build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-30T00:11:04Z",
+      "side": 1,
+      "message": "hmm actually, even though multiproduct_kati makes multiple calls to this method, each call gets its own out directory (with its own pidfile), so it does still run in parallel without conflicts",
+      "parentUuid": "df978577_66438e0f",
+      "revId": "43c885a588aca047e884fa162e23ba20df675ee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
