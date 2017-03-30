@@ -21,6 +21,8 @@ import (
 	"github.com/google/blueprint"
 
 	"android/soong/android"
+	"android/soong/shared"
+	"path"
 )
 
 func init() {
@@ -32,6 +34,10 @@ var (
 	pctx = android.NewPackageContext("android/soong/genrule")
 )
 
+func init() {
+	pctx.HostBinToolVariable("sboxCmd", "sbox")
+}
+
 type SourceFileGenerator interface {
 	GeneratedSourceFiles() android.Paths
 	GeneratedHeaderDirs() android.Paths
@@ -42,7 +48,11 @@ type HostToolProvider interface {
 }
 
 type generatorProperties struct {
-	// command to run on one or more input files.  Available variables for substitution:
+	// The command to run on one or more input files. Cmd supports substitution of a few variables
+	// (the actual substitution is implemented in GenerateAndroidBuildActions below)
+	//
+	// Available variables for substitution:
+	//
 	// $(location): the path to the first entry in tools or tool_files
 	// $(location <label>): the path to the tool or tool_file with name <label>
 	// $(in): one or more input files
@@ -51,9 +61,8 @@ type generatorProperties struct {
 	// $(genDir): the sandbox directory for this tool; contains $(out)
 	// $$: a literal $
 	//
-	// DO NOT directly reference paths to files in the source tree, or the
-	// command will be missing proper dependencies to re-run if the files
-	// change.
+	// DO NOT directly reference paths to files in the source tree; use "$(in)" instead
+	// Otherwise, the command will be missing proper dependencies to re-run if the list of input file paths changes
 	Cmd string
 
 	// Enable reading a file containing dependencies in gcc format after the command completes
@@ -164,7 +173,7 @@ func (g *generator) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		}
 	}
 
-	cmd, err := android.Expand(g.properties.Cmd, func(name string) (string, error) {
+	rawCommand, err := android.Expand(g.properties.Cmd, func(name string) (string, error) {
 		switch name {
 		case "location":
 			if len(g.properties.Tools) > 0 {
@@ -175,14 +184,18 @@ func (g *generator) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		case "in":
 			return "${in}", nil
 		case "out":
-			return "${out}", nil
+			return "__SBOX_OUT_FILE__", nil
 		case "depfile":
 			if !g.properties.Depfile {
 				return "", fmt.Errorf("$(depfile) used without depfile property")
 			}
 			return "${depfile}", nil
 		case "genDir":
-			return android.PathForModuleGen(ctx, "").String(), nil
+			relativePath := android.PathForModuleGen(ctx, "").String()
+			if path.IsAbs(relativePath) {
+				panic(fmt.Sprintf("unsupported absolute path %s returned as generated path for %s\n", relativePath, ctx))
+			}
+			return path.Join("__SBOX_OUT_DIR__", relativePath), nil
 		default:
 			if strings.HasPrefix(name, "location ") {
 				label := strings.TrimSpace(strings.TrimPrefix(name, "location "))
@@ -200,8 +213,17 @@ func (g *generator) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		ctx.PropertyErrorf("cmd", "%s", err.Error())
 	}
 
+	// tell the sbox command which directory to use as its sandbox root
+	config := ctx.AConfig()
+	sandboxPath := shared.TempDirForOutDir(config.BuildDir())
+
+	// recall that Sprintf replaces percent sign expressions, whereas dollar signs expressions remain as written,
+	// to be replaced later by ninja_strings.go
+	sandboxCommand := fmt.Sprintf("$sboxCmd --sandbox-path %s -c %q $out", sandboxPath, rawCommand)
+
 	ruleParams := blueprint.RuleParams{
-		Command: cmd,
+		Command:     sandboxCommand,
+		CommandDeps: []string{"$sboxCmd"},
 	}
 	var args []string
 	if g.properties.Depfile {
