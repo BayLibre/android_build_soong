@@ -15,6 +15,7 @@
 package build
 
 import (
+	"android/soong/shared"
 	"log"
 	"os"
 	"path/filepath"
@@ -221,6 +222,10 @@ func (c *configImpl) SoongOutDir() string {
 	return filepath.Join(c.OutDir(), "soong")
 }
 
+func (c *configImpl) TempDir() string {
+	return shared.TempDirForOutDir(c.SoongOutDir())
+}
+
 func (c *configImpl) KatiSuffix() string {
 	if c.katiSuffix != "" {
 		return c.katiSuffix
@@ -262,7 +267,7 @@ func (c *configImpl) UseGoma() bool {
 }
 
 // RemoteParallel controls how many remote jobs (i.e., commands which contain
-// gomacc) are run in parallel.  Note the paralleism of all other jobs is
+// gomacc) are run in parallel.  Note the parallelism of all other jobs is
 // still limited by Parallel()
 func (c *configImpl) RemoteParallel() int {
 	if v, ok := c.environ.Get("NINJA_REMOTE_NUM_JOBS"); ok {
