@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a2e70a9_9ba12511",
+        "filename": "python/python.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-30T00:27:41Z",
+      "side": 1,
+      "message": "What would you think of replacing \"the version properties\" with \"the version-specific properties\"?",
+      "range": {
+        "startLine": 36,
+        "startChar": 29,
+        "endLine": 36,
+        "endChar": 30
+      },
+      "revId": "435b01116898d24b84a46d51c62fac8cbdadc833",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c8b5e68_498cc9a5",
+        "filename": "python/python.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-30T00:27:41Z",
+      "side": 1,
+      "message": "nice :)",
+      "revId": "435b01116898d24b84a46d51c62fac8cbdadc833",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
