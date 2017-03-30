@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "744bbc16_e055d385",
+        "filename": "cc/ndk_headers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-03-30T02:22:01Z",
+      "side": 1,
+      "message": "You can just move these to Outputs after you switch to $outDir, then you don\u0027t need a timestamp file. In most cases (including this one), the only difference between outputs and implicit outputs is whether it shows up in $out or not.\n\nBut this still fixes the rebuild problems, so if you don\u0027t want to rebuild/reverify tonight, I\u0027ll approve this.",
+      "range": {
+        "startLine": 239,
+        "startChar": 2,
+        "endLine": 239,
+        "endChar": 32
+      },
+      "revId": "d2130a93594455a62d842930e9c03908a2f5b435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
