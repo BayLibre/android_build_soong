@@ -22,6 +22,30 @@
       "revId": "d2130a93594455a62d842930e9c03908a2f5b435",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61838f25_8ad60a1b",
+        "filename": "cc/ndk_headers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2017-03-30T02:26:44Z",
+      "side": 1,
+      "message": "Yeah, my tree is busy verifying the crt changes. Reverting that, testing this, and then reapplying that will be basically two full rebuilds :\\\n\nI\u0027ll submit this for now and clean it up later.",
+      "parentUuid": "744bbc16_e055d385",
+      "range": {
+        "startLine": 239,
+        "startChar": 2,
+        "endLine": 239,
+        "endChar": 32
+      },
+      "revId": "d2130a93594455a62d842930e9c03908a2f5b435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
