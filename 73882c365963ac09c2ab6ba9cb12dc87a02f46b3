@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4f4a0bb_1d7a1032",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-03-30T17:58:26Z",
+      "side": 1,
+      "message": "Remove?",
+      "revId": "73882c365963ac09c2ab6ba9cb12dc87a02f46b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "695e2a32_70b60a6f",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-03-30T17:58:26Z",
+      "side": 1,
+      "message": "if you rearranged this a bit you could use the above to code to select the partition, and then do\n\n  if ctx.InstallInSanitizerDir() {\n    partition \u003d \"data/\" + partition\n  }",
+      "revId": "73882c365963ac09c2ab6ba9cb12dc87a02f46b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea52c585_50591c13",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-03-30T17:58:26Z",
+      "side": 1,
+      "message": "The rest of the partition values have no trailing /",
+      "range": {
+        "startLine": 666,
+        "startChar": 25,
+        "endLine": 666,
+        "endChar": 26
+      },
+      "revId": "73882c365963ac09c2ab6ba9cb12dc87a02f46b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "275c4d78_c9a40237",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-03-30T17:58:26Z",
+      "side": 1,
+      "message": "This comment isn\u0027t very helpful",
+      "revId": "73882c365963ac09c2ab6ba9cb12dc87a02f46b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4586d6e0_349bedaa",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-03-30T17:58:26Z",
+      "side": 1,
+      "message": "This is never set any more, can you replace it with *SanitizerDir instead of adding a new one?",
+      "revId": "73882c365963ac09c2ab6ba9cb12dc87a02f46b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
