@@ -60,7 +60,7 @@ func (l fileLock) description() (path string) {
 	return l.File.Name()
 }
 func (l fileLock) tryLock() (err error) {
-	return syscall.Flock(int(l.File.Fd()), syscall.F_SETLK)
+	return syscall.Flock(int(l.File.Fd()), syscall.LOCK_EX|syscall.LOCK_NB)
 }
 func (l fileLock) Unlock() (err error) {
 	return l.File.Close()
