@@ -16,6 +16,24 @@
       "revId": "f97f36d3185b8fb7a7fc98e4d7e67607cb4574ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f465dcc7_b99622b6",
+        "filename": "android/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-03-30T00:07:24Z",
+      "side": 1,
+      "message": "That\u0027s Custom !\u003d nil, not Custom \u003d\u003d nil, so we will get here for phony modules.\n\nThat being said, should we block off lines 178 -\u003e 191  for ArchSpecific? The prefix doesn\u0027t make any sense unless you\u0027re arch specific.",
+      "parentUuid": "2621008d_b50ed172",
+      "revId": "f97f36d3185b8fb7a7fc98e4d7e67607cb4574ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
