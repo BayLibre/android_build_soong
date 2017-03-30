@@ -648,12 +648,28 @@ func PathForModuleRes(ctx ModuleContext, paths ...string) ModuleResPath {
 func PathForModuleInstall(ctx ModuleContext, paths ...string) OutputPath {
 	var outPaths []string
 	if ctx.Device() {
+		// partition := "system"
+		// if ctx.Proprietary() {
+		// 	partition = ctx.DeviceConfig().VendorPath()
+		// }
+		// if ctx.InstallInData() {
+		// 	partition = "data"
+		// }
 		partition := "system"
 		if ctx.Proprietary() {
 			partition = ctx.DeviceConfig().VendorPath()
 		}
 		if ctx.InstallInData() {
 			partition = "data"
+		}
+		if ctx.InstallInSanitizerDir() {
+			partition = "data/asan/"
+			// CONTINUE INSTALLING BASED ON 30d5f514dd1b43366440d6aff0b53124de5dd7b5
+			if ctx.Proprietary() {
+				partition += ctx.DeviceConfig().VendorPath()
+			} else {
+				partition += "system"
+			}
 		}
 		outPaths = []string{"target", "product", ctx.AConfig().DeviceName(), partition}
 	} else {
