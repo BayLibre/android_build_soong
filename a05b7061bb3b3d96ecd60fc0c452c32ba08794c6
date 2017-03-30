@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00cf9a72_8a7f64ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-03-30T20:51:53Z",
+      "side": 1,
+      "message": "What should we do about libraries that try to use an unreleased API level (P) if we\u0027ve chosen to build the O configuration?\n\nShould we refuse to build it? Build it with an older version and expect it to use #ifdef to solve the compilation problems?",
+      "range": {
+        "startLine": 11,
+        "startChar": 41,
+        "endLine": 12,
+        "endChar": 55
+      },
+      "revId": "a05b7061bb3b3d96ecd60fc0c452c32ba08794c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
