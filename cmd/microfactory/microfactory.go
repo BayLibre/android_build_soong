@@ -168,7 +168,7 @@ func (p *GoPackage) findDeps(path string, pkgMap *pkgPathMapping, allPackages ma
 			if path, ok, err := pkgMap.Path(name); err != nil {
 				return err
 			} else if !ok {
-				// Probably in the stdlib, compiler will fail we a reasonable error message otherwise.
+				// Probably in the stdlib, but if not, then the compiler will fail with a reasonable error message
 				// Mark it as such so that we don't try to decode its path again.
 				allPackages[name] = nil
 				continue
@@ -200,6 +200,32 @@ func (p *GoPackage) findDeps(path string, pkgMap *pkgPathMapping, allPackages ma
 	}
 
 	return nil
+}
+
+// selfAndSourceDependenciesRecursive returns a list of all transitive dependencies whose source code is in our workspace
+// selfAndSourceDependenciesRecursive is only valid to call after having called FindDeps
+func (p *GoPackage) selfAndSourceDependenciesRecursive() []*GoPackage {
+	depList := []*GoPackage{p}
+	depSet := make(map[*GoPackage]bool, 0)
+	// breadth-first search over dependencies, skipping any that are already included
+	for i := 0; i < len(depList); i++ {
+		pkg := depList[i]
+		for _, dep := range pkg.deps {
+			if dep.pkgDir == "" {
+				// If we don't have a source path for this one,
+				// then it's presumably part of the standard library
+				// and we won't have a source path for its dependencies either
+				continue
+			}
+			if _, found := depSet[dep]; found {
+				// already included this dependency in the list
+				continue
+			}
+			depList = append(depList, dep)
+			depSet[dep] = true
+		}
+	}
+	return depList
 }
 
 func (p *GoPackage) Compile(outDir, trimPath string) error {
@@ -361,7 +387,7 @@ func (p *GoPackage) Link(out string) error {
 	if race {
 		cmd.Args = append(cmd.Args, "-race")
 	}
-	for _, dep := range p.deps {
+	for _, dep := range p.selfAndSourceDependenciesRecursive() {
 		cmd.Args = append(cmd.Args, "-L", dep.pkgDir)
 	}
 	cmd.Args = append(cmd.Args, p.output)
@@ -373,7 +399,7 @@ func (p *GoPackage) Link(out string) error {
 	}
 	err = cmd.Run()
 	if err != nil {
-		return err
+		return fmt.Errorf("command %s failed with error %v", cmd.Args, err)
 	}
 
 	return ioutil.WriteFile(shaFile, p.hashResult, 0666)
@@ -481,7 +507,7 @@ func main() {
 
 	err = mainPackage.Link(output)
 	if err != nil {
-		fmt.Fprintln(os.Stderr, "Failed to link:", err)
+		fmt.Fprintln(os.Stderr, "microfactory.go failed to link:", err)
 		os.Exit(1)
 	}
 }

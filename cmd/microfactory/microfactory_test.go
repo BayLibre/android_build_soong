@@ -291,6 +291,37 @@ func TestRebuildAfterPartialBuild(t *testing.T) {
 	}, func(pkg *GoPackage) {})
 }
 
+// Simple test of selfAndSourceDependenciesRecursive
+func Test_SelfAndSourceDependenciesRecursive_Simple(t *testing.T) {
+	rootPackage := &GoPackage{}
+	rootPackage.Name = "root/a"
+	rootPackage.pkgDir = "root/a"
+
+	childPackage := &GoPackage{}
+	childPackage.Name = "child/1"
+	childPackage.pkgDir = "child/1"
+
+	grandchildPackage := &GoPackage{}
+	grandchildPackage.Name = "grandchild/first"
+	grandchildPackage.pkgDir = "grandchild/first"
+
+	stdlibPackage := &GoPackage{}
+	stdlibPackage.Name = "stdlib/primary"
+	stdlibPackage.pkgDir = ""
+
+	rootPackage.deps = []*GoPackage{childPackage}
+	childPackage.deps = []*GoPackage{grandchildPackage}
+	grandchildPackage.deps = []*GoPackage{stdlibPackage}
+
+	expectedSourceDeps := []*GoPackage{rootPackage, childPackage, grandchildPackage}
+	actualSourceDeps := rootPackage.selfAndSourceDependenciesRecursive()
+
+	if !reflect.DeepEqual(expectedSourceDeps, actualSourceDeps) {
+		t.Errorf("Unexpected values in .pkgs:\nwant: %v\n got: %v",
+			expectedSourceDeps, actualSourceDeps)
+	}
+}
+
 // BenchmarkInitialBuild computes how long a clean build takes (for tiny test
 // inputs).
 func BenchmarkInitialBuild(b *testing.B) {
