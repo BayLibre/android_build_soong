@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27e87dc2_758834a1",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2017-03-31T19:43:00Z",
+      "side": 1,
+      "message": "We have things in the tree targeting current. I think we will probably want to make \"current\" be an alias for something (though I\u0027m not yet sure what for), but this keeps things building as they were for now.",
+      "revId": "15ebe6700d0a70d3b9df94adfb8586fbad605053",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
