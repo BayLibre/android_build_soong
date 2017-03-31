@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e53b0216_93dfc9fd",
+        "filename": "cmd/microfactory/microfactory.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-03-31T21:41:45Z",
+      "side": 1,
+      "message": "This map already contains all of that information for a binary, so maybe we should just save it here?",
+      "range": {
+        "startLine": 109,
+        "startChar": 33,
+        "endLine": 109,
+        "endChar": 60
+      },
+      "revId": "5487517759711db16dd6dd687624e53efc1843b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
