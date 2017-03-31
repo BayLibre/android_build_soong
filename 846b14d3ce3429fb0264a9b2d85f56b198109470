@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bdf3be2_08fbb000",
+        "filename": "cc/gen_stub_libs.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2017-03-31T19:44:47Z",
+      "side": 1,
+      "message": "Bad rebase reapplied by rerere. Fixed in ps5",
+      "revId": "846b14d3ce3429fb0264a9b2d85f56b198109470",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
