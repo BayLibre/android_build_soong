@@ -22,6 +22,30 @@
       "revId": "a05b7061bb3b3d96ecd60fc0c452c32ba08794c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0edc226_e30f48c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2017-03-31T19:35:40Z",
+      "side": 1,
+      "message": "There are I think two cases here:\n\n1. Target the latest SDK version, but they explicitly wrote P for some reason.\n2. Actually really do want P.\n\nMaybe the answer is to just ignore modules targeting a future version? I think we need to be able to mark a module as ignored until a given platform version anyway, but maybe that should be more explicit. Something like: `introduced_in: \"P\", sdk_version: \"P\"`.",
+      "parentUuid": "00cf9a72_8a7f64ce",
+      "range": {
+        "startLine": 11,
+        "startChar": 41,
+        "endLine": 12,
+        "endChar": 55
+      },
+      "revId": "a05b7061bb3b3d96ecd60fc0c452c32ba08794c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
