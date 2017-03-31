@@ -22,6 +22,30 @@
       "revId": "5487517759711db16dd6dd687624e53efc1843b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73412573_c6bb3a17",
+        "filename": "cmd/microfactory/microfactory.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-03-31T22:42:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e53b0216_93dfc9fd",
+      "range": {
+        "startLine": 109,
+        "startChar": 33,
+        "endLine": 109,
+        "endChar": 60
+      },
+      "revId": "5487517759711db16dd6dd687624e53efc1843b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
