@@ -1,0 +1,11 @@
+Code-Review+2: Hung-ying Tyan <tyanh@google.com>
+Code-Review+1: Po Hu <po.hu@mediatek.com>
+Code-Review+2: Jeff Gaston <jeffrygaston@google.com>
+Autosubmit+1: Hung-ying Tyan <tyanh@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: Hung-ying Tyan <tyanh@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Fri, 31 Mar 2017 08:55:40 +0000
+Reviewed-on: https://android-review.googlesource.com/358412
+Project: platform/build/soong
+Branch: refs/heads/master
