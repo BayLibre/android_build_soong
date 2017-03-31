@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0517aaf_d52eb5ee",
+        "filename": "cmd/microfactory/microfactory.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-03-31T23:06:41Z",
+      "side": 1,
+      "message": "I was thinking it would be something like:\n\n  for _, pkg :\u003d range allPackages {\n    if pkg !\u003d nil {\n      p.allDeps \u003d append(p.allDeps, pkg)\n    }\n  }\n  sort.Slice(p.allDeps, func(i, j int) bool {\n    return p.allDeps[i].Name \u003c p.allDeps[j].Name\n  })",
+      "revId": "95e198bff86a63db36a21f06a883f6ebdcdb624e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
