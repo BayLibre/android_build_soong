@@ -16,6 +16,24 @@
       "revId": "6b4afe7bbfc271fecbeac5f9913142d36aca7737",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bdd2372d_af9177c3",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-04-04T19:08:15Z",
+      "side": 1,
+      "message": "I\u0027d prefer changing it in an upcoming cl. It\u0027s easier to revert the second cl just in case something bad happens, rather than having to revert all of the support.",
+      "parentUuid": "3f0a7910_0a0e72ec",
+      "revId": "6b4afe7bbfc271fecbeac5f9913142d36aca7737",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
