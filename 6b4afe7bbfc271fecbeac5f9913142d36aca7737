@@ -34,6 +34,24 @@
       "revId": "6b4afe7bbfc271fecbeac5f9913142d36aca7737",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d92c5119_963b5abf",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1092708
+      },
+      "writtenOn": "2017-04-04T19:09:32Z",
+      "side": 1,
+      "message": "Agreed. Jake, you can push the seperate CL already and make it dependant on this one.",
+      "parentUuid": "bdd2372d_af9177c3",
+      "revId": "6b4afe7bbfc271fecbeac5f9913142d36aca7737",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
