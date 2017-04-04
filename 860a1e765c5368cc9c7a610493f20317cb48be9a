@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "144ef7f6_5fd2b396",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-04-04T17:23:52Z",
+      "side": 1,
+      "message": "How about:\nif exportedIncludes :\u003d library.exportedFlags(); len(exportedIncludes) \u003e 0 {\n  fmt.Fprintln(.....)\n}\n\nif exportedIncludeDeps :\u003d library.exportedFlagsDeps(); len(exportedIncludeDeps) \u003e 0 {\n  fmt.Fprintln(.....)\n}",
+      "revId": "860a1e765c5368cc9c7a610493f20317cb48be9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
