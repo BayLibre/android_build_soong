@@ -16,6 +16,29 @@
       "revId": "860a1e765c5368cc9c7a610493f20317cb48be9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4f67c14_8d743b5b",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-04-04T19:25:35Z",
+      "side": 1,
+      "message": "These names aren\u0027t accurate any more, change this to exportedIncludes and make\u0027s to LOCAL_EXPORT_CFLAGS?",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 17
+      },
+      "revId": "860a1e765c5368cc9c7a610493f20317cb48be9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
