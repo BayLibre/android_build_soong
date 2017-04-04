@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f0a7910_0a0e72ec",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1021512
+      },
+      "writtenOn": "2017-04-04T18:54:10Z",
+      "side": 1,
+      "message": "Chris, Dan, you want to stay with neon-vfpv4 rather than neon-fp-armv8 on this CL right?",
+      "revId": "6b4afe7bbfc271fecbeac5f9913142d36aca7737",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
