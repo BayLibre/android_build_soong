@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f30f4f17_120d746d",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-04-06T22:04:15Z",
+      "side": 1,
+      "message": "Tabs vs. spaces. I know this file is terrible, but local consistency would be preferred when submitting this part of the CL.",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 3
+      },
+      "revId": "dd46e4f71fed4f045e0e411056de9afa67a6c680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dfd588ba_f7959d0e",
         "filename": "cc/config/arm_device.go",
         "patchSetId": 2
@@ -54,6 +77,30 @@
       "side": 1,
       "message": "I just followed what you did with Krait in this section.  Is there any reason why Krait doesn\u0027t set neon-vfpv4 above so that it would also be used on GCC?",
       "parentUuid": "b394cf53_aa38310e",
+      "range": {
+        "startLine": 203,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 99
+      },
+      "revId": "dd46e4f71fed4f045e0e411056de9afa67a6c680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b35acd2_f812b174",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-04-06T22:04:15Z",
+      "side": 1,
+      "message": "It is possible that our version of GCC doesn\u0027t support neon-vfpv4 as a parameter here. The same may be true for neon-fp-armv8. While we aren\u0027t supporting GCC going forward, we also are trying not to explicitly break things either.",
+      "parentUuid": "f38af16b_419fa656",
       "range": {
         "startLine": 203,
         "startChar": 1,
