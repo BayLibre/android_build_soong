@@ -16,6 +16,24 @@
       "revId": "882941cd73a4eef295c1a82d8e0bce9f38ccd599",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a91774e_dfc78355",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-06T21:10:23Z",
+      "side": 1,
+      "message": "I\u0027d pull this out into a shared function, instead of copying it from arm_device.go",
+      "parentUuid": "7cba0eee_b9421310",
+      "revId": "882941cd73a4eef295c1a82d8e0bce9f38ccd599",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
