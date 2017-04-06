@@ -110,6 +110,30 @@
       "revId": "dd46e4f71fed4f045e0e411056de9afa67a6c680",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b408d99c_a9e30a47",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1021512
+      },
+      "writtenOn": "2017-04-06T22:11:17Z",
+      "side": 1,
+      "message": "Both seem to be supported in 4.9 (the current ARM GCC toolchain in master):\n\nreal-arm-linux-androideabi-gcc: note: valid arguments to \u0027-mfpu\u003d\u0027 are: crypto-neon-fp-armv8 fp-armv8 fpv4-sp-d16 neon neon-fp-armv8 neon-fp16 neon-vfpv4 vfp vfp3 vfpv3 vfpv3-d16 vfpv3-d16-fp16 vfpv3-fp16 vfpv3xd vfpv3xd-fp16 vfpv4 vfpv4-d16",
+      "parentUuid": "0b35acd2_f812b174",
+      "range": {
+        "startLine": 203,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 99
+      },
+      "revId": "dd46e4f71fed4f045e0e411056de9afa67a6c680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
