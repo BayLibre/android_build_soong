@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6caa9f32_c6c65aa6",
+        "filename": "cc/llndk_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-04-06T23:26:26Z",
+      "side": 1,
+      "message": "If you want you can hide this from the blueprint module by implementing Name, see https://cs.corp.google.com/android/build/soong/android/prebuilt.go?rcl\u003d65c3c05e5d733122dd282a61dba67ad82a92796d\u0026l\u003d41 for example",
+      "revId": "3c0685ad2cf6a3ff4f800048e9f275c40290f81f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
