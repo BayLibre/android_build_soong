@@ -34,6 +34,24 @@
       "revId": "882941cd73a4eef295c1a82d8e0bce9f38ccd599",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ffe6ca32_c5650f3f",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2017-04-06T21:45:44Z",
+      "side": 1,
+      "message": "I moved it into global.go, but let me know if there is a better place.",
+      "parentUuid": "0a91774e_dfc78355",
+      "revId": "882941cd73a4eef295c1a82d8e0bce9f38ccd599",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
