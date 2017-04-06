@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "dfd588ba_f7959d0e",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1021512
+      },
+      "writtenOn": "2017-04-06T20:47:38Z",
+      "side": 1,
+      "message": "Is this the only part of this commit that you want to keep in this CL?",
+      "revId": "dd46e4f71fed4f045e0e411056de9afa67a6c680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b394cf53_aa38310e",
         "filename": "cc/config/arm_device.go",
         "patchSetId": 2
@@ -13,6 +30,30 @@
       "writtenOn": "2017-04-06T18:09:33Z",
       "side": 1,
       "message": "This seems redundant since the kryo definition already sets this. Did you mean to leave this off the definition for kryo because some compilers might not support this option?",
+      "range": {
+        "startLine": 203,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 99
+      },
+      "revId": "dd46e4f71fed4f045e0e411056de9afa67a6c680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f38af16b_419fa656",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1021512
+      },
+      "writtenOn": "2017-04-06T20:47:38Z",
+      "side": 1,
+      "message": "I just followed what you did with Krait in this section.  Is there any reason why Krait doesn\u0027t set neon-vfpv4 above so that it would also be used on GCC?",
+      "parentUuid": "b394cf53_aa38310e",
       "range": {
         "startLine": 203,
         "startChar": 1,
