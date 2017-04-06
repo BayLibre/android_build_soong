@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7cba0eee_b9421310",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1092708
+      },
+      "writtenOn": "2017-04-06T17:49:26Z",
+      "side": 1,
+      "message": "Oh sorry, missed the function",
+      "revId": "882941cd73a4eef295c1a82d8e0bce9f38ccd599",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
