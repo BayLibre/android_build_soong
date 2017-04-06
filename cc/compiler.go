@@ -113,6 +113,14 @@ type BaseCompilerProperties struct {
 		// release builds
 		Cflags []string `android:"arch_variant"`
 	} `android:"arch_variant"`
+
+	Target struct {
+		Vendor struct {
+			// list of source files that should not be used to
+			// build the vendor variant of the C/C++ module.
+			Exclude_srcs []string
+		}
+	}
 }
 
 func NewBaseCompiler() *baseCompiler {
@@ -428,6 +436,11 @@ func ndkPathDeps(ctx ModuleContext) android.Paths {
 func (compiler *baseCompiler) compile(ctx ModuleContext, flags Flags, deps PathDeps) Objects {
 	pathDeps := deps.GeneratedHeaders
 	pathDeps = append(pathDeps, ndkPathDeps(ctx)...)
+
+	if ctx.vndk() {
+		compiler.Properties.Exclude_srcs = append(compiler.Properties.Exclude_srcs,
+			compiler.Properties.Target.Vendor.Exclude_srcs...)
+	}
 
 	srcs := ctx.ExpandSources(compiler.Properties.Srcs, compiler.Properties.Exclude_srcs)
 	srcs = append(srcs, deps.GeneratedSources...)
