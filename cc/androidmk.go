@@ -279,7 +279,7 @@ func (installer *baseInstaller) AndroidMk(ctx AndroidMkContext, ret *android.And
 }
 
 func (c *stubDecorator) AndroidMk(ctx AndroidMkContext, ret *android.AndroidMkData) {
-	ret.SubName = "." + c.properties.ApiLevel
+	ret.SubName = ndkLibrarySuffix + "." + c.properties.ApiLevel
 	ret.Class = "SHARED_LIBRARIES"
 
 	ret.Extra = append(ret.Extra, func(w io.Writer, outputFile android.Path) error {
