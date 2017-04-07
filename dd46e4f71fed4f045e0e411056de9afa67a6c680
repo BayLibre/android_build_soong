@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a2dca601_7e8197a9",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1021512
+      },
+      "writtenOn": "2017-04-07T00:25:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c711a824_416e53d5",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 3
+      },
+      "revId": "dd46e4f71fed4f045e0e411056de9afa67a6c680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dfd588ba_f7959d0e",
         "filename": "cc/config/arm_device.go",
         "patchSetId": 2
