@@ -158,6 +158,30 @@
       "revId": "dd46e4f71fed4f045e0e411056de9afa67a6c680",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "677d7a60_986c71fc",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-04-07T00:23:05Z",
+      "side": 1,
+      "message": "In that case, then both this and the krait line above should get removed (and verified that the flag is indeed still being passed as expected).",
+      "parentUuid": "b408d99c_a9e30a47",
+      "range": {
+        "startLine": 203,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 99
+      },
+      "revId": "dd46e4f71fed4f045e0e411056de9afa67a6c680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
