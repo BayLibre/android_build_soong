@@ -16,6 +16,24 @@
       "revId": "3c0685ad2cf6a3ff4f800048e9f275c40290f81f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df1c22e1_5fec60e0",
+        "filename": "cc/llndk_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-07T00:04:27Z",
+      "side": 1,
+      "message": "Nice. I\u0027ll do this as a follow-up.",
+      "parentUuid": "6caa9f32_c6c65aa6",
+      "revId": "3c0685ad2cf6a3ff4f800048e9f275c40290f81f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
