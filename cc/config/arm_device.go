@@ -136,6 +136,15 @@ var (
 			// better solution comes around. See Bug 27340895
 			"-D__ARM_FEATURE_LPAE=1",
 		},
+		"denver": []string{
+			"-mcpu=cortex-a15",
+			"-mfpu=neon-fp-armv8",
+			// Fake an ARM compiler flag as these processors support LPAE which GCC/clang
+			// don't advertise.
+			// TODO This is a hack and we need to add it for each processor that supports LPAE until some
+			// better solution comes around. See Bug 27340895
+			"-D__ARM_FEATURE_LPAE=1",
+		},
 		"krait": []string{
 			"-mcpu=cortex-a15",
 			"-mfpu=neon-vfpv4",
@@ -178,9 +187,9 @@ func init() {
 		"cortex-a15",
 		"cortex-a53",
 		"cortex-a53-a57",
+		"denver",
 		"krait",
-		"kryo",
-		"denver")
+		"kryo")
 
 	android.RegisterArchVariantFeatures(android.Arm, "armv7-a-neon", "neon")
 
@@ -269,9 +278,9 @@ var (
 		"cortex-a15":     "${config.ArmCortexA15Cflags}",
 		"cortex-a53":     "${config.ArmCortexA53Cflags}",
 		"cortex-a53.a57": "${config.ArmCortexA53Cflags}",
+		"denver":         "${config.ArmDenverCflags}",
 		"krait":          "${config.ArmKraitCflags}",
 		"kryo":           "${config.ArmKryoCflags}",
-		"denver":         "${config.ArmCortexA15Cflags}",
 	}
 
 	armClangArchVariantCflagsVar = map[string]string{
@@ -287,9 +296,9 @@ var (
 		"cortex-a15":     "${config.ArmClangCortexA15Cflags}",
 		"cortex-a53":     "${config.ArmClangCortexA53Cflags}",
 		"cortex-a53.a57": "${config.ArmClangCortexA53Cflags}",
+		"denver":         "${config.ArmClangDenverCflags}",
 		"krait":          "${config.ArmClangKraitCflags}",
 		"kryo":           "${config.ArmClangKryoCflags}",
-		"denver":         "${config.ArmClangCortexA15Cflags}",
 	}
 )
 
