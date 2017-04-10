@@ -16,6 +16,24 @@
       "revId": "cf233e8562f362fa25a085db659d6acb166923c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cb57759_bf494147",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-10T19:18:19Z",
+      "side": 1,
+      "message": "I see that in the time it took me to make this comment, you fixed it in patchset #2\n\n:)",
+      "parentUuid": "d74b6160_b822179f",
+      "revId": "cf233e8562f362fa25a085db659d6acb166923c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
