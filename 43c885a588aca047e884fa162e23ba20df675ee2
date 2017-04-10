@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "55c09bb1_836b91b3",
+        "filename": "ui/build/build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-10T05:45:09Z",
+      "side": 1,
+      "message": "This isn\u0027t actually guaranteed to cleanup -- if we\u0027re in the middle of a build and a different goroutine decides to kill the process, this won\u0027t happen. We do a little better with the logger/tracer since we set that up in the main function, and if everyone uses the logger fatal functions (and migrates the errors to the main thread), then those will get run. We also separately pass them to the signal handling code for cleanup if things go horribly wrong.",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 33
+      },
+      "revId": "43c885a588aca047e884fa162e23ba20df675ee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df978577_66438e0f",
         "filename": "ui/build/build.go",
         "patchSetId": 1
@@ -34,6 +57,144 @@
       "revId": "43c885a588aca047e884fa162e23ba20df675ee2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e5a9e7d_710c3589",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-10T05:45:09Z",
+      "side": 1,
+      "message": "I\u0027d expect this to at least go to the configured stderr, but more likely to the ctx\u0027s logger functionality (which can handle a fatal exit cleanly -- os.Exit will corrupt logs and traces)",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 18
+      },
+      "revId": "43c885a588aca047e884fa162e23ba20df675ee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c525896e_ed80abe8",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-10T05:45:09Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 18
+      },
+      "revId": "43c885a588aca047e884fa162e23ba20df675ee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86de83c2_5b508120",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-10T05:45:09Z",
+      "side": 1,
+      "message": "filepath.Join is better than direct string manipulation for paths",
+      "range": {
+        "startLine": 57,
+        "startChar": 33,
+        "endLine": 57,
+        "endChar": 38
+      },
+      "revId": "43c885a588aca047e884fa162e23ba20df675ee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "984f94d2_ae9f5d28",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-10T05:45:09Z",
+      "side": 1,
+      "message": "Did you explore syscall.Flock at all? It seems like that could be simpler than dealing with pid files.\n\nI\u0027m kinda worried about pid namespaces, where a process can have multiple pids in different namespaces, but I don\u0027t think that\u0027s a case to really worry about anyway.\n\nIt looks like flock doesn\u0027t work in some conditions either -- NFS in particular (but that\u0027s slow for an android build, and pids probably don\u0027t work there either)",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 51
+      },
+      "revId": "43c885a588aca047e884fa162e23ba20df675ee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "454f6f6b_f29f8294",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-10T05:45:09Z",
+      "side": 1,
+      "message": "fmt.Errorf",
+      "range": {
+        "startLine": 79,
+        "startChar": 8,
+        "endLine": 79,
+        "endChar": 31
+      },
+      "revId": "43c885a588aca047e884fa162e23ba20df675ee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4c36f72_8e038a97",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-10T05:45:09Z",
+      "side": 1,
+      "message": "What if we\u0027ve wrapped and reused the pid?",
+      "range": {
+        "startLine": 137,
+        "startChar": 4,
+        "endLine": 137,
+        "endChar": 41
+      },
+      "revId": "43c885a588aca047e884fa162e23ba20df675ee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
