@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d74b6160_b822179f",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-10T19:17:26Z",
+      "side": 1,
+      "message": "Has this ever triggered? I think you want \u0027set[m] \u003d true\u0027 somewhere below",
+      "revId": "cf233e8562f362fa25a085db659d6acb166923c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
