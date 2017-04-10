@@ -129,7 +129,7 @@ func (p AndroidPackageContext) PrefixedPathsForOptionalSourceVariable(
 
 	return p.VariableFunc(name, func(config interface{}) (string, error) {
 		ctx := &configErrorWrapper{p, config.(Config), []error{}}
-		paths := PathsForOptionalSource(ctx, "", paths)
+		paths := ExistentPathsForSources(ctx, "", paths)
 		if len(ctx.errors) > 0 {
 			return "", ctx.errors[0]
 		}
