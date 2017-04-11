@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48fe720d_2e59f24b",
+        "filename": "Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-04-11T17:55:20Z",
+      "side": 1,
+      "message": "Hi, Dan, It is confused here that it seems toolchain_library is a module defined within Soong layer. But bootstrap_go_package is a module defined within Blueprint. When Blueprint.minibootstrap started to build Soong, and scanning this Android.bp, toolchain_library will be ignored by BP? Why don\u0027t we just move these toolchain_library modules definitions to outside of Soong directory to separate from the bootstrap modules of Blueprint for more clear layer?",
+      "revId": "60bce001ab1a5cdc6e595967b83a9960f45f8b19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
