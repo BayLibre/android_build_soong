@@ -16,6 +16,24 @@
       "revId": "60bce001ab1a5cdc6e595967b83a9960f45f8b19",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3e00560_d94ace48",
+        "filename": "Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-11T20:12:38Z",
+      "side": 1,
+      "message": "The bootstrapping actually reads all of the Android.bp modules, so that it doesn\u0027t need to know where exactly in the tree blueprint / soong are. We also provide Soong plugins scattered throughout the tree (art/build, etc).\n\nminibp ignores unknown module types during bootstrapping: https://android.googlesource.com/platform/build/blueprint/+/master/bootstrap/minibp/main.go#49",
+      "parentUuid": "48fe720d_2e59f24b",
+      "revId": "60bce001ab1a5cdc6e595967b83a9960f45f8b19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
