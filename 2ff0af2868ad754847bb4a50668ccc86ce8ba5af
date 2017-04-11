@@ -1,0 +1,350 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fb69e64_56baa64d",
+        "filename": "python/binary.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-11T22:13:50Z",
+      "side": 1,
+      "message": "Could we have a comment here clarifying what it\u0027s doing (or even better, split it into a separate function whose name clarifies the meaning)? Something along the lines of finding all the init.py\u0027s that exist?",
+      "revId": "2ff0af2868ad754847bb4a50668ccc86ce8ba5af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7418e031_a5df3570",
+        "filename": "python/binary.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-11T22:13:50Z",
+      "side": 1,
+      "message": "Is \"ele\" for \"element\"? Would it be equally accurate to call it \"file\"?",
+      "revId": "2ff0af2868ad754847bb4a50668ccc86ce8ba5af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73d6feb8_a1df7648",
+        "filename": "python/binary.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-11T22:13:50Z",
+      "side": 1,
+      "message": "I think we\u0027d like to replace \"existed\" with \"existing\" (which is in the present tense) or perhaps \"preExisting\" (if we want to emphasize the fact that it\u0027s past tense)",
+      "revId": "2ff0af2868ad754847bb4a50668ccc86ce8ba5af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51d8af91_a2c557e0",
+        "filename": "python/binary.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-11T22:13:50Z",
+      "side": 1,
+      "message": "Should \u0027lastDir\u0027 be perhaps \u0027parentPath\u0027?",
+      "revId": "2ff0af2868ad754847bb4a50668ccc86ce8ba5af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c54f56d_f8737875",
+        "filename": "python/binary.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-11T22:13:50Z",
+      "side": 1,
+      "message": "I think you can use https://golang.org/pkg/path/filepath/#IsAbs",
+      "revId": "2ff0af2868ad754847bb4a50668ccc86ce8ba5af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "382c664d_6c93facc",
+        "filename": "python/binary.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-11T22:13:50Z",
+      "side": 1,
+      "message": "What\u0027s the reason for checking for an absolute file path? Is it because we want the interpreter to not be contained in the out directory? Is it because we want the interpreter to exist?\n\nI wonder if we want to instead check those two things separately",
+      "revId": "2ff0af2868ad754847bb4a50668ccc86ce8ba5af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7eb1b14_98f706ce",
+        "filename": "python/binary.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-11T22:13:50Z",
+      "side": 1,
+      "message": "This looks to me like a good place for a comment like \"find the file to use as \u003cmain\u003e\" or even better, to extract it into a separate method named perhaps findMainFile",
+      "revId": "2ff0af2868ad754847bb4a50668ccc86ce8ba5af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "049c7380_f498e372",
+        "filename": "python/binary.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-11T22:13:50Z",
+      "side": 1,
+      "message": "Could we rename this to clarify what it does - perhaps \"ScanUpForOtherInitFiles\"?",
+      "revId": "2ff0af2868ad754847bb4a50668ccc86ce8ba5af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6402e868_712da2b6",
+        "filename": "python/binary.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-11T22:13:50Z",
+      "side": 1,
+      "message": "I like the idea of renaming \"newInitFileDirs\" to \"newInitFileDirList\" to match the form of \"newInintFileDirSet\"",
+      "revId": "2ff0af2868ad754847bb4a50668ccc86ce8ba5af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c9f8d8b_a7cc71bf",
+        "filename": "python/binary.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-11T22:13:50Z",
+      "side": 1,
+      "message": "Do we want to terminate the search if we reach the root of the repo checkout, or even better, the root of the module?",
+      "range": {
+        "startLine": 128,
+        "startChar": 16,
+        "endLine": 128,
+        "endChar": 17
+      },
+      "revId": "2ff0af2868ad754847bb4a50668ccc86ce8ba5af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b95e908e_70b1c7a4",
+        "filename": "python/binary.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-11T22:13:50Z",
+      "side": 1,
+      "message": "You might be able to use filepath.Dir(path)",
+      "revId": "2ff0af2868ad754847bb4a50668ccc86ce8ba5af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b72de4dd_e0547027",
+        "filename": "python/builder.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-11T22:13:50Z",
+      "side": 1,
+      "message": "What would you think of a description of \"build par $out\"?",
+      "revId": "2ff0af2868ad754847bb4a50668ccc86ce8ba5af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51427af2_6a89b5d3",
+        "filename": "python/builder.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-11T22:13:50Z",
+      "side": 1,
+      "message": "I wonder if there\u0027s an easy way to clarify the fact that parArgs here seems to be defined in soongParArgs below. Perhaps moving this function below where it\u0027s populated",
+      "revId": "2ff0af2868ad754847bb4a50668ccc86ce8ba5af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b28e0b3_b3bd66fc",
+        "filename": "python/builder.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-11T22:13:50Z",
+      "side": 1,
+      "message": "Is this the kind of thing we\u0027d want to put in paths.go? It reminds me of the Path interface there",
+      "revId": "2ff0af2868ad754847bb4a50668ccc86ce8ba5af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03cd7126_ff9fe793",
+        "filename": "python/builder.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-11T22:13:50Z",
+      "side": 1,
+      "message": "Is parArgs supposed to be set to \"\"?",
+      "revId": "2ff0af2868ad754847bb4a50668ccc86ce8ba5af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ba701fe_9d302ded",
+        "filename": "python/python.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-11T22:13:50Z",
+      "side": 1,
+      "message": "reminder before submitting that we\u0027ll want to say what the duplicates are",
+      "revId": "2ff0af2868ad754847bb4a50668ccc86ce8ba5af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b485a479_de6dfff6",
+        "filename": "python/python.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-11T22:13:50Z",
+      "side": 1,
+      "message": "reminder before submitting that we\u0027ll want to say what the duplicates are",
+      "revId": "2ff0af2868ad754847bb4a50668ccc86ce8ba5af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c5b8346_acd22d4c",
+        "filename": "python/python.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-11T22:13:50Z",
+      "side": 1,
+      "message": "Instead of blacklisting certain module types (PythonBinary), can we instead whitelist certain module types (PythonLibrary) (but still include the actual module type in the error message)? I imagine that it would be easier to reason about the list of supported types",
+      "revId": "2ff0af2868ad754847bb4a50668ccc86ce8ba5af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6fe3329_eaf2ccae",
+        "filename": "python/python_test.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-11T22:13:50Z",
+      "side": 1,
+      "message": "You might want to print out the two lists, or perhaps use deepCompare from the not-merged-yet https://github.com/google/blueprint/pull/145/commits/053735cf58a2bbbd8f8c3cd899889acba1d35694 (that patch doesn\u0027t build on its own and requires the following patch before it builds, but I\u0027ll clean it up if you need it)",
+      "revId": "2ff0af2868ad754847bb4a50668ccc86ce8ba5af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0774f63_059f6313",
+        "filename": "python/scripts/stub_template_host.txt",
+        "patchSetId": 21
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-11T22:13:50Z",
+      "side": 1,
+      "message": "Was this mostly copied from somewhere else? Do you happen to have a convenient diff of what changed? It seems to me that it\u0027d be nice to have a comment at the top that says something like \"this file should get copied into a .par file and this file takes care of finding and running the main class\"",
+      "revId": "2ff0af2868ad754847bb4a50668ccc86ce8ba5af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
