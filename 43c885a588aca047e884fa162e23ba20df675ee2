@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3b2bafae_f748d7fe",
+        "filename": "ui/build/build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-11T21:02:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55c09bb1_836b91b3",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 33
+      },
+      "revId": "43c885a588aca047e884fa162e23ba20df675ee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df978577_66438e0f",
         "filename": "ui/build/build.go",
         "patchSetId": 1
@@ -83,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "f2403bd0_c99b3045",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-11T21:02:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e5a9e7d_710c3589",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 18
+      },
+      "revId": "43c885a588aca047e884fa162e23ba20df675ee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c525896e_ed80abe8",
         "filename": "ui/build/proc_sync.go",
         "patchSetId": 1
@@ -94,6 +142,30 @@
       "writtenOn": "2017-04-10T05:45:09Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 46,
+        "startChar": 2,
+        "endLine": 46,
+        "endChar": 18
+      },
+      "revId": "43c885a588aca047e884fa162e23ba20df675ee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76ee0b4a_5f98224b",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-11T21:02:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c525896e_ed80abe8",
       "range": {
         "startLine": 46,
         "startChar": 2,
@@ -129,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "1d99b1f3_b0aa085d",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-11T21:02:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86de83c2_5b508120",
+      "range": {
+        "startLine": 57,
+        "startChar": 33,
+        "endLine": 57,
+        "endChar": 38
+      },
+      "revId": "43c885a588aca047e884fa162e23ba20df675ee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "984f94d2_ae9f5d28",
         "filename": "ui/build/proc_sync.go",
         "patchSetId": 1
@@ -140,6 +236,30 @@
       "writtenOn": "2017-04-10T05:45:09Z",
       "side": 1,
       "message": "Did you explore syscall.Flock at all? It seems like that could be simpler than dealing with pid files.\n\nI\u0027m kinda worried about pid namespaces, where a process can have multiple pids in different namespaces, but I don\u0027t think that\u0027s a case to really worry about anyway.\n\nIt looks like flock doesn\u0027t work in some conditions either -- NFS in particular (but that\u0027s slow for an android build, and pids probably don\u0027t work there either)",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 51
+      },
+      "revId": "43c885a588aca047e884fa162e23ba20df675ee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3265ef47_b75d9141",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-11T21:02:01Z",
+      "side": 1,
+      "message": "Oh it\u0027s called \"Flock\". I couldn\u0027t find it when I looked previously but now that I know about it, I\u0027ll add it to the next version of this patch\n\nThanks",
+      "parentUuid": "984f94d2_ae9f5d28",
       "range": {
         "startLine": 59,
         "startChar": 0,
@@ -175,6 +295,30 @@
     },
     {
       "key": {
+        "uuid": "ca2b48d1_10e796b2",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-11T21:02:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "454f6f6b_f29f8294",
+      "range": {
+        "startLine": 79,
+        "startChar": 8,
+        "endLine": 79,
+        "endChar": 31
+      },
+      "revId": "43c885a588aca047e884fa162e23ba20df675ee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d4c36f72_8e038a97",
         "filename": "ui/build/proc_sync.go",
         "patchSetId": 1
@@ -186,6 +330,30 @@
       "writtenOn": "2017-04-10T05:45:09Z",
       "side": 1,
       "message": "What if we\u0027ve wrapped and reused the pid?",
+      "range": {
+        "startLine": 137,
+        "startChar": 4,
+        "endLine": 137,
+        "endChar": 41
+      },
+      "revId": "43c885a588aca047e884fa162e23ba20df675ee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc3db13f_36551a46",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-11T21:02:01Z",
+      "side": 1,
+      "message": "this is gone now after your suggestion about flock",
+      "parentUuid": "d4c36f72_8e038a97",
       "range": {
         "startLine": 137,
         "startChar": 4,
