@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d37b9159_60303420",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-04-11T18:01:40Z",
+      "side": 1,
+      "message": "image",
+      "range": {
+        "startLine": 38,
+        "startChar": 16,
+        "endLine": 38,
+        "endChar": 20
+      },
+      "revId": "a176a279116395b71698ef843a2f4f5804ee24fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff5f93ea_85cd5007",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-04-11T18:01:40Z",
+      "side": 1,
+      "message": "Vendor returns true for vendor modules so that ...",
+      "revId": "a176a279116395b71698ef843a2f4f5804ee24fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "793b4ccf_ebc9fd28",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-04-11T18:01:40Z",
+      "side": 1,
+      "message": "Move this with the *Module methods",
+      "revId": "a176a279116395b71698ef843a2f4f5804ee24fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c8e1379_99e41add",
+        "filename": "cc/compiler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-04-11T18:01:40Z",
+      "side": 1,
+      "message": "Might as well add Srcs too.",
+      "revId": "a176a279116395b71698ef843a2f4f5804ee24fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
