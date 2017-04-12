@@ -116,6 +116,10 @@ type BaseCompilerProperties struct {
 
 	Target struct {
 		Vendor struct {
+			// list of module-specific flags that will only be used in the vendor
+			// variant of the C/C++ module.
+			Cflags []string
+
 			// list of source files that should only be used in the
 			// vendor variant of the C/C++ module.
 			Srcs []string
@@ -246,6 +250,9 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags) Flag
 	}
 
 	if ctx.vndk() {
+		CheckBadCompilerFlags(ctx, "target.vendor.cflags", compiler.Properties.Target.Vendor.Cflags)
+		flags.Cflags = append(flags.Cflags, esc(compiler.Properties.Target.Vendor.Cflags)...)
+
 		flags.GlobalFlags = append(flags.GlobalFlags,
 			"-D__ANDROID_API__=__ANDROID_API_FUTURE__", "-D__ANDROID_VNDK__")
 	}
