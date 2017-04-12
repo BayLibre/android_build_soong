@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "023cbb06_b06c7bf4",
+        "filename": "cc/sabi.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-04-12T00:18:56Z",
+      "side": 1,
+      "message": "Could also do VisitDepthFirstDeps and avoid the multiple conditions in the if statement.",
+      "range": {
+        "startLine": 50,
+        "startChar": 7,
+        "endLine": 50,
+        "endChar": 22
+      },
+      "revId": "c9d9ea272531cba46b846fd3cdb89ddece768e9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
