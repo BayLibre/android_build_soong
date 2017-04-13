@@ -62,7 +62,6 @@ var (
 		"-Wl,--fatal-warnings",
 		"-Wl,-maarch64linux",
 		"-Wl,--hash-style=gnu",
-		"-Wl,--fix-cortex-a53-843419",
 		"-fuse-ld=gold",
 		"-Wl,--icf=safe",
 		"-Wl,--no-undefined-version",
@@ -81,6 +80,24 @@ var (
 			// don't support a Kryo specific target yet.
 			"-mcpu=cortex-a57",
 		},
+	}
+
+	arm64A53ErrataLdflags = []string{
+		"-Wl,--fix-cortex-a53-843419",
+		"-Wl,--fix-cortex-a53-835769",
+	}
+
+	arm64NoA53ErrataLdflags = []string{
+		"-Wl,--no-fix-cortex-a53-843419",
+		"-Wl,--no-fix-cortex-a53-835769",
+	}
+
+	arm64A53ErrataCflags = []string{
+		"-mfix-cortex-a53-835769",
+	}
+
+	arm64NoA53ErrataCflags = []string{
+		"-mno-fix-cortex-a53-835769",
 	}
 
 	arm64ClangCpuVariantCflags = copyVariantFlags(arm64CpuVariantCflags)
