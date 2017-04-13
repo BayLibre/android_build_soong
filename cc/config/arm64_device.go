@@ -62,7 +62,6 @@ var (
 		"-Wl,--fatal-warnings",
 		"-Wl,-maarch64linux",
 		"-Wl,--hash-style=gnu",
-		"-Wl,--fix-cortex-a53-843419",
 		"-fuse-ld=gold",
 		"-Wl,--icf=safe",
 		"-Wl,--no-undefined-version",
@@ -81,6 +80,24 @@ var (
 			// don't support a Kryo specific target yet.
 			"-mcpu=cortex-a57",
 		},
+	}
+
+	arm64A53ErrataLdflags = []string{
+		"-Wl,--fix-cortex-a53-843419",
+		"-Wl,--fix-cortex-a53-835769",
+	}
+
+	arm64NoA53ErrataLdflags = []string{
+		"-Wl,--no-fix-cortex-a53-843419",
+		"-Wl,--no-fix-cortex-a53-835769",
+	}
+
+	arm64A53ErrataCflags = []string{
+		"-mfix-cortex-a53-835769",
+	}
+
+	arm64NoA53ErrataCflags = []string{
+		"-mno-fix-cortex-a53-835769",
 	}
 
 	arm64ClangCpuVariantCflags = copyVariantFlags(arm64CpuVariantCflags)
@@ -144,6 +161,7 @@ type toolchainArm64 struct {
 
 	toolchainCflags      string
 	toolchainClangCflags string
+	toolchainLDflags     string
 }
 
 func (t *toolchainArm64) Name() string {
@@ -164,6 +182,10 @@ func (t *toolchainArm64) GccVersion() string {
 
 func (t *toolchainArm64) ToolchainCflags() string {
 	return t.toolchainCflags
+}
+
+func (t *toolchainArm64) ToolchainLdflags() string {
+	return t.toolchainLDflags
 }
 
 func (t *toolchainArm64) Cflags() string {
@@ -202,18 +224,39 @@ func (t *toolchainArm64) ToolchainClangCflags() string {
 	return t.toolchainClangCflags
 }
 
+func (t *toolchainArm64) ToolchainClangLdflags() string {
+	return t.toolchainLDflags
+}
+
 func (toolchainArm64) SanitizerRuntimeLibraryArch() string {
 	return "aarch64"
 }
 
 func arm64ToolchainFactory(arch android.Arch) Toolchain {
+	var toolchainCflags string
+	var toolchainClangCflags string
+	var toolchainLDflags string
+
 	if arch.ArchVariant != "armv8-a" {
 		panic(fmt.Sprintf("Unknown ARM architecture version: %q", arch.ArchVariant))
 	}
 
+	switch arch.CpuVariant {
+	case "cortex-a53", "":
+		// To be safe, apply the errata workarounds by default
+		toolchainCflags = strings.Join([]string{toolchainCflags, arm64A53ErrataCflags)}, " ")
+		toolchainClangCflags = strings.Join([]string{toolchainClangCflags, arm64A53ErrataCflags)}, " ")
+		toolchainLDflags = strings.Join([]string{toolchainLDflags, arm64A53ErrataLdflags)}, " ")
+	default:
+		toolchainCflags = strings.Join([]string{toolchainCflags, arm64NoA53ErrataCflags)}, " ")
+		toolchainClangCflags = strings.Join([]string{toolchainClangCflags, arm64NoA53ErrataCflags)}, " ")
+		toolchainLDflags = strings.Join([]string{toolchainLDflags, arm64NoA53ErrataLdflags)}, " ")
+	}
+
 	return &toolchainArm64{
-		toolchainCflags:      variantOrDefault(arm64CpuVariantCflagsVar, arch.CpuVariant),
-		toolchainClangCflags: variantOrDefault(arm64ClangCpuVariantCflagsVar, arch.CpuVariant),
+		toolchainCflags: strings.Join(toolchainCflags, " "),
+		toolchainClangCflags: strings.Join(toolchainClangCflags, " "),
+		toolchainLDflags: strings.Join(toolchainLDflags, " "),
 	}
 }
 
