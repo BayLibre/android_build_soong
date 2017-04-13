@@ -27,6 +27,9 @@ import (
 type TestProperties struct {
 	// if set, build against the gtest library. Defaults to true.
 	Gtest *bool
+
+	// if set, use the isolated gtest test runner. Defaults to false.
+	Isolated *bool
 }
 
 type TestBinaryProperties struct {
@@ -133,6 +136,10 @@ func (test *testDecorator) gtest() bool {
 	return test.Properties.Gtest == nil || *test.Properties.Gtest == true
 }
 
+func (test *testDecorator) isolated() bool {
+	return test.Properties.Isolated != nil && *test.Properties.Isolated == true
+}
+
 func (test *testDecorator) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 	if !test.gtest() {
 		return flags
@@ -171,7 +178,12 @@ func (test *testDecorator) linkerDeps(ctx BaseModuleContext, deps Deps) Deps {
 				deps.StaticLibs = append(deps.StaticLibs, "libgtest_main_ndk", "libgtest_ndk")
 			}
 		} else {
-			deps.StaticLibs = append(deps.StaticLibs, "libgtest_main", "libgtest")
+			deps.StaticLibs = append(deps.StaticLibs, "libgtest")
+			if test.isolated() {
+				deps.StaticLibs = append(deps.StaticLibs, "libgtest_isolated_main")
+			} else {
+				deps.StaticLibs = append(deps.StaticLibs, "libgtest_main")
+			}
 		}
 	}
 
