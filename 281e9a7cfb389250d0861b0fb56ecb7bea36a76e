@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c2079f9f_7d78e83b",
+        "filename": "cc/builder.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-15T01:34:35Z",
+      "side": 1,
+      "message": "You should depend on symbolFile too",
+      "range": {
+        "startLine": 634,
+        "startChar": 17,
+        "endLine": 634,
+        "endChar": 31
+      },
+      "revId": "281e9a7cfb389250d0861b0fb56ecb7bea36a76e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b834108a_f6629465",
         "filename": "cc/sabi.go",
         "patchSetId": 12
