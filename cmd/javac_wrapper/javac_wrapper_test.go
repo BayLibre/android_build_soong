@@ -39,6 +39,10 @@ var testCases = []struct {
 		out: "\x1b[1mFile.java:398: \x1b[35mwarning:\x1b[0m\x1b[1m [RectIntersectReturnValueIgnored] Return value of com.blah.function() must be checked\x1b[0m\n",
 	},
 	{
+		in:  "warning: [options] bootstrap class path not set in conjunction with -source 1.7\n",
+		out: "\x1b[1m\x1b[35mwarning:\x1b[0m\x1b[1m [options] bootstrap class path not set in conjunction with -source 1.7\x1b[0m\n",
+	},
+	{
 		in:  "    (see http://go/errorprone/bugpattern/RectIntersectReturnValueIgnored.md)\n",
 		out: "    (see http://go/errorprone/bugpattern/RectIntersectReturnValueIgnored.md)\n",
 	},

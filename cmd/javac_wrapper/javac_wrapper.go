@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// soong_javac_filter expects the output of javac on stdin, and produces
-// an ANSI colorized version of the output on stdout.
+// soong_javac_wrapper expects a javac command line and argments, executes
+// it, and produces an ANSI colorized version of the output on stdout.
 //
 // It also hides the unhelpful and unhideable "warning there is a warning"
 // messages.
@@ -24,17 +24,19 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"os/exec"
 	"regexp"
+	"syscall"
 )
 
 // Regular expressions are based on
 // https://chromium.googlesource.com/chromium/src/+/master/build/android/gyp/javac.py
 // Colors are based on clang's output
 var (
-	filelinePrefix = `^[-.\w/\\]+.java:[0-9]+:`
-	warningRe      = regexp.MustCompile(filelinePrefix + ` (warning:) .*$`)
-	errorRe        = regexp.MustCompile(filelinePrefix + ` (.*?:) .*$`)
-	markerRe       = regexp.MustCompile(`\s*(\^)\s*$`)
+	filelinePrefix = `^([-.\w/\\]+.java:[0-9]+: )`
+	warningRe      = regexp.MustCompile(filelinePrefix + `?(warning:) .*$`)
+	errorRe        = regexp.MustCompile(filelinePrefix + `(.*?:) .*$`)
+	markerRe       = regexp.MustCompile(`()\s*(\^)\s*$`)
 
 	escape  = "\x1b"
 	reset   = escape + "[0m"
@@ -45,11 +47,54 @@ var (
 )
 
 func main() {
-	err := process(bufio.NewReader(os.Stdin), os.Stdout)
+	err := Main(os.Args)
 	if err != nil {
-		fmt.Fprintln(os.Stderr, "reading standard input:", err)
-		os.Exit(-1)
+		if exitErr, ok := err.(*exec.ExitError); ok {
+			if status, ok := exitErr.Sys().(syscall.WaitStatus); ok {
+				os.Exit(status.ExitStatus())
+			} else {
+				os.Exit(1)
+			}
+		} else {
+			fmt.Fprintln(os.Stderr, err.Error())
+			os.Exit(1)
+		}
 	}
+}
+
+func Main(args []string) error {
+	if len(args) < 2 {
+		return fmt.Errorf("usage: %s javac ...", os.Args[0])
+	}
+
+	pr, pw, err := os.Pipe()
+	if err != nil {
+		return fmt.Errorf("creating output pipe: %s", err)
+	}
+
+	cmd := exec.Command(os.Args[1], os.Args[2:]...)
+	cmd.Stdin = os.Stdin
+	cmd.Stdout = pw
+	cmd.Stderr = pw
+	err = cmd.Start()
+	if err != nil {
+		return fmt.Errorf("starting subprocess: %s", err)
+	}
+
+	pw.Close()
+
+	errCh := make(chan error)
+	go func() {
+		errCh <- process(pr, os.Stdout)
+	}()
+
+	cmdErr := cmd.Wait()
+	err = <-errCh
+
+	if cmdErr != nil {
+		return cmdErr
+	}
+	return err
 }
 
 func process(r io.Reader, w io.Writer) error {
@@ -61,7 +106,11 @@ func process(r io.Reader, w io.Writer) error {
 	for scanner.Scan() {
 		processLine(w, scanner.Text())
 	}
-	return scanner.Err()
+	err := scanner.Err()
+	if err != nil {
+		return fmt.Errorf("scanning input: %s", err)
+	}
+	return nil
 }
 
 func processLine(w io.Writer, line string) {
@@ -83,7 +132,7 @@ func processLine(w io.Writer, line string) {
 // Returns line, modified if it matched, and true if it matched.
 func applyColor(line, color string, re *regexp.Regexp) (string, bool) {
 	if m := re.FindStringSubmatchIndex(line); m != nil {
-		tagStart, tagEnd := m[2], m[3]
+		tagStart, tagEnd := m[4], m[5]
 		line = bold + line[:tagStart] +
 			color + line[tagStart:tagEnd] + reset + bold +
 			line[tagEnd:] + reset
