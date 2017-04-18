@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a996717f_db49543a",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-04-18T21:20:44Z",
+      "side": 1,
+      "message": "Ldflags",
+      "range": {
+        "startLine": 164,
+        "startChar": 10,
+        "endLine": 164,
+        "endChar": 17
+      },
+      "revId": "2054bbe7d85a6c431d7f1a764ea9b1100fabe2bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
