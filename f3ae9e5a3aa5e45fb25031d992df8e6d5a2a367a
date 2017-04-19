@@ -45,6 +45,30 @@
       "revId": "f3ae9e5a3aa5e45fb25031d992df8e6d5a2a367a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5eb650d4_28b2f04f",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-19T18:23:15Z",
+      "side": 1,
+      "message": "oh ok - in that case I\u0027ll put this one back and instead rename PathsForOptionalSources, maybe to ExistentPathsForSources",
+      "parentUuid": "930b6a53_0646f1db",
+      "range": {
+        "startLine": 375,
+        "startChar": 5,
+        "endLine": 375,
+        "endChar": 20
+      },
+      "revId": "f3ae9e5a3aa5e45fb25031d992df8e6d5a2a367a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
