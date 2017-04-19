@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc33512f_4e596d4c",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-19T03:36:49Z",
+      "side": 1,
+      "message": "joins",
+      "range": {
+        "startLine": 342,
+        "startChar": 17,
+        "endLine": 342,
+        "endChar": 22
+      },
+      "revId": "f3ae9e5a3aa5e45fb25031d992df8e6d5a2a367a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "930b6a53_0646f1db",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-19T03:36:49Z",
+      "side": 1,
+      "message": "I don\u0027t really like this -- this returns an OptionalPath, so OptionalPathFor... makes more sense to me. (It\u0027s a different type of path, not really a different type of source, though that does get fuzzy)",
+      "range": {
+        "startLine": 375,
+        "startChar": 5,
+        "endLine": 375,
+        "endChar": 20
+      },
+      "revId": "f3ae9e5a3aa5e45fb25031d992df8e6d5a2a367a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
