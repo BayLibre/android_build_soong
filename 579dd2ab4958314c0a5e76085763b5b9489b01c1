@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b36ff3d9_bfccd743",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-19T05:40:23Z",
+      "side": 1,
+      "message": "This isn\u0027t needed anymore, is it?",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 1
+      },
+      "revId": "579dd2ab4958314c0a5e76085763b5b9489b01c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c780a9e7_f0b16d4f",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-19T05:40:23Z",
+      "side": 1,
+      "message": "And now this one should be between 19 and 20 :)",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 16
+      },
+      "revId": "579dd2ab4958314c0a5e76085763b5b9489b01c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91c9d694_61af16c1",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-19T05:40:23Z",
+      "side": 1,
+      "message": "These will be two different paths depending on whether OUT_DIR\u003dout or OUT_DIR\u003d$PWD/out, which should be very similar.\n\nWith \u0027out\u0027, this will be something of the form out/soong/.intermediates/.../gen\n\nWith \u0027$PWD/out\u0027, this will be .intermediates/.../gen, since you\u0027re taking the relative path from the output directory.\n\nThough really, I\u0027m not sure why genDir isn\u0027t just __SBOX_OUT_DIR__...",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 26
+      },
+      "revId": "579dd2ab4958314c0a5e76085763b5b9489b01c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3655bb8a_3315956c",
+        "filename": "ui/build/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-19T05:40:23Z",
+      "side": 1,
+      "message": "This goes at the bottom of the list (with a blank line in between)",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 23
+      },
+      "revId": "579dd2ab4958314c0a5e76085763b5b9489b01c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
