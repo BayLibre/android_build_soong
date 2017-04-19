@@ -1,0 +1,280 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6dd91176_2a1a8cb5",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-19T04:06:18Z",
+      "side": 1,
+      "message": "I know I said that the defer wasn\u0027t guaranteed to be cleaned up, but I think that just needs to be handled reasonably, rather than requiring every caller to do this themselves. I mentioned this in the proc_sync.go file too, but I think the change over to using file locks handles this, since if something unexpected happens, the file handle will be closed, releasing the lock.",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 53
+      },
+      "revId": "cd58f554067286550642d264281987686152bdd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e85c6a92_c331af3a",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-19T04:06:18Z",
+      "side": 1,
+      "message": "\"android/soong/...\" ones go below \"time\", with a newline in between",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 26
+      },
+      "revId": "cd58f554067286550642d264281987686152bdd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93148e47_b4d6c516",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-19T04:06:18Z",
+      "side": 1,
+      "message": "The rest of the functions generally have been using (ctx, config)",
+      "range": {
+        "startLine": 31,
+        "startChar": 27,
+        "endLine": 31,
+        "endChar": 62
+      },
+      "revId": "cd58f554067286550642d264281987686152bdd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6535d1e4_02c1e7fd",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-19T04:06:18Z",
+      "side": 1,
+      "message": "What if we\u0027re building in more than one output directory in a single build, like multiproduct_kati? You could return either an opaque structure with a .Close() call, or a func() lambda with the file info captured.",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 24
+      },
+      "revId": "cd58f554067286550642d264281987686152bdd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cea79aad_83246708",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-19T04:06:18Z",
+      "side": 1,
+      "message": "Any reason to use SoongOutDir instead of OutDir? And do we really need a subdirectory, or should we just use $OUT_DIR/.lock?",
+      "range": {
+        "startLine": 54,
+        "startChar": 34,
+        "endLine": 54,
+        "endChar": 45
+      },
+      "revId": "cd58f554067286550642d264281987686152bdd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66b6a9f5_8b771448",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-19T04:06:18Z",
+      "side": 1,
+      "message": "why 0750?",
+      "range": {
+        "startLine": 55,
+        "startChar": 23,
+        "endLine": 55,
+        "endChar": 27
+      },
+      "revId": "cd58f554067286550642d264281987686152bdd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "01d452d1_962b86e1",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-19T04:06:18Z",
+      "side": 1,
+      "message": "return an error, or call logger.Fatal",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 38
+      },
+      "revId": "cd58f554067286550642d264281987686152bdd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56b2bf3d_4a8675da",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-19T04:06:18Z",
+      "side": 1,
+      "message": "Can we have some tests on both this and the underlying tryLock()? I suppose you may need to start another process to actually test some of the behaviors -- see https://android.git.corp.google.com/platform/build/soong/+/5721284104e864932e97b7f9bdeef5a8fb0ee541/ui/logger/logger_test.go#98 for an example on how that\u0027s possible",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 38
+      },
+      "revId": "cd58f554067286550642d264281987686152bdd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4328ee3_2d7a9ae4",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-19T04:06:18Z",
+      "side": 1,
+      "message": "logger.Printf",
+      "range": {
+        "startLine": 86,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 14
+      },
+      "revId": "cd58f554067286550642d264281987686152bdd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "92881c7a_48b50b6a",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-19T04:06:18Z",
+      "side": 1,
+      "message": "logger.Printf",
+      "range": {
+        "startLine": 96,
+        "startChar": 3,
+        "endLine": 96,
+        "endChar": 13
+      },
+      "revId": "cd58f554067286550642d264281987686152bdd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "521a00c2_32da9d59",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-19T04:06:18Z",
+      "side": 1,
+      "message": "Can\u0027t this just close the file? Assuming that\u0027s possible, it means that the program exiting / the object being finalized after going out of scope would be the backup cases for when unlock() wasn\u0027t called. (We\u0027d need to make sure the file pointer isn\u0027t stored in a global like it is now though)",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 36
+      },
+      "revId": "cd58f554067286550642d264281987686152bdd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "89bb9bf2_c4425e16",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-19T04:06:18Z",
+      "side": 1,
+      "message": "Can you document why you chose Fcntl\u0027s F_SETLK vs Flock?",
+      "range": {
+        "startLine": 118,
+        "startChar": 15,
+        "endLine": 118,
+        "endChar": 25
+      },
+      "revId": "cd58f554067286550642d264281987686152bdd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
