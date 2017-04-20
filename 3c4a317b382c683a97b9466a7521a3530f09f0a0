@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cab0aa4f_4409c640",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-20T20:21:24Z",
+      "side": 1,
+      "message": "nitpick : it\u0027d be good to move \"also\" in this comment to the other comment below",
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9109005_96406015",
+        "filename": "python/binary.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-20T20:21:24Z",
+      "side": 1,
+      "message": "rename \"existedPyPkg\" to \"existingPyPkg\"?",
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "827f4678_d22a1320",
+        "filename": "python/binary.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-20T20:21:24Z",
+      "side": 1,
+      "message": "I\u0027ve often seen the Python2 interpreter be a file named \u0027python2\u0027 (in addition to a file named \u0027python\u0027) - I\u0027m inclined to have the default here be \u0027python2\u0027 if we want \u0027python3\u0027 to be the default configuration specified in Soong",
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61393e52_3a4d7a8d",
+        "filename": "python/binary.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-20T20:21:24Z",
+      "side": 1,
+      "message": "(\"a\" -\u003e \"an\")",
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcf0bc3c_cd81029b",
+        "filename": "python/binary.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-20T20:21:24Z",
+      "side": 1,
+      "message": "looks like \u003cfound\u003e is no longer used and can be assumed on line 178 to be true",
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58df7ed0_e1599a5f",
+        "filename": "python/binary.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-20T20:21:24Z",
+      "side": 1,
+      "message": "nice",
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "842f8c94_3423a039",
+        "filename": "python/binary.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-20T20:21:24Z",
+      "side": 1,
+      "message": "Do you suppose you could add a comment saying something like \"Adds the given directory and all its ancestor directories into newPyPkgs\"?",
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d08c261a_625b0e47",
+        "filename": "python/binary.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-20T20:21:24Z",
+      "side": 1,
+      "message": "Could you add the data type for \"existedPyPkgSet\"? I think it\u0027s map[string]bool . I\u0027d also be inclined to rename \"existed\" to \"existing\" here too",
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04e1053b_a47c5016",
+        "filename": "python/binary.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-20T20:21:24Z",
+      "side": 1,
+      "message": "How would you feel about renaming \"parentPath\" to \"modulePath\" or something like that? It seems to me that even though it\u0027s the parent path of something, this method doesn\u0027t require that it\u0027s the parent - it would still work if the leaf path were directly given to it",
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb2225cf_1f7414da",
+        "filename": "python/binary.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-20T20:21:24Z",
+      "side": 1,
+      "message": "How would you feel about renaming \"TrimPathFromLastSlash\" to \"PathBeforeLastSlash\" or \"ComponentBeforeLastSlash\"? I\u0027m thinking that specifying what is kept rather than what is removed would be easier for people to parse. Alternatively, if you\u0027d like to keep \"Trim\" in the name, then I think it\u0027d be good to at least replace \"From\" with \"After\"",
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
