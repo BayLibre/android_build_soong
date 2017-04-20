@@ -102,7 +102,7 @@ func TestSubprocess(t *testing.T) {
 	})
 
 	t.Run("success", func(t *testing.T) {
-		exitCode, err := Main("test", []string{"echo"})
+		exitCode, err := Main("test", []string{"true"})
 		if err != nil {
 			t.Fatal("unexpected error", err)
 		}
