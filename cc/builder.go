@@ -156,18 +156,16 @@ var (
 		},
 		"asFlags")
 
-	_ = pctx.SourcePathVariable("sAbiDumper", "prebuilts/build-tools/${config.HostPrebuiltTag}/bin/header-abi-dumper")
-
-	sAbiDump = pctx.AndroidStaticRule("sAbiDump",
+	sAbiDumper = pctx.HostBinToolVariable("sAbiDumper", "header-abi-dumper")
+	sAbiDump   = pctx.AndroidStaticRule("sAbiDump",
 		blueprint.RuleParams{
 			Command:     "rm -f $out && $sAbiDumper -o ${out} $in $exportDirs -- $cFlags -Wno-packed -Qunused-arguments -isystem ${config.RSIncludePath}",
 			CommandDeps: []string{"$sAbiDumper"},
 		},
 		"cFlags", "exportDirs")
 
-	_ = pctx.SourcePathVariable("sAbiLinker", "prebuilts/build-tools/${config.HostPrebuiltTag}/bin/header-abi-linker")
-
-	sAbiLink = pctx.AndroidStaticRule("sAbiLink",
+	sAbiLinker = pctx.HostBinToolVariable("sAbiLinker", "header-abi-linker")
+	sAbiLink   = pctx.AndroidStaticRule("sAbiLink",
 		blueprint.RuleParams{
 			Command:        "$sAbiLinker -o ${out} $symbolFile -arch $arch -api $api $exportedHeaderFlags @${out}.rsp ",
 			CommandDeps:    []string{"$sAbiLinker"},
@@ -176,7 +174,7 @@ var (
 		},
 		"symbolFile", "arch", "api", "exportedHeaderFlags")
 
-	_ = pctx.SourcePathVariable("sAbiDiffer", "prebuilts/build-tools/${config.HostPrebuiltTag}/bin/header-abi-diff")
+	sAbiDiffer = pctx.HostBinToolVariable("sAbiDiffer", "header-abi-diff")
 	// Abidiff check turned on in advice-only mode. Builds will not fail on abi incompatibilties / extensions.
 	sAbiDiff = pctx.AndroidStaticRule("sAbiDiff",
 		blueprint.RuleParams{
@@ -184,6 +182,11 @@ var (
 			CommandDeps: []string{"$sAbiDiffer"},
 		},
 		"referenceDump")
+	unzipRefSAbiDump = pctx.AndroidStaticRule("unzipRefSAbiDump",
+		blueprint.RuleParams{
+			Command:     "gunzip -c $in > $out",
+			Description: "gunzip -c $in > $out",
+		})
 )
 
 func init() {
@@ -629,6 +632,16 @@ func TransformDumpToLinkedDump(ctx android.ModuleContext, sAbiDumps android.Path
 		},
 	})
 	return android.OptionalPathForPath(outputFile)
+}
+
+func UnzipRefDump(ctx android.ModuleContext, zippedRefDump android.Path, baseName string) android.Path {
+	outputFile := android.PathForModuleOut(ctx, baseName+"_ref.lsdump")
+	ctx.ModuleBuild(pctx, android.ModuleBuildParams{
+		Rule:   unzipRefSAbiDump,
+		Output: outputFile,
+		Input:  zippedRefDump,
+	})
+	return outputFile
 }
 
 func SourceAbiDiff(ctx android.ModuleContext, inputDump android.Path, referenceDump android.Path,
