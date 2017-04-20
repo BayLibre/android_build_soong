@@ -151,8 +151,11 @@ func libraryHeaderFactory() (blueprint.Module, []interface{}) {
 type flagExporter struct {
 	Properties FlagExporterProperties
 
-	flags     []string
-	flagsDeps android.Paths
+	flags []string
+
+	// Subset of flags which contains only the include flags.
+	Includeflags []string
+	flagsDeps    android.Paths
 }
 
 func (f *flagExporter) exportedIncludes(ctx ModuleContext) android.Paths {
@@ -167,11 +170,16 @@ func (f *flagExporter) exportIncludes(ctx ModuleContext, inc string) {
 	includeDirs := f.exportedIncludes(ctx)
 	for _, dir := range includeDirs.Strings() {
 		f.flags = append(f.flags, inc+dir)
+		f.Includeflags = append(f.Includeflags, inc+dir)
 	}
 }
 
 func (f *flagExporter) reexportFlags(flags []string) {
 	f.flags = append(f.flags, flags...)
+}
+
+func (f *flagExporter) reexportIncludeFlags(flags []string) {
+	f.Includeflags = append(f.Includeflags, flags...)
 }
 
 func (f *flagExporter) reexportDeps(deps android.Paths) {
@@ -182,12 +190,17 @@ func (f *flagExporter) exportedFlags() []string {
 	return f.flags
 }
 
+func (f *flagExporter) exportedIncludeFlags() []string {
+	return f.Includeflags
+}
+
 func (f *flagExporter) exportedFlagsDeps() android.Paths {
 	return f.flagsDeps
 }
 
 type exportedFlagsProducer interface {
 	exportedFlags() []string
+	exportedIncludeFlags() []string
 	exportedFlagsDeps() android.Paths
 }
 
@@ -330,13 +343,15 @@ func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 		}
 		return Objects{}
 	}
-	if ctx.createVndkSourceAbiDump() || (library.sabi.Properties.CreateSAbiDumps && ctx.Device()) {
+	if (ctx.createVndkSourceAbiDump() || (library.sabi.Properties.CreateSAbiDumps && ctx.Device())) && !ctx.Vendor() {
 		exportIncludeDirs := android.PathsForModuleSrc(ctx, library.flagExporter.Properties.Export_include_dirs)
 		var SourceAbiFlags []string
 		for _, dir := range exportIncludeDirs.Strings() {
-			SourceAbiFlags = append(SourceAbiFlags, "-I "+dir)
+			SourceAbiFlags = append(SourceAbiFlags, "-I"+dir)
 		}
-
+		for _, reexportedInclude := range library.sabi.Properties.ReExportedIncludeFlags {
+			SourceAbiFlags = append(SourceAbiFlags, reexportedInclude)
+		}
 		flags.SAbiFlags = SourceAbiFlags
 		total_length := len(library.baseCompiler.Properties.Srcs) + len(deps.GeneratedSources) + len(library.Properties.Shared.Srcs) +
 			len(library.Properties.Static.Srcs)
@@ -573,7 +588,7 @@ func (library *libraryDecorator) linkShared(ctx ModuleContext,
 
 func (library *libraryDecorator) linkSAbiDumpFiles(ctx ModuleContext, objs Objects, fileName string) {
 	//Also take into account object re-use.
-	if len(objs.sAbiDumpFiles) > 0 && ctx.createVndkSourceAbiDump() {
+	if len(objs.sAbiDumpFiles) > 0 && ctx.createVndkSourceAbiDump() && !ctx.Vendor() {
 		refSourceDumpFile := android.PathForVndkRefAbiDump(ctx, "current", fileName, vndkVsNdk(ctx), true)
 		versionScript := android.OptionalPathForModuleSrc(ctx, library.Properties.Version_script)
 		var symbolFile android.OptionalPath
@@ -583,12 +598,16 @@ func (library *libraryDecorator) linkSAbiDumpFiles(ctx ModuleContext, objs Objec
 		exportIncludeDirs := android.PathsForModuleSrc(ctx, library.flagExporter.Properties.Export_include_dirs)
 		var SourceAbiFlags []string
 		for _, dir := range exportIncludeDirs.Strings() {
-			SourceAbiFlags = append(SourceAbiFlags, "-I "+dir)
+			SourceAbiFlags = append(SourceAbiFlags, "-I"+dir)
+		}
+		for _, reexportedInclude := range library.sabi.Properties.ReExportedIncludeFlags {
+			SourceAbiFlags = append(SourceAbiFlags, reexportedInclude)
 		}
 		exportedHeaderFlags := strings.Join(SourceAbiFlags, " ")
 		library.sAbiOutputFile = TransformDumpToLinkedDump(ctx, objs.sAbiDumpFiles, symbolFile, "current", fileName, exportedHeaderFlags)
 		if refSourceDumpFile.Valid() {
-			library.sAbiDiff = SourceAbiDiff(ctx, library.sAbiOutputFile.Path(), refSourceDumpFile.Path(), fileName)
+			unzippedRefDump := UnzipRefDump(ctx, refSourceDumpFile.Path(), fileName)
+			library.sAbiDiff = SourceAbiDiff(ctx, library.sAbiOutputFile.Path(), unzippedRefDump, fileName)
 		}
 	}
 }
@@ -614,6 +633,7 @@ func (library *libraryDecorator) link(ctx ModuleContext,
 
 	library.exportIncludes(ctx, "-I")
 	library.reexportFlags(deps.ReexportedFlags)
+	library.reexportIncludeFlags(library.sabi.Properties.ReExportedIncludeFlags)
 	library.reexportDeps(deps.ReexportedFlagsDeps)
 
 	if library.Properties.Aidl.Export_aidl_headers {
@@ -622,6 +642,7 @@ func (library *libraryDecorator) link(ctx ModuleContext,
 				"-I" + android.PathForModuleGen(ctx, "aidl").String(),
 			}
 			library.reexportFlags(flags)
+			library.reexportIncludeFlags(flags)
 			library.reuseExportedFlags = append(library.reuseExportedFlags, flags...)
 			library.reexportDeps(library.baseCompiler.deps) // TODO: restrict to aidl deps
 			library.reuseExportedDeps = append(library.reuseExportedDeps, library.baseCompiler.deps...)
@@ -635,6 +656,7 @@ func (library *libraryDecorator) link(ctx ModuleContext,
 				"-I" + protoDir(ctx).String(),
 			}
 			library.reexportFlags(flags)
+			library.reexportIncludeFlags(flags)
 			library.reuseExportedFlags = append(library.reuseExportedFlags, flags...)
 			library.reexportDeps(library.baseCompiler.deps) // TODO: restrict to proto deps
 			library.reuseExportedDeps = append(library.reuseExportedDeps, library.baseCompiler.deps...)
