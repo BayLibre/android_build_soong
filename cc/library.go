@@ -314,6 +314,16 @@ func (library *libraryDecorator) compilerFlags(ctx ModuleContext, flags Flags) F
 	return library.baseCompiler.compilerFlags(ctx, flags)
 }
 
+func extractExportIncludesFromFlags(flags []string) []string {
+	var exportedIncludes []string
+	for _, flag := range flags {
+		if strings.HasPrefix(flag, "-I") {
+			exportedIncludes = append(exportedIncludes, flag)
+		}
+	}
+	return exportedIncludes
+}
+
 func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps PathDeps) Objects {
 	if !library.buildShared() && !library.buildStatic() {
 		if len(library.baseCompiler.Properties.Srcs) > 0 {
@@ -327,13 +337,15 @@ func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 		}
 		return Objects{}
 	}
-	if ctx.createVndkSourceAbiDump() || (library.sabi.Properties.CreateSAbiDumps && ctx.Device()) {
+	if (ctx.createVndkSourceAbiDump() || (library.sabi.Properties.CreateSAbiDumps && ctx.Device())) && !ctx.Vendor() {
 		exportIncludeDirs := android.PathsForModuleSrc(ctx, library.flagExporter.Properties.Export_include_dirs)
 		var SourceAbiFlags []string
 		for _, dir := range exportIncludeDirs.Strings() {
-			SourceAbiFlags = append(SourceAbiFlags, "-I "+dir)
+			SourceAbiFlags = append(SourceAbiFlags, "-I"+dir)
 		}
-
+		for _, reexportedInclude := range extractExportIncludesFromFlags(library.sabi.Properties.ExportedDeps) {
+			SourceAbiFlags = append(SourceAbiFlags, reexportedInclude)
+		}
 		flags.SAbiFlags = SourceAbiFlags
 		total_length := len(library.baseCompiler.Properties.Srcs) + len(deps.GeneratedSources) + len(library.Properties.Shared.Srcs) +
 			len(library.Properties.Static.Srcs)
@@ -563,14 +575,14 @@ func (library *libraryDecorator) linkShared(ctx ModuleContext,
 	objs.sAbiDumpFiles = append(objs.sAbiDumpFiles, deps.WholeStaticLibObjs.sAbiDumpFiles...)
 
 	library.coverageOutputFile = TransformCoverageFilesToLib(ctx, objs, builderFlags, library.getLibName(ctx))
-	library.linkSAbiDumpFiles(ctx, objs, fileName)
+	library.linkSAbiDumpFiles(ctx, objs, fileName, deps)
 
 	return ret
 }
 
-func (library *libraryDecorator) linkSAbiDumpFiles(ctx ModuleContext, objs Objects, fileName string) {
+func (library *libraryDecorator) linkSAbiDumpFiles(ctx ModuleContext, objs Objects, fileName string, deps PathDeps) {
 	//Also take into account object re-use.
-	if len(objs.sAbiDumpFiles) > 0 && ctx.createVndkSourceAbiDump() {
+	if len(objs.sAbiDumpFiles) > 0 && ctx.createVndkSourceAbiDump() && !ctx.Vendor() {
 		refSourceDumpFile := android.PathForVndkRefAbiDump(ctx, "current", fileName, vndkVsNdk(ctx), true)
 		versionScript := android.OptionalPathForModuleSrc(ctx, library.Properties.Version_script)
 		var symbolFile android.OptionalPath
@@ -580,12 +592,16 @@ func (library *libraryDecorator) linkSAbiDumpFiles(ctx ModuleContext, objs Objec
 		exportIncludeDirs := android.PathsForModuleSrc(ctx, library.flagExporter.Properties.Export_include_dirs)
 		var SourceAbiFlags []string
 		for _, dir := range exportIncludeDirs.Strings() {
-			SourceAbiFlags = append(SourceAbiFlags, "-I "+dir)
+			SourceAbiFlags = append(SourceAbiFlags, "-I"+dir)
+		}
+		for _, reexportedInclude := range extractExportIncludesFromFlags(library.sabi.Properties.ExportedDeps) {
+			SourceAbiFlags = append(SourceAbiFlags, reexportedInclude)
 		}
 		exportedHeaderFlags := strings.Join(SourceAbiFlags, " ")
 		library.sAbiOutputFile = TransformDumpToLinkedDump(ctx, objs.sAbiDumpFiles, symbolFile, "current", fileName, exportedHeaderFlags)
 		if refSourceDumpFile.Valid() {
-			library.sAbiDiff = SourceAbiDiff(ctx, library.sAbiOutputFile.Path(), refSourceDumpFile.Path(), fileName)
+			unzippedRefDump := UnzipRefDump(ctx, refSourceDumpFile.Path(), fileName)
+			library.sAbiDiff = SourceAbiDiff(ctx, library.sAbiOutputFile.Path(), unzippedRefDump, fileName)
 		}
 	}
 }
