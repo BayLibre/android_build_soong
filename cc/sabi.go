@@ -23,6 +23,7 @@ import (
 
 type SAbiProperties struct {
 	CreateSAbiDumps bool `blueprint:"mutated"`
+	ExportedDeps    []string
 }
 
 type sabi struct {

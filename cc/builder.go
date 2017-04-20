@@ -169,8 +169,7 @@ var (
 		},
 		"asFlags")
 
-	_ = pctx.SourcePathVariable("sAbiDumper", "prebuilts/build-tools/${config.HostPrebuiltTag}/bin/header-abi-dumper")
-
+	_        = pctx.SourcePathVariable("sAbiDumper", "prebuilts/build-tools/${config.HostPrebuiltTag}/bin/header-abi-dumper")
 	sAbiDump = pctx.AndroidStaticRule("sAbiDump",
 		blueprint.RuleParams{
 			Command:     "rm -f $out && $sAbiDumper -o ${out} $in $exportDirs -- $cFlags -Wno-packed -Qunused-arguments -isystem ${config.RSIncludePath}",
@@ -179,8 +178,7 @@ var (
 		},
 		"cFlags", "exportDirs")
 
-	_ = pctx.SourcePathVariable("sAbiLinker", "prebuilts/build-tools/${config.HostPrebuiltTag}/bin/header-abi-linker")
-
+	_        = pctx.SourcePathVariable("sAbiLinker", "prebuilts/build-tools/${config.HostPrebuiltTag}/bin/header-abi-linker")
 	sAbiLink = pctx.AndroidStaticRule("sAbiLink",
 		blueprint.RuleParams{
 			Command:        "$sAbiLinker -o ${out} $symbolFile -arch $arch -api $api $exportedHeaderFlags @${out}.rsp ",
