@@ -428,8 +428,7 @@ func (ctx *moduleContextImpl) vndk() bool {
 
 // Create source abi dumps if the module belongs to the list of VndkLibraries.
 func (ctx *moduleContextImpl) createVndkSourceAbiDump() bool {
-	return ctx.ctx.Device() && (inList(ctx.baseModuleName(), config.LLndkLibraries())) ||
-		(inList(ctx.baseModuleName(), config.VndkLibraries()))
+	return ctx.ctx.Device() && ((Bool(ctx.mod.Properties.Vendor_available)) || (inList(ctx.baseModuleName(), config.LLndkLibraries())))
 }
 
 func (ctx *moduleContextImpl) selectedStl() string {
@@ -919,6 +918,8 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 						depPaths.ReexportedFlags = append(depPaths.ReexportedFlags, flags)
 						depPaths.ReexportedFlagsDeps = append(depPaths.ReexportedFlagsDeps,
 							genRule.GeneratedSourceFiles()...)
+						c.sabi.Properties.ExportedDeps = append(c.sabi.Properties.ExportedDeps, flags)
+
 					}
 				} else {
 					ctx.ModuleErrorf("module %q is not a genrule", name)
@@ -968,6 +969,9 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 				if t.reexportFlags {
 					depPaths.ReexportedFlags = append(depPaths.ReexportedFlags, flags...)
 					depPaths.ReexportedFlagsDeps = append(depPaths.ReexportedFlagsDeps, deps...)
+					if tag == staticExportDepTag || tag == headerExportDepTag {
+						c.sabi.Properties.ExportedDeps = append(c.sabi.Properties.ExportedDeps, flags...)
+					}
 				}
 			}
 
