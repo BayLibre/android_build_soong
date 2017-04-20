@@ -55,6 +55,10 @@ func init() {
 	pctx.Import("android/soong/cc/config")
 }
 
+func sabiIncludeDirsToFlags(dirs android.Paths) string {
+	return android.JoinWithPrefix(dirs.Strings(), "-I ")
+}
+
 type Deps struct {
 	SharedLibs, LateSharedLibs                  []string
 	StaticLibs, LateStaticLibs, WholeStaticLibs []string
@@ -426,10 +430,165 @@ func (ctx *moduleContextImpl) vndk() bool {
 	return ctx.mod.vndk()
 }
 
+func EligibleVndkLibraries() []string {
+	return []string{
+		"android.dvr.composer@1.0",
+		"android.frameworks.schedulerservice@1.0",
+		"android.frameworks.sensorservice@1.0",
+		"android.frameworks.vr.composer@1.0",
+		"android.hardware.audio.common@2.0-util",
+		"android.hardware.audio.common@2.0",
+		"android.hardware.audio.effect@2.0",
+		"android.hardware.audio@2.0",
+		"android.hardware.biometrics.fingerprint@2.1",
+		"android.hardware.bluetooth@1.0",
+		"android.hardware.boot@1.0",
+		"android.hardware.broadcastradio@1.0",
+		"android.hardware.broadcastradio@1.1",
+		"android.hardware.camera.common@1.0",
+		"android.hardware.camera.device@1.0",
+		"android.hardware.camera.device@3.2",
+		"android.hardware.camera.provider@2.4",
+		"android.hardware.configstore-utils",
+		"android.hardware.configstore@1.0",
+		"android.hardware.contexthub@1.0",
+		"android.hardware.drm@1.0",
+		"android.hardware.dumpstate@1.0",
+		"android.hardware.gatekeeper@1.0",
+		"android.hardware.gnss@1.0",
+		"android.hardware.graphics.allocator@2.0",
+		"android.hardware.graphics.bufferqueue@1.0",
+		"android.hardware.graphics.common@1.0",
+		"android.hardware.graphics.composer@2.1",
+		"android.hardware.graphics.mapper@2.0",
+		"android.hardware.health@1.0",
+		"android.hardware.ir@1.0",
+		"android.hardware.keymaster@3.0",
+		"android.hardware.light@2.0",
+		"android.hardware.media.omx@1.0",
+		"android.hardware.media@1.0",
+		"android.hardware.memtrack@1.0",
+		"android.hardware.nfc@1.0",
+		"android.hardware.power@1.0",
+		"android.hardware.radio.deprecated@1.0",
+		"android.hardware.radio@1.0",
+		"android.hardware.renderscript@1.0",
+		"android.hardware.sensors@1.0",
+		"android.hardwareundtrigger@2.0",
+		"android.hardware.thermal@1.0",
+		"android.hardware.tv.cec@1.0",
+		"android.hardware.tv.input@1.0",
+		"android.hardware.usb@1.0",
+		"android.hardware.vibrator@1.0",
+		"android.hardware.vr@1.0",
+		"android.hardware.wifi.supplicant@1.0",
+		"android.hardware.wifi@1.0",
+		"android.hidl.allocator@1.0",
+		"android.hidl.base@1.0",
+		"android.hidl.manager@1.0",
+		"android.hidl.memory@1.0",
+		"android.hidl.token@1.0",
+		"android.system.wifi.keystore@1.0",
+		"libaudioroute",
+		"libaudioutils",
+		"libbacktrace",
+		"libbase",
+		"libbcc",
+		"libbcinfo",
+		"libbinder",
+		"libblas",
+		"libc++",
+		"libcap",
+		"libcompiler_rt",
+		"libcrypto_utils",
+		"libcrypto",
+		"libcups",
+		"libcurl",
+		"libcutils",
+		"libdebuggerd_client",
+		"libdiskconfig",
+		"libETC1",
+		"libevent",
+		"libexif",
+		"libexpat",
+		"libext2_blkid",
+		"libext2_com_err",
+		"libext2_e2p",
+		"libext2_uuid",
+		"libf2fs_sparseblock",
+		"libfmq",
+		"libft2",
+		"libgatekeeper",
+		"libhardware_legacy",
+		"libhardware",
+		"libhidlbase",
+		"libhidlmemory",
+		"libhidltransport",
+		"libhwbinder",
+		"libicui18n",
+		"libicuuc",
+		"libion",
+		"libiprouteutil",
+		"libjpeg",
+		"libkeymaster_messages",
+		"libkeymaster1",
+		"libldacBT_abr",
+		"libldacBT_enc",
+		"liblz4",
+		"liblzma",
+		"libmdnssd",
+		"libmemtrack",
+		"libmemunreachable",
+		"libmetricslogger",
+		"libminijail",
+		"libnetlink",
+		"libnetutils",
+		"libnl",
+		"libopus",
+		"libpagemap",
+		"libpcap",
+		"libpcre2",
+		"libpcrecpp",
+		"libpdfium",
+		"libpiex",
+		"libpng",
+		"libpower",
+		"libprocessgroup",
+		"libprocinfo",
+		"libprotobuf-cpp-full",
+		"libprotobuf-cpp-lite",
+		"libradio_metadata",
+		"libRS_internal",
+		"libRSCpuRef",
+		"libRSDriver",
+		"libsigchain",
+		"libsoftkeymasterdevice",
+		"libsonic",
+		"libsonivox",
+		"libspeexresampler",
+		"libsqlite",
+		"libssl",
+		"libsuspend",
+		"libsysutils",
+		"libtinyalsa",
+		"libtinycompress",
+		"libtinyxml2",
+		"libunwind",
+		"libusbhost",
+		"libutils",
+		"libvixl-arm",
+		"libvixl-arm64",
+		"libvorbisidec",
+		"libwebrtc_audio_preprocessing",
+		"libxml2",
+		"libz",
+		"libziparchive",
+	}
+}
+
 // Create source abi dumps if the module belongs to the list of VndkLibraries.
 func (ctx *moduleContextImpl) createVndkSourceAbiDump() bool {
-	return ctx.ctx.Device() && (inList(ctx.baseModuleName(), config.LLndkLibraries())) ||
-		(inList(ctx.baseModuleName(), config.VndkLibraries()))
+	return ctx.ctx.Device() && (inList(ctx.baseModuleName(), EligibleVndkLibraries()) || (inList(ctx.baseModuleName(), config.LLndkLibraries())))
 }
 
 func (ctx *moduleContextImpl) selectedStl() string {
@@ -917,6 +1076,8 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 						depPaths.ReexportedFlags = append(depPaths.ReexportedFlags, flags)
 						depPaths.ReexportedFlagsDeps = append(depPaths.ReexportedFlagsDeps,
 							genRule.GeneratedSourceFiles()...)
+						c.sabi.Properties.ExportedDeps = append(c.sabi.Properties.ExportedDeps, flags)
+
 					}
 				} else {
 					ctx.ModuleErrorf("module %q is not a genrule", name)
@@ -963,6 +1124,9 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 				if t.reexportFlags {
 					depPaths.ReexportedFlags = append(depPaths.ReexportedFlags, flags...)
 					depPaths.ReexportedFlagsDeps = append(depPaths.ReexportedFlagsDeps, deps...)
+					if tag == staticExportDepTag || tag == headerExportDepTag {
+						c.sabi.Properties.ExportedDeps = append(c.sabi.Properties.ExportedDeps, flags...)
+					}
 				}
 			}
 
