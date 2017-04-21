@@ -34,7 +34,7 @@ const (
 	// FIXME: revert the __cfi_check flag when clang is updated to r280031.
 	cfiLdflags = "-flto -fsanitize-cfi-cross-dso -fsanitize=cfi " +
 		"-Wl,-plugin-opt,O1 -Wl,-export-dynamic-symbol=__cfi_check"
-	cfiArflags = "--plugin ${config.ClangBin}/../lib64/LLVMgold.so"
+	cfiArflags = "--plugin ${config.ClangBin}/../lib64/LLVMgold${flags.Toolchain.ShlibSuffix()}"
 )
 
 type sanitizerType int
