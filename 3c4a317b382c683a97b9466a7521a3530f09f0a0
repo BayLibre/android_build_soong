@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "de447fa8_911e0859",
+        "filename": "android/androidmk.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-21T18:28:55Z",
+      "side": 1,
+      "message": "Can you wrap the HostCross and Device version of this too?",
+      "range": {
+        "startLine": 220,
+        "startChar": 2,
+        "endLine": 221,
+        "endChar": 26
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cab0aa4f_4409c640",
         "filename": "cmd/soong_zip/soong_zip.go",
         "patchSetId": 29
@@ -16,6 +39,46 @@
       "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "490729fe_deb95beb",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-21T18:28:55Z",
+      "side": 1,
+      "message": "Why does this need to move?",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 2
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1844ea57_c936aca8",
+        "filename": "phony/phony.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-21T18:28:55Z",
+      "side": 1,
+      "message": "If you\u0027re not otherwise touching this file, leave this for another CL",
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -36,6 +99,29 @@
     },
     {
       "key": {
+        "uuid": "a7a09df9_a5b70193",
+        "filename": "python/binary.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-21T18:28:55Z",
+      "side": 1,
+      "message": "can a user ever trigger this? if so it should be a ModuleErrorf instead",
+      "range": {
+        "startLine": 97,
+        "startChar": 3,
+        "endLine": 98,
+        "endChar": 28
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "827f4678_d22a1320",
         "filename": "python/binary.go",
         "patchSetId": 29
@@ -47,6 +133,24 @@
       "writtenOn": "2017-04-20T20:21:24Z",
       "side": 1,
       "message": "I\u0027ve often seen the Python2 interpreter be a file named \u0027python2\u0027 (in addition to a file named \u0027python\u0027) - I\u0027m inclined to have the default here be \u0027python2\u0027 if we want \u0027python3\u0027 to be the default configuration specified in Soong",
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc6376b5_8e92819b",
+        "filename": "python/binary.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-21T18:28:55Z",
+      "side": 1,
+      "message": "yeah, let\u0027s set this to python2",
+      "parentUuid": "827f4678_d22a1320",
       "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -166,6 +270,236 @@
       "writtenOn": "2017-04-20T20:21:24Z",
       "side": 1,
       "message": "How would you feel about renaming \"TrimPathFromLastSlash\" to \"PathBeforeLastSlash\" or \"ComponentBeforeLastSlash\"? I\u0027m thinking that specifying what is kept rather than what is removed would be easier for people to parse. Alternatively, if you\u0027d like to keep \"Trim\" in the name, then I think it\u0027d be good to at least replace \"From\" with \"After\"",
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ac38887_d6bf01b6",
+        "filename": "python/builder.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-21T18:28:55Z",
+      "side": 1,
+      "message": "pctx.HostBinToolVariable(\"parCmd\", \"soong_zip\")\n\nAnd yes, the java code doesn\u0027t use this...",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 82
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5817ef9_062584d2",
+        "filename": "python/builder.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-21T18:28:55Z",
+      "side": 1,
+      "message": "This can be added to CommandDeps as \"$template\"",
+      "range": {
+        "startLine": 108,
+        "startChar": 28,
+        "endLine": 108,
+        "endChar": 36
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32308b32_c91208fe",
+        "filename": "python/builder.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-21T18:28:55Z",
+      "side": 1,
+      "message": "Maybe make parArgs a []string, and use strings.Join(parArgs, \" \") below?",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 2
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4610f827_70bb6217",
+        "filename": "python/library.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-21T18:28:55Z",
+      "side": 1,
+      "message": "This can just be omitted",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 1
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "834b45d0_12e6020c",
+        "filename": "python/python.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-21T18:28:55Z",
+      "side": 1,
+      "message": "Are these supported yet? If not, lets comment them out so that they don\u0027t show up in the docs. I\u0027d suspect that this could be a single boolean, since I think you\u0027d only want one of three values:\n\n  version.py*.converter.to2 \u003d false\n  version.py*.converter.to3 \u003d false\n\n  version.py2.converter.to2 \u003d true\n  version.py2.converter.to3 \u003d false\n\n  version.py3.converter.to2 \u003d false\n  version.py3.converter.to3 \u003d true\n\nSince you\u0027d alway be converting from the other version to this version, wouldn\u0027t you? Or are there other usecases?",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81b7aceb_4c7a6d97",
+        "filename": "python/python.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-21T18:28:55Z",
+      "side": 1,
+      "message": "I really doubt we want Android.bp files referencing absolute paths of system files.\n\nEven if we did -- isn\u0027t this only relevant for py_binary?",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 19
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a3409c7_34ebf677",
+        "filename": "python/python.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-21T18:28:55Z",
+      "side": 1,
+      "message": "How this works for architectures is that setting enabled for a non-default variant doesn\u0027t turn off the default variants. Can you switch Enabled to a *bool, and create the Py3 variant when !(Enabled !\u003d nil \u0026\u0026 *Enabled \u003d\u003d false)?",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 41
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61abcf98_98b86c21",
+        "filename": "python/python.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-21T18:28:55Z",
+      "side": 1,
+      "message": "if the module is a python module, it must be a python library. Should we exit early if it\u0027s not a *pythonBaseModule? Or do we allow other modules to implement PythonDependency?",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 401,
+        "endChar": 53
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "013a22cd_f951fa91",
+        "filename": "python/python.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-21T18:28:55Z",
+      "side": 1,
+      "message": "This should be moved to py_binary",
+      "range": {
+        "startLine": 452,
+        "startChar": 0,
+        "endLine": 474,
+        "endChar": 3
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "606475ef_4f4f74a7",
+        "filename": "python/scripts/stub_template_host.txt",
+        "patchSetId": 29
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-21T18:28:55Z",
+      "side": 1,
+      "message": "Add a try: finally: shutil.rmtree to ensure that the runfiles get deleted?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 53
+      },
       "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
