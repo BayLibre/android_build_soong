@@ -414,6 +414,29 @@
     },
     {
       "key": {
+        "uuid": "b6b5a2b8_526db4f7",
+        "filename": "python/python.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-24T22:22:04Z",
+      "side": 1,
+      "message": "This should go in binary.go, since it\u0027s only used there.",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 73
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0a3409c7_34ebf677",
         "filename": "python/python.go",
         "patchSetId": 29
@@ -476,6 +499,98 @@
         "startChar": 0,
         "endLine": 474,
         "endChar": 3
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69852673_232b1a21",
+        "filename": "python/python_test.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-24T22:22:04Z",
+      "side": 1,
+      "message": "Why a raw string rather than a regular string here?",
+      "range": {
+        "startLine": 41,
+        "startChar": 28,
+        "endLine": 41,
+        "endChar": 29
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb333d0c_c12b35df",
+        "filename": "python/python_test.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-24T22:22:04Z",
+      "side": 1,
+      "message": "Why do we need to have a subdir for each of these tests?",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 40
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d4f930c_b91f53ea",
+        "filename": "python/python_test.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-24T22:22:04Z",
+      "side": 1,
+      "message": "stubTemplateHost",
+      "range": {
+        "startLine": 279,
+        "startChar": 4,
+        "endLine": 279,
+        "endChar": 55
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab7326d8_1a11e730",
+        "filename": "python/python_test.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-24T22:22:04Z",
+      "side": 1,
+      "message": "This needs to be a TempDir, not something in the working directory (that\u0027ll be under build/soong/python/... for go tests)\n\nWhat\u0027s here now could be simplified to:\n\n  func setupBuildenv(t *testing.T) android.Config {\n      return android.TestConfig(buildDir)\n  }",
+      "range": {
+        "startLine": 423,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 7
       },
       "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
