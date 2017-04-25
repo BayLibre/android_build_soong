@@ -55,33 +55,52 @@ func (nopCloser) Close() error {
 }
 
 type fileArg struct {
-	rootPrefix, relativeRoot, file string
+	argType, rootPrefix, relativeRoot, file string
 }
 
 type pathMapping struct {
 	dest, src string
+	method    uint16
 }
 
 type fileArgs []fileArg
 
-func (l *fileArgs) String() string {
+func (fa *fileArgs) String() string {
 	return `""`
 }
 
-func (l *fileArgs) Set(s string) error {
+func (fa *fileArgs) Set(s string) error {
 	if *relativeRoot == "" {
 		return fmt.Errorf("must pass -C before -f or -l")
 	}
 
-	*l = append(*l,
-		fileArg{rootPrefix: filepath.Clean(*rootPrefix),
-			relativeRoot: filepath.Clean(*relativeRoot),
-			file:         s})
+	(*fa)[fArgsIdx].rootPrefix = filepath.Clean(*rootPrefix)
+	(*fa)[fArgsIdx].relativeRoot = filepath.Clean(*relativeRoot)
+	(*fa)[fArgsIdx].file = s
+
+	fArgsIdx++
+
 	return nil
 }
 
-func (l *fileArgs) Get() interface{} {
-	return l
+func (fa *fileArgs) Get() interface{} {
+	return fa
+}
+
+type filesNotDeflated map[string]bool
+
+func (fnd *filesNotDeflated) String() string {
+	return `""`
+}
+
+func (fnd *filesNotDeflated) Set(s string) error {
+	if _, found := (*fnd)[s]; found {
+		return fmt.Errorf("found no-deflated file duplicate: %q!", s)
+	} else {
+		(*fnd)[s] = true
+	}
+
+	return nil
 }
 
 var (
@@ -93,16 +112,19 @@ var (
 	parallelJobs = flag.Int("j", runtime.NumCPU(), "number of parallel threads to use")
 	compLevel    = flag.Int("L", 5, "deflate compression level (0-9)")
 
-	listFiles fileArgs
-	files     fileArgs
+	fArgs    fileArgs
+	fArgsIdx int = 0
+
+	fNotDeflated = make(filesNotDeflated)
 
 	cpuProfile = flag.String("cpuprofile", "", "write cpu profile to file")
 	traceFile  = flag.String("trace", "", "write trace to file")
 )
 
 func init() {
-	flag.Var(&listFiles, "l", "file containing list of .class files")
-	flag.Var(&files, "f", "file to include in zip")
+	flag.Var(&fArgs, "l", "file containing list of .class files")
+	flag.Var(&fArgs, "f", "file to include in zip")
+	flag.Var(&fNotDeflated, "s", "file path stored within the zip without compression")
 }
 
 func usage() {
@@ -133,6 +155,14 @@ type zipEntry struct {
 }
 
 func main() {
+	// os.Args[0] is the name of soong_zip binary.
+	for i := 1; i < len(os.Args); i++ {
+		if os.Args[i] != "-f" && os.Args[i] != "-l" {
+			continue
+		}
+		fArgs = append(fArgs, fileArg{argType: os.Args[i]})
+	}
+
 	flag.Parse()
 
 	if *cpuProfile != "" {
@@ -177,26 +207,25 @@ func main() {
 	set := make(map[string]string)
 
 	// load listFiles, which specify other files to include.
-	for _, l := range listFiles {
-		list, err := ioutil.ReadFile(l.file)
-		if err != nil {
-			fmt.Fprintln(os.Stderr, err.Error())
-			os.Exit(1)
-		}
-		srcs := strings.Split(string(list), "\n")
-		for _, src := range srcs {
-			if err := fillPathPairs(l.rootPrefix, l.relativeRoot, src,
-				set, &pathMappings); err != nil {
+	for _, fa := range fArgs {
+		if fa.argType == "-l" {
+			list, err := ioutil.ReadFile(fa.file)
+			if err != nil {
+				fmt.Fprintln(os.Stderr, err.Error())
+				os.Exit(1)
+			}
+			srcs := strings.Split(string(list), "\n")
+			for _, src := range srcs {
+				if err := fillPathPairs(fa.rootPrefix, fa.relativeRoot, src,
+					set, &pathMappings); err != nil {
+					log.Fatal(err)
+				}
+			}
+		} else {
+			if err := fillPathPairs(fa.rootPrefix, fa.relativeRoot,
+				fa.file, set, &pathMappings); err != nil {
 				log.Fatal(err)
 			}
-		}
-	}
-
-	// also include the usual files that are to be added directly.
-	for _, f := range files {
-		if err := fillPathPairs(f.rootPrefix, f.relativeRoot,
-			f.file, set, &pathMappings); err != nil {
-			log.Fatal(err)
 		}
 	}
 
@@ -227,7 +256,13 @@ func fillPathPairs(prefix, rel, src string, set map[string]string, pathMappings 
 		set[dest] = src
 	}
 
-	*pathMappings = append(*pathMappings, pathMapping{dest: dest, src: src})
+	if _, found := fNotDeflated[dest]; found {
+		*pathMappings = append(*pathMappings,
+			pathMapping{dest: dest, src: src, method: zip.Deflate})
+	} else {
+		*pathMappings = append(*pathMappings,
+			pathMapping{dest: dest, src: src, method: zip.Store})
+	}
 
 	return nil
 }
@@ -269,7 +304,7 @@ func (z *zipWriter) write(out string, pathMappings []pathMapping, manifest strin
 		defer close(z.writeOps)
 
 		for _, ele := range pathMappings {
-			err = z.writeFile(ele.dest, ele.src)
+			err = z.writeFile(ele.dest, ele.src, ele.method)
 			if err != nil {
 				z.errors <- err
 				return
@@ -277,7 +312,7 @@ func (z *zipWriter) write(out string, pathMappings []pathMapping, manifest strin
 		}
 
 		if manifest != "" {
-			err = z.writeFile("META-INF/MANIFEST.MF", manifest)
+			err = z.writeFile("META-INF/MANIFEST.MF", manifest, zip.Deflate)
 			if err != nil {
 				z.errors <- err
 				return
@@ -371,7 +406,7 @@ func (z *zipWriter) write(out string, pathMappings []pathMapping, manifest strin
 	}
 }
 
-func (z *zipWriter) writeFile(dest, src string) error {
+func (z *zipWriter) writeFile(dest, src string, method uint16) error {
 	var fileSize int64
 	var executable bool
 
@@ -407,7 +442,7 @@ func (z *zipWriter) writeFile(dest, src string) error {
 	ze := &zipEntry{
 		fh: &zip.FileHeader{
 			Name:   dest,
-			Method: zip.Deflate,
+			Method: method,
 
 			UncompressedSize64: uint64(fileSize),
 		},
