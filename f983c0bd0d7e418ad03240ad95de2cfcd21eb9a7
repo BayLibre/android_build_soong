@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba3dfebf_7ebc33c3",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-25T18:06:24Z",
+      "side": 1,
+      "message": "I guess this isn\u0027t necessarily in the scope of the CL, but it\u0027d be nice to either have a comment here saying something like \"Array of targets per module\" or even better to rename the variable to something like targetsPerModule or targetsPerDirModule\n\nassuming that that\u0027s an accurate name.",
+      "revId": "f983c0bd0d7e418ad03240ad95de2cfcd21eb9a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bd1675b_47530537",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-25T18:06:24Z",
+      "side": 1,
+      "message": "Replace \"Add parent directories to the map\" with \"Ensure ancestor directories are in the map\"?",
+      "range": {
+        "startLine": 882,
+        "startChar": 8,
+        "endLine": 882,
+        "endChar": 14
+      },
+      "revId": "f983c0bd0d7e418ad03240ad95de2cfcd21eb9a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0a7fcb1_e486466c",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-25T18:06:24Z",
+      "side": 1,
+      "message": "I guess this isn\u0027t necessarily in the scope of this CL but it seems to me that it\u0027d be nicer to have \"dirs\" be named something like \"modulePaths\" or \"moduleDirs\" or something that makes it extra clear what it\u0027s for",
+      "revId": "f983c0bd0d7e418ad03240ad95de2cfcd21eb9a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b89cdb2c_62379201",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 895,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-25T18:06:24Z",
+      "side": 1,
+      "message": "After I wrote the comment on line 904 it occurs to me that it might be easier to instead insert \"their direct\" on this line between \"build\" and \"subdirectories\"",
+      "revId": "f983c0bd0d7e418ad03240ad95de2cfcd21eb9a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8817f15_9602d121",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-25T18:06:24Z",
+      "side": 1,
+      "message": "If you\u0027re feeling industrious you might want to extract the invocation of filepath.Join on lines 900 and 908 into a named function telling that it\u0027s making an mm target or something like that",
+      "revId": "f983c0bd0d7e418ad03240ad95de2cfcd21eb9a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c314913_a5dacf49",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-04-25T18:06:24Z",
+      "side": 1,
+      "message": "Do you suppose we could clarify that this refers only to */Android.bp and not */*/Android.bp?\n\nPerhaps \"Create \u0027mm/\u003cdirectory\u003e\u0027 target depending on \u003cdirectory\u003e/*/Android.bp\" or \"For each immediate subdirectory X[i] of Y, create an mm/\u003cY\u003e target depending on every X[i]\"?",
+      "revId": "f983c0bd0d7e418ad03240ad95de2cfcd21eb9a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
