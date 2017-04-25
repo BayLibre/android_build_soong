@@ -55,33 +55,75 @@ func (nopCloser) Close() error {
 }
 
 type fileArg struct {
-	rootPrefix, relativeRoot, file string
+	rootPrefix, relativeRoot string
+	subFileArg               interface{}
 }
 
 type pathMapping struct {
 	dest, src string
+	method    uint16
+}
+
+type filesNotDeflated map[string]bool
+
+func (fnd *filesNotDeflated) String() string {
+	return `""`
+}
+
+func (fnd *filesNotDeflated) Set(s string) error {
+	if _, found := (*fnd)[s]; found {
+		return fmt.Errorf("found no-deflated file duplicate: %q!", s)
+	} else {
+		(*fnd)[s] = true
+	}
+
+	return nil
 }
 
 type fileArgs []fileArg
 
-func (l *fileArgs) String() string {
+type file struct {
+	fileArg
+	filePath string
+}
+
+type listFiles struct {
+	fileArg
+	filePaths []string
+}
+
+func (fa *fileArg) String() string {
 	return `""`
 }
 
-func (l *fileArgs) Set(s string) error {
+func (fa *fileArg) Set(s string) error {
 	if *relativeRoot == "" {
 		return fmt.Errorf("must pass -C before -f or -l")
 	}
 
-	*l = append(*l,
-		fileArg{rootPrefix: filepath.Clean(*rootPrefix),
-			relativeRoot: filepath.Clean(*relativeRoot),
-			file:         s})
-	return nil
-}
+	if _, ok := fa.subFileArg.(*file); ok {
+		f := &file{fileArg: fileArg{rootPrefix: filepath.Clean(*rootPrefix),
+			relativeRoot: filepath.Clean(*relativeRoot)},
+			filePath: s}
+		f.fileArg.subFileArg = f
+		fArgs = append(fArgs, f.fileArg)
+	} else if _, ok := fa.subFileArg.(*listFiles); ok {
+		list, err := ioutil.ReadFile(s)
+		if err != nil {
+			fmt.Fprintln(os.Stderr, err.Error())
+			os.Exit(1)
+		}
 
-func (l *fileArgs) Get() interface{} {
-	return l
+		l := &listFiles{fileArg: fileArg{rootPrefix: filepath.Clean(*rootPrefix),
+			relativeRoot: filepath.Clean(*relativeRoot)},
+			filePaths: strings.Split(string(list), "\n")}
+		l.fileArg.subFileArg = l
+		fArgs = append(fArgs, l.fileArg)
+	} else {
+		panic("could not identify the content contained in subFileArg interface!")
+	}
+
+	return nil
 }
 
 var (
@@ -93,16 +135,22 @@ var (
 	parallelJobs = flag.Int("j", runtime.NumCPU(), "number of parallel threads to use")
 	compLevel    = flag.Int("L", 5, "deflate compression level (0-9)")
 
-	listFiles fileArgs
-	files     fileArgs
+	fArgs        fileArgs
+	fNotDeflated = make(filesNotDeflated)
 
 	cpuProfile = flag.String("cpuprofile", "", "write cpu profile to file")
 	traceFile  = flag.String("trace", "", "write trace to file")
 )
 
 func init() {
-	flag.Var(&listFiles, "l", "file containing list of .class files")
-	flag.Var(&files, "f", "file to include in zip")
+	f := &file{}
+	f.fileArg.subFileArg = f
+	l := &listFiles{}
+	l.fileArg.subFileArg = l
+
+	flag.Var(&l.fileArg, "l", "file containing list of .class files")
+	flag.Var(&f.fileArg, "f", "file to include in zip")
+	flag.Var(&fNotDeflated, "s", "file path stored within the zip without compression")
 }
 
 func usage() {
@@ -177,26 +225,21 @@ func main() {
 	set := make(map[string]string)
 
 	// load listFiles, which specify other files to include.
-	for _, l := range listFiles {
-		list, err := ioutil.ReadFile(l.file)
-		if err != nil {
-			fmt.Fprintln(os.Stderr, err.Error())
-			os.Exit(1)
-		}
-		srcs := strings.Split(string(list), "\n")
-		for _, src := range srcs {
-			if err := fillPathPairs(l.rootPrefix, l.relativeRoot, src,
-				set, &pathMappings); err != nil {
+	for _, fa := range fArgs {
+		if l, ok := fa.subFileArg.(*listFiles); ok {
+			for _, src := range l.filePaths {
+				if err := fillPathPairs(fa.rootPrefix, fa.relativeRoot, src,
+					set, &pathMappings); err != nil {
+					log.Fatal(err)
+				}
+			}
+		} else if f, ok := fa.subFileArg.(*file); ok {
+			if err := fillPathPairs(fa.rootPrefix, fa.relativeRoot,
+				f.filePath, set, &pathMappings); err != nil {
 				log.Fatal(err)
 			}
-		}
-	}
-
-	// also include the usual files that are to be added directly.
-	for _, f := range files {
-		if err := fillPathPairs(f.rootPrefix, f.relativeRoot,
-			f.file, set, &pathMappings); err != nil {
-			log.Fatal(err)
+		} else {
+			panic("could not identify the content contained in subFileArg interface!")
 		}
 	}
 
@@ -227,7 +270,13 @@ func fillPathPairs(prefix, rel, src string, set map[string]string, pathMappings 
 		set[dest] = src
 	}
 
-	*pathMappings = append(*pathMappings, pathMapping{dest: dest, src: src})
+	if _, found := fNotDeflated[dest]; found {
+		*pathMappings = append(*pathMappings,
+			pathMapping{dest: dest, src: src, method: zip.Store})
+	} else {
+		*pathMappings = append(*pathMappings,
+			pathMapping{dest: dest, src: src, method: zip.Deflate})
+	}
 
 	return nil
 }
@@ -269,7 +318,7 @@ func (z *zipWriter) write(out string, pathMappings []pathMapping, manifest strin
 		defer close(z.writeOps)
 
 		for _, ele := range pathMappings {
-			err = z.writeFile(ele.dest, ele.src)
+			err = z.writeFile(ele.dest, ele.src, ele.method)
 			if err != nil {
 				z.errors <- err
 				return
@@ -277,7 +326,7 @@ func (z *zipWriter) write(out string, pathMappings []pathMapping, manifest strin
 		}
 
 		if manifest != "" {
-			err = z.writeFile("META-INF/MANIFEST.MF", manifest)
+			err = z.writeFile("META-INF/MANIFEST.MF", manifest, zip.Deflate)
 			if err != nil {
 				z.errors <- err
 				return
@@ -371,7 +420,7 @@ func (z *zipWriter) write(out string, pathMappings []pathMapping, manifest strin
 	}
 }
 
-func (z *zipWriter) writeFile(dest, src string) error {
+func (z *zipWriter) writeFile(dest, src string, method uint16) error {
 	var fileSize int64
 	var executable bool
 
@@ -407,7 +456,7 @@ func (z *zipWriter) writeFile(dest, src string) error {
 	ze := &zipEntry{
 		fh: &zip.FileHeader{
 			Name:   dest,
-			Method: zip.Deflate,
+			Method: method,
 
 			UncompressedSize64: uint64(fileSize),
 		},
@@ -424,7 +473,7 @@ func (z *zipWriter) writeFile(dest, src string) error {
 
 	exec := z.rateLimit.RequestExecution()
 
-	if fileSize >= minParallelFileSize {
+	if method == zip.Deflate && fileSize >= minParallelFileSize {
 		wg := new(sync.WaitGroup)
 
 		// Allocate enough buffer to hold all readers. We'll limit
@@ -562,7 +611,7 @@ func (z *zipWriter) compressWholeFile(ze *zipEntry, r *os.File, exec Execution, 
 	ze.futureReaders <- futureReader
 	close(ze.futureReaders)
 
-	if uint64(compressed.Len()) < ze.fh.UncompressedSize64 {
+	if ze.fh.Method == zip.Deflate && uint64(compressed.Len()) < ze.fh.UncompressedSize64 {
 		futureReader <- compressed
 		bufSize = compressed.Len()
 	} else {
