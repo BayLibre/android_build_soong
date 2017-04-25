@@ -836,6 +836,11 @@ func BuildTargetSingleton() blueprint.Singleton {
 	return &buildTargetSingleton{}
 }
 
+func parentDir(dir string) string {
+	dir, _ = filepath.Split(dir)
+	return filepath.Clean(dir)
+}
+
 type buildTargetSingleton struct{}
 
 func (c *buildTargetSingleton) GenerateBuildActions(ctx blueprint.SingletonContext) {
@@ -857,6 +862,7 @@ func (c *buildTargetSingleton) GenerateBuildActions(ctx blueprint.SingletonConte
 			if installTarget != "" {
 				dirModules[blueprintDir] = append(dirModules[blueprintDir], installTarget)
 			}
+
 		}
 	})
 
@@ -873,8 +879,29 @@ func (c *buildTargetSingleton) GenerateBuildActions(ctx blueprint.SingletonConte
 		Optional:  true,
 	})
 
-	// Create a mm/<directory> target that depends on all modules in a directory
+	// Add parent directories to the map
 	dirs := sortedKeys(dirModules)
+	for _, dir := range dirs {
+		dir := parentDir(dir)
+		for dir != "." && dir != "/" {
+			if _, exists := dirModules[dir]; exists {
+				break
+			}
+			dirModules[dir] = nil
+			dir = parentDir(dir)
+		}
+	}
+
+	// Make parent directories build subdirectories
+	dirs = sortedKeys(dirModules)
+	for _, dir := range dirs {
+		p := parentDir(dir)
+		if p != "." && p != "/" {
+			dirModules[p] = append(dirModules[p], filepath.Join("mm", dir))
+		}
+	}
+
+	// Create a mm/<directory> target that depends on all modules in a directory
 	for _, dir := range dirs {
 		ctx.Build(pctx, blueprint.BuildParams{
 			Rule:      blueprint.Phony,
