@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "041d11b3_f59ba5aa",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-26T01:09:36Z",
+      "side": 1,
+      "message": "We also need to prevent compression if the method is Store",
+      "range": {
+        "startLine": 462,
+        "startChar": 0,
+        "endLine": 505,
+        "endChar": 2
+      },
+      "revId": "a939a9dbcb0b179da48628839e1b1c4ee09b905a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a03cea18_338aaaca",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-26T01:09:36Z",
+      "side": 1,
+      "message": "This is the Store fallback right now",
+      "range": {
+        "startLine": 604,
+        "startChar": 0,
+        "endLine": 618,
+        "endChar": 41
+      },
+      "revId": "a939a9dbcb0b179da48628839e1b1c4ee09b905a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
