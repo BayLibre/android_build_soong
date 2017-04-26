@@ -22,6 +22,104 @@
       "revId": "32eac39018036c1ec1fd894ae88f51d240c856fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4b5c3fd_c23dddc2",
+        "filename": "cc/config/mips64_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-04-26T07:08:07Z",
+      "side": 1,
+      "message": "It is the default behavior, so this should be unnecessary.",
+      "parentUuid": "47bf5369_71ed3f59",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 18
+      },
+      "revId": "32eac39018036c1ec1fd894ae88f51d240c856fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f713aa5_96717e44",
+        "filename": "cc/config/mips64_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-04-26T07:08:07Z",
+      "side": 1,
+      "message": "Nice catch.",
+      "range": {
+        "startLine": 115,
+        "startChar": 80,
+        "endLine": 115,
+        "endChar": 97
+      },
+      "revId": "32eac39018036c1ec1fd894ae88f51d240c856fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ddd6c87a_d6d9feb3",
+        "filename": "cc/config/mips64_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-04-26T07:08:07Z",
+      "side": 1,
+      "message": "I\u0027m a bit confused. Is this part still needed? This implies that we are using no-integrated-as now for assembly source files, which means that clang\u0027s integrated-as regressed.",
+      "revId": "32eac39018036c1ec1fd894ae88f51d240c856fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7c8e21c_6b302ef1",
+        "filename": "cc/config/mips_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-04-26T07:08:07Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be needed either, since it is the default.",
+      "revId": "32eac39018036c1ec1fd894ae88f51d240c856fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7078e7d8_fae04684",
+        "filename": "cc/config/mips_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-04-26T07:08:07Z",
+      "side": 1,
+      "message": "This is somewhat surprising again. We should check if the -no-integrated-as can be removed.",
+      "revId": "32eac39018036c1ec1fd894ae88f51d240c856fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
