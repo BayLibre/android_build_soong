@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "e4891f07_d19e91ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2017-04-26T18:04:08Z",
+      "side": 1,
+      "message": "Please expand the commit message and mention that Clang now generates a SHF_MERGE section that is rejected by GNU as.",
+      "revId": "32eac39018036c1ec1fd894ae88f51d240c856fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47bf5369_71ed3f59",
         "filename": "cc/config/mips64_device.go",
         "patchSetId": 1
@@ -37,6 +54,30 @@
       "side": 1,
       "message": "It is the default behavior, so this should be unnecessary.",
       "parentUuid": "47bf5369_71ed3f59",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 18
+      },
+      "revId": "32eac39018036c1ec1fd894ae88f51d240c856fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f097554_e6e3ddba",
+        "filename": "cc/config/mips64_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2017-04-26T18:04:08Z",
+      "side": 1,
+      "message": "I tried reproducing the build and seems like clang defaults to no-integrated-as for mips64.  So this change is necessary.",
+      "parentUuid": "c4b5c3fd_c23dddc2",
       "range": {
         "startLine": 59,
         "startChar": 3,
@@ -89,6 +130,24 @@
     },
     {
       "key": {
+        "uuid": "38037a2d_bf571c6c",
+        "filename": "cc/config/mips64_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2017-04-26T18:04:08Z",
+      "side": 1,
+      "message": "I see failures if this is removed.  My guess is that the C flags also get passed to the assembly step.",
+      "parentUuid": "ddd6c87a_d6d9feb3",
+      "revId": "32eac39018036c1ec1fd894ae88f51d240c856fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7c8e21c_6b302ef1",
         "filename": "cc/config/mips_device.go",
         "patchSetId": 1
@@ -100,6 +159,24 @@
       "writtenOn": "2017-04-26T07:08:07Z",
       "side": 1,
       "message": "This shouldn\u0027t be needed either, since it is the default.",
+      "revId": "32eac39018036c1ec1fd894ae88f51d240c856fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a4a9cbe_60118f6e",
+        "filename": "cc/config/mips_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2017-04-26T18:04:08Z",
+      "side": 1,
+      "message": "This is unnecessary, though, since mips still defaults to -fintegrated-as.  However, I\u0027m ok with leaving this for sake of consistency with Mips64.",
+      "parentUuid": "a7c8e21c_6b302ef1",
       "revId": "32eac39018036c1ec1fd894ae88f51d240c856fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -135,6 +212,24 @@
       "side": 1,
       "message": "Removing this cause build to break as well.",
       "parentUuid": "7078e7d8_fae04684",
+      "revId": "32eac39018036c1ec1fd894ae88f51d240c856fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5958c788_28904cb7",
+        "filename": "cc/config/mips_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2017-04-26T18:04:08Z",
+      "side": 1,
+      "message": "This is only needed if the -fintegrated-as above is included.  If that flag is removed, -fno-integrated-as can be removed here.",
+      "parentUuid": "770d4fe0_6c56de4d",
       "revId": "32eac39018036c1ec1fd894ae88f51d240c856fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
