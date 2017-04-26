@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47bf5369_71ed3f59",
+        "filename": "cc/config/mips64_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2017-04-26T06:43:23Z",
+      "side": 1,
+      "message": "Can you double-check if this is really needed?  AFAICT, -fintegrated-as is the default behavior in Clang.",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 18
+      },
+      "revId": "32eac39018036c1ec1fd894ae88f51d240c856fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
