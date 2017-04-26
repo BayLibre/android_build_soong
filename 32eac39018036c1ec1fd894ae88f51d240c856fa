@@ -120,6 +120,24 @@
       "revId": "32eac39018036c1ec1fd894ae88f51d240c856fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "770d4fe0_6c56de4d",
+        "filename": "cc/config/mips_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2017-04-26T07:59:06Z",
+      "side": 1,
+      "message": "Removing this cause build to break as well.",
+      "parentUuid": "7078e7d8_fae04684",
+      "revId": "32eac39018036c1ec1fd894ae88f51d240c856fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
