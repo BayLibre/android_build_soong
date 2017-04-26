@@ -156,6 +156,9 @@ const (
 )
 
 func init() {
+	android.RegisterArchFeatures(android.Arm,
+		"neon")
+
 	android.RegisterArchVariants(android.Arm,
 		"armv5te",
 		"armv7_a",
@@ -169,6 +172,8 @@ func init() {
 		"krait",
 		"kryo",
 		"denver")
+
+	android.RegisterArchVariantFeatures(android.Arm, "armv7_a_neon", "neon")
 
 	// Krait and Kryo targets are not supported by GCC, but are supported by Clang,
 	// so override the definitions when building modules with Clang.
