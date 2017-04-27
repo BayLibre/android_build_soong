@@ -105,6 +105,9 @@ func init() {
 		// Bug: http://b/29823425 Disable -Wnull-dereference until the
 		// new instances detected by this warning are fixed.
 		"-Wno-null-dereference",
+
+		// Enable clang's thread-safety annotations in libcxx.
+		"-D_LIBCPP_ENABLE_THREAD_SAFETY_ANNOTATIONS",
 	}, " "))
 
 	pctx.StaticVariable("ClangExtraTargetCflags", strings.Join([]string{
