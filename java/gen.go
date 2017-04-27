@@ -33,9 +33,10 @@ func init() {
 }
 
 var (
+	// aidl leaks, turn off leak detection. b/37749857
 	aidl = pctx.AndroidStaticRule("aidl",
 		blueprint.RuleParams{
-			Command:     "$aidlCmd -d$depFile $aidlFlags $in $out",
+			Command:     "ASAN_OPTIONS=detect_leaks=0 $aidlCmd -d$depFile $aidlFlags $in $out",
 			CommandDeps: []string{"$aidlCmd"},
 			Description: "aidl $out",
 		},

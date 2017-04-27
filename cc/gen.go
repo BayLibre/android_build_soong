@@ -48,9 +48,10 @@ var (
 			Description: "lex $out",
 		})
 
+	// aidl-cpp leaks, turn off leak detection. b/37749857
 	aidl = pctx.AndroidStaticRule("aidl",
 		blueprint.RuleParams{
-			Command:     "$aidlCmd -d${out}.d -ninja $aidlFlags $in $outDir $out",
+			Command:     "ASAN_OPTIONS=detect_leaks=0 $aidlCmd -d${out}.d -ninja $aidlFlags $in $outDir $out",
 			CommandDeps: []string{"$aidlCmd"},
 			Depfile:     "${out}.d",
 			Deps:        blueprint.DepsGCC,
