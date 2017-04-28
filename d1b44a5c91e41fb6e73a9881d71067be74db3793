@@ -68,6 +68,30 @@
       "revId": "d1b44a5c91e41fb6e73a9881d71067be74db3793",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b97e7a6d_d3ba1b2f",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-04-28T16:52:56Z",
+      "side": 1,
+      "message": "I could, the thing is that many libraries out of this list, do not have vendor available yet. We would be missing out on abi checks on them till they don\u0027t and I\u0027m not sure if all of them are going to get it soon enough.",
+      "parentUuid": "c10e7a95_936c761c",
+      "range": {
+        "startLine": 433,
+        "startChar": 0,
+        "endLine": 587,
+        "endChar": 1
+      },
+      "revId": "d1b44a5c91e41fb6e73a9881d71067be74db3793",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
