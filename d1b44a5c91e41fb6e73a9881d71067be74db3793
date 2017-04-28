@@ -92,6 +92,30 @@
       "revId": "d1b44a5c91e41fb6e73a9881d71067be74db3793",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13f13e3b_c3e3c39d",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-04-28T18:19:02Z",
+      "side": 1,
+      "message": "Also, if vendor_available:true is set, this library is going to be on the vendor partition, why do we even need abi checking then ?",
+      "parentUuid": "c10e7a95_936c761c",
+      "range": {
+        "startLine": 433,
+        "startChar": 0,
+        "endLine": 587,
+        "endChar": 1
+      },
+      "revId": "d1b44a5c91e41fb6e73a9881d71067be74db3793",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
