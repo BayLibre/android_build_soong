@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e264a47f_f303b14b",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-04-28T06:09:29Z",
+      "side": 1,
+      "message": "unnecessary change?",
+      "range": {
+        "startLine": 172,
+        "startChar": 3,
+        "endLine": 172,
+        "endChar": 10
+      },
+      "revId": "d1b44a5c91e41fb6e73a9881d71067be74db3793",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37f20bec_55663d50",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-04-28T06:09:29Z",
+      "side": 1,
+      "message": "unnecessary change?",
+      "range": {
+        "startLine": 181,
+        "startChar": 3,
+        "endLine": 181,
+        "endChar": 10
+      },
+      "revId": "d1b44a5c91e41fb6e73a9881d71067be74db3793",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c10e7a95_936c761c",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-04-28T06:09:29Z",
+      "side": 1,
+      "message": "hardcoding the list here seems not good. VNDK libraries are identified as ones having \u0027vendor_available: true\u0027. Can you use the flag instead?",
+      "range": {
+        "startLine": 433,
+        "startChar": 0,
+        "endLine": 587,
+        "endChar": 1
+      },
+      "revId": "d1b44a5c91e41fb6e73a9881d71067be74db3793",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
