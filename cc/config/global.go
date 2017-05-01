@@ -133,7 +133,7 @@ func init() {
 		if override := config.(android.Config).Getenv("LLVM_PREBUILTS_VERSION"); override != "" {
 			return override, nil
 		}
-		return "clang-3859424", nil
+		return "clang-3960126", nil
 	})
 	pctx.StaticVariable("ClangPath", "${ClangBase}/${HostPrebuiltTag}/${ClangVersion}")
 	pctx.StaticVariable("ClangBin", "${ClangPath}/bin")
@@ -142,7 +142,7 @@ func init() {
 		if override := config.(android.Config).Getenv("LLVM_RELEASE_VERSION"); override != "" {
 			return override, nil
 		}
-		return "4.0", nil
+		return "5.0", nil
 	})
 	pctx.StaticVariable("ClangAsanLibDir", "${ClangPath}/lib64/clang/${ClangShortVersion}/lib/linux")
 
