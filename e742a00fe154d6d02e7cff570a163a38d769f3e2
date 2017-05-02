@@ -230,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "7e8e7696_cdd7aca1",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-02T21:36:46Z",
+      "side": 1,
+      "message": "As per offline discussion, I separate the set function to two.",
+      "parentUuid": "be0420e6_b83824bb",
+      "revId": "e742a00fe154d6d02e7cff570a163a38d769f3e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41421dcb_223f2ac0",
         "filename": "cmd/soong_zip/soong_zip.go",
         "patchSetId": 3
