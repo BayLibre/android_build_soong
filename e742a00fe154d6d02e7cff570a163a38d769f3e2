@@ -1,0 +1,208 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27958dec_c0387747",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-02T01:50:33Z",
+      "side": 1,
+      "message": "I think that as we modify code in fileArg, it\u0027s worth clarifying the names of the other members to make the new code easier to understand too. I think \u0027rootPrefix\u0027 would be clearer as \u0027sourcePrefixToStrip\u0027 for example, and relativeRoot would be clearer as \u0027subdirWithinZip\u0027 for example",
+      "revId": "e742a00fe154d6d02e7cff570a163a38d769f3e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44331578_15d2c37d",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-02T01:50:33Z",
+      "side": 1,
+      "message": "I\u0027m inclined to rename the \"subFileArg\" member to \"source\"",
+      "revId": "e742a00fe154d6d02e7cff570a163a38d769f3e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e82c3709_edcb8fae",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-02T01:50:33Z",
+      "side": 1,
+      "message": "How would you feel about renaming \"method\" to \"zipMethod\" or \"copyMethod\" or something like that?",
+      "revId": "e742a00fe154d6d02e7cff570a163a38d769f3e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dedb43eb_7b78cdda",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-02T01:50:33Z",
+      "side": 1,
+      "message": "It seems more extensible to me if we rename the \u0027filesNotDeflated\u0027 type to something like \u0027uniqueSet\u0027 , expose the error message string as a member, use the error message string on line 75, and pass in the error message string on or near line 139.",
+      "revId": "e742a00fe154d6d02e7cff570a163a38d769f3e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81cec5c6_5c3a08bb",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-02T01:50:33Z",
+      "side": 1,
+      "message": "It might read more nicely in English to change the message to \"File %s was specified twice as a file to not deflate!\"",
+      "revId": "e742a00fe154d6d02e7cff570a163a38d769f3e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f18c8095_da966868",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-02T01:50:33Z",
+      "side": 1,
+      "message": "Is the fileArg member ever needed? It seems to me that everywhere it\u0027s used, we already have a reference to the fileArg",
+      "revId": "e742a00fe154d6d02e7cff570a163a38d769f3e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41421dcb_223f2ac0",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-02T01:50:33Z",
+      "side": 1,
+      "message": "same question as line 86",
+      "revId": "e742a00fe154d6d02e7cff570a163a38d769f3e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00a29ca6_3aa25041",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-02T01:50:33Z",
+      "side": 1,
+      "message": "Is there an advantage of this `println \u0026\u0026 exit` over \u0027log.Fatal(...)\u0027 ? Is this specifically trying to avoid triggering \u0027recover\u0027?",
+      "revId": "e742a00fe154d6d02e7cff570a163a38d769f3e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bba83236_40001308",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-02T01:50:33Z",
+      "side": 1,
+      "message": "I think we want to include the unidentifiable item (fa.subFileArg) in the error message if we keep the \u0027panic\u0027 here. Even better, I think we\u0027d want to make this logic be a method of the subFileArg interface, to get the compiler to check the type",
+      "revId": "e742a00fe154d6d02e7cff570a163a38d769f3e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e5fec01_e57e4cd4",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-02T01:50:33Z",
+      "side": 1,
+      "message": "slightly clearer as \"file path to be stored within the zip without compression\"",
+      "revId": "e742a00fe154d6d02e7cff570a163a38d769f3e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a187d4b5_0af9c49a",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-02T01:50:33Z",
+      "side": 1,
+      "message": "Same comments as line 123",
+      "revId": "e742a00fe154d6d02e7cff570a163a38d769f3e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "253ac312_54f32a45",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-02T01:50:33Z",
+      "side": 1,
+      "message": "I\u0027m inclined to deduplicate a little bit of code by first computing the method, saving it into a variable, and then passing it into the rest of the code, something like this:\n\nvar zipMethod\nif _, found :\u003d fNotDeflated[dest]; found {\n\tzipMethod \u003d zip.Store\n} else {\n\tzipMethod \u003d zip.Deflate\n}\n*pathMappings \u003d append(*pathMappings, pathMapping{dest: dest, src: src, method: zipMethod})",
+      "revId": "e742a00fe154d6d02e7cff570a163a38d769f3e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
