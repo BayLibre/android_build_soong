@@ -212,6 +212,24 @@
     },
     {
       "key": {
+        "uuid": "be0420e6_b83824bb",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-02T20:03:52Z",
+      "side": 1,
+      "message": "Do you suppose you could point out a line number where this comes in handy? It appears to me that everywhere here where we use `file.fileArg.source` it\u0027d be just as effective to use `file`, and then we can remove this variable.",
+      "parentUuid": "2d281e9d_27435561",
+      "revId": "e742a00fe154d6d02e7cff570a163a38d769f3e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41421dcb_223f2ac0",
         "filename": "cmd/soong_zip/soong_zip.go",
         "patchSetId": 3
