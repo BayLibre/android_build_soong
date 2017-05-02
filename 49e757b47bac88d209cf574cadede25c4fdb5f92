@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8d6d7a1_95d8d7d1",
+        "filename": "cc/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-05-02T16:59:55Z",
+      "side": 1,
+      "message": "Will be changed to prebuilts depending on whether we decide to enable the checks on only check-builds or all builds.",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 73
+      },
+      "revId": "49e757b47bac88d209cf574cadede25c4fdb5f92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c540785_75c118ee",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-05-02T16:59:55Z",
+      "side": 1,
+      "message": "This is ugly, but till vendor_available is not enabled on all vndk eligible libraries, we probably need a hardcoded list. Either this, or read it through some sort of a configuration file.",
+      "range": {
+        "startLine": 433,
+        "startChar": 0,
+        "endLine": 433,
+        "endChar": 83
+      },
+      "revId": "49e757b47bac88d209cf574cadede25c4fdb5f92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
