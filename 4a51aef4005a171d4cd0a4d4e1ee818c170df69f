@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a682aa16_e075a971",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-02T22:03:57Z",
+      "side": 1,
+      "message": "nit: struct{}",
+      "range": {
+        "startLine": 85,
+        "startChar": 10,
+        "endLine": 86,
+        "endChar": 1
+      },
+      "revId": "4a51aef4005a171d4cd0a4d4e1ee818c170df69f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25fb83df_98396088",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-02T22:03:57Z",
+      "side": 1,
+      "message": "This would be slightly more readable with a few more newlines:\n  \n\tfArgs \u003d append(fArgs, fileArg{\n\t\tpathPrefixInZip: filepath.Clean(*rootPrefix),\n\t\tsourcePrefixToStrip: filepath.Clean(*relativeRoot),\n\t\tsourceFiles:         []string{s}\n\t})",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 36
+      },
+      "revId": "4a51aef4005a171d4cd0a4d4e1ee818c170df69f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6caedbd_0493658e",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-02T22:03:57Z",
+      "side": 1,
+      "message": "Can you test with just return err? That\u0027ll cause things to exit as well, though I\u0027m not certain it\u0027ll print out the error. If it does, it\u0027ll wrap it in a better message to identify which argument was a problem. If that doesn\u0027t work, can you include something about not being able to read the specific file?",
+      "range": {
+        "startLine": 118,
+        "startChar": 2,
+        "endLine": 118,
+        "endChar": 16
+      },
+      "revId": "4a51aef4005a171d4cd0a4d4e1ee818c170df69f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51722222_edad819d",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-02T22:03:57Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 58
+      },
+      "revId": "4a51aef4005a171d4cd0a4d4e1ee818c170df69f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a55ee93e_d2f0acae",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-02T22:03:57Z",
+      "side": 1,
+      "message": "This works, but we really should skip compressing the file too, since that will literally be throwaway work",
+      "range": {
+        "startLine": 590,
+        "startChar": 1,
+        "endLine": 590,
+        "endChar": 49
+      },
+      "revId": "4a51aef4005a171d4cd0a4d4e1ee818c170df69f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
