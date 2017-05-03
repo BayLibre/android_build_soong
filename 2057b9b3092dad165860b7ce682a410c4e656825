@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4fbc42e7_1dede979",
+        "filename": "cc/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-03T23:57:25Z",
+      "side": 1,
+      "message": "We should convert system/core/toolbox:gzip to Soong, and use that here",
+      "range": {
+        "startLine": 204,
+        "startChar": 17,
+        "endLine": 204,
+        "endChar": 28
+      },
+      "revId": "2057b9b3092dad165860b7ce682a410c4e656825",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96344ed9_56dea06e",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-03T23:57:25Z",
+      "side": 1,
+      "message": "This can\u0027t be here (at least until we\u0027ve got approval, even then I\u0027m concerned about the length and dependency closure)",
+      "range": {
+        "startLine": 433,
+        "startChar": 0,
+        "endLine": 434,
+        "endChar": 39
+      },
+      "revId": "2057b9b3092dad165860b7ce682a410c4e656825",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad83b08a_78b0d602",
+        "filename": "cc/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-03T23:57:25Z",
+      "side": 1,
+      "message": "We should find a way where we don\u0027t need to extract these. And you can use strings.HasPrefix(flag, \"-I\") here",
+      "range": {
+        "startLine": 321,
+        "startChar": 2,
+        "endLine": 322,
+        "endChar": 32
+      },
+      "revId": "2057b9b3092dad165860b7ce682a410c4e656825",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ff7381a_d56c5875",
+        "filename": "cc/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-03T23:57:25Z",
+      "side": 1,
+      "message": "!Vendor()? Don\u0027t we only care about abi stability for the ones available to vendors?",
+      "range": {
+        "startLine": 342,
+        "startChar": 100,
+        "endLine": 342,
+        "endChar": 113
+      },
+      "revId": "2057b9b3092dad165860b7ce682a410c4e656825",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
