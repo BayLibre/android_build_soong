@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "ca56e356_2bc6a2f2",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-03T00:17:00Z",
+      "side": 1,
+      "message": "This wasn\u0027t resolved",
+      "parentUuid": "4295d0f2_36042527",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 36
+      },
+      "revId": "4a51aef4005a171d4cd0a4d4e1ee818c170df69f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e6caedbd_0493658e",
         "filename": "cmd/soong_zip/soong_zip.go",
         "patchSetId": 5
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "yes. the logger writes to standard error and prints the date and time of the logged message.",
       "parentUuid": "e6caedbd_0493658e",
+      "range": {
+        "startLine": 118,
+        "startChar": 2,
+        "endLine": 118,
+        "endChar": 16
+      },
+      "revId": "4a51aef4005a171d4cd0a4d4e1ee818c170df69f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6063ef24_9f72a9e7",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-03T00:17:00Z",
+      "side": 1,
+      "message": "But does the flag error handling actually print out the error too? It\u0027s possible to just do:\n\n  return err\n\nhere",
+      "parentUuid": "14137178_d121fe96",
       "range": {
         "startLine": 118,
         "startChar": 2,
