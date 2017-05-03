@@ -1,0 +1,192 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6dac9eb3_38186e3b",
+        "filename": "cmd/pom2mk/pom2mk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-03T02:03:35Z",
+      "side": 1,
+      "message": "It seems to me that this Dependency class models two things: a Maven dependency and its generated Android.mk dependency. I\u0027m inclined to split it into two classes and to generate the Android.mk dependency based on the Maven dependency. Then if we ever find that we have to split one Maven dependency into two or consolidate two into one, the data model will still be clear.\n\nMaybe MavenDependency and AndroidMkDependency",
+      "revId": "fdc60c790ddedfb7691128b7b58ccd38e0ac605d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23b31ea2_4c0f52c2",
+        "filename": "cmd/pom2mk/pom2mk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-03T02:03:35Z",
+      "side": 1,
+      "message": "I would move Scope below Type and add a newline between them; GroupId, ArtifactId, Version, and Type all describe what the artifact is, whereas Scope describes what Maven is going to do with it in the dependent project (adding it to the compile classpath or test classpath or runtime classpath)",
+      "revId": "fdc60c790ddedfb7691128b7b58ccd38e0ac605d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76983286_1ddecd8c",
+        "filename": "cmd/pom2mk/pom2mk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-03T02:03:35Z",
+      "side": 1,
+      "message": "Same as line #73: it seems to me that this Pom class models two things: a Maven pom and its generated Android.mk module.\n\nThe comment from line 73 could arguably be considered pedantic, but for here, some pom\u0027s do generate several artifacts. They probably also set the Classifier (which is another coordinate similar to Version) on each artifact to distinguish between them.\n\nI could theoretically see it making sense to split this class into three: MavenArtifact (which models the .jar file), MavenPom (which models the .pom file), and AndroidMkModule (which models the mk module), although in practice I imagine it\u0027d be fine to just skip the AndroidMkModule and just have MavenArtifact and MavenPom since the MavenArtifact would have all the required properties.",
+      "revId": "fdc60c790ddedfb7691128b7b58ccd38e0ac605d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a464061e_08708696",
+        "filename": "cmd/pom2mk/pom2mk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-03T02:03:35Z",
+      "side": 1,
+      "message": "I could see it making sense for pom2mk to take another parameter telling the file path of the Android.mk to generate, which then would allow pom2mk to copy the Maven artifacts (.jar etc) into the places that are referenced by the generated Android.mk files",
+      "revId": "fdc60c790ddedfb7691128b7b58ccd38e0ac605d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbd66d28_2c37f41e",
+        "filename": "cmd/pom2mk/pom2mk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-03T02:03:35Z",
+      "side": 1,
+      "message": "Is there any particular reason for rewriting the artifactId? Is it because they\u0027re probably too verbose, or probably not distinct, or because we already have Android.mk modules that are renamings of Maven poms?\n\nIs this name rewriting something that we intend for users to usually specify or do we intend for setting it to be unusual?",
+      "revId": "fdc60c790ddedfb7691128b7b58ccd38e0ac605d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d02f1ea_8583734b",
+        "filename": "cmd/pom2mk/pom2mk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-03T02:03:35Z",
+      "side": 1,
+      "message": "I think we\u0027d rather do:\n\nif pom.Packaging \u003d\u003d \"\" {\n  pom.Packaging \u003d \"jar\"\n}\npom.SrcFileSuffix \u003d \".\" + pom.Packaging",
+      "revId": "fdc60c790ddedfb7691128b7b58ccd38e0ac605d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "356f2bc8_e4d9f551",
+        "filename": "cmd/pom2mk/pom2mk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-03T02:03:35Z",
+      "side": 1,
+      "message": "probably want a space after \"pom2mk\" but before the quote",
+      "range": {
+        "startLine": 147,
+        "startChar": 21,
+        "endLine": 147,
+        "endChar": 23
+      },
+      "revId": "fdc60c790ddedfb7691128b7b58ccd38e0ac605d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19230306_a2a3515d",
+        "filename": "cmd/pom2mk/pom2mk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-03T02:03:35Z",
+      "side": 1,
+      "message": "Could we make this a command-line parameter?\n\nReally what I\u0027m hoping for is that if you run it with no arguments, that\u0027ll be an invalid usage and that then there\u0027ll be a usage message, explaining that you\u0027re suppose to run it against your maven repo or part of your maven repo or any other collection of .pom\u0027s and that it\u0027ll find all the pom\u0027s, convert them to Android.mk, and output the result in stdout",
+      "range": {
+        "startLine": 157,
+        "startChar": 21,
+        "endLine": 157,
+        "endChar": 24
+      },
+      "revId": "fdc60c790ddedfb7691128b7b58ccd38e0ac605d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ab5f707_5a002870",
+        "filename": "cmd/pom2mk/pom2mk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-03T02:03:35Z",
+      "side": 1,
+      "message": "I think it\u0027d also be nice to detect files named pom.xml (which is what they\u0027re named in a version-control system before Maven renames them to end in .pom and be in the maven repo) and to specify that they\u0027re not supported at the moment (because they\u0027ll try to build their source .java files which means we\u0027d need to generate something other than \"BUILD_PREBUILT\" for them)\n\nor alternatively I could see it being fine to add a checking saying that if no .pom files are found, then throw an error",
+      "range": {
+        "startLine": 174,
+        "startChar": 38,
+        "endLine": 174,
+        "endChar": 69
+      },
+      "revId": "fdc60c790ddedfb7691128b7b58ccd38e0ac605d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a4dfa25_2387cc70",
+        "filename": "cmd/pom2mk/pom2mk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-03T02:03:35Z",
+      "side": 1,
+      "message": "I imagine that in a future patch we\u0027ll want to check for duplicate names and mark them or otherwise fail the conversion if it were to happen; there could be two .pom\u0027s with different versions but otherwise matching coordinates in the maven repo",
+      "revId": "fdc60c790ddedfb7691128b7b58ccd38e0ac605d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
