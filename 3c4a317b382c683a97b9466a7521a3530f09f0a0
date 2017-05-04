@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d695b5e0_fefcdbb2",
+        "filename": "android/androidmk.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-04T01:02:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de447fa8_911e0859",
+      "range": {
+        "startLine": 220,
+        "startChar": 2,
+        "endLine": 221,
+        "endChar": 26
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cab0aa4f_4409c640",
         "filename": "cmd/soong_zip/soong_zip.go",
         "patchSetId": 29
@@ -36,6 +60,24 @@
       "writtenOn": "2017-04-20T20:21:24Z",
       "side": 1,
       "message": "nitpick : it\u0027d be good to move \"also\" in this comment to the other comment below",
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7405f27_74b9c897",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-04T01:02:27Z",
+      "side": 1,
+      "message": "Removed this part.",
+      "parentUuid": "cab0aa4f_4409c640",
       "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "a13014c5_86cdc6c1",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-04T01:02:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "490729fe_deb95beb",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 2
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1844ea57_c936aca8",
         "filename": "phony/phony.go",
         "patchSetId": 29
@@ -76,6 +142,24 @@
       "writtenOn": "2017-04-21T18:28:55Z",
       "side": 1,
       "message": "If you\u0027re not otherwise touching this file, leave this for another CL",
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ffb9812_8a5eecb0",
+        "filename": "phony/phony.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-04T01:02:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1844ea57_c936aca8",
       "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -99,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "77f944ff_7a11cecc",
+        "filename": "python/binary.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-04T01:02:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9109005_96406015",
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7a09df9_a5b70193",
         "filename": "python/binary.go",
         "patchSetId": 29
@@ -110,6 +212,30 @@
       "writtenOn": "2017-04-21T18:28:55Z",
       "side": 1,
       "message": "can a user ever trigger this? if so it should be a ModuleErrorf instead",
+      "range": {
+        "startLine": 97,
+        "startChar": 3,
+        "endLine": 98,
+        "endChar": 28
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "963de1bd_44b8a332",
+        "filename": "python/binary.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-04T01:02:27Z",
+      "side": 1,
+      "message": "user cannot trigger this. we have pre-check filepath duplicates on pythonBaseModule.GeneratePythonBuildActions() before.",
+      "parentUuid": "a7a09df9_a5b70193",
       "range": {
         "startLine": 97,
         "startChar": 3,
@@ -157,6 +283,24 @@
     },
     {
       "key": {
+        "uuid": "1aa986b1_ccb9f67f",
+        "filename": "python/binary.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-04T01:02:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc6376b5_8e92819b",
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61393e52_3a4d7a8d",
         "filename": "python/binary.go",
         "patchSetId": 29
@@ -168,6 +312,24 @@
       "writtenOn": "2017-04-20T20:21:24Z",
       "side": 1,
       "message": "(\"a\" -\u003e \"an\")",
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f1d6092_20a4edf3",
+        "filename": "python/binary.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-04T01:02:27Z",
+      "side": 1,
+      "message": "Removed absolute path based on Dan\u0027s suggestion.",
+      "parentUuid": "61393e52_3a4d7a8d",
       "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -191,6 +353,24 @@
     },
     {
       "key": {
+        "uuid": "f3bd1548_8b3a3528",
+        "filename": "python/binary.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-04T01:02:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcf0bc3c_cd81029b",
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58df7ed0_e1599a5f",
         "filename": "python/binary.go",
         "patchSetId": 29
@@ -205,6 +385,24 @@
       "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e590da08_d63861d3",
+        "filename": "python/binary.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-04T01:02:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "58df7ed0_e1599a5f",
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -225,6 +423,24 @@
     },
     {
       "key": {
+        "uuid": "f794ec8d_aab0a62c",
+        "filename": "python/binary.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-04T01:02:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "842f8c94_3423a039",
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d08c261a_625b0e47",
         "filename": "python/binary.go",
         "patchSetId": 29
@@ -239,6 +455,24 @@
       "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d53e5d84_3b854cd8",
+        "filename": "python/binary.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-04T01:02:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d08c261a_625b0e47",
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -259,6 +493,24 @@
     },
     {
       "key": {
+        "uuid": "ecda0c50_842d90db",
+        "filename": "python/binary.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-04T01:02:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04e1053b_a47c5016",
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb2225cf_1f7414da",
         "filename": "python/binary.go",
         "patchSetId": 29
@@ -273,6 +525,24 @@
       "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84ab2aba_61be6643",
+        "filename": "python/binary.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-04T01:02:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb2225cf_1f7414da",
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -299,6 +569,30 @@
     },
     {
       "key": {
+        "uuid": "5e74f912_73d4928f",
+        "filename": "python/builder.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-04T01:02:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac38887_d6bf01b6",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 82
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5817ef9_062584d2",
         "filename": "python/builder.go",
         "patchSetId": 29
@@ -310,6 +604,30 @@
       "writtenOn": "2017-04-21T18:28:55Z",
       "side": 1,
       "message": "This can be added to CommandDeps as \"$template\"",
+      "range": {
+        "startLine": 108,
+        "startChar": 28,
+        "endLine": 108,
+        "endChar": 36
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c63bed9_1deb4e01",
+        "filename": "python/builder.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-04T01:02:27Z",
+      "side": 1,
+      "message": "it seems this template cannot be moved to global var section to be added in CommandDeps of par rule since the template needs \"ctx\" to get PathForSource.",
+      "parentUuid": "a5817ef9_062584d2",
       "range": {
         "startLine": 108,
         "startChar": 28,
@@ -345,6 +663,30 @@
     },
     {
       "key": {
+        "uuid": "5c8d6fcb_0e010ff2",
+        "filename": "python/builder.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-04T01:02:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32308b32_c91208fe",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 2
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4610f827_70bb6217",
         "filename": "python/library.go",
         "patchSetId": 29
@@ -365,6 +707,30 @@
       "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a2ff55d_918d91d6",
+        "filename": "python/library.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-04T01:02:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4610f827_70bb6217",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 1
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -391,6 +757,30 @@
     },
     {
       "key": {
+        "uuid": "e9dae267_5bfcf66a",
+        "filename": "python/python.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-04T01:02:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "834b45d0_12e6020c",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81b7aceb_4c7a6d97",
         "filename": "python/python.go",
         "patchSetId": 29
@@ -411,6 +801,30 @@
       "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "694fa569_a611f442",
+        "filename": "python/python.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-04T01:02:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81b7aceb_4c7a6d97",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 19
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -437,6 +851,30 @@
     },
     {
       "key": {
+        "uuid": "b518ab92_921d22b4",
+        "filename": "python/python.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-04T01:02:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6b5a2b8_526db4f7",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 73
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a3409c7_34ebf677",
         "filename": "python/python.go",
         "patchSetId": 29
@@ -457,6 +895,30 @@
       "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0d2b7df_b2a6036e",
+        "filename": "python/python.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-04T01:02:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a3409c7_34ebf677",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 41
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -483,6 +945,30 @@
     },
     {
       "key": {
+        "uuid": "7b36c543_caa92773",
+        "filename": "python/python.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-04T01:02:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61abcf98_98b86c21",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 401,
+        "endChar": 53
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "013a22cd_f951fa91",
         "filename": "python/python.go",
         "patchSetId": 29
@@ -494,6 +980,30 @@
       "writtenOn": "2017-04-21T18:28:55Z",
       "side": 1,
       "message": "This should be moved to py_binary",
+      "range": {
+        "startLine": 452,
+        "startChar": 0,
+        "endLine": 474,
+        "endChar": 3
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f638f52_13293940",
+        "filename": "python/python.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-04T01:02:27Z",
+      "side": 1,
+      "message": "Since we pass \u0026module.pythonBaseModule to InitPythonBaseModule(), so pythonBaseModule.AndroidMk() will be invoked first. I replace this with p.subModule.GeneratePythonAndroidMk() which means both py_Lib and py_Bin execute its own AndroidMk(). For py_Lib, it directly return nil to export to AndroidMk.",
+      "parentUuid": "013a22cd_f951fa91",
       "range": {
         "startLine": 452,
         "startChar": 0,
@@ -529,6 +1039,30 @@
     },
     {
       "key": {
+        "uuid": "a216e9c7_02e5f5f6",
+        "filename": "python/python_test.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-04T01:02:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69852673_232b1a21",
+      "range": {
+        "startLine": 41,
+        "startChar": 28,
+        "endLine": 41,
+        "endChar": 29
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb333d0c_c12b35df",
         "filename": "python/python_test.go",
         "patchSetId": 29
@@ -540,6 +1074,30 @@
       "writtenOn": "2017-04-24T22:22:04Z",
       "side": 1,
       "message": "Why do we need to have a subdir for each of these tests?",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 40
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5808def1_2202ea3b",
+        "filename": "python/python_test.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-04T01:02:27Z",
+      "side": 1,
+      "message": "when we expand the src files in ExpandSourcesSubDir() funciton,\nctx.ModuleDir() will return relative path: \".\",  and then in\nhttps://cs.corp.google.com/android/build/soong/android/paths.go?rcl\u003d1b3b41b5d17a42bd08d6a62af963d31468c7285c\u0026l\u003d363\nctx.Fs().Exists() cannot find path: \".\" and gave us an error: \"source path . does not exist\"",
+      "parentUuid": "bb333d0c_c12b35df",
       "range": {
         "startLine": 66,
         "startChar": 0,
@@ -575,6 +1133,30 @@
     },
     {
       "key": {
+        "uuid": "970c1546_9b2207ea",
+        "filename": "python/python_test.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-04T01:02:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d4f930c_b91f53ea",
+      "range": {
+        "startLine": 279,
+        "startChar": 4,
+        "endLine": 279,
+        "endChar": 55
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab7326d8_1a11e730",
         "filename": "python/python_test.go",
         "patchSetId": 29
@@ -586,6 +1168,30 @@
       "writtenOn": "2017-04-24T22:22:04Z",
       "side": 1,
       "message": "This needs to be a TempDir, not something in the working directory (that\u0027ll be under build/soong/python/... for go tests)\n\nWhat\u0027s here now could be simplified to:\n\n  func setupBuildenv(t *testing.T) android.Config {\n      return android.TestConfig(buildDir)\n  }",
+      "range": {
+        "startLine": 423,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 7
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d111c2aa_8ed6f3cd",
+        "filename": "python/python_test.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-04T01:02:27Z",
+      "side": 1,
+      "message": "it\u0027s soong_python_test/.intermediates/.../     not build/soong/python....\n\nThe problem is that every time when we run test, actual par command, eg \"-l /tmp/soong_python_test+[random number]/.intermediates/dir.....\" which cannot be used to compare with our expected results due to the random number. And will garbage collect by using os.RemoveAll()",
+      "parentUuid": "ab7326d8_1a11e730",
       "range": {
         "startLine": 423,
         "startChar": 0,
@@ -618,6 +1224,30 @@
       "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56f0916f_9dd8c939",
+        "filename": "python/scripts/stub_template_host.txt",
+        "patchSetId": 29
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-04T01:02:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "606475ef_4f4f74a7",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 53
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
