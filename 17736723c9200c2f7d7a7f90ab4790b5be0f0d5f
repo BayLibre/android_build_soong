@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "15da7f0c_d9aaa10a",
+        "filename": "ui/build/build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-04T02:28:09Z",
+      "side": 1,
+      "message": "The first string is the \"name\" of this execution, used in the logging messages. The second one is the literal command that we\u0027re running. In this case they\u0027re the same, but all the others are short readable name vs long path name.",
+      "parentUuid": "7ba105b7_2286191e",
+      "range": {
+        "startLine": 69,
+        "startChar": 30,
+        "endLine": 69,
+        "endChar": 36
+      },
+      "revId": "17736723c9200c2f7d7a7f90ab4790b5be0f0d5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b72dcb31_5f8de922",
         "filename": "ui/build/build.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-05-04T01:24:40Z",
       "side": 1,
       "message": "It seems to me that if we want to store metadata about a command (such as which sandbox we want to run it in), then it\u0027d be more machine-readable and less confusing if we make a new struct for it:\n\ntype sandboxableCommand struct {\n  Sandbox string\n  Command Command\n}\n\nI imagine we\u0027d make some factory methods for generating them, with names like \"sandboxedMakeCommand(...)\" in case the details of creating them change (such as they are here).",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 38
+      },
+      "revId": "17736723c9200c2f7d7a7f90ab4790b5be0f0d5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5e66cae_cbe2d54e",
+        "filename": "ui/build/build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-04T02:28:09Z",
+      "side": 1,
+      "message": "That\u0027s basically what this implements, except we pass the name as an argument instead of in the function name.\n\nI don\u0027t think this can actually be simplified much more beyond what it is -- we could use a struct here so that the arguments would be named, but that makes the args ...string more annoying.\n\nThe Sandbox argument is intended to be opaque here, since it\u0027s likely to be defined completely differently for Linux vs Darwin.\n\nThe path/args also shouldn\u0027t be defined elsewhere. In this case they\u0027re fairly static, but that\u0027s not the case for the other instances.",
+      "parentUuid": "b72dcb31_5f8de922",
       "range": {
         "startLine": 69,
         "startChar": 2,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a57882f7_a1e5b629",
+        "filename": "ui/build/exec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-04T02:28:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f675e93_1cc9f503",
+      "range": {
+        "startLine": 81,
+        "startChar": 14,
+        "endLine": 81,
+        "endChar": 24
+      },
+      "revId": "17736723c9200c2f7d7a7f90ab4790b5be0f0d5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29e4f233_5e5cbb79",
         "filename": "ui/build/sandbox_darwin.go",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2017-05-04T01:24:40Z",
       "side": 1,
       "message": "What was previously in c.Args[0] that we want to overwrite?",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 12
+      },
+      "revId": "17736723c9200c2f7d7a7f90ab4790b5be0f0d5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "218fdbbe_a5f456ed",
+        "filename": "ui/build/sandbox_darwin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-04T02:28:09Z",
+      "side": 1,
+      "message": "The way exec works is that you give it a path name and a list of arguments (which becomes argv in the next program). The path name needs to be either an absolute or relative path, but argv[0] is usually the name that the user specified in order to run the command.\n\nThe normal exec.Command() will copy the path to the first argument, then if it isn\u0027t a relative or absolute path, lookup the program with exec.LookPath. For most of our commands, we\u0027re using a relative path, so c.Path and c.Args[0] will be identical, but for \"make\", the path with be something like \"/usr/bin/make\" and the first argument will still be \"make\".\n\nSince we\u0027re wrapping the command line, we only need one name for the executable (sandbox-exec will do the same expansion). I choose to copy Path to Args[0], since that\u0027s guaranteed to produce the correct binary, where Args[0] could have been rewritten to something completely different.",
+      "parentUuid": "29e4f233_5e5cbb79",
       "range": {
         "startLine": 61,
         "startChar": 1,
