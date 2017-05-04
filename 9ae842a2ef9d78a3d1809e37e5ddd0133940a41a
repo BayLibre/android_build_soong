@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48692557_6324268c",
+        "filename": "android/androidmk.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-04T03:09:21Z",
+      "side": 1,
+      "message": "It looks like this variable name and the one in the next comment could use some updating.",
+      "range": {
+        "startLine": 226,
+        "startChar": 26,
+        "endLine": 226,
+        "endChar": 48
+      },
+      "revId": "9ae842a2ef9d78a3d1809e37e5ddd0133940a41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f572f2d5_a00c1479",
+        "filename": "android/androidmk.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-04T03:09:21Z",
+      "side": 1,
+      "message": "Do you know why this only started being a problem now?",
+      "revId": "9ae842a2ef9d78a3d1809e37e5ddd0133940a41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "267adc60_93a9a425",
+        "filename": "python/binary.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-04T03:09:21Z",
+      "side": 1,
+      "message": "Do you mean \"searching for the main file in\"?",
+      "range": {
+        "startLine": 132,
+        "startChar": 4,
+        "endLine": 132,
+        "endChar": 26
+      },
+      "revId": "9ae842a2ef9d78a3d1809e37e5ddd0133940a41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "816ced2b_b50d0e7b",
+        "filename": "python/builder.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-04T03:09:21Z",
+      "side": 1,
+      "message": "Is there an advantage to piping output through `cat` (as opposed to just redirecting the `sed` output directly into \u003c$stub\u003e)?",
+      "range": {
+        "startLine": 34,
+        "startChar": 72,
+        "endLine": 34,
+        "endChar": 78
+      },
+      "revId": "9ae842a2ef9d78a3d1809e37e5ddd0133940a41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa474746_5eae83ed",
+        "filename": "python/builder.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-04T03:09:21Z",
+      "side": 1,
+      "message": "Do we want to support file paths with spaces etc? I think you want some sort of quoting to happen here",
+      "revId": "9ae842a2ef9d78a3d1809e37e5ddd0133940a41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51c29cdf_2d2604ad",
+        "filename": "python/builder.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-04T03:09:21Z",
+      "side": 1,
+      "message": "Does this work? I thought \"-C \" had to be its own argument (it might not stop working until the arguments get quoted though)",
+      "range": {
+        "startLine": 116,
+        "startChar": 27,
+        "endLine": 116,
+        "endChar": 83
+      },
+      "revId": "9ae842a2ef9d78a3d1809e37e5ddd0133940a41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5279e405_a8e0736c",
+        "filename": "python/builder.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-04T03:09:21Z",
+      "side": 1,
+      "message": "I think you can use backticks to avoid having to use backslashes within the string:\n\n\"interp\":   strings.Replace(interpreter, \"/\", `\\/`, -1),",
+      "revId": "9ae842a2ef9d78a3d1809e37e5ddd0133940a41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
