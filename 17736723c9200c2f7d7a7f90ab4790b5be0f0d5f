@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "7b7b1cd5_a8ab0c9a",
+        "filename": "ui/build/build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-04T02:58:32Z",
+      "side": 1,
+      "message": "Oh I see. This is using the `Command` func defined in exec.go in this patch, not https://golang.org/pkg/os/exec/#Command\n\nAlthough I\u0027d use an array (or perhaps an exec.Command) for the shell arguments to visually separate them, now that I realize what this is doing it seems ok to me too.",
+      "parentUuid": "e5e66cae_cbe2d54e",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 38
+      },
+      "revId": "17736723c9200c2f7d7a7f90ab4790b5be0f0d5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7f675e93_1cc9f503",
         "filename": "ui/build/exec.go",
         "patchSetId": 1
