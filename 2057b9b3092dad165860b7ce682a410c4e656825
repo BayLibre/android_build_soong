@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "598a7358_01dbd3fb",
+        "filename": "cc/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-05-04T03:45:04Z",
+      "side": 1,
+      "message": "Might have to make this a prebuilt if we decide to not go the check-build / seperate target route, since libz(gzip\u0027s dependency) isn\u0027t available on all branches.",
+      "parentUuid": "63a68bcb_06b077b0",
+      "range": {
+        "startLine": 204,
+        "startChar": 17,
+        "endLine": 204,
+        "endChar": 28
+      },
+      "revId": "2057b9b3092dad165860b7ce682a410c4e656825",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "96344ed9_56dea06e",
         "filename": "cc/cc.go",
         "patchSetId": 4
