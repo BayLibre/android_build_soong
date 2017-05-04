@@ -688,6 +688,30 @@
     },
     {
       "key": {
+        "uuid": "5f27b034_885145c5",
+        "filename": "python/builder.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-04T23:49:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d615284_a15d6d96",
+      "range": {
+        "startLine": 108,
+        "startChar": 28,
+        "endLine": 108,
+        "endChar": 36
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "32308b32_c91208fe",
         "filename": "python/builder.go",
         "patchSetId": 29
@@ -1312,6 +1336,30 @@
       "side": 1,
       "message": "It\u0027s $PWD/soong_python_test/.intermediates, and $PWD is ..../build/soong/python",
       "parentUuid": "d111c2aa_8ed6f3cd",
+      "range": {
+        "startLine": 423,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 7
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ad8fef1_e5d82217",
+        "filename": "python/python_test.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-04T23:49:42Z",
+      "side": 1,
+      "message": "Thanks Dan!",
+      "parentUuid": "bea131ee_c3807104",
       "range": {
         "startLine": 423,
         "startChar": 0,

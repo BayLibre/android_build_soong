@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "322c7a48_17494ca6",
+        "filename": "android/androidmk.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-04T23:49:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48692557_6324268c",
+      "range": {
+        "startLine": 226,
+        "startChar": 26,
+        "endLine": 226,
+        "endChar": 48
+      },
+      "revId": "9ae842a2ef9d78a3d1809e37e5ddd0133940a41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f572f2d5_a00c1479",
         "filename": "android/androidmk.go",
         "patchSetId": 31
@@ -83,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "b8fb29b7_0d35b25b",
+        "filename": "python/binary.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-04T23:49:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "267adc60_93a9a425",
+      "range": {
+        "startLine": 132,
+        "startChar": 4,
+        "endLine": 132,
+        "endChar": 26
+      },
+      "revId": "9ae842a2ef9d78a3d1809e37e5ddd0133940a41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "816ced2b_b50d0e7b",
         "filename": "python/builder.go",
         "patchSetId": 31
@@ -103,6 +151,30 @@
       "revId": "9ae842a2ef9d78a3d1809e37e5ddd0133940a41a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48ff0b10_75f41395",
+        "filename": "python/builder.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-04T23:49:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "816ced2b_b50d0e7b",
+      "range": {
+        "startLine": 34,
+        "startChar": 72,
+        "endLine": 34,
+        "endChar": 78
+      },
+      "revId": "9ae842a2ef9d78a3d1809e37e5ddd0133940a41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -138,6 +210,24 @@
       "revId": "9ae842a2ef9d78a3d1809e37e5ddd0133940a41a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54c1030a_5c790194",
+        "filename": "python/builder.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-04T23:49:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "afc71734_18198027",
+      "revId": "9ae842a2ef9d78a3d1809e37e5ddd0133940a41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -202,6 +292,24 @@
       "revId": "9ae842a2ef9d78a3d1809e37e5ddd0133940a41a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d085e3d4_a7ac2246",
+        "filename": "python/builder.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-04T23:49:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5279e405_a8e0736c",
+      "revId": "9ae842a2ef9d78a3d1809e37e5ddd0133940a41a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
