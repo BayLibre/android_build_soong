@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ba105b7_2286191e",
+        "filename": "ui/build/build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-04T01:24:40Z",
+      "side": 1,
+      "message": "Why\u0027s the string \"make\" here twice? What\u0027s the first one for?",
+      "range": {
+        "startLine": 69,
+        "startChar": 30,
+        "endLine": 69,
+        "endChar": 36
+      },
+      "revId": "17736723c9200c2f7d7a7f90ab4790b5be0f0d5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b72dcb31_5f8de922",
+        "filename": "ui/build/build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-04T01:24:40Z",
+      "side": 1,
+      "message": "It seems to me that if we want to store metadata about a command (such as which sandbox we want to run it in), then it\u0027d be more machine-readable and less confusing if we make a new struct for it:\n\ntype sandboxableCommand struct {\n  Sandbox string\n  Command Command\n}\n\nI imagine we\u0027d make some factory methods for generating them, with names like \"sandboxedMakeCommand(...)\" in case the details of creating them change (such as they are here).",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 38
+      },
+      "revId": "17736723c9200c2f7d7a7f90ab4790b5be0f0d5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f675e93_1cc9f503",
+        "filename": "ui/build/exec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-04T01:24:40Z",
+      "side": 1,
+      "message": "Do we perhaps want \"StartOrFatal\" (or \"StartOrFail\")? Same with the below",
+      "range": {
+        "startLine": 81,
+        "startChar": 14,
+        "endLine": 81,
+        "endChar": 24
+      },
+      "revId": "17736723c9200c2f7d7a7f90ab4790b5be0f0d5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29e4f233_5e5cbb79",
+        "filename": "ui/build/sandbox_darwin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-04T01:24:40Z",
+      "side": 1,
+      "message": "What was previously in c.Args[0] that we want to overwrite?",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 12
+      },
+      "revId": "17736723c9200c2f7d7a7f90ab4790b5be0f0d5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
