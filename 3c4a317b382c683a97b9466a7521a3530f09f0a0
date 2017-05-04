@@ -248,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "29c420a4_9535fcdc",
+        "filename": "python/binary.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-04T20:58:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "963de1bd_44b8a332",
+      "range": {
+        "startLine": 97,
+        "startChar": 3,
+        "endLine": 98,
+        "endChar": 28
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "827f4678_d22a1320",
         "filename": "python/binary.go",
         "patchSetId": 29
@@ -640,6 +664,30 @@
     },
     {
       "key": {
+        "uuid": "7d615284_a15d6d96",
+        "filename": "python/builder.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-04T20:58:43Z",
+      "side": 1,
+      "message": "I was saying that the CommandDeps can use the same ninja variables as the Command -- so it can literally be \"$template\" in the CommandDeps list, and you\u0027ll still pass template.String into the $template variable in ModuleBuild below.",
+      "parentUuid": "2c63bed9_1deb4e01",
+      "range": {
+        "startLine": 108,
+        "startChar": 28,
+        "endLine": 108,
+        "endChar": 36
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "32308b32_c91208fe",
         "filename": "python/builder.go",
         "patchSetId": 29
@@ -1016,6 +1064,30 @@
     },
     {
       "key": {
+        "uuid": "62f97927_376dd3d2",
+        "filename": "python/python.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-04T20:58:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5f638f52_13293940",
+      "range": {
+        "startLine": 452,
+        "startChar": 0,
+        "endLine": 474,
+        "endChar": 3
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "69852673_232b1a21",
         "filename": "python/python_test.go",
         "patchSetId": 29
@@ -1110,6 +1182,30 @@
     },
     {
       "key": {
+        "uuid": "54fc6408_3a382d2a",
+        "filename": "python/python_test.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-04T20:58:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5808def1_2202ea3b",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 40
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d4f930c_b91f53ea",
         "filename": "python/python_test.go",
         "patchSetId": 29
@@ -1192,6 +1288,30 @@
       "side": 1,
       "message": "it\u0027s soong_python_test/.intermediates/.../     not build/soong/python....\n\nThe problem is that every time when we run test, actual par command, eg \"-l /tmp/soong_python_test+[random number]/.intermediates/dir.....\" which cannot be used to compare with our expected results due to the random number. And will garbage collect by using os.RemoveAll()",
       "parentUuid": "ab7326d8_1a11e730",
+      "range": {
+        "startLine": 423,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 7
+      },
+      "revId": "3c4a317b382c683a97b9466a7521a3530f09f0a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bea131ee_c3807104",
+        "filename": "python/python_test.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-04T20:58:43Z",
+      "side": 1,
+      "message": "It\u0027s $PWD/soong_python_test/.intermediates, and $PWD is ..../build/soong/python",
+      "parentUuid": "d111c2aa_8ed6f3cd",
       "range": {
         "startLine": 423,
         "startChar": 0,
