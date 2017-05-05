@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "827e53f1_bae2bb8e",
+        "filename": "ui/build/build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-05T23:12:37Z",
+      "side": 1,
+      "message": "cmd.Sandbox \u003d makeSandbox",
+      "revId": "bc7f17326580cdfa29735e5d09205c24df827cde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
