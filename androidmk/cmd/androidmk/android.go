@@ -18,10 +18,10 @@ type bpVariable struct {
 }
 
 type variableAssignmentContext struct {
-	file    *bpFile
-	prefix  string
-	mkvalue *mkparser.MakeString
-	append  bool
+	bpTreeBuilder *bpFromMkBuilder
+	prefix        string
+	mkvalue       *mkparser.MakeString
+	append        bool
 }
 
 var rewriteProperties = map[string](func(variableAssignmentContext) error){
@@ -145,6 +145,19 @@ func splitBpList(val bpparser.Expression, keyFunc listSplitFunc) (lists map[stri
 	lists = make(map[string]bpparser.Expression)
 
 	switch val := val.(type) {
+	case *bpparser.List:
+		for _, v := range val.Values {
+			key, value, err := keyFunc(v)
+			if err != nil {
+				return nil, err
+			}
+			l := lists[key]
+			if l == nil {
+				l = bpparser.NewEmptyList()
+			}
+			l.(*bpparser.List).Values = append(l.(*bpparser.List).Values, value)
+			lists[key] = l
+		}
 	case *bpparser.Operator:
 		listsA, err := splitBpList(val.Args[0], keyFunc)
 		if err != nil {
@@ -183,23 +196,9 @@ func splitBpList(val bpparser.Expression, keyFunc listSplitFunc) (lists map[stri
 		if value.Type() == bpparser.ListType {
 			lists[key] = value
 		} else {
-			lists[key] = &bpparser.List{
-				Values: []bpparser.Expression{value},
-			}
+			lists[key] = bpparser.NewList([]bpparser.Expression{value}, false)
 		}
-	case *bpparser.List:
-		for _, v := range val.Values {
-			key, value, err := keyFunc(v)
-			if err != nil {
-				return nil, err
-			}
-			l := lists[key]
-			if l == nil {
-				l = &bpparser.List{}
-			}
-			l.(*bpparser.List).Values = append(l.(*bpparser.List).Values, value)
-			lists[key] = l
-		}
+
 	default:
 		panic(fmt.Errorf("unexpected type %t", val))
 	}
@@ -210,7 +209,7 @@ func splitBpList(val bpparser.Expression, keyFunc listSplitFunc) (lists map[stri
 func splitLocalGlobalPath(value bpparser.Expression) (string, bpparser.Expression, error) {
 	switch v := value.(type) {
 	case *bpparser.Variable:
-		if v.Name == "LOCAL_PATH" {
+		if v.Name() == "LOCAL_PATH" {
 			return "local", &bpparser.String{
 				Value: ".",
 			}, nil
@@ -223,7 +222,7 @@ func splitLocalGlobalPath(value bpparser.Expression) (string, bpparser.Expressio
 			return "", nil, fmt.Errorf("splitLocalGlobalPath expected a string, got %s", value.Type)
 		}
 
-		if v.Operator != '+' {
+		if v.OperatorToken.Value != "+" {
 			return "global", value, nil
 		}
 
@@ -237,7 +236,7 @@ func splitLocalGlobalPath(value bpparser.Expression) (string, bpparser.Expressio
 			return "global", value, nil
 		}
 
-		if variable, ok := firstOperand.(*bpparser.Variable); !ok || variable.Name != "LOCAL_PATH" {
+		if variable, ok := firstOperand.(*bpparser.Variable); !ok || variable.Name() != "LOCAL_PATH" {
 			return "global", value, nil
 		}
 
@@ -257,10 +256,12 @@ func splitLocalGlobalPath(value bpparser.Expression) (string, bpparser.Expressio
 }
 
 func localIncludeDirs(ctx variableAssignmentContext) error {
-	val, err := makeVariableToBlueprint(ctx.file, ctx.mkvalue, bpparser.ListType)
+	val, err := makeVariableToBlueprint(ctx.bpTreeBuilder, ctx.mkvalue, bpparser.ListType)
 	if err != nil {
 		return err
 	}
+
+	allComments := ctx.bpTreeBuilder.bpBuilder.PullAllCommentsRecursively(val)
 
 	lists, err := splitBpList(val, splitLocalGlobalPath)
 	if err != nil {
@@ -268,27 +269,33 @@ func localIncludeDirs(ctx variableAssignmentContext) error {
 	}
 
 	if global, ok := lists["global"]; ok && !emptyList(global) {
-		err = setVariable(ctx.file, ctx.append, ctx.prefix, "include_dirs", global, true)
+		val, err := setVariable(ctx.bpTreeBuilder, ctx.append, ctx.prefix, "include_dirs", global, true)
 		if err != nil {
 			return err
 		}
+		// any comments that were applied to the original list now get copied to the 'global' portion of the list
+		ctx.bpTreeBuilder.bpBuilder.AddCommentsAround(val, allComments)
 	}
 
 	if local, ok := lists["local"]; ok && !emptyList(local) {
-		err = setVariable(ctx.file, ctx.append, ctx.prefix, "local_include_dirs", local, true)
+		val, err := setVariable(ctx.bpTreeBuilder, ctx.append, ctx.prefix, "local_include_dirs", local, true)
 		if err != nil {
 			return err
 		}
+		// any comments that were applied to the original list now get copied to the 'local' portion of the list
+		ctx.bpTreeBuilder.bpBuilder.AddCommentsAround(val, allComments)
 	}
 
 	return nil
 }
 
 func exportIncludeDirs(ctx variableAssignmentContext) error {
-	val, err := makeVariableToBlueprint(ctx.file, ctx.mkvalue, bpparser.ListType)
+	val, err := makeVariableToBlueprint(ctx.bpTreeBuilder, ctx.mkvalue, bpparser.ListType)
 	if err != nil {
 		return err
 	}
+
+	allComments := ctx.bpTreeBuilder.bpBuilder.PullAllCommentsRecursively(val)
 
 	lists, err := splitBpList(val, splitLocalGlobalPath)
 	if err != nil {
@@ -296,44 +303,49 @@ func exportIncludeDirs(ctx variableAssignmentContext) error {
 	}
 
 	if local, ok := lists["local"]; ok && !emptyList(local) {
-		err = setVariable(ctx.file, ctx.append, ctx.prefix, "export_include_dirs", local, true)
+		localVal, err := setVariable(ctx.bpTreeBuilder, ctx.append, ctx.prefix, "export_include_dirs", local, true)
 		if err != nil {
 			return err
 		}
 		ctx.append = true
+		// any comments that were applied to the original list now get copied to the 'global' portion of the list
+		ctx.bpTreeBuilder.bpBuilder.AddCommentsAround(localVal, allComments)
 	}
 
 	// Add any paths that could not be converted to local relative paths to export_include_dirs
 	// anyways, they will cause an error if they don't exist and can be fixed manually.
 	if global, ok := lists["global"]; ok && !emptyList(global) {
-		err = setVariable(ctx.file, ctx.append, ctx.prefix, "export_include_dirs", global, true)
+		globalVal, err := setVariable(ctx.bpTreeBuilder, ctx.append, ctx.prefix, "export_include_dirs", global, true)
 		if err != nil {
 			return err
 		}
+		// any comments that were applied to the original list now get copied to the 'local' portion of the list
+		ctx.bpTreeBuilder.bpBuilder.AddCommentsAround(globalVal, allComments)
 	}
 
 	return nil
 }
 
 func stem(ctx variableAssignmentContext) error {
-	val, err := makeVariableToBlueprint(ctx.file, ctx.mkvalue, bpparser.StringType)
+	val, err := makeVariableToBlueprint(ctx.bpTreeBuilder, ctx.mkvalue, bpparser.StringType)
 	if err != nil {
 		return err
 	}
 	varName := "stem"
 
-	if exp, ok := val.(*bpparser.Operator); ok && exp.Operator == '+' {
-		if variable, ok := exp.Args[0].(*bpparser.Variable); ok && variable.Name == "LOCAL_MODULE" {
+	if exp, ok := val.(*bpparser.Operator); ok && exp.OperatorToken.Value == "+" {
+		if variable, ok := exp.Args[0].(*bpparser.Variable); ok && variable.Name() == "LOCAL_MODULE" {
 			varName = "suffix"
 			val = exp.Args[1]
 		}
 	}
 
-	return setVariable(ctx.file, ctx.append, ctx.prefix, varName, val, true)
+	_, err = setVariable(ctx.bpTreeBuilder, ctx.append, ctx.prefix, varName, val, true)
+	return err
 }
 
 func hostOs(ctx variableAssignmentContext) error {
-	val, err := makeVariableToBlueprint(ctx.file, ctx.mkvalue, bpparser.ListType)
+	val, err := makeVariableToBlueprint(ctx.bpTreeBuilder, ctx.mkvalue, bpparser.ListType)
 	if err != nil {
 		return err
 	}
@@ -356,15 +368,15 @@ func hostOs(ctx variableAssignmentContext) error {
 	}
 
 	if inList("windows") {
-		err = setVariable(ctx.file, ctx.append, "target.windows", "enabled", trueValue, true)
+		_, err = setVariable(ctx.bpTreeBuilder, ctx.append, "target.windows", "enabled", trueValue, true)
 	}
 
 	if !inList("linux") && err == nil {
-		err = setVariable(ctx.file, ctx.append, "target.linux", "enabled", falseValue, true)
+		_, err = setVariable(ctx.bpTreeBuilder, ctx.append, "target.linux", "enabled", falseValue, true)
 	}
 
 	if !inList("darwin") && err == nil {
-		err = setVariable(ctx.file, ctx.append, "target.darwin", "enabled", falseValue, true)
+		_, err = setVariable(ctx.bpTreeBuilder, ctx.append, "target.darwin", "enabled", falseValue, true)
 	}
 
 	return err
@@ -390,25 +402,31 @@ func splitSrcsLogtags(value bpparser.Expression) (string, bpparser.Expression, e
 }
 
 func srcFiles(ctx variableAssignmentContext) error {
-	val, err := makeVariableToBlueprint(ctx.file, ctx.mkvalue, bpparser.ListType)
+	val, err := makeVariableToBlueprint(ctx.bpTreeBuilder, ctx.mkvalue, bpparser.ListType)
 	if err != nil {
 		return err
 	}
 
+	allComments := ctx.bpTreeBuilder.bpBuilder.PullAllCommentsRecursively(val)
+
 	lists, err := splitBpList(val, splitSrcsLogtags)
 
 	if srcs, ok := lists["srcs"]; ok && !emptyList(srcs) {
-		err = setVariable(ctx.file, ctx.append, ctx.prefix, "srcs", srcs, true)
+		val, err := setVariable(ctx.bpTreeBuilder, ctx.append, ctx.prefix, "srcs", srcs, true)
 		if err != nil {
 			return err
 		}
+		// any comments that were applied to the original list get copied to each other list
+		ctx.bpTreeBuilder.bpBuilder.AddCommentsAround(val, allComments)
 	}
 
 	if logtags, ok := lists["logtags"]; ok && !emptyList(logtags) {
-		err = setVariable(ctx.file, true, ctx.prefix, "logtags", logtags, true)
+		val, err := setVariable(ctx.bpTreeBuilder, true, ctx.prefix, "logtags", logtags, true)
 		if err != nil {
 			return err
 		}
+		// any comments that were applied to the original list get copied to each other list
+		ctx.bpTreeBuilder.bpBuilder.AddCommentsAround(val, allComments)
 	}
 
 	return nil
@@ -416,7 +434,7 @@ func srcFiles(ctx variableAssignmentContext) error {
 
 func sanitize(sub string) func(ctx variableAssignmentContext) error {
 	return func(ctx variableAssignmentContext) error {
-		val, err := makeVariableToBlueprint(ctx.file, ctx.mkvalue, bpparser.ListType)
+		val, err := makeVariableToBlueprint(ctx.bpTreeBuilder, ctx.mkvalue, bpparser.ListType)
 		if err != nil {
 			return err
 		}
@@ -425,22 +443,26 @@ func sanitize(sub string) func(ctx variableAssignmentContext) error {
 			return fmt.Errorf("unsupported sanitize expression")
 		}
 
-		misc := &bpparser.List{}
+		allComments := ctx.bpTreeBuilder.bpBuilder.PullAllCommentsRecursively(val)
+
+		misc := bpparser.NewEmptyList()
 
 		for _, v := range val.(*bpparser.List).Values {
 			switch v := v.(type) {
 			case *bpparser.Variable, *bpparser.Operator:
-				ctx.file.errorf(ctx.mkvalue, "unsupported sanitize expression")
+				ctx.bpTreeBuilder.errorf(ctx.mkvalue, "unsupported sanitize expression")
 			case *bpparser.String:
 				switch v.Value {
 				case "never", "address", "coverage", "thread", "undefined", "cfi":
 					bpTrue := &bpparser.Bool{
 						Value: true,
 					}
-					err = setVariable(ctx.file, false, ctx.prefix, "sanitize."+sub+v.Value, bpTrue, true)
+					variable, err := setVariable(ctx.bpTreeBuilder, false, ctx.prefix, "sanitize."+sub+v.Value, bpTrue, true)
 					if err != nil {
 						return err
 					}
+					// any comments that were applied to the original list get copied to each other list
+					ctx.bpTreeBuilder.bpBuilder.AddCommentsAround(variable, allComments)
 				default:
 					misc.Values = append(misc.Values, v)
 				}
@@ -450,10 +472,13 @@ func sanitize(sub string) func(ctx variableAssignmentContext) error {
 		}
 
 		if len(misc.Values) > 0 {
-			err = setVariable(ctx.file, false, ctx.prefix, "sanitize."+sub+"misc_undefined", misc, true)
+			result, err := setVariable(ctx.bpTreeBuilder, false, ctx.prefix, "sanitize."+sub+"misc_undefined", misc, true)
 			if err != nil {
 				return err
 			}
+
+			// any comments that were applied to the original list get copied to each other list
+			ctx.bpTreeBuilder.bpBuilder.AddCommentsAround(result, allComments)
 		}
 
 		return err
@@ -463,19 +488,21 @@ func sanitize(sub string) func(ctx variableAssignmentContext) error {
 func prebuiltClass(ctx variableAssignmentContext) error {
 	class := ctx.mkvalue.Value(nil)
 	if v, ok := prebuiltTypes[class]; ok {
-		ctx.file.scope.Set("BUILD_PREBUILT", v)
+		ctx.bpTreeBuilder.scope.Set("BUILD_PREBUILT", v)
 	} else {
 		// reset to default
-		ctx.file.scope.Set("BUILD_PREBUILT", "prebuilt")
+		ctx.bpTreeBuilder.scope.Set("BUILD_PREBUILT", "prebuilt")
 	}
 	return nil
 }
 
 func ldflags(ctx variableAssignmentContext) error {
-	val, err := makeVariableToBlueprint(ctx.file, ctx.mkvalue, bpparser.ListType)
+	val, err := makeVariableToBlueprint(ctx.bpTreeBuilder, ctx.mkvalue, bpparser.ListType)
 	if err != nil {
 		return err
 	}
+
+	allComments := ctx.bpTreeBuilder.bpBuilder.PullAllCommentsRecursively(val)
 
 	lists, err := splitBpList(val, func(value bpparser.Expression) (string, bpparser.Expression, error) {
 		// Anything other than "-Wl,--version_script," + LOCAL_PATH + "<path>" matches ldflags
@@ -493,14 +520,14 @@ func ldflags(ctx variableAssignmentContext) error {
 			return "ldflags", value, nil
 		}
 
-		if v, ok := exp2.Args[1].(*bpparser.Variable); !ok || v.Name != "LOCAL_PATH" {
-			ctx.file.errorf(ctx.mkvalue, "Unrecognized version-script")
+		if v, ok := exp2.Args[1].(*bpparser.Variable); !ok || v.Name() != "LOCAL_PATH" {
+			ctx.bpTreeBuilder.errorf(ctx.mkvalue, "Unrecognized version-script")
 			return "ldflags", value, nil
 		}
 
 		s, ok := exp1.Args[1].(*bpparser.String)
 		if !ok {
-			ctx.file.errorf(ctx.mkvalue, "Unrecognized version-script")
+			ctx.bpTreeBuilder.errorf(ctx.mkvalue, "Unrecognized version-script")
 			return "ldflags", value, nil
 		}
 
@@ -513,20 +540,24 @@ func ldflags(ctx variableAssignmentContext) error {
 	}
 
 	if ldflags, ok := lists["ldflags"]; ok && !emptyList(ldflags) {
-		err = setVariable(ctx.file, ctx.append, ctx.prefix, "ldflags", ldflags, true)
+		val, err := setVariable(ctx.bpTreeBuilder, ctx.append, ctx.prefix, "ldflags", ldflags, true)
 		if err != nil {
 			return err
 		}
+		// any comments that were applied to the original list get copied to each other list
+		ctx.bpTreeBuilder.bpBuilder.AddCommentsAround(val, allComments)
 	}
 
 	if version_script, ok := lists["version"]; ok && !emptyList(version_script) {
 		if len(version_script.(*bpparser.List).Values) > 1 {
-			ctx.file.errorf(ctx.mkvalue, "multiple version scripts found?")
+			ctx.bpTreeBuilder.errorf(ctx.mkvalue, "multiple version scripts found?")
 		}
-		err = setVariable(ctx.file, false, ctx.prefix, "version_script", version_script.(*bpparser.List).Values[0], true)
+		val, err := setVariable(ctx.bpTreeBuilder, false, ctx.prefix, "version_script", version_script.(*bpparser.List).Values[0], true)
 		if err != nil {
 			return err
 		}
+		// any comments that were applied to the original list get copied to each other list
+		ctx.bpTreeBuilder.bpBuilder.AddCommentsAround(val, allComments)
 	}
 
 	return nil
@@ -551,10 +582,11 @@ func includeVariable(bpVar bpVariable) func(ctx variableAssignmentContext) error
 func includeVariableNow(bpVar bpVariable, ctx variableAssignmentContext) error {
 	var val bpparser.Expression
 	var err error
-	val, err = makeVariableToBlueprint(ctx.file, ctx.mkvalue, bpVar.variableType)
+	val, err = makeVariableToBlueprint(ctx.bpTreeBuilder, ctx.mkvalue, bpVar.variableType)
 	if err == nil {
-		err = setVariable(ctx.file, ctx.append, ctx.prefix, bpVar.name, val, true)
+		_, err = setVariable(ctx.bpTreeBuilder, ctx.append, ctx.prefix, bpVar.name, val, true)
 	}
+
 	return err
 }
 

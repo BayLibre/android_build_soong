@@ -94,7 +94,7 @@ var (
 			},
 			errors: []string{
 				fmt.Sprintf(badSrcFileExtErr,
-					"dir/Blueprints:3:11", "lib1", "PY3", "dir/file1.exe"),
+					"dir/Blueprints:3:7", "lib1", "PY3", "dir/file1.exe"),
 			},
 		},
 		{
@@ -117,7 +117,7 @@ var (
 			},
 			errors: []string{
 				fmt.Sprintf(badDataFileExtErr,
-					"dir/Blueprints:6:11", "lib1", "PY3", "dir/file2.py"),
+					"dir/Blueprints:6:7", "lib1", "PY3", "dir/file2.py"),
 			},
 		},
 		{
@@ -153,9 +153,9 @@ var (
 			},
 			errors: []string{
 				fmt.Sprintf(pkgPathErrTemplate,
-					"dir/Blueprints:11:15", "lib2", "PY3", "a/c/../../../"),
+					"dir/Blueprints:11:7", "lib2", "PY3", "a/c/../../../"),
 				fmt.Sprintf(pkgPathErrTemplate,
-					"dir/Blueprints:19:15", "lib3", "PY3", "/a/c/../../"),
+					"dir/Blueprints:19:7", "lib3", "PY3", "/a/c/../../"),
 			},
 		},
 		{
@@ -178,11 +178,11 @@ var (
 				"dir/-e/f/file1.py": nil,
 			},
 			errors: []string{
-				fmt.Sprintf(badIdentifierErrTemplate, "dir/Blueprints:4:11",
+				fmt.Sprintf(badIdentifierErrTemplate, "dir/Blueprints:4:7",
 					"lib1", "PY3", "runfiles/a/b/c/-e/f/file1.py", "-e"),
-				fmt.Sprintf(badIdentifierErrTemplate, "dir/Blueprints:4:11",
+				fmt.Sprintf(badIdentifierErrTemplate, "dir/Blueprints:4:7",
 					"lib1", "PY3", "runfiles/a/b/c/.file1.py", ".file1"),
-				fmt.Sprintf(badIdentifierErrTemplate, "dir/Blueprints:4:11",
+				fmt.Sprintf(badIdentifierErrTemplate, "dir/Blueprints:4:7",
 					"lib1", "PY3", "runfiles/a/b/c/123/file1.py", "123"),
 			},
 		},
