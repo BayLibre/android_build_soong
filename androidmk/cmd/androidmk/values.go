@@ -21,21 +21,14 @@ func addValues(val1, val2 bpparser.Expression) (bpparser.Expression, error) {
 	}
 
 	if val1.Type() == bpparser.StringType && val2.Type() == bpparser.ListType {
-		val1 = &bpparser.List{
-			Values: []bpparser.Expression{val1},
-		}
+		val1 = bpparser.NewList([]bpparser.Expression{val1}, val2.(*bpparser.List).NewlineBetweenElements)
 	} else if val2.Type() == bpparser.StringType && val1.Type() == bpparser.ListType {
-		val2 = &bpparser.List{
-			Values: []bpparser.Expression{val1},
-		}
+		val2 = bpparser.NewList([]bpparser.Expression{val1}, val1.(*bpparser.List).NewlineBetweenElements)
 	} else if val1.Type() != val2.Type() {
-		return nil, fmt.Errorf("cannot add mismatched types")
+		return nil, fmt.Errorf("cannot add objects of mismatched types %#v and %#v", val1, val2)
 	}
 
-	return &bpparser.Operator{
-		Operator: '+',
-		Args:     [2]bpparser.Expression{val1, val2},
-	}, nil
+	return bpparser.NewOperator("+", [2]bpparser.Expression{val1, val2}), nil
 }
 
 func makeToStringExpression(ms *mkparser.MakeString, scope mkparser.Scope) (bpparser.Expression, error) {
@@ -56,11 +49,11 @@ func makeToStringExpression(ms *mkparser.MakeString, scope mkparser.Scope) (bppa
 				return nil, fmt.Errorf("Unsupported non-const variable name %s", name.Dump())
 			}
 			tmp := &bpparser.Variable{
-				Name:  name.Value(nil),
-				Value: &bpparser.String{},
+				NameNode: &bpparser.Token{name.Value(nil)},
+				Value:    &bpparser.String{},
 			}
 
-			if tmp.Name == "TOP" {
+			if tmp.Name() == "TOP" {
 				if s[0] == '/' {
 					s = s[1:]
 				} else {
@@ -94,10 +87,7 @@ func stringToListValue(s string) bpparser.Expression {
 			Value: l,
 		}
 	}
-	return &bpparser.List{
-		Values: valList,
-	}
-
+	return bpparser.NewList(valList, true)
 }
 
 func makeToListExpression(ms *mkparser.MakeString, scope mkparser.Scope) (bpparser.Expression, error) {
@@ -106,7 +96,7 @@ func makeToListExpression(ms *mkparser.MakeString, scope mkparser.Scope) (bppars
 
 	var listOfListValues []bpparser.Expression
 
-	listValue := &bpparser.List{}
+	listValue := bpparser.NewEmptyList()
 
 	for _, f := range fields {
 		if len(f.Variables) == 1 && f.Strings[0] == "" && f.Strings[1] == "" {
@@ -128,10 +118,10 @@ func makeToListExpression(ms *mkparser.MakeString, scope mkparser.Scope) (bppars
 						listOfListValues = append(listOfListValues, listValue)
 					}
 					listOfListValues = append(listOfListValues, &bpparser.Variable{
-						Name:  f.Variables[0].Name.Value(nil),
-						Value: &bpparser.List{},
+						NameNode: &bpparser.Token{f.Variables[0].Name.Value(nil)},
+						Value:    bpparser.NewEmptyList(),
 					})
-					listValue = &bpparser.List{}
+					listValue = bpparser.NewEmptyList()
 				}
 			}
 		} else {
@@ -149,6 +139,9 @@ func makeToListExpression(ms *mkparser.MakeString, scope mkparser.Scope) (bppars
 
 	if len(listValue.Values) > 0 {
 		listOfListValues = append(listOfListValues, listValue)
+	}
+	if len(listValue.Values) > 1 {
+		listValue.NewlineBetweenElements = true
 	}
 
 	if len(listOfListValues) == 0 {
@@ -193,8 +186,8 @@ func makeToBoolExpression(ms *mkparser.MakeString) (bpparser.Expression, error) 
 				return nil, fmt.Errorf("unsupported non-const variable name")
 			}
 			return &bpparser.Variable{
-				Name:  name.Value(nil),
-				Value: &bpparser.Bool{},
+				NameNode: &bpparser.Token{name.Value(nil)},
+				Value:    &bpparser.Bool{},
 			}, nil
 		} else {
 			return nil, fmt.Errorf("non-const bool expression %s", ms.Dump())
