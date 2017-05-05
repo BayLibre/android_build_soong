@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a9d23ff_13e4bdd9",
+        "filename": "cc/rs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-05T22:05:11Z",
+      "side": 1,
+      "message": "We support it now, Add cppFiles to ImplicitOutputs above",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 47
+      },
+      "revId": "37721fa281a494a7a401bebf983f8ab157a9aa4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
