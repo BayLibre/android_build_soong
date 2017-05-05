@@ -176,7 +176,7 @@ func convertFile(filename string, buffer *bytes.Buffer) (string, []error) {
 		}
 	}
 
-	out, err := bpparser.Print(&bpparser.File{
+	out, err := bpparser.Print(&bpparser.ParseTree{
 		Defs:     file.defs,
 		Comments: file.comments,
 	})
