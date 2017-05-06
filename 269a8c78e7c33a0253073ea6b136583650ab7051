@@ -16,6 +16,24 @@
       "revId": "269a8c78e7c33a0253073ea6b136583650ab7051",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6cb7fe1_88b4b772",
+        "filename": "ui/build/build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-06T00:34:03Z",
+      "side": 1,
+      "message": "Since \"make\" is duplicated twice in a row, i think this is probably a bit cleaner still (even though that isn\u0027t ideal)",
+      "parentUuid": "8f4756ba_eab24a09",
+      "revId": "269a8c78e7c33a0253073ea6b136583650ab7051",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
