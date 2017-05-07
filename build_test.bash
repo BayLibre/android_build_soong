@@ -48,7 +48,7 @@ function gettop
 }
 
 export TOP=$(gettop)
-source build/soong/cmd/microfactory/microfactory.bash
+source "${TOP}/build/soong/cmd/microfactory/microfactory.bash"
 
-build_go soong_ui android/soong/cmd/soong_ui
-exec "$(getoutdir)/soong_ui" "$@"
+build_go multiproduct_kati android/soong/cmd/multiproduct_kati
+exec "$(getoutdir)/multiproduct_kati" "$@"
