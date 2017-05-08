@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2330b12d_2b5f9355",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-08T21:01:09Z",
+      "side": 1,
+      "message": "move up",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 5
+      },
+      "revId": "8e8f672c42a9b034a2f93bd245c0873ff294cff1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9797df76_600f1b07",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-08T21:01:09Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 381,
+        "startChar": 0,
+        "endLine": 381,
+        "endChar": 62
+      },
+      "revId": "8e8f672c42a9b034a2f93bd245c0873ff294cff1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
