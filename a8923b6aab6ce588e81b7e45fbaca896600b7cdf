@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b2ed27d_cc241b1d",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-05-08T20:17:51Z",
+      "side": 1,
+      "message": "Could also go above the diagnostic sanitizers. Or maybe should be inside the len(sanitizers) block?",
+      "range": {
+        "startLine": 365,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 2
+      },
+      "revId": "a8923b6aab6ce588e81b7e45fbaca896600b7cdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
