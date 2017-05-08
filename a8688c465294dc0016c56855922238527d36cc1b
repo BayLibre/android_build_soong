@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf71d2c5_99e77341",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-05-08T19:57:38Z",
+      "side": 1,
+      "message": "btw, I noticed Friday that sanitize.integer doesn\u0027t work in Soong. It\u0027s also not on go/android.bp.",
+      "range": {
+        "startLine": 433,
+        "startChar": 42,
+        "endLine": 433,
+        "endChar": 49
+      },
+      "revId": "a8688c465294dc0016c56855922238527d36cc1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
