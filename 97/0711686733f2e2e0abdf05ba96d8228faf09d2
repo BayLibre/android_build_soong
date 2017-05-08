@@ -1,0 +1,10 @@
+Autosubmit+1: Andreas Gampe <agampe@google.com>
+Code-Review+2: Dan Albert <danalbert@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: Andreas Gampe <agampe@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Mon, 08 May 2017 23:39:06 +0000
+Reviewed-on: https://android-review.googlesource.com/391773
+Project: platform/build/soong
+Branch: refs/heads/master
