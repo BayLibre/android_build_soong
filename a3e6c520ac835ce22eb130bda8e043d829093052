@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be67387c_8ddb2472",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-05-08T15:16:57Z",
+      "side": 1,
+      "message": "I know it\u0027s a path, but could you abuse this to pass detect_leaks\u003d0?",
+      "range": {
+        "startLine": 334,
+        "startChar": 10,
+        "endLine": 334,
+        "endChar": 23
+      },
+      "revId": "a3e6c520ac835ce22eb130bda8e043d829093052",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
