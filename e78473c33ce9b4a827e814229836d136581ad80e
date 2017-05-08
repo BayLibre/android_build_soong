@@ -16,6 +16,24 @@
       "revId": "e78473c33ce9b4a827e814229836d136581ad80e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "329f65e3_ebe5da62",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-08T20:58:33Z",
+      "side": 1,
+      "message": "Getenv() returns \"\" for missing keys, so this should work.",
+      "parentUuid": "a4d3e960_7432a61e",
+      "revId": "e78473c33ce9b4a827e814229836d136581ad80e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
