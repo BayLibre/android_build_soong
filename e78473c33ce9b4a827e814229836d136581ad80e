@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4d3e960_7432a61e",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-08T20:55:46Z",
+      "side": 1,
+      "message": "Do we need to make sure if key exists in originalEnv?",
+      "revId": "e78473c33ce9b4a827e814229836d136581ad80e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
