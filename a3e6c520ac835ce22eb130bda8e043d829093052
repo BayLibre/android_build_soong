@@ -22,6 +22,30 @@
       "revId": "a3e6c520ac835ce22eb130bda8e043d829093052",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "083b0ad8_2763301d",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-08T18:01:04Z",
+      "side": 1,
+      "message": "No, we\u0027re not running inside bash, so this really does need to be a path to the executable. I hope to actually clean this up soon in kati itself.",
+      "parentUuid": "be67387c_8ddb2472",
+      "range": {
+        "startLine": 334,
+        "startChar": 10,
+        "endLine": 334,
+        "endChar": 23
+      },
+      "revId": "a3e6c520ac835ce22eb130bda8e043d829093052",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
