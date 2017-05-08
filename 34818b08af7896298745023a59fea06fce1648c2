@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1a99019_5101bbab",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1143204
+      },
+      "writtenOn": "2017-05-08T03:50:24Z",
+      "side": 1,
+      "message": "Hi Jayant,\nAs far as I known, setting `vendor_available: true` will split a module into both variants in https://android-review.googlesource.com/c/368372/. The \"vendor_available\" is not the flag of the VNDK. Could you please explain why we changed the vndk list to the variable of \"vendor_available\" ? Has the usage of  \"vendor_available\" been changed?  Thanks.\nGuodaoxin",
+      "range": {
+        "startLine": 431,
+        "startChar": 29,
+        "endLine": 431,
+        "endChar": 73
+      },
+      "revId": "34818b08af7896298745023a59fea06fce1648c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
