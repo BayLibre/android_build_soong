@@ -298,6 +298,8 @@ loop:
 			switch p.tok {
 			case '\n':
 				value.appendString(" ")
+			case '"': // a double quote character
+				value.appendString(`"`)
 			case scanner.EOF:
 				p.errorf("expected escaped character, found %s",
 					scanner.TokenString(p.tok))
