@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "808da6e0_db6bf6bb",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2017-05-09T20:09:01Z",
+      "side": 1,
+      "message": "There\u0027s a `PlatformSdkVersionInt`.",
+      "range": {
+        "startLine": 428,
+        "startChar": 5,
+        "endLine": 432,
+        "endChar": 6
+      },
+      "revId": "43b8aadf27734b6999b4ccd9415d96a73ffa6c0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df8171f8_8bc33bec",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2017-05-09T20:09:01Z",
+      "side": 1,
+      "message": "Should probably bring this out to `ndkMaxPrebuiltVersion`.",
+      "range": {
+        "startLine": 433,
+        "startChar": 32,
+        "endLine": 433,
+        "endChar": 34
+      },
+      "revId": "43b8aadf27734b6999b4ccd9415d96a73ffa6c0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
