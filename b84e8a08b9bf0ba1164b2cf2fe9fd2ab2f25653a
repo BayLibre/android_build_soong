@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "381b8d84_d0b3bb2d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-09T22:39:22Z",
+      "side": 1,
+      "message": "Describe what the optimizations are",
+      "revId": "b84e8a08b9bf0ba1164b2cf2fe9fd2ab2f25653a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
