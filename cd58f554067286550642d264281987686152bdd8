@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d8090d67_deb7cd8f",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-09T02:41:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6dd91176_2a1a8cb5",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 53
+      },
+      "revId": "cd58f554067286550642d264281987686152bdd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e85c6a92_c331af3a",
         "filename": "ui/build/proc_sync.go",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-04-19T04:06:18Z",
       "side": 1,
       "message": "\"android/soong/...\" ones go below \"time\", with a newline in between",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 26
+      },
+      "revId": "cd58f554067286550642d264281987686152bdd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e591ddd_98494580",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-09T02:41:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e85c6a92_c331af3a",
       "range": {
         "startLine": 18,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2a4cd87b_3172152e",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-09T02:41:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93148e47_b4d6c516",
+      "range": {
+        "startLine": 31,
+        "startChar": 27,
+        "endLine": 31,
+        "endChar": 62
+      },
+      "revId": "cd58f554067286550642d264281987686152bdd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6535d1e4_02c1e7fd",
         "filename": "ui/build/proc_sync.go",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2017-04-19T04:06:18Z",
       "side": 1,
       "message": "What if we\u0027re building in more than one output directory in a single build, like multiproduct_kati? You could return either an opaque structure with a .Close() call, or a func() lambda with the file info captured.",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 24
+      },
+      "revId": "cd58f554067286550642d264281987686152bdd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0fc2f4a9_48a275b3",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-09T02:41:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6535d1e4_02c1e7fd",
       "range": {
         "startLine": 53,
         "startChar": 1,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "29e45594_a15e54dc",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-09T02:41:38Z",
+      "side": 1,
+      "message": "I imagine that any of them would be fine. I\u0027ll move it",
+      "parentUuid": "cea79aad_83246708",
+      "range": {
+        "startLine": 54,
+        "startChar": 34,
+        "endLine": 54,
+        "endChar": 45
+      },
+      "revId": "cd58f554067286550642d264281987686152bdd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66b6a9f5_8b771448",
         "filename": "ui/build/proc_sync.go",
         "patchSetId": 3
@@ -128,6 +248,30 @@
       "writtenOn": "2017-04-19T04:06:18Z",
       "side": 1,
       "message": "why 0750?",
+      "range": {
+        "startLine": 55,
+        "startChar": 23,
+        "endLine": 55,
+        "endChar": 27
+      },
+      "revId": "cd58f554067286550642d264281987686152bdd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13471e63_66c59d25",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-09T02:41:38Z",
+      "side": 1,
+      "message": "When I `stat out/soong`, it gives \u00270750\u0027 as the permissions.\nWhat permissions would you use?",
+      "parentUuid": "66b6a9f5_8b771448",
       "range": {
         "startLine": 55,
         "startChar": 23,
@@ -232,6 +376,30 @@
     },
     {
       "key": {
+        "uuid": "76bd126b_faee49fb",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-09T02:41:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92881c7a_48b50b6a",
+      "range": {
+        "startLine": 96,
+        "startChar": 3,
+        "endLine": 96,
+        "endChar": 13
+      },
+      "revId": "cd58f554067286550642d264281987686152bdd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "521a00c2_32da9d59",
         "filename": "ui/build/proc_sync.go",
         "patchSetId": 3
@@ -255,6 +423,23 @@
     },
     {
       "key": {
+        "uuid": "ce27293c_141ccc04",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-09T02:41:38Z",
+      "side": 1,
+      "message": "Yeah that should work too",
+      "revId": "cd58f554067286550642d264281987686152bdd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "89bb9bf2_c4425e16",
         "filename": "ui/build/proc_sync.go",
         "patchSetId": 3
@@ -266,6 +451,30 @@
       "writtenOn": "2017-04-19T04:06:18Z",
       "side": 1,
       "message": "Can you document why you chose Fcntl\u0027s F_SETLK vs Flock?",
+      "range": {
+        "startLine": 118,
+        "startChar": 15,
+        "endLine": 118,
+        "endChar": 25
+      },
+      "revId": "cd58f554067286550642d264281987686152bdd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf9f7853_b8631abc",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-09T02:41:38Z",
+      "side": 1,
+      "message": "I\u0027ll change it. It was just because FcntlFlock came up first in my search.",
+      "parentUuid": "89bb9bf2_c4425e16",
       "range": {
         "startLine": 118,
         "startChar": 15,
