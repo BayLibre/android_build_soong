@@ -16,6 +16,86 @@
       "revId": "b84e8a08b9bf0ba1164b2cf2fe9fd2ab2f25653a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa84798a_869596f1",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-09T22:46:25Z",
+      "side": 1,
+      "message": "These aren\u0027t dependencies, they are flags.",
+      "range": {
+        "startLine": 922,
+        "startChar": 32,
+        "endLine": 922,
+        "endChar": 36
+      },
+      "revId": "b84e8a08b9bf0ba1164b2cf2fe9fd2ab2f25653a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07b73485_764774f7",
+        "filename": "cc/library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-09T22:46:25Z",
+      "side": 1,
+      "message": "This seems like a hack, if you need includes separate from other flags we should be passing them in different variables.",
+      "revId": "b84e8a08b9bf0ba1164b2cf2fe9fd2ab2f25653a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ec9997d_bb450141",
+        "filename": "cc/library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-09T22:46:25Z",
+      "side": 1,
+      "message": "You don\u0027t seem to be using this",
+      "range": {
+        "startLine": 586,
+        "startChar": 101,
+        "endLine": 586,
+        "endChar": 114
+      },
+      "revId": "b84e8a08b9bf0ba1164b2cf2fe9fd2ab2f25653a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bdb024d7_76788aa0",
+        "filename": "cc/makevars.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-09T22:46:25Z",
+      "side": 1,
+      "message": "Unrelated to your patch?",
+      "revId": "b84e8a08b9bf0ba1164b2cf2fe9fd2ab2f25653a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
