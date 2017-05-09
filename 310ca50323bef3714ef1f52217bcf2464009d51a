@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "063d0e9a_a74b77ad",
+        "filename": "androidmk/parser/parser.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-09T23:05:11Z",
+      "side": 1,
+      "message": "This isn\u0027t technically correct, \\\" in a makefile is read as \\\", not as \".  For LOCAL_CFLAGS, the \\\" propagates all the way into the recipe, where it is passed to bash, and bash unescapes it to \".\n\nI\u0027m fine with leaving this as is, because it only comes up in practice in cflags like this, but would be slightly more correct to only unescape properties that were ending up on the command line.",
+      "revId": "310ca50323bef3714ef1f52217bcf2464009d51a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
