@@ -17,6 +17,8 @@ package android
 import (
 	"encoding/json"
 
+	"path/filepath"
+
 	"github.com/google/blueprint"
 )
 
@@ -39,8 +41,9 @@ func createApiLevelsJson(ctx blueprint.SingletonContext, file string,
 	}
 
 	ctx.Build(pctx, blueprint.BuildParams{
-		Rule:    WriteFile,
-		Outputs: []string{file},
+		Rule:        WriteFile,
+		Description: "generate " + filepath.Base(file),
+		Outputs:     []string{file},
 		Args: map[string]string{
 			"content": string(jsonStr[:]),
 		},
