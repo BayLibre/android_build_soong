@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "4da5c3fe_e63b6085",
+        "filename": "cc/builder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-09T22:47:40Z",
+      "side": 1,
+      "message": "Whats the purpose of storing these compressed?  git will handle storing and diffing them much better if they are uncompressed, and the history is stored compressed.",
+      "revId": "b84e8a08b9bf0ba1164b2cf2fe9fd2ab2f25653a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa84798a_869596f1",
         "filename": "cc/cc.go",
         "patchSetId": 7
