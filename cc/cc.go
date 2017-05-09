@@ -50,6 +50,9 @@ func init() {
 
 		ctx.BottomUp("coverage", coverageLinkingMutator).Parallel()
 		ctx.TopDown("vndk_deps", sabiDepsMutator)
+
+		ctx.TopDown("lto", ltoDepsMutator)
+		ctx.BottomUp("lto", ltoMutator).Parallel()
 	})
 
 	pctx.Import("android/soong/cc/config")
@@ -289,6 +292,7 @@ type Module struct {
 	sanitize  *sanitize
 	coverage  *coverage
 	sabi      *sabi
+	lto       *lto
 
 	androidMkSharedLibDeps []string
 
@@ -324,6 +328,9 @@ func (c *Module) Init() (blueprint.Module, []interface{}) {
 	}
 	if c.sabi != nil {
 		props = append(props, c.sabi.props()...)
+	}
+	if c.lto != nil {
+		props = append(props, c.lto.props()...)
 	}
 	for _, feature := range c.features {
 		props = append(props, feature.props()...)
@@ -460,6 +467,7 @@ func newModule(hod android.HostOrDeviceSupported, multilib android.Multilib) *Mo
 	module.sanitize = &sanitize{}
 	module.coverage = &coverage{}
 	module.sabi = &sabi{}
+	module.lto = &lto{}
 	return module
 }
 
@@ -510,6 +518,9 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	}
 	if c.sabi != nil {
 		flags = c.sabi.flags(ctx, flags)
+	}
+	if c.lto != nil {
+		flags = c.lto.flags(ctx, flags)
 	}
 	for _, feature := range c.features {
 		flags = feature.flags(ctx, flags)
@@ -588,6 +599,9 @@ func (c *Module) begin(ctx BaseModuleContext) {
 	if c.sabi != nil {
 		c.sabi.begin(ctx)
 	}
+	if c.lto != nil {
+		c.lto.begin(ctx)
+	}
 	for _, feature := range c.features {
 		feature.begin(ctx)
 	}
@@ -620,6 +634,9 @@ func (c *Module) deps(ctx DepsContext) Deps {
 	}
 	if c.sabi != nil {
 		deps = c.sabi.deps(ctx, deps)
+	}
+	if c.lto != nil {
+		deps = c.lto.deps(ctx, deps)
 	}
 	for _, feature := range c.features {
 		deps = feature.deps(ctx, deps)
@@ -1119,6 +1136,7 @@ func DefaultsFactory(props ...interface{}) (blueprint.Module, []interface{}) {
 		&TidyProperties{},
 		&CoverageProperties{},
 		&SAbiProperties{},
+		&LTOProperties{},
 	)
 
 	return android.InitDefaultsModule(module, module, props...)
