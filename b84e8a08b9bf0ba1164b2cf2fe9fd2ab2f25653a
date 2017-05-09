@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "98d5fed7_f4acfa44",
+        "filename": "cc/builder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-05-09T22:51:06Z",
+      "side": 1,
+      "message": "For some libraries (for eg: libLLVM, whose size with DWARF is 400mb, even though we don\u0027t use DWARF here, its a good indication of the size of the abi information), abi dumps can be very very large (10s of megabytes).",
+      "parentUuid": "4da5c3fe_e63b6085",
+      "revId": "b84e8a08b9bf0ba1164b2cf2fe9fd2ab2f25653a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa84798a_869596f1",
         "filename": "cc/cc.go",
         "patchSetId": 7
