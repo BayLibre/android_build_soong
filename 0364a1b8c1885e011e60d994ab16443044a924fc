@@ -16,6 +16,23 @@
       "revId": "0364a1b8c1885e011e60d994ab16443044a924fc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac5e822b_43af720f",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-10T17:33:19Z",
+      "side": 1,
+      "message": "how about defining suffix :\u003d []string{}, and then strings.Join(suffix, \" \")",
+      "revId": "0364a1b8c1885e011e60d994ab16443044a924fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
