@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9eb69b73_2ed6d005",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-10T23:07:38Z",
+      "side": 1,
+      "message": "remove this empty line - or move it down below the }",
+      "revId": "dd83d5ec368d46742838090589e2d9f95ffae56b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50a0a1a8_27b17e94",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-10T23:07:38Z",
+      "side": 1,
+      "message": "My comment from PS2 still applies.",
+      "range": {
+        "startLine": 93,
+        "startChar": 3,
+        "endLine": 93,
+        "endChar": 134
+      },
+      "revId": "dd83d5ec368d46742838090589e2d9f95ffae56b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7856187_8346b97a",
+        "filename": "ui/build/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-10T23:07:38Z",
+      "side": 1,
+      "message": "This goes at the end of the list, with a newline in between",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 23
+      },
+      "revId": "dd83d5ec368d46742838090589e2d9f95ffae56b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
