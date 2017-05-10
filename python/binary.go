@@ -31,7 +31,7 @@ func init() {
 	android.RegisterModuleType("python_binary_host", PythonBinaryHostFactory)
 }
 
-type PythonBinaryProperties struct {
+type PythonBinaryBaseProperties struct {
 	// the name of the source file that is the main entry point of the program.
 	// this file must also be listed in srcs.
 	// If left unspecified, module name is used instead.
@@ -45,10 +45,11 @@ type PythonBinaryProperties struct {
 	Suffix string
 }
 
-type PythonBinary struct {
+type pythonBinaryBase struct {
 	pythonBaseModule
+	subModule PythonBinarySubModule
 
-	binaryProperties PythonBinaryProperties
+	binaryProperties PythonBinaryBaseProperties
 
 	// soong_zip arguments from all its dependencies.
 	depsParSpecs []parSpec
@@ -60,20 +61,35 @@ type PythonBinary struct {
 	installPath android.OutputPath
 }
 
-var _ PythonSubModule = (*PythonBinary)(nil)
+type PythonBinarySubModule interface {
+	InstallFile(ctx android.ModuleContext, input android.Path) android.OutputPath
+}
+
+type PythonBinaryHost struct {
+	pythonBinaryBase
+}
+
+var _ PythonSubModule = (*PythonBinaryHost)(nil)
+
+func (p *PythonBinaryHost) InstallFile(ctx android.ModuleContext,
+	input android.Path) android.OutputPath {
+	return ctx.InstallFile(android.PathForModuleInstall(ctx, "bin"), input)
+}
 
 var (
 	stubTemplateHost = "build/soong/python/scripts/stub_template_host.txt"
 )
 
 func PythonBinaryHostFactory() (blueprint.Module, []interface{}) {
-	module := &PythonBinary{}
+	module := &PythonBinaryHost{}
 
-	return InitPythonBaseModule(&module.pythonBaseModule, module, android.HostSupportedNoCross,
-		&module.binaryProperties)
+	module.pythonBinaryBase.subModule = module
+
+	return InitPythonBaseModule(&module.pythonBinaryBase.pythonBaseModule,
+		&module.pythonBinaryBase, android.HostSupportedNoCross, &module.binaryProperties)
 }
 
-func (p *PythonBinary) GeneratePythonBuildActions(ctx android.ModuleContext) {
+func (p *pythonBinaryBase) GeneratePythonBuildActions(ctx android.ModuleContext) {
 	p.pythonBaseModule.GeneratePythonBuildActions(ctx)
 
 	// no Python source file for compiling par file.
@@ -135,12 +151,11 @@ func (p *PythonBinary) GeneratePythonBuildActions(ctx android.ModuleContext) {
 		newPyPkgs, append(p.depsParSpecs, p.pythonBaseModule.parSpec))
 
 	// install par file.
-	p.installPath = ctx.InstallFile(
-		android.PathForModuleInstall(ctx, "bin"), binFile)
+	p.installPath = p.subModule.InstallFile(ctx, binFile)
 }
 
 // get interpreter path.
-func (p *PythonBinary) getInterpreter(ctx android.ModuleContext) string {
+func (p *pythonBinaryBase) getInterpreter(ctx android.ModuleContext) string {
 	var interp string
 	switch p.pythonBaseModule.properties.ActualVersion {
 	case pyVersion2:
@@ -156,7 +171,7 @@ func (p *PythonBinary) getInterpreter(ctx android.ModuleContext) string {
 }
 
 // find main program path within runfiles tree.
-func (p *PythonBinary) getPyMainFile(ctx android.ModuleContext) string {
+func (p *pythonBinaryBase) getPyMainFile(ctx android.ModuleContext) string {
 	var main string
 	if p.binaryProperties.Main == "" {
 		main = p.BaseModuleName() + pyExt
@@ -174,7 +189,7 @@ func (p *PythonBinary) getPyMainFile(ctx android.ModuleContext) string {
 	return ""
 }
 
-func (p *PythonBinary) getStem(ctx android.ModuleContext) string {
+func (p *pythonBinaryBase) getStem(ctx android.ModuleContext) string {
 	stem := ctx.ModuleName()
 	if p.binaryProperties.Stem != "" {
 		stem = p.binaryProperties.Stem
@@ -210,13 +225,17 @@ func PathBeforeLastSlash(path string) string {
 	return ""
 }
 
-func (p *PythonBinary) GeneratePythonAndroidMk() (ret android.AndroidMkData, err error) {
+func (p *pythonBinaryBase) GeneratePythonAndroidMk() (ret android.AndroidMkData, err error) {
 	// Soong installation is only supported for host modules. Have Make
 	// installation trigger Soong installation.
 	if p.pythonBaseModule.Target().Os.Class == android.Host {
 		ret.OutputFile = android.OptionalPathForPath(p.installPath)
 	}
-	ret.Class = "EXECUTABLES"
+	if _, ok := p.subModule.(*PythonTestHost); ok {
+		ret.Class = "NATIVE_TESTS"
+	} else {
+		ret.Class = "EXECUTABLES"
+	}
 
 	ret.Extra = append(ret.Extra, func(w io.Writer, outputFile android.Path) error {
 		path := p.installPath.RelPathString()
