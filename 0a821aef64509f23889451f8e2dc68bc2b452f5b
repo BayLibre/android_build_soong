@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5b15326_d1e55844",
+        "filename": "cc/library.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-05-10T19:56:18Z",
+      "side": 1,
+      "message": "Haven\u0027t merged these 2, not sure if that its overkill.",
+      "range": {
+        "startLine": 154,
+        "startChar": 1,
+        "endLine": 157,
+        "endChar": 22
+      },
+      "revId": "0a821aef64509f23889451f8e2dc68bc2b452f5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

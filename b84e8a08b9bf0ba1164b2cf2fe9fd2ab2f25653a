@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f6b5e3a0_c06fd2cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-05-10T19:56:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "381b8d84_d0b3bb2d",
+      "revId": "b84e8a08b9bf0ba1164b2cf2fe9fd2ab2f25653a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4da5c3fe_e63b6085",
         "filename": "cc/builder.go",
         "patchSetId": 7
@@ -77,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "ae8c27eb_6981e6f6",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-05-10T19:56:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa84798a_869596f1",
+      "range": {
+        "startLine": 922,
+        "startChar": 32,
+        "endLine": 922,
+        "endChar": 36
+      },
+      "revId": "b84e8a08b9bf0ba1164b2cf2fe9fd2ab2f25653a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07b73485_764774f7",
         "filename": "cc/library.go",
         "patchSetId": 7
@@ -88,6 +130,24 @@
       "writtenOn": "2017-05-09T22:46:25Z",
       "side": 1,
       "message": "This seems like a hack, if you need includes separate from other flags we should be passing them in different variables.",
+      "revId": "b84e8a08b9bf0ba1164b2cf2fe9fd2ab2f25653a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fafe9465_5eb86084",
+        "filename": "cc/library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-05-10T19:56:18Z",
+      "side": 1,
+      "message": "I agree, but it seems less convoluted than splitting up the flags into exported includes and the others.",
+      "parentUuid": "07b73485_764774f7",
       "revId": "b84e8a08b9bf0ba1164b2cf2fe9fd2ab2f25653a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -117,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "9c733313_f40393b3",
+        "filename": "cc/library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-05-10T19:56:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ec9997d_bb450141",
+      "range": {
+        "startLine": 586,
+        "startChar": 101,
+        "endLine": 586,
+        "endChar": 114
+      },
+      "revId": "b84e8a08b9bf0ba1164b2cf2fe9fd2ab2f25653a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bdb024d7_76788aa0",
         "filename": "cc/makevars.go",
         "patchSetId": 7
@@ -128,6 +212,24 @@
       "writtenOn": "2017-05-09T22:46:25Z",
       "side": 1,
       "message": "Unrelated to your patch?",
+      "revId": "b84e8a08b9bf0ba1164b2cf2fe9fd2ab2f25653a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3de44b59_abadd405",
+        "filename": "cc/makevars.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-05-10T19:56:18Z",
+      "side": 1,
+      "message": "This is used by the make CL in the topic.",
+      "parentUuid": "bdb024d7_76788aa0",
       "revId": "b84e8a08b9bf0ba1164b2cf2fe9fd2ab2f25653a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
