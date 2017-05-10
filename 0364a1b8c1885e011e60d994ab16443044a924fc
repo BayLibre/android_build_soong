@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4bae73a_d01a2d83",
+        "filename": "android/api_levels.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-10T05:08:30Z",
+      "side": 1,
+      "message": "no newline here",
+      "revId": "0364a1b8c1885e011e60d994ab16443044a924fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
