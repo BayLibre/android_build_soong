@@ -1,0 +1,291 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0b65917_d6029392",
+        "filename": "ui/build/build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-10T22:57:16Z",
+      "side": 1,
+      "message": "defer buildLock.unlock() instead of doing it below",
+      "revId": "c27549c42d6e8b275d215c0c03ef522f480d0164",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b52997f3_af331b6b",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-10T22:57:16Z",
+      "side": 1,
+      "message": "move down",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 26
+      },
+      "revId": "c27549c42d6e8b275d215c0c03ef522f480d0164",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50a56752_ec1d1d80",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-10T22:57:16Z",
+      "side": 1,
+      "message": "There\u0027s really only a single function now, and it\u0027s declared public by having a capital letter at the beginning, so I\u0027d drop these markers",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 22
+      },
+      "revId": "c27549c42d6e8b275d215c0c03ef522f480d0164",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38ab2470_410d5bbb",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-10T22:57:16Z",
+      "side": 1,
+      "message": "It\u0027s nice to assert that a particular structure exports an interface -- it\u0027s also handy to see where the interface is expected to be implemented -- as far as I can tell, we could pass a *fileLock into lockSynchronous instead of declaring this interface:\n\n  var _ lockable \u003d (*fileLock)(nil)",
+      "revId": "c27549c42d6e8b275d215c0c03ef522f480d0164",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "342f9514_0de80623",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-10T22:57:16Z",
+      "side": 1,
+      "message": "why not just pass syscall.F_SETLK directly here?",
+      "range": {
+        "startLine": 66,
+        "startChar": 40,
+        "endLine": 66,
+        "endChar": 51
+      },
+      "revId": "c27549c42d6e8b275d215c0c03ef522f480d0164",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bd9d687_00eeaa42",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-10T22:57:16Z",
+      "side": 1,
+      "message": "You\u0027re intending users (at least anyone calling BecomeSingletonOrFail) to call this, so make this uppercase as well",
+      "range": {
+        "startLine": 68,
+        "startChar": 18,
+        "endLine": 68,
+        "endChar": 19
+      },
+      "revId": "c27549c42d6e8b275d215c0c03ef522f480d0164",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a171296e_d8c5c273",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-10T22:57:16Z",
+      "side": 1,
+      "message": "0777, the umask will clear the other bits (just like 0666 below)",
+      "range": {
+        "startLine": 103,
+        "startChar": 22,
+        "endLine": 103,
+        "endChar": 26
+      },
+      "revId": "c27549c42d6e8b275d215c0c03ef522f480d0164",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdf9fd42_667b1768",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-10T22:57:16Z",
+      "side": 1,
+      "message": "do the \"var _ waiter \u003d ...\" here",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 25
+      },
+      "revId": "c27549c42d6e8b275d215c0c03ef522f480d0164",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2e76400_efb1dd5f",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-10T22:57:16Z",
+      "side": 1,
+      "message": "Test code should go into proc_sync_test.go",
+      "range": {
+        "startLine": 146,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 1
+      },
+      "revId": "c27549c42d6e8b275d215c0c03ef522f480d0164",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18d36e78_bf23e9af",
+        "filename": "ui/build/proc_sync_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-10T22:57:16Z",
+      "side": 1,
+      "message": "This goes at the bottom with a newline in between",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 26
+      },
+      "revId": "c27549c42d6e8b275d215c0c03ef522f480d0164",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fd55a8d_b973aca0",
+        "filename": "ui/build/proc_sync_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-10T22:57:16Z",
+      "side": 1,
+      "message": "Just use \"\", which is equivalent to this",
+      "range": {
+        "startLine": 30,
+        "startChar": 32,
+        "endLine": 30,
+        "endChar": 44
+      },
+      "revId": "c27549c42d6e8b275d215c0c03ef522f480d0164",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e4b22ee_401a70f5",
+        "filename": "ui/build/proc_sync_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-10T22:57:16Z",
+      "side": 1,
+      "message": "This is called too late:\n\n   ioutil.TempDir succeeds\n   newLock fails\n   lockOrFail calls t.Fatalf, which calls panic() and stops progress before this line",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 28
+      },
+      "revId": "c27549c42d6e8b275d215c0c03ef522f480d0164",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fb24c85_60f86c86",
+        "filename": "ui/build/proc_sync_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-10T22:57:16Z",
+      "side": 1,
+      "message": "This happens too late too",
+      "range": {
+        "startLine": 76,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 28
+      },
+      "revId": "c27549c42d6e8b275d215c0c03ef522f480d0164",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
