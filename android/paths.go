@@ -604,6 +604,10 @@ func PathForVndkRefAbiDump(ctx ModuleContext, version, fileName string, vndkOrNd
 // output directory.
 func PathForModuleOut(ctx ModuleContext, paths ...string) ModuleOutPath {
 	p := validatePath(ctx, paths...)
+	if ctx.InstallInSanitizerDir() {
+		return ModuleOutPath{PathForOutput(ctx, ".intermediates", "asan", ctx.ModuleDir(), ctx.ModuleName(), ctx.ModuleSubDir(), p)}
+
+	}
 	return ModuleOutPath{PathForOutput(ctx, ".intermediates", ctx.ModuleDir(), ctx.ModuleName(), ctx.ModuleSubDir(), p)}
 }
 
