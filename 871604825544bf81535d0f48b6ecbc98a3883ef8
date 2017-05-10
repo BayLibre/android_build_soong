@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9317f9b_e87c93a3",
+        "filename": "android/package_ctx.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-10T23:13:46Z",
+      "side": 1,
+      "message": "I\u0027m not completely happy with this name, but if we do this, we should change the name of this function to, since it\u0027s just a wrapper",
+      "range": {
+        "startLine": 132,
+        "startChar": 11,
+        "endLine": 132,
+        "endChar": 34
+      },
+      "revId": "871604825544bf81535d0f48b6ecbc98a3883ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "123bb3cb_3bf24bdf",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-10T23:13:46Z",
+      "side": 1,
+      "message": "Why? Everything else uses For, which seems more natural to me",
+      "range": {
+        "startLine": 375,
+        "startChar": 17,
+        "endLine": 375,
+        "endChar": 18
+      },
+      "revId": "871604825544bf81535d0f48b6ecbc98a3883ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
