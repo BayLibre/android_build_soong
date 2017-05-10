@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "e31da3f1_b2b32ed6",
+        "filename": "python/binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-10T23:36:28Z",
+      "side": 1,
+      "message": "This pattern is usually a sign that you are trying to use inheritance, which Go\u0027s OO doesn\u0027t really lend itself to.  We do use it in various places, but its better to try to refactor this into a has-a relationship instead of an is-a relationship.\n\nFor example, you could put an installer object in every pythonBinaryBase, and then have pythonBinaryBase delegate InstallFile calls to that object.  PythonBinaryHost and PythonTestHost could each put a different installer object into their pythonBinaryBase.\n\nDoesn\u0027t need to block this CL though.",
+      "revId": "95d747a0248911247c92ef147b683d4d66309568",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ea62f4c_c52eff87",
         "filename": "python/test.go",
         "patchSetId": 3
