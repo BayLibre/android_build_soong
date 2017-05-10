@@ -409,7 +409,7 @@ func (p *pythonBaseModule) uniqWholeRunfilesTree(ctx android.ModuleContext) {
 				}
 				// binary needs the Python runfiles paths from all its
 				// dependencies to fill __init__.py in each runfiles dir.
-				if sub, ok := p.subModule.(*PythonBinary); ok {
+				if sub, ok := p.subModule.(*pythonBinaryBase); ok {
 					sub.depsPyRunfiles = append(sub.depsPyRunfiles, path.dest)
 				}
 			}
@@ -421,7 +421,7 @@ func (p *pythonBaseModule) uniqWholeRunfilesTree(ctx android.ModuleContext) {
 			}
 			// binary needs the soong_zip arguments from all its
 			// dependencies to generate executable par file.
-			if sub, ok := p.subModule.(*PythonBinary); ok {
+			if sub, ok := p.subModule.(*pythonBinaryBase); ok {
 				sub.depsParSpecs = append(sub.depsParSpecs, dep.GetParSpec())
 			}
 		}
