@@ -22,6 +22,29 @@
       "revId": "0a821aef64509f23889451f8e2dc68bc2b452f5b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ff38aa5_87d87bad",
+        "filename": "cc/library.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-05-10T23:42:20Z",
+      "side": 1,
+      "message": "needs to go",
+      "range": {
+        "startLine": 158,
+        "startChar": 11,
+        "endLine": 158,
+        "endChar": 14
+      },
+      "revId": "0a821aef64509f23889451f8e2dc68bc2b452f5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
