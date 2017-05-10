@@ -33,6 +33,24 @@
       "revId": "0364a1b8c1885e011e60d994ab16443044a924fc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e8c3a0c_a391d645",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-10T17:38:23Z",
+      "side": 1,
+      "message": "I thought about that, but I thought it would be too expensive for something we do every module.  Maybe it would be fine though, since it wouldn\u0027t escape the slice might all go on the stack?",
+      "parentUuid": "ac5e822b_43af720f",
+      "revId": "0364a1b8c1885e011e60d994ab16443044a924fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
