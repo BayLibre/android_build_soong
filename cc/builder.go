@@ -160,7 +160,7 @@ var (
 
 	sAbiDump = pctx.AndroidStaticRule("sAbiDump",
 		blueprint.RuleParams{
-			Command:     "rm -f $out && $sAbiDumper -o ${out} $in $exportDirs -- $cFlags -Wno-packed -Qunused-arguments -isystem ${config.RSIncludePath}",
+			Command:     "rm -f $out && $sAbiDumper -o ${out} $in $exportDirs -- $cFlags -Wno-packed -fno-lto -Qunused-arguments -isystem ${config.RSIncludePath}",
 			CommandDeps: []string{"$sAbiDumper"},
 		},
 		"cFlags", "exportDirs")
