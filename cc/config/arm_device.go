@@ -137,7 +137,7 @@ var (
 			"-D__ARM_FEATURE_LPAE=1",
 		},
 		"kryo": []string{
-			"-mcpu=cortex-a15",
+			"-mcpu=cortex-a57",
 			"-mfpu=neon-fp-armv8",
 			// Fake an ARM compiler flag as these processors support LPAE which GCC/clang
 			// don't advertise.
