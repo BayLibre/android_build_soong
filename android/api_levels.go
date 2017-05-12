@@ -44,6 +44,7 @@ func createApiLevelsJson(ctx blueprint.SingletonContext, file string,
 		Description: "generate " + filepath.Base(file),
 		Outputs:     []string{file},
 		Args: map[string]string{
+			"args":    "-E",
 			"content": string(jsonStr[:]),
 		},
 	})
