@@ -80,9 +80,11 @@ var (
 			Description: "concatenate licenses $out",
 		})
 
+	// TODO(nanzhang): Add a wrapper that replace(content, "\n", `\n`, -1) before passing
+	// content to WriteFile rule. Since newline("\n") will be converted "$\n" in ninja file.
 	WriteFile = pctx.AndroidStaticRule("WriteFile",
 		blueprint.RuleParams{
-			Command:     "echo '$content' > $out",
+			Command:     "echo -e '$content' > $out",
 			Description: "writing file $out",
 		},
 		"content")
