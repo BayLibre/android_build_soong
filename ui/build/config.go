@@ -106,6 +106,16 @@ func NewConfig(ctx Context, args ...string) Config {
 		log.Fatalln("Error verifying tree state:", err)
 	}
 
+	if srcDir, err := filepath.Abs("."); err == nil {
+		if strings.ContainsRune(srcDir, ' ') {
+			log.Println("You are building in a directory whose absolute path contains a space character:")
+			log.Println()
+			log.Printf("%q\n", srcDir)
+			log.Println()
+			log.Fatalln("Directory names containing spaces are not supported")
+		}
+	}
+
 	for _, arg := range args {
 		arg = strings.TrimSpace(arg)
 		if arg == "--make-mode" {
