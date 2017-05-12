@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "025f00b1_511002e0",
+        "filename": "android/package_ctx.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-12T23:28:59Z",
+      "side": 1,
+      "message": "How would you feel about these name pairs:\n\nA: \"ExistentSources\" and \"PrefixedExistentSourcesToVariable\", or\n\nB: \"ExistentPathsForOptionalSources\" and \"PrefixedExistentPathsForOptionalSourceAsVariable\"\n\nIs your concern more about the addition of \"Existent\" or more about the removal of \"Optional\"?",
+      "parentUuid": "d9317f9b_e87c93a3",
+      "range": {
+        "startLine": 132,
+        "startChar": 11,
+        "endLine": 132,
+        "endChar": 34
+      },
+      "revId": "871604825544bf81535d0f48b6ecbc98a3883ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "123bb3cb_3bf24bdf",
         "filename": "android/paths.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-05-10T23:13:46Z",
       "side": 1,
       "message": "Why? Everything else uses For, which seems more natural to me",
+      "range": {
+        "startLine": 375,
+        "startChar": 17,
+        "endLine": 375,
+        "endChar": 18
+      },
+      "revId": "871604825544bf81535d0f48b6ecbc98a3883ef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8a4e6df_0b43e077",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-12T23:28:59Z",
+      "side": 1,
+      "message": "Oops. I think I changed this by accident and I\u0027ll put it back. Yeah, I like it better with a capital \"F\" too.",
+      "parentUuid": "123bb3cb_3bf24bdf",
       "range": {
         "startLine": 375,
         "startChar": 17,
