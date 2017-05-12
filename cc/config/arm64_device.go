@@ -76,6 +76,9 @@ var (
 		"cortex-a53": []string{
 			"-mcpu=cortex-a53",
 		},
+		"cortex-a57": []string{
+			"-mcpu=cortex-a57",
+		},
 		"kryo": []string{
 			// Use the cortex-a57 cpu since some compilers
 			// don't support a Kryo specific target yet.
@@ -94,6 +97,7 @@ func init() {
 	android.RegisterArchVariants(android.Arm64,
 		"armv8_a",
 		"cortex-a53",
+		"cortex-a57",
 		"cortex-a73",
 		"kryo",
 		"denver64")
@@ -120,6 +124,11 @@ func init() {
 	pctx.StaticVariable("Arm64ClangCortexA53Cflags",
 		strings.Join(arm64ClangCpuVariantCflags["cortex-a53"], " "))
 
+	pctx.StaticVariable("Arm64CortexA57Cflags",
+		strings.Join(arm64CpuVariantCflags["cortex-a57"], " "))
+	pctx.StaticVariable("Arm64ClangCortexA57Cflags",
+		strings.Join(arm64ClangCpuVariantCflags["cortex-a57"], " "))
+
 	pctx.StaticVariable("Arm64KryoCflags",
 		strings.Join(arm64CpuVariantCflags["kryo"], " "))
 	pctx.StaticVariable("Arm64ClangKryoCflags",
@@ -130,6 +139,7 @@ var (
 	arm64CpuVariantCflagsVar = map[string]string{
 		"":           "",
 		"cortex-a53": "${config.Arm64CortexA53Cflags}",
+		"cortex-a57": "${config.Arm64CortexA57Cflags}",
 		"cortex-a73": "${config.Arm64CortexA53Cflags}",
 		"kryo":       "${config.Arm64KryoCflags}",
 	}
@@ -137,6 +147,7 @@ var (
 	arm64ClangCpuVariantCflagsVar = map[string]string{
 		"":           "",
 		"cortex-a53": "${config.Arm64ClangCortexA53Cflags}",
+		"cortex-a57": "${config.Arm64ClangCortexA57Cflags}",
 		"cortex-a73": "${config.Arm64ClangCortexA53Cflags}",
 		"kryo":       "${config.Arm64ClangKryoCflags}",
 	}
