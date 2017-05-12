@@ -28,6 +28,7 @@ import (
 	"android/soong/android"
 
 	"github.com/google/blueprint"
+	"github.com/google/blueprint/proptools"
 )
 
 type pyBinary struct {
@@ -336,26 +337,17 @@ func TestPythonModule(t *testing.T) {
 }
 
 func expectErrors(t *testing.T, actErrs []error, expErrs []string) (testErrs []error) {
-	actErrStrs := []string{}
+	errorStrings := sort.StringSlice{}
 	for _, v := range actErrs {
-		actErrStrs = append(actErrStrs, v.Error())
+		errorStrings = append(errorStrings, v.Error())
 	}
-	sort.Strings(actErrStrs)
-	if len(actErrStrs) != len(expErrs) {
-		t.Errorf("got (%d) errors, expected (%d) errors!", len(actErrStrs), len(expErrs))
-		for _, v := range actErrStrs {
-			testErrs = append(testErrs, errors.New(v))
-		}
-	} else {
-		sort.Strings(expErrs)
-		for i, v := range actErrStrs {
-			if v != expErrs[i] {
-				testErrs = append(testErrs, errors.New(v))
-			}
-		}
-	}
+	sort.Strings(errorStrings)
 
-	return
+	equal, difference := proptools.DeepCompare("expectedErrors", expErrs, "actualErrors", errorStrings)
+	if !equal {
+		testErrs = append(testErrs, errors.New(difference))
+	}
+	return testErrs
 }
 
 func expectModule(t *testing.T, ctx *blueprint.Context, buildDir, name, variant string,
