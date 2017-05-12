@@ -410,7 +410,10 @@ def main():
     args = parse_args()
 
     with open(args.api_map) as map_file:
-        api_map = json.load(map_file)
+        s = map_file.read()
+        print 'nanzhang'
+        print s
+        api_map = json.loads(s)
     api = decode_api_level(args.api, api_map)
 
     verbose_map = (logging.WARNING, logging.INFO, logging.DEBUG)
