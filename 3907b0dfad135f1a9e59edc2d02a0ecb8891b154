@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a50cb92b_9ee97cdd",
+        "filename": "cc/library.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-05-12T00:35:34Z",
+      "side": 1,
+      "message": "The tool uses the -I\u003cflags\u003e exported by a library to filter out unexported abi. Since -isystem\u003cflags\u003e isn\u0027t explicitly exported by any library (for bionic we would just look at the version scripts to filter out abi), the tool would not need it.",
+      "parentUuid": "bb1bc2ed_ce3605c2",
+      "revId": "3907b0dfad135f1a9e59edc2d02a0ecb8891b154",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8b77a8a_1f63efda",
         "filename": "cc/library.go",
         "patchSetId": 11
