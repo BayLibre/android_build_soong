@@ -73,6 +73,12 @@ func Build(ctx Context, config Config, what int) {
 		cmd.Stderr = ctx.Stderr()
 		cmd.RunOrFatal()
 		return
+	} else if inList("clean", config.Arguments()) || inList("clobber", config.Arguments()) {
+		if err := os.RemoveAll(config.OutDir()); err != nil {
+			ctx.Fatalln("Failed to remove output directory:", err)
+		}
+		ctx.Println("Entire build directory removed.")
+		return
 	}
 
 	SetupOutDir(ctx, config)
