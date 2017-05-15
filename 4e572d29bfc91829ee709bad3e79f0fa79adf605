@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0325e7b0_d5253cdb",
+        "filename": "ui/build/build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-15T22:36:54Z",
+      "side": 1,
+      "message": "What if the outdir already has the file \"casecheck.txt\" or \"CaseCheck.txt\" from previous builds. And then should we check if these two files exist first, if so, we can just directly read them?",
+      "revId": "4e572d29bfc91829ee709bad3e79f0fa79adf605",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
