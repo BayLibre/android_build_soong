@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "2ba40194_714f3450",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-15T20:31:01Z",
+      "side": 1,
+      "message": "\u003e Does the system doing the up-to-date checks (so, Ninja) have a full list of all the expected output files in case 3 where $(out) is a directory? How does that work?\n\nYeah, we still have a set of files, but we\u0027re not passing that file list to the tool, just the directory, and it (hopefully) recreates the same filenames.\n\nNinja should never be depending on the directory, since the semantics of that aren\u0027t obvious / great. So $(out) should never include a directory.",
+      "parentUuid": "4c5e9534_15e86677",
+      "range": {
+        "startLine": 91,
+        "startChar": 60,
+        "endLine": 91,
+        "endChar": 80
+      },
+      "revId": "1fef5212a9446275974bf900d6b83f0a45e6be72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5cc0bd90_01197067",
         "filename": "genrule/genrule.go",
         "patchSetId": 2
