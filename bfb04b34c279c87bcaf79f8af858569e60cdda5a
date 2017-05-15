@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "09e256ce_50c53209",
+        "filename": "build_test.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-15T23:18:01Z",
+      "side": 1,
+      "message": "$(cd $(dirname $0) \u0026\u0026 pwd)",
+      "revId": "bfb04b34c279c87bcaf79f8af858569e60cdda5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
