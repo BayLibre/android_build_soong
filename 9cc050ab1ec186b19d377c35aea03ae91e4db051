@@ -51,6 +51,24 @@
       "revId": "9cc050ab1ec186b19d377c35aea03ae91e4db051",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbe89c92_f8a16952",
+        "filename": "python/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-15T21:30:19Z",
+      "side": 1,
+      "message": "I meant a wrapper that takes a string or []byte, convert newlines to an escaped \\n, and produces a rule with echo -e that unescapes the \\n.  That way, the exact contents of the string end up in the file.",
+      "parentUuid": "c8832e1f_6aa544ea",
+      "revId": "9cc050ab1ec186b19d377c35aea03ae91e4db051",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
