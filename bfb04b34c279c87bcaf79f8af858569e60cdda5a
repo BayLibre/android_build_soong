@@ -2,6 +2,69 @@
   "comments": [
     {
       "key": {
+        "uuid": "5eb27e2c_1fa2def9",
+        "filename": "build_test.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-15T23:50:32Z",
+      "side": 1,
+      "message": "I\u0027m thinking it\u0027d be nice to clarify the purpose of this script via one or two of:\n\n1. rename build_test.bash to test_build_all.sh\n2. rename build_test.bash to checkbuild.sh\n3. rename build_test.bash to bootstrap_multiproduct_kati.sh\n4. add a comment near the top telling that this script that this script runs multiproduct_kati and that its usage is the same\n5. add a comment near the top telling that this script makes a decent effort to attempt to confirm that every product will build successfully (which currently entails running multiproduct_kati)\n\nI\u0027m guessing probably #1 and #5",
+      "revId": "bfb04b34c279c87bcaf79f8af858569e60cdda5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f80e25b_c33c8d03",
+        "filename": "build_test.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-15T23:50:32Z",
+      "side": 1,
+      "message": "What kind of tracing do we do for other steps? Do we enable lower-resolution tracing? Would it be easier to do that here than to document that this is a special case?",
+      "range": {
+        "startLine": 17,
+        "startChar": 40,
+        "endLine": 17,
+        "endChar": 68
+      },
+      "revId": "bfb04b34c279c87bcaf79f8af858569e60cdda5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b910905_84920f42",
+        "filename": "build_test.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-15T23:50:32Z",
+      "side": 1,
+      "message": "How about \"which skips calculating the time spent starting up\"?",
+      "range": {
+        "startLine": 18,
+        "startChar": 34,
+        "endLine": 18,
+        "endChar": 72
+      },
+      "revId": "bfb04b34c279c87bcaf79f8af858569e60cdda5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "09e256ce_50c53209",
         "filename": "build_test.bash",
         "patchSetId": 1
