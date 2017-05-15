@@ -33,6 +33,24 @@
       "revId": "9cc050ab1ec186b19d377c35aea03ae91e4db051",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8832e1f_6aa544ea",
+        "filename": "python/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-15T21:26:07Z",
+      "side": 1,
+      "message": "This isn\u0027t an exact copy -- it\u0027s the copy with escapes evaluated. We\u0027re not converting a newline back to `\\n`, we\u0027re using literal `\\n` here. But I could go either way (or even have a wrapper replace newlines with `\\n` then use -e)",
+      "parentUuid": "50a29ae5_f9c28cdd",
+      "revId": "9cc050ab1ec186b19d377c35aea03ae91e4db051",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
