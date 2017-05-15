@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "528b13b7_f5eecd13",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2017-05-15T23:34:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "415a6fe5_7120c3ee",
+      "range": {
+        "startLine": 54,
+        "startChar": 15,
+        "endLine": 54,
+        "endChar": 18
+      },
+      "revId": "a5db82fb8ed51baa0cfb757ea99998c90a1dabd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "492d1ab2_f36bb84e",
         "filename": "cc/cc.go",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-05-15T21:39:47Z",
       "side": 1,
       "message": "Go style prefers LtoProperties",
+      "range": {
+        "startLine": 1139,
+        "startChar": 3,
+        "endLine": 1139,
+        "endChar": 6
+      },
+      "revId": "a5db82fb8ed51baa0cfb757ea99998c90a1dabd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "579fb5db_aac33cb0",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1139,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2017-05-15T23:34:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "492d1ab2_f36bb84e",
       "range": {
         "startLine": 1139,
         "startChar": 3,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a2121f9d_5ea8a168",
+        "filename": "cc/lto.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2017-05-15T23:34:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edd0b4de_5b90fb38",
+      "range": {
+        "startLine": 63,
+        "startChar": 16,
+        "endLine": 63,
+        "endChar": 19
+      },
+      "revId": "a5db82fb8ed51baa0cfb757ea99998c90a1dabd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe03352a_5071145a",
         "filename": "cc/lto.go",
         "patchSetId": 3
@@ -88,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "123e4aa8_c3696f93",
+        "filename": "cc/lto.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2017-05-15T23:34:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe03352a_5071145a",
+      "revId": "a5db82fb8ed51baa0cfb757ea99998c90a1dabd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c723de80_e5bdbeb8",
         "filename": "cc/lto.go",
         "patchSetId": 3
@@ -99,6 +189,24 @@
       "writtenOn": "2017-05-15T21:39:47Z",
       "side": 1,
       "message": "Do you need to check if lto is nil?",
+      "revId": "a5db82fb8ed51baa0cfb757ea99998c90a1dabd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd526624_dae0366f",
+        "filename": "cc/lto.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2017-05-15T23:34:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c723de80_e5bdbeb8",
       "revId": "a5db82fb8ed51baa0cfb757ea99998c90a1dabd5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
