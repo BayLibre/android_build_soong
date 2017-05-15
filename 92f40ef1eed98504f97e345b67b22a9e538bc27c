@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a08c363_b541608f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-15T23:35:44Z",
+      "side": 1,
+      "message": "Add some info here on what the benefits of enabling LTO are.",
+      "revId": "92f40ef1eed98504f97e345b67b22a9e538bc27c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37b89f05_ff75f367",
+        "filename": "cc/lto.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-15T23:35:44Z",
+      "side": 1,
+      "message": "Can you explain the semantics of LTO here?  If LTO is enabled for a binary, what are the requirements for its shared and static dependencies?  Does it impose any requirements on modules that depend on the lto module?",
+      "revId": "92f40ef1eed98504f97e345b67b22a9e538bc27c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af7f5441_aaea9b30",
+        "filename": "cc/lto.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-15T23:35:44Z",
+      "side": 1,
+      "message": "This will break on darwin where the file is called LLVMgold.dylib",
+      "range": {
+        "startLine": 26,
+        "startChar": 60,
+        "endLine": 26,
+        "endChar": 63
+      },
+      "revId": "92f40ef1eed98504f97e345b67b22a9e538bc27c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
