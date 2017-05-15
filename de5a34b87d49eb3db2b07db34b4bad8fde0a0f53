@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "611dc9a9_1a7265c5",
+        "filename": "python/python_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-15T23:12:40Z",
+      "side": 1,
+      "message": "It is more straight-forward that we can directly errorStrings.Sort() here,  it is confusing that we converted actErrs to errorStrings, and converted errorStrings to sorter again.",
+      "revId": "de5a34b87d49eb3db2b07db34b4bad8fde0a0f53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
