@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "4c5e9534_15e86677",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-15T18:28:59Z",
+      "side": 1,
+      "message": "Does the system doing the up-to-date checks (so, Ninja) have a full list of all the expected output files in case 3 where $(out) is a directory? How does that work?\n\nIf we do want to support case #3, does that mean that if any component of $(out) is a directory, that the caller also expects sbox to copy the entire directory back to the original location? And does the caller expect sbox to wipe the destination directory first or merge them?",
+      "parentUuid": "ca37fa22_d7746302",
+      "range": {
+        "startLine": 91,
+        "startChar": 60,
+        "endLine": 91,
+        "endChar": 80
+      },
+      "revId": "1fef5212a9446275974bf900d6b83f0a45e6be72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5cc0bd90_01197067",
         "filename": "genrule/genrule.go",
         "patchSetId": 2
