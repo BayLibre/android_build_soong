@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89126c9d_5b1aab05",
+        "filename": "android/api_levels.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-15T21:22:59Z",
+      "side": 1,
+      "message": "This is unnecessary, -E is the default",
+      "revId": "9cc050ab1ec186b19d377c35aea03ae91e4db051",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50a29ae5_f9c28cdd",
+        "filename": "python/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-15T21:22:59Z",
+      "side": 1,
+      "message": "I think its reasonable to assume that any user of the WriteFile rule wants the exact copy of their data written to a file.  Maybe move this to ctx.WriteFile, where it can perform the appropriate escaping and always use an echo -e?",
+      "revId": "9cc050ab1ec186b19d377c35aea03ae91e4db051",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
