@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fb9f0f3_ecd757e5",
+        "filename": "python/binary.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-15T21:05:09Z",
+      "side": 1,
+      "message": "since pythonBinaryHostDecorator is always used as a pointer, it can embed a pythonDecorator instead of a *pythonDecorator.",
+      "revId": "fb4f558cef6bbccedb61ae8aa7cb4c3e6e9a9e5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
