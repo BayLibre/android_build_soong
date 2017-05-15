@@ -69,6 +69,24 @@
       "revId": "9cc050ab1ec186b19d377c35aea03ae91e4db051",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cadd10d7_8c217d10",
+        "filename": "python/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-15T23:57:53Z",
+      "side": 1,
+      "message": "I passed -e to WriteFile, and added a TODO for wrapper for now.",
+      "parentUuid": "dbe89c92_f8a16952",
+      "revId": "9cc050ab1ec186b19d377c35aea03ae91e4db051",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
