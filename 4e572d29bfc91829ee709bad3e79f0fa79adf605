@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3e74dacb_5601f7af",
+        "filename": "ui/build/build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-15T23:32:52Z",
+      "side": 1,
+      "message": "Then we\u0027ll overwrite them -- I don\u0027t think it\u0027s that big of an issue. These are tiny files, and if we overwrite them we don\u0027t need to make sure to keep a / B the same forever. I suspect that make had added a newline to these files too, so they\u0027re already different.",
+      "parentUuid": "0325e7b0_d5253cdb",
+      "revId": "4e572d29bfc91829ee709bad3e79f0fa79adf605",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f62bb85f_763cc64f",
         "filename": "ui/build/config.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "4e572d29bfc91829ee709bad3e79f0fa79adf605",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fec9d859_4573fc4e",
+        "filename": "ui/build/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-15T23:32:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f62bb85f_763cc64f",
+      "revId": "4e572d29bfc91829ee709bad3e79f0fa79adf605",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -56,6 +92,30 @@
       "revId": "4e572d29bfc91829ee709bad3e79f0fa79adf605",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ad3218e_c37e4a38",
+        "filename": "ui/build/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-15T23:32:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56259d38_1643e3b8",
+      "range": {
+        "startLine": 52,
+        "startChar": 18,
+        "endLine": 52,
+        "endChar": 30
+      },
+      "revId": "4e572d29bfc91829ee709bad3e79f0fa79adf605",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
