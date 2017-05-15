@@ -16,6 +16,46 @@
       "revId": "4e572d29bfc91829ee709bad3e79f0fa79adf605",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f62bb85f_763cc64f",
+        "filename": "ui/build/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-15T23:01:23Z",
+      "side": 1,
+      "message": "As long as we\u0027re validating the source path, do we want to validate OUT_DIR too? (or if we\u0027re already doing that, then move this code next to it?)",
+      "revId": "4e572d29bfc91829ee709bad3e79f0fa79adf605",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56259d38_1643e3b8",
+        "filename": "ui/build/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-15T23:01:23Z",
+      "side": 1,
+      "message": "How about \u0027java_version_output\u0027? I was expecting based on this variable name that lines 69-77 were going to be hashing the output (or diffing the entire output) as opposed to searching inside the message",
+      "range": {
+        "startLine": 52,
+        "startChar": 18,
+        "endLine": 52,
+        "endChar": 30
+      },
+      "revId": "4e572d29bfc91829ee709bad3e79f0fa79adf605",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
