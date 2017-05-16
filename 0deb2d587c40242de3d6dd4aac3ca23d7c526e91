@@ -88,6 +88,24 @@
       "revId": "0deb2d587c40242de3d6dd4aac3ca23d7c526e91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73620a0c_b0e2a90e",
+        "filename": "cc/gen_stub_libs.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-16T22:11:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5579c8bc_09254ed4",
+      "revId": "0deb2d587c40242de3d6dd4aac3ca23d7c526e91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
