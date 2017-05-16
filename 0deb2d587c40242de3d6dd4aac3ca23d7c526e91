@@ -34,6 +34,24 @@
       "revId": "0deb2d587c40242de3d6dd4aac3ca23d7c526e91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b53c2fbe_7177b74e",
+        "filename": "cc/gen_stub_libs.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-16T21:36:29Z",
+      "side": 1,
+      "message": "Try \nm -j checkbuild dist",
+      "parentUuid": "67728421_94aeb382",
+      "revId": "0deb2d587c40242de3d6dd4aac3ca23d7c526e91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
