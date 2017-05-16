@@ -215,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "8efe33d7_b9fc3230",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-16T00:33:44Z",
+      "side": 1,
+      "message": "We\u0027ve kinda got that for inputs today, but do we really have a usecase for this? Shouldn\u0027t we support $(out) no matter what?",
+      "parentUuid": "a5920766_36d10c34",
+      "range": {
+        "startLine": 91,
+        "startChar": 60,
+        "endLine": 91,
+        "endChar": 80
+      },
+      "revId": "1fef5212a9446275974bf900d6b83f0a45e6be72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5cc0bd90_01197067",
         "filename": "genrule/genrule.go",
         "patchSetId": 2
