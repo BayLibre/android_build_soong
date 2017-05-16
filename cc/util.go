@@ -62,7 +62,6 @@ func filterList(list []string, filter []string) (remainder []string, filtered []
 			remainder = append(remainder, l)
 		}
 	}
-
 	return
 }
 
