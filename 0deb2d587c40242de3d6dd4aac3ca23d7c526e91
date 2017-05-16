@@ -52,6 +52,24 @@
       "revId": "0deb2d587c40242de3d6dd4aac3ca23d7c526e91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86a99b47_b9e264cf",
+        "filename": "cc/gen_stub_libs.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-16T21:36:39Z",
+      "side": 1,
+      "message": "So this is a difference between bash and dash -- dash\u0027s builtin echo doesn\u0027t support -e, so it ends up in the output. Goobuntu kept bash for /bin/sh, but ubuntu 14.04 officially uses dash, along with some of our builders. We should either wrap this in a bash -c, or switch to /bin/echo (which exists on goobuntu, ubuntu, and mac).",
+      "parentUuid": "67728421_94aeb382",
+      "revId": "0deb2d587c40242de3d6dd4aac3ca23d7c526e91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
