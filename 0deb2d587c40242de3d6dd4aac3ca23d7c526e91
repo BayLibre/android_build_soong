@@ -70,6 +70,24 @@
       "revId": "0deb2d587c40242de3d6dd4aac3ca23d7c526e91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5579c8bc_09254ed4",
+        "filename": "cc/gen_stub_libs.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-16T21:38:00Z",
+      "side": 1,
+      "message": "Ok, going to need to be bash, mac\u0027s /bin/echo doesn\u0027t support -e",
+      "parentUuid": "86a99b47_b9e264cf",
+      "revId": "0deb2d587c40242de3d6dd4aac3ca23d7c526e91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
