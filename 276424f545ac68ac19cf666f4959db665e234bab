@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7917163_abacc5e3",
+        "filename": "python/python_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-16T01:31:28Z",
+      "side": 1,
+      "message": "Please merge this newest API(DeepCompare) to Blueprint AOSP master.",
+      "revId": "276424f545ac68ac19cf666f4959db665e234bab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
