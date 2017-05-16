@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "743e19c5_04ea7359",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2017-05-16T01:38:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a08c363_b541608f",
+      "revId": "92f40ef1eed98504f97e345b67b22a9e538bc27c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37b89f05_ff75f367",
         "filename": "cc/lto.go",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "479ad494_98528546",
+        "filename": "cc/lto.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2017-05-16T01:38:15Z",
+      "side": 1,
+      "message": "Have I answered your questions sufficiently in the new comments?",
+      "parentUuid": "37b89f05_ff75f367",
+      "revId": "92f40ef1eed98504f97e345b67b22a9e538bc27c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af7f5441_aaea9b30",
         "filename": "cc/lto.go",
         "patchSetId": 4
@@ -47,6 +83,30 @@
       "writtenOn": "2017-05-15T23:35:44Z",
       "side": 1,
       "message": "This will break on darwin where the file is called LLVMgold.dylib",
+      "range": {
+        "startLine": 26,
+        "startChar": 60,
+        "endLine": 26,
+        "endChar": 63
+      },
+      "revId": "92f40ef1eed98504f97e345b67b22a9e538bc27c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb30e6e8_2b985190",
+        "filename": "cc/lto.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2017-05-16T01:38:15Z",
+      "side": 1,
+      "message": "Indeed, thanks. I\u0027ve fixed this and added a gold plugin variable to the global config so that the path can be used elsewhere as well.",
+      "parentUuid": "af7f5441_aaea9b30",
       "range": {
         "startLine": 26,
         "startChar": 60,
