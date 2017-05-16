@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "a5920766_36d10c34",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-16T00:27:21Z",
+      "side": 1,
+      "message": "How would you feel (due to case 2) about making the output list be a single variable that is given following \"--outputs\u003d\" where the value is a comma separated list of output files (expressions without colons) and/or named output files (expressions with colons)? Something like this:\n\nsbox --outputs\u003dfile1:a.o,b.o,file3:subdir/c.o,otherdir/d.txt,e.dat -c \u0027myCompiler -WAll source.cc -o \"${file1}\"\u0027\n\n?\n\nThen we wouldn\u0027t expose \"$(out)\" or __SBOX_OUT_FILE__ at all since callers could give them their own names instead. We would still expose __SBOX_OUT_DIR__ though.",
+      "parentUuid": "2ba40194_714f3450",
+      "range": {
+        "startLine": 91,
+        "startChar": 60,
+        "endLine": 91,
+        "endChar": 80
+      },
+      "revId": "1fef5212a9446275974bf900d6b83f0a45e6be72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5cc0bd90_01197067",
         "filename": "genrule/genrule.go",
         "patchSetId": 2
