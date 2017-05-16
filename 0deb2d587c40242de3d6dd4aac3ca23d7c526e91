@@ -16,6 +16,24 @@
       "revId": "0deb2d587c40242de3d6dd4aac3ca23d7c526e91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67728421_94aeb382",
+        "filename": "cc/gen_stub_libs.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-16T21:30:40Z",
+      "side": 1,
+      "message": "I am working around to add some \u0027print\u0027 log to see what happened when Treehugger failed. The weird thing was aosp-arm64 m -j checkbuild succeeded on my local machine. But the Treehugger Presubmit was failed...",
+      "parentUuid": "c49e3f3d_1532fc25",
+      "revId": "0deb2d587c40242de3d6dd4aac3ca23d7c526e91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
