@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4448413_c38783fd",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1139,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2017-05-16T01:41:11Z",
+      "side": 1,
+      "message": "https://github.com/golang/go/wiki/CodeReviewComments#initialisms says that acronyms should also get consistent case, so I think LTOProperties (etc.) is actually correct?",
+      "revId": "cf43a2be4f560a49f09c0620626bef27492df1d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
