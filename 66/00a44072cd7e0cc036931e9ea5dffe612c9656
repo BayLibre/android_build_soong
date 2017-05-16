@@ -1,0 +1,9 @@
+Code-Review+1: Jake Weinstein <xboxlover360@gmail.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: Christopher Ferris <cferris@google.com>
+Submitted-by: Christopher Ferris <cferris@google.com>
+Submitted-at: Tue, 16 May 2017 17:14:43 +0000
+Reviewed-on: https://android-review.googlesource.com/397394
+Project: platform/build/soong
+Branch: refs/heads/master
