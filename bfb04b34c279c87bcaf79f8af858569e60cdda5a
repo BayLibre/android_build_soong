@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6e0df87d_ab0a82f7",
+        "filename": "build_test.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-16T00:27:11Z",
+      "side": 1,
+      "message": "6. add a comment about how this is used as our continuous test target for build system tests (potentially across all/most targets)\n\nIt\u0027s currently only calling multiproduct_kati, but I\u0027d like to do some non-standard multiproduct_kati checks too (which I haven\u0027t written yet), and we may stick some performance tests in here too. At some point it may move to a separate binary instead of multiproduct_kati too.\n\nAnd if we find checks that we don\u0027t want to enable normally, I\u0027d consider enabling them here.",
+      "parentUuid": "5eb27e2c_1fa2def9",
+      "revId": "bfb04b34c279c87bcaf79f8af858569e60cdda5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f80e25b_c33c8d03",
         "filename": "build_test.bash",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "ae88de3f_698b9b58",
+        "filename": "build_test.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-16T00:27:11Z",
+      "side": 1,
+      "message": "No, the rest of the tracing is in Go, which can always get high resolution timestamps. This is just for startup time, which is often \u003c1 second, so if date doesn\u0027t support %N it doesn\u0027t make sense to really try harder.",
+      "parentUuid": "2f80e25b_c33c8d03",
+      "range": {
+        "startLine": 17,
+        "startChar": 40,
+        "endLine": 17,
+        "endChar": 68
+      },
+      "revId": "bfb04b34c279c87bcaf79f8af858569e60cdda5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b910905_84920f42",
         "filename": "build_test.bash",
         "patchSetId": 1
@@ -62,6 +104,30 @@
       "revId": "bfb04b34c279c87bcaf79f8af858569e60cdda5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9877b84_99b83291",
+        "filename": "build_test.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-16T00:27:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b910905_84920f42",
+      "range": {
+        "startLine": 18,
+        "startChar": 34,
+        "endLine": 18,
+        "endChar": 72
+      },
+      "revId": "bfb04b34c279c87bcaf79f8af858569e60cdda5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
