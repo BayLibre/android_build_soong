@@ -52,6 +52,24 @@
       "revId": "dd84e056ed497f6b1ff8d7914489c64148240ec7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b07ad076_6ea41a9e",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1186,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-17T22:52:19Z",
+      "side": 1,
+      "message": "We would use an ordered list plus a map to ensure uniqueness.",
+      "parentUuid": "ee239150_4c9fbab0",
+      "revId": "dd84e056ed497f6b1ff8d7914489c64148240ec7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
