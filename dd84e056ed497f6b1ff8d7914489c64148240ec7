@@ -34,6 +34,24 @@
       "revId": "dd84e056ed497f6b1ff8d7914489c64148240ec7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee239150_4c9fbab0",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1186,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-05-17T22:47:22Z",
+      "side": 1,
+      "message": "Well, it will also change the order of imports which definitely can have an impact here (and the fact that they\u0027re non-deterministic is even worse): https://codereview.appspot.com/5285042/patch/9001/10003",
+      "parentUuid": "e839024f_e6d9a801",
+      "revId": "dd84e056ed497f6b1ff8d7914489c64148240ec7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
