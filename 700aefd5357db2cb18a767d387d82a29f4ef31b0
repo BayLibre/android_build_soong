@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "159017df_d3f55cb4",
+        "filename": "bpfix/lib/bpfix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-17T21:51:50Z",
+      "side": 1,
+      "message": "This should be in a directory called bpfix, either build/soong/bpfix/bpfix, or build/soong/bpfix and move the command to build/soong/bpfix/cmd.",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 13
+      },
+      "revId": "700aefd5357db2cb18a767d387d82a29f4ef31b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5245c094_8df9ad25",
+        "filename": "bpfix/lib/bpfix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-17T21:51:50Z",
+      "side": 1,
+      "message": "For trivially copyable structures like this consider using a non-pointer.\n\nYou could also use an api like:\nNewFixRequest().Everything()",
+      "range": {
+        "startLine": 29,
+        "startChar": 28,
+        "endLine": 29,
+        "endChar": 29
+      },
+      "revId": "700aefd5357db2cb18a767d387d82a29f4ef31b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6aa51b03_b951ec6e",
+        "filename": "bpfix/lib/bpfix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-17T21:51:50Z",
+      "side": 1,
+      "message": "This seems unnecessary.",
+      "revId": "700aefd5357db2cb18a767d387d82a29f4ef31b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da20ff57_85e08610",
+        "filename": "bpfix/lib/bpfix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-17T21:51:50Z",
+      "side": 1,
+      "message": "Fine to start with, but ideally this would filter export_include_dirs out of local_include_dirs and then remove export_include_dirs if it was empty.  Removing empty properties could be a separate fix.\n\nOne thing I had considered is how to order the fixes.  A simple solution would be to keep running all the fixes until the output stops changing.",
+      "revId": "700aefd5357db2cb18a767d387d82a29f4ef31b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1cd3ff9b_3abb3cb4",
+        "filename": "bpfix/main/bpfix_main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-17T21:51:50Z",
+      "side": 1,
+      "message": "Maybe make the caller open the file and always require a non-nil io.Reader like parser.Parse does",
+      "revId": "700aefd5357db2cb18a767d387d82a29f4ef31b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7955207d_d0ea9a8f",
+        "filename": "bpfix/main/bpfix_main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-17T21:51:50Z",
+      "side": 1,
+      "message": "contents have changed",
+      "revId": "700aefd5357db2cb18a767d387d82a29f4ef31b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79d65074_459e6aac",
+        "filename": "bpfix/main/bpfix_main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-17T21:51:50Z",
+      "side": 1,
+      "message": "bpfix",
+      "range": {
+        "startLine": 106,
+        "startChar": 23,
+        "endLine": 106,
+        "endChar": 28
+      },
+      "revId": "700aefd5357db2cb18a767d387d82a29f4ef31b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
