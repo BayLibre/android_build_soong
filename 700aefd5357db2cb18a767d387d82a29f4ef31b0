@@ -82,6 +82,57 @@
     },
     {
       "key": {
+        "uuid": "0653d7a4_cf02f7ab",
+        "filename": "bpfix/lib/bpfix_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-17T22:06:25Z",
+      "side": 1,
+      "message": "move this line beyond \"testing\"",
+      "revId": "700aefd5357db2cb18a767d387d82a29f4ef31b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ee8d6ee_68379371",
+        "filename": "bpfix/lib/bpfix_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-17T22:06:25Z",
+      "side": 1,
+      "message": "It\u0027s better that we can combine these two unit-tests functions to a table driven test which will save more test code duplication, and much more easier to add more test input and expected out without adding more unit-test functions.",
+      "revId": "700aefd5357db2cb18a767d387d82a29f4ef31b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa7d35fa_20fd77b6",
+        "filename": "bpfix/main/bpfix_main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-17T22:06:25Z",
+      "side": 1,
+      "message": "this is command line too which should be in the soong/cmd dir.",
+      "revId": "700aefd5357db2cb18a767d387d82a29f4ef31b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1cd3ff9b_3abb3cb4",
         "filename": "bpfix/main/bpfix_main.go",
         "patchSetId": 2
