@@ -21,9 +21,9 @@ import (
 )
 
 func init() {
-	android.RegisterModuleType("cc_prebuilt_library_shared", prebuiltSharedLibraryFactory)
-	android.RegisterModuleType("cc_prebuilt_library_static", prebuiltStaticLibraryFactory)
-	android.RegisterModuleType("cc_prebuilt_binary", prebuiltBinaryFactory)
+	android.RegisterModuleType("cc_prebuilt_library_shared", PrebuiltSharedLibraryFactory)
+	android.RegisterModuleType("cc_prebuilt_library_static", PrebuiltStaticLibraryFactory)
+	android.RegisterModuleType("cc_prebuilt_binary", PrebuiltBinaryFactory)
 }
 
 type prebuiltLinkerInterface interface {
@@ -65,7 +65,7 @@ func (p *prebuiltLibraryLinker) link(ctx ModuleContext,
 	return nil
 }
 
-func prebuiltSharedLibraryFactory() (blueprint.Module, []interface{}) {
+func PrebuiltSharedLibraryFactory() (blueprint.Module, []interface{}) {
 	module, library := NewLibrary(android.HostAndDeviceSupported)
 	library.BuildOnlyShared()
 	module.compiler = nil
@@ -78,7 +78,7 @@ func prebuiltSharedLibraryFactory() (blueprint.Module, []interface{}) {
 	return module.Init()
 }
 
-func prebuiltStaticLibraryFactory() (blueprint.Module, []interface{}) {
+func PrebuiltStaticLibraryFactory() (blueprint.Module, []interface{}) {
 	module, library := NewLibrary(android.HostAndDeviceSupported)
 	library.BuildOnlyStatic()
 	module.compiler = nil
@@ -114,7 +114,7 @@ func (p *prebuiltBinaryLinker) link(ctx ModuleContext,
 	return nil
 }
 
-func prebuiltBinaryFactory() (blueprint.Module, []interface{}) {
+func PrebuiltBinaryFactory() (blueprint.Module, []interface{}) {
 	module, binary := NewBinary(android.HostAndDeviceSupported)
 	module.compiler = nil
 
