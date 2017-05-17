@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c3995db_3b2de24f",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-17T22:57:44Z",
+      "side": 1,
+      "message": "For non-prebuilts, we expose a NewBinary() that returns a module that has not had module.Init() called on it, which allows the caller to do more with it.  Can you do the same here?",
+      "revId": "3d96c0f88a565bf291383d63eab77c84a52c5cee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
