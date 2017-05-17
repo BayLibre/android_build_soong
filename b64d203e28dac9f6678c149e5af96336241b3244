@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3dc7121e_662f26ff",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-17T00:31:10Z",
+      "side": 1,
+      "message": "Ah, this is the parameter to FcntlFlock, it\u0027s not the right parameter to Flock. It looks like syscall.LOCK_EX would be correct for an exclusive lock, and if you wanted it to be non-blocking, or that with syscall.LOCK_NB.\n\nLinux just happens to have constants that make that equivalent to F_SETLK :)",
+      "range": {
+        "startLine": 63,
+        "startChar": 40,
+        "endLine": 63,
+        "endChar": 55
+      },
+      "revId": "b64d203e28dac9f6678c149e5af96336241b3244",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
