@@ -1054,6 +1054,9 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 		}
 	})
 
+	// Dedup exported flags from dependencies
+	depPaths.Flags = lastUniqueElements(depPaths.Flags)
+
 	return depPaths
 }
 
