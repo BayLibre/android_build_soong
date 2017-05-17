@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3e0cac8_4f99e239",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1186,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-17T22:15:27Z",
+      "side": 1,
+      "message": "So we don\u0027t like the way that using hashmap to de-dup? Because this remind me that I used a hashmap before to de-dup the duplicates in sourceDeps:\nhttps://cs.corp.google.com/android/build/soong/android/module.go?rcl\u003d1067c400d946c653e32997995ced7fae49efc032\u0026l\u003d803",
+      "revId": "dd84e056ed497f6b1ff8d7914489c64148240ec7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
