@@ -16,6 +16,24 @@
       "revId": "cf43a2be4f560a49f09c0620626bef27492df1d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25fef366_7f38f248",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1139,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-17T00:25:45Z",
+      "side": 1,
+      "message": "Yeah, I must have confused lto vs. LTO with Lto.",
+      "parentUuid": "f4448413_c38783fd",
+      "revId": "cf43a2be4f560a49f09c0620626bef27492df1d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
