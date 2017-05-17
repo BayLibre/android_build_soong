@@ -16,6 +16,24 @@
       "revId": "dd84e056ed497f6b1ff8d7914489c64148240ec7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e839024f_e6d9a801",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1186,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-17T22:41:52Z",
+      "side": 1,
+      "message": "Hashmap works fine too, but has more overhead (generates garbage, has to hash every string for each lookup) for small lists.  Since in most cases these lists will be very small I figured a list check would be better.",
+      "parentUuid": "b3e0cac8_4f99e239",
+      "revId": "dd84e056ed497f6b1ff8d7914489c64148240ec7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
