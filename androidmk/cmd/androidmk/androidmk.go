@@ -10,6 +10,7 @@ import (
 
 	mkparser "android/soong/androidmk/parser"
 
+	"android/soong/bpfix/lib"
 	bpparser "github.com/google/blueprint/parser"
 )
 
@@ -176,10 +177,18 @@ func convertFile(filename string, buffer *bytes.Buffer) (string, []error) {
 		}
 	}
 
-	out, err := bpparser.Print(&bpparser.File{
+	tree := &bpparser.File{
 		Defs:     file.defs,
 		Comments: file.comments,
-	})
+	}
+
+	// check for common supported but undesirable structures and clean them up
+	fixed, errs := bpfix.FixTree(tree, bpfix.FixEverythingRequest())
+	if len(errs) > 0 {
+		return "", errs
+	}
+
+	out, err := bpparser.Print(fixed)
 	if err != nil {
 		return "", []error{err}
 	}
