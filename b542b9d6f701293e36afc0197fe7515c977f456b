@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82327bd1_1b1da3fa",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1058,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-17T20:51:54Z",
+      "side": 1,
+      "message": "Doesn\u0027t this need to be first unique elements to keep the same behavior?",
+      "revId": "b542b9d6f701293e36afc0197fe7515c977f456b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
