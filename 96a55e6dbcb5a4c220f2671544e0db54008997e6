@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7aa9d120_c476ef51",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-18T17:49:17Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be necessary, asan modules should already be using a different variant which will show up in ctx.ModuleSubDir()",
+      "revId": "96a55e6dbcb5a4c220f2671544e0db54008997e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
