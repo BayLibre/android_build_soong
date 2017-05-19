@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"errors"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -338,6 +339,7 @@ func setVariable(file *bpFile, plusequals bool, prefix, name string, value bppar
 		oldValue = file.globalAssignments[name]
 	}
 
+	var pendingError error
 	if local {
 		if oldValue != nil && plusequals {
 			val, err := addValues(*oldValue, value)
@@ -348,6 +350,11 @@ func setVariable(file *bpFile, plusequals bool, prefix, name string, value bppar
 			*oldValue = val
 		} else {
 			names := strings.Split(name, ".")
+			if file.module == nil {
+				resetModule(file)
+				// set a non-fatal error
+				pendingError = errors.New("No 'include $(CLEAR_VARS)' detected before first assignment; clearing vars now")
+			}
 			container := &file.module.Properties
 
 			for i, n := range names[:len(names)-1] {
@@ -399,5 +406,5 @@ func setVariable(file *bpFile, plusequals bool, prefix, name string, value bppar
 			file.defs = append(file.defs, a)
 		}
 	}
-	return nil
+	return pendingError
 }
