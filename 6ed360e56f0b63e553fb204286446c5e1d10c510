@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c8a8e59_3abe693a",
+        "filename": "android/variable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-19T21:52:25Z",
+      "side": 1,
+      "message": "Can you document what this means?  Comments here automatically get extracted into the html documentation, so target it at someone who is writing Android.bp files.",
+      "revId": "6ed360e56f0b63e553fb204286446c5e1d10c510",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
