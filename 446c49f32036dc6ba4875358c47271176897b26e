@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "d7d5731a_837da609",
+        "filename": "androidmk/cmd/androidmk/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-05-19T22:35:08Z",
+      "side": 1,
+      "message": "Why line347 is fmt.Errorf, but here is errors.New? do we think should we make them consistent?",
+      "revId": "446c49f32036dc6ba4875358c47271176897b26e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ecebec7d_12fb144e",
         "filename": "androidmk/cmd/androidmk/androidmk_test.go",
         "patchSetId": 2
