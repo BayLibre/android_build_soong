@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74a9736c_e76f28a2",
+        "filename": "ui/build/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-19T18:28:03Z",
+      "side": 1,
+      "message": "Do we just want to make this return []string (and update installClean to remove each) the so we can remove the comment?",
+      "revId": "f052f78b4047d23cb643d3c1fc4baa120fe61e88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
