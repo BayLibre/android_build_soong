@@ -374,6 +374,19 @@ cc_library_shared {
 }
 `,
 	},
+	{
+		desc: "Local variable before module start",
+		in: `
+LOCAL_MODULE := iAmAModule
+include $(BUILD_SHARED_LIBRARY)`,
+
+		expected: `
+// ANDROIDMK TRANSLATION WARNING: No 'include $(CLEAR_VARS)' detected before first assignment; clearing vars now
+cc_library_shared {
+  name: "iAmAModule",
+
+}`,
+	},
 }
 
 func reformatBlueprint(input string) string {
