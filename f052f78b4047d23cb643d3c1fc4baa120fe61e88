@@ -16,6 +16,24 @@
       "revId": "f052f78b4047d23cb643d3c1fc4baa120fe61e88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c6c66cd_ef62ae16",
+        "filename": "ui/build/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-19T19:45:50Z",
+      "side": 1,
+      "message": "That may be what installclean needs, but I didn\u0027t want to make this assumption right now, especially since we only have one host cross os right now. Experimentally we\u0027ve got linux_bionic which is neither the host above nor host cross (so installclean is ignoring it), and the future potential host cross os case won\u0027t need installclean support for a while either.\n\nYou could also make the argument that we don\u0027t really need to clean the host cross files at all -- especially once I port https://android-review.googlesource.com/c/240853/ over to soong_ui (which solves ~90% of the problems installclean is worried about)",
+      "parentUuid": "74a9736c_e76f28a2",
+      "revId": "f052f78b4047d23cb643d3c1fc4baa120fe61e88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
