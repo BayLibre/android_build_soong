@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "45b53982_887d273d",
+        "filename": "bpfix/lib/bpfix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-19T23:59:45Z",
+      "side": 1,
+      "message": "Does that mean that we\u0027re not concerned about encouraging copying an n-field data structure potentially n times? Consequently, does that mean either that the Go compiler is smart or that we\u0027re expecting there to only be a small number of requestable flags?\n\nAlternatively we could have a builder class with a Build method although that sounds like extra typing for the callers to have to invoke",
+      "parentUuid": "20fb761c_48087e35",
+      "range": {
+        "startLine": 29,
+        "startChar": 28,
+        "endLine": 29,
+        "endChar": 29
+      },
+      "revId": "700aefd5357db2cb18a767d387d82a29f4ef31b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6aa51b03_b951ec6e",
         "filename": "bpfix/lib/bpfix.go",
         "patchSetId": 2
