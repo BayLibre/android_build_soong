@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a01a83bc_15623a86",
+        "filename": "bpfix/lib/bpfix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-19T23:44:58Z",
+      "side": 1,
+      "message": "thanks",
+      "parentUuid": "159017df_d3f55cb4",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 13
+      },
+      "revId": "700aefd5357db2cb18a767d387d82a29f4ef31b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5245c094_8df9ad25",
         "filename": "bpfix/lib/bpfix.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "b6a991d8_c60ecfea",
+        "filename": "bpfix/lib/bpfix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-19T23:44:58Z",
+      "side": 1,
+      "message": "Hmm I know how I would implement either of these requests independently but I don\u0027t know what would be a reasonable way to implement them both together.\n\nIf there is an Everything method with receiver type of FixRequest and a return type of FixRequest, does that mean that we\u0027re planning for the possibility of having other methods that similarly help to build a FixRequest? If so, I think that either each method has to clone the FixRequest or has to operate on a pointer. If the builder methods operate on a pointer, then it seems to me that the constructor should operate on a pointer.\n\nCould you clarify?",
+      "parentUuid": "5245c094_8df9ad25",
+      "range": {
+        "startLine": 29,
+        "startChar": 28,
+        "endLine": 29,
+        "endChar": 29
+      },
+      "revId": "700aefd5357db2cb18a767d387d82a29f4ef31b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6aa51b03_b951ec6e",
         "filename": "bpfix/lib/bpfix.go",
         "patchSetId": 2
@@ -59,6 +107,24 @@
       "writtenOn": "2017-05-17T21:51:50Z",
       "side": 1,
       "message": "This seems unnecessary.",
+      "revId": "700aefd5357db2cb18a767d387d82a29f4ef31b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "208f5373_2346ded1",
+        "filename": "bpfix/lib/bpfix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-19T23:44:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6aa51b03_b951ec6e",
       "revId": "700aefd5357db2cb18a767d387d82a29f4ef31b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
