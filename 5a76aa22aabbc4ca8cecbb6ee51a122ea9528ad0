@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f0e024c8_b16359bd",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-20T01:22:30Z",
+      "side": 1,
+      "message": "It\u0027s just \"--dist\", not --dist\u003dtrue. That matches the \u0027dist\u0027 argument normally passed to the build, and how the dist dir actually gets selected (notice that this is using the normal build config struct to get the dist dir).\n\nThere\u0027s also a loose convention about what the dist dir contains -- artifacts are at the top, and there\u0027s a logs subdirectory that has a few files that the buildbot will write to. So soong_ui sticks logs about how it executed the build into that directory (including the trace), but everything else goes into the top level.\n\nWe really never expect users to use dist, unless they\u0027re attempting to imitate the build server. So the default without any arguments produces sane user defaults -- all the output goes into a timestamp-based folder under your current output directory.\n\nThe only reason I could see a user wanting to move the logs elsewhere is so that they can preserve the logs but remove the large ninja files. But I think that\u0027s better handled by having an option similar to keep that keeps successful logs but delete the rest of the intermediates once they\u0027re done. Then everything for one build is still in one spot without any paths to manage.",
+      "parentUuid": "70595a0c_1663466a",
+      "revId": "5a76aa22aabbc4ca8cecbb6ee51a122ea9528ad0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aa21720e_e553877d",
         "filename": "cmd/multiproduct_kati/main.go",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2017-05-20T01:04:07Z",
       "side": 1,
       "message": "How about \"triggers the creation of\" or \"creates\"?",
+      "range": {
+        "startLine": 193,
+        "startChar": 22,
+        "endLine": 193,
+        "endChar": 30
+      },
+      "revId": "5a76aa22aabbc4ca8cecbb6ee51a122ea9528ad0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16ae9f06_b65e838a",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-20T01:22:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa21720e_e553877d",
       "range": {
         "startLine": 193,
         "startChar": 22,
