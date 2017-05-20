@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "92fd7201_787246ba",
+        "filename": "bpfix/lib/bpfix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-20T00:14:48Z",
+      "side": 1,
+      "message": "This is so far off a hot path that performance is not a concern at all, API design is far more important, but I would expect the go compiler to handle it fine.",
+      "parentUuid": "45b53982_887d273d",
+      "range": {
+        "startLine": 29,
+        "startChar": 28,
+        "endLine": 29,
+        "endChar": 29
+      },
+      "revId": "700aefd5357db2cb18a767d387d82a29f4ef31b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6aa51b03_b951ec6e",
         "filename": "bpfix/lib/bpfix.go",
         "patchSetId": 2
