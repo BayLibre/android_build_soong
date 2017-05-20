@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70595a0c_1663466a",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-20T01:04:07Z",
+      "side": 1,
+      "message": "If we\u0027re willing to require callers to pass \"--dist\u003dtrue\" are we willing to require them to pass the more explicit \"--log-dir\u003d$DIST_DIR\"?\n\nWe\u0027re expecting that multiproduct_kati is only ever used for testing, right? What situations are there where we\u0027d expect a user to want to specify \"--dist\u003dtrue\" or \"--dist\u003dfalse\"?",
+      "revId": "5a76aa22aabbc4ca8cecbb6ee51a122ea9528ad0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa21720e_e553877d",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-20T01:04:07Z",
+      "side": 1,
+      "message": "How about \"triggers the creation of\" or \"creates\"?",
+      "range": {
+        "startLine": 193,
+        "startChar": 22,
+        "endLine": 193,
+        "endChar": 30
+      },
+      "revId": "5a76aa22aabbc4ca8cecbb6ee51a122ea9528ad0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
