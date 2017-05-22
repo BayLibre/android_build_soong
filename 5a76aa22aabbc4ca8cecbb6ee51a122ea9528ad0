@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "fceb32eb_f4972ed8",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-22T18:26:29Z",
+      "side": 1,
+      "message": "Oh ok. Yeah I\u0027m less interested in exactly making the log directory configurable and more interested in deduplicating the logic about where it goes (and more generally what \u0027dist\u0027 means).\n\nAre there any builds where both OutDir and DistDir are expected to be used? It seems to me that it if making the \u0027logs\u0027 subdirectory is standard for a \u0027dist\u0027 build, then we\u0027d instead want a method on Config called perhaps \u0027turnYourselfIntoADistBuild\u0027 (probably abbreviated something like \u0027BeDist\u0027 or just \u0027Dist\u0027 (I wanted \u0027MakeDist\u0027 but \u0027make\u0027 seems like a confusing term here)) that both deduplicates these little pieces of configuration and also conveniently enumerates the full meaning of \u0027dist\u0027. Then I imagine we could call \u0027LogDir\u0027 if we do something like:\n\nfunc (c *config) BeDist() {\n  c.smartTerminal \u003d false\n  c.logSubdir \u003d \u0027logs\u0027\n  // are there more flags to activate by \"dist\" than this?\n}\n\nfunc (c *config) BeDistAt(dir string) {\n  c.beDist()\n  c.outDir \u003d dir\n}\n\nfunc (c *config) LogDir() (dir string) {\n  return path.join(c.OutDir(), c.logSubdir)\n}",
+      "parentUuid": "f0e024c8_b16359bd",
+      "revId": "5a76aa22aabbc4ca8cecbb6ee51a122ea9528ad0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aa21720e_e553877d",
         "filename": "cmd/multiproduct_kati/main.go",
         "patchSetId": 1
