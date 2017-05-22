@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "96895428_bf73ae5f",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-22T21:45:39Z",
+      "side": 1,
+      "message": "Why would a caller want to have the log dir in another spot? Is it for a build server that wants to easily report back all the error logs by just using a single file glob to match all the log files? Is it that we want the logs to not be present in the final built artifact\u0027s root directory?\n\nFor the ability to rearrange the artifacts of the individual builds based on the \u0027dist\u0027 argument, can we simplify it by just always generating a structure that is suitable for what callers of \u0027dist\u0027 expect? Something like:\n\nlogs/sailfish/soong.log\nlogs/sailfish/build.trace\nlogs/bullhead/soong.log\nlogs/bullhead/build.trace\nsailfish/soong.log -\u003e ../../logs/sailfish/soong.log\nsailfish/build.trace -\u003e ../../logs/sailfish/build.trace\nsailfish/artifacts\nbullhead/logs/soong.log -\u003e ../../logs/bullhead/soong.log\nbullhead/logs/build.trace -\u003e ../../logs/bullhead/build.trace\nbullhead/artifacts\n\nThat also makes it easier to know in the future which files are candidates for remote caching: everything under */artifacts is intended to be unchanging between builds\n\nIf we do the above, then I imagine we\u0027d do similarly for the log dir on line 214.\n\n(If not, then I imagine we would deduplicate the getting of the path rather than the setting. It looks to me like we can just add a method in config.go on the configImpl type called getLogDir() that is called both on line 214 below and also on line 74 of soong_ui/main.go\n\nI\u0027m imagining the main advantage of this to be that it makes it easier to know what Dist() does (with the fact that it also deduplicates code being only a secondary advantage).)",
+      "parentUuid": "716be828_d8ad08c2",
+      "revId": "5a76aa22aabbc4ca8cecbb6ee51a122ea9528ad0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aa21720e_e553877d",
         "filename": "cmd/multiproduct_kati/main.go",
         "patchSetId": 1
