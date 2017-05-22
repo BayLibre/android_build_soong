@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "716be828_d8ad08c2",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-22T19:56:44Z",
+      "side": 1,
+      "message": "DistDir is separate from OutDir, and dist doesn\u0027t imply smartTerminal or not. The only \"standard\" thing it modifies is the directory for the main log and trace, but since there\u0027s only two implementations of that so far, it doesn\u0027t seem like a high priority to refactor that (and not simple either, we don\u0027t currently have the Config or Context change any settings for the logger or tracer -- they don\u0027t even have an interface that contains the necessary functions)\n\nThe implementations already need to know about dist vs not -- on the normal build, it\u0027s another build target that copies outputs from the output directory to the dist directory. For this implementation, we share the common move of the core log file, but all the other configs that we generate do something custom (different subdirectories under dist, without the standard logs directory).",
+      "parentUuid": "fceb32eb_f4972ed8",
+      "revId": "5a76aa22aabbc4ca8cecbb6ee51a122ea9528ad0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aa21720e_e553877d",
         "filename": "cmd/multiproduct_kati/main.go",
         "patchSetId": 1
