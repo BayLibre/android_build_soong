@@ -66,9 +66,19 @@ func checkJavaVersion(ctx Context, config Config) {
 	var required_java_version string
 	var java_version_regexp *regexp.Regexp
 	var javac_version_regexp *regexp.Regexp
-	required_java_version = "1.8"
-	java_version_regexp = regexp.MustCompile(`[ "]1\.8[\. "$]`)
-	javac_version_regexp = java_version_regexp
+
+	oj9_env, _ := config.Environment().Get("EXPERIMENTAL_USE_OPENJDK9")
+	experimental_use_openjdk9 := oj9_env != ""
+
+	if experimental_use_openjdk9 {
+		required_java_version = "9"
+		java_version_regexp = regexp.MustCompile(`^java .* "9.*"`)
+		javac_version_regexp = regexp.MustCompile(`^javac 9`)
+	} else {
+		required_java_version = "1.8"
+		java_version_regexp = regexp.MustCompile(`[ "]1\.8[\. "$]`)
+		javac_version_regexp = java_version_regexp
+	}
 
 	java_version := javaVersionInfo.java_version_output
 	javac_version := javaVersionInfo.javac_version_output
@@ -95,7 +105,7 @@ func checkJavaVersion(ctx Context, config Config) {
 	}
 
 	if runtime.GOOS == "linux" {
-		if !strings.Contains(java_version, "openjdk") {
+		if !strings.Contains(java_version, "openjdk") && !experimental_use_openjdk9 {
 			ctx.Println("*******************************************************")
 			ctx.Println("You are attempting to build with an unsupported JDK.")
 			ctx.Println()
