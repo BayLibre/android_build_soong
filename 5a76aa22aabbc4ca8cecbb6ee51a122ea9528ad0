@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "1f656e8a_85f9eed1",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-23T00:00:01Z",
+      "side": 1,
+      "message": "We talked offline and rather than having an extra flag whose value is copied from the \"dist\" flag, we\u0027re just renaming the flag variable and updating the help (which you\u0027ve done in patchset 3 before I\u0027ve typed this comment).\n\nAt that point, having the log-location logic duplicated between multiproduct_kati and soong_ui seems ok to me",
+      "parentUuid": "96895428_bf73ae5f",
+      "revId": "5a76aa22aabbc4ca8cecbb6ee51a122ea9528ad0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aa21720e_e553877d",
         "filename": "cmd/multiproduct_kati/main.go",
         "patchSetId": 1
