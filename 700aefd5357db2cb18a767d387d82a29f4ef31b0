@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "119e4b60_f9469e8d",
+        "filename": "bpfix/lib/bpfix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-24T00:34:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92fd7201_787246ba",
+      "range": {
+        "startLine": 29,
+        "startChar": 28,
+        "endLine": 29,
+        "endChar": 29
+      },
+      "revId": "700aefd5357db2cb18a767d387d82a29f4ef31b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6aa51b03_b951ec6e",
         "filename": "bpfix/lib/bpfix.go",
         "patchSetId": 2
@@ -214,6 +238,24 @@
       "writtenOn": "2017-05-17T21:51:50Z",
       "side": 1,
       "message": "Fine to start with, but ideally this would filter export_include_dirs out of local_include_dirs and then remove export_include_dirs if it was empty.  Removing empty properties could be a separate fix.\n\nOne thing I had considered is how to order the fixes.  A simple solution would be to keep running all the fixes until the output stops changing.",
+      "revId": "700aefd5357db2cb18a767d387d82a29f4ef31b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ffe8566e_e0c3e84e",
+        "filename": "bpfix/lib/bpfix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-24T00:34:57Z",
+      "side": 1,
+      "message": "For the next patchset I\u0027ll have implemented what you described involving looping",
+      "parentUuid": "da20ff57_85e08610",
       "revId": "700aefd5357db2cb18a767d387d82a29f4ef31b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -271,6 +313,24 @@
     },
     {
       "key": {
+        "uuid": "52f1ddca_c33e881d",
+        "filename": "bpfix/main/bpfix_main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-24T00:34:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa7d35fa_20fd77b6",
+      "revId": "700aefd5357db2cb18a767d387d82a29f4ef31b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1cd3ff9b_3abb3cb4",
         "filename": "bpfix/main/bpfix_main.go",
         "patchSetId": 2
@@ -282,6 +342,24 @@
       "writtenOn": "2017-05-17T21:51:50Z",
       "side": 1,
       "message": "Maybe make the caller open the file and always require a non-nil io.Reader like parser.Parse does",
+      "revId": "700aefd5357db2cb18a767d387d82a29f4ef31b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d686bf79_ead8e5de",
+        "filename": "bpfix/main/bpfix_main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-24T00:34:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cd3ff9b_3abb3cb4",
       "revId": "700aefd5357db2cb18a767d387d82a29f4ef31b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -305,6 +383,24 @@
     },
     {
       "key": {
+        "uuid": "4717cea7_5475c482",
+        "filename": "bpfix/main/bpfix_main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-24T00:34:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7955207d_d0ea9a8f",
+      "revId": "700aefd5357db2cb18a767d387d82a29f4ef31b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79d65074_459e6aac",
         "filename": "bpfix/main/bpfix_main.go",
         "patchSetId": 2
@@ -316,6 +412,30 @@
       "writtenOn": "2017-05-17T21:51:50Z",
       "side": 1,
       "message": "bpfix",
+      "range": {
+        "startLine": 106,
+        "startChar": 23,
+        "endLine": 106,
+        "endChar": 28
+      },
+      "revId": "700aefd5357db2cb18a767d387d82a29f4ef31b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a5918f6_a3a50e54",
+        "filename": "bpfix/main/bpfix_main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-24T00:34:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79d65074_459e6aac",
       "range": {
         "startLine": 106,
         "startChar": 23,
