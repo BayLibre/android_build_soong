@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "750cd5e6_4812e30f",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-24T20:08:14Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "a53b0832_9ba30bfe",
+      "range": {
+        "startLine": 44,
+        "startChar": 79,
+        "endLine": 44,
+        "endChar": 86
+      },
+      "revId": "899d47c083f4c98a8934850aa0ff2b8b14ea2e31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce5bd93c_a159decd",
         "filename": "bpfix/bpfix/bpfix.go",
         "patchSetId": 3
@@ -111,6 +135,24 @@
     },
     {
       "key": {
+        "uuid": "631d582c_b294cd30",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-24T20:08:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "769dea59_6047dc64",
+      "revId": "899d47c083f4c98a8934850aa0ff2b8b14ea2e31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9230b0a8_3731068e",
         "filename": "bpfix/bpfix/bpfix.go",
         "patchSetId": 3
@@ -122,6 +164,24 @@
       "writtenOn": "2017-05-24T01:07:24Z",
       "side": 1,
       "message": "You could filter in place here too",
+      "revId": "899d47c083f4c98a8934850aa0ff2b8b14ea2e31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e894389_c9625565",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-24T20:08:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9230b0a8_3731068e",
       "revId": "899d47c083f4c98a8934850aa0ff2b8b14ea2e31",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
