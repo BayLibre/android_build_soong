@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e10207c2_682d3008",
+        "filename": "cc/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-24T01:07:24Z",
+      "side": 0,
+      "message": "Unnecessary whitespace change",
+      "revId": "ad086267e3af5f9d9bacbfae73b341241779bfc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

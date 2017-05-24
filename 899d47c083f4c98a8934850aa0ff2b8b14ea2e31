@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a53b0832_9ba30bfe",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-24T01:07:24Z",
+      "side": 1,
+      "message": "I\u0027m not a big fan of []error in blueprint, and I don\u0027t see anywhere you are using multiple errors here.  Can you use error, and later if you need multiple errors you can create MultipleErrors that implements the error interface but holds []error.",
+      "range": {
+        "startLine": 44,
+        "startChar": 79,
+        "endLine": 44,
+        "endChar": 86
+      },
+      "revId": "899d47c083f4c98a8934850aa0ff2b8b14ea2e31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce5bd93c_a159decd",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-24T01:07:24Z",
+      "side": 1,
+      "message": "No need to convert these to strings every time, just store []byte and use bytes.Equal",
+      "range": {
+        "startLine": 81,
+        "startChar": 8,
+        "endLine": 81,
+        "endChar": 14
+      },
+      "revId": "899d47c083f4c98a8934850aa0ff2b8b14ea2e31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64657d23_b32be79e",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-24T01:07:24Z",
+      "side": 1,
+      "message": "Does this need to be exported?",
+      "range": {
+        "startLine": 86,
+        "startChar": 17,
+        "endLine": 86,
+        "endChar": 59
+      },
+      "revId": "899d47c083f4c98a8934850aa0ff2b8b14ea2e31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47ae8bb7_19381d91",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-24T01:07:24Z",
+      "side": 1,
+      "message": "local_include_dirs is a property, not a variable",
+      "range": {
+        "startLine": 100,
+        "startChar": 18,
+        "endLine": 100,
+        "endChar": 27
+      },
+      "revId": "899d47c083f4c98a8934850aa0ff2b8b14ea2e31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "769dea59_6047dc64",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-24T01:07:24Z",
+      "side": 1,
+      "message": "If filterExpressionList filtered in place you could always do the assignment",
+      "revId": "899d47c083f4c98a8934850aa0ff2b8b14ea2e31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9230b0a8_3731068e",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-24T01:07:24Z",
+      "side": 1,
+      "message": "You could filter in place here too",
+      "revId": "899d47c083f4c98a8934850aa0ff2b8b14ea2e31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
