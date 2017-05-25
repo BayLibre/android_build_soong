@@ -15,6 +15,7 @@
 package build
 
 import (
+	"os"
 	"path/filepath"
 	"strconv"
 	"strings"
@@ -69,7 +70,56 @@ func runNinja(ctx Context, config Config) {
 	cmd.Stdin = ctx.Stdin()
 	cmd.Stdout = ctx.Stdout()
 	cmd.Stderr = ctx.Stderr()
+	logPath := filepath.Join(config.OutDir(), ".ninja_log")
+	ninjaHeartbeatDuration := time.Minute * 5
+	if overrideText, ok := cmd.Environment.Get("NINJA_HEARTBEAT_DURATION"); ok {
+		// For example, "1m"
+		overrideDuration, err := time.ParseDuration(overrideText)
+		if err == nil && overrideDuration.Seconds() > 0 {
+			ninjaHeartbeatDuration = overrideDuration
+		}
+	}
+	// if the ninja log isn't updated often enough, then we want to show some diagnostics
+	cmd.statusChecker = &StatusChecker{ninjaHeartbeatDuration, ninjaStatusChecker(ctx, config, logPath)}
 	startTime := time.Now()
-	defer ctx.ImportNinjaLog(filepath.Join(config.OutDir(), ".ninja_log"), startTime)
+	defer ctx.ImportNinjaLog(logPath, startTime)
+
 	cmd.RunOrFatal()
+}
+
+// ninjaStatusChecker returns a function that checks whether Ninja appears to be stuck (looping forever).
+// Note that even if Ninja is not stuck, it's still possible for several individual tasks to be stuck.
+//   For example, if Ninja is running 50 tasks at once of which 49 are stuck, then the remaining 1 worker can slowly
+//   complete the majority of the build. However, in this situation the caller isn't going to want to wait for Ninja to
+//   finish most of the build in a single-threaded manner, and will probably kill the build before it completes.
+// So, this function is a sufficient but not necessary condition for suspecting that Ninja or one of its tasks are
+// likely to be stuck
+func ninjaStatusChecker(ctx Context, config Config, filepath string) func() {
+	var prevTime time.Time
+	checker := func() {
+		info, err := os.Stat(filepath)
+		var newTime time.Time
+		if err == nil {
+			newTime = info.ModTime()
+		}
+		if newTime == prevTime {
+			// ninja may be stuck
+			dumpStucknessDiagnostics(ctx, config, filepath, newTime)
+		}
+		prevTime = newTime
+
+	}
+	return checker
+}
+
+// dumpStucknessDiagnostics gets called when it is suspected that Ninja is stuck and we want to output some diagnostics
+func dumpStucknessDiagnostics(ctx Context, config Config, statusPath string, lastUpdated time.Time) {
+
+	ctx.Printf("ninja may be stuck; last update to %v was %v. dumping process tree...", statusPath, lastUpdated)
+
+	cmd := Command(ctx, config, "dump process tree", "pstree")
+	output := cmd.CombinedOutputOrFatal()
+	ctx.Verbose(string(output))
+
+	ctx.Printf("done\n")
 }
