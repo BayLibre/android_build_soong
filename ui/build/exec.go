@@ -86,6 +86,7 @@ func (c *Cmd) StartOrFatal() {
 
 func (c *Cmd) reportError(err error) {
 	if err == nil {
+		c.ctx.Verbosef("completed: %s\n", c.name)
 		return
 	}
 	if e, ok := err.(*exec.ExitError); ok {
