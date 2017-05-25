@@ -21,6 +21,7 @@ import (
 	"path/filepath"
 	"strings"
 	"syscall"
+	"time"
 	"unsafe"
 )
 
@@ -158,4 +159,22 @@ func stripAnsiEscapes(input []byte) []byte {
 	}
 
 	return input
+}
+
+// PollUntil calls <check> every <interval> until <until> returns a value
+// This can be helpful for monitoring for a stuck command
+func PollUntil(interval time.Duration, until chan bool, check func()) {
+	go _pollUntil(interval, until, check)
+}
+
+func _pollUntil(interval time.Duration, until chan bool, check func()) {
+	for {
+		time.Sleep(interval)
+		select {
+		case <-until:
+			return
+		default:
+			check()
+		}
+	}
 }
