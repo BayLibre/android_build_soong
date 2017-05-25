@@ -60,6 +60,7 @@ func genKatiSuffix(ctx Context, config Config) {
 
 func runKati(ctx Context, config Config) {
 	ctx.BeginTrace("kati")
+	ctx.Verboseln("Starting kati\n")
 	defer ctx.EndTrace()
 
 	genKatiSuffix(ctx, config)
@@ -106,6 +107,7 @@ func runKati(ctx Context, config Config) {
 	cmd.StartOrFatal()
 	katiRewriteOutput(ctx, pipe)
 	cmd.WaitOrFatal()
+	ctx.Verboseln("kati completed\n")
 }
 
 var katiIncludeRe = regexp.MustCompile(`^(\[\d+/\d+] )?including [^ ]+ ...$`)
