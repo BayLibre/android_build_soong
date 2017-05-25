@@ -16,6 +16,7 @@ package build
 
 import (
 	"os/exec"
+	"time"
 )
 
 // Cmd is a wrapper of os/exec.Cmd that integrates with the build context for
@@ -27,9 +28,16 @@ type Cmd struct {
 	Environment *Environment
 	Sandbox     Sandbox
 
-	ctx    Context
-	config Config
-	name   string
+	ctx           Context
+	config        Config
+	name          string
+	statusChecker *StatusChecker
+	done          bool
+}
+
+type StatusChecker struct {
+	Interval time.Duration
+	Check    func()
 }
 
 func Command(ctx Context, config Config, name string, executable string, args ...string) *Cmd {
@@ -54,7 +62,13 @@ func (c *Cmd) prepare() {
 		c.wrapSandbox()
 	}
 
+	c.goWatchStatus()
+
 	c.ctx.Verboseln(c.Path, c.Args)
+}
+
+func (c *Cmd) teardown() {
+	c.done = true
 }
 
 func (c *Cmd) Start() error {
@@ -64,17 +78,23 @@ func (c *Cmd) Start() error {
 
 func (c *Cmd) Run() error {
 	c.prepare()
-	return c.Cmd.Run()
+	err := c.Cmd.Run()
+	c.teardown()
+	return err
 }
 
 func (c *Cmd) Output() ([]byte, error) {
 	c.prepare()
-	return c.Cmd.Output()
+	bytes, err := c.Cmd.Output()
+	c.teardown()
+	return bytes, err
 }
 
 func (c *Cmd) CombinedOutput() ([]byte, error) {
 	c.prepare()
-	return c.Cmd.CombinedOutput()
+	bytes, err := c.Cmd.CombinedOutput()
+	c.teardown()
+	return bytes, err
 }
 
 // StartOrFatal is equivalent to Start, but handles the error with a call to ctx.Fatal
@@ -118,4 +138,22 @@ func (c *Cmd) CombinedOutputOrFatal() []byte {
 	ret, err := c.CombinedOutput()
 	c.reportError(err)
 	return ret
+}
+
+// goWatchStatus monitors the command for suspected stuckness (i.e. no output within the expected duration)
+func (c *Cmd) goWatchStatus() {
+	if c.statusChecker != nil {
+		go c.watchStatus()
+	}
+}
+
+// don't call watchStatus; call goWatchStatus
+func (c *Cmd) watchStatus() {
+	for {
+		time.Sleep(c.statusChecker.Interval)
+		if c.done {
+			return
+		}
+		c.statusChecker.Check()
+	}
 }
