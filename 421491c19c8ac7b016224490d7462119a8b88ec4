@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1d92984_b2fbb637",
+        "filename": "cc/builder.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-25T21:38:47Z",
+      "side": 1,
+      "message": "Descriptions have moved to the ModuleBuild method so the module name is consistently printed in the description",
+      "revId": "421491c19c8ac7b016224490d7462119a8b88ec4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68a17548_f996863a",
+        "filename": "cc/builder.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-25T21:38:47Z",
+      "side": 1,
+      "message": "Description: \"gunzip \" + outputFile.Base(),",
+      "revId": "421491c19c8ac7b016224490d7462119a8b88ec4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
