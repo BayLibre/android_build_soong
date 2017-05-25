@@ -63,7 +63,7 @@ func runNinja(ctx Context, config Config) {
 	}
 
 	if _, ok := cmd.Environment.Get("NINJA_STATUS"); !ok {
-		cmd.Environment.Set("NINJA_STATUS", "[%p %f/%t] ")
+		cmd.Environment.Set("NINJA_STATUS", "[%p %f/%t %es] ")
 	}
 
 	cmd.Stdin = ctx.Stdin()
