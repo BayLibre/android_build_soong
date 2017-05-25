@@ -26,6 +26,8 @@ type Cmd struct {
 
 	Environment *Environment
 	Sandbox     Sandbox
+	// a channel that is closed when the Cmd is done, to facilitate
+	Done chan bool
 
 	ctx    Context
 	config Config
@@ -37,6 +39,7 @@ func Command(ctx Context, config Config, name string, executable string, args ..
 		Cmd:         exec.CommandContext(ctx.Context, executable, args...),
 		Environment: config.Environment().Copy(),
 		Sandbox:     noSandbox,
+		Done:        make(chan bool),
 
 		ctx:    ctx,
 		config: config,
@@ -57,6 +60,10 @@ func (c *Cmd) prepare() {
 	c.ctx.Verboseln(c.Path, c.Args)
 }
 
+func (c *Cmd) teardown() {
+	close(c.Done)
+}
+
 func (c *Cmd) Start() error {
 	c.prepare()
 	return c.Cmd.Start()
@@ -64,17 +71,23 @@ func (c *Cmd) Start() error {
 
 func (c *Cmd) Run() error {
 	c.prepare()
-	return c.Cmd.Run()
+	defer c.teardown()
+	err := c.Cmd.Run()
+	return err
 }
 
 func (c *Cmd) Output() ([]byte, error) {
 	c.prepare()
-	return c.Cmd.Output()
+	defer c.teardown()
+	bytes, err := c.Cmd.Output()
+	return bytes, err
 }
 
 func (c *Cmd) CombinedOutput() ([]byte, error) {
 	c.prepare()
-	return c.Cmd.CombinedOutput()
+	defer c.teardown()
+	bytes, err := c.Cmd.CombinedOutput()
+	return bytes, err
 }
 
 // StartOrFatal is equivalent to Start, but handles the error with a call to ctx.Fatal
