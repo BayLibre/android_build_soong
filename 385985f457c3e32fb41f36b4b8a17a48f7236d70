@@ -22,6 +22,30 @@
       "revId": "385985f457c3e32fb41f36b4b8a17a48f7236d70",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62821c25_01d2cc38",
+        "filename": "ui/build/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2017-05-26T11:08:46Z",
+      "side": 1,
+      "message": "Done.\n\nI ran a quick \"make\" to check that this doesn\u0027t immediately fail, but I don\u0027t plan to wait for treehugger again. Please protest if you disagree.",
+      "parentUuid": "df0305f9_bf7fb6f2",
+      "range": {
+        "startLine": 108,
+        "startChar": 52,
+        "endLine": 108,
+        "endChar": 77
+      },
+      "revId": "385985f457c3e32fb41f36b4b8a17a48f7236d70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
