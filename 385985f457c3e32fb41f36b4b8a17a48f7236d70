@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df0305f9_bf7fb6f2",
+        "filename": "ui/build/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2017-05-26T11:03:45Z",
+      "side": 1,
+      "message": "Please comment why !experimental_use_openjdk9 for something that is openjdk based.",
+      "range": {
+        "startLine": 108,
+        "startChar": 52,
+        "endLine": 108,
+        "endChar": 77
+      },
+      "revId": "385985f457c3e32fb41f36b4b8a17a48f7236d70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
