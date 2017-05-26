@@ -2,6 +2,74 @@
   "comments": [
     {
       "key": {
+        "uuid": "52caf209_331761df",
+        "filename": "ui/build/exec.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-26T20:42:38Z",
+      "side": 1,
+      "message": "Flags like this can have problems with memory ordering, it\u0027s better to use a channel that will handle synchronization issues for you.",
+      "revId": "6e3efeef2dac863e2516823fcc424dfa60a6b9a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d152f543_074c3610",
+        "filename": "ui/build/exec.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-26T20:42:38Z",
+      "side": 1,
+      "message": "defer c.teardown() after c.prepare()",
+      "revId": "6e3efeef2dac863e2516823fcc424dfa60a6b9a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5557d325_d322f410",
+        "filename": "ui/build/exec.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-26T20:42:38Z",
+      "side": 1,
+      "message": "Use a non-blocking channel read with select{}",
+      "revId": "6e3efeef2dac863e2516823fcc424dfa60a6b9a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76776c2f_8571835f",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-26T20:42:38Z",
+      "side": 1,
+      "message": "Integrating this into Command seems like overkill.  Why not just start a goroutine that polls .ninja_log before cmd.RunOrFatal() and stop it after it returns?",
+      "revId": "6e3efeef2dac863e2516823fcc424dfa60a6b9a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dbd41945_c96d390b",
         "filename": "ui/build/ninja.go",
         "patchSetId": 6
@@ -13,6 +81,30 @@
       "writtenOn": "2017-05-26T20:30:06Z",
       "side": 1,
       "message": "You almost certainly want to pass some flags to pstree, I would think at a minimum -a (show command arguments) and -l (long; don\u0027t truncate lines).  Note that this results in a lot more output.  Possibly -p, which includes PIDs and makes the output even longer.  Or if you want to include start time you could use \"ps -efH\" instead of pstree.  If you don\u0027t have a good feel for what you want to see, check with dwillemsen and ccross, you primary customers.\n\nAlso note, pstree doesn\u0027t exist on Macs. Macs don\u0027t have any command which does tree structured ps output--the best you can do is \"ps -ef\", which included parent PIDs so you can figure out the relationships manually.  We don\u0027t have a problem with builds timing out on Macs, so we could just ignore this.",
+      "range": {
+        "startLine": 120,
+        "startChar": 51,
+        "endLine": 120,
+        "endChar": 57
+      },
+      "revId": "6e3efeef2dac863e2516823fcc424dfa60a6b9a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aaaea63b_13bb3a08",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-26T20:42:38Z",
+      "side": 1,
+      "message": "I use -pal, and you should also pass os.Getpid() to restrict it to descendants of the build process.",
+      "parentUuid": "dbd41945_c96d390b",
       "range": {
         "startLine": 120,
         "startChar": 51,
