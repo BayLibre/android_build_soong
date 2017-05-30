@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "49fb7fd1_1802db3f",
+        "filename": "ui/build/exec.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-30T20:52:15Z",
+      "side": 1,
+      "message": "thanks",
+      "parentUuid": "52caf209_331761df",
+      "revId": "6e3efeef2dac863e2516823fcc424dfa60a6b9a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d152f543_074c3610",
         "filename": "ui/build/exec.go",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2017-05-26T20:42:38Z",
       "side": 1,
       "message": "defer c.teardown() after c.prepare()",
+      "revId": "6e3efeef2dac863e2516823fcc424dfa60a6b9a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0f0bfcc_970c748f",
+        "filename": "ui/build/exec.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-30T20:52:15Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "d152f543_074c3610",
       "revId": "6e3efeef2dac863e2516823fcc424dfa60a6b9a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "e4edd273_fcb194bd",
+        "filename": "ui/build/exec.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-30T20:52:15Z",
+      "side": 1,
+      "message": "thanks",
+      "parentUuid": "5557d325_d322f410",
+      "revId": "6e3efeef2dac863e2516823fcc424dfa60a6b9a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76776c2f_8571835f",
         "filename": "ui/build/ninja.go",
         "patchSetId": 6
@@ -67,6 +121,24 @@
       "revId": "6e3efeef2dac863e2516823fcc424dfa60a6b9a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90d4b5f8_1da3355d",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-30T20:52:15Z",
+      "side": 1,
+      "message": "I\u0027ll remove the statusChecker field from Command in the next patch",
+      "parentUuid": "76776c2f_8571835f",
+      "revId": "6e3efeef2dac863e2516823fcc424dfa60a6b9a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
