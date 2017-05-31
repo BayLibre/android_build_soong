@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "47660730_a48f1744",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-31T23:19:53Z",
+      "side": 1,
+      "message": "It\u0027s not needed for correctness. I just expected that ctx.mkvalue would be a direct pointer into the parsed tree, and that running ReplaceLiteral below would modify the original parse which theoretically could be confusing if the caller tried to use the parsed tree for something else\n\nWould you rather have me remove it?",
+      "parentUuid": "796dcc51_c0aa43db",
+      "revId": "7d5431ed40753d4257edce0da581a759996f3449",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7655dae_f9a3b5bb",
         "filename": "androidmk/cmd/androidmk/android.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "7d5431ed40753d4257edce0da581a759996f3449",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8104913_3dea222c",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-05-31T23:19:53Z",
+      "side": 1,
+      "message": "Good call. A search of aosp indicates that `\\\\` isn\u0027t currently given as substring of any LOCAL_CFLAGS values; if you\u0027re happy to not worry about it for now then I\u0027m happy to not worry about it for now either",
+      "parentUuid": "b7655dae_f9a3b5bb",
+      "revId": "7d5431ed40753d4257edce0da581a759996f3449",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
