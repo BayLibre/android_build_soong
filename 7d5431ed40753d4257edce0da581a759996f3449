@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "796dcc51_c0aa43db",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-31T22:57:07Z",
+      "side": 1,
+      "message": "Why is the clone necessary?",
+      "revId": "7d5431ed40753d4257edce0da581a759996f3449",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7655dae_f9a3b5bb",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-31T22:57:07Z",
+      "side": 1,
+      "message": "What about \\\\\"?  I\u0027m fine with this simple version though.",
+      "revId": "7d5431ed40753d4257edce0da581a759996f3449",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
