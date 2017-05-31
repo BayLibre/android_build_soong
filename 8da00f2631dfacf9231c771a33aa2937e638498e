@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb00ebef_9a92a813",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1174298
+      },
+      "writtenOn": "2017-05-31T17:23:21Z",
+      "side": 1,
+      "message": "ps on Macs doesn\u0027t have the \"-H\" flag.",
+      "range": {
+        "startLine": 125,
+        "startChar": 19,
+        "endLine": 125,
+        "endChar": 26
+      },
+      "revId": "8da00f2631dfacf9231c771a33aa2937e638498e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
