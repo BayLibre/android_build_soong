@@ -183,27 +183,19 @@ func (a ArchType) String() string {
 	return a.Name
 }
 
-var BuildOs = func() OsType {
-	switch runtime.GOOS {
-	case "linux":
-		return Linux
-	case "darwin":
-		return Darwin
-	default:
-		panic(fmt.Sprintf("unsupported OS: %s", runtime.GOOS))
-	}
-}()
+var buildOsName = runtime.GOOS
 
 var (
 	osTypeList      []OsType
 	commonTargetMap = make(map[string]Target)
 
 	NoOsType    OsType
-	Linux       = NewOsType("linux", Host, false)
-	Darwin      = NewOsType("darwin", Host, false)
+	Linux       = NewAutoHostType("linux", []string{"linux", "darwin"})
+	Darwin      = NewAutoHostType("darwin", []string{"darwin", "linux"})
+	Windows     = NewAutoHostType("windows", []string{})
 	LinuxBionic = NewOsType("linux_bionic", Host, true)
-	Windows     = NewOsType("windows", HostCross, true)
-	Android     = NewOsType("android", Device, false)
+
+	Android = NewOsType("android", Device, false)
 
 	osArchTypeMap = map[OsType][]ArchType{
 		Linux:       []ArchType{X86, X86_64},
@@ -213,6 +205,14 @@ var (
 		Android:     []ArchType{Arm, Arm64, Mips, Mips64, X86, X86_64},
 	}
 )
+
+var BuildOs = func() OsType {
+	result := osByName(buildOsName)
+	if result == NoOsType {
+		panic(fmt.Sprintf("Internal error: OS type %s is recognized but not defined", buildOsName))
+	}
+	return result
+}()
 
 type OsType struct {
 	Name string
@@ -287,6 +287,22 @@ func NewOsType(name string, class OsCompatibility, defaultDisabled bool) OsType 
 	}
 
 	return os
+}
+
+// NewAutoHostType makes a new host os type and sets OsCompatibility and defaultDisabled based on the current os
+func NewAutoHostType(name string, enableByDefaultOnOsNames []string) OsType {
+	compatibility := HostCross
+	if name == buildOsName {
+		compatibility = Host
+	}
+	enabled := false
+	for _, enabledOn := range enableByDefaultOnOsNames {
+		if enabledOn == buildOsName {
+			enabled = true
+			break
+		}
+	}
+	return NewOsType(name, compatibility, !enabled)
 }
 
 func osByName(name string) OsType {
