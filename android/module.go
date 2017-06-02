@@ -118,7 +118,7 @@ type nameProperties struct {
 type commonProperties struct {
 	Tags []string
 
-	// emit build rules for this module
+	// whether to emit build rules for this module
 	Enabled *bool `android:"arch_variant"`
 
 	// control whether this module compiles for 32-bit, 64-bit, or both.  Possible values
@@ -220,8 +220,8 @@ func InitAndroidArchModule(m Module, hod HostOrDeviceSupported, defaultMultilib 
 
 	switch hod {
 	case HostAndDeviceSupported:
-		// Default to module to device supported, host not supported, can override in module
-		// properties
+		// The default is that the module is supported on the device and not on the host
+		// This can be overridden in module properties
 		base.hostAndDeviceProperties.Device_supported = boolPtr(true)
 		fallthrough
 	case HostAndDeviceDefault:
@@ -232,19 +232,13 @@ func InitAndroidArchModule(m Module, hod HostOrDeviceSupported, defaultMultilib 
 }
 
 // A ModuleBase object contains the properties that are common to all Android
-// modules.  It should be included as an anonymous field in every module
-// struct definition.  InitAndroidModule should then be called from the module's
-// factory function, and the return values from InitAndroidModule should be
-// returned from the factory function.
+// modules and should be included as an anonymous field in each such module.
+// Android modules should use ModuleBase.InitAndroidModule in factory methods
+// to initially populate their struct properties.
 //
-// The ModuleBase type is responsible for implementing the GenerateBuildActions
-// method to support the blueprint.Module interface. This method will then call
-// the module's GenerateAndroidBuildActions method once for each build variant
-// that is to be built. GenerateAndroidBuildActions is passed a
-// AndroidModuleContext rather than the usual blueprint.ModuleContext.
-// AndroidModuleContext exposes extra functionality specific to the Android build
-// system including details about the particular build variant that is to be
-// generated.
+// The ModuleBase type implements the GenerateBuildActions method required by the
+// blueprint.Module interface, and calls GenerateAndroidBuildActions on the
+// Android module for each build variant to be built.
 //
 // For example:
 //
@@ -272,8 +266,8 @@ func InitAndroidArchModule(m Module, hod HostOrDeviceSupported, defaultMultilib 
 //         // ...
 //     }
 type ModuleBase struct {
-	// Putting the curiously recurring thing pointing to the thing that contains
-	// the thing pattern to good use.
+	// Putting the curiously recurring "X points to Y, which contains X"
+	// pattern to good use.
 	module Module
 
 	nameProperties          nameProperties
@@ -341,7 +335,7 @@ func (a *ModuleBase) ArchSpecific() bool {
 	return a.commonProperties.ArchSpecific
 }
 
-func (a *ModuleBase) OsClassSupported() []OsClass {
+func (a *ModuleBase) OsClassesSupported() []OsClass {
 	switch a.commonProperties.HostOrDeviceSupported {
 	case HostSupported:
 		return []OsClass{Host, HostCross}

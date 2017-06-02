@@ -39,7 +39,7 @@ var (
 	}
 )
 
-var archTypeMap = map[string]ArchType{
+var archTypeByName = map[string]ArchType{
 	"arm":    Arm,
 	"arm64":  Arm64,
 	"mips":   Mips,
@@ -106,37 +106,38 @@ module {
 
 var archVariants = map[ArchType][]string{}
 var archFeatures = map[ArchType][]string{}
-var archFeatureMap = map[ArchType]map[string][]string{}
+var archFeaturesMap = map[ArchType]map[string][]string{} // archFeaturesMap[archType][variantName] = <list of feature names>
 
-func RegisterArchVariants(arch ArchType, variants ...string) {
+func RegisterArchVariants(archType ArchType, variantNames ...string) {
 	checkCalledFromInit()
-	archVariants[arch] = append(archVariants[arch], variants...)
+	archVariants[archType] = append(archVariants[archType], variantNames...)
 }
 
-func RegisterArchFeatures(arch ArchType, features ...string) {
+func RegisterArchFeatures(archType ArchType, featureNames ...string) {
 	checkCalledFromInit()
-	archFeatures[arch] = append(archFeatures[arch], features...)
+	archFeatures[archType] = append(archFeatures[archType], featureNames...)
 }
 
-func RegisterArchVariantFeatures(arch ArchType, variant string, features ...string) {
+func RegisterArchVariantFeatures(archType ArchType, variantName string, featureNames ...string) {
 	checkCalledFromInit()
-	if variant != "" && !inList(variant, archVariants[arch]) {
-		panic(fmt.Errorf("Invalid variant %q for arch %q", variant, arch))
+	if variantName != "" && !inList(variantName, archVariants[archType]) {
+		panic(fmt.Errorf("Invalid variant %q for arch %q", variantName, archType))
 	}
 
-	for _, feature := range features {
-		if !inList(feature, archFeatures[arch]) {
-			panic(fmt.Errorf("Invalid feature %q for arch %q variant %q", feature, arch, variant))
+	for _, feature := range featureNames {
+		if !inList(feature, archFeatures[archType]) {
+			panic(fmt.Errorf("Invalid feature %q for arch %q variant %q",
+				feature, archType, variantName))
 		}
 	}
 
-	if archFeatureMap[arch] == nil {
-		archFeatureMap[arch] = make(map[string][]string)
+	if archFeaturesMap[archType] == nil {
+		archFeaturesMap[archType] = make(map[string][]string)
 	}
-	archFeatureMap[arch][variant] = features
+	archFeaturesMap[archType][variantName] = featureNames
 }
 
-// An Arch indicates a single CPU architecture.
+// An Arch indicates a single CPU architecture, for example, "arm"
 type Arch struct {
 	ArchType     ArchType
 	ArchVariant  string
@@ -158,8 +159,13 @@ func (a Arch) String() string {
 }
 
 type ArchType struct {
-	Name     string
-	Field    string
+	// name of the architecture
+	Name string
+
+	// name of the reflect.StructField to generate for storing properties relevant to this ArchType
+	Field string
+
+	// the bitness of the architecture - "lib32" or "lib64"
 	Multilib string
 }
 
@@ -209,8 +215,11 @@ var (
 )
 
 type OsType struct {
-	Name, Field string
-	Class       OsClass
+	Name string
+	// Prefix of the name of the reflect.StructField to generate for storing properties relevant to this ArchType
+	// For example, if Field is "Linux", then the field names will be "Linux_x86" and "Linux_x86_64"
+	Field string
+	Class OsClass
 
 	DefaultDisabled bool
 }
@@ -243,13 +252,13 @@ func (os OsType) String() string {
 	return os.Name
 }
 
-func NewOsType(name string, class OsClass, defDisabled bool) OsType {
+func NewOsType(name string, class OsClass, defaultDisabled bool) OsType {
 	os := OsType{
 		Name:  name,
 		Field: strings.Title(name),
 		Class: class,
 
-		DefaultDisabled: defDisabled,
+		DefaultDisabled: defaultDisabled,
 	}
 	osTypeList = append(osTypeList, os)
 
@@ -281,7 +290,10 @@ func (target Target) String() string {
 	return target.Os.String() + "_" + target.Arch.String()
 }
 
+// archMutator is run against each module. It splits modules into architecture-specific variants as needed
 func archMutator(mctx BottomUpMutatorContext) {
+
+	// First compute all the desired properties to add to each generated variant
 	var module Module
 	var ok bool
 	if module, ok = mctx.Module().(Module); !ok {
@@ -292,7 +304,7 @@ func archMutator(mctx BottomUpMutatorContext) {
 		return
 	}
 
-	osClasses := module.base().OsClassSupported()
+	osClasses := module.base().OsClassesSupported()
 
 	var moduleTargets []Target
 	primaryModules := make(map[int]bool)
@@ -333,6 +345,7 @@ func archMutator(mctx BottomUpMutatorContext) {
 		}
 	}
 
+	// Disable this module if no targets are found
 	if len(moduleTargets) == 0 {
 		module.base().commonProperties.Enabled = boolPtr(false)
 		return
@@ -344,6 +357,7 @@ func archMutator(mctx BottomUpMutatorContext) {
 		targetNames[i] = target.String()
 	}
 
+	// Now create the variations using the properties we chose above
 	modules := mctx.CreateVariations(targetNames...)
 	for i, m := range modules {
 		m.(Module).base().SetTarget(moduleTargets[i], primaryModules[i])
@@ -351,25 +365,26 @@ func archMutator(mctx BottomUpMutatorContext) {
 	}
 }
 
-func filterArchStruct(prop reflect.Type) (reflect.Type, bool) {
+// filterArchStruct returns a new reflect.Type comprised of only fields in <Type> that have tag `android:"arch_variant"`
+func filterArchStruct(Type reflect.Type) (filteredType reflect.Type, returnTypeIsNonEmpty bool) {
 	var fields []reflect.StructField
 
-	ptr := prop.Kind() == reflect.Ptr
+	ptr := Type.Kind() == reflect.Ptr
 	if ptr {
-		prop = prop.Elem()
+		Type = Type.Elem()
 	}
 
-	for i := 0; i < prop.NumField(); i++ {
-		field := prop.Field(i)
+	for i := 0; i < Type.NumField(); i++ {
+		field := Type.Field(i)
 		if !proptools.HasTag(field, "android", "arch_variant") {
 			continue
 		}
 
 		// The arch_variant field isn't necessary past this point
-		// Instead of wasting space, just remove it. Go also has a
-		// 16-bit limit on structure name length. The name is constructed
-		// based on the Go source representation of the structure, so
-		// the tag names count towards that length.
+		// Instead of wasting space by cloning the tag, just remove it.
+		// Go also has a 16-bit limit on structure name length. The name
+		// is constructed based on the Go source representation of the
+		// structure, so the tag names count towards that length.
 		//
 		// TODO: handle the uncommon case of other tags being involved
 		if field.Tag == `android:"arch_variant"` {
@@ -379,15 +394,15 @@ func filterArchStruct(prop reflect.Type) (reflect.Type, bool) {
 		// Recurse into structs
 		switch field.Type.Kind() {
 		case reflect.Struct:
-			var ok bool
-			field.Type, ok = filterArchStruct(field.Type)
-			if !ok {
+			var isNonEmpty bool
+			field.Type, isNonEmpty = filterArchStruct(field.Type)
+			if !isNonEmpty {
 				continue
 			}
 		case reflect.Ptr:
 			if field.Type.Elem().Kind() == reflect.Struct {
-				nestedType, ok := filterArchStruct(field.Type.Elem())
-				if !ok {
+				nestedType, isNonEmpty := filterArchStruct(field.Type.Elem())
+				if !isNonEmpty {
 					continue
 				}
 				field.Type = reflect.PtrTo(nestedType)
@@ -409,52 +424,81 @@ func filterArchStruct(prop reflect.Type) (reflect.Type, bool) {
 	return ret, true
 }
 
-func createArchType(props reflect.Type) reflect.Type {
-	props, ok := filterArchStruct(props)
+// createArchType creates a Type to store all variant (arch, OS, multilib etc) config infos (keyed by variant name)
+//
+// For example, if the json representation of an instance of <leafType> is {myVal:True} ,
+// then a subset of the json representation of an instance of the return value of createArchType could be:
+// module {
+//   arch: {
+//     arm: {
+//       myVal: true
+//     },
+//     // more architectures here
+//   },
+//   target: {
+//     linux_x86: {
+//       myVal: true
+//     },
+//     // more targets here
+//   },
+//   multilib: {
+//     multilib: {
+//       lib32: {
+//         myVal: true
+//       },
+//       // more bitnesses here
+//     }
+//   }
+// }
+//
+// these fields are enumerated more completely higher up in this file
+func createArchType(leafType reflect.Type) (containerType reflect.Type) {
+	filteredType, ok := filterArchStruct(leafType)
 	if !ok {
 		return nil
 	}
 
-	variantFields := func(names []string) []reflect.StructField {
-		ret := make([]reflect.StructField, len(names))
+	// makes a list of fields
+	makeFields := func(Type reflect.Type, fieldNames []string) []reflect.StructField {
+		ret := make([]reflect.StructField, len(fieldNames))
 
-		for i, name := range names {
+		for i, name := range fieldNames {
 			ret[i].Name = name
-			ret[i].Type = props
+			ret[i].Type = Type
 		}
 
 		return ret
 	}
 
 	archFields := make([]reflect.StructField, len(archTypeList))
-	for i, arch := range archTypeList {
-		variants := []string{}
+	for i, archType := range archTypeList {
+		variantNames := []string{}
 
-		for _, archVariant := range archVariants[arch] {
-			archVariant := variantReplacer.Replace(archVariant)
-			variants = append(variants, proptools.FieldNameForProperty(archVariant))
+		for _, archVariantName := range archVariants[archType] {
+			propName := variantReplacer.Replace(archVariantName)
+			variantNames = append(variantNames, proptools.FieldNameForProperty(propName))
 		}
-		for _, feature := range archFeatures[arch] {
-			feature := variantReplacer.Replace(feature)
-			variants = append(variants, proptools.FieldNameForProperty(feature))
+		for _, featureName := range archFeatures[archType] {
+			propName := variantReplacer.Replace(featureName)
+			variantNames = append(variantNames, proptools.FieldNameForProperty(propName))
 		}
 
-		fields := variantFields(variants)
+		fields := makeFields(filteredType, variantNames)
 
 		fields = append([]reflect.StructField{reflect.StructField{
 			Name:      "BlueprintEmbed",
-			Type:      props,
+			Type:      filteredType,
 			Anonymous: true,
 		}}, fields...)
 
 		archFields[i] = reflect.StructField{
-			Name: arch.Field,
+			Name: archType.Field,
 			Type: reflect.StructOf(fields),
 		}
 	}
 	archType := reflect.StructOf(archFields)
 
-	multilibType := reflect.StructOf(variantFields([]string{"Lib32", "Lib64"}))
+	multilibType := reflect.StructOf(makeFields(filteredType, []string{"Lib32", "Lib64"}))
 
 	targets := []string{
 		"Host",
@@ -472,7 +516,7 @@ func createArchType(props reflect.Type) reflect.Type {
 		}
 	}
 
-	targetType := reflect.StructOf(variantFields(targets))
+	targetType := reflect.StructOf(makeFields(filteredType, targets))
 	return reflect.StructOf([]reflect.StructField{
 		reflect.StructField{
 			Name: "Arch",
@@ -693,7 +737,6 @@ func (a *ModuleBase) setArchProperties(ctx BottomUpMutatorContext) {
 		//     android_x86 {
 		//         key: value,
 		//     },
-		// },
 		// },
 		field = os.Field
 		prefix = "target." + os.Name
@@ -945,7 +988,7 @@ func decodeArchSettings(archConfigs []archConfig) ([]Target, error) {
 }
 
 // Convert a set of strings from product variables into a single Arch struct
-func decodeArch(arch string, archVariant, cpuVariant *string, abi *[]string) (Arch, error) {
+func decodeArch(archName string, archVariant, cpuVariant *string, abi *[]string) (Arch, error) {
 	stringPtr := func(p *string) string {
 		if p != nil {
 			return *p
@@ -960,9 +1003,9 @@ func decodeArch(arch string, archVariant, cpuVariant *string, abi *[]string) (Ar
 		return nil
 	}
 
-	archType, ok := archTypeMap[arch]
+	archType, ok := archTypeByName[archName]
 	if !ok {
-		return Arch{}, fmt.Errorf("unknown arch %q", arch)
+		return Arch{}, fmt.Errorf("unknown arch %q", archName)
 	}
 
 	a := Arch{
@@ -988,7 +1031,7 @@ func decodeArch(arch string, archVariant, cpuVariant *string, abi *[]string) (Ar
 		}
 	}
 
-	if featureMap, ok := archFeatureMap[archType]; ok {
+	if featureMap, ok := archFeaturesMap[archType]; ok {
 		a.ArchFeatures = featureMap[a.ArchVariant]
 	}
 
