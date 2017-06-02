@@ -238,6 +238,19 @@ const (
 	HostCross
 )
 
+func (c OsCompatibility) RunsOnDevice() bool {
+	return c == Device
+}
+func (c OsCompatibility) RunsOnThisHost() bool {
+	return c == Host
+}
+func (c OsCompatibility) RunsOnOtherHost() bool {
+	return c == HostCross
+}
+func (c OsCompatibility) RunsOnSomeHost() bool {
+	return c.RunsOnThisHost() || c.RunsOnOtherHost()
+}
+
 func (class OsCompatibility) String() string {
 	switch class {
 	case Generic:
@@ -320,10 +333,10 @@ func archMutator(mctx BottomUpMutatorContext) {
 			continue
 		}
 		var multilib string
-		switch class {
-		case Device:
+		switch {
+		case class.RunsOnDevice():
 			multilib = module.base().commonProperties.Target.Android.Compile_multilib
-		case Host, HostCross:
+		case class.RunsOnSomeHost():
 			multilib = module.base().commonProperties.Target.Host.Compile_multilib
 		}
 		if multilib == "" {
@@ -713,7 +726,7 @@ func (a *ModuleBase) setArchProperties(ctx BottomUpMutatorContext) {
 		//         key: value,
 		//     },
 		// },
-		if os.Class == Host || os.Class == HostCross {
+		if os.Class.RunsOnSomeHost() {
 			field = "Host"
 			prefix = "target.host"
 			a.appendProperties(ctx, genProps, targetProp, field, prefix)
@@ -751,7 +764,7 @@ func (a *ModuleBase) setArchProperties(ctx BottomUpMutatorContext) {
 		prefix = "target." + os.Name + "_" + t.Name
 		a.appendProperties(ctx, genProps, targetProp, field, prefix)
 
-		if (os.Class == Host || os.Class == HostCross) && os != Windows {
+		if os.Class.RunsOnSomeHost() && os != Windows {
 			field := "Not_windows"
 			prefix := "target.not_windows"
 			a.appendProperties(ctx, genProps, targetProp, field, prefix)
