@@ -335,16 +335,16 @@ func (a *ModuleBase) ArchSpecific() bool {
 	return a.commonProperties.ArchSpecific
 }
 
-func (a *ModuleBase) OsClassesSupported() []OsClass {
+func (a *ModuleBase) OsClassesSupported() []OsCompatibility {
 	switch a.commonProperties.HostOrDeviceSupported {
 	case HostSupported:
-		return []OsClass{Host, HostCross}
+		return []OsCompatibility{Host, HostCross}
 	case HostSupportedNoCross:
-		return []OsClass{Host}
+		return []OsCompatibility{Host}
 	case DeviceSupported:
-		return []OsClass{Device}
+		return []OsCompatibility{Device}
 	case HostAndDeviceSupported:
-		var supported []OsClass
+		var supported []OsCompatibility
 		if Bool(a.hostAndDeviceProperties.Host_supported) {
 			supported = append(supported, Host, HostCross)
 		}

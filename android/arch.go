@@ -217,21 +217,26 @@ type OsType struct {
 	Name string
 	// the name of the variable in which this OsType is stored
 	Field string
-	Class OsClass
+	Class OsCompatibility
 
 	DefaultDisabled bool
 }
 
-type OsClass int
+// OsCompatibility tells on which systems an OS will run
+type OsCompatibility int
 
 const (
-	Generic OsClass = iota
+	// Unspecified
+	Generic OsCompatibility = iota
+	// Runs on a device
 	Device
+	// Runs on this host
 	Host
+	// Runs on other hosts
 	HostCross
 )
 
-func (class OsClass) String() string {
+func (class OsCompatibility) String() string {
 	switch class {
 	case Generic:
 		return "generic"
@@ -250,7 +255,7 @@ func (os OsType) String() string {
 	return os.Name
 }
 
-func NewOsType(name string, class OsClass, defaultDisabled bool) OsType {
+func NewOsType(name string, class OsCompatibility, defaultDisabled bool) OsType {
 	os := OsType{
 		Name:  name,
 		Field: strings.Title(name),
@@ -774,10 +779,10 @@ func forEachInterface(v reflect.Value, f func(reflect.Value)) {
 }
 
 // Convert the arch product variables into a list of targets for each os class structs
-func decodeTargetProductVariables(config *config) (map[OsClass][]Target, error) {
+func decodeTargetProductVariables(config *config) (map[OsCompatibility][]Target, error) {
 	variables := config.ProductVariables
 
-	targets := make(map[OsClass][]Target)
+	targets := make(map[OsCompatibility][]Target)
 	var targetErr error
 
 	addTarget := func(os OsType, archName string, archVariant, cpuVariant *string, abi *[]string) {

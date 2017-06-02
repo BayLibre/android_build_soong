@@ -70,7 +70,7 @@ type config struct {
 	ConfigFileName           string
 	ProductVariablesFileName string
 
-	Targets        map[OsClass][]Target
+	Targets        map[OsCompatibility][]Target
 	BuildOsVariant string
 
 	deviceConfig *deviceConfig
