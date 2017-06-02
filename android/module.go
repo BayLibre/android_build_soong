@@ -324,7 +324,7 @@ func (a *ModuleBase) Os() OsType {
 }
 
 func (a *ModuleBase) Host() bool {
-	return a.Os().Class == Host || a.Os().Class == HostCross
+	return a.Os().Class.RunsOnSomeHost()
 }
 
 func (a *ModuleBase) Arch() Arch {
@@ -623,7 +623,7 @@ func (a *androidBaseContextImpl) Os() OsType {
 }
 
 func (a *androidBaseContextImpl) Host() bool {
-	return a.target.Os.Class == Host || a.target.Os.Class == HostCross
+	return a.target.Os.Class.RunsOnSomeHost()
 }
 
 func (a *androidBaseContextImpl) Device() bool {
