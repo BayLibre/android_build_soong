@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14399355_d4282d90",
+        "filename": "ui/build/exec.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-06T23:23:42Z",
+      "side": 1,
+      "message": "overly verbose.\n\n// doneChannel becomes closed when the command stops executing",
+      "revId": "704b1f75d544398badaddd3a3e87293f7f94cb9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "153b816e_7014698e",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-06T23:23:42Z",
+      "side": 1,
+      "message": "Most of the reason for this function to return a function is gone now, and now its just a convoluted way to use a lambda capture as a object variable.  Make a struct statusChecker { prevTime time.Time }, and put the function as a check() method",
+      "revId": "704b1f75d544398badaddd3a3e87293f7f94cb9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
