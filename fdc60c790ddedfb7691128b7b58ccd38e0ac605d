@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8d6b761a_1e4a9621",
+        "filename": "cmd/pom2mk/pom2mk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-08T06:26:30Z",
+      "side": 1,
+      "message": "I wanted to return after the first match. I could compare the input vs output strings, but that wouldn\u0027t allow you to keep the same name by providing a matching search/replace.",
+      "parentUuid": "bd21264f_7a7c44a6",
+      "revId": "fdc60c790ddedfb7691128b7b58ccd38e0ac605d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6dac9eb3_38186e3b",
         "filename": "cmd/pom2mk/pom2mk.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "fdc60c790ddedfb7691128b7b58ccd38e0ac605d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99435177_238f8d0b",
+        "filename": "cmd/pom2mk/pom2mk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-08T06:26:30Z",
+      "side": 1,
+      "message": "This has been removed in the latest patch",
+      "parentUuid": "6dac9eb3_38186e3b",
+      "revId": "fdc60c790ddedfb7691128b7b58ccd38e0ac605d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "5f819513_3fd5d0bb",
+        "filename": "cmd/pom2mk/pom2mk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-08T06:26:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23b31ea2_4c0f52c2",
+      "revId": "fdc60c790ddedfb7691128b7b58ccd38e0ac605d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76983286_1ddecd8c",
         "filename": "cmd/pom2mk/pom2mk.go",
         "patchSetId": 2
@@ -67,6 +121,24 @@
       "revId": "fdc60c790ddedfb7691128b7b58ccd38e0ac605d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e90c3bd_badb3a4d",
+        "filename": "cmd/pom2mk/pom2mk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-08T06:26:30Z",
+      "side": 1,
+      "message": "So I moved Name out to a helper method that calls Rewrite instead of calling Rewrite and storing the result in the struct. I also ended up adding another method to get a string list of makefile dependencies, since we don\u0027t really need to store it, but the calculation was too complicated to do in the template itself.\n\nFor the SrcFile/SrcFileSuffix, I switched those to a \"ArtifactFile\" member that\u0027s the file path the artifact represented by this pom file. (And added a comment to that effect)",
+      "parentUuid": "76983286_1ddecd8c",
+      "revId": "fdc60c790ddedfb7691128b7b58ccd38e0ac605d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "a1d375f3_31fad8ad",
+        "filename": "cmd/pom2mk/pom2mk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-08T06:26:30Z",
+      "side": 1,
+      "message": "We\u0027d never want to move the actual jar files (since they\u0027re probably checked into git, and may actually be used as a maven repo as well). The expectation was that the Android.mk would be written into the current directory (all the paths will be relative to the current directory), but it doesn\u0027t actually write to the file in case there\u0027s already a custom Android.mk. In that case, you\u0027d want to write it to something like maven.mk and have Android.mk `include` it.",
+      "parentUuid": "a464061e_08708696",
+      "revId": "fdc60c790ddedfb7691128b7b58ccd38e0ac605d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dbd66d28_2c37f41e",
         "filename": "cmd/pom2mk/pom2mk.go",
         "patchSetId": 2
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "627882e8_5327fa7a",
+        "filename": "cmd/pom2mk/pom2mk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-08T06:26:30Z",
+      "side": 1,
+      "message": "For the most part, these already have names, and we have no desire to rename everything. There\u0027s also the problem that our names generally contain more information than the artifactId -- it\u0027s closer to groupId+artifactId+version (but not in that format).\n\nExample 1:\n  Android module (not from maven): android-support-v7-mediarouter\n  groupId: com.android.support\n  artifactId: mediarouter-v7\n  version: 24.0.0    (not necessarily the version in our tree, since we only have one)\n\nExample 2:\n  Android module (not from maven): android-support-v4\n  groupId: com.android.support\n  artifactId: support-v4\n  version: 24.0.0\n\nOthers are more complicated, and may include other information like the variation of the artifact (internal vs external, etc) that isn\u0027t represented in the pom format.\n\nSo I expect that using the rewriting will be the norm instead of the exception -- that\u0027s one reason that the entire command line is embedded in the output file. Then it\u0027s possible to use the same rewriting step the next time you need to regenerate it.\n\n\u003cwe talked a bit offline\u003e I may be interesting to move this into a persistent config file instead, since you\u0027re often going to want to run it with the same arguments in the same directory. But that can be a later improvement if we find that we\u0027re often sharing a substantial part of the configurations. If it\u0027s mostly not common, storing the config in the output file should work well enough (and I expect the use of this tool itself may end up being scripted)",
+      "parentUuid": "dbd66d28_2c37f41e",
+      "revId": "fdc60c790ddedfb7691128b7b58ccd38e0ac605d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d02f1ea_8583734b",
         "filename": "cmd/pom2mk/pom2mk.go",
         "patchSetId": 2
@@ -118,6 +226,24 @@
       "revId": "fdc60c790ddedfb7691128b7b58ccd38e0ac605d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4144649c_5c99b229",
+        "filename": "cmd/pom2mk/pom2mk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-08T06:26:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d02f1ea_8583734b",
+      "revId": "fdc60c790ddedfb7691128b7b58ccd38e0ac605d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -144,6 +270,30 @@
     },
     {
       "key": {
+        "uuid": "47838fca_464d0c3e",
+        "filename": "cmd/pom2mk/pom2mk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-08T06:26:30Z",
+      "side": 1,
+      "message": "fmt.Print[ln] puts spaces between arguments already",
+      "parentUuid": "356f2bc8_e4d9f551",
+      "range": {
+        "startLine": 147,
+        "startChar": 21,
+        "endLine": 147,
+        "endChar": 23
+      },
+      "revId": "fdc60c790ddedfb7691128b7b58ccd38e0ac605d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19230306_a2a3515d",
         "filename": "cmd/pom2mk/pom2mk.go",
         "patchSetId": 2
@@ -164,6 +314,30 @@
       "revId": "fdc60c790ddedfb7691128b7b58ccd38e0ac605d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5e6d54b_9bb93646",
+        "filename": "cmd/pom2mk/pom2mk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-08T06:26:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19230306_a2a3515d",
+      "range": {
+        "startLine": 157,
+        "startChar": 21,
+        "endLine": 157,
+        "endChar": 24
+      },
+      "revId": "fdc60c790ddedfb7691128b7b58ccd38e0ac605d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -190,6 +364,30 @@
     },
     {
       "key": {
+        "uuid": "e8b452b3_d26bf994",
+        "filename": "cmd/pom2mk/pom2mk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-08T06:26:30Z",
+      "side": 1,
+      "message": "Yeah, pom.xml is outside the scope of this tool (that would be xml2mk :) -- I\u0027ve added an error if the list of files to convert is empty.",
+      "parentUuid": "4ab5f707_5a002870",
+      "range": {
+        "startLine": 174,
+        "startChar": 38,
+        "endLine": 174,
+        "endChar": 69
+      },
+      "revId": "fdc60c790ddedfb7691128b7b58ccd38e0ac605d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a4dfa25_2387cc70",
         "filename": "cmd/pom2mk/pom2mk.go",
         "patchSetId": 2
@@ -204,6 +402,24 @@
       "revId": "fdc60c790ddedfb7691128b7b58ccd38e0ac605d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f86d64b_2f24f12a",
+        "filename": "cmd/pom2mk/pom2mk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-08T06:26:30Z",
+      "side": 1,
+      "message": "Yeah, if this really turns into a general purpose tool, some sort of filtering is likely also required (so that you don\u0027t convert the entire repo, or every version). The rewriting may also need to handle versions.\n\nThe current usecase is for a maven repo with a single version/group, which is our preference in android for repo maintenance reasons as well.",
+      "parentUuid": "3a4dfa25_2387cc70",
+      "revId": "fdc60c790ddedfb7691128b7b58ccd38e0ac605d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
