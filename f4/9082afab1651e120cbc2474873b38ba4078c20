@@ -1,0 +1,8 @@
+Verified+1: Jeff Gaston <jeffrygaston@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Dan Willemsen <dwillemsen@google.com>
+Submitted-by: Jeff Gaston <jeffrygaston@google.com>
+Submitted-at: Fri, 09 Jun 2017 22:08:33 +0000
+Reviewed-on: https://android-review.googlesource.com/410945
+Project: platform/build/soong
+Branch: refs/heads/master
