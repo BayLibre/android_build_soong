@@ -210,6 +210,7 @@ type builderFlags struct {
 	arFlags     string
 	asFlags     string
 	cFlags      string
+	sanCFlags   string
 	conlyFlags  string
 	cppFlags    string
 	ldFlags     string
@@ -327,6 +328,7 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 		}
 
 		var moduleCflags string
+		var moduleToolingCflags string
 		var ccCmd string
 		tidy := flags.tidy && flags.clang
 		coverage := flags.coverage
@@ -341,10 +343,18 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 			dump = false
 		case ".c":
 			ccCmd = "gcc"
-			moduleCflags = cflags
+			moduleToolingCflags = cflags
+			moduleCflags = strings.Join([]string{
+				cflags,
+				flags.sanCFlags,
+			}, " ")
 		case ".cpp", ".cc", ".mm":
 			ccCmd = "g++"
-			moduleCflags = cppflags
+			moduleToolingCflags = cppflags
+			moduleCflags = strings.Join([]string{
+				cppflags,
+				flags.sanCFlags,
+			}, " ")
 		default:
 			ctx.ModuleErrorf("File %s has unknown extension", srcFile)
 			continue
@@ -402,7 +412,7 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 				// support exporting dependencies.
 				Implicit: objFile,
 				Args: map[string]string{
-					"cFlags":    moduleCflags,
+					"cFlags":    moduleToolingCflags,
 					"tidyFlags": flags.tidyFlags,
 				},
 			})
@@ -419,7 +429,7 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 				Input:       srcFile,
 				Implicit:    objFile,
 				Args: map[string]string{
-					"cFlags":     moduleCflags,
+					"cFlags":     moduleToolingCflags,
 					"exportDirs": flags.sAbiFlags,
 				},
 			})

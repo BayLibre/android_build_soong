@@ -101,6 +101,7 @@ type Flags struct {
 	ArFlags     []string // Flags that apply to ar
 	AsFlags     []string // Flags that apply to assembly source files
 	CFlags      []string // Flags that apply to C and C++ source files
+	SanCFlags   []string // Flags that apply to C and C++ source files on sanitized builds
 	ConlyFlags  []string // Flags that apply to C source files
 	CppFlags    []string // Flags that apply to C++ source files
 	YaccFlags   []string // Flags that apply to Yacc source files

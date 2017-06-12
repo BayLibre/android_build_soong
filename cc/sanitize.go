@@ -300,7 +300,7 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 			// TODO: put in flags?
 			flags.RequiredInstructionSet = "arm"
 		}
-		flags.CFlags = append(flags.CFlags, asanCflags)
+		flags.SanCFlags = append(flags.SanCFlags, asanCflags)
 		flags.LdFlags = append(flags.LdFlags, asanLdflags)
 
 		if ctx.Host() {
@@ -309,7 +309,7 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 			flags.LdFlags = append(flags.LdFlags, "-lm", "-lpthread")
 			flags.LdFlags = append(flags.LdFlags, "-Wl,--no-as-needed")
 		} else {
-			flags.CFlags = append(flags.CFlags, "-mllvm", "-asan-globals=0")
+			flags.SanCFlags = append(flags.SanCFlags, "-mllvm", "-asan-globals=0")
 			flags.DynamicLinker = "/system/bin/linker_asan"
 			if flags.Toolchain.Is64Bit() {
 				flags.DynamicLinker += "64"
@@ -320,7 +320,7 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 	}
 
 	if Bool(sanitize.Properties.Sanitize.Coverage) {
-		flags.CFlags = append(flags.CFlags, "-fsanitize-coverage=edge,indirect-calls,8bit-counters,trace-cmp")
+		flags.SanCFlags = append(flags.SanCFlags, "-fsanitize-coverage=edge,indirect-calls,8bit-counters,trace-cmp")
 	}
 
 	if Bool(sanitize.Properties.Sanitize.Safestack) {
@@ -337,7 +337,7 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 			flags.LdFlags = append(flags.LdFlags, "-march=armv7-a")
 		}
 		sanitizers = append(sanitizers, "cfi")
-		flags.CFlags = append(flags.CFlags, cfiCflags)
+		flags.SanCFlags = append(flags.SanCFlags, cfiCflags)
 		flags.LdFlags = append(flags.LdFlags, cfiLdflags)
 		flags.ArFlags = append(flags.ArFlags, cfiArflags)
 		if Bool(sanitize.Properties.Sanitize.Diag.Cfi) {
@@ -347,9 +347,9 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 
 	if len(sanitizers) > 0 {
 		sanitizeArg := "-fsanitize=" + strings.Join(sanitizers, ",")
-		flags.CFlags = append(flags.CFlags, sanitizeArg)
+		flags.SanCFlags = append(flags.SanCFlags, sanitizeArg)
 		if ctx.Host() {
-			flags.CFlags = append(flags.CFlags, "-fno-sanitize-recover=all")
+			flags.SanCFlags = append(flags.SanCFlags, "-fno-sanitize-recover=all")
 			flags.LdFlags = append(flags.LdFlags, sanitizeArg)
 			if ctx.Os() == android.Linux {
 				flags.LdFlags = append(flags.LdFlags, "-lrt")
@@ -359,17 +359,17 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 			// there will always be undefined symbols in intermediate libraries.
 			_, flags.LdFlags = removeFromList("-Wl,--no-undefined", flags.LdFlags)
 		} else {
-			flags.CFlags = append(flags.CFlags, "-fsanitize-trap=all", "-ftrap-function=abort")
+			flags.SanCFlags = append(flags.SanCFlags, "-fsanitize-trap=all", "-ftrap-function=abort")
 		}
 	}
 
 	if len(diagSanitizers) > 0 {
-		flags.CFlags = append(flags.CFlags, "-fno-sanitize-trap="+strings.Join(diagSanitizers, ","))
+		flags.SanCFlags = append(flags.SanCFlags, "-fno-sanitize-trap="+strings.Join(diagSanitizers, ","))
 	}
 	// FIXME: enable RTTI if diag + (cfi or vptr)
 
 	if sanitize.Properties.Sanitize.Recover != nil {
-		flags.CFlags = append(flags.CFlags, "-fsanitize-recover="+
+		flags.SanCFlags = append(flags.SanCFlags, "-fsanitize-recover="+
 			strings.Join(sanitize.Properties.Sanitize.Recover, ","))
 	}
 
@@ -391,7 +391,7 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 
 	blacklist := android.OptionalPathForModuleSrc(ctx, sanitize.Properties.Sanitize.Blacklist)
 	if blacklist.Valid() {
-		flags.CFlags = append(flags.CFlags, "-fsanitize-blacklist="+blacklist.String())
+		flags.SanCFlags = append(flags.SanCFlags, "-fsanitize-blacklist="+blacklist.String())
 		flags.CFlagsDeps = append(flags.CFlagsDeps, blacklist.Path())
 	}
 
