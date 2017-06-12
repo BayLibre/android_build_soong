@@ -197,7 +197,7 @@ func (g *generator) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			if path.IsAbs(genPath) {
 				var err error
 				outputPath := android.PathForOutput(ctx).String()
-				relativePath, err = filepath.Rel(genPath, outputPath)
+				relativePath, err = filepath.Rel(outputPath, genPath)
 				if err != nil {
 					panic(err)
 				}
@@ -224,11 +224,12 @@ func (g *generator) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	// tell the sbox command which directory to use as its sandbox root
-	sandboxPath := shared.TempDirForOutDir(android.PathForOutput(ctx).String())
+	buildDir := android.PathForOutput(ctx).String()
+	sandboxPath := shared.TempDirForOutDir(buildDir)
 
 	// recall that Sprintf replaces percent sign expressions, whereas dollar signs expressions remain as written,
 	// to be replaced later by ninja_strings.go
-	sandboxCommand := fmt.Sprintf("$sboxCmd --sandbox-path %s -c %q $out", sandboxPath, rawCommand)
+	sandboxCommand := fmt.Sprintf("$sboxCmd --sandbox-path %s --output-root %s -c %q $out", sandboxPath, buildDir, rawCommand)
 
 	ruleParams := blueprint.RuleParams{
 		Command:     sandboxCommand,
