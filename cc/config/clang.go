@@ -130,6 +130,9 @@ func ClangFilterUnknownCflags(cflags []string) []string {
 	ret := make([]string, 0, len(cflags))
 	for _, f := range cflags {
 		if !inListSorted(f, ClangUnknownCflags) {
+			if f == "-O2" || f == "-Os" {
+				f = "-Oz"
+			}
 			ret = append(ret, f)
 		}
 	}
