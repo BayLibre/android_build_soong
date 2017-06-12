@@ -16,6 +16,24 @@
       "revId": "4a9bf75ee3a3ddf1e1b9437914fcc314a2803e1e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "880749a9_74a2f58a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-06-12T23:18:17Z",
+      "side": 1,
+      "message": "I didn\u0027t. I\u0027ve now started a build involving relative paths too.",
+      "parentUuid": "44f676f9_f166af23",
+      "revId": "4a9bf75ee3a3ddf1e1b9437914fcc314a2803e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
