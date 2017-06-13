@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6cafd00_bc90ac32",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-13T20:36:16Z",
+      "side": 1,
+      "message": "This loop should exit, not just block when we\u0027re done.",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 26
+      },
+      "revId": "1f5e3b3dcbefd94f58a3b36e905d678ee1e4420e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f806fcbd_be72ffbb",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-13T20:36:16Z",
+      "side": 1,
+      "message": "This should be a defer next to NewTicker",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 14
+      },
+      "revId": "1f5e3b3dcbefd94f58a3b36e905d678ee1e4420e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
