@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f62c8af_d141f3c8",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2017-06-13T20:19:05Z",
+      "side": 1,
+      "message": "Consider doing the same for Diag.Undefined",
+      "revId": "8da4c591c3565576e22ca44f0737badd5948d06a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
