@@ -34,6 +34,24 @@
       "revId": "76f0f1fca6157e5f41b4f35f1e0614c0b8bdf65f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2e76686_17b537e0",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-13T20:44:36Z",
+      "side": 1,
+      "message": "You could always create your own done channel:\n\n  done :\u003d make(chan struct{})\n  defer close(done)",
+      "parentUuid": "5685e8d0_542f32f6",
+      "revId": "76f0f1fca6157e5f41b4f35f1e0614c0b8bdf65f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
