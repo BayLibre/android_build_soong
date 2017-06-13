@@ -16,6 +16,24 @@
       "revId": "76f0f1fca6157e5f41b4f35f1e0614c0b8bdf65f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5685e8d0_542f32f6",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-06-13T20:40:21Z",
+      "side": 1,
+      "message": "Hmm I think to do that requires accessing cmd.doneChannel . Colin didn\u0027t want either to access a channel from another file or to move the polling logic into exec.go so I think I need some opinions from Colin too.",
+      "parentUuid": "94a9f6a3_cdd72b53",
+      "revId": "76f0f1fca6157e5f41b4f35f1e0614c0b8bdf65f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
