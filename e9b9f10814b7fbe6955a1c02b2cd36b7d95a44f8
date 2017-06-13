@@ -16,6 +16,24 @@
       "revId": "e9b9f10814b7fbe6955a1c02b2cd36b7d95a44f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7da4b3e8_05ec8ac0",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2017-06-13T19:55:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a2ea148_2105fbe8",
+      "revId": "e9b9f10814b7fbe6955a1c02b2cd36b7d95a44f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
