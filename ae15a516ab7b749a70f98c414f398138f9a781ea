@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a65f504e_f98abb0d",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-13T20:52:57Z",
+      "side": 1,
+      "message": "nit: extra blank line",
+      "revId": "ae15a516ab7b749a70f98c414f398138f9a781ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
