@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94a9f6a3_cdd72b53",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-13T20:09:45Z",
+      "side": 1,
+      "message": "Using select and a time.Ticker would allow you to break out of the loop as soon as the command is finished",
+      "revId": "76f0f1fca6157e5f41b4f35f1e0614c0b8bdf65f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
