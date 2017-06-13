@@ -83,9 +83,12 @@ func runNinja(ctx Context, config Config) {
 	// Poll the ninja log for updates; if it isn't updated enough, then we want to show some diagnostics
 	checker := &statusChecker{}
 	go func() {
-		for !cmd.Done() {
-			checker.check(ctx, config, logPath)
+		for {
 			time.Sleep(ninjaHeartbeatDuration)
+			if cmd.Done() {
+				break
+			}
+			checker.check(ctx, config, logPath)
 		}
 	}()
 
@@ -127,5 +130,5 @@ func dumpStucknessDiagnostics(ctx Context, config Config, statusPath string, las
 	output := cmd.CombinedOutputOrFatal()
 	ctx.Verbose(string(output))
 
-	ctx.Printf("done\n")
+	ctx.Verbosef("done\n")
 }
