@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a2ea148_2105fbe8",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2017-06-13T18:55:40Z",
+      "side": 1,
+      "message": "Maybe just check for SanitizerEnabled? -fno-sanitize-trap flag has no effect for disabled sanitizers.",
+      "revId": "e9b9f10814b7fbe6955a1c02b2cd36b7d95a44f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
