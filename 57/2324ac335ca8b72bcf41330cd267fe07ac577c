@@ -1,0 +1,9 @@
+Code-Review+2: Colin Cross <ccross@android.com>
+Verified+1: Yoshisato Yanagisawa <yyanagisawa@google.com>
+Autosubmit+1: Yoshisato Yanagisawa <yyanagisawa@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Wed, 14 Jun 2017 03:01:30 +0000
+Reviewed-on: https://android-review.googlesource.com/408980
+Project: platform/build/soong
+Branch: refs/heads/master
