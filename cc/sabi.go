@@ -15,6 +15,8 @@
 package cc
 
 import (
+	"strings"
+
 	"android/soong/android"
 	"github.com/google/blueprint"
 
@@ -40,7 +42,39 @@ func (sabimod *sabi) deps(ctx BaseModuleContext, deps Deps) Deps {
 	return deps
 }
 
+func concatenateSlices(slices [][]string) []string {
+	var combinedSlice []string
+	for _, slice := range slices {
+		combinedSlice = append(combinedSlice, slice...)
+	}
+	return combinedSlice
+}
+
+func splitAndFilterList(list []string, filter []string) (remainder []string, filtered []string) {
+	// Some elements of the slice might have multiple flags concatentated by spaces.
+	jointString := strings.Join(list, " ")
+	splitList := strings.Split(jointString, " ")
+	return filterList(splitList, filter)
+}
+
 func (sabimod *sabi) flags(ctx ModuleContext, flags Flags) Flags {
+	// Assuming that the cflags which clang LibTooling tools cannot
+	// understand have not been converted to ninja variables yet.
+
+	cFlagsSlices := [][]string{flags.GlobalFlags,
+		flags.SystemIncludeFlags,
+		flags.CFlags,
+		flags.ConlyFlags,
+	}
+	flags.ToolingCFlags, _ = splitAndFilterList(concatenateSlices(cFlagsSlices), config.ClangLibToolingUnknownCflags)
+
+	cppFlagsSlices := [][]string{
+		flags.GlobalFlags,
+		flags.SystemIncludeFlags,
+		flags.CFlags,
+		flags.CppFlags,
+	}
+	flags.ToolingCppFlags, _ = splitAndFilterList(concatenateSlices(cppFlagsSlices), config.ClangLibToolingUnknownCflags)
 	return flags
 }
 

@@ -26,6 +26,10 @@ import (
 )
 
 const (
+	// Any C flags added by sanitizer which libTooling tools may not
+	// understand also need to be added to ClangLibToolingUnknownCflags in
+	// cc/config/clang.go
+
 	asanCflags  = "-fno-omit-frame-pointer"
 	asanLdflags = "-Wl,-u,__asan_preinit"
 	asanLibs    = "libasan"

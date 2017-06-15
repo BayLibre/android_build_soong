@@ -65,6 +65,23 @@ var ClangUnknownCflags = sorted([]string{
 	"-mbionic",
 })
 
+var ClangLibToolingUnknownCflags = sorted([]string{
+	"-flto",
+	"-fsanitize-cfi-cross-dso",
+	"-fvisibility=default",
+	"-fsanitize-blacklist=external/compiler-rt/lib/cfi/cfi_blacklist.txt",
+	"-fno-omit-frame-pointer",
+	"-mllvm",
+	"asan-globals=0",
+	"-fsanitize-coverage=edge,indirect-calls,8bit-counters,trace-cmp",
+	"-fno-sanitize-recover=all",
+	"-fsanitize-trap=all",
+	"-ftrap-function=abort",
+	"-fsanitize=cfi",
+	"-fsanitize=unsigned-integer-overflow,signed-integer-overflow,cfi",
+	"-fno-sanitize-trap=cfi",
+})
+
 func init() {
 	pctx.StaticVariable("ClangExtraCflags", strings.Join([]string{
 		"-D__compiler_offsetof=__builtin_offsetof",
