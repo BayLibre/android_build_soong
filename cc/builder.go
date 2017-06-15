@@ -210,8 +210,10 @@ type builderFlags struct {
 	arFlags     string
 	asFlags     string
 	cFlags      string
+	lTCFlags    string // Seperate set of Cflags for clang LibTooling tools
 	conlyFlags  string
 	cppFlags    string
+	lTCppFlags  string // Seperate set of Cppflags for clang LibTooling tools
 	ldFlags     string
 	libFlags    string
 	yaccFlags   string
@@ -327,6 +329,7 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 		}
 
 		var moduleCflags string
+		var moduleToolingCflags string
 		var ccCmd string
 		tidy := flags.tidy && flags.clang
 		coverage := flags.coverage
@@ -342,9 +345,17 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 		case ".c":
 			ccCmd = "gcc"
 			moduleCflags = cflags
+			moduleToolingCflags = strings.Join([]string{
+				flags.lTCFlags,
+				"${config.NoOverrideClangGlobalCflags} ",
+			}, " ")
 		case ".cpp", ".cc", ".mm":
 			ccCmd = "g++"
 			moduleCflags = cppflags
+			moduleToolingCflags = strings.Join([]string{
+				flags.lTCppFlags,
+				"${config.NoOverrideClangGlobalCflags} ",
+			}, " ")
 		default:
 			ctx.ModuleErrorf("File %s has unknown extension", srcFile)
 			continue
@@ -392,7 +403,6 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 		if tidy {
 			tidyFile := android.ObjPathWithExt(ctx, subdir, srcFile, "tidy")
 			tidyFiles = append(tidyFiles, tidyFile)
-
 			ctx.ModuleBuild(pctx, android.ModuleBuildParams{
 				Rule:        clangTidy,
 				Description: "clang-tidy " + srcFile.Rel(),
@@ -402,7 +412,7 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 				// support exporting dependencies.
 				Implicit: objFile,
 				Args: map[string]string{
-					"cFlags":    moduleCflags,
+					"cFlags":    moduleToolingCflags,
 					"tidyFlags": flags.tidyFlags,
 				},
 			})
@@ -419,7 +429,7 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 				Input:       srcFile,
 				Implicit:    objFile,
 				Args: map[string]string{
-					"cFlags":     moduleCflags,
+					"cFlags":     moduleToolingCflags,
 					"exportDirs": flags.sAbiFlags,
 				},
 			})

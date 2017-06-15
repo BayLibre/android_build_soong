@@ -40,7 +40,32 @@ func (sabimod *sabi) deps(ctx BaseModuleContext, deps Deps) Deps {
 	return deps
 }
 
+func concatenateSlices(slices [][]string) []string {
+	var combinedSlice []string
+	for _, slice := range slices {
+		combinedSlice = append(combinedSlice, slice...)
+	}
+	return combinedSlice
+}
+
 func (sabimod *sabi) flags(ctx ModuleContext, flags Flags) Flags {
+	// Assuming that the cflags which clang LibTooling tools cannot
+	// understand have not been converted to ninja variables yet.
+
+	cFlagsSlices := [][]string{flags.GlobalFlags,
+		flags.SystemIncludeFlags,
+		flags.CFlags,
+		flags.ConlyFlags,
+	}
+	flags.LTCFlags, _ = filterList(concatenateSlices(cFlagsSlices), config.ClangLibToolingUnknownCflags)
+
+	cppFlagsSlices := [][]string{
+		flags.GlobalFlags,
+		flags.SystemIncludeFlags,
+		flags.CFlags,
+		flags.CppFlags,
+	}
+	flags.LTCppFlags, _ = filterList(concatenateSlices(cppFlagsSlices), config.ClangLibToolingUnknownCflags)
 	return flags
 }
 
