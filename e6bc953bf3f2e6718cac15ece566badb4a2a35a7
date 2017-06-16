@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "390db3cc_e6680a48",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-16T01:28:25Z",
+      "side": 1,
+      "message": "This may as well be just runtime.GOOS if we\u0027re returning the same string. There are enough other checks for [\"darwin\", \"linux\"] still",
+      "range": {
+        "startLine": 185,
+        "startChar": 18,
+        "endLine": 194,
+        "endChar": 3
+      },
+      "revId": "e6bc953bf3f2e6718cac15ece566badb4a2a35a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "718fc6f3_8baeb24b",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-16T01:28:25Z",
+      "side": 1,
+      "message": "Everything but darwin should still be NewOsType -- we don\u0027t support cross compiling for linux, nor compiling on windows",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 47
+      },
+      "revId": "e6bc953bf3f2e6718cac15ece566badb4a2a35a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
