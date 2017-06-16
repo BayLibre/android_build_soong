@@ -46,6 +46,30 @@
       "revId": "184947e8b2e6dc8294d1216c7ddf0feb4c942446",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb5f945b_679cab48",
+        "filename": "cc/tidy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-06-16T21:50:05Z",
+      "side": 1,
+      "message": "Proper declarations of noreturn functions help control flow analysis in callers, for both optimized code and static analysis. We fixed other false positives by telling clang-tidy some noreturn macros and functions, right? So we should enable this warning in general.\nI see the complexity of art\u0027s code, so it is okay to suppress some warnings in art.",
+      "parentUuid": "71638b29_d10214e6",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 78
+      },
+      "revId": "184947e8b2e6dc8294d1216c7ddf0feb4c942446",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
