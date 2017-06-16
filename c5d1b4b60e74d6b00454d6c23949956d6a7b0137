@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb357202_dbc67246",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-16T01:28:28Z",
+      "side": 1,
+      "message": "I\u0027m not particularly happy with the current limitations of our OsCompatibility/OS options, so hardcoding these seems like not the right direction to me.\n\nSoon, we\u0027re going to need to build firmware that \"runs on device\", but in yet another completely different context. So like the next example below, it would likely neither be the Device or Host[Cross] options, but in other cases it\u0027ll act like Device. So that almost should look at OS for the device options, but group the host ones together.",
+      "revId": "c5d1b4b60e74d6b00454d6c23949956d6a7b0137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
