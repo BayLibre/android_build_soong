@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89a1f58f_80262cc5",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-16T01:28:32Z",
+      "side": 1,
+      "message": "I don\u0027t see this as an improvement, the type isn\u0027t plural, and archType is more specific than arch (though they\u0027re sometimes used interchangeably, we do have a type Arch as well)",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 16
+      },
+      "revId": "737bd10db001ab46e861a51d313b6a8ccef52670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb3e17b4_12185687",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-16T01:28:32Z",
+      "side": 1,
+      "message": "Inconsistent capitalization",
+      "range": {
+        "startLine": 164,
+        "startChar": 4,
+        "endLine": 164,
+        "endChar": 5
+      },
+      "revId": "737bd10db001ab46e861a51d313b6a8ccef52670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "139cde78_55d4a60d",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-16T01:28:32Z",
+      "side": 1,
+      "message": "If you\u0027re talking about Go, \"field\" is the correct term, not variable.",
+      "range": {
+        "startLine": 164,
+        "startChar": 19,
+        "endLine": 164,
+        "endChar": 27
+      },
+      "revId": "737bd10db001ab46e861a51d313b6a8ccef52670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0139ccb8_03041919",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-16T01:28:32Z",
+      "side": 1,
+      "message": "again, this is more properly field than variable",
+      "range": {
+        "startLine": 218,
+        "startChar": 20,
+        "endLine": 218,
+        "endChar": 28
+      },
+      "revId": "737bd10db001ab46e861a51d313b6a8ccef52670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88be5490_55dc38a9",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-16T01:28:32Z",
+      "side": 1,
+      "message": "I think the previous wording was clearer if you didn\u0027t fully understand go\u0027s embedding.",
+      "range": {
+        "startLine": 235,
+        "startChar": 25,
+        "endLine": 235,
+        "endChar": 33
+      },
+      "revId": "737bd10db001ab46e861a51d313b6a8ccef52670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7aea029e_2dd62d03",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-16T01:28:32Z",
+      "side": 1,
+      "message": "what do you mean by \"the Android module\"?",
+      "range": {
+        "startLine": 240,
+        "startChar": 72,
+        "endLine": 241,
+        "endChar": 17
+      },
+      "revId": "737bd10db001ab46e861a51d313b6a8ccef52670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
