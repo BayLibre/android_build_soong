@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "6261fec6_0ceca64a",
+        "filename": "cc/config/clang.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-06-16T02:10:04Z",
+      "side": 1,
+      "message": "This is because of how it has been defined in cc/sanitize.go, there will be no string match if it is broken up. On the other hand I could split all cflags by \" \" and then do the comparison as well.",
+      "parentUuid": "51187663_ca181c10",
+      "revId": "53b17a61bd120f8621d4c00c87709e7c735005a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ddb31612_0d596182",
         "filename": "cc/sabi.go",
         "patchSetId": 3
