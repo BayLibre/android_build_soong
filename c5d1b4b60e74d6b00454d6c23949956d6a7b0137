@@ -16,6 +16,24 @@
       "revId": "c5d1b4b60e74d6b00454d6c23949956d6a7b0137",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2cfd50c2_12307c19",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-06-16T20:18:22Z",
+      "side": 1,
+      "message": "Do you mean that the definition of \"Device\" and \"Host\" will soon be context-sensitive?\n\nThat seems to me like a reason to make even more helper functions and possibly rename these, but to still keep the concept of helper functions, to help to clarify which uses are interested in which features. For example:\n\nfunc (c OsCompatibility) CanBeFlashed() bool {\n  return c \u003d\u003d Device\n}\n\nfunc (c OsCompatibility) CanRunSDK() bool {\n  return c.RunsOnSomeHost()\n}\n\nfunc (c OsCompatibility) RunsOnThisHost() bool {\n\treturn c \u003d\u003d Host\n}\n\nand then if we want to replace these enums with structs full of flags, then it\u0027s easy to do that.",
+      "parentUuid": "fb357202_dbc67246",
+      "revId": "c5d1b4b60e74d6b00454d6c23949956d6a7b0137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
