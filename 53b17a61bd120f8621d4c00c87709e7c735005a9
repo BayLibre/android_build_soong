@@ -119,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "967f3bfc_f8c0ab15",
+        "filename": "cc/sabi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-16T23:44:08Z",
+      "side": 1,
+      "message": "then can you just filter flags.CFlags into flags.LTCFlags, and then combine them with GlobalFlags, etc. in builder.go?",
+      "parentUuid": "da73cff2_05734aef",
+      "revId": "53b17a61bd120f8621d4c00c87709e7c735005a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99ba33eb_ea8b0721",
         "filename": "cc/sanitize.go",
         "patchSetId": 3
@@ -183,6 +201,24 @@
       "side": 1,
       "message": "can slices be const ?",
       "parentUuid": "a1e5b931_9c4812e9",
+      "revId": "53b17a61bd120f8621d4c00c87709e7c735005a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a8e28cf_de7e31dc",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-16T23:44:08Z",
+      "side": 1,
+      "message": "no, make this a var instead of const",
+      "parentUuid": "313e76d1_1b318539",
       "revId": "53b17a61bd120f8621d4c00c87709e7c735005a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false

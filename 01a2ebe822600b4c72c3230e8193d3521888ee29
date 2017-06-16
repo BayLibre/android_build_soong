@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b1509db_a9f50927",
+        "filename": "cc/config/clang.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-16T23:44:08Z",
+      "side": 1,
+      "message": "This probably doesn\u0027t need to be in the list, can you double-check if there are any others?  Maybe -fvisibility\u003ddefault?\nYou could also do prefix matching to reduce this list, maybe check if the last character is * and if so do a prefix match?",
+      "revId": "01a2ebe822600b4c72c3230e8193d3521888ee29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d49323f1_261c7955",
+        "filename": "cc/sabi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-16T23:44:08Z",
+      "side": 1,
+      "message": "We don\u0027t want multiple flags concatenated in CFlags, split them up in sanitize.go and you won\u0027t need this function.",
+      "revId": "01a2ebe822600b4c72c3230e8193d3521888ee29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
