@@ -81,6 +81,14 @@ func (tidy *tidyFeature) flags(ctx ModuleContext, flags Flags) Flags {
 	// https://bugs.llvm.org/show_bug.cgi?id=32914
 	flags.TidyFlags = append(flags.TidyFlags, "-extra-arg-before=-D__clang_analyzer__")
 
+	// In the analyzer, if kBar is true, we'll get noreturn warnings for
+	// void SomeClass::foo() { CHECK(!kBar); /* useful things */ }
+	// since clang knows that CHECK(false) is itself noreturn.
+	//
+	// This just generates unwanted noise. Let clang handle complaining about "real" cases
+	// during compilation.
+	flags.TidyFlags = append(flags.TidyFlags, "-extra-arg=-Wno-missing-noreturn")
+
 	tidyChecks := "-checks="
 	if checks := ctx.AConfig().TidyChecks(); len(checks) > 0 {
 		tidyChecks += checks
