@@ -118,6 +118,30 @@
       "revId": "184947e8b2e6dc8294d1216c7ddf0feb4c942446",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d408aa0e_c239d174",
+        "filename": "cc/tidy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2017-06-16T23:25:21Z",
+      "side": 1,
+      "message": "That\u0027s interesting. I just did `mma` in external/selinux with WITH_TIDY/WITH_STATIC_ANALYZER unset, and got \"warning: function \u0027yy_fatal_error\u0027 could be declared with attribute \u0027noreturn\u0027\" from cil_lexer.c. Maybe we have things configured differently?\n\nIn general, do we expect people to enable extra -W flags in WITH_TIDY builds that they don\u0027t enable when building with clang? If so, that\u0027s news to me, and I think that\u0027s good enough reason to put this in art instead. :)",
+      "parentUuid": "d0afca92_d45dc9a1",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 78
+      },
+      "revId": "184947e8b2e6dc8294d1216c7ddf0feb4c942446",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
