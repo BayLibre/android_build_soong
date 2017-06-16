@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00a34ce4_aa4f3f4d",
+        "filename": "cc/tidy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-06-16T20:54:47Z",
+      "side": 1,
+      "message": "Do you want to suppress the clang-diagnostic-missing-noreturn warnings in art? Could it be suppressed only in art?\nMaybe you can do something like in c/410942.",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 78
+      },
+      "revId": "184947e8b2e6dc8294d1216c7ddf0feb4c942446",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
