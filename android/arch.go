@@ -850,6 +850,10 @@ func decodeTargetProductVariables(config *config) (map[OsCompatibility][]Target,
 
 	osAndArches := variables.OsAndArches
 
+	if BuildOs == Linux {
+		osAndArches = append(osAndArches, OsAndArches{OsName: Darwin.Name, ArchPrimary: "x86", ArchSecondary: "x86_64"})
+	}
+
 	for _, oaa := range osAndArches {
 		osName := oaa.OsName
 		crossHostOs := osByName(osName)
