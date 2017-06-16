@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04e45d46_0589f4b8",
+        "filename": "cc/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-16T02:07:11Z",
+      "side": 0,
+      "message": "unnecessary whitespace change",
+      "revId": "f49082afab1651e120cbc2474873b38ba4078c20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

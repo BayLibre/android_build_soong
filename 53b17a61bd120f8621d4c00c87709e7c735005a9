@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6897d86a_8f27b32d",
+        "filename": "cc/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-16T02:07:11Z",
+      "side": 1,
+      "message": "Make this a longer name, lT is not a common abbreviation.  toolingCFlags?",
+      "range": {
+        "startLine": 213,
+        "startChar": 1,
+        "endLine": 213,
+        "endChar": 9
+      },
+      "revId": "53b17a61bd120f8621d4c00c87709e7c735005a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "51187663_ca181c10",
+        "filename": "cc/config/clang.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-16T02:07:11Z",
+      "side": 1,
+      "message": "Why is this a single string and not individual entries?",
+      "revId": "53b17a61bd120f8621d4c00c87709e7c735005a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ddb31612_0d596182",
+        "filename": "cc/sabi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-16T02:07:11Z",
+      "side": 1,
+      "message": "Do you expect anything besides the CFlags to contain blacklisted flags?",
+      "revId": "53b17a61bd120f8621d4c00c87709e7c735005a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99ba33eb_ea8b0721",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-16T02:07:11Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem correct.  For example, -fno-omit-frame-pointer doesn\u0027t seem like something that will need to be filtered.",
+      "revId": "53b17a61bd120f8621d4c00c87709e7c735005a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1e5b931_9c4812e9",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-16T02:07:11Z",
+      "side": 1,
+      "message": "Make this a slice of strings so they can be filtered individually",
+      "revId": "53b17a61bd120f8621d4c00c87709e7c735005a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
