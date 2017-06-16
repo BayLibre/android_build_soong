@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "920ffb44_18fe3fe4",
+        "filename": "cc/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-06-16T23:38:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6897d86a_8f27b32d",
+      "range": {
+        "startLine": 213,
+        "startChar": 1,
+        "endLine": 213,
+        "endChar": 9
+      },
+      "revId": "53b17a61bd120f8621d4c00c87709e7c735005a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51187663_ca181c10",
         "filename": "cc/config/clang.go",
         "patchSetId": 3
@@ -77,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "da73cff2_05734aef",
+        "filename": "cc/sabi.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-06-16T23:38:35Z",
+      "side": 1,
+      "message": "From my current understanding of LibTooling I do not.",
+      "parentUuid": "ddb31612_0d596182",
+      "revId": "53b17a61bd120f8621d4c00c87709e7c735005a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99ba33eb_ea8b0721",
         "filename": "cc/sanitize.go",
         "patchSetId": 3
@@ -123,6 +165,24 @@
       "writtenOn": "2017-06-16T02:07:11Z",
       "side": 1,
       "message": "Make this a slice of strings so they can be filtered individually",
+      "revId": "53b17a61bd120f8621d4c00c87709e7c735005a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "313e76d1_1b318539",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-06-16T23:38:35Z",
+      "side": 1,
+      "message": "can slices be const ?",
+      "parentUuid": "a1e5b931_9c4812e9",
       "revId": "53b17a61bd120f8621d4c00c87709e7c735005a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
