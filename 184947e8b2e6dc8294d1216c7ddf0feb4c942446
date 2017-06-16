@@ -70,6 +70,30 @@
       "revId": "184947e8b2e6dc8294d1216c7ddf0feb4c942446",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ec87bca_09efec2b",
+        "filename": "cc/tidy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2017-06-16T22:27:18Z",
+      "side": 1,
+      "message": "\u003e Proper declarations of noreturn functions help control flow analysis in callers, for both optimized code and static analysis\n\nAgreed.\n\n\u003e So we should enable this warning in general\n\nI agree we should leave them enabled in clang across all of Android.\n\nI just can\u0027t imagine a reasonable true-positive where clang doesn\u0027t emit this warning and clang-tidy does.\n\nIs there a pattern you have in mind where that would happen? If not, why does it matter that clang-tidy complains about this, when clang is already doing so?",
+      "parentUuid": "fb5f945b_679cab48",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 78
+      },
+      "revId": "184947e8b2e6dc8294d1216c7ddf0feb4c942446",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
