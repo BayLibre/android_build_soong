@@ -68,7 +68,7 @@ type variableProperties struct {
 		}
 
 		// treble is true when a build is a Treble compliant device.  This is automatically set when
-		// a build is shipped with Android O, but can be overriden.  This controls such things as
+		// a build is shipped with Android O, but can be overridden.  This controls such things as
 		// the sepolicy split and enabling the Treble linker namespaces.
 		Treble struct {
 			Cflags []string
@@ -83,7 +83,7 @@ type variableProperties struct {
 			Cppflags []string
 		}
 
-		// eng is true for -eng builds, and can be used to turn on additionaly heavyweight debugging
+		// eng is true for -eng builds, and can be used to turn on additional heavyweight debugging
 		// features.
 		Eng struct {
 			Cflags   []string
@@ -97,6 +97,12 @@ type variableProperties struct {
 }
 
 var zeroProductVariables variableProperties
+
+type OsAndArches struct {
+	OsName        string
+	ArchPrimary   string
+	ArchSecondary string
+}
 
 type productVariables struct {
 	// Suffix to add to generated Makefiles
@@ -121,9 +127,7 @@ type productVariables struct {
 	HostArch          *string `json:",omitempty"`
 	HostSecondaryArch *string `json:",omitempty"`
 
-	CrossHost              *string `json:",omitempty"`
-	CrossHostArch          *string `json:",omitempty"`
-	CrossHostSecondaryArch *string `json:",omitempty"`
+	OsAndArches []OsAndArches `json:",omitempty"`
 
 	Allow_missing_dependencies *bool `json:",omitempty"`
 	Unbundled_build            *bool `json:",omitempty"`
@@ -195,9 +199,8 @@ func (v *productVariables) SetDefaultConfig() {
 	}
 
 	if runtime.GOOS == "linux" {
-		v.CrossHost = stringPtr("windows")
-		v.CrossHostArch = stringPtr("x86")
-		v.CrossHostSecondaryArch = stringPtr("x86_64")
+		v.OsAndArches = []OsAndArches{
+			OsAndArches{OsName: "windows", ArchPrimary: "x86", ArchSecondary: "x86_64"}}
 	}
 }
 

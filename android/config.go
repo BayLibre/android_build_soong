@@ -126,7 +126,7 @@ func loadFromConfigFile(configurable jsonConfigurable, filename string) error {
 		jsonDecoder := json.NewDecoder(configFileReader)
 		err = jsonDecoder.Decode(configurable)
 		if err != nil {
-			return fmt.Errorf("config file: %s did not parse correctly: "+err.Error(), filename)
+			return fmt.Errorf("config file: %s did not parse correctly: %s", filename, err.Error())
 		}
 	}
 

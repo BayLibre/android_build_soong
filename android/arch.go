@@ -848,20 +848,23 @@ func decodeTargetProductVariables(config *config) (map[OsCompatibility][]Target,
 		addTarget(LinuxBionic, "x86_64", nil, nil, nil)
 	}
 
-	if variables.CrossHost != nil && *variables.CrossHost != "" {
-		crossHostOs := osByName(*variables.CrossHost)
+	osAndArches := variables.OsAndArches
+
+	for _, oaa := range osAndArches {
+		osName := oaa.OsName
+		crossHostOs := osByName(osName)
 		if crossHostOs == NoOsType {
-			return nil, fmt.Errorf("Unknown cross host OS %q", *variables.CrossHost)
+			return nil, fmt.Errorf("Unknown cross host OS %q", osName)
 		}
 
-		if variables.CrossHostArch == nil || *variables.CrossHostArch == "" {
-			return nil, fmt.Errorf("No cross-host primary architecture set")
+		if oaa.ArchPrimary == "" {
+			return nil, fmt.Errorf("No cross-host primary architecture set for OS %s", osName)
 		}
 
-		addTarget(crossHostOs, *variables.CrossHostArch, nil, nil, nil)
+		addTarget(crossHostOs, oaa.ArchPrimary, nil, nil, nil)
 
-		if variables.CrossHostSecondaryArch != nil && *variables.CrossHostSecondaryArch != "" {
-			addTarget(crossHostOs, *variables.CrossHostSecondaryArch, nil, nil, nil)
+		if oaa.ArchSecondary != "" {
+			addTarget(crossHostOs, oaa.ArchSecondary, nil, nil, nil)
 		}
 	}
 
