@@ -22,6 +22,30 @@
       "revId": "184947e8b2e6dc8294d1216c7ddf0feb4c942446",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "71638b29_d10214e6",
+        "filename": "cc/tidy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2017-06-16T21:37:45Z",
+      "side": 1,
+      "message": "Is there a case where you think getting this warning from the analyzer would be useful?\n\nNormally I\u0027d agree that scoping this to art would be the right call, but IMO, the analyzer-specific changes to CHECK/DCHECK make these warnings way too aggressive to be useful.\n\nSince this shouldn\u0027t change whether the user gets these warnings when compiling with clang, it seems to me like disabling this in art/ would just make more work in the future for questionable gain (e.g. if CHECK(constant_false) shows up anywhere else, we\u0027ll just end up  suppressing this noreturn warning for that package, ...).",
+      "parentUuid": "00a34ce4_aa4f3f4d",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 78
+      },
+      "revId": "184947e8b2e6dc8294d1216c7ddf0feb4c942446",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
