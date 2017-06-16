@@ -841,6 +841,12 @@ func forEachInterface(v reflect.Value, f func(reflect.Value)) {
 	}
 }
 
+type OsAndArches struct {
+	OsName        string
+	ArchPrimary   string
+	ArchSecondary string
+}
+
 // Convert the arch product variables into a list of targets for each os class structs
 func decodeTargetProductVariables(config *config) (map[OsCompatibility][]Target, error) {
 	variables := config.ProductVariables
@@ -880,20 +886,30 @@ func decodeTargetProductVariables(config *config) (map[OsCompatibility][]Target,
 		addTarget(LinuxBionic, "x86_64", nil, nil, nil)
 	}
 
+	osAndArches := []OsAndArches{}
 	if variables.CrossHost != nil && *variables.CrossHost != "" {
-		crossHostOs := osByName(*variables.CrossHost)
+		osAndArches = append(osAndArches, OsAndArches{OsName: *variables.CrossHost, ArchPrimary: *variables.CrossHostArch, ArchSecondary: *variables.CrossHostSecondaryArch})
+	}
+
+	if BuildOs == Linux {
+		osAndArches = append(osAndArches, OsAndArches{OsName: Darwin.Name, ArchPrimary: "x86", ArchSecondary: "x86_64"})
+	}
+
+	for _, oaa := range osAndArches {
+		osName := oaa.OsName
+		crossHostOs := osByName(osName)
 		if crossHostOs == NoOsType {
 			return nil, fmt.Errorf("Unknown cross host OS %q", *variables.CrossHost)
 		}
 
-		if variables.CrossHostArch == nil || *variables.CrossHostArch == "" {
-			return nil, fmt.Errorf("No cross-host primary architecture set")
+		if oaa.ArchPrimary == "" {
+			return nil, fmt.Errorf("No cross-host primary architecture set for Os %s", osName)
 		}
 
-		addTarget(crossHostOs, *variables.CrossHostArch, nil, nil, nil)
+		addTarget(crossHostOs, oaa.ArchPrimary, nil, nil, nil)
 
-		if variables.CrossHostSecondaryArch != nil && *variables.CrossHostSecondaryArch != "" {
-			addTarget(crossHostOs, *variables.CrossHostSecondaryArch, nil, nil, nil)
+		if oaa.ArchSecondary != "" {
+			addTarget(crossHostOs, oaa.ArchSecondary, nil, nil, nil)
 		}
 	}
 
