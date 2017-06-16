@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "3e4a5df0_38633d6d",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-16T20:11:03Z",
+      "side": 1,
+      "message": "No, this is referring to the name of the struct field used in the property structs (which is the capitalized version of the Name, see FieldNameForProperty)",
+      "parentUuid": "5745403f_e253f5a0",
+      "range": {
+        "startLine": 164,
+        "startChar": 19,
+        "endLine": 164,
+        "endChar": 27
+      },
+      "revId": "737bd10db001ab46e861a51d313b6a8ccef52670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0139ccb8_03041919",
         "filename": "android/arch.go",
         "patchSetId": 1
