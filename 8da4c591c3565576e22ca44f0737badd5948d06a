@@ -34,6 +34,24 @@
       "revId": "8da4c591c3565576e22ca44f0737badd5948d06a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37351764_5afa82b0",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2017-06-19T16:50:19Z",
+      "side": 1,
+      "message": "Removed the superfluous check. The append won\u0027t modify diagSanitizers if Misc_undefined is empty, so I\u0027m not sure if it\u0027s worth checking the length of Misc_undefined first.",
+      "parentUuid": "97bc4c50_2be49898",
+      "revId": "8da4c591c3565576e22ca44f0737badd5948d06a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
