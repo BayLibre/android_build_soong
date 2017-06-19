@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c720f26c_f53edde0",
+        "filename": "cc/config/clang.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-06-19T23:16:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b1509db_a9f50927",
+      "revId": "01a2ebe822600b4c72c3230e8193d3521888ee29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d49323f1_261c7955",
         "filename": "cc/sabi.go",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2017-06-16T23:44:08Z",
       "side": 1,
       "message": "We don\u0027t want multiple flags concatenated in CFlags, split them up in sanitize.go and you won\u0027t need this function.",
+      "revId": "01a2ebe822600b4c72c3230e8193d3521888ee29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c55cc22_c11b8393",
+        "filename": "cc/sabi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-06-19T23:16:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d49323f1_261c7955",
       "revId": "01a2ebe822600b4c72c3230e8193d3521888ee29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false

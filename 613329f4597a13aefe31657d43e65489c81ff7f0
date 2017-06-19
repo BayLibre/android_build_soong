@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7612ca72_252b9fac",
+        "filename": "cc/sabi.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-06-19T23:16:38Z",
+      "side": 1,
+      "message": "I can move this to util.go if needed.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 29
+      },
+      "revId": "613329f4597a13aefe31657d43e65489c81ff7f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
