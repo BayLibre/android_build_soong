@@ -16,6 +16,24 @@
       "revId": "8da4c591c3565576e22ca44f0737badd5948d06a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97bc4c50_2be49898",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-19T15:30:06Z",
+      "side": 1,
+      "message": "SanitizerEnabled has to be true here, it is checked on line 246.",
+      "parentUuid": "0f62c8af_d141f3c8",
+      "revId": "8da4c591c3565576e22ca44f0737badd5948d06a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
