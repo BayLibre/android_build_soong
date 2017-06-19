@@ -16,6 +16,24 @@
       "revId": "651275ba90215bcca6d5fb3ca26d05a4de9f1877",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "496876ea_536e7f29",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2017-06-19T18:23:20Z",
+      "side": 1,
+      "message": "I think so. It will not have any effect on compilation.\n\nAnd it will only happen when there is a sanitize.diag entry without a corresponding sanitize entry, which should not be common at all.",
+      "parentUuid": "2d789531_2995afdf",
+      "revId": "651275ba90215bcca6d5fb3ca26d05a4de9f1877",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
