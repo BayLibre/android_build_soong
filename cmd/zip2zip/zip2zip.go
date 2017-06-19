@@ -19,6 +19,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"sort"
 	"strings"
 
 	"android/soong/third_party/zip"
@@ -27,6 +28,7 @@ import (
 var (
 	input  = flag.String("i", "", "zip file to read from")
 	output = flag.String("o", "", "output file")
+	sorted = flag.Bool("s", false, "sort glob matches (defaults to using the input order)")
 )
 
 func usage() {
@@ -39,14 +41,20 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "")
 	fmt.Fprintln(os.Stderr, "Files will be copied with their existing compression from the input zipfile to")
 	fmt.Fprintln(os.Stderr, "the output zipfile, in the order of filespec arguments")
-	os.Exit(2)
+}
+
+type fileMatch struct {
+	file *zip.File
+	name string
 }
 
 func main() {
+	flag.Usage = usage
 	flag.Parse()
 
 	if flag.NArg() == 0 || *input == "" || *output == "" {
 		usage()
+		os.Exit(2)
 	}
 
 	reader, err := zip.OpenReader(*input)
@@ -72,15 +80,21 @@ func main() {
 		}
 	}()
 
-	for _, arg := range flag.Args() {
+	if err := zip2zip(&reader.Reader, writer, *sorted, flag.Args()); err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(6)
+	}
+}
+
+func zip2zip(reader *zip.Reader, writer *zip.Writer, sorted bool, args []string) error {
+	for _, arg := range args {
 		var input string
 		var output string
 
 		// Reserve escaping for future implementation, so make sure no
 		// one is using \ and expecting a certain behavior.
 		if strings.Contains(arg, "\\") {
-			fmt.Fprintln(os.Stderr, "\\ characters are not currently supported")
-			os.Exit(6)
+			return fmt.Errorf("\\ characters are not currently supported")
 		}
 
 		args := strings.SplitN(arg, ":", 2)
@@ -90,11 +104,22 @@ func main() {
 		}
 
 		if strings.IndexAny(input, "*?[") >= 0 {
+			matches := []fileMatch{}
+
 			for _, file := range reader.File {
-				if match, err := filepath.Match(input, file.Name); err != nil {
-					fmt.Fprintln(os.Stderr, err)
-					os.Exit(7)
-				} else if match {
+				var match bool
+
+				if input == "**" {
+					match = true
+				} else {
+					var err error
+					match, err = filepath.Match(input, file.Name)
+					if err != nil {
+						return err
+					}
+				}
+
+				if match {
 					var newFileName string
 					if output == "" {
 						newFileName = file.Name
@@ -102,11 +127,19 @@ func main() {
 						_, name := filepath.Split(file.Name)
 						newFileName = filepath.Join(output, name)
 					}
-					err = writer.CopyFrom(file, newFileName)
-					if err != nil {
-						fmt.Fprintln(os.Stderr, err)
-						os.Exit(8)
-					}
+					matches = append(matches, fileMatch{file, newFileName})
+				}
+			}
+
+			if sorted {
+				sort.SliceStable(matches, func(i, j int) bool {
+					return matches[i].name < matches[j].name
+				})
+			}
+
+			for _, match := range matches {
+				if err := writer.CopyFrom(match.file, match.name); err != nil {
+					return err
 				}
 			}
 		} else {
@@ -115,14 +148,15 @@ func main() {
 			}
 			for _, file := range reader.File {
 				if input == file.Name {
-					err = writer.CopyFrom(file, output)
+					err := writer.CopyFrom(file, output)
 					if err != nil {
-						fmt.Fprintln(os.Stderr, err)
-						os.Exit(8)
+						return err
 					}
 					break
 				}
 			}
 		}
 	}
+
+	return nil
 }
