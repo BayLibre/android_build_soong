@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9144eff_6978eef1",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2017-06-19T16:53:50Z",
+      "side": 1,
+      "message": "Then I\u0027d also remove checks for sanitize.xxx properties here, leaving just the check for sanitize.diag.undefined.",
+      "revId": "15ea7ccd9527e00a50da4921dc22e4979ea8c318",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
