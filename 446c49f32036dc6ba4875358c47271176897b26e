@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f645c6ed_8d7177a5",
+        "filename": "androidmk/cmd/androidmk/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-06-19T22:48:45Z",
+      "side": 1,
+      "message": "I ended up changing it slightly in patchset 3 anyway to make it just a warning, so now it\u0027s neither :)",
+      "parentUuid": "d7d5731a_837da609",
+      "revId": "446c49f32036dc6ba4875358c47271176897b26e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ecebec7d_12fb144e",
         "filename": "androidmk/cmd/androidmk/androidmk_test.go",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "446c49f32036dc6ba4875358c47271176897b26e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41280b6e_f9b05793",
+        "filename": "androidmk/cmd/androidmk/androidmk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-06-19T22:48:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecebec7d_12fb144e",
+      "range": {
+        "startLine": 385,
+        "startChar": 2,
+        "endLine": 386,
+        "endChar": 31
+      },
+      "revId": "446c49f32036dc6ba4875358c47271176897b26e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
