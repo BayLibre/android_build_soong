@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce0dd934_ff8ec4db",
+        "filename": "cc/linker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-06-20T01:28:41Z",
+      "side": 1,
+      "message": "nit: I have seen other code here tends to just allocate max length (as in length of deps.SharedLibs). Wastes memory, but is faster. Not sure if we want to do the same here too.",
+      "range": {
+        "startLine": 135,
+        "startChar": 31,
+        "endLine": 135,
+        "endChar": 32
+      },
+      "revId": "5cfbe88af946247bb0e37e49f9d8c8cb59392fdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
