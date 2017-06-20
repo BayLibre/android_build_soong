@@ -16,6 +16,24 @@
       "revId": "9677e8c6adbede1b661703521b45827d1abb58db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9b40349_c5e8f2b1",
+        "filename": "cc/sabi.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-06-20T17:02:15Z",
+      "side": 1,
+      "message": "From what I see in tidy.go and it\u0027s use in builder.go, I don\u0027t think we need to do anything with TidyFlags. I\u0027m not expecting anyone to specifically pass flags to clangTidy which libTooling doesn\u0027t understand. Moreover, I think those are flags passed specifically to clang-tidy\u0027s tool side as opposed to what libClang does with it. Similar to flags.sAbiFlags.",
+      "parentUuid": "9a30fac3_17671974",
+      "revId": "9677e8c6adbede1b661703521b45827d1abb58db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
