@@ -22,6 +22,30 @@
       "revId": "5cfbe88af946247bb0e37e49f9d8c8cb59392fdf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29a9b7f1_22e1df9f",
+        "filename": "cc/linker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-06-20T01:34:44Z",
+      "side": 1,
+      "message": "good point. I\u0027ve made the capacity to be the same as deps.SharedLibs.",
+      "parentUuid": "ce0dd934_ff8ec4db",
+      "range": {
+        "startLine": 135,
+        "startChar": 31,
+        "endLine": 135,
+        "endChar": 32
+      },
+      "revId": "5cfbe88af946247bb0e37e49f9d8c8cb59392fdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
