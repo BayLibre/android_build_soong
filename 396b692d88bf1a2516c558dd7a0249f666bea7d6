@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c56c706_0bcaa159",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-20T01:56:10Z",
+      "side": 1,
+      "message": "util.go has filterList that returns both filtered out and filtered in lists, or add a removeListFromList",
+      "revId": "396b692d88bf1a2516c558dd7a0249f666bea7d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
