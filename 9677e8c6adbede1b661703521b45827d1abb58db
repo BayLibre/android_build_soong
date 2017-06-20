@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a30fac3_17671974",
+        "filename": "cc/sabi.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1068404
+      },
+      "writtenOn": "2017-06-20T03:18:19Z",
+      "side": 1,
+      "message": "Sorry, last minute question! You use these flags for clang-tidy too, so do we need a similar change in tidy.go as well?",
+      "revId": "9677e8c6adbede1b661703521b45827d1abb58db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
