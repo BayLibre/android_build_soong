@@ -88,6 +88,24 @@
       "revId": "9677e8c6adbede1b661703521b45827d1abb58db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88dd03f2_deec0402",
+        "filename": "cc/sabi.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-20T17:24:02Z",
+      "side": 1,
+      "message": "Fine for now, you can move anything fairly generic to cc/config/global.go or cc/config/clang.go",
+      "parentUuid": "136a0396_5478bd65",
+      "revId": "9677e8c6adbede1b661703521b45827d1abb58db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
