@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58d96d30_2288cf50",
+        "filename": "cmd/zip2zip/zip2zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-06-20T00:25:43Z",
+      "side": 1,
+      "message": "How about \"sort matches within each glob\"?",
+      "range": {
+        "startLine": 31,
+        "startChar": 33,
+        "endLine": 31,
+        "endChar": 50
+      },
+      "revId": "4acd02f35eed5b6b7934769049196746291f3cdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "062042f3_0cc40b41",
+        "filename": "cmd/zip2zip/zip2zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-06-20T00:25:43Z",
+      "side": 1,
+      "message": "How about \"the order listed inside the zip\"?",
+      "range": {
+        "startLine": 31,
+        "startChar": 74,
+        "endLine": 31,
+        "endChar": 85
+      },
+      "revId": "4acd02f35eed5b6b7934769049196746291f3cdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ed4de09_759f57de",
+        "filename": "cmd/zip2zip/zip2zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-06-20T00:25:43Z",
+      "side": 1,
+      "message": "How about \"zipEntry\"?",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 14
+      },
+      "revId": "4acd02f35eed5b6b7934769049196746291f3cdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e66f07d3_03a252f1",
+        "filename": "cmd/zip2zip/zip2zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-06-20T00:25:43Z",
+      "side": 1,
+      "message": "How about \"fileName\"?",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 5
+      },
+      "revId": "4acd02f35eed5b6b7934769049196746291f3cdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3f5fea2_d6cac6c0",
+        "filename": "cmd/zip2zip/zip2zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-06-20T00:25:43Z",
+      "side": 1,
+      "message": "I\u0027m wondering about whether we want to check for the existence of \"**\" (for example, like in \"/subdir/**/leaf.txt\") and to clarify via an error message that it isn\u0027t supported, or whether it takes too much cpu to check for \"**\". I guess that either detecting it or not is fine with me as long as we thought about it.",
+      "revId": "4acd02f35eed5b6b7934769049196746291f3cdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af50e211_54f93400",
+        "filename": "cmd/zip2zip/zip2zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-06-20T00:25:43Z",
+      "side": 1,
+      "message": "How about \"sortGlobs\"?",
+      "range": {
+        "startLine": 134,
+        "startChar": 6,
+        "endLine": 134,
+        "endChar": 12
+      },
+      "revId": "4acd02f35eed5b6b7934769049196746291f3cdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc092b9d_1adfae3e",
+        "filename": "cmd/zip2zip/zip2zip_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-06-20T00:25:43Z",
+      "side": 1,
+      "message": "How would you feel about \"the build of device updater packages\"?",
+      "range": {
+        "startLine": 29,
+        "startChar": 29,
+        "endLine": 29,
+        "endChar": 58
+      },
+      "revId": "4acd02f35eed5b6b7934769049196746291f3cdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
