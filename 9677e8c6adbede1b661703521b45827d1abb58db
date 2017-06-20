@@ -70,6 +70,24 @@
       "revId": "9677e8c6adbede1b661703521b45827d1abb58db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "136a0396_5478bd65",
+        "filename": "cc/sabi.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1068404
+      },
+      "writtenOn": "2017-06-20T17:20:08Z",
+      "side": 1,
+      "message": "I\u0027m fine with that, I\u0027ll let ccross@ weigh in though.",
+      "parentUuid": "f760396b_9c48c94a",
+      "revId": "9677e8c6adbede1b661703521b45827d1abb58db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
