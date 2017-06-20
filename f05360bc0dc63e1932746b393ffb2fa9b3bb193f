@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "be94e87c_afcb0fc0",
+        "filename": "cc/config/clang.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-06-20T00:08:46Z",
+      "side": 1,
+      "message": "No it isn\u0027t. fsanitize-* is since it shouldn\u0027t be used without -flto. But libClang doesn\u0027t seem to mind -fno-sanitize* or even -fno-lto for that matter.",
+      "parentUuid": "e6e1a7da_59e6713a",
+      "revId": "f05360bc0dc63e1932746b393ffb2fa9b3bb193f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dea45aa4_1834e923",
         "filename": "cc/sabi.go",
         "patchSetId": 6
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "de9fb065_fdad24e3",
+        "filename": "cc/sabi.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-06-20T00:08:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dea45aa4_1834e923",
+      "revId": "f05360bc0dc63e1932746b393ffb2fa9b3bb193f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c7bd32ca_d5a755e3",
         "filename": "cc/sanitize.go",
         "patchSetId": 6
@@ -47,6 +83,30 @@
       "writtenOn": "2017-06-19T23:27:39Z",
       "side": 1,
       "message": "Remove trailing space in the string here and on line 40",
+      "range": {
+        "startLine": 37,
+        "startChar": 80,
+        "endLine": 37,
+        "endChar": 81
+      },
+      "revId": "f05360bc0dc63e1932746b393ffb2fa9b3bb193f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fa69fc7_bf28081d",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-06-20T00:08:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7bd32ca_d5a755e3",
       "range": {
         "startLine": 37,
         "startChar": 80,
