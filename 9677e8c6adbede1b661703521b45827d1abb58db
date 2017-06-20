@@ -52,6 +52,24 @@
       "revId": "9677e8c6adbede1b661703521b45827d1abb58db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f760396b_9c48c94a",
+        "filename": "cc/sabi.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-06-20T17:18:07Z",
+      "side": 1,
+      "message": "Ah so we should have probably done this in a seperate file altogether to not make it look like its specific to sabi.go and not libTooling in general. I could do that with a clean-up CL later?",
+      "parentUuid": "4c5c1f31_ecf74c45",
+      "revId": "9677e8c6adbede1b661703521b45827d1abb58db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
