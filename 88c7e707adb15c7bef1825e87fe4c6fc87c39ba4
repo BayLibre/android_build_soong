@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6e2dccd_efa80c1a",
+        "filename": "cc/sabi.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-20T01:46:21Z",
+      "side": 1,
+      "message": "If you are only using remainder can you rename this to filterOutWithPrefix?",
+      "range": {
+        "startLine": 56,
+        "startChar": 5,
+        "endLine": 56,
+        "endChar": 31
+      },
+      "revId": "88c7e707adb15c7bef1825e87fe4c6fc87c39ba4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
