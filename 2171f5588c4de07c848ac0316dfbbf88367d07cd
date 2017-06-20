@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2602faf0_5d2013bf",
+        "filename": "cc/builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-06-20T02:43:35Z",
+      "side": 1,
+      "message": "Remove, from util.go as well.",
+      "range": {
+        "startLine": 216,
+        "startChar": 1,
+        "endLine": 216,
+        "endChar": 78
+      },
+      "revId": "2171f5588c4de07c848ac0316dfbbf88367d07cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
