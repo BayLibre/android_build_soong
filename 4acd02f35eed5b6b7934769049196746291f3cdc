@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "1da28989_82abbeff",
+        "filename": "cmd/zip2zip/zip2zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-20T23:53:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "062042f3_0cc40b41",
+      "range": {
+        "startLine": 31,
+        "startChar": 74,
+        "endLine": 31,
+        "endChar": 85
+      },
+      "revId": "4acd02f35eed5b6b7934769049196746291f3cdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bbc8e288_ddc5abea",
+        "filename": "cmd/zip2zip/zip2zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-20T23:53:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58d96d30_2288cf50",
+      "range": {
+        "startLine": 31,
+        "startChar": 33,
+        "endLine": 31,
+        "endChar": 50
+      },
+      "revId": "4acd02f35eed5b6b7934769049196746291f3cdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ed4de09_759f57de",
         "filename": "cmd/zip2zip/zip2zip.go",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "4acd02f35eed5b6b7934769049196746291f3cdc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3de0ce7_9bc21466",
+        "filename": "cmd/zip2zip/zip2zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-20T23:53:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ed4de09_759f57de",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 14
+      },
+      "revId": "4acd02f35eed5b6b7934769049196746291f3cdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "ea0a5d9c_83c1b027",
+        "filename": "cmd/zip2zip/zip2zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-20T23:53:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e66f07d3_03a252f1",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 5
+      },
+      "revId": "4acd02f35eed5b6b7934769049196746291f3cdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52714659_14ace649",
         "filename": "cmd/zip2zip/zip2zip.go",
         "patchSetId": 1
@@ -108,6 +204,24 @@
       "revId": "4acd02f35eed5b6b7934769049196746291f3cdc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8f78e4a_bfd8532d",
+        "filename": "cmd/zip2zip/zip2zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-20T23:53:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52714659_14ace649",
+      "revId": "4acd02f35eed5b6b7934769049196746291f3cdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -128,6 +242,24 @@
     },
     {
       "key": {
+        "uuid": "dc5a4da6_9cb2804e",
+        "filename": "cmd/zip2zip/zip2zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-20T23:53:33Z",
+      "side": 1,
+      "message": "It was the simple version of log.SetFlags(Lshortline) :) I just switched to that.",
+      "parentUuid": "0a0fbfab_234c51ed",
+      "revId": "4acd02f35eed5b6b7934769049196746291f3cdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64082fcd_524817de",
         "filename": "cmd/zip2zip/zip2zip.go",
         "patchSetId": 1
@@ -145,6 +277,24 @@
     },
     {
       "key": {
+        "uuid": "b824021f_84fb91cf",
+        "filename": "cmd/zip2zip/zip2zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-20T23:53:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64082fcd_524817de",
+      "revId": "4acd02f35eed5b6b7934769049196746291f3cdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3f5fea2_d6cac6c0",
         "filename": "cmd/zip2zip/zip2zip.go",
         "patchSetId": 1
@@ -159,6 +309,24 @@
       "revId": "4acd02f35eed5b6b7934769049196746291f3cdc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "770d08f6_8e66cfc3",
+        "filename": "cmd/zip2zip/zip2zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-20T23:53:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3f5fea2_d6cac6c0",
+      "revId": "4acd02f35eed5b6b7934769049196746291f3cdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -185,6 +353,30 @@
     },
     {
       "key": {
+        "uuid": "5cc2bbd8_2cf91e88",
+        "filename": "cmd/zip2zip/zip2zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-20T23:53:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af50e211_54f93400",
+      "range": {
+        "startLine": 134,
+        "startChar": 6,
+        "endLine": 134,
+        "endChar": 12
+      },
+      "revId": "4acd02f35eed5b6b7934769049196746291f3cdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc092b9d_1adfae3e",
         "filename": "cmd/zip2zip/zip2zip_test.go",
         "patchSetId": 1
@@ -205,6 +397,30 @@
       "revId": "4acd02f35eed5b6b7934769049196746291f3cdc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39185065_c64530fd",
+        "filename": "cmd/zip2zip/zip2zip_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-20T23:53:33Z",
+      "side": 1,
+      "message": "It\u0027s \"The update package\" in our build:\n\nhttps://android.googlesource.com/platform/build/+/0effed4b9484392994a1169f23a7b282cfad91d7/core/Makefile#2476",
+      "parentUuid": "fc092b9d_1adfae3e",
+      "range": {
+        "startLine": 29,
+        "startChar": 29,
+        "endLine": 29,
+        "endChar": 58
+      },
+      "revId": "4acd02f35eed5b6b7934769049196746291f3cdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
