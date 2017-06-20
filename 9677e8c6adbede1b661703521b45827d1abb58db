@@ -34,6 +34,24 @@
       "revId": "9677e8c6adbede1b661703521b45827d1abb58db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c5c1f31_ecf74c45",
+        "filename": "cc/sabi.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1068404
+      },
+      "writtenOn": "2017-06-20T17:06:56Z",
+      "side": 1,
+      "message": "I meant setting the ToolingCflags specifically - but it sounds like we don\u0027t need to set that? Alright, sounds good to me then.",
+      "parentUuid": "c9b40349_c5e8f2b1",
+      "revId": "9677e8c6adbede1b661703521b45827d1abb58db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
