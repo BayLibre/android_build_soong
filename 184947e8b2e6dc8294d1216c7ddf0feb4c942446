@@ -142,6 +142,30 @@
       "revId": "184947e8b2e6dc8294d1216c7ddf0feb4c942446",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ccec1136_c1be025f",
+        "filename": "cc/tidy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-06-21T06:34:32Z",
+      "side": 1,
+      "message": "I\u0027m back from a short vacation.  The warnings we saw on cil_lexer.c should be from two targets, not duplicated messages from clang-tidy.\n\nout/soong/.intermediates/external/selinux/libsepol/libsepol/android_arm64_armv8-a_kryo_static_core/gen/lex/external/selinux/libsepol/cil/src/cil_lexer.c:1605:1: warning: function \u0027yy_fatal_error\u0027 could be declared with attribute \u0027noreturn\u0027 [-Wmissing-noreturn]\nout/soong/.intermediates/external/selinux/libsepol/libsepol/linux_x86_64_static/gen/lex/external/selinux/libsepol/cil/src/cil_lexer.c:1605:1: warning: function \u0027yy_fatal_error\u0027 could be declared with attribute \u0027noreturn\u0027 [-Wmissing-noreturn]\n\nWe don\u0027t enable extra -W warnings for clang-tidy, but some clang-tidy checks enable clang-diagnostic-* warnings.",
+      "parentUuid": "d408aa0e_c239d174",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 78
+      },
+      "revId": "184947e8b2e6dc8294d1216c7ddf0feb4c942446",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
