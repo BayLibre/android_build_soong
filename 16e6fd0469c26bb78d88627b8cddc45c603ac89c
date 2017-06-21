@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a72b8ae_40c11e50",
+        "filename": "cmd/zip2zip/zip2zip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-06-21T00:13:47Z",
+      "side": 1,
+      "message": "Hmm, \"sort matches from globs\" seems to me to be as specific as \"sort glob matches\". With context or some pondering a user can determine that the sort is occurring within individual globs rather than across multiple globs, but I figure that we might as well make it painfully obvious since it\u0027s easy to make it obvious.\n\nIf you\u0027d be satisfied with either \"sort matches within globs\" or \"sort matches from each glob\" then those seem good to me too",
+      "range": {
+        "startLine": 32,
+        "startChar": 36,
+        "endLine": 32,
+        "endChar": 59
+      },
+      "revId": "16e6fd0469c26bb78d88627b8cddc45c603ac89c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
