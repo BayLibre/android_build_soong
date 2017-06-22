@@ -166,6 +166,30 @@
       "revId": "184947e8b2e6dc8294d1216c7ddf0feb4c942446",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a31e06a_8079f2df",
+        "filename": "cc/tidy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2017-06-22T00:11:46Z",
+      "side": 1,
+      "message": "\u003e I\u0027m back from a short vacation\n\nI hope it was fun!\n\n\u003e We don\u0027t enable extra -W warnings for clang-tidy, but some clang-tidy checks enable clang-diagnostic-* warnings\n\nAhh, I see. I thought all projects that got noreturns from clang-tidy also had to have noreturn warnings enabled with clang. Thank you for being patient with me. :)\n\nPatch for ART is https://android-review.googlesource.com/#/c/420429/",
+      "parentUuid": "ccec1136_c1be025f",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 78
+      },
+      "revId": "184947e8b2e6dc8294d1216c7ddf0feb4c942446",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
