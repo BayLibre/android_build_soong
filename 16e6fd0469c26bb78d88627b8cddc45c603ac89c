@@ -22,6 +22,30 @@
       "revId": "16e6fd0469c26bb78d88627b8cddc45c603ac89c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "365fce23_1c5c780a",
+        "filename": "cmd/zip2zip/zip2zip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-22T22:56:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a72b8ae_40c11e50",
+      "range": {
+        "startLine": 32,
+        "startChar": 36,
+        "endLine": 32,
+        "endChar": 59
+      },
+      "revId": "16e6fd0469c26bb78d88627b8cddc45c603ac89c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
