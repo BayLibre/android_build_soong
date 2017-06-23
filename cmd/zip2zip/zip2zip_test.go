@@ -21,6 +21,7 @@ import (
 	"testing"
 
 	"android/soong/third_party/zip"
+	"strconv"
 )
 
 var testCases = []struct {
@@ -161,7 +162,7 @@ func TestZip2Zip(t *testing.T) {
 			}
 
 			outputWriter := zip.NewWriter(outputBuf)
-			err = zip2zip(inputReader, outputWriter, testCase.sortGlobs, false, testCase.args)
+			err = zip2zip(inputReader, outputWriter, testCase.sortGlobs, false, false, testCase.args)
 			if errorString(testCase.err) != errorString(err) {
 				t.Fatalf("Unexpected error:\n got: %q\nwant: %q", errorString(err), errorString(testCase.err))
 			}
@@ -182,6 +183,58 @@ func TestZip2Zip(t *testing.T) {
 
 			if !reflect.DeepEqual(testCase.outputFiles, outputFiles) {
 				t.Fatalf("Output file list does not match:\n got: %v\nwant: %v", outputFiles, testCase.outputFiles)
+			}
+		})
+	}
+}
+
+var jarOrderTestCases = []struct {
+	in  []string
+	out []string
+}{
+	{
+		in: []string{
+			"MANIFEST.MF",
+			"META-INF/MANIFEST.MF",
+			"META-INF/aaa/",
+			"META-INF/aaa/aaa",
+			"META-INF/AAA",
+			"META-INF.txt",
+			"META-INF/",
+			"AAA",
+			"aaa",
+		},
+		out: []string{
+			"META-INF/",
+			"META-INF/MANIFEST.MF",
+			"META-INF/AAA",
+			"META-INF/aaa/",
+			"META-INF/aaa/aaa",
+			"AAA",
+			"MANIFEST.MF",
+			"META-INF.txt",
+			"aaa",
+		},
+	},
+}
+
+func TestJarOrder(t *testing.T) {
+	for i, testCase := range jarOrderTestCases {
+		t.Run(strconv.Itoa(i), func(t *testing.T) {
+			var files []pair
+			for _, s := range testCase.in {
+				files = append(files, pair{newName: s})
+			}
+
+			jarSort(files)
+
+			var got []string
+			for _, f := range files {
+				got = append(got, f.newName)
+			}
+
+			if !reflect.DeepEqual(testCase.out, got) {
+				t.Fatalf("Output file list does not match:\n got: %v\nwant: %v", got, testCase.out)
 			}
 		})
 	}
