@@ -16,6 +16,24 @@
       "revId": "51d1fce68ff269581cef77855f2b443a4f926bef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d16a53b_d605a17c",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-23T18:26:02Z",
+      "side": 1,
+      "message": "I\u0027m working on a separate refactor that will fix this.",
+      "parentUuid": "c0cefdba_ab91cf72",
+      "revId": "51d1fce68ff269581cef77855f2b443a4f926bef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
