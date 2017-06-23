@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d99419d_1e05685d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-23T22:33:27Z",
+      "side": 1,
+      "message": "still",
+      "range": {
+        "startLine": 19,
+        "startChar": 6,
+        "endLine": 19,
+        "endChar": 10
+      },
+      "revId": "3ec85c6afd3d8f6c8f5101285cdea563789e923f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1958b27_bd0c649b",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-23T22:33:27Z",
+      "side": 1,
+      "message": "This can be combined to:\n\n  case HostAndDeviceSupported, HostAndDeviceDefault:",
+      "range": {
+        "startLine": 222,
+        "startChar": 1,
+        "endLine": 224,
+        "endChar": 27
+      },
+      "revId": "3ec85c6afd3d8f6c8f5101285cdea563789e923f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
