@@ -101,6 +101,11 @@ var (
 			"-mfloat-abi=softfp",
 			"-mfpu=neon",
 		},
+		"armv8-a": []string{
+			"-march=armv8-a",
+			"-mfloat-abi=softfp",
+			"-mfpu=neon",
+		},
 	}
 
 	armCpuVariantCflags = map[string][]string{
@@ -173,6 +178,7 @@ func init() {
 		"armv5te",
 		"armv7-a",
 		"armv7-a-neon",
+		"armv8-a",
 		"cortex-a7",
 		"cortex-a8",
 		"cortex-a9",
@@ -212,6 +218,7 @@ func init() {
 	pctx.StaticVariable("ArmArmv5TECflags", strings.Join(armArchVariantCflags["armv5te"], " "))
 	pctx.StaticVariable("ArmArmv7ACflags", strings.Join(armArchVariantCflags["armv7-a"], " "))
 	pctx.StaticVariable("ArmArmv7ANeonCflags", strings.Join(armArchVariantCflags["armv7-a-neon"], " "))
+	pctx.StaticVariable("ArmArmv8ACflags", strings.Join(armArchVariantCflags["armv8-a"], " "))
 
 	// Cpu variant cflags
 	pctx.StaticVariable("ArmGenericCflags", strings.Join(armCpuVariantCflags[""], " "))
@@ -239,6 +246,8 @@ func init() {
 		strings.Join(armClangArchVariantCflags["armv7-a"], " "))
 	pctx.StaticVariable("ArmClangArmv7ANeonCflags",
 		strings.Join(armClangArchVariantCflags["armv7-a-neon"], " "))
+	pctx.StaticVariable("ArmClangArmv8ACflags",
+		strings.Join(armClangArchVariantCflags["armv8-a"], " "))
 
 	// Clang cpu variant cflags
 	pctx.StaticVariable("ArmClangGenericCflags",
@@ -262,6 +271,7 @@ var (
 		"armv5te":      "${config.ArmArmv5TECflags}",
 		"armv7-a":      "${config.ArmArmv7ACflags}",
 		"armv7-a-neon": "${config.ArmArmv7ANeonCflags}",
+		"armv8-a":      "${config.ArmArmv8ACflags}",
 	}
 
 	armCpuVariantCflagsVar = map[string]string{
@@ -281,6 +291,7 @@ var (
 		"armv5te":      "${config.ArmClangArmv5TECflags}",
 		"armv7-a":      "${config.ArmClangArmv7ACflags}",
 		"armv7-a-neon": "${config.ArmClangArmv7ANeonCflags}",
+		"armv8-a":      "${config.ArmClangArmv8ACflags}",
 	}
 
 	armClangCpuVariantCflagsVar = map[string]string{
@@ -413,6 +424,8 @@ func armToolchainFactory(arch android.Arch) Toolchain {
 		fixCortexA8 = "-Wl,--fix-cortex-a8"
 	case "armv5te":
 		// Nothing extra for armv5te
+	case "armv8-a":
+		// TODO: Need review! What are other flags needed for armv8-a?
 	default:
 		panic(fmt.Sprintf("Unknown ARM architecture version: %q", arch.ArchVariant))
 	}
