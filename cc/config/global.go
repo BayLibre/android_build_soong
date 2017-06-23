@@ -185,8 +185,43 @@ func bionicHeaders(bionicArch, kernelArch string) string {
 	}, " ")
 }
 
+type VndkTag string
+
+const (
+	VNDK_TAG_NONE VndkTag = "native:platform"
+	VNDK_TAG_VENDOR VndkTag = "native:vendor"
+	VNDK_TAG_VNDK VndkTag = "native:vndk"
+)
+
+var vndkEligibleList = map[VndkTag][]VndkTag {
+	VNDK_TAG_NONE: {},
+	VNDK_TAG_VENDOR: {VNDK_TAG_VENDOR, VNDK_TAG_VNDK},
+	VNDK_TAG_VNDK: {VNDK_TAG_VNDK},
+}
+
+var vndkLibraries = []string{}
+
+func VerifyVNDK(from VndkTag, lib string) (VndkTag, bool) {
+	tag := VNDK_TAG_NONE
+	if inList(lib, vndkLibraries) {
+		tag = VNDK_TAG_VNDK
+	} else {
+		tag = VNDK_TAG_VENDOR
+	}
+	for _, l := range vndkEligibleList[from] {
+		if tag == l {
+			return tag, true
+		}
+	}
+	return tag, false
+}
+
+func AddVndkLibrary(vndk string) {
+	vndkLibraries = append(vndkLibraries, vndk)
+}
+
 func VndkLibraries() []string {
-	return []string{}
+	return vndkLibraries
 }
 
 // This needs to be kept up to date with the list in system/core/rootdir/etc/ld.config.txt:
