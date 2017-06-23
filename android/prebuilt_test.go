@@ -185,7 +185,9 @@ type prebuiltModule struct {
 
 func newPrebuiltModule() (blueprint.Module, []interface{}) {
 	m := &prebuiltModule{}
-	return InitAndroidModule(m, &m.prebuilt.Properties)
+	m.AddProperties(&m.prebuilt.Properties)
+	InitAndroidModule(m)
+	return m, m.GetProperties()
 }
 
 func (p *prebuiltModule) Name() string {
@@ -212,7 +214,9 @@ type sourceModule struct {
 
 func newSourceModule() (blueprint.Module, []interface{}) {
 	m := &sourceModule{}
-	return InitAndroidModule(m, &m.properties)
+	m.AddProperties(&m.properties)
+	InitAndroidModule(m)
+	return m, m.GetProperties()
 }
 
 func (s *sourceModule) DepsMutator(ctx BottomUpMutatorContext) {
