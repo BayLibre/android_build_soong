@@ -699,6 +699,11 @@ func (library *libraryDecorator) toc() android.OptionalPath {
 
 func (library *libraryDecorator) install(ctx ModuleContext, file android.Path) {
 	if library.shared() {
+		if ctx.Device() {
+			if ctx.Vendor() && ctx.Vndk() {
+				library.baseInstaller.subDir = "vndk"
+			}
+		}
 		library.baseInstaller.install(ctx, file)
 	}
 }
