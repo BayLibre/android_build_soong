@@ -368,6 +368,9 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags) Flag
 		cppStd := config.CppStdVersion
 		if compiler.Properties.Cpp_std == "experimental" {
 			cppStd = config.ExperimentalCppStdVersion
+		} else if strings.HasSuffix(compiler.Properties.Cpp_std, "++17") {
+			// Map c++17 and gnu++17 to their 1z equivalents, until 17 is finalized.
+			cppStd = strings.TrimSuffix(compiler.Properties.Cpp_std, "17") + "1z"
 		} else if compiler.Properties.Cpp_std != "" {
 			cppStd = compiler.Properties.Cpp_std
 		}
