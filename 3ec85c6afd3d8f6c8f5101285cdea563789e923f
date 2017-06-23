@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d0bfd1ea_27dca4b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-23T22:34:08Z",
+      "side": 1,
+      "message": "Can you use a subject that doesn\u0027t refer to the body? The art subject works better:\n\n  Fixed the unexpected scenario for \"device_supported\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 36
+      },
+      "revId": "3ec85c6afd3d8f6c8f5101285cdea563789e923f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1d99419d_1e05685d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
