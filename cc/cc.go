@@ -161,13 +161,15 @@ type BaseProperties struct {
 	// future.
 	//
 	// Nothing happens if BOARD_VNDK_VERSION isn't set in the BoardConfig.mk
-	Vendor_available *bool
+	Vendor_available      *bool
+	Vendor_available_vndk *bool
 
 	AndroidMkSharedLibs []string `blueprint:"mutated"`
 	HideFromMake        bool     `blueprint:"mutated"`
 	PreventInstall      bool     `blueprint:"mutated"`
 
 	UseVndk bool `blueprint:"mutated"`
+	IsVndk  bool `blueprint:"mutated"`
 }
 
 type UnusedProperties struct {
@@ -202,6 +204,15 @@ type DepsContext interface {
 	android.BottomUpMutatorContext
 	ModuleContextIntf
 }
+
+type VndkTag int
+
+const (
+	VNDK_TAG_NONE VndkTag = iota + 1
+	VNDK_TAG_VENDOR
+	VNDK_TAG_VNDK
+	VNDK_TAG_VNDKSP
+)
 
 type feature interface {
 	begin(ctx BaseModuleContext)
@@ -351,6 +362,19 @@ func (c *Module) vndk() bool {
 	return c.Properties.UseVndk
 }
 
+func (c *Module) vndkTag() VndkTag {
+	if !c.vndk() {
+		return VNDK_TAG_NONE
+	}
+	if c.Properties.IsVndk {
+		return VNDK_TAG_VNDK
+	}
+	/*if c.Properties.IsVndkSp
+		return VNDK_TAG_VNDKSP
+	}*/
+	return VNDK_TAG_VENDOR
+}
+
 type baseModuleContext struct {
 	android.BaseContext
 	moduleContextImpl
@@ -370,6 +394,11 @@ type moduleContext struct {
 // correct partition
 func (ctx *moduleContext) Vendor() bool {
 	return ctx.ModuleContext.Vendor() || ctx.moduleContextImpl.mod.Properties.UseVndk
+}
+
+// Vndk returns true for VNDK modules that are listed in VndkLibraries()
+func (ctx *moduleContext) Vndk() bool {
+	return ctx.moduleContextImpl.mod.Properties.IsVndk
 }
 
 type moduleContextImpl struct {
@@ -431,7 +460,7 @@ func (ctx *moduleContextImpl) vndk() bool {
 
 // Create source abi dumps if the module belongs to the list of VndkLibraries.
 func (ctx *moduleContextImpl) createVndkSourceAbiDump() bool {
-	return ctx.ctx.Device() && ((Bool(ctx.mod.Properties.Vendor_available)) || (inList(ctx.baseModuleName(), config.LLndkLibraries())))
+	return ctx.ctx.Device() && ((Bool(ctx.mod.Properties.Vendor_available_vndk)) || (inList(ctx.baseModuleName(), config.LLndkLibraries())))
 }
 
 func (ctx *moduleContextImpl) selectedStl() string {
@@ -1158,9 +1187,14 @@ func vendorMutator(mctx android.BottomUpMutatorContext) {
 	}
 
 	// Sanity check
-	if Bool(m.Properties.Vendor_available) && mctx.Vendor() {
+	if (Bool(m.Properties.Vendor_available) || Bool(m.Properties.Vendor_available_vndk)) && mctx.Vendor() {
 		mctx.PropertyErrorf("vendor_available",
 			"doesn't make sense at the same time as `vendor: true` or `proprietary: true`")
+		return
+	}
+	if Bool(m.Properties.Vendor_available) && Bool(m.Properties.Vendor_available_vndk) {
+		mctx.PropertyErrorf("Both `vendor_available` and `vendor_available_vndk` is true",
+                        "must choose one of them")
 		return
 	}
 
@@ -1172,10 +1206,13 @@ func vendorMutator(mctx android.BottomUpMutatorContext) {
 		// LL-NDK stubs only exist in the vendor variant, since the
 		// real libraries will be used in the core variant.
 		mctx.CreateVariations(vendorMode)
-	} else if Bool(m.Properties.Vendor_available) {
-		// This will be available in both /system and /vendor
+	} else if Bool(m.Properties.Vendor_available) || Bool(m.Properties.Vendor_available_vndk) {
+		// This will be available in both /system/lib and /vendor/lib
+		// or /system/lib and /system/lib/vndk
 		mod := mctx.CreateVariations(coreMode, vendorMode)
 		mod[1].(*Module).Properties.UseVndk = true
+		mod[1].(*Module).Properties.IsVndk =
+				Bool(m.Properties.Vendor_available_vndk)
 	} else if mctx.Vendor() && m.Properties.Sdk_version == "" {
 		// This will be available in /vendor only
 		mod := mctx.CreateVariations(vendorMode)

@@ -185,6 +185,7 @@ func bionicHeaders(bionicArch, kernelArch string) string {
 	}, " ")
 }
 
+//This list is captured from VNDK Tag v3.7
 func VndkLibraries() []string {
 	return []string{}
 }
