@@ -187,6 +187,7 @@ bootstrap_go_package {
         "blueprint-pathtools",
         "soong",
         "soong-android",
+        "soong-java-config",
         "soong-genrule",
     ],
     srcs: [
@@ -199,6 +200,19 @@ bootstrap_go_package {
         "java/resources.go",
     ],
     pluginFor: ["soong_build"],
+}
+
+bootstrap_go_package {
+    name: "soong-java-config",
+    pkgPath: "android/soong/java/config",
+    deps: [
+        "blueprint-proptools",
+        "soong-android",
+    ],
+    srcs: [
+        "java/config/config.go",
+        "java/config/makevars.go",
+    ],
 }
 
 bootstrap_go_package {
