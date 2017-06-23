@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b5bc769c_8ce13318",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-23T19:34:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12d72cdd_87d2b92d",
+      "revId": "2b5f7c714ac54cf57544b8a3eddc0b4dd376012a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d136047b_037a6483",
         "filename": "java/config/config.go",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "792f1627_a8b39648",
+        "filename": "java/config/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-23T19:34:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d136047b_037a6483",
+      "revId": "2b5f7c714ac54cf57544b8a3eddc0b4dd376012a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8064bbc8_04c57bcc",
         "filename": "java/config/config.go",
         "patchSetId": 1
@@ -47,6 +83,30 @@
       "writtenOn": "2017-06-23T01:06:03Z",
       "side": 1,
       "message": "javac? the go package is still java",
+      "range": {
+        "startLine": 9,
+        "startChar": 52,
+        "endLine": 9,
+        "endChar": 57
+      },
+      "revId": "2b5f7c714ac54cf57544b8a3eddc0b4dd376012a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76a9af41_71d95e60",
+        "filename": "java/config/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-23T19:34:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8064bbc8_04c57bcc",
       "range": {
         "startLine": 9,
         "startChar": 52,
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "cb39524a_fc8aca6f",
+        "filename": "java/config/makevars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-23T19:34:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "935cbd41_0dd94708",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "2b5f7c714ac54cf57544b8a3eddc0b4dd376012a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "29db61b4_03b25aae",
         "filename": "java/config/makevars.go",
         "patchSetId": 1
@@ -93,6 +177,24 @@
       "writtenOn": "2017-06-23T18:00:48Z",
       "side": 1,
       "message": "import (\n    \"strings\"\n\n    \"android/soong/android\"\n)",
+      "revId": "2b5f7c714ac54cf57544b8a3eddc0b4dd376012a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c795071_c3e18ca0",
+        "filename": "java/config/makevars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-23T19:34:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29db61b4_03b25aae",
       "revId": "2b5f7c714ac54cf57544b8a3eddc0b4dd376012a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
