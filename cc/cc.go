@@ -168,6 +168,7 @@ type BaseProperties struct {
 	PreventInstall      bool     `blueprint:"mutated"`
 
 	UseVndk bool `blueprint:"mutated"`
+	IsVndk  bool `blueprint:"mutated"`
 }
 
 type UnusedProperties struct {
@@ -370,6 +371,11 @@ type moduleContext struct {
 // correct partition
 func (ctx *moduleContext) Vendor() bool {
 	return ctx.ModuleContext.Vendor() || ctx.moduleContextImpl.mod.Properties.UseVndk
+}
+
+// Vndk returns true for VNDK modules that are listed in VndkLibraries()
+func (ctx *moduleContext) Vndk() bool {
+	return ctx.moduleContextImpl.mod.Properties.IsVndk
 }
 
 type moduleContextImpl struct {
@@ -1163,6 +1169,12 @@ func vendorMutator(mctx android.BottomUpMutatorContext) {
 			"doesn't make sense at the same time as `vendor: true` or `proprietary: true`")
 		return
 	}
+	isVndk := inList(m.ModuleBase.BaseModuleName(), config.VndkLibraries())
+	if !Bool(m.Properties.Vendor_available) && isVndk {
+		mctx.PropertyErrorf("`vendor_available: true`",
+			"must be set for VNDK libs")
+		return
+	}
 
 	if !mctx.DeviceConfig().CompileVndk() {
 		// If the device isn't compiling against the VNDK, we always
@@ -1176,6 +1188,7 @@ func vendorMutator(mctx android.BottomUpMutatorContext) {
 		// This will be available in both /system and /vendor
 		mod := mctx.CreateVariations(coreMode, vendorMode)
 		mod[1].(*Module).Properties.UseVndk = true
+		mod[1].(*Module).Properties.IsVndk = isVndk
 	} else if mctx.Vendor() && m.Properties.Sdk_version == "" {
 		// This will be available in /vendor only
 		mod := mctx.CreateVariations(vendorMode)

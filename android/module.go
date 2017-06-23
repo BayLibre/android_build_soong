@@ -62,6 +62,7 @@ type androidBaseContext interface {
 	Debug() bool
 	PrimaryArch() bool
 	Vendor() bool
+	Vndk() bool
 	AConfig() Config
 	DeviceConfig() DeviceConfig
 }
@@ -665,6 +666,10 @@ func (a *androidBaseContextImpl) DeviceConfig() DeviceConfig {
 
 func (a *androidBaseContextImpl) Vendor() bool {
 	return a.vendor
+}
+
+func (a *androidBaseContextImpl) Vndk() bool {
+	return false
 }
 
 func (a *androidModuleContext) InstallInData() bool {
