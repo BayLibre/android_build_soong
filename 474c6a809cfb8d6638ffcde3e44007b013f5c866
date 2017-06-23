@@ -22,6 +22,30 @@
       "revId": "474c6a809cfb8d6638ffcde3e44007b013f5c866",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e4e163a_2d1939c8",
+        "filename": "cmd/zip2zip/zip2zip_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-23T21:10:50Z",
+      "side": 1,
+      "message": "Removed, and fixed my editor to stop putting these in the wrong place.",
+      "parentUuid": "acb44196_43e6ffac",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 10
+      },
+      "revId": "474c6a809cfb8d6638ffcde3e44007b013f5c866",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
