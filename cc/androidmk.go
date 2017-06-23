@@ -27,6 +27,7 @@ type AndroidMkContext interface {
 	Target() android.Target
 	subAndroidMk(*android.AndroidMkData, interface{})
 	vndk() bool
+	vndkTag() VndkTag
 }
 
 type subAndroidMkProvider interface {
@@ -66,6 +67,9 @@ func (c *Module) AndroidMk() (ret android.AndroidMkData, err error) {
 		}
 		if c.vndk() {
 			fmt.Fprintln(w, "LOCAL_USE_VNDK := true")
+			if c.vndkTag() == VNDK_TAG_VNDK {
+				fmt.Fprintln(w, "LOCAL_VNDK_CLASS := vndk")
+			}
 		}
 		return nil
 	})
@@ -131,6 +135,9 @@ func (library *libraryDecorator) AndroidMk(ctx AndroidMkContext, ret *android.An
 				fmt.Fprintln(w, "LOCAL_IS_HOST_MODULE := true")
 			} else if ctx.vndk() {
 				fmt.Fprintln(w, "LOCAL_USE_VNDK := true")
+				if ctx.vndkTag() == VNDK_TAG_VNDK {
+					fmt.Fprintln(w, "LOCAL_VNDK_CLASS := vndk")
+				}
 			}
 
 			library.androidMkWriteExportedFlags(w)
@@ -341,6 +348,7 @@ func (c *llndkStubDecorator) AndroidMk(ctx AndroidMkContext, ret *android.Androi
 		fmt.Fprintln(w, "LOCAL_UNINSTALLABLE_MODULE := true")
 		fmt.Fprintln(w, "LOCAL_NO_NOTICE_FILE := true")
 		fmt.Fprintln(w, "LOCAL_USE_VNDK := true")
+		fmt.Fprintln(w, "LOCAL_VNDK_CLASS := llndk")
 
 		return nil
 	})

@@ -50,6 +50,7 @@ func init() {
 
 		ctx.BottomUp("coverage", coverageLinkingMutator).Parallel()
 		ctx.TopDown("vndk_deps", sabiDepsMutator)
+		ctx.TopDown("vendor_deps", vndkDepsMutator).Parallel()
 	})
 
 	pctx.Import("android/soong/cc/config")
@@ -163,6 +164,13 @@ type BaseProperties struct {
 	// Nothing happens if BOARD_VNDK_VERSION isn't set in the BoardConfig.mk
 	Vendor_available *bool
 
+	// whether install the variant module for vendor_available to /system
+	// or /vendor. `vendor_available: true` must be set.
+	//
+	// All these modules are allowed to link between them or ll-ndk modules
+	// only. Other dependency will cause link-type errors.
+	In_system *bool
+
 	AndroidMkSharedLibs []string `blueprint:"mutated"`
 	HideFromMake        bool     `blueprint:"mutated"`
 	PreventInstall      bool     `blueprint:"mutated"`
@@ -186,6 +194,7 @@ type ModuleContextIntf interface {
 	createVndkSourceAbiDump() bool
 	selectedStl() string
 	baseModuleName() string
+	vndkTag() VndkTag
 }
 
 type ModuleContext interface {
@@ -291,6 +300,7 @@ type Module struct {
 	sanitize  *sanitize
 	coverage  *coverage
 	sabi      *sabi
+	vndkdep   *vndkdep
 
 	androidMkSharedLibDeps []string
 
@@ -327,6 +337,9 @@ func (c *Module) Init() android.Module {
 	if c.sabi != nil {
 		c.AddProperties(c.sabi.props()...)
 	}
+	if c.vndkdep != nil {
+		c.AddProperties(c.vndkdep.props()...)
+	}
 	for _, feature := range c.features {
 		c.AddProperties(feature.props()...)
 	}
@@ -353,6 +366,13 @@ func (c *Module) vndk() bool {
 	return c.Properties.UseVndk
 }
 
+func (c *Module) vndkTag() VndkTag {
+	if !c.vndk() || c.vndkdep == nil {
+		return VNDK_TAG_NONE
+	}
+	return c.vndkdep.vndkTag()
+}
+
 type baseModuleContext struct {
 	android.BaseContext
 	moduleContextImpl
@@ -368,10 +388,10 @@ type moduleContext struct {
 	moduleContextImpl
 }
 
-// Vendor returns true for vendor modules so that they get installed onto the
-// correct partition
+// Vendor returns true for vendor modules excluding VNDK libraries so that
+// they get installed onto the correct partition
 func (ctx *moduleContext) Vendor() bool {
-	return ctx.ModuleContext.Vendor() || ctx.moduleContextImpl.mod.Properties.UseVndk
+	return ctx.ModuleContext.Vendor() || ctx.vndkTag() == VNDK_TAG_VENDOR
 }
 
 type moduleContextImpl struct {
@@ -431,9 +451,13 @@ func (ctx *moduleContextImpl) vndk() bool {
 	return ctx.mod.vndk()
 }
 
+func (ctx *moduleContextImpl) vndkTag() VndkTag {
+	return ctx.mod.vndkTag()
+}
+
 // Create source abi dumps if the module belongs to the list of VndkLibraries.
 func (ctx *moduleContextImpl) createVndkSourceAbiDump() bool {
-	return ctx.ctx.Device() && ((Bool(ctx.mod.Properties.Vendor_available)) || (inList(ctx.baseModuleName(), config.LLndkLibraries())))
+	return ctx.ctx.Device() && ((ctx.vndk() && ctx.vndkTag() != VNDK_TAG_VENDOR) || inList(ctx.baseModuleName(), config.LLndkLibraries()))
 }
 
 func (ctx *moduleContextImpl) selectedStl() string {
@@ -463,6 +487,7 @@ func newModule(hod android.HostOrDeviceSupported, multilib android.Multilib) *Mo
 	module.sanitize = &sanitize{}
 	module.coverage = &coverage{}
 	module.sabi = &sabi{}
+	module.vndkdep = &vndkdep{}
 	return module
 }
 
@@ -591,6 +616,9 @@ func (c *Module) begin(ctx BaseModuleContext) {
 	if c.sabi != nil {
 		c.sabi.begin(ctx)
 	}
+	if c.vndkdep != nil {
+		c.vndkdep.begin(ctx)
+	}
 	for _, feature := range c.features {
 		feature.begin(ctx)
 	}
@@ -623,6 +651,9 @@ func (c *Module) deps(ctx DepsContext) Deps {
 	}
 	if c.sabi != nil {
 		deps = c.sabi.deps(ctx, deps)
+	}
+	if c.vndkdep != nil {
+		deps = c.vndkdep.deps(ctx, deps)
 	}
 	for _, feature := range c.features {
 		deps = feature.deps(ctx, deps)
@@ -1169,6 +1200,18 @@ func vendorMutator(mctx android.BottomUpMutatorContext) {
 			"doesn't make sense at the same time as `vendor: true` or `proprietary: true`")
 		return
 	}
+	if Bool(m.Properties.In_system) {
+		if !Bool(m.Properties.Vendor_available) {
+			mctx.PropertyErrorf("in_system",
+				"have to define `vendor_available: true` to use `in_system: true`")
+			return
+		}
+		if m.vndkdep == nil {
+			mctx.PropertyErrorf("in_system",
+				"cannot use `in_system: true`")
+			return
+		}
+	}
 
 	if !mctx.DeviceConfig().CompileVndk() {
 		// If the device isn't compiling against the VNDK, we always
@@ -1180,8 +1223,12 @@ func vendorMutator(mctx android.BottomUpMutatorContext) {
 		mctx.CreateVariations(vendorMode)
 	} else if Bool(m.Properties.Vendor_available) {
 		// This will be available in both /system and /vendor
+		// or a /system directory that is available to vendor.
 		mod := mctx.CreateVariations(coreMode, vendorMode)
 		mod[1].(*Module).Properties.UseVndk = true
+		if Bool(m.Properties.In_system) {
+			mod[1].(*Module).vndkdep.Properties.VndkTag = VNDK_TAG_VNDK
+		}
 	} else if mctx.Vendor() && m.Properties.Sdk_version == "" {
 		// This will be available in /vendor only
 		mod := mctx.CreateVariations(vendorMode)
