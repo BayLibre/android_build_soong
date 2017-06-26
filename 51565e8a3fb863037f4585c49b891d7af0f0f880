@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "332b3320_02c10c5d",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-06-26T20:25:04Z",
+      "side": 1,
+      "message": "We can remove this BP importing line above.",
+      "revId": "51565e8a3fb863037f4585c49b891d7af0f0f880",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f42b9f4_c6e45c1c",
+        "filename": "android/prebuilt_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-06-26T20:25:04Z",
+      "side": 1,
+      "message": "Should we also return an android.Module only here?",
+      "revId": "51565e8a3fb863037f4585c49b891d7af0f0f880",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
