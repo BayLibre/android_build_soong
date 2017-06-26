@@ -170,12 +170,12 @@ var (
 
 	sAbiLink = pctx.AndroidStaticRule("sAbiLink",
 		blueprint.RuleParams{
-			Command:        "$sAbiLinker -o ${out} $symbolFile -arch $arch -api $api $exportedHeaderFlags @${out}.rsp ",
+			Command:        "$sAbiLinker -o ${out} $soFile $symbolFile -arch $arch -api $api $exportedHeaderFlags @${out}.rsp ",
 			CommandDeps:    []string{"$sAbiLinker"},
 			Rspfile:        "${out}.rsp",
 			RspfileContent: "${in}",
 		},
-		"symbolFile", "arch", "api", "exportedHeaderFlags")
+		"soFile", "symbolFile", "arch", "api", "exportedHeaderFlags")
 
 	_ = pctx.SourcePathVariable("sAbiDiffer", "prebuilts/build-tools/${config.HostPrebuiltTag}/bin/header-abi-diff")
 
@@ -634,7 +634,7 @@ func TransformObjToDynamicBinary(ctx android.ModuleContext,
 
 // Generate a rule to combine .dump sAbi dump files from multiple source files
 // into a single .ldump sAbi dump file
-func TransformDumpToLinkedDump(ctx android.ModuleContext, sAbiDumps android.Paths,
+func TransformDumpToLinkedDump(ctx android.ModuleContext, sAbiDumps android.Paths, soFile android.Path,
 	symbolFile android.OptionalPath, apiLevel, baseName, exportedHeaderFlags string) android.OptionalPath {
 	outputFile := android.PathForModuleOut(ctx, baseName+".lsdump")
 	var symbolFileStr string
@@ -642,6 +642,8 @@ func TransformDumpToLinkedDump(ctx android.ModuleContext, sAbiDumps android.Path
 	if symbolFile.Valid() {
 		symbolFileStr = "-v " + symbolFile.Path().String()
 		linkedDumpDep = symbolFile.Path()
+	} else {
+		linkedDumpDep = soFile
 	}
 	ctx.ModuleBuild(pctx, android.ModuleBuildParams{
 		Rule:        sAbiLink,
@@ -650,6 +652,7 @@ func TransformDumpToLinkedDump(ctx android.ModuleContext, sAbiDumps android.Path
 		Inputs:      sAbiDumps,
 		Implicit:    linkedDumpDep,
 		Args: map[string]string{
+			"soFile":     "-so " + soFile.String(),
 			"symbolFile": symbolFileStr,
 			"arch":       ctx.Arch().ArchType.Name,
 			"api":        apiLevel,
