@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "6b45f49a_9031e3d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-26T23:07:14Z",
+      "side": 1,
+      "message": "We need to define the VNDK subset and do the consistency checks before moving the directory:\n\n* link-type checks to make sure that VNDK modules only link to other VNDK shared libraries (and the LL-NDK)\n* move the ABI checks to VNDK from all of vendor_available",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 66
+      },
+      "revId": "24f2235304e12528ea7889003a6c8d98e423a6ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b265e5fe_0e3c4796",
         "filename": "cc/config/global.go",
         "patchSetId": 1
@@ -25,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "16e7d68f_82f06f08",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-26T23:07:14Z",
+      "side": 1,
+      "message": "I\u0027m not particularly happy with a list here. The modules themselves should be declaring themselves safe with the vendor_available/VNDK/VNDK-SP restrictions/concerns. We\u0027ve been combining everything into the vendor_available warnings right now, but that\u0027s not fully correct. It would be better to have those be separate settings with clear documentation on what the owners are agreeing to.",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 17
+      },
+      "revId": "24f2235304e12528ea7889003a6c8d98e423a6ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cf5f3bca_06920985",
         "filename": "cc/library.go",
         "patchSetId": 1
@@ -36,6 +82,30 @@
       "writtenOn": "2017-06-26T01:15:50Z",
       "side": 1,
       "message": "vndk-sp should be supported as well",
+      "range": {
+        "startLine": 704,
+        "startChar": 36,
+        "endLine": 704,
+        "endChar": 40
+      },
+      "revId": "24f2235304e12528ea7889003a6c8d98e423a6ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f167611e_f81b8eec",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-06-26T23:07:14Z",
+      "side": 1,
+      "message": "While I agree, we probably shouldn\u0027t put them in the same change -- it needs its own link-type checks to ensure that the dependencies are correct",
+      "parentUuid": "cf5f3bca_06920985",
       "range": {
         "startLine": 704,
         "startChar": 36,
