@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40c32c61_38487863",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-26T20:19:01Z",
+      "side": 1,
+      "message": "Since you\u0027ve already checked for nil this can be *a.hostAndDeviceProperties.Device_supported",
+      "range": {
+        "startLine": 353,
+        "startChar": 3,
+        "endLine": 353,
+        "endChar": 7
+      },
+      "revId": "b59a30331fe506fb3fd9ba6420f22754aa9126ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
