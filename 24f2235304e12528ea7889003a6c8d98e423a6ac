@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b265e5fe_0e3c4796",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-06-26T01:15:50Z",
+      "side": 1,
+      "message": "I think we need at least two sets: vndk and vndk-sp because they are installed to different directories.",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 31
+      },
+      "revId": "24f2235304e12528ea7889003a6c8d98e423a6ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf5f3bca_06920985",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-06-26T01:15:50Z",
+      "side": 1,
+      "message": "vndk-sp should be supported as well",
+      "range": {
+        "startLine": 704,
+        "startChar": 36,
+        "endLine": 704,
+        "endChar": 40
+      },
+      "revId": "24f2235304e12528ea7889003a6c8d98e423a6ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
