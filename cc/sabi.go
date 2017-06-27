@@ -63,10 +63,14 @@ func filterOutWithPrefix(list []string, filter []string) (remainder []string) {
 	return
 }
 
+func filterClangToolingIncompatibleFlags(cflags []string) []string {
+	return filterOutWithPrefix(cflags, config.ClangLibToolingUnknownCflags)
+}
+
 func (sabimod *sabi) flags(ctx ModuleContext, flags Flags) Flags {
 	// Assuming that the cflags which clang LibTooling tools cannot
 	// understand have not been converted to ninja variables yet.
-	flags.ToolingCFlags = filterOutWithPrefix(flags.CFlags, config.ClangLibToolingUnknownCflags)
+	flags.ToolingCFlags = filterClangToolingIncompatibleFlags(flags.CFlags)
 	return flags
 }
 
