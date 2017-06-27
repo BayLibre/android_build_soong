@@ -16,6 +16,24 @@
       "revId": "db933c0c61b9b53cc47de8ca26e43a5364b1bc85",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32510753_4b860258",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2017-06-27T20:02:18Z",
+      "side": 1,
+      "message": "I thought so too, but it was omitted from clang-tidy\u0027s cppflags as well, so ¯\\_(ツ)_/¯.\n\nFor reference, the thing I was looking at when I wrote this was https://android.googlesource.com/platform/build/soong/+/master/cc/builder.go#284\n\nLooks like the CL that added that just set it to `cFlags` initially, but that changed in later patch sets. Can\u0027t find an explanation on the review for why flags.cFlags was dropped.\n\nI\u0027ll ping the author. :)",
+      "parentUuid": "0fb86b45_40c51322",
+      "revId": "db933c0c61b9b53cc47de8ca26e43a5364b1bc85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
