@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "78d9928f_da3b4a04",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-27T17:14:36Z",
+      "side": 1,
+      "message": "add:\nandroid.RegisterArchVariantFeatures(android.Arm, \"armv8-a\", \"neon\")",
+      "revId": "ca929338f322a06ad028a966b162afdcab53cf88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8d8ead2_bfe4246e",
         "filename": "cc/config/arm_device.go",
         "patchSetId": 2
