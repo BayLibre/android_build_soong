@@ -263,7 +263,8 @@ func compileStubLibrary(ctx ModuleContext, flags Flags, symbolFile, apiLevel, vn
 		},
 	})
 
-	flags.CFlags = append(flags.CFlags,
+	// Append to ConlyFlags so clang-tidy will pick these flags up, as well.
+	flags.ConlyFlags = append(flags.ConlyFlags,
 		// We're knowingly doing some otherwise unsightly things with builtin
 		// functions here. We're just generating stub libraries, so ignore it.
 		"-Wno-incompatible-library-redeclaration",
