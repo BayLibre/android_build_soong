@@ -263,7 +263,10 @@ func compileStubLibrary(ctx ModuleContext, flags Flags, symbolFile, apiLevel, vn
 		},
 	})
 
-	flags.CFlags = append(flags.CFlags,
+	// NOTE: We need to duplicate these flags between ToolingCFlags and CFlags, since we run
+	// this code only after we've properly initialized ToolingCFlags, and CFlags are only passed
+	// to clang-tidy through ToolingCFlags.
+	extraCFlags := []string{
 		// We're knowingly doing some otherwise unsightly things with builtin
 		// functions here. We're just generating stub libraries, so ignore it.
 		"-Wno-incompatible-library-redeclaration",
@@ -273,7 +276,10 @@ func compileStubLibrary(ctx ModuleContext, flags Flags, symbolFile, apiLevel, vn
 		// These libraries aren't actually used. Don't worry about unwinding
 		// (avoids the need to link an unwinder into a fake library).
 		"-fno-unwind-tables",
-	)
+	}
+	flags.CFlags = append(flags.CFlags, extraCFlags...)
+	extraToolingFlags := filterClangToolingIncompatibleFlags(extraCFlags)
+	flags.ToolingCFlags = append(flags.ToolingCFlags, extraToolingFlags...)
 
 	subdir := ""
 	srcs := []android.Path{stubSrcPath}
