@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0fb86b45_40c51322",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2017-06-27T19:12:24Z",
+      "side": 1,
+      "message": "This sounds like a bug.",
+      "revId": "db933c0c61b9b53cc47de8ca26e43a5364b1bc85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
