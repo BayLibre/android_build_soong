@@ -115,6 +115,30 @@
       "revId": "24f2235304e12528ea7889003a6c8d98e423a6ac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c97b8505_4c5242ff",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-06-27T02:22:17Z",
+      "side": 1,
+      "message": "ok you are right.",
+      "parentUuid": "f167611e_f81b8eec",
+      "range": {
+        "startLine": 704,
+        "startChar": 36,
+        "endLine": 704,
+        "endChar": 40
+      },
+      "revId": "24f2235304e12528ea7889003a6c8d98e423a6ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
