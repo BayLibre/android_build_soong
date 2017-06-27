@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc4e9bb2_480778e4",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-27T22:39:04Z",
+      "side": 1,
+      "message": "No need to check for nil here, ranging over a nil list will not panic.  You can just remove the original nil check, it wasn\u0027t doing anything useful.",
+      "revId": "33a07c2a0a5c7e7193acd002b53caeccacc840fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
