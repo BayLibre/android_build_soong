@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8d8ead2_bfe4246e",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-27T17:08:19Z",
+      "side": 1,
+      "message": "I think this should get moved up to line 408 so that it applies for any arch",
+      "revId": "ca929338f322a06ad028a966b162afdcab53cf88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9261d0e9_2092d992",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-27T17:08:19Z",
+      "side": 1,
+      "message": "We don\u0027t need any specific flags here",
+      "revId": "ca929338f322a06ad028a966b162afdcab53cf88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
