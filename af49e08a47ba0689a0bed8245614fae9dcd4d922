@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1de5d2a1_7f6c32b7",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-27T17:49:47Z",
+      "side": 1,
+      "message": "It doesn\u0027t seem like you need a separate string for this, why not\n\n  symbolFileStr \u003d \"-so \" + soFile.String()",
+      "revId": "af49e08a47ba0689a0bed8245614fae9dcd4d922",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
