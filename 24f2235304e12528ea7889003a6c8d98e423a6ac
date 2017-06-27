@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "6c428cea_3e4f6db0",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-06-27T07:58:10Z",
+      "side": 1,
+      "message": "Ok, I have your point and agree with it.\nI will work on adding new tags for VNDK and VNDK-SP, and link-type check for them.",
+      "parentUuid": "16e7d68f_82f06f08",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 17
+      },
+      "revId": "24f2235304e12528ea7889003a6c8d98e423a6ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cf5f3bca_06920985",
         "filename": "cc/library.go",
         "patchSetId": 1
