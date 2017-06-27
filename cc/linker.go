@@ -156,7 +156,7 @@ func (linker *baseLinker) linkerDeps(ctx BaseModuleContext, deps Deps) Deps {
 				deps.LateSharedLibs = append(deps.LateSharedLibs,
 					linker.Properties.System_shared_libs...)
 			} else if !ctx.sdk() && !ctx.vndk() {
-				deps.LateSharedLibs = append(deps.LateSharedLibs, "libc", "libm")
+				deps.LateSharedLibs = append(deps.LateSharedLibs, "libc", "libm", "libdl")
 			}
 		}
 
@@ -164,10 +164,11 @@ func (linker *baseLinker) linkerDeps(ctx BaseModuleContext, deps Deps) Deps {
 			deps.SharedLibs = append(deps.SharedLibs,
 				"libc",
 				"libm",
+				"libdl",
 			)
 		}
 		if ctx.vndk() {
-			deps.LateSharedLibs = append(deps.LateSharedLibs, "libc", "libm")
+			deps.LateSharedLibs = append(deps.LateSharedLibs, "libc", "libm", "libdl")
 		}
 	}
 
