@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56522555_86c10b52",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-27T18:10:40Z",
+      "side": 1,
+      "message": "I meant to get rid of this too.  symbolFile and soFile are always mutually exclusive, they might as well be the same thing",
+      "revId": "db21c70bbdc01b2b975881921d98045b0c2b2872",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
