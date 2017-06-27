@@ -34,6 +34,24 @@
       "revId": "db933c0c61b9b53cc47de8ca26e43a5364b1bc85",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a1da806_d79d7528",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2017-06-27T22:49:43Z",
+      "side": 1,
+      "message": "Okay, so it looks like there\u0027s a bit more going on here than I first realized.\n\nflags.toolingCFlags *is* cflags, with some ones that make tooling sad (\"-flto\", \"-fsanitize\u003d*\") removed (https://android.googlesource.com/platform/build/soong/+/master/cc/sabi.go#69). It seems that we do this filtering prior to calling into this compileStub function, so the \"consistent\" fix for this particular issue would be to add these flags to both toolingCFlags and CFlags.\n\nThis pattern of duplicating cflags feels fragile to me, but I can\u0027t think of a better (local) way to fix this, since it seems we replace CFlags with []string{\"$cflags\"} immediately after filtering: https://android.googlesource.com/platform/build/soong/+/master/cc/cc.go#538\n\n...Since I\u0027m not familiar with this codebase at all, I\u0027ll duplicate the flags. If someone sees a better fix, please let me know. :)",
+      "parentUuid": "32510753_4b860258",
+      "revId": "db933c0c61b9b53cc47de8ca26e43a5364b1bc85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }

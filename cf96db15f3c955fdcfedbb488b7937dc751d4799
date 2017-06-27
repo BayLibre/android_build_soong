@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ac54eb4_2e40bf1e",
+        "filename": "cc/sabi.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2017-06-27T22:49:43Z",
+      "side": 1,
+      "message": "This was moved down because `go fmt` kept adding a blank line between it and \"github.com/google/blueprint\" for me...",
+      "revId": "cf96db15f3c955fdcfedbb488b7937dc751d4799",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
