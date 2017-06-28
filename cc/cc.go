@@ -177,6 +177,7 @@ type UnusedProperties struct {
 type ModuleContextIntf interface {
 	static() bool
 	staticBinary() bool
+	staticLibrary() bool
 	clang() bool
 	toolchain() config.Toolchain
 	noDefaultCompilerFlags() bool
@@ -401,6 +402,15 @@ func (ctx *moduleContextImpl) staticBinary() bool {
 		staticBinary() bool
 	}); ok {
 		return static.staticBinary()
+	}
+	return false
+}
+
+func (ctx *moduleContextImpl) staticLibrary() bool {
+	if static, ok := ctx.mod.linker.(interface {
+		staticLibrary() bool
+	}); ok {
+		return static.staticLibrary()
 	}
 	return false
 }
