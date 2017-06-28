@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// This file implements the logic of bpfix and also provides a programmatic interface
-
 package bpfix
 
 import (
@@ -21,8 +19,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/google/blueprint/parser"
 	"reflect"
+
+	"github.com/google/blueprint/parser"
 )
 
 // TODO(jeffrygaston) remove this when position is removed from ParseNode (in b/38325146) and we can directly do reflect.DeepEqual
@@ -34,7 +33,7 @@ func printListOfStrings(items []string) (text string) {
 
 }
 
-func buildTree(local_include_dirs []string, export_include_dirs []string) (file *parser.File, errs []error) {
+func buildTreeWithIncludes(local_include_dirs []string, export_include_dirs []string) (file *parser.File, errs []error) {
 	// TODO(jeffrygaston) use the builder class when b/38325146 is done
 	input := fmt.Sprintf(`cc_library_shared {
 	    name: "iAmAModule",
@@ -50,9 +49,9 @@ func buildTree(local_include_dirs []string, export_include_dirs []string) (file 
 	return tree, errs
 }
 
-func implFilterListTest(t *testing.T, local_include_dirs []string, export_include_dirs []string, expectedResult []string) {
+func filterListTestImpl(t *testing.T, local_include_dirs []string, export_include_dirs []string, expectedResult []string) {
 	// build tree
-	tree, errs := buildTree(local_include_dirs, export_include_dirs)
+	tree, errs := buildTreeWithIncludes(local_include_dirs, export_include_dirs)
 	if len(errs) > 0 {
 		t.Error("failed to build tree")
 		for _, err := range errs {
@@ -69,10 +68,6 @@ func implFilterListTest(t *testing.T, local_include_dirs []string, export_includ
 
 	// lookup legacy property
 	mod := tree.Defs[0].(*parser.Module)
-	_, found := mod.GetProperty("local_include_dirs")
-	if !found {
-		t.Fatalf("failed to include key local_include_dirs in parse tree")
-	}
 
 	// check that the value for the legacy property was updated to the correct value
 	errorHeader := fmt.Sprintf("\nFailed to correctly simplify key 'local_include_dirs' in the presence of 'export_include_dirs.'\n"+
@@ -83,7 +78,7 @@ func implFilterListTest(t *testing.T, local_include_dirs []string, export_includ
 		local_include_dirs, export_include_dirs, expectedResult)
 	result, ok := mod.GetProperty("local_include_dirs")
 	if !ok {
-		t.Fatal(errorHeader + "property not found")
+		t.Fatal(errorHeader + "local_include_dirs not found")
 	}
 
 	listResult, ok := result.Value.(*parser.List)
@@ -104,11 +99,74 @@ func implFilterListTest(t *testing.T, local_include_dirs []string, export_includ
 }
 
 func TestSimplifyKnownVariablesDuplicatingEachOther(t *testing.T) {
-	// TODO use []Expression{} once buildTree above can support it (which is after b/38325146 is done)
-	implFilterListTest(t, []string{"include"}, []string{"include"}, []string{})
-	implFilterListTest(t, []string{"include1"}, []string{"include2"}, []string{"include1"})
-	implFilterListTest(t, []string{"include1", "include2", "include3", "include4"}, []string{"include2"},
+	// TODO use []Expression{} once buildTreeWithIncludes above can support it (which is after b/38325146 is done)
+	filterListTestImpl(t, []string{"include"}, []string{"include"}, []string{})
+	filterListTestImpl(t, []string{"include1"}, []string{"include2"}, []string{"include1"})
+	filterListTestImpl(t, []string{"include1", "include2", "include3", "include4"}, []string{"include2"},
 		[]string{"include1", "include3", "include4"})
-	implFilterListTest(t, []string{}, []string{"include"}, []string{})
-	implFilterListTest(t, []string{}, []string{}, []string{})
+	filterListTestImpl(t, []string{}, []string{"include"}, []string{})
+	filterListTestImpl(t, []string{}, []string{}, []string{})
+}
+
+func buildTreeWithSharedLibs(libNames []string) (file *parser.File, errs []error) {
+	// TODO(jeffrygaston) use the builder class when b/38325146 is done
+	input := fmt.Sprintf(`cc_library_shared {
+	    name: "iAmAModule",
+	    shared_libs: %s,
+	}
+	`,
+		printListOfStrings(libNames))
+	tree, errs := parser.Parse("", strings.NewReader(input), parser.NewScope(nil))
+	if len(errs) > 0 {
+		errs = append([]error{fmt.Errorf("failed to parse:\n%s", input)}, errs...)
+	}
+	return tree, errs
+}
+
+func duplicateListTestImpl(t *testing.T, input []string, expectedResult []string) {
+	// build tree
+	tree, errs := buildTreeWithSharedLibs(input)
+	if len(errs) > 0 {
+		t.Error("failed to build tree")
+		for _, err := range errs {
+			t.Error(err)
+		}
+		t.Fatalf("%d parse errors", len(errs))
+	}
+
+	// apply simplifications
+	tree, err := removeDuplicateValuesInKnownListProperties(tree)
+	if len(errs) > 0 {
+		t.Fatal(err)
+	}
+
+	// lookup new value
+	mod := tree.Defs[0].(*parser.Module)
+	prop, found := mod.GetProperty("shared_libs")
+	if !found {
+		t.Fatalf("failed to include key shared_libs in parse tree")
+	}
+	list := prop.Value.(*parser.List)
+	var actualResult = []string{}
+	for _, item := range list.Values {
+		str := item.(*parser.String)
+		actualResult = append(actualResult, str.Value)
+	}
+	if !reflect.DeepEqual(actualResult, expectedResult) {
+		t.Errorf("Failed to correctly deduplicate list."+
+			"input   : %s\n"+
+			"expected: %s\n"+
+			"got     : %s\n",
+			input, expectedResult, actualResult)
+	}
+
+}
+func TestListsHavingDuplicateValues(t *testing.T) {
+	duplicateListTestImpl(t, []string{}, []string{})
+	duplicateListTestImpl(t, []string{""}, []string{""})
+	duplicateListTestImpl(t, []string{"lib1"}, []string{"lib1"})
+	duplicateListTestImpl(t, []string{"lib1", "lib1"}, []string{"lib1"})
+	duplicateListTestImpl(t, []string{"lib1", "lib2", "lib1"}, []string{"lib1", "lib2"})
+	duplicateListTestImpl(t, []string{"lib1", "lib1", "lib1"}, []string{"lib1"})
+	duplicateListTestImpl(t, []string{"lib2", "lib1", "lib3", "lib3", "lib1", "lib2"}, []string{"lib2", "lib1", "lib3"})
 }

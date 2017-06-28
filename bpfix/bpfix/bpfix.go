@@ -19,6 +19,7 @@ package bpfix
 import (
 	"bytes"
 	"fmt"
+
 	"github.com/google/blueprint/parser"
 )
 
@@ -27,6 +28,7 @@ import (
 type FixRequest struct {
 	simplifyKnownRedundantVariables bool
 	removeEmptyLists                bool
+	deduplicateLists                bool
 }
 
 func NewFixRequest() FixRequest {
@@ -37,6 +39,7 @@ func (r FixRequest) AddAll() (result FixRequest) {
 	result = r
 	result.simplifyKnownRedundantVariables = true
 	result.removeEmptyLists = true
+	result.deduplicateLists = true
 	return result
 }
 
@@ -91,6 +94,12 @@ func fixTreeOnce(tree *parser.File, config FixRequest) (fixed *parser.File, err 
 	}
 	if config.removeEmptyLists {
 		tree, err = removePropertiesHavingTheirDefaultValues(tree)
+		if err != nil {
+			return nil, err
+		}
+	}
+	if config.removeEmptyLists {
+		tree, err = removeDuplicateValuesInKnownListProperties(tree)
 		if err != nil {
 			return nil, err
 		}
@@ -182,4 +191,54 @@ func removePropertiesHavingTheirDefaultValues(tree *parser.File) (fixed *parser.
 		mod.Properties = mod.Properties[:writeIndex]
 	}
 	return tree, nil
+}
+func removeDuplicateValuesInKnownListProperties(tree *parser.File) (fixed *parser.File, err error) {
+	return removeDuplicateValuesInListProperties(tree, "shared_libs")
+}
+
+func removeDuplicateValuesInListProperties(tree *parser.File, propertyName string) (*parser.File, error) {
+	for _, def := range tree.Defs {
+		mod, ok := def.(*parser.Module)
+		if !ok {
+			continue
+		}
+		prop, ok := mod.GetProperty(propertyName)
+		if !ok {
+			continue
+		}
+		list, ok := prop.Value.(*parser.List)
+		if !ok {
+			continue
+		}
+		err := removeDuplicatesInList(list)
+		if err != nil {
+			return nil, err
+		}
+	}
+	return tree, nil
+}
+
+// removeDuplicatesInList removes any duplicate elements in a list, keeping the first instance of each
+func removeDuplicatesInList(list *parser.List) error {
+	itemSet := make(map[string]bool, len(list.Values))
+	writeIndex := 0
+	for _, val := range list.Values {
+		bytes, err := parser.PrintExpression(val)
+		id := string(bytes)
+		if err != nil {
+			return err
+		}
+		_, found := itemSet[id]
+		if found {
+			// skip this duplicate
+		} else {
+			// keep this unique element
+			list.Values[writeIndex] = val
+			writeIndex++
+			itemSet[id] = true
+		}
+	}
+	// resize list
+	list.Values = list.Values[:writeIndex]
+	return nil
 }
