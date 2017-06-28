@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2d35823_85066864",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-06-28T21:44:30Z",
+      "side": 1,
+      "message": "depends on https://github.com/google/blueprint/pull/157",
+      "revId": "afa0c60ca198aeea8e41777594e8ad66ffb3d411",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
