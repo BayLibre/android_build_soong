@@ -40,6 +40,8 @@ var (
 	cfiLdflags = []string{"-flto", "-fsanitize-cfi-cross-dso", "-fsanitize=cfi",
 		"-Wl,-plugin-opt,O1 -Wl,-export-dynamic-symbol=__cfi_check"}
 	cfiArflags = []string{"--plugin ${config.ClangBin}/../lib64/LLVMgold.so"}
+
+	iosanCflags = []string{"-fsanitize-blacklist=build/soong/cc/config/iosan_blacklist.txt"}
 )
 
 type sanitizerType int
@@ -55,6 +57,7 @@ func boolPtr(v bool) *bool {
 const (
 	asan sanitizerType = iota + 1
 	tsan
+	iosan
 )
 
 func (t sanitizerType) String() string {
@@ -63,6 +66,8 @@ func (t sanitizerType) String() string {
 		return "asan"
 	case tsan:
 		return "tsan"
+	case iosan:
+		return "iosan"
 	default:
 		panic(fmt.Errorf("unknown sanitizerType %d", t))
 	}
@@ -84,6 +89,7 @@ type SanitizeProperties struct {
 		Coverage       *bool    `android:"arch_variant"`
 		Safestack      *bool    `android:"arch_variant"`
 		Cfi            *bool    `android:"arch_variant"`
+		Intoverflow    *bool    `android:"arch_variant"`
 
 		// Sanitizers to run in the diagnostic mode (as opposed to the release mode).
 		// Replaces abort() on error with a human-readable error message.
@@ -91,6 +97,7 @@ type SanitizeProperties struct {
 		Diag struct {
 			Undefined      *bool    `android:"arch_variant"`
 			Cfi            *bool    `android:"arch_variant"`
+			Intoverflow    *bool    `android:"arch_variant"`
 			Misc_undefined []string `android:"arch_variant"`
 		}
 
@@ -177,6 +184,10 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 			s.Cfi = boolPtr(true)
 		}
 
+		if found, globalSanitizers = removeFromList("intoverflow", globalSanitizers); found && s.Intoverflow == nil {
+			s.Intoverflow = boolPtr(true)
+		}
+
 		if len(globalSanitizers) > 0 {
 			ctx.ModuleErrorf("unknown global sanitizer option %s", globalSanitizers[0])
 		}
@@ -200,6 +211,11 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 		s.Diag.Cfi = nil
 	}
 
+	// Check if IOSan should run in diagnostics mode
+	if ctx.AConfig().IOSanDiag() {
+		s.Diag.Intoverflow = boolPtr(true)
+	}
+
 	if ctx.staticBinary() {
 		s.Address = nil
 		s.Coverage = nil
@@ -218,7 +234,7 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 	}
 
 	if ctx.Os() != android.Windows && (Bool(s.All_undefined) || Bool(s.Undefined) || Bool(s.Address) || Bool(s.Thread) ||
-		Bool(s.Coverage) || Bool(s.Safestack) || Bool(s.Cfi) || len(s.Misc_undefined) > 0) {
+		Bool(s.Coverage) || Bool(s.Safestack) || Bool(s.Cfi) || Bool(s.Intoverflow) || len(s.Misc_undefined) > 0) {
 		sanitize.Properties.SanitizerEnabled = true
 	}
 
@@ -349,6 +365,18 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 		}
 	}
 
+	if Bool(sanitize.Properties.Sanitize.Intoverflow) {
+		if !ctx.staticBinary() && !ctx.staticLibrary() {
+			sanitizers = append(sanitizers, "unsigned-integer-overflow")
+			sanitizers = append(sanitizers, "signed-integer-overflow")
+			flags.CFlags = append(flags.CFlags, iosanCflags...)
+			if Bool(sanitize.Properties.Sanitize.Diag.Intoverflow) {
+				diagSanitizers = append(diagSanitizers, "unsigned-integer-overflow")
+				diagSanitizers = append(diagSanitizers, "signed-integer-overflow")
+			}
+		}
+	}
+
 	if len(sanitizers) > 0 {
 		sanitizeArg := "-fsanitize=" + strings.Join(sanitizers, ",")
 		flags.CFlags = append(flags.CFlags, sanitizeArg)
@@ -426,6 +454,8 @@ func (sanitize *sanitize) Sanitizer(t sanitizerType) bool {
 		return Bool(sanitize.Properties.Sanitize.Address)
 	case tsan:
 		return Bool(sanitize.Properties.Sanitize.Thread)
+	case iosan:
+		return Bool(sanitize.Properties.Sanitize.Intoverflow)
 	default:
 		panic(fmt.Errorf("unknown sanitizerType %d", t))
 	}
@@ -440,6 +470,8 @@ func (sanitize *sanitize) SetSanitizer(t sanitizerType, b bool) {
 		}
 	case tsan:
 		sanitize.Properties.Sanitize.Thread = boolPtr(b)
+	case iosan:
+		sanitize.Properties.Sanitize.Intoverflow = boolPtr(b)
 	default:
 		panic(fmt.Errorf("unknown sanitizerType %d", t))
 	}

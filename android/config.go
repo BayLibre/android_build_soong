@@ -436,6 +436,14 @@ func (c *config) EnableCFI() bool {
 	}
 }
 
+func (c *config) IOSanDiag() bool {
+	if c.ProductVariables.IOSanDiag == nil {
+		return true
+	} else {
+		return *c.ProductVariables.IOSanDiag
+	}
+}
+
 func (c *config) Android64() bool {
 	for _, t := range c.Targets[Device] {
 		if t.Arch.ArchType.Multilib == "lib64" {
