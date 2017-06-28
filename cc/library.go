@@ -241,6 +241,10 @@ type libraryDecorator struct {
 	*baseInstaller
 }
 
+func (library *libraryDecorator) staticLibrary() bool {
+	return library.MutatedProperties.BuildStatic
+}
+
 func (library *libraryDecorator) linkerProps() []interface{} {
 	var props []interface{}
 	props = append(props, library.baseLinker.linkerProps()...)

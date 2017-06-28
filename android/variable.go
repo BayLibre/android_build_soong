@@ -136,6 +136,7 @@ type productVariables struct {
 	Debuggable                 *bool `json:",omitempty"`
 	Eng                        *bool `json:",omitempty"`
 	EnableCFI                  *bool `json:",omitempty"`
+	IOSanDiag                  *bool `json:",omitempty"`
 	Device_uses_hwc2           *bool `json:",omitempty"`
 	Treble                     *bool `json:",omitempty"`
 	Pdk                        *bool `json:",omitempty"`
