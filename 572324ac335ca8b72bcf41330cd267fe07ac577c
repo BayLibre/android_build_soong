@@ -22,6 +22,30 @@
       "revId": "572324ac335ca8b72bcf41330cd267fe07ac577c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ccc4d010_9fc083cd",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-06-28T20:25:53Z",
+      "side": 0,
+      "message": "Yeah. If I\u0027m curious about these details, I can inspect the function signatures and type definitions.",
+      "parentUuid": "f6e68e0d_3a580dcf",
+      "range": {
+        "startLine": 243,
+        "startChar": 24,
+        "endLine": 247,
+        "endChar": 13
+      },
+      "revId": "572324ac335ca8b72bcf41330cd267fe07ac577c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

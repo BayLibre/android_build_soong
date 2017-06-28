@@ -257,6 +257,30 @@
       "revId": "737bd10db001ab46e861a51d313b6a8ccef52670",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0001a98_06ecafff",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-06-28T20:25:53Z",
+      "side": 1,
+      "message": "The same thing that the comment \"the module\" (on line 242) meant previously - the module into which the ModuleBase is embedded. I just added the word \"Android\", which makes it look more like the comment \"Android modules\" on lines 234-235.\n\nDo you just mean that \"Android\" in \"the Android module\" is redundant?",
+      "parentUuid": "7aea029e_2dd62d03",
+      "range": {
+        "startLine": 240,
+        "startChar": 72,
+        "endLine": 241,
+        "endChar": 17
+      },
+      "revId": "737bd10db001ab46e861a51d313b6a8ccef52670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
