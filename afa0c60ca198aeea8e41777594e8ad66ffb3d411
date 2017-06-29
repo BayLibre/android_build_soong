@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "11740c79_72efa420",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-29T23:18:40Z",
+      "side": 1,
+      "message": "I think its important to fix this before submitting.  A blank line in a list often carries a lot of information.  For example, bpfmt -s will sort contiguous sections of lists, but not mix sections separated by blank lines.",
+      "revId": "afa0c60ca198aeea8e41777594e8ad66ffb3d411",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2d35823_85066864",
         "filename": "bpfix/bpfix/bpfix.go",
         "patchSetId": 1
@@ -16,6 +33,29 @@
       "revId": "afa0c60ca198aeea8e41777594e8ad66ffb3d411",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c040013b_76fd7f97",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-29T23:18:40Z",
+      "side": 1,
+      "message": "Idiomatically, this would be\n\n    if _, found :\u003d itemSet[id]; found {\n\nbut since this is a map to bool it can just be:\n\n    if itemSet[id] {",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 12
+      },
+      "revId": "afa0c60ca198aeea8e41777594e8ad66ffb3d411",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
