@@ -209,9 +209,9 @@ func makeVarsToolchain(ctx android.MakeVarsContext, secondPrefix string,
 		}, " "))
 
 		if target.Os.Class == android.Device {
-			ctx.Strict(secondPrefix+"ADDRESS_SANITIZER_RUNTIME_LIBRARY", strings.TrimSuffix(config.AddressSanitizerRuntimeLibrary(toolchain), ".so"))
-			ctx.Strict(secondPrefix+"UBSAN_RUNTIME_LIBRARY", strings.TrimSuffix(config.UndefinedBehaviorSanitizerRuntimeLibrary(toolchain), ".so"))
-			ctx.Strict(secondPrefix+"TSAN_RUNTIME_LIBRARY", strings.TrimSuffix(config.ThreadSanitizerRuntimeLibrary(toolchain), ".so"))
+			ctx.Strict(secondPrefix+"ADDRESS_SANITIZER_RUNTIME_LIBRARY", config.AddressSanitizerRuntimeLibrary())
+			ctx.Strict(secondPrefix+"UBSAN_RUNTIME_LIBRARY", config.UndefinedBehaviorSanitizerRuntimeLibrary())
+			ctx.Strict(secondPrefix+"TSAN_RUNTIME_LIBRARY", config.ThreadSanitizerRuntimeLibrary())
 		}
 
 		// This is used by external/gentoo/...
