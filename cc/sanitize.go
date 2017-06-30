@@ -380,15 +380,16 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 	// Link a runtime library if needed.
 	runtimeLibrary := ""
 	if Bool(sanitize.Properties.Sanitize.Address) {
-		runtimeLibrary = config.AddressSanitizerRuntimeLibrary(ctx.toolchain())
+		runtimeLibrary = config.AddressSanitizerRuntimeLibrary()
 	} else if len(diagSanitizers) > 0 {
-		runtimeLibrary = config.UndefinedBehaviorSanitizerRuntimeLibrary(ctx.toolchain())
+		runtimeLibrary = config.UndefinedBehaviorSanitizerRuntimeLibrary()
 	}
+	runtimeLibraryFileName := config.SanitizerRuntimeLibraryFileName(runtimeLibrary, ctx.toolchain())
 
 	// ASan runtime library must be the first in the link order.
-	if runtimeLibrary != "" {
+	if runtimeLibraryFileName != "" {
 		flags.libFlags = append([]string{
-			"${config.ClangAsanLibDir}/" + runtimeLibrary + ctx.toolchain().ShlibSuffix(),
+			"${config.ClangAsanLibDir}/" + runtimeLibraryFileName,
 		}, flags.libFlags...)
 		sanitize.runtimeLibrary = runtimeLibrary
 	}

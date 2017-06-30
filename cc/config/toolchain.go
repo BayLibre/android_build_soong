@@ -207,24 +207,24 @@ func inList(s string, list []string) bool {
 	return indexList(s, list) != -1
 }
 
-func SanitizerRuntimeLibrary(t Toolchain, sanitizer string) string {
+func SanitizerRuntimeLibraryFileName(libName string, t Toolchain) string {
 	arch := t.SanitizerRuntimeLibraryArch()
-	if arch == "" {
+	if arch == "" || libName == "" {
 		return ""
 	}
-	return "libclang_rt." + sanitizer + "-" + arch + "-android"
+	return libName + "-" + arch + "-android" + t.ShlibSuffix()
 }
 
-func AddressSanitizerRuntimeLibrary(t Toolchain) string {
-	return SanitizerRuntimeLibrary(t, "asan")
+func AddressSanitizerRuntimeLibrary() string {
+	return "libclang_rt.asan"
 }
 
-func UndefinedBehaviorSanitizerRuntimeLibrary(t Toolchain) string {
-	return SanitizerRuntimeLibrary(t, "ubsan_standalone")
+func UndefinedBehaviorSanitizerRuntimeLibrary() string {
+	return "libclang_rt.ubsan_standalone"
 }
 
-func ThreadSanitizerRuntimeLibrary(t Toolchain) string {
-	return SanitizerRuntimeLibrary(t, "tsan")
+func ThreadSanitizerRuntimeLibrary() string {
+	return "libclang_rt.tsan"
 }
 
 func ToolPath(t Toolchain) string {
