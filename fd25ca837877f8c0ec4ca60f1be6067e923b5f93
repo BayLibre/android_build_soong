@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94e49cf4_436208f0",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-06-30T09:56:15Z",
+      "side": 1,
+      "message": "The name `vendor_available_vndk: true` may change.\nI choose this name because `vendor_available_vndk: true` includes `vendor_available: true`.",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 22
+      },
+      "revId": "fd25ca837877f8c0ec4ca60f1be6067e923b5f93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "805baff6_b9ff1d94",
+        "filename": "cc/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-06-30T09:56:15Z",
+      "side": 1,
+      "message": "need to be deleted, too",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 42
+      },
+      "revId": "fd25ca837877f8c0ec4ca60f1be6067e923b5f93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
