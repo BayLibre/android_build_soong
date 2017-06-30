@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a5bedbe_5211f61c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-30T23:40:59Z",
+      "side": 1,
+      "message": "Use integer-overflow to match the -fsanitize argument or integer_overflow to match the soong property",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "e3cac4fd0d4a4675b57cc018ec031c73244461d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4203814_2a7f4b73",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-30T23:40:59Z",
+      "side": 1,
+      "message": "\"IO\" means Input/Output to me.  Can you call this IntegerOverflow...?",
+      "range": {
+        "startLine": 439,
+        "startChar": 17,
+        "endLine": 439,
+        "endChar": 26
+      },
+      "revId": "e3cac4fd0d4a4675b57cc018ec031c73244461d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe7789c7_90b230e7",
+        "filename": "cc/config/iosan_blacklist.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-30T23:40:59Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem like the right place for this file, but I\u0027m not sure of a better place.",
+      "revId": "e3cac4fd0d4a4675b57cc018ec031c73244461d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2f9a167_7c0d4668",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-30T23:40:59Z",
+      "side": 1,
+      "message": "Integer_overflow",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 13
+      },
+      "revId": "e3cac4fd0d4a4675b57cc018ec031c73244461d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "508b1aa3_0f065c93",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-30T23:40:59Z",
+      "side": 1,
+      "message": "This list has gotten out of hand and has been the source of a previous bug, not in this patch but we should find a way to get rid of it.",
+      "revId": "e3cac4fd0d4a4675b57cc018ec031c73244461d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91766868_9ce2fb89",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-06-30T23:40:59Z",
+      "side": 1,
+      "message": "!static()\n\nand then you won\u0027t need to add staticLibrary()",
+      "range": {
+        "startLine": 369,
+        "startChar": 5,
+        "endLine": 369,
+        "endChar": 48
+      },
+      "revId": "e3cac4fd0d4a4675b57cc018ec031c73244461d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
