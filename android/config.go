@@ -508,6 +508,10 @@ func (c *deviceConfig) BtConfigIncludeDir() string {
 	return String(c.config.ProductVariables.BtConfigIncludeDir)
 }
 
+func (c *deviceConfig) DeviceKernelHeaderDirs() []string {
+	return c.config.ProductVariables.DeviceKernelHeaders
+}
+
 func (c *deviceConfig) NativeCoverageEnabled() bool {
 	return Bool(c.config.ProductVariables.NativeCoverage)
 }
