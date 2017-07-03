@@ -508,6 +508,13 @@ func (c *deviceConfig) BtConfigIncludeDir() string {
 	return String(c.config.ProductVariables.BtConfigIncludeDir)
 }
 
+func (c *deviceConfig) SystemIncludeDirs() []string {
+	if c.config.ProductVariables.SystemIncludeDirs == nil {
+		return []string{}
+	}
+	return strings.Split(*c.config.ProductVariables.SystemIncludeDirs, " ")
+}
+
 func (c *deviceConfig) NativeCoverageEnabled() bool {
 	return Bool(c.config.ProductVariables.NativeCoverage)
 }
