@@ -1,0 +1,245 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c936d9f0_d7068b91",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-07-04T11:42:41Z",
+      "side": 1,
+      "message": "Can we move this to the package \u0027cc\u0027? The concept of vndk is not common to all modules, but is local to cc modules.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 12
+      },
+      "revId": "a1917bb2510f5b13ce605757c0ca49b087dd1115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcf0573e_b764cd1c",
+        "filename": "android/paths.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-07-04T11:42:41Z",
+      "side": 1,
+      "message": "On a second thought, I think ctx.Vendor() should return false for vndk libraries. We can do that by modifying Vendor() function defined in cc/cc.go. Then we can eliminate the need to have Vndk() in this package.",
+      "range": {
+        "startLine": 676,
+        "startChar": 2,
+        "endLine": 676,
+        "endChar": 34
+      },
+      "revId": "a1917bb2510f5b13ce605757c0ca49b087dd1115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bc9729d_739aaba2",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-07-04T11:42:41Z",
+      "side": 1,
+      "message": "How about having something like LOCAL_VNDK_CLASS that can be set to llndk, sameprocess, core, and extended?",
+      "revId": "a1917bb2510f5b13ce605757c0ca49b087dd1115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38545431_876fe739",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-07-04T11:42:41Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 5
+      },
+      "revId": "a1917bb2510f5b13ce605757c0ca49b087dd1115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e3b644e_e95b92d2",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-07-04T11:42:41Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 352,
+        "endChar": 45
+      },
+      "revId": "a1917bb2510f5b13ce605757c0ca49b087dd1115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bd07fca_fdd99778",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-07-04T11:42:41Z",
+      "side": 1,
+      "message": "How about just \u0027Vndk\u0027?\n\nDoc required.",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 22
+      },
+      "revId": "a1917bb2510f5b13ce605757c0ca49b087dd1115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf523bba_5deed3d5",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-07-04T11:42:41Z",
+      "side": 1,
+      "message": "How about adding \u0027vndkKind()\u0027 which tells whether this module being built is either llndk, vndk-sp, vndk-core, or extended?",
+      "revId": "a1917bb2510f5b13ce605757c0ca49b087dd1115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04a20aea_c9d84b05",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-07-04T11:42:41Z",
+      "side": 1,
+      "message": "As we discussed earlier, having this seems not to be a good idea. How about using top-down mutator?",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 0
+      },
+      "revId": "a1917bb2510f5b13ce605757c0ca49b087dd1115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af0a493b_ba1231df",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-07-04T11:42:41Z",
+      "side": 1,
+      "message": "adding \"\u0026\u0026 !ctx.moduleContextImpl.mod.Properties.IsVndk\" ?",
+      "range": {
+        "startLine": 407,
+        "startChar": 1,
+        "endLine": 407,
+        "endChar": 82
+      },
+      "revId": "a1917bb2510f5b13ce605757c0ca49b087dd1115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "872f7569_efc5027c",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-07-04T11:42:41Z",
+      "side": 1,
+      "message": "We don\u0027t need to have this right? Furthermore, we already have vndk() whose meaning is quite different than this.",
+      "range": {
+        "startLine": 410,
+        "startChar": 0,
+        "endLine": 413,
+        "endChar": 1
+      },
+      "revId": "a1917bb2510f5b13ce605757c0ca49b087dd1115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "976b4130_9ab1c57a",
+        "filename": "cc/config/global.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-07-04T11:42:41Z",
+      "side": 1,
+      "message": "I don\u0027t understand why this should be in global.go where global configurations are in. Can we move this to cc.go?",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 1
+      },
+      "revId": "a1917bb2510f5b13ce605757c0ca49b087dd1115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
