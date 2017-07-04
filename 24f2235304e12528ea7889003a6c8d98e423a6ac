@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "b7a830aa_165f9750",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-04T07:35:42Z",
+      "side": 1,
+      "message": "I removed the list. Instead, I defined `vendor_available_vndk` to indicate the module is VNDK. For VNDKSP, we need to define another term, for example, `vendor_available_vndksp`.\nOnce `vendor_available_vndk: true` is set, `vendor_available: true` have be removed.",
+      "parentUuid": "6c428cea_3e4f6db0",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 17
+      },
+      "revId": "24f2235304e12528ea7889003a6c8d98e423a6ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cf5f3bca_06920985",
         "filename": "cc/library.go",
         "patchSetId": 1
