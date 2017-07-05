@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "6753714c_1b75df43",
+        "filename": "android/paths.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-05T01:21:32Z",
+      "side": 1,
+      "message": "Vendor() is used to differentiate the \u0027source\u0027 and \u0027header\u0027 files in Android.bp which defines \"target: { vendor: {...}}\" (library.go). If Vendor is true, the alternative settings are used for vendor or vndk modules. It has to be true for Vndk. I think there\u0027s no other way but defining a new function or making the Vendor() function return `int` instead of `bool`.",
+      "parentUuid": "bcf0573e_b764cd1c",
+      "range": {
+        "startLine": 676,
+        "startChar": 2,
+        "endLine": 676,
+        "endChar": 34
+      },
+      "revId": "a1917bb2510f5b13ce605757c0ca49b087dd1115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8bc9729d_739aaba2",
         "filename": "cc/androidmk.go",
         "patchSetId": 4
@@ -59,6 +83,24 @@
       "writtenOn": "2017-07-04T11:42:41Z",
       "side": 1,
       "message": "How about having something like LOCAL_VNDK_CLASS that can be set to llndk, sameprocess, core, and extended?",
+      "revId": "a1917bb2510f5b13ce605757c0ca49b087dd1115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04e7bcb8_5d48c223",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-05T01:21:32Z",
+      "side": 1,
+      "message": "I think that is the correct design for adding vndksp later.",
+      "parentUuid": "8bc9729d_739aaba2",
       "revId": "a1917bb2510f5b13ce605757c0ca49b087dd1115",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -134,6 +176,30 @@
     },
     {
       "key": {
+        "uuid": "eae82bcd_918eec6f",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-05T01:21:32Z",
+      "side": 1,
+      "message": "I defined this, because `vendor_available_vndk: true` includes `vendor_available: true`.\nJust `vndk: true` is okay for me. But in that case should we mandate to declaring `vendor_available: true` before using `vndk: true`, or just ignore if `vendor_available: true` is defined or not? I prefer former.",
+      "parentUuid": "2bd07fca_fdd99778",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 22
+      },
+      "revId": "a1917bb2510f5b13ce605757c0ca49b087dd1115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bf523bba_5deed3d5",
         "filename": "cc/cc.go",
         "patchSetId": 4
@@ -145,6 +211,24 @@
       "writtenOn": "2017-07-04T11:42:41Z",
       "side": 1,
       "message": "How about adding \u0027vndkKind()\u0027 which tells whether this module being built is either llndk, vndk-sp, vndk-core, or extended?",
+      "revId": "a1917bb2510f5b13ce605757c0ca49b087dd1115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b8a79db_55e9c951",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-05T01:21:32Z",
+      "side": 1,
+      "message": "That\u0027s great. Here, vndk() is used to indicate the module is available to vendor. It returns `UseVndk` not `IsVndk`. So adding `vndkTag()` to return one of the `VndkType` enum values will be better to have instead of using IsVndk directly.",
+      "parentUuid": "bf523bba_5deed3d5",
       "revId": "a1917bb2510f5b13ce605757c0ca49b087dd1115",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -220,6 +304,30 @@
     },
     {
       "key": {
+        "uuid": "74f0e0ba_e118d27e",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-05T01:21:32Z",
+      "side": 1,
+      "message": "This function is overriding the android.ModuleContext.Vndk() that is used in \"android/paths.go\".",
+      "parentUuid": "872f7569_efc5027c",
+      "range": {
+        "startLine": 410,
+        "startChar": 0,
+        "endLine": 413,
+        "endChar": 1
+      },
+      "revId": "a1917bb2510f5b13ce605757c0ca49b087dd1115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "976b4130_9ab1c57a",
         "filename": "cc/config/global.go",
         "patchSetId": 4
@@ -231,6 +339,30 @@
       "writtenOn": "2017-07-04T11:42:41Z",
       "side": 1,
       "message": "I don\u0027t understand why this should be in global.go where global configurations are in. Can we move this to cc.go?",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 1
+      },
+      "revId": "a1917bb2510f5b13ce605757c0ca49b087dd1115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "113f759f_da8c183a",
+        "filename": "cc/config/global.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-05T01:21:32Z",
+      "side": 1,
+      "message": "It does not matter to have this in cc.go. I put this in global.go as the names of the link-types and the EligibleList table are global configurations for cc.",
+      "parentUuid": "976b4130_9ab1c57a",
       "range": {
         "startLine": 188,
         "startChar": 0,
