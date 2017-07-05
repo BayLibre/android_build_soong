@@ -48,6 +48,23 @@
     },
     {
       "key": {
+        "uuid": "7a770264_ca0eac5a",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2017-07-05T21:41:50Z",
+      "side": 1,
+      "message": "Could this be a general purpose SANITIZE_TARGET_DIAG setting instead of IOSAN_DIAG? We could use the former for CFI, too.",
+      "revId": "e3cac4fd0d4a4675b57cc018ec031c73244461d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe7789c7_90b230e7",
         "filename": "cc/config/iosan_blacklist.txt",
         "patchSetId": 2
@@ -76,6 +93,30 @@
       "writtenOn": "2017-06-30T23:40:59Z",
       "side": 1,
       "message": "Integer_overflow",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 13
+      },
+      "revId": "e3cac4fd0d4a4675b57cc018ec031c73244461d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fba5747e_bd42ffbd",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2017-07-05T21:41:50Z",
+      "side": 1,
+      "message": "This can be expressed through Misc_undefined. Why add another property?",
+      "parentUuid": "a2f9a167_7c0d4668",
       "range": {
         "startLine": 92,
         "startChar": 2,
