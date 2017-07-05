@@ -328,6 +328,29 @@
     },
     {
       "key": {
+        "uuid": "ba515074_7976d4e3",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-07-05T17:04:32Z",
+      "side": 1,
+      "message": "I think this has been mentioned before, but we could probably collapse all of these into one function which checks whether a library belongs to any sub-class of vndk libraries ?",
+      "range": {
+        "startLine": 478,
+        "startChar": 29,
+        "endLine": 478,
+        "endChar": 136
+      },
+      "revId": "a1917bb2510f5b13ce605757c0ca49b087dd1115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "976b4130_9ab1c57a",
         "filename": "cc/config/global.go",
         "patchSetId": 4
