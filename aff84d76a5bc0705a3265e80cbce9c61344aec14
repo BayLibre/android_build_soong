@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e7d39ad_3e8435c5",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-07-06T06:00:37Z",
+      "side": 1,
+      "message": "Is this too generic? Change to vendor_kernel_headers?",
+      "range": {
+        "startLine": 315,
+        "startChar": 11,
+        "endLine": 315,
+        "endChar": 25
+      },
+      "revId": "aff84d76a5bc0705a3265e80cbce9c61344aec14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
