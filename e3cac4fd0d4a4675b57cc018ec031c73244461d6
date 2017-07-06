@@ -171,6 +171,30 @@
     },
     {
       "key": {
+        "uuid": "55d22270_a4454b8b",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2017-07-06T22:22:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49493b05_70cb5dff",
+      "range": {
+        "startLine": 245,
+        "startChar": 34,
+        "endLine": 245,
+        "endChar": 45
+      },
+      "revId": "e3cac4fd0d4a4675b57cc018ec031c73244461d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2f9a167_7c0d4668",
         "filename": "cc/sanitize.go",
         "patchSetId": 2
@@ -342,6 +366,30 @@
       "side": 1,
       "message": "staticLibrary should be checking VariantIsStatic, using BuildStatic is likely covering up some other bug by disabling integer sanitization for all cc_library modules.",
       "parentUuid": "672c37b8_d7a4178c",
+      "range": {
+        "startLine": 369,
+        "startChar": 5,
+        "endLine": 369,
+        "endChar": 48
+      },
+      "revId": "e3cac4fd0d4a4675b57cc018ec031c73244461d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c63d783f_3f2b012f",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2017-07-06T22:22:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "188f7de4_a994a962",
       "range": {
         "startLine": 369,
         "startChar": 5,
