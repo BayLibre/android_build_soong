@@ -603,6 +603,30 @@
     },
     {
       "key": {
+        "uuid": "be13172d_504d25f3",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-06T06:01:26Z",
+      "side": 1,
+      "message": "Updated in Patch Set 6.\nI first used `ctx.vndk()`. But the `vndk()` will always return `false` unless `BOARD_VNDK_VERSION\u003dcurrent` is set.\nIn that case `ctx.mod.Properties.In_system` is the right choice to find both VNDK and VNDK-SP modules.",
+      "parentUuid": "00eef185_daa8109c",
+      "range": {
+        "startLine": 478,
+        "startChar": 29,
+        "endLine": 478,
+        "endChar": 136
+      },
+      "revId": "a1917bb2510f5b13ce605757c0ca49b087dd1115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "976b4130_9ab1c57a",
         "filename": "cc/config/global.go",
         "patchSetId": 4
