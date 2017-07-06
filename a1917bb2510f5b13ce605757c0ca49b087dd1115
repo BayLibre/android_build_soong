@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "73d1c8e2_58491068",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-06T04:13:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c936d9f0_d7068b91",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 12
+      },
+      "revId": "a1917bb2510f5b13ce605757c0ca49b087dd1115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bcf0573e_b764cd1c",
         "filename": "android/paths.go",
         "patchSetId": 4
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "2a347b48_c0af1c0f",
+        "filename": "android/paths.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-06T04:13:21Z",
+      "side": 1,
+      "message": "Done!\nI removed all the \"android\" modification. Instead, Vendor() returns false for vndk modules. So I added vndk check function in cc/library.go for \"target: {vendor:\" struct.",
+      "parentUuid": "6753714c_1b75df43",
+      "range": {
+        "startLine": 676,
+        "startChar": 2,
+        "endLine": 676,
+        "endChar": 34
+      },
+      "revId": "a1917bb2510f5b13ce605757c0ca49b087dd1115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8bc9729d_739aaba2",
         "filename": "cc/androidmk.go",
         "patchSetId": 4
@@ -107,6 +155,24 @@
     },
     {
       "key": {
+        "uuid": "04a6dafc_29f63804",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-06T04:13:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04e7bcb8_5d48c223",
+      "revId": "a1917bb2510f5b13ce605757c0ca49b087dd1115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "38545431_876fe739",
         "filename": "cc/androidmk.go",
         "patchSetId": 4
@@ -130,6 +196,30 @@
     },
     {
       "key": {
+        "uuid": "0528d937_56ff0537",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-06T04:13:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38545431_876fe739",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 5
+      },
+      "revId": "a1917bb2510f5b13ce605757c0ca49b087dd1115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6e3b644e_e95b92d2",
         "filename": "cc/androidmk.go",
         "patchSetId": 4
@@ -141,6 +231,30 @@
       "writtenOn": "2017-07-04T11:42:41Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 352,
+        "endChar": 45
+      },
+      "revId": "a1917bb2510f5b13ce605757c0ca49b087dd1115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd6b3308_22444d4e",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-06T04:13:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e3b644e_e95b92d2",
       "range": {
         "startLine": 352,
         "startChar": 0,
@@ -200,6 +314,30 @@
     },
     {
       "key": {
+        "uuid": "1c7fbb0b_3621e90d",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-06T04:13:21Z",
+      "side": 1,
+      "message": "Done!\nFor vndk modules, add `is_system: true` to `vendor_available: true`.",
+      "parentUuid": "eae82bcd_918eec6f",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 22
+      },
+      "revId": "a1917bb2510f5b13ce605757c0ca49b087dd1115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bf523bba_5deed3d5",
         "filename": "cc/cc.go",
         "patchSetId": 4
@@ -235,6 +373,24 @@
     },
     {
       "key": {
+        "uuid": "d621bdb2_930cfa89",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-06T04:13:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b8a79db_55e9c951",
+      "revId": "a1917bb2510f5b13ce605757c0ca49b087dd1115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "04a20aea_c9d84b05",
         "filename": "cc/cc.go",
         "patchSetId": 4
@@ -258,6 +414,30 @@
     },
     {
       "key": {
+        "uuid": "70b6471a_48dfd93d",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-06T04:13:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04a20aea_c9d84b05",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 0
+      },
+      "revId": "a1917bb2510f5b13ce605757c0ca49b087dd1115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "af0a493b_ba1231df",
         "filename": "cc/cc.go",
         "patchSetId": 4
@@ -269,6 +449,30 @@
       "writtenOn": "2017-07-04T11:42:41Z",
       "side": 1,
       "message": "adding \"\u0026\u0026 !ctx.moduleContextImpl.mod.Properties.IsVndk\" ?",
+      "range": {
+        "startLine": 407,
+        "startChar": 1,
+        "endLine": 407,
+        "endChar": 82
+      },
+      "revId": "a1917bb2510f5b13ce605757c0ca49b087dd1115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c36b596_b5e9c5de",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-06T04:13:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af0a493b_ba1231df",
       "range": {
         "startLine": 407,
         "startChar": 1,
@@ -328,6 +532,30 @@
     },
     {
       "key": {
+        "uuid": "61ac4275_0cb747ae",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-06T04:13:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74f0e0ba_e118d27e",
+      "range": {
+        "startLine": 410,
+        "startChar": 0,
+        "endLine": 413,
+        "endChar": 1
+      },
+      "revId": "a1917bb2510f5b13ce605757c0ca49b087dd1115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ba515074_7976d4e3",
         "filename": "cc/cc.go",
         "patchSetId": 4
@@ -339,6 +567,30 @@
       "writtenOn": "2017-07-05T17:04:32Z",
       "side": 1,
       "message": "I think this has been mentioned before, but we could probably collapse all of these into one function which checks whether a library belongs to any sub-class of vndk libraries ?",
+      "range": {
+        "startLine": 478,
+        "startChar": 29,
+        "endLine": 478,
+        "endChar": 136
+      },
+      "revId": "a1917bb2510f5b13ce605757c0ca49b087dd1115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "00eef185_daa8109c",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-06T04:13:21Z",
+      "side": 1,
+      "message": "Done\nvndkTag() will return the type of vndk libraries.\nin ctx.vndk() libraries, if the type is not VNDK_TAG_VENDOR then it will be vndk or vndk-sp.",
+      "parentUuid": "ba515074_7976d4e3",
       "range": {
         "startLine": 478,
         "startChar": 29,
@@ -386,6 +638,30 @@
       "side": 1,
       "message": "It does not matter to have this in cc.go. I put this in global.go as the names of the link-types and the EligibleList table are global configurations for cc.",
       "parentUuid": "976b4130_9ab1c57a",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 1
+      },
+      "revId": "a1917bb2510f5b13ce605757c0ca49b087dd1115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fe450c7_afe2b802",
+        "filename": "cc/config/global.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-06T04:13:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "113f759f_da8c183a",
       "range": {
         "startLine": 188,
         "startChar": 0,
