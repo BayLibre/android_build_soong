@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1f07a5e7_95dbd0b1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2017-07-06T07:06:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a5bedbe_5211f61c",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "e3cac4fd0d4a4675b57cc018ec031c73244461d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a4203814_2a7f4b73",
         "filename": "android/config.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "23c05ff2_a70468be",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2017-07-06T07:06:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4203814_2a7f4b73",
+      "range": {
+        "startLine": 439,
+        "startChar": 17,
+        "endLine": 439,
+        "endChar": 26
+      },
+      "revId": "e3cac4fd0d4a4675b57cc018ec031c73244461d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a770264_ca0eac5a",
         "filename": "android/config.go",
         "patchSetId": 2
@@ -59,6 +107,24 @@
       "writtenOn": "2017-07-05T21:41:50Z",
       "side": 1,
       "message": "Could this be a general purpose SANITIZE_TARGET_DIAG setting instead of IOSAN_DIAG? We could use the former for CFI, too.",
+      "revId": "e3cac4fd0d4a4675b57cc018ec031c73244461d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ada55349_9bb9928c",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2017-07-06T07:06:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a770264_ca0eac5a",
       "revId": "e3cac4fd0d4a4675b57cc018ec031c73244461d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -129,6 +195,54 @@
     },
     {
       "key": {
+        "uuid": "4f018cc5_fbd394ee",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2017-07-06T07:06:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2f9a167_7c0d4668",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 13
+      },
+      "revId": "e3cac4fd0d4a4675b57cc018ec031c73244461d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e89cd86d_d7f2f07e",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2017-07-06T07:06:05Z",
+      "side": 1,
+      "message": "I figured adding it as an explicit property allows it to be disabled in local bp files if integer-overflow sanitization would break a module.",
+      "parentUuid": "fba5747e_bd42ffbd",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 13
+      },
+      "revId": "e3cac4fd0d4a4675b57cc018ec031c73244461d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "508b1aa3_0f065c93",
         "filename": "cc/sanitize.go",
         "patchSetId": 2
@@ -157,6 +271,30 @@
       "writtenOn": "2017-06-30T23:40:59Z",
       "side": 1,
       "message": "!static()\n\nand then you won\u0027t need to add staticLibrary()",
+      "range": {
+        "startLine": 369,
+        "startChar": 5,
+        "endLine": 369,
+        "endChar": 48
+      },
+      "revId": "e3cac4fd0d4a4675b57cc018ec031c73244461d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "672c37b8_d7a4178c",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2017-07-06T07:06:05Z",
+      "side": 1,
+      "message": "I get different build results when I just use !static() (which returns VariantIsStatic instead of BuildStatic) and the build fails on a linker error. \n\nI\u0027m not sure if this is a bug in the build system (should static() be returning a different value?) or if there\u0027s something I\u0027m missing in this CL.",
+      "parentUuid": "91766868_9ce2fb89",
       "range": {
         "startLine": 369,
         "startChar": 5,
