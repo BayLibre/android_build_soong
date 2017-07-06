@@ -148,6 +148,29 @@
     },
     {
       "key": {
+        "uuid": "49493b05_70cb5dff",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-06T18:16:18Z",
+      "side": 1,
+      "message": "This is definitely incorrect.  A cc_library builds both a static and shared variant, and BuildStatic will be true for both of them.",
+      "range": {
+        "startLine": 245,
+        "startChar": 34,
+        "endLine": 245,
+        "endChar": 45
+      },
+      "revId": "e3cac4fd0d4a4675b57cc018ec031c73244461d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2f9a167_7c0d4668",
         "filename": "cc/sanitize.go",
         "patchSetId": 2
@@ -295,6 +318,30 @@
       "side": 1,
       "message": "I get different build results when I just use !static() (which returns VariantIsStatic instead of BuildStatic) and the build fails on a linker error. \n\nI\u0027m not sure if this is a bug in the build system (should static() be returning a different value?) or if there\u0027s something I\u0027m missing in this CL.",
       "parentUuid": "91766868_9ce2fb89",
+      "range": {
+        "startLine": 369,
+        "startChar": 5,
+        "endLine": 369,
+        "endChar": 48
+      },
+      "revId": "e3cac4fd0d4a4675b57cc018ec031c73244461d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "188f7de4_a994a962",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-06T18:16:18Z",
+      "side": 1,
+      "message": "staticLibrary should be checking VariantIsStatic, using BuildStatic is likely covering up some other bug by disabling integer sanitization for all cc_library modules.",
+      "parentUuid": "672c37b8_d7a4178c",
       "range": {
         "startLine": 369,
         "startChar": 5,
