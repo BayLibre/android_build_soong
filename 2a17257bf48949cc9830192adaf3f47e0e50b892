@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd4feeb4_32955d17",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-06T22:37:45Z",
+      "side": 1,
+      "message": "This is going to lead to strange behavior, if you manually put unsigned-integer-overflow in misc_undefined (which is what lots of Android.bp files do today) you will not get the blacklist, but if you set integer_overflow: true you will get the blacklist.",
+      "revId": "2a17257bf48949cc9830192adaf3f47e0e50b892",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
