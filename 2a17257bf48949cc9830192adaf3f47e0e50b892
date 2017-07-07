@@ -34,6 +34,24 @@
       "revId": "2a17257bf48949cc9830192adaf3f47e0e50b892",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9d602ac_1f1fd7fd",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-07T18:10:28Z",
+      "side": 1,
+      "message": "We\u0027ve agreed to move existing users over to integer_overflow: true, and then blacklist integer overflow from misc_undefined to get consistent behavior WRT the blacklist.",
+      "parentUuid": "e9437e35_399e8565",
+      "revId": "2a17257bf48949cc9830192adaf3f47e0e50b892",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
