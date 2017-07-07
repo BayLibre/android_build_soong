@@ -16,6 +16,24 @@
       "revId": "2a17257bf48949cc9830192adaf3f47e0e50b892",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9437e35_399e8565",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2017-07-07T00:55:03Z",
+      "side": 1,
+      "message": "I figured the implication is that \"integer_overflow: true\" comes with some predefined settings, such as the blacklist. If sanitizers are explicitly set through misc_undefined instead, then the assumption is a blacklist would also be explicitly set if required.\n\nThe alternative might be to implicitly append the blacklist if these are set through misc_undefined, which might not be obvious behavior either.",
+      "parentUuid": "dd4feeb4_32955d17",
+      "revId": "2a17257bf48949cc9830192adaf3f47e0e50b892",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
