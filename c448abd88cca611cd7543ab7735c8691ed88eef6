@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ebc8c1d4_a0b936b0",
+        "filename": "Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-07-07T05:45:28Z",
+      "side": 1,
+      "message": "Let\u0027s call this device_kernel_headers. It would be interesting to see if we could just add this to header_libs in an Android.bp module too, so that things like tinycompress could be moved: https://android.googlesource.com/platform/external/tinycompress/+/f4cdefcd0c4eb2ac75810ce70a2309e61c9a6e7c",
+      "range": {
+        "startLine": 315,
+        "startChar": 11,
+        "endLine": 315,
+        "endChar": 25
+      },
+      "revId": "c448abd88cca611cd7543ab7735c8691ed88eef6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d34f0fcd_2335e7ba",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-07-07T05:45:28Z",
+      "side": 1,
+      "message": "This should be much simpler after my comments in variable.go",
+      "range": {
+        "startLine": 512,
+        "startChar": 0,
+        "endLine": 515,
+        "endChar": 72
+      },
+      "revId": "c448abd88cca611cd7543ab7735c8691ed88eef6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "416abed5_31ffa596",
+        "filename": "android/variable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-07-07T05:45:28Z",
+      "side": 1,
+      "message": "I know it\u0027s marked as Project_System_Includes in make, but we only ever expect this to contain device-specific kernel headers, so can we call it something like DeviceKernelHeaders, and make it a []string? (You\u0027ll need to use json_list on the make side)",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 18
+      },
+      "revId": "c448abd88cca611cd7543ab7735c8691ed88eef6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68280905_4a352c63",
+        "filename": "cc/kernel_headers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-07-07T05:45:28Z",
+      "side": 1,
+      "message": "Do this only if ctx.Device(), so that (accidentally) including this in host builds is a no-op",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 2
+      },
+      "revId": "c448abd88cca611cd7543ab7735c8691ed88eef6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
