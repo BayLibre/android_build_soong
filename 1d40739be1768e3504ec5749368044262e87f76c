@@ -1,0 +1,199 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fea28203_cd92ae90",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-07-07T04:32:51Z",
+      "side": 1,
+      "message": "We should be able to drop all the changes in this file due to my comments in https://android-review.googlesource.com/c/427604/",
+      "revId": "1d40739be1768e3504ec5749368044262e87f76c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12d0e6a8_20ecf5ce",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-07-07T04:32:51Z",
+      "side": 1,
+      "message": "Why In_system instead of Vndk? It implies more than just whether it\u0027s in the system partition or not (ABI, whether it\u0027s eligible for extension, etc)\n\nIt\u0027s not obvious that is_system would depend on vendor_available without looking at the documentation -- I would assume that it would default to true if !vendor, which isn\u0027t what you\u0027re going for here.\n\nOnce we add the single-process differentiator, a grouping starts to make sense, but I can\u0027t think of a good name for it:\n\n  \u003cvndk\u003e: {\n      \u003cis\u003e: true,\n      single_process: true,\n  }",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 10
+      },
+      "revId": "1d40739be1768e3504ec5749368044262e87f76c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50bf2429_7285a19f",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-07-07T04:32:51Z",
+      "side": 1,
+      "message": "This should probably move over to vndkTag() eventually -- we shouldn\u0027t care about ABI compatibility unless we\u0027re building the VNDK. This should be fine for now though.",
+      "range": {
+        "startLine": 460,
+        "startChar": 53,
+        "endLine": 460,
+        "endChar": 62
+      },
+      "revId": "1d40739be1768e3504ec5749368044262e87f76c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c7a17aab_56b78833",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1209,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-07-07T04:32:51Z",
+      "side": 1,
+      "message": "If we\u0027re going to split this out, it seems like we should just move the properties and checks out to the the vndkdep object.",
+      "range": {
+        "startLine": 1209,
+        "startChar": 2,
+        "endLine": 1209,
+        "endChar": 21
+      },
+      "revId": "1d40739be1768e3504ec5749368044262e87f76c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4603f4fa_f6faf5ec",
+        "filename": "cc/library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-07-07T04:32:51Z",
+      "side": 1,
+      "message": "I think this should always have been ctx.vndk(), not ctx.Vendor() -- that matches all the other Target.Vendor uses.",
+      "range": {
+        "startLine": 159,
+        "startChar": 4,
+        "endLine": 159,
+        "endChar": 32
+      },
+      "revId": "1d40739be1768e3504ec5749368044262e87f76c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b6e3908_927db5d9",
+        "filename": "cc/library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-07-07T04:32:51Z",
+      "side": 1,
+      "message": "Seems like these should be embedded in createVndkSourceAbiDump, and I don\u0027t think we should ever be setting CreateSAbiDumps in these cases",
+      "range": {
+        "startLine": 354,
+        "startChar": 100,
+        "endLine": 354,
+        "endChar": 128
+      },
+      "revId": "1d40739be1768e3504ec5749368044262e87f76c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9227022f_cf2d9eb4",
+        "filename": "cc/library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-07-07T04:32:51Z",
+      "side": 1,
+      "message": "Seems like these should be embedded in createVndkSourceAbiDump",
+      "range": {
+        "startLine": 599,
+        "startChar": 68,
+        "endLine": 599,
+        "endChar": 96
+      },
+      "revId": "1d40739be1768e3504ec5749368044262e87f76c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8366de67_ec160147",
+        "filename": "cc/vndk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-07-07T04:32:51Z",
+      "side": 1,
+      "message": "These are the tags used in make -- there\u0027s no need to use them in Soong. It would make more sense to use the iota functionality in Go. We don\u0027t need all-caps either.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 42
+      },
+      "revId": "1d40739be1768e3504ec5749368044262e87f76c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbcaa71f_d293fd03",
+        "filename": "cc/vndk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-07-07T04:32:51Z",
+      "side": 1,
+      "message": "We\u0027ve generally been doing something a bit more long-form, so that we can present better error messages -- see checkLinkType in cc/cc.go. In fact, all these checks could go into that function (it currently just returns early for Vndk-built modules)\n\nI\u0027m not entirely convinced that we actually need the full VndkTag enumeration either vs just IsVndk() bool / IsVndkSp() bool functions",
+      "revId": "1d40739be1768e3504ec5749368044262e87f76c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
