@@ -15,6 +15,8 @@
 package android
 
 import (
+	"fmt"
+
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 )
@@ -50,8 +52,11 @@ type Defaultable interface {
 
 var _ Defaultable = (*DefaultableModule)(nil)
 
-func InitDefaultableModule(module Module, d Defaultable) {
-
+func InitDefaultableModule(module Module) {
+	d, ok := module.(Defaultable)
+	if !ok {
+		panic(fmt.Errorf("InitDefaultableModule called on non-Defaultable type %T", module))
+	}
 	d.setProperties(module.GetProperties())
 
 	module.AddProperties(d.defaults())
@@ -76,14 +81,14 @@ func (d *DefaultsModule) properties() []interface{} {
 	return d.defaultableProperties
 }
 
-func InitDefaultsModule(module Module, d Defaults) {
+func InitDefaultsModule(module Module) {
 	module.AddProperties(
 		&hostAndDeviceProperties{},
 		&commonProperties{},
 		&variableProperties{})
 
 	InitArchModule(module)
-	InitDefaultableModule(module, d)
+	InitDefaultableModule(module)
 
 	module.AddProperties(&module.base().nameProperties)
 

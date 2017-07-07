@@ -333,7 +333,7 @@ func (c *Module) Init() android.Module {
 
 	android.InitAndroidArchModule(c, c.hod, c.multilib)
 
-	android.InitDefaultableModule(c, c)
+	android.InitDefaultableModule(c)
 
 	return c
 }
@@ -1138,7 +1138,7 @@ func DefaultsFactory(props ...interface{}) android.Module {
 		&SAbiProperties{},
 	)
 
-	android.InitDefaultsModule(module, module)
+	android.InitDefaultsModule(module)
 
 	return module
 }
