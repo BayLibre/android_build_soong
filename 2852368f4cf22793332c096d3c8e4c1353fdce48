@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f47dbf8_428c6319",
+        "filename": "android/paths_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-07T01:02:10Z",
+      "side": 1,
+      "message": "pathtools.MockFs(nil) might be a better default for a test",
+      "revId": "2852368f4cf22793332c096d3c8e4c1353fdce48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
