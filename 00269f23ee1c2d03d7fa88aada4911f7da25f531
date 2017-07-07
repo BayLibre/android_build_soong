@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2b8c299_8c5542b4",
+        "filename": "android/paths_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-07T01:12:41Z",
+      "side": 1,
+      "message": "This will return a new one every time, which is probably fine with nil but might bite someone later if they put data there.",
+      "revId": "00269f23ee1c2d03d7fa88aada4911f7da25f531",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
