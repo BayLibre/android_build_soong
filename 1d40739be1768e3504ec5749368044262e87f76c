@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "5ff31d45_12b17b7b",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-07-07T09:02:51Z",
+      "side": 1,
+      "message": "vndk: {\n    enabled: true // implies vendor_available:true, default is false\n    support_system_process: true // true means this is VNDK-SP, default is false\n}\n\n?",
+      "parentUuid": "12d0e6a8_20ecf5ce",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 10
+      },
+      "revId": "1d40739be1768e3504ec5749368044262e87f76c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "50bf2429_7285a19f",
         "filename": "cc/cc.go",
         "patchSetId": 6
