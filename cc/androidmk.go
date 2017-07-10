@@ -83,6 +83,13 @@ func (c *Module) AndroidMk() (ret android.AndroidMkData, err error) {
 
 	if c.vndk() {
 		ret.SubName += ".vendor"
+		// If this module is available only for vendor (i.e. vendor_available is not set),
+		// then create a phony module whose name is without the .vendor suffix and depends on the real module.
+		// This will allow us to use the base module name (wihtout the suffix) inside the make world,
+		// especially in PRODUCT_PACKAGES.
+		if c.Properties.Vendor_available == nil || !(*c.Properties.Vendor_available) {
+			ret.CreatePhony = true
+		}
 	}
 
 	return ret, nil

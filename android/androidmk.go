@@ -38,10 +38,11 @@ type AndroidMkDataProvider interface {
 }
 
 type AndroidMkData struct {
-	Class      string
-	SubName    string
-	OutputFile OptionalPath
-	Disabled   bool
+	Class       string
+	SubName     string
+	OutputFile  OptionalPath
+	Disabled    bool
+	CreatePhony bool
 
 	Custom func(w io.Writer, name, prefix, moduleDir string) error
 
@@ -264,6 +265,14 @@ func translateAndroidMkModule(ctx blueprint.SingletonContext, w io.Writer, mod b
 	}
 
 	fmt.Fprintln(w, "include $(BUILD_PREBUILT)")
+
+	if ctx.PrimaryModule(mod) == mod && data.CreatePhony && data.SubName != "" {
+		fmt.Fprintln(w, "\ninclude $(CLEAR_VARS)")
+		fmt.Fprintln(w, "LOCAL_PATH :=", filepath.Dir(ctx.BlueprintFile(mod)))
+		fmt.Fprintln(w, "LOCAL_MODULE :=", provider.BaseModuleName())
+		fmt.Fprintln(w, "LOCAL_REQUIRED_MODULES :=", name)
+		fmt.Fprintln(w, "include $(BUILD_PHONY_PACKAGE)")
+	}
 
 	return err
 }
