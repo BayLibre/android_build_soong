@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "38db366a_6583622e",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-10T09:33:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd4313b9_b1dca5a7",
+      "revId": "1d40739be1768e3504ec5749368044262e87f76c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "12d0e6a8_20ecf5ce",
         "filename": "cc/cc.go",
         "patchSetId": 6
@@ -96,6 +114,30 @@
       "side": 1,
       "message": "Still it depends on `vendor_available: true`.\nSo we may have following four kinds of modules.\n1. vendor_available: false,\n2. vendor_available: true, vndk: false,\n3. vendor_available: true, vndk: true, vndksp: false,\n4. vendor_available: true, vndk: true, vndksp: true.\n\nIf we put these in a group, should they be like below?\n\n1. vendor_available: false,\n2. vendor_available: true,\n3. vendor_available: true,\n   vndk: {\n       enabled: true,\n   }\n4. vendor_available: true,\n   vndk: {\n       enabled: true,\n       support_system_process: true,\n   }",
       "parentUuid": "5ff31d45_12b17b7b",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 10
+      },
+      "revId": "1d40739be1768e3504ec5749368044262e87f76c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "327aed53_951aa77f",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-10T09:33:34Z",
+      "side": 1,
+      "message": "Done. This is moved to vndk.go.",
+      "parentUuid": "f2a253a7_2e6cd0b8",
       "range": {
         "startLine": 172,
         "startChar": 1,
@@ -202,6 +244,30 @@
     },
     {
       "key": {
+        "uuid": "6b34c045_c98492b2",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1209,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-10T09:33:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2772afed_5601d3b7",
+      "range": {
+        "startLine": 1209,
+        "startChar": 2,
+        "endLine": 1209,
+        "endChar": 21
+      },
+      "revId": "1d40739be1768e3504ec5749368044262e87f76c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4603f4fa_f6faf5ec",
         "filename": "cc/library.go",
         "patchSetId": 6
@@ -237,6 +303,30 @@
       "side": 1,
       "message": "I assumed that we had the case for using Target.Vendor for LOCAL_PROPRIETARY_MODULE. But you\u0027re right, there are no such cases. I will remove ctx.Vendor().",
       "parentUuid": "4603f4fa_f6faf5ec",
+      "range": {
+        "startLine": 159,
+        "startChar": 4,
+        "endLine": 159,
+        "endChar": 32
+      },
+      "revId": "1d40739be1768e3504ec5749368044262e87f76c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39782074_e9978697",
+        "filename": "cc/library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-10T09:33:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c13c661_484ce874",
       "range": {
         "startLine": 159,
         "startChar": 4,
@@ -296,6 +386,30 @@
     },
     {
       "key": {
+        "uuid": "c552485a_91f59a39",
+        "filename": "cc/library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-10T09:33:34Z",
+      "side": 1,
+      "message": "Done. Now `CreateSAbiDumps` is not used anywhere.",
+      "parentUuid": "6e561947_68e7fa3a",
+      "range": {
+        "startLine": 354,
+        "startChar": 100,
+        "endLine": 354,
+        "endChar": 128
+      },
+      "revId": "1d40739be1768e3504ec5749368044262e87f76c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9227022f_cf2d9eb4",
         "filename": "cc/library.go",
         "patchSetId": 6
@@ -307,6 +421,30 @@
       "writtenOn": "2017-07-07T04:32:51Z",
       "side": 1,
       "message": "Seems like these should be embedded in createVndkSourceAbiDump",
+      "range": {
+        "startLine": 599,
+        "startChar": 68,
+        "endLine": 599,
+        "endChar": 96
+      },
+      "revId": "1d40739be1768e3504ec5749368044262e87f76c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21231ff4_59260b89",
+        "filename": "cc/library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-10T09:33:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9227022f_cf2d9eb4",
       "range": {
         "startLine": 599,
         "startChar": 68,
@@ -366,6 +504,30 @@
     },
     {
       "key": {
+        "uuid": "3e87178b_2db76119",
+        "filename": "cc/vndk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-10T09:33:34Z",
+      "side": 1,
+      "message": "Done. VndkTag is removed.",
+      "parentUuid": "1c2043ec_a1ded774",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 42
+      },
+      "revId": "1d40739be1768e3504ec5749368044262e87f76c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cbcaa71f_d293fd03",
         "filename": "cc/vndk.go",
         "patchSetId": 6
@@ -395,6 +557,24 @@
       "side": 1,
       "message": "I will check there and give better error messages.",
       "parentUuid": "cbcaa71f_d293fd03",
+      "revId": "1d40739be1768e3504ec5749368044262e87f76c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d779c40_8c4a53be",
+        "filename": "cc/vndk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-10T09:33:34Z",
+      "side": 1,
+      "message": "I added a function to checkLinkType to check link-type for vndk modules instead of using TopDownMutator.\nVndkTag is remvoed. Instead, isVndk() bool / isVndkSp() bool are used.",
+      "parentUuid": "f58889b5_a855139e",
       "revId": "1d40739be1768e3504ec5749368044262e87f76c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true

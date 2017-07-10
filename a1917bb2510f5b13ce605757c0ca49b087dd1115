@@ -627,6 +627,30 @@
     },
     {
       "key": {
+        "uuid": "a9680228_8cb26c44",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-10T09:33:34Z",
+      "side": 1,
+      "message": "PS7: Now we have vndk link-type check in soong, I don\u0027t think we need vndk dep-check in sabi any more.\nAs you commented earlier, createVndkSourceAbiDump() shows whether a library belongs to any sub-classes of vndk libs.",
+      "parentUuid": "be13172d_504d25f3",
+      "range": {
+        "startLine": 478,
+        "startChar": 29,
+        "endLine": 478,
+        "endChar": 136
+      },
+      "revId": "a1917bb2510f5b13ce605757c0ca49b087dd1115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "976b4130_9ab1c57a",
         "filename": "cc/config/global.go",
         "patchSetId": 4
