@@ -81,7 +81,11 @@ func (c *Module) AndroidMk() (ret android.AndroidMkData, err error) {
 	}
 	c.subAndroidMk(&ret, c.installer)
 
-	if c.vndk() {
+	if c.vndk() && Bool(c.Properties.Vendor_available) {
+		// .vendor suffix is added only when we have two (core and vendor) variants for
+		// a single module. In other words, the suffix is NOT added for vendor-only
+		// modules, in order to let the make world to use the original name without the
+		// suffix, especially in PRODUCT_PACKAGES.
 		ret.SubName += ".vendor"
 	}
 
