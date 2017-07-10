@@ -21,6 +21,8 @@ import (
 	"strings"
 
 	"android/soong/android"
+
+	"github.com/google/blueprint"
 )
 
 type AndroidMkContext interface {
@@ -83,6 +85,22 @@ func (c *Module) AndroidMk() (ret android.AndroidMkData, err error) {
 
 	if c.vndk() {
 		ret.SubName += ".vendor"
+		// If this module is available only for vendor (i.e. vendor_available is not set),
+		// then create a phony module whose name is without the .vendor suffix and
+		// depends on the real module. This will allow us to use the base module name
+		// (without the suffix) inside the make world, especially in PRODUCT_PACKAGES.
+		if !Bool(c.Properties.Vendor_available) {
+			ret.Bundles = append(ret.Bundles, func(w io.Writer, ctx blueprint.SingletonContext, name, prefix, moduleDir string) error {
+				if ctx.PrimaryModule(c) == c {
+					fmt.Fprintln(w, "\ninclude $(CLEAR_VARS)")
+					fmt.Fprintln(w, "LOCAL_PATH :=", moduleDir)
+					fmt.Fprintln(w, "LOCAL_MODULE :=", c.BaseModuleName())
+					fmt.Fprintln(w, "LOCAL_REQUIRED_MODULES :=", name)
+					fmt.Fprintln(w, "include $(BUILD_PHONY_PACKAGE)")
+				}
+				return nil
+			})
+		}
 	}
 
 	return ret, nil

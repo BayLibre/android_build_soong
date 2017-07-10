@@ -46,6 +46,9 @@ type AndroidMkData struct {
 	Custom func(w io.Writer, name, prefix, moduleDir string) error
 
 	Extra []func(w io.Writer, outputFile Path) error
+
+	// This is like Custom, but will be appended rather than replacing.
+	Bundles []func(w io.Writer, ctx blueprint.SingletonContext, name, prefix, moduleDir string) error
 }
 
 func AndroidMkSingleton() blueprint.Singleton {
@@ -173,25 +176,25 @@ func translateAndroidMkModule(ctx blueprint.SingletonContext, w io.Writer, mod b
 		name += data.SubName
 	}
 
-	if data.Custom != nil {
-		prefix := ""
-		if amod.ArchSpecific() {
-			switch amod.Os().Class {
-			case Host:
-				prefix = "HOST_"
-			case HostCross:
-				prefix = "HOST_CROSS_"
-			case Device:
-				prefix = "TARGET_"
+	prefix := ""
+	if amod.ArchSpecific() {
+		switch amod.Os().Class {
+		case Host:
+			prefix = "HOST_"
+		case HostCross:
+			prefix = "HOST_CROSS_"
+		case Device:
+			prefix = "TARGET_"
 
-			}
-
-			config := ctx.Config().(Config)
-			if amod.Arch().ArchType != config.Targets[amod.Os().Class][0].Arch.ArchType {
-				prefix = "2ND_" + prefix
-			}
 		}
 
+		config := ctx.Config().(Config)
+		if amod.Arch().ArchType != config.Targets[amod.Os().Class][0].Arch.ArchType {
+			prefix = "2ND_" + prefix
+		}
+	}
+
+	if data.Custom != nil {
 		return data.Custom(w, name, prefix, filepath.Dir(ctx.BlueprintFile(mod)))
 	}
 
@@ -264,6 +267,13 @@ func translateAndroidMkModule(ctx blueprint.SingletonContext, w io.Writer, mod b
 	}
 
 	fmt.Fprintln(w, "include $(BUILD_PREBUILT)")
+
+	for _, bundle := range data.Bundles {
+		err = bundle(w, ctx, name, prefix, filepath.Dir(ctx.BlueprintFile(mod)))
+		if err != nil {
+			return err
+		}
+	}
 
 	return err
 }
