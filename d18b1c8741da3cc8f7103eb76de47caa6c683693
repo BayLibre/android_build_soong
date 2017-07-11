@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac406733_d90164f1",
+        "filename": "ui/build/config_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-11T22:20:18Z",
+      "side": 1,
+      "message": "This seems worth named initializers",
+      "revId": "d18b1c8741da3cc8f7103eb76de47caa6c683693",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
