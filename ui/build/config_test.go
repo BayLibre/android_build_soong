@@ -103,3 +103,49 @@ func TestConfigParseArgsJK(t *testing.T) {
 		})
 	}
 }
+
+func TestConfigParseArgsVars(t *testing.T) {
+	ctx := testContext()
+
+	testCases := []struct {
+		env  []string
+		args []string
+
+		expectedEnv []string
+		remaining   []string
+	}{
+		{nil, nil, nil, nil},
+		{[]string{"A=bc"}, nil, []string{"A=bc"}, nil},
+		{nil, []string{"abc"}, nil, []string{"abc"}},
+
+		{nil, []string{"A=bc"}, []string{"A=bc"}, nil},
+		{[]string{"A=a"}, []string{"A=bc"}, []string{"A=bc"}, nil},
+
+		{[]string{"A=a"}, []string{"A=", "=b"}, []string{"A="}, []string{"=b"}},
+	}
+
+	for _, tc := range testCases {
+		t.Run(strings.Join(tc.args, " "), func(t *testing.T) {
+			defer logger.Recover(func(err error) {
+				t.Fatal(err)
+			})
+
+			e := Environment(tc.env)
+			c := &configImpl{
+				environ: &e,
+			}
+			c.parseArgs(ctx, tc.args)
+
+			if !reflect.DeepEqual([]string(*c.environ), tc.expectedEnv) {
+				t.Errorf("for env=%q args=%q, environment:\nwant: %q\n got: %q\n",
+					tc.env, tc.args,
+					tc.expectedEnv, []string(*c.environ))
+			}
+			if !reflect.DeepEqual(c.arguments, tc.remaining) {
+				t.Errorf("for env=%q args=%q, remaining arguments:\nwant: %q\n got: %q\n",
+					tc.env, tc.args,
+					tc.remaining, c.arguments)
+			}
+		})
+	}
+}
