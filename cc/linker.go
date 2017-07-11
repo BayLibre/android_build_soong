@@ -151,7 +151,7 @@ func (linker *baseLinker) linkerDeps(ctx BaseModuleContext, deps Deps) Deps {
 			deps.LateStaticLibs = append(deps.LateStaticLibs, "libgcc")
 		}
 
-		if !ctx.static() {
+		if !ctx.static() && !ctx.prebuilt() {
 			// libdl should always appear after libc in dt_needed list - see below
 			// the only exception is when libc is not in linker.Properties.System_shared_libs
 			// such as for libc module itself

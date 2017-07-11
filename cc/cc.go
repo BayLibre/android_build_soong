@@ -186,6 +186,7 @@ type ModuleContextIntf interface {
 	createVndkSourceAbiDump() bool
 	selectedStl() string
 	baseModuleName() string
+	prebuilt() bool
 }
 
 type ModuleContext interface {
@@ -394,6 +395,13 @@ func (ctx *moduleContextImpl) static() bool {
 		return static.static()
 	}
 	return false
+}
+
+func (ctx *moduleContextImpl) prebuilt() bool {
+	_, ok := ctx.mod.linker.(interface {
+		prebuilt() *android.Prebuilt
+	})
+	return ok
 }
 
 func (ctx *moduleContextImpl) staticBinary() bool {
