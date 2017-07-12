@@ -30,7 +30,7 @@ import (
 	"github.com/google/blueprint"
 )
 
-type pyBinary struct {
+type pyModule struct {
 	name           string
 	actualVersion  string
 	pyRunfiles     []string
@@ -60,7 +60,7 @@ var (
 		mockFiles map[string][]byte
 
 		errors           []string
-		expectedBinaries []pyBinary
+		expectedBinaries []pyModule
 	}{
 		{
 			desc: "module without any src files",
@@ -280,7 +280,7 @@ var (
 				stubTemplateHost: []byte(`PYTHON_BINARY = '%interpreter%'
 				MAIN_FILE = '%main%'`),
 			},
-			expectedBinaries: []pyBinary{
+			expectedBinaries: []pyModule{
 				{
 					name:          "bin",
 					actualVersion: "PY3",
@@ -368,13 +368,9 @@ func expectModule(t *testing.T, ctx *blueprint.Context, buildDir, name, variant 
 		t.Fatalf("failed to find module %s!", name)
 	}
 
-	base, baseOk := module.(*pythonBaseModule)
+	base, baseOk := module.(*Module)
 	if !baseOk {
 		t.Fatalf("%s is not Python module!", name)
-	}
-	sub, subOk := base.subModule.(*pythonBinaryBase)
-	if !subOk {
-		t.Fatalf("%s is not Python binary!", name)
 	}
 
 	actPyRunfiles := []string{}
@@ -386,28 +382,28 @@ func expectModule(t *testing.T, ctx *blueprint.Context, buildDir, name, variant 
 		testErrs = append(testErrs, errors.New(fmt.Sprintf(
 			`binary "%s" variant "%s" has unexpected pyRunfiles: %q!`,
 			base.Name(),
-			base.properties.ActualVersion,
+			base.properties.Actual_version,
 			actPyRunfiles)))
 	}
 
-	if !reflect.DeepEqual(sub.depsPyRunfiles, expDepsPyRunfiles) {
+	if !reflect.DeepEqual(base.depsPyRunfiles, expDepsPyRunfiles) {
 		testErrs = append(testErrs, errors.New(fmt.Sprintf(
 			`binary "%s" variant "%s" has unexpected depsPyRunfiles: %q!`,
 			base.Name(),
-			base.properties.ActualVersion,
-			sub.depsPyRunfiles)))
+			base.properties.Actual_version,
+			base.depsPyRunfiles)))
 	}
 
 	if base.parSpec.soongParArgs() != strings.Replace(expParSpec, "@prefix@", buildDir, 1) {
 		testErrs = append(testErrs, errors.New(fmt.Sprintf(
 			`binary "%s" variant "%s" has unexpected parSpec: %q!`,
 			base.Name(),
-			base.properties.ActualVersion,
+			base.properties.Actual_version,
 			base.parSpec.soongParArgs())))
 	}
 
 	actDepsParSpecs := []string{}
-	for i, p := range sub.depsParSpecs {
+	for i, p := range base.depsParSpecs {
 		actDepsParSpecs = append(actDepsParSpecs, p.soongParArgs())
 		expDepsParSpecs[i] = strings.Replace(expDepsParSpecs[i], "@prefix@", buildDir, 1)
 	}
@@ -416,7 +412,7 @@ func expectModule(t *testing.T, ctx *blueprint.Context, buildDir, name, variant 
 		testErrs = append(testErrs, errors.New(fmt.Sprintf(
 			`binary "%s" variant "%s" has unexpected depsParSpecs: %q!`,
 			base.Name(),
-			base.properties.ActualVersion,
+			base.properties.Actual_version,
 			actDepsParSpecs)))
 	}
 

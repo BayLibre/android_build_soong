@@ -28,7 +28,7 @@ import (
 var (
 	pctx = android.NewPackageContext("android/soong/python")
 
-	par = pctx.AndroidStaticRule("par",
+	host_par = pctx.AndroidStaticRule("host_par",
 		blueprint.RuleParams{
 			Command: `touch $initFile && ` +
 				`sed -e 's/%interpreter%/$interp/g' -e 's/%main%/$main/g' $template > $stub && ` +
@@ -37,6 +37,16 @@ var (
 			CommandDeps: []string{"$parCmd", "$template"},
 		},
 		"initFile", "interp", "main", "template", "stub", "parCmd", "parFile", "parArgs")
+
+	hermetic_par = pctx.AndroidStaticRule("hermetic_par",
+		blueprint.RuleParams{
+			Command: `touch $initFile && ` +
+				`echo '$main' > $entry_point && ` +
+				`$parCmd -o $parFile $parArgs && cat $launcher | cat - $parFile > $out && ` +
+				`chmod +x $out && (rm -f $initFile; rm -f $entry_point; rm -f $parFile)`,
+			CommandDeps: []string{"$parCmd"},
+		},
+		"initFile", "main", "entry_point", "parCmd", "parFile", "parArgs", "launcher")
 )
 
 func init() {
@@ -58,10 +68,10 @@ type parSpec struct {
 }
 
 func (p parSpec) soongParArgs() string {
-	ret := "-P " + p.rootPrefix
+	ret := `-P ` + p.rootPrefix
 
 	for _, spec := range p.fileListSpecs {
-		ret += " -C " + spec.relativeRoot + " -l " + spec.fileList.String()
+		ret += ` -C ` + spec.relativeRoot + ` -l ` + spec.fileList.String()
 	}
 
 	return ret
@@ -89,22 +99,17 @@ func registerBuildActionForModuleFileList(ctx android.ModuleContext,
 	return fileList
 }
 
-func registerBuildActionForParFile(ctx android.ModuleContext,
-	interpreter, main, binName string, newPyPkgs []string, parSpecs []parSpec) android.Path {
+func registerBuildActionForParFile(ctx android.ModuleContext, hermetic_enabled bool,
+	launcher_path android.Path, interpreter, main, binName string,
+	newPyPkgs []string, parSpecs []parSpec) android.Path {
 
-	// intermediate output path for __init__.py
+	// .intermediate output path for __init__.py
 	initFile := android.PathForModuleOut(ctx, initFileName).String()
-
-	// the path of stub_template_host.txt from source tree.
-	template := android.PathForSource(ctx, stubTemplateHost)
-
-	// intermediate output path for __main__.py
-	stub := android.PathForModuleOut(ctx, mainFileName).String()
 
 	// intermediate output path for par file.
 	parFile := android.PathForModuleOut(ctx, binName+parFileExt)
 
-	// intermediate output path for bin executable.
+	// .intermediate output path for bin executable.
 	binFile := android.PathForModuleOut(ctx, binName)
 
 	// implicit dependency for parFile build action.
@@ -116,32 +121,69 @@ func registerBuildActionForParFile(ctx android.ModuleContext,
 	}
 
 	parArgs := []string{}
-	parArgs = append(parArgs, "-C "+strings.TrimSuffix(stub, mainFileName)+" -f "+stub)
-	parArgs = append(parArgs, "-C "+strings.TrimSuffix(initFile, initFileName)+" -f "+initFile)
+	parArgs = append(parArgs, `-P "" `+`-C `+strings.TrimSuffix(initFile, initFileName)+` -f `+initFile)
 	for _, pkg := range newPyPkgs {
-		parArgs = append(parArgs, "-P "+pkg+" -f "+initFile)
+		parArgs = append(parArgs, `-P `+pkg+` -f `+initFile)
 	}
 	for _, p := range parSpecs {
 		parArgs = append(parArgs, p.soongParArgs())
 	}
 
-	ctx.ModuleBuild(pctx, android.ModuleBuildParams{
-		Rule:        par,
-		Description: "python archive",
-		Output:      binFile,
-		Implicits:   implicits,
-		Args: map[string]string{
-			"initFile": initFile,
-			// the "\" isn't being interpreted by regex parser, it's being
-			// interpreted in the string literal.
-			"interp":   strings.Replace(interpreter, "/", `\/`, -1),
-			"main":     strings.Replace(main, "/", `\/`, -1),
-			"template": template.String(),
-			"stub":     stub,
-			"parFile":  parFile.String(),
-			"parArgs":  strings.Join(parArgs, " "),
-		},
-	})
+	if !hermetic_enabled {
+		// the path of stub_template_host.txt from source tree.
+		template := android.PathForSource(ctx, stubTemplateHost)
+
+		// intermediate output path for __main__.py
+		stub := android.PathForModuleOut(ctx, mainFileName).String()
+
+		// added stub file to the soong_zip args.
+		parArgs = append(parArgs, `-P "" `+`-C `+strings.TrimSuffix(stub, mainFileName)+` -f `+stub)
+
+		ctx.ModuleBuild(pctx, android.ModuleBuildParams{
+			Rule:        host_par,
+			Description: "host python archive",
+			Output:      binFile,
+			Implicits:   implicits,
+			Args: map[string]string{
+				"initFile": initFile,
+				// the "\" isn't being interpreted by regex parser, it's being
+				// interpreted in the string literal.
+				"interp": strings.Replace(interpreter, "/", `\/`, -1),
+				// we need remove "runfiles/" suffix since stub script starts
+				// searching for main file in each sub-dir of "runfiles" directory tree.
+				"main": strings.Replace(strings.TrimPrefix(main, runFiles+"/"),
+					"/", `\/`, -1),
+				"template": template.String(),
+				"stub":     stub,
+				"parFile":  parFile.String(),
+				"parArgs":  strings.Join(parArgs, " "),
+			},
+		})
+	} else {
+		// added launcher_path to the implicits Ninja dependencies.
+		implicits = append(implicits, launcher_path)
+
+		// .intermediate output path for entry_point.txt
+		entryPoint := android.PathForModuleOut(ctx, entryPointFile).String()
+
+		// added entry_point file to the soong_zip args.
+		parArgs = append(parArgs, `-P "" `+`-C `+strings.TrimSuffix(entryPoint, entryPointFile)+` -f `+entryPoint)
+
+		ctx.ModuleBuild(pctx, android.ModuleBuildParams{
+			Rule:        hermetic_par,
+			Description: "hermetic python archive",
+			Output:      binFile,
+			Implicits:   implicits,
+			Args: map[string]string{
+				"initFile":    initFile,
+				"main":        main,
+				"entry_point": entryPoint,
+				"parFile":     parFile.String(),
+				"parArgs":     strings.Join(parArgs, " "),
+				"launcher":    launcher_path.String(),
+			},
+		})
+	}
 
 	return binFile
 }
