@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d0aa2e9_0485570f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-07-12T03:06:19Z",
+      "side": 1,
+      "message": "This may be true for libclang_rt.*, but not in general. Why aren\u0027t you just setting System_shared_libs to empty for libclang_rt.*?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 40
+      },
+      "revId": "60d8c9ea3c11e7e63876ad06ebbc3483ac640d20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
