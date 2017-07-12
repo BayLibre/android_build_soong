@@ -1133,6 +1133,10 @@ func (c *Module) HostToolPath() android.OptionalPath {
 	return c.installer.hostToolPath()
 }
 
+func (c *Module) IntermPathForModuleOut() android.OptionalPath {
+	return c.outputFile
+}
+
 //
 // Defaults
 //
