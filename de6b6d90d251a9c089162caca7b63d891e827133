@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4f1ffeb_0ca4da93",
+        "filename": "android/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-12T17:43:52Z",
+      "side": 1,
+      "message": "This seems pretty specific to .vendor modules, maybe move it into cc/androidmk.go, or at least move all the logic so that this only has to check data.CreatePhony?",
+      "revId": "de6b6d90d251a9c089162caca7b63d891e827133",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a415822f_71c46d61",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-12T17:43:52Z",
+      "side": 1,
+      "message": "Wrap at 100 characters unless it is more readable not to.",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 95
+      },
+      "revId": "de6b6d90d251a9c089162caca7b63d891e827133",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8dec69e_6ca1518c",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-12T17:43:52Z",
+      "side": 1,
+      "message": "without",
+      "range": {
+        "startLine": 88,
+        "startChar": 53,
+        "endLine": 88,
+        "endChar": 60
+      },
+      "revId": "de6b6d90d251a9c089162caca7b63d891e827133",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a00bc746_f815f879",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-12T17:43:52Z",
+      "side": 1,
+      "message": "!Bool(c.Properties.Vendor_available)",
+      "range": {
+        "startLine": 90,
+        "startChar": 5,
+        "endLine": 90,
+        "endChar": 78
+      },
+      "revId": "de6b6d90d251a9c089162caca7b63d891e827133",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
