@@ -22,6 +22,30 @@
       "revId": "60d8c9ea3c11e7e63876ad06ebbc3483ac640d20",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "111569cb_e5f68778",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-07-12T04:08:52Z",
+      "side": 1,
+      "message": "Yes, I tried this just before and it works without this CL. I thought it was already empty since LOCAL_SYSTEM_SHARED_LIBRARIES is empty in the generated mk file, but it seems that both Shared_libs and System_shared_libs are translated into LOCAL_SHARED_LIBRARIES (though I don\u0027t know why).",
+      "parentUuid": "8d0aa2e9_0485570f",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 40
+      },
+      "revId": "60d8c9ea3c11e7e63876ad06ebbc3483ac640d20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
