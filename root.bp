@@ -9,6 +9,7 @@ subdirs = [
 ]
 
 optional_subdirs = [
+    "py_examples",
     "art",
     "bionic",
     "bootable/recovery",
