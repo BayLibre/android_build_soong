@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "f1b5958d_6e1f1424",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-12T17:44:38Z",
+      "side": 1,
+      "message": "Is the .vendor suffix necessary if vndk \u0026 !vendor_available ?",
+      "revId": "de6b6d90d251a9c089162caca7b63d891e827133",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a415822f_71c46d61",
         "filename": "cc/androidmk.go",
         "patchSetId": 1
