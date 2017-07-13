@@ -16,6 +16,24 @@
       "revId": "1b822867360844bea1c30facb95492ff21eb4e6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9321ce8_f38e4fc1",
+        "filename": "soong_ui.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-07-13T01:44:15Z",
+      "side": 1,
+      "message": "I was putting it here so that we could move this into soong_ui easily if we wanted to (I considered doing that, but then came up with the ORIGINAL_PWD above, which seemed far simpler, at least for now).\n\nThe rest of this code was originally designed to support running from anywhere, i just had to fix a few regressions.\n\nI should verify that microfactory isn\u0027t rebuilding when running in different working directories though.",
+      "parentUuid": "dfe8b98d_603e237a",
+      "revId": "1b822867360844bea1c30facb95492ff21eb4e6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
