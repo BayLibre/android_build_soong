@@ -1,0 +1,377 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c31a01b8_f026c66a",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-13T20:35:36Z",
+      "side": 1,
+      "message": "I suppose I\u0027m a bit late in pointing this out, but it seems to me that in most of the places where the text \"hermetic\" appears, it\u0027d be more accurate to use the text \"embedded launcher\" (which is closer to what you put in your comment).\n\nThe latter clarifies that it describes the location of the launcher, whereas the former seems to claim that the entire process is hermetic (however, it\u0027s still possible to write non-hermetic programs even using an embedded launcher, for example, a test could attempt to access the network, or we might even want the embedded launcher itself to check a config file on disk for some reason).\n\nI\u0027m sure that all of the people involved at the moment know what you mean, but it seems to me that if it\u0027s not too hard to change it then it\u0027d be nice to give it a more accurate name.",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 9
+      },
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8072f0c0_8b51ea18",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-13T20:35:36Z",
+      "side": 1,
+      "message": "Is this \"Interm\" like \"Intermediate\"?",
+      "range": {
+        "startLine": 65,
+        "startChar": 5,
+        "endLine": 65,
+        "endChar": 11
+      },
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3064403f_6f57d407",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-13T20:35:36Z",
+      "side": 1,
+      "message": "You could make this slightly more concise and slightly faster to read with a function like `func isTrue(input *bool) bool { return input !\u003d nil \u0026\u0026 *input}`",
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8c930b4e_d7d58b07",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-13T20:35:36Z",
+      "side": 1,
+      "message": "I think we\u0027d like to throw an error if we reach this line twice",
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f525ea6_327f7e82",
+        "filename": "python/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-13T20:35:36Z",
+      "side": 1,
+      "message": "How about \"device_par\"?",
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f99ca0e_3e0e2c22",
+        "filename": "python/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-13T20:35:36Z",
+      "side": 1,
+      "message": "Was this intentional? If so, probably want to update line 109",
+      "range": {
+        "startLine": 112,
+        "startChar": 4,
+        "endLine": 112,
+        "endChar": 5
+      },
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5351ee5_d627ab89",
+        "filename": "python/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-13T20:35:36Z",
+      "side": 1,
+      "message": "I think we can remove this comment now that the backslash occurs between backticks (\"`\\/`\")",
+      "range": {
+        "startLine": 149,
+        "startChar": 5,
+        "endLine": 150,
+        "endChar": 41
+      },
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c82382c_49c9f765",
+        "filename": "python/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-13T20:35:36Z",
+      "side": 1,
+      "message": "Might want to string escape this in case we feel like supporting weird characters someday (something like \u0027fmt.Sprintf(\"%q\", strings.TrimSuffix(entryPoint, entryPointFile))\u0027 )",
+      "range": {
+        "startLine": 170,
+        "startChar": 43,
+        "endLine": 170,
+        "endChar": 89
+      },
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "905d8f1a_3168fe27",
+        "filename": "python/python.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-13T20:35:36Z",
+      "side": 1,
+      "message": "Could you elaborate - is this for building the Python interpreter?",
+      "range": {
+        "startLine": 47,
+        "startChar": 52,
+        "endLine": 47,
+        "endChar": 75
+      },
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bff5067c_30b2aff9",
+        "filename": "python/python.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-13T20:35:36Z",
+      "side": 1,
+      "message": "Could you describe (not necessarily as a source comment but at least here) more about this?\n\nI\u0027d expect that we\u0027d avoid exclusions because they increase the amount that readers need to know about the system in order to understand it (they have to check their particular variant in order to know whether their source file is really included)\n\nI\u0027d expect that instead we\u0027d make a bunch of variables corresponding to lists of sources and that we\u0027d build the final lists in each arch variant.\n\nPerhaps you could point out a concrete usage example.",
+      "range": {
+        "startLine": 49,
+        "startChar": 8,
+        "endLine": 49,
+        "endChar": 9
+      },
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "977a19b8_5d7d122d",
+        "filename": "python/python.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-13T20:35:36Z",
+      "side": 1,
+      "message": "What\u0027s the motivation for the underscore?\n\n(Although I like underscores in long names to clarify parsing precedence (with the help of capital letters), this seems like a rather short name, and also my reviewers haven\u0027t liked underscores even in those situations anyway)",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 6
+      },
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6e5a151_c44d3fd4",
+        "filename": "python/python.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-13T20:35:36Z",
+      "side": 1,
+      "message": "It seems to me that it\u0027d be more consistent to always use Pkg_path, and to just prefix it with \"internal/\" if Is_internal is true",
+      "range": {
+        "startLine": 73,
+        "startChar": 62,
+        "endLine": 73,
+        "endChar": 92
+      },
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18f659eb_7183f94c",
+        "filename": "python/python.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-13T20:35:36Z",
+      "side": 1,
+      "message": "Is it inconvenient to move the source files within git into the flat structure that we want and then remove support for Flat_srcs?",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 10
+      },
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "971f93ad_b36f7978",
+        "filename": "python/python.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-13T20:35:36Z",
+      "side": 1,
+      "message": "I\u0027d clarify this message to \"must be a relative path contained in the .par\"",
+      "range": {
+        "startLine": 386,
+        "startChar": 42,
+        "endLine": 386,
+        "endChar": 63
+      },
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "541ca7f6_7c5de7d2",
+        "filename": "python/python.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-13T20:35:36Z",
+      "side": 1,
+      "message": "How about \"must be a subdirectory, not the current directory\"?",
+      "range": {
+        "startLine": 392,
+        "startChar": 54,
+        "endLine": 392,
+        "endChar": 72
+      },
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1da4af94_b2fe3ee3",
+        "filename": "python/python.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-13T20:35:36Z",
+      "side": 1,
+      "message": "Hopefully we can get a second opinion, but (contrary to the recommendation of the recommendation of Go), it seemed clearer to me when the type of the Python Module included the text \"python\" inside of its name (previously it was \"pythonBaseModule\") since Module already exists in Blueprint",
+      "range": {
+        "startLine": 539,
+        "startChar": 23,
+        "endLine": 539,
+        "endChar": 29
+      },
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "00cb6c6f_5dc38c3a",
+        "filename": "python/python.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-13T20:35:36Z",
+      "side": 1,
+      "message": "This (the logic of whether something is a Python library) seems like something that would be useful elsewhere and be worth extracting into its own named function",
+      "range": {
+        "startLine": 541,
+        "startChar": 6,
+        "endLine": 541,
+        "endChar": 49
+      },
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
