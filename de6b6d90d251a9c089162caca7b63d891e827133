@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e423735f_52c1d411",
+        "filename": "android/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-07-13T06:37:50Z",
+      "side": 1,
+      "message": "ok. I\u0027ve made a generic \u0027Bundles\u0027 here and implemented the phony package logic inside cc/androidmk.go",
+      "parentUuid": "e4f1ffeb_0ca4da93",
+      "revId": "de6b6d90d251a9c089162caca7b63d891e827133",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f1b5958d_6e1f1424",
         "filename": "cc/androidmk.go",
         "patchSetId": 1
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "oh this is great. Thanks.",
       "parentUuid": "8b75fb9d_e0f76ba7",
+      "revId": "de6b6d90d251a9c089162caca7b63d891e827133",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdb0b994_c852739d",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-07-13T06:37:50Z",
+      "side": 1,
+      "message": "Please see my comment at https://android-review.googlesource.com/c/434319/\n\nSPLIT_VENDOR should not be tested while parsing the generated makefile.",
+      "parentUuid": "4aa44ee3_a27b0dfd",
       "revId": "de6b6d90d251a9c089162caca7b63d891e827133",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -142,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "c6cffd81_bca2f873",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-07-13T06:37:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8dec69e_6ca1518c",
+      "range": {
+        "startLine": 88,
+        "startChar": 53,
+        "endLine": 88,
+        "endChar": 60
+      },
+      "revId": "de6b6d90d251a9c089162caca7b63d891e827133",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a00bc746_f815f879",
         "filename": "cc/androidmk.go",
         "patchSetId": 1
@@ -153,6 +213,30 @@
       "writtenOn": "2017-07-12T17:43:52Z",
       "side": 1,
       "message": "!Bool(c.Properties.Vendor_available)",
+      "range": {
+        "startLine": 90,
+        "startChar": 5,
+        "endLine": 90,
+        "endChar": 78
+      },
+      "revId": "de6b6d90d251a9c089162caca7b63d891e827133",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "00659802_8ee7a469",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-07-13T06:37:50Z",
+      "side": 1,
+      "message": "Done. Thanks",
+      "parentUuid": "a00bc746_f815f879",
       "range": {
         "startLine": 90,
         "startChar": 5,

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d8f24f7_35b6dbc6",
+        "filename": "android/androidmk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-07-13T06:37:50Z",
+      "side": 1,
+      "message": "this ctx is required since cc/androidmk.go need to test whether the current module is the primary module.",
+      "range": {
+        "startLine": 51,
+        "startChar": 29,
+        "endLine": 51,
+        "endChar": 60
+      },
+      "revId": "f8ad81bc0429a2f89aa2523f9cb1671e1b93977d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
