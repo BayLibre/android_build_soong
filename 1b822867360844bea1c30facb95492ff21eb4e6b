@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dfe8b98d_603e237a",
+        "filename": "soong_ui.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-07-13T00:27:52Z",
+      "side": 1,
+      "message": "Why we can\u0027t move this line to right below line52? so that we don\u0027t need to add ${TOP} as prefix for line 53?",
+      "revId": "1b822867360844bea1c30facb95492ff21eb4e6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
