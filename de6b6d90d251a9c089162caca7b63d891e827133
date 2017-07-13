@@ -118,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "49a1bf5c_b0e5d1bf",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-07-13T01:16:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a415822f_71c46d61",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 95
+      },
+      "revId": "de6b6d90d251a9c089162caca7b63d891e827133",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a00bc746_f815f879",
         "filename": "cc/androidmk.go",
         "patchSetId": 1
