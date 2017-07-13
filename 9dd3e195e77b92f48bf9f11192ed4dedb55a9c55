@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c6f9a54f_1d12c929",
+        "filename": "cmd/microfactory/microfactory.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-07-13T22:12:07Z",
+      "side": 1,
+      "message": "Done. I choose un(trace()) over trace()() since it\u0027s slightly clearer. I left the non-deferred cases alone.",
+      "parentUuid": "98a75bea_b973a7f9",
+      "revId": "9dd3e195e77b92f48bf9f11192ed4dedb55a9c55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "477665f6_a5baff2e",
         "filename": "cmd/microfactory/microfactory.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2017-07-13T22:01:48Z",
       "side": 1,
       "message": "split out computing the path",
+      "revId": "9dd3e195e77b92f48bf9f11192ed4dedb55a9c55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "deb32a05_e4778abb",
+        "filename": "cmd/microfactory/microfactory.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-07-13T22:12:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "477665f6_a5baff2e",
       "revId": "9dd3e195e77b92f48bf9f11192ed4dedb55a9c55",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
