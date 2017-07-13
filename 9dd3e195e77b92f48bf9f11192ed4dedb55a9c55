@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98a75bea_b973a7f9",
+        "filename": "cmd/microfactory/microfactory.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-13T22:01:48Z",
+      "side": 1,
+      "message": "I don\u0027t know if it is better, but this could be:\n\n    defer trace(\"compile %s\", p.Name)()\n\nOr, more like https://golang.org/doc/effective_go.html#defer\n\nfunc un(f func()) {\n    f()\n}\n\n    defer un(trace(\"compile %s\", p.Name))",
+      "revId": "9dd3e195e77b92f48bf9f11192ed4dedb55a9c55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "477665f6_a5baff2e",
+        "filename": "cmd/microfactory/microfactory.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-13T22:01:48Z",
+      "side": 1,
+      "message": "split out computing the path",
+      "revId": "9dd3e195e77b92f48bf9f11192ed4dedb55a9c55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
