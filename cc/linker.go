@@ -48,8 +48,8 @@ type BaseLinkerProperties struct {
 	No_default_compiler_flags *bool
 
 	// list of system libraries that will be dynamically linked to
-	// shared library and executable modules.  If unset, generally defaults to libc
-	// and libm.  Set to [] to prevent linking against libc and libm.
+	// shared library and executable modules.  If unset, generally defaults to libc,
+	// libm, and libdl.  Set to [] to prevent linking against libc, libm, and libdl.
 	System_shared_libs []string
 
 	// allow the module to contain undefined symbols.  By default,
@@ -155,7 +155,8 @@ func (linker *baseLinker) linkerDeps(ctx BaseModuleContext, deps Deps) Deps {
 			// libdl should always appear after libc in dt_needed list - see below
 			// the only exception is when libc is not in linker.Properties.System_shared_libs
 			// such as for libc module itself
-			if inList("libc", linker.Properties.System_shared_libs) {
+			if linker.Properties.System_shared_libs == nil ||
+				inList("libc", linker.Properties.System_shared_libs) {
 				_, deps.SharedLibs = removeFromList("libdl", deps.SharedLibs)
 			}
 
