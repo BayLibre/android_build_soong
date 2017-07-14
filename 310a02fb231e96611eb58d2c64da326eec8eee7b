@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "739558d1_6624432d",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-14T08:42:26Z",
+      "side": 1,
+      "message": "So do you think PS1 is the right patch for this?\n\nAdding the libdl is okay, but without it, will it be a problem for some modules?\nIf we add libdl here, we need to update the doc for \"linker.Properties.System_shared_libs\" so that the default will be libc, libm and libdl.",
+      "parentUuid": "273fb9c8_53ed59e0",
+      "revId": "310a02fb231e96611eb58d2c64da326eec8eee7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36c8069c_0325c76f",
         "filename": "cc/linker.go",
         "patchSetId": 2
