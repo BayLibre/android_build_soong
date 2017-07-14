@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "04574063_4f50d8f8",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-14T20:44:25Z",
+      "side": 1,
+      "message": "I can add ForTests, since the only use of it should be in the helpers in testing.go.",
+      "parentUuid": "bb32d4d0_62eab8fb",
+      "revId": "17c757f4949308796f40243d0ac34bf7badaaad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a6189530_16e0e044",
         "filename": "android/testing.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2017-07-14T20:26:52Z",
       "side": 1,
       "message": "Can we directly outputs :\u003d p.Outputs? since type of p.Outputs is WritablePaths.",
+      "revId": "17c757f4949308796f40243d0ac34bf7badaaad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33811b8a_5453afec",
+        "filename": "android/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-14T20:44:25Z",
+      "side": 1,
+      "message": "appending to slices you don\u0027t own is risky, since it may reuse the underlying backing if there is capacity.  It is safer to create your own copy.",
+      "parentUuid": "a6189530_16e0e044",
       "revId": "17c757f4949308796f40243d0ac34bf7badaaad4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
