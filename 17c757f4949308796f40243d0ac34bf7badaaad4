@@ -16,6 +16,23 @@
       "revId": "17c757f4949308796f40243d0ac34bf7badaaad4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6189530_16e0e044",
+        "filename": "android/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-07-14T20:26:52Z",
+      "side": 1,
+      "message": "Can we directly outputs :\u003d p.Outputs? since type of p.Outputs is WritablePaths.",
+      "revId": "17c757f4949308796f40243d0ac34bf7badaaad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
