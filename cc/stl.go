@@ -108,7 +108,7 @@ func (stl *stl) deps(ctx BaseModuleContext, deps Deps) Deps {
 			if ctx.staticBinary() {
 				deps.StaticLibs = append(deps.StaticLibs, "libm", "libc", "libdl")
 			} else {
-				deps.SharedLibs = append(deps.SharedLibs, "libdl")
+				deps.LateSharedLibs = append(deps.LateSharedLibs, "libdl")
 			}
 		}
 	case "":
