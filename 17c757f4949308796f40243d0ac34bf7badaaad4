@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb32d4d0_62eab8fb",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-07-14T18:32:16Z",
+      "side": 1,
+      "message": "This is very helpful feature for testing the build-rules. Do we need add comments that for normal/non-testing runs/invocation, the return value of func call is empty(or add suffix \"fortests\" to the function name?)",
+      "revId": "17c757f4949308796f40243d0ac34bf7badaaad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
