@@ -152,23 +152,11 @@ func (linker *baseLinker) linkerDeps(ctx BaseModuleContext, deps Deps) Deps {
 		}
 
 		if !ctx.static() {
-			// libdl should always appear after libc in dt_needed list - see below
-			// the only exception is when libc is not in linker.Properties.System_shared_libs
-			// such as for libc module itself
-			if inList("libc", linker.Properties.System_shared_libs) {
-				_, deps.SharedLibs = removeFromList("libdl", deps.SharedLibs)
-			}
-
 			if linker.Properties.System_shared_libs != nil {
-				if !inList("libdl", linker.Properties.System_shared_libs) &&
-					inList("libc", linker.Properties.System_shared_libs) {
-					linker.Properties.System_shared_libs = append(linker.Properties.System_shared_libs,
-						"libdl")
-				}
 				deps.LateSharedLibs = append(deps.LateSharedLibs,
 					linker.Properties.System_shared_libs...)
 			} else if !ctx.sdk() && !ctx.vndk() {
-				deps.LateSharedLibs = append(deps.LateSharedLibs, "libc", "libm", "libdl")
+				deps.LateSharedLibs = append(deps.LateSharedLibs, "libc", "libm")
 			}
 		}
 
@@ -176,11 +164,17 @@ func (linker *baseLinker) linkerDeps(ctx BaseModuleContext, deps Deps) Deps {
 			deps.SharedLibs = append(deps.SharedLibs,
 				"libc",
 				"libm",
-				"libdl",
 			)
 		}
 		if ctx.vndk() {
-			deps.LateSharedLibs = append(deps.LateSharedLibs, "libc", "libm", "libdl")
+			deps.LateSharedLibs = append(deps.LateSharedLibs, "libc", "libm")
+		}
+
+		//libdl should always appear after libc in dt_needed list
+		//if libdl appears in the shared_libs list, remove and append it to LateSharedLibs
+		libdlRemoved := false
+		if libdlRemoved, deps.SharedLibs = removeFromList("libdl", deps.SharedLibs); libdlRemoved {
+			deps.LateSharedLibs = append(deps.LateSharedLibs, "libdl")
 		}
 	}
 
