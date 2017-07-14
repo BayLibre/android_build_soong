@@ -298,6 +298,10 @@ func NewTestLibrary(hod android.HostOrDeviceSupported) *Module {
 }
 
 type BenchmarkProperties struct {
+	// list of files or filegroup modules that provide data that should be installed alongside
+	// the test
+	Data []string
+
 	// list of compatibility suites (for example "cts", "vts") that the module should be
 	// installed into.
 	Test_suites []string
@@ -306,6 +310,7 @@ type BenchmarkProperties struct {
 type benchmarkDecorator struct {
 	*binaryDecorator
 	Properties BenchmarkProperties
+	data       android.Paths
 }
 
 func (benchmark *benchmarkDecorator) linkerInit(ctx BaseModuleContext) {
@@ -330,6 +335,7 @@ func (benchmark *benchmarkDecorator) linkerDeps(ctx DepsContext, deps Deps) Deps
 }
 
 func (benchmark *benchmarkDecorator) install(ctx ModuleContext, file android.Path) {
+	benchmark.data = ctx.ExpandSources(benchmark.Properties.Data, nil)
 	benchmark.binaryDecorator.baseInstaller.dir = filepath.Join("nativetest", ctx.ModuleName())
 	benchmark.binaryDecorator.baseInstaller.dir64 = filepath.Join("nativetest64", ctx.ModuleName())
 	benchmark.binaryDecorator.baseInstaller.install(ctx, file)
