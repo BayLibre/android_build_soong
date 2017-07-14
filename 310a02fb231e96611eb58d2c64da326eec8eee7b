@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "273fb9c8_53ed59e0",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1041673
+      },
+      "writtenOn": "2017-07-14T07:53:14Z",
+      "side": 1,
+      "message": "I still think it should be explicitly spelled in this list.",
+      "revId": "310a02fb231e96611eb58d2c64da326eec8eee7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36c8069c_0325c76f",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1041673
+      },
+      "writtenOn": "2017-07-14T07:53:14Z",
+      "side": 1,
+      "message": "and others...",
+      "revId": "310a02fb231e96611eb58d2c64da326eec8eee7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77ae3146_ef2f18f2",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1041673
+      },
+      "writtenOn": "2017-07-14T07:53:14Z",
+      "side": 1,
+      "message": "and we could just unconditionally remove it from SharedLibs...",
+      "revId": "310a02fb231e96611eb58d2c64da326eec8eee7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
