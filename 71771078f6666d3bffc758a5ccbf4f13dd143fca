@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e78d787f_cb93955b",
+        "filename": "build.ninja.in",
+        "patchSetId": 1
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-15T05:26:23Z",
+      "side": 1,
+      "message": "Not sure why we have this extra leading space here, but https://github.com/google/blueprint/pull/153/commits/8de48af6dead4b25ce6a679af50e815b3cec4522 is what caused it to get escaped.",
+      "revId": "71771078f6666d3bffc758a5ccbf4f13dd143fca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
