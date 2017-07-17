@@ -22,6 +22,64 @@
       "revId": "6ba22013171361708b382f5ac5e53f2b98cd0e6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65beb11a_34a95af0",
+        "filename": "cc/linker.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-17T19:51:47Z",
+      "side": 1,
+      "message": "Maybe we should make this more generic, and strip anything in system_shared_libs out of deps.Shared_libs",
+      "parentUuid": "7bb91200_d4ad1421",
+      "range": {
+        "startLine": 158,
+        "startChar": 6,
+        "endLine": 158,
+        "endChar": 52
+      },
+      "revId": "6ba22013171361708b382f5ac5e53f2b98cd0e6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ef34695_939e10fd",
+        "filename": "cc/linker.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-17T19:51:47Z",
+      "side": 1,
+      "message": "This looks obsolete now",
+      "revId": "6ba22013171361708b382f5ac5e53f2b98cd0e6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "29b6d2af_d929a8b0",
+        "filename": "cc/stl.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-17T19:51:47Z",
+      "side": 1,
+      "message": "Is this line still necessary if libdl is in the default system_shared_libs?",
+      "revId": "6ba22013171361708b382f5ac5e53f2b98cd0e6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
