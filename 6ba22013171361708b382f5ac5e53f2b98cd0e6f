@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "542899c5_ebdb0a29",
+        "filename": "cc/linker.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-17T23:44:43Z",
+      "side": 1,
+      "message": "Only libdl.so is affected by the order of loading. Moving libdl.so from the shared_libs to the end of system_shared_libs is to make libdl.so be loaded later than libc.so.\nWe don\u0027t need to move any other system_shared_libs from shared_libs.",
+      "parentUuid": "65beb11a_34a95af0",
+      "range": {
+        "startLine": 158,
+        "startChar": 6,
+        "endLine": 158,
+        "endChar": 52
+      },
+      "revId": "6ba22013171361708b382f5ac5e53f2b98cd0e6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ef34695_939e10fd",
         "filename": "cc/linker.go",
         "patchSetId": 3
@@ -66,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "21da3dc1_ff53dc5f",
+        "filename": "cc/linker.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-17T23:44:43Z",
+      "side": 1,
+      "message": "This handles the case:\n\nshared_libs: [libdl],\nsystem_shared_libs: [libc],\n\nlibdl is removed by the line#160 and added to the end of the system_shared_libs with this condition.",
+      "parentUuid": "5ef34695_939e10fd",
+      "revId": "6ba22013171361708b382f5ac5e53f2b98cd0e6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29b6d2af_d929a8b0",
         "filename": "cc/stl.go",
         "patchSetId": 3
@@ -77,6 +119,24 @@
       "writtenOn": "2017-07-17T19:51:47Z",
       "side": 1,
       "message": "Is this line still necessary if libdl is in the default system_shared_libs?",
+      "revId": "6ba22013171361708b382f5ac5e53f2b98cd0e6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d58ec520_cead9bd6",
+        "filename": "cc/stl.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-17T23:44:43Z",
+      "side": 1,
+      "message": "We cannot guarantee if the module is using default system_share_libs or just defining blank. If \"system_shard_libs: []\" is set, this line is necessary.",
+      "parentUuid": "29b6d2af_d929a8b0",
       "revId": "6ba22013171361708b382f5ac5e53f2b98cd0e6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
