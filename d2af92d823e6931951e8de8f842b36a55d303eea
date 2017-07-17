@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49070b69_0164643b",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-17T20:21:33Z",
+      "side": 1,
+      "message": "Pull this out into a helper function to reduce duplication",
+      "revId": "d2af92d823e6931951e8de8f842b36a55d303eea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ac11a7d6_f487aa1a",
+        "filename": "cc/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-17T20:21:33Z",
+      "side": 1,
+      "message": "You need this line too",
+      "revId": "d2af92d823e6931951e8de8f842b36a55d303eea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
