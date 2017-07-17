@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7bb91200_d4ad1421",
+        "filename": "cc/linker.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-17T00:16:34Z",
+      "side": 1,
+      "message": "This must be added to remove libdl from shared_libs in case, no system_share_libs is defined.",
+      "range": {
+        "startLine": 158,
+        "startChar": 6,
+        "endLine": 158,
+        "endChar": 52
+      },
+      "revId": "6ba22013171361708b382f5ac5e53f2b98cd0e6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
