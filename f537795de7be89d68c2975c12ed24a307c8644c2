@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcb72dfb_1c285517",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1069,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-18T20:06:01Z",
+      "side": 1,
+      "message": "Instead of trying to modify AndroidMkSharedLibs, delete where it is assigned above and create it here.  You may need AndroidMkSharedLibs and AndroidMkLateSharedLibs.",
+      "revId": "f537795de7be89d68c2975c12ed24a307c8644c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7dcba32_f10943c0",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-18T20:06:01Z",
+      "side": 1,
+      "message": "Move this into the if clause above and you won\u0027t need to recheck for \"\"",
+      "revId": "f537795de7be89d68c2975c12ed24a307c8644c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
