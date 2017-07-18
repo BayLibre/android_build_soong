@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee82afd0_41b59340",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1170604
+      },
+      "writtenOn": "2017-07-18T01:06:26Z",
+      "side": 1,
+      "message": "As an intern I\u0027m not allowed to merge CLs, so please go ahead if you think it\u0027s ready.",
+      "revId": "b97e818201e0a2bab8491242d14236cd95d5c1ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
