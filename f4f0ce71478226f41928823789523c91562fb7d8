@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29ae8e3f_19fd6627",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-18T23:26:23Z",
+      "side": 1,
+      "message": "This duplication is caused by adding flags in compile() instead of in compilerFlags().  I expect if you add:\n\nfunc (stub *stubDecorator) compilerFlags(ctx ModuleContext, flags Flags) Flags {\n\tflags \u003d stub.baseCompiler.compileFlags(ctx, flags)\n\tflags.Cflags \u003d append(flags.Cflags,\n\t\t// We\u0027re knowingly doing some otherwise unsightly things with builtin\n\t\t// functions here. We\u0027re just generating stub libraries, so ignore it.\n\t\t\"-Wno-incompatible-library-redeclaration\",\n\t\t\"-Wno-builtin-requires-header\",\n\t\t\"-Wno-invalid-noreturn\",\n\n\t\t// These libraries aren\u0027t actually used. Don\u0027t worry about unwinding\n\t\t// (avoids the need to link an unwinder into a fake library).\n\t\t\"-fno-unwind-tables\",\n\t)\n}\n\nand remove the extra cflags from here then everything will work.",
+      "revId": "f4f0ce71478226f41928823789523c91562fb7d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
