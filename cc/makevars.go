@@ -81,6 +81,7 @@ func makeVarsProvider(ctx android.MakeVarsContext) {
 	ctx.Strict("AIDL_CPP", "${aidlCmd}")
 
 	ctx.Strict("RS_GLOBAL_INCLUDES", "${config.RsGlobalIncludes}")
+	ctx.Strict("JNI_H_INCLUDE", "${config.CommonNativehelperInclude}")
 
 	includeFlags, err := ctx.Eval("${config.CommonGlobalIncludes}")
 	if err != nil {
