@@ -1065,6 +1065,26 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			}
 			*depPtr = append(*depPtr, dep.Path())
 		}
+
+		// Add .vendor suffix to the names exported as LOCAL_SHARED_LIBRARIES.
+		// We do this only when the shared lib has both core and vendor
+		// variants and this module is building against vndk. This is because
+		// the vendor variant will have .vendor suffix in the make world.
+		// If the lib is a vendor-only library or this lib is not building
+		// against vndk, then the suffix is not added and the names are used
+		// as they are.
+		switch tag {
+		case sharedDepTag, sharedExportDepTag, lateSharedDepTag:
+			plainName := strings.TrimSuffix(name, llndkLibrarySuffix)
+			isLLndk := inList(plainName, config.LLndkLibraries())
+			if c.vndk() && (Bool(cc.Properties.Vendor_available) || isLLndk) {
+				for i, lib := range c.Properties.AndroidMkSharedLibs {
+					if lib == plainName {
+						c.Properties.AndroidMkSharedLibs[i] += vendorSuffix
+					}
+				}
+			}
+		}
 	})
 
 	// Dedup exported flags from dependencies

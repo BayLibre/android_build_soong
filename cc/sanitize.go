@@ -116,7 +116,8 @@ type SanitizeProperties struct {
 type sanitize struct {
 	Properties SanitizeProperties
 
-	runtimeLibrary string
+	runtimeLibrary          string
+	androidMkRuntimeLibrary string
 }
 
 func (sanitize *sanitize) props() []interface{} {
@@ -428,6 +429,13 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 		sanitize.runtimeLibrary = runtimeLibrary
 	}
 
+	sanitize.androidMkRuntimeLibrary = sanitize.runtimeLibrary
+	if sanitize.androidMkRuntimeLibrary != "" {
+		if ctx.vndk() {
+			sanitize.androidMkRuntimeLibrary = sanitize.runtimeLibrary + vendorSuffix
+		}
+	}
+
 	blacklist := android.OptionalPathForModuleSrc(ctx, sanitize.Properties.Sanitize.Blacklist)
 	if blacklist.Valid() {
 		flags.CFlags = append(flags.CFlags, "-fsanitize-blacklist="+blacklist.String())
@@ -439,8 +447,8 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 
 func (sanitize *sanitize) AndroidMk(ctx AndroidMkContext, ret *android.AndroidMkData) {
 	ret.Extra = append(ret.Extra, func(w io.Writer, outputFile android.Path) error {
-		if sanitize.runtimeLibrary != "" {
-			fmt.Fprintln(w, "LOCAL_SHARED_LIBRARIES += "+sanitize.runtimeLibrary)
+		if sanitize.androidMkRuntimeLibrary != "" {
+			fmt.Fprintln(w, "LOCAL_SHARED_LIBRARIES += "+sanitize.androidMkRuntimeLibrary)
 		}
 
 		return nil
