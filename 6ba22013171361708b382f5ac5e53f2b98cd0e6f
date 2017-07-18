@@ -108,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "cb194ff2_7fe38fe1",
+        "filename": "cc/linker.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-18T20:39:41Z",
+      "side": 1,
+      "message": "Is this a case that actually happens?  There are relatively few places that set system_shared_libs, we could fix them to add libdl to system_shared_libs if they need it.  That can be a separate CL though.",
+      "parentUuid": "21da3dc1_ff53dc5f",
+      "revId": "6ba22013171361708b382f5ac5e53f2b98cd0e6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29b6d2af_d929a8b0",
         "filename": "cc/stl.go",
         "patchSetId": 3
@@ -137,6 +155,24 @@
       "side": 1,
       "message": "We cannot guarantee if the module is using default system_share_libs or just defining blank. If \"system_shard_libs: []\" is set, this line is necessary.",
       "parentUuid": "29b6d2af_d929a8b0",
+      "revId": "6ba22013171361708b382f5ac5e53f2b98cd0e6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78a9216f_f75f6de0",
+        "filename": "cc/stl.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-18T20:39:41Z",
+      "side": 1,
+      "message": "system_shared_libs: [] + stl doesn\u0027t seem valid, the stl will need libc + libm.",
+      "parentUuid": "d58ec520_cead9bd6",
       "revId": "6ba22013171361708b382f5ac5e53f2b98cd0e6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
