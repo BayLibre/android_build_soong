@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "608749bd_44869a71",
+        "filename": "android/defaults.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-07-19T20:43:40Z",
+      "side": 1,
+      "message": "Can we take an interface encompassing both instead? Then it\u0027s statically type checked instead of the dynamic panic.\n\n  interface {\n    Module\n    Defaultable\n  }",
+      "range": {
+        "startLine": 55,
+        "startChar": 27,
+        "endLine": 55,
+        "endChar": 40
+      },
+      "revId": "ade620d13d9bbccaa39cb4f4bbb54f0c94f82caf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
