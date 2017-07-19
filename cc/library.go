@@ -496,6 +496,9 @@ func (library *libraryDecorator) linkShared(ctx ModuleContext,
 		if versionScript.Valid() {
 			flags.LdFlags = append(flags.LdFlags, "-Wl,--version-script,"+versionScript.String())
 			linkerDeps = append(linkerDeps, versionScript.Path())
+			if library.sanitize.Sanitizer(cfi) {
+				flags.LdFlags = append(flags.LdFlags, "-Wl,--version-script,build/soong/cc/config/cfi_exports.map")
+			}
 		}
 		if unexportedSymbols.Valid() {
 			ctx.PropertyErrorf("unexported_symbols_list", "Only supported on Darwin")
