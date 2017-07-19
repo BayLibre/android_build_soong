@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ef382008_912c7dcd",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1069,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-07-19T00:52:44Z",
+      "side": 1,
+      "message": "Then the library order (inside SharedLibs and LateSharedLibs) will change and this might nullify http://aosp/435655",
+      "parentUuid": "bcb72dfb_1c285517",
+      "revId": "f537795de7be89d68c2975c12ed24a307c8644c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7dcba32_f10943c0",
         "filename": "cc/sanitize.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2017-07-18T20:06:01Z",
       "side": 1,
       "message": "Move this into the if clause above and you won\u0027t need to recheck for \"\"",
+      "revId": "f537795de7be89d68c2975c12ed24a307c8644c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "82a9b0ec_2824b4da",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-07-19T00:52:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7dcba32_f10943c0",
       "revId": "f537795de7be89d68c2975c12ed24a307c8644c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
