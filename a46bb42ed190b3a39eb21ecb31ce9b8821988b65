@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ff728b3_aadd174d",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-07-19T18:14:01Z",
+      "side": 1,
+      "message": "Do we need extract this dependencyTag to android common? since cc has also a similar dependencyTag. And other modules also can re-use this struct, like defaultDependencyTag, pythonDependencyTag, prebuiltDependencyTag and etc.",
+      "revId": "a46bb42ed190b3a39eb21ecb31ce9b8821988b65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
