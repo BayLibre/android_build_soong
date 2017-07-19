@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ddd7747_f8c613d5",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-07-19T23:19:14Z",
+      "side": 1,
+      "message": "not changing this one?",
+      "range": {
+        "startLine": 230,
+        "startChar": 2,
+        "endLine": 230,
+        "endChar": 9
+      },
+      "revId": "e27096dd1d30b393ebb002c2d669fc1512211a63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
