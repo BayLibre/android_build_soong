@@ -46,6 +46,9 @@ func init() {
 		ctx.TopDown("asan_deps", sanitizerDepsMutator(asan))
 		ctx.BottomUp("asan", sanitizerMutator(asan)).Parallel()
 
+		ctx.TopDown("cfi_deps", sanitizerDepsMutator(cfi))
+		ctx.BottomUp("cfi", sanitizerMutator(cfi)).Parallel()
+
 		ctx.TopDown("tsan_deps", sanitizerDepsMutator(tsan))
 		ctx.BottomUp("tsan", sanitizerMutator(tsan)).Parallel()
 
@@ -437,12 +440,7 @@ func (ctx *moduleContextImpl) toolchain() config.Toolchain {
 }
 
 func (ctx *moduleContextImpl) static() bool {
-	if static, ok := ctx.mod.linker.(interface {
-		static() bool
-	}); ok {
-		return static.static()
-	}
-	return false
+	return ctx.mod.static()
 }
 
 func (ctx *moduleContextImpl) staticBinary() bool {
@@ -604,6 +602,12 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		Toolchain: c.toolchain(ctx),
 		Clang:     c.clang(ctx),
 	}
+	// Add sanitizer flags first so that the default visibility
+	// modifier that CFI requires can be overridden by components
+	// that set it to hidden.
+	if c.sanitize != nil {
+		flags = c.sanitize.flags(ctx, flags)
+	}
 	if c.compiler != nil {
 		flags = c.compiler.compilerFlags(ctx, flags)
 	}
@@ -612,9 +616,6 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	}
 	if c.stl != nil {
 		flags = c.stl.flags(ctx, flags)
-	}
-	if c.sanitize != nil {
-		flags = c.sanitize.flags(ctx, flags)
 	}
 	if c.coverage != nil {
 		flags = c.coverage.flags(ctx, flags)
@@ -1279,6 +1280,15 @@ func (c *Module) Srcs() android.Paths {
 		return android.Paths{c.outputFile.Path()}
 	}
 	return android.Paths{}
+}
+
+func (c *Module) static() bool {
+	if static, ok := c.linker.(interface {
+		static() bool
+	}); ok {
+		return static.static()
+	}
+	return false
 }
 
 //
