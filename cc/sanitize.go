@@ -58,6 +58,7 @@ const (
 	asan sanitizerType = iota + 1
 	tsan
 	intOverflow
+	cfi
 )
 
 func (t sanitizerType) String() string {
@@ -68,6 +69,8 @@ func (t sanitizerType) String() string {
 		return "tsan"
 	case intOverflow:
 		return "intOverflow"
+	case cfi:
+		return "cfi"
 	default:
 		panic(fmt.Errorf("unknown sanitizerType %d", t))
 	}
@@ -465,6 +468,8 @@ func (sanitize *sanitize) Sanitizer(t sanitizerType) bool {
 		return Bool(sanitize.Properties.Sanitize.Thread)
 	case intOverflow:
 		return Bool(sanitize.Properties.Sanitize.Integer_overflow)
+	case cfi:
+		return Bool(sanitize.Properties.Sanitize.Cfi)
 	default:
 		panic(fmt.Errorf("unknown sanitizerType %d", t))
 	}
@@ -481,6 +486,13 @@ func (sanitize *sanitize) SetSanitizer(t sanitizerType, b bool) {
 		sanitize.Properties.Sanitize.Thread = boolPtr(b)
 	case intOverflow:
 		sanitize.Properties.Sanitize.Integer_overflow = boolPtr(b)
+	case cfi:
+		sanitize.Properties.Sanitize.Cfi = boolPtr(b)
+		// TODO: Find a way to only conditionally enable
+		// diagnostics based on parent module.
+		// TODO: We need CFI diagnostics to be false for
+		// static executables (and their deps)
+		sanitize.Properties.Sanitize.Diag.Cfi = nil
 	default:
 		panic(fmt.Errorf("unknown sanitizerType %d", t))
 	}
@@ -517,8 +529,11 @@ func sanitizerMutator(t sanitizerType) func(android.BottomUpMutatorContext) {
 				modules[0].(*Module).sanitize.Properties.SanitizeDep = false
 				modules[1].(*Module).sanitize.Properties.SanitizeDep = false
 				if mctx.Device() {
-					modules[1].(*Module).sanitize.Properties.InSanitizerDir = true
+					if Bool(modules[1].(*Module).sanitize.Properties.Sanitize.Cfi) == false {
+						modules[1].(*Module).sanitize.Properties.InSanitizerDir = true
+					}
 				} else {
+					// TODO: Is this valid for CFI??
 					modules[0].(*Module).Properties.PreventInstall = true
 				}
 				if mctx.AConfig().EmbeddedInMake() {
