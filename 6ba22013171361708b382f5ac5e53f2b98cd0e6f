@@ -194,6 +194,24 @@
       "revId": "6ba22013171361708b382f5ac5e53f2b98cd0e6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5427b2a_d96a93b7",
+        "filename": "cc/stl.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-19T01:18:37Z",
+      "side": 1,
+      "message": "stl.deps runs right after linker.linkerDeps. So even though we remove \"libdl\" in shared_libs by linkerDeps, it is again added here that causes libdl to be loaded before libc. libdl must be added to LateSharedLibs to let it be loaded after libc.",
+      "parentUuid": "78a9216f_f75f6de0",
+      "revId": "6ba22013171361708b382f5ac5e53f2b98cd0e6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
