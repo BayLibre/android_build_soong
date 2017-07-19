@@ -125,6 +125,7 @@ func ltoMutator(mctx android.BottomUpMutatorContext) {
 			modules := mctx.CreateVariations("", "lto")
 			modules[0].(*Module).lto.Properties.Lto.Full = boolPtr(false)
 			modules[0].(*Module).lto.Properties.Lto.Thin = boolPtr(false)
+
 			modules[0].(*Module).lto.Properties.LTODep = false
 			modules[1].(*Module).lto.Properties.LTODep = false
 			modules[1].(*Module).Properties.PreventInstall = true

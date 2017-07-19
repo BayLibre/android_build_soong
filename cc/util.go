@@ -138,3 +138,13 @@ func addSuffix(list []string, suffix string) []string {
 	}
 	return list
 }
+
+// If there's more than a single -fvisibility flag, give precedence to
+// hidden over default.
+func filterDuplicateVisibilityFlags(list []string) []string {
+	if inList("-fvisibility=hidden", list) {
+		list = removeListFromList(list, []string{"-fvisibility=default"})
+	}
+
+	return list
+}
