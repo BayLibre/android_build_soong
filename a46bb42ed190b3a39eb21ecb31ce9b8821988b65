@@ -16,6 +16,24 @@
       "revId": "a46bb42ed190b3a39eb21ecb31ce9b8821988b65",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7727bc31_94cfe30d",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-07-19T23:30:06Z",
+      "side": 1,
+      "message": "Using different types is actually better, since type is taken into account when testing to see it two structs are equal. Otherwise two different packages that happened to use the same name for their tags could be confused with each others tags.",
+      "parentUuid": "1ff728b3_aadd174d",
+      "revId": "a46bb42ed190b3a39eb21ecb31ce9b8821988b65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
