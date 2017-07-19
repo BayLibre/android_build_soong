@@ -126,6 +126,24 @@
     },
     {
       "key": {
+        "uuid": "b352d183_97561deb",
+        "filename": "cc/linker.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-19T01:08:41Z",
+      "side": 1,
+      "message": "No, I cannot find any.\nMy actual intention was Patch Set 2, that moves the libdl to the end of the list _only if_ it is defined in shared_libs. I think the users don\u0027t need to know that they have to put libc before libdl.\nI don\u0027t know actual intention for this condition in line#164. Do you think we need to remove the condition in line#164 with this CL?",
+      "parentUuid": "cb194ff2_7fe38fe1",
+      "revId": "6ba22013171361708b382f5ac5e53f2b98cd0e6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29b6d2af_d929a8b0",
         "filename": "cc/stl.go",
         "patchSetId": 3
