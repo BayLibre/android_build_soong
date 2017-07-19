@@ -46,6 +46,9 @@ func init() {
 		ctx.TopDown("asan_deps", sanitizerDepsMutator(asan))
 		ctx.BottomUp("asan", sanitizerMutator(asan)).Parallel()
 
+		ctx.TopDown("cfi_deps", sanitizerDepsMutator(cfi))
+		ctx.BottomUp("cfi", sanitizerMutator(cfi)).Parallel()
+
 		ctx.TopDown("tsan_deps", sanitizerDepsMutator(tsan))
 		ctx.BottomUp("tsan", sanitizerMutator(tsan)).Parallel()
 
@@ -432,12 +435,7 @@ func (ctx *moduleContextImpl) toolchain() config.Toolchain {
 }
 
 func (ctx *moduleContextImpl) static() bool {
-	if static, ok := ctx.mod.linker.(interface {
-		static() bool
-	}); ok {
-		return static.static()
-	}
-	return false
+	return ctx.mod.static()
 }
 
 func (ctx *moduleContextImpl) staticBinary() bool {
@@ -585,6 +583,8 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	flags.CFlags, _ = filterList(flags.CFlags, config.IllegalFlags)
 	flags.CppFlags, _ = filterList(flags.CppFlags, config.IllegalFlags)
 	flags.ConlyFlags, _ = filterList(flags.ConlyFlags, config.IllegalFlags)
+
+	flags.CFlags = filterDuplicateVisibilityFlags(flags.CFlags)
 
 	deps := c.depsToPaths(ctx)
 	if ctx.Failed() {
@@ -1238,6 +1238,15 @@ func (c *Module) Srcs() android.Paths {
 		return android.Paths{c.outputFile.Path()}
 	}
 	return android.Paths{}
+}
+
+func (c *Module) static() bool {
+	if static, ok := c.linker.(interface {
+		static() bool
+	}); ok {
+		return static.static()
+	}
+	return false
 }
 
 //
