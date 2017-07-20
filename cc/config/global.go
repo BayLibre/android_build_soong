@@ -158,6 +158,16 @@ func init() {
 	pctx.StaticVariable("RSLLVMPrebuiltsPath", "${RSClangBase}/${HostPrebuiltTag}/${RSClangVersion}/bin")
 	pctx.StaticVariable("RSIncludePath", "${RSLLVMPrebuiltsPath}/../lib64/clang/${RSReleaseVersion}/include")
 
+        // RSClang does not support recent mcpu option likes exynos-m2. So we need overriding mcpu option when
+        // we want to use it.
+        pctx.VariableFunc("RSClangExtraCFlag", func(config interface{}) (string, error) {
+                if cpu := config.(android.Config).DeviceCpuVariantName(); cpu == "exynos-m2" {
+                        return " -mcpu=cortex-a53", nil
+                }
+                return "", nil
+        })
+        pctx.StaticVariable("RSClangExtrasAbiDumpCFlag", "${RSClangExtraCFlag}")
+
 	pctx.PrefixedExistentPathsForSourcesVariable("RsGlobalIncludes", "-I",
 		[]string{
 			"external/clang/lib/Headers",
