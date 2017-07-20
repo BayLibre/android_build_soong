@@ -355,6 +355,10 @@ func (c *config) DeviceName() string {
 	return *c.ProductVariables.DeviceName
 }
 
+func (c *config) DeviceCpuVariantName() string {
+        return *c.ProductVariables.DeviceCpuVariant
+}
+
 func (c *config) DeviceUsesClang() bool {
 	if c.ProductVariables.DeviceUsesClang != nil {
 		return *c.ProductVariables.DeviceUsesClang
