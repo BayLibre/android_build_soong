@@ -191,7 +191,7 @@ type moduleInstallPathContextImpl struct {
 }
 
 func (moduleInstallPathContextImpl) Fs() pathtools.FileSystem {
-	return pathtools.MockFs(nil)
+	return pathtools.NewMockFs(nil)
 }
 
 func (m moduleInstallPathContextImpl) Config() interface{} {
