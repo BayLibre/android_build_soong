@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c1fa487_dd6a772b",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-07-20T07:23:19Z",
+      "side": 1,
+      "message": "I would prefer it not target cortex-a53 either, honestly. This should choose a generic armv8 target (or even a host target instead).",
+      "revId": "c110abca6c8e4147582619939296685a41654012",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
