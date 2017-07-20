@@ -191,7 +191,7 @@ type moduleInstallPathContextImpl struct {
 }
 
 func (moduleInstallPathContextImpl) Fs() pathtools.FileSystem {
-	return pathtools.MockFs(nil)
+	return pathtools.NewMockFs(nil)
 }
 
 func (m moduleInstallPathContextImpl) Config() interface{} {
@@ -327,7 +327,6 @@ func TestPathForModuleInstall(t *testing.T) {
 			out: "target/product/test_device/data/asan/data/nativetest/my_test",
 		},
 	}
-
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
 			tc.ctx.androidBaseContextImpl.config = testConfig
@@ -339,4 +338,5 @@ func TestPathForModuleInstall(t *testing.T) {
 			}
 		})
 	}
+
 }
