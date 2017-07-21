@@ -16,6 +16,24 @@
       "revId": "824c4eb00f97ff95bc092f3ea93b7f76b29aa019",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13ba8544_d90b253b",
+        "filename": "android/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1017635
+      },
+      "writtenOn": "2017-07-21T22:09:48Z",
+      "side": 1,
+      "message": "Does ctx.Arch have specific cpu name?\nSome cpus may have different architecture cores in cpu.",
+      "parentUuid": "c6245460_96fb6241",
+      "revId": "824c4eb00f97ff95bc092f3ea93b7f76b29aa019",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
