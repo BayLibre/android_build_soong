@@ -93,6 +93,30 @@
       "revId": "824c4eb00f97ff95bc092f3ea93b7f76b29aa019",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce6630cd_cf3ef3ff",
+        "filename": "cc/builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-21T22:39:23Z",
+      "side": 1,
+      "message": "Generic flags don\u0027t work becaused the parsed headers may depend on flags like ARM_NEON",
+      "parentUuid": "9b697a3d_315f3e6b",
+      "range": {
+        "startLine": 164,
+        "startChar": 80,
+        "endLine": 164,
+        "endChar": 115
+      },
+      "revId": "824c4eb00f97ff95bc092f3ea93b7f76b29aa019",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
