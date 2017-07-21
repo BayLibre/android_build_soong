@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "c9bc5f32_3017686f",
+        "filename": "cc/linker.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-21T17:17:49Z",
+      "side": 1,
+      "message": "If I understand correctly, the logic should be:\nIf libdl is in shared_libs but not in system_shared_libs, throw an error.\nRemove libdl from shared_libs\nIf it is in system_shared_libs but before libc, print an error.\nIf libc is in system_shared_libs but not libdl, print an error.\n\nThere are probably a few places in the tree that need to remove system_shared_libs: [\"libc\"], AFAIK it should only be necessary for compiling bionic.",
+      "parentUuid": "542899c5_ebdb0a29",
+      "range": {
+        "startLine": 158,
+        "startChar": 6,
+        "endLine": 158,
+        "endChar": 52
+      },
+      "revId": "6ba22013171361708b382f5ac5e53f2b98cd0e6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ef34695_939e10fd",
         "filename": "cc/linker.go",
         "patchSetId": 3
