@@ -117,6 +117,30 @@
       "revId": "824c4eb00f97ff95bc092f3ea93b7f76b29aa019",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf53c10c_7bb9329a",
+        "filename": "cc/builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-07-21T22:40:36Z",
+      "side": 1,
+      "message": "This implies that we can\u0027t use a \"generic\" system image, when the ABI comparison is supposed to be made for everything within the same ABI.",
+      "parentUuid": "ce6630cd_cf3ef3ff",
+      "range": {
+        "startLine": 164,
+        "startChar": 80,
+        "endLine": 164,
+        "endChar": 115
+      },
+      "revId": "824c4eb00f97ff95bc092f3ea93b7f76b29aa019",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
