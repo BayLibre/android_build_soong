@@ -70,6 +70,29 @@
       "revId": "824c4eb00f97ff95bc092f3ea93b7f76b29aa019",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b697a3d_315f3e6b",
+        "filename": "cc/builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-07-21T22:29:58Z",
+      "side": 1,
+      "message": "Would it be better to add pass generic flags which override mcpu flags passed earlier  ? Or maybe even blacklist this flag? Since the tool does front end analysis, it should really not affect the output.",
+      "range": {
+        "startLine": 164,
+        "startChar": 80,
+        "endLine": 164,
+        "endChar": 115
+      },
+      "revId": "824c4eb00f97ff95bc092f3ea93b7f76b29aa019",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
