@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6245460_96fb6241",
+        "filename": "android/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-21T21:57:56Z",
+      "side": 1,
+      "message": "This is not something we ever want globally exported, if it is relevant to a module it is available through ctx.Arch()",
+      "revId": "824c4eb00f97ff95bc092f3ea93b7f76b29aa019",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
