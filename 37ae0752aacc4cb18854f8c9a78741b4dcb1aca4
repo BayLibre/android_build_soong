@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49478e6e_0a981f75",
+        "filename": "python/defaults.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-21T17:29:25Z",
+      "side": 1,
+      "message": "License header",
+      "revId": "37ae0752aacc4cb18854f8c9a78741b4dcb1aca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
