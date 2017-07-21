@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6818e749_6601d901",
+        "filename": "cc/config/global.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-21T21:08:37Z",
+      "side": 1,
+      "message": "Run your changes through gofmt",
+      "revId": "0ea2bd4bcdb28f438a0994af1c0c5cdf787d4b18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "46ffd616_eb6aa13a",
+        "filename": "cc/config/global.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-21T21:08:37Z",
+      "side": 1,
+      "message": "The extra space is unnecessary",
+      "range": {
+        "startLine": 165,
+        "startChar": 32,
+        "endLine": 165,
+        "endChar": 33
+      },
+      "revId": "0ea2bd4bcdb28f438a0994af1c0c5cdf787d4b18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
