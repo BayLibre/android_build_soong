@@ -117,6 +117,7 @@ type pathMapping struct {
 
 type Module struct {
 	android.ModuleBase
+	android.DefaultableModuleBase
 
 	properties BaseProperties
 
@@ -203,6 +204,7 @@ func (p *Module) Init() android.Module {
 	}
 
 	android.InitAndroidArchModule(p, p.hod, p.multilib)
+	android.InitDefaultableModule(p)
 
 	return p
 }
