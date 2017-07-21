@@ -34,6 +34,24 @@
       "revId": "824c4eb00f97ff95bc092f3ea93b7f76b29aa019",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b517cf12_79c52119",
+        "filename": "android/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-21T22:12:51Z",
+      "side": 1,
+      "message": "ctx.Arch() returns an Arch object which has a CpuVariant field.",
+      "parentUuid": "13ba8544_d90b253b",
+      "revId": "824c4eb00f97ff95bc092f3ea93b7f76b29aa019",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
