@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9826d7e6_45b4fa3f",
+        "filename": "android/paths_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-22T02:29:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be499e16_cfd27638",
+      "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "123709f4_499748fa",
         "filename": "finder/Android.bp",
         "patchSetId": 2
@@ -30,6 +48,30 @@
       "writtenOn": "2017-07-21T20:32:49Z",
       "side": 1,
       "message": "In other places we distinguish between the package and the binary by using the package path as the name, so \"soong-finder\"",
+      "range": {
+        "startLine": 24,
+        "startChar": 11,
+        "endLine": 24,
+        "endChar": 21
+      },
+      "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8fd83d47_e097490b",
+        "filename": "finder/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-22T02:29:39Z",
+      "side": 1,
+      "message": "thanks",
+      "parentUuid": "123709f4_499748fa",
       "range": {
         "startLine": 24,
         "startChar": 11,
@@ -82,6 +124,30 @@
     },
     {
       "key": {
+        "uuid": "ed4cf339_bffb6b16",
+        "filename": "finder/cmd/finder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-22T02:29:39Z",
+      "side": 1,
+      "message": "thanks",
+      "parentUuid": "02a0ac57_db5d7136",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 4
+      },
+      "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6367ed2d_2d1eb679",
         "filename": "finder/cmd/finder.go",
         "patchSetId": 2
@@ -93,6 +159,30 @@
       "writtenOn": "2017-07-21T20:32:49Z",
       "side": 1,
       "message": "This is useful to keep guarded by a command line flag, see build/blueprint/bootstrap/command.go",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 12
+      },
+      "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ac32b13_ddfcc13c",
+        "filename": "finder/cmd/finder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-22T02:29:39Z",
+      "side": 1,
+      "message": "thanks",
+      "parentUuid": "6367ed2d_2d1eb679",
       "range": {
         "startLine": 32,
         "startChar": 0,
@@ -128,6 +218,30 @@
     },
     {
       "key": {
+        "uuid": "bb08ea25_a47f545b",
+        "filename": "finder/cmd/finder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-22T02:29:39Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "9df74ee8_16807409",
+      "range": {
+        "startLine": 61,
+        "startChar": 68,
+        "endLine": 61,
+        "endChar": 69
+      },
+      "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "78c23e1d_e82809b7",
         "filename": "finder/cmd/finder.go",
         "patchSetId": 2
@@ -139,6 +253,24 @@
       "writtenOn": "2017-07-21T20:32:49Z",
       "side": 1,
       "message": "What is this for?",
+      "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1b4f7fb_f3f8c28b",
+        "filename": "finder/cmd/finder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-22T02:29:39Z",
+      "side": 1,
+      "message": "Oops. That WaitUntilIdle shouldn\u0027t be needed. I\u0027ll remove it.",
+      "parentUuid": "78c23e1d_e82809b7",
       "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -179,6 +311,24 @@
     },
     {
       "key": {
+        "uuid": "c6b0035a_74e1c89d",
+        "filename": "finder/cmd/finder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-22T02:29:39Z",
+      "side": 1,
+      "message": "Partially in case the caller wants to re-use the Finder, and partially in the caller doesn\u0027t want to wait for it to save its database before the caller can process its response to FindNamed.\n\nWhat would you do instead? Should there also be an exported convenience method that runs the entire lifecycle (setup, search, and teardown) all at once?",
+      "parentUuid": "f05c5e00_fcacedc9",
+      "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4127b079_4df1c537",
         "filename": "finder/finder_api.go",
         "patchSetId": 2
@@ -190,6 +340,24 @@
       "writtenOn": "2017-07-21T20:32:49Z",
       "side": 1,
       "message": "Wrap comments at 80 or 100 characters",
+      "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e725165d_071f7378",
+        "filename": "finder/finder_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-22T02:29:39Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "4127b079_4df1c537",
       "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -213,6 +381,24 @@
     },
     {
       "key": {
+        "uuid": "c83dc307_c463452c",
+        "filename": "finder/finder_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-22T02:29:39Z",
+      "side": 1,
+      "message": "I\u0027ll add a comment.\n\nExcludeDirs (such as \".git\") themselves get excluded but don\u0027t terminate the search of sibling directories. PruneFiles (such as \".android-out-dir\") terminate the search of sibling directories too.",
+      "parentUuid": "472abd44_fd295eb3",
+      "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ff1f8fc_4aba5d52",
         "filename": "finder/finder_api.go",
         "patchSetId": 2
@@ -224,6 +410,30 @@
       "writtenOn": "2017-07-21T20:32:49Z",
       "side": 1,
       "message": "does this need to be exported?",
+      "range": {
+        "startLine": 45,
+        "startChar": 5,
+        "endLine": 45,
+        "endChar": 16
+      },
+      "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1385a09e_5d51472a",
+        "filename": "finder/finder_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-22T02:29:39Z",
+      "side": 1,
+      "message": "Hmm it seems not.",
+      "parentUuid": "4ff1f8fc_4aba5d52",
       "range": {
         "startLine": 45,
         "startChar": 5,
@@ -259,6 +469,30 @@
     },
     {
       "key": {
+        "uuid": "63ce8f57_5f4282f5",
+        "filename": "finder/finder_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-22T02:29:39Z",
+      "side": 1,
+      "message": "Hmm it seems not.",
+      "parentUuid": "654d988b_fbfdaec3",
+      "range": {
+        "startLine": 62,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 19
+      },
+      "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eeea3154_cd967c88",
         "filename": "finder/finder_api.go",
         "patchSetId": 2
@@ -270,6 +504,24 @@
       "writtenOn": "2017-07-21T20:32:49Z",
       "side": 1,
       "message": "Wrap before 100 columns",
+      "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a6a43411_afddb7a7",
+        "filename": "finder/finder_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-22T02:29:39Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "eeea3154_cd967c88",
       "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -293,6 +545,24 @@
     },
     {
       "key": {
+        "uuid": "835f4d85_33d72f4f",
+        "filename": "finder/finder_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-22T02:29:39Z",
+      "side": 1,
+      "message": "The real reason is that I didn\u0027t want to think about the meaning of relative file paths.\n\nNow that I think about it, these are the reasons I\u0027ve come up with:\n\nUsing absolute paths helps if we want to provide a shell command. If a user issues the same relative-path command from two different directories using the same db, then the fact that the db stores absolute file paths allows it to disambiguate them.\n\nAdditionally, if the caller is a Go program that changes the working directory while FindNamed is running, then we wouldn\u0027t want the meaning of the filepaths to suddenly change.\n\nI also imagine that it would be easier for humans to debug a cache file where all of the entries are absolute file paths rather than relative.\n\nIn practice I suspect that these reasons aren\u0027t very important, but my performance testing (to my surprise) indicates that the cost of using long file paths everywhere is smaller than my measurement error, so I figure we might as well leave these benefits in place.",
+      "parentUuid": "07ae267c_31d8bb94",
+      "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5682166_9a79891b",
         "filename": "finder/finder_api.go",
         "patchSetId": 2
@@ -304,6 +574,24 @@
       "writtenOn": "2017-07-21T20:32:49Z",
       "side": 1,
       "message": "The ping-ponging between finder_api.go and finder_impl.go makes this hard to review.  Instead of breaking it up by exported and exported, can you move it to a single file with exported at the top and then the implementation below?  If it is too large, try to factor out a self-contained piece (like the cache?) into a separate file.",
+      "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1566402f_f756b32c",
+        "filename": "finder/finder_api.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-22T02:29:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5682166_9a79891b",
       "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -327,6 +615,24 @@
     },
     {
       "key": {
+        "uuid": "9bc7c412_f76f6185",
+        "filename": "finder/finder_impl.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-22T02:29:39Z",
+      "side": 1,
+      "message": "Good idea. I\u0027ve added some comments; let me know how closely they match what you\u0027re looking for.",
+      "parentUuid": "84519f29_5566c16b",
+      "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4768919_fed6e383",
         "filename": "finder/finder_impl.go",
         "patchSetId": 2
@@ -338,6 +644,24 @@
       "writtenOn": "2017-07-21T20:32:49Z",
       "side": 1,
       "message": "Why would you not want to be thread safe?  Does the locking incur significant overhead for the cases where thread safety is unnecessary?\n\nWhy is locking necessary at all?  It is often not needed in go, where it is more idiomatic to try to only access an object from a single goroutine.",
+      "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f63a2f88_f1f1bf1a",
+        "filename": "finder/finder_impl.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-22T02:29:39Z",
+      "side": 1,
+      "message": "Yeah, it would have to lock at least 180,000 times, and the current implementation runs in about 0.25 sec.\n\nYeah, there are two main cases where this gets used: one is when there\u0027s a thread-local copy being constructed in Finder.loadBytes (which is when we set threadsafe\u003dfalse), the other is where there\u0027s a static copy being modified in Finder.pollForStatResponses (which is when we set threadsafe\u003dtrue) . I could split it into two classes, one threadsafe and the other not, but it seemed to me like a lot of code duplication.\n\nWhat would you do differently than what Finder.pollForStatResponses does currently? With a single workers thread in pollForStatResponses, that works fine without any locks, but it seemed odd to limit the number of workers to 1 (and it runs slightly faster (2.2 sec on the first `find` (which is where this makes a difference)) to have 4 worker threads with locks than 1 worker thread without locks (4.7 sec on the first `find`))",
+      "parentUuid": "e4768919_fed6e383",
       "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -361,6 +685,24 @@
     },
     {
       "key": {
+        "uuid": "3a626faf_75130fe2",
+        "filename": "finder/finder_impl.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-22T02:29:39Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "0ff4e52f_9c259ea4",
+      "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e0e44c1_eea0e5e2",
         "filename": "finder/finder_impl.go",
         "patchSetId": 2
@@ -378,6 +720,24 @@
     },
     {
       "key": {
+        "uuid": "67a96db9_8445a886",
+        "filename": "finder/finder_impl.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-22T02:29:39Z",
+      "side": 1,
+      "message": "Yeah I was surprised too that filepath.SplitList didn\u0027t do what I wanted either. filepath.SplitList splits on \":\" (and doesn\u0027t take a parameter) whereas I wanted to split on \"/\".\n\nAlthough I suppose that this function could be simplified to look much more like strings.split(\"/\")",
+      "parentUuid": "7e0e44c1_eea0e5e2",
+      "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "50f730f7_6bbb650d",
         "filename": "finder/finder_impl.go",
         "patchSetId": 2
@@ -389,6 +749,24 @@
       "writtenOn": "2017-07-21T20:32:49Z",
       "side": 1,
       "message": "I\u0027d be somewhat surprised if using encoding/gob didn\u0027t provide enough time savings to be preferred.  Tens of MB of json seems like it should be slow to parse.",
+      "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96141c9c_ce39bce7",
+        "filename": "finder/finder_impl.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-22T02:29:39Z",
+      "side": 1,
+      "message": "Yeah it\u0027s 17MB in total, but split among 100 threads it\u0027s 170KB each, and each thread takes roughly 20ms to parse its block (the parsing is parallelized with the reading)\n\nThe gob decoding did run faster and did have a smaller file size, but most of the file was text anyway so I didn\u0027t notice a significant decrease in file size or in time to load the file. I didn\u0027t take exact measurements on (or implement fully) the gob performance since the json performance seemed pretty good to me.\n\n\nHow much time savings do you think is worth the switch from json to gob?",
+      "parentUuid": "50f730f7_6bbb650d",
       "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -418,6 +796,30 @@
     },
     {
       "key": {
+        "uuid": "22c4f37c_c6f99824",
+        "filename": "finder/finder_impl.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-22T02:29:39Z",
+      "side": 1,
+      "message": "oops",
+      "parentUuid": "bb4867c1_176b2676",
+      "range": {
+        "startLine": 528,
+        "startChar": 3,
+        "endLine": 528,
+        "endChar": 23
+      },
+      "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc4f6b8f_61a975d5",
         "filename": "finder/finder_impl.go",
         "patchSetId": 2
@@ -435,6 +837,24 @@
     },
     {
       "key": {
+        "uuid": "b3718f81_c9a795a3",
+        "filename": "finder/finder_impl.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-22T02:29:39Z",
+      "side": 1,
+      "message": "How much are we interested in the Finder\u0027s performance behavior when called by several threads?\n\nI guess it\u0027s a question of whether we want to tie the number of worker threads to the number of callers.",
+      "parentUuid": "cc4f6b8f_61a975d5",
+      "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d9a4596_b9913378",
         "filename": "finder/finder_impl.go",
         "patchSetId": 2
@@ -446,6 +866,24 @@
       "writtenOn": "2017-07-21T20:32:49Z",
       "side": 1,
       "message": "Nothing ever closes this channel, which mean this goroutine leaks for every call to New",
+      "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "69ee2957_9ac4cd5e",
+        "filename": "finder/finder_impl.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-22T02:29:39Z",
+      "side": 1,
+      "message": "Oops. I\u0027ll re-add the close() calls to Shutdown.",
+      "parentUuid": "7d9a4596_b9913378",
       "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -475,6 +913,30 @@
     },
     {
       "key": {
+        "uuid": "c5aac168_6e2db360",
+        "filename": "finder/finder_impl.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-22T02:29:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "750af37a_a76da5c2",
+      "range": {
+        "startLine": 701,
+        "startChar": 1,
+        "endLine": 703,
+        "endChar": 2
+      },
+      "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c7af5fc4_82f672e2",
         "filename": "third_party/zip/struct.go",
         "patchSetId": 2
@@ -486,6 +948,24 @@
       "writtenOn": "2017-07-21T20:32:49Z",
       "side": 1,
       "message": "Incorrect refactor?",
+      "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b566156f_726f1ee9",
+        "filename": "third_party/zip/struct.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-22T02:29:39Z",
+      "side": 1,
+      "message": "oops",
+      "parentUuid": "c7af5fc4_82f672e2",
       "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
