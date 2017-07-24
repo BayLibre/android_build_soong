@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "74e53d14_db23a798",
+        "filename": "cc/linker.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-24T01:05:00Z",
+      "side": 1,
+      "message": "\u003e If libdl is in shared_libs but not in system_shared_libs, throw an error.\n\nCorrect\n\n\u003e Remove libdl from shared_libs\n\u003e If it is in system_shared_libs but before libc, print an error.\n\nCorrect\n\n\u003e If libc is in system_shared_libs but not libdl, print an error.\n\nNot correct. libc itself has libdl as a shared lib. We don\u0027t need to load libdl explicitly to use libc.\nsystem_shared_libs: [\"libc\"], is not a problem.\n\nSo do you prefer to report an error and stop compiling at this point, than using this solution?\nThe information in Android.bp has no ambiguity, so there is no reason to report an error at this point, I think.",
+      "parentUuid": "c9bc5f32_3017686f",
+      "range": {
+        "startLine": 158,
+        "startChar": 6,
+        "endLine": 158,
+        "endChar": 52
+      },
+      "revId": "6ba22013171361708b382f5ac5e53f2b98cd0e6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ef34695_939e10fd",
         "filename": "cc/linker.go",
         "patchSetId": 3
