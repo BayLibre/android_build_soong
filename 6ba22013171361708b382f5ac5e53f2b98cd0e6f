@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "68d3279b_665b6497",
+        "filename": "cc/linker.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-24T01:10:04Z",
+      "side": 1,
+      "message": "I\u0027d prefer to simplify this logic, and if that requires throwing errors for Android.bp settings that are unnecessary to support I\u0027m fine with that.",
+      "parentUuid": "74e53d14_db23a798",
+      "range": {
+        "startLine": 158,
+        "startChar": 6,
+        "endLine": 158,
+        "endChar": 52
+      },
+      "revId": "6ba22013171361708b382f5ac5e53f2b98cd0e6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ef34695_939e10fd",
         "filename": "cc/linker.go",
         "patchSetId": 3
