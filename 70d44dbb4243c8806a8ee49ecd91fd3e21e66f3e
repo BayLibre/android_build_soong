@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "478ee235_2f55d5eb",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-25T22:00:23Z",
+      "side": 1,
+      "message": "Hey thanks :)",
+      "parentUuid": "16992593_b5052eb7",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 9
+      },
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8072f0c0_8b51ea18",
         "filename": "python/binary.go",
         "patchSetId": 1
@@ -163,6 +187,24 @@
       "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c66c20ff_1bd6a191",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-25T22:00:23Z",
+      "side": 1,
+      "message": "Oh ok. Do you (or anyone else) know whether it\u0027s guaranteed that VisitDirectDeps is expected to, for the current version of Blueprint and for future versions, always iterate in the same order?\n\nI\u0027m wondering whether we might accidentally change the order someday (whether by a change to Blueprint itself, or by a change in the module\u0027s configuration, or by a change in the way that defaults are merged into a module), which theoretically could cause a change in behavior if there are two dependencies that specify different values.\n\nWhat I\u0027d imagine we would do if we\u0027re concerned about this case would be to have a function called something like \"FindUniqueDep\"\n\nAlternatively if we\u0027re not concerned about this then that seems ok to me too as long as we\u0027ve thought about it",
+      "parentUuid": "164efd4c_adc62117",
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
@@ -706,6 +748,30 @@
       "side": 1,
       "message": "Dan and Colin can provide opinions. But by doing this, it is consistent with naming ways in CC:\n https://cs.corp.google.com/android/build/soong/cc/cc.go?rcl\u003df79c18b29f1080ec1792842683f77ff62be46f97\u0026l\u003d276\nand Java:\nhttps://cs.corp.google.com/android/build/soong/java/java.go?rcl\u003df79c18b29f1080ec1792842683f77ff62be46f97\u0026l\u003d113",
       "parentUuid": "1da4af94_b2fe3ee3",
+      "range": {
+        "startLine": 539,
+        "startChar": 23,
+        "endLine": 539,
+        "endChar": 29
+      },
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39d47312_db465696",
+        "filename": "python/python.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-25T22:00:23Z",
+      "side": 1,
+      "message": "Oh ok. Consistency seems like enough of a reason to me. Thanks.",
+      "parentUuid": "16e5416b_7d5563a4",
       "range": {
         "startLine": 539,
         "startChar": 23,
