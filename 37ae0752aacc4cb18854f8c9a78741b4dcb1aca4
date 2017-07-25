@@ -16,6 +16,24 @@
       "revId": "37ae0752aacc4cb18854f8c9a78741b4dcb1aca4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c45e6fe_d653eee7",
+        "filename": "python/defaults.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-07-25T21:46:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49478e6e_0a981f75",
+      "revId": "37ae0752aacc4cb18854f8c9a78741b4dcb1aca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
