@@ -208,6 +208,24 @@
     },
     {
       "key": {
+        "uuid": "41258fb0_b3c501bb",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-07-25T23:31:53Z",
+      "side": 1,
+      "message": "As offline talking, I added a error check for the duplicates.",
+      "parentUuid": "c66c20ff_1bd6a191",
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2f525ea6_327f7e82",
         "filename": "python/builder.go",
         "patchSetId": 1
