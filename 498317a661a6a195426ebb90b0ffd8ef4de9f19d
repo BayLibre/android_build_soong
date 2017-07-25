@@ -22,6 +22,30 @@
       "revId": "498317a661a6a195426ebb90b0ffd8ef4de9f19d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7055deed_ea6dbbe7",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1068404
+      },
+      "writtenOn": "2017-07-25T19:48:52Z",
+      "side": 1,
+      "message": "Thanks, will do. There\u0027s no support for both CFI and ASAN concurrently so this should work correctly.",
+      "parentUuid": "6be61fae_b9616b0e",
+      "range": {
+        "startLine": 527,
+        "startChar": 8,
+        "endLine": 527,
+        "endChar": 76
+      },
+      "revId": "498317a661a6a195426ebb90b0ffd8ef4de9f19d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
