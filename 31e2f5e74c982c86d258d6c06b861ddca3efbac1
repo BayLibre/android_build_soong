@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "499f95e2_a94a01eb",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-25T19:36:22Z",
+      "side": 1,
+      "message": "Add a dependency on cfi_exports.map",
+      "revId": "31e2f5e74c982c86d258d6c06b861ddca3efbac1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
