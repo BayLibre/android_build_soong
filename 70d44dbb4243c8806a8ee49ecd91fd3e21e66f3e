@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "16992593_b5052eb7",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-07-25T21:37:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c31a01b8_f026c66a",
+      "range": {
+        "startLine": 36,
+        "startChar": 1,
+        "endLine": 36,
+        "endChar": 9
+      },
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8072f0c0_8b51ea18",
         "filename": "python/binary.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-07-13T20:35:36Z",
       "side": 1,
       "message": "Is this \"Interm\" like \"Intermediate\"?",
+      "range": {
+        "startLine": 65,
+        "startChar": 5,
+        "endLine": 65,
+        "endChar": 11
+      },
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ebd074a_004a876d",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-07-25T21:37:37Z",
+      "side": 1,
+      "message": "Yes. since intermediate is long so I just used a short name let me if it looks weird.",
+      "parentUuid": "8072f0c0_8b51ea18",
       "range": {
         "startLine": 65,
         "startChar": 5,
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "856cf6a6_fb3e6a57",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-07-25T21:37:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3064403f_6f57d407",
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c930b4e_d7d58b07",
         "filename": "python/binary.go",
         "patchSetId": 1
@@ -76,6 +142,24 @@
       "writtenOn": "2017-07-13T20:35:36Z",
       "side": 1,
       "message": "I think we\u0027d like to throw an error if we reach this line twice",
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "164efd4c_adc62117",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-07-25T21:37:37Z",
+      "side": 1,
+      "message": "I added a a check that if launcher_path is not nil we directly would return.",
+      "parentUuid": "8c930b4e_d7d58b07",
       "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -99,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "4fb27a6e_6172aa27",
+        "filename": "python/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-07-25T21:37:37Z",
+      "side": 1,
+      "message": "Changed to embedded_par since this process is used both in Host and Device.",
+      "parentUuid": "2f525ea6_327f7e82",
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f99ca0e_3e0e2c22",
         "filename": "python/builder.go",
         "patchSetId": 1
@@ -110,6 +212,30 @@
       "writtenOn": "2017-07-13T20:35:36Z",
       "side": 1,
       "message": "Was this intentional? If so, probably want to update line 109",
+      "range": {
+        "startLine": 112,
+        "startChar": 4,
+        "endLine": 112,
+        "endChar": 5
+      },
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "937abaae_275a2031",
+        "filename": "python/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-07-25T21:37:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f99ca0e_3e0e2c22",
       "range": {
         "startLine": 112,
         "startChar": 4,
@@ -145,6 +271,30 @@
     },
     {
       "key": {
+        "uuid": "c5c2c37c_0929df40",
+        "filename": "python/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-07-25T21:37:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5351ee5_d627ab89",
+      "range": {
+        "startLine": 149,
+        "startChar": 5,
+        "endLine": 150,
+        "endChar": 41
+      },
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c82382c_49c9f765",
         "filename": "python/builder.go",
         "patchSetId": 1
@@ -156,6 +306,30 @@
       "writtenOn": "2017-07-13T20:35:36Z",
       "side": 1,
       "message": "Might want to string escape this in case we feel like supporting weird characters someday (something like \u0027fmt.Sprintf(\"%q\", strings.TrimSuffix(entryPoint, entryPointFile))\u0027 )",
+      "range": {
+        "startLine": 170,
+        "startChar": 43,
+        "endLine": 170,
+        "endChar": 89
+      },
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a8c5900_f1975b40",
+        "filename": "python/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-07-25T21:37:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c82382c_49c9f765",
       "range": {
         "startLine": 170,
         "startChar": 43,
@@ -191,6 +365,30 @@
     },
     {
       "key": {
+        "uuid": "906ca413_4cc146aa",
+        "filename": "python/python.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-07-25T21:37:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "905d8f1a_3168fe27",
+      "range": {
+        "startLine": 47,
+        "startChar": 52,
+        "endLine": 47,
+        "endChar": 75
+      },
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bff5067c_30b2aff9",
         "filename": "python/python.go",
         "patchSetId": 1
@@ -202,6 +400,30 @@
       "writtenOn": "2017-07-13T20:35:36Z",
       "side": 1,
       "message": "Could you describe (not necessarily as a source comment but at least here) more about this?\n\nI\u0027d expect that we\u0027d avoid exclusions because they increase the amount that readers need to know about the system in order to understand it (they have to check their particular variant in order to know whether their source file is really included)\n\nI\u0027d expect that instead we\u0027d make a bunch of variables corresponding to lists of sources and that we\u0027d build the final lists in each arch variant.\n\nPerhaps you could point out a concrete usage example.",
+      "range": {
+        "startLine": 49,
+        "startChar": 8,
+        "endLine": 49,
+        "endChar": 9
+      },
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22d9d1c7_26e11d42",
+        "filename": "python/python.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-07-25T21:37:37Z",
+      "side": 1,
+      "message": "Since sometime we need use globs within our srcs and only want exclude a few src files,eg.\nhttps://android-review.googlesource.com/c/418563/9/Lib/Android.bp",
+      "parentUuid": "bff5067c_30b2aff9",
       "range": {
         "startLine": 49,
         "startChar": 8,
@@ -237,6 +459,30 @@
     },
     {
       "key": {
+        "uuid": "de05327d_e51325c7",
+        "filename": "python/python.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-07-25T21:37:37Z",
+      "side": 1,
+      "message": "I think my original thought was it just reconcile with previous the format of exclude_srcs, and still was treated as two independent words which might be easier to be read?",
+      "parentUuid": "977a19b8_5d7d122d",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 6
+      },
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6e5a151_c44d3fd4",
         "filename": "python/python.go",
         "patchSetId": 1
@@ -248,6 +494,30 @@
       "writtenOn": "2017-07-13T20:35:36Z",
       "side": 1,
       "message": "It seems to me that it\u0027d be more consistent to always use Pkg_path, and to just prefix it with \"internal/\" if Is_internal is true",
+      "range": {
+        "startLine": 73,
+        "startChar": 62,
+        "endLine": 73,
+        "endChar": 92
+      },
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "34ac525e_f1c1f2a0",
+        "filename": "python/python.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-07-25T21:37:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6e5a151_c44d3fd4",
       "range": {
         "startLine": 73,
         "startChar": 62,
@@ -283,6 +553,30 @@
     },
     {
       "key": {
+        "uuid": "e10cf575_8c7ccd0f",
+        "filename": "python/python.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-07-25T21:37:37Z",
+      "side": 1,
+      "message": "The purpose of flat_srcs is that eg. under Python standard lib there are some platform based sub-folders containing .py files, eg. Lib/plat-linux2/*.py, Lib/plat-mac/*.py, and etc. When we build Python par file for linux, we have to extract files under Lib/plat-linux2 to Lib/ level in order for Python run-time access. So during packaging phase, we have to mark which files we need to lift up.",
+      "parentUuid": "18f659eb_7183f94c",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 10
+      },
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "971f93ad_b36f7978",
         "filename": "python/python.go",
         "patchSetId": 1
@@ -294,6 +588,30 @@
       "writtenOn": "2017-07-13T20:35:36Z",
       "side": 1,
       "message": "I\u0027d clarify this message to \"must be a relative path contained in the .par\"",
+      "range": {
+        "startLine": 386,
+        "startChar": 42,
+        "endLine": 386,
+        "endChar": 63
+      },
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "666b8689_12273cf8",
+        "filename": "python/python.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-07-25T21:37:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "971f93ad_b36f7978",
       "range": {
         "startLine": 386,
         "startChar": 42,
@@ -329,6 +647,30 @@
     },
     {
       "key": {
+        "uuid": "4379c2c2_daa16731",
+        "filename": "python/python.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-07-25T21:37:37Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "541ca7f6_7c5de7d2",
+      "range": {
+        "startLine": 392,
+        "startChar": 54,
+        "endLine": 392,
+        "endChar": 72
+      },
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1da4af94_b2fe3ee3",
         "filename": "python/python.go",
         "patchSetId": 1
@@ -352,6 +694,30 @@
     },
     {
       "key": {
+        "uuid": "16e5416b_7d5563a4",
+        "filename": "python/python.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-07-25T21:37:37Z",
+      "side": 1,
+      "message": "Dan and Colin can provide opinions. But by doing this, it is consistent with naming ways in CC:\n https://cs.corp.google.com/android/build/soong/cc/cc.go?rcl\u003df79c18b29f1080ec1792842683f77ff62be46f97\u0026l\u003d276\nand Java:\nhttps://cs.corp.google.com/android/build/soong/java/java.go?rcl\u003df79c18b29f1080ec1792842683f77ff62be46f97\u0026l\u003d113",
+      "parentUuid": "1da4af94_b2fe3ee3",
+      "range": {
+        "startLine": 539,
+        "startChar": 23,
+        "endLine": 539,
+        "endChar": 29
+      },
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "00cb6c6f_5dc38c3a",
         "filename": "python/python.go",
         "patchSetId": 1
@@ -363,6 +729,30 @@
       "writtenOn": "2017-07-13T20:35:36Z",
       "side": 1,
       "message": "This (the logic of whether something is a Python library) seems like something that would be useful elsewhere and be worth extracting into its own named function",
+      "range": {
+        "startLine": 541,
+        "startChar": 6,
+        "endLine": 541,
+        "endChar": 49
+      },
+      "revId": "70d44dbb4243c8806a8ee49ecd91fd3e21e66f3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0dbaf3ee_f5f71d33",
+        "filename": "python/python.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-07-25T21:37:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00cb6c6f_5dc38c3a",
       "range": {
         "startLine": 541,
         "startChar": 6,
