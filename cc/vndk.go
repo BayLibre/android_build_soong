@@ -68,9 +68,9 @@ func (vndk *vndkdep) typeName() string {
 		return "native:vendor"
 	}
 	if !vndk.isVndkSp() {
-		return "native:vendor:vndk"
+		return "native:vndk"
 	}
-	return "native:vendor:vndksp"
+	return "native:vndksp"
 }
 
 func (vndk *vndkdep) vndkCheckLinkType(ctx android.ModuleContext, to *Module) {
