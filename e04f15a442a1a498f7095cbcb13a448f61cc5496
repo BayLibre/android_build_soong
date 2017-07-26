@@ -329,6 +329,24 @@
     },
     {
       "key": {
+        "uuid": "f2be466a_4767ad9d",
+        "filename": "finder/cmd/finder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-26T00:09:10Z",
+      "side": 1,
+      "message": "If delaying the call to Shutdown will be the normal pattern then a convenience method won\u0027t be much help.  Should the be using defer service.Shutdown()?  What is the impact of exiting without calling Shutdown()?",
+      "parentUuid": "c6b0035a_74e1c89d",
+      "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4127b079_4df1c537",
         "filename": "finder/finder_api.go",
         "patchSetId": 2
@@ -773,6 +791,24 @@
     },
     {
       "key": {
+        "uuid": "0bfda09e_7d79fdf9",
+        "filename": "finder/finder_impl.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-26T00:09:10Z",
+      "side": 1,
+      "message": "If gob is not obviously better then stick with json.",
+      "parentUuid": "96141c9c_ce39bce7",
+      "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb4867c1_176b2676",
         "filename": "finder/finder_impl.go",
         "patchSetId": 2
@@ -849,6 +885,24 @@
       "side": 1,
       "message": "How much are we interested in the Finder\u0027s performance behavior when called by several threads?\n\nI guess it\u0027s a question of whether we want to tie the number of worker threads to the number of callers.",
       "parentUuid": "cc4f6b8f_61a975d5",
+      "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b560202_8730e85e",
+        "filename": "finder/finder_impl.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-26T00:09:10Z",
+      "side": 1,
+      "message": "I don\u0027t think we expect Finder to be called from multiple threads.  And I wouldn\u0027t expect this thread to be the bottleneck for throughput.",
+      "parentUuid": "b3718f81_c9a795a3",
       "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
