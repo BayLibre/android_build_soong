@@ -16,6 +16,24 @@
       "revId": "959300d113629f9858eb9d07c0ca190dac132a1d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb6f2439_4acdafbe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-26T06:47:36Z",
+      "side": 1,
+      "message": "I want to make the name consistency with those defined in https://cs.corp.google.com/android/build/make/core/binary.mk?rcl\u003d5a00891df94d3357bdd34520a55d2f7dc6ce35d8\u0026l\u003d1403\nIn make, the types are defined as native:platform, native:ndk, and native:vendor.",
+      "parentUuid": "df36c012_9ada7b2b",
+      "revId": "959300d113629f9858eb9d07c0ca190dac132a1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
