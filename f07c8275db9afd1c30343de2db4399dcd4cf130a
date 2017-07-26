@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3021f8c6_6d630ff4",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-26T21:35:42Z",
+      "side": 1,
+      "message": "This seems overly complicated, what about:\n\nswitch compiler.properties.Cpp_std {\n    case \"\":\n        cppStd :\u003d config.CppStdVersion\n    case \"experimental\":\n        cppStd \u003d config.ExperimentalCppStdVersion\n    case \"c++17\", \"gnu++17\":\n        cppStd \u003d strings.Replace(compiler.properties.Cpp_std, \"17\", \"1z\")\n    default:\n        cppStd \u003d compiler.properties.Cpp_std\n}",
+      "revId": "f07c8275db9afd1c30343de2db4399dcd4cf130a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
