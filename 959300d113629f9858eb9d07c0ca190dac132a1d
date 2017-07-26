@@ -34,6 +34,24 @@
       "revId": "959300d113629f9858eb9d07c0ca190dac132a1d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fd331e1_e92ad6bb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-07-26T06:56:31Z",
+      "side": 1,
+      "message": "That\u0027s a completely unrelated implementation.\n\nWe shouldn\u0027t need string names at all, we can provide much better checks with better error messages with real Go checks.",
+      "parentUuid": "cb6f2439_4acdafbe",
+      "revId": "959300d113629f9858eb9d07c0ca190dac132a1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
