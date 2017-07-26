@@ -22,6 +22,30 @@
       "revId": "7049e17e9dfb2b58f5ce1503bcb40ef1d9785901",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f02a7694_f0c40a27",
+        "filename": "android/defs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-07-26T22:32:23Z",
+      "side": 1,
+      "message": "That doesn\u0027t work if the file isn\u0027t there, it\u0027ll return false and not actually copy anything.\n(; instead of \u0026\u0026 will make it print \"cannot remove ...\" whenever the file actually isn\u0027t there, e.g. on fresh builds)",
+      "parentUuid": "bd3efc9b_ef1b2028",
+      "range": {
+        "startLine": 50,
+        "startChar": 17,
+        "endLine": 50,
+        "endChar": 39
+      },
+      "revId": "7049e17e9dfb2b58f5ce1503bcb40ef1d9785901",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
