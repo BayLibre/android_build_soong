@@ -1207,9 +1207,14 @@ func vendorMutator(mctx android.BottomUpMutatorContext) {
 	}
 	if vndk := m.vndkdep; vndk != nil {
 		if vndk.isVndk() && !Bool(m.Properties.Vendor_available) {
-			mctx.PropertyErrorf("vndk",
-				"has to define `vendor_available: true` to enable vndk")
-			return
+			if mctx.Vendor() {
+				vndk.Properties.Vndk.Enabled = proptools.BoolPtr(false)
+				vndk.Properties.Vndk.Support_system_process = proptools.BoolPtr(false)
+			} else {
+				mctx.PropertyErrorf("vndk",
+					"has to define `vendor_available: true` to enable vndk")
+				return
+			}
 		}
 		if !vndk.isVndk() && vndk.isVndkSp() {
 			mctx.PropertyErrorf("vndk",
