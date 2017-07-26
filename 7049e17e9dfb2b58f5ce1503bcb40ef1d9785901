@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd3efc9b_ef1b2028",
+        "filename": "android/defs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-26T21:20:09Z",
+      "side": 1,
+      "message": "rm -f $out \u0026\u0026",
+      "range": {
+        "startLine": 50,
+        "startChar": 17,
+        "endLine": 50,
+        "endChar": 39
+      },
+      "revId": "7049e17e9dfb2b58f5ce1503bcb40ef1d9785901",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
