@@ -52,6 +52,24 @@
       "revId": "959300d113629f9858eb9d07c0ca190dac132a1d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93be2c7f_d9c66869",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-07-26T07:23:31Z",
+      "side": 1,
+      "message": "Ok, let me split the naming CL with cc_defaults fix.\nBut do you mean cc/check.go with \"real Go checks\", or any methods provided by Go?",
+      "parentUuid": "1fd331e1_e92ad6bb",
+      "revId": "959300d113629f9858eb9d07c0ca190dac132a1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
