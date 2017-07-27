@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4f1e7240_9d37c292",
+        "filename": "finder/cmd/finder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-27T00:51:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e58a32ea_4d9299e3",
+      "revId": "a4f894272111427dce4bfbae0c1a9618781d2632",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bcd147ab_068ff681",
         "filename": "finder/cmd/finder.go",
         "patchSetId": 4
@@ -30,6 +48,30 @@
       "writtenOn": "2017-07-26T00:09:10Z",
       "side": 1,
       "message": "startTime",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 10
+      },
+      "revId": "a4f894272111427dce4bfbae0c1a9618781d2632",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53c3d9d1_f93877fa",
+        "filename": "finder/cmd/finder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-27T00:51:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcd147ab_068ff681",
       "range": {
         "startLine": 53,
         "startChar": 1,
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "b083da35_67c34991",
+        "filename": "finder/cmd/finder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-27T00:51:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47589f14_b33ca4e3",
+      "revId": "a4f894272111427dce4bfbae0c1a9618781d2632",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2679146c_56ad44da",
         "filename": "finder/cmd/finder.go",
         "patchSetId": 4
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "f1845049_95888c63",
+        "filename": "finder/cmd/finder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-27T00:51:54Z",
+      "side": 1,
+      "message": "I\u0027ve simplified the message in the next patchset due to providing a FindNamed that didn\u0027t require a file path.\n\nIt seems to me that we still want some sort of message to call out which parameter is invalid, though.",
+      "parentUuid": "2679146c_56ad44da",
+      "revId": "a4f894272111427dce4bfbae0c1a9618781d2632",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "32ebbba3_f6aaa252",
         "filename": "finder/cmd/finder.go",
         "patchSetId": 4
@@ -87,6 +165,30 @@
       "writtenOn": "2017-07-26T00:09:10Z",
       "side": 1,
       "message": "Is this a file you are planning to add to out directories?",
+      "range": {
+        "startLine": 87,
+        "startChar": 26,
+        "endLine": 87,
+        "endChar": 42
+      },
+      "revId": "a4f894272111427dce4bfbae0c1a9618781d2632",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "164e0dd4_64dd2111",
+        "filename": "finder/cmd/finder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-27T00:51:54Z",
+      "side": 1,
+      "message": "Yeah (unless anyone prefers a different filename).",
+      "parentUuid": "32ebbba3_f6aaa252",
       "range": {
         "startLine": 87,
         "startChar": 26,
@@ -122,6 +224,30 @@
     },
     {
       "key": {
+        "uuid": "adeb42ff_d4d85fd7",
+        "filename": "finder/cmd/finder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-27T00:51:54Z",
+      "side": 1,
+      "message": "Hmm, yeah, I guess it\u0027s time to implement that finally.",
+      "parentUuid": "eb468fb2_5d5bd658",
+      "range": {
+        "startLine": 90,
+        "startChar": 56,
+        "endLine": 90,
+        "endChar": 72
+      },
+      "revId": "a4f894272111427dce4bfbae0c1a9618781d2632",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70eab0e6_b534fe6a",
         "filename": "finder/cmd/finder.go",
         "patchSetId": 4
@@ -133,6 +259,30 @@
       "writtenOn": "2017-07-26T00:09:10Z",
       "side": 1,
       "message": "findDuration :\u003d time.Since(startTime)",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 40
+      },
+      "revId": "a4f894272111427dce4bfbae0c1a9618781d2632",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f48d61b8_9f9ff650",
+        "filename": "finder/cmd/finder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-27T00:51:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70eab0e6_b534fe6a",
       "range": {
         "startLine": 92,
         "startChar": 0,
@@ -168,6 +318,30 @@
     },
     {
       "key": {
+        "uuid": "d22e5a5c_cb4496cc",
+        "filename": "finder/finder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-27T00:51:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5db2ca7_5050c7b2",
+      "range": {
+        "startLine": 54,
+        "startChar": 39,
+        "endLine": 54,
+        "endChar": 57
+      },
+      "revId": "a4f894272111427dce4bfbae0c1a9618781d2632",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45165149_f7a7951c",
         "filename": "finder/finder.go",
         "patchSetId": 4
@@ -179,6 +353,30 @@
       "writtenOn": "2017-07-26T00:09:10Z",
       "side": 1,
       "message": "This phrasing is confusing.  Any number of threads can access the Finder, but they will be serialized on the Mutex.  Maybe just say the public methods on Finder are thread-safe.",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 71
+      },
+      "revId": "a4f894272111427dce4bfbae0c1a9618781d2632",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a9c17e84_8cb4be63",
+        "filename": "finder/finder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-27T00:51:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45165149_f7a7951c",
       "range": {
         "startLine": 61,
         "startChar": 0,
@@ -214,6 +412,30 @@
     },
     {
       "key": {
+        "uuid": "257ebec5_19e20d1e",
+        "filename": "finder/finder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-27T00:51:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e2d5cf0_acf0fa89",
+      "range": {
+        "startLine": 64,
+        "startChar": 31,
+        "endLine": 64,
+        "endChar": 37
+      },
+      "revId": "a4f894272111427dce4bfbae0c1a9618781d2632",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca6088c4_6d0ba4b7",
         "filename": "finder/finder.go",
         "patchSetId": 4
@@ -225,6 +447,24 @@
       "writtenOn": "2017-07-26T00:09:10Z",
       "side": 1,
       "message": "This doesn\u0027t seem to be a filesystem, it seems to be username@hostname, which has nothing to do do with the filesystem.  It\u0027s confusing, because if we move to something like slothfs then each git project will technically be a separate filesystem.",
+      "revId": "a4f894272111427dce4bfbae0c1a9618781d2632",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4893ac28_d826d271",
+        "filename": "finder/finder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-27T00:51:54Z",
+      "side": 1,
+      "message": "I\u0027ll rename it to FilesystemView and add a comment.",
+      "parentUuid": "ca6088c4_6d0ba4b7",
       "revId": "a4f894272111427dce4bfbae0c1a9618781d2632",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -248,6 +488,24 @@
     },
     {
       "key": {
+        "uuid": "9315a513_791de502",
+        "filename": "finder/finder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-27T00:51:54Z",
+      "side": 1,
+      "message": "Sounds good to me.",
+      "parentUuid": "56a15f2a_e542b036",
+      "revId": "a4f894272111427dce4bfbae0c1a9618781d2632",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3eb25461_0c834364",
         "filename": "finder/finder.go",
         "patchSetId": 4
@@ -265,6 +523,24 @@
     },
     {
       "key": {
+        "uuid": "0048c58f_07fa55a9",
+        "filename": "finder/finder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-27T00:51:54Z",
+      "side": 1,
+      "message": "Sounds good to me. This seems obsolete to me now that it was moved into CacheParams.",
+      "parentUuid": "3eb25461_0c834364",
+      "revId": "a4f894272111427dce4bfbae0c1a9618781d2632",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1923145f_56308c01",
         "filename": "finder/finder.go",
         "patchSetId": 4
@@ -276,6 +552,30 @@
       "writtenOn": "2017-07-26T00:09:10Z",
       "side": 1,
       "message": "It doesn\u0027t make sense to me to have New assume it should search $PWD, but then have FindNamed have to take a path.  Should it just assume whatever root the Finder searched?",
+      "range": {
+        "startLine": 187,
+        "startChar": 27,
+        "endLine": 187,
+        "endChar": 42
+      },
+      "revId": "a4f894272111427dce4bfbae0c1a9618781d2632",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "364a4f95_47de16a7",
+        "filename": "finder/finder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-27T00:51:54Z",
+      "side": 1,
+      "message": "I was imagining that we might want to search only a subset of what was cached, and that this would be an easy way to do that.\n\nHow about I provide one that takes a rootPath and one that just searches everything?",
+      "parentUuid": "1923145f_56308c01",
       "range": {
         "startLine": 187,
         "startChar": 27,
@@ -311,6 +611,30 @@
     },
     {
       "key": {
+        "uuid": "2eab88f5_babf2f80",
+        "filename": "finder/finder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-27T00:51:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1dad7702_27d071d9",
+      "range": {
+        "startLine": 234,
+        "startChar": 26,
+        "endLine": 234,
+        "endChar": 51
+      },
+      "revId": "a4f894272111427dce4bfbae0c1a9618781d2632",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "511d6ac6_e3860603",
         "filename": "finder/finder.go",
         "patchSetId": 4
@@ -328,6 +652,24 @@
     },
     {
       "key": {
+        "uuid": "164e5ffa_67e339eb",
+        "filename": "finder/finder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-27T00:51:54Z",
+      "side": 1,
+      "message": "According to the diagram https://www.ietf.org/rfc/rfc2279.txt , the only bytes that start with \"0\" are found in single-byte unicode encodings. According to http://www.fileformat.info/info/charset/UTF-8/list.htm , the unicode value of \"\\n\" is \"0a\", whose first bit is 0.\n\nSo it seems to me that this will work correctly at the cost of being somewhat confusing.\n\nI tried a bufio.Scanner as a result of your comment here, and found that it limited token sizes to 64 * 1024 bits.\nFor now I\u0027ll just extract the readline logic into a method and put a comment on it.\n\nThe json encoding does escape newlines inside of paths.",
+      "parentUuid": "511d6ac6_e3860603",
+      "revId": "a4f894272111427dce4bfbae0c1a9618781d2632",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f43af3d_e5fa0b3d",
         "filename": "finder/finder.go",
         "patchSetId": 4
@@ -339,6 +681,30 @@
       "writtenOn": "2017-07-26T00:09:10Z",
       "side": 1,
       "message": "return an error, and let the caller handle the error by ignoring the database and starting from scratch?",
+      "range": {
+        "startLine": 643,
+        "startChar": 42,
+        "endLine": 643,
+        "endChar": 54
+      },
+      "revId": "a4f894272111427dce4bfbae0c1a9618781d2632",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd6b3489_60909e8c",
+        "filename": "finder/finder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-27T00:51:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f43af3d_e5fa0b3d",
       "range": {
         "startLine": 643,
         "startChar": 42,
@@ -374,6 +740,30 @@
     },
     {
       "key": {
+        "uuid": "c50f3592_4aa40642",
+        "filename": "finder/finder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-27T00:51:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92d0fdb5_8ff56440",
+      "range": {
+        "startLine": 660,
+        "startChar": 28,
+        "endLine": 660,
+        "endChar": 32
+      },
+      "revId": "a4f894272111427dce4bfbae0c1a9618781d2632",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "40993c36_3f818595",
         "filename": "finder/finder.go",
         "patchSetId": 4
@@ -391,6 +781,24 @@
     },
     {
       "key": {
+        "uuid": "acbbdcda_cea97017",
+        "filename": "finder/finder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-27T00:51:54Z",
+      "side": 1,
+      "message": "this should be obsoleted by the switch to channels",
+      "parentUuid": "40993c36_3f818595",
+      "revId": "a4f894272111427dce4bfbae0c1a9618781d2632",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22666ee2_4cf2c99e",
         "filename": "finder/finder.go",
         "patchSetId": 4
@@ -402,6 +810,30 @@
       "writtenOn": "2017-07-26T00:09:10Z",
       "side": 1,
       "message": "These bools seem unnecessary.  Maybe err \u003d\u003d nil || numCompletedThreads \u003c numStartedThreads?",
+      "range": {
+        "startLine": 670,
+        "startChar": 5,
+        "endLine": 670,
+        "endChar": 23
+      },
+      "revId": "a4f894272111427dce4bfbae0c1a9618781d2632",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "98167488_e9f49185",
+        "filename": "finder/finder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-27T00:51:54Z",
+      "side": 1,
+      "message": "this should be obsoleted by the switch to channels",
+      "parentUuid": "22666ee2_4cf2c99e",
       "range": {
         "startLine": 670,
         "startChar": 5,
@@ -454,6 +886,48 @@
     },
     {
       "key": {
+        "uuid": "d4d70b49_d77e9998",
+        "filename": "finder/finder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-27T00:51:54Z",
+      "side": 1,
+      "message": "potentially obsoleted depending on the conclusion regarding channels",
+      "parentUuid": "5f993462_2dd8cde3",
+      "range": {
+        "startLine": 675,
+        "startChar": 7,
+        "endLine": 675,
+        "endChar": 68
+      },
+      "revId": "a4f894272111427dce4bfbae0c1a9618781d2632",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9239322d_522167b8",
+        "filename": "finder/finder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-27T00:51:54Z",
+      "side": 1,
+      "message": "I\u0027ve now redone it to using a channel to implement the maximum number of concurrent goroutines. I\u0027ve done it slightly differently than context.go because the thing generating the blocks to process isn\u0027t the same thing that processes the blocks, and it seemed to me to be more confusing to have one select handling all of the different pieces.\n\nI think that the the implementation that I\u0027ll be uploading as my next patchset (which is essentially MapReduce) is markedly less readable than the previous patchset, and that the main redeeming advantage is that it has slightly more parallelism (although I don\u0027t detect faster performance) because it allows reading data from the file in parallel with aggregating the results of processing a block.\n\nAnother option would be to just keep this \"for\" loop but to extract the channel read (\"threadSucceeded :\u003d statusChannel\") into the main body of the \"for\" loop, if the concern is merely to make it clear that the \"for\" loop won\u0027t busy-wait.",
+      "parentUuid": "5d0d3737_93e96447",
+      "revId": "a4f894272111427dce4bfbae0c1a9618781d2632",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f724909d_eb925357",
         "filename": "finder/finder.go",
         "patchSetId": 4
@@ -465,6 +939,30 @@
       "writtenOn": "2017-07-26T00:09:10Z",
       "side": 1,
       "message": "time.Since(startTime)",
+      "range": {
+        "startLine": 691,
+        "startChar": 66,
+        "endLine": 691,
+        "endChar": 92
+      },
+      "revId": "a4f894272111427dce4bfbae0c1a9618781d2632",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aef1c69c_6022e57c",
+        "filename": "finder/finder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-27T00:51:54Z",
+      "side": 1,
+      "message": "probably doesn\u0027t apply to the next patchset when processStartTime gets used for calculating a duration later",
+      "parentUuid": "f724909d_eb925357",
       "range": {
         "startLine": 691,
         "startChar": 66,
@@ -500,6 +998,30 @@
     },
     {
       "key": {
+        "uuid": "2b61a627_a516535e",
+        "filename": "finder/finder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-27T00:51:54Z",
+      "side": 1,
+      "message": "I\u0027ve now made this change too",
+      "parentUuid": "e6cc4714_4761506c",
+      "range": {
+        "startLine": 698,
+        "startChar": 0,
+        "endLine": 706,
+        "endChar": 22
+      },
+      "revId": "a4f894272111427dce4bfbae0c1a9618781d2632",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4adc10aa_7e138406",
         "filename": "finder/finder.go",
         "patchSetId": 4
@@ -511,6 +1033,24 @@
       "writtenOn": "2017-07-26T00:09:10Z",
       "side": 1,
       "message": "You also need to check old.Device !\u003d new.Device",
+      "revId": "a4f894272111427dce4bfbae0c1a9618781d2632",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb0184b1_a75eddb9",
+        "filename": "finder/finder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-27T00:51:54Z",
+      "side": 1,
+      "message": "thanks",
+      "parentUuid": "4adc10aa_7e138406",
       "revId": "a4f894272111427dce4bfbae0c1a9618781d2632",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false

@@ -347,6 +347,24 @@
     },
     {
       "key": {
+        "uuid": "46a6a38f_a5e22b54",
+        "filename": "finder/cmd/finder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-27T00:51:54Z",
+      "side": 1,
+      "message": "For the moment, all that Shutdown() does is write the cache database to disk.\n\nYeah, a `defer service.Shutdown()` should be fine too.",
+      "parentUuid": "f2be466a_4767ad9d",
+      "revId": "e04f15a442a1a498f7095cbcb13a448f61cc5496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4127b079_4df1c537",
         "filename": "finder/finder_api.go",
         "patchSetId": 2
