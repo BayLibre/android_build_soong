@@ -1,0 +1,215 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ccda23bf_a8bac347",
+        "filename": "finder/cmd/finder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-31T21:41:45Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem worth a helper, but ifou keep it, empty lines between functions",
+      "revId": "95fb00e63d8fb419928115fa1b4490681e21b913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3731da42_16f9d634",
+        "filename": "finder/cmd/finder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-31T21:41:45Z",
+      "side": 1,
+      "message": "time.Since(startTime)",
+      "range": {
+        "startLine": 130,
+        "startChar": 43,
+        "endLine": 130,
+        "endChar": 68
+      },
+      "revId": "95fb00e63d8fb419928115fa1b4490681e21b913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1ec083d_0ad7a06b",
+        "filename": "finder/finder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-31T21:41:45Z",
+      "side": 1,
+      "message": "This still doesn\u0027t have anything to do with a filesystem.  MachineIdentifier?",
+      "revId": "95fb00e63d8fb419928115fa1b4490681e21b913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5615ff7_0b4eb9e6",
+        "filename": "finder/finder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-31T21:41:45Z",
+      "side": 1,
+      "message": "\"/\" is confusing here, since it is searching relative to WorkingDirectory.  Would \"\" or \".\" work instead?",
+      "range": {
+        "startLine": 203,
+        "startChar": 23,
+        "endLine": 203,
+        "endChar": 26
+      },
+      "revId": "95fb00e63d8fb419928115fa1b4490681e21b913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad4a811d_9b92287e",
+        "filename": "finder/finder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-31T21:41:45Z",
+      "side": 1,
+      "message": "const",
+      "revId": "95fb00e63d8fb419928115fa1b4490681e21b913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba141969_860f7a0e",
+        "filename": "finder/finder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-31T21:41:45Z",
+      "side": 1,
+      "message": "For small structs it is better to pass the struct through the channel instead of a pointer, it will avoid allocating the struct on the heap.  I expect a string to be a single pointer, error is an interface which is 2 pointers, and a slice is a pointer, an offset, and a capacity.",
+      "range": {
+        "startLine": 725,
+        "startChar": 27,
+        "endLine": 725,
+        "endChar": 37
+      },
+      "revId": "95fb00e63d8fb419928115fa1b4490681e21b913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba4c815d_d50db9fd",
+        "filename": "finder/finder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-31T21:41:45Z",
+      "side": 1,
+      "message": "It would be much cheaper to send index instead of name over the channel and avoid generating the string garbage.",
+      "revId": "95fb00e63d8fb419928115fa1b4490681e21b913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b4134d4_3a0d5805",
+        "filename": "finder/finder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-31T21:41:45Z",
+      "side": 1,
+      "message": "This would be simpler as a separate channel",
+      "revId": "95fb00e63d8fb419928115fa1b4490681e21b913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aec6fa81_2f88c48d",
+        "filename": "finder/finder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-31T21:41:45Z",
+      "side": 1,
+      "message": "This would be simpler as a separate channel",
+      "revId": "95fb00e63d8fb419928115fa1b4490681e21b913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff6124a0_4e08e38a",
+        "filename": "finder/finder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-31T21:41:45Z",
+      "side": 1,
+      "message": "Use an unbuffered channel",
+      "revId": "95fb00e63d8fb419928115fa1b4490681e21b913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de1038e6_a6501a3f",
+        "filename": "finder/finder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1193,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-31T21:41:45Z",
+      "side": 1,
+      "message": "approxNumThreads \u003d\u003d 1?",
+      "range": {
+        "startLine": 1193,
+        "startChar": 4,
+        "endLine": 1193,
+        "endChar": 24
+      },
+      "revId": "95fb00e63d8fb419928115fa1b4490681e21b913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
