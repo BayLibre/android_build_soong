@@ -22,6 +22,30 @@
       "revId": "e3bc549289d6b482c003c51bae0bc1ca552e4312",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9195ccd9_028b4771",
+        "filename": "finder/finder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-31T23:53:16Z",
+      "side": 1,
+      "message": "Nope. I\u0027ll rename the function from pathJoin to joinCleanPaths and update the comment.",
+      "parentUuid": "02520b07_589c110b",
+      "range": {
+        "startLine": 299,
+        "startChar": 8,
+        "endLine": 299,
+        "endChar": 12
+      },
+      "revId": "e3bc549289d6b482c003c51bae0bc1ca552e4312",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

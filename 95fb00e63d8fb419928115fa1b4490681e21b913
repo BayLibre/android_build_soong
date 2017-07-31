@@ -137,6 +137,24 @@
     },
     {
       "key": {
+        "uuid": "12709a8a_ea5e9240",
+        "filename": "finder/finder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-31T23:53:16Z",
+      "side": 1,
+      "message": "I think it\u0027s related. It\u0027s the answer to the question \"What is a unique identifier used to represent the responses provided by the \u003cf.filesystem\u003e struct?\" It\u0027s copied from \u003cfilesystem.ViewId()\u003e.\n\nYou mentioned in an earlier patchset that you were concerned about the possibility of adding gitc directories, each of which could be considered its own filesystem.\n\nThe terminology used by \"man mount\" to describe the thing to which the filesystems are attached is \"the big file tree\".\n\nHow about \"FileTreeViewId\"?\n\nThe \"UserAndHostname\" seems to me like a decent compromise if we can\u0027t find anything better.",
+      "parentUuid": "b0c87b22_c14daf45",
+      "revId": "95fb00e63d8fb419928115fa1b4490681e21b913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d5615ff7_0b4eb9e6",
         "filename": "finder/finder.go",
         "patchSetId": 6
@@ -196,6 +214,30 @@
       "side": 1,
       "message": "Why not f.workingDir then?",
       "parentUuid": "648af4ff_17d602d7",
+      "range": {
+        "startLine": 203,
+        "startChar": 23,
+        "endLine": 203,
+        "endChar": 26
+      },
+      "revId": "95fb00e63d8fb419928115fa1b4490681e21b913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "abf46e80_5afb2c90",
+        "filename": "finder/finder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-31T23:53:16Z",
+      "side": 1,
+      "message": "If \u003cf.metadata.Config.CacheParams\u003e contains any file paths outside of \u003cf.workingDir\u003e (such as with an absolute file path), then starting from \u003cf.workingDir\u003e would skip them.\n\nIn my testing I\u0027ve been issuing the `finder` command from within the \"aosp\" directory where I\u0027m doing my changes, but I\u0027ve been providing an absolute file path to \"android-internal\" to test against a larger codebase.\n\nI wonder if I should rename WorkingDirectory to clarify that I intended it as the analogue of the working directory in `find` as opposed to the analogue of $TOP in android (even though soong_ui will probably pass WorkingDirectory\u003d$TOP for convenience anyway).",
+      "parentUuid": "98224d0b_2e629fcd",
       "range": {
         "startLine": 203,
         "startChar": 23,
@@ -413,6 +455,24 @@
     },
     {
       "key": {
+        "uuid": "8226713e_5b7f400e",
+        "filename": "finder/finder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-31T23:53:16Z",
+      "side": 1,
+      "message": "Hmm if the nonexistence of ordering issues depends on the unbufferedness of the channels, that seems to me like it\u0027s more confusing, because it\u0027s a dependency. That would also prevent the introduction of buffered channels later if it\u0027s found that they run faster.\n\nIs standard to use an unbuffered channel?",
+      "parentUuid": "9b280ecc_a298e710",
+      "revId": "95fb00e63d8fb419928115fa1b4490681e21b913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ff6124a0_4e08e38a",
         "filename": "finder/finder.go",
         "patchSetId": 6
@@ -507,6 +567,30 @@
       "side": 1,
       "message": "It seems strange to conflate the correctness with this optimization, especially when the comment says \"When approxNumThreads \u003d\u003d 1\".  I could easily see deleting this block when the optimization was no longer necessary and introducing the rounding bug.",
       "parentUuid": "e2957c86_7813ca69",
+      "range": {
+        "startLine": 1193,
+        "startChar": 4,
+        "endLine": 1193,
+        "endChar": 24
+      },
+      "revId": "95fb00e63d8fb419928115fa1b4490681e21b913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ec35caf5_fc5a11ca",
+        "filename": "finder/finder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1193,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-31T23:53:16Z",
+      "side": 1,
+      "message": "I\u0027ll change the comment to \"Done spawning threads; process remaining directories in a single thread\" to clarify that this if-statement is what is relied upon to terminate the spawning of threads. I guess the comment is a bit outdated for this code.\n\nI could add a second comment telling that this if-statement also handles rounding error, although given that the variable name is \"approximateNumThreads\" that sounds a bit verbose to me.",
+      "parentUuid": "b4839d3b_e128d6c7",
       "range": {
         "startLine": 1193,
         "startChar": 4,
