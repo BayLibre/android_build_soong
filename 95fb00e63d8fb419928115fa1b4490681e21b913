@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f130233c_7e2cd708",
+        "filename": "finder/cmd/finder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-31T22:37:02Z",
+      "side": 1,
+      "message": "Sounds good. Is there a Soong standard regarding the syntax of command-line lists? I was expecting `finder -name Android.mk -name Android.bp` to work, but there was no \u003cListVar\u003e function defined on \u003cflag\u003e.",
+      "parentUuid": "ccda23bf_a8bac347",
+      "revId": "95fb00e63d8fb419928115fa1b4490681e21b913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3731da42_16f9d634",
         "filename": "finder/cmd/finder.go",
         "patchSetId": 6
@@ -30,6 +48,30 @@
       "writtenOn": "2017-07-31T21:41:45Z",
       "side": 1,
       "message": "time.Since(startTime)",
+      "range": {
+        "startLine": 130,
+        "startChar": 43,
+        "endLine": 130,
+        "endChar": 68
+      },
+      "revId": "95fb00e63d8fb419928115fa1b4490681e21b913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4623aa54_65cc6174",
+        "filename": "finder/cmd/finder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-31T22:37:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3731da42_16f9d634",
       "range": {
         "startLine": 130,
         "startChar": 43,
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "d29b16d7_a1f954a2",
+        "filename": "finder/finder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-31T22:37:02Z",
+      "side": 1,
+      "message": "Hmm. It\u0027s also a property of the user\u0027s permissions too. How about pluralizing it to FilesystemsView?",
+      "parentUuid": "f1ec083d_0ad7a06b",
+      "revId": "95fb00e63d8fb419928115fa1b4490681e21b913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d5615ff7_0b4eb9e6",
         "filename": "finder/finder.go",
         "patchSetId": 6
@@ -70,6 +130,30 @@
       "writtenOn": "2017-07-31T21:41:45Z",
       "side": 1,
       "message": "\"/\" is confusing here, since it is searching relative to WorkingDirectory.  Would \"\" or \".\" work instead?",
+      "range": {
+        "startLine": 203,
+        "startChar": 23,
+        "endLine": 203,
+        "endChar": 26
+      },
+      "revId": "95fb00e63d8fb419928115fa1b4490681e21b913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "648af4ff_17d602d7",
+        "filename": "finder/finder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-31T22:37:02Z",
+      "side": 1,
+      "message": "This is supposed to refer to the root of the filesystem; it\u0027s just that because it\u0027s only searching the cache, the only matches it will find will be what was asked to be cached (although the caller may have chosen to provide those paths as relative file paths).",
+      "parentUuid": "d5615ff7_0b4eb9e6",
       "range": {
         "startLine": 203,
         "startChar": 23,
@@ -99,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "6b36be03_a2fca062",
+        "filename": "finder/finder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-31T22:37:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad4a811d_9b92287e",
+      "revId": "95fb00e63d8fb419928115fa1b4490681e21b913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba141969_860f7a0e",
         "filename": "finder/finder.go",
         "patchSetId": 6
@@ -110,6 +212,30 @@
       "writtenOn": "2017-07-31T21:41:45Z",
       "side": 1,
       "message": "For small structs it is better to pass the struct through the channel instead of a pointer, it will avoid allocating the struct on the heap.  I expect a string to be a single pointer, error is an interface which is 2 pointers, and a slice is a pointer, an offset, and a capacity.",
+      "range": {
+        "startLine": 725,
+        "startChar": 27,
+        "endLine": 725,
+        "endChar": 37
+      },
+      "revId": "95fb00e63d8fb419928115fa1b4490681e21b913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27ac60e0_7b60e5c5",
+        "filename": "finder/finder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-31T22:37:02Z",
+      "side": 1,
+      "message": "Oh ok; I\u0027ll change it. I expected the break-even point (where structs are faster) to be at a smaller number of fields than this.",
+      "parentUuid": "ba141969_860f7a0e",
       "range": {
         "startLine": 725,
         "startChar": 27,
@@ -139,6 +265,24 @@
     },
     {
       "key": {
+        "uuid": "27ce604e_c8a8b5c5",
+        "filename": "finder/finder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 734,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-31T22:37:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba4c815d_d50db9fd",
+      "revId": "95fb00e63d8fb419928115fa1b4490681e21b913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b4134d4_3a0d5805",
         "filename": "finder/finder.go",
         "patchSetId": 6
@@ -153,6 +297,24 @@
       "revId": "95fb00e63d8fb419928115fa1b4490681e21b913",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af86cfd6_6d125c47",
+        "filename": "finder/finder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-31T22:37:02Z",
+      "side": 1,
+      "message": "Probably the answer to this question depends on the answer to the next question below regarding \u003cdone\u003e",
+      "parentUuid": "8b4134d4_3a0d5805",
+      "revId": "95fb00e63d8fb419928115fa1b4490681e21b913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
@@ -173,6 +335,24 @@
     },
     {
       "key": {
+        "uuid": "360c9675_fc327503",
+        "filename": "finder/finder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-31T22:37:02Z",
+      "side": 1,
+      "message": "What would you do to make it simpler? It seems to me that bundling \u003cdone\u003e into workResponse makes it easy to determine at a glance that there won\u0027t be any concurrency misorderings involving receiving \u003cdone\u003e too early, whereas if there are multiple channels, then the reader has to check the way that the channels interact to determine whether there can be ordering issues.",
+      "parentUuid": "aec6fa81_2f88c48d",
+      "revId": "95fb00e63d8fb419928115fa1b4490681e21b913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ff6124a0_4e08e38a",
         "filename": "finder/finder.go",
         "patchSetId": 6
@@ -190,6 +370,24 @@
     },
     {
       "key": {
+        "uuid": "a7b3a1fb_f04a83a0",
+        "filename": "finder/finder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-31T22:37:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff6124a0_4e08e38a",
+      "revId": "95fb00e63d8fb419928115fa1b4490681e21b913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de1038e6_a6501a3f",
         "filename": "finder/finder.go",
         "patchSetId": 6
@@ -201,6 +399,30 @@
       "writtenOn": "2017-07-31T21:41:45Z",
       "side": 1,
       "message": "approxNumThreads \u003d\u003d 1?",
+      "range": {
+        "startLine": 1193,
+        "startChar": 4,
+        "endLine": 1193,
+        "endChar": 24
+      },
+      "revId": "95fb00e63d8fb419928115fa1b4490681e21b913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2957c86_7813ca69",
+        "filename": "finder/finder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1193,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-07-31T22:37:02Z",
+      "side": 1,
+      "message": "It seems more robust to me to handle the case of approxNumThreads \u003d\u003d 0 here and treat it as 1, as opposed to checking for rounding error on line 1213,\n\nin case another caller gets added later",
+      "parentUuid": "de1038e6_a6501a3f",
       "range": {
         "startLine": 1193,
         "startChar": 4,
