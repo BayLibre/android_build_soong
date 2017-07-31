@@ -119,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "b0c87b22_c14daf45",
+        "filename": "finder/finder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-31T22:51:55Z",
+      "side": 1,
+      "message": "I think any use of \"Filesystem\" in the name is confusing, since you have a completely unrelated \"filesystem\" below.  How about \"User\" or \"UserAndHostname\"?  Or make User and Hostname separate values, and you can add more later if you need them.",
+      "parentUuid": "d29b16d7_a1f954a2",
+      "revId": "95fb00e63d8fb419928115fa1b4490681e21b913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d5615ff7_0b4eb9e6",
         "filename": "finder/finder.go",
         "patchSetId": 6
@@ -154,6 +172,30 @@
       "side": 1,
       "message": "This is supposed to refer to the root of the filesystem; it\u0027s just that because it\u0027s only searching the cache, the only matches it will find will be what was asked to be cached (although the caller may have chosen to provide those paths as relative file paths).",
       "parentUuid": "d5615ff7_0b4eb9e6",
+      "range": {
+        "startLine": 203,
+        "startChar": 23,
+        "endLine": 203,
+        "endChar": 26
+      },
+      "revId": "95fb00e63d8fb419928115fa1b4490681e21b913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "98224d0b_2e629fcd",
+        "filename": "finder/finder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-31T22:51:55Z",
+      "side": 1,
+      "message": "Why not f.workingDir then?",
+      "parentUuid": "648af4ff_17d602d7",
       "range": {
         "startLine": 203,
         "startChar": 23,
@@ -353,6 +395,24 @@
     },
     {
       "key": {
+        "uuid": "9b280ecc_a298e710",
+        "filename": "finder/finder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-31T22:51:55Z",
+      "side": 1,
+      "message": "If you use unbuffered channels then ordering issues are straightforward, because the other side of the channels are all processed synchronously in the same goroutine.  The writer writes the data before writing done, and the reader sees the data before seeing done.",
+      "parentUuid": "360c9675_fc327503",
+      "revId": "95fb00e63d8fb419928115fa1b4490681e21b913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ff6124a0_4e08e38a",
         "filename": "finder/finder.go",
         "patchSetId": 6
@@ -423,6 +483,30 @@
       "side": 1,
       "message": "It seems more robust to me to handle the case of approxNumThreads \u003d\u003d 0 here and treat it as 1, as opposed to checking for rounding error on line 1213,\n\nin case another caller gets added later",
       "parentUuid": "de1038e6_a6501a3f",
+      "range": {
+        "startLine": 1193,
+        "startChar": 4,
+        "endLine": 1193,
+        "endChar": 24
+      },
+      "revId": "95fb00e63d8fb419928115fa1b4490681e21b913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4839d3b_e128d6c7",
+        "filename": "finder/finder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1193,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-31T22:51:55Z",
+      "side": 1,
+      "message": "It seems strange to conflate the correctness with this optimization, especially when the comment says \"When approxNumThreads \u003d\u003d 1\".  I could easily see deleting this block when the optimization was no longer necessary and introducing the rounding bug.",
+      "parentUuid": "e2957c86_7813ca69",
       "range": {
         "startLine": 1193,
         "startChar": 4,

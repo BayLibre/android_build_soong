@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02520b07_589c110b",
+        "filename": "finder/finder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-07-31T22:51:55Z",
+      "side": 1,
+      "message": "Do you care about trailing \"/\" in base, or are you guaranteeing base is always cleaned?",
+      "range": {
+        "startLine": 299,
+        "startChar": 8,
+        "endLine": 299,
+        "endChar": 12
+      },
+      "revId": "e3bc549289d6b482c003c51bae0bc1ca552e4312",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
