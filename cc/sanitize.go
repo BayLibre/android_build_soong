@@ -498,8 +498,8 @@ func sanitizerDepsMutator(t sanitizerType) func(android.TopDownMutatorContext) {
 	return func(mctx android.TopDownMutatorContext) {
 		if c, ok := mctx.Module().(*Module); ok && c.sanitize.Sanitizer(t) {
 			mctx.VisitDepsDepthFirst(func(module blueprint.Module) {
-				if d, ok := mctx.Module().(*Module); ok && c.sanitize != nil &&
-					!c.sanitize.Properties.Sanitize.Never {
+				if d, ok := module.(*Module); ok && d.sanitize != nil &&
+					!d.sanitize.Properties.Sanitize.Never {
 					d.sanitize.Properties.SanitizeDep = true
 				}
 			})
