@@ -16,16 +16,26 @@ package java
 
 import (
 	"android/soong/android"
+	"fmt"
+	"io"
 )
 
 func (library *Library) AndroidMk() (ret android.AndroidMkData, err error) {
 	ret.Class = "JAVA_LIBRARIES"
 	ret.OutputFile = android.OptionalPathForPath(library.outputFile)
+	ret.Extra = append(ret.Extra, func(w io.Writer, outputFile android.Path) error {
+		fmt.Fprintln(w, "LOCAL_MODULE_SUFFIX := .jar")
+		return nil
+	})
 	return
 }
 
-func (prebuilt *Prebuilt) AndroidMk() (ret android.AndroidMkData, err error) {
+func (prebuilt *Import) AndroidMk() (ret android.AndroidMkData, err error) {
 	ret.Class = "JAVA_LIBRARIES"
-	ret.OutputFile = android.OptionalPathForPath(prebuilt.classpathFile)
+	ret.OutputFile = android.OptionalPathForPath(prebuilt.combinedClasspathFile)
+	ret.Extra = append(ret.Extra, func(w io.Writer, outputFile android.Path) error {
+		fmt.Fprintln(w, "LOCAL_MODULE_SUFFIX := .jar")
+		return nil
+	})
 	return
 }
