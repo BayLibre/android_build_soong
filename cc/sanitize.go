@@ -496,10 +496,11 @@ func (sanitize *sanitize) SetSanitizer(t sanitizerType, b bool) {
 // Propagate asan requirements down from binaries
 func sanitizerDepsMutator(t sanitizerType) func(android.TopDownMutatorContext) {
 	return func(mctx android.TopDownMutatorContext) {
-		if c, ok := mctx.Module().(*Module); ok && c.sanitize.Sanitizer(t) {
+		if c, ok := mctx.Module().(*Module); ok {
 			mctx.VisitDepsDepthFirst(func(module blueprint.Module) {
-				if d, ok := mctx.Module().(*Module); ok && c.sanitize != nil &&
-					!c.sanitize.Properties.Sanitize.Never {
+				if d, ok := module.(*Module); ok && d.sanitize != nil &&
+					!d.sanitize.Properties.Sanitize.Never &&
+					(d.sanitize.Sanitizer(t) || c.sanitize.Sanitizer(t)) {
 					d.sanitize.Properties.SanitizeDep = true
 				}
 			})
