@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f5b9841_daedf092",
+        "filename": "OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-08-02T17:26:40Z",
+      "side": 1,
+      "message": "This makes ndk_*.go files owned only by danalbert@.\nIf you want all files owned also by ccross@, you can add\n  per-file * \u003d ccross@android.com\nA changed file can match multiple per-file patterns to include multiple owners. But per-file pattern does not inherit other non-per-file owners.\nThis semantics is similar to Chromium\u0027s OWNERS, not Google3\u0027s.",
+      "revId": "d2511c10daf83ffa6e3fd45daf2317c389aa4ede",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
