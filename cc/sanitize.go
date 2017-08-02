@@ -457,21 +457,25 @@ func (sanitize *sanitize) inSanitizerDir() bool {
 	return sanitize.Properties.InSanitizerDir
 }
 
-func (sanitize *sanitize) Sanitizer(t sanitizerType) bool {
+func (sanitize *sanitize) getSanitizerBoolPtr(t sanitizerType) *bool {
 	if sanitize == nil {
-		return false
+		return boolPtr(false)
 	}
 
 	switch t {
 	case asan:
-		return Bool(sanitize.Properties.Sanitize.Address)
+		return sanitize.Properties.Sanitize.Address
 	case tsan:
-		return Bool(sanitize.Properties.Sanitize.Thread)
+		return sanitize.Properties.Sanitize.Thread
 	case intOverflow:
-		return Bool(sanitize.Properties.Sanitize.Integer_overflow)
+		return sanitize.Properties.Sanitize.Integer_overflow
 	default:
 		panic(fmt.Errorf("unknown sanitizerType %d", t))
 	}
+}
+
+func (sanitize *sanitize) Sanitizer(t sanitizerType) bool {
+	return Bool(sanitize.getSanitizerBoolPtr(t))
 }
 
 func (sanitize *sanitize) SetSanitizer(t sanitizerType, b bool) {
@@ -493,13 +497,26 @@ func (sanitize *sanitize) SetSanitizer(t sanitizerType, b bool) {
 	}
 }
 
+// Check if the sanitizer is explicitly disabled (as opposed to nil by
+// virtue of not being set).
+func (sanitize *sanitize) isSanitizerExplicitlyDisabled(t sanitizerType) bool {
+	sanitizerVal := sanitize.getSanitizerBoolPtr(t)
+	return sanitizerVal != nil && *sanitizerVal == false
+}
+
+func (sanitize *sanitize) isSanitizerExplicitlyEnabled(t sanitizerType) bool {
+	sanitizerVal := sanitize.getSanitizerBoolPtr(t)
+	return sanitizerVal != nil && *sanitizerVal == true
+}
+
 // Propagate asan requirements down from binaries
 func sanitizerDepsMutator(t sanitizerType) func(android.TopDownMutatorContext) {
 	return func(mctx android.TopDownMutatorContext) {
 		if c, ok := mctx.Module().(*Module); ok && c.sanitize.Sanitizer(t) {
 			mctx.VisitDepsDepthFirst(func(module blueprint.Module) {
-				if d, ok := mctx.Module().(*Module); ok && c.sanitize != nil &&
-					!c.sanitize.Properties.Sanitize.Never {
+				if d, ok := module.(*Module); ok && d.sanitize != nil &&
+					!d.sanitize.Properties.Sanitize.Never &&
+					!d.sanitize.isSanitizerExplicitlyEnabled(t) {
 					d.sanitize.Properties.SanitizeDep = true
 				}
 			})
@@ -514,7 +531,7 @@ func sanitizerMutator(t sanitizerType) func(android.BottomUpMutatorContext) {
 			if c.isDependencyRoot() && c.sanitize.Sanitizer(t) {
 				modules := mctx.CreateVariations(t.String())
 				modules[0].(*Module).sanitize.SetSanitizer(t, true)
-			} else if c.sanitize.Properties.SanitizeDep {
+			} else if c.sanitize.Sanitizer(t) || c.sanitize.Properties.SanitizeDep {
 				modules := mctx.CreateVariations("", t.String())
 				modules[0].(*Module).sanitize.SetSanitizer(t, false)
 				modules[1].(*Module).sanitize.SetSanitizer(t, true)
@@ -523,10 +540,18 @@ func sanitizerMutator(t sanitizerType) func(android.BottomUpMutatorContext) {
 				if mctx.Device() {
 					modules[1].(*Module).sanitize.Properties.InSanitizerDir = true
 				} else {
-					modules[0].(*Module).Properties.PreventInstall = true
+					if c.sanitize.Sanitizer(t) {
+						modules[0].(*Module).Properties.PreventInstall = true
+					} else {
+						modules[1].(*Module).Properties.PreventInstall = true
+					}
 				}
 				if mctx.AConfig().EmbeddedInMake() {
-					modules[0].(*Module).Properties.HideFromMake = true
+					if c.sanitize.Sanitizer(t) {
+						modules[0].(*Module).Properties.HideFromMake = true
+					} else {
+						modules[1].(*Module).Properties.HideFromMake = true
+					}
 				}
 			}
 			c.sanitize.Properties.SanitizeDep = false
