@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27b59886_0d3e9173",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-02T22:39:54Z",
+      "side": 1,
+      "message": "This is close to a common go gotcha:\nhttps://play.golang.org/p/iRw0tIo3I4\n\nAlways consider append to be a possibly destructive operation on the initial array.  In this case it probably doesn\u0027t matter, because the capacity of Platform_version_all_codenames is probably equal to its size and the returned slice always contains the same values, but theoretically you could have concurrency issues if there was room in the backing array of Platform_version_all_codenames for Platform_version_future_codenames.",
+      "revId": "1a807509e901040683b5f4e89614fd8862f94272",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
