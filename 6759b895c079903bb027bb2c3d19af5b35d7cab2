@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14caff42_bb6f8bbe",
+        "filename": "finder/finder_test.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 1550,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-03T22:03:21Z",
+      "side": 1,
+      "message": "I suspect that it\u0027s probably preferable to only return files that are readable, although I\u0027d like someone to confirm that before I implement something to Stat each file (currently it only stats directories)",
+      "revId": "6759b895c079903bb027bb2c3d19af5b35d7cab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
