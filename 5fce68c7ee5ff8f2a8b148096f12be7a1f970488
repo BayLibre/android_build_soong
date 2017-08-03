@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49edab67_6c907ccf",
+        "filename": "scripts/build-ndk-prebuilts.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-08-03T21:18:59Z",
+      "side": 1,
+      "message": "Hmm, I guess it shouldn\u0027t matter, but should we configure this to a more generic arm64 config?",
+      "range": {
+        "startLine": 40,
+        "startChar": 25,
+        "endLine": 40,
+        "endChar": 33
+      },
+      "revId": "5fce68c7ee5ff8f2a8b148096f12be7a1f970488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22b96650_8cbd6c4a",
+        "filename": "scripts/build-ndk-prebuilts.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-08-03T21:18:59Z",
+      "side": 1,
+      "message": "Do you need windows binaries? If not may as well drop this.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 39
+      },
+      "revId": "5fce68c7ee5ff8f2a8b148096f12be7a1f970488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
