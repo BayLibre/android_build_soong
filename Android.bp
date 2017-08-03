@@ -320,3 +320,7 @@ kernel_headers {
     name: "device_kernel_headers",
     vendor: true,
 }
+
+vndk_package {
+    name: "vndk.current",
+}
