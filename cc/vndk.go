@@ -15,6 +15,11 @@
 package cc
 
 import (
+	"fmt"
+	"io"
+	"strings"
+	"sync"
+
 	"android/soong/android"
 )
 
@@ -95,4 +100,78 @@ func (vndk *vndkdep) vndkCheckLinkType(ctx android.ModuleContext, to *Module) {
 			vndk.typeName(), to.Name(), to.vndkdep.typeName())
 		return
 	}
+}
+
+var (
+	vndkCoreLibraries []string
+	vndkSpLibraries   []string
+	llndkLibraries    []string
+	vndkLibrariesLock sync.Mutex
+)
+
+// gather list of vndk-core, vndk-sp, and ll-ndk libs
+func vndkMutator(mctx android.BottomUpMutatorContext) {
+	if m, ok := mctx.Module().(*Module); ok {
+		if _, ok := m.linker.(*llndkStubDecorator); ok {
+			vndkLibrariesLock.Lock()
+			defer vndkLibrariesLock.Unlock()
+			name := strings.TrimSuffix(m.Name(), llndkLibrarySuffix)
+			if !inList(name, llndkLibraries) {
+				llndkLibraries = append(llndkLibraries, name)
+			}
+		} else if lib, ok := m.linker.(*libraryDecorator); ok && lib.shared() {
+			if m.vndkdep.isVndk() {
+				vndkLibrariesLock.Lock()
+				defer vndkLibrariesLock.Unlock()
+				if m.vndkdep.isVndkSp() {
+					if !inList(m.Name(), vndkSpLibraries) {
+						vndkSpLibraries = append(vndkSpLibraries, m.Name())
+					}
+				} else {
+					if !inList(m.Name(), vndkCoreLibraries) {
+						vndkCoreLibraries = append(vndkCoreLibraries, m.Name())
+					}
+				}
+			}
+		}
+	}
+}
+
+type vndkPackage struct {
+	android.ModuleBase
+	requiredModuleNames []string
+}
+
+func vndkPackageFactory() android.Module {
+	module := &vndkPackage{}
+	android.InitAndroidModule(module)
+	return module
+}
+
+func (v *vndkPackage) DepsMutator(ctx android.BottomUpMutatorContext) {
+	// TODO(jiyong): add version support
+}
+
+func (v *vndkPackage) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	v.requiredModuleNames = append(v.requiredModuleNames, vndkSpLibraries...)
+	v.requiredModuleNames = append(v.requiredModuleNames, vndkCoreLibraries...)
+	v.requiredModuleNames = addSuffix(v.requiredModuleNames, vendorSuffix)
+	v.requiredModuleNames = append(v.requiredModuleNames, llndkLibraries...)
+}
+
+func (v *vndkPackage) AndroidMk() (ret android.AndroidMkData, err error) {
+	ret.Custom = func(w io.Writer, name, prefix, moduleDir string) error {
+		fmt.Fprintln(w, "\ninclude $(CLEAR_VARS)")
+		fmt.Fprintln(w, "LOCAL_PATH :=", moduleDir)
+		fmt.Fprintln(w, "LOCAL_MODULE :=", name)
+		fmt.Fprintln(w, "LOCAL_REQUIRED_MODULES := "+strings.Join(v.requiredModuleNames, " "))
+		fmt.Fprintln(w, "include $(BUILD_PHONY_PACKAGE)")
+
+		return nil
+	}
+	return
+}
+
+func init() {
+	android.RegisterModuleType("vndk_package", vndkPackageFactory)
 }
