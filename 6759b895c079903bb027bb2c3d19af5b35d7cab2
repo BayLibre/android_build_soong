@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "1c108771_1ba9eeaa",
+        "filename": "finder/finder.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-08-03T23:22:25Z",
+      "side": 1,
+      "message": "It doesn\u0027t seem like this is flexible enough to satisfy our needs for Kati. The big two searches are for the first \"leaves\" Android.mk/Cleanspec.mk files found, it stops searching beneath a directory that has one of those files.\n\nThe other set of finds have a maxdepth set -- we may be able to ignore that, since I imagine that was mostly for performance.",
+      "revId": "6759b895c079903bb027bb2c3d19af5b35d7cab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14caff42_bb6f8bbe",
         "filename": "finder/finder_test.go",
         "patchSetId": 13
@@ -13,6 +30,24 @@
       "writtenOn": "2017-08-03T22:03:21Z",
       "side": 1,
       "message": "I suspect that it\u0027s probably preferable to only return files that are readable, although I\u0027d like someone to confirm that before I implement something to Stat each file (currently it only stats directories)",
+      "revId": "6759b895c079903bb027bb2c3d19af5b35d7cab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0d56c81_84e23243",
+        "filename": "finder/finder_test.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 1550,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-08-03T23:22:25Z",
+      "side": 1,
+      "message": "Even calling Stat on a file does not guarantee that you can read it. As long as you can read the containing directory, you should be able to stat the file.",
+      "parentUuid": "14caff42_bb6f8bbe",
       "revId": "6759b895c079903bb027bb2c3d19af5b35d7cab2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
