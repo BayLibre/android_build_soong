@@ -51,6 +51,24 @@
       "revId": "6759b895c079903bb027bb2c3d19af5b35d7cab2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6419a87_f01ed988",
+        "filename": "finder/finder_test.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 1550,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-03T23:32:19Z",
+      "side": 1,
+      "message": "Yeah, we\u0027d have to do something like compute the permissions based on the results of Stat, or try to actually open the file and confirm that it succeeds.\n\nProbably we could have a cache map converting from os permissions to readability , so we don\u0027t have to actually open many of them.\n\nDo you think that it\u0027s preferable to only return files that are readable?",
+      "parentUuid": "f0d56c81_84e23243",
+      "revId": "6759b895c079903bb027bb2c3d19af5b35d7cab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
