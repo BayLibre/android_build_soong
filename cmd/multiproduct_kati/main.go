@@ -233,6 +233,9 @@ func main() {
 	var wg sync.WaitGroup
 	productConfigs := make(chan Product, len(products))
 
+	finder := build.NewSourceFinder(buildCtx, config)
+	defer finder.Shutdown()
+
 	// Run the product config for every product in parallel
 	for _, product := range products {
 		wg.Add(1)
@@ -273,6 +276,11 @@ func main() {
 				StdioInterface: build.NewCustomStdio(nil, f, f),
 				Thread:         trace.NewThread(product),
 			}}
+
+			err = build.FindSources(productCtx, config, finder)
+			if err != nil {
+				log.Fatalf("Failed to find sources: %v", err.Error())
+			}
 
 			productConfig := build.NewConfig(productCtx)
 			productConfig.Environment().Set("OUT_DIR", productOutDir)
