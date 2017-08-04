@@ -38,6 +38,7 @@ type configImpl struct {
 	keepGoing int
 	verbose   bool
 	dist      bool
+	skipMake  bool
 
 	// From the product config
 	katiArgs     []string
@@ -155,6 +156,9 @@ func (c *configImpl) parseArgs(ctx Context, args []string) {
 			continue
 		} else if arg == "dist" {
 			c.dist = true
+		} else if arg == "--skip-make" {
+			c.skipMake = true
+			continue
 		}
 		if arg[0] == '-' {
 			parseArgNum := func(def int) int {
@@ -265,6 +269,9 @@ func (c *configImpl) DistDir() string {
 }
 
 func (c *configImpl) NinjaArgs() []string {
+	if c.skipMake {
+		return c.arguments
+	}
 	return c.ninjaArgs
 }
 
@@ -289,6 +296,10 @@ func (c *configImpl) Dist() bool {
 
 func (c *configImpl) IsVerbose() bool {
 	return c.verbose
+}
+
+func (c *configImpl) SkipMake() bool {
+	return c.skipMake
 }
 
 func (c *configImpl) TargetProduct() string {
@@ -355,6 +366,14 @@ func (c *configImpl) SetKatiSuffix(suffix string) {
 	c.katiSuffix = suffix
 }
 
+func (c *configImpl) LastKatiSuffixFile() string {
+	return filepath.Join(c.OutDir(), "last_kati_suffix")
+}
+
+func (c *configImpl) HasKatiSuffix() bool {
+	return c.katiSuffix != ""
+}
+
 func (c *configImpl) KatiEnvFile() string {
 	return filepath.Join(c.OutDir(), "env"+c.KatiSuffix()+".sh")
 }
@@ -368,6 +387,9 @@ func (c *configImpl) SoongNinjaFile() string {
 }
 
 func (c *configImpl) CombinedNinjaFile() string {
+	if c.katiSuffix == "" {
+		return filepath.Join(c.OutDir(), "combined.ninja")
+	}
 	return filepath.Join(c.OutDir(), "combined"+c.KatiSuffix()+".ninja")
 }
 
