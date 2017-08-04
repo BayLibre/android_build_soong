@@ -15,9 +15,14 @@
 package build
 
 import (
+	"android/soong/finder"
+	"android/soong/fs"
+	"android/soong/ui/logger"
+	"bytes"
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strings"
 	"text/template"
 )
 
@@ -32,6 +37,7 @@ func SetupOutDir(ctx Context, config Config) {
 	// The ninja_build file is used by our buildbots to understand that the output
 	// can be parsed as ninja output.
 	ensureEmptyFileExists(ctx, filepath.Join(config.OutDir(), "ninja_build"))
+	ensureEmptyFileExists(ctx, filepath.Join(config.OutDir(), ".out-dir"))
 }
 
 var combinedBuildNinjaTemplate = template.Must(template.New("combined").Parse(`
@@ -107,6 +113,74 @@ func help(ctx Context, config Config, what int) {
 	cmd.Stdout = ctx.Stdout()
 	cmd.Stderr = ctx.Stderr()
 	cmd.RunOrFatal()
+}
+
+func NewSourceFinder(ctx Context, config Config) (f *finder.Finder) {
+	ctx.BeginTrace("find modules")
+	defer ctx.EndTrace()
+
+	dir, err := os.Getwd()
+	if err != nil {
+		ctx.Fatal(err.Error())
+	}
+	cacheParams := finder.CacheParams{
+		WorkingDirectory: dir,
+		RootDirs:         []string{"."},
+		ExcludeDirs:      []string{".git", ".repo"},
+		PruneFiles:       []string{".out-dir", ".find-ignore"},
+		IncludeFiles:     []string{"Android.mk", "Android.bp", "Blueprints", "CleanSpec.mk"},
+	}
+	dumpDir := config.FileListDir()
+	f = finder.New(cacheParams, fs.OsFs, logger.New(ioutil.Discard),
+		filepath.Join(dumpDir, "files.db"))
+	return f
+}
+
+func FindSources(ctx Context, config Config, f *finder.Finder) (err error) {
+	// note that dumpDir in FindSources may be different than dumpDir in NewSourceFinder
+	// if a caller such as multiproduct_kati wants to share one Finder among several builds
+	dumpDir := config.FileListDir()
+	os.MkdirAll(dumpDir, 0777)
+
+	androidMks := f.FindFirstNamedAt(".", "Android.mk")
+	err = dumpListToFile(androidMks, filepath.Join(dumpDir, "Android.mk.list"))
+	if err != nil {
+		return err
+	}
+
+	cleanSpecs := f.FindFirstNamedAt(".", "CleanSpec.mk")
+	dumpListToFile(cleanSpecs, filepath.Join(dumpDir, "CleanSpec.mk.list"))
+	if err != nil {
+		return err
+	}
+
+	isBlueprintFile := func(dir finder.DirEntries) (dirs []string, files []string) {
+		files = []string{}
+		for _, file := range dir.FileNames {
+			if file == "Android.bp" || file == "Blueprints" {
+				files = append(files, file)
+			}
+		}
+
+		return dir.DirNames, files
+	}
+	androidBps := f.FindMatching(".", isBlueprintFile)
+	err = dumpListToFile(androidBps, filepath.Join(dumpDir, "Android.bp.list"))
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func dumpListToFile(list []string, filePath string) (err error) {
+	desiredText := strings.Join(list, "\n")
+	desiredBytes := []byte(desiredText)
+	actualBytes, readErr := ioutil.ReadFile(filePath)
+	if readErr != nil || !bytes.Equal(desiredBytes, actualBytes) {
+		err = ioutil.WriteFile(filePath, desiredBytes, 0777)
+	}
+	return err
 }
 
 // Build the tree. The 'what' argument can be used to chose which components of

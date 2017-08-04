@@ -25,6 +25,8 @@ import (
 	"android/soong/ui/build"
 	"android/soong/ui/logger"
 	"android/soong/ui/tracer"
+	"fmt"
+	"sync"
 )
 
 func indexList(s string, list []string) int {
@@ -42,7 +44,16 @@ func inList(s string, list []string) bool {
 }
 
 func main() {
-	log := logger.New(os.Stderr)
+	err := run()
+	if err != nil {
+		fmt.Fprintln(os.Stderr, err.Error())
+		os.Exit(1)
+	}
+}
+
+func run() (err error) {
+	logWriter := os.Stderr
+	log := logger.New(logWriter)
 	defer log.Cleanup()
 
 	if len(os.Args) < 2 || !inList("--make-mode", os.Args) {
@@ -95,5 +106,24 @@ func main() {
 		}
 	}
 
+	f := build.NewSourceFinder(buildCtx, config)
+	err = build.FindSources(buildCtx, config, f)
+	if err != nil {
+		return err
+	}
+
+	// tell the finder to shut down, but don't wait for it to finish before starting the build
+	finderWaitgroup := sync.WaitGroup{}
+	finderWaitgroup.Add(1)
+	go func() {
+		f.Shutdown()
+		finderWaitgroup.Done()
+	}()
+
 	build.Build(buildCtx, config, build.BuildAll)
+
+	// give the Finder a chance to finish saving its database before exiting
+	finderWaitgroup.Wait()
+
+	return nil
 }
