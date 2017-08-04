@@ -15,13 +15,18 @@
 package main
 
 import (
+	"bytes"
 	"context"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
+	"android/soong/finder"
+	"android/soong/fs"
 	"android/soong/ui/build"
 	"android/soong/ui/logger"
 	"android/soong/ui/tracer"
@@ -41,8 +46,49 @@ func inList(s string, list []string) bool {
 	return indexList(s, list) != -1
 }
 
+func dumpListToFile(list []string, filePath string) {
+	desiredText := strings.Join(list, "\n")
+	desiredBytes := []byte(desiredText)
+	actualBytes, err := ioutil.ReadFile(filePath)
+	if err != nil || !bytes.Equal(desiredBytes, actualBytes) {
+		ioutil.WriteFile(filePath, desiredBytes, 0777)
+	}
+}
+
+func runFind(ctx build.Context, config build.Config) *finder.Finder {
+	startTime := uint64(time.Now().UnixNano())
+	dir, err := os.Getwd()
+	if err != nil {
+		ctx.Fatal(err.Error())
+	}
+	cacheParams := finder.CacheParams{
+		WorkingDirectory: dir,
+		RootDirs:         []string{"."},
+		ExcludeDirs:      []string{".git", ".repo"},
+		PruneFiles:       []string{".android-out-dir", ".find-ignore"},
+		IncludeFiles:     []string{"Android.mk", "Android.bp", "CleanSpec.mk"},
+	}
+	f := finder.New(cacheParams, fs.OsFs, logger.New(ioutil.Discard), filepath.Join(config.SoongOutDir(), "files.db"))
+	dumpDir := filepath.Join(config.FileListDir())
+	os.MkdirAll(dumpDir, 0777)
+
+	androidMks := f.FindFirstNamedAt(".", "Android.mk")
+	dumpListToFile(androidMks, dumpDir+"/Android.mk.list")
+
+	androidBps := f.FindNamedAt(".", "Android.bp")
+	dumpListToFile(androidBps, dumpDir+"/Android.bp.list")
+
+	cleanSpecs := f.FindFirstNamedAt(".", "CleanSpec.mk")
+	dumpListToFile(cleanSpecs, dumpDir+"/CleanSpec.mk.list")
+
+	ctx.CompleteTrace("find modules", startTime, uint64(time.Now().UnixNano()))
+
+	return f
+}
+
 func main() {
-	log := logger.New(os.Stderr)
+	logWriter := os.Stderr
+	log := logger.New(logWriter)
 	defer log.Cleanup()
 
 	if len(os.Args) < 2 || !inList("--make-mode", os.Args) {
@@ -94,6 +140,18 @@ func main() {
 			trace.ImportMicrofactoryLog(filepath.Join(filepath.Dir(executable), "."+filepath.Base(executable)+".trace"))
 		}
 	}
+	f := runFind(buildCtx, config)
+
+	// tell the finder to shut down, but don't wait for it to finish before starting the build
+	wg := sync.WaitGroup{}
+	wg.Add(1)
+	go func() {
+		f.Shutdown()
+		wg.Done()
+	}()
 
 	build.Build(buildCtx, config, build.BuildAll)
+
+	// give the Finder a chance to finish saving its database before exiting
+	wg.Wait()
 }

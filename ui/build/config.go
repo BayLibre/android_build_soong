@@ -276,6 +276,10 @@ func (c *configImpl) TempDir() string {
 	return shared.TempDirForOutDir(c.SoongOutDir())
 }
 
+func (c *configImpl) FileListDir() string {
+	return filepath.Join(c.SoongOutDir(), "module_paths")
+}
+
 func (c *configImpl) KatiSuffix() string {
 	if c.katiSuffix != "" {
 		return c.katiSuffix
