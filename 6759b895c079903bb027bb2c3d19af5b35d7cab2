@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d201291b_9c5ee0f6",
+        "filename": "finder/finder.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-04T01:36:54Z",
+      "side": 1,
+      "message": "Done. I\u0027ve also now added TestFindFirst into finder_test.go",
+      "parentUuid": "1c108771_1ba9eeaa",
+      "revId": "6759b895c079903bb027bb2c3d19af5b35d7cab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14caff42_bb6f8bbe",
         "filename": "finder/finder_test.go",
         "patchSetId": 13
