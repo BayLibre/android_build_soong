@@ -37,4 +37,7 @@ if [ -f "${ENVFILE}" ]; then
     fi
 fi
 
-BUILDDIR="${BUILDDIR}" NINJA="prebuilts/build-tools/${PREBUILTOS}/bin/ninja" build/blueprint/blueprint.bash "$@"
+BUILDDIR="${BUILDDIR}" \
+  NINJA="prebuilts/build-tools/${PREBUILTOS}/bin/ninja" \
+  ADDITIONAL_BP_FILES="build/blueprint/Blueprints" \
+  build/blueprint/blueprint.bash "$@"
