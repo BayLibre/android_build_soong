@@ -1,0 +1,170 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4bc7baa7_b85025e9",
+        "filename": "finder/finder.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-07T18:28:11Z",
+      "side": 1,
+      "message": "Maybe take a DirEntries and return a filtered DirEntries?  Should be equivalent performance in all the common cases, but much more straightforward to write WalkFunc implementations.",
+      "range": {
+        "startLine": 417,
+        "startChar": 14,
+        "endLine": 417,
+        "endChar": 31
+      },
+      "revId": "e5dfc55850765f161da4053334fbafb0d8d3ccef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a502aec_31866da4",
+        "filename": "finder/finder.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-07T18:28:11Z",
+      "side": 1,
+      "message": "waiting.",
+      "range": {
+        "startLine": 556,
+        "startChar": 60,
+        "endLine": 556,
+        "endChar": 67
+      },
+      "revId": "e5dfc55850765f161da4053334fbafb0d8d3ccef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ffdf966b_37728e32",
+        "filename": "finder/finder.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-07T18:28:11Z",
+      "side": 1,
+      "message": "A",
+      "range": {
+        "startLine": 556,
+        "startChar": 3,
+        "endLine": 556,
+        "endChar": 4
+      },
+      "revId": "e5dfc55850765f161da4053334fbafb0d8d3ccef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c0167fe6_e3831e86",
+        "filename": "finder/finder.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-07T18:28:11Z",
+      "side": 1,
+      "message": "This is managing goroutines, not threads.  Go manages threads for you, and keeps a reasonable number of them.  There is effectively no limit on goroutines, the runtime can easily handle hundreds of thousands or more.\n\nI assume this is to prevent running out of file descriptors?",
+      "range": {
+        "startLine": 557,
+        "startChar": 60,
+        "endLine": 557,
+        "endChar": 75
+      },
+      "revId": "e5dfc55850765f161da4053334fbafb0d8d3ccef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c2ebd917_ed257d97",
+        "filename": "finder/finder.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-07T18:28:11Z",
+      "side": 1,
+      "message": "Without",
+      "range": {
+        "startLine": 557,
+        "startChar": 3,
+        "endLine": 557,
+        "endChar": 10
+      },
+      "revId": "e5dfc55850765f161da4053334fbafb0d8d3ccef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb853eae_e1a134b8",
+        "filename": "finder/finder.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-07T18:28:11Z",
+      "side": 1,
+      "message": "This WaitGroup seems dangerous, WaitGroup has a strict requirement that calling Add when the counter is at 0 must not happen concurrently with any calls to Wait, which is hard to guarantee when you reuse the threadpool for a bunch of different APIs.  I think the WaitGroup should stay in the function that uses it.",
+      "revId": "e5dfc55850765f161da4053334fbafb0d8d3ccef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d32ce1e_f9381a3a",
+        "filename": "finder/finder.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-07T18:28:11Z",
+      "side": 1,
+      "message": "This would be clearer if you left the goroutine here, and just put something like:\n\n  throttler.Start()\n  defer throttler.Finish()\n\nat the top of the goroutine.",
+      "revId": "e5dfc55850765f161da4053334fbafb0d8d3ccef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a4b59af_eaac6d9f",
+        "filename": "finder/finder.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1150,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-07T18:28:11Z",
+      "side": 1,
+      "message": "Do you really want to be ignoring errors here and above?",
+      "revId": "e5dfc55850765f161da4053334fbafb0d8d3ccef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
