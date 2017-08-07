@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ada64956_5a893ea0",
+        "filename": "finder/finder.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-07T20:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bc7baa7_b85025e9",
+      "range": {
+        "startLine": 417,
+        "startChar": 14,
+        "endLine": 417,
+        "endChar": 31
+      },
+      "revId": "e5dfc55850765f161da4053334fbafb0d8d3ccef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a502aec_31866da4",
         "filename": "finder/finder.go",
         "patchSetId": 15
@@ -59,6 +83,54 @@
       "writtenOn": "2017-08-07T18:28:11Z",
       "side": 1,
       "message": "A",
+      "range": {
+        "startLine": 556,
+        "startChar": 3,
+        "endLine": 556,
+        "endChar": 4
+      },
+      "revId": "e5dfc55850765f161da4053334fbafb0d8d3ccef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b12600ff_d7703fdd",
+        "filename": "finder/finder.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-07T20:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a502aec_31866da4",
+      "range": {
+        "startLine": 556,
+        "startChar": 60,
+        "endLine": 556,
+        "endChar": 67
+      },
+      "revId": "e5dfc55850765f161da4053334fbafb0d8d3ccef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57ab031e_2b74cf89",
+        "filename": "finder/finder.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-07T20:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ffdf966b_37728e32",
       "range": {
         "startLine": 556,
         "startChar": 3,
@@ -117,6 +189,54 @@
     },
     {
       "key": {
+        "uuid": "0ccf08cd_8cc8e524",
+        "filename": "finder/finder.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-07T20:46:20Z",
+      "side": 1,
+      "message": "Yeah, I was surprised too when I got an error message (while running on the buildbot) that said \"runtime: program exceeds 10,000-thread limit\\nfatal error: thread exhaustion\". My guess was that every time a goroutine made a syscall, that Go pinned it to a thread.\n\nDo you have suggestions for how to change this comment?",
+      "parentUuid": "c0167fe6_e3831e86",
+      "range": {
+        "startLine": 557,
+        "startChar": 60,
+        "endLine": 557,
+        "endChar": 75
+      },
+      "revId": "e5dfc55850765f161da4053334fbafb0d8d3ccef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9de45e6c_99607b24",
+        "filename": "finder/finder.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-07T20:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2ebd917_ed257d97",
+      "range": {
+        "startLine": 557,
+        "startChar": 3,
+        "endLine": 557,
+        "endChar": 10
+      },
+      "revId": "e5dfc55850765f161da4053334fbafb0d8d3ccef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb853eae_e1a134b8",
         "filename": "finder/finder.go",
         "patchSetId": 15
@@ -128,6 +248,24 @@
       "writtenOn": "2017-08-07T18:28:11Z",
       "side": 1,
       "message": "This WaitGroup seems dangerous, WaitGroup has a strict requirement that calling Add when the counter is at 0 must not happen concurrently with any calls to Wait, which is hard to guarantee when you reuse the threadpool for a bunch of different APIs.  I think the WaitGroup should stay in the function that uses it.",
+      "revId": "e5dfc55850765f161da4053334fbafb0d8d3ccef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "402be003_94aa6d40",
+        "filename": "finder/finder.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-07T20:46:20Z",
+      "side": 1,
+      "message": "Yeah I was able to do that in one case in startFromExternalCache on line 852. I assume the case on line 182 is the one you\u0027re talking about.\n\nEven if the WaitGroup didn\u0027t have that requirement (that calling Wait() could potentially crash while the counter was 0 and another caller was calling Add()), that pattern of usage would still be a race condition anyway and could risk inconsistent behavior. Consequently, every caller that calls Add() either is called before Wait(), or is called while the counter is known to be positive.\n\nIt would be possible to make startFromExternalCache block until all of its calls complete, which would facilitate making its ThreadPool into a local variable. That seems inconvenient though.\n\nHow about I modify the ThreadPool such that after the completion of any Wait, any subsequent call to Run will fail (to enforce the inability to reuse its WaitGroup)?",
+      "parentUuid": "eb853eae_e1a134b8",
       "revId": "e5dfc55850765f161da4053334fbafb0d8d3ccef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -151,6 +289,24 @@
     },
     {
       "key": {
+        "uuid": "f4bf22be_6db31ed4",
+        "filename": "finder/finder.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-07T20:46:20Z",
+      "side": 1,
+      "message": "Let me know whether this comment still applies after the discussion on the other comments.",
+      "parentUuid": "4d32ce1e_f9381a3a",
+      "revId": "e5dfc55850765f161da4053334fbafb0d8d3ccef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a4b59af_eaac6d9f",
         "filename": "finder/finder.go",
         "patchSetId": 15
@@ -165,6 +321,24 @@
       "revId": "e5dfc55850765f161da4053334fbafb0d8d3ccef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d62f4d04_d0fd8b1c",
+        "filename": "finder/finder.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1150,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-07T20:46:20Z",
+      "side": 1,
+      "message": "The options that I can think of are:\n1. treat the dir as empty\n2. do what it\u0027s doing now (for each attribute that failed, use the default)\n3. return an error and propagate it up such that it fails the Find\n\nIt seems to me that we\u0027d like to use as many available attributes as possible (in practice this code will only fail if fileInfo isn\u0027t of the right underlying type (which might happen when not on Unix)).\n\nWhat would you like it to do?\nI suppose that whatever we decide will probably merit a unit test.",
+      "parentUuid": "9a4b59af_eaac6d9f",
+      "revId": "e5dfc55850765f161da4053334fbafb0d8d3ccef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
