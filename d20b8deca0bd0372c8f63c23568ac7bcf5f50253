@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "302aff0f_4972ece0",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-08-07T22:17:33Z",
+      "side": 1,
+      "message": "This should be returning an error (or otherwise handling the errors) -- if we return successfully from this function, the files better have been updated.",
+      "range": {
+        "startLine": 49,
+        "startChar": 51,
+        "endLine": 49,
+        "endChar": 52
+      },
+      "revId": "d20b8deca0bd0372c8f63c23568ac7bcf5f50253",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13997d1c_e8a16a29",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-08-07T22:17:33Z",
+      "side": 1,
+      "message": "Why wouldn\u0027t this go in FileListDir()?",
+      "range": {
+        "startLine": 71,
+        "startChar": 81,
+        "endLine": 71,
+        "endChar": 101
+      },
+      "revId": "d20b8deca0bd0372c8f63c23568ac7bcf5f50253",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8f24063_962df26c",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-08-07T22:17:33Z",
+      "side": 1,
+      "message": "No need to run Join here",
+      "range": {
+        "startLine": 72,
+        "startChar": 12,
+        "endLine": 72,
+        "endChar": 26
+      },
+      "revId": "d20b8deca0bd0372c8f63c23568ac7bcf5f50253",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46660609_03012e13",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-08-07T22:17:33Z",
+      "side": 1,
+      "message": "filepath.Join",
+      "range": {
+        "startLine": 76,
+        "startChar": 35,
+        "endLine": 76,
+        "endChar": 38
+      },
+      "revId": "d20b8deca0bd0372c8f63c23568ac7bcf5f50253",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6513a7d_05a0eac9",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-08-07T22:17:33Z",
+      "side": 1,
+      "message": "This should be a begin; defer end at the top of this function.",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 76
+      },
+      "revId": "d20b8deca0bd0372c8f63c23568ac7bcf5f50253",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eedab28b_34d18cb1",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-08-07T22:17:33Z",
+      "side": 1,
+      "message": "This needs to happen inside build.Build, since other tools like multiproduct_kati will need to write out their own files (whether or not they share the find database -- it would be nice, but not necessary if they did)",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 31
+      },
+      "revId": "d20b8deca0bd0372c8f63c23568ac7bcf5f50253",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60b315aa_b538aa31",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-08-07T22:17:33Z",
+      "side": 1,
+      "message": "Seems like OutDir() would be more appropriate. Perhaps using a hidden directory too (\".module_paths\"?)",
+      "range": {
+        "startLine": 280,
+        "startChar": 24,
+        "endLine": 280,
+        "endChar": 35
+      },
+      "revId": "d20b8deca0bd0372c8f63c23568ac7bcf5f50253",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
