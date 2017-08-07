@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "9b6411c5_5f5c23af",
+        "filename": "finder/finder.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-07T20:55:48Z",
+      "side": 1,
+      "message": "Looks like the limit of file descriptors on our machines is 32768, but I think the linux default is 1024 or 4096, and our mac machines default to 256!  So I guess you _can_ run out of threads, but if you are running out of threads you will definitely run out of file descriptors at much lower values on some machines.",
+      "parentUuid": "9de45e6c_99607b24",
+      "range": {
+        "startLine": 557,
+        "startChar": 3,
+        "endLine": 557,
+        "endChar": 10
+      },
+      "revId": "e5dfc55850765f161da4053334fbafb0d8d3ccef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb853eae_e1a134b8",
         "filename": "finder/finder.go",
         "patchSetId": 15
