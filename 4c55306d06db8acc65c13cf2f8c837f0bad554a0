@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc19602a_cd440e85",
+        "filename": "cc/vndk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-07T18:41:43Z",
+      "side": 1,
+      "message": "Use vndkCoreLibraries []string, which will keep this as a nil slice until it is appended to.",
+      "range": {
+        "startLine": 106,
+        "startChar": 23,
+        "endLine": 106,
+        "endChar": 25
+      },
+      "revId": "4c55306d06db8acc65c13cf2f8c837f0bad554a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c5b516d_9f05283c",
+        "filename": "cc/vndk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-07T18:41:43Z",
+      "side": 1,
+      "message": "defer llndkLibrariesLock.Unlock()\n\nIt might simplify things if you used a single lock for all 3 lists",
+      "revId": "4c55306d06db8acc65c13cf2f8c837f0bad554a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "95e52646_f0b0d74d",
+        "filename": "cc/vndk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-07T18:41:43Z",
+      "side": 1,
+      "message": "This should probably be a singleton instead of a package, but if all it is doing is making a phony package it might as well be in make.",
+      "revId": "4c55306d06db8acc65c13cf2f8c837f0bad554a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
