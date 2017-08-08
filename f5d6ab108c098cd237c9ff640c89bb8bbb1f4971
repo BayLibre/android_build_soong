@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50e82291_d15b3ae4",
+        "filename": "finder/finder.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-08T21:03:15Z",
+      "side": 1,
+      "message": "This doesn\u0027t need to be a pointer any more",
+      "range": {
+        "startLine": 420,
+        "startChar": 19,
+        "endLine": 420,
+        "endChar": 20
+      },
+      "revId": "f5d6ab108c098cd237c9ff640c89bb8bbb1f4971",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

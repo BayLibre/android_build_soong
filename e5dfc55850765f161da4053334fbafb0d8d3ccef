@@ -363,6 +363,24 @@
       "revId": "e5dfc55850765f161da4053334fbafb0d8d3ccef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6d0dce1_9c70d2de",
+        "filename": "finder/finder.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 1150,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-08T21:03:15Z",
+      "side": 1,
+      "message": "If the error should really never happen, make it a panic(err)",
+      "parentUuid": "d62f4d04_d0fd8b1c",
+      "revId": "e5dfc55850765f161da4053334fbafb0d8d3ccef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
