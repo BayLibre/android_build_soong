@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5a60a95_a5667471",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-08T21:51:11Z",
+      "side": 1,
+      "message": "I don\u0027t think this should be here",
+      "range": {
+        "startLine": 503,
+        "startChar": 5,
+        "endLine": 503,
+        "endChar": 56
+      },
+      "revId": "fc3f650fc43f6d3618e2c64ded7f537d2b800eb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ce4599f_fe89e5af",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-08T21:51:11Z",
+      "side": 1,
+      "message": "This should be c.sanitize.Sanitizer(t) || c.sanitize.properties.SanitizeDep",
+      "range": {
+        "startLine": 518,
+        "startChar": 13,
+        "endLine": 518,
+        "endChar": 46
+      },
+      "revId": "fc3f650fc43f6d3618e2c64ded7f537d2b800eb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
