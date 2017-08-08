@@ -14,10 +14,34 @@
 
 package config
 
-import "android/soong/android"
+import (
+	"android/soong/android"
+	"strings"
+)
 
 var (
+	pctx = android.NewPackageContext("android/soong/java/config")
+
 	DefaultLibraries = []string{"core-oj", "core-libart", "ext", "framework", "okhttp"}
 )
 
-var pctx = android.NewPackageContext("android/soong/java/config")
+func init() {
+	pctx.StaticVariable("CommonJdkFlags", strings.Join([]string{
+		`-J-Xmx2048M`,
+		`-Xmaxerrs 9999999`,
+		`-encoding UTF-8`,
+		`-sourcepath ""`,
+		`-g`,
+	}, " "))
+
+	pctx.VariableConfigMethod("hostPrebuiltTag", android.Config.PrebuiltOS)
+
+	pctx.SourcePathVariableWithEnvOverride("JavaHome",
+		"prebuilts/jdk/jdk8/${hostPrebuiltTag}", "OVERRIDE_ANDROID_JAVA_HOME")
+	pctx.SourcePathVariable("JavaToolchain", "${JavaHome}/bin")
+	pctx.SourcePathVariableWithEnvOverride("JavacCmd",
+		"${JavaToolchain}/javac", "ALTERNATE_JAVAC")
+	pctx.SourcePathVariable("JavaCmd", "${JavaToolchain}/java")
+	pctx.SourcePathVariable("JarCmd", "${JavaToolchain}/jar")
+	pctx.SourcePathVariable("JavadocCmd", "${JavaToolchain}/javadoc")
+}

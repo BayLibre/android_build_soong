@@ -26,4 +26,11 @@ func init() {
 
 func makeVarsProvider(ctx android.MakeVarsContext) {
 	ctx.Strict("TARGET_DEFAULT_JAVA_LIBRARIES", strings.Join(DefaultLibraries, " "))
+
+	ctx.Strict("ANDROID_JAVA_HOME", "${JavaHome}")
+	ctx.Strict("ANDROID_JAVA_TOOLCHAIN", "${JavaToolchain}")
+	ctx.Strict("JAVAC", "${JavacCmd}")
+	ctx.Strict("JAR", "${JarCmd}")
+	ctx.Strict("JAVADOC", "${JavadocCmd}")
+	ctx.Strict("COMMON_JDK_FLAGS", "${CommonJdkFlags}")
 }
