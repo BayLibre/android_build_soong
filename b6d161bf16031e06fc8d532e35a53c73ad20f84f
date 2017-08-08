@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b38c81b_6097ecdf",
+        "filename": "finder/finder.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1148,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-08T23:50:00Z",
+      "side": 1,
+      "message": "Will this eventually propagate to a user visible error?",
+      "revId": "b6d161bf16031e06fc8d532e35a53c73ad20f84f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "82895a26_72daf1f8",
+        "filename": "finder/finder.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1155,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-08T23:50:00Z",
+      "side": 1,
+      "message": "I usually use fmt.Errorf in panics to make it an error type, although the end result printed by panic will be the same.",
+      "range": {
+        "startLine": 1155,
+        "startChar": 12,
+        "endLine": 1155,
+        "endChar": 19
+      },
+      "revId": "b6d161bf16031e06fc8d532e35a53c73ad20f84f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cc37b1e2_31a4556e",
+        "filename": "finder/finder.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1253,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-08T23:50:00Z",
+      "side": 1,
+      "message": "This should be a user visible error",
+      "revId": "b6d161bf16031e06fc8d532e35a53c73ad20f84f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
