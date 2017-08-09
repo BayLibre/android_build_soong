@@ -26,7 +26,15 @@ import (
 )
 
 func main() {
+	err := run()
+	if err != nil {
+		fmt.Fprintln(os.Stderr, err.Error())
+		os.Exit(1)
+	}
+}
+func run() error {
 	flag.Parse()
+	bootstrap.ModulesFile = filepath.Clean(filepath.Join(bootstrap.BuildDir, "../.module_paths/Android.bp.list"))
 
 	// The top-level Blueprints file is passed as the first argument.
 	srcDir := filepath.Dir(flag.Arg(0))
@@ -46,4 +54,5 @@ func main() {
 	ctx.SetAllowMissingDependencies(configuration.AllowMissingDependencies())
 
 	bootstrap.Main(ctx.Context, configuration, configuration.ConfigFileName, configuration.ProductVariablesFileName)
+	return nil
 }
