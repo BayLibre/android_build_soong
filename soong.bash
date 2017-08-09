@@ -45,4 +45,5 @@ if [ -f "${ENVFILE}" ]; then
     fi
 fi
 
+export BLUEPRINT_LIST_FILE="$(dirname ${BUILDDIR})/.module_paths/Android.bp.list"
 BUILDDIR="${BUILDDIR}" NINJA="prebuilts/build-tools/${PREBUILTOS}/bin/ninja" build/blueprint/blueprint.bash "$@"
