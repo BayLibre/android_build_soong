@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0fb04c66_cd0cf946",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1068404
+      },
+      "writtenOn": "2017-08-09T23:35:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4b50103_178f692c",
+      "range": {
+        "startLine": 506,
+        "startChar": 3,
+        "endLine": 506,
+        "endChar": 46
+      },
+      "revId": "6a201b514fd77dc79f983d9b478edcb39b102b09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8e44143_164d7746",
         "filename": "cc/sanitize.go",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2017-08-09T23:17:19Z",
       "side": 1,
       "message": "should these ones be inverted?\n\nto avoid mistakes in this logic, maybe make a helper that does the switch and returns the *bool property, and then Sanitizer and isSanitizerFalse can use it to get the *bool and apply the appropriate logic.\n\nAlso, maybe rename them to isSanitizerExplicitlyEnabled and isSanitizerExplicitlyDisabled.",
+      "range": {
+        "startLine": 509,
+        "startChar": 3,
+        "endLine": 509,
+        "endChar": 44
+      },
+      "revId": "6a201b514fd77dc79f983d9b478edcb39b102b09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "073c23a1_504779a4",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1068404
+      },
+      "writtenOn": "2017-08-09T23:35:06Z",
+      "side": 1,
+      "message": "Doh, yes....Fixed.",
+      "parentUuid": "d8e44143_164d7746",
       "range": {
         "startLine": 509,
         "startChar": 3,
