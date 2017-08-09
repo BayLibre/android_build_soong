@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fccbaa1a_a6a13573",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-09T23:43:39Z",
+      "side": 1,
+      "message": "I\u0027d move this check out to isSanitizerExplicitlyEnabled and isSanitizerExplicitlyDisabled, it will be clearer and avoid allocating the bool on the heap for every call.",
+      "revId": "13b778027dea31f275ce875a4abead7c7a62db13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0336504d_374ccfdc",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-09T23:43:39Z",
+      "side": 1,
+      "message": "This is equivalent to isSanitizerExplicitlyEnabled, delete it and replaces the other uses with the better named one?",
+      "revId": "13b778027dea31f275ce875a4abead7c7a62db13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e052149_015e7b8f",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-09T23:43:39Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be isSanitizerExplicitlyDisabled?",
+      "range": {
+        "startLine": 519,
+        "startChar": 5,
+        "endLine": 519,
+        "endChar": 48
+      },
+      "revId": "13b778027dea31f275ce875a4abead7c7a62db13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
