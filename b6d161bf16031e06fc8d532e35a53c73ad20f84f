@@ -109,6 +109,24 @@
     },
     {
       "key": {
+        "uuid": "4ae18123_bb24c083",
+        "filename": "finder/finder.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1148,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-09T20:15:02Z",
+      "side": 1,
+      "message": "Sure, or put a channel in Finder to send errors through",
+      "parentUuid": "80f752aa_1aa456fe",
+      "revId": "b6d161bf16031e06fc8d532e35a53c73ad20f84f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82895a26_72daf1f8",
         "filename": "finder/finder.go",
         "patchSetId": 17
