@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "420d9f9e_5c749e33",
+        "filename": "ui/build/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-09T05:43:42Z",
+      "side": 1,
+      "message": "The need for no continue here is non-obvious.  Maybe remove all the continues here, put the arg[0] \u003d\u003d \u0027-\u0027 into another else if, and move the dist handling to a check if \"dist\" is in arguments at the end?  Could be a separate patch.",
+      "revId": "1ae13ed008e5ee098b0508024151a7b7bb7400c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
