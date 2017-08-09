@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "80f752aa_1aa456fe",
+        "filename": "finder/finder.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1148,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-09T20:04:12Z",
+      "side": 1,
+      "message": "Do you have opinions about the mechanism by which the error is propagated?\n\nFor example, do you want to treat it like the WaitGroup, where there\u0027s a variable attached to Finder that stores any errors encountered, which gets checked after the search completes, and then gets returned as an extra return from New ?",
+      "parentUuid": "41e16990_9f0f76c4",
+      "revId": "b6d161bf16031e06fc8d532e35a53c73ad20f84f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82895a26_72daf1f8",
         "filename": "finder/finder.go",
         "patchSetId": 17
