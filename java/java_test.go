@@ -84,7 +84,7 @@ func testJava(t *testing.T, bp string) *android.TestContext {
 		"b.jar":      nil,
 	})
 
-	_, errs := ctx.ParseBlueprintsFiles("Android.bp")
+	_, errs := ctx.ParseFileList(".", []string{"Android.bp"})
 	fail(t, errs)
 	_, errs = ctx.PrepareBuildActions(config)
 	fail(t, errs)

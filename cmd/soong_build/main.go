@@ -25,6 +25,12 @@ import (
 	"android/soong/android"
 )
 
+var listFile string
+
+func init() {
+	flag.StringVar(&listFile, "l", "", "file listing modules to parse")
+}
+
 func main() {
 	flag.Parse()
 
@@ -44,6 +50,13 @@ func main() {
 	//ctx.SetIgnoreUnknownModuleTypes(true)
 
 	ctx.SetAllowMissingDependencies(configuration.AllowMissingDependencies())
+
+	ctx.SetModuleListFile(listFile)
+
+	err = os.Setenv("BLUEPRINT_LIST_FILE", listFile)
+	if err != nil {
+		panic(err)
+	}
 
 	bootstrap.Main(ctx.Context, configuration, configuration.ConfigFileName, configuration.ProductVariablesFileName)
 }
