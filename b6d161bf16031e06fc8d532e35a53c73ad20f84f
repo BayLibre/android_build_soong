@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "c1d6d82f_df54a738",
+        "filename": "finder/finder.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1148,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-09T00:17:26Z",
+      "side": 1,
+      "message": "It seems much more likely to me that you miss part of your tree due to permissions errors (mixing in sudo repo sync?), and end up with obscure failures due to silently missing modules.\n\nWhat does findleaves.py do for unreadable directories?",
+      "parentUuid": "df3052b5_8614f7d2",
+      "revId": "b6d161bf16031e06fc8d532e35a53c73ad20f84f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82895a26_72daf1f8",
         "filename": "finder/finder.go",
         "patchSetId": 17
