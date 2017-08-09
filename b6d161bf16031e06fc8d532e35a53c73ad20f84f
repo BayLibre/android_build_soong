@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "df3052b5_8614f7d2",
+        "filename": "finder/finder.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1148,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-09T00:10:47Z",
+      "side": 1,
+      "message": "It gets ignored.\n\nMy understanding from Dan was that we wanted to treat unreadable directories as empty, with the primary use case being in case multiple users have the same source directory and different out directories.",
+      "parentUuid": "1b38c81b_6097ecdf",
+      "revId": "b6d161bf16031e06fc8d532e35a53c73ad20f84f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82895a26_72daf1f8",
         "filename": "finder/finder.go",
         "patchSetId": 17
