@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "586bffaa_07e00dd4",
+        "filename": "finder/finder.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1148,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-08-09T00:20:59Z",
+      "side": 1,
+      "message": "Kati\u0027s find emulator ignores EACCES due to a partner filed bug for this use case:\n\nhttps://issuetracker.google.com/37553659\nhttps://github.com/google/kati/pull/116\n\nWe could still abort on other errors however.",
+      "parentUuid": "c1d6d82f_df54a738",
+      "revId": "b6d161bf16031e06fc8d532e35a53c73ad20f84f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82895a26_72daf1f8",
         "filename": "finder/finder.go",
         "patchSetId": 17
