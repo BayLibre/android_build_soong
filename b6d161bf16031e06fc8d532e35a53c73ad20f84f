@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "41e16990_9f0f76c4",
+        "filename": "finder/finder.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1148,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-09T04:53:17Z",
+      "side": 1,
+      "message": "That\u0027s unfortunate, I can think of plenty of ways you could get EACCES on source directories, and it seems obvious for multiple users to put their out directories in their own locations.\n\nFor now can you ignore EACCES, but fail on anything else?",
+      "parentUuid": "586bffaa_07e00dd4",
+      "revId": "b6d161bf16031e06fc8d532e35a53c73ad20f84f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82895a26_72daf1f8",
         "filename": "finder/finder.go",
         "patchSetId": 17
