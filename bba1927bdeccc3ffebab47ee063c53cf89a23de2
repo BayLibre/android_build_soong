@@ -16,6 +16,24 @@
       "revId": "bba1927bdeccc3ffebab47ee063c53cf89a23de2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "323df2d6_cd08b610",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1068404
+      },
+      "writtenOn": "2017-08-10T19:42:24Z",
+      "side": 1,
+      "message": "Ah, I was thinking host sanitization would still happen in the flags() function above. Since we aren\u0027t modifying the value of the Address property here, anything that needs to be sanitized for the host should still have that set to true. \n\nBut it means we won\u0027t be passing sanitization down to dependencies this way (it\u0027ll fall back to the previous buggy logic). Your proposal fixes that...will do that instead.",
+      "parentUuid": "bc113f68_291aadce",
+      "revId": "bba1927bdeccc3ffebab47ee063c53cf89a23de2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
