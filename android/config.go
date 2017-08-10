@@ -379,7 +379,7 @@ func (c *config) PlatformSdkVersion() string {
 }
 
 func MinSupportedSdkVersion() int {
-	return 9
+	return 14
 }
 
 // Codenames that are active in the current lunch target.
