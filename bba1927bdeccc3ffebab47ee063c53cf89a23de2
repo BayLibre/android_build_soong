@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc113f68_291aadce",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-10T19:32:09Z",
+      "side": 1,
+      "message": "Won\u0027t this disable all sanitization on the host?  I think you want to use the first clause of the if below for c.Host().",
+      "revId": "bba1927bdeccc3ffebab47ee063c53cf89a23de2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
