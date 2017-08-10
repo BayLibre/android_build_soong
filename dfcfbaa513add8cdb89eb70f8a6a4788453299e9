@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32c2dcbe_072154fc",
+        "filename": "fs/fs_darwin.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-10T21:13:19Z",
+      "side": 1,
+      "message": "This could just be Time{}, with the advantage that IsZero() on the result would return true.",
+      "range": {
+        "startLine": 48,
+        "startChar": 8,
+        "endLine": 48,
+        "endChar": 43
+      },
+      "revId": "dfcfbaa513add8cdb89eb70f8a6a4788453299e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
