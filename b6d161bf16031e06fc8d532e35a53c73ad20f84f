@@ -127,6 +127,24 @@
     },
     {
       "key": {
+        "uuid": "f0285f55_e3525616",
+        "filename": "finder/finder.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1148,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-10T20:47:57Z",
+      "side": 1,
+      "message": "What kinds of errors would we prefer cause a failure instead of being ignored?\n\nIt occurs to me that if the finder runs successfully, and then one of the directories that it previously scanned is replaced with a symlink pointing somewhere else, then the next run of the finder will try to Stat some directories somewhere else (potentially triggering whatever the errors are that might happen here).\n\nIs this a situation that we care about? (currently what happens is the failures are ignored, and when another goroutine calls Stat on the symlink, it discovers it\u0027s not a directory and disconnects the entire subtree all at once).\n\n(We could validate the parent directory before checking any child directory if it is something we care about; it seems like more work and less parallelism though. We could also have an extra-lax Stat behavior only for directories that were loaded from the cache; I suspect that increases the risk of differing results across runs though)",
+      "parentUuid": "4ae18123_bb24c083",
+      "revId": "b6d161bf16031e06fc8d532e35a53c73ad20f84f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82895a26_72daf1f8",
         "filename": "finder/finder.go",
         "patchSetId": 17
