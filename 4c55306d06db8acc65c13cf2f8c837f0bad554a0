@@ -116,6 +116,24 @@
       "revId": "4c55306d06db8acc65c13cf2f8c837f0bad554a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4a88056_123ee223",
+        "filename": "cc/vndk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-10T00:09:28Z",
+      "side": 1,
+      "message": "Assuming you will need to export all of them to make, I think it still make sense to just add somewhere in build/make:\n\n LOCAL_MODULE :\u003d vndk_package\n LOCAL_REQUIRED_MODULES :\u003d $(VNDK_CORE_LIBRARIES) ...\n include $(BUILD_PHONY_PACKAGE)\n\nLater when you figure out how you will do multiple packages you can do something like:\n\n LOCAL_MODULE :\u003d vndk_package.$(version)\n LOCAL_REQUIRED_MODUELS :\u003d $(VNDK_CORE_LIBRARIES.$(version))\n include $(BUILD_PHONY_PACKAGE)",
+      "parentUuid": "7e3c0300_ac94687a",
+      "revId": "4c55306d06db8acc65c13cf2f8c837f0bad554a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
