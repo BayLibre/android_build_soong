@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c17752ee_8f159323",
+        "filename": "java/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-08-11T20:28:41Z",
+      "side": 1,
+      "message": "This needs rebasing",
+      "range": {
+        "startLine": 48,
+        "startChar": 61,
+        "endLine": 48,
+        "endChar": 72
+      },
+      "revId": "d835031ad9d9e41908cb67be1d1e42fc58ce2dfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8518a42_a375e256",
+        "filename": "java/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-08-11T20:28:41Z",
+      "side": 1,
+      "message": "Why isn\u0027t the wrapper file a BUILD_PREBUILT EXECUTABLES with LOCAL_REQUIRED_MODULES?",
+      "range": {
+        "startLine": 67,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 38
+      },
+      "revId": "d835031ad9d9e41908cb67be1d1e42fc58ce2dfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
