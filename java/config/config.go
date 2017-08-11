@@ -15,7 +15,6 @@
 package config
 
 import (
-	"path/filepath"
 	"strings"
 
 	_ "github.com/google/blueprint/bootstrap"
@@ -53,7 +52,7 @@ func init() {
 	pctx.SourcePathVariable("JarCmd", "${JavaToolchain}/jar")
 	pctx.SourcePathVariable("JavadocCmd", "${JavaToolchain}/javadoc")
 
-	pctx.StaticVariable("SoongZipCmd", filepath.Join("${bootstrap.ToolDir}", "soong_zip"))
+	pctx.SourcePathVariable("JarArgsCmd", "build/soong/scripts/jar-args.sh")
 	pctx.HostBinToolVariable("DxCmd", "dx")
 	pctx.HostJavaToolVariable("JarjarCmd", "jarjar.jar")
 
