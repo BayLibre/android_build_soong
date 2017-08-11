@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6866271a_48836e22",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-08-11T20:24:18Z",
+      "side": 1,
+      "message": "Are you checking that out/soong/Android-*.mk is the same?\n\nLooks like that should also be checked when BOARD_VNDK_VERSION :\u003d current (as long as you find a branch that actually passes soong with that flag turned on)",
+      "revId": "d21554cb669021e6ea5fe2aaeed5f58ef8987808",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68f0e73a_214e2070",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-08-11T20:24:18Z",
+      "side": 1,
+      "message": "This is probably something that could use the preamble now",
+      "revId": "d21554cb669021e6ea5fe2aaeed5f58ef8987808",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b624aa21_f90315e6",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-08-11T20:24:18Z",
+      "side": 1,
+      "message": "This needs to use name+data.SubName",
+      "range": {
+        "startLine": 142,
+        "startChar": 38,
+        "endLine": 142,
+        "endChar": 43
+      },
+      "revId": "d21554cb669021e6ea5fe2aaeed5f58ef8987808",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dde4e70_398261ce",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-08-11T20:24:18Z",
+      "side": 1,
+      "message": "name+data.SubName",
+      "range": {
+        "startLine": 200,
+        "startChar": 63,
+        "endLine": 200,
+        "endChar": 67
+      },
+      "revId": "d21554cb669021e6ea5fe2aaeed5f58ef8987808",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
