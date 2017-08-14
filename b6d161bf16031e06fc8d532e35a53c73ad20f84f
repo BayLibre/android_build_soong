@@ -145,6 +145,24 @@
     },
     {
       "key": {
+        "uuid": "c7629f62_d23bec04",
+        "filename": "finder/finder.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1148,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-14T22:05:45Z",
+      "side": 1,
+      "message": "It would be nice if a dangling symlink was an error, but I expect that is infeasible, someone probably has a use case for checking in a dangling symlink somewhere in the tree.\n\nIgnoring errors when statting entries in the cache is probably the right thing to do, and marking the node as dirty.  Errors when statting real files on disk should not be ignored, except for specific use cases we need to allow (unreadable :(, maybe dangling symlinks).",
+      "parentUuid": "f0285f55_e3525616",
+      "revId": "b6d161bf16031e06fc8d532e35a53c73ad20f84f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82895a26_72daf1f8",
         "filename": "finder/finder.go",
         "patchSetId": 17
