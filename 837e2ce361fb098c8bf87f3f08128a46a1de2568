@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77910513_1849a948",
+        "filename": "finder/finder_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-14T23:55:40Z",
+      "side": 1,
+      "message": "Note that the nonexistence of an input directory was the only error case I bothered to test (although I both made a unit test and also tried it in the command-line interface).",
+      "revId": "837e2ce361fb098c8bf87f3f08128a46a1de2568",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
