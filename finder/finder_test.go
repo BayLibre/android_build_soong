@@ -26,6 +26,7 @@ import (
 	"io/ioutil"
 
 	"android/soong/fs"
+	"os"
 	"runtime/debug"
 	"time"
 )
@@ -36,6 +37,14 @@ func newFs() *fs.MockFs {
 }
 
 func newFinder(t *testing.T, filesystem *fs.MockFs, cacheParams CacheParams) *Finder {
+	f, err := newFinderAndErr(t, filesystem, cacheParams)
+	if err != nil {
+		fatal(t, err.Error())
+	}
+	return f
+}
+
+func newFinderAndErr(t *testing.T, filesystem *fs.MockFs, cacheParams CacheParams) (*Finder, error) {
 	cachePath := "/finder/finder-db"
 	cacheDir := filepath.Dir(cachePath)
 	filesystem.MkDirs(cacheDir)
@@ -44,16 +53,25 @@ func newFinder(t *testing.T, filesystem *fs.MockFs, cacheParams CacheParams) *Fi
 	}
 
 	logger := log.New(ioutil.Discard, "", 0)
-	finder := New(cacheParams, filesystem, logger, cachePath)
-	return finder
+	f, err := New(cacheParams, filesystem, logger, cachePath)
+	return f, err
 }
 
 func finderWithSameParams(t *testing.T, original *Finder) *Finder {
-	return New(
+	f, err := finderAndErrorWithSameParams(t, original)
+	if err != nil {
+		fatal(t, err.Error())
+	}
+	return f
+}
+
+func finderAndErrorWithSameParams(t *testing.T, original *Finder) (*Finder, error) {
+	f, err := New(
 		original.cacheMetadata.Config.CacheParams,
 		original.filesystem,
 		original.logger,
 		original.DbPath)
+	return f, err
 }
 
 func write(t *testing.T, path string, content string, filesystem *fs.MockFs) {
@@ -125,11 +143,20 @@ func setReadable(t *testing.T, path string, readable bool, filesystem *fs.MockFs
 		t.Fatal(err.Error())
 	}
 }
+
+func setReadErr(t *testing.T, path string, readErr error, filesystem *fs.MockFs) {
+	err := filesystem.SetReadErr(path, readErr)
+	if err != nil {
+		t.Fatal(err.Error())
+	}
+}
+
 func fatal(t *testing.T, message string) {
 	t.Error(message)
 	debug.PrintStack()
 	t.FailNow()
 }
+
 func assertSameResponse(t *testing.T, actual []string, expected []string) {
 	sort.Strings(actual)
 	sort.Strings(expected)
@@ -280,11 +307,11 @@ func TestFilesystemRoot(t *testing.T) {
 	assertSameResponse(t, foundPaths, []string{createdPath})
 }
 
-func TestNonexistentPath(t *testing.T) {
+func TestNonexistentDir(t *testing.T) {
 	filesystem := newFs()
 	create(t, "/tmp/findme.txt", filesystem)
 
-	finder := newFinder(
+	_, err := newFinderAndErr(
 		t,
 		filesystem,
 		CacheParams{
@@ -292,11 +319,9 @@ func TestNonexistentPath(t *testing.T) {
 			IncludeFiles: []string{"findme.txt", "skipme.txt"},
 		},
 	)
-	defer finder.Shutdown()
-
-	foundPaths := finder.FindNamedAt("/tmp/IAlsoDontExist", "findme.txt")
-
-	assertSameResponse(t, foundPaths, []string{})
+	if err == nil {
+		fatal(t, "Finder did not fail when given a nonexistent root directory")
+	}
 }
 
 func TestExcludeDirs(t *testing.T) {
@@ -392,7 +417,7 @@ func TestUncachedDir(t *testing.T) {
 		t,
 		filesystem,
 		CacheParams{
-			RootDirs:     []string{"/IDoNotExist"},
+			RootDirs:     []string{"/tmp/b"},
 			IncludeFiles: []string{"findme.txt"},
 		},
 	)
@@ -483,7 +508,7 @@ func TestRootDirsContainedInOtherRootDirs(t *testing.T) {
 		t,
 		filesystem,
 		CacheParams{
-			RootDirs:     []string{"/", "/a/b/c", "/a/b/c/d/e/f", "/a/b/c/d/e/f/g/h/i"},
+			RootDirs:     []string{"/", "/tmp/a/b/c", "/tmp/a/b/c/d/e/f", "/tmp/a/b/c/d/e/f/g/h/i"},
 			IncludeFiles: []string{"findme.txt"},
 		},
 	)
@@ -1570,4 +1595,34 @@ func TestFileNotPermitted(t *testing.T) {
 	finder.Shutdown()
 	// check results
 	assertSameResponse(t, foundPaths, []string{"/tmp/hi.txt"})
+}
+
+func TestCacheEntryPathUnexpectedError(t *testing.T) {
+	// setup filesystem
+	filesystem := newFs()
+	create(t, "/tmp/a/hi.txt", filesystem)
+
+	// run the first finder
+	finder := newFinder(
+		t,
+		filesystem,
+		CacheParams{
+			RootDirs:     []string{"/tmp"},
+			IncludeFiles: []string{"hi.txt"},
+		},
+	)
+	foundPaths := finder.FindAll()
+	filesystem.Clock.Tick()
+	finder.Shutdown()
+	// check results
+	assertSameResponse(t, foundPaths, []string{"/tmp/a/hi.txt"})
+
+	// make the directory not readable
+	setReadErr(t, "/tmp/a", os.ErrInvalid, filesystem)
+
+	// run the second finder
+	_, err := finderAndErrorWithSameParams(t, finder)
+	if err == nil {
+		fatal(t, "Failed to detect unexpected filesystem error")
+	}
 }
