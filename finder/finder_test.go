@@ -36,6 +36,14 @@ func newFs() *fs.MockFs {
 }
 
 func newFinder(t *testing.T, filesystem *fs.MockFs, cacheParams CacheParams) *Finder {
+	f, err := newFinderAndErr(t, filesystem, cacheParams)
+	if err != nil {
+		fatal(t, err.Error())
+	}
+	return f
+}
+
+func newFinderAndErr(t *testing.T, filesystem *fs.MockFs, cacheParams CacheParams) (*Finder, error) {
 	cachePath := "/finder/finder-db"
 	cacheDir := filepath.Dir(cachePath)
 	filesystem.MkDirs(cacheDir)
@@ -44,16 +52,20 @@ func newFinder(t *testing.T, filesystem *fs.MockFs, cacheParams CacheParams) *Fi
 	}
 
 	logger := log.New(ioutil.Discard, "", 0)
-	finder := New(cacheParams, filesystem, logger, cachePath)
-	return finder
+	f, err := New(cacheParams, filesystem, logger, cachePath)
+	return f, err
 }
 
 func finderWithSameParams(t *testing.T, original *Finder) *Finder {
-	return New(
+	f, err := New(
 		original.cacheMetadata.Config.CacheParams,
 		original.filesystem,
 		original.logger,
 		original.DbPath)
+	if err != nil {
+		fatal(t, err.Error())
+	}
+	return f
 }
 
 func write(t *testing.T, path string, content string, filesystem *fs.MockFs) {
@@ -280,11 +292,11 @@ func TestFilesystemRoot(t *testing.T) {
 	assertSameResponse(t, foundPaths, []string{createdPath})
 }
 
-func TestNonexistentPath(t *testing.T) {
+func TestNonexistentDir(t *testing.T) {
 	filesystem := newFs()
 	create(t, "/tmp/findme.txt", filesystem)
 
-	finder := newFinder(
+	_, err := newFinderAndErr(
 		t,
 		filesystem,
 		CacheParams{
@@ -292,11 +304,9 @@ func TestNonexistentPath(t *testing.T) {
 			IncludeFiles: []string{"findme.txt", "skipme.txt"},
 		},
 	)
-	defer finder.Shutdown()
-
-	foundPaths := finder.FindNamedAt("/tmp/IAlsoDontExist", "findme.txt")
-
-	assertSameResponse(t, foundPaths, []string{})
+	if err == nil {
+		fatal(t, "Finder did not fail when given a nonexistent root directory")
+	}
 }
 
 func TestExcludeDirs(t *testing.T) {
@@ -392,7 +402,7 @@ func TestUncachedDir(t *testing.T) {
 		t,
 		filesystem,
 		CacheParams{
-			RootDirs:     []string{"/IDoNotExist"},
+			RootDirs:     []string{"/tmp/b"},
 			IncludeFiles: []string{"findme.txt"},
 		},
 	)
