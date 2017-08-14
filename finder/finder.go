@@ -148,8 +148,11 @@ type Finder struct {
 	filesystem          fs.FileSystem
 
 	// temporary state
-	threadPool *threadPool
-	mutex      sync.Mutex
+	threadPool   *threadPool
+	mutex        sync.Mutex
+	loadingCache bool
+	errs         []error
+	errlock      sync.Mutex
 
 	// non-temporary state
 	modifiedFlag int32
@@ -158,7 +161,7 @@ type Finder struct {
 
 // New creates a new Finder for use
 func New(cacheParams CacheParams, filesystem fs.FileSystem,
-	logger Logger, dbPath string) *Finder {
+	logger Logger, dbPath string) (f *Finder, err error) {
 
 	numThreads := runtime.NumCPU() * 2
 	numDbLoadingThreads := numThreads
@@ -172,7 +175,7 @@ func New(cacheParams CacheParams, filesystem fs.FileSystem,
 		},
 	}
 
-	finder := &Finder{
+	f = &Finder{
 		numDbLoadingThreads: numDbLoadingThreads,
 		numSearchingThreads: numSearchingThreads,
 		cacheMetadata:       metadata,
@@ -183,10 +186,14 @@ func New(cacheParams CacheParams, filesystem fs.FileSystem,
 		DbPath: dbPath,
 	}
 
-	finder.loadFromFilesystem()
+	f.loadFromFilesystem()
 
-	finder.verbosef("Done parsing db\n")
-	return finder
+	err = f.getErr()
+	if err != nil {
+		return nil, err
+	}
+
+	return f, nil
 }
 
 // FindNamed searches for every cached file
@@ -338,10 +345,6 @@ func (f *Finder) loadFromFilesystem() {
 		f.startWithoutExternalCache()
 	}
 
-	startTime := time.Now()
-	f.verbosef("Waiting for pending requests to complete\n")
-	f.threadPool.Wait()
-	f.verbosef("Is idle after %v\n", time.Now().Sub(startTime))
 	f.threadPool = nil
 }
 
@@ -789,6 +792,11 @@ func (f *Finder) startFromExternalCache() (err error) {
 	startTime := time.Now()
 	dbPath := f.DbPath
 
+	f.loadingCache = true
+	defer func() {
+		f.loadingCache = false
+	}()
+
 	// open cache file and validate its header
 	reader, err := f.filesystem.Open(dbPath)
 	if err != nil {
@@ -943,13 +951,17 @@ func (f *Finder) startFromExternalCache() (err error) {
 	for i := range nodesToWalk {
 		f.listDirsAsync(nodesToWalk[i])
 	}
-	f.verbosef("Loaded db and statted its contents in %v\n", time.Since(startTime))
+	f.verbosef("Loaded db and statted known dirs in %v\n", time.Since(startTime))
+	f.threadPool.Wait()
+	f.verbosef("Loaded db and statted all dirs in %v\n", time.Now().Sub(startTime))
+
 	return err
 }
 
 // startWithoutExternalCache starts scanning the filesystem according to the cache config
 // startWithoutExternalCache should be called if startFromExternalCache is not applicable
 func (f *Finder) startWithoutExternalCache() {
+	startTime := time.Now()
 	configDirs := f.cacheMetadata.Config.RootDirs
 
 	// clean paths
@@ -977,6 +989,10 @@ func (f *Finder) startWithoutExternalCache() {
 		f.verbosef("Starting find of %v\n", path)
 		f.startFind(path)
 	}
+
+	f.threadPool.Wait()
+
+	f.verbosef("Scanned filesystem (not using cache) in %v\n", time.Now().Sub(startTime))
 }
 
 // isInfoUpToDate tells whether <new> can confirm that results computed at <old> are still valid
@@ -1114,6 +1130,60 @@ func (f *Finder) dumpDb() error {
 
 	f.verbosef("Wrote db in %v\n", time.Now().Sub(serializeDate))
 	return nil
+
+}
+
+// canIgnoreFsErr tells whether it's safe to ignore the given error received from the filesystem
+func (f *Finder) canIgnoreFsErr(err error) bool {
+	if f.loadingCache {
+		// Any filesystem call made while loading from cache might be using an outdated path.
+		// So, errors encountered while loading from cache can be ignored.
+		return true
+	}
+	pathErr, isPathErr := err.(*os.PathError)
+	if !isPathErr {
+		// Don't recognize this error
+		return false
+	}
+	if pathErr.Err == os.ErrPermission {
+		// Permission errors are ignored:
+		// https://issuetracker.google.com/37553659
+		// https://github.com/google/kati/pull/116
+		return true
+	}
+	// Don't recognize this error
+	return false
+}
+
+// onFsError should be called whenever a potentially fatal error is returned from a filesystem call
+func (f *Finder) onFsError(err error) {
+	if !f.canIgnoreFsErr(err) {
+		// We could send the errors through a channel instead, although that would cause this call
+		// to block unless we preallocated a sufficient buffer of spawned a reader thread.
+		// Although it wouldn't be too complicated to spawn a reader thread, it's still slightly
+		// more convenient to use a lock.
+		f.errlock.Lock()
+		f.errs = append(f.errs, err)
+		f.errlock.Unlock()
+	}
+}
+
+// getErr returns an error based on previous calls to onFsErr, if any
+func (f *Finder) getErr() error {
+	numErrs := len(f.errs)
+	if numErrs < 1 {
+		return nil
+	}
+
+	maxNumErrsToInclude := 10
+	message := ""
+	if numErrs > maxNumErrsToInclude {
+		message = fmt.Sprintf("finder encountered %v errors: %v...", numErrs, f.errs[:maxNumErrsToInclude])
+	} else {
+		message = fmt.Sprintf("finder encountered %v errors: %v", numErrs, f.errs)
+	}
+
+	return errors.New(message)
 }
 
 func (f *Finder) statDirAsync(dir *pathMap) {
@@ -1145,6 +1215,8 @@ func (f *Finder) statDirSync(path string) statResponse {
 
 	var stats statResponse
 	if err != nil {
+		// determine whether this error is fatal
+		f.onFsError(err)
 		// in case of a failure to stat the directory, treat the directory as missing (modTime = 0)
 		return stats
 	}
@@ -1248,6 +1320,8 @@ func (f *Finder) listDirSync(dir *pathMap) {
 	children, err := f.filesystem.ReadDir(path)
 
 	if err != nil {
+		// determine whether this error is fatal
+		f.onFsError(err)
 		// if listing the contents of the directory fails (presumably due to
 		// permission denied), then treat the directory as empty
 		children = []os.FileInfo{}
