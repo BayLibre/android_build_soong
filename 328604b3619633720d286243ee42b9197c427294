@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8bc5fb07_b9cb62d4",
+        "filename": "finder/finder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1173,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-15T17:12:30Z",
+      "side": 1,
+      "message": "You already have a reader goroutine, if you switched to a select {} block it could read from either the result or the error channel.",
+      "range": {
+        "startLine": 1173,
+        "startChar": 60,
+        "endLine": 1173,
+        "endChar": 83
+      },
+      "revId": "328604b3619633720d286243ee42b9197c427294",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4582aeb3_1a24657b",
+        "filename": "finder/finder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1173,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-15T17:12:30Z",
+      "side": 1,
+      "message": "or",
+      "range": {
+        "startLine": 1173,
+        "startChar": 57,
+        "endLine": 1173,
+        "endChar": 59
+      },
+      "revId": "328604b3619633720d286243ee42b9197c427294",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
