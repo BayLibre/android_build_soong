@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c917b8c0_c87aca53",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-08-15T21:31:20Z",
+      "side": 1,
+      "message": "These belong above",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 7
+      },
+      "revId": "142cc7c5b141d34ee2fb180d18d915b2c52c68f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6075e26b_7182990f",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-08-15T21:31:20Z",
+      "side": 1,
+      "message": "Why aren\u0027t we using log.Fatal inline below? There\u0027s only one thing that can return an error.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 2
+      },
+      "revId": "142cc7c5b141d34ee2fb180d18d915b2c52c68f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c3472d5_34d20e97",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-08-15T21:31:20Z",
+      "side": 1,
+      "message": "Why is this changing?",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 29
+      },
+      "revId": "142cc7c5b141d34ee2fb180d18d915b2c52c68f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aef5acd9_04ea8cee",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-08-15T21:31:20Z",
+      "side": 1,
+      "message": "Why are we forcing users to do this? It seems like either:\n\n f :\u003d build.NewSourceFinder()\n f.Shutdown()   (async)\n defer f.WaitForShutdown()\n\nor just skipping the Shutdown() altogether (if it\u0027s implied in NewSourceFinder) would make more sense.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 4
+      },
+      "revId": "142cc7c5b141d34ee2fb180d18d915b2c52c68f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6dd4b9d_75337528",
+        "filename": "ui/build/build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-08-15T21:31:20Z",
+      "side": 1,
+      "message": "These belong below the rest",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 26
+      },
+      "revId": "142cc7c5b141d34ee2fb180d18d915b2c52c68f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da378ae9_6e276a6b",
+        "filename": "ui/build/build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-08-15T21:31:20Z",
+      "side": 1,
+      "message": "I think we probably should push this into a new file, instead of making this file longer.",
+      "revId": "142cc7c5b141d34ee2fb180d18d915b2c52c68f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74f44a3b_b7babd8b",
+        "filename": "ui/build/build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-08-15T21:31:20Z",
+      "side": 1,
+      "message": "Why isn\u0027t this using ctx.Fatal?",
+      "range": {
+        "startLine": 139,
+        "startChar": 63,
+        "endLine": 139,
+        "endChar": 74
+      },
+      "revId": "142cc7c5b141d34ee2fb180d18d915b2c52c68f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
