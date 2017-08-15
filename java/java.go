@@ -306,18 +306,6 @@ func (j *Module) compile(ctx android.ModuleContext) {
 		flags.aidlFlags = "$aidlFlags"
 	}
 
-	var deps android.Paths
-
-	if len(bootClasspath) > 0 {
-		flags.bootClasspath = "-bootclasspath " + strings.Join(bootClasspath.Strings(), ":")
-		deps = append(deps, bootClasspath...)
-	}
-
-	if len(classpath) > 0 {
-		flags.classpath = "-classpath " + strings.Join(classpath.Strings(), ":")
-		deps = append(deps, classpath...)
-	}
-
 	srcFiles := ctx.ExpandSources(j.properties.Srcs, j.properties.Exclude_srcs)
 
 	srcFiles = j.genSources(ctx, srcFiles, flags)
@@ -330,11 +318,55 @@ func (j *Module) compile(ctx android.ModuleContext) {
 
 	srcFileLists = append(srcFileLists, j.ExtraSrcLists...)
 
+	var deps android.Paths
+
+	if hasExt(srcFiles, ".kt") {
+		// If there are kotlin files, compile them first but pass all the kotlin and java files
+		// kotlinc will use the java files to resolve types referenced by the kotlin files, but
+		// won't emit any classes for them.
+
+		var kotlincDeps android.Paths
+
+		flags.kotlincFlags = "-no-stdlib"
+		if ctx.Device() {
+			flags.kotlincFlags += " -no-jdk"
+		}
+
+		flags.kotlincClasspath = "-classpath ${config.KotlinRuntimeJar}"
+		if len(classpath) > 0 {
+			flags.kotlincClasspath += ":" + strings.Join(classpath.Strings(), ":")
+			kotlincDeps = append(android.Paths{}, classpath...)
+		}
+
+		classes := TransformKotlinToClasses(ctx, srcFiles, srcFileLists, flags, kotlincDeps)
+		if ctx.Failed() {
+			return
+		}
+
+		kotlinJar := TransformClassesToJar(ctx, []jarSpec{classes}, android.OptionalPath{}, nil)
+
+		// Make javac rule depend on the kotlinc rule
+		deps = append(deps, kotlinJar)
+		classpath = append(classpath, kotlinJar)
+		// Jar kotlin classes into the final jar after javac
+		classJarSpecs = append([]jarSpec{classes}, classJarSpecs...)
+	}
+
+	if len(bootClasspath) > 0 {
+		flags.bootClasspath = "-bootclasspath " + strings.Join(bootClasspath.Strings(), ":")
+		deps = append(deps, bootClasspath...)
+	}
+
+	if len(classpath) > 0 {
+		flags.classpath = "-classpath " + strings.Join(classpath.Strings(), ":")
+		deps = append(deps, classpath...)
+	}
+
 	var extraJarDeps android.Paths
 
-	if len(srcFiles) > 0 {
+	if javaSrcFiles := filterExt(srcFiles, ".java"); len(javaSrcFiles) > 0 {
 		// Compile java sources into .class files
-		classes := TransformJavaToClasses(ctx, srcFiles, srcFileLists, flags, deps)
+		classes := TransformJavaToClasses(ctx, javaSrcFiles, srcFileLists, flags, deps)
 		if ctx.Failed() {
 			return
 		}
@@ -716,4 +748,25 @@ func DefaultsFactory(props ...interface{}) android.Module {
 	android.InitDefaultsModule(module)
 
 	return module
+}
+
+func hasExt(srcs android.Paths, ext string) bool {
+	for _, src := range srcs {
+		if src.Ext() == ext {
+			return true
+		}
+	}
+
+	return false
+}
+
+func filterExt(srcs android.Paths, ext string) android.Paths {
+	ret := make(android.Paths, 0, len(srcs))
+	for _, src := range srcs {
+		if src.Ext() == ext {
+			ret = append(ret, src)
+		}
+	}
+
+	return ret
 }

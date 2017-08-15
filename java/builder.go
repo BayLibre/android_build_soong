@@ -49,6 +49,21 @@ var (
 		},
 		"javacFlags", "bootClasspath", "classpath", "outDir", "annoDir", "javaVersion")
 
+	kotlinc = pctx.AndroidGomaStaticRule("kotlinc",
+		blueprint.RuleParams{
+			Command: `rm -rf "$outDir" "$annoDir" && mkdir -p "$outDir" "$annoDir" && ` +
+				`${config.JavaCmd} -cp ${config.KotlinCompilerJar} ` +
+				`org.jetbrains.kotlin.cli.jvm.K2JVMCompiler ` +
+				`$classpath $kotlincFlags` +
+				`-jvm-target $javaVersion ` +
+				`-d $outDir @$out.rsp && ` +
+				`find $outDir -type f | sort | ${config.JarArgsCmd} $outDir > $out`,
+			CommandDeps:    []string{"${config.JavacCmd}", "${config.JarArgsCmd}"},
+			Rspfile:        "$out.rsp",
+			RspfileContent: "$in",
+		},
+		"classpath", "outDir", "javaVersion")
+
 	errorprone = pctx.AndroidStaticRule("errorprone",
 		blueprint.RuleParams{
 			Command: `rm -rf "$outDir" "$annoDir" && mkdir -p "$outDir" "$annoDir" && ` +
@@ -119,6 +134,9 @@ type javaBuilderFlags struct {
 	classpath     string
 	aidlFlags     string
 	javaVersion   string
+
+	kotlincFlags     string
+	kotlincClasspath string
 }
 
 type jarSpec struct {
@@ -131,6 +149,33 @@ func (j jarSpec) jarArgs() string {
 
 func (j jarSpec) path() android.Path {
 	return j.ModuleOutPath
+}
+
+func TransformKotlinToClasses(ctx android.ModuleContext, srcFiles android.Paths, srcFileLists android.Paths,
+	flags javaBuilderFlags, deps android.Paths) jarSpec {
+
+	classDir := android.PathForModuleOut(ctx, "classes-kt")
+	classFileList := android.PathForModuleOut(ctx, "classes-kt.list")
+
+	kotlincFlags := flags.kotlincFlags + " " + android.JoinWithPrefix(srcFileLists.Strings(), "@")
+
+	deps = append(deps, srcFileLists...)
+
+	ctx.ModuleBuild(pctx, android.ModuleBuildParams{
+		Rule:        kotlinc,
+		Description: "kotlinc",
+		Output:      classFileList,
+		Inputs:      srcFiles,
+		Implicits:   deps,
+		Args: map[string]string{
+			"classpath":    flags.kotlincClasspath,
+			"kotlincFlags": kotlincFlags,
+			"outDir":       classDir.String(),
+			"javaVersion":  flags.javaVersion,
+		},
+	})
+
+	return jarSpec{classFileList}
 }
 
 func TransformJavaToClasses(ctx android.ModuleContext, srcFiles android.Paths, srcFileLists android.Paths,
