@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "646dfa85_fd8cf655",
+        "filename": "androidmk/cmd/androidmk/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-15T20:18:01Z",
+      "side": 1,
+      "message": "I don\u0027t think it is worth differentiating between WARNING and ERROR here, since neither is ever fatal.",
+      "revId": "d8b2e75c2ac490db47f986f45fe8ac5c266ceceb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7c7712a_37d4a3d8",
+        "filename": "androidmk/cmd/androidmk/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-15T20:18:01Z",
+      "side": 1,
+      "message": "what is the underscore for?",
+      "range": {
+        "startLine": 70,
+        "startChar": 17,
+        "endLine": 70,
+        "endChar": 18
+      },
+      "revId": "d8b2e75c2ac490db47f986f45fe8ac5c266ceceb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
