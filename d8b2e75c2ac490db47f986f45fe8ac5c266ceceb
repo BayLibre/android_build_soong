@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7691a04a_5712d8ba",
+        "filename": "androidmk/cmd/androidmk/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-15T20:23:14Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s what I did at first too, and then Dan asked why it was echoing the problematic lines but also translating them (since that\u0027s what errorf does)",
+      "parentUuid": "646dfa85_fd8cf655",
+      "revId": "d8b2e75c2ac490db47f986f45fe8ac5c266ceceb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7c7712a_37d4a3d8",
         "filename": "androidmk/cmd/androidmk/androidmk.go",
         "patchSetId": 4
@@ -30,6 +48,30 @@
       "writtenOn": "2017-08-15T20:18:01Z",
       "side": 1,
       "message": "what is the underscore for?",
+      "range": {
+        "startLine": 70,
+        "startChar": 17,
+        "endLine": 70,
+        "endChar": 18
+      },
+      "revId": "d8b2e75c2ac490db47f986f45fe8ac5c266ceceb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2e053e6_2bd7c219",
+        "filename": "androidmk/cmd/androidmk/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-15T20:23:14Z",
+      "side": 1,
+      "message": "Hmm. I probably added that to emphasize that it wasn\u0027t suppose to be called by external callers. I\u0027ll just remove the underscore since the function isn\u0027t exported.",
+      "parentUuid": "f7c7712a_37d4a3d8",
       "range": {
         "startLine": 70,
         "startChar": 17,
