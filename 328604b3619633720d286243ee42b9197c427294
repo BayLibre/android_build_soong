@@ -45,6 +45,54 @@
       "revId": "328604b3619633720d286243ee42b9197c427294",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6dc67793_e43793e7",
+        "filename": "finder/finder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1173,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-15T18:24:25Z",
+      "side": 1,
+      "message": "thanks",
+      "parentUuid": "4582aeb3_1a24657b",
+      "range": {
+        "startLine": 1173,
+        "startChar": 57,
+        "endLine": 1173,
+        "endChar": 59
+      },
+      "revId": "328604b3619633720d286243ee42b9197c427294",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e5c4eb2_812193f1",
+        "filename": "finder/finder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1173,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-15T18:24:25Z",
+      "side": 1,
+      "message": "Are you referring to combineResults within startFromExternalCache? There\u0027d have to be a reader within startWithoutExternalCache too.",
+      "parentUuid": "8bc5fb07_b9cb62d4",
+      "range": {
+        "startLine": 1173,
+        "startChar": 60,
+        "endLine": 1173,
+        "endChar": 83
+      },
+      "revId": "328604b3619633720d286243ee42b9197c427294",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
