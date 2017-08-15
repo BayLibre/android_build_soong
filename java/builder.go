@@ -49,6 +49,18 @@ var (
 		},
 		"javacFlags", "bootClasspath", "classpath", "outDir", "annoDir", "javaVersion")
 
+	kotlinc = pctx.AndroidGomaStaticRule("kotlinc",
+		blueprint.RuleParams{
+			Command: `rm -rf "$outDir" && mkdir -p "$outDir" && ` +
+				`${config.KotlincCmd} $classpath $kotlincFlags ` +
+				`-jvm-target $javaVersion -d $outDir $in && ` +
+				`find $outDir -type f | sort | ${config.JarArgsCmd} $outDir > $out`,
+			CommandDeps: []string{"${config.KotlincCmd}", "${config.KotlinCompilerJar}", "${config.JarArgsCmd}"},
+			// TODO(ccross): kotlinc doesn't support @ file for arguments, which will limit the
+			// maximum number of input files, especially on darwin.
+		},
+		"kotlincFlags", "classpath", "outDir", "javaVersion")
+
 	errorprone = pctx.AndroidStaticRule("errorprone",
 		blueprint.RuleParams{
 			Command: `rm -rf "$outDir" "$annoDir" && mkdir -p "$outDir" "$annoDir" && ` +
@@ -119,6 +131,9 @@ type javaBuilderFlags struct {
 	classpath     string
 	aidlFlags     string
 	javaVersion   string
+
+	kotlincFlags     string
+	kotlincClasspath string
 }
 
 type jarSpec struct {
@@ -131,6 +146,33 @@ func (j jarSpec) jarArgs() string {
 
 func (j jarSpec) path() android.Path {
 	return j.ModuleOutPath
+}
+
+func TransformKotlinToClasses(ctx android.ModuleContext, srcFiles android.Paths, srcFileLists android.Paths,
+	flags javaBuilderFlags, deps android.Paths) jarSpec {
+
+	classDir := android.PathForModuleOut(ctx, "classes-kt")
+	classFileList := android.PathForModuleOut(ctx, "classes-kt.list")
+
+	kotlincFlags := flags.kotlincFlags + " " + android.JoinWithPrefix(srcFileLists.Strings(), "@")
+
+	deps = append(deps, srcFileLists...)
+
+	ctx.ModuleBuild(pctx, android.ModuleBuildParams{
+		Rule:        kotlinc,
+		Description: "kotlinc",
+		Output:      classFileList,
+		Inputs:      srcFiles,
+		Implicits:   deps,
+		Args: map[string]string{
+			"classpath":    flags.kotlincClasspath,
+			"kotlincFlags": kotlincFlags,
+			"outDir":       classDir.String(),
+			"javaVersion":  flags.javaVersion,
+		},
+	})
+
+	return jarSpec{classFileList}
 }
 
 func TransformJavaToClasses(ctx android.ModuleContext, srcFiles android.Paths, srcFileLists android.Paths,
@@ -193,10 +235,10 @@ func RunErrorProne(ctx android.ModuleContext, srcFiles android.Paths, srcFileLis
 	return classFileList
 }
 
-func TransformClassesToJar(ctx android.ModuleContext, classes []jarSpec,
+func TransformClassesToJar(ctx android.ModuleContext, stem string, classes []jarSpec,
 	manifest android.OptionalPath, deps android.Paths) android.Path {
 
-	outputFile := android.PathForModuleOut(ctx, "classes-full-debug.jar")
+	outputFile := android.PathForModuleOut(ctx, stem)
 
 	jarArgs := []string{}
 

@@ -62,7 +62,7 @@ func testJava(t *testing.T, bp string) *android.TestContext {
 	ctx.PreArchMutators(android.RegisterDefaultsPreArchMutators)
 	ctx.Register()
 
-	extraModules := []string{"core-libart", "frameworks", "sdk_v14"}
+	extraModules := []string{"core-libart", "frameworks", "sdk_v14", "kotlin-stdlib"}
 
 	for _, extra := range extraModules {
 		bp += fmt.Sprintf(`
@@ -80,6 +80,7 @@ func testJava(t *testing.T, bp string) *android.TestContext {
 		"c.java":     nil,
 		"a.jar":      nil,
 		"b.jar":      nil,
+		"b.kt":       nil,
 	})
 
 	_, errs := ctx.ParseBlueprintsFiles("Android.bp")
@@ -274,6 +275,38 @@ func TestDefaults(t *testing.T) {
 	baz := filepath.Join(buildDir, ".intermediates", "baz", "classes.list")
 	if !strings.Contains(jar.Args["jarArgs"], baz) {
 		t.Errorf("foo jarArgs %v does not contain %q", jar.Args["jarArgs"], baz)
+	}
+}
+
+func TestKotlin(t *testing.T) {
+	ctx := testJava(t, `
+		java_library {
+			name: "foo",
+                        srcs: ["a.java", "b.kt"],
+		}
+		`)
+
+	kotlinc := ctx.ModuleForTests("foo", "").Rule("kotlinc")
+	javac := ctx.ModuleForTests("foo", "").Rule("javac")
+	jar := ctx.ModuleForTests("foo", "").Output("classes-full-debug.jar")
+
+	if len(kotlinc.Inputs) != 2 || kotlinc.Inputs[0].String() != "a.java" ||
+		kotlinc.Inputs[1].String() != "b.kt" {
+		t.Errorf(`foo kotlinc inputs %v != ["a.java", "b.kt"]`, kotlinc.Inputs)
+	}
+
+	if len(javac.Inputs) != 1 || javac.Inputs[0].String() != "a.java" {
+		t.Errorf(`foo inputs %v != ["a.java"]`, javac.Inputs)
+	}
+
+	kotlinJar := filepath.Join(buildDir, ".intermediates", "foo", "classes-kt.jar")
+	if !strings.Contains(javac.Args["classpath"], kotlinJar) {
+		t.Errorf("foo classpath %v does not contain %q", javac.Args["classpath"], kotlinJar)
+	}
+
+	kotlinClasses := filepath.Join(buildDir, ".intermediates", "foo", "classes-kt.list")
+	if !strings.Contains(jar.Args["jarArgs"], kotlinClasses) {
+		t.Errorf("foo jarArgs %v does not contain %q", jar.Args["jarArgs"], kotlinClasses)
 	}
 }
 
