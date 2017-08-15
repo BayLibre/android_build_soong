@@ -93,6 +93,30 @@
       "revId": "328604b3619633720d286243ee42b9197c427294",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dbd1fb42_d77883c9",
+        "filename": "finder/finder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1173,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-15T20:13:46Z",
+      "side": 1,
+      "message": "I see, this is fine then.",
+      "parentUuid": "9e5c4eb2_812193f1",
+      "range": {
+        "startLine": 1173,
+        "startChar": 60,
+        "endLine": 1173,
+        "endChar": 83
+      },
+      "revId": "328604b3619633720d286243ee42b9197c427294",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
