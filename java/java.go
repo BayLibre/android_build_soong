@@ -20,6 +20,7 @@ package java
 
 import (
 	"fmt"
+	"path/filepath"
 	"strconv"
 	"strings"
 
@@ -171,6 +172,7 @@ var (
 	bootClasspathTag = dependencyTag{name: "bootclasspath"}
 	frameworkResTag  = dependencyTag{name: "framework-res"}
 	sdkDependencyTag = dependencyTag{name: "sdk"}
+	kotlinStdlibTag  = dependencyTag{name: "kotlin-stdlib"}
 )
 
 func (j *Module) deps(ctx android.BottomUpMutatorContext) {
@@ -200,6 +202,12 @@ func (j *Module) deps(ctx android.BottomUpMutatorContext) {
 	}
 	ctx.AddDependency(ctx.Module(), libTag, j.properties.Libs...)
 	ctx.AddDependency(ctx.Module(), staticLibTag, j.properties.Static_libs...)
+
+	if hasExt(j.properties.Srcs, ".kt") {
+		// TODO(ccross): move this to a mutator pass that can tell if generated sources contain
+		// Kotlin files
+		ctx.AddDependency(ctx.Module(), kotlinStdlibTag, "kotlin-stdlib")
+	}
 }
 
 func (j *Module) aidlFlags(ctx android.ModuleContext, aidlPreprocess android.OptionalPath,
@@ -226,7 +234,8 @@ func (j *Module) aidlFlags(ctx android.ModuleContext, aidlPreprocess android.Opt
 
 func (j *Module) collectDeps(ctx android.ModuleContext) (classpath android.Paths,
 	bootClasspath android.Paths, classJarSpecs, resourceJarSpecs []jarSpec, aidlPreprocess android.OptionalPath,
-	aidlIncludeDirs android.Paths, srcFileLists android.Paths) {
+	aidlIncludeDirs android.Paths, srcFileLists android.Paths, kotlinStdlib android.Paths,
+	kotlinStdlibJarSpecs []jarSpec) {
 
 	ctx.VisitDirectDeps(func(module blueprint.Module) {
 		otherName := ctx.OtherModuleName(module)
@@ -267,6 +276,9 @@ func (j *Module) collectDeps(ctx android.ModuleContext) (classpath android.Paths
 					aidlPreprocess = sdkDep.AidlPreprocessed()
 				}
 			}
+		case kotlinStdlibTag:
+			kotlinStdlib = dep.ClasspathFiles()
+			kotlinStdlibJarSpecs = dep.ClassJarSpecs()
 		default:
 			panic(fmt.Errorf("unknown dependency %q for %q", otherName, ctx.ModuleName()))
 		}
@@ -275,7 +287,7 @@ func (j *Module) collectDeps(ctx android.ModuleContext) (classpath android.Paths
 	})
 
 	return classpath, bootClasspath, classJarSpecs, resourceJarSpecs, aidlPreprocess,
-		aidlIncludeDirs, srcFileLists
+		aidlIncludeDirs, srcFileLists, kotlinStdlib, kotlinStdlibJarSpecs
 }
 
 func (j *Module) compile(ctx android.ModuleContext) {
@@ -283,7 +295,7 @@ func (j *Module) compile(ctx android.ModuleContext) {
 	j.exportAidlIncludeDirs = android.PathsForModuleSrc(ctx, j.deviceProperties.Export_aidl_include_dirs)
 
 	classpath, bootClasspath, classJarSpecs, resourceJarSpecs, aidlPreprocess,
-		aidlIncludeDirs, srcFileLists := j.collectDeps(ctx)
+		aidlIncludeDirs, srcFileLists, kotlinStdlib, kotlinStdlibJarSpecs := j.collectDeps(ctx)
 
 	var flags javaBuilderFlags
 
@@ -306,18 +318,6 @@ func (j *Module) compile(ctx android.ModuleContext) {
 		flags.aidlFlags = "$aidlFlags"
 	}
 
-	var deps android.Paths
-
-	if len(bootClasspath) > 0 {
-		flags.bootClasspath = "-bootclasspath " + strings.Join(bootClasspath.Strings(), ":")
-		deps = append(deps, bootClasspath...)
-	}
-
-	if len(classpath) > 0 {
-		flags.classpath = "-classpath " + strings.Join(classpath.Strings(), ":")
-		deps = append(deps, classpath...)
-	}
-
 	srcFiles := ctx.ExpandSources(j.properties.Srcs, j.properties.Exclude_srcs)
 
 	srcFiles = j.genSources(ctx, srcFiles, flags)
@@ -330,11 +330,53 @@ func (j *Module) compile(ctx android.ModuleContext) {
 
 	srcFileLists = append(srcFileLists, j.ExtraSrcLists...)
 
+	var deps android.Paths
+
+	if srcFiles.HasExt(".kt") {
+		// If there are kotlin files, compile them first but pass all the kotlin and java files
+		// kotlinc will use the java files to resolve types referenced by the kotlin files, but
+		// won't emit any classes for them.
+
+		flags.kotlincFlags = "-no-stdlib"
+		if ctx.Device() {
+			flags.kotlincFlags += " -no-jdk"
+		}
+
+		var kotlincClasspath android.Paths
+		kotlincClasspath = append(kotlincClasspath, kotlinStdlib...)
+		kotlincClasspath = append(kotlincClasspath, classpath...)
+		flags.kotlincClasspath = "-classpath " + strings.Join(kotlincClasspath.Strings(), ":")
+
+		classes := TransformKotlinToClasses(ctx, srcFiles, srcFileLists, flags, kotlincClasspath)
+		if ctx.Failed() {
+			return
+		}
+
+		kotlinJar := TransformClassesToJar(ctx, "classes-kt.jar", []jarSpec{classes}, android.OptionalPath{}, nil)
+
+		// Make javac rule depend on the kotlinc rule
+		deps = append(deps, kotlinJar)
+		classpath = append(classpath, kotlinJar)
+		// Jar kotlin classes into the final jar after javac
+		jarSpecs := append([]jarSpec{classes}, kotlinStdlibJarSpecs...)
+		classJarSpecs = append(jarSpecs, classJarSpecs...)
+	}
+
+	if len(bootClasspath) > 0 {
+		flags.bootClasspath = "-bootclasspath " + strings.Join(bootClasspath.Strings(), ":")
+		deps = append(deps, bootClasspath...)
+	}
+
+	if len(classpath) > 0 {
+		flags.classpath = "-classpath " + strings.Join(classpath.Strings(), ":")
+		deps = append(deps, classpath...)
+	}
+
 	var extraJarDeps android.Paths
 
-	if len(srcFiles) > 0 {
+	if javaSrcFiles := srcFiles.FilterByExt(".java"); len(javaSrcFiles) > 0 {
 		// Compile java sources into .class files
-		classes := TransformJavaToClasses(ctx, srcFiles, srcFileLists, flags, deps)
+		classes := TransformJavaToClasses(ctx, javaSrcFiles, srcFileLists, flags, deps)
 		if ctx.Failed() {
 			return
 		}
@@ -346,7 +388,7 @@ func (j *Module) compile(ctx android.ModuleContext) {
 			// the jar command so the two compiles can run in parallel.
 			// TODO(ccross): Once we always compile with javac9 we may be able to conditionally
 			//    enable error-prone without affecting the output class files.
-			errorprone := RunErrorProne(ctx, srcFiles, srcFileLists, flags, deps)
+			errorprone := RunErrorProne(ctx, javaSrcFiles, srcFileLists, flags, deps)
 			extraJarDeps = append(extraJarDeps, errorprone)
 		}
 
@@ -362,7 +404,7 @@ func (j *Module) compile(ctx android.ModuleContext) {
 	allJarSpecs = append(allJarSpecs, resourceJarSpecs...)
 
 	// Combine classes + resources into classes-full-debug.jar
-	outputFile := TransformClassesToJar(ctx, allJarSpecs, manifest, extraJarDeps)
+	outputFile := TransformClassesToJar(ctx, "classes-full-debug.jar", allJarSpecs, manifest, extraJarDeps)
 	if ctx.Failed() {
 		return
 	}
@@ -588,7 +630,7 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		j.resourceJarSpecs = append(j.resourceJarSpecs, resourceJarSpec)
 	}
 
-	j.combinedClasspathFile = TransformClassesToJar(ctx, j.classJarSpecs, android.OptionalPath{}, nil)
+	j.combinedClasspathFile = TransformClassesToJar(ctx, "classes.jar", j.classJarSpecs, android.OptionalPath{}, nil)
 
 	ctx.InstallFileName(android.PathForModuleInstall(ctx, "framework"),
 		ctx.ModuleName()+".jar", j.combinedClasspathFile)
@@ -716,4 +758,14 @@ func DefaultsFactory(props ...interface{}) android.Module {
 	android.InitDefaultsModule(module)
 
 	return module
+}
+
+func hasExt(srcs []string, ext string) bool {
+	for _, src := range srcs {
+		if filepath.Ext(src) == ext {
+			return true
+		}
+	}
+
+	return false
 }
