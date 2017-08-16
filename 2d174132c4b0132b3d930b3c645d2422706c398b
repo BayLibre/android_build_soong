@@ -16,6 +16,24 @@
       "revId": "2d174132c4b0132b3d930b3c645d2422706c398b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23095a01_ba9429bc",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-16T02:40:10Z",
+      "side": 1,
+      "message": "Actually it looks like the Name field propagates directly through the the zip header, so the / is probably necessary.",
+      "parentUuid": "89a9a849_ffc180eb",
+      "revId": "2d174132c4b0132b3d930b3c645d2422706c398b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
