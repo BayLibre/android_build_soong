@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00f36c72_59136dd2",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-16T01:49:38Z",
+      "side": 1,
+      "message": "filepath.Clean will do this for you",
+      "revId": "c35efb3fde995237665f7456619ab75f5803aefc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9bdbbe6_5985145b",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-16T01:49:38Z",
+      "side": 1,
+      "message": "cleanDir can\u0027t be \"\" here",
+      "revId": "c35efb3fde995237665f7456619ab75f5803aefc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5b1e0b4e_a60e3025",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-16T01:49:38Z",
+      "side": 1,
+      "message": "Is the trailing slash necessary?  If so, i think it would be better to add it when creating the zip.FileHeader below to avoid the need for cleanDir and zipDir here.",
+      "revId": "c35efb3fde995237665f7456619ab75f5803aefc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
