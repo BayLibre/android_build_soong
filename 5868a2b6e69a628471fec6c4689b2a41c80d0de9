@@ -22,6 +22,30 @@
       "revId": "5868a2b6e69a628471fec6c4689b2a41c80d0de9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e0f1030_fa4bfe0e",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-16T19:35:17Z",
+      "side": 1,
+      "message": "Yeah, it seemed odd to me too but I hadn\u0027t planned on changing it yet. I think that it was a way to avoid blocking in this case but to still increase the memory usage.\n\nWould you prefer \"z.memoryRateLimiter.Request(int64(len(dest)))\" ?",
+      "parentUuid": "8b8dbf8a_ff3c199f",
+      "range": {
+        "startLine": 714,
+        "startChar": 34,
+        "endLine": 714,
+        "endChar": 35
+      },
+      "revId": "5868a2b6e69a628471fec6c4689b2a41c80d0de9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
