@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89a9a849_ffc180eb",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-16T02:34:40Z",
+      "side": 1,
+      "message": "I wouldn\u0027t be surprised if the / is unnecessary here too, the os.ModeDir below should be enough to tell zip that it is a directory, so the final result will probably still show a trailing /",
+      "revId": "2d174132c4b0132b3d930b3c645d2422706c398b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
