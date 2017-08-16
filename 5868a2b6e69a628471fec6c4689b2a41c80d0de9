@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b8dbf8a_ff3c199f",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-16T02:30:03Z",
+      "side": 1,
+      "message": "What is this negative size for?",
+      "range": {
+        "startLine": 714,
+        "startChar": 34,
+        "endLine": 714,
+        "endChar": 35
+      },
+      "revId": "5868a2b6e69a628471fec6c4689b2a41c80d0de9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
