@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3012f784_ec4adcc8",
+        "filename": "cmd/soong_zip/rate_limit.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-16T01:25:11Z",
+      "side": 1,
+      "message": "thanks",
+      "parentUuid": "4db2205f_77e3ad71",
+      "range": {
+        "startLine": 23,
+        "startChar": 18,
+        "endLine": 23,
+        "endChar": 19
+      },
+      "revId": "3eea61491a8593c5df8a9f77f2973f548ee82fac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1bf5655_3f3c4d6e",
         "filename": "cmd/soong_zip/rate_limit.go",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-08-16T01:06:46Z",
       "side": 1,
       "message": "As an alternative, what about always letting Request() succeed if it the count is at 0?",
+      "range": {
+        "startLine": 38,
+        "startChar": 34,
+        "endLine": 38,
+        "endChar": 69
+      },
+      "revId": "3eea61491a8593c5df8a9f77f2973f548ee82fac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b7f8483_e6d9f52b",
+        "filename": "cmd/soong_zip/rate_limit.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-16T01:25:11Z",
+      "side": 1,
+      "message": "sounds good to me",
+      "parentUuid": "c1bf5655_3f3c4d6e",
       "range": {
         "startLine": 38,
         "startChar": 34,
