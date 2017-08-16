@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3df60299_1334aba9",
+        "filename": "cmd/soong_zip/rate_limit.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-16T01:39:31Z",
+      "side": 1,
+      "message": "This can always be true, it doesn\u0027t need to be a parameter",
+      "range": {
+        "startLine": 37,
+        "startChar": 34,
+        "endLine": 37,
+        "endChar": 66
+      },
+      "revId": "3d133a1fc6d2b9e7c045570c73c9834f5c032525",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
