@@ -73,6 +73,9 @@ func (c *Module) AndroidMk() android.AndroidMkData {
 				}
 				if c.vndk() {
 					fmt.Fprintln(w, "LOCAL_USE_VNDK := true")
+					if Bool(c.Properties.Vendor_available_indirect_only) {
+						fmt.Fprintln(w, "LOCAL_VNDK_PRIVATE := true")
+					}
 				}
 			},
 		},
@@ -340,5 +343,10 @@ func (c *llndkStubDecorator) AndroidMk(ctx AndroidMkContext, ret *android.Androi
 		fmt.Fprintln(w, "LOCAL_UNINSTALLABLE_MODULE := true")
 		fmt.Fprintln(w, "LOCAL_NO_NOTICE_FILE := true")
 		fmt.Fprintln(w, "LOCAL_USE_VNDK := true")
+		if c.Properties.Vendor_available_indirect_only {
+			fmt.Fprintln(w, "LOCAL_VNDK_PRIVATE := true")
+		}
+
+		return nil
 	})
 }

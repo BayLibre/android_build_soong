@@ -50,6 +50,11 @@ type llndkLibraryProperties struct {
 
 	// Whether the system library uses symbol versions.
 	Unversioned bool
+
+	// whether this module can be directly dependended by libs that are installed to /vendor.
+	// When set true, this module can only be indirectly depended by the vendor modules,
+	// which effectively hides this module from vendors. Default value is false.
+	Vendor_available_indirect_only bool
 }
 
 type llndkStubDecorator struct {

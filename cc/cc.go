@@ -167,6 +167,11 @@ type BaseProperties struct {
 	// Nothing happens if BOARD_VNDK_VERSION isn't set in the BoardConfig.mk
 	Vendor_available *bool
 
+	// whether this module can be directly dependended by libs that are installed to /vendor.
+	// When set true, this module can only be indirectly depended by the vendor modules,
+	// which effectively hides this module from vendors. Default value is false.
+	Vendor_available_indirect_only *bool
+
 	AndroidMkSharedLibs []string `blueprint:"mutated"`
 	HideFromMake        bool     `blueprint:"mutated"`
 	PreventInstall      bool     `blueprint:"mutated"`
@@ -1241,6 +1246,10 @@ func vendorMutator(mctx android.BottomUpMutatorContext) {
 		mctx.PropertyErrorf("vendor_available",
 			"doesn't make sense at the same time as `vendor: true` or `proprietary: true`")
 		return
+	}
+	if !Bool(m.Properties.Vendor_available) && Bool(m.Properties.Vendor_available_indirect_only) {
+		mctx.PropertyErrorf("vendor_available_indirect_only",
+			"can be set only when `vendor_available: true`")
 	}
 	if vndk := m.vndkdep; vndk != nil {
 		if vndk.isVndk() && !Bool(m.Properties.Vendor_available) {

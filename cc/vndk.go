@@ -80,6 +80,20 @@ func (vndk *vndkdep) vndkCheckLinkType(ctx android.ModuleContext, to *Module) {
 	if to.linker == nil {
 		return
 	}
+	if !vndk.isVndk() {
+		// Non-VNDK modules (those installed to /vendor) can't depend on modules marked with
+		// vendor_available_indirect_only
+		violation := false
+		if lib, ok := to.linker.(*llndkStubDecorator); ok && lib.Properties.Vendor_available_indirect_only {
+			violation = true
+		} else if _, ok := to.linker.(*libraryDecorator); ok && Bool(to.Properties.Vendor_available_indirect_only) {
+			violation = true
+		}
+		if violation {
+			ctx.ModuleErrorf("Vendor module that is not VNDK should not link to %q",
+				"which is not directly available to vendors", to.Name())
+		}
+	}
 	if lib, ok := to.linker.(*libraryDecorator); !ok || !lib.shared() {
 		// Check only shared libraries.
 		// Other (static and LL-NDK) libraries are allowed to link.
@@ -101,21 +115,27 @@ func (vndk *vndkdep) vndkCheckLinkType(ctx android.ModuleContext, to *Module) {
 }
 
 var (
-	vndkCoreLibraries []string
-	vndkSpLibraries   []string
-	llndkLibraries    []string
-	vndkLibrariesLock sync.Mutex
+	vndkCoreLibraries    []string
+	vndkSpLibraries      []string
+	llndkLibraries       []string
+	vndkPrivateLibraries []string
+	vndkLibrariesLock    sync.Mutex
 )
 
 // gather list of vndk-core, vndk-sp, and ll-ndk libs
 func vndkMutator(mctx android.BottomUpMutatorContext) {
 	if m, ok := mctx.Module().(*Module); ok {
-		if _, ok := m.linker.(*llndkStubDecorator); ok {
+		if lib, ok := m.linker.(*llndkStubDecorator); ok {
 			vndkLibrariesLock.Lock()
 			defer vndkLibrariesLock.Unlock()
 			name := strings.TrimSuffix(m.Name(), llndkLibrarySuffix)
 			if !inList(name, llndkLibraries) {
 				llndkLibraries = append(llndkLibraries, name)
+			}
+			if lib.Properties.Vendor_available_indirect_only {
+				if !inList(name, vndkPrivateLibraries) {
+					vndkPrivateLibraries = append(vndkPrivateLibraries, name)
+				}
 			}
 		} else if lib, ok := m.linker.(*libraryDecorator); ok && lib.shared() {
 			if m.vndkdep.isVndk() {
@@ -128,6 +148,11 @@ func vndkMutator(mctx android.BottomUpMutatorContext) {
 				} else {
 					if !inList(m.Name(), vndkCoreLibraries) {
 						vndkCoreLibraries = append(vndkCoreLibraries, m.Name())
+					}
+				}
+				if Bool(m.Properties.Vendor_available_indirect_only) {
+					if !inList(m.Name(), vndkPrivateLibraries) {
+						vndkPrivateLibraries = append(vndkPrivateLibraries, m.Name())
 					}
 				}
 			}
