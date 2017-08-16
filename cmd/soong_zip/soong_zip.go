@@ -646,15 +646,32 @@ func (z *zipWriter) compressWholeFile(ze *zipEntry, r *os.File, exec Execution, 
 }
 
 func (z *zipWriter) writeDirectory(dir string) error {
-	if dir != "" && !strings.HasSuffix(dir, "/") {
-		dir = dir + "/"
+	// clean the input
+	cleanDir := dir
+	if strings.HasSuffix(cleanDir, "/") {
+		cleanDir = cleanDir[:len(cleanDir)-1]
 	}
 
-	for dir != "" && dir != "./" && !z.createdDirs[dir] {
-		z.createdDirs[dir] = true
+	// discover any uncreated directories in the path
+	zipDirs := []string{}
+	for cleanDir != "" && cleanDir != "." && !z.createdDirs[cleanDir] {
 
+		zipDir := cleanDir
+		if cleanDir != "" {
+			zipDir = cleanDir + "/"
+		}
+
+		z.createdDirs[cleanDir] = true
+		// parent directories precede their children
+		zipDirs = append([]string{zipDir}, zipDirs...)
+
+		cleanDir = filepath.Dir(cleanDir)
+	}
+
+	// make a directory entry for each uncreated directory
+	for _, zipDir := range zipDirs {
 		dirHeader := &zip.FileHeader{
-			Name: dir,
+			Name: zipDir,
 		}
 		dirHeader.SetMode(0700 | os.ModeDir)
 		dirHeader.SetModTime(z.time)
@@ -665,8 +682,6 @@ func (z *zipWriter) writeDirectory(dir string) error {
 		}
 		close(ze)
 		z.writeOps <- ze
-
-		dir, _ = filepath.Split(dir)
 	}
 
 	return nil
