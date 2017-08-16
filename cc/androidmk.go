@@ -73,6 +73,10 @@ func (c *Module) AndroidMk() android.AndroidMkData {
 				}
 				if c.vndk() {
 					fmt.Fprintln(w, "LOCAL_USE_VNDK := true")
+					if c.Properties.Vendor_available != nil && !Bool(c.Properties.Vendor_available) {
+						// only when vendor_available is explicitly set to false.
+						fmt.Fprintln(w, "LOCAL_VNDK_PRIVATE := true")
+					}
 				}
 			},
 		},
@@ -89,7 +93,7 @@ func (c *Module) AndroidMk() android.AndroidMkData {
 	}
 	c.subAndroidMk(&ret, c.installer)
 
-	if c.vndk() && Bool(c.Properties.Vendor_available) {
+	if c.vndk() && c.hasVendorVariant() {
 		// .vendor suffix is added only when we will have two variants: core and vendor.
 		// The suffix is not added for vendor-only module.
 		ret.SubName += vendorSuffix
@@ -340,5 +344,10 @@ func (c *llndkStubDecorator) AndroidMk(ctx AndroidMkContext, ret *android.Androi
 		fmt.Fprintln(w, "LOCAL_UNINSTALLABLE_MODULE := true")
 		fmt.Fprintln(w, "LOCAL_NO_NOTICE_FILE := true")
 		fmt.Fprintln(w, "LOCAL_USE_VNDK := true")
+		if !c.Properties.Vendor_available {
+			fmt.Fprintln(w, "LOCAL_VNDK_PRIVATE := true")
+		}
+
+		return nil
 	})
 }
