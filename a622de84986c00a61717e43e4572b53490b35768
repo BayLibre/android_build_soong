@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d88076df_8cca3ad5",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-16T01:32:47Z",
+      "side": 0,
+      "message": "I think that what was going on was that `filepath.Split(\"/some/dir/\")` returns `\"/some/dir/\", \"\"`",
+      "revId": "a622de84986c00a61717e43e4572b53490b35768",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
