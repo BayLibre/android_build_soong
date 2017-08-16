@@ -22,6 +22,30 @@
       "revId": "69f3b3e9460f4ba41fd82c005311c8c50c88936a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f7b7d16_43435f4b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-16T23:18:35Z",
+      "side": 1,
+      "message": "Yeah, I used /usr/bin/time for measuring the duration. I considered using the Go memory profiling although it seems to me that memory usage displayed by `top` is more likely to measure the impact on the system (in case Go measures memory differently (such as not including parts of the runtime in its measurements)). I was a little concerned when I was running `top` without any arguments but when I switched to `top -d 0.1`, it updated often enough to get three significant figures matching between subsequent memory samples toward the end.",
+      "parentUuid": "7aa47964_e7ffabaf",
+      "range": {
+        "startLine": 25,
+        "startChar": 32,
+        "endLine": 25,
+        "endChar": 37
+      },
+      "revId": "69f3b3e9460f4ba41fd82c005311c8c50c88936a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
