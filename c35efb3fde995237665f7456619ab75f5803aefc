@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2ebee759_eb93eee0",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-16T01:59:24Z",
+      "side": 1,
+      "message": "Oops; I forgot we didn\u0027t need hundreds of thousands of operations per second for this case. I\u0027ll change it.",
+      "parentUuid": "00f36c72_59136dd2",
+      "revId": "c35efb3fde995237665f7456619ab75f5803aefc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9bdbbe6_5985145b",
         "filename": "cmd/soong_zip/soong_zip.go",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "ca44942e_88eb7c3c",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-16T01:59:24Z",
+      "side": 1,
+      "message": "oops",
+      "parentUuid": "f9bdbbe6_5985145b",
+      "revId": "c35efb3fde995237665f7456619ab75f5803aefc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b1e0b4e_a60e3025",
         "filename": "cmd/soong_zip/soong_zip.go",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2017-08-16T01:49:38Z",
       "side": 1,
       "message": "Is the trailing slash necessary?  If so, i think it would be better to add it when creating the zip.FileHeader below to avoid the need for cleanDir and zipDir here.",
+      "revId": "c35efb3fde995237665f7456619ab75f5803aefc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4d05196_0770b13f",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-16T01:59:24Z",
+      "side": 1,
+      "message": "My assumption for the reason that you\u0027d included the trailing slashes in the bug was to match what `zip -r test.zip .` does - although I don\u0027t really have a preference.\n\nI\u0027ll move the string concatenation down into the zip.FileHeader creation",
+      "parentUuid": "5b1e0b4e_a60e3025",
       "revId": "c35efb3fde995237665f7456619ab75f5803aefc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
