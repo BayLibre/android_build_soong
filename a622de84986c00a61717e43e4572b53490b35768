@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71ab7d41_a36c6f8a",
+        "filename": "cmd/soong_zip/rate_limit.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-16T00:34:21Z",
+      "side": 0,
+      "message": "Alternatively, we could accomplish most of the intent of this patch by putting a comment on Finish explaining that it does two things - it both releases the execution and also acquires memory equal to \u003cbufferSize\u003e .\n\nIt seemed to me that we might as well have these things be called out via the code though",
+      "revId": "a622de84986c00a61717e43e4572b53490b35768",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
