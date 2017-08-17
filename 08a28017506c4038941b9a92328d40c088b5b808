@@ -22,6 +22,30 @@
       "revId": "08a28017506c4038941b9a92328d40c088b5b808",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c15901f_f476861e",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1250,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-08-17T05:30:41Z",
+      "side": 1,
+      "message": "I am open to the idea. But someone might not like setting a property implicitly. Dan, Colin?",
+      "parentUuid": "abb82870_3a904b7d",
+      "range": {
+        "startLine": 1250,
+        "startChar": 4,
+        "endLine": 1250,
+        "endChar": 93
+      },
+      "revId": "08a28017506c4038941b9a92328d40c088b5b808",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
