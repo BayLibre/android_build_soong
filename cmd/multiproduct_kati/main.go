@@ -277,9 +277,8 @@ func main() {
 				Thread:         trace.NewThread(product),
 			}}
 
-			build.FindSources(productCtx, config, finder)
-
 			productConfig := build.NewConfig(productCtx)
+			build.FindSources(productCtx, productConfig, finder)
 			productConfig.Environment().Set("OUT_DIR", productOutDir)
 			productConfig.Lunch(productCtx, product, *buildVariant)
 
