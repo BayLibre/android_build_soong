@@ -70,6 +70,30 @@
       "revId": "08a28017506c4038941b9a92328d40c088b5b808",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47a2dfc9_ed369ca3",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1250,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-08-17T05:45:30Z",
+      "side": 1,
+      "message": "for cc_*_library {...}, we can use the condition for disallowing direct dependency from vendor libs. but what about llndk_library? we still need a new property for it. I just wanted to keep the property name to be the same for cc_*_library and llndk_library.",
+      "parentUuid": "d4840f19_2d7d8b5a",
+      "range": {
+        "startLine": 1250,
+        "startChar": 4,
+        "endLine": 1250,
+        "endChar": 93
+      },
+      "revId": "08a28017506c4038941b9a92328d40c088b5b808",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
