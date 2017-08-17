@@ -46,6 +46,30 @@
       "revId": "08a28017506c4038941b9a92328d40c088b5b808",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4840f19_2d7d8b5a",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1250,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-08-17T05:41:40Z",
+      "side": 1,
+      "message": "This seems like a use case for vendor_available: false, vndk: { enabled: true }",
+      "parentUuid": "5c15901f_f476861e",
+      "range": {
+        "startLine": 1250,
+        "startChar": 4,
+        "endLine": 1250,
+        "endChar": 93
+      },
+      "revId": "08a28017506c4038941b9a92328d40c088b5b808",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
