@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56d8b43b_94b5e192",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-08-17T23:36:33Z",
+      "side": 1,
+      "message": "This seems out of place. I\u0027d do one of:\n\n* Move it under the (*config) struct like the rest of these functions.\n* Make it a const somewhere instead of a function\n* Make it a function on the Arch/Toolchain so that it can embed the 9 vs 21 difference instead of replicating that (though since that\u0027s not really going to change, one of the first two probably makes more sense)",
+      "range": {
+        "startLine": 381,
+        "startChar": 5,
+        "endLine": 381,
+        "endChar": 27
+      },
+      "revId": "8633d2e86d97f523caa06e5fb7dda389cc18e352",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
