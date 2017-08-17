@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b64eee4_0bfbb845",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-08-17T01:28:03Z",
+      "side": 1,
+      "message": "lol. seriously? fucking c programmers.",
+      "revId": "7d37221b61c3f27866d97e5e35c274c9846722e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
