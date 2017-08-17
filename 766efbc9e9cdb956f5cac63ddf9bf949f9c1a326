@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a982ce5_07e5d69a",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-08-17T22:02:32Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we be doing these once, instead of once per module?",
+      "range": {
+        "startLine": 120,
+        "startChar": 4,
+        "endLine": 120,
+        "endChar": 32
+      },
+      "revId": "766efbc9e9cdb956f5cac63ddf9bf949f9c1a326",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
