@@ -94,6 +94,30 @@
       "revId": "08a28017506c4038941b9a92328d40c088b5b808",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6fd5560f_9daa2d5d",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1250,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-08-17T06:20:56Z",
+      "side": 1,
+      "message": "We could make llndk_library have vendor_available, but the default would mean true, so that it could be set to false for this case. Those won\u0027t need to be exported to make. The rest would need to be exported, but only for installation.",
+      "parentUuid": "47a2dfc9_ed369ca3",
+      "range": {
+        "startLine": 1250,
+        "startChar": 4,
+        "endLine": 1250,
+        "endChar": 93
+      },
+      "revId": "08a28017506c4038941b9a92328d40c088b5b808",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
