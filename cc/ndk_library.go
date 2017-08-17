@@ -115,13 +115,13 @@ func normalizeNdkApiLevel(apiLevel string, arch android.Arch) (string, error) {
 		return apiLevel, nil
 	}
 
-	minVersion := 9 // Minimum version supported by the NDK.
+	minVersion := android.MinSupportedSdkVersion()
 	firstArchVersions := map[android.ArchType]int{
-		android.Arm:    9,
+		android.Arm:    minVersion,
 		android.Arm64:  21,
-		android.Mips:   9,
+		android.Mips:   minVersion,
 		android.Mips64: 21,
-		android.X86:    9,
+		android.X86:    minVersion,
 		android.X86_64: 21,
 	}
 
