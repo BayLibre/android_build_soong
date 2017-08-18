@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b72a7ff7_57d0f7f6",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-18T22:24:37Z",
+      "side": 1,
+      "message": "This is fine for now, but it might be better to integrate soong_env into soong_ui?  It\u0027s just https://android.googlesource.com/platform/build/soong/+/master/cmd/soong_env/soong_env.go plus https://android.googlesource.com/platform/build/soong/+/master/env/env.go",
+      "revId": "99a75cd2a5102e72b07a7614e84f8624d3c2ddd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
