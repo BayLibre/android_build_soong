@@ -1,0 +1,9 @@
+Verified+1: Isaac Chen <ycchen@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+1: Hung-ying Tyan <tyanh@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Submitted-by: Isaac Chen <ycchen@google.com>
+Submitted-at: Sat, 19 Aug 2017 06:10:55 +0000
+Reviewed-on: https://android-review.googlesource.com/423600
+Project: platform/build/soong
+Branch: refs/heads/master
