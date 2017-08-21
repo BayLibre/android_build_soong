@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76acaabd_7185272c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1061057
+      },
+      "writtenOn": "2017-08-21T15:54:54Z",
+      "side": 1,
+      "message": "How does this run on kryo? Do we emulate it in the kernel?",
+      "range": {
+        "startLine": 18,
+        "startChar": 20,
+        "endLine": 18,
+        "endChar": 23
+      },
+      "revId": "80b27e4e2093309a72a15b9802212da47172f026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
