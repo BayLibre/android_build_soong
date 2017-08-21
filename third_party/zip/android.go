@@ -16,6 +16,7 @@ package zip
 
 import (
 	"errors"
+	"hash/crc32"
 	"io"
 )
 
@@ -147,6 +148,133 @@ func (w *Writer) CreateCompressedHeader(fh *FileHeader) (io.WriteCloser, error) 
 
 	w.last = &fw.fileWriter
 	return fw, nil
+}
+
+// CreateHeader adds a file to the zip file using the provided FileHeader
+// for the file metadata.
+// It returns a Writer to which the file contents should be written.
+//
+// The file's contents must be written to the io.Writer before the next
+// call to Create, CreateHeader, or Close. The provided FileHeader fh
+// must not be modified after a call to CreateHeader.
+func (w *Writer) CreateHeader(fh *FileHeader) (io.Writer, error) {
+	if w.last != nil && !w.last.closed {
+		if err := w.last.close(); err != nil {
+			return nil, err
+		}
+	}
+	if len(w.dir) > 0 && w.dir[len(w.dir)-1].FileHeader == fh {
+		// See https://golang.org/issue/11144 confusion.
+		return nil, errors.New("archive/zip: invalid duplicate FileHeader")
+	}
+
+	fh.Flags |= 0x8 // we will write a data descriptor
+
+	fh.CreatorVersion = fh.CreatorVersion&0xff00 | zipVersion20 // preserve compatibility byte
+	fh.ReaderVersion = zipVersion20
+
+	fw := &fileWriter{
+		zipw:      w.cw,
+		compCount: &countWriter{w: w.cw},
+		crc32:     crc32.NewIEEE(),
+	}
+	comp := w.compressor(fh.Method)
+	if comp == nil {
+		return nil, ErrAlgorithm
+	}
+	var err error
+	fw.comp, err = comp(fw.compCount)
+	if err != nil {
+		return nil, err
+	}
+	fw.rawCount = &countWriter{w: fw.comp}
+
+	h := &header{
+		FileHeader: fh,
+		offset:     uint64(w.cw.count),
+	}
+	w.dir = append(w.dir, h)
+	fw.header = h
+
+	if err := writeHeader(w.cw, fh); err != nil {
+		return nil, err
+	}
+
+	w.last = fw
+	return fw, nil
+}
+
+func writeHeader(w io.Writer, h *FileHeader) error {
+	var buf [fileHeaderLen]byte
+	b := writeBuf(buf[:])
+	b.uint32(uint32(fileHeaderSignature))
+	b.uint16(h.ReaderVersion)
+	b.uint16(h.Flags)
+	b.uint16(h.Method)
+	b.uint16(h.ModifiedTime)
+	b.uint16(h.ModifiedDate)
+	b.uint32(0) // since we are writing a data descriptor crc32,
+	b.uint32(0) // compressed size,
+	b.uint32(0) // and uncompressed size should be zero
+	b.uint16(uint16(len(h.Name)))
+	b.uint16(uint16(len(h.Extra)))
+	if _, err := w.Write(buf[:]); err != nil {
+		return err
+	}
+	if _, err := io.WriteString(w, h.Name); err != nil {
+		return err
+	}
+	_, err := w.Write(h.Extra)
+	return err
+}
+
+func (w *fileWriter) close() error {
+	if w.closed {
+		return errors.New("zip: file closed twice")
+	}
+	w.closed = true
+	if err := w.comp.Close(); err != nil {
+		return err
+	}
+
+	// update FileHeader
+	fh := w.header.FileHeader
+	fh.CRC32 = w.crc32.Sum32()
+	fh.CompressedSize64 = uint64(w.compCount.count)
+	fh.UncompressedSize64 = uint64(w.rawCount.count)
+
+	if fh.isZip64() {
+		fh.CompressedSize = uint32max
+		fh.UncompressedSize = uint32max
+		fh.ReaderVersion = zipVersion45 // requires 4.5 - File uses ZIP64 format extensions
+	} else {
+		fh.CompressedSize = uint32(fh.CompressedSize64)
+		fh.UncompressedSize = uint32(fh.UncompressedSize64)
+	}
+
+	// Write data descriptor. This is more complicated than one would
+	// think, see e.g. comments in zipfile.c:putextended() and
+	// http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=7073588.
+	// The approach here is to write 8 byte sizes if needed without
+	// adding a zip64 extra in the local header (too late anyway).
+	var buf []byte
+	if fh.isZip64() {
+		buf = make([]byte, dataDescriptor64Len)
+	} else {
+		buf = make([]byte, dataDescriptorLen)
+	}
+	b := writeBuf(buf)
+	b.uint32(dataDescriptorSignature) // de-facto standard, required by OS X
+	b.uint32(fh.CRC32)
+	if fh.isZip64() {
+		b.uint64(fh.CompressedSize64)
+		b.uint64(fh.UncompressedSize64)
+	} else {
+		b.uint32(fh.CompressedSize)
+		b.uint32(fh.UncompressedSize)
+	}
+	_, err := w.zipw.Write(buf)
+	return err
 }
 
 type compressedFileWriter struct {
