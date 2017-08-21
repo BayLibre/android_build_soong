@@ -16,9 +16,13 @@ package zip
 
 import (
 	"errors"
+	"fmt"
 	"hash/crc32"
 	"io"
 )
+
+// If FileHeader.Flags&dataDescriptorFlag != 0, then the FileHeader uses a data descriptor
+const dataDescriptorFlag = 0x8
 
 func (w *Writer) CopyFrom(orig *File, newName string) error {
 	if w.last != nil && !w.last.closed {
@@ -31,7 +35,7 @@ func (w *Writer) CopyFrom(orig *File, newName string) error {
 	fileHeader := orig.FileHeader
 	fileHeader.Name = newName
 	fh := &fileHeader
-	fh.Flags |= 0x8
+	fh.Flags |= dataDescriptorFlag
 
 	// The zip64 extras change between the Central Directory and Local File Header, while we use
 	// the same structure for both. The Local File Haeder is taken care of by us writing a data
@@ -123,7 +127,7 @@ func (w *Writer) CreateCompressedHeader(fh *FileHeader) (io.WriteCloser, error) 
 		return nil, errors.New("archive/zip: invalid duplicate FileHeader")
 	}
 
-	fh.Flags |= 0x8 // we will write a data descriptor
+	fh.Flags |= dataDescriptorFlag // we will write a data descriptor
 
 	fh.CreatorVersion = fh.CreatorVersion&0xff00 | zipVersion20 // preserve compatibility byte
 	fh.ReaderVersion = zipVersion20
@@ -150,6 +154,17 @@ func (w *Writer) CreateCompressedHeader(fh *FileHeader) (io.WriteCloser, error) 
 	return fw, nil
 }
 
+// Updated version of CreateHeader that doesn't enforce writing a data descriptor
+func (w *Writer) CreateHeaderAndroid(fh *FileHeader) (io.Writer, error) {
+	return w.createHeaderImpl(fh)
+}
+
+// Legacy version of CreateHeader
+func (w *Writer) CreateHeader(fh *FileHeader) (io.Writer, error) {
+	fh.Flags |= dataDescriptorFlag // writing a data descriptor
+	return w.createHeaderImpl(fh)
+}
+
 // CreateHeader adds a file to the zip file using the provided FileHeader
 // for the file metadata.
 // It returns a Writer to which the file contents should be written.
@@ -157,7 +172,7 @@ func (w *Writer) CreateCompressedHeader(fh *FileHeader) (io.WriteCloser, error) 
 // The file's contents must be written to the io.Writer before the next
 // call to Create, CreateHeader, or Close. The provided FileHeader fh
 // must not be modified after a call to CreateHeader.
-func (w *Writer) CreateHeader(fh *FileHeader) (io.Writer, error) {
+func (w *Writer) createHeaderImpl(fh *FileHeader) (io.Writer, error) {
 	if w.last != nil && !w.last.closed {
 		if err := w.last.close(); err != nil {
 			return nil, err
@@ -167,8 +182,6 @@ func (w *Writer) CreateHeader(fh *FileHeader) (io.Writer, error) {
 		// See https://golang.org/issue/11144 confusion.
 		return nil, errors.New("archive/zip: invalid duplicate FileHeader")
 	}
-
-	fh.Flags |= 0x8 // we will write a data descriptor
 
 	fh.CreatorVersion = fh.CreatorVersion&0xff00 | zipVersion20 // preserve compatibility byte
 	fh.ReaderVersion = zipVersion20
@@ -213,9 +226,31 @@ func writeHeader(w io.Writer, h *FileHeader) error {
 	b.uint16(h.Method)
 	b.uint16(h.ModifiedTime)
 	b.uint16(h.ModifiedDate)
-	b.uint32(0) // since we are writing a data descriptor crc32,
-	b.uint32(0) // compressed size,
-	b.uint32(0) // and uncompressed size should be zero
+	if h.Flags&dataDescriptorFlag != 0 {
+		// since we are writing a data descriptor, these fields should be 0
+		b.uint32(0) // crc32,
+		b.uint32(0) // compressed size,
+		b.uint32(0) // uncompressed size
+	} else {
+		b.uint32(h.CRC32)
+
+		if h.CompressedSize64 > uint32max || h.UncompressedSize64 > uint32max {
+			return fmt.Errorf("skipping writing the data descriptor for a 64-bit value is not yet supported")
+		}
+		compressedSize := uint32(h.CompressedSize64)
+		if compressedSize == 0 {
+			compressedSize = h.CompressedSize
+		}
+
+		uncompressedSize := uint32(h.UncompressedSize64)
+		if uncompressedSize == 0 {
+			uncompressedSize = h.UncompressedSize
+		}
+
+		b.uint32(compressedSize)
+		b.uint32(uncompressedSize)
+	}
+
 	b.uint16(uint16(len(h.Name)))
 	b.uint16(uint16(len(h.Extra)))
 	if _, err := w.Write(buf[:]); err != nil {
@@ -228,7 +263,7 @@ func writeHeader(w io.Writer, h *FileHeader) error {
 	return err
 }
 
-func (w *fileWriter) close() error {
+func (w *fileWriter) close() (err error) {
 	if w.closed {
 		return errors.New("zip: file closed twice")
 	}
@@ -252,28 +287,30 @@ func (w *fileWriter) close() error {
 		fh.UncompressedSize = uint32(fh.UncompressedSize64)
 	}
 
-	// Write data descriptor. This is more complicated than one would
-	// think, see e.g. comments in zipfile.c:putextended() and
-	// http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=7073588.
-	// The approach here is to write 8 byte sizes if needed without
-	// adding a zip64 extra in the local header (too late anyway).
-	var buf []byte
-	if fh.isZip64() {
-		buf = make([]byte, dataDescriptor64Len)
-	} else {
-		buf = make([]byte, dataDescriptorLen)
+	if fh.Flags&dataDescriptorFlag != 0 {
+		// Write data descriptor. This is more complicated than one would
+		// think, see e.g. comments in zipfile.c:putextended() and
+		// http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=7073588.
+		// The approach here is to write 8 byte sizes if needed without
+		// adding a zip64 extra in the local header (too late anyway).
+		var buf []byte
+		if fh.isZip64() {
+			buf = make([]byte, dataDescriptor64Len)
+		} else {
+			buf = make([]byte, dataDescriptorLen)
+		}
+		b := writeBuf(buf)
+		b.uint32(dataDescriptorSignature) // de-facto standard, required by OS X
+		b.uint32(fh.CRC32)
+		if fh.isZip64() {
+			b.uint64(fh.CompressedSize64)
+			b.uint64(fh.UncompressedSize64)
+		} else {
+			b.uint32(fh.CompressedSize)
+			b.uint32(fh.UncompressedSize)
+		}
+		_, err = w.zipw.Write(buf)
 	}
-	b := writeBuf(buf)
-	b.uint32(dataDescriptorSignature) // de-facto standard, required by OS X
-	b.uint32(fh.CRC32)
-	if fh.isZip64() {
-		b.uint64(fh.CompressedSize64)
-		b.uint64(fh.UncompressedSize64)
-	} else {
-		b.uint32(fh.CompressedSize)
-		b.uint32(fh.UncompressedSize)
-	}
-	_, err := w.zipw.Write(buf)
 	return err
 }
 
