@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "215aa98a_cd83bf73",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-08-21T03:28:51Z",
+      "side": 1,
+      "message": "Because this only adds for non-static libraries, build for static libraries fails as they don\u0027t have \"libc\" in their default shared libs.\nThis happens on walleye and taimen that have BOARD_VNDK_VERSION\u003dcurrent set.\n\nAdding\n\u0027\u0027\u0027\nif ctx.sdk() || ctx.vndk() {\n    deps.LateSharedLibs \u003d append(deps.LateSharedLibs, \"libc\", \"libm\", \"libdl\")\n}\n\u0027\u0027\u0027\nunder the \u0027if\u0027 block solves the problem.",
+      "range": {
+        "startLine": 180,
+        "startChar": 3,
+        "endLine": 180,
+        "endChar": 73
+      },
+      "revId": "f90884cd534f86e2d1ae50b432c8271a85b4d177",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45d60a25_fec71f9c",
+        "filename": "cc/stl.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-08-21T03:28:51Z",
+      "side": 1,
+      "message": "It must be \"SharedLibs\".",
+      "range": {
+        "startLine": 120,
+        "startChar": 7,
+        "endLine": 120,
+        "endChar": 17
+      },
+      "revId": "f90884cd534f86e2d1ae50b432c8271a85b4d177",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
