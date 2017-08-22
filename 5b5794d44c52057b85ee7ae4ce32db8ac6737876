@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db2cec28_bfa1a411",
+        "filename": "finder/finder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-08-22T21:49:16Z",
+      "side": 1,
+      "message": "Should we just put the numThreads in CacheParams instead, and allow the implicit zero-value mean default?\n\n(If you keep this, it should be const)",
+      "range": {
+        "startLine": 162,
+        "startChar": 4,
+        "endLine": 162,
+        "endChar": 24
+      },
+      "revId": "5b5794d44c52057b85ee7ae4ce32db8ac6737876",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cba25c31_0fdf196c",
+        "filename": "finder/finder_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-08-22T21:49:16Z",
+      "side": 1,
+      "message": "Use t.Run() so that the results are separated",
+      "range": {
+        "startLine": 622,
+        "startChar": 2,
+        "endLine": 622,
+        "endChar": 20
+      },
+      "revId": "5b5794d44c52057b85ee7ae4ce32db8ac6737876",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
