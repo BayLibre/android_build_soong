@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "20633077_bd57d46c",
+        "filename": "finder/finder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-22T22:27:21Z",
+      "side": 1,
+      "message": "Mmm putting it into CacheParams does have some advantages for conciseness.\n\nI almost did that and then I realized that the reason it was called CacheParams was because it was parameters about the cache itself, and that anything in CacheParams gets written to disk and compared for determining the validity of the cache (which currently would be fine although I guess it\u0027d be somewhat confusing).\n\nDo you think we should have New take a Params type that contains a (NumThreads int) and a (CacheParams CacheParams)?\n\nIn any case, I\u0027ll replace \"var\" with \"const\" like you suggested",
+      "parentUuid": "db2cec28_bfa1a411",
+      "range": {
+        "startLine": 162,
+        "startChar": 4,
+        "endLine": 162,
+        "endChar": 24
+      },
+      "revId": "5b5794d44c52057b85ee7ae4ce32db8ac6737876",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cba25c31_0fdf196c",
         "filename": "finder/finder_test.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "5b5794d44c52057b85ee7ae4ce32db8ac6737876",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6f8bf05_ff0b5e00",
+        "filename": "finder/finder_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-22T22:27:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cba25c31_0fdf196c",
+      "range": {
+        "startLine": 622,
+        "startChar": 2,
+        "endLine": 622,
+        "endChar": 20
+      },
+      "revId": "5b5794d44c52057b85ee7ae4ce32db8ac6737876",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
