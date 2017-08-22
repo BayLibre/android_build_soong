@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "24529aa1_88b83230",
+        "filename": "finder/finder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-08-22T22:49:41Z",
+      "side": 1,
+      "message": "Since you\u0027re comparing the json version of the structures, you could add non-verified members using `json:\"-\"`. Technically it does affect the cache anyways, just not in an incompatible manner :)",
+      "parentUuid": "20633077_bd57d46c",
+      "range": {
+        "startLine": 162,
+        "startChar": 4,
+        "endLine": 162,
+        "endChar": 24
+      },
+      "revId": "5b5794d44c52057b85ee7ae4ce32db8ac6737876",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cba25c31_0fdf196c",
         "filename": "finder/finder_test.go",
         "patchSetId": 2
