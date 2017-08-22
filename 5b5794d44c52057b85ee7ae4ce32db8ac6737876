@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "190f31fd_8b27f51f",
+        "filename": "finder/finder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-22T23:40:12Z",
+      "side": 1,
+      "message": "(after talking offline we decided that a solution that we both liked was to add a new, private constructor for use in tests)",
+      "parentUuid": "24529aa1_88b83230",
+      "range": {
+        "startLine": 162,
+        "startChar": 4,
+        "endLine": 162,
+        "endChar": 24
+      },
+      "revId": "5b5794d44c52057b85ee7ae4ce32db8ac6737876",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cba25c31_0fdf196c",
         "filename": "finder/finder_test.go",
         "patchSetId": 2
