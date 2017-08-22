@@ -18,6 +18,7 @@ import (
 	"bufio"
 	"bytes"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"os"
@@ -30,7 +31,6 @@ import (
 	"time"
 
 	"android/soong/fs"
-	"errors"
 )
 
 // This file provides a Finder struct that can quickly search for files satisfying
@@ -159,11 +159,16 @@ type Finder struct {
 	nodes        pathMap
 }
 
+const UseDefaultNumThreads = 0
+
 // New creates a new Finder for use
 func New(cacheParams CacheParams, filesystem fs.FileSystem,
-	logger Logger, dbPath string) (f *Finder, err error) {
+	logger Logger, dbPath string, numThreads int) (f *Finder, err error) {
 
-	numThreads := runtime.NumCPU() * 2
+	// allow callers to pass 0 for a default number of threads
+	if numThreads < 1 {
+		numThreads = runtime.NumCPU() * 2
+	}
 	numDbLoadingThreads := numThreads
 	numSearchingThreads := numThreads
 

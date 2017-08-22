@@ -147,7 +147,7 @@ func run() error {
 }
 
 func runFind(params finder.CacheParams, logger *log.Logger) (paths []string, err error) {
-	service, err := finder.New(params, fs.OsFs, logger, dbPath)
+	service, err := finder.New(params, fs.OsFs, logger, dbPath, finder.UseDefaultNumThreads)
 	if err != nil {
 		return []string{}, err
 	}
