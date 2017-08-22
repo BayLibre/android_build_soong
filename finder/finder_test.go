@@ -35,14 +35,18 @@ func newFs() *fs.MockFs {
 }
 
 func newFinder(t *testing.T, filesystem *fs.MockFs, cacheParams CacheParams) *Finder {
-	f, err := newFinderAndErr(t, filesystem, cacheParams)
+	return newFinderWithThreadCount(t, filesystem, cacheParams, 2)
+}
+
+func newFinderWithThreadCount(t *testing.T, filesystem *fs.MockFs, cacheParams CacheParams, numThreads int) *Finder {
+	f, err := newFinderAndErr(t, filesystem, cacheParams, numThreads)
 	if err != nil {
 		fatal(t, err.Error())
 	}
 	return f
 }
 
-func newFinderAndErr(t *testing.T, filesystem *fs.MockFs, cacheParams CacheParams) (*Finder, error) {
+func newFinderAndErr(t *testing.T, filesystem *fs.MockFs, cacheParams CacheParams, numThreads int) (*Finder, error) {
 	cachePath := "/finder/finder-db"
 	cacheDir := filepath.Dir(cachePath)
 	filesystem.MkDirs(cacheDir)
@@ -51,7 +55,7 @@ func newFinderAndErr(t *testing.T, filesystem *fs.MockFs, cacheParams CacheParam
 	}
 
 	logger := log.New(ioutil.Discard, "", 0)
-	f, err := New(cacheParams, filesystem, logger, cachePath)
+	f, err := New(cacheParams, filesystem, logger, cachePath, numThreads)
 	return f, err
 }
 
@@ -68,7 +72,9 @@ func finderAndErrorWithSameParams(t *testing.T, original *Finder) (*Finder, erro
 		original.cacheMetadata.Config.CacheParams,
 		original.filesystem,
 		original.logger,
-		original.DbPath)
+		original.DbPath,
+		original.numSearchingThreads,
+	)
 	return f, err
 }
 
@@ -316,6 +322,7 @@ func TestNonexistentDir(t *testing.T) {
 			RootDirs:     []string{"/tmp/IDontExist"},
 			IncludeFiles: []string{"findme.txt", "skipme.txt"},
 		},
+		UseDefaultNumThreads,
 	)
 	if err == nil {
 		fatal(t, "Did not fail when given a nonexistent root directory")
@@ -1627,5 +1634,40 @@ func TestCacheEntryPathUnexpectedError(t *testing.T) {
 	_, err := finderAndErrorWithSameParams(t, finder)
 	if err == nil {
 		fatal(t, "Failed to detect unexpected filesystem error")
+	}
+}
+
+func TestThreadCounts(t *testing.T) {
+
+	testWithThreadCount := func(t *testing.T, threadCount int) {
+		filesystem := newFs()
+		create(t, "/tmp/a/findme.txt", filesystem)
+		create(t, "/tmp/a/subdir/findme.txt", filesystem)
+		create(t, "/tmp/b/findme.txt", filesystem)
+		create(t, "/tmp/b/subdir/findme.txt", filesystem)
+
+		finder := newFinderWithThreadCount(
+			t,
+			filesystem,
+			CacheParams{
+				RootDirs:     []string{"/tmp/a"},
+				IncludeFiles: []string{"findme.txt"},
+			},
+			threadCount,
+		)
+		defer finder.Shutdown()
+
+		foundPaths := finder.FindNamedAt("/tmp/a", "findme.txt")
+
+		assertSameResponse(t, foundPaths,
+			[]string{"/tmp/a/findme.txt",
+				"/tmp/a/subdir/findme.txt"})
+	}
+
+	// test singlethreaded, multithreaded, and also using the same number of threads as
+	// will be used on the current system
+	threadCounts := []int{1, 2, UseDefaultNumThreads}
+	for _, threadCount := range threadCounts {
+		testWithThreadCount(t, threadCount)
 	}
 }

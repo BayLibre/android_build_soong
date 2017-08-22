@@ -47,7 +47,7 @@ func NewSourceFinder(ctx Context, config Config) (f *finder.Finder) {
 	}
 	dumpDir := config.FileListDir()
 	f, err = finder.New(cacheParams, fs.OsFs, logger.New(ioutil.Discard),
-		filepath.Join(dumpDir, "files.db"))
+		filepath.Join(dumpDir, "files.db"), finder.UseDefaultNumThreads)
 	if err != nil {
 		ctx.Fatalf("Could not create module-finder: %v", err)
 	}
