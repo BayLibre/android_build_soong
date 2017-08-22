@@ -35,14 +35,18 @@ func newFs() *fs.MockFs {
 }
 
 func newFinder(t *testing.T, filesystem *fs.MockFs, cacheParams CacheParams) *Finder {
-	f, err := newFinderAndErr(t, filesystem, cacheParams)
+	return newFinderWithNumThreads(t, filesystem, cacheParams, 2)
+}
+
+func newFinderWithNumThreads(t *testing.T, filesystem *fs.MockFs, cacheParams CacheParams, numThreads int) *Finder {
+	f, err := newFinderAndErr(t, filesystem, cacheParams, numThreads)
 	if err != nil {
 		fatal(t, err.Error())
 	}
 	return f
 }
 
-func newFinderAndErr(t *testing.T, filesystem *fs.MockFs, cacheParams CacheParams) (*Finder, error) {
+func newFinderAndErr(t *testing.T, filesystem *fs.MockFs, cacheParams CacheParams, numThreads int) (*Finder, error) {
 	cachePath := "/finder/finder-db"
 	cacheDir := filepath.Dir(cachePath)
 	filesystem.MkDirs(cacheDir)
@@ -51,7 +55,7 @@ func newFinderAndErr(t *testing.T, filesystem *fs.MockFs, cacheParams CacheParam
 	}
 
 	logger := log.New(ioutil.Discard, "", 0)
-	f, err := New(cacheParams, filesystem, logger, cachePath)
+	f, err := New(cacheParams, filesystem, logger, cachePath, numThreads)
 	return f, err
 }
 
@@ -68,7 +72,9 @@ func finderAndErrorWithSameParams(t *testing.T, original *Finder) (*Finder, erro
 		original.cacheMetadata.Config.CacheParams,
 		original.filesystem,
 		original.logger,
-		original.DbPath)
+		original.DbPath,
+		original.numSearchingThreads,
+	)
 	return f, err
 }
 
@@ -285,24 +291,35 @@ func TestEmptyPath(t *testing.T) {
 }
 
 func TestFilesystemRoot(t *testing.T) {
-	filesystem := newFs()
-	root := "/"
-	createdPath := "/findme.txt"
-	create(t, createdPath, filesystem)
 
-	finder := newFinder(
-		t,
-		filesystem,
-		CacheParams{
-			RootDirs:     []string{root},
-			IncludeFiles: []string{"findme.txt", "skipme.txt"},
-		},
-	)
-	defer finder.Shutdown()
+	testWithNumThreads := func(t *testing.T, numThreads int) {
+		filesystem := newFs()
+		root := "/"
+		createdPath := "/findme.txt"
+		create(t, createdPath, filesystem)
 
-	foundPaths := finder.FindNamedAt(root, "findme.txt")
+		finder := newFinderWithNumThreads(
+			t,
+			filesystem,
+			CacheParams{
+				RootDirs:     []string{root},
+				IncludeFiles: []string{"findme.txt", "skipme.txt"},
+			},
+			numThreads,
+		)
+		defer finder.Shutdown()
 
-	assertSameResponse(t, foundPaths, []string{createdPath})
+		foundPaths := finder.FindNamedAt(root, "findme.txt")
+
+		assertSameResponse(t, foundPaths, []string{createdPath})
+	}
+
+	// test singlethreaded, multithreaded, and also using the same number of threads as
+	// will be used on the current system
+	threadCounts := []int{1, 2, UseDefaultNumThreads}
+	for _, numThreads := range threadCounts {
+		testWithNumThreads(t, numThreads)
+	}
 }
 
 func TestNonexistentDir(t *testing.T) {
@@ -316,6 +333,7 @@ func TestNonexistentDir(t *testing.T) {
 			RootDirs:     []string{"/tmp/IDontExist"},
 			IncludeFiles: []string{"findme.txt", "skipme.txt"},
 		},
+		UseDefaultNumThreads,
 	)
 	if err == nil {
 		fatal(t, "Did not fail when given a nonexistent root directory")
@@ -380,6 +398,8 @@ func TestPruneFiles(t *testing.T) {
 			"/tmp/include/findme.txt"})
 }
 
+// TestRootDir tests that the value of RootDirs is used
+// tests of the filesystem root are in TestFilesystemRoot
 func TestRootDir(t *testing.T) {
 	filesystem := newFs()
 	create(t, "/tmp/a/findme.txt", filesystem)
@@ -548,47 +568,58 @@ func TestFindFirst(t *testing.T) {
 }
 
 func TestConcurrentFindSameDirectory(t *testing.T) {
-	filesystem := newFs()
 
-	// create a bunch of files and directories
-	paths := []string{}
-	for i := 0; i < 10; i++ {
-		parentDir := fmt.Sprintf("/tmp/%v", i)
-		for j := 0; j < 10; j++ {
-			filePath := filepath.Join(parentDir, fmt.Sprintf("%v/findme.txt", j))
-			paths = append(paths, filePath)
+	testWithNumThreads := func(t *testing.T, numThreads int) {
+		filesystem := newFs()
+
+		// create a bunch of files and directories
+		paths := []string{}
+		for i := 0; i < 10; i++ {
+			parentDir := fmt.Sprintf("/tmp/%v", i)
+			for j := 0; j < 10; j++ {
+				filePath := filepath.Join(parentDir, fmt.Sprintf("%v/findme.txt", j))
+				paths = append(paths, filePath)
+			}
+		}
+		sort.Strings(paths)
+		for _, path := range paths {
+			create(t, path, filesystem)
+		}
+
+		// set up a finder
+		finder := newFinderWithNumThreads(
+			t,
+			filesystem,
+			CacheParams{
+				RootDirs:     []string{"/tmp"},
+				IncludeFiles: []string{"findme.txt"},
+			},
+			numThreads,
+		)
+		defer finder.Shutdown()
+
+		numTests := 20
+		results := make(chan []string, numTests)
+		// make several parallel calls to the finder
+		for i := 0; i < numTests; i++ {
+			go func() {
+				foundPaths := finder.FindNamedAt("/tmp", "findme.txt")
+				results <- foundPaths
+			}()
+		}
+
+		// check that each response was correct
+		for i := 0; i < numTests; i++ {
+			foundPaths := <-results
+			assertSameResponse(t, foundPaths, paths)
 		}
 	}
-	sort.Strings(paths)
-	for _, path := range paths {
-		create(t, path, filesystem)
-	}
 
-	// set up a finder
-	finder := newFinder(
-		t,
-		filesystem,
-		CacheParams{
-			RootDirs:     []string{"/tmp"},
-			IncludeFiles: []string{"findme.txt"},
-		},
-	)
-	defer finder.Shutdown()
-
-	numTests := 20
-	results := make(chan []string, numTests)
-	// make several parallel calls to the finder
-	for i := 0; i < numTests; i++ {
-		go func() {
-			foundPaths := finder.FindNamedAt("/tmp", "findme.txt")
-			results <- foundPaths
-		}()
-	}
-
-	// check that each response was correct
-	for i := 0; i < numTests; i++ {
-		foundPaths := <-results
-		assertSameResponse(t, foundPaths, paths)
+	// test singlethreaded, multithreaded, and also using the same number of threads as
+	// will be used on the current system
+	threadCounts := []int{1, 2, UseDefaultNumThreads}
+	for _, numThreads := range threadCounts {
+		testWithNumThreads(t, numThreads)
 	}
 }
 
