@@ -23,6 +23,30 @@
       "revId": "ef88ae2369aa9a097941bf1bff7823589ffc819f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2fbb553_933004e1",
+        "filename": "cc/linker.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-08-23T15:32:23Z",
+      "side": 1,
+      "message": "Just tried that, but build fails when BOARD_VNDK_VERSION\u003dcurrent. This is because #158 is not executed since async_safe has \u0027system_shared_libs: []\u0027 inherited from \u0027libc_defaults\u0027. As a result, libc is not added to the dependency list.\n\nFAILED: out/soong/.intermediates/bionic/libc/async_safe/libasync_safe/android_arm_armv7-a-neon_cortex-a73_static_vendor/obj/bionic/libc/async_safe/async_safe_log.o \nPWD\u003d/proc/self/cwd prebuilts/clang/host/linux-x86/clang-4053586/bin/clang++ -c -Ibionic/libc/async_safe/include -Ibionic/libc/async_safe/include -Iexternal/jemalloc/include -Ibionic/libc -Ibionic/libc/async_safe -D__ANDROID_API__\u003d__ANDROID_API_FUTURE__ -D__ANDROID_VNDK__ -mthumb -Os -fomit-frame-pointer -fno-strict-aliasing -fno-exceptions -Wno-multichar -ffunction-sections -fdata-sections -funwind-tables -fstack-protector-strong -Wa,--noexecstack -Werror\u003dformat-security -D_FORTIFY_SOURCE\u003d2 -fno-short-enums -no-canonical-prefixes -DNDEBUG -g -Wstrict-aliasing\u003d2 -DANDROID -fmessage-length\u003d0 -W -Wall -Wno-unused -Winit-self -Wpointer-arith -DNDEBUG -UDEBUG -fdebug-prefix-map\u003d/proc/self/cwd\u003d -D__compiler_offsetof\u003d__builtin_offsetof -Werror\u003dint-conversion -Wno-reserved-id-macro -Wno-format-pedantic -Wno-unused-command-line-argument -fcolor-diagnostics -Wno-expansion-to-defined -fdebug-prefix-map\u003d$PWD/\u003d -Werror\u003dreturn-type -Werror\u003dnon-virtual-dtor -Werror\u003daddress -Werror\u003dsequence-point -Werror\u003ddate-time -nostdlibinc -msoft-float -mfloat-abi\u003dsoftfp -mfpu\u003dneon -mcpu\u003dcortex-a53 -mfpu\u003dneon-fp-armv8 -D__ARM_FEATURE_LPAE\u003d1  -D_LIBC\u003d1 -Wall -Wextra -Wunused -Wno-deprecated-declarations -Wframe-larger-than\u003d2048 -Werror\u003dpointer-to-int-cast -Werror\u003dint-to-pointer-cast -Werror\u003dtype-limits -Werror -target arm-linux-androideabi -Bprebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/arm-linux-androideabi/bin -DANDROID_STRICT -fPIC -std\u003dgnu++14 -Wsign-promo -Wno-inconsistent-missing-override -Wno-null-dereference -D_LIBCPP_ENABLE_THREAD_SAFETY_ANNOTATIONS -Wno-thread-safety-negative -fno-rtti -fvisibility-inlines-hidden -Werror\u003dint-to-pointer-cast -Werror\u003dpointer-to-int-cast -Werror\u003daddress-of-temporary -Werror\u003dreturn-type -MD -MF out/soong/.intermediates/bionic/libc/async_safe/libasync_safe/android_arm_armv7-a-neon_cortex-a73_static_vendor/obj/bionic/libc/async_safe/async_safe_log.o.d -o out/soong/.intermediates/bionic/libc/async_safe/libasync_safe/android_arm_armv7-a-neon_cortex-a73_static_vendor/obj/bionic/libc/async_safe/async_safe_log.o bionic/libc/async_safe/async_safe_log.cpp\nbionic/libc/async_safe/async_safe_log.cpp:29:10: fatal error: \u0027assert.h\u0027 file not found",
+      "parentUuid": "ad96fd80_f6116878",
+      "range": {
+        "startLine": 180,
+        "startChar": 3,
+        "endLine": 180,
+        "endChar": 73
+      },
+      "revId": "ef88ae2369aa9a097941bf1bff7823589ffc819f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
