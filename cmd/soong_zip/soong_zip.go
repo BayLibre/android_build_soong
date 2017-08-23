@@ -133,18 +133,17 @@ func (l *listFiles) Set(s string) error {
 var (
 	out          = flag.String("o", "", "file to write zip file to")
 	manifest     = flag.String("m", "", "input jar manifest file name")
-	directories  = flag.Bool("d", false, "include directories in zip")
 	rootPrefix   = flag.String("P", "", "path prefix within the zip at which to place files")
 	relativeRoot = flag.String("C", "", "path to use as relative root of files in next -f or -l argument")
 	parallelJobs = flag.Int("j", runtime.NumCPU(), "number of parallel threads to use")
 	compLevel    = flag.Int("L", 5, "deflate compression level (0-9)")
 	emulateJar   = flag.Bool("jar", false, "modify the resultant .zip to emulate the output of 'jar'")
+	cpuProfile   = flag.String("cpuprofile", "", "write cpu profile to file")
+	traceFile    = flag.String("trace", "", "write trace to file")
 
+	directories      bool
 	fArgs            fileArgs
 	nonDeflatedFiles = make(uniqueSet)
-
-	cpuProfile = flag.String("cpuprofile", "", "write cpu profile to file")
-	traceFile  = flag.String("trace", "", "write trace to file")
 )
 
 func init() {
@@ -219,10 +218,14 @@ func main() {
 		usage()
 	}
 
+	if *emulateJar {
+		directories = true
+	}
+
 	w := &zipWriter{
 		time:        time.Date(2009, 1, 1, 0, 0, 0, 0, time.UTC),
 		createdDirs: make(map[string]bool),
-		directories: *directories,
+		directories: directories,
 		compLevel:   *compLevel,
 	}
 
@@ -669,6 +672,19 @@ func (z *zipWriter) compressWholeFile(ze *zipEntry, r *os.File, compressChan cha
 	close(compressChan)
 }
 
+func (z *zipWriter) addExtraField(zipHeader *zip.FileHeader, fieldHeader [2]byte, data []byte) {
+	// add the field header in little-endian order
+	zipHeader.Extra = append(zipHeader.Extra, fieldHeader[1], fieldHeader[0])
+
+	// specify the length of the data (in little-endian order)
+	dataLength := len(data)
+	lengthBytes := []byte{byte(dataLength % 256), byte(dataLength / 256)}
+	zipHeader.Extra = append(zipHeader.Extra, lengthBytes...)
+
+	// add the contents of the extra field
+	zipHeader.Extra = append(zipHeader.Extra, data...)
+}
+
 func (z *zipWriter) writeDirectory(dir string) error {
 	// clean the input
 	cleanDir := filepath.Clean(dir)
@@ -691,6 +707,11 @@ func (z *zipWriter) writeDirectory(dir string) error {
 		}
 		dirHeader.SetMode(0700 | os.ModeDir)
 		dirHeader.SetModTime(z.time)
+
+		if *emulateJar && dir == "META-INF/" {
+			// Jar files have a 0-length extra field with header "CAFE"
+			z.addExtraField(dirHeader, [2]byte{0xca, 0xfe}, []byte{})
+		}
 
 		ze := make(chan *zipEntry, 1)
 		ze <- &zipEntry{
