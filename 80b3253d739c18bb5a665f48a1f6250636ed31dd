@@ -22,6 +22,30 @@
       "revId": "80b3253d739c18bb5a665f48a1f6250636ed31dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97de7ad7_574e8f73",
+        "filename": "cc/vndk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-08-23T09:19:24Z",
+      "side": 1,
+      "message": "I think I am correct here. The comment explains the reason why I added \u0027Vendor_available !\u003d nil\u0027 condition; to filter-out the case \u0027Vendor_available \u003d\u003d nil \u0026\u0026 !Bool(Vendor_available)\u0027.",
+      "parentUuid": "c0e23c9f_e6dda289",
+      "range": {
+        "startLine": 88,
+        "startChar": 23,
+        "endLine": 88,
+        "endChar": 25
+      },
+      "revId": "80b3253d739c18bb5a665f48a1f6250636ed31dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
