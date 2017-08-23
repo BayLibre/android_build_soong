@@ -640,6 +640,10 @@ var conditionalTranslations = map[string]map[bool]string{
 		true: "product_variables.pdk"},
 	"($(TARGET_BUILD_PDK), true)": {
 		true: "product_variables.pdk"},
+	"($(TARGET_USER_MODE_LINUX),true)": {
+		true: "product_variables.uml"},
+	"($(TARGET_USER_MODE_LINUX), true)": {
+		true: "product_variables.uml"},
 }
 
 func mydir(args []string) string {
