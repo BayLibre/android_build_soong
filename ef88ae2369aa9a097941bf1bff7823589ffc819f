@@ -71,6 +71,30 @@
       "revId": "ef88ae2369aa9a097941bf1bff7823589ffc819f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca6a4107_d48b157c",
+        "filename": "cc/linker.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-08-23T15:36:32Z",
+      "side": 1,
+      "message": "yeah, I am trying that. building... we might have similar cases elsewhere.",
+      "parentUuid": "2b1f64f8_ea6d7e81",
+      "range": {
+        "startLine": 180,
+        "startChar": 3,
+        "endLine": 180,
+        "endChar": 73
+      },
+      "revId": "ef88ae2369aa9a097941bf1bff7823589ffc819f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
