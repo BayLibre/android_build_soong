@@ -94,6 +94,10 @@ type variableProperties struct {
 		Pdk struct {
 			Enabled *bool
 		}
+
+		Uml struct {
+			Cppflags []string
+		}
 	} `android:"arch_variant"`
 }
 
