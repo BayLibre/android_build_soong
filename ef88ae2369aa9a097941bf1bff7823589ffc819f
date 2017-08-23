@@ -95,6 +95,30 @@
       "revId": "ef88ae2369aa9a097941bf1bff7823589ffc819f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2658b6c3_19ef9e22",
+        "filename": "cc/linker.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-23T15:41:54Z",
+      "side": 1,
+      "message": "I\u0027m fine with keeping this as is temporarily and fixing it in a future patch, since it is keeping current behavior.",
+      "parentUuid": "ca6a4107_d48b157c",
+      "range": {
+        "startLine": 180,
+        "startChar": 3,
+        "endLine": 180,
+        "endChar": 73
+      },
+      "revId": "ef88ae2369aa9a097941bf1bff7823589ffc819f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
