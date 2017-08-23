@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad96fd80_f6116878",
+        "filename": "cc/linker.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-23T14:34:00Z",
+      "side": 1,
+      "message": "Can you add this to the if instead so that the system_shared_libs property is applied consistently?\n\n  if !ctx.static() || ctx.sdk() || ctx.vndk()",
+      "parentUuid": "215aa98a_cd83bf73",
+      "range": {
+        "startLine": 180,
+        "startChar": 3,
+        "endLine": 180,
+        "endChar": 73
+      },
+      "revId": "ef88ae2369aa9a097941bf1bff7823589ffc819f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
