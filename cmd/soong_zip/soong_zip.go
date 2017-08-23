@@ -57,6 +57,14 @@ func (nopCloser) Close() error {
 	return nil
 }
 
+type stringReaderCloser struct {
+	strings.Reader
+	io.Closer
+}
+
+// the file path in the zip at which a Java manifest file gets written
+const manifestDest = "META-INF/MANIFEST.MF"
+
 type fileArg struct {
 	pathPrefixInZip, sourcePrefixToStrip string
 	sourceFiles                          []string
@@ -332,7 +340,7 @@ func (z *zipWriter) write(out string, pathMappings []pathMapping, manifest strin
 		if !*emulateJar {
 			return errors.New("must specify --jar when specifying a manifest via -m")
 		}
-		pathMappings = append(pathMappings, pathMapping{"META-INF/MANIFEST.MF", manifest, zip.Deflate})
+		pathMappings = append(pathMappings, pathMapping{manifestDest, manifest, zip.Deflate})
 	}
 
 	if *emulateJar {
@@ -344,7 +352,11 @@ func (z *zipWriter) write(out string, pathMappings []pathMapping, manifest strin
 		defer close(z.writeOps)
 
 		for _, ele := range pathMappings {
-			err = z.writeFile(ele.dest, ele.src, ele.zipMethod)
+			if *emulateJar && ele.dest == manifestDest {
+				err = z.addManifest(ele.dest, ele.src, ele.zipMethod)
+			} else {
+				err = z.addFile(ele.dest, ele.src, ele.zipMethod)
+			}
 			if err != nil {
 				z.errors <- err
 				return
@@ -441,7 +453,7 @@ func (z *zipWriter) write(out string, pathMappings []pathMapping, manifest strin
 }
 
 // imports (possibly with compression) <src> into the zip at sub-path <dest>
-func (z *zipWriter) writeFile(dest, src string, method uint16) error {
+func (z *zipWriter) addFile(dest, src string, method uint16) error {
 	var fileSize int64
 	var executable bool
 
@@ -477,6 +489,34 @@ func (z *zipWriter) writeFile(dest, src string, method uint16) error {
 	}
 
 	return z.writeFileContents(header, reader)
+}
+
+func (z *zipWriter) addManifest(dest string, src string, method uint16) error {
+	givenBytes, err := ioutil.ReadFile(src)
+	if err != nil {
+		return err
+	}
+
+	header := "Manifest-Version: 1.0\nCreated-By: soong_zip\n"
+	givenText := string(givenBytes)
+	var finalText string
+	if !strings.Contains(givenText, header) {
+		finalText = header + givenText + "\n"
+	} else {
+		finalText = givenText
+	}
+
+	stringReader := strings.NewReader(finalText)
+
+	reader := &stringReaderCloser{*stringReader, ioutil.NopCloser(nil)}
+
+	fileHeader := &zip.FileHeader{
+		Name:               dest,
+		Method:             zip.Store,
+		UncompressedSize64: uint64(stringReader.Len()),
+	}
+
+	return z.writeFileContents(fileHeader, reader)
 }
 
 // writes the contents of <contentReader> according to the specifications in <header>
