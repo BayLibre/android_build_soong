@@ -139,12 +139,11 @@ var (
 	parallelJobs = flag.Int("j", runtime.NumCPU(), "number of parallel threads to use")
 	compLevel    = flag.Int("L", 5, "deflate compression level (0-9)")
 	emulateJar   = flag.Bool("jar", false, "modify the resultant .zip to emulate the output of 'jar'")
+	cpuProfile   = flag.String("cpuprofile", "", "write cpu profile to file")
+	traceFile    = flag.String("trace", "", "write trace to file")
 
 	fArgs            fileArgs
 	nonDeflatedFiles = make(uniqueSet)
-
-	cpuProfile = flag.String("cpuprofile", "", "write cpu profile to file")
-	traceFile  = flag.String("trace", "", "write trace to file")
 )
 
 func init() {
@@ -217,6 +216,10 @@ func main() {
 	if *out == "" {
 		fmt.Fprintf(os.Stderr, "error: -o is required\n")
 		usage()
+	}
+
+	if *emulateJar {
+		*directories = true
 	}
 
 	w := &zipWriter{
@@ -669,6 +672,19 @@ func (z *zipWriter) compressWholeFile(ze *zipEntry, r *os.File, compressChan cha
 	close(compressChan)
 }
 
+func (z *zipWriter) addExtraField(zipHeader *zip.FileHeader, fieldHeader [2]byte, data []byte) {
+	// add the field header in little-endian order
+	zipHeader.Extra = append(zipHeader.Extra, fieldHeader[1], fieldHeader[0])
+
+	// specify the length of the data (in little-endian order)
+	dataLength := len(data)
+	lengthBytes := []byte{byte(dataLength % 256), byte(dataLength / 256)}
+	zipHeader.Extra = append(zipHeader.Extra, lengthBytes...)
+
+	// add the contents of the extra field
+	zipHeader.Extra = append(zipHeader.Extra, data...)
+}
+
 func (z *zipWriter) writeDirectory(dir string) error {
 	// clean the input
 	cleanDir := filepath.Clean(dir)
@@ -691,6 +707,11 @@ func (z *zipWriter) writeDirectory(dir string) error {
 		}
 		dirHeader.SetMode(0700 | os.ModeDir)
 		dirHeader.SetModTime(z.time)
+
+		if *emulateJar && dir == "META-INF/" {
+			// Jar files have a 0-length extra field with header "CAFE"
+			z.addExtraField(dirHeader, [2]byte{0xca, 0xfe}, []byte{})
+		}
 
 		ze := make(chan *zipEntry, 1)
 		ze <- &zipEntry{
