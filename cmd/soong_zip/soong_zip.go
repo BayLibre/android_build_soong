@@ -213,6 +213,10 @@ func main() {
 		usage()
 	}
 
+	if *emulateJar {
+		*directories = true
+	}
+
 	w := &zipWriter{
 		time:        time.Date(2009, 1, 1, 0, 0, 0, 0, time.UTC),
 		createdDirs: make(map[string]bool),
@@ -681,6 +685,10 @@ func (z *zipWriter) writeDirectory(dir string) error {
 		}
 		dirHeader.SetMode(0700 | os.ModeDir)
 		dirHeader.SetModTime(z.time)
+
+		if *emulateJar && dir == "META-INF/" {
+			dirHeader.Extra = append(dirHeader.Extra, []byte{0xfe, 0xca, 0x00, 0x00}...)
+		}
 
 		ze := make(chan *zipEntry, 1)
 		ze <- &zipEntry{
