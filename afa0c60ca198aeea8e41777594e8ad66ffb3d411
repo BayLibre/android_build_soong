@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6c83afae_e4c38069",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-23T23:33:58Z",
+      "side": 1,
+      "message": "In that case I\u0027ve marked this bug as blocked by 38325146 (removing Pos from some places)",
+      "parentUuid": "11740c79_72efa420",
+      "revId": "afa0c60ca198aeea8e41777594e8ad66ffb3d411",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2d35823_85066864",
         "filename": "bpfix/bpfix/bpfix.go",
         "patchSetId": 1
