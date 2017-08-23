@@ -336,7 +336,7 @@ func (z *zipWriter) write(out string, pathMappings []pathMapping, manifest strin
 	defer z.rateLimit.Stop()
 
 	if manifest != "" {
-		pathMappings = append(pathMappings, pathMapping{"META-INF/MANIFEST.MF", manifest, zip.Deflate})
+		pathMappings = append(pathMappings, pathMapping{manifestDest, manifest, zip.Deflate})
 	}
 
 	if *emulateJar {
@@ -348,7 +348,11 @@ func (z *zipWriter) write(out string, pathMappings []pathMapping, manifest strin
 		defer close(z.writeOps)
 
 		for _, ele := range pathMappings {
-			err = z.writeFile(ele.dest, ele.src, ele.zipMethod)
+			if *emulateJar && ele.dest == manifestDest {
+				err = z.addManifest(ele.dest, ele.src, ele.zipMethod)
+			} else {
+				err = z.addFile(ele.dest, ele.src, ele.zipMethod)
+			}
 			if err != nil {
 				z.errors <- err
 				return
@@ -446,7 +450,7 @@ func (z *zipWriter) write(out string, pathMappings []pathMapping, manifest strin
 }
 
 // imports (possibly with compression) <src> into the zip at sub-path <dest>
-func (z *zipWriter) writeFile(dest, src string, method uint16) error {
+func (z *zipWriter) addFile(dest, src string, method uint16) error {
 	var fileSize int64
 	var executable bool
 
@@ -479,6 +483,27 @@ func (z *zipWriter) writeFile(dest, src string, method uint16) error {
 
 	if executable {
 		header.SetMode(0700)
+	}
+
+	return z.writeFileContents(header, reader)
+}
+
+func (z *zipWriter) addManifest(dest string, src string, method uint16) error {
+	givenBytes, err := ioutil.ReadFile(src)
+	if err != nil {
+		return err
+	}
+
+	finalText := "Manifest-Version: 1.0\nCreated-By: soong_zip\n" + string(givenBytes) + "\n"
+
+	stringReader := strings.NewReader(finalText)
+
+	reader := &stringReaderCloser{*stringReader, noopCloser{}}
+
+	header := &zip.FileHeader{
+		Name:               dest,
+		Method:             zip.Store,
+		UncompressedSize64: uint64(stringReader.Len()),
 	}
 
 	return z.writeFileContents(header, reader)
