@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5fafaf6b_55e69a94",
+        "filename": "android/variable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-08-23T22:23:58Z",
+      "side": 1,
+      "message": "You need to add a Uml *bool `json:\",omitempty\"` line here too",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 53
+      },
+      "revId": "39e19e7b4cee66240cfb2fdfc8bd998899bd6adf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
