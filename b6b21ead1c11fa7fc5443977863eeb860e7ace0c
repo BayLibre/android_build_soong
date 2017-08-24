@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "a76dfd31_fdee1fca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-24T19:46:32Z",
+      "side": 1,
+      "message": "Oh oops. I\u0027ll update the Test line to match. Yeah testing indicates that either \u0027--jar\u0027 or \u0027-jar\u0027 works.",
+      "parentUuid": "47022bde_d555a721",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "b6b21ead1c11fa7fc5443977863eeb860e7ace0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "abaf6c78_8a282de2",
         "filename": "cmd/soong_zip/soong_zip.go",
         "patchSetId": 2
