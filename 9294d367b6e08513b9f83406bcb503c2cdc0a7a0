@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "312f1155_1ebac8c2",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-24T17:35:06Z",
+      "side": 1,
+      "message": "Maybe drop the directories option and make it only implied by emulateJar since nothing else seems to care about it?",
+      "revId": "9294d367b6e08513b9f83406bcb503c2cdc0a7a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9a2fa86_da2781be",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-24T17:35:06Z",
+      "side": 1,
+      "message": "Add a comment on what this is",
+      "revId": "9294d367b6e08513b9f83406bcb503c2cdc0a7a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
