@@ -34,6 +34,24 @@
       "revId": "5811bfc13a9c7e49906ebf0f95c0cb682ac4fbdf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbf5f80b_35aadbea",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-24T19:36:31Z",
+      "side": 1,
+      "message": "dataDescriptorFlag isn\u0027t even exported, so it couldn\u0027t be set to be respected.",
+      "parentUuid": "40318b41_4c8c4601",
+      "revId": "5811bfc13a9c7e49906ebf0f95c0cb682ac4fbdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
