@@ -16,6 +16,24 @@
       "revId": "5811bfc13a9c7e49906ebf0f95c0cb682ac4fbdf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40318b41_4c8c4601",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-24T19:34:51Z",
+      "side": 1,
+      "message": "How about \"CreateHeaderRespectingDataDescriptorBit\"?",
+      "parentUuid": "a91dbfa5_9785386b",
+      "revId": "5811bfc13a9c7e49906ebf0f95c0cb682ac4fbdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
