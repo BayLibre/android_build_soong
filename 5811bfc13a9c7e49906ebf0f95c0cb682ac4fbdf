@@ -52,6 +52,24 @@
       "revId": "5811bfc13a9c7e49906ebf0f95c0cb682ac4fbdf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14796c6f_f1b7a67f",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-24T19:43:41Z",
+      "side": 1,
+      "message": "That\u0027s fair. How about making dataDescriptorFlag be exported? Callers can change the flag value, just without the exported constant it\u0027s not convenient.",
+      "parentUuid": "fbf5f80b_35aadbea",
+      "revId": "5811bfc13a9c7e49906ebf0f95c0cb682ac4fbdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
