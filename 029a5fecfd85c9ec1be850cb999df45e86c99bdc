@@ -16,6 +16,24 @@
       "revId": "029a5fecfd85c9ec1be850cb999df45e86c99bdc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e19fc819_b22940c8",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-24T22:56:00Z",
+      "side": 1,
+      "message": "oops. I\u0027ll move the addition of manifestDest into this patch",
+      "parentUuid": "dba8307c_f2fa4ae9",
+      "revId": "029a5fecfd85c9ec1be850cb999df45e86c99bdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
