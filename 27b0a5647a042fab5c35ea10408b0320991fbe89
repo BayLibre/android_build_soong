@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bcefe5ce_11dad702",
+        "filename": "third_party/zip/android.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-24T21:29:44Z",
+      "side": 1,
+      "message": "thanks",
+      "parentUuid": "5d9b1644_053713ad",
+      "revId": "27b0a5647a042fab5c35ea10408b0320991fbe89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "400dcc6b_6c93a3f9",
         "filename": "third_party/zip/android.go",
         "patchSetId": 4
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "995df6c2_19f61147",
+        "filename": "third_party/zip/android.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-24T21:29:44Z",
+      "side": 1,
+      "message": "thanks",
+      "parentUuid": "400dcc6b_6c93a3f9",
+      "range": {
+        "startLine": 155,
+        "startChar": 37,
+        "endLine": 155,
+        "endChar": 9
+      },
+      "revId": "27b0a5647a042fab5c35ea10408b0320991fbe89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "511c1216_7b6ad257",
         "filename": "third_party/zip/writer.go",
         "patchSetId": 4
@@ -53,6 +95,24 @@
       "writtenOn": "2017-08-24T21:21:50Z",
       "side": 1,
       "message": "This can go in android.go",
+      "revId": "27b0a5647a042fab5c35ea10408b0320991fbe89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7970e90_a92dd6cd",
+        "filename": "third_party/zip/writer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-24T21:29:44Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "511c1216_7b6ad257",
       "revId": "27b0a5647a042fab5c35ea10408b0320991fbe89",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
