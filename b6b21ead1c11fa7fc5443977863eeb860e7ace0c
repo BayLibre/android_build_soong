@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "47022bde_d555a721",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-24T19:34:57Z",
+      "side": 1,
+      "message": "Your test says you used -jar, and IIRC the golang flag package doesn\u0027t understand --jar",
+      "parentUuid": "614fcea8_c0a0ecd1",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "b6b21ead1c11fa7fc5443977863eeb860e7ace0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "abaf6c78_8a282de2",
         "filename": "cmd/soong_zip/soong_zip.go",
         "patchSetId": 2
