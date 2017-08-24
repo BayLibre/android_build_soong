@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ccf5a63c_3b29455b",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-24T22:07:30Z",
+      "side": 1,
+      "message": "Hmm it looks like there are some usages of the -d option to create .zip files, including in device-tests.mk creating device-tests.zip, and in build/make/core/Makefile creating $(SYMBOLS_ZIP).\n\nShould I just delete all of the usages in build/make? Should I have the existing callers pass \"--jar\" instead?",
+      "parentUuid": "312f1155_1ebac8c2",
+      "revId": "9294d367b6e08513b9f83406bcb503c2cdc0a7a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d9a2fa86_da2781be",
         "filename": "cmd/soong_zip/soong_zip.go",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2017-08-24T17:35:06Z",
       "side": 1,
       "message": "Add a comment on what this is",
+      "revId": "9294d367b6e08513b9f83406bcb503c2cdc0a7a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ad03403_1c389a28",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-24T22:07:30Z",
+      "side": 1,
+      "message": "good call",
+      "parentUuid": "d9a2fa86_da2781be",
       "revId": "9294d367b6e08513b9f83406bcb503c2cdc0a7a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
