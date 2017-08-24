@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a91dbfa5_9785386b",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-24T17:25:46Z",
+      "side": 1,
+      "message": "It\u0027s a little subtle here that CreateHeaderAndroid happens to not use a data descriptor by default.  In my failed attempts I was trying to make CreateHeader detect whether or not to use the data descriptor, but it can\u0027t always know ahead of time if the file will fit in a zip32 file header, so I like your explicit approach better.  Maybe rename CreateHeaderAndroid to CreateHeaderWithoutDataDescriptor to be explicit?",
+      "revId": "5811bfc13a9c7e49906ebf0f95c0cb682ac4fbdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
