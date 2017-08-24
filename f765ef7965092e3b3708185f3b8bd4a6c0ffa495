@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c1e9affd_085c51c9",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-24T22:41:56Z",
+      "side": 1,
+      "message": "let me know if this still applies based what we decide for the below comment",
+      "parentUuid": "540cf810_8624fb25",
+      "revId": "f765ef7965092e3b3708185f3b8bd4a6c0ffa495",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f1bdc91e_4b90caf2",
         "filename": "cmd/soong_zip/soong_zip.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2017-08-24T17:45:07Z",
       "side": 1,
       "message": "It looks like most of the complexity in this change comes from this Seek.  Could this be rewritten with io.TeeReader instead to only read from the base reader once and split it out to all the different users?",
+      "revId": "f765ef7965092e3b3708185f3b8bd4a6c0ffa495",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e8fccf9_99e444f3",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-24T22:41:56Z",
+      "side": 1,
+      "message": "Hmm it looks like after the compression completes, if the compressed value is larger than the original input, then it rereads the file and copies it into the zip under the method Stored. That requires us to either preemptively keep a copy of the file (which seems wasteful to me), or requires a way to go back and reread the file later.\n\nIt does seem cleaner to me if the reader were to provide a Clone function instead of a Seek function, and a cloned readers would lazily reread the file from its own position, so there\u0027s less state shared between reads.\n\nWould you like something like that instead?",
+      "parentUuid": "f1bdc91e_4b90caf2",
       "revId": "f765ef7965092e3b3708185f3b8bd4a6c0ffa495",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
