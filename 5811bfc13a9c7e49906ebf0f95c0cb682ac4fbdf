@@ -88,6 +88,24 @@
       "revId": "5811bfc13a9c7e49906ebf0f95c0cb682ac4fbdf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bfc7309_93ca95e5",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-24T19:55:56Z",
+      "side": 1,
+      "message": "Not at the moment. It just seemed more useful to me for the api to be \"we respect the flag that you pass\" rather than \"we set the flag to false for you\", partially to keep its usage clear (\"why would the flag exist if it gets ignored?\") and partially to avoid having to make a number of methods equal to 2^(number of flags we could want to set).\n\nWhat would be the advantage in calling it \"CreateHeaderWithoutDataDescriptor\"? Also, would we want that function to set the flag to false?\n\nI was also thinking about calling this new function CreateHeaderV2 , although I wasn\u0027t sure if that would someday conflict if the Go authors happened to make a function called CreateHeaderV2.",
+      "parentUuid": "3db48af0_143b849e",
+      "revId": "5811bfc13a9c7e49906ebf0f95c0cb682ac4fbdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
