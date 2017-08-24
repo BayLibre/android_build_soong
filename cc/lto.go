@@ -41,8 +41,8 @@ import (
 type LTOProperties struct {
 	// Lto must violate capitialization style for acronyms so that it can be
 	// referred to in blueprint files as "lto"
-	Lto    *bool `android:"arch_variant"`
-	LTODep bool  `blueprint:"mutated"`
+	Lto    *string `android:"arch_variant"`
+	LTODep bool    `blueprint:"mutated"`
 }
 
 type lto struct {
@@ -61,9 +61,18 @@ func (lto *lto) deps(ctx BaseModuleContext, deps Deps) Deps {
 }
 
 func (lto *lto) flags(ctx BaseModuleContext, flags Flags) Flags {
-	if Bool(lto.Properties.Lto) {
-		flags.CFlags = append(flags.CFlags, "-flto")
-		flags.LdFlags = append(flags.LdFlags, "-flto")
+	if lto.Properties.Lto == nil {
+		return flags
+	} else if lto.LTO() {
+		var ltoFlag string
+		if lto.isFullLTO() {
+			ltoFlag = "-flto"
+		} else {
+			ltoFlag = "-flto=thin"
+		}
+
+		flags.CFlags = append(flags.CFlags, ltoFlag)
+		flags.LdFlags = append(flags.LdFlags, ltoFlag)
 		if ctx.Device() {
 			// Work around bug in Clang that doesn't pass correct emulated
 			// TLS option to target
@@ -74,13 +83,25 @@ func (lto *lto) flags(ctx BaseModuleContext, flags Flags) Flags {
 	return flags
 }
 
-// Can be called with a null receiver
-func (lto *lto) LTO() bool {
+func (lto *lto) isFullLTO() bool {
 	if lto == nil {
 		return false
 	}
 
-	return Bool(lto.Properties.Lto)
+	return lto.Properties.Lto != nil && *lto.Properties.Lto == "full"
+}
+
+func (lto *lto) isThinLTO() bool {
+	if lto == nil {
+		return false
+	}
+
+	return lto.Properties.Lto != nil && *lto.Properties.Lto == "thin"
+}
+
+// Can be called with a null receiver
+func (lto *lto) LTO() bool {
+	return lto.isFullLTO() || lto.isThinLTO()
 }
 
 // Propagate lto requirements down from binaries
@@ -105,8 +126,8 @@ func ltoMutator(mctx android.BottomUpMutatorContext) {
 			mctx.SetDependencyVariation("lto")
 		} else if c.lto.Properties.LTODep {
 			modules := mctx.CreateVariations("", "lto")
-			modules[0].(*Module).lto.Properties.Lto = boolPtr(false)
-			modules[1].(*Module).lto.Properties.Lto = boolPtr(true)
+			modules[0].(*Module).lto.Properties.Lto = nil
+			modules[1].(*Module).lto.Properties.Lto = c.lto.Properties.Lto
 			modules[0].(*Module).lto.Properties.LTODep = false
 			modules[1].(*Module).lto.Properties.LTODep = false
 			modules[1].(*Module).Properties.PreventInstall = true
