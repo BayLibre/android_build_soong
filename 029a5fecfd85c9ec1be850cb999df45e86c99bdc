@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dba8307c_f2fa4ae9",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-24T17:46:10Z",
+      "side": 1,
+      "message": "This looks like it should have been in a previous patch where manifestDest was introduced?",
+      "revId": "029a5fecfd85c9ec1be850cb999df45e86c99bdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
