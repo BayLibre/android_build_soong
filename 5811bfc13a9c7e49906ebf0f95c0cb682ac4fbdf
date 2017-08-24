@@ -106,6 +106,24 @@
       "revId": "5811bfc13a9c7e49906ebf0f95c0cb682ac4fbdf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9eda06ee_8700c55b",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-24T20:02:21Z",
+      "side": 1,
+      "message": "My only concern with CreateHeaderAndroid is that switching a call from CreateHeader to CreateHeaderAndroid, with no changes to the flags, causes it to stop inserting the data descriptor.  Consider the case where we add another new flag.  If you switch CreateHeader to CreateHeaderAndroid and set the new flag, you are also unintentionally disabling data descriptors.\n\nWe could invert the meaning of the dataDescriptorFlag, maybe add a zip.JarCompatible flag instead, but it would mean the flags no longer had a 1-to-1 correspondence to the bits that end up in the zip file.",
+      "parentUuid": "5bfc7309_93ca95e5",
+      "revId": "5811bfc13a9c7e49906ebf0f95c0cb682ac4fbdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
