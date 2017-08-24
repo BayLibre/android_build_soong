@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d9b1644_053713ad",
+        "filename": "third_party/zip/android.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-24T21:21:50Z",
+      "side": 1,
+      "message": "this shouldn\u0027t be importing the upstream zip",
+      "revId": "27b0a5647a042fab5c35ea10408b0320991fbe89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "400dcc6b_6c93a3f9",
+        "filename": "third_party/zip/android.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-24T21:21:50Z",
+      "side": 1,
+      "message": "Store",
+      "range": {
+        "startLine": 155,
+        "startChar": 37,
+        "endLine": 155,
+        "endChar": 9
+      },
+      "revId": "27b0a5647a042fab5c35ea10408b0320991fbe89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "511c1216_7b6ad257",
+        "filename": "third_party/zip/writer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-24T21:21:50Z",
+      "side": 1,
+      "message": "This can go in android.go",
+      "revId": "27b0a5647a042fab5c35ea10408b0320991fbe89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
