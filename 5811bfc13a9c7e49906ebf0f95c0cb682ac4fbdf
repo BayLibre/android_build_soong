@@ -124,6 +124,24 @@
       "revId": "5811bfc13a9c7e49906ebf0f95c0cb682ac4fbdf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdd2fa99_efbcf8d4",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-24T20:25:41Z",
+      "side": 1,
+      "message": "My thought is that the fact that CreateHeader accepts a parameter that it ignores is a mistake in the api and that CreateHeaderAndroid wouldn\u0027t try to be api-compatible. I guess it could be said that a better solution would be to remove that flag from the input type entirely so the caller doesn\u0027t have to think about whether to use a data descriptor or not.\n\nWould you like it better if CreateHeaderAndroid specified to write a data descriptor if and only if the method was not equal to Store (and therefore ignored the value passed in by the caller)?\n\nAs long as nobody tries to use the Stored method on a file whose size is more than 32 bits (and I hope nobody would want to do that) then we shouldn\u0027t have to implement 64-bit handling.",
+      "parentUuid": "9eda06ee_8700c55b",
+      "revId": "5811bfc13a9c7e49906ebf0f95c0cb682ac4fbdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
