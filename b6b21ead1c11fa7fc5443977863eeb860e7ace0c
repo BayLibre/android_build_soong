@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "614fcea8_c0a0ecd1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-24T19:16:06Z",
+      "side": 1,
+      "message": "Do you mean that we\u0027d rather have the flag be \"-jar\" than --jar\"?",
+      "parentUuid": "0594e20e_7385c1b3",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "b6b21ead1c11fa7fc5443977863eeb860e7ace0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "abaf6c78_8a282de2",
         "filename": "cmd/soong_zip/soong_zip.go",
         "patchSetId": 2
