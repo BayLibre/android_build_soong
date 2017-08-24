@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "540cf810_8624fb25",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-24T17:45:07Z",
+      "side": 1,
+      "message": "I\u0027d move this Close() out to the caller if possible, so this can just take an io.Reader",
+      "revId": "f765ef7965092e3b3708185f3b8bd4a6c0ffa495",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1bdc91e_4b90caf2",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-24T17:45:07Z",
+      "side": 1,
+      "message": "It looks like most of the complexity in this change comes from this Seek.  Could this be rewritten with io.TeeReader instead to only read from the base reader once and split it out to all the different users?",
+      "revId": "f765ef7965092e3b3708185f3b8bd4a6c0ffa495",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
