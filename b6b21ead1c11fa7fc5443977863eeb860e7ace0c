@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0594e20e_7385c1b3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-24T17:33:49Z",
+      "side": 1,
+      "message": "-jar?",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "b6b21ead1c11fa7fc5443977863eeb860e7ace0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abaf6c78_8a282de2",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-24T17:33:49Z",
+      "side": 1,
+      "message": "The other user of this used sort.SliceStable.  Probably doesn\u0027t matter, since there shouldn\u0027t ever be multiple elements that compare equal, but might as well make it consistent one way or the other.",
+      "revId": "b6b21ead1c11fa7fc5443977863eeb860e7ace0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cae0291a_ede3f68e",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-24T17:33:49Z",
+      "side": 1,
+      "message": "Exit with an error if manifest is specified without -jar?",
+      "revId": "b6b21ead1c11fa7fc5443977863eeb860e7ace0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
