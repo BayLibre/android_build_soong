@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be2f843b_ba6f0c99",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1256,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-08-24T07:32:43Z",
+      "side": 1,
+      "message": "Because \"m.Properties.Vendor_available \u003d\u003d nil\", there\u0027s no \"vendor_available\" property in the Android.bp. It will be better to indicate \"vndk\" in this case.",
+      "range": {
+        "startLine": 1256,
+        "startChar": 24,
+        "endLine": 1256,
+        "endChar": 40
+      },
+      "revId": "1e41f6f0cda4c025468ceb61b5ea584dfe3d9268",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
