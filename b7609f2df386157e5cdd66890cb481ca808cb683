@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4df7a2be_cd7a8130",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-24T18:54:06Z",
+      "side": 1,
+      "message": "That was just in case we wanted the ability to control the order. I can change it to a map and then do a sort within splitAndAssign if you like that better",
+      "parentUuid": "4c9075f3_73bcc9b6",
+      "range": {
+        "startLine": 291,
+        "startChar": 55,
+        "endLine": 291,
+        "endChar": 151
+      },
+      "revId": "b7609f2df386157e5cdd66890cb481ca808cb683",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e157deb0_fb39937c",
         "filename": "androidmk/cmd/androidmk/android.go",
         "patchSetId": 1
