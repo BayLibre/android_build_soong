@@ -142,6 +142,24 @@
       "revId": "5811bfc13a9c7e49906ebf0f95c0cb682ac4fbdf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ade357e4_09c0f8e9",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-24T20:48:40Z",
+      "side": 1,
+      "message": "Autodetecting it based on stored sounds fine to me, and then panic if it ends up more than 32 bits?",
+      "parentUuid": "cdd2fa99_efbcf8d4",
+      "revId": "5811bfc13a9c7e49906ebf0f95c0cb682ac4fbdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
