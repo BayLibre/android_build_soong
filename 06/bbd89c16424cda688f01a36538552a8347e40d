@@ -1,0 +1,10 @@
+Verified+1: Zach Riggle <riggle@google.com>
+Code-Review+1: Vishwath Mohan <vishwath@google.com>
+Code-Review+2: Dan Willemsen <dwillemsen@google.com>
+Autosubmit+1: Zach Riggle <riggle@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Zach Riggle <riggle@google.com>
+Submitted-at: Thu, 24 Aug 2017 19:26:12 +0000
+Reviewed-on: https://android-review.googlesource.com/464977
+Project: platform/build/soong
+Branch: refs/heads/master
