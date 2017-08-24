@@ -160,6 +160,24 @@
       "revId": "5811bfc13a9c7e49906ebf0f95c0cb682ac4fbdf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "173f4659_5ee51440",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-24T21:17:49Z",
+      "side": 1,
+      "message": "Sounds good to me. I\u0027ve upgraded line 285 of writer.go from \"fmt.Errorf\" to \"panic\"",
+      "parentUuid": "ade357e4_09c0f8e9",
+      "revId": "5811bfc13a9c7e49906ebf0f95c0cb682ac4fbdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
