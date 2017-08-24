@@ -69,6 +69,24 @@
       "revId": "f765ef7965092e3b3708185f3b8bd4a6c0ffa495",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26669eb3_d955bc00",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-24T23:20:48Z",
+      "side": 1,
+      "message": "Since all the expected inputs (files and buffers) already support seek its probably better as-is.  If you could move the Close() out you could replace readerSeekerCloser with io.ReedSeeker.",
+      "parentUuid": "1e8fccf9_99e444f3",
+      "revId": "f765ef7965092e3b3708185f3b8bd4a6c0ffa495",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }

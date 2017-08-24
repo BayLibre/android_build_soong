@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbd95e23_4e0a20d2",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-24T23:20:48Z",
+      "side": 1,
+      "message": "This change is unnecessary since you don\u0027t need stringReaderCloser below",
+      "revId": "f790f875a61a5c0d82706d4c3e60f7987c4d8267",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14e523c0_dafcbee7",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-24T23:20:48Z",
+      "side": 1,
+      "message": "I don\u0027t see a user of this.  If you needed it, try ioutils.NopCloser on the strings.Reader.",
+      "revId": "f790f875a61a5c0d82706d4c3e60f7987c4d8267",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
