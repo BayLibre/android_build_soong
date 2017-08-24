@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c7e8c52_c167cd92",
+        "filename": "jar/jar.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-24T17:30:26Z",
+      "side": 1,
+      "message": "This is using the Java/C++ comparator semantics (-1, 0, or 1).  If this is only for sort, why not make it match the Less semantics that sort needs and avoid the \"return comparison \u003c 0\" in all the users?",
+      "revId": "5ea959a25b62b9147ebd44322e88dc40095324ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
