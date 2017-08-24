@@ -87,6 +87,24 @@
       "revId": "f765ef7965092e3b3708185f3b8bd4a6c0ffa495",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59edc2ff_f76188c1",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-24T23:40:16Z",
+      "side": 1,
+      "message": "I\u0027ve now removed the usage of readerSeekerCloser in compressWholeFile. I\u0027ve left the readerSeekerCloser in writeFileContents to prevent the need for each caller of writeFileContents to have to closer their file - I could extract that too if your concern is specifically with the creation of the readerSeekerCloser interface",
+      "parentUuid": "26669eb3_d955bc00",
+      "revId": "f765ef7965092e3b3708185f3b8bd4a6c0ffa495",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }

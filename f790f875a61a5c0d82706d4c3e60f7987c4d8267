@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5a15e9da_eaa59cc7",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-24T23:40:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbd95e23_4e0a20d2",
+      "revId": "f790f875a61a5c0d82706d4c3e60f7987c4d8267",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14e523c0_dafcbee7",
         "filename": "cmd/soong_zip/soong_zip.go",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2017-08-24T23:20:48Z",
       "side": 1,
       "message": "I don\u0027t see a user of this.  If you needed it, try ioutils.NopCloser on the strings.Reader.",
+      "revId": "f790f875a61a5c0d82706d4c3e60f7987c4d8267",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab499fa7_f0de5533",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-24T23:40:16Z",
+      "side": 1,
+      "message": "It turns out this wasn\u0027t used until the next patch so I\u0027ve moved it into there. I\u0027ve now tried ioutils.NopCloser and found that a NopCloser isn\u0027t also a Seeker, hence needing to keep the stringReaderCloser type declaration.",
+      "parentUuid": "14e523c0_dafcbee7",
       "revId": "f790f875a61a5c0d82706d4c3e60f7987c4d8267",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
