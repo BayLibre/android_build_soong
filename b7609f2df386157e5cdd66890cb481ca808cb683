@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "4c9075f3_73bcc9b6",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-24T17:51:58Z",
+      "side": 1,
+      "message": "why not use a map[string]string?",
+      "range": {
+        "startLine": 291,
+        "startChar": 55,
+        "endLine": 291,
+        "endChar": 151
+      },
+      "revId": "b7609f2df386157e5cdd66890cb481ca808cb683",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e157deb0_fb39937c",
         "filename": "androidmk/cmd/androidmk/android.go",
         "patchSetId": 1
@@ -13,6 +36,24 @@
       "writtenOn": "2017-06-28T18:12:27Z",
       "side": 1,
       "message": "I don\u0027t know whether we care that the order is different between exportIncludeDirs and localIncludeDirs (\"local\" first in exportIncludeDirs, but \"global\" first in localIncludeDirs). There wasn\u0027t a test for exportIncludeDirs\u0027 ordering either, not sure if we care about that either",
+      "revId": "b7609f2df386157e5cdd66890cb481ca808cb683",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4aa534f7_5c266c56",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-24T17:51:58Z",
+      "side": 1,
+      "message": "I don\u0027t think the order matters",
+      "parentUuid": "e157deb0_fb39937c",
       "revId": "b7609f2df386157e5cdd66890cb481ca808cb683",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
