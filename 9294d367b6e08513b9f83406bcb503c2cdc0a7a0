@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "0bf207bc_8483b896",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-24T23:14:45Z",
+      "side": 1,
+      "message": "Lets leave that for a separate patch.  device-tests.mk probably doesn\u0027t need -d.",
+      "parentUuid": "ccf5a63c_3b29455b",
+      "revId": "9294d367b6e08513b9f83406bcb503c2cdc0a7a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d9a2fa86_da2781be",
         "filename": "cmd/soong_zip/soong_zip.go",
         "patchSetId": 2
