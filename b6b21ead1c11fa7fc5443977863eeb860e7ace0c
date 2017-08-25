@@ -114,6 +114,24 @@
     },
     {
       "key": {
+        "uuid": "4cc07346_53739095",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-25T20:02:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abaf6c78_8a282de2",
+      "revId": "b6b21ead1c11fa7fc5443977863eeb860e7ace0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cae0291a_ede3f68e",
         "filename": "cmd/soong_zip/soong_zip.go",
         "patchSetId": 2
@@ -128,6 +146,24 @@
       "revId": "b6b21ead1c11fa7fc5443977863eeb860e7ace0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58813103_981fed36",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-25T20:02:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cae0291a_ede3f68e",
+      "revId": "b6b21ead1c11fa7fc5443977863eeb860e7ace0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
