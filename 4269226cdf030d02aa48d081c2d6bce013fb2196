@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1339e53_e16397e6",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-25T21:37:33Z",
+      "side": 1,
+      "message": "Fine in this case, but be careful with appending to one variable and assigning to another, as it can modify the underlying storage that the header variable is still pointing to.\n\nWhy do you need to append a \\n if you are prepending the header?",
+      "range": {
+        "startLine": 506,
+        "startChar": 29,
+        "endLine": 506,
+        "endChar": 35
+      },
+      "revId": "4269226cdf030d02aa48d081c2d6bce013fb2196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
