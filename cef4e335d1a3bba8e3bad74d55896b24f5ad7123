@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f92c7f57_68879cb8",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-25T03:49:45Z",
+      "side": 1,
+      "message": "Unrelated change",
+      "revId": "cef4e335d1a3bba8e3bad74d55896b24f5ad7123",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
