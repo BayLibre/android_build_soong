@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7da9cef6_d99a7410",
+        "filename": "cc/lto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2017-08-25T20:30:51Z",
+      "side": 1,
+      "message": "Maybe an inner Lto struct { Thin, Full } would be good here (like sanitize uses). The only potential problem I see with separate props is that it\u0027s not vali to enable both thin and full LTO for the same binary, but we can just raise an error for that case.",
+      "parentUuid": "7d367656_b8c251d9",
+      "revId": "129681272fd38dac46626a6616f9ebd82de7ea85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "145e4e39_a862ffb0",
         "filename": "cc/lto.go",
         "patchSetId": 1
