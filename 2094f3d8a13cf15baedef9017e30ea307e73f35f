@@ -22,6 +22,30 @@
       "revId": "2094f3d8a13cf15baedef9017e30ea307e73f35f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac0b3ed9_2f0741f9",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-25T23:09:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "842c43b2_000263b5",
+      "range": {
+        "startLine": 483,
+        "startChar": 27,
+        "endLine": 483,
+        "endChar": 40
+      },
+      "revId": "2094f3d8a13cf15baedef9017e30ea307e73f35f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
