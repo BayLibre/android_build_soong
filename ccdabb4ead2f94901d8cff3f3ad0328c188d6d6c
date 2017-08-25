@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9834ba64_1fbb83d1",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-25T05:19:54Z",
+      "side": 1,
+      "message": "It seems odd to mix strings and []byte like this.  Strings are immutable, so each time you convert to a string or append to a string requires creating a whole new buffer.  I\u0027d keep this as []byte, and append it to []byte(header), and use a bytes.Reader",
+      "revId": "ccdabb4ead2f94901d8cff3f3ad0328c188d6d6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efb7e49c_f037dcb7",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-25T05:19:54Z",
+      "side": 1,
+      "message": "Maybe just check for \"Manifest-Version:\" in case the manifest was created by another tool?",
+      "revId": "ccdabb4ead2f94901d8cff3f3ad0328c188d6d6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
