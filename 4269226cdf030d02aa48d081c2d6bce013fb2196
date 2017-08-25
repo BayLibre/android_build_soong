@@ -22,6 +22,30 @@
       "revId": "4269226cdf030d02aa48d081c2d6bce013fb2196",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "109a3ba7_98ff3937",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-25T22:36:19Z",
+      "side": 1,
+      "message": "I wanted to do `append(header, givenBytes..., byte(\u0027\\n\u0027))` but the compiler wouldn\u0027t accept that.\n\nFor the newline at the end, my understanding from b/64536066 was that we also wanted to add a newline in the common case. What criteria would you use for determining whether to add a newline? Would you split it into a separate check that ensures that the manifest ends in a newline?",
+      "parentUuid": "d1339e53_e16397e6",
+      "range": {
+        "startLine": 506,
+        "startChar": 29,
+        "endLine": 506,
+        "endChar": 35
+      },
+      "revId": "4269226cdf030d02aa48d081c2d6bce013fb2196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
