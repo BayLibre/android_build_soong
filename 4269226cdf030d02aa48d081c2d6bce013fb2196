@@ -46,6 +46,30 @@
       "revId": "4269226cdf030d02aa48d081c2d6bce013fb2196",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73ba2f6d_0ca6b999",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-25T23:02:39Z",
+      "side": 1,
+      "message": "Oh yeah, I forgot jar does this.",
+      "parentUuid": "109a3ba7_98ff3937",
+      "range": {
+        "startLine": 506,
+        "startChar": 29,
+        "endLine": 506,
+        "endChar": 35
+      },
+      "revId": "4269226cdf030d02aa48d081c2d6bce013fb2196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
