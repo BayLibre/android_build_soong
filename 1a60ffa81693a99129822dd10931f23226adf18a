@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75320b19_860d874a",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-25T05:11:56Z",
+      "side": 1,
+      "message": "It is idiomatic in go to use short names (\"r\") for short-lived variables like this, for example https://golang.org/src/io/io.go?s\u003d11382:11436#L316",
+      "range": {
+        "startLine": 464,
+        "startChar": 1,
+        "endLine": 464,
+        "endChar": 7
+      },
+      "revId": "1a60ffa81693a99129822dd10931f23226adf18a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f32a9c3_623e1c2b",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-25T05:11:56Z",
+      "side": 1,
+      "message": "I\u0027d keep this as \"r\"",
+      "range": {
+        "startLine": 483,
+        "startChar": 62,
+        "endLine": 483,
+        "endChar": 75
+      },
+      "revId": "1a60ffa81693a99129822dd10931f23226adf18a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2508d8ee_bea38c8c",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-25T05:11:56Z",
+      "side": 1,
+      "message": "maybe just io.Closer?",
+      "range": {
+        "startLine": 554,
+        "startChar": 30,
+        "endLine": 554,
+        "endChar": 55
+      },
+      "revId": "1a60ffa81693a99129822dd10931f23226adf18a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "352299a7_a86191eb",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-25T05:11:56Z",
+      "side": 1,
+      "message": "\"r\"",
+      "range": {
+        "startLine": 632,
+        "startChar": 52,
+        "endLine": 632,
+        "endChar": 58
+      },
+      "revId": "1a60ffa81693a99129822dd10931f23226adf18a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
