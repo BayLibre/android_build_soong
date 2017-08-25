@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d367656_b8c251d9",
+        "filename": "cc/lto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-25T19:43:46Z",
+      "side": 1,
+      "message": "Could you make this a separate boolean thin property instead?  Using strings like this makes error checkign harder.  In this case, a typo in \"full\" or \"thin\" will cause it to be ignored.",
+      "revId": "129681272fd38dac46626a6616f9ebd82de7ea85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "145e4e39_a862ffb0",
+        "filename": "cc/lto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-25T19:43:46Z",
+      "side": 1,
+      "message": "This check isn\u0027t doing anything, lto.LTO() will return false if Lto is nil.",
+      "revId": "129681272fd38dac46626a6616f9ebd82de7ea85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
