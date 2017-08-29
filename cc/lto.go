@@ -41,8 +41,9 @@ import (
 type LTOProperties struct {
 	// Lto must violate capitialization style for acronyms so that it can be
 	// referred to in blueprint files as "lto"
-	Lto    *bool `android:"arch_variant"`
-	LTODep bool  `blueprint:"mutated"`
+	Lto     *bool `android:"arch_variant"`
+	ThinLto *bool `android:"arch_variant"`
+	LTODep  bool  `blueprint:"mutated"`
 }
 
 type lto struct {
@@ -62,8 +63,15 @@ func (lto *lto) deps(ctx BaseModuleContext, deps Deps) Deps {
 
 func (lto *lto) flags(ctx BaseModuleContext, flags Flags) Flags {
 	if Bool(lto.Properties.Lto) {
-		flags.CFlags = append(flags.CFlags, "-flto")
-		flags.LdFlags = append(flags.LdFlags, "-flto")
+		var ltoFlag string
+		if Bool(lto.Properties.ThinLto) {
+			ltoFlag = "-flto=thin"
+		} else {
+			ltoFlag = "-flto"
+		}
+
+		flags.CFlags = append(flags.CFlags, ltoFlag)
+		flags.LdFlags = append(flags.LdFlags, ltoFlag)
 		if ctx.Device() {
 			// Work around bug in Clang that doesn't pass correct emulated
 			// TLS option to target
@@ -107,6 +115,8 @@ func ltoMutator(mctx android.BottomUpMutatorContext) {
 			modules := mctx.CreateVariations("", "lto")
 			modules[0].(*Module).lto.Properties.Lto = boolPtr(false)
 			modules[1].(*Module).lto.Properties.Lto = boolPtr(true)
+			modules[0].(*Module).lto.Properties.ThinLto = c.lto.Properties.ThinLto
+			modules[1].(*Module).lto.Properties.ThinLto = c.lto.Properties.ThinLto
 			modules[0].(*Module).lto.Properties.LTODep = false
 			modules[1].(*Module).lto.Properties.LTODep = false
 			modules[1].(*Module).Properties.PreventInstall = true
