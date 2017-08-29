@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "faf423cb_f749a3b1",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1305,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-29T20:33:36Z",
+      "side": 1,
+      "message": "this seems generally useful, put it in paths.go?",
+      "revId": "aceb2647bdf4ae92371b1ab5285d9edc623f0679",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
