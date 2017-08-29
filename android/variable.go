@@ -149,7 +149,8 @@ type productVariables struct {
 
 	IntegerOverflowExcludePaths *[]string `json:",omitempty"`
 
-	VendorPath *string `json:",omitempty"`
+	VendorPath              *string `json:",omitempty"`
+	VndkReferenceAbiDumpDir *string `json:",omitempty"`
 
 	ClangTidy  *bool   `json:",omitempty"`
 	TidyChecks *string `json:",omitempty"`

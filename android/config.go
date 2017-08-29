@@ -536,6 +536,10 @@ func (c *deviceConfig) CompileVndk() bool {
 	return *c.config.ProductVariables.DeviceVndkVersion == "current"
 }
 
+func (c *deviceConfig) GetVndkReferenceAbiDumpDir() string {
+	return String(c.config.ProductVariables.VndkReferenceAbiDumpDir)
+}
+
 func (c *deviceConfig) BtConfigIncludeDir() string {
 	return String(c.config.ProductVariables.BtConfigIncludeDir)
 }
