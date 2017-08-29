@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcf2e030_79ab35f0",
+        "filename": "cc/lto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-29T17:56:58Z",
+      "side": 1,
+      "message": "This isn\u0027t necessary, the properties are copied over when the module is split.",
+      "revId": "9b93a000434502b91e578648dc10703da00679c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
