@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04ea60b5_15e8b81f",
+        "filename": "java/config/errorprone.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-08-29T02:16:07Z",
+      "side": 1,
+      "message": "What is this for?",
+      "revId": "3353b366971f1c964a4c6b1dd2d80dd6087a790a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
