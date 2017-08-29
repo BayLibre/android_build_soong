@@ -18,6 +18,8 @@ import (
 	"strings"
 )
 
+var errorProneFlags []string
+
 func init() {
 	pctx.SourcePathVariable("ErrorProneJavacJar", "external/error_prone/javac/javac-9-dev-r3297-4.jar")
 	pctx.SourcePathVariable("ErrorProneJar", "external/error_prone/error_prone/error_prone_core-2.0.19-with-dependencies.jar")
@@ -78,6 +80,8 @@ func init() {
 		"-Xep:UnusedAnonymousClass:ERROR",
 	}, " "))
 
+	pctx.StaticVariable("ErrorProneHeapFlags", "-Xmx"+JavacHeapSize)
+
 	pctx.StaticVariable("ErrorProneFlags", strings.Join([]string{
 		"com.google.errorprone.ErrorProneCompiler",
 		"-Xdiags:verbose",
@@ -87,11 +91,12 @@ func init() {
 		"-XDuseStrictMethodClashCheck=true",
 		"-XDuseStructuralMostSpecificResolution=true",
 		"-XDuseGraphInference=true",
-		"-Xmaxwarns 100000",
 		"-XDandroidCompatible=true",
 		"-XepAllErrorsAsWarnings",
 	}, " "))
 
 	pctx.StaticVariable("ErrorProneCmd",
-		"${JavaCmd} -Xbootclasspath/p:${ErrorProneJavacJar} -cp ${ErrorProneJar}:${ErrorProneClasspath} ${ErrorProneFlags} ${ErrorProneChecksError}")
+		"${JavaCmd} ${ErrorProneHeapFlags} -Xbootclasspath/p:${ErrorProneJavacJar} "+
+			"-cp ${ErrorProneJar}:${ErrorProneClasspath} "+
+			"${ErrorProneFlags} ${CommonJdkFlags} ${ErrorProneChecksError}")
 }
