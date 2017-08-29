@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "0b2804d3_b6f6f1ef",
+        "filename": "cc/lto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2017-08-29T18:15:47Z",
+      "side": 1,
+      "message": "With this property handling, a user will have to set both the lto and thinLto blueprint properties on a module to get thin LTO. Wouldn\u0027t it make more sense to have each property be independent? Maybe there could be a FullLTO property and a ThinLTO property and either property used alone would enable the corresponding LTO mode.",
+      "revId": "9b93a000434502b91e578648dc10703da00679c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dcf2e030_79ab35f0",
         "filename": "cc/lto.go",
         "patchSetId": 2
@@ -13,6 +30,24 @@
       "writtenOn": "2017-08-29T17:56:58Z",
       "side": 1,
       "message": "This isn\u0027t necessary, the properties are copied over when the module is split.",
+      "revId": "9b93a000434502b91e578648dc10703da00679c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c15a86d5_7615bdee",
+        "filename": "cc/lto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2017-08-29T18:15:47Z",
+      "side": 1,
+      "message": "One of these should be explicitly set to false, as a binary not built with (thin)LTO may require the non-LTO version of the static library. Along the same lines, if you decide to go with switching the LTO properties as mentioned in my other comment, FullLTO should not be unconditionally set to true.",
+      "parentUuid": "dcf2e030_79ab35f0",
       "revId": "9b93a000434502b91e578648dc10703da00679c3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
