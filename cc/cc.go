@@ -1138,6 +1138,13 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 
 	// Dedup exported flags from dependencies
 	depPaths.Flags = firstUniqueElements(depPaths.Flags)
+	depPaths.GeneratedHeaders = firstUniquePaths(depPaths.GeneratedHeaders)
+	depPaths.ReexportedFlags = firstUniqueElements(depPaths.ReexportedFlags)
+	depPaths.ReexportedFlagsDeps = firstUniquePaths(depPaths.ReexportedFlagsDeps)
+
+	if c.sabi != nil {
+		c.sabi.Properties.ReexportedIncludeFlags = firstUniqueElements(c.sabi.Properties.ReexportedIncludeFlags)
+	}
 
 	return depPaths
 }
@@ -1281,6 +1288,21 @@ func vendorMutator(mctx android.BottomUpMutatorContext) {
 // firstUniqueElements returns all unique elements of a slice, keeping the first copy of each
 // modifies the slice contents in place, and returns a subslice of the original slice
 func firstUniqueElements(list []string) []string {
+	k := 0
+outer:
+	for i := 0; i < len(list); i++ {
+		for j := 0; j < k; j++ {
+			if list[i] == list[j] {
+				continue outer
+			}
+		}
+		list[k] = list[i]
+		k++
+	}
+	return list[:k]
+}
+
+func firstUniquePaths(list android.Paths) android.Paths {
 	k := 0
 outer:
 	for i := 0; i < len(list); i++ {
