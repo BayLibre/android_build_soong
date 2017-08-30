@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56b63395_7223a921",
+        "filename": "cc/lto.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-30T16:45:22Z",
+      "side": 1,
+      "message": "errors in blueprint files should be reported with ctx.PropertyErrorf().  Either make LTO() take a BaseModuleContext, or put the check in the first mutator pass (ltoDepsMutator).",
+      "revId": "c99534e7cdce9090b1a18a8411afd3d022f7eec0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
