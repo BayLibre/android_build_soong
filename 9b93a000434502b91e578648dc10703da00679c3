@@ -51,6 +51,24 @@
       "revId": "9b93a000434502b91e578648dc10703da00679c3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d377af5_72c7d062",
+        "filename": "cc/lto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2017-08-30T19:18:16Z",
+      "side": 1,
+      "message": "On second thought... these properties will be false (c.lto.LTO() \u003d\u003d false). The LTODep modules need {Thin,Full}LTO to be explicitly set, since they\u0027re a dependency of a binary that requires LTO, but LTO was not set in their blueprint.",
+      "parentUuid": "c15a86d5_7615bdee",
+      "revId": "9b93a000434502b91e578648dc10703da00679c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
