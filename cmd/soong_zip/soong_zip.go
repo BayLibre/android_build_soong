@@ -68,6 +68,7 @@ const manifestDest = "META-INF/MANIFEST.MF"
 type fileArg struct {
 	pathPrefixInZip, sourcePrefixToStrip string
 	sourceFiles                          []string
+	globDir                              string
 }
 
 type pathMapping struct {
@@ -96,6 +97,8 @@ type fileArgs []fileArg
 type file struct{}
 
 type listFiles struct{}
+
+type dir struct{}
 
 func (f *file) String() string {
 	return `""`
@@ -138,6 +141,20 @@ func (l *listFiles) Set(s string) error {
 	return nil
 }
 
+func (d *dir) String() string {
+	return `""`
+}
+
+func (d *dir) Set(s string) error {
+	fArgs = append(fArgs, fileArg{
+		pathPrefixInZip:     filepath.Clean(*rootPrefix),
+		sourcePrefixToStrip: filepath.Clean(s),
+		globDir:             filepath.Clean(s),
+	})
+
+	return nil
+}
+
 var (
 	out          = flag.String("o", "", "file to write zip file to")
 	manifest     = flag.String("m", "", "input jar manifest file name")
@@ -157,6 +174,7 @@ var (
 
 func init() {
 	flag.Var(&listFiles{}, "l", "file containing list of .class files")
+	flag.Var(&dir{}, "D", "directory to include in zip")
 	flag.Var(&file{}, "f", "file to include in zip")
 	flag.Var(&nonDeflatedFiles, "s", "file path to be stored within the zip without compression")
 }
@@ -242,7 +260,11 @@ func main() {
 	set := make(map[string]string)
 
 	for _, fa := range fArgs {
-		for _, src := range fa.sourceFiles {
+		srcs := fa.sourceFiles
+		if fa.globDir != "" {
+			srcs = append(srcs, recursiveGlobFiles(fa.globDir)...)
+		}
+		for _, src := range srcs {
 			if err := fillPathPairs(fa.pathPrefixInZip,
 				fa.sourcePrefixToStrip, src, set, &pathMappings); err != nil {
 				log.Fatal(err)
@@ -829,4 +851,16 @@ func (z *zipWriter) writeSymlink(rel, file string) error {
 	z.writeOps <- ze
 
 	return nil
+}
+
+func recursiveGlobFiles(path string) []string {
+	var files []string
+	filepath.Walk(path, func(path string, info os.FileInfo, err error) error {
+		if !info.IsDir() {
+			files = append(files, path)
+		}
+		return nil
+	})
+
+	return files
 }
