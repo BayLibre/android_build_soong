@@ -19,6 +19,7 @@ package java
 // functions.
 
 import (
+	"path/filepath"
 	"strings"
 
 	"android/soong/android"
@@ -42,8 +43,8 @@ var (
 				`$javacFlags $bootClasspath $classpath ` +
 				`-source $javaVersion -target $javaVersion ` +
 				`-d $outDir -s $annoDir @$out.rsp && ` +
-				`find $outDir -type f | sort | ${config.JarArgsCmd} $outDir > $out`,
-			CommandDeps:    []string{"${config.JavacCmd}", "${config.JarArgsCmd}"},
+				`${config.SoongZipCmd} -jar -o $out -C $outDir -D $outDir`,
+			CommandDeps:    []string{"${config.JavacCmd}", "${config.SoongZipCmd}"},
 			Rspfile:        "$out.rsp",
 			RspfileContent: "$in",
 		},
@@ -56,12 +57,12 @@ var (
 				`$javacFlags $bootClasspath $classpath ` +
 				`-source $javaVersion -target $javaVersion ` +
 				`-d $outDir -s $annoDir @$out.rsp && ` +
-				`find $outDir -type f | sort | ${config.JarArgsCmd} $outDir > $out`,
+				`${config.SoongZipCmd} -jar -o $out -C $outDir -D $outDir`,
 			CommandDeps: []string{
 				"${config.JavaCmd}",
 				"${config.ErrorProneJavacJar}",
 				"${config.ErrorProneJar}",
-				"${config.JarArgsCmd}",
+				"${config.SoongZipCmd}",
 			},
 			Rspfile:        "$out.rsp",
 			RspfileContent: "$in",
@@ -70,17 +71,28 @@ var (
 
 	jar = pctx.AndroidStaticRule("jar",
 		blueprint.RuleParams{
-			Command:     `${config.JarCmd} $operation ${out}.tmp $manifest $jarArgs && ${config.Zip2ZipCmd} -t -i ${out}.tmp -o ${out} && rm ${out}.tmp`,
-			CommandDeps: []string{"${config.JarCmd}"},
+			Command:     `${config.SoongZipCmd} -jar -o $out $jarArgs`,
+			CommandDeps: []string{"${config.SoongZipCmd}"},
 		},
-		"operation", "manifest", "jarArgs")
+		"jarCmd", "jarArgs")
+
+	combineJar = pctx.AndroidStaticRule("combineJar",
+		blueprint.RuleParams{
+			// TODO(ccross): replace this with a jar combiner binary
+			Command: `rm -rf $outDir && mkdir -p $outDir && ` +
+				`for i in $in; do ` +
+				`  unzip -q $$i -d $outDir || exit 1; ` +
+				`done && ${config.SoongZipCmd} -jar -o $out -C $outDir -D $outDir`,
+			CommandDeps: []string{"${config.SoongZipCmd}"},
+		},
+		"outDir")
 
 	dx = pctx.AndroidStaticRule("dx",
 		blueprint.RuleParams{
 			Command: `rm -rf "$outDir" && mkdir -p "$outDir" && ` +
-				`${config.DxCmd} --dex --output=$outDir $dxFlags $in && ` +
-				`find "$outDir" -name "classes*.dex" | sort | ${config.JarArgsCmd} ${outDir} > $out`,
-			CommandDeps: []string{"${config.DxCmd}", "${config.JarArgsCmd}"},
+				`${config.DxCmd} --dex --output=$outDir $dxFlags $in || ( rm -rf "$outDir"; exit 41 ) && ` +
+				`find "$outDir" -name "classes*.dex" | sort > $out`,
+			CommandDeps: []string{"${config.DxCmd}"},
 		},
 		"outDir", "dxFlags")
 
@@ -90,22 +102,6 @@ var (
 			CommandDeps: []string{"${config.JavaCmd}", "${config.JarjarCmd}", "$rulesFile"},
 		},
 		"rulesFile")
-
-	extractPrebuilt = pctx.AndroidStaticRule("extractPrebuilt",
-		blueprint.RuleParams{
-			Command: `rm -rf $outDir && unzip -qo $in -d $outDir && ` +
-				`find $outDir -name "*.class" | sort | ${config.JarArgsCmd} ${outDir} > $classFile && ` +
-				`find $outDir -type f -a \! -name "*.class" -a \! -name "MANIFEST.MF" | sort | ${config.JarArgsCmd} ${outDir} > $resourceFile`,
-			CommandDeps: []string{"${config.JarArgsCmd}"},
-		},
-		"outDir", "classFile", "resourceFile")
-
-	fileListToJarArgs = pctx.AndroidStaticRule("fileListToJarArgs",
-		blueprint.RuleParams{
-			Command:     `${config.JarArgsCmd} -f $in -p ${outDir} -o $out`,
-			CommandDeps: []string{"${config.JarjarCmd}"},
-		},
-		"outDir")
 )
 
 func init() {
@@ -122,23 +118,19 @@ type javaBuilderFlags struct {
 }
 
 type jarSpec struct {
-	android.ModuleOutPath
+	fileList, dir android.Path
 }
 
-func (j jarSpec) jarArgs() string {
-	return "@" + j.String()
+func (j jarSpec) soongJarArgs() string {
+	return "-C " + j.dir.String() + " -l " + j.fileList.String()
 }
 
-func (j jarSpec) path() android.Path {
-	return j.ModuleOutPath
-}
-
-func TransformJavaToClasses(ctx android.ModuleContext, srcFiles android.Paths, srcFileLists android.Paths,
-	flags javaBuilderFlags, deps android.Paths) jarSpec {
+func TransformJavaToClasses(ctx android.ModuleContext, srcFiles, srcFileLists android.Paths,
+	flags javaBuilderFlags, deps android.Paths) android.ModuleOutPath {
 
 	classDir := android.PathForModuleOut(ctx, "classes")
 	annoDir := android.PathForModuleOut(ctx, "anno")
-	classFileList := android.PathForModuleOut(ctx, "classes.list")
+	classJar := android.PathForModuleOut(ctx, "classes.jar")
 
 	javacFlags := flags.javacFlags + android.JoinWithPrefix(srcFileLists.Strings(), "@")
 
@@ -147,7 +139,7 @@ func TransformJavaToClasses(ctx android.ModuleContext, srcFiles android.Paths, s
 	ctx.ModuleBuild(pctx, android.ModuleBuildParams{
 		Rule:        javac,
 		Description: "javac",
-		Output:      classFileList,
+		Output:      classJar,
 		Inputs:      srcFiles,
 		Implicits:   deps,
 		Args: map[string]string{
@@ -160,7 +152,7 @@ func TransformJavaToClasses(ctx android.ModuleContext, srcFiles android.Paths, s
 		},
 	})
 
-	return jarSpec{classFileList}
+	return classJar
 }
 
 func RunErrorProne(ctx android.ModuleContext, srcFiles android.Paths, srcFileLists android.Paths,
@@ -193,22 +185,21 @@ func RunErrorProne(ctx android.ModuleContext, srcFiles android.Paths, srcFileLis
 	return classFileList
 }
 
-func TransformClassesToJar(ctx android.ModuleContext, classes []jarSpec,
+func TransformResourcesToJar(ctx android.ModuleContext, resources []jarSpec,
 	manifest android.OptionalPath, deps android.Paths) android.Path {
 
-	outputFile := android.PathForModuleOut(ctx, "classes-full-debug.jar")
+	outputFile := android.PathForModuleOut(ctx, "res.jar")
 
 	jarArgs := []string{}
 
-	for _, j := range classes {
-		deps = append(deps, j.path())
-		jarArgs = append(jarArgs, j.jarArgs())
+	for _, j := range resources {
+		deps = append(deps, j.fileList)
+		jarArgs = append(jarArgs, j.soongJarArgs())
 	}
 
-	operation := "cf"
 	if manifest.Valid() {
-		operation = "cfm"
 		deps = append(deps, manifest.Path())
+		jarArgs = append(jarArgs, "-m "+manifest.String())
 	}
 
 	ctx.ModuleBuild(pctx, android.ModuleBuildParams{
@@ -217,9 +208,29 @@ func TransformClassesToJar(ctx android.ModuleContext, classes []jarSpec,
 		Output:      outputFile,
 		Implicits:   deps,
 		Args: map[string]string{
-			"jarArgs":   strings.Join(jarArgs, " "),
-			"operation": operation,
-			"manifest":  manifest.String(),
+			"jarArgs": strings.Join(jarArgs, " "),
+		},
+	})
+
+	return outputFile
+}
+
+func TransformJarsToJar(ctx android.ModuleContext, stem string, jars android.Paths) android.Path {
+
+	outputFile := android.PathForModuleOut(ctx, stem)
+	outDir := android.PathForModuleOut(ctx, strings.TrimSuffix(stem, filepath.Ext(stem)))
+
+	if len(jars) == 1 {
+		return jars[0]
+	}
+
+	ctx.ModuleBuild(pctx, android.ModuleBuildParams{
+		Rule:        combineJar,
+		Description: "combine jars",
+		Output:      outputFile,
+		Inputs:      jars,
+		Args: map[string]string{
+			"outDir": outDir.String(),
 		},
 	})
 
@@ -243,7 +254,7 @@ func TransformClassesJarToDex(ctx android.ModuleContext, classesJar android.Path
 		},
 	})
 
-	return jarSpec{outputFile}
+	return jarSpec{outputFile, outDir}
 }
 
 func TransformDexToJavaLib(ctx android.ModuleContext, resources []jarSpec,
@@ -254,12 +265,12 @@ func TransformDexToJavaLib(ctx android.ModuleContext, resources []jarSpec,
 	var jarArgs []string
 
 	for _, j := range resources {
-		deps = append(deps, j.path())
-		jarArgs = append(jarArgs, j.jarArgs())
+		deps = append(deps, j.fileList)
+		jarArgs = append(jarArgs, j.soongJarArgs())
 	}
 
-	deps = append(deps, dexJarSpec.path())
-	jarArgs = append(jarArgs, dexJarSpec.jarArgs())
+	deps = append(deps, dexJarSpec.fileList)
+	jarArgs = append(jarArgs, dexJarSpec.soongJarArgs())
 
 	ctx.ModuleBuild(pctx, android.ModuleBuildParams{
 		Rule:        jar,
@@ -267,15 +278,14 @@ func TransformDexToJavaLib(ctx android.ModuleContext, resources []jarSpec,
 		Output:      outputFile,
 		Implicits:   deps,
 		Args: map[string]string{
-			"operation": "cf",
-			"jarArgs":   strings.Join(jarArgs, " "),
+			"jarArgs": strings.Join(jarArgs, " "),
 		},
 	})
 
 	return outputFile
 }
 
-func TransformJarJar(ctx android.ModuleContext, classesJar android.Path, rulesFile android.Path) android.Path {
+func TransformJarJar(ctx android.ModuleContext, classesJar android.Path, rulesFile android.Path) android.ModuleOutPath {
 	outputFile := android.PathForModuleOut(ctx, "classes-jarjar.jar")
 	ctx.ModuleBuild(pctx, android.ModuleBuildParams{
 		Rule:        jarjar,
@@ -289,42 +299,4 @@ func TransformJarJar(ctx android.ModuleContext, classesJar android.Path, rulesFi
 	})
 
 	return outputFile
-}
-
-func TransformPrebuiltJarToClasses(ctx android.ModuleContext,
-	subdir string, prebuilt android.Path) (classJarSpec, resourceJarSpec jarSpec) {
-
-	classDir := android.PathForModuleOut(ctx, subdir, "classes")
-	classFileList := android.PathForModuleOut(ctx, subdir, "classes.list")
-	resourceFileList := android.PathForModuleOut(ctx, subdir, "resources.list")
-
-	ctx.ModuleBuild(pctx, android.ModuleBuildParams{
-		Rule:        extractPrebuilt,
-		Description: "extract classes",
-		Outputs:     android.WritablePaths{classFileList, resourceFileList},
-		Input:       prebuilt,
-		Args: map[string]string{
-			"outDir":       classDir.String(),
-			"classFile":    classFileList.String(),
-			"resourceFile": resourceFileList.String(),
-		},
-	})
-
-	return jarSpec{classFileList}, jarSpec{resourceFileList}
-}
-
-func TransformFileListToJarSpec(ctx android.ModuleContext, dir, fileListFile android.Path) jarSpec {
-	outputFile := android.PathForModuleOut(ctx, fileListFile.Base()+".jarArgs")
-
-	ctx.ModuleBuild(pctx, android.ModuleBuildParams{
-		Rule:        fileListToJarArgs,
-		Description: "file list to jar args",
-		Output:      outputFile,
-		Input:       fileListFile,
-		Args: map[string]string{
-			"outDir": dir.String(),
-		},
-	})
-
-	return jarSpec{outputFile}
 }
