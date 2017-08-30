@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a646ab23_dcdaeb48",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-08-30T23:29:11Z",
+      "side": 1,
+      "message": "How would you feel about using fa.sourceFiles instead? I was confused briefly about why sourcePrefixToStrip had an effect on which directory we wanted to walk.\n\nif fa.globFiles {\n  srcs \u003d []string{}\n  for _, sourceFile :\u003d range fa.sourceFiles {\n    srcs \u003d append(srcs, recursiveGlobFiles(sourceFile)...)\n  }\n}\n\nMaybe that\u0027ll make it easier to standardize the duplicate-entry checks if we ever need a filelist-with-glob argument that\u0027s a mix of \"-D\" and \"-l\"",
+      "revId": "f13d12c015b77b2d33272ed5b9ce517a14f8efa9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
