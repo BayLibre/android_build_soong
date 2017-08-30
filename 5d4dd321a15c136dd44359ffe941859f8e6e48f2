@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10b0f6ff_47272c95",
+        "filename": "root.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-30T22:19:09Z",
+      "side": 1,
+      "message": "Might as well be tools/*",
+      "revId": "5d4dd321a15c136dd44359ffe941859f8e6e48f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
