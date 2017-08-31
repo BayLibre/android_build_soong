@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "796f1c5b_e698232a",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-31T03:34:29Z",
+      "side": 1,
+      "message": "This effectively treats -D \u003cdir\u003e as -C \u003cdir\u003e -D \u003cdir\u003e.  I wonder if we should require it to be explicit instead, which would enable using -C a/b -D a/b/c to only include a subdirectory of the prefix dir.",
+      "revId": "5f21d81f06edce22b47b92a08fc1f7cc7f3d9d7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
