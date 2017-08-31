@@ -54,6 +54,8 @@ func init() {
 		"${JavaToolchain}/javac", "ALTERNATE_JAVAC")
 	pctx.SourcePathVariable("JavaCmd", "${JavaToolchain}/java")
 	pctx.SourcePathVariable("JarCmd", "${JavaToolchain}/jar")
+	pctx.SourcePathVariable("JlinkCmd", "${JavaToolchain}/jlink")
+	pctx.SourcePathVariable("JmodCmd", "${JavaToolchain}/jmod")
 	pctx.SourcePathVariable("JavadocCmd", "${JavaToolchain}/javadoc")
 
 	pctx.StaticVariable("Zip2ZipCmd", filepath.Join("${bootstrap.ToolDir}", "zip2zip"))
