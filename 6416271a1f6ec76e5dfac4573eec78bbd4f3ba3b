@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11b3b60b_e9b60f85",
+        "filename": "java/config/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2017-08-31T16:09:17Z",
+      "side": 1,
+      "message": "Where did this come from? It seems to break compilation under OpenJDK 9.\n\nI can\u0027t find where you ported this from - e.g. r.android.com/458860 does not remove such a flag from javac.mk.\n\nMy draft CL\n   https://android-review.googlesource.com/474057\nproposes to change this to:\n  -sourcepath .",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 17
+      },
+      "revId": "6416271a1f6ec76e5dfac4573eec78bbd4f3ba3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
