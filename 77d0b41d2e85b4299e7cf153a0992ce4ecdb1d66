@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "755d7388_6658266a",
+        "filename": "java/config/makevars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-08-31T21:51:45Z",
+      "side": 1,
+      "message": "Should we be forcing these to be empty in the !JDK9 case?",
+      "revId": "77d0b41d2e85b4299e7cf153a0992ce4ecdb1d66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
