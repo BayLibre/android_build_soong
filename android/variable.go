@@ -147,6 +147,7 @@ type productVariables struct {
 	Treble                     *bool `json:",omitempty"`
 	Pdk                        *bool `json:",omitempty"`
 	Uml                        *bool `json:",omitempty"`
+	Pagerando                  *bool `json:",omitempty"`
 
 	IntegerOverflowExcludePaths *[]string `json:",omitempty"`
 
