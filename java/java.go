@@ -96,6 +96,9 @@ type CompilerProperties struct {
 
 	// If not blank, set the java version passed to javac as -source and -target
 	Java_version *string
+
+	// if set, don't allow this module to be installed
+	Uninstallable *bool
 }
 
 type CompilerDeviceProperties struct {
@@ -456,7 +459,10 @@ type Library struct {
 func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	j.compile(ctx)
 
-	j.installFile = ctx.InstallFile(android.PathForModuleInstall(ctx, "framework"), ctx.ModuleName()+".jar", j.outputFile)
+	if !proptools.Bool(j.properties.Uninstallable) {
+		j.installFile = ctx.InstallFile(android.PathForModuleInstall(ctx, "framework"),
+			ctx.ModuleName()+".jar", j.outputFile)
+	}
 }
 
 func (j *Library) DepsMutator(ctx android.BottomUpMutatorContext) {
@@ -580,9 +586,6 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	j.classpathFiles = android.PathsForModuleSrc(ctx, j.properties.Jars)
 
 	j.combinedClasspathFile = TransformJarsToJar(ctx, "classes.jar", j.classpathFiles)
-
-	ctx.InstallFile(android.PathForModuleInstall(ctx, "framework"),
-		ctx.ModuleName()+".jar", j.combinedClasspathFile)
 }
 
 var _ Dependency = (*Import)(nil)

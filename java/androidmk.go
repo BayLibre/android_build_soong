@@ -19,6 +19,8 @@ import (
 	"io"
 	"strings"
 
+	"github.com/google/blueprint/proptools"
+
 	"android/soong/android"
 )
 
@@ -29,6 +31,9 @@ func (library *Library) AndroidMk() android.AndroidMkData {
 		Extra: []android.AndroidMkExtraFunc{
 			func(w io.Writer, outputFile android.Path) {
 				fmt.Fprintln(w, "LOCAL_MODULE_SUFFIX := .jar")
+				if proptools.Bool(library.properties.Uninstallable) {
+					fmt.Fprintln(w, "LOCAL_UNINSTALLABLE_MODULE := true")
+				}
 			},
 		},
 	}
@@ -41,6 +46,7 @@ func (prebuilt *Import) AndroidMk() android.AndroidMkData {
 		Extra: []android.AndroidMkExtraFunc{
 			func(w io.Writer, outputFile android.Path) {
 				fmt.Fprintln(w, "LOCAL_MODULE_SUFFIX := .jar")
+				fmt.Fprintln(w, "LOCAL_UNINSTALLABLE_MODULE := true")
 			},
 		},
 	}
