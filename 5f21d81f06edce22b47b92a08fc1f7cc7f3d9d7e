@@ -16,6 +16,24 @@
       "revId": "5f21d81f06edce22b47b92a08fc1f7cc7f3d9d7e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d89b4571_05a2c362",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-31T06:10:39Z",
+      "side": 1,
+      "message": "PS3 requires -C before -D",
+      "parentUuid": "796f1c5b_e698232a",
+      "revId": "5f21d81f06edce22b47b92a08fc1f7cc7f3d9d7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
