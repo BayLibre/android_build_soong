@@ -235,6 +235,8 @@ type libraryDecorator struct {
 
 	sabi *sabi
 
+	pagerando *pagerando
+
 	// Output archive of gcno coverage information files
 	coverageOutputFile android.OptionalPath
 
@@ -782,6 +784,14 @@ func (library *libraryDecorator) header() bool {
 	return !library.static() && !library.shared()
 }
 
+func (library *libraryDecorator) staticLibrary() bool {
+	return library.static()
+}
+
+func (library *libraryDecorator) sharedLibrary() bool {
+	return library.shared()
+}
+
 func (library *libraryDecorator) setStatic() {
 	library.MutatedProperties.VariantIsStatic = true
 	library.MutatedProperties.VariantIsShared = false
@@ -818,6 +828,7 @@ func NewLibrary(hod android.HostOrDeviceSupported) (*Module, *libraryDecorator) 
 		baseInstaller: NewBaseInstaller("lib", "lib64", InstallInSystem),
 		sanitize:      module.sanitize,
 		sabi:          module.sabi,
+		pagerando:     module.pagerando,
 	}
 
 	module.compiler = library
