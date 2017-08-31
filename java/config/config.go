@@ -39,7 +39,7 @@ func init() {
 	pctx.StaticVariable("CommonJdkFlags", strings.Join([]string{
 		`-Xmaxerrs 9999999`,
 		`-encoding UTF-8`,
-		`-sourcepath ""`,
+		`-sourcepath .`,
 		`-g`,
 	}, " "))
 
