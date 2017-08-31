@@ -117,20 +117,20 @@ func init() {
 	addStandardProperties(bpparser.BoolType,
 		map[string]string{
 			// Bool properties
-			"LOCAL_IS_HOST_MODULE":          "host",
-			"LOCAL_CLANG":                   "clang",
-			"LOCAL_FORCE_STATIC_EXECUTABLE": "static_executable",
-			"LOCAL_NATIVE_COVERAGE":         "native_coverage",
-			"LOCAL_NO_CRT":                  "nocrt",
-			"LOCAL_ALLOW_UNDEFINED_SYMBOLS": "allow_undefined_symbols",
-			"LOCAL_RTTI_FLAG":               "rtti",
-			"LOCAL_NO_STANDARD_LIBRARIES":   "no_standard_libs",
-			"LOCAL_PACK_MODULE_RELOCATIONS": "pack_relocations",
-			"LOCAL_TIDY":                    "tidy",
-			"LOCAL_PROPRIETARY_MODULE":      "proprietary",
-			"LOCAL_VENDOR_MODULE":           "vendor",
-
+			"LOCAL_IS_HOST_MODULE":           "host",
+			"LOCAL_CLANG":                    "clang",
+			"LOCAL_FORCE_STATIC_EXECUTABLE":  "static_executable",
+			"LOCAL_NATIVE_COVERAGE":          "native_coverage",
+			"LOCAL_NO_CRT":                   "nocrt",
+			"LOCAL_ALLOW_UNDEFINED_SYMBOLS":  "allow_undefined_symbols",
+			"LOCAL_RTTI_FLAG":                "rtti",
+			"LOCAL_NO_STANDARD_LIBRARIES":    "no_standard_libs",
+			"LOCAL_PACK_MODULE_RELOCATIONS":  "pack_relocations",
+			"LOCAL_TIDY":                     "tidy",
+			"LOCAL_PROPRIETARY_MODULE":       "proprietary",
+			"LOCAL_VENDOR_MODULE":            "vendor",
 			"LOCAL_EXPORT_PACKAGE_RESOURCES": "export_package_resources",
+			"LOCAL_UNINSTALLABLE_MODULE":     "uninstallable",
 		})
 }
 
