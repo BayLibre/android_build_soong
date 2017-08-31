@@ -83,6 +83,19 @@ func (lto *lto) LTO() bool {
 	return Bool(lto.Properties.Lto)
 }
 
+// Can be called with a null receiver. Returns true if LTO has been explicitly
+// disabled for this module or if this module does not have an lto struct.
+func (lto *lto) LTODisabled() bool {
+	if lto == nil {
+		return true
+	}
+	if lto.Properties.Lto == nil {
+		return false
+	}
+
+	return !Bool(lto.Properties.Lto)
+}
+
 // Propagate lto requirements down from binaries
 func ltoDepsMutator(mctx android.TopDownMutatorContext) {
 	if c, ok := mctx.Module().(*Module); ok && c.lto.LTO() {
@@ -90,7 +103,8 @@ func ltoDepsMutator(mctx android.TopDownMutatorContext) {
 			tag := mctx.OtherModuleDependencyTag(m)
 			switch tag {
 			case staticDepTag, staticExportDepTag, lateStaticDepTag, wholeStaticDepTag, objDepTag, reuseObjTag:
-				if cc, ok := m.(*Module); ok && cc.lto != nil {
+				if cc, ok := m.(*Module); ok && cc.lto != nil &&
+					!cc.lto.LTODisabled() {
 					cc.lto.Properties.LTODep = true
 				}
 			}
