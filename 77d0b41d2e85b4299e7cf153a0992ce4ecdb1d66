@@ -16,6 +16,24 @@
       "revId": "77d0b41d2e85b4299e7cf153a0992ce4ecdb1d66",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c9a26f4_365e0035",
+        "filename": "java/config/makevars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2017-09-01T08:37:48Z",
+      "side": 1,
+      "message": "I don\u0027t think so? My understanding is that if any code now tried to refer JLINK without EXPERIMENTAL_USE_OPENJDK9 then this would fail and soong/make parse time, which seems like the right behavior?\n\nIf I set it to an empty string, then it would fail at make runtime, with some obscure error message because the \"jlink \" part of the command line would just be missing, and that sounds much harder to debug?\n\nThe only other way that I think would be reasonable is to not make lines 50-51 depend on EXPERIMENTAL_USE_OPENJDK9; then if someone wanted to use the commands, they\u0027d get a message at make runtime that jlink isn\u0027t found. But since it\u0027d always be an error to use them without EXPERIMENTAL_USE_OPENJDK9, I still think that this approach is preferable.\n\nI\u0027ll submit the CL now. Let me know if you disagree with any of the above and want me to make adjustments in a follow-up CL.",
+      "parentUuid": "755d7388_6658266a",
+      "revId": "77d0b41d2e85b4299e7cf153a0992ce4ecdb1d66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
