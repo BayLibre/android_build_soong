@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82bca9a5_072b0ef1",
+        "filename": "python/binary.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-09-01T23:43:52Z",
+      "side": 1,
+      "message": "This is proptools.Bool (we copy it into the cc package so that we can use it without the proptools prefix: https://android.googlesource.com/platform/build/soong/+/5ade8a859d082efae0d0f2c8a645bd6c42b81499/cc/cc.go#1330)",
+      "range": {
+        "startLine": 94,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 2
+      },
+      "revId": "0d06104158d3f8c36b7038319d9919cbd88e29d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0707aea9_0d2d55a9",
+        "filename": "python/python.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-09-01T23:43:52Z",
+      "side": 1,
+      "message": "I think you can replace this with a filegroup, so that you can use files with the prefix of the Android.bp where the filegroup is defined instead of where it\u0027s used. So for the stdlib usecase, in Lib/plat-linux2/Android.bp:\n\n  filegroup {\n    name: \"py2-stdlib-linux\",\n    srcs: [\"*.py\"],\n  }\n\nThen specifying \":py2-stdlib-linux\" in the srcs list of py2-stdlib.",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 44
+      },
+      "revId": "0d06104158d3f8c36b7038319d9919cbd88e29d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "355f919c_17062d1d",
+        "filename": "root.bp",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-09-01T23:43:52Z",
+      "side": 1,
+      "message": "This should be a subdirs \u003d [\"*\"] entry in external/python/cpython2/Android.bp",
+      "range": {
+        "startLine": 22,
+        "startChar": 4,
+        "endLine": 22,
+        "endChar": 33
+      },
+      "revId": "0d06104158d3f8c36b7038319d9919cbd88e29d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
