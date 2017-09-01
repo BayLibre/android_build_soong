@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a8ade27_4554bb6d",
+        "filename": "java/androidmk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-09-01T20:29:49Z",
+      "side": 1,
+      "message": "Is this supposed to be\n\n\"if library.properties.Installable !\u003d nil || *library.properties.Installable \u003d\u003d false\"\n\n?",
+      "revId": "21091333663a7291b2565b9c057f0824319f1dd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
