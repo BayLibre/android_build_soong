@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "797ea4f7_ca60701f",
+        "filename": "cc/pgo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2017-09-01T19:18:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6ab0968_1e8ba209",
+      "revId": "e372233f39b75915e032feaf44ca15cc40cb4b3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6e56797_82f5dd0f",
         "filename": "cc/pgo.go",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2017-09-01T18:49:23Z",
       "side": 1,
       "message": "nit: if we\u0027re not planning on making this more than one flag, can it just be a string instead (that we wrap up into a []string when necessary)",
+      "revId": "e372233f39b75915e032feaf44ca15cc40cb4b3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f5963421_610754fa",
+        "filename": "cc/pgo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2017-09-01T19:18:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6e56797_82f5dd0f",
       "revId": "e372233f39b75915e032feaf44ca15cc40cb4b3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "6a655db2_76237d21",
+        "filename": "cc/pgo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2017-09-01T19:18:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa81e05b_e7440912",
+      "revId": "e372233f39b75915e032feaf44ca15cc40cb4b3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48d78790_b7682d0a",
         "filename": "cc/pgo.go",
         "patchSetId": 3
@@ -64,6 +118,24 @@
       "writtenOn": "2017-09-01T18:49:23Z",
       "side": 1,
       "message": "nit: Looks like the dominant style is to do this deref without parens (e.g. *pgo.Properties.Pgo.ProfileKind) (here and elsewhere)",
+      "revId": "e372233f39b75915e032feaf44ca15cc40cb4b3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e921af2_6c5c14af",
+        "filename": "cc/pgo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2017-09-01T19:18:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48d78790_b7682d0a",
       "revId": "e372233f39b75915e032feaf44ca15cc40cb4b3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "2f21131d_70942e48",
+        "filename": "cc/pgo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2017-09-01T19:18:53Z",
+      "side": 1,
+      "message": "Changed to panic().",
+      "parentUuid": "926500f9_4475d7a5",
+      "revId": "e372233f39b75915e032feaf44ca15cc40cb4b3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1ece2b03_0eef06d2",
         "filename": "cc/pgo.go",
         "patchSetId": 3
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "e824cab3_1fbeac01",
+        "filename": "cc/pgo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2017-09-01T19:18:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ece2b03_0eef06d2",
+      "revId": "e372233f39b75915e032feaf44ca15cc40cb4b3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3b204a1_537328b6",
         "filename": "cc/pgo.go",
         "patchSetId": 3
@@ -115,6 +223,24 @@
       "writtenOn": "2017-09-01T18:49:23Z",
       "side": 1,
       "message": "did you mean `append(flags.LdFlags, profileUseFlags...)`?",
+      "revId": "e372233f39b75915e032feaf44ca15cc40cb4b3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a69c1e0_73d858c3",
+        "filename": "cc/pgo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2017-09-01T19:18:53Z",
+      "side": 1,
+      "message": "Oops, my bad.  Fixed.",
+      "parentUuid": "c3b204a1_537328b6",
       "revId": "e372233f39b75915e032feaf44ca15cc40cb4b3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
