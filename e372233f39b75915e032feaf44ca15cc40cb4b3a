@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6ab0968_1e8ba209",
+        "filename": "cc/pgo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2017-09-01T18:49:23Z",
+      "side": 1,
+      "message": "can this string be a `const`? (same question with other strings below)",
+      "revId": "e372233f39b75915e032feaf44ca15cc40cb4b3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6e56797_82f5dd0f",
+        "filename": "cc/pgo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2017-09-01T18:49:23Z",
+      "side": 1,
+      "message": "nit: if we\u0027re not planning on making this more than one flag, can it just be a string instead (that we wrap up into a []string when necessary)",
+      "revId": "e372233f39b75915e032feaf44ca15cc40cb4b3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa81e05b_e7440912",
+        "filename": "cc/pgo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2017-09-01T18:49:23Z",
+      "side": 1,
+      "message": "is this necessary?",
+      "revId": "e372233f39b75915e032feaf44ca15cc40cb4b3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "48d78790_b7682d0a",
+        "filename": "cc/pgo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2017-09-01T18:49:23Z",
+      "side": 1,
+      "message": "nit: Looks like the dominant style is to do this deref without parens (e.g. *pgo.Properties.Pgo.ProfileKind) (here and elsewhere)",
+      "revId": "e372233f39b75915e032feaf44ca15cc40cb4b3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "926500f9_4475d7a5",
+        "filename": "cc/pgo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2017-09-01T18:49:23Z",
+      "side": 1,
+      "message": "Is this unreachable, as well?",
+      "revId": "e372233f39b75915e032feaf44ca15cc40cb4b3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ece2b03_0eef06d2",
+        "filename": "cc/pgo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2017-09-01T18:49:23Z",
+      "side": 1,
+      "message": "Should we panic(\"unreachable code\") instead? (or module.errorf, or whatever to loudly indicate that code is broken)",
+      "revId": "e372233f39b75915e032feaf44ca15cc40cb4b3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3b204a1_537328b6",
+        "filename": "cc/pgo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2017-09-01T18:49:23Z",
+      "side": 1,
+      "message": "did you mean `append(flags.LdFlags, profileUseFlags...)`?",
+      "revId": "e372233f39b75915e032feaf44ca15cc40cb4b3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
