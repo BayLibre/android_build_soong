@@ -132,7 +132,8 @@ type Flags struct {
 	RequiredInstructionSet string
 	DynamicLinker          string
 
-	CFlagsDeps android.Paths // Files depended on by compiler flags
+	CFlagsDeps  android.Paths // Files depended on by compiler flags
+	LdFlagsDeps android.Paths // Files depended on by linker flags
 
 	GroupStaticLibs bool
 }
@@ -299,6 +300,7 @@ type Module struct {
 	sabi      *sabi
 	vndkdep   *vndkdep
 	lto       *lto
+	pgo       *pgo
 
 	androidMkSharedLibDeps []string
 
@@ -340,6 +342,9 @@ func (c *Module) Init() android.Module {
 	}
 	if c.lto != nil {
 		c.AddProperties(c.lto.props()...)
+	}
+	if c.pgo != nil {
+		c.AddProperties(c.pgo.props()...)
 	}
 	for _, feature := range c.features {
 		c.AddProperties(feature.props()...)
@@ -497,6 +502,7 @@ func newModule(hod android.HostOrDeviceSupported, multilib android.Multilib) *Mo
 	module.sabi = &sabi{}
 	module.vndkdep = &vndkdep{}
 	module.lto = &lto{}
+	module.pgo = &pgo{}
 	return module
 }
 
@@ -547,6 +553,9 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	}
 	if c.lto != nil {
 		flags = c.lto.flags(ctx, flags)
+	}
+	if c.pgo != nil {
+		flags = c.pgo.flags(ctx, flags)
 	}
 	for _, feature := range c.features {
 		flags = feature.flags(ctx, flags)
@@ -633,6 +642,9 @@ func (c *Module) begin(ctx BaseModuleContext) {
 	}
 	if c.lto != nil {
 		c.lto.begin(ctx)
+	}
+	if c.pgo != nil {
+		c.pgo.begin(ctx)
 	}
 	for _, feature := range c.features {
 		feature.begin(ctx)
@@ -1219,6 +1231,7 @@ func DefaultsFactory(props ...interface{}) android.Module {
 		&SAbiProperties{},
 		&VndkProperties{},
 		&LTOProperties{},
+		&PgoProperties{},
 	)
 
 	android.InitDefaultsModule(module)
