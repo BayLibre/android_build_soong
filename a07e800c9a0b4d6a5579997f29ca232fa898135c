@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e597dea5_7bf30d56",
+        "filename": "cc/pgo.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2017-09-01T19:32:39Z",
+      "side": 1,
+      "message": "`const` these too, please",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 55
+      },
+      "revId": "a07e800c9a0b4d6a5579997f29ca232fa898135c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
