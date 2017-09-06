@@ -128,19 +128,28 @@ func mergeZips(readers []namedZipReader, writer *zip.Writer, sortEntries bool, s
 			source := zipEntry{path: zipEntryPath{zipName: namedReader.path, entryName: file.Name}, content: file}
 			newMapping := fileMapping{source: source, dest: dest}
 
-			// handle duplicates
 			if exists {
+				// handle duplicates
 				wasDir := existingMapping.source.content.FileHeader.FileInfo().IsDir()
 				isDir := newMapping.source.content.FileHeader.FileInfo().IsDir()
-				if !wasDir || !isDir {
+				if wasDir != isDir {
+					return fmt.Errorf("Directory/file mismatch at %v from %v and %v\n",
+						dest, existingMapping.source.path, newMapping.source.path)
+				}
+				if sortJava &&
+					file.Name == jar.ManifestFile || file.Name == jar.ModuleInfoClass {
+					// Skip manifest and module info files that are not from the first input file
+					continue
+				}
+				if !isDir {
 					return fmt.Errorf("Duplicate path %v found in %v and %v\n",
 						dest, existingMapping.source.path, newMapping.source.path)
 				}
+			} else {
+				// save entry
+				mappingsByDest[mapKey] = newMapping
+				orderedMappings = append(orderedMappings, newMapping)
 			}
-
-			// save entry
-			mappingsByDest[mapKey] = newMapping
-			orderedMappings = append(orderedMappings, newMapping)
 		}
 
 	}
