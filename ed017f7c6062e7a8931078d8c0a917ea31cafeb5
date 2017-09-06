@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "981ec395_37074b78",
+        "filename": "python/python.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-09-06T00:05:16Z",
+      "side": 1,
+      "message": "Can you remove this entirely?",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 46
+      },
+      "revId": "ed017f7c6062e7a8931078d8c0a917ea31cafeb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f4b5d52_3e52b210",
+        "filename": "python/python.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-09-06T00:05:16Z",
+      "side": 1,
+      "message": "This too",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 46
+      },
+      "revId": "ed017f7c6062e7a8931078d8c0a917ea31cafeb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
