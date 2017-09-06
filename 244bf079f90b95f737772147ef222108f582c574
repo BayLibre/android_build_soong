@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7bd44a93_9abbac84",
+        "filename": "cc/lto.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2017-09-06T02:04:28Z",
+      "side": 1,
+      "message": "Lto.Full and Lto.Thin will already be false for LTODep modules that pass the preceding if case. When propagating LTO options to static/object dependencies there needs to be some way to propagate the correct type of LTO in order to set Full or Thin properly.\n\nIt might be nice to support builds where the same object could be used in a normal (non-LTO) binary, a thin LTO binary, and a full LTO binary. However, I\u0027m not sure if that\u0027s a high enough priority.",
+      "revId": "244bf079f90b95f737772147ef222108f582c574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
