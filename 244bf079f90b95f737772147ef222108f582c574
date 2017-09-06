@@ -34,6 +34,24 @@
       "revId": "244bf079f90b95f737772147ef222108f582c574",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d15560d1_e54c7c44",
+        "filename": "cc/lto.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2017-09-06T07:08:35Z",
+      "side": 1,
+      "message": "Supporting ThinLTO only would be more maintainable for the toolchain team as well. Stephen, since you landed the original full LTO change, do you have / know projects that depends on full LTO?",
+      "parentUuid": "e036bc40_a11171cb",
+      "revId": "244bf079f90b95f737772147ef222108f582c574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
