@@ -16,6 +16,24 @@
       "revId": "244bf079f90b95f737772147ef222108f582c574",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e036bc40_a11171cb",
+        "filename": "cc/lto.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-09-06T05:26:14Z",
+      "side": 1,
+      "message": "If ThinLTO really provides comparable performance with much less time, do we need full LTO at all?",
+      "parentUuid": "7bd44a93_9abbac84",
+      "revId": "244bf079f90b95f737772147ef222108f582c574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
