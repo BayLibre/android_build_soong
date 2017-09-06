@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc003a77_7d984575",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-09-06T21:14:01Z",
+      "side": 1,
+      "message": "Does this mean we should rename sortJava to something like emulateJar?",
+      "revId": "0b1a8b8387fc037b514464f1d30449dc63a85fab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
