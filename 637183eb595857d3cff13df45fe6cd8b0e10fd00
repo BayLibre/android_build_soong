@@ -22,6 +22,30 @@
       "revId": "637183eb595857d3cff13df45fe6cd8b0e10fd00",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b224a54_351899b5",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-09-07T19:20:58Z",
+      "side": 1,
+      "message": "1.  I can fix the check to be EXPERIMENTAL_USE_OPENJDK9 !\u003d \"\"\n2.  True, but hopefully that won\u0027t be a too long transition period\n3.  Those are not flags that should be coming from Android.bp files\n\nLooking at b/62050818, which seems to be the only cause of EXPERIMENTAL_USE_OPENJDK9 in Android.mk files, maybe I should just add -J--add-modules\u003djava.xml.ws.annotation if an annotation processor is in use with OpenJDK9?",
+      "parentUuid": "8e2151a2_3d026fb7",
+      "range": {
+        "startLine": 304,
+        "startChar": 1,
+        "endLine": 306,
+        "endChar": 2
+      },
+      "revId": "637183eb595857d3cff13df45fe6cd8b0e10fd00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
