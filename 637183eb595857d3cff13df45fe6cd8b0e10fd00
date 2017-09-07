@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e2151a2_3d026fb7",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2017-09-07T18:23:26Z",
+      "side": 1,
+      "message": "I can see how this can work for the flags that should be eliminated with no replacement when using an OpenJDK 8 toolchain.\n\nHowever:\n\n1. it\u0027s not documented, but currently the makefiles distinguish between:\nEXPERIMENTAL_USE_OPENJDK9\u003dtrue means to build with OpenJDK 9 and target language version 1.9 (this means that -bootclasspath is no longer supported but --system is).\n\nEXPERIMENTAL_USE_OPENJDK9\u003dtarget1.8 (or any other value) means to build with OpenJDK 9 and target language version 1.8 (this means that -bootclasspath is still supported).\n\n2. Having this in here might make it less obvious why makefiles that add these OpenJDK 9 specific flags work when building with OpenJDK 8.\n\n3.) This doesn\u0027t work for other kinds of flags where specific different versions exist for 8 vs. 9 (e.g. -bootclasspath vs. --system).\n\nAt present I\u0027m not convinced that this CL adds enough convenience value to be worth the cost of these limitations. I could be convinced if some additional use cases exist to tip the balance.",
+      "range": {
+        "startLine": 304,
+        "startChar": 1,
+        "endLine": 306,
+        "endChar": 2
+      },
+      "revId": "637183eb595857d3cff13df45fe6cd8b0e10fd00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
