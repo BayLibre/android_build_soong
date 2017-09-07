@@ -151,7 +151,7 @@ func NewBaseCompiler() *baseCompiler {
 
 type baseCompiler struct {
 	Properties BaseCompilerProperties
-	Proto      ProtoProperties
+	Proto      android.ProtoProperties
 	deps       android.Paths
 	srcs       android.Paths
 	flags      builderFlags
