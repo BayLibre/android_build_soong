@@ -46,6 +46,30 @@
       "revId": "637183eb595857d3cff13df45fe6cd8b0e10fd00",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44e122c7_a96cd2fc",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2017-09-07T19:30:00Z",
+      "side": 1,
+      "message": "1. Sounds good.\n2. Isn\u0027t this discussion exclusively about the transition period (however short or long it is)? Whenever OpenJDK 9 \"works\", we\u0027ll want to disallow OpenJDK 8, at which point all of the EXPERIMENTAL_USE_OPENJDK9 conditions along with their else clauses can be dropped.\n3. Sorry, I don\u0027t knowh the distinction .bp vs. .go and don\u0027t know why it\u0027d be relevant exactly where those flags come from? (Currently they come from .mk files)",
+      "parentUuid": "7b224a54_351899b5",
+      "range": {
+        "startLine": 304,
+        "startChar": 1,
+        "endLine": 306,
+        "endChar": 2
+      },
+      "revId": "637183eb595857d3cff13df45fe6cd8b0e10fd00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
