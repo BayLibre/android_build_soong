@@ -70,6 +70,30 @@
       "revId": "637183eb595857d3cff13df45fe6cd8b0e10fd00",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17046953_9a7a60dc",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-09-08T00:18:09Z",
+      "side": 1,
+      "message": "2.  The advantage here is that there isn\u0027t something that needs to be edited in each affected Android.bp file, it is all localized to the build system\n3.  Only this .go file will be setting --bootclasspath and --system, so switching to OpenJDK9 for soong only requires removing the conditionals from this file.",
+      "parentUuid": "44e122c7_a96cd2fc",
+      "range": {
+        "startLine": 304,
+        "startChar": 1,
+        "endLine": 306,
+        "endChar": 2
+      },
+      "revId": "637183eb595857d3cff13df45fe6cd8b0e10fd00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
