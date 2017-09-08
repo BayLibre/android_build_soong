@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a17ec556_ec049f40",
+        "filename": "root.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-09-08T19:44:54Z",
+      "side": 1,
+      "message": "Might as well make it toolchain/*",
+      "revId": "51af0a79b734dc2b6acd40b7989d3be9dc192510",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
