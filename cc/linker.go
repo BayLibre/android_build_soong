@@ -213,6 +213,16 @@ func (linker *baseLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 			CheckBadHostLdlibs(ctx, "host_ldlibs", linker.Properties.Host_ldlibs)
 
 			flags.LdFlags = append(flags.LdFlags, linker.Properties.Host_ldlibs...)
+
+			// Add -ldl, -lpthread and -lrt to host builds to match the default behavior of device
+			// builds
+			flags.LdFlags = append(flags.LdFlags,
+				"-ldl",
+				"-lpthread",
+			)
+			if !ctx.Darwin() {
+				flags.LdFlags = append(flags.LdFlags, "-lrt")
+			}
 		}
 	}
 
