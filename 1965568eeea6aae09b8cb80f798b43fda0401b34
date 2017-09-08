@@ -22,6 +22,30 @@
       "revId": "1965568eeea6aae09b8cb80f798b43fda0401b34",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfa6d44c_54c890c4",
+        "filename": "java/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-09-08T23:47:09Z",
+      "side": 1,
+      "message": "Seems true enough, if there is a PRODUCT_PACKAGES +\u003d dx, then whenever dx.jar is updated the dx script will be reinstalled",
+      "parentUuid": "7101aee2_7994fcee",
+      "range": {
+        "startLine": 72,
+        "startChar": 3,
+        "endLine": 72,
+        "endChar": 88
+      },
+      "revId": "1965568eeea6aae09b8cb80f798b43fda0401b34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
