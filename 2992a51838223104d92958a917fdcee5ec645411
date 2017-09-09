@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fc9b256_e6cb15ae",
+        "filename": "android/proto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-09-09T05:24:17Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem like it should be in the generic ProtoProperties",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 38
+      },
+      "revId": "2992a51838223104d92958a917fdcee5ec645411",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
