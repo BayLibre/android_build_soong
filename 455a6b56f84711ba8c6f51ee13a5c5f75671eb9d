@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb044b1a_f005c5a1",
+        "filename": "cc/pgo.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-09-09T00:31:04Z",
+      "side": 1,
+      "message": "Can this be Instrumentation: *bool and then later Sampling: *bool?",
+      "revId": "455a6b56f84711ba8c6f51ee13a5c5f75671eb9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20b0193b_87f0b994",
+        "filename": "cc/pgo.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-09-09T00:31:04Z",
+      "side": 1,
+      "message": "Mark these with `blueprint:\"mutated\"` so they can\u0027t be set in blueprint files.",
+      "revId": "455a6b56f84711ba8c6f51ee13a5c5f75671eb9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0abe566d_1c5be965",
+        "filename": "cc/pgo.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-09-09T00:31:04Z",
+      "side": 1,
+      "message": "put this in a default: case\n\nNothing in a blueprint file should cause a panic.  Use ctx.PropertyErrorf(\"pgo.profile_kind\", \"unknown value\")",
+      "revId": "455a6b56f84711ba8c6f51ee13a5c5f75671eb9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4c5d501_dd072a56",
+        "filename": "cc/pgo.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-09-09T00:31:04Z",
+      "side": 1,
+      "message": "same",
+      "revId": "455a6b56f84711ba8c6f51ee13a5c5f75671eb9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63b238ec_7f44a8a9",
+        "filename": "cc/pgo.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-09-09T00:31:04Z",
+      "side": 1,
+      "message": "make this an android.OptionalPath and push the Valid()/String() calls to the user",
+      "range": {
+        "startLine": 117,
+        "startChar": 42,
+        "endLine": 117,
+        "endChar": 48
+      },
+      "revId": "455a6b56f84711ba8c6f51ee13a5c5f75671eb9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
