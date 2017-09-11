@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "01c27ce7_61317547",
+        "filename": "cc/pgo.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-09-11T19:33:38Z",
+      "side": 1,
+      "message": "We try to use bools as much as possible, because it gives consistent error messages when it is wrong.  Using a magic string requires careful error checking everywhere in the go code that read it.  Enums would be ideal for this case, but we don\u0027t have enum support in soong.",
+      "parentUuid": "e793ecde_44352fe3",
+      "revId": "455a6b56f84711ba8c6f51ee13a5c5f75671eb9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "20b0193b_87f0b994",
         "filename": "cc/pgo.go",
         "patchSetId": 8
