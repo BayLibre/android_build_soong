@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e793ecde_44352fe3",
+        "filename": "cc/pgo.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2017-09-11T17:53:01Z",
+      "side": 1,
+      "message": "I presume this would mean the spec in the blueprint would read \u0027instrument: true\u0027, \u0027sampling: true\u0027?  Since the properties are mutually exclusive, does it make more sense to have a single property with a string value instead of two boolean properties?",
+      "parentUuid": "fb044b1a_f005c5a1",
+      "revId": "455a6b56f84711ba8c6f51ee13a5c5f75671eb9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "20b0193b_87f0b994",
         "filename": "cc/pgo.go",
         "patchSetId": 8
@@ -30,6 +48,24 @@
       "writtenOn": "2017-09-09T00:31:04Z",
       "side": 1,
       "message": "Mark these with `blueprint:\"mutated\"` so they can\u0027t be set in blueprint files.",
+      "revId": "455a6b56f84711ba8c6f51ee13a5c5f75671eb9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e77a72ae_163edabf",
+        "filename": "cc/pgo.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2017-09-11T17:53:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20b0193b_87f0b994",
       "revId": "455a6b56f84711ba8c6f51ee13a5c5f75671eb9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "5bdbedab_90a968c2",
+        "filename": "cc/pgo.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2017-09-11T17:53:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0abe566d_1c5be965",
+      "revId": "455a6b56f84711ba8c6f51ee13a5c5f75671eb9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a4c5d501_dd072a56",
         "filename": "cc/pgo.go",
         "patchSetId": 8
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "a7f644d8_b0611028",
+        "filename": "cc/pgo.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2017-09-11T17:53:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4c5d501_dd072a56",
+      "revId": "455a6b56f84711ba8c6f51ee13a5c5f75671eb9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "63b238ec_7f44a8a9",
         "filename": "cc/pgo.go",
         "patchSetId": 8
@@ -81,6 +153,30 @@
       "writtenOn": "2017-09-09T00:31:04Z",
       "side": 1,
       "message": "make this an android.OptionalPath and push the Valid()/String() calls to the user",
+      "range": {
+        "startLine": 117,
+        "startChar": 42,
+        "endLine": 117,
+        "endChar": 48
+      },
+      "revId": "455a6b56f84711ba8c6f51ee13a5c5f75671eb9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b51358e_df2821dc",
+        "filename": "cc/pgo.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2017-09-11T17:53:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63b238ec_7f44a8a9",
       "range": {
         "startLine": 117,
         "startChar": 42,
