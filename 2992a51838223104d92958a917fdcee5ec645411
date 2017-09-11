@@ -22,6 +22,30 @@
       "revId": "2992a51838223104d92958a917fdcee5ec645411",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0eb7f5c9_05a7e868",
+        "filename": "android/proto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-09-11T19:43:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fc9b256_e6cb15ae",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 38
+      },
+      "revId": "2992a51838223104d92958a917fdcee5ec645411",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
