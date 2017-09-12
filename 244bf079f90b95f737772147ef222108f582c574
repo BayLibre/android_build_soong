@@ -70,6 +70,24 @@
       "revId": "244bf079f90b95f737772147ef222108f582c574",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dfbe7d1_27472036",
+        "filename": "cc/lto.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2017-09-12T21:58:26Z",
+      "side": 1,
+      "message": "Yes, full LTO support is kept.",
+      "parentUuid": "267aa1e2_eb28a067",
+      "revId": "244bf079f90b95f737772147ef222108f582c574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
