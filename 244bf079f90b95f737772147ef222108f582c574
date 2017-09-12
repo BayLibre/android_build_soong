@@ -52,6 +52,24 @@
       "revId": "244bf079f90b95f737772147ef222108f582c574",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "267aa1e2_eb28a067",
+        "filename": "cc/lto.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2017-09-12T21:47:33Z",
+      "side": 1,
+      "message": "Not sure if you saw my reply from last week. I accidentally wrote it as a general comment rather than here in the conversation, so sorry. Short answer, yes, we\u0027re trying to land pagerando, which requires full LTO (see https://android-review.googlesource.com/c/platform/bionic/+/474295).",
+      "parentUuid": "d15560d1_e54c7c44",
+      "revId": "244bf079f90b95f737772147ef222108f582c574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
