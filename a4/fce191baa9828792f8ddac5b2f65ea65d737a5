@@ -1,0 +1,8 @@
+Code-Review+2: Dan Willemsen <dwillemsen@google.com>
+Verified+1: Jayant Chowdhary <jchowdhary@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Jayant Chowdhary <jchowdhary@google.com>
+Submitted-at: Tue, 12 Sep 2017 21:53:14 +0000
+Reviewed-on: https://android-review.googlesource.com/477284
+Project: platform/build/soong
+Branch: refs/heads/master
