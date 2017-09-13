@@ -124,6 +124,24 @@
       "revId": "244bf079f90b95f737772147ef222108f582c574",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4561f095_a6d33039",
+        "filename": "cc/lto.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2017-09-13T21:17:10Z",
+      "side": 1,
+      "message": "Sorry, I was unclear when I mentioned dependencies. When I was referring to dependencies I was only meaning static dependencies (i.e. code that will be statically linked into the module). Line 110 above ensures that only objects that will be statically linked into the module are tagged with LTODep. If another, non-LTO module statically links in one of these objects, it will use the non-LTO version since we create both variations for these static dependencies. Dynamic dependencies are not affected at all.\n\nIf static dependencies (objects, archives) are not built with {full, thin} LTO, adding -flto to the final binary (DSO or executable) will do nothing, since its objects are not built as LLVM bitcode. For LTO to do any good for a module, as much of its code as possible should be built as bitcode with -flto.\n\nMaybe I should open a new change set with a fix for this so we can discuss further with a concrete patch?",
+      "parentUuid": "f51a754a_3e452b49",
+      "revId": "244bf079f90b95f737772147ef222108f582c574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
