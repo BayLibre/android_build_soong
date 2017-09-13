@@ -116,6 +116,12 @@ func mergeZips(readers []namedZipReader, writer *zip.Writer, sortEntries bool, e
 
 	for _, namedReader := range readers {
 		for _, file := range namedReader.reader.File {
+			// Turbine adds files in META-INF/TRANSITIVE to allow classpath optimization.
+			// We have to filter them out, otherwise JarJar wil report duplicate classes
+			// files errors.
+			if strings.Contains(file.Name, jar.TransitiveDir) {
+				continue
+			}
 			// check for other files or directories destined for the same path
 			dest := file.Name
 			mapKey := dest
@@ -141,8 +147,8 @@ func mergeZips(readers []namedZipReader, writer *zip.Writer, sortEntries bool, e
 					// Skip manifest and module info files that are not from the first input file
 					continue
 				}
-				if !isDir {
-					return fmt.Errorf("Duplicate path %v found in %v and %v\n",
+				if !isDir && existingMapping.source.content.CRC32 != newMapping.source.content.CRC32 {
+					fmt.Fprintf(os.Stdout, "WARNING: Duplicate path %v found in %v and %v\n",
 						dest, existingMapping.source.path, newMapping.source.path)
 				}
 			} else {
@@ -151,7 +157,6 @@ func mergeZips(readers []namedZipReader, writer *zip.Writer, sortEntries bool, e
 				orderedMappings = append(orderedMappings, newMapping)
 			}
 		}
-
 	}
 
 	if emulateJar {
