@@ -22,6 +22,7 @@ import (
 const (
 	MetaDir         = "META-INF/"
 	ManifestFile    = MetaDir + "MANIFEST.MF"
+	TransitiveDir   = MetaDir + "TRANSITIVE/"
 	ModuleInfoClass = "module-info.class"
 )
 
