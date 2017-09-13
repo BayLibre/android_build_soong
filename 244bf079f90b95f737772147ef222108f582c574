@@ -106,6 +106,24 @@
       "revId": "244bf079f90b95f737772147ef222108f582c574",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f51a754a_3e452b49",
+        "filename": "cc/lto.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-09-13T07:32:10Z",
+      "side": 1,
+      "message": "I don\u0027t know that all dependencies being built with LTO is going to be ideal. Actually, I think it would be tough to have things like libc built with LTO because some higher up library is built with LTO.",
+      "parentUuid": "450b0184_940700be",
+      "revId": "244bf079f90b95f737772147ef222108f582c574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
