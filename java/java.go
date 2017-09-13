@@ -384,11 +384,9 @@ func (j *Module) compile(ctx android.ModuleContext) {
 	}
 
 	resourceJarSpecs := ResourceDirsToJarSpecs(ctx, j.properties.Resource_dirs, j.properties.Exclude_resource_dirs)
-	manifest := android.OptionalPathForModuleSrc(ctx, j.properties.Manifest)
-
-	if len(resourceJarSpecs) > 0 || manifest.Valid() {
+	if len(resourceJarSpecs) > 0 {
 		// Combine classes + resources into classes-full-debug.jar
-		resourceJar := TransformResourcesToJar(ctx, resourceJarSpecs, manifest, extraJarDeps)
+		resourceJar := TransformResourcesToJar(ctx, resourceJarSpecs, extraJarDeps)
 		if ctx.Failed() {
 			return
 		}
@@ -398,9 +396,11 @@ func (j *Module) compile(ctx android.ModuleContext) {
 
 	jars = append(jars, deps.staticJars...)
 
+	manifest := android.OptionalPathForModuleSrc(ctx, j.properties.Manifest)
+
 	// Combine the classes built from sources, any manifests, and any static libraries into
 	// classes-combined.jar.  If there is only one input jar this step will be skipped.
-	outputFile := TransformJarsToJar(ctx, "classes-combined.jar", jars)
+	outputFile := TransformJarsToJar(ctx, "classes.jar", jars, manifest, false)
 
 	if j.properties.Jarjar_rules != nil {
 		jarjar_rules := android.PathForModuleSrc(ctx, *j.properties.Jarjar_rules)
@@ -615,7 +615,7 @@ func (j *Import) DepsMutator(ctx android.BottomUpMutatorContext) {
 func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	j.classpathFiles = android.PathsForModuleSrc(ctx, j.properties.Jars)
 
-	j.combinedClasspathFile = TransformJarsToJar(ctx, "classes.jar", j.classpathFiles)
+	j.combinedClasspathFile = TransformJarsToJar(ctx, "classes.jar", j.classpathFiles, android.OptionalPath{}, false)
 }
 
 var _ Dependency = (*Import)(nil)
