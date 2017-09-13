@@ -88,6 +88,24 @@
       "revId": "244bf079f90b95f737772147ef222108f582c574",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "450b0184_940700be",
+        "filename": "cc/lto.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2017-09-13T00:41:47Z",
+      "side": 1,
+      "message": "Thanks, just wanted to make sure the comment ended up in the right place.\n\nI believe my first comment in this thread still stands. Neither Full nor Thin will ever get set to true for library dependencies, such as static libs and objects, unless they were explicitly marked with full or thin lto. I just tested building libc.so with this diff and lto.full set to true for libc. Objects in libc_common.a were not built as IR, although they should be to take advantage of LTO.",
+      "parentUuid": "2dfbe7d1_27472036",
+      "revId": "244bf079f90b95f737772147ef222108f582c574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
