@@ -15,10 +15,13 @@
 package main
 
 import (
+	"errors"
 	"flag"
 	"fmt"
+	"hash/crc32"
 	"log"
 	"os"
+	"path/filepath"
 	"sort"
 	"strings"
 
@@ -29,11 +32,13 @@ import (
 var (
 	sortEntries = flag.Bool("s", false, "sort entries (defaults to the order from the input zip files)")
 	emulateJar  = flag.Bool("j", false, "sort zip entries using jar ordering (META-INF first)")
+	stripDirs   = flag.Bool("D", false, "strip directory entries from the output zip file")
+	manifest    = flag.String("m", "", "manifest file to insert in jar")
 )
 
 func main() {
 	flag.Usage = func() {
-		fmt.Fprintln(os.Stderr, "usage: merge_zips [-j] output [inputs...]")
+		fmt.Fprintln(os.Stderr, "usage: merge_zips [-jsD] [-m manifest] output [inputs...]")
 		flag.PrintDefaults()
 	}
 
@@ -75,8 +80,13 @@ func main() {
 		readers = append(readers, namedReader)
 	}
 
+	if *manifest != "" && !*emulateJar {
+		log.Fatal(errors.New("must specify -j when specifying a manifest via -m"))
+	}
+
 	// do merge
-	if err := mergeZips(readers, writer, *sortEntries, *emulateJar); err != nil {
+	err = mergeZips(readers, writer, *manifest, *sortEntries, *emulateJar, *stripDirs)
+	if err != nil {
 		log.Fatal(err)
 	}
 }
@@ -97,22 +107,113 @@ func (p zipEntryPath) String() string {
 	return p.zipName + "/" + p.entryName
 }
 
-// a zipEntry knows the location and content of a file within a zip
+// a zipEntry is a zipSource that pulls its content from another zip
 type zipEntry struct {
 	path    zipEntryPath
 	content *zip.File
 }
 
-// a fileMapping specifies to copy a zip entry from one place to another
-type fileMapping struct {
-	source zipEntry
-	dest   string
+func (ze zipEntry) String() string {
+	return ze.path.String()
 }
 
-func mergeZips(readers []namedZipReader, writer *zip.Writer, sortEntries bool, emulateJar bool) error {
+func (ze zipEntry) IsDir() bool {
+	return ze.content.FileInfo().IsDir()
+}
 
-	mappingsByDest := make(map[string]fileMapping, 0)
+func (ze zipEntry) CRC32() uint32 {
+	return ze.content.FileHeader.CRC32
+}
+
+func (ze zipEntry) WriteToZip(dest string, zw *zip.Writer) error {
+	return zw.CopyFrom(ze.content, dest)
+}
+
+// a bufferEntry is a zipSource that pulls its content from a []byte
+type bufferEntry struct {
+	fh      *zip.FileHeader
+	content []byte
+}
+
+func (be bufferEntry) String() string {
+	return "internal buffer"
+}
+
+func (be bufferEntry) IsDir() bool {
+	return be.fh.FileInfo().IsDir()
+}
+
+func (be bufferEntry) CRC32() uint32 {
+	crc := crc32.NewIEEE()
+	_, err := crc.Write(be.content)
+	if err != nil {
+		panic(err)
+	}
+	return crc.Sum32()
+}
+
+func (be bufferEntry) WriteToZip(dest string, zw *zip.Writer) error {
+	w, err := zw.CreateHeader(be.fh)
+	if err != nil {
+		return err
+	}
+
+	if !be.IsDir() {
+		_, err = w.Write(be.content)
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
+type zipSource interface {
+	String() string
+	IsDir() bool
+	CRC32() uint32
+	WriteToZip(dest string, zw *zip.Writer) error
+}
+
+// a fileMapping specifies to copy a zip entry from one place to another
+type fileMapping struct {
+	dest   string
+	source zipSource
+}
+
+func mergeZips(readers []namedZipReader, writer *zip.Writer, manifest string,
+	sortEntries, emulateJar, stripDirs bool) error {
+
+	sourceByDest := make(map[string]zipSource, 0)
 	orderedMappings := []fileMapping{}
+
+	// if dest already exists returns a non-null zipSource for the existing source
+	addMapping := func(dest string, source zipSource) zipSource {
+		mapKey := filepath.Clean(dest)
+		if existingSource, exists := sourceByDest[mapKey]; exists {
+			return existingSource
+		}
+
+		sourceByDest[mapKey] = source
+		orderedMappings = append(orderedMappings, fileMapping{source: source, dest: dest})
+		return nil
+	}
+
+	if manifest != "" {
+		if !stripDirs {
+			dirHeader := jar.MetaDirFileHeader()
+			dirSource := bufferEntry{dirHeader, nil}
+			addMapping(jar.MetaDir, dirSource)
+		}
+
+		fh, buf, err := jar.ManifestFileContents(manifest)
+		if err != nil {
+			return err
+		}
+
+		fileSource := bufferEntry{fh, buf}
+		addMapping(jar.ManifestFile, fileSource)
+	}
 
 	for _, namedReader := range readers {
 		for _, file := range namedReader.reader.File {
@@ -122,39 +223,32 @@ func mergeZips(readers []namedZipReader, writer *zip.Writer, sortEntries bool, e
 			if strings.Contains(file.Name, jar.TransitiveDir) {
 				continue
 			}
+
+			if stripDirs && file.FileInfo().IsDir() {
+				continue
+			}
+
 			// check for other files or directories destined for the same path
 			dest := file.Name
-			mapKey := dest
-			if strings.HasSuffix(mapKey, "/") {
-				mapKey = mapKey[:len(mapKey)-1]
-			}
-			existingMapping, exists := mappingsByDest[mapKey]
 
 			// make a new entry to add
 			source := zipEntry{path: zipEntryPath{zipName: namedReader.path, entryName: file.Name}, content: file}
-			newMapping := fileMapping{source: source, dest: dest}
 
-			if exists {
+			if existingSource := addMapping(dest, source); existingSource != nil {
 				// handle duplicates
-				wasDir := existingMapping.source.content.FileHeader.FileInfo().IsDir()
-				isDir := newMapping.source.content.FileHeader.FileInfo().IsDir()
-				if wasDir != isDir {
+				if existingSource.IsDir() != source.IsDir() {
 					return fmt.Errorf("Directory/file mismatch at %v from %v and %v\n",
-						dest, existingMapping.source.path, newMapping.source.path)
+						dest, existingSource, source)
 				}
 				if emulateJar &&
 					file.Name == jar.ManifestFile || file.Name == jar.ModuleInfoClass {
 					// Skip manifest and module info files that are not from the first input file
 					continue
 				}
-				if !isDir && existingMapping.source.content.CRC32 != newMapping.source.content.CRC32 {
+				if !source.IsDir() && existingSource.CRC32() != source.CRC32() {
 					fmt.Fprintf(os.Stdout, "WARNING: Duplicate path %v found in %v and %v\n",
-						dest, existingMapping.source.path, newMapping.source.path)
+						dest, existingSource, source)
 				}
-			} else {
-				// save entry
-				mappingsByDest[mapKey] = newMapping
-				orderedMappings = append(orderedMappings, newMapping)
 			}
 		}
 	}
@@ -166,7 +260,7 @@ func mergeZips(readers []namedZipReader, writer *zip.Writer, sortEntries bool, e
 	}
 
 	for _, entry := range orderedMappings {
-		if err := writer.CopyFrom(entry.source.content, entry.dest); err != nil {
+		if err := entry.source.WriteToZip(entry.dest, writer); err != nil {
 			return err
 		}
 	}
