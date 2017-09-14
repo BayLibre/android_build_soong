@@ -274,6 +274,30 @@
     },
     {
       "key": {
+        "uuid": "66d69db6_e6cd3aa3",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-09-14T05:51:08Z",
+      "side": 1,
+      "message": "Added \"-strip\" on the patch 6, line 48",
+      "parentUuid": "b9976e4b_b83b2231",
+      "range": {
+        "startLine": 122,
+        "startChar": 3,
+        "endLine": 122,
+        "endChar": 51
+      },
+      "revId": "28796438b4764027058c8585a434ede40e2491fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7305e9a_3be4f5cf",
         "filename": "cmd/merge_zips/merge_zips.go",
         "patchSetId": 2
