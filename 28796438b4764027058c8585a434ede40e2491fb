@@ -37,6 +37,115 @@
     },
     {
       "key": {
+        "uuid": "b756ff5e_dca81687",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-09-14T00:36:33Z",
+      "side": 1,
+      "message": "How about \"Turbine adds an extra directory for\"?\n\n(since Turbine is in Android now too)",
+      "range": {
+        "startLine": 119,
+        "startChar": 6,
+        "endLine": 119,
+        "endChar": 53
+      },
+      "revId": "28796438b4764027058c8585a434ede40e2491fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4ec9614_fc035c21",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-09-14T00:36:33Z",
+      "side": 1,
+      "message": "I\u0027d be inclined to put this inside a check like \"if emulateJar\" (if we don\u0027t make it a command-line parameter)",
+      "range": {
+        "startLine": 122,
+        "startChar": 3,
+        "endLine": 122,
+        "endChar": 51
+      },
+      "revId": "28796438b4764027058c8585a434ede40e2491fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8eba9fb_9b06ea88",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-09-14T00:36:33Z",
+      "side": 1,
+      "message": "Should this be \"strings.HasPrefix\"?",
+      "range": {
+        "startLine": 122,
+        "startChar": 14,
+        "endLine": 122,
+        "endChar": 22
+      },
+      "revId": "28796438b4764027058c8585a434ede40e2491fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c24b83a_88f3d477",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-09-14T00:36:33Z",
+      "side": 1,
+      "message": "If another system were to add other unnecessary files would their names be hardcoded here too? It seems to me that the removal of the \"TRANSITIVE\" directory is a different type of thing than the merging of two zips.\n\nIt seems to me that it\u0027d be slightly cleaner to have merge_zips take some command-line parameters telling which directories to include or exclude, to keep the number of responsibilities of merge_zips low, and keep its usage clear.",
+      "range": {
+        "startLine": 122,
+        "startChar": 34,
+        "endLine": 122,
+        "endChar": 51
+      },
+      "revId": "28796438b4764027058c8585a434ede40e2491fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7305e9a_3be4f5cf",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-09-14T00:36:33Z",
+      "side": 1,
+      "message": "Did you mean to change this from an error to a warning?",
+      "revId": "28796438b4764027058c8585a434ede40e2491fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ca608d74_ae3edadf",
         "filename": "jar/jar.go",
         "patchSetId": 2
