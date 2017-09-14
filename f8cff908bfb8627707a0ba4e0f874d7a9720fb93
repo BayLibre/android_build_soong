@@ -16,6 +16,24 @@
       "revId": "f8cff908bfb8627707a0ba4e0f874d7a9720fb93",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af916031_2406ea89",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-09-14T06:02:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6313607_fd81dac2",
+      "revId": "f8cff908bfb8627707a0ba4e0f874d7a9720fb93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
