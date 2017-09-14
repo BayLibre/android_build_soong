@@ -60,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "4affc3dd_a4728108",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-09-14T05:20:23Z",
+      "side": 1,
+      "message": "removed.",
+      "parentUuid": "b756ff5e_dca81687",
+      "range": {
+        "startLine": 119,
+        "startChar": 6,
+        "endLine": 119,
+        "endChar": 53
+      },
+      "revId": "28796438b4764027058c8585a434ede40e2491fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f4ec9614_fc035c21",
         "filename": "cmd/merge_zips/merge_zips.go",
         "patchSetId": 2
@@ -154,6 +178,78 @@
     },
     {
       "key": {
+        "uuid": "fd941f7d_ed50773c",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-09-14T05:20:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1246b045_71e1a4a4",
+      "range": {
+        "startLine": 122,
+        "startChar": 34,
+        "endLine": 122,
+        "endChar": 51
+      },
+      "revId": "28796438b4764027058c8585a434ede40e2491fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7b4209a_af24694e",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-09-14T05:20:23Z",
+      "side": 1,
+      "message": "Added a cmd option.",
+      "parentUuid": "f4ec9614_fc035c21",
+      "range": {
+        "startLine": 122,
+        "startChar": 3,
+        "endLine": 122,
+        "endChar": 51
+      },
+      "revId": "28796438b4764027058c8585a434ede40e2491fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "821dbd7e_c18c0c89",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-09-14T05:20:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8eba9fb_9b06ea88",
+      "range": {
+        "startLine": 122,
+        "startChar": 14,
+        "endLine": 122,
+        "endChar": 22
+      },
+      "revId": "28796438b4764027058c8585a434ede40e2491fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f7305e9a_3be4f5cf",
         "filename": "cmd/merge_zips/merge_zips.go",
         "patchSetId": 2
@@ -165,6 +261,24 @@
       "writtenOn": "2017-09-14T00:36:33Z",
       "side": 1,
       "message": "Did you mean to change this from an error to a warning?",
+      "revId": "28796438b4764027058c8585a434ede40e2491fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b853e5c_dcd5658e",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-09-14T05:20:23Z",
+      "side": 1,
+      "message": "we add the warning for now since there\u0027s some jars having this issue. Otherwise, the java build won\u0027t work using jar-merger. For those jars having this issue, I will report bugs to bring them to the surface.",
+      "parentUuid": "f7305e9a_3be4f5cf",
       "revId": "28796438b4764027058c8585a434ede40e2491fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
