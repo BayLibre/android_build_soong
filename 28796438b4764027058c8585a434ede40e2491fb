@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fa1cbb2_811183ba",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-09-14T00:27:31Z",
+      "side": 1,
+      "message": "Let\u0027s avoid mentioning google3 here:\nTurbine adds files in META-INF/TRANSITIVE to allow classpath optimization, ...",
+      "revId": "28796438b4764027058c8585a434ede40e2491fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca608d74_ae3edadf",
+        "filename": "jar/jar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-09-14T00:27:31Z",
+      "side": 1,
+      "message": "Put a trailing slash here to match MetaDir.",
+      "revId": "28796438b4764027058c8585a434ede40e2491fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
