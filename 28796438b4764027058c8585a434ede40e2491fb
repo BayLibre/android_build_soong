@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5f08bf12_068d3d38",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-09-14T00:34:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fa1cbb2_811183ba",
+      "revId": "28796438b4764027058c8585a434ede40e2491fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca608d74_ae3edadf",
         "filename": "jar/jar.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "28796438b4764027058c8585a434ede40e2491fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd5ed049_6b0a4cd8",
+        "filename": "jar/jar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-09-14T00:34:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca608d74_ae3edadf",
+      "revId": "28796438b4764027058c8585a434ede40e2491fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
