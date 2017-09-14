@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6313607_fd81dac2",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-09-14T05:51:53Z",
+      "side": 1,
+      "message": "You can use a label to continue the outer loop (https://golang.org/ref/spec#Continue_statements), or pull the inner loop + if out to a helper function so you can do:\n\n if needsStrip(file.Name, strippings) {\n     continue\n }",
+      "revId": "f8cff908bfb8627707a0ba4e0f874d7a9720fb93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
