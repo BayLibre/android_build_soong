@@ -62,6 +62,7 @@ func init() {
 	pctx.StaticVariable("MergeZipsCmd", filepath.Join("${bootstrap.ToolDir}", "merge_zips"))
 	pctx.HostBinToolVariable("DxCmd", "dx")
 	pctx.HostJavaToolVariable("JarjarCmd", "jarjar.jar")
+	pctx.HostJavaToolVariable("DesugarJar", "desugar.jar")
 
 	pctx.VariableFunc("JavacWrapper", func(config interface{}) (string, error) {
 		if override := config.(android.Config).Getenv("JAVAC_WRAPPER"); override != "" {
