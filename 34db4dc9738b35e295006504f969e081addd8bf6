@@ -34,6 +34,24 @@
       "revId": "34db4dc9738b35e295006504f969e081addd8bf6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbf74721_8424841a",
+        "filename": "genrule/filegroup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-09-15T23:03:52Z",
+      "side": 1,
+      "message": "Yeah that\u0027s what I thought about the currently named var too.\n\nHow about \"Var_name_to_export\" or perhaps \"Make_var_to_export_as\"?",
+      "parentUuid": "5cedd3af_2f6a41c8",
+      "revId": "34db4dc9738b35e295006504f969e081addd8bf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
