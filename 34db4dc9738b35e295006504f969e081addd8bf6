@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d61ae42_2d88a744",
+        "filename": "genrule/filegroup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-09-15T22:57:19Z",
+      "side": 1,
+      "message": "Would you be ok with \"Exported_make_var\" or \"Make_var_to_export\"?",
+      "revId": "34db4dc9738b35e295006504f969e081addd8bf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
