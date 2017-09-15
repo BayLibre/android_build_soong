@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0bc8faff_9bf98957",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-09-15T22:36:00Z",
+      "side": 1,
+      "message": "cool",
+      "revId": "47227d708d0b1dc1305eef1fcf7ae13931dde7ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1886f829_1bd88ef0",
+        "filename": "jar/jar.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-09-15T22:36:00Z",
+      "side": 1,
+      "message": "I think that previously the length bytes (the zeros) were at the front. Did you mean to move them?\n\n(previously:\n\n\nlengthBytes :\u003d []byte{byte(dataLength % 256), byte(dataLength / 256)}\nzipHeader.Extra \u003d append(zipHeader.Extra, lengthBytes...)\n\n// add the contents of the extra field\nzipHeader.Extra \u003d append(zipHeader.Extra, data...)\n\n)",
+      "revId": "47227d708d0b1dc1305eef1fcf7ae13931dde7ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
