@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "3c330897_bff609ff",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-09-15T23:06:46Z",
+      "side": 1,
+      "message": "Do we still need this option? Since merge_zips will handle the user\u0027s private manifest insertion, and soong_zips will always give a default one to the jar. Another asking is To avoid Javac rebuild when manifest changes, we should always run merge_zips no matter how many jars need to merge (even there\u0027s only one jar, we still run merge_zips to insert a manifest file)?",
+      "revId": "47227d708d0b1dc1305eef1fcf7ae13931dde7ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1886f829_1bd88ef0",
         "filename": "jar/jar.go",
         "patchSetId": 4
