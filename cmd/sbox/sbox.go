@@ -143,7 +143,7 @@ func run() error {
 	err = cmd.Run()
 
 	if exit, ok := err.(*exec.ExitError); ok && !exit.Success() {
-		return fmt.Errorf("sbox command (%s) failed with err %#v\n", commandDescription, err.Error())
+		return fmt.Errorf("sbox command (%s) in dir %s failed with err %#v\n", commandDescription, sandboxesRoot, err.Error())
 	} else if err != nil {
 		return err
 	}
