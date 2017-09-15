@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "a3010358_66d5bfdd",
+        "filename": "cmd/soong_zip/soong_zip.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-09-15T23:10:39Z",
+      "side": 1,
+      "message": "I left it in in case we wanted it later.",
+      "parentUuid": "3c330897_bff609ff",
+      "revId": "47227d708d0b1dc1305eef1fcf7ae13931dde7ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1886f829_1bd88ef0",
         "filename": "jar/jar.go",
         "patchSetId": 4
@@ -65,6 +83,23 @@
       "side": 1,
       "message": "oops nevermind what you have is right",
       "parentUuid": "1886f829_1bd88ef0",
+      "revId": "47227d708d0b1dc1305eef1fcf7ae13931dde7ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b86c7f43_056644ba",
+        "filename": "java/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-09-15T23:10:39Z",
+      "side": 1,
+      "message": "This bypasses merge_zips if there is only one jar and there is no manifest.",
       "revId": "47227d708d0b1dc1305eef1fcf7ae13931dde7ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
