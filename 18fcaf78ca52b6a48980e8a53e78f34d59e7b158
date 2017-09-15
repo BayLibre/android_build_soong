@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad86a394_776efb0e",
+        "filename": "cc/pgo.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2017-09-15T20:10:15Z",
+      "side": 1,
+      "message": "Additional change in this patchset to skip modules where -fprofile-generate may cause problems.",
+      "range": {
+        "startLine": 190,
+        "startChar": 4,
+        "endLine": 190,
+        "endChar": 27
+      },
+      "revId": "18fcaf78ca52b6a48980e8a53e78f34d59e7b158",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
