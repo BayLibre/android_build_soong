@@ -22,6 +22,30 @@
       "revId": "18fcaf78ca52b6a48980e8a53e78f34d59e7b158",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "416a6e12_723f2004",
+        "filename": "cc/pgo.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2017-09-18T22:42:33Z",
+      "side": 1,
+      "message": "Turns out just adding -fprofile-generate for a link step when none of the .o were instrumented works as expected.  I\u0027ll remove this from this CL.\n\nAs of now, every module that needs PGO needs to be explicitly marked and there is no inference/propagation.  In a follow up, I\u0027ll implement dependency propagation and mutation as done for sanitizers and LTO.",
+      "parentUuid": "ad86a394_776efb0e",
+      "range": {
+        "startLine": 190,
+        "startChar": 4,
+        "endLine": 190,
+        "endChar": 27
+      },
+      "revId": "18fcaf78ca52b6a48980e8a53e78f34d59e7b158",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
