@@ -52,6 +52,24 @@
       "revId": "34db4dc9738b35e295006504f969e081addd8bf6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebf07f7d_2b753e0f",
+        "filename": "genrule/filegroup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-09-18T19:26:40Z",
+      "side": 1,
+      "message": "I don\u0027t find either of those to be more understandable, but I\u0027ll add a comment to show up in the documentation.  I initially left it out because this is not something we want used, but it was necessary in this case.",
+      "parentUuid": "dbf74721_8424841a",
+      "revId": "34db4dc9738b35e295006504f969e081addd8bf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
