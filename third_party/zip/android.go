@@ -20,6 +20,7 @@ import (
 )
 
 const DataDescriptorFlag = 0x8
+const ExtendedTimeStampTag = 0x5455
 
 func (w *Writer) CopyFrom(orig *File, newName string) error {
 	if w.last != nil && !w.last.closed {
@@ -90,7 +91,7 @@ func stripZip64Extras(input []byte) []byte {
 		if int(size) > len(r) {
 			break
 		}
-		if tag != zip64ExtraId {
+		if tag != zip64ExtraId && tag != ExtendedTimeStampTag {
 			ret = append(ret, input[:4+size]...)
 		}
 		input = input[4+size:]
