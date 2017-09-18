@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c5f001b_cdbed515",
+        "filename": "genrule/filegroup.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-09-18T20:08:32Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be using text/template?",
+      "range": {
+        "startLine": 19,
+        "startChar": 2,
+        "endLine": 19,
+        "endChar": 6
+      },
+      "revId": "4964e394fb836e513963df415a3349bf25002761",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
