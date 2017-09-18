@@ -38,14 +38,28 @@ func (s *strip) Set(path_prefix string) error {
 	return nil
 }
 
+type skipstripping struct{}
+
+func (s *skipstripping) String() string {
+	return `""`
+}
+
+func (s *skipstripping) Set(zip_path string) error {
+	skipstrippings[zip_path] = true
+
+	return nil
+}
+
 var (
-	sortEntries = flag.Bool("s", false, "sort entries (defaults to the order from the input zip files)")
-	emulateJar  = flag.Bool("j", false, "sort zip entries using jar ordering (META-INF first)")
-	strippings  []string
+	sortEntries    = flag.Bool("s", false, "sort entries (defaults to the order from the input zip files)")
+	emulateJar     = flag.Bool("j", false, "sort zip entries using jar ordering (META-INF first)")
+	strippings     []string
+	skipstrippings = make(map[string]bool)
 )
 
 func init() {
 	flag.Var(&strip{}, "strip", "the prefix of file path to be excluded from the output zip")
+	flag.Var(&skipstripping{}, "skipstripping", "the input zip file which is not applicable for stripping")
 }
 
 func main() {
@@ -132,11 +146,18 @@ func mergeZips(readers []namedZipReader, writer *zip.Writer, sortEntries bool, e
 	orderedMappings := []fileMapping{}
 
 	for _, namedReader := range readers {
+		needstrip := true
+		if _, found := skipstrippings[namedReader.path]; found {
+			needstrip = false
+		}
 	FileLoop:
 		for _, file := range namedReader.reader.File {
-			for _, path_prefix := range strippings {
-				if strings.HasPrefix(file.Name, path_prefix) {
-					continue FileLoop
+			if needstrip {
+				for _, path_prefix := range strippings {
+					if strings.HasPrefix(file.Name, path_prefix) &&
+						file.Name != jar.MetaDir && file.Name != jar.ManifestFile {
+						continue FileLoop
+					}
 				}
 			}
 			// check for other files or directories destined for the same path
