@@ -135,7 +135,8 @@ func mergeZips(readers []namedZipReader, writer *zip.Writer, sortEntries bool, e
 	FileLoop:
 		for _, file := range namedReader.reader.File {
 			for _, path_prefix := range strippings {
-				if strings.HasPrefix(file.Name, path_prefix) {
+				if strings.HasPrefix(file.Name, path_prefix) &&
+					file.Name != jar.MetaDir && file.Name != jar.ManifestFile {
 					continue FileLoop
 				}
 			}
