@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94a164ba_14183b12",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-09-18T20:13:34Z",
+      "side": 1,
+      "message": "This can just be:\n\n  return crc32.ChecksumIEEE(be.content)",
+      "range": {
+        "startLine": 164,
+        "startChar": 1,
+        "endLine": 169,
+        "endChar": 19
+      },
+      "revId": "4debcb3aa3e3dbd6ae08cb41bf36aadba1265ec0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
