@@ -33,6 +33,24 @@
       "revId": "585ee4d1dc23beb6df4f393213924f345af90140",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b23155f9_b0377917",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-09-19T02:19:58Z",
+      "side": 1,
+      "message": "That doesn\u0027t work for the DepsMutator below, which needs to cast the blueprint.Module to a genrule.Module. My understanding is that an anonymous embed would not allow that cast (though it would allow all of the function calls to pass through)\n\nI suppose we could define an interface to get the genrule information from that module to do the case, but since I expect this module to provide most of the implementation, I flipped it this direction.",
+      "parentUuid": "5d204aab_757d2894",
+      "revId": "585ee4d1dc23beb6df4f393213924f345af90140",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
