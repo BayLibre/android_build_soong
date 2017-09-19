@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b14b3640_53744913",
+        "filename": "cc/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-09-19T06:32:39Z",
+      "side": 1,
+      "message": "Done, though it looks like that was never implemented?",
+      "parentUuid": "1c8372eb_43e21a7b",
+      "revId": "585ee4d1dc23beb6df4f393213924f345af90140",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c46ea33f_fcc38d00",
         "filename": "cc/genrule.go",
         "patchSetId": 1
