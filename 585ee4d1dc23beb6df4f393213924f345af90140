@@ -71,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "6c59aa1a_7744d53b",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-09-19T06:34:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94dde811_182d2c84",
+      "revId": "585ee4d1dc23beb6df4f393213924f345af90140",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d204aab_757d2894",
         "filename": "genrule/genrule.go",
         "patchSetId": 1
