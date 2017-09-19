@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19c4d23b_97903ede",
+        "filename": "third_party/zip/android.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-09-19T23:05:06Z",
+      "side": 1,
+      "message": "Add a comment about the extended timestamp extra too",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 73
+      },
+      "revId": "324bc4288d60819ce071b548f1da337c499c04f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "584c8b6a_43577afc",
+        "filename": "third_party/zip/android.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-09-19T23:05:06Z",
+      "side": 1,
+      "message": "This needs to be renamed",
+      "range": {
+        "startLine": 84,
+        "startChar": 5,
+        "endLine": 84,
+        "endChar": 21
+      },
+      "revId": "324bc4288d60819ce071b548f1da337c499c04f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ec42130_a83d5702",
+        "filename": "third_party/zip/android.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-09-19T23:05:06Z",
+      "side": 1,
+      "message": "Can you add some tests to the android_test.go file too?",
+      "revId": "324bc4288d60819ce071b548f1da337c499c04f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
