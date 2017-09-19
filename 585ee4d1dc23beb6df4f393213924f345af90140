@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c46ea33f_fcc38d00",
+        "filename": "cc/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-09-19T01:51:05Z",
+      "side": 1,
+      "message": "How would you feel about something like\n\n\"cc_genrule is a genrule that can depend on other cc_* objects\n(and other cc_* objects can depend on it). This is done by\nsplitting the cc_genrule module by variant (like other cc_* modules are)\nand running the configured shell command once per arch/etc mutation.\"\n\n?",
+      "revId": "585ee4d1dc23beb6df4f393213924f345af90140",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d204aab_757d2894",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-09-19T01:51:05Z",
+      "side": 1,
+      "message": "Do you think it would be cleaner to ask that callers declare their own types and that they embed a genrule.Module into their types?",
+      "revId": "585ee4d1dc23beb6df4f393213924f345af90140",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
