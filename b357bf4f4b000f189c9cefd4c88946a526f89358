@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "7aac9674_46f2c33a",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-09-19T06:16:22Z",
+      "side": 1,
+      "message": "If you invert needstrip to skipstrip this can be\n\n  _, skipstrip :\u003d skipstrippings[namedReader.path]",
+      "revId": "b357bf4f4b000f189c9cefd4c88946a526f89358",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9e32f940_cf950afa",
         "filename": "cmd/merge_zips/merge_zips.go",
         "patchSetId": 3
