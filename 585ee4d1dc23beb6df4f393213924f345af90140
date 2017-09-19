@@ -51,6 +51,24 @@
       "revId": "585ee4d1dc23beb6df4f393213924f345af90140",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98cb63e2_334c7a05",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-09-19T02:42:46Z",
+      "side": 1,
+      "message": "Yeah, I figure that an interface would be required.\n\nIf we wanted to mix a genrule with two other types at once then a single-valued Extra field wouldn\u0027t hold all of it.\n\nIf changing it is a bunch of effort, then leaving it for now seems ok to me too though.",
+      "parentUuid": "b23155f9_b0377917",
+      "revId": "585ee4d1dc23beb6df4f393213924f345af90140",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
