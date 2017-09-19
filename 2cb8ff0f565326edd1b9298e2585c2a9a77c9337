@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02aef88f_217381a7",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-09-19T23:42:25Z",
+      "side": 1,
+      "message": "This causes the user to have to specify the name of the zip twice, right? It seems to me that it\u0027d be more convenient if it could be a flag that didn\u0027t take an argument and that would statefully modify the current .zip being inputted (in the same way that soong_zip\u0027s \"-C\" works)",
+      "revId": "2cb8ff0f565326edd1b9298e2585c2a9a77c9337",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5ca427c_539715be",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-09-19T23:42:25Z",
+      "side": 1,
+      "message": "I think it\u0027d be clearer if the name of the variable clarified that it was supposed to match zip files rather than to match paths within .zip files, for example \"zipsToNotStrip\"\n\nI\u0027d probably also extract it into a Matcher class to clarify it, which would enable calling the variable \"zipsToStrip\" and probably having a field on it named \"excludes\", although extracting it into a Matcher class is probably optional",
+      "revId": "2cb8ff0f565326edd1b9298e2585c2a9a77c9337",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf3989c2_32b722d1",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-09-19T23:42:25Z",
+      "side": 1,
+      "message": "I\u0027d call \u003cneedstrip\u003e something more like \u003cstripThisZip\u003e to clarify that describes the entire individual input zip rather than one path within the zip",
+      "revId": "2cb8ff0f565326edd1b9298e2585c2a9a77c9337",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "860ae4ca_74ed55bd",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-09-19T23:42:25Z",
+      "side": 1,
+      "message": "Probably want to handle the case where file.Name \u003d \"META-INF-with-suffix\" via writing filePathHasPrefix",
+      "revId": "2cb8ff0f565326edd1b9298e2585c2a9a77c9337",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97013a67_98a7f95c",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-09-19T23:42:25Z",
+      "side": 1,
+      "message": "I\u0027d put this into a \"if emulateJar\" check and also extract it into a named function so the name acts as a comment",
+      "revId": "2cb8ff0f565326edd1b9298e2585c2a9a77c9337",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
