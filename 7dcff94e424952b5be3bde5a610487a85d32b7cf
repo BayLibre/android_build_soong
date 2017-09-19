@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea1891e1_2ceef5f0",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-09-19T01:02:49Z",
+      "side": 1,
+      "message": "We expect platform-only modules to be defined when running an unbundled build, since you can use tapas with a full platform tree. So this should trigger a missing dependency, and us disabling the module, not an error.",
+      "range": {
+        "startLine": 232,
+        "startChar": 3,
+        "endLine": 232,
+        "endChar": 83
+      },
+      "revId": "7dcff94e424952b5be3bde5a610487a85d32b7cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
