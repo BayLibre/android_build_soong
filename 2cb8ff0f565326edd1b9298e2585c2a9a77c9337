@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4019be8f_44b922f1",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-09-19T23:45:44Z",
+      "side": 1,
+      "message": "This only works with the go argument parser if you make the input list into flags, something like:\n\n -in zip1 -nostrip -in zip2 -in zip3",
+      "parentUuid": "02aef88f_217381a7",
+      "revId": "2cb8ff0f565326edd1b9298e2585c2a9a77c9337",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d5ca427c_539715be",
         "filename": "cmd/merge_zips/merge_zips.go",
         "patchSetId": 5
