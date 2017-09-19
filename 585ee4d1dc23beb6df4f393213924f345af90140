@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "1c8372eb_43e21a7b",
+        "filename": "cc/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-09-19T05:50:16Z",
+      "side": 1,
+      "message": "Put the comment on the factory show it shows up in the documentation.",
+      "revId": "585ee4d1dc23beb6df4f393213924f345af90140",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c46ea33f_fcc38d00",
         "filename": "cc/genrule.go",
         "patchSetId": 1
@@ -13,6 +30,23 @@
       "writtenOn": "2017-09-19T01:51:05Z",
       "side": 1,
       "message": "How would you feel about something like\n\n\"cc_genrule is a genrule that can depend on other cc_* objects\n(and other cc_* objects can depend on it). This is done by\nsplitting the cc_genrule module by variant (like other cc_* modules are)\nand running the configured shell command once per arch/etc mutation.\"\n\n?",
+      "revId": "585ee4d1dc23beb6df4f393213924f345af90140",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94dde811_182d2c84",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-09-19T05:50:16Z",
+      "side": 1,
+      "message": "Make a NewGenSrcs that doesn\u0027t do InitAndroidModule, and then put the InitAndroidModule in GenSrcsFactory",
       "revId": "585ee4d1dc23beb6df4f393213924f345af90140",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
