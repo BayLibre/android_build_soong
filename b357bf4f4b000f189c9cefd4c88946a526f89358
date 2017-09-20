@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "76592e89_6f7bfecf",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-09-20T01:46:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7aac9674_46f2c33a",
+      "revId": "b357bf4f4b000f189c9cefd4c88946a526f89358",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9e32f940_cf950afa",
         "filename": "cmd/merge_zips/merge_zips.go",
         "patchSetId": 3
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "7c49d692_09994c7f",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-09-20T01:46:01Z",
+      "side": 1,
+      "message": "Thanks Jeff. I changed the option to stripDir to be more accurate, and use filepath.Clean() to clean the dir to be well format-ed first.",
+      "parentUuid": "9e32f940_cf950afa",
+      "revId": "b357bf4f4b000f189c9cefd4c88946a526f89358",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0ab28ab3_b99ee1f4",
         "filename": "cmd/merge_zips/merge_zips.go",
         "patchSetId": 3
@@ -64,6 +100,24 @@
       "writtenOn": "2017-09-19T00:54:26Z",
       "side": 1,
       "message": "What\u0027s the reason that we want to always include the META-INF dir? I\u0027d be inclined to save this information in \u003cskipstrippings\u003e if possible, with a comment on the line that saves it.",
+      "revId": "b357bf4f4b000f189c9cefd4c88946a526f89358",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06c08d3f_44464926",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-09-20T01:46:01Z",
+      "side": 1,
+      "message": "skippstring only applies to jar level. and we want to keep manifest file for now. This condition will be gone once Colin submit this latest patch for merge_zips to insert manifest in jar merging phase.",
+      "parentUuid": "0ab28ab3_b99ee1f4",
       "revId": "b357bf4f4b000f189c9cefd4c88946a526f89358",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true

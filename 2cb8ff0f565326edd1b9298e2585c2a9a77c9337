@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "7810a6ff_f20a915d",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-09-20T01:46:01Z",
+      "side": 1,
+      "message": "So in order avoid duplicating \"-in\", I think it is better just \"duplicating\" the skipstripping entries since there\u0027s only one skipstripping entry.",
+      "parentUuid": "4019be8f_44b922f1",
+      "revId": "2cb8ff0f565326edd1b9298e2585c2a9a77c9337",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d5ca427c_539715be",
         "filename": "cmd/merge_zips/merge_zips.go",
         "patchSetId": 5
@@ -48,6 +66,24 @@
       "writtenOn": "2017-09-19T23:42:25Z",
       "side": 1,
       "message": "I think it\u0027d be clearer if the name of the variable clarified that it was supposed to match zip files rather than to match paths within .zip files, for example \"zipsToNotStrip\"\n\nI\u0027d probably also extract it into a Matcher class to clarify it, which would enable calling the variable \"zipsToStrip\" and probably having a field on it named \"excludes\", although extracting it into a Matcher class is probably optional",
+      "revId": "2cb8ff0f565326edd1b9298e2585c2a9a77c9337",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cb02fd3_0a6676e1",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-09-20T01:46:01Z",
+      "side": 1,
+      "message": "Thanks Jeff. I changed the name to zipToNotStrip, and for the matcher class, I can add it later.",
+      "parentUuid": "d5ca427c_539715be",
       "revId": "2cb8ff0f565326edd1b9298e2585c2a9a77c9337",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "957879a5_a413b8e7",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-09-20T01:46:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf3989c2_32b722d1",
+      "revId": "2cb8ff0f565326edd1b9298e2585c2a9a77c9337",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "860ae4ca_74ed55bd",
         "filename": "cmd/merge_zips/merge_zips.go",
         "patchSetId": 5
@@ -88,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "9a3e6c85_13311c82",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-09-20T01:46:01Z",
+      "side": 1,
+      "message": "I changed to strip dir to be more accurate.",
+      "parentUuid": "860ae4ca_74ed55bd",
+      "revId": "2cb8ff0f565326edd1b9298e2585c2a9a77c9337",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "97013a67_98a7f95c",
         "filename": "cmd/merge_zips/merge_zips.go",
         "patchSetId": 5
@@ -99,6 +171,24 @@
       "writtenOn": "2017-09-19T23:42:25Z",
       "side": 1,
       "message": "I\u0027d put this into a \"if emulateJar\" check and also extract it into a named function so the name acts as a comment",
+      "revId": "2cb8ff0f565326edd1b9298e2585c2a9a77c9337",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0f35b14_f102767f",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-09-20T01:46:01Z",
+      "side": 1,
+      "message": "Done. This manifest cond is just temporary and will be gone once Colin check-in his change.",
+      "parentUuid": "97013a67_98a7f95c",
       "revId": "2cb8ff0f565326edd1b9298e2585c2a9a77c9337",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
