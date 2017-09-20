@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fe0452aa_8a44fa49",
+        "filename": "Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-09-20T22:35:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08c03f7c_5fde61f1",
+      "revId": "75d4679d75fdb919122df1624520e7f5427361f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec828b5d_676c4ced",
         "filename": "cmd/extract_linker/main.go",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "75d4679d75fdb919122df1624520e7f5427361f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65a93f9f_e1c4e0fa",
+        "filename": "cmd/extract_linker/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-09-20T22:35:13Z",
+      "side": 1,
+      "message": "Yep, much better.",
+      "parentUuid": "ec828b5d_676c4ced",
+      "revId": "75d4679d75fdb919122df1624520e7f5427361f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "f0cae13c_d072ee5b",
+        "filename": "cmd/extract_linker/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-09-20T22:35:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dced902_6119468f",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 33
+      },
+      "revId": "75d4679d75fdb919122df1624520e7f5427361f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad6daf9a_a76160e7",
         "filename": "cmd/extract_linker/main.go",
         "patchSetId": 3
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "6dd58718_722a0725",
+        "filename": "cmd/extract_linker/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-09-20T22:35:13Z",
+      "side": 1,
+      "message": "It\u0027s gone with the simpler .byte style from below.",
+      "parentUuid": "ad6daf9a_a76160e7",
+      "range": {
+        "startLine": 131,
+        "startChar": 3,
+        "endLine": 133,
+        "endChar": 4
+      },
+      "revId": "75d4679d75fdb919122df1624520e7f5427361f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "601d3bce_57a2b53a",
         "filename": "cmd/extract_linker/main.go",
         "patchSetId": 3
@@ -96,6 +180,24 @@
       "revId": "75d4679d75fdb919122df1624520e7f5427361f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4435981f_b1eba98a",
+        "filename": "cmd/extract_linker/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-09-20T22:35:13Z",
+      "side": 1,
+      "message": "I was trying to keep the size of the assembly file down, while still being able to read it in a text editor (so more than a single line). With .quad, it\u0027s 2.1MB. Switching to .byte and decimal (to remove the 0x overhead), it\u0027s only 3MB, which seems reasonable still. And it\u0027s much simpler code.",
+      "parentUuid": "601d3bce_57a2b53a",
+      "revId": "75d4679d75fdb919122df1624520e7f5427361f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
