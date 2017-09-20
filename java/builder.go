@@ -127,6 +127,9 @@ type javaBuilderFlags struct {
 	desugarFlags  string
 	aidlFlags     string
 	javaVersion   string
+
+	protoFlags   string
+	protoOutFlag string
 }
 
 type jarSpec struct {
@@ -138,13 +141,18 @@ func (j jarSpec) soongJarArgs() string {
 }
 
 func TransformJavaToClasses(ctx android.ModuleContext, srcFiles, srcFileLists android.Paths,
-	flags javaBuilderFlags, deps android.Paths) android.ModuleOutPath {
+	flags javaBuilderFlags) android.ModuleOutPath {
 
 	classDir := android.PathForModuleOut(ctx, "classes")
 	annoDir := android.PathForModuleOut(ctx, "anno")
 	classJar := android.PathForModuleOut(ctx, "classes-compiled.jar")
 
-	javacFlags := flags.javacFlags + android.JoinWithPrefix(srcFileLists.Strings(), "@")
+	javacFlags := flags.javacFlags
+	if len(srcFileLists) > 0 {
+		javacFlags += " " + android.JoinWithPrefix(srcFileLists.Strings(), "@")
+	}
+
+	var deps android.Paths
 
 	deps = append(deps, srcFileLists...)
 	deps = append(deps, flags.bootClasspath...)
@@ -169,8 +177,8 @@ func TransformJavaToClasses(ctx android.ModuleContext, srcFiles, srcFileLists an
 	return classJar
 }
 
-func RunErrorProne(ctx android.ModuleContext, srcFiles android.Paths, srcFileLists android.Paths,
-	flags javaBuilderFlags, deps android.Paths) android.Path {
+func RunErrorProne(ctx android.ModuleContext, srcFiles, srcFileLists android.Paths,
+	flags javaBuilderFlags) android.Path {
 
 	if config.ErrorProneJar == "" {
 		ctx.ModuleErrorf("cannot build with Error Prone, missing external/error_prone?")
@@ -181,7 +189,12 @@ func RunErrorProne(ctx android.ModuleContext, srcFiles android.Paths, srcFileLis
 	annoDir := android.PathForModuleOut(ctx, "anno-errorprone")
 	classFileList := android.PathForModuleOut(ctx, "classes-errorprone.list")
 
-	javacFlags := flags.javacFlags + android.JoinWithPrefix(srcFileLists.Strings(), "@")
+	javacFlags := flags.javacFlags
+	if len(srcFileLists) > 0 {
+		javacFlags += " " + android.JoinWithPrefix(srcFileLists.Strings(), "@")
+	}
+
+	var deps android.Paths
 
 	deps = append(deps, srcFileLists...)
 	deps = append(deps, flags.bootClasspath...)
