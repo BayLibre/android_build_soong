@@ -16,6 +16,24 @@
       "revId": "efb1dd93bf9664e74a98ff14ad92f1da5e8378db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "565612d4_eecb1cc3",
+        "filename": "cc/object.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-09-20T22:46:30Z",
+      "side": 1,
+      "message": "It tends not to simplify much, since there are different types of paths involved, they aren\u0027t strings. And what ends up being reduced is just an if statement \u0026 function call, just to add the other if statement about whether we\u0027re optimizing for the single object case.",
+      "parentUuid": "1e9062db_dfc0f6dd",
+      "revId": "efb1dd93bf9664e74a98ff14ad92f1da5e8378db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
