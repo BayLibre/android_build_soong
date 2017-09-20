@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5f60f5b_a3ac6bec",
+        "filename": "third_party/zip/android_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-09-20T01:24:12Z",
+      "side": 1,
+      "message": "This isn\u0027t a valid extended timestamp extra, is it?\n\n  tag: 0x5455\n  len: 0x2\n  flag: 0x1\n\nand the mod time should be 4 bytes long after that, where here it\u0027s only a single byte (0x2)",
+      "range": {
+        "startLine": 64,
+        "startChar": 51,
+        "endLine": 64,
+        "endChar": 69
+      },
+      "revId": "5936d87d50d8043ec039857ff0ec3e14f26b8ff8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
