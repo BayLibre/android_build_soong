@@ -34,6 +34,24 @@
       "revId": "efb1dd93bf9664e74a98ff14ad92f1da5e8378db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02358602_ab1415ca",
+        "filename": "cc/object.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-09-20T23:44:52Z",
+      "side": 1,
+      "message": "After some testing I\u0027ve ended up with this instead, which essentially special-cases the situation where no transformations get run. It seems to me that being able to read mostly in chronological order is helpful. If the comments were removed it would be a couple lines shorter, although the length seems less important to me.\n\n\nfunc (object *objectLinker) link(ctx ModuleContext,\n\tflags Flags, deps PathDeps, objs Objects) android.Path {\n\n\tobjs \u003d objs.Append(deps.Objs)\n\n\tvar outputFile android.Path\n\tbuilderFlags :\u003d flagsToBuilderFlags(flags)\n\n\tif len(objs.objFiles) \u003d\u003d 1 \u0026\u0026 object.Properties.Prefix_symbols \u003d\u003d \"\" {\n\t\t// no transformations to do; just use the object file directly\n\t\toutputFile \u003d objs.objFiles[0]\n\t} else {\n\t\t// doing at least one transformation; start creating temporary files for writing\n\t\tvar workPath android.Path\n\n\t\t// TransformObjsToObj if needed\n\t\tif len(objs.objFiles) !\u003d 1 {\n\t\t\tobjsOut :\u003d android.PathForModuleOut(ctx, ctx.ModuleName()+objectExtension)\n\t\t\tTransformObjsToObj(ctx, objs.objFiles, builderFlags, objsOut)\n\t\t\tworkPath \u003d objsOut\n\t\t} else {\n\t\t\tworkPath \u003d objs.objFiles[0]\n\t\t}\n\n\t\t// TransformBinaryPrefixSymbols if needed\n\t\tif object.Properties.Prefix_symbols !\u003d \"\" {\n\t\t\tprefixOut :\u003d android.PathForModuleOut(ctx, \"prefixed\", ctx.ModuleName()+objectExtension)\n\t\t\t//uncomment these lines to make the ninja file the same as the previous patchset, or remove them if we\u0027re not concerned\n\t\t\t//if len(objs.objFiles) \u003d\u003d 1 {\n\t\t\t//\tprefixOut \u003d android.PathForModuleOut(ctx, ctx.ModuleName()+objectExtension)\n\t\t\t//}\n\t\t\tTransformBinaryPrefixSymbols(ctx, object.Properties.Prefix_symbols, workPath,\n\t\t\t\tbuilderFlags, prefixOut)\n\t\t\tworkPath \u003d prefixOut\n\t\t}\n\t\toutputFile \u003d workPath\n\t}\n\n\tctx.CheckbuildFile(outputFile)\n\treturn outputFile\n}",
+      "parentUuid": "565612d4_eecb1cc3",
+      "revId": "efb1dd93bf9664e74a98ff14ad92f1da5e8378db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
