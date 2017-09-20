@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08c03f7c_5fde61f1",
+        "filename": "Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-09-20T21:22:54Z",
+      "side": 1,
+      "message": "bpfmt is going to put these on multiple lines",
+      "revId": "75d4679d75fdb919122df1624520e7f5427361f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec828b5d_676c4ced",
+        "filename": "cmd/extract_linker/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-09-20T21:22:54Z",
+      "side": 1,
+      "message": "This seems worth a text/template",
+      "revId": "75d4679d75fdb919122df1624520e7f5427361f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dced902_6119468f",
+        "filename": "cmd/extract_linker/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-09-20T21:22:54Z",
+      "side": 1,
+      "message": "buffer, _ :\u003d ioutil.ReadAll(prog.Open())\n bytesToAsm(asm, buffer)",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 33
+      },
+      "revId": "75d4679d75fdb919122df1624520e7f5427361f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad6daf9a_a76160e7",
+        "filename": "cmd/extract_linker/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-09-20T21:22:54Z",
+      "side": 1,
+      "message": "This is confusing, if not newline then print newline?  Maybe newline -\u003e startOfLine?",
+      "range": {
+        "startLine": 131,
+        "startChar": 3,
+        "endLine": 133,
+        "endChar": 4
+      },
+      "revId": "75d4679d75fdb919122df1624520e7f5427361f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "601d3bce_57a2b53a",
+        "filename": "cmd/extract_linker/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-09-20T21:22:54Z",
+      "side": 1,
+      "message": "Is the extra complexity of .quad vs .byte necessary? Why not just use one .byte at the top and then pretty print some hex bytes and be done?",
+      "revId": "75d4679d75fdb919122df1624520e7f5427361f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
