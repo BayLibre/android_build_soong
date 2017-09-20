@@ -126,11 +126,6 @@ func TestSimple(t *testing.T) {
 			srcs: ["a.java"],
 			libs: ["bar"],
 			static_libs: ["baz"],
-			target: {
-				android: {
-					srcs: ["d.java"],
-				},
-			},
 		}
 
 		java_library {
@@ -181,8 +176,8 @@ func TestArchSpecific(t *testing.T) {
 	`)
 
 	javac := ctx.ModuleForTests("foo", "android_common").Rule("javac")
-	if len(javac.Inputs) != 2 || javac.Inputs[0].String() != "a.java" || javac.Inputs[1].String() != "d.java" {
-		t.Errorf(`foo inputs %v != ["a.java", "d.java"]`, javac.Inputs)
+	if len(javac.Inputs) != 2 || javac.Inputs[0].String() != "a.java" || javac.Inputs[1].String() != "b.java" {
+		t.Errorf(`foo inputs %v != ["a.java", "b.java"]`, javac.Inputs)
 	}
 }
 
