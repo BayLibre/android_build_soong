@@ -15,10 +15,43 @@
 package cc
 
 import (
+	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
 )
+
+func init() {
+	pctx.HostBinToolVariable("protocCmd", "aprotoc")
+}
+
+var (
+	proto = pctx.AndroidStaticRule("protoc",
+		blueprint.RuleParams{
+			Command:     "$protocCmd --cpp_out=$outDir $protoFlags $in",
+			CommandDeps: []string{"$protocCmd"},
+		}, "protoFlags", "outDir")
+)
+
+func genProto(ctx android.ModuleContext, protoFile android.Path, protoFlags string) android.WritablePaths {
+	outFiles := android.WritablePaths{
+		android.GenPathWithExt(ctx, "proto", protoFile, "pb.cc"),
+		android.GenPathWithExt(ctx, "proto", protoFile, "pb.h"),
+	}
+
+	ctx.ModuleBuild(pctx, android.ModuleBuildParams{
+		Rule:        proto,
+		Description: "protoc " + protoFile.Rel(),
+		Outputs:     outFiles,
+		Input:       protoFile,
+		Args: map[string]string{
+			"outDir":     android.ProtoDir(ctx).String(),
+			"protoFlags": protoFlags,
+		},
+	})
+
+	return outFiles
+}
 
 func protoDeps(ctx BaseModuleContext, deps Deps, p *android.ProtoProperties, static bool) Deps {
 	var lib string
