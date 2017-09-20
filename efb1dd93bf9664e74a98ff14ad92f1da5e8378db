@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e9062db_dfc0f6dd",
+        "filename": "cc/object.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-09-20T22:17:59Z",
+      "side": 1,
+      "message": "Can we consolidate these?\n\nFor example something like this (which I haven\u0027t tested)\n\n \n \tvar outputFile android.Path\n\tbuilderFlags :\u003d flagsToBuilderFlags(flags)\n\n\tvar tempOut string\n\toutputFile \u003d tempOut\n\n\tif object.Properties.Prefix_symbols !\u003d \"\" {\n\t\tvar prefixIn string\n\t\tif len(objs.objFiles) \u003d\u003d 1 {\n\t\t\tprefixIn \u003d objs.objFiles[0]\n\t\t} else {\n\t\t\tprefixIn \u003d android.PathForModuleOut(ctx, \"unprefixed\", ctx.ModuleName()+objectExtension)\n\t\t}\n\t\tprefixOut :\u003d android.PathForModuleOut(ctx, ctx.ModuleName()+objectExtension)\n\t\tTransformBinaryPrefixSymbols(ctx, object.Properties.Prefix_symbols, prefixIn,\n\t\t\tbuilderFlags, prefixOut)\n\t\ttempOut \u003d prefixIn\n\t}\n\n \tif len(objs.objFiles) !\u003d 1 {\n\t\tTransformObjsToObj(ctx, objs.objFiles, builderFlags, tempOut)\n\t\toutputFile \u003d tempOut\n \t}",
+      "revId": "efb1dd93bf9664e74a98ff14ad92f1da5e8378db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
