@@ -459,6 +459,8 @@ func createArchType(props reflect.Type) reflect.Type {
 		"Host",
 		"Android64",
 		"Android32",
+		"Bionic",
+		"Linux_based",
 		"Not_windows",
 		"Arm_on_x86",
 		"Arm_on_x86_64",
@@ -660,6 +662,27 @@ func (a *ModuleBase) setArchProperties(ctx BottomUpMutatorContext) {
 		if os.Class == Host || os.Class == HostCross {
 			field = "Host"
 			prefix = "target.host"
+			a.appendProperties(ctx, genProps, targetProp, field, prefix)
+		}
+
+		// Handle target OS generalities of the form:
+		// target: {
+		//     linux_based: {
+		//         key: value,
+		//     },
+		//     bionic: {
+		//         key: value,
+		//     },
+		// }
+		if os == Android || os == LinuxBionic || os == Linux {
+			field = "Linux_based"
+			prefix = "target.linux_based"
+			a.appendProperties(ctx, genProps, targetProp, field, prefix)
+		}
+
+		if os == Android || os == LinuxBionic {
+			field = "Bionic"
+			prefix = "target.bionic"
 			a.appendProperties(ctx, genProps, targetProp, field, prefix)
 		}
 
