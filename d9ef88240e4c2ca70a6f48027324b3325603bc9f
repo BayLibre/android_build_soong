@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f28f16c_48519181",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-09-22T20:49:17Z",
+      "side": 1,
+      "message": "I\u0027d prefer Linux_or_android",
+      "range": {
+        "startLine": 463,
+        "startChar": 3,
+        "endLine": 463,
+        "endChar": 14
+      },
+      "revId": "d9ef88240e4c2ca70a6f48027324b3325603bc9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
