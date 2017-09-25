@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa31cfc7_07c48c9d",
+        "filename": "cc/gen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-09-25T19:51:55Z",
+      "side": 1,
+      "message": "Can we change the return type of genProto from a list of paths to instead be a struct with named fields for headers and sources?",
+      "revId": "8d9b19a513426d3a399f18f2ff19d653498c6308",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
