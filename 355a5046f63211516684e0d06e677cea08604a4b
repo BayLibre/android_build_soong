@@ -16,6 +16,24 @@
       "revId": "355a5046f63211516684e0d06e677cea08604a4b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1013a55_fc64f554",
+        "filename": "python/python.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-09-25T21:33:21Z",
+      "side": 1,
+      "message": "No, I don\u0027t think that\u0027s necessary. I\u0027m working on getting it compiling now, so I don\u0027t think this is going to be a long term problem.",
+      "parentUuid": "eff01dc0_b72a88f5",
+      "revId": "355a5046f63211516684e0d06e677cea08604a4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
