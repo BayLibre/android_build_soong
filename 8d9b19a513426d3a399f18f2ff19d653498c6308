@@ -16,6 +16,24 @@
       "revId": "8d9b19a513426d3a399f18f2ff19d653498c6308",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e73edc74_60d782eb",
+        "filename": "cc/gen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-09-25T19:57:26Z",
+      "side": 1,
+      "message": "This is left over from when genProto was generic.  A struct seems like overkill, but multiple return values instead of a slice with some comments would definitely be better.",
+      "parentUuid": "fa31cfc7_07c48c9d",
+      "revId": "8d9b19a513426d3a399f18f2ff19d653498c6308",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
