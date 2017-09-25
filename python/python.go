@@ -242,7 +242,12 @@ func versionSplitMutator() func(android.BottomUpMutatorContext) {
 	}
 }
 
-func (p *Module) isEmbeddedLauncherEnabled(actual_version string) bool {
+func (p *Module) isEmbeddedLauncherEnabled(ctx android.BaseContext, actual_version string) bool {
+	// Embedded launcher is not supported on Darwin yet
+	if ctx.Darwin() {
+		return false
+	}
+
 	switch actual_version {
 	case pyVersion2:
 		return proptools.Bool(p.properties.Version.Py2.Embedded_launcher)
@@ -268,7 +273,7 @@ func (p *Module) DepsMutator(ctx android.BottomUpMutatorContext) {
 			uniqueLibs(ctx, p.properties.Libs, "version.py2.libs",
 				p.properties.Version.Py2.Libs)...)
 
-		if p.bootstrapper != nil && p.isEmbeddedLauncherEnabled(pyVersion2) {
+		if p.bootstrapper != nil && p.isEmbeddedLauncherEnabled(ctx, pyVersion2) {
 			ctx.AddVariationDependencies(nil, pythonLibTag, "py2-stdlib")
 			ctx.AddFarVariationDependencies([]blueprint.Variation{
 				{"arch", ctx.Target().String()},
@@ -283,7 +288,7 @@ func (p *Module) DepsMutator(ctx android.BottomUpMutatorContext) {
 			uniqueLibs(ctx, p.properties.Libs, "version.py3.libs",
 				p.properties.Version.Py3.Libs)...)
 
-		if p.bootstrapper != nil && p.isEmbeddedLauncherEnabled(pyVersion3) {
+		if p.bootstrapper != nil && p.isEmbeddedLauncherEnabled(ctx, pyVersion3) {
 			//TODO(nanzhang): Add embedded launcher for Python3.
 			ctx.PropertyErrorf("version.py3.embedded_launcher",
 				"is not supported yet for Python3.")
@@ -330,7 +335,7 @@ func (p *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		// so we initialize "embedded_launcher" to false.
 		embedded_launcher := false
 		if p.properties.Actual_version == pyVersion2 {
-			embedded_launcher = p.isEmbeddedLauncherEnabled(pyVersion2)
+			embedded_launcher = p.isEmbeddedLauncherEnabled(ctx, pyVersion2)
 		}
 		p.installSource = p.bootstrapper.bootstrap(ctx, p.properties.Actual_version,
 			embedded_launcher, p.srcsPathMappings, p.parSpec, p.depsPyRunfiles,
