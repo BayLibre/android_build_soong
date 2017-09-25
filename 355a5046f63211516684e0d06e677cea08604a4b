@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eff01dc0_b72a88f5",
+        "filename": "python/python.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-09-25T21:16:10Z",
+      "side": 1,
+      "message": "Do we need to log warnings to tell user that \"Darwin is not supported yet.\"?",
+      "revId": "355a5046f63211516684e0d06e677cea08604a4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
