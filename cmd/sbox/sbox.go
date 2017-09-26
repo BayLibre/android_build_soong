@@ -15,6 +15,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -40,6 +41,22 @@ var usage = "Usage: sbox -c <commandToRun> --sandbox-path <sandboxPath> --output
 
 func usageError(violation string) error {
 	return fmt.Errorf("Usage error: %s.\n\n%s", violation, usage)
+}
+
+func findAllFilesUnder(root string) (paths []string) {
+	paths = []string{}
+	filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
+		if !info.IsDir() {
+			relPath, err := filepath.Rel(root, path)
+			if err != nil {
+				// couldn't find relative path from ancestor?
+				panic(err)
+			}
+			paths = append(paths, relPath)
+		}
+		return nil
+	})
+	return paths
 }
 
 func run() error {
@@ -149,23 +166,49 @@ func run() error {
 	}
 
 	// validate that all files are created properly
-	var outputErrors []error
+	var missingOutputErrors []string
 	for _, filePath := range outFiles {
 		tempPath := filepath.Join(tempDir, filePath)
 		fileInfo, err := os.Stat(tempPath)
 		if err != nil {
-			outputErrors = append(outputErrors, fmt.Errorf("failed to create expected output file: %s\n", tempPath))
+			missingOutputErrors = append(missingOutputErrors, fmt.Sprintf("%s: does not exist", filePath))
 			continue
 		}
 		if fileInfo.IsDir() {
-			outputErrors = append(outputErrors, fmt.Errorf("Output path %s refers to a directory, not a file. This is not permitted because it prevents robust up-to-date checks\n", filePath))
+			missingOutputErrors = append(missingOutputErrors, fmt.Sprintf("%s: not a file", filePath))
 		}
 	}
-	if len(outputErrors) > 0 {
+	if len(missingOutputErrors) > 0 {
+		// find all created files for making a more informative error message
+		createdFiles := findAllFilesUnder(tempDir)
+
+		// build error message
+		errorMessage := "mismatch between declared and actual outputs\n"
+		errorMessage += "in sbox command(" + commandDescription + ")\n\n"
+		errorMessage += "in sandbox " + tempDir + ",\n"
+		errorMessage += fmt.Sprintf("failed to create %v files:\n", len(missingOutputErrors))
+		for _, missingOutputError := range missingOutputErrors {
+			errorMessage += "  " + missingOutputError + "\n"
+		}
+		if len(createdFiles) < 1 {
+			errorMessage += "created 0 files."
+		} else {
+			errorMessage += fmt.Sprintf("did create %v files:\n", len(createdFiles))
+			creationMessages := createdFiles
+			maxNumCreationLines := 10
+			if len(creationMessages) > maxNumCreationLines {
+				creationMessages = creationMessages[:maxNumCreationLines]
+				creationMessages = append(creationMessages, fmt.Sprintf("...%v more", len(createdFiles)-maxNumCreationLines))
+			}
+			for _, creationMessage := range creationMessages {
+				errorMessage += "  " + creationMessage + "\n"
+			}
+		}
+
 		// Keep the temporary output directory around in case a user wants to inspect it for debugging purposes.
 		// Soong will delete it later anyway.
 		removeTempDir = false
-		return fmt.Errorf("mismatch between declared and actual outputs in sbox command (%s):\n%v", commandDescription, outputErrors)
+		return errors.New(errorMessage)
 	}
 	// the created files match the declared files; now move them
 	for _, filePath := range outFiles {
