@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb516e13_f6fbdbd1",
+        "filename": "cc/check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-09-26T17:50:08Z",
+      "side": 1,
+      "message": "-U doesn\u0027t take an \u003d, no need to handle it specially",
+      "range": {
+        "startLine": 41,
+        "startChar": 45,
+        "endLine": 41,
+        "endChar": 74
+      },
+      "revId": "9fa0549b25c9be30d2e9cd0024511b8312f0c534",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c05b8b81_2914c36c",
+        "filename": "cc/check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-09-26T17:50:08Z",
+      "side": 1,
+      "message": "check for strings.Contains(flag, \"\u003d\") alongside checking for -D to reduce confusing error messages.  This would say \"macro name must not contain space\" for flags like:\n-DANDROID -O2",
+      "revId": "9fa0549b25c9be30d2e9cd0024511b8312f0c534",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b3e7fd7_11354a84",
+        "filename": "cc/check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-09-26T17:50:08Z",
+      "side": 1,
+      "message": "wrapping in \u0027\u0027 would also be legitimate.",
+      "revId": "9fa0549b25c9be30d2e9cd0024511b8312f0c534",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
