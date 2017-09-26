@@ -116,6 +116,24 @@
       "revId": "9fa0549b25c9be30d2e9cd0024511b8312f0c534",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ea44ad3_c69ab776",
+        "filename": "cc/check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-09-26T21:36:58Z",
+      "side": 1,
+      "message": "Gerrit\u0027s font made that confusing.  Wrapping in single quotes should also be allowed.",
+      "parentUuid": "fa344083_1a25557d",
+      "revId": "9fa0549b25c9be30d2e9cd0024511b8312f0c534",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
