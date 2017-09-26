@@ -213,3 +213,89 @@ func TestSplitListForSize(t *testing.T) {
 		}
 	}
 }
+
+var compilerFlagsTestCases = []struct {
+	in  string
+	out bool
+}{
+	{
+		in:  "a",
+		out: false,
+	},
+	{
+		in:  "-a",
+		out: true,
+	},
+	{
+		in:  "-Ipath/to/something",
+		out: false,
+	},
+	{
+		in:  "-isystempath/to/something",
+		out: false,
+	},
+	{
+		in:  "--coverage",
+		out: false,
+	},
+	{
+		in:  "-include a/b",
+		out: true,
+	},
+	{
+		in:  "-include a/b c/d",
+		out: false,
+	},
+	{
+		in:  "-DMACRO",
+		out: true,
+	},
+	{
+		in:  "-DMAC RO",
+		out: false,
+	},
+	{
+		in:  "-a -b",
+		out: false,
+	},
+	{
+		in:  "-DMACRO=definition",
+		out: true,
+	},
+	{
+		in:  "-DMACRO=defi nition",
+		out: true, // TODO(jiyong): this should be false
+	},
+	{
+		in:  "-DMACRO(x)=x + 1",
+		out: true,
+	},
+	{
+		in:  "-DMACRO=\"defi nition\"",
+		out: true,
+	},
+}
+
+type mockContext struct {
+	BaseModuleContext
+	result bool
+}
+
+func (ctx *mockContext) PropertyErrorf(property, format string, args ...interface{}) {
+	// CheckBadCompilerFlags calls this function when the flag should be rejected
+	ctx.result = false
+}
+
+func TestCompilerFlags(t *testing.T) {
+	var ctx = mockContext{}
+	for _, testCase := range compilerFlagsTestCases {
+		ctx.result = true
+		CheckBadCompilerFlags(&ctx, "", []string{testCase.in})
+		if ctx.result != testCase.out {
+			t.Errorf("incorrect output:")
+			t.Errorf("     input: %#v", testCase.in)
+			t.Errorf("  expected: %#v", testCase.out)
+			t.Errorf("       got: %#v", ctx.result)
+		}
+	}
+}
