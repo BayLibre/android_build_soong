@@ -38,6 +38,16 @@ func CheckBadCompilerFlags(ctx BaseModuleContext, prop string, flags []string) {
 			ctx.PropertyErrorf(prop, "Illegal flag `%s`", flag)
 		} else if flag == "--coverage" {
 			ctx.PropertyErrorf(prop, "Bad flag: `%s`, use native_coverage instead", flag)
+		} else if strings.HasPrefix(flag, "-D") && strings.Contains(flag, "=") {
+			args := strings.SplitN(flag, "=", 2)
+			if strings.Contains(args[0], " ") {
+				ctx.PropertyErrorf(prop, "Bad flag: `%s`, macro name must not contain space", flag)
+			}
+			if strings.Contains(args[1], " ") {
+				if !strings.HasPrefix(args[1], "\"") || !strings.HasSuffix(args[1], "\"") {
+					ctx.PropertyErrorf(prop, "Bad flag: `%s`, macro definition with space must be wrapped in \"", flag)
+				}
+			}
 		} else if strings.Contains(flag, " ") {
 			args := strings.Split(flag, " ")
 			if args[0] == "-include" {
