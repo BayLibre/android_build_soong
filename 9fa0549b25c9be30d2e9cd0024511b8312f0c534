@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "99c9a98d_88f33baf",
+        "filename": "cc/check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-09-26T20:22:09Z",
+      "side": 1,
+      "message": "I added it to detect \"-UANDR OID\". But, yes, that case can be detected by #66. Done.",
+      "parentUuid": "fb516e13_f6fbdbd1",
+      "range": {
+        "startLine": 41,
+        "startChar": 45,
+        "endLine": 41,
+        "endChar": 74
+      },
+      "revId": "9fa0549b25c9be30d2e9cd0024511b8312f0c534",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c05b8b81_2914c36c",
         "filename": "cc/check.go",
         "patchSetId": 2
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "e385ac6b_d8b0ca59",
+        "filename": "cc/check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-09-26T20:22:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c05b8b81_2914c36c",
+      "revId": "9fa0549b25c9be30d2e9cd0024511b8312f0c534",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b3e7fd7_11354a84",
         "filename": "cc/check.go",
         "patchSetId": 2
@@ -53,6 +95,24 @@
       "writtenOn": "2017-09-26T17:50:08Z",
       "side": 1,
       "message": "wrapping in \u0027\u0027 would also be legitimate.",
+      "revId": "9fa0549b25c9be30d2e9cd0024511b8312f0c534",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa344083_1a25557d",
+        "filename": "cc/check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-09-26T20:22:09Z",
+      "side": 1,
+      "message": "sorry, I don\u0027t understand what you mean here. are you talking about the error message?\nIf it is, done.",
+      "parentUuid": "3b3e7fd7_11354a84",
       "revId": "9fa0549b25c9be30d2e9cd0024511b8312f0c534",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
