@@ -19,6 +19,7 @@ package cc
 
 import (
 	"path/filepath"
+	"regexp"
 	"strings"
 
 	"android/soong/cc/config"
@@ -38,6 +39,27 @@ func CheckBadCompilerFlags(ctx BaseModuleContext, prop string, flags []string) {
 			ctx.PropertyErrorf(prop, "Illegal flag `%s`", flag)
 		} else if flag == "--coverage" {
 			ctx.PropertyErrorf(prop, "Bad flag: `%s`, use native_coverage instead", flag)
+		} else if strings.HasPrefix(flag, "-D") && strings.Contains(flag, "=") {
+			args := strings.SplitN(flag, "=", 2)
+			name := args[0]
+			def := args[1]
+			// definitions like -DADD(a, b)=((a) + (b)) is valid
+			// even if space isn't wrapped in quotes because the entire string will be
+			// wrapped in ' ' by proptools.ShellEscape triggered by ( and ) in ADD(a, b).
+			// This has a side effect of falsely accepting -DFOO()=bar -O as a single flag,
+			// but such case is rare and will cause compilation error anyway.
+			if !strings.Contains(name, "(") && !strings.Contains(name, ")") {
+				if strings.Contains(name, " ") {
+					ctx.PropertyErrorf(prop, "Bad flag: `%s`, macro name must not contain space", flag)
+				}
+				if strings.Contains(def, " ") {
+					in_single_quotes, _ := regexp.MatchString("'.*'", def)
+					in_double_quotes, _ := regexp.MatchString("\".*\"", def)
+					if !in_single_quotes && !in_double_quotes {
+						ctx.PropertyErrorf(prop, "Bad flag: `%s`, macro definition with space must be wrapped in single or double quotes", flag)
+					}
+				}
+			}
 		} else if strings.Contains(flag, " ") {
 			args := strings.Split(flag, " ")
 			if args[0] == "-include" {
