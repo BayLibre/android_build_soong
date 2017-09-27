@@ -134,6 +134,24 @@
       "revId": "9fa0549b25c9be30d2e9cd0024511b8312f0c534",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17578a60_7b1bc8d8",
+        "filename": "cc/check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-09-27T06:05:05Z",
+      "side": 1,
+      "message": "Got it. Added the check for single quotes. \n\nBTW, I found a valid case where space don\u0027t need to be wrapped in quotes.\n\n\"-DADD(x, y)\u003d((x) + (y))\"\n\nthough defining a function macro here is absolute not a good practice, I can\u0027t find a good \nreason to reject it here.",
+      "parentUuid": "6ea44ad3_c69ab776",
+      "revId": "9fa0549b25c9be30d2e9cd0024511b8312f0c534",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
