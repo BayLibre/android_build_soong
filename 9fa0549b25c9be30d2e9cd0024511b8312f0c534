@@ -152,6 +152,24 @@
       "revId": "9fa0549b25c9be30d2e9cd0024511b8312f0c534",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2be35fe4_de88d037",
+        "filename": "cc/check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-09-27T22:58:15Z",
+      "side": 1,
+      "message": "That\u0027s actually bringing up a real issue.  There isn\u0027t actually any need for quotes - if Soong sees a space in the cflag it is going to quote the entire cflag in single quotes, which will make it into a single argument on the command line.  The quotes will be passed through and turn the macro contents into a string literal, which may not always be desired.\n\nIf you put multiple cflags into one clang is likely to to show \"unknown warning option: \u0027-Wall -Wnone\u0027.  I think we should just simplify this to allow spaces if the argument starts with -D.",
+      "parentUuid": "17578a60_7b1bc8d8",
+      "revId": "9fa0549b25c9be30d2e9cd0024511b8312f0c534",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
