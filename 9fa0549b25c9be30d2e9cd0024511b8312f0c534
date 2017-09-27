@@ -170,6 +170,24 @@
       "revId": "9fa0549b25c9be30d2e9cd0024511b8312f0c534",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e47ef8e_5459bb43",
+        "filename": "cc/check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-09-27T23:48:41Z",
+      "side": 1,
+      "message": "\u003e  if Soong sees a space in the cflag it is going to quote the entire cflag in single quotes\n\nNo, I don\u0027t think so. \u0027 \u0027 does not trigger the automatic quote. Please see ShellEscape in blueprint. \u0027 \u0027 is in the list of safe chars.",
+      "parentUuid": "2be35fe4_de88d037",
+      "revId": "9fa0549b25c9be30d2e9cd0024511b8312f0c534",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
