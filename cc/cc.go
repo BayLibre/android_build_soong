@@ -321,6 +321,10 @@ type Module struct {
 
 	// Flags used to compile this module
 	flags Flags
+
+	// When calling a linker, if module A depends on module B, then A must precede B in its command
+	// line invocation. staticDepsInLinkOrder stores the proper ordering of the deps of this module
+	staticDepsInLinkOrder []*Module
 }
 
 func (c *Module) Init() android.Module {
@@ -527,6 +531,73 @@ func (c *Module) Name() string {
 		name = p.Name(name)
 	}
 	return name
+}
+
+func reverseModuleList(input []*Module) (reversed []*Module) {
+	reversed = make([]*Module, 0, len(input))
+	for i := len(input) - 1; i >= 0; i-- {
+		reversed = append(reversed, input[i])
+	}
+	return reversed
+}
+
+type prependableModuleList struct {
+	elements []*Module
+}
+
+func (l *prependableModuleList) prepend(mod *Module) {
+	l.elements = append(l.elements, mod)
+}
+
+func (l *prependableModuleList) toList() (list []*Module) {
+	return reverseModuleList(l.elements)
+}
+
+// orderDeps reorders dependencies into a list such that if module A depends on B, then
+// A will precede B in the resultant list.
+// This is convenient for passing into a linker.
+func orderDeps(directDeps []*Module, transitiveDeps map[*Module][]*Module) (orderedDeps []*Module) {
+	// This is essentially a depth-first visit of all dependency modules,
+	// where any module is added to the front of the list when its visit completes.
+
+	// We don't want to add any new dependencies into directDeps (to allow the caller to
+	// intentionally exclude or replace any unwanted transitive dependencies), so we limit the
+	// resultant list to only what the caller has chosen to include in directDeps
+
+	inputSet := make(map[*Module]bool, len(directDeps))
+	for _, dep := range directDeps {
+		inputSet[dep] = true
+	}
+
+	emittedSet := make(map[*Module]bool, len(inputSet))
+	emittedList := prependableModuleList{}
+
+	addDep := func(dep *Module) {
+		_, permitted := inputSet[dep]
+		if permitted {
+			_, alreadyFound := emittedSet[dep]
+			if !alreadyFound {
+				emittedSet[dep] = true
+				emittedList.prepend(dep)
+			}
+		}
+	}
+
+	for i := len(directDeps) - 1; i >= 0; i-- {
+		directDep := directDeps[i]
+		subDeps := transitiveDeps[directDep]
+		// because subDeps should already contain all transitive dependencies of this dependency,
+		// and should be already ordered by a previous call to orderDeps,
+		// we don't have to recurse here and can instead just iterate over subDeps
+		for j := len(subDeps) - 1; j >= 0; j-- {
+			addDep(subDeps[j])
+		}
+		addDep(directDep)
+	}
+
+	orderedDeps = emittedList.toList()
+
+	return orderedDeps
 }
 
 func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
@@ -957,6 +1028,8 @@ func checkLinkType(ctx android.ModuleContext, from *Module, to *Module) {
 func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 	var depPaths PathDeps
 
+	directStaticDeps := []*Module{}
+
 	ctx.VisitDirectDeps(func(dep blueprint.Module) {
 		depName := ctx.OtherModuleName(dep)
 		depTag := ctx.OtherModuleDependencyTag(dep)
@@ -1080,7 +1153,8 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			depPtr = &depPaths.LateSharedLibsDeps
 			depFile = ccDep.linker.(libraryInterface).toc()
 		case staticDepTag, staticExportDepTag:
-			ptr = &depPaths.StaticLibs
+			ptr = nil
+			directStaticDeps = append(directStaticDeps, ccDep)
 		case lateStaticDepTag:
 			ptr = &depPaths.LateStaticLibs
 		case wholeStaticDepTag:
@@ -1157,6 +1231,17 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			c.Properties.AndroidMkSharedLibs = append(c.Properties.AndroidMkSharedLibs, libName)
 		}
 	})
+
+	transitiveStaticDeps := make(map[*Module][]*Module, len(directStaticDeps))
+	for _, directStaticDep := range directStaticDeps {
+		transitiveStaticDeps[directStaticDep] = directStaticDep.staticDepsInLinkOrder
+	}
+	c.staticDepsInLinkOrder = orderDeps(directStaticDeps, transitiveStaticDeps)
+	orderedStaticLibOutputFiles := make([]android.Path, 0, len(c.staticDepsInLinkOrder))
+	for _, dep := range c.staticDepsInLinkOrder {
+		orderedStaticLibOutputFiles = append(orderedStaticLibOutputFiles, dep.outputFile.Path())
+	}
+	depPaths.StaticLibs = append(depPaths.StaticLibs, orderedStaticLibOutputFiles...)
 
 	// Dedup exported flags from dependencies
 	depPaths.Flags = firstUniqueElements(depPaths.Flags)
