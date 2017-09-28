@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23d101c4_36570af8",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-09-28T01:54:31Z",
+      "side": 1,
+      "message": "Is this change just to shorten the ninja file, or was something triggering this jar to be built?",
+      "revId": "ac4deab14bdfdbf1ad511d25036f678d47b30bfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
