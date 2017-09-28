@@ -38,14 +38,23 @@ import (
 // This file adds support to soong to automatically propogate LTO options to a
 // new variant of all static dependencies for each module with LTO enabled.
 
+type ltoType int
+
+const (
+	noLTO ltoType = iota
+	fullLTO
+	thinLTO
+)
+
 type LTOProperties struct {
 	// Lto must violate capitialization style for acronyms so that it can be
 	// referred to in blueprint files as "lto"
 	Lto struct {
-		Full *bool `android:"arch_variant"`
-		Thin *bool `android:"arch_variant"`
+		Enabled *bool `android:"arch_variant"`
+		Full    *bool `android:"arch_variant"`
+		Thin    *bool `android:"arch_variant"`
 	} `android:"arch_variant"`
-	LTODep bool `blueprint:"mutated"`
+	LTODep ltoType `blueprint:"mutated"`
 }
 
 type lto struct {
@@ -86,13 +95,29 @@ func (lto *lto) flags(ctx BaseModuleContext, flags Flags) Flags {
 
 // Can be called with a null receiver
 func (lto *lto) LTO() bool {
-	if lto == nil {
+	if lto == nil || lto.Disabled() {
 		return false
 	}
 
 	full := Bool(lto.Properties.Lto.Full)
 	thin := Bool(lto.Properties.Lto.Thin)
 	return full || thin
+}
+
+// Is lto.enabled is explicitly set to false?
+func (lto *lto) Disabled() bool {
+	return !(lto.Properties.Lto.Enabled == nil || *lto.Properties.Lto.Enabled)
+}
+
+func (lto *lto) LTOType() ltoType {
+	if lto.Disabled() {
+		return noLTO
+	} else if Bool(lto.Properties.Lto.Full) {
+		return fullLTO
+	} else if Bool(lto.Properties.Lto.Thin) {
+		return thinLTO
+	}
+	return noLTO
 }
 
 // Propagate lto requirements down from binaries
@@ -108,8 +133,9 @@ func ltoDepsMutator(mctx android.TopDownMutatorContext) {
 			tag := mctx.OtherModuleDependencyTag(m)
 			switch tag {
 			case staticDepTag, staticExportDepTag, lateStaticDepTag, wholeStaticDepTag, objDepTag, reuseObjTag:
-				if cc, ok := m.(*Module); ok && cc.lto != nil {
-					cc.lto.Properties.LTODep = true
+				if cc, ok := m.(*Module); ok && cc.lto != nil &&
+					!cc.lto.Disabled() {
+					cc.lto.Properties.LTODep = c.lto.LTOType()
 				}
 			}
 		})
@@ -121,15 +147,19 @@ func ltoMutator(mctx android.BottomUpMutatorContext) {
 	if c, ok := mctx.Module().(*Module); ok && c.lto != nil {
 		if c.lto.LTO() {
 			mctx.SetDependencyVariation("lto")
-		} else if c.lto.Properties.LTODep {
+		} else if c.lto.Properties.LTODep != noLTO {
 			modules := mctx.CreateVariations("", "lto")
-			modules[0].(*Module).lto.Properties.Lto.Full = boolPtr(false)
-			modules[0].(*Module).lto.Properties.Lto.Thin = boolPtr(false)
-			modules[0].(*Module).lto.Properties.LTODep = false
-			modules[1].(*Module).lto.Properties.LTODep = false
+			switch c.lto.Properties.LTODep {
+			case fullLTO:
+				modules[1].(*Module).lto.Properties.Lto.Full = boolPtr(true)
+			case thinLTO:
+				modules[1].(*Module).lto.Properties.Lto.Thin = boolPtr(true)
+			}
+			modules[0].(*Module).lto.Properties.LTODep = noLTO
+			modules[1].(*Module).lto.Properties.LTODep = noLTO
 			modules[1].(*Module).Properties.PreventInstall = true
 			modules[1].(*Module).Properties.HideFromMake = true
 		}
-		c.lto.Properties.LTODep = false
+		c.lto.Properties.LTODep = noLTO
 	}
 }
