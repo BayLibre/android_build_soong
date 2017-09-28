@@ -192,8 +192,8 @@ func TestArchConfig(buildDir string) Config {
 
 	config.Targets = map[OsClass][]Target{
 		Device: []Target{
-			{Android, Arch{ArchType: Arm64, Native: true}},
-			{Android, Arch{ArchType: Arm, Native: true}},
+			{Android, Arch{ArchType: Arm64, ArchVariant: "armv8-a", Native: true}},
+			{Android, Arch{ArchType: Arm, ArchVariant: "armv7-a", Native: true}},
 		},
 		Host: []Target{
 			{BuildOs, Arch{ArchType: X86_64}},

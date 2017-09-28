@@ -321,6 +321,10 @@ type Module struct {
 
 	// Flags used to compile this module
 	flags Flags
+
+	// When calling a linker, if module A depends on module B, then A must precede B in its command
+	// line invocation. staticDepsInLinkOrder stores the proper ordering of the deps of this module
+	staticDepsInLinkOrder []android.Path
 }
 
 func (c *Module) Init() android.Module {
@@ -527,6 +531,52 @@ func (c *Module) Name() string {
 		name = p.Name(name)
 	}
 	return name
+}
+
+// orderDeps reorders dependencies into a list such that if module A depends on B, then
+// A will precede B in the resultant list.
+// This is convenient for passing into a linker.
+func orderDeps(directDeps []android.Path, transitiveDeps map[android.Path][]android.Path) (orderedDeps []android.Path) {
+	// This is essentially a depth-first visit (from right-to-left) of all dependency modules,
+	// where any module is added to the front of the list when its visit completes.
+	for _, dep := range directDeps {
+		orderedDeps = append(orderedDeps, dep)
+		orderedDeps = append(orderedDeps, transitiveDeps[dep]...)
+	}
+
+	orderedDeps = lastUniquePaths(orderedDeps)
+
+	// We don't want to add any new dependencies into directDeps (to allow the caller to
+	// intentionally exclude or replace any unwanted transitive dependencies), so we limit the
+	// resultant list to only what the caller has chosen to include in directDeps
+	_, orderedDeps = filterPathList(orderedDeps, directDeps)
+
+	return orderedDeps
+}
+
+func orderStaticModuleDeps(module *Module, deps []*Module) []android.Path {
+	// make map of transitive dependencies
+	transitiveStaticDepNames := make(map[android.Path][]android.Path, len(deps))
+	for _, dep := range deps {
+		transitiveStaticDepNames[dep.outputFile.Path()] = dep.staticDepsInLinkOrder
+	}
+	// get the output file for each declared dependency
+	depFiles := []android.Path{}
+	for _, dep := range deps {
+		depFiles = append(depFiles, dep.outputFile.Path())
+	}
+
+	// reorder the dependencies based on transitive dependencies
+	orderedDepFiles := orderDeps(depFiles, transitiveStaticDepNames)
+
+	// save the ordered results on the Module so other, dependent modules can make use of this ordering
+	module.staticDepsInLinkOrder = make([]android.Path, 0, len(orderedDepFiles))
+	for _, dep := range orderedDepFiles {
+		module.staticDepsInLinkOrder = append(module.staticDepsInLinkOrder, dep)
+	}
+
+	return module.staticDepsInLinkOrder
+
 }
 
 func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
@@ -968,6 +1018,8 @@ func checkLinkType(ctx android.ModuleContext, from *Module, to *Module) {
 func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 	var depPaths PathDeps
 
+	directStaticDeps := []*Module{}
+
 	ctx.VisitDirectDeps(func(dep blueprint.Module) {
 		depName := ctx.OtherModuleName(dep)
 		depTag := ctx.OtherModuleDependencyTag(dep)
@@ -1091,7 +1143,8 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			depPtr = &depPaths.LateSharedLibsDeps
 			depFile = ccDep.linker.(libraryInterface).toc()
 		case staticDepTag, staticExportDepTag:
-			ptr = &depPaths.StaticLibs
+			ptr = nil
+			directStaticDeps = append(directStaticDeps, ccDep)
 		case lateStaticDepTag:
 			ptr = &depPaths.LateStaticLibs
 		case wholeStaticDepTag:
@@ -1174,6 +1227,9 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			c.Properties.AndroidMkSharedLibs = append(c.Properties.AndroidMkSharedLibs, makeLibName)
 		}
 	})
+
+	// use the ordered dependencies as this module's dependencies
+	depPaths.StaticLibs = append(depPaths.StaticLibs, orderStaticModuleDeps(c, directStaticDeps)...)
 
 	// Dedup exported flags from dependencies
 	depPaths.Flags = firstUniqueElements(depPaths.Flags)
@@ -1371,6 +1427,23 @@ outer:
 // lastUniqueElements returns all unique elements of a slice, keeping the last copy of each.
 // It modifies the slice contents in place, and returns a subslice of the original slice
 func lastUniqueElements(list []string) []string {
+	totalSkip := 0
+	for i := len(list) - 1; i >= totalSkip; i-- {
+		skip := 0
+		for j := i - 1; j >= totalSkip; j-- {
+			if list[i] == list[j] {
+				skip++
+			} else {
+				list[j+skip] = list[j]
+			}
+		}
+		totalSkip += skip
+	}
+	return list[totalSkip:]
+}
+
+// lastUniquePaths is the same as lastUniqueElements but uses Path structs
+func lastUniquePaths(list []android.Path) []android.Path {
 	totalSkip := 0
 	for i := len(list) - 1; i >= totalSkip; i-- {
 		skip := 0

@@ -979,6 +979,7 @@ func decodeArchSettings(archConfigs []archConfig) ([]Target, error) {
 	for _, config := range archConfigs {
 		arch, err := decodeArch(config.arch, &config.archVariant,
 			&config.cpuVariant, &config.abi)
+
 		if err != nil {
 			return nil, err
 		}
