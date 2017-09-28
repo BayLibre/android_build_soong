@@ -85,6 +85,32 @@ func removeFromList(s string, list []string) (bool, []string) {
 	}
 }
 
+func indexPathList(s android.Path, list []android.Path) int {
+	for i, l := range list {
+		if l == s {
+			return i
+		}
+	}
+
+	return -1
+}
+
+func inPathList(s android.Path, list []android.Path) bool {
+	return indexPathList(s, list) != -1
+}
+
+func filterPathList(list []android.Path, filter []android.Path) (remainder []android.Path, filtered []android.Path) {
+	for _, l := range list {
+		if inPathList(l, filter) {
+			filtered = append(filtered, l)
+		} else {
+			remainder = append(remainder, l)
+		}
+	}
+
+	return
+}
+
 var libNameRegexp = regexp.MustCompile(`^lib(.*)$`)
 
 func moduleToLibName(module string) (string, error) {
