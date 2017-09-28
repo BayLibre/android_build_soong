@@ -518,10 +518,6 @@ func (j *Module) compile(ctx android.ModuleContext) {
 			return
 		}
 
-		// TODO(ccross): For now, use the desugared jar as the classpath file.  Eventually this
-		// might cause problems because desugar wants non-desugared jars in its class path.
-		j.classpathFile = desugarJar
-
 		// Compile classes.jar into classes.dex
 		dexJarFile := TransformClassesJarToDexJar(ctx, desugarJar, flags)
 		if ctx.Failed() {
