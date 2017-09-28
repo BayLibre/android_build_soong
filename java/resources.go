@@ -40,7 +40,7 @@ func isStringInSlice(str string, slice []string) bool {
 	return false
 }
 
-func ResourceDirsToJarSpecs(ctx android.ModuleContext, resourceDirs, excludeDirs []string) []jarSpec {
+func ResourceDirsToJarArgs(ctx android.ModuleContext, resourceDirs, excludeDirs []string) ([]string, android.Paths) {
 	var excludes []string
 
 	for _, exclude := range excludeDirs {
@@ -49,7 +49,8 @@ func ResourceDirsToJarSpecs(ctx android.ModuleContext, resourceDirs, excludeDirs
 
 	excludes = append(excludes, resourceExcludes...)
 
-	var jarSpecs []jarSpec
+	var jarArgs []string
+	var deps android.Paths
 
 	for _, resourceDir := range resourceDirs {
 		if isStringInSlice(resourceDir, excludeDirs) {
@@ -63,9 +64,12 @@ func ResourceDirsToJarSpecs(ctx android.ModuleContext, resourceDirs, excludeDirs
 
 			pattern := filepath.Join(dir.String(), "**/*")
 			bootstrap.GlobFile(ctx, pattern, excludes, fileListFile.String(), depFile)
-			jarSpecs = append(jarSpecs, jarSpec{fileListFile, dir})
+			jarArgs = append(jarArgs,
+				"-C", dir.String(),
+				"-l", fileListFile.String())
+			deps = append(deps, fileListFile)
 		}
 	}
 
-	return jarSpecs
+	return jarArgs, deps
 }
