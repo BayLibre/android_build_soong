@@ -465,7 +465,7 @@ func (j *Module) compile(ctx android.ModuleContext) {
 	j.classpathFile = outputFile
 
 	// TODO(ccross): handle hostdex
-	if ctx.Device() && len(srcFiles) > 0 {
+	if ctx.Device() && len(srcFiles) > 0 && proptools.Bool(j.properties.Installable) {
 		dxFlags := j.deviceProperties.Dxflags
 		if false /* emma enabled */ {
 			// If you instrument class files that have local variable debug information in
