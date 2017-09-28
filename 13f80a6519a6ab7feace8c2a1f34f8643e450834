@@ -38,6 +38,24 @@
     },
     {
       "key": {
+        "uuid": "c18f7c0f_29ad893c",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-09-28T20:33:53Z",
+      "side": 1,
+      "message": "If it sounds good to someone else (probably indicated by a +2 from Dan) then that works for me",
+      "parentUuid": "a2c278ee_a57d4102",
+      "revId": "13f80a6519a6ab7feace8c2a1f34f8643e450834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "38a2fd66_d93d98bb",
         "filename": "java/resources.go",
         "patchSetId": 1
