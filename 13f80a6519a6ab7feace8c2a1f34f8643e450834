@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66b85775_cb628861",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-09-28T01:48:35Z",
+      "side": 1,
+      "message": "The existence of this check makes me think the previous version was slightly cleaner, because if we want to add an argument that isn\u0027t a file but is instead something else (such as a keyword like how the first word after \"git\" is a verb) then counting the arguments might not work.\n\nThe magnitude of my concern isn\u0027t very big, but the previous one seems slightly nicer to me (it delays the conversion from data model (jarSpec) to shell argument (string) until after this check).",
+      "revId": "13f80a6519a6ab7feace8c2a1f34f8643e450834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38a2fd66_d93d98bb",
+        "filename": "java/resources.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-09-28T01:48:35Z",
+      "side": 1,
+      "message": "I\u0027d be inclined to give names to the return variables (the names \"jarArgs\" (or \"args\") and \"deps\" seem fine to me) since the function is returning two variables and no longer benefits from the named fields of a struct.",
+      "range": {
+        "startLine": 43,
+        "startChar": 91,
+        "endLine": 43,
+        "endChar": 114
+      },
+      "revId": "13f80a6519a6ab7feace8c2a1f34f8643e450834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
