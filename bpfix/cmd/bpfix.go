@@ -35,7 +35,7 @@ import (
 
 var (
 	// main operation modes
-	list   = flag.Bool("l", false, "list files whose formatting differs from bpfmt's")
+	list   = flag.Bool("l", false, "list files whose content would be changed by bpfix")
 	write  = flag.Bool("w", false, "write result to (source) file instead of stdout")
 	doDiff = flag.Bool("d", false, "display diffs instead of rewriting files")
 )

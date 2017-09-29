@@ -19,6 +19,7 @@ package bpfix
 import (
 	"bytes"
 	"fmt"
+
 	"github.com/google/blueprint/parser"
 )
 
@@ -134,6 +135,7 @@ func removeMatchingModuleListProperties(tree *parser.File, canonicalName string,
 		if !ok {
 			continue
 		}
+
 		legacy, ok := mod.GetProperty(legacyName)
 		if !ok {
 			continue
@@ -142,6 +144,7 @@ func removeMatchingModuleListProperties(tree *parser.File, canonicalName string,
 		if !ok {
 			continue
 		}
+
 		canonical, ok := mod.GetProperty(canonicalName)
 		if !ok {
 			continue
@@ -150,9 +153,21 @@ func removeMatchingModuleListProperties(tree *parser.File, canonicalName string,
 		if !ok {
 			continue
 		}
+
 		filterExpressionList(legacyList, canonicalList)
 	}
 	return tree, nil
+}
+
+// tells whether to keep a Property having a list with the given value
+func keepListValue(propertyName string, value *parser.List) bool {
+	// special defaults for specific properties
+	if propertyName == "system_shared_libs" {
+		return true
+	}
+
+	// the usual behavior is to keep nonempty lists
+	return len(value.Values) != 0
 }
 
 func removePropertiesHavingTheirDefaultValues(tree *parser.File) (fixed *parser.File, err error) {
@@ -167,10 +182,7 @@ func removePropertiesHavingTheirDefaultValues(tree *parser.File) (fixed *parser.
 			keep := true
 			switch val := val.(type) {
 			case *parser.List:
-				if len(val.Values) == 0 {
-					keep = false
-				}
-				break
+				keep = keepListValue(prop.Name, val)
 			default:
 				keep = true
 			}
