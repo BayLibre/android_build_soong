@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a765b87_9343df53",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-09-29T20:59:28Z",
+      "side": 1,
+      "message": "This is no longer valid, since we\u0027ll now run error prone before building with javac, and we\u0027ll trigger recompilation when turning errorprone on (but not off, since it\u0027s only a dependency).",
+      "range": {
+        "startLine": 413,
+        "startChar": 50,
+        "endLine": 414,
+        "endChar": 62
+      },
+      "revId": "f45766f085b0933f2f19291b45d34df104bb9c56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
