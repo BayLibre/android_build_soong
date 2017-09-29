@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7671f33_b996becf",
+        "filename": "android/paths.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-09-29T21:09:06Z",
+      "side": 1,
+      "message": "Why is ModuleDir() empty? Is this just for testing?",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 252,
+        "endChar": 2
+      },
+      "revId": "8159a396c8b65e2d259b4ea0b5fdc3e4a9a278e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
