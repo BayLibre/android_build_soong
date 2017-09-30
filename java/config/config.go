@@ -27,6 +27,7 @@ var (
 	pctx = android.NewPackageContext("android/soong/java/config")
 
 	DefaultBootclasspathLibraries = []string{"core-oj", "core-libart"}
+	DefaultSystemModules          = "core-system-modules"
 	DefaultLibraries              = []string{"ext", "framework", "okhttp"}
 )
 
@@ -39,7 +40,8 @@ func init() {
 	pctx.StaticVariable("CommonJdkFlags", strings.Join([]string{
 		`-Xmaxerrs 9999999`,
 		`-encoding UTF-8`,
-		`-sourcepath ""`,
+		// OpenJDK9 gives errors with -sourcepath "", see b/38177569#comment12
+		//`-sourcepath ""`,
 		`-g`,
 		// Turbine leaves out bridges which can cause javac to unnecessarily insert them into
 		// subclasses (b/65645120).  Setting this flag causes our custom javac to assume that
@@ -47,9 +49,10 @@ func init() {
 		// If a different javac is used the flag will be ignored and extra bridges will be inserted.
 		// The flag is implemented by https://android-review.googlesource.com/c/486427
 		`-XDskipDuplicateBridges=true`,
-	}, " "))
 
-	pctx.StaticVariable("DefaultJavaVersion", "1.8")
+		// b/65004097: prevent using java.lang.invoke.StringConcatFactory when using -target 1.9
+		`-XDstringConcat=inline`,
+	}, " "))
 
 	pctx.VariableConfigMethod("hostPrebuiltTag", android.Config.PrebuiltOS)
 
@@ -57,7 +60,7 @@ func init() {
 		if override := config.(android.Config).Getenv("OVERRIDE_ANDROID_JAVA_HOME"); override != "" {
 			return override, nil
 		}
-		if jdk9 := config.(android.Config).Getenv("EXPERIMENTAL_USE_OPENJDK9"); jdk9 != "" {
+		if config.(android.Config).UseOpenJDK9() {
 			return "prebuilts/jdk/jdk9/${hostPrebuiltTag}", nil
 		}
 		return "prebuilts/jdk/jdk8/${hostPrebuiltTag}", nil
@@ -71,6 +74,7 @@ func init() {
 	pctx.SourcePathVariable("JavadocCmd", "${JavaToolchain}/javadoc")
 	pctx.SourcePathVariable("JlinkCmd", "${JavaToolchain}/jlink")
 	pctx.SourcePathVariable("JmodCmd", "${JavaToolchain}/jmod")
+	pctx.SourcePathVariable("JrtFsJar", "${JavaHome}/lib/jrt-fs.jar")
 
 	pctx.SourcePathVariable("JarArgsCmd", "build/soong/scripts/jar-args.sh")
 	pctx.StaticVariable("SoongZipCmd", filepath.Join("${bootstrap.ToolDir}", "soong_zip"))
@@ -85,18 +89,4 @@ func init() {
 		}
 		return "", nil
 	})
-}
-
-func StripJavac9Flags(flags []string) []string {
-	var ret []string
-	for _, f := range flags {
-		switch {
-		case strings.HasPrefix(f, "-J--add-modules="):
-			// drop
-		default:
-			ret = append(ret, f)
-		}
-	}
-
-	return ret
 }
