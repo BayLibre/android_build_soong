@@ -55,12 +55,12 @@ var (
 )
 
 func TransformJarsToSystemModules(ctx android.ModuleContext, moduleName string, jars android.Paths) android.WritablePath {
-	outDir := android.PathForModuleOut(ctx, "rt")
+	outDir := android.PathForModuleOut(ctx, "system")
 	workDir := android.PathForModuleOut(ctx, "modules")
-	outputFile := android.PathForModuleOut(ctx, "rt/lib/modules")
+	outputFile := android.PathForModuleOut(ctx, "system/lib/modules")
 	outputs := android.WritablePaths{
 		outputFile,
-		android.PathForModuleOut(ctx, "rt/lib/jrt-fs.jar"),
+		android.PathForModuleOut(ctx, "system/lib/jrt-fs.jar"),
 		android.PathForModuleOut(ctx, "release"),
 	}
 
