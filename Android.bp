@@ -210,6 +210,7 @@ bootstrap_go_package {
         "java/gen.go",
         "java/java.go",
         "java/resources.go",
+        "java/runtime_image.go",
     ],
     testSrcs: [
         "java/java_test.go",
