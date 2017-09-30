@@ -27,6 +27,7 @@ var (
 	pctx = android.NewPackageContext("android/soong/java/config")
 
 	DefaultBootclasspathLibraries = []string{"core-oj", "core-libart"}
+	DefaultSystemModules          = "default_system_modules"
 	DefaultLibraries              = []string{"ext", "framework", "okhttp"}
 )
 
@@ -39,7 +40,6 @@ func init() {
 	pctx.StaticVariable("CommonJdkFlags", strings.Join([]string{
 		`-Xmaxerrs 9999999`,
 		`-encoding UTF-8`,
-		`-sourcepath ""`,
 		`-g`,
 		// Turbine leaves out bridges which can cause javac to unnecessarily insert them into
 		// subclasses (b/65645120).  Setting this flag causes our custom javac to assume that
@@ -49,15 +49,13 @@ func init() {
 		`-XDskipDuplicateBridges=true`,
 	}, " "))
 
-	pctx.StaticVariable("DefaultJavaVersion", "1.8")
-
 	pctx.VariableConfigMethod("hostPrebuiltTag", android.Config.PrebuiltOS)
 
 	pctx.VariableFunc("JavaHome", func(config interface{}) (string, error) {
 		if override := config.(android.Config).Getenv("OVERRIDE_ANDROID_JAVA_HOME"); override != "" {
 			return override, nil
 		}
-		if jdk9 := config.(android.Config).Getenv("EXPERIMENTAL_USE_OPENJDK9"); jdk9 != "" {
+		if config.(android.Config).UseOpenJDK9() {
 			return "prebuilts/jdk/jdk9/${hostPrebuiltTag}", nil
 		}
 		return "prebuilts/jdk/jdk8/${hostPrebuiltTag}", nil
@@ -71,6 +69,7 @@ func init() {
 	pctx.SourcePathVariable("JavadocCmd", "${JavaToolchain}/javadoc")
 	pctx.SourcePathVariable("JlinkCmd", "${JavaToolchain}/jlink")
 	pctx.SourcePathVariable("JmodCmd", "${JavaToolchain}/jmod")
+	pctx.SourcePathVariable("JrtFsJar", "${JavaHome}/lib/jrt-fs.jar")
 
 	pctx.SourcePathVariable("JarArgsCmd", "build/soong/scripts/jar-args.sh")
 	pctx.StaticVariable("SoongZipCmd", filepath.Join("${bootstrap.ToolDir}", "soong_zip"))
