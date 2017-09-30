@@ -126,6 +126,7 @@ type javaBuilderFlags struct {
 	dxFlags       string
 	bootClasspath classpath
 	classpath     classpath
+	systemModules classpath
 	desugarFlags  string
 	aidlFlags     string
 	javaVersion   string
@@ -157,8 +158,6 @@ func transformJavaToClasses(ctx android.ModuleContext, srcFiles, srcFileLists an
 	flags javaBuilderFlags, deps android.Paths, stem, suffix, desc string,
 	rule blueprint.Rule) android.ModuleOutPath {
 
-	classDir := android.PathForModuleOut(ctx, "classes"+suffix)
-	annoDir := android.PathForModuleOut(ctx, "anno"+suffix)
 	outputFile := android.PathForModuleOut(ctx, stem)
 
 	javacFlags := flags.javacFlags
@@ -167,7 +166,16 @@ func transformJavaToClasses(ctx android.ModuleContext, srcFiles, srcFileLists an
 	}
 
 	deps = append(deps, srcFileLists...)
-	deps = append(deps, flags.bootClasspath...)
+
+	var bootClasspath string
+	if flags.javaVersion == "1.9" {
+		deps = append(deps, flags.systemModules...)
+		bootClasspath = flags.systemModules.JavaSystemModules(ctx.Device())
+	} else {
+		deps = append(deps, flags.bootClasspath...)
+		bootClasspath = flags.bootClasspath.JavaBootClasspath(ctx.Device())
+	}
+
 	deps = append(deps, flags.classpath...)
 
 	ctx.ModuleBuild(pctx, android.ModuleBuildParams{
@@ -178,10 +186,10 @@ func transformJavaToClasses(ctx android.ModuleContext, srcFiles, srcFileLists an
 		Implicits:   deps,
 		Args: map[string]string{
 			"javacFlags":    javacFlags,
-			"bootClasspath": flags.bootClasspath.JavaBootClasspath(ctx.Device()),
+			"bootClasspath": bootClasspath,
 			"classpath":     flags.classpath.JavaClasspath(),
-			"outDir":        classDir.String(),
-			"annoDir":       annoDir.String(),
+			"outDir":        android.PathForModuleOut(ctx, "classes"+suffix).String(),
+			"annoDir":       android.PathForModuleOut(ctx, "anno"+suffix).String(),
 			"javaVersion":   flags.javaVersion,
 		},
 	})
@@ -249,7 +257,7 @@ func TransformDesugar(ctx android.ModuleContext, classesJar android.Path,
 	dumpDir := android.PathForModuleOut(ctx, "desugar_dumped_classes")
 
 	javaFlags := ""
-	if ctx.AConfig().Getenv("EXPERIMENTAL_USE_OPENJDK9") != "" {
+	if ctx.AConfig().UseOpenJDK9() {
 		javaFlags = "--add-opens java.base/java.lang.invoke=ALL-UNNAMED"
 	}
 
@@ -344,6 +352,21 @@ func (x *classpath) JavaBootClasspath(forceEmpty bool) string {
 		return "-bootclasspath " + strings.Join(x.Strings(), ":")
 	} else if forceEmpty {
 		return `-bootclasspath ""`
+	} else {
+		return ""
+	}
+}
+
+// Returns a --system argument in the form javac expects with -source 1.9.  If forceEmpty is true,
+// returns --system=none if the list is empty to ensure javac does not fall back to the default
+// system modules.
+func (x *classpath) JavaSystemModules(forceEmpty bool) string {
+	if len(*x) > 1 {
+		panic("more than one system module")
+	} else if len(*x) == 1 {
+		return "--system=" + strings.TrimSuffix((*x)[0].String(), "lib/modules")
+	} else if forceEmpty {
+		return "--system=none"
 	} else {
 		return ""
 	}
