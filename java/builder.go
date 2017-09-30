@@ -126,6 +126,7 @@ type javaBuilderFlags struct {
 	dxFlags       string
 	bootClasspath classpath
 	classpath     classpath
+	systemModules string
 	desugarFlags  string
 	aidlFlags     string
 	javaVersion   string
@@ -170,6 +171,15 @@ func transformJavaToClasses(ctx android.ModuleContext, srcFiles, srcFileLists an
 	deps = append(deps, flags.bootClasspath...)
 	deps = append(deps, flags.classpath...)
 
+	var bootClasspath string
+	if flags.javaVersion == "1.9" {
+		if flags.systemModules != "" {
+			bootClasspath = "--system=" + flags.systemModules
+		}
+	} else {
+		bootClasspath = flags.bootClasspath.JavaBootClasspath(ctx.Device())
+	}
+
 	ctx.ModuleBuild(pctx, android.ModuleBuildParams{
 		Rule:        rule,
 		Description: desc,
@@ -178,7 +188,7 @@ func transformJavaToClasses(ctx android.ModuleContext, srcFiles, srcFileLists an
 		Implicits:   deps,
 		Args: map[string]string{
 			"javacFlags":    javacFlags,
-			"bootClasspath": flags.bootClasspath.JavaBootClasspath(ctx.Device()),
+			"bootClasspath": bootClasspath,
 			"classpath":     flags.classpath.JavaClasspath(),
 			"outDir":        classDir.String(),
 			"annoDir":       annoDir.String(),
@@ -249,7 +259,7 @@ func TransformDesugar(ctx android.ModuleContext, classesJar android.Path,
 	dumpDir := android.PathForModuleOut(ctx, "desugar_dumped_classes")
 
 	javaFlags := ""
-	if ctx.AConfig().Getenv("EXPERIMENTAL_USE_OPENJDK9") != "" {
+	if ctx.AConfig().UseOpenJDK9() {
 		javaFlags = "--add-opens java.base/java.lang.invoke=ALL-UNNAMED"
 	}
 
