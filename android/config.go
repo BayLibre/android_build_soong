@@ -518,6 +518,16 @@ func (c *config) UseGoma() bool {
 	return Bool(c.ProductVariables.UseGoma)
 }
 
+// Returns true if OpenJDK9 prebuilts are being used
+func (c *config) UseOpenJDK9() bool {
+	return c.Getenv("EXPERIMENTAL_USE_OPENJDK9") != ""
+}
+
+// Returns true if -source 1.9 -target 1.9 is being passed to javac
+func (c *config) TargetOpenJDK9() bool {
+	return c.Getenv("EXPERIMENTAL_USE_OPENJDK9") == "true"
+}
+
 func (c *config) ClangTidy() bool {
 	return Bool(c.ProductVariables.ClangTidy)
 }
