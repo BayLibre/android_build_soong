@@ -350,7 +350,7 @@ func (x *classpath) JavaBootClasspath(forceEmpty bool) string {
 	if len(*x) > 0 {
 		return "-bootclasspath " + strings.Join(x.Strings(), ":")
 	} else if forceEmpty {
-		return `-bootclasspath ""`
+		return `--system=none`
 	} else {
 		return ""
 	}
