@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "9636a30d_e0be9c5b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-02T19:37:36Z",
+      "side": 1,
+      "message": "Can you put these into an automated test so we don\u0027t regress them?",
+      "revId": "1cba1ed91c776c65e154fdf35e24ede12bc79151",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2f9c6a6e_ebbb22d1",
         "filename": "cc/check.go",
         "patchSetId": 4
