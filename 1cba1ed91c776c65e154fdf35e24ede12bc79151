@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f9c6a6e_ebbb22d1",
+        "filename": "cc/check.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-02T19:36:31Z",
+      "side": 1,
+      "message": "This isn\u0027t entirely correct.  A use of any character not listed in ShellEscape is going to result in the whole string being escaped.  Let\u0027s go with something simple for now, allowing spaces in -D arguments, and then we can figure out something more detailed later if we need it.",
+      "revId": "1cba1ed91c776c65e154fdf35e24ede12bc79151",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
