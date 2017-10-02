@@ -218,11 +218,11 @@ func decodeSdkDep(ctx android.BaseContext, v string) sdkDep {
 		aidl := filepath.Join(dir, "framework.aidl")
 		jarPath := android.ExistentPathForSource(ctx, "sdkdir", jar)
 		aidlPath := android.ExistentPathForSource(ctx, "sdkdir", aidl)
-		if !jarPath.Valid() {
+		if !jarPath.Valid() && !ctx.AConfig().AllowMissingDependencies() {
 			ctx.PropertyErrorf("sdk_version", "invalid sdk version %q, %q does not exist", v, jar)
 			return sdkDep{}
 		}
-		if !aidlPath.Valid() {
+		if !aidlPath.Valid() && !ctx.AConfig().AllowMissingDependencies() {
 			ctx.PropertyErrorf("sdk_version", "invalid sdk version %q, %q does not exist", v, aidl)
 			return sdkDep{}
 		}
