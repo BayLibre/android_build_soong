@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb2b20d0_87596f1d",
+        "filename": "java/runtime_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2017-10-02T12:48:57Z",
+      "side": 1,
+      "message": "OpenJDK?",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 23,
+        "endChar": 7
+      },
+      "revId": "22ee644fd42a23ad6f08b9a07a9386f4833144de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5da889b3_7908ff11",
+        "filename": "java/runtime_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2017-10-02T12:48:57Z",
+      "side": 1,
+      "message": "is ${classpath} a list of .jars here? Did you get this to work? I have a vague feeling that in my own code [1] which this CL is based on, I only got it to work when I pointed --patch-module at (directory trees with) .java source files, but I may remember wrong.\n\n[1] https://android-review.googlesource.com/c/platform/build/+/497290/2/core/java_system_image.mk",
+      "range": {
+        "startLine": 37,
+        "startChar": 38,
+        "endLine": 37,
+        "endChar": 60
+      },
+      "revId": "22ee644fd42a23ad6f08b9a07a9386f4833144de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ef23e95_1947e48e",
+        "filename": "scripts/jars-to-module-info-java.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2017-10-02T12:48:57Z",
+      "side": 1,
+      "message": "As mentioned on my CL from where you\u0027ve ported the code, this was also my original approach but I now think that, as I\u0027ve done in my CL, it\u0027s better to focus each script on one reusable job: Use one script to extracts the package names from a .jar or a set of .java files, plus a separate script to convert a set of package names to a module-info.java.\n\nFor example, because of the problem of overlapping packages (android.util is in both core-libart and framework), we may want to be able to filter out specific package names that should not be exported by a particular runtime image.",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 16
+      },
+      "revId": "22ee644fd42a23ad6f08b9a07a9386f4833144de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
