@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a42b2a3_b262fa06",
+        "filename": "cc/cc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-02T19:42:17Z",
+      "side": 1,
+      "message": "I think this should be a different property, otherwise we are effectively using it as a tristate (true, false, or unset), which is not a pattern we use anywhere else in soong.",
+      "revId": "0b38f2a9a1a131f315248866153c439b6b7f1137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9fa81de_2a16cbee",
+        "filename": "cc/vndk.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-02T19:42:17Z",
+      "side": 1,
+      "message": "This should be an interface assertion to an interface that is implemented by both libraryDecorator and prebuiltLibrary linker",
+      "revId": "0b38f2a9a1a131f315248866153c439b6b7f1137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
