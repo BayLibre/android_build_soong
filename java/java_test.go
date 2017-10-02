@@ -126,6 +126,11 @@ func TestSimple(t *testing.T) {
 			srcs: ["a.java"],
 			libs: ["bar"],
 			static_libs: ["baz"],
+			target: {
+				android: {
+					srcs: ["d.java"],
+				},
+			},
 		}
 
 		java_library {
@@ -137,7 +142,7 @@ func TestSimple(t *testing.T) {
 			name: "baz",
 			srcs: ["c.java"],
 		}
-		`)
+	`)
 
 	javac := ctx.ModuleForTests("foo", "android_common").Rule("javac")
 	combineJar := ctx.ModuleForTests("foo", "android_common").Rule("combineJar")
@@ -159,6 +164,25 @@ func TestSimple(t *testing.T) {
 
 	if len(combineJar.Inputs) != 2 || combineJar.Inputs[1].String() != baz {
 		t.Errorf("foo combineJar inputs %v does not contain %q", combineJar.Inputs, baz)
+	}
+}
+
+func TestArchSpecific(t *testing.T) {
+	ctx := testJava(t, `
+		java_library {
+			name: "foo",
+			srcs: ["a.java"],
+			target: {
+				android: {
+					srcs: ["b.java"],
+				},
+			},
+		}
+	`)
+
+	javac := ctx.ModuleForTests("foo", "android_common").Rule("javac")
+	if len(javac.Inputs) != 2 || javac.Inputs[0].String() != "a.java" || javac.Inputs[1].String() != "d.java" {
+		t.Errorf(`foo inputs %v != ["a.java", "d.java"]`, javac.Inputs)
 	}
 }
 
