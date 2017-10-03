@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd522aca_31519f4c",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-10-03T01:24:13Z",
+      "side": 1,
+      "message": "AddMissingDependencies for a better error?",
+      "revId": "68953907cbbd7fff723a62e1832d2b614f0de262",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
