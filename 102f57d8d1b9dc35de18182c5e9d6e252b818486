@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32db62c8_b6ade2ac",
+        "filename": "android/mutator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-03T00:30:58Z",
+      "side": 1,
+      "message": "archMutator",
+      "range": {
+        "startLine": 23,
+        "startChar": 9,
+        "endLine": 23,
+        "endChar": 22
+      },
+      "revId": "102f57d8d1b9dc35de18182c5e9d6e252b818486",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56c146c7_7592d703",
+        "filename": "android/mutator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-03T00:30:58Z",
+      "side": 1,
+      "message": "GenerateAndroidBuildActions?",
+      "range": {
+        "startLine": 27,
+        "startChar": 20,
+        "endLine": 27,
+        "endChar": 40
+      },
+      "revId": "102f57d8d1b9dc35de18182c5e9d6e252b818486",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8efeecc3_d8e1039a",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-03T00:30:58Z",
+      "side": 1,
+      "message": "The original was more correct.  This is specifically dealing with libraries that have NDK variants, not libraries that have any variants.",
+      "revId": "102f57d8d1b9dc35de18182c5e9d6e252b818486",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "591774b1_e380a673",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1028,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-03T00:30:58Z",
+      "side": 1,
+      "message": "Removing the spacing doesn\u0027t make this more readable to me.",
+      "revId": "102f57d8d1b9dc35de18182c5e9d6e252b818486",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
