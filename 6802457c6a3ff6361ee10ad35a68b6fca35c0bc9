@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48305cdf_8e0801ea",
+        "filename": "android/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-10-03T04:04:20Z",
+      "side": 1,
+      "message": "Just wrap these -- we should still apply target.linux (and probably target.bionic?)",
+      "range": {
+        "startLine": 705,
+        "startChar": 4,
+        "endLine": 707,
+        "endChar": 64
+      },
+      "revId": "6802457c6a3ff6361ee10ad35a68b6fca35c0bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02679a1a_6f2f6afe",
+        "filename": "android/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 757,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-10-03T04:04:20Z",
+      "side": 1,
+      "message": "This should still apply for Common",
+      "range": {
+        "startLine": 753,
+        "startChar": 0,
+        "endLine": 757,
+        "endChar": 4
+      },
+      "revId": "6802457c6a3ff6361ee10ad35a68b6fca35c0bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
