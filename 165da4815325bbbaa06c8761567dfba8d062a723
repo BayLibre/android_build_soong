@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb973264_e2dc3e3a",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-10-03T01:22:38Z",
+      "side": 1,
+      "message": "This reverses how we append arch vs target properties (controlling overrides / order). If we\u0027re going to do that we need to document the change (and how we expect it to work), and check all of the users that this affects.\n\nI feel that at minimum:\n\n* Handle `android_arm` after both `android` and `arm`\n* Handle `linux_bionic` after both `linux` and `bionic`\n\nMore or less the most specific targets should be handled after the more general targets, so that the the more specific ones can override the general ones.\n\nI\u0027m not particularly happy with where android64 / arm_on_x86 are handled -- they probably shouldn\u0027t be that specific, but they\u0027re also not used that much.\n\nI\u0027m mixed about where to put multilib.",
+      "revId": "165da4815325bbbaa06c8761567dfba8d062a723",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
