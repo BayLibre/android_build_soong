@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "85340925_838fdc21",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-03T00:48:55Z",
+      "side": 1,
+      "message": "The map seems unnecessary and expensive, you can just use dep.staticDepsInLinkOrder\n\nAlso, this whole function could be replaced with:\n\n   var orderedDeps []*Module\n   for _, dep :\u003d range directStaticDeps {\n       orderedDeps \u003d append(orderedDeps, dep)\n       orderedDeps \u003d append(orderedDeps, dep.staticDepsInLinkOrder...)\n   }\n\n   orderedDeps \u003d lastUniqueElements(orderedDeps)\n   orderedDeps \u003d filter(orderedDeps, directStaticDeps)\n   \nThe last two function calls would need to be replaced with ones that handle *Module",
+      "range": {
+        "startLine": 559,
+        "startChar": 37,
+        "endLine": 559,
+        "endChar": 73
+      },
+      "revId": "6eec724d7ff202841898c69b98ba99c6db5ef973",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
