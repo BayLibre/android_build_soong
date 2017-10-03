@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c44808a2_18aafe98",
+        "filename": "java/java_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-10-03T01:48:47Z",
+      "side": 0,
+      "message": "Was this an intentional change?",
+      "revId": "68953907cbbd7fff723a62e1832d2b614f0de262",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

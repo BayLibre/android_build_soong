@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6685ed4a_0f01c04e",
+        "filename": "cc/proto.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-10-03T01:48:47Z",
+      "side": 1,
+      "message": "Hmm, we really should be using a dependency file with aprotoc, it supports it with --dependency_out. We don\u0027t do this today in Soong or make, so I filed b/67329638",
+      "revId": "2fc3ad229b4fc16756fa1b144ebc654282ffb9a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce94c82b_541fa879",
+        "filename": "java/java.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-10-03T01:48:47Z",
+      "side": 1,
+      "message": "This model unfortunately still has the problem that you need a .proto already in your source files in order to reference one using a glob, or with :\u003cmodule\u003e syntax :(",
+      "range": {
+        "startLine": 418,
+        "startChar": 0,
+        "endLine": 420,
+        "endChar": 2
+      },
+      "revId": "2fc3ad229b4fc16756fa1b144ebc654282ffb9a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b47e64b_c8878736",
+        "filename": "java/proto.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-10-03T01:48:47Z",
+      "side": 1,
+      "message": "Are you going to fix this before or after this change? (I assume after, but making sure)",
+      "revId": "2fc3ad229b4fc16756fa1b144ebc654282ffb9a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
