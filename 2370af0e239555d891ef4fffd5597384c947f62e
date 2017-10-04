@@ -22,6 +22,30 @@
       "revId": "2370af0e239555d891ef4fffd5597384c947f62e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16d0857b_19cf0ac9",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-04T22:17:37Z",
+      "side": 1,
+      "message": "Thanks. Yeah, in preliminary tests that seems to be fixing the problem",
+      "parentUuid": "60c4979d_f73ead89",
+      "range": {
+        "startLine": 406,
+        "startChar": 26,
+        "endLine": 406,
+        "endChar": 50
+      },
+      "revId": "2370af0e239555d891ef4fffd5597384c947f62e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
