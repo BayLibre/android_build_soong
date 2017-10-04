@@ -16,6 +16,24 @@
       "revId": "c2992232ca1dc237faa2e0616404bb0f6a7d9798",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e8d394a_e0fe3d1d",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1154,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-04T00:26:28Z",
+      "side": 0,
+      "message": "oops. I\u0027ll re-add that information via variable names in the next patch.",
+      "parentUuid": "db1a2210_0b7972ce",
+      "revId": "c2992232ca1dc237faa2e0616404bb0f6a7d9798",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }

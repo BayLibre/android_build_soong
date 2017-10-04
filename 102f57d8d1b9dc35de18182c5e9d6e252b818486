@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d455095f_fa76bc57",
+        "filename": "android/mutator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-04T00:26:28Z",
+      "side": 1,
+      "message": "thanks",
+      "parentUuid": "32db62c8_b6ade2ac",
+      "range": {
+        "startLine": 23,
+        "startChar": 9,
+        "endLine": 23,
+        "endChar": 22
+      },
+      "revId": "102f57d8d1b9dc35de18182c5e9d6e252b818486",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "56c146c7_7592d703",
         "filename": "android/mutator.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-10-03T00:30:58Z",
       "side": 1,
       "message": "GenerateAndroidBuildActions?",
+      "range": {
+        "startLine": 27,
+        "startChar": 20,
+        "endLine": 27,
+        "endChar": 40
+      },
+      "revId": "102f57d8d1b9dc35de18182c5e9d6e252b818486",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82fe1050_f6ca92f4",
+        "filename": "android/mutator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-04T00:26:28Z",
+      "side": 1,
+      "message": "thanks",
+      "parentUuid": "56c146c7_7592d703",
       "range": {
         "startLine": 27,
         "startChar": 20,
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "b6971a29_8b4f742b",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-04T00:26:28Z",
+      "side": 1,
+      "message": "thanks",
+      "parentUuid": "8efeecc3_d8e1039a",
+      "revId": "102f57d8d1b9dc35de18182c5e9d6e252b818486",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "591774b1_e380a673",
         "filename": "cc/cc.go",
         "patchSetId": 1
@@ -76,6 +142,24 @@
       "writtenOn": "2017-10-03T00:30:58Z",
       "side": 1,
       "message": "Removing the spacing doesn\u0027t make this more readable to me.",
+      "revId": "102f57d8d1b9dc35de18182c5e9d6e252b818486",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14b9b706_befd9926",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1028,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-04T00:26:28Z",
+      "side": 1,
+      "message": "Does that mean that it seems less readable to you? I removed the blank line so that the \"// some validation\" comment I added above could more clearly apply to all of these",
+      "parentUuid": "591774b1_e380a673",
       "revId": "102f57d8d1b9dc35de18182c5e9d6e252b818486",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
