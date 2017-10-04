@@ -22,6 +22,30 @@
       "revId": "6eec724d7ff202841898c69b98ba99c6db5ef973",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "112c086d_00757e9f",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-04T00:26:34Z",
+      "side": 1,
+      "message": "It turns out that Dan wants there to be unit tests dedicated to the algorithm itself without using Module structs (but he also wants there to be tests to confirm that the values are passed across Modules correctly), so the next patchset changes these essentially into strings.\n\nI was implementing the filtering via maps with the expectation that it\u0027d be faster than an O(n^2) search within lastUniqueElements (or at least that it would scale more efficiently), although after some research it looks like the average number of dependencies that this function has to visit (in aosp) is 4.18950529477, so I guess I\u0027ll change it to be implemented via lists like you suggest.",
+      "parentUuid": "85340925_838fdc21",
+      "range": {
+        "startLine": 559,
+        "startChar": 37,
+        "endLine": 559,
+        "endChar": 73
+      },
+      "revId": "6eec724d7ff202841898c69b98ba99c6db5ef973",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
