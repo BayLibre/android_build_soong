@@ -1,0 +1,7 @@
+Code-Review+2: Colin Cross <ccross@android.com>
+Verified+1: Jeff Gaston <jeffrygaston@google.com>
+Submitted-by: Jeff Gaston <jeffrygaston@google.com>
+Submitted-at: Wed, 04 Oct 2017 21:09:27 +0000
+Reviewed-on: https://android-review.googlesource.com/502461
+Project: platform/build/soong
+Branch: refs/heads/master
