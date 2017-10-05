@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c55ba0c4_4566a4ca",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-10-05T22:05:38Z",
+      "side": 1,
+      "message": "Should this really be a panic? Can\u0027t the user trigger an error with a bad pattern, which comes in on the command line?",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 318,
+        "endChar": 52
+      },
+      "revId": "0cf45cdc1ec4913e2cfe89eef6295e99733ce8ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
