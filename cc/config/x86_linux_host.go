@@ -159,6 +159,8 @@ func init() {
 	pctx.StaticVariable("LinuxX8664ClangLdflags", strings.Join(linuxX8664ClangLdflags, " "))
 	pctx.StaticVariable("LinuxX86ClangCppflags", strings.Join(linuxX86ClangCppflags, " "))
 	pctx.StaticVariable("LinuxX8664ClangCppflags", strings.Join(linuxX8664ClangCppflags, " "))
+	// Yasm flags
+	pctx.StaticVariable("LinuxX8664YasmFlags", "-f elf64 -m amd64")
 }
 
 type toolchainLinux struct {
@@ -249,6 +251,10 @@ func (t *toolchainLinuxX86) ClangLdflags() string {
 
 func (t *toolchainLinuxX8664) ClangLdflags() string {
 	return "${config.LinuxClangLdflags} ${config.LinuxX8664ClangLdflags}"
+}
+
+func (t *toolchainLinuxX8664) YasmFlags() string {
+	return "${config.LinuxX8664YasmFlags}"
 }
 
 func (t *toolchainLinux) AvailableLibraries() []string {
