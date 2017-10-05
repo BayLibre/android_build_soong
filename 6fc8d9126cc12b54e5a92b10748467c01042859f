@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92c82c40_5d9e5058",
+        "filename": "cc/pgo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-05T17:35:18Z",
+      "side": 1,
+      "message": "Put this before the isSampling check so that they don\u0027t sneak in while sampling is disabled.",
+      "revId": "6fc8d9126cc12b54e5a92b10748467c01042859f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
