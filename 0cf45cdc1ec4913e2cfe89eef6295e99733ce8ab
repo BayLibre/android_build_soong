@@ -22,6 +22,30 @@
       "revId": "0cf45cdc1ec4913e2cfe89eef6295e99733ce8ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b31bc3b6_a75bf657",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-05T22:22:05Z",
+      "side": 1,
+      "message": "Yeah, but it seemed unlikely.  I wanted to be able to pre-check the pattern, but it looked like it might or might not fail depending on the filename it was matching against.  Even with the panic its not a terrible error message:\npanic: syntax error in pattern: [.class\n\ngoroutine 1 [running]:\nmain.shouldStripFile(0x4e6300, 0xc420016160, 0x9, 0x10)\n\t/usr/local/google/home/ccross/ssd/aosp/build/soong/cmd/merge_zips/merge_zips.go:318 +0x40b\nmain.mergeZips(0xc4200b82a0, 0x2, 0x2, 0xc42009a2c0, 0x0, 0x0, 0x0, 0x2, 0xc4200902f0)\n\t/usr/local/google/home/ccross/ssd/aosp/build/soong/cmd/merge_zips/merge_zips.go:249 +0x92a\nmain.main()\n\t/usr/local/google/home/ccross/ssd/aosp/build/soong/cmd/merge_zips/merge_zips.go:121 +0x5cb",
+      "parentUuid": "c55ba0c4_4566a4ca",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 318,
+        "endChar": 52
+      },
+      "revId": "0cf45cdc1ec4913e2cfe89eef6295e99733ce8ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
