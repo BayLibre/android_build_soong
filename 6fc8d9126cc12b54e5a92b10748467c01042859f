@@ -16,6 +16,24 @@
       "revId": "6fc8d9126cc12b54e5a92b10748467c01042859f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "692a6995_a05aa7bb",
+        "filename": "cc/pgo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2017-10-05T17:37:41Z",
+      "side": 1,
+      "message": "Actually, I got both errors when I tested.  It\u0027s because we just set the error in the context here and all errors get reported in a caller.",
+      "parentUuid": "92c82c40_5d9e5058",
+      "revId": "6fc8d9126cc12b54e5a92b10748467c01042859f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
