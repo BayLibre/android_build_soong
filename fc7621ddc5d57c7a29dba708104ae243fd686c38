@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97c741a2_16ae581d",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-10-05T19:11:30Z",
+      "side": 1,
+      "message": "If we\u0027re going to change this, we should change sdk() too, since this was modelled against that",
+      "revId": "fc7621ddc5d57c7a29dba708104ae243fd686c38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
