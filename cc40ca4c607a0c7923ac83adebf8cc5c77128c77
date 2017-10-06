@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b978a09e_45e19348",
+        "filename": "androidmk/cmd/androidmk/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-10-06T03:37:02Z",
+      "side": 1,
+      "message": "os.Exit, not syscall.Exit",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 8
+      },
+      "revId": "cc40ca4c607a0c7923ac83adebf8cc5c77128c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
