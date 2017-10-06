@@ -22,6 +22,30 @@
       "revId": "d73d566790d0e308d1c348efbce98b8492eadbec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7c5d286_ac9f877b",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-10-06T22:36:40Z",
+      "side": 1,
+      "message": "CheckBadCompilerFlags is called by c.compiler.compilerFlags earlier \nin this GenerateAndroidBuildActions.\nThen the validated flags are filtered, joined, and fed to ctx.Variable.\n\nc.compiler.compile is called later to create objs.\nSome build module seems to copy/install files without real compilation of objFiles.\nGiving false warning of missing -Werror is not right.\nSo only at that time and len(obj.objFiles) \u003e 0, \nthen we check for existance of -Werror or -Wno-error.\n\nMaybe there is a way to reorder these so all flags are checked and filtered together?",
+      "parentUuid": "26e087e0_7d8fbb48",
+      "range": {
+        "startLine": 536,
+        "startChar": 17,
+        "endLine": 536,
+        "endChar": 28
+      },
+      "revId": "d73d566790d0e308d1c348efbce98b8492eadbec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
