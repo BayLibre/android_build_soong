@@ -15,16 +15,21 @@
 # limitations under the License.
 
 #
-# This file is used in our continous build infrastructure to run a variety of
-# tests related to the build system.
-#
-# Currently, it's used to build and run multiproduct_kati, so it'll attempt
-# to build ninja files for every product in the tree. I expect this to
-# evolve as we find interesting things to test or track performance for.
-#
+# This file builds and runs multiproduct_kati
 
 # To track how long we took to startup. %N isn't supported on Darwin, but
 # that's detected in the Go code, which skips calculating the startup time.
-cd "$(dirname $0)"
-./multiproduct_kati.bash "$@"
+export TRACE_BEGIN_SOONG=$(date +%s%N)
 
+export TOP=$(cd $(dirname ${BASH_SOURCE[0]})/../..; PWD= /bin/pwd)
+cd "${TOP}"
+source "${TOP}/build/soong/scripts/microfactory.bash"
+
+case $(uname) in
+  Linux)
+    export LD_PRELOAD=/lib/x86_64-linux-gnu/libSegFault.so
+    ;;
+esac
+
+soong_build_go multiproduct_kati android/soong/cmd/multiproduct_kati
+exec "$(getoutdir)/multiproduct_kati" "$@"
