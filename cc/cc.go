@@ -19,6 +19,7 @@ package cc
 // is handled in builder.go
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 
@@ -532,6 +533,24 @@ func (c *Module) Name() string {
 	return name
 }
 
+func (c *Module) CheckCFlags(actx android.ModuleContext, cflags []string, cppflags []string, ctx ModuleContext) {
+	messages := []string{}
+	// TODO(chh): some negative tests should be allowed to use -Wno-error
+	if !inList("-Werror", cflags) && !inList("-Werror", cppflags) {
+		messages = append(messages, "does not use -Werror")
+	}
+	if inList("-Wno-error", cflags) || inList("-Wno-error", cppflags) {
+		messages = append(messages, "uses -Wno-error")
+	}
+	if len(messages) > 0 {
+		suffix := " (" + actx.Os().String() + " " + actx.Arch().ArchType.String() + ")";
+		module := ctx.ModuleDir() + "/Android.bp: warning: " + c.Name() + suffix;
+		for _, msg := range messages {
+			fmt.Println(module, msg);
+		}
+	}
+}
+
 func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	ctx := &moduleContext{
 		ModuleContext: actx,
@@ -592,6 +611,8 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	ctx.Variable(pctx, "cflags", strings.Join(flags.CFlags, " "))
 	ctx.Variable(pctx, "cppflags", strings.Join(flags.CppFlags, " "))
 	ctx.Variable(pctx, "asflags", strings.Join(flags.AsFlags, " "))
+	cflags := flags.CFlags;
+	cppflags := flags.CppFlags;
 	flags.CFlags = []string{"$cflags"}
 	flags.CppFlags = []string{"$cppflags"}
 	flags.AsFlags = []string{"$asflags"}
@@ -601,6 +622,10 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		objs = c.compiler.compile(ctx, flags, deps)
 		if ctx.Failed() {
 			return
+		}
+		// Check C/C++ compiler Warning flags.
+		if len(objs.objFiles) > 0 {
+			c.CheckCFlags(actx, cflags, cppflags, ctx)
 		}
 	}
 
