@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f039847_7e716315",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-06T15:19:43Z",
+      "side": 1,
+      "message": "Define ctx here:\n\n  ctx :\u003d \u0026mockContext{ result: true }",
+      "revId": "e4347339b09b35b885ee2fddaa56e52095e0109c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
