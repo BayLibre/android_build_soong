@@ -1,0 +1,85 @@
+From 1152b90bafad6533c3b0ed993c3c8695a3b41da5 Mon Sep 17 00:00:00 2001
+From: Jeff Gaston <jeffrygaston@google.com>
+Date: Fri, 6 Oct 2017 12:51:45 -0700
+Subject: [PATCH 1/3] extract multiproduct_kati.bash into its own script
+
+so it can be invoked separately
+
+Test: ./multiproduct_kati.bash
+Bug: 67478260
+
+Change-Id: Ie22600970c490bc7636af2a9a3357fe4960876ef
+---
+ build_test.bash        | 15 ++-------------
+ multiproduct_kati.bash | 35 +++++++++++++++++++++++++++++++++++
+ 2 files changed, 37 insertions(+), 13 deletions(-)
+ create mode 100755 multiproduct_kati.bash
+
+diff --git a/build_test.bash b/build_test.bash
+index 6edaa66..32e69c4 100755
+--- a/build_test.bash
++++ b/build_test.bash
+@@ -25,17 +25,6 @@
+ 
+ # To track how long we took to startup. %N isn't supported on Darwin, but
+ # that's detected in the Go code, which skips calculating the startup time.
+-export TRACE_BEGIN_SOONG=$(date +%s%N)
++cd "$(dirname $0)"
++./multiproduct_kati.bash "$@"
+ 
+-export TOP=$(cd $(dirname ${BASH_SOURCE[0]})/../..; PWD= /bin/pwd)
+-cd "${TOP}"
+-source "${TOP}/build/soong/scripts/microfactory.bash"
+-
+-case $(uname) in
+-  Linux)
+-    export LD_PRELOAD=/lib/x86_64-linux-gnu/libSegFault.so
+-    ;;
+-esac
+-
+-soong_build_go multiproduct_kati android/soong/cmd/multiproduct_kati
+-exec "$(getoutdir)/multiproduct_kati" "$@"
+diff --git a/multiproduct_kati.bash b/multiproduct_kati.bash
+new file mode 100755
+index 0000000..efb0921
+--- /dev/null
++++ b/multiproduct_kati.bash
+@@ -0,0 +1,35 @@
++#!/bin/bash -eu
++#
++# Copyright 2017 Google Inc. All rights reserved.
++#
++# Licensed under the Apache License, Version 2.0 (the "License");
++# you may not use this file except in compliance with the License.
++# You may obtain a copy of the License at
++#
++#     http://www.apache.org/licenses/LICENSE-2.0
++#
++# Unless required by applicable law or agreed to in writing, software
++# distributed under the License is distributed on an "AS IS" BASIS,
++# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++# See the License for the specific language governing permissions and
++# limitations under the License.
++
++#
++# This file builds and runs multiproduct_kati
++
++# To track how long we took to startup. %N isn't supported on Darwin, but
++# that's detected in the Go code, which skips calculating the startup time.
++export TRACE_BEGIN_SOONG=$(date +%s%N)
++
++export TOP=$(cd $(dirname ${BASH_SOURCE[0]})/../..; PWD= /bin/pwd)
++cd "${TOP}"
++source "${TOP}/build/soong/scripts/microfactory.bash"
++
++case $(uname) in
++  Linux)
++    export LD_PRELOAD=/lib/x86_64-linux-gnu/libSegFault.so
++    ;;
++esac
++
++soong_build_go multiproduct_kati android/soong/cmd/multiproduct_kati
++exec "$(getoutdir)/multiproduct_kati" "$@"
+-- 
+2.14.2.920.gcf0c67979c-goog
+

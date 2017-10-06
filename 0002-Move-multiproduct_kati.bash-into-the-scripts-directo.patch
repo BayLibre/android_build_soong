@@ -1,0 +1,44 @@
+From bb5dece40daa0c006359d6adb62e4a10bbd11f9e Mon Sep 17 00:00:00 2001
+From: Jeff Gaston <jeffrygaston@google.com>
+Date: Fri, 6 Oct 2017 16:00:31 -0700
+Subject: [PATCH 2/3] Move multiproduct_kati.bash into the scripts/ directory
+
+Test: ./multiproduct_kati.bash
+Bug: 67478260
+Change-Id: I7b772cbdb3bd4a14a55a646b87bc12cd30f51e63
+---
+ build_test.bash                                          | 2 +-
+ multiproduct_kati.bash => scripts/multiproduct_kati.bash | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+ rename multiproduct_kati.bash => scripts/multiproduct_kati.bash (94%)
+
+diff --git a/build_test.bash b/build_test.bash
+index 32e69c4..9abb1e9 100755
+--- a/build_test.bash
++++ b/build_test.bash
+@@ -26,5 +26,5 @@
+ # To track how long we took to startup. %N isn't supported on Darwin, but
+ # that's detected in the Go code, which skips calculating the startup time.
+ cd "$(dirname $0)"
+-./multiproduct_kati.bash "$@"
++./scripts/multiproduct_kati.bash "$@"
+ 
+diff --git a/multiproduct_kati.bash b/scripts/multiproduct_kati.bash
+similarity index 94%
+rename from multiproduct_kati.bash
+rename to scripts/multiproduct_kati.bash
+index efb0921..7fc582c 100755
+--- a/multiproduct_kati.bash
++++ b/scripts/multiproduct_kati.bash
+@@ -21,7 +21,7 @@
+ # that's detected in the Go code, which skips calculating the startup time.
+ export TRACE_BEGIN_SOONG=$(date +%s%N)
+ 
+-export TOP=$(cd $(dirname ${BASH_SOURCE[0]})/../..; PWD= /bin/pwd)
++export TOP=$(cd $(dirname ${BASH_SOURCE[0]})/../../..; PWD= /bin/pwd)
+ cd "${TOP}"
+ source "${TOP}/build/soong/scripts/microfactory.bash"
+ 
+-- 
+2.14.2.920.gcf0c67979c-goog
+
