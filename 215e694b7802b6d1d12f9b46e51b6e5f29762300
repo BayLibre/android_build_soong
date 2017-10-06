@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2902df8_416d7f57",
+        "filename": "androidmk/cmd/androidmk/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-06T01:42:03Z",
+      "side": 1,
+      "message": "Mention it writes to standard out",
+      "revId": "215e694b7802b6d1d12f9b46e51b6e5f29762300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
