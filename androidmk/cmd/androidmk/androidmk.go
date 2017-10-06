@@ -2,10 +2,12 @@ package main
 
 import (
 	"bytes"
+	"flag"
 	"fmt"
 	"io/ioutil"
 	"os"
 	"strings"
+	"syscall"
 	"text/scanner"
 
 	"android/soong/bpfix/bpfix"
@@ -14,6 +16,21 @@ import (
 
 	bpparser "github.com/google/blueprint/parser"
 )
+
+var (
+	help bool
+)
+
+func init() {
+	flag.BoolVar(&help, "help", false, "show help")
+}
+
+var usage = func() {
+	fmt.Printf("usage: androidmk [flags] <inputFile>\n")
+	fmt.Printf("\nandroidmk parses <inputFile> as an Android.mk file and attempts to write an analogous Android.bp file to standard out\n")
+	flag.PrintDefaults()
+	syscall.Exit(1)
+}
 
 // TODO: non-expanded variables with expressions
 
@@ -85,7 +102,14 @@ type conditional struct {
 }
 
 func main() {
-	b, err := ioutil.ReadFile(os.Args[1])
+	flag.Parse()
+	if help {
+		usage()
+	}
+	if len(flag.Args()) != 1 {
+		usage()
+	}
+	b, err := ioutil.ReadFile(flag.Arg(0))
 	if err != nil {
 		fmt.Println(err.Error())
 		return
