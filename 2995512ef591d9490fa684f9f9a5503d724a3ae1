@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e3cc739_0f763ff6",
+        "filename": "androidmk/cmd/androidmk/androidmk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-10-06T01:57:39Z",
+      "side": 1,
+      "message": "nit: pull into variable",
+      "range": {
+        "startLine": 112,
+        "startChar": 27,
+        "endLine": 112,
+        "endChar": 38
+      },
+      "revId": "2995512ef591d9490fa684f9f9a5503d724a3ae1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
