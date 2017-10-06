@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26e087e0_7d8fbb48",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-10-06T21:50:48Z",
+      "side": 1,
+      "message": "We\u0027ve already got CheckBadCompilerFlags",
+      "range": {
+        "startLine": 536,
+        "startChar": 17,
+        "endLine": 536,
+        "endChar": 28
+      },
+      "revId": "d73d566790d0e308d1c348efbce98b8492eadbec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
