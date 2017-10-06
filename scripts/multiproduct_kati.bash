@@ -21,7 +21,7 @@
 # that's detected in the Go code, which skips calculating the startup time.
 export TRACE_BEGIN_SOONG=$(date +%s%N)
 
-export TOP=$(cd $(dirname ${BASH_SOURCE[0]})/../..; PWD= /bin/pwd)
+export TOP=$(cd $(dirname ${BASH_SOURCE[0]})/../../..; PWD= /bin/pwd)
 cd "${TOP}"
 source "${TOP}/build/soong/scripts/microfactory.bash"
 

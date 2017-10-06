@@ -26,5 +26,5 @@
 # To track how long we took to startup. %N isn't supported on Darwin, but
 # that's detected in the Go code, which skips calculating the startup time.
 cd "$(dirname $0)"
-./multiproduct_kati.bash "$@"
+./scripts/multiproduct_kati.bash "$@"
 
