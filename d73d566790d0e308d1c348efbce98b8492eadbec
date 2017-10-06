@@ -46,6 +46,30 @@
       "revId": "d73d566790d0e308d1c348efbce98b8492eadbec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f7cf3eb_ccbfd39e",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-10-06T22:49:36Z",
+      "side": 1,
+      "message": "That\u0027s the proper place to put the -Wno-error check at least (or just add it to the illegal flag list).",
+      "parentUuid": "b7c5d286_ac9f877b",
+      "range": {
+        "startLine": 536,
+        "startChar": 17,
+        "endLine": 536,
+        "endChar": 28
+      },
+      "revId": "d73d566790d0e308d1c348efbce98b8492eadbec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
