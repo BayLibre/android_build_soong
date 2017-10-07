@@ -68,6 +68,7 @@ const (
 	BuildSoong         = 1 << iota
 	BuildKati          = 1 << iota
 	BuildNinja         = 1 << iota
+	TestBuildRules     = 1 << iota
 	BuildAll           = BuildProductConfig | BuildSoong | BuildKati | BuildNinja
 )
 
@@ -179,6 +180,10 @@ func Build(ctx Context, config Config, what int) {
 
 		// Write combined ninja file
 		createCombinedBuildNinjaFile(ctx, config)
+
+		if what&TestBuildRules != 0 {
+			runTestBuildRules(ctx, config)
+		}
 
 		// Run ninja
 		runNinja(ctx, config)
