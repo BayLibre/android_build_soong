@@ -341,7 +341,7 @@ func main() {
 					if !*onlyConfig {
 						buildWhat |= build.BuildSoong
 						if !*onlySoong {
-							buildWhat |= build.BuildKati
+							buildWhat |= build.BuildKati | build.RunBuildTests
 						}
 					}
 					build.Build(product.ctx, product.config, buildWhat)
