@@ -117,6 +117,10 @@ type CompilerProperties struct {
 
 	// List of classes to pass to javac to use as annotation processors
 	Annotation_processor_classes []string
+
+	// list of generated sources to compile. These are the names of gensrcs or
+	// genrule modules.
+	Generated_sources []string
 }
 
 type CompilerDeviceProperties struct {
@@ -188,6 +192,7 @@ var (
 	libTag           = dependencyTag{name: "javalib"}
 	bootClasspathTag = dependencyTag{name: "bootclasspath"}
 	frameworkResTag  = dependencyTag{name: "framework-res"}
+	genSourceDepTag  = dependencyTag{name: "gen source"}
 )
 
 type sdkDep struct {
@@ -287,6 +292,7 @@ func (j *Module) deps(ctx android.BottomUpMutatorContext) {
 	ctx.AddDependency(ctx.Module(), libTag, j.properties.Libs...)
 	ctx.AddDependency(ctx.Module(), staticLibTag, j.properties.Static_libs...)
 	ctx.AddDependency(ctx.Module(), libTag, j.properties.Annotation_processors...)
+	ctx.AddDependency(ctx.Module(), genSourceDepTag, j.properties.Generated_sources...)
 
 	android.ExtractSourcesDeps(ctx, j.properties.Srcs)
 	android.ExtractSourcesDeps(ctx, j.properties.Java_resources)
@@ -339,6 +345,7 @@ type deps struct {
 	staticJarResources android.Paths
 	aidlIncludeDirs    android.Paths
 	srcFileLists       android.Paths
+	generatedSources   android.Paths
 	aidlPreprocess     android.OptionalPath
 }
 
@@ -362,6 +369,13 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 			switch tag {
 			case android.DefaultsDepTag, android.SourceDepTag:
 				// Nothing to do
+			case genSourceDepTag:
+				if genRule, ok := module.(genrule.SourceFileGenerator); ok {
+					deps.generatedSources = append(deps.generatedSources,
+						genRule.GeneratedSourceFiles()...)
+				} else {
+					ctx.ModuleErrorf("module %q is not a gensrcs or genrule", otherName)
+				}
 			default:
 				ctx.ModuleErrorf("depends on non-java module %q", otherName)
 			}
@@ -426,6 +440,8 @@ func (j *Module) compile(ctx android.ModuleContext) {
 	}
 
 	srcFiles := ctx.ExpandSources(j.properties.Srcs, j.properties.Exclude_srcs)
+
+	srcFiles = append(srcFiles, deps.generatedSources...)
 
 	if hasSrcExt(srcFiles.Strings(), ".proto") {
 		flags = protoFlags(ctx, &j.protoProperties, flags)
