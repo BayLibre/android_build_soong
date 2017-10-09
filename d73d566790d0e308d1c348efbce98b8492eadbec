@@ -70,6 +70,30 @@
       "revId": "d73d566790d0e308d1c348efbce98b8492eadbec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08f13206_5c9cc1cb",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-10-09T21:04:02Z",
+      "side": 1,
+      "message": "Dan, I took another look and saw that compilerFlags calls CheckBadCompilerFlags first \nand then combines/filters many compiler/os/target dependent flags.  Existing Android.bp \nfiles also have cases that use Werror in a compiler/os/target dependent way.\nSo we cannot check Werror and Wno-error in CheckBadCompilerFlags, \nor in the middle of compilerFlags.\nAfter the call to compilerFlags, my current insertion point looks simpler\nto catch all changes to CFlags/CppFlags, after the success of c.compiler.compile.",
+      "parentUuid": "8f7cf3eb_ccbfd39e",
+      "range": {
+        "startLine": 536,
+        "startChar": 17,
+        "endLine": 536,
+        "endChar": 28
+      },
+      "revId": "d73d566790d0e308d1c348efbce98b8492eadbec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
