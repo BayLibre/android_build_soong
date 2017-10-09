@@ -118,6 +118,30 @@
       "revId": "d73d566790d0e308d1c348efbce98b8492eadbec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "181aa9e0_287d7c00",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-10-09T22:05:26Z",
+      "side": 1,
+      "message": "I assumed that old line 592 was the place where c/c++ flags should be consolidated already, so it will be safer to check missing/missused flags after that. I hope all future changes to add/filter flags will happen before that point.\nOr, should we check missing flags even later than that point?",
+      "parentUuid": "9288bc4b_177c202f",
+      "range": {
+        "startLine": 536,
+        "startChar": 17,
+        "endLine": 536,
+        "endChar": 28
+      },
+      "revId": "d73d566790d0e308d1c348efbce98b8492eadbec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
