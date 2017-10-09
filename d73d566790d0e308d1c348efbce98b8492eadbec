@@ -94,6 +94,30 @@
       "revId": "d73d566790d0e308d1c348efbce98b8492eadbec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9288bc4b_177c202f",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-10-09T21:10:19Z",
+      "side": 1,
+      "message": "You\u0027re never going to know if Soong adds a -Wno-error flag, since we put a lot of these in ninja variables that you\u0027re not going to be able to expand. That can just be classified as a bug.\n\nThe checks are intended to catch user input, either from Android.bp files, or from custom Go code elsewhere in the tree.",
+      "parentUuid": "08f13206_5c9cc1cb",
+      "range": {
+        "startLine": 536,
+        "startChar": 17,
+        "endLine": 536,
+        "endChar": 28
+      },
+      "revId": "d73d566790d0e308d1c348efbce98b8492eadbec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
