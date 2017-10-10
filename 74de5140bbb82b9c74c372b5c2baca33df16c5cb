@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c78ba1c_6503f6b9",
+        "filename": "cc/pgo.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-10T21:25:35Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem like it needs to be a per-module property, unless you expect it to vary.  Either use IsEnvTrue everywhere, wrap it in a helper function, or put it as a function on Config.",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 17
+      },
+      "revId": "74de5140bbb82b9c74c372b5c2baca33df16c5cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
