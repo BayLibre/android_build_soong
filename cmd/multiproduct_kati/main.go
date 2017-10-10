@@ -30,6 +30,7 @@ import (
 	"android/soong/ui/build"
 	"android/soong/ui/logger"
 	"android/soong/ui/tracer"
+	"android/soong/zip"
 )
 
 // We default to number of cpus / 4, which seems to be the sweet spot for my
@@ -45,7 +46,7 @@ func detectNumJobs() int {
 
 var numJobs = flag.Int("j", detectNumJobs(), "number of parallel kati jobs")
 
-var keep = flag.Bool("keep", false, "keep successful output files")
+var outputFormat = flag.String("keep", "none", "which artifacts to keep (supported values are 'none', 'all', or 'zip'")
 
 var outDir = flag.String("out", "", "path to store output directories (defaults to tmpdir under $OUT when empty)")
 var alternateResultDir = flag.Bool("dist", false, "write select results to $DIST_DIR (or <out>/dist when empty)")
@@ -158,6 +159,33 @@ func (s *Status) Finished() int {
 	return s.failed
 }
 
+func zipResultDir(dir string) (err error) {
+	// zip the results
+	tempPath := filepath.Join(filepath.Dir(dir), filepath.Base(dir)+".zip")
+	fileArgs := []zip.FileArg{zip.FileArg{GlobDir: dir, SourcePrefixToStrip: dir}}
+	args := zip.ZipArgs{
+		FileArgs:       fileArgs,
+		OutputFilePath: tempPath,
+	}
+	err = zip.Run(args)
+	if err != nil {
+		return err
+	}
+
+	// remove unzipped contents
+	err = os.RemoveAll(dir)
+	if err != nil {
+		return err
+	}
+
+	// move zip back into that directory to more closely resemble the original directory structure
+	err = os.MkdirAll(dir, os.FileMode(0777))
+	if err != nil {
+		return err
+	}
+	return os.Rename(tempPath, filepath.Join(dir, "output.zip"))
+}
+
 func main() {
 	log := logger.New(os.Stderr)
 	defer log.Cleanup()
@@ -184,6 +212,23 @@ func main() {
 
 	status := NewStatus(buildCtx)
 
+	keepArtifacts := false
+	zipOutput := false
+	switch *outputFormat {
+	case "none":
+		break
+	case "all":
+		keepArtifacts = true
+		break
+	case "zip":
+		zipOutput = true
+		break
+	default:
+		log.Fatalf("Unsupported value of '--keep': must be one of 'none', 'all', or 'zip'")
+	}
+
+	keepAnything := keepArtifacts || zipOutput
+
 	config := build.NewConfig(buildCtx)
 	if *outDir == "" {
 		name := "multiproduct-" + time.Now().Format("20060102150405")
@@ -201,7 +246,7 @@ func main() {
 			log.Fatalf("Failed to create tempdir: %v", err)
 		}
 
-		if !*keep {
+		if !keepAnything {
 			defer func() {
 				if status.Finished() == 0 {
 					os.RemoveAll(*outDir)
@@ -332,8 +377,17 @@ func main() {
 						}
 					}
 					build.Build(product.ctx, product.config, buildWhat)
-					if !*keep {
-						os.RemoveAll(product.config.OutDir())
+
+					productOut := product.config.OutDir()
+					if !keepAnything {
+						os.RemoveAll(productOut)
+					} else {
+						if zipOutput {
+							err := zipResultDir(product.config.OutDir())
+							if err != nil {
+								status.Fail(product.config.TargetProduct(), err, product.logFile)
+							}
+						}
 					}
 					status.Finish(product.config.TargetProduct())
 				}()
