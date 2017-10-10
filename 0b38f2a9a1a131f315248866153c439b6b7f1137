@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7a58d883_b5f0f623",
+        "filename": "cc/cc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-10-10T10:51:31Z",
+      "side": 1,
+      "message": "Hmm, that was the original idea. Please refer to https://android-review.googlesource.com/c/platform/build/soong/+/459396/1/cc/cc.go#173\n\nHowever, I like the current design because I think it is more intuitive (\u003d read well in Android.bp). Also, I don\u0027t think we are using this as a tristate property. This property defaults to \u0027true\u0027 when unset in vndk, llndk, or vendor-only libs. I\u0027ve amended the comment message accordingly.\n\nDo you still think we need to have a new property?",
+      "parentUuid": "4a42b2a3_b262fa06",
+      "revId": "0b38f2a9a1a131f315248866153c439b6b7f1137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e9fa81de_2a16cbee",
         "filename": "cc/vndk.go",
         "patchSetId": 12
@@ -33,6 +51,24 @@
       "revId": "0b38f2a9a1a131f315248866153c439b6b7f1137",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b64fe838_6d92005a",
+        "filename": "cc/vndk.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-10-10T10:51:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9fa81de_2a16cbee",
+      "revId": "0b38f2a9a1a131f315248866153c439b6b7f1137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
