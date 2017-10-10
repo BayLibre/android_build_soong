@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e30c3bf2_6035c932",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-10T21:00:27Z",
+      "side": 1,
+      "message": "I\u0027m not sure whether there are any existing callers that would need updating or whether we\u0027d want to keep the \"--keep\" syntax the same - for now I just assumed that repurposing the \"--keep\" argument was fine",
+      "revId": "07e2d19a9c3eb7b2bf53d5dd410607ab3622adc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
