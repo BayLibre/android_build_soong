@@ -21,6 +21,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"runtime"
 	"strings"
@@ -43,9 +44,9 @@ func detectNumJobs() int {
 	return runtime.NumCPU() / 4
 }
 
-var numJobs = flag.Int("j", detectNumJobs(), "number of parallel kati jobs")
+var outputFormat = flag.String("keep", "none", "which artifacts to keep (supported values are 'none', 'artifacts', or 'zip')")
 
-var keep = flag.Bool("keep", false, "keep successful output files")
+var numJobs = flag.Int("j", detectNumJobs(), "number of parallel kati jobs")
 
 var outDir = flag.String("out", "", "path to store output directories (defaults to tmpdir under $OUT when empty)")
 var alternateResultDir = flag.Bool("dist", false, "write select results to $DIST_DIR (or <out>/dist when empty)")
@@ -158,6 +159,19 @@ func (s *Status) Finished() int {
 	return s.failed
 }
 
+func compressDirectory(path string) (err error) {
+	// zip some of the larger files
+	// don't zip symlinks
+	zipper := exec.Command("zip", "-m", "-r", "output.zip", ".")
+	zipper.Dir = path
+	output, err := zipper.CombinedOutput()
+	if err != nil {
+		err = fmt.Errorf("%q gave error %q, and output %q\n", zipper, err, output)
+		return err
+	}
+	return nil
+}
+
 func main() {
 	log := logger.New(os.Stderr)
 	defer log.Cleanup()
@@ -184,6 +198,24 @@ func main() {
 
 	status := NewStatus(buildCtx)
 
+	keepArtifacts := false
+	zipOutput := false
+	switch *outputFormat {
+	case "none":
+		keepArtifacts = false
+		break
+	case "artifacts":
+		keepArtifacts = true
+		break
+	case "zip":
+		zipOutput = true
+		break
+	default:
+		log.Fatalf("Unsupported value of '--keep': must be one of 'none', 'artifacts', or 'zip'")
+	}
+
+	keepAnything := keepArtifacts || zipOutput
+
 	config := build.NewConfig(buildCtx)
 	if *outDir == "" {
 		name := "multiproduct-" + time.Now().Format("20060102150405")
@@ -201,7 +233,7 @@ func main() {
 			log.Fatalf("Failed to create tempdir: %v", err)
 		}
 
-		if !*keep {
+		if !keepAnything {
 			defer func() {
 				if status.Finished() == 0 {
 					os.RemoveAll(*outDir)
@@ -332,8 +364,18 @@ func main() {
 						}
 					}
 					build.Build(product.ctx, product.config, buildWhat)
-					if !*keep {
-						os.RemoveAll(product.config.OutDir())
+
+					productOut := product.config.OutDir()
+					if !keepAnything {
+						os.RemoveAll(productOut)
+					} else {
+						if zipOutput {
+							err := compressDirectory(productOut)
+
+							if err != nil {
+								status.Fail(product.config.TargetProduct(), err, product.logFile)
+							}
+						}
 					}
 					status.Finish(product.config.TargetProduct())
 				}()
