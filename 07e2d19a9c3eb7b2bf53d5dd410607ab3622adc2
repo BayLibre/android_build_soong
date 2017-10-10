@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "06d56885_b9849fa6",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-10-10T22:03:39Z",
+      "side": 1,
+      "message": "This should go on line 24",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 10
+      },
+      "revId": "07e2d19a9c3eb7b2bf53d5dd410607ab3622adc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e30c3bf2_6035c932",
         "filename": "cmd/multiproduct_kati/main.go",
         "patchSetId": 1
@@ -13,6 +36,47 @@
       "writtenOn": "2017-10-10T21:00:27Z",
       "side": 1,
       "message": "I\u0027m not sure whether there are any existing callers that would need updating or whether we\u0027d want to keep the \"--keep\" syntax the same - for now I just assumed that repurposing the \"--keep\" argument was fine",
+      "revId": "07e2d19a9c3eb7b2bf53d5dd410607ab3622adc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "584a1792_65ba190c",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-10-10T22:03:39Z",
+      "side": 1,
+      "message": "How big are the outputs here? I did have some local patches that attempted to remove everything but the log files, since most of the sizes are the ninja files, and much of the use I\u0027ve had is with the std.log files.\n\nAnd why switch this from flag.String -\u003e init() { flag.StringVar }?",
+      "parentUuid": "e30c3bf2_6035c932",
+      "revId": "07e2d19a9c3eb7b2bf53d5dd410607ab3622adc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9059f89_82b0d895",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-10-10T22:03:39Z",
+      "side": 1,
+      "message": "soong_zip, or just use go\u0027s zip implementation instead of shelling out? Maybe we should make soong_zip a standalone package :)\n\nWe should probably move this to another function too, now that we\u0027re 7 levels deep",
+      "range": {
+        "startLine": 366,
+        "startChar": 31,
+        "endLine": 366,
+        "endChar": 34
+      },
       "revId": "07e2d19a9c3eb7b2bf53d5dd410607ab3622adc2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
