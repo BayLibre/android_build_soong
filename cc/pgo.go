@@ -45,6 +45,7 @@ type PgoProperties struct {
 
 	PgoPresent          bool `blueprint:"mutated"`
 	ShouldProfileModule bool `blueprint:"mutated"`
+	ShouldUseProfile    bool `blueprint:"mutated"`
 }
 
 type pgo struct {
@@ -91,6 +92,24 @@ func (props *PgoProperties) profileUseFlag(ctx ModuleContext, file string) strin
 func (props *PgoProperties) profileUseFlags(ctx ModuleContext, file string) []string {
 	flags := []string{props.profileUseFlag(ctx, file)}
 	flags = append(flags, profileUseOtherFlags...)
+	return flags
+}
+
+func (props *PgoProperties) addProfileUseFlags(ctx ModuleContext, flags Flags) Flags {
+	// If the PGO profiles project is found, and this module has PGO
+	// enabled, add flags to use the profile
+	if profilesDir := getPgoProfilesDir(ctx); props.PgoPresent && profilesDir.Valid() {
+		profileFile := android.PathForSource(ctx, profilesDir.String(), *(props.Pgo.Profile_file))
+		profileUseFlags := props.profileUseFlags(ctx, profileFile.String())
+
+		flags.CFlags = append(flags.CFlags, profileUseFlags...)
+		flags.LdFlags = append(flags.LdFlags, profileUseFlags...)
+
+		// Update CFlagsDeps and LdFlagsDeps so the module is rebuilt
+		// if profileFile gets updated
+		flags.CFlagsDeps = append(flags.CFlagsDeps, profileFile)
+		flags.LdFlagsDeps = append(flags.LdFlagsDeps, profileFile)
+	}
 	return flags
 }
 
@@ -169,6 +188,8 @@ func (pgo *pgo) begin(ctx BaseModuleContext) {
 			break
 		}
 	}
+
+	pgo.Properties.ShouldUseProfile = !ctx.AConfig().IsEnvTrue("ANDROID_PGO_NO_PROFILE_USE")
 }
 
 func (pgo *pgo) deps(ctx BaseModuleContext, deps Deps) Deps {
@@ -191,19 +212,8 @@ func (pgo *pgo) flags(ctx ModuleContext, flags Flags) Flags {
 		return props.addProfileGatherFlags(ctx, flags)
 	}
 
-	// If the PGO profiles project is found, and this module has PGO
-	// enabled, add flags to use the profile
-	if profilesDir := getPgoProfilesDir(ctx); props.PgoPresent && profilesDir.Valid() {
-		profileFile := android.PathForSource(ctx, profilesDir.String(), *(props.Pgo.Profile_file))
-		profileUseFlags := props.profileUseFlags(ctx, profileFile.String())
-
-		flags.CFlags = append(flags.CFlags, profileUseFlags...)
-		flags.LdFlags = append(flags.LdFlags, profileUseFlags...)
-
-		// Update CFlagsDeps and LdFlagsDeps so the module is rebuilt
-		// if profileFile gets updated
-		flags.CFlagsDeps = append(flags.CFlagsDeps, profileFile)
-		flags.LdFlagsDeps = append(flags.LdFlagsDeps, profileFile)
+	if props.ShouldUseProfile {
+		return props.addProfileUseFlags(ctx, flags)
 	}
 
 	return flags
