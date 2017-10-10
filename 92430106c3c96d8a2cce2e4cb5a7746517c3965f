@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e0f40b5_3b04abac",
+        "filename": "java/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-10-10T19:56:25Z",
+      "side": 1,
+      "message": "Looks like we\u0027re always missing LOCAL_JAVA_LIBRARIES to ensure that the dependencies are installed.",
+      "revId": "92430106c3c96d8a2cce2e4cb5a7746517c3965f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
