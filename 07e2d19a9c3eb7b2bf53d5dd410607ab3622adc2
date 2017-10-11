@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c2ec16ba_295e74a2",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-11T02:13:05Z",
+      "side": 1,
+      "message": "thanks",
+      "parentUuid": "06d56885_b9849fa6",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 10
+      },
+      "revId": "07e2d19a9c3eb7b2bf53d5dd410607ab3622adc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e30c3bf2_6035c932",
         "filename": "cmd/multiproduct_kati/main.go",
         "patchSetId": 1
@@ -60,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "3accb333_02394c35",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-11T02:13:05Z",
+      "side": 1,
+      "message": "In the case of aosp_x86_arm:\n\nThe uncompressed size (reported by `du -ch .`) is 1.3GB and the compressed size is 82M.\n\nI\u0027m running another build which should let me confirm the exact totals.\n\nThe last time I ran it, I was able to store two copies on disk so ninja_diff.sh could unzip+diff+remove each product one at a time\n\nThe files that I\u0027m interested in are the ninja files (for confirming that build graphs haven\u0027t changed), but since the ninja files are most of the size I figured I might as well save, zip, and compare all of the generated files. I could see it making sense for there to be another option of \"keep\", perhaps equal to \"logs\", which would keep only the log files.\n\n\nThe move from var to init was accidental and I\u0027ll put it back.",
+      "parentUuid": "584a1792_65ba190c",
+      "revId": "07e2d19a9c3eb7b2bf53d5dd410607ab3622adc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a9059f89_82b0d895",
         "filename": "cmd/multiproduct_kati/main.go",
         "patchSetId": 1
@@ -71,6 +113,30 @@
       "writtenOn": "2017-10-10T22:03:39Z",
       "side": 1,
       "message": "soong_zip, or just use go\u0027s zip implementation instead of shelling out? Maybe we should make soong_zip a standalone package :)\n\nWe should probably move this to another function too, now that we\u0027re 7 levels deep",
+      "range": {
+        "startLine": 366,
+        "startChar": 31,
+        "endLine": 366,
+        "endChar": 34
+      },
+      "revId": "07e2d19a9c3eb7b2bf53d5dd410607ab3622adc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcd3740c_8cabd295",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-11T02:13:05Z",
+      "side": 1,
+      "message": "Yeah, I liked that `zip` has a \"-m\" option that automatically deletes the inputs after building the zip (whereas `os.RemoveAll(productOut)` would remove the generated zip file too).\n\nIf you think it\u0027s worth doing then I\u0027ll have it first call soong_zip as a function, and then do an `os.Walk` to remove everything other than the generated zip",
+      "parentUuid": "a9059f89_82b0d895",
       "range": {
         "startLine": 366,
         "startChar": 31,
