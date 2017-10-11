@@ -137,36 +137,8 @@ type javaBuilderFlags struct {
 func TransformJavaToClasses(ctx android.ModuleContext, srcFiles, srcFileLists android.Paths,
 	flags javaBuilderFlags, deps android.Paths) android.ModuleOutPath {
 
-	classDir := android.PathForModuleOut(ctx, "classes")
-	annoDir := android.PathForModuleOut(ctx, "anno")
-	classJar := android.PathForModuleOut(ctx, "classes-compiled.jar")
-
-	javacFlags := flags.javacFlags
-	if len(srcFileLists) > 0 {
-		javacFlags += " " + android.JoinWithPrefix(srcFileLists.Strings(), "@")
-	}
-
-	deps = append(deps, srcFileLists...)
-	deps = append(deps, flags.bootClasspath...)
-	deps = append(deps, flags.classpath...)
-
-	ctx.ModuleBuild(pctx, android.ModuleBuildParams{
-		Rule:        javac,
-		Description: "javac",
-		Output:      classJar,
-		Inputs:      srcFiles,
-		Implicits:   deps,
-		Args: map[string]string{
-			"javacFlags":    javacFlags,
-			"bootClasspath": flags.bootClasspath.JavaBootClasspath(ctx.Device()),
-			"classpath":     flags.classpath.JavaClasspath(),
-			"outDir":        classDir.String(),
-			"annoDir":       annoDir.String(),
-			"javaVersion":   flags.javaVersion,
-		},
-	})
-
-	return classJar
+	return transformJavaToClasses(ctx, srcFiles, srcFileLists, flags, deps,
+		"classes-compiled.jar", "", "javac", javac)
 }
 
 func RunErrorProne(ctx android.ModuleContext, srcFiles, srcFileLists android.Paths,
@@ -177,25 +149,31 @@ func RunErrorProne(ctx android.ModuleContext, srcFiles, srcFileLists android.Pat
 		return nil
 	}
 
-	classDir := android.PathForModuleOut(ctx, "classes-errorprone")
-	annoDir := android.PathForModuleOut(ctx, "anno-errorprone")
-	classFileList := android.PathForModuleOut(ctx, "classes-errorprone.list")
+	return transformJavaToClasses(ctx, srcFiles, srcFileLists, flags, nil,
+		"classes-errorprone.list", "-errorprone", "errorprone", errorprone)
+}
+
+func transformJavaToClasses(ctx android.ModuleContext, srcFiles, srcFileLists android.Paths,
+	flags javaBuilderFlags, deps android.Paths, stem, suffix, desc string,
+	rule blueprint.Rule) android.ModuleOutPath {
+
+	classDir := android.PathForModuleOut(ctx, "classes"+suffix)
+	annoDir := android.PathForModuleOut(ctx, "anno"+suffix)
+	outputFile := android.PathForModuleOut(ctx, stem)
 
 	javacFlags := flags.javacFlags
 	if len(srcFileLists) > 0 {
 		javacFlags += " " + android.JoinWithPrefix(srcFileLists.Strings(), "@")
 	}
 
-	var deps android.Paths
-
 	deps = append(deps, srcFileLists...)
 	deps = append(deps, flags.bootClasspath...)
 	deps = append(deps, flags.classpath...)
 
 	ctx.ModuleBuild(pctx, android.ModuleBuildParams{
-		Rule:        errorprone,
-		Description: "errorprone",
-		Output:      classFileList,
+		Rule:        rule,
+		Description: desc,
+		Output:      outputFile,
 		Inputs:      srcFiles,
 		Implicits:   deps,
 		Args: map[string]string{
@@ -208,7 +186,7 @@ func RunErrorProne(ctx android.ModuleContext, srcFiles, srcFileLists android.Pat
 		},
 	})
 
-	return classFileList
+	return outputFile
 }
 
 func TransformResourcesToJar(ctx android.ModuleContext, jarArgs []string,
