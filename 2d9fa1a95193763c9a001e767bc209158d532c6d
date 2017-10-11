@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88905802_56b070c1",
+        "filename": "java/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-10-11T20:39:04Z",
+      "side": 1,
+      "message": "We can directly put android.PathForModuleOut(ctx, \"classes\"+suffix).String() here and remove line 160 since it is only used here.",
+      "revId": "2d9fa1a95193763c9a001e767bc209158d532c6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
