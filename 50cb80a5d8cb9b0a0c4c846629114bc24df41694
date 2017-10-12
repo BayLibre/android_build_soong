@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "10d901fa_58a77c83",
+        "filename": "android/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-12T21:15:14Z",
+      "side": 1,
+      "message": "Then do we want to replace this with something like:\n\n\nfunc (c *config) JdkVersions() (javacVersion string, targetVersion string) {\n  envVar :\u003d c.Getenv(\"EXPERIMENTAL_USE_OPENJDK9\")\n  if envVar \u003d\u003d \"\" {\n    return \"1.8\", \"1.8\"\n  }\n  if envVar \u003d\u003d \"true\" {\n    return \"1.9\", \"1.9\"\n  }\n  if envVar \u003d\u003d \"jdk1.8\" {\n    return \"1.9\", \"1.8\"\n  }\n  panic(\"illegal value \u0027\" + envVar + \u0027\")\n}\n\n// Returns true if OpenJDK9 prebuilts are being used\nfunc (c *config) UseOpenJDK9() bool {\n  javacVersion, _ :\u003d c.JdkVersions()\n  return javacVersion\u003d\u003d\"1.9\"\n}\n\n// Returns true if -source 1.9 -target 1.9 is being passed to javac\nfunc (c *config) TargetOpenJDK9() bool {\n  _, targetVersion :\u003d c.JdkVersions()\n  return targetVersion\u003d\u003d\"1.9\"\n}\n?\n\notherwise, for example, setting changing EXPERIMENTAL_USE_OPENJDK9 from \"\" to \"false\" would actually cause javac 9 to be enabled",
+      "parentUuid": "d6089bcc_5ddb0936",
+      "revId": "50cb80a5d8cb9b0a0c4c846629114bc24df41694",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e1474029_06f7273c",
         "filename": "java/config/config.go",
         "patchSetId": 9
