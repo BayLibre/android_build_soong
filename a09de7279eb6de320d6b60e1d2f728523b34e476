@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e682a9f3_6bf2fc3e",
+        "filename": "soong_zip/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-10-12T20:01:57Z",
+      "side": 1,
+      "message": "\u0027pkg\u0027 would be more go-like than \u0027lib\u0027, but I\u0027d almost just say rename this folder to \u0027zip\u0027, then name this \u0027soong-zip\u0027, which would be consistent with our other packages.\n\nYou\u0027ll also need to specify a pkgPath",
+      "range": {
+        "startLine": 16,
+        "startChar": 11,
+        "endLine": 16,
+        "endChar": 24
+      },
+      "revId": "a09de7279eb6de320d6b60e1d2f728523b34e476",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
