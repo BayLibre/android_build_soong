@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df7599b3_df4a8a87",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-12T15:07:28Z",
+      "side": 1,
+      "message": "Do you think you can put this in a unit test?  See build/soong/java/java_test.go for examples.",
+      "revId": "5c3aca9763ca88a764cf7035f5d960187affb5bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2761598_18ef4c6e",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-12T15:07:28Z",
+      "side": 1,
+      "message": "We should be able to remove one of the vendor .o files and not disable the optimization completely.  Either squash Vendor.Srcs into Srcs before this mutator (prefrred), or clear sharedCompiler.baseCompiler.Properties.Vendor.Srcs below (but you might need to deal with OriginalSrcs)",
+      "range": {
+        "startLine": 782,
+        "startChar": 17,
+        "endLine": 782,
+        "endChar": 37
+      },
+      "revId": "5c3aca9763ca88a764cf7035f5d960187affb5bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
