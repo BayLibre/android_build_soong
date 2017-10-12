@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "449a6eca_ed780dc9",
+        "filename": "android/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-12T21:03:30Z",
+      "side": 1,
+      "message": "Is it intentional for these to be almost the same but not quite?",
+      "revId": "50cb80a5d8cb9b0a0c4c846629114bc24df41694",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
