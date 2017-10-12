@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dd7a435a_a0772f09",
+        "filename": "java/builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-12T17:33:28Z",
+      "side": 1,
+      "message": "No, forceEmpty just means to use --system\u003dnone instead of no --system parameter if the list happens to be empty.",
+      "parentUuid": "fe97755a_74b2e945",
+      "range": {
+        "startLine": 364,
+        "startChar": 1,
+        "endLine": 364,
+        "endChar": 17
+      },
+      "revId": "46c65330dbe5978a4fe54906ece6ed48315fc9a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "775c7f59_9868ced8",
         "filename": "java/config/config.go",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2017-10-12T16:28:57Z",
       "side": 1,
       "message": "okay, if you submit this then I will drop my CL http://r.android.com/506595\n\nFYI per http://b/65004097#comment21 it sounds like this parameter will only be used for a short time, so I think that submitting my CL, later reverting it once http://b/65004097#comment21 eventuates, and never exposing this to OpenJDK 8, should also be fine. Up to you.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 27
+      },
+      "revId": "46c65330dbe5978a4fe54906ece6ed48315fc9a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47912542_94be8f27",
+        "filename": "java/config/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-12T17:33:28Z",
+      "side": 1,
+      "message": "Since it is harmless on 1.8 it seems easier to just put it here, and then it will be exported to make instead of having to duplicate the logic in soong and make.",
+      "parentUuid": "775c7f59_9868ced8",
       "range": {
         "startLine": 53,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "4435613a_8d729956",
+        "filename": "java/java_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-12T17:33:28Z",
+      "side": 1,
+      "message": "Yeah, this is a problem all over, for example, core-oj-hostdex vs. android_stubs_current.  Since core-system-modules is defined in libcore/JavaLibrary.bp I followed its naming scheme.",
+      "parentUuid": "ddce126c_b9e5a234",
+      "range": {
+        "startLine": 98,
+        "startChar": 26,
+        "endLine": 98,
+        "endChar": 40
+      },
+      "revId": "46c65330dbe5978a4fe54906ece6ed48315fc9a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0992be19_4dce1109",
         "filename": "java/java_test.go",
         "patchSetId": 8
@@ -82,6 +154,30 @@
       "writtenOn": "2017-10-12T16:28:57Z",
       "side": 1,
       "message": "shouldn\u0027t these also have some libs that they depend on? Or am I misunderstanding this test?",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 15
+      },
+      "revId": "46c65330dbe5978a4fe54906ece6ed48315fc9a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3409fafd_f494fecd",
+        "filename": "java/java_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-12T17:33:28Z",
+      "side": 1,
+      "message": "This just makes sure they are there to reference, but this test doesn\u0027t test building them.",
+      "parentUuid": "0992be19_4dce1109",
       "range": {
         "startLine": 106,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "ff5ebac6_35df72f5",
+        "filename": "java/java_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-12T17:33:28Z",
+      "side": 1,
+      "message": "It won\u0027t make any difference for the current testcases since the --bootclasspath/--classpath argument handling is the same for \u003c1.8.",
+      "parentUuid": "60ebf326_6d06af89",
+      "range": {
+        "startLine": 346,
+        "startChar": 3,
+        "endLine": 346,
+        "endChar": 15
+      },
+      "revId": "46c65330dbe5978a4fe54906ece6ed48315fc9a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "313ccd74_88e29fe1",
         "filename": "java/java_test.go",
         "patchSetId": 8
@@ -128,6 +248,30 @@
       "writtenOn": "2017-10-12T16:28:57Z",
       "side": 1,
       "message": "I don\u0027t know how to read this test. Does test expect javac to be invoked with a bootClasspath argument?\n\nI\u0027m confused because:\n - the javac parameter is called -bootclasspath or alternatively -boot-class-path (we historically used the former)\n - for -target 1.9, -bootclasspath is not allowed",
+      "range": {
+        "startLine": 378,
+        "startChar": 0,
+        "endLine": 382,
+        "endChar": 5
+      },
+      "revId": "46c65330dbe5978a4fe54906ece6ed48315fc9a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab8217ec_dd7a8bf0",
+        "filename": "java/java_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-12T17:33:28Z",
+      "side": 1,
+      "message": "This is to handle the case where EXPERIMENTAL_USE_OPENJDK9\u003dtrue but sdk_version is \u003c27.  The test case above has system: \"bootclasspath\", which tells the test that the sdk is expected to be passed as -bootclasspath and not --system",
+      "parentUuid": "313ccd74_88e29fe1",
       "range": {
         "startLine": 378,
         "startChar": 0,
