@@ -22,6 +22,30 @@
       "revId": "a09de7279eb6de320d6b60e1d2f728523b34e476",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1c02b97_cacfb52b",
+        "filename": "soong_zip/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-12T20:14:29Z",
+      "side": 1,
+      "message": "I guess that leaves the question of what the module name for the binary should be if the library is named \"soong-zip\". I guess that normally it would be \"zip\" although I\u0027m not sure if that module name would surprise people for there to exist a module named \"zip\" that creates a binary named \"soong_zip\" that isn\u0027t related to the binary named \"zip\".\n\nI guess I\u0027ll go with names of \"soong-zip\" for the library and \"soong_zip\" for the binary for the meanwhile.",
+      "parentUuid": "e682a9f3_6bf2fc3e",
+      "range": {
+        "startLine": 16,
+        "startChar": 11,
+        "endLine": 16,
+        "endChar": 24
+      },
+      "revId": "a09de7279eb6de320d6b60e1d2f728523b34e476",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
