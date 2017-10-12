@@ -34,6 +34,52 @@
       "revId": "50cb80a5d8cb9b0a0c4c846629114bc24df41694",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1474029_06f7273c",
+        "filename": "java/config/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2017-10-12T21:12:03Z",
+      "side": 1,
+      "message": "Just so this has some context, wanna link to http://b/38177569#comment12 here?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 21
+      },
+      "revId": "50cb80a5d8cb9b0a0c4c846629114bc24df41694",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d96533ca_a0fe5f20",
+        "filename": "scripts/jars-to-module-info-java.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2017-10-12T21:12:03Z",
+      "side": 1,
+      "message": "... that exports all of those packages.\n\n?",
+      "range": {
+        "startLine": 4,
+        "startChar": 2,
+        "endLine": 4,
+        "endChar": 16
+      },
+      "revId": "50cb80a5d8cb9b0a0c4c846629114bc24df41694",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
