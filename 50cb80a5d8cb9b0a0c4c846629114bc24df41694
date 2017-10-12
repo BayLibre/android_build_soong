@@ -16,6 +16,24 @@
       "revId": "50cb80a5d8cb9b0a0c4c846629114bc24df41694",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6089bcc_5ddb0936",
+        "filename": "android/config.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-12T21:05:07Z",
+      "side": 1,
+      "message": "Yes, EXPERIMENTAL_USE_OPENJDK\u003d1.8 has a different meaning than EXPERIMENTAL_USE_OPENJDK9\u003dtrue",
+      "parentUuid": "449a6eca_ed780dc9",
+      "revId": "50cb80a5d8cb9b0a0c4c846629114bc24df41694",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
