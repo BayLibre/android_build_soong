@@ -2,9 +2,133 @@ package cc
 
 import (
 	"android/soong/android"
+	"io/ioutil"
+	"os"
 	"reflect"
 	"testing"
 )
+
+var buildDir string
+
+func setUp() {
+	var err error
+	buildDir, err = ioutil.TempDir("", "soong_cc_test")
+	if err != nil {
+		panic(err)
+	}
+}
+
+func tearDown() {
+	os.RemoveAll(buildDir)
+}
+
+func TestMain(m *testing.M) {
+	run := func() int {
+		setUp()
+		defer tearDown()
+
+		return m.Run()
+	}
+
+	os.Exit(run())
+}
+
+func testCc(t *testing.T, bp string) *android.TestContext {
+	config := android.TestArchConfig(buildDir, nil)
+	current := "current"
+	config.ProductVariables.DeviceVndkVersion = &current
+
+	ctx := android.NewTestArchContext()
+	ctx.RegisterModuleType("cc_library", android.ModuleFactoryAdaptor(libraryFactory))
+	ctx.RegisterModuleType("toolchain_library", android.ModuleFactoryAdaptor(toolchainLibraryFactory))
+	ctx.RegisterModuleType("llndk_library", android.ModuleFactoryAdaptor(llndkLibraryFactory))
+	ctx.PreDepsMutators(func(ctx android.RegisterMutatorsContext) {
+		ctx.BottomUp("image", vendorMutator).Parallel()
+		ctx.BottomUp("link", linkageMutator).Parallel()
+		ctx.BottomUp("vndk", vndkMutator).Parallel()
+	})
+	ctx.Register()
+
+	ctx.MockFileSystem(map[string][]byte{
+		"Android.bp": []byte(bp),
+		"foo.c":      []byte("void foo() { }"),
+		"bar.c":      []byte("void bar() { }"),
+	})
+
+	_, errs := ctx.ParseBlueprintsFiles("Android.bp")
+	fail(t, errs)
+	_, errs = ctx.PrepareBuildActions(config)
+	fail(t, errs)
+
+	return ctx
+}
+
+func TestVendorSrc(t *testing.T) {
+	ctx := testCc(t, `
+		cc_library {
+			name: "libTest",
+			srcs: ["foo.c"],
+			no_libgcc : true,
+			nocrt : true,
+			system_shared_libs : [],
+			vendor_available: true,
+			target: {
+				vendor: {
+					srcs: ["bar.c"],
+				},
+			},
+		}
+		toolchain_library {
+			name: "libatomic",
+			vendor_available: true,
+		}
+		toolchain_library {
+			name: "libcompiler_rt-extras",
+			vendor_available: true,
+		}
+		cc_library {
+			name: "libc",
+			no_libgcc : true,
+			nocrt : true,
+			system_shared_libs: [],
+		}
+		llndk_library {
+			name: "libc",
+			symbol_file: "",
+		}
+		cc_library {
+			name: "libm",
+			no_libgcc : true,
+			nocrt : true,
+			system_shared_libs: [],
+		}
+		llndk_library {
+			name: "libm",
+			symbol_file: "",
+		}
+		cc_library {
+			name: "libdl",
+			no_libgcc : true,
+			nocrt : true,
+			system_shared_libs: [],
+		}
+		llndk_library {
+			name: "libdl",
+			symbol_file: "",
+		}
+	`)
+
+	ld := ctx.ModuleForTests("libTest", "android_arm_armv7-a-neon_vendor_shared").Rule("ld")
+	m := make(map[string]string)
+	for _, objectFile := range ld.Inputs {
+		if foundFile, has := m[objectFile.Base()]; has {
+			t.Errorf("Duplicated object file. %s and %s", foundFile, objectFile.Rel())
+		} else {
+			m[objectFile.Base()] = objectFile.Rel()
+		}
+	}
+
+}
 
 var firstUniqueElementsTestCases = []struct {
 	in  []string
