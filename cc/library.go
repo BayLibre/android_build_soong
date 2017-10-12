@@ -771,9 +771,15 @@ func NewLibrary(hod android.HostOrDeviceSupported) (*Module, *libraryDecorator) 
 func reuseStaticLibrary(mctx android.BottomUpMutatorContext, static, shared *Module) {
 	if staticCompiler, ok := static.compiler.(*libraryDecorator); ok {
 		sharedCompiler := shared.compiler.(*libraryDecorator)
-		if len(staticCompiler.Properties.Static.Cflags) == 0 &&
-			len(sharedCompiler.Properties.Shared.Cflags) == 0 {
-
+		noCflags := len(staticCompiler.Properties.Static.Cflags) == 0 &&
+			len(sharedCompiler.Properties.Shared.Cflags) == 0
+		// This is tricky and breaks modularity, but required. When there is a
+		// vendor-only src, we must not reuse the *.o files from the static
+		// variant because doing so will introduce two *.o files for the vendor
+		// -only src to the shared-vendor variant: one reused from the
+		// static-vendor variant and one added for the shared-vendor variant.
+		noVendorSpecificSrcs := len(sharedCompiler.baseCompiler.Properties.Target.Vendor.Srcs) == 0
+		if noCflags && noVendorSpecificSrcs {
 			mctx.AddInterVariantDependency(reuseObjTag, shared, static)
 			sharedCompiler.baseCompiler.Properties.OriginalSrcs =
 				sharedCompiler.baseCompiler.Properties.Srcs
