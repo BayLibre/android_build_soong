@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d6dcd9b_7dcf7611",
+        "filename": "java/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-13T00:35:33Z",
+      "side": 1,
+      "message": "since there are so many arguments to this function, could we rename \"stem\" to something like \"outputFileName\" (or \"outputFileStem\")?",
+      "range": {
+        "startLine": 160,
+        "startChar": 45,
+        "endLine": 160,
+        "endChar": 49
+      },
+      "revId": "45dfb05dace5f292818757915cd04fcdb39f459a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a09fbe67_03731729",
+        "filename": "java/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-13T00:35:33Z",
+      "side": 1,
+      "message": "could we rename \"suffix\" to something like \"outputDirSuffix\"?",
+      "range": {
+        "startLine": 181,
+        "startChar": 60,
+        "endLine": 181,
+        "endChar": 66
+      },
+      "revId": "45dfb05dace5f292818757915cd04fcdb39f459a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
