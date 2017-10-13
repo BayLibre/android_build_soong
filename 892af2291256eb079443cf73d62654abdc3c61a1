@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "405986de_522730d5",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-13T04:30:05Z",
+      "side": 1,
+      "message": "proptools.StringPtr(\"current\")",
+      "range": {
+        "startLine": 39,
+        "startChar": 45,
+        "endLine": 39,
+        "endChar": 53
+      },
+      "revId": "892af2291256eb079443cf73d62654abdc3c61a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04ea08fc_18c9a172",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-13T04:30:05Z",
+      "side": 1,
+      "message": "just put nil here, nothing is going to read the file",
+      "range": {
+        "startLine": 54,
+        "startChar": 16,
+        "endLine": 54,
+        "endChar": 40
+      },
+      "revId": "892af2291256eb079443cf73d62654abdc3c61a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0293ee56_358ce841",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-13T04:30:05Z",
+      "side": 1,
+      "message": "Check for the files you expect and not just duplicates",
+      "revId": "892af2291256eb079443cf73d62654abdc3c61a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
