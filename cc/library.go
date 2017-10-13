@@ -64,6 +64,8 @@ type LibraryProperties struct {
 		// export headers generated from .proto sources
 		Export_proto_headers bool
 	}
+
+	Ship_static_lib_in_ndk bool
 }
 
 type LibraryMutatedProperties struct {
@@ -77,6 +79,9 @@ type LibraryMutatedProperties struct {
 	VariantIsShared bool `blueprint:"mutated"`
 	// This variant is static
 	VariantIsStatic bool `blueprint:"mutated"`
+	// Location of the static library in the sysroot. Empty if the library is
+	// not included in the NDK.
+	NdkSysrootPath string `blueprint:"mutated"`
 }
 
 type FlagExporterProperties struct {
@@ -706,6 +711,20 @@ func (library *libraryDecorator) install(ctx ModuleContext, file android.Path) {
 			}
 		}
 		library.baseInstaller.install(ctx, file)
+	}
+
+	if library.Properties.Ship_static_lib_in_ndk && library.static() {
+		installPath := getNdkSysrootBase(ctx).Join(
+			ctx, "usr/lib", ctx.toolchain().ClangTriple(), file.Base())
+
+		ctx.ModuleBuild(pctx, android.ModuleBuildParams{
+			Rule:        android.Cp,
+			Description: "install " + installPath.Base(),
+			Output:      installPath,
+			Input:       file,
+		})
+
+		library.MutatedProperties.NdkSysrootPath = installPath.String()
 	}
 }
 
