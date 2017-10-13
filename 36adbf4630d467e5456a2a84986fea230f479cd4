@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a568cefb_ebf8d768",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2017-10-13T18:14:22Z",
+      "side": 1,
+      "message": "include_static_lib_in_ndk? ship_in_ndk? include_in_ndk?",
+      "range": {
+        "startLine": 9,
+        "startChar": 8,
+        "endLine": 9,
+        "endChar": 30
+      },
+      "revId": "36adbf4630d467e5456a2a84986fea230f479cd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
