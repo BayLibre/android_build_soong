@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2a44efd_ae68ccb2",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-13T05:30:22Z",
+      "side": 1,
+      "message": "I think we want to make sure that the order doesn\u0027t change, so can you make this objs[0] \u003d\u003d \"foo.o\" and objs[1] \u003d\u003d \"bar.o\"?",
+      "revId": "e362e364172c3397382d47703450c132f2309622",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
