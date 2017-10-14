@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15b686b7_4b49fa65",
+        "filename": "java/java.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-14T01:31:40Z",
+      "side": 1,
+      "message": "This text (\"openjdk9\") would be written inside Android.bp files, right?\n\nDo you think it would make more sense to make the property name shorter and/or more generic by naming it \"Jdk9\" (and if we eventually support a different jdk 9 then we make more property names at that point)?",
+      "revId": "34a5b433df41da5175442422c7421c236f3b84a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62f8e5ee_d02e9442",
+        "filename": "java/system_modules.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-14T01:31:40Z",
+      "side": 1,
+      "message": "2017",
+      "revId": "34a5b433df41da5175442422c7421c236f3b84a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
