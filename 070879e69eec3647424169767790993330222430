@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5310a49c_dd589654",
+        "filename": "java/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-16T20:15:25Z",
+      "side": 1,
+      "message": "Hmm it seems shorter and clearer to me to:\n\n1. just rename the two variables whose meanings could be ambiguous (\"stem\" and \"suffix\"), and\n2. keep the mention that \"srcFileLists\" doesn\u0027t automatically add all the deps\n\nthan to document all of the variables.\n\nHowever, if we do want to document it anyway, then it seems to me that the documentation could be made faster to read via adding some newlines and replacing some instances of \"is a\" with \":\", to get something like this:\n\n\n// transformJavaToClasses takes source files and converts them to a jar containing .class files.\n// This method may be used for different compilers, including javac and Error Prone.\n//\n// srcFiles: list of source paths\n// srcFileLists: list of paths to files that contain paths to sources. No dependency is automatically\n//   added on the sources passed through srcFileLists, those must be added through the deps argument,\n//   which contains a list of paths that should be added as implicit dependencies.\n//\n// flags: command line flags to be passed to the compiler.\n//\n// desc: description of rule\n// stem: file name of the output jar\n// suffix: will be appended to various intermediate files and directories to avoid collisions in case\n//   this function is called twice in the same module directory\n// rule: which command line to use",
+      "revId": "070879e69eec3647424169767790993330222430",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
