@@ -1,0 +1,152 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f92dd2b_1a8ff338",
+        "filename": "android/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-16T20:28:09Z",
+      "side": 1,
+      "message": "unnecessary whitespace change",
+      "revId": "d7b5f43d29e4be6a44b30a7cad7a3f29ce09defd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6910002a_9effdd3d",
+        "filename": "android/testing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-16T20:28:09Z",
+      "side": 1,
+      "message": "Doesn\u0027t this print a huge list?  At least for java tests we have a bunch of implicit modules we create for dependencies added by the build system.",
+      "revId": "d7b5f43d29e4be6a44b30a7cad7a3f29ce09defd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d3bba75_6649e2ab",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-16T20:28:09Z",
+      "side": 1,
+      "message": "Use android.Paths, it is a convenience wrapper around []android.Path with some helper functions.",
+      "range": {
+        "startLine": 327,
+        "startChar": 23,
+        "endLine": 327,
+        "endChar": 37
+      },
+      "revId": "d7b5f43d29e4be6a44b30a7cad7a3f29ce09defd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c23add4_25db5c3b",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-16T20:28:09Z",
+      "side": 1,
+      "message": "This comment is a little confusing, the traversal seems to be left-to-right.  Are you saying that the traversal is effectively right-to-left because modules are added to the front of the list?",
+      "revId": "d7b5f43d29e4be6a44b30a7cad7a3f29ce09defd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "116a14d0_5f05d1c7",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-16T20:28:09Z",
+      "side": 1,
+      "message": "What is the point of the map?  You are going from an ordered list (deps), to an unordered map, then passing the ordered list in again to reorder the data from the map?  Why not:\n\n  for_, dep :\u003d range deps {\n      orderedDeps \u003d append(orderedDeps, dep.outputFile.Path())\n      orderedDeps \u003d append(orderedDeps, dep.staticDepsInLinkOrder...)\n  }",
+      "revId": "d7b5f43d29e4be6a44b30a7cad7a3f29ce09defd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a52d10b_a75e735a",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-16T20:28:09Z",
+      "side": 1,
+      "message": "Are you just trying to make a copy of the list?  If module.staticDepsInLinkOrder is already nil just append orderedDepFiles to it.  If you don\u0027t want to rely on it being nil, append orderedDepFiles to a nil list and assign that:\n\n   module.staticDepsInLinkOrder \u003d append(android.Paths(nil), orderedDepFiles...)",
+      "revId": "d7b5f43d29e4be6a44b30a7cad7a3f29ce09defd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53308796_392d32db",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-16T20:28:09Z",
+      "side": 1,
+      "message": "Would this work better if you munged the dependency list into cc_library definitions and then ran it through the normal parser instead of trying to recreate transitiveDeps map, especially since the transitiveDeps map isn\u0027t useful for the real algorithm?",
+      "revId": "d7b5f43d29e4be6a44b30a7cad7a3f29ce09defd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23bc9d74_fb17ecbd",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-16T20:28:09Z",
+      "side": 1,
+      "message": "Give this a better name, TestLibDeps?",
+      "range": {
+        "startLine": 476,
+        "startChar": 5,
+        "endLine": 476,
+        "endChar": 10
+      },
+      "revId": "d7b5f43d29e4be6a44b30a7cad7a3f29ce09defd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
