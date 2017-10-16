@@ -19,6 +19,40 @@
     },
     {
       "key": {
+        "uuid": "dda8b881_ff555c14",
+        "filename": "java/java.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-16T20:58:06Z",
+      "side": 1,
+      "message": "Also add the module name into the message?",
+      "revId": "34a5b433df41da5175442422c7421c236f3b84a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2d8c3a3_f5535563",
+        "filename": "java/java.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-16T20:58:06Z",
+      "side": 1,
+      "message": "Also add the module name into the message?",
+      "revId": "34a5b433df41da5175442422c7421c236f3b84a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "62f8e5ee_d02e9442",
         "filename": "java/system_modules.go",
         "patchSetId": 11
@@ -30,6 +64,29 @@
       "writtenOn": "2017-10-14T01:31:40Z",
       "side": 1,
       "message": "2017",
+      "revId": "34a5b433df41da5175442422c7421c236f3b84a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bd4df97_565f2f3a",
+        "filename": "scripts/jars-to-module-info-java.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-16T20:58:06Z",
+      "side": 1,
+      "message": "I think this is a duplicate of the part of line 3 that says \"all classes in the .jar files\"",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 38
+      },
       "revId": "34a5b433df41da5175442422c7421c236f3b84a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true

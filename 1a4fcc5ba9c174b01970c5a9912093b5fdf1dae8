@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "848570a9_f785e8b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-16T20:58:06Z",
+      "side": 1,
+      "message": "Hmm I didn\u0027t understand it either when I first saw it. Now that you mention it I wonder if it refers to https://android-review.googlesource.com/c/platform/build/soong/+/498323/12/java/java_test.go#300",
+      "parentUuid": "0be95ea7_f7394b50",
+      "range": {
+        "startLine": 18,
+        "startChar": 6,
+        "endLine": 18,
+        "endChar": 19
+      },
+      "revId": "1a4fcc5ba9c174b01970c5a9912093b5fdf1dae8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9d7cf1f_af381f43",
         "filename": "android/config.go",
         "patchSetId": 12
@@ -68,6 +92,40 @@
       "revId": "1a4fcc5ba9c174b01970c5a9912093b5fdf1dae8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b68bbda9_db2bd5ab",
+        "filename": "java/java.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-16T20:58:06Z",
+      "side": 1,
+      "message": "How about an \"else\" or a \"switch\" to clarify that sdkDep.useDefaultLibs and sdkDep.useModule can\u0027t both be true at the same time\n\n(if they were, then I think this could make two dependencies having tag \"systemModulesTag\")",
+      "revId": "1a4fcc5ba9c174b01970c5a9912093b5fdf1dae8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "412ddf09_34897bcf",
+        "filename": "java/java.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-16T20:58:06Z",
+      "side": 1,
+      "message": "If anyone has any good ideas about how to improve the clarity of the distinction between \"Java modules as supported by Java\" and \"the Module type within Soong\u0027s java.go\" (because they\u0027re both referred to as \"modules\"), that seems to me like it would be helpful.\n\nFor example if there existed \"type JavaModuleName string\" and \"type JavaModulePath android.Path\" or something like that, then their declarations could be commented and then this line would be more like \"systemModules JavaModulePath\"",
+      "revId": "1a4fcc5ba9c174b01970c5a9912093b5fdf1dae8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
