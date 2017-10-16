@@ -22,6 +22,30 @@
       "revId": "36adbf4630d467e5456a2a84986fea230f479cd4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00287490_d19baf20",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-16T21:26:53Z",
+      "side": 1,
+      "message": "Maybe just \"static_ndk_lib\"?  In general build properties should describe what it is, not what the build system should do with it.  That lets us change the semantics of what the build system should do with it over time.",
+      "parentUuid": "a568cefb_ebf8d768",
+      "range": {
+        "startLine": 9,
+        "startChar": 8,
+        "endLine": 9,
+        "endChar": 30
+      },
+      "revId": "36adbf4630d467e5456a2a84986fea230f479cd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
