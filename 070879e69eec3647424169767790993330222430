@@ -16,6 +16,24 @@
       "revId": "070879e69eec3647424169767790993330222430",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "125966fc_6378afb2",
+        "filename": "java/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-16T21:01:13Z",
+      "side": 1,
+      "message": "\"stem\" is a common term through the build system, meaning the name of the file in the intermediates directory.  outputFileStem is not a good name for it, because that name becomes visible to the callers (in godoc or sometimes IDE hover text), and for the callers this is likely not to be the \"output file\", this is an intermediate file and they will have their own concept of \"output file\".\n\noutputDirSuffix isn\u0027t correct either, it is the suffix for anything in the module directory that would conflict between multiple calls to transformJavaToClases.  It\u0027s used for \"outDir\" (which again is the output directory relative to the javac rule, and not to the caller), as well as the annoDir directory used for dumping annotation sources.\n\nI agree the wall of text is a little intimidating, but that\u0027s Go\u0027s documentation style.  The root cause of why this is hard to follow is that there are too many parameters.  If this function were more widely used it might be better to convert to a builder pattern (BuilderBuilder?), but I don\u0027t think it is worth it in this case.\n\nI\u0027ve never been very happy with these builders, they are basically mirroring the structure of the original Make code\u0027s split between java.mk and definitions.mk, which exists for very Make-like reasons.  Maybe it would be better to drop them completely and move to a single global builder pattern?\n\n  builder :\u003d android.NewBuilder()\n  builder.SetRule(javac)\n  builder.SetOutput(outputFile)\n  builder.SetArg(\"javacflags\", javacFlags)\n  builder.Build()\n\nThere\u0027s a bunch of flag munging that happens in builder.go right now, we\u0027d have to figure out where to put that too.  Maybe a JavaBuilder that wraps Builder and has helpers for classpath args, etc.?  Or just helper functions in java.go that are passed to SetArg?",
+      "parentUuid": "5310a49c_dd589654",
+      "revId": "070879e69eec3647424169767790993330222430",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
