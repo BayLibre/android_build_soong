@@ -16,6 +16,24 @@
       "revId": "6aeed8b4392eb75412f44f6b54d7504c8319e7d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e09f2b9_521b86ae",
+        "filename": "cc/pgo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2017-10-16T23:23:51Z",
+      "side": 1,
+      "message": "We may still want to do instrumentation and collect profiles without local changes to disable this flag.  So it only controls whether the profile gets used.",
+      "parentUuid": "3c39c7e5_2b0769aa",
+      "revId": "6aeed8b4392eb75412f44f6b54d7504c8319e7d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
