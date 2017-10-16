@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0be95ea7_f7394b50",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2017-10-16T20:16:54Z",
+      "side": 1,
+      "message": "excuse my ignorance, I have no idea what this means / how you can this test. Want to include a full command line?",
+      "range": {
+        "startLine": 18,
+        "startChar": 6,
+        "endLine": 18,
+        "endChar": 19
+      },
+      "revId": "1a4fcc5ba9c174b01970c5a9912093b5fdf1dae8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9d7cf1f_af381f43",
+        "filename": "android/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2017-10-16T20:16:54Z",
+      "side": 1,
+      "message": "\"Don\u0027t use OpenJDK9\" ?",
+      "range": {
+        "startLine": 293,
+        "startChar": 5,
+        "endLine": 293,
+        "endChar": 12
+      },
+      "revId": "1a4fcc5ba9c174b01970c5a9912093b5fdf1dae8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "92775728_1aaf814f",
+        "filename": "java/java.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2017-10-16T20:16:54Z",
+      "side": 1,
+      "message": "What happens here? (I don\u0027t understand the code).\n\nJust in case it\u0027s relevant: API version 0 *used to* be an alias for \"current\", but at least in the system server that should no longer be the case ( http://b/34072201 ) and we generally want to get rid of remaining usages of 0 (the smallest possible value) being used an alias for \"current\" (the largest possible value).",
+      "range": {
+        "startLine": 230,
+        "startChar": 2,
+        "endLine": 230,
+        "endChar": 17
+      },
+      "revId": "1a4fcc5ba9c174b01970c5a9912093b5fdf1dae8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91565a46_24a543db",
+        "filename": "java/system_modules.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2017-10-16T20:16:54Z",
+      "side": 1,
+      "message": "strictly speaking it\u0027s \"the system modules\", which are  contained within the runtime image; for our purposes, the runtime image basically *only* contains the system modules, and they are the only reason we construct the runtime image, hence the terms are used interchangeably (also, I\u0027ve stuck with \"system modules\" because the command line flag is --system).",
+      "range": {
+        "startLine": 26,
+        "startChar": 39,
+        "endLine": 26,
+        "endChar": 56
+      },
+      "revId": "1a4fcc5ba9c174b01970c5a9912093b5fdf1dae8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
