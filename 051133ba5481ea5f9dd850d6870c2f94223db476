@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f247b7f9_1c541caa",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-10-17T23:03:24Z",
+      "side": 1,
+      "message": "It\u0027s going to be far simpler for most users to use --dumpvar-mode, since it\u0027s nearly identical to get_build_var.",
+      "parentUuid": "21c21fac_af2ebec3",
+      "revId": "051133ba5481ea5f9dd850d6870c2f94223db476",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec81b6ad_7e9060be",
         "filename": "cmd/soong_ui/main.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2017-10-17T22:50:13Z",
       "side": 1,
       "message": "If we do need both, can\u0027t this check and munge args and then call dumpVars?  Or at least share most of the implementation?",
+      "revId": "051133ba5481ea5f9dd850d6870c2f94223db476",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d1c1c46_8321b0b2",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-10-17T23:03:24Z",
+      "side": 1,
+      "message": "I had them combined together initially, but it was significantly more confusing. As I\u0027ve fixed it up more, the piece that could be combined is the absolute path pieces, but that\u0027s not all that long either.",
+      "parentUuid": "ec81b6ad_7e9060be",
       "revId": "051133ba5481ea5f9dd850d6870c2f94223db476",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
