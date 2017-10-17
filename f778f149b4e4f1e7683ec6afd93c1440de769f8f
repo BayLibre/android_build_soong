@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "ebab0c39_d1d01ea4",
+        "filename": "java/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-17T22:03:39Z",
+      "side": 1,
+      "message": "I wonder if it\u0027s worth adding a comment into soong_wrapper.go specifying that because callers use SoongJavacWrapper as only an order-only dependency, that soong_wrapper.go must not produce different results than the underlying command that it\u0027s given (for example, it can\u0027t add extra arguments).",
+      "revId": "f778f149b4e4f1e7683ec6afd93c1440de769f8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b70660f_85e84c50",
+        "filename": "java/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-17T22:03:39Z",
+      "side": 1,
+      "message": "Does \"${config.SoongJavacWrapper}\" need to be a CommandOrderOnly dep here too?",
+      "revId": "f778f149b4e4f1e7683ec6afd93c1440de769f8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "029ad648_b7aa6cb9",
         "filename": "java/config/config.go",
         "patchSetId": 2
