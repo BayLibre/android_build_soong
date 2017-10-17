@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "029ad648_b7aa6cb9",
+        "filename": "java/config/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-10-17T22:01:51Z",
+      "side": 1,
+      "message": "We\u0027ve got HostBinTool, which is probably better than these.\n\nI\u0027ve been kinda wanting to hook these up as module dependencies rather than using the same path names, but that\u0027s a larger change.",
+      "range": {
+        "startLine": 85,
+        "startChar": 42,
+        "endLine": 85,
+        "endChar": 80
+      },
+      "revId": "f778f149b4e4f1e7683ec6afd93c1440de769f8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
