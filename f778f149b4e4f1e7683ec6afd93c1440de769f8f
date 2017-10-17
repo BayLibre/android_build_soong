@@ -54,6 +54,23 @@
     },
     {
       "key": {
+        "uuid": "654449ce_afef1bd8",
+        "filename": "java/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-10-17T22:38:22Z",
+      "side": 1,
+      "message": "config.javacmd is not used in this rule.",
+      "revId": "f778f149b4e4f1e7683ec6afd93c1440de769f8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "029ad648_b7aa6cb9",
         "filename": "java/config/config.go",
         "patchSetId": 2
