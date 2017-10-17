@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12d955a3_0cae3fda",
+        "filename": "android/paths.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-10-17T22:38:24Z",
+      "side": 1,
+      "message": "Maybe add Any in here? So that it doesn\u0027t imply that all paths have that extension?",
+      "range": {
+        "startLine": 307,
+        "startChar": 15,
+        "endLine": 307,
+        "endChar": 21
+      },
+      "revId": "ac055801cc127def795f8bd02156de89a61c9e42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27e4a26e_9d78a716",
+        "filename": "java/builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-10-17T22:38:24Z",
+      "side": 1,
+      "message": "Will we need soong_javac_wrapper (or similar), or is kotlinc better?",
+      "revId": "ac055801cc127def795f8bd02156de89a61c9e42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47b0a684_5ba7acd8",
+        "filename": "java/java.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-10-17T22:38:24Z",
+      "side": 1,
+      "message": "This isn\u0027t needed anymore, is it?",
+      "range": {
+        "startLine": 923,
+        "startChar": 0,
+        "endLine": 932,
+        "endChar": 1
+      },
+      "revId": "ac055801cc127def795f8bd02156de89a61c9e42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
