@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "522ed6b9_a198294a",
+        "filename": "java/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-17T22:39:14Z",
+      "side": 1,
+      "message": "I\u0027m responding to https://github.com/google/blueprint/pull/176#pullrequestreview-70041215 here since the usage of the dependencies seems to be what it\u0027s talking about.\n\nI was thinking that it would be nice if soong_javac_wrapper were to somehow directly declare the information about what callers will need to depend on in order for the outputs of soong_javac_wrapper to be correct (rather than for every caller to independently redeclare that it\u0027s the same as javac). Perhaps if soong_javac_wrapper ever produces different output than javac, then maybe we\u0027d have soong_javac_wrapper also provide a timestamp file that gets rebuilt whenever the behavior of soong_javac_wrapper changes in a way that we care about.\n\nI suppose that would make it easy to test a change to soong_javac_wrapper against all java files, because a developer could just delete the timestamp file.\n\nWe could for the moment expose a variable called perhaps \"${config.JavacWrapperCorrectnessDeps}\", set it equal to \"${config.JavacCmd}\" with a comment, and replace the existing dependencies from the latter to the former.\n\nThe part about saving stdout wouldn\u0027t be addressed by that though.",
+      "range": {
+        "startLine": 47,
+        "startChar": 30,
+        "endLine": 47,
+        "endChar": 50
+      },
+      "revId": "f778f149b4e4f1e7683ec6afd93c1440de769f8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ebab0c39_d1d01ea4",
         "filename": "java/builder.go",
         "patchSetId": 2
