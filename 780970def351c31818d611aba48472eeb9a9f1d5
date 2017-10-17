@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd894bb5_689b4196",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-17T01:32:40Z",
+      "side": 0,
+      "message": "Doesn\u0027t the removal of this line cause any files that used to be in this list to no longer be passed into dependent modules (and therefore a build failure)?",
+      "revId": "780970def351c31818d611aba48472eeb9a9f1d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
