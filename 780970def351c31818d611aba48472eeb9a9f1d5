@@ -16,6 +16,24 @@
       "revId": "780970def351c31818d611aba48472eeb9a9f1d5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08b056a1_7f3ce197",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-10-17T01:35:11Z",
+      "side": 0,
+      "message": "We don\u0027t currently use this code path (or the aapt path)",
+      "parentUuid": "dd894bb5_689b4196",
+      "revId": "780970def351c31818d611aba48472eeb9a9f1d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
