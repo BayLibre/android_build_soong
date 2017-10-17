@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "764ee424_891e3344",
+        "filename": "java/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-17T22:04:16Z",
+      "side": 1,
+      "message": "oops, javac_wrapper.go",
+      "parentUuid": "ebab0c39_d1d01ea4",
+      "revId": "f778f149b4e4f1e7683ec6afd93c1440de769f8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3b70660f_85e84c50",
         "filename": "java/builder.go",
         "patchSetId": 2
