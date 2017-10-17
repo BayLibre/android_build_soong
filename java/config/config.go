@@ -82,6 +82,8 @@ func init() {
 	pctx.HostJavaToolVariable("JarjarCmd", "jarjar.jar")
 	pctx.HostJavaToolVariable("DesugarJar", "desugar.jar")
 
+	pctx.StaticVariable("SoongJavacWrapper", filepath.Join("${bootstrap.ToolDir}", "soong_javac_wrapper"))
+
 	pctx.VariableFunc("JavacWrapper", func(config interface{}) (string, error) {
 		if override := config.(android.Config).Getenv("JAVAC_WRAPPER"); override != "" {
 			return override + " ", nil
