@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21c21fac_af2ebec3",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-17T22:50:13Z",
+      "side": 1,
+      "message": "Do we need both of these?  Could envsetup.sh always use --dumpvars-mode?",
+      "revId": "051133ba5481ea5f9dd850d6870c2f94223db476",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec81b6ad_7e9060be",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-17T22:50:13Z",
+      "side": 1,
+      "message": "If we do need both, can\u0027t this check and munge args and then call dumpVars?  Or at least share most of the implementation?",
+      "revId": "051133ba5481ea5f9dd850d6870c2f94223db476",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
