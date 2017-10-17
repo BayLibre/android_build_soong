@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "35e3e861_4db41999",
+        "filename": "android/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-17T21:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f92dd2b_1a8ff338",
+      "revId": "d7b5f43d29e4be6a44b30a7cad7a3f29ce09defd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6910002a_9effdd3d",
         "filename": "android/testing.go",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2017-10-16T20:28:09Z",
       "side": 1,
       "message": "Doesn\u0027t this print a huge list?  At least for java tests we have a bunch of implicit modules we create for dependencies added by the build system.",
+      "revId": "d7b5f43d29e4be6a44b30a7cad7a3f29ce09defd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "682a1edd_a02749dc",
+        "filename": "android/testing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-17T21:19:42Z",
+      "side": 1,
+      "message": "When I was using it, the list was about 8 lines long in my half-screen-width terminal. When I intentionally add an error (looking for variant \"android_commons\" instead of \"android_common\") in java_test.go, I shows 10 modules:\n\n\tpanic: failed to find module \"bar\" variant \"android_commons\".\nall modules: [android_stubs_current(android_common) android_system_stubs_current(android_common) android_test_stubs_current(android_common) bar(android_common) core-libart(android_common) core-oj(android_common) ext(android_common) foo(android_common) framework(android_common) okhttp(android_common)]\n\nAre those the extra modules that you had in mind?\n\nI think that once the number of modules reaches about 100 is when I would start wanting a different format of output. Perhaps if no module with the given name is found, then I\u0027d want it to print the names of each module, and if a module with the given name is found, then print the variant of each module with that name\n\nWhat do you recommend?",
+      "parentUuid": "6910002a_9effdd3d",
       "revId": "d7b5f43d29e4be6a44b30a7cad7a3f29ce09defd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "923b932c_3798492f",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-17T21:19:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d3bba75_6649e2ab",
+      "range": {
+        "startLine": 327,
+        "startChar": 23,
+        "endLine": 327,
+        "endChar": 37
+      },
+      "revId": "d7b5f43d29e4be6a44b30a7cad7a3f29ce09defd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6c23add4_25db5c3b",
         "filename": "cc/cc.go",
         "patchSetId": 2
@@ -70,6 +130,24 @@
       "writtenOn": "2017-10-16T20:28:09Z",
       "side": 1,
       "message": "This comment is a little confusing, the traversal seems to be left-to-right.  Are you saying that the traversal is effectively right-to-left because modules are added to the front of the list?",
+      "revId": "d7b5f43d29e4be6a44b30a7cad7a3f29ce09defd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1bf43d1_8c1a9e32",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-17T21:19:42Z",
+      "side": 1,
+      "message": "Now that you\u0027ve had me shorten the code, I\u0027ll update the comment to match. Something more like:\n\n// If the existence of B in any input list implies the existence of C later in that input list,\n// Then\n//   After concatenating all lists, the final instance of C will have come from the same\n//     original list as the final instance of B\n//   So the final instance of C will be later in the concatenation than the final instance of B\n//   So, keeping only the final instance of B and of C ensures that B is earlier in the output\n//     list than C\n// Else\n//   # B is not always followed by C\n//   This either means that B does not depend on C, or that there exists an A that depends on\n//     B but that does not declare a transitive dependency on C\n//   If B does not depend on C, then B need not precede C in the output list\n//   If A depends on B but does not declare a transitive dependency on C\n//   Then\n//     This case isn\u0027t expected to happen often, if at all.\n//     It\u0027s not clear what the desired behavior is in this case.\n//     For now we have a unit test confirming that changes in the behavior of this case are intentional\n//   Endif\n// Endif",
+      "parentUuid": "6c23add4_25db5c3b",
       "revId": "d7b5f43d29e4be6a44b30a7cad7a3f29ce09defd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "61ccd29f_df34f358",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-17T21:19:42Z",
+      "side": 1,
+      "message": "Dan told me that he wanted it to be possible to test the reordering algorithm without having to instantiate a Module struct to make it easy to separately confirm whether the ordering algorithm works as opposed to whether the propagating of the results between modules works.",
+      "parentUuid": "116a14d0_5f05d1c7",
+      "revId": "d7b5f43d29e4be6a44b30a7cad7a3f29ce09defd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0a52d10b_a75e735a",
         "filename": "cc/cc.go",
         "patchSetId": 2
@@ -104,6 +200,24 @@
       "writtenOn": "2017-10-16T20:28:09Z",
       "side": 1,
       "message": "Are you just trying to make a copy of the list?  If module.staticDepsInLinkOrder is already nil just append orderedDepFiles to it.  If you don\u0027t want to rely on it being nil, append orderedDepFiles to a nil list and assign that:\n\n   module.staticDepsInLinkOrder \u003d append(android.Paths(nil), orderedDepFiles...)",
+      "revId": "d7b5f43d29e4be6a44b30a7cad7a3f29ce09defd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da45de8a_8174b3ec",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-17T21:19:42Z",
+      "side": 1,
+      "message": "oops - I forgot to clean this up. Thanks",
+      "parentUuid": "0a52d10b_a75e735a",
       "revId": "d7b5f43d29e4be6a44b30a7cad7a3f29ce09defd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -127,6 +241,24 @@
     },
     {
       "key": {
+        "uuid": "d6368627_31981ca2",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-17T21:19:42Z",
+      "side": 1,
+      "message": "Let me know if this comment still applies after the discussion on https://android-review.googlesource.com/c/platform/build/soong/+/496454/2/cc/cc.go#561 completes",
+      "parentUuid": "53308796_392d32db",
+      "revId": "d7b5f43d29e4be6a44b30a7cad7a3f29ce09defd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "23bc9d74_fb17ecbd",
         "filename": "cc/cc_test.go",
         "patchSetId": 2
@@ -138,6 +270,30 @@
       "writtenOn": "2017-10-16T20:28:09Z",
       "side": 1,
       "message": "Give this a better name, TestLibDeps?",
+      "range": {
+        "startLine": 476,
+        "startChar": 5,
+        "endLine": 476,
+        "endChar": 10
+      },
+      "revId": "d7b5f43d29e4be6a44b30a7cad7a3f29ce09defd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "967d7d0b_d441cd60",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-17T21:19:42Z",
+      "side": 1,
+      "message": "thanks",
+      "parentUuid": "23bc9d74_fb17ecbd",
       "range": {
         "startLine": 476,
         "startChar": 5,
