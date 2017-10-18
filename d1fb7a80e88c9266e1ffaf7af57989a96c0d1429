@@ -16,6 +16,24 @@
       "revId": "d1fb7a80e88c9266e1ffaf7af57989a96c0d1429",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00037786_584947ae",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1068404
+      },
+      "writtenOn": "2017-10-18T23:46:14Z",
+      "side": 1,
+      "message": "Done. \n\nThe conditional on 495 should gate this to only cases where there is another version-script right?",
+      "parentUuid": "03822dce_07d05d04",
+      "revId": "d1fb7a80e88c9266e1ffaf7af57989a96c0d1429",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
