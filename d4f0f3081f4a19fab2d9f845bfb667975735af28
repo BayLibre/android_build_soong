@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "683968bb_288e3d4e",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-18T19:45:41Z",
+      "side": 1,
+      "message": "I think the problem here is that you are filtering the transitive dependencies by the declared dependencies too early.  The filtering should only happen for the linking, not for propagating the dependency order:\n\nFor the dependency graph A-\u003e[B,C,D], B-\u003e[C]; C-\u003e[D]:\nC.orderedTransitiveDeps \u003d [D]\nB.orderedTransitiveDeps \u003d [C, D] // even though B doesn\u0027t declare a dependency on D\nA.orderedTranstiiveDeps \u003d [B, C, D]",
+      "parentUuid": "fb7bb7a0_f4ff313f",
+      "revId": "d4f0f3081f4a19fab2d9f845bfb667975735af28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f32b1936_310ab069",
         "filename": "cc/cc_test.go",
         "patchSetId": 4
@@ -72,6 +90,30 @@
       "side": 1,
       "message": "It seemed more convenient to me than declaring some modules to satisfy some dependencies that had been automatically added:\n\nlibcompiler_rt-extras, libatomic, libgcc\n\nDo you think it makes more sense to create those modules anyway?",
       "parentUuid": "f32b1936_310ab069",
+      "range": {
+        "startLine": 556,
+        "startChar": 4,
+        "endLine": 556,
+        "endChar": 8
+      },
+      "revId": "d4f0f3081f4a19fab2d9f845bfb667975735af28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b88ef34f_e156f18b",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-18T19:45:41Z",
+      "side": 1,
+      "message": "TestVendorSrc is defining them, move them to testCc so all the tests get them.",
+      "parentUuid": "cdfa8167_2e620956",
       "range": {
         "startLine": 556,
         "startChar": 4,
