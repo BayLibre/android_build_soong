@@ -77,7 +77,19 @@ func init() {
 	pctx.SourcePathVariable("JarArgsCmd", "build/soong/scripts/jar-args.sh")
 	pctx.HostBinToolVariable("SoongZipCmd", "soong_zip")
 	pctx.HostBinToolVariable("MergeZipsCmd", "merge_zips")
-	pctx.HostBinToolVariable("DxCmd", "dx")
+	pctx.VariableFunc("DxCmd", func(config interface{}) (string, error) {
+		dexer := "dx"
+		if config.(android.Config).Getenv("USE_D8") == "true" {
+			dexer = "d8"
+		}
+		path, e := pctx.HostBinToolPath(config, dexer)
+		p := ""
+		if e == nil {
+			p = path.String()
+		}
+		return p, e
+	})
+
 	pctx.HostJavaToolVariable("JarjarCmd", "jarjar.jar")
 	pctx.HostJavaToolVariable("DesugarJar", "desugar.jar")
 
