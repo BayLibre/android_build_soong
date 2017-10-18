@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d05a5d6f_790e4d83",
+        "filename": "android/package_ctx.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-18T05:49:55Z",
+      "side": 1,
+      "message": "Return the Path object and convert it to a string in the caller",
+      "range": {
+        "startLine": 124,
+        "startChar": 85,
+        "endLine": 124,
+        "endChar": 91
+      },
+      "revId": "0e89221c49f4a704687265e4564b7f60d0ff81d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5468b2e_e4225e79",
+        "filename": "android/package_ctx.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-18T05:49:55Z",
+      "side": 1,
+      "message": "Drop the \"Func\", we use that for methods that return a function",
+      "range": {
+        "startLine": 124,
+        "startChar": 46,
+        "endLine": 124,
+        "endChar": 50
+      },
+      "revId": "0e89221c49f4a704687265e4564b7f60d0ff81d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
