@@ -46,6 +46,30 @@
       "revId": "6eec724d7ff202841898c69b98ba99c6db5ef973",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fa9a687_099fcc49",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-18T17:56:54Z",
+      "side": 1,
+      "message": "I\u0027d just use tests on Modules, but either way is fine.  Using Modules is less unit-testy, the test will break if generic stuff in Modules breaks, but if that generic stuff breaks then pretty much all of the tests are going to fail.",
+      "parentUuid": "112c086d_00757e9f",
+      "range": {
+        "startLine": 559,
+        "startChar": 37,
+        "endLine": 559,
+        "endChar": 73
+      },
+      "revId": "6eec724d7ff202841898c69b98ba99c6db5ef973",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }

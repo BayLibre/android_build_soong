@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf12c1e7_43945682",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-18T17:56:54Z",
+      "side": 1,
+      "message": "If A depends on B, won\u0027t B and B\u0027s dependencies (C) be after A in the list, so taking the last B and C still maintains the correct ordering?",
+      "revId": "d4f0f3081f4a19fab2d9f845bfb667975735af28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f32b1936_310ab069",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-18T17:56:54Z",
+      "side": 1,
+      "message": "Why do you need to allow missing dependencies?",
+      "range": {
+        "startLine": 556,
+        "startChar": 4,
+        "endLine": 556,
+        "endChar": 8
+      },
+      "revId": "d4f0f3081f4a19fab2d9f845bfb667975735af28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78b00955_d6a20962",
+        "filename": "cc/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-18T17:56:54Z",
+      "side": 1,
+      "message": "android.Paths\n\nThese should go in android/paths.go",
+      "range": {
+        "startLine": 88,
+        "startChar": 40,
+        "endLine": 88,
+        "endChar": 54
+      },
+      "revId": "d4f0f3081f4a19fab2d9f845bfb667975735af28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
