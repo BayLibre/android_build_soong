@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fb7bb7a0_f4ff313f",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-18T19:29:12Z",
+      "side": 1,
+      "message": "suppose that the input lists are:\n\n[\"B\",\"C\"], [\"A\",\"B\"]\n\nwhere A has surprisingly not declared a transitive dependency on C.\n\nThen the concatenation is [\"B\",\"C\",\"A\",\"B\"]\nand the last unique elements is [\"C\", \"A\", \"B\"]\n\n\nDo you think I should rename the variables from [\"A\", \"B\", \"C\"] to [\"B\", \"C\", \"D\"] to clarify that triggering this case requires four modules in total?\n\nSee also https://android-review.googlesource.com/c/platform/build/soong/+/496454/4/cc/cc_test.go#398\n\nAlso, do you think that this behavior in this case is correct?",
+      "parentUuid": "bf12c1e7_43945682",
+      "revId": "d4f0f3081f4a19fab2d9f845bfb667975735af28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f32b1936_310ab069",
         "filename": "cc/cc_test.go",
         "patchSetId": 4
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "cdfa8167_2e620956",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-18T19:29:12Z",
+      "side": 1,
+      "message": "It seemed more convenient to me than declaring some modules to satisfy some dependencies that had been automatically added:\n\nlibcompiler_rt-extras, libatomic, libgcc\n\nDo you think it makes more sense to create those modules anyway?",
+      "parentUuid": "f32b1936_310ab069",
+      "range": {
+        "startLine": 556,
+        "startChar": 4,
+        "endLine": 556,
+        "endChar": 8
+      },
+      "revId": "d4f0f3081f4a19fab2d9f845bfb667975735af28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "78b00955_d6a20962",
         "filename": "cc/util.go",
         "patchSetId": 4
@@ -53,6 +95,30 @@
       "writtenOn": "2017-10-18T17:56:54Z",
       "side": 1,
       "message": "android.Paths\n\nThese should go in android/paths.go",
+      "range": {
+        "startLine": 88,
+        "startChar": 40,
+        "endLine": 88,
+        "endChar": 54
+      },
+      "revId": "d4f0f3081f4a19fab2d9f845bfb667975735af28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02cb6f9d_2f7675ab",
+        "filename": "cc/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-18T19:29:12Z",
+      "side": 1,
+      "message": "thanks",
+      "parentUuid": "78b00955_d6a20962",
       "range": {
         "startLine": 88,
         "startChar": 40,
