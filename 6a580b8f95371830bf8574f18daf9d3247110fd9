@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90253609_e9c823fa",
+        "filename": "scripts/ninja_diff.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-19T04:24:06Z",
+      "side": 1,
+      "message": "Nit: the error usually goes first",
+      "revId": "6a580b8f95371830bf8574f18daf9d3247110fd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "841ee3a6_76bf44ae",
+        "filename": "scripts/ninja_diff.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-19T04:24:06Z",
+      "side": 1,
+      "message": "I would make the script move itself to $ANDROID_BUILD_TOP (which the cd ../../.. above does), and then run all the other commands from there.",
+      "revId": "6a580b8f95371830bf8574f18daf9d3247110fd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f231b307_717d192c",
+        "filename": "scripts/ninja_diff.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-19T04:24:06Z",
+      "side": 1,
+      "message": "git -C \"$project\" checkout \"$ref\"",
+      "revId": "6a580b8f95371830bf8574f18daf9d3247110fd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecd79d33_a500bb86",
+        "filename": "scripts/ninja_diff.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-19T04:24:06Z",
+      "side": 1,
+      "message": "This will be wrong if the user has set $OUT_DIR",
+      "range": {
+        "startLine": 78,
+        "startChar": 20,
+        "endLine": 78,
+        "endChar": 23
+      },
+      "revId": "6a580b8f95371830bf8574f18daf9d3247110fd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d1958d3_8ef4d8a5",
+        "filename": "scripts/ninja_diff.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-19T04:24:06Z",
+      "side": 1,
+      "message": "multiproduct_kati takes a pretty long time, and many changes don\u0027t need to verify on every product, would it be possible to have an option to just use the currently selected product?",
+      "revId": "6a580b8f95371830bf8574f18daf9d3247110fd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f17e43af_de694d6a",
+        "filename": "scripts/ninja_diff.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-19T04:24:06Z",
+      "side": 1,
+      "message": "Wrap long line",
+      "revId": "6a580b8f95371830bf8574f18daf9d3247110fd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dbc7b5e_96159bbc",
+        "filename": "scripts/ninja_diff.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-19T04:24:06Z",
+      "side": 1,
+      "message": "Probably not for this CL, but I wonder if it would be possible to do these builds without affecting the local tree at all?  Maybe bindfs mount the source tree to somewhere, then bindfs mount a temporary directory over each project with changes, symlink parts of the .git tree, and do the checkouts there.",
+      "revId": "6a580b8f95371830bf8574f18daf9d3247110fd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
