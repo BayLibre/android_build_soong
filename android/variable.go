@@ -74,6 +74,15 @@ type variableProperties struct {
 			Cflags []string
 		}
 
+		// my_build_is_broken_outdated_prebuilts_hidl_to_string_and_equality is true when a build
+		// has outdated HIDL prebuilts. A target should remove this flag and rebuild prebuilts
+		// whenever they have the sources available in a tree. This particular flag is related
+		// to the generation of unnecessary functions, and removing it from a target will reduce
+		// the size of HIDL libs.
+		My_build_is_broken_outdated_prebuilts_hidl_to_string_and_equality struct {
+			Cflags []string
+		}
+
 		// debuggable is true for eng and userdebug builds, and can be used to turn on additional
 		// debugging features that don't significantly impact runtime behavior.  userdebug builds
 		// are used for dogfooding and performance testing, and should be as similar to user builds
@@ -147,6 +156,8 @@ type productVariables struct {
 	Treble                     *bool `json:",omitempty"`
 	Pdk                        *bool `json:",omitempty"`
 	Uml                        *bool `json:",omitempty"`
+
+	My_build_is_broken_outdated_prebuilts_hidl_to_string_and_equality *bool `json:",omitempty"`
 
 	IntegerOverflowExcludePaths *[]string `json:",omitempty"`
 
