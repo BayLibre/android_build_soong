@@ -141,8 +141,11 @@ func moduleToPath(name string) string {
 		return name
 	case strings.HasSuffix(name, ".jar"):
 		return name
-	default:
+	case name == "android_stubs_current" || name == "android_system_stubs_current" ||
+		name == "android_test_stubs_current":
 		return filepath.Join(buildDir, ".intermediates", name, "android_common", "javac", name+".jar")
+	default:
+		return filepath.Join(buildDir, ".intermediates", name, "android_common", "turbine-combined", name+".jar")
 	}
 }
 
@@ -173,15 +176,16 @@ func TestSimple(t *testing.T) {
 		t.Errorf(`foo inputs %v != ["a.java"]`, javac.Inputs)
 	}
 
-	bar := ctx.ModuleForTests("bar", "android_common").Rule("javac").Output.String()
 	baz := ctx.ModuleForTests("baz", "android_common").Rule("javac").Output.String()
+	barTurbine := filepath.Join(buildDir, ".intermediates", "bar", "android_common", "turbine-combined", "bar.jar")
+	bazTurbine := filepath.Join(buildDir, ".intermediates", "baz", "android_common", "turbine-combined", "baz.jar")
 
-	if !strings.Contains(javac.Args["classpath"], bar) {
-		t.Errorf("foo classpath %v does not contain %q", javac.Args["classpath"], bar)
+	if !strings.Contains(javac.Args["classpath"], barTurbine) {
+		t.Errorf("foo classpath %v does not contain %q", javac.Args["classpath"], barTurbine)
 	}
 
-	if !strings.Contains(javac.Args["classpath"], baz) {
-		t.Errorf("foo classpath %v does not contain %q", javac.Args["classpath"], baz)
+	if !strings.Contains(javac.Args["classpath"], bazTurbine) {
+		t.Errorf("foo classpath %v does not contain %q", javac.Args["classpath"], bazTurbine)
 	}
 
 	if len(combineJar.Inputs) != 2 || combineJar.Inputs[1].String() != baz {
@@ -465,9 +469,9 @@ func TestDefaults(t *testing.T) {
 		t.Errorf(`foo inputs %v != ["a.java"]`, javac.Inputs)
 	}
 
-	bar := ctx.ModuleForTests("bar", "android_common").Rule("javac").Output.String()
-	if !strings.Contains(javac.Args["classpath"], bar) {
-		t.Errorf("foo classpath %v does not contain %q", javac.Args["classpath"], bar)
+	barTurbine := filepath.Join(buildDir, ".intermediates", "bar", "android_common", "turbine-combined", "bar.jar")
+	if !strings.Contains(javac.Args["classpath"], barTurbine) {
+		t.Errorf("foo classpath %v does not contain %q", javac.Args["classpath"], barTurbine)
 	}
 
 	baz := ctx.ModuleForTests("baz", "android_common").Rule("javac").Output.String()
