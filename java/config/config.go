@@ -80,6 +80,7 @@ func init() {
 	pctx.HostBinToolVariable("DxCmd", "dx")
 	pctx.HostJavaToolVariable("JarjarCmd", "jarjar.jar")
 	pctx.HostJavaToolVariable("DesugarJar", "desugar.jar")
+	pctx.HostJavaToolVariable("TurbineJar", "turbine.jar")
 
 	pctx.HostBinToolVariable("SoongJavacWrapper", "soong_javac_wrapper")
 
