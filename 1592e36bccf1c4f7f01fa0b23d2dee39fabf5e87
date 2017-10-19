@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6607052c_8b26c6e8",
+        "filename": "java/config/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-19T17:55:19Z",
+      "side": 1,
+      "message": "This is idiomatically called err",
+      "range": {
+        "startLine": 88,
+        "startChar": 9,
+        "endLine": 88,
+        "endChar": 10
+      },
+      "revId": "1592e36bccf1c4f7f01fa0b23d2dee39fabf5e87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4007d9f4_42002ccf",
+        "filename": "java/config/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-19T17:55:19Z",
+      "side": 1,
+      "message": "if err !\u003d nil {\n    return \"\", err\n}\nreturn path.String(), nil",
+      "revId": "1592e36bccf1c4f7f01fa0b23d2dee39fabf5e87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
