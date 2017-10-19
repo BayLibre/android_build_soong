@@ -16,6 +16,24 @@
       "revId": "e6b72a5df528d67fe25010c1cfe08fb12e1639a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd953b2f_23a646c8",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-19T21:25:31Z",
+      "side": 1,
+      "message": "Thanks.\n\nFor the moment that gets used in bootstrap.go by GenerateBuildActions, which passes it to minibp.\n\nDo you think it would be better as a string property on blueprint.Context?",
+      "parentUuid": "b9309c58_73622f26",
+      "revId": "e6b72a5df528d67fe25010c1cfe08fb12e1639a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
