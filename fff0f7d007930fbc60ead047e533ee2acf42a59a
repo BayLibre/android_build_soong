@@ -1,0 +1,296 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61e30fb1_090a582b",
+        "filename": "java/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-19T22:50:52Z",
+      "side": 1,
+      "message": "Let\u0027s do this in java.go so it affects turbine, java, and errorprone",
+      "revId": "fff0f7d007930fbc60ead047e533ee2acf42a59a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc490c56_14cbaf33",
+        "filename": "java/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-19T22:50:52Z",
+      "side": 1,
+      "message": "Why so many /",
+      "range": {
+        "startLine": 270,
+        "startChar": 2,
+        "endLine": 270,
+        "endChar": 6
+      },
+      "revId": "fff0f7d007930fbc60ead047e533ee2acf42a59a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d145745f_ca33a791",
+        "filename": "java/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-19T22:50:52Z",
+      "side": 1,
+      "message": "Isn\u0027t this implied by \"JavaClassPath\"?",
+      "range": {
+        "startLine": 289,
+        "startChar": 59,
+        "endLine": 289,
+        "endChar": 62
+      },
+      "revId": "fff0f7d007930fbc60ead047e533ee2acf42a59a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d495b444_99a9cb36",
+        "filename": "java/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-19T22:50:52Z",
+      "side": 1,
+      "message": "Why is this necessary?  Won\u0027t the spaces be inserted on line 340?",
+      "range": {
+        "startLine": 319,
+        "startChar": 52,
+        "endLine": 319,
+        "endChar": 55
+      },
+      "revId": "fff0f7d007930fbc60ead047e533ee2acf42a59a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24cd6371_7bcc3ad0",
+        "filename": "java/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-19T22:50:52Z",
+      "side": 1,
+      "message": "Maybe we should move this out to the two callers that care",
+      "range": {
+        "startLine": 413,
+        "startChar": 64,
+        "endLine": 413,
+        "endChar": 79
+      },
+      "revId": "fff0f7d007930fbc60ead047e533ee2acf42a59a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb0d32a1_bfe5f8e8",
+        "filename": "java/config/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-19T22:50:52Z",
+      "side": 1,
+      "message": "Can you export this to make in makevars.go, and remove the definition in config.mk?",
+      "revId": "fff0f7d007930fbc60ead047e533ee2acf42a59a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44f7ab1d_78c90a95",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-19T22:50:52Z",
+      "side": 1,
+      "message": "This name isn\u0027t very accurate any more, it is suitable for the classpath at compile time, but not at runtime.  Can you rename it to headerJarFile?",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 14
+      },
+      "revId": "fff0f7d007930fbc60ead047e533ee2acf42a59a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc4cc990_e6ee644d",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-19T22:50:52Z",
+      "side": 1,
+      "message": "implementationJarFile?",
+      "range": {
+        "startLine": 163,
+        "startChar": 1,
+        "endLine": 163,
+        "endChar": 11
+      },
+      "revId": "fff0f7d007930fbc60ead047e533ee2acf42a59a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4c35a84_8e1bfe84",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-19T22:50:52Z",
+      "side": 1,
+      "message": "HeaderJars",
+      "range": {
+        "startLine": 184,
+        "startChar": 1,
+        "endLine": 184,
+        "endChar": 15
+      },
+      "revId": "fff0f7d007930fbc60ead047e533ee2acf42a59a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "168e37d6_c261f067",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-19T22:50:52Z",
+      "side": 1,
+      "message": "ImplementationJars",
+      "range": {
+        "startLine": 185,
+        "startChar": 1,
+        "endLine": 185,
+        "endChar": 12
+      },
+      "revId": "fff0f7d007930fbc60ead047e533ee2acf42a59a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d4b7c2e_cd4b81d0",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-19T22:50:52Z",
+      "side": 1,
+      "message": "Can you put a blank line above each of these sections?",
+      "revId": "fff0f7d007930fbc60ead047e533ee2acf42a59a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cca0a026_8f1af794",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-19T22:50:52Z",
+      "side": 1,
+      "message": "Put this at the caller",
+      "revId": "fff0f7d007930fbc60ead047e533ee2acf42a59a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bb3c9de_73e61b5d",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-19T22:50:52Z",
+      "side": 1,
+      "message": "I\u0027d leave this check at the caller, it\u0027s confusing to call compileDex for a host module",
+      "revId": "fff0f7d007930fbc60ead047e533ee2acf42a59a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1afde7fd_943c7524",
+        "filename": "java/java_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-19T22:50:52Z",
+      "side": 1,
+      "message": "barTurbine",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 12
+      },
+      "revId": "fff0f7d007930fbc60ead047e533ee2acf42a59a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
