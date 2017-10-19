@@ -86,9 +86,9 @@ func (m TestingModule) Module() Module {
 	return m.module
 }
 
-func (m TestingModule) Rule(rule string) ModuleBuildParams {
+func (m TestingModule) Rule(rule, desc string) ModuleBuildParams {
 	for _, p := range m.module.BuildParamsForTests() {
-		if strings.Contains(p.Rule.String(), rule) {
+		if strings.Contains(p.Rule.String(), rule) && p.Description == desc {
 			return p
 		}
 	}

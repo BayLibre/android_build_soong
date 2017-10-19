@@ -141,8 +141,11 @@ func moduleToPath(name string) string {
 		return name
 	case strings.HasSuffix(name, ".jar"):
 		return name
-	default:
+	case name == "android_stubs_current" || name == "android_system_stubs_current" ||
+		name == "android_test_stubs_current":
 		return filepath.Join(buildDir, ".intermediates", name, "android_common", "javac", name+".jar")
+	default:
+		return filepath.Join(buildDir, ".intermediates", name, "android_common", "turbine-combined", name+".jar")
 	}
 }
 
@@ -166,22 +169,23 @@ func TestSimple(t *testing.T) {
 		}
 	`)
 
-	javac := ctx.ModuleForTests("foo", "android_common").Rule("javac")
-	combineJar := ctx.ModuleForTests("foo", "android_common").Rule("combineJar")
+	javac := ctx.ModuleForTests("foo", "android_common").Rule("javac", "javac")
+	combineJar := ctx.ModuleForTests("foo", "android_common").Rule("combineJar", "for javac")
 
 	if len(javac.Inputs) != 1 || javac.Inputs[0].String() != "a.java" {
 		t.Errorf(`foo inputs %v != ["a.java"]`, javac.Inputs)
 	}
 
-	bar := ctx.ModuleForTests("bar", "android_common").Rule("javac").Output.String()
-	baz := ctx.ModuleForTests("baz", "android_common").Rule("javac").Output.String()
+	baz := ctx.ModuleForTests("baz", "android_common").Rule("javac", "javac").Output.String()
+	barTurbine := filepath.Join(buildDir, ".intermediates", "bar", "android_common", "turbine-combined", "bar.jar")
+	bazTurbine := filepath.Join(buildDir, ".intermediates", "baz", "android_common", "turbine-combined", "baz.jar")
 
-	if !strings.Contains(javac.Args["classpath"], bar) {
-		t.Errorf("foo classpath %v does not contain %q", javac.Args["classpath"], bar)
+	if !strings.Contains(javac.Args["classpath"], barTurbine) {
+		t.Errorf("foo classpath %v does not contain %q", javac.Args["classpath"], barTurbine)
 	}
 
-	if !strings.Contains(javac.Args["classpath"], baz) {
-		t.Errorf("foo classpath %v does not contain %q", javac.Args["classpath"], baz)
+	if !strings.Contains(javac.Args["classpath"], bazTurbine) {
+		t.Errorf("foo classpath %v does not contain %q", javac.Args["classpath"], bazTurbine)
 	}
 
 	if len(combineJar.Inputs) != 2 || combineJar.Inputs[1].String() != baz {
@@ -202,7 +206,7 @@ func TestArchSpecific(t *testing.T) {
 		}
 	`)
 
-	javac := ctx.ModuleForTests("foo", "android_common").Rule("javac")
+	javac := ctx.ModuleForTests("foo", "android_common").Rule("javac", "javac")
 	if len(javac.Inputs) != 2 || javac.Inputs[0].String() != "a.java" || javac.Inputs[1].String() != "b.java" {
 		t.Errorf(`foo inputs %v != ["a.java", "b.java"]`, javac.Inputs)
 	}
@@ -358,7 +362,7 @@ func TestClasspath(t *testing.T) {
 				// Test default javac 1.8
 				ctx := testJava(t, bp)
 
-				javac := ctx.ModuleForTests("foo", variant).Rule("javac")
+				javac := ctx.ModuleForTests("foo", variant).Rule("javac", "javac")
 
 				got := javac.Args["bootClasspath"]
 				if got != bc {
@@ -385,7 +389,7 @@ func TestClasspath(t *testing.T) {
 			t.Run("1.9", func(t *testing.T) {
 				ctx := testJavaWithEnv(t, bp, map[string]string{"EXPERIMENTAL_USE_OPENJDK9": "true"})
 
-				javac := ctx.ModuleForTests("foo", variant).Rule("javac")
+				javac := ctx.ModuleForTests("foo", variant).Rule("javac", "javac")
 				got := javac.Args["bootClasspath"]
 				expected := system
 				if testcase.system == "bootclasspath" {
@@ -420,8 +424,8 @@ func TestPrebuilts(t *testing.T) {
 		}
 		`)
 
-	javac := ctx.ModuleForTests("foo", "android_common").Rule("javac")
-	combineJar := ctx.ModuleForTests("foo", "android_common").Rule("combineJar")
+	javac := ctx.ModuleForTests("foo", "android_common").Rule("javac", "javac")
+	combineJar := ctx.ModuleForTests("foo", "android_common").Rule("combineJar", "for javac")
 
 	bar := "a.jar"
 	if !strings.Contains(javac.Args["classpath"], bar) {
@@ -458,19 +462,19 @@ func TestDefaults(t *testing.T) {
 		}
 		`)
 
-	javac := ctx.ModuleForTests("foo", "android_common").Rule("javac")
-	combineJar := ctx.ModuleForTests("foo", "android_common").Rule("combineJar")
+	javac := ctx.ModuleForTests("foo", "android_common").Rule("javac", "javac")
+	combineJar := ctx.ModuleForTests("foo", "android_common").Rule("combineJar", "for javac")
 
 	if len(javac.Inputs) != 1 || javac.Inputs[0].String() != "a.java" {
 		t.Errorf(`foo inputs %v != ["a.java"]`, javac.Inputs)
 	}
 
-	bar := ctx.ModuleForTests("bar", "android_common").Rule("javac").Output.String()
-	if !strings.Contains(javac.Args["classpath"], bar) {
-		t.Errorf("foo classpath %v does not contain %q", javac.Args["classpath"], bar)
+	barTurbine := filepath.Join(buildDir, ".intermediates", "bar", "android_common", "turbine-combined", "bar.jar")
+	if !strings.Contains(javac.Args["classpath"], barTurbine) {
+		t.Errorf("foo classpath %v does not contain %q", javac.Args["classpath"], barTurbine)
 	}
 
-	baz := ctx.ModuleForTests("baz", "android_common").Rule("javac").Output.String()
+	baz := ctx.ModuleForTests("baz", "android_common").Rule("javac", "javac").Output.String()
 	if len(combineJar.Inputs) != 2 || combineJar.Inputs[1].String() != baz {
 		t.Errorf("foo combineJar inputs %v does not contain %q", combineJar.Inputs, baz)
 	}
@@ -600,8 +604,8 @@ func TestGeneratedSources(t *testing.T) {
 		}
 	`)
 
-	javac := ctx.ModuleForTests("foo", "android_common").Rule("javac")
-	genrule := ctx.ModuleForTests("gen", "").Rule("generator")
+	javac := ctx.ModuleForTests("foo", "android_common").Rule("javac", "javac")
+	genrule := ctx.ModuleForTests("gen", "").Rule("generator", "generate")
 
 	if len(genrule.Outputs) != 1 || filepath.Base(genrule.Outputs[0].String()) != "gen.java" {
 		t.Fatalf(`gen output file %v is not [".../gen.java"]`, genrule.Outputs.Strings())
@@ -623,8 +627,8 @@ func TestKotlin(t *testing.T) {
 		}
 		`)
 
-	kotlinc := ctx.ModuleForTests("foo", "android_common").Rule("kotlinc")
-	javac := ctx.ModuleForTests("foo", "android_common").Rule("javac")
+	kotlinc := ctx.ModuleForTests("foo", "android_common").Rule("kotlinc", "kotlinc")
+	javac := ctx.ModuleForTests("foo", "android_common").Rule("javac", "javac")
 	jar := ctx.ModuleForTests("foo", "android_common").Output("combined/foo.jar")
 
 	if len(kotlinc.Inputs) != 2 || kotlinc.Inputs[0].String() != "a.java" ||

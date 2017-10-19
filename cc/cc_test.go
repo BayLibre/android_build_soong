@@ -143,7 +143,7 @@ func TestVendorSrc(t *testing.T) {
 		}
 	`)
 
-	ld := ctx.ModuleForTests("libTest", "android_arm_armv7-a-neon_vendor_shared").Rule("ld")
+	ld := ctx.ModuleForTests("libTest", "android_arm_armv7-a-neon_vendor_shared").Rule("ld", "link libTest.so")
 	var objs []string
 	for _, o := range ld.Inputs {
 		objs = append(objs, o.Base())
