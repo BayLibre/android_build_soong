@@ -55,6 +55,15 @@ type llndkLibraryProperties struct {
 	// When set to false, this module can only be depended on by VNDK libraries, not vendor
 	// libraries. This effectively hides this module from vendors. Default value is true.
 	Vendor_available bool
+
+	// list of shared libraries to re-export include directories from.
+	Export_shared_lib_headers []string `android:"arch_variant"`
+
+	// list of static libraries to re-export include directories from.
+	Export_static_lib_headers []string `android:"arch_variant"`
+
+	// list of header libraries to re-export include directories from.
+	Export_header_lib_headers []string `android:"arch_variant"`
 }
 
 type llndkStubDecorator struct {
@@ -78,7 +87,15 @@ func (stub *llndkStubDecorator) compile(ctx ModuleContext, flags Flags, deps Pat
 }
 
 func (stub *llndkStubDecorator) linkerDeps(ctx DepsContext, deps Deps) Deps {
-	return Deps{}
+	// [Header|Shared|Static]Libs are automatically set in order not to require Android.bp writers to add
+	// [header|shared|static]_libs, which does not make much sense in case of llndk libs.
+	deps.HeaderLibs = append(deps.HeaderLibs, stub.Properties.Export_header_lib_headers...)
+	deps.ReexportHeaderLibHeaders = append(deps.ReexportHeaderLibHeaders, stub.Properties.Export_header_lib_headers...)
+	deps.SharedLibs = append(deps.SharedLibs, stub.Properties.Export_shared_lib_headers...)
+	deps.ReexportSharedLibHeaders = append(deps.ReexportSharedLibHeaders, stub.Properties.Export_shared_lib_headers...)
+	deps.StaticLibs = append(deps.StaticLibs, stub.Properties.Export_static_lib_headers...)
+	deps.ReexportStaticLibHeaders = append(deps.ReexportStaticLibHeaders, stub.Properties.Export_static_lib_headers...)
+	return deps
 }
 
 func (stub *llndkStubDecorator) Name(name string) string {
