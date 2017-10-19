@@ -81,6 +81,7 @@ func init() {
 	pctx.HostBinToolVariable("DxCmd", "dx")
 	pctx.HostJavaToolVariable("JarjarCmd", "jarjar.jar")
 	pctx.HostJavaToolVariable("DesugarJar", "desugar.jar")
+	pctx.HostJavaToolVariable("TurbineJar", "turbine.jar")
 
 	pctx.VariableFunc("JavacWrapper", func(config interface{}) (string, error) {
 		if override := config.(android.Config).Getenv("JAVAC_WRAPPER"); override != "" {

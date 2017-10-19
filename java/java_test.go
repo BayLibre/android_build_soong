@@ -139,8 +139,11 @@ func moduleToPath(name string) string {
 		return name
 	case strings.HasSuffix(name, ".jar"):
 		return name
-	default:
+	case name == "android_stubs_current" || name == "android_system_stubs_current" ||
+		name == "android_test_stubs_current":
 		return filepath.Join(buildDir, ".intermediates", name, "android_common", "classes-compiled.jar")
+	default:
+		return filepath.Join(buildDir, ".intermediates", name, "android_common", "classes-header.jar")
 	}
 }
 
@@ -171,15 +174,16 @@ func TestSimple(t *testing.T) {
 		t.Errorf(`foo inputs %v != ["a.java"]`, javac.Inputs)
 	}
 
-	bar := filepath.Join(buildDir, ".intermediates", "bar", "android_common", "classes-compiled.jar")
 	baz := filepath.Join(buildDir, ".intermediates", "baz", "android_common", "classes-compiled.jar")
+	bar_turbine := filepath.Join(buildDir, ".intermediates", "bar", "android_common", "classes-header.jar")
+	baz_turbine := filepath.Join(buildDir, ".intermediates", "baz", "android_common", "classes-header.jar")
 
-	if !strings.Contains(javac.Args["classpath"], bar) {
-		t.Errorf("foo classpath %v does not contain %q", javac.Args["classpath"], bar)
+	if !strings.Contains(javac.Args["classpath"], bar_turbine) {
+		t.Errorf("foo classpath %v does not contain %q", javac.Args["classpath"], bar_turbine)
 	}
 
-	if !strings.Contains(javac.Args["classpath"], baz) {
-		t.Errorf("foo classpath %v does not contain %q", javac.Args["classpath"], baz)
+	if !strings.Contains(javac.Args["classpath"], baz_turbine) {
+		t.Errorf("foo classpath %v does not contain %q", javac.Args["classpath"], baz_turbine)
 	}
 
 	if len(combineJar.Inputs) != 2 || combineJar.Inputs[1].String() != baz {
@@ -463,9 +467,9 @@ func TestDefaults(t *testing.T) {
 		t.Errorf(`foo inputs %v != ["a.java"]`, javac.Inputs)
 	}
 
-	bar := filepath.Join(buildDir, ".intermediates", "bar", "android_common", "classes-compiled.jar")
-	if !strings.Contains(javac.Args["classpath"], bar) {
-		t.Errorf("foo classpath %v does not contain %q", javac.Args["classpath"], bar)
+	bar_turbine := filepath.Join(buildDir, ".intermediates", "bar", "android_common", "classes-header.jar")
+	if !strings.Contains(javac.Args["classpath"], bar_turbine) {
+		t.Errorf("foo classpath %v does not contain %q", javac.Args["classpath"], bar_turbine)
 	}
 
 	baz := filepath.Join(buildDir, ".intermediates", "baz", "android_common", "classes-compiled.jar")
