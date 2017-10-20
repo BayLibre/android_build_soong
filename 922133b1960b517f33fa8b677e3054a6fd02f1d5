@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15a23b8f_98336d61",
+        "filename": "android/testing.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-20T23:01:45Z",
+      "side": 1,
+      "message": "I\u0027d prefer not to change this.  Can you add a Description method instead?",
+      "revId": "922133b1960b517f33fa8b677e3054a6fd02f1d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f53a655_591aafa2",
+        "filename": "java/java.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-20T23:01:45Z",
+      "side": 1,
+      "message": "Use ctx.Failed() here instead",
+      "range": {
+        "startLine": 574,
+        "startChar": 5,
+        "endLine": 574,
+        "endChar": 20
+      },
+      "revId": "922133b1960b517f33fa8b677e3054a6fd02f1d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "754a9053_b624547f",
+        "filename": "java/java.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-20T23:01:45Z",
+      "side": 1,
+      "message": "The bool isn\u0027t necessary, you will already have returned if j.compileJavaHeader ran and failed.  The only way j.headerJarFile is nil here is if j.compileJavaHeader wasn\u0027t attempted.",
+      "range": {
+        "startLine": 658,
+        "startChar": 5,
+        "endLine": 658,
+        "endChar": 19
+      },
+      "revId": "922133b1960b517f33fa8b677e3054a6fd02f1d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
