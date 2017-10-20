@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c14af303_20af37e4",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-20T17:58:14Z",
+      "side": 1,
+      "message": "This makes more sense to me above the javac part, especially if we do sharding here too.",
+      "revId": "d93e5c8a313041841ea17ad05fd9bcbe864a8ecf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69dbbae2_2c5e1a32",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-20T17:58:14Z",
+      "side": 1,
+      "message": "I switched everything else to use call PathForModuleOut here and pass that in to the transform function, can you do the same here?",
+      "revId": "d93e5c8a313041841ea17ad05fd9bcbe864a8ecf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9a859c2_d4cc1288",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-20T17:58:14Z",
+      "side": 1,
+      "message": "If you move turbine above javac you can leave this here with:\n\nif j.headerJarFile \u003d\u003d nil {\n    j.headerJarFile \u003d j.implementationJarFile\n}",
+      "revId": "d93e5c8a313041841ea17ad05fd9bcbe864a8ecf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

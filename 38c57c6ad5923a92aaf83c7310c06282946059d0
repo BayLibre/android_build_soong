@@ -283,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "af82425f_7a081374",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-20T17:58:14Z",
+      "side": 1,
+      "message": "Yes, they are stubs only like a header jar, but produced by droiddoc or doclava or something instead of by turbine.",
+      "parentUuid": "743f9e01_3c98671e",
+      "range": {
+        "startLine": 390,
+        "startChar": 28,
+        "endLine": 390,
+        "endChar": 38
+      },
+      "revId": "38c57c6ad5923a92aaf83c7310c06282946059d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f93e316c_53f1f369",
         "filename": "java/java.go",
         "patchSetId": 2
