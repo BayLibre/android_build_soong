@@ -73,6 +73,7 @@ func (prebuilt *Import) AndroidMk() android.AndroidMkData {
 		Extra: []android.AndroidMkExtraFunc{
 			func(w io.Writer, outputFile android.Path) {
 				fmt.Fprintln(w, "LOCAL_UNINSTALLABLE_MODULE := true")
+				fmt.Fprintln(w, "LOCAL_SDK_VERSION :=", prebuilt.properties.Sdk_version)
 			},
 		},
 	}
