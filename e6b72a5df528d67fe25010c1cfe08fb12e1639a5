@@ -34,6 +34,24 @@
       "revId": "e6b72a5df528d67fe25010c1cfe08fb12e1639a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f78200f6_b7706af0",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-20T22:49:29Z",
+      "side": 1,
+      "message": "Dan\u0027s the expert on bootstrapping.",
+      "parentUuid": "cd953b2f_23a646c8",
+      "revId": "e6b72a5df528d67fe25010c1cfe08fb12e1639a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
