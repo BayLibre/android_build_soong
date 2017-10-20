@@ -1,0 +1,8 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Verified+1: Alan Leung <acleung@google.com>
+Submitted-by: Alan Leung <acleung@google.com>
+Submitted-at: Fri, 20 Oct 2017 18:59:20 +0000
+Reviewed-on: https://android-review.googlesource.com/514129
+Project: platform/build/soong
+Branch: refs/heads/master
