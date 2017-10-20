@@ -65,6 +65,48 @@
     },
     {
       "key": {
+        "uuid": "e45e01ee_9533352b",
+        "filename": "java/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-10-20T06:06:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "930c9bca_687dd43d",
+      "range": {
+        "startLine": 226,
+        "startChar": 2,
+        "endLine": 226,
+        "endChar": 4
+      },
+      "revId": "38c57c6ad5923a92aaf83c7310c06282946059d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bcd2e6c_53596d4e",
+        "filename": "java/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-10-20T06:06:20Z",
+      "side": 1,
+      "message": "revised and moved the comments to be more clear to describe the code line.",
+      "parentUuid": "59b7b156_a2da820b",
+      "revId": "38c57c6ad5923a92aaf83c7310c06282946059d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dc46c361_4cd94216",
         "filename": "java/builder.go",
         "patchSetId": 2
@@ -79,6 +121,24 @@
       "revId": "38c57c6ad5923a92aaf83c7310c06282946059d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "444c7acf_a4ec3f01",
+        "filename": "java/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-10-20T06:06:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dc46c361_4cd94216",
+      "revId": "38c57c6ad5923a92aaf83c7310c06282946059d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "b70e5a2c_c832db4a",
+        "filename": "java/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-10-20T06:06:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36569b98_b0689e74",
+      "range": {
+        "startLine": 281,
+        "startChar": 45,
+        "endLine": 281,
+        "endChar": 49
+      },
+      "revId": "38c57c6ad5923a92aaf83c7310c06282946059d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12256c29_e378d66e",
         "filename": "java/builder.go",
         "patchSetId": 2
@@ -128,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "5e626386_650356bf",
+        "filename": "java/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-10-20T06:06:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12256c29_e378d66e",
+      "range": {
+        "startLine": 369,
+        "startChar": 47,
+        "endLine": 369,
+        "endChar": 55
+      },
+      "revId": "38c57c6ad5923a92aaf83c7310c06282946059d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4fd61ff0_d80de17e",
         "filename": "java/java.go",
         "patchSetId": 2
@@ -139,6 +247,30 @@
       "writtenOn": "2017-10-19T23:22:29Z",
       "side": 1,
       "message": "Is sdkDep.jar the same as Turbine\u0027s header.jar?\n\nOr does it just contain more information (plus some implementation that gets ignored) then Turbine\u0027s header.jar? (if that\u0027s the case, I would reword the comment to something like \"sdkDep.jar contains both api and implementation, so it can act as a turbine header jar (which only needs to contain apis)\")",
+      "range": {
+        "startLine": 390,
+        "startChar": 28,
+        "endLine": 390,
+        "endChar": 38
+      },
+      "revId": "38c57c6ad5923a92aaf83c7310c06282946059d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "743f9e01_3c98671e",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-10-20T06:06:20Z",
+      "side": 1,
+      "message": "If I remember correctly, these sdkDep.jar are generated from java comments to form a set of APIs which almost are equivalent to header.jar",
+      "parentUuid": "4fd61ff0_d80de17e",
       "range": {
         "startLine": 390,
         "startChar": 28,
@@ -171,6 +303,30 @@
       "revId": "38c57c6ad5923a92aaf83c7310c06282946059d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16b43d97_ce19303a",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-10-20T06:06:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f93e316c_53f1f369",
+      "range": {
+        "startLine": 629,
+        "startChar": 24,
+        "endLine": 629,
+        "endChar": 32
+      },
+      "revId": "38c57c6ad5923a92aaf83c7310c06282946059d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

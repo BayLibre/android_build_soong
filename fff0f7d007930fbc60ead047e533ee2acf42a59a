@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a30e4722_10a4bf74",
+        "filename": "java/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-10-20T06:06:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61e30fb1_090a582b",
+      "revId": "fff0f7d007930fbc60ead047e533ee2acf42a59a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc490c56_14cbaf33",
         "filename": "java/builder.go",
         "patchSetId": 3
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "b94c1c75_c3896cc7",
+        "filename": "java/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-10-20T06:06:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc490c56_14cbaf33",
+      "range": {
+        "startLine": 270,
+        "startChar": 2,
+        "endLine": 270,
+        "endChar": 6
+      },
+      "revId": "fff0f7d007930fbc60ead047e533ee2acf42a59a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d145745f_ca33a791",
         "filename": "java/builder.go",
         "patchSetId": 3
@@ -53,6 +95,30 @@
       "writtenOn": "2017-10-19T22:50:52Z",
       "side": 1,
       "message": "Isn\u0027t this implied by \"JavaClassPath\"?",
+      "range": {
+        "startLine": 289,
+        "startChar": 59,
+        "endLine": 289,
+        "endChar": 62
+      },
+      "revId": "fff0f7d007930fbc60ead047e533ee2acf42a59a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c02fd5fa_38990617",
+        "filename": "java/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-10-20T06:06:20Z",
+      "side": 1,
+      "message": "the strange thing is when Turbine consumes the source jars(\"--source_jars\"), it use white-space instead of \":\" to read source jars. So in order to re-use this function， I have to extract the splitter as one function arg.\nhttps://cs.corp.google.com/aosp-master/external/turbine/java/com/google/turbine/options/TurbineOptionsParser.java?rcl\u003d3c093fb3ffe6aa93839565c91953232aaab9977e\u0026l\u003d87",
+      "parentUuid": "d145745f_ca33a791",
       "range": {
         "startLine": 289,
         "startChar": 59,
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "2b0702b9_cb1be624",
+        "filename": "java/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-10-20T06:06:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d495b444_99a9cb36",
+      "range": {
+        "startLine": 319,
+        "startChar": 52,
+        "endLine": 319,
+        "endChar": 55
+      },
+      "revId": "fff0f7d007930fbc60ead047e533ee2acf42a59a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24cd6371_7bcc3ad0",
         "filename": "java/builder.go",
         "patchSetId": 3
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "e7c92b01_53d1dff6",
+        "filename": "java/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-10-20T06:06:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24cd6371_7bcc3ad0",
+      "range": {
+        "startLine": 413,
+        "startChar": 64,
+        "endLine": 413,
+        "endChar": 79
+      },
+      "revId": "fff0f7d007930fbc60ead047e533ee2acf42a59a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb0d32a1_bfe5f8e8",
         "filename": "java/config/config.go",
         "patchSetId": 3
@@ -125,6 +239,24 @@
       "revId": "fff0f7d007930fbc60ead047e533ee2acf42a59a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e4294ca_870a14b1",
+        "filename": "java/config/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-10-20T06:06:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb0d32a1_bfe5f8e8",
+      "revId": "fff0f7d007930fbc60ead047e533ee2acf42a59a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "c3c4785f_33848e90",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-10-20T06:06:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44f7ab1d_78c90a95",
+      "range": {
+        "startLine": 160,
+        "startChar": 1,
+        "endLine": 160,
+        "endChar": 14
+      },
+      "revId": "fff0f7d007930fbc60ead047e533ee2acf42a59a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dc4cc990_e6ee644d",
         "filename": "java/java.go",
         "patchSetId": 3
@@ -171,6 +327,30 @@
       "revId": "fff0f7d007930fbc60ead047e533ee2acf42a59a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9b0e4e5_39fafcb4",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-10-20T06:06:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc4cc990_e6ee644d",
+      "range": {
+        "startLine": 163,
+        "startChar": 1,
+        "endLine": 163,
+        "endChar": 11
+      },
+      "revId": "fff0f7d007930fbc60ead047e533ee2acf42a59a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -197,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "79498777_51342bd1",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-10-20T06:06:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4c35a84_8e1bfe84",
+      "range": {
+        "startLine": 184,
+        "startChar": 1,
+        "endLine": 184,
+        "endChar": 15
+      },
+      "revId": "fff0f7d007930fbc60ead047e533ee2acf42a59a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "168e37d6_c261f067",
         "filename": "java/java.go",
         "patchSetId": 3
@@ -220,6 +424,30 @@
     },
     {
       "key": {
+        "uuid": "bf364d64_e072aa09",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-10-20T06:06:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "168e37d6_c261f067",
+      "range": {
+        "startLine": 185,
+        "startChar": 1,
+        "endLine": 185,
+        "endChar": 12
+      },
+      "revId": "fff0f7d007930fbc60ead047e533ee2acf42a59a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d4b7c2e_cd4b81d0",
         "filename": "java/java.go",
         "patchSetId": 3
@@ -234,6 +462,24 @@
       "revId": "fff0f7d007930fbc60ead047e533ee2acf42a59a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "757c1cf4_3ead1d03",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-10-20T06:06:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d4b7c2e_cd4b81d0",
+      "revId": "fff0f7d007930fbc60ead047e533ee2acf42a59a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -254,6 +500,24 @@
     },
     {
       "key": {
+        "uuid": "f1c28dc6_74d6d8d7",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-10-20T06:06:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cca0a026_8f1af794",
+      "revId": "fff0f7d007930fbc60ead047e533ee2acf42a59a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6bb3c9de_73e61b5d",
         "filename": "java/java.go",
         "patchSetId": 3
@@ -268,6 +532,24 @@
       "revId": "fff0f7d007930fbc60ead047e533ee2acf42a59a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b685332b_63ac1c29",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-10-20T06:06:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bb3c9de_73e61b5d",
+      "revId": "fff0f7d007930fbc60ead047e533ee2acf42a59a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -291,6 +573,30 @@
       "revId": "fff0f7d007930fbc60ead047e533ee2acf42a59a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2f351cb_d1cfeeab",
+        "filename": "java/java_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-10-20T06:06:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1afde7fd_943c7524",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 12
+      },
+      "revId": "fff0f7d007930fbc60ead047e533ee2acf42a59a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
