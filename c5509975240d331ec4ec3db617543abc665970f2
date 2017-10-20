@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22346c58_3e78c2a7",
+        "filename": "java/config/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-20T21:49:26Z",
+      "side": 1,
+      "message": "Use config.IsEnvFalse",
+      "revId": "c5509975240d331ec4ec3db617543abc665970f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
