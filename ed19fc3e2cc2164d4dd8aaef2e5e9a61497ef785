@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e05ec3e_85650a5c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-20T23:54:51Z",
+      "side": 1,
+      "message": "Do you plan to do this before submitting or in a followup CL?",
+      "revId": "ed19fc3e2cc2164d4dd8aaef2e5e9a61497ef785",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
