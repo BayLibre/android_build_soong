@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb7c2a3d_c97dbf9d",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2017-10-20T20:54:34Z",
+      "side": 1,
+      "message": "Why explicitly? Don\u0027t we need all this for all non-static cfi targets?",
+      "revId": "9a4d441359dd8cb3378118f2f339b50dd70c79c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c757748_cc0588c3",
+        "filename": "cc/lto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2017-10-20T20:54:34Z",
+      "side": 1,
+      "message": "Is this empty line intentional?",
+      "revId": "9a4d441359dd8cb3378118f2f339b50dd70c79c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb4cfb21_2be1cf9d",
+        "filename": "cc/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2017-10-20T20:54:34Z",
+      "side": 1,
+      "message": "Bad name - these flags are not duplicate, they are different.\nWhat we really want to do is make \"default\" visibility the default. It kind of already is, but CFI wants it spelled out in the command line.\n\nOne option would be to add -fvisibility\u003ddefault before any target flags, so that it can be overridden with hidden.\n\nAnother is to replace this function with hasExplicitVisibilityFlag(), and if true, skip adding the default visibility one.",
+      "revId": "9a4d441359dd8cb3378118f2f339b50dd70c79c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
