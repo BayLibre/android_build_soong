@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c6613d3d_480c82c8",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-10-20T22:54:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c14af303_20af37e4",
+      "revId": "d93e5c8a313041841ea17ad05fd9bcbe864a8ecf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "69dbbae2_2c5e1a32",
         "filename": "java/java.go",
         "patchSetId": 7
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "979e7478_f0dda3b5",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-10-20T22:54:47Z",
+      "side": 1,
+      "message": "I passed the jarName to the compileJavaHeader() function, and used PathForModuleOut() in there. Were you suggest to extract PathForModuleOut() out of the compileJavaHeader()?",
+      "parentUuid": "69dbbae2_2c5e1a32",
+      "revId": "d93e5c8a313041841ea17ad05fd9bcbe864a8ecf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9a859c2_d4cc1288",
         "filename": "java/java.go",
         "patchSetId": 7
@@ -47,6 +83,24 @@
       "writtenOn": "2017-10-20T17:58:14Z",
       "side": 1,
       "message": "If you move turbine above javac you can leave this here with:\n\nif j.headerJarFile \u003d\u003d nil {\n    j.headerJarFile \u003d j.implementationJarFile\n}",
+      "revId": "d93e5c8a313041841ea17ad05fd9bcbe864a8ecf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5fb6ddd_49999bc5",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-10-20T22:54:47Z",
+      "side": 1,
+      "message": "I use j.headerJarFile \u003d\u003d nil to determine whether the compileJavaHeader() has ran successfully or not. So use a bool flag instead here.",
+      "parentUuid": "c9a859c2_d4cc1288",
       "revId": "d93e5c8a313041841ea17ad05fd9bcbe864a8ecf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
