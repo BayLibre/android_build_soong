@@ -826,6 +826,8 @@ type ImportProperties struct {
 	Jars []string
 
 	Sdk_version string
+
+	Installable *bool
 }
 
 type Import struct {
