@@ -76,3 +76,60 @@ func testForDanglingRules(ctx Context, config Config) {
 		ctx.Fatal("")
 	}
 }
+
+// confirmCheckbuildUpToDate runs a dry-run of checkbuild and confirms that all rules are
+// up-to-date.  It therefore only makes sense to call this function after a successful checkbuild.
+// The usual cause of a violation is when a rule doesn't update its output file, or when a real
+// rule depends on a phony rule.
+func confirmCheckbuildUpToDate(ctx Context, config Config) {
+	ctx.BeginTrace("test for unnecessary rebuilds")
+	defer ctx.EndTrace()
+
+	// Get a list of leaf nodes in the dependency graph from ninja
+	executable := config.PrebuiltBuildTool("ninja")
+
+	args := []string{}
+	args = append(args, "-f", config.CombinedNinjaFile())
+	args = append(args, "-n") // dry run
+	args = append(args, "checkbuild")
+	cmd := Command(ctx, config, "ninja", executable, args...)
+	linePrefix := "Unnecessary rebuild: "
+	cmd.Environment.Set("NINJA_STATUS", linePrefix)
+
+	stdout, err := cmd.StdoutPipe()
+	if err != nil {
+		ctx.Fatal(err)
+	}
+
+	cmd.StartOrFatal()
+
+	var unnecessaryRebuilds []string
+
+	scanner := bufio.NewScanner(stdout)
+	for scanner.Scan() {
+		line := scanner.Text()
+		if strings.HasPrefix(line, linePrefix) {
+			unnecessaryRebuilds = append(unnecessaryRebuilds, strings.TrimPrefix(line, linePrefix))
+		}
+	}
+
+	cmd.WaitOrFatal()
+
+	if len(unnecessaryRebuilds) > 0 {
+		ctx.Println("error: rules unnecessarily rebuilt after second checkbuild:")
+		failuresToPrint := len(unnecessaryRebuilds)
+		maxToPrint := 5
+		if failuresToPrint > maxToPrint {
+			unnecessaryRebuilds = unnecessaryRebuilds[0:maxToPrint]
+		}
+		for _, rule := range unnecessaryRebuilds {
+			ctx.Println("   " + rule)
+		}
+		if failuresToPrint > maxToPrint {
+			ctx.Printf("...and %d more\n", failuresToPrint-maxToPrint)
+		}
+		ctx.Println("This usually means a rule to build a file depends on a phony target.")
+		ctx.Println("It can also happen if source files were modified during the build.")
+		ctx.Fatal("")
+	}
+}
