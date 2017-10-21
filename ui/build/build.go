@@ -187,5 +187,9 @@ func Build(ctx Context, config Config, what int) {
 
 		// Run ninja
 		runNinja(ctx, config)
+
+		if what&RunBuildTests != 0 {
+			testForUnnecessaryRebuilds(ctx, config)
+		}
 	}
 }
