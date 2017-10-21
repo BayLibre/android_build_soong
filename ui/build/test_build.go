@@ -76,3 +76,50 @@ func testForDanglingRules(ctx Context, config Config) {
 		ctx.Fatal("")
 	}
 }
+
+// testForUnnecessaryRebuilds runs a dry-run of checkbuild after a successful checkbuild to determine
+// if there are any rules that are always rerun.  This usually occurs when a rule doesn't update its
+// output file, or when a real rule depends on a phony rule.
+func testForUnnecessaryRebuilds(ctx Context, config Config) {
+	ctx.BeginTrace("test for unnecessary rebuilds")
+	defer ctx.EndTrace()
+
+	// Get a list of leaf nodes in the dependency graph from ninja
+	executable := config.PrebuiltBuildTool("ninja")
+
+	args := []string{}
+	args = append(args, "-f", config.CombinedNinjaFile())
+	args = append(args, "-n") // dry run
+	args = append(args, "checkbuild")
+	cmd := Command(ctx, config, "ninja", executable, args...)
+	linePrefix := "Unnecessary rebuild: "
+	cmd.Environment.Set("NINJA_STATUS", linePrefix)
+
+	stdout, err := cmd.StdoutPipe()
+	if err != nil {
+		ctx.Fatal(err)
+	}
+
+	cmd.StartOrFatal()
+
+	var unnecessaryRebuilds []string
+
+	scanner := bufio.NewScanner(stdout)
+	for scanner.Scan() {
+		line := scanner.Text()
+		if strings.HasPrefix(line, linePrefix) {
+			unnecessaryRebuilds = append(unnecessaryRebuilds, strings.TrimPrefix(line, linePrefix))
+		}
+	}
+
+	cmd.WaitOrFatal()
+
+	if len(unnecessaryRebuilds) > 0 {
+		ctx.Println("Rules unnecessarily rebuilt after second checkbuild:")
+		for _, rule := range unnecessaryRebuilds {
+			ctx.Println(rule)
+		}
+		// TODO(ccross): fix existing causes and make this fatal
+		ctx.Fatal("")
+	}
+}
