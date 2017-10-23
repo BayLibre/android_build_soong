@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "968ebc35_b82dabeb",
+        "filename": "ui/build/build.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-23T19:54:52Z",
+      "side": 1,
+      "message": "It seems to me that we should rename BuildAll to BuildDefault or something like that if BuildAll isn\u0027t all anymore",
+      "revId": "b94ec2dc7cc4cc0f9f79bfb1da24011f761fb95d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d9f2779_67b2848a",
+        "filename": "ui/build/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-23T19:54:52Z",
+      "side": 1,
+      "message": "How about \"means that\"?\n\n(My thought is that if we can change the meaning of this from being a guess (adding extra things that aren\u0027t considered part of checkbuild) to instead be a definition (running checkbuild means running build tests) then that\u0027d be easier to reason about in the future)",
+      "range": {
+        "startLine": 297,
+        "startChar": 77,
+        "endLine": 297,
+        "endChar": 91
+      },
+      "revId": "b94ec2dc7cc4cc0f9f79bfb1da24011f761fb95d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
