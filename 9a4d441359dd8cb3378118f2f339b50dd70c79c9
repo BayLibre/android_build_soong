@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5742bf15_94c6b9ce",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1068404
+      },
+      "writtenOn": "2017-10-23T06:30:39Z",
+      "side": 1,
+      "message": "All non-static CFI targets will have it explicitly enabled. \n\nThe name by itself is a bit misleading. I have a isSanitizerExplicitlyDisabled() function which ensures it wasn\u0027t just nil because it wasn\u0027t set. So I changed the is enabled name to also match that. \n\nFor the enabled case, it\u0027s actually not possible to distinguish explicitly enabled in the makefile vs. enabled via sanitizeDep since the variant where we do enable this will also have the value set to true. Should I just rename this to isSanitizerEnabled()?",
+      "parentUuid": "eb7c2a3d_c97dbf9d",
+      "revId": "9a4d441359dd8cb3378118f2f339b50dd70c79c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c757748_cc0588c3",
         "filename": "cc/lto.go",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "0188d25a_1df2be5d",
+        "filename": "cc/lto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1068404
+      },
+      "writtenOn": "2017-10-23T06:30:39Z",
+      "side": 1,
+      "message": "Nope - I was initially making some changes using the LTO mutator, but didn\u0027t remove the newline when I undid those it looks like. Fixed.",
+      "parentUuid": "4c757748_cc0588c3",
+      "revId": "9a4d441359dd8cb3378118f2f339b50dd70c79c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb4cfb21_2be1cf9d",
         "filename": "cc/util.go",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2017-10-20T20:54:34Z",
       "side": 1,
       "message": "Bad name - these flags are not duplicate, they are different.\nWhat we really want to do is make \"default\" visibility the default. It kind of already is, but CFI wants it spelled out in the command line.\n\nOne option would be to add -fvisibility\u003ddefault before any target flags, so that it can be overridden with hidden.\n\nAnother is to replace this function with hasExplicitVisibilityFlag(), and if true, skip adding the default visibility one.",
+      "revId": "9a4d441359dd8cb3378118f2f339b50dd70c79c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f09ff89_7841b4ba",
+        "filename": "cc/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1068404
+      },
+      "writtenOn": "2017-10-23T06:30:39Z",
+      "side": 1,
+      "message": "Ack, you\u0027re right. Only the \"-fvisibility\u003d\" part is the duplicate, but the flags themselves are different.\n\nI\u0027ve changed up the order that flags are collected in GenerateAndroidBuildActions so that sanitizer.flags() runs first - which should add -fvisibility\u003ddefault before anything else.",
+      "parentUuid": "cb4cfb21_2be1cf9d",
       "revId": "9a4d441359dd8cb3378118f2f339b50dd70c79c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
