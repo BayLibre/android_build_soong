@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49ebd7bc_6d25c530",
+        "filename": "cc/lto.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-23T23:58:50Z",
+      "side": 1,
+      "message": "How about Never to match santize: never?",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 9
+      },
+      "revId": "187a3c9e786a9580a4c53d2876e8cd78a117f5ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb35d936_3f01615a",
+        "filename": "cc/lto.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-23T23:58:50Z",
+      "side": 1,
+      "message": "Maybe check if LTODep is already set to another another type?\n\ncc.lto vs. c.lto is really convusing here, maybe rename cc to dep or ccDep?",
+      "revId": "187a3c9e786a9580a4c53d2876e8cd78a117f5ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
