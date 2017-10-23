@@ -79,14 +79,13 @@ func init() {
 	pctx.HostBinToolVariable("SoongZipCmd", "soong_zip")
 	pctx.HostBinToolVariable("MergeZipsCmd", "merge_zips")
 	pctx.VariableFunc("DxCmd", func(config interface{}) (string, error) {
-		dexer := "dx"
 		if config.(android.Config).Getenv("USE_D8") == "true" {
-			dexer = "d8"
+			return "out/host/linux-x86/bin/d8-compat-dx", nil
 		}
 		if config.(android.Config).UnbundledBuild() {
-			return "prebuilts/build-tools/common/bin/" + dexer, nil
+			return "prebuilts/build-tools/common/bin/dx", nil
 		} else {
-			path, err := pctx.HostBinToolPath(config, dexer)
+			path, err := pctx.HostBinToolPath(config, "dx")
 			if err != nil {
 				return "", err
 			}
