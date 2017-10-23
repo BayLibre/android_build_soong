@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11fb4d06_fbded25c",
+        "filename": "java/config/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-23T21:01:19Z",
+      "side": 1,
+      "message": "This is going to prevent defaulting USE_D8 to true on unbundled builds that don\u0027t have prebuilts/r8, are you planning to add that to all of the unbundled manifests?",
+      "revId": "f083ef25e84cfb83c3c04a8c423974c83c2fa2d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
