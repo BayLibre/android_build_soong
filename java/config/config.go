@@ -81,7 +81,12 @@ func init() {
 	pctx.VariableFunc("DxCmd", func(config interface{}) (string, error) {
 		dexer := "dx"
 		if config.(android.Config).Getenv("USE_D8") == "true" {
-			dexer = "d8"
+			dexer = "d8-compat-dx"
+			path, err := pctx.HostBinToolPath(config, dexer)
+			if err != nil {
+				return "", err
+			}
+			return path.String(), nil
 		}
 		if config.(android.Config).UnbundledBuild() {
 			return "prebuilts/build-tools/common/bin/" + dexer, nil
