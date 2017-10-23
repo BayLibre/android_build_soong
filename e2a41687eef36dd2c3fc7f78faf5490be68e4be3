@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ba7b749_33be2e5a",
+        "filename": "java/config/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1121678
+      },
+      "writtenOn": "2017-10-23T13:10:37Z",
+      "side": 1,
+      "message": "So d8 will never run from here. When this lands we should probably remove it.",
+      "range": {
+        "startLine": 92,
+        "startChar": 11,
+        "endLine": 92,
+        "endChar": 44
+      },
+      "revId": "e2a41687eef36dd2c3fc7f78faf5490be68e4be3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
