@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5e9e052_153a011c",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-10-24T18:22:53Z",
+      "side": 1,
+      "message": "LastUniqePaths?",
+      "revId": "bb0b212bb5a53e801ab1d5e8fa24e841f535c981",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
