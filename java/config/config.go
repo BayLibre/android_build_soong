@@ -18,6 +18,7 @@ import (
 	"strings"
 
 	_ "github.com/google/blueprint/bootstrap"
+	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
 )
@@ -83,7 +84,7 @@ func init() {
 		if config.(android.Config).Getenv("USE_D8") == "true" {
 			dexer = "d8"
 		}
-		if config.(android.Config).UnbundledBuild() {
+		if config.(android.Config).UnbundledBuild() || proptools.Bool(config.(android.Config).ProductVariables.Pdk) {
 			return "prebuilts/build-tools/common/bin/" + dexer, nil
 		} else {
 			path, err := pctx.HostBinToolPath(config, dexer)
