@@ -16,6 +16,24 @@
       "revId": "f083ef25e84cfb83c3c04a8c423974c83c2fa2d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0aa7ed6_a11b32f7",
+        "filename": "java/config/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1023201
+      },
+      "writtenOn": "2017-10-24T08:48:25Z",
+      "side": 1,
+      "message": "Yes, my understanding of Dan\u0027s explanations was that prebuilts/r8 will require to be added to all master build based ub branches (and studio-master-dev).",
+      "parentUuid": "11fb4d06_fbded25c",
+      "revId": "f083ef25e84cfb83c3c04a8c423974c83c2fa2d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
