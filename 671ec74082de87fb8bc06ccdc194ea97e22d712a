@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "807d9a3b_7ba18e47",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2017-10-24T20:58:29Z",
+      "side": 1,
+      "message": "That\u0027s actually the other way around. ASan wins.\n        // Also disable CFI if ASAN is enabled.\n        if Bool(s.Address) {\n                s.Cfi \u003d nil\n                s.Diag.Cfi \u003d nil\n        }",
+      "revId": "671ec74082de87fb8bc06ccdc194ea97e22d712a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

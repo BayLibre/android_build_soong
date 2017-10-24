@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "4cb99d2e_a1e2675b",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2017-10-24T20:58:29Z",
+      "side": 1,
+      "message": "Yes, I think it would be better.",
+      "parentUuid": "5742bf15_94c6b9ce",
+      "revId": "9a4d441359dd8cb3378118f2f339b50dd70c79c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c757748_cc0588c3",
         "filename": "cc/lto.go",
         "patchSetId": 2
