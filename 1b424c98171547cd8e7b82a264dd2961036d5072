@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f5a6890_688704a8",
+        "filename": "ui/build/test_build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-24T03:06:02Z",
+      "side": 1,
+      "message": "How about\n\n\"testForUnnecessaryRebuilds runs a dry-run of checkbuild and confirms that all rules are up-to-date.\n\nIt therefore only makes sense to call this function after a successful checkbuild.\n\nThe usual cause of a violation is when a rule doesn\u0027t update its\noutput file, or when a real rule depends on a phony rule.\n\"\n\n?",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 60
+      },
+      "revId": "1b424c98171547cd8e7b82a264dd2961036d5072",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf8516e6_09132aa3",
+        "filename": "ui/build/test_build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-24T03:06:02Z",
+      "side": 1,
+      "message": "How about \"confirmAllTargetsUpToDate\" to clarify that the targets must have already been build in order for this to be informative?",
+      "range": {
+        "startLine": 83,
+        "startChar": 5,
+        "endLine": 83,
+        "endChar": 31
+      },
+      "revId": "1b424c98171547cd8e7b82a264dd2961036d5072",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
