@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "50f5556b_1ae96b8d",
+        "filename": "cc/lto.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2017-10-24T19:54:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49ebd7bc_6d25c530",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 9
+      },
+      "revId": "187a3c9e786a9580a4c53d2876e8cd78a117f5ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb35d936_3f01615a",
         "filename": "cc/lto.go",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2017-10-23T23:58:50Z",
       "side": 1,
       "message": "Maybe check if LTODep is already set to another another type?\n\ncc.lto vs. c.lto is really convusing here, maybe rename cc to dep or ccDep?",
+      "revId": "187a3c9e786a9580a4c53d2876e8cd78a117f5ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "410171ad_53968fdd",
+        "filename": "cc/lto.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2017-10-24T19:54:28Z",
+      "side": 1,
+      "message": "Good point on mixing thin and full LTO (and the same object being used in both). I think we need to handle that a little smarter, since thin and full LTO do have different compilation pipelines to build the IR. I think we should create separate variations for this case so that the correctly compiled IR is used. I\u0027ll update the changeset to do this.",
+      "parentUuid": "bb35d936_3f01615a",
       "revId": "187a3c9e786a9580a4c53d2876e8cd78a117f5ac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
