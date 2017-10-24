@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93212d36_30cc7a67",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-10-24T03:38:32Z",
+      "side": 1,
+      "message": "Do we need to de-dup this list now? It seems like we\u0027ll probably be adding modules to this list more often?",
+      "range": {
+        "startLine": 661,
+        "startChar": 0,
+        "endLine": 665,
+        "endChar": 1
+      },
+      "revId": "fc3341367186967fce990fba041f0f3eea75ccbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
