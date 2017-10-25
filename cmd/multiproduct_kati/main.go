@@ -57,6 +57,7 @@ var onlySoong = flag.Bool("only-soong", false, "Only run product config and Soon
 var buildVariant = flag.String("variant", "eng", "build variant to use")
 
 var skipProducts = flag.String("skip-products", "", "comma-separated list of products to skip (known failures, etc)")
+var includeProducts = flag.String("products", "", "comma-separated list of products to build")
 
 const errorLeadingLines = 20
 const errorTrailingLines = 20
@@ -259,7 +260,12 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	productsList := strings.Fields(vars["all_named_products"])
+	var productsList []string
+	if *includeProducts != "" {
+		productsList = strings.Split(*includeProducts, ",")
+	} else {
+		productsList = strings.Fields(vars["all_named_products"])
+	}
 
 	products := make([]string, 0, len(productsList))
 	skipList := strings.Split(*skipProducts, ",")
