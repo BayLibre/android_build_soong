@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91eafdf1_36ac8c9b",
+        "filename": "scripts/extract-src-jars.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-25T01:16:34Z",
+      "side": 1,
+      "message": "What\u0027s the desired behavior in case of duplicates?\n\n(and do we know if ninja disconnects stdin to prevent this from hanging if there\u0027s a duplicate)?",
+      "revId": "c56f47ce21ed735d866abc16874f53c1d52045a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
