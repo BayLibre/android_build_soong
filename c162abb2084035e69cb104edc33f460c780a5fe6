@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3183b91_1a46960e",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-25T17:49:44Z",
+      "side": 1,
+      "message": "This pattern is unfortunately dangerous in go, append may or may not modify the underlying backing array of the original slice: https://play.golang.org/p/MQj2I5EFJx\n\nIf you don\u0027t care about the order, you can do:\ncfiCflags \u003d append([]string{\"-fvisibility\u003ddefault\"}, cfiCflagsNoVisibility...)",
+      "revId": "c162abb2084035e69cb104edc33f460c780a5fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5442408_23a64b51",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-25T17:49:44Z",
+      "side": 1,
+      "message": "I think this would make more sense as:\n\nflags.CFlags \u003d append(flags.CFlags, cfiCflags...)\nif !inList(\"-fvisibility\u003dhidden\", flags.CFlags) {\n    flags.CFlags \u003d append(flags.CFlags, \"-fvisibility\u003ddefault\")\n}",
+      "revId": "c162abb2084035e69cb104edc33f460c780a5fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "642d3c3c_fb8260fb",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-25T17:49:44Z",
+      "side": 1,
+      "message": "Inconsitent usage of enabled vs. explicitly enabled is a little confusing.  Can you add a comment tot isSanitizerEnabled describing the semantics, and either rename this to isEnabled or rename isSanitizerEnabled to isSanitizerExplicitlyEnabled?",
+      "range": {
+        "startLine": 557,
+        "startChar": 4,
+        "endLine": 557,
+        "endChar": 23
+      },
+      "revId": "c162abb2084035e69cb104edc33f460c780a5fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
