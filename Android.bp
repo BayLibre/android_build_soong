@@ -140,6 +140,7 @@ bootstrap_go_package {
         "cc/linker.go",
 
         "cc/binary.go",
+        "cc/env.go",
         "cc/library.go",
         "cc/object.go",
         "cc/test.go",

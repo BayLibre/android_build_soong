@@ -56,8 +56,12 @@ func init() {
 
 // Module factory for binaries
 func binaryFactory() android.Module {
-	module, _ := NewBinary(android.HostAndDeviceSupported)
-	return module.Init()
+	binary, _ := NewBinary(android.HostAndDeviceSupported)
+	module := binary.Init()
+
+	// Honor CUSTOM_TARGET_LINKER.
+	android.AddLoadHook(module, CustomLinker)
+	return module
 }
 
 // Module factory for host binaries
