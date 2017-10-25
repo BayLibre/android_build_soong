@@ -16,6 +16,24 @@
       "revId": "671ec74082de87fb8bc06ccdc194ea97e22d712a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3a4b15c_00b1a6d5",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1068404
+      },
+      "writtenOn": "2017-10-25T00:16:43Z",
+      "side": 1,
+      "message": "Yeah that comment should have been removed (it was from the earlier logic). Thanks for catching that, updated.",
+      "parentUuid": "807d9a3b_7ba18e47",
+      "revId": "671ec74082de87fb8bc06ccdc194ea97e22d712a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
