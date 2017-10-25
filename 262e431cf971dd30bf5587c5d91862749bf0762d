@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20cfd758_82954c8d",
+        "filename": "java/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-10-25T21:01:26Z",
+      "side": 1,
+      "message": "${config.ExtractSrcJarsCmd}",
+      "revId": "262e431cf971dd30bf5587c5d91862749bf0762d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "524ddb85_3cf5381d",
+        "filename": "java/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-10-25T21:01:26Z",
+      "side": 1,
+      "message": "Why is this added?",
+      "revId": "262e431cf971dd30bf5587c5d91862749bf0762d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
