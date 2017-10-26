@@ -52,6 +52,24 @@
       "revId": "f4462f593ffc45ab863d26231e05de41be855155",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8257a50_577ccfb3",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-10-26T21:40:54Z",
+      "side": 1,
+      "message": "I mean it doesn\u0027t seem to actually affect what is created, just what variant soong thinks it is, allowing the genrule to find it.",
+      "parentUuid": "076529c0_1f80fd33",
+      "revId": "f4462f593ffc45ab863d26231e05de41be855155",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
