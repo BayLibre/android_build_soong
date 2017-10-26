@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "268b0c7b_6ecdb18a",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-26T20:36:07Z",
+      "side": 1,
+      "message": "I\u0027d like to avoid the Android.bp file having to know the type of the tool, I think its going to require blueprint changes to allow AddFarVariationDependencies to take multiple variation options.",
+      "revId": "f4462f593ffc45ab863d26231e05de41be855155",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
