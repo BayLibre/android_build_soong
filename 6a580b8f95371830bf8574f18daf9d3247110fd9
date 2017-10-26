@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "65f91c39_c54432c5",
+        "filename": "scripts/ninja_diff.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-26T00:43:42Z",
+      "side": 1,
+      "message": "thanks",
+      "parentUuid": "90253609_e9c823fa",
+      "revId": "6a580b8f95371830bf8574f18daf9d3247110fd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "841ee3a6_76bf44ae",
         "filename": "scripts/ninja_diff.sh",
         "patchSetId": 6
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "3adc0441_69824b78",
+        "filename": "scripts/ninja_diff.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-26T00:43:42Z",
+      "side": 1,
+      "message": "thanks",
+      "parentUuid": "f231b307_717d192c",
+      "revId": "6a580b8f95371830bf8574f18daf9d3247110fd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ecd79d33_a500bb86",
         "filename": "scripts/ninja_diff.sh",
         "patchSetId": 6
@@ -76,6 +112,30 @@
     },
     {
       "key": {
+        "uuid": "1232f240_6ea4369a",
+        "filename": "scripts/ninja_diff.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-26T00:43:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecd79d33_a500bb86",
+      "range": {
+        "startLine": 78,
+        "startChar": 20,
+        "endLine": 78,
+        "endChar": 23
+      },
+      "revId": "6a580b8f95371830bf8574f18daf9d3247110fd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d1958d3_8ef4d8a5",
         "filename": "scripts/ninja_diff.sh",
         "patchSetId": 6
@@ -90,6 +150,24 @@
       "revId": "6a580b8f95371830bf8574f18daf9d3247110fd9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1d23286_cf4b0d57",
+        "filename": "scripts/ninja_diff.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-26T00:43:42Z",
+      "side": 1,
+      "message": "Good idea.\n\nThe next patchset should permit a custom list of products.",
+      "parentUuid": "6d1958d3_8ef4d8a5",
+      "revId": "6a580b8f95371830bf8574f18daf9d3247110fd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -110,6 +188,24 @@
     },
     {
       "key": {
+        "uuid": "6ed4afa6_08e1eec7",
+        "filename": "scripts/ninja_diff.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-26T00:43:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f17e43af_de694d6a",
+      "revId": "6a580b8f95371830bf8574f18daf9d3247110fd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5dbc7b5e_96159bbc",
         "filename": "scripts/ninja_diff.sh",
         "patchSetId": 6
@@ -121,6 +217,24 @@
       "writtenOn": "2017-10-19T04:24:06Z",
       "side": 1,
       "message": "Probably not for this CL, but I wonder if it would be possible to do these builds without affecting the local tree at all?  Maybe bindfs mount the source tree to somewhere, then bindfs mount a temporary directory over each project with changes, symlink parts of the .git tree, and do the checkouts there.",
+      "revId": "6a580b8f95371830bf8574f18daf9d3247110fd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fe440e7_40fc2050",
+        "filename": "scripts/ninja_diff.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-26T00:43:42Z",
+      "side": 1,
+      "message": "Hmm that\u0027d be neat. I guess that\u0027d also make it easier to run both instances of multiproduct_kati in parallel.",
+      "parentUuid": "5dbc7b5e_96159bbc",
       "revId": "6a580b8f95371830bf8574f18daf9d3247110fd9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
