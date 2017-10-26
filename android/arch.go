@@ -288,6 +288,11 @@ func (target Target) String() string {
 	return target.Os.String() + "_" + target.Arch.String()
 }
 
+// Gets the 'common' version of the current target.
+func (target Target) GetCommonTarget() Target {
+	return commonTargetMap[target.Os.String()]
+}
+
 func archMutator(mctx BottomUpMutatorContext) {
 	var module Module
 	var ok bool
@@ -1067,7 +1072,7 @@ func getCommonTargets(targets []Target) []Target {
 	for _, t := range targets {
 		if _, found := set[t.Os.String()]; !found {
 			set[t.Os.String()] = true
-			ret = append(ret, commonTargetMap[t.Os.String()])
+			ret = append(ret, t.GetCommonTarget())
 		}
 	}
 

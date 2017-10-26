@@ -83,6 +83,10 @@ type generatorProperties struct {
 	// Local file that is used as the tool
 	Tool_files []string
 
+	// name of the java/common modules (if any) that produces the host executable.   Leave empty for
+	// prebuilts or scripts that do not need a module to build them.
+	Tools_common []string
+
 	// List of directories to export generated headers from
 	Export_include_dirs []string
 
@@ -133,15 +137,20 @@ func (g *Module) DepsMutator(ctx android.BottomUpMutatorContext) {
 	if g, ok := ctx.Module().(*Module); ok {
 		if len(g.properties.Tools) > 0 {
 			ctx.AddFarVariationDependencies([]blueprint.Variation{
-				{"arch", ctx.AConfig().BuildOsVariant},
+				{"arch", ctx.AConfig().BuildOsTarget.String()},
 			}, hostToolDepTag, g.properties.Tools...)
+		}
+		if len(g.properties.Tools_common) > 0 {
+			ctx.AddFarVariationDependencies([]blueprint.Variation{
+				{"arch", ctx.AConfig().BuildOsTarget.GetCommonTarget().String()},
+			}, hostToolDepTag, g.properties.Tools_common...)
 		}
 	}
 }
 
 func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
-	if len(g.properties.Tools) == 0 && len(g.properties.Tool_files) == 0 {
-		ctx.ModuleErrorf("at least one `tools` or `tool_files` is required")
+	if len(g.properties.Tools) == 0 && len(g.properties.Tool_files) == 0 && len(g.properties.Tools_common) == 0 {
+		ctx.ModuleErrorf("at least one `tools` or `tool_files` or `tools_common` is required")
 		return
 	}
 
@@ -156,7 +165,7 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	tools := map[string]android.Path{}
 
-	if len(g.properties.Tools) > 0 {
+	if len(g.properties.Tools) > 0 || len(g.properties.Tools_common) > 0 {
 		ctx.VisitDirectDeps(func(module android.Module) {
 			switch ctx.OtherModuleDependencyTag(module) {
 			case android.SourceDepTag:

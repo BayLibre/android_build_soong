@@ -70,8 +70,8 @@ type config struct {
 	ConfigFileName           string
 	ProductVariablesFileName string
 
-	Targets        map[OsClass][]Target
-	BuildOsVariant string
+	Targets       map[OsClass][]Target
+	BuildOsTarget Target
 
 	deviceConfig *deviceConfig
 
@@ -278,7 +278,7 @@ func NewConfig(srcDir, buildDir string) (Config, error) {
 	}
 
 	config.Targets = targets
-	config.BuildOsVariant = targets[Host][0].String()
+	config.BuildOsTarget = targets[Host][0]
 
 	if err := config.fromEnv(); err != nil {
 		return Config{}, err
