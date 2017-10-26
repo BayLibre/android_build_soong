@@ -34,6 +34,24 @@
       "revId": "f4462f593ffc45ab863d26231e05de41be855155",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "076529c0_1f80fd33",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-26T21:39:17Z",
+      "side": 1,
+      "message": "Sounds like a bug, compile_multilib shouldn\u0027t affect a java binary",
+      "parentUuid": "997e93a9_14640c91",
+      "revId": "f4462f593ffc45ab863d26231e05de41be855155",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
