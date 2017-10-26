@@ -16,6 +16,24 @@
       "revId": "f4462f593ffc45ab863d26231e05de41be855155",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "997e93a9_14640c91",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2017-10-26T21:37:08Z",
+      "side": 1,
+      "message": "I got it to work in a different way but it requires that the java_host_binary have a compile_multilib: first in it.",
+      "parentUuid": "268b0c7b_6ecdb18a",
+      "revId": "f4462f593ffc45ab863d26231e05de41be855155",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
