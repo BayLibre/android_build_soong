@@ -115,9 +115,21 @@ func run() error {
 		}
 	}()
 
-	if strings.Contains(rawCommand, "__SBOX_OUT_DIR__") {
-		rawCommand = strings.Replace(rawCommand, "__SBOX_OUT_DIR__", tempDir, -1)
+	// replace "__SBOX_REWRITE:<outputRoot>" with "<tempDir>"
+	separator := "__SBOX_REWRITE:"
+	components := strings.Split(rawCommand, separator)
+	for i, component := range components {
+		if i > 0 { // first component doesn't have <separator> as a prefix
+			if strings.HasPrefix(component, outputRoot) {
+				component = strings.TrimPrefix(component, outputRoot)
+				component = tempDir + component
+				components[i] = component
+			} else {
+				return fmt.Errorf("Illegal argument: separator %s must be followed by output root %s, not %q", separator, outputRoot, component)
+			}
+		}
 	}
+	rawCommand = strings.Join(components, "")
 
 	if strings.Contains(rawCommand, "__SBOX_OUT_FILES__") {
 		// expands into a space-separated list of output files to be generated into the sandbox directory

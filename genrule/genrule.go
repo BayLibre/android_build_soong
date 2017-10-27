@@ -16,7 +16,6 @@ package genrule
 
 import (
 	"fmt"
-	"path"
 	"strings"
 
 	"github.com/google/blueprint"
@@ -227,15 +226,7 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			}
 			return "${depfile}", nil
 		case "genDir":
-			genPath := android.PathForModuleGen(ctx, "").String()
-			var relativePath string
-			var err error
-			outputPath := android.PathForOutput(ctx).String()
-			relativePath, err = filepath.Rel(outputPath, genPath)
-			if err != nil {
-				panic(err)
-			}
-			return path.Join("__SBOX_OUT_DIR__", relativePath), nil
+			return "__SBOX_REWRITE:" + android.PathForModuleGen(ctx, "").String(), nil
 		default:
 			if strings.HasPrefix(name, "location ") {
 				label := strings.TrimSpace(strings.TrimPrefix(name, "location "))
