@@ -224,7 +224,7 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			if !g.properties.Depfile {
 				return "", fmt.Errorf("$(depfile) used without depfile property")
 			}
-			return "${depfile}", nil
+			return "__SBOX_REWRITE:${depfile}", nil
 		case "genDir":
 			return "__SBOX_REWRITE:" + android.PathForModuleGen(ctx, "").String(), nil
 		default:
