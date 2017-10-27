@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4d934a83_ae41bd17",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1068404
+      },
+      "writtenOn": "2017-10-27T10:27:06Z",
+      "side": 1,
+      "message": "Ah, TIL - that\u0027s horrifying!\n\nI\u0027ve chosen to go with your suggestion in the comment below, which will avoid having to use either of these patterns here, but I\u0027ll keep that in mind for future reference.",
+      "parentUuid": "f3183b91_1a46960e",
+      "revId": "c162abb2084035e69cb104edc33f460c780a5fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f5442408_23a64b51",
         "filename": "cc/sanitize.go",
         "patchSetId": 8
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "fef54654_1472487b",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1068404
+      },
+      "writtenOn": "2017-10-27T10:27:06Z",
+      "side": 1,
+      "message": "I was hoping not to do this because we also export cfiCfFlags to make (for config_sanitizers.mk) and it would mean duplicating this logic there (and ensuring we keep them consistent), but that may be the cleaner option (and avoids the problem you mentioned in the comment above as well). Done.",
+      "parentUuid": "f5442408_23a64b51",
+      "revId": "c162abb2084035e69cb104edc33f460c780a5fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "642d3c3c_fb8260fb",
         "filename": "cc/sanitize.go",
         "patchSetId": 8
@@ -47,6 +83,30 @@
       "writtenOn": "2017-10-25T17:49:44Z",
       "side": 1,
       "message": "Inconsitent usage of enabled vs. explicitly enabled is a little confusing.  Can you add a comment tot isSanitizerEnabled describing the semantics, and either rename this to isEnabled or rename isSanitizerEnabled to isSanitizerExplicitlyEnabled?",
+      "range": {
+        "startLine": 557,
+        "startChar": 4,
+        "endLine": 557,
+        "endChar": 23
+      },
+      "revId": "c162abb2084035e69cb104edc33f460c780a5fe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "042109ef_be93d342",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1068404
+      },
+      "writtenOn": "2017-10-27T10:27:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "642d3c3c_fb8260fb",
       "range": {
         "startLine": 557,
         "startChar": 4,
