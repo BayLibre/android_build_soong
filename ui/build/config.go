@@ -46,6 +46,8 @@ type configImpl struct {
 	ninjaArgs    []string
 	katiSuffix   string
 	targetDevice string
+
+	pathReplaced bool
 }
 
 const srcDirFileCheck = "build/soong/root.bp"
