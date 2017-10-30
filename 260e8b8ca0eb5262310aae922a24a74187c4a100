@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5bbed670_4befc975",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-30T03:19:15Z",
+      "side": 1,
+      "message": "This needs a description of what the problem is and why this fixes it.",
+      "revId": "260e8b8ca0eb5262310aae922a24a74187c4a100",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
