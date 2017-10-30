@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1c08df62_0d1178f7",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-30T23:06:43Z",
+      "side": 1,
+      "message": "I guess I\u0027ll switch to flag.Parse in a followup patch if you think that\u0027s ok",
+      "parentUuid": "8189ec63_4ac41a4d",
+      "revId": "021122c5c6ea0508cc5e6182168e87473413f579",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4ef94aea_feb4327d",
         "filename": "cmd/sbox/sbox.go",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "80539092_4e14ab58",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-30T23:06:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ef94aea_feb4327d",
+      "range": {
+        "startLine": 82,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 28
+      },
+      "revId": "021122c5c6ea0508cc5e6182168e87473413f579",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7cacbfbf_c38f6d78",
         "filename": "cmd/sbox/sbox.go",
         "patchSetId": 2
@@ -56,6 +98,24 @@
       "revId": "021122c5c6ea0508cc5e6182168e87473413f579",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ff1ba7e_3355c416",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-30T23:06:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cacbfbf_c38f6d78",
+      "revId": "021122c5c6ea0508cc5e6182168e87473413f579",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "85e37467_cd13c624",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-30T23:06:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b27baaf8_a83752e2",
+      "range": {
+        "startLine": 111,
+        "startChar": 21,
+        "endLine": 111,
+        "endChar": 31
+      },
+      "revId": "021122c5c6ea0508cc5e6182168e87473413f579",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cb2f4e3b_cc2f5eb2",
         "filename": "cmd/sbox/sbox.go",
         "patchSetId": 2
@@ -93,6 +177,24 @@
       "writtenOn": "2017-10-30T20:43:00Z",
       "side": 1,
       "message": "Should it be an error if the command doesn\u0027t reference __SBOX_DEPFILE__?  Maybe caught in genrule.go?",
+      "revId": "021122c5c6ea0508cc5e6182168e87473413f579",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cba8a3de_a668473a",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-10-30T23:06:43Z",
+      "side": 1,
+      "message": "genrule.go is what adds the \"--depfile-out\" argument and also what puts \"__SBOX_DEPFILE__\" in the command-line, which should make it not possible for a rule to have \"--depfile-out\" without \"__SBOX_DEPFILE__\". I\u0027ll add a check in sbox anyway.",
+      "parentUuid": "cb2f4e3b_cc2f5eb2",
       "revId": "021122c5c6ea0508cc5e6182168e87473413f579",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
