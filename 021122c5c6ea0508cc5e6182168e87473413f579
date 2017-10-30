@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8189ec63_4ac41a4d",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-30T20:43:00Z",
+      "side": 1,
+      "message": "Unrelated to this change, but this will panic if the argument is missing.",
+      "revId": "021122c5c6ea0508cc5e6182168e87473413f579",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ef94aea_feb4327d",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-30T20:43:00Z",
+      "side": 1,
+      "message": "Unrelated to this change, but len(outputsVarEntries) \u003d\u003d 0 would be more robust against changes to the way outputVarEntries was allocated.",
+      "range": {
+        "startLine": 82,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 28
+      },
+      "revId": "021122c5c6ea0508cc5e6182168e87473413f579",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cacbfbf_c38f6d78",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-30T20:43:00Z",
+      "side": 1,
+      "message": "Unrelated to this change, but !\u003d \"\" is more idiomatic for checking for empty strings.",
+      "revId": "021122c5c6ea0508cc5e6182168e87473413f579",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b27baaf8_a83752e2",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-30T20:43:00Z",
+      "side": 1,
+      "message": "I usually use []string(nil) here - I don\u0027t know if it matters, but it might save an allocation that is about to be thrown away.",
+      "range": {
+        "startLine": 111,
+        "startChar": 21,
+        "endLine": 111,
+        "endChar": 31
+      },
+      "revId": "021122c5c6ea0508cc5e6182168e87473413f579",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb2f4e3b_cc2f5eb2",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-30T20:43:00Z",
+      "side": 1,
+      "message": "Should it be an error if the command doesn\u0027t reference __SBOX_DEPFILE__?  Maybe caught in genrule.go?",
+      "revId": "021122c5c6ea0508cc5e6182168e87473413f579",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30dd61a5_5fe000f7",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-10-30T20:43:00Z",
+      "side": 1,
+      "message": "ctx.AConfig().BuildDir()",
+      "range": {
+        "startLine": 144,
+        "startChar": 12,
+        "endLine": 144,
+        "endChar": 35
+      },
+      "revId": "021122c5c6ea0508cc5e6182168e87473413f579",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
