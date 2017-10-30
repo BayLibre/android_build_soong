@@ -322,6 +322,9 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 			// TODO: put in flags?
 			flags.RequiredInstructionSet = "arm"
 		}
+		if !ctx.toolchain().Is64Bit() {
+			flags.CFlags = append(flags.CFlags, "-mllvm", "-asan-force-dynamic-shadow=1")
+		}
 		flags.CFlags = append(flags.CFlags, asanCflags...)
 		flags.LdFlags = append(flags.LdFlags, asanLdflags...)
 
