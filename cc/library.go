@@ -416,6 +416,11 @@ func (library *libraryDecorator) getLibName(ctx ModuleContext) string {
 		name = ctx.baseModuleName()
 	}
 
+	// If this is a vndk extension, change the lib name to the value of `extends` property.
+	if extends := ctx.getVndkExtendsModuleName(); extends != nil {
+		name = *extends
+	}
+
 	if ctx.Host() && Bool(library.Properties.Unique_host_soname) {
 		if !strings.HasSuffix(name, "-host") {
 			name = name + "-host"
@@ -637,7 +642,7 @@ func (library *libraryDecorator) linkSAbiDumpFiles(ctx ModuleContext, objs Objec
 		library.sAbiOutputFile = TransformDumpToLinkedDump(ctx, objs.sAbiDumpFiles, soFile, symbolFile, "current", fileName, exportedHeaderFlags)
 		if refSourceDumpFile.Valid() {
 			unzippedRefDump := UnzipRefDump(ctx, refSourceDumpFile.Path(), fileName)
-			library.sAbiDiff = SourceAbiDiff(ctx, library.sAbiOutputFile.Path(), unzippedRefDump, fileName)
+			library.sAbiDiff = SourceAbiDiff(ctx, library.sAbiOutputFile.Path(), unzippedRefDump, fileName, ctx.isVndkExt())
 		}
 	}
 }
@@ -726,7 +731,8 @@ func (library *libraryDecorator) install(ctx ModuleContext, file android.Path) {
 			} else if ctx.isVndk() {
 				library.baseInstaller.subDir = "vndk"
 			}
-			if ctx.isVndk() && ctx.DeviceConfig().PlatformVndkVersion() != "current" {
+			needVersionSuffix := ctx.isVndk() && !(ctx.SocSpecific() || ctx.DeviceSpecific())
+			if needVersionSuffix && ctx.DeviceConfig().PlatformVndkVersion() != "current" {
 				library.baseInstaller.subDir += "-" + ctx.DeviceConfig().PlatformVndkVersion()
 			}
 		}
