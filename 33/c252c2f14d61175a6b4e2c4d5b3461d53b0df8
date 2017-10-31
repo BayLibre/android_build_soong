@@ -1,0 +1,10 @@
+Build-Cop-Override+1: Colin Cross <ccross@android.com>
+Verified+1: Orion Hodson <oth@google.com>
+Code-Review+2: Orion Hodson <oth@google.com>
+Autosubmit+1: Orion Hodson <oth@google.com>
+Presubmit-Ready+1: Orion Hodson <oth@google.com>
+Submitted-by: Colin Cross <ccross@android.com>
+Submitted-at: Tue, 31 Oct 2017 21:01:40 +0000
+Reviewed-on: https://android-review.googlesource.com/524995
+Project: platform/build/soong
+Branch: refs/heads/master

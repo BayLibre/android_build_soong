@@ -1,0 +1,7 @@
+Build-Cop-Override+1: Colin Cross <ccross@android.com>
+Presubmit-Verified-1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Colin Cross <ccross@android.com>
+Submitted-at: Tue, 31 Oct 2017 21:01:40 +0000
+Reviewed-on: https://android-review.googlesource.com/524976
+Project: platform/build/soong
+Branch: refs/heads/master
