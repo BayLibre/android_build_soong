@@ -416,6 +416,11 @@ func (library *libraryDecorator) getLibName(ctx ModuleContext) string {
 		name = ctx.baseModuleName()
 	}
 
+	// If this is a vndk extension, change the lib name to the value of `extends` property.
+	if extends := ctx.getExtends(); extends != nil {
+		name = *extends
+	}
+
 	if ctx.Host() && Bool(library.Properties.Unique_host_soname) {
 		if !strings.HasSuffix(name, "-host") {
 			name = name + "-host"
@@ -726,7 +731,8 @@ func (library *libraryDecorator) install(ctx ModuleContext, file android.Path) {
 			} else if ctx.isVndk() {
 				library.baseInstaller.subDir = "vndk"
 			}
-			if ctx.isVndk() && ctx.DeviceConfig().PlatformVndkVersion() != "current" {
+			needVersionSuffix := ctx.isVndk() && !(ctx.SocSpecific() || ctx.DeviceSpecific())
+			if needVersionSuffix && ctx.DeviceConfig().PlatformVndkVersion() != "current" {
 				library.baseInstaller.subDir += "-" + ctx.DeviceConfig().PlatformVndkVersion()
 			}
 		}

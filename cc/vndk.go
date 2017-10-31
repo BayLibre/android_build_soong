@@ -42,6 +42,9 @@ type VndkProperties struct {
 		// the module is VNDK-core and can link to other VNDK-core,
 		// VNDK-SP or LL-NDK modules only.
 		Support_system_process *bool
+
+		// Extending another module
+		Extends *string
 	}
 }
 
@@ -67,6 +70,10 @@ func (vndk *vndkdep) isVndkSp() bool {
 	return Bool(vndk.Properties.Vndk.Support_system_process)
 }
 
+func (vndk *vndkdep) hasExtends() bool {
+	return vndk.Properties.Vndk.Extends != nil
+}
+
 func (vndk *vndkdep) typeName() string {
 	if !vndk.isVndk() {
 		return "native:vendor"
@@ -77,7 +84,7 @@ func (vndk *vndkdep) typeName() string {
 	return "native:vendor:vndksp"
 }
 
-func (vndk *vndkdep) vndkCheckLinkType(ctx android.ModuleContext, to *Module) {
+func (vndk *vndkdep) vndkCheckLinkType(ctx android.ModuleContext, to *Module, tag dependencyTag) {
 	if to.linker == nil {
 		return
 	}
@@ -109,11 +116,31 @@ func (vndk *vndkdep) vndkCheckLinkType(ctx android.ModuleContext, to *Module) {
 			vndk.typeName(), to.Name())
 		return
 	}
+	if tag == vndkExtDepTag {
+		// Ensure `extends: "name"` property refers a vndk module that has vendor_available
+		// and has identical vndk properties.
+		if to.vndkdep == nil || !to.vndkdep.isVndk() {
+			ctx.ModuleErrorf("`extends` refers a non-vndk module %q", to.Name())
+			return
+		}
+		if to.VendorProperties.Vendor_available == nil {
+			ctx.ModuleErrorf(
+				"`extends` refers module %q which does not have `vendor_available: true`",
+				to.Name())
+			return
+		}
+		if !*to.VendorProperties.Vendor_available {
+			ctx.ModuleErrorf(
+				"`extends` refers module %q which has `vendor_available: false`",
+				to.Name())
+			return
+		}
+	}
 	if to.vndkdep == nil {
 		return
 	}
 	if (vndk.isVndk() && !to.vndkdep.isVndk()) || (vndk.isVndkSp() && !to.vndkdep.isVndkSp()) {
-		ctx.ModuleErrorf("(%s) should not link to %q(%s)",
+		ctx.ModuleErrorf("(%s) should not link to %q(%s) xx",
 			vndk.typeName(), to.Name(), to.vndkdep.typeName())
 		return
 	}
@@ -163,7 +190,8 @@ func vndkMutator(mctx android.BottomUpMutatorContext) {
 							sort.Strings(vndkCoreLibraries)
 						}
 					}
-					if !Bool(m.VendorProperties.Vendor_available) {
+					vendorSpecific := mctx.SocSpecific() || mctx.DeviceSpecific()
+					if !Bool(m.VendorProperties.Vendor_available) && !vendorSpecific {
 						if !inList(name, vndkPrivateLibraries) {
 							vndkPrivateLibraries = append(vndkPrivateLibraries, name)
 							sort.Strings(vndkPrivateLibraries)

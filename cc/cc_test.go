@@ -177,6 +177,126 @@ func TestVendorSrc(t *testing.T) {
 	}
 }
 
+func TestVndk(t *testing.T) {
+	ctx := testCc(t, `
+		cc_library {
+			name: "libvndk",
+			vendor_available: true,
+			vndk: {
+				enabled: true,
+			},
+			nocrt : true,
+		}
+	`)
+
+	variant := "android_arm64_armv8-a_vendor_shared"
+	mod := ctx.ModuleForTests("libvndk", variant).Module().(*Module)
+
+	if mod == nil {
+		t.Errorf("failed to find libvndk")
+	}
+}
+
+func TestVndkIndirectPrivate(t *testing.T) {
+	ctx := testCc(t, `
+		cc_library {
+			name: "libvndk_indirect_private",
+			vendor_available: false,
+			vndk: {
+				enabled: true,
+			},
+			nocrt : true,
+		}
+	`)
+
+	variant := "android_arm64_armv8-a_vendor_shared"
+	mod := ctx.ModuleForTests("libvndk_indirect_private", variant).Module().(*Module)
+
+	if mod == nil {
+		t.Errorf("failed to find libvndk_vndk_indirect_private")
+	}
+}
+
+func TestVndkSp(t *testing.T) {
+	ctx := testCc(t, `
+		cc_library {
+			name: "libvndksp",
+			vendor_available: true,
+			vndk: {
+				enabled: true,
+				support_system_process: true,
+			},
+			nocrt : true,
+		}
+	`)
+
+	variant := "android_arm64_armv8-a_vendor_shared"
+	mod := ctx.ModuleForTests("libvndksp", variant).Module().(*Module)
+
+	if mod == nil {
+		t.Errorf("failed to find libvndksp")
+	}
+}
+
+func TestVndkSpIndirectPrivate(t *testing.T) {
+	ctx := testCc(t, `
+		cc_library {
+			name: "libvndksp_indirect_private",
+			vendor_available: false,
+			vndk: {
+				enabled: true,
+				support_system_process: true,
+			},
+			nocrt : true,
+		}
+	`)
+
+	variant := "android_arm64_armv8-a_vendor_shared"
+	mod := ctx.ModuleForTests("libvndksp_indirect_private", variant).Module().(*Module)
+
+	if mod == nil {
+		t.Errorf("failed to find libvndksp_indirect_private")
+	}
+}
+
+func TestVndkExtends(t *testing.T) {
+	ctx := testCc(t, `
+		cc_library {
+			name: "libvndk",
+			vendor_available: true,
+			vndk: {
+				enabled: true,
+			},
+			nocrt : true,
+		}
+
+		cc_library {
+			name: "libvndk_ext",
+			vendor: true,
+			vndk: {
+				enabled: true,
+				extends: "libvndk",
+			},
+			nocrt : true,
+		}
+	`)
+
+	variant := "android_arm64_armv8-a_vendor_shared"
+	mod := ctx.ModuleForTests("libvndk_ext", variant).Module().(*Module)
+	if mod == nil {
+		t.Errorf("cannot find libvndk_ext")
+	}
+	if mod.vndkdep == nil {
+		t.Errorf("libvndk_ext must have `vndk` properties")
+	}
+	if !mod.vndkdep.isVndk() {
+		t.Errorf("libvndk_ext must be vndk")
+	}
+	if mod.vndkdep.Properties.Vndk.Extends == nil || *mod.vndkdep.Properties.Vndk.Extends != "libvndk" {
+		t.Errorf("libvndk_ext must extend from libvndk")
+	}
+}
+
 var (
 	str11 = "01234567891"
 	str10 = str11[:10]
