@@ -52,10 +52,7 @@ func TestMain(m *testing.M) {
 	os.Exit(run())
 }
 
-func testCc(t *testing.T, bp string) *android.TestContext {
-	config := android.TestArchConfig(buildDir, nil)
-	config.ProductVariables.DeviceVndkVersion = StringPtr("current")
-
+func createTestContext(t *testing.T, config android.Config, bp string) *android.TestContext {
 	ctx := android.NewTestArchContext()
 	ctx.RegisterModuleType("cc_library", android.ModuleFactoryAdaptor(LibraryFactory))
 	ctx.RegisterModuleType("cc_library_shared", android.ModuleFactoryAdaptor(LibrarySharedFactory))
@@ -91,7 +88,7 @@ func testCc(t *testing.T, bp string) *android.TestContext {
 		cc_library {
 			name: "libc",
 			no_libgcc : true,
-			nocrt : true,
+			nocrt: true,
 			system_shared_libs: [],
 		}
 		llndk_library {
@@ -142,6 +139,15 @@ func testCc(t *testing.T, bp string) *android.TestContext {
 		"my_include": nil,
 	})
 
+	return ctx
+}
+
+func testCc(t *testing.T, bp string) *android.TestContext {
+	config := android.TestArchConfig(buildDir, nil)
+	config.ProductVariables.DeviceVndkVersion = StringPtr("current")
+
+	ctx := createTestContext(t, config, bp)
+
 	_, errs := ctx.ParseFileList(".", []string{"Android.bp"})
 	failIfErrored(t, errs)
 	_, errs = ctx.PrepareBuildActions(config)
@@ -149,6 +155,29 @@ func testCc(t *testing.T, bp string) *android.TestContext {
 
 	return ctx
 }
+
+func testCcError(t *testing.T, bp string) []error {
+	config := android.TestArchConfig(buildDir, nil)
+	config.ProductVariables.DeviceVndkVersion = StringPtr("current")
+
+	ctx := createTestContext(t, config, bp)
+
+	_, errs := ctx.ParseFileList(".", []string{"Android.bp"})
+	failIfErrored(t, errs)
+	_, errs = ctx.PrepareBuildActions(config)
+	if len(errs) > 0 {
+		return errs
+	}
+
+	t.Errorf("Missing expected errors")
+	t.FailNow()
+	return []error{}
+}
+
+const (
+	coreVariant   = "android_arm_armv7-a-neon_vendor_shared"
+	vendorVariant = "android_arm64_armv8-a_vendor_shared"
+)
 
 func TestVendorSrc(t *testing.T) {
 	ctx := testCc(t, `
@@ -167,7 +196,7 @@ func TestVendorSrc(t *testing.T) {
 		}
 	`)
 
-	ld := ctx.ModuleForTests("libTest", "android_arm_armv7-a-neon_vendor_shared").Rule("ld")
+	ld := ctx.ModuleForTests("libTest", coreVariant).Rule("ld")
 	var objs []string
 	for _, o := range ld.Inputs {
 		objs = append(objs, o.Base())
@@ -175,6 +204,335 @@ func TestVendorSrc(t *testing.T) {
 	if len(objs) != 2 || objs[0] != "foo.o" || objs[1] != "bar.o" {
 		t.Errorf("inputs of libTest must be []string{\"foo.o\", \"bar.o\"}, but was %#v.", objs)
 	}
+}
+
+func TestVndk(t *testing.T) {
+	ctx := testCc(t, `
+		cc_library {
+			name: "libvndk",
+			vendor_available: true,
+			vndk: {
+				enabled: true,
+			},
+			nocrt: true,
+		}
+	`)
+
+	mod := ctx.ModuleForTests("libvndk", vendorVariant).Module().(*Module)
+
+	if mod == nil {
+		t.Errorf("failed to find libvndk")
+	}
+}
+
+func TestVndkIndirectPrivate(t *testing.T) {
+	ctx := testCc(t, `
+		cc_library {
+			name: "libvndk_indirect_private",
+			vendor_available: false,
+			vndk: {
+				enabled: true,
+			},
+			nocrt: true,
+		}
+	`)
+
+	mod := ctx.ModuleForTests("libvndk_indirect_private", vendorVariant).Module().(*Module)
+
+	if mod == nil {
+		t.Errorf("failed to find libvndk_vndk_indirect_private")
+	}
+}
+
+func TestVndkSp(t *testing.T) {
+	ctx := testCc(t, `
+		cc_library {
+			name: "libvndksp",
+			vendor_available: true,
+			vndk: {
+				enabled: true,
+				support_system_process: true,
+			},
+			nocrt: true,
+		}
+	`)
+
+	mod := ctx.ModuleForTests("libvndksp", vendorVariant).Module().(*Module)
+
+	if mod == nil {
+		t.Errorf("failed to find libvndksp")
+	}
+}
+
+func TestVndkSpIndirectPrivate(t *testing.T) {
+	ctx := testCc(t, `
+		cc_library {
+			name: "libvndksp_indirect_private",
+			vendor_available: false,
+			vndk: {
+				enabled: true,
+				support_system_process: true,
+			},
+			nocrt: true,
+		}
+	`)
+
+	mod := ctx.ModuleForTests("libvndksp_indirect_private", vendorVariant).Module().(*Module)
+
+	if mod == nil {
+		t.Errorf("failed to find libvndksp_indirect_private")
+	}
+}
+
+func TestVndkExt(t *testing.T) {
+	ctx := testCc(t, `
+		cc_library {
+			name: "libvndk",
+			vendor_available: true,
+			vndk: {
+				enabled: true,
+			},
+			nocrt: true,
+		}
+
+		cc_library {
+			name: "libvndk_ext",
+			vendor: true,
+			vndk: {
+				enabled: true,
+				extends: "libvndk",
+			},
+			nocrt: true,
+		}
+	`)
+
+	mod := ctx.ModuleForTests("libvndk_ext", vendorVariant).Module().(*Module)
+	if mod == nil {
+		t.Errorf("cannot find libvndk_ext")
+	}
+	if mod.vndkdep == nil {
+		t.Errorf("libvndk_ext must have `vndk` properties")
+	}
+	if !mod.vndkdep.isVndk() {
+		t.Errorf("libvndk_ext must be vndk")
+	}
+	if mod.vndkdep.Properties.Vndk.Extends == nil || *mod.vndkdep.Properties.Vndk.Extends != "libvndk" {
+		t.Errorf("libvndk_ext must extend from libvndk")
+	}
+}
+
+func TestVndkExtUsedByVendorModule(t *testing.T) {
+	ctx := testCc(t, `
+		cc_library {
+			name: "libvndk",
+			vendor_available: true,
+			vndk: {
+				enabled: true,
+			},
+			nocrt: true,
+		}
+
+		cc_library {
+			name: "libvndk_ext",
+			vendor: true,
+			vndk: {
+				enabled: true,
+				extends: "libvndk",
+			},
+			nocrt: true,
+		}
+
+		cc_library {
+			name: "libvendor",
+			vendor: true,
+			shared_libs: ["libvndk_ext"],
+			nocrt: true,
+		}
+	`)
+
+	mod := ctx.ModuleForTests("libvendor", vendorVariant).Module().(*Module)
+	if mod == nil {
+		t.Errorf("cannot find libvendor")
+	}
+}
+
+func TestVndkExtUsesVendorModule(t *testing.T) {
+	ctx := testCc(t, `
+		cc_library {
+			name: "libvndk",
+			vendor_available: true,
+			vndk: {
+				enabled: true,
+			},
+			nocrt: true,
+		}
+
+		cc_library {
+			name: "libvndk_ext",
+			vendor: true,
+			vndk: {
+				enabled: true,
+				extends: "libvndk",
+			},
+			shared_libs: ["libvendor"],
+			nocrt: true,
+		}
+
+		cc_library {
+			name: "libvendor",
+			vendor: true,
+			nocrt: true,
+		}
+	`)
+
+	mod := ctx.ModuleForTests("libvendor", vendorVariant).Module().(*Module)
+	if mod == nil {
+		t.Errorf("cannot find libvendor")
+	}
+}
+
+func TestVndkUseVndkExtError(t *testing.T) {
+	// This test ensures an error is emitted if a vndk module depends on vndk-ext module.
+	testCcError(t, `
+		cc_library {
+			name: "libvndk",
+			vendor_available: true,
+			vndk: {
+				enabled: true,
+			},
+			nocrt: true,
+		}
+
+		cc_library {
+			name: "libvndk_ext",
+			vendor: true,
+			vndk: {
+				enabled: true,
+				extends: "libvndk",
+			},
+			nocrt: true,
+		}
+
+		cc_library {
+			name: "libvndk2",
+			vendor_available: true,
+			vndk: {
+				enabled: true,
+			},
+			shared_libs: ["libvndk_ext"],
+			nocrt: true,
+		}
+	`)
+}
+
+func TestVndkSpUseVndkSpExtError(t *testing.T) {
+	// This test ensures an error is emitted if a vndk-sp module depends on vndk-sp-ext module.
+	testCcError(t, `
+		cc_library {
+			name: "libvndk_sp",
+			vendor_available: true,
+			vndk: {
+				enabled: true,
+				support_system_process: true,
+			},
+			nocrt: true,
+		}
+
+		cc_library {
+			name: "libvndk_sp_ext",
+			vendor: true,
+			vndk: {
+				enabled: true,
+				extends: "libvndk_sp",
+				support_system_process: true,
+			},
+			nocrt: true,
+		}
+
+		cc_library {
+			name: "libvndk_sp_2",
+			vendor_available: true,
+			vndk: {
+				enabled: true,
+				support_system_process: true,
+			},
+			shared_libs: ["libvndk_sp_ext"],
+			nocrt: true,
+		}
+	`)
+}
+
+func TestVndkExtUseVendorLib(t *testing.T) {
+	ctx := testCc(t, `
+		cc_library {
+			name: "libvndk",
+			vendor_available: true,
+			vndk: {
+				enabled: true,
+			},
+			nocrt: true,
+		}
+
+		cc_library {
+			name: "libvndk_ext",
+			vendor: true,
+			vndk: {
+				enabled: true,
+				extends: "libvndk",
+			},
+			shared_libs: ["libvendor"],
+			nocrt: true,
+		}
+
+		cc_library {
+			name: "libvendor",
+			vendor: true,
+			nocrt: true,
+		}
+	`)
+
+	libvndkExt := ctx.ModuleForTests("libvndk_ext", vendorVariant).Module().(*Module)
+	if libvndkExt == nil {
+		t.Errorf("cannot find libvndk_ext")
+	}
+
+	libvendor := ctx.ModuleForTests("libvendor", vendorVariant).Module().(*Module)
+	if libvendor == nil {
+		t.Errorf("cannot find libvendor")
+	}
+}
+
+func TestVndkSpExtUseVendorLibError(t *testing.T) {
+	// This test ensures an error is emitted if a vndk-sp module depends on vndk-sp-ext module.
+	testCcError(t, `
+		cc_library {
+			name: "libvndk_sp",
+			vendor_available: true,
+			vndk: {
+				enabled: true,
+				support_system_process: true,
+			},
+			nocrt: true,
+		}
+
+		cc_library {
+			name: "libvndk_sp_ext",
+			vendor: true,
+			vndk: {
+				enabled: true,
+				extends: "libvndk_sp",
+				support_system_process: true,
+			},
+			shared_libs: ["libvendor"],
+			nocrt: true,
+		}
+
+		cc_library {
+			name: "libvendor",
+			vendor: true,
+			nocrt: true,
+		}
+	`)
 }
 
 var (
