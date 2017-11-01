@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16e8cd88_ff56e941",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-01T18:09:18Z",
+      "side": 1,
+      "message": "Why isn\u0027t this in sanitize.AndroidMk?  If it is because c is not available, then set something in sanitizeMutator that tells sanitize.AndroidMk what to do.",
+      "revId": "3b014e0f5e615c15fc624d6a5550bfe607a45170",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3f3af12_4a7af882",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-01T18:09:18Z",
+      "side": 1,
+      "message": "I\u0027m confused what you are trying to do here.  IIUC, the problem is that CFI doesn\u0027t change the install path like ASAN does, so you can\u0027t have both device variants installed, but this is going to affect asan too.  I think what you want is if t \u003d\u003d cfi set PreventInstall\u003dtrue on one of the variants?  I would only expect EmbeddedInMake to affect HideFromMake.",
+      "revId": "3b014e0f5e615c15fc624d6a5550bfe607a45170",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
