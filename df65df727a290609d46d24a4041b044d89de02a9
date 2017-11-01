@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0020bc89_2021773f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-11-01T22:48:55Z",
+      "side": 1,
+      "message": "Since we don\u0027t have build system support for vndk extensions yet.",
+      "range": {
+        "startLine": 16,
+        "startChar": 3,
+        "endLine": 16,
+        "endChar": 13
+      },
+      "revId": "df65df727a290609d46d24a4041b044d89de02a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
