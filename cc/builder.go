@@ -191,10 +191,10 @@ var (
 	// Abidiff check turned on in advice-only mode. Builds will not fail on abi incompatibilties / extensions.
 	sAbiDiff = pctx.AndroidStaticRule("sAbiDiff",
 		blueprint.RuleParams{
-			Command:     "$sAbiDiffer -lib $libName -arch $arch -advice-only -check-all-apis -o ${out} -new $in -old $referenceDump",
+			Command:     "$sAbiDiffer $allowFlags -lib $libName -arch $arch -check-all-apis -o ${out} -new $in -old $referenceDump",
 			CommandDeps: []string{"$sAbiDiffer"},
 		},
-		"referenceDump", "libName", "arch")
+		"allowFlags", "referenceDump", "libName", "arch")
 
 	unzipRefSAbiDump = pctx.AndroidStaticRule("unzipRefSAbiDump",
 		blueprint.RuleParams{
@@ -699,6 +699,8 @@ func UnzipRefDump(ctx android.ModuleContext, zippedRefDump android.Path, baseNam
 func SourceAbiDiff(ctx android.ModuleContext, inputDump android.Path, referenceDump android.Path,
 	baseName string) android.OptionalPath {
 	outputFile := android.PathForModuleOut(ctx, baseName+".abidiff")
+	allowFlags := []string{"-allow-extensions", "-allow-unreferenced-changes",
+		"-allow-unreferenced-elf-symbol-changes"}
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        sAbiDiff,
 		Description: "header-abi-diff " + outputFile.Base(),
@@ -709,6 +711,7 @@ func SourceAbiDiff(ctx android.ModuleContext, inputDump android.Path, referenceD
 			"referenceDump": referenceDump.String(),
 			"libName":       baseName,
 			"arch":          ctx.Arch().ArchType.Name,
+			"allowFlags":    strings.Join(allowFlags, " "),
 		},
 	})
 	return android.OptionalPathForPath(outputFile)
