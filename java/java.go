@@ -41,7 +41,6 @@ func init() {
 	android.RegisterModuleType("java_binary_host", BinaryHostFactory)
 	android.RegisterModuleType("java_import", ImportFactory)
 	android.RegisterModuleType("java_import_host", ImportFactoryHost)
-	android.RegisterModuleType("android_app", AndroidAppFactory)
 
 	android.RegisterSingletonType("logtags", LogtagsSingleton)
 }

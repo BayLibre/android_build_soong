@@ -69,6 +69,7 @@ func testJavaWithEnv(t *testing.T, bp string, env map[string]string) *android.Te
 	ctx.PreArchMutators(android.RegisterPrebuiltsPreArchMutators)
 	ctx.PreArchMutators(android.RegisterPrebuiltsPostDepsMutators)
 	ctx.PreArchMutators(android.RegisterDefaultsPreArchMutators)
+	ctx.RegisterPreSingletonType("overlay", OverlaySingletonFactory)
 	ctx.Register()
 
 	extraModules := []string{
@@ -93,6 +94,12 @@ func testJavaWithEnv(t *testing.T, bp string, env map[string]string) *android.Te
 			}
 		`, extra)
 	}
+
+	bp += `
+		android_app {
+			name: "framework-res",
+			no_framework_libs: true,
+		}`
 
 	if config.TargetOpenJDK9() {
 		systemModules := []string{
@@ -131,6 +138,8 @@ func testJavaWithEnv(t *testing.T, bp string, env map[string]string) *android.Te
 		"prebuilts/sdk/system_current/framework.aidl": nil,
 		"prebuilts/sdk/test_current/android.jar":      nil,
 		"prebuilts/sdk/test_current/framework.aidl":   nil,
+
+		"AndroidManifest.xml": nil,
 	})
 
 	_, errs := ctx.ParseBlueprintsFiles("Android.bp")
