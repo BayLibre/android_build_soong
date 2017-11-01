@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db63cd6b_7e95814e",
+        "filename": "cc/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-11-01T23:59:21Z",
+      "side": 1,
+      "message": "separated this out to improve readability.",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 1
+      },
+      "revId": "7fa12e99e78479b697bb0a0b85dc4f73daabd1c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
