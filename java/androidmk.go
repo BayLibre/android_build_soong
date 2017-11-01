@@ -42,6 +42,14 @@ func (library *Library) AndroidMk() android.AndroidMkData {
 				}
 				fmt.Fprintln(w, "LOCAL_SDK_VERSION :=", String(library.deviceProperties.Sdk_version))
 				fmt.Fprintln(w, "LOCAL_SOONG_HEADER_JAR :=", library.headerJarFile.String())
+
+				// Temporary hack: export sources used to compile framework.jar to Make
+				// to be used for droiddoc
+				// TODO(ccross): remove this once droiddoc is in soong
+				if library.Name() == "framework" {
+					fmt.Fprintln(w, "SOONG_FRAMEWORK_SRCS :=", strings.Join(library.compiledJavaSrcs.Strings(), " "))
+					fmt.Fprintln(w, "SOONG_FRAMEWORK_SRCJARS :=", strings.Join(library.compiledSrcJars.Strings(), " "))
+				}
 			},
 		},
 		Custom: func(w io.Writer, name, prefix, moduleDir string, data android.AndroidMkData) {
@@ -106,4 +114,24 @@ func (binary *Binary) AndroidMk() android.AndroidMkData {
 			fmt.Fprintln(w, "jar_installed_module :=")
 		},
 	}
+}
+
+func (app *AndroidApp) AndroidMk() android.AndroidMkData {
+	return android.AndroidMkData{
+		Class:      "APPS",
+		OutputFile: android.OptionalPathForPath(app.outputFile),
+		Include:    "$(BUILD_SYSTEM)/soong_app_prebuilt.mk",
+		Extra: []android.AndroidMkExtraFunc{
+			func(w io.Writer, outputFile android.Path) {
+				if Bool(app.appProperties.Export_package_resources) {
+					if app.dexJarFile != nil {
+						fmt.Fprintln(w, "LOCAL_SOONG_DEX_JAR :=", app.dexJarFile.String())
+					}
+					fmt.Fprintln(w, "LOCAL_SOONG_RESOURCE_EXPORT_PACKAGE :=", app.exportPackage.String())
+
+				}
+			},
+		},
+	}
+
 }
