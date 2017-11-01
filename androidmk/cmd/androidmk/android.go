@@ -647,6 +647,8 @@ var conditionalTranslations = map[string]map[bool]string{
 		false: "target.not_linux_glibc"},
 	"(,$(TARGET_BUILD_APPS))": {
 		false: "product_variables.unbundled_build"},
+	"($(TARGET_BUILD_APPS),)": {
+		false: "product_variables.unbundled_build"},
 	"($(TARGET_BUILD_PDK),true)": {
 		true: "product_variables.pdk"},
 	"($(TARGET_BUILD_PDK), true)": {
