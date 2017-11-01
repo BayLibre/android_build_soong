@@ -16,6 +16,7 @@ package android
 
 import (
 	"fmt"
+	"runtime"
 	"strings"
 
 	"github.com/google/blueprint"
@@ -111,7 +112,7 @@ func (p AndroidPackageContext) SourcePathVariableWithEnvOverride(name, path, env
 	})
 }
 
-// HostBinVariable returns a Variable whose value is the path to a host tool
+// HostBinToolVariable returns a Variable whose value is the path to a host tool
 // in the bin directory for host targets. It may only be called during a Go
 // package's initialization - either from the init() function or as part of a
 // package-scoped variable's initialization.
@@ -128,6 +129,33 @@ func (p AndroidPackageContext) HostBinToolVariable(name, path string) blueprint.
 func (p AndroidPackageContext) HostBinToolPath(config interface{}, path string) (Path, error) {
 	ctx := &configErrorWrapper{p, config.(Config), []error{}}
 	pa := PathForOutput(ctx, "host", ctx.config.PrebuiltOS(), "bin", path)
+	if len(ctx.errors) > 0 {
+		return nil, ctx.errors[0]
+	}
+	return pa, nil
+}
+
+// HostJNIToolVariable returns a Variable whose value is the path to a host tool
+// in the lib directory for host targets. It may only be called during a Go
+// package's initialization - either from the init() function or as part of a
+// package-scoped variable's initialization.
+func (p AndroidPackageContext) HostJNIToolVariable(name, path string) blueprint.Variable {
+	return p.VariableFunc(name, func(config interface{}) (string, error) {
+		po, err := p.HostJNIToolPath(config, path)
+		if err != nil {
+			return "", err
+		}
+		return po.String(), nil
+	})
+}
+
+func (p AndroidPackageContext) HostJNIToolPath(config interface{}, path string) (Path, error) {
+	ctx := &configErrorWrapper{p, config.(Config), []error{}}
+	ext := ".so"
+	if runtime.GOOS == "darwin" {
+		ext = ".dylib"
+	}
+	pa := PathForOutput(ctx, "host", ctx.config.PrebuiltOS(), "lib64", path+ext)
 	if len(ctx.errors) > 0 {
 		return nil, ctx.errors[0]
 	}
