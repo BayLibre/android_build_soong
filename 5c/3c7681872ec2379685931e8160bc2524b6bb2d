@@ -1,0 +1,7 @@
+Build-Cop-Override+1: Narayan Kamath <narayan@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Nicolas Geoffray <ngeoffray@google.com>
+Submitted-at: Wed, 01 Nov 2017 11:16:48 +0000
+Reviewed-on: https://android-review.googlesource.com/526135
+Project: platform/build/soong
+Branch: refs/heads/master
