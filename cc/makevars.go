@@ -68,6 +68,8 @@ func makeVarsProvider(ctx android.MakeVarsContext) {
 	ctx.Strict("ADDRESS_SANITIZER_CONFIG_EXTRA_LDFLAGS", strings.Join(asanLdflags, " "))
 	ctx.Strict("ADDRESS_SANITIZER_CONFIG_EXTRA_STATIC_LIBRARIES", strings.Join(asanLibs, " "))
 
+	ctx.Strict("COVERAGE_CONFIG_EXTRA_CFLAGS", strings.Join(coverageCflags, " "))
+
 	ctx.Strict("CFI_EXTRA_CFLAGS", strings.Join(cfiCflags, " "))
 	ctx.Strict("CFI_EXTRA_LDFLAGS", strings.Join(cfiLdflags, " "))
 

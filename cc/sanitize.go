@@ -28,7 +28,7 @@ var (
 	// understand also need to be added to ClangLibToolingUnknownCflags in
 	// cc/config/clang.go
 
-	asanCflags  = []string{"-fno-omit-frame-pointer"}
+	asanCflags  = []string{"-fno-omit-frame-pointer", "-DANDROID_SANITIZE_ADDRESS"}
 	asanLdflags = []string{"-Wl,-u,__asan_preinit"}
 	asanLibs    = []string{"libasan"}
 
@@ -40,6 +40,9 @@ var (
 	cfiArflags        = []string{"--plugin ${config.ClangBin}/../lib64/LLVMgold.so"}
 	cfiExportsMapPath = "build/soong/cc/config/cfi_exports.map"
 	cfiExportsMap     android.Path
+
+	coverageCflags = []string{"-fsanitize-coverage=trace-pc-guard,indirect-calls,trace-cmp",
+		"-DANDROID_SANITIZE_COVERAGE"}
 
 	intOverflowCflags = []string{"-fsanitize-blacklist=build/soong/cc/config/integer_overflow_blacklist.txt"}
 )
@@ -352,7 +355,7 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 	}
 
 	if Bool(sanitize.Properties.Sanitize.Coverage) {
-		flags.CFlags = append(flags.CFlags, "-fsanitize-coverage=trace-pc-guard,indirect-calls,trace-cmp")
+		flags.CFlags = append(flags.CFlags, coverageCflags...)
 	}
 
 	if Bool(sanitize.Properties.Sanitize.Safestack) {
