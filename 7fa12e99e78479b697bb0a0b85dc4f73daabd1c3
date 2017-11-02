@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "db0e467d_3e25a8c2",
+        "filename": "cc/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-02T00:07:23Z",
+      "side": 1,
+      "message": "Put this on a new line so all the -allow lines up",
+      "range": {
+        "startLine": 40,
+        "startChar": 31,
+        "endLine": 40,
+        "endChar": 51
+      },
+      "revId": "7fa12e99e78479b697bb0a0b85dc4f73daabd1c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64045dbf_736e1ea9",
+        "filename": "cc/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-02T00:07:23Z",
+      "side": 1,
+      "message": "I usually put the brace on a new line, it simplifies diffs when new entries are added to the list.",
+      "range": {
+        "startLine": 42,
+        "startChar": 42,
+        "endLine": 42,
+        "endChar": 43
+      },
+      "revId": "7fa12e99e78479b697bb0a0b85dc4f73daabd1c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "db63cd6b_7e95814e",
         "filename": "cc/builder.go",
         "patchSetId": 3
