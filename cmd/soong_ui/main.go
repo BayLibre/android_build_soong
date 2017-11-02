@@ -26,7 +26,7 @@ import (
 
 	"android/soong/ui/build"
 	"android/soong/ui/logger"
-	"android/soong/ui/tracer"
+	"android/soong/ui/stats/tracer"
 )
 
 func indexList(s string, list []string) int {

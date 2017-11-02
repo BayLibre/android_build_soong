@@ -21,7 +21,7 @@ import (
 	"time"
 
 	"android/soong/ui/logger"
-	"android/soong/ui/tracer"
+	"android/soong/ui/stats/tracer"
 )
 
 type StdioInterface interface {

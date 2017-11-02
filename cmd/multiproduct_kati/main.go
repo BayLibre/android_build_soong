@@ -29,7 +29,7 @@ import (
 
 	"android/soong/ui/build"
 	"android/soong/ui/logger"
-	"android/soong/ui/tracer"
+	"android/soong/ui/stats/tracer"
 )
 
 // We default to number of cpus / 4, which seems to be the sweet spot for my

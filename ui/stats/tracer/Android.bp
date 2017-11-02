@@ -14,7 +14,7 @@
 
 bootstrap_go_package {
     name: "soong-ui-tracer",
-    pkgPath: "android/soong/ui/tracer",
+    pkgPath: "android/soong/ui/stats/tracer",
     deps: ["soong-ui-logger"],
     srcs: [
         "microfactory.go",
