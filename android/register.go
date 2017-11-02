@@ -77,7 +77,7 @@ func (ctx *Context) Register() {
 		ctx.RegisterSingletonType(t.name, t.factory)
 	}
 
-	registerMutators(ctx.Context, preArch, preDeps, postDeps)
+	registerMutators(ctx.Context, preWorld, preArch, preDeps, postDeps)
 
 	ctx.RegisterSingletonType("env", EnvSingleton)
 }
