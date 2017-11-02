@@ -40,7 +40,7 @@ func registerMutatorsToContext(ctx *blueprint.Context, mutators []*mutator) {
 	}
 }
 
-func registerMutators(ctx *blueprint.Context, preArch, preDeps, postDeps []RegisterMutatorFunc) {
+func registerMutators(ctx *blueprint.Context, preWorld, preArch, preDeps, postDeps []RegisterMutatorFunc) {
 	mctx := &registerMutatorsContext{}
 
 	register := func(funcs []RegisterMutatorFunc) {
@@ -48,6 +48,8 @@ func registerMutators(ctx *blueprint.Context, preArch, preDeps, postDeps []Regis
 			f(mctx)
 		}
 	}
+
+	register(preWorld)
 
 	register(preArch)
 
@@ -84,12 +86,18 @@ func registerArchMutator(ctx RegisterMutatorsContext) {
 	ctx.TopDown("arch_hooks", archHookMutator).Parallel()
 }
 
+var preWorld = []RegisterMutatorFunc{}
+
 var preDeps = []RegisterMutatorFunc{
 	registerArchMutator,
 }
 
 var postDeps = []RegisterMutatorFunc{
 	RegisterPrebuiltsPostDepsMutators,
+}
+
+func PreWorldMutators(f RegisterMutatorFunc) {
+	preWorld = append(preWorld, f)
 }
 
 func PreArchMutators(f RegisterMutatorFunc) {
