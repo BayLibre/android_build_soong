@@ -41,6 +41,7 @@ function bindAll() {
   bindOne "${ANDROID_PATH}/art/build" "${OUTPUT_PATH}/src/android/soong/art"
   bindOne "${ANDROID_PATH}/external/llvm/soong" "${OUTPUT_PATH}/src/android/soong/llvm"
   bindOne "${ANDROID_PATH}/external/clang/soong" "${OUTPUT_PATH}/src/android/soong/clang"
+  bindOne "${ANDROID_PATH}/external/golang-protobuf/proto" "${OUTPUT_PATH}/src/github.com/golang/protobuf/proto"
   echo
   echo "Created GOPATH-compatible directory structure at ${OUTPUT_PATH}"
 }

@@ -15,6 +15,7 @@
 package build
 
 import (
+	stats "android/soong/ui/stats/soong"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -24,7 +25,7 @@ import (
 )
 
 func runNinja(ctx Context, config Config) {
-	ctx.BeginTrace("ninja")
+	ctx.BeginTrace(stats.PrimaryNinja)
 	defer ctx.EndTrace()
 
 	executable := config.PrebuiltBuildTool("ninja")

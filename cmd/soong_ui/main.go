@@ -26,6 +26,7 @@ import (
 
 	"android/soong/ui/build"
 	"android/soong/ui/logger"
+	stats "android/soong/ui/stats/soong"
 	"android/soong/ui/stats/tracer"
 )
 
@@ -60,6 +61,8 @@ func main() {
 	trace := tracer.New(log)
 	defer trace.Close()
 
+	statsCollector := stats.New()
+
 	build.SetupSignals(log, cancel, func() {
 		trace.Close()
 		log.Cleanup()
@@ -70,6 +73,7 @@ func main() {
 		Logger:         log,
 		Tracer:         trace,
 		StdioInterface: build.StdioImpl{},
+		StatsCollector: statsCollector,
 	}}
 	var config build.Config
 	if os.Args[1] == "--dumpvars-mode" || os.Args[1] == "--dumpvar-mode" {
@@ -80,6 +84,9 @@ func main() {
 
 	log.SetVerbose(config.IsVerbose())
 	build.SetupOutDir(buildCtx, config)
+
+	statsPath := filepath.Join(config.OutDir(), "build_stats")
+	defer statsCollector.Dump(statsPath)
 
 	if config.Dist() {
 		logsDir := filepath.Join(config.DistDir(), "logs")

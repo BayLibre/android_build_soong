@@ -24,6 +24,8 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+
+	stats "android/soong/ui/stats/soong"
 )
 
 var spaceSlashReplacer = strings.NewReplacer("/", "_", " ", "_")
@@ -63,7 +65,7 @@ func runKati(ctx Context, config Config) {
 
 	runKatiCleanSpec(ctx, config)
 
-	ctx.BeginTrace("kati")
+	ctx.BeginTrace(stats.RunKati)
 	defer ctx.EndTrace()
 
 	executable := config.PrebuiltBuildTool("ckati")

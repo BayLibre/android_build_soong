@@ -15,6 +15,7 @@
 package build
 
 import (
+	stats "android/soong/ui/stats/soong"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -24,7 +25,7 @@ import (
 )
 
 func runSoong(ctx Context, config Config) {
-	ctx.BeginTrace("soong")
+	ctx.BeginTrace(stats.RunSoong)
 	defer ctx.EndTrace()
 
 	func() {

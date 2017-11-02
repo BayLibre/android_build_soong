@@ -21,6 +21,7 @@ import (
 	"time"
 
 	"android/soong/ui/logger"
+	stats "android/soong/ui/stats/soong"
 	"android/soong/ui/stats/tracer"
 )
 
@@ -66,6 +67,8 @@ type ContextImpl struct {
 
 	Thread tracer.Thread
 	Tracer tracer.Tracer
+
+	StatsCollector *stats.Collector
 }
 
 // BeginTrace starts a new Duration Event.
@@ -73,6 +76,7 @@ func (c ContextImpl) BeginTrace(name string) {
 	if c.Tracer != nil {
 		c.Tracer.Begin(name, c.Thread)
 	}
+	c.StatsCollector.BeginEvent(name)
 }
 
 // EndTrace finishes the last Duration Event.
@@ -80,6 +84,7 @@ func (c ContextImpl) EndTrace() {
 	if c.Tracer != nil {
 		c.Tracer.End(c.Thread)
 	}
+	c.StatsCollector.EndEvent()
 }
 
 // CompleteTrace writes a trace with a beginning and end times.
@@ -87,6 +92,7 @@ func (c ContextImpl) CompleteTrace(name string, begin, end uint64) {
 	if c.Tracer != nil {
 		c.Tracer.Complete(name, c.Thread, begin, end)
 	}
+	c.StatsCollector.RecordEvent(name, end-begin)
 }
 
 // ImportNinjaLog imports a .ninja_log file into the tracer.
