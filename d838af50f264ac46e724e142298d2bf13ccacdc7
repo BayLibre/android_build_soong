@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32b76198_666209ca",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-02T22:15:41Z",
+      "side": 1,
+      "message": "missing space: use __SBOX_OUT_FILES__",
+      "range": {
+        "startLine": 52,
+        "startChar": 13,
+        "endLine": 52,
+        "endChar": 34
+      },
+      "revId": "d838af50f264ac46e724e142298d2bf13ccacdc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05709f1f_2541ec27",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-02T22:15:41Z",
+      "side": 1,
+      "message": "depfile-out also sets __SBOX_DEPFILE__, which is a pretty fundamental difference between --depfile-out and the output files.  I\u0027m not sure what the purpose of this whole comment block is.",
+      "revId": "d838af50f264ac46e724e142298d2bf13ccacdc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbcf4938_5be1f131",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-02T22:15:41Z",
+      "side": 1,
+      "message": "This seems odd, since for flag.Usage you have to convert back to string again.  I\u0027d suggest having flag.Usage point directly to a function that prints the usage, and then move the violation printing into main() before calling flag.Usage()",
+      "revId": "d838af50f264ac46e724e142298d2bf13ccacdc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d27ccc40_17f19194",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-02T22:15:41Z",
+      "side": 1,
+      "message": "It\u0027s normally better to make main() call flag.Parse().",
+      "revId": "d838af50f264ac46e724e142298d2bf13ccacdc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
