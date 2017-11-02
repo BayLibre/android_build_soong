@@ -470,7 +470,6 @@ func (sanitize *sanitize) AndroidMk(ctx AndroidMkContext, ret *android.AndroidMk
 			ret.SubName += ".asan"
 		}
 	}
-
 }
 
 func (sanitize *sanitize) inSanitizerDir() bool {
@@ -580,6 +579,13 @@ func sanitizerMutator(t sanitizerType) func(android.BottomUpMutatorContext) {
 					if t == asan {
 						modules[1].(*Module).sanitize.Properties.InSanitizerDir = true
 						modules[1].(*Module).sanitize.SetSanitizer(cfi, false)
+					} else {
+						if isSanitizerEnabled {
+							modules[0].(*Module).Properties.PreventInstall = true
+						} else {
+							modules[1].(*Module).Properties.PreventInstall = true
+						}
+
 					}
 				} else {
 					if isSanitizerEnabled {
