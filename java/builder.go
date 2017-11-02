@@ -19,6 +19,8 @@ package java
 // functions.
 
 import (
+	"path/filepath"
+	"strconv"
 	"strings"
 
 	"github.com/google/blueprint"
@@ -211,12 +213,24 @@ func TransformKotlinToClasses(ctx android.ModuleContext, outputFile android.Writ
 	})
 }
 
-func TransformJavaToClasses(ctx android.ModuleContext, outputFile android.WritablePath,
-	srcFiles, srcJars android.Paths,
-	flags javaBuilderFlags, deps android.Paths) {
+func TransformJavaToClasses(ctx android.ModuleContext, jarName string, shardIdx int,
+	srcFiles, srcJars android.Paths, jars *android.Paths, flags javaBuilderFlags, deps android.Paths) bool {
 
-	transformJavaToClasses(ctx, outputFile, srcFiles, srcJars, flags, deps,
-		"javac", "javac", javac)
+	// Compile java sources into .class files
+	desc := "javac"
+	if shardIdx >= 0 {
+		jarName = jarName + strconv.Itoa(shardIdx)
+		desc += strconv.Itoa(shardIdx)
+	}
+	classes := android.PathForModuleOut(ctx, "javac", jarName)
+
+	transformJavaToClasses(ctx, classes, shardIdx, srcFiles, srcJars, flags, deps, "javac", desc, javac)
+
+	if ctx.Failed() {
+		return false
+	}
+	*jars = append(*jars, classes)
+	return true
 }
 
 func RunErrorProne(ctx android.ModuleContext, outputFile android.WritablePath,
@@ -226,7 +240,7 @@ func RunErrorProne(ctx android.ModuleContext, outputFile android.WritablePath,
 		ctx.ModuleErrorf("cannot build with Error Prone, missing external/error_prone?")
 	}
 
-	transformJavaToClasses(ctx, outputFile, srcFiles, srcJars, flags, nil,
+	transformJavaToClasses(ctx, outputFile, -1, srcFiles, srcJars, flags, nil,
 		"errorprone", "errorprone", errorprone)
 }
 
@@ -275,7 +289,7 @@ func TransformJavaToHeaderClasses(ctx android.ModuleContext, outputFile android.
 // suffix will be appended to various intermediate files and directories to avoid collisions when
 // this function is called twice in the same module directory.
 func transformJavaToClasses(ctx android.ModuleContext, outputFile android.WritablePath,
-	srcFiles, srcJars android.Paths,
+	shardIdx int, srcFiles, srcJars android.Paths,
 	flags javaBuilderFlags, deps android.Paths,
 	intermediatesDir, desc string, rule blueprint.Rule) {
 
@@ -298,6 +312,15 @@ func transformJavaToClasses(ctx android.ModuleContext, outputFile android.Writab
 
 	deps = append(deps, flags.classpath...)
 
+	srcJarDir := "srcjars"
+	outDir := "classes"
+	annoDir := "anno"
+	if shardIdx >= 0 {
+		shardDir := "shard" + strconv.Itoa(shardIdx)
+		srcJarDir = filepath.Join(shardDir, srcJarDir)
+		outDir = filepath.Join(shardDir, outDir)
+		annoDir = filepath.Join(shardDir, annoDir)
+	}
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        rule,
 		Description: desc,
@@ -309,9 +332,9 @@ func transformJavaToClasses(ctx android.ModuleContext, outputFile android.Writab
 			"bootClasspath": bootClasspath,
 			"classpath":     flags.classpath.FormJavaClassPath("-classpath"),
 			"srcJars":       strings.Join(srcJars.Strings(), " "),
-			"srcJarDir":     android.PathForModuleOut(ctx, intermediatesDir, "srcjars").String(),
-			"outDir":        android.PathForModuleOut(ctx, intermediatesDir, "classes").String(),
-			"annoDir":       android.PathForModuleOut(ctx, intermediatesDir, "anno").String(),
+			"srcJarDir":     android.PathForModuleOut(ctx, intermediatesDir, srcJarDir).String(),
+			"outDir":        android.PathForModuleOut(ctx, intermediatesDir, outDir).String(),
+			"annoDir":       android.PathForModuleOut(ctx, intermediatesDir, annoDir).String(),
 			"javaVersion":   flags.javaVersion,
 		},
 	})
