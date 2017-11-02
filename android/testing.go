@@ -35,7 +35,11 @@ func NewTestArchContext() *TestContext {
 
 type TestContext struct {
 	*blueprint.Context
-	preArch, preDeps, postDeps []RegisterMutatorFunc
+	preWorld, preArch, preDeps, postDeps []RegisterMutatorFunc
+}
+
+func (ctx *TestContext) PreWorldMutators(f RegisterMutatorFunc) {
+	ctx.preWorld = append(ctx.preWorld, f)
 }
 
 func (ctx *TestContext) PreArchMutators(f RegisterMutatorFunc) {
@@ -51,7 +55,7 @@ func (ctx *TestContext) PostDepsMutators(f RegisterMutatorFunc) {
 }
 
 func (ctx *TestContext) Register() {
-	registerMutators(ctx.Context, ctx.preArch, ctx.preDeps, ctx.postDeps)
+	registerMutators(ctx.Context, ctx.preWorld, ctx.preArch, ctx.preDeps, ctx.postDeps)
 
 	ctx.RegisterSingletonType("env", EnvSingleton)
 }
