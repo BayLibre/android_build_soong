@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ed29e6d_2f69f3a7",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-02T23:10:03Z",
+      "side": 1,
+      "message": "We shouldn\u0027t need our own flag for this, clang can already tell you:\n\n#if __has_feature(address_sanitizer)",
+      "range": {
+        "startLine": 31,
+        "startChar": 52,
+        "endLine": 31,
+        "endChar": 78
+      },
+      "revId": "74917c7c21ce3f28eee997d1933946ce8ae530e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
