@@ -117,6 +117,9 @@ type CompilerProperties struct {
 	// List of classes to pass to javac to use as annotation processors
 	Annotation_processor_classes []string
 
+	// The number of Java source entries each Javac instance can process
+	Javac_shard_size *int64
+
 	Openjdk9 struct {
 		// List of source files that should only be used when passing -source 1.9
 		Srcs []string
@@ -566,7 +569,17 @@ func (j *Module) compile(ctx android.ModuleContext) {
 		}
 	}
 
+	enable_sharding := false
 	if ctx.Device() && !ctx.AConfig().IsEnvFalse("TURBINE_ENABLED") {
+		if j.properties.Javac_shard_size != nil && *(j.properties.Javac_shard_size) > 0 {
+			enable_sharding = true
+			if len(j.properties.Annotation_processors) != 0 ||
+				len(j.properties.Annotation_processor_classes) != 0 {
+				ctx.PropertyErrorf("javac_shard_size",
+					"%q cannot be set when annotation processors are enabled.",
+					j.properties.Javac_shard_size)
+			}
+		}
 		// If sdk jar is java module, then directly return classesJar as header.jar
 		if j.Name() != "android_stubs_current" && j.Name() != "android_system_stubs_current" &&
 			j.Name() != "android_test_stubs_current" {
@@ -585,18 +598,39 @@ func (j *Module) compile(ctx android.ModuleContext) {
 			// TODO(ccross): Once we always compile with javac9 we may be able to conditionally
 			//    enable error-prone without affecting the output class files.
 			errorprone := android.PathForModuleOut(ctx, "errorprone", jarName)
-			RunErrorProne(ctx, errorprone, javaSrcFiles, srcJars, flags)
+			RunErrorProne(ctx, errorprone, uniqueSrcFiles, srcJars, flags)
 			extraJarDeps = append(extraJarDeps, errorprone)
 		}
 
-		// Compile java sources into .class files
-		classes := android.PathForModuleOut(ctx, "javac", jarName)
-		TransformJavaToClasses(ctx, classes, javaSrcFiles, srcJars, flags, extraJarDeps)
-		if ctx.Failed() {
-			return
+		if enable_sharding {
+			flags.classpath.AddPaths([]android.Path{j.headerJarFile})
+			shard_size := int(*(j.properties.Javac_shard_size))
+			idx, s, e := 0, 0, shard_size
+			if len(uniqueSrcFiles) > 0 {
+				for ; e <= len(uniqueSrcFiles); idx, s, e = idx+1, s+shard_size, e+shard_size {
+					if !TransformJavaToClasses(ctx, jarName, &idx, uniqueSrcFiles[s:e],
+						[]android.Path{}, &jars, flags, extraJarDeps) {
+						return
+					}
+				}
+				if s < len(uniqueSrcFiles) {
+					if !TransformJavaToClasses(ctx, jarName, &idx,
+						uniqueSrcFiles[s:len(uniqueSrcFiles)], []android.Path{},
+						&jars, flags, extraJarDeps) {
+						return
+					}
+				}
+			}
+			idx++
+			if len(srcJars) > 0 && !TransformJavaToClasses(ctx, jarName, &idx, []android.Path{},
+				srcJars, &jars, flags, extraJarDeps) {
+				return
+			}
+		} else {
+			if !TransformJavaToClasses(ctx, jarName, nil, uniqueSrcFiles, srcJars, &jars, flags, extraJarDeps) {
+				return
+			}
 		}
-
-		jars = append(jars, classes)
 	}
 
 	dirArgs, dirDeps := ResourceDirsToJarArgs(ctx, j.properties.Java_resource_dirs, j.properties.Exclude_java_resource_dirs)
