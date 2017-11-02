@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd224ffc_2e937cc7",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-11-02T22:16:13Z",
+      "side": 1,
+      "message": "summed",
+      "range": {
+        "startLine": 75,
+        "startChar": 16,
+        "endLine": 75,
+        "endChar": 21
+      },
+      "revId": "c4d283733bcec0200080ba76a265df62226aa66e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3047a86_1f117717",
+        "filename": "java/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-11-02T22:16:13Z",
+      "side": 1,
+      "message": "Could we turn this into \"(success bool)\" (or maybe even \"(err error)\")?",
+      "range": {
+        "startLine": 216,
+        "startChar": 99,
+        "endLine": 216,
+        "endChar": 103
+      },
+      "revId": "c4d283733bcec0200080ba76a265df62226aa66e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23d842e4_89557dde",
+        "filename": "java/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-11-02T22:16:13Z",
+      "side": 1,
+      "message": "This makes directories named srcjars1 , srcjars2 , classes1 , classes2 , etc, right?\nDo you think it would be easier to browse if they were named shard1/srcjars , shard1/classes , shard2/srcjars , shard2/classes ?",
+      "revId": "c4d283733bcec0200080ba76a265df62226aa66e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
