@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "d386cf7e_866df2b2",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-03T00:19:08Z",
+      "side": 1,
+      "message": "But it can\u0027t be converted to an implicit output, because we have to know what to replace __SBOX_DEPFILE__ with",
+      "parentUuid": "13b68bfd_bd4262cb",
+      "revId": "d838af50f264ac46e724e142298d2bf13ccacdc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fbcf4938_5be1f131",
         "filename": "cmd/sbox/sbox.go",
         "patchSetId": 2
