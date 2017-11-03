@@ -197,6 +197,9 @@ func (linker *baseLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 	toolchain := ctx.toolchain()
 
 	if !ctx.noDefaultCompilerFlags() {
+		if ctx.Device() {
+			flags.LdFlags = append(flags.LdFlags, "${config.DeviceGlobalLdflags}")
+		}
 		if Bool(linker.Properties.Allow_undefined_symbols) {
 			if ctx.Darwin() {
 				// darwin defaults to treating undefined symbols as errors
