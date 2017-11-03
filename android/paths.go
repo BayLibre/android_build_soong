@@ -194,6 +194,29 @@ func (p OptionalPath) String() string {
 // Paths is a slice of Path objects, with helpers to operate on the collection.
 type Paths []Path
 
+// Paths sort such that all files in a directory are grouped
+// This means that '/' must be treated specially so that it sorts before all other characters
+func (p Paths) Less(i, j int) bool {
+	si, sj := p[i].String(), p[j].String()
+	// The only character handled specially is the ASCII '/', so compare strings byte-by-byte
+	for c := 0; c < len(si) && c < len(sj); c++ {
+		if si[c] != sj[c] {
+			if (si[c] == '/') != (sj[c] == '/') {
+				// A slash is less than everything
+				return si[c] == '/'
+			} else {
+				return si[c] < sj[c]
+			}
+		}
+	}
+
+	// One string is a prefix of the other or the strings are identical
+	return len(si) < len(sj)
+}
+
+func (p Paths) Len() int      { return len(p) }
+func (p Paths) Swap(i, j int) { p[i], p[j] = p[j], p[i] }
+
 // PathsForSource returns Paths rooted from SrcDir
 func PathsForSource(ctx PathContext, paths []string) Paths {
 	if pathConfig(ctx).AllowMissingDependencies() {

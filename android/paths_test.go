@@ -18,6 +18,7 @@ import (
 	"errors"
 	"fmt"
 	"reflect"
+	"sort"
 	"strings"
 	"testing"
 
@@ -338,5 +339,45 @@ func TestPathForModuleInstall(t *testing.T) {
 					tc.out)
 			}
 		})
+	}
+}
+
+func TestSortPaths(t *testing.T) {
+	makePaths := func() Paths {
+		return Paths{
+			PathForTesting("a.txt"),
+			PathForTesting("a/txt"),
+			PathForTesting("a/b/c"),
+			PathForTesting("a/b/d"),
+			PathForTesting("b"),
+			PathForTesting("b/b.txt"),
+			PathForTesting("a/a.txt"),
+		}
+	}
+
+	expected := []string{
+		"a/a.txt",
+		"a/b/c",
+		"a/b/d",
+		"a/txt",
+		"a.txt",
+		"b",
+		"b/b.txt",
+	}
+
+	paths := makePaths()
+	reversePaths := make(Paths, len(paths))
+	for i, v := range paths {
+		reversePaths[len(paths)-i-1] = v
+	}
+	sort.Sort(paths)
+	sort.Sort(reversePaths)
+
+	if !reflect.DeepEqual(paths.Strings(), expected) {
+		t.Fatalf("sorted paths:\n %#v\n != \n %#v", paths.Strings(), expected)
+	}
+
+	if !reflect.DeepEqual(reversePaths.Strings(), expected) {
+		t.Fatalf("sorted reversed paths:\n %#v\n !=\n %#v", reversePaths.Strings(), expected)
 	}
 }
