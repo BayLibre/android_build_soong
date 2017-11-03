@@ -26,9 +26,6 @@ var (
 		"-fdata-sections",
 		"-fno-short-enums",
 
-		// Help catch common 32/64-bit errors.
-		"-Werror=implicit-function-declaration",
-
 		"-fno-strict-volatile-bitfields",
 
 		// TARGET_RELEASE_CFLAGS

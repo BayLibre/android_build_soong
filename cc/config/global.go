@@ -88,8 +88,10 @@ var (
 	}
 
 	noOverrideGlobalCflags = []string{
+		// Help catch common 32/64-bit errors.
 		"-Werror=int-to-pointer-cast",
 		"-Werror=pointer-to-int-cast",
+		"-Werror=implicit-function-declaration",
 	}
 
 	IllegalFlags = []string{
