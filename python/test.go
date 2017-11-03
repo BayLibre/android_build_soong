@@ -24,7 +24,15 @@ func init() {
 	android.RegisterModuleType("python_test_host", PythonTestHostFactory)
 }
 
+type TestProperties struct {
+	// list of compatibility suites (for example "cts", "vts") that the module should be
+	// installed into.
+	Test_suites []string `android:"arch_variant"`
+}
+
 type testDecorator struct {
+	testProperties TestProperties
+
 	*binaryDecorator
 }
 
@@ -49,4 +57,8 @@ func PythonTestHostFactory() android.Module {
 	module := NewTest(android.HostSupportedNoCross)
 
 	return module.Init()
+}
+
+func (test *testDecorator) bootstrapperProps() []interface{} {
+	return []interface{}{&test.testProperties, &test.binaryDecorator.binaryProperties}
 }

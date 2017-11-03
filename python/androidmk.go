@@ -53,6 +53,13 @@ func (p *binaryDecorator) AndroidMk(base *Module, ret *android.AndroidMkData) {
 
 func (p *testDecorator) AndroidMk(base *Module, ret *android.AndroidMkData) {
 	ret.Class = "NATIVE_TESTS"
+
+	ret.Extra = append(ret.Extra, func(w io.Writer, outputFile android.Path) {
+		if len(p.testProperties.Test_suites) > 0 {
+			fmt.Fprintln(w, "LOCAL_COMPATIBILITY_SUITES :=",
+				strings.Join(p.testProperties.Test_suites, " "))
+		}
+	})
 	base.subAndroidMk(ret, p.binaryDecorator.baseInstaller)
 }
 
