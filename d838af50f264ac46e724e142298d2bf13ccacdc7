@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5d1fef57_a4057acf",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-11-03T00:09:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32b76198_666209ca",
+      "range": {
+        "startLine": 52,
+        "startChar": 13,
+        "endLine": 52,
+        "endChar": 34
+      },
+      "revId": "d838af50f264ac46e724e142298d2bf13ccacdc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05709f1f_2541ec27",
         "filename": "cmd/sbox/sbox.go",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2017-11-02T22:15:41Z",
       "side": 1,
       "message": "depfile-out also sets __SBOX_DEPFILE__, which is a pretty fundamental difference between --depfile-out and the output files.  I\u0027m not sure what the purpose of this whole comment block is.",
+      "revId": "d838af50f264ac46e724e142298d2bf13ccacdc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13b68bfd_bd4262cb",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-11-03T00:09:09Z",
+      "side": 1,
+      "message": "I mean to clarify that \"the value of depfile-out could have just as easily been implemented as an implicit output, although before any future maintainers consider changing the command-line usage to just make it into an implicit out, they may wish to reconsider whether there will ever be an advantage from knowing that it\u0027s specifically an output depfile\"\n\nI\u0027ll just remove it if you don\u0027t like it",
+      "parentUuid": "05709f1f_2541ec27",
       "revId": "d838af50f264ac46e724e142298d2bf13ccacdc7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "102ae73e_42824ac3",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-11-03T00:09:09Z",
+      "side": 1,
+      "message": "I\u0027ve now moved the construction of the error message text to happen outside of the run() function",
+      "parentUuid": "fbcf4938_5be1f131",
+      "revId": "d838af50f264ac46e724e142298d2bf13ccacdc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d27ccc40_17f19194",
         "filename": "cmd/sbox/sbox.go",
         "patchSetId": 2
@@ -73,6 +133,24 @@
       "revId": "d838af50f264ac46e724e142298d2bf13ccacdc7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb06add1_05cadbc7",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-11-03T00:09:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d27ccc40_17f19194",
+      "revId": "d838af50f264ac46e724e142298d2bf13ccacdc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
