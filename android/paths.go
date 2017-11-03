@@ -18,6 +18,7 @@ import (
 	"fmt"
 	"path/filepath"
 	"reflect"
+	"sort"
 	"strings"
 
 	"github.com/google/blueprint"
@@ -378,6 +379,56 @@ func (p Paths) FilterOutByExt(ext string) Paths {
 		}
 	}
 	return ret
+}
+
+// DirectorySortedPaths is a slice of paths that are sorted such that all files in a directory
+// (including subdirectories) are in a contiguous subslice of the list, and can be found in
+// O(log(N)) time using a binary search on the directory prefix.
+type DirectorySortedPaths Paths
+
+func directoryLess(si, sj string) bool {
+	// '/' must be treated specially so that it sorts before all other characters
+	// '/' is ASCII, so the strings can be compared byte-by-byte
+	for c := 0; c < len(si) && c < len(sj); c++ {
+		if si[c] != sj[c] {
+			if (si[c] == '/') != (sj[c] == '/') {
+				// A slash is less than everything
+				return si[c] == '/'
+			} else {
+				return si[c] < sj[c]
+			}
+		}
+	}
+
+	// One string is a prefix of the other or the strings are identical
+	return len(si) < len(sj)
+}
+
+func PathsToDirectorySortedPaths(paths Paths) DirectorySortedPaths {
+	ret := append(DirectorySortedPaths(nil), paths...)
+	sort.Slice(ret, func(i, j int) bool {
+		return directoryLess(ret[i].String(), ret[j].String())
+	})
+	return ret
+}
+
+// PathsInDirectory returns a subslice of the DirectorySortedPaths as a Paths that contains all entries
+// that are in the specified directory and its subdirectories.
+func (p DirectorySortedPaths) PathsInDirectory(dir string) Paths {
+	prefix := filepath.Clean(dir) + "/"
+	start := sort.Search(len(p), func(i int) bool {
+		return directoryLess(prefix, p[i].String())
+	})
+
+	ret := p[start:]
+
+	end := sort.Search(len(ret), func(i int) bool {
+		return !strings.HasPrefix(ret[i].String(), prefix)
+	})
+
+	ret = ret[:end]
+
+	return Paths(ret)
 }
 
 // WritablePaths is a slice of WritablePaths, used for multiple outputs.
