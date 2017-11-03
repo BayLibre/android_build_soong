@@ -38,6 +38,8 @@ var (
 		"-fgcse-after-reload",
 		"-frerun-cse-after-loop",
 		"-frename-registers",
+
+		"-fomit-frame-pointer",
 	}
 
 	armCppflags = []string{
@@ -50,7 +52,6 @@ var (
 	}
 
 	armArmCflags = []string{
-		"-fomit-frame-pointer",
 		"-fstrict-aliasing",
 		"-funswitch-loops",
 	}
@@ -58,7 +59,6 @@ var (
 	armThumbCflags = []string{
 		"-mthumb",
 		"-Os",
-		"-fomit-frame-pointer",
 	}
 
 	armArchVariantCflags = map[string][]string{
