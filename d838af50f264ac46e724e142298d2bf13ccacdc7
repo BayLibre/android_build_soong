@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "39aca00f_7da39e85",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-11-03T00:35:34Z",
+      "side": 1,
+      "message": "We could make a generic syntax like \u0027--outputs\u003d\"myVariableName1:my/path/one,myVariableName2:my/path/two\" \u0027 which would make it easy to reference the same output in a couple places without having to specify the full file path and without having to add a special case for each type of output into sbox.\n\nI guess that the existence of this discussion in gerrit is probably adequate documentation for whoever would be likely to change this code though",
+      "parentUuid": "d386cf7e_866df2b2",
+      "revId": "d838af50f264ac46e724e142298d2bf13ccacdc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fbcf4938_5be1f131",
         "filename": "cmd/sbox/sbox.go",
         "patchSetId": 2
