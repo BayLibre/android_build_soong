@@ -63,7 +63,7 @@ func InitDefaultableModule(module DefaultableModule) {
 
 type DefaultsModuleBase struct {
 	DefaultableModuleBase
-	defaultProperties []interface{}
+	DefaultProperties []interface{}
 }
 
 type Defaults interface {
@@ -89,7 +89,7 @@ func InitDefaultsModule(module DefaultableModule) {
 	InitArchModule(module)
 	InitDefaultableModule(module)
 
-	module.AddProperties(&module.base().nameProperties)
+	module.AddProperties(&module.base().NameProperties)
 
 	module.base().module = module
 }
