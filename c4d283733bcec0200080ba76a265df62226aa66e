@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "c798e8a1_fc56972e",
+        "filename": "java/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-03T00:14:50Z",
+      "side": 1,
+      "message": "Why the pointer here?  If it is just to distinguish between a shard and an unsharded build, maybe use -1?",
+      "range": {
+        "startLine": 215,
+        "startChar": 71,
+        "endLine": 215,
+        "endChar": 84
+      },
+      "revId": "c4d283733bcec0200080ba76a265df62226aa66e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e3047a86_1f117717",
         "filename": "java/builder.go",
         "patchSetId": 1
@@ -48,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "1065ecd7_cb30aea0",
+        "filename": "java/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-03T00:14:50Z",
+      "side": 1,
+      "message": "We generally don\u0027t use error values at all here, errors are reported through ctx.ModuleErrorf(), and if anything else cares about errors (they usually don\u0027t) they can check ctx.Failed().  Usually its fine to just keep writing out rules though.",
+      "parentUuid": "e3047a86_1f117717",
+      "range": {
+        "startLine": 216,
+        "startChar": 99,
+        "endLine": 216,
+        "endChar": 103
+      },
+      "revId": "c4d283733bcec0200080ba76a265df62226aa66e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "23d842e4_89557dde",
         "filename": "java/builder.go",
         "patchSetId": 1
@@ -59,6 +106,23 @@
       "writtenOn": "2017-11-02T22:16:13Z",
       "side": 1,
       "message": "This makes directories named srcjars1 , srcjars2 , classes1 , classes2 , etc, right?\nDo you think it would be easier to browse if they were named shard1/srcjars , shard1/classes , shard2/srcjars , shard2/classes ?",
+      "revId": "c4d283733bcec0200080ba76a265df62226aa66e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c015993_01b61a4a",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-03T00:14:50Z",
+      "side": 1,
+      "message": "I wrote a shard function for the aapt2 stuff I\u0027m working on that is usable here:\n\nfunc shardPaths(paths android.Paths, shardSize int) []android.Paths {\n\tret :\u003d make([]android.Paths, 0, (len(paths)+shardSize-1)/shardSize)\n\tfor len(paths) \u003e shardSize {\n\t\tret \u003d append(ret, paths[0:shardSize])\n\t\tpaths \u003d paths[shardSize:]\n\t}\n\tif len(paths) \u003e 0 {\n\t\tret \u003d append(ret, paths)\n\t}\n\treturn ret\n}",
       "revId": "c4d283733bcec0200080ba76a265df62226aa66e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
