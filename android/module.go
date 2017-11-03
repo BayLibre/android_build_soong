@@ -150,7 +150,7 @@ type Module interface {
 	BuildParamsForTests() []BuildParams
 }
 
-type nameProperties struct {
+type NameProperties struct {
 	// The name of the module.  Must be unique across all modules.
 	Name string
 }
@@ -242,7 +242,7 @@ func InitAndroidModule(m Module) {
 	base.module = m
 
 	m.AddProperties(
-		&base.nameProperties,
+		&base.NameProperties,
 		&base.commonProperties,
 		&base.variableProperties)
 }
@@ -310,7 +310,7 @@ type ModuleBase struct {
 	// TODO: remove this
 	module Module
 
-	nameProperties          nameProperties
+	NameProperties          NameProperties
 	commonProperties        commonProperties
 	variableProperties      variableProperties
 	hostAndDeviceProperties hostAndDeviceProperties
@@ -351,12 +351,12 @@ func (a *ModuleBase) BuildParamsForTests() []BuildParams {
 // Name returns the name of the module.  It may be overridden by individual module types, for
 // example prebuilts will prepend prebuilt_ to the name.
 func (a *ModuleBase) Name() string {
-	return a.nameProperties.Name
+	return a.NameProperties.Name
 }
 
 // BaseModuleName returns the name of the module as specified in the blueprints file.
 func (a *ModuleBase) BaseModuleName() string {
-	return a.nameProperties.Name
+	return a.NameProperties.Name
 }
 
 func (a *ModuleBase) base() *ModuleBase {

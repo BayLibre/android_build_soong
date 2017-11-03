@@ -25,17 +25,17 @@ type defaultsDependencyTag struct {
 
 var DefaultsDepTag defaultsDependencyTag
 
-type defaultsProperties struct {
+type DefaultsProperties struct {
 	Defaults []string
 }
 
 type DefaultableModuleBase struct {
-	defaultsProperties    defaultsProperties
+	DefaultsProperties    DefaultsProperties
 	defaultableProperties []interface{}
 }
 
-func (d *DefaultableModuleBase) defaults() *defaultsProperties {
-	return &d.defaultsProperties
+func (d *DefaultableModuleBase) defaults() *DefaultsProperties {
+	return &d.DefaultsProperties
 }
 
 func (d *DefaultableModuleBase) setProperties(props []interface{}) {
@@ -43,7 +43,7 @@ func (d *DefaultableModuleBase) setProperties(props []interface{}) {
 }
 
 type Defaultable interface {
-	defaults() *defaultsProperties
+	defaults() *DefaultsProperties
 	setProperties([]interface{})
 	applyDefaults(TopDownMutatorContext, []Defaults)
 }
@@ -89,7 +89,7 @@ func InitDefaultsModule(module DefaultableModule) {
 	InitArchModule(module)
 	InitDefaultableModule(module)
 
-	module.AddProperties(&module.base().nameProperties)
+	module.AddProperties(&module.base().NameProperties)
 
 	module.base().module = module
 }
