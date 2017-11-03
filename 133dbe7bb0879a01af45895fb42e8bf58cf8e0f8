@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e565ecc_243a21dd",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-03T20:30:56Z",
+      "side": 1,
+      "message": "This is set for everything except x86/x86_64 devices, should it be global to all devices?",
+      "revId": "133dbe7bb0879a01af45895fb42e8bf58cf8e0f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e10e149f_cf5517ff",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-03T20:30:56Z",
+      "side": 1,
+      "message": "This is set for everything except mips/mips64 devices, should I make it global?",
+      "revId": "133dbe7bb0879a01af45895fb42e8bf58cf8e0f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3a0f44e_e472e1eb",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-03T20:30:56Z",
+      "side": 1,
+      "message": "These all get filtered out by ClangUnknownCflags.  We really need a pass to invert the clang vs. gcc logic so clang is default and we can do extras for gcc if they are needed.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 23
+      },
+      "revId": "133dbe7bb0879a01af45895fb42e8bf58cf8e0f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a07e29c8_a3255eff",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-03T20:30:56Z",
+      "side": 1,
+      "message": "This is set for everything except x86/x86_64 devices, should it be global?",
+      "revId": "133dbe7bb0879a01af45895fb42e8bf58cf8e0f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
