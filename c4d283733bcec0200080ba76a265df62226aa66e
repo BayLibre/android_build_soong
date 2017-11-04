@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "5201f485_3f7977e7",
+        "filename": "java/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-11-04T00:46:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a83b38f_7f36f1ec",
+      "range": {
+        "startLine": 216,
+        "startChar": 99,
+        "endLine": 216,
+        "endChar": 103
+      },
+      "revId": "c4d283733bcec0200080ba76a265df62226aa66e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23d842e4_89557dde",
         "filename": "java/builder.go",
         "patchSetId": 1
