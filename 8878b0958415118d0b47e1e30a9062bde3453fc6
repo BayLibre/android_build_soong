@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dfb3d022_6e3a76b4",
+        "filename": "java/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-04T00:13:23Z",
+      "side": 1,
+      "message": "We recently switch to generating these output file names outside the Transform* functions and I think it has helped make the code more readable.",
+      "revId": "8878b0958415118d0b47e1e30a9062bde3453fc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4845b0e7_68f8b137",
+        "filename": "java/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-04T00:13:23Z",
+      "side": 1,
+      "message": "There is no need to check ctx.Failed() here either, its perfectly valid to append classes to jars and continue.",
+      "revId": "8878b0958415118d0b47e1e30a9062bde3453fc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "889f5aaa_1e6e03a5",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-04T00:13:23Z",
+      "side": 1,
+      "message": "nil",
+      "range": {
+        "startLine": 624,
+        "startChar": 61,
+        "endLine": 624,
+        "endChar": 77
+      },
+      "revId": "8878b0958415118d0b47e1e30a9062bde3453fc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d41605cf_ef2068a3",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-04T00:13:23Z",
+      "side": 1,
+      "message": "Returning early here makes the code harder to follow and isn\u0027t doing anything useful, because this is just creating ninja rules.  If you fail to generate a rule use ctx.ModuleErrorf().  Nothing else cares at runtime if the rule was generated, so you can just keep generating the rest of the rules until something checks ctx.Failed(), stops calling GenerateBuildActions for new modules, and reports the errors to the user.",
+      "revId": "8878b0958415118d0b47e1e30a9062bde3453fc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96dfaa4a_32ef68c5",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-04T00:13:23Z",
+      "side": 1,
+      "message": "nil",
+      "range": {
+        "startLine": 630,
+        "startChar": 80,
+        "endLine": 630,
+        "endChar": 96
+      },
+      "revId": "8878b0958415118d0b47e1e30a9062bde3453fc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
