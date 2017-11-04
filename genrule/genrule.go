@@ -54,7 +54,7 @@ type hostToolDependencyTag struct {
 
 var hostToolDepTag hostToolDependencyTag
 
-type generatorProperties struct {
+type GeneratorProperties struct {
 	// The command to run on one or more input files. Cmd supports substitution of a few variables
 	// (the actual substitution is implemented in GenerateAndroidBuildActions below)
 	//
@@ -96,7 +96,7 @@ type Module struct {
 	// properties
 	Extra interface{}
 
-	properties generatorProperties
+	properties GeneratorProperties
 
 	tasks taskFunc
 
@@ -374,7 +374,7 @@ type genSrcsProperties struct {
 }
 
 func NewGenRule() *Module {
-	properties := &genRuleProperties{}
+	properties := &GenRuleProperties{}
 
 	tasks := func(ctx android.ModuleContext, srcFiles android.Paths) []generateTask {
 		outs := make(android.WritablePaths, len(properties.Out))
@@ -398,7 +398,7 @@ func GenRuleFactory() android.Module {
 	return m
 }
 
-type genRuleProperties struct {
+type GenRuleProperties struct {
 	// names of the output files that will be generated
 	Out []string
 }
