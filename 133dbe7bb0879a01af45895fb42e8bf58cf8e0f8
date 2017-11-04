@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e96e7439_ba010b54",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-11-04T02:07:06Z",
+      "side": 1,
+      "message": "Yes. This would benefit all devices.",
+      "parentUuid": "9e565ecc_243a21dd",
+      "revId": "133dbe7bb0879a01af45895fb42e8bf58cf8e0f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e10e149f_cf5517ff",
         "filename": "cc/config/arm_device.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2017-11-03T20:30:56Z",
       "side": 1,
       "message": "This is set for everything except mips/mips64 devices, should I make it global?",
+      "revId": "133dbe7bb0879a01af45895fb42e8bf58cf8e0f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b57cf3a_19b5123e",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-11-04T02:07:06Z",
+      "side": 1,
+      "message": "Make it global.",
+      "parentUuid": "e10e149f_cf5517ff",
       "revId": "133dbe7bb0879a01af45895fb42e8bf58cf8e0f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -70,6 +106,24 @@
       "writtenOn": "2017-11-03T20:30:56Z",
       "side": 1,
       "message": "This is set for everything except x86/x86_64 devices, should it be global?",
+      "revId": "133dbe7bb0879a01af45895fb42e8bf58cf8e0f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b3a2f91_211153b5",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-11-04T02:07:06Z",
+      "side": 1,
+      "message": "Yes, this should also be global.",
+      "parentUuid": "a07e29c8_a3255eff",
       "revId": "133dbe7bb0879a01af45895fb42e8bf58cf8e0f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
