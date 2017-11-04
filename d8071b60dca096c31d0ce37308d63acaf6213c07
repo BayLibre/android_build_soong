@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8af9a914_9e975cca",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-04T00:01:50Z",
+      "side": 1,
+      "message": "This still seems awkward.  You have to jump through hoops to write it to a buffer despite always printing it to os.Stderr.  It seems more straightforward to make the error an error, and print the usage when you see an appropriate error?",
+      "revId": "d8071b60dca096c31d0ce37308d63acaf6213c07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
