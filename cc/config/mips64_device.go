@@ -23,9 +23,6 @@ import (
 var (
 	mips64Cflags = []string{
 		"-Umips",
-
-		// Help catch common 32/64-bit errors.
-		"-Werror=implicit-function-declaration",
 	}
 
 	mips64ClangCflags = append(mips64Cflags, []string{
