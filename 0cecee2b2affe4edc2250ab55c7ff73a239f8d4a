@@ -22,6 +22,30 @@
       "revId": "0cecee2b2affe4edc2250ab55c7ff73a239f8d4a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff648239_e7911e8e",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-11-06T21:48:48Z",
+      "side": 1,
+      "message": "My thought is that it protects a person that wants to manually experiment with sbox (they might not know how bad it is to make typo when typing the output directory, and also might not know that using $ANDROID_BUILD_TOP rather than $ANDROID_BUILD_TOP/out would delete all the source code).\n\nIs it generally expected for tools to wipe their output directories and therefore this can be removed?",
+      "parentUuid": "8702783d_dd908faf",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 178
+      },
+      "revId": "0cecee2b2affe4edc2250ab55c7ff73a239f8d4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
