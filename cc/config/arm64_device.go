@@ -22,10 +22,7 @@ import (
 )
 
 var (
-	arm64Cflags = []string{
-		// Help catch common 32/64-bit errors.
-		"-Werror=implicit-function-declaration",
-	}
+	arm64Cflags = []string{}
 
 	arm64Ldflags = []string{
 		"-Wl,-m,aarch64_elf64_le_vec",
