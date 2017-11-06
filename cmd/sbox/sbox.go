@@ -26,11 +26,12 @@ import (
 )
 
 var (
-	sandboxesRoot string
-	rawCommand    string
-	outputRoot    string
-	keepOutDir    bool
-	depfileOut    string
+	sandboxesRoot         string
+	rawCommand            string
+	outputRoot            string
+	keepOutDir            bool
+	depfileOut            string
+	removeExistingOutputs bool
 )
 
 func init() {
@@ -45,6 +46,8 @@ func init() {
 
 	flag.StringVar(&depfileOut, "depfile-out", "",
 		"file path of the depfile to generate. This value will replace '__SBOX_DEPFILE__' in the command and will be treated as an output but won't be added to __SBOX_OUT_FILES__")
+
+	flag.BoolVar(&removeExistingOutputs, "overwrite", false, "whether to delete <output-root> before running the command")
 }
 
 func usageViolation(violation string) {
@@ -53,10 +56,11 @@ func usageViolation(violation string) {
 	}
 
 	fmt.Fprintf(os.Stderr,
-		"Usage: sbox -c <commandToRun> --sandbox-path <sandboxPath> --output-root <outputRoot> [--depfile-out depFile] <outputFile> [<outputFile>...]\n"+
+		"Usage: sbox -c <commandToRun> --sandbox-path <sandboxPath> --output-root <outputRoot> --overwrite [--depfile-out depFile] <outputFile> [<outputFile>...]\n"+
 			"\n"+
-			"Runs <commandToRun> and moves each <outputFile> out of <sandboxPath>\n"+
-			"and into <outputRoot>\n")
+			"Deletes <outputRoot>,"+
+			"runs <commandToRun>,"+
+			"and moves each <outputFile> out of <sandboxPath> and into <outputRoot>\n")
 
 	flag.PrintDefaults()
 
@@ -101,7 +105,14 @@ func run() error {
 	// all outputs
 	var allOutputs []string
 
+	// setup directories
 	os.MkdirAll(sandboxesRoot, 0777)
+	if removeExistingOutputs {
+		os.RemoveAll(outputRoot)
+	} else {
+		return fmt.Errorf("sbox will delete the path given by --output-root, currently %v. You must add the '--overwrite' argument to acknowledge and enable this behavior", outputRoot)
+	}
+	os.Mkdir(outputRoot, 0777)
 
 	tempDir, err := ioutil.TempDir(sandboxesRoot, "sbox")
 
