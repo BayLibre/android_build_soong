@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8702783d_dd908faf",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-11-06T21:41:10Z",
+      "side": 1,
+      "message": "Why do we need this option?",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 178
+      },
+      "revId": "0cecee2b2affe4edc2250ab55c7ff73a239f8d4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
