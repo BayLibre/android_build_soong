@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1425512_0361a319",
+        "filename": "android/hooks.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-11-07T21:11:18Z",
+      "side": 1,
+      "message": "nit: mctx",
+      "range": {
+        "startLine": 54,
+        "startChar": 29,
+        "endLine": 54,
+        "endChar": 32
+      },
+      "revId": "e4c92cf55ee2f3f422346f56d0af3d0ab1bba1ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d16de3b3_c193a424",
+        "filename": "android/hooks.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-11-07T21:11:18Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 65,
+        "startChar": 29,
+        "endLine": 65,
+        "endChar": 32
+      },
+      "revId": "e4c92cf55ee2f3f422346f56d0af3d0ab1bba1ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72de2c76_81cbe42f",
+        "filename": "android/mutator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-11-07T21:11:18Z",
+      "side": 1,
+      "message": "nit: panic?",
+      "range": {
+        "startLine": 200,
+        "startChar": 9,
+        "endLine": 200,
+        "endChar": 10
+      },
+      "revId": "e4c92cf55ee2f3f422346f56d0af3d0ab1bba1ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31f0083e_026ab34a",
+        "filename": "android/mutator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-11-07T21:11:18Z",
+      "side": 1,
+      "message": "nit: not a big fan of so much indentation, but since it\u0027s copied",
+      "range": {
+        "startLine": 272,
+        "startChar": 4,
+        "endLine": 272,
+        "endChar": 9
+      },
+      "revId": "e4c92cf55ee2f3f422346f56d0af3d0ab1bba1ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
