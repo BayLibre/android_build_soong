@@ -16,6 +16,24 @@
       "revId": "587ec7fe5cec45ca7b6d5d407b7a2d26ebe956fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b21831fa_b6b5012a",
+        "filename": "python/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1121894
+      },
+      "writtenOn": "2017-11-07T12:10:13Z",
+      "side": 1,
+      "message": "it should be singular yes. It was pre-existing and sbasi@ could not rename it without a major amount of CLs for each project.",
+      "parentUuid": "ae2941b7_033a35cb",
+      "revId": "587ec7fe5cec45ca7b6d5d407b7a2d26ebe956fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
