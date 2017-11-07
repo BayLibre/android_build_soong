@@ -42,7 +42,7 @@ func NewSourceFinder(ctx Context, config Config) (f *finder.Finder) {
 		WorkingDirectory: dir,
 		RootDirs:         []string{"."},
 		ExcludeDirs:      []string{".git", ".repo"},
-		PruneFiles:       []string{".out-dir", ".find-ignore"},
+		PruneFiles:       []string{".out-dir", "finder-ignore"},
 		IncludeFiles:     []string{"Android.mk", "Android.bp", "Blueprints", "CleanSpec.mk"},
 	}
 	dumpDir := config.FileListDir()
