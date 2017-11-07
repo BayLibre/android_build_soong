@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1890a0ed_c4904e54",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-11-07T21:14:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "600c9f7f_95486470",
+      "range": {
+        "startLine": 7,
+        "startChar": 61,
+        "endLine": 7,
+        "endChar": 62
+      },
+      "revId": "587ec7fe5cec45ca7b6d5d407b7a2d26ebe956fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae2941b7_033a35cb",
         "filename": "python/androidmk.go",
         "patchSetId": 2
@@ -57,6 +81,24 @@
       "revId": "587ec7fe5cec45ca7b6d5d407b7a2d26ebe956fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ca65de1_cfa71e73",
+        "filename": "python/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-11-07T21:14:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b21831fa_b6b5012a",
+      "revId": "587ec7fe5cec45ca7b6d5d407b7a2d26ebe956fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
