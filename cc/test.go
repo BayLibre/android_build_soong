@@ -20,6 +20,8 @@ import (
 	"strings"
 
 	"android/soong/android"
+
+	"github.com/google/blueprint/proptools"
 )
 
 type TestProperties struct {
@@ -100,7 +102,7 @@ func (test *testBinary) srcs() []string {
 
 func (test *testBinary) setSrc(name, src string) {
 	test.baseCompiler.Properties.Srcs = []string{src}
-	test.binaryDecorator.Properties.Stem = name
+	test.binaryDecorator.Properties.Stem = proptools.StringPtr(name)
 }
 
 var _ testPerSrc = (*testBinary)(nil)
@@ -236,7 +238,7 @@ func (test *testBinary) install(ctx ModuleContext, file android.Path) {
 
 	if !Bool(test.Properties.No_named_install_directory) {
 		test.binaryDecorator.baseInstaller.relative = ctx.ModuleName()
-	} else if test.binaryDecorator.baseInstaller.Properties.Relative_install_path == "" {
+	} else if proptools.String(test.binaryDecorator.baseInstaller.Properties.Relative_install_path) == "" {
 		ctx.PropertyErrorf("no_named_install_directory", "Module install directory may only be disabled if relative_install_path is set")
 	}
 

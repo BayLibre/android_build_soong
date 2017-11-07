@@ -20,6 +20,8 @@ import (
 	"sync"
 
 	"android/soong/android"
+
+	"github.com/google/blueprint/proptools"
 )
 
 type VndkProperties struct {
@@ -85,7 +87,7 @@ func (vndk *vndkdep) vndkCheckLinkType(ctx android.ModuleContext, to *Module) {
 		// Non-VNDK modules (those installed to /vendor) can't depend on modules marked with
 		// vendor_available: false.
 		violation := false
-		if lib, ok := to.linker.(*llndkStubDecorator); ok && !lib.Properties.Vendor_available {
+		if lib, ok := to.linker.(*llndkStubDecorator); ok && !proptools.Bool(lib.Properties.Vendor_available) {
 			violation = true
 		} else {
 			if _, ok := to.linker.(libraryInterface); ok && to.VendorProperties.Vendor_available != nil && !Bool(to.VendorProperties.Vendor_available) {
@@ -138,7 +140,7 @@ func vndkMutator(mctx android.BottomUpMutatorContext) {
 				llndkLibraries = append(llndkLibraries, name)
 				sort.Strings(llndkLibraries)
 			}
-			if !lib.Properties.Vendor_available {
+			if !proptools.Bool(lib.Properties.Vendor_available) {
 				if !inList(name, vndkPrivateLibraries) {
 					vndkPrivateLibraries = append(vndkPrivateLibraries, name)
 					sort.Strings(vndkPrivateLibraries)

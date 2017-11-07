@@ -18,6 +18,7 @@ import (
 	"fmt"
 
 	"github.com/google/blueprint"
+	"github.com/google/blueprint/proptools"
 )
 
 // This file implements common functionality for handling modules that may exist as prebuilts,
@@ -32,7 +33,7 @@ var prebuiltDepTag prebuiltDependencyTag
 type PrebuiltProperties struct {
 	// When prefer is set to true the prebuilt will be used instead of any source module with
 	// a matching name.
-	Prefer bool `android:"arch_variant"`
+	Prefer *bool `android:"arch_variant"`
 
 	SourceExists bool `blueprint:"mutated"`
 	UsePrebuilt  bool `blueprint:"mutated"`
@@ -146,7 +147,7 @@ func (p *Prebuilt) usePrebuilt(ctx TopDownMutatorContext, source Module) bool {
 	}
 
 	// TODO: use p.Properties.Name and ctx.ModuleDir to override preference
-	if p.properties.Prefer {
+	if proptools.Bool(p.properties.Prefer) {
 		return true
 	}
 
