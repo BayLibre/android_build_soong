@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf4113e5_ff67e75e",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1434,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-07T20:39:04Z",
+      "side": 1,
+      "message": "Since proptools.Bool is so heavily used we set this shortcut so we can just use Bool in the cc package.  Probably worth doing the same thing for proptools.String, as well as for other packages.",
+      "revId": "87d984dce226867a41657d8a93b80297918c5e5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
