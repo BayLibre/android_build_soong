@@ -19,6 +19,7 @@ import (
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/pathtools"
+	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
 )
@@ -57,12 +58,12 @@ type LibraryProperties struct {
 
 	Aidl struct {
 		// export headers generated from .aidl sources
-		Export_aidl_headers bool
+		Export_aidl_headers *bool
 	}
 
 	Proto struct {
 		// export headers generated from .proto sources
-		Export_proto_headers bool
+		Export_proto_headers *bool
 	}
 	Target struct {
 		Vendor struct {
@@ -71,7 +72,7 @@ type LibraryProperties struct {
 		}
 	}
 
-	Static_ndk_lib bool
+	Static_ndk_lib *bool
 }
 
 type LibraryMutatedProperties struct {
@@ -663,7 +664,7 @@ func (library *libraryDecorator) link(ctx ModuleContext,
 	library.reexportFlags(deps.ReexportedFlags)
 	library.reexportDeps(deps.ReexportedFlagsDeps)
 
-	if library.Properties.Aidl.Export_aidl_headers {
+	if proptools.Bool(library.Properties.Aidl.Export_aidl_headers) {
 		if library.baseCompiler.hasSrcExt(".aidl") {
 			flags := []string{
 				"-I" + android.PathForModuleGen(ctx, "aidl").String(),
@@ -675,7 +676,7 @@ func (library *libraryDecorator) link(ctx ModuleContext,
 		}
 	}
 
-	if library.Properties.Proto.Export_proto_headers {
+	if proptools.Bool(library.Properties.Proto.Export_proto_headers) {
 		if library.baseCompiler.hasSrcExt(".proto") {
 			flags := []string{
 				"-I" + android.ProtoSubDir(ctx).String(),
@@ -731,7 +732,7 @@ func (library *libraryDecorator) install(ctx ModuleContext, file android.Path) {
 		library.baseInstaller.install(ctx, file)
 	}
 
-	if library.Properties.Static_ndk_lib && library.static() {
+	if proptools.Bool(library.Properties.Static_ndk_lib) && library.static() {
 		installPath := getNdkSysrootBase(ctx).Join(
 			ctx, "usr/lib", ctx.toolchain().ClangTriple(), file.Base())
 

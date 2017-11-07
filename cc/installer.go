@@ -18,13 +18,15 @@ import (
 	"path/filepath"
 
 	"android/soong/android"
+
+	"github.com/google/blueprint/proptools"
 )
 
 // This file handles installing files into their final location
 
 type InstallerProperties struct {
 	// install to a subdirectory of the default install path for the module
-	Relative_install_path string `android:"arch_variant"`
+	Relative_install_path *string `android:"arch_variant"`
 }
 
 type installLocation int
@@ -72,7 +74,8 @@ func (installer *baseInstaller) installDir(ctx ModuleContext) android.OutputPath
 	if installer.location == InstallInData && ctx.useVndk() {
 		dir = filepath.Join(dir, "vendor")
 	}
-	return android.PathForModuleInstall(ctx, dir, installer.subDir, installer.Properties.Relative_install_path, installer.relative)
+	return android.PathForModuleInstall(ctx, dir, installer.subDir,
+		proptools.String(installer.Properties.Relative_install_path), installer.relative)
 }
 
 func (installer *baseInstaller) install(ctx ModuleContext, file android.Path) {
