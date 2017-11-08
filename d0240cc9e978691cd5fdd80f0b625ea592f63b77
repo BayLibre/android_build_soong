@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed39bd3c_66d08bdc",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-08T21:16:12Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem necessary, sbox is only going to be used by soong, and anybody who copies and pastes it out of a build log will end up with --overwrite anyways.",
+      "revId": "d0240cc9e978691cd5fdd80f0b625ea592f63b77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
