@@ -19,6 +19,7 @@ package cc
 // is handled in builder.go
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 
@@ -576,7 +577,25 @@ func orderStaticModuleDeps(module *Module, deps []*Module) (results []android.Pa
 	module.staticDepsInLinkOrder, results = orderDeps(depFiles, transitiveStaticDepNames)
 
 	return results
+}
 
+func (c *Module) AddWerror(actx android.ModuleContext, cflags *[]string, cppflags []string, ctx ModuleContext) (messages []string) {
+	messages = []string{}
+	// Skip vendor/* directories.
+	if strings.HasPrefix(ctx.ModuleDir(), "vendor/") {
+		return messages;
+	}
+	// TODO(chh): some negative tests should be allowed to use -Wno-error
+	if inList("-Wno-error", *cflags) || inList("-Wno-error", cppflags) {
+		suffix := " (" + actx.Os().String() + " " + actx.Arch().ArchType.String() + ")";
+		module := ctx.ModuleDir() + "/Android.bp: warning: " + c.Name() + suffix;
+		fmt.Println(module, "uses -Wno-error");
+	} else if !inList("-Werror", *cflags) && !inList("-Werror", cppflags) {
+		// -Wall -Werror could be added and not used, if there is no compiled object file.
+		messages = append(messages, "does not use -Werror, add default -Wall -Werror")
+		*cflags = append([]string{"-Wall", "-Werror"}, *cflags...)
+	}
+	return messages;
 }
 
 func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
@@ -630,11 +649,16 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		return
 	}
 	flags.GlobalFlags = append(flags.GlobalFlags, deps.Flags...)
+	messages := []string{};
+	if c.compiler != nil {
+		messages = c.AddWerror(actx, &flags.CFlags, flags.CppFlags, ctx)
+	}
 	c.flags = flags
 	// We need access to all the flags seen by a source file.
 	if c.sabi != nil {
 		flags = c.sabi.flags(ctx, flags)
 	}
+
 	// Optimization to reduce size of build.ninja
 	// Replace the long list of flags for each file with a module-local variable
 	ctx.Variable(pctx, "cflags", strings.Join(flags.CFlags, " "))
@@ -649,6 +673,14 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		objs = c.compiler.compile(ctx, flags, deps)
 		if ctx.Failed() {
 			return
+		}
+		// Print deferred warning messages if there is some object file.
+		if len(objs.objFiles) > 0 && len(messages) > 0 {
+			suffix := " (" + actx.Os().String() + " " + actx.Arch().ArchType.String() + ")";
+			module := ctx.ModuleDir() + "/Android.bp: warning: " + c.Name() + suffix;
+			for _, msg := range messages {
+				fmt.Println(module, msg);
+			}
 		}
 	}
 
