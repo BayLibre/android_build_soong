@@ -417,8 +417,9 @@ type moduleContext struct {
 	moduleContextImpl
 }
 
-func (ctx *moduleContext) InstallOnVendorPartition() bool {
-	return ctx.ModuleContext.InstallOnVendorPartition() || (ctx.mod.useVndk() && !ctx.mod.isVndk())
+func (ctx *moduleContext) SocSpecific() bool {
+	return ctx.ModuleContext.SocSpecific() ||
+		(ctx.mod.hasVendorVariant() && ctx.mod.useVndk() && !ctx.mod.isVndk())
 }
 
 type moduleContextImpl struct {
@@ -1360,7 +1361,7 @@ func vendorMutator(mctx android.BottomUpMutatorContext) {
 				mctx.CreateVariations(coreMode)
 			} else if Bool(props.Vendor_available) {
 				mctx.CreateVariations(coreMode, vendorMode)
-			} else if mctx.InstallOnVendorPartition() {
+			} else if mctx.SocSpecific() || mctx.DeviceSpecific() {
 				mctx.CreateVariations(vendorMode)
 			} else {
 				mctx.CreateVariations(coreMode)
@@ -1374,9 +1375,9 @@ func vendorMutator(mctx android.BottomUpMutatorContext) {
 	}
 
 	// Sanity check
-	if m.VendorProperties.Vendor_available != nil && mctx.InstallOnVendorPartition() {
+	if m.VendorProperties.Vendor_available != nil && (mctx.SocSpecific() || mctx.DeviceSpecific()) {
 		mctx.PropertyErrorf("vendor_available",
-			"doesn't make sense at the same time as `vendor: true` or `proprietary: true`")
+			"doesn't make sense at the same time as `vendor: true`, `proprietary: true`, or `device_specific:true`")
 		return
 	}
 	if vndk := m.vndkdep; vndk != nil {
@@ -1410,8 +1411,8 @@ func vendorMutator(mctx android.BottomUpMutatorContext) {
 		vendor := mod[1].(*Module)
 		vendor.Properties.UseVndk = true
 		squashVendorSrcs(vendor)
-	} else if mctx.InstallOnVendorPartition() && m.Properties.Sdk_version == "" {
-		// This will be available in /vendor only
+	} else if (mctx.SocSpecific() || mctx.DeviceSpecific()) && m.Properties.Sdk_version == "" {
+		// This will be available in /vendor (or /odm) only
 		mod := mctx.CreateVariations(vendorMode)
 		vendor := mod[0].(*Module)
 		vendor.Properties.UseVndk = true

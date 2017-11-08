@@ -616,6 +616,20 @@ func (c *deviceConfig) VendorPath() string {
 	return "vendor"
 }
 
+func (c *deviceConfig) OdmPath() string {
+	if c.config.ProductVariables.OdmPath != nil {
+		return *c.config.ProductVariables.OdmPath
+	}
+	return "odm"
+}
+
+func (c *deviceConfig) OemPath() string {
+	if c.config.ProductVariables.OemPath != nil {
+		return *c.config.ProductVariables.OemPath
+	}
+	return "oem"
+}
+
 func (c *deviceConfig) CompileVndk() bool {
 	if c.config.ProductVariables.DeviceVndkVersion == nil {
 		return false

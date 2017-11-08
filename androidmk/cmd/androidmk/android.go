@@ -134,6 +134,8 @@ func init() {
 			"LOCAL_TIDY":                     "tidy",
 			"LOCAL_PROPRIETARY_MODULE":       "proprietary",
 			"LOCAL_VENDOR_MODULE":            "vendor",
+			"LOCAL_ODM_MODULE":               "soc_specific",
+			"LOCAL_OEM_MODULE":               "product_specific",
 			"LOCAL_EXPORT_PACKAGE_RESOURCES": "export_package_resources",
 			"LOCAL_DEX_PREOPT":               "dex_preopt",
 		})
