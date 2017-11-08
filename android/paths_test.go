@@ -246,7 +246,7 @@ func TestPathForModuleInstall(t *testing.T) {
 			ctx: &moduleInstallPathContextImpl{
 				androidBaseContextImpl: androidBaseContextImpl{
 					target: deviceTarget,
-					vendor: true,
+					kind:   SocSpecificModule,
 				},
 			},
 			in:  []string{"bin", "my_test"},
@@ -269,7 +269,7 @@ func TestPathForModuleInstall(t *testing.T) {
 			ctx: &moduleInstallPathContextImpl{
 				androidBaseContextImpl: androidBaseContextImpl{
 					target: deviceTarget,
-					vendor: true,
+					kind:   SocSpecificModule,
 				},
 				inData: true,
 			},
@@ -293,7 +293,7 @@ func TestPathForModuleInstall(t *testing.T) {
 			ctx: &moduleInstallPathContextImpl{
 				androidBaseContextImpl: androidBaseContextImpl{
 					target: deviceTarget,
-					vendor: true,
+					kind:   SocSpecificModule,
 				},
 				inSanitizerDir: true,
 			},
@@ -318,7 +318,7 @@ func TestPathForModuleInstall(t *testing.T) {
 			ctx: &moduleInstallPathContextImpl{
 				androidBaseContextImpl: androidBaseContextImpl{
 					target: deviceTarget,
-					vendor: true,
+					kind:   SocSpecificModule,
 				},
 				inData:         true,
 				inSanitizerDir: true,
