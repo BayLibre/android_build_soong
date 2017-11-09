@@ -20,6 +20,7 @@ import (
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/bootstrap"
+	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
 	"android/soong/shared"
@@ -70,10 +71,10 @@ type generatorProperties struct {
 	//
 	// All files used must be declared as inputs (to ensure proper up-to-date checks).
 	// Use "$(in)" directly in Cmd to ensure that all inputs used are declared.
-	Cmd string
+	Cmd *string
 
 	// Enable reading a file containing dependencies in gcc format after the command completes
-	Depfile bool
+	Depfile *bool
 
 	// name of the modules (if any) that produces the host executable.   Leave empty for
 	// prebuilts or scripts that do not need a module to build them.
@@ -221,7 +222,7 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	referencedDepfile := false
 
-	rawCommand, err := android.Expand(g.properties.Cmd, func(name string) (string, error) {
+	rawCommand, err := android.Expand(String(g.properties.Cmd), func(name string) (string, error) {
 		switch name {
 		case "location":
 			if len(g.properties.Tools) > 0 {
@@ -235,7 +236,7 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			return "__SBOX_OUT_FILES__", nil
 		case "depfile":
 			referencedDepfile = true
-			if !g.properties.Depfile {
+			if !Bool(g.properties.Depfile) {
 				return "", fmt.Errorf("$(depfile) used without depfile property")
 			}
 			return "__SBOX_DEPFILE__", nil
@@ -258,7 +259,7 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		}
 	})
 
-	if g.properties.Depfile && !referencedDepfile {
+	if Bool(g.properties.Depfile) && !referencedDepfile {
 		ctx.PropertyErrorf("cmd", "specified depfile=true but did not include a reference to '${depfile}' in cmd")
 	}
 
@@ -274,7 +275,7 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// recall that Sprintf replaces percent sign expressions, whereas dollar signs expressions remain as written,
 	// to be replaced later by ninja_strings.go
 	depfilePlaceholder := ""
-	if g.properties.Depfile {
+	if Bool(g.properties.Depfile) {
 		depfilePlaceholder = "$depfileArgs"
 	}
 	sandboxCommand := fmt.Sprintf("$sboxCmd --sandbox-path %s --output-root %s -c %q %s $allouts", sandboxPath, buildDir, rawCommand, depfilePlaceholder)
@@ -284,7 +285,7 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		CommandDeps: []string{"$sboxCmd"},
 	}
 	args := []string{"allouts"}
-	if g.properties.Depfile {
+	if Bool(g.properties.Depfile) {
 		ruleParams.Deps = blueprint.DepsGCC
 		args = append(args, "depfileArgs")
 	}
@@ -307,7 +308,7 @@ func (g *Module) generateSourceFile(ctx android.ModuleContext, task generateTask
 	}
 
 	var depFile android.ModuleGenPath
-	if g.properties.Depfile {
+	if Bool(g.properties.Depfile) {
 		depFile = android.PathForModuleGen(ctx, task.out[0].Rel()+".d")
 	}
 
@@ -322,7 +323,7 @@ func (g *Module) generateSourceFile(ctx android.ModuleContext, task generateTask
 			"allouts": strings.Join(task.out.Strings(), " "),
 		},
 	}
-	if g.properties.Depfile {
+	if Bool(g.properties.Depfile) {
 		params.Depfile = android.PathForModuleGen(ctx, task.out[0].Rel()+".d")
 		params.Args["depfileArgs"] = "--depfile-out " + depFile.String()
 	}
@@ -402,3 +403,6 @@ type genRuleProperties struct {
 	// names of the output files that will be generated
 	Out []string
 }
+
+var Bool = proptools.Bool
+var String = proptools.String
