@@ -76,7 +76,7 @@ type Logger interface {
 type fatalLog error
 
 func fileRotation(from, baseName, ext string, cur, max int) error {
-	newName := baseName + "." + strconv.Itoa(cur) + ext
+	newName := baseName + "." + strconv.Itoa(cur) + ".ago" + ext
 
 	if _, err := os.Lstat(newName); err == nil {
 		if cur+1 <= max {
@@ -91,9 +91,9 @@ func fileRotation(from, baseName, ext string, cur, max int) error {
 }
 
 // CreateFileWithRotation returns a new os.File using os.Create, renaming any
-// existing files to <filename>.#.<ext>, keeping up to maxCount files.
-// <filename>.1.<ext> is the most recent backup, <filename>.2.<ext> is the
-// second most recent backup, etc.
+// existing files to <filename>.#.ago.<ext>, keeping up to maxCount files.
+// <filename>.1.ago.<ext> is the most recent backup, <filename>.2.ago.<ext> is
+// the second most recent backup, etc.
 func CreateFileWithRotation(filename string, maxCount int) (*os.File, error) {
 	lockFileName := filepath.Join(filepath.Dir(filename), ".lock_"+filepath.Base(filename))
 	lockFile, err := os.OpenFile(lockFileName, os.O_RDWR|os.O_CREATE, 0666)
