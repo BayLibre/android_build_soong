@@ -22,9 +22,11 @@ import (
 )
 
 func NewTestContext() *TestContext {
-	return &TestContext{
+	ctx := &TestContext{
 		Context: blueprint.NewContext(),
 	}
+	ctx.SetNameInterface(NewNameResolver())
+	return ctx
 }
 
 func NewTestArchContext() *TestContext {

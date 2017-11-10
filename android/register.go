@@ -65,7 +65,9 @@ type Context struct {
 }
 
 func NewContext() *Context {
-	return &Context{blueprint.NewContext()}
+	ctx := &Context{blueprint.NewContext()}
+	ctx.SetNameInterface(NewNameResolver())
+	return ctx
 }
 
 func (ctx *Context) Register() {
