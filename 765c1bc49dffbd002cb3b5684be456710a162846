@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5b66054_32fadb1f",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-11-10T23:44:48Z",
+      "side": 1,
+      "message": "I feel like this should probably be checked against the list of all_named_products -- either to drop products that were specified but don\u0027t exist, or to error out early if a product doesn\u0027t exist",
+      "range": {
+        "startLine": 229,
+        "startChar": 2,
+        "endLine": 229,
+        "endChar": 53
+      },
+      "revId": "765c1bc49dffbd002cb3b5684be456710a162846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
