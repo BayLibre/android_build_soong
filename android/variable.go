@@ -189,6 +189,8 @@ type productVariables struct {
 	Override_rs_driver *string `json:",omitempty"`
 
 	DeviceKernelHeaders []string `json:",omitempty"`
+
+	NamespacesToExport []string `json:",omitempty"`
 }
 
 func boolPtr(v bool) *bool {

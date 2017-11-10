@@ -525,6 +525,12 @@ func (a *ModuleBase) androidBaseContextFactory(ctx blueprint.BaseModuleContext) 
 }
 
 func (a *ModuleBase) GenerateBuildActions(ctx blueprint.ModuleContext) {
+	if !(ctx.Namespace().(*Namespace).exportToMake) {
+		// TODO(jeffrygaston) do we want to validate that there are no modules being
+		// exported to Kati that depend on this module?
+		return
+	}
+
 	androidCtx := &androidModuleContext{
 		module:                 a.module,
 		ModuleContext:          ctx,
