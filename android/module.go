@@ -210,6 +210,8 @@ type commonProperties struct {
 	ArchSpecific          bool                  `blueprint:"mutated"`
 
 	SkipInstall bool `blueprint:"mutated"`
+
+	NamespaceExportedToMake bool `blueprint:"mutated"`
 }
 
 type hostAndDeviceProperties struct {
@@ -488,7 +490,7 @@ func (a *ModuleBase) generateModuleTarget(ctx blueprint.ModuleContext) {
 	}
 
 	if len(allCheckbuildFiles) > 0 {
-		name := ctx.ModuleName() + "-checkbuild"
+		name := ctx.ModuleNinjaName() + "-checkbuild"
 		ctx.Build(pctx, blueprint.BuildParams{
 			Rule:      blueprint.Phony,
 			Outputs:   []string{name},
@@ -507,7 +509,7 @@ func (a *ModuleBase) generateModuleTarget(ctx blueprint.ModuleContext) {
 
 		ctx.Build(pctx, blueprint.BuildParams{
 			Rule:      blueprint.Phony,
-			Outputs:   []string{ctx.ModuleName() + suffix},
+			Outputs:   []string{ctx.ModuleNinjaName() + suffix},
 			Implicits: deps,
 			Optional:  true,
 		})
