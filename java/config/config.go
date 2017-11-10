@@ -91,7 +91,11 @@ func init() {
 				return path.String(), nil
 			}
 		} else {
-			path, err := pctx.HostBinToolPath(config, "d8-compat-dx")
+			target := "d8-compat-dx"
+			if config.(android.Config).IsEnvFalse("USE_D8_PREBUILT") {
+				target = "d8-compat-dx-tot"
+			}
+			path, err := pctx.HostBinToolPath(config, target)
 			if err != nil {
 				return "", err
 			}
