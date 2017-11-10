@@ -70,7 +70,8 @@ type Context struct {
 }
 
 func NewContext() *Context {
-	return &Context{blueprint.NewContext()}
+	ctx := &Context{blueprint.NewContext()}
+	return ctx
 }
 
 func (ctx *Context) Register() {
