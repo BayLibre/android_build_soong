@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c617a869_cedf0336",
+        "filename": "android/paths_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-11-13T22:24:50Z",
+      "side": 1,
+      "message": "Do you mean that all of the files and directories that aren\u0027t direct children of directory A should precede all files and directories that are direct children of directory A?\n\nIf so, is this supposed to look more like\n\n\"a/b/c\",\n\"a/b/d\",\n\"a/a.txt\",\n\"a/txt\",\n\"b/b.txt\",\n\"a.txt\",\n\"b\",\n\n\n?",
+      "range": {
+        "startLine": 359,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 12
+      },
+      "revId": "dc84ba23380c7cdcc5888f51fb23db9c86559875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
