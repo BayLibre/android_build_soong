@@ -22,6 +22,30 @@
       "revId": "dc84ba23380c7cdcc5888f51fb23db9c86559875",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33665f8d_bf795c21",
+        "filename": "android/paths_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-13T22:43:55Z",
+      "side": 1,
+      "message": "No, only that everything that starts with \"a/\" is in a contiguous subslice.  The relationship between \"a/\" and \"a.\" is undefined by this requirement, as is the relationship between \"b/\" and \"a.\".  It is implemented by a normal byte-by-byte sort except that \"/\" comes before everything else (including \".\").",
+      "parentUuid": "c617a869_cedf0336",
+      "range": {
+        "startLine": 359,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 12
+      },
+      "revId": "dc84ba23380c7cdcc5888f51fb23db9c86559875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
