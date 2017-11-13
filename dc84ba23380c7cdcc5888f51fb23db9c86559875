@@ -46,6 +46,30 @@
       "revId": "dc84ba23380c7cdcc5888f51fb23db9c86559875",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6741bd3e_f25eaa4b",
+        "filename": "android/paths_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-11-13T22:59:57Z",
+      "side": 1,
+      "message": "Wouldn\u0027t it also be true that \"everything that starts with \\\"a/\\\" [would be] in a contiguous subslice\" when just doing essentially `sort.Strings`, so `si \u003c sj`?\n\nI thought the reason for sorting \u0027/\u0027 in front of other characters was so that a directory would sort next to its contents, but then you said that the fact that the directory sorted next to its contents wasn\u0027t important.",
+      "parentUuid": "33665f8d_bf795c21",
+      "range": {
+        "startLine": 359,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 12
+      },
+      "revId": "dc84ba23380c7cdcc5888f51fb23db9c86559875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
