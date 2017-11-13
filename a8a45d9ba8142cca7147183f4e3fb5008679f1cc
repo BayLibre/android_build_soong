@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe2aef8b_739bbb7e",
+        "filename": "zip/cmd/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-11-13T23:17:36Z",
+      "side": 1,
+      "message": "Any reason for having the default value of writeIfChanged (false) be such that pathtools.WriteFileIfChanged doesn\u0027t get called (that is, keeping this feature disable by default)?",
+      "revId": "a8a45d9ba8142cca7147183f4e3fb5008679f1cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a306924_03892f54",
+        "filename": "zip/zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-11-13T23:17:36Z",
+      "side": 1,
+      "message": "Would this be more accurately named \"WriteIfUnchanged\" (or \"WriteOnlyIfChanged\" or \"Force\" or \"Replace\")?",
+      "revId": "a8a45d9ba8142cca7147183f4e3fb5008679f1cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
