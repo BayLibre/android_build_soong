@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0d2a68a_4525cf28",
+        "filename": "scripts/diff_build_graphs.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-13T18:43:50Z",
+      "side": 1,
+      "message": "Don\u0027t need $violation twice",
+      "revId": "d793ea76e9866c230cac16c1a8075bffecd8cde1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87a2b44d_dedc0401",
+        "filename": "scripts/diff_build_graphs.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-13T18:43:50Z",
+      "side": 1,
+      "message": "This is unnecessary, it should already be $PWD",
+      "range": {
+        "startLine": 92,
+        "startChar": 12,
+        "endLine": 92,
+        "endChar": 27
+      },
+      "revId": "d793ea76e9866c230cac16c1a8075bffecd8cde1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3aab4021_2a4a92cb",
+        "filename": "scripts/diff_build_graphs.sh",
+        "patchSetId": 10
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-13T18:43:50Z",
+      "side": 1,
+      "message": "This is unnecessary, it should already be $PWD",
+      "revId": "d793ea76e9866c230cac16c1a8075bffecd8cde1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
