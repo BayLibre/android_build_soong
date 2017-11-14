@@ -199,6 +199,41 @@ func (compiler *baseCompiler) compilerDeps(ctx DepsContext, deps Deps) Deps {
 	return deps
 }
 
+var warningAllowedProjects = []string{
+	"external/boringssl/",
+	"external/mdnsresponder/",
+	"external/protobuf/",
+	"external/skia/",
+	"device/google/marlin/",
+	"device/google/wahoo/wifi_offload/",
+	"frameworks/av/media/libeffects/factory/",
+	"frameworks/av/media/libstagefright/codecs/",
+	"frameworks/base/tools/stats_log_api_gen/",
+	"frameworks/base/tools/streaming_proto/",
+	"frameworks/ml/nn/",
+	"frameworks/native/libs/vr/libbufferhub/",
+	"frameworks/native/libs/vr/libbufferhubqueue/",
+	"frameworks/native/libs/vr/libdvr/tests/",
+	"frameworks/native/opengl/tests/",
+	"frameworks/native/services/surfaceflinger/tests/",
+	"frameworks/native/services/vr/",
+	"hardware/interfaces/audio/effect/",
+	"hardware/interfaces/biometrics/fingerprint/",
+	"system/nfc/src/",
+	"vendor/",
+}
+
+// Return true if the module is in the warningAllowedProjects.
+func WarningsAreAllowed(module string) bool {
+	module += "/"
+	for _, prefix := range warningAllowedProjects {
+		if strings.HasPrefix(module, prefix) {
+			return true
+		}
+	}
+	return false
+}
+
 // Create a Flags struct that collects the compile flags from global values,
 // per-target values, module type values, and per-module Blueprints properties
 func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags) Flags {
@@ -451,6 +486,16 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags) Flag
 
 	if compiler.hasSrcExt(".rs") || compiler.hasSrcExt(".fs") {
 		flags = rsFlags(ctx, flags, &compiler.Properties)
+	}
+
+	if inList("-Wno-error", flags.CFlags) || inList("-Wno-error", flags.CppFlags) {
+		// TODO(chh): issue some warning message
+	} else if !inList("-Werror", flags.CFlags) && !inList("-Werror", flags.CppFlags) {
+		if WarningsAreAllowed(ctx.ModuleDir()) {
+			flags.CFlags = append([]string{"-Wall"}, flags.CFlags...)
+		} else {
+			flags.CFlags = append([]string{"-Wall", "-Werror"}, flags.CFlags...)
+		}
 	}
 
 	return flags
