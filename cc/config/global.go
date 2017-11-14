@@ -18,6 +18,7 @@ import (
 	"fmt"
 	"runtime"
 	"strings"
+	"sync"
 
 	"android/soong/android"
 )
@@ -105,6 +106,10 @@ var (
 	IllegalFlags = []string{
 		"-w",
 	}
+
+	ModulesUsingWnoError sync.Map // map[string]bool
+	ModulesAddedWall     sync.Map // map[string]bool
+	ModulesAddedWerror   sync.Map // map[string]bool
 
 	CStdVersion               = "gnu99"
 	CppStdVersion             = "gnu++14"

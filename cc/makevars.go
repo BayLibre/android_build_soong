@@ -18,6 +18,7 @@ import (
 	"fmt"
 	"sort"
 	"strings"
+	"sync"
 
 	"android/soong/android"
 	"android/soong/cc/config"
@@ -25,6 +26,17 @@ import (
 
 func init() {
 	android.RegisterMakeVarsProvider(pctx, makeVarsProvider)
+}
+
+func makeStringOfKeys(set sync.Map) string {
+	keys := []string{}
+	addKey := func(key interface{}, value interface{}) bool {
+		keys = append(keys, key.(string))
+		return true
+	}
+	set.Range(addKey)
+	sort.Strings(keys)
+	return strings.Join(keys, " ")
 }
 
 func makeVarsProvider(ctx android.MakeVarsContext) {
@@ -63,6 +75,10 @@ func makeVarsProvider(ctx android.MakeVarsContext) {
 	ctx.Strict("VNDK_SAMEPROCESS_LIBRARIES", strings.Join(vndkSpLibraries, " "))
 	ctx.Strict("LLNDK_LIBRARIES", strings.Join(llndkLibraries, " "))
 	ctx.Strict("VNDK_PRIVATE_LIBRARIES", strings.Join(vndkPrivateLibraries, " "))
+
+	ctx.Strict("BP_MODULES_USING_WNO_ERROR", makeStringOfKeys(config.ModulesUsingWnoError))
+	ctx.Strict("BP_MODULES_ADDED_WERROR", makeStringOfKeys(config.ModulesAddedWerror))
+	ctx.Strict("BP_MODULES_ADDED_WALL", makeStringOfKeys(config.ModulesAddedWall))
 
 	ctx.Strict("ADDRESS_SANITIZER_CONFIG_EXTRA_CFLAGS", strings.Join(asanCflags, " "))
 	ctx.Strict("ADDRESS_SANITIZER_CONFIG_EXTRA_LDFLAGS", strings.Join(asanLdflags, " "))
