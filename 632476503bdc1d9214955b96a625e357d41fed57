@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "681deff7_d3f9c524",
+        "filename": "cc/compiler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-11-15T20:02:18Z",
+      "side": 1,
+      "message": "In theory we might have to worry about ConlyFlags too, but I don\u0027t think we should care.\n\nIn this case though, don\u0027t we still want -Wall? Perhaps we should be prepending \"-Wall -Werror\" in all cases, and letting the -Wno-error part sort out the rest.",
+      "revId": "632476503bdc1d9214955b96a625e357d41fed57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9712b18_7b3a72a1",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2017-11-15T20:02:18Z",
+      "side": 1,
+      "message": "Is this missing -Wall though?",
+      "revId": "632476503bdc1d9214955b96a625e357d41fed57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
