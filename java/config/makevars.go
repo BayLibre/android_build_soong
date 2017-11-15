@@ -37,6 +37,7 @@ func makeVarsProvider(ctx android.MakeVarsContext) {
 
 	ctx.Strict("ANDROID_JAVA_HOME", "${JavaHome}")
 	ctx.Strict("ANDROID_JAVA_TOOLCHAIN", "${JavaToolchain}")
+	ctx.Strict("EXPERIMENTAL_USE_OPENJDK9", ctx.Config().ExperimentalTargetOpenJDK9ForMake())
 	ctx.Strict("JAVA", "${JavaCmd}")
 	ctx.Strict("JAVAC", "${JavacCmd}")
 	ctx.Strict("JAR", "${JarCmd}")

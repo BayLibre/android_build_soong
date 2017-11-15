@@ -289,8 +289,11 @@ func NewConfig(srcDir, buildDir string) (Config, error) {
 
 func (c *config) fromEnv() error {
 	switch c.Getenv("EXPERIMENTAL_USE_OPENJDK9") {
-	case "":
+	case "false":
 		// Use OpenJDK8
+	case "":
+		// Use OpenJDK9, but target 1.8
+		c.useOpenJDK9 = true
 	case "1.8":
 		// Use OpenJDK9, but target 1.8
 		c.useOpenJDK9 = true
@@ -567,6 +570,16 @@ func (c *config) UseOpenJDK9() bool {
 // Returns true if -source 1.9 -target 1.9 is being passed to javac
 func (c *config) TargetOpenJDK9() bool {
 	return c.targetOpenJDK9
+}
+
+func (c *config) ExperimentalTargetOpenJDK9ForMake() string {
+	if c.TargetOpenJDK9() {
+		return "true"
+	}
+	if c.UseOpenJDK9() {
+		return "1.8"
+	}
+	return ""
 }
 
 func (c *config) ClangTidy() bool {
