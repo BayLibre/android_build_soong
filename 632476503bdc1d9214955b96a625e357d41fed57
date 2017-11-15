@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6e52798a_8c11a040",
+        "filename": "cc/compiler.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-11-15T23:42:27Z",
+      "side": 1,
+      "message": "I would rather add -Wall later. Right now projects using -Wno-error  to counter default -Werror. We will replace -Wno-error with more specific -Wno-error\u003dxyz or -Wno-xyz.",
+      "parentUuid": "681deff7_d3f9c524",
+      "revId": "632476503bdc1d9214955b96a625e357d41fed57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e9712b18_7b3a72a1",
         "filename": "cc/ndk_library.go",
         "patchSetId": 11
@@ -30,6 +48,24 @@
       "writtenOn": "2017-11-15T20:02:18Z",
       "side": 1,
       "message": "Is this missing -Wall though?",
+      "revId": "632476503bdc1d9214955b96a625e357d41fed57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2401996_e86bf833",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-11-15T23:42:27Z",
+      "side": 1,
+      "message": "Done, added -Wall too.",
+      "parentUuid": "e9712b18_7b3a72a1",
       "revId": "632476503bdc1d9214955b96a625e357d41fed57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
