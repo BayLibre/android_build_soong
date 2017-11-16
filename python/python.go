@@ -163,6 +163,7 @@ type bootstrapper interface {
 
 type installer interface {
 	install(ctx android.ModuleContext, path android.Path)
+	inData() bool
 }
 
 type PythonDependency interface {
@@ -556,6 +557,13 @@ func fillInMap(ctx android.ModuleContext, m map[string]string,
 	}
 
 	return true
+}
+
+func (p *Module) InstallInData() bool {
+	if p.installer == nil {
+		return false
+	}
+	return p.installer.inData()
 }
 
 var Bool = proptools.Bool
