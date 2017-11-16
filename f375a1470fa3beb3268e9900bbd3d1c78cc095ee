@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2582c7a5_02bda7b8",
+        "filename": "java/gen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-11-16T23:57:57Z",
+      "side": 1,
+      "message": "Seems like this needs to happen either here or in make, not both (and if it\u0027s in make, we need to pass the logtags files over to make)",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 1
+      },
+      "revId": "f375a1470fa3beb3268e9900bbd3d1c78cc095ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
