@@ -22,6 +22,30 @@
       "revId": "15063659e4af453e492ba65d348815ff4be43c73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9441f2dc_b89258ca",
+        "filename": "cc/pgo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2017-11-16T23:52:58Z",
+      "side": 1,
+      "message": "No.. we directly add the libclang_rt.profile static library as part of the link step.  See comment above and https://android-review.googlesource.com/#/c/platform/build/soong/+/502388/ for details.",
+      "parentUuid": "52e48b0b_b5e75c95",
+      "range": {
+        "startLine": 84,
+        "startChar": 41,
+        "endLine": 84,
+        "endChar": 65
+      },
+      "revId": "15063659e4af453e492ba65d348815ff4be43c73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
