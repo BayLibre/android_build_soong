@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52e48b0b_b5e75c95",
+        "filename": "cc/pgo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1249946
+      },
+      "writtenOn": "2017-11-16T23:48:15Z",
+      "side": 1,
+      "message": "Do we also need to add profileInstrumentFlag to ldflags?",
+      "range": {
+        "startLine": 84,
+        "startChar": 41,
+        "endLine": 84,
+        "endChar": 65
+      },
+      "revId": "15063659e4af453e492ba65d348815ff4be43c73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
