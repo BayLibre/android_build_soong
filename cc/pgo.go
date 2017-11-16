@@ -37,11 +37,19 @@ const profileUseSamplingFormat = "-fprofile-sample-use=%s"
 
 type PgoProperties struct {
 	Pgo struct {
-		Instrumentation    *bool
-		Sampling           *bool
-		Profile_file       *string `android:"arch_variant"`
-		Benchmarks         []string
+		Instrumentation *bool
+		Sampling        *bool
+		Profile_file    *string `android:"arch_variant"`
+		Benchmarks      []string
+
+		// Enables using the profile data when compiling the module.
+		// Defaults to true if not set.
 		Enable_profile_use *bool `android:"arch_variant"`
+
+		// Enables PGO instrumentation when one of the module's
+		// benchmarks is specified in the ANDROID_PGO_INSTRUMENT
+		// environment variable.  Defaults to true if not set.
+		Enable_profile_instrument *bool `android:"arch_variant"`
 	} `android:"arch_variant"`
 
 	PgoPresent          bool `blueprint:"mutated"`
@@ -60,12 +68,20 @@ func (props *PgoProperties) isSampling() bool {
 	return props.Pgo.Sampling != nil && *props.Pgo.Sampling == true
 }
 
+func (props *PgoProperties) isProfileUseEnabled() bool {
+	return props.Pgo.Enable_profile_use == nil || *props.Pgo.Enable_profile_use == true
+}
+
+func (props *PgoProperties) isInstrumentationEnabled() bool {
+	return props.Pgo.Enable_profile_instrument == nil || *props.Pgo.Enable_profile_instrument == true
+}
+
 func (pgo *pgo) props() []interface{} {
 	return []interface{}{&pgo.Properties}
 }
 
 func (props *PgoProperties) addProfileGatherFlags(ctx ModuleContext, flags Flags) Flags {
-	if props.isInstrumentation() {
+	if props.isInstrumentation() && props.isInstrumentationEnabled() {
 		flags.CFlags = append(flags.CFlags, profileInstrumentFlag)
 		// The profile runtime is added below in deps().  Add the below
 		// flag, which is the only other link-time action performed by
@@ -97,7 +113,7 @@ func (props *PgoProperties) profileUseFlags(ctx ModuleContext, file string) []st
 
 func (props *PgoProperties) addProfileUseFlags(ctx ModuleContext, flags Flags) Flags {
 	// Skip -fprofile-use if 'enable_profile_use' property is set
-	if props.Pgo.Enable_profile_use != nil && *props.Pgo.Enable_profile_use == false {
+	if !props.isProfileUseEnabled() {
 		return flags
 	}
 
@@ -196,7 +212,9 @@ func (pgo *pgo) begin(ctx BaseModuleContext) {
 }
 
 func (pgo *pgo) deps(ctx BaseModuleContext, deps Deps) Deps {
-	if pgo.Properties.ShouldProfileModule {
+	props := pgo.Properties
+
+	if props.ShouldProfileModule && props.isInstrumentation() && props.isInstrumentationEnabled() {
 		runtimeLibrary := config.ProfileRuntimeLibrary(ctx.toolchain())
 		deps.LateStaticLibs = append(deps.LateStaticLibs, runtimeLibrary)
 	}
