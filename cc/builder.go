@@ -136,6 +136,11 @@ var (
 		},
 		"ccCmd", "cFlags", "libName")
 
+	copyFile = pctx.AndroidStaticRule("copyFile",
+		blueprint.RuleParams{
+			Command: "cp -f $in $out",
+		})
+
 	_ = pctx.SourcePathVariable("tocPath", "build/soong/scripts/toc.sh")
 
 	toc = pctx.AndroidStaticRule("toc",
@@ -845,6 +850,17 @@ func CopyGccLib(ctx android.ModuleContext, libName string,
 			"cFlags":  flags.globalFlags,
 			"libName": libName,
 		},
+	})
+}
+
+func CopyFile(ctx android.ModuleContext, inputFile android.Path,
+	outputFile android.WritablePath) {
+
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        copyFile,
+		Description: "copy prebuilt " + inputFile.String(),
+		Output:      outputFile,
+		Input:       inputFile,
 	})
 }
 
