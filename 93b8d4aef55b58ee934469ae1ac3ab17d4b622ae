@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9ae42b6f_36a57f65",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-11-17T17:06:53Z",
+      "side": 1,
+      "message": "There shouldn\u0027t be any llndk stub prebuilts -- if we need the stubs, we should be able to build them just like the ndk stubs. That\u0027ll need some work on the stub library generator so that we can actually mark versions in the map files.",
+      "parentUuid": "b6b8d12d_406b7c73",
+      "range": {
+        "startLine": 847,
+        "startChar": 0,
+        "endLine": 848,
+        "endChar": 95
+      },
+      "revId": "93b8d4aef55b58ee934469ae1ac3ab17d4b622ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "132bc4bf_79e97b57",
         "filename": "cc/cc.go",
         "patchSetId": 3
