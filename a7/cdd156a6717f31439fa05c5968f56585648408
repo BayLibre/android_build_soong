@@ -1,0 +1,8 @@
+Verified+1: Tobias Thierer <tobiast@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Tobias Thierer <tobiast@google.com>
+Submitted-at: Fri, 17 Nov 2017 15:14:37 +0000
+Reviewed-on: https://android-review.googlesource.com/539056
+Project: platform/build/soong
+Branch: refs/heads/master
