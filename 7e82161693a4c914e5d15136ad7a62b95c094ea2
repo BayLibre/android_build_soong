@@ -22,6 +22,30 @@
       "revId": "7e82161693a4c914e5d15136ad7a62b95c094ea2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b9eac91_7a83e8b4",
+        "filename": "java/proto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-17T01:05:17Z",
+      "side": 0,
+      "message": "Kinda related, allowing srcjars in genrules lets me implement stream proto rules as genrules.",
+      "parentUuid": "ddd20996_ded00a33",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 36
+      },
+      "revId": "7e82161693a4c914e5d15136ad7a62b95c094ea2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
