@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c838e23_a5b71ae6",
+        "filename": "cc/gen_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-11-17T07:22:04Z",
+      "side": 1,
+      "message": "copyright header",
+      "revId": "37797c95024e99d47ff3697e3fbcee419abd41ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
