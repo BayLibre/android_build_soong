@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47a80c79_93636237",
+        "filename": "cc/library_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-11-17T07:11:08Z",
+      "side": 1,
+      "message": "copyright header?",
+      "revId": "e545c9286a0f1a99a693ff20c68c8fe9a9a0ee59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df3a8fe4_0c5edaa4",
+        "filename": "cc/library_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-11-17T07:11:08Z",
+      "side": 1,
+      "message": "On darwin, we don\u0027t use the ar rule",
+      "range": {
+        "startLine": 17,
+        "startChar": 92,
+        "endLine": 17,
+        "endChar": 96
+      },
+      "revId": "e545c9286a0f1a99a693ff20c68c8fe9a9a0ee59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
