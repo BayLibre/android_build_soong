@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62bac683_52b7eabd",
+        "filename": "cc/compiler.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-17T23:15:07Z",
+      "side": 1,
+      "message": "This isn\u0027t technically correct, since modules can be in files not named Android.bp, but it should be mostly accurate, and we don\u0027t expose BlueprintFile to module contexts for some reason.\n\nThis whole thing would be simpler as a Singleton that visited all the modules, type-asserted them to (*Module) and checked (*Module).flags.CFlags, but I don\u0027t think we have a good way to make sure that the singleton runs before the makevars singleton.",
+      "range": {
+        "startLine": 479,
+        "startChar": 30,
+        "endLine": 479,
+        "endChar": 44
+      },
+      "revId": "18b92447ae0a00f820aff8b93bb49c57ec884117",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
