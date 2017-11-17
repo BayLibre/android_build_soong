@@ -70,6 +70,7 @@ func makeVarsProvider(ctx android.MakeVarsContext) {
 
 	ctx.Strict("CFI_EXTRA_CFLAGS", strings.Join(cfiCflags, " "))
 	ctx.Strict("CFI_EXTRA_LDFLAGS", strings.Join(cfiLdflags, " "))
+	ctx.Strict("CFI_LIBRARIES", strings.Join(cfiLibs, " "))
 
 	ctx.Strict("INTEGER_OVERFLOW_EXTRA_CFLAGS", strings.Join(intOverflowCflags, " "))
 
