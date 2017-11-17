@@ -844,6 +844,8 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 					}
 				} else if ctx.useVndk() && inList(entry, llndkLibraries) {
 					nonvariantLibs = append(nonvariantLibs, entry+llndkLibrarySuffix)
+				} else if ctx.useVndk() && inList(entry, vndkPrebuiltLibraries) {
+					nonvariantLibs = append(nonvariantLibs, entry+vndkSuffix+ctx.DeviceConfig().VndkVersion())
 				} else {
 					nonvariantLibs = append(nonvariantLibs, entry)
 				}
@@ -1203,9 +1205,11 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 		case sharedDepTag, sharedExportDepTag, lateSharedDepTag:
 			libName := strings.TrimSuffix(depName, llndkLibrarySuffix)
 			libName = strings.TrimPrefix(libName, "prebuilt_")
+			libName = strings.TrimSuffix(libName, vndkSuffix + ctx.DeviceConfig().VndkVersion())
 			isLLndk := inList(libName, llndkLibraries)
+			isVndkPrebuilt := inList(libName, vndkPrebuiltLibraries)
 			var makeLibName string
-			bothVendorAndCoreVariantsExist := ccDep.hasVendorVariant() || isLLndk
+			bothVendorAndCoreVariantsExist := ccDep.hasVendorVariant() || isLLndk || isVndkPrebuilt
 			if c.useVndk() && bothVendorAndCoreVariantsExist {
 				// The vendor module in Make will have been renamed to not conflict with the core
 				// module, so update the dependency name here accordingly.
@@ -1356,7 +1360,7 @@ func vendorMutator(mctx android.BottomUpMutatorContext) {
 
 	if genrule, ok := mctx.Module().(*genrule.Module); ok {
 		if props, ok := genrule.Extra.(*VendorProperties); ok {
-			if !mctx.DeviceConfig().CompileVndk() {
+			if mctx.DeviceConfig().VndkVersion() == "" {
 				mctx.CreateVariations(coreMode)
 			} else if Bool(props.Vendor_available) {
 				mctx.CreateVariations(coreMode, vendorMode)
@@ -1392,7 +1396,7 @@ func vendorMutator(mctx android.BottomUpMutatorContext) {
 		}
 	}
 
-	if !mctx.DeviceConfig().CompileVndk() {
+	if mctx.DeviceConfig().VndkVersion() == "" {
 		// If the device isn't compiling against the VNDK, we always
 		// use the core mode.
 		mctx.CreateVariations(coreMode)
@@ -1403,6 +1407,21 @@ func vendorMutator(mctx android.BottomUpMutatorContext) {
 	} else if _, ok := m.linker.(*llndkHeadersDecorator); ok {
 		// ... and LL-NDK headers as well
 		mctx.CreateVariations(vendorMode)
+	} else if linker, ok := m.linker.(*vndkPrebuiltLibraryDecorator); ok {
+		// Make vendor variants only for the versions in BOARD_VNDK_VERSION and
+		// PRODUCT_EXTRA_VNDK_VERSIONS.
+		if linker.checkVndkVersion(mctx) || linker.checkExtraVndkVersions(mctx) {
+			mod := mctx.CreateVariations(vendorMode)
+			vendor := mod[0].(*Module)
+			vendor.Properties.UseVndk = true
+
+			if linker.linkToVendor() {
+				name := strings.TrimSuffix(m.Name(), vndkSuffix+linker.version())
+				if !inList(name, vndkPrebuiltLibraries) {
+					vndkPrebuiltLibraries = append(vndkPrebuiltLibraries, name)
+				}
+			}
+		}
 	} else if m.hasVendorVariant() {
 		// This will be available in both /system and /vendor
 		// or a /system directory that is available to vendor.

@@ -824,7 +824,7 @@ func linkageMutator(mctx android.BottomUpMutatorContext) {
 	if m, ok := mctx.Module().(*Module); ok && m.linker != nil {
 		if library, ok := m.linker.(libraryInterface); ok {
 			var modules []blueprint.Module
-			if library.buildStatic() && library.buildShared() {
+			if library.buildStatic() && library.buildShared() && (!m.useVndk() || !inList(m.Name(), vndkPrebuiltLibraries)) {
 				modules = mctx.CreateLocalVariations("static", "shared")
 				static := modules[0].(*Module)
 				shared := modules[1].(*Module)
@@ -837,7 +837,7 @@ func linkageMutator(mctx android.BottomUpMutatorContext) {
 			} else if library.buildStatic() {
 				modules = mctx.CreateLocalVariations("static")
 				modules[0].(*Module).linker.(libraryInterface).setStatic()
-			} else if library.buildShared() {
+			} else if library.buildShared() && (!m.useVndk() || !inList(m.Name(), vndkPrebuiltLibraries)) {
 				modules = mctx.CreateLocalVariations("shared")
 				modules[0].(*Module).linker.(libraryInterface).setShared()
 			}
