@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ddd20996_ded00a33",
+        "filename": "java/proto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-11-17T01:02:56Z",
+      "side": 0,
+      "message": "unrelated change?",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 36
+      },
+      "revId": "7e82161693a4c914e5d15136ad7a62b95c094ea2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
