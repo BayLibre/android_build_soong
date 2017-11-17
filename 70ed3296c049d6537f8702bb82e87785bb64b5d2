@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d11b422a_9bbf4371",
+        "filename": "cc/compiler.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-11-17T18:58:47Z",
+      "side": 1,
+      "message": "Okay, I can generate from the same list a string of patterns for make. Some modules now use only Android.bp or Android.mk file, so I tried to keep two lists instead of one larger unified list.\nShorter lists should save some search time in make and soong.\n\nSince this short list contains prefix of paths, a cross HasPrefix match with a long list of all existing paths would take longer time than comparing with a short list of modules that have not used -Werror. Current wall_werror.txt dump shows that WarningsAreAllowed is only called less than 70 times,\nfor modules added -Wall or -Werror.",
+      "parentUuid": "c282e801_95276c08",
+      "revId": "70ed3296c049d6537f8702bb82e87785bb64b5d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e4780ab8_8a244ff9",
         "filename": "cc/config/global.go",
         "patchSetId": 16
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "8875bcd2_1cbeaa27",
+        "filename": "cc/config/global.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-11-17T18:58:47Z",
+      "side": 1,
+      "message": "Maybe I miss something. Could you give me more details?\nI found only vtsList using the Once function now.\nIt looks unique and with less obvious wrappers than other static config variables.",
+      "parentUuid": "e4780ab8_8a244ff9",
+      "revId": "70ed3296c049d6537f8702bb82e87785bb64b5d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "27edb684_6e40d805",
         "filename": "cc/makevars.go",
         "patchSetId": 16
@@ -47,6 +83,24 @@
       "writtenOn": "2017-11-17T00:17:24Z",
       "side": 1,
       "message": "inline addKey here",
+      "revId": "70ed3296c049d6537f8702bb82e87785bb64b5d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "239abcc8_55f68293",
+        "filename": "cc/makevars.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-11-17T18:58:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27edb684_6e40d805",
       "revId": "70ed3296c049d6537f8702bb82e87785bb64b5d2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
