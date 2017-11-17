@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "0dcd5a0c_cae2b254",
+        "filename": "cc/compiler.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-11-17T22:23:20Z",
+      "side": 1,
+      "message": "Now moved both list to gobal.go and combined them to ANDROID_WARNING_ALLOWED_PROJECTS.\nI will run some tests before further encapsulation of those new global variables.",
+      "parentUuid": "5aab34b3_e7241f6a",
+      "revId": "70ed3296c049d6537f8702bb82e87785bb64b5d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e4780ab8_8a244ff9",
         "filename": "cc/config/global.go",
         "patchSetId": 16
