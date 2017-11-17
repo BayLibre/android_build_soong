@@ -243,6 +243,12 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 		s.Diag.Cfi = nil
 	}
 
+	// Also disable CFI for host builds.
+	if ctx.Host() {
+		s.Cfi = nil
+		s.Diag.Cfi = nil
+	}
+
 	if ctx.staticBinary() {
 		s.Address = nil
 		s.Coverage = nil
@@ -474,12 +480,11 @@ func (sanitize *sanitize) AndroidMk(ctx AndroidMkContext, ret *android.AndroidMk
 			fmt.Fprintln(w, "LOCAL_SHARED_LIBRARIES += "+sanitize.androidMkRuntimeLibrary)
 		}
 	})
-	if ctx.Target().Os.Class == android.Device {
-		if Bool(sanitize.Properties.Sanitize.Cfi) {
-			ret.SubName += ".cfi"
-		} else if Bool(sanitize.Properties.Sanitize.Address) {
-			ret.SubName += ".asan"
-		}
+
+	// Add a suffix for CFI-enabled static libraries to allow surfacing both to make without a
+	// name conflict.
+	if ret.Class == "STATIC_LIBRARIES" && Bool(sanitize.Properties.Sanitize.Cfi) {
+		ret.SubName += ".cfi"
 	}
 }
 
@@ -584,27 +589,26 @@ func sanitizerMutator(t sanitizerType) func(android.BottomUpMutatorContext) {
 
 				modules[0].(*Module).sanitize.Properties.SanitizeDep = false
 				modules[1].(*Module).sanitize.Properties.SanitizeDep = false
-				if mctx.Device() {
-					// CFI and ASAN are currently mutually exclusive so disable
-					// CFI if this is an ASAN variant.
-					if t == asan {
+
+				// We don't need both variants active for anything but CFI-enabled
+				// static libraries, so suppress the appropriate variant in all
+				// other cases.
+				if t == cfi && !c.static() {
+					modules[0].(*Module).Properties.PreventInstall = true
+					modules[0].(*Module).Properties.HideFromMake = true
+				} else if t == asan {
+					if mctx.Device() {
+						// CFI and ASAN are currently mutually exclusive so disable
+						// CFI if this is an ASAN variant.
 						modules[1].(*Module).sanitize.Properties.InSanitizerDir = true
 						modules[1].(*Module).sanitize.SetSanitizer(cfi, false)
 					}
-				} else {
-					if mctx.AConfig().EmbeddedInMake() {
-						if isSanitizerEnabled {
-							modules[0].(*Module).Properties.HideFromMake = true
-						} else {
-							modules[1].(*Module).Properties.HideFromMake = true
-						}
-					}
-				}
-				if !mctx.AConfig().EmbeddedInMake() || !mctx.Device() {
 					if isSanitizerEnabled {
 						modules[0].(*Module).Properties.PreventInstall = true
+						modules[0].(*Module).Properties.HideFromMake = true
 					} else {
 						modules[1].(*Module).Properties.PreventInstall = true
+						modules[1].(*Module).Properties.HideFromMake = true
 					}
 				}
 			}
