@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "5aab34b3_e7241f6a",
+        "filename": "cc/compiler.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-17T21:14:12Z",
+      "side": 1,
+      "message": "I\u0027d rather have them in one list, otherwise it will be harder to move a module from make to soong.  If you are worried about the performance, use sort.Strings() to sort it and then sort.Search() to do a binary search for the prefix.",
+      "parentUuid": "d11b422a_9bbf4371",
+      "revId": "70ed3296c049d6537f8702bb82e87785bb64b5d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e4780ab8_8a244ff9",
         "filename": "cc/config/global.go",
         "patchSetId": 16
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "Maybe I miss something. Could you give me more details?\nI found only vtsList using the Once function now.\nIt looks unique and with less obvious wrappers than other static config variables.",
       "parentUuid": "e4780ab8_8a244ff9",
+      "revId": "70ed3296c049d6537f8702bb82e87785bb64b5d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e1e1da5_963f7a9d",
+        "filename": "cc/config/global.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-17T21:14:12Z",
+      "side": 1,
+      "message": "It\u0027s also used in testMap in art/build/art.go.\n\nStatic variables cause problems when we run tests because we start lots of test contexts, and they will all be sharing this global data.  To avoid non-reproducible problems when running tests we try to keep mutated state inside the context.  Go\u0027s lack of generics means you have to go through the ugly Once() interface, but you can abstract that ugliness into a single function like testMap does.",
+      "parentUuid": "8875bcd2_1cbeaa27",
       "revId": "70ed3296c049d6537f8702bb82e87785bb64b5d2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
