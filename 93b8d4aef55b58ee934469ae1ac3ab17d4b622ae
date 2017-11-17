@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2c6f5df_05ad426d",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-11-17T10:02:23Z",
+      "side": 1,
+      "message": "This seems to be wrong. If entry is \u0027libc\u0027 then it will always fall into the upper block and will never use this vndk prebuilt lib.",
+      "range": {
+        "startLine": 847,
+        "startChar": 0,
+        "endLine": 848,
+        "endChar": 95
+      },
+      "revId": "93b8d4aef55b58ee934469ae1ac3ab17d4b622ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "132bc4bf_79e97b57",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1409,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-11-17T10:02:23Z",
+      "side": 1,
+      "message": "You shouldn\u0027t create these when BOARD_VNDK_VERSION \u003d\u003d \u003cversion\u003e",
+      "range": {
+        "startLine": 1403,
+        "startChar": 0,
+        "endLine": 1409,
+        "endChar": 35
+      },
+      "revId": "93b8d4aef55b58ee934469ae1ac3ab17d4b622ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8d0ecac_0097a03a",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1428,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-11-17T10:02:23Z",
+      "side": 1,
+      "message": "This as well. When BOARD_VNDK_VERSION is a number (not current), only the core variant should be created. The vendor variant should be created by vndk_prebuilt_library_shared.",
+      "range": {
+        "startLine": 1425,
+        "startChar": 0,
+        "endLine": 1428,
+        "endChar": 26
+      },
+      "revId": "93b8d4aef55b58ee934469ae1ac3ab17d4b622ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5a25fe6_abc2d5df",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-11-17T10:02:23Z",
+      "side": 1,
+      "message": "This doesn\u0027t look nice. Why should linkageMutator care about vndk?",
+      "range": {
+        "startLine": 827,
+        "startChar": 53,
+        "endLine": 827,
+        "endChar": 115
+      },
+      "revId": "93b8d4aef55b58ee934469ae1ac3ab17d4b622ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a2253a1_3ce7edd9",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-11-17T10:02:23Z",
+      "side": 1,
+      "message": "This as well.",
+      "range": {
+        "startLine": 840,
+        "startChar": 35,
+        "endLine": 840,
+        "endChar": 98
+      },
+      "revId": "93b8d4aef55b58ee934469ae1ac3ab17d4b622ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
