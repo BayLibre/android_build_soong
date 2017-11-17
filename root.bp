@@ -31,6 +31,7 @@ optional_subdirs = [
     "prebuilts/ndk",
     "prebuilts/r8",
     "prebuilts/sdk",
+    "prebuilts/vndk/*",
     "prebuilts/misc",
     "system/*",
     "system/hardware/interfaces",

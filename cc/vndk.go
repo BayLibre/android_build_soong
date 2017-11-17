@@ -120,11 +120,12 @@ func (vndk *vndkdep) vndkCheckLinkType(ctx android.ModuleContext, to *Module) {
 }
 
 var (
-	vndkCoreLibraries    []string
-	vndkSpLibraries      []string
-	llndkLibraries       []string
-	vndkPrivateLibraries []string
-	vndkLibrariesLock    sync.Mutex
+	vndkCoreLibraries     []string
+	vndkSpLibraries       []string
+	llndkLibraries        []string
+	vndkPrivateLibraries  []string
+	vndkPrebuiltLibraries []string
+	vndkLibrariesLock     sync.Mutex
 )
 
 // gather list of vndk-core, vndk-sp, and ll-ndk libs
@@ -147,8 +148,15 @@ func vndkMutator(mctx android.BottomUpMutatorContext) {
 		} else {
 			lib, is_lib := m.linker.(*libraryDecorator)
 			prebuilt_lib, is_prebuilt_lib := m.linker.(*prebuiltLibraryLinker)
-			if (is_lib && lib.shared()) || (is_prebuilt_lib && prebuilt_lib.shared()) {
+			vndk_prebuilt_lib, is_vndk_prebuilt := m.linker.(*vndkPrebuiltLibraryDecorator)
+			if (is_lib && lib.shared()) || (is_prebuilt_lib && prebuilt_lib.shared()) || (is_vndk_prebuilt && vndk_prebuilt_lib.shared()) {
 				name := strings.TrimPrefix(m.Name(), "prebuilt_")
+				if is_vndk_prebuilt {
+					if !vndk_prebuilt_lib.linkToVendor() {
+						return
+					}
+					name = strings.TrimSuffix(name, vndkSuffix+vndk_prebuilt_lib.version())
+				}
 				if m.vndkdep.isVndk() {
 					vndkLibrariesLock.Lock()
 					defer vndkLibrariesLock.Unlock()
@@ -172,6 +180,5 @@ func vndkMutator(mctx android.BottomUpMutatorContext) {
 				}
 			}
 		}
-
 	}
 }

@@ -616,11 +616,16 @@ func (c *deviceConfig) VendorPath() string {
 	return "vendor"
 }
 
-func (c *deviceConfig) CompileVndk() bool {
+func (c *deviceConfig) VndkVersion() string {
+	//versionFormat, _ := regexp.Compile("^\d+\.\d+\.\d+$")
 	if c.config.ProductVariables.DeviceVndkVersion == nil {
-		return false
+		return ""
 	}
-	return *c.config.ProductVariables.DeviceVndkVersion == "current"
+	return String(c.config.ProductVariables.DeviceVndkVersion)
+}
+
+func (c *deviceConfig) ExtraVndkVersions() []string {
+	return c.config.ProductVariables.ExtraVndkVersions
 }
 
 func (c *deviceConfig) BtConfigIncludeDir() string {
