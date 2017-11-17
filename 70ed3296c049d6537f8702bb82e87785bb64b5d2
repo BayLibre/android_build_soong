@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c282e801_95276c08",
+        "filename": "cc/compiler.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-17T00:17:24Z",
+      "side": 1,
+      "message": "This list should be in cc/config/global.go, should be checked against paths that actually exist in the tree, and should be shared with make.",
+      "revId": "70ed3296c049d6537f8702bb82e87785bb64b5d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4780ab8_8a244ff9",
+        "filename": "cc/config/global.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-17T00:17:24Z",
+      "side": 1,
+      "message": "Don\u0027t use globals here, it makes testing harder.  Use ctx.AConfig().Once() to allocate and return the storage.",
+      "revId": "70ed3296c049d6537f8702bb82e87785bb64b5d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27edb684_6e40d805",
+        "filename": "cc/makevars.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-17T00:17:24Z",
+      "side": 1,
+      "message": "inline addKey here",
+      "revId": "70ed3296c049d6537f8702bb82e87785bb64b5d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b5e24e3_a5790e50",
+        "filename": "cc/makevars.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-17T00:17:24Z",
+      "side": 1,
+      "message": "Get the storage using ctx.Config().(android.Config).Once() (or Get())",
+      "range": {
+        "startLine": 79,
+        "startChar": 62,
+        "endLine": 79,
+        "endChar": 89
+      },
+      "revId": "70ed3296c049d6537f8702bb82e87785bb64b5d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
