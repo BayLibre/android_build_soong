@@ -65,7 +65,7 @@ var (
 			// maximum number of input files, especially on darwin.
 			Command: `rm -rf "$outDir" && mkdir -p "$outDir" && ` +
 				`${config.KotlincCmd} $classpath $kotlincFlags ` +
-				`-jvm-target $javaVersion -d $outDir $in && ` +
+				`-jvm-target $kotlinJvmTarget -d $outDir $in && ` +
 				`${config.SoongZipCmd} -jar -o $out -C $outDir -D $outDir`,
 			CommandDeps: []string{
 				"${config.KotlincCmd}",
@@ -73,7 +73,7 @@ var (
 				"${config.SoongZipCmd}",
 			},
 		},
-		"kotlincFlags", "classpath", "outDir", "javaVersion")
+		"kotlincFlags", "classpath", "outDir", "kotlinJvmTarget")
 
 	errorprone = pctx.AndroidStaticRule("errorprone",
 		blueprint.RuleParams{
@@ -199,16 +199,22 @@ func TransformKotlinToClasses(ctx android.ModuleContext, outputFile android.Writ
 	inputs := append(android.Paths(nil), srcFiles...)
 	inputs = append(inputs, srcJars...)
 
+	kotlinJvmTarget := flags.javaVersion
+	if kotlinJvmTarget == "1.9" {
+		// http://b/69160377 kotlinc doesn't yet support -jvm-target 1.9
+		kotlinJvmTarget = "1.8"
+	}
+
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        kotlinc,
 		Description: "kotlinc",
 		Output:      outputFile,
 		Inputs:      inputs,
 		Args: map[string]string{
-			"classpath":    flags.kotlincClasspath.FormJavaClassPath("-classpath"),
-			"kotlincFlags": flags.kotlincFlags,
-			"outDir":       classDir.String(),
-			"javaVersion":  flags.javaVersion,
+			"classpath":       flags.kotlincClasspath.FormJavaClassPath("-classpath"),
+			"kotlincFlags":    flags.kotlincFlags,
+			"outDir":          classDir.String(),
+			"kotlinJvmTarget": kotlinJvmTarget,
 		},
 	})
 }
