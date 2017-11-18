@@ -22,6 +22,30 @@
       "revId": "18b92447ae0a00f820aff8b93bb49c57ec884117",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83322724_6cbbe832",
+        "filename": "cc/compiler.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-11-18T05:43:39Z",
+      "side": 1,
+      "message": "If the parser of .bp files can store the file name and line number of a module and we can use something like ctx.ModuleLocation(). But I know too little about soong to do that change now.",
+      "parentUuid": "62bac683_52b7eabd",
+      "range": {
+        "startLine": 479,
+        "startChar": 30,
+        "endLine": 479,
+        "endChar": 44
+      },
+      "revId": "18b92447ae0a00f820aff8b93bb49c57ec884117",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }

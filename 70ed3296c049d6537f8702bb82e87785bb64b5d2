@@ -126,6 +126,24 @@
     },
     {
       "key": {
+        "uuid": "0b1a5de9_dd6f6cbc",
+        "filename": "cc/config/global.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-11-18T05:43:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e1e1da5_963f7a9d",
+      "revId": "70ed3296c049d6537f8702bb82e87785bb64b5d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "27edb684_6e40d805",
         "filename": "cc/makevars.go",
         "patchSetId": 16
@@ -172,6 +190,30 @@
       "writtenOn": "2017-11-17T00:17:24Z",
       "side": 1,
       "message": "Get the storage using ctx.Config().(android.Config).Once() (or Get())",
+      "range": {
+        "startLine": 79,
+        "startChar": 62,
+        "endLine": 79,
+        "endChar": 89
+      },
+      "revId": "70ed3296c049d6537f8702bb82e87785bb64b5d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7194447e_0c5de2f1",
+        "filename": "cc/makevars.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-11-18T05:43:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b5e24e3_a5790e50",
       "range": {
         "startLine": 79,
         "startChar": 62,
