@@ -20,6 +20,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"reflect"
 	"runtime"
 	"strconv"
 	"strings"
@@ -103,6 +104,34 @@ type jsonConfigurable interface {
 	SetDefaultConfig()
 }
 
+func validateConfigAnnotations(configurable jsonConfigurable) (err error) {
+	reflectType := reflect.TypeOf(configurable)
+	reflectType = reflectType.Elem()
+	for i := 0; i < reflectType.NumField(); i++ {
+		field := reflectType.Field(i)
+		jsonTag := field.Tag.Get("json")
+		// Check for mistakes in the json tag
+		if jsonTag != "" && !strings.HasPrefix(jsonTag, ",") {
+			if !strings.Contains(jsonTag, ",") {
+				// Probably an accidental rename, most likely "omitempty" instead of ",omitempty"
+				return fmt.Errorf("Field %s.%s has tag %s which specifies to change its json field name to %q.\n"+
+					"Did you mean to use an annotation of %q?\n"+
+					"(Alternatively, to change the json name of the field, rename the field in source instead.)",
+					reflectType.Name(), field.Name, field.Tag, jsonTag, ","+jsonTag)
+			} else {
+				// Although this rename was probably intentional,
+				// a json annotation is still more confusing than renaming the source variable
+				requestedName := strings.Split(jsonTag, ",")[0]
+				return fmt.Errorf("Field %s.%s has tag %s which specifies to change its json field name to %q.\n"+
+					"To change the json name of the field, rename the field in source instead.",
+					reflectType.Name(), field.Name, field.Tag, requestedName)
+
+			}
+		}
+	}
+	return nil
+}
+
 func loadConfig(config *config) error {
 	err := loadFromConfigFile(&config.FileConfigurableOptions, config.ConfigFileName)
 	if err != nil {
@@ -114,6 +143,12 @@ func loadConfig(config *config) error {
 
 // loads configuration options from a JSON file in the cwd.
 func loadFromConfigFile(configurable jsonConfigurable, filename string) error {
+
+	err := validateConfigAnnotations(configurable)
+	if err != nil {
+		return err
+	}
+
 	// Try to open the file
 	configFileReader, err := os.Open(filename)
 	defer configFileReader.Close()
