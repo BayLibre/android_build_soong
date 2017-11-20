@@ -38,7 +38,8 @@ func init() {
 	errorProneVar("ErrorProneFlags", &ErrorProneFlags)
 
 	pctx.StaticVariable("ErrorProneCmd",
-		"${JavaCmd} -Xmx${JavacHeapSize} -Xbootclasspath/p:${ErrorProneJavacJar} "+
+		"${JavaCmd} ${CommonJdkFlags} "+
+			"-Xmx${JavacHeapSize} -Xbootclasspath/p:${ErrorProneJavacJar} "+
 			"-cp ${ErrorProneJar}:${ErrorProneClasspath} "+
 			"${ErrorProneFlags} ${CommonJdkFlags} ${ErrorProneChecksError}")
 
