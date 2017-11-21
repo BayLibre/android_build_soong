@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6232c3eb_e9fc81be",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-21T16:55:34Z",
+      "side": 1,
+      "message": "Change it here and delete the replaceFirst line since it is supported by gcc and clang.  And leave a comment why not kryo.",
+      "revId": "8b8b76a0b766d5d1a3e94bd4fb92ef850e85e50a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
