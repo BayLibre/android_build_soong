@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "17732920_fd236867",
+        "filename": "cc/compiler.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-11-21T02:29:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66def5b1_66996e2e",
+      "range": {
+        "startLine": 210,
+        "startChar": 24,
+        "endLine": 210,
+        "endChar": 30
+      },
+      "revId": "e936c5dd52b9995c56b9ab7e8011b04f129b92f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "95180807_5f770741",
         "filename": "cc/config/global.go",
         "patchSetId": 22
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "73088fce_f447e760",
+        "filename": "cc/config/global.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-11-21T02:29:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95180807_5f770741",
+      "revId": "e936c5dd52b9995c56b9ab7e8011b04f129b92f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c618529c_ff0dbda8",
         "filename": "cc/makevars.go",
         "patchSetId": 22
@@ -53,6 +95,30 @@
       "writtenOn": "2017-11-21T00:58:39Z",
       "side": 1,
       "message": "This shouldn\u0027t be exported, and might as well make it more specific, getWallWerrorMap?",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 17
+      },
+      "revId": "e936c5dd52b9995c56b9ab7e8011b04f129b92f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fdf862b_12686bec",
+        "filename": "cc/makevars.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-11-21T02:29:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c618529c_ff0dbda8",
       "range": {
         "startLine": 31,
         "startChar": 5,
