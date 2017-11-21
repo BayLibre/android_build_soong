@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "29f529cf_44f17ba8",
+        "filename": "android/module.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-11-21T02:42:20Z",
+      "side": 1,
+      "message": "`m -j nothing` passed. Are you thinking of\n\n(ctx.Module().(*Namespace).exportToMake)\n\n?",
+      "parentUuid": "c693c9e7_229b7f12",
+      "revId": "2f234133d75e37474ebfd0d108ee8d408696b948",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "75a848f2_73144be9",
         "filename": "android/namespace.go",
         "patchSetId": 7
@@ -30,6 +48,24 @@
       "writtenOn": "2017-11-21T01:46:31Z",
       "side": 1,
       "message": "I don\u0027t think it is valid to mix atomic and non-atomic accesses to a variable?",
+      "revId": "2f234133d75e37474ebfd0d108ee8d408696b948",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06489a01_6a8fe1ce",
+        "filename": "android/namespace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-11-21T02:42:20Z",
+      "side": 1,
+      "message": "Hmm I was expecting that the last call to add would be before the first call to sortedItems. I\u0027ll change it to atomic anyway",
+      "parentUuid": "75a848f2_73144be9",
       "revId": "2f234133d75e37474ebfd0d108ee8d408696b948",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "9e0718b5_702557dc",
+        "filename": "android/namespace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-11-21T02:42:20Z",
+      "side": 1,
+      "message": "This does make the assumption that the final call to add() is before the first call to sortedItems(), yeah. Do you think it would be reasonable to just panic if it is detected that add() is called after sortedItems()?\n\nFor \"or be completely invalid if another goroutine starts running sort.Slice\", that\u0027s why atomic.StoreInt32(\u0026s.sorted, 1) only happens after sort.Slice\n\n\nAlthough on second thought now I\u0027m thinking it\u0027s probably worth it to always acquire the lock, in favor of simplicity/clarity.",
+      "parentUuid": "b315eb3f_ca7ec1ea",
+      "revId": "2f234133d75e37474ebfd0d108ee8d408696b948",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c99e327e_171053c5",
         "filename": "android/namespace.go",
         "patchSetId": 7
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "56f18254_63724523",
+        "filename": "android/namespace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-11-21T02:42:20Z",
+      "side": 1,
+      "message": "I thought that too, but I found that r.sortedNamespaces is a complete cache that even has entries in directories that don\u0027t declare their own namespaces.\n\nThat is, if vendor/A is a namespace, then r.sortedNamespaces[\"vendor/A/one\"] refers back to \"vendor/A\"",
+      "parentUuid": "c99e327e_171053c5",
+      "revId": "2f234133d75e37474ebfd0d108ee8d408696b948",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0faaafb8_7155c756",
         "filename": "android/namespace.go",
         "patchSetId": 7
@@ -81,6 +153,30 @@
       "writtenOn": "2017-11-21T01:46:31Z",
       "side": 1,
       "message": "maybe \"namespace-qualified path?\"?  It\u0027s definitely not an absolute path.",
+      "range": {
+        "startLine": 196,
+        "startChar": 13,
+        "endLine": 196,
+        "endChar": 26
+      },
+      "revId": "2f234133d75e37474ebfd0d108ee8d408696b948",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6f641ba_78e1268e",
+        "filename": "android/namespace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-11-21T02:42:20Z",
+      "side": 1,
+      "message": "true",
+      "parentUuid": "0faaafb8_7155c756",
       "range": {
         "startLine": 196,
         "startChar": 13,
@@ -116,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "30b15a9c_46f036c2",
+        "filename": "android/namespace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-11-21T02:42:20Z",
+      "side": 1,
+      "message": "thanks",
+      "parentUuid": "dd3fe98d_ab756ed6",
+      "range": {
+        "startLine": 201,
+        "startChar": 8,
+        "endLine": 201,
+        "endChar": 45
+      },
+      "revId": "2f234133d75e37474ebfd0d108ee8d408696b948",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "54ce5f19_c15ff843",
         "filename": "android/namespace.go",
         "patchSetId": 7
@@ -127,6 +247,24 @@
       "writtenOn": "2017-11-21T01:46:31Z",
       "side": 1,
       "message": "Constructing a slice (which I expect ends up on the heap) for every looking might be expensive.  Having a function that takes a lambda and calls it on each namespace might be significantly cheaper.",
+      "revId": "2f234133d75e37474ebfd0d108ee8d408696b948",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d07155bf_0ea037e6",
+        "filename": "android/namespace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-11-21T02:42:20Z",
+      "side": 1,
+      "message": "sounds good\n\nAlthough maybe what I\u0027ll actually do is to precompute searchOrder and store it on Namespace instead of storing Namespace.importedNamespaces",
+      "parentUuid": "54ce5f19_c15ff843",
       "revId": "2f234133d75e37474ebfd0d108ee8d408696b948",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
