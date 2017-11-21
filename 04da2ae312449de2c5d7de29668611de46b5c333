@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c82de7f0_1dfba6ce",
+        "filename": "cc/makevars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-21T20:56:18Z",
+      "side": 1,
+      "message": "SOONG_CFI_STATIC_LIBRARIES?",
+      "range": {
+        "startLine": 73,
+        "startChar": 13,
+        "endLine": 73,
+        "endChar": 26
+      },
+      "revId": "04da2ae312449de2c5d7de29668611de46b5c333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41e3adfd_1f4df4bc",
         "filename": "cc/sanitize.go",
         "patchSetId": 4
