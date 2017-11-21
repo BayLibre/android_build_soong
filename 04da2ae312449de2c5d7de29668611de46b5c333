@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41e3adfd_1f4df4bc",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-11-21T19:22:16Z",
+      "side": 1,
+      "message": "This is a parallel mutator, so modifying global state like this isn\u0027t safe without a lock. We\u0027d also prefer the list itself to be attached to the config instead of a global, to make it easier to write tests.\n\nThere\u0027s an example of this here: https://android.googlesource.com/platform/test/vts-testcase/hal/+/master/build/soong/hal2vts.go#80 (vtsList)",
+      "range": {
+        "startLine": 608,
+        "startChar": 7,
+        "endLine": 608,
+        "endChar": 42
+      },
+      "revId": "04da2ae312449de2c5d7de29668611de46b5c333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
