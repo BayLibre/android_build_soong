@@ -37,6 +37,41 @@
     },
     {
       "key": {
+        "uuid": "9e7e3f68_93b6f5bf",
+        "filename": "android/module.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-21T20:41:28Z",
+      "side": 1,
+      "message": "Yes, that\u0027s how I read it.",
+      "parentUuid": "29f529cf_44f17ba8",
+      "revId": "2f234133d75e37474ebfd0d108ee8d408696b948",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "607cee99_2f2aa2bb",
+        "filename": "android/module.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-21T20:41:28Z",
+      "side": 1,
+      "message": "We don\u0027t want to return here, we want to generate all the build rules and then skip the exporting to Make in translateAndroidMkModule",
+      "revId": "2f234133d75e37474ebfd0d108ee8d408696b948",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "75a848f2_73144be9",
         "filename": "android/namespace.go",
         "patchSetId": 7
@@ -66,6 +101,24 @@
       "side": 1,
       "message": "Hmm I was expecting that the last call to add would be before the first call to sortedItems. I\u0027ll change it to atomic anyway",
       "parentUuid": "75a848f2_73144be9",
+      "revId": "2f234133d75e37474ebfd0d108ee8d408696b948",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7bf6fdb_27fc873a",
+        "filename": "android/namespace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-21T20:41:28Z",
+      "side": 1,
+      "message": "Then why set s.sorted\u003d0 at all?  I assumed that meant you were transitioning from a sorted to unsorted state.  You could panic if s.sorted \u003d\u003d 1.",
+      "parentUuid": "06489a01_6a8fe1ce",
       "revId": "2f234133d75e37474ebfd0d108ee8d408696b948",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -107,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "d7024b1b_6a80bc6a",
+        "filename": "android/namespace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-21T20:41:28Z",
+      "side": 1,
+      "message": "How many times do you expect this to get called?  It looks like only on error or in AllModules, which is probably not a fast-path and a simple lock would be sufficient.",
+      "parentUuid": "9e0718b5_702557dc",
+      "revId": "2f234133d75e37474ebfd0d108ee8d408696b948",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c99e327e_171053c5",
         "filename": "android/namespace.go",
         "patchSetId": 7
@@ -139,6 +210,24 @@
       "revId": "2f234133d75e37474ebfd0d108ee8d408696b948",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dd389ae_5440722e",
+        "filename": "android/namespace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-21T20:41:28Z",
+      "side": 1,
+      "message": "True.",
+      "parentUuid": "56f18254_63724523",
+      "revId": "2f234133d75e37474ebfd0d108ee8d408696b948",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -265,6 +354,24 @@
       "side": 1,
       "message": "sounds good\n\nAlthough maybe what I\u0027ll actually do is to precompute searchOrder and store it on Namespace instead of storing Namespace.importedNamespaces",
       "parentUuid": "54ce5f19_c15ff843",
+      "revId": "2f234133d75e37474ebfd0d108ee8d408696b948",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a81375a_49ad4650",
+        "filename": "android/namespace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-21T20:41:28Z",
+      "side": 1,
+      "message": "precomputing sounds good.",
+      "parentUuid": "d07155bf_0ea037e6",
       "revId": "2f234133d75e37474ebfd0d108ee8d408696b948",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
