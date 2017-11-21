@@ -16,6 +16,24 @@
       "revId": "8b8b76a0b766d5d1a3e94bd4fb92ef850e85e50a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57c4efd5_d32862f3",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2017-11-21T17:30:55Z",
+      "side": 1,
+      "message": "Done.  After I made the change, Steve and I realized that the Clang driver already changes krait to cortex-a15 when calling the assembler.  We\u0027ll make a similar change for kryo and revert to using \u0027replaceFirst\u0027 once that bypass is in the platform clang.",
+      "parentUuid": "6232c3eb_e9fc81be",
+      "revId": "8b8b76a0b766d5d1a3e94bd4fb92ef850e85e50a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
