@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "796027d0_69b0990f",
+        "filename": "cc/makevars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1068404
+      },
+      "writtenOn": "2017-11-21T22:10:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c82de7f0_1dfba6ce",
+      "range": {
+        "startLine": 73,
+        "startChar": 13,
+        "endLine": 73,
+        "endChar": 26
+      },
+      "revId": "04da2ae312449de2c5d7de29668611de46b5c333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41e3adfd_1f4df4bc",
         "filename": "cc/sanitize.go",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f17c0d52_29c74efe",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1068404
+      },
+      "writtenOn": "2017-11-21T22:10:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41e3adfd_1f4df4bc",
+      "range": {
+        "startLine": 608,
+        "startChar": 7,
+        "endLine": 608,
+        "endChar": 42
+      },
+      "revId": "04da2ae312449de2c5d7de29668611de46b5c333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d5598afd_e7753770",
         "filename": "cc/sanitize.go",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2017-11-21T20:55:35Z",
       "side": 1,
       "message": "else",
+      "range": {
+        "startLine": 610,
+        "startChar": 7,
+        "endLine": 610,
+        "endChar": 26
+      },
+      "revId": "04da2ae312449de2c5d7de29668611de46b5c333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42465b81_95efb05c",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1068404
+      },
+      "writtenOn": "2017-11-21T22:10:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5598afd_e7753770",
       "range": {
         "startLine": 610,
         "startChar": 7,
