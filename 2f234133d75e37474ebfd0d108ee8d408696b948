@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c693c9e7_229b7f12",
+        "filename": "android/module.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-21T01:46:31Z",
+      "side": 1,
+      "message": "Isn\u0027t this a type-assertion panic for most modules?",
+      "revId": "2f234133d75e37474ebfd0d108ee8d408696b948",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75a848f2_73144be9",
+        "filename": "android/namespace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-21T01:46:31Z",
+      "side": 1,
+      "message": "I don\u0027t think it is valid to mix atomic and non-atomic accesses to a variable?",
+      "revId": "2f234133d75e37474ebfd0d108ee8d408696b948",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b315eb3f_ca7ec1ea",
+        "filename": "android/namespace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-21T01:46:31Z",
+      "side": 1,
+      "message": "This isn\u0027t valid, s.items could become unsorted due to an addition between s.isSorted() and when it is returned, or be completely invalid if another goroutine starts running sort.Slice.",
+      "revId": "2f234133d75e37474ebfd0d108ee8d408696b948",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c99e327e_171053c5",
+        "filename": "android/namespace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-21T01:46:31Z",
+      "side": 1,
+      "message": "I don\u0027t think you need r.sortedNamespaces at all, you can construct it from r.namespacesByDir",
+      "revId": "2f234133d75e37474ebfd0d108ee8d408696b948",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0faaafb8_7155c756",
+        "filename": "android/namespace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-21T01:46:31Z",
+      "side": 1,
+      "message": "maybe \"namespace-qualified path?\"?  It\u0027s definitely not an absolute path.",
+      "range": {
+        "startLine": 196,
+        "startChar": 13,
+        "endLine": 196,
+        "endChar": 26
+      },
+      "revId": "2f234133d75e37474ebfd0d108ee8d408696b948",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd3fe98d_ab756ed6",
+        "filename": "android/namespace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-21T01:46:31Z",
+      "side": 1,
+      "message": "strings.TrimPrefix(name, namespacePrefix)",
+      "range": {
+        "startLine": 201,
+        "startChar": 8,
+        "endLine": 201,
+        "endChar": 45
+      },
+      "revId": "2f234133d75e37474ebfd0d108ee8d408696b948",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54ce5f19_c15ff843",
+        "filename": "android/namespace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-21T01:46:31Z",
+      "side": 1,
+      "message": "Constructing a slice (which I expect ends up on the heap) for every looking might be expensive.  Having a function that takes a lambda and calls it on each namespace might be significantly cheaper.",
+      "revId": "2f234133d75e37474ebfd0d108ee8d408696b948",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
