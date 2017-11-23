@@ -92,6 +92,7 @@ func init() {
 			"LOCAL_RENDERSCRIPT_TARGET_API": "renderscript.target_api",
 			"LOCAL_NOTICE_FILE":             "notice",
 			"LOCAL_JAVA_LANGUAGE_VERSION":   "java_version",
+			"LOCAL_INSTRUMENTATION_FOR":     "instrumentation_for",
 		})
 	addStandardProperties(bpparser.ListType,
 		map[string]string{
@@ -660,6 +661,8 @@ var conditionalTranslations = map[string]map[bool]string{
 		true:  "target.linux_glibc",
 		false: "target.not_linux_glibc"},
 	"(,$(TARGET_BUILD_APPS))": {
+		false: "product_variables.unbundled_build"},
+	"($(TARGET_BUILD_APPS),)": {
 		false: "product_variables.unbundled_build"},
 	"($(TARGET_BUILD_PDK),true)": {
 		true: "product_variables.pdk"},
