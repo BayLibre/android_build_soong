@@ -71,6 +71,7 @@ func testJavaWithEnvFs(t *testing.T, bp string,
 	ctx.PreArchMutators(android.RegisterPrebuiltsPreArchMutators)
 	ctx.PreArchMutators(android.RegisterPrebuiltsPostDepsMutators)
 	ctx.PreArchMutators(android.RegisterDefaultsPreArchMutators)
+	ctx.RegisterPreSingletonType("overlay", OverlaySingletonFactory)
 	ctx.Register()
 
 	extraModules := []string{

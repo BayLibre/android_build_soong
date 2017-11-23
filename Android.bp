@@ -208,6 +208,7 @@ bootstrap_go_package {
         "soong-java-config",
     ],
     srcs: [
+        "java/aapt2.go",
         "java/androidmk.go",
         "java/app_builder.go",
         "java/app.go",
