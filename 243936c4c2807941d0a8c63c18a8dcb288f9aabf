@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3e4dbc2_c4297bad",
+        "filename": "cc/ndk_headers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-27T20:10:49Z",
+      "side": 1,
+      "message": "ctx.ModuleName()",
+      "range": {
+        "startLine": 128,
+        "startChar": 22,
+        "endLine": 128,
+        "endChar": 40
+      },
+      "revId": "243936c4c2807941d0a8c63c18a8dcb288f9aabf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17a3df32_64810a36",
+        "filename": "cc/ndk_headers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-27T20:10:49Z",
+      "side": 1,
+      "message": "Don\u0027t print anything from Soong, it just clutters the build for people who don\u0027t care.",
+      "revId": "243936c4c2807941d0a8c63c18a8dcb288f9aabf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
