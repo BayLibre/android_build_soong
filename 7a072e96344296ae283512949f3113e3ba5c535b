@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "375c1ae0_cd451387",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2017-11-27T23:14:09Z",
+      "side": 1,
+      "message": "need to add an output dependency for this ? I don\u0027t expect anything to depend on this.",
+      "range": {
+        "startLine": 206,
+        "startChar": 56,
+        "endLine": 206,
+        "endChar": 98
+      },
+      "revId": "7a072e96344296ae283512949f3113e3ba5c535b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
