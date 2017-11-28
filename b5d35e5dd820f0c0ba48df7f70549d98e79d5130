@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e6f2d93d_6d2a12f7",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-11-28T21:14:45Z",
+      "side": 1,
+      "message": "Should we make this more recent?",
+      "range": {
+        "startLine": 179,
+        "startChar": 31,
+        "endLine": 179,
+        "endChar": 35
+      },
+      "revId": "b5d35e5dd820f0c0ba48df7f70549d98e79d5130",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef7888aa_27e61f57",
+        "filename": "java/aapt2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-11-28T21:14:45Z",
+      "side": 1,
+      "message": "7?",
+      "range": {
+        "startLine": 1,
+        "startChar": 16,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "b5d35e5dd820f0c0ba48df7f70549d98e79d5130",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2686d626_0594d5d5",
+        "filename": "java/aapt2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-11-28T21:14:45Z",
+      "side": 1,
+      "message": "This will need to use the prebuilt for unbundled / pdk builds",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 46
+      },
+      "revId": "b5d35e5dd820f0c0ba48df7f70549d98e79d5130",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e49ca432_e00acf53",
+        "filename": "java/aapt2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-11-28T21:14:45Z",
+      "side": 1,
+      "message": "should this just be a shard number instead of the rel path of the first file in the shard?",
+      "range": {
+        "startLine": 76,
+        "startChar": 31,
+        "endLine": 76,
+        "endChar": 49
+      },
+      "revId": "b5d35e5dd820f0c0ba48df7f70549d98e79d5130",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "353b263f_d0851788",
+        "filename": "java/aapt2.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-11-28T21:14:45Z",
+      "side": 1,
+      "message": "Link?",
+      "range": {
+        "startLine": 89,
+        "startChar": 49,
+        "endLine": 89,
+        "endChar": 59
+      },
+      "revId": "b5d35e5dd820f0c0ba48df7f70549d98e79d5130",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
