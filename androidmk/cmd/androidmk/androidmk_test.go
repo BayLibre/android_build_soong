@@ -460,6 +460,14 @@ endif # b==false
 // endif
 		`,
 	},
+
+	{
+		desc: "ignore all-makefiles-under",
+		in: `
+include $(call all-makefiles-under,$(LOCAL_PATH))
+`,
+		expected: ``,
+	},
 }
 
 func reformatBlueprint(input string) string {
