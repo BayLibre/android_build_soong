@@ -167,11 +167,15 @@ type flagExporter struct {
 }
 
 func (f *flagExporter) exportedIncludes(ctx ModuleContext) android.Paths {
-	if ctx.useVndk() && f.Properties.Target.Vendor.Export_include_dirs != nil {
-		return android.PathsForModuleSrc(ctx, f.Properties.Target.Vendor.Export_include_dirs)
-	} else {
-		return android.PathsForModuleSrc(ctx, f.Properties.Export_include_dirs)
+	_, isADefaultsModule := ctx.PrimaryModule().(*Defaults)
+	if f.Properties.Target.Vendor.Export_include_dirs != nil {
+		if ctx.useVndk() || isADefaultsModule {
+			return android.PathsForModuleSrc(ctx, f.Properties.Target.Vendor.Export_include_dirs)
+		}
+		// TODO: enable this error once all violations are fixed
+		ctx.PropertyErrorf("target.vendor.export_include_dirs", "may only be set when use_vndk is true")
 	}
+	return android.PathsForModuleSrc(ctx, f.Properties.Export_include_dirs)
 }
 
 func (f *flagExporter) exportIncludes(ctx ModuleContext, inc string) {
@@ -506,8 +510,13 @@ func (library *libraryDecorator) linkShared(ctx ModuleContext,
 	unexportedSymbols := android.OptionalPathForModuleSrc(ctx, library.Properties.Unexported_symbols_list)
 	forceNotWeakSymbols := android.OptionalPathForModuleSrc(ctx, library.Properties.Force_symbols_not_weak_list)
 	forceWeakSymbols := android.OptionalPathForModuleSrc(ctx, library.Properties.Force_symbols_weak_list)
-	if ctx.useVndk() && library.Properties.Target.Vendor.Version_script != nil {
-		versionScript = android.OptionalPathForModuleSrc(ctx, library.Properties.Target.Vendor.Version_script)
+	if library.Properties.Target.Vendor.Version_script != nil {
+		if !ctx.useVndk() {
+			// TODO: enable this error once all violations are fixed
+			ctx.PropertyErrorf("target.vendor.version_script", "may only be set when use_vndk is true")
+		} else {
+			versionScript = android.OptionalPathForModuleSrc(ctx, library.Properties.Target.Vendor.Version_script)
+		}
 	}
 	if !ctx.Darwin() {
 		if versionScript.Valid() {
