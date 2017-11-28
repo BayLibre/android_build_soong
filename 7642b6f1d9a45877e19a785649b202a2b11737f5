@@ -22,6 +22,30 @@
       "revId": "7642b6f1d9a45877e19a785649b202a2b11737f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "860727bb_542be447",
+        "filename": "android/module.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-11-28T18:26:44Z",
+      "side": 1,
+      "message": "I found that there were duplicate names until doing this. Do you think it would be better if Soong did its own name deduplication?",
+      "parentUuid": "0405040c_64a0f4f4",
+      "range": {
+        "startLine": 493,
+        "startChar": 14,
+        "endLine": 493,
+        "endChar": 29
+      },
+      "revId": "7642b6f1d9a45877e19a785649b202a2b11737f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }

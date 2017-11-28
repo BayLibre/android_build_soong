@@ -125,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "750eccd1_a6b53c83",
+        "filename": "android/namespace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-11-28T18:26:44Z",
+      "side": 1,
+      "message": "thanks",
+      "parentUuid": "a7bf6fdb_27fc873a",
+      "revId": "2f234133d75e37474ebfd0d108ee8d408696b948",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b315eb3f_ca7ec1ea",
         "filename": "android/namespace.go",
         "patchSetId": 7
@@ -172,6 +190,24 @@
       "side": 1,
       "message": "How many times do you expect this to get called?  It looks like only on error or in AllModules, which is probably not a fast-path and a simple lock would be sufficient.",
       "parentUuid": "9e0718b5_702557dc",
+      "revId": "2f234133d75e37474ebfd0d108ee8d408696b948",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c33144e3_1daff694",
+        "filename": "android/namespace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-11-28T18:26:44Z",
+      "side": 1,
+      "message": "Probably only approximately once. I\u0027ll have it just use the lock.",
+      "parentUuid": "d7024b1b_6a80bc6a",
       "revId": "2f234133d75e37474ebfd0d108ee8d408696b948",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
