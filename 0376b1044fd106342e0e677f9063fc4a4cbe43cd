@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1ee6c72_42e52e64",
+        "filename": "android/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-11-28T12:06:28Z",
+      "side": 1,
+      "message": "This isn\u0027t required since proptools.String() already does that.",
+      "range": {
+        "startLine": 623,
+        "startChar": 0,
+        "endLine": 625,
+        "endChar": 2
+      },
+      "revId": "0376b1044fd106342e0e677f9063fc4a4cbe43cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "baeba54b_80ae4190",
+        "filename": "cc/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-11-28T12:06:28Z",
+      "side": 1,
+      "message": "just for curiosity. what is the difference between $var and ${var} here?",
+      "range": {
+        "startLine": 141,
+        "startChar": 19,
+        "endLine": 141,
+        "endChar": 28
+      },
+      "revId": "0376b1044fd106342e0e677f9063fc4a4cbe43cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5306cef6_038a1813",
+        "filename": "cc/vndk_prebuilt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-11-28T12:06:28Z",
+      "side": 1,
+      "message": "Is this still valid? IIRC, we will have one snapshot per Android release.",
+      "range": {
+        "startLine": 52,
+        "startChar": 46,
+        "endLine": 52,
+        "endChar": 72
+      },
+      "revId": "0376b1044fd106342e0e677f9063fc4a4cbe43cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "920e0e08_ebdb6923",
+        "filename": "cc/vndk_prebuilt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-11-28T12:06:28Z",
+      "side": 1,
+      "message": "Won\u0027t this overwrite libName?",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 50
+      },
+      "revId": "0376b1044fd106342e0e677f9063fc4a4cbe43cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef115816_58524c4d",
+        "filename": "cc/vndk_prebuilt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-11-28T12:06:28Z",
+      "side": 1,
+      "message": "return outputFile and remove ret?",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 11
+      },
+      "revId": "0376b1044fd106342e0e677f9063fc4a4cbe43cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e974f1b_39833d62",
+        "filename": "cc/vndk_prebuilt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-11-28T12:06:28Z",
+      "side": 1,
+      "message": "VNDK prebuilts are all shared libs (for now)",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 10
+      },
+      "revId": "0376b1044fd106342e0e677f9063fc4a4cbe43cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91fe77e1_4efb21bc",
+        "filename": "cc/vndk_prebuilt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-11-28T12:06:28Z",
+      "side": 1,
+      "message": "Are these really needed? These prebuilt libs are not linked to others right now.",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 42
+      },
+      "revId": "0376b1044fd106342e0e677f9063fc4a4cbe43cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
