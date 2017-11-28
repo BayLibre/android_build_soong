@@ -120,10 +120,7 @@ var (
 	ClangDefaultShortVersion = "5.0.1"
 
 	WarningAllowedProjects = []string{
-		"external/boringssl/",
 		"external/libese/third_party/NXPNFC_P61_JCOP_Kit/",
-		"external/mdnsresponder/",
-		"external/protobuf/",
 		"external/skia/",
 		"device/",
 		"frameworks/av/media/libeffects/factory/",
@@ -135,7 +132,6 @@ var (
 		"frameworks/native/libs/vr/libdvr/tests/",
 		"frameworks/native/services/surfaceflinger/tests/",
 		"frameworks/native/services/vr/",
-		"hardware/interfaces/audio/effect/",
 		"hardware/interfaces/biometrics/fingerprint/",
 		"vendor/",
 	}
@@ -153,7 +149,6 @@ var (
 		"frameworks/base/tests/backup/",
 		"frameworks/native/cmds/cmd/",
 		"frameworks/webview/chromium/",
-		"hardware/interfaces/audio/2.0/",
 		"hardware/libhardware/modules/",
 		"hardware/libhardware/tests/",
 		"hardware/qcom/",
