@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0405040c_64a0f4f4",
+        "filename": "android/module.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-28T17:54:05Z",
+      "side": 1,
+      "message": "This is mostly an internal implementation detail in Blueprint, why is ModuleName() not sufficient?",
+      "range": {
+        "startLine": 493,
+        "startChar": 14,
+        "endLine": 493,
+        "endChar": 29
+      },
+      "revId": "7642b6f1d9a45877e19a785649b202a2b11737f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
