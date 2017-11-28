@@ -34,6 +34,24 @@
       "revId": "f3831d0e0831c201406a959f40196eaabf243569",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd5ab140_b48e52a7",
+        "filename": "cmd/zip2zip/zip2zip_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-11-28T19:10:30Z",
+      "side": 1,
+      "message": "sounds good to me",
+      "parentUuid": "ed054b19_5b3ae8cf",
+      "revId": "f3831d0e0831c201406a959f40196eaabf243569",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
