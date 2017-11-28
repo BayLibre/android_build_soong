@@ -16,6 +16,24 @@
       "revId": "f3831d0e0831c201406a959f40196eaabf243569",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed054b19_5b3ae8cf",
+        "filename": "cmd/zip2zip/zip2zip_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-28T19:02:07Z",
+      "side": 1,
+      "message": "It is a little strange for **/*, but it makes more sense for java/**/*.java, where you would want it to match java/a.java.",
+      "parentUuid": "fa38b510_17855df0",
+      "revId": "f3831d0e0831c201406a959f40196eaabf243569",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
