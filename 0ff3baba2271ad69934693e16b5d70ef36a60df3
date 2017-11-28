@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "015ef057_881683f5",
+        "filename": "cc/vndk_prebuilt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-11-28T04:46:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8371da76_136faef4",
+      "range": {
+        "startLine": 61,
+        "startChar": 1,
+        "endLine": 61,
+        "endChar": 11
+      },
+      "revId": "0ff3baba2271ad69934693e16b5d70ef36a60df3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "02f2b482_77abc6fe",
         "filename": "cc/vndk_prebuilt.go",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2017-11-27T21:06:06Z",
       "side": 1,
       "message": "nit: p.version()",
+      "range": {
+        "startLine": 65,
+        "startChar": 28,
+        "endLine": 65,
+        "endChar": 48
+      },
+      "revId": "0ff3baba2271ad69934693e16b5d70ef36a60df3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3d63233_bb640a95",
+        "filename": "cc/vndk_prebuilt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-11-28T04:46:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02f2b482_77abc6fe",
       "range": {
         "startLine": 65,
         "startChar": 28,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "af8372e2_427de26e",
+        "filename": "cc/vndk_prebuilt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-11-28T04:46:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67b9c438_a9f36f14",
+      "range": {
+        "startLine": 140,
+        "startChar": 5,
+        "endLine": 140,
+        "endChar": 17
+      },
+      "revId": "0ff3baba2271ad69934693e16b5d70ef36a60df3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b1deb32b_acdcb767",
         "filename": "cc/vndk_prebuilt.go",
         "patchSetId": 5
@@ -82,6 +154,30 @@
       "writtenOn": "2017-11-27T21:06:06Z",
       "side": 1,
       "message": "delete unused code?",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 2
+      },
+      "revId": "0ff3baba2271ad69934693e16b5d70ef36a60df3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78ec8b49_68e29531",
+        "filename": "cc/vndk_prebuilt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-11-28T04:46:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1deb32b_acdcb767",
       "range": {
         "startLine": 179,
         "startChar": 0,
