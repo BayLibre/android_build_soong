@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "609ac15c_191692eb",
+        "filename": "python/installer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-11-28T22:31:54Z",
+      "side": 1,
+      "message": "Why would we ever install python in the system partition? We should be able to hardcoded InData to true for python.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 36
+      },
+      "revId": "069c9289478c3f6bcb6950e66685ecbf8bee0cd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
