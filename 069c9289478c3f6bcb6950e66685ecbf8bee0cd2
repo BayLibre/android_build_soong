@@ -22,6 +22,30 @@
       "revId": "069c9289478c3f6bcb6950e66685ecbf8bee0cd2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c31c5e8_b8fabe58",
+        "filename": "python/installer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-11-29T23:56:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "609ac15c_191692eb",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 36
+      },
+      "revId": "069c9289478c3f6bcb6950e66685ecbf8bee0cd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
