@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "128e389f_d124ca0f",
+        "filename": "android/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-29T20:54:11Z",
+      "side": 1,
+      "message": "Put this into a godoc-style documentation on the function?",
+      "revId": "e44ab9303ac79ec0d3c0e20c8f7f09c1f78634f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7d0b682_5e1508d3",
+        "filename": "cc/builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-29T20:54:11Z",
+      "side": 1,
+      "message": "this already exists as android.Cp",
+      "revId": "e44ab9303ac79ec0d3c0e20c8f7f09c1f78634f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2ffda68_5922f062",
+        "filename": "cc/vndk_prebuilt.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-29T20:54:11Z",
+      "side": 1,
+      "message": "Why do you need to copy the file?  Can you just reference it from its existing location?  That\u0027s what prebuiltLibraryLinker in cc/prebuilt.go does.",
+      "revId": "e44ab9303ac79ec0d3c0e20c8f7f09c1f78634f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
