@@ -73,7 +73,7 @@ type headerModule struct {
 
 	properties headerProperies
 
-	installPaths []string
+	installPaths android.Paths
 	licensePath  android.ModuleSrcPath
 }
 
@@ -130,7 +130,7 @@ func (m *headerModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 				"expected header install path (%q) not equal to actual install path %q",
 				installPath, installedPath))
 		}
-		m.installPaths = append(m.installPaths, installPath.String())
+		m.installPaths = append(m.installPaths, installPath)
 	}
 
 	if len(m.installPaths) == 0 {
@@ -177,7 +177,7 @@ type preprocessedHeaderModule struct {
 
 	properties preprocessedHeaderProperies
 
-	installPaths []string
+	installPaths android.Paths
 	licensePath  android.ModuleSrcPath
 }
 
@@ -199,7 +199,7 @@ func (m *preprocessedHeaderModule) GenerateAndroidBuildActions(ctx android.Modul
 		installDir := getHeaderInstallDir(ctx, header, String(m.properties.From), String(m.properties.To))
 		installPath := installDir.Join(ctx, header.Base())
 		installPaths = append(installPaths, installPath)
-		m.installPaths = append(m.installPaths, installPath.String())
+		m.installPaths = append(m.installPaths, installPath)
 	}
 
 	if len(m.installPaths) == 0 {
