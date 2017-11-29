@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ee39da4_5ec69f54",
+        "filename": "android/singleton.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-11-29T02:27:36Z",
+      "side": 1,
+      "message": "Just making sure, you\u0027re intending to do this in a later change, and didn\u0027t just forget to do it in this change, right?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 52
+      },
+      "revId": "da4ba734ee0fad86ccf9c09066ce12fbb91663e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
