@@ -15,7 +15,7 @@
 // This package implements a trace file writer, whose files can be opened in
 // chrome://tracing.
 //
-// It implements the JSON Array Format defined here:
+// It implements the JSON Object Format defined here:
 // https://docs.google.com/document/d/1CvAClvFfyA5R-PhYUmn5OOQtYMH4h6I0nSsKchNAySU/edit
 package tracer
 
@@ -63,20 +63,23 @@ type tracerImpl struct {
 
 	firstEvent bool
 	nextTid    uint64
+
+	stacks [][]string
 }
 
 var _ Tracer = &tracerImpl{}
 
 type viewerEvent struct {
-	Name  string      `json:"name,omitempty"`
-	Phase string      `json:"ph"`
-	Scope string      `json:"s,omitempty"`
-	Time  uint64      `json:"ts"`
-	Dur   uint64      `json:"dur,omitempty"`
-	Pid   uint64      `json:"pid"`
-	Tid   uint64      `json:"tid"`
-	ID    uint64      `json:"id,omitempty"`
-	Arg   interface{} `json:"args,omitempty"`
+	Name     string      `json:"name,omitempty"`
+	Category string      `json:"cat"`
+	Phase    string      `json:"ph"`
+	Scope    string      `json:"s,omitempty"`
+	Time     uint64      `json:"ts"`
+	Dur      uint64      `json:"dur,omitempty"`
+	Pid      uint64      `json:"pid"`
+	Tid      uint64      `json:"tid"`
+	ID       uint64      `json:"id,omitempty"`
+	Arg      interface{} `json:"args,omitempty"`
 }
 
 type nameArg struct {
@@ -103,14 +106,47 @@ func New(log logger.Logger) *tracerImpl {
 
 func (t *tracerImpl) startBuffer() {
 	t.w = nopCloser{&t.buf}
-	fmt.Fprintln(t.w, "[")
+	fmt.Fprintln(t.w, `{"traceEvents":[`)
 
 	t.defineThread(MainThread, "main")
+	t.stacks = [][]string{nil}
+
+	// So that we can be loaded in Chrome DevTools
+	t.writeEventLocked(&viewerEvent{
+		Name:     "TracingStartedInPage",
+		Category: "disabled-by-default-devtools.timeline",
+		Phase:    "I",
+		Time:     0,
+		Pid:      0,
+		Tid:      0,
+		Arg: tracingStartedInPageArg{
+			Data: tracingStartedInPageArgData{
+				SessionId: "42",
+			},
+		},
+	})
+	t.writeEventLocked(&viewerEvent{
+		Name:     "TracingStartedInBrowser",
+		Category: "disabled-by-default-devtools.timeline",
+		Phase:    "I",
+		Time:     0,
+		Pid:      0,
+		Tid:      0,
+	})
+
+}
+
+type tracingStartedInPageArgData struct {
+	SessionId string `json:"sessionId"`
+}
+
+type tracingStartedInPageArg struct {
+	Data tracingStartedInPageArgData `json:"data"`
 }
 
 func (t *tracerImpl) close() {
 	if t.file != nil {
-		fmt.Fprintln(t.w, "]")
+		fmt.Fprintln(t.w, "]}")
 
 		if err := t.w.Close(); err != nil {
 			t.log.Println("Error closing trace writer:", err)
@@ -170,6 +206,20 @@ func (t *tracerImpl) writeEvent(event *viewerEvent) {
 }
 
 func (t *tracerImpl) writeEventLocked(event *viewerEvent) {
+	if event.Phase == "B" {
+		t.stacks[event.Tid] = append(t.stacks[event.Tid], event.Name)
+	} else if event.Phase == "E" {
+		name := t.stacks[event.Tid][len(t.stacks[event.Tid])-1]
+		t.stacks[event.Tid] = t.stacks[event.Tid][:len(t.stacks[event.Tid])-1]
+		if event.Name == "" {
+			event.Name = name
+		}
+	}
+
+	if event.Category == "" {
+		event.Category = "."
+	}
+
 	bytes, err := json.Marshal(event)
 	if err != nil {
 		t.log.Println("Failed to marshal event:", err)
@@ -208,6 +258,7 @@ func (t *tracerImpl) NewThread(name string) Thread {
 
 	ret := Thread(t.nextTid)
 	t.nextTid += 1
+	t.stacks = append(t.stacks, nil)
 
 	t.defineThread(ret, name)
 	return ret
