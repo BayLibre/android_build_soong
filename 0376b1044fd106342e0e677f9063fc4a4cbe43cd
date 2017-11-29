@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d5cce8b3_bc0f44a8",
+        "filename": "android/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-11-29T04:40:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1ee6c72_42e52e64",
+      "range": {
+        "startLine": 623,
+        "startChar": 0,
+        "endLine": 625,
+        "endChar": 2
+      },
+      "revId": "0376b1044fd106342e0e677f9063fc4a4cbe43cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "baeba54b_80ae4190",
         "filename": "cc/builder.go",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2017-11-28T12:06:28Z",
       "side": 1,
       "message": "just for curiosity. what is the difference between $var and ${var} here?",
+      "range": {
+        "startLine": 141,
+        "startChar": 19,
+        "endLine": 141,
+        "endChar": 28
+      },
+      "revId": "0376b1044fd106342e0e677f9063fc4a4cbe43cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02f2bcc6_db15328a",
+        "filename": "cc/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-11-29T04:40:03Z",
+      "side": 1,
+      "message": "There\u0027s no difference between them. If the variable have any following strings, then we must use curly brackets to distinguish the variable name from the other characters.",
+      "parentUuid": "baeba54b_80ae4190",
       "range": {
         "startLine": 141,
         "startChar": 19,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2109473e_5736b8e7",
+        "filename": "cc/vndk_prebuilt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-11-29T04:40:03Z",
+      "side": 1,
+      "message": "Yes, you are right. But we may have inevitable ABI breaks in an Android release. Then, we have no other choice but advancing the minor version.",
+      "parentUuid": "5306cef6_038a1813",
+      "range": {
+        "startLine": 52,
+        "startChar": 46,
+        "endLine": 52,
+        "endChar": 72
+      },
+      "revId": "0376b1044fd106342e0e677f9063fc4a4cbe43cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "920e0e08_ebdb6923",
         "filename": "cc/vndk_prebuilt.go",
         "patchSetId": 6
@@ -82,6 +154,30 @@
       "writtenOn": "2017-11-28T12:06:28Z",
       "side": 1,
       "message": "Won\u0027t this overwrite libName?",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 50
+      },
+      "revId": "0376b1044fd106342e0e677f9063fc4a4cbe43cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d6c03e1_3e140b3c",
+        "filename": "cc/vndk_prebuilt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-11-29T04:40:03Z",
+      "side": 1,
+      "message": "If libName is not set before calling linkerFlags, it will use baseModuleName() which have vndk version suffix. So, before calling that, the libName must be initialized to the original name.\nIn case of device supported module, it will not add any suffix to the libName.",
+      "parentUuid": "920e0e08_ebdb6923",
       "range": {
         "startLine": 74,
         "startChar": 1,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "6b048d5a_cb700833",
+        "filename": "cc/vndk_prebuilt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-11-29T04:40:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef115816_58524c4d",
+      "range": {
+        "startLine": 113,
+        "startChar": 1,
+        "endLine": 113,
+        "endChar": 11
+      },
+      "revId": "0376b1044fd106342e0e677f9063fc4a4cbe43cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e974f1b_39833d62",
         "filename": "cc/vndk_prebuilt.go",
         "patchSetId": 6
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "24e67e4e_5d6352cd",
+        "filename": "cc/vndk_prebuilt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-11-29T04:40:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e974f1b_39833d62",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 10
+      },
+      "revId": "0376b1044fd106342e0e677f9063fc4a4cbe43cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91fe77e1_4efb21bc",
         "filename": "cc/vndk_prebuilt.go",
         "patchSetId": 6
@@ -160,6 +304,30 @@
       "revId": "0376b1044fd106342e0e677f9063fc4a4cbe43cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "929c75e8_61cd6a41",
+        "filename": "cc/vndk_prebuilt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-11-29T04:40:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91fe77e1_4efb21bc",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 42
+      },
+      "revId": "0376b1044fd106342e0e677f9063fc4a4cbe43cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
