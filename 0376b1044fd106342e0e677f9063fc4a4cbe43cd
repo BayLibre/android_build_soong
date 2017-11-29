@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "e2bc4052_688797fb",
+        "filename": "cc/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-11-29T04:56:19Z",
+      "side": 1,
+      "message": "Thanks.",
+      "parentUuid": "02f2bcc6_db15328a",
+      "range": {
+        "startLine": 141,
+        "startChar": 19,
+        "endLine": 141,
+        "endChar": 28
+      },
+      "revId": "0376b1044fd106342e0e677f9063fc4a4cbe43cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5306cef6_038a1813",
         "filename": "cc/vndk_prebuilt.go",
         "patchSetId": 6
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "Yes, you are right. But we may have inevitable ABI breaks in an Android release. Then, we have no other choice but advancing the minor version.",
       "parentUuid": "5306cef6_038a1813",
+      "range": {
+        "startLine": 52,
+        "startChar": 46,
+        "endLine": 52,
+        "endChar": 72
+      },
+      "revId": "0376b1044fd106342e0e677f9063fc4a4cbe43cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a39f3aa_b303bed1",
+        "filename": "cc/vndk_prebuilt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-11-29T04:56:19Z",
+      "side": 1,
+      "message": "Then, {SDK_ver}.{revision} would be enough.",
+      "parentUuid": "2109473e_5736b8e7",
       "range": {
         "startLine": 52,
         "startChar": 46,
@@ -187,6 +235,30 @@
       "revId": "0376b1044fd106342e0e677f9063fc4a4cbe43cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a89a9e4_9f612ad4",
+        "filename": "cc/vndk_prebuilt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-11-29T04:56:19Z",
+      "side": 1,
+      "message": "Got it.",
+      "parentUuid": "5d6c03e1_3e140b3c",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 50
+      },
+      "revId": "0376b1044fd106342e0e677f9063fc4a4cbe43cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
