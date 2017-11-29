@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "64b54719_b40c9b10",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-29T21:16:56Z",
+      "side": 1,
+      "message": "It swaps the order of the $(TARGET_BUILD_APPS) and blank arguments",
+      "parentUuid": "1658aa29_ad843e25",
+      "revId": "7fdcfb03b9a28635f2d2e1dea16557d64835c8f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e76b66f7_44d4c147",
         "filename": "java/app.go",
         "patchSetId": 12
@@ -30,6 +48,24 @@
       "writtenOn": "2017-11-29T20:42:51Z",
       "side": 1,
       "message": "probably don\u0027t need this after https://android-review.googlesource.com/c/platform/build/soong/+/547062/1/java/app.go#124",
+      "revId": "7fdcfb03b9a28635f2d2e1dea16557d64835c8f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcf4a486_242d2a9a",
+        "filename": "java/app.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-29T21:16:56Z",
+      "side": 1,
+      "message": "Apparently I do because I managed to delete it in https://android-review.googlesource.com/c/platform/build/soong/+/547064/3/java/app.go#b124",
+      "parentUuid": "e76b66f7_44d4c147",
       "revId": "7fdcfb03b9a28635f2d2e1dea16557d64835c8f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
