@@ -22,6 +22,30 @@
       "revId": "da4ba734ee0fad86ccf9c09066ce12fbb91663e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3b3c992_5b6debf0",
+        "filename": "android/singleton.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-11-29T05:08:59Z",
+      "side": 1,
+      "message": "Yeah, fixing this means fixing PathContext which means fixing ModuleContext, and then replacing AConfig with Config, so I figured I\u0027d do that in a separate patch.",
+      "parentUuid": "7ee39da4_5ec69f54",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 52
+      },
+      "revId": "da4ba734ee0fad86ccf9c09066ce12fbb91663e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
