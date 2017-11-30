@@ -44,6 +44,10 @@ var (
 	windowsClangCflags = append(ClangFilterUnknownCflags(windowsCflags), []string{
 		// TODO(b/69933090): __format__(gnu_printf) is not supported
 		"-Wno-error=ignored-attributes",
+
+		// TODO: remove once we have https://reviews.llvm.org/D33620
+		// Workaround default dllimport storage.
+		"-Xclang -flto-visibility-public-std",
 	}...)
 
 	windowsIncludeFlags = []string{
