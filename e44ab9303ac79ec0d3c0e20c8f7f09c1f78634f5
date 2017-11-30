@@ -50,6 +50,24 @@
       "revId": "e44ab9303ac79ec0d3c0e20c8f7f09c1f78634f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f31e80f_b067c3af",
+        "filename": "cc/vndk_prebuilt.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-11-30T00:35:36Z",
+      "side": 1,
+      "message": "The first plan was to link the snapshot libraries with vendor modules. To do that I need to make .toc files in intermediate directory. I believe, we still need to consider linking snapshot libs on build-time. (http://b/69883025)",
+      "parentUuid": "b2ffda68_5922f062",
+      "revId": "e44ab9303ac79ec0d3c0e20c8f7f09c1f78634f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
