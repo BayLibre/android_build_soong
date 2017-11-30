@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0a7d8d64_cc6c1d69",
+        "filename": "python/installer.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-11-30T21:56:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be067416_0ae7a149",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 25
+      },
+      "revId": "ce35752fa571ae6902f903cd1e78f3f0bad2a7b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc17e35c_d219e6c9",
         "filename": "python/python.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "ce35752fa571ae6902f903cd1e78f3f0bad2a7b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef0b1fb5_eab43a05",
+        "filename": "python/python.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-11-30T21:56:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc17e35c_d219e6c9",
+      "range": {
+        "startLine": 563,
+        "startChar": 1,
+        "endLine": 566,
+        "endChar": 28
+      },
+      "revId": "ce35752fa571ae6902f903cd1e78f3f0bad2a7b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
