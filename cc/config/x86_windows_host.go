@@ -222,7 +222,7 @@ func (t *toolchainWindowsX8664) WindresFlags() string {
 }
 
 func (t *toolchainWindows) ClangSupported() bool {
-	return false
+	return true
 }
 
 func (t *toolchainWindowsX86) ClangTriple() string {
