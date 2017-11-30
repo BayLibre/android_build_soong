@@ -41,7 +41,10 @@ var (
 
 		"--sysroot ${WindowsGccRoot}/${WindowsGccTriple}",
 	}
-	windowsClangCflags = append(ClangFilterUnknownCflags(windowsCflags), []string{}...)
+	windowsClangCflags = append(ClangFilterUnknownCflags(windowsCflags), []string{
+		// TODO(b/69933090): __format__(gnu_printf) is not supported
+		"-Wno-error=ignored-attributes",
+	}...)
 
 	windowsIncludeFlags = []string{
 		"-isystem ${WindowsGccRoot}/${WindowsGccTriple}/include",
