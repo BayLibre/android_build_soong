@@ -52,7 +52,8 @@ var (
 
 	windowsIncludeFlags = []string{
 		"-isystem ${WindowsGccRoot}/${WindowsGccTriple}/include",
-		"-isystem ${WindowsGccRoot}/lib/gcc/${WindowsGccTriple}/4.8.3/include",
+		// Clang doesn't like the instrinsics in here
+		//"-isystem ${WindowsGccRoot}/lib/gcc/${WindowsGccTriple}/4.8.3/include",
 	}
 
 	windowsClangCppflags = []string{
