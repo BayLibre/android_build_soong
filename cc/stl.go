@@ -145,7 +145,11 @@ func (stl *stl) flags(ctx ModuleContext, flags Flags) Flags {
 			}
 		}
 	case "libstdc++":
-		// Nothing
+		if ctx.Os() == android.Windows && ctx.clang() {
+			// TODO(b/69970955): clang looks for -lgcc_s by default, but our bingw doesn't have that library.
+			flags.LdFlags = append(flags.LdFlags, "-nodefaultlibs", "-lstdc++", "-lpthread")
+			flags.LdFlags = append(flags.LdFlags, hostDynamicGccLibs[ctx.Os()]...)
+		}
 	case "ndk_system":
 		ndkSrcRoot := android.PathForSource(ctx, "prebuilts/ndk/current/sources/cxx-stl/system/include")
 		flags.CFlags = append(flags.CFlags, "-isystem "+ndkSrcRoot.String())
