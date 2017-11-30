@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "12165c82_6a6c24d7",
+        "filename": "android/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-11-30T01:44:04Z",
+      "side": 1,
+      "message": "This simply returns BOARD_VNDK_VERSION value. No need to add extra comment for it.",
+      "parentUuid": "128e389f_d124ca0f",
+      "revId": "e44ab9303ac79ec0d3c0e20c8f7f09c1f78634f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b7d0b682_5e1508d3",
         "filename": "cc/builder.go",
         "patchSetId": 8
@@ -33,6 +51,24 @@
       "revId": "e44ab9303ac79ec0d3c0e20c8f7f09c1f78634f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b66be7a_09a06d94",
+        "filename": "cc/builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-11-30T01:44:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7d0b682_5e1508d3",
+      "revId": "e44ab9303ac79ec0d3c0e20c8f7f09c1f78634f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -68,6 +104,24 @@
       "revId": "e44ab9303ac79ec0d3c0e20c8f7f09c1f78634f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23e983a3_43b65735",
+        "filename": "cc/vndk_prebuilt.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2017-11-30T01:44:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f31e80f_b067c3af",
+      "revId": "e44ab9303ac79ec0d3c0e20c8f7f09c1f78634f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
