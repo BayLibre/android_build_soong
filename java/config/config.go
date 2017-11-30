@@ -99,11 +99,19 @@ func init() {
 				return path.String(), nil
 			}
 		} else {
-			path, err := pctx.HostBinToolPath(config, "d8-compat-dx")
-			if err != nil {
-				return "", err
+			if config.IsEnvTrue("USE_D8_DESUGAR") {
+				path, err := pctx.HostBinToolPath(config, "d8")
+				if err != nil {
+					return "", err
+				}
+				return path.String(), nil
+			} else {
+				path, err := pctx.HostBinToolPath(config, "d8-compat-dx")
+				if err != nil {
+					return "", err
+				}
+				return path.String(), nil
 			}
-			return path.String(), nil
 		}
 	})
 	pctx.VariableFunc("TurbineJar", func(config android.Config) (string, error) {
