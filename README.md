@@ -95,6 +95,38 @@ cc_binary {
 }
 ```
 
+### Name resolution
+
+Soong provides the ability for modules in different directories to specify
+different names, as long as each module is declared within a separate
+namespace. A namespace can be declared like this:
+
+```
+soong_namespace {
+    imports: ["otherNamespace1", "otherNamespace2"],
+}
+```
+
+Each Soong module is assigned a namespace based on its location in the tree.
+If a Soong module is in the same directory as a soong_namespace, the module
+will be assigned to that namespace. If a Soong module is in the root directory,
+it will be assigned to the default root namespace. Otherwise, the module will
+be in the same namespace as if it were declared in its parent directory.
+
+When Soong attempts to resolve dependency D declared my module M in namespace
+N which imports namespaces I1, I2, I3..., then if D is a fully-qualified name
+of the form "//namespace:module", only the specified namespace will be searched
+for the specified module name. Otherwise, Soong will soong will first look for
+a module named D declared in namespace N. If that module does not exist, Soong
+will look for a module named D in namespaces I1, I2, I3... Lastly, Soong will
+look in the root namespace.
+
+Until we have fully converted from Make to Soong, it will be necessary for the
+Make product config to specify a value of PRODUCT_SOONG_NAMESPACES. Its value
+should be a comma-separated list of namespaces that Soong export to Make to be
+built by the `m` command. After we have fully converted from Make to Soong, the
+details of enabling namespaces could potentially change.
+
 ### Formatter
 
 Soong includes a canonical formatter for blueprint files, similar to
