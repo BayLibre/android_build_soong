@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "66578508_b3a2459b",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-01T21:04:33Z",
+      "side": 1,
+      "message": "And given the next patch, \"found in an Android.bp file in the current directory or closest ancestor directory\".",
+      "parentUuid": "9ddeb879_4edf59e8",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 0
+      },
+      "revId": "5f62f369f2c25cbf4ecb24cb9148cf07cf659ca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c6fd9c6d_0d1d3a23",
         "filename": "README.md",
         "patchSetId": 3
