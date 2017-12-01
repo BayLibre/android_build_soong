@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4dcc6a82_4530b1cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-01T21:01:02Z",
+      "side": 1,
+      "message": "I meant the change id of the original patch, not the revert.",
+      "revId": "37811bb5d3efa3e6f6f321772228e44720669c1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
