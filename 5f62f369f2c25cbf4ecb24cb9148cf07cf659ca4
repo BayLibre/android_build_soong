@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9705f161_72c5d2cc",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-01T21:03:22Z",
+      "side": 1,
+      "message": "the same name?",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 15
+      },
+      "revId": "5f62f369f2c25cbf4ecb24cb9148cf07cf659ca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ddeb879_4edf59e8",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-01T21:03:22Z",
+      "side": 1,
+      "message": "Maybe \"Each soong module is in the namespace defined by a soong_namespace found in the current directory or closest ancestor directory.  If there is no soong_namespace module in any ancestor directory the module is in the root namespace.\"",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 0
+      },
+      "revId": "5f62f369f2c25cbf4ecb24cb9148cf07cf659ca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6fd9c6d_0d1d3a23",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-01T21:03:22Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 119,
+        "startChar": 53,
+        "endLine": 119,
+        "endChar": 63
+      },
+      "revId": "5f62f369f2c25cbf4ecb24cb9148cf07cf659ca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
