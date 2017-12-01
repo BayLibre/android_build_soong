@@ -151,6 +151,7 @@ type ModuleContext interface {
 	VisitAllModuleVariants(visit func(Module))
 
 	GetMissingDependencies() []string
+	Namespace() blueprint.Namespace
 }
 
 type Module interface {
