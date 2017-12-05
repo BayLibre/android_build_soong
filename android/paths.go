@@ -660,7 +660,9 @@ func (p OutputPath) RelPathString() string {
 // provided paths... may not use '..' to escape from the current path.
 func (p OutputPath) Join(ctx PathContext, paths ...string) OutputPath {
 	path := validatePath(ctx, paths...)
-	return PathForOutput(ctx, p.path, path)
+	ret := PathForOutput(ctx, p.path, path)
+	ret.rel = path
+	return ret
 }
 
 // PathForIntermediates returns an OutputPath representing the top-level
