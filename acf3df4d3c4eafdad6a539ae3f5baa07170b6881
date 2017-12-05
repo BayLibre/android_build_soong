@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "e902a002_2d1c7a14",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-05T23:57:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d256cda5_e6922cd2",
+      "range": {
+        "startLine": 664,
+        "startChar": 0,
+        "endLine": 664,
+        "endChar": 15
+      },
+      "revId": "acf3df4d3c4eafdad6a539ae3f5baa07170b6881",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d725f79_196f23b8",
         "filename": "java/java_test.go",
         "patchSetId": 1
