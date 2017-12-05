@@ -167,9 +167,24 @@ type CompilerDeviceProperties struct {
 	// If true, export a copy of the module as a -hostdex module for host testing.
 	Hostdex *bool
 
-	// If false, prevent dexpreopting and stripping the dex file from the final jar.  Defaults to
-	// true.
-	Dex_preopt *bool
+	Dex_preopt struct {
+		// If false, prevent dexpreopting and stripping the dex file from the final jar.  Defaults to
+		// true.
+		Enabled *bool
+
+		// If true, generate an app image (.art file) for this module.
+		App_image *bool
+
+		// If true, use a checked-in profile to guide optimization.  Defaults to false unless
+		// a matching profile is set or a profile is found in PRODUCT_DEX_PREOPT_PROFILE_DIR
+		// that matches the name of this module, in which case it is defaulted to true.
+		Profile_guided *bool
+
+		// If set, provides the path to profile relative to the Android.bp file.  If not set,
+		// defaults to searching for a file that matches the name of this module in the default
+		// profile location set by PRODUCT_DEX_PREOPT_PROFILE_DIR, or empty if not found.
+		Profile *string
+	}
 
 	// When targeting 1.9, override the modules to use with --system
 	System_modules *string
@@ -661,12 +676,12 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars ...android.Path
 	if ctx.Device() && !ctx.Config().IsEnvFalse("TURBINE_ENABLED") {
 		if j.properties.Javac_shard_size != nil && *(j.properties.Javac_shard_size) > 0 {
 			enable_sharding = true
-			if len(j.properties.Annotation_processors) != 0 ||
-				len(j.properties.Annotation_processor_classes) != 0 {
-				ctx.PropertyErrorf("javac_shard_size",
-					"%q cannot be set when annotation processors are enabled.",
-					j.properties.Javac_shard_size)
-			}
+			//	if len(j.properties.Annotation_processors) != 0 ||
+			//		len(j.properties.Annotation_processor_classes) != 0 {
+			//		ctx.PropertyErrorf("javac_shard_size",
+			//			"%q cannot be set when annotation processors are enabled.",
+			//			*j.properties.Javac_shard_size)
+			//	}
 		}
 		// If sdk jar is java module, then directly return classesJar as header.jar
 		if j.Name() != "android_stubs_current" && j.Name() != "android_system_stubs_current" &&
