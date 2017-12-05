@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "915f6abf_a93adcb3",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-05T23:01:11Z",
+      "side": 1,
+      "message": "This makes path.Rel() return the joined part of the path.  TestModule.Output() matches against the Rel(), so this allows using \"bar.jar\" to find \"out/host/linux-x86/framework/bar.jar\".",
+      "parentUuid": "978df4f0_e7a063ad",
+      "range": {
+        "startLine": 664,
+        "startChar": 0,
+        "endLine": 664,
+        "endChar": 15
+      },
+      "revId": "acf3df4d3c4eafdad6a539ae3f5baa07170b6881",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5d725f79_196f23b8",
         "filename": "java/java_test.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-12-05T22:55:45Z",
       "side": 1,
       "message": "Isn\u0027t this going to fail on Darwin?",
+      "range": {
+        "startLine": 272,
+        "startChar": 35,
+        "endLine": 272,
+        "endChar": 53
+      },
+      "revId": "acf3df4d3c4eafdad6a539ae3f5baa07170b6881",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb6977af_7c46ab76",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-05T23:01:11Z",
+      "side": 1,
+      "message": "Probably.",
+      "parentUuid": "5d725f79_196f23b8",
       "range": {
         "startLine": 272,
         "startChar": 35,
