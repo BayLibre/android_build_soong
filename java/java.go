@@ -167,9 +167,23 @@ type CompilerDeviceProperties struct {
 	// If true, export a copy of the module as a -hostdex module for host testing.
 	Hostdex *bool
 
-	// If false, prevent dexpreopting and stripping the dex file from the final jar.  Defaults to
-	// true.
-	Dex_preopt *bool
+	Dex_preopt struct {
+		// If false, prevent dexpreopting and stripping the dex file from the final jar.  Defaults to
+		// true.
+		Enabled *bool
+
+		// If true, generate an app image (.art file) for this module.
+		App_image *bool
+
+		// If true, use a checked-in profile to guide optimization.  Defaults to false unless
+		// a matching profile is found in PRODUCT_DEX_PREOPT_PROFILE_DIR, in which case it is
+		// defaulted to true.
+		Profile_guided *bool
+
+		// If set, provides the path to profile relative to the Android.bp file.  Overrides the
+		// default profile location set by PRODUCT_DEX_PREOPT_PROFILE_DIR.
+		Profile_class_listing *string
+	}
 
 	// When targeting 1.9, override the modules to use with --system
 	System_modules *string
