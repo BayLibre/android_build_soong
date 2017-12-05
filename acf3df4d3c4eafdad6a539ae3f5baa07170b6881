@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d256cda5_e6922cd2",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-12-05T23:14:25Z",
+      "side": 1,
+      "message": "It seems like we\u0027ve implemented this in other PathForModule* functions using the withRel method, I\u0027m not completely sure it\u0027s appropriate here (though the documentation could be read that way).\n\nIf we do change this, we should at least make SourcePath.Join have the same behavior.",
+      "parentUuid": "915f6abf_a93adcb3",
+      "range": {
+        "startLine": 664,
+        "startChar": 0,
+        "endLine": 664,
+        "endChar": 15
+      },
+      "revId": "acf3df4d3c4eafdad6a539ae3f5baa07170b6881",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5d725f79_196f23b8",
         "filename": "java/java_test.go",
         "patchSetId": 1
