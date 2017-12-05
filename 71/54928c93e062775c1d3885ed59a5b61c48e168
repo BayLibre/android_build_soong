@@ -1,0 +1,9 @@
+Autosubmit+1: Justin Yun <justinyun@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Verified+1: Justin Yun <justinyun@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Tue, 05 Dec 2017 01:24:53 +0000
+Reviewed-on: https://android-review.googlesource.com/540959
+Project: platform/build/soong
+Branch: refs/heads/master
