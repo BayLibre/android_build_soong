@@ -427,7 +427,7 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 		flags.CppFlags = append([]string{"-std=" + cppStd}, flags.CppFlags...)
 	}
 
-	if ctx.useVndk() {
+	if ctx.useVndk() || ctx.InstallOnVendorPartition() {
 		flags.CFlags = append(flags.CFlags, esc(compiler.Properties.Target.Vendor.Cflags)...)
 	}
 
