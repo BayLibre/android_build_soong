@@ -16,6 +16,24 @@
       "revId": "99dfdfdf0038bb5fd3406fda878d277d9588b5d2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b7a7dd1_deff7ef4",
+        "filename": "android/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1120,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-06T04:16:34Z",
+      "side": 1,
+      "message": "The new multilib values aren\u0027t intended to be used in Android.bp files, they are only for default values for some module types, and those module types shouldn\u0027t really be able to set compile_multilib at all.  I\u0027ll try to think of a way to enforce that in a future change.",
+      "parentUuid": "4a3465a4_d0114eac",
+      "revId": "99dfdfdf0038bb5fd3406fda878d277d9588b5d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
