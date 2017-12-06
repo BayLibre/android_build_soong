@@ -1,0 +1,9 @@
+Presubmit-Ready+1: Chih-hung Hsieh <chh@google.com>
+Code-Review+2: Dan Willemsen <dwillemsen@google.com>
+Code-Review+2: Stephen Hines <srhines@google.com>
+Verified+1: Chih-hung Hsieh <chh@google.com>
+Submitted-by: Chih-hung Hsieh <chh@google.com>
+Submitted-at: Wed, 06 Dec 2017 00:56:45 +0000
+Reviewed-on: https://android-review.googlesource.com/556711
+Project: platform/build/soong
+Branch: refs/heads/master
