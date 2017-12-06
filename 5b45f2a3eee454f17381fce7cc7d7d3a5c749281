@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1ab143a_a4e01aa4",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-12-06T01:02:28Z",
+      "side": 1,
+      "message": "Should this be\n\n  p.rel \u003d filepath.Join(p.rel, rel)\n\n? Or at least\n\n  if p.rel !\u003d \"\" {\n    panic(\"called withRel twice\")\n  }",
+      "revId": "5b45f2a3eee454f17381fce7cc7d7d3a5c749281",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
