@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a3465a4_d0114eac",
+        "filename": "android/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1120,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-12-06T01:20:06Z",
+      "side": 1,
+      "message": "Probably want to update the error message in a follow-up commit",
+      "revId": "99dfdfdf0038bb5fd3406fda878d277d9588b5d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
