@@ -22,6 +22,30 @@
       "revId": "5beccee92cfa5e13fbebb3d670f0dc65b7ba802c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2f8d196_0172074c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-07T23:41:03Z",
+      "side": 1,
+      "message": "True, but all of this still applies - we will want a separate implementation for cc if it is used at compile time by cc.",
+      "parentUuid": "1e509378_74b15302",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 46
+      },
+      "revId": "5beccee92cfa5e13fbebb3d670f0dc65b7ba802c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
