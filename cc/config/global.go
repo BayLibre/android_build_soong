@@ -139,7 +139,6 @@ var (
 		"frameworks/webview/chromium/",
 		"hardware/libhardware/modules/",
 		"hardware/qcom/",
-		"sdk/emulator/mksdcard/",
 		"system/vold/tests/",
 		"tools/adt/idea/android/ultimate/get_modification_time/jni/",
 	}
