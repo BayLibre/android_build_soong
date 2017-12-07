@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e509378_74b15302",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-12-07T23:37:00Z",
+      "side": 1,
+      "message": "There have been requests to change that in the past (b/26741500), and with the Soong limitation of having fully-specified IDs to do code generation, that\u0027s not entirely unreasonable now.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 46
+      },
+      "revId": "5beccee92cfa5e13fbebb3d670f0dc65b7ba802c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
