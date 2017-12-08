@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55aeb0e3_b26c667e",
+        "filename": "java/config/makevars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-08T18:36:47Z",
+      "side": 1,
+      "message": "Why ANDROID_JAVA8_HOME and not ANDROID_JAVA8_TOOLCHAIN or JAVA8?",
+      "revId": "06ae582000b0556d53f7dbb2f9720f2fb141418f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
