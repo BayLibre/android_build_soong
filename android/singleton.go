@@ -99,7 +99,10 @@ func (s singletonContextAdaptor) Rule(pctx PackageContext, name string, params R
 }
 
 func (s singletonContextAdaptor) Build(pctx PackageContext, params BuildParams) {
-	bparams := convertBuildParams(params)
+	bparams, err := convertBuildParams(params)
+	if err != nil {
+		panic(err.Error())
+	}
 	s.SingletonContext.Build(pctx.PackageContext, bparams)
 
 }

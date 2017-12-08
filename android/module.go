@@ -39,6 +39,7 @@ type BuildParams struct {
 	Deps            blueprint.Deps
 	Depfile         WritablePath
 	Description     string
+	TargetName      string // the command-line name that the user can use to build this
 	Output          WritablePath
 	Outputs         WritablePaths
 	ImplicitOutput  WritablePath
@@ -643,7 +644,7 @@ func (a *androidModuleContext) ModuleBuild(pctx PackageContext, params ModuleBui
 	a.Build(pctx, BuildParams(params))
 }
 
-func convertBuildParams(params BuildParams) blueprint.BuildParams {
+func convertBuildParams(params BuildParams) (blueprint.BuildParams, error) {
 	bparams := blueprint.BuildParams{
 		Rule:            params.Rule,
 		Description:     params.Description,
@@ -663,6 +664,10 @@ func convertBuildParams(params BuildParams) blueprint.BuildParams {
 	if params.Output != nil {
 		bparams.Outputs = append(bparams.Outputs, params.Output.String())
 	}
+	if params.TargetName != "" {
+		bparams.ImplicitOutputs = append(bparams.ImplicitOutputs, params.TargetName)
+	}
+
 	if params.ImplicitOutput != nil {
 		bparams.ImplicitOutputs = append(bparams.ImplicitOutputs, params.ImplicitOutput.String())
 	}
@@ -673,7 +678,7 @@ func convertBuildParams(params BuildParams) blueprint.BuildParams {
 		bparams.Implicits = append(bparams.Implicits, params.Implicit.String())
 	}
 
-	return bparams
+	return bparams, nil
 }
 
 func (a *androidModuleContext) Variable(pctx PackageContext, name, value string) {
@@ -691,7 +696,11 @@ func (a *androidModuleContext) Build(pctx PackageContext, params BuildParams) {
 		a.buildParams = append(a.buildParams, params)
 	}
 
-	bparams := convertBuildParams(params)
+	bparams, err := convertBuildParams(params)
+
+	if err != nil {
+		a.ninjaError(bparams.Description, bparams.Outputs, err)
+	}
 
 	if bparams.Description != "" {
 		bparams.Description = "${moduleDesc}" + params.Description + "${moduleDescSuffix}"
