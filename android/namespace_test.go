@@ -16,6 +16,7 @@ package android
 
 import (
 	"errors"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -580,6 +581,78 @@ func TestConsistentNamespaceNames(t *testing.T) {
 	if !reflect.DeepEqual(actualIds, expectedIds) {
 		t.Errorf("Incorrect namespace ids.\nactual: %s\nexpected: %s\n", actualIds, expectedIds)
 	}
+}
+
+func TestIllegalCharacters(t *testing.T) {
+	type testcase struct {
+		name        string
+		displayName string
+		violation   string
+	}
+	testcases := []testcase{
+		{
+			name:      "..",
+			violation: "..",
+		},
+		{
+			name:      "a,",
+			violation: ",",
+		},
+		{
+			name:      "a|b",
+			violation: "|",
+		},
+		{
+			name:      "a b",
+			violation: " ",
+		},
+		{
+			name:      "a$",
+			violation: "$",
+		},
+		{
+			name:      "a$b",
+			violation: "$",
+		},
+		{
+			name:      "a/",
+			violation: "/",
+		},
+		{
+			name:        "a\\n",
+			displayName: "a\n",
+			violation:   "\n",
+		},
+		{
+			name:        "a\\\\",
+			displayName: "a\\",
+			violation:   "\\",
+		},
+	}
+	fmt.Sprintf("%s", testcases)
+
+	for _, test := range testcases {
+		_, errs := setupTestExpectErrs(
+			map[string]string{
+				"Blueprints": `
+					test_module {
+						name: "` + test.name + `",
+					}
+				`,
+			})
+
+		displayName := test.displayName
+		if displayName == "" {
+			displayName = test.name
+		}
+		expectedErrs := []error{
+			fmt.Errorf("Blueprints/Android.bp:2:6: name %q contains illegal substring %q", displayName, test.violation),
+		}
+		if fmt.Sprintf("%s", expectedErrs) != fmt.Sprintf("%s", errs) {
+			t.Errorf("Incorrect errors; expected:\n%s\ngot:\n%s", expectedErrs, errs)
+		}
+	}
+
 }
 
 // some utils to support the tests

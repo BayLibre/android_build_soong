@@ -170,7 +170,23 @@ func (r *NameResolver) findNamespace(path string) (namespace *Namespace) {
 	return namespace
 }
 
+var textsForbiddenInNames = []string{"$", "..", "/", "|", ":", "\\", ",", " ", "\n"}
+
+func validateName(name string) (err error) {
+	for _, other := range textsForbiddenInNames {
+		if strings.Contains(name, other) {
+			return fmt.Errorf("name %q contains illegal substring %q", name, other)
+		}
+	}
+	return nil
+}
+
 func (r *NameResolver) NewModule(ctx blueprint.NamespaceContext, moduleGroup blueprint.ModuleGroup, module blueprint.Module) (namespace blueprint.Namespace, errs []error) {
+	err := validateName(module.Name())
+	if err != nil {
+		return nil, []error{err}
+	}
+
 	// if this module is a namespace, then save it to our list of namespaces
 	newNamespace, ok := module.(*NamespaceModule)
 	if ok {
