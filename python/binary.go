@@ -101,7 +101,6 @@ func (binary *binaryDecorator) bootstrap(ctx android.ModuleContext, actual_versi
 	}
 	wholePyRunfiles = append(wholePyRunfiles, depsPyRunfiles...)
 
-	// find all the runfiles dirs which have been treated as packages.
 	for _, path := range wholePyRunfiles {
 		if filepath.Base(path) != initFileName {
 			continue
@@ -113,16 +112,16 @@ func (binary *binaryDecorator) bootstrap(ctx android.ModuleContext, actual_versi
 		} else {
 			existingPyPkgSet[existingPyPkg] = true
 		}
-		parentPath := PathBeforeLastSlash(existingPyPkg)
-		populateNewPyPkgs(parentPath, existingPyPkgSet, newPyPkgSet, &newPyPkgs)
 	}
 
-	// create new packages under runfiles tree.
 	for _, path := range wholePyRunfiles {
-		if filepath.Base(path) == initFileName {
-			continue
+		var parentPath string
+		if filepath.Base(path) != initFileName {
+			existingPyPkg := PathBeforeLastSlash(path)
+			parentPath = PathBeforeLastSlash(existingPyPkg)
+		} else {
+			parentPath = PathBeforeLastSlash(path)
 		}
-		parentPath := PathBeforeLastSlash(path)
 		populateNewPyPkgs(parentPath, existingPyPkgSet, newPyPkgSet, &newPyPkgs)
 	}
 
