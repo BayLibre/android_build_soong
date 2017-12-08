@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d20ca210_c6716f68",
+        "filename": "python/binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-12-08T22:57:22Z",
+      "side": 1,
+      "message": "Can we consolidate the two clauses of this if statement (I think they\u0027re the same)?",
+      "revId": "5b346c72873a3e216bb017fb8bbe613ca7465e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
