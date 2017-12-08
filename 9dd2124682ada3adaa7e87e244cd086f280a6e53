@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2090fc0_20db07f6",
+        "filename": "android/namespace.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-12-08T22:28:42Z",
+      "side": 1,
+      "message": "Not sure if this is the right place to put this but it was convenient. Anyone have any better ideas?",
+      "revId": "9dd2124682ada3adaa7e87e244cd086f280a6e53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
