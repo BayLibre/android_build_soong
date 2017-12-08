@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a39ad2d9_9eb12f1f",
+        "filename": "android/singleton.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-12-08T22:28:38Z",
+      "side": 1,
+      "message": "Not sure if this is right. Anyone have any better ideas?",
+      "revId": "9a9616ad3957083c2c62bee6fb1cc0a038c4f384",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
