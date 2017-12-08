@@ -382,6 +382,10 @@ type Namespace struct {
 	moduleContainer blueprint.NameInterface
 }
 
+func (n Namespace) IsRoot() bool {
+	return n.Path == "."
+}
+
 func NewNamespace(path string) *Namespace {
 	return &Namespace{Path: path, moduleContainer: blueprint.NewSimpleNameInterface()}
 }

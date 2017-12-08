@@ -324,6 +324,12 @@ func (g *Module) generateSourceFile(ctx android.ModuleContext, task generateTask
 		params.Depfile = android.PathForModuleGen(ctx, task.out[0].Rel()+".d")
 		params.Args["depfileArgs"] = "--depfile-out " + depFile.String()
 	}
+	// Only generate a target name if in the root namespace
+	// We haven't chosen a stable method of renaming modules in non-root namespaces,
+	// so for now we just skip making target names for them
+	if ctx.Namespace().(*android.Namespace).IsRoot() {
+		params.TargetName = ctx.ModuleName()
+	}
 
 	ctx.Build(pctx, params)
 
