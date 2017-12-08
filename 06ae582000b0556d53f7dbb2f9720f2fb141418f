@@ -16,6 +16,24 @@
       "revId": "06ae582000b0556d53f7dbb2f9720f2fb141418f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e33f94c6_6a74465c",
+        "filename": "java/config/makevars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2017-12-08T18:42:31Z",
+      "side": 1,
+      "message": "To make it more generally useful.\n\nNot JAVA8 because I figured it could be useful for commands other than java, eg. javac.\nNot ANDROID_JAVA8_TOOLCHAIN because I figured it could be useful for stuff other than the things in bin/, e.g. lib/tools.jar (could be useful for errorprone which is currently pinned to OpenJDK 8 through a different approach).\n\nWould you prefer to keep it as specific as possible for the initial use case?",
+      "parentUuid": "55aeb0e3_b26c667e",
+      "revId": "06ae582000b0556d53f7dbb2f9720f2fb141418f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
