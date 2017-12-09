@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "27940df1_26982ecb",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-09T04:02:07Z",
+      "side": 1,
+      "message": "I\u0027m not sure what this will do, it adds an implicit output that doesn\u0027t get written.  I guess that might work, but it seems odd.  We normally add a phony target that depends on the regular output files.\n\nThis will also result in ninja errors if two modules use the same TargetName.\n\nandroid.Module already adds phony targets for modules, but I think it is disabled when embedded in make, but we could turn it back on for genrules.",
+      "revId": "9a9616ad3957083c2c62bee6fb1cc0a038c4f384",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e236648_92d39689",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-09T04:02:07Z",
+      "side": 1,
+      "message": "You never return an error",
+      "revId": "9a9616ad3957083c2c62bee6fb1cc0a038c4f384",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a39ad2d9_9eb12f1f",
         "filename": "android/singleton.go",
         "patchSetId": 1
