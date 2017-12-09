@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c92208a_4331f671",
+        "filename": "java/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-09T04:21:59Z",
+      "side": 1,
+      "message": "Put the BuildParams in a variable and just set Rule and Description in the if block.",
+      "revId": "dd1efa5dcea80f38beaa8221b300459dd8c25dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64a26287_6909871e",
+        "filename": "java/config/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-09T04:21:59Z",
+      "side": 1,
+      "message": "Might as well put this in a separate D8Cmd variable, since its going into its own rule.",
+      "revId": "dd1efa5dcea80f38beaa8221b300459dd8c25dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d2f5893_fdb9a191",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-09T04:21:59Z",
+      "side": 1,
+      "message": "This is going to cause jacoco to see lambdas, can you test with EMMA_INSTRUMENT\u003dtrue EMMA_INSTRUMENT_FRAMEWORK\u003dtrue WITH_DEXPREOPT\u003dfalse?",
+      "revId": "dd1efa5dcea80f38beaa8221b300459dd8c25dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4fe05fb_ee7d5458",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-09T04:21:59Z",
+      "side": 1,
+      "message": "Might as well just be:\nvar dxFlags []string",
+      "revId": "dd1efa5dcea80f38beaa8221b300459dd8c25dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbe319fd_2b0edfc3",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 957,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-09T04:21:59Z",
+      "side": 1,
+      "message": "This is probably obsolete, we use jacoco now and haven\u0027t had any problems with instrumentation and dx.",
+      "revId": "dd1efa5dcea80f38beaa8221b300459dd8c25dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
