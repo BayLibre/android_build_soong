@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "abd3415d_e5759394",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-12-09T00:17:56Z",
+      "side": 1,
+      "message": "It turns out that this expects the string\n\n    external/ltp/include/lapi/syscalls/regen.sh __SBOX_OUT_DIR__/lapi/syscalls.h\n\nto be escaped into\n\n    \u0027external/ltp/include/lapi/syscalls/regen.sh __SBOX_OUT_DIR__/lapi/syscalls.h\u0027\n\nbut it requires something like https://github.com/google/blueprint/pull/194 in order for ShellEscape to actually do that. Unfortunately, that pull request fails, because there are a bunch of cases where an Android.bp specifies cflags of for example \"-include bionic-compat.h\" which then results in:\n\n\u003cbuilt-in\u003e:1:10: fatal error: \u0027 bionic-compat.h\u0027 file not found\n#include \" bionic-compat.h\"\n\nI\u0027m not sure what the most correct thing to do would be (I suspect it would involve updating the callers such that quoting the cflags is the correct thing to do).\n\nIn the meanwhile do we just want to make a new escape function?",
+      "revId": "8822ac02c18fd8c40bd6214b504595cc006a07be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
