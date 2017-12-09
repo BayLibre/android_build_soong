@@ -16,6 +16,24 @@
       "revId": "8822ac02c18fd8c40bd6214b504595cc006a07be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c4a815e_a2f74546",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-09T01:24:59Z",
+      "side": 1,
+      "message": "It\u0027s pretty easy to do a local escaping, add \u0027 at the beginning and end and replace \u0027 with \u0027\\\u0027\u0027 in the contents.",
+      "parentUuid": "abd3415d_e5759394",
+      "revId": "8822ac02c18fd8c40bd6214b504595cc006a07be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
