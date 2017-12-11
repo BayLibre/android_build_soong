@@ -16,6 +16,24 @@
       "revId": "ac87c992bee5c4034fdd5ced05e3328f081a7132",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0022b143_b0ce563a",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-11T23:54:54Z",
+      "side": 0,
+      "message": "Added to commit message",
+      "parentUuid": "f260330b_e6d520e3",
+      "revId": "ac87c992bee5c4034fdd5ced05e3328f081a7132",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
