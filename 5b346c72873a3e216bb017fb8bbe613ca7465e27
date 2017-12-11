@@ -16,6 +16,24 @@
       "revId": "5b346c72873a3e216bb017fb8bbe613ca7465e27",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b84f9804_ce8e99cb",
+        "filename": "python/binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2017-12-11T22:35:18Z",
+      "side": 1,
+      "message": "revised a little bit, and add more comments.",
+      "parentUuid": "d20ca210_c6716f68",
+      "revId": "5b346c72873a3e216bb017fb8bbe613ca7465e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
