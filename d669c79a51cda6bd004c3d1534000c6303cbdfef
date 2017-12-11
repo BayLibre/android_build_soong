@@ -22,6 +22,30 @@
       "revId": "d669c79a51cda6bd004c3d1534000c6303cbdfef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8709d73_c5f30df6",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-12-11T21:09:01Z",
+      "side": 1,
+      "message": "I tried that, and I found that there were a few modules for which ctx.useVndk() was true but not ctx.InstallOnVendorPartition(). I don\u0027t remember it causing any build failures, but I do remember it causing changes in the ninja files.",
+      "parentUuid": "c1a4a0d5_91a38113",
+      "range": {
+        "startLine": 430,
+        "startChar": 4,
+        "endLine": 430,
+        "endChar": 51
+      },
+      "revId": "d669c79a51cda6bd004c3d1534000c6303cbdfef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
