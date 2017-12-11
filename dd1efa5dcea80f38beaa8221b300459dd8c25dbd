@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "83b28937_7ca7196a",
+        "filename": "java/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1080224
+      },
+      "writtenOn": "2017-12-11T22:02:26Z",
+      "side": 1,
+      "message": "I cleaned it up a bit.\nCan you be more specific?",
+      "parentUuid": "3c92208a_4331f671",
+      "revId": "dd1efa5dcea80f38beaa8221b300459dd8c25dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "64a26287_6909871e",
         "filename": "java/config/config.go",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "a75ace98_10d974d0",
+        "filename": "java/config/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1080224
+      },
+      "writtenOn": "2017-12-11T22:02:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64a26287_6909871e",
+      "revId": "dd1efa5dcea80f38beaa8221b300459dd8c25dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d2f5893_fdb9a191",
         "filename": "java/java.go",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2017-12-09T04:21:59Z",
       "side": 1,
       "message": "This is going to cause jacoco to see lambdas, can you test with EMMA_INSTRUMENT\u003dtrue EMMA_INSTRUMENT_FRAMEWORK\u003dtrue WITH_DEXPREOPT\u003dfalse?",
+      "revId": "dd1efa5dcea80f38beaa8221b300459dd8c25dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85a84ee5_e53dea83",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1080224
+      },
+      "writtenOn": "2017-12-11T22:02:26Z",
+      "side": 1,
+      "message": "This build fine (barring the --no-locals plumbing added to the both CLs)\n\nIs there a particular issue with Jacoco and lambdas?\n\nQuick glance at Jacoco and it seems they had worked on lambdas since 0.7.2 (https://github.com/jacoco/jacoco/pull/232/commits/8ffcb7144775ba0da65304c15d952ba7a1cb7da6)\n\nTalk to shertz (cc\u0027ed) and he suggest we are better off with desugaring after Jacoco.",
+      "parentUuid": "7d2f5893_fdb9a191",
       "revId": "dd1efa5dcea80f38beaa8221b300459dd8c25dbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "6ffce112_a7b227bf",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 1080224
+      },
+      "writtenOn": "2017-12-11T22:02:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4fe05fb_ee7d5458",
+      "revId": "dd1efa5dcea80f38beaa8221b300459dd8c25dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cbe319fd_2b0edfc3",
         "filename": "java/java.go",
         "patchSetId": 2
@@ -81,6 +153,24 @@
       "writtenOn": "2017-12-09T04:21:59Z",
       "side": 1,
       "message": "This is probably obsolete, we use jacoco now and haven\u0027t had any problems with instrumentation and dx.",
+      "revId": "dd1efa5dcea80f38beaa8221b300459dd8c25dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dbf5f15_20f2755c",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 957,
+      "author": {
+        "id": 1080224
+      },
+      "writtenOn": "2017-12-11T22:02:26Z",
+      "side": 1,
+      "message": "Done. Removed the DX block as well.",
+      "parentUuid": "cbe319fd_2b0edfc3",
       "revId": "dd1efa5dcea80f38beaa8221b300459dd8c25dbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
