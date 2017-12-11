@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9b9c3d8f_df914f91",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-12-11T23:39:13Z",
+      "side": 1,
+      "message": "That should make it so that this build action is never considered clean, since an output is missing.",
+      "parentUuid": "27940df1_26982ecb",
+      "revId": "9a9616ad3957083c2c62bee6fb1cc0a038c4f384",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5e236648_92d39689",
         "filename": "android/module.go",
         "patchSetId": 1
