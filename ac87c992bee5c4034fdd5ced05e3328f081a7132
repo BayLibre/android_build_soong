@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f260330b_e6d520e3",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-12-11T23:41:49Z",
+      "side": 0,
+      "message": "unrelated change?",
+      "revId": "ac87c992bee5c4034fdd5ced05e3328f081a7132",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
