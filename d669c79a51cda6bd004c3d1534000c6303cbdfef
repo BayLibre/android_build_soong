@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1a4a0d5_91a38113",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-12-11T17:19:18Z",
+      "side": 1,
+      "message": "shouldn\u0027t this check JUST be the second half? ctx.useVndk should always imply ctx.InstallOnVendorPartition, right?",
+      "range": {
+        "startLine": 430,
+        "startChar": 4,
+        "endLine": 430,
+        "endChar": 51
+      },
+      "revId": "d669c79a51cda6bd004c3d1534000c6303cbdfef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
