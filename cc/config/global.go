@@ -123,7 +123,6 @@ var (
 		"external/libese/third_party/NXPNFC_P61_JCOP_Kit/",
 		"external/skia/",
 		"device/",
-		"frameworks/av/media/libeffects/factory/",
 		"frameworks/av/media/libstagefright/codecs/",
 		"frameworks/native/libs/vr/libbufferhub/",
 		"vendor/",
@@ -132,7 +131,6 @@ var (
 	// Some Android.mk files still have warnings.
 	WarningAllowedOldProjects = []string{
 		"frameworks/av/drm/mediacas/plugins/",
-		"frameworks/av/services/mediaextractor/",
 		"frameworks/webview/chromium/",
 		"hardware/libhardware/modules/",
 		"hardware/qcom/",
