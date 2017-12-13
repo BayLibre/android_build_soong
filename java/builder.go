@@ -439,11 +439,11 @@ func TransformClassesJarToDexJar(ctx android.ModuleContext, outputFile android.W
 
 	outDir := android.PathForModuleOut(ctx, "dex")
 
-	rule := dx
-	desc := "dx"
-	if ctx.AConfig().IsEnvTrue("USE_D8_DESUGAR") {
-		rule = d8
-		desc = "d8"
+	rule := d8
+	desc := "d8"
+	if ctx.AConfig().IsEnvFalse("USE_D8_DESUGAR") {
+		rule = dx
+		desc = "dx"
 	}
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        rule,
