@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec4d0e6a_8ed7eac4",
+        "filename": "android/variable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-12-13T22:24:56Z",
+      "side": 1,
+      "message": "this needs to stay in AOSP until I can get more kernels updated here. I\u0027ll be removing it in master after this patch set gets merged",
+      "range": {
+        "startLine": 74,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 8
+      },
+      "revId": "c2b9f060d904351ef34c0a984e6c810138579ca2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
