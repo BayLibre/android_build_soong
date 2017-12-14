@@ -37,11 +37,12 @@ const profileUseSamplingFormat = "-fprofile-sample-use=%s"
 
 type PgoProperties struct {
 	Pgo struct {
-		Instrumentation    *bool
-		Sampling           *bool
-		Profile_file       *string `android:"arch_variant"`
-		Benchmarks         []string
-		Enable_profile_use *bool `android:"arch_variant"`
+		Instrumentation      *bool
+		Sampling             *bool
+		Profile_file         *string `android:"arch_variant"`
+		Benchmarks           []string
+		Enable_profile_use   *bool    `android:"arch_variant"`
+		Profile_extra_cflags []string `android:"arch_variant"`
 	} `android:"arch_variant"`
 
 	PgoPresent          bool `blueprint:"mutated"`
@@ -65,6 +66,8 @@ func (pgo *pgo) props() []interface{} {
 }
 
 func (props *PgoProperties) addProfileGatherFlags(ctx ModuleContext, flags Flags) Flags {
+	flags.CFlags = append(flags.CFlags, props.Pgo.Profile_extra_cflags...)
+
 	if props.isInstrumentation() {
 		flags.CFlags = append(flags.CFlags, profileInstrumentFlag)
 		// The profile runtime is added below in deps().  Add the below
