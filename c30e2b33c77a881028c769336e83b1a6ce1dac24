@@ -16,6 +16,24 @@
       "revId": "c30e2b33c77a881028c769336e83b1a6ce1dac24",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "982b8546_e541e016",
+        "filename": "cc/pgo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2017-12-14T01:50:45Z",
+      "side": 1,
+      "message": "Done.  The older name was to clarify that these are used only when building for profiling, but it was not clear anyway since there are two other properties that have \u0027profile\u0027 in their name but relate to profile use.",
+      "parentUuid": "9b3dd755_158739ac",
+      "revId": "c30e2b33c77a881028c769336e83b1a6ce1dac24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
