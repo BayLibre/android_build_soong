@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b3dd755_158739ac",
+        "filename": "cc/pgo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-14T01:41:48Z",
+      "side": 1,
+      "message": "Can this just be Cflags?  It\u0027s already inside the Pgo block.\n\nAlso give it a comment suitable for reading at go/Android.bp.",
+      "revId": "c30e2b33c77a881028c769336e83b1a6ce1dac24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
