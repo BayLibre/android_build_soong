@@ -120,7 +120,7 @@ var (
 	ClangDefaultShortVersion = "5.0.1"
 
 	WarningAllowedProjects = []string{
-		"device/",
+		"device/google/cuttlefish_common/",
 		"vendor/",
 	}
 
