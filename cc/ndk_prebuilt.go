@@ -141,7 +141,11 @@ func ndkPrebuiltSharedStlFactory() android.Module {
 	module.compiler = nil
 	module.linker = linker
 	module.installer = nil
-	module.Properties.HideFromMake = true
+	module.Properties.HideFromMake = false
+	minVersionString := "minimum"
+	noStlString := "none"
+	module.Properties.Sdk_version = &minVersionString
+	module.stl.Properties.Stl = &noStlString
 	return module.Init()
 }
 
