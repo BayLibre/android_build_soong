@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad01589c_5c9f4774",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-12-14T23:41:17Z",
+      "side": 1,
+      "message": "It looks like you\u0027ve already switched to string.HasPrefix, which is the replacement. You could run filepath.Clean() on the input and append a \u0027/\u0027 automatically to ensure folder matching though.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 66
+      },
+      "revId": "5dcea92b8638211d2d11a06605f3966d9f5baada",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f1992b9_22b839e0",
+        "filename": "android/neverallow.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-12-14T23:41:17Z",
+      "side": 1,
+      "message": "In general I\u0027ve been a big believer of keeping path-based checks out of the build system, especially since we tend to be very flexible on where code is checked out / moved.\n\nI\u0027ve caved on the external vs vendor vs other, but I still don\u0027t particularly like individual paths (like the Werror exemptions). We\u0027ve got such a large and fluid tree that it often doesn\u0027t make a lot of sense that the configuration is owned by the build. The Werror exemptions currently list vendor for example, but we\u0027re not going to be able to be much more specific, or we\u0027d start leaking information.\n\nI do see the value in something to assist short-lived migrations, but I\u0027m not convinced that build is the right place to put it (at least in the general case). You almost need to move it into several places in order to deal with how fluid the tree is (it can\u0027t be a single private location, because we need to deliver different PDKs to different people, and aosp). So you end up with a dozen or two configuration files depending on the particular needs. And it\u0027s likely that you\u0027ll use the wrong one until someone reports a problem.\n\nIf you\u0027ve got any ideas about how to distribute configuration files like these given the requirements, I\u0027m happy to hear them -- this isn\u0027t the only request that has run into this problem recently.\n\nFor specific, long term cases that talk about the base code, maybe this would work, but so would 3-4 lines in an current go file.",
+      "range": {
+        "startLine": 27,
+        "startChar": 22,
+        "endLine": 27,
+        "endChar": 62
+      },
+      "revId": "5dcea92b8638211d2d11a06605f3966d9f5baada",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2c235aa_d013f4d0",
+        "filename": "android/neverallow.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-12-14T23:41:17Z",
+      "side": 1,
+      "message": "These should probably use the lowercase names used in the Android.bp files",
+      "range": {
+        "startLine": 47,
+        "startChar": 46,
+        "endLine": 47,
+        "endChar": 58
+      },
+      "revId": "5dcea92b8638211d2d11a06605f3966d9f5baada",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f64fc822_ed033805",
+        "filename": "android/neverallow.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-12-14T23:41:17Z",
+      "side": 1,
+      "message": "This really doesn\u0027t talk about the GSI, only the VNDK",
+      "range": {
+        "startLine": 48,
+        "startChar": 15,
+        "endLine": 48,
+        "endChar": 40
+      },
+      "revId": "5dcea92b8638211d2d11a06605f3966d9f5baada",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
