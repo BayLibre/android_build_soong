@@ -45,7 +45,7 @@ func (stl *stl) begin(ctx BaseModuleContext) {
 		if ctx.useSdk() && ctx.Device() {
 			switch s {
 			case "":
-				return "ndk_system"
+				return "ndk_libc++_shared"
 			case "c++_shared", "c++_static",
 				"stlport_shared", "stlport_static",
 				"gnustl_static":
