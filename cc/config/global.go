@@ -122,7 +122,6 @@ var (
 	WarningAllowedProjects = []string{
 		"external/skia/",
 		"device/",
-		"vendor/",
 	}
 
 	// Some Android.mk files still have warnings.
