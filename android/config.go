@@ -511,12 +511,13 @@ func (c *config) DefaultAppCertificateDir(ctx PathContext) SourcePath {
 	}
 }
 
-func (c *config) DefaultAppCertificate(ctx PathContext) SourcePath {
+func (c *config) DefaultAppCertificate(ctx PathContext) (key, pem SourcePath) {
 	defaultCert := String(c.ProductVariables.DefaultAppCertificate)
 	if defaultCert != "" {
-		return PathForSource(ctx, defaultCert)
+		return PathForSource(ctx, defaultCert+".pk8"), PathForSource(ctx, defaultCert+".x509.pem")
 	} else {
-		return c.DefaultAppCertificateDir(ctx).Join(ctx, "testkey")
+		defaultDir := c.DefaultAppCertificateDir(ctx)
+		return defaultDir.Join(ctx, "testkey.pk8"), defaultDir.Join(ctx, "testkey.x509.pem")
 	}
 }
 
