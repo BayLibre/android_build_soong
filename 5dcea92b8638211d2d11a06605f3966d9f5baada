@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "bde8fa43_0d20d2bf",
+        "filename": "android/neverallow.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-12-14T23:47:56Z",
+      "side": 1,
+      "message": "So, I think we should leave the functionality in here, just not check in things using it? We at least need this for vendor/external/device, right? How do you want me to nerf the ability?",
+      "parentUuid": "2f1992b9_22b839e0",
+      "range": {
+        "startLine": 27,
+        "startChar": 22,
+        "endLine": 27,
+        "endChar": 62
+      },
+      "revId": "5dcea92b8638211d2d11a06605f3966d9f5baada",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a2c235aa_d013f4d0",
         "filename": "android/neverallow.go",
         "patchSetId": 3
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "b2ac1e55_199be682",
+        "filename": "android/neverallow.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-12-14T23:47:56Z",
+      "side": 1,
+      "message": "Considered it, but I didn\u0027t because it adds more complexity. If you think so, I\u0027ll update it.",
+      "parentUuid": "a2c235aa_d013f4d0",
+      "range": {
+        "startLine": 47,
+        "startChar": 46,
+        "endLine": 47,
+        "endChar": 58
+      },
+      "revId": "5dcea92b8638211d2d11a06605f3966d9f5baada",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f64fc822_ed033805",
         "filename": "android/neverallow.go",
         "patchSetId": 3
@@ -82,6 +130,30 @@
       "writtenOn": "2017-12-14T23:41:17Z",
       "side": 1,
       "message": "This really doesn\u0027t talk about the GSI, only the VNDK",
+      "range": {
+        "startLine": 48,
+        "startChar": 15,
+        "endLine": 48,
+        "endChar": 40
+      },
+      "revId": "5dcea92b8638211d2d11a06605f3966d9f5baada",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7da405e_b9fe70d2",
+        "filename": "android/neverallow.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-12-14T23:47:56Z",
+      "side": 1,
+      "message": "Alright, I\u0027ll explain in more detail. THanks.",
+      "parentUuid": "f64fc822_ed033805",
       "range": {
         "startLine": 48,
         "startChar": 15,
