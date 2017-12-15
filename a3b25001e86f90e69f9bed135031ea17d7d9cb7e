@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "104355a9_2b3886b4",
+        "filename": "android/proto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-12-15T21:54:43Z",
+      "side": 1,
+      "message": "With -I. coming first, then ProtoSubDir should be the same as ProtoDir",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 55
+      },
+      "revId": "a3b25001e86f90e69f9bed135031ea17d7d9cb7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
