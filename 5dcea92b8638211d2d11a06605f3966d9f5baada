@@ -163,6 +163,29 @@
       "revId": "5dcea92b8638211d2d11a06605f3966d9f5baada",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fc33600_233dbc9f",
+        "filename": "android/neverallow.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-12-15T00:56:24Z",
+      "side": 1,
+      "message": "also, did you care about this? :(",
+      "range": {
+        "startLine": 49,
+        "startChar": 62,
+        "endLine": 49,
+        "endChar": 65
+      },
+      "revId": "5dcea92b8638211d2d11a06605f3966d9f5baada",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
