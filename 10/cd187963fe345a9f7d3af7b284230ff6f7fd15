@@ -1,0 +1,9 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Code-Review+2: Yi Kong <yikong@google.com>
+Verified+1: Yi Kong <yikong@google.com>
+Submitted-by: Yi Kong <yikong@google.com>
+Submitted-at: Fri, 15 Dec 2017 21:36:00 +0000
+Reviewed-on: https://android-review.googlesource.com/496499
+Project: platform/build/soong
+Branch: refs/heads/master
