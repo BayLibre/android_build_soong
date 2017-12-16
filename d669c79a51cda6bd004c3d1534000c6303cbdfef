@@ -46,6 +46,30 @@
       "revId": "d669c79a51cda6bd004c3d1534000c6303cbdfef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67cfc16a_e7794b3a",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-12-16T01:48:03Z",
+      "side": 1,
+      "message": "Ah, these would be for things in the VNDK. that makes sense",
+      "parentUuid": "b8709d73_c5f30df6",
+      "range": {
+        "startLine": 430,
+        "startChar": 4,
+        "endLine": 430,
+        "endChar": 51
+      },
+      "revId": "d669c79a51cda6bd004c3d1534000c6303cbdfef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
