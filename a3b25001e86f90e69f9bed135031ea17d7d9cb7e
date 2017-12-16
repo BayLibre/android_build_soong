@@ -22,6 +22,30 @@
       "revId": "a3b25001e86f90e69f9bed135031ea17d7d9cb7e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bb0d943_e60b836a",
+        "filename": "android/proto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-16T00:11:59Z",
+      "side": 1,
+      "message": "ProtoSubDir is used for C/C++ -I so that modules can use #includes relative to the Android.bp file instead of the top of the tree.",
+      "parentUuid": "104355a9_2b3886b4",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 55
+      },
+      "revId": "a3b25001e86f90e69f9bed135031ea17d7d9cb7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
