@@ -22,6 +22,30 @@
       "revId": "779805bce7d87212b171b11d394b5a973f0e33ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2f9a051_b9f807db",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-12-18T03:12:14Z",
+      "side": 1,
+      "message": "Good catch. Thanks.",
+      "parentUuid": "af56f8c5_fad4a7f7",
+      "range": {
+        "startLine": 155,
+        "startChar": 38,
+        "endLine": 155,
+        "endChar": 50
+      },
+      "revId": "779805bce7d87212b171b11d394b5a973f0e33ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
