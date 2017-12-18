@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "055b9d87_9e4d568f",
+        "filename": "cmd/pom2mk/pom2mk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2017-12-18T16:25:16Z",
+      "side": 1,
+      "message": "These are just the direct dependencies listed in the .pom, right? (If so, do we want to name it something more like \"-deps\"?)",
+      "range": {
+        "startLine": 273,
+        "startChar": 2,
+        "endLine": 273,
+        "endChar": 13
+      },
+      "revId": "e7900892376004e85f24c80773a856ed78feb27d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
