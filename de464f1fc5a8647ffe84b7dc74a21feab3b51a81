@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ccafaf7_a600321e",
+        "filename": "android/mutator.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-18T22:57:50Z",
+      "side": 1,
+      "message": "why preDeps?  I\u0027d expect something like this to want to run last.",
+      "revId": "de464f1fc5a8647ffe84b7dc74a21feab3b51a81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1ad7d8e_9a3b0efe",
+        "filename": "android/neverallow.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-18T22:57:50Z",
+      "side": 1,
+      "message": "This seems very path-centric, which is only going to apply to a very few checks.  Will this expand to to other cases like \"has dependency x\" or \"is a dependency of y\"?",
+      "revId": "de464f1fc5a8647ffe84b7dc74a21feab3b51a81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b20574f_a36b8013",
+        "filename": "android/neverallow.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-18T22:57:50Z",
+      "side": 1,
+      "message": "interpreted",
+      "range": {
+        "startLine": 38,
+        "startChar": 14,
+        "endLine": 38,
+        "endChar": 26
+      },
+      "revId": "de464f1fc5a8647ffe84b7dc74a21feab3b51a81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8de0c1d_4375cc37",
+        "filename": "android/neverallow.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-18T22:57:50Z",
+      "side": 1,
+      "message": "This is an overly-generic name to be in the large android package.  It would be fine if this was in its own package.",
+      "revId": "de464f1fc5a8647ffe84b7dc74a21feab3b51a81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edcd7d45_40078022",
+        "filename": "android/neverallow.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-18T22:57:50Z",
+      "side": 1,
+      "message": "filepath.Clean",
+      "range": {
+        "startLine": 164,
+        "startChar": 11,
+        "endLine": 164,
+        "endChar": 21
+      },
+      "revId": "de464f1fc5a8647ffe84b7dc74a21feab3b51a81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
