@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33972159_14ee0055",
+        "filename": "java/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-18T01:46:19Z",
+      "side": 1,
+      "message": "Move this to a ctx.Config().UseD8Desugar() so the logic only has to be flipped in one place, and export it to make.",
+      "range": {
+        "startLine": 439,
+        "startChar": 18,
+        "endLine": 439,
+        "endChar": 46
+      },
+      "revId": "5c6b625505a561c76f4327ac860d274c75470c57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
