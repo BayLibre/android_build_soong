@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26c36472_8e7e4621",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-19T23:31:01Z",
+      "side": 1,
+      "message": "par entrypoint file",
+      "range": {
+        "startLine": 66,
+        "startChar": 42,
+        "endLine": 66,
+        "endChar": 52
+      },
+      "revId": "f6f5e52aeb2fddb4fdf67aad06a5d24f7c36f722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7508204_ee7abc9d",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-19T23:31:01Z",
+      "side": 1,
+      "message": "Put these variables inside the if statement",
+      "revId": "f6f5e52aeb2fddb4fdf67aad06a5d24f7c36f722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d670072_1b5b85c8",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-19T23:31:01Z",
+      "side": 1,
+      "message": "pyPkg, you don\u0027t know if it exists or not yet.",
+      "range": {
+        "startLine": 283,
+        "startChar": 4,
+        "endLine": 283,
+        "endChar": 17
+      },
+      "revId": "f6f5e52aeb2fddb4fdf67aad06a5d24f7c36f722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "042a3656_1cc7a7d4",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-19T23:31:01Z",
+      "side": 1,
+      "message": "Why does it matter?  I wouldn\u0027t expect any absolute paths that would result in \"/\", does \".\" cause a problem somewhere?",
+      "revId": "f6f5e52aeb2fddb4fdf67aad06a5d24f7c36f722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab802b7b_7d0d53e3",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-19T23:31:01Z",
+      "side": 1,
+      "message": "This doesn\u0027t need to be exported",
+      "range": {
+        "startLine": 394,
+        "startChar": 5,
+        "endLine": 394,
+        "endChar": 24
+      },
+      "revId": "f6f5e52aeb2fddb4fdf67aad06a5d24f7c36f722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1fd3923_5779f3fe",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-19T23:31:01Z",
+      "side": 1,
+      "message": "wrap filepath.Dir, and return \"\" if it returns \"/\" or \".\"?",
+      "revId": "f6f5e52aeb2fddb4fdf67aad06a5d24f7c36f722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
