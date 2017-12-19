@@ -42,7 +42,9 @@ type AndroidMkData struct {
 	OutputFile OptionalPath
 	Disabled   bool
 	Include    string
-	Required   []string
+
+	Required     []string
+	RequiredLibs []string
 
 	Custom func(w io.Writer, name, prefix, moduleDir string, data AndroidMkData)
 
@@ -169,7 +171,7 @@ func translateAndroidMkModule(ctx SingletonContext, w io.Writer, mod blueprint.M
 		data.Include = "$(BUILD_PREBUILT)"
 	}
 
-	data.Required = amod.commonProperties.Required
+	data.Required = append(amod.commonProperties.Required, data.RequiredLibs...)
 
 	// Make does not understand LinuxBionic
 	if amod.Os() == LinuxBionic {

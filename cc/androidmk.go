@@ -82,6 +82,8 @@ func (c *Module) AndroidMk() android.AndroidMkData {
 		},
 	}
 
+	ret.RequiredLibs = c.Properties.AndroidMkRequiredLibs
+
 	for _, feature := range c.features {
 		c.subAndroidMk(&ret, feature)
 	}
