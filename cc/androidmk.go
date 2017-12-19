@@ -82,6 +82,11 @@ func (c *Module) AndroidMk() android.AndroidMkData {
 		},
 	}
 
+	if c.useVndk() {
+		// Copy the `required` property with the `.vendor` suffix
+		ret.Required = c.Properties.AndroidMkRequired
+	}
+
 	for _, feature := range c.features {
 		c.subAndroidMk(&ret, feature)
 	}

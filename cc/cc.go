@@ -21,6 +21,7 @@ package cc
 import (
 	"strconv"
 	"strings"
+	"sync"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
@@ -35,6 +36,7 @@ func init() {
 
 	android.PreDepsMutators(func(ctx android.RegisterMutatorsContext) {
 		ctx.BottomUp("image", vendorMutator).Parallel()
+		ctx.BottomUp("image_required", vendorRequiredMutator).Parallel()
 		ctx.BottomUp("link", linkageMutator).Parallel()
 		ctx.BottomUp("vndk", vndkMutator).Parallel()
 		ctx.BottomUp("ndk_api", ndkApiMutator).Parallel()
@@ -161,6 +163,7 @@ type BaseProperties struct {
 	Sdk_version *string
 
 	AndroidMkSharedLibs []string `blueprint:"mutated"`
+	AndroidMkRequired   []string `blueprint:"mutated"`
 	HideFromMake        bool     `blueprint:"mutated"`
 	PreventInstall      bool     `blueprint:"mutated"`
 
@@ -597,7 +600,6 @@ func orderStaticModuleDeps(module *Module, staticDeps []*Module, sharedDeps []*M
 }
 
 func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
-
 	ctx := &moduleContext{
 		ModuleContext: actx,
 		moduleContextImpl: moduleContextImpl{
@@ -1391,6 +1393,25 @@ func squashVendorSrcs(m *Module) {
 	}
 }
 
+var (
+	vendorVariantModuleNames map[string]bool
+	vendorVariantLock        sync.Mutex
+)
+
+func addVendorVariantModuleName(name string) {
+	vendorVariantLock.Lock()
+	defer vendorVariantLock.Unlock()
+
+	if vendorVariantModuleNames == nil {
+		vendorVariantModuleNames = make(map[string]bool)
+	}
+	vendorVariantModuleNames[name] = true
+}
+
+func isVendorVariantModuleName(name string) bool {
+	return vendorVariantModuleNames[name]
+}
+
 func vendorMutator(mctx android.BottomUpMutatorContext) {
 	if mctx.Os() != android.Android {
 		return
@@ -1402,6 +1423,7 @@ func vendorMutator(mctx android.BottomUpMutatorContext) {
 				mctx.CreateVariations(coreMode)
 			} else if Bool(props.Vendor_available) {
 				mctx.CreateVariations(coreMode, vendorMode)
+				addVendorVariantModuleName(genrule.Name())
 			} else if mctx.InstallOnVendorPartition() {
 				mctx.CreateVariations(vendorMode)
 			} else {
@@ -1460,6 +1482,7 @@ func vendorMutator(mctx android.BottomUpMutatorContext) {
 		vendor := mod[1].(*Module)
 		vendor.Properties.UseVndk = true
 		squashVendorSrcs(vendor)
+		addVendorVariantModuleName(m.Name())
 	} else if mctx.InstallOnVendorPartition() && String(m.Properties.Sdk_version) == "" {
 		// This will be available in /vendor only
 		mod := mctx.CreateVariations(vendorMode)
@@ -1472,6 +1495,28 @@ func vendorMutator(mctx android.BottomUpMutatorContext) {
 		// will be restricted using the existing link type checks.
 		mctx.CreateVariations(coreMode)
 	}
+}
+
+func vendorRequiredMutator(mctx android.BottomUpMutatorContext) {
+	m, ok := mctx.Module().(*Module)
+	if !ok {
+		return
+	}
+
+	if !m.Properties.UseVndk {
+		return
+	}
+
+	var required []string
+	for _, name := range m.RequiredModuleNames() {
+		if isVendorVariantModuleName(name) {
+			required = append(required, name+vendorSuffix)
+		} else {
+			required = append(required, name)
+		}
+	}
+
+	m.Properties.AndroidMkRequired = required
 }
 
 func getCurrentNdkPrebuiltVersion(ctx DepsContext) string {
