@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a441a4a0_56c47363",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-19T23:36:51Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem right, the calls in library.go will be moving all the order-only deps to implicit deps.  Can you rename compiler.deps to compiler.genDeps (which is what most of the current callers want), and then put pathDeps in a new compiler.deps for the calls to compileObjs?",
+      "revId": "17f9dfe9ee1e57735d27bae735a85d612d1f9a2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
