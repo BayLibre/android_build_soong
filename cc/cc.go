@@ -68,6 +68,7 @@ type Deps struct {
 	SharedLibs, LateSharedLibs                  []string
 	StaticLibs, LateStaticLibs, WholeStaticLibs []string
 	HeaderLibs                                  []string
+	RuntimeLibs                                 []string
 
 	ReexportSharedLibHeaders, ReexportStaticLibHeaders, ReexportHeaderLibHeaders []string
 
@@ -164,9 +165,10 @@ type BaseProperties struct {
 	// Minimum sdk version supported when compiling against the ndk
 	Sdk_version *string
 
-	AndroidMkSharedLibs []string `blueprint:"mutated"`
-	HideFromMake        bool     `blueprint:"mutated"`
-	PreventInstall      bool     `blueprint:"mutated"`
+	AndroidMkSharedLibs  []string `blueprint:"mutated"`
+	AndroidMkRuntimeLibs []string `blueprint:"mutated"`
+	HideFromMake         bool     `blueprint:"mutated"`
+	PreventInstall       bool     `blueprint:"mutated"`
 
 	UseVndk bool `blueprint:"mutated"`
 
@@ -297,6 +299,7 @@ var (
 	ndkStubDepTag         = dependencyTag{name: "ndk stub", library: true}
 	ndkLateStubDepTag     = dependencyTag{name: "ndk late stub", library: true}
 	vndkExtDepTag         = dependencyTag{name: "vndk extends", library: true}
+	runtimeDepTag         = dependencyTag{name: "runtime lib", library: true}
 )
 
 // Module contains the properties and members used by all C/C++ module types, and implements
@@ -658,7 +661,6 @@ func orderStaticModuleDeps(module *Module, staticDeps []*Module, sharedDeps []*M
 }
 
 func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
-
 	ctx := &moduleContext{
 		ModuleContext: actx,
 		moduleContextImpl: moduleContextImpl{
@@ -837,6 +839,7 @@ func (c *Module) deps(ctx DepsContext) Deps {
 	deps.SharedLibs = android.LastUniqueStrings(deps.SharedLibs)
 	deps.LateSharedLibs = android.LastUniqueStrings(deps.LateSharedLibs)
 	deps.HeaderLibs = android.LastUniqueStrings(deps.HeaderLibs)
+	deps.RuntimeLibs = android.LastUniqueStrings(deps.RuntimeLibs)
 
 	for _, lib := range deps.ReexportSharedLibHeaders {
 		if !inList(lib, deps.SharedLibs) {
@@ -977,6 +980,9 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 
 	actx.AddVariationDependencies([]blueprint.Variation{{"link", "shared"}}, lateSharedDepTag,
 		deps.LateSharedLibs...)
+
+	actx.AddWeakVariationDependencies([]blueprint.Variation{{"link", "shared"}}, runtimeDepTag,
+		deps.RuntimeLibs...)
 
 	actx.AddDependency(c, genSourceDepTag, deps.GeneratedSources...)
 
@@ -1134,7 +1140,7 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 	directStaticDeps := []*Module{}
 	directSharedDeps := []*Module{}
 
-	ctx.VisitDirectDeps(func(dep android.Module) {
+	visit := func(dep android.Module) {
 		depName := ctx.OtherModuleName(dep)
 		depTag := ctx.OtherModuleDependencyTag(dep)
 
@@ -1308,30 +1314,39 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			*depPtr = append(*depPtr, dep.Path())
 		}
 
-		// Export the shared libs to Make.
-		switch depTag {
-		case sharedDepTag, sharedExportDepTag, lateSharedDepTag:
+		makeLibName := func(depName string) string {
 			libName := strings.TrimSuffix(depName, llndkLibrarySuffix)
 			libName = strings.TrimSuffix(libName, vendorPublicLibrarySuffix)
 			libName = strings.TrimPrefix(libName, "prebuilt_")
 			isLLndk := inList(libName, llndkLibraries)
 			isVendorPublicLib := inList(libName, vendorPublicLibraries)
-			var makeLibName string
 			bothVendorAndCoreVariantsExist := ccDep.hasVendorVariant() || isLLndk
 			if c.useVndk() && bothVendorAndCoreVariantsExist {
 				// The vendor module in Make will have been renamed to not conflict with the core
 				// module, so update the dependency name here accordingly.
-				makeLibName = libName + vendorSuffix
+				return libName + vendorSuffix
 			} else if (ctx.Platform() || ctx.ProductSpecific()) && isVendorPublicLib {
-				makeLibName = libName + vendorPublicLibrarySuffix
+				return libName + vendorPublicLibrarySuffix
 			} else {
-				makeLibName = libName
+				return libName
 			}
+		}
+
+		// Export the shared libs to Make.
+		switch depTag {
+		case sharedDepTag, sharedExportDepTag, lateSharedDepTag:
 			// Note: the order of libs in this list is not important because
 			// they merely serve as Make dependencies and do not affect this lib itself.
-			c.Properties.AndroidMkSharedLibs = append(c.Properties.AndroidMkSharedLibs, makeLibName)
+			c.Properties.AndroidMkSharedLibs = append(
+				c.Properties.AndroidMkSharedLibs, makeLibName(depName))
+		case runtimeDepTag:
+			c.Properties.AndroidMkRuntimeLibs = append(
+				c.Properties.AndroidMkRuntimeLibs, makeLibName(depName))
 		}
-	})
+	}
+
+	ctx.VisitDirectDeps(visit)
+	ctx.VisitWeakDeps(visit)
 
 	// use the ordered dependencies as this module's dependencies
 	depPaths.StaticLibs = append(depPaths.StaticLibs, orderStaticModuleDeps(c, directStaticDeps, directSharedDeps)...)

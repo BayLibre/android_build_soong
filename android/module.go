@@ -147,6 +147,8 @@ type ModuleContext interface {
 	VisitDepsDepthFirstIf(pred func(Module) bool, visit func(Module))
 	WalkDeps(visit func(Module, Module) bool)
 
+	VisitWeakDeps(visit func(Module))
+
 	Variable(pctx PackageContext, name, value string)
 	Rule(pctx PackageContext, name string, params blueprint.RuleParams, argNames ...string) blueprint.Rule
 	// Similar to blueprint.ModuleContext.Build, but takes Paths instead of []string,
@@ -849,6 +851,14 @@ func (a *androidModuleContext) validateAndroidModule(module blueprint.Module) Mo
 
 func (a *androidModuleContext) VisitDirectDepsBlueprint(visit func(blueprint.Module)) {
 	a.ModuleContext.VisitDirectDeps(visit)
+}
+
+func (a *androidModuleContext) VisitWeakDeps(visit func(Module)) {
+	a.ModuleContext.VisitWeakDeps(func(module blueprint.Module) {
+		if aModule := a.validateAndroidModule(module); aModule != nil {
+			visit(aModule)
+		}
+	})
 }
 
 func (a *androidModuleContext) VisitDirectDeps(visit func(Module)) {
