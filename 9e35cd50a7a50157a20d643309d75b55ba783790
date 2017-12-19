@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d686a9bd_f3dea149",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-19T23:22:10Z",
+      "side": 1,
+      "message": "This is too generic.  ModulePartition?",
+      "range": {
+        "startLine": 287,
+        "startChar": 5,
+        "endLine": 287,
+        "endChar": 15
+      },
+      "revId": "9e35cd50a7a50157a20d643309d75b55ba783790",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d031986_6a766d49",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-19T23:22:10Z",
+      "side": 1,
+      "message": "Why not go directly to System/Vendor/Odm/Oem?",
+      "range": {
+        "startLine": 290,
+        "startChar": 1,
+        "endLine": 290,
+        "endChar": 15
+      },
+      "revId": "9e35cd50a7a50157a20d643309d75b55ba783790",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e9debb1_cf5ae6f2",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-19T23:22:10Z",
+      "side": 1,
+      "message": "Why is soc_specific and device_specific not an error?",
+      "range": {
+        "startLine": 598,
+        "startChar": 5,
+        "endLine": 598,
+        "endChar": 34
+      },
+      "revId": "9e35cd50a7a50157a20d643309d75b55ba783790",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7fcdb86_61dc451b",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-19T23:22:10Z",
+      "side": 1,
+      "message": "This will be confusing if \"soc-specific\" was set by Vendor or Proprietary.  Use ctx.PropertyErrorf to print the warning, with something like:\nctx.PropertyErrorf(\"product_specific\", \"a module cannot be specific to device and product at the same time.\")\nctx.PropertyErrorf(\"device_specfic\", \"conflicting value set here\")\n\nYou will need to determine the correct values to pass for the first argument based on which properties were used.",
+      "revId": "9e35cd50a7a50157a20d643309d75b55ba783790",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
