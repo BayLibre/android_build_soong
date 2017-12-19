@@ -537,16 +537,15 @@ func (compiler *baseCompiler) compile(ctx ModuleContext, flags Flags, deps PathD
 
 	srcs, genDeps := genSources(ctx, srcs, buildFlags)
 
-	pathDeps = append(pathDeps, genDeps...)
 	pathDeps = append(pathDeps, flags.CFlagsDeps...)
 
-	compiler.deps = pathDeps
+	compiler.deps = append(pathDeps, genDeps...)
 
 	// Save src, buildFlags and context
 	compiler.srcs = srcs
 
 	// Compile files listed in c.Properties.Srcs into objects
-	objs := compileObjs(ctx, buildFlags, "", srcs, compiler.deps)
+	objs := compileObjs(ctx, buildFlags, "", srcs, pathDeps, genDeps)
 
 	if ctx.Failed() {
 		return Objects{}
@@ -557,7 +556,7 @@ func (compiler *baseCompiler) compile(ctx ModuleContext, flags Flags, deps PathD
 
 // Compile a list of source files into objects a specified subdirectory
 func compileObjs(ctx android.ModuleContext, flags builderFlags,
-	subdir string, srcFiles, deps android.Paths) Objects {
+	subdir string, srcFiles, pathDeps android.Paths, genDeps android.Paths) Objects {
 
-	return TransformSourceToObj(ctx, subdir, srcFiles, flags, deps)
+	return TransformSourceToObj(ctx, subdir, srcFiles, flags, pathDeps, genDeps)
 }
