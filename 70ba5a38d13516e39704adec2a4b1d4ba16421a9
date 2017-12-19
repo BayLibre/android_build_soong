@@ -22,6 +22,30 @@
       "revId": "70ba5a38d13516e39704adec2a4b1d4ba16421a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43127b99_32866dba",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-19T23:48:05Z",
+      "side": 1,
+      "message": "I think just genDeps should be fine, this is making sure the generated AIDL headers exist",
+      "parentUuid": "748c610f_8805377b",
+      "range": {
+        "startLine": 674,
+        "startChar": 45,
+        "endLine": 674,
+        "endChar": 52
+      },
+      "revId": "70ba5a38d13516e39704adec2a4b1d4ba16421a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
