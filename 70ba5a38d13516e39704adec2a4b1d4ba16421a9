@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "748c610f_8805377b",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2017-12-19T23:46:53Z",
+      "side": 1,
+      "message": "Do pathDeps need to be exported here, and below?",
+      "range": {
+        "startLine": 674,
+        "startChar": 45,
+        "endLine": 674,
+        "endChar": 52
+      },
+      "revId": "70ba5a38d13516e39704adec2a4b1d4ba16421a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

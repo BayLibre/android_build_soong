@@ -16,6 +16,24 @@
       "revId": "17f9dfe9ee1e57735d27bae735a85d612d1f9a2d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f039afb_2ed866b9",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2017-12-19T23:46:53Z",
+      "side": 1,
+      "message": "PTAL.",
+      "parentUuid": "a441a4a0_56c47363",
+      "revId": "17f9dfe9ee1e57735d27bae735a85d612d1f9a2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
