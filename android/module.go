@@ -460,6 +460,10 @@ func (a *ModuleBase) SkipInstall() {
 	a.commonProperties.SkipInstall = true
 }
 
+func (a *ModuleBase) RequiredModuleNames() []string {
+	return a.commonProperties.Required
+}
+
 func (a *ModuleBase) computeInstallDeps(
 	ctx blueprint.ModuleContext) Paths {
 
