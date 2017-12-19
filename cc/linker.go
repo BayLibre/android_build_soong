@@ -84,6 +84,11 @@ type BaseLinkerProperties struct {
 	// between static libraries, but it is generally better to order them correctly instead.
 	Group_static_libs *bool `android:"arch_variant"`
 
+	// list of modules that should be installed with this module.  This is similar to 'required'
+	// but '.vendor' suffix will be appended to the module names if the shared libraries have
+	// vendor variants and this module uses VNDK.
+	Required_libs []string `android:"arch_variant"`
+
 	Target struct {
 		Vendor struct {
 			// list of shared libs that should not be used to build
@@ -130,6 +135,7 @@ func (linker *baseLinker) linkerDeps(ctx BaseModuleContext, deps Deps) Deps {
 	deps.HeaderLibs = append(deps.HeaderLibs, linker.Properties.Header_libs...)
 	deps.StaticLibs = append(deps.StaticLibs, linker.Properties.Static_libs...)
 	deps.SharedLibs = append(deps.SharedLibs, linker.Properties.Shared_libs...)
+	deps.RequiredLibs = append(deps.RequiredLibs, linker.Properties.Required_libs...)
 
 	deps.ReexportHeaderLibHeaders = append(deps.ReexportHeaderLibHeaders, linker.Properties.Export_header_lib_headers...)
 	deps.ReexportStaticLibHeaders = append(deps.ReexportStaticLibHeaders, linker.Properties.Export_static_lib_headers...)

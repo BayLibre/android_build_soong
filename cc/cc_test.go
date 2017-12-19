@@ -613,6 +613,79 @@ func TestLlndkHeaders(t *testing.T) {
 	}
 }
 
+func TestRequiredLibs(t *testing.T) {
+	ctx := testCc(t, `
+	cc_library {
+		name: "libvendor_available1",
+		vendor_available: true,
+		no_libgcc : true,
+		nocrt : true,
+		system_shared_libs : [],
+	}
+	cc_library {
+		name: "libvendor_available2",
+		vendor_available: true,
+		required_libs: ["libvendor_available1"],
+		no_libgcc : true,
+		nocrt : true,
+		system_shared_libs : [],
+	}
+	cc_library {
+		name: "libcore",
+		required_libs: ["libvendor_available1"],
+		no_libgcc : true,
+		nocrt : true,
+		system_shared_libs : [],
+	}
+	cc_library {
+		name: "libvendor1",
+		vendor: true,
+		no_libgcc : true,
+		nocrt : true,
+		system_shared_libs : [],
+	}
+	cc_library {
+		name: "libvendor2",
+		vendor: true,
+		required_libs: ["libvendor_available1", "libvendor1"],
+		no_libgcc : true,
+		nocrt : true,
+		system_shared_libs : [],
+	}
+	`)
+
+	checkRequiredLibs := func(expected []string, module *Module) {
+		actual := module.Properties.AndroidMkRequiredLibs
+		if !reflect.DeepEqual(actual, expected) {
+			t.Errorf("incorrect required_libs for shared libs"+
+				"\nactual:   %v"+
+				"\nexpected: %v",
+				actual,
+				expected,
+			)
+		}
+	}
+
+	// required_libs for core variants use the module names without suffixes.
+	variant := "android_arm64_armv8-a_core_shared"
+
+	module := ctx.ModuleForTests("libvendor_available2", variant).Module().(*Module)
+	checkRequiredLibs([]string{"libvendor_available1"}, module)
+
+	module = ctx.ModuleForTests("libcore", variant).Module().(*Module)
+	checkRequiredLibs([]string{"libvendor_available1"}, module)
+
+	// required_libs for vendor variants have '.vendor' suffixes if the modules have both core
+	// and vendor variants.
+	variant = "android_arm64_armv8-a_vendor_shared"
+
+	module = ctx.ModuleForTests("libvendor_available2", variant).Module().(*Module)
+	checkRequiredLibs([]string{"libvendor_available1.vendor"}, module)
+
+	module = ctx.ModuleForTests("libvendor2", variant).Module().(*Module)
+	checkRequiredLibs([]string{"libvendor_available1.vendor", "libvendor1"}, module)
+}
+
 var compilerFlagsTestCases = []struct {
 	in  string
 	out bool
