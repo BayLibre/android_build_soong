@@ -384,11 +384,11 @@ func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 	if library.static() {
 		srcs := android.PathsForModuleSrc(ctx, library.Properties.Static.Srcs)
 		objs = objs.Append(compileObjs(ctx, buildFlags, android.DeviceStaticLibrary,
-			srcs, library.baseCompiler.deps))
+			srcs, library.baseCompiler.deps, nil))
 	} else if library.shared() {
 		srcs := android.PathsForModuleSrc(ctx, library.Properties.Shared.Srcs)
 		objs = objs.Append(compileObjs(ctx, buildFlags, android.DeviceSharedLibrary,
-			srcs, library.baseCompiler.deps))
+			srcs, library.baseCompiler.deps, nil))
 	}
 
 	return objs
