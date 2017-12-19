@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7f76eadc_82d2bdcb",
+        "filename": "android/mutator.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-12-19T21:23:31Z",
+      "side": 1,
+      "message": "This is what Dan suggested. Dan?",
+      "parentUuid": "8ccafaf7_a600321e",
+      "revId": "de464f1fc5a8647ffe84b7dc74a21feab3b51a81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e1ad7d8e_9a3b0efe",
         "filename": "android/neverallow.go",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2017-12-18T22:57:50Z",
       "side": 1,
       "message": "This seems very path-centric, which is only going to apply to a very few checks.  Will this expand to to other cases like \"has dependency x\" or \"is a dependency of y\"?",
+      "revId": "de464f1fc5a8647ffe84b7dc74a21feab3b51a81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2eefdd5_ee074392",
+        "filename": "android/neverallow.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-12-19T21:23:31Z",
+      "side": 1,
+      "message": "You can already do that by saying \"with shared_libs \u0027libhidlbase\u0027\" for instance.",
+      "parentUuid": "e1ad7d8e_9a3b0efe",
       "revId": "de464f1fc5a8647ffe84b7dc74a21feab3b51a81",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "d0d19a1f_516d6347",
+        "filename": "android/neverallow.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-12-19T21:23:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4b20574f_a36b8013",
+      "range": {
+        "startLine": 38,
+        "startChar": 14,
+        "endLine": 38,
+        "endChar": 26
+      },
+      "revId": "de464f1fc5a8647ffe84b7dc74a21feab3b51a81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8de0c1d_4375cc37",
         "filename": "android/neverallow.go",
         "patchSetId": 4
@@ -70,6 +130,24 @@
       "writtenOn": "2017-12-18T22:57:50Z",
       "side": 1,
       "message": "This is an overly-generic name to be in the large android package.  It would be fine if this was in its own package.",
+      "revId": "de464f1fc5a8647ffe84b7dc74a21feab3b51a81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00af5f56_95be28c1",
+        "filename": "android/neverallow.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-12-19T21:23:31Z",
+      "side": 1,
+      "message": "Good catch. Not sure why it was named this in the first place. Changed it to neverallowMutator",
+      "parentUuid": "b8de0c1d_4375cc37",
       "revId": "de464f1fc5a8647ffe84b7dc74a21feab3b51a81",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -96,6 +174,30 @@
       "revId": "de464f1fc5a8647ffe84b7dc74a21feab3b51a81",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b87e7b86_55849aef",
+        "filename": "android/neverallow.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-12-19T21:23:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edcd7d45_40078022",
+      "range": {
+        "startLine": 164,
+        "startChar": 11,
+        "endLine": 164,
+        "endChar": 21
+      },
+      "revId": "de464f1fc5a8647ffe84b7dc74a21feab3b51a81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
