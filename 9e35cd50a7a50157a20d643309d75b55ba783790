@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e86a425e_9e3611ec",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-12-20T03:05:21Z",
+      "side": 1,
+      "message": "Please see my comment below. Any suggestion other than Module\u0027Partition\u0027?\n\nThis doesn\u0027t necessarily map to different partitions as /odm can be a symlink to /vendor/odm and /oem is a symlink to /system/oem, etc.",
+      "parentUuid": "d686a9bd_f3dea149",
+      "range": {
+        "startLine": 287,
+        "startChar": 5,
+        "endLine": 287,
+        "endChar": 15
+      },
+      "revId": "9e35cd50a7a50157a20d643309d75b55ba783790",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2d031986_6a766d49",
         "filename": "android/module.go",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2017-12-19T23:22:10Z",
       "side": 1,
       "message": "Why not go directly to System/Vendor/Odm/Oem?",
+      "range": {
+        "startLine": 290,
+        "startChar": 1,
+        "endLine": 290,
+        "endChar": 15
+      },
+      "revId": "9e35cd50a7a50157a20d643309d75b55ba783790",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "054da8ee_89d9342c",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-12-20T03:05:21Z",
+      "side": 1,
+      "message": "Because the existing terms are very confusing and sometimes misleading, so we might be able to rename the partitions in (far) future.\n\nFor example, the \u0027vendor\u0027 in /vendor partition in fact means \u0027SoC vendors\u0027 like Qualcomm, Mediatek, etc. The distinction in between oem and odm are not clear too. Samsung for example is an OEM, but it does not mean that they can\u0027t add things into /odm partition as /odm partition is for device specific peripherals off the SoC (e.g. libs for off-chip fingerprint sensor, etc.)",
+      "parentUuid": "2d031986_6a766d49",
       "range": {
         "startLine": 290,
         "startChar": 1,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "aee6873c_4697ea8c",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 598,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-12-20T03:05:21Z",
+      "side": 1,
+      "message": "It is now an error.",
+      "parentUuid": "7e9debb1_cf5ae6f2",
+      "range": {
+        "startLine": 598,
+        "startChar": 5,
+        "endLine": 598,
+        "endChar": 34
+      },
+      "revId": "9e35cd50a7a50157a20d643309d75b55ba783790",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e7fcdb86_61dc451b",
         "filename": "android/module.go",
         "patchSetId": 4
@@ -85,6 +157,24 @@
       "revId": "9e35cd50a7a50157a20d643309d75b55ba783790",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e641d35_98113a47",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-12-20T03:05:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7fcdb86_61dc451b",
+      "revId": "9e35cd50a7a50157a20d643309d75b55ba783790",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
