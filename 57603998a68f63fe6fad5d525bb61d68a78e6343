@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a039cab_a2dec8a3",
+        "filename": "java/config/makevars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-20T23:05:18Z",
+      "side": 0,
+      "message": "either remove all 3 ANDROID_*_HOME, or just leave it here?  The ctx.Strict() ensures that Soong agrees with Make (which is using the environment variable from soong_ui).",
+      "revId": "57603998a68f63fe6fad5d525bb61d68a78e6343",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
