@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4ccdd7b_10f7f0c2",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1401,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-20T22:50:05Z",
+      "side": 1,
+      "message": "We now have namespace support, so names are no longer guaranteed to be unique.",
+      "revId": "a29145953ca6611209f4c842efefdd12cc1cd7bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
