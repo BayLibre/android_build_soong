@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d69df5b_1d6c0d82",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-20T22:16:06Z",
+      "side": 1,
+      "message": "Make this moduleKind so it is not exported, then the name matters less.",
+      "revId": "c012f9f51aa321aa4f2f51bc1090302aa3d6ef54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2922550_8ef0a325",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-20T22:16:06Z",
+      "side": 1,
+      "message": "Make these all unexported.",
+      "range": {
+        "startLine": 290,
+        "startChar": 1,
+        "endLine": 293,
+        "endChar": 22
+      },
+      "revId": "c012f9f51aa321aa4f2f51bc1090302aa3d6ef54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
