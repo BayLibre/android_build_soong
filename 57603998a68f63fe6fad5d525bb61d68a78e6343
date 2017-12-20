@@ -16,6 +16,24 @@
       "revId": "57603998a68f63fe6fad5d525bb61d68a78e6343",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de681b80_464ce17c",
+        "filename": "java/config/makevars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2017-12-20T23:15:44Z",
+      "side": 0,
+      "message": "As discussed, left it here, and also added ANDROID_JAVA9_HOME to config.go for consistency with makevars.go.",
+      "parentUuid": "3a039cab_a2dec8a3",
+      "revId": "57603998a68f63fe6fad5d525bb61d68a78e6343",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
