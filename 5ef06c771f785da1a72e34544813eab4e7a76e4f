@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1cdc4556_4edf095b",
+        "filename": "java/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2017-12-21T22:21:27Z",
+      "side": 1,
+      "message": "For reference: It took me a while to dig far enough to see that this ends up being implemented by merge_zips.go which silently skips all of the stripFiles. This is different from unzip -x, which prints a warning if none of the files in the archive matches the pattern.\n\nnit: merge_zip.go seems to expect patterns (regexps) rather than literal strings. So the \".\" probably needs to be escaped?\n\nFor a future CL: Should merge_zips perhaps have different parameters stripFile and stripFilePattern so we don\u0027t have to use pattern matching everywhere? (set containment check is also faster than looping over a list).",
+      "range": {
+        "startLine": 388,
+        "startChar": 0,
+        "endLine": 388,
+        "endChar": 58
+      },
+      "revId": "5ef06c771f785da1a72e34544813eab4e7a76e4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d54e795_c576e2ed",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 785,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2017-12-21T22:21:27Z",
+      "side": 1,
+      "message": "nit: \"right now\" is not meaningful since this will be read at a different time than when you wrote it. \n\nSuggestion: \"As of Dec 2017\" or just say \"As long as we don\u0027t support modules in the Android platform, these can only come from .jar dependencies.\"",
+      "range": {
+        "startLine": 785,
+        "startChar": 18,
+        "endLine": 785,
+        "endChar": 27
+      },
+      "revId": "5ef06c771f785da1a72e34544813eab4e7a76e4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
