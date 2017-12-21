@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "83bfd1c8_81464dad",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-12-21T03:17:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d69df5b_1d6c0d82",
+      "revId": "c012f9f51aa321aa4f2f51bc1090302aa3d6ef54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2922550_8ef0a325",
         "filename": "android/module.go",
         "patchSetId": 5
@@ -39,6 +57,30 @@
       "revId": "c012f9f51aa321aa4f2f51bc1090302aa3d6ef54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b07bdcf3_43cbe962",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-12-21T03:17:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2922550_8ef0a325",
+      "range": {
+        "startLine": 290,
+        "startChar": 1,
+        "endLine": 293,
+        "endChar": 22
+      },
+      "revId": "c012f9f51aa321aa4f2f51bc1090302aa3d6ef54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
