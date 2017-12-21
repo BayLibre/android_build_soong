@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbc21c1f_74262afe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-12-21T01:48:00Z",
+      "side": 1,
+      "message": "Is this because the D flag isn\u0027t implemented, or because llvm-ar always produces deterministic ar files?\n\nSimilar question with P, but I don\u0027t know how much we rely on that flag.",
+      "range": {
+        "startLine": 7,
+        "startChar": 24,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "cdb5b5ef17c003c61fd5cff508fbe5bd8d713195",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
