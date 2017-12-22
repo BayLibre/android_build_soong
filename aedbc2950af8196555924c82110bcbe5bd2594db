@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5fb65377_be9c7ff6",
+        "filename": "finder/fs/readdir.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-12-22T04:23:48Z",
+      "side": 1,
+      "message": "since we\u0027re deferring f.Close() above, I doubt this is necessary (though it shouldn\u0027t particularly hurt)",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 23
+      },
+      "revId": "aedbc2950af8196555924c82110bcbe5bd2594db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
