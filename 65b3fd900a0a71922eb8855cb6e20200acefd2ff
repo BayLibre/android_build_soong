@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3b81a9b_a538e9ec",
+        "filename": "android/neverallow.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-12-22T22:39:45Z",
+      "side": 1,
+      "message": "note this is being used instead of a regex....",
+      "range": {
+        "startLine": 230,
+        "startChar": 10,
+        "endLine": 230,
+        "endChar": 27
+      },
+      "revId": "65b3fd900a0a71922eb8855cb6e20200acefd2ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
