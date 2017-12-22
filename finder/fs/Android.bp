@@ -21,6 +21,7 @@ bootstrap_go_package {
     pkgPath: "android/soong/finder/fs",
     srcs: [
         "fs.go",
+        "readdir.go",
     ],
     darwin: {
         srcs: [
