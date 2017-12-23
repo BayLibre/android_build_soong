@@ -22,9 +22,11 @@ package android
 // and then external modules could depend on the proto module but use their own settings to
 // generate the source.
 
-func ProtoFlags(ctx ModuleContext, p *ProtoProperties) []string {
-	// -I . must come first, it affects where protoc places the output files.
-	protoFlags := []string{"-I ."}
+func ProtoFlags(ctx ModuleContext, p *ProtoProperties, prependTopDir bool) []string {
+	var protoFlags []string
+	if prependTopDir {
+		protoFlags = append(protoFlags, "-I .")
+	}
 
 	if len(p.Proto.Local_include_dirs) > 0 {
 		localProtoIncludeDirs := PathsForModuleSrc(ctx, p.Proto.Local_include_dirs)
