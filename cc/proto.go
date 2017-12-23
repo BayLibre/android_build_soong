@@ -97,7 +97,8 @@ func protoFlags(ctx ModuleContext, flags Flags, p *android.ProtoProperties) Flag
 		"-I"+android.ProtoDir(ctx).String(),
 	)
 
-	flags.protoFlags = android.ProtoFlags(ctx, p)
+	// top dir "-I ." must come first, it affects where protoc places the output files.
+	flags.protoFlags = android.ProtoFlags(ctx, p, true)
 
 	if proptools.String(p.Proto.Type) == "lite" {
 		flags.protoOutParams = []string{"lite"}
