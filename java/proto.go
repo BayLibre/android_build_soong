@@ -102,7 +102,8 @@ func protoFlags(ctx android.ModuleContext, j *CompilerProperties, p *android.Pro
 		flags.protoOutParams += strings.Join(j.Proto.Output_params, ",")
 	}
 
-	flags.protoFlags = android.ProtoFlags(ctx, p)
+	// top dir "-I ." must come first, it affects where protoc places the output files.
+	flags.protoFlags = android.ProtoFlags(ctx, p, true)
 
 	return flags
 }
