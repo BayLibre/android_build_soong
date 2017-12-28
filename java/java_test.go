@@ -150,6 +150,9 @@ func testContext(config android.Config, bp string,
 		"build/target/product/security/testkey": nil,
 
 		"build/soong/scripts/jar-wrapper.sh": nil,
+
+		"build/make/core/proguard.flags":             nil,
+		"build/make/core/proguard_basic_keeps.flags": nil,
 	}
 
 	for k, v := range fs {
