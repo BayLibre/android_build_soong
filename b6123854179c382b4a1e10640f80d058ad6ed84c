@@ -22,6 +22,30 @@
       "revId": "b6123854179c382b4a1e10640f80d058ad6ed84c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f33fd4d2_af4aaf31",
+        "filename": "cc/vndk_prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1000866
+      },
+      "writtenOn": "2017-12-29T16:11:31Z",
+      "side": 1,
+      "message": "Yeah, the term \"variant\" is a bit confusing here.  Variant in what context?",
+      "parentUuid": "35f74d1a_1a3f93c5",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 14
+      },
+      "revId": "b6123854179c382b4a1e10640f80d058ad6ed84c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
