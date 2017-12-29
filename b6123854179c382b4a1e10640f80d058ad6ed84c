@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "d56b037c_afc7b502",
+        "filename": "cc/vndk_prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-29T19:24:49Z",
+      "side": 1,
+      "message": "Use *string for properties, it makes defaults work better in case you decide to use them later.  Use String(prop) to convert it from *string to string.",
+      "revId": "b6123854179c382b4a1e10640f80d058ad6ed84c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "35f74d1a_1a3f93c5",
         "filename": "cc/vndk_prebuilt.go",
         "patchSetId": 1
@@ -37,6 +54,30 @@
       "side": 1,
       "message": "Yeah, the term \"variant\" is a bit confusing here.  Variant in what context?",
       "parentUuid": "35f74d1a_1a3f93c5",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 14
+      },
+      "revId": "b6123854179c382b4a1e10640f80d058ad6ed84c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1f1c32a_d7a06685",
+        "filename": "cc/vndk_prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-29T19:24:49Z",
+      "side": 1,
+      "message": "Variant has a specific meaning in soong, it is a specific variant of a module that is built multiple ways.  Arch is one of the variations of a module, others include host vs. host_cross (windows) vs. device, or static vs. shared for a cc_library, or vendor vs. core.\n\nI\u0027d just call this Arch.",
+      "parentUuid": "f33fd4d2_af4aaf31",
       "range": {
         "startLine": 54,
         "startChar": 1,
