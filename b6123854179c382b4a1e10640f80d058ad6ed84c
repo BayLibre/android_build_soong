@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35f74d1a_1a3f93c5",
+        "filename": "cc/vndk_prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-12-29T07:38:55Z",
+      "side": 1,
+      "message": "I am not sure if this is a good name. But since these properties are not mean to be used/edited by anyone, but only by the script, I think this may be okay... and can be easily renamed later.",
+      "range": {
+        "startLine": 54,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 14
+      },
+      "revId": "b6123854179c382b4a1e10640f80d058ad6ed84c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
