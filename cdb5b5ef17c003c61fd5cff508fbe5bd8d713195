@@ -22,6 +22,30 @@
       "revId": "cdb5b5ef17c003c61fd5cff508fbe5bd8d713195",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1e2057d_852278c4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2018-01-02T08:26:55Z",
+      "side": 1,
+      "message": "llvm-ar is deterministic by default, the \u0027D\u0027 flag is undocumented. (tools/llvm-ar/llvm-ar.cpp) Nevertheless, I will add the flag back to the argument list.\n\n\u0027P\u0027 flag is for compatibility with archives created with other archivers. Since we\u0027re switching to llvm-ar globally, this should not matter.",
+      "parentUuid": "bbc21c1f_74262afe",
+      "range": {
+        "startLine": 7,
+        "startChar": 24,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "cdb5b5ef17c003c61fd5cff508fbe5bd8d713195",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
