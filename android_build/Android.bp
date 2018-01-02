@@ -1,0 +1,17 @@
+cc_library_static {
+    name: "libandroid_build",
+    cpp_std: "gnu++17",
+    cflags: ["-Wall", "-Wextra", "-Werror"],
+    srcs: ["build_version.cpp"],
+    export_include_dirs: ["include"],
+
+    host_supported: true,
+    product_variables: {
+        debuggable: {
+            cflags: ["-DBUILD_TYPE_DEBUGGABLE"]
+        },
+        eng: {
+            cflags: ["-DBUILD_TYPE_ENG"],
+        },
+    }
+}

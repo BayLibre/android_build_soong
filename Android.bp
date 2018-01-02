@@ -1,5 +1,6 @@
 subdirs = [
     "androidmk",
+    "android_build",
     "bpfix",
     "cmd/*",
     "fs",
