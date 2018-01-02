@@ -46,6 +46,30 @@
       "revId": "cdb5b5ef17c003c61fd5cff508fbe5bd8d713195",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4f08a4f_537a9db0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2018-01-02T23:11:23Z",
+      "side": 1,
+      "message": "Turns out we do depend on \u0027P\u0027 flag but not in the intended way. One side-effect of \u0027P\u0027 flag is that \u0027ar foo.a some/path/to/obj.o\u0027 when foo.a already has a file named \u0027obj.o\u0027 will be an append operation, regardless whether the existing one is the same (ar has no way of telling the difference); we have usages where we append two different object files of the same name and without \u0027P\u0027 flag we do the replacement instead. One quick workaround is always append (\u0027q\u0027 flag) for llvm-ar, this may result in larger intermediate archive files (more duplication) but will not affect the final build result.",
+      "parentUuid": "e1e2057d_852278c4",
+      "range": {
+        "startLine": 7,
+        "startChar": 24,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "cdb5b5ef17c003c61fd5cff508fbe5bd8d713195",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
