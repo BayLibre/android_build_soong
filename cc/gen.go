@@ -132,49 +132,58 @@ func genSources(ctx android.ModuleContext, srcFiles android.Paths,
 
 	var deps android.Paths
 
+	var protoFiles android.Paths
 	var rsFiles android.Paths
 
-	for i, srcFile := range srcFiles {
+	outSrcFiles := make(android.Paths, 0, len(srcFiles))
+
+	for _, srcFile := range srcFiles {
 		switch srcFile.Ext() {
 		case ".y":
 			cFile := android.GenPathWithExt(ctx, "yacc", srcFile, "c")
-			srcFiles[i] = cFile
+			outSrcFiles = append(outSrcFiles, cFile)
 			deps = append(deps, genYacc(ctx, srcFile, cFile, buildFlags.yaccFlags))
 		case ".yy":
 			cppFile := android.GenPathWithExt(ctx, "yacc", srcFile, "cpp")
-			srcFiles[i] = cppFile
+			outSrcFiles = append(outSrcFiles, cppFile)
 			deps = append(deps, genYacc(ctx, srcFile, cppFile, buildFlags.yaccFlags))
 		case ".l":
 			cFile := android.GenPathWithExt(ctx, "lex", srcFile, "c")
-			srcFiles[i] = cFile
+			outSrcFiles = append(outSrcFiles, cFile)
 			genLex(ctx, srcFile, cFile)
 		case ".ll":
 			cppFile := android.GenPathWithExt(ctx, "lex", srcFile, "cpp")
-			srcFiles[i] = cppFile
+			outSrcFiles = append(outSrcFiles, cppFile)
 			genLex(ctx, srcFile, cppFile)
 		case ".proto":
-			ccFile, headerFile := genProto(ctx, srcFile, buildFlags.protoFlags,
-				buildFlags.protoOutParams)
-			srcFiles[i] = ccFile
-			deps = append(deps, headerFile)
+			protoFiles = append(protoFiles, srcFile)
 		case ".aidl":
 			cppFile := android.GenPathWithExt(ctx, "aidl", srcFile, "cpp")
-			srcFiles[i] = cppFile
+			outSrcFiles = append(outSrcFiles, cppFile)
 			deps = append(deps, genAidl(ctx, srcFile, cppFile, buildFlags.aidlFlags)...)
 		case ".rs", ".fs":
 			cppFile := rsGeneratedCppFile(ctx, srcFile)
-			rsFiles = append(rsFiles, srcFiles[i])
-			srcFiles[i] = cppFile
+			rsFiles = append(rsFiles, srcFile)
+			outSrcFiles = append(outSrcFiles, cppFile)
 		case ".mc":
 			rcFile, headerFile := genWinMsg(ctx, srcFile, buildFlags)
-			srcFiles[i] = rcFile
+			outSrcFiles = append(outSrcFiles, rcFile)
 			deps = append(deps, headerFile)
+		default:
+			outSrcFiles = append(outSrcFiles, srcFile)
 		}
+	}
+
+	if len(protoFiles) > 0 {
+		ccFiles, headerFiles := genProto(ctx, protoFiles, buildFlags.protoFlags,
+			buildFlags.protoOutParams)
+		outSrcFiles = append(outSrcFiles, ccFiles.Paths()...)
+		deps = append(deps, headerFiles.Paths()...)
 	}
 
 	if len(rsFiles) > 0 {
 		deps = append(deps, rsGenerateCpp(ctx, rsFiles, buildFlags.rsFlags)...)
 	}
 
-	return srcFiles, deps
+	return outSrcFiles, deps
 }
