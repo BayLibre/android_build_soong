@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56eb4396_0be3b143",
+        "filename": "android_build/build_version.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-01-03T00:12:15Z",
+      "side": 1,
+      "message": "I spent a while trying to figure out how to do this but never got to a satisfactory solution.  If you update a static library on incremental builds then everything downstream has to relink.  What you really want is to insert a version symbol at link time for each binary: generate_version_object -o version.o \u0026\u0026 clang -o adb adb.o version.o\n\nhttp://gareus.org/wiki/embedding_resources_in_executables and https://csl.name/post/embedding-binary-data/ have some of the ways of getting binary data into the linker.  ld -r -b binary works in linux, but obnoxiously names the symbol based on the full path to the raw file which makes it hard to use.  It also needs a bunch of flags to select the architecture, which can be hard to integrate into the command line in the build system.\n\nI\u0027ve sorta been planning some combination of ld -r -b binary and clang -sectcreate, with some platform dependent code to read it out, but it\u0027s pretty far down on my todo list so feel free to try it yourself.",
+      "revId": "81c69623edc1e31672c1f0fbf083d5f1a5b5863b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
