@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5f13214_9ac24b6a",
+        "filename": "android/proto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-01-03T21:21:34Z",
+      "side": 1,
+      "message": "This is likely a behavior that we should unify across the supported languages",
+      "revId": "f94eb824c1cbc715d92f12d715c88774a3dc5cb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
