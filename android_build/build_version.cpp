@@ -1,5 +1,7 @@
 #include <android-build.h>
 
+extern "C" char __android_build_version_incremental[128] = "PLACEHOLDER";
+
 namespace android::build {
 
 BuildType type() {
@@ -16,7 +18,7 @@ BuildType type() {
 
 namespace version {
   const char* incremental() {
-    return "filled in via objcopy or something?";
+    return __android_build_version_incremental;
   }
 }
 

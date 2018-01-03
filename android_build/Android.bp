@@ -15,3 +15,15 @@ cc_library_static {
         },
     }
 }
+
+cc_binary {
+    name: "symbol_inject",
+    cpp_std: "gnu++17",
+    cflags: ["-Wall", "-Wextra", "-Wno-error"],
+    srcs: ["symbol_inject.cpp"],
+    host_supported: true,
+    static_libs: [
+        "libbase",
+        "liblog"
+    ],
+}
