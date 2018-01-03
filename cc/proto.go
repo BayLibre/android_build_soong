@@ -28,24 +28,29 @@ func init() {
 var (
 	proto = pctx.AndroidStaticRule("protoc",
 		blueprint.RuleParams{
-			Command:     "$protocCmd --cpp_out=$protoOutParams:$outDir $protoFlags $in",
+			Command: "rm -rf $outDir && mkdir -p $outDir && " +
+				"$protocCmd --cpp_out=$protoOutParams:$outDir $protoFlags $in",
 			CommandDeps: []string{"$protocCmd"},
 		}, "protoFlags", "protoOutParams", "outDir")
 )
 
 // genProto creates a rule to convert a .proto file to generated .pb.cc and .pb.h files and returns
 // the paths to the generated files.
-func genProto(ctx android.ModuleContext, protoFile android.Path,
-	protoFlags string, protoOutParams string) (ccFile, headerFile android.WritablePath) {
+func genProto(ctx android.ModuleContext, protoFiles android.Paths,
+	protoFlags string, protoOutParams string) (ccFiles, headerFiles android.WritablePaths) {
 
-	ccFile = android.GenPathWithExt(ctx, "proto", protoFile, "pb.cc")
-	headerFile = android.GenPathWithExt(ctx, "proto", protoFile, "pb.h")
+	for _, protoFile := range protoFiles {
+		ccFiles = append(ccFiles, android.GenPathWithExt(ctx, "proto", protoFile, "pb.cc"))
+		headerFiles = append(headerFiles, android.GenPathWithExt(ctx, "proto", protoFile, "pb.h"))
+	}
+
+	outputFiles := append(ccFiles, headerFiles...)
 
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        proto,
-		Description: "protoc " + protoFile.Rel(),
-		Outputs:     android.WritablePaths{ccFile, headerFile},
-		Input:       protoFile,
+		Description: "protoc",
+		Outputs:     outputFiles,
+		Inputs:      protoFiles,
 		Args: map[string]string{
 			"outDir":         android.ProtoDir(ctx).String(),
 			"protoFlags":     protoFlags,
@@ -53,7 +58,7 @@ func genProto(ctx android.ModuleContext, protoFile android.Path,
 		},
 	})
 
-	return ccFile, headerFile
+	return ccFiles, headerFiles
 }
 
 func protoDeps(ctx BaseModuleContext, deps Deps, p *android.ProtoProperties, static bool) Deps {
