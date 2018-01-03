@@ -16,6 +16,24 @@
       "revId": "81c69623edc1e31672c1f0fbf083d5f1a5b5863b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0230852_d4e8117f",
+        "filename": "android_build/build_version.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-01-03T00:32:22Z",
+      "side": 1,
+      "message": "I was talking to Josh about this just now too -- if you make a few assumptions, you could even define this to a well-known value and use a tool to replace it with a real version inside an existing object file. Even sed may be able to do that...\n\nOr be slightly fancier, and actually have a tool that can read an existing elf object file enough to understand and replace the contents.",
+      "parentUuid": "56eb4396_0be3b143",
+      "revId": "81c69623edc1e31672c1f0fbf083d5f1a5b5863b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
