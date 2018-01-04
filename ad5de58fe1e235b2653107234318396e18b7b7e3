@@ -22,6 +22,30 @@
       "revId": "ad5de58fe1e235b2653107234318396e18b7b7e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "511e26f1_6e308af0",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-01-04T00:51:16Z",
+      "side": 1,
+      "message": "Yes, https://cs.corp.google.com/android/build/make/core/soong_config.mk?rcl\u003d57d291eccae80524fdbc9cedb0c424046688e43c\u0026l\u003d50",
+      "parentUuid": "b60e6046_38b05ee2",
+      "range": {
+        "startLine": 329,
+        "startChar": 3,
+        "endLine": 329,
+        "endChar": 30
+      },
+      "revId": "ad5de58fe1e235b2653107234318396e18b7b7e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
