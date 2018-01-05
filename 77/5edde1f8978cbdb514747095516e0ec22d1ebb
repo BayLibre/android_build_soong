@@ -1,0 +1,7 @@
+Code-Review+2: Colin Cross <ccross@android.com>
+Verified+1: Chih-hung Hsieh <chh@google.com>
+Submitted-by: Chih-hung Hsieh <chh@google.com>
+Submitted-at: Fri, 05 Jan 2018 21:54:50 +0000
+Reviewed-on: https://android-review.googlesource.com/567852
+Project: platform/build/soong
+Branch: refs/heads/master
