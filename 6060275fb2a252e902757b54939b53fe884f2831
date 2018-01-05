@@ -16,6 +16,24 @@
       "revId": "6060275fb2a252e902757b54939b53fe884f2831",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3761a1a1_c92875c7",
+        "filename": "cc/linker.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1014807
+      },
+      "writtenOn": "2018-01-05T03:12:23Z",
+      "side": 1,
+      "message": "OK.  Changed in PS#6.",
+      "parentUuid": "8ab03d7e_f2affe88",
+      "revId": "6060275fb2a252e902757b54939b53fe884f2831",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
