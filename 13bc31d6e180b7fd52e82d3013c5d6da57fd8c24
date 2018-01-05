@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da776809_88029d61",
+        "filename": "cc/builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-01-05T22:30:30Z",
+      "side": 1,
+      "message": "Would we be able to switch to llvm-ar for darwin too? We could probably skip all of this logic then.",
+      "revId": "13bc31d6e180b7fd52e82d3013c5d6da57fd8c24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
