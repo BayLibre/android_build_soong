@@ -134,6 +134,24 @@
     },
     {
       "key": {
+        "uuid": "389f1f02_8b00e6f2",
+        "filename": "cmd/symbol_inject/symbol_inject.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-01-06T01:19:38Z",
+      "side": 1,
+      "message": "Ah, the elf error is only returned if they all fail in the one way, I misinterpreted what this meant.",
+      "parentUuid": "6342b3fc_c4d2502e",
+      "revId": "e8c5c9f0f2a897afa8f0a1d0de48e729c9eb585f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53742e34_1acf64e8",
         "filename": "cmd/symbol_inject/symbol_inject.go",
         "patchSetId": 4
