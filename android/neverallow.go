@@ -45,8 +45,13 @@ func registerNeverallowMutator(ctx RegisterMutatorsContext) {
 	ctx.BottomUp("neverallow", neverallowMutator).Parallel()
 }
 
+var DeviceDependentDirs = []string{
+	"vendor",
+	"device",
+}
+
 var neverallows = []*rule{
-	neverallow().in("vendor", "device").with("vndk.enabled", "true").
+	neverallow().in(DeviceDependentDirs...).with("vndk.enabled", "true").
 		because("the VNDK can never contain a library that is device dependent."),
 	neverallow().with("vndk.enabled", "true").without("owner", "").
 		because("a VNDK module can never have an owner."),
