@@ -124,11 +124,16 @@ var (
 	vndkSpLibraries      []string
 	llndkLibraries       []string
 	vndkPrivateLibraries []string
+	vendorLibraries      []string
 	vndkLibrariesLock    sync.Mutex
 )
 
 // gather list of vndk-core, vndk-sp, and ll-ndk libs
 func vndkMutator(mctx android.BottomUpMutatorContext) {
+	if mctx.Os() != android.Android {
+		return
+	}
+
 	if m, ok := mctx.Module().(*Module); ok {
 		if lib, ok := m.linker.(*llndkStubDecorator); ok {
 			vndkLibrariesLock.Lock()
@@ -168,6 +173,14 @@ func vndkMutator(mctx android.BottomUpMutatorContext) {
 							vndkPrivateLibraries = append(vndkPrivateLibraries, name)
 							sort.Strings(vndkPrivateLibraries)
 						}
+					}
+				} else if Bool(m.VendorProperties.Vendor_available) {
+					// "vendor_available: true" but non-VNDK libs
+					vndkLibrariesLock.Lock()
+					defer vndkLibrariesLock.Unlock()
+					if !inList(name, vendorLibraries) {
+						vendorLibraries = append(vendorLibraries, name)
+						sort.Strings(vendorLibraries)
 					}
 				}
 			}
