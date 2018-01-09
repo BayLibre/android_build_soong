@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71b6318b_2e8aa495",
+        "filename": "ui/build/context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-01-09T19:02:42Z",
+      "side": 1,
+      "message": "Do we also need consider isTerminal(c.Stdout()) true or false when stripping out the ANSI codes?",
+      "revId": "0c51851f0846e1e082747bd28c802292d76c5d77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
