@@ -232,6 +232,14 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 		}
 	}
 
+	// Enable Integer Overflow for all components in the include paths
+	if !ctx.Host() && ctx.Config().IntegerOverflowEnabledForPath(ctx.ModuleDir()) && s.Integer_overflow == nil {
+		s.Integer_overflow = boolPtr(true)
+		if inList("integer_overflow", ctx.Config().SanitizeDeviceDiag()) {
+			s.Diag.Integer_overflow = boolPtr(true)
+		}
+	}
+
 	// CFI needs gold linker, and mips toolchain does not have one.
 	if !ctx.Config().EnableCFI() || ctx.Arch().ArchType == android.Mips || ctx.Arch().ArchType == android.Mips64 {
 		s.Cfi = nil
@@ -417,6 +425,7 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 			sanitizers = append(sanitizers, "unsigned-integer-overflow")
 			sanitizers = append(sanitizers, "signed-integer-overflow")
 			flags.CFlags = append(flags.CFlags, intOverflowCflags...)
+
 			if Bool(sanitize.Properties.Sanitize.Diag.Integer_overflow) {
 				diagSanitizers = append(diagSanitizers, "unsigned-integer-overflow")
 				diagSanitizers = append(diagSanitizers, "signed-integer-overflow")
@@ -435,6 +444,15 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 			_, flags.LdFlags = removeFromList("-Wl,--no-undefined", flags.LdFlags)
 		} else {
 			flags.CFlags = append(flags.CFlags, "-fsanitize-trap=all", "-ftrap-function=abort")
+		}
+
+		// Specific settings for userdebug and eng builds
+		if Bool(ctx.Config().ProductVariables.Debuggable) {
+			// TODO(ivanlozano): uncomment after switch to clang-4536805.
+			// Run integer overflow sanitizers with the minimal runtime diagnostics.
+			if strings.Contains(sanitizeArg, "integer") && !strings.Contains(strings.Join(diagSanitizers, ","), "integer") && !strings.Contains(sanitizeArg, "address") {
+				//flags.CFlags = append(flags.CFlags, "-fsanitize-minimal-runtime")
+			}
 		}
 	}
 
