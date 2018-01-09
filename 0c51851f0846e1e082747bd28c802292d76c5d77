@@ -16,6 +16,24 @@
       "revId": "0c51851f0846e1e082747bd28c802292d76c5d77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "769a3472_f7c29f14",
+        "filename": "ui/build/context.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-01-09T21:36:14Z",
+      "side": 1,
+      "message": "This is being used to make decisions about whether to strip ANSI codes when printing to stderr. We\u0027re still using the above function to make decisions about line replacement of stdout.\n\nI needed to do this because `lunch` ends up executing dumpvars with stdout redirected, but stderr is still connected. So if we want the proper color/no-color, we need to make the decision based on stderr only.",
+      "parentUuid": "71b6318b_2e8aa495",
+      "revId": "0c51851f0846e1e082747bd28c802292d76c5d77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
