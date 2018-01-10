@@ -27,7 +27,7 @@ type prebuiltDependencyTag struct {
 	blueprint.BaseDependencyTag
 }
 
-var prebuiltDepTag prebuiltDependencyTag
+var PrebuiltDepTag prebuiltDependencyTag
 
 type PrebuiltProperties struct {
 	// When prefer is set to true the prebuilt will be used instead of any source module with
@@ -89,7 +89,7 @@ func prebuiltMutator(ctx BottomUpMutatorContext) {
 		p := m.Prebuilt()
 		name := m.base().BaseModuleName()
 		if ctx.OtherModuleExists(name) {
-			ctx.AddReverseDependency(ctx.Module(), prebuiltDepTag, name)
+			ctx.AddReverseDependency(ctx.Module(), PrebuiltDepTag, name)
 			p.properties.SourceExists = true
 		} else {
 			ctx.Rename(name)
@@ -110,7 +110,7 @@ func PrebuiltSelectModuleMutator(ctx TopDownMutatorContext) {
 		}
 	} else if s, ok := ctx.Module().(Module); ok {
 		ctx.VisitDirectDeps(func(m Module) {
-			if ctx.OtherModuleDependencyTag(m) == prebuiltDepTag {
+			if ctx.OtherModuleDependencyTag(m) == PrebuiltDepTag {
 				p := m.(PrebuiltInterface).Prebuilt()
 				if p.usePrebuilt(ctx, s) {
 					p.properties.UsePrebuilt = true
