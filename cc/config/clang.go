@@ -120,6 +120,12 @@ func init() {
 		// http://b/36463318 Clang executes with an absolute path, so clang-provided
 		// headers are now absolute.
 		"-fdebug-prefix-map=$$PWD/=",
+
+		// TODO
+		"-Wno-error=tautological-constant-compare",
+		"-Wno-error=null-pointer-arithmetic",
+		"-Wno-error=enum-compare",
+		"-Wno-error=enum-compare-switch",
 	}, " "))
 
 	pctx.StaticVariable("ClangExtraCppflags", strings.Join([]string{
