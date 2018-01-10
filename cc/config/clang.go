@@ -120,6 +120,20 @@ func init() {
 		// http://b/36463318 Clang executes with an absolute path, so clang-provided
 		// headers are now absolute.
 		"-fdebug-prefix-map=$$PWD/=",
+
+		// TODO
+		"-Wno-error=tautological-constant-compare",
+		"-Wno-error=null-pointer-arithmetic",
+		"-Wno-error=enum-compare",
+		"-Wno-error=enum-compare-switch",
+
+		// TODO, more warnings from clang-7.0
+		"-Wno-error=deprecated-register",
+		"-Wno-error=tautological-type-limit-compare",
+		"-Wno-error=tautological-unsigned-enum-zero-compare",
+		"-Wno-error=tautological-unsigned-zero-compare",
+		"-Wno-error=unused-private-field", // only a few, should be fixed soon
+		"-Wno-error=sign-compare",         // only a few, should be fixed soon
 	}, " "))
 
 	pctx.StaticVariable("ClangExtraCppflags", strings.Join([]string{
