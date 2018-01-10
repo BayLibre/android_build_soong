@@ -671,11 +671,11 @@ func (c *deviceConfig) OdmPath() string {
 	return "odm"
 }
 
-func (c *deviceConfig) OemPath() string {
-	if c.config.ProductVariables.OemPath != nil {
-		return *c.config.ProductVariables.OemPath
+func (c *deviceConfig) ProductPath() string {
+	if c.config.ProductVariables.ProductPath != nil {
+		return *c.config.ProductVariables.ProductPath
 	}
-	return "oem"
+	return "product"
 }
 
 func (c *deviceConfig) BtConfigIncludeDir() string {
