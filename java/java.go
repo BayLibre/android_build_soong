@@ -517,6 +517,8 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 				}
 			case kotlinStdlibTag:
 				deps.kotlinStdlib = dep.HeaderJars()
+			case android.PrebuiltDepTag:
+				// Nothing to do
 			default:
 				panic(fmt.Errorf("unknown dependency %q for %q", otherName, ctx.ModuleName()))
 			}
@@ -1148,7 +1150,7 @@ func BinaryHostFactory() android.Module {
 //
 
 type ImportProperties struct {
-	Jars []string
+	Jars []string `android:"arch_variant"`
 
 	Sdk_version *string
 
