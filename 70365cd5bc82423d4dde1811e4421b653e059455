@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5ca5abbe_d1d18102",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-01-11T08:06:20Z",
+      "side": 1,
+      "message": "Do not reach in and extract DeviceArch, that\u0027s not expected to be a stable API. Use mctx.DeviceConfig().Arches() to understand which architectures are enabled on the current device.",
+      "parentUuid": "35f77028_7d69defa",
+      "range": {
+        "startLine": 151,
+        "startChar": 7,
+        "endLine": 151,
+        "endChar": 78
+      },
+      "revId": "70365cd5bc82423d4dde1811e4421b653e059455",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7609e89a_da0930e6",
         "filename": "cc/vndk.go",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "You\u0027re right. This only prevents including the module in makefile.\nHowever, this implementation also meets our requirement, that is not to define any modules that have the same target output file name with current VNDK snapshot module.",
       "parentUuid": "7609e89a_da0930e6",
+      "range": {
+        "startLine": 152,
+        "startChar": 18,
+        "endLine": 152,
+        "endChar": 37
+      },
+      "revId": "70365cd5bc82423d4dde1811e4421b653e059455",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "197a51c4_291357cb",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-01-11T08:06:20Z",
+      "side": 1,
+      "message": "That only works here because in most cases we\u0027re relying on Make to handle installation. We\u0027ve got builds that do not use make for installation though. Running `OUT_DIR\u003dout_clean m --skip-make` with a new out directory (out_clean in this example) should test this mode.\n\nYou\u0027ll need to use something like PreventInstall or SkipInstall as well as HideFromMake",
+      "parentUuid": "9dc76745_6c402443",
       "range": {
         "startLine": 152,
         "startChar": 18,
