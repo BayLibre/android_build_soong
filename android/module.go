@@ -1165,13 +1165,30 @@ func (ctx *androidModuleContext) ExpandSource(srcFile, prop string) Path {
 func (ctx *androidModuleContext) ExpandSourcesSubDir(srcFiles, excludes []string, subDir string) Paths {
 	prefix := PathForModuleSrc(ctx).String()
 
-	for i, e := range excludes {
-		j := findStringInSlice(e, srcFiles)
-		if j != -1 {
-			srcFiles = append(srcFiles[:j], srcFiles[j+1:]...)
-		}
+	//if ctx.ModuleName() == "libvpx" && ctx.ModuleSubDir() == "android_arm_armv8-a_core_static" {
+	//	panic(excludes)
+	//}
+	expandedExcludes := make([]string, 0, len(excludes))
+	for _, e := range excludes {
+		if m := SrcIsModule(e); m != "" {
+			module := ctx.GetDirectDepWithTag(m, SourceDepTag)
+			if module == nil {
+				// Error will have been handled by ExtractSourcesDeps
+				continue
+			}
+			if srcProducer, ok := module.(SourceFileProducer); ok {
+				expandedExcludes = append(expandedExcludes, srcProducer.Srcs().Strings()...)
+			} else {
+				ctx.ModuleErrorf("srcs dependency %q is not a source file producing module", m)
+			}
+		} else {
+			j := findStringInSlice(e, srcFiles)
+			if j != -1 {
+				srcFiles = append(srcFiles[:j], srcFiles[j+1:]...)
+			}
 
-		excludes[i] = filepath.Join(prefix, e)
+			expandedExcludes = append(expandedExcludes, filepath.Join(prefix, e))
+		}
 	}
 
 	expandedSrcFiles := make(Paths, 0, len(srcFiles))
@@ -1183,12 +1200,20 @@ func (ctx *androidModuleContext) ExpandSourcesSubDir(srcFiles, excludes []string
 				continue
 			}
 			if srcProducer, ok := module.(SourceFileProducer); ok {
-				expandedSrcFiles = append(expandedSrcFiles, srcProducer.Srcs()...)
+				ss := srcProducer.Srcs()
+				for _, e := range expandedExcludes {
+					for j, s := range ss {
+						if s.String() == e {
+							ss = append(ss[:j], ss[j+1:]...)
+						}
+					}
+				}
+				expandedSrcFiles = append(expandedSrcFiles, ss...)
 			} else {
 				ctx.ModuleErrorf("srcs dependency %q is not a source file producing module", m)
 			}
 		} else if pathtools.IsGlob(s) {
-			globbedSrcFiles := ctx.Glob(filepath.Join(prefix, s), excludes)
+			globbedSrcFiles := ctx.Glob(filepath.Join(prefix, s), expandedExcludes)
 			for i, s := range globbedSrcFiles {
 				globbedSrcFiles[i] = s.(ModuleSrcPath).WithSubDir(ctx, subDir)
 			}
@@ -1199,6 +1224,14 @@ func (ctx *androidModuleContext) ExpandSourcesSubDir(srcFiles, excludes []string
 		}
 	}
 
+	//for _, e := range expandedExcludes {
+	//	for j, s := range expandedSrcFiles {
+	//		if s.String() == e {
+	//			panic(expandedExcludes)
+	//			expandedSrcFiles = append(expandedSrcFiles[:j], expandedSrcFiles[j+1:]...)
+	//		}
+	//	}
+	//}
 	return expandedSrcFiles
 }
 
