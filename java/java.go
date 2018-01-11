@@ -538,8 +538,8 @@ func (j *Module) aidlFlags(ctx android.ModuleContext, aidlPreprocess android.Opt
 }
 
 type deps struct {
-	classpath          android.Paths
-	bootClasspath      android.Paths
+	classpath          classpath
+	bootClasspath      classpath
 	staticJars         android.Paths
 	staticHeaderJars   android.Paths
 	staticJarResources android.Paths
