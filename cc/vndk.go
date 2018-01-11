@@ -147,7 +147,11 @@ func vndkMutator(mctx android.BottomUpMutatorContext) {
 		} else {
 			lib, is_lib := m.linker.(*libraryDecorator)
 			prebuilt_lib, is_prebuilt_lib := m.linker.(*prebuiltLibraryLinker)
-			if (is_lib && lib.shared()) || (is_prebuilt_lib && prebuilt_lib.shared()) {
+			if snapshot_lib, is_snapshot := m.linker.(*vndkPrebuiltLibraryDecorator); is_snapshot {
+				if snapshot_lib.arch() != String(mctx.Config().ProductVariables.DeviceArch) {
+					m.Properties.HideFromMake = true
+				}
+			} else if (is_lib && lib.shared()) || (is_prebuilt_lib && prebuilt_lib.shared()) {
 				name := strings.TrimPrefix(m.Name(), "prebuilt_")
 				if m.vndkdep.isVndk() {
 					vndkLibrariesLock.Lock()
