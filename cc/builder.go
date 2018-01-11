@@ -172,6 +172,16 @@ var (
 		},
 		"windresCmd", "flags")
 
+	wholelink = pctx.AndroidStaticRule("wholelink",
+		blueprint.RuleParams{
+			Command: "rm -rf ${outDir} && mkdir -p ${outDir} && " +
+				"for f in `$arCmd t ${arFlags} ${in}`; do " +
+				"$arCmd p ${arFlags} ${in} $$f > ${outDir}/$$f; " +
+				"done && " +
+				"$ldCmd ${ldFlags} ${outDir}/*.o -o ${out}",
+			CommandDeps: []string{"$arCmd", "$ldCmd"},
+		}, "arCmd", "arFlags", "ldCmd", "ldFlags", "outDir")
+
 	_ = pctx.SourcePathVariable("sAbiDumper", "prebuilts/build-tools/${config.HostPrebuiltTag}/bin/header-abi-dumper")
 
 	// -w has been added since header-abi-dumper does not need to produce any sort of diagnostic information.
@@ -895,4 +905,84 @@ func splitListForSize(list android.Paths, limit int) (lists []android.Paths, err
 		panic(fmt.Errorf("Failed breaking up list, %d != %d", len(list), totalLen))
 	}
 	return lists, nil
+}
+
+func TransformPrebuiltSourceToObj(ctx android.ModuleContext,
+	subdir string, flags builderFlags, deps android.Paths) Objects {
+
+	prebuiltSrcFiles := android.Paths{}
+	tidyFiles := android.Paths{}
+	coverageFiles := android.Paths{}
+	sAbiDumpFiles := android.Paths{}
+
+	//This temporal folder for the extracted intermediate .o files from prebuilt library
+	prebuiltWholeDir := android.PathForModuleObj(ctx, "Prebuilt")
+	ctx.VisitDirectDeps(func(m blueprint.Module) {
+		tag := ctx.OtherModuleDependencyTag(m)
+		cc, _ := m.(*Module)
+		if cc == nil {
+			return
+		}
+		if p, ok := cc.linker.(prebuiltLinkerInterface); ok {
+			if tag == wholeStaticDepTag {
+				prebuiltSrcFile := p.prebuilt().Path(ctx)
+				prebuiltSrcFiles = append(prebuiltSrcFiles, prebuiltSrcFile)
+			}
+		}
+	})
+
+	prebuiltObjFiles := make(android.Paths, len(prebuiltSrcFiles))
+	for i, prebuiltSrcFile := range prebuiltSrcFiles {
+		prebuiltObjFile := android.ObjPathWithExt(ctx, "", prebuiltSrcFile, "o")
+		prebuiltObjFiles[i] = prebuiltObjFile
+
+		switch prebuiltSrcFile.Ext() {
+		case staticLibraryExtension:
+			arCmd := "${config.ClangBin}/llvm-ar"
+			arFlags := ""
+			if !ctx.Darwin() {
+				arFlags += " -format=gnu"
+			}
+
+			var ldCmd, ldFlags string
+			if flags.clang {
+				ldCmd = "${config.ClangBin}/clang++"
+				ldFlags = "-target " + flags.toolchain.ClangTriple()
+			} else {
+				ldCmd = gccCmd(flags.toolchain, "g++")
+				ldFlags = "-target " + flags.toolchain.GccTriple()
+			}
+
+			ldFlags += " -nostdlib -Wl,-r"
+			if ctx.Arch().ArchType.Multilib == "lib64" {
+				ldFlags += " -m64"
+			} else {
+				ldFlags += " -m32"
+			}
+
+			ctx.Build(pctx, android.ModuleBuildParams{
+				Rule:        wholelink,
+				Description: "whole static link prebuilt " + prebuiltSrcFile.Rel(),
+				Output:      prebuiltObjFile,
+				Input:       prebuiltSrcFile,
+				Args: map[string]string{
+					"arCmd":   arCmd,
+					"arFlags": arFlags,
+					"ldCmd":   ldCmd,
+					"ldFlags": ldFlags,
+					"outDir":  prebuiltWholeDir.String(),
+				},
+			})
+		default:
+			ctx.ModuleErrorf("Prebuilt file %s has unknown extension", prebuiltSrcFile)
+			continue
+		}
+	}
+
+	return Objects{
+		objFiles:      prebuiltObjFiles,
+		tidyFiles:     tidyFiles,
+		coverageFiles: coverageFiles,
+		sAbiDumpFiles: sAbiDumpFiles,
+	}
 }
