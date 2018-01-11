@@ -196,3 +196,21 @@ func (app *AndroidApp) AndroidMk() android.AndroidMkData {
 	}
 
 }
+
+func (ddoc *Droiddoc) AndroidMk() android.AndroidMkData {
+	return android.AndroidMkData{
+		Class:      "JAVA_LIBRARIES",
+		OutputFile: android.OptionalPathForPath(ddoc.stubsJar),
+		Include:    "$(BUILD_SYSTEM)/soong_java_prebuilt.mk",
+		Extra: []android.AndroidMkExtraFunc{
+			func(w io.Writer, outputFile android.Path) {
+				if ddoc.properties.Installable == nil || *ddoc.properties.Installable == true {
+					fmt.Fprintln(w, "LOCAL_DROIDDOC_DOC_ZIP := ", ddoc.docZip.String())
+				}
+				if ddoc.stubsJar != nil {
+					fmt.Fprintln(w, "LOCAL_DROIDDOC_STUBS_JAR := ", ddoc.stubsJar.String())
+				}
+			},
+		},
+	}
+}
