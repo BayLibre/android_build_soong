@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "35f77028_7d69defa",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2018-01-11T07:42:48Z",
+      "side": 1,
+      "message": "I tried, but I don\u0027t find proper functions that can read properties of a module. To set \u0027Enabled\u0027, it has to be done in the init function which I cannot read the \"target_arch\" property for the module.\nI believe, mutator is the right place to do this.",
+      "parentUuid": "7bf3f0d9_d86a74c7",
+      "range": {
+        "startLine": 151,
+        "startChar": 7,
+        "endLine": 151,
+        "endChar": 78
+      },
+      "revId": "70365cd5bc82423d4dde1811e4421b653e059455",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7609e89a_da0930e6",
         "filename": "cc/vndk.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-01-11T06:50:07Z",
       "side": 1,
       "message": "I believe HideFromMake is not disabling a module.",
+      "range": {
+        "startLine": 152,
+        "startChar": 18,
+        "endLine": 152,
+        "endChar": 37
+      },
+      "revId": "70365cd5bc82423d4dde1811e4421b653e059455",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dc76745_6c402443",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2018-01-11T07:42:48Z",
+      "side": 1,
+      "message": "You\u0027re right. This only prevents including the module in makefile.\nHowever, this implementation also meets our requirement, that is not to define any modules that have the same target output file name with current VNDK snapshot module.",
+      "parentUuid": "7609e89a_da0930e6",
       "range": {
         "startLine": 152,
         "startChar": 18,
