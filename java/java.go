@@ -522,6 +522,7 @@ type deps struct {
 	systemModules      android.Path
 	aidlPreprocess     android.OptionalPath
 	kotlinStdlib       android.Paths
+	etc                android.Paths
 }
 
 func checkProducesJars(ctx android.ModuleContext, dep android.SourceFileProducer) {
@@ -670,7 +671,8 @@ func (j *Module) collectBuilderFlags(ctx android.ModuleContext, deps deps) javaB
 		java8Home := ctx.Config().Getenv("ANDROID_JAVA8_HOME")
 		flags.bootClasspath = append(flags.bootClasspath,
 			android.PathForSource(ctx, java8Home, "jre/lib/jce.jar"),
-			android.PathForSource(ctx, java8Home, "jre/lib/rt.jar"))
+			android.PathForSource(ctx, java8Home, "jre/lib/rt.jar"),
+			android.PathForSource(ctx, java8Home, "lib/tools.jar"))
 	}
 
 	// systemModules

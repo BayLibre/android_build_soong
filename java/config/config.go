@@ -81,6 +81,7 @@ func init() {
 	pctx.SourcePathVariable("JmodCmd", "${JavaToolchain}/jmod")
 	pctx.SourcePathVariable("JrtFsJar", "${JavaHome}/lib/jrt-fs.jar")
 	pctx.SourcePathVariable("Ziptime", "prebuilts/build-tools/${hostPrebuiltTag}/bin/ziptime")
+	pctx.SourcePathVariable("Javadoc", "prebuilts/jdk/jdk8/linux-x86/bin/javadoc")
 
 	pctx.SourcePathVariable("ExtractSrcJarsCmd", "build/soong/scripts/extract-srcjars.sh")
 	pctx.SourcePathVariable("JarArgsCmd", "build/soong/scripts/jar-args.sh")
@@ -124,6 +125,8 @@ func init() {
 
 	pctx.HostJavaToolVariable("JarjarCmd", "jarjar.jar")
 	pctx.HostJavaToolVariable("DesugarJar", "desugar.jar")
+	pctx.HostJavaToolVariable("JsilverJar", "jsilver.jar")
+	pctx.HostJavaToolVariable("DoclavaJar", "doclava.jar")
 
 	pctx.HostBinToolVariable("SoongJavacWrapper", "soong_javac_wrapper")
 
