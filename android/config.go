@@ -424,6 +424,18 @@ func (c *config) EmbeddedInMake() bool {
 	return c.inMake
 }
 
+func (c *config) BuildId() string {
+	return String(c.ProductVariables.BuildId)
+}
+
+func (c *config) BuildNumberFromFile() string {
+	return String(c.ProductVariables.BuildNumberFromFile)
+}
+
+func (c *config) DateFromFile() string {
+	return String(c.ProductVariables.DateFromFile)
+}
+
 // DeviceName returns the name of the current device target
 // TODO: take an AndroidModuleContext to select the device name for multi-device builds
 func (c *config) DeviceName() string {
