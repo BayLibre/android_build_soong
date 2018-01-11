@@ -39,9 +39,12 @@ type PgoProperties struct {
 	Pgo struct {
 		Instrumentation    *bool
 		Sampling           *bool
-		Profile_file       *string `android:"arch_variant"`
 		Benchmarks         []string
 		Enable_profile_use *bool `android:"arch_variant"`
+		// Profile file to use when building with PGO
+		Profile_file *string `android:"arch_variant"`
+		// Treat the profile file as absolute path within the source tree instead of a relative path within a profiles project
+		Profile_file_absolute *bool
 		// Additional compiler flags to use when building this module
 		// for profiling (either instrumentation or sampling).
 		Cflags []string `android:"arch_variant"`
@@ -61,6 +64,21 @@ func (props *PgoProperties) isInstrumentation() bool {
 
 func (props *PgoProperties) isSampling() bool {
 	return props.Pgo.Sampling != nil && *props.Pgo.Sampling == true
+}
+
+func (props *PgoProperties) profileFile(ctx ModuleContext) (android.SourcePath, bool) {
+	profileFileAbsolute := props.Pgo.Profile_file_absolute
+	if profileFileAbsolute != nil && *profileFileAbsolute == true {
+		return android.PathForSource(ctx, *props.Pgo.Profile_file), true
+	} else {
+		if profilesDir := getPgoProfilesDir(ctx); profilesDir.Valid() {
+			// If Profile_file is specified, and the PGO profiles project is found,
+			// use the profile file.
+			return android.PathForSource(ctx, profilesDir.String(), *props.Pgo.Profile_file), true
+		} else {
+			return android.SourcePath{}, false
+		}
+	}
 }
 
 func (pgo *pgo) props() []interface{} {
@@ -106,20 +124,23 @@ func (props *PgoProperties) addProfileUseFlags(ctx ModuleContext, flags Flags) F
 		return flags
 	}
 
-	// If the PGO profiles project is found, and this module has PGO
-	// enabled, add flags to use the profile
-	if profilesDir := getPgoProfilesDir(ctx); props.PgoPresent && profilesDir.Valid() {
-		profileFile := android.PathForSource(ctx, profilesDir.String(), *props.Pgo.Profile_file)
-		profileUseFlags := props.profileUseFlags(ctx, profileFile.String())
-
-		flags.CFlags = append(flags.CFlags, profileUseFlags...)
-		flags.LdFlags = append(flags.LdFlags, profileUseFlags...)
-
-		// Update CFlagsDeps and LdFlagsDeps so the module is rebuilt
-		// if profileFile gets updated
-		flags.CFlagsDeps = append(flags.CFlagsDeps, profileFile)
-		flags.LdFlagsDeps = append(flags.LdFlagsDeps, profileFile)
+	if !props.PgoPresent {
+		return flags
 	}
+
+	profileFile, valid := props.profileFile(ctx)
+	if !valid {
+		return flags
+	}
+
+	profileUseFlags := props.profileUseFlags(ctx, profileFile.String())
+	flags.CFlags = append(flags.CFlags, profileUseFlags...)
+	flags.LdFlags = append(flags.LdFlags, profileUseFlags...)
+
+	// Update CFlagsDeps and LdFlagsDeps so the module is rebuilt
+	// if profileFile gets updated
+	flags.CFlagsDeps = append(flags.CFlagsDeps, profileFile)
+	flags.LdFlagsDeps = append(flags.LdFlagsDeps, profileFile)
 	return flags
 }
 
