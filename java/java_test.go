@@ -79,6 +79,8 @@ func testContext(config android.Config, bp string,
 	ctx.RegisterModuleType("java_genrule", android.ModuleFactoryAdaptor(genRuleFactory))
 	ctx.RegisterModuleType("filegroup", android.ModuleFactoryAdaptor(genrule.FileGroupFactory))
 	ctx.RegisterModuleType("genrule", android.ModuleFactoryAdaptor(genrule.GenRuleFactory))
+	ctx.RegisterModuleType("droiddoc", android.ModuleFactoryAdaptor(DroiddocFactory))
+	ctx.RegisterModuleType("droiddoc_host", android.ModuleFactoryAdaptor(DroiddocHostFactory))
 	ctx.PreArchMutators(android.RegisterPrebuiltsPreArchMutators)
 	ctx.PreArchMutators(android.RegisterPrebuiltsPostDepsMutators)
 	ctx.PreArchMutators(android.RegisterDefaultsPreArchMutators)
@@ -164,6 +166,12 @@ func testContext(config android.Config, bp string,
 
 		"jdk8/jre/lib/jce.jar": nil,
 		"jdk8/jre/lib/rt.jar":  nil,
+		"jdk8/lib/tools.jar":   nil,
+
+		"bar-doc/a.java":                 nil,
+		"bar-doc/b.java":                 nil,
+		"bar-doc/known_oj_tags.txt":      nil,
+		"external/doclava/templates-sdk": nil,
 	}
 
 	for k, v := range fs {
@@ -382,7 +390,7 @@ var classpathTestcases = []struct {
 		moduleType:    "java_library_host",
 		properties:    ``,
 		host:          android.Host,
-		bootclasspath: []string{"jdk8/jre/lib/jce.jar", "jdk8/jre/lib/rt.jar"},
+		bootclasspath: []string{"jdk8/jre/lib/jce.jar", "jdk8/jre/lib/rt.jar", "jdk8/lib/tools.jar"},
 		classpath:     []string{},
 	},
 	{
@@ -398,7 +406,7 @@ var classpathTestcases = []struct {
 		host:          android.Host,
 		properties:    `host_supported: true,`,
 		classpath:     []string{},
-		bootclasspath: []string{"jdk8/jre/lib/jce.jar", "jdk8/jre/lib/rt.jar"},
+		bootclasspath: []string{"jdk8/jre/lib/jce.jar", "jdk8/jre/lib/rt.jar", "jdk8/lib/tools.jar"},
 	},
 	{
 		name:       "host supported nostdlib",
@@ -841,6 +849,39 @@ func TestSharding(t *testing.T) {
 		if !strings.Contains(barJavac.Args["classpath"], barHeaderJar) {
 			t.Errorf("bar javac classpath %v does not contain %q", barJavac.Args["classpath"], barHeaderJar)
 		}
+	}
+}
+
+func TestDroiddoc(t *testing.T) {
+	ctx := testJava(t, `
+		droiddoc {
+		    name: "bar-doc",
+		    srcs: [
+		        "bar-doc/*.java",
+		    ],
+		    exclude_srcs: [
+		        "bar-doc/b.java"
+		    ],
+		    custom_template_dir: "external/doclava/templates-sdk",
+		    hdf: [
+		        "android.whichdoc offline",
+		    ],
+		    knowntags: [
+		        "bar-doc/known_oj_tags.txt",
+		    ],
+		    proofread_file: "libcore-proofread.txt",
+		    todo_file: "libcore-docs-todo.html",
+		    droiddoc_options: [
+		        "-offlinemode",
+		        "-title \"libcore\"",
+		    ],
+		}
+		`)
+
+	stubsJar := filepath.Join(buildDir, ".intermediates", "bar-doc", "android_common", "bar-doc-stubs.jar")
+	barDoc := ctx.ModuleForTests("bar-doc", "android_common").Output("bar-doc-stubs.jar")
+	if stubsJar != barDoc.Output.String() {
+		t.Errorf("expected stubs Jar [%q], got %q", stubsJar, barDoc.Output.String())
 	}
 }
 
