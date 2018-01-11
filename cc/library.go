@@ -488,13 +488,16 @@ func (library *libraryDecorator) linkerDeps(ctx DepsContext, deps Deps) Deps {
 
 func (library *libraryDecorator) linkStatic(ctx ModuleContext,
 	flags Flags, deps PathDeps, objs Objects) android.Path {
+	builderFlags := flagsToBuilderFlags(flags)
+
+	prebuiltWholeObjs := TransformPrebuiltSourceToObj(ctx, "", builderFlags, deps.WholeStaticLibs)
+	deps.WholeStaticLibObjs = deps.WholeStaticLibObjs.Append(prebuiltWholeObjs)
 
 	library.objects = deps.WholeStaticLibObjs.Copy()
 	library.objects = library.objects.Append(objs)
 
 	outputFile := android.PathForModuleOut(ctx,
 		ctx.ModuleName()+library.MutatedProperties.VariantName+staticLibraryExtension)
-	builderFlags := flagsToBuilderFlags(flags)
 
 	TransformObjToStaticLib(ctx, library.objects.objFiles, builderFlags, outputFile, objs.tidyFiles)
 
