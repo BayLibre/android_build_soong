@@ -196,3 +196,39 @@ func (app *AndroidApp) AndroidMk() android.AndroidMkData {
 	}
 
 }
+
+func (jd *Javadoc) AndroidMk() android.AndroidMkData {
+	return android.AndroidMkData{
+		Class:      "JAVA_LIBRARIES",
+		OutputFile: android.OptionalPathForPath(jd.stubsJar),
+		Include:    "$(BUILD_SYSTEM)/soong_java_prebuilt.mk",
+		Extra: []android.AndroidMkExtraFunc{
+			func(w io.Writer, outputFile android.Path) {
+				if jd.Doc.properties.Installable == nil || *jd.Doc.properties.Installable == true {
+					fmt.Fprintln(w, "LOCAL_DROIDDOC_DOC_ZIP := ", jd.docZip.String())
+				}
+				if jd.Doc.stubsJar != nil {
+					fmt.Fprintln(w, "LOCAL_DROIDDOC_STUBS_JAR := ", jd.stubsJar.String())
+				}
+			},
+		},
+	}
+}
+
+func (ddoc *Droiddoc) AndroidMk() android.AndroidMkData {
+	return android.AndroidMkData{
+		Class:      "JAVA_LIBRARIES",
+		OutputFile: android.OptionalPathForPath(ddoc.stubsJar),
+		Include:    "$(BUILD_SYSTEM)/soong_java_prebuilt.mk",
+		Extra: []android.AndroidMkExtraFunc{
+			func(w io.Writer, outputFile android.Path) {
+				if ddoc.Doc.properties.Installable == nil || *ddoc.Doc.properties.Installable == true {
+					fmt.Fprintln(w, "LOCAL_DROIDDOC_DOC_ZIP := ", ddoc.docZip.String())
+				}
+				if ddoc.Doc.stubsJar != nil {
+					fmt.Fprintln(w, "LOCAL_DROIDDOC_STUBS_JAR := ", ddoc.stubsJar.String())
+				}
+			},
+		},
+	}
+}
