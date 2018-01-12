@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a06641c5_5b068f49",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1459,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2018-01-12T10:09:59Z",
+      "side": 1,
+      "message": "I tested with both SkipInstall and PreventInstall. But they does not prevent the modules from being included in build.ninja.\nThis results in \"multiple rules generate\" error with `OUT_DIR\u003dout_clean m --skip-make` build test.\nCan we skip adding the modules in build.ninja with those parameters?",
+      "range": {
+        "startLine": 1459,
+        "startChar": 3,
+        "endLine": 1459,
+        "endChar": 42
+      },
+      "revId": "ee761b41fc095bc9f659d106f5d408240dcbee43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

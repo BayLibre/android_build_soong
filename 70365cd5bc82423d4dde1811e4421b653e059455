@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "2f02c794_80f04f50",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2018-01-12T10:09:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ca5abbe_d1d18102",
+      "range": {
+        "startLine": 151,
+        "startChar": 7,
+        "endLine": 151,
+        "endChar": 78
+      },
+      "revId": "70365cd5bc82423d4dde1811e4421b653e059455",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7609e89a_da0930e6",
         "filename": "cc/vndk.go",
         "patchSetId": 1
@@ -141,6 +165,30 @@
       "revId": "70365cd5bc82423d4dde1811e4421b653e059455",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6baea8cb_79eef7cc",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2018-01-12T10:09:59Z",
+      "side": 1,
+      "message": "This is moved to vendor mutator in cc.go and set PreventInstall to true.",
+      "parentUuid": "197a51c4_291357cb",
+      "range": {
+        "startLine": 152,
+        "startChar": 18,
+        "endLine": 152,
+        "endChar": 37
+      },
+      "revId": "70365cd5bc82423d4dde1811e4421b653e059455",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
