@@ -1,0 +1,10 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: Stephen Hines <srhines@google.com>
+Code-Review+2: Pirama Arumuga Nainar <pirama@google.com>
+Code-Review+2: Dan Willemsen <dwillemsen@google.com>
+Code-Review+2: Chih-hung Hsieh <chh@google.com>
+Submitted-by: Stephen Hines <srhines@google.com>
+Submitted-at: Fri, 12 Jan 2018 18:19:43 +0000
+Reviewed-on: https://android-review.googlesource.com/586666
+Project: platform/build/soong
+Branch: refs/heads/master
