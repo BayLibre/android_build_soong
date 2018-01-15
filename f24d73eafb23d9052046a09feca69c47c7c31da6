@@ -116,6 +116,30 @@
       "revId": "f24d73eafb23d9052046a09feca69c47c7c31da6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78306403_aa5519cb",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1044078
+      },
+      "writtenOn": "2018-01-15T16:35:04Z",
+      "side": 1,
+      "message": "Exactly. The code should be as below, in order to simple the logic, I drop the part for llvm due to we have to handle the ldFlags for relocation for llvm, gcc don\u0027t need explicitly specific the flag. I will upload a new patchset.\n                        var ldCmd, arCmd, ldFlags string\n                        if flags.clang {\n                                ldCmd \u003d \"${config.ClangBin}/clang++\"\n                                arCmd \u003d \"${config.ClangBin}/llvm-ar\"\n                        } else {\n                                ldCmd \u003d gccCmd(flags.toolchain, \"g++\")\n                                arCmd \u003d gccCmd(flags.toolchain, \"ar\")\n                        }\n\n                        if ctx.Arch().ArchType.Multilib \u003d\u003d \"lib64\" {\n                                ldFlags \u003d \"-m64\"\n                        } else {\n                                ldFlags \u003d \"-m32\"\n                        }",
+      "parentUuid": "7c6db84a_6b189c2a",
+      "range": {
+        "startLine": 940,
+        "startChar": 3,
+        "endLine": 940,
+        "endChar": 41
+      },
+      "revId": "f24d73eafb23d9052046a09feca69c47c7c31da6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
