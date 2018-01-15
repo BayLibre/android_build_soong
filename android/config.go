@@ -657,6 +657,18 @@ func (c *deviceConfig) ExtraVndkVersions() []string {
 	return c.config.ProductVariables.ExtraVndkVersions
 }
 
+func (c *deviceConfig) SystemSdkVersions() []string {
+	fmt.Errorf("!!!!: %q\n", c.config.ProductVariables.DeviceSystemSdkVersions)
+	if c.config.ProductVariables.DeviceSystemSdkVersions == nil {
+		return nil
+	}
+	return *c.config.ProductVariables.DeviceSystemSdkVersions
+}
+
+func (c *deviceConfig) PlatformSystemSdkVersions() []string {
+	return c.config.ProductVariables.Platform_systemsdk_versions
+}
+
 func (c *deviceConfig) OdmPath() string {
 	if c.config.ProductVariables.OdmPath != nil {
 		return *c.config.ProductVariables.OdmPath

@@ -336,6 +336,15 @@ func decodeSdkDep(ctx android.BaseContext, v string) sdkDep {
 		return sdkDep{}
 	}
 
+	// Ensures that the specificed system SDK version is one of BOARD_SYSTEMSDK_VERSIONS
+	if strings.Contains(v, "system_") && i != 10000 && len(ctx.DeviceConfig().SystemSdkVersions()) > 0 {
+		version := strings.Replace(v, "system_", "", 1)
+		if !android.InList(version, ctx.DeviceConfig().SystemSdkVersions()) {
+			ctx.PropertyErrorf("sdk_version", "incompatible sdk version %q. System SDK version %q is not in BOARD_SYSTEMSDK_VERSIONS",
+				v, version)
+		}
+	}
+
 	toFile := func(v string) sdkDep {
 		dir := filepath.Join("prebuilts/sdk", v)
 		jar := filepath.Join(dir, "android.jar")
