@@ -46,6 +46,76 @@
       "revId": "f24d73eafb23d9052046a09feca69c47c7c31da6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efc50c64_d1ba27c7",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-01-15T09:55:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f5e960e9_ca8a7f3f",
+      "range": {
+        "startLine": 180,
+        "startChar": 154,
+        "endLine": 180,
+        "endChar": 199
+      },
+      "revId": "f24d73eafb23d9052046a09feca69c47c7c31da6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7472bf4c_430ef875",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 939,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-01-15T09:55:12Z",
+      "side": 1,
+      "message": "${config.ClangBin}/clang++ when flags.clang ?",
+      "range": {
+        "startLine": 939,
+        "startChar": 3,
+        "endLine": 939,
+        "endChar": 42
+      },
+      "revId": "f24d73eafb23d9052046a09feca69c47c7c31da6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c6db84a_6b189c2a",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-01-15T09:55:12Z",
+      "side": 1,
+      "message": "${config.ClangBin}/llvm-ar ?",
+      "range": {
+        "startLine": 940,
+        "startChar": 3,
+        "endLine": 940,
+        "endChar": 41
+      },
+      "revId": "f24d73eafb23d9052046a09feca69c47c7c31da6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
