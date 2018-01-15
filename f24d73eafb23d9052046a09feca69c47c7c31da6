@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a56dd617_9b0e8771",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-01-15T08:10:21Z",
+      "side": 1,
+      "message": "just out of curiosity. why are you merging the extracted object files into a single big object file, instead of adding them to the archive directly?",
+      "range": {
+        "startLine": 180,
+        "startChar": 154,
+        "endLine": 180,
+        "endChar": 199
+      },
+      "revId": "f24d73eafb23d9052046a09feca69c47c7c31da6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
