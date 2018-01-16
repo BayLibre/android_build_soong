@@ -140,6 +140,7 @@ bootstrap_go_package {
         "cc/util.go",
         "cc/vndk.go",
         "cc/vndk_prebuilt.go",
+        "cc/vndk_install_props.go",
 
         "cc/cmakelists.go",
         "cc/compiler.go",
