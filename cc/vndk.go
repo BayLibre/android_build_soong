@@ -119,6 +119,18 @@ func (vndk *vndkdep) vndkCheckLinkType(ctx android.ModuleContext, to *Module) {
 	}
 }
 
+var vndk_properties = make(map[string]interface{})
+
+func parseVndkProperties(m *Module, name string) {
+	var property_map map[string]interface{}
+	properties := m.GetProperties()
+	for _, propertyStruct := range properties {
+		propertyStruct_json, _ := json.Marshal(propertyStruct)
+		json.Unmarshal(propertyStruct_json, &property_map)
+	}
+	vndk_properties[name] = property_map
+}
+
 var (
 	vndkCoreLibraries    []string
 	vndkSpLibraries      []string
@@ -152,6 +164,7 @@ func vndkMutator(mctx android.BottomUpMutatorContext) {
 				if m.vndkdep.isVndk() {
 					vndkLibrariesLock.Lock()
 					defer vndkLibrariesLock.Unlock()
+					parseVndkProperties(m, name)
 					if m.vndkdep.isVndkSp() {
 						if !inList(name, vndkSpLibraries) {
 							vndkSpLibraries = append(vndkSpLibraries, name)
