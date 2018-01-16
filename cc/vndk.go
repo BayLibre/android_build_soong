@@ -205,11 +205,13 @@ func vndkMutator(mctx android.BottomUpMutatorContext) {
 						if !inList(name, vndkSpLibraries) {
 							vndkSpLibraries = append(vndkSpLibraries, name)
 							sort.Strings(vndkSpLibraries)
+							parseVndkProperties(m, name)
 						}
 					} else {
 						if !inList(name, vndkCoreLibraries) {
 							vndkCoreLibraries = append(vndkCoreLibraries, name)
 							sort.Strings(vndkCoreLibraries)
+							parseVndkProperties(m, name)
 						}
 					}
 					if !Bool(m.VendorProperties.Vendor_available) {
