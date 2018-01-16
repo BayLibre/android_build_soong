@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44da54ce_7a159fb1",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-01-16T19:04:44Z",
+      "side": 1,
+      "message": "why not return *[]string or just have the DeviceSystemSdkVersions variable be []string?",
+      "range": {
+        "startLine": 660,
+        "startChar": 43,
+        "endLine": 660,
+        "endChar": 51
+      },
+      "revId": "b45ecfb9ddef9a8558476102e0b1a21198b58c92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ffcc61f_f34e361a",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-01-16T19:04:44Z",
+      "side": 1,
+      "message": "from testing?",
+      "range": {
+        "startLine": 661,
+        "startChar": 5,
+        "endLine": 661,
+        "endChar": 11
+      },
+      "revId": "b45ecfb9ddef9a8558476102e0b1a21198b58c92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27cab262_5eef533e",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-01-16T19:04:44Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be strings.HasPrefix and then strings.TrimPrefix below?",
+      "range": {
+        "startLine": 340,
+        "startChar": 12,
+        "endLine": 340,
+        "endChar": 20
+      },
+      "revId": "b45ecfb9ddef9a8558476102e0b1a21198b58c92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "baeb5130_21be5c1b",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-01-16T19:04:44Z",
+      "side": 1,
+      "message": "this should be a variable? I know it\u0027s not in make, but we should make it so in soong.",
+      "range": {
+        "startLine": 340,
+        "startChar": 43,
+        "endLine": 340,
+        "endChar": 48
+      },
+      "revId": "b45ecfb9ddef9a8558476102e0b1a21198b58c92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
