@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9bc0f9b6_83a7b08f",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1135414
+      },
+      "writtenOn": "2018-01-16T12:40:09Z",
+      "side": 1,
+      "message": "Hi Dan, if I wanted to write the contents of \"vndk_properties\" to a new file \"vndk_properties.json\", so that this json file can be included in the VNDK snapshot, 1) to what directory should such build artifact be outputted to, and 2) in which file or stage of soong build sequence can such file writing happen knowing that vndkMutator has finished mutating all modules?",
+      "revId": "99920d524585fdcf62e2fae0675aecb02e266e09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
