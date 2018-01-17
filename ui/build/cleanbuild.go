@@ -90,6 +90,7 @@ func installClean(ctx Context, config Config, what int) {
 		hostOut("coverage"),
 		hostOut("cts"),
 		hostOut("nativetest*"),
+		hostOut("pts"),
 		hostOut("sdk"),
 		hostOut("sdk_addon"),
 		hostOut("testcases"),
