@@ -2,6 +2,9 @@ ccross@android.com
 dwillemsen@google.com
 nanzhang@google.com
 
+# Backup
+smoreland@google.com
+
 per-file * = ccross@android.com
 per-file * = dwillemsen@google.com
 per-file * = nanzhang@google.com
