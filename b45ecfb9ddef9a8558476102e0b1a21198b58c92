@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "27b2afc5_3a37dd05",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-01-17T06:23:52Z",
+      "side": 1,
+      "message": "DeviceSystemSdkVerions can be nill when BOARD_SYSTEMSDK_VERSIONS is not set",
+      "parentUuid": "44da54ce_7a159fb1",
+      "range": {
+        "startLine": 660,
+        "startChar": 43,
+        "endLine": 660,
+        "endChar": 51
+      },
+      "revId": "b45ecfb9ddef9a8558476102e0b1a21198b58c92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ffcc61f_f34e361a",
         "filename": "android/config.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "b45ecfb9ddef9a8558476102e0b1a21198b58c92",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54652ac2_a727d9a2",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-01-17T06:23:52Z",
+      "side": 1,
+      "message": "oops!",
+      "parentUuid": "0ffcc61f_f34e361a",
+      "range": {
+        "startLine": 661,
+        "startChar": 5,
+        "endLine": 661,
+        "endChar": 11
+      },
+      "revId": "b45ecfb9ddef9a8558476102e0b1a21198b58c92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +130,54 @@
       "writtenOn": "2018-01-16T19:04:44Z",
       "side": 1,
       "message": "this should be a variable? I know it\u0027s not in make, but we should make it so in soong.",
+      "range": {
+        "startLine": 340,
+        "startChar": 43,
+        "endLine": 340,
+        "endChar": 48
+      },
+      "revId": "b45ecfb9ddef9a8558476102e0b1a21198b58c92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfd0854f_24bc5bb5",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-01-17T06:23:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27cab262_5eef533e",
+      "range": {
+        "startLine": 340,
+        "startChar": 12,
+        "endLine": 340,
+        "endChar": 20
+      },
+      "revId": "b45ecfb9ddef9a8558476102e0b1a21198b58c92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52ed6936_33b25319",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-01-17T06:23:52Z",
+      "side": 1,
+      "message": "Good point. Defined as FutureApiLevel.",
+      "parentUuid": "baeb5130_21be5c1b",
       "range": {
         "startLine": 340,
         "startChar": 43,
