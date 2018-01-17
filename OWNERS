@@ -1,6 +1,9 @@
 ccross@android.com
 dwillemsen@google.com
 
+# Backup
+smoreland@google.com
+
 per-file * = ccross@android.com
 per-file * = dwillemsen@google.com
 per-file *gen_stub_libs.py = danalbert@google.com
