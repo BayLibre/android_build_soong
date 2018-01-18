@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27ee28d2_60a66b82",
+        "filename": "cc/builder.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 725,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-01-18T23:15:39Z",
+      "side": 1,
+      "message": "See https://android-review.googlesource.com/c/platform/build/soong/+/591429/1/cc/builder.go#719 for why this can be a problem.",
+      "range": {
+        "startLine": 725,
+        "startChar": 1,
+        "endLine": 725,
+        "endChar": 33
+      },
+      "revId": "3b19edf975108f8abebf48bbcb4e404959cb1890",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
