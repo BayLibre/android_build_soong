@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82b99a6f_36f7672b",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-01-18T21:11:57Z",
+      "side": 1,
+      "message": "Is there a reason that this logic is different from the make implementation? Make is checking:\n\n  strings.Contains(sanitizeArg, \"integer\") \u0026\u0026 !strings.Contains(strings.Join(diagSanitizers, \",\"), \"integer\") \u0026\u0026 !Bool(sanitize.Properties.Sanitize.Address)",
+      "revId": "0fc20c3c1de127dead785d475710ff6b3e529ca8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
