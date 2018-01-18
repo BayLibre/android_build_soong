@@ -46,6 +46,30 @@
       "revId": "2aab910d7544a6bcb56bbfe06a9423ff8ea80871",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e951aae2_12f25e60",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2018-01-18T23:18:28Z",
+      "side": 1,
+      "message": "Okay, thanks, I\u0027ll go ahead with this.",
+      "parentUuid": "ed64998d_b41d33cd",
+      "range": {
+        "startLine": 716,
+        "startChar": 1,
+        "endLine": 719,
+        "endChar": 2
+      },
+      "revId": "2aab910d7544a6bcb56bbfe06a9423ff8ea80871",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
