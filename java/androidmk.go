@@ -22,6 +22,7 @@ import (
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
+	"android/soong/java/config"
 )
 
 func (library *Library) AndroidMk() android.AndroidMkData {
@@ -58,8 +59,16 @@ func (library *Library) AndroidMk() android.AndroidMkData {
 						fmt.Fprintln(w, "LOCAL_DEX_PREOPT_PROFILE_CLASS_LISTING := $(LOCAL_PATH)/"+*library.deviceProperties.Dex_preopt.Profile)
 					}
 				}
-				fmt.Fprintln(w, "LOCAL_SDK_VERSION :=", String(library.deviceProperties.Sdk_version))
 				fmt.Fprintln(w, "LOCAL_SOONG_HEADER_JAR :=", library.headerJarFile.String())
+
+				if _, filtered := android.FilterList(library.properties.Libs, config.DefaultLibraries); len(filtered) == 0 {
+					// LOCAL_SDK_VERSION is not emitted when the lib is explicitly using framework libraries.
+					// Otherwise, {libs: ["framework"], sdk_version: "current"} would falsely be categorized as java:sdk
+					fmt.Fprintln(w, "LOCAL_SDK_VERSION :=", String(library.deviceProperties.Sdk_version))
+					if proptools.Bool(library.properties.No_framework_libs) || proptools.Bool(library.properties.No_standard_libs) {
+						fmt.Fprintln(w, "LOCAL_NO_FRAMEWORK_LIBRARIES := true")
+					}
+				}
 
 				if library.jacocoReportClassesFile != nil {
 					fmt.Fprintln(w, "LOCAL_SOONG_JACOCO_REPORT_CLASSES_JAR :=", library.jacocoReportClassesFile.String())
