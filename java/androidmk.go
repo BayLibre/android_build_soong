@@ -22,6 +22,7 @@ import (
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
+	"android/soong/java/config"
 )
 
 func (library *Library) AndroidMk() android.AndroidMkData {
@@ -60,6 +61,11 @@ func (library *Library) AndroidMk() android.AndroidMkData {
 				}
 				fmt.Fprintln(w, "LOCAL_SDK_VERSION :=", String(library.deviceProperties.Sdk_version))
 				fmt.Fprintln(w, "LOCAL_SOONG_HEADER_JAR :=", library.headerJarFile.String())
+				if proptools.Bool(library.properties.No_framework_libs) || proptools.Bool(library.properties.No_standard_libs) {
+					if _, filtered := android.FilterList(library.properties.Libs, config.DefaultLibraries); len(filtered) == 0 {
+						fmt.Fprintln(w, "LOCAL_NO_FRAMEWORK_LIBRARIES := true")
+					}
+				}
 
 				if library.jacocoReportClassesFile != nil {
 					fmt.Fprintln(w, "LOCAL_SOONG_JACOCO_REPORT_CLASSES_JAR :=", library.jacocoReportClassesFile.String())
