@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11db7a60_22d0daf0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-01-19T01:31:18Z",
+      "side": 1,
+      "message": "PLATFORM_SYSTEMSDK_VERSIONS",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 30
+      },
+      "revId": "90a206ddd207a1e1030d384d4f0c4feab748d77e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0e53fdb_a669ad04",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-01-19T01:31:18Z",
+      "side": 1,
+      "message": "duplicate",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 58
+      },
+      "revId": "90a206ddd207a1e1030d384d4f0c4feab748d77e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "482b8740_f4e18f18",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-01-19T01:31:18Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 3
+      },
+      "revId": "90a206ddd207a1e1030d384d4f0c4feab748d77e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f1d2a55_09f147f0",
+        "filename": "java/java_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-01-19T01:31:18Z",
+      "side": 1,
+      "message": "Is this just to make the tests not crash, or are you planning on adding some tests around this functionality too?",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 72
+      },
+      "revId": "90a206ddd207a1e1030d384d4f0c4feab748d77e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
