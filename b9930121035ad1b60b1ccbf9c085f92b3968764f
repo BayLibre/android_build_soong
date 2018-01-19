@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c972343b_1ae328ba",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-01-19T21:26:31Z",
+      "side": 1,
+      "message": "intOverflow doesn\u0027t create its own variant -- only asan/tsan/cfi",
+      "range": {
+        "startLine": 540,
+        "startChar": 0,
+        "endLine": 540,
+        "endChar": 46
+      },
+      "revId": "b9930121035ad1b60b1ccbf9c085f92b3968764f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
