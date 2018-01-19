@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b651d06_1ad85837",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-01-19T04:40:27Z",
+      "side": 1,
+      "message": "this will need to be updated to the make logic -- always check the platform supported list.\n\nI\u0027m somewhat wondering if we should hide the PLATFORM vs BOARD logic behind a single list, where the board option can just trim the beginning of the PLATFORM list. All the users really just need to know which versions we\u0027re currently supporting -- the only reason we\u0027d need to understand if it\u0027s in one list or the other is if we were customizing the error messages (where we aren\u0027t)",
+      "revId": "6719f8e472b5490e0e8f30a092a1eabbdaec1604",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
