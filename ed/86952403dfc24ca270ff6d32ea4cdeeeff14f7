@@ -1,0 +1,12 @@
+Autosubmit+1: Dan Willemsen <dwillemsen@google.com>
+Code-Review+1: Dmitry Shmidt <dimitrysh@google.com>
+Code-Review+2: Nan Zhang <nanzhang@google.com>
+Code-Review+1: John Stultz <john.stultz@linaro.org>
+Code-Review+1: Vishal Bhoj <vishal.bhoj@linaro.org>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: Dan Willemsen <dwillemsen@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Tue, 23 Jan 2018 00:15:28 +0000
+Reviewed-on: https://android-review.googlesource.com/584808
+Project: platform/build/soong
+Branch: refs/heads/master
