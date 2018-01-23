@@ -155,6 +155,8 @@ type javaBuilderFlags struct {
 	aidlFlags     string
 	javaVersion   string
 
+	errorProneExtraJavacFlags string
+
 	kotlincFlags     string
 	kotlincClasspath classpath
 
@@ -210,7 +212,17 @@ func RunErrorProne(ctx android.ModuleContext, outputFile android.WritablePath,
 		ctx.ModuleErrorf("cannot build with Error Prone, missing external/error_prone?")
 	}
 
-	transformJavaToClasses(ctx, outputFile, -1, srcFiles, srcJars, flags, nil,
+	var eflags javaBuilderFlags
+	eflags = flags
+	if len(flags.errorProneExtraJavacFlags) > 0 {
+		if len(flags.javacFlags) > 0 {
+			eflags.javacFlags = flags.errorProneExtraJavacFlags + " " + flags.javacFlags
+		} else {
+			eflags.javacFlags = flags.errorProneExtraJavacFlags
+		}
+	}
+
+	transformJavaToClasses(ctx, outputFile, -1, srcFiles, srcJars, eflags, nil,
 		"errorprone", "errorprone", errorprone)
 }
 
