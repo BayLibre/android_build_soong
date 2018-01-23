@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52d25813_0fcd7c3c",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-01-23T19:19:56Z",
+      "side": 1,
+      "message": "This should be pathDeps, not cFlagsDeps. Same with the next line, and the proto case below",
+      "range": {
+        "startLine": 679,
+        "startChar": 45,
+        "endLine": 679,
+        "endChar": 55
+      },
+      "revId": "e189dc1c37d1db3035232b9e76f60950811657e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
