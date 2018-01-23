@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c30223cf_062efd42",
+        "filename": "java/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-01-23T23:50:54Z",
+      "side": 1,
+      "message": "eflags :\u003d flags",
+      "revId": "ea83cc15cdf8ffbb249863a872dc1402b10643d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
