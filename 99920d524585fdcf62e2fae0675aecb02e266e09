@@ -16,6 +16,24 @@
       "revId": "99920d524585fdcf62e2fae0675aecb02e266e09",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c009b98_1668d986",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-01-23T23:54:13Z",
+      "side": 1,
+      "message": "1). which directory to output it to. Dan would know better, but I\u0027m thinking the intermediates directory for this module. If it\u0027s a single file for the whole build, perhaps write it to $ANDROID_PRODUCT_OUT? Really, Dan/Jiyong would know better.\n\n2). anytime after this mutator is done should be fine. vndkMutator is registered as a PreDeps mutator. I see two solutions:\n- register a later mutator and write the JSON output for each module\n- use a singleton (see register.go)",
+      "parentUuid": "9bc0f9b6_83a7b08f",
+      "revId": "99920d524585fdcf62e2fae0675aecb02e266e09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
