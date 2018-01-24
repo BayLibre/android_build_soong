@@ -52,6 +52,24 @@
       "revId": "ea83cc15cdf8ffbb249863a872dc1402b10643d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5954c8b2_a767fe4a",
+        "filename": "java/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-01-24T00:20:06Z",
+      "side": 1,
+      "message": ":\u003d is for declaration + assignment\nit equals to line 215 + line 216. but anyway, Dan\u0027s right.",
+      "parentUuid": "f8b96e35_a56c3201",
+      "revId": "ea83cc15cdf8ffbb249863a872dc1402b10643d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
