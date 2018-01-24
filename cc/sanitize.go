@@ -34,11 +34,10 @@ var (
 	asanLdflags = []string{"-Wl,-u,__asan_preinit"}
 	asanLibs    = []string{"libasan"}
 
-	cfiCflags = []string{"-flto", "-fsanitize-cfi-cross-dso",
+	cfiCflags = []string{"-fsanitize-cfi-cross-dso",
 		"-fsanitize-blacklist=external/compiler-rt/lib/cfi/cfi_blacklist.txt"}
-	cfiLdflags = []string{"-flto", "-fsanitize-cfi-cross-dso", "-fsanitize=cfi",
+	cfiLdflags = []string{"-fsanitize-cfi-cross-dso", "-fsanitize=cfi",
 		"-Wl,-plugin-opt,O1"}
-	cfiArflags         = []string{"--plugin ${config.ClangBin}/../lib64/LLVMgold.so"}
 	cfiExportsMapPath  = "build/soong/cc/config/cfi_exports.map"
 	cfiExportsMap      android.Path
 	cfiStaticLibsMutex sync.Mutex
@@ -401,7 +400,6 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 			flags.CFlags = append(flags.CFlags, "-fvisibility=default")
 		}
 		flags.LdFlags = append(flags.LdFlags, cfiLdflags...)
-		flags.ArFlags = append(flags.ArFlags, cfiArflags...)
 		if Bool(sanitize.Properties.Sanitize.Diag.Cfi) {
 			diagSanitizers = append(diagSanitizers, "cfi")
 		}
@@ -591,6 +589,9 @@ func sanitizerMutator(t sanitizerType) func(android.BottomUpMutatorContext) {
 			if c.isDependencyRoot() && c.sanitize.isSanitizerEnabled(t) {
 				modules := mctx.CreateVariations(t.String())
 				modules[0].(*Module).sanitize.SetSanitizer(t, true)
+				if t == cfi {
+					modules[0].(*Module).lto.EnableFull(mctx)
+				}
 			} else if c.sanitize.isSanitizerEnabled(t) || c.sanitize.Properties.SanitizeDep {
 				// Save original sanitizer status before we assign values to variant
 				// 0 as that overwrites the original.
@@ -607,6 +608,7 @@ func sanitizerMutator(t sanitizerType) func(android.BottomUpMutatorContext) {
 				// target static libraries, so suppress the appropriate variant in
 				// all other cases.
 				if t == cfi {
+					modules[1].(*Module).lto.EnableFull(mctx)
 					if c.static() {
 						if !mctx.Device() {
 							if isSanitizerEnabled {
