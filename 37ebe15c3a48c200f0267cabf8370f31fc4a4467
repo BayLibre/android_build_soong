@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c1bc291_7c17f8fd",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2018-01-24T23:10:40Z",
+      "side": 1,
+      "message": "Currently this errors if LTO is explicitly disabled for the module. When CFI is enabled by default this might need to change to a warning or just silently disabling CFI for modules where LTO is blacklisted.",
+      "revId": "37ebe15c3a48c200f0267cabf8370f31fc4a4467",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
