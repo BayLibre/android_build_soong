@@ -34,6 +34,24 @@
       "revId": "266bb5b15e79cdb55498e2114be953a7e87a1ed3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f08bff02_58f832d4",
+        "filename": "ui/build/cleanbuild.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1014491
+      },
+      "writtenOn": "2018-01-24T02:35:32Z",
+      "side": 1,
+      "message": "Will follow up on the bug instead.",
+      "parentUuid": "f9cb064e_c0f2e303",
+      "revId": "266bb5b15e79cdb55498e2114be953a7e87a1ed3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
