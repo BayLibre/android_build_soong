@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1043f76_a16c5dc5",
+        "filename": "cc/vndk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-01-24T19:09:25Z",
+      "side": 1,
+      "message": "ah, I see. If this was to be used here, then it probably shouldn\u0027t be defined in neverallow.go\n\nIn fact, we should refrain from talking about directories directly like this. One thing is having a neverallow based on this, the other is updating configuration magically based on source tree location.\n\nRather than doing this, can we differentiate these based on a tag in Android.bp files?",
+      "range": {
+        "startLine": 139,
+        "startChar": 36,
+        "endLine": 139,
+        "endChar": 55
+      },
+      "revId": "4b970e8dde84584eac4d91c926fe65719090f7b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
