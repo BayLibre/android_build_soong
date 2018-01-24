@@ -34,6 +34,24 @@
       "revId": "ea83cc15cdf8ffbb249863a872dc1402b10643d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8b96e35_a56c3201",
+        "filename": "java/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-01-24T00:11:25Z",
+      "side": 1,
+      "message": "It copied the style from above, e.g. line 177. Can you explain the difference in use, please?",
+      "parentUuid": "c30223cf_062efd42",
+      "revId": "ea83cc15cdf8ffbb249863a872dc1402b10643d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
