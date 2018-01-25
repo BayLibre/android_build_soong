@@ -22,6 +22,7 @@ import (
 	"strings"
 
 	"github.com/google/blueprint"
+	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
 )
@@ -105,13 +106,19 @@ func jacocoFiltersToSpecs(filters []string) ([]string, error) {
 			return nil, err
 		}
 	}
-	return specs, nil
+	return proptools.NinjaAndShellEscape(specs), nil
 }
 
 func jacocoFilterToSpec(filter string) (string, error) {
-	wildcard := strings.HasSuffix(filter, "*")
-	filter = strings.TrimSuffix(filter, "*")
-	recursiveWildcard := wildcard && (strings.HasSuffix(filter, ".") || filter == "")
+	dWildcard := strings.HasSuffix(filter, "**")
+	sWildcard := false
+	if !dWildcard {
+		sWildcard = strings.HasSuffix(filter, "*")
+		filter = strings.TrimSuffix(filter, "*")
+	} else {
+		filter = strings.TrimSuffix(filter, "**")
+	}
+	recursiveWildcard := dWildcard && (strings.HasSuffix(filter, ".") || filter == "")
 
 	if strings.ContainsRune(filter, '*') {
 		return "", fmt.Errorf("'*' is only supported as the last character in a filter")
@@ -121,7 +128,7 @@ func jacocoFilterToSpec(filter string) (string, error) {
 
 	if recursiveWildcard {
 		spec += "**/*.class"
-	} else if wildcard {
+	} else if sWildcard {
 		spec += "*.class"
 	} else {
 		spec += ".class"
