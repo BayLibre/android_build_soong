@@ -27,18 +27,28 @@ func TestJacocoFilterToSpecs(t *testing.T) {
 		},
 		{
 			name: "class wildcard",
-			in:   "package.Class*",
-			out:  "package/Class*.class",
+			in:   "package.Class$*",
+			out:  "'package/Class$$*.class'",
 		},
 		{
 			name: "package wildcard",
 			in:   "package.*",
-			out:  "package/**/*.class",
+			out:  "'package/*.class'",
 		},
 		{
-			name: "all wildcard",
+			name: "package recursive wildcard",
+			in:   "package.**",
+			out:  "'package/**/*.class'",
+		},
+		{
+			name: "recursive wildcard only",
+			in:   "**",
+			out:  "'**/*.class'",
+		},
+		{
+			name: "single wildcard only",
 			in:   "*",
-			out:  "**/*.class",
+			out:  "'*.class'",
 		},
 	}
 
