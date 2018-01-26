@@ -34,6 +34,24 @@
       "revId": "99920d524585fdcf62e2fae0675aecb02e266e09",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5856cf9_0533ec67",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1135414
+      },
+      "writtenOn": "2018-01-26T09:43:19Z",
+      "side": 1,
+      "message": "Thanks Steven--I am planning on writing a single file for the whole build, so I\u0027m currently working with the singleton route. Will upload new patch when CL is ready.",
+      "parentUuid": "2c009b98_1668d986",
+      "revId": "99920d524585fdcf62e2fae0675aecb02e266e09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
