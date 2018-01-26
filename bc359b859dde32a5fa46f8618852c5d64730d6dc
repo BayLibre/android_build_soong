@@ -1,0 +1,249 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bdb3a29c_fa31ddff",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-01-26T22:25:30Z",
+      "side": 1,
+      "message": "Can this be combined with stdDroiddoc into a single rule by moving most of the arguments into args variables?",
+      "revId": "bc359b859dde32a5fa46f8618852c5d64730d6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a845f9a7_2f2db44e",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-01-26T22:25:30Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be necessary, soong_zip should do it correctly.",
+      "revId": "bc359b859dde32a5fa46f8618852c5d64730d6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02e97220_8d670b17",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-01-26T22:25:30Z",
+      "side": 1,
+      "message": "Add -write_if_changed to the soong_zip line and it will do this for you.",
+      "revId": "bc359b859dde32a5fa46f8618852c5d64730d6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb4d541f_486b1d39",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-01-26T22:25:30Z",
+      "side": 1,
+      "message": "top of the source tree",
+      "range": {
+        "startLine": 102,
+        "startChar": 26,
+        "endLine": 102,
+        "endChar": 43
+      },
+      "revId": "bc359b859dde32a5fa46f8618852c5d64730d6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fd3a996_fe540d5b",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-01-26T22:25:30Z",
+      "side": 1,
+      "message": "std -\u003e standard everywhere, since this will show up in the build documentation.",
+      "range": {
+        "startLine": 103,
+        "startChar": 8,
+        "endLine": 103,
+        "endChar": 11
+      },
+      "revId": "bc359b859dde32a5fa46f8618852c5d64730d6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "871cecbe_0a4aa7c4",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-01-26T22:25:30Z",
+      "side": 1,
+      "message": "Maybe use something like genrules do, so the ahat docs would have:\n\n    arg_files: [\"ahat_api.txt\", \"ahat_remove_api.txt\"],\n    args: \"-api $(location ahat_api.txt) -removeApi $(location ahat_remove_api.txt)\",",
+      "revId": "bc359b859dde32a5fa46f8618852c5d64730d6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7e082f2_47c734d7",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-01-26T22:25:30Z",
+      "side": 1,
+      "message": "Maybe make these separate module types?  javadoc for the standard doclet, and droiddoc for doclava?  That will also let you move all the doclava properties to a separate property struct so its an error to set one on a javadoc module.",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 20
+      },
+      "revId": "bc359b859dde32a5fa46f8618852c5d64730d6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58c817ef_4bd2cf84",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-01-26T22:25:30Z",
+      "side": 1,
+      "message": "This sounds like ctx.ExpandSources needs to be fixed to support filegroups in excludes",
+      "revId": "bc359b859dde32a5fa46f8618852c5d64730d6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06214dfe_7ef72238",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-01-26T22:25:30Z",
+      "side": 1,
+      "message": "Keep this as an android.Paths until you pass it to Build below, or make it a classpath so it can handle the \":\" join for you",
+      "revId": "bc359b859dde32a5fa46f8618852c5d64730d6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c51ac80d_9babd8f4",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-01-26T22:25:30Z",
+      "side": 1,
+      "message": "len(deps.bootClasspath), otherwise it will probably do an unnecessary string conversion and then throw it away",
+      "range": {
+        "startLine": 302,
+        "startChar": 6,
+        "endLine": 302,
+        "endChar": 39
+      },
+      "revId": "bc359b859dde32a5fa46f8618852c5d64730d6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfa29177_37b612c6",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-01-26T22:25:30Z",
+      "side": 1,
+      "message": "deps.bootClasspath.FormJavaClassPath(\"-bootclasspath\")",
+      "revId": "bc359b859dde32a5fa46f8618852c5d64730d6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "744d2dbd_2bf6fefa",
+        "filename": "java/java.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-01-26T22:25:30Z",
+      "side": 1,
+      "message": "This needs to be more descriptive",
+      "revId": "bc359b859dde32a5fa46f8618852c5d64730d6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de4703b6_3a12c3bb",
+        "filename": "java/java.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-01-26T22:25:30Z",
+      "side": 1,
+      "message": "We probably don\u0027t want to add this for all host java builds, just for tools that need it.  We could add a property to enable adding it to the bootclasspath.\n\nIf you make this a separate patch you can probably split out compiling doclava and get that in before the rest of this stack.",
+      "revId": "bc359b859dde32a5fa46f8618852c5d64730d6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
