@@ -120,29 +120,13 @@ func (d *dir) Set(s string) error {
 }
 
 var (
-	out            = flag.String("o", "", "file to write zip file to")
-	manifest       = flag.String("m", "", "input jar manifest file name")
-	directories    = flag.Bool("d", false, "include directories in zip")
-	rootPrefix     = flag.String("P", "", "path prefix within the zip at which to place files")
-	relativeRoot   = flag.String("C", "", "path to use as relative root of files in following -f, -l, or -D arguments")
-	parallelJobs   = flag.Int("j", runtime.NumCPU(), "number of parallel threads to use")
-	compLevel      = flag.Int("L", 5, "deflate compression level (0-9)")
-	emulateJar     = flag.Bool("jar", false, "modify the resultant .zip to emulate the output of 'jar'")
-	writeIfChanged = flag.Bool("write_if_changed", false, "only update resultant .zip if it has changed")
+	out, manifest, rootPrefix, relativeRoot, cpuProfile, traceFile *string
+	directories, emulateJar, writeIfChanged                        *bool
+	parallelJobs, compLevel                                        *int
 
 	fArgs            zip.FileArgs
 	nonDeflatedFiles = make(uniqueSet)
-
-	cpuProfile = flag.String("cpuprofile", "", "write cpu profile to file")
-	traceFile  = flag.String("trace", "", "write trace to file")
 )
-
-func init() {
-	flag.Var(&listFiles{}, "l", "file containing list of .class files")
-	flag.Var(&dir{}, "D", "directory to include in zip")
-	flag.Var(&file{}, "f", "file to include in zip")
-	flag.Var(&nonDeflatedFiles, "s", "file path to be stored within the zip without compression")
-}
 
 func usage() {
 	fmt.Fprintf(os.Stderr, "usage: zip -o zipfile [-m manifest] -C dir [-f|-l file]...\n")
@@ -150,8 +134,127 @@ func usage() {
 	os.Exit(2)
 }
 
+func readRespFile(argFile string) ([]string, error) {
+	bytes, err := ioutil.ReadFile(argFile)
+	if err != nil {
+		return nil, err
+	}
+	content := []rune(string(bytes))
+	// Ninja only dumps single quote for escaping. Enclosing characters in quotes
+	// preserves the literal value of all characters within the quotes
+	// with the exception of quote itself.
+	isQuote := func(r rune) bool {
+		switch {
+		case r == '\'',
+			r == '"':
+			return true
+		default:
+			return false
+		}
+	}
+
+	isWhitespace := func(r rune) bool {
+		switch {
+		case r == ' ',
+			r == '\t',
+			r == '\n',
+			r == '\r',
+			r == '\f',
+			r == '\v':
+			return true
+		default:
+			return false
+		}
+	}
+
+	var args []string
+	var arg []rune
+	for i := 0; i < len(content); i++ {
+		if len(arg) == 0 {
+			for i < len(content) && isWhitespace(content[i]) {
+				i++
+			}
+		}
+		if i == len(content) {
+			break
+		}
+
+		// Backslash escapes the next char.
+		if i+1 < len(content) && content[i] == '\\' {
+			i++ // Skip the escape.
+			arg = append(arg, content[i])
+			continue
+		}
+
+		// Consume a quoted string.
+		if isQuote(content[i]) {
+			quote := content[i]
+			i++
+			for ; i < len(content) && content[i] != quote; i++ {
+			}
+			if i == len(content) {
+				break
+			}
+			continue
+		}
+
+		// End the argument if this is whitespace.
+		if isWhitespace(content[i]) {
+			if len(arg) != 0 {
+				args = append(args, string(arg))
+			}
+			arg = arg[:0]
+			continue
+		}
+		// This is a normal char.  Append it.
+		arg = append(arg, content[i])
+	}
+
+	if len(arg) != 0 {
+		args = append(args, string(arg))
+	}
+
+	return args, nil
+}
+
 func main() {
-	flag.Parse()
+	var expandedArgs []string
+	for _, arg := range os.Args {
+		if strings.HasPrefix(arg, "@") {
+			respArgs, err := readRespFile(strings.TrimPrefix(arg, "@"))
+			if err != nil {
+				fmt.Fprintln(os.Stderr, err.Error())
+				os.Exit(1)
+			} else {
+				expandedArgs = append(expandedArgs, respArgs...)
+			}
+		} else {
+			expandedArgs = append(expandedArgs, arg)
+		}
+	}
+	fmt.Println(expandedArgs)
+
+	flags := flag.NewFlagSet("flags", flag.ExitOnError)
+
+	out = flags.String("o", "", "file to write zip file to")
+	manifest = flags.String("m", "", "input jar manifest file name")
+	directories = flags.Bool("d", false, "include directories in zip")
+	rootPrefix = flags.String("P", "", "path prefix within the zip at which to place files")
+	relativeRoot = flags.String("C", "", "path to use as relative root of files in following -f, -l, or -D arguments")
+	parallelJobs = flags.Int("j", runtime.NumCPU(), "number of parallel threads to use")
+	compLevel = flags.Int("L", 5, "deflate compression level (0-9)")
+	emulateJar = flags.Bool("jar", false, "modify the resultant .zip to emulate the output of 'jar'")
+	writeIfChanged = flags.Bool("write_if_changed", false, "only update resultant .zip if it has changed")
+
+	cpuProfile = flags.String("cpuprofile", "", "write cpu profile to file")
+	traceFile = flags.String("trace", "", "write trace to file")
+
+	flags.Var(&listFiles{}, "l", "file containing list of .class files")
+	flags.Var(&dir{}, "D", "directory to include in zip")
+	flags.Var(&file{}, "f", "file to include in zip")
+	flags.Var(&nonDeflatedFiles, "s", "file path to be stored within the zip without compression")
+
+	flags.Parse(expandedArgs[1:])
 
 	err := zip.Run(zip.ZipArgs{
 		FileArgs:                 fArgs,
