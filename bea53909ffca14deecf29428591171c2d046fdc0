@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f0f42b1_7fe5dc75",
+        "filename": "zip/cmd/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-01-27T03:12:57Z",
+      "side": 1,
+      "message": "This really isn\u0027t implementing rsp files, just a subset. If we were just doing this, we probably shouldn\u0027t use the @ syntax, but a dedicated flag. Though I\u0027d still prefer something closer to rsp files.\n\n@file should be able to be inserted anywhere in the argument list (with flags after it for example), potentially more than once (though we can only use one directly with ninja). So it would make more sense to parse through os.Args first, then pass that off to a FlagSet.Parse after expansion.\n\nWe\u0027ll need some tests for this too",
+      "revId": "bea53909ffca14deecf29428591171c2d046fdc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "853c00cc_9d6194bf",
+        "filename": "zip/cmd/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-01-27T03:12:57Z",
+      "side": 1,
+      "message": "rsp files can also have newlines as a delimiter, and this needs to handle escaping and quoting, since the shell won\u0027t handle it for you.",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 63
+      },
+      "revId": "bea53909ffca14deecf29428591171c2d046fdc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
