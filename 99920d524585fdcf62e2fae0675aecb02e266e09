@@ -52,6 +52,24 @@
       "revId": "99920d524585fdcf62e2fae0675aecb02e266e09",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9eb8cb90_5cbba8c4",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-01-27T03:51:09Z",
+      "side": 1,
+      "message": "Yeah, singleton is the right way to go, and use the android.WriteFile to create a rule that would write the file.\n\nRealistically, I\u0027d far prefer if we dump a few necessary bits of information, not the entire list of property structures, as those aren\u0027t stable.",
+      "parentUuid": "a5856cf9_0533ec67",
+      "revId": "99920d524585fdcf62e2fae0675aecb02e266e09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
