@@ -178,8 +178,9 @@ type productVariables struct {
 	OdmPath     *string `json:",omitempty"`
 	ProductPath *string `json:",omitempty"`
 
-	ClangTidy  *bool   `json:",omitempty"`
-	TidyChecks *string `json:",omitempty"`
+	ClangTidy     *bool   `json:",omitempty"`
+	TidyChecks    *string `json:",omitempty"`
+	SkipAbiChecks *bool   `json:",omitempty"`
 
 	NativeCoverage       *bool     `json:",omitempty"`
 	CoveragePaths        *[]string `json:",omitempty"`
