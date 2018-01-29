@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "efb967db_d2ba92a1",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2018-01-29T23:33:30Z",
+      "side": 1,
+      "message": "letting this stay for better readability.",
+      "range": {
+        "startLine": 519,
+        "startChar": 1,
+        "endLine": 519,
+        "endChar": 59
+      },
+      "revId": "f5e26a15eaf217a4755cbf4899ec3bc49f219115",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
