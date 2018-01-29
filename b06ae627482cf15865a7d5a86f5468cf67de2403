@@ -22,6 +22,30 @@
       "revId": "b06ae627482cf15865a7d5a86f5468cf67de2403",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2381222_8c02a646",
+        "filename": "android/variable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-01-29T23:16:50Z",
+      "side": 1,
+      "message": "Yes, grab it from the environment, otherwise it could be hardcoded in a product-specific makefile.",
+      "parentUuid": "8a73ed0e_342c35d6",
+      "range": {
+        "startLine": 183,
+        "startChar": 1,
+        "endLine": 183,
+        "endChar": 41
+      },
+      "revId": "b06ae627482cf15865a7d5a86f5468cf67de2403",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
