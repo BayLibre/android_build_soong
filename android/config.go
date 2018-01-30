@@ -610,6 +610,10 @@ func (c *config) TidyChecks() string {
 	return *c.ProductVariables.TidyChecks
 }
 
+func (c *config) PgoAdditionalProfileDirs() []string {
+	return c.ProductVariables.PgoAdditionalProfileDirs
+}
+
 func (c *config) LibartImgHostBaseAddress() string {
 	return "0x60000000"
 }
