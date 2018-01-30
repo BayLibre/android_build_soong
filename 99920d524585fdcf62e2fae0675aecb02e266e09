@@ -70,6 +70,24 @@
       "revId": "99920d524585fdcf62e2fae0675aecb02e266e09",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40785bdc_41740ad5",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-01-30T01:48:31Z",
+      "side": 1,
+      "message": "Dumping the entire list at least gives you a snapshot of things as the VNDK is frozen. It allows us to do certain things without having to go back to the previous branches and modify the build system to dump the VNDK differently. Do you have an alternative suggestion for this flexibility?",
+      "parentUuid": "9eb8cb90_5cbba8c4",
+      "revId": "99920d524585fdcf62e2fae0675aecb02e266e09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
