@@ -312,7 +312,7 @@ type sdkDep struct {
 
 func sdkStringToNumber(ctx android.BaseContext, v string) int {
 	switch v {
-	case "", "current", "system_current", "test_current":
+	case "", "current", "system_current", "test_current", "core_current":
 		return android.FutureApiLevel
 	default:
 		if i, err := strconv.Atoi(android.GetNumericSdkVersion(v)); err != nil {
@@ -358,8 +358,15 @@ func decodeSdkDep(ctx android.BaseContext, v string) sdkDep {
 	}
 
 	toFile := func(v string) sdkDep {
+		isCore := strings.HasPrefix(v, "core_")
+		if isCore {
+			v = strings.TrimPrefix(v, "core_")
+		}
 		dir := filepath.Join("prebuilts/sdk", v)
 		jar := filepath.Join(dir, "android.jar")
+		if isCore {
+			jar = filepath.Join(dir, "core.jar")
+		}
 		aidl := filepath.Join(dir, "framework.aidl")
 		jarPath := android.ExistentPathForSource(ctx, "sdkdir", jar)
 		aidlPath := android.ExistentPathForSource(ctx, "sdkdir", aidl)
@@ -982,7 +989,7 @@ func (j *Module) instrument(ctx android.ModuleContext, flags javaBuilderFlags,
 // modules targeting an unreleased SDK (meaning it does not yet have a number) it returns "10000".
 func (j *Module) minSdkVersionNumber(ctx android.ModuleContext) string {
 	switch String(j.deviceProperties.Sdk_version) {
-	case "", "current", "test_current", "system_current":
+	case "", "current", "test_current", "system_current", "core_current":
 		return strconv.Itoa(ctx.Config().DefaultAppTargetSdkInt())
 	default:
 		return android.GetNumericSdkVersion(String(j.deviceProperties.Sdk_version))
