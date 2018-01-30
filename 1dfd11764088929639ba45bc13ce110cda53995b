@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4466015c_c6db76f1",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-01-30T22:31:06Z",
+      "side": 1,
+      "message": "For board-specific variables (generally BoardConfig.mk), we prefer these to be exposed through the deviceConfig instead of the global config (to make it a little bit more obvious how we could do multi-device builds in the future)",
+      "range": {
+        "startLine": 613,
+        "startChar": 9,
+        "endLine": 613,
+        "endChar": 15
+      },
+      "revId": "1dfd11764088929639ba45bc13ce110cda53995b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
