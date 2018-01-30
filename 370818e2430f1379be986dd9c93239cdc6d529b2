@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d1f8e54_830f992e",
+        "filename": "cc/vndk_properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1135414
+      },
+      "writtenOn": "2018-01-30T08:36:40Z",
+      "side": 1,
+      "message": "Writing the json string of the entire vndkPropertiesMap to one file with android.WriteFile did not work, because the argument length was too long for the shell echo command (\"/bin/bash -c \u0027echo -e $$0 \u003e $out\u0027), therefore created separate json files for each lib.",
+      "revId": "370818e2430f1379be986dd9c93239cdc6d529b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
