@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "82398a3b_3be62e42",
+        "filename": "zip/cmd/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-01-31T01:54:08Z",
+      "side": 1,
+      "message": "Add a respFile expanding based on how llvm does.",
+      "parentUuid": "0f0f42b1_7fe5dc75",
+      "revId": "bea53909ffca14deecf29428591171c2d046fdc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "853c00cc_9d6194bf",
         "filename": "zip/cmd/main.go",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "bea53909ffca14deecf29428591171c2d046fdc0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "786077c6_8adb3a13",
+        "filename": "zip/cmd/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-01-31T01:54:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "853c00cc_9d6194bf",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 63
+      },
+      "revId": "bea53909ffca14deecf29428591171c2d046fdc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
