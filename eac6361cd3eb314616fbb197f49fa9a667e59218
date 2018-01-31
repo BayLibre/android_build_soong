@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1cbcd668_4d185edb",
+        "filename": "cc/config/clang.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1093255
+      },
+      "writtenOn": "2018-01-31T18:41:37Z",
+      "side": 1,
+      "message": "These flags need to go into ClangExtraNoOverrideCflags instead to not be overridden by -Wall -Werror later on the compile command line.",
+      "revId": "eac6361cd3eb314616fbb197f49fa9a667e59218",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
