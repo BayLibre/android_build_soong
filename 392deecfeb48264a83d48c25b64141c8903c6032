@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "90c8ce9e_3c9df7b3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-01-31T00:37:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9c372f7_883cdd64",
+      "range": {
+        "startLine": 14,
+        "startChar": 9,
+        "endLine": 14,
+        "endChar": 13
+      },
+      "revId": "392deecfeb48264a83d48c25b64141c8903c6032",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85fb2907_3de48eee",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-01-31T00:21:28Z",
       "side": 1,
       "message": "Does it? I don\u0027t see any soong side checks",
+      "range": {
+        "startLine": 15,
+        "startChar": 55,
+        "endLine": 15,
+        "endChar": 64
+      },
+      "revId": "392deecfeb48264a83d48c25b64141c8903c6032",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "657c00b9_d79c510f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-01-31T00:37:53Z",
+      "side": 1,
+      "message": "I just copy/pasted message from build/make.\n\nCould you tell me how this can be done? Should I create variants for this? Or is there any other way?",
+      "parentUuid": "85fb2907_3de48eee",
       "range": {
         "startLine": 15,
         "startChar": 55,
@@ -68,6 +116,30 @@
       "revId": "392deecfeb48264a83d48c25b64141c8903c6032",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "726be778_e28742e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-01-31T00:37:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0328f78d_47f8448b",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 8
+      },
+      "revId": "392deecfeb48264a83d48c25b64141c8903c6032",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
