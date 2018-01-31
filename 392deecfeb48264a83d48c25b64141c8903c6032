@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "479a9589_b75783da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-01-31T01:06:33Z",
+      "side": 1,
+      "message": "The java side probably doesn\u0027t have anything setup, since Soong doesn\u0027t support warnings, only errors. checkLinkType in cc/cc.go has the ndk checks",
+      "parentUuid": "657c00b9_d79c510f",
+      "range": {
+        "startLine": 15,
+        "startChar": 55,
+        "endLine": 15,
+        "endChar": 64
+      },
+      "revId": "392deecfeb48264a83d48c25b64141c8903c6032",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0328f78d_47f8448b",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
