@@ -60,6 +60,9 @@ func (lto *lto) props() []interface{} {
 }
 
 func (lto *lto) begin(ctx BaseModuleContext) {
+	if ctx.Config().Getenv("DISABLE_LTO") == "true" {
+		lto.Properties.Lto.Never = boolPtr(true)
+	}
 }
 
 func (lto *lto) deps(ctx BaseModuleContext, deps Deps) Deps {
