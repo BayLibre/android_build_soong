@@ -122,6 +122,7 @@ type ModuleContext interface {
 
 	InstallInData() bool
 	InstallInSanitizerDir() bool
+	InstallInRecovery() bool
 
 	RequiredModuleNames() []string
 
@@ -174,6 +175,7 @@ type Module interface {
 	Target() Target
 	InstallInData() bool
 	InstallInSanitizerDir() bool
+	InstallInRecovery() bool
 	SkipInstall()
 
 	AddProperties(props ...interface{})
@@ -235,6 +237,9 @@ type commonProperties struct {
 	// network operator, etc). When set to true, it is installed into /product (or
 	// /system/product if product partition does not exist).
 	Product_specific *bool
+
+	// Whether this module is installed to recovery partition
+	Recovery *bool
 
 	// init.rc files to be installed if this module is installed
 	Init_rc []string
@@ -533,6 +538,10 @@ func (p *ModuleBase) InstallInData() bool {
 
 func (p *ModuleBase) InstallInSanitizerDir() bool {
 	return false
+}
+
+func (p *ModuleBase) InstallInRecovery() bool {
+	return Bool(p.commonProperties.Recovery)
 }
 
 func (a *ModuleBase) generateModuleTarget(ctx ModuleContext) {
@@ -981,6 +990,10 @@ func (a *androidModuleContext) InstallInData() bool {
 
 func (a *androidModuleContext) InstallInSanitizerDir() bool {
 	return a.module.InstallInSanitizerDir()
+}
+
+func (a *androidModuleContext) InstallInRecovery() bool {
+	return a.module.InstallInRecovery()
 }
 
 func (a *androidModuleContext) skipInstall(fullInstallPath OutputPath) bool {

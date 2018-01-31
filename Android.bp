@@ -288,6 +288,7 @@ bootstrap_go_package {
 cc_defaults {
     name: "linux_bionic_supported",
     host_supported: true,
+    recovery_available: true,
     target: {
         host: {
             enabled: false,
