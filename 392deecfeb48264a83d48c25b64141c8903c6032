@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "0f238c61_c4f56b14",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-01-31T02:11:06Z",
+      "side": 1,
+      "message": "Thanks. That worked.",
+      "parentUuid": "479a9589_b75783da",
+      "range": {
+        "startLine": 15,
+        "startChar": 55,
+        "endLine": 15,
+        "endChar": 64
+      },
+      "revId": "392deecfeb48264a83d48c25b64141c8903c6032",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0328f78d_47f8448b",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
