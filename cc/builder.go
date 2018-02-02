@@ -200,10 +200,12 @@ var (
 
 			commandStr := "($sAbiDiffer $allowFlags -lib $libName -arch $arch -check-all-apis -o ${out} -new $in -old $referenceDump)"
 			distDir := config.ProductVariables.DistDir
+			commandStr += " || (echo '----Please update reference abi dumps by running platform/development/vndk/tools/header-checker/utils/create_reference_dumps.py----'"
 			if distDir != nil && *distDir != "" {
 				distAbiDiffDir := *distDir + "/abidiffs/"
-				commandStr += "  || (mkdir -p " + distAbiDiffDir + " && cp ${out} " + distAbiDiffDir + " && exit 1)"
+				commandStr += "  && mkdir -p " + distAbiDiffDir + " && cp ${out} " + distAbiDiffDir
 			}
+			commandStr += " && exit 1)"
 			return blueprint.RuleParams{
 				Command:     commandStr,
 				CommandDeps: []string{"$sAbiDiffer"},
