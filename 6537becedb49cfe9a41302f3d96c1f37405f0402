@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "feb7a2a0_362667c0",
+        "filename": "cc/vndk_properties.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-02-02T18:19:50Z",
+      "side": 1,
+      "message": "this is module name -\u003e properties?",
+      "range": {
+        "startLine": 26,
+        "startChar": 31,
+        "endLine": 26,
+        "endChar": 37
+      },
+      "revId": "6537becedb49cfe9a41302f3d96c1f37405f0402",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5160c89_3eb6de52",
+        "filename": "cc/vndk_properties.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-02-02T18:19:50Z",
+      "side": 1,
+      "message": "did bpfmt do this? I it looks funny to me for some reason",
+      "range": {
+        "startLine": 27,
+        "startChar": 20,
+        "endLine": 27,
+        "endChar": 21
+      },
+      "revId": "6537becedb49cfe9a41302f3d96c1f37405f0402",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09aef126_b733859a",
+        "filename": "cc/vndk_properties.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-02-02T18:19:50Z",
+      "side": 1,
+      "message": "nit: add reason for this?",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 19
+      },
+      "revId": "6537becedb49cfe9a41302f3d96c1f37405f0402",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05a85c37_6d172c63",
+        "filename": "cc/vndk_properties.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-02-02T18:19:50Z",
+      "side": 1,
+      "message": "this makes sense. If it is missing, it can be assumed to be null. This still allows us to tell whether a property is nullptr or not. That tripped me up at first.",
+      "revId": "6537becedb49cfe9a41302f3d96c1f37405f0402",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
