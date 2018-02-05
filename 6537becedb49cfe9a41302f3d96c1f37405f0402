@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c2ef9d77_1b56142b",
+        "filename": "cc/vndk_properties.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1135414
+      },
+      "writtenOn": "2018-02-05T03:03:25Z",
+      "side": 1,
+      "message": "yes",
+      "parentUuid": "feb7a2a0_362667c0",
+      "range": {
+        "startLine": 26,
+        "startChar": 31,
+        "endLine": 26,
+        "endChar": 37
+      },
+      "revId": "6537becedb49cfe9a41302f3d96c1f37405f0402",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a5160c89_3eb6de52",
         "filename": "cc/vndk_properties.go",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2018-02-02T18:19:50Z",
       "side": 1,
       "message": "did bpfmt do this? I it looks funny to me for some reason",
+      "range": {
+        "startLine": 27,
+        "startChar": 20,
+        "endLine": 27,
+        "endChar": 21
+      },
+      "revId": "6537becedb49cfe9a41302f3d96c1f37405f0402",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7d243ed_2c5b1d52",
+        "filename": "cc/vndk_properties.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1135414
+      },
+      "writtenOn": "2018-02-05T03:03:25Z",
+      "side": 1,
+      "message": "yes gofmt did it, it does look kinda funny",
+      "parentUuid": "a5160c89_3eb6de52",
       "range": {
         "startLine": 27,
         "startChar": 20,
