@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8bc77765_ecb1b76e",
+        "filename": "zip/cmd/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-06T23:47:30Z",
+      "side": 1,
+      "message": "unicode.IsSpace",
+      "range": {
+        "startLine": 156,
+        "startChar": 1,
+        "endLine": 156,
+        "endChar": 36
+      },
+      "revId": "c55fa0dc79c3e49a4f894b8ba9b41859bf99dbe8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df6a2392_6fe39f0a",
+        "filename": "zip/cmd/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-06T23:47:30Z",
+      "side": 1,
+      "message": "If you can avoid the lookahead, for _, c :\u003d range str will give you runes and avoid having to create the content slice.  You could have state variables for if the previous character was a backslash or what the current quote character is, and then handle each character in the main loop.",
+      "revId": "c55fa0dc79c3e49a4f894b8ba9b41859bf99dbe8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2aa49f2_e6c0dc09",
+        "filename": "zip/cmd/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-06T23:47:30Z",
+      "side": 1,
+      "message": "What about a \\\" inside a double quoted string?",
+      "revId": "c55fa0dc79c3e49a4f894b8ba9b41859bf99dbe8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38a06787_e7fb6bc5",
+        "filename": "zip/cmd/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-06T23:47:30Z",
+      "side": 1,
+      "message": ":\u003d, these variables don\u0027t need to be global any more.",
+      "range": {
+        "startLine": 239,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 7
+      },
+      "revId": "c55fa0dc79c3e49a4f894b8ba9b41859bf99dbe8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
