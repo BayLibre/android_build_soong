@@ -22,6 +22,30 @@
       "revId": "599a6032fce6ec14834785aadc1c73db80763fc6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bab3e5f9_1ec09f17",
+        "filename": "cc/config/clang.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2018-02-06T22:51:53Z",
+      "side": 1,
+      "message": "I think the goal was to actually fix the warnings themselves, but silencing them in the meantime is probably ok too. https://android-review.googlesource.com/#/c/platform/build/soong/+/610453",
+      "parentUuid": "5092876a_f3df1a42",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 35
+      },
+      "revId": "599a6032fce6ec14834785aadc1c73db80763fc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
