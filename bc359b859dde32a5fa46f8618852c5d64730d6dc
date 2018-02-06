@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2551ad4d_d3e60b6a",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-02-06T18:07:33Z",
+      "side": 1,
+      "message": "I tried to combine them into one, but the CommandDeps for these two rules are different(nonStdDroiddoc depends on config.JsilverJar and config.DoclavaJar also).",
+      "parentUuid": "bdb3a29c_fa31ddff",
+      "revId": "bc359b859dde32a5fa46f8618852c5d64730d6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a845f9a7_2f2db44e",
         "filename": "java/droiddoc.go",
         "patchSetId": 9
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "3d2de69b_031b1cfc",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-02-06T18:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a845f9a7_2f2db44e",
+      "revId": "bc359b859dde32a5fa46f8618852c5d64730d6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02e97220_8d670b17",
         "filename": "java/droiddoc.go",
         "patchSetId": 9
@@ -50,6 +86,24 @@
       "revId": "bc359b859dde32a5fa46f8618852c5d64730d6dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4573bfd8_c2a387a6",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-02-06T18:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02e97220_8d670b17",
+      "revId": "bc359b859dde32a5fa46f8618852c5d64730d6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "c302f0d4_f6730e0d",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-02-06T18:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb4d541f_486b1d39",
+      "range": {
+        "startLine": 102,
+        "startChar": 26,
+        "endLine": 102,
+        "endChar": 43
+      },
+      "revId": "bc359b859dde32a5fa46f8618852c5d64730d6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2fd3a996_fe540d5b",
         "filename": "java/droiddoc.go",
         "patchSetId": 9
@@ -99,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "0242420c_1c69e4a9",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-02-06T18:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fd3a996_fe540d5b",
+      "range": {
+        "startLine": 103,
+        "startChar": 8,
+        "endLine": 103,
+        "endChar": 11
+      },
+      "revId": "bc359b859dde32a5fa46f8618852c5d64730d6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "871cecbe_0a4aa7c4",
         "filename": "java/droiddoc.go",
         "patchSetId": 9
@@ -113,6 +215,24 @@
       "revId": "bc359b859dde32a5fa46f8618852c5d64730d6dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "993ec20a_2767a3a3",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-02-06T18:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "871cecbe_0a4aa7c4",
+      "revId": "bc359b859dde32a5fa46f8618852c5d64730d6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -139,6 +259,30 @@
     },
     {
       "key": {
+        "uuid": "5a45ca0a_7856b76e",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-02-06T18:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7e082f2_47c734d7",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 144,
+        "endChar": 20
+      },
+      "revId": "bc359b859dde32a5fa46f8618852c5d64730d6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58c817ef_4bd2cf84",
         "filename": "java/droiddoc.go",
         "patchSetId": 9
@@ -156,6 +300,24 @@
     },
     {
       "key": {
+        "uuid": "ca81de53_cf8adf97",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-02-06T18:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58c817ef_4bd2cf84",
+      "revId": "bc359b859dde32a5fa46f8618852c5d64730d6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06214dfe_7ef72238",
         "filename": "java/droiddoc.go",
         "patchSetId": 9
@@ -170,6 +332,24 @@
       "revId": "bc359b859dde32a5fa46f8618852c5d64730d6dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b49185f_433d8ce1",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-02-06T18:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06214dfe_7ef72238",
+      "revId": "bc359b859dde32a5fa46f8618852c5d64730d6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -196,6 +376,30 @@
     },
     {
       "key": {
+        "uuid": "5ea1fd9e_6cd44612",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-02-06T18:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c51ac80d_9babd8f4",
+      "range": {
+        "startLine": 302,
+        "startChar": 6,
+        "endLine": 302,
+        "endChar": 39
+      },
+      "revId": "bc359b859dde32a5fa46f8618852c5d64730d6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cfa29177_37b612c6",
         "filename": "java/droiddoc.go",
         "patchSetId": 9
@@ -207,6 +411,24 @@
       "writtenOn": "2018-01-26T22:25:30Z",
       "side": 1,
       "message": "deps.bootClasspath.FormJavaClassPath(\"-bootclasspath\")",
+      "revId": "bc359b859dde32a5fa46f8618852c5d64730d6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b596ebd7_14fa63b6",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-02-06T18:07:33Z",
+      "side": 1,
+      "message": "I think this function belongs to javaBuilderFlags.bootclasspath, not deps.",
+      "parentUuid": "cfa29177_37b612c6",
       "revId": "bc359b859dde32a5fa46f8618852c5d64730d6dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -230,6 +452,24 @@
     },
     {
       "key": {
+        "uuid": "e6e6f85a_96424ddc",
+        "filename": "java/java.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-02-06T18:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "744d2dbd_2bf6fefa",
+      "revId": "bc359b859dde32a5fa46f8618852c5d64730d6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de4703b6_3a12c3bb",
         "filename": "java/java.go",
         "patchSetId": 9
@@ -244,6 +484,24 @@
       "revId": "bc359b859dde32a5fa46f8618852c5d64730d6dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51e2a208_4ff72612",
+        "filename": "java/java.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-02-06T18:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de4703b6_3a12c3bb",
+      "revId": "bc359b859dde32a5fa46f8618852c5d64730d6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
