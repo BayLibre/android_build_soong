@@ -46,6 +46,30 @@
       "revId": "50708d1a2d3821142641ae275a497e29eb9bae86",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84fde219_299e009b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-06T23:29:55Z",
+      "side": 1,
+      "message": "If they modify our code, it seems like they could modify our profiles?\n\nI don\u0027t want to end up in a case where different devices in our tree are ending up with different binaries  because they are providing their own profiles.",
+      "parentUuid": "116f6887_133b5bff",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 69
+      },
+      "revId": "50708d1a2d3821142641ae275a497e29eb9bae86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
