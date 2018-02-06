@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5092876a_f3df1a42",
+        "filename": "cc/config/clang.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-06T22:39:24Z",
+      "side": 1,
+      "message": "These are causing a ton of warnings, can they be -Wno-* instead of -Wno-error\u003d*?",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 35
+      },
+      "revId": "599a6032fce6ec14834785aadc1c73db80763fc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
