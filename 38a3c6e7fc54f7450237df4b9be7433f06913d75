@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "587f4198_5b174273",
+        "filename": "android/module.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 1168,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-06T21:35:53Z",
+      "side": 1,
+      "message": "Split this out to a separate patch.  This should probably also have some tests, but that may be out of the scope of this change.",
+      "revId": "38a3c6e7fc54f7450237df4b9be7433f06913d75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "904e573f_ca0a8b75",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-06T21:35:53Z",
+      "side": 1,
+      "message": "Should these all be *string?",
+      "range": {
+        "startLine": 111,
+        "startChar": 21,
+        "endLine": 111,
+        "endChar": 27
+      },
+      "revId": "38a3c6e7fc54f7450237df4b9be7433f06913d75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03def98b_0522b792",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-06T21:35:53Z",
+      "side": 1,
+      "message": "Can you say what droiddoc does with it instead of saying how its passed to droiddoc?",
+      "range": {
+        "startLine": 113,
+        "startChar": 49,
+        "endLine": 113,
+        "endChar": 74
+      },
+      "revId": "38a3c6e7fc54f7450237df4b9be7433f06913d75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cb4afcf_32374dc3",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-06T21:35:53Z",
+      "side": 1,
+      "message": "This isn\u0027t very meaningful any more, -htmldir is a droiddoc argument which doesn\u0027t really need to be specified inside a droiddoc module type.",
+      "range": {
+        "startLine": 113,
+        "startChar": 74,
+        "endLine": 114,
+        "endChar": 24
+      },
+      "revId": "38a3c6e7fc54f7450237df4b9be7433f06913d75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "248e8e94_99ca295a",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-06T21:35:53Z",
+      "side": 1,
+      "message": "Could html_dir be []string and then you can split it into -htmldir and -htmldir2 as necessary?",
+      "revId": "38a3c6e7fc54f7450237df4b9be7433f06913d75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e60d0e61_fefa01bc",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-06T21:35:53Z",
+      "side": 1,
+      "message": "Remove?",
+      "revId": "38a3c6e7fc54f7450237df4b9be7433f06913d75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cdd78aa_aecb55b5",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-06T21:35:53Z",
+      "side": 1,
+      "message": "This could be Javadoc, and then have Droiddoc wrap Javadoc",
+      "revId": "38a3c6e7fc54f7450237df4b9be7433f06913d75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab7b47d3_213e4c24",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-06T21:35:53Z",
+      "side": 1,
+      "message": "I think you want ctx.Glob()",
+      "range": {
+        "startLine": 413,
+        "startChar": 31,
+        "endLine": 413,
+        "endChar": 38
+      },
+      "revId": "38a3c6e7fc54f7450237df4b9be7433f06913d75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

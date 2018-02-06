@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "2ec1304c_2ff935e6",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-06T21:35:53Z",
+      "side": 1,
+      "message": "jsilver and doclava would be passed in to the rule via Args, so they would have to be added to Implicits too to add the dependency.",
+      "parentUuid": "2551ad4d_d3e60b6a",
+      "revId": "bc359b859dde32a5fa46f8618852c5d64730d6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a845f9a7_2f2db44e",
         "filename": "java/droiddoc.go",
         "patchSetId": 9
