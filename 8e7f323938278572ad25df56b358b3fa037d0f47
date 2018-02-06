@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "827b471c_53bc561b",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-02-06T17:11:03Z",
+      "side": 1,
+      "message": "include buganizer and/or llvm bug url so folks from the future can tell whether this workaround is still needed (since we plan on fixing this upstream).",
+      "revId": "8e7f323938278572ad25df56b358b3fa037d0f47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
