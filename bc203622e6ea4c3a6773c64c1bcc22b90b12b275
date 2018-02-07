@@ -22,6 +22,30 @@
       "revId": "bc203622e6ea4c3a6773c64c1bcc22b90b12b275",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ddf0a2c_684505ca",
+        "filename": "docs/best_practices.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-02-07T20:37:26Z",
+      "side": 1,
+      "message": "There are a lot of cases where these are configured in a config file/property, which may or may not be in our tree. That\u0027s definitely an area to improve here though.",
+      "parentUuid": "6983a795_78f72a18",
+      "range": {
+        "startLine": 145,
+        "startChar": 13,
+        "endLine": 145,
+        "endChar": 37
+      },
+      "revId": "bc203622e6ea4c3a6773c64c1bcc22b90b12b275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
