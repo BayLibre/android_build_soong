@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6983a795_78f72a18",
+        "filename": "docs/best_practices.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-07T19:49:41Z",
+      "side": 1,
+      "message": "This is better handled with LOCAL_REQUIRED_MODULES, and I think there was a proposed runtime_libs.",
+      "range": {
+        "startLine": 145,
+        "startChar": 13,
+        "endLine": 145,
+        "endChar": 37
+      },
+      "revId": "bc203622e6ea4c3a6773c64c1bcc22b90b12b275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
