@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df91335f_1c678dc5",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1183,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-07T00:20:57Z",
+      "side": 1,
+      "message": "Move this to line 1219 where you are already iterating over srcFiles, which will also let a filegroup exclude an explicit source file.",
+      "revId": "dc196783f84c174eb9ef63f8f3cfebfc6a2d2be4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
