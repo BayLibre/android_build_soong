@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e223e5c4_1bbeec9b",
+        "filename": "zip/cmd/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-02-07T23:50:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bc77765_ecb1b76e",
+      "range": {
+        "startLine": 156,
+        "startChar": 1,
+        "endLine": 156,
+        "endChar": 36
+      },
+      "revId": "c55fa0dc79c3e49a4f894b8ba9b41859bf99dbe8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df6a2392_6fe39f0a",
         "filename": "zip/cmd/main.go",
         "patchSetId": 6
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "2a41f29b_49adb574",
+        "filename": "zip/cmd/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-02-07T23:50:25Z",
+      "side": 1,
+      "message": "Done. Use stack to simulate state machine.",
+      "parentUuid": "df6a2392_6fe39f0a",
+      "revId": "c55fa0dc79c3e49a4f894b8ba9b41859bf99dbe8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f2aa49f2_e6c0dc09",
         "filename": "zip/cmd/main.go",
         "patchSetId": 6
@@ -53,6 +95,24 @@
       "writtenOn": "2018-02-06T23:47:30Z",
       "side": 1,
       "message": "What about a \\\" inside a double quoted string?",
+      "revId": "c55fa0dc79c3e49a4f894b8ba9b41859bf99dbe8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dfda733_82c66709",
+        "filename": "zip/cmd/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-02-07T23:50:25Z",
+      "side": 1,
+      "message": "Originally I thought Ninja only dumps single quotes. So for simplicity I just treated double quote as same as single quotes which preserve the literal value of all characters within quotes.\nNow I separated the logic out for double quotes. For \\\", \\\\ within double quoted string, we will skip the first backslash and produce \", \\. Other than that, it performs as same as single quotes.",
+      "parentUuid": "f2aa49f2_e6c0dc09",
       "revId": "c55fa0dc79c3e49a4f894b8ba9b41859bf99dbe8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -79,6 +139,30 @@
       "revId": "c55fa0dc79c3e49a4f894b8ba9b41859bf99dbe8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9300f854_7a8ebfe8",
+        "filename": "zip/cmd/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-02-07T23:50:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38a06787_e7fb6bc5",
+      "range": {
+        "startLine": 239,
+        "startChar": 1,
+        "endLine": 239,
+        "endChar": 7
+      },
+      "revId": "c55fa0dc79c3e49a4f894b8ba9b41859bf99dbe8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
