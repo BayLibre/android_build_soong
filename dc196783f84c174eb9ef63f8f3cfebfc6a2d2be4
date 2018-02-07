@@ -34,6 +34,24 @@
       "revId": "dc196783f84c174eb9ef63f8f3cfebfc6a2d2be4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b2210f7_64127298",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1183,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-02-07T18:42:48Z",
+      "side": 1,
+      "message": "I found that after I moved this to line 1219, it failed on presubmit due to the number of srcs changed when compiling \"libvpx\"(android_arm_armv8-a_core_static):\nhttps://cs.corp.google.com/aosp-master/external/libvpx/Android.bp?rcl\u003de0c7acb47a7ef54933c38e8c5258660906d9acd6\u0026l\u003d2089\n\nsrcs: libvpx_arm_c_srcs,\nneon: {\n    exclude_srcs: libvpx_arm_c_srcs,\n    srcs: libvpx_arm_neon_c_srcs,\n},\noriginally:\nexclude_srcs: libvpx_arm_c_srcs only applys to srcs: libvpx_arm_c_srcs not libvpx_arm_neon_c_srcs if one src file belongs to both libvpx_arm_c_srcs and libvpx_arm_neon_c_srcs. I am not sure if original behavior is what we expected or not.",
+      "parentUuid": "9217230c_1362c3fb",
+      "revId": "dc196783f84c174eb9ef63f8f3cfebfc6a2d2be4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
