@@ -16,6 +16,7 @@ package cc
 
 import (
 	"android/soong/android"
+	"android/soong/cc/config"
 )
 
 type CoverageProperties struct {
@@ -38,6 +39,16 @@ func (cov *coverage) props() []interface{} {
 func (cov *coverage) begin(ctx BaseModuleContext) {}
 
 func (cov *coverage) deps(ctx BaseModuleContext, deps Deps) Deps {
+	if !ctx.DeviceConfig().NativeCoverageEnabled() {
+		return deps
+	}
+
+	// TODO: This needs to account for cov.linkCoverage as below. Doing so
+	// requires moving the linkCoverage setting out into a mutator.
+	if cov.Properties.CoverageEnabled {
+		runtimeLibrary := config.ProfileRuntimeLibrary(ctx.toolchain())
+		deps.LateStaticLibs = append(deps.LateStaticLibs, runtimeLibrary)
+	}
 	return deps
 }
 
@@ -49,6 +60,10 @@ func (cov *coverage) flags(ctx ModuleContext, flags Flags) Flags {
 	if cov.Properties.CoverageEnabled {
 		flags.Coverage = true
 		flags.GlobalFlags = append(flags.GlobalFlags, "--coverage", "-O0")
+
+		// The combination of --coverage and -O0 makes it very likely that we
+		// break frame size thresholds.
+		flags.GlobalFlags = append(flags.GlobalFlags, "-Wno-error=frame-larger-than=")
 		cov.linkCoverage = true
 	}
 
