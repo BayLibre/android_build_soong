@@ -39,9 +39,7 @@ var (
 		"-Wl,-m,armelf",
 	}
 
-	armArmCflags = []string{
-		"-fstrict-aliasing",
-	}
+	armArmCflags = []string{}
 
 	armThumbCflags = []string{
 		"-mthumb",
