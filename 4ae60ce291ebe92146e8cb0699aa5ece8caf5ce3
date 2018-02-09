@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1da19a7e_87b5ddb8",
+        "filename": "cc/config/clang.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2018-02-09T22:21:52Z",
+      "side": 1,
+      "message": "I think this is ok to go here, but I am going to clean up what \"NoOverride\" means in the future. These are flags that we don\u0027t want people suppressing (even if it builds cleanly). I see that some other stuff has snuck in here, but likely belongs in a separate section for temporary suppressions.",
+      "revId": "4ae60ce291ebe92146e8cb0699aa5ece8caf5ce3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
