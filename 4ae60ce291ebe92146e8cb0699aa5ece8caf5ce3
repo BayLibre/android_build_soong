@@ -16,6 +16,24 @@
       "revId": "4ae60ce291ebe92146e8cb0699aa5ece8caf5ce3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aec9b172_9d61b1db",
+        "filename": "cc/config/clang.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2018-02-09T22:29:36Z",
+      "side": 1,
+      "message": "Yeah, I\u0027d noticed that. Presumably it was done for the same reason (wanting to get the build fix in quickly and it being the one that\u0027s exposed to make). A cleanup would definitely be good.",
+      "parentUuid": "1da19a7e_87b5ddb8",
+      "revId": "4ae60ce291ebe92146e8cb0699aa5ece8caf5ce3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
