@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52e2c27a_765a24be",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1198,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-02-09T20:33:04Z",
+      "side": 1,
+      "message": "Hi Colin, any suggestions to fix the libvpx neon case? the only way I can think of right now to fix the build is to move back this logic to line 1194 to be consistent with old world, otherwise, the neon block always gives me trouble.",
+      "revId": "95946137ca4467d3aac5fa5f9d62751c8a170ce6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
