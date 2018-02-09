@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a8b12889_43fcb438",
+        "filename": "cc/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1044078
+      },
+      "writtenOn": "2018-02-09T01:50:37Z",
+      "side": 1,
+      "message": "Thank you for the info. I will update the command to use cp -f.",
+      "parentUuid": "df33459b_1efab225",
+      "revId": "876fc9d6adc368258243d0c428664ddcb97e2e0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "44089c13_e4fb6c90",
         "filename": "cc/builder.go",
         "patchSetId": 3
@@ -59,6 +77,48 @@
     },
     {
       "key": {
+        "uuid": "26f4bc3b_9594f406",
+        "filename": "cc/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1044078
+      },
+      "writtenOn": "2018-02-09T01:50:37Z",
+      "side": 1,
+      "message": "Thank you very much for the hint. It\u0027s really not necessary for current solution using \"ar -p\".\nMy original idea was to use \"ar x\" instead of the loop, due to \"-x\" don\u0027t support specific output folder. it will extract the files into current folder. on condition that we must copy the .a file into Prebuilt folder, then, go into the Prebuilt folder do it.",
+      "parentUuid": "ce15729a_b3a32172",
+      "range": {
+        "startLine": 180,
+        "startChar": 59,
+        "endLine": 180,
+        "endChar": 80
+      },
+      "revId": "876fc9d6adc368258243d0c428664ddcb97e2e0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac7f7a7a_12785197",
+        "filename": "cc/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1044078
+      },
+      "writtenOn": "2018-02-09T01:50:37Z",
+      "side": 1,
+      "message": "Good suggestion.",
+      "parentUuid": "44089c13_e4fb6c90",
+      "revId": "876fc9d6adc368258243d0c428664ddcb97e2e0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dbdd54a3_bf93a24f",
         "filename": "cc/builder.go",
         "patchSetId": 3
@@ -70,6 +130,30 @@
       "writtenOn": "2018-02-06T23:16:27Z",
       "side": 1,
       "message": "outDir?",
+      "range": {
+        "startLine": 182,
+        "startChar": 35,
+        "endLine": 182,
+        "endChar": 43
+      },
+      "revId": "876fc9d6adc368258243d0c428664ddcb97e2e0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eab21341_8e4890b9",
+        "filename": "cc/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1044078
+      },
+      "writtenOn": "2018-02-09T01:50:37Z",
+      "side": 1,
+      "message": "Exactly. To place the extracted intermediate .o files. Maybe \"WHOLE\" is better.",
+      "parentUuid": "dbdd54a3_bf93a24f",
       "range": {
         "startLine": 182,
         "startChar": 35,
@@ -99,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "ee2e5589_b08b9098",
+        "filename": "cc/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1044078
+      },
+      "writtenOn": "2018-02-09T01:50:37Z",
+      "side": 1,
+      "message": "Yes",
+      "parentUuid": "116d72e6_21902cbf",
+      "revId": "876fc9d6adc368258243d0c428664ddcb97e2e0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "00e8780a_6abad24e",
         "filename": "cc/builder.go",
         "patchSetId": 3
@@ -110,6 +212,30 @@
       "writtenOn": "2018-02-06T23:16:27Z",
       "side": 1,
       "message": "This should be getting the appropriate flags from flags.toolchain, which will include -target.",
+      "range": {
+        "startLine": 950,
+        "startChar": 16,
+        "endLine": 950,
+        "endChar": 20
+      },
+      "revId": "876fc9d6adc368258243d0c428664ddcb97e2e0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "096d4ab1_6caca143",
+        "filename": "cc/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 950,
+      "author": {
+        "id": 1044078
+      },
+      "writtenOn": "2018-02-09T01:50:37Z",
+      "side": 1,
+      "message": "If using flags.toolchain, we have to parse the flags.toolchain. \nSuppose, the flag \"-m64\" or \"-m32\" in \"flags.toolchain\" is obtained by checking \"ArchType.Multilib.",
+      "parentUuid": "00e8780a_6abad24e",
       "range": {
         "startLine": 950,
         "startChar": 16,
