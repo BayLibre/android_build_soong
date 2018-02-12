@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "99dd9fc5_53740b8e",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-02-12T18:12:40Z",
+      "side": 1,
+      "message": "But it is strange that we pass jsilver and doclava to implicits since the type of implicits are android.Paths. We have to convert \"${config.JsilverJar}\" to android.Paths by adding some unnecessary functions, eg, base(), ext(), and etc.",
+      "parentUuid": "2ec1304c_2ff935e6",
+      "revId": "bc359b859dde32a5fa46f8618852c5d64730d6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a845f9a7_2f2db44e",
         "filename": "java/droiddoc.go",
         "patchSetId": 9

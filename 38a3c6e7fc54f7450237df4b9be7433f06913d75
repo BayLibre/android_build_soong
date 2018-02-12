@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c5215aa5_6da56596",
+        "filename": "android/module.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 1168,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-02-12T18:12:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "587f4198_5b174273",
+      "revId": "38a3c6e7fc54f7450237df4b9be7433f06913d75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "904e573f_ca0a8b75",
         "filename": "java/droiddoc.go",
         "patchSetId": 12
@@ -39,6 +57,30 @@
       "revId": "38a3c6e7fc54f7450237df4b9be7433f06913d75",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1ea3687_e3fbf707",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-02-12T18:12:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "904e573f_ca0a8b75",
+      "range": {
+        "startLine": 111,
+        "startChar": 21,
+        "endLine": 111,
+        "endChar": 27
+      },
+      "revId": "38a3c6e7fc54f7450237df4b9be7433f06913d75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "5888d50f_4a49e5d4",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-02-12T18:12:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03def98b_0522b792",
+      "range": {
+        "startLine": 113,
+        "startChar": 49,
+        "endLine": 113,
+        "endChar": 74
+      },
+      "revId": "38a3c6e7fc54f7450237df4b9be7433f06913d75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1cb4afcf_32374dc3",
         "filename": "java/droiddoc.go",
         "patchSetId": 12
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "c95fb13f_a77fb263",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-02-12T18:12:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cb4afcf_32374dc3",
+      "range": {
+        "startLine": 113,
+        "startChar": 74,
+        "endLine": 114,
+        "endChar": 24
+      },
+      "revId": "38a3c6e7fc54f7450237df4b9be7433f06913d75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "248e8e94_99ca295a",
         "filename": "java/droiddoc.go",
         "patchSetId": 12
@@ -102,6 +192,24 @@
       "revId": "38a3c6e7fc54f7450237df4b9be7433f06913d75",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b671cfa_df96ee0c",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-02-12T18:12:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "248e8e94_99ca295a",
+      "revId": "38a3c6e7fc54f7450237df4b9be7433f06913d75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -122,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "0e2dd48a_0f47a94d",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-02-12T18:12:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e60d0e61_fefa01bc",
+      "revId": "38a3c6e7fc54f7450237df4b9be7433f06913d75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7cdd78aa_aecb55b5",
         "filename": "java/droiddoc.go",
         "patchSetId": 12
@@ -139,6 +265,24 @@
     },
     {
       "key": {
+        "uuid": "21d220a7_c88bce9f",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-02-12T18:12:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cdd78aa_aecb55b5",
+      "revId": "38a3c6e7fc54f7450237df4b9be7433f06913d75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab7b47d3_213e4c24",
         "filename": "java/droiddoc.go",
         "patchSetId": 12
@@ -150,6 +294,30 @@
       "writtenOn": "2018-02-06T21:35:53Z",
       "side": 1,
       "message": "I think you want ctx.Glob()",
+      "range": {
+        "startLine": 413,
+        "startChar": 31,
+        "endLine": 413,
+        "endChar": 38
+      },
+      "revId": "38a3c6e7fc54f7450237df4b9be7433f06913d75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3616d841_875a9c95",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-02-12T18:12:40Z",
+      "side": 1,
+      "message": "ctx.Glob() only allows us to glob files under current module source directory.",
+      "parentUuid": "ab7b47d3_213e4c24",
       "range": {
         "startLine": 413,
         "startChar": 31,
