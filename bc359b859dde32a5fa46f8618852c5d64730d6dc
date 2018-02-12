@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "7735725f_bbd61bde",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-12T23:35:59Z",
+      "side": 1,
+      "message": "It\u0027s a little weird, but you can do the same as $ccCmd in the cc rule: Add a variable called $docletJars to the rule and use CommandDeps: \"$docletJars\".",
+      "parentUuid": "99dd9fc5_53740b8e",
+      "revId": "bc359b859dde32a5fa46f8618852c5d64730d6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a845f9a7_2f2db44e",
         "filename": "java/droiddoc.go",
         "patchSetId": 9
@@ -465,6 +483,24 @@
       "side": 1,
       "message": "I think this function belongs to javaBuilderFlags.bootclasspath, not deps.",
       "parentUuid": "cfa29177_37b612c6",
+      "revId": "bc359b859dde32a5fa46f8618852c5d64730d6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "574a80a7_743a2b61",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-12T23:35:59Z",
+      "side": 1,
+      "message": "True, but the classpath type is just a wrapper around []android.Path, so you could replace deps.classpath with a classpath.  You\u0027ll need to replace uses of AddPaths with append, and then I think AddPaths is obsolete and can be removed.",
+      "parentUuid": "b596ebd7_14fa63b6",
       "revId": "bc359b859dde32a5fa46f8618852c5d64730d6dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true

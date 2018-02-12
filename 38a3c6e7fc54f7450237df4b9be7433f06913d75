@@ -327,6 +327,30 @@
       "revId": "38a3c6e7fc54f7450237df4b9be7433f06913d75",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a082a8d3_3a8b171a",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-12T23:35:59Z",
+      "side": 1,
+      "message": "True.  Might be worth adding another helper that is ctx.Glob without the source path check.  This is similar to the code in app.go for matching resources.  The code there only finds files and filters out directories, which is probably worth doing here too - otherwise you will end up with dependencies on directories, and rerun this rule if a file is added and then removed from the directory (which is a common operation some editors do when saving files).  If you filter out directories, the glob rule will still depend on the directory to rerun the glob and check for new files, but if the file list is the same it won\u0027t rerun this rule.",
+      "parentUuid": "3616d841_875a9c95",
+      "range": {
+        "startLine": 413,
+        "startChar": 31,
+        "endLine": 413,
+        "endChar": 38
+      },
+      "revId": "38a3c6e7fc54f7450237df4b9be7433f06913d75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
