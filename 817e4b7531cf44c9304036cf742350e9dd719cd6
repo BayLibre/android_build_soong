@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4360bac0_85090ebb",
+        "filename": "cc/pgo.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-12T23:53:04Z",
+      "side": 1,
+      "message": "If you want you can use config.OnceStringSlice to avoid the final .([]string)",
+      "range": {
+        "startLine": 43,
+        "startChar": 15,
+        "endLine": 43,
+        "endChar": 19
+      },
+      "revId": "817e4b7531cf44c9304036cf742350e9dd719cd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
