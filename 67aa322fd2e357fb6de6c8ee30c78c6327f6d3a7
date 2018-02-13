@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fcb5b78_b53c3756",
+        "filename": "cmd/pom2mk/pom2mk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2018-02-13T19:35:27Z",
+      "side": 1,
+      "message": "Now that the number of arguments of this function is increasing (and the function name is somewhat ambiguous), could we have a comment to the effect of \"outputs the deps having the given type and scope\" (to disambiguate that it\u0027s filtering the deps rather than changing them)?",
+      "revId": "67aa322fd2e357fb6de6c8ee30c78c6327f6d3a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
