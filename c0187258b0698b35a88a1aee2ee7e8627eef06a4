@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "380ed288_1dccdecd",
+        "filename": "zip/cmd/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-13T00:48:11Z",
+      "side": 1,
+      "message": "This still seems over complicated, and I don\u0027t see a need for a stack.  I was thinking something like:\n\nbackslash :\u003d false\nquote :\u003d \u0027\\0\u0027\nfor c {\n    switch {\n    case backslash:\n        // Previous character was a backslash\n        arg \u003d append(arg, c)\n    case c \u003d\u003d \u0027\\\\\u0027 \u0026\u0026 quote !\u003d \u0027\\\u0027\u0027:\n        // Current character is a backslash outside single quotes\n        backslash \u003d true\n    case quote \u003d\u003d \u0027\\0\u0027 \u0026\u0026 c \u003d\u003d \u0027\\\u0027\u0027 || c \u003d\u003d \u0027\\\"\u0027:\n        // Current character is an opening quote\n        quote \u003d c\n    case quote !\u003d \u0027\\0\u0027 \u0026\u0026 c \u003d\u003d quote:\n        // Current character is a closing quote\n        quote \u003d \u0027\\0\u0027\n    case quote \u003d\u003d \u0027\\0\u0027 \u0026\u0026 unicode.isSpace(c):\n        // Current character is a space outside quotes\n        if len(arg) !\u003d 0 {\n            args \u003d append(args, string(arg))\n        }\n        arg \u003d arg[:0]\n    default:\n        arg \u003d append(arg, c)\n    }\n}",
+      "revId": "c0187258b0698b35a88a1aee2ee7e8627eef06a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
