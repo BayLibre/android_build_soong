@@ -245,6 +245,30 @@
       "revId": "876fc9d6adc368258243d0c428664ddcb97e2e0f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a079bf4_98d79366",
+        "filename": "cc/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 950,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-13T00:36:45Z",
+      "side": 1,
+      "message": "Don\u0027t you need more than just -m32/-m64 though?  At least -target aarch64-linux-android, etc.?",
+      "parentUuid": "096d4ab1_6caca143",
+      "range": {
+        "startLine": 950,
+        "startChar": 16,
+        "endLine": 950,
+        "endChar": 20
+      },
+      "revId": "876fc9d6adc368258243d0c428664ddcb97e2e0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }

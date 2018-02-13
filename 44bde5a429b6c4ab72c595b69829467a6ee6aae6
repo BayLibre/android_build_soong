@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74722067_71b60280",
+        "filename": "cc/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 945,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-13T00:36:45Z",
+      "side": 1,
+      "message": "This is still using ar instead of llvm-ar",
+      "revId": "44bde5a429b6c4ab72c595b69829467a6ee6aae6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
