@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d635b0ff_b876c8e9",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-13T21:35:51Z",
+      "side": 1,
+      "message": "What files that are not .kt or .java are you seeing here?  I\u0027d expect anything else valid to already have been taken care of by genSources above.",
+      "revId": "f480fa1d64d5bd287f9f2996d7765b569f97c7e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6534445a_9266ac1e",
+        "filename": "scripts/gen-kotlin-build-file.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-13T21:35:51Z",
+      "side": 1,
+      "message": "trailing whitespace",
+      "range": {
+        "startLine": 39,
+        "startChar": 25,
+        "endLine": 39,
+        "endChar": 26
+      },
+      "revId": "f480fa1d64d5bd287f9f2996d7765b569f97c7e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

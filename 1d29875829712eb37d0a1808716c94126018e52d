@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a1650ae_ce4f7436",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-13T21:35:51Z",
+      "side": 0,
+      "message": "Leave this blank line, the comment applies to everything inside the if",
+      "revId": "1d29875829712eb37d0a1808716c94126018e52d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
