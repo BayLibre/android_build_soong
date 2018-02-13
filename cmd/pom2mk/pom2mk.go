@@ -98,8 +98,7 @@ type Dependency struct {
 	ArtifactId string `xml:"artifactId"`
 	Version    string `xml:"version"`
 	Type       string `xml:"type"`
-
-	Scope string `xml:"scope"`
+	Scope      string `xml:"scope"`
 }
 
 func (d Dependency) MkName() string {
@@ -140,17 +139,17 @@ func (p Pom) MkName() string {
 }
 
 func (p Pom) MkJarDeps() []string {
-	return p.MkDeps("jar")
+	return p.MkDeps("jar", "compile")
 }
 
 func (p Pom) MkAarDeps() []string {
-	return p.MkDeps("aar")
+	return p.MkDeps("aar", "compile")
 }
 
-func (p Pom) MkDeps(typeExt string) []string {
+func (p Pom) MkDeps(typeExt string, scope string) []string {
 	var ret []string
 	for _, d := range p.Dependencies {
-		if d.Type != typeExt {
+		if d.Type != typeExt || d.Scope != scope {
 			continue
 		}
 		name := rewriteNames.MavenToMk(d.GroupId, d.ArtifactId)
@@ -171,6 +170,10 @@ func (p *Pom) FixDepTypes(modules map[string]*Pom) {
 		}
 		if depPom, ok := modules[d.MkName()]; ok {
 			d.Type = depPom.Packaging
+		} else {
+			// Dependency type was not specified and we
+			// don't have the POM for this artifact.
+			d.Type = "jar"
 		}
 	}
 }
@@ -238,6 +241,10 @@ func parse(filename string) (*Pom, error) {
 
 	if pom.Packaging == "" {
 		pom.Packaging = "jar"
+	}
+
+	if pom.Scope == "" {
+		pom.Scope = "compile"
 	}
 
 	pom.PomFile = filename
