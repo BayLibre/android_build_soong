@@ -35,6 +35,7 @@ func phonyFactory() android.Module {
 	module := &phony{}
 
 	android.InitAndroidModule(module)
+	android.InitArchModule(module)
 	return module
 }
 
@@ -43,9 +44,6 @@ func (p *phony) DepsMutator(ctx android.BottomUpMutatorContext) {
 
 func (p *phony) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	p.requiredModuleNames = ctx.RequiredModuleNames()
-	if len(p.requiredModuleNames) == 0 {
-		ctx.PropertyErrorf("required", "phony must not have empty required dependencies in order to be useful(and therefore permitted).")
-	}
 }
 
 func (p *phony) AndroidMk() android.AndroidMkData {
