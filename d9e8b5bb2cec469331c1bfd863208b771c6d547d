@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b0c9c27_60f3aa6c",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-14T23:13:11Z",
+      "side": 1,
+      "message": "The equivalent to the make behavior would be ok \u0026\u0026 buildDateTime !\u003d \"\"",
+      "range": {
+        "startLine": 189,
+        "startChar": 61,
+        "endLine": 189,
+        "endChar": 63
+      },
+      "revId": "d9e8b5bb2cec469331c1bfd863208b771c6d547d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
