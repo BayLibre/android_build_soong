@@ -318,7 +318,7 @@ func (t *toolchainArm) InstructionSetFlags(isa string) (string, error) {
 	case "arm":
 		return "${config.ArmArmCflags}", nil
 	case "thumb", "":
-		return "${config.ArmThumbCflags}", nil
+		return "${config.ArmArmCflags}", nil
 	default:
 		return t.toolchainBase.InstructionSetFlags(isa)
 	}
@@ -349,7 +349,7 @@ func (t *toolchainArm) ClangInstructionSetFlags(isa string) (string, error) {
 	case "arm":
 		return "${config.ArmClangArmCflags}", nil
 	case "thumb", "":
-		return "${config.ArmClangThumbCflags}", nil
+		return "${config.ArmClangArmCflags}", nil
 	default:
 		return t.toolchainBase.ClangInstructionSetFlags(isa)
 	}
