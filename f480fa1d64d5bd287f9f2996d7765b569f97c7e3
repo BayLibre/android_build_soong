@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "88899b1b_6f266107",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1015680
+      },
+      "writtenOn": "2018-02-14T10:42:02Z",
+      "side": 1,
+      "message": "I\u0027m seeing \"*.srcjars\" inside srcFiles",
+      "parentUuid": "d635b0ff_b876c8e9",
+      "revId": "f480fa1d64d5bd287f9f2996d7765b569f97c7e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6534445a_9266ac1e",
         "filename": "scripts/gen-kotlin-build-file.sh",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "f480fa1d64d5bd287f9f2996d7765b569f97c7e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbedc5b0_0d006e53",
+        "filename": "scripts/gen-kotlin-build-file.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1015680
+      },
+      "writtenOn": "2018-02-14T10:42:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6534445a_9266ac1e",
+      "range": {
+        "startLine": 39,
+        "startChar": 25,
+        "endLine": 39,
+        "endChar": 26
+      },
+      "revId": "f480fa1d64d5bd287f9f2996d7765b569f97c7e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
