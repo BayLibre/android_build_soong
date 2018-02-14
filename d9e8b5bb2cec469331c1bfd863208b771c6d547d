@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "fc39da4d_b1ffa08c",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-02-14T23:24:57Z",
+      "side": 1,
+      "message": "outDir :\u003d ret.OutDir()",
+      "range": {
+        "startLine": 186,
+        "startChar": 4,
+        "endLine": 186,
+        "endChar": 48
+      },
+      "revId": "d9e8b5bb2cec469331c1bfd863208b771c6d547d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7b0c9c27_60f3aa6c",
         "filename": "ui/build/config.go",
         "patchSetId": 1
