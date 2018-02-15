@@ -1,0 +1,11 @@
+cc_library_static {
+    name: "libsoongversion",
+    host_supported: true,
+    srcs: ["libsoongversion.cpp"],
+    export_include_dirs: ["include"],
+    target: {
+        windows: {
+            enabled: true,
+        },
+    },
+}
