@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f09660e6_584cead6",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-02-15T19:47:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc39da4d_b1ffa08c",
+      "range": {
+        "startLine": 186,
+        "startChar": 4,
+        "endLine": 186,
+        "endChar": 48
+      },
+      "revId": "d9e8b5bb2cec469331c1bfd863208b771c6d547d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b0c9c27_60f3aa6c",
         "filename": "ui/build/config.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "d9e8b5bb2cec469331c1bfd863208b771c6d547d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5853af40_af7ba094",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-02-15T19:47:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b0c9c27_60f3aa6c",
+      "range": {
+        "startLine": 189,
+        "startChar": 61,
+        "endLine": 189,
+        "endChar": 63
+      },
+      "revId": "d9e8b5bb2cec469331c1bfd863208b771c6d547d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
