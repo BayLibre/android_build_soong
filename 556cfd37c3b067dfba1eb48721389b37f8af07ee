@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c4b6dab_92bd2866",
+        "filename": "cc/lto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-02-16T23:05:34Z",
+      "side": 1,
+      "message": "Use the path functions:\n\n  android.PathForOutput(\"thinlto-cache\").String()",
+      "range": {
+        "startLine": 83,
+        "startChar": 3,
+        "endLine": 84,
+        "endChar": 46
+      },
+      "revId": "556cfd37c3b067dfba1eb48721389b37f8af07ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
