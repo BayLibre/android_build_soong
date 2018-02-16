@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f560f0c4_05bc87ea",
+        "filename": "android/module.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1250,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-16T00:13:42Z",
+      "side": 1,
+      "message": "Let\u0027s call this GlobFiles\n\nSeparately I\u0027ll do a cleanup on Glob() to make it allow files outside the module source dir, and add GlobInModuleSrcDir for when we need it to.",
+      "range": {
+        "startLine": 1250,
+        "startChar": 33,
+        "endLine": 1250,
+        "endChar": 42
+      },
+      "revId": "0fc792e336b4f375c5bf8c76391ebfa01506ab5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfe5fd3c_66d07d27",
+        "filename": "java/builder.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-16T00:13:42Z",
+      "side": 1,
+      "message": "This isn\u0027t useful any more, its the same as x \u003d append(x, paths...)",
+      "revId": "0fc792e336b4f375c5bf8c76391ebfa01506ab5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ca7ed72_acaadb79",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-16T00:13:42Z",
+      "side": 1,
+      "message": "javadoc?",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 9
+      },
+      "revId": "0fc792e336b4f375c5bf8c76391ebfa01506ab5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e8465a2_7dbd0027",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-16T00:13:42Z",
+      "side": 1,
+      "message": "I think these don\u0027t need to be individual options, just $docletJars, and then the args can be \"docletJars\": \"${config.JsilverJar} ${config.DoclavaJar}\"",
+      "revId": "0fc792e336b4f375c5bf8c76391ebfa01506ab5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
