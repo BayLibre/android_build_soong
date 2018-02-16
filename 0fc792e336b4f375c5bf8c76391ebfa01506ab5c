@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5f60e158_b034f4ac",
+        "filename": "android/module.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 1250,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-02-16T01:08:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f560f0c4_05bc87ea",
+      "range": {
+        "startLine": 1250,
+        "startChar": 33,
+        "endLine": 1250,
+        "endChar": 42
+      },
+      "revId": "0fc792e336b4f375c5bf8c76391ebfa01506ab5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfe5fd3c_66d07d27",
         "filename": "java/builder.go",
         "patchSetId": 17
@@ -39,6 +63,24 @@
       "revId": "0fc792e336b4f375c5bf8c76391ebfa01506ab5c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89d822ef_fb6998a1",
+        "filename": "java/builder.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-02-16T01:08:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfe5fd3c_66d07d27",
+      "revId": "0fc792e336b4f375c5bf8c76391ebfa01506ab5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "1adf2c69_3115a788",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-02-16T01:08:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ca7ed72_acaadb79",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 9
+      },
+      "revId": "0fc792e336b4f375c5bf8c76391ebfa01506ab5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e8465a2_7dbd0027",
         "filename": "java/droiddoc.go",
         "patchSetId": 17
@@ -79,6 +145,24 @@
       "revId": "0fc792e336b4f375c5bf8c76391ebfa01506ab5c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "528654cf_37adb60f",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-02-16T01:08:46Z",
+      "side": 1,
+      "message": "It seems it doesn\u0027t work when I trying to do in this way. It seems Ninja treat them as one string\nninja: error: \u0027out/soong/host/linux-x86/framework/jsilver.jar out/soong/host/linux-x86/framework/doclava.jar\u0027, needed by \u0027out/soong/.iermediates/libcore/libcoredocs/android_common/libcoredocs-stubs.jar\u0027, missing and no known rule to make it",
+      "parentUuid": "0e8465a2_7dbd0027",
+      "revId": "0fc792e336b4f375c5bf8c76391ebfa01506ab5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
