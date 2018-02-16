@@ -16,7 +16,11 @@ package cc
 
 import (
 	"android/soong/android"
+	"fmt"
 )
+
+const cacheDirFormat = "-Wl,-plugin-opt,cache-dir=%s"
+const cachePolicyFormat = "-Wl,-plugin-opt,cache-policy=%s"
 
 // LTO (link-time optimization) allows the compiler to optimize and generate
 // code for the entire module at link time, rather than per-compilation
@@ -74,6 +78,16 @@ func (lto *lto) flags(ctx BaseModuleContext, flags Flags) Flags {
 		var ltoFlag string
 		if Bool(lto.Properties.Lto.Thin) {
 			ltoFlag = "-flto=thin"
+
+			// Set appropriate ThinLTO cache policy
+			outDir := ctx.Config().Getenv("OUT_DIR")
+			cacheDir := outDir + "/soong/thinlto-cache"
+			flags.LdFlags = append(flags.LdFlags, fmt.Sprintf(cacheDirFormat, cacheDir))
+
+			// Limit the size of the ThinLTO cache to the lesser of 10% of available
+			// disk space and 10GB.
+			policy := "cache_size=10%:cache_size_bytes=10g"
+			flags.LdFlags = append(flags.LdFlags, fmt.Sprintf(cachePolicyFormat, policy))
 		} else {
 			ltoFlag = "-flto"
 		}
