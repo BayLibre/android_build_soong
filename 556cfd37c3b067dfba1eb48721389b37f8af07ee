@@ -22,6 +22,30 @@
       "revId": "556cfd37c3b067dfba1eb48721389b37f8af07ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9ca61d5_4dfbde48",
+        "filename": "cc/lto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2018-02-17T02:50:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c4b6dab_92bd2866",
+      "range": {
+        "startLine": 83,
+        "startChar": 3,
+        "endLine": 84,
+        "endChar": 46
+      },
+      "revId": "556cfd37c3b067dfba1eb48721389b37f8af07ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
