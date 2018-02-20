@@ -747,7 +747,8 @@ func pathForModule(ctx ModuleContext) OutputPath {
 // PathForVndkRefDump returns an OptionalPath representing the path of the reference
 // abi dump for the given module. This is not guaranteed to be valid.
 func PathForVndkRefAbiDump(ctx ModuleContext, version, fileName string, vndkOrNdk, isSourceDump bool) OptionalPath {
-	archName := ctx.Arch().ArchType.Name
+	arches := ctx.DeviceConfig().Arches()
+	archNameAndVariant := ctx.Arch().String()
 	var sourceOrBinaryDir string
 	var vndkOrNdkDir string
 	var ext string
@@ -763,8 +764,12 @@ func PathForVndkRefAbiDump(ctx ModuleContext, version, fileName string, vndkOrNd
 	} else {
 		vndkOrNdkDir = "ndk"
 	}
-	refDumpFileStr := "prebuilts/abi-dumps/" + vndkOrNdkDir + "/" + version + "/" +
-		archName + "/" + sourceOrBinaryDir + "/" + fileName + ext
+	if len(arches) == 0 {
+		panic("device build with no primary arch")
+	}
+	primary_arch := arches[0].ArchType.String()
+	refDumpFileStr := "prebuilts/abi-dumps/" + vndkOrNdkDir + "/" + version + "/" + primary_arch + "/" +
+		archNameAndVariant + "/" + sourceOrBinaryDir + "/" + fileName + ext
 	return ExistentPathForSource(ctx, "", refDumpFileStr)
 }
 
