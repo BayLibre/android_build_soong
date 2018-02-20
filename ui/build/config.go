@@ -18,6 +18,7 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"os/user"
 	"path/filepath"
 	"runtime"
 	"strconv"
@@ -184,18 +185,37 @@ func NewConfig(ctx Context, args ...string) Config {
 	ret.environ.Set("PATH", strings.Join(newPath, string(filepath.ListSeparator)))
 
 	outDir := ret.OutDir()
+	var bd string
 	buildDateTimeFile := filepath.Join(outDir, "build_date.txt")
-	var content string
 	if buildDateTime, ok := ret.environ.Get("BUILD_DATETIME"); ok && buildDateTime != "" {
-		content = buildDateTime
+		bd = buildDateTime
 	} else {
-		content = strconv.FormatInt(time.Now().Unix(), 10)
+		bd = strconv.FormatInt(time.Now().Unix(), 10)
 	}
-	err := ioutil.WriteFile(buildDateTimeFile, []byte(content), 0777)
+	err := ioutil.WriteFile(buildDateTimeFile, []byte(bd), 0777)
 	if err != nil {
 		ctx.Fatalln("Failed to write BUILD_DATETIME to file:", err)
 	}
 	ret.environ.Set("BUILD_DATETIME_FILE", buildDateTimeFile)
+
+	buildNumberFile := filepath.Join(outDir, "build_number.txt")
+	var bn string
+	if buildNumber, ok := ret.environ.Get("BUILD_NUMBER"); ok && buildNumber != "" {
+		bn = buildNumber
+		ret.environ.Set("IS_LOCAL_BUILD", "false")
+	} else {
+		user, err := user.Current()
+		if err != nil {
+			ctx.Fatalln("Failed to get user info:", err)
+		}
+		bn = "eng." + user.Username[0:6] + "." + time.Now().Format("20060102.150405")
+		ret.environ.Set("IS_LOCAL_BUILD", "true")
+	}
+	err = ioutil.WriteFile(buildNumberFile, []byte(bn), 0777)
+	if err != nil {
+		ctx.Fatalln("Failed to write BUILD_NUMBER to file:", err)
+	}
+	ret.environ.Set("BUILD_NUMBER_FILE", buildNumberFile)
 
 	return Config{ret}
 }
