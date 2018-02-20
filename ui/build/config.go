@@ -18,6 +18,7 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"os/user"
 	"path/filepath"
 	"runtime"
 	"strconv"
@@ -184,18 +185,46 @@ func NewConfig(ctx Context, args ...string) Config {
 	ret.environ.Set("PATH", strings.Join(newPath, string(filepath.ListSeparator)))
 
 	outDir := ret.OutDir()
+	var bd string
 	buildDateTimeFile := filepath.Join(outDir, "build_date.txt")
-	var content string
 	if buildDateTime, ok := ret.environ.Get("BUILD_DATETIME"); ok && buildDateTime != "" {
-		content = buildDateTime
+		bd = buildDateTime
 	} else {
-		content = strconv.FormatInt(time.Now().Unix(), 10)
+		bd = strconv.FormatInt(time.Now().Unix(), 10)
 	}
-	err := ioutil.WriteFile(buildDateTimeFile, []byte(content), 0777)
+	err := ioutil.WriteFile(buildDateTimeFile, []byte(bd), 0777)
 	if err != nil {
 		ctx.Fatalln("Failed to write BUILD_DATETIME to file:", err)
 	}
 	ret.environ.Set("BUILD_DATETIME_FILE", buildDateTimeFile)
+
+	// BUILD_NUMBER should be set to the source control value that
+	// represents the current state of the source code.  E.g., a
+	// perforce changelist number or a git hash.  Can be an arbitrary string
+	// (to allow for source control that uses something other than numbers),
+	// but must be a single word and a valid file name.
+	//
+	// If no BUILD_NUMBER is set, create a useful "I am an engineering build
+	// from this date/time" value.  Make it start with a non-digit so that
+	// anyone trying to parse it as an integer will probably get "0".
+	buildNumberFile := filepath.Join(outDir, "build_number.txt")
+	var bn string
+	if buildNumber, ok := ret.environ.Get("BUILD_NUMBER"); ok && buildNumber != "" {
+		bn = buildNumber
+		ret.environ.Set("HAS_BUILD_NUMBER", "true")
+	} else {
+		user, err := user.Current()
+		if err != nil {
+			ctx.Fatalln("Failed to get user info:", err)
+		}
+		bn = "eng." + user.Username[0:6] + "." + time.Now().Format("20060102.150405")
+		ret.environ.Set("HAS_BUILD_NUMBER", "false")
+	}
+	err = ioutil.WriteFile(buildNumberFile, []byte(bn), 0777)
+	if err != nil {
+		ctx.Fatalln("Failed to write BUILD_NUMBER to file:", err)
+	}
+	ret.environ.Set("BUILD_NUMBER_FILE", buildNumberFile)
 
 	return Config{ret}
 }
