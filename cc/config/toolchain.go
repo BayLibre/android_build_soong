@@ -75,6 +75,7 @@ type Toolchain interface {
 	Is64Bit() bool
 
 	ShlibSuffix() string
+	StlibSuffix() string
 	ExecutableSuffix() string
 
 	SanitizerRuntimeLibraryArch() string
@@ -123,6 +124,10 @@ func (toolchainBase) ClangSupported() bool {
 
 func (toolchainBase) ShlibSuffix() string {
 	return ".so"
+}
+
+func (toolchainBase) StlibSuffix() string {
+	return ".a"
 }
 
 func (toolchainBase) ExecutableSuffix() string {
@@ -213,6 +218,10 @@ func AddressSanitizerRuntimeLibrary(t Toolchain) string {
 
 func UndefinedBehaviorSanitizerRuntimeLibrary(t Toolchain) string {
 	return SanitizerRuntimeLibrary(t, "ubsan_standalone")
+}
+
+func UndefinedBehaviorSanitizerMinimalRuntimeLibrary(t Toolchain) string {
+	return SanitizerRuntimeLibrary(t, "ubsan_minimal")
 }
 
 func ThreadSanitizerRuntimeLibrary(t Toolchain) string {
