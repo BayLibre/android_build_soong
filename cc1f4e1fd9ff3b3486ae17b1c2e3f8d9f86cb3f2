@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f71620c8_df760c41",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2018-02-21T04:58:54Z",
+      "side": 1,
+      "message": "Don\u0027t we have cases of CpuVariant\u003d\u003d\"\"?\nHow about using `archNameAndVariant :\u003d ctx.Arch().String()`?",
+      "range": {
+        "startLine": 751,
+        "startChar": 1,
+        "endLine": 754,
+        "endChar": 2
+      },
+      "revId": "cc1f4e1fd9ff3b3486ae17b1c2e3f8d9f86cb3f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "871ecbad_e3281a62",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2018-02-21T04:58:54Z",
+      "side": 1,
+      "message": "Do we have prebuilts/abi-dumps/current/64/arm-armv7-a-neon/.. directory for 32bit binaries with 64bit binder?\nCan we use the primary arch directly here as I did in vndk_prebuilt.go? (https://cs.corp.google.com/android/build/soong/cc/vndk_prebuilt.go?rcl\u003dd415072f38ec227b67d68ab0e8430c9f32d863a3\u0026l\u003d114)\nPrimary arch is the original parameter for the binder bitness, AFAIK.\n\nAlso, it is better to make a function for Binder32bit than to reach it directly outside of config.go. Or we may have a function in config.go to have a string for binderBitness.",
+      "range": {
+        "startLine": 770,
+        "startChar": 37,
+        "endLine": 770,
+        "endChar": 72
+      },
+      "revId": "cc1f4e1fd9ff3b3486ae17b1c2e3f8d9f86cb3f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
