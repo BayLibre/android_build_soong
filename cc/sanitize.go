@@ -42,7 +42,8 @@ var (
 	cfiExportsMap      android.Path
 	cfiStaticLibsMutex sync.Mutex
 
-	intOverflowCflags = []string{"-fsanitize-blacklist=build/soong/cc/config/integer_overflow_blacklist.txt"}
+	intOverflowCflags   = []string{"-fsanitize-blacklist=build/soong/cc/config/integer_overflow_blacklist.txt"}
+	minimalRuntimeFlags = []string{"-fsanitize-minimal-runtime", "-fno-sanitize-trap=integer", "-fno-sanitize-recover=integer"}
 )
 
 type sanitizerType int
@@ -112,9 +113,10 @@ type SanitizeProperties struct {
 		Blacklist *string
 	} `android:"arch_variant"`
 
-	SanitizerEnabled bool `blueprint:"mutated"`
-	SanitizeDep      bool `blueprint:"mutated"`
-	InSanitizerDir   bool `blueprint:"mutated"`
+	SanitizerEnabled  bool `blueprint:"mutated"`
+	SanitizeDep       bool `blueprint:"mutated"`
+	MinimalRuntimeDep bool `blueprint:"mutated"`
+	InSanitizerDir    bool `blueprint:"mutated"`
 }
 
 type sanitize struct {
@@ -301,6 +303,11 @@ func (sanitize *sanitize) deps(ctx BaseModuleContext, deps Deps) Deps {
 }
 
 func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
+	minimalRuntimePath := []string{"${config.ClangAsanLibDir}/" + config.UndefinedBehaviorSanitizerMinimalRuntimeLibrary(ctx.toolchain()) + ".a"}
+
+	if ctx.Device() && sanitize.Properties.MinimalRuntimeDep {
+		flags.LdFlags = append(flags.LdFlags, minimalRuntimePath...)
+	}
 	if !sanitize.Properties.SanitizerEnabled {
 		return flags
 	}
@@ -431,6 +438,19 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 
 	if len(sanitizers) > 0 {
 		sanitizeArg := "-fsanitize=" + strings.Join(sanitizers, ",")
+
+		enableMinimalRuntime := false
+		if (inList("signed-integer-overflow", sanitizers) ||
+			inList("unsigned-integer-overflow", sanitizers) ||
+			inList("integer", sanitizers)) &&
+			!(inList("signed-integer-overflow", diagSanitizers) ||
+				inList("unsigned-integer-overflow", diagSanitizers) ||
+				inList("integer", diagSanitizers) || inList("cfi", diagSanitizers)) &&
+			!Bool(sanitize.Properties.Sanitize.Address) {
+
+			enableMinimalRuntime = true
+		}
+
 		flags.CFlags = append(flags.CFlags, sanitizeArg)
 		if ctx.Host() {
 			flags.CFlags = append(flags.CFlags, "-fno-sanitize-recover=all")
@@ -440,6 +460,11 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 			_, flags.LdFlags = removeFromList("-Wl,--no-undefined", flags.LdFlags)
 		} else {
 			flags.CFlags = append(flags.CFlags, "-fsanitize-trap=all", "-ftrap-function=abort")
+
+			if enableMinimalRuntime {
+				flags.CFlags = append(flags.CFlags, strings.Join(minimalRuntimeFlags, " "))
+				flags.libFlags = append(minimalRuntimePath, flags.libFlags...)
+			}
 		}
 	}
 
@@ -582,6 +607,28 @@ func sanitizerDepsMutator(t sanitizerType) func(android.TopDownMutatorContext) {
 					!d.sanitize.isSanitizerExplicitlyDisabled(t) {
 					if (t == cfi && d.static()) || t != cfi {
 						d.sanitize.Properties.SanitizeDep = true
+					}
+				}
+			})
+		}
+	}
+}
+
+// Propagate the ubsan minimal runtime dependency when there are integer overflow sanitized static dependencies.
+func minimalRuntimeDepsMutator() func(android.TopDownMutatorContext) {
+	return func(mctx android.TopDownMutatorContext) {
+		if c, ok := mctx.Module().(*Module); ok && c.sanitize != nil {
+			mctx.VisitDepsDepthFirst(func(module android.Module) {
+				if d, ok := module.(*Module); ok && d.static() && d.sanitize != nil {
+
+					// If a static dependency is sanitized and diagnostics are not enabled,
+					// we need to include the ubsan minimal runtime.
+					if (Bool(d.sanitize.Properties.Sanitize.Integer_overflow) ||
+						len(d.sanitize.Properties.Sanitize.Misc_undefined) > 0) &&
+						!(Bool(d.sanitize.Properties.Sanitize.Diag.Integer_overflow) ||
+							Bool(d.sanitize.Properties.Sanitize.Diag.Cfi) ||
+							len(d.sanitize.Properties.Sanitize.Diag.Misc_undefined) > 0) {
+						c.sanitize.Properties.MinimalRuntimeDep = true
 					}
 				}
 			})
