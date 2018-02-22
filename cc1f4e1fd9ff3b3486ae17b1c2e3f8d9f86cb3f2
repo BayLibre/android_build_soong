@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1414c475_b55d8716",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2018-02-22T01:53:24Z",
+      "side": 1,
+      "message": "Yes, my bad I missed that. ctx.Arch().String() is a better choice.",
+      "parentUuid": "f71620c8_df760c41",
+      "range": {
+        "startLine": 751,
+        "startChar": 1,
+        "endLine": 754,
+        "endChar": 2
+      },
+      "revId": "cc1f4e1fd9ff3b3486ae17b1c2e3f8d9f86cb3f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "871ecbad_e3281a62",
         "filename": "android/paths.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "cc1f4e1fd9ff3b3486ae17b1c2e3f8d9f86cb3f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abeb1612_ff637bc7",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2018-02-22T01:53:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "871ecbad_e3281a62",
+      "range": {
+        "startLine": 770,
+        "startChar": 37,
+        "endLine": 770,
+        "endChar": 72
+      },
+      "revId": "cc1f4e1fd9ff3b3486ae17b1c2e3f8d9f86cb3f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
