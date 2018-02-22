@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc566113_106e8a69",
+        "filename": "java/aar.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-02-22T22:54:14Z",
+      "side": 1,
+      "message": "D?",
+      "range": {
+        "startLine": 168,
+        "startChar": 47,
+        "endLine": 168,
+        "endChar": 49
+      },
+      "revId": "c27947596b5dcb08c5bedad8e0501f30d937eafc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
