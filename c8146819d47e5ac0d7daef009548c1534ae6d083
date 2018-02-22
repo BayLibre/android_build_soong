@@ -22,6 +22,30 @@
       "revId": "c8146819d47e5ac0d7daef009548c1534ae6d083",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "193c0aa9_f00beabf",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-22T22:24:56Z",
+      "side": 1,
+      "message": "That\u0027s tricky here, since framework-res is treated as a library.  I\u0027ll keep that in mind when I add library support.",
+      "parentUuid": "959c693a_de2b9e55",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 2
+      },
+      "revId": "c8146819d47e5ac0d7daef009548c1534ae6d083",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
