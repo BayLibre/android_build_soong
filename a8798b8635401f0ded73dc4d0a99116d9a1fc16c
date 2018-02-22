@@ -85,6 +85,30 @@
       "revId": "a8798b8635401f0ded73dc4d0a99116d9a1fc16c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fac09b25_1c22fd00",
+        "filename": "java/proto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-02-22T23:17:24Z",
+      "side": 1,
+      "message": "It\u0027s the temporary directory the protoc writes into, and we create the srcjar from. It just needs to be unique, we could derive something from the srcjar path too.",
+      "parentUuid": "e0c2f844_38a1e12b",
+      "range": {
+        "startLine": 59,
+        "startChar": 76,
+        "endLine": 59,
+        "endChar": 82
+      },
+      "revId": "a8798b8635401f0ded73dc4d0a99116d9a1fc16c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
