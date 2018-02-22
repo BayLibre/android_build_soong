@@ -93,6 +93,30 @@
       "revId": "cc1f4e1fd9ff3b3486ae17b1c2e3f8d9f86cb3f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d08ff339_0cd845a9",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2018-02-22T01:56:09Z",
+      "side": 1,
+      "message": "No for arm64 as primary arch, I don\u0027t think I see armv7-a-neon being used.",
+      "parentUuid": "abeb1612_ff637bc7",
+      "range": {
+        "startLine": 770,
+        "startChar": 37,
+        "endLine": 770,
+        "endChar": 72
+      },
+      "revId": "cc1f4e1fd9ff3b3486ae17b1c2e3f8d9f86cb3f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
