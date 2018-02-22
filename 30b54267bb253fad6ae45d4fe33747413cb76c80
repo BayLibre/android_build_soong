@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4cbbd182_02327efa",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-22T16:33:05Z",
+      "side": 1,
+      "message": "Apparently android.PathsForSource has the extra logic for config.AllowMissingDependencies(), but not android.PathForSource, which is breaking the master-art-host manifest in presubmit.",
+      "revId": "30b54267bb253fad6ae45d4fe33747413cb76c80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
