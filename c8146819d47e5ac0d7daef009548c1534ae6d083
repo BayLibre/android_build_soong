@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "959c693a_de2b9e55",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-02-22T00:50:18Z",
+      "side": 1,
+      "message": "Make puts the framework resources before the libraries",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 2
+      },
+      "revId": "c8146819d47e5ac0d7daef009548c1534ae6d083",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
