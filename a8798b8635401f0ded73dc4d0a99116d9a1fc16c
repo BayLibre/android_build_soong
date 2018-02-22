@@ -109,6 +109,30 @@
       "revId": "a8798b8635401f0ded73dc4d0a99116d9a1fc16c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb4b02cb_897aba70",
+        "filename": "java/proto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-22T23:18:27Z",
+      "side": 1,
+      "message": "That seems better, I expect .tmp files not to last past the end of a rule",
+      "parentUuid": "fac09b25_1c22fd00",
+      "range": {
+        "startLine": 59,
+        "startChar": 76,
+        "endLine": 59,
+        "endChar": 82
+      },
+      "revId": "a8798b8635401f0ded73dc4d0a99116d9a1fc16c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
