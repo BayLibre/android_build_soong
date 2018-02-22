@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3bf6741_591a9964",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-02-22T22:45:54Z",
+      "side": 1,
+      "message": ":(   I\u0027d be tempted to have an aapt2 method that just took the aar and uncompress the res dir on the fly. But this is the same thing we do in make, so it\u0027ll be fine for now.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 50
+      },
+      "revId": "cda77d43c68717a9cedcec43890721bb0ce5c289",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "894bc91c_46342191",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-02-22T22:45:54Z",
+      "side": 1,
+      "message": "Can we unify this between app.go and here?",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 2
+      },
+      "revId": "cda77d43c68717a9cedcec43890721bb0ce5c289",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f18b1ff_e6241b2f",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-02-22T22:45:54Z",
+      "side": 1,
+      "message": "This really isn\u0027t host supported, is it?",
+      "range": {
+        "startLine": 168,
+        "startChar": 47,
+        "endLine": 168,
+        "endChar": 69
+      },
+      "revId": "cda77d43c68717a9cedcec43890721bb0ce5c289",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
