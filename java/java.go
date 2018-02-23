@@ -283,6 +283,21 @@ type Dependency interface {
 	AidlIncludeDirs() android.Paths
 }
 
+type SrcDependency interface {
+	CompiledSrcs() android.Paths
+	CompiledSrcJars() android.Paths
+}
+
+func (j *Module) CompiledSrcs() android.Paths {
+	return j.compiledJavaSrcs
+}
+
+func (j *Module) CompiledSrcJars() android.Paths {
+	return j.compiledSrcJars
+}
+
+var _ SrcDependency = (*Module)(nil)
+
 func InitJavaModule(module android.DefaultableModule, hod android.HostOrDeviceSupported) {
 	android.InitAndroidArchModule(module, hod, android.MultilibCommon)
 	android.InitDefaultableModule(module)
@@ -544,6 +559,7 @@ type deps struct {
 	staticHeaderJars   android.Paths
 	staticJarResources android.Paths
 	aidlIncludeDirs    android.Paths
+	srcs               android.Paths
 	srcJars            android.Paths
 	systemModules      android.Path
 	aidlPreprocess     android.OptionalPath
