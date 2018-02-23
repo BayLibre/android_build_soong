@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7e7398d_eb14cd39",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-23T20:48:50Z",
+      "side": 1,
+      "message": "Can these just be in srcs with \":module\" syntax?",
+      "revId": "5d1daf37815466679fc93b67b5180ad0f030a56a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
