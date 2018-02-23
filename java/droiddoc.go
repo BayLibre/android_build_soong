@@ -50,6 +50,8 @@ var (
 )
 
 func init() {
+	android.RegisterModuleType("doc_defaults", DocDefaultsFactory)
+
 	android.RegisterModuleType("droiddoc", DroiddocFactory)
 	android.RegisterModuleType("droiddoc_host", DroiddocHostFactory)
 	android.RegisterModuleType("javadoc", JavadocFactory)
@@ -63,18 +65,27 @@ type JavadocProperties struct {
 
 	// list of directories rooted at the Android.bp file that will
 	// be added to the search paths for finding source files when passing package names.
-	Local_sourcepaths []string `android:"arch_variant"`
+	Local_sourcepaths []string
 
 	// list of source files that should not be used to build the Java module.
 	// This is most useful in the arch/multilib variants to remove non-common files
 	// filegroup or genrule can be included within this property.
 	Exclude_srcs []string `android:"arch_variant"`
 
-	// list of of java libraries that will be in the classpath.
+	// list of java libraries that will be in the classpath.
 	Libs []string `android:"arch_variant"`
 
+	// the java library (in classpath) for documentation that provides java srcs and srcjars.
+	Srcs_lib *string
+
+	// the base dirs under srcs_lib will be scanned for java srcs.
+	Srcs_lib_whitelist_dirs []string
+
+	// the sub dirs under srcs_lib_whitelist_dirs will be scanned for java srcs.
+	Srcs_lib_whitelist_pkgs []string
+
 	// If set to false, don't allow this module(-docs.zip) to be exported. Defaults to true.
-	Installable *bool `android:"arch_variant"`
+	Installable *bool
 
 	// if not blank, set to the version of the sdk to compile against
 	Sdk_version *string `android:"arch_variant"`
@@ -82,37 +93,43 @@ type JavadocProperties struct {
 
 type DroiddocProperties struct {
 	// directory relative to top of the source tree that contains doc templates files.
-	Custom_template_dir *string `android:"arch_variant"`
+	Custom_template_dir *string
 
 	// directories relative to top of the source tree which contains html/jd files.
-	Html_dirs []string `android:"arch_variant"`
+	Html_dirs []string
 
 	// set a value in the Clearsilver hdf namespace.
-	Hdf []string `android:"arch_variant"`
+	Hdf []string
 
 	// proofread file contains all of the text content of the javadocs concatenated into one file,
 	// suitable for spell-checking and other goodness.
-	Proofread_file *string `android:"arch_variant"`
+	Proofread_file *string
 
 	// a todo file lists the program elements that are missing documentation.
 	// At some point, this might be improved to show more warnings.
-	Todo_file *string `android:"arch_variant"`
+	Todo_file *string
+
+	// directory under current module source that provide additional resources (images).
+	Resourcesdir *string
+
+	// resources output directory under out/soong/.intermediates.
+	Resourcesoutdir *string
 
 	// local files that are used within user customized droiddoc options.
-	Arg_files []string `android:"arch_variant"`
+	Arg_files []string
 
 	// user customized droiddoc args.
 	// Available variables for substitution:
 	//
 	//  $(location <label>): the path to the arg_files with name <label>
-	Args *string `android:"arch_variant"`
+	Args *string
 
 	// names of the output files used in args that will be generated
-	Out []string `android:"arch_variant"`
+	Out []string
 
 	// a list of files under current module source dir which contains known tags in Java sources.
 	// filegroup or genrule can be included within this property.
-	Knowntags []string `android:"arch_variant"`
+	Knowntags []string
 }
 
 type Javadoc struct {
@@ -218,6 +235,31 @@ func (j *Javadoc) collectDeps(ctx android.ModuleContext) deps {
 				deps.bootClasspath = append(deps.bootClasspath, dep.ImplementationJars()...)
 			case libTag:
 				deps.classpath = append(deps.classpath, dep.ImplementationJars()...)
+				if otherName == String(j.properties.Srcs_lib) {
+					srcs := dep.(SrcDependency).CompiledSrcs()
+					whitelistPathPrefixs := make(map[string]bool)
+					for _, dir := range j.properties.Srcs_lib_whitelist_dirs {
+						for _, pkg := range j.properties.Srcs_lib_whitelist_pkgs {
+							prefix := filepath.Join(dir, pkg)
+							if _, found := whitelistPathPrefixs[prefix]; !found {
+								whitelistPathPrefixs[prefix] = true
+							}
+						}
+					}
+					for _, src := range srcs {
+						if strings.HasPrefix(src.String(), "out") { // generated sources
+							deps.srcs = append(deps.srcs, src)
+						} else { // select source path for documentation based on whitelist path prefixs.
+							for k, _ := range whitelistPathPrefixs {
+								if strings.HasPrefix(src.Rel(), k) {
+									deps.srcs = append(deps.srcs, src)
+									break
+								}
+							}
+						}
+					}
+					deps.srcJars = append(deps.srcJars, dep.(SrcDependency).CompiledSrcJars()...)
+				}
 			default:
 				panic(fmt.Errorf("unknown dependency %q for %q", otherName, ctx.ModuleName()))
 			}
@@ -246,9 +288,13 @@ func (j *Javadoc) collectDeps(ctx android.ModuleContext) deps {
 
 	// srcs may depend on some genrule output.
 	j.srcJars = srcFiles.FilterByExt(".srcjar")
+	j.srcJars = append(j.srcJars, deps.srcJars...)
+
 	j.srcFiles = srcFiles.FilterOutByExt(".srcjar")
+	j.srcFiles = append(j.srcFiles, deps.srcs...)
 
 	j.docZip = android.PathForModuleOut(ctx, ctx.ModuleName()+"-"+"docs.zip")
+	// TODO: change -stub.jar to .srcjar
 	j.stubsJar = android.PathForModuleOut(ctx, ctx.ModuleName()+"-"+"stubs.jar")
 
 	if j.properties.Local_sourcepaths == nil {
@@ -407,11 +453,24 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		proofreadFile := android.PathForModuleOut(ctx, String(d.properties.Proofread_file))
 		args = args + " -proofread " + proofreadFile.String()
 	}
+
 	if String(d.properties.Todo_file) != "" {
 		// tricky part:
 		// we should not compute full path for todo_file through PathForModuleOut().
 		// the non-standard doclet will get the full path relative to "-o".
 		args = args + " -todo " + String(d.properties.Todo_file)
+	}
+
+	if String(d.properties.Resourcesdir) != "" {
+		// TODO: should we add files under resourcesDir to the implicits? It seems that
+		// resourcesDir is one sub dir of htmlDir
+		resourcesDir := android.PathForModuleSrc(ctx, String(d.properties.Resourcesdir))
+		args = args + " -resourcesdir " + resourcesDir.String()
+	}
+
+	if String(d.properties.Resourcesoutdir) != "" {
+		// TODO: it seems -resourceoutdir reference/android/images/ didn't get generated anywhere.
+		args = args + " -resourcesoutdir " + String(d.properties.Resourcesoutdir)
 	}
 
 	implicits = append(implicits, d.Javadoc.srcJars...)
@@ -450,4 +509,31 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			"DoclavaJar":        "${config.DoclavaJar}",
 		},
 	})
+}
+
+//
+// Defaults
+//
+type DocDefaults struct {
+	android.ModuleBase
+	android.DefaultsModuleBase
+}
+
+func (*DocDefaults) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+}
+
+func (d *DocDefaults) DepsMutator(ctx android.BottomUpMutatorContext) {
+}
+
+func DocDefaultsFactory() android.Module {
+	module := &DocDefaults{}
+
+	module.AddProperties(
+		&JavadocProperties{},
+		&DroiddocProperties{},
+	)
+
+	android.InitDefaultsModule(module)
+
+	return module
 }
