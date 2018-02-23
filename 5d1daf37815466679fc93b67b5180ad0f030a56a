@@ -16,6 +16,24 @@
       "revId": "5d1daf37815466679fc93b67b5180ad0f030a56a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c547177a_c2d45514",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-02-23T21:13:25Z",
+      "side": 1,
+      "message": "In order to use :module, we have to implement Srcs(), but I noticed that our java modules implemented the Srcs() func:\nhttps://cs.corp.google.com/aosp-master/build/soong/java/java.go?rcl\u003d7c695eb797d9b34f2a3205f474091ef61a307bb2\u0026l\u003d274\n\nthat function returns j.implementationJarFile as output. Is there any reason that java modules returns j.implementationJarFile in Srcs()?",
+      "parentUuid": "e7e7398d_eb14cd39",
+      "revId": "5d1daf37815466679fc93b67b5180ad0f030a56a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
