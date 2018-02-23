@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d48c4223_bc1f2b52",
+        "filename": "phony/phony.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-02-23T23:50:13Z",
+      "side": 0,
+      "message": "adding Dan b/c of this.",
+      "range": {
+        "startLine": 47,
+        "startChar": 40,
+        "endLine": 47,
+        "endChar": 103
+      },
+      "revId": "1d29875829712eb37d0a1808716c94126018e52d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
