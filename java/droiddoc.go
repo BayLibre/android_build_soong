@@ -70,8 +70,11 @@ type JavadocProperties struct {
 	// filegroup or genrule can be included within this property.
 	Exclude_srcs []string `android:"arch_variant"`
 
-	// list of of java libraries that will be in the classpath.
+	// list of java libraries that will be in the classpath.
 	Libs []string `android:"arch_variant"`
+
+	// list of java libraries in classpath that provide additional java srcs and srcjars.
+	Srcs_libs []string `android:"arch_variant"`
 
 	// If set to false, don't allow this module(-docs.zip) to be exported. Defaults to true.
 	Installable *bool `android:"arch_variant"`
@@ -218,6 +221,10 @@ func (j *Javadoc) collectDeps(ctx android.ModuleContext) deps {
 				deps.bootClasspath = append(deps.bootClasspath, dep.ImplementationJars()...)
 			case libTag:
 				deps.classpath = append(deps.classpath, dep.ImplementationJars()...)
+				if android.InList(otherName, j.properties.Srcs_libs) {
+					deps.srcs = append(deps.srcs, dep.(SrcDependency).CompiledSrcs()...)
+					deps.srcJars = append(deps.srcJars, dep.(SrcDependency).CompiledSrcJars()...)
+				}
 			default:
 				panic(fmt.Errorf("unknown dependency %q for %q", otherName, ctx.ModuleName()))
 			}
@@ -246,7 +253,10 @@ func (j *Javadoc) collectDeps(ctx android.ModuleContext) deps {
 
 	// srcs may depend on some genrule output.
 	j.srcJars = srcFiles.FilterByExt(".srcjar")
+	j.srcJars = append(j.srcJars, deps.srcJars...)
+
 	j.srcFiles = srcFiles.FilterOutByExt(".srcjar")
+	j.srcFiles = append(j.srcFiles, deps.srcs...)
 
 	j.docZip = android.PathForModuleOut(ctx, ctx.ModuleName()+"-"+"docs.zip")
 	j.stubsJar = android.PathForModuleOut(ctx, ctx.ModuleName()+"-"+"stubs.jar")
