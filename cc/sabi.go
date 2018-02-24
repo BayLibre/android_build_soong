@@ -16,11 +16,17 @@ package cc
 
 import (
 	"strings"
+	"sync"
 
 	"github.com/google/blueprint"
 
 	"android/soong/android"
 	"android/soong/cc/config"
+)
+
+var (
+	lsdumpPaths []string
+	sabiLock    sync.Mutex
 )
 
 type SAbiProperties struct {
