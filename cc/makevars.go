@@ -99,6 +99,7 @@ func makeVarsProvider(ctx android.MakeVarsContext) {
 	ctx.Strict("VNDK_SAMEPROCESS_LIBRARIES", strings.Join(vndkSpLibraries, " "))
 	ctx.Strict("LLNDK_LIBRARIES", strings.Join(llndkLibraries, " "))
 	ctx.Strict("VNDK_PRIVATE_LIBRARIES", strings.Join(vndkPrivateLibraries, " "))
+	ctx.Strict("LSDUMP_PATHS", strings.Join(lsdumpPaths, " "))
 
 	ctx.Strict("ANDROID_WARNING_ALLOWED_PROJECTS", makeStringOfWarningAllowedProjects())
 	ctx.Strict("SOONG_MODULES_ADDED_WALL", makeStringOfKeys(ctx, modulesAddedWall))
