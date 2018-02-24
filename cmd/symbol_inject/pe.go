@@ -35,7 +35,8 @@ func findPESymbol(r io.ReaderAt, symbolName string) (uint64, uint64, error) {
 	})
 
 	for i, symbol := range peFile.Symbols {
-		if symbol.Name == symbolName {
+		// symbols in win32 exes seem to have a _ prefixed
+		if symbol.Name == symbolName || symbol.Name == "_"+symbolName {
 			var nextSymbol *pe.Symbol
 			if i+1 < len(peFile.Symbols) {
 				nextSymbol = peFile.Symbols[i+1]
