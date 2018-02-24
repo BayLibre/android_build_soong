@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c86da6d_079aac4b",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-02-24T02:28:37Z",
+      "side": 1,
+      "message": "Where is this initially reset and used?",
+      "range": {
+        "startLine": 184,
+        "startChar": 20,
+        "endLine": 184,
+        "endChar": 32
+      },
+      "revId": "6506b9b16a53967f79824f32e7a3b71cb88a8242",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
