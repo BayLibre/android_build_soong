@@ -34,6 +34,24 @@
       "revId": "5d1daf37815466679fc93b67b5180ad0f030a56a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f96e7150_2c13f355",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-02-26T23:21:57Z",
+      "side": 1,
+      "message": "Should these just be a shared filegroup then, instead of referring to the sources of a library?",
+      "parentUuid": "c547177a_c2d45514",
+      "revId": "5d1daf37815466679fc93b67b5180ad0f030a56a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
