@@ -22,6 +22,30 @@
       "revId": "6506b9b16a53967f79824f32e7a3b71cb88a8242",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f02820a_e6cc3528",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2018-02-26T19:39:37Z",
+      "side": 1,
+      "message": "This was a bad way to do it, expecting a make variable to be initialized to \u0027\u0027 automatically. The next patch tries to do this by collecting the paths through the Transform* rule generation routine. Its used in https://android-review.googlesource.com/c/platform/build/+/627586 which I\u0027m not sure why, didn\u0027t get added to the topic.",
+      "parentUuid": "1c86da6d_079aac4b",
+      "range": {
+        "startLine": 184,
+        "startChar": 20,
+        "endLine": 184,
+        "endChar": 32
+      },
+      "revId": "6506b9b16a53967f79824f32e7a3b71cb88a8242",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
