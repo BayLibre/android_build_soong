@@ -16,6 +16,24 @@
       "revId": "d27e63137a3849e9c9e3d1c16b0ae3a905887e66",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "429c4de8_546c990c",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2018-02-26T23:46:24Z",
+      "side": 1,
+      "message": "Wanted to constrain this to debug builds for now, we can look into enabling it on user builds in the future.",
+      "parentUuid": "9830d491_f92350b3",
+      "revId": "d27e63137a3849e9c9e3d1c16b0ae3a905887e66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
