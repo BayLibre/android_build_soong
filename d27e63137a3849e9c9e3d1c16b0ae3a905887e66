@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9830d491_f92350b3",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2018-02-26T21:47:23Z",
+      "side": 1,
+      "message": "Why check Debuggable here? Is it a temporary thing, or do you want -fsanitize-trap behavior in -user builds?",
+      "revId": "d27e63137a3849e9c9e3d1c16b0ae3a905887e66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
