@@ -52,6 +52,24 @@
       "revId": "5d1daf37815466679fc93b67b5180ad0f030a56a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f12ac974_99c78f32",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-02-26T23:54:30Z",
+      "side": 1,
+      "message": "Nevermind, filegroup won\u0027t work for the aidl/proto files that we generate sources for inside a java_library.\n\nColin and I have talked about adding qualifiers to the :\u003cmodule\u003e syntax (maybe :\u003cmodule\u003e:\u003ctype\u003e?) This way you could reference other named outputs from a module instead of whichever we\u0027ve chosen as a primary. We\u0027d need to document the supported outputs in that case.",
+      "parentUuid": "f96e7150_2c13f355",
+      "revId": "5d1daf37815466679fc93b67b5180ad0f030a56a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
