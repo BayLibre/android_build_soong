@@ -22,6 +22,29 @@
       "revId": "7a5d2e09129f5e98ad4438ccc3d718fda3cfef81",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05f1ff27_d5923ea0",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-27T19:48:11Z",
+      "side": 1,
+      "message": "Boolean arguments are confusing.  Why not GlobWithDirs and Glob, or Glob and GlobFiles?  Those can forward to an underlying API that takes a bool (or an enum).",
+      "range": {
+        "startLine": 115,
+        "startChar": 45,
+        "endLine": 115,
+        "endChar": 57
+      },
+      "revId": "7a5d2e09129f5e98ad4438ccc3d718fda3cfef81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
