@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37207e80_3ef0b4a4",
+        "filename": "cc/vndk_install_props.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-27T20:10:28Z",
+      "side": 1,
+      "message": "We don\u0027t like storing data in globals like this, it makes testing harder.  Store it in the context instead using ctx.Config().Once",
+      "revId": "1645afc7b478740c3b877baf5ff04638f75a653f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "509218b9_58125c9d",
+        "filename": "cc/vndk_install_props.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-27T20:10:28Z",
+      "side": 1,
+      "message": "I still don\u0027t like trying to extract this from the properties.  I think you should visit the modules in the Singleton, find the ones you care about, and then get the final install path from m.(*Module).outputFile.",
+      "revId": "1645afc7b478740c3b877baf5ff04638f75a653f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
