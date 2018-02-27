@@ -46,6 +46,30 @@
       "revId": "94d89b8dd7f1926b3ab39066ca432bba8f26d1b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb6bfa15_01546f97",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-02-27T04:06:08Z",
+      "side": 1,
+      "message": "It\u0027s unclear to me if the make side actually did anything sane with an empty value -- it would set it to build/make/tools/droiddoc, which doesn\u0027t look like templates-sdk. It looks like it was intended to contain values like \"templates-sdk\", and we\u0027d prefix that value.\n\nThe only other one that references a valid directory is for templates-pdk.",
+      "parentUuid": "8c1befb7_78690e07",
+      "range": {
+        "startLine": 323,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 55
+      },
+      "revId": "94d89b8dd7f1926b3ab39066ca432bba8f26d1b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
