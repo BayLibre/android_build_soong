@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af79dee1_0b4a5634",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-02-27T06:16:08Z",
+      "side": 1,
+      "message": "This doesn\u0027t appear to affect the installed files, only the intermediate resource jars. Colin, can you see any issues with this?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 6
+      },
+      "revId": "7a5d2e09129f5e98ad4438ccc3d718fda3cfef81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
