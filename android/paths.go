@@ -228,14 +228,17 @@ func PathsForModuleSrc(ctx ModuleContext, paths []string) Paths {
 
 // pathsForModuleSrcFromFullPath returns Paths rooted from the module's local
 // source directory, but strip the local source directory from the beginning of
-// each string.
-func pathsForModuleSrcFromFullPath(ctx ModuleContext, paths []string) Paths {
+// each string. If incDirs is false, strip paths with a trailing '/' from the list.
+func pathsForModuleSrcFromFullPath(ctx ModuleContext, paths []string, incDirs bool) Paths {
 	prefix := filepath.Join(ctx.Config().srcDir, ctx.ModuleDir()) + "/"
 	if prefix == "./" {
 		prefix = ""
 	}
 	ret := make(Paths, 0, len(paths))
 	for _, p := range paths {
+		if !incDirs && strings.HasSuffix(p, "/") {
+			continue
+		}
 		path := filepath.Clean(p)
 		if !strings.HasPrefix(path, prefix) {
 			reportPathErrorf(ctx, "Path '%s' is not in module source directory '%s'", p, prefix)
@@ -255,7 +258,7 @@ func PathsWithOptionalDefaultForModuleSrc(ctx ModuleContext, input []string, def
 	// Use Glob so that if the default doesn't exist, a dependency is added so that when it
 	// is created, we're run again.
 	path := filepath.Join(ctx.Config().srcDir, ctx.ModuleDir(), def)
-	return ctx.Glob(path, nil)
+	return ctx.Glob(path, nil, true)
 }
 
 // Strings returns the Paths in string form

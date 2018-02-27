@@ -202,7 +202,7 @@ func (m *preprocessedHeaderModule) GenerateAndroidBuildActions(ctx android.Modul
 
 	fromSrcPath := android.PathForModuleSrc(ctx, String(m.properties.From))
 	toOutputPath := getCurrentIncludePath(ctx).Join(ctx, String(m.properties.To))
-	srcFiles := ctx.Glob(filepath.Join(fromSrcPath.String(), "**/*.h"), nil)
+	srcFiles := ctx.Glob(filepath.Join(fromSrcPath.String(), "**/*.h"), nil, false)
 	var installPaths []android.WritablePath
 	for _, header := range srcFiles {
 		installDir := getHeaderInstallDir(ctx, header, String(m.properties.From), String(m.properties.To))
@@ -228,7 +228,7 @@ func processHeadersWithVersioner(ctx android.ModuleContext, srcDir, outDir andro
 	// depend on these headers.
 	// TODO(http://b/35673191): Update the versioner to use a --sysroot.
 	depsPath := android.PathForSource(ctx, "bionic/libc/versioner-dependencies")
-	depsGlob := ctx.Glob(filepath.Join(depsPath.String(), "**/*"), nil)
+	depsGlob := ctx.Glob(filepath.Join(depsPath.String(), "**/*"), nil, true)
 	for i, path := range depsGlob {
 		fileInfo, err := os.Lstat(path.String())
 		if err != nil {

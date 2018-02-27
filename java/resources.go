@@ -44,7 +44,7 @@ func ResourceDirsToJarArgs(ctx android.ModuleContext,
 
 	for _, dir := range resourceDirs {
 		dir := android.PathForModuleSrc(ctx, dir).String()
-		files := ctx.Glob(filepath.Join(dir, "**/*"), excludes)
+		files := ctx.Glob(filepath.Join(dir, "**/*"), excludes, true)
 
 		deps = append(deps, files...)
 

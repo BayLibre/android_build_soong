@@ -112,8 +112,7 @@ type ModuleContext interface {
 	ExpandSource(srcFile, prop string) Path
 	ExpandOptionalSource(srcFile *string, prop string) OptionalPath
 	ExpandSourcesSubDir(srcFiles, excludes []string, subDir string) Paths
-	Glob(globPattern string, excludes []string) Paths
-	GlobFiles(globPattern string, excludes []string) Paths
+	Glob(globPattern string, excludes []string, incDirs bool) Paths
 
 	InstallExecutable(installPath OutputPath, name string, srcPath Path, deps ...Path) OutputPath
 	InstallFile(installPath OutputPath, name string, srcPath Path, deps ...Path) OutputPath
@@ -1220,7 +1219,7 @@ func (ctx *androidModuleContext) ExpandSourcesSubDir(srcFiles, excludes []string
 				ctx.ModuleErrorf("srcs dependency %q is not a source file producing module", m)
 			}
 		} else if pathtools.IsGlob(s) {
-			globbedSrcFiles := ctx.Glob(filepath.Join(prefix, s), expandedExcludes)
+			globbedSrcFiles := ctx.Glob(filepath.Join(prefix, s), expandedExcludes, false)
 			for i, s := range globbedSrcFiles {
 				globbedSrcFiles[i] = s.(ModuleSrcPath).WithSubDir(ctx, subDir)
 			}
@@ -1241,30 +1240,12 @@ func (ctx *androidModuleContext) RequiredModuleNames() []string {
 	return ctx.module.base().commonProperties.Required
 }
 
-func (ctx *androidModuleContext) Glob(globPattern string, excludes []string) Paths {
+func (ctx *androidModuleContext) Glob(globPattern string, excludes []string, incDirs bool) Paths {
 	ret, err := ctx.GlobWithDeps(globPattern, excludes)
 	if err != nil {
 		ctx.ModuleErrorf("glob: %s", err.Error())
 	}
-	return pathsForModuleSrcFromFullPath(ctx, ret)
-}
-
-// glob only "files" under the directory relative to top of the source tree.
-func (ctx *androidModuleContext) GlobFiles(globPattern string, excludes []string) Paths {
-	paths, err := ctx.GlobWithDeps(globPattern, excludes)
-	if err != nil {
-		ctx.ModuleErrorf("glob: %s", err.Error())
-	}
-	var ret []Path
-	for _, p := range paths {
-		if isDir, err := ctx.Fs().IsDir(p); err != nil {
-			ctx.ModuleErrorf("error in IsDir(%s): %s", p, err.Error())
-			return nil
-		} else if !isDir {
-			ret = append(ret, PathForSource(ctx, p))
-		}
-	}
-	return ret
+	return pathsForModuleSrcFromFullPath(ctx, ret, incDirs)
 }
 
 func init() {

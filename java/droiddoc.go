@@ -393,14 +393,14 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	var htmlDirArgs string
 	if len(d.properties.Html_dirs) > 0 {
 		htmlDir := android.PathForModuleSrc(ctx, d.properties.Html_dirs[0])
-		implicits = append(implicits, ctx.Glob(htmlDir.Join(ctx, "**/*").String(), nil)...)
+		implicits = append(implicits, ctx.Glob(htmlDir.Join(ctx, "**/*").String(), nil, true)...)
 		htmlDirArgs = "-htmldir " + htmlDir.String()
 	}
 
 	var htmlDir2Args string
 	if len(d.properties.Html_dirs) > 1 {
 		htmlDir2 := android.PathForModuleSrc(ctx, d.properties.Html_dirs[1])
-		implicits = append(implicits, ctx.Glob(htmlDir2.Join(ctx, "**/*").String(), nil)...)
+		implicits = append(implicits, ctx.Glob(htmlDir2.Join(ctx, "**/*").String(), nil, true)...)
 		htmlDir2Args = "-htmldir2 " + htmlDir2.String()
 	}
 
@@ -495,5 +495,5 @@ func (d *DroiddocTemplate) DepsMutator(android.BottomUpMutatorContext) {}
 func (d *DroiddocTemplate) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	path := android.PathForModuleSrc(ctx, String(d.properties.Path))
 	d.dir = path
-	d.deps = ctx.Glob(path.Join(ctx, "**/*").String(), nil)
+	d.deps = ctx.Glob(path.Join(ctx, "**/*").String(), nil, true)
 }
