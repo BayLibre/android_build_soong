@@ -22,6 +22,30 @@
       "revId": "7e0e83b2f5f36ef7d9f956d447980cb2d5056e13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1c8f7bb_c85bb77c",
+        "filename": "cc/libsoongversion/include/build/version.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-27T23:12:47Z",
+      "side": 1,
+      "message": "Added -fvisibility\u003dhidden",
+      "parentUuid": "97f1a5b6_a6a1cdee",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 29
+      },
+      "revId": "7e0e83b2f5f36ef7d9f956d447980cb2d5056e13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
