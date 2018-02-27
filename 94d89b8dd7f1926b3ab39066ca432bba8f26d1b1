@@ -22,6 +22,30 @@
       "revId": "94d89b8dd7f1926b3ab39066ca432bba8f26d1b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c1befb7_78690e07",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-02-27T03:22:19Z",
+      "side": 1,
+      "message": "Sometimes cutstom_template is empty, old droiddoc.mk set it to a strange value.",
+      "parentUuid": "40693894_cec9d964",
+      "range": {
+        "startLine": 323,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 55
+      },
+      "revId": "94d89b8dd7f1926b3ab39066ca432bba8f26d1b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
