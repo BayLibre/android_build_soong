@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1cdedb13_ed116436",
+        "filename": "cc/lto.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-27T20:17:47Z",
+      "side": 1,
+      "message": "Putting this out of line makes it less readable",
+      "revId": "10f587f7ddc1025ebfeecd6f17d860c678a4481c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b716c664_2f7325b3",
+        "filename": "cc/lto.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-02-27T20:17:47Z",
+      "side": 1,
+      "message": "sprintf is unnecessary here, \"-Wl,-plugin-opt,cache-dir\u003d\" + cacheDir?",
+      "range": {
+        "startLine": 84,
+        "startChar": 41,
+        "endLine": 84,
+        "endChar": 52
+      },
+      "revId": "10f587f7ddc1025ebfeecd6f17d860c678a4481c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
