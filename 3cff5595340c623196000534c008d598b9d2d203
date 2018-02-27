@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b37f2ca9_0307bd83",
+        "filename": "cc/linker.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2018-02-27T23:45:43Z",
+      "side": 1,
+      "message": "Should this have `android:\"arch_variant\"` to allow for things like `target: { host: { use_version_lib: true }}`?",
+      "revId": "3cff5595340c623196000534c008d598b9d2d203",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
