@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97f1a5b6_a6a1cdee",
+        "filename": "cc/libsoongversion/include/build/version.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-02-27T21:13:25Z",
+      "side": 1,
+      "message": "Can we mark this as not exported, so that shared libs won\u0027t export this symbol? (But can use it within themselves)",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 29
+      },
+      "revId": "7e0e83b2f5f36ef7d9f956d447980cb2d5056e13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
