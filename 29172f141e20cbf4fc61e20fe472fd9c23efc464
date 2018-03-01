@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4250950_230a237f",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2018-03-01T21:40:47Z",
+      "side": 1,
+      "message": "6 levels of indentation :(\nI find these mutator functions very difficult to understand. Perhaps a comment documenting what exactly MinimalRuntimeDep means would help?",
+      "revId": "29172f141e20cbf4fc61e20fe472fd9c23efc464",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
