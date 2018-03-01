@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00417e51_5bbceb26",
+        "filename": "android/neverallow.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-03-01T01:40:35Z",
+      "side": 0,
+      "message": "I am not too sure if the check would be too loose if I remove this condition. But api-stubs jar don\u0027t need build against standard_libs.",
+      "revId": "3bb14200e2a6f691789d2f311b30cb881a8d99a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
