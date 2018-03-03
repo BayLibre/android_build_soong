@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1dd9e44b_9cfeb177",
+        "filename": "cc/libbuildversion/libbuildversion.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-03-03T00:47:22Z",
+      "side": 1,
+      "message": "Copyright header?",
+      "revId": "d0104c41d7f09079956d6b2815808eb6471e1e14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
