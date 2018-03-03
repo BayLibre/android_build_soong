@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c478efa1_e5ef0365",
+        "filename": "cmd/symbol_inject/macho.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-03-03T00:45:32Z",
+      "side": 1,
+      "message": "?",
+      "revId": "ac88b37d68a73d1a5368ce726373b2dcda68b6d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
