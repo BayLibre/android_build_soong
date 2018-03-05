@@ -559,12 +559,54 @@ func checkProducesJars(ctx android.ModuleContext, dep android.SourceFileProducer
 	}
 }
 
+type linkType int
+
+const (
+	javaCore linkType = iota
+	javaSdk
+	javaSystem
+	javaPlatform
+)
+
+func getLinkType(m *Module) linkType {
+	ver := String(m.deviceProperties.Sdk_version)
+	if strings.HasPrefix(ver, "core_") {
+		return javaCore
+	} else if strings.HasPrefix(ver, "system_") {
+		return javaSystem
+	} else if len(ver) > 0 {
+		return javaSdk
+	} else {
+		return javaPlatform
+	}
+}
+
 func checkLinkType(ctx android.ModuleContext, from *Module, to *Library, tag dependencyTag) {
-	if strings.HasPrefix(String(from.deviceProperties.Sdk_version), "core_") {
-		if !strings.HasPrefix(String(to.deviceProperties.Sdk_version), "core_") {
+	myLinkType := getLinkType(from)
+	otherLinkType := getLinkType(&to.Module)
+
+	switch myLinkType {
+	case javaCore:
+		if otherLinkType != javaCore {
 			ctx.ModuleErrorf("depends on other library %q using non-core Java APIs",
 				ctx.OtherModuleName(to))
 		}
+		break
+	case javaSdk:
+		if otherLinkType != javaCore && otherLinkType != javaSdk {
+			ctx.ModuleErrorf("depends on other library %q using non public Android APIs",
+				ctx.OtherModuleName(to))
+		}
+		break
+	case javaSystem:
+		if otherLinkType == javaPlatform {
+			ctx.ModuleErrorf("depends on other library %q using private Android APIs",
+				ctx.OtherModuleName(to))
+		}
+		break
+	case javaPlatform:
+		// no restriction on link-type
+		break
 	}
 }
 
