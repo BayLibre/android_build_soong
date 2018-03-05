@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9f30c53_c3c3198e",
+        "filename": "android/neverallow.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-03-05T19:46:06Z",
+      "side": 0,
+      "message": "notIn(\"libcore\", \"development\")",
+      "revId": "dcd33b6c29580298a122711c3f5e1384550cacbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

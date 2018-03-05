@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67470736_655ef8b0",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-03-05T19:46:06Z",
+      "side": 1,
+      "message": "Split all this out to a helper function",
+      "revId": "8f542f8640b7f1f90e09a6dd31f0c6d36d88a462",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3734f0c7_d8118603",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-03-05T19:46:06Z",
+      "side": 1,
+      "message": "8 levels of indent is way too many, move all the path checking to a helper function",
+      "revId": "8f542f8640b7f1f90e09a6dd31f0c6d36d88a462",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bc95137_7aa02fa5",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-03-05T19:46:06Z",
+      "side": 1,
+      "message": "This is not a valid way to find the output directory, OUT_DIR\u003d/tmp/out would break it.\nMaybe:\n\n if outPath, ok :\u003d src.(WritablePath); ok",
+      "revId": "8f542f8640b7f1f90e09a6dd31f0c6d36d88a462",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
