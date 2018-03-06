@@ -166,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "8edf8c9f_90a78f3d",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-03-06T21:35:54Z",
+      "side": 1,
+      "message": "Thats why I suggested a helper function",
+      "parentUuid": "a48efb54_05a9aec8",
+      "range": {
+        "startLine": 445,
+        "startChar": 35,
+        "endLine": 445,
+        "endChar": 44
+      },
+      "revId": "f3d9a46b8dd37af6b5dd20d0b86c6af3060b3a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "55d9a0ef_6a4f94e7",
         "filename": "cc/sanitize.go",
         "patchSetId": 5
