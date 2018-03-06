@@ -163,16 +163,16 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 	}
 
 	if len(globalSanitizers) > 0 {
-		var found bool
-		if found, globalSanitizers = removeFromList("undefined", globalSanitizers); found && s.All_undefined == nil {
+		var found int
+		if found, globalSanitizers = removeFromList("undefined", globalSanitizers); found > 0 && s.All_undefined == nil {
 			s.All_undefined = boolPtr(true)
 		}
 
-		if found, globalSanitizers = removeFromList("default-ub", globalSanitizers); found && s.Undefined == nil {
+		if found, globalSanitizers = removeFromList("default-ub", globalSanitizers); found > 0 && s.Undefined == nil {
 			s.Undefined = boolPtr(true)
 		}
 
-		if found, globalSanitizers = removeFromList("address", globalSanitizers); found {
+		if found, globalSanitizers = removeFromList("address", globalSanitizers); found > 0 {
 			if s.Address == nil {
 				s.Address = boolPtr(true)
 			} else if *s.Address == false {
@@ -182,25 +182,25 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 			}
 		}
 
-		if found, globalSanitizers = removeFromList("thread", globalSanitizers); found && s.Thread == nil {
+		if found, globalSanitizers = removeFromList("thread", globalSanitizers); found > 0 && s.Thread == nil {
 			s.Thread = boolPtr(true)
 		}
 
-		if found, globalSanitizers = removeFromList("coverage", globalSanitizers); found && s.Coverage == nil {
+		if found, globalSanitizers = removeFromList("coverage", globalSanitizers); found > 0 && s.Coverage == nil {
 			s.Coverage = boolPtr(true)
 		}
 
-		if found, globalSanitizers = removeFromList("safe-stack", globalSanitizers); found && s.Safestack == nil {
+		if found, globalSanitizers = removeFromList("safe-stack", globalSanitizers); found > 0 && s.Safestack == nil {
 			s.Safestack = boolPtr(true)
 		}
 
-		if found, globalSanitizers = removeFromList("cfi", globalSanitizers); found && s.Cfi == nil {
+		if found, globalSanitizers = removeFromList("cfi", globalSanitizers); found > 0 && s.Cfi == nil {
 			if !ctx.Config().CFIDisabledForPath(ctx.ModuleDir()) {
 				s.Cfi = boolPtr(true)
 			}
 		}
 
-		if found, globalSanitizers = removeFromList("integer_overflow", globalSanitizers); found && s.Integer_overflow == nil {
+		if found, globalSanitizers = removeFromList("integer_overflow", globalSanitizers); found > 0 && s.Integer_overflow == nil {
 			if !ctx.Config().IntegerOverflowDisabledForPath(ctx.ModuleDir()) {
 				s.Integer_overflow = boolPtr(true)
 			}
@@ -210,12 +210,12 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 			ctx.ModuleErrorf("unknown global sanitizer option %s", globalSanitizers[0])
 		}
 
-		if found, globalSanitizersDiag = removeFromList("integer_overflow", globalSanitizersDiag); found &&
+		if found, globalSanitizersDiag = removeFromList("integer_overflow", globalSanitizersDiag); found > 0 &&
 			s.Diag.Integer_overflow == nil && Bool(s.Integer_overflow) {
 			s.Diag.Integer_overflow = boolPtr(true)
 		}
 
-		if found, globalSanitizersDiag = removeFromList("cfi", globalSanitizersDiag); found &&
+		if found, globalSanitizersDiag = removeFromList("cfi", globalSanitizersDiag); found > 0 &&
 			s.Diag.Cfi == nil && Bool(s.Cfi) {
 			s.Diag.Cfi = boolPtr(true)
 		}

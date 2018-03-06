@@ -300,3 +300,44 @@ func TestRemoveListFromList(t *testing.T) {
 		t.Errorf("       got: %#v", out)
 	}
 }
+
+func TestRemoveFromList(t *testing.T) {
+	input := []string{"a", "b", "a", "c", "a"}
+
+	testcases := []struct {
+		key         string
+		expectedN   int
+		expectedOut []string
+	}{
+		{
+			key:         "a",
+			expectedN:   3,
+			expectedOut: []string{"b", "c"},
+		},
+		{
+			key:         "X",
+			expectedN:   0,
+			expectedOut: input,
+		},
+	}
+
+	for _, testCase := range testcases {
+		t.Run(testCase.key, func(t *testing.T) {
+			n, out := RemoveFromList(testCase.key, input)
+			if n != testCase.expectedN {
+				t.Errorf("incorrect output:")
+				t.Errorf("       key: %#v", testCase.key)
+				t.Errorf("     input: %#v", input)
+				t.Errorf("  expected: %#v", testCase.expectedN)
+				t.Errorf("       got: %#v", n)
+			}
+			if !reflect.DeepEqual(out, testCase.expectedOut) {
+				t.Errorf("incorrect output:")
+				t.Errorf("       key: %#v", testCase.key)
+				t.Errorf("     input: %#v", input)
+				t.Errorf("  expected: %#v", testCase.expectedOut)
+				t.Errorf("       got: %#v", out)
+			}
+		})
+	}
+}
