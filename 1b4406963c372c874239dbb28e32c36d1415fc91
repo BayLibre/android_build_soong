@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "18f92fe0_ac2b6215",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-03-06T04:02:41Z",
+      "side": 1,
+      "message": "Good point. javaSdk when it is a number or \"current\".\n\ntest_current should be javaPlatform, as in make.",
+      "parentUuid": "c1346666_f123b6a5",
+      "revId": "1b4406963c372c874239dbb28e32c36d1415fc91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9ccf1698_1ba62a85",
         "filename": "java/java.go",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2018-03-05T22:22:35Z",
       "side": 1,
       "message": "These error messages aren\u0027t very helpful to know what to do.  Something like \"compiles against the SDK, but dependency %q is compiling against platform APIs\"  Maybe also suggest adding sdk_version: property to the dependency.\n\nAlso \"using non public Android APIs\" is misleading, it may be compiling against the non public APIs, but we can\u0027t know if it is using them or not.",
+      "range": {
+        "startLine": 597,
+        "startChar": 21,
+        "endLine": 597,
+        "endChar": 78
+      },
+      "revId": "1b4406963c372c874239dbb28e32c36d1415fc91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3368fa08_6e120308",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-03-06T04:02:41Z",
+      "side": 1,
+      "message": "Yes, you are right. Amended the message. PTAL.",
+      "parentUuid": "9ccf1698_1ba62a85",
       "range": {
         "startLine": 597,
         "startChar": 21,
