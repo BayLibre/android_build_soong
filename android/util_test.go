@@ -244,3 +244,21 @@ func TestRemoveListFromList(t *testing.T) {
 		t.Errorf("       got: %#v", out)
 	}
 }
+
+func TestRemoveFromList(t *testing.T) {
+	input := []string{"a", "b", "a", "c", "a"}
+	expected := []string{"b", "c"}
+	n, out := RemoveFromList("a", input)
+	if n != 3 {
+		t.Errorf("incorrect output:")
+		t.Errorf("     input: %#v", input)
+		t.Errorf("  expected: %#v", 1)
+		t.Errorf("       got: %#v", n)
+	}
+	if !reflect.DeepEqual(out, expected) {
+		t.Errorf("incorrect output:")
+		t.Errorf("     input: %#v", input)
+		t.Errorf("  expected: %#v", expected)
+		t.Errorf("       got: %#v", out)
+	}
+}
