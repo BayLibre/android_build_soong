@@ -177,7 +177,7 @@ func (linker *baseLinker) linkerDeps(ctx BaseModuleContext, deps Deps) Deps {
 						ctx.PropertyErrorf("shared_libs",
 							"libdl must be in system_shared_libs, not shared_libs")
 					}
-					_, deps.SharedLibs = removeFromList("libdl", deps.SharedLibs)
+					deps.SharedLibs = removeListFromList(deps.SharedLibs, []string{"libdl"})
 				}
 			}
 
