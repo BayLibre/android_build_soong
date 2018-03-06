@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "971d89bc_1e88dca7",
+        "filename": "cc/config/toolchain.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2018-03-06T21:26:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "193ea9ae_8793dac7",
+      "revId": "f3d9a46b8dd37af6b5dd20d0b86c6af3060b3a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ed4400d6_a1254600",
         "filename": "cc/config/toolchain.go",
         "patchSetId": 5
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "85b2286d_1586e62c",
+        "filename": "cc/config/toolchain.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2018-03-06T21:26:00Z",
+      "side": 1,
+      "message": "Yea I noticed that as well, I figured I\u0027d be consistent now and this can all get cleaned up in a separate patch.",
+      "parentUuid": "ed4400d6_a1254600",
+      "revId": "f3d9a46b8dd37af6b5dd20d0b86c6af3060b3a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "49f3ad02_ddd737ba",
         "filename": "cc/makevars.go",
         "patchSetId": 5
@@ -47,6 +83,30 @@
       "writtenOn": "2018-03-05T19:28:52Z",
       "side": 1,
       "message": "Unrelated to this change, but these config variables don\u0027t have the suffix that is being trimmed.",
+      "range": {
+        "startLine": 277,
+        "startChar": 3,
+        "endLine": 281,
+        "endChar": 0
+      },
+      "revId": "f3d9a46b8dd37af6b5dd20d0b86c6af3060b3a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee90a4c6_1a2c9714",
+        "filename": "cc/makevars.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2018-03-06T21:26:00Z",
+      "side": 1,
+      "message": "Ack, I called TrimSuffix for consistency but I agree this should be cleaned up.",
+      "parentUuid": "49f3ad02_ddd737ba",
       "range": {
         "startLine": 277,
         "startChar": 3,
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "a48efb54_05a9aec8",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2018-03-06T21:26:00Z",
+      "side": 1,
+      "message": "Enumerating each makes this a pretty large if statement. I don\u0027t feel strongly either way though, I\u0027ve gone ahead and used inList.",
+      "parentUuid": "bbf50361_c4b6831a",
+      "range": {
+        "startLine": 445,
+        "startChar": 35,
+        "endLine": 445,
+        "endChar": 44
+      },
+      "revId": "f3d9a46b8dd37af6b5dd20d0b86c6af3060b3a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "55d9a0ef_6a4f94e7",
         "filename": "cc/sanitize.go",
         "patchSetId": 5
@@ -93,6 +177,30 @@
       "writtenOn": "2018-03-05T19:28:52Z",
       "side": 1,
       "message": "inList(\"cfi\", diagSanitizers)",
+      "range": {
+        "startLine": 446,
+        "startChar": 3,
+        "endLine": 446,
+        "endChar": 44
+      },
+      "revId": "f3d9a46b8dd37af6b5dd20d0b86c6af3060b3a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c87851d5_5ecb7521",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2018-03-06T21:26:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55d9a0ef_6a4f94e7",
       "range": {
         "startLine": 446,
         "startChar": 3,
@@ -128,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "795ddd10_a603a87a",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2018-03-06T21:26:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9bb637f_15119554",
+      "range": {
+        "startLine": 467,
+        "startChar": 8,
+        "endLine": 467,
+        "endChar": 22
+      },
+      "revId": "f3d9a46b8dd37af6b5dd20d0b86c6af3060b3a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c3ae4b3_79419f29",
         "filename": "cc/sanitize.go",
         "patchSetId": 5
@@ -139,6 +271,24 @@
       "writtenOn": "2018-03-05T19:28:52Z",
       "side": 1,
       "message": "Is this necessary?  We should set up a sanitize object for every relevant cc.Module.  Maybe you\u0027re traversing into prebuilts or something that isn\u0027t going to do anything with the sanitize object anyways?  Maybe add ok \u0026\u0026 c.sanitize !\u003d nil on line 616?",
+      "revId": "f3d9a46b8dd37af6b5dd20d0b86c6af3060b3a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7661c42e_eb970a44",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2018-03-06T21:26:00Z",
+      "side": 1,
+      "message": "Yup that did it, that might be what I was running into.",
+      "parentUuid": "8c3ae4b3_79419f29",
       "revId": "f3d9a46b8dd37af6b5dd20d0b86c6af3060b3a71",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
