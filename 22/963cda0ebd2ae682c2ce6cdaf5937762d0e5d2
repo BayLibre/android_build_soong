@@ -1,0 +1,10 @@
+Verified+1: Jayant Chowdhary <jchowdhary@google.com>
+Code-Review+1: Andrew Hsieh <andrewhsieh@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Autosubmit+1: Jayant Chowdhary <jchowdhary@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Wed, 07 Mar 2018 01:46:15 +0000
+Reviewed-on: https://android-review.googlesource.com/634743
+Project: platform/build/soong
+Branch: refs/heads/master
