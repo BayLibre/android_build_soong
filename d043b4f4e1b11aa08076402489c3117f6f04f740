@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cdd450a7_e3e10fd8",
+        "filename": "cc/linker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-03-07T02:30:59Z",
+      "side": 1,
+      "message": "Seems better to fix removeFromList.  The only other user of removeFromList is sanitize.go, which would also suffer from the same problem if the global sanitizer config ended up with duplicates, although we seem to avoid that on the make side right now.\n\nIdeally rename to RemoveAllFromList, document its behavior, and add a test for it, but feel free to leave that for us to do in a later patch, or file a bug and we can make the fix too.",
+      "revId": "d043b4f4e1b11aa08076402489c3117f6f04f740",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
