@@ -16,6 +16,24 @@
       "revId": "d043b4f4e1b11aa08076402489c3117f6f04f740",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4d3d9ed_85f4fac3",
+        "filename": "cc/linker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1014807
+      },
+      "writtenOn": "2018-03-07T05:35:36Z",
+      "side": 1,
+      "message": "OK.  I\u0027ll do that instead.  Originally, I thought it was intentional to implement removeFromList() like that.",
+      "parentUuid": "cdd450a7_e3e10fd8",
+      "revId": "d043b4f4e1b11aa08076402489c3117f6f04f740",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
