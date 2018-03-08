@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5db53de5_5f5c9295",
+        "filename": "android/util_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-03-08T15:51:21Z",
+      "side": 1,
+      "message": "Put t.Helper() in these functions.  That way the errors will report the line number of the caller.\n\nYou could also consider putting t.Run in here in order to make each check a subtest, but that probably only makes sense if you also add a name for each subtest, or keep a count and use the number as the name.",
+      "revId": "0d487d50264ffa69588855f929e8561985085f56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b8b8fd8_8aac3ebe",
+        "filename": "android/util_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-03-08T15:51:21Z",
+      "side": 1,
+      "message": "Might as well check a b and c too",
+      "revId": "0d487d50264ffa69588855f929e8561985085f56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
