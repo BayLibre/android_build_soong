@@ -118,3 +118,129 @@ func TestLastUniqueStrings(t *testing.T) {
 		}
 	}
 }
+
+func TestJoinWithPrefix(t *testing.T) {
+	expected := ""
+	out := JoinWithPrefix([]string{}, "prefix:")
+	if out != expected {
+		t.Errorf("incorrect output:")
+		t.Errorf("  expected: %#v", expected)
+		t.Errorf("       got: %#v", out)
+	}
+
+	expected = "prefix:a"
+	out = JoinWithPrefix([]string{"a"}, "prefix:")
+	if out != expected {
+		t.Errorf("incorrect output:")
+		t.Errorf("  expected: %#v", expected)
+		t.Errorf("       got: %#v", out)
+	}
+
+	expected = "prefix:a prefix:b"
+	out = JoinWithPrefix([]string{"a", "b"}, "prefix:")
+	if out != expected {
+		t.Errorf("incorrect output:")
+		t.Errorf("  expected: %#v", expected)
+		t.Errorf("       got: %#v", out)
+	}
+}
+
+func TestIndexList(t *testing.T) {
+	input := []string{"a", "b", "c"}
+	for expected, key := range input {
+		out := IndexList(key, input)
+		if out != expected {
+			t.Errorf("incorrect output:")
+			t.Errorf("  expected: %#v", expected)
+			t.Errorf("       got: %#v", out)
+		}
+	}
+
+	expected := -1
+	out := IndexList("does_not_exist", input)
+	if out != expected {
+		t.Errorf("incorrect output:")
+		t.Errorf("  expected: %#v", expected)
+		t.Errorf("       got: %#v", out)
+	}
+}
+
+func TestInList(t *testing.T) {
+	input := []string{"a"}
+
+	expected := true
+	out := InList("a", input)
+	if out != expected {
+		t.Errorf("incorrect output:")
+		t.Errorf("  expected: %#v", expected)
+		t.Errorf("       got: %#v", out)
+	}
+
+	expected = false
+	out = InList("does_not_exist", input)
+	if out != expected {
+		t.Errorf("incorrect output:")
+		t.Errorf("  expected: %#v", expected)
+		t.Errorf("       got: %#v", out)
+	}
+}
+
+func TestPrefixInList(t *testing.T) {
+	input := []string{"a", "b"}
+
+	expected := true
+	out := PrefixInList("a-example", input)
+	if out != expected {
+		t.Errorf("incorrect output:")
+		t.Errorf("  expected: %#v", expected)
+		t.Errorf("       got: %#v", out)
+	}
+
+	expected = true
+	out = PrefixInList("b-example", input)
+	if out != expected {
+		t.Errorf("incorrect output:")
+		t.Errorf("  expected: %#v", expected)
+		t.Errorf("       got: %#v", out)
+	}
+
+	expected = false
+	out = PrefixInList("c-example", input)
+	if out != expected {
+		t.Errorf("incorrect output:")
+		t.Errorf("  expected: %#v", expected)
+		t.Errorf("       got: %#v", out)
+	}
+}
+
+func TestFilterList(t *testing.T) {
+	input := []string{"a", "b", "c", "c", "b", "d", "a"}
+	filter := []string{"a", "c"}
+	remainder, filtered := FilterList(input, filter)
+
+	expected := []string{"b", "b", "d"}
+	if !reflect.DeepEqual(remainder, expected) {
+		t.Errorf("incorrect output:")
+		t.Errorf("  expected: %#v", expected)
+		t.Errorf("       got: %#v", remainder)
+	}
+
+	expected = []string{"a", "c", "c", "a"}
+	if !reflect.DeepEqual(filtered, expected) {
+		t.Errorf("incorrect output:")
+		t.Errorf("  expected: %#v", expected)
+		t.Errorf("       got: %#v", filtered)
+	}
+}
+
+func TestRemoveListFromList(t *testing.T) {
+	input := []string{"a", "b", "c", "d", "a", "c", "d"}
+	expected := []string{"b", "d", "d"}
+	out := RemoveListFromList(input, []string{"a", "c"})
+	if !reflect.DeepEqual(out, expected) {
+		t.Errorf("incorrect output:")
+		t.Errorf("     input: %#v", input)
+		t.Errorf("  expected: %#v", expected)
+		t.Errorf("       got: %#v", out)
+	}
+}
