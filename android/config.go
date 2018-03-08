@@ -431,6 +431,14 @@ func (c *config) BuildId() string {
 	return String(c.ProductVariables.BuildId)
 }
 
+func (c *config) BinderBitness() string {
+	is32BitBinder := c.ProductVariables.Binder32bit
+	if is32BitBinder != nil && *is32BitBinder {
+		return "32"
+	}
+	return "64"
+}
+
 func (c *config) BuildNumberFromFile() string {
 	return String(c.ProductVariables.BuildNumberFromFile)
 }
