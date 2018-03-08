@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "bc15d1ee_93e8d6b0",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2018-03-08T02:41:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8edf8c9f_90a78f3d",
+      "range": {
+        "startLine": 445,
+        "startChar": 35,
+        "endLine": 445,
+        "endChar": 44
+      },
+      "revId": "f3d9a46b8dd37af6b5dd20d0b86c6af3060b3a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "55d9a0ef_6a4f94e7",
         "filename": "cc/sanitize.go",
         "patchSetId": 5
