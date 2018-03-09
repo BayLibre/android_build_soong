@@ -87,11 +87,24 @@ var (
 		"-Wl,--no-undefined-version",
 	}
 
+	// Maybe in the future, LLD will have different global flags.
+	deviceGlobalLldflags = []string{
+		"-Wl,-z,noexecstack",
+		"-Wl,-z,relro",
+		"-Wl,-z,now",
+		"-Wl,--build-id=md5",
+		"-Wl,--warn-shared-textrel",
+		"-Wl,--fatal-warnings",
+		"-Wl,--no-undefined-version",
+	}
+
 	hostGlobalCflags = []string{}
 
 	hostGlobalCppflags = []string{}
 
 	hostGlobalLdflags = []string{}
+
+	hostGlobalLldflags = []string{}
 
 	commonGlobalCppflags = []string{
 		"-Wsign-promo",
@@ -116,8 +129,8 @@ var (
 
 	// prebuilts/clang default settings.
 	ClangDefaultBase         = "prebuilts/clang/host"
-	ClangDefaultVersion      = "clang-4639204"
-	ClangDefaultShortVersion = "6.0.1"
+	ClangDefaultVersion      = "clang-2018q1"
+	ClangDefaultShortVersion = "7.0.1"
 
 	// Directories with warnings from Android.bp files.
 	WarningAllowedProjects = []string{
@@ -141,9 +154,11 @@ func init() {
 	pctx.StaticVariable("DeviceGlobalCflags", strings.Join(deviceGlobalCflags, " "))
 	pctx.StaticVariable("DeviceGlobalCppflags", strings.Join(deviceGlobalCppflags, " "))
 	pctx.StaticVariable("DeviceGlobalLdflags", strings.Join(deviceGlobalLdflags, " "))
+	pctx.StaticVariable("DeviceGlobalLldflags", strings.Join(deviceGlobalLldflags, " "))
 	pctx.StaticVariable("HostGlobalCflags", strings.Join(hostGlobalCflags, " "))
 	pctx.StaticVariable("HostGlobalCppflags", strings.Join(hostGlobalCppflags, " "))
 	pctx.StaticVariable("HostGlobalLdflags", strings.Join(hostGlobalLdflags, " "))
+	pctx.StaticVariable("HostGlobalLldflags", strings.Join(hostGlobalLldflags, " "))
 	pctx.StaticVariable("NoOverrideGlobalCflags", strings.Join(noOverrideGlobalCflags, " "))
 
 	pctx.StaticVariable("CommonGlobalCppflags", strings.Join(commonGlobalCppflags, " "))
