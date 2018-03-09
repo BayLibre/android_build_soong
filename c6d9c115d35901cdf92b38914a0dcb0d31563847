@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e95c1092_1ad3745e",
+        "filename": "cc/pgo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2018-03-09T07:14:30Z",
+      "side": 1,
+      "message": "Good call.",
+      "revId": "c6d9c115d35901cdf92b38914a0dcb0d31563847",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
