@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b5e23130_eb678029",
+        "filename": "android/util_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1014807
+      },
+      "writtenOn": "2018-03-09T02:47:47Z",
+      "side": 1,
+      "message": "Switch to t.Run().  Note: After switching to t.Run() is seems that there are no difference w/ or w/o t.Helper().  Thus, I didn\u0027t add t.Helper() in PS#3.",
+      "parentUuid": "5db53de5_5f5c9295",
+      "revId": "0d487d50264ffa69588855f929e8561985085f56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0b8b8fd8_8aac3ebe",
         "filename": "android/util_test.go",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2018-03-08T15:51:21Z",
       "side": 1,
       "message": "Might as well check a b and c too",
+      "revId": "0d487d50264ffa69588855f929e8561985085f56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18078a12_2775a943",
+        "filename": "android/util_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1014807
+      },
+      "writtenOn": "2018-03-09T02:47:47Z",
+      "side": 1,
+      "message": "They are checked in the loop.  But anyway, I changed the logic in PS#3.  In PS#3, they are enumerated as test cases.",
+      "parentUuid": "0b8b8fd8_8aac3ebe",
       "revId": "0d487d50264ffa69588855f929e8561985085f56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
