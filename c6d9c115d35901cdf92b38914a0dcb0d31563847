@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "ee4fc800_a41c2b17",
+        "filename": "cc/pgo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2018-03-09T15:48:50Z",
+      "side": 1,
+      "message": "It\u0027d be better to defensively warn for that as well.  Done in the new patchset.",
+      "parentUuid": "cdfdf301_33aa5306",
+      "revId": "c6d9c115d35901cdf92b38914a0dcb0d31563847",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0ebcb462_6cfb34ed",
         "filename": "cc/pgo.go",
         "patchSetId": 1
@@ -48,6 +66,24 @@
       "writtenOn": "2018-03-09T09:49:17Z",
       "side": 1,
       "message": "Minor nit, you could use ctx.PropertyErrorf(\"profile_file\", \"found multiple versions: \" ...)",
+      "revId": "c6d9c115d35901cdf92b38914a0dcb0d31563847",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "01c41f75_ea64cc29",
+        "filename": "cc/pgo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2018-03-09T15:48:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ebcb462_6cfb34ed",
       "revId": "c6d9c115d35901cdf92b38914a0dcb0d31563847",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
