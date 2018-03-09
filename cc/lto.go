@@ -80,7 +80,8 @@ func (lto *lto) flags(ctx BaseModuleContext, flags Flags) Flags {
 
 		flags.CFlags = append(flags.CFlags, ltoFlag)
 		flags.LdFlags = append(flags.LdFlags, ltoFlag)
-		if ctx.Device() {
+		// TODO: use local USE_CLANG_LLD
+		if ctx.Device() && !ctx.Config().UseClangLld() {
 			// Work around bug in Clang that doesn't pass correct emulated
 			// TLS option to target. See b/72706604 or
 			// https://github.com/android-ndk/ndk/issues/498.
@@ -90,7 +91,7 @@ func (lto *lto) flags(ctx BaseModuleContext, flags Flags) Flags {
 
 		// If the module does not have a profile, be conservative and do not inline
 		// or unroll loops during LTO, in order to prevent significant size bloat.
-		if !ctx.isPgoCompile() {
+		if !ctx.isPgoCompile() && !ctx.Config().UseClangLld() {
 			flags.LdFlags = append(flags.LdFlags, "-Wl,-plugin-opt,-inline-threshold=0")
 			flags.LdFlags = append(flags.LdFlags, "-Wl,-plugin-opt,-unroll-threshold=0")
 		}

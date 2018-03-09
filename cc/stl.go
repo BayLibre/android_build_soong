@@ -115,7 +115,8 @@ func (stl *stl) deps(ctx BaseModuleContext, deps Deps) Deps {
 			deps.StaticLibs = append(deps.StaticLibs, stl.Properties.SelectedStl)
 		}
 		if ctx.toolchain().Bionic() {
-			if ctx.Arch().ArchType == android.Arm {
+			// Do not use libunwind_llvm if USE_CLANG_LLD.
+			if ctx.Arch().ArchType == android.Arm && !ctx.Config().UseClangLld() {
 				deps.StaticLibs = append(deps.StaticLibs, "libunwind_llvm")
 			}
 			if ctx.staticBinary() {
@@ -166,7 +167,8 @@ func (stl *stl) flags(ctx ModuleContext, flags Flags) Flags {
 				flags.LdFlags = append(flags.LdFlags, hostDynamicGccLibs[ctx.Os()]...)
 			}
 		} else {
-			if ctx.Arch().ArchType == android.Arm {
+			// lld does not accept --exclude-libs, or fail to link
+			if ctx.Arch().ArchType == android.Arm && !ctx.Config().UseClangLld() {
 				flags.LdFlags = append(flags.LdFlags, "-Wl,--exclude-libs,libunwind_llvm.a")
 			}
 		}
