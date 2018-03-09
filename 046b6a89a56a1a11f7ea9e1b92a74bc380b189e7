@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82a4e6aa_99881f14",
+        "filename": "android/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-03-09T05:12:46Z",
+      "side": 1,
+      "message": "Can you leave the return value as bool?",
+      "revId": "046b6a89a56a1a11f7ea9e1b92a74bc380b189e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
