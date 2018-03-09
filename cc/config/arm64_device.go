@@ -35,6 +35,21 @@ var (
 		"-Wl,--icf=safe",
 	}
 
+	// Using lld's gnu or sysv hash style alone will fail at boot,
+	// rejected by Android's bionic dynamic linker.
+	// lld does not have --icf=safe or -m,aarch64_elf64_le_vec
+	// Only newer lld, from clang-7.0, has --fix-cortex-a53-843419, but not
+	// current Anroid prebuilt clang 6.0 compilers.
+	// Use -mcpu=cortex-a57 to tell clang 6.0 driver not to pass
+	// --fix-cortex-a53-843419 to linker.
+	arm64Lldflags = []string{
+		"-Wl,--hash-style=both",
+		// "-Wl,--fix-cortex-a53-843419",
+		// "-Wl,--pack-dyn-relocs=android",
+		"-mcpu=cortex-a57",
+		"-fuse-ld=lld",
+	}
+
 	arm64Cppflags = []string{}
 
 	arm64CpuVariantCflags = map[string][]string{
@@ -81,11 +96,13 @@ func init() {
 
 	pctx.StaticVariable("Arm64Cflags", strings.Join(arm64Cflags, " "))
 	pctx.StaticVariable("Arm64Ldflags", strings.Join(arm64Ldflags, " "))
+	pctx.StaticVariable("Arm64Lldflags", strings.Join(arm64Lldflags, " "))
 	pctx.StaticVariable("Arm64Cppflags", strings.Join(arm64Cppflags, " "))
 	pctx.StaticVariable("Arm64IncludeFlags", bionicHeaders("arm64"))
 
 	pctx.StaticVariable("Arm64ClangCflags", strings.Join(ClangFilterUnknownCflags(arm64Cflags), " "))
 	pctx.StaticVariable("Arm64ClangLdflags", strings.Join(ClangFilterUnknownCflags(arm64Ldflags), " "))
+	pctx.StaticVariable("Arm64ClangLldflags", strings.Join(ClangFilterUnknownCflags(arm64Lldflags), " "))
 	pctx.StaticVariable("Arm64ClangCppflags", strings.Join(ClangFilterUnknownCflags(arm64Cppflags), " "))
 
 	pctx.StaticVariable("Arm64CortexA53Cflags",
@@ -186,6 +203,10 @@ func (t *toolchainArm64) ClangCppflags() string {
 
 func (t *toolchainArm64) ClangLdflags() string {
 	return "${config.Arm64Ldflags}"
+}
+
+func (t *toolchainArm64) ClangLldflags() string {
+	return "${config.Arm64Lldflags}"
 }
 
 func (t *toolchainArm64) ToolchainClangCflags() string {
