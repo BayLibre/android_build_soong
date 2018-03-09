@@ -245,7 +245,15 @@ func (t *toolchainWindowsX86) ClangLdflags() string {
 	return "${config.WindowsClangLdflags} ${config.WindowsX86ClangLdflags}"
 }
 
+func (t *toolchainWindowsX86) ClangLldflags() string { // TODO
+	return "${config.WindowsClangLdflags} ${config.WindowsX86ClangLdflags}"
+}
+
 func (t *toolchainWindowsX8664) ClangLdflags() string {
+	return "${config.WindowsClangLdflags} ${config.WindowsX8664ClangLdflags}"
+}
+
+func (t *toolchainWindowsX8664) ClangLldflags() string { // TODO
 	return "${config.WindowsClangLdflags} ${config.WindowsX8664ClangLdflags}"
 }
 
