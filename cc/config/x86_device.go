@@ -65,6 +65,10 @@ var (
 			"-march=slm",
 			"-mfpmath=sse",
 		},
+		"skylake": []string{
+			"-march=skylake",
+			"-mfpmath=sse",
+		},
 	}
 
 	x86ArchFeatureCflags = map[string][]string{
@@ -88,7 +92,8 @@ func init() {
 		"ivybridge",
 		"sandybridge",
 		"silvermont",
-		"x86_64")
+		"x86_64",
+		"skylake")
 	android.RegisterArchFeatures(android.X86,
 		"ssse3",
 		"sse4",
