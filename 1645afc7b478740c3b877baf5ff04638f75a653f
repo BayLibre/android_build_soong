@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d8e0abd5_9f698f27",
+        "filename": "cc/vndk_install_props.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1135414
+      },
+      "writtenOn": "2018-03-12T11:31:11Z",
+      "side": 1,
+      "message": "was able to make this a local variable instead in the new patch",
+      "parentUuid": "37207e80_3ef0b4a4",
+      "revId": "1645afc7b478740c3b877baf5ff04638f75a653f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "509218b9_58125c9d",
         "filename": "cc/vndk_install_props.go",
         "patchSetId": 9
@@ -30,6 +48,24 @@
       "writtenOn": "2018-02-27T20:10:28Z",
       "side": 1,
       "message": "I still don\u0027t like trying to extract this from the properties.  I think you should visit the modules in the Singleton, find the ones you care about, and then get the final install path from m.(*Module).outputFile.",
+      "revId": "1645afc7b478740c3b877baf5ff04638f75a653f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b95ecf55_42a3aad5",
+        "filename": "cc/vndk_install_props.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1135414
+      },
+      "writtenOn": "2018-03-12T11:31:11Z",
+      "side": 1,
+      "message": "m.(*Module).outputFile seems to be the intermediate soong path (i.e. out/soong/.intermediates/system/core/libutils/libutils/android_arm_armv8-a_vendor_shared/libutils.so)\n\nshould I use linker.(*libraryDecorator).path to get the final install path?",
+      "parentUuid": "509218b9_58125c9d",
       "revId": "1645afc7b478740c3b877baf5ff04638f75a653f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
