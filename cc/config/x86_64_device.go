@@ -48,6 +48,9 @@ var (
 		"silvermont": []string{
 			"-march=slm",
 		},
+		"skylake": []string{
+			"-march=skylake",
+		},
 	}
 
 	x86_64ArchFeatureCflags = map[string][]string{
@@ -57,6 +60,7 @@ var (
 		"sse4_2": []string{"-msse4.2"},
 		"popcnt": []string{"-mpopcnt"},
 		"avx":    []string{"-mavx"},
+		"avx2":   []string{"-mavx2"},
 		"aes_ni": []string{"-maes"},
 	}
 )
@@ -70,7 +74,8 @@ func init() {
 		"haswell",
 		"ivybridge",
 		"sandybridge",
-		"silvermont")
+		"silvermont",
+		"skylake")
 	android.RegisterArchFeatures(android.X86_64,
 		"ssse3",
 		"sse4",
@@ -78,6 +83,7 @@ func init() {
 		"sse4_2",
 		"aes_ni",
 		"avx",
+		"avx2",
 		"popcnt")
 	android.RegisterArchVariantFeatures(android.X86_64, "",
 		"ssse3",
@@ -113,6 +119,15 @@ func init() {
 		"sse4_1",
 		"sse4_2",
 		"aes_ni",
+		"popcnt")
+	android.RegisterArchVariantFeatures(android.X86_64, "silvermont",
+		"ssse3",
+		"sse4",
+		"sse4_1",
+		"sse4_2",
+		"aes_ni",
+		"avx",
+		"avx2",
 		"popcnt")
 
 	pctx.StaticVariable("x86_64GccVersion", x86_64GccVersion)
