@@ -67,6 +67,10 @@ var (
 			"-march=slm",
 			"-mfpmath=sse",
 		},
+		"skylake": []string{
+			"-march=skylake",
+			"-mfpmath=sse",
+		},
 	}
 
 	x86ArchFeatureCflags = map[string][]string{
@@ -75,6 +79,7 @@ var (
 		"sse4_1": []string{"-msse4.1"},
 		"sse4_2": []string{"-msse4.2"},
 		"avx":    []string{"-mavx"},
+		"avx2":   []string{"-mavx2"},
 		"aes_ni": []string{"-maes"},
 	}
 )
@@ -90,6 +95,7 @@ func init() {
 		"ivybridge",
 		"sandybridge",
 		"silvermont",
+		"skylake",
 		"x86_64")
 	android.RegisterArchFeatures(android.X86,
 		"ssse3",
@@ -98,6 +104,7 @@ func init() {
 		"sse4_2",
 		"aes_ni",
 		"avx",
+		"avx2",
 		"popcnt",
 		"movbe")
 	android.RegisterArchVariantFeatures(android.X86, "x86_64",
@@ -140,6 +147,16 @@ func init() {
 		"aes_ni",
 		"popcnt",
 		"movbe")
+	android.RegisterArchVariantFeatures(android.X86, "skylake",
+		"ssse3",
+		"sse4",
+		"sse4_1",
+		"sse4_2",
+		"aes_ni",
+		"popcnt",
+		"movbe",
+		"avx",
+		"avx2")
 
 	pctx.StaticVariable("x86GccVersion", x86GccVersion)
 
