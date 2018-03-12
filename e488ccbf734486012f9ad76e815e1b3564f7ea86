@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82e4ec78_0d99ce2d",
+        "filename": "android/package_ctx.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-03-12T22:41:26Z",
+      "side": 1,
+      "message": "Seems a little weird to make all the callers reference PathContext.  Maybe add a PackageRuleContext that contains PathContext?",
+      "range": {
+        "startLine": 225,
+        "startChar": 37,
+        "endLine": 225,
+        "endChar": 48
+      },
+      "revId": "e488ccbf734486012f9ad76e815e1b3564f7ea86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
