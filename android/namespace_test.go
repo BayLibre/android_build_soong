@@ -692,12 +692,3 @@ func newTestModule() Module {
 	InitAndroidModule(m)
 	return m
 }
-
-func failIfErrored(t *testing.T, errs []error) {
-	if len(errs) > 0 {
-		for _, err := range errs {
-			t.Error(err)
-		}
-		t.FailNow()
-	}
-}
