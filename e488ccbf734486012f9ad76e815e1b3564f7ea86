@@ -22,6 +22,30 @@
       "revId": "e488ccbf734486012f9ad76e815e1b3564f7ea86",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00ef29d7_afd525e1",
+        "filename": "android/package_ctx.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-03-12T22:42:56Z",
+      "side": 1,
+      "message": "All two users? ;) I\u0027ll add them\n\n(this one, and the AndroidRuleFunc one in cc)",
+      "parentUuid": "82e4ec78_0d99ce2d",
+      "range": {
+        "startLine": 225,
+        "startChar": 37,
+        "endLine": 225,
+        "endChar": 48
+      },
+      "revId": "e488ccbf734486012f9ad76e815e1b3564f7ea86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
