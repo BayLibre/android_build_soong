@@ -15,6 +15,7 @@
 package android
 
 import (
+	"regexp"
 	"testing"
 )
 
@@ -24,5 +25,28 @@ func failIfErrored(t *testing.T, errs []error) {
 			t.Error(err)
 		}
 		t.FailNow()
+	}
+}
+
+func failIfNoMatchingErrors(t *testing.T, pattern string, errs []error) {
+	matcher, err := regexp.Compile(pattern)
+	if err != nil {
+		t.Errorf("failed to compile regular expression %q because %s", pattern, err)
+	}
+
+	found := false
+
+	for _, err := range errs {
+		if matcher.FindStringIndex(err.Error()) != nil {
+			found = true
+			break
+		}
+	}
+
+	if !found {
+		t.Errorf("missing the expected error %q (checked %d error(s))", pattern, len(errs))
+		for i, err := range errs {
+			t.Errorf("errs[%d] = %s", i, err)
+		}
 	}
 }
