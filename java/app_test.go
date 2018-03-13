@@ -49,7 +49,7 @@ func testAppContext(config android.Config, bp string, fs map[string][]byte) *and
 }
 
 func testApp(t *testing.T, bp string) *android.TestContext {
-	config := testConfig(nil)
+	config, _ := testConfig(nil)
 
 	ctx := testAppContext(config, bp, nil)
 
@@ -187,13 +187,13 @@ func TestEnforceRRO(t *testing.T) {
 
 	for _, testCase := range testEnforceRROTests {
 		t.Run(testCase.name, func(t *testing.T) {
-			config := testConfig(nil)
-			config.ProductVariables.ResourceOverlays = &resourceOverlays
+			config, productVars := testConfig(nil)
+			productVars.ResourceOverlays = &resourceOverlays
 			if testCase.enforceRROTargets != nil {
-				config.ProductVariables.EnforceRROTargets = &testCase.enforceRROTargets
+				productVars.EnforceRROTargets = &testCase.enforceRROTargets
 			}
 			if testCase.enforceRROExcludedOverlays != nil {
-				config.ProductVariables.EnforceRROExcludedOverlays = &testCase.enforceRROExcludedOverlays
+				productVars.EnforceRROExcludedOverlays = &testCase.enforceRROExcludedOverlays
 			}
 
 			ctx := testAppContext(config, bp, fs)

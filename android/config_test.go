@@ -74,7 +74,7 @@ Did you mean to use an annotation of ",omitempty"?
 
 // run validateConfigAnnotations against each type that might have json annotations
 func TestProductConfigAnnotations(t *testing.T) {
-	err := validateConfigAnnotations(&productVariables{})
+	err := validateConfigAnnotations(&ProductVariables{})
 	if err != nil {
 		t.Errorf(err.Error())
 	}

@@ -146,7 +146,7 @@ func TestNeverallow(t *testing.T) {
 	}
 	defer os.RemoveAll(buildDir)
 
-	config := TestConfig(buildDir, nil)
+	config, _ := TestConfig(buildDir, nil)
 
 	for _, test := range neverallowTests {
 		t.Run(test.name, func(t *testing.T) {

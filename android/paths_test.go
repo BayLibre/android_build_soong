@@ -222,7 +222,7 @@ func (m moduleInstallPathContextImpl) InstallInSanitizerDir() bool {
 }
 
 func TestPathForModuleInstall(t *testing.T) {
-	testConfig := TestConfig("", nil)
+	testConfig, _ := TestConfig("", nil)
 
 	hostTarget := Target{Os: Linux}
 	deviceTarget := Target{Os: Android}

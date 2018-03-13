@@ -434,7 +434,7 @@ func setupBuildEnv(t *testing.T) (config android.Config, buildDir string) {
 		t.Fatal(err)
 	}
 
-	config = android.TestConfig(buildDir, nil)
+	config, _ = android.TestConfig(buildDir, nil)
 
 	return
 }
