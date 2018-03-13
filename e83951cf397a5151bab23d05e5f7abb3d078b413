@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0dd2475c_ded54c72",
+        "filename": "android/neverallow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-03-13T00:35:48Z",
+      "side": 1,
+      "message": "actually, Dan, can you confirm this applies at the right time? Will vendor_available cause this to be true this late in the build?",
+      "revId": "e83951cf397a5151bab23d05e5f7abb3d078b413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
