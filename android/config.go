@@ -67,7 +67,7 @@ type DeviceConfig struct {
 
 type config struct {
 	FileConfigurableOptions
-	ProductVariables productVariables
+	ProductVariables ProductVariables
 
 	PrimaryBuilder           string
 	ConfigFileName           string
@@ -179,9 +179,9 @@ func saveToConfigFile(config jsonConfigurable, filename string) error {
 }
 
 // TestConfig returns a Config object suitable for using for tests
-func TestConfig(buildDir string, env map[string]string) Config {
+func TestConfig(buildDir string, env map[string]string) (Config, *ProductVariables) {
 	config := &config{
-		ProductVariables: productVariables{
+		ProductVariables: ProductVariables{
 			DeviceName:           stringPtr("test_device"),
 			Platform_sdk_version: intPtr(26),
 			AAPTConfig:           &[]string{"normal", "large", "xlarge", "hdpi", "xhdpi", "xxhdpi"},
@@ -202,12 +202,12 @@ func TestConfig(buildDir string, env map[string]string) Config {
 		panic(err)
 	}
 
-	return Config{config}
+	return Config{config}, &config.ProductVariables
 }
 
 // TestConfig returns a Config object suitable for using for tests that need to run the arch mutator
-func TestArchConfig(buildDir string, env map[string]string) Config {
-	testConfig := TestConfig(buildDir, env)
+func TestArchConfig(buildDir string, env map[string]string) (Config, *ProductVariables) {
+	testConfig, productVars := TestConfig(buildDir, env)
 	config := testConfig.config
 
 	config.Targets = map[OsClass][]Target{
@@ -221,7 +221,7 @@ func TestArchConfig(buildDir string, env map[string]string) Config {
 		},
 	}
 
-	return testConfig
+	return testConfig, productVars
 }
 
 // New creates a new Config object.  The srcDir argument specifies the path to

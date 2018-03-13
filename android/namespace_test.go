@@ -600,7 +600,7 @@ func setupTestFromFiles(bps map[string][]byte) (ctx *TestContext, errs []error) 
 	}
 	defer os.RemoveAll(buildDir)
 
-	config := TestConfig(buildDir, nil)
+	config, _ := TestConfig(buildDir, nil)
 
 	ctx = NewTestContext()
 	ctx.MockFileSystem(bps)

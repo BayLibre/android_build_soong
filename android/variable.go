@@ -101,7 +101,7 @@ type variableProperties struct {
 
 var zeroProductVariables variableProperties
 
-type productVariables struct {
+type ProductVariables struct {
 	// Suffix to add to generated Makefiles
 	Make_suffix *string `json:",omitempty"`
 
@@ -219,8 +219,8 @@ func stringPtr(v string) *string {
 	return &v
 }
 
-func (v *productVariables) SetDefaultConfig() {
-	*v = productVariables{
+func (v *ProductVariables) SetDefaultConfig() {
+	*v = ProductVariables{
 		Platform_sdk_version:              intPtr(26),
 		Platform_version_active_codenames: []string{"P"},
 		Platform_version_future_codenames: []string{"P"},
