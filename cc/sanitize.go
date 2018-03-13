@@ -116,6 +116,7 @@ type SanitizeProperties struct {
 	SanitizerEnabled  bool `blueprint:"mutated"`
 	SanitizeDep       bool `blueprint:"mutated"`
 	MinimalRuntimeDep bool `blueprint:"mutated"`
+	UbsanRuntimeDep   bool `blueprint:"mutated"`
 	InSanitizerDir    bool `blueprint:"mutated"`
 }
 
@@ -200,8 +201,9 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 			}
 		}
 
+		// Global integer_overflow builds do not support static libraries.
 		if found, globalSanitizers = removeFromList("integer_overflow", globalSanitizers); found && s.Integer_overflow == nil {
-			if !ctx.Config().IntegerOverflowDisabledForPath(ctx.ModuleDir()) {
+			if !ctx.Config().IntegerOverflowDisabledForPath(ctx.ModuleDir()) && !ctx.static() {
 				s.Integer_overflow = boolPtr(true)
 			}
 		}
@@ -210,8 +212,9 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 			ctx.ModuleErrorf("unknown global sanitizer option %s", globalSanitizers[0])
 		}
 
+		// Global integer_overflow builds do not support static library diagnostics.
 		if found, globalSanitizersDiag = removeFromList("integer_overflow", globalSanitizersDiag); found &&
-			s.Diag.Integer_overflow == nil && Bool(s.Integer_overflow) {
+			s.Diag.Integer_overflow == nil && Bool(s.Integer_overflow) && !ctx.static() {
 			s.Diag.Integer_overflow = boolPtr(true)
 		}
 
@@ -308,7 +311,7 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 	if ctx.Device() && sanitize.Properties.MinimalRuntimeDep {
 		flags.LdFlags = append(flags.LdFlags, minimalRuntimePath)
 	}
-	if !sanitize.Properties.SanitizerEnabled {
+	if !sanitize.Properties.SanitizerEnabled && !sanitize.Properties.UbsanRuntimeDep {
 		return flags
 	}
 
@@ -425,14 +428,12 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 	}
 
 	if Bool(sanitize.Properties.Sanitize.Integer_overflow) {
-		if !ctx.static() {
-			sanitizers = append(sanitizers, "unsigned-integer-overflow")
-			sanitizers = append(sanitizers, "signed-integer-overflow")
-			flags.CFlags = append(flags.CFlags, intOverflowCflags...)
-			if Bool(sanitize.Properties.Sanitize.Diag.Integer_overflow) {
-				diagSanitizers = append(diagSanitizers, "unsigned-integer-overflow")
-				diagSanitizers = append(diagSanitizers, "signed-integer-overflow")
-			}
+		sanitizers = append(sanitizers, "unsigned-integer-overflow")
+		sanitizers = append(sanitizers, "signed-integer-overflow")
+		flags.CFlags = append(flags.CFlags, intOverflowCflags...)
+		if Bool(sanitize.Properties.Sanitize.Diag.Integer_overflow) {
+			diagSanitizers = append(diagSanitizers, "unsigned-integer-overflow")
+			diagSanitizers = append(diagSanitizers, "signed-integer-overflow")
 		}
 	}
 
@@ -472,15 +473,20 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 		runtimeLibrary = config.AddressSanitizerRuntimeLibrary(ctx.toolchain())
 	} else if Bool(sanitize.Properties.Sanitize.Thread) {
 		runtimeLibrary = config.ThreadSanitizerRuntimeLibrary(ctx.toolchain())
-	} else if len(diagSanitizers) > 0 {
+	} else if len(diagSanitizers) > 0 || sanitize.Properties.UbsanRuntimeDep {
 		runtimeLibrary = config.UndefinedBehaviorSanitizerRuntimeLibrary(ctx.toolchain())
 	}
 
 	if runtimeLibrary != "" {
+		runtimeLibraryPath := "${config.ClangAsanLibDir}/" + runtimeLibrary
+		if !ctx.static() {
+			runtimeLibraryPath = runtimeLibraryPath + ctx.toolchain().ShlibSuffix()
+		} else {
+			runtimeLibraryPath = runtimeLibraryPath + ".a"
+		}
+
 		// ASan runtime library must be the first in the link order.
-		flags.libFlags = append([]string{
-			"${config.ClangAsanLibDir}/" + runtimeLibrary + ctx.toolchain().ShlibSuffix(),
-		}, flags.libFlags...)
+		flags.libFlags = append([]string{runtimeLibraryPath}, flags.libFlags...)
 		sanitize.runtimeLibrary = runtimeLibrary
 
 		// When linking against VNDK, use the vendor variant of the runtime lib
@@ -603,16 +609,21 @@ func sanitizerDepsMutator(t sanitizerType) func(android.TopDownMutatorContext) {
 }
 
 // Propagate the ubsan minimal runtime dependency when there are integer overflow sanitized static dependencies.
-func minimalRuntimeDepsMutator() func(android.TopDownMutatorContext) {
+func sanitizerRuntimeDepsMutator() func(android.TopDownMutatorContext) {
 	return func(mctx android.TopDownMutatorContext) {
 		if c, ok := mctx.Module().(*Module); ok && c.sanitize != nil {
 			mctx.VisitDepsDepthFirst(func(module android.Module) {
 				if d, ok := module.(*Module); ok && d.static() && d.sanitize != nil {
 
-					// If a static dependency will be built with the minimal runtime,
-					// make sure we include the ubsan minimal runtime.
 					if enableMinimalRuntime(d.sanitize) {
+						// If a static dependency is built with the minimal runtime,
+						// make sure we include the ubsan minimal runtime.
 						c.sanitize.Properties.MinimalRuntimeDep = true
+					} else if Bool(d.sanitize.Properties.Sanitize.Diag.Integer_overflow) ||
+						len(d.sanitize.Properties.Sanitize.Diag.Misc_undefined) > 0 {
+						// If a static dependency runs with full ubsan diagnostics,
+						// make sure we include the ubsan runtime.
+						c.sanitize.Properties.UbsanRuntimeDep = true
 					}
 				}
 			})
