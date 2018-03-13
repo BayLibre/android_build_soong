@@ -52,16 +52,16 @@ func TestMain(m *testing.M) {
 	os.Exit(run())
 }
 
-func testConfig(env map[string]string) android.Config {
+func testConfig(env map[string]string) (android.Config, *android.ProductVariables) {
 	if env == nil {
 		env = make(map[string]string)
 	}
 	if env["ANDROID_JAVA8_HOME"] == "" {
 		env["ANDROID_JAVA8_HOME"] = "jdk8"
 	}
-	config := android.TestArchConfig(buildDir, env)
-	config.ProductVariables.DeviceSystemSdkVersions = &[]string{"14", "15"}
-	return config
+	config, productVars := android.TestArchConfig(buildDir, env)
+	productVars.DeviceSystemSdkVersions = &[]string{"14", "15"}
+	return config, productVars
 
 }
 
@@ -199,7 +199,7 @@ func run(t *testing.T, ctx *android.TestContext, config android.Config) {
 
 func testJava(t *testing.T, bp string) *android.TestContext {
 	t.Helper()
-	config := testConfig(nil)
+	config, _ := testConfig(nil)
 	ctx := testContext(config, bp, nil)
 	run(t, ctx, config)
 
@@ -505,7 +505,7 @@ func TestClasspath(t *testing.T) {
 
 			// Test again with javac 1.9
 			t.Run("1.9", func(t *testing.T) {
-				config := testConfig(map[string]string{"EXPERIMENTAL_USE_OPENJDK9": "true"})
+				config, _ := testConfig(map[string]string{"EXPERIMENTAL_USE_OPENJDK9": "true"})
 				ctx := testContext(config, bp, nil)
 				run(t, ctx, config)
 
