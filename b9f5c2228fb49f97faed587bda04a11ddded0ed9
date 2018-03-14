@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45838896_e9bab1cf",
+        "filename": "android/test_util_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-03-14T20:11:49Z",
+      "side": 1,
+      "message": "add t.Helper() so the test failure will be reported in the caller",
+      "revId": "b9f5c2228fb49f97faed587bda04a11ddded0ed9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
