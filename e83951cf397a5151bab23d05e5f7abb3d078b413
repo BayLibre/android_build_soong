@@ -16,6 +16,24 @@
       "revId": "e83951cf397a5151bab23d05e5f7abb3d078b413",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "471cdc12_4751b5e2",
+        "filename": "android/neverallow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1014807
+      },
+      "writtenOn": "2018-03-14T03:08:20Z",
+      "side": 1,
+      "message": "IIUC, this won\u0027t happen.  neverallowMutator() works on Soong level.  At Soong level, vendor_available will only generate two variants in a module.  vendor_available and vendor properties will remain unchanged in both variants.",
+      "parentUuid": "0dd2475c_ded54c72",
+      "revId": "e83951cf397a5151bab23d05e5f7abb3d078b413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
