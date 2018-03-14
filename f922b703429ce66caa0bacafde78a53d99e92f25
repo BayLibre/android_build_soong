@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "d3bdda7f_8dce9e16",
+        "filename": "java/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-03-14T22:35:53Z",
+      "side": 1,
+      "message": "This could lead to ordering problems if something tries to use these before out/soong/Android.mk is loaded.  Follow the pattern in https://cs.corp.google.com/android/build/soong/cc/makevars.go?rcl\u003d71a2cd5a438f6379fcf3d01f17f40a6de000ed00\u0026l\u003d107 to collect these at module time and then export them through makevars.go.  You might need to add java/makevars.go, we only have java/config/makevars.go.\n\nFine to be in a followup patch, since all the current users are after out/soong/Android.mk is parsed.",
+      "parentUuid": "6f4f210e_045a455f",
+      "range": {
+        "startLine": 249,
+        "startChar": 22,
+        "endLine": 249,
+        "endChar": 40
+      },
+      "revId": "f922b703429ce66caa0bacafde78a53d99e92f25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "91110b5a_e4361849",
         "filename": "java/droiddoc.go",
         "patchSetId": 1
