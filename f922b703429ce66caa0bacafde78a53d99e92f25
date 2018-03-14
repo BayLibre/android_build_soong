@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a91fb176_5dd31f2e",
+        "filename": "java/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-03-14T20:10:20Z",
+      "side": 1,
+      "message": "Yeah, they should go in java/makevars.go instead.",
+      "parentUuid": "3a4a9ecd_683dae5a",
+      "range": {
+        "startLine": 249,
+        "startChar": 22,
+        "endLine": 249,
+        "endChar": 40
+      },
+      "revId": "f922b703429ce66caa0bacafde78a53d99e92f25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "91110b5a_e4361849",
         "filename": "java/droiddoc.go",
         "patchSetId": 1
