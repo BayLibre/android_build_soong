@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "fd1f6f7d_24492cd4",
+        "filename": "java/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-03-14T20:04:01Z",
+      "side": 1,
+      "message": "These are global variables set in config.mk, you shouldn\u0027t overwrite them.  Use LOCAL_* variables, and clear them in clear_vars.mk so they don\u0027t accidentally get used in the next module.",
+      "range": {
+        "startLine": 249,
+        "startChar": 22,
+        "endLine": 249,
+        "endChar": 40
+      },
+      "revId": "f922b703429ce66caa0bacafde78a53d99e92f25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "91110b5a_e4361849",
         "filename": "java/droiddoc.go",
         "patchSetId": 1
@@ -13,6 +36,30 @@
       "writtenOn": "2018-03-14T19:54:14Z",
       "side": 1,
       "message": "What are these for?  They never get read",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 39
+      },
+      "revId": "f922b703429ce66caa0bacafde78a53d99e92f25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "841b20b3_b33b4f4e",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-03-14T20:04:01Z",
+      "side": 1,
+      "message": "I see most of them are, but outs is not read?",
+      "parentUuid": "91110b5a_e4361849",
       "range": {
         "startLine": 182,
         "startChar": 0,
