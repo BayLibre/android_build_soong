@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54e15e57_b7cc90c9",
+        "filename": "android/test_util_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-03-14T20:12:42Z",
+      "side": 1,
+      "message": "Add t.Helper()",
+      "revId": "cc78a3a75dab743ea3aa6365999f63cc3d00aa03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
