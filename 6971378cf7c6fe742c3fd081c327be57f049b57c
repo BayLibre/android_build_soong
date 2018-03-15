@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51b7753d_18fedff8",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 844,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-03-15T15:53:48Z",
+      "side": 1,
+      "message": "This seems prone to errors.  It will be hard to tell if anything forgot to add it, especially when adding dependencies.  Worst case, we could even end up with an unrenamed copy in the bootclasspath.",
+      "revId": "6971378cf7c6fe742c3fd081c327be57f049b57c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
