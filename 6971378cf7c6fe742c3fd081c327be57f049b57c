@@ -16,6 +16,24 @@
       "revId": "6971378cf7c6fe742c3fd081c327be57f049b57c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a100ee7_de23b4e2",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 844,
+      "author": {
+        "id": 1015680
+      },
+      "writtenOn": "2018-03-15T18:48:00Z",
+      "side": 1,
+      "message": "You\u0027re right, this is error-prone, especially with dependencies. Would you be fine with some additional checks that make err when kotlin classes are in bootclasspath libraries or system apps?",
+      "parentUuid": "51b7753d_18fedff8",
+      "revId": "6971378cf7c6fe742c3fd081c327be57f049b57c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
