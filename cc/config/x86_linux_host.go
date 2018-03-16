@@ -213,6 +213,10 @@ func (t *toolchainLinux) IncludeFlags() string {
 	return ""
 }
 
+func (t *toolchainLinuxX86) ClangNDKTriple() string {
+	return "i686-linux-gnu"
+}
+
 func (t *toolchainLinuxX86) ClangTriple() string {
 	return "i686-linux-gnu"
 }
@@ -223,6 +227,10 @@ func (t *toolchainLinuxX86) ClangCflags() string {
 
 func (t *toolchainLinuxX86) ClangCppflags() string {
 	return "${config.LinuxClangCppflags} ${config.LinuxX86ClangCppflags}"
+}
+
+func (t *toolchainLinuxX8664) ClangNDKTriple() string {
+	return "x86_64-linux-gnu"
 }
 
 func (t *toolchainLinuxX8664) ClangTriple() string {

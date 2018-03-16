@@ -172,6 +172,10 @@ func (t *toolchainArm64) IncludeFlags() string {
 	return "${config.Arm64IncludeFlags}"
 }
 
+func (t *toolchainArm64) ClangNDKTriple() string {
+	return t.GccTriple()
+}
+
 func (t *toolchainArm64) ClangTriple() string {
 	return t.GccTriple()
 }

@@ -131,6 +131,10 @@ func (t *toolchainMips64) IncludeFlags() string {
 	return "${config.Mips64IncludeFlags}"
 }
 
+func (t *toolchainMips64) ClangNDKTriple() string {
+	return t.GccTriple()
+}
+
 func (t *toolchainMips64) ClangTriple() string {
 	return t.GccTriple()
 }

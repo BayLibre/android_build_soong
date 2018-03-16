@@ -177,6 +177,10 @@ func (t *toolchainMips) IncludeFlags() string {
 	return "${config.MipsIncludeFlags}"
 }
 
+func (t *toolchainMips) ClangNDKTriple() string {
+	return "mipsel-linux-android"
+}
+
 func (t *toolchainMips) ClangTriple() string {
 	return "mipsel-linux-android"
 }

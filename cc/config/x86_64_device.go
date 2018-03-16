@@ -191,6 +191,10 @@ func (t *toolchainX86_64) IncludeFlags() string {
 	return "${config.X86_64IncludeFlags}"
 }
 
+func (t *toolchainX86_64) ClangNDKTriple() string {
+	return t.GccTriple()
+}
+
 func (t *toolchainX86_64) ClangTriple() string {
 	return t.GccTriple()
 }
