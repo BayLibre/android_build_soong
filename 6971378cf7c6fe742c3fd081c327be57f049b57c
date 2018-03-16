@@ -34,6 +34,24 @@
       "revId": "6971378cf7c6fe742c3fd081c327be57f049b57c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57e5f8c1_a1411aef",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 844,
+      "author": {
+        "id": 1015680
+      },
+      "writtenOn": "2018-03-16T16:53:14Z",
+      "side": 1,
+      "message": "Looks like there\u0027s already one. boot-jars-package-check does take care of bootclasspath libraries - it won\u0027t allow kotlin.* classes to be present there. But it doesn\u0027t spell out that renamed_kotlin_stdlib flag needs to be set. But that\u0027s fixable. Looking at the system apps.",
+      "parentUuid": "8a100ee7_de23b4e2",
+      "revId": "6971378cf7c6fe742c3fd081c327be57f049b57c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
