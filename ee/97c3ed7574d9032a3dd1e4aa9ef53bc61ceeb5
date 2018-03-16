@@ -1,0 +1,7 @@
+Code-Review+2: Colin Cross <ccross@android.com>
+Verified+1: Logan Chien <loganchien@google.com>
+Submitted-by: Logan Chien <loganchien@google.com>
+Submitted-at: Fri, 16 Mar 2018 01:57:29 +0000
+Reviewed-on: https://android-review.googlesource.com/638320
+Project: platform/build/soong
+Branch: refs/heads/master
