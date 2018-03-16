@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "40fb19f3_b8c3841a",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-03-16T05:57:36Z",
+      "side": 1,
+      "message": "Instead of an explicit passthrough on all of these, maybe put a default implementation in toolchainBase that returns \"\", make it unexported (ndkTriple) so nothing outside config calls it, and add a function in toolchain.go:\n\nfunc NDKTriple(toolchain Toolchain) string {\n    triple :\u003d toolchain.ndkTriple()\n    if triple \u003d\u003d \"\" {\n        // Use the clang triple if there is no explicit NDK triple\n        triple \u003d toolchain.ClangTriple()\n    }\n    return triple\n}",
+      "parentUuid": "29e8a1c6_f2f36649",
+      "range": {
+        "startLine": 176,
+        "startChar": 10,
+        "endLine": 176,
+        "endChar": 19
+      },
+      "revId": "3d0e45f7f5375c0bc98846ffedb5fb9a7b6d182f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "808f2b99_06f639dc",
         "filename": "cc/config/mips_device.go",
         "patchSetId": 2
@@ -48,6 +72,29 @@
     },
     {
       "key": {
+        "uuid": "7a5164bb_f4d7a662",
+        "filename": "cc/config/toolchain.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-03-16T05:57:36Z",
+      "side": 1,
+      "message": "This doesn\u0027t have anything to do with clang, maybe just NDKTriple?",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 15
+      },
+      "revId": "3d0e45f7f5375c0bc98846ffedb5fb9a7b6d182f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b1fc9bd1_12db6df4",
         "filename": "cc/config/x86_darwin_host.go",
         "patchSetId": 2
@@ -59,6 +106,23 @@
       "writtenOn": "2018-03-16T04:57:41Z",
       "side": 1,
       "message": "This seems unnecessary.  If needed for bionic host (if that happens for Darwin), we\u0027d fork off the config separately (similar to x86_linux_bionic_host.go).",
+      "revId": "3d0e45f7f5375c0bc98846ffedb5fb9a7b6d182f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77cf4bbd_5364beea",
+        "filename": "cc/config/x86_darwin_host.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-03-16T05:57:36Z",
+      "side": 1,
+      "message": "You\u0027ll have to define something to meet the Toolchain interface, but that could be an empty implementation in toolchainBase rather than an implementation here that doesn\u0027t make sense here.",
       "revId": "3d0e45f7f5375c0bc98846ffedb5fb9a7b6d182f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
