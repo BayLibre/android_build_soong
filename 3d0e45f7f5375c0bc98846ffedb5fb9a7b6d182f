@@ -45,6 +45,57 @@
       "revId": "3d0e45f7f5375c0bc98846ffedb5fb9a7b6d182f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1fc9bd1_12db6df4",
+        "filename": "cc/config/x86_darwin_host.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2018-03-16T04:57:41Z",
+      "side": 1,
+      "message": "This seems unnecessary.  If needed for bionic host (if that happens for Darwin), we\u0027d fork off the config separately (similar to x86_linux_bionic_host.go).",
+      "revId": "3d0e45f7f5375c0bc98846ffedb5fb9a7b6d182f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f537e9e6_2db89a52",
+        "filename": "cc/config/x86_linux_host.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2018-03-16T04:57:41Z",
+      "side": 1,
+      "message": "This seems unnecessary.",
+      "revId": "3d0e45f7f5375c0bc98846ffedb5fb9a7b6d182f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be9c2d82_d39dcfc4",
+        "filename": "cc/config/x86_windows_host.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2018-03-16T04:57:41Z",
+      "side": 1,
+      "message": "Same here.",
+      "revId": "3d0e45f7f5375c0bc98846ffedb5fb9a7b6d182f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
