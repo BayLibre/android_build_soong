@@ -109,6 +109,11 @@ func (t *toolchainLinuxBionic) IncludeFlags() string {
 	return "${config.LinuxBionicIncludeFlags}"
 }
 
+func (t *toolchainLinuxBionic) ClangNDKTriple() string {
+	// TODO: we don't have a triple yet b/31393676
+	return "x86_64-linux-android"
+}
+
 func (t *toolchainLinuxBionic) ClangTriple() string {
 	// TODO: we don't have a triple yet b/31393676
 	return "x86_64-linux-android"

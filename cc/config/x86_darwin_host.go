@@ -249,12 +249,20 @@ func (t *toolchainDarwin) IncludeFlags() string {
 	return ""
 }
 
+func (t *toolchainDarwinX86) ClangNDKTriple() string {
+	return "i686-apple-darwin"
+}
+
 func (t *toolchainDarwinX86) ClangTriple() string {
 	return "i686-apple-darwin"
 }
 
 func (t *toolchainDarwinX86) ClangCflags() string {
 	return "${config.DarwinClangCflags} ${config.DarwinX86ClangCflags}"
+}
+
+func (t *toolchainDarwinX8664) ClangNDKTriple() string {
+	return "x86_64-apple-darwin"
 }
 
 func (t *toolchainDarwinX8664) ClangTriple() string {

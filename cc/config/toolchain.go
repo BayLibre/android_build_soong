@@ -59,6 +59,7 @@ type Toolchain interface {
 	InstructionSetFlags(string) (string, error)
 
 	ClangSupported() bool
+	ClangNDKTriple() string
 	ClangTriple() string
 	ToolchainClangCflags() string
 	ToolchainClangLdflags() string

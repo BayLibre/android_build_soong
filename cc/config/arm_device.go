@@ -324,8 +324,12 @@ func (t *toolchainArm) InstructionSetFlags(isa string) (string, error) {
 	}
 }
 
+func (t *toolchainArm) ClangNDKTriple() string {
+	return "arm-linux-androideabi"
+}
+
 func (t *toolchainArm) ClangTriple() string {
-	return t.GccTriple()
+	return "armv7a-linux-androideabi"
 }
 
 func (t *toolchainArm) ToolchainClangCflags() string {

@@ -217,8 +217,16 @@ func (t *toolchainWindows) ClangSupported() bool {
 	return false
 }
 
+func (t *toolchainWindowsX86) ClangNDKTriple() string {
+	return "i686-windows-gnu"
+}
+
 func (t *toolchainWindowsX86) ClangTriple() string {
 	return "i686-windows-gnu"
+}
+
+func (t *toolchainWindowsX8664) ClangNDKTriple() string {
+	return "x86_64-pc-windows-gnu"
 }
 
 func (t *toolchainWindowsX8664) ClangTriple() string {

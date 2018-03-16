@@ -215,6 +215,10 @@ func (t *toolchainX86) IncludeFlags() string {
 	return "${config.X86IncludeFlags}"
 }
 
+func (t *toolchainX86) ClangNDKTriple() string {
+	return "i686-linux-android"
+}
+
 func (t *toolchainX86) ClangTriple() string {
 	return "i686-linux-android"
 }
