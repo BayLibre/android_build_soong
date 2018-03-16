@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29e8a1c6_f2f36649",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2018-03-16T04:42:07Z",
+      "side": 1,
+      "message": "ClangTriple is better in all these cases. At some point, we will remove GccTriple, so we would have to update all of these places as well. Using ClangTriple means that we won\u0027t have to update these pass-through functions.",
+      "range": {
+        "startLine": 176,
+        "startChar": 10,
+        "endLine": 176,
+        "endChar": 19
+      },
+      "revId": "3d0e45f7f5375c0bc98846ffedb5fb9a7b6d182f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "808f2b99_06f639dc",
+        "filename": "cc/config/mips_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2018-03-16T04:42:07Z",
+      "side": 1,
+      "message": "t.ClangTriple\n\nThere are some other instances of hard-coded strings too.",
+      "range": {
+        "startLine": 181,
+        "startChar": 8,
+        "endLine": 181,
+        "endChar": 30
+      },
+      "revId": "3d0e45f7f5375c0bc98846ffedb5fb9a7b6d182f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
