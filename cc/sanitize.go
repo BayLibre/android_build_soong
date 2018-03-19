@@ -285,7 +285,9 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 		}
 	}
 
-	cfiExportsMap = android.PathForSource(ctx, cfiExportsMapPath)
+	if sanitize.isSanitizerEnabled(cfi) {
+		cfiExportsMap = android.PathForSource(ctx, cfiExportsMapPath)
+	}
 }
 
 func (sanitize *sanitize) deps(ctx BaseModuleContext, deps Deps) Deps {
