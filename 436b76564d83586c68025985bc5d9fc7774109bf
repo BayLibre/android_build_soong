@@ -22,6 +22,30 @@
       "revId": "436b76564d83586c68025985bc5d9fc7774109bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fab2fe78_1b8e3634",
+        "filename": "cmd/zipsync/zipsync.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-03-19T20:32:51Z",
+      "side": 1,
+      "message": "unzip maintains the mode by default, although it seems to use 0777-umask for unlisted parent directories.",
+      "parentUuid": "f3caa3bd_a75d3ca6",
+      "range": {
+        "startLine": 106,
+        "startChar": 31,
+        "endLine": 106,
+        "endChar": 49
+      },
+      "revId": "436b76564d83586c68025985bc5d9fc7774109bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
