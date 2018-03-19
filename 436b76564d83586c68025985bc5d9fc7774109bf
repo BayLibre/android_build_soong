@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3caa3bd_a75d3ca6",
+        "filename": "cmd/zipsync/zipsync.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-03-19T20:26:53Z",
+      "side": 1,
+      "message": "Do we really want to keep the mode here? If we somehow get a zip file that doesn\u0027t have a good mode set on the directories it could complicate things.\n\nThis applies the subdirectory mode to any unlisted parent directories too...",
+      "range": {
+        "startLine": 106,
+        "startChar": 31,
+        "endLine": 106,
+        "endChar": 49
+      },
+      "revId": "436b76564d83586c68025985bc5d9fc7774109bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
