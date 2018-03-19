@@ -49,6 +49,54 @@
     },
     {
       "key": {
+        "uuid": "fc46cd86_a88c46a7",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-03-19T17:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29e8a1c6_f2f36649",
+      "range": {
+        "startLine": 176,
+        "startChar": 10,
+        "endLine": 176,
+        "endChar": 19
+      },
+      "revId": "3d0e45f7f5375c0bc98846ffedb5fb9a7b6d182f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8246af0f_37d7d88b",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-03-19T17:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40fb19f3_b8c3841a",
+      "range": {
+        "startLine": 176,
+        "startChar": 10,
+        "endLine": 176,
+        "endChar": 19
+      },
+      "revId": "3d0e45f7f5375c0bc98846ffedb5fb9a7b6d182f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "808f2b99_06f639dc",
         "filename": "cc/config/mips_device.go",
         "patchSetId": 2
@@ -72,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "4c85f229_c1c3add1",
+        "filename": "cc/config/mips_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-03-19T17:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "808f2b99_06f639dc",
+      "range": {
+        "startLine": 181,
+        "startChar": 8,
+        "endLine": 181,
+        "endChar": 30
+      },
+      "revId": "3d0e45f7f5375c0bc98846ffedb5fb9a7b6d182f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a5164bb_f4d7a662",
         "filename": "cc/config/toolchain.go",
         "patchSetId": 2
@@ -83,6 +155,30 @@
       "writtenOn": "2018-03-16T05:57:36Z",
       "side": 1,
       "message": "This doesn\u0027t have anything to do with clang, maybe just NDKTriple?",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 15
+      },
+      "revId": "3d0e45f7f5375c0bc98846ffedb5fb9a7b6d182f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "950745ae_dd75df3e",
+        "filename": "cc/config/toolchain.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-03-19T17:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a5164bb_f4d7a662",
       "range": {
         "startLine": 62,
         "startChar": 1,
@@ -129,6 +225,42 @@
     },
     {
       "key": {
+        "uuid": "c87f874c_d6b2e998",
+        "filename": "cc/config/x86_darwin_host.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-03-19T17:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77cf4bbd_5364beea",
+      "revId": "3d0e45f7f5375c0bc98846ffedb5fb9a7b6d182f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfb954f4_29f0a3a6",
+        "filename": "cc/config/x86_darwin_host.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-03-19T17:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1fc9bd1_12db6df4",
+      "revId": "3d0e45f7f5375c0bc98846ffedb5fb9a7b6d182f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f537e9e6_2db89a52",
         "filename": "cc/config/x86_linux_host.go",
         "patchSetId": 2
@@ -146,6 +278,24 @@
     },
     {
       "key": {
+        "uuid": "67d5233b_2015b9d8",
+        "filename": "cc/config/x86_linux_host.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-03-19T17:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f537e9e6_2db89a52",
+      "revId": "3d0e45f7f5375c0bc98846ffedb5fb9a7b6d182f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be9c2d82_d39dcfc4",
         "filename": "cc/config/x86_windows_host.go",
         "patchSetId": 2
@@ -157,6 +307,24 @@
       "writtenOn": "2018-03-16T04:57:41Z",
       "side": 1,
       "message": "Same here.",
+      "revId": "3d0e45f7f5375c0bc98846ffedb5fb9a7b6d182f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b535350f_ee3143bd",
+        "filename": "cc/config/x86_windows_host.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-03-19T17:17:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be9c2d82_d39dcfc4",
       "revId": "3d0e45f7f5375c0bc98846ffedb5fb9a7b6d182f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
