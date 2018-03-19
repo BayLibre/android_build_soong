@@ -915,6 +915,8 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 					}
 				} else if ctx.useVndk() && inList(entry, llndkLibraries) {
 					nonvariantLibs = append(nonvariantLibs, entry+llndkLibrarySuffix)
+				} else if (ctx.Platform() || ctx.ProductSpecific()) && inList(entry, vendorPublicLibraries) {
+					nonvariantLibs = append(nonvariantLibs, entry+vendorPublicLibrarySuffix)
 				} else {
 					nonvariantLibs = append(nonvariantLibs, entry)
 				}
@@ -1303,6 +1305,7 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 		switch depTag {
 		case sharedDepTag, sharedExportDepTag, lateSharedDepTag:
 			libName := strings.TrimSuffix(depName, llndkLibrarySuffix)
+			libName = strings.TrimSuffix(libName, vendorPublicLibrarySuffix)
 			libName = strings.TrimPrefix(libName, "prebuilt_")
 			isLLndk := inList(libName, llndkLibraries)
 			var makeLibName string
