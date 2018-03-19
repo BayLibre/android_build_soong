@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "980a74c9_84000db5",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-03-19T17:59:48Z",
+      "side": 1,
+      "message": "Add a comment here with a link to the bug explaining why this is different",
+      "revId": "09cf11fe7ed44f092fa65a4540d37dc8f0af7e2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
