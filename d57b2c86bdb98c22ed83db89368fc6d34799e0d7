@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0012ec9_42b91d3e",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-03-20T05:07:35Z",
+      "side": 1,
+      "message": "enh@, when we are to disallow vendor public libs to platform (/system) components in the future, we can omit this condition.",
+      "range": {
+        "startLine": 918,
+        "startChar": 15,
+        "endLine": 918,
+        "endChar": 31
+      },
+      "revId": "d57b2c86bdb98c22ed83db89368fc6d34799e0d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
