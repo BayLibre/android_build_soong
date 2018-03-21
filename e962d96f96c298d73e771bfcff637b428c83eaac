@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00a55198_685d7a29",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-03-21T04:28:00Z",
+      "side": 1,
+      "message": "This needs to take into account PLATFORM_VERSION_CODENAME too, similar to https://android-review.googlesource.com/c/platform/build/+/643699, since PlatformSdkVersion is still 27.",
+      "range": {
+        "startLine": 645,
+        "startChar": 36,
+        "endLine": 645,
+        "endChar": 54
+      },
+      "revId": "e962d96f96c298d73e771bfcff637b428c83eaac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
