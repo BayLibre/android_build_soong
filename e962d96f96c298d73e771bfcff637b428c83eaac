@@ -22,6 +22,30 @@
       "revId": "e962d96f96c298d73e771bfcff637b428c83eaac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf9bfc18_0158f3a2",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2018-03-21T05:02:50Z",
+      "side": 1,
+      "message": "We may use PlatformVndkVersion() for that purpose.",
+      "parentUuid": "00a55198_685d7a29",
+      "range": {
+        "startLine": 645,
+        "startChar": 36,
+        "endLine": 645,
+        "endChar": 54
+      },
+      "revId": "e962d96f96c298d73e771bfcff637b428c83eaac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
