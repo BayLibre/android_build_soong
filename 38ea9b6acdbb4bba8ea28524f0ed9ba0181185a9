@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f00bf103_f1509bc7",
+        "filename": "cc/config/clang.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2018-03-21T17:41:55Z",
+      "side": 1,
+      "message": "Use -Wno-* instead",
+      "range": {
+        "startLine": 121,
+        "startChar": 3,
+        "endLine": 121,
+        "endChar": 14
+      },
+      "revId": "38ea9b6acdbb4bba8ea28524f0ed9ba0181185a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
