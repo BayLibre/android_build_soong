@@ -64,6 +64,9 @@ var rewriteProperties = map[string](func(variableAssignmentContext) error){
 	"LOCAL_MODULE_SUFFIX":           skip, // TODO
 	"LOCAL_PATH":                    skip, // Nothing to do, except maybe avoid the "./" in paths?
 	"LOCAL_PRELINK_MODULE":          skip, // Already phased out
+	"LOCAL_BUILT_MODULE_STEM":       skip,
+	"LOCAL_USE_AAPT2":               skip, // Always enabled in Soong
+	"LOCAL_JAR_EXCLUDE_FILES":       skip, // Soong never excludes files from jars
 }
 
 // adds a group of properties all having the same type
@@ -94,6 +97,7 @@ func init() {
 			"LOCAL_NOTICE_FILE":             "notice",
 			"LOCAL_JAVA_LANGUAGE_VERSION":   "java_version",
 			"LOCAL_INSTRUMENTATION_FOR":     "instrumentation_for",
+			"LOCAL_MANIFEST_FILE":           "manifest",
 
 			"LOCAL_DEX_PREOPT_PROFILE_CLASS_LISTING": "dex_preopt.profile",
 		})
@@ -126,15 +130,17 @@ func init() {
 			"LOCAL_RENDERSCRIPT_INCLUDES": "renderscript.include_dirs",
 			"LOCAL_RENDERSCRIPT_FLAGS":    "renderscript.flags",
 
-			"LOCAL_JAVA_RESOURCE_DIRS":    "java_resource_dirs",
-			"LOCAL_JAVACFLAGS":            "javacflags",
-			"LOCAL_ERROR_PRONE_FLAGS":     "errorprone.javacflags",
-			"LOCAL_DX_FLAGS":              "dxflags",
-			"LOCAL_JAVA_LIBRARIES":        "libs",
-			"LOCAL_STATIC_JAVA_LIBRARIES": "static_libs",
-			"LOCAL_AAPT_FLAGS":            "aaptflags",
-			"LOCAL_PACKAGE_SPLITS":        "package_splits",
-			"LOCAL_COMPATIBILITY_SUITE":   "test_suites",
+			"LOCAL_JAVA_RESOURCE_DIRS":       "java_resource_dirs",
+			"LOCAL_JAVACFLAGS":               "javacflags",
+			"LOCAL_ERROR_PRONE_FLAGS":        "errorprone.javacflags",
+			"LOCAL_DX_FLAGS":                 "dxflags",
+			"LOCAL_JAVA_LIBRARIES":           "libs",
+			"LOCAL_STATIC_JAVA_LIBRARIES":    "static_libs",
+			"LOCAL_STATIC_ANDROID_LIBRARIES": "static_libs",
+			"LOCAL_SHARED_ANDROID_LIBRARIES": "libs",
+			"LOCAL_AAPT_FLAGS":               "aaptflags",
+			"LOCAL_PACKAGE_SPLITS":           "package_splits",
+			"LOCAL_COMPATIBILITY_SUITE":      "test_suites",
 
 			"LOCAL_ANNOTATION_PROCESSORS":        "annotation_processors",
 			"LOCAL_ANNOTATION_PROCESSOR_CLASSES": "annotation_processor_classes",
