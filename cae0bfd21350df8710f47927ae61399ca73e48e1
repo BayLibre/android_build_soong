@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b58cdb83_21a46b3e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1087718
+      },
+      "writtenOn": "2018-03-22T21:23:37Z",
+      "side": 1,
+      "message": "Here are the numbers:\n\n$ du -B1 -s */out/target/product/marlin/system\n 996958208      base/out/target/product/marlin/system\n1008340992      no_pack/out/target/product/marlin/system\n 997801984      sht_relr/out/target/product/marlin/system\n\nrelocation_packer was saving 11,382,784 bytes.\nsht_relr sections are saving 10,539,008 bytes.",
+      "parentUuid": "8ff9ae10_9deba6ba",
+      "revId": "cae0bfd21350df8710f47927ae61399ca73e48e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "31a3a947_3e0fd7b5",
         "filename": "cc/relocation_packer.go",
         "patchSetId": 1
