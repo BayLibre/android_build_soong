@@ -17,7 +17,9 @@
 package bpfix
 
 import (
+	"bytes"
 	"fmt"
+	"os"
 	"strings"
 	"testing"
 
@@ -112,4 +114,139 @@ func TestSimplifyKnownVariablesDuplicatingEachOther(t *testing.T) {
 		[]string{"include1", "include3", "include4"})
 	implFilterListTest(t, []string{}, []string{"include"}, []string{})
 	implFilterListTest(t, []string{}, []string{}, []string{})
+}
+
+func reformatBlueprint(input string) string {
+	file, errs := parser.Parse("<testcase>", bytes.NewBufferString(input), parser.NewScope(nil))
+	if len(errs) > 0 {
+		for _, err := range errs {
+			fmt.Fprintln(os.Stderr, err)
+		}
+		panic(fmt.Sprintf("%d parsing errors in testcase:\n%s", len(errs), input))
+	}
+
+	res, err := parser.Print(file)
+	if err != nil {
+		panic(fmt.Sprintf("Error printing testcase: %q", err))
+	}
+
+	return string(res)
+}
+
+func TestMergeMatchinProperties(t *testing.T) {
+	tests := []struct {
+		name string
+		in   string
+		out  string
+	}{
+		{
+			name: "empty",
+			in: `
+				java_library {
+					name: "foo",
+					static_libs: [],
+					static_libs: [],
+				}
+			`,
+			out: `
+				java_library {
+					name: "foo",
+					static_libs: [],
+				}
+			`,
+		},
+		{
+			name: "single line into multiline",
+			in: `
+				java_library {
+					name: "foo",
+					static_libs: [
+						"a",
+						"b",
+					],
+					//c1
+					static_libs: ["c" /*c2*/],
+				}
+			`,
+			out: `
+				java_library {
+					name: "foo",
+					static_libs: [
+						"a",
+						"b",
+						"c", /*c2*/
+					],
+					//c1
+				}
+			`,
+		},
+		{
+			name: "multiline into multiline",
+			in: `
+				java_library {
+					name: "foo",
+					static_libs: [
+						"a",
+						"b",
+					],
+					//c1
+					static_libs: [
+						//c2
+						"c", //c3
+						"d",
+					],
+				}
+			`,
+			out: `
+				java_library {
+					name: "foo",
+					static_libs: [
+						"a",
+						"b",
+						//c2
+						"c", //c3
+						"d",
+					],
+					//c1
+				}
+			`,
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			expected := reformatBlueprint(test.out)
+			in := reformatBlueprint(test.in)
+
+			tree, errs := parser.Parse("<testcase>", bytes.NewBufferString(in), parser.NewScope(nil))
+			if errs != nil {
+				t.Fatal(errs)
+			}
+
+			got := ""
+			prev := "foo"
+			passes := 0
+			for got != prev && passes < 10 {
+				err := mergeMatchingModuleProperties(tree)
+				if err != nil {
+					t.Fatal(err)
+				}
+
+				out, err := parser.Print(tree)
+				if err != nil {
+					t.Fatal(err)
+				}
+
+				prev = got
+				got = string(out)
+				passes++
+			}
+
+			if got != expected {
+				t.Errorf("failed testcase '%s'\ninput:\n%s\n\nexpected:\n%s\ngot:\n%s\n",
+					test.name, in, expected, got)
+			}
+
+		})
+	}
 }

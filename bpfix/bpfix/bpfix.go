@@ -18,7 +18,9 @@ package bpfix
 
 import (
 	"bytes"
+	"errors"
 	"fmt"
+	"io"
 	"path/filepath"
 
 	"github.com/google/blueprint/parser"
@@ -83,6 +85,28 @@ func fingerprint(tree *parser.File) (fingerprint []byte, err error) {
 	return bytes, nil
 }
 
+func reparse(tree *parser.File) ([]byte, error) {
+	buf, err := parser.Print(tree)
+	if err != nil {
+		return nil, err
+	}
+	newTree, err := parse(tree.Name, bytes.NewReader(buf))
+	*tree = *newTree
+	return buf, nil
+}
+
+func parse(name string, r io.Reader) (*parser.File, error) {
+	tree, errs := parser.Parse(name, r, parser.NewScope(nil))
+	if errs != nil {
+		s := "parse error: "
+		for _, err := range errs {
+			s += "\n" + err.Error()
+		}
+		return nil, errors.New(s)
+	}
+	return tree, nil
+}
+
 func fixTreeOnce(tree *parser.File, config FixRequest) error {
 	if config.simplifyKnownRedundantVariables {
 		err := simplifyKnownPropertiesDuplicatingEachOther(tree)
@@ -96,6 +120,8 @@ func fixTreeOnce(tree *parser.File, config FixRequest) error {
 			return err
 		}
 	}
+
+	mergeMatchingModuleProperties(tree)
 	return nil
 }
 
@@ -134,6 +160,115 @@ func rewriteIncorrectAndroidmkPrebuilts(tree *parser.File) error {
 			// An android_library_import doesn't get installed, so setting "installable = false" isn't supported
 			removeProperty(mod, "installable")
 		}
+	}
+
+	return nil
+}
+
+func mergeMatchingModuleProperties(tree *parser.File) error {
+	// Make sure all the offsets are accurate
+	buf, err := reparse(tree)
+	if err != nil {
+		return err
+	}
+
+	var patchlist parser.PatchList
+	for _, def := range tree.Defs {
+		mod, ok := def.(*parser.Module)
+		if !ok {
+			continue
+		}
+
+		err := mergeMatchingProperties(&mod.Properties, buf, &patchlist)
+		if err != nil {
+			return err
+		}
+	}
+
+	newBuf := new(bytes.Buffer)
+	err = patchlist.Apply(bytes.NewReader(buf), newBuf)
+	if err != nil {
+		return err
+	}
+
+	newTree, err := parse(tree.Name, newBuf)
+	if err != nil {
+		return err
+	}
+
+	*tree = *newTree
+
+	return nil
+}
+
+func mergeMatchingProperties(properties *[]*parser.Property, buf []byte, patchlist *parser.PatchList) error {
+	seen := make(map[string]*parser.Property)
+	for i := 0; i < len(*properties); i++ {
+		property := (*properties)[i]
+		if prev, exists := seen[property.Name]; exists {
+			err := mergeProperties(prev, property, buf, patchlist)
+			if err != nil {
+				return err
+			}
+			*properties = append((*properties)[:i], (*properties)[i+1:]...)
+		} else {
+			seen[property.Name] = property
+			if mapProperty, ok := property.Value.(*parser.Map); ok {
+				err := mergeMatchingProperties(&mapProperty.Properties, buf, patchlist)
+				if err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+func mergeProperties(a, b *parser.Property, buf []byte, patchlist *parser.PatchList) error {
+	if a.Value.Type() != b.Value.Type() {
+		return fmt.Errorf("type mismatch when merging properties %q: %s and %s", a.Name, a.Value.Type(), b.Value.Type())
+	}
+
+	switch a.Value.Type() {
+	case parser.StringType:
+		return fmt.Errorf("conflicting definitions of string property %q", a.Name)
+	case parser.ListType:
+		return mergeListProperties(a, b, buf, patchlist)
+	}
+
+	return nil
+}
+
+func mergeListProperties(a, b *parser.Property, buf []byte, patchlist *parser.PatchList) error {
+	aval, oka := a.Value.(*parser.List)
+	bval, okb := b.Value.(*parser.List)
+	if !oka || !okb {
+		// Merging expressions not supported yet
+		return nil
+	}
+
+	s := string(buf[bval.LBracePos.Offset+1 : bval.RBracePos.Offset])
+	if bval.LBracePos.Line != bval.RBracePos.Line {
+		if s[0] != '\n' {
+			panic("expected \n")
+		}
+		// If B is a multi line list, skip the first "\n" in case A already has a trailing "\n"
+		s = s[1:]
+	}
+	if aval.LBracePos.Line == aval.RBracePos.Line {
+		// A is a single line list with no trailing comma
+		if len(aval.Values) > 0 {
+			s = "," + s
+		}
+	}
+
+	err := patchlist.Add(aval.RBracePos.Offset, aval.RBracePos.Offset, s)
+	if err != nil {
+		return err
+	}
+	err = patchlist.Add(b.NamePos.Offset, b.End().Offset+2, "")
+	if err != nil {
+		return err
 	}
 
 	return nil
