@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31a3a947_3e0fd7b5",
+        "filename": "cc/relocation_packer.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-03-22T18:18:08Z",
+      "side": 1,
+      "message": "build folks: the plan is to submit these two patches, and if they stick for a week, come back and remove relocation packer.\n\nwe might cherrypick these two patches for P (for Go), but we wouldn\u0027t cherrypick the removal (just in case we need an escape hatch down the line).",
+      "revId": "cae0bfd21350df8710f47927ae61399ca73e48e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
