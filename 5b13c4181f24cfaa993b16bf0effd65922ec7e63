@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a9f6e57_f1810cf7",
+        "filename": "python/python.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-03-22T22:31:33Z",
+      "side": 1,
+      "message": "What is this doing? Why is libprotobuf-python special compared to any other library that\u0027s used by multiple dependencies?",
+      "range": {
+        "startLine": 598,
+        "startChar": 1,
+        "endLine": 604,
+        "endChar": 4
+      },
+      "revId": "5b13c4181f24cfaa993b16bf0effd65922ec7e63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
