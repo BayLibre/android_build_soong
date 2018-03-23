@@ -1,0 +1,12 @@
+Verified+1: Rahul Chaudhry <rahulchaudhry@google.com>
+Autosubmit+1: Rahul Chaudhry <rahulchaudhry@google.com>
+Code-Review+1: Elliott Hughes <enh@google.com>
+Code-Review+2: Stephen Hines <srhines@google.com>
+Code-Review+1: Chih-hung Hsieh <chh@google.com>
+Code-Review+1: Colin Cross <ccross@android.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Fri, 23 Mar 2018 17:28:06 +0000
+Reviewed-on: https://android-review.googlesource.com/647211
+Project: platform/build/soong
+Branch: refs/heads/master
