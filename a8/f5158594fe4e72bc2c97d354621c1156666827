@@ -1,0 +1,11 @@
+Code-Review+2: Justin Yun <justinyun@google.com>
+Code-Review+1: Andrew Hsieh <andrewhsieh@google.com>
+Code-Review+2: Dan Willemsen <dwillemsen@google.com>
+Verified+1: Logan Chien <loganchien@google.com>
+Autosubmit+1: Jayant Chowdhary <jchowdhary@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Fri, 23 Mar 2018 21:31:26 +0000
+Reviewed-on: https://android-review.googlesource.com/645499
+Project: platform/build/soong
+Branch: refs/heads/master
