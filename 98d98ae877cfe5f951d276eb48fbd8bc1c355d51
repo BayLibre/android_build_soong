@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "102c3f37_dc1c9add",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-03-23T00:05:14Z",
+      "side": 1,
+      "message": "Can we wrap *parser.File in a struct, then make all of these functions on that struct, so that we\u0027re not completely rewriting a function argument? That just seems a bit cleaner to me.",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 17
+      },
+      "revId": "98d98ae877cfe5f951d276eb48fbd8bc1c355d51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ec4cf53_e5d1971e",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-03-23T00:05:14Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be a config option, since matching module files should be an error in the !androidmk case?",
+      "revId": "98d98ae877cfe5f951d276eb48fbd8bc1c355d51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26e10b0b_eea14677",
+        "filename": "bpfix/bpfix/bpfix_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-03-23T00:05:14Z",
+      "side": 1,
+      "message": ":( we still can\u0027t move this in between \"b\" and \"c\"? That\u0027s a very common case... (at least iirc, there\u0027s a chance that the input shows up like the next testcase, which works better)",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 9
+      },
+      "revId": "98d98ae877cfe5f951d276eb48fbd8bc1c355d51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
