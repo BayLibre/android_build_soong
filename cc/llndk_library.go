@@ -76,7 +76,14 @@ func (stub *llndkStubDecorator) compilerFlags(ctx ModuleContext, flags Flags, de
 }
 
 func (stub *llndkStubDecorator) compile(ctx ModuleContext, flags Flags, deps PathDeps) Objects {
-	objs, versionScript := compileStubLibrary(ctx, flags, String(stub.Properties.Symbol_file), "current", "--vndk")
+	vndk_ver := ctx.DeviceConfig().VndkVersion()
+	if vndk_ver == "current" {
+		platform_vndk_ver := ctx.DeviceConfig().PlatformVndkVersion()
+		if !inList(platform_vndk_ver, ctx.Config().PlatformVersionCombinedCodenames()) {
+			vndk_ver = platform_vndk_ver
+		}
+	}
+	objs, versionScript := compileStubLibrary(ctx, flags, String(stub.Properties.Symbol_file), vndk_ver, "--vndk")
 	stub.versionScriptPath = versionScript
 	return objs
 }
