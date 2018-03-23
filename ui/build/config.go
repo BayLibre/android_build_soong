@@ -35,6 +35,7 @@ type configImpl struct {
 
 	// From the arguments
 	parallel  int
+	loadLimit  int
 	keepGoing int
 	verbose   bool
 	dist      bool
@@ -55,6 +56,7 @@ func NewConfig(ctx Context, args ...string) Config {
 
 	// Sane default matching ninja
 	ret.parallel = runtime.NumCPU() + 2
+	ret.loadLimit = 0
 	ret.keepGoing = 1
 
 	ret.parseArgs(ctx, args)
@@ -178,6 +180,8 @@ func (c *configImpl) parseArgs(ctx Context, args []string) {
 				c.parallel = parseArgNum(c.parallel)
 			} else if arg[1] == 'k' {
 				c.keepGoing = parseArgNum(0)
+			} else if arg[1] == 'l' {
+				c.loadLimit = parseArgNum(c.loadLimit)
 			} else {
 				ctx.Fatalln("Unknown option:", arg)
 			}
@@ -320,6 +324,10 @@ func (c *configImpl) KatiArgs() []string {
 func (c *configImpl) Parallel() int {
 	return c.parallel
 }
+
+func (c *configImpl) LoadLimit() int {
+    return c.loadLimit
+}	
 
 func (c *configImpl) UseGoma() bool {
 	if v, ok := c.environ.Get("USE_GOMA"); ok {
