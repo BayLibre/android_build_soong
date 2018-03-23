@@ -90,12 +90,19 @@ func runSoong(ctx Context, config Config) {
 		ctx.BeginTrace(name)
 		defer ctx.EndTrace()
 
-		cmd := Command(ctx, config, "soong "+name,
-			config.PrebuiltBuildTool("ninja"),
+		args := []string{
 			"-d", "keepdepfile",
 			"-w", "dupbuild=err",
 			"-j", strconv.Itoa(config.Parallel()),
-			"-f", filepath.Join(config.SoongOutDir(), file))
+			"-f", filepath.Join(config.SoongOutDir(), file)
+		}
+		if config.loadLimit > 0 {
+			args = append(args, "-l", strconv.Itoa(config.loadLimit))
+		}
+
+		cmd := Command(ctx, config, "soong "+name,
+			config.PrebuiltBuildTool("ninja"),
+			args)
 		if config.IsVerbose() {
 			cmd.Args = append(cmd.Args, "-v")
 		}

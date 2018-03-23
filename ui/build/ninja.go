@@ -41,6 +41,9 @@ func runNinja(ctx Context, config Config) {
 		parallel = config.Parallel()
 	}
 	args = append(args, "-j", strconv.Itoa(parallel))
+	if config.loadLimit > 0 {
+		args = append(args, "-l", strconv.Itoa(config.loadLimit))
+	}
 	if config.keepGoing != 1 {
 		args = append(args, "-k", strconv.Itoa(config.keepGoing))
 	}
