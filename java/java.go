@@ -420,13 +420,17 @@ func decodeSdkDep(ctx android.BaseContext, v string) sdkDep {
 		}
 	}
 
-	//toModule := func(m string) sdkDep {
-	//	return sdkDep{
-	//		useModule:     true,
-	//		module:        m,
-	//		systemModules: m + "_system_modules",
-	//	}
-	//}
+	toModule := func(m string) sdkDep {
+		ret := sdkDep{
+			useModule:     true,
+			module:        m,
+			systemModules: m + "_system_modules",
+		}
+		if m == "core.current.stubs" {
+			ret.systemModules = "core-system-modules"
+		}
+		return ret
+	}
 
 	if ctx.Config().UnbundledBuild() && v != "" {
 		return toFile(v)
@@ -437,14 +441,14 @@ func decodeSdkDep(ctx android.BaseContext, v string) sdkDep {
 		return sdkDep{
 			useDefaultLibs: true,
 		}
-	// TODO(ccross): re-enable these once we generate stubs, until then
-	// use the stubs in prebuilts/sdk/*current
-	//case "current":
-	//	return toModule("android_stubs_current")
-	//case "system_current":
-	//	return toModule("android_system_stubs_current")
-	//case "test_current":
-	//	return toModule("android_test_stubs_current")
+	case "current":
+		return toModule("android_stubs_current")
+	case "system_current":
+		return toModule("android_system_stubs_current")
+	case "test_current":
+		return toModule("android_test_stubs_current")
+	case "core_current":
+		return toModule("core.current.stubs")
 	default:
 		return toFile(v)
 	}
@@ -909,13 +913,9 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars ...android.Path
 					j.properties.Javac_shard_size)
 			}
 		}
-		// If sdk jar is java module, then directly return classesJar as header.jar
-		if j.Name() != "android_stubs_current" && j.Name() != "android_system_stubs_current" &&
-			j.Name() != "android_test_stubs_current" {
-			j.headerJarFile = j.compileJavaHeader(ctx, uniqueSrcFiles, srcJars, deps, flags, jarName)
-			if ctx.Failed() {
-				return
-			}
+		j.headerJarFile = j.compileJavaHeader(ctx, uniqueSrcFiles, srcJars, deps, flags, jarName)
+		if ctx.Failed() {
+			return
 		}
 	}
 	if len(uniqueSrcFiles) > 0 || len(srcJars) > 0 {
