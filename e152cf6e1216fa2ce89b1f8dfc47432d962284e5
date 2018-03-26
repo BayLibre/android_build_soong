@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2186005c_7538d6f9",
+        "filename": "cc/vendor_public_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-03-26T21:58:53Z",
+      "side": 1,
+      "message": "I\u0027m concerned about how this interacts with soong namespaces -- this isn\u0027t respecting the soong namespace -- we\u0027ll get a global list of all possible vendor_public_library modules. If the name had been marked as a vendor_public_library in some unused namespace, that could break the build if it wasn\u0027t marked as public in the current namespaces.\n\nFor Make, we need to filter that list to only vendor_public_library modules that are exported to Make. A bit more work, but shouldn\u0027t be too bad.\n\nFor Soong (cc.go), we\u0027d need to take into account the visible namespaces from the current module somehow. Maybe we\u0027ll need to probe w/OtherModuleExists?",
+      "revId": "e152cf6e1216fa2ce89b1f8dfc47432d962284e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
