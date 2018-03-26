@@ -65,6 +65,12 @@ type DeviceConfig struct {
 	*deviceConfig
 }
 
+type VendorConfig interface {
+	Bool(name string) bool
+	String(name string) string
+	IsSet(name string) bool
+}
+
 type config struct {
 	FileConfigurableOptions
 	productVariables ProductVariables
@@ -103,6 +109,8 @@ type deviceConfig struct {
 	config *config
 	OncePer
 }
+
+type vendorConfig map[string]string
 
 type jsonConfigurable interface {
 	SetDefaultConfig()
@@ -782,6 +790,24 @@ func (c *config) CFIEnabledForPath(path string) bool {
 		return false
 	}
 	return PrefixInList(path, *c.productVariables.CFIIncludePaths)
+}
+
+func (c *config) VendorConfig(name string) VendorConfig {
+	return vendorConfig(c.productVariables.VendorVars[name])
+}
+
+func (c vendorConfig) Bool(name string) bool {
+	v := c[name]
+	return v == "1" || v == "y" || v == "yes" || v == "on" || v == "true"
+}
+
+func (c vendorConfig) String(name string) string {
+	return c[name]
+}
+
+func (c vendorConfig) IsSet(name string) bool {
+	_, ok := c[name]
+	return ok
 }
 
 func stringSlice(s *[]string) []string {
