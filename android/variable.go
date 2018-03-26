@@ -205,6 +205,11 @@ type productVariables struct {
 	NamespacesToExport []string `json:",omitempty"`
 
 	PgoAdditionalProfileDirs []string `json:",omitempty"`
+
+	BoardVendorSepolicyDirs     []string `json:",omitempty"`
+	BoardOdmSepolicyDirs        []string `json:",omitempty"`
+	BoardPlatPublicSepolicyDir  string   `json:",omitempty"`
+	BoardPlatPrivateSepolicyDir string   `json:",omitempty"`
 }
 
 func boolPtr(v bool) *bool {

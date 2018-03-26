@@ -732,6 +732,22 @@ func (c *deviceConfig) PgoAdditionalProfileDirs() []string {
 	return c.config.ProductVariables.PgoAdditionalProfileDirs
 }
 
+func (c *deviceConfig) VendorSepolicyDirs() []string {
+	return c.config.ProductVariables.BoardVendorSepolicyDirs
+}
+
+func (c *deviceConfig) OdmSepolicyDirs() []string {
+	return c.config.ProductVariables.BoardOdmSepolicyDirs
+}
+
+func (c *deviceConfig) PlatPublicSepolicyDir() string {
+	return c.config.ProductVariables.BoardPlatPublicSepolicyDir
+}
+
+func (c *deviceConfig) PlatPrivateSepolicyDir() string {
+	return c.config.ProductVariables.BoardPlatPrivateSepolicyDir
+}
+
 func (c *config) IntegerOverflowDisabledForPath(path string) bool {
 	if c.ProductVariables.IntegerOverflowExcludePaths == nil {
 		return false
