@@ -153,6 +153,9 @@ type DroiddocProperties struct {
 
 	// the generated exact API filename by Doclava.
 	Exact_api_filename *string
+
+	// the -source java language version
+	Java_version *string
 }
 
 type Javadoc struct {
@@ -184,6 +187,7 @@ type Droiddoc struct {
 	privateDexApiFile android.WritablePath
 	removedApiFile    android.WritablePath
 	exactApiFile      android.WritablePath
+	JavaVersion       string
 }
 
 func InitDroiddocModule(module android.DefaultableModule, hod android.HostOrDeviceSupported) {
@@ -558,9 +562,15 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		implicitOutputs = append(implicitOutputs, d.exactApiFile)
 	}
 
+	if String(d.properties.Java_version) != "" {
+		d.JavaVersion = String(d.properties.Java_version)
+	} else {
+		d.JavaVersion = "1.8"
+	}
+
 	implicits = append(implicits, d.Javadoc.srcJars...)
 
-	opts := "-source 1.8 -J-Xmx1600m -J-XX:-OmitStackTraceInFastThrow -XDignore.symbol.file " +
+	opts := "-source " + d.JavaVersion + " -J-Xmx1600m -J-XX:-OmitStackTraceInFastThrow -XDignore.symbol.file " +
 		"-doclet com.google.doclava.Doclava -docletpath ${config.JsilverJar}:${config.DoclavaJar} " +
 		"-templatedir " + templateDir + " " + htmlDirArgs + " " + htmlDir2Args + " " +
 		"-hdf page.build " + ctx.Config().BuildId() + "-" + ctx.Config().BuildNumberFromFile() + " " +

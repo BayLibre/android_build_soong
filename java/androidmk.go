@@ -265,6 +265,9 @@ func (ddoc *Droiddoc) AndroidMk() android.AndroidMkData {
 				if String(ddoc.properties.Exact_api_filename) != "" {
 					fmt.Fprintln(w, apiFilePrefix+"EXACT_API_FILE := ", ddoc.exactApiFile.String())
 				}
+				if String(ddoc.properties.Java_version) != "" {
+					fmt.Fprintln(w, apiFilePrefix+"JAVA_VERSION := ", ddoc.JavaVersion)
+				}
 			},
 		},
 	}
