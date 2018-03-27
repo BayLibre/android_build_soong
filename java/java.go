@@ -276,7 +276,9 @@ type Module struct {
 }
 
 func (j *Module) Srcs() android.Paths {
-	return android.Paths{j.implementationJarFile}
+	ret := make(android.Paths, 1)
+	copy(ret, android.Paths{j.implementationJarFile})
+	return ret
 }
 
 var _ android.SourceFileProducer = (*Module)(nil)

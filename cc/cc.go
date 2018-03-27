@@ -1366,7 +1366,9 @@ func (c *Module) IntermPathForModuleOut() android.OptionalPath {
 
 func (c *Module) Srcs() android.Paths {
 	if c.outputFile.Valid() {
-		return android.Paths{c.outputFile.Path()}
+		ret := make(android.Paths, 1)
+		copy(ret, android.Paths{c.outputFile.Path()})
+		return ret
 	}
 	return android.Paths{}
 }

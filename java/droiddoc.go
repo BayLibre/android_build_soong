@@ -170,7 +170,9 @@ type Javadoc struct {
 }
 
 func (j *Javadoc) Srcs() android.Paths {
-	return android.Paths{j.stubsSrcJar}
+	ret := make(android.Paths, 1)
+	copy(ret, android.Paths{j.stubsSrcJar})
+	return ret
 }
 
 var _ android.SourceFileProducer = (*Javadoc)(nil)

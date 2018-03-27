@@ -180,7 +180,9 @@ type CompiledInterface interface {
 }
 
 func (compiler *baseCompiler) Srcs() android.Paths {
-	return compiler.srcs
+	ret := make(android.Paths, len(compiler.srcs))
+	copy(ret, compiler.srcs)
+	return ret
 }
 
 func (compiler *baseCompiler) appendCflags(flags []string) {
