@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d477896_a41f8614",
+        "filename": "cc/ndk_prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2018-03-27T21:16:48Z",
+      "side": 1,
+      "message": "Once I reused ndk_prebuilt_static_stl for extra STL libraries, I wanted to rename it, but I couldn\u0027t think of something clearly better. e.g. \"ndk_prebuilt_stl_library_static\" is a little long and \"STL library\" is a little redundant.",
+      "revId": "6edd5abfb2f4721f7f3d830730a696e4d0162cfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
