@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de7d58f6_83c6da32",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-03-27T20:39:52Z",
+      "side": 1,
+      "message": "I understand that this is a convenient default that covers all of libc/etc, but it\u0027s fundamentally unrelated to linux_bionic, so I\u0027d rather change this elsewhere.",
+      "range": {
+        "startLine": 291,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 29
+      },
+      "revId": "723b1f8c613abf47b360c1976dd81c4da350009f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
