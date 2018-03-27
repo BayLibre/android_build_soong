@@ -16,6 +16,24 @@
       "revId": "e152cf6e1216fa2ce89b1f8dfc47432d962284e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6a0a874_e6af669b",
+        "filename": "cc/vendor_public_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-03-27T07:12:29Z",
+      "side": 1,
+      "message": "Done. Thanks for the detailed guide.",
+      "parentUuid": "2186005c_7538d6f9",
+      "revId": "e152cf6e1216fa2ce89b1f8dfc47432d962284e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
