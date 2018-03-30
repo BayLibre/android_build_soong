@@ -94,6 +94,30 @@
       "revId": "aaeba7e8cb4ea4b66b2d36d90ab0b8b1bb1021a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ca6d515_09a8d6d7",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-03-30T05:50:11Z",
+      "side": 1,
+      "message": "cool, let\u0027s take that path.",
+      "parentUuid": "34c27954_bb1b486e",
+      "range": {
+        "startLine": 453,
+        "startChar": 0,
+        "endLine": 454,
+        "endChar": 43
+      },
+      "revId": "aaeba7e8cb4ea4b66b2d36d90ab0b8b1bb1021a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
