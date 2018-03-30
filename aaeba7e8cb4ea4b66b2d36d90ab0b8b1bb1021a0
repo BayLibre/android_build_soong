@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5768fbff_a054a864",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-03-30T00:13:46Z",
+      "side": 1,
+      "message": "I don\u0027t think hwbinder_current deserves a sdk name. Can we just let the HIDL libs to do link against hwbinder.current.stubs and setting sdk_version to core_current instead?\n\n(of course hwbinder.current.stubs should have sdk_version: \"core_current\")",
+      "range": {
+        "startLine": 453,
+        "startChar": 0,
+        "endLine": 454,
+        "endChar": 43
+      },
+      "revId": "aaeba7e8cb4ea4b66b2d36d90ab0b8b1bb1021a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
