@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd53f57b_c24abe4a",
+        "filename": "cc/vndk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1014807
+      },
+      "writtenOn": "2018-03-30T00:29:48Z",
+      "side": 0,
+      "message": "This check is moved to PS#2 line 173-176",
+      "range": {
+        "startLine": 154,
+        "startChar": 4,
+        "endLine": 154,
+        "endChar": 85
+      },
+      "revId": "1218a19f0d2217500a1efa5fffde7465df2e4419",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "161f4e68_8b00ba5d",
+        "filename": "cc/vndk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1014807
+      },
+      "writtenOn": "2018-03-30T00:29:48Z",
+      "side": 0,
+      "message": "The main motivation is to allow VNDK-SP extensions to use vendor libs, like the !vndk.isVndkSp() above.\n\nThe simple fix is to add (!vndk.isVndkExt() || (vndk.isVndkExt() \u0026\u0026 to.vndkdep.isVndk() \u0026\u0026!to.vndkdep.isVndkSp())) here.  Since it would be too complex to write in a line, I have to extracted these checks into a function.",
+      "range": {
+        "startLine": 164,
+        "startChar": 44,
+        "endLine": 164,
+        "endChar": 45
+      },
+      "revId": "1218a19f0d2217500a1efa5fffde7465df2e4419",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
