@@ -1,0 +1,6 @@
+Build-Cop-Override+1: Aart Bik <ajcbik@google.com>
+Submitted-by: Vishwath Mohan <vishwath@google.com>
+Submitted-at: Fri, 30 Mar 2018 02:58:30 +0000
+Reviewed-on: https://android-review.googlesource.com/652980
+Project: platform/build/soong
+Branch: refs/heads/master
