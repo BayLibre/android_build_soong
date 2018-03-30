@@ -46,6 +46,30 @@
       "revId": "aaeba7e8cb4ea4b66b2d36d90ab0b8b1bb1021a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb8a1205_f4403058",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-03-30T05:26:34Z",
+      "side": 1,
+      "message": "Hmm, that\u0027s a good catch. Maybe we can make this stub lib linkable only from the HIDL interface libs (namespace might be a good use here?)",
+      "parentUuid": "36168c06_8dd00ad9",
+      "range": {
+        "startLine": 453,
+        "startChar": 0,
+        "endLine": 454,
+        "endChar": 43
+      },
+      "revId": "aaeba7e8cb4ea4b66b2d36d90ab0b8b1bb1021a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
