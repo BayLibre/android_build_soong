@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "54e3374e_1b7309e2",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2018-04-03T18:23:01Z",
+      "side": 1,
+      "message": "Just a quick note on this topic.  I haven\u0027t looked at the rest of this CL.\n\nLLD does have no-op options for compatibility: https://github.com/llvm-mirror/lld/blob/f16ecd79521dd3ae2563a0a8661baadc427ed014/ELF/Options.td#L426.  We can add this as well, since this is supported by gold.",
+      "parentUuid": "cbca49b6_f347f742",
+      "revId": "69ef398a273060871e9f4a7d25404de0e6afd4bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "85572534_30050453",
         "filename": "cc/config/arm_device.go",
         "patchSetId": 1
