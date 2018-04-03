@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6eca33e8_ab9a87ca",
+        "filename": "cc/binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-04-03T22:38:23Z",
+      "side": 1,
+      "message": "Add something like:\n\n This does not completely prevent installation of the overridden binaries, but if both binaries would be installed by default (in PRODUCT_PACKAGES) the other binary will be removed from PRODUCT_PACKAGES.",
+      "revId": "89c418752d751fff349a084f33bab312465d8d38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
