@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "7a4ee3b4_36ae3690",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-04-03T18:29:30Z",
+      "side": 1,
+      "message": "If it\u0027s going to be a no-op, we should make CpuVariant\u003d\u003dcortex-a8 an error with lld.\n\nThis file is also used for some unbundled apps -- are we shipping any APKs that can end up on a cortex-a8 device that will need this fix?",
+      "parentUuid": "54e3374e_1b7309e2",
+      "revId": "69ef398a273060871e9f4a7d25404de0e6afd4bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "85572534_30050453",
         "filename": "cc/config/arm_device.go",
         "patchSetId": 1
