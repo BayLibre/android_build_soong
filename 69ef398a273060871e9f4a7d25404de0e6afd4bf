@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cbca49b6_f347f742",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-04-03T18:17:29Z",
+      "side": 1,
+      "message": "Yes, it would be much simpler if we drop --fix-cortex-a8 and --no-fix-cortex-a8. I can try that.\nWhich targets or devices should we test the change?",
+      "parentUuid": "e5991640_e0b8cfdc",
+      "revId": "69ef398a273060871e9f4a7d25404de0e6afd4bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "85572534_30050453",
         "filename": "cc/config/arm_device.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2018-03-29T23:13:39Z",
       "side": 1,
       "message": "I\u0027m not sure how to interpret this, since below you seem to be using --Wl,--hash-style\u003dgnu alone.",
+      "revId": "69ef398a273060871e9f4a7d25404de0e6afd4bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4fad672_bdc2b70f",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-04-03T18:17:29Z",
+      "side": 1,
+      "message": "Sorry, it was obsolete comment. Now gnu hash style works for lld. Will update it in the next patch.",
+      "parentUuid": "85572534_30050453",
       "revId": "69ef398a273060871e9f4a7d25404de0e6afd4bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -150,6 +186,24 @@
     },
     {
       "key": {
+        "uuid": "44a0ebd9_5b2be849",
+        "filename": "cc/lto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-04-03T18:17:29Z",
+      "side": 1,
+      "message": "LLD does not accept -Wl,-plugin-opt.",
+      "parentUuid": "93d6ca62_61e4f3a9",
+      "revId": "69ef398a273060871e9f4a7d25404de0e6afd4bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e96197d9_865e25af",
         "filename": "cc/stl.go",
         "patchSetId": 1
@@ -161,6 +215,24 @@
       "writtenOn": "2018-03-29T23:13:39Z",
       "side": 1,
       "message": "Isn\u0027t this a problem?  It will include extra unwanted symbols in shared libraries?",
+      "revId": "69ef398a273060871e9f4a7d25404de0e6afd4bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a7f9902_bc8774db",
+        "filename": "cc/stl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-04-03T18:17:29Z",
+      "side": 1,
+      "message": "Yes, a problem of LLD we need to either disable LLD in affected projects or change project local link flags.",
+      "parentUuid": "e96197d9_865e25af",
       "revId": "69ef398a273060871e9f4a7d25404de0e6afd4bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
