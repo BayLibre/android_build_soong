@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "5cd713a5_edc9967a",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-04-03T19:05:14Z",
+      "side": 1,
+      "message": "How about falling back to ld when cortex-a8 or armv7-a?\nWe can change the binding of ArmLldflagsFixCortexA8 at line 200.",
+      "parentUuid": "7a4ee3b4_36ae3690",
+      "revId": "69ef398a273060871e9f4a7d25404de0e6afd4bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "85572534_30050453",
         "filename": "cc/config/arm_device.go",
         "patchSetId": 1
@@ -170,6 +188,30 @@
       "writtenOn": "2018-03-29T23:13:39Z",
       "side": 1,
       "message": "This seems unnecessary confusing, since neither one of these will contain any a8 related flags.",
+      "range": {
+        "startLine": 200,
+        "startChar": 1,
+        "endLine": 201,
+        "endChar": 80
+      },
+      "revId": "69ef398a273060871e9f4a7d25404de0e6afd4bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efcd94ec_6cd17a43",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-04-03T19:05:14Z",
+      "side": 1,
+      "message": "Now I think ArmLldflagsFixCortexA8 should be defined\nas strings.Join(armLdflagsFixCortexA8, \" \"),\nto use current ld instead of lld,\nif we cannot drop v8 support completely.",
+      "parentUuid": "d1b76d29_3d3100f9",
       "range": {
         "startLine": 200,
         "startChar": 1,
