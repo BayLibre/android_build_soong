@@ -22,6 +22,30 @@
       "revId": "43b7e271b6d12424d2b3780646b6970cd2f99787",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7462b072_2b76ada8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-10T15:25:43Z",
+      "side": 1,
+      "message": "Right now it is in /data/framework, but we can change that on the make side when we add autogen test config support.",
+      "parentUuid": "4bd3dca4_4d68322d",
+      "range": {
+        "startLine": 10,
+        "startChar": 44,
+        "endLine": 10,
+        "endChar": 56
+      },
+      "revId": "43b7e271b6d12424d2b3780646b6970cd2f99787",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
