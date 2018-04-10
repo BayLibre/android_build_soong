@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be6ab281_6bb1b87d",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-10T22:23:52Z",
+      "side": 1,
+      "message": "Maybe strings.ToLower?",
+      "revId": "a056bd3ad3fb41a852471a4a31e0356b2eb52dd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
