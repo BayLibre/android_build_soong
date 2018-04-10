@@ -98,6 +98,9 @@ type CompilerProperties struct {
 	// list of java libraries that will be compiled into the resulting jar
 	Static_libs []string `android:"arch_variant"`
 
+	// list of java SDK libraries that will be in the classpath
+	Sdk_libs []string `android:"arch_variant"`
+
 	// manifest file to be included in resulting jar
 	Manifest *string
 
@@ -498,6 +501,22 @@ func (j *Module) deps(ctx android.BottomUpMutatorContext) {
 	ctx.AddDependency(ctx.Module(), libTag, j.properties.Libs...)
 	ctx.AddDependency(ctx.Module(), staticLibTag, j.properties.Static_libs...)
 	ctx.AddDependency(ctx.Module(), libTag, j.properties.Annotation_processors...)
+
+	myLinkType := getLinkType(j, ctx.ModuleName())
+	if myLinkType == javaSystem || myLinkType == javaPlatform {
+		// If sdk lib is requested from a module built with SystemSDK or with the platform
+		// System version of the stubs lib is provided
+		sdkStubsLibs := make([]string, 0, len(j.properties.Sdk_libs))
+		for _, l := range j.properties.Sdk_libs {
+			sdkStubsLibs = append(sdkStubsLibs, l+sdkSystemApiSuffix)
+		}
+		ctx.AddDependency(ctx.Module(), libTag, sdkStubsLibs...)
+	} else {
+		// TODO: Sdk_libs is currently the almost same as Libs, but my plan is to restrict Libs
+		// only for non-SDK libs so that we can to various SDK-specific checks
+		// (e.g ensuring the existence of <uses-library>) for Sdk_libs
+		ctx.AddDependency(ctx.Module(), libTag, j.properties.Sdk_libs...)
+	}
 
 	android.ExtractSourcesDeps(ctx, j.properties.Srcs)
 	android.ExtractSourcesDeps(ctx, j.properties.Exclude_srcs)
