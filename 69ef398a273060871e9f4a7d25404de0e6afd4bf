@@ -314,6 +314,24 @@
       "revId": "69ef398a273060871e9f4a7d25404de0e6afd4bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21509c0b_8ec11d89",
+        "filename": "cc/stl.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-04-10T22:51:25Z",
+      "side": 1,
+      "message": "Actually, lld accepts --exclude-libs. I was trying to reduce global special linker flags related to libunwind_llvm when lld is used. They can be defined in project local flags instead of here as global flags.\nI am going to revert my changes to stl.go now and try cleaning up the libunwind_llvm rules in future CLs.",
+      "parentUuid": "7a7f9902_bc8774db",
+      "revId": "69ef398a273060871e9f4a7d25404de0e6afd4bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
