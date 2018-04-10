@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0864db96_c1531dde",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-10T22:00:38Z",
+      "side": 1,
+      "message": "Return a copy?  It\u0027s less obvious when using a function call than a field that you shouldn\u0027t modify it.",
+      "revId": "aae53859a6bae1353e52bee41cc08fc9c177ddc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
