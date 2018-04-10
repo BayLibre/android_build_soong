@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4bd3dca4_4d68322d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-04-10T07:35:03Z",
+      "side": 1,
+      "message": "Where does it end up getting installed? That\u0027s something that we haven\u0027t really standardized in Make, though it would be nice to do so -- though I\u0027m more familiar with the test packages than test libraries. Make does default LOCAL_MODULE_TAGS tests into the data partition, but that doesn\u0027t make a lot of sense anymore, since you\u0027re almost always running them through a test runner.",
+      "range": {
+        "startLine": 10,
+        "startChar": 44,
+        "endLine": 10,
+        "endChar": 56
+      },
+      "revId": "43b7e271b6d12424d2b3780646b6970cd2f99787",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
