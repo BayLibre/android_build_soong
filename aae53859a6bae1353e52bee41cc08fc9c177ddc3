@@ -16,6 +16,24 @@
       "revId": "aae53859a6bae1353e52bee41cc08fc9c177ddc3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5275412a_54b4f485",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-10T22:02:09Z",
+      "side": 1,
+      "message": "I wonder if it would be cheaper to keep a backup copy and compare them and panic if its wrong, and then return the original.",
+      "parentUuid": "0864db96_c1531dde",
+      "revId": "aae53859a6bae1353e52bee41cc08fc9c177ddc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
