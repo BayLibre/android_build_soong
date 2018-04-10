@@ -76,6 +76,9 @@ type JavadocProperties struct {
 	// list of java libraries that will be in the classpath.
 	Libs []string `android:"arch_variant"`
 
+	// list of java SDK libraries that will be in the classpath
+	Sdk_libs []string `android:"arch_variant"`
+
 	// don't build against the framework libraries (legacy-test, core-junit,
 	// ext, and framework for device targets)
 	No_framework_libs *bool
@@ -243,6 +246,10 @@ func (j *Javadoc) addDeps(ctx android.BottomUpMutatorContext) {
 	}
 
 	ctx.AddDependency(ctx.Module(), libTag, j.properties.Libs...)
+	// TODO: Sdk_libs is currently the same as Libs, but my plan is to restrict Libs
+	// only for non-SDK libs so that we can to various SDK-specific checks
+	// (e.g ensuring the existence of <uses-library>) for Sdk_libs
+	ctx.AddDependency(ctx.Module(), libTag, j.properties.Sdk_libs...)
 
 	android.ExtractSourcesDeps(ctx, j.properties.Srcs)
 
