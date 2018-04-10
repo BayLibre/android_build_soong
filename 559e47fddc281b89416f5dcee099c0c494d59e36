@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "996b29b1_324b4e54",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1219,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-04-10T18:09:40Z",
+      "side": 1,
+      "message": "do we need `android:\"arch_variant\"` here?",
+      "revId": "559e47fddc281b89416f5dcee099c0c494d59e36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "431009f8_98672a78",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1234,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-04-10T18:09:40Z",
+      "side": 1,
+      "message": "should be || *j.testProperties.Junit \u003d\u003d true { ?",
+      "revId": "559e47fddc281b89416f5dcee099c0c494d59e36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
