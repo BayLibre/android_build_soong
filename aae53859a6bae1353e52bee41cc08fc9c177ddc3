@@ -34,6 +34,24 @@
       "revId": "aae53859a6bae1353e52bee41cc08fc9c177ddc3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d175442_76ee5b81",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-04-10T22:18:49Z",
+      "side": 1,
+      "message": "It\u0027s only called once so far, so I\u0027ll just return a copy",
+      "parentUuid": "5275412a_54b4f485",
+      "revId": "aae53859a6bae1353e52bee41cc08fc9c177ddc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
