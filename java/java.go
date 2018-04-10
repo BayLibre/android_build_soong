@@ -1282,7 +1282,6 @@ func BinaryHostFactory() android.Module {
 
 	module.AddProperties(
 		&module.Module.properties,
-		&module.Module.deviceProperties,
 		&module.Module.protoProperties,
 		&module.binaryProperties)
 
