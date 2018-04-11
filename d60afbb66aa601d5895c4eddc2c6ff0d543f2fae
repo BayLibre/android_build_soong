@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "6beae471_78d0251d",
+        "filename": "cc/config/x86_64_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-04-11T06:09:46Z",
+      "side": 1,
+      "message": "Yes, because this allows modules in Android.bp to specify extra properties (srcs, cflags, etc) for these features: https://android.googlesource.com/platform/bionic/+/48227e66026724f9a94d9ff9cdef0aacae75b3a9/libc/Android.bp#1143",
+      "parentUuid": "25c91fe0_bc63119e",
+      "revId": "d60afbb66aa601d5895c4eddc2c6ff0d543f2fae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a878a5fd_30b8fd24",
         "filename": "cc/config/x86_device.go",
         "patchSetId": 3
