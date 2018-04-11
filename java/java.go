@@ -385,12 +385,23 @@ func decodeSdkDep(ctx android.BaseContext, v string) sdkDep {
 		}
 	}
 
-	toFile := func(v string) sdkDep {
-		isCore := strings.HasPrefix(v, "core_")
+	toPrebuilt := func(sdk string) sdkDep {
+		// TODO(b/77525052): Remove this logic, use the core prebuilt.
+		isCore := strings.HasPrefix(sdk, "core_")
 		if isCore {
-			v = strings.TrimPrefix(v, "core_")
+			sdk = strings.TrimPrefix(sdk, "core_")
 		}
-		dir := filepath.Join("prebuilts/sdk", v)
+
+		var api, v string
+		if strings.Contains(sdk, "_") {
+			t := strings.Split(sdk, "_")
+			api = t[0]
+			v = t[1]
+		} else {
+			api = "public"
+			v = sdk
+		}
+		dir := filepath.Join("prebuilts", "sdk", v, api)
 		jar := filepath.Join(dir, "android.jar")
 		if isCore {
 			jar = filepath.Join(dir, "core.jar")
@@ -402,7 +413,7 @@ func decodeSdkDep(ctx android.BaseContext, v string) sdkDep {
 		if (!jarPath.Valid() || !aidlPath.Valid()) && ctx.Config().AllowMissingDependencies() {
 			return sdkDep{
 				invalidVersion: true,
-				module:         "sdk_v" + v,
+				module:         fmt.Sprintf("sdk_%s_android", sdk),
 			}
 		}
 
@@ -436,7 +447,7 @@ func decodeSdkDep(ctx android.BaseContext, v string) sdkDep {
 	}
 
 	if ctx.Config().UnbundledBuild() && v != "" {
-		return toFile(v)
+		return toPrebuilt(v)
 	}
 
 	switch v {
@@ -453,7 +464,7 @@ func decodeSdkDep(ctx android.BaseContext, v string) sdkDep {
 	case "core_current":
 		return toModule("core.current.stubs")
 	default:
-		return toFile(v)
+		return toPrebuilt(v)
 	}
 }
 
