@@ -62,6 +62,30 @@
       "revId": "98d98ae877cfe5f951d276eb48fbd8bc1c355d51",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92c75fdc_a6436a46",
+        "filename": "bpfix/bpfix/bpfix_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-11T22:43:16Z",
+      "side": 1,
+      "message": "That was my original plan, but I was worried about the case of:\n\n foo: [\"blah\"],\n //bar: \"blah\",\n foo: [\"blah\"],\n\nIt\u0027s hard to tell the difference between a comment on a property and a commented out property in a block.  I put this in the test so we\u0027re at least clear which one we assume it is.",
+      "parentUuid": "26e10b0b_eea14677",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 9
+      },
+      "revId": "98d98ae877cfe5f951d276eb48fbd8bc1c355d51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
