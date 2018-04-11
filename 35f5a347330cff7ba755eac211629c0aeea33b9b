@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ddcaa9ad_aa75658d",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-04-11T23:15:47Z",
+      "side": 1,
+      "message": "Now moved to deviceGlobalLldflags.",
+      "parentUuid": "04cdbec4_ef86338d",
+      "range": {
+        "startLine": 43,
+        "startChar": 11,
+        "endLine": 43,
+        "endChar": 58
+      },
+      "revId": "35f5a347330cff7ba755eac211629c0aeea33b9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "24850334_df47bb1e",
         "filename": "cc/config/global.go",
         "patchSetId": 4
@@ -36,6 +60,24 @@
       "writtenOn": "2018-04-11T22:31:30Z",
       "side": 1,
       "message": "Use the same filter here.\n\nCan\u0027t -fuse-ld\u003dlld be here too?",
+      "revId": "35f5a347330cff7ba755eac211629c0aeea33b9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ade10c92_632754e0",
+        "filename": "cc/config/global.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-04-11T23:15:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24850334_df47bb1e",
       "revId": "35f5a347330cff7ba755eac211629c0aeea33b9b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
