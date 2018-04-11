@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba9a4f27_ef60a43c",
+        "filename": "cc/config/x86_64_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-04-11T01:47:48Z",
+      "side": 1,
+      "message": "You\u0027d need to register which features skylake supports here",
+      "revId": "d60afbb66aa601d5895c4eddc2c6ff0d543f2fae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a878a5fd_30b8fd24",
+        "filename": "cc/config/x86_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-04-11T01:47:48Z",
+      "side": 1,
+      "message": "same here",
+      "revId": "d60afbb66aa601d5895c4eddc2c6ff0d543f2fae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
