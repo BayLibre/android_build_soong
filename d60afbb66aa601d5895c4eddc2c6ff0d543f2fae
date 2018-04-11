@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "25c91fe0_bc63119e",
+        "filename": "cc/config/x86_64_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1013846
+      },
+      "writtenOn": "2018-04-11T05:15:49Z",
+      "side": 1,
+      "message": "Do we still need to add features here as \"-march\u003dskylake\" already implies these features?",
+      "parentUuid": "ba9a4f27_ef60a43c",
+      "revId": "d60afbb66aa601d5895c4eddc2c6ff0d543f2fae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a878a5fd_30b8fd24",
         "filename": "cc/config/x86_device.go",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2018-04-11T01:47:48Z",
       "side": 1,
       "message": "same here",
+      "revId": "d60afbb66aa601d5895c4eddc2c6ff0d543f2fae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03e474a4_27cfe95a",
+        "filename": "cc/config/x86_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1013846
+      },
+      "writtenOn": "2018-04-11T05:15:49Z",
+      "side": 1,
+      "message": "Some comments as before",
+      "parentUuid": "a878a5fd_30b8fd24",
       "revId": "d60afbb66aa601d5895c4eddc2c6ff0d543f2fae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
