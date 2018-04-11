@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c933295_0ef1aba4",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1118,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-11T06:08:38Z",
+      "side": 1,
+      "message": "Since this was caused by a early-return problem, maybe fix this one too (in a followup patch) to avoid future problems?  Should be enough to change the rest of the ifs to else ifs.",
+      "revId": "874472d6a77b72ef78df15439e0a82b7e47f67fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
