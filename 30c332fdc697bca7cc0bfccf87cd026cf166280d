@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2586c9ab_4e31f6af",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2018-04-11T09:59:56Z",
+      "side": 1,
+      "message": "maybe add support for sdk_libs in a separate cl? seems like a separate task. btw, this is b/77575476 (I have some pending changes for make support).",
+      "revId": "30c332fdc697bca7cc0bfccf87cd026cf166280d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5e061f4_ff7c57dd",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2018-04-11T09:59:56Z",
+      "side": 1,
+      "message": "this is needed for doclava I guess? can we somehow specify *all* packages, instead of requiring users pass this in? it would make the rule easier to use",
+      "revId": "30c332fdc697bca7cc0bfccf87cd026cf166280d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b2303f8_a711b0c1",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2018-04-11T09:59:56Z",
+      "side": 1,
+      "message": "can we rm this and generate stubs for public, system and test unconditionally?",
+      "revId": "30c332fdc697bca7cc0bfccf87cd026cf166280d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4082291f_1d725ffc",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2018-04-11T09:59:56Z",
+      "side": 1,
+      "message": "making a \u003clibrary\u003e doesn\u0027t mean adding it to the bootclasspath. It doesn\u0027t look like the lib is added to the bootclasspath regardless (and it shouldn\u0027t be afaiu). Why is this bool needed?",
+      "revId": "30c332fdc697bca7cc0bfccf87cd026cf166280d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12cda114_93b3a029",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2018-04-11T09:59:56Z",
+      "side": 1,
+      "message": "it\u0027s not obvious what the \"the xml file\" means in this context (without looking at the rule implementation)",
+      "revId": "30c332fdc697bca7cc0bfccf87cd026cf166280d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4f534cf_d8ff5d97",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2018-04-11T09:59:56Z",
+      "side": 1,
+      "message": "does this need to be customizable? it breaks api-council review requirement if changes.",
+      "revId": "30c332fdc697bca7cc0bfccf87cd026cf166280d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
