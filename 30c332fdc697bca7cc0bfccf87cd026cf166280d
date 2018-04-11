@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ce072399_15765d36",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-04-11T13:57:50Z",
+      "side": 1,
+      "message": "Hmm, yes I know that there is some overlap, but I would like to do this in this CL. Otherwise, I have to distinguish java_sdk_library modules from java_library from libs, which is doable but won\u0027t need if we have sdk_lib.",
+      "parentUuid": "2586c9ab_4e31f6af",
+      "revId": "30c332fdc697bca7cc0bfccf87cd026cf166280d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d5e061f4_ff7c57dd",
         "filename": "java/sdk_library.go",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2018-04-11T09:59:56Z",
       "side": 1,
       "message": "this is needed for doclava I guess? can we somehow specify *all* packages, instead of requiring users pass this in? it would make the rule easier to use",
+      "revId": "30c332fdc697bca7cc0bfccf87cd026cf166280d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e767c9f_6edeebb1",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-04-11T13:57:50Z",
+      "side": 1,
+      "message": "In some cases, we need to specify packages that becomes part of API. For example, framework.jar consists of android.* and com.android* and we only want to document android.* packages.\n\nFurthermore, doclava is requiring clients to pass package name.",
+      "parentUuid": "d5e061f4_ff7c57dd",
       "revId": "30c332fdc697bca7cc0bfccf87cd026cf166280d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "a536393a_ad7cc402",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-04-11T13:57:50Z",
+      "side": 1,
+      "message": "Done, but just for public (implicit) and system for now.",
+      "parentUuid": "4b2303f8_a711b0c1",
+      "revId": "30c332fdc697bca7cc0bfccf87cd026cf166280d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4082291f_1d725ffc",
         "filename": "java/sdk_library.go",
         "patchSetId": 4
@@ -64,6 +118,24 @@
       "writtenOn": "2018-04-11T09:59:56Z",
       "side": 1,
       "message": "making a \u003clibrary\u003e doesn\u0027t mean adding it to the bootclasspath. It doesn\u0027t look like the lib is added to the bootclasspath regardless (and it shouldn\u0027t be afaiu). Why is this bool needed?",
+      "revId": "30c332fdc697bca7cc0bfccf87cd026cf166280d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c0a39ad_f8e3a786",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-04-11T13:57:50Z",
+      "side": 1,
+      "message": "removed for now.",
+      "parentUuid": "4082291f_1d725ffc",
       "revId": "30c332fdc697bca7cc0bfccf87cd026cf166280d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -98,6 +170,24 @@
       "writtenOn": "2018-04-11T09:59:56Z",
       "side": 1,
       "message": "does this need to be customizable? it breaks api-council review requirement if changes.",
+      "revId": "30c332fdc697bca7cc0bfccf87cd026cf166280d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8a2efe3_cd52ea99",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-04-11T13:57:50Z",
+      "side": 1,
+      "message": "ok, let\u0027s fix that.",
+      "parentUuid": "d4f534cf_d8ff5d97",
       "revId": "30c332fdc697bca7cc0bfccf87cd026cf166280d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
