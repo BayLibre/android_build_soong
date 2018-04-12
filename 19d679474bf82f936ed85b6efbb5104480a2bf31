@@ -93,6 +93,30 @@
       "revId": "19d679474bf82f936ed85b6efbb5104480a2bf31",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca513dec_75dd9289",
+        "filename": "cc/relocation_packer.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2018-04-12T21:34:48Z",
+      "side": 1,
+      "message": "My point was about the \u0027yet\u0027: I don\u0027t think there\u0027s a plan to support relocation packer + lld - because there\u0027s on need for a separate packing step.",
+      "parentUuid": "85d66956_132d2dd2",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 62
+      },
+      "revId": "19d679474bf82f936ed85b6efbb5104480a2bf31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
