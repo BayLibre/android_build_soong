@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "13a8ffa0_ceed0b26",
+        "filename": "cc/config/x86_darwin_host.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-04-12T21:32:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bb75737_5dbcaba7",
+      "range": {
+        "startLine": 276,
+        "startChar": 57,
+        "endLine": 276,
+        "endChar": 61
+      },
+      "revId": "19d679474bf82f936ed85b6efbb5104480a2bf31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e15ac4e0_592addca",
         "filename": "cc/relocation_packer.go",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2018-04-12T20:52:15Z",
       "side": 1,
       "message": "Is this the correct description?  IIUC, lld performs Android\u0027s relocation packing when --pack-dyn-relocs\u003dandroid is given.",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 62
+      },
+      "revId": "19d679474bf82f936ed85b6efbb5104480a2bf31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85d66956_132d2dd2",
+        "filename": "cc/relocation_packer.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-04-12T21:32:34Z",
+      "side": 1,
+      "message": "Here the enabled flags controls calls to relocation_packer, which does not work with lld generated files.\nWe still call lld with --pack-dyn-relocs\u003dandroid.",
+      "parentUuid": "e15ac4e0_592addca",
       "range": {
         "startLine": 69,
         "startChar": 4,
