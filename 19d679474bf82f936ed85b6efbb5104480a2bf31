@@ -117,6 +117,30 @@
       "revId": "19d679474bf82f936ed85b6efbb5104480a2bf31",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "403feedb_ad9a797c",
+        "filename": "cc/relocation_packer.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-04-12T21:38:31Z",
+      "side": 1,
+      "message": "Okay, updated the comment.",
+      "parentUuid": "ca513dec_75dd9289",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 62
+      },
+      "revId": "19d679474bf82f936ed85b6efbb5104480a2bf31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
