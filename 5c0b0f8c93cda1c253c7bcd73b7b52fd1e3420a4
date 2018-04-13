@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7099587a_b304e923",
+        "filename": "java/androidmk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2018-04-13T14:34:26Z",
+      "side": 1,
+      "message": "I assumed that that was required so that .mk based droiddoc rules can also declare JAVA_VERSION. \n\nHave you finished converting all droiddoc rules to soong? If yes, then there\u0027s no need to export this symbol.",
+      "parentUuid": "b47d2136_7efbc7e8",
+      "revId": "5c0b0f8c93cda1c253c7bcd73b7b52fd1e3420a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3c00b03a_d35d529b",
         "filename": "java/droiddoc.go",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "3dbef743_76714b0b",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2018-04-13T14:34:26Z",
+      "side": 1,
+      "message": "I\u0027m not sure what you mean. Java_version is (like the comment says) referring to the Java *language* version, which is represented by eg. a parameter \"-source 1.9\" that\u0027s passed to eg. the javadoc tool.\n\nThe goal of this CL is to introduce a java_version attribute on droiddoc rules, since they need to know what language version is in the source files (currently, they pass a hard-coded \"-source 1.8\" to javadoc but that is not correct when the sources contain language level 1.9 features).",
+      "parentUuid": "3c00b03a_d35d529b",
+      "revId": "5c0b0f8c93cda1c253c7bcd73b7b52fd1e3420a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ef02ef27_7ac702a6",
         "filename": "java/droiddoc.go",
         "patchSetId": 3
@@ -47,6 +83,24 @@
       "writtenOn": "2018-04-09T18:13:57Z",
       "side": 1,
       "message": "Any reason for making this field public?",
+      "revId": "5c0b0f8c93cda1c253c7bcd73b7b52fd1e3420a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09379c70_e4d4f308",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2018-04-13T14:34:26Z",
+      "side": 1,
+      "message": "Is that not required for line 563 to access it? Sorry, I basically don\u0027t know golang at all. I don\u0027t really care whether this CL gets submitted, I was just hoping to get your help in supporting language level 1.9 sources in droiddoc; I made some progress in the .mk world but got stuck in .go because I don\u0027t know golang and my understanding of how all of this works together is extremely limited. Let\u0027s chat some time?",
+      "parentUuid": "ef02ef27_7ac702a6",
       "revId": "5c0b0f8c93cda1c253c7bcd73b7b52fd1e3420a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
