@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c657ca4c_c30358d3",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-14T00:22:52Z",
+      "side": 1,
+      "message": "Do the outputs of the rules need to be adjusted?  Does it just produce an empty srcjar?",
+      "revId": "853f420ed76b5bae2df9966723bcbbd7927ca939",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
