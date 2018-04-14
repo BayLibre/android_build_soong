@@ -82,6 +82,8 @@ type Toolchain interface {
 
 	SanitizerRuntimeLibraryArch() string
 
+	HostProfileRuntimeLibrary() string
+
 	AvailableLibraries() []string
 
 	Bionic() bool
@@ -158,6 +160,10 @@ func (toolchainBase) WindresFlags() string {
 }
 
 func (toolchainBase) SanitizerRuntimeLibraryArch() string {
+	return ""
+}
+
+func (toolchainBase) HostProfileRuntimeLibrary() string {
 	return ""
 }
 
@@ -240,7 +246,12 @@ func ThreadSanitizerRuntimeLibrary(t Toolchain) string {
 }
 
 func ProfileRuntimeLibrary(t Toolchain) string {
-	return SanitizerRuntimeLibrary(t, "profile")
+	library := SanitizerRuntimeLibrary(t, "profile")
+	if library == "" {
+		// Return host profile library when available.
+		library = t.HostProfileRuntimeLibrary()
+	}
+	return library
 }
 
 func ToolPath(t Toolchain) string {

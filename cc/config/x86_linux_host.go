@@ -263,6 +263,14 @@ func (t *toolchainLinuxX8664) YasmFlags() string {
 	return "${config.LinuxX8664YasmFlags}"
 }
 
+func (t *toolchainLinuxX86) HostProfileRuntimeLibrary() string {
+	return "libclang_rt.profile-i386"
+}
+
+func (t *toolchainLinuxX8664) HostProfileRuntimeLibrary() string {
+	return "libclang_rt.profile-x86_64"
+}
+
 func (t *toolchainLinux) AvailableLibraries() []string {
 	return linuxAvailableLibraries
 }

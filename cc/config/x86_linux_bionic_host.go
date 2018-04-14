@@ -141,6 +141,10 @@ func (t *toolchainLinuxBionic) ToolchainClangLdflags() string {
 	return "-m64"
 }
 
+func (t *toolchainLinuxBionic) HostProfileRuntimeLibrary() string {
+	return "libclang_rt.profile-x86_64"
+}
+
 func (t *toolchainLinuxBionic) AvailableLibraries() []string {
 	return nil
 }
