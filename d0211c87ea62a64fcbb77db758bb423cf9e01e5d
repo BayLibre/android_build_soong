@@ -39,6 +39,30 @@
       "revId": "d0211c87ea62a64fcbb77db758bb423cf9e01e5d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ce3c99d_dd919e68",
+        "filename": "android/namespace.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-16T21:39:18Z",
+      "side": 1,
+      "message": "Removed all this, this should only ever get called with short names.",
+      "parentUuid": "cf3f1350_06452f6a",
+      "range": {
+        "startLine": 271,
+        "startChar": 65,
+        "endLine": 271,
+        "endChar": 72
+      },
+      "revId": "d0211c87ea62a64fcbb77db758bb423cf9e01e5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
