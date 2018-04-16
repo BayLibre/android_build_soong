@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "c19d89a3_7297e977",
+        "filename": "cc/config/toolchain.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-16T22:53:07Z",
+      "side": 1,
+      "message": "If it stays like this, I\u0027d suggest profileRuntimeLibrary(), and have ProfileRuntimeLibrary return this one if non-empty, otherwise fall back to trying to auto generate it.",
+      "parentUuid": "181e9899_7c1a847b",
+      "revId": "35318b3b54d172cb320c07a64d7b0041814aa8ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7aa65336_7672bd1e",
         "filename": "cc/config/toolchain.go",
         "patchSetId": 1
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "This gets used in AddressSanitizerRuntimeLibrary et al below and returning a non-empty value for a host module causes build failures because of this.  The build then looks for an asan shared library for the host (which we don\u0027t package).",
       "parentUuid": "7aa65336_7672bd1e",
+      "revId": "35318b3b54d172cb320c07a64d7b0041814aa8ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24a22a2c_86db4f7b",
+        "filename": "cc/config/toolchain.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-16T22:53:07Z",
+      "side": 1,
+      "message": "This seems like a very roundabout way to encode that we don\u0027t have asan libraries for the host.  Maybe make it explicit (don\u0027t call these functions for the host, or add a flag to the toolchain to specify which libraries they have?)",
+      "parentUuid": "40ddd9eb_cf51d658",
       "revId": "35318b3b54d172cb320c07a64d7b0041814aa8ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
