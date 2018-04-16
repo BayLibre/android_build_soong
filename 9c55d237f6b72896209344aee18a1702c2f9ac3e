@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4630064_47e81976",
+        "filename": "androidmk/cmd/androidmk/androidmk_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-04-16T19:58:24Z",
+      "side": 1,
+      "message": "This should be at the bottom",
+      "revId": "9c55d237f6b72896209344aee18a1702c2f9ac3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
