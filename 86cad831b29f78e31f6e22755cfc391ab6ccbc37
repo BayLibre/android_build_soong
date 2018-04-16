@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d7e4fc0_a0dde8de",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-04-16T21:54:25Z",
+      "side": 1,
+      "message": "Are these not documented because they\u0027re meant to be shared with other properties, and we didn\u0027t want to use Go to find those property values?",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 24
+      },
+      "revId": "86cad831b29f78e31f6e22755cfc391ab6ccbc37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b95726db_0fdebbc5",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-04-16T21:54:25Z",
+      "side": 1,
+      "message": "Why is this here instead of inside a.aapt.deps?",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 83
+      },
+      "revId": "86cad831b29f78e31f6e22755cfc391ab6ccbc37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
