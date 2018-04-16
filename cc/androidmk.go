@@ -243,6 +243,9 @@ func (benchmark *benchmarkDecorator) AndroidMk(ctx AndroidMkContext, ret *androi
 			fmt.Fprintln(w, "LOCAL_COMPATIBILITY_SUITE :=",
 				strings.Join(benchmark.Properties.Test_suites, " "))
 		}
+		if Bool(benchmark.Properties.Presubmit_disabled) {
+			fmt.Fprintln(w, "LOCAL_PRESUBMIT_DISABLED := true")
+		}
 	})
 
 	androidMkWriteTestData(benchmark.data, ctx, ret)
@@ -259,6 +262,9 @@ func (test *testBinary) AndroidMk(ctx AndroidMkContext, ret *android.AndroidMkDa
 		if len(test.Properties.Test_suites) > 0 {
 			fmt.Fprintln(w, "LOCAL_COMPATIBILITY_SUITE :=",
 				strings.Join(test.Properties.Test_suites, " "))
+		}
+		if Bool(test.Properties.Presubmit_disabled) {
+			fmt.Fprintln(w, "LOCAL_PRESUBMIT_DISABLED := true")
 		}
 	})
 

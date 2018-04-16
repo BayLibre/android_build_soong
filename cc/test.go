@@ -44,6 +44,9 @@ type TestBinaryProperties struct {
 	// list of compatibility suites (for example "cts", "vts") that the module should be
 	// installed into.
 	Test_suites []string `android:"arch_variant"`
+
+	// Set to true if the test should be disabled in presubmit check.
+	Presubmit_disabled *bool
 }
 
 func init() {
@@ -301,6 +304,9 @@ type BenchmarkProperties struct {
 	// list of compatibility suites (for example "cts", "vts") that the module should be
 	// installed into.
 	Test_suites []string
+
+	// Set to true if the test should be disabled in presubmit check.
+	Presubmit_disabled *bool
 }
 
 type benchmarkDecorator struct {
