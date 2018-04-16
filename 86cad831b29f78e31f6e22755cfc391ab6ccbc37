@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "6340be70_e4c46211",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-16T22:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c579f043_baec6646",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 24
+      },
+      "revId": "86cad831b29f78e31f6e22755cfc391ab6ccbc37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b95726db_0fdebbc5",
         "filename": "java/aar.go",
         "patchSetId": 2
