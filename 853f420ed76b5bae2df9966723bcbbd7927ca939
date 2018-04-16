@@ -16,6 +16,24 @@
       "revId": "853f420ed76b5bae2df9966723bcbbd7927ca939",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdd20219_643ab3c4",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-04-16T20:41:48Z",
+      "side": 1,
+      "message": "yes. It just produce an empty srcjar for the timestamp purpose when disabling create_stubs property.",
+      "parentUuid": "c657ca4c_c30358d3",
+      "revId": "853f420ed76b5bae2df9966723bcbbd7927ca939",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
