@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "d6683366_d033bf3e",
+        "filename": "android/namespace.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-04-16T21:31:04Z",
+      "side": 1,
+      "message": "it seems that line259 - line269 is duplicated with line271 - line280.",
+      "revId": "d0211c87ea62a64fcbb77db758bb423cf9e01e5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cf3f1350_06452f6a",
         "filename": "android/namespace.go",
         "patchSetId": 2
