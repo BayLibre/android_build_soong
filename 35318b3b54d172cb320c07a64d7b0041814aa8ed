@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "181e9899_7c1a847b",
+        "filename": "cc/config/toolchain.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2018-04-16T22:46:14Z",
+      "side": 1,
+      "message": "This should be hostProfileRuntimeLibrary, correct?",
+      "parentUuid": "6a208bde_6649b05f",
+      "revId": "35318b3b54d172cb320c07a64d7b0041814aa8ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7aa65336_7672bd1e",
         "filename": "cc/config/toolchain.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2018-04-16T22:40:49Z",
       "side": 1,
       "message": "Or fix this to remove -android when not targeting a device (ClangTriple doesn\u0027t end with -android, or add a flag to toolchain to determine host vs. device), or rename these files to end with the clang triple instead of a subset.",
+      "revId": "35318b3b54d172cb320c07a64d7b0041814aa8ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40ddd9eb_cf51d658",
+        "filename": "cc/config/toolchain.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2018-04-16T22:46:14Z",
+      "side": 1,
+      "message": "This gets used in AddressSanitizerRuntimeLibrary et al below and returning a non-empty value for a host module causes build failures because of this.  The build then looks for an asan shared library for the host (which we don\u0027t package).",
+      "parentUuid": "7aa65336_7672bd1e",
       "revId": "35318b3b54d172cb320c07a64d7b0041814aa8ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
