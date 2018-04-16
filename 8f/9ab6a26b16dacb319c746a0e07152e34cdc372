@@ -1,0 +1,8 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Dan Willemsen <dwillemsen@google.com>
+Verified+1: Makoto Onuki <omakoto@google.com>
+Submitted-by: Makoto Onuki <omakoto@google.com>
+Submitted-at: Mon, 16 Apr 2018 20:40:14 +0000
+Reviewed-on: https://android-review.googlesource.com/664890
+Project: platform/build/soong
+Branch: refs/heads/master
