@@ -13,7 +13,7 @@
 // limitations under the License.
 
 blueprint_go_binary {
-    name: "pom2mk",
+    name: "pom2bp",
     deps: ["blueprint-proptools"],
-    srcs: ["pom2mk.go"],
+    srcs: ["pom2bp.go"],
 }
