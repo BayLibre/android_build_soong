@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c579f043_baec6646",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-16T22:12:02Z",
+      "side": 1,
+      "message": "Originally yes, but then I removed the references to them except for Manifest, which actually should be documented since it is different than java\u0027s Manifest.",
+      "parentUuid": "8d7e4fc0_a0dde8de",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 24
+      },
+      "revId": "86cad831b29f78e31f6e22755cfc391ab6ccbc37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b95726db_0fdebbc5",
         "filename": "java/aar.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2018-04-16T21:54:25Z",
       "side": 1,
       "message": "Why is this here instead of inside a.aapt.deps?",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 83
+      },
+      "revId": "86cad831b29f78e31f6e22755cfc391ab6ccbc37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80f73d6b_31bc7c5c",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-16T22:12:02Z",
+      "side": 1,
+      "message": "So I can removed the duplicated properties from aapt",
+      "parentUuid": "b95726db_0fdebbc5",
       "range": {
         "startLine": 266,
         "startChar": 0,
