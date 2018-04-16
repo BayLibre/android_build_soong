@@ -255,22 +255,31 @@ func (r *NameResolver) ModuleFromName(name string, namespace blueprint.Namespace
 }
 
 func (r *NameResolver) Rename(oldName string, newName string, namespace blueprint.Namespace) []error {
-	oldNs := r.findNamespace(oldName)
-	newNs := r.findNamespace(newName)
-	if oldNs != newNs {
-		return []error{fmt.Errorf("cannot rename %v to %v because the destination is outside namespace %v", oldName, newName, oldNs.Path)}
+	nsName := namespace.(*Namespace).Path
+	// handle fully qualified references like "//namespace_path:module_name"
+	if oldNsName, oldModuleName, isAbs := r.parseFullyQualifiedName(oldName); isAbs {
+		oldNamespace, found := r.namespaceAt(oldNsName)
+		if !found {
+			return []error{fmt.Errorf("namespace %q does not exist", oldNsName)}
+		}
+		if oldNamespace != namespace {
+			return []error{fmt.Errorf("namespace %q does not match module namespace %q", oldNsName, nsName)}
+		}
+		oldName = oldModuleName
 	}
 
-	oldName, err := filepath.Rel(oldNs.Path, oldName)
-	if err != nil {
-		panic(err)
-	}
-	newName, err = filepath.Rel(newNs.Path, newName)
-	if err != nil {
-		panic(err)
+	if newNsName, newModuleName, isAbs := r.parseFullyQualifiedName(oldName); isAbs {
+		oldNamespace, found := r.namespaceAt(newNsName)
+		if !found {
+			return []error{fmt.Errorf("namespace %q does not exist", newNsName)}
+		}
+		if oldNamespace != namespace {
+			return []error{fmt.Errorf("namespace %q does not match module namespace %q", newNsName, nsName)}
+		}
+		oldName = newModuleName
 	}
 
-	return oldNs.moduleContainer.Rename(oldName, newName, nil)
+	return namespace.(*Namespace).moduleContainer.Rename(oldName, newName, namespace)
 }
 
 // resolve each element of namespace.importedNamespaceNames and put the result in namespace.visibleNamespaces
