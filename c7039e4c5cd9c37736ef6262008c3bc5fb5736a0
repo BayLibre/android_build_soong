@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3b180a6_0dc5526c",
+        "filename": "android/prebuilt_etc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-17T23:01:27Z",
+      "side": 1,
+      "message": "We generally skip this step for prebuilts and just let LOCAL_PREBUILT_MODULE_FILE point to the source file.",
+      "revId": "c7039e4c5cd9c37736ef6262008c3bc5fb5736a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f03eded0_c6beb5c5",
+        "filename": "android/prebuilt_etc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-17T23:01:27Z",
+      "side": 1,
+      "message": "This wants a pointer to the property so that it can see modifications to the property, for example arch_variant.  If you don\u0027t want to have Srcs []string, you\u0027ll need a way to pass module.properties.Src to prebuilt.go",
+      "range": {
+        "startLine": 89,
+        "startChar": 29,
+        "endLine": 89,
+        "endChar": 68
+      },
+      "revId": "c7039e4c5cd9c37736ef6262008c3bc5fb5736a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b71f489c_153371b2",
+        "filename": "android/prebuilt_etc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-17T23:01:27Z",
+      "side": 1,
+      "message": "InitAndroidModule?  I don\u0027t expect this to be arch-specific.",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 22
+      },
+      "revId": "c7039e4c5cd9c37736ef6262008c3bc5fb5736a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fbcb0a9_9cf4fa2c",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-17T23:01:27Z",
+      "side": 1,
+      "message": "We avoided the difference between libs and android_libs, can we do the same for sdk_libs?  Add a dependency on a placeholder module, and then get the appropriate file from that module when resolving the dependency?\n\nIt might be a little tricky to fit into the module structure, I would guess the last variant would be a placeholder, and then there would be variants for the different sdkSystemApiSuffix values.  The dependency would resolve to the last variant, which would then have pointers to the output files of the other variants.",
+      "revId": "c7039e4c5cd9c37736ef6262008c3bc5fb5736a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edaad3e0_7de71d1a",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-17T23:01:27Z",
+      "side": 1,
+      "message": "for _, l :\u003d range j.properties.Sdk_libs {\n    ctx.AddDependency(ctx.Module(), libTag, l+sdkSystemApiSuffix)\n}",
+      "revId": "c7039e4c5cd9c37736ef6262008c3bc5fb5736a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
