@@ -59,7 +59,11 @@ func (p *Prebuilt) SingleSourcePath(ctx ModuleContext) Path {
 		return nil
 	}
 
-	return PathForModuleSrc(ctx, (*p.srcs)[0])
+	if src := (*p.srcs)[0]; SrcIsModule(src) != "" {
+	    return ctx.ExpandSource(src, "")
+	} else {
+	    return PathForModuleSrc(ctx, src)
+    }
 }
 
 func InitPrebuiltModule(module PrebuiltInterface, srcs *[]string) {
@@ -80,6 +84,16 @@ func RegisterPrebuiltsPreArchMutators(ctx RegisterMutatorsContext) {
 func RegisterPrebuiltsPostDepsMutators(ctx RegisterMutatorsContext) {
 	ctx.TopDown("prebuilt_select", PrebuiltSelectModuleMutator).Parallel()
 	ctx.BottomUp("prebuilt_replace", PrebuiltReplaceMutator).Parallel()
+	ctx.BottomUp("prebuilt_deps", DepsMutator).Parallel()
+}
+
+func DepsMutator(ctx BottomUpMutatorContext) {
+    if m, ok := ctx.Module().(PrebuiltInterface); ok && m.Prebuilt() != nil {
+		p := m.Prebuilt()
+        if len(*p.srcs) > 1 {
+            ExtractSourceDeps(ctx, &(*p.srcs)[0])
+        }
+    }
 }
 
 // prebuiltMutator ensures that there is always a module with an undecorated name, and marks
