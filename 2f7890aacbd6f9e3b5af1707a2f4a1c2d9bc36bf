@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "d6d3285f_0ababa75",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-17T22:31:04Z",
+      "side": 1,
+      "message": "Add:\n\n\tbase.customizableProperties \u003d m.GetProperties()",
+      "revId": "2f7890aacbd6f9e3b5af1707a2f4a1c2d9bc36bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e7e230d_c9c39e90",
         "filename": "android/prebuilt.go",
         "patchSetId": 1
