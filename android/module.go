@@ -319,6 +319,7 @@ func InitAndroidModule(m Module) {
 		&base.nameProperties,
 		&base.commonProperties,
 		&base.variableProperties)
+	base.customizableProperties = m.GetProperties()
 }
 
 func InitAndroidArchModule(m Module, hod HostOrDeviceSupported, defaultMultilib Multilib) {
