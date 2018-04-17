@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "b4e18ef3_29806af8",
+        "filename": "java/androidmk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-04-17T00:35:38Z",
+      "side": 1,
+      "message": "I don\u0027t think we need this variable. Above variables were exported to .mk because we are doing API-Check on .mk level. That\u0027s why we exported the api/removed_api filepaths from Soong To .mk. The .mk based droiddoc rules just use PRIVATE_JAVA_LANGUAGE_VERSION I think within your patch: go/oag/650242. FYI, We finished migration to Soong by almost 50%. The remaining modules that haven\u0027t not been migrated yet because they depends on some large project we have not supported yet, eg, support libraries.",
+      "parentUuid": "7099587a_b304e923",
+      "revId": "5c0b0f8c93cda1c253c7bcd73b7b52fd1e3420a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3c00b03a_d35d529b",
         "filename": "java/droiddoc.go",
         "patchSetId": 3
@@ -72,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "93a9c379_b73255c5",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-04-17T00:35:38Z",
+      "side": 1,
+      "message": "Yeah. I understand that, but my question is currently both javadoc(standard doclet line 385) rule and droiddoc (non-standard doclet line 583) rule need \"-source 1.X\" I think, so should we move this Java_version into JavadocProperties (line 62) so that both these two rules can specify the \"-source\" without hard-coding it.",
+      "parentUuid": "3dbef743_76714b0b",
+      "revId": "5c0b0f8c93cda1c253c7bcd73b7b52fd1e3420a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ef02ef27_7ac702a6",
         "filename": "java/droiddoc.go",
         "patchSetId": 3
@@ -101,6 +137,24 @@
       "side": 1,
       "message": "Is that not required for line 563 to access it? Sorry, I basically don\u0027t know golang at all. I don\u0027t really care whether this CL gets submitted, I was just hoping to get your help in supporting language level 1.9 sources in droiddoc; I made some progress in the .mk world but got stuck in .go because I don\u0027t know golang and my understanding of how all of this works together is extremely limited. Let\u0027s chat some time?",
       "parentUuid": "ef02ef27_7ac702a6",
+      "revId": "5c0b0f8c93cda1c253c7bcd73b7b52fd1e3420a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ee0e9c0_ea559c63",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-04-17T00:35:38Z",
+      "side": 1,
+      "message": "No need, since they belong to the same package: Java. If you want to access this field outside this package, then you can make it public by capitalizing the first letter of variable name.",
+      "parentUuid": "09379c70_e4d4f308",
       "revId": "5c0b0f8c93cda1c253c7bcd73b7b52fd1e3420a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
