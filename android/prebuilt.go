@@ -59,7 +59,14 @@ func (p *Prebuilt) SingleSourcePath(ctx ModuleContext) Path {
 		return nil
 	}
 
-	return PathForModuleSrc(ctx, (*p.srcs)[0])
+	if src := (*p.srcs)[0]; SrcIsModule(src) != "" {
+		// Return the single source for the filegroup dependency.  ExpandSource
+		// will handle the error scenario when the filegroup expands to more
+		// than one source.
+		return ctx.ExpandSource(src, "")
+	} else {
+		return PathForModuleSrc(ctx, src)
+	}
 }
 
 func InitPrebuiltModule(module PrebuiltInterface, srcs *[]string) {
@@ -80,6 +87,18 @@ func RegisterPrebuiltsPreArchMutators(ctx RegisterMutatorsContext) {
 func RegisterPrebuiltsPostDepsMutators(ctx RegisterMutatorsContext) {
 	ctx.TopDown("prebuilt_select", PrebuiltSelectModuleMutator).Parallel()
 	ctx.BottomUp("prebuilt_replace", PrebuiltReplaceMutator).Parallel()
+	ctx.BottomUp("prebuilt_deps", FileGroupDepsMutator).Parallel()
+}
+
+// FileGroupDepsMutator calls ExtractSourceDeps to add a dependency to any
+// filegroups in 'Srcs'.
+func FileGroupDepsMutator(ctx BottomUpMutatorContext) {
+	if m, ok := ctx.Module().(PrebuiltInterface); ok && m.Prebuilt() != nil {
+		p := m.Prebuilt()
+		if len(*p.srcs) > 0 {
+			ExtractSourceDeps(ctx, &(*p.srcs)[0])
+		}
+	}
 }
 
 // prebuiltMutator ensures that there is always a module with an undecorated name, and marks
