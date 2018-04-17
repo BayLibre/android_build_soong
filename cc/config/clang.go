@@ -162,13 +162,6 @@ func init() {
 		//"-Werror=null-dereference",
 		"-Werror=return-type",
 
-		// http://b/72331526 Disable -Wtautological-* until the instances detected by these
-		// new warnings are fixed.
-		"-Wno-tautological-constant-compare",
-		"-Wno-tautological-type-limit-compare",
-		"-Wno-tautological-unsigned-enum-zero-compare",
-		"-Wno-tautological-unsigned-zero-compare",
-
 		// http://b/72331524 Allow null pointer arithmetic until the instances detected by
 		// this new warning are fixed.
 		"-Wno-null-pointer-arithmetic",
