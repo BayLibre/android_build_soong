@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1130a8d7_f8be87a2",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2018-04-18T00:03:54Z",
+      "side": 1,
+      "message": "Thanks.. that fixes the error I was seeing.",
+      "parentUuid": "d6d3285f_0ababa75",
+      "revId": "2f7890aacbd6f9e3b5af1707a2f4a1c2d9bc36bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7e7e230d_c9c39e90",
         "filename": "android/prebuilt.go",
         "patchSetId": 1
@@ -30,6 +48,47 @@
       "writtenOn": "2018-04-17T22:07:04Z",
       "side": 1,
       "message": "Run gofmt",
+      "revId": "2f7890aacbd6f9e3b5af1707a2f4a1c2d9bc36bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83f9b57e_44dc4dd0",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2018-04-18T00:03:54Z",
+      "side": 1,
+      "message": "Sure.  I guess the gofmt upload hook is not set on Darwin?  I\u0027ll fix it when ready for final review.",
+      "parentUuid": "7e7e230d_c9c39e90",
+      "revId": "2f7890aacbd6f9e3b5af1707a2f4a1c2d9bc36bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d871896_046d8f65",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2018-04-18T00:03:54Z",
+      "side": 1,
+      "message": "For some reason, this mutator doesn\u0027t work (ExpandSource doesn\u0027t add any file).  If I call ExtractSourceDeps in PrebuiltReplaceMutator instead, all checks are cleared and the build succeeds.  Any idea why?",
+      "range": {
+        "startLine": 94,
+        "startChar": 12,
+        "endLine": 94,
+        "endChar": 29
+      },
       "revId": "2f7890aacbd6f9e3b5af1707a2f4a1c2d9bc36bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
