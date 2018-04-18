@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75f2179f_e81e477e",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-18T17:34:22Z",
+      "side": 1,
+      "message": "I think this can just be return ctx.ExpandSource(src, \"\")",
+      "revId": "77d12f8e3cc9796dfbb0f1f320592e2d5688d3ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d655cca_4f2ca110",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-18T17:34:22Z",
+      "side": 1,
+      "message": "This can go in PrebuiltReplaceMutator",
+      "revId": "77d12f8e3cc9796dfbb0f1f320592e2d5688d3ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5decceb_132b39ec",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-18T17:34:22Z",
+      "side": 1,
+      "message": "Still needs gofmt",
+      "revId": "77d12f8e3cc9796dfbb0f1f320592e2d5688d3ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cd1a0f2_aea184fc",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-18T17:34:22Z",
+      "side": 1,
+      "message": "I think ExtractSourcesDeps(ctx, p.srcs) should work",
+      "revId": "77d12f8e3cc9796dfbb0f1f320592e2d5688d3ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
