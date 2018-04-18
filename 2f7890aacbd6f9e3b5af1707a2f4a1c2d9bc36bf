@@ -92,6 +92,30 @@
       "revId": "2f7890aacbd6f9e3b5af1707a2f4a1c2d9bc36bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d8eff46_7c81baeb",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2018-04-18T01:16:45Z",
+      "side": 1,
+      "message": "Duh... The comparison in \u0027if len(*p.srcs) \u003e 1\u0027 should be \u0027\u003e 0\u0027.  {facepalm}",
+      "parentUuid": "5d871896_046d8f65",
+      "range": {
+        "startLine": 94,
+        "startChar": 12,
+        "endLine": 94,
+        "endChar": 29
+      },
+      "revId": "2f7890aacbd6f9e3b5af1707a2f4a1c2d9bc36bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
