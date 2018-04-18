@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a2207dab_f48e59a9",
+        "filename": "android/prebuilt_etc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-04-18T08:33:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3b180a6_0dc5526c",
+      "revId": "c7039e4c5cd9c37736ef6262008c3bc5fb5736a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f03eded0_c6beb5c5",
         "filename": "android/prebuilt_etc.go",
         "patchSetId": 7
@@ -39,6 +57,30 @@
       "revId": "c7039e4c5cd9c37736ef6262008c3bc5fb5736a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e611b8ea_fd9f62e4",
+        "filename": "android/prebuilt_etc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-04-18T08:33:14Z",
+      "side": 1,
+      "message": "Ok, I just switched from Src *string to Srcs []string and added a check to prevent multiple entires.",
+      "parentUuid": "f03eded0_c6beb5c5",
+      "range": {
+        "startLine": 89,
+        "startChar": 29,
+        "endLine": 89,
+        "endChar": 68
+      },
+      "revId": "c7039e4c5cd9c37736ef6262008c3bc5fb5736a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "cab57b0f_43a3d6e9",
+        "filename": "android/prebuilt_etc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-04-18T08:33:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b71f489c_153371b2",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 22
+      },
+      "revId": "c7039e4c5cd9c37736ef6262008c3bc5fb5736a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8fbcb0a9_9cf4fa2c",
         "filename": "java/droiddoc.go",
         "patchSetId": 7
@@ -76,6 +142,24 @@
       "writtenOn": "2018-04-17T23:01:27Z",
       "side": 1,
       "message": "We avoided the difference between libs and android_libs, can we do the same for sdk_libs?  Add a dependency on a placeholder module, and then get the appropriate file from that module when resolving the dependency?\n\nIt might be a little tricky to fit into the module structure, I would guess the last variant would be a placeholder, and then there would be variants for the different sdkSystemApiSuffix values.  The dependency would resolve to the last variant, which would then have pointers to the output files of the other variants.",
+      "revId": "c7039e4c5cd9c37736ef6262008c3bc5fb5736a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "599f132f_de6e8e78",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-04-18T08:33:14Z",
+      "side": 1,
+      "message": "Thanks for the suggestion. I used the java_sdk_library as a placeholder module. I didn\u0027t do exactly what you said (cause I didn\u0027t fully understand... :( ), but PTAL.",
+      "parentUuid": "8fbcb0a9_9cf4fa2c",
       "revId": "c7039e4c5cd9c37736ef6262008c3bc5fb5736a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -96,6 +180,24 @@
       "revId": "c7039e4c5cd9c37736ef6262008c3bc5fb5736a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a993c192_99d16533",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-04-18T08:33:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edaad3e0_7de71d1a",
+      "revId": "c7039e4c5cd9c37736ef6262008c3bc5fb5736a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
