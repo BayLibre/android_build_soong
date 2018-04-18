@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ec9eb6d_7d65531f",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2018-04-18T14:24:11Z",
+      "side": 1,
+      "message": "I patched your CL to try it but got an error here saying that j is undefined?\n\n(I won\u0027t manage to look into details today, but probably tomorrow or Friday).",
+      "range": {
+        "startLine": 484,
+        "startChar": 78,
+        "endLine": 484,
+        "endChar": 79
+      },
+      "revId": "9969055c11a6e7f9ccefc1e3f1ca3f7a23accf0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
