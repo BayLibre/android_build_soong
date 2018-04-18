@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "13e38955_38e33650",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2018-04-18T18:44:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75f2179f_e81e477e",
+      "revId": "77d12f8e3cc9796dfbb0f1f320592e2d5688d3ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d655cca_4f2ca110",
         "filename": "android/prebuilt.go",
         "patchSetId": 2
@@ -72,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "221174a6_a8774f0c",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2018-04-18T18:44:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80c32106_4f293437",
+      "revId": "77d12f8e3cc9796dfbb0f1f320592e2d5688d3ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5decceb_132b39ec",
         "filename": "android/prebuilt.go",
         "patchSetId": 2
@@ -89,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "4b727000_3b73b4bd",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2018-04-18T18:44:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5decceb_132b39ec",
+      "revId": "77d12f8e3cc9796dfbb0f1f320592e2d5688d3ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8cd1a0f2_aea184fc",
         "filename": "android/prebuilt.go",
         "patchSetId": 2
@@ -100,6 +154,24 @@
       "writtenOn": "2018-04-18T17:34:22Z",
       "side": 1,
       "message": "I think ExtractSourcesDeps(ctx, p.srcs) should work",
+      "revId": "77d12f8e3cc9796dfbb0f1f320592e2d5688d3ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a84e1e9d_2d33880c",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2018-04-18T18:44:48Z",
+      "side": 1,
+      "message": "\"cannot use p.srcs (type *[]string) as type *string in argument to ExtractSourceDeps.\"\n\nI guess the types are different even though the values could be the same.",
+      "parentUuid": "8cd1a0f2_aea184fc",
       "revId": "77d12f8e3cc9796dfbb0f1f320592e2d5688d3ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
