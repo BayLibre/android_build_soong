@@ -22,6 +22,30 @@
       "revId": "9969055c11a6e7f9ccefc1e3f1ca3f7a23accf0a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cb2c0d4_32161ae7",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-04-18T18:10:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ec9eb6d_7d65531f",
+      "range": {
+        "startLine": 484,
+        "startChar": 78,
+        "endLine": 484,
+        "endChar": 79
+      },
+      "revId": "9969055c11a6e7f9ccefc1e3f1ca3f7a23accf0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
