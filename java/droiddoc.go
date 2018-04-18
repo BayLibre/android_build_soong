@@ -29,7 +29,7 @@ var (
 		blueprint.RuleParams{
 			Command: `rm -rf "$outDir" "$srcJarDir" "$stubsDir" && mkdir -p "$outDir" "$srcJarDir" "$stubsDir" && ` +
 				`${config.ZipSyncCmd} -d $srcJarDir -l $srcJarDir/list -f "*.java" $srcJars && ` +
-				`${config.JavadocCmd} -encoding UTF-8 @$out.rsp @$srcJarDir/list ` +
+				`${config.JavadocCmd} -source $javaVersion -encoding UTF-8 @$out.rsp @$srcJarDir/list ` +
 				`$opts $bootclasspathArgs $classpathArgs -sourcepath $sourcepath ` +
 				`-d $outDir -quiet  && ` +
 				`${config.SoongZipCmd} -write_if_changed -d -o $docZip -C $outDir -D $outDir && ` +
@@ -45,7 +45,7 @@ var (
 			RspfileContent: "$in",
 			Restat:         true,
 		},
-		"outDir", "srcJarDir", "stubsDir", "srcJars", "opts",
+		"outDir", "srcJarDir", "stubsDir", "javaVersion", "srcJars", "opts",
 		"bootclasspathArgs", "classpathArgs", "sourcepath", "docZip", "JsilverJar", "DoclavaJar")
 )
 
@@ -94,6 +94,9 @@ type JavadocProperties struct {
 
 	// if not blank, set to the version of the sdk to compile against
 	Sdk_version *string `android:"arch_variant"`
+
+	// If not blank, set the java version passed to javadoc as -source
+	Java_version *string
 }
 
 type DroiddocProperties struct {
@@ -237,10 +240,16 @@ func (j *Javadoc) addDeps(ctx android.BottomUpMutatorContext) {
 		sdkDep := decodeSdkDep(ctx, String(j.properties.Sdk_version))
 		if sdkDep.useDefaultLibs {
 			ctx.AddDependency(ctx.Module(), bootClasspathTag, config.DefaultBootclasspathLibraries...)
+			if ctx.Config().TargetOpenJDK9() {
+				ctx.AddDependency(ctx.Module(), systemModulesTag, config.DefaultSystemModules)
+			}
 			if !Bool(j.properties.No_framework_libs) {
 				ctx.AddDependency(ctx.Module(), libTag, []string{"ext", "framework"}...)
 			}
 		} else if sdkDep.useModule {
+			if ctx.Config().TargetOpenJDK9() {
+				ctx.AddDependency(ctx.Module(), systemModulesTag, sdkDep.systemModules)
+			}
 			ctx.AddDependency(ctx.Module(), bootClasspathTag, sdkDep.module)
 		}
 	}
@@ -320,6 +329,15 @@ func (j *Javadoc) collectDeps(ctx android.ModuleContext) deps {
 			switch tag {
 			case android.DefaultsDepTag, android.SourceDepTag, droiddocTemplateTag:
 				// Nothing to do
+			case systemModulesTag:
+				if deps.systemModules != nil {
+					panic("Found two system module dependencies")
+				}
+				sm := module.(*SystemModules)
+				if sm.outputFile == nil {
+					panic("Missing directory for system module dependency")
+				}
+				deps.systemModules = sm.outputFile
 			default:
 				ctx.ModuleErrorf("depends on non-java module %q", otherName)
 			}
@@ -359,13 +377,16 @@ func (j *Javadoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	implicits = append(implicits, deps.classpath...)
 
 	var bootClasspathArgs, classpathArgs string
-	if ctx.Config().UseOpenJDK9() {
+
+	javaVersion := getJavaVersion(ctx, String(j.properties.Java_version), String(j.properties.Sdk_version))
+	if javaVersion == "1.9" {
 		if len(deps.bootClasspath) > 0 {
-			// For OpenJDK 9 we use --patch-module to define the core libraries code.
-			// TODO(tobiast): Reorganize this when adding proper support for OpenJDK 9
-			// modules. Here we treat all code in core libraries as being in java.base
-			// to work around the OpenJDK 9 module system. http://b/62049770
-			bootClasspathArgs = "--patch-module=java.base=" + strings.Join(deps.bootClasspath.Strings(), ":")
+			var systemModules classpath
+			if deps.systemModules != nil {
+				systemModules = append(systemModules, deps.systemModules)
+			}
+			bootClasspathArgs = systemModules.FormJavaSystemModulesPath("--system ", ctx.Device())
+			bootClasspathArgs = bootClasspathArgs + " --patch-module java.base=."
 		}
 	} else {
 		if len(deps.bootClasspath.Strings()) > 0 {
@@ -392,6 +413,7 @@ func (j *Javadoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			"outDir":            android.PathForModuleOut(ctx, "docs", "out").String(),
 			"srcJarDir":         android.PathForModuleOut(ctx, "docs", "srcjars").String(),
 			"stubsDir":          android.PathForModuleOut(ctx, "docs", "stubsDir").String(),
+			"javaVersion":       javaVersion,
 			"srcJars":           strings.Join(j.srcJars.Strings(), " "),
 			"opts":              opts,
 			"bootclasspathArgs": bootClasspathArgs,
@@ -459,8 +481,21 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	var bootClasspathArgs, classpathArgs string
-	if len(deps.bootClasspath.Strings()) > 0 {
-		bootClasspathArgs = "-bootclasspath " + strings.Join(deps.bootClasspath.Strings(), ":")
+	javaVersion := getJavaVersion(ctx, String(d.Javadoc.properties.Java_version), String(d.Javadoc.properties.Sdk_version))
+	if javaVersion == "1.9" {
+		if len(deps.bootClasspath) > 0 {
+			var systemModules classpath
+			if deps.systemModules != nil {
+				systemModules = append(systemModules, deps.systemModules)
+			}
+			bootClasspathArgs = systemModules.FormJavaSystemModulesPath("--system ", ctx.Device())
+			bootClasspathArgs = bootClasspathArgs + " --patch-module java.base=."
+		}
+	} else {
+		if len(deps.bootClasspath.Strings()) > 0 {
+			// For OpenJDK 8 we can use -bootclasspath to define the core libraries code.
+			bootClasspathArgs = deps.bootClasspath.FormJavaClassPath("-bootclasspath")
+		}
 	}
 	if len(deps.classpath.Strings()) > 0 {
 		classpathArgs = "-classpath " + strings.Join(deps.classpath.Strings(), ":")
@@ -561,7 +596,7 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	implicits = append(implicits, d.Javadoc.srcJars...)
 
-	opts := "-source 1.8 -J-Xmx1600m -J-XX:-OmitStackTraceInFastThrow -XDignore.symbol.file " +
+	opts := "-J-Xmx1600m -J-XX:-OmitStackTraceInFastThrow -XDignore.symbol.file " +
 		"-doclet com.google.doclava.Doclava -docletpath ${config.JsilverJar}:${config.DoclavaJar} " +
 		"-templatedir " + templateDir + " " + htmlDirArgs + " " + htmlDir2Args + " " +
 		"-hdf page.build " + ctx.Config().BuildId() + "-" + ctx.Config().BuildNumberFromFile() + " " +
@@ -587,6 +622,7 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			"outDir":            android.PathForModuleOut(ctx, "docs", "out").String(),
 			"srcJarDir":         android.PathForModuleOut(ctx, "docs", "srcjars").String(),
 			"stubsDir":          android.PathForModuleOut(ctx, "docs", "stubsDir").String(),
+			"javaVersion":       javaVersion,
 			"srcJars":           strings.Join(d.Javadoc.srcJars.Strings(), " "),
 			"opts":              opts,
 			"bootclasspathArgs": bootClasspathArgs,
