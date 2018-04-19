@@ -22,6 +22,30 @@
       "revId": "c678ad3f7143291458d053bd7094301aff15d873",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0da539e0_2447bfaf",
+        "filename": "android/prebuilt_etc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-04-19T18:25:56Z",
+      "side": 1,
+      "message": "for other type of artifacts, we already have dedicated prebuilt module types. cc_prebuilt, java_import, etc. So, if we have general prebuilt module type that can place something to anywhere, I think it will be too powerful and there will be conflict.\n\nIn my understanding, \"etc\" is a Unix term just like \"lib\".",
+      "parentUuid": "0aaff584_097d6ebe",
+      "range": {
+        "startLine": 26,
+        "startChar": 30,
+        "endLine": 26,
+        "endChar": 34
+      },
+      "revId": "c678ad3f7143291458d053bd7094301aff15d873",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
