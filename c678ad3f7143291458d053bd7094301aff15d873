@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0aaff584_097d6ebe",
+        "filename": "android/prebuilt_etc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-04-19T18:18:14Z",
+      "side": 1,
+      "message": "I don\u0027t really like having the location on the phone be in the module type.\n\nI\u0027d much rather see:\nprebuilt_other -or- prebuilt\n\nand then specify the install location with other fields.\n\nWhat do you think?",
+      "range": {
+        "startLine": 26,
+        "startChar": 30,
+        "endLine": 26,
+        "endChar": 34
+      },
+      "revId": "c678ad3f7143291458d053bd7094301aff15d873",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
