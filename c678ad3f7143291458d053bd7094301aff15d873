@@ -46,6 +46,30 @@
       "revId": "c678ad3f7143291458d053bd7094301aff15d873",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "935b9bb9_4cc69e3b",
+        "filename": "android/prebuilt_etc.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-19T18:26:00Z",
+      "side": 1,
+      "message": "I don\u0027t want this to get abused to dump stuff into system/bin for example.  I\u0027d be fine with specifying the directory in relative_install_path as long as we apply a whitelist.",
+      "parentUuid": "0aaff584_097d6ebe",
+      "range": {
+        "startLine": 26,
+        "startChar": 30,
+        "endLine": 26,
+        "endChar": 34
+      },
+      "revId": "c678ad3f7143291458d053bd7094301aff15d873",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
