@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41f1ac80_060744c0",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-04-20T19:51:30Z",
+      "side": 1,
+      "message": "I wrapped user options for \"metalava [javadoc/doclava]\" into an variable called \"opts\", so the \"opts\" may have the arguments like:\n\"metalava_arg1 metalava_arg2.... --generate-documentation javadoc javadoc_arg1 javadoc_arg2 ......\" or if user doesn\u0027t want to generate docs, they can just simply pass to \"opts\" like:\n\"metalava_arg1 metalava_arg2 ......\"\n\nSo from build system perspective, the metalava will be responsible for invoking the javadoc or any other doc tool, right?",
+      "revId": "5099f48ff9c43f1d192c9f5a031971b90e316055",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16992f47_d8dcbdd7",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-04-20T19:51:30Z",
+      "side": 1,
+      "message": "I am not sure this is the best way, but the build system need to check \"--generate-documentation\" and \"-nodocs\" because build system need know if javadoc or doclava have to be added as dependencies.\n\nThe var: createDocs will tell build system later that if docs need to be generated.",
+      "revId": "5099f48ff9c43f1d192c9f5a031971b90e316055",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f5fef89_6baba86c",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-04-20T19:51:30Z",
+      "side": 1,
+      "message": "a new var called metalavaArgs is created by splitting var:args so that any metalava specific options can be added directly to metalavaArgs. The var:args help to keep old world normal which contains all the options for doclava.",
+      "revId": "5099f48ff9c43f1d192c9f5a031971b90e316055",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd5ed150_b10f0e52",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-04-20T19:51:30Z",
+      "side": 1,
+      "message": "templateDir, htmlDir, and html2Dir only need to be added to the dependency list when we need to generate docs.",
+      "revId": "5099f48ff9c43f1d192c9f5a031971b90e316055",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c311dc0_72f45a4a",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-04-20T19:51:30Z",
+      "side": 1,
+      "message": "this confuses me because I am not sure if metalava also need -knowtags and -hdf to generate the correct stubs",
+      "revId": "5099f48ff9c43f1d192c9f5a031971b90e316055",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1640fedc_c239278c",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-04-20T19:51:30Z",
+      "side": 1,
+      "message": "a new var called docArgs is created by splitting var:args so that any doc specific options can be added directly to docArgs, eg(javdoc path need to be prepended to docArgs).",
+      "revId": "5099f48ff9c43f1d192c9f5a031971b90e316055",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18ec30d8_b138e27a",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-04-20T19:51:30Z",
+      "side": 1,
+      "message": "Some args are used twice here (1 for metalava, and 1 for doclava) when createDocs is enabled, eg \"-hdf page.build build_id\",.... I am not sure these args are need by both metalava and doclava. \"-d $outDir\" is only needed by javadoc/doclava.",
+      "revId": "5099f48ff9c43f1d192c9f5a031971b90e316055",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
