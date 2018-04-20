@@ -104,6 +104,23 @@
     },
     {
       "key": {
+        "uuid": "1d2642ef_322fa9f1",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-04-20T19:59:48Z",
+      "side": 1,
+      "message": "I am not sure this is best option. if createDocs is false, build system will discard all the options after \"--generate-documentation\" passed to metalava.",
+      "revId": "5099f48ff9c43f1d192c9f5a031971b90e316055",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "18ec30d8_b138e27a",
         "filename": "java/droiddoc.go",
         "patchSetId": 10
