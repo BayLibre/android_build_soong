@@ -496,6 +496,24 @@
       "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "045c4641_ecc5bff9",
+        "filename": "docs/compdb.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-04-23T20:14:57Z",
+      "side": 1,
+      "message": "When there is \"no need to regenerate ninja file\" it seems it takes ~20 second to generate this file.",
+      "parentUuid": "74d55c3a_25cba4d3",
+      "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
