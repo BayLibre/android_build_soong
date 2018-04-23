@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "932395f5_e636769e",
+        "filename": "cc/compdb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-04-23T15:31:08Z",
+      "side": 1,
+      "message": "Ack. This syle is used in other files (cmakelists.go) so I\u0027m going to be consistent.",
+      "parentUuid": "bcb2be94_e0be7d7a",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 154
+      },
+      "revId": "5b3b703191ffd751af81e4cf0d68bb047f00938f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "06604f99_b9f4125a",
         "filename": "cc/compdb.go",
         "patchSetId": 2
@@ -68,6 +92,30 @@
       "revId": "5b3b703191ffd751af81e4cf0d68bb047f00938f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b768ab7_250b66a8",
+        "filename": "cc/compdb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-04-23T15:31:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06604f99_b9f4125a",
+      "range": {
+        "startLine": 58,
+        "startChar": 23,
+        "endLine": 58,
+        "endChar": 45
+      },
+      "revId": "5b3b703191ffd751af81e4cf0d68bb047f00938f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "ba0161d9_2d4baf75",
+        "filename": "cc/compdb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-04-23T15:31:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a364cc4e_07b809c0",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 23
+      },
+      "revId": "5b3b703191ffd751af81e4cf0d68bb047f00938f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5593bc5a_eb90c15a",
         "filename": "docs/compdb.md",
         "patchSetId": 2
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "0644986d_2fa3324b",
+        "filename": "docs/compdb.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-04-23T15:31:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5593bc5a_eb90c15a",
+      "range": {
+        "startLine": 1,
+        "startChar": 10,
+        "endLine": 1,
+        "endChar": 33
+      },
+      "revId": "5b3b703191ffd751af81e4cf0d68bb047f00938f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9bdaff28_c4d25804",
         "filename": "docs/compdb.md",
         "patchSetId": 2
@@ -137,6 +233,30 @@
       "revId": "5b3b703191ffd751af81e4cf0d68bb047f00938f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1d33efa_b3299ce0",
+        "filename": "docs/compdb.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-04-23T15:31:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bdaff28_c4d25804",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 23,
+        "endChar": 8
+      },
+      "revId": "5b3b703191ffd751af81e4cf0d68bb047f00938f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
