@@ -22,6 +22,30 @@
       "revId": "e92bf38717691feace71a983b1d92532ee492ede",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e6bc36d_166d9070",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-04-23T20:01:07Z",
+      "side": 1,
+      "message": "Thanks Dan. I tried this way before, but the type of Implicits is Paths, and CommandDeps we want to pass in additionally is just []string type (eg. ${config.JsilverJar}, ${config.DoclavaJar}). We have to implement additional interface function in order to convert them to Paths.",
+      "parentUuid": "87d3eb5c_6d508796",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 0
+      },
+      "revId": "e92bf38717691feace71a983b1d92532ee492ede",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
