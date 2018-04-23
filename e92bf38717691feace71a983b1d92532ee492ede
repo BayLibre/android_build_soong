@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87d3eb5c_6d508796",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-04-23T18:41:51Z",
+      "side": 1,
+      "message": "Why aren\u0027t these just implicits? CommandDeps was used so that rules could define a set of implicit dependencies for things that they depended upon directly, instead of each caller having to remember. If it\u0027s in the arguments that the caller is passing, just include them in the implicit deps.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 0
+      },
+      "revId": "e92bf38717691feace71a983b1d92532ee492ede",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
