@@ -147,7 +147,8 @@ func init() {
 
 	pctx.StaticVariable("DarwinClangCflags", strings.Join(darwinClangCflags, " "))
 	pctx.StaticVariable("DarwinClangLdflags", strings.Join(darwinClangLdflags, " "))
-	pctx.StaticVariable("DarwinClangLldflags", strings.Join(darwinClangLldflags, " "))
+	// Clang lld is not ready for Darwin host executables; use ld instead.
+	pctx.StaticVariable("DarwinClangLldflags", strings.Join(darwinClangLdflags, " "))
 
 	// Extended cflags
 	pctx.StaticVariable("DarwinX86Cflags", strings.Join(darwinX86Cflags, " "))
@@ -159,9 +160,11 @@ func init() {
 	pctx.StaticVariable("DarwinX8664ClangCflags",
 		strings.Join(ClangFilterUnknownCflags(darwinX8664Cflags), " "))
 	pctx.StaticVariable("DarwinX86ClangLdflags", strings.Join(darwinX86ClangLdflags, " "))
-	pctx.StaticVariable("DarwinX86ClangLldflags", strings.Join(darwinX86ClangLldflags, " "))
+	// Clang lld is not ready for Darwin host executables; use ld instead.
+	pctx.StaticVariable("DarwinX86ClangLldflags", strings.Join(darwinX86ClangLdflags, " "))
 	pctx.StaticVariable("DarwinX8664ClangLdflags", strings.Join(darwinX8664ClangLdflags, " "))
-	pctx.StaticVariable("DarwinX8664ClangLldflags", strings.Join(darwinX8664ClangLldflags, " "))
+	// Clang lld is not ready for Darwin host executables; use ld instead.
+	pctx.StaticVariable("DarwinX8664ClangLldflags", strings.Join(darwinX8664ClangLdflags, " "))
 	pctx.StaticVariable("DarwinX86YasmFlags", "-f macho -m x86")
 	pctx.StaticVariable("DarwinX8664YasmFlags", "-f macho -m amd64")
 }
