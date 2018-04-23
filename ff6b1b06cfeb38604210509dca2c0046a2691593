@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "807743e3_91cf9eed",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-23T18:20:39Z",
+      "side": 1,
+      "message": "Global writable variables make testing hard, put this in a config.Once like https://cs.corp.google.com/android/build/soong/cc/sanitize.go?rcl\u003de492ff045c2bafc8308c6040145e688e6348e0f1\u0026l\u003d694",
+      "revId": "ff6b1b06cfeb38604210509dca2c0046a2691593",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
