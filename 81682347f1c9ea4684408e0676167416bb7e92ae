@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21051bf2_e22734d3",
+        "filename": "cc/config/x86_darwin_host.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-23T22:53:55Z",
+      "side": 1,
+      "message": "Can you just change the logic where you decide lld vs ld instead of making lld variables point to ld?",
+      "revId": "81682347f1c9ea4684408e0676167416bb7e92ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
