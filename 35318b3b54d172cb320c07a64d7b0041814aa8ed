@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "b6ce810e_c5b0784f",
+        "filename": "cc/config/toolchain.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2018-04-23T17:38:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c19d89a3_7297e977",
+      "revId": "35318b3b54d172cb320c07a64d7b0041814aa8ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7aa65336_7672bd1e",
         "filename": "cc/config/toolchain.go",
         "patchSetId": 1
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "This seems like a very roundabout way to encode that we don\u0027t have asan libraries for the host.  Maybe make it explicit (don\u0027t call these functions for the host, or add a flag to the toolchain to specify which libraries they have?)",
       "parentUuid": "40ddd9eb_cf51d658",
+      "revId": "35318b3b54d172cb320c07a64d7b0041814aa8ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27137569_e2d36a8a",
+        "filename": "cc/config/toolchain.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2018-04-23T17:38:57Z",
+      "side": 1,
+      "message": "It\u0027s not encoded via this method.  Rather, Soong always assumes that any sanitizer runtime library is a shared object while Clang expects to use a shared library only for Android triples (and uses static libraries for other triples that we use).  PTAL and see if this patchset is reasonable.",
+      "parentUuid": "24a22a2c_86db4f7b",
       "revId": "35318b3b54d172cb320c07a64d7b0041814aa8ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
