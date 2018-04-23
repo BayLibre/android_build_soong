@@ -87,6 +87,24 @@
     },
     {
       "key": {
+        "uuid": "5f2c48a3_ac970056",
+        "filename": "cc/compdb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-04-23T18:32:23Z",
+      "side": 1,
+      "message": "For the YCM-type cases, you only want a single one, but for manually running clang-tidy, or other analysis tools you may want every way to compile a particular file.",
+      "parentUuid": "d2c8320c_177862a5",
+      "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4afdb119_6d7fba33",
         "filename": "cc/compdb.go",
         "patchSetId": 3
