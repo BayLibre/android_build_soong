@@ -46,6 +46,30 @@
       "revId": "e92bf38717691feace71a983b1d92532ee492ede",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e30dc5b9_2e255596",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-04-23T20:19:11Z",
+      "side": 1,
+      "message": "Ah, maybe we should actually be using real deps \u0026 paths here, instead of relying on some well-known locations / names.",
+      "parentUuid": "3e6bc36d_166d9070",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 0
+      },
+      "revId": "e92bf38717691feace71a983b1d92532ee492ede",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
