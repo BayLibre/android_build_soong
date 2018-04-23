@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2b2533d3_afde9abd",
+        "filename": "cc/compdb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-04-23T19:05:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35304364_10df2ea7",
+      "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e56ba768_8d02f04b",
         "filename": "cc/compdb.go",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b615138_b4779518",
+        "filename": "cc/compdb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-04-23T19:05:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e56ba768_8d02f04b",
+      "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "deee34ae_7c2f9048",
+        "filename": "cc/compdb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-04-23T19:05:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75dd9a59_9dccc673",
+      "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f150fbc_5f1d2528",
         "filename": "cc/compdb.go",
         "patchSetId": 3
@@ -67,6 +121,24 @@
       "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13f77bd7_9c9fcac7",
+        "filename": "cc/compdb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-04-23T19:05:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f150fbc_5f1d2528",
+      "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +177,24 @@
     },
     {
       "key": {
+        "uuid": "9f15c3c3_fbf99393",
+        "filename": "cc/compdb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-04-23T19:05:11Z",
+      "side": 1,
+      "message": "I don\u0027t think it will generally be relevant since those mostly still need the same -W, -I and -D flags which are pretty much all that libclang really needs.",
+      "parentUuid": "d2c8320c_177862a5",
+      "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4afdb119_6d7fba33",
         "filename": "cc/compdb.go",
         "patchSetId": 3
@@ -128,6 +218,30 @@
     },
     {
       "key": {
+        "uuid": "4cd72052_5220f1e7",
+        "filename": "cc/compdb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-04-23T19:05:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4afdb119_6d7fba33",
+      "range": {
+        "startLine": 85,
+        "startChar": 18,
+        "endLine": 85,
+        "endChar": 29
+      },
+      "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af31ca35_de071221",
         "filename": "cc/compdb.go",
         "patchSetId": 3
@@ -142,6 +256,24 @@
       "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "197ba308_c986db76",
+        "filename": "cc/compdb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-04-23T19:05:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af31ca35_de071221",
+      "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -162,6 +294,24 @@
     },
     {
       "key": {
+        "uuid": "fc1bdc0c_07f10eca",
+        "filename": "cc/compdb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-04-23T19:05:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5ab5d51_2579b167",
+      "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "18d0f198_0abeae25",
         "filename": "cc/compdb.go",
         "patchSetId": 3
@@ -173,6 +323,24 @@
       "writtenOn": "2018-04-23T18:05:08Z",
       "side": 1,
       "message": "Why is this necessary?  We generally don\u0027t want to write to the source tree",
+      "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a50a479_98474287",
+        "filename": "cc/compdb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-04-23T19:05:11Z",
+      "side": 1,
+      "message": "Some tools (at least ycm, not sure about others) expect the compile_commands.json file to be in the source tree. Since this is not very common in soong I decided to make it conditional. I can remove it if you want, its mostly there for convenience.",
+      "parentUuid": "18d0f198_0abeae25",
       "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -196,6 +364,24 @@
     },
     {
       "key": {
+        "uuid": "50f89594_3c0f4eb8",
+        "filename": "cc/compdb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-04-23T19:05:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0896b12_558f697d",
+      "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce1a6898_2dcc5117",
         "filename": "cc/compdb.go",
         "patchSetId": 3
@@ -210,6 +396,24 @@
       "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de3472a1_0e10b789",
+        "filename": "cc/compdb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-04-23T19:05:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce1a6898_2dcc5117",
+      "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -236,6 +440,30 @@
     },
     {
       "key": {
+        "uuid": "6223300b_7f9dba0b",
+        "filename": "cc/compdb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-04-23T19:05:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "284148d5_0d9edaa9",
+      "range": {
+        "startLine": 174,
+        "startChar": 116,
+        "endLine": 174,
+        "endChar": 117
+      },
+      "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a588e3d_02689f8f",
         "filename": "docs/compdb.md",
         "patchSetId": 3
@@ -247,6 +475,24 @@
       "writtenOn": "2018-04-23T18:05:08Z",
       "side": 1,
       "message": "How expensive is it to always generate this file?  How big is it?",
+      "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74d55c3a_25cba4d3",
+        "filename": "docs/compdb.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-04-23T19:05:11Z",
+      "side": 1,
+      "message": "On AOSP it\u0027s about 79 mb. On internal master it is 99 mb",
+      "parentUuid": "8a588e3d_02689f8f",
       "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
