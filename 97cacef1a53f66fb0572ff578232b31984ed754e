@@ -1,0 +1,237 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35304364_10df2ea7",
+        "filename": "cc/compdb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-23T18:05:08Z",
+      "side": 1,
+      "message": "put all standard lib imports first, then a blank line, then android imports",
+      "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e56ba768_8d02f04b",
+        "filename": "cc/compdb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-23T18:05:08Z",
+      "side": 1,
+      "message": "We don\u0027t support windows, so we usually don\u0027t bother with os.PathSeparator",
+      "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75dd9a59_9dccc673",
+        "filename": "cc/compdb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-23T18:05:08Z",
+      "side": 1,
+      "message": "this doesn\u0027t need to be global",
+      "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f150fbc_5f1d2528",
+        "filename": "cc/compdb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-23T18:05:08Z",
+      "side": 1,
+      "message": "ctx.Config().IsEnvTrue(envVariableGenerateCompdb)",
+      "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2c8320c_177862a5",
+        "filename": "cc/compdb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-23T18:05:08Z",
+      "side": 1,
+      "message": "Are you sure you don\u0027t care?  This may be asan, lto, clang-tidy, or something else strange.",
+      "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4afdb119_6d7fba33",
+        "filename": "cc/compdb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-23T18:05:08Z",
+      "side": 1,
+      "message": "I think ModePerm is for use as a mask, put 0700 here",
+      "range": {
+        "startLine": 85,
+        "startChar": 18,
+        "endLine": 85,
+        "endChar": 29
+      },
+      "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af31ca35_de071221",
+        "filename": "cc/compdb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-23T18:05:08Z",
+      "side": 1,
+      "message": "log.Fatal(Could not create file %s: %s\", filepath.Join(dir, compdbFilename), err)",
+      "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5ab5d51_2579b167",
+        "filename": "cc/compdb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-23T18:05:08Z",
+      "side": 1,
+      "message": "log.Fatalf(\"Failed to marshal: %s\", err)",
+      "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18d0f198_0abeae25",
+        "filename": "cc/compdb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-23T18:05:08Z",
+      "side": 1,
+      "message": "Why is this necessary?  We generally don\u0027t want to write to the source tree",
+      "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0896b12_558f697d",
+        "filename": "cc/compdb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-23T18:05:08Z",
+      "side": 1,
+      "message": "check errors?",
+      "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce1a6898_2dcc5117",
+        "filename": "cc/compdb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-23T18:05:08Z",
+      "side": 1,
+      "message": "trailing return is unnecessary",
+      "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "284148d5_0d9edaa9",
+        "filename": "cc/compdb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-23T18:05:08Z",
+      "side": 1,
+      "message": "don\u0027t need a pointer, maps are always pointers",
+      "range": {
+        "startLine": 174,
+        "startChar": 116,
+        "endLine": 174,
+        "endChar": 117
+      },
+      "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a588e3d_02689f8f",
+        "filename": "docs/compdb.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-23T18:05:08Z",
+      "side": 1,
+      "message": "How expensive is it to always generate this file?  How big is it?",
+      "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
