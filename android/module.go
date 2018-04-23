@@ -35,21 +35,22 @@ var (
 )
 
 type BuildParams struct {
-	Rule            blueprint.Rule
-	Deps            blueprint.Deps
-	Depfile         WritablePath
-	Description     string
-	Output          WritablePath
-	Outputs         WritablePaths
-	ImplicitOutput  WritablePath
-	ImplicitOutputs WritablePaths
-	Input           Path
-	Inputs          Paths
-	Implicit        Path
-	Implicits       Paths
-	OrderOnly       Paths
-	Default         bool
-	Args            map[string]string
+	Rule              blueprint.Rule
+	Deps              blueprint.Deps
+	Depfile           WritablePath
+	Description       string
+	Output            WritablePath
+	Outputs           WritablePaths
+	ImplicitOutput    WritablePath
+	ImplicitOutputs   WritablePaths
+	Input             Path
+	Inputs            Paths
+	Implicit          Path
+	Implicits         Paths
+	OrderOnly         Paths
+	Default           bool
+	Args              map[string]string
+	CommandDepsInArgs []string
 }
 
 type ModuleBuildParams BuildParams
@@ -781,6 +782,9 @@ func convertBuildParams(params BuildParams) blueprint.BuildParams {
 	}
 	if params.Implicit != nil {
 		bparams.Implicits = append(bparams.Implicits, params.Implicit.String())
+	}
+	if params.CommandDepsInArgs != nil {
+		bparams.Implicits = append(bparams.Implicits, params.CommandDepsInArgs...)
 	}
 
 	return bparams

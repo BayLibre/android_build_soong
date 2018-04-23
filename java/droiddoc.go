@@ -38,15 +38,13 @@ var (
 				"${config.ZipSyncCmd}",
 				"${config.JavadocCmd}",
 				"${config.SoongZipCmd}",
-				"$JsilverJar",
-				"$DoclavaJar",
 			},
 			Rspfile:        "$out.rsp",
 			RspfileContent: "$in",
 			Restat:         true,
 		},
 		"outDir", "srcJarDir", "stubsDir", "srcJars", "opts",
-		"bootclasspathArgs", "classpathArgs", "sourcepath", "docZip", "JsilverJar", "DoclavaJar")
+		"bootclasspathArgs", "classpathArgs", "sourcepath", "docZip")
 )
 
 func init() {
@@ -607,8 +605,10 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			"classpathArgs":     classpathArgs,
 			"sourcepath":        strings.Join(d.Javadoc.sourcepaths.Strings(), ":"),
 			"docZip":            d.Javadoc.docZip.String(),
-			"JsilverJar":        "${config.JsilverJar}",
-			"DoclavaJar":        "${config.DoclavaJar}",
+		},
+		CommandDepsInArgs: []string{
+			"${config.JsilverJar}",
+			"${config.DoclavaJar}",
 		},
 	})
 }
