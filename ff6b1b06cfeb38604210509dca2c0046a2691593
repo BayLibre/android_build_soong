@@ -16,6 +16,24 @@
       "revId": "ff6b1b06cfeb38604210509dca2c0046a2691593",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecae1aba_4f121d5b",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-04-24T00:48:53Z",
+      "side": 1,
+      "message": "Thank you for the suggestion. I learned a lot. Done.",
+      "parentUuid": "807743e3_91cf9eed",
+      "revId": "ff6b1b06cfeb38604210509dca2c0046a2691593",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
