@@ -155,6 +155,7 @@ type BottomUpMutatorContext interface {
 	CreateLocalVariations(...string) []blueprint.Module
 	SetDependencyVariation(string)
 	AddVariationDependencies([]blueprint.Variation, blueprint.DependencyTag, ...string)
+	AddWeakVariationDependencies([]blueprint.Variation, blueprint.DependencyTag, ...string)
 	AddFarVariationDependencies([]blueprint.Variation, blueprint.DependencyTag, ...string)
 	AddInterVariantDependency(tag blueprint.DependencyTag, from, to blueprint.Module)
 	ReplaceDependencies(string)

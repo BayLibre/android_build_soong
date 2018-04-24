@@ -990,7 +990,7 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 	actx.AddVariationDependencies([]blueprint.Variation{{"link", "shared"}}, lateSharedDepTag,
 		deps.LateSharedLibs...)
 
-	actx.AddVariationDependencies([]blueprint.Variation{{"link", "shared"}}, runtimeDepTag,
+	actx.AddWeakVariationDependencies([]blueprint.Variation{{"link", "shared"}}, runtimeDepTag,
 		deps.RuntimeLibs...)
 
 	actx.AddDependency(c, genSourceDepTag, deps.GeneratedSources...)
@@ -1177,7 +1177,7 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 	directStaticDeps := []*Module{}
 	directSharedDeps := []*Module{}
 
-	ctx.VisitDirectDeps(func(dep android.Module) {
+	visit := func(dep android.Module) {
 		depName := ctx.OtherModuleName(dep)
 		depTag := ctx.OtherModuleDependencyTag(dep)
 
@@ -1381,7 +1381,10 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			c.Properties.AndroidMkRuntimeLibs = append(
 				c.Properties.AndroidMkRuntimeLibs, makeLibName(depName))
 		}
-	})
+	}
+
+	ctx.VisitDirectDeps(visit)
+	ctx.VisitWeakDeps(visit)
 
 	// use the ordered dependencies as this module's dependencies
 	depPaths.StaticLibs = append(depPaths.StaticLibs, orderStaticModuleDeps(c, directStaticDeps, directSharedDeps)...)

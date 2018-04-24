@@ -1502,6 +1502,37 @@ func TestRuntimeLibsNoVndk(t *testing.T) {
 	checkRuntimeLibs(t, []string{"libvendor_available1", "libvendor1"}, module)
 }
 
+func TestRuntimeLibsCycle(t *testing.T) {
+	// runtime_libs are weak dependencies. Weak dependencies are only for soong module relation
+	// checks.
+
+	// This test case stands for a common pattern that a interface library which loads the
+	// implementation library through dlopen() and the implementation library links the
+	// interface library for extra other functions.
+
+	ctx := testCc(t, `
+		cc_library {
+			name: "libinterface",
+			runtime_libs: ["libimpl"],
+			no_libgcc : true,
+			nocrt : true,
+			system_shared_libs : [],
+		}
+		cc_library {
+			name: "libimpl",
+			shared_libs: ["libinterface"],
+			no_libgcc : true,
+			nocrt : true,
+			system_shared_libs : [],
+		}
+	`)
+
+	variant := "android_arm64_armv8-a_core_shared"
+
+	module := ctx.ModuleForTests("libinterface", variant).Module().(*Module)
+	checkRuntimeLibs(t, []string{"libimpl"}, module)
+}
+
 var compilerFlagsTestCases = []struct {
 	in  string
 	out bool
