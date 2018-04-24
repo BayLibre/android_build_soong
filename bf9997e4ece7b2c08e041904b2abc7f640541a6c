@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52e70add_6fee226a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-04-24T20:11:18Z",
+      "side": 1,
+      "message": "mention that this came from pom2mk?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 67
+      },
+      "revId": "bf9997e4ece7b2c08e041904b2abc7f640541a6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6116b17_febeee40",
+        "filename": "cmd/pom2bp/pom2bp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-04-24T20:11:18Z",
+      "side": 1,
+      "message": "Should we just be generating structures and printing them through the blueprint printers? Or at least running it through the formatter?",
+      "revId": "bf9997e4ece7b2c08e041904b2abc7f640541a6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
