@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "28b7b5bd_b11f3db5",
+        "filename": "cc/compdb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2018-04-24T12:36:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "932395f5_e636769e",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 154
+      },
+      "revId": "5b3b703191ffd751af81e4cf0d68bb047f00938f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06604f99_b9f4125a",
         "filename": "cc/compdb.go",
         "patchSetId": 2
