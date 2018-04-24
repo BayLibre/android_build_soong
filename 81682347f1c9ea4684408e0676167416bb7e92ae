@@ -16,6 +16,24 @@
       "revId": "81682347f1c9ea4684408e0676167416bb7e92ae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07044f0e_3faf64ed",
+        "filename": "cc/config/x86_darwin_host.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-04-24T23:03:34Z",
+      "side": 1,
+      "message": "Okay, we can do that with c/671629 and c/670616.",
+      "parentUuid": "21051bf2_e22734d3",
+      "revId": "81682347f1c9ea4684408e0676167416bb7e92ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
