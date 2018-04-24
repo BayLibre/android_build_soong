@@ -63,6 +63,30 @@
       "revId": "9f5633d60ce6e25ffc0ee9366b8b7e6252606c11",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfe0b415_09d6ac62",
+        "filename": "cmd/pom2mk/pom2mk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-04-24T20:25:46Z",
+      "side": 1,
+      "message": "Oh, I was looking at these backwards then :)",
+      "parentUuid": "3074f4e0_cf21130f",
+      "range": {
+        "startLine": 318,
+        "startChar": 12,
+        "endLine": 318,
+        "endChar": 18
+      },
+      "revId": "9f5633d60ce6e25ffc0ee9366b8b7e6252606c11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
