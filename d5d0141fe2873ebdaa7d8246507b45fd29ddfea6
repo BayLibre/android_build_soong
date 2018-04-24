@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "853943c1_de7c8589",
+        "filename": "cc/compdb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-24T14:57:58Z",
+      "side": 1,
+      "message": "sorry, typo on my part, this should be 0777",
+      "range": {
+        "startLine": 82,
+        "startChar": 18,
+        "endLine": 82,
+        "endChar": 22
+      },
+      "revId": "d5d0141fe2873ebdaa7d8246507b45fd29ddfea6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d794280_04fe832c",
+        "filename": "cc/compdb.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-24T14:57:58Z",
+      "side": 1,
+      "message": "I\u0027d suggest removing this, there\u0027s only a single user",
+      "revId": "d5d0141fe2873ebdaa7d8246507b45fd29ddfea6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

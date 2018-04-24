@@ -514,6 +514,24 @@
       "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3a750a5_6bf19797",
+        "filename": "docs/compdb.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-24T14:57:58Z",
+      "side": 1,
+      "message": "\"no need to regenerate ninja file\" is a little confusing, that\u0027s from an earlier stage, if it reruns soong_build then it is regenerating the ninja file.  What\u0027s the time difference between:\nm SOONG_GEN_COMPDB\u003d1 --skip-make nothing\nand \nm --skip-make nothing",
+      "parentUuid": "045c4641_ecc5bff9",
+      "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
