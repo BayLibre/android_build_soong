@@ -532,6 +532,24 @@
       "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f69da11c_04f5a840",
+        "filename": "docs/compdb.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-04-24T15:15:52Z",
+      "side": 1,
+      "message": "The first takes 29 seconds. The second 11.",
+      "parentUuid": "e3a750a5_6bf19797",
+      "revId": "97cacef1a53f66fb0572ff578232b31984ed754e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
