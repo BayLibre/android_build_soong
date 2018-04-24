@@ -257,7 +257,8 @@ func (pgo *pgo) begin(ctx BaseModuleContext) {
 		}
 	}
 
-	if !ctx.Config().IsEnvTrue("ANDROID_PGO_NO_PROFILE_USE") {
+	if !ctx.Config().IsEnvTrue("ANDROID_PGO_NO_PROFILE_USE") &&
+		(pgo.Properties.Pgo.Enable_profile_use == nil || *pgo.Properties.Pgo.Enable_profile_use == true) {
 		if profileFile := pgo.Properties.getPgoProfileFile(ctx); profileFile.Valid() {
 			pgo.Properties.PgoCompile = true
 		}
