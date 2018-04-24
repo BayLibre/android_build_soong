@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "160db823_16a11172",
+        "filename": "cc/cc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1218,
+      "author": {
+        "id": 1014807
+      },
+      "writtenOn": "2018-04-24T08:56:22Z",
+      "side": 1,
+      "message": "Removed `library: true` from runtimeDepTag.",
+      "parentUuid": "62c833c0_1c4c7361",
+      "revId": "0d7b971ebef171da387383897e8e3db381be73dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "53c70035_bd544f61",
         "filename": "cc/cc.go",
         "patchSetId": 10
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "d0a474a1_16e162f8",
+        "filename": "cc/cc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1239,
+      "author": {
+        "id": 1014807
+      },
+      "writtenOn": "2018-04-24T08:56:22Z",
+      "side": 1,
+      "message": "Weak dependencies have been removed from this change.",
+      "parentUuid": "53c70035_bd544f61",
+      "revId": "0d7b971ebef171da387383897e8e3db381be73dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e1e27ce1_62d98099",
         "filename": "cc/cc.go",
         "patchSetId": 10
@@ -47,6 +83,24 @@
       "writtenOn": "2018-04-20T14:51:50Z",
       "side": 1,
       "message": "This is really dangerous.  Because there is no ordering with respect to weak deps, the visitor must not access anything that is set by GenerateAndroidBuildActions on the dependency, which is hard to enforce or debug.",
+      "revId": "0d7b971ebef171da387383897e8e3db381be73dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fd0c2ff_67c5a570",
+        "filename": "cc/cc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1349,
+      "author": {
+        "id": 1014807
+      },
+      "writtenOn": "2018-04-24T08:56:22Z",
+      "side": 1,
+      "message": "Weak dependencies have been removed from this change.",
+      "parentUuid": "e1e27ce1_62d98099",
       "revId": "0d7b971ebef171da387383897e8e3db381be73dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
