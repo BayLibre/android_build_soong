@@ -160,13 +160,8 @@ func (props *PgoProperties) addProfileUseFlags(ctx ModuleContext, flags Flags) F
 		return flags
 	}
 
-	// Skip -fprofile-use if 'enable_profile_use' property is set
-	if props.Pgo.Enable_profile_use != nil && *props.Pgo.Enable_profile_use == false {
-		return flags
-	}
-
-	// If the profile file is found, add flags to use the profile
-	if profileFile := props.getPgoProfileFile(ctx); profileFile.Valid() {
+	if props.PgoCompile {
+		profileFile := props.getPgoProfileFile(ctx)
 		profileFilePath := profileFile.Path()
 		profileUseFlags := props.profileUseFlags(ctx, profileFilePath.String())
 
@@ -257,7 +252,8 @@ func (pgo *pgo) begin(ctx BaseModuleContext) {
 		}
 	}
 
-	if !ctx.Config().IsEnvTrue("ANDROID_PGO_NO_PROFILE_USE") {
+	if !ctx.Config().IsEnvTrue("ANDROID_PGO_NO_PROFILE_USE") &&
+		(pgo.Properties.Pgo.Enable_profile_use == nil || *pgo.Properties.Pgo.Enable_profile_use == true) {
 		if profileFile := pgo.Properties.getPgoProfileFile(ctx); profileFile.Valid() {
 			pgo.Properties.PgoCompile = true
 		}
