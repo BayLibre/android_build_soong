@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1e845fe_db653dfc",
+        "filename": "cc/linker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-24T23:06:44Z",
+      "side": 1,
+      "message": "This is unnecessary, ctx.Darwin() checks if you are currently building for Darwin.",
+      "range": {
+        "startLine": 210,
+        "startChar": 20,
+        "endLine": 210,
+        "endChar": 52
+      },
+      "revId": "45f164c42c7a704b738b6488cf276c1d8a458650",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
