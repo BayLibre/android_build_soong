@@ -45,6 +45,47 @@
       "revId": "6437105e48a82e56c9b7c8f1616685ebf175c628",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6c1f165_449581ac",
+        "filename": "xml/xml.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-04-25T23:31:28Z",
+      "side": 1,
+      "message": "We need some indication that the command actually ran, otherwise we\u0027ll have to run this command during every build. (The log that we ran it is not enough, even though most of the time these days it does contain enough information)",
+      "parentUuid": "649d0436_7c868eba",
+      "range": {
+        "startLine": 31,
+        "startChar": 79,
+        "endLine": 31,
+        "endChar": 89
+      },
+      "revId": "6437105e48a82e56c9b7c8f1616685ebf175c628",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22a8aeff_6e17c761",
+        "filename": "xml/xml.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-04-25T23:31:28Z",
+      "side": 1,
+      "message": "You may want to use `touch -a` along with `Restat: true` here -- that way the prebuilt wouldn\u0027t get reinstalled if the schema (or xmllint) changed (but we\u0027d still reverify it).",
+      "revId": "6437105e48a82e56c9b7c8f1616685ebf175c628",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
