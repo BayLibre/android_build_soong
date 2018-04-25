@@ -16,6 +16,24 @@
       "revId": "5f8d44c430269f9784c3e7ca9523a18b9034f616",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ac465db_9f2946bc",
+        "filename": "android/androidmk.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1014807
+      },
+      "writtenOn": "2018-04-25T02:17:45Z",
+      "side": 1,
+      "message": "`required` may contain other modules (not necessary `cc_library`).  We won\u0027t be able to distinguish `cc_library` from other modules when we are adding dependencies with `AddVariationDependencies()` in `cc/cc.go`.",
+      "parentUuid": "54e3e124_76a71109",
+      "revId": "5f8d44c430269f9784c3e7ca9523a18b9034f616",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
