@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "909c4cd0_28c0879a",
+        "filename": "xml/xml.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-04-25T16:23:10Z",
+      "side": 1,
+      "message": "we also want to use --schema for WXS (a.k.a XSD schemas). Maybe dtd -\u003e dtdvalid, xsd -\u003e schema?",
+      "range": {
+        "startLine": 31,
+        "startChar": 46,
+        "endLine": 31,
+        "endChar": 54
+      },
+      "revId": "6437105e48a82e56c9b7c8f1616685ebf175c628",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "649d0436_7c868eba",
+        "filename": "xml/xml.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-04-25T16:23:10Z",
+      "side": 1,
+      "message": "why is touch $out necessary?",
+      "range": {
+        "startLine": 31,
+        "startChar": 79,
+        "endLine": 31,
+        "endChar": 89
+      },
+      "revId": "6437105e48a82e56c9b7c8f1616685ebf175c628",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
