@@ -229,6 +229,7 @@ func (module *sdkLibrary) createStubsLibrary(mctx android.TopDownMutatorContext,
 	props := struct {
 		Name              *string
 		Srcs              []string
+		Libs              []string
 		Sdk_version       *string
 		Soc_specific      *bool
 		Device_specific   *bool
@@ -250,6 +251,13 @@ func (module *sdkLibrary) createStubsLibrary(mctx android.TopDownMutatorContext,
 	// Unbundled apps will use the prebult one from /prebuilts/sdk
 	props.Product_variables.Unbundled_build.Enabled = proptools.BoolPtr(false)
 	props.Product_variables.Pdk.Enabled = proptools.BoolPtr(false)
+
+	// Note: Stubs should be able to compile on their own, however the legacy uiautomator lib requires
+	// a workaround because some of its deps in android.jar were moved out of it.
+	// TODO(hansson): Delete this when the legacy uiautomator lib is deleted.
+	if module.BaseModuleName() == "legacy_uiautomator" {
+		props.Libs = []string{"android.test.base"}
+	}
 
 	if module.SocSpecific() {
 		props.Soc_specific = proptools.BoolPtr(true)
