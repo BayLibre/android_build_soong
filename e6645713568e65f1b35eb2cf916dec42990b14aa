@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c35c23d_ed9f9138",
+        "filename": "xml/xml.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-04-26T18:26:24Z",
+      "side": 1,
+      "message": "One optional addition: in PRODUCT_COPY_FILES we pass xml files through xmllint without any options to check to see if it\u0027s well-formed xml. Maybe the else case here should do that too.",
+      "revId": "e6645713568e65f1b35eb2cf916dec42990b14aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
