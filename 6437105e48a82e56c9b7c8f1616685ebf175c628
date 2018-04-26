@@ -72,6 +72,54 @@
     },
     {
       "key": {
+        "uuid": "7f7c73d0_b08897f8",
+        "filename": "xml/xml.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-04-26T03:39:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "909c4cd0_28c0879a",
+      "range": {
+        "startLine": 31,
+        "startChar": 46,
+        "endLine": 31,
+        "endChar": 54
+      },
+      "revId": "6437105e48a82e56c9b7c8f1616685ebf175c628",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35f0bfb3_df732594",
+        "filename": "xml/xml.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-04-26T03:39:28Z",
+      "side": 1,
+      "message": "Thanks Dan.",
+      "parentUuid": "b6c1f165_449581ac",
+      "range": {
+        "startLine": 31,
+        "startChar": 79,
+        "endLine": 31,
+        "endChar": 89
+      },
+      "revId": "6437105e48a82e56c9b7c8f1616685ebf175c628",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "22a8aeff_6e17c761",
         "filename": "xml/xml.go",
         "patchSetId": 2
@@ -86,6 +134,24 @@
       "revId": "6437105e48a82e56c9b7c8f1616685ebf175c628",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6338464_0ed00e19",
+        "filename": "xml/xml.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-04-26T03:39:28Z",
+      "side": 1,
+      "message": "Thanks for the comment. Done.",
+      "parentUuid": "22a8aeff_6e17c761",
+      "revId": "6437105e48a82e56c9b7c8f1616685ebf175c628",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
