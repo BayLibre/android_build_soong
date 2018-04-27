@@ -31,6 +31,7 @@ import (
 var (
 	sdkStubsLibrarySuffix = ".stubs"
 	sdkSystemApiSuffix    = ".system"
+	sdkTestApiSuffix      = ".test"
 	sdkDocsSuffix         = ".docs"
 	sdkImplLibrarySuffix  = ".impl"
 	sdkXmlFileSuffix      = ".xml"
@@ -44,6 +45,15 @@ type stubsLibraryDependencyTag struct {
 var (
 	publicApiStubsTag = dependencyTag{name: "public"}
 	systemApiStubsTag = dependencyTag{name: "system"}
+	testApiStubsTag   = dependencyTag{name: "test"}
+)
+
+type apiScope int
+
+const (
+	apiScopePublic apiScope = iota
+	apiScopeSystem
+	apiScopeTest
 )
 
 var (
@@ -104,12 +114,14 @@ type sdkLibrary struct {
 
 	publicApiStubsPath android.Paths
 	systemApiStubsPath android.Paths
+	testApiStubsPath   android.Paths
 }
 
 func (module *sdkLibrary) DepsMutator(ctx android.BottomUpMutatorContext) {
 	// Add dependencies to the stubs library
-	ctx.AddDependency(ctx.Module(), publicApiStubsTag, module.stubsName(false))
-	ctx.AddDependency(ctx.Module(), systemApiStubsTag, module.stubsName(true))
+	ctx.AddDependency(ctx.Module(), publicApiStubsTag, module.stubsName(apiScopePublic))
+	ctx.AddDependency(ctx.Module(), systemApiStubsTag, module.stubsName(apiScopeSystem))
+	ctx.AddDependency(ctx.Module(), testApiStubsTag, module.stubsName(apiScopeTest))
 }
 
 func (module *sdkLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
@@ -124,8 +136,13 @@ func (module *sdkLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext)
 			switch tag {
 			case publicApiStubsTag:
 				module.publicApiStubsPath = stubs.HeaderJars()
+				break
 			case systemApiStubsTag:
 				module.systemApiStubsPath = stubs.HeaderJars()
+				break
+			case testApiStubsTag:
+				module.testApiStubsPath = stubs.HeaderJars()
+				break
 			default:
 				ctx.ModuleErrorf("depends on module %q of unknown tag %q", otherName, tag)
 			}
@@ -148,19 +165,29 @@ func (module *sdkLibrary) AndroidMk() android.AndroidMkData {
 }
 
 // Module name of the stubs library
-func (module *sdkLibrary) stubsName(forSystemApi bool) string {
+func (module *sdkLibrary) stubsName(apiScope apiScope) string {
 	stubsName := module.BaseModuleName() + sdkStubsLibrarySuffix
-	if forSystemApi {
+	switch apiScope {
+	case apiScopeSystem:
 		stubsName = stubsName + sdkSystemApiSuffix
+		break
+	case apiScopeTest:
+		stubsName = stubsName + sdkTestApiSuffix
+		break
 	}
 	return stubsName
 }
 
 // Module name of the docs
-func (module *sdkLibrary) docsName(forSystemApi bool) string {
+func (module *sdkLibrary) docsName(apiScope apiScope) string {
 	docsName := module.BaseModuleName() + sdkDocsSuffix
-	if forSystemApi {
+	switch apiScope {
+	case apiScopeSystem:
 		docsName = docsName + sdkSystemApiSuffix
+		break
+	case apiScopeTest:
+		docsName = docsName + sdkTestApiSuffix
+		break
 	}
 	return docsName
 }
@@ -191,10 +218,15 @@ func (module *sdkLibrary) xmlFileName() string {
 // SDK version that the stubs library is built against. Note that this is always
 // *current. Older stubs library built with a numberd SDK version is created from
 // the prebuilt jar.
-func (module *sdkLibrary) sdkVersion(forSystemApi bool) string {
-	if forSystemApi {
+func (module *sdkLibrary) sdkVersion(apiScope apiScope) string {
+	switch apiScope {
+	case apiScopePublic:
+		return "current"
+	case apiScopeSystem:
 		return "system_current"
-	} else {
+	case apiScopeTest:
+		return "test_current"
+	default:
 		return "current"
 	}
 }
@@ -202,10 +234,15 @@ func (module *sdkLibrary) sdkVersion(forSystemApi bool) string {
 // $(INTERNAL_PLATFORM_<apiTagName>_API_FILE) points to the generated
 // api file for the current source
 // TODO: remove this when apicheck is done in soong
-func (module *sdkLibrary) apiTagName(forSystemApi bool) string {
+func (module *sdkLibrary) apiTagName(apiScope apiScope) string {
 	apiTagName := strings.Replace(strings.ToUpper(module.BaseModuleName()), ".", "_", -1)
-	if forSystemApi {
+	switch apiScope {
+	case apiScopeSystem:
 		apiTagName = apiTagName + "_SYSTEM"
+		break
+	case apiScopeTest:
+		apiTagName = apiTagName + "_TEST"
+		break
 	}
 	return apiTagName
 }
@@ -213,11 +250,16 @@ func (module *sdkLibrary) apiTagName(forSystemApi bool) string {
 // returns the path (relative to this module) to the API txt file. Files are located
 // ./<api_dir>/<api_level>.txt where <api_level> is either current, system-current, removed,
 // or system-removed.
-func (module *sdkLibrary) apiFilePath(apiLevel string, forSystemApi bool) string {
+func (module *sdkLibrary) apiFilePath(apiLevel string, apiScope apiScope) string {
 	apiDir := "api"
 	apiFile := apiLevel
-	if forSystemApi {
+	switch apiScope {
+	case apiScopeSystem:
 		apiFile = "system-" + apiFile
+		break
+	case apiScopeTest:
+		apiFile = "test-" + apiFile
+		break
 	}
 	apiFile = apiFile + ".txt"
 
@@ -225,7 +267,7 @@ func (module *sdkLibrary) apiFilePath(apiLevel string, forSystemApi bool) string
 }
 
 // Creates a static java library that has API stubs
-func (module *sdkLibrary) createStubsLibrary(mctx android.TopDownMutatorContext, forSystemApi bool) {
+func (module *sdkLibrary) createStubsLibrary(mctx android.TopDownMutatorContext, apiScope apiScope) {
 	props := struct {
 		Name              *string
 		Srcs              []string
@@ -243,10 +285,10 @@ func (module *sdkLibrary) createStubsLibrary(mctx android.TopDownMutatorContext,
 		}
 	}{}
 
-	props.Name = proptools.StringPtr(module.stubsName(forSystemApi))
+	props.Name = proptools.StringPtr(module.stubsName(apiScope))
 	// sources are generated from the droiddoc
-	props.Srcs = []string{":" + module.docsName(forSystemApi)}
-	props.Sdk_version = proptools.StringPtr(module.sdkVersion(forSystemApi))
+	props.Srcs = []string{":" + module.docsName(apiScope)}
+	props.Sdk_version = proptools.StringPtr(module.sdkVersion(apiScope))
 	// Unbundled apps will use the prebult one from /prebuilts/sdk
 	props.Product_variables.Unbundled_build.Enabled = proptools.BoolPtr(false)
 	props.Product_variables.Pdk.Enabled = proptools.BoolPtr(false)
@@ -264,7 +306,7 @@ func (module *sdkLibrary) createStubsLibrary(mctx android.TopDownMutatorContext,
 
 // Creates a droiddoc module that creates stubs source files from the given full source
 // files
-func (module *sdkLibrary) createDocs(mctx android.TopDownMutatorContext, forSystemApi bool) {
+func (module *sdkLibrary) createDocs(mctx android.TopDownMutatorContext, apiScope apiScope) {
 	props := struct {
 		Name                    *string
 		Srcs                    []string
@@ -280,7 +322,7 @@ func (module *sdkLibrary) createDocs(mctx android.TopDownMutatorContext, forSyst
 		Removed_api_filename    *string
 	}{}
 
-	props.Name = proptools.StringPtr(module.docsName(forSystemApi))
+	props.Name = proptools.StringPtr(module.docsName(apiScope))
 	props.Srcs = module.properties.Srcs
 	props.Custom_template = proptools.StringPtr("droiddoc-templates-sdk")
 	props.Installable = proptools.BoolPtr(false)
@@ -289,8 +331,13 @@ func (module *sdkLibrary) createDocs(mctx android.TopDownMutatorContext, forSyst
 	droiddocArgs := " -hide 110 -hide 111 -hide 113 -hide 121 -hide 125 -hide 126 -hide 127 -hide 128" +
 		" -stubpackages " + strings.Join(module.properties.Api_packages, ":") +
 		" -nodocs"
-	if forSystemApi {
+	switch apiScope {
+	case apiScopeSystem:
 		droiddocArgs = droiddocArgs + " -showAnnotation android.annotation.SystemApi"
+		break
+	case apiScopeTest:
+		droiddocArgs = droiddocArgs + " -showAnnotation android.annotation.TestApi"
+		break
 	}
 	props.Args = proptools.StringPtr(droiddocArgs)
 
@@ -300,13 +347,19 @@ func (module *sdkLibrary) createDocs(mctx android.TopDownMutatorContext, forSyst
 	// TODO: If any incompatible change is detected, break the build
 	currentApiFileName := "current.txt"
 	removedApiFileName := "removed.txt"
-	if forSystemApi {
+	switch apiScope {
+	case apiScopeSystem:
 		currentApiFileName = "system-" + currentApiFileName
 		removedApiFileName = "system-" + removedApiFileName
+		break
+	case apiScopeTest:
+		currentApiFileName = "test-" + currentApiFileName
+		removedApiFileName = "test-" + removedApiFileName
+		break
 	}
 	currentApiFileName = path.Join("api", currentApiFileName)
 	removedApiFileName = path.Join("api", removedApiFileName)
-	props.Api_tag_name = proptools.StringPtr(module.apiTagName(forSystemApi))
+	props.Api_tag_name = proptools.StringPtr(module.apiTagName(apiScope))
 	// Note: the exact names of these two are not important because they are always
 	// referenced by the make variable $(INTERNAL_PLATFORM_<TAG_NAME>_API_FILE)
 	props.Api_filename = proptools.StringPtr(currentApiFileName)
@@ -448,12 +501,16 @@ func javaSdkLibraries(config android.Config) *[]string {
 func sdkLibraryMutator(mctx android.TopDownMutatorContext) {
 	if module, ok := mctx.Module().(*sdkLibrary); ok {
 		// for public API stubs
-		module.createStubsLibrary(mctx, false)
-		module.createDocs(mctx, false)
+		module.createStubsLibrary(mctx, apiScopePublic)
+		module.createDocs(mctx, apiScopePublic)
 
 		// for system API stubs
-		module.createStubsLibrary(mctx, true)
-		module.createDocs(mctx, true)
+		module.createStubsLibrary(mctx, apiScopeSystem)
+		module.createDocs(mctx, apiScopeSystem)
+
+		// for test API stubs
+		module.createStubsLibrary(mctx, apiScopeTest)
+		module.createDocs(mctx, apiScopeTest)
 
 		// for runtime
 		module.createXmlFile(mctx)
