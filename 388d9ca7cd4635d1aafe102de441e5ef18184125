@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8a2b1ae_d5b21061",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-27T15:09:02Z",
+      "side": 1,
+      "message": "break is unnecessary in go, it always breaks between case blocks unless you use the fallthrough keyword.",
+      "revId": "388d9ca7cd4635d1aafe102de441e5ef18184125",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
