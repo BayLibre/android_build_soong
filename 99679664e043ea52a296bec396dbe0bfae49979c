@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2cfc0fc4_a78a289c",
+        "filename": "xml/xml.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-27T15:00:49Z",
+      "side": 1,
+      "message": "Prefer *string everywhere so it can be used with a defaults module",
+      "revId": "99679664e043ea52a296bec396dbe0bfae49979c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93742431_680dfaad",
+        "filename": "xml/xml.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-04-27T15:00:49Z",
+      "side": 1,
+      "message": "This isn\u0027t strictly necessary, it will inherit AndroidMk() from the embedded PrebuiltEtc.  You only need this if there are multiple embedded objects with AndroidMk() modules, or if you want to override the embedded AndroidMk().",
+      "revId": "99679664e043ea52a296bec396dbe0bfae49979c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
