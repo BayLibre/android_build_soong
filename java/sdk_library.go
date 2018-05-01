@@ -110,7 +110,8 @@ type sdkLibrary struct {
 	android.ModuleBase
 	android.DefaultableModuleBase
 
-	properties sdkLibraryProperties
+	properties       sdkLibraryProperties
+	deviceProperties CompilerDeviceProperties
 
 	publicApiStubsPath android.Paths
 	systemApiStubsPath android.Paths
@@ -401,7 +402,7 @@ func (module *sdkLibrary) createImplLibrary(mctx android.TopDownMutatorContext) 
 		props.Product_specific = proptools.BoolPtr(true)
 	}
 
-	mctx.CreateModule(android.ModuleFactoryAdaptor(LibraryFactory(true)), &props)
+	mctx.CreateModule(android.ModuleFactoryAdaptor(LibraryFactory(true)), &props, &module.deviceProperties)
 }
 
 // Creates the xml file that publicizes the runtime library
@@ -519,6 +520,7 @@ func sdkLibraryMutator(mctx android.TopDownMutatorContext) {
 func sdkLibraryFactory() android.Module {
 	module := &sdkLibrary{}
 	module.AddProperties(&module.properties)
+	module.AddProperties(&module.deviceProperties)
 	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibCommon)
 	android.InitDefaultableModule(module)
 	return module
