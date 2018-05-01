@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "158cfb48_2c7171cd",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-05-01T16:59:35Z",
+      "side": 1,
+      "message": "If you do this twice with values that fit into the backing array of module.properties.Srcs they will overwrite each other.  I\u0027d suggest:\n\n    props.Srcs \u003d append(props.Srcs, module.properties.Srcs...)\n    props.Srcs \u003d append(props.Srcs, module.properties.Api_srcs...)",
+      "revId": "047e792607d781c47cd7c3c84dcdfa17e6f6a73b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
