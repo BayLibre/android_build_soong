@@ -16,6 +16,24 @@
       "revId": "047e792607d781c47cd7c3c84dcdfa17e6f6a73b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1d59548_d6256a3b",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-05-01T17:16:51Z",
+      "side": 1,
+      "message": "Done. I am still learning golang. Thanks for the tip.",
+      "parentUuid": "158cfb48_2c7171cd",
+      "revId": "047e792607d781c47cd7c3c84dcdfa17e6f6a73b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
