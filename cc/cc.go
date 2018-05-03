@@ -160,7 +160,8 @@ type ObjectLinkerProperties struct {
 // Properties used to compile all C or C++ modules
 type BaseProperties struct {
 	// compile module with clang instead of gcc
-	Clang *bool `android:"arch_variant"`
+	Clang     *bool `android:"arch_variant"`
+	Abi_check *bool `android:"arch_variant"`
 
 	// Minimum sdk version supported when compiling against the ndk
 	Sdk_version *string
@@ -558,7 +559,8 @@ func (ctx *moduleContextImpl) createVndkSourceAbiDump() bool {
 		isUnsanitizedVariant = sanitize.isUnsanitizedVariant()
 	}
 	vendorAvailable := Bool(ctx.mod.VendorProperties.Vendor_available)
-	return !skipAbiChecks && isUnsanitizedVariant && ctx.ctx.Device() && ((ctx.useVndk() && ctx.isVndk() && vendorAvailable) || inList(ctx.baseModuleName(), llndkLibraries))
+	abiCheck := Bool(ctx.mod.Properties.Abi_check)
+	return !skipAbiChecks && isUnsanitizedVariant && ctx.ctx.Device() && ((ctx.useVndk() && ctx.isVndk() && vendorAvailable) || inList(ctx.baseModuleName(), llndkLibraries) || abiCheck)
 }
 
 func (ctx *moduleContextImpl) selectedStl() string {
