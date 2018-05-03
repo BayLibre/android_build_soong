@@ -16,6 +16,24 @@
       "revId": "fc054614a9a952a950fbef2c81be7fa503413c64",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a87c2102_e484107e",
+        "filename": "android/api_levels.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-05-03T23:04:12Z",
+      "side": 1,
+      "message": "You can do it with:\n\nctx.Config().Once(\"ndkApiLevelsMap\", func() interface{} {\n    return getApiLevelsMap(ctx.Config())\n}).(map[string]int)",
+      "parentUuid": "be7ee89a_72bc134f",
+      "revId": "fc054614a9a952a950fbef2c81be7fa503413c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
