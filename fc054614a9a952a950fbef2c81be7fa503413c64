@@ -34,6 +34,24 @@
       "revId": "fc054614a9a952a950fbef2c81be7fa503413c64",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29f63707_a04f8216",
+        "filename": "android/api_levels.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2018-05-03T23:23:09Z",
+      "side": 1,
+      "message": "Factored a bit differently so that block doesn\u0027t have to be kept in sync between callsites, but done. Thanks for the tip.",
+      "parentUuid": "a87c2102_e484107e",
+      "revId": "fc054614a9a952a950fbef2c81be7fa503413c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
