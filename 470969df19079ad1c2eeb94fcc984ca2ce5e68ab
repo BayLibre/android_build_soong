@@ -22,6 +22,30 @@
       "revId": "470969df19079ad1c2eeb94fcc984ca2ce5e68ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3b9db89_47b77a9b",
+        "filename": "cc/pgo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2018-05-03T23:35:26Z",
+      "side": 0,
+      "message": "The condition here is equivalent to props.PgoCompile.",
+      "parentUuid": "ef6de1ea_8f8f3785",
+      "range": {
+        "startLine": 169,
+        "startChar": 49,
+        "endLine": 169,
+        "endChar": 68
+      },
+      "revId": "470969df19079ad1c2eeb94fcc984ca2ce5e68ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
