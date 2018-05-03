@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be7ee89a_72bc134f",
+        "filename": "android/api_levels.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2018-05-03T22:45:36Z",
+      "side": 1,
+      "message": "Is there a smarter way to just initialize this once rather than generate it each time it\u0027s needed? Not sure what sort of init function would be the right place to do that in soong.",
+      "revId": "fc054614a9a952a950fbef2c81be7fa503413c64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
