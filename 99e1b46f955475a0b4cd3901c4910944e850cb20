@@ -16,6 +16,24 @@
       "revId": "99e1b46f955475a0b4cd3901c4910944e850cb20",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e21dce1_919825cb",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-05-05T02:14:31Z",
+      "side": 1,
+      "message": "Does android_* make sense?",
+      "parentUuid": "78a145c1_de6c8601",
+      "revId": "99e1b46f955475a0b4cd3901c4910944e850cb20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
