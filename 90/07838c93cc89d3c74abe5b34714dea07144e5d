@@ -1,0 +1,10 @@
+Code-Review+1: Anton Hansson <hansson@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Verified+1: Jiyong Park <jiyong@google.com>
+Presubmit-Verified+1: android-build-prod (mdb) <android-build-team-robot@google.com>
+Autosubmit+1: Jiyong Park <jiyong@google.com>
+Submitted-by: android-build-prod (mdb) <android-build-team-robot@google.com>
+Submitted-at: Sat, 05 May 2018 14:08:46 +0000
+Reviewed-on: https://android-review.googlesource.com/677041
+Project: platform/build/soong
+Branch: refs/heads/master
