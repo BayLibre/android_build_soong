@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78a145c1_de6c8601",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-05-05T02:13:19Z",
+      "side": 1,
+      "message": "Check for android_library too to make it more resilient against reordering",
+      "revId": "99e1b46f955475a0b4cd3901c4910944e850cb20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
