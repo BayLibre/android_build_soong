@@ -286,11 +286,22 @@ func (ddoc *Droiddoc) AndroidMk() android.AndroidMkData {
 				if ddoc.Javadoc.stubsSrcJar != nil {
 					fmt.Fprintln(w, "LOCAL_DROIDDOC_STUBS_SRCJAR := ", ddoc.Javadoc.stubsSrcJar.String())
 				}
+				if ddoc.checkCurrentApi() {
+					fmt.Fprintln(w, "LOCAL_DROIDDOC_CHECK_CURRENT_API_TIMESTAMP := ",
+						ddoc.checkCurrentApiTimestamp.String())
+					fmt.Fprintln(w, "LOCAL_DROIDDOC_UPDATE_CURRENT_API_TIMESTAMP := ",
+						ddoc.updateCurrentApiTimestamp.String())
+				}
+				if ddoc.checkLastReleasedApi() {
+					fmt.Fprintln(w, "LOCAL_DROIDDOC_CHECK_LAST_RELEASED_API_TIMESTAMP := ",
+						ddoc.checkLastReleasedApiTimestamp.String())
+				}
 				apiFilePrefix := "INTERNAL_PLATFORM_"
 				if String(ddoc.properties.Api_tag_name) != "" {
 					apiFilePrefix += String(ddoc.properties.Api_tag_name) + "_"
 				}
-				if String(ddoc.properties.Api_filename) != "" {
+				if ddoc.checkCurrentApi() || ddoc.checkLastReleasedApi() ||
+					String(ddoc.properties.Api_filename) != "" {
 					fmt.Fprintln(w, apiFilePrefix+"API_FILE := ", ddoc.apiFile.String())
 				}
 				if String(ddoc.properties.Private_api_filename) != "" {
@@ -299,7 +310,8 @@ func (ddoc *Droiddoc) AndroidMk() android.AndroidMkData {
 				if String(ddoc.properties.Private_dex_api_filename) != "" {
 					fmt.Fprintln(w, apiFilePrefix+"PRIVATE_DEX_API_FILE := ", ddoc.privateDexApiFile.String())
 				}
-				if String(ddoc.properties.Removed_api_filename) != "" {
+				if ddoc.checkCurrentApi() || ddoc.checkLastReleasedApi() ||
+					String(ddoc.properties.Removed_api_filename) != "" {
 					fmt.Fprintln(w, apiFilePrefix+"REMOVED_API_FILE := ", ddoc.removedApiFile.String())
 				}
 				if String(ddoc.properties.Removed_dex_api_filename) != "" {

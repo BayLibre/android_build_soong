@@ -45,6 +45,24 @@ var (
 		},
 		"outDir", "srcJarDir", "stubsDir", "srcJars", "opts",
 		"bootclasspathArgs", "classpathArgs", "sourcepath", "docZip")
+
+	apiCheck = pctx.AndroidStaticRule("apiCheck",
+		blueprint.RuleParams{
+			Command: `( ${config.ApiCheckCmd} -JXmx1024m -J"classpath $classpath" $opts ` +
+				`$stableApiFile $apiFileToCheck $stableRemovedApiFile $removedApiFileToCheck ` +
+				`&& touch $out ) || (echo $msg ; exit 38)`,
+			CommandDeps: []string{
+				"${config.ApiCheckCmd}",
+			},
+		},
+		"classpath", "opts", "stableApiFile", "apiFileToCheck", "stableRemovedApiFile", "removedApiFileToCheck", "msg")
+
+	updateApi = pctx.AndroidStaticRule("updateApi",
+		blueprint.RuleParams{
+			Command: `( ( cp -f $apiFileToCheck $stableApiFile && cp -f $removedApiFileToCheck $stableRemovedApiFile ) ` +
+				`&& touch $out ) || (echo failed to update public API ; exit 38)`,
+		},
+		"stableApiFile", "apiFileToCheck", "stableRemovedApiFile", "removedApiFileToCheck")
 )
 
 func init() {
@@ -92,6 +110,14 @@ type JavadocProperties struct {
 
 	// if not blank, set to the version of the sdk to compile against
 	Sdk_version *string `android:"arch_variant"`
+}
+
+type ApiToCheck struct {
+	Stable_api_file *string
+
+	Stable_removed_api_file *string
+
+	Args *string
 }
 
 type DroiddocProperties struct {
@@ -157,6 +183,12 @@ type DroiddocProperties struct {
 
 	// if set to false, don't allow droiddoc to generate stubs source files. Defaults to true.
 	Create_stubs *bool
+
+	Check_api struct {
+		Last_released ApiToCheck
+
+		Current ApiToCheck
+	}
 }
 
 type Javadoc struct {
@@ -189,6 +221,10 @@ type Droiddoc struct {
 	removedApiFile    android.WritablePath
 	removedDexApiFile android.WritablePath
 	exactApiFile      android.WritablePath
+
+	checkCurrentApiTimestamp      android.WritablePath
+	updateCurrentApiTimestamp     android.WritablePath
+	checkLastReleasedApiTimestamp android.WritablePath
 }
 
 func InitDroiddocModule(module android.DefaultableModule, hod android.HostOrDeviceSupported) {
@@ -420,6 +456,22 @@ func (j *Javadoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	})
 }
 
+func (d *Droiddoc) checkCurrentApi() bool {
+	if String(d.properties.Check_api.Current.Stable_api_file) != "" &&
+		String(d.properties.Check_api.Current.Stable_removed_api_file) != "" {
+		return true
+	}
+	return false
+}
+
+func (d *Droiddoc) checkLastReleasedApi() bool {
+	if String(d.properties.Check_api.Last_released.Stable_api_file) != "" &&
+		String(d.properties.Check_api.Last_released.Stable_removed_api_file) != "" {
+		return true
+	}
+	return false
+}
+
 func (d *Droiddoc) DepsMutator(ctx android.BottomUpMutatorContext) {
 	d.Javadoc.addDeps(ctx)
 
@@ -435,6 +487,16 @@ func (d *Droiddoc) DepsMutator(ctx android.BottomUpMutatorContext) {
 
 	// knowntags may contain filegroup or genrule.
 	android.ExtractSourcesDeps(ctx, d.properties.Knowntags)
+
+	if d.checkCurrentApi() {
+		android.ExtractSourceDeps(ctx, d.properties.Check_api.Current.Stable_api_file)
+		android.ExtractSourceDeps(ctx, d.properties.Check_api.Current.Stable_removed_api_file)
+	}
+
+	if d.checkLastReleasedApi() {
+		android.ExtractSourceDeps(ctx, d.properties.Check_api.Last_released.Stable_api_file)
+		android.ExtractSourceDeps(ctx, d.properties.Check_api.Last_released.Stable_removed_api_file)
+	}
 }
 
 func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
@@ -547,10 +609,16 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	var implicitOutputs android.WritablePaths
-	if String(d.properties.Api_filename) != "" {
-		d.apiFile = android.PathForModuleOut(ctx, String(d.properties.Api_filename))
+
+	if d.checkCurrentApi() || d.checkLastReleasedApi() || String(d.properties.Api_filename) != "" ||
+		String(d.properties.Removed_api_filename) != "" {
+		d.apiFile = android.PathForModuleOut(ctx, "api.txt")
 		args = args + " -api " + d.apiFile.String()
 		implicitOutputs = append(implicitOutputs, d.apiFile)
+
+		d.removedApiFile = android.PathForModuleOut(ctx, "removed.txt")
+		args = args + " -removedApi " + d.removedApiFile.String()
+		implicitOutputs = append(implicitOutputs, d.removedApiFile)
 	}
 
 	if String(d.properties.Private_api_filename) != "" {
@@ -563,12 +631,6 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		d.privateDexApiFile = android.PathForModuleOut(ctx, String(d.properties.Private_dex_api_filename))
 		args = args + " -privateDexApi " + d.privateDexApiFile.String()
 		implicitOutputs = append(implicitOutputs, d.privateDexApiFile)
-	}
-
-	if String(d.properties.Removed_api_filename) != "" {
-		d.removedApiFile = android.PathForModuleOut(ctx, String(d.properties.Removed_api_filename))
-		args = args + " -removedApi " + d.removedApiFile.String()
-		implicitOutputs = append(implicitOutputs, d.removedApiFile)
 	}
 
 	if String(d.properties.Removed_dex_api_filename) != "" {
@@ -624,6 +686,93 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			"docZip":            d.Javadoc.docZip.String(),
 		},
 	})
+
+	java8Home := ctx.Config().Getenv("ANDROID_JAVA8_HOME")
+	checkApiClasspath := jsilver.String() + ":" + doclava.String() + ":" +
+		android.PathForSource(ctx, java8Home, "lib/tools.jar").String()
+
+	if d.checkCurrentApi() {
+		d.checkCurrentApiTimestamp = android.PathForModuleOut(ctx, "check_current_api.timestamp")
+
+		stableApiFile := ctx.ExpandSource(String(d.properties.Check_api.Current.Stable_api_file),
+			"check_api.current.stable_api_file")
+		stableRemovedApiFile := ctx.ExpandSource(String(d.properties.Check_api.Current.Stable_removed_api_file),
+			"check_api.current_stable_removed_api_file")
+
+		ctx.Build(pctx, android.BuildParams{
+			Rule:        apiCheck,
+			Description: "Current API check",
+			Output:      d.checkCurrentApiTimestamp,
+			Inputs:      nil,
+			Implicits: append(android.Paths{}, doclava, jsilver,
+				android.PathForSource(ctx, java8Home, "lib/tools.jar"),
+				stableApiFile, stableRemovedApiFile, d.apiFile, d.removedApiFile),
+			Args: map[string]string{
+				"classpath":             checkApiClasspath,
+				"opts":                  String(d.properties.Check_api.Current.Args),
+				"stableApiFile":         stableApiFile.String(),
+				"apiFileToCheck":        d.apiFile.String(),
+				"stableRemovedApiFile":  stableRemovedApiFile.String(),
+				"removedApiFileToCheck": d.removedApiFile.String(),
+				"msg": fmt.Sprintf(`\n******************************\n`+
+					`You have tried to change the API from what has been previously approved.\n\n`+
+					`To make these errors go away, you have two choices:\n`+
+					`   1. You can add '@hide' javadoc comments to the methods, etc. listed in the\n`+
+					`      errors above.\n\n`+
+					`   2. You can update current.txt by executing the following command:`+
+					`         make %s-update-current-api\n\n`+
+					`      To submit the revised current.txt to the main Android repository,`+
+					`      you will need approval.\n`+
+					`******************************\n`, ctx.ModuleName()),
+			},
+		})
+
+		d.updateCurrentApiTimestamp = android.PathForModuleOut(ctx, "update_current_api.timestamp")
+
+		ctx.Build(pctx, android.BuildParams{
+			Rule:        updateApi,
+			Description: "update current API",
+			Output:      d.updateCurrentApiTimestamp,
+			Implicits:   append(android.Paths{}, stableApiFile, stableRemovedApiFile, d.apiFile, d.removedApiFile),
+			Args: map[string]string{
+				"stableApiFile":         stableApiFile.String(),
+				"apiFileToCheck":        d.apiFile.String(),
+				"stableRemovedApiFile":  stableRemovedApiFile.String(),
+				"removedApiFileToCheck": d.removedApiFile.String(),
+			},
+		})
+	}
+
+	if d.checkLastReleasedApi() {
+		d.checkLastReleasedApiTimestamp = android.PathForModuleOut(ctx, "check_stable_api.timestamp")
+
+		stableApiFile := ctx.ExpandSource(String(d.properties.Check_api.Last_released.Stable_api_file),
+			"check_api.last_released.stable_api_file")
+		stableRemovedApiFile := ctx.ExpandSource(String(d.properties.Check_api.Last_released.Stable_removed_api_file),
+			"check_api.last_released.stable_removed_api_file")
+
+		ctx.Build(pctx, android.BuildParams{
+			Rule:        apiCheck,
+			Description: "Last Released API check",
+			Output:      d.checkLastReleasedApiTimestamp,
+			Inputs:      nil,
+			Implicits: append(android.Paths{}, doclava, jsilver,
+				android.PathForSource(ctx, java8Home, "lib/tools.jar"),
+				stableApiFile, stableRemovedApiFile, d.apiFile, d.removedApiFile),
+			Args: map[string]string{
+				"classpath":             checkApiClasspath,
+				"opts":                  String(d.properties.Check_api.Last_released.Args),
+				"stableApiFile":         stableApiFile.String(),
+				"apiFileToCheck":        d.apiFile.String(),
+				"stableRemovedApiFile":  stableRemovedApiFile.String(),
+				"removedApiFileToCheck": d.removedApiFile.String(),
+				"msg": `\n******************************\n` +
+					`You have tried to change the API from what has been previously released in\n` +
+					`an SDK.  Please fix the errors listed above.\n` +
+					`******************************\n`,
+			},
+		})
+	}
 }
 
 var droiddocTemplateTag = dependencyTag{name: "droiddoc-template"}
