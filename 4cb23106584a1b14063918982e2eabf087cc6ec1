@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f8c786b_530f6bb4",
+        "filename": "cc/pgo.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-05-07T21:43:23Z",
+      "side": 1,
+      "message": "You can use proptools.BoolDefault(pgo.Properties.Pgo.Enable_profile_use, true) here now",
+      "range": {
+        "startLine": 256,
+        "startChar": 2,
+        "endLine": 256,
+        "endChar": 98
+      },
+      "revId": "4cb23106584a1b14063918982e2eabf087cc6ec1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
