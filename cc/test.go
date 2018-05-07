@@ -128,7 +128,7 @@ type testDecorator struct {
 }
 
 func (test *testDecorator) gtest() bool {
-	return test.Properties.Gtest == nil || *test.Properties.Gtest == true
+	return BoolDefault(test.Properties.Gtest, true)
 }
 
 func (test *testDecorator) linkerFlags(ctx ModuleContext, flags Flags) Flags {
@@ -158,14 +158,7 @@ func (test *testDecorator) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 func (test *testDecorator) linkerDeps(ctx BaseModuleContext, deps Deps) Deps {
 	if test.gtest() {
 		if ctx.useSdk() && ctx.Device() {
-			switch ctx.selectedStl() {
-			case "ndk_libc++_shared", "ndk_libc++_static":
-				deps.StaticLibs = append(deps.StaticLibs, "libgtest_main_ndk_libcxx", "libgtest_ndk_libcxx")
-			case "ndk_libgnustl_static":
-				deps.StaticLibs = append(deps.StaticLibs, "libgtest_main_ndk_gnustl", "libgtest_ndk_gnustl")
-			default:
-				deps.StaticLibs = append(deps.StaticLibs, "libgtest_main_ndk", "libgtest_ndk")
-			}
+			deps.StaticLibs = append(deps.StaticLibs, "libgtest_main_ndk_c++", "libgtest_ndk_c++")
 		} else {
 			deps.StaticLibs = append(deps.StaticLibs, "libgtest_main", "libgtest")
 		}
