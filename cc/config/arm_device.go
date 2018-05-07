@@ -39,6 +39,8 @@ var (
 		"-Wl,-m,armelf",
 	}
 
+	armLldflags = ClangFilterUnknownLldflags(armLdflags)
+
 	armArmCflags = []string{
 		"-fstrict-aliasing",
 	}
@@ -49,14 +51,6 @@ var (
 	}
 
 	armArchVariantCflags = map[string][]string{
-		"armv5te": []string{
-			"-march=armv5te",
-			"-mtune=xscale",
-			"-D__ARM_ARCH_5__",
-			"-D__ARM_ARCH_5T__",
-			"-D__ARM_ARCH_5E__",
-			"-D__ARM_ARCH_5TE__",
-		},
 		"armv7-a": []string{
 			"-march=armv7-a",
 			"-mfloat-abi=softfp",
@@ -140,7 +134,6 @@ func init() {
 		"neon")
 
 	android.RegisterArchVariants(android.Arm,
-		"armv5te",
 		"armv7-a",
 		"armv7-a-neon",
 		"armv8-a",
@@ -178,6 +171,7 @@ func init() {
 	pctx.StaticVariable("ArmToolchainCflags", strings.Join(armToolchainCflags, " "))
 	pctx.StaticVariable("ArmCflags", strings.Join(armCflags, " "))
 	pctx.StaticVariable("ArmLdflags", strings.Join(armLdflags, " "))
+	pctx.StaticVariable("ArmLldflags", strings.Join(armLldflags, " "))
 	pctx.StaticVariable("ArmCppflags", strings.Join(armCppflags, " "))
 	pctx.StaticVariable("ArmIncludeFlags", bionicHeaders("arm"))
 
@@ -188,7 +182,6 @@ func init() {
 	pctx.StaticVariable("ArmThumbCflags", strings.Join(armThumbCflags, " "))
 
 	// Architecture variant cflags
-	pctx.StaticVariable("ArmArmv5TECflags", strings.Join(armArchVariantCflags["armv5te"], " "))
 	pctx.StaticVariable("ArmArmv7ACflags", strings.Join(armArchVariantCflags["armv7-a"], " "))
 	pctx.StaticVariable("ArmArmv7ANeonCflags", strings.Join(armArchVariantCflags["armv7-a-neon"], " "))
 	pctx.StaticVariable("ArmArmv8ACflags", strings.Join(armArchVariantCflags["armv8-a"], " "))
@@ -206,6 +199,7 @@ func init() {
 	pctx.StaticVariable("ArmToolchainClangCflags", strings.Join(ClangFilterUnknownCflags(armToolchainCflags), " "))
 	pctx.StaticVariable("ArmClangCflags", strings.Join(ClangFilterUnknownCflags(armCflags), " "))
 	pctx.StaticVariable("ArmClangLdflags", strings.Join(ClangFilterUnknownCflags(armLdflags), " "))
+	pctx.StaticVariable("ArmClangLldflags", strings.Join(ClangFilterUnknownCflags(armLldflags), " "))
 	pctx.StaticVariable("ArmClangCppflags", strings.Join(ClangFilterUnknownCflags(armCppflags), " "))
 
 	// Clang ARM vs. Thumb instruction set cflags
@@ -213,8 +207,6 @@ func init() {
 	pctx.StaticVariable("ArmClangThumbCflags", strings.Join(ClangFilterUnknownCflags(armThumbCflags), " "))
 
 	// Clang arch variant cflags
-	pctx.StaticVariable("ArmClangArmv5TECflags",
-		strings.Join(armClangArchVariantCflags["armv5te"], " "))
 	pctx.StaticVariable("ArmClangArmv7ACflags",
 		strings.Join(armClangArchVariantCflags["armv7-a"], " "))
 	pctx.StaticVariable("ArmClangArmv7ANeonCflags",
@@ -241,7 +233,6 @@ func init() {
 
 var (
 	armArchVariantCflagsVar = map[string]string{
-		"armv5te":      "${config.ArmArmv5TECflags}",
 		"armv7-a":      "${config.ArmArmv7ACflags}",
 		"armv7-a-neon": "${config.ArmArmv7ANeonCflags}",
 		"armv8-a":      "${config.ArmArmv8ACflags}",
@@ -263,7 +254,6 @@ var (
 	}
 
 	armClangArchVariantCflagsVar = map[string]string{
-		"armv5te":      "${config.ArmClangArmv5TECflags}",
 		"armv7-a":      "${config.ArmClangArmv7ACflags}",
 		"armv7-a-neon": "${config.ArmClangArmv7ANeonCflags}",
 		"armv8-a":      "${config.ArmClangArmv8ACflags}",
@@ -288,6 +278,7 @@ var (
 type toolchainArm struct {
 	toolchain32Bit
 	ldflags                               string
+	lldflags                              string
 	toolchainCflags, toolchainClangCflags string
 }
 
@@ -339,6 +330,12 @@ func (t *toolchainArm) InstructionSetFlags(isa string) (string, error) {
 }
 
 func (t *toolchainArm) ClangTriple() string {
+	// http://b/72619014 work around llvm LTO bug.
+	return "armv7a-linux-androideabi"
+}
+
+func (t *toolchainArm) ndkTriple() string {
+	// Use current NDK include path, while ClangTriple is changed.
 	return t.GccTriple()
 }
 
@@ -356,6 +353,10 @@ func (t *toolchainArm) ClangCppflags() string {
 
 func (t *toolchainArm) ClangLdflags() string {
 	return t.ldflags
+}
+
+func (t *toolchainArm) ClangLldflags() string {
+	return t.lldflags // TODO: handle V8 cases
 }
 
 func (t *toolchainArm) ClangInstructionSetFlags(isa string) (string, error) {
@@ -399,8 +400,6 @@ func armToolchainFactory(arch android.Arch) Toolchain {
 		}
 	case "armv7-a":
 		fixCortexA8 = "-Wl,--fix-cortex-a8"
-	case "armv5te":
-		// Nothing extra for armv5te
 	case "armv8-a":
 		// Nothing extra for armv8-a
 	default:
@@ -413,6 +412,7 @@ func armToolchainFactory(arch android.Arch) Toolchain {
 			"${config.ArmLdflags}",
 			fixCortexA8,
 		}, " "),
+		lldflags:             "${config.ArmLldflags}",
 		toolchainClangCflags: strings.Join(toolchainClangCflags, " "),
 	}
 }
