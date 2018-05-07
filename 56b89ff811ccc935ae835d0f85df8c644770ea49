@@ -16,6 +16,24 @@
       "revId": "56b89ff811ccc935ae835d0f85df8c644770ea49",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96b29ed2_ce400647",
+        "filename": "cmd/dep_fixer/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-05-07T23:26:34Z",
+      "side": 1,
+      "message": "Done. Looks like this is broken in bpfix too, next patch fixes that too.",
+      "parentUuid": "ac0dbf89_266c0dea",
+      "revId": "56b89ff811ccc935ae835d0f85df8c644770ea49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
