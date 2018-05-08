@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c97aa00_e0ee135c",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-05-08T22:12:48Z",
+      "side": 1,
+      "message": "pdk build isn\u0027t a property of a module, it\u0027s a global setting.  Can you just not set d.checkCurrentApiTimestamp in a pdk build?  maybe make d.checkCurrentApi() check ctx.Config().IsPdkBuild()?",
+      "revId": "f5aae60281ce7344b9a623b3aab53744f897e2e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f999ff1_e41ec058",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-05-08T22:12:48Z",
+      "side": 1,
+      "message": "checkApiClasspath :\u003d classpath{jsilver, doclava, ...}",
+      "revId": "f5aae60281ce7344b9a623b3aab53744f897e2e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d42f06df_39a98761",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 722,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-05-08T22:12:48Z",
+      "side": 1,
+      "message": "append(android.Paths{apiFile, removedApiFile, d.apiFile, d.removedApiFile}, checkApiClasspath...)",
+      "revId": "f5aae60281ce7344b9a623b3aab53744f897e2e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9280185_9bb69e28",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-05-08T22:12:48Z",
+      "side": 1,
+      "message": "checkApiClasspath.FormJavaClasspath(\"-classpath\")",
+      "revId": "f5aae60281ce7344b9a623b3aab53744f897e2e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
