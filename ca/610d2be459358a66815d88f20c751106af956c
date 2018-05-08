@@ -1,0 +1,9 @@
+Code-Review+2: Colin Cross <ccross@android.com>
+Code-Review+2: Pirama Arumuga Nainar <pirama@google.com>
+Presubmit-Verified+1: android-build-prod (mdb) <android-build-team-robot@google.com>
+Verified+1: Yi Kong <yikong@google.com>
+Submitted-by: Yi Kong <yikong@google.com>
+Submitted-at: Tue, 08 May 2018 19:37:29 +0000
+Reviewed-on: https://android-review.googlesource.com/671282
+Project: platform/build/soong
+Branch: refs/heads/master
