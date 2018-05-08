@@ -1,0 +1,8 @@
+Code-Review+2: Colin Cross <ccross@android.com>
+Verified+1: Dan Willemsen <dwillemsen@google.com>
+Presubmit-Verified+1: android-build-prod (mdb) <android-build-team-robot@google.com>
+Submitted-by: android-build-prod (mdb) <android-build-team-robot@google.com>
+Submitted-at: Tue, 08 May 2018 01:05:09 +0000
+Reviewed-on: https://android-review.googlesource.com/679162
+Project: platform/build/soong
+Branch: refs/heads/master
