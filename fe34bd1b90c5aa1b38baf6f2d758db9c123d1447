@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e12e5811_ac1086c4",
+        "filename": "ui/build/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1058163
+      },
+      "writtenOn": "2018-05-09T15:04:52Z",
+      "side": 1,
+      "message": "This will crash when the username is shorter than 6 characters. Something like \nbn \u003d fmt.Sprintf(\"eng.%.6s.%s\", user.Username, time.Now().Format(\"20060102.150405\"))\n\nworks.",
+      "revId": "fe34bd1b90c5aa1b38baf6f2d758db9c123d1447",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
