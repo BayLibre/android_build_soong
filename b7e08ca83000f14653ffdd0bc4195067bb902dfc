@@ -22,6 +22,30 @@
       "revId": "b7e08ca83000f14653ffdd0bc4195067bb902dfc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66a99007_30672d8d",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1068404
+      },
+      "writtenOn": "2018-05-10T23:24:27Z",
+      "side": 1,
+      "message": "Perhaps, but I can\u0027t think of a better one either :)",
+      "parentUuid": "5584f521_7bf2be89",
+      "range": {
+        "startLine": 542,
+        "startChar": 26,
+        "endLine": 542,
+        "endChar": 53
+      },
+      "revId": "b7e08ca83000f14653ffdd0bc4195067bb902dfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
