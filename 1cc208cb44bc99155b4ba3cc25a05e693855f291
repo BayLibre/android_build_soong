@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a19870c9_b16e0ea0",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2018-05-10T02:17:28Z",
+      "side": 1,
+      "message": "this probably shouldn\u0027t be hard-coded to 1.8, since we\u0027ll want to be able to process language level 9 code?",
+      "range": {
+        "startLine": 53,
+        "startChar": 66,
+        "endLine": 53,
+        "endChar": 77
+      },
+      "revId": "1cc208cb44bc99155b4ba3cc25a05e693855f291",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
