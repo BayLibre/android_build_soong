@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80a790c2_e077ae3f",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-05-10T21:02:48Z",
+      "side": 1,
+      "message": "This seems unnecessary.",
+      "range": {
+        "startLine": 289,
+        "startChar": 12,
+        "endLine": 289,
+        "endChar": 27
+      },
+      "revId": "226447fc5be29f9b48cea0b03398c66d2e649552",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
