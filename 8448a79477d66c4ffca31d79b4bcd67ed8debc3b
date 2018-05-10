@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a67defd_b91321b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-05-10T23:55:44Z",
+      "side": 1,
+      "message": "For all 4 patches, add Merged-In: with the change-id.",
+      "revId": "8448a79477d66c4ffca31d79b4bcd67ed8debc3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
