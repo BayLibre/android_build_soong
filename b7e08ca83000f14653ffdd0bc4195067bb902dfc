@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5584f521_7bf2be89",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2018-05-10T22:44:49Z",
+      "side": 1,
+      "message": "This might not be the best name out here..",
+      "range": {
+        "startLine": 542,
+        "startChar": 26,
+        "endLine": 542,
+        "endChar": 53
+      },
+      "revId": "b7e08ca83000f14653ffdd0bc4195067bb902dfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
