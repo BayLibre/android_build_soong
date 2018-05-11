@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d7fd207_39f0c608",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2018-05-11T22:44:09Z",
+      "side": 1,
+      "message": "Is this the preferred way to gofmt this code? It\u0027s just jarring to see this when there are spaces around addition in the lines above.",
+      "range": {
+        "startLine": 321,
+        "startChar": 62,
+        "endLine": 321,
+        "endChar": 63
+      },
+      "revId": "5796726d42da250c702bce4f2d75afbeee5da82e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c30d54a0_423d69a9",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2018-05-11T22:44:09Z",
+      "side": 1,
+      "message": "Same comment about spacing around the \u0027+\u0027.",
+      "revId": "5796726d42da250c702bce4f2d75afbeee5da82e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
