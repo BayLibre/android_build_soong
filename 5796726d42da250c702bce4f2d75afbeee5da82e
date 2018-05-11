@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "80db296d_1d46a75d",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2018-05-11T23:10:04Z",
+      "side": 1,
+      "message": "Why --exclude-libs in a static binary? It does not export any symbols either way.",
+      "revId": "5796726d42da250c702bce4f2d75afbeee5da82e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3d7fd207_39f0c608",
         "filename": "cc/sanitize.go",
         "patchSetId": 1
