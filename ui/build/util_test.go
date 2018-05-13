@@ -14,7 +14,40 @@
 
 package build
 
-import "testing"
+import (
+	"android/soong/ui/logger"
+	"io/ioutil"
+	"os"
+	"path/filepath"
+	"testing"
+)
+
+func TestEnsureEmptyDirs(t *testing.T) {
+	ctx := testContext()
+	defer logger.Recover(func(err error) {
+		t.Error(err)
+	})
+
+	tmpDir, err := ioutil.TempDir("", "")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer func() {
+		err := os.RemoveAll(tmpDir)
+		if err != nil {
+			t.Errorf("Error removing tmpDir: %v", err)
+		}
+	}()
+
+	ensureEmptyDirectoriesExist(ctx, filepath.Join(tmpDir, "a/b"))
+
+	err = os.Chmod(filepath.Join(tmpDir, "a"), 0555)
+	if err != nil {
+		t.Fatalf("Failed to chown: %v", err)
+	}
+
+	ensureEmptyDirectoriesExist(ctx, filepath.Join(tmpDir, "a"))
+}
 
 func TestStripAnsiEscapes(t *testing.T) {
 	testcases := []struct {

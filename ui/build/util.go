@@ -62,9 +62,21 @@ func ensureDirectoriesExist(ctx Context, dirs ...string) {
 func ensureEmptyDirectoriesExist(ctx Context, dirs ...string) {
 	// remove all the directories
 	for _, dir := range dirs {
-		err := os.RemoveAll(dir)
-		if err != nil {
-			ctx.Fatalf("Error removing %s: %q\n", dir, err)
+		lastPath := ""
+		for {
+			err := os.RemoveAll(dir)
+			if err == nil {
+				break
+			}
+
+			if pathErr, ok := err.(*os.PathError); !ok ||
+				dir == pathErr.Path || lastPath == pathErr.Path {
+
+				ctx.Fatalf("Error removing %s: %q\n", dir, err)
+			} else {
+				lastPath = pathErr.Path
+				err = os.Chmod(filepath.Dir(pathErr.Path), 0777)
+			}
 		}
 	}
 	// recreate all the directories
