@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "adf55320_5752f178",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2018-05-14T21:02:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80db296d_1d46a75d",
+      "revId": "5796726d42da250c702bce4f2d75afbeee5da82e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d7fd207_39f0c608",
         "filename": "cc/sanitize.go",
         "patchSetId": 1
@@ -66,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "859fec9f_a06bd8ad",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2018-05-14T21:02:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbf68e3f_d0229372",
+      "range": {
+        "startLine": 321,
+        "startChar": 62,
+        "endLine": 321,
+        "endChar": 63
+      },
+      "revId": "5796726d42da250c702bce4f2d75afbeee5da82e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c30d54a0_423d69a9",
         "filename": "cc/sanitize.go",
         "patchSetId": 1
@@ -80,6 +122,24 @@
       "revId": "5796726d42da250c702bce4f2d75afbeee5da82e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77d3c747_a639ea30",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2018-05-14T21:02:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c30d54a0_423d69a9",
+      "revId": "5796726d42da250c702bce4f2d75afbeee5da82e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
