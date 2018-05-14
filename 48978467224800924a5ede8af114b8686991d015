@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28fa62ae_ef5dfc9a",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-05-14T23:01:16Z",
+      "side": 1,
+      "message": "This will be in a pseudo-random order, which might cause build.ninja to change every time it is regenerated and make diffing harder.  Iterate in a fixed order by extracting the list of keys, sorting it, and iterating over that.",
+      "revId": "48978467224800924a5ede8af114b8686991d015",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
