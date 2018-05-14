@@ -58,6 +58,8 @@ func (c *Module) AndroidMk() android.AndroidMkData {
 
 	ret := android.AndroidMkData{
 		OutputFile: c.outputFile,
+		Required:   c.Properties.AndroidMkRuntimeLibs,
+
 		Extra: []android.AndroidMkExtraFunc{
 			func(w io.Writer, outputFile android.Path) {
 				if len(c.Properties.Logtags) > 0 {
@@ -228,6 +230,10 @@ func (binary *binaryDecorator) AndroidMk(ctx AndroidMkContext, ret *android.Andr
 		if binary.coverageOutputFile.Valid() {
 			fmt.Fprintln(w, "LOCAL_PREBUILT_COVERAGE_ARCHIVE :=", binary.coverageOutputFile.String())
 		}
+
+		if len(binary.Properties.Overrides) > 0 {
+			fmt.Fprintln(w, "LOCAL_OVERRIDES_MODULES := "+strings.Join(binary.Properties.Overrides, " "))
+		}
 	})
 }
 
@@ -239,6 +245,7 @@ func (benchmark *benchmarkDecorator) AndroidMk(ctx AndroidMkContext, ret *androi
 			fmt.Fprintln(w, "LOCAL_COMPATIBILITY_SUITE :=",
 				strings.Join(benchmark.Properties.Test_suites, " "))
 		}
+		fmt.Fprintln(w, "LOCAL_NATIVE_BENCHMARK := true")
 	})
 
 	androidMkWriteTestData(benchmark.data, ctx, ret)
@@ -355,7 +362,7 @@ func (c *llndkStubDecorator) AndroidMk(ctx AndroidMkContext, ret *android.Androi
 func (c *vndkPrebuiltLibraryDecorator) AndroidMk(ctx AndroidMkContext, ret *android.AndroidMkData) {
 	ret.Class = "SHARED_LIBRARIES"
 
-	ret.SubName = vndkSuffix + c.version()
+	ret.SubName = c.NameSuffix()
 
 	ret.Extra = append(ret.Extra, func(w io.Writer, outputFile android.Path) {
 		c.libraryDecorator.androidMkWriteExportedFlags(w)
@@ -370,5 +377,31 @@ func (c *vndkPrebuiltLibraryDecorator) AndroidMk(ctx AndroidMkContext, ret *andr
 		fmt.Fprintln(w, "LOCAL_MODULE_SUFFIX := "+filepath.Ext(file))
 		fmt.Fprintln(w, "LOCAL_MODULE_PATH := $(OUT_DIR)/"+filepath.Clean(dir))
 		fmt.Fprintln(w, "LOCAL_MODULE_STEM := "+stem)
+	})
+}
+
+func (c *ndkPrebuiltStlLinker) AndroidMk(ctx AndroidMkContext, ret *android.AndroidMkData) {
+	ret.Class = "SHARED_LIBRARIES"
+
+	ret.Extra = append(ret.Extra, func(w io.Writer, outputFile android.Path) {
+		// Prevent make from installing the libraries to obj/lib (since we have
+		// dozens of libraries with the same name, they'll clobber each other
+		// and the real versions of the libraries from the platform).
+		fmt.Fprintln(w, "LOCAL_COPY_TO_INTERMEDIATE_LIBRARIES := false")
+	})
+}
+
+func (c *vendorPublicLibraryStubDecorator) AndroidMk(ctx AndroidMkContext, ret *android.AndroidMkData) {
+	ret.Class = "SHARED_LIBRARIES"
+	ret.SubName = vendorPublicLibrarySuffix
+
+	ret.Extra = append(ret.Extra, func(w io.Writer, outputFile android.Path) {
+		c.libraryDecorator.androidMkWriteExportedFlags(w)
+
+		fmt.Fprintln(w, "LOCAL_BUILT_MODULE_STEM := $(LOCAL_MODULE)"+outputFile.Ext())
+		fmt.Fprintln(w, "LOCAL_STRIP_MODULE := false")
+		fmt.Fprintln(w, "LOCAL_SYSTEM_SHARED_LIBRARIES :=")
+		fmt.Fprintln(w, "LOCAL_UNINSTALLABLE_MODULE := true")
+		fmt.Fprintln(w, "LOCAL_NO_NOTICE_FILE := true")
 	})
 }
