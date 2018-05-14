@@ -69,6 +69,24 @@
       "revId": "c72d619d1f6e41d93d4edcd2d3ce4df9e88297f6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3b61c0e_9951ec27",
+        "filename": "ui/build/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-05-14T22:38:18Z",
+      "side": 1,
+      "message": "I expect chmod not to respect umask the way open does.  man 2 chmod has no mention of umask.",
+      "parentUuid": "af85f6b2_510d7b9c",
+      "revId": "c72d619d1f6e41d93d4edcd2d3ce4df9e88297f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
