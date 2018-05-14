@@ -87,6 +87,24 @@
       "revId": "c72d619d1f6e41d93d4edcd2d3ce4df9e88297f6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd1fbce4_4690e1b6",
+        "filename": "ui/build/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-05-14T22:40:27Z",
+      "side": 1,
+      "message": "ah, true",
+      "parentUuid": "f3b61c0e_9951ec27",
+      "revId": "c72d619d1f6e41d93d4edcd2d3ce4df9e88297f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
