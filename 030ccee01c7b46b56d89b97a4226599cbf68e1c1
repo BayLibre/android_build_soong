@@ -88,6 +88,24 @@
       "revId": "030ccee01c7b46b56d89b97a4226599cbf68e1c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "22b99334_67d81639",
+        "filename": "cc/tidy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2018-05-15T18:14:20Z",
+      "side": 1,
+      "message": "It doesn\u0027t appear that the comma syntax works; clang just tries to parse the entire thing as one argument: \"error: unknown argument: \u0027-analyzer-config,c++-temp-dtor-inlining\u003dfalse\u0027 [clang-diagnostic-error]\"",
+      "parentUuid": "6aabe28c_f5379e46",
+      "revId": "030ccee01c7b46b56d89b97a4226599cbf68e1c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
