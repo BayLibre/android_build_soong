@@ -34,6 +34,24 @@
       "revId": "030ccee01c7b46b56d89b97a4226599cbf68e1c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18af2d59_a3e61632",
+        "filename": "cc/tidy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-05-15T05:02:25Z",
+      "side": 1,
+      "message": "Anything left unchanged by gofmt is acceptable.  I\u0027d probably put each Xclang on a new line.",
+      "parentUuid": "48c16dc5_fef586be",
+      "revId": "030ccee01c7b46b56d89b97a4226599cbf68e1c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
