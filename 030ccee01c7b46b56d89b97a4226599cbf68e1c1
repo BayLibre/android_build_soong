@@ -52,6 +52,24 @@
       "revId": "030ccee01c7b46b56d89b97a4226599cbf68e1c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "caba2b32_7977f412",
+        "filename": "cc/tidy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-05-15T05:17:23Z",
+      "side": 1,
+      "message": "I was going to suggest that until you realize that the real argument here is \"-analyzer-config c++-temp-dtor-inlining\u003dfalse\" -- in which case a single line seems reasonable.",
+      "parentUuid": "18af2d59_a3e61632",
+      "revId": "030ccee01c7b46b56d89b97a4226599cbf68e1c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
