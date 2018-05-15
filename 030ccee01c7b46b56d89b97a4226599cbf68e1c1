@@ -70,6 +70,24 @@
       "revId": "030ccee01c7b46b56d89b97a4226599cbf68e1c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6aabe28c_f5379e46",
+        "filename": "cc/tidy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-05-15T05:21:24Z",
+      "side": 1,
+      "message": "Does it support the comma syntax?\n\n \"-Xclang\u003d-analyzer-config,c++-temp-dtor-inlining\u003dfalse\"",
+      "parentUuid": "caba2b32_7977f412",
+      "revId": "030ccee01c7b46b56d89b97a4226599cbf68e1c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
