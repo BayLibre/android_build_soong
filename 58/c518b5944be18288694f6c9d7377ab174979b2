@@ -1,0 +1,9 @@
+Code-Review+2: Colin Cross <ccross@android.com>
+Verified+1: Jiyong Park <jiyong@google.com>
+Autosubmit+1: Jiyong Park <jiyong@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Jiyong Park <jiyong@google.com>
+Submitted-at: Tue, 15 May 2018 05:30:39 +0000
+Reviewed-on: https://android-review.googlesource.com/684244
+Project: platform/build/soong
+Branch: refs/heads/master
