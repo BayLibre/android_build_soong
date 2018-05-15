@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5aa111b9_0847bc06",
+        "filename": "cc/tidy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2018-05-15T03:34:00Z",
+      "side": 1,
+      "message": "Unsure what the right newline style is here.\n\nLogically, this is two args that look like \"-analyzer-config key\u003dvalue\". \"-Xclang\" just tells the compiler to interpret the following arg specially.\n\n`go fmt` appears happy, but...",
+      "revId": "030ccee01c7b46b56d89b97a4226599cbf68e1c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
