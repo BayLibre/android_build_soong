@@ -241,11 +241,12 @@ func (j *Module) compileDex(ctx android.ModuleContext, flags javaBuilderFlags,
 		j.proguardDictionary = android.PathForModuleOut(ctx, "proguard_dictionary")
 		r8Flags, r8Deps := j.r8Flags(ctx, flags)
 		ctx.Build(pctx, android.BuildParams{
-			Rule:        r8,
-			Description: "r8",
-			Output:      javalibJar,
-			Input:       classesJar,
-			Implicits:   r8Deps,
+			Rule:           r8,
+			Description:    "r8",
+			Output:         javalibJar,
+			ImplicitOutput: j.proguardDictionary,
+			Input:          classesJar,
+			Implicits:      r8Deps,
 			Args: map[string]string{
 				"dxFlags": strings.Join(dxFlags, " "),
 				"r8Flags": strings.Join(r8Flags, " "),

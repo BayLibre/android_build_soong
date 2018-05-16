@@ -260,7 +260,7 @@ type Module struct {
 	jacocoReportClassesFile android.Path
 
 	// output file containing mapping of obfuscated names
-	proguardDictionary android.Path
+	proguardDictionary android.WritablePath
 
 	// output file suitable for installing or running
 	outputFile android.Path
