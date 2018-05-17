@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea843d89_4811c877",
+        "filename": "cmd/path_interposer/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-05-17T23:28:42Z",
+      "side": 1,
+      "message": "Is it worth having an auditing mode that logs but allows everything?  Otherwise vendors will have a hard time finding the full list they need to fix or allow without building multiple times.",
+      "revId": "0699f3ce3862bda39871769db5a1482d9a4f8bc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d96e6d0_ed41f2c6",
+        "filename": "cmd/path_interposer/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-05-17T23:28:42Z",
+      "side": 1,
+      "message": "What does the final error message look like?  It should provide info on how to figure out what disallowed it, how to allow it, and a temporary workaround.",
+      "revId": "0699f3ce3862bda39871769db5a1482d9a4f8bc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
