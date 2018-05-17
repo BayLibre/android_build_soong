@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd9a542b_ad2ddc13",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-05-17T02:34:00Z",
+      "side": 1,
+      "message": "Why not just save this in a temporary so that we don\u0027t need to have the WritablePath usable elsewhere?",
+      "range": {
+        "startLine": 241,
+        "startChar": 2,
+        "endLine": 241,
+        "endChar": 25
+      },
+      "revId": "7d093ef080aa00ed229d2a8693f9fc924f7dd548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
