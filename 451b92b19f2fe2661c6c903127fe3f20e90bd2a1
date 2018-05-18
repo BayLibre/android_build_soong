@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a23a12a4_1c50f11d",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-05-18T02:26:14Z",
+      "side": 1,
+      "message": "I wasn\u0027t sure if I should make this:\n\nClangFilterUnknownLldflags(extraLdflags)\n\nhere instead.",
+      "range": {
+        "startLine": 278,
+        "startChar": 3,
+        "endLine": 278,
+        "endChar": 15
+      },
+      "revId": "451b92b19f2fe2661c6c903127fe3f20e90bd2a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
