@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3dd59cc4_07daa025",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-05-18T15:02:18Z",
+      "side": 1,
+      "message": "We usually use:\n\n  TODO(b/78139997): Add -check-all-apis back",
+      "revId": "ebf6cee359d260648c04dac9c3ef4810e1f8b738",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
