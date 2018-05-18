@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f2739b0_ccc34859",
+        "filename": "cmd/path_interposer/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-05-18T20:22:58Z",
+      "side": 1,
+      "message": "Would it make more sense to use a path in the tree here so it matches the branch they are building?  It\u0027s too bad there is no good way to render a markdown file locally.",
+      "revId": "ed3dd1bb043e40eefa3b1daccd1fad8f84d5b5e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
