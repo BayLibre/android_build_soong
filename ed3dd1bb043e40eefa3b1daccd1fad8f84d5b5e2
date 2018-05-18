@@ -16,6 +16,24 @@
       "revId": "ed3dd1bb043e40eefa3b1daccd1fad8f84d5b5e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8220fe7b_c47a974f",
+        "filename": "cmd/path_interposer/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-05-18T20:27:53Z",
+      "side": 1,
+      "message": "Between not being able to render it locally, and it not becoming a clickable link (at least in many terminals), I\u0027ve been preferring to use AOSP. This is the path that I\u0027ve been using to reference this file for all the deprecated/obsolete checks too.\n\nIt also means that we can update the guidance / wording (as long as we\u0027re careful about making it applicable to older versions).",
+      "parentUuid": "6f2739b0_ccc34859",
+      "revId": "ed3dd1bb043e40eefa3b1daccd1fad8f84d5b5e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
