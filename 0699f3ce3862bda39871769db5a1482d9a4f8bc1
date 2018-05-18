@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "30b075fa_1a673f9e",
+        "filename": "cmd/path_interposer/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-05-18T00:01:20Z",
+      "side": 1,
+      "message": "That\u0027s the current behavior, except for the handful of gcc/toolchain binaries, where gcc fails as it does some strange things when attempting to find cc1.\n\nMaking this an option going forward shouldn\u0027t be too hard, just adding an environment variable lookup on line 69, and ensuring that we actually populate the symlink. Right now, if it\u0027s not allowed, we shouldn\u0027t even be populating the symlink, and the tool won\u0027t show up in the PATH at all.",
+      "parentUuid": "ea843d89_4811c877",
+      "revId": "0699f3ce3862bda39871769db5a1482d9a4f8bc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d96e6d0_ed41f2c6",
         "filename": "cmd/path_interposer/main.go",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2018-05-17T23:28:42Z",
       "side": 1,
       "message": "What does the final error message look like?  It should provide info on how to figure out what disallowed it, how to allow it, and a temporary workaround.",
+      "revId": "0699f3ce3862bda39871769db5a1482d9a4f8bc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b689dd9_a6367ebf",
+        "filename": "cmd/path_interposer/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-05-18T00:01:20Z",
+      "side": 1,
+      "message": "Right now, as if the command doesn\u0027t exist, since in this case the symlink shouldn\u0027t have even been set up. But if it was for some reason:\n\nThe tool itself will print this message in the stderr, and exit with a failure -- which may or may not be visible in the kati/ninja output depending on what ran it.\n\nWe\u0027ll also have sent off a logging message above, and the current implementation in soong_ui will abort with an error message, including the full argument list, but not any other process information currently. Since it\u0027s fatal, we probably don\u0027t even get the failure from ninja.\n\nI had an implementation here that called out to pstree, but that\u0027s not available on Mac. I\u0027ll probably write an implementation that parses \u0027ps -o pid,ppid,command\u0027, since that seems to be the most stable common interface.",
+      "parentUuid": "4d96e6d0_ed41f2c6",
       "revId": "0699f3ce3862bda39871769db5a1482d9a4f8bc1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
