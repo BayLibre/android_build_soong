@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "f366d523_bcbfc58f",
+        "filename": "cmd/path_interposer/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-05-18T18:10:00Z",
+      "side": 1,
+      "message": "Added TEMPORARY_DISABLE_PATH_RESTRICTIONS that will symlink everything, and allows commands that would have been errors (but retains the visible logs in the build output).",
+      "parentUuid": "30b075fa_1a673f9e",
+      "revId": "0699f3ce3862bda39871769db5a1482d9a4f8bc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4d96e6d0_ed41f2c6",
         "filename": "cmd/path_interposer/main.go",
         "patchSetId": 5
@@ -69,6 +87,24 @@
       "revId": "0699f3ce3862bda39871769db5a1482d9a4f8bc1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9fef402_9f16e074",
+        "filename": "cmd/path_interposer/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-05-18T18:10:00Z",
+      "side": 1,
+      "message": "My new implementation looks something like this in the soong.log (if it\u0027s just in logging mode):\n\n  2018/05/17 18:07:08.535267 build/soong/ui/build/path.go:105: Unknown PATH tool \"cut\" used: []string{\"cut\", \"-d\", \" \", \"-f1\"}\n  2018/05/17 18:07:08.535300 build/soong/ui/build/path.go:107: See https://android.googlesource.com/platform/build/+/master/Changed.md#PATH_Tools for more information.\n  2018/05/17 18:07:08.535317 build/soong/ui/build/path.go:107: Process tree:\n  2018/05/17 18:07:08.535332 build/soong/ui/build/path.go:107: → /usr/local/google/home/dwillemsen/external/aosp/out/soong_ui --make-mode blueprint_tools\n  2018/05/17 18:07:08.535344 build/soong/ui/build/path.go:107:  → prebuilts/build-tools/linux-x86/bin/ckati --ninja --ninja_dir\u003dout --ninja_suffix\u003d-aosp_x86_64 --regen --ignore_optional_include\u003dout/%.P --detect_android_echo --color_warnings --gen_all_targets --werror_find_emulator --kati_stats -f build/make/core/main.mk --werror_overriding_commands --use_find_emulator BUILDING_WITH_NINJA\u003dtrue SOONG_ANDROID_MK\u003dout/soong/Android-aosp_x86_64.mk SOONG_MAKEVARS_MK\u003dout/soong/make_vars-aosp_x86_64.mk TARGET_DEVICE_DIR\u003dbuild/target/board/generic_x86_64\n  2018/05/17 18:07:08.535356 build/soong/ui/build/path.go:107:   → /bin/bash -c echo $CWD-dwillemsen | sum | cut -d \u0027 \u0027 -f1\n  2018/05/17 18:07:08.535367 build/soong/ui/build/path.go:107:    → cut -d   -f1\n\nIf it\u0027s printing out to the console, it\u0027s nearly the same thing, but with a shorter log prefix:\n\n  18:12:08 Disallowed PATH tool \"cut\" used: []string{\"cut\", \"-d\", \" \", \"-f1\"}\n  18:12:08 See https://android.googlesource.com/platform/build/+/master/Changed.md#PATH_Tools for more information.\n  18:12:08 Process tree:\n  18:12:08 → /usr/local/google/home/dwillemsen/external/aosp/out/soong_ui --make-mode blueprint_tools\n  18:12:08  → prebuilts/build-tools/linux-x86/bin/ckati --ninja --ninja_dir\u003dout --ninja_suffix\u003d-aosp_x86_64 --regen --ignore_optional_include\u003dout/%.P --detect_android_echo --color_warnings --gen_all_targets --werror_find_emulator --kati_stats -f build/make/core/main.mk --werror_overriding_commands --use_find_emulator BUILDING_WITH_NINJA\u003dtrue SOONG_ANDROID_MK\u003dout/s\noong/Android-aosp_x86_64.mk SOONG_MAKEVARS_MK\u003dout/soong/make_vars-aosp_x86_64.mk TARGET_DEVICE_DIR\u003dbuild/target/board/generic_x86_64\n  18:12:08   → /bin/bash -c echo $CWD-dwillemsen | sum | cut -d \u0027 \u0027 -f1                                                                                                                                                                                                                                                                                                       \n  18:12:08    → cut -d   -f1\n\nThe tool itself will only print anything to stderr if it\u0027s exiting with an error (but it would have triggered the console print above from soong_ui):\n\n  \"gcc\" is not allowed to be used. See https://android.googlesource.com/platform/build/+/master/Changes.md#PATH_Tools for more information.",
+      "parentUuid": "8b689dd9_a6367ebf",
+      "revId": "0699f3ce3862bda39871769db5a1482d9a4f8bc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
