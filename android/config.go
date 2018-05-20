@@ -811,11 +811,11 @@ func (c *deviceConfig) OdmSepolicyDirs() []string {
 	return c.config.productVariables.BoardOdmSepolicyDirs
 }
 
-func (c *deviceConfig) PlatPublicSepolicyDir() string {
+func (c *deviceConfig) PlatPublicSepolicyDirs() []string {
 	return c.config.productVariables.BoardPlatPublicSepolicyDir
 }
 
-func (c *deviceConfig) PlatPrivateSepolicyDir() string {
+func (c *deviceConfig) PlatPrivateSepolicyDirs() []string {
 	return c.config.productVariables.BoardPlatPrivateSepolicyDir
 }
 
