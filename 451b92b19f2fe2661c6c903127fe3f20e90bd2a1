@@ -22,6 +22,30 @@
       "revId": "451b92b19f2fe2661c6c903127fe3f20e90bd2a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0e8f9b4_ce05e2b1",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-05-21T17:52:16Z",
+      "side": 1,
+      "message": "It would only matter if you introduced a flag to extraLdFlags that Clang didn\u0027t support.",
+      "parentUuid": "a23a12a4_1c50f11d",
+      "range": {
+        "startLine": 278,
+        "startChar": 3,
+        "endLine": 278,
+        "endChar": 15
+      },
+      "revId": "451b92b19f2fe2661c6c903127fe3f20e90bd2a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
