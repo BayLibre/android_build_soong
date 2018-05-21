@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58b7f7c7_859ba340",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-05-21T23:42:36Z",
+      "side": 1,
+      "message": "deps.bootClasspath.FormJavaClassPath(\"-bootclasspath\")",
+      "revId": "b10f6dfb1f64c95ebaf2e57afdb9264bdb350828",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bddeac85_b4e8267d",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-05-21T23:42:36Z",
+      "side": 1,
+      "message": "BoolDefault(x, false) is the same as Bool(x)",
+      "revId": "b10f6dfb1f64c95ebaf2e57afdb9264bdb350828",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4623d72_9df00e54",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-05-21T23:42:36Z",
+      "side": 1,
+      "message": "It seems like this should be handled by the build system, which will make converting to dokka easier.  Can be updated in a followup patch though.",
+      "revId": "b10f6dfb1f64c95ebaf2e57afdb9264bdb350828",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
