@@ -70,6 +70,24 @@
       "revId": "6af2e4980faddca3fe95b3384b0910fb07bea2fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14bd0443_e0f0d9e4",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2018-05-22T22:00:15Z",
+      "side": 1,
+      "message": "k, guess it could be a string, but unclear if that\u0027s really better than a bool.",
+      "parentUuid": "35321071_eb8e59f6",
+      "revId": "6af2e4980faddca3fe95b3384b0910fb07bea2fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
