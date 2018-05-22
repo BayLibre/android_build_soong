@@ -16,6 +16,24 @@
       "revId": "6af2e4980faddca3fe95b3384b0910fb07bea2fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3e8f2a2_6713feb3",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-05-22T21:44:39Z",
+      "side": 1,
+      "message": "I\u0027m fine with differences between soong and make, but we\u0027d need to make the androidmk tool capable of doing the conversion.\n\nbuild_target is way too generic for a property name, I\u0027d expect that to be a product name or architecture, not an sdk selector.\n\nBlueprint syntax is relatively simple by design, and we try to keep complicated parsing out of string types.  We could support:\nbuild_target {\n    // One of:\n    sdk: 23,\n    current: true,\n    system_current: true,\n    platform: true,\n}\n\nbut this affects both java and native code (which uses sdk_version to select NDK apis), so it would be a big modification of all the Android.bp files.",
+      "parentUuid": "ca7b2a58_20a44c88",
+      "revId": "6af2e4980faddca3fe95b3384b0910fb07bea2fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
