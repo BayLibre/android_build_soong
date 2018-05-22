@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbd00239_41dc8056",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-05-22T02:51:29Z",
+      "side": 1,
+      "message": "same comment as the other change",
+      "range": {
+        "startLine": 9,
+        "startChar": 6,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "63d7ec5574f98d1c4242fc1cdb501fcac2ad6863",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fff43be4_955e2542",
+        "filename": "android/variable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-05-22T02:51:29Z",
+      "side": 1,
+      "message": "rs",
+      "range": {
+        "startLine": 215,
+        "startChar": 26,
+        "endLine": 215,
+        "endChar": 27
+      },
+      "revId": "63d7ec5574f98d1c4242fc1cdb501fcac2ad6863",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
