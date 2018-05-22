@@ -727,11 +727,10 @@ func SourceAbiDiff(ctx android.ModuleContext, inputDump android.Path, referenceD
 	outputFile := android.PathForModuleOut(ctx, baseName+".abidiff")
 
 	localAbiCheckAllowFlags := append([]string(nil), abiCheckAllowFlags...)
+	// Hack
+	localAbiCheckAllowFlags = append(localAbiCheckAllowFlags, "-allow-extensions")
 	if exportedHeaderFlags == "" {
 		localAbiCheckAllowFlags = append(localAbiCheckAllowFlags, "-advice-only")
-	}
-	if isVndkExt {
-		localAbiCheckAllowFlags = append(localAbiCheckAllowFlags, "-allow-extensions")
 	}
 
 	ctx.Build(pctx, android.BuildParams{
