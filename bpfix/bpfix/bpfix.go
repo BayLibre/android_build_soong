@@ -394,26 +394,34 @@ func removeTags(mod *parser.Module, buf []byte, patchlist *parser.PatchList) err
 				// force installation for -eng builds.
 				`
 		case "tests":
-			if strings.Contains(mod.Type, "cc_test") || strings.Contains(mod.Type, "cc_library_static") {
+			switch {
+			case strings.Contains(mod.Type, "cc_test"),
+				strings.Contains(mod.Type, "cc_library_static"),
+				strings.Contains(mod.Type, "java_test"),
+				mod.Type == "android_test":
 				continue
-			} else if strings.Contains(mod.Type, "cc_lib") {
+			case strings.Contains(mod.Type, "cc_lib"):
 				replaceStr += `// WARNING: Module tags are not supported in Soong.
 					// To make a shared library only for tests, use the "cc_test_library" module
 					// type. If you don't use gtest, set "gtest: false".
 					`
-			} else if strings.Contains(mod.Type, "cc_bin") {
+			case strings.Contains(mod.Type, "cc_bin"):
 				replaceStr += `// WARNING: Module tags are not supported in Soong.
 					// For native test binaries, use the "cc_test" module type. Some differences:
 					//  - If you don't use gtest, set "gtest: false"
 					//  - Binaries will be installed into /data/nativetest[64]/<name>/<name>
 					//  - Both 32 & 64 bit versions will be built (as appropriate)
 					`
-			} else if strings.Contains(mod.Type, "java_lib") {
+			case strings.Contains(mod.Type, "java_lib"):
 				replaceStr += `// WARNING: Module tags are not supported in Soong.
 					// For JUnit or similar tests, use the "java_test" module type. A dependency on
 					// Junit will be added by default, if it is using some other runner, set "junit: false".
 					`
-			} else {
+			case mod.Type == "android_app":
+				replaceStr += `// WARNING: Module tags are not supported in Soong.
+					// For JUnit or instrumentataion app tests, use the "android_test" module type.
+					`
+			default:
 				replaceStr += `// WARNING: Module tags are not supported in Soong.
 					// In most cases, tests are now identified by their module type:
 					// cc_test, java_test, python_test
