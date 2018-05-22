@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca7b2a58_20a44c88",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2018-05-22T21:34:26Z",
+      "side": 1,
+      "message": "are you generally trying to keep a simple mapping from make attributes to bp? I could also imagine some other setup of attributes which might be a bit nicer, like \"build_target: sdk { v \u003d N }\" or \"build_target: platform\". Maybe you already have a large enough set of java targets that shaking things up is not really tractable..",
+      "revId": "6af2e4980faddca3fe95b3384b0910fb07bea2fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
