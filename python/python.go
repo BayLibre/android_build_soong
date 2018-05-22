@@ -67,6 +67,15 @@ type BaseProperties struct {
 	// "runfiles/" tree directory directly.
 	Pkg_path *string `android:"arch_variant"`
 
+	// whether to put the Python package directly under the root of the
+	// source tree (this flag is only valid when embedded launcher is enabled), or
+	// put the package under "runfiles/" dir from the root of the
+	// source tree (when flag sets to true).
+	//
+	// This defaults to true today, but is expected to default to
+	// false in the future.
+	Canonical_pkg_from_root *bool `android:"arch_variant"`
+
 	// true, if the Python module is used internally, eg, Python std libs.
 	Is_internal *bool `android:"arch_variant"`
 
@@ -420,16 +429,20 @@ func (p *Module) GeneratePythonBuildActions(ctx android.ModuleContext) {
 			// pkg_path starts from "internal/" implicitly.
 			pkgPath = filepath.Join(internal, pkgPath)
 		} else {
-			// pkg_path starts from "runfiles/" implicitly.
-			pkgPath = filepath.Join(runFiles, pkgPath)
+			if p.properties.Canonical_pkg_from_root == nil || *p.properties.Canonical_pkg_from_root {
+				// pkg_path starts from "runfiles/" implicitly.
+				pkgPath = filepath.Join(runFiles, pkgPath)
+			}
 		}
 	} else {
 		if p.properties.Is_internal != nil && *p.properties.Is_internal {
 			// pkg_path starts from "runfiles/" implicitly.
 			pkgPath = internal
 		} else {
-			// pkg_path starts from "runfiles/" implicitly.
-			pkgPath = runFiles
+			if p.properties.Canonical_pkg_from_root == nil || *p.properties.Canonical_pkg_from_root {
+				// pkg_path starts from "runfiles/" implicitly.
+				pkgPath = runFiles
+			}
 		}
 	}
 
@@ -520,7 +533,9 @@ func (p *Module) createSrcsZip(ctx android.ModuleContext, pkgPath string) androi
 		sort.Strings(keys)
 
 		parArgs := []string{}
-		parArgs = append(parArgs, `-P `+pkgPath)
+		if pkgPath != "" {
+			parArgs = append(parArgs, `-P `+pkgPath)
+		}
 		implicits := android.Paths{}
 		for _, k := range keys {
 			parArgs = append(parArgs, `-C `+k)
