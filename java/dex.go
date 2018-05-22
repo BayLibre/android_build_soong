@@ -115,7 +115,9 @@ var r8 = pctx.AndroidStaticRule("r8",
 			`--force-proguard-compatibility ` +
 			`-printmapping $outDict ` +
 			`$dxFlags $r8Flags && ` +
-			`${config.SoongZipCmd} -o $outDir/classes.dex.jar -C $outDir -D $outDir && ` +
+			`rm -rf "$outDir.dex" && mkdir -p "$outDir.dex" && ` +
+			`cp $outDir/*.dex $outDir.dex/ && ` +
+			`${config.SoongZipCmd} -o $outDir/classes.dex.jar -C $outDir.dex -D $outDir.dex && ` +
 			`${config.MergeZipsCmd} -D -stripFile "*.class" $out $outDir/classes.dex.jar $in`,
 		CommandDeps: []string{
 			"${config.R8Cmd}",
