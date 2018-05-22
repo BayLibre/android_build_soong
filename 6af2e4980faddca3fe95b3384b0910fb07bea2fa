@@ -34,6 +34,24 @@
       "revId": "6af2e4980faddca3fe95b3384b0910fb07bea2fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "325fa25a_8808e8c7",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2018-05-22T21:54:41Z",
+      "side": 1,
+      "message": "I just have a feeling that the proliferation of \"parameters\" in make was an effect of not having a very expressive type system. Modifying all the native rules feels like a pain though;\n\nCould it be an option do keep sdk_version a string, but instead of a platform_apis bool add an enum (not sure about the attribute name) which is either platform or sdk (and defaulting to SDK, which also gives compat with current rules)? sdk_version would only matter if the enum is set to sdk.",
+      "parentUuid": "a3e8f2a2_6713feb3",
+      "revId": "6af2e4980faddca3fe95b3384b0910fb07bea2fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
