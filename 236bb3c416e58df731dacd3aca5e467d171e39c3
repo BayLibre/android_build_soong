@@ -22,6 +22,30 @@
       "revId": "236bb3c416e58df731dacd3aca5e467d171e39c3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14966d80_43e0620c",
+        "filename": "python/python.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-05-23T22:34:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26c25bab_2d8d362d",
+      "range": {
+        "startLine": 209,
+        "startChar": 43,
+        "endLine": 209,
+        "endChar": 82
+      },
+      "revId": "236bb3c416e58df731dacd3aca5e467d171e39c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
