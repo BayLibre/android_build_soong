@@ -1,0 +1,7 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Build-Cop-Override+1: Artem Iglikov <artikz@google.com>
+Submitted-by: Artem Iglikov <artikz@google.com>
+Submitted-at: Wed, 23 May 2018 10:34:05 +0000
+Reviewed-on: https://android-review.googlesource.com/692362
+Project: platform/build/soong
+Branch: refs/heads/master
