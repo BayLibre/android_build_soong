@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9740eba7_1b78843d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-05-23T01:31:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "447cf951_28df205b",
+      "range": {
+        "startLine": 10,
+        "startChar": 30,
+        "endLine": 10,
+        "endChar": 39
+      },
+      "revId": "ad16fe0b852c225c370c73d88cdb1de13b84e0ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12560175_f2bf2cdd",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "aebb26ea_ef5cb767",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-05-23T01:31:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12560175_f2bf2cdd",
+      "range": {
+        "startLine": 12,
+        "startChar": 18,
+        "endLine": 12,
+        "endChar": 24
+      },
+      "revId": "ad16fe0b852c225c370c73d88cdb1de13b84e0ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "934d8c3f_0b2293f5",
         "filename": "python/python.go",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2018-05-22T22:32:00Z",
       "side": 1,
       "message": "Source tree usually refers to the top of the `repo sync` tree -- here you appear to be referring to the zip file that nobody really needs to be looking in most of the time.\n\nWhy is this an option? Why would you want to change it?",
+      "range": {
+        "startLine": 70,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 41
+      },
+      "revId": "ad16fe0b852c225c370c73d88cdb1de13b84e0ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ca72c66_b9a5e45d",
+        "filename": "python/python.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-05-23T01:31:29Z",
+      "side": 1,
+      "message": "Removed runfiles/ dir for embedded Python. For non-embedded Python, we still need runfiles dir/ so that it can be unzip to /tmp of host system.",
+      "parentUuid": "934d8c3f_0b2293f5",
       "range": {
         "startLine": 70,
         "startChar": 4,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "6605ea94_7acd75fe",
+        "filename": "python/python.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-05-23T01:31:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ee275ad_eb51ce56",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 24
+      },
+      "revId": "ad16fe0b852c225c370c73d88cdb1de13b84e0ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7efba6bb_1b7a987b",
         "filename": "python/python.go",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2018-05-22T22:32:00Z",
       "side": 1,
       "message": "Won\u0027t this do the wrong thing if pkgPath is set? Don\u0027t you just want to omit the \"runfiles/\" prefix?",
+      "range": {
+        "startLine": 536,
+        "startChar": 0,
+        "endLine": 537,
+        "endChar": 43
+      },
+      "revId": "ad16fe0b852c225c370c73d88cdb1de13b84e0ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89d3dcc3_d8e24ad7",
+        "filename": "python/python.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-05-23T01:31:29Z",
+      "side": 1,
+      "message": "pkgPath was join runFiles in line434 first: pkgPath \u003d filepath.Join(runFiles, pkgPath)",
+      "parentUuid": "7efba6bb_1b7a987b",
       "range": {
         "startLine": 536,
         "startChar": 0,
