@@ -234,6 +234,30 @@
       "revId": "ad16fe0b852c225c370c73d88cdb1de13b84e0ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7106e385_19d33fc1",
+        "filename": "python/python.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-05-23T02:19:42Z",
+      "side": 1,
+      "message": "Oh, not sure what I was thinking here...",
+      "parentUuid": "89d3dcc3_d8e24ad7",
+      "range": {
+        "startLine": 536,
+        "startChar": 0,
+        "endLine": 537,
+        "endChar": 43
+      },
+      "revId": "ad16fe0b852c225c370c73d88cdb1de13b84e0ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
