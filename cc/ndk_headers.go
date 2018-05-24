@@ -45,7 +45,7 @@ func getCurrentIncludePath(ctx android.ModuleContext) android.OutputPath {
 	return getNdkSysrootBase(ctx).Join(ctx, "usr/include")
 }
 
-type headerProperies struct {
+type headerProperties struct {
 	// Base directory of the headers being installed. As an example:
 	//
 	// ndk_headers {
@@ -72,7 +72,7 @@ type headerProperies struct {
 type headerModule struct {
 	android.ModuleBase
 
-	properties headerProperies
+	properties headerProperties
 
 	installPaths android.Paths
 	licensePath  android.ModuleSrcPath
@@ -184,7 +184,7 @@ type preprocessedHeaderProperies struct {
 type preprocessedHeaderModule struct {
 	android.ModuleBase
 
-	properties preprocessedHeaderProperies
+	properties preprocessedHeaderProperties
 
 	installPaths android.Paths
 	licensePath  android.ModuleSrcPath
