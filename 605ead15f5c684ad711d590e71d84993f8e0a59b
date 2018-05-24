@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bac338b1_522995e6",
+        "filename": "java/config/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-05-24T22:32:35Z",
+      "side": 1,
+      "message": "Can this be removed too?",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 0
+      },
+      "revId": "605ead15f5c684ad711d590e71d84993f8e0a59b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
