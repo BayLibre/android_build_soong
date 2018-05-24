@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b0e0596_630ffd5f",
+        "filename": "python/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-05-24T00:53:36Z",
+      "side": 1,
+      "message": "To be same, this should probably append to whatever\u0027s currently in ret.Required",
+      "range": {
+        "startLine": 80,
+        "startChar": 16,
+        "endLine": 80,
+        "endChar": 44
+      },
+      "revId": "836a84229e4ebe88d105f284aee814beaf749ba8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
