@@ -72,4 +72,10 @@ func makeVarsProvider(ctx android.MakeVarsContext) {
 	ctx.Strict("DEFAULT_JACOCO_EXCLUDE_FILTER", strings.Join(DefaultJacocoExcludeFilter, ","))
 
 	ctx.Strict("EXTRACT_JAR_PACKAGES", "${ExtractJarPackagesCmd}")
+
+	ctx.Strict("ANDROID_MANIFEST_MERGER_CLASSPATH", strings.Join(ManifestMergerClasspath, " "))
+	ctx.Strict("ANDROID_MANIFEST_MERGER",
+		"${JavaCmd} -classpath ManifestMergerClass "+
+			"-classpath $$(subst $$(space),:,$$(strip $$(ANDROID_MANIFEST_MERGER_CLASSPATH))) "+
+			"com.android.manifmerger.Merger")
 }
