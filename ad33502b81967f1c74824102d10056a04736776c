@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1f8e586_0e4efd6b",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-05-24T20:41:41Z",
+      "side": 1,
+      "message": "should extraLinkFlags just be in the *AndroidApp, so that AndroidTest can set it before calling a.AndroidApp.GenerateAndroidBuildActions?",
+      "revId": "ad33502b81967f1c74824102d10056a04736776c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fe7577b_cecb3a07",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-05-24T20:41:41Z",
+      "side": 1,
+      "message": "clean up the double //",
+      "range": {
+        "startLine": 216,
+        "startChar": 4,
+        "endLine": 216,
+        "endChar": 7
+      },
+      "revId": "ad33502b81967f1c74824102d10056a04736776c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
