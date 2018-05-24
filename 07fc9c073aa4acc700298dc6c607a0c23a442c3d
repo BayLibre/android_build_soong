@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dda1185c_93aed9d6",
+        "filename": "cmd/path_interposer/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-05-24T23:19:17Z",
+      "side": 1,
+      "message": "Good point, in practice it won\u0027t be, at least with soong_ui setting it up, but still best to check. Done.",
+      "parentUuid": "07999b17_8ede95e1",
+      "revId": "07fc9c073aa4acc700298dc6c607a0c23a442c3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9da9793_600dfb05",
         "filename": "ui/build/paths/logs.go",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "07fc9c073aa4acc700298dc6c607a0c23a442c3d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b0ee592_7a0098a2",
+        "filename": "ui/build/paths/logs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-05-24T23:19:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9da9793_600dfb05",
+      "revId": "07fc9c073aa4acc700298dc6c607a0c23a442c3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
