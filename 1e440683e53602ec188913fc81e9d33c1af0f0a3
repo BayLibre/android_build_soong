@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1c3392c2_178726aa",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-05-24T01:50:20Z",
+      "side": 1,
+      "message": "No. Exporting something from droiddoc doesn\u0027t make sense.\n\nIt makes sense in java_sdk_library but that\u0027s separate topic.",
+      "parentUuid": "0a449fc4_90f97ac7",
+      "revId": "1e440683e53602ec188913fc81e9d33c1af0f0a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1a160d94_adfd3321",
         "filename": "java/droiddoc.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2018-05-23T20:56:16Z",
       "side": 1,
       "message": "is it possible that we re-use this function from java.go?",
+      "revId": "1e440683e53602ec188913fc81e9d33c1af0f0a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5a42ee6_17cdea72",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-05-24T01:50:20Z",
+      "side": 1,
+      "message": "I would like to, but not now since this is only for .aidl and java.go has code for .proto, etc.",
+      "parentUuid": "1a160d94_adfd3321",
       "revId": "1e440683e53602ec188913fc81e9d33c1af0f0a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
