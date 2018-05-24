@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20033e2d_b489245e",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-05-24T23:36:53Z",
+      "side": 1,
+      "message": "Both the vendor and recovery cflags should be checked here",
+      "revId": "febc412a8cde8e537dffa52c19ebfdf52dbfa9ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
