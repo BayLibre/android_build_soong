@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "790f470b_9241569d",
+        "filename": "ui/build/paths/logs_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-05-25T20:27:02Z",
+      "side": 1,
+      "message": "I\u0027d suggest taking procFallback or tmpFallback or getSocketAddr as an argument, and refactoring dial and listen to take the result so you can call them directly from the test.  Or consider returning a valid socket good enough for the fallback tests.",
+      "revId": "20f5f26693be400dc350034dfa907d6c65f8599d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
