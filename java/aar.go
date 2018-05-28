@@ -210,6 +210,7 @@ func aaptLibs(ctx android.ModuleContext, sdkVersion string) (transitiveStaticLib
 	flags []string) {
 
 	var sharedLibs android.Paths
+	var sdkLibs []string
 
 	sdkDep := decodeSdkDep(ctx, sdkVersion)
 	if sdkDep.useFiles {
@@ -218,20 +219,33 @@ func aaptLibs(ctx android.ModuleContext, sdkVersion string) (transitiveStaticLib
 
 	ctx.VisitDirectDeps(func(module android.Module) {
 		var exportPackage android.Path
-		aarDep, _ := module.(AndroidLibraryDependency)
-		if aarDep != nil {
-			exportPackage = aarDep.ExportPackage()
-		}
-
-		switch ctx.OtherModuleDependencyTag(module) {
-		case libTag, frameworkResTag:
-			if exportPackage != nil {
-				sharedLibs = append(sharedLibs, exportPackage)
+		otherName := ctx.OtherModuleName(module)
+		tag := ctx.OtherModuleDependencyTag(module)
+		switch dep := module.(type) {
+		case AndroidLibraryDependency:
+			exportPackage = dep.ExportPackage()
+			switch tag {
+			case libTag, frameworkResTag:
+				if exportPackage != nil {
+					sharedLibs = append(sharedLibs, exportPackage)
+				}
+			case staticLibTag:
+				if exportPackage != nil {
+					transitiveStaticLibs = append(transitiveStaticLibs, exportPackage)
+					transitiveStaticLibs = append(transitiveStaticLibs, dep.ExportedStaticPackages()...)
+				}
 			}
-		case staticLibTag:
-			if exportPackage != nil {
-				transitiveStaticLibs = append(transitiveStaticLibs, exportPackage)
-				transitiveStaticLibs = append(transitiveStaticLibs, aarDep.ExportedStaticPackages()...)
+		case Dependency:
+			switch tag {
+			case libTag, staticLibTag:
+				// get sdk lib names from dependencies
+				sdkLibs = append(sdkLibs, dep.ExportedSdkLibs()...)
+			}
+		case SdkLibraryDependency:
+			switch tag {
+			case libTag:
+				// get names of sdk libs that are directly depended by this apk
+				sdkLibs = append(sdkLibs, otherName)
 			}
 		}
 	})
@@ -472,6 +486,10 @@ func (a *AARImport) ImplementationJars() android.Paths {
 }
 
 func (a *AARImport) AidlIncludeDirs() android.Paths {
+	return nil
+}
+
+func (a *AARImport) ExportedSdkLibs() []string {
 	return nil
 }
 

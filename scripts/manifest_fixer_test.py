@@ -225,9 +225,6 @@ class AddUsesLibrariesTest(unittest.TestCase):
         ('foo', 'true'),
         ('bar', 'true')])
     output = self.run_test(manifest_input, ['foo', 'bar'])
-    print manifest_input
-    print expected
-    print output
     self.assertEqual(output, expected)
 
 if __name__ == '__main__':
