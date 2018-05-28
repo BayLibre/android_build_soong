@@ -21,6 +21,7 @@ package java
 import (
 	"fmt"
 	"path/filepath"
+	"sort"
 	"strconv"
 	"strings"
 
@@ -281,6 +282,9 @@ type Module struct {
 
 	// list of extra progurad flag files
 	extraProguardFlagFiles android.Paths
+
+	// list of SDK lib names that this java moudule is exporting
+	exportedSdkLibs []string
 }
 
 func (j *Module) Srcs() android.Paths {
@@ -293,6 +297,7 @@ type Dependency interface {
 	HeaderJars() android.Paths
 	ImplementationJars() android.Paths
 	AidlIncludeDirs() android.Paths
+	ExportedSdkLibs() []string
 }
 
 type SdkLibraryDependency interface {
@@ -711,10 +716,14 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 				deps.bootClasspath = append(deps.bootClasspath, dep.HeaderJars()...)
 			case libTag:
 				deps.classpath = append(deps.classpath, dep.HeaderJars()...)
+				// sdk lib names from dependencies are re-exported
+				j.exportedSdkLibs = append(j.exportedSdkLibs, dep.ExportedSdkLibs()...)
 			case staticLibTag:
 				deps.classpath = append(deps.classpath, dep.HeaderJars()...)
 				deps.staticJars = append(deps.staticJars, dep.ImplementationJars()...)
 				deps.staticHeaderJars = append(deps.staticHeaderJars, dep.HeaderJars()...)
+				// sdk lib names from dependencies are re-exported
+				j.exportedSdkLibs = append(j.exportedSdkLibs, dep.ExportedSdkLibs()...)
 			case frameworkResTag:
 				if ctx.ModuleName() == "framework" {
 					// framework.jar has a one-off dependency on the R.java and Manifest.java files
@@ -742,6 +751,8 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 			switch tag {
 			case libTag:
 				deps.classpath = append(deps.classpath, dep.HeaderJars(getLinkType(j, ctx.ModuleName()))...)
+				// names of sdk libs that are directly depended are exported
+				j.exportedSdkLibs = append(j.exportedSdkLibs, otherName)
 			default:
 				ctx.ModuleErrorf("dependency on java_sdk_library %q can only be in libs", otherName)
 			}
@@ -778,6 +789,9 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 			}
 		}
 	})
+
+	j.exportedSdkLibs = android.FirstUniqueStrings(j.exportedSdkLibs)
+	sort.Strings(j.exportedSdkLibs)
 
 	return deps
 }
@@ -1182,6 +1196,10 @@ func (j *Module) AidlIncludeDirs() android.Paths {
 	return j.exportAidlIncludeDirs
 }
 
+func (j *Module) ExportedSdkLibs() []string {
+	return j.exportedSdkLibs
+}
+
 var _ logtagsProducer = (*Module)(nil)
 
 func (j *Module) logtags() android.Paths {
@@ -1383,6 +1401,9 @@ type ImportProperties struct {
 	Sdk_version *string
 
 	Installable *bool
+
+	// List of shared java libs that this module has dependencies to
+	Libs []string
 }
 
 type Import struct {
@@ -1393,6 +1414,7 @@ type Import struct {
 
 	classpathFiles        android.Paths
 	combinedClasspathFile android.Path
+	exportedSdkLibs       []string
 }
 
 func (j *Import) Prebuilt() *android.Prebuilt {
@@ -1408,6 +1430,7 @@ func (j *Import) Name() string {
 }
 
 func (j *Import) DepsMutator(ctx android.BottomUpMutatorContext) {
+	ctx.AddDependency(ctx.Module(), libTag, j.properties.Libs...)
 }
 
 func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
@@ -1416,6 +1439,29 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	outputFile := android.PathForModuleOut(ctx, "classes.jar")
 	TransformJarsToJar(ctx, outputFile, "for prebuilts", j.classpathFiles, android.OptionalPath{}, false, nil)
 	j.combinedClasspathFile = outputFile
+
+	ctx.VisitDirectDeps(func(module android.Module) {
+		otherName := ctx.OtherModuleName(module)
+		tag := ctx.OtherModuleDependencyTag(module)
+
+		switch dep := module.(type) {
+		case Dependency:
+			switch tag {
+			case libTag, staticLibTag:
+				// sdk lib names from dependencies are re-exported
+				j.exportedSdkLibs = append(j.exportedSdkLibs, dep.ExportedSdkLibs()...)
+			}
+		case SdkLibraryDependency:
+			switch tag {
+			case libTag:
+				// names of sdk libs that are directly depended are exported
+				j.exportedSdkLibs = append(j.exportedSdkLibs, otherName)
+			}
+		}
+	})
+
+	j.exportedSdkLibs = android.FirstUniqueStrings(j.exportedSdkLibs)
+	sort.Strings(j.exportedSdkLibs)
 }
 
 var _ Dependency = (*Import)(nil)
@@ -1430,6 +1476,10 @@ func (j *Import) ImplementationJars() android.Paths {
 
 func (j *Import) AidlIncludeDirs() android.Paths {
 	return nil
+}
+
+func (j *Import) ExportedSdkLibs() []string {
+	return j.exportedSdkLibs
 }
 
 var _ android.PrebuiltInterface = (*Import)(nil)
