@@ -16,6 +16,7 @@ package java
 
 import (
 	"android/soong/android"
+	"sort"
 	"strings"
 
 	"github.com/google/blueprint"
@@ -210,6 +211,7 @@ func aaptLibs(ctx android.ModuleContext, sdkVersion string) (transitiveStaticLib
 	flags []string) {
 
 	var sharedLibs android.Paths
+	var sdkLibs []string
 
 	sdkDep := decodeSdkDep(ctx, sdkVersion)
 	if sdkDep.useFiles {
@@ -218,23 +220,44 @@ func aaptLibs(ctx android.ModuleContext, sdkVersion string) (transitiveStaticLib
 
 	ctx.VisitDirectDeps(func(module android.Module) {
 		var exportPackage android.Path
-		aarDep, _ := module.(AndroidLibraryDependency)
-		if aarDep != nil {
-			exportPackage = aarDep.ExportPackage()
-		}
-
-		switch ctx.OtherModuleDependencyTag(module) {
-		case libTag, frameworkResTag:
-			if exportPackage != nil {
-				sharedLibs = append(sharedLibs, exportPackage)
+		otherName := ctx.OtherModuleName(module)
+		tag := ctx.OtherModuleDependencyTag(module)
+		switch dep := module.(type) {
+		case AndroidLibraryDependency:
+			exportPackage = dep.ExportPackage()
+			switch tag {
+			case libTag, frameworkResTag:
+				if exportPackage != nil {
+					sharedLibs = append(sharedLibs, exportPackage)
+				}
+			case staticLibTag:
+				if exportPackage != nil {
+					transitiveStaticLibs = append(transitiveStaticLibs, exportPackage)
+					transitiveStaticLibs = append(transitiveStaticLibs, dep.ExportedStaticPackages()...)
+				}
 			}
-		case staticLibTag:
-			if exportPackage != nil {
-				transitiveStaticLibs = append(transitiveStaticLibs, exportPackage)
-				transitiveStaticLibs = append(transitiveStaticLibs, aarDep.ExportedStaticPackages()...)
+		case Dependency:
+			switch tag {
+			case libTag, staticLibTag:
+				// get sdk lib names from dependencies
+				sdkLibs = append(sdkLibs, dep.ExportedSdkLibs()...)
+			}
+		case SdkLibraryDependency:
+			switch tag {
+			case libTag:
+				// get names of sdk libs that are directly depended by this apk
+				sdkLibs = append(sdkLibs, otherName)
 			}
 		}
 	})
+
+	// The sdk lib names are given to aapt via --uses-library flags, which automatically
+	// add <uses-library> tags for the names.
+	sdkLibs = android.FirstUniqueStrings(sdkLibs)
+	sort.Strings(sdkLibs)
+	for _, lib := range sdkLibs {
+		flags = append(flags, "--uses-library "+lib)
+	}
 
 	deps = append(deps, sharedLibs...)
 	deps = append(deps, transitiveStaticLibs...)
@@ -472,6 +495,10 @@ func (a *AARImport) ImplementationJars() android.Paths {
 }
 
 func (a *AARImport) AidlIncludeDirs() android.Paths {
+	return nil
+}
+
+func (a *AARImport) ExportedSdkLibs() []string {
 	return nil
 }
 
