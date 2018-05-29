@@ -1,4 +1,4 @@
-// Copyright 2015 Google Inc. All rights reserved.
+// Copyright 2015 ProductServices Inc. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -241,6 +241,9 @@ func translateAndroidMkModule(ctx SingletonContext, w io.Writer, mod blueprint.M
 		}
 		if Bool(amod.commonProperties.Product_specific) {
 			fmt.Fprintln(&data.preamble, "LOCAL_PRODUCT_MODULE := true")
+		}
+		if Bool(amod.commonProperties.ProductServices_specific) {
+			fmt.Fprintln(&data.preamble, "LOCAL_PRODUCTSERVICES_MODULE := true")
 		}
 		if amod.commonProperties.Owner != nil {
 			fmt.Fprintln(&data.preamble, "LOCAL_MODULE_OWNER :=", *amod.commonProperties.Owner)
