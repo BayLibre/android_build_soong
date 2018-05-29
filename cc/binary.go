@@ -251,7 +251,11 @@ func (binary *binaryDecorator) linkerFlags(ctx ModuleContext, flags Flags) Flags
 				} else {
 					switch ctx.Os() {
 					case android.Android:
-						flags.DynamicLinker = "/system/bin/linker"
+						if ctx.InstallInRecovery() {
+							flags.DynamicLinker = "/sbin/linker"
+						} else {
+							flags.DynamicLinker = "/system/bin/linker"
+						}
 					case android.LinuxBionic:
 						flags.DynamicLinker = ""
 					default:
