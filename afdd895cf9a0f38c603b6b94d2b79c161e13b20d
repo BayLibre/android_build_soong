@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b69a6f4_91141e39",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-05-29T21:31:43Z",
+      "side": 1,
+      "message": "Can you file a bug on this and add a TODO(b/...) here so we don\u0027t forget to clean this up?",
+      "revId": "afdd895cf9a0f38c603b6b94d2b79c161e13b20d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fed3d45_9e5d134a",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-05-29T21:31:43Z",
+      "side": 1,
+      "message": "!BoolDefault(linker.MoreProperties.Pack_relocations, true)",
+      "range": {
+        "startLine": 267,
+        "startChar": 5,
+        "endLine": 268,
+        "endChar": 51
+      },
+      "revId": "afdd895cf9a0f38c603b6b94d2b79c161e13b20d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
