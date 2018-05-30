@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53cf6798_24c51360",
+        "filename": "cc/ndk_headers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-05-30T23:49:04Z",
+      "side": 1,
+      "message": "Can you add \u0027with no dependencies\u0027? Eventually we\u0027ll probably want this to be using python_binary_host just to reduce our reliance on the host python interpreter, but it doesn\u0027t have any other dependencies today.",
+      "revId": "8adaa7d431c9274c2efb030d15abfc655297a1c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
