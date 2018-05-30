@@ -1,0 +1,12 @@
+Verified+1: Sundong Ahn <sundongahn@google.com>
+Code-Review+1: Jiyong Park <jiyong@google.com>
+Code-Review+1: Anton Hansson <hansson@google.com>
+Code-Review+1: Andrew Hsieh <andrewhsieh@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Autosubmit+1: Sundong Ahn <sundongahn@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Wed, 30 May 2018 01:52:56 +0000
+Reviewed-on: https://android-review.googlesource.com/695106
+Project: platform/build/soong
+Branch: refs/heads/master
