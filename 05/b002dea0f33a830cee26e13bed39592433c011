@@ -1,0 +1,9 @@
+Code-Review+2: Colin Cross <ccross@android.com>
+Verified+1: Vishwath Mohan <vishwath@google.com>
+Autosubmit+1: Vishwath Mohan <vishwath@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Vishwath Mohan <vishwath@google.com>
+Submitted-at: Thu, 31 May 2018 03:58:06 +0000
+Reviewed-on: https://android-review.googlesource.com/696863
+Project: platform/build/soong
+Branch: refs/heads/master
