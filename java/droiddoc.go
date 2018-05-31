@@ -180,6 +180,9 @@ type DroiddocProperties struct {
 	// the generated public API filename by Doclava.
 	Api_filename *string
 
+	// the generated public Dex API filename by Doclava.
+	Dex_api_filename *string
+
 	// the generated private API filename by Doclava.
 	Private_api_filename *string
 
@@ -230,6 +233,7 @@ type Droiddoc struct {
 
 	properties        DroiddocProperties
 	apiFile           android.WritablePath
+	dexApiFile        android.WritablePath
 	privateApiFile    android.WritablePath
 	privateDexApiFile android.WritablePath
 	removedApiFile    android.WritablePath
@@ -706,6 +710,12 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		d.privateApiFile = android.PathForModuleOut(ctx, String(d.properties.Private_api_filename))
 		args = args + " -privateApi " + d.privateApiFile.String()
 		implicitOutputs = append(implicitOutputs, d.privateApiFile)
+	}
+
+	if String(d.properties.Dex_api_filename) != "" {
+		d.dexApiFile = android.PathForModuleOut(ctx, String(d.properties.Dex_api_filename))
+		args = args + " -dexApi " + d.dexApiFile.String()
+		implicitOutputs = append(implicitOutputs, d.dexApiFile)
 	}
 
 	if String(d.properties.Private_dex_api_filename) != "" {
