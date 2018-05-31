@@ -54,7 +54,7 @@ var (
 	embeddedPar = pctx.AndroidStaticRule("embeddedPar",
 		blueprint.RuleParams{
 			Command: `echo '$main' > $entryPoint &&` +
-				`$mergeParCmd -p -e $entryPoint $mergedZip $srcsZips && cat $launcher | cat - $mergedZip > $out && ` +
+				`$mergeParCmd -p -e $entryPoint -stripPrefix runfiles $mergedZip $srcsZips && cat $launcher | cat - $mergedZip > $out && ` +
 				`chmod +x $out && (rm -f $entryPoint; rm -f $mergedZip)`,
 			CommandDeps: []string{"$mergeParCmd"},
 		},

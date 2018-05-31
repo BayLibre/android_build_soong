@@ -66,6 +66,7 @@ var (
 	pyMain           = flag.String("pm", "", "__main__.py file to insert in par")
 	entrypoint       = flag.String("e", "", "par entrypoint file to insert in par")
 	ignoreDuplicates = flag.Bool("ignore-duplicates", false, "take each entry from the first zip it exists in and don't warn")
+	pathPrefix       = flag.String("stripPrefix", "", "path prefix to strip in output zip file")
 )
 
 func init() {
@@ -131,7 +132,7 @@ func main() {
 	}
 
 	// do merge
-	err = mergeZips(readers, writer, *manifest, *entrypoint, *pyMain, *sortEntries, *emulateJar, *emulatePar,
+	err = mergeZips(readers, writer, *manifest, *entrypoint, *pyMain, *pathPrefix, *sortEntries, *emulateJar, *emulatePar,
 		*stripDirEntries, *ignoreDuplicates)
 	if err != nil {
 		log.Fatal(err)
@@ -223,7 +224,7 @@ type fileMapping struct {
 	source zipSource
 }
 
-func mergeZips(readers []namedZipReader, writer *zip.Writer, manifest, entrypoint, pyMain string,
+func mergeZips(readers []namedZipReader, writer *zip.Writer, manifest, entrypoint, pyMain, pathPrefix string,
 	sortEntries, emulateJar, emulatePar, stripDirEntries, ignoreDuplicates bool) error {
 
 	sourceByDest := make(map[string]zipSource, 0)
@@ -324,15 +325,21 @@ func mergeZips(readers []namedZipReader, writer *zip.Writer, manifest, entrypoin
 		}
 		for _, pkg := range newPyPkgs {
 			var emptyBuf []byte
+			dest := filepath.Join(pkg, "__init__.py")
+			if pathPrefix != "" {
+				if strings.HasPrefix(dest, filepath.Clean(pathPrefix)+"/") {
+					dest = strings.TrimPrefix(dest, filepath.Clean(pathPrefix)+"/")
+				}
+			}
 			fh := &zip.FileHeader{
-				Name:               filepath.Join(pkg, "__init__.py"),
+				Name:               dest,
 				Method:             zip.Store,
 				UncompressedSize64: uint64(len(emptyBuf)),
 			}
 			fh.SetMode(0700)
 			fh.SetModTime(jar.DefaultTime)
 			fileSource := bufferEntry{fh, emptyBuf}
-			addMapping(filepath.Join(pkg, "__init__.py"), fileSource)
+			addMapping(dest, fileSource)
 		}
 	}
 	for _, namedReader := range readers {
@@ -348,9 +355,14 @@ func mergeZips(readers []namedZipReader, writer *zip.Writer, manifest, entrypoin
 
 			// check for other files or directories destined for the same path
 			dest := file.Name
+			if pathPrefix != "" {
+				if strings.HasPrefix(dest, filepath.Clean(pathPrefix)+"/") {
+					dest = strings.TrimPrefix(dest, filepath.Clean(pathPrefix)+"/")
+				}
+			}
 
 			// make a new entry to add
-			source := zipEntry{path: zipEntryPath{zipName: namedReader.path, entryName: file.Name}, content: file}
+			source := zipEntry{path: zipEntryPath{zipName: namedReader.path, entryName: dest}, content: file}
 
 			if existingSource := addMapping(dest, source); existingSource != nil {
 				// handle duplicates
