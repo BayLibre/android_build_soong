@@ -16,6 +16,24 @@
       "revId": "d83fea567e87a737d5c6360d45278bc3386493c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1e30d24_7c5dd3f2",
+        "filename": "ui/build/paths/logs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-05-31T21:59:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f00ac91_8332e33f",
+      "revId": "d83fea567e87a737d5c6360d45278bc3386493c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
