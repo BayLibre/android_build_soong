@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f00ac91_8332e33f",
+        "filename": "ui/build/paths/logs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-05-31T17:29:47Z",
+      "side": 1,
+      "message": "It\u0027s poor form to close a channel that someone might be writing too.  Use a sync.WaitGroup to close ret after the inner goroutines finish writing to it?",
+      "revId": "d83fea567e87a737d5c6360d45278bc3386493c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
