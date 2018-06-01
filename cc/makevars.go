@@ -73,6 +73,8 @@ func makeVarsProvider(ctx android.MakeVarsContext) {
 	ctx.Strict("LLVM_AS", "${config.ClangBin}/llvm-as")
 	ctx.Strict("LLVM_LINK", "${config.ClangBin}/llvm-link")
 	ctx.Strict("PATH_TO_CLANG_TIDY", "${config.ClangBin}/clang-tidy")
+	ctx.Strict("PATH_TO_LLVM_OBJCOPY", "${config.ClangBin}/llvm-objcopy")
+	ctx.Strict("PATH_TO_LLVM_STRIP", "${config.ClangBin}/llvm-strip")
 	ctx.StrictSorted("CLANG_CONFIG_UNKNOWN_CFLAGS", strings.Join(config.ClangUnknownCflags, " "))
 
 	ctx.Strict("RS_LLVM_PREBUILTS_VERSION", "${config.RSClangVersion}")
