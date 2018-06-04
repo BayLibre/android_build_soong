@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95599d12_1eff3bd9",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-06-04T21:58:19Z",
+      "side": 1,
+      "message": "This is identical to ctx.Darwin().  Checking `runtime.GOOS \u003d\u003d \"darwin\"` is how to check the host OS instead of what we\u0027re currently targeting.",
+      "range": {
+        "startLine": 737,
+        "startChar": 4,
+        "endLine": 737,
+        "endChar": 30
+      },
+      "revId": "eb1af37f4e3cae06b6b4f45910910a5e08e6b75d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
