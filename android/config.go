@@ -108,6 +108,8 @@ type config struct {
 	captureBuild      bool // true for tests, saves build parameters for each module
 	ignoreEnvironment bool // true for tests, returns empty from all Getenv calls
 
+	useClangLld bool // Use clang lld, based on USE_CLANG_LLD.
+
 	useOpenJDK9    bool // Use OpenJDK9, but possibly target 1.8
 	targetOpenJDK9 bool // Use OpenJDK9 and target 1.9
 
@@ -337,6 +339,17 @@ func (c *config) fromEnv() error {
 		c.targetOpenJDK9 = true
 	default:
 		return fmt.Errorf(`Invalid value for EXPERIMENTAL_USE_OPENJDK9, should be "", "false", "1.8", or "true"`)
+	}
+
+	switch c.Getenv("USE_CLANG_LLD") {
+	case "":
+		c.useClangLld = false
+	case "false":
+		c.useClangLld = false
+	case "true":
+		c.useClangLld = true
+	default:
+		return fmt.Errorf(`Invalid value for USE_CLANG_LLD, should be "", "false", or "true"`)
 	}
 
 	return nil
@@ -642,6 +655,9 @@ func (c *config) TargetOpenJDK9() bool {
 }
 
 func (c *config) UseClangLld() bool {
+	if c.productVariables.UseClangLld == nil {
+		return c.useClangLld
+	}
 	return Bool(c.productVariables.UseClangLld)
 }
 
