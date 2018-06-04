@@ -646,6 +646,9 @@ func (c *config) TargetOpenJDK9() bool {
 }
 
 func (c *config) UseClangLld() bool {
+	if c.productVariables.UseClangLld == nil {
+		return c.IsEnvTrue("USE_CLANG_LLD")
+	}
 	return Bool(c.productVariables.UseClangLld)
 }
 
