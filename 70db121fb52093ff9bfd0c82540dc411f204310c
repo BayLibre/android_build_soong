@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e7d8842_c74e2ddf",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-06-04T18:56:17Z",
+      "side": 1,
+      "message": "Will this actually ever be true? This means whether we\u0027re targeting the mac for this module or not, but we really need to know whether we\u0027re running on Mac or not (even if we\u0027re targeting android).\n\nIt seems like this could be a simpler variable set earlier, and keep the page.now argument name/value together, and just replace the \"date -r\" / \"date -d\" piece, like we do in make:\n\n  \"-hdf page.now \\\"$$(\" + date + \" @$$(cat `...",
+      "range": {
+        "startLine": 742,
+        "startChar": 0,
+        "endLine": 742,
+        "endChar": 18
+      },
+      "revId": "70db121fb52093ff9bfd0c82540dc411f204310c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
