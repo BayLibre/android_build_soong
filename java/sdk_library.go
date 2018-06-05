@@ -357,6 +357,7 @@ func (module *sdkLibrary) createDocs(mctx android.TopDownMutatorContext, apiScop
 	props.Custom_template = proptools.StringPtr("droiddoc-templates-sdk")
 	props.Installable = proptools.BoolPtr(false)
 	props.Libs = module.properties.Libs
+	props.Libs = append(props.Libs, module.properties.Static_libs...)
 	props.Aidl.Include_dirs = module.deviceProperties.Aidl.Include_dirs
 	props.Aidl.Local_include_dirs = module.deviceProperties.Aidl.Local_include_dirs
 
