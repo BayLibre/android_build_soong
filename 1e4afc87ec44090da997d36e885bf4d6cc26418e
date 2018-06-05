@@ -16,6 +16,24 @@
       "revId": "1e4afc87ec44090da997d36e885bf4d6cc26418e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fa57963_dadb8638",
+        "filename": "cc/makevars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-06-05T19:12:15Z",
+      "side": 1,
+      "message": "PATH_TO_CLANG_TIDY probably followed earlier LLVM*PATH style.\nI will upload new patch to use LLVM_STRIP and LLVM_OBJCOPY.\nWe could rename PATH_TO_CLANG_TIDY in separate CL.",
+      "parentUuid": "91d2d3d2_166b680d",
+      "revId": "1e4afc87ec44090da997d36e885bf4d6cc26418e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
