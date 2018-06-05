@@ -1,0 +1,7 @@
+Presubmit-Ready+1: Kevin Rocard <krocard@google.com>
+Build-Cop-Override+1: Kevin Rocard <krocard@google.com>
+Submitted-by: Kevin Rocard <krocard@google.com>
+Submitted-at: Tue, 05 Jun 2018 21:55:55 +0000
+Reviewed-on: https://android-review.googlesource.com/699865
+Project: platform/build/soong
+Branch: refs/heads/master
