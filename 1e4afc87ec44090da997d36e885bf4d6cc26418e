@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91d2d3d2_166b680d",
+        "filename": "cc/makevars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-06-05T19:00:56Z",
+      "side": 1,
+      "message": "I\u0027m not sure why clang tidy uses the long name but LLVM_OBJCOPY is the normal style.",
+      "revId": "1e4afc87ec44090da997d36e885bf4d6cc26418e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
