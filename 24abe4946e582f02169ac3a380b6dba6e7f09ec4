@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5631ca04_0af6ccea",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2018-06-05T11:45:22Z",
+      "side": 1,
+      "message": "maybe add a comment about why?",
+      "revId": "24abe4946e582f02169ac3a380b6dba6e7f09ec4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
