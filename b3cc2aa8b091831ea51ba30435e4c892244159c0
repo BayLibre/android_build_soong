@@ -16,6 +16,24 @@
       "revId": "b3cc2aa8b091831ea51ba30435e4c892244159c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5e43dd5_d2b974b9",
+        "filename": "android/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-06-07T22:09:26Z",
+      "side": 1,
+      "message": "Do you want\n  c.useClangLld \u003d c.IsEnvTrue(\"USE_CLANG_LLD\")\nhere or revert this and use my old code at line 650 as\n  return c.IsEnvTrue(\"USE_CLANG_LLD\")",
+      "parentUuid": "3ffde7ce_91100524",
+      "revId": "b3cc2aa8b091831ea51ba30435e4c892244159c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }

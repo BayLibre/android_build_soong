@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "2ce882d2_1b750bd7",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-06-07T22:09:26Z",
+      "side": 1,
+      "message": "Yes, it\u0027s for soong-only builds like calling\n  USE_CLANG_LLD\u003dtrue build/soong/scripts/build-ndk-prebuilts.sh\nI tested build/soong/scripts/build-ndk-prebuilts.sh with different setting of USE_CLANG_LLD.",
+      "parentUuid": "f5ae3fce_d24d554a",
+      "revId": "9b5dd8662c60092b46011af34758c9965cf76ec4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67279472_faebbbbf",
         "filename": "cc/builder.go",
         "patchSetId": 3
