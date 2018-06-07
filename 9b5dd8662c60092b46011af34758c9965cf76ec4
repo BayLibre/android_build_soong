@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6491e6c6_6ee0d342",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-06-07T20:22:37Z",
+      "side": 1,
+      "message": "Follow the pattern used by c.targetOpenJDK9 (initialize it in fromEnv())",
+      "revId": "9b5dd8662c60092b46011af34758c9965cf76ec4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67279472_faebbbbf",
+        "filename": "cc/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-06-07T20:22:37Z",
+      "side": 1,
+      "message": "This is unnecessary, use ${config.ClangBin} directly",
+      "revId": "9b5dd8662c60092b46011af34758c9965cf76ec4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
