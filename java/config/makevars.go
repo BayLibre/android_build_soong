@@ -78,4 +78,6 @@ func makeVarsProvider(ctx android.MakeVarsContext) {
 		"${JavaCmd} -classpath ManifestMergerClass "+
 			"-classpath $$(subst $$(space),:,$$(strip $$(ANDROID_MANIFEST_MERGER_CLASSPATH))) "+
 			"com.android.manifmerger.Merger")
+
+	ctx.Strict("MANIFEST_FIXER", "${ManifestFixerCmd}")
 }
