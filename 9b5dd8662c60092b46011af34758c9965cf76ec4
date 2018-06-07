@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "c01d7d5d_251c300c",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-06-07T22:18:13Z",
+      "side": 1,
+      "message": "I think that should be handled in build-ndk-prebuilts.sh (or not at all) and not in Soong.  Soong shouldn\u0027t have both soong.variables and the environment variable to configure the same thing.",
+      "parentUuid": "2ce882d2_1b750bd7",
+      "revId": "9b5dd8662c60092b46011af34758c9965cf76ec4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67279472_faebbbbf",
         "filename": "cc/builder.go",
         "patchSetId": 3
