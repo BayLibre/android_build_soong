@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ffde7ce_91100524",
+        "filename": "android/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-06-07T21:39:36Z",
+      "side": 1,
+      "message": "You can use c.IsEnvTrue here",
+      "revId": "b3cc2aa8b091831ea51ba30435e4c892244159c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

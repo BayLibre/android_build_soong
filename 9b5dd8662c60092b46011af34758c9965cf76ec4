@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "f5ae3fce_d24d554a",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-06-07T21:39:36Z",
+      "side": 1,
+      "message": "Sorry, I think it was better how you had it.  However, why do you need to check the environment variable at all?  For Make builds the environment variable is copied to UseClangLld, for Soong-only builds I\u0027d expect them to set UseClangLld in the soong.variables file.",
+      "parentUuid": "c1efbb1e_fb0a3556",
+      "revId": "9b5dd8662c60092b46011af34758c9965cf76ec4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "67279472_faebbbbf",
         "filename": "cc/builder.go",
         "patchSetId": 3
