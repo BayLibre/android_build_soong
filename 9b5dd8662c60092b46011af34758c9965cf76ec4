@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "4f306588_65091b38",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-06-07T22:25:58Z",
+      "side": 1,
+      "message": "Since now I have tested other parts, I don\u0027t mind reverting all changes to config.go.\nThen default value in soong-only builds will be false for UseClangLld().",
+      "parentUuid": "c01d7d5d_251c300c",
+      "revId": "9b5dd8662c60092b46011af34758c9965cf76ec4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67279472_faebbbbf",
         "filename": "cc/builder.go",
         "patchSetId": 3
