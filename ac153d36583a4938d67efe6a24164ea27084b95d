@@ -16,6 +16,24 @@
       "revId": "ac153d36583a4938d67efe6a24164ea27084b95d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6422a9d6_777b80e3",
+        "filename": "scripts/strip.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-06-07T23:04:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79f7ee11_63f7f240",
+      "revId": "ac153d36583a4938d67efe6a24164ea27084b95d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
