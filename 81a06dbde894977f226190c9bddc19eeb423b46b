@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a39e9b6f_0c757f25",
+        "filename": "cc/cmakelists.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1083168
+      },
+      "writtenOn": "2018-06-07T21:26:46Z",
+      "side": 1,
+      "message": "Optional (especially since you kindly fixed a bug in a component I wrote :P): I would add a short comment explaining that this map is to track what project was already generated (the explanation is somewhat buried in generateCLionProject.",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 5
+      },
+      "revId": "81a06dbde894977f226190c9bddc19eeb423b46b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
