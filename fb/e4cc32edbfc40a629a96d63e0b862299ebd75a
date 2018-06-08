@@ -1,0 +1,9 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: David Brazdil <dbrazdil@google.com>
+Code-Review+2: Nicolas Geoffray <ngeoffray@google.com>
+Code-Review+2: Nan Zhang <nanzhang@google.com>
+Submitted-by: David Brazdil <dbrazdil@google.com>
+Submitted-at: Fri, 08 Jun 2018 14:22:17 +0000
+Reviewed-on: https://android-review.googlesource.com/697204
+Project: platform/build/soong
+Branch: refs/heads/master
