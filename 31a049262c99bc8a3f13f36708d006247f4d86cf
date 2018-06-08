@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "15b08ced_80730a6f",
+        "filename": "scripts/manifest_fixer.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1305591
+      },
+      "writtenOn": "2018-06-08T10:00:31Z",
+      "side": 1,
+      "message": "nit: document that this function might modify the document as side effect",
+      "range": {
+        "startLine": 68,
+        "startChar": 17,
+        "endLine": 68,
+        "endChar": 25
+      },
+      "revId": "31a049262c99bc8a3f13f36708d006247f4d86cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1b4305fa_ae9c330c",
         "filename": "scripts/manifest_fixer.py",
         "patchSetId": 2
