@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8432346_95041142",
+        "filename": "scripts/manifest_fixer.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1305591
+      },
+      "writtenOn": "2018-06-08T09:57:17Z",
+      "side": 1,
+      "message": "I wonder if there is some continuous tests system (as part of soong?) we can use to add a test to ensure no future regression. (disclaimer: I might still have my google3 hat on)",
+      "range": {
+        "startLine": 64,
+        "startChar": 4,
+        "endLine": 64,
+        "endChar": 25
+      },
+      "revId": "31a049262c99bc8a3f13f36708d006247f4d86cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c21fbcf_fa0eccf7",
+        "filename": "scripts/manifest_fixer.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1305591
+      },
+      "writtenOn": "2018-06-08T09:57:17Z",
+      "side": 1,
+      "message": "nit: you could avoid passing manifest as arg (being part of `doc` it looks a bit odd), and do the parse_manifest check inside this function.",
+      "range": {
+        "startLine": 64,
+        "startChar": 31,
+        "endLine": 64,
+        "endChar": 39
+      },
+      "revId": "31a049262c99bc8a3f13f36708d006247f4d86cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b4305fa_ae9c330c",
+        "filename": "scripts/manifest_fixer.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1305591
+      },
+      "writtenOn": "2018-06-08T09:57:17Z",
+      "side": 1,
+      "message": "do you need this? if so, please comment why.",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 76
+      },
+      "revId": "31a049262c99bc8a3f13f36708d006247f4d86cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48dd6502_13708130",
+        "filename": "scripts/manifest_fixer.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1305591
+      },
+      "writtenOn": "2018-06-08T09:57:17Z",
+      "side": 1,
+      "message": "any warnings to print in this case? or should this be treated as exception?",
+      "range": {
+        "startLine": 112,
+        "startChar": 4,
+        "endLine": 112,
+        "endChar": 8
+      },
+      "revId": "31a049262c99bc8a3f13f36708d006247f4d86cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
