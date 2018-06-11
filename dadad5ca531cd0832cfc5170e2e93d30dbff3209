@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8972b27c_4fc7bcd0",
+        "filename": "cc/config/clang.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2018-06-11T21:49:55Z",
+      "side": 1,
+      "message": "Do we care about fixing this warning in external code?  If not, we should remove the reference to the bug here and accept that this exception will live forever.\n\nMaybe update the comment to \"Disable -Wenum-compare since it is infeasible to fix this in all the external projects and their upstream repos.\"",
+      "revId": "dadad5ca531cd0832cfc5170e2e93d30dbff3209",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
