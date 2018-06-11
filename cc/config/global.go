@@ -89,6 +89,7 @@ var (
 
 	deviceGlobalLldflags = append(ClangFilterUnknownLldflags(deviceGlobalLdflags),
 		[]string{
+			"-Wl,--no-rosegment",
 			"-Wl,--pack-dyn-relocs=android",
 			"-fuse-ld=lld",
 		}...)
