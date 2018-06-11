@@ -16,6 +16,24 @@
       "revId": "dad2b73f7be5c1cf0b6f689da09630919e20477f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4eb2e09c_557f5a65",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-06-11T21:25:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae1790e2_446f3503",
+      "revId": "dad2b73f7be5c1cf0b6f689da09630919e20477f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
