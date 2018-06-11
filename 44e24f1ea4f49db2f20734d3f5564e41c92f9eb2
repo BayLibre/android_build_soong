@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a6f7f01_5e29bf31",
+        "filename": "cc/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-06-11T21:22:51Z",
+      "side": 1,
+      "message": "Use the google3 style:\nTODO(b/109657296): needs --no-rosegment until Android",
+      "revId": "44e24f1ea4f49db2f20734d3f5564e41c92f9eb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
