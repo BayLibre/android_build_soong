@@ -95,6 +95,15 @@ type BaseLinkerProperties struct {
 
 	Target struct {
 		Vendor struct {
+			// list of shared libs that are only for vendor variant.
+			Shared_libs []string
+
+			// list of static libs that are only for vendor variant.
+			Static_libs []string
+
+			// list of runtime libs that are only for vendor variant.
+			Runtime_libs []string
+
 			// list of shared libs that should not be used to build the vendor variant
 			// of the C/C++ module.
 			Exclude_shared_libs []string
@@ -181,6 +190,10 @@ func (linker *baseLinker) linkerDeps(ctx BaseModuleContext, deps Deps) Deps {
 		deps.ReexportStaticLibHeaders = removeListFromList(deps.ReexportStaticLibHeaders, linker.Properties.Target.Vendor.Exclude_static_libs)
 		deps.WholeStaticLibs = removeListFromList(deps.WholeStaticLibs, linker.Properties.Target.Vendor.Exclude_static_libs)
 		deps.RuntimeLibs = removeListFromList(deps.RuntimeLibs, linker.Properties.Target.Vendor.Exclude_runtime_libs)
+
+		deps.SharedLibs = append(deps.SharedLibs, linker.Properties.Target.Vendor.Shared_libs...)
+		deps.StaticLibs = append(deps.StaticLibs, linker.Properties.Target.Vendor.Static_libs...)
+		deps.RuntimeLibs = append(deps.RuntimeLibs, linker.Properties.Target.Vendor.Runtime_libs...)
 	}
 
 	if ctx.inRecovery() {

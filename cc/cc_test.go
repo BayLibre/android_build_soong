@@ -847,9 +847,7 @@ func TestVndkUseVndkExtError(t *testing.T) {
 		}
 	`)
 
-	// The pattern should be "module \".*\" variant \".*\": \\(.*\\) should not link to \".*\""
-	// but target.vendor.shared_libs has not been supported yet.
-	testCcError(t, "unrecognized property \"target.vendor.shared_libs\"", `
+	testCcError(t, "module \".*\" variant \".*\": \\(.*\\) should not link to \".*\"", `
 		cc_library {
 			name: "libvndk",
 			vendor_available: true,
@@ -918,9 +916,7 @@ func TestVndkUseVndkExtError(t *testing.T) {
 		}
 	`)
 
-	// The pattern should be "module \".*\" variant \".*\": \\(.*\\) should not link to \".*\""
-	// but target.vendor.shared_libs has not been supported yet.
-	testCcError(t, "unrecognized property \"target.vendor.shared_libs\"", `
+	testCcError(t, "module \".*\" variant \".*\": \\(.*\\) should not link to \".*\"", `
 		cc_library {
 			name: "libvndk_sp",
 			vendor_available: true,
