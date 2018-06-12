@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "485333fa_f1bb65ca",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2018-06-12T02:50:05Z",
+      "side": 1,
+      "message": "I think we don\u0027t need it. Because we get the path with \"mctx.GlobWithDeps(mydir+\"*/*/*.jar\", nil)\".",
+      "parentUuid": "ffc69449_ae65cc42",
+      "revId": "c131c3778e339e3cce690dabcb529deca487fdb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b49d5f6_ce0c2b22",
         "filename": "java/prebuilt_apis.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "c131c3778e339e3cce690dabcb529deca487fdb3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9964eb05_b3a2ade0",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2018-06-12T02:50:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b49d5f6_ce0c2b22",
+      "revId": "c131c3778e339e3cce690dabcb529deca487fdb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -56,6 +92,30 @@
       "revId": "c131c3778e339e3cce690dabcb529deca487fdb3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6cb2287_c8eb1d3b",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2018-06-12T02:50:05Z",
+      "side": 1,
+      "message": "Because there are many jar files except prebuilt libraries in prebuilts/sdk. So we need to separate them.\nI move this code to pareseJarPath function.",
+      "parentUuid": "2b6f32be_42a7e409",
+      "range": {
+        "startLine": 125,
+        "startChar": 64,
+        "endLine": 125,
+        "endChar": 0
+      },
+      "revId": "c131c3778e339e3cce690dabcb529deca487fdb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
