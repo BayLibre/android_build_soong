@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f4ce5daa_b3a0be6c",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2018-06-13T14:05:18Z",
+      "side": 1,
+      "message": "I added the \u0027core\u0027.\nWe can\u0027t use the \"sdk_dirs \u003d glob(*/*/android.jar).split(...)[:1]\", because the prebuilt_apis will be used in other sdk besides prebuilts/sdk.",
+      "parentUuid": "f8a57f36_07ece983",
+      "revId": "5b9101c71751b13c43b6d47dad8defa71cbfb2a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75aa3395_143c1e97",
         "filename": "java/prebuilt_apis.go",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "5b9101c71751b13c43b6d47dad8defa71cbfb2a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a787b825_63c2478d",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2018-06-13T14:05:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75aa3395_143c1e97",
+      "revId": "5b9101c71751b13c43b6d47dad8defa71cbfb2a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
