@@ -1,0 +1,6 @@
+Build-Cop-Override+1: Martijn Coenen <maco@google.com>
+Submitted-by: Martijn Coenen <maco@google.com>
+Submitted-at: Wed, 13 Jun 2018 07:37:54 +0000
+Reviewed-on: https://android-review.googlesource.com/704644
+Project: platform/build/soong
+Branch: refs/heads/master
