@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f8a57f36_07ece983",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2018-06-13T13:19:11Z",
+      "side": 1,
+      "message": "this list is missing \u0027core\u0027. Could you make the globbing more specific instead of hardcoding these?\n\nsdk_dirs \u003d glob(*/*/android.jar).split(...)[:1]\nsdk_stubs \u003d sdk_dir/*.jar for each sdk_dir",
+      "revId": "5b9101c71751b13c43b6d47dad8defa71cbfb2a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75aa3395_143c1e97",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2018-06-13T13:19:11Z",
+      "side": 1,
+      "message": "prebuiltSdkStubs ?",
+      "revId": "5b9101c71751b13c43b6d47dad8defa71cbfb2a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
