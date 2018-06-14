@@ -240,7 +240,7 @@ type DroiddocProperties struct {
 	// is set to true, Metalava will allow framework SDK to contain annotations.
 	Metalava_annotations_enabled *bool
 
-	// a XML files set to merge annotations.
+	// a top level directory contains XML files set to merge annotations.
 	Metalava_merge_annotations_dir *string
 }
 
@@ -854,7 +854,7 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		if String(d.properties.Metalava_previous_api) != "" {
 			previousApi = ctx.ExpandSource(String(d.properties.Metalava_previous_api),
 				"metalava_previous_api")
-			opts += " --check-compatibility  --previous-api " + previousApi.String()
+			opts += " --previous-api " + previousApi.String()
 			implicits = append(implicits, previousApi)
 		}
 
@@ -873,13 +873,11 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 					"has to be non-empty if annotations was enabled!")
 			}
 
-			mergeAnnotationsDir := android.PathForModuleSrc(ctx,
-				String(d.properties.Metalava_merge_annotations_dir))
-			implicits = append(implicits, ctx.Glob(mergeAnnotationsDir.Join(ctx, "**/*").String(), nil)...)
+			mergeAnnotationsDir := android.PathForSource(ctx, String(d.properties.Metalava_merge_annotations_dir))
 
 			opts += " --extract-annotations " + annotationsZip.String() + " --merge-annotations " + mergeAnnotationsDir.String()
 			// TODO(tnorbye): find owners to fix these warnings when annotation was enabled.
-			opts += "--hide HiddenTypedefConstant --hide SuperfluousPrefix --hide AnnotationExtraction"
+			opts += " --hide HiddenTypedefConstant --hide SuperfluousPrefix --hide AnnotationExtraction"
 		}
 
 		if genDocsForMetalava {
