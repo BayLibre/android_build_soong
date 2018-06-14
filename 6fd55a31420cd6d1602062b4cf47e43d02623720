@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da1ec084_5455e880",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-06-14T01:39:07Z",
+      "side": 1,
+      "message": "s/sub/stub/ ?\n\nBTW, why can\u0027t you make stub-annotations.jar as javaCore or javaSdk?",
+      "range": {
+        "startLine": 708,
+        "startChar": 30,
+        "endLine": 708,
+        "endChar": 65
+      },
+      "revId": "6fd55a31420cd6d1602062b4cf47e43d02623720",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
