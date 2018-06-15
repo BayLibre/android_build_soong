@@ -22,6 +22,30 @@
       "revId": "6fd55a31420cd6d1602062b4cf47e43d02623720",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c26356d2_556d597c",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-06-15T22:46:42Z",
+      "side": 1,
+      "message": "Make it as javaCore. BTW, we can remove \"android_stubs_current\" from javaSdk case in getLinkType(), since \"android_stubs_current\" is always javaCore, right?",
+      "parentUuid": "da1ec084_5455e880",
+      "range": {
+        "startLine": 708,
+        "startChar": 30,
+        "endLine": 708,
+        "endChar": 65
+      },
+      "revId": "6fd55a31420cd6d1602062b4cf47e43d02623720",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
