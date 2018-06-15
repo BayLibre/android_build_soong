@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "095a169f_4d8d7a81",
+        "filename": "scripts/manifest_fixer.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1305591
+      },
+      "writtenOn": "2018-06-15T09:28:52Z",
+      "side": 1,
+      "message": "Maybe I\u0027m missing some context, but why e.g. \u0027O\u0027 should be treated as higher than \u002728\u0027?",
+      "range": {
+        "startLine": 102,
+        "startChar": 44,
+        "endLine": 103,
+        "endChar": 29
+      },
+      "revId": "8bb10e8f8a72e6f6e87e9812dacb3816a37c7ed5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
