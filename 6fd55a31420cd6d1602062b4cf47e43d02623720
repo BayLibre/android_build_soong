@@ -46,6 +46,30 @@
       "revId": "6fd55a31420cd6d1602062b4cf47e43d02623720",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a524da7_dc4138f2",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 708,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-06-15T22:57:16Z",
+      "side": 1,
+      "message": "android_stubs_current should stay javaSdk so javaCore libraries can\u0027t link against it",
+      "parentUuid": "c26356d2_556d597c",
+      "range": {
+        "startLine": 708,
+        "startChar": 30,
+        "endLine": 708,
+        "endChar": 65
+      },
+      "revId": "6fd55a31420cd6d1602062b4cf47e43d02623720",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
