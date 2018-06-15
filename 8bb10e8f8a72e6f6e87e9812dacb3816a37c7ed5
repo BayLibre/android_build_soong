@@ -22,6 +22,30 @@
       "revId": "8bb10e8f8a72e6f6e87e9812dacb3816a37c7ed5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbcfe87a_d072c1ab",
+        "filename": "scripts/manifest_fixer.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-06-15T16:17:45Z",
+      "side": 1,
+      "message": "That\u0027s just how versioning works in the framework.  When API levels are under development they get a codename like \u0027O\u0027, and apps can set minSdkVersion\u003d\"P\".  These apps will _only_ work on the early preview builds of that API version (early unreleased PPR1 builds, and PPP1 and PPP2 preview builds).  Once the API level is finalized to \u002728\u0027, the \u0027P\u0027 codename is obsoleted, and won\u0027t be accepted in the final PPR1 builds or the PPP3 or PPP4 preview builds.  There is a complicated process to switch all the mentions of sdk version \u0027P\u0027 to \u002728\u0027 in one big topic.\n\nThat means that a codename is always newer than an SDK version.",
+      "parentUuid": "095a169f_4d8d7a81",
+      "range": {
+        "startLine": 102,
+        "startChar": 44,
+        "endLine": 103,
+        "endChar": 29
+      },
+      "revId": "8bb10e8f8a72e6f6e87e9812dacb3816a37c7ed5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
