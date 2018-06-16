@@ -92,7 +92,9 @@ var (
 			// TODO(b/109657296): needs --no-rosegment until Android
 			// stack unwinder can handle the read-only segment.
 			"-Wl,--no-rosegment",
-			"-Wl,--pack-dyn-relocs=android",
+			// XXX: Disable packed relocs for ELF TLS testing; avoids arm64 bug
+			// https://bugs.llvm.org/show_bug.cgi?id=37841
+			//"-Wl,--pack-dyn-relocs=android",
 			"-fuse-ld=lld",
 		}...)
 

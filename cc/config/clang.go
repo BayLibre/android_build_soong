@@ -152,6 +152,11 @@ func init() {
 
 	pctx.StaticVariable("ClangExtraTargetCflags", strings.Join([]string{
 		"-nostdlibinc",
+		"-fno-emulated-tls",
+		// The outcome of https://reviews.llvm.org/D42999 and https://reviews.llvm.org/D43965
+		// has inverted the situation for -f[no-]emulated-tls, and now we need to pass a flag
+		// to the linker to turn OFF emutls with LTO.
+		"-Wl,-plugin-opt=-emulated-tls=0",
 	}, " "))
 
 	pctx.StaticVariable("ClangExtraNoOverrideCflags", strings.Join([]string{
