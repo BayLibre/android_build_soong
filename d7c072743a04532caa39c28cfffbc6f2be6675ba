@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc0e22a2_18302ecb",
+        "filename": "ui/build/kati.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-06-16T16:43:54Z",
+      "side": 1,
+      "message": "TODO: disable for the PDK",
+      "revId": "d7c072743a04532caa39c28cfffbc6f2be6675ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
