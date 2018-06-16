@@ -38,7 +38,8 @@ var (
 		"-Wl,--hash-style=gnu",
 	}
 
-	x86Lldflags = ClangFilterUnknownLldflags(x86Ldflags)
+	x86Lldflags = append(ClangFilterUnknownLldflags(x86Ldflags),
+		"-Wl,-z,tls-variant-1=64")
 
 	x86ArchVariantCflags = map[string][]string{
 		"": []string{
