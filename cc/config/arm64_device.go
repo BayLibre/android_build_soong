@@ -44,7 +44,8 @@ var (
 	}
 
 	arm64Lldflags = append(ClangFilterUnknownLldflags(arm64Ldflags),
-		"-Wl,-z,max-page-size=4096")
+		"-Wl,-z,max-page-size=4096",
+		"-Wl,-z,tls-variant-1=128")
 
 	arm64Cppflags = []string{}
 
