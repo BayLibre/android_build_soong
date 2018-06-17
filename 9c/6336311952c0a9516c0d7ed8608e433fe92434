@@ -1,0 +1,9 @@
+Code-Review+2: Pirama Arumuga Nainar <pirama@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Verified+1: Yi Kong <yikong@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Yi Kong <yikong@google.com>
+Submitted-at: Sun, 17 Jun 2018 09:01:18 +0000
+Reviewed-on: https://android-review.googlesource.com/706047
+Project: platform/build/soong
+Branch: refs/heads/master
