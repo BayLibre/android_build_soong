@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9972dd1_ebe367ac",
+        "filename": "scripts/manifest_fixer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-06-18T20:26:15Z",
+      "side": 1,
+      "message": "compute the indent?  maybe factor out the duplicated indent code.",
+      "revId": "2d49afc9ef8d14c7e2ed1af82a551a791f29e98c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38c2190b_800db86e",
+        "filename": "scripts/manifest_fixer_test.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-06-18T20:26:15Z",
+      "side": 1,
+      "message": "maybe also test with \u003capplication/\u003e?",
+      "revId": "2d49afc9ef8d14c7e2ed1af82a551a791f29e98c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
