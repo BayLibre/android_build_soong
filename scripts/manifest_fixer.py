@@ -33,6 +33,13 @@ def get_children_with_tag(parent, tag_name):
       children.append(child)
   return children
 
+def find_child_with_attribute(element, tag_name, namespaceURI, attr_name, value):
+  for child in get_children_with_tag(element, tag_name):
+    attr = child.getAttributeNodeNS(namespaceURI, attr_name)
+    if attr is not None and attr.value == value:
+      return child
+
+  return None
 
 def parse_args():
   """Parse commandline arguments."""
@@ -40,8 +47,10 @@ def parse_args():
   parser = argparse.ArgumentParser()
   parser.add_argument('--minSdkVersion', default='', dest='min_sdk_version',
                       help='specify minSdkVersion used by the build system')
+  parser.add_argument('--uses-library', dest='uses_libraries', action='append',
+                      help='specify additional <uses-library> tag to add')
   parser.add_argument('input', help='input AndroidManifest.xml file')
-  parser.add_argument('output', help='input AndroidManifest.xml file')
+  parser.add_argument('output', help='output AndroidManifest.xml file')
   return parser.parse_args()
 
 
@@ -103,6 +112,15 @@ def compare_version_gt(a, b):
     # b is an integer version
     return b_is_int
 
+def get_indent(element, default_level):
+  indent = ''
+  if element is not None and element.nodeType == minidom.Node.TEXT_NODE:
+    text = element.nodeValue
+    indent = text[:len(text)-len(text.lstrip())]
+  if not indent or indent == '\n':
+    # 1 indent = 4 space
+    indent = '\n' + (' ' * default_level * 4)
+  return indent
 
 def raise_min_sdk_version(doc, requested):
   """Ensure the manifest contains a <uses-sdk> tag with a minSdkVersion.
@@ -124,14 +142,7 @@ def raise_min_sdk_version(doc, requested):
     element = uses_sdk[0]
   else:
     element = doc.createElement('uses-sdk')
-    indent = ''
-    first = manifest.firstChild
-    if first is not None and first.nodeType == minidom.Node.TEXT_NODE:
-      text = first.nodeValue
-      indent = text[:len(text)-len(text.lstrip())]
-    if not indent or indent == '\n':
-      indent = '\n    '
-
+    indent = get_indent(manifest.firstChild, 1)
     manifest.insertBefore(element, manifest.firstChild)
 
     # Insert an indent before uses-sdk to line it up with the indentation of the
@@ -149,6 +160,53 @@ def raise_min_sdk_version(doc, requested):
   if compare_version_gt(requested, min_attr.value):
     min_attr.value = requested
 
+def add_uses_libraries(doc, new_uses_libraries):
+  """Add additional <uses-library> tags with android:required=true
+
+  Args:
+    doc: The XML document. May be modified by this function.
+    new_uses_libraries: The names of libraries to be added by this function.
+  Raises:
+    RuntimeError: Invalid manifest
+  """
+
+  manifest = parse_manifest(doc)
+  elems = get_children_with_tag(manifest, 'application')
+  application = elems[0] if len(elems) == 1 else None
+  if len(elems) > 1:
+    raise RuntimeError('found multiple <application> tags')
+  elif len(elems) == 0:
+    application = doc.createElement('application')
+    indent = get_indent(manifest.firstChild, 1)
+    first = manifest.firstChild
+    manifest.insertBefore(doc.createTextNode(indent), first)
+    manifest.insertBefore(application, first)
+
+  indent = get_indent(application.firstChild, 2)
+
+  last = application.lastChild
+  if last is not None and last.nodeType != minidom.Node.TEXT_NODE:
+    last = None
+
+  for name in new_uses_libraries:
+    if find_child_with_attribute(application, 'uses-library', android_ns, 'name', name) \
+        is not None:
+          # If the uses-library tag of the same 'name' attribute value exists,
+          # respect it.
+          continue
+
+    ul = doc.createElement('uses-library')
+    ul.setAttributeNS(android_ns, 'android:name', name)
+    ul.setAttributeNS(android_ns, 'android:required', 'true')
+
+    application.insertBefore(doc.createTextNode(indent), last)
+    application.insertBefore(ul, last)
+
+  # align the closing tag with the opening tag if it's not
+  # indented
+  if application.lastChild.nodeType != minidom.Node.TEXT_NODE:
+    indent = get_indent(application.previousSibling, 1)
+    application.appendChild(doc.createTextNode(indent))
 
 def write_xml(f, doc):
   f.write('<?xml version="1.0" encoding="utf-8"?>\n')
@@ -167,6 +225,9 @@ def main():
 
     if args.min_sdk_version:
       raise_min_sdk_version(doc, args.min_sdk_version)
+
+    if args.uses_libraries:
+      add_uses_libraries(doc, args.uses_libraries)
 
     with open(args.output, 'wb') as f:
       write_xml(f, doc)
