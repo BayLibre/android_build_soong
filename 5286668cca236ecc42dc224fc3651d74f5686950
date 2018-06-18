@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59f120cc_d3b179b2",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 794,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-06-18T20:30:18Z",
+      "side": 1,
+      "message": "Dependency ordering is consistent, so this shouldn\u0027t need sorting",
+      "revId": "5286668cca236ecc42dc224fc3651d74f5686950",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
