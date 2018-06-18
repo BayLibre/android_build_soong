@@ -33,6 +33,29 @@
       "revId": "2d49afc9ef8d14c7e2ed1af82a551a791f29e98c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12e5032f_91e641ca",
+        "filename": "scripts/manifest_fixer_test.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-06-18T20:30:13Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 24
+      },
+      "revId": "2d49afc9ef8d14c7e2ed1af82a551a791f29e98c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
