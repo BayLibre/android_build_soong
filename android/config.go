@@ -584,6 +584,10 @@ func (c *config) DevicePrefer32BitExecutables() bool {
 	return Bool(c.productVariables.DevicePrefer32BitExecutables)
 }
 
+func (c *config) RecoveryUsesFirstArchOnly() bool {
+	return Bool(c.productVariables.RecoveryUsesFirstArchOnly)
+}
+
 func (c *config) SkipDeviceInstall() bool {
 	return c.EmbeddedInMake()
 }

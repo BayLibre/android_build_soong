@@ -189,6 +189,7 @@ type productVariables struct {
 
 	DevicePrefer32BitExecutables *bool `json:",omitempty"`
 	HostPrefer32BitExecutables   *bool `json:",omitempty"`
+	RecoveryUsesFirstArchOnly    *bool `json:",omitempty"`
 
 	SanitizeHost       []string `json:",omitempty"`
 	SanitizeDevice     []string `json:",omitempty"`
