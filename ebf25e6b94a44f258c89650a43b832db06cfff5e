@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18480a79_2e8142c9",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1573,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-06-18T20:55:58Z",
+      "side": 1,
+      "message": "How about:\n\nvar recoveryMultilib string\nif mctx.Config().DevicePrefer32BitExecutables() {\n    recoveryMultilib :\u003d \"lib32\"\n} else {\n    recoveryMultilib :\u003d \"lib64\"\n}\n\nif multilib !\u003d recoveryMultilib {\n   recoveryVariantNeeded \u003d false\n}",
+      "revId": "ebf25e6b94a44f258c89650a43b832db06cfff5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
