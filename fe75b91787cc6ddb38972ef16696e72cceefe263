@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0369ddf6_b5202693",
+        "filename": "java/aar.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-06-19T18:25:17Z",
+      "side": 1,
+      "message": "it seems this sdkLibs var didn\u0027t get used?\n\ndeps \u003d append(deps, sdkLibs...) ?",
+      "revId": "fe75b91787cc6ddb38972ef16696e72cceefe263",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
