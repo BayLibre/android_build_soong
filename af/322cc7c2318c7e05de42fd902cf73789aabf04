@@ -1,0 +1,9 @@
+Verified+1: Nan Zhang <nanzhang@google.com>
+Autosubmit+1: Nan Zhang <nanzhang@google.com>
+Presubmit-Ready+1: Nan Zhang <nanzhang@google.com>
+Build-Cop-Override+1: Seigo Nonaka <nona@google.com>
+Submitted-by: Nan Zhang <nanzhang@google.com>
+Submitted-at: Tue, 19 Jun 2018 22:59:02 +0000
+Reviewed-on: https://android-review.googlesource.com/707272
+Project: platform/build/soong
+Branch: refs/heads/master
