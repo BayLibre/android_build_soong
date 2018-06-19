@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "caa08ec2_078a25b8",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-06-19T20:21:37Z",
+      "side": 1,
+      "message": "This is always true now.  Why is this necessary?",
+      "range": {
+        "startLine": 532,
+        "startChar": 28,
+        "endLine": 532,
+        "endChar": 54
+      },
+      "revId": "357466b18a467bda9debe3a33fbcf932c9670163",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
