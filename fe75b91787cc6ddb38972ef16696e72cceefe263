@@ -16,6 +16,24 @@
       "revId": "fe75b91787cc6ddb38972ef16696e72cceefe263",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0db4c4f1_105ecb1e",
+        "filename": "java/aar.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-06-20T03:22:04Z",
+      "side": 1,
+      "message": "Hmm, as manifest_fixer is not running in soong yet, these are no-op for now. I\u0027ve removed the changes in this file.",
+      "parentUuid": "0369ddf6_b5202693",
+      "revId": "fe75b91787cc6ddb38972ef16696e72cceefe263",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
