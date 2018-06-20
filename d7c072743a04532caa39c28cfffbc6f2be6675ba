@@ -16,6 +16,24 @@
       "revId": "d7c072743a04532caa39c28cfffbc6f2be6675ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fccba91_bd823e67",
+        "filename": "ui/build/kati.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-06-20T23:53:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc0e22a2_18302ecb",
+      "revId": "d7c072743a04532caa39c28cfffbc6f2be6675ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
