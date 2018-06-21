@@ -16,6 +16,24 @@
       "revId": "e26445011869dc2f9c04c6f27d55374388372b49",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a278002b_cc962daf",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2018-06-21T09:33:22Z",
+      "side": 1,
+      "message": "To get a specific version of prebuilt, we use LOCAL_SDK_VERSION: \u003d \u003cver\u003e or sdk_version: \"16\". If a APP use multiple prebuilts of sdk libraries and their release time an version are different each other, we need different version information to use prebuilt libraries.\nI believe that one of the ways to prevent this was direct link and uploaded CLs to avoid sanity check.",
+      "parentUuid": "2114be0c_3432e6ee",
+      "revId": "e26445011869dc2f9c04c6f27d55374388372b49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
