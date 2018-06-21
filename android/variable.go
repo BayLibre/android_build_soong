@@ -62,6 +62,11 @@ type variableProperties struct {
 			Cflags []string
 		}
 
+		// Product_is_iot is true for Android Things devices.
+		ProductIsIot struct {
+			Cflags []string
+		}
+
 		// treble_linker_namespaces is true when the system/vendor linker namespace separation is
 		// enabled.
 		Treble_linker_namespaces struct {
@@ -207,6 +212,8 @@ type productVariables struct {
 	ExtraVndkVersions []string `json:",omitempty"`
 
 	NamespacesToExport []string `json:",omitempty"`
+
+	ProductIsIot *bool `json:",omitempty"`
 
 	PgoAdditionalProfileDirs []string `json:",omitempty"`
 
