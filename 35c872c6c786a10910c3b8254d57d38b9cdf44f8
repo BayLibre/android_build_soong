@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23797453_b1862d62",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2018-06-21T10:36:16Z",
+      "side": 1,
+      "message": "\"for building\"?\n\nI think the AOSP robolectric tests still rely on OpenJDK 8\u0027s java to run; that\u0027s one reason why ANDROID_JAVA8_HOME from config.go is still required.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "35c872c6c786a10910c3b8254d57d38b9cdf44f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "158028e3_473c1252",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2018-06-21T10:36:16Z",
+      "side": 1,
+      "message": "Yeah, sorry, that\u0027s my fault because I haven\u0027t gotten around to fixing bug 70927217.",
+      "range": {
+        "startLine": 10,
+        "startChar": 36,
+        "endLine": 11,
+        "endChar": 30
+      },
+      "revId": "35c872c6c786a10910c3b8254d57d38b9cdf44f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c544a24a_5734f576",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2018-06-21T10:36:16Z",
+      "side": 1,
+      "message": "Add:\n\nBug: 38418220",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 12
+      },
+      "revId": "35c872c6c786a10910c3b8254d57d38b9cdf44f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebd808f3_8b2f18da",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2018-06-21T10:36:16Z",
+      "side": 1,
+      "message": "Or perhaps raise an error if someone/something is using the value \"1.8\"? Up to you.",
+      "range": {
+        "startLine": 323,
+        "startChar": 10,
+        "endLine": 323,
+        "endChar": 15
+      },
+      "revId": "35c872c6c786a10910c3b8254d57d38b9cdf44f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eaf23cd9_16e7996d",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2018-06-21T10:36:16Z",
+      "side": 1,
+      "message": "drop the mention of \"1.8\"?",
+      "range": {
+        "startLine": 329,
+        "startChar": 80,
+        "endLine": 329,
+        "endChar": 86
+      },
+      "revId": "35c872c6c786a10910c3b8254d57d38b9cdf44f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
