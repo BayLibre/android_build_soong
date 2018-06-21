@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2114be0c_3432e6ee",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2018-06-21T09:04:28Z",
+      "side": 1,
+      "message": "this prebuilt_apis rule is a bit weird. Wouldn\u0027t a more natural structure be something like this:\n\nprebuilt_apis {\n  name: \"sdk\",\n  api_dirs \u003d [\"1\", \"2\", \"current\" ], or api_dirs \u003d \"glob(*) \"if that makes sense\n}\n\nthe current \"name\" appears to be unused, and hardcoding the path to the jars is also a pretty unusual/inflexible",
+      "revId": "e26445011869dc2f9c04c6f27d55374388372b49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
