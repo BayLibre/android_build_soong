@@ -52,6 +52,24 @@
       "revId": "e26445011869dc2f9c04c6f27d55374388372b49",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d50cd49_d66de87f",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-06-21T12:16:33Z",
+      "side": 1,
+      "message": "\u003e My comment is about the arguments to prebuilt_apis. Could you use the name argument instead of prefix, and take an api_dirs argument instead of the very broad glob below ?\n\nI think this is a good suggestion. I like [\"1\", \"2\", ...] better than glob(*) because it\u0027s more clear.",
+      "parentUuid": "e4344a25_fc9617b1",
+      "revId": "e26445011869dc2f9c04c6f27d55374388372b49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
