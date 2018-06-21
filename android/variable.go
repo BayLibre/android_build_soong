@@ -208,6 +208,8 @@ type productVariables struct {
 
 	NamespacesToExport []string `json:",omitempty"`
 
+	ProductIsIot *bool `json:",omitempty"`
+
 	PgoAdditionalProfileDirs []string `json:",omitempty"`
 
 	BoardVendorSepolicyDirs      []string `json:",omitempty"`
