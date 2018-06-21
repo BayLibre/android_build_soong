@@ -38,8 +38,13 @@ func init() {
 	})
 }
 
+type prebuiltApisProperties struct {
+	// list of api version directory
+	Api_dirs []string
+}
 type prebuiltApis struct {
 	android.ModuleBase
+	properties prebuiltApisProperties
 }
 
 func (module *prebuiltApis) DepsMutator(ctx android.BottomUpMutatorContext) {
@@ -56,7 +61,7 @@ func parseJarPath(ctx android.BaseModuleContext, path string) (module string, ap
 	apiver = elements[0]
 	scope = elements[1]
 	if scope != "public" && scope != "system" && scope != "test" && scope != "core" {
-		// scope must be public, system or test
+		ctx.ModuleErrorf("invalid scope %q found in path: %q", scope, path)
 		return
 	}
 
@@ -91,7 +96,7 @@ func createImport(mctx android.TopDownMutatorContext, module string, scope strin
 		Sdk_version *string
 		Installable *bool
 	}{}
-	props.Name = proptools.StringPtr("sdk_" + scope + "_" + apiver + "_" + module)
+	props.Name = proptools.StringPtr(mctx.Module().(*prebuiltApis).BaseModuleName() + "_" + scope + "_" + apiver + "_" + module)
 	props.Jars = append(props.Jars, path)
 	// TODO(hansson): change to scope after migration is done.
 	props.Sdk_version = proptools.StringPtr("current")
@@ -114,22 +119,20 @@ func createFilegroup(mctx android.TopDownMutatorContext, module string, scope st
 func prebuiltSdkStubs(mctx android.TopDownMutatorContext) {
 	mydir := mctx.ModuleDir() + "/"
 	// <apiver>/<scope>/<module>.jar
-	files, err := mctx.GlobWithDeps(mydir+"*/*/*.jar", nil)
-	if err != nil {
-		mctx.ModuleErrorf("failed to glob jar files under %q: %s", mydir, err)
-	}
-	if len(files) == 0 {
-		mctx.ModuleErrorf("no jar file found under %q", mydir)
+	var files []string
+	for _, ver := range mctx.Module().(*prebuiltApis).properties.Api_dirs {
+		vfiles, err := mctx.GlobWithDeps(mydir+ver+"/*/*.jar", nil)
+		if err != nil {
+			mctx.ModuleErrorf("failed to glob jar files under %q: %s", mydir+ver, err)
+		}
+		files = append(files, vfiles...)
 	}
 
 	for _, f := range files {
 		// create a Import module for each jar file
 		localPath := strings.TrimPrefix(f, mydir)
 		module, apiver, scope := parseJarPath(mctx, localPath)
-
-		if len(module) != 0 {
-			createImport(mctx, module, scope, apiver, localPath)
-		}
+		createImport(mctx, module, scope, apiver, localPath)
 	}
 }
 
@@ -192,6 +195,7 @@ func prebuiltApisMutator(mctx android.TopDownMutatorContext) {
 
 func prebuiltApisFactory() android.Module {
 	module := &prebuiltApis{}
+	module.AddProperties(&module.properties)
 	android.InitAndroidModule(module)
 	return module
 }
