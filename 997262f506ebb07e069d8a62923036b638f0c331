@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c54e233a_2fac342f",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-06-21T19:39:28Z",
+      "side": 1,
+      "message": "Removing check: javaVersion \u003d\u003d \"1.9\" means we always target 1.9 for javadoc? Doclava currently still target with 1.8 even though we use jdk9.",
+      "revId": "997262f506ebb07e069d8a62923036b638f0c331",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
