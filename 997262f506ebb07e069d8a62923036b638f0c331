@@ -16,6 +16,24 @@
       "revId": "997262f506ebb07e069d8a62923036b638f0c331",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4bde482_5cf9173a",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-06-21T19:42:04Z",
+      "side": 1,
+      "message": "ctx.Config().UseOpenJDK9() is always true, so this branch would have always been taken.  Do you want different logic here?",
+      "parentUuid": "c54e233a_2fac342f",
+      "revId": "997262f506ebb07e069d8a62923036b638f0c331",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
