@@ -38,8 +38,13 @@ func init() {
 	})
 }
 
+type prebuiltApisProperties struct {
+	// prefix of prebuilt library name
+	Prefix *string
+}
 type prebuiltApis struct {
 	android.ModuleBase
+	properties prebuiltApisProperties
 }
 
 func (module *prebuiltApis) DepsMutator(ctx android.BottomUpMutatorContext) {
@@ -91,7 +96,11 @@ func createImport(mctx android.TopDownMutatorContext, module string, scope strin
 		Sdk_version *string
 		Installable *bool
 	}{}
-	props.Name = proptools.StringPtr("sdk_" + scope + "_" + apiver + "_" + module)
+	prefix := mctx.Module().(*prebuiltApis).properties.Prefix
+	if prefix == nil {
+		mctx.PropertyErrorf("prefix", "prebuilt_apis must specify prefix")
+	}
+	props.Name = proptools.StringPtr(String(prefix) + "_" + scope + "_" + apiver + "_" + module)
 	props.Jars = append(props.Jars, path)
 	// TODO(hansson): change to scope after migration is done.
 	props.Sdk_version = proptools.StringPtr("current")
@@ -117,9 +126,6 @@ func prebuiltSdkStubs(mctx android.TopDownMutatorContext) {
 	files, err := mctx.GlobWithDeps(mydir+"*/*/*.jar", nil)
 	if err != nil {
 		mctx.ModuleErrorf("failed to glob jar files under %q: %s", mydir, err)
-	}
-	if len(files) == 0 {
-		mctx.ModuleErrorf("no jar file found under %q", mydir)
 	}
 
 	for _, f := range files {
@@ -192,6 +198,7 @@ func prebuiltApisMutator(mctx android.TopDownMutatorContext) {
 
 func prebuiltApisFactory() android.Module {
 	module := &prebuiltApis{}
+	module.AddProperties(&module.properties)
 	android.InitAndroidModule(module)
 	return module
 }
