@@ -34,6 +34,24 @@
       "revId": "e26445011869dc2f9c04c6f27d55374388372b49",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4344a25_fc9617b1",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2018-06-21T09:46:00Z",
+      "side": 1,
+      "message": "Not sure that answers my question?\n- It sounds like you\u0027re saying you want java modules to depend on some of these libraries via LOCAL_JAVA_LIBRARIES. Sounds good\n- My comment is about the arguments to prebuilt_apis. Could you use the name argument instead of prefix, and take an api_dirs argument instead of the very broad glob below ?",
+      "parentUuid": "a278002b_cc962daf",
+      "revId": "e26445011869dc2f9c04c6f27d55374388372b49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
