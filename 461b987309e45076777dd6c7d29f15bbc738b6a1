@@ -22,6 +22,30 @@
       "revId": "461b987309e45076777dd6c7d29f15bbc738b6a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12a6b5cc_097ae552",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2018-06-22T03:15:40Z",
+      "side": 1,
+      "message": "It is just a checking bad pattern error. not related with mandatory scope.",
+      "parentUuid": "907f209b_700f1015",
+      "range": {
+        "startLine": 123,
+        "startChar": 4,
+        "endLine": 123,
+        "endChar": 91
+      },
+      "revId": "461b987309e45076777dd6c7d29f15bbc738b6a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
