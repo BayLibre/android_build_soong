@@ -72,7 +72,6 @@ var (
 				`${config.JavaCmd} -jar ${config.MetalavaJar} -encoding UTF-8 -source $javaVersion @$out.rsp @$srcJarDir/list ` +
 				`$bootclasspathArgs $classpathArgs -sourcepath $sourcepath --no-banner --color --quiet ` +
 				`--stubs $stubsDir $opts && ` +
-				`${config.SoongZipCmd} -write_if_changed -d -o $docZip -C $outDir -D $outDir && ` +
 				`${config.SoongZipCmd} -write_if_changed -jar -o $out -C $stubsDir -D $stubsDir`,
 			CommandDeps: []string{
 				"${config.ZipSyncCmd}",
@@ -87,6 +86,23 @@ var (
 		},
 		"outDir", "srcJarDir", "stubsDir", "srcJars", "javaVersion", "bootclasspathArgs",
 		"classpathArgs", "sourcepath", "opts", "docZip")
+
+	dokka = pctx.AndroidStaticRule("dokka",
+		blueprint.RuleParams{
+			Command: `rm -rf "$outDir" && mkdir -p "$outDir" && ` +
+				`${config.JavaCmd} -jar ${config.DokkaJar} $docStubsDir ` +
+				`$classpathArgs $opts -format dac -dacRoot /reference/kotlin -output $outDir && ` +
+				`${config.SoongZipCmd} -write_if_changed -d -o $docZip -C $outDir -D $outDir`,
+			CommandDeps: []string{
+				"${config.JavaCmd}",
+				"${config.DokkaJar}",
+				"${config.SoongZipCmd}",
+			},
+			Rspfile:        "$out.rsp",
+			RspfileContent: "$in",
+			Restat:         true,
+		},
+		"outDir", "classpathArgs", "docStubsDir", "opts", "docZip")
 )
 
 func init() {
@@ -250,6 +266,10 @@ type DroiddocProperties struct {
 
 	// a top level directory contains XML files set to merge annotations.
 	Metalava_merge_annotations_dir *string
+
+	// if set to true, generate docs through Dokka instead of Doclava. Valid only when
+	// metalava_enabled is set to true.
+	Dokka_enabled *bool
 }
 
 type Javadoc struct {
@@ -711,7 +731,7 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	var templateDir, htmlDirArgs, htmlDir2Args string
-	if !Bool(d.properties.Metalava_enabled) || genDocsForMetalava {
+	if !Bool(d.properties.Metalava_enabled) || (genDocsForMetalava && !Bool(d.properties.Dokka_enabled)) {
 		if String(d.properties.Custom_template) == "" {
 			// TODO: This is almost always droiddoc-templates-sdk
 			ctx.PropertyErrorf("custom_template", "must specify a template")
@@ -835,7 +855,6 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	implicits = append(implicits, d.Javadoc.srcJars...)
 
-	implicitOutputs = append(implicitOutputs, d.Javadoc.docZip)
 	for _, o := range d.properties.Out {
 		implicitOutputs = append(implicitOutputs, android.PathForModuleGen(ctx, o))
 	}
@@ -866,6 +885,7 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			opts += " -stubs " + android.PathForModuleOut(ctx, "docs", "stubsDir").String()
 		}
 
+		implicitOutputs = append(implicitOutputs, d.Javadoc.docZip)
 		ctx.Build(pctx, android.BuildParams{
 			Rule:            javadoc,
 			Description:     "Droiddoc",
@@ -897,7 +917,6 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			"bootclasspathArgs": bootClasspathArgs,
 			"classpathArgs":     classpathArgs,
 			"sourcepath":        strings.Join(d.Javadoc.sourcepaths.Strings(), ":"),
-			"docZip":            d.Javadoc.docZip.String(),
 		}
 
 		var previousApi android.Path
@@ -930,14 +949,22 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			opts += " --hide HiddenTypedefConstant --hide SuperfluousPrefix --hide AnnotationExtraction"
 		}
 
-		if genDocsForMetalava {
+		if genDocsForMetalava && !Bool(d.properties.Dokka_enabled) {
 			opts += " --doc-stubs " + android.PathForModuleOut(ctx, "docs", "docStubsDir").String() +
 				" --write-doc-stubs-source-list $outDir/doc_stubs_src_list " +
 				" --generate-documentation ${config.JavadocCmd} -encoding UTF-8 DOC_STUBS_SOURCE_LIST " +
 				doclavaOpts + docArgsForMetalava + bootClasspathArgs + " " + classpathArgs + " " + " -sourcepath " +
-				android.PathForModuleOut(ctx, "docs", "docStubsDir").String() + " -quiet -d $outDir "
+				android.PathForModuleOut(ctx, "docs", "docStubsDir").String() + " -quiet -d $outDir && " +
+				"${config.SoongZipCmd} -write_if_changed -d -o " + d.Javadoc.docZip.String() + " -C $outDir -D $outDir "
 			implicits = append(implicits, jsilver)
 			implicits = append(implicits, doclava)
+			implicitOutputs = append(implicitOutputs, d.Javadoc.docZip)
+		}
+
+		if Bool(d.properties.Dokka_enabled) {
+			opts += " --doc-stubs " + android.PathForModuleOut(ctx, "docs", "docStubsDir").String() +
+				" --write-doc-stubs-source-list " +
+				android.PathForModuleOut(ctx, "docs", "out/doc_stubs_src_list").String()
 		}
 
 		buildArgs["opts"] = opts
@@ -950,6 +977,22 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			ImplicitOutputs: implicitOutputs,
 			Args:            buildArgs,
 		})
+
+		if Bool(d.properties.Dokka_enabled) {
+			ctx.Build(pctx, android.BuildParams{
+				Rule:        dokka,
+				Description: "Dokka",
+				Output:      d.Javadoc.docZip,
+				Input:       android.PathForModuleOut(ctx, "docs", "out/doc_stubs_src_list"),
+				Args: map[string]string{
+					"outDir":        android.PathForModuleOut(ctx, "docs", "dokka").String(),
+					"opts":          docArgsForMetalava,
+					"classpathArgs": classpathArgs,
+					"docStubsDir":   android.PathForModuleOut(ctx, "docs", "docStubsDir").String(),
+					"docZip":        d.Javadoc.docZip.String(),
+				},
+			})
+		}
 	}
 
 	java8Home := ctx.Config().Getenv("ANDROID_JAVA8_HOME")
