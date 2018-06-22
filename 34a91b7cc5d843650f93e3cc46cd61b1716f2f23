@@ -22,6 +22,30 @@
       "revId": "34a91b7cc5d843650f93e3cc46cd61b1716f2f23",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62a59ae0_01c16e6e",
+        "filename": "android/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1305591
+      },
+      "writtenOn": "2018-06-22T09:35:19Z",
+      "side": 1,
+      "message": "yup, I had already noticed :)",
+      "parentUuid": "ae20d4f1_daebfe78",
+      "range": {
+        "startLine": 1,
+        "startChar": 18,
+        "endLine": 1,
+        "endChar": 33
+      },
+      "revId": "34a91b7cc5d843650f93e3cc46cd61b1716f2f23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
