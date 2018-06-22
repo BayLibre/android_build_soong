@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "921b42e9_9878ddde",
+        "filename": "android/androidmk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-06-22T09:24:03Z",
+      "side": 1,
+      "message": "do you have corresponding change in build/make?",
+      "range": {
+        "startLine": 246,
+        "startChar": 33,
+        "endLine": 246,
+        "endChar": 61
+      },
+      "revId": "142b94789aaa4abf567b30285446dc602591d64e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
