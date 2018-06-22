@@ -92,7 +92,7 @@ var (
 			// TODO(b/109657296): needs --no-rosegment until Android
 			// stack unwinder can handle the read-only segment.
 			"-Wl,--no-rosegment",
-			"-Wl,--pack-dyn-relocs=android",
+			"-Wl,--pack-dyn-relocs=android-relr",
 			"-fuse-ld=lld",
 		}...)
 
