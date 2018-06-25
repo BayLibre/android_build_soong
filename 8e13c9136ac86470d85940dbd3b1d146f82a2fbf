@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42a751ab_f401e6ea",
+        "filename": "android/androidmk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-06-25T17:52:43Z",
+      "side": 1,
+      "message": "PRODUCT_SERVICES?",
+      "range": {
+        "startLine": 246,
+        "startChar": 39,
+        "endLine": 246,
+        "endChar": 54
+      },
+      "revId": "8e13c9136ac86470d85940dbd3b1d146f82a2fbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b34d8b79_b7157c89",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-06-25T17:52:43Z",
+      "side": 1,
+      "message": "provides services owned by the OS provider to the core platform?",
+      "range": {
+        "startLine": 245,
+        "startChar": 27,
+        "endLine": 245,
+        "endChar": 57
+      },
+      "revId": "8e13c9136ac86470d85940dbd3b1d146f82a2fbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
