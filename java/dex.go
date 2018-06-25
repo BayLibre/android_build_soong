@@ -70,7 +70,7 @@ func (j *Module) dxFlags(ctx android.ModuleContext) []string {
 			"--verbose")
 	}
 
-	flags = append(flags, "--min-api "+j.minSdkVersionNumber(ctx))
+	flags = append(flags, "--min-api "+sdkVersionToNumberAsString(ctx, j.minSdkVersion()))
 	return flags
 }
 
