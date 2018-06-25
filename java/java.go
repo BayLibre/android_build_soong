@@ -168,8 +168,13 @@ type CompilerDeviceProperties struct {
 	// list of module-specific flags that will be used for dex compiles
 	Dxflags []string `android:"arch_variant"`
 
-	// if not blank, set to the version of the sdk to compile against
+	// if not blank, set to the version of the sdk to compile against.  Defaults to compiling against the current
+	// sdk if platform_apis is not set.
 	Sdk_version *string
+
+	// if not blank, set the minimum version of the sdk that the compiled artifacts will run against.
+	// Defaults to sdk_version if not set.
+	Min_sdk_version *string
 
 	// if true, compile against the platform APIs instead of an SDK.
 	Platform_apis *bool
@@ -352,20 +357,6 @@ type sdkDep struct {
 	aidl android.Path
 }
 
-func sdkStringToNumber(ctx android.BaseContext, v string) int {
-	switch v {
-	case "", "current", "system_current", "test_current", "core_current":
-		return android.FutureApiLevel
-	default:
-		if i, err := strconv.Atoi(android.GetNumericSdkVersion(v)); err != nil {
-			ctx.PropertyErrorf("sdk_version", "invalid sdk version")
-			return -1
-		} else {
-			return i
-		}
-	}
-}
-
 func (j *Module) shouldInstrument(ctx android.BaseContext) bool {
 	return j.properties.Instrument && ctx.Config().IsEnvTrue("EMMA_INSTRUMENT")
 }
@@ -376,8 +367,56 @@ func (j *Module) shouldInstrumentStatic(ctx android.BaseContext) bool {
 			ctx.Config().UnbundledBuild())
 }
 
-func decodeSdkDep(ctx android.BaseContext, v string) sdkDep {
-	i := sdkStringToNumber(ctx, v)
+func (j *Module) sdkVersion() string {
+	return String(j.deviceProperties.Sdk_version)
+}
+
+func (j *Module) minSdkVersion() string {
+	if j.deviceProperties.Min_sdk_version != nil {
+		return *j.deviceProperties.Min_sdk_version
+	}
+	return j.sdkVersion()
+}
+
+type sdkContext interface {
+	// sdkVersion eturns the sdk_version property of the current module, or an empty string if it is not set.
+	sdkVersion() string
+	// minSdkVersion returns the min_sdk_version property of the current module, or sdkVersion() if it is not set.
+	minSdkVersion() string
+}
+
+func sdkVersionOrDefault(ctx android.BaseContext, v string) string {
+	switch v {
+	case "", "current", "system_current", "test_current", "core_current":
+		return ctx.Config().DefaultAppTargetSdk()
+	default:
+		return v
+	}
+}
+
+// Returns a sdk version as a number.  For modules targeting an unreleased SDK (meaning it does not yet have a number)
+// it returns android.FutureApiLevel (10000).
+func sdkVersionToNumber(ctx android.BaseContext, v string) int {
+	switch v {
+	case "", "current", "test_current", "system_current", "core_current":
+		return ctx.Config().DefaultAppTargetSdkInt()
+	default:
+		if i, err := strconv.Atoi(android.GetNumericSdkVersion(v)); err != nil {
+			ctx.PropertyErrorf("sdk_version", "invalid sdk version")
+			return -1
+		} else {
+			return i
+		}
+	}
+}
+
+func sdkVersionToNumberAsString(ctx android.BaseContext, v string) string {
+	return strconv.Itoa(sdkVersionToNumber(ctx, v))
+}
+
+func decodeSdkDep(ctx android.BaseContext, sdkContext sdkContext) sdkDep {
+	v := sdkContext.sdkVersion()
+	i := sdkVersionToNumber(ctx, v)
 	if i == -1 {
 		// Invalid sdk version, error handled by sdkStringToNumber.
 		return sdkDep{}
@@ -482,7 +521,7 @@ func decodeSdkDep(ctx android.BaseContext, v string) sdkDep {
 func (j *Module) deps(ctx android.BottomUpMutatorContext) {
 	if ctx.Device() {
 		if !Bool(j.properties.No_standard_libs) {
-			sdkDep := decodeSdkDep(ctx, String(j.deviceProperties.Sdk_version))
+			sdkDep := decodeSdkDep(ctx, sdkContext(j))
 			if sdkDep.useDefaultLibs {
 				ctx.AddDependency(ctx.Module(), bootClasspathTag, config.DefaultBootclasspathLibraries...)
 				if ctx.Config().TargetOpenJDK9() {
@@ -634,7 +673,7 @@ const (
 )
 
 func getLinkType(m *Module, name string) linkType {
-	ver := String(m.deviceProperties.Sdk_version)
+	ver := m.sdkVersion()
 	noStdLibs := Bool(m.properties.No_standard_libs)
 	switch {
 	case name == "core.current.stubs" || ver == "core_current" || noStdLibs || name == "stub-annotations":
@@ -693,7 +732,7 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 	var deps deps
 
 	if ctx.Device() {
-		sdkDep := decodeSdkDep(ctx, String(j.deviceProperties.Sdk_version))
+		sdkDep := decodeSdkDep(ctx, sdkContext(j))
 		if sdkDep.invalidVersion {
 			ctx.AddMissingDependencies(sdkDep.modules)
 		} else if sdkDep.useFiles {
@@ -804,16 +843,16 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 	return deps
 }
 
-func getJavaVersion(ctx android.ModuleContext, javaVersion, sdkVersion string) string {
+func getJavaVersion(ctx android.ModuleContext, javaVersion string, sdkContext sdkContext) string {
 	var ret string
-	sdk := sdkStringToNumber(ctx, sdkVersion)
+	sdk := sdkVersionToNumber(ctx, sdkContext.sdkVersion())
 	if javaVersion != "" {
 		ret = javaVersion
 	} else if ctx.Device() && sdk <= 23 {
 		ret = "1.7"
 	} else if ctx.Device() && sdk <= 26 || !ctx.Config().TargetOpenJDK9() {
 		ret = "1.8"
-	} else if ctx.Device() && sdkVersion != "" && sdk == android.FutureApiLevel {
+	} else if ctx.Device() && sdkContext.sdkVersion() != "" && sdk == android.FutureApiLevel {
 		// TODO(ccross): once we generate stubs we should be able to use 1.9 for sdk_version: "current"
 		ret = "1.8"
 	} else {
@@ -860,8 +899,7 @@ func (j *Module) collectBuilderFlags(ctx android.ModuleContext, deps deps) javaB
 	}
 
 	// javaVersion flag.
-	flags.javaVersion = getJavaVersion(ctx,
-		String(j.properties.Java_version), String(j.deviceProperties.Sdk_version))
+	flags.javaVersion = getJavaVersion(ctx, String(j.properties.Java_version), sdkContext(j))
 
 	// classpath
 	flags.bootClasspath = append(flags.bootClasspath, deps.bootClasspath...)
@@ -1197,17 +1235,6 @@ func (j *Module) instrument(ctx android.ModuleContext, flags javaBuilderFlags,
 	return instrumentedJar
 }
 
-// Returns a sdk version as a string that is guaranteed to be a parseable as a number.  For
-// modules targeting an unreleased SDK (meaning it does not yet have a number) it returns "10000".
-func (j *Module) minSdkVersionNumber(ctx android.ModuleContext) string {
-	switch String(j.deviceProperties.Sdk_version) {
-	case "", "current", "test_current", "system_current", "core_current":
-		return strconv.Itoa(ctx.Config().DefaultAppTargetSdkInt())
-	default:
-		return android.GetNumericSdkVersion(String(j.deviceProperties.Sdk_version))
-	}
-}
-
 func (j *Module) installable() bool {
 	return BoolDefault(j.properties.Installable, true)
 }
@@ -1445,6 +1472,14 @@ type Import struct {
 	classpathFiles        android.Paths
 	combinedClasspathFile android.Path
 	exportedSdkLibs       []string
+}
+
+func (j *Import) sdkVersion() string {
+	return String(j.properties.Sdk_version)
+}
+
+func (j *Import) minSdkVersion() string {
+	return j.sdkVersion()
 }
 
 func (j *Import) Prebuilt() *android.Prebuilt {
