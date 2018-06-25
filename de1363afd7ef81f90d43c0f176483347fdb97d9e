@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2918a74f_8d51ac9b",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-06-25T07:57:00Z",
+      "side": 1,
+      "message": "these are not compiled into the stubs. They are just in the classpath for the stubs.",
+      "range": {
+        "startLine": 102,
+        "startChar": 45,
+        "endLine": 102,
+        "endChar": 59
+      },
+      "revId": "de1363afd7ef81f90d43c0f176483347fdb97d9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca2b3ffb_2537a30d",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-06-25T07:57:00Z",
+      "side": 1,
+      "message": "dwillemsen@, ccross@, do you have a better name for this?",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 15
+      },
+      "revId": "de1363afd7ef81f90d43c0f176483347fdb97d9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
