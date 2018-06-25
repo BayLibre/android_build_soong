@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "23e55c3e_a24b03d0",
+        "filename": "android/androidmk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-06-25T18:10:30Z",
+      "side": 1,
+      "message": "I think it\u0027s more readable with the underscore.  It\u0027s a little odd in some places, but I think it\u0027s most important to be readable in the LOCAL_PRODUCT_SERVICES_MODULE since that\u0027s what most people will have to see.",
+      "parentUuid": "6c4e1714_14124f2f",
+      "range": {
+        "startLine": 246,
+        "startChar": 39,
+        "endLine": 246,
+        "endChar": 54
+      },
+      "revId": "8e13c9136ac86470d85940dbd3b1d146f82a2fbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b34d8b79_b7157c89",
         "filename": "android/module.go",
         "patchSetId": 5
