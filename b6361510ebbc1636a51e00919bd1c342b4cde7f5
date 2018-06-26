@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f75568c2_4db2437d",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1077847
+      },
+      "writtenOn": "2018-06-26T23:58:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e7dd93c_6be556bf",
+      "revId": "b6361510ebbc1636a51e00919bd1c342b4cde7f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6348ced0_8c334de2",
         "filename": "android/variable.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2018-06-26T21:31:28Z",
       "side": 1,
       "message": "Add Product_is_iot in here if you want to be able to affect Android.bp properties like cflags with it.",
+      "revId": "b6361510ebbc1636a51e00919bd1c342b4cde7f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f260053_ea1dca04",
+        "filename": "android/variable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1077847
+      },
+      "writtenOn": "2018-06-26T23:58:43Z",
+      "side": 1,
+      "message": "Ah, great, didn\u0027t realize there was a direct way to do this without going through additional Go logic.",
+      "parentUuid": "6348ced0_8c334de2",
       "revId": "b6361510ebbc1636a51e00919bd1c342b4cde7f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
