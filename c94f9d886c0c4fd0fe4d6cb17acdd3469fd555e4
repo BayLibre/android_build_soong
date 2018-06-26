@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0ef8bf9_6657f493",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-06-26T20:29:36Z",
+      "side": 1,
+      "message": "Unrelated to this patch, but no need to convert to strings here",
+      "range": {
+        "startLine": 651,
+        "startChar": 26,
+        "endLine": 651,
+        "endChar": 36
+      },
+      "revId": "c94f9d886c0c4fd0fe4d6cb17acdd3469fd555e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
