@@ -1209,7 +1209,7 @@ func (j *Module) minSdkVersionNumber(ctx android.ModuleContext) string {
 }
 
 func (j *Module) installable() bool {
-	return BoolDefault(j.properties.Installable, true)
+	return Bool(j.properties.Installable)
 }
 
 var _ Dependency = (*Library)(nil)
@@ -1261,8 +1261,8 @@ func LibraryFactory(installable bool) func() android.Module {
 	return func() android.Module {
 		module := &Library{}
 
-		if !installable {
-			module.properties.Installable = proptools.BoolPtr(false)
+		if installable {
+			module.Module.properties.Installable = proptools.BoolPtr(true)
 		}
 
 		module.AddProperties(
