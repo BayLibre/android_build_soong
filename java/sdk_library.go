@@ -291,6 +291,24 @@ func (module *sdkLibrary) latestRemovedApiFilegroupName(apiScope apiScope) strin
 	return name
 }
 
+// Creates the dummy file to avoid build error
+func (module *sdkLibrary) createDummyFile(mctx android.TopDownMutatorContext) {
+	content := `
+public class Dummy {
+}
+`
+	// genrule to generate the Dummy.jar file content
+	genruleProps := struct {
+		Name *string
+		Cmd  *string
+		Out  []string
+	}{}
+	genruleProps.Name = proptools.StringPtr(module.BaseModuleName() + ".dummy-gen")
+	genruleProps.Cmd = proptools.StringPtr("echo '" + content + "' > $(out)")
+	genruleProps.Out = []string{"Dummy.java"}
+	mctx.CreateModule(android.ModuleFactoryAdaptor(genrule.GenRuleFactory), &genruleProps)
+}
+
 // Creates a static java library that has API stubs
 func (module *sdkLibrary) createStubsLibrary(mctx android.TopDownMutatorContext, apiScope apiScope) {
 	props := struct {
@@ -313,6 +331,7 @@ func (module *sdkLibrary) createStubsLibrary(mctx android.TopDownMutatorContext,
 	props.Name = proptools.StringPtr(module.stubsName(apiScope))
 	// sources are generated from the droiddoc
 	props.Srcs = []string{":" + module.docsName(apiScope)}
+	props.Srcs = append(props.Srcs, ":"+module.BaseModuleName()+".dummy-gen")
 	props.Sdk_version = proptools.StringPtr(module.sdkVersion(apiScope))
 	// Unbundled apps will use the prebult one from /prebuilts/sdk
 	props.Product_variables.Unbundled_build.Enabled = proptools.BoolPtr(false)
@@ -560,6 +579,8 @@ func sdkLibraryMutator(mctx android.TopDownMutatorContext) {
 		if module.properties.Api_packages == nil {
 			mctx.PropertyErrorf("api_packages", "java_sdk_library must specify api_packages")
 		}
+		// Create Dummy file to avoid build error when doc files is null
+		module.createDummyFile(mctx)
 
 		// for public API stubs
 		module.createStubsLibrary(mctx, apiScopePublic)
