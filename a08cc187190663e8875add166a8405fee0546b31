@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b24ec412_db754ea3",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-06-27T11:29:13Z",
+      "side": 1,
+      "message": "This is always the same contents, can we create a Dummy.java somewhere and use it for all modules?",
+      "revId": "a08cc187190663e8875add166a8405fee0546b31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59891a36_42189d96",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-06-27T11:29:13Z",
+      "side": 1,
+      "message": "What is the error?  java_library should be resilient against no srcs or static libs.  Can you fix it there?",
+      "revId": "a08cc187190663e8875add166a8405fee0546b31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
