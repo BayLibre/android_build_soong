@@ -34,8 +34,8 @@ import (
 func init() {
 	android.RegisterModuleType("java_defaults", defaultsFactory)
 
-	android.RegisterModuleType("java_library", LibraryFactory(true))
-	android.RegisterModuleType("java_library_static", LibraryFactory(false))
+	android.RegisterModuleType("java_library", LibraryFactory)
+	android.RegisterModuleType("java_library_static", LibraryFactory)
 	android.RegisterModuleType("java_library_host", LibraryHostFactory)
 	android.RegisterModuleType("java_binary", BinaryFactory)
 	android.RegisterModuleType("java_binary_host", BinaryHostFactory)
@@ -1171,7 +1171,7 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars ...android.Path
 		outputFile = j.instrument(ctx, flags, outputFile, jarName)
 	}
 
-	if ctx.Device() && j.installable() {
+	if ctx.Device() && Bool(j.properties.Installable) {
 		outputFile = j.compileDex(ctx, flags, outputFile, jarName)
 		if ctx.Failed() {
 			return
@@ -1235,8 +1235,8 @@ func (j *Module) instrument(ctx android.ModuleContext, flags javaBuilderFlags,
 	return instrumentedJar
 }
 
-func (j *Module) installable() bool {
-	return BoolDefault(j.properties.Installable, true)
+func (j *Module) installable(ctx android.BaseContext) bool {
+	return BoolDefault(j.properties.Installable, ctx.Host())
 }
 
 var _ Dependency = (*Library)(nil)
@@ -1274,7 +1274,7 @@ type Library struct {
 func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	j.compile(ctx)
 
-	if j.installable() {
+	if BoolDefault(j.properties.Installable, ctx.Host()) {
 		j.installFile = ctx.InstallFile(android.PathForModuleInstall(ctx, "framework"),
 			ctx.ModuleName()+".jar", j.outputFile)
 	}
@@ -1284,22 +1284,16 @@ func (j *Library) DepsMutator(ctx android.BottomUpMutatorContext) {
 	j.deps(ctx)
 }
 
-func LibraryFactory(installable bool) func() android.Module {
-	return func() android.Module {
-		module := &Library{}
+func LibraryFactory() android.Module {
+	module := &Library{}
 
-		if !installable {
-			module.properties.Installable = proptools.BoolPtr(false)
-		}
+	module.AddProperties(
+		&module.Module.properties,
+		&module.Module.deviceProperties,
+		&module.Module.protoProperties)
 
-		module.AddProperties(
-			&module.Module.properties,
-			&module.Module.deviceProperties,
-			&module.Module.protoProperties)
-
-		InitJavaModule(module, android.HostAndDeviceSupported)
-		return module
-	}
+	InitJavaModule(module, android.HostAndDeviceSupported)
+	return module
 }
 
 func LibraryHostFactory() android.Module {
@@ -1308,6 +1302,8 @@ func LibraryHostFactory() android.Module {
 	module.AddProperties(
 		&module.Module.properties,
 		&module.Module.protoProperties)
+
+	module.Module.properties.Installable = proptools.BoolPtr(true)
 
 	InitJavaModule(module, android.HostSupported)
 	return module
@@ -1348,6 +1344,8 @@ func TestFactory() android.Module {
 		&module.Module.protoProperties,
 		&module.testProperties)
 
+	module.Module.properties.Installable = proptools.BoolPtr(true)
+
 	InitJavaModule(module, android.HostAndDeviceSupported)
 	android.InitDefaultableModule(module)
 	return module
@@ -1360,6 +1358,8 @@ func TestHostFactory() android.Module {
 		&module.Module.properties,
 		&module.Module.protoProperties,
 		&module.testProperties)
+
+	module.Module.properties.Installable = proptools.BoolPtr(true)
 
 	InitJavaModule(module, android.HostSupported)
 	android.InitDefaultableModule(module)
@@ -1430,6 +1430,8 @@ func BinaryFactory() android.Module {
 		&module.Module.protoProperties,
 		&module.binaryProperties)
 
+	module.Module.properties.Installable = proptools.BoolPtr(true)
+
 	android.InitAndroidArchModule(module, android.HostAndDeviceSupported, android.MultilibCommonFirst)
 	android.InitDefaultableModule(module)
 	return module
@@ -1442,6 +1444,8 @@ func BinaryHostFactory() android.Module {
 		&module.Module.properties,
 		&module.Module.protoProperties,
 		&module.binaryProperties)
+
+	module.Module.properties.Installable = proptools.BoolPtr(true)
 
 	android.InitAndroidArchModule(module, android.HostSupported, android.MultilibCommonFirst)
 	android.InitDefaultableModule(module)
