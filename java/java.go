@@ -1209,7 +1209,7 @@ func (j *Module) minSdkVersionNumber(ctx android.ModuleContext) string {
 }
 
 func (j *Module) installable() bool {
-	return BoolDefault(j.properties.Installable, true)
+	return Bool(j.properties.Installable)
 }
 
 var _ Dependency = (*Library)(nil)
@@ -1261,8 +1261,8 @@ func LibraryFactory(installable bool) func() android.Module {
 	return func() android.Module {
 		module := &Library{}
 
-		if !installable {
-			module.properties.Installable = proptools.BoolPtr(false)
+		if installable {
+			module.Module.properties.Installable = proptools.BoolPtr(true)
 		}
 
 		module.AddProperties(
@@ -1281,6 +1281,8 @@ func LibraryHostFactory() android.Module {
 	module.AddProperties(
 		&module.Module.properties,
 		&module.Module.protoProperties)
+
+	module.Module.properties.Installable = proptools.BoolPtr(true)
 
 	InitJavaModule(module, android.HostSupported)
 	return module
@@ -1321,6 +1323,8 @@ func TestFactory() android.Module {
 		&module.Module.protoProperties,
 		&module.testProperties)
 
+	module.Module.properties.Installable = proptools.BoolPtr(true)
+
 	InitJavaModule(module, android.HostAndDeviceSupported)
 	android.InitDefaultableModule(module)
 	return module
@@ -1333,6 +1337,8 @@ func TestHostFactory() android.Module {
 		&module.Module.properties,
 		&module.Module.protoProperties,
 		&module.testProperties)
+
+	module.Module.properties.Installable = proptools.BoolPtr(true)
 
 	InitJavaModule(module, android.HostSupported)
 	android.InitDefaultableModule(module)
@@ -1403,6 +1409,8 @@ func BinaryFactory() android.Module {
 		&module.Module.protoProperties,
 		&module.binaryProperties)
 
+	module.Module.properties.Installable = proptools.BoolPtr(true)
+
 	android.InitAndroidArchModule(module, android.HostAndDeviceSupported, android.MultilibCommonFirst)
 	android.InitDefaultableModule(module)
 	return module
@@ -1415,6 +1423,8 @@ func BinaryHostFactory() android.Module {
 		&module.Module.properties,
 		&module.Module.protoProperties,
 		&module.binaryProperties)
+
+	module.Module.properties.Installable = proptools.BoolPtr(true)
 
 	android.InitAndroidArchModule(module, android.HostSupported, android.MultilibCommonFirst)
 	android.InitDefaultableModule(module)
