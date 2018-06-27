@@ -105,6 +105,24 @@
       "revId": "a08cc187190663e8875add166a8405fee0546b31",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8a4e3c2_2a888dd6",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-06-27T12:15:50Z",
+      "side": 1,
+      "message": "I meant that if we are not sure about whether or not the empty jar will cause problem in downstreams, we can have the switch to allow it only for a certain case like here.\n\nBut, yeah, in practice, I don\u0027t think the empty jar can really make a problem in any case, so I am okay without the switch.",
+      "parentUuid": "806c3783_31160cc1",
+      "revId": "a08cc187190663e8875add166a8405fee0546b31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
