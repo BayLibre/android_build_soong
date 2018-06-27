@@ -33,6 +33,24 @@
       "revId": "a08cc187190663e8875add166a8405fee0546b31",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f66b09e7_c53dd9cc",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-06-27T11:32:47Z",
+      "side": 1,
+      "message": "yes, that\u0027s the cause. what do you think the outcome should be? an empty jar?",
+      "parentUuid": "59891a36_42189d96",
+      "revId": "a08cc187190663e8875add166a8405fee0546b31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
