@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ecb0d902_013b7f5d",
+        "filename": "android/variable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-06-27T21:14:11Z",
+      "side": 1,
+      "message": "Use Product_is_iot, which will be product_is_iot in the Android.bp file.",
+      "range": {
+        "startLine": 66,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 14
+      },
+      "revId": "5b66046d937f299686ecdfa1ed84deefd1c7bd58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8847a22_b554e12f",
+        "filename": "android/variable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-06-27T21:14:11Z",
+      "side": 1,
+      "message": "This will have to be Product_is_iot too to match above.",
+      "range": {
+        "startLine": 216,
+        "startChar": 1,
+        "endLine": 216,
+        "endChar": 13
+      },
+      "revId": "5b66046d937f299686ecdfa1ed84deefd1c7bd58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
