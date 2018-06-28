@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e05d2ad5_2270d6cb",
+        "filename": "java/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-06-28T17:49:53Z",
+      "side": 1,
+      "message": "should this be -s $out.rsp?",
+      "range": {
+        "startLine": 44,
+        "startChar": 35,
+        "endLine": 44,
+        "endChar": 47
+      },
+      "revId": "c384216f48a8bb8acbe2af3909ff611848ce8432",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
