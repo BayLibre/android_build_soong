@@ -1,0 +1,7 @@
+Build-Cop-Override+1: Roland Levillain <rpl@google.com>
+Presubmit-Ready+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Roland Levillain <rpl@google.com>
+Submitted-at: Fri, 29 Jun 2018 09:37:42 +0000
+Reviewed-on: https://android-review.googlesource.com/711424
+Project: platform/build/soong
+Branch: refs/heads/master
