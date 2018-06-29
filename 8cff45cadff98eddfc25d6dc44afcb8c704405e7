@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "390c3ac5_fd959327",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-06-29T17:51:41Z",
+      "side": 1,
+      "message": "Add comment to say this property is one-off thing, since all the properties will be shown on go/androidbp",
+      "revId": "8cff45cadff98eddfc25d6dc44afcb8c704405e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
