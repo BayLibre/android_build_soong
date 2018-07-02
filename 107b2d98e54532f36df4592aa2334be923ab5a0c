@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f191ab7_b9b9f6fc",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-07-02T21:15:20Z",
+      "side": 1,
+      "message": "installable (the name gets lower-cased in an Android.bp file)",
+      "range": {
+        "startLine": 195,
+        "startChar": 46,
+        "endLine": 195,
+        "endChar": 57
+      },
+      "revId": "107b2d98e54532f36df4592aa2334be923ab5a0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0eed6676_e1a5ace0",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1139,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-07-02T21:15:20Z",
+      "side": 1,
+      "message": "If this is just checking the bool do it here with Bool(j.deviceProperties.Compile_dex)\nOr make createDexRule check both installable and j.deviceProperties.Compile_dex",
+      "range": {
+        "startLine": 1139,
+        "startChar": 40,
+        "endLine": 1139,
+        "endChar": 57
+      },
+      "revId": "107b2d98e54532f36df4592aa2334be923ab5a0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e896e0e_e6db330f",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1223,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-07-02T21:15:20Z",
+      "side": 1,
+      "message": "Bool(j.deviceProperties.Compile_dex)",
+      "range": {
+        "startLine": 1223,
+        "startChar": 8,
+        "endLine": 1223,
+        "endChar": 58
+      },
+      "revId": "107b2d98e54532f36df4592aa2334be923ab5a0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
