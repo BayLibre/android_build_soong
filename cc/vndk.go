@@ -191,11 +191,14 @@ func vndkIsVndkDepAllowed(from *vndkdep, to *vndkdep) error {
 }
 
 var (
+	llndkLibraries        []string
+	llndkPrivateLibraries []string
+
 	vndkCoreLibraries    []string
 	vndkSpLibraries      []string
-	llndkLibraries       []string
 	vndkPrivateLibraries []string
-	vndkLibrariesLock    sync.Mutex
+
+	vndkLibrariesLock sync.Mutex
 )
 
 // gather list of vndk-core, vndk-sp, and ll-ndk libs
@@ -210,9 +213,9 @@ func VndkMutator(mctx android.BottomUpMutatorContext) {
 				sort.Strings(llndkLibraries)
 			}
 			if !Bool(lib.Properties.Vendor_available) {
-				if !inList(name, vndkPrivateLibraries) {
-					vndkPrivateLibraries = append(vndkPrivateLibraries, name)
-					sort.Strings(vndkPrivateLibraries)
+				if !inList(name, llndkPrivateLibraries) {
+					llndkPrivateLibraries = append(llndkPrivateLibraries, name)
+					sort.Strings(llndkPrivateLibraries)
 				}
 			}
 		} else {
