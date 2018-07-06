@@ -46,6 +46,7 @@ var (
 	publicApiStubsTag = dependencyTag{name: "public"}
 	systemApiStubsTag = dependencyTag{name: "system"}
 	testApiStubsTag   = dependencyTag{name: "test"}
+	platformStubsTag  = dependencyTag{name: "platform"}
 )
 
 type apiScope int
@@ -54,6 +55,7 @@ const (
 	apiScopePublic apiScope = iota
 	apiScopeSystem
 	apiScopeTest
+	apiScopePlatform
 )
 
 var (
@@ -127,6 +129,7 @@ type sdkLibrary struct {
 	publicApiStubsPath android.Paths
 	systemApiStubsPath android.Paths
 	testApiStubsPath   android.Paths
+	platformStubsPath  android.Paths
 }
 
 func (module *sdkLibrary) DepsMutator(ctx android.BottomUpMutatorContext) {
@@ -134,6 +137,7 @@ func (module *sdkLibrary) DepsMutator(ctx android.BottomUpMutatorContext) {
 	ctx.AddDependency(ctx.Module(), publicApiStubsTag, module.stubsName(apiScopePublic))
 	ctx.AddDependency(ctx.Module(), systemApiStubsTag, module.stubsName(apiScopeSystem))
 	ctx.AddDependency(ctx.Module(), testApiStubsTag, module.stubsName(apiScopeTest))
+	ctx.AddDependency(ctx.Module(), platformStubsTag, module.stubsName(apiScopePlatform))
 }
 
 func (module *sdkLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
@@ -152,6 +156,8 @@ func (module *sdkLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext)
 				module.systemApiStubsPath = stubs.HeaderJars()
 			case testApiStubsTag:
 				module.testApiStubsPath = stubs.HeaderJars()
+			case platformStubsTag:
+				module.platformStubsPath = stubs.HeaderJars()
 			default:
 				ctx.ModuleErrorf("depends on module %q of unknown tag %q", otherName, tag)
 			}
@@ -197,6 +203,8 @@ func (module *sdkLibrary) stubsName(apiScope apiScope) string {
 		stubsName = stubsName + sdkSystemApiSuffix
 	case apiScopeTest:
 		stubsName = stubsName + sdkTestApiSuffix
+	case apiScopePlatform:
+		stubsName = module.BaseModuleName() + sdkImplLibrarySuffix
 	}
 	return stubsName
 }
@@ -541,8 +549,10 @@ func (module *sdkLibrary) createXmlFile(mctx android.TopDownMutatorContext) {
 // to satisfy SdkLibraryDependency interface
 func (module *sdkLibrary) HeaderJars(linkType linkType) android.Paths {
 	// This module is just a wrapper for the stubs.
-	if linkType == javaSystem || linkType == javaPlatform {
+	if linkType == javaSystem {
 		return module.systemApiStubsPath
+	} else if linkType == javaPlatform {
+		return module.platformStubsPath
 	} else {
 		return module.publicApiStubsPath
 	}
