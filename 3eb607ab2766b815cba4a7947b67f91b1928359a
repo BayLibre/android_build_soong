@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c1ca27a_cb0d15a5",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1573,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-07-07T20:10:27Z",
+      "side": 1,
+      "message": "This should be looking at a specific arch, not at the multilib value. Otherwise x86+arm targets could do the wrong thing.",
+      "revId": "3eb607ab2766b815cba4a7947b67f91b1928359a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
