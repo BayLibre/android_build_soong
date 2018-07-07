@@ -576,6 +576,16 @@ func (c *config) DevicePrefer32BitExecutables() bool {
 	return Bool(c.productVariables.DevicePrefer32BitExecutables)
 }
 
+func (c *config) DevicePrimaryMultilib() string {
+	targets, err := decodeMultilib("first", c.Targets[Device], c.DevicePrefer32BitExecutables())
+	if err != nil || len(targets) == 0 {
+		fmt.Errorf("Cannot determine primary multilib of the device.")
+		return ""
+	}
+	return targets[0].Arch.ArchType.Multilib
+
+}
+
 func (c *config) SkipDeviceInstall() bool {
 	return c.EmbeddedInMake()
 }
