@@ -16,6 +16,24 @@
       "revId": "3eb607ab2766b815cba4a7947b67f91b1928359a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb11721e_f4cf0584",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1573,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-07-08T00:48:05Z",
+      "side": 1,
+      "message": "Yes right. Thanks for pointing this out. For those targets, both x86 and arm variants were created by soong. Although this wasn\u0027t a problem for executables as only x86 variants are installed, but for libs, both variants were installed.\n\nFixed by comparing ArchType.",
+      "parentUuid": "7c1ca27a_cb0d15a5",
+      "revId": "3eb607ab2766b815cba4a7947b67f91b1928359a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
