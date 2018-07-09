@@ -22,6 +22,29 @@
       "revId": "e302b66611b452a5b8784fa36cc1210f722493fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f89f3a15_ef342ce2",
+        "filename": "cc/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-07-09T18:35:58Z",
+      "side": 1,
+      "message": "What will happen with 3 flags:\n  -Wl,--pack-dyn-relocs\u003dandroid+relr\n  -Wl,--use-android-relr-tags\n  -Wl,--pack-dyn-relocs\u003dnone\nWe currently append flag -Wl,--pack-dyn-relocs\u003dnone to link modules that\ndo not work with --pack-dyn-relocs\u003dandroid.",
+      "range": {
+        "startLine": 96,
+        "startChar": 3,
+        "endLine": 96,
+        "endChar": 32
+      },
+      "revId": "e302b66611b452a5b8784fa36cc1210f722493fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
