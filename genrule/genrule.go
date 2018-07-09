@@ -226,10 +226,10 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		switch name {
 		case "location":
 			if len(g.properties.Tools) == 0 && len(toolFiles) == 0 {
-				return "", fmt.Errorf("at least one `tools` or `tool_files` is required if $(location) is used")
-			}
-
-			if len(g.properties.Tools) > 0 {
+				// report the error and continue to catch multiple errors in a single run
+				ctx.PropertyErrorf("cmd", "at least one `tools` or `tool_files` is required if $(location) is used")
+				return "", nil
+			} else if len(g.properties.Tools) > 0 {
 				return tools[g.properties.Tools[0]].String(), nil
 			} else {
 				return tools[toolFiles[0].Rel()].String(), nil
@@ -241,7 +241,7 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		case "depfile":
 			referencedDepfile = true
 			if !Bool(g.properties.Depfile) {
-				return "", fmt.Errorf("$(depfile) used without depfile property")
+				ctx.PropertyErrorf("cmd", "$(depfile) used without depfile property")
 			}
 			return "__SBOX_DEPFILE__", nil
 		case "genDir":
@@ -252,20 +252,22 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 				if tool, ok := tools[label]; ok {
 					return tool.String(), nil
 				} else {
-					return "", fmt.Errorf("unknown location label %q", label)
+					ctx.PropertyErrorf("cmd", "unknown location label %q", label)
+					return "", nil
 				}
 			}
-			return "", fmt.Errorf("unknown variable '$(%s)'", name)
+			ctx.PropertyErrorf("cmd", "unknown variable '$(%s)'", name)
+			return "", nil
 		}
 	})
-
-	if Bool(g.properties.Depfile) && !referencedDepfile {
-		ctx.PropertyErrorf("cmd", "specified depfile=true but did not include a reference to '${depfile}' in cmd")
-	}
 
 	if err != nil {
 		ctx.PropertyErrorf("cmd", "%s", err.Error())
 		return
+	}
+
+	if Bool(g.properties.Depfile) && !referencedDepfile {
+		ctx.PropertyErrorf("cmd", "specified depfile=true but did not include a reference to '${depfile}' in cmd")
 	}
 
 	// tell the sbox command which directory to use as its sandbox root
