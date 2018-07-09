@@ -16,6 +16,24 @@
       "revId": "106590973e6e57f6a98c3c97e9066c6b9371384a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ab5296c_8640860e",
+        "filename": "java/aar.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-07-09T20:10:14Z",
+      "side": 1,
+      "message": "Doesn\u0027t seem worth the extra complexity.  Marking it installable would just install the dexed version of the jar, which might actually be useful at some point in the future if we have some sort of shared aars.",
+      "parentUuid": "e76ba5ba_b937f077",
+      "revId": "106590973e6e57f6a98c3c97e9066c6b9371384a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
