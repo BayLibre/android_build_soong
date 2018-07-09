@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb9dbecd_09f150f0",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-07-09T19:58:42Z",
+      "side": 1,
+      "message": "Doesn\u0027t this need implicit inputs of the staticLibManifests?",
+      "revId": "b9113ab8ed215f2fe0e122d83bc65f3bfc7055d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
