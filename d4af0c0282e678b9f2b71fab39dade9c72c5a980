@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef079469_abf51cf3",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-07-09T19:33:34Z",
+      "side": 1,
+      "message": "this function is also used with min_sdk_version",
+      "range": {
+        "startLine": 408,
+        "startChar": 23,
+        "endLine": 408,
+        "endChar": 34
+      },
+      "revId": "d4af0c0282e678b9f2b71fab39dade9c72c5a980",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
