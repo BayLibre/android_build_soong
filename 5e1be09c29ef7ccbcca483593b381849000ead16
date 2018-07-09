@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e56e637f_460a8302",
+        "filename": "cmd/pom2bp/pom2bp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-07-09T19:48:13Z",
+      "side": 1,
+      "message": "Should min_sdk_version be added here too? (even if we aren\u0027t currently running anything against it, in case of a future check)",
+      "revId": "5e1be09c29ef7ccbcca483593b381849000ead16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ee7aca8_78881cb6",
+        "filename": "cmd/pom2bp/pom2bp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-07-09T19:48:13Z",
+      "side": 1,
+      "message": "spaces instead of tabs",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 284,
+        "endChar": 1
+      },
+      "revId": "5e1be09c29ef7ccbcca483593b381849000ead16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
