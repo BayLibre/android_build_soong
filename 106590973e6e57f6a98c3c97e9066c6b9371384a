@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e76ba5ba_b937f077",
+        "filename": "java/aar.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-07-09T20:00:09Z",
+      "side": 1,
+      "message": "This will just set the default property -- do we want something that more firmly disallows these from being installed?",
+      "revId": "106590973e6e57f6a98c3c97e9066c6b9371384a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
