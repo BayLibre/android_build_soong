@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eadc8286_47e961d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-07-09T20:06:46Z",
+      "side": 1,
+      "message": "In person you also mentioned conflicts when converting a device static library + host library to Soong. Can you list that here too?",
+      "revId": "eafb6b4d6834c8666067ced8d0486fcb2469833b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "903a67a0_5ff6f20e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-07-09T20:06:46Z",
+      "side": 1,
+      "message": "Is this intended to be fixed before submission?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 70
+      },
+      "revId": "eafb6b4d6834c8666067ced8d0486fcb2469833b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48fa1658_a9d2ffe8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-07-09T20:06:46Z",
+      "side": 1,
+      "message": "when?",
+      "range": {
+        "startLine": 19,
+        "startChar": 6,
+        "endLine": 19,
+        "endChar": 13
+      },
+      "revId": "eafb6b4d6834c8666067ced8d0486fcb2469833b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d56b955e_1176370a",
+        "filename": "java/java.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-07-09T20:06:46Z",
+      "side": 1,
+      "message": "Should we be more specific to mention that this does not affect host modules?",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 0
+      },
+      "revId": "eafb6b4d6834c8666067ced8d0486fcb2469833b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
