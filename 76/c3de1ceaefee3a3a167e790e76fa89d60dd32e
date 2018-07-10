@@ -1,0 +1,9 @@
+Autosubmit+1: Mathew Inwood <mathewi@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: Mathew Inwood <mathewi@google.com>
+Code-Review+2: Nan Zhang <nanzhang@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Tue, 10 Jul 2018 07:35:30 +0000
+Reviewed-on: https://android-review.googlesource.com/711444
+Project: platform/build/soong
+Branch: refs/heads/master
