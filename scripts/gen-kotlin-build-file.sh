@@ -31,23 +31,26 @@ out_dir=$2
 shift 2
 
 # Path in the build file are relative to the build file, we need to make them absolute.
-prefix=`pwd`
+case "${out_dir}" in
+  /*) prefix="";;
+  *)  prefix="`pwd`/";;
+esac
 
 # Print preamble
 echo "<modules><module name=\"name\" type=\"java-production\" outputDir=\"${out_dir}\">"
 
 # Print classpath entries
 for file in $(echo $classpath | tr ":" "\n"); do
-  echo "  <classpath path=\"${prefix}/${file}\"/>"
+  echo "  <classpath path=\"${prefix}${file}\"/>"
 done
 
 # For each rsp file, print source entries
 while (( "$#" )); do
   for file in $(cat $1); do
     if [[ $file == *.java ]]; then
-      echo "  <javaSourceRoots path=\"${prefix}/${file}\"/>"
+      echo "  <javaSourceRoots path=\"${prefix}${file}\"/>"
     elif [[ $file == *.kt ]]; then
-      echo "  <sources path=\"${prefix}/${file}\"/>"
+      echo "  <sources path=\"${prefix}${file}\"/>"
     else
       echo "Unknown source file type ${file}"
       exit 1
