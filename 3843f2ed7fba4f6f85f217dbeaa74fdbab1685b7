@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5e0c0358_c24dc65e",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-07-11T22:13:53Z",
+      "side": 1,
+      "message": "Yeah, that would be rather trivial for the new log files (just add another output instance, though supporting it at a lower level would be somewhat more efficient). The existing log/trace routines would need some work.\n\nThis would be really nice, since I\u0027ve gotten confused myself about it quite a few times. Filed b/111363390",
+      "parentUuid": "381eb10b_26b52ba2",
+      "revId": "3843f2ed7fba4f6f85f217dbeaa74fdbab1685b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9a13f309_222985eb",
         "filename": "cmd/soong_ui/main.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2018-07-11T20:43:03Z",
       "side": 1,
       "message": "less can generally ungzip inputs on its own.",
+      "revId": "3843f2ed7fba4f6f85f217dbeaa74fdbab1685b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4358c05b_7a3b4b66",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-07-11T22:13:53Z",
+      "side": 1,
+      "message": "On ubuntu with the default configuration, yes. On many other systems it doesn\u0027t necessarily (definitely Mac, I\u0027ve had varying success on other linux distributions). This works everywhere.",
+      "parentUuid": "9a13f309_222985eb",
       "revId": "3843f2ed7fba4f6f85f217dbeaa74fdbab1685b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "33e6b339_25d0b13e",
+        "filename": "ui/status/ninja.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-07-11T22:13:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ca44d01_12e9c562",
+      "revId": "3843f2ed7fba4f6f85f217dbeaa74fdbab1685b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7380291f_d66ef9c0",
         "filename": "ui/status/status.go",
         "patchSetId": 1
@@ -67,6 +121,24 @@
       "revId": "3843f2ed7fba4f6f85f217dbeaa74fdbab1685b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1b2338e_ed5cd4a4",
+        "filename": "ui/status/status.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-07-11T22:13:53Z",
+      "side": 1,
+      "message": "Done, added a comment (both counts and outputs currently)",
+      "parentUuid": "7380291f_d66ef9c0",
+      "revId": "3843f2ed7fba4f6f85f217dbeaa74fdbab1685b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "f1bbe505_141727ee",
+        "filename": "ui/status/status.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-07-11T22:13:53Z",
+      "side": 1,
+      "message": "I could see it in this case, but since we\u0027re already locking around calling the outputs in the other cases, I\u0027m not sure it actually improves much. And more advanced terminal status viewers may want to know when the totals have been updated outside of Start/FinishAction. That may largely depends on whether we know about changes to the total due to restat before or after the corresponding FinishAction (in Ninja, it appears to be after).\n\nThis shouldn\u0027t be called very many times during a build -- maybe a dozen times in a normal build, a bit more when we\u0027ve got some restat calls happening. I wouldn\u0027t expect contention, since we usually only have a single build tool active, both Kati and Ninja are implicitly single threaded parsers (I suspect splinter will also be similar for totalActions, since it\u0027ll need to prevent races when counting as well). toolStatus had a lock around calling into here, but I removed that in the next patch.",
+      "parentUuid": "00206ab7_165e3f01",
+      "revId": "3843f2ed7fba4f6f85f217dbeaa74fdbab1685b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5ec20d47_bb5ff167",
         "filename": "ui/status/status.go",
         "patchSetId": 1
@@ -98,6 +188,24 @@
       "writtenOn": "2018-07-11T20:38:52Z",
       "side": 1,
       "message": "Seems dangerous to call into an interface with the lock held",
+      "revId": "3843f2ed7fba4f6f85f217dbeaa74fdbab1685b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a687d8c_5ab194e6",
+        "filename": "ui/status/status.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-07-11T22:13:53Z",
+      "side": 1,
+      "message": "As long as they\u0027re not re-entering the status tool API, this means that the outputs can\u0027t get parallel or out of order requests (and the counts are always correct). They\u0027d nearly all need locks of their own without this, and some way of maintaining order when desired.\n\nThere is the danger of a stuck output halting the entire system, but I don\u0027t know if that can be handled in a particularly better way -- maybe with a per-output buffer. But if we\u0027re blocked writing to the terminal or file system we\u0027ve likely got larger problems. Parallelizing this for loop may be a good first step if this is too slow.",
+      "parentUuid": "5ec20d47_bb5ff167",
       "revId": "3843f2ed7fba4f6f85f217dbeaa74fdbab1685b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
