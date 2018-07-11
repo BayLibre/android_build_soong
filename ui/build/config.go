@@ -118,6 +118,9 @@ func NewConfig(ctx Context, args ...string) Config {
 
 		// Set in envsetup.sh, reset in makefiles
 		"ANDROID_JAVA_TOOLCHAIN",
+
+		// Set by envsetup.sh, but shouldn't be used inside the build because envsetup.sh is optional
+		"ANDROID_BUILD_TOP",
 	)
 
 	// Tell python not to spam the source tree with .pyc files.
