@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e15b781_40f84826",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-07-11T12:05:02Z",
+      "side": 1,
+      "message": "That impl library isn\u0027t a stub. This name is misleading.",
+      "range": {
+        "startLine": 49,
+        "startChar": 9,
+        "endLine": 49,
+        "endChar": 14
+      },
+      "revId": "975f117a8a35b4a5bf5a17bc2935eb638f92d189",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1026fe0e_538febd6",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-07-11T12:05:02Z",
+      "side": 1,
+      "message": "Again, this isn\u0027t a stub. I would rather name this as \u0027implLibPath\u0027.",
+      "range": {
+        "startLine": 132,
+        "startChar": 9,
+        "endLine": 132,
+        "endChar": 14
+      },
+      "revId": "975f117a8a35b4a5bf5a17bc2935eb638f92d189",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c84dbab_3c6486e1",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-07-11T12:05:02Z",
+      "side": 1,
+      "message": "module.implName()",
+      "range": {
+        "startLine": 140,
+        "startChar": 51,
+        "endLine": 140,
+        "endChar": 85
+      },
+      "revId": "975f117a8a35b4a5bf5a17bc2935eb638f92d189",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89ccfd96_99acbc93",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-07-11T12:05:02Z",
+      "side": 1,
+      "message": "rename stub to something else.",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 39
+      },
+      "revId": "975f117a8a35b4a5bf5a17bc2935eb638f92d189",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f3e0b06_15f9e68f",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-07-11T12:05:02Z",
+      "side": 1,
+      "message": "remove this.",
+      "range": {
+        "startLine": 206,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 60
+      },
+      "revId": "975f117a8a35b4a5bf5a17bc2935eb638f92d189",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
