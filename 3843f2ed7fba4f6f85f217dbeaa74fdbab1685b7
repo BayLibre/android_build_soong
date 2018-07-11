@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "381eb10b_26b52ba2",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-07-11T20:43:03Z",
+      "side": 1,
+      "message": "Would it be possible to tee the logs to the dist dir?",
+      "revId": "3843f2ed7fba4f6f85f217dbeaa74fdbab1685b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a13f309_222985eb",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-07-11T20:43:03Z",
+      "side": 1,
+      "message": "less can generally ungzip inputs on its own.",
+      "revId": "3843f2ed7fba4f6f85f217dbeaa74fdbab1685b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4ca44d01_12e9c562",
         "filename": "ui/status/ninja.go",
         "patchSetId": 1
