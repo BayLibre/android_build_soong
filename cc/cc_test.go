@@ -75,16 +75,19 @@ func createTestContext(t *testing.T, config android.Config, bp string) *android.
 		toolchain_library {
 			name: "libatomic",
 			vendor_available: true,
+			recovery_available: true,
 		}
 
 		toolchain_library {
 			name: "libcompiler_rt-extras",
 			vendor_available: true,
+			recovery_available: true,
 		}
 
 		toolchain_library {
 			name: "libgcc",
 			vendor_available: true,
+			recovery_available: true,
 		}
 
 		cc_library {
@@ -92,6 +95,7 @@ func createTestContext(t *testing.T, config android.Config, bp string) *android.
 			no_libgcc: true,
 			nocrt: true,
 			system_shared_libs: [],
+			recovery_available: true,
 		}
 		llndk_library {
 			name: "libc",
@@ -102,6 +106,7 @@ func createTestContext(t *testing.T, config android.Config, bp string) *android.
 			no_libgcc: true,
 			nocrt: true,
 			system_shared_libs: [],
+			recovery_available: true,
 		}
 		llndk_library {
 			name: "libm",
@@ -112,6 +117,7 @@ func createTestContext(t *testing.T, config android.Config, bp string) *android.
 			no_libgcc: true,
 			nocrt: true,
 			system_shared_libs: [],
+			recovery_available: true,
 		}
 		llndk_library {
 			name: "libdl",
@@ -124,6 +130,7 @@ func createTestContext(t *testing.T, config android.Config, bp string) *android.
 			system_shared_libs: [],
 			stl: "none",
 			vendor_available: true,
+			recovery_available: true,
 		}
 		cc_library {
 			name: "libc++",
@@ -132,6 +139,7 @@ func createTestContext(t *testing.T, config android.Config, bp string) *android.
 			system_shared_libs: [],
 			stl: "none",
 			vendor_available: true,
+			recovery_available: true,
 			vndk: {
 				enabled: true,
 				support_system_process: true,
@@ -144,14 +152,17 @@ func createTestContext(t *testing.T, config android.Config, bp string) *android.
 			system_shared_libs: [],
 			stl: "none",
 			vendor_available: true,
+			recovery_available: true,
 		}
 
 		cc_object {
 			name: "crtbegin_so",
+			recovery_available: true,
 		}
 
 		cc_object {
 			name: "crtend_so",
+			recovery_available: true,
 		}
 
 		cc_library {
@@ -1650,4 +1661,24 @@ func TestVendorPublicLibraries(t *testing.T) {
 		t.Errorf("libflags for libvendor must contain %#v, but was %#v", stubPaths[0], libflags)
 	}
 
+}
+
+func TestRecovery(t *testing.T) {
+	ctx := testCc(t, `
+		cc_library_shared {
+			name: "librecovery",
+			recovery: true,
+		}
+	`)
+
+	variant := "android_arm64_armv8-a_recovery_shared"
+	module := ctx.FindModuleForTests("librecovery", variant).Module()
+	if module == nil {
+		t.Errorf("%s variant of %s must exist", variant, "librecovery")
+	}
+	variant = "android_arm_armv8-a_recovery_shared"
+	module = ctx.FindModuleForTests("librecovery", variant).Module()
+	if module != nil {
+		t.Errorf("%s variant of %s must not exist", variant, "librecovery")
+	}
 }

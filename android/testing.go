@@ -70,7 +70,7 @@ func (ctx *TestContext) Register() {
 	ctx.RegisterSingletonType("env", SingletonFactoryAdaptor(EnvSingleton))
 }
 
-func (ctx *TestContext) ModuleForTests(name, variant string) TestingModule {
+func (ctx *TestContext) FindModuleForTests(name, variant string) TestingModule {
 	var module Module
 	ctx.VisitAllModules(func(m blueprint.Module) {
 		if ctx.ModuleName(m) == name && ctx.ModuleSubDir(m) == variant {
@@ -78,7 +78,12 @@ func (ctx *TestContext) ModuleForTests(name, variant string) TestingModule {
 		}
 	})
 
-	if module == nil {
+	return TestingModule{module}
+}
+
+func (ctx *TestContext) ModuleForTests(name, variant string) TestingModule {
+	module := ctx.FindModuleForTests(name, variant)
+	if module.Module() == nil {
 		// find all the modules that do exist
 		allModuleNames := []string{}
 		ctx.VisitAllModules(func(m blueprint.Module) {
@@ -89,7 +94,7 @@ func (ctx *TestContext) ModuleForTests(name, variant string) TestingModule {
 			"\nall modules: %v", name, variant, allModuleNames))
 	}
 
-	return TestingModule{module}
+	return module
 }
 
 // MockFileSystem causes the Context to replace all reads with accesses to the provided map of
