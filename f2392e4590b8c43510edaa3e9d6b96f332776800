@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2a9a7ac_78a46f15",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-07-11T20:22:13Z",
+      "side": 1,
+      "message": "why not:\n\n if multilib \u003d\u003d \"\" \u0026\u0026 module.InstallInRecovery() {\n      multilib \u003d \"first\"\n }",
+      "revId": "f2392e4590b8c43510edaa3e9d6b96f332776800",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f06a98f6_e5a3bea4",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1680,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-07-11T20:22:13Z",
+      "side": 1,
+      "message": "Can we add a ctx.ModuleVariantsForTests(\"librecovery\") that returns []string{\"android_arm_armv8-a_recovery_shared\"} instead?",
+      "revId": "f2392e4590b8c43510edaa3e9d6b96f332776800",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
