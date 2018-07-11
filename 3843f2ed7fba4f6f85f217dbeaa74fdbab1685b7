@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ca44d01_12e9c562",
+        "filename": "ui/status/ninja.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-07-11T20:38:52Z",
+      "side": 1,
+      "message": "probably worth a default: here with either a panic or a status.Print",
+      "revId": "3843f2ed7fba4f6f85f217dbeaa74fdbab1685b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7380291f_d66ef9c0",
+        "filename": "ui/status/status.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-07-11T20:38:52Z",
+      "side": 1,
+      "message": "What is protected by this lock?",
+      "revId": "3843f2ed7fba4f6f85f217dbeaa74fdbab1685b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00206ab7_165e3f01",
+        "filename": "ui/status/status.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-07-11T20:38:52Z",
+      "side": 1,
+      "message": "atomic.AddInt32 for all of these?",
+      "revId": "3843f2ed7fba4f6f85f217dbeaa74fdbab1685b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ec20d47_bb5ff167",
+        "filename": "ui/status/status.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-07-11T20:38:52Z",
+      "side": 1,
+      "message": "Seems dangerous to call into an interface with the lock held",
+      "revId": "3843f2ed7fba4f6f85f217dbeaa74fdbab1685b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
