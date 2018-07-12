@@ -572,6 +572,10 @@ func (c *config) MinimizeJavaDebugInfo() bool {
 	return Bool(c.productVariables.MinimizeJavaDebugInfo) && !Bool(c.productVariables.Eng)
 }
 
+func (c *config) GenerateAidlGetTransactionName() bool {
+	return Bool(c.productVariables.Debuggable)
+}
+
 func (c *config) DevicePrefer32BitExecutables() bool {
 	return Bool(c.productVariables.DevicePrefer32BitExecutables)
 }

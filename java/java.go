@@ -193,6 +193,9 @@ type CompilerDeviceProperties struct {
 
 		// whether to generate traces (for systrace) for this interface
 		Generate_traces *bool
+
+		// whether to generate the Binder#resolveCode method
+		Generate_resolve_code *bool
 	}
 
 	// If true, export a copy of the module as a -hostdex module for host testing.
@@ -643,6 +646,10 @@ func (j *Module) aidlFlags(ctx android.ModuleContext, aidlPreprocess android.Opt
 
 	if Bool(j.deviceProperties.Aidl.Generate_traces) {
 		flags = append(flags, "-t")
+	}
+
+	if ctx.Config().GenerateAidlGetTransactionName() {
+		flags = append(flags, "--transaction_names")
 	}
 
 	return flags
