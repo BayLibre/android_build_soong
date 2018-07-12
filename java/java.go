@@ -645,6 +645,10 @@ func (j *Module) aidlFlags(ctx android.ModuleContext, aidlPreprocess android.Opt
 		flags = append(flags, "-t")
 	}
 
+	if ctx.Config().GenerateAidlGetTransactionName() {
+		flags = append(flags, "--transaction_names")
+	}
+
 	return flags
 }
 
