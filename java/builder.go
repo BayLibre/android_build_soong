@@ -318,7 +318,15 @@ func TransformResourcesToJar(ctx android.ModuleContext, outputFile android.Writa
 }
 
 func TransformJarsToJar(ctx android.ModuleContext, outputFile android.WritablePath, desc string,
-	jars android.Paths, manifest android.OptionalPath, stripDirs bool, dirsToStrip []string) {
+	jars android.Paths, manifest android.OptionalPath) {
+
+	TransformJarsToJarAndStrip(ctx, outputFile, desc, jars, manifest,
+		false, nil, nil)
+}
+
+func TransformJarsToJarAndStrip(ctx android.ModuleContext, outputFile android.WritablePath, desc string,
+	jars android.Paths, manifest android.OptionalPath, stripDirEntries bool, filesToStrip []string,
+	dirsToStrip []string) {
 
 	var deps android.Paths
 
@@ -328,10 +336,12 @@ func TransformJarsToJar(ctx android.ModuleContext, outputFile android.WritablePa
 		deps = append(deps, manifest.Path())
 	}
 
-	if dirsToStrip != nil {
-		for _, dir := range dirsToStrip {
-			jarArgs = append(jarArgs, "-stripDir ", dir)
-		}
+	for _, dir := range dirsToStrip {
+		jarArgs = append(jarArgs, "-stripDir ", dir)
+	}
+
+	for _, file := range filesToStrip {
+		jarArgs = append(jarArgs, "-stripFile ", file)
 	}
 
 	// Remove any module-info.class files that may have come from prebuilt jars, they cause problems
@@ -343,7 +353,7 @@ func TransformJarsToJar(ctx android.ModuleContext, outputFile android.WritablePa
 	jarArgs = append(jarArgs, "-stripFile \"*.kotlin_module\"")
 	jarArgs = append(jarArgs, "-stripFile \"*.kotlin_builtin\"")
 
-	if stripDirs {
+	if stripDirEntries {
 		jarArgs = append(jarArgs, "-D")
 	}
 
