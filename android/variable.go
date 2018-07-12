@@ -156,22 +156,23 @@ type productVariables struct {
 
 	AppsDefaultVersionName *string `json:",omitempty"`
 
-	Allow_missing_dependencies *bool `json:",omitempty"`
-	Unbundled_build            *bool `json:",omitempty"`
-	Malloc_not_svelte          *bool `json:",omitempty"`
-	Safestack                  *bool `json:",omitempty"`
-	HostStaticBinaries         *bool `json:",omitempty"`
-	Binder32bit                *bool `json:",omitempty"`
-	UseGoma                    *bool `json:",omitempty"`
-	Debuggable                 *bool `json:",omitempty"`
-	Eng                        *bool `json:",omitempty"`
-	Device_uses_hwc2           *bool `json:",omitempty"`
-	Treble_linker_namespaces   *bool `json:",omitempty"`
-	Sepolicy_split             *bool `json:",omitempty"`
-	Enforce_vintf_manifest     *bool `json:",omitempty"`
-	Pdk                        *bool `json:",omitempty"`
-	Uml                        *bool `json:",omitempty"`
-	MinimizeJavaDebugInfo      *bool `json:",omitempty"`
+	Allow_missing_dependencies     *bool `json:",omitempty"`
+	Unbundled_build                *bool `json:",omitempty"`
+	Malloc_not_svelte              *bool `json:",omitempty"`
+	Safestack                      *bool `json:",omitempty"`
+	HostStaticBinaries             *bool `json:",omitempty"`
+	Binder32bit                    *bool `json:",omitempty"`
+	UseGoma                        *bool `json:",omitempty"`
+	Debuggable                     *bool `json:",omitempty"`
+	Eng                            *bool `json:",omitempty"`
+	Device_uses_hwc2               *bool `json:",omitempty"`
+	Treble_linker_namespaces       *bool `json:",omitempty"`
+	Sepolicy_split                 *bool `json:",omitempty"`
+	Enforce_vintf_manifest         *bool `json:",omitempty"`
+	Pdk                            *bool `json:",omitempty"`
+	Uml                            *bool `json:",omitempty"`
+	MinimizeJavaDebugInfo          *bool `json:",omitempty"`
+	GenerateAidlGetTransactionName *bool `json:",omitempty"`
 
 	IntegerOverflowExcludePaths *[]string `json:",omitempty"`
 
