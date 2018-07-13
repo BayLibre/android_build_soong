@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae1687da_3f9e0908",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1035,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-07-13T05:36:07Z",
+      "side": 1,
+      "message": "I had to move this here or the kotlin-stdlib prebuilt modules would get stripped, breaking kotlin compiles.",
+      "revId": "37f6d79c7ea557c117d119a89bb46d7a6a5d19ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
