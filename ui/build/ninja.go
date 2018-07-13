@@ -36,6 +36,7 @@ func runNinja(ctx Context, config Config) {
 	args := []string{
 		"-d", "keepdepfile",
 		fmt.Sprintf("--frontend=cat <&3 >%s", fifo),
+		"missing",
 	}
 
 	args = append(args, config.NinjaArgs()...)
