@@ -43,6 +43,8 @@ func init() {
 type SourceFileGenerator interface {
 	GeneratedSourceFiles() android.Paths
 	GeneratedHeaderDirs() android.Paths
+
+	// If something uses the files that this thing generates, then it should take these as dependencies.
 	GeneratedDeps() android.Paths
 }
 
