@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e25c82cd_2256fce9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-07-14T01:26:54Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 7,
+        "startChar": 21,
+        "endLine": 7,
+        "endChar": 29
+      },
+      "revId": "7f2bd8d937b246d1709b6337a4d58c9005979cde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9dafea40_1ad84dfe",
         "filename": "java/droiddoc.go",
         "patchSetId": 2
