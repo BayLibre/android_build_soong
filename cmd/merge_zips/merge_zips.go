@@ -24,7 +24,8 @@ import (
 	"os"
 	"path/filepath"
 	"sort"
-	"strings"
+
+	"github.com/google/blueprint/pathtools"
 
 	"android/soong/jar"
 	"android/soong/third_party/zip"
@@ -69,8 +70,8 @@ var (
 )
 
 func init() {
-	flag.Var(&stripDirs, "stripDir", "the prefix of file path to be excluded from the output zip")
-	flag.Var(&stripFiles, "stripFile", "filenames to be excluded from the output zip, accepts wildcards")
+	flag.Var(&stripDirs, "stripDir", "directories to be excluded from the output zip, accepts wildcards")
+	flag.Var(&stripFiles, "stripFile", "files to be excluded from the output zip, accepts wildcards")
 	flag.Var(&zipsToNotStrip, "zipToNotStrip", "the input zip file which is not applicable for stripping")
 }
 
@@ -338,8 +339,12 @@ func mergeZips(readers []namedZipReader, writer *zip.Writer, manifest, entrypoin
 	for _, namedReader := range readers {
 		_, skipStripThisZip := zipsToNotStrip[namedReader.path]
 		for _, file := range namedReader.reader.File {
-			if !skipStripThisZip && shouldStripFile(emulateJar, file.Name) {
-				continue
+			if !skipStripThisZip {
+				if skip, err := shouldStripFile(emulateJar, file.Name); err != nil {
+					return err
+				} else if skip {
+					continue
+				}
 			}
 
 			if stripDirEntries && file.FileInfo().IsDir() {
@@ -419,26 +424,33 @@ func pathBeforeLastSlash(path string) string {
 	return ret
 }
 
-func shouldStripFile(emulateJar bool, name string) bool {
+func shouldStripFile(emulateJar bool, name string) (bool, error) {
 	for _, dir := range stripDirs {
-		if strings.HasPrefix(name, dir+"/") {
-			if emulateJar {
-				if name != jar.MetaDir && name != jar.ManifestFile {
-					return true
-				}
-			} else {
-				return true
+		pattern := filepath.Clean(dir) + "/**/*"
+		match, err := pathtools.Match(pattern, name)
+		fmt.Println(pattern, name, match)
+		if err != nil {
+			return false, fmt.Errorf("%s: %s", err.Error(), pattern)
+		} else if !match {
+			continue
+		}
+
+		if emulateJar {
+			if name != jar.MetaDir && name != jar.ManifestFile {
+				return true, nil
 			}
+		} else {
+			return true, nil
 		}
 	}
 	for _, pattern := range stripFiles {
-		if match, err := filepath.Match(pattern, filepath.Base(name)); err != nil {
-			panic(fmt.Errorf("%s: %s", err.Error(), pattern))
+		if match, err := pathtools.Match(pattern, name); err != nil {
+			return false, fmt.Errorf("%s: %s", err.Error(), pattern)
 		} else if match {
-			return true
+			return true, nil
 		}
 	}
-	return false
+	return false, nil
 }
 
 func jarSort(files []fileMapping) {
