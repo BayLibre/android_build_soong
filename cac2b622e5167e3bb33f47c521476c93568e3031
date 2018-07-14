@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b70c261_146283ba",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-07-14T17:20:10Z",
+      "side": 1,
+      "message": "This needs to match directories too",
+      "revId": "cac2b622e5167e3bb33f47c521476c93568e3031",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "213adc60_2f05fec0",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-07-14T17:20:10Z",
+      "side": 1,
+      "message": "Oops",
+      "revId": "cac2b622e5167e3bb33f47c521476c93568e3031",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
