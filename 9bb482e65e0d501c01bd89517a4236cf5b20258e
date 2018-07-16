@@ -22,6 +22,30 @@
       "revId": "9bb482e65e0d501c01bd89517a4236cf5b20258e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b6aa96e_c32d3f71",
+        "filename": "ui/terminal/writer.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1337780
+      },
+      "writtenOn": "2018-07-16T22:39:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "de991f54_7b634665",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 15
+      },
+      "revId": "9bb482e65e0d501c01bd89517a4236cf5b20258e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
