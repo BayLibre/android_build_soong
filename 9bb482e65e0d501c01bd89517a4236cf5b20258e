@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de991f54_7b634665",
+        "filename": "ui/terminal/writer.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-07-16T21:51:33Z",
+      "side": 1,
+      "message": "this class of error could be completely removed by making it a function. Better not to store derivative data unless there is a real performance need.\n\nAlso, this part of the change seems unrelated?",
+      "range": {
+        "startLine": 86,
+        "startChar": 1,
+        "endLine": 86,
+        "endChar": 15
+      },
+      "revId": "9bb482e65e0d501c01bd89517a4236cf5b20258e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
