@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c235a17a_756e253a",
+        "filename": "android/variable.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-07-16T17:10:46Z",
+      "side": 1,
+      "message": "You don\u0027t seem to actually be using this? You\u0027re just keying it off of Debuggable. (This is the description of the json config format passed from Make -\u003e Soong)",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 53
+      },
+      "revId": "36abc4bfa700869d3a3fd8563e9f75e348d67840",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
