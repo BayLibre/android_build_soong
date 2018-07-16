@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "312bdb84_30e53764",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1032,
+      "author": {
+        "id": 1203210
+      },
+      "writtenOn": "2018-07-16T10:26:38Z",
+      "side": 1,
+      "message": "As far as I can see, this is never used anywhere (except in its own test). I don\u0027t expect us to use it any time soon. Should we just remove it? (I don\u0027t mind if you want to keep it, but it seems like every additional boolean option adds a bit more to the maintenance cost, and it\u0027s I can\u0027t see it adding any value.)",
+      "range": {
+        "startLine": 1032,
+        "startChar": 23,
+        "endLine": 1032,
+        "endChar": 44
+      },
+      "revId": "933cabe6b0099f2f698111256765fbb9279b658f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
