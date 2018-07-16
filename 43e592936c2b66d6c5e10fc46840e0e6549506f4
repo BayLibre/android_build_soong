@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aae9c88a_82a38efd",
+        "filename": "cmd/merge_zips/merge_zips_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-07-16T20:27:26Z",
+      "side": 1,
+      "message": "copyright header?",
+      "revId": "43e592936c2b66d6c5e10fc46840e0e6549506f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30137b26_6f4e6921",
+        "filename": "cmd/merge_zips/merge_zips_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-07-16T20:27:26Z",
+      "side": 1,
+      "message": "put these below the stdlib",
+      "revId": "43e592936c2b66d6c5e10fc46840e0e6549506f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
