@@ -93,6 +93,30 @@
       "revId": "7f2bd8d937b246d1709b6337a4d58c9005979cde",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b9552fe_1af984df",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2018-07-17T01:13:59Z",
+      "side": 1,
+      "message": "Do you mean that we have to wait until Doclava is replaced by Metalava?",
+      "parentUuid": "86bc5fb1_0c882db2",
+      "range": {
+        "startLine": 469,
+        "startChar": 48,
+        "endLine": 469,
+        "endChar": 66
+      },
+      "revId": "7f2bd8d937b246d1709b6337a4d58c9005979cde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
