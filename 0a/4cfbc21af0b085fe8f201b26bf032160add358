@@ -1,0 +1,10 @@
+Autosubmit+1: Olivier Gaillard <gaillard@google.com>
+Verified+1: Olivier Gaillard <gaillard@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+1: Dan Willemsen <dwillemsen@google.com>
+Code-Review+2: Steven Moreland <smoreland@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Tue, 17 Jul 2018 10:48:25 +0000
+Reviewed-on: https://android-review.googlesource.com/716205
+Project: platform/build/soong
+Branch: refs/heads/master
