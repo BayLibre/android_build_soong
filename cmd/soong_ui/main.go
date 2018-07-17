@@ -67,7 +67,14 @@ func main() {
 
 	stat := &status.Status{}
 	defer stat.Finish()
-	stat.AddOutput(terminal.NewStatusOutput(writer, os.Getenv("NINJA_STATUS")))
+
+	showCommands := false
+	for _, arg := range os.Args {
+		if arg == "showcommands" {
+			showCommands = true
+		}
+	}
+	stat.AddOutput(terminal.NewStatusOutput(writer, showCommands, os.Getenv("NINJA_STATUS")))
 	stat.AddOutput(trace.StatusTracer())
 
 	build.SetupSignals(log, cancel, func() {
@@ -126,17 +133,6 @@ func main() {
 	} else if os.Args[1] == "--dumpvars-mode" {
 		dumpVars(buildCtx, config, os.Args[2:])
 	} else {
-		if config.IsVerbose() {
-			writer.Print("! The argument `showcommands` is no longer supported.")
-			writer.Print("! Instead, the verbose log is always written to a compressed file in the output dir:")
-			writer.Print("!")
-			writer.Print(fmt.Sprintf("!   gzip -cd %s/verbose.log.gz | less -R", logsDir))
-			writer.Print("!")
-			writer.Print("! Older versions are saved in verbose.log.#.gz files")
-			writer.Print("")
-			time.Sleep(5 * time.Second)
-		}
-
 		toBuild := build.BuildAll
 		if config.Checkbuild() {
 			toBuild |= build.RunBuildTests

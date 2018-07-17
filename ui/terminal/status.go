@@ -23,8 +23,9 @@ import (
 )
 
 type statusOutput struct {
-	writer Writer
-	format string
+	writer    Writer
+	format    string
+	isVerbose bool
 
 	start time.Time
 }
@@ -35,10 +36,11 @@ type statusOutput struct {
 //
 // statusFormat takes nearly all the same options as NINJA_STATUS.
 // %c is currently unsupported.
-func NewStatusOutput(w Writer, statusFormat string) status.StatusOutput {
+func NewStatusOutput(w Writer, showCommands bool, statusFormat string) status.StatusOutput {
 	return &statusOutput{
-		writer: w,
-		format: statusFormat,
+		writer:    w,
+		format:    statusFormat,
+		isVerbose: showCommands,
 
 		start: time.Now(),
 	}
@@ -55,8 +57,8 @@ func (s *statusOutput) Message(level status.MsgLevel, message string) {
 }
 
 func (s *statusOutput) StartAction(action *status.Action, counts status.Counts) {
-	if !s.writer.isSmartTerminal() {
-		return
+	if s.isVerbose {
+		s.writer.Print(action.Command)
 	}
 
 	str := action.Description
