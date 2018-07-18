@@ -232,6 +232,7 @@ bootstrap_go_package {
         "java/genrule.go",
         "java/jacoco.go",
         "java/java.go",
+        "java/jdeps.go",
         "java/java_resources.go",
         "java/prebuilt_apis.go",
         "java/proto.go",
