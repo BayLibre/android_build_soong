@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64b0809f_fb34de91",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-07-18T07:18:03Z",
+      "side": 1,
+      "message": "This is strange -- the llndk and ndk have different libraries and ABIs",
+      "range": {
+        "startLine": 841,
+        "startChar": 13,
+        "endLine": 841,
+        "endChar": 16
+      },
+      "revId": "5237bed1c4645212dd8c1858629af03b59d980a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
