@@ -22,6 +22,30 @@
       "revId": "5237bed1c4645212dd8c1858629af03b59d980a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12b170ff_eb0c8996",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1014807
+      },
+      "writtenOn": "2018-07-18T10:39:11Z",
+      "side": 1,
+      "message": "Yeah.  There might be some nuances.  Currently, prebuilts/abi-dumps/ndk contains the libraries in the LLNDK list but the ABI dumps are generated from the one which will be installed to /system/lib[64] (not the NDK/LLNDK stubs).  I am currently working on extending ABI checks to all NDK libraries (b/79576032) and tackling this kind of problem gradually.",
+      "parentUuid": "64b0809f_fb34de91",
+      "range": {
+        "startLine": 841,
+        "startChar": 13,
+        "endLine": 841,
+        "endChar": 16
+      },
+      "revId": "5237bed1c4645212dd8c1858629af03b59d980a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
