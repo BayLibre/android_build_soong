@@ -248,8 +248,8 @@ type DroiddocProperties struct {
 	// is set to true, Metalava will allow framework SDK to contain annotations.
 	Metalava_annotations_enabled *bool
 
-	// a top level directory contains XML files set to merge annotations.
-	Metalava_merge_annotations_dir *string
+	// a list of top-level directories containing files to merge annotations from.
+	Metalava_merge_annotations_dirs []string
 }
 
 type Javadoc struct {
@@ -908,14 +908,16 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			annotationsZip := android.PathForModuleOut(ctx, ctx.ModuleName()+"_annotations.zip")
 			implicitOutputs = append(implicitOutputs, annotationsZip)
 
-			if String(d.properties.Metalava_merge_annotations_dir) == "" {
-				ctx.PropertyErrorf("metalava_merge_annotations",
+			if len(d.properties.Metalava_merge_annotations_dirs) == 0 {
+				ctx.PropertyErrorf("metalava_merge_annotations_dirs",
 					"has to be non-empty if annotations was enabled!")
 			}
+			mergeAnnotationsDirs := android.PathsForSource(ctx, d.properties.Metalava_merge_annotations_dirs)
 
-			mergeAnnotationsDir := android.PathForSource(ctx, String(d.properties.Metalava_merge_annotations_dir))
-
-			opts += " --extract-annotations " + annotationsZip.String() + " --merge-annotations " + mergeAnnotationsDir.String()
+			opts += " --extract-annotations " + annotationsZip.String()
+			for _, mergeAnnotationsDir := range mergeAnnotationsDirs {
+				opts += " --merge-annotations " + mergeAnnotationsDir.String()
+			}
 			// TODO(tnorbye): find owners to fix these warnings when annotation was enabled.
 			opts += " --hide HiddenTypedefConstant --hide SuperfluousPrefix --hide AnnotationExtraction"
 		}
