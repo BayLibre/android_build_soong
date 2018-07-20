@@ -1,0 +1,8 @@
+Verified+1: Dario Freni <dariofreni@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Submitted-by: Dario Freni <dariofreni@google.com>
+Submitted-at: Fri, 20 Jul 2018 09:00:21 +0000
+Reviewed-on: https://android-review.googlesource.com/708805
+Project: platform/build/soong
+Branch: refs/heads/master
