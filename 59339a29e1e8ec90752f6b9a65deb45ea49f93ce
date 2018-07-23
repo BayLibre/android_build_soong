@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d86ff8f0_a4212af4",
+        "filename": "ui/status/ninja.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-07-23T04:43:16Z",
+      "side": 1,
+      "message": "Might be worth a status.Errorf",
+      "revId": "59339a29e1e8ec90752f6b9a65deb45ea49f93ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
