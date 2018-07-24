@@ -296,6 +296,8 @@ type Module struct {
 
 	// list of SDK lib names that this java moudule is exporting
 	exportedSdkLibs []string
+
+	linkType linkType
 }
 
 func (j *Module) Srcs() android.Paths {
@@ -689,17 +691,48 @@ const (
 	javaPlatform
 )
 
+func (t linkType) String() string {
+	switch t {
+	case javaCore:
+		return "core"
+	case javaSdk:
+		return "sdk"
+	case javaSystem:
+		return "system"
+	case javaPlatform:
+		return "platform"
+	default:
+		panic(fmt.Errorf("unknown linkType %d", t))
+	}
+}
+
+var fixedLinkTypes = map[string]linkType{
+	"core.current.stubs":                    javaCore,
+	"core_current":                          javaCore,
+	"stub-annotations":                      javaCore,
+	"android_system_stubs_current":          javaSystem,
+	"metalava_android_system_stubs_current": javaSystem,
+	"android_test_stubs_current":            javaPlatform,
+	"metalava_android_test_stubs_current":   javaPlatform,
+	"android_stubs_current":                 javaSdk,
+	"metalava_android_stubs_current":        javaSdk,
+}
+
 func getLinkType(m *Module, name string) linkType {
+	if t, ok := fixedLinkTypes[name]; ok {
+		return t
+	}
+
 	ver := m.sdkVersion()
 	noStdLibs := Bool(m.properties.No_standard_libs)
 	switch {
-	case name == "core.current.stubs" || ver == "core_current" || noStdLibs || name == "stub-annotations":
+	case ver == "core_current" || noStdLibs:
 		return javaCore
-	case name == "android_system_stubs_current" || strings.HasPrefix(ver, "system_") || name == "metalava_android_system_stubs_current":
+	case strings.HasPrefix(ver, "system_"):
 		return javaSystem
-	case name == "android_test_stubs_current" || strings.HasPrefix(ver, "test_") || name == "metalava_android_test_stubs_current":
+	case strings.HasPrefix(ver, "test_"):
 		return javaPlatform
-	case name == "android_stubs_current" || ver == "current" || name == "metalava_android_stubs_current":
+	case ver == "current":
 		return javaSdk
 	case ver == "":
 		return javaPlatform
@@ -711,32 +744,30 @@ func getLinkType(m *Module, name string) linkType {
 	}
 }
 
-func checkLinkType(ctx android.ModuleContext, from *Module, to *Library, tag dependencyTag) {
+func checkLinkType(ctx android.ModuleContext, toName string, to, from linkType) {
 	if ctx.Host() {
 		return
 	}
 
-	myLinkType := getLinkType(from, ctx.ModuleName())
-	otherLinkType := getLinkType(&to.Module, ctx.OtherModuleName(to))
-	commonMessage := "Adjust sdk_version: property of the source or target module so that target module is built with the same or smaller API set than the source."
+	commonMessage := "  Adjust sdk_version: property of the source or target module so that target module is built with the same or smaller API set than the source."
 
-	switch myLinkType {
+	switch from {
 	case javaCore:
-		if otherLinkType != javaCore {
+		if to != javaCore {
 			ctx.ModuleErrorf("compiles against core Java API, but dependency %q is compiling against non-core Java APIs."+commonMessage,
-				ctx.OtherModuleName(to))
+				toName)
 		}
 		break
 	case javaSdk:
-		if otherLinkType != javaCore && otherLinkType != javaSdk {
+		if to != javaCore && to != javaSdk {
 			ctx.ModuleErrorf("compiles against Android API, but dependency %q is compiling against non-public Android API."+commonMessage,
-				ctx.OtherModuleName(to))
+				toName)
 		}
 		break
 	case javaSystem:
-		if otherLinkType == javaPlatform {
+		if to == javaPlatform {
 			ctx.ModuleErrorf("compiles against system API, but dependency %q is compiling against private API."+commonMessage,
-				ctx.OtherModuleName(to))
+				toName)
 		}
 		break
 	case javaPlatform:
@@ -759,6 +790,8 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 		}
 	}
 
+	j.linkType = getLinkType(j, ctx.ModuleName())
+
 	ctx.VisitDirectDeps(func(module android.Module) {
 		otherName := ctx.OtherModuleName(module)
 		tag := ctx.OtherModuleDependencyTag(module)
@@ -766,7 +799,7 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 		if to, ok := module.(*Library); ok {
 			switch tag {
 			case bootClasspathTag, libTag, staticLibTag:
-				checkLinkType(ctx, j, to, tag.(dependencyTag))
+				checkLinkType(ctx, otherName, to.linkType, j.linkType)
 			}
 		}
 		switch dep := module.(type) {
@@ -815,7 +848,7 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 		case SdkLibraryDependency:
 			switch tag {
 			case libTag:
-				deps.classpath = append(deps.classpath, dep.HeaderJars(getLinkType(j, ctx.ModuleName()))...)
+				deps.classpath = append(deps.classpath, dep.HeaderJars(j.linkType)...)
 				// names of sdk libs that are directly depended are exported
 				j.exportedSdkLibs = append(j.exportedSdkLibs, otherName)
 			default:
