@@ -302,6 +302,12 @@ type Droiddoc struct {
 	checkCurrentApiTimestamp      android.WritablePath
 	updateCurrentApiTimestamp     android.WritablePath
 	checkLastReleasedApiTimestamp android.WritablePath
+
+	apiFilePath android.Paths
+}
+
+type ApiFilePath interface {
+	ApiFilePath() android.Paths
 }
 
 func InitDroiddocModule(module android.DefaultableModule, hod android.HostOrDeviceSupported) {
@@ -811,6 +817,7 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		args = args + " -api " + d.apiFile.String()
 		metalavaArgs = metalavaArgs + " --api " + d.apiFile.String()
 		implicitOutputs = append(implicitOutputs, d.apiFile)
+		d.apiFilePath = append(d.apiFilePath, d.apiFile)
 	}
 
 	if d.checkCurrentApi() || d.checkLastReleasedApi() || String(d.properties.Removed_api_filename) != "" {
@@ -1085,6 +1092,10 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			},
 		})
 	}
+}
+
+func (d *Droiddoc) ApiFilePath() android.Paths {
+	return d.apiFilePath
 }
 
 var droiddocTemplateTag = dependencyTag{name: "droiddoc-template"}
