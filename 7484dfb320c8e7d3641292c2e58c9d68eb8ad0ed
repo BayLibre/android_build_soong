@@ -16,6 +16,24 @@
       "revId": "7484dfb320c8e7d3641292c2e58c9d68eb8ad0ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd1262d8_eeaebb96",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-07-24T18:33:52Z",
+      "side": 1,
+      "message": "When I also add Bool(m.properties.No_framework_libs), it reports error:\nmodule \"bouncycastle\" variant \"android_common\": compiles against core Java API, but dependency \"bouncycastle-unbundled\" is compiling against non-core Java APIs.\nit seems bouncycastle is the exception.",
+      "parentUuid": "83197738_246d83f9",
+      "revId": "7484dfb320c8e7d3641292c2e58c9d68eb8ad0ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
