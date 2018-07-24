@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83197738_246d83f9",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-07-24T18:02:51Z",
+      "side": 1,
+      "message": "Should this be Bool(m.properties.No_standard_libs) || Bool(m.properties.No_framework_libs)?",
+      "revId": "7484dfb320c8e7d3641292c2e58c9d68eb8ad0ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
