@@ -153,16 +153,26 @@ def raise_min_sdk_version(doc, requested):
     # other children of the <manifest> tag.
     manifest.insertBefore(doc.createTextNode(indent), manifest.firstChild)
 
-  # Get or insert the minSdkVersion attribute
+  # Get or insert the minSdkVersion attribute.  If it is already present, make
+  # sure it as least the requested value.
   min_attr = element.getAttributeNodeNS(android_ns, 'minSdkVersion')
   if min_attr is None:
+    original_min_attr_value = '1'
     min_attr = doc.createAttributeNS(android_ns, 'android:minSdkVersion')
-    min_attr.value = '1'
-    element.setAttributeNode(min_attr)
-
-  # Update the value of the minSdkVersion attribute if necessary
-  if compare_version_gt(requested, min_attr.value):
     min_attr.value = requested
+    element.setAttributeNode(min_attr)
+  else:
+    original_min_attr_value = min_attr.value
+    if compare_version_gt(requested, min_attr.value):
+      min_attr.value = requested
+
+  # Insert the targetSdkVersion attribute if it is missing.  If it is already
+  # present leave it as is.
+  target_attr = element.getAttributeNodeNS(android_ns, 'targetSdkVersion')
+  if target_attr is None:
+    target_attr = doc.createAttributeNS(android_ns, 'android:targetSdkVersion')
+    target_attr.value = original_min_attr_value
+    element.setAttributeNode(target_attr)
 
 
 def add_uses_libraries(doc, new_uses_libraries):
