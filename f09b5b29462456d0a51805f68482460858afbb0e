@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15e47101_7fceb847",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-07-24T17:51:49Z",
+      "side": 1,
+      "message": "Why do we need slice: android.Paths instead of android.Path?",
+      "revId": "f09b5b29462456d0a51805f68482460858afbb0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
