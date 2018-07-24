@@ -97,16 +97,16 @@ var (
 	linuxX8664ClangLldflags = ClangFilterUnknownLldflags(linuxX8664ClangLdflags)
 
 	linuxClangCppflags = []string{
-		"-isystem ${LinuxGccRoot}/${LinuxGccTriple}/include/c++/${LinuxGccVersion}",
-		"-isystem ${LinuxGccRoot}/${LinuxGccTriple}/include/c++/${LinuxGccVersion}/backward",
+		// "-isystem ${LinuxGccRoot}/${LinuxGccTriple}/include/c++/${LinuxGccVersion}",
+		// "-isystem ${LinuxGccRoot}/${LinuxGccTriple}/include/c++/${LinuxGccVersion}/backward",
 	}
 
 	linuxX86ClangCppflags = []string{
-		"-isystem ${LinuxGccRoot}/${LinuxGccTriple}/include/c++/${LinuxGccVersion}/${LinuxGccTriple}/32",
+		// "-isystem ${LinuxGccRoot}/${LinuxGccTriple}/include/c++/${LinuxGccVersion}/${LinuxGccTriple}/32",
 	}
 
 	linuxX8664ClangCppflags = []string{
-		"-isystem ${LinuxGccRoot}/${LinuxGccTriple}/include/c++/${LinuxGccVersion}/${LinuxGccTriple}",
+		// "-isystem ${LinuxGccRoot}/${LinuxGccTriple}/include/c++/${LinuxGccVersion}/${LinuxGccTriple}",
 	}
 
 	linuxAvailableLibraries = addPrefix([]string{
