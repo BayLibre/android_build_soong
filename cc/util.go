@@ -16,6 +16,7 @@ package cc
 
 import (
 	"fmt"
+	"path/filepath"
 	"regexp"
 	"strings"
 
@@ -101,4 +102,27 @@ func addSuffix(list []string, suffix string) []string {
 		list[i] = list[i] + suffix
 	}
 	return list
+}
+
+func splitFileExt(name string, fileExts []string) (string, string, string) {
+	ext := filepath.Ext(name)
+	suffix := ext
+	root := strings.TrimSuffix(name, ext)
+
+	// Extract one file extension and search fileExts.
+	for ext != "" && !inList(ext, fileExts) {
+		ext = filepath.Ext(root)
+		suffix = ext + suffix
+		root = strings.TrimSuffix(root, ext)
+	}
+
+	// If name does not contain the file extensions specified in fileExts, return the last file
+	// extension.
+	if ext == "" {
+		ext = filepath.Ext(name)
+		suffix = ext
+		root = strings.TrimSuffix(name, ext)
+	}
+
+	return root, suffix, ext
 }
