@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "966347ca_65bf21fc",
+        "filename": "scripts/manifest_fixer.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-07-25T23:00:49Z",
+      "side": 1,
+      "message": "This doesn\u0027t work either, it would make an app that didn\u0027t specify any minSdkVersion in its manifest get targetSdkVersion 1.  I\u0027ll need to treat libraries and apps differently.",
+      "revId": "2fa6a48b0e7195f8a4152061b819ee8f17326fb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
