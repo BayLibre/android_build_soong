@@ -16,6 +16,24 @@
       "revId": "f09b5b29462456d0a51805f68482460858afbb0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a33206a_403831e3",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2018-07-25T04:42:30Z",
+      "side": 1,
+      "message": "I changed it to android.Path",
+      "parentUuid": "15e47101_7fceb847",
+      "revId": "f09b5b29462456d0a51805f68482460858afbb0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
