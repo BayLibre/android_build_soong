@@ -108,9 +108,11 @@ func (stub *vendorPublicLibraryStubDecorator) linkerDeps(ctx DepsContext, deps D
 	return deps
 }
 
-func (stub *vendorPublicLibraryStubDecorator) linkerFlags(ctx ModuleContext, flags Flags) Flags {
+func (stub *vendorPublicLibraryStubDecorator) linkerFlags(ctx ModuleContext,
+	flags Flags, deps PathDeps) Flags {
+
 	stub.libraryDecorator.libName = strings.TrimSuffix(ctx.ModuleName(), vendorPublicLibrarySuffix)
-	return stub.libraryDecorator.linkerFlags(ctx, flags)
+	return stub.libraryDecorator.linkerFlags(ctx, flags, deps)
 }
 
 func (stub *vendorPublicLibraryStubDecorator) link(ctx ModuleContext, flags Flags, deps PathDeps,

@@ -310,9 +310,9 @@ func (linker *stubDecorator) Name(name string) string {
 	return name + ndkLibrarySuffix
 }
 
-func (stub *stubDecorator) linkerFlags(ctx ModuleContext, flags Flags) Flags {
+func (stub *stubDecorator) linkerFlags(ctx ModuleContext, flags Flags, deps PathDeps) Flags {
 	stub.libraryDecorator.libName = ctx.baseModuleName()
-	return stub.libraryDecorator.linkerFlags(ctx, flags)
+	return stub.libraryDecorator.linkerFlags(ctx, flags, deps)
 }
 
 func (stub *stubDecorator) link(ctx ModuleContext, flags Flags, deps PathDeps,

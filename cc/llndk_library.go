@@ -102,10 +102,10 @@ func (stub *llndkStubDecorator) Name(name string) string {
 	return name + llndkLibrarySuffix
 }
 
-func (stub *llndkStubDecorator) linkerFlags(ctx ModuleContext, flags Flags) Flags {
+func (stub *llndkStubDecorator) linkerFlags(ctx ModuleContext, flags Flags, deps PathDeps) Flags {
 	stub.libraryDecorator.libName = strings.TrimSuffix(ctx.ModuleName(),
 		llndkLibrarySuffix)
-	return stub.libraryDecorator.linkerFlags(ctx, flags)
+	return stub.libraryDecorator.linkerFlags(ctx, flags, deps)
 }
 
 func (stub *llndkStubDecorator) processHeaders(ctx ModuleContext, srcHeaderDir string, outDir android.ModuleGenPath) android.Path {

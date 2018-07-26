@@ -135,7 +135,7 @@ func (test *testDecorator) gtest() bool {
 	return BoolDefault(test.Properties.Gtest, true)
 }
 
-func (test *testDecorator) linkerFlags(ctx ModuleContext, flags Flags) Flags {
+func (test *testDecorator) linkerFlags(ctx ModuleContext, flags Flags, deps PathDeps) Flags {
 	if !test.gtest() {
 		return flags
 	}
@@ -223,9 +223,9 @@ func (test *testBinary) linkerDeps(ctx DepsContext, deps Deps) Deps {
 	return deps
 }
 
-func (test *testBinary) linkerFlags(ctx ModuleContext, flags Flags) Flags {
-	flags = test.binaryDecorator.linkerFlags(ctx, flags)
-	flags = test.testDecorator.linkerFlags(ctx, flags)
+func (test *testBinary) linkerFlags(ctx ModuleContext, flags Flags, deps PathDeps) Flags {
+	flags = test.binaryDecorator.linkerFlags(ctx, flags, deps)
+	flags = test.testDecorator.linkerFlags(ctx, flags, deps)
 	return flags
 }
 
@@ -282,9 +282,9 @@ func (test *testLibrary) linkerDeps(ctx DepsContext, deps Deps) Deps {
 	return deps
 }
 
-func (test *testLibrary) linkerFlags(ctx ModuleContext, flags Flags) Flags {
-	flags = test.libraryDecorator.linkerFlags(ctx, flags)
-	flags = test.testDecorator.linkerFlags(ctx, flags)
+func (test *testLibrary) linkerFlags(ctx ModuleContext, flags Flags, deps PathDeps) Flags {
+	flags = test.libraryDecorator.linkerFlags(ctx, flags, deps)
+	flags = test.testDecorator.linkerFlags(ctx, flags, deps)
 	return flags
 }
 

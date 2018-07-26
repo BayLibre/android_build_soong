@@ -202,7 +202,7 @@ func (binary *binaryDecorator) staticBinary() bool {
 	return binary.static()
 }
 
-func (binary *binaryDecorator) linkerFlags(ctx ModuleContext, flags Flags) Flags {
+func (binary *binaryDecorator) linkerFlags(ctx ModuleContext, flags Flags, deps PathDeps) Flags {
 	flags = binary.baseLinker.linkerFlags(ctx, flags)
 
 	if ctx.Host() && !binary.static() {
@@ -275,6 +275,11 @@ func (binary *binaryDecorator) linkerFlags(ctx ModuleContext, flags Flags) Flags
 			"-Wl,-dynamic-linker,"+flags.DynamicLinker)
 	}
 
+	if deps.LinkerScript.Valid() {
+		flags.LdFlags = append(flags.LdFlags, "-Wl,-T,"+deps.LinkerScript.String())
+		flags.LdFlagsDeps = append(flags.LdFlagsDeps, deps.LinkerScript.Path())
+	}
+
 	return flags
 }
 
@@ -289,11 +294,6 @@ func (binary *binaryDecorator) link(ctx ModuleContext,
 
 	sharedLibs := deps.SharedLibs
 	sharedLibs = append(sharedLibs, deps.LateSharedLibs...)
-
-	if deps.LinkerScript.Valid() {
-		flags.LdFlags = append(flags.LdFlags, "-Wl,-T,"+deps.LinkerScript.String())
-		linkerDeps = append(linkerDeps, deps.LinkerScript.Path())
-	}
 
 	builderFlags := flagsToBuilderFlags(flags)
 
