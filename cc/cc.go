@@ -270,7 +270,7 @@ type compiler interface {
 type linker interface {
 	linkerInit(ctx BaseModuleContext)
 	linkerDeps(ctx DepsContext, deps Deps) Deps
-	linkerFlags(ctx ModuleContext, flags Flags) Flags
+	linkerFlags(ctx ModuleContext, flags Flags, deps PathDeps) Flags
 	linkerProps() []interface{}
 
 	link(ctx ModuleContext, flags Flags, deps PathDeps, objs Objects) android.Path
@@ -721,7 +721,7 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		flags = c.compiler.compilerFlags(ctx, flags, deps)
 	}
 	if c.linker != nil {
-		flags = c.linker.linkerFlags(ctx, flags)
+		flags = c.linker.linkerFlags(ctx, flags, deps)
 	}
 	if c.stl != nil {
 		flags = c.stl.flags(ctx, flags)

@@ -255,7 +255,7 @@ func (library *libraryDecorator) linkerProps() []interface{} {
 		&library.relocationPacker.Properties)
 }
 
-func (library *libraryDecorator) linkerFlags(ctx ModuleContext, flags Flags) Flags {
+func (library *libraryDecorator) linkerFlags(ctx ModuleContext, flags Flags, deps PathDeps) Flags {
 	flags = library.baseLinker.linkerFlags(ctx, flags)
 
 	// MinGW spits out warnings about -fPIC even for -fpie?!) being ignored because

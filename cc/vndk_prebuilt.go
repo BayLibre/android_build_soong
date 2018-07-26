@@ -97,9 +97,11 @@ func (p *vndkPrebuiltLibraryDecorator) binderBit() string {
 	return "64"
 }
 
-func (p *vndkPrebuiltLibraryDecorator) linkerFlags(ctx ModuleContext, flags Flags) Flags {
+func (p *vndkPrebuiltLibraryDecorator) linkerFlags(ctx ModuleContext, flags Flags,
+	deps PathDeps) Flags {
+
 	p.libraryDecorator.libName = strings.TrimSuffix(ctx.ModuleName(), p.NameSuffix())
-	return p.libraryDecorator.linkerFlags(ctx, flags)
+	return p.libraryDecorator.linkerFlags(ctx, flags, deps)
 }
 
 func (p *vndkPrebuiltLibraryDecorator) singleSourcePath(ctx ModuleContext) android.Path {
