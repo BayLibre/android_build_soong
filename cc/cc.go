@@ -81,6 +81,7 @@ type Deps struct {
 
 	CrtBegin, CrtEnd string
 	LinkerScript     string
+	DynamicLinker    string
 }
 
 type PathDeps struct {
@@ -106,6 +107,7 @@ type PathDeps struct {
 	// Paths to crt*.o files
 	CrtBegin, CrtEnd android.OptionalPath
 	LinkerScript     android.OptionalPath
+	DynamicLinker    string
 }
 
 type Flags struct {
@@ -140,7 +142,6 @@ type Flags struct {
 	ProtoRoot bool
 
 	RequiredInstructionSet string
-	DynamicLinker          string
 
 	CFlagsDeps  android.Paths // Files depended on by compiler flags
 	LdFlagsDeps android.Paths // Files depended on by linker flags
