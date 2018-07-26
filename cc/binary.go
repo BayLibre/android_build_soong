@@ -234,20 +234,20 @@ func (binary *binaryDecorator) linkerFlags(ctx ModuleContext, flags Flags) Flags
 				"-Wl,--gc-sections",
 			)
 		} else {
-			if flags.DynamicLinker == "" {
+			if deps.DynamicLinker == "" {
 				if binary.Properties.DynamicLinker != "" {
-					flags.DynamicLinker = binary.Properties.DynamicLinker
+					deps.DynamicLinker = binary.Properties.DynamicLinker
 				} else {
 					switch ctx.Os() {
 					case android.Android:
-						flags.DynamicLinker = "/system/bin/linker"
+						deps.DynamicLinker = "/system/bin/linker"
 					case android.LinuxBionic:
-						flags.DynamicLinker = ""
+						deps.DynamicLinker = ""
 					default:
 						ctx.ModuleErrorf("unknown dynamic linker")
 					}
 					if flags.Toolchain.Is64Bit() {
-						flags.DynamicLinker += "64"
+						deps.DynamicLinker += "64"
 					}
 				}
 			}
@@ -270,6 +270,11 @@ func (binary *binaryDecorator) linkerFlags(ctx ModuleContext, flags Flags) Flags
 		}
 	}
 
+	if deps.DynamicLinker != "" {
+		flags.LdFlags = append(flags.LdFlags,
+			"-Wl,-dynamic-linker,"+deps.DynamicLinker)
+	}
+
 	return flags
 }
 
@@ -288,10 +293,6 @@ func (binary *binaryDecorator) link(ctx ModuleContext,
 	if deps.LinkerScript.Valid() {
 		flags.LdFlags = append(flags.LdFlags, "-Wl,-T,"+deps.LinkerScript.String())
 		linkerDeps = append(linkerDeps, deps.LinkerScript.Path())
-	}
-
-	if flags.DynamicLinker != "" {
-		flags.LdFlags = append(flags.LdFlags, " -Wl,-dynamic-linker,"+flags.DynamicLinker)
 	}
 
 	builderFlags := flagsToBuilderFlags(flags)
