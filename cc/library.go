@@ -512,7 +512,6 @@ func (library *libraryDecorator) linkShared(ctx ModuleContext,
 	flags Flags, deps PathDeps, objs Objects) android.Path {
 
 	var linkerDeps android.Paths
-	linkerDeps = append(linkerDeps, flags.LdFlagsDeps...)
 
 	unexportedSymbols := ctx.ExpandOptionalSource(library.Properties.Unexported_symbols_list, "unexported_symbols_list")
 	forceNotWeakSymbols := ctx.ExpandOptionalSource(library.Properties.Force_symbols_not_weak_list, "force_symbols_not_weak_list")
@@ -580,16 +579,11 @@ func (library *libraryDecorator) linkShared(ctx ModuleContext,
 		library.injectVersionSymbol(ctx, outputFile, versionedOutputFile)
 	}
 
-	sharedLibs := deps.SharedLibs
-	sharedLibs = append(sharedLibs, deps.LateSharedLibs...)
-
-	linkerDeps = append(linkerDeps, deps.SharedLibsDeps...)
-	linkerDeps = append(linkerDeps, deps.LateSharedLibsDeps...)
 	linkerDeps = append(linkerDeps, objs.tidyFiles...)
+	linkerDeps = append(linkerDeps, flags.LdFlagsDeps...)
 
-	TransformObjToDynamicBinary(ctx, objs.objFiles, sharedLibs,
-		deps.StaticLibs, deps.LateStaticLibs, deps.WholeStaticLibs,
-		linkerDeps, deps.CrtBegin, deps.CrtEnd, false, builderFlags, outputFile)
+	TransformObjToDynamicBinary(ctx, objs.objFiles, deps, linkerDeps, false,
+		builderFlags, outputFile)
 
 	objs.coverageFiles = append(objs.coverageFiles, deps.StaticLibObjs.coverageFiles...)
 	objs.coverageFiles = append(objs.coverageFiles, deps.WholeStaticLibObjs.coverageFiles...)
