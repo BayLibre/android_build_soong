@@ -615,11 +615,64 @@ func transformDarwinObjToStaticLib(ctx android.ModuleContext, objFiles android.P
 	}
 }
 
+func getLibFlags(ctx android.ModuleContext, deps PathDeps, groupLate bool,
+	flags builderFlags) ([]string, android.Paths) {
+
+	var libFlagsList []string
+	var libDeps android.Paths
+
+	if len(flags.libFlags) > 0 {
+		libFlagsList = append(libFlagsList, flags.libFlags)
+	}
+
+	if len(deps.WholeStaticLibs) > 0 {
+		if ctx.Host() && ctx.Darwin() {
+			libFlagsList = append(libFlagsList, android.JoinWithPrefix(
+				deps.WholeStaticLibs.Strings(), "-force_load "))
+		} else {
+			libFlagsList = append(libFlagsList, "-Wl,--whole-archive ")
+			libFlagsList = append(libFlagsList, deps.WholeStaticLibs.Strings()...)
+			libFlagsList = append(libFlagsList, "-Wl,--no-whole-archive ")
+			libDeps = append(libDeps, deps.WholeStaticLibs...)
+		}
+	}
+
+	if flags.groupStaticLibs && !ctx.Darwin() && len(deps.StaticLibs) > 0 {
+		libFlagsList = append(libFlagsList, "-Wl,--start-group")
+	}
+	libFlagsList = append(libFlagsList, deps.StaticLibs.Strings()...)
+	libDeps = append(libDeps, deps.StaticLibs...)
+	if flags.groupStaticLibs && !ctx.Darwin() && len(deps.StaticLibs) > 0 {
+		libFlagsList = append(libFlagsList, "-Wl,--end-group")
+	}
+
+	if groupLate && !ctx.Darwin() && len(deps.LateStaticLibs) > 0 {
+		libFlagsList = append(libFlagsList, "-Wl,--start-group")
+	}
+	libFlagsList = append(libFlagsList, deps.LateStaticLibs.Strings()...)
+	libDeps = append(libDeps, deps.LateStaticLibs...)
+	if groupLate && !ctx.Darwin() && len(deps.LateStaticLibs) > 0 {
+		libFlagsList = append(libFlagsList, "-Wl,--end-group")
+	}
+
+	for _, lib := range deps.SharedLibs {
+		libFlagsList = append(libFlagsList, lib.String())
+	}
+	libDeps = append(libDeps, deps.SharedLibs...)
+
+	for _, lib := range deps.LateSharedLibs {
+		libFlagsList = append(libFlagsList, lib.String())
+	}
+	libDeps = append(libDeps, deps.LateSharedLibs...)
+
+	return libFlagsList, libDeps
+}
+
 // Generate a rule for compiling multiple .o files, plus static libraries, whole static libraries,
 // and shared libraries, to a shared library (.so) or dynamic executable
 func TransformObjToDynamicBinary(ctx android.ModuleContext,
-	objFiles, sharedLibs, staticLibs, lateStaticLibs, wholeStaticLibs, deps android.Paths,
-	crtBegin, crtEnd android.OptionalPath, groupLate bool, flags builderFlags, outputFile android.WritablePath) {
+	objFiles android.Paths, pathDeps PathDeps, deps android.Paths,
+	groupLate bool, flags builderFlags, outputFile android.WritablePath) {
 
 	var ldCmd string
 	if flags.clang {
@@ -628,47 +681,11 @@ func TransformObjToDynamicBinary(ctx android.ModuleContext,
 		ldCmd = gccCmd(flags.toolchain, "g++")
 	}
 
-	var libFlagsList []string
+	libFlagsList, libDeps := getLibFlags(ctx, pathDeps, groupLate, flags)
+	deps = append(deps, libDeps...)
 
-	if len(flags.libFlags) > 0 {
-		libFlagsList = append(libFlagsList, flags.libFlags)
-	}
-
-	if len(wholeStaticLibs) > 0 {
-		if ctx.Host() && ctx.Darwin() {
-			libFlagsList = append(libFlagsList, android.JoinWithPrefix(wholeStaticLibs.Strings(), "-force_load "))
-		} else {
-			libFlagsList = append(libFlagsList, "-Wl,--whole-archive ")
-			libFlagsList = append(libFlagsList, wholeStaticLibs.Strings()...)
-			libFlagsList = append(libFlagsList, "-Wl,--no-whole-archive ")
-		}
-	}
-
-	if flags.groupStaticLibs && !ctx.Darwin() && len(staticLibs) > 0 {
-		libFlagsList = append(libFlagsList, "-Wl,--start-group")
-	}
-	libFlagsList = append(libFlagsList, staticLibs.Strings()...)
-	if flags.groupStaticLibs && !ctx.Darwin() && len(staticLibs) > 0 {
-		libFlagsList = append(libFlagsList, "-Wl,--end-group")
-	}
-
-	if groupLate && !ctx.Darwin() && len(lateStaticLibs) > 0 {
-		libFlagsList = append(libFlagsList, "-Wl,--start-group")
-	}
-	libFlagsList = append(libFlagsList, lateStaticLibs.Strings()...)
-	if groupLate && !ctx.Darwin() && len(lateStaticLibs) > 0 {
-		libFlagsList = append(libFlagsList, "-Wl,--end-group")
-	}
-
-	for _, lib := range sharedLibs {
-		libFlagsList = append(libFlagsList, lib.String())
-	}
-
-	deps = append(deps, staticLibs...)
-	deps = append(deps, lateStaticLibs...)
-	deps = append(deps, wholeStaticLibs...)
-	if crtBegin.Valid() {
-		deps = append(deps, crtBegin.Path(), crtEnd.Path())
+	if pathDeps.CrtBegin.Valid() {
+		deps = append(deps, pathDeps.CrtBegin.Path(), pathDeps.CrtEnd.Path())
 	}
 
 	ctx.Build(pctx, android.BuildParams{
@@ -679,10 +696,10 @@ func TransformObjToDynamicBinary(ctx android.ModuleContext,
 		Implicits:   deps,
 		Args: map[string]string{
 			"ldCmd":    ldCmd,
-			"crtBegin": crtBegin.String(),
+			"crtBegin": pathDeps.CrtBegin.String(),
 			"libFlags": strings.Join(libFlagsList, " "),
 			"ldFlags":  flags.ldFlags,
-			"crtEnd":   crtEnd.String(),
+			"crtEnd":   pathDeps.CrtEnd.String(),
 		},
 	})
 }

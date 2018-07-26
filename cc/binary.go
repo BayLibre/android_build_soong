@@ -290,11 +290,6 @@ func (binary *binaryDecorator) link(ctx ModuleContext,
 	outputFile := android.PathForModuleOut(ctx, fileName)
 	ret := outputFile
 
-	var linkerDeps android.Paths
-
-	sharedLibs := deps.SharedLibs
-	sharedLibs = append(sharedLibs, deps.LateSharedLibs...)
-
 	builderFlags := flagsToBuilderFlags(flags)
 
 	if binary.stripper.needsStrip(ctx) {
@@ -320,13 +315,11 @@ func (binary *binaryDecorator) link(ctx ModuleContext,
 		binary.injectVersionSymbol(ctx, outputFile, versionedOutputFile)
 	}
 
-	linkerDeps = append(linkerDeps, deps.SharedLibsDeps...)
-	linkerDeps = append(linkerDeps, deps.LateSharedLibsDeps...)
+	var linkerDeps android.Paths
 	linkerDeps = append(linkerDeps, objs.tidyFiles...)
 	linkerDeps = append(linkerDeps, flags.LdFlagsDeps...)
 
-	TransformObjToDynamicBinary(ctx, objs.objFiles, sharedLibs, deps.StaticLibs,
-		deps.LateStaticLibs, deps.WholeStaticLibs, linkerDeps, deps.CrtBegin, deps.CrtEnd, true,
+	TransformObjToDynamicBinary(ctx, objs.objFiles, deps, linkerDeps, true,
 		builderFlags, outputFile)
 
 	objs.coverageFiles = append(objs.coverageFiles, deps.StaticLibObjs.coverageFiles...)
