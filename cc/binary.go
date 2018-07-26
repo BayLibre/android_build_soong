@@ -270,6 +270,11 @@ func (binary *binaryDecorator) linkerFlags(ctx ModuleContext, flags Flags) Flags
 		}
 	}
 
+	if flags.DynamicLinker != "" {
+		flags.LdFlags = append(flags.LdFlags,
+			"-Wl,-dynamic-linker,"+flags.DynamicLinker)
+	}
+
 	return flags
 }
 
@@ -288,10 +293,6 @@ func (binary *binaryDecorator) link(ctx ModuleContext,
 	if deps.LinkerScript.Valid() {
 		flags.LdFlags = append(flags.LdFlags, "-Wl,-T,"+deps.LinkerScript.String())
 		linkerDeps = append(linkerDeps, deps.LinkerScript.Path())
-	}
-
-	if flags.DynamicLinker != "" {
-		flags.LdFlags = append(flags.LdFlags, " -Wl,-dynamic-linker,"+flags.DynamicLinker)
 	}
 
 	builderFlags := flagsToBuilderFlags(flags)
