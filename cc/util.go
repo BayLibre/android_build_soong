@@ -20,6 +20,7 @@ import (
 	"strings"
 
 	"android/soong/android"
+	"android/soong/cc/config"
 )
 
 // Efficiently converts a list of include directories to a single string
@@ -58,13 +59,17 @@ func moduleToLibName(module string) (string, error) {
 
 func flagsToBuilderFlags(in Flags) builderFlags {
 	return builderFlags{
-		globalFlags:    strings.Join(in.GlobalFlags, " "),
+		globalFlags:     strings.Join(in.GlobalFlags, " "),
+		tidyGlobalFlags: config.TidyFilterUnknownCflags(strings.Join(in.TidyGlobalFlags, " ")),
+
 		arFlags:        strings.Join(in.ArFlags, " "),
 		asFlags:        strings.Join(in.AsFlags, " "),
 		cFlags:         strings.Join(in.CFlags, " "),
+		tidyCFlags:     config.TidyFilterUnknownCflags(strings.Join(in.TidyCFlags, " ")),
 		toolingCFlags:  strings.Join(in.ToolingCFlags, " "),
 		conlyFlags:     strings.Join(in.ConlyFlags, " "),
 		cppFlags:       strings.Join(in.CppFlags, " "),
+		tidyCppFlags:   config.TidyFilterUnknownCflags(strings.Join(in.TidyCppFlags, " ")),
 		yaccFlags:      strings.Join(in.YaccFlags, " "),
 		protoFlags:     strings.Join(in.protoFlags, " "),
 		protoOutParams: strings.Join(in.protoOutParams, ","),

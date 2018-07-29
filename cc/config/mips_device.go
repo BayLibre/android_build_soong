@@ -197,6 +197,10 @@ func (t *toolchainMips) ClangCflags() string {
 	return t.clangCflags
 }
 
+func (t *toolchainMips) TidyCflags() string {
+	return t.clangCflags
+}
+
 func (t *toolchainMips) ClangCppflags() string {
 	return "${config.MipsClangCppflags}"
 }

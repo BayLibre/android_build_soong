@@ -49,6 +49,7 @@ func (cov *coverage) flags(ctx ModuleContext, flags Flags) Flags {
 	if cov.Properties.CoverageEnabled {
 		flags.Coverage = true
 		flags.GlobalFlags = append(flags.GlobalFlags, "--coverage", "-O0")
+		flags.TidyGlobalFlags = append(flags.TidyGlobalFlags, "--coverage", "-O0")
 		cov.linkCoverage = true
 	}
 

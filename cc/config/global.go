@@ -161,12 +161,17 @@ func init() {
 
 	pctx.StaticVariable("CommonGlobalCppflags", strings.Join(commonGlobalCppflags, " "))
 
-	pctx.StaticVariable("CommonClangGlobalCflags",
-		strings.Join(append(ClangFilterUnknownCflags(commonGlobalCflags), "${ClangExtraCflags}"), " "))
-	pctx.StaticVariable("DeviceClangGlobalCflags",
-		strings.Join(append(ClangFilterUnknownCflags(deviceGlobalCflags), "${ClangExtraTargetCflags}"), " "))
-	pctx.StaticVariable("HostClangGlobalCflags",
-		strings.Join(ClangFilterUnknownCflags(hostGlobalCflags), " "))
+	commonClangGlobalCflags := strings.Join(append(ClangFilterUnknownCflags(commonGlobalCflags), "${ClangExtraCflags}"), " ")
+	pctx.StaticVariable("CommonClangGlobalCflags", commonClangGlobalCflags)
+	pctx.StaticVariable("CommonTidyGlobalCflags", TidyFilterUnknownCflags(commonClangGlobalCflags))
+	deviceClangGlobalCflags :=
+		strings.Join(append(ClangFilterUnknownCflags(deviceGlobalCflags), "${ClangExtraTargetCflags}"), " ")
+	pctx.StaticVariable("DeviceClangGlobalCflags", deviceClangGlobalCflags)
+	pctx.StaticVariable("DeviceTidyGlobalCflags", TidyFilterUnknownCflags(deviceClangGlobalCflags))
+	hostClangGlobalCflags :=
+		strings.Join(ClangFilterUnknownCflags(hostGlobalCflags), " ")
+	pctx.StaticVariable("HostClangGlobalCflags", hostClangGlobalCflags)
+	pctx.StaticVariable("HostTidyGlobalCflags", TidyFilterUnknownCflags(hostClangGlobalCflags))
 	pctx.StaticVariable("NoOverrideClangGlobalCflags",
 		strings.Join(append(ClangFilterUnknownCflags(noOverrideGlobalCflags), "${ClangExtraNoOverrideCflags}"), " "))
 
