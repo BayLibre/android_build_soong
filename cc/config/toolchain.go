@@ -63,6 +63,7 @@ type Toolchain interface {
 	ToolchainClangLdflags() string
 	ClangAsflags() string
 	ClangCflags() string
+	TidyCflags() string
 	ClangCppflags() string
 	ClangLdflags() string
 	ClangLldflags() string

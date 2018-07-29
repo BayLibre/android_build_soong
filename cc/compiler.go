@@ -275,16 +275,19 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 	if len(localIncludeDirs) > 0 {
 		f := includeDirsToFlags(localIncludeDirs)
 		flags.GlobalFlags = append(flags.GlobalFlags, f)
+		flags.TidyGlobalFlags = append(flags.TidyGlobalFlags, f)
 		flags.YasmFlags = append(flags.YasmFlags, f)
 	}
 	rootIncludeDirs := android.PathsForSource(ctx, compiler.Properties.Include_dirs)
 	if len(rootIncludeDirs) > 0 {
 		f := includeDirsToFlags(rootIncludeDirs)
 		flags.GlobalFlags = append(flags.GlobalFlags, f)
+		flags.TidyGlobalFlags = append(flags.TidyGlobalFlags, f)
 		flags.YasmFlags = append(flags.YasmFlags, f)
 	}
 
 	flags.GlobalFlags = append(flags.GlobalFlags, "-I"+android.PathForModuleSrc(ctx).String())
+	flags.TidyGlobalFlags = append(flags.TidyGlobalFlags, "-I"+android.PathForModuleSrc(ctx).String())
 	flags.YasmFlags = append(flags.YasmFlags, "-I"+android.PathForModuleSrc(ctx).String())
 
 	if !(ctx.useSdk() || ctx.useVndk()) || ctx.Host() {
@@ -310,8 +313,8 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 		if version == "current" {
 			version = "__ANDROID_API_FUTURE__"
 		}
-		flags.GlobalFlags = append(flags.GlobalFlags,
-			"-D__ANDROID_API__="+version)
+		flags.GlobalFlags = append(flags.GlobalFlags, "-D__ANDROID_API__="+version)
+		flags.TidyGlobalFlags = append(flags.TidyGlobalFlags, "-D__ANDROID_API__="+version)
 
 		// Until the full NDK has been migrated to using ndk_headers, we still
 		// need to add the legacy sysroot includes to get the full set of
@@ -330,10 +333,13 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 		}
 		flags.GlobalFlags = append(flags.GlobalFlags,
 			"-D__ANDROID_API__="+version, "-D__ANDROID_VNDK__")
+		flags.TidyGlobalFlags = append(flags.TidyGlobalFlags,
+			"-D__ANDROID_API__="+version, "-D__ANDROID_VNDK__")
 	}
 
 	if ctx.inRecovery() {
 		flags.GlobalFlags = append(flags.GlobalFlags, "-D__ANDROID_RECOVERY__")
+		flags.TidyGlobalFlags = append(flags.TidyGlobalFlags, "-D__ANDROID_RECOVERY__")
 	}
 
 	instructionSet := String(compiler.Properties.Instruction_set)
@@ -378,6 +384,7 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 	}
 
 	flags.GlobalFlags = append(flags.GlobalFlags, instructionSetFlags)
+	flags.TidyGlobalFlags = append(flags.TidyGlobalFlags, instructionSetFlags)
 	flags.ConlyFlags = append([]string{"${config.CommonGlobalConlyflags}"}, flags.ConlyFlags...)
 	flags.CppFlags = append([]string{fmt.Sprintf("${config.%sGlobalCppflags}", hod)}, flags.CppFlags...)
 
@@ -388,17 +395,23 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 			tc.ClangCflags(),
 			"${config.CommonClangGlobalCflags}",
 			fmt.Sprintf("${config.%sClangGlobalCflags}", hod))
+		flags.TidyGlobalFlags = append(flags.TidyGlobalFlags,
+			tc.TidyCflags(),
+			"${config.CommonTidyGlobalCflags}",
+			fmt.Sprintf("${config.%sTidyGlobalCflags}", hod))
 	} else {
 		flags.CppFlags = append([]string{"${config.CommonGlobalCppflags}"}, flags.CppFlags...)
 		flags.GlobalFlags = append(flags.GlobalFlags,
 			tc.Cflags(),
 			"${config.CommonGlobalCflags}",
 			fmt.Sprintf("${config.%sGlobalCflags}", hod))
+		// clang-tidy should not be called if not flags.Clang
 	}
 
 	if flags.Clang {
 		if strings.HasPrefix(android.PathForModuleSrc(ctx).String(), "external/") {
 			flags.GlobalFlags = append([]string{"${config.ClangExternalCflags}"}, flags.GlobalFlags...)
+			flags.TidyGlobalFlags = append([]string{"${config.ClangExternalCflags}"}, flags.TidyGlobalFlags...)
 		}
 	}
 
@@ -422,8 +435,10 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 
 	if flags.Clang {
 		flags.GlobalFlags = append(flags.GlobalFlags, tc.ToolchainClangCflags())
+		flags.TidyGlobalFlags = append(flags.TidyGlobalFlags, tc.ToolchainClangCflags())
 	} else {
 		flags.GlobalFlags = append(flags.GlobalFlags, tc.ToolchainCflags())
+		// TidyGlobalFlags should not be used if not flags.Clang
 	}
 
 	cStd := config.CStdVersion
@@ -493,10 +508,14 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 	if compiler.hasSrcExt(".y") || compiler.hasSrcExt(".yy") {
 		flags.GlobalFlags = append(flags.GlobalFlags,
 			"-I"+android.PathForModuleGen(ctx, "yacc", ctx.ModuleDir()).String())
+		flags.TidyGlobalFlags = append(flags.TidyGlobalFlags,
+			"-I"+android.PathForModuleGen(ctx, "yacc", ctx.ModuleDir()).String())
 	}
 
 	if compiler.hasSrcExt(".mc") {
 		flags.GlobalFlags = append(flags.GlobalFlags,
+			"-I"+android.PathForModuleGen(ctx, "windmc", ctx.ModuleDir()).String())
+		flags.TidyGlobalFlags = append(flags.TidyGlobalFlags,
 			"-I"+android.PathForModuleGen(ctx, "windmc", ctx.ModuleDir()).String())
 	}
 
@@ -515,6 +534,8 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 		}
 
 		flags.GlobalFlags = append(flags.GlobalFlags,
+			"-I"+android.PathForModuleGen(ctx, "aidl").String())
+		flags.TidyGlobalFlags = append(flags.TidyGlobalFlags,
 			"-I"+android.PathForModuleGen(ctx, "aidl").String())
 	}
 

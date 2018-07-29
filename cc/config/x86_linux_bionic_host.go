@@ -67,6 +67,7 @@ var (
 
 func init() {
 	pctx.StaticVariable("LinuxBionicCflags", strings.Join(linuxBionicCflags, " "))
+	pctx.StaticVariable("LinuxBionicTidyCflags", TidyFilterUnknownCflags(strings.Join(linuxBionicCflags, " ")))
 	pctx.StaticVariable("LinuxBionicLdflags", strings.Join(linuxBionicLdflags, " "))
 	pctx.StaticVariable("LinuxBionicLldflags", strings.Join(linuxBionicLldflags, " "))
 
@@ -119,6 +120,10 @@ func (t *toolchainLinuxBionic) ClangTriple() string {
 
 func (t *toolchainLinuxBionic) ClangCflags() string {
 	return "${config.LinuxBionicCflags}"
+}
+
+func (t *toolchainLinuxBionic) TidyCflags() string {
+	return "${config.LinuxBionicTidyCflags}"
 }
 
 func (t *toolchainLinuxBionic) ClangCppflags() string {

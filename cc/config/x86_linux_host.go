@@ -126,6 +126,7 @@ func init() {
 	pctx.StaticVariable("LinuxLdflags", strings.Join(linuxLdflags, " "))
 
 	pctx.StaticVariable("LinuxClangCflags", strings.Join(linuxClangCflags, " "))
+	pctx.StaticVariable("LinuxTidyCflags", TidyFilterUnknownCflags(strings.Join(linuxClangCflags, " ")))
 	pctx.StaticVariable("LinuxClangLdflags", strings.Join(linuxClangLdflags, " "))
 	pctx.StaticVariable("LinuxClangLldflags", strings.Join(linuxClangLldflags, " "))
 
@@ -137,8 +138,12 @@ func init() {
 
 	pctx.StaticVariable("LinuxX86ClangCflags",
 		strings.Join(ClangFilterUnknownCflags(linuxX86Cflags), " "))
+	pctx.StaticVariable("LinuxX86TidyCflags",
+		TidyFilterUnknownCflags(strings.Join(ClangFilterUnknownCflags(linuxX86Cflags), " ")))
 	pctx.StaticVariable("LinuxX8664ClangCflags",
 		strings.Join(ClangFilterUnknownCflags(linuxX8664Cflags), " "))
+	pctx.StaticVariable("LinuxX8664TidyCflags",
+		TidyFilterUnknownCflags(strings.Join(ClangFilterUnknownCflags(linuxX8664Cflags), " ")))
 	pctx.StaticVariable("LinuxX86ClangLdflags", strings.Join(linuxX86ClangLdflags, " "))
 	pctx.StaticVariable("LinuxX86ClangLldflags", strings.Join(linuxX86ClangLldflags, " "))
 	pctx.StaticVariable("LinuxX8664ClangLdflags", strings.Join(linuxX8664ClangLdflags, " "))
@@ -214,6 +219,10 @@ func (t *toolchainLinuxX86) ClangCflags() string {
 	return "${config.LinuxClangCflags} ${config.LinuxX86ClangCflags}"
 }
 
+func (t *toolchainLinuxX86) TidyCflags() string {
+	return "${config.LinuxTidyCflags} ${config.LinuxX86TidyCflags}"
+}
+
 func (t *toolchainLinuxX86) ClangCppflags() string {
 	return ""
 }
@@ -224,6 +233,10 @@ func (t *toolchainLinuxX8664) ClangTriple() string {
 
 func (t *toolchainLinuxX8664) ClangCflags() string {
 	return "${config.LinuxClangCflags} ${config.LinuxX8664ClangCflags}"
+}
+
+func (t *toolchainLinuxX8664) TidyCflags() string {
+	return "${config.LinuxTidyCflags} ${config.LinuxX8664TidyCflags}"
 }
 
 func (t *toolchainLinuxX8664) ClangCppflags() string {
