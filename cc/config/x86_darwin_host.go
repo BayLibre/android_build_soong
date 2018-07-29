@@ -266,11 +266,19 @@ func (t *toolchainDarwinX86) ClangCflags() string {
 	return "${config.DarwinClangCflags} ${config.DarwinX86ClangCflags}"
 }
 
+func (t *toolchainDarwinX86) TidyCflags() string {
+	return "${config.DarwinClangCflags} ${config.DarwinX86ClangCflags}"
+}
+
 func (t *toolchainDarwinX8664) ClangTriple() string {
 	return "x86_64-apple-darwin"
 }
 
 func (t *toolchainDarwinX8664) ClangCflags() string {
+	return "${config.DarwinClangCflags} ${config.DarwinX8664ClangCflags}"
+}
+
+func (t *toolchainDarwinX8664) TidyCflags() string {
 	return "${config.DarwinClangCflags} ${config.DarwinX8664ClangCflags}"
 }
 

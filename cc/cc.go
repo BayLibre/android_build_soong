@@ -110,12 +110,15 @@ type PathDeps struct {
 
 type Flags struct {
 	GlobalFlags     []string // Flags that apply to C, C++, and assembly source files
+	TidyGlobalFlags []string // Like GlobalFlags but for clang-tidy
 	ArFlags         []string // Flags that apply to ar
 	AsFlags         []string // Flags that apply to assembly source files
 	CFlags          []string // Flags that apply to C and C++ source files
+	TidyCFlags      []string // Flags that apply to C and C++ source files for clang-tidy
 	ToolingCFlags   []string // Flags that apply to C and C++ source files parsed by clang LibTooling tools
 	ConlyFlags      []string // Flags that apply to C source files
 	CppFlags        []string // Flags that apply to C++ source files
+	TidyCppFlags    []string // Flags that apply to C++ source files for clang-tidy
 	ToolingCppFlags []string // Flags that apply to C++ source files parsed by clang LibTooling tools
 	YaccFlags       []string // Flags that apply to Yacc source files
 	protoFlags      []string // Flags that apply to proto source files
@@ -749,6 +752,7 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	flags.ConlyFlags, _ = filterList(flags.ConlyFlags, config.IllegalFlags)
 
 	flags.GlobalFlags = append(flags.GlobalFlags, deps.Flags...)
+	flags.TidyGlobalFlags = append(flags.TidyGlobalFlags, deps.Flags...)
 	c.flags = flags
 	// We need access to all the flags seen by a source file.
 	if c.sabi != nil {
@@ -756,11 +760,17 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	}
 	// Optimization to reduce size of build.ninja
 	// Replace the long list of flags for each file with a module-local variable
-	ctx.Variable(pctx, "cflags", strings.Join(flags.CFlags, " "))
-	ctx.Variable(pctx, "cppflags", strings.Join(flags.CppFlags, " "))
+	joinedCFlags := strings.Join(flags.CFlags, " ")
+	ctx.Variable(pctx, "cflags", joinedCFlags)
+	ctx.Variable(pctx, "tidycflags", config.TidyFilterUnknownCflags(joinedCFlags))
+	joinedCppFlags := strings.Join(flags.CppFlags, " ")
+	ctx.Variable(pctx, "cppflags", joinedCppFlags)
+	ctx.Variable(pctx, "tidycppflags", config.TidyFilterUnknownCflags(joinedCppFlags))
 	ctx.Variable(pctx, "asflags", strings.Join(flags.AsFlags, " "))
 	flags.CFlags = []string{"$cflags"}
+	flags.TidyCFlags = []string{"$tidycflags"}
 	flags.CppFlags = []string{"$cppflags"}
+	flags.TidyCppFlags = []string{"$tidycppflags"}
 	flags.AsFlags = []string{"$asflags"}
 
 	var objs Objects
