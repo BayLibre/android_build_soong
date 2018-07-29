@@ -234,13 +234,17 @@ func init() {
 }
 
 type builderFlags struct {
-	globalFlags    string
+	globalFlags     string
+	tidyGlobalFlags string
+
 	arFlags        string
 	asFlags        string
 	cFlags         string
+	tidyCFlags     string
 	toolingCFlags  string // A separate set of Cflags for clang LibTooling tools
 	conlyFlags     string
 	cppFlags       string
+	tidyCppFlags   string
 	ldFlags        string
 	libFlags       string
 	yaccFlags      string
@@ -313,6 +317,11 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 		flags.systemIncludeFlags,
 	}, " ")
 
+	tidyCommonFlags := strings.Join([]string{
+		flags.tidyGlobalFlags,
+		flags.systemIncludeFlags,
+	}, " ")
+
 	toolingCflags := strings.Join([]string{
 		commonFlags,
 		flags.toolingCFlags,
@@ -325,6 +334,12 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 		flags.conlyFlags,
 	}, " ")
 
+	tidyCflags := strings.Join([]string{
+		tidyCommonFlags,
+		flags.tidyCFlags,
+		config.TidyFilterUnknownFlags(flags.conlyFlags),
+	}, " ")
+
 	toolingCppflags := strings.Join([]string{
 		commonFlags,
 		flags.toolingCFlags,
@@ -335,6 +350,12 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 		commonFlags,
 		flags.cFlags,
 		flags.cppFlags,
+	}, " ")
+
+	tidyCppflags := strings.Join([]string{
+		tidyCommonFlags,
+		flags.tidyCFlags,
+		flags.tidyCppFlags,
 	}, " ")
 
 	asflags := strings.Join([]string{
@@ -350,8 +371,10 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 	if flags.clang {
 		cflags += " ${config.NoOverrideClangGlobalCflags}"
 		toolingCflags += " ${config.NoOverrideClangGlobalCflags}"
+		tidyCflags += " ${config.NoOverrideClangGlobalCflags}"
 		cppflags += " ${config.NoOverrideClangGlobalCflags}"
 		toolingCppflags += " ${config.NoOverrideClangGlobalCflags}"
+		tidyCppflags += " ${config.NoOverrideClangGlobalCflags}"
 	} else {
 		cflags += " ${config.NoOverrideGlobalCflags}"
 		cppflags += " ${config.NoOverrideGlobalCflags}"
@@ -394,6 +417,7 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 
 		var moduleCflags string
 		var moduleToolingCflags string
+		var moduleTidyCflags string
 		var ccCmd string
 		tidy := flags.tidy && flags.clang
 		coverage := flags.coverage
@@ -410,10 +434,12 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 			ccCmd = "gcc"
 			moduleCflags = cflags
 			moduleToolingCflags = toolingCflags
+			moduleTidyCflags = tidyCflags
 		case ".cpp", ".cc", ".mm":
 			ccCmd = "g++"
 			moduleCflags = cppflags
 			moduleToolingCflags = toolingCppflags
+			moduleTidyCflags = tidyCppflags
 		default:
 			ctx.ModuleErrorf("File %s has unknown extension", srcFile)
 			continue
@@ -472,7 +498,7 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 				// support exporting dependencies.
 				Implicit: objFile,
 				Args: map[string]string{
-					"cFlags":    moduleToolingCflags,
+					"cFlags":    moduleTidyCflags,
 					"tidyFlags": flags.tidyFlags,
 				},
 			})

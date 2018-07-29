@@ -147,6 +147,10 @@ func (t *toolchainMips64) ClangCflags() string {
 	return t.clangCflags
 }
 
+func (t *toolchainMips64) TidyCflags() string {
+	return t.clangCflags
+}
+
 func (t *toolchainMips64) ClangCppflags() string {
 	return "${config.Mips64ClangCppflags}"
 }

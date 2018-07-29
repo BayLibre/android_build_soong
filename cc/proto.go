@@ -113,8 +113,10 @@ func protoFlags(ctx ModuleContext, flags Flags, p *android.ProtoProperties) Flag
 	flags.ProtoRoot = android.ProtoCanonicalPathFromRoot(ctx, p)
 	if flags.ProtoRoot {
 		flags.GlobalFlags = append(flags.GlobalFlags, "-I"+android.ProtoSubDir(ctx).String())
+		flags.TidyGlobalFlags = append(flags.TidyGlobalFlags, "-I"+android.ProtoSubDir(ctx).String())
 	}
 	flags.GlobalFlags = append(flags.GlobalFlags, "-I"+android.ProtoDir(ctx).String())
+	flags.TidyGlobalFlags = append(flags.TidyGlobalFlags, "-I"+android.ProtoDir(ctx).String())
 
 	flags.protoFlags = android.ProtoFlags(ctx, p)
 
