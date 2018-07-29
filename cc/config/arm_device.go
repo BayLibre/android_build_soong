@@ -374,6 +374,10 @@ func (t *toolchainArm) ClangCflags() string {
 	return "${config.ArmClangCflags}"
 }
 
+func (t *toolchainArm) TidyCflags() string {
+	return "${config.ArmClangCflags}"
+}
+
 func (t *toolchainArm) ClangCppflags() string {
 	return "${config.ArmClangCppflags}"
 }

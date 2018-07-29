@@ -314,6 +314,7 @@ func (library *libraryDecorator) compilerFlags(ctx ModuleContext, flags Flags, d
 	if len(exportIncludeDirs) > 0 {
 		f := includeDirsToFlags(exportIncludeDirs)
 		flags.GlobalFlags = append(flags.GlobalFlags, f)
+		flags.TidyGlobalFlags = append(flags.TidyGlobalFlags, f)
 		flags.YasmFlags = append(flags.YasmFlags, f)
 	}
 

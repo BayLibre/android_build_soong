@@ -222,6 +222,10 @@ func (t *toolchainArm64) ClangCflags() string {
 	return "${config.Arm64ClangCflags}"
 }
 
+func (t *toolchainArm64) TidyCflags() string {
+	return "${config.Arm64ClangCflags}"
+}
+
 func (t *toolchainArm64) ClangCppflags() string {
 	return "${config.Arm64ClangCppflags}"
 }

@@ -16,6 +16,7 @@ package config
 
 import (
 	"android/soong/android"
+	"regexp"
 	"strings"
 )
 
@@ -27,7 +28,19 @@ import (
 var ClangTidyUnknownCflags = sorted([]string{
 	"-Wa,%",
 	"-flto",
+	"-flto=%",
 	"-fsanitize=%",
+	"-fsanitize-%",
+	"-fwhole-program-vtables",
+})
+
+// Unfortunately GNU make and golang use different regular expression syntax.
+// So ClangTidyUnknownCflags is for GNU make,
+// and ClangTidyUnknownCflagsForGo is for golang.
+var ClangTidyUnknownCflagsForGo = sorted([]string{
+	"-Wa,[^ ]*",
+	"-flto(=[^ ]*)?",
+	"-fsanitize(-|=)[^ ]*",
 	"-fwhole-program-vtables",
 })
 
@@ -42,6 +55,7 @@ func init() {
 		}
 		return strings.Join([]string{
 			"-*",
+			"clang-diagnostic-unused-command-line-argument",
 			"google*",
 			"misc-macro-parentheses",
 			"performance*",
@@ -58,6 +72,7 @@ func init() {
 		}
 		return strings.Join([]string{
 			"-*",
+			"clang-diagnostic-unused-command-line-argument",
 			"google*",
 			"-google-build-using-namespace",
 			"-google-default-arguments",
@@ -85,6 +100,12 @@ func init() {
 		"libnativehelper/",
 		"system/",
 	}, "|"))
+}
+
+var TidyFlagsReplacer = regexp.MustCompile("(^| )((" + strings.Join(ClangTidyUnknownCflagsForGo, "|") + ")($| +))+")
+
+func TidyFilterUnknownFlags(flags string) string {
+	return TidyFlagsReplacer.ReplaceAllLiteralString(flags, " ")
 }
 
 type PathBasedTidyCheck struct {

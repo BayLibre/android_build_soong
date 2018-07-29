@@ -211,6 +211,10 @@ func (t *toolchainX86_64) ClangCflags() string {
 	return "${config.X86_64ClangCflags}"
 }
 
+func (t *toolchainX86_64) TidyCflags() string {
+	return "${config.X86_64ClangCflags}"
+}
+
 func (t *toolchainX86_64) ClangCppflags() string {
 	return "${config.X86_64ClangCppflags}"
 }
