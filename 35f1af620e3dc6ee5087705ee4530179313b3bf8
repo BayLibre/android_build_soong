@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61172040_9d2d6fa9",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-07-30T20:35:50Z",
+      "side": 1,
+      "message": "It gets really complicated to follow the command lines and dependencies when we are adding extra commands.  Can doclava and dokka move to their own rules that run after metalava finishes?  That will also make it easier and more efficient to run both dokka and doclava.",
+      "revId": "35f1af620e3dc6ee5087705ee4530179313b3bf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
