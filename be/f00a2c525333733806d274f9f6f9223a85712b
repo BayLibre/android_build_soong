@@ -1,0 +1,9 @@
+Code-Review+1: Colin Cross <ccross@android.com>
+Code-Review+2: Pirama Arumuga Nainar <pirama@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: Logan Chien <loganchien@google.com>
+Submitted-by: Logan Chien <loganchien@google.com>
+Submitted-at: Tue, 31 Jul 2018 17:51:12 +0000
+Reviewed-on: https://android-review.googlesource.com/723425
+Project: platform/build/soong
+Branch: refs/heads/master
