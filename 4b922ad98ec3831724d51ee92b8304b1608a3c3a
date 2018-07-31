@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "113d8219_3227a478",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-07-31T15:47:44Z",
+      "side": 1,
+      "message": "Mention the default android.annotation behavior of this property.",
+      "revId": "4b922ad98ec3831724d51ee92b8304b1608a3c3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
