@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0ab296e_f41731bb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-07-31T12:03:39Z",
+      "side": 1,
+      "message": "The bug is not explaining the reason for these properties. Could you write down the reasons into commit message (or file a bug)?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 13
+      },
+      "revId": "3ca406e341a2722e99b53d9c67fd877b68c5d1d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eaa4473b_746f9ecf",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-07-31T12:03:39Z",
+      "side": 1,
+      "message": "please comment that this applies to the stubs lib",
+      "revId": "3ca406e341a2722e99b53d9c67fd877b68c5d1d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
