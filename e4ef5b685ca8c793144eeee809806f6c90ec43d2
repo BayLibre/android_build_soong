@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "766bb2e4_4847c6ac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-07-31T17:20:16Z",
+      "side": 1,
+      "message": "This bug isn\u0027t relevant any more.",
+      "revId": "e4ef5b685ca8c793144eeee809806f6c90ec43d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
