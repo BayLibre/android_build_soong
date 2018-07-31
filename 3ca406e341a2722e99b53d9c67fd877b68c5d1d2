@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "53372b72_b93cf2b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2018-07-31T12:29:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0ab296e_f41731bb",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 13
+      },
+      "revId": "3ca406e341a2722e99b53d9c67fd877b68c5d1d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eaa4473b_746f9ecf",
         "filename": "java/sdk_library.go",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "3ca406e341a2722e99b53d9c67fd877b68c5d1d2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afb5f3ab_0bc1867e",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2018-07-31T12:29:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eaa4473b_746f9ecf",
+      "revId": "3ca406e341a2722e99b53d9c67fd877b68c5d1d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
