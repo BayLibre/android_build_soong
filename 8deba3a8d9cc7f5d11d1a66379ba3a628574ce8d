@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ee6f159e_939bd09c",
+        "filename": "cc/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1014807
+      },
+      "writtenOn": "2018-08-01T22:23:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16a0ddc0_628007e6",
+      "revId": "8deba3a8d9cc7f5d11d1a66379ba3a628574ce8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b201e15_e505ad69",
         "filename": "cc/util.go",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2018-08-01T01:30:04Z",
       "side": 1,
       "message": "This will match things like libc.so.txt, which seems undesirable.  Would it be better to pass a list of regexs to check and then fall back to filepath.Ext?  []*regexp.Regex{regexp.MustCompile(\"\\.so\\.[0-9]+$\")}",
+      "revId": "8deba3a8d9cc7f5d11d1a66379ba3a628574ce8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ba9b684_d05dfcaa",
+        "filename": "cc/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1014807
+      },
+      "writtenOn": "2018-08-01T22:23:02Z",
+      "side": 1,
+      "message": "After some reconsideration, I reduce the functionality of this function.  Now, it will only trim the version numbers and ignore the rest.  I hope it looks better now.",
+      "parentUuid": "6b201e15_e505ad69",
       "revId": "8deba3a8d9cc7f5d11d1a66379ba3a628574ce8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
