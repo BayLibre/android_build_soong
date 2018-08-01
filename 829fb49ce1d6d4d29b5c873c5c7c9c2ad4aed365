@@ -34,6 +34,24 @@
       "revId": "829fb49ce1d6d4d29b5c873c5c7c9c2ad4aed365",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f21a6cfa_3ba2fd81",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-08-01T00:36:45Z",
+      "side": 1,
+      "message": "https://cs.corp.google.com/aosp-master/frameworks/base/Android.bp?rcl\u003dea77ee39f5399705743443bcf94e49997e2e6237\u0026l\u003d929\n\nWe have a property called: \"arg_files\" which tracks the dependencies, and within args, we use $(location filepath) to locate the file path under source tree.",
+      "parentUuid": "85b08fdc_bab8f3fa",
+      "revId": "829fb49ce1d6d4d29b5c873c5c7c9c2ad4aed365",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
