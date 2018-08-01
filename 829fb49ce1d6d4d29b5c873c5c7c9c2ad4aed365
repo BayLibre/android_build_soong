@@ -52,6 +52,24 @@
       "revId": "829fb49ce1d6d4d29b5c873c5c7c9c2ad4aed365",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4606302d_256306ef",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2018-08-01T02:19:52Z",
+      "side": 1,
+      "message": "I didn\u0027t implement \"arg_files\" property. \"Droiddoc_options\" property allows to add an option to the droiddoc argument. All droiddoc module properties aren\u0027t supported.\nIf we need \"arg_files\" property, I\u0027ll implement it.",
+      "parentUuid": "f21a6cfa_3ba2fd81",
+      "revId": "829fb49ce1d6d4d29b5c873c5c7c9c2ad4aed365",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
