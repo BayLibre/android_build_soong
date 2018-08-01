@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff415d3f_892180d5",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-08-01T00:11:14Z",
+      "side": 1,
+      "message": "what if the Droiddoc_options have some filepath involved? should we add them as dependencies?",
+      "revId": "829fb49ce1d6d4d29b5c873c5c7c9c2ad4aed365",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
