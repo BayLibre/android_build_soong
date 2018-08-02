@@ -54,6 +54,10 @@ func (p *binaryDecorator) AndroidMk(base *Module, ret *android.AndroidMkData) {
 			fmt.Fprintln(w, "LOCAL_COMPATIBILITY_SUITE :=",
 				strings.Join(p.binaryProperties.Test_suites, " "))
 		}
+		if p.binaryProperties.Test_config != nil {
+			fmt.Fprintln(w, "LOCAL_TEST_CONFIG :=",
+				*p.binaryProperties.Test_config)
+		}
 	})
 	base.subAndroidMk(ret, p.pythonInstaller)
 }
@@ -65,6 +69,10 @@ func (p *testDecorator) AndroidMk(base *Module, ret *android.AndroidMkData) {
 		if len(p.binaryDecorator.binaryProperties.Test_suites) > 0 {
 			fmt.Fprintln(w, "LOCAL_COMPATIBILITY_SUITE :=",
 				strings.Join(p.binaryDecorator.binaryProperties.Test_suites, " "))
+		}
+		if p.binaryProperties.Test_config != nil {
+			fmt.Fprintln(w, "LOCAL_TEST_CONFIG :=",
+				*p.binaryProperties.Test_config)
 		}
 	})
 	base.subAndroidMk(ret, p.binaryDecorator.pythonInstaller)
