@@ -46,6 +46,30 @@
       "revId": "28843a9903c19e976bec1152f6e9ea456354d629",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f25c42e_b5626ea9",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1083173
+      },
+      "writtenOn": "2018-08-06T18:13:32Z",
+      "side": 1,
+      "message": "I know we need host vs device (for gtests) - I had discussed this with Dan Willemsen,",
+      "parentUuid": "206f9e40_e101a6f9",
+      "range": {
+        "startLine": 48,
+        "startChar": 21,
+        "endLine": 48,
+        "endChar": 45
+      },
+      "revId": "28843a9903c19e976bec1152f6e9ea456354d629",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
