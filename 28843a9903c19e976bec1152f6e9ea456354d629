@@ -70,6 +70,30 @@
       "revId": "28843a9903c19e976bec1152f6e9ea456354d629",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d701ec7_b2b69235",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-06T18:26:25Z",
+      "side": 1,
+      "message": "Shouldn\u0027t that be handled in a single AndroidTest.xml?  Otherwise every host+device module would have to specify two xml files.",
+      "parentUuid": "1f25c42e_b5626ea9",
+      "range": {
+        "startLine": 48,
+        "startChar": 21,
+        "endLine": 48,
+        "endChar": 45
+      },
+      "revId": "28843a9903c19e976bec1152f6e9ea456354d629",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
