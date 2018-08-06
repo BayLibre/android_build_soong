@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbd1b134_a367ba6a",
+        "filename": "cc/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-06T20:12:25Z",
+      "side": 1,
+      "message": "should this have \"\\.so(?:\\\\.\\\\d+)+\"?",
+      "revId": "fdeac8bdb59f5c6a04c4acf05bfbbdd284dad66e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
