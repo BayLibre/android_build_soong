@@ -118,6 +118,30 @@
       "revId": "28843a9903c19e976bec1152f6e9ea456354d629",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b6cfe50_ddef4ae0",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1083173
+      },
+      "writtenOn": "2018-08-06T18:37:20Z",
+      "side": 1,
+      "message": "I am now realizing that the logic on this CL (https://android-review.googlesource.com/c/platform/build/+/707637) will be a bit more complicated to properly support: \"the host gtest module so ignore androidtest.xml but respect test_config, otherwise autogen\" case...",
+      "parentUuid": "56c825ea_e571b3bc",
+      "range": {
+        "startLine": 48,
+        "startChar": 21,
+        "endLine": 48,
+        "endChar": 45
+      },
+      "revId": "28843a9903c19e976bec1152f6e9ea456354d629",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
