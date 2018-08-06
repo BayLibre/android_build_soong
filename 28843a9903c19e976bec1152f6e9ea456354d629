@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d576ed26_19218e11",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-06T18:07:31Z",
+      "side": 1,
+      "message": "This means the property might have a different value for host vs. device or for arm vs. x86, is that necessary?",
+      "range": {
+        "startLine": 48,
+        "startChar": 21,
+        "endLine": 48,
+        "endChar": 45
+      },
+      "revId": "28843a9903c19e976bec1152f6e9ea456354d629",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
