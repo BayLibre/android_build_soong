@@ -361,6 +361,8 @@ type Module struct {
 
 	// only non-nil when this is a shared library that reuses the objects of a static library
 	staticVariant *Module
+
+	disableOnDarwin bool
 }
 
 func (c *Module) Init() android.Module {
@@ -699,6 +701,10 @@ func orderStaticModuleDeps(module *Module, staticDeps []*Module, sharedDeps []*M
 }
 
 func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
+	if actx.Darwin() && c.disableOnDarwin {
+		return
+	}
+
 	ctx := &moduleContext{
 		ModuleContext: actx,
 		moduleContextImpl: moduleContextImpl{
