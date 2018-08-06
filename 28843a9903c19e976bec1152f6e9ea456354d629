@@ -22,6 +22,30 @@
       "revId": "28843a9903c19e976bec1152f6e9ea456354d629",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "206f9e40_e101a6f9",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-06T18:09:36Z",
+      "side": 1,
+      "message": "Also, shouldn\u0027t this be a property for python_test and not for python_binary?",
+      "parentUuid": "d576ed26_19218e11",
+      "range": {
+        "startLine": 48,
+        "startChar": 21,
+        "endLine": 48,
+        "endChar": 45
+      },
+      "revId": "28843a9903c19e976bec1152f6e9ea456354d629",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
