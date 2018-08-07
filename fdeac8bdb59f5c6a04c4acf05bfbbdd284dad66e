@@ -16,6 +16,24 @@
       "revId": "fdeac8bdb59f5c6a04c4acf05bfbbdd284dad66e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "840208e4_5e7b9a28",
+        "filename": "cc/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1014807
+      },
+      "writtenOn": "2018-08-07T02:28:36Z",
+      "side": 1,
+      "message": "I would like leave \".so\" for the file extension (L126-127), thus I am only matching version numbers here.",
+      "parentUuid": "cbd1b134_a367ba6a",
+      "revId": "fdeac8bdb59f5c6a04c4acf05bfbbdd284dad66e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
