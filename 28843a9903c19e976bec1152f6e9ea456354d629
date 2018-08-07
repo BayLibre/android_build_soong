@@ -183,6 +183,24 @@
       "revId": "28843a9903c19e976bec1152f6e9ea456354d629",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a7b1c05a_851fa8be",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1121894
+      },
+      "writtenOn": "2018-08-07T22:21:53Z",
+      "side": 1,
+      "message": "added to other tests.\n\nadded the LOCAL_TEST_CONFIG conversion for python test target only.\nI tried to move the Test_config definition to python/test.go decorator but It doesn\u0027t seem to properly receive the \u0027test_config\u0027 when defined in the Android.bp. I am not familiar at all how the Android.bp gets transformed into the different structures.",
+      "parentUuid": "f31f3e3d_385f985c",
+      "revId": "28843a9903c19e976bec1152f6e9ea456354d629",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
