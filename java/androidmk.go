@@ -106,11 +106,10 @@ func (j *Test) AndroidMk() android.AndroidMkData {
 		if len(j.testProperties.Test_suites) > 0 {
 			fmt.Fprintln(w, "LOCAL_COMPATIBILITY_SUITE :=",
 				strings.Join(j.testProperties.Test_suites, " "))
+		} else {
+			fmt.Fprintln(w, "LOCAL_COMPATIBILITY_SUITE := null-suite")
 		}
-		if j.testProperties.Test_config != nil {
-			fmt.Fprintln(w, "LOCAL_TEST_CONFIG :=",
-				*j.testProperties.Test_config)
-		}
+		fmt.Fprintln(w, "LOCAL_FULL_TEST_CONFIG :=", j.testConfig.String())
 	})
 
 	return data

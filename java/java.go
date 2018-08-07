@@ -24,6 +24,8 @@ import (
 	"strconv"
 	"strings"
 
+	"android/soong/tradefed"
+
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -1362,6 +1364,19 @@ type Test struct {
 	Library
 
 	testProperties testProperties
+
+	testConfig android.Path
+}
+
+func (j *Test) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	testConfig := ctx.ExpandOptionalSource(j.testProperties.Test_config, "test_config")
+	if testConfig.Valid() {
+		j.testConfig = testConfig.Path()
+	} else {
+		j.testConfig = tradefed.AutoGenJavaTestConfig(ctx)
+	}
+
+	j.Library.GenerateAndroidBuildActions(ctx)
 }
 
 func (j *Test) DepsMutator(ctx android.BottomUpMutatorContext) {
@@ -1369,6 +1384,7 @@ func (j *Test) DepsMutator(ctx android.BottomUpMutatorContext) {
 	if BoolDefault(j.testProperties.Junit, true) {
 		ctx.AddDependency(ctx.Module(), staticLibTag, "junit")
 	}
+	android.ExtractSourceDeps(ctx, j.testProperties.Test_config)
 }
 
 func TestFactory() android.Module {
