@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f67b16a_d31fe4cd",
+        "filename": "python/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-07T22:29:24Z",
+      "side": 1,
+      "message": "Add:\n\ntype TestProperties struct {\n\t// the name of the test configuration (for example \"AndroidTest.xml\") that should be\n\t// installed with the module.\n\tTest_config *string `android:\"arch_variant\"`\n}",
+      "revId": "fe136ea4d6d1eadc7521be92ab6342b6ef32c5c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c4ba0ae_c81d3886",
+        "filename": "python/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-07T22:29:24Z",
+      "side": 1,
+      "message": "Add:\n\n\ttestProperties TestProperties",
+      "revId": "fe136ea4d6d1eadc7521be92ab6342b6ef32c5c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56cc764a_711a531b",
+        "filename": "python/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-07T22:29:24Z",
+      "side": 1,
+      "message": "Add:\n\nfunc (test *testDecorator) bootstrapperProps() []interface{} {\n\treturn append(test.binaryDecorator.bootstrapperProps(), \u0026test.testProperties)\n}",
+      "revId": "fe136ea4d6d1eadc7521be92ab6342b6ef32c5c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
