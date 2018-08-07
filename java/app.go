@@ -22,6 +22,7 @@ import (
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
+	"android/soong/tradefed"
 )
 
 func init() {
@@ -214,6 +215,8 @@ type AndroidTest struct {
 	appTestProperties appTestProperties
 
 	testProperties testProperties
+
+	testConfig android.Path
 }
 
 func (a *AndroidTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
@@ -224,6 +227,8 @@ func (a *AndroidTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	a.generateAndroidBuildActions(ctx)
+
+	a.testConfig = tradefed.AutoGenInstrumentationTestConfig(ctx, a.testProperties.Test_config, a.manifestPath)
 }
 
 func AndroidTestFactory() android.Module {
