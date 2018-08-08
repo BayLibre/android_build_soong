@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08a6d3b5_9948023b",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2018-08-08T00:45:06Z",
+      "side": 1,
+      "message": "Maybe this should be called TidyFilterUnknownFlags, since we use it on multiple different input types (C/Cpp, etc.).",
+      "range": {
+        "startLine": 768,
+        "startChar": 43,
+        "endLine": 768,
+        "endChar": 66
+      },
+      "revId": "9b6173c8b1f10ddda3b2b85b1584aa243434ce83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0656bf14_a6da2b47",
+        "filename": "cc/compiler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2018-08-08T00:45:06Z",
+      "side": 1,
+      "message": "We should look at cleaning this up in the future as well. If we pass a number at the end of the android target on the command line, it is used as the version number. That makes for a nicer experience than explicitly defining this macro.",
+      "revId": "9b6173c8b1f10ddda3b2b85b1584aa243434ce83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5454df37_29fb23ec",
+        "filename": "cc/config/tidy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2018-08-08T00:45:06Z",
+      "side": 1,
+      "message": "We should also be working with upstream eventually to do something to support these flags. Even if they don\u0027t make sense (LTO and sanitizers are unlikely to be meaningful), they can be dropped by clang-tidy to facilitate ease of use. We\u0027re not the only customer who probably hits things like this.",
+      "revId": "9b6173c8b1f10ddda3b2b85b1584aa243434ce83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24494b63_924742b9",
+        "filename": "cc/config/toolchain.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2018-08-08T00:45:06Z",
+      "side": 1,
+      "message": "I wonder if this should just be called TidyFlags.",
+      "revId": "9b6173c8b1f10ddda3b2b85b1584aa243434ce83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
