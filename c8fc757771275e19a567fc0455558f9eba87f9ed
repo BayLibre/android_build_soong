@@ -128,6 +128,30 @@
       "revId": "c8fc757771275e19a567fc0455558f9eba87f9ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76f6a22f_7adeb3e9",
+        "filename": "tradefed/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1083173
+      },
+      "writtenOn": "2018-08-08T21:25:56Z",
+      "side": 1,
+      "message": "Fair enough.\n\nOne more question do we want to build the corresponding jar host test for these dalvik tests (could be a followup cl). I know they really need to be built for the target and ran on target but is there any value in letting devs run them faster locally on their workstation?\n\nFor example: make junit-params-test produces: out/host/linux-x86/framework/junit-params-test.jar",
+      "parentUuid": "bf38cd01_f72b6c19",
+      "range": {
+        "startLine": 28,
+        "startChar": 26,
+        "endLine": 28,
+        "endChar": 48
+      },
+      "revId": "c8fc757771275e19a567fc0455558f9eba87f9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
