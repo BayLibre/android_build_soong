@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "aa160cfb_ef66ec37",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-08-08T17:18:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08a6d3b5_9948023b",
+      "range": {
+        "startLine": 768,
+        "startChar": 43,
+        "endLine": 768,
+        "endChar": 66
+      },
+      "revId": "9b6173c8b1f10ddda3b2b85b1584aa243434ce83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0656bf14_a6da2b47",
         "filename": "cc/compiler.go",
         "patchSetId": 3
@@ -39,6 +63,24 @@
       "revId": "9b6173c8b1f10ddda3b2b85b1584aa243434ce83",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b454bc4c_759fdebc",
+        "filename": "cc/compiler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-08-08T17:18:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0656bf14_a6da2b47",
+      "revId": "9b6173c8b1f10ddda3b2b85b1584aa243434ce83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "c4dc46da_dcf62513",
+        "filename": "cc/config/tidy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-08-08T17:18:18Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "5454df37_29fb23ec",
+      "revId": "9b6173c8b1f10ddda3b2b85b1584aa243434ce83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24494b63_924742b9",
         "filename": "cc/config/toolchain.go",
         "patchSetId": 3
@@ -73,6 +133,24 @@
       "revId": "9b6173c8b1f10ddda3b2b85b1584aa243434ce83",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4933b7a3_da218581",
+        "filename": "cc/config/toolchain.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-08-08T17:18:18Z",
+      "side": 1,
+      "message": "In other places \"TidyFlags\" is used for clang-tidy (checker) flags, not for the C/C++ compiler flags. Here it is to replace ClangCflags. We don\u0027t have TidyCppflags now, but if necessary we could have TidyCppflags to replace ClangCppflags.",
+      "parentUuid": "24494b63_924742b9",
+      "revId": "9b6173c8b1f10ddda3b2b85b1584aa243434ce83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
