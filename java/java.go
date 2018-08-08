@@ -631,7 +631,7 @@ func (j *Module) aidlFlags(ctx android.ModuleContext, aidlPreprocess android.Opt
 	aidlIncludes = append(aidlIncludes,
 		android.PathsForSource(ctx, j.deviceProperties.Aidl.Include_dirs)...)
 
-	flags := []string{"-b"}
+	var flags []string
 
 	if aidlPreprocess.Valid() {
 		flags = append(flags, "-p"+aidlPreprocess.String())

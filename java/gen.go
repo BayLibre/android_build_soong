@@ -33,10 +33,13 @@ func init() {
 var (
 	aidl = pctx.AndroidStaticRule("aidl",
 		blueprint.RuleParams{
-			Command:     "$aidlCmd -d$depFile $aidlFlags $in $out",
-			CommandDeps: []string{"$aidlCmd"},
+			Command: "mkdir -p $javaOut && " +
+				"$aidlCmd -d$depFile $aidlFlags $in $javaFile && " +
+				"${config.SoongZipCmd} -jar -o $out -C $javaOut -D $javaOut && " +
+				"rm -rf $javaOut",
+			CommandDeps: []string{"$aidlCmd", "${config.SoongZipCmd}"},
 		},
-		"depFile", "aidlFlags")
+		"aidlFlags", "depFile", "javaFile", "javaOut")
 
 	logtags = pctx.AndroidStaticRule("logtags",
 		blueprint.RuleParams{
@@ -52,21 +55,24 @@ var (
 )
 
 func genAidl(ctx android.ModuleContext, aidlFile android.Path, aidlFlags string) android.Path {
-	javaFile := android.GenPathWithExt(ctx, "aidl", aidlFile, "java")
-	depFile := javaFile.String() + ".d"
+	srcJarFile := android.GenPathWithExt(ctx, "srcjar", aidlFile, "srcjar")
+	javaFile := android.GenPathWithExt(ctx, aidlFile.String(), aidlFile, "java")
+	javaOut := android.PathForModuleGen(ctx, aidlFile.String())
 
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        aidl,
 		Description: "aidl " + aidlFile.Rel(),
-		Output:      javaFile,
+		Output:      srcJarFile,
 		Input:       aidlFile,
 		Args: map[string]string{
-			"depFile":   depFile,
 			"aidlFlags": aidlFlags,
+			"depFile":   srcJarFile.String() + ".d",
+			"javaFile":  javaFile.String(),
+			"javaOut":   javaOut.String(),
 		},
 	})
 
-	return javaFile
+	return srcJarFile
 }
 
 func genLogtags(ctx android.ModuleContext, logtagsFile android.Path) android.Path {
