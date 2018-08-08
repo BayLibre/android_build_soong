@@ -81,6 +81,29 @@
       "revId": "c8fc757771275e19a567fc0455558f9eba87f9ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fdb4dc6_fb062621",
+        "filename": "tradefed/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1083173
+      },
+      "writtenOn": "2018-08-08T21:01:16Z",
+      "side": 1,
+      "message": "I just wonder if this name is too broad.\n\nAn Instrumentation test is written in Java for example.",
+      "range": {
+        "startLine": 28,
+        "startChar": 26,
+        "endLine": 28,
+        "endChar": 48
+      },
+      "revId": "c8fc757771275e19a567fc0455558f9eba87f9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
