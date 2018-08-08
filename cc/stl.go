@@ -82,8 +82,7 @@ func (stl *stl) begin(ctx BaseModuleContext) {
 		} else if ctx.Windows() {
 			switch s {
 			case "libc++", "libc++_static", "libstdc++", "":
-				// libc++ is not supported on mingw
-				return "libstdc++"
+				return "libc++_static"
 			case "none":
 				return ""
 			default:
@@ -126,6 +125,11 @@ func (stl *stl) deps(ctx BaseModuleContext, deps Deps) Deps {
 			}
 			if ctx.staticBinary() {
 				deps.StaticLibs = append(deps.StaticLibs, "libm", "libc", "libdl")
+			}
+		}
+		if ctx.Windows() {
+			if ctx.Arch().ArchType == android.X86 {
+				deps.StaticLibs = append(deps.StaticLibs, "libunwind_llvm")
 			}
 		}
 	case "":
@@ -177,6 +181,12 @@ func (stl *stl) flags(ctx ModuleContext, flags Flags) Flags {
 			} else {
 				flags.LdFlags = append(flags.LdFlags, hostDynamicGccLibs[ctx.Os()]...)
 			}
+			if ctx.Windows() {
+				if ctx.Arch().ArchType == android.X86 {
+					flags.LdFlags = append(flags.LdFlags, "-Wl,--exclude-libs,libunwind_llvm.a")
+				}
+				flags.CppFlags = append(flags.CppFlags, "-D_LIBCPP_DISABLE_VISIBILITY_ANNOTATIONS", "-D_LIBCXXABI_DISABLE_VISIBILITY_ANNOTATIONS")
+			}
 		} else {
 			if ctx.Arch().ArchType == android.Arm {
 				flags.LdFlags = append(flags.LdFlags, "-Wl,--exclude-libs,libunwind_llvm.a")
@@ -213,9 +223,9 @@ func init() {
 	hostDynamicGccLibs = map[android.OsType][]string{
 		android.Linux:  []string{"-lgcc_s", "-lgcc", "-lc", "-lgcc_s", "-lgcc"},
 		android.Darwin: []string{"-lc", "-lSystem"},
-		android.Windows: []string{"-lmingw32", "-lgcc", "-lmoldname", "-lmingwex", "-lmsvcr110",
-			"-lmsvcrt", "-ladvapi32", "-lshell32", "-luser32", "-lkernel32", "-lmingw32",
-			"-lgcc", "-lmoldname", "-lmingwex", "-lmsvcrt"},
+		android.Windows: []string{"-lmingw32", "-lgcc", "-lgcc_eh", "-lwinpthread", "-lsupc++", "-lmoldname",
+			"-lmingwex", "-lmsvcr110", "-lmsvcrt", "-ladvapi32", "-lshell32", "-luser32", "-lkernel32",
+			"-lmingw32", "-lgcc", "-lgcc_eh", "-lmoldname", "-lmingwex", "-lmsvcrt", "-lpsapi"},
 	}
 	hostStaticGccLibs = map[android.OsType][]string{
 		android.Linux:   []string{"-Wl,--start-group", "-lgcc", "-lgcc_eh", "-lc", "-Wl,--end-group"},
