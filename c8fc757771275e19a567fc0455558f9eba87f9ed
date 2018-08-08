@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "73d0a8ab_a20cbbae",
+        "filename": "java/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-08T20:44:45Z",
+      "side": 1,
+      "message": "This is in addition to LOCAL_TEST_CONFIG, see the other patch in the topic.  Soong will generate an autogen test config to out/soong/..., but LOCAL_TEST_CONFIG is relative to LOCAL_PATH.",
+      "parentUuid": "69ad510e_f9c11c92",
+      "range": {
+        "startLine": 112,
+        "startChar": 19,
+        "endLine": 112,
+        "endChar": 41
+      },
+      "revId": "c8fc757771275e19a567fc0455558f9eba87f9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8264c073_cbb9d5f2",
         "filename": "java/java.go",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2018-08-08T20:37:18Z",
       "side": 1,
       "message": "else if wildcard AndroidTest.xml?\n\nWe have too many tests already with AndroidTest.xml to drop that support.",
+      "revId": "c8fc757771275e19a567fc0455558f9eba87f9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7917cd8_9aa3bd45",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1375,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-08T20:44:45Z",
+      "side": 1,
+      "message": "Oops, forgot that part.",
+      "parentUuid": "8264c073_cbb9d5f2",
       "revId": "c8fc757771275e19a567fc0455558f9eba87f9ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
