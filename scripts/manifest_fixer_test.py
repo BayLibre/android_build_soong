@@ -16,8 +16,9 @@
 #
 """Unit tests for manifest_fixer_test.py."""
 
-import StringIO
+import io
 import sys
+import textwrap
 import unittest
 from xml.dom import minidom
 
@@ -54,18 +55,19 @@ class CompareVersionGtTest(unittest.TestCase):
 class RaiseMinSdkVersionTest(unittest.TestCase):
   """Unit tests for raise_min_sdk_version function."""
 
-  def raise_min_sdk_version_test(self, input_manifest, min_sdk_version, library):
+  def raise_min_sdk_version_test(self, input_manifest, min_sdk_version,
+                                 library):
     doc = minidom.parseString(input_manifest)
     manifest_fixer.raise_min_sdk_version(doc, min_sdk_version, library)
-    output = StringIO.StringIO()
+    output = io.BytesIO()
     manifest_fixer.write_xml(output, doc)
-    return output.getvalue()
+    return output.getvalue().decode('utf-8')
 
-  manifest_tmpl = (
-      '<?xml version="1.0" encoding="utf-8"?>\n'
-      '<manifest xmlns:android="http://schemas.android.com/apk/res/android">\n'
-      '%s'
-      '</manifest>\n')
+  manifest_tmpl = textwrap.dedent("""\
+      <?xml version="1.0" encoding="utf-8"?>
+      <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+      %s</manifest>
+      """)
 
   # pylint: disable=redefined-builtin
   def uses_sdk(self, min=None, target=None, extra=''):
@@ -75,7 +77,7 @@ class RaiseMinSdkVersionTest(unittest.TestCase):
     if target:
       attrs += ' android:targetSdkVersion="%s"' % (target)
     if extra:
-        attrs += ' ' + extra
+      attrs += ' ' + extra
     return '    <uses-sdk%s/>\n' % (attrs)
 
   def test_no_uses_sdk(self):
@@ -152,12 +154,12 @@ class RaiseMinSdkVersionTest(unittest.TestCase):
     self.assertEqual(output, expected)
 
   def test_target_no_min(self):
-      """Tests inserting targetSdkVersion when minSdkVersion exists."""
+    """Tests inserting targetSdkVersion when minSdkVersion exists."""
 
-      manifest_input = self.manifest_tmpl % self.uses_sdk(target='27')
-      expected = self.manifest_tmpl % self.uses_sdk(min='28', target='27')
-      output = self.raise_min_sdk_version_test(manifest_input, '28', False)
-      self.assertEqual(output, expected)
+    manifest_input = self.manifest_tmpl % self.uses_sdk(target='27')
+    expected = self.manifest_tmpl % self.uses_sdk(min='28', target='27')
+    output = self.raise_min_sdk_version_test(manifest_input, '28', False)
+    self.assertEqual(output, expected)
 
   def test_no_target_no_min(self):
     """Tests inserting targetSdkVersion when minSdkVersion does not exist."""
@@ -168,28 +170,28 @@ class RaiseMinSdkVersionTest(unittest.TestCase):
     self.assertEqual(output, expected)
 
   def test_library_no_target(self):
-      """Tests inserting targetSdkVersion when minSdkVersion exists."""
+    """Tests inserting targetSdkVersion when minSdkVersion exists."""
 
-      manifest_input = self.manifest_tmpl % self.uses_sdk(min='27')
-      expected = self.manifest_tmpl % self.uses_sdk(min='28', target='27')
-      output = self.raise_min_sdk_version_test(manifest_input, '28', True)
-      self.assertEqual(output, expected)
+    manifest_input = self.manifest_tmpl % self.uses_sdk(min='27')
+    expected = self.manifest_tmpl % self.uses_sdk(min='28', target='27')
+    output = self.raise_min_sdk_version_test(manifest_input, '28', True)
+    self.assertEqual(output, expected)
 
   def test_library_target_no_min(self):
-      """Tests inserting targetSdkVersion when minSdkVersion exists."""
+    """Tests inserting targetSdkVersion when minSdkVersion exists."""
 
-      manifest_input = self.manifest_tmpl % self.uses_sdk(target='27')
-      expected = self.manifest_tmpl % self.uses_sdk(min='28', target='27')
-      output = self.raise_min_sdk_version_test(manifest_input, '28', True)
-      self.assertEqual(output, expected)
+    manifest_input = self.manifest_tmpl % self.uses_sdk(target='27')
+    expected = self.manifest_tmpl % self.uses_sdk(min='28', target='27')
+    output = self.raise_min_sdk_version_test(manifest_input, '28', True)
+    self.assertEqual(output, expected)
 
   def test_library_no_target_no_min(self):
-      """Tests inserting targetSdkVersion when minSdkVersion does not exist."""
+    """Tests inserting targetSdkVersion when minSdkVersion does not exist."""
 
-      manifest_input = self.manifest_tmpl % ''
-      expected = self.manifest_tmpl % self.uses_sdk(min='28', target='1')
-      output = self.raise_min_sdk_version_test(manifest_input, '28', True)
-      self.assertEqual(output, expected)
+    manifest_input = self.manifest_tmpl % ''
+    expected = self.manifest_tmpl % self.uses_sdk(min='28', target='1')
+    output = self.raise_min_sdk_version_test(manifest_input, '28', True)
+    self.assertEqual(output, expected)
 
   def test_extra(self):
     """Tests that extra attributes and elements are maintained."""
@@ -230,17 +232,17 @@ class AddUsesLibrariesTest(unittest.TestCase):
   def run_test(self, input_manifest, new_uses_libraries):
     doc = minidom.parseString(input_manifest)
     manifest_fixer.add_uses_libraries(doc, new_uses_libraries)
-    output = StringIO.StringIO()
+    output = io.BytesIO()
     manifest_fixer.write_xml(output, doc)
-    return output.getvalue()
+    return output.getvalue().decode('utf-8')
 
-  manifest_tmpl = (
-      '<?xml version="1.0" encoding="utf-8"?>\n'
-      '<manifest xmlns:android="http://schemas.android.com/apk/res/android">\n'
-      '    <application>\n'
-      '%s'
-      '    </application>\n'
-      '</manifest>\n')
+  manifest_tmpl = textwrap.dedent("""\
+      <?xml version="1.0" encoding="utf-8"?>
+      <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+          <application>
+      %s    </application>
+      </manifest>
+      """)
 
   def uses_libraries(self, name_required_pairs):
     ret = ''

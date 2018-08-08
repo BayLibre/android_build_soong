@@ -1,0 +1,5 @@
+[MESSAGES CONTROL]
+disable=design,invalid-name,missing-docstring,no-else-return,no-self-use
+
+[FORMAT]
+indent-string='  '
