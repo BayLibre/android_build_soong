@@ -104,6 +104,30 @@
       "revId": "c8fc757771275e19a567fc0455558f9eba87f9ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf38cd01_f72b6c19",
+        "filename": "tradefed/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-08T21:19:28Z",
+      "side": 1,
+      "message": "The name comes from the java_test module type, which is trying to follow bazel (https://docs.bazel.build/versions/master/be/java.html#java_test)",
+      "parentUuid": "2fdb4dc6_fb062621",
+      "range": {
+        "startLine": 28,
+        "startChar": 26,
+        "endLine": 28,
+        "endChar": 48
+      },
+      "revId": "c8fc757771275e19a567fc0455558f9eba87f9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
