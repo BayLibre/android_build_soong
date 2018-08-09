@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4fecbbb3_91f2ab10",
+        "filename": "cc/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-09T17:33:56Z",
+      "side": 1,
+      "message": "sanitize.go modifies flags.DynamicLinker in c.sanitize.flags(), which is called after linkerFlags()",
+      "revId": "81d894367e32048488df082d36c66be4cc8851d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
