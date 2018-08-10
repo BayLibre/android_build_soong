@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b5ab6de_fd75461e",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-10T03:04:46Z",
+      "side": 1,
+      "message": "I don\u0027t see this set anywhere",
+      "range": {
+        "startLine": 77,
+        "startChar": 85,
+        "endLine": 77,
+        "endChar": 94
+      },
+      "revId": "43dd2688cc72855e80213d26bc7167aff30126b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1edc19d6_c98187a5",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-10T03:04:46Z",
+      "side": 1,
+      "message": "I think eventually we will want to run both dokka and doclava as separate ctx.Build statements, each depending on a metalava ctx.Build.  You should design the properties to allow enabling both doclava and metalava, even if it is not currently supported.",
+      "revId": "43dd2688cc72855e80213d26bc7167aff30126b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bd6582f_dc7cf845",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1576,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-10T03:04:46Z",
+      "side": 1,
+      "message": "This should be a separate patch",
+      "revId": "43dd2688cc72855e80213d26bc7167aff30126b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
