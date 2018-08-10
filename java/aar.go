@@ -57,6 +57,9 @@ type aaptProperties struct {
 
 	// path to AndroidManifest.xml.  If unset, defaults to "AndroidManifest.xml".
 	Manifest *string
+
+	// Whether to merge in the manifests from libraries being included.
+	Merge_manifests bool
 }
 
 type aapt struct {
@@ -168,7 +171,8 @@ func (a *aapt) buildActions(ctx android.ModuleContext, sdkContext sdkContext, ex
 	manifestFile := proptools.StringDefault(a.aaptProperties.Manifest, "AndroidManifest.xml")
 	manifestSrcPath := android.PathForModuleSrc(ctx, manifestFile)
 
-	manifestPath := manifestMerger(ctx, manifestSrcPath, sdkContext, staticLibManifests, a.isLibrary)
+	manifestPath := manifestMerger(ctx, manifestSrcPath, sdkContext, staticLibManifests,
+		a.isLibrary, a.aaptProperties.Merge_manifests)
 
 	linkFlags, linkDeps, resDirs, overlayDirs, rroDirs := a.aapt2Flags(ctx, sdkContext, manifestPath)
 

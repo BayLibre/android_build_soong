@@ -39,7 +39,7 @@ var manifestMergerRule = pctx.AndroidStaticRule("manifestMerger",
 	"libs")
 
 func manifestMerger(ctx android.ModuleContext, manifest android.Path, sdkContext sdkContext,
-	staticLibManifests android.Paths, isLibrary bool) android.Path {
+	staticLibManifests android.Paths, isLibrary bool, useMerging bool) android.Path {
 
 	var args []string
 	if isLibrary {
@@ -62,13 +62,17 @@ func manifestMerger(ctx android.ModuleContext, manifest android.Path, sdkContext
 	// Merge static aar dependency manifests if necessary
 	if len(staticLibManifests) > 0 {
 		mergedManifest := android.PathForModuleOut(ctx, "manifest_merger", "AndroidManifest.xml")
+		args := "--uses-library "
+		if useMerging {
+			args = "--libs "
+		}
 		ctx.Build(pctx, android.BuildParams{
 			Rule:      manifestMergerRule,
 			Input:     manifest,
 			Implicits: staticLibManifests,
 			Output:    mergedManifest,
 			Args: map[string]string{
-				"libs": android.JoinWithPrefix(staticLibManifests.Strings(), "--uses-library "),
+				"libs": android.JoinWithPrefix(staticLibManifests.Strings(), args),
 			},
 		})
 		manifest = mergedManifest
