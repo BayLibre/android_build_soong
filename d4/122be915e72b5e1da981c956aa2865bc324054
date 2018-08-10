@@ -1,0 +1,9 @@
+Autosubmit+1: Jason Monk <jmonk@android.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: Jason Monk <jmonk@android.com>
+Submitted-by: Jason Monk <jmonk@android.com>
+Submitted-at: Fri, 10 Aug 2018 19:11:08 +0000
+Reviewed-on: https://android-review.googlesource.com/729146
+Project: platform/build/soong
+Branch: refs/heads/master
