@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6fe67909_c9d8f566",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-08-10T20:39:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b5ab6de_fd75461e",
+      "range": {
+        "startLine": 77,
+        "startChar": 85,
+        "endLine": 77,
+        "endChar": 94
+      },
+      "revId": "43dd2688cc72855e80213d26bc7167aff30126b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1edc19d6_c98187a5",
         "filename": "java/droiddoc.go",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2018-08-10T03:04:46Z",
       "side": 1,
       "message": "I think eventually we will want to run both dokka and doclava as separate ctx.Build statements, each depending on a metalava ctx.Build.  You should design the properties to allow enabling both doclava and metalava, even if it is not currently supported.",
+      "revId": "43dd2688cc72855e80213d26bc7167aff30126b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09423969_a4217ee8",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-08-10T20:39:04Z",
+      "side": 1,
+      "message": "That seem against current design a little bit. Tor\u0027s design was that Metalava also handles calling the documentation tool(Javadoc/dokka) in a  new process using \"--generate-documentation\" as args separator so that after Metalava generate stubs source for docs, it will tell the documentation tool where the sources it can find.\n\nBasically, we supply \"--generate-documentation arg1 arg2...\" to Metalava, then the next argument is the documentation tool to invoke (e.g. pass in javadoc.path), and all remaining arguments are passed to documentation tool as arguments by Metalava. And then Metalava will call the documentation tool to run.",
+      "parentUuid": "1edc19d6_c98187a5",
       "revId": "43dd2688cc72855e80213d26bc7167aff30126b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -56,6 +98,24 @@
       "revId": "43dd2688cc72855e80213d26bc7167aff30126b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ac74339_9281c2ba",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1576,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-08-10T20:39:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bd6582f_dc7cf845",
+      "revId": "43dd2688cc72855e80213d26bc7167aff30126b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
