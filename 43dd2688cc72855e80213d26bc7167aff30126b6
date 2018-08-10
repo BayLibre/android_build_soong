@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "5e165cb6_737de988",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-08-10T20:49:35Z",
+      "side": 1,
+      "message": "That make sense. I will do the refactoring a separate patch.",
+      "parentUuid": "7c52bc90_f8f7dc86",
+      "revId": "43dd2688cc72855e80213d26bc7167aff30126b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2bd6582f_dc7cf845",
         "filename": "java/java.go",
         "patchSetId": 3
