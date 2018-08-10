@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "7c52bc90_f8f7dc86",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-10T20:41:31Z",
+      "side": 1,
+      "message": "That\u0027s there to be a drop-in replacment for droiddoc, but in the platform build we can do better.  We don\u0027t want to wait for docs generation just to build android_stubs_current, and we don\u0027t want to have to run metalava twice to build android_stubs_current and the docs.",
+      "parentUuid": "09423969_a4217ee8",
+      "revId": "43dd2688cc72855e80213d26bc7167aff30126b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2bd6582f_dc7cf845",
         "filename": "java/java.go",
         "patchSetId": 3
