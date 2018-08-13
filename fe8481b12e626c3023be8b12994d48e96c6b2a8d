@@ -1,0 +1,439 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "afa56672_1ae3f6ba",
+        "filename": "java/jdeps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-13T20:44:57Z",
+      "side": 1,
+      "message": "Google",
+      "range": {
+        "startLine": 1,
+        "startChar": 18,
+        "endLine": 1,
+        "endChar": 25
+      },
+      "revId": "fe8481b12e626c3023be8b12994d48e96c6b2a8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d3508df_3667e742",
+        "filename": "java/jdeps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-13T20:44:57Z",
+      "side": 1,
+      "message": "Wrap at 100 columns.  Go doesn\u0027t have strict line length limits when it hurts readability, but there is no reason for comment text to go past 100 columns.",
+      "revId": "fe8481b12e626c3023be8b12994d48e96c6b2a8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fde36b75_48be5e39",
+        "filename": "java/jdeps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-13T20:44:57Z",
+      "side": 1,
+      "message": "This path varies by TARGET_PRODUCT, use $OUT/module_bp_java_depend.json",
+      "range": {
+        "startLine": 29,
+        "startChar": 90,
+        "endLine": 29,
+        "endChar": 151
+      },
+      "revId": "fe8481b12e626c3023be8b12994d48e96c6b2a8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d4a57d3_5680fff9",
+        "filename": "java/jdeps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-13T20:44:57Z",
+      "side": 1,
+      "message": "We assume linux or mac, so you can use \"/\".",
+      "range": {
+        "startLine": 44,
+        "startChar": 29,
+        "endLine": 44,
+        "endChar": 53
+      },
+      "revId": "fe8481b12e626c3023be8b12994d48e96c6b2a8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acf845e1_87d6597f",
+        "filename": "java/jdeps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-13T20:44:57Z",
+      "side": 1,
+      "message": "You\u0027ll need to use something in android/paths.go to create an OutputPath object, see PathForModuleInstall for example.  This will create something in out/soong/target/product/..., if you need it in $OUT you can add a rule in Make somewhere to copy it.",
+      "revId": "fe8481b12e626c3023be8b12994d48e96c6b2a8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e10224b6_ba2ed74e",
+        "filename": "java/jdeps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-13T20:44:57Z",
+      "side": 1,
+      "message": "This varies with $TARGET_PRODUCT, you can\u0027t hardcode it.",
+      "range": {
+        "startLine": 44,
+        "startChar": 133,
+        "endLine": 44,
+        "endChar": 149
+      },
+      "revId": "fe8481b12e626c3023be8b12994d48e96c6b2a8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "128cacad_fa6dadef",
+        "filename": "java/jdeps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-13T20:44:57Z",
+      "side": 1,
+      "message": "This varies with $OUT_DIR, you can\u0027t  hardcode it.",
+      "range": {
+        "startLine": 44,
+        "startChar": 21,
+        "endLine": 44,
+        "endChar": 26
+      },
+      "revId": "fe8481b12e626c3023be8b12994d48e96c6b2a8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac2fe5e0_c11f4b77",
+        "filename": "java/jdeps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-13T20:44:57Z",
+      "side": 1,
+      "message": "This doesn\u0027t have anything to do with blueprint",
+      "range": {
+        "startLine": 51,
+        "startChar": 5,
+        "endLine": 51,
+        "endChar": 14
+      },
+      "revId": "fe8481b12e626c3023be8b12994d48e96c6b2a8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c25997e_9433937b",
+        "filename": "java/jdeps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-13T20:44:57Z",
+      "side": 1,
+      "message": "if ctx.Config().IsEnvTrue(envVariableCollectJavaDeps)\n\nHow long does this take?  Can it be always enabled instead of depending on an environment variable?",
+      "revId": "fe8481b12e626c3023be8b12994d48e96c6b2a8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cf2e77e_d3bab653",
+        "filename": "java/jdeps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-13T20:44:57Z",
+      "side": 1,
+      "message": "This doesn\u0027t need to be a helper function",
+      "revId": "fe8481b12e626c3023be8b12994d48e96c6b2a8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f7892e7_0b79b9e4",
+        "filename": "java/jdeps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-13T20:44:57Z",
+      "side": 1,
+      "message": "This is equivalent to bpinfo :\u003d moduleInfos[name], a map gives the zero value for non-existent keys.",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 1
+      },
+      "revId": "fe8481b12e626c3023be8b12994d48e96c6b2a8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "619e6d25_689a727c",
+        "filename": "java/jdeps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-13T20:44:57Z",
+      "side": 1,
+      "message": "I think this would be better as an interface on the modules themselves, something like\n\ntype IDEInfo interface {\n    IDEInfo(bpInfo *BlueprintInfo)\n}\n\nThen the specific information that each module type needs to fill out can be added in that module\u0027s implementation.",
+      "revId": "fe8481b12e626c3023be8b12994d48e96c6b2a8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02d579c8_988a9df2",
+        "filename": "java/jdeps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-13T20:44:57Z",
+      "side": 1,
+      "message": "You don\u0027t need this",
+      "range": {
+        "startLine": 116,
+        "startChar": 23,
+        "endLine": 116,
+        "endChar": 30
+      },
+      "revId": "fe8481b12e626c3023be8b12994d48e96c6b2a8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b29b632_57c934d6",
+        "filename": "java/jdeps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-13T20:44:57Z",
+      "side": 1,
+      "message": "Why not len(list) \u003e 0?",
+      "range": {
+        "startLine": 116,
+        "startChar": 4,
+        "endLine": 116,
+        "endChar": 16
+      },
+      "revId": "fe8481b12e626c3023be8b12994d48e96c6b2a8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e07fb88_a2a8268d",
+        "filename": "java/jdeps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-13T20:44:57Z",
+      "side": 1,
+      "message": "VisitAllModules cllas the visit method sequentially on each variant of each module.  There is no multi threading here.  You may be seeing multiple modules with the same name if there are multiple variants of a module, for example and host and device version.",
+      "revId": "fe8481b12e626c3023be8b12994d48e96c6b2a8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b539156_05490a3f",
+        "filename": "java/jdeps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-13T20:44:57Z",
+      "side": 1,
+      "message": "use android.InList",
+      "range": {
+        "startLine": 125,
+        "startChar": 6,
+        "endLine": 125,
+        "endChar": 14
+      },
+      "revId": "fe8481b12e626c3023be8b12994d48e96c6b2a8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a83dc7a6_7a92e94c",
+        "filename": "java/jdeps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-13T20:44:57Z",
+      "side": 1,
+      "message": "what is the point of this?  collected will be overwritten by whatever call to addProperties ran last.",
+      "range": {
+        "startLine": 166,
+        "startChar": 8,
+        "endLine": 166,
+        "endChar": 17
+      },
+      "revId": "fe8481b12e626c3023be8b12994d48e96c6b2a8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b50951c_654f93ec",
+        "filename": "java/jdeps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-13T20:44:57Z",
+      "side": 1,
+      "message": "How do you end up with an empty blueprintinfo?  Can you just avoid creating it in the first place?",
+      "revId": "fe8481b12e626c3023be8b12994d48e96c6b2a8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d54621fc_58b8b46c",
+        "filename": "java/jdeps_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-13T20:44:57Z",
+      "side": 1,
+      "message": "2018",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "fe8481b12e626c3023be8b12994d48e96c6b2a8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24519f42_077ce02a",
+        "filename": "java/jdeps_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-13T20:44:57Z",
+      "side": 1,
+      "message": "Go style prefers to just put these in the tests instead of a helper function.  See http://go/gocomments#TOC-Assert.  Also see go/go-test-comments for more test style guide (not all of it applies outside google3).\n\nIf you were to have a function like this it should start with t.Helper() so that the Fatalf is reported at the line that called this function.",
+      "revId": "fe8481b12e626c3023be8b12994d48e96c6b2a8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eaefb48f_d7ed14b4",
+        "filename": "java/jdeps_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-13T20:44:57Z",
+      "side": 1,
+      "message": "label",
+      "range": {
+        "startLine": 189,
+        "startChar": 1,
+        "endLine": 189,
+        "endChar": 6
+      },
+      "revId": "fe8481b12e626c3023be8b12994d48e96c6b2a8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
