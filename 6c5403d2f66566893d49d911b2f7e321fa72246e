@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38ea33ae_403b0994",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-13T23:18:04Z",
+      "side": 1,
+      "message": "Can you add linkerProps too, or are there necessary properties in there?",
+      "revId": "6c5403d2f66566893d49d911b2f7e321fa72246e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
