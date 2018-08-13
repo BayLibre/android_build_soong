@@ -51,6 +51,16 @@ type prebuiltLibraryLinker struct {
 
 var _ prebuiltLinkerInterface = (*prebuiltLibraryLinker)(nil)
 
+func (p *prebuiltLibraryLinker) linkerInit(ctx BaseModuleContext) {}
+
+func (p *prebuiltLibraryLinker) linkerDeps(ctx DepsContext, deps Deps) Deps {
+	return Deps{}
+}
+
+func (p *prebuiltLibraryLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
+	return Flags{}
+}
+
 func (p *prebuiltLibraryLinker) link(ctx ModuleContext,
 	flags Flags, deps PathDeps, objs Objects) android.Path {
 	// TODO(ccross): verify shared library dependencies
