@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "935004a2_0091701d",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1360,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-08-13T20:23:17Z",
+      "side": 1,
+      "message": "probably we need remove above `android:\"arch_variant\"`",
+      "revId": "a8b265e74bb82964aa93c4df05fab05907fab6ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
