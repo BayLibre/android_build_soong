@@ -51,6 +51,26 @@ type prebuiltLibraryLinker struct {
 
 var _ prebuiltLinkerInterface = (*prebuiltLibraryLinker)(nil)
 
+func (p *prebuiltLibraryLinker) linkerInit(ctx BaseModuleContext) {}
+
+func (p *prebuiltLibraryLinker) linkerDeps(ctx DepsContext, deps Deps) Deps {
+	allDeps := p.libraryDecorator.linkerDeps(ctx, deps)
+
+	// export_header_lib_headers needs to be passed along
+	return Deps{
+		HeaderLibs:               allDeps.HeaderLibs,
+		ReexportHeaderLibHeaders: allDeps.ReexportHeaderLibHeaders,
+	}
+}
+
+func (p *prebuiltLibraryLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
+	return Flags{}
+}
+
+func (p *prebuiltLibraryLinker) linkerProps() []interface{} {
+	return p.libraryDecorator.linkerProps()
+}
+
 func (p *prebuiltLibraryLinker) link(ctx ModuleContext,
 	flags Flags, deps PathDeps, objs Objects) android.Path {
 	// TODO(ccross): verify shared library dependencies
