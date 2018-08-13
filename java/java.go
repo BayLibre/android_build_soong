@@ -29,6 +29,7 @@ import (
 
 	"android/soong/android"
 	"android/soong/java/config"
+	"android/soong/tradefed"
 )
 
 func init() {
@@ -574,7 +575,7 @@ func (j *Module) deps(ctx android.BottomUpMutatorContext) {
 	ctx.AddDependency(ctx.Module(), libTag, j.properties.Libs...)
 	ctx.AddDependency(ctx.Module(), staticLibTag, j.properties.Static_libs...)
 	ctx.AddFarVariationDependencies([]blueprint.Variation{
-		{"arch", ctx.Config().BuildOsCommonVariant},
+		{Mutator: "arch", Variation: ctx.Config().BuildOsCommonVariant},
 	}, annoTag, j.properties.Annotation_processors...)
 	android.ExtractSourcesDeps(ctx, j.properties.Srcs)
 	android.ExtractSourcesDeps(ctx, j.properties.Exclude_srcs)
@@ -631,7 +632,8 @@ func (j *Module) aidlFlags(ctx android.ModuleContext, aidlPreprocess android.Opt
 	aidlIncludes = append(aidlIncludes,
 		android.PathsForSource(ctx, j.deviceProperties.Aidl.Include_dirs)...)
 
-	var flags []string
+	flags := []string{"-b"}
+
 	if aidlPreprocess.Valid() {
 		flags = append(flags, "-p"+aidlPreprocess.String())
 	} else {
@@ -693,7 +695,8 @@ func getLinkType(m *Module, name string) linkType {
 	ver := m.sdkVersion()
 	noStdLibs := Bool(m.properties.No_standard_libs)
 	switch {
-	case name == "core.current.stubs" || ver == "core_current" || noStdLibs || name == "stub-annotations":
+	case name == "core.current.stubs" || ver == "core_current" || noStdLibs || name == "stub-annotations" ||
+		name == "private-stub-annotations-jar":
 		return javaCore
 	case name == "android_system_stubs_current" || strings.HasPrefix(ver, "system_") || name == "metalava_android_system_stubs_current":
 		return javaSystem
@@ -1350,12 +1353,30 @@ type testProperties struct {
 	// list of compatibility suites (for example "cts", "vts") that the module should be
 	// installed into.
 	Test_suites []string `android:"arch_variant"`
+
+	// the name of the test configuration (for example "AndroidTest.xml") that should be
+	// installed with the module.
+	Test_config *string `android:"arch_variant"`
+
+	// list of files or filegroup modules that provide data that should be installed alongside
+	// the test
+	Data []string
 }
 
 type Test struct {
 	Library
 
 	testProperties testProperties
+
+	testConfig android.Path
+	data       android.Paths
+}
+
+func (j *Test) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	j.testConfig = tradefed.AutoGenJavaTestConfig(ctx, j.testProperties.Test_config)
+	j.data = ctx.ExpandSources(j.testProperties.Data, nil)
+
+	j.Library.GenerateAndroidBuildActions(ctx)
 }
 
 func (j *Test) DepsMutator(ctx android.BottomUpMutatorContext) {
@@ -1363,6 +1384,8 @@ func (j *Test) DepsMutator(ctx android.BottomUpMutatorContext) {
 	if BoolDefault(j.testProperties.Junit, true) {
 		ctx.AddDependency(ctx.Module(), staticLibTag, "junit")
 	}
+	android.ExtractSourceDeps(ctx, j.testProperties.Test_config)
+	android.ExtractSourcesDeps(ctx, j.testProperties.Data)
 }
 
 func TestFactory() android.Module {
@@ -1567,6 +1590,10 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	})
 
 	j.exportedSdkLibs = android.FirstUniqueStrings(j.exportedSdkLibs)
+	if Bool(j.properties.Installable) {
+		ctx.InstallFile(android.PathForModuleInstall(ctx, "framework"),
+			ctx.ModuleName()+".jar", outputFile)
+	}
 }
 
 var _ Dependency = (*Import)(nil)

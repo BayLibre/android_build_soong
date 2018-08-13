@@ -159,8 +159,11 @@ type ObjectLinkerProperties struct {
 
 // Properties used to compile all C or C++ modules
 type BaseProperties struct {
-	// compile module with clang instead of gcc
+	// Deprecated. true is the default, false is invalid.
 	Clang *bool `android:"arch_variant"`
+
+	// Some internals still need GCC (toolchain_library)
+	Gcc bool `blueprint:"mutated"`
 
 	// Minimum sdk version supported when compiling against the ndk
 	Sdk_version *string
@@ -991,33 +994,41 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 		actx.AddVariationDependencies(nil, depTag, lib)
 	}
 
-	actx.AddVariationDependencies([]blueprint.Variation{{"link", "static"}}, wholeStaticDepTag,
-		deps.WholeStaticLibs...)
+	actx.AddVariationDependencies([]blueprint.Variation{
+		{Mutator: "link", Variation: "static"},
+	}, wholeStaticDepTag, deps.WholeStaticLibs...)
 
 	for _, lib := range deps.StaticLibs {
 		depTag := staticDepTag
 		if inList(lib, deps.ReexportStaticLibHeaders) {
 			depTag = staticExportDepTag
 		}
-		actx.AddVariationDependencies([]blueprint.Variation{{"link", "static"}}, depTag, lib)
+		actx.AddVariationDependencies([]blueprint.Variation{
+			{Mutator: "link", Variation: "static"},
+		}, depTag, lib)
 	}
 
-	actx.AddVariationDependencies([]blueprint.Variation{{"link", "static"}}, lateStaticDepTag,
-		deps.LateStaticLibs...)
+	actx.AddVariationDependencies([]blueprint.Variation{
+		{Mutator: "link", Variation: "static"},
+	}, lateStaticDepTag, deps.LateStaticLibs...)
 
 	for _, lib := range deps.SharedLibs {
 		depTag := sharedDepTag
 		if inList(lib, deps.ReexportSharedLibHeaders) {
 			depTag = sharedExportDepTag
 		}
-		actx.AddVariationDependencies([]blueprint.Variation{{"link", "shared"}}, depTag, lib)
+		actx.AddVariationDependencies([]blueprint.Variation{
+			{Mutator: "link", Variation: "shared"},
+		}, depTag, lib)
 	}
 
-	actx.AddVariationDependencies([]blueprint.Variation{{"link", "shared"}}, lateSharedDepTag,
-		deps.LateSharedLibs...)
+	actx.AddVariationDependencies([]blueprint.Variation{
+		{Mutator: "link", Variation: "shared"},
+	}, lateSharedDepTag, deps.LateSharedLibs...)
 
-	actx.AddVariationDependencies([]blueprint.Variation{{"link", "shared"}}, runtimeDepTag,
-		deps.RuntimeLibs...)
+	actx.AddVariationDependencies([]blueprint.Variation{
+		{Mutator: "link", Variation: "shared"},
+	}, runtimeDepTag, deps.RuntimeLibs...)
 
 	actx.AddDependency(c, genSourceDepTag, deps.GeneratedSources...)
 
@@ -1043,9 +1054,13 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 
 	version := ctx.sdkVersion()
 	actx.AddVariationDependencies([]blueprint.Variation{
-		{"ndk_api", version}, {"link", "shared"}}, ndkStubDepTag, variantNdkLibs...)
+		{Mutator: "ndk_api", Variation: version},
+		{Mutator: "link", Variation: "shared"},
+	}, ndkStubDepTag, variantNdkLibs...)
 	actx.AddVariationDependencies([]blueprint.Variation{
-		{"ndk_api", version}, {"link", "shared"}}, ndkLateStubDepTag, variantLateNdkLibs...)
+		{Mutator: "ndk_api", Variation: version},
+		{Mutator: "link", Variation: "shared"},
+	}, ndkLateStubDepTag, variantLateNdkLibs...)
 
 	if vndkdep := c.vndkdep; vndkdep != nil {
 		if vndkdep.isVndkExt() {
@@ -1054,8 +1069,9 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 				baseModuleMode = coreMode
 			}
 			actx.AddVariationDependencies([]blueprint.Variation{
-				{"image", baseModuleMode}, {"link", "shared"}}, vndkExtDepTag,
-				vndkdep.getVndkExtendsModuleName())
+				{Mutator: "image", Variation: baseModuleMode},
+				{Mutator: "link", Variation: "shared"},
+			}, vndkExtDepTag, vndkdep.getVndkExtendsModuleName())
 		}
 	}
 }
@@ -1067,17 +1083,15 @@ func beginMutator(ctx android.BottomUpMutatorContext) {
 }
 
 func (c *Module) clang(ctx BaseModuleContext) bool {
-	clang := Bool(c.Properties.Clang)
-
-	if c.Properties.Clang == nil {
-		clang = true
+	if c.Properties.Clang != nil && *c.Properties.Clang == false {
+		ctx.PropertyErrorf("clang", "false (GCC) is no longer supported")
 	}
 
 	if !c.toolchain(ctx).ClangSupported() {
-		clang = false
+		panic("GCC is no longer supported")
 	}
 
-	return clang
+	return !c.Properties.Gcc
 }
 
 // Whether a module can link to another module, taking into

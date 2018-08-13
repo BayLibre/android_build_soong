@@ -106,8 +106,15 @@ func (j *Test) AndroidMk() android.AndroidMkData {
 		if len(j.testProperties.Test_suites) > 0 {
 			fmt.Fprintln(w, "LOCAL_COMPATIBILITY_SUITE :=",
 				strings.Join(j.testProperties.Test_suites, " "))
+		} else {
+			fmt.Fprintln(w, "LOCAL_COMPATIBILITY_SUITE := null-suite")
+		}
+		if j.testConfig != nil {
+			fmt.Fprintln(w, "LOCAL_FULL_TEST_CONFIG :=", j.testConfig.String())
 		}
 	})
+
+	androidMkWriteTestData(j.data, &data)
 
 	return data
 }
@@ -228,6 +235,9 @@ func (app *AndroidApp) AndroidMk() android.AndroidMkData {
 				}
 
 				fmt.Fprintln(w, "LOCAL_CERTIFICATE :=", app.certificate.pem.String())
+				if len(app.appProperties.Overrides) > 0 {
+					fmt.Fprintln(w, "LOCAL_OVERRIDES_PACKAGES := "+strings.Join(app.appProperties.Overrides, " "))
+				}
 			},
 		},
 	}
@@ -240,8 +250,14 @@ func (a *AndroidTest) AndroidMk() android.AndroidMkData {
 		if len(a.testProperties.Test_suites) > 0 {
 			fmt.Fprintln(w, "LOCAL_COMPATIBILITY_SUITE :=",
 				strings.Join(a.testProperties.Test_suites, " "))
+		} else {
+			fmt.Fprintln(w, "LOCAL_COMPATIBILITY_SUITE := null-suite")
+		}
+		if a.testConfig != nil {
+			fmt.Fprintln(w, "LOCAL_FULL_TEST_CONFIG :=", a.testConfig.String())
 		}
 	})
+	androidMkWriteTestData(a.data, &data)
 
 	return data
 }
@@ -277,7 +293,7 @@ func (jd *Javadoc) AndroidMk() android.AndroidMkData {
 	return android.AndroidMkData{
 		Class:      "JAVA_LIBRARIES",
 		OutputFile: android.OptionalPathForPath(jd.stubsSrcJar),
-		Include:    "$(BUILD_SYSTEM)/soong_java_prebuilt.mk",
+		Include:    "$(BUILD_SYSTEM)/soong_droiddoc_prebuilt.mk",
 		Extra: []android.AndroidMkExtraFunc{
 			func(w io.Writer, outputFile android.Path) {
 				if BoolDefault(jd.properties.Installable, true) {
@@ -295,7 +311,7 @@ func (ddoc *Droiddoc) AndroidMk() android.AndroidMkData {
 	return android.AndroidMkData{
 		Class:      "JAVA_LIBRARIES",
 		OutputFile: android.OptionalPathForPath(ddoc.stubsSrcJar),
-		Include:    "$(BUILD_SYSTEM)/soong_java_prebuilt.mk",
+		Include:    "$(BUILD_SYSTEM)/soong_droiddoc_prebuilt.mk",
 		Extra: []android.AndroidMkExtraFunc{
 			func(w io.Writer, outputFile android.Path) {
 				if BoolDefault(ddoc.Javadoc.properties.Installable, true) {
@@ -303,6 +319,9 @@ func (ddoc *Droiddoc) AndroidMk() android.AndroidMkData {
 				}
 				if ddoc.Javadoc.stubsSrcJar != nil {
 					fmt.Fprintln(w, "LOCAL_DROIDDOC_STUBS_SRCJAR := ", ddoc.Javadoc.stubsSrcJar.String())
+				}
+				if ddoc.annotationsZip != nil {
+					fmt.Fprintln(w, "LOCAL_DROIDDOC_ANNOTATIONS_ZIP := ", ddoc.annotationsZip.String())
 				}
 				if ddoc.checkCurrentApiTimestamp != nil {
 					fmt.Fprintln(w, ".PHONY:", ddoc.Name()+"-check-current-api")
@@ -317,7 +336,7 @@ func (ddoc *Droiddoc) AndroidMk() android.AndroidMkData {
 					fmt.Fprintln(w, "droidcore: checkapi")
 				}
 				if ddoc.updateCurrentApiTimestamp != nil {
-					fmt.Fprintln(w, ".PHONY:", ddoc.Name(), "-update-current-api")
+					fmt.Fprintln(w, ".PHONY:", ddoc.Name()+"-update-current-api")
 					fmt.Fprintln(w, ddoc.Name()+"-update-current-api:",
 						ddoc.updateCurrentApiTimestamp.String())
 
@@ -357,5 +376,17 @@ func (ddoc *Droiddoc) AndroidMk() android.AndroidMkData {
 				}
 			},
 		},
+	}
+}
+
+func androidMkWriteTestData(data android.Paths, ret *android.AndroidMkData) {
+	var testFiles []string
+	for _, d := range data {
+		testFiles = append(testFiles, d.String()+":"+d.Rel())
+	}
+	if len(testFiles) > 0 {
+		ret.Extra = append(ret.Extra, func(w io.Writer, outputFile android.Path) {
+			fmt.Fprintln(w, "LOCAL_COMPATIBILITY_SUPPORT_FILES := "+strings.Join(testFiles, " "))
+		})
 	}
 }
