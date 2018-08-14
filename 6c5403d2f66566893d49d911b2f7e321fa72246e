@@ -16,6 +16,24 @@
       "revId": "6c5403d2f66566893d49d911b2f7e321fa72246e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50190ee2_a60c9688",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2018-08-14T07:51:02Z",
+      "side": 1,
+      "message": "Yes, there are several properties that can\u0027t be removed.",
+      "parentUuid": "38ea33ae_403b0994",
+      "revId": "6c5403d2f66566893d49d911b2f7e321fa72246e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
