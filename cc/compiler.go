@@ -529,9 +529,9 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 		} else if !inList("-Werror", flags.CFlags) && !inList("-Werror", flags.CppFlags) {
 			if warningsAreAllowed(ctx.ModuleDir()) {
 				addToModuleList(ctx, modulesAddedWall, module)
-				flags.CFlags = append([]string{"-Wall"}, flags.CFlags...)
+				flags.CFlags = append([]string{"-Wall", "-Wimplicit-fallthrough"}, flags.CFlags...)
 			} else {
-				flags.CFlags = append([]string{"-Wall", "-Werror"}, flags.CFlags...)
+				flags.CFlags = append([]string{"-Wall", "-Wimplicit-fallthrough", "-Werror"}, flags.CFlags...)
 			}
 		}
 	}
