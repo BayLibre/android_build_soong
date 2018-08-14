@@ -1,4 +1,4 @@
-// Copyright 2014 Google Inc. All rights reserved.
+// Copyright 2018 Google Inc. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -22,18 +22,21 @@ import (
 )
 
 func assertEqual(t *testing.T, a interface{}, b interface{}) {
+	t.Helper()
 	if a != b {
 		t.Fatalf("%s != %s", a, b)
 	}
 }
 
 func assertEqualSlices(t *testing.T, a interface{}, b interface{}) {
+	t.Helper()
 	if reflect.DeepEqual(a, b) == false {
 		t.Fatalf("%s != %s", a, b)
 	}
 }
 
 func assertPanic(t *testing.T, f func()) {
+	t.Helper()
 	defer func() {
 		if r := recover(); r == nil {
 			t.Errorf("The code did not panic")
@@ -46,113 +49,113 @@ func TestCollectJavaLibraryPropertiesAddLibsDeps(t *testing.T) {
 	expected := []string{"Foo", "Bar"}
 	module := LibraryFactory().(*Library)
 	module.properties.Libs = append(module.properties.Libs, expected...)
-	bpInfo := &blueprintInfo{}
+	dpInfo := &depsInfo{}
 
-	bpInfo.collectJavaLibrayModuleInfo(module)
+	dpInfo.collectJavaLibrayModuleInfo(module)
 
-	assertEqualSlices(t, bpInfo.deps, expected)
+	assertEqualSlices(t, dpInfo.deps, expected)
 }
 
 func TestCollectJavaLibraryPropertiesAddStaticLibsDeps(t *testing.T) {
 	expected := []string{"Foo", "Bar"}
 	module := LibraryFactory().(*Library)
 	module.properties.Static_libs = append(module.properties.Static_libs, expected...)
-	bpInfo := &blueprintInfo{}
+	dpInfo := &depsInfo{}
 
-	bpInfo.collectJavaLibrayModuleInfo(module)
+	dpInfo.collectJavaLibrayModuleInfo(module)
 
-	assertEqualSlices(t, bpInfo.deps, expected)
+	assertEqualSlices(t, dpInfo.deps, expected)
 }
 
 func TestCollectJavaLibraryPropertiesAddScrs(t *testing.T) {
 	expected := []string{"Foo", "Bar"}
 	module := LibraryFactory().(*Library)
 	module.properties.Srcs = append(module.properties.Srcs, expected...)
-	bpInfo := &blueprintInfo{}
+	dpInfo := &depsInfo{}
 
-	bpInfo.collectJavaLibrayModuleInfo(module)
+	dpInfo.collectJavaLibrayModuleInfo(module)
 
-	assertEqualSlices(t, bpInfo.srcs, expected)
+	assertEqualSlices(t, dpInfo.srcs, expected)
 }
 
 func TestCollectJavaLibraryPropertiesAddAidlIncludeDirs(t *testing.T) {
 	expected := []string{"Foo", "Bar"}
 	module := LibraryFactory().(*Library)
 	module.deviceProperties.Aidl.Include_dirs = append(module.deviceProperties.Aidl.Include_dirs, expected...)
-	bpInfo := &blueprintInfo{}
+	dpInfo := &depsInfo{}
 
-	bpInfo.collectJavaLibrayModuleInfo(module)
+	dpInfo.collectJavaLibrayModuleInfo(module)
 
-	assertEqualSlices(t, bpInfo.aidl_include_dirs, expected)
+	assertEqualSlices(t, dpInfo.aidl_include_dirs, expected)
 }
 
 func TestCollectJavaLibraryPropertiesAddAidlLocalIncludeDirs(t *testing.T) {
 	expected := []string{"Foo", "Bar"}
 	module := LibraryFactory().(*Library)
 	module.deviceProperties.Aidl.Local_include_dirs = append(module.deviceProperties.Aidl.Local_include_dirs, expected...)
-	bpInfo := &blueprintInfo{}
+	dpInfo := &depsInfo{}
 
-	bpInfo.collectJavaLibrayModuleInfo(module)
+	dpInfo.collectJavaLibrayModuleInfo(module)
 
-	assertEqualSlices(t, bpInfo.aidl_local_include_dirs, expected)
+	assertEqualSlices(t, dpInfo.aidl_local_include_dirs, expected)
 }
 
 func TestCollectJavaLibraryPropertiesAddAidlExportIncludeDirs(t *testing.T) {
 	expected := []string{"Foo", "Bar"}
 	module := LibraryFactory().(*Library)
 	module.deviceProperties.Aidl.Export_include_dirs = append(module.deviceProperties.Aidl.Export_include_dirs, expected...)
-	bpInfo := &blueprintInfo{}
+	dpInfo := &depsInfo{}
 
-	bpInfo.collectJavaLibrayModuleInfo(module)
+	dpInfo.collectJavaLibrayModuleInfo(module)
 
-	assertEqualSlices(t, bpInfo.aidl_export_include_dirs, expected)
+	assertEqualSlices(t, dpInfo.aidl_export_include_dirs, expected)
 }
 
 func TestCollectSpecialGenrulesDependency(t *testing.T) {
 	expected := "services.core.unboosted"
-	bpInfo := &blueprintInfo{}
-	bpInfo.collectGenrulesSrcsProperties([]string{expected})
-	bpInfo.collectSpecialGenrulesDependency()
+	dpInfo := &depsInfo{}
+	dpInfo.collectGenrulesSrcsProperties([]string{expected})
+	dpInfo.collectSpecialGenrulesDependency()
 
-	assertEqual(t, bpInfo.deps[0], expected)
+	assertEqual(t, dpInfo.deps[0], expected)
 }
 
 func TestCollectJavaLibraryPropertiesAddJarjarRules(t *testing.T) {
 	expected := "Jarjar_rules.txt"
 	module := LibraryFactory().(*Library)
 	module.properties.Jarjar_rules = &expected
-	bpInfo := &blueprintInfo{}
+	dpInfo := &depsInfo{}
 
-	bpInfo.collectJavaLibrayModuleInfo(module)
+	dpInfo.collectJavaLibrayModuleInfo(module)
 
-	assertEqual(t, bpInfo.jarjar_rules[0], expected)
+	assertEqual(t, dpInfo.jarjar_rules[0], expected)
 }
 
 func TestCollectPrebuiltJarsPropertiesAddJars(t *testing.T) {
 	expected := []string{"Foo.jar", "Bar.jar"}
-	bpInfo := &blueprintInfo{}
+	dpInfo := &depsInfo{}
 
-	bpInfo.collectPrebuiltJarsProperties(expected)
+	dpInfo.collectPrebuiltJarsProperties(expected)
 
-	assertEqualSlices(t, bpInfo.jars, expected)
+	assertEqualSlices(t, dpInfo.jars, expected)
 }
 
 func TestCollectGenrulesSrcsPropertiesAddSrcs(t *testing.T) {
 	expected := []string{"Foo", "Bar"}
-	bpInfo := &blueprintInfo{}
+	dpInfo := &depsInfo{}
 
-	bpInfo.collectGenrulesSrcsProperties(expected)
+	dpInfo.collectGenrulesSrcsProperties(expected)
 
-	assertEqualSlices(t, bpInfo.srcs, expected)
+	assertEqualSlices(t, dpInfo.srcs, expected)
 }
 
 func TestCollectFilegroupSrcsPropertiesAddSrcs(t *testing.T) {
 	expected := "Foo"
-	bpInfo := &blueprintInfo{}
+	dpInfo := &depsInfo{}
 
-	bpInfo.collectFilegroupSrcsProperties(expected)
+	dpInfo.collectFilegroupSrcsProperties(expected)
 
-	assertEqualSlices(t, bpInfo.srcs, []string{expected})
+	assertEqualSlices(t, dpInfo.srcs, []string{expected})
 }
 
 func TestWriteJsonHead(t *testing.T) {
@@ -186,12 +189,12 @@ func TestWriteJsonModuleContentIsHead(t *testing.T) {
 }
 
 func TestWriteJsonModuleContentNotHead(t *testing.T) {
-	lebal := "Srcs"
+	item := "Srcs"
 	list := []string{"Foo", "Bar"}
-	expected := fmt.Sprintf(", \"%s\": [\"%s\", \"%s\"]", lebal, list[0], list[1])
+	expected := fmt.Sprintf(", \"%s\": [\"%s\", \"%s\"]", item, list[0], list[1])
 	var buf bytes.Buffer
 
-	writeJsonModuleContent(&buf, lebal, list, false)
+	writeJsonModuleContent(&buf, item, list, false)
 
 	assertEqual(t, buf.String(), expected)
 }

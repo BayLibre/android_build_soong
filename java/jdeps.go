@@ -1,4 +1,4 @@
-// Copyright 2018 Go ogle Inc. All rights reserved.
+// Copyright 2018 Google Inc. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -25,8 +25,9 @@ import (
 	"android/soong/genrule"
 )
 
-// This singleton generates android java dependency into to a json file. It does so for each blueprint Android.bp resulting in a java.Module
-// when either make, mm, mma, mmm or mmma is called. Dependency info file is generated in out/target/product/generic_x86_64/module_bp_java_depend.json.
+// This singleton generates android java dependency into to a json file. It does so for each
+// blueprint Android.bp resulting in a java.Module when either make, mm, mma, mmm or mmma is
+// called. Dependency info file is generated in $OUT/module_bp_java_depend.json.
 
 func init() {
 	android.RegisterSingletonType("jdeps_generator", jDepsGeneratorSingleton)
@@ -41,14 +42,13 @@ type jdepsGeneratorSingleton struct {
 
 const (
 	jdepsJsonFilename = "module_bp_java_depend.json"
-	jdepsOutDirectory = "out" + string(os.PathSeparator) + "target" + string(os.PathSeparator) + "product" + string(os.PathSeparator) + "generic_x86_64"
+	jdepsOutDirectory = "out" + "/" + "target/product" + "/" + "generic_x86_64"
 
 	// Environment variables used to modify behavior of this singleton.
 	envVariableCollectJavaDeps = "SOONG_COLLECT_JAVA_DEPS"
-	envVariableTrue            = "1"
 )
 
-type blueprintInfo struct {
+type depsInfo struct {
 	deps                     []string
 	srcs                     []string
 	aidl_include_dirs        []string
@@ -59,53 +59,48 @@ type blueprintInfo struct {
 }
 
 func (j *jdepsGeneratorSingleton) GenerateBuildActions(ctx android.SingletonContext) {
-	if getEnvVariable(envVariableCollectJavaDeps, ctx) != envVariableTrue {
-		fmt.Printf("No need to create file: module_bp_java_depend.json\n")
+	if ctx.Config().IsEnvTrue(envVariableCollectJavaDeps) == false {
 		return
 	}
 
-	moduleInfos := make(map[string]*blueprintInfo)
+	moduleInfos := make(map[string]*depsInfo)
 
 	ctx.VisitAllModules(func(module android.Module) {
 		name := getModuleName(module)
-		bpInfo := getBlueprintInfo(name, moduleInfos)
-		if ok := collectModuleInfo(module, bpInfo); ok {
-			moduleInfos[name] = bpInfo
+		dpInfo := getDepsInfo(name, moduleInfos)
+		if ok := collectModuleInfo(module, dpInfo); ok {
+			moduleInfos[name] = dpInfo
+		} else {
+			delete(moduleInfos, name)
 		}
 	})
 
-	bpInfo := getBlueprintInfo("services.core.priorityboosted", moduleInfos)
-	bpInfo.collectSpecialGenrulesDependency()
+	dpInfo := getDepsInfo("services.core.priorityboosted", moduleInfos)
+	dpInfo.collectSpecialGenrulesDependency()
 
-	jfpath := jdepsOutDirectory + string(os.PathSeparator) + jdepsJsonFilename
+	jfpath := jdepsOutDirectory + "/" + jdepsJsonFilename
 	createJsonFile(moduleInfos, jfpath)
 }
 
-func getEnvVariable(name string, ctx android.SingletonContext) string {
-	// Using android.Config.Getenv instead of os.getEnv to guarantee soong will
-	// re-run in case this environment variable changes.
-	return ctx.Config().Getenv(name)
-}
-
-func getBlueprintInfo(name string, moduleInfos map[string]*blueprintInfo) *blueprintInfo {
+func getDepsInfo(name string, moduleInfos map[string]*depsInfo) *depsInfo {
 	if _, ok := moduleInfos[name]; !ok {
-		return &blueprintInfo{}
+		return &depsInfo{}
 	}
 	return moduleInfos[name]
 }
 
-func collectModuleInfo(module android.Module, bpInfo *blueprintInfo) bool {
+func collectModuleInfo(module android.Module, dpInfo *depsInfo) bool {
 	collected := false
-	if ok := bpInfo.collectJavaLibrayModuleInfo(module); ok {
+	if ok := dpInfo.collectJavaLibrayModuleInfo(module); ok {
 		collected = true
 	}
-	if ok := bpInfo.collectPrebuiltModuleInfo(module); ok {
+	if ok := dpInfo.collectPrebuiltModuleInfo(module); ok {
 		collected = true
 	}
-	if ok := bpInfo.collectGenrulesModuleInfo(module); ok {
+	if ok := dpInfo.collectGenrulesModuleInfo(module); ok {
 		collected = true
 	}
-	if ok := bpInfo.collectFilegroupModuleInfo(module); ok {
+	if ok := dpInfo.collectFilegroupModuleInfo(module); ok {
 		collected = true
 	}
 	return collected
@@ -113,16 +108,12 @@ func collectModuleInfo(module android.Module, bpInfo *blueprintInfo) bool {
 
 func addProperties(list []string, elms []string) (bool, []string) {
 	add := false
-	if isEmptySlice(list) == true {
+	if len(list) == 0 {
 		list = append(list, elms...)
 		add = true
 	} else {
-		// TODO:
-		// We find VisitAllModules will be re-enter multi-times due to
-		// multi-thread. We filter out repeated jar here first until we
-		// find a solution.
 		for _, elm := range elms {
-			if Contains(list, elm) != true {
+			if android.InList(elm, list) != true {
 				list = append(list, elm)
 				add = true
 			}
@@ -131,36 +122,26 @@ func addProperties(list []string, elms []string) (bool, []string) {
 	return add, list
 }
 
-func (bpInfo *blueprintInfo) isEmpty() bool {
-	return isEmptySlice(bpInfo.deps) == true &&
-		isEmptySlice(bpInfo.srcs) == true &&
-		isEmptySlice(bpInfo.aidl_include_dirs) == true &&
-		isEmptySlice(bpInfo.aidl_local_include_dirs) == true &&
-		isEmptySlice(bpInfo.aidl_export_include_dirs) == true &&
-		isEmptySlice(bpInfo.jarjar_rules) == true &&
-		isEmptySlice(bpInfo.jars) == true
-}
-
-func (bpInfo *blueprintInfo) collectJavaLibrayModuleInfo(module android.Module) bool {
+func (dpInfo *depsInfo) collectJavaLibrayModuleInfo(module android.Module) bool {
 	collected := false
 	if lModule, ok := module.(*Library); ok {
 		if deps, ok := lModule.CompilerDeps(); ok {
-			collected, bpInfo.deps = addProperties(bpInfo.deps, deps)
+			collected, dpInfo.deps = addProperties(dpInfo.deps, deps)
 		}
 		if srcs, ok := lModule.CompilerSrcs(); ok {
-			collected, bpInfo.srcs = addProperties(bpInfo.srcs, srcs)
+			collected, dpInfo.srcs = addProperties(dpInfo.srcs, srcs)
 		}
 		if dirs, ok := lModule.DeviceAidlIncludeDirs(); ok {
-			collected, bpInfo.aidl_include_dirs = addProperties(bpInfo.aidl_include_dirs, dirs)
+			collected, dpInfo.aidl_include_dirs = addProperties(dpInfo.aidl_include_dirs, dirs)
 		}
 		if dirs, ok := lModule.DeviceAidlLocalIncludeDirs(); ok {
-			collected, bpInfo.aidl_local_include_dirs = addProperties(bpInfo.aidl_local_include_dirs, dirs)
+			collected, dpInfo.aidl_local_include_dirs = addProperties(dpInfo.aidl_local_include_dirs, dirs)
 		}
 		if dirs, ok := lModule.DeviceAidlExportIncludeDirs(); ok {
-			collected, bpInfo.aidl_export_include_dirs = addProperties(bpInfo.aidl_export_include_dirs, dirs)
+			collected, dpInfo.aidl_export_include_dirs = addProperties(dpInfo.aidl_export_include_dirs, dirs)
 		}
 		if lModule.CompilerJarjarRules() != nil {
-			collected, bpInfo.jarjar_rules = addProperties(bpInfo.jarjar_rules, []string{*lModule.CompilerJarjarRules()})
+			collected, dpInfo.jarjar_rules = addProperties(dpInfo.jarjar_rules, []string{*lModule.CompilerJarjarRules()})
 		}
 	}
 	return collected
@@ -180,12 +161,12 @@ func getModuleName(module android.Module) string {
 	return name
 }
 
-func (bpInfo *blueprintInfo) collectPrebuiltModuleInfo(module android.Module) bool {
+func (dpInfo *depsInfo) collectPrebuiltModuleInfo(module android.Module) bool {
 	collected := false
 	if iModule, ok := module.(*Import); ok {
 		jars := iModule.PrebuiltSrcs()
 		if len(jars) > 0 {
-			if ok := bpInfo.collectPrebuiltJarsProperties(jars); ok {
+			if ok := dpInfo.collectPrebuiltJarsProperties(jars); ok {
 				collected = true
 			}
 		}
@@ -193,18 +174,18 @@ func (bpInfo *blueprintInfo) collectPrebuiltModuleInfo(module android.Module) bo
 	return collected
 }
 
-func (bpInfo *blueprintInfo) collectPrebuiltJarsProperties(jars []string) bool {
+func (dpInfo *depsInfo) collectPrebuiltJarsProperties(jars []string) bool {
 	added := false
-	added, bpInfo.jars = addProperties(bpInfo.jars, jars)
+	added, dpInfo.jars = addProperties(dpInfo.jars, jars)
 	return added
 }
 
-func (bpInfo *blueprintInfo) collectGenrulesModuleInfo(module android.Module) bool {
+func (dpInfo *depsInfo) collectGenrulesModuleInfo(module android.Module) bool {
 	collected := false
 	if gModule, ok := module.(*genrule.Module); ok {
 		srcs := gModule.Srcs().Strings()
 		if len(srcs) > 0 {
-			if ok := bpInfo.collectGenrulesSrcsProperties(srcs); ok {
+			if ok := dpInfo.collectGenrulesSrcsProperties(srcs); ok {
 				collected = true
 			}
 		}
@@ -212,13 +193,13 @@ func (bpInfo *blueprintInfo) collectGenrulesModuleInfo(module android.Module) bo
 	return collected
 }
 
-func (bpInfo *blueprintInfo) collectGenrulesSrcsProperties(srcs []string) bool {
+func (dpInfo *depsInfo) collectGenrulesSrcsProperties(srcs []string) bool {
 	added := false
-	added, bpInfo.srcs = addProperties(bpInfo.srcs, srcs)
+	added, dpInfo.srcs = addProperties(dpInfo.srcs, srcs)
 	return added
 }
 
-func (bpInfo *blueprintInfo) collectFilegroupModuleInfo(module android.Module) bool {
+func (dpInfo *depsInfo) collectFilegroupModuleInfo(module android.Module) bool {
 	collected := false
 	switch fModule := module.(type) {
 	case android.SourceFileProducer:
@@ -228,7 +209,7 @@ func (bpInfo *blueprintInfo) collectFilegroupModuleInfo(module android.Module) b
 				// We have to check if the string contained in Filegroup's Srcs is nil,
 				// otherwise it'll cause crash. We'll remove it if the issue is fixed.
 				if src != nil {
-					if ok := bpInfo.collectFilegroupSrcsProperties(src.String()); ok {
+					if ok := dpInfo.collectFilegroupSrcsProperties(src.String()); ok {
 						collected = true
 					}
 				}
@@ -238,14 +219,14 @@ func (bpInfo *blueprintInfo) collectFilegroupModuleInfo(module android.Module) b
 	return collected
 }
 
-func (bpInfo *blueprintInfo) collectFilegroupSrcsProperties(src string) bool {
+func (dpInfo *depsInfo) collectFilegroupSrcsProperties(src string) bool {
 	add := false
 	srcs := []string{src}
-	add, bpInfo.srcs = addProperties(bpInfo.srcs, srcs)
+	add, dpInfo.srcs = addProperties(dpInfo.srcs, srcs)
 	return add
 }
 
-func (bpInfo *blueprintInfo) collectSpecialGenrulesDependency() bool {
+func (dpInfo *depsInfo) collectSpecialGenrulesDependency() bool {
 	// TODO:
 	// Because in frameworks/base/serviecs/core/Android.bp,
 	// java_genrule {
@@ -256,7 +237,7 @@ func (bpInfo *blueprintInfo) collectSpecialGenrulesDependency() bool {
 	// "srcs" is its dependency, we get it but it's a path to services.core.unboosted.jar.
 	// We hard codes here first until we find a solution.
 	collected := false
-	collected, bpInfo.deps = addProperties(bpInfo.deps, []string{"services.core.unboosted"})
+	collected, dpInfo.deps = addProperties(dpInfo.deps, []string{"services.core.unboosted"})
 	return collected
 }
 
@@ -329,19 +310,12 @@ func writeJsonTail(file io.Writer) {
 	fmt.Fprintf(file, "}")
 }
 
-func isEmptySlice(slice []string) bool {
-	return strings.TrimSpace(strings.Join(slice, "")) == ""
-}
-
-func createJsonFile(moduleInfos map[string]*blueprintInfo, jfpath string) (err error) {
+func createJsonFile(moduleInfos map[string]*depsInfo, jfpath string) (err error) {
 	if file, err := os.Create(jfpath); err == nil {
 		f := bufio.NewWriter(file)
 		writeJsonHead(f)
 		count := 0
 		for name, info := range moduleInfos {
-			if info.isEmpty() == true {
-				continue
-			}
 			writeJsonModuleHead(f, name)
 			isHead := true
 			isHead = writeJsonModuleContent(f, "dependencies", info.deps, isHead)
@@ -361,13 +335,4 @@ func createJsonFile(moduleInfos map[string]*blueprintInfo, jfpath string) (err e
 		fmt.Printf("failed to create file: module_bp_java_depend.json\n")
 		return err
 	}
-}
-
-func Contains(a []string, x string) bool {
-	for _, n := range a {
-		if x == n {
-			return true
-		}
-	}
-	return false
 }
