@@ -16,6 +16,24 @@
       "revId": "81d894367e32048488df082d36c66be4cc8851d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af082902_77b8906b",
+        "filename": "cc/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2018-08-14T17:56:21Z",
+      "side": 1,
+      "message": "Moved DynamicLinker from flags to deps, which I think resolves that issue. Does that sound right?",
+      "parentUuid": "4fecbbb3_91f2ab10",
+      "revId": "81d894367e32048488df082d36c66be4cc8851d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
