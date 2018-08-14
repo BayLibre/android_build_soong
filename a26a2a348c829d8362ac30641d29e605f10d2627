@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8653997a_ffaa84ea",
+        "filename": "cc/binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2018-08-14T23:13:06Z",
+      "side": 1,
+      "message": "... I must have screwed up a squash or something. I definitely built and booted before I uploaded...",
+      "parentUuid": "85f4af0b_ff9e3650",
+      "revId": "a26a2a348c829d8362ac30641d29e605f10d2627",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d3ec6869_2a821eb9",
         "filename": "cc/cc.go",
         "patchSetId": 3
