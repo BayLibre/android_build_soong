@@ -30,6 +30,7 @@ var (
 		"-fmessage-length=0",
 		"-W",
 		"-Wall",
+		"-Wimplicit-fallthrough",
 		"-Wno-unused",
 		"-Winit-self",
 		"-Wpointer-arith",
