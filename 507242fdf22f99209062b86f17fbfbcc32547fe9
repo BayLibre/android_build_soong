@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d248d8b7_85385746",
+        "filename": "java/java.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-08-14T21:00:58Z",
+      "side": 1,
+      "message": "Move down below?",
+      "revId": "507242fdf22f99209062b86f17fbfbcc32547fe9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f953e7b1_39c000b3",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-08-14T21:00:58Z",
+      "side": 1,
+      "message": "Should this not just be an argument into the rule? We\u0027re doing the same sed command for all of them.",
+      "range": {
+        "startLine": 35,
+        "startChar": 44,
+        "endLine": 35,
+        "endChar": 68
+      },
+      "revId": "507242fdf22f99209062b86f17fbfbcc32547fe9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc1078ad_d739912d",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-08-14T21:00:58Z",
+      "side": 1,
+      "message": "Can we make this saner than making cts/* magic? a defaults module in cts that disables autogen?",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 12
+      },
+      "revId": "507242fdf22f99209062b86f17fbfbcc32547fe9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
