@@ -34,6 +34,24 @@
       "revId": "6c5403d2f66566893d49d911b2f7e321fa72246e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47219359_73d680db",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-14T17:12:24Z",
+      "side": 1,
+      "message": "Which properties?  Maybe add a linkerProps function that exports whichever property structures are needed to make it obvious which ones are being used?",
+      "parentUuid": "50190ee2_a60c9688",
+      "revId": "6c5403d2f66566893d49d911b2f7e321fa72246e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
