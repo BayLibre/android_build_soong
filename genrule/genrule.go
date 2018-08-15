@@ -344,6 +344,18 @@ func (g *Module) generateSourceFile(ctx android.ModuleContext, task generateTask
 	g.outputDeps = append(g.outputDeps, task.out[0])
 }
 
+// Collect information for opening IDE project files in java/jdeps.go.
+func (g *Module) IDEInfo(dpInfo *android.IdeInfo) {
+	srcs := g.Srcs().Strings()
+	dpInfo.Srcs = append(dpInfo.Srcs, srcs...)
+	for _, src := range g.properties.Srcs {
+		if strings.HasPrefix(src, ":") {
+			src = strings.Trim(src, ":")
+			dpInfo.Deps = append(dpInfo.Deps, src)
+		}
+	}
+}
+
 func generatorFactory(taskGenerator taskFunc, props ...interface{}) *Module {
 	module := &Module{
 		taskGenerator: taskGenerator,
