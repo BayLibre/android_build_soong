@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2deb34e4_0f944720",
+        "filename": "java/jdeps.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-08-15T14:36:14Z",
+      "side": 1,
+      "message": "Why aren\u0027t you using the json writer in the stdlib (encoding/json)? That\u0027s going to be safer and less error prone.",
+      "range": {
+        "startLine": 272,
+        "startChar": 5,
+        "endLine": 272,
+        "endChar": 19
+      },
+      "revId": "f55dc864073759a75223d75f9980544368453f16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fe5f0fa_356e059a",
+        "filename": "java/jdeps.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-08-15T14:36:14Z",
+      "side": 1,
+      "message": "defer doesn\u0027t make sense immediately before return. It would make more sense immediately after NewWriter. Similarly, you should defer file.Close before NewWriter.",
+      "range": {
+        "startLine": 291,
+        "startChar": 2,
+        "endLine": 291,
+        "endChar": 17
+      },
+      "revId": "f55dc864073759a75223d75f9980544368453f16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc41c348_a0651e0f",
+        "filename": "java/jdeps.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-08-15T14:36:14Z",
+      "side": 1,
+      "message": "Don\u0027t indent the rest, just check err !\u003d nil for this section.",
+      "revId": "f55dc864073759a75223d75f9980544368453f16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
