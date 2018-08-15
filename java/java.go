@@ -1744,3 +1744,52 @@ var Bool = proptools.Bool
 var BoolDefault = proptools.BoolDefault
 var String = proptools.String
 var inList = android.InList
+
+func (j *Module) IDEInfo(dpInfo *android.IdeInfo) {
+	dpInfo.Deps = append(dpInfo.Deps, j.CompilerDeps()...)
+	dpInfo.Srcs = append(dpInfo.Srcs, j.CompilerSrcs()...)
+	dpInfo.Aidl_include_dirs = append(dpInfo.Aidl_include_dirs, j.DeviceAidlIncludeDirs()...)
+	if j.CompilerJarjarRules() != nil {
+		dpInfo.Jarjar_rules = append(dpInfo.Jarjar_rules, *j.CompilerJarjarRules())
+	}
+}
+
+func (j *Module) CompilerDeps() []string {
+	deps := []string{}
+	deps = append(deps, j.properties.Libs...)
+	deps = append(deps, j.properties.Static_libs...)
+	return deps
+}
+
+func (j *Module) CompilerSrcs() []string {
+	return j.properties.Srcs
+}
+
+func (j *Module) CompilerJarjarRules() *string {
+	return j.properties.Jarjar_rules
+}
+
+func (j *Module) DeviceAidlIncludeDirs() []string {
+	return j.deviceProperties.Aidl.Include_dirs
+}
+
+const (
+	removedPrefix = "prebuilt_"
+)
+
+func (j *Import) IDEInfo(dpInfo *android.IdeInfo) {
+	dpInfo.Jars = append(dpInfo.Jars, j.PrebuiltSrcs()...)
+}
+
+func (j *Import) IDECustomizedModuleName() string {
+	// TODO:
+	// Extract the base module name from the Import name.
+	// Often the Import name has a prefix "prebuilt_".
+	// Remove the prefix explicitly if needed
+	// until we find a better solution to get the Import name.
+	name := j.Name()
+	if strings.HasPrefix(name, removedPrefix) {
+		name = strings.Trim(name, removedPrefix)
+	}
+	return name
+}

@@ -92,3 +92,10 @@ func (fg *fileGroup) AndroidMk() AndroidMkData {
 		},
 	}
 }
+
+func (g *fileGroup) IDEInfo(dpInfo *IdeInfo) {
+	srcs := g.Srcs()
+	for _, src := range srcs {
+		dpInfo.Srcs = append(dpInfo.Srcs, src.String())
+	}
+}
