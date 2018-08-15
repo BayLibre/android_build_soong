@@ -457,3 +457,15 @@ type genRuleProperties struct {
 
 var Bool = proptools.Bool
 var String = proptools.String
+
+// Collect infomation for opening IDE project files in java/jdeps.go.
+func (g *Module) IDEInfo(dpInfo *android.IdeInfo) {
+	srcs := g.Srcs().Strings()
+	dpInfo.Srcs = append(dpInfo.Srcs, srcs...)
+	for _, src := range g.properties.Srcs {
+		if strings.HasPrefix(src, ":") {
+			src = strings.Trim(src, ":")
+			dpInfo.Deps = append(dpInfo.Deps, src)
+		}
+	}
+}
