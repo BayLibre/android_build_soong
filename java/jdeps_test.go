@@ -49,9 +49,9 @@ func TestCollectJavaLibraryPropertiesAddLibsDeps(t *testing.T) {
 	expected := []string{"Foo", "Bar"}
 	module := LibraryFactory().(*Library)
 	module.properties.Libs = append(module.properties.Libs, expected...)
-	dpInfo := &depsInfo{}
+	dpInfo := &DepsInfo{}
 
-	dpInfo.collectJavaLibrayModuleInfo(module)
+	dpInfo.collectJavaLibraryModuleInfo(module)
 
 	assertEqualSlices(t, dpInfo.deps, expected)
 }
@@ -60,9 +60,9 @@ func TestCollectJavaLibraryPropertiesAddStaticLibsDeps(t *testing.T) {
 	expected := []string{"Foo", "Bar"}
 	module := LibraryFactory().(*Library)
 	module.properties.Static_libs = append(module.properties.Static_libs, expected...)
-	dpInfo := &depsInfo{}
+	dpInfo := &DepsInfo{}
 
-	dpInfo.collectJavaLibrayModuleInfo(module)
+	dpInfo.collectJavaLibraryModuleInfo(module)
 
 	assertEqualSlices(t, dpInfo.deps, expected)
 }
@@ -71,9 +71,9 @@ func TestCollectJavaLibraryPropertiesAddScrs(t *testing.T) {
 	expected := []string{"Foo", "Bar"}
 	module := LibraryFactory().(*Library)
 	module.properties.Srcs = append(module.properties.Srcs, expected...)
-	dpInfo := &depsInfo{}
+	dpInfo := &DepsInfo{}
 
-	dpInfo.collectJavaLibrayModuleInfo(module)
+	dpInfo.collectJavaLibraryModuleInfo(module)
 
 	assertEqualSlices(t, dpInfo.srcs, expected)
 }
@@ -82,9 +82,9 @@ func TestCollectJavaLibraryPropertiesAddAidlIncludeDirs(t *testing.T) {
 	expected := []string{"Foo", "Bar"}
 	module := LibraryFactory().(*Library)
 	module.deviceProperties.Aidl.Include_dirs = append(module.deviceProperties.Aidl.Include_dirs, expected...)
-	dpInfo := &depsInfo{}
+	dpInfo := &DepsInfo{}
 
-	dpInfo.collectJavaLibrayModuleInfo(module)
+	dpInfo.collectJavaLibraryModuleInfo(module)
 
 	assertEqualSlices(t, dpInfo.aidl_include_dirs, expected)
 }
@@ -93,9 +93,9 @@ func TestCollectJavaLibraryPropertiesAddAidlLocalIncludeDirs(t *testing.T) {
 	expected := []string{"Foo", "Bar"}
 	module := LibraryFactory().(*Library)
 	module.deviceProperties.Aidl.Local_include_dirs = append(module.deviceProperties.Aidl.Local_include_dirs, expected...)
-	dpInfo := &depsInfo{}
+	dpInfo := &DepsInfo{}
 
-	dpInfo.collectJavaLibrayModuleInfo(module)
+	dpInfo.collectJavaLibraryModuleInfo(module)
 
 	assertEqualSlices(t, dpInfo.aidl_local_include_dirs, expected)
 }
@@ -104,16 +104,16 @@ func TestCollectJavaLibraryPropertiesAddAidlExportIncludeDirs(t *testing.T) {
 	expected := []string{"Foo", "Bar"}
 	module := LibraryFactory().(*Library)
 	module.deviceProperties.Aidl.Export_include_dirs = append(module.deviceProperties.Aidl.Export_include_dirs, expected...)
-	dpInfo := &depsInfo{}
+	dpInfo := &DepsInfo{}
 
-	dpInfo.collectJavaLibrayModuleInfo(module)
+	dpInfo.collectJavaLibraryModuleInfo(module)
 
 	assertEqualSlices(t, dpInfo.aidl_export_include_dirs, expected)
 }
 
 func TestCollectSpecialGenrulesDependency(t *testing.T) {
 	expected := "services.core.unboosted"
-	dpInfo := &depsInfo{}
+	dpInfo := &DepsInfo{}
 	dpInfo.collectGenrulesSrcsProperties([]string{expected})
 	dpInfo.collectSpecialGenrulesDependency()
 
@@ -124,16 +124,16 @@ func TestCollectJavaLibraryPropertiesAddJarjarRules(t *testing.T) {
 	expected := "Jarjar_rules.txt"
 	module := LibraryFactory().(*Library)
 	module.properties.Jarjar_rules = &expected
-	dpInfo := &depsInfo{}
+	dpInfo := &DepsInfo{}
 
-	dpInfo.collectJavaLibrayModuleInfo(module)
+	dpInfo.collectJavaLibraryModuleInfo(module)
 
 	assertEqual(t, dpInfo.jarjar_rules[0], expected)
 }
 
 func TestCollectPrebuiltJarsPropertiesAddJars(t *testing.T) {
 	expected := []string{"Foo.jar", "Bar.jar"}
-	dpInfo := &depsInfo{}
+	dpInfo := &DepsInfo{}
 
 	dpInfo.collectPrebuiltJarsProperties(expected)
 
@@ -142,7 +142,7 @@ func TestCollectPrebuiltJarsPropertiesAddJars(t *testing.T) {
 
 func TestCollectGenrulesSrcsPropertiesAddSrcs(t *testing.T) {
 	expected := []string{"Foo", "Bar"}
-	dpInfo := &depsInfo{}
+	dpInfo := &DepsInfo{}
 
 	dpInfo.collectGenrulesSrcsProperties(expected)
 
@@ -151,7 +151,7 @@ func TestCollectGenrulesSrcsPropertiesAddSrcs(t *testing.T) {
 
 func TestCollectFilegroupSrcsPropertiesAddSrcs(t *testing.T) {
 	expected := "Foo"
-	dpInfo := &depsInfo{}
+	dpInfo := &DepsInfo{}
 
 	dpInfo.collectFilegroupSrcsProperties(expected)
 
