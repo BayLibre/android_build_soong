@@ -92,3 +92,11 @@ func (fg *fileGroup) AndroidMk() AndroidMkData {
 		},
 	}
 }
+
+// Collect information for opening IDE project files in java/jdeps.go.
+func (g *fileGroup) IDEInfo(dpInfo *IdeInfo) {
+	srcs := g.Srcs()
+	for _, src := range srcs {
+		dpInfo.Srcs = append(dpInfo.Srcs, src.String())
+	}
+}
