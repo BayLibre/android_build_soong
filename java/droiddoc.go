@@ -1183,6 +1183,11 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 }
 
+// Collect information for opening IDE project files in java/jdeps.go.
+func (d *Droiddoc) IDEInfo(dpInfo *android.IdeInfo) {
+	dpInfo.Srcs = append(dpInfo.Srcs, d.Javadoc.properties.Srcs...)
+}
+
 //
 // Droidstubs
 //
