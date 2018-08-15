@@ -605,6 +605,10 @@ func (c *config) SanitizeDeviceArch() []string {
 	return append([]string(nil), c.productVariables.SanitizeDeviceArch...)
 }
 
+func (c *config) AutomotiveBuild() bool {
+	return Bool(c.productVariables.Automotive_build)
+}
+
 func (c *config) EnableCFI() bool {
 	if c.productVariables.EnableCFI == nil {
 		return true
