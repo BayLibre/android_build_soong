@@ -204,10 +204,11 @@ func translateToCMake(c compilerParameters, f *os.File, cflags bool, cppflags bo
 	writeAllIncludeDirectories(c.systemHeaderSearchPath, f, true)
 	writeAllIncludeDirectories(c.headerSearchPath, f, false)
 	if cflags {
+		writeAllRelativeFilePathFlags(c.relativeFilePathFlags, f, "CMAKE_C_FLAGS")
 		writeAllFlags(c.flags, f, "CMAKE_C_FLAGS")
 	}
-
 	if cppflags {
+		writeAllRelativeFilePathFlags(c.relativeFilePathFlags, f, "CMAKE_CXX_FLAGS")
 		writeAllFlags(c.flags, f, "CMAKE_CXX_FLAGS")
 	}
 	if c.sysroot != "" {
@@ -249,6 +250,12 @@ func writeAllIncludeDirectories(includes []string, f *os.File, isSystem bool) {
 	f.WriteString("list (APPEND SOURCE_FILES ${TMP_HEADERS})\n\n")
 }
 
+func writeAllRelativeFilePathFlags(relativeFilePathFlags [][]string, f *os.File, tag string) {
+	for _, flagComponents := range relativeFilePathFlags {
+		f.WriteString(fmt.Sprintf("set(%s \"${%s} %s=%s\")\n", tag, tag, flagComponents[0], buildCMakePath(flagComponents[1])))
+	}
+}
+
 func writeAllFlags(flags []string, f *os.File, tag string) {
 	for _, flag := range flags {
 		f.WriteString(fmt.Sprintf("set(%s \"${%s} %s\")\n", tag, tag, flag))
@@ -263,6 +270,7 @@ const (
 	systemHeaderSearchPath
 	flag
 	systemRoot
+	relativeFilePathFlag
 )
 
 type compilerParameters struct {
@@ -270,6 +278,8 @@ type compilerParameters struct {
 	systemHeaderSearchPath []string
 	flags                  []string
 	sysroot                string
+	// Must be in a=b/c/d format and can be split into "a" and "b/c/d"
+	relativeFilePathFlags [][]string
 }
 
 func makeCompilerParameters() compilerParameters {
@@ -293,6 +303,9 @@ func categorizeParameter(parameter string) parameterType {
 	}
 	if strings.HasPrefix(parameter, "--sysroot") {
 		return systemRoot
+	}
+	if strings.HasPrefix(parameter, "-fsanitize-blacklist") {
+		return relativeFilePathFlag
 	}
 	return flag
 }
@@ -345,6 +358,16 @@ func parseCompilerParameters(params []string, ctx android.SingletonContext, f *o
 				compilerParameters.sysroot = params[i+1]
 			} else if outputDebugInfo {
 				f.WriteString("# Found a system root path marker with no path")
+			}
+			i = i + 1
+		case relativeFilePathFlag:
+			flagComponents := strings.Split(param, "=")
+			if len(flagComponents) == 2 {
+				compilerParameters.relativeFilePathFlags = append(compilerParameters.relativeFilePathFlags, flagComponents)
+			} else {
+				if outputDebugInfo {
+					f.WriteString(fmt.Sprintf("# Relative File Path Flag [%s] is not formatted as a=b/c/d \n", param))
+				}
 			}
 			i = i + 1
 		}
