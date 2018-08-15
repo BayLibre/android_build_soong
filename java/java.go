@@ -300,7 +300,7 @@ type Module struct {
 }
 
 func (j *Module) Srcs() android.Paths {
-	return android.Paths{j.implementationJarFile}
+	return android.Paths{j.outputFile}
 }
 
 var _ android.SourceFileProducer = (*Module)(nil)
