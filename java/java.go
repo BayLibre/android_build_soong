@@ -552,41 +552,41 @@ func (j *Module) deps(ctx android.BottomUpMutatorContext) {
 		if !Bool(j.properties.No_standard_libs) {
 			sdkDep := decodeSdkDep(ctx, sdkContext(j))
 			if sdkDep.useDefaultLibs {
-				ctx.AddVariationDependencies(nil, bootClasspathTag, config.DefaultBootclasspathLibraries...)
+				ctx.AddDependency(ctx.Module(), bootClasspathTag, config.DefaultBootclasspathLibraries...)
 				if ctx.Config().TargetOpenJDK9() {
-					ctx.AddVariationDependencies(nil, systemModulesTag, config.DefaultSystemModules)
+					ctx.AddDependency(ctx.Module(), systemModulesTag, config.DefaultSystemModules)
 				}
 				if !Bool(j.properties.No_framework_libs) {
-					ctx.AddVariationDependencies(nil, libTag, config.DefaultLibraries...)
+					ctx.AddDependency(ctx.Module(), libTag, config.DefaultLibraries...)
 				}
 			} else if sdkDep.useModule {
 				if ctx.Config().TargetOpenJDK9() {
-					ctx.AddVariationDependencies(nil, systemModulesTag, sdkDep.systemModules)
+					ctx.AddDependency(ctx.Module(), systemModulesTag, sdkDep.systemModules)
 				}
-				ctx.AddVariationDependencies(nil, bootClasspathTag, sdkDep.modules...)
+				ctx.AddDependency(ctx.Module(), bootClasspathTag, sdkDep.modules...)
 				if Bool(j.deviceProperties.Optimize.Enabled) {
-					ctx.AddVariationDependencies(nil, proguardRaiseTag, config.DefaultBootclasspathLibraries...)
-					ctx.AddVariationDependencies(nil, proguardRaiseTag, config.DefaultLibraries...)
+					ctx.AddDependency(ctx.Module(), proguardRaiseTag, config.DefaultBootclasspathLibraries...)
+					ctx.AddDependency(ctx.Module(), proguardRaiseTag, config.DefaultLibraries...)
 				}
 			}
 		} else if j.deviceProperties.System_modules == nil {
 			ctx.PropertyErrorf("no_standard_libs",
 				"system_modules is required to be set when no_standard_libs is true, did you mean no_framework_libs?")
 		} else if *j.deviceProperties.System_modules != "none" && ctx.Config().TargetOpenJDK9() {
-			ctx.AddVariationDependencies(nil, systemModulesTag, *j.deviceProperties.System_modules)
+			ctx.AddDependency(ctx.Module(), systemModulesTag, *j.deviceProperties.System_modules)
 		}
 		if ctx.ModuleName() == "framework" {
-			ctx.AddVariationDependencies(nil, frameworkResTag, "framework-res")
+			ctx.AddDependency(ctx.Module(), frameworkResTag, "framework-res")
 		}
 		if ctx.ModuleName() == "android_stubs_current" ||
 			ctx.ModuleName() == "android_system_stubs_current" ||
 			ctx.ModuleName() == "android_test_stubs_current" {
-			ctx.AddVariationDependencies(nil, frameworkApkTag, "framework-res")
+			ctx.AddDependency(ctx.Module(), frameworkApkTag, "framework-res")
 		}
 	}
 
-	ctx.AddVariationDependencies(nil, libTag, j.properties.Libs...)
-	ctx.AddVariationDependencies(nil, staticLibTag, j.properties.Static_libs...)
+	ctx.AddDependency(ctx.Module(), libTag, j.properties.Libs...)
+	ctx.AddDependency(ctx.Module(), staticLibTag, j.properties.Static_libs...)
 	ctx.AddFarVariationDependencies([]blueprint.Variation{
 		{Mutator: "arch", Variation: ctx.Config().BuildOsCommonVariant},
 	}, annoTag, j.properties.Annotation_processors...)
@@ -602,11 +602,11 @@ func (j *Module) deps(ctx android.BottomUpMutatorContext) {
 	if j.hasSrcExt(".kt") {
 		// TODO(ccross): move this to a mutator pass that can tell if generated sources contain
 		// Kotlin files
-		ctx.AddVariationDependencies(nil, kotlinStdlibTag, "kotlin-stdlib")
+		ctx.AddDependency(ctx.Module(), kotlinStdlibTag, "kotlin-stdlib")
 	}
 
 	if j.shouldInstrumentStatic(ctx) {
-		ctx.AddVariationDependencies(nil, staticLibTag, "jacocoagent")
+		ctx.AddDependency(ctx.Module(), staticLibTag, "jacocoagent")
 	}
 }
 
@@ -1582,9 +1582,6 @@ type ImportProperties struct {
 
 	// List of directories to remove from the jar file(s)
 	Exclude_dirs []string
-
-	// if set to true, run Jetifier against .jar file. Defaults to false.
-	Jetifier_enabled *bool
 }
 
 type Import struct {
@@ -1619,21 +1616,15 @@ func (j *Import) Name() string {
 
 func (j *Import) DepsMutator(ctx android.BottomUpMutatorContext) {
 	android.ExtractSourcesDeps(ctx, j.properties.Jars)
-	ctx.AddVariationDependencies(nil, libTag, j.properties.Libs...)
+	ctx.AddDependency(ctx.Module(), libTag, j.properties.Libs...)
 }
 
 func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	jars := ctx.ExpandSources(j.properties.Jars, nil)
 
-	jarName := ctx.ModuleName() + ".jar"
-	outputFile := android.PathForModuleOut(ctx, "combined", jarName)
+	outputFile := android.PathForModuleOut(ctx, "classes.jar")
 	TransformJarsToJar(ctx, outputFile, "for prebuilts", jars, android.OptionalPath{},
 		false, j.properties.Exclude_files, j.properties.Exclude_dirs)
-	if Bool(j.properties.Jetifier_enabled) {
-		inputFile := outputFile
-		outputFile = android.PathForModuleOut(ctx, "jetifier", jarName)
-		TransformJetifier(ctx, outputFile, inputFile)
-	}
 	j.combinedClasspathFile = outputFile
 
 	ctx.VisitDirectDeps(func(module android.Module) {
@@ -1748,3 +1739,42 @@ var Bool = proptools.Bool
 var BoolDefault = proptools.BoolDefault
 var String = proptools.String
 var inList = android.InList
+
+// Collect infomation for opening IDE project files in java/jdeps.go.
+func (j *Library) IDEInfo(dpInfo *android.IdeInfo) {
+	dpInfo.Deps = append(dpInfo.Deps, j.CompilerDeps()...)
+	dpInfo.Srcs = append(dpInfo.Srcs, j.properties.Srcs...)
+	dpInfo.Aidl_include_dirs = append(dpInfo.Aidl_include_dirs, j.deviceProperties.Aidl.Include_dirs...)
+	if j.properties.Jarjar_rules != nil {
+		dpInfo.Jarjar_rules = append(dpInfo.Jarjar_rules, *j.properties.Jarjar_rules)
+	}
+}
+
+func (j *Library) CompilerDeps() []string {
+	deps := []string{}
+	deps = append(deps, j.properties.Libs...)
+	deps = append(deps, j.properties.Static_libs...)
+	return deps
+}
+
+const (
+	removedPrefix = "prebuilt_"
+)
+
+// Collect infomation for opening IDE project files in java/jdeps.go.
+func (j *Import) IDEInfo(dpInfo *android.IdeInfo) {
+	dpInfo.Jars = append(dpInfo.Jars, j.PrebuiltSrcs()...)
+}
+
+func (j *Import) IDECustomizedModuleName() string {
+	// TODO:
+	// Extract the base module name from the Import name.
+	// Often the Import name has a prefix "prebuilt_".
+	// Remove the prefix explicitly if needed
+	// until we find a better solution to get the Import name.
+	name := j.Name()
+	if strings.HasPrefix(name, removedPrefix) {
+		name = strings.Trim(name, removedPrefix)
+	}
+	return name
+}
