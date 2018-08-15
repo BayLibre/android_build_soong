@@ -92,3 +92,17 @@ func (fg *fileGroup) AndroidMk() AndroidMkData {
 		},
 	}
 }
+
+func (g *fileGroup) IDEInfo(dpInfo *IdeInfo) {
+	srcs := g.Srcs()
+	if len(srcs) > 0 {
+		for _, src := range srcs {
+			// TODO:
+			// We have to check if the string contained in Filegroup's Srcs is nil,
+			// otherwise it'll cause crash. We'll remove it if the issue is fixed.
+			if src != nil {
+				dpInfo.Srcs = append(dpInfo.Srcs, src.String())
+			}
+		}
+	}
+}
