@@ -42,13 +42,12 @@ type jdepsGeneratorSingleton struct {
 
 const (
 	jdepsJsonFilename = "module_bp_java_depend.json"
-	jdepsOutDirectory = "out" + "/" + "target/product" + "/" + "generic_x86_64"
 
 	// Environment variables used to modify behavior of this singleton.
 	envVariableCollectJavaDeps = "SOONG_COLLECT_JAVA_DEPS"
 )
 
-type depsInfo struct {
+type DepsInfo struct {
 	deps                     []string
 	srcs                     []string
 	aidl_include_dirs        []string
@@ -63,88 +62,68 @@ func (j *jdepsGeneratorSingleton) GenerateBuildActions(ctx android.SingletonCont
 		return
 	}
 
-	moduleInfos := make(map[string]*depsInfo)
+	moduleInfos := make(map[string]DepsInfo)
 
 	ctx.VisitAllModules(func(module android.Module) {
 		name := getModuleName(module)
-		dpInfo := getDepsInfo(name, moduleInfos)
-		if ok := collectModuleInfo(module, dpInfo); ok {
+		dpInfo := moduleInfos[name]
+		collectModuleInfo(module, &dpInfo)
+        if dpInfo.isEmpty() == true {
+            delete(moduleInfos, name)
+        } else {
 			moduleInfos[name] = dpInfo
-		} else {
-			delete(moduleInfos, name)
 		}
 	})
 
-	dpInfo := getDepsInfo("services.core.priorityboosted", moduleInfos)
+	dpInfo := moduleInfos["services.core.priorityboosted"]
 	dpInfo.collectSpecialGenrulesDependency()
 
+    jdepsOutDirectory := ctx.Config().Getenv("OUT_DIR") + "/" + "target/product" + "/" + ctx.Config().DeviceName()
 	jfpath := jdepsOutDirectory + "/" + jdepsJsonFilename
 	createJsonFile(moduleInfos, jfpath)
 }
 
-func getDepsInfo(name string, moduleInfos map[string]*depsInfo) *depsInfo {
-	if _, ok := moduleInfos[name]; !ok {
-		return &depsInfo{}
-	}
-	return moduleInfos[name]
+func collectModuleInfo(module android.Module, dpInfo *DepsInfo) {
+	dpInfo.collectJavaLibraryModuleInfo(module)
+	dpInfo.collectPrebuiltModuleInfo(module)
+	dpInfo.collectGenrulesModuleInfo(module)
+	dpInfo.collectFilegroupModuleInfo(module)
 }
 
-func collectModuleInfo(module android.Module, dpInfo *depsInfo) bool {
-	collected := false
-	if ok := dpInfo.collectJavaLibrayModuleInfo(module); ok {
-		collected = true
-	}
-	if ok := dpInfo.collectPrebuiltModuleInfo(module); ok {
-		collected = true
-	}
-	if ok := dpInfo.collectGenrulesModuleInfo(module); ok {
-		collected = true
-	}
-	if ok := dpInfo.collectFilegroupModuleInfo(module); ok {
-		collected = true
-	}
-	return collected
-}
-
-func addProperties(list []string, elms []string) (bool, []string) {
-	add := false
+func addProperties(list []string, elms []string) []string {
 	if len(list) == 0 {
 		list = append(list, elms...)
-		add = true
 	} else {
 		for _, elm := range elms {
 			if android.InList(elm, list) != true {
 				list = append(list, elm)
-				add = true
 			}
 		}
 	}
-	return add, list
+	return list
 }
 
-func (dpInfo *depsInfo) collectJavaLibrayModuleInfo(module android.Module) bool {
-	collected := false
+func (dpInfo *DepsInfo) collectJavaLibraryModuleInfo(module android.Module) {
 	if lModule, ok := module.(*Library); ok {
 		if deps, ok := lModule.CompilerDeps(); ok {
-			collected, dpInfo.deps = addProperties(dpInfo.deps, deps)
+			dpInfo.deps = addProperties(dpInfo.deps, deps)
 		}
 		if srcs, ok := lModule.CompilerSrcs(); ok {
-			collected, dpInfo.srcs = addProperties(dpInfo.srcs, srcs)
+			dpInfo.srcs = addProperties(dpInfo.srcs, srcs)
 		}
 		if dirs, ok := lModule.DeviceAidlIncludeDirs(); ok {
-			collected, dpInfo.aidl_include_dirs = addProperties(dpInfo.aidl_include_dirs, dirs)
+			dpInfo.aidl_include_dirs = addProperties(dpInfo.aidl_include_dirs, dirs)
 		}
 		if dirs, ok := lModule.DeviceAidlLocalIncludeDirs(); ok {
-			collected, dpInfo.aidl_local_include_dirs = addProperties(dpInfo.aidl_local_include_dirs, dirs)
+			dpInfo.aidl_local_include_dirs = addProperties(dpInfo.aidl_local_include_dirs, dirs)
 		}
 		if dirs, ok := lModule.DeviceAidlExportIncludeDirs(); ok {
-			collected, dpInfo.aidl_export_include_dirs = addProperties(dpInfo.aidl_export_include_dirs, dirs)
+			dpInfo.aidl_export_include_dirs = addProperties(dpInfo.aidl_export_include_dirs, dirs)
 		}
 		if lModule.CompilerJarjarRules() != nil {
-			collected, dpInfo.jarjar_rules = addProperties(dpInfo.jarjar_rules, []string{*lModule.CompilerJarjarRules()})
+			dpInfo.jarjar_rules = addProperties(dpInfo.jarjar_rules, []string{*lModule.CompilerJarjarRules()})
 		}
 	}
-	return collected
 }
 
 func getModuleName(module android.Module) string {
@@ -161,46 +140,33 @@ func getModuleName(module android.Module) string {
 	return name
 }
 
-func (dpInfo *depsInfo) collectPrebuiltModuleInfo(module android.Module) bool {
-	collected := false
+func (dpInfo *DepsInfo) collectPrebuiltModuleInfo(module android.Module) {
 	if iModule, ok := module.(*Import); ok {
 		jars := iModule.PrebuiltSrcs()
 		if len(jars) > 0 {
-			if ok := dpInfo.collectPrebuiltJarsProperties(jars); ok {
-				collected = true
-			}
+			dpInfo.collectPrebuiltJarsProperties(jars)
 		}
 	}
-	return collected
 }
 
-func (dpInfo *depsInfo) collectPrebuiltJarsProperties(jars []string) bool {
-	added := false
-	added, dpInfo.jars = addProperties(dpInfo.jars, jars)
-	return added
+func (dpInfo *DepsInfo) collectPrebuiltJarsProperties(jars []string) {
+	dpInfo.jars = addProperties(dpInfo.jars, jars)
 }
 
-func (dpInfo *depsInfo) collectGenrulesModuleInfo(module android.Module) bool {
-	collected := false
+func (dpInfo *DepsInfo) collectGenrulesModuleInfo(module android.Module) {
 	if gModule, ok := module.(*genrule.Module); ok {
 		srcs := gModule.Srcs().Strings()
 		if len(srcs) > 0 {
-			if ok := dpInfo.collectGenrulesSrcsProperties(srcs); ok {
-				collected = true
-			}
+			dpInfo.collectGenrulesSrcsProperties(srcs)
 		}
 	}
-	return collected
 }
 
-func (dpInfo *depsInfo) collectGenrulesSrcsProperties(srcs []string) bool {
-	added := false
-	added, dpInfo.srcs = addProperties(dpInfo.srcs, srcs)
-	return added
+func (dpInfo *DepsInfo) collectGenrulesSrcsProperties(srcs []string) {
+	dpInfo.srcs = addProperties(dpInfo.srcs, srcs)
 }
 
-func (dpInfo *depsInfo) collectFilegroupModuleInfo(module android.Module) bool {
-	collected := false
+func (dpInfo *DepsInfo) collectFilegroupModuleInfo(module android.Module) {
 	switch fModule := module.(type) {
 	case android.SourceFileProducer:
 		if len(fModule.Srcs()) > 0 {
@@ -209,24 +175,19 @@ func (dpInfo *depsInfo) collectFilegroupModuleInfo(module android.Module) bool {
 				// We have to check if the string contained in Filegroup's Srcs is nil,
 				// otherwise it'll cause crash. We'll remove it if the issue is fixed.
 				if src != nil {
-					if ok := dpInfo.collectFilegroupSrcsProperties(src.String()); ok {
-						collected = true
-					}
+					dpInfo.collectFilegroupSrcsProperties(src.String())
 				}
 			}
 		}
 	}
-	return collected
 }
 
-func (dpInfo *depsInfo) collectFilegroupSrcsProperties(src string) bool {
-	add := false
+func (dpInfo *DepsInfo) collectFilegroupSrcsProperties(src string) {
 	srcs := []string{src}
-	add, dpInfo.srcs = addProperties(dpInfo.srcs, srcs)
-	return add
+	dpInfo.srcs = addProperties(dpInfo.srcs, srcs)
 }
 
-func (dpInfo *depsInfo) collectSpecialGenrulesDependency() bool {
+func (dpInfo *DepsInfo) collectSpecialGenrulesDependency() {
 	// TODO:
 	// Because in frameworks/base/serviecs/core/Android.bp,
 	// java_genrule {
@@ -236,9 +197,7 @@ func (dpInfo *depsInfo) collectSpecialGenrulesDependency() bool {
 	// }
 	// "srcs" is its dependency, we get it but it's a path to services.core.unboosted.jar.
 	// We hard codes here first until we find a solution.
-	collected := false
-	collected, dpInfo.deps = addProperties(dpInfo.deps, []string{"services.core.unboosted"})
-	return collected
+	dpInfo.deps = addProperties(dpInfo.deps, []string{"services.core.unboosted"})
 }
 
 func (j *Module) CompilerDeps() ([]string, bool) {
@@ -310,7 +269,7 @@ func writeJsonTail(file io.Writer) {
 	fmt.Fprintf(file, "}")
 }
 
-func createJsonFile(moduleInfos map[string]*depsInfo, jfpath string) (err error) {
+func createJsonFile(moduleInfos map[string]DepsInfo, jfpath string) (err error) {
 	if file, err := os.Create(jfpath); err == nil {
 		f := bufio.NewWriter(file)
 		writeJsonHead(f)
@@ -335,4 +294,14 @@ func createJsonFile(moduleInfos map[string]*depsInfo, jfpath string) (err error)
 		fmt.Printf("failed to create file: module_bp_java_depend.json\n")
 		return err
 	}
+}
+
+func (dpInfo *DepsInfo) isEmpty() bool {
+	return len(dpInfo.deps) == 0 &&
+		len(dpInfo.srcs) == 0 &&
+		len(dpInfo.aidl_include_dirs) == 0 &&
+		len(dpInfo.aidl_local_include_dirs) == 0 &&
+		len(dpInfo.aidl_export_include_dirs) == 0 &&
+		len(dpInfo.jarjar_rules) == 0 &&
+		len(dpInfo.jars) == 0
 }
