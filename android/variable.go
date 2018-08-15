@@ -190,6 +190,7 @@ type productVariables struct {
 	Use_lmkd_stats_log         *bool `json:",omitempty"`
 	Arc                        *bool `json:",omitempty"`
 	MinimizeJavaDebugInfo      *bool `json:",omitempty"`
+	Automotive_build           *bool `json:",omitempty"`
 
 	IntegerOverflowExcludePaths *[]string `json:",omitempty"`
 

@@ -244,6 +244,9 @@ type DroiddocProperties struct {
 	// the generated exact API filename by Doclava.
 	Exact_api_filename *string
 
+	// the generated proguard filename by Doclava.
+	Proguard_filename *string
+
 	// if set to false, don't allow droiddoc to generate stubs source files. Defaults to true.
 	Create_stubs *bool
 
@@ -269,6 +272,13 @@ type DroiddocProperties struct {
 	// if set to true, generate docs through Dokka instead of Doclava. Valid only when
 	// metalava_enabled is set to true.
 	Dokka_enabled *bool
+}
+
+type BuildProperties struct {
+	Doc_build struct {
+		// true if module is only enabled for automative build. Defaults to false.
+		Automotive_only *bool
+	}
 }
 
 //
@@ -304,7 +314,8 @@ type Javadoc struct {
 	android.ModuleBase
 	android.DefaultableModuleBase
 
-	properties JavadocProperties
+	properties      JavadocProperties
+	buildProperties BuildProperties
 
 	srcJars     android.Paths
 	srcFiles    android.Paths
@@ -321,7 +332,7 @@ func (j *Javadoc) Srcs() android.Paths {
 func JavadocFactory() android.Module {
 	module := &Javadoc{}
 
-	module.AddProperties(&module.properties)
+	module.AddProperties(&module.properties, &module.buildProperties)
 
 	InitDroiddocModule(module, android.HostAndDeviceSupported)
 	return module
@@ -330,7 +341,7 @@ func JavadocFactory() android.Module {
 func JavadocHostFactory() android.Module {
 	module := &Javadoc{}
 
-	module.AddProperties(&module.properties)
+	module.AddProperties(&module.properties, &module.buildProperties)
 
 	InitDroiddocModule(module, android.HostSupported)
 	return module
@@ -541,10 +552,20 @@ func (j *Javadoc) collectDeps(ctx android.ModuleContext) deps {
 }
 
 func (j *Javadoc) DepsMutator(ctx android.BottomUpMutatorContext) {
+	if Bool(d.buildProperties.Doc_build.Automotive_only) {
+		if !ctx.Config().AutomotiveBuild() {
+			return
+		}
+	}
 	j.addDeps(ctx)
 }
 
 func (j *Javadoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	if Bool(d.buildProperties.Doc_build.Automotive_only) {
+		if !ctx.Config().AutomotiveBuild() {
+			return
+		}
+	}
 	deps := j.collectDeps(ctx)
 
 	var implicits android.Paths
@@ -606,6 +627,7 @@ type Droiddoc struct {
 	removedDexApiFile android.WritablePath
 	exactApiFile      android.WritablePath
 	apiMappingFile    android.WritablePath
+	proguardFile      android.WritablePath
 
 	checkCurrentApiTimestamp      android.WritablePath
 	updateCurrentApiTimestamp     android.WritablePath
@@ -623,7 +645,7 @@ type ApiFilePath interface {
 func DroiddocFactory() android.Module {
 	module := &Droiddoc{}
 
-	module.AddProperties(&module.properties,
+	module.AddProperties(&module.properties, &module.Javadoc.buildProperties,
 		&module.Javadoc.properties)
 
 	InitDroiddocModule(module, android.HostAndDeviceSupported)
@@ -633,7 +655,7 @@ func DroiddocFactory() android.Module {
 func DroiddocHostFactory() android.Module {
 	module := &Droiddoc{}
 
-	module.AddProperties(&module.properties,
+	module.AddProperties(&module.properties, &module.Javadoc.buildProperties,
 		&module.Javadoc.properties)
 
 	InitDroiddocModule(module, android.HostSupported)
@@ -671,6 +693,11 @@ func (d *Droiddoc) checkLastReleasedApi() bool {
 }
 
 func (d *Droiddoc) DepsMutator(ctx android.BottomUpMutatorContext) {
+	if Bool(d.buildProperties.Doc_build.Automotive_only) {
+		if !ctx.Config().AutomotiveBuild() {
+			return
+		}
+	}
 	d.Javadoc.addDeps(ctx)
 
 	if String(d.properties.Custom_template) != "" {
@@ -712,7 +739,8 @@ func (d *Droiddoc) DepsMutator(ctx android.BottomUpMutatorContext) {
 	}
 }
 
-func (d *Droiddoc) initBuilderFlags(ctx android.ModuleContext, implicits *android.Paths, deps deps) (droiddocBuilderFlags, error) {
+func (d *Droiddoc) initBuilderFlags(ctx android.ModuleContext, implicits *android.Paths,
+	deps deps) (droiddocBuilderFlags, error) {
 	var flags droiddocBuilderFlags
 
 	*implicits = append(*implicits, deps.bootClasspath...)
@@ -909,6 +937,13 @@ func (d *Droiddoc) collectStubsFlags(ctx android.ModuleContext, implicitOutputs 
 		*implicitOutputs = append(*implicitOutputs, d.apiMappingFile)
 	}
 
+	if String(d.properties.Proguard_filename) != "" {
+		d.proguardFile = android.PathForModuleOut(ctx, String(d.properties.Proguard_filename))
+		doclavaFlags += " -proguard " + d.proguardFile.String()
+		// Omitted: metalava support
+		*implicitOutputs = append(*implicitOutputs, d.proguardFile)
+	}
+
 	if BoolDefault(d.properties.Create_stubs, true) {
 		doclavaFlags += " -stubs " + android.PathForModuleOut(ctx, "stubsDir").String()
 	}
@@ -1087,6 +1122,11 @@ func (d *Droiddoc) transformUpdateApi(ctx android.ModuleContext, apiFile, remove
 }
 
 func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	if Bool(d.buildProperties.Doc_build.Automotive_only) {
+		if !ctx.Config().AutomotiveBuild() {
+			return
+		}
+	}
 	deps := d.Javadoc.collectDeps(ctx)
 
 	javaVersion := getJavaVersion(ctx, String(d.Javadoc.properties.Java_version), sdkContext(d))
@@ -1250,6 +1290,7 @@ func DocDefaultsFactory() android.Module {
 	module.AddProperties(
 		&JavadocProperties{},
 		&DroiddocProperties{},
+		&buildProperties{},
 	)
 
 	android.InitDefaultsModule(module)
