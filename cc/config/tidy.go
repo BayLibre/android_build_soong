@@ -27,7 +27,9 @@ import (
 var ClangTidyUnknownCflags = sorted([]string{
 	"-Wa,%",
 	"-flto",
+	"-flto=%",
 	"-fsanitize=%",
+	"-fsanitize-%",
 	"-fwhole-program-vtables",
 })
 
@@ -42,6 +44,7 @@ func init() {
 		}
 		return strings.Join([]string{
 			"-*",
+			"clang-diagnostic-unused-command-line-argument",
 			"google*",
 			"misc-macro-parentheses",
 			"performance*",
@@ -58,6 +61,7 @@ func init() {
 		}
 		return strings.Join([]string{
 			"-*",
+			"clang-diagnostic-unused-command-line-argument",
 			"google*",
 			"-google-build-using-namespace",
 			"-google-default-arguments",
