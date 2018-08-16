@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d7f8a60_7108b7ee",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2018-08-16T15:36:04Z",
+      "side": 1,
+      "message": "While we don\u0027t ship anything with ASan enabled, will that be true for HWAsan? If so, is there a way to eventually get to CFI support as well? If so, maybe it\u0027s worth filing a bug (and noting it here), so that we can make it work.",
+      "revId": "e045969703f89b630442d998a07c12dc80521e3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
