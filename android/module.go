@@ -243,8 +243,8 @@ type commonProperties struct {
 	Product_specific *bool
 
 	// whether this module provides services owned by the OS provider to the core platform. When set
-	// to true, it is installed into  /product-services (or /system/product-services if
-	// product-services partition does not exist).
+	// to true, it is installed into  /product_services (or /system/product_services if
+	// product_services partition does not exist).
 	ProductServices_specific *bool
 
 	// Whether this module is installed to recovery partition
