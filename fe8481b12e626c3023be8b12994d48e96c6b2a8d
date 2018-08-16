@@ -698,6 +698,24 @@
     },
     {
       "key": {
+        "uuid": "e57d6d06_eb5e44aa",
+        "filename": "java/jdeps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-16T07:26:18Z",
+      "side": 1,
+      "message": "Done\n\n- Add IDEInfo interface \u0026 IdeInfo struct in android/module.go.\n- Add IDEInfo function in android/filegroup.go.\n- Add IDEInfo function in genrule/genrule.go.\n- Modify jdeps.go to use IDEInfo interface to collect info.\n- Modify jdeps_test.go to pass tests.",
+      "parentUuid": "cdc83b52_a56b383c",
+      "revId": "fe8481b12e626c3023be8b12994d48e96c6b2a8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02d579c8_988a9df2",
         "filename": "java/jdeps.go",
         "patchSetId": 1
