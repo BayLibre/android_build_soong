@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96cfd2f6_38011717",
+        "filename": "android/module.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 1540,
+      "author": {
+        "id": 1083173
+      },
+      "writtenOn": "2018-08-16T16:36:49Z",
+      "side": 1,
+      "message": "Are these swapped?",
+      "range": {
+        "startLine": 1539,
+        "startChar": 1,
+        "endLine": 1540,
+        "endChar": 50
+      },
+      "revId": "347bda450722bd8b8438b8f96ca358534e79fc56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca64b161_4cdc2c24",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1083173
+      },
+      "writtenOn": "2018-08-16T16:36:49Z",
+      "side": 1,
+      "message": "Excuse my go noobness but I would expect g to be what we are returning? Anyone have a good link to explain this?",
+      "range": {
+        "startLine": 461,
+        "startChar": 0,
+        "endLine": 462,
+        "endChar": 30
+      },
+      "revId": "347bda450722bd8b8438b8f96ca358534e79fc56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d97f7ec3_16a8ae9a",
+        "filename": "java/jdeps.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1083173
+      },
+      "writtenOn": "2018-08-16T16:36:49Z",
+      "side": 1,
+      "message": "make a constant.",
+      "range": {
+        "startLine": 68,
+        "startChar": 23,
+        "endLine": 68,
+        "endChar": 54
+      },
+      "revId": "347bda450722bd8b8438b8f96ca358534e79fc56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89cf1c6c_fa798457",
+        "filename": "java/jdeps.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1083173
+      },
+      "writtenOn": "2018-08-16T16:36:49Z",
+      "side": 1,
+      "message": "There\u0027s likely an env variable for this you can use.",
+      "range": {
+        "startLine": 72,
+        "startChar": 35,
+        "endLine": 72,
+        "endChar": 111
+      },
+      "revId": "347bda450722bd8b8438b8f96ca358534e79fc56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36f0116e_ac967c7e",
+        "filename": "java/jdeps.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1083173
+      },
+      "writtenOn": "2018-08-16T16:36:49Z",
+      "side": 1,
+      "message": "Can\u0027t you use path join?\n\nhttps://golang.org/pkg/path/#example_Join",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 54
+      },
+      "revId": "347bda450722bd8b8438b8f96ca358534e79fc56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcc2062d_25899652",
+        "filename": "java/jdeps.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1083173
+      },
+      "writtenOn": "2018-08-16T16:36:49Z",
+      "side": 1,
+      "message": "Use a constant.",
+      "range": {
+        "startLine": 150,
+        "startChar": 29,
+        "endLine": 150,
+        "endChar": 40
+      },
+      "revId": "347bda450722bd8b8438b8f96ca358534e79fc56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa64394b_9ea46dd7",
+        "filename": "java/jdeps.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1083173
+      },
+      "writtenOn": "2018-08-16T16:36:49Z",
+      "side": 1,
+      "message": "Colin/Dan are printf\u0027s the preferred way to bubble up errors in Soong? Or is there a better mechanism?",
+      "revId": "347bda450722bd8b8438b8f96ca358534e79fc56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e97d2be_867b5541",
+        "filename": "java/jdeps_test.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1083173
+      },
+      "writtenOn": "2018-08-16T16:36:49Z",
+      "side": 1,
+      "message": "I\u0027m surprised you need to create your own assertEquals? Can you explain why?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 1
+      },
+      "revId": "347bda450722bd8b8438b8f96ca358534e79fc56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81d4ffe6_a5b98281",
+        "filename": "java/jdeps_test.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1083173
+      },
+      "writtenOn": "2018-08-16T16:36:49Z",
+      "side": 1,
+      "message": "Stick to tabs if you\u0027re using tabs, fix everywhere.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 26
+      },
+      "revId": "347bda450722bd8b8438b8f96ca358534e79fc56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
