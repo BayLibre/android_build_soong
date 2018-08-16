@@ -23,7 +23,6 @@ import (
 	"strings"
 
 	"android/soong/android"
-	"android/soong/genrule"
 )
 
 // This singleton generates android java dependency into to a json file. It does so for each
@@ -48,28 +47,18 @@ const (
 	envVariableCollectJavaDeps = "SOONG_COLLECT_JAVA_DEPS"
 )
 
-type DepsInfo struct {
-	deps                     []string
-	srcs                     []string
-	aidl_include_dirs        []string
-	aidl_local_include_dirs  []string
-	aidl_export_include_dirs []string
-	jarjar_rules             []string
-	jars                     []string
-}
-
 func (j *jdepsGeneratorSingleton) GenerateBuildActions(ctx android.SingletonContext) {
 	if ctx.Config().IsEnvTrue(envVariableCollectJavaDeps) == false {
 		return
 	}
 
-	moduleInfos := make(map[string]DepsInfo)
+	moduleInfos := make(map[string]android.IdeInfo)
 
 	ctx.VisitAllModules(func(module android.Module) {
 		name := getModuleName(module)
 		dpInfo := moduleInfos[name]
 		collectModuleInfo(module, &dpInfo)
-		if dpInfo.isEmpty() == true {
+		if isEmpty(&dpInfo) == true {
 			delete(moduleInfos, name)
 		} else {
 			moduleInfos[name] = dpInfo
@@ -77,18 +66,20 @@ func (j *jdepsGeneratorSingleton) GenerateBuildActions(ctx android.SingletonCont
 	})
 
 	dpInfo := moduleInfos["services.core.priorityboosted"]
-	dpInfo.collectSpecialGenrulesDependency()
+	collectSpecialGenrulesDependency(&dpInfo)
+	moduleInfos["services.core.priorityboosted"] = dpInfo
 
 	jdepsOutDirectory := ctx.Config().Getenv("OUT_DIR") + "/" + "target/product" + "/" + ctx.Config().DeviceName()
 	jfpath := jdepsOutDirectory + "/" + jdepsJsonFilename
 	createJsonFile(moduleInfos, jfpath)
 }
 
-func collectModuleInfo(module android.Module, dpInfo *DepsInfo) {
-	dpInfo.collectJavaLibraryModuleInfo(module)
-	dpInfo.collectPrebuiltModuleInfo(module)
-	dpInfo.collectGenrulesModuleInfo(module)
-	dpInfo.collectFilegroupModuleInfo(module)
+func collectModuleInfo(module android.Module, dpInfo *android.IdeInfo) {
+    ideInfoProvider, ok := module.(android.IDEInfo)
+	if !ok {
+		return
+	}
+	ideInfoProvider.IDEInfo(dpInfo)
 }
 
 func addProperties(list []string, elms []string) []string {
@@ -104,27 +95,49 @@ func addProperties(list []string, elms []string) []string {
 	return list
 }
 
-func (dpInfo *DepsInfo) collectJavaLibraryModuleInfo(module android.Module) {
-	if lModule, ok := module.(*Library); ok {
-		if deps, ok := lModule.CompilerDeps(); ok {
-			dpInfo.deps = addProperties(dpInfo.deps, deps)
-		}
-		if srcs, ok := lModule.CompilerSrcs(); ok {
-			dpInfo.srcs = addProperties(dpInfo.srcs, srcs)
-		}
-		if dirs, ok := lModule.DeviceAidlIncludeDirs(); ok {
-			dpInfo.aidl_include_dirs = addProperties(dpInfo.aidl_include_dirs, dirs)
-		}
-		if dirs, ok := lModule.DeviceAidlLocalIncludeDirs(); ok {
-			dpInfo.aidl_local_include_dirs = addProperties(dpInfo.aidl_local_include_dirs, dirs)
-		}
-		if dirs, ok := lModule.DeviceAidlExportIncludeDirs(); ok {
-			dpInfo.aidl_export_include_dirs = addProperties(dpInfo.aidl_export_include_dirs, dirs)
-		}
-		if lModule.CompilerJarjarRules() != nil {
-			dpInfo.jarjar_rules = addProperties(dpInfo.jarjar_rules, []string{*lModule.CompilerJarjarRules()})
-		}
-	}
+func (module *Module) IDEInfo(dpInfo *android.IdeInfo) {
+    if deps, ok := module.CompilerDeps(); ok {
+        dpInfo.Deps = addProperties(dpInfo.Deps, deps)
+    }
+    if srcs, ok := module.CompilerSrcs(); ok {
+        dpInfo.Srcs = addProperties(dpInfo.Srcs, srcs)
+    }
+    if dirs, ok := module.DeviceAidlIncludeDirs(); ok {
+        dpInfo.Aidl_include_dirs = addProperties(dpInfo.Aidl_include_dirs, dirs)
+    }
+    if dirs, ok := module.DeviceAidlLocalIncludeDirs(); ok {
+        dpInfo.Aidl_local_include_dirs = addProperties(dpInfo.Aidl_local_include_dirs, dirs)
+    }
+    if dirs, ok := module.DeviceAidlExportIncludeDirs(); ok {
+        dpInfo.Aidl_export_include_dirs = addProperties(dpInfo.Aidl_export_include_dirs, dirs)
+    }
+    if module.CompilerJarjarRules() != nil {
+        dpInfo.Jarjar_rules = addProperties(dpInfo.Jarjar_rules, []string{*module.CompilerJarjarRules()})
+    }
+}
+
+func (module *Import) IDEInfo(dpInfo *android.IdeInfo) {
+    jars := module.PrebuiltSrcs()
+    if len(jars) > 0 {
+        collectPrebuiltJarsProperties(dpInfo, jars)
+    }
+}
+
+func collectPrebuiltJarsProperties(dpInfo *android.IdeInfo, jars []string) {
+	dpInfo.Jars = addProperties(dpInfo.Jars, jars)
+}
+
+func collectSpecialGenrulesDependency(dpInfo *android.IdeInfo) {
+	// TODO:
+	// Because in frameworks/base/serviecs/core/Android.bp,
+	// java_genrule {
+	//    name: "services.core.priorityboosted",
+	//    srcs: [":services.core.unboosted"],
+	//    ...
+	// }
+	// "srcs" is its dependency, we get it but it's a path to services.core.unboosted.jar.
+	// We hard codes here first until we find a solution.
+	dpInfo.Deps = addProperties(dpInfo.Deps, []string{"services.core.unboosted"})
 }
 
 func getModuleName(module android.Module) string {
@@ -139,66 +152,6 @@ func getModuleName(module android.Module) string {
 		}
 	}
 	return name
-}
-
-func (dpInfo *DepsInfo) collectPrebuiltModuleInfo(module android.Module) {
-	if iModule, ok := module.(*Import); ok {
-		jars := iModule.PrebuiltSrcs()
-		if len(jars) > 0 {
-			dpInfo.collectPrebuiltJarsProperties(jars)
-		}
-	}
-}
-
-func (dpInfo *DepsInfo) collectPrebuiltJarsProperties(jars []string) {
-	dpInfo.jars = addProperties(dpInfo.jars, jars)
-}
-
-func (dpInfo *DepsInfo) collectGenrulesModuleInfo(module android.Module) {
-	if gModule, ok := module.(*genrule.Module); ok {
-		srcs := gModule.Srcs().Strings()
-		if len(srcs) > 0 {
-			dpInfo.collectGenrulesSrcsProperties(srcs)
-		}
-	}
-}
-
-func (dpInfo *DepsInfo) collectGenrulesSrcsProperties(srcs []string) {
-	dpInfo.srcs = addProperties(dpInfo.srcs, srcs)
-}
-
-func (dpInfo *DepsInfo) collectFilegroupModuleInfo(module android.Module) {
-	switch fModule := module.(type) {
-	case android.SourceFileProducer:
-		if len(fModule.Srcs()) > 0 {
-			for _, src := range fModule.Srcs() {
-				// TODO:
-				// We have to check if the string contained in Filegroup's Srcs is nil,
-				// otherwise it'll cause crash. We'll remove it if the issue is fixed.
-				if src != nil {
-					dpInfo.collectFilegroupSrcsProperties(src.String())
-				}
-			}
-		}
-	}
-}
-
-func (dpInfo *DepsInfo) collectFilegroupSrcsProperties(src string) {
-	srcs := []string{src}
-	dpInfo.srcs = addProperties(dpInfo.srcs, srcs)
-}
-
-func (dpInfo *DepsInfo) collectSpecialGenrulesDependency() {
-	// TODO:
-	// Because in frameworks/base/serviecs/core/Android.bp,
-	// java_genrule {
-	//    name: "services.core.priorityboosted",
-	//    srcs: [":services.core.unboosted"],
-	//    ...
-	// }
-	// "srcs" is its dependency, we get it but it's a path to services.core.unboosted.jar.
-	// We hard codes here first until we find a solution.
-	dpInfo.deps = addProperties(dpInfo.deps, []string{"services.core.unboosted"})
 }
 
 func (j *Module) CompilerDeps() ([]string, bool) {
@@ -250,7 +203,7 @@ func writeJsonTail(file io.Writer) {
 	fmt.Fprintf(file, "}")
 }
 
-func createJsonFile(moduleInfos map[string]DepsInfo, jfpath string) (err error) {
+func createJsonFile(moduleInfos map[string]android.IdeInfo, jfpath string) (err error) {
 	if file, err := os.Create(jfpath); err != nil {
 		fmt.Printf("failed to create file: module_bp_java_depend.json\n")
 		return err
@@ -260,27 +213,9 @@ func createJsonFile(moduleInfos map[string]DepsInfo, jfpath string) (err error) 
 		defer f.Flush()
 		writeJsonHead(f)
 		count := 0
-		type aideInfo struct {
-			Dependencies             []string `json:"dependencies,omitempty"`
-			Srcs                     []string `json:"srcs,omitempty"`
-			Aidl_include_dirs        []string `json:"aidl_include_dirs,omitempty"`
-			Aidl_local_include_dirs  []string `json:"aidl_local_include_dirs,omitempty"`
-			Aidl_export_include_dirs []string `json:"aidl_export_include_dirs,omitempty"`
-			Jars                     []string `json:"jars,omitempty"`
-			Jarjar_rules             []string `json:"jarjar_rules,omitempty"`
-		}
 		for name, info := range moduleInfos {
 			writeJsonModuleHead(f, name)
-			ainfo := aideInfo{
-				Dependencies:             info.deps,
-				Srcs:                     info.srcs,
-				Aidl_include_dirs:        info.aidl_include_dirs,
-				Aidl_local_include_dirs:  info.aidl_local_include_dirs,
-				Aidl_export_include_dirs: info.aidl_export_include_dirs,
-				Jars:                     info.jars,
-				Jarjar_rules:             info.jarjar_rules,
-			}
-			buf, err := json.Marshal(ainfo)
+			buf, err := json.Marshal(info)
 			if err != nil {
 				fmt.Printf("write file failed: module_bp_java_depend.json\n")
 				return err
@@ -295,12 +230,12 @@ func createJsonFile(moduleInfos map[string]DepsInfo, jfpath string) (err error) 
 	return nil
 }
 
-func (dpInfo *DepsInfo) isEmpty() bool {
-	return len(dpInfo.deps) == 0 &&
-		len(dpInfo.srcs) == 0 &&
-		len(dpInfo.aidl_include_dirs) == 0 &&
-		len(dpInfo.aidl_local_include_dirs) == 0 &&
-		len(dpInfo.aidl_export_include_dirs) == 0 &&
-		len(dpInfo.jarjar_rules) == 0 &&
-		len(dpInfo.jars) == 0
+func isEmpty(dpInfo *android.IdeInfo) bool {
+	return len(dpInfo.Deps) == 0 &&
+		len(dpInfo.Srcs) == 0 &&
+		len(dpInfo.Aidl_include_dirs) == 0 &&
+		len(dpInfo.Aidl_local_include_dirs) == 0 &&
+		len(dpInfo.Aidl_export_include_dirs) == 0 &&
+		len(dpInfo.Jarjar_rules) == 0 &&
+		len(dpInfo.Jars) == 0
 }

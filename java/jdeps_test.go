@@ -19,6 +19,8 @@ import (
 	"fmt"
 	"reflect"
 	"testing"
+
+	"android/soong/android"
 )
 
 func assertEqual(t *testing.T, a interface{}, b interface{}) {
@@ -49,113 +51,86 @@ func TestCollectJavaLibraryPropertiesAddLibsDeps(t *testing.T) {
 	expected := []string{"Foo", "Bar"}
 	module := LibraryFactory().(*Library)
 	module.properties.Libs = append(module.properties.Libs, expected...)
-	dpInfo := &DepsInfo{}
+	dpInfo := &android.IdeInfo{}
 
-	dpInfo.collectJavaLibraryModuleInfo(module)
+    module.IDEInfo(dpInfo)
 
-	assertEqualSlices(t, dpInfo.deps, expected)
+	assertEqualSlices(t, dpInfo.Deps, expected)
 }
 
 func TestCollectJavaLibraryPropertiesAddStaticLibsDeps(t *testing.T) {
 	expected := []string{"Foo", "Bar"}
 	module := LibraryFactory().(*Library)
 	module.properties.Static_libs = append(module.properties.Static_libs, expected...)
-	dpInfo := &DepsInfo{}
+	dpInfo := &android.IdeInfo{}
 
-	dpInfo.collectJavaLibraryModuleInfo(module)
+    module.IDEInfo(dpInfo)
 
-	assertEqualSlices(t, dpInfo.deps, expected)
+	assertEqualSlices(t, dpInfo.Deps, expected)
 }
 
 func TestCollectJavaLibraryPropertiesAddScrs(t *testing.T) {
 	expected := []string{"Foo", "Bar"}
 	module := LibraryFactory().(*Library)
 	module.properties.Srcs = append(module.properties.Srcs, expected...)
-	dpInfo := &DepsInfo{}
+	dpInfo := &android.IdeInfo{}
 
-	dpInfo.collectJavaLibraryModuleInfo(module)
+    module.IDEInfo(dpInfo)
 
-	assertEqualSlices(t, dpInfo.srcs, expected)
+	assertEqualSlices(t, dpInfo.Srcs, expected)
 }
 
 func TestCollectJavaLibraryPropertiesAddAidlIncludeDirs(t *testing.T) {
 	expected := []string{"Foo", "Bar"}
 	module := LibraryFactory().(*Library)
 	module.deviceProperties.Aidl.Include_dirs = append(module.deviceProperties.Aidl.Include_dirs, expected...)
-	dpInfo := &DepsInfo{}
+	dpInfo := &android.IdeInfo{}
 
-	dpInfo.collectJavaLibraryModuleInfo(module)
+    module.IDEInfo(dpInfo)
 
-	assertEqualSlices(t, dpInfo.aidl_include_dirs, expected)
+	assertEqualSlices(t, dpInfo.Aidl_include_dirs, expected)
 }
 
 func TestCollectJavaLibraryPropertiesAddAidlLocalIncludeDirs(t *testing.T) {
 	expected := []string{"Foo", "Bar"}
 	module := LibraryFactory().(*Library)
 	module.deviceProperties.Aidl.Local_include_dirs = append(module.deviceProperties.Aidl.Local_include_dirs, expected...)
-	dpInfo := &DepsInfo{}
+	dpInfo := &android.IdeInfo{}
 
-	dpInfo.collectJavaLibraryModuleInfo(module)
+    module.IDEInfo(dpInfo)
 
-	assertEqualSlices(t, dpInfo.aidl_local_include_dirs, expected)
+	assertEqualSlices(t, dpInfo.Aidl_local_include_dirs, expected)
 }
 
 func TestCollectJavaLibraryPropertiesAddAidlExportIncludeDirs(t *testing.T) {
 	expected := []string{"Foo", "Bar"}
 	module := LibraryFactory().(*Library)
 	module.deviceProperties.Aidl.Export_include_dirs = append(module.deviceProperties.Aidl.Export_include_dirs, expected...)
-	dpInfo := &DepsInfo{}
+	dpInfo := &android.IdeInfo{}
 
-	dpInfo.collectJavaLibraryModuleInfo(module)
+    module.IDEInfo(dpInfo)
 
-	assertEqualSlices(t, dpInfo.aidl_export_include_dirs, expected)
-}
-
-func TestCollectSpecialGenrulesDependency(t *testing.T) {
-	expected := "services.core.unboosted"
-	dpInfo := &DepsInfo{}
-	dpInfo.collectGenrulesSrcsProperties([]string{expected})
-	dpInfo.collectSpecialGenrulesDependency()
-
-	assertEqual(t, dpInfo.deps[0], expected)
+	assertEqualSlices(t, dpInfo.Aidl_export_include_dirs, expected)
 }
 
 func TestCollectJavaLibraryPropertiesAddJarjarRules(t *testing.T) {
 	expected := "Jarjar_rules.txt"
 	module := LibraryFactory().(*Library)
 	module.properties.Jarjar_rules = &expected
-	dpInfo := &DepsInfo{}
+	dpInfo := &android.IdeInfo{}
 
-	dpInfo.collectJavaLibraryModuleInfo(module)
+    module.IDEInfo(dpInfo)
 
-	assertEqual(t, dpInfo.jarjar_rules[0], expected)
+	assertEqual(t, dpInfo.Jarjar_rules[0], expected)
 }
 
 func TestCollectPrebuiltJarsPropertiesAddJars(t *testing.T) {
 	expected := []string{"Foo.jar", "Bar.jar"}
-	dpInfo := &DepsInfo{}
+	dpInfo := &android.IdeInfo{}
 
-	dpInfo.collectPrebuiltJarsProperties(expected)
+	collectPrebuiltJarsProperties(dpInfo, expected)
 
-	assertEqualSlices(t, dpInfo.jars, expected)
-}
-
-func TestCollectGenrulesSrcsPropertiesAddSrcs(t *testing.T) {
-	expected := []string{"Foo", "Bar"}
-	dpInfo := &DepsInfo{}
-
-	dpInfo.collectGenrulesSrcsProperties(expected)
-
-	assertEqualSlices(t, dpInfo.srcs, expected)
-}
-
-func TestCollectFilegroupSrcsPropertiesAddSrcs(t *testing.T) {
-	expected := "Foo"
-	dpInfo := &DepsInfo{}
-
-	dpInfo.collectFilegroupSrcsProperties(expected)
-
-	assertEqualSlices(t, dpInfo.srcs, []string{expected})
+	assertEqualSlices(t, dpInfo.Jars, expected)
 }
 
 func TestWriteJsonHead(t *testing.T) {

@@ -457,3 +457,18 @@ type genRuleProperties struct {
 
 var Bool = proptools.Bool
 var String = proptools.String
+
+func (g *Module) IDEInfo(dpInfo *android.IdeInfo) {
+    srcs := g.Srcs().Strings()
+    if len(srcs) > 0 {
+        if len(dpInfo.Srcs) == 0 {
+            dpInfo.Srcs = append(dpInfo.Srcs, srcs...)
+        } else {
+            for _, src := range srcs {
+                if android.InList(src, dpInfo.Srcs) != true {
+                    dpInfo.Srcs = append(dpInfo.Srcs, src)
+                }
+            }
+        }
+    }
+}
