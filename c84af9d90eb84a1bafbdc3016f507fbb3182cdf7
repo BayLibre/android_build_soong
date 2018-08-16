@@ -22,6 +22,30 @@
       "revId": "c84af9d90eb84a1bafbdc3016f507fbb3182cdf7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9431380_1d99b7fd",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 969,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-16T17:55:17Z",
+      "side": 1,
+      "message": "\u003d doesn\u0027t work, it has to be \"\u003d.:\"\nFixed another way.",
+      "parentUuid": "80a213a0_682841d5",
+      "range": {
+        "startLine": 969,
+        "startChar": 88,
+        "endLine": 969,
+        "endChar": 89
+      },
+      "revId": "c84af9d90eb84a1bafbdc3016f507fbb3182cdf7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
