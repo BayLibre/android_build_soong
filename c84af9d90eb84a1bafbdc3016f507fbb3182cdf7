@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80a213a0_682841d5",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 969,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-08-16T17:16:22Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this add \"\u003d\" so that patch_module: \"java.base\" produces --patch-module\u003djava.base\u003d\u003cclasspath\u003e like the commit message says?",
+      "range": {
+        "startLine": 969,
+        "startChar": 88,
+        "endLine": 969,
+        "endChar": 89
+      },
+      "revId": "c84af9d90eb84a1bafbdc3016f507fbb3182cdf7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
