@@ -16,6 +16,24 @@
       "revId": "e045969703f89b630442d998a07c12dc80521e3f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e0ae709_e55a9c4e",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2018-08-16T20:22:21Z",
+      "side": 1,
+      "message": "It\u0027s definitely doable. I\u0027ve filed b/112709969.",
+      "parentUuid": "7d7f8a60_7108b7ee",
+      "revId": "e045969703f89b630442d998a07c12dc80521e3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
