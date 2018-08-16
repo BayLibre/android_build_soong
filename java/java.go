@@ -135,6 +135,15 @@ type CompilerProperties struct {
 		Javacflags []string
 	}
 
+	// When compiling language level 9+ .java code in packages that are part of
+	// a system module, patch_module names the module that your sources and
+	// dependencies should be patched into. The Android runtime currently
+	// doesn't implement the JEP 261 module system so this option is only
+	// supported at compile time. It should only be needed to compile tests in
+	// packages that exist in libcore and which are inconvenient to move
+	// elsewhere.
+	Patch_module *string
+
 	Jacoco struct {
 		// List of classes to include for instrumentation with jacoco to collect coverage
 		// information at runtime when building with coverage enabled.  If unset defaults to all
@@ -953,6 +962,11 @@ func (j *Module) collectBuilderFlags(ctx android.ModuleContext, deps deps) javaB
 			flags.bootClasspath = append(flags.bootClasspath,
 				android.PathForSource(ctx, java8Home, "lib/tools.jar"))
 		}
+	}
+
+	if j.properties.Patch_module != nil && ctx.Config().TargetOpenJDK9() {
+		javacFlags = append(javacFlags,
+			flags.classpath.FormJavaClassPath("--patch-module="+String(j.properties.Patch_module)))
 	}
 
 	// systemModules
