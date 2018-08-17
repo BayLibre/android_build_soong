@@ -52,6 +52,24 @@
       "revId": "6c5403d2f66566893d49d911b2f7e321fa72246e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c69ced6_5a997c4b",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2018-08-17T18:16:25Z",
+      "side": 1,
+      "message": "baseLinker, flagExporter, stripper, relocationPacker and others (soong is still throwing errors when I added all these properties)",
+      "parentUuid": "47219359_73d680db",
+      "revId": "6c5403d2f66566893d49d911b2f7e321fa72246e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
