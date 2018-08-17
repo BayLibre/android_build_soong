@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "e598a5eb_86ed64cc",
+        "filename": "java/jdeps.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1308042
+      },
+      "writtenOn": "2018-08-17T02:18:17Z",
+      "side": 1,
+      "message": "Maybe ANDROID_PRODUCT_OUT is what you need?",
+      "parentUuid": "bf1653dd_daff80d8",
+      "range": {
+        "startLine": 72,
+        "startChar": 35,
+        "endLine": 72,
+        "endChar": 111
+      },
+      "revId": "347bda450722bd8b8438b8f96ca358534e79fc56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "36f0116e_ac967c7e",
         "filename": "java/jdeps.go",
         "patchSetId": 13
