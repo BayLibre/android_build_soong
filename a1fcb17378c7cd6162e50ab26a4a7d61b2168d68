@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1770190b_d8294592",
+        "filename": "cc/config/tidy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-17T17:45:22Z",
+      "side": 1,
+      "message": "Should make use the script too?  If not, move this list back to make if it is only used there.",
+      "revId": "a1fcb17378c7cd6162e50ab26a4a7d61b2168d68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56813462_659b65df",
+        "filename": "scripts/clang-tidy.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-17T17:45:22Z",
+      "side": 1,
+      "message": "You could keep this script alongside clang since it is likely to change with clang prebuilts updates.",
+      "revId": "a1fcb17378c7cd6162e50ab26a4a7d61b2168d68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
