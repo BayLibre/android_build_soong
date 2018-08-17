@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "100d3aa5_855d45c7",
+        "filename": "java/jdeps.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-17T08:39:40Z",
+      "side": 1,
+      "message": "Done\nI use ctx.Config().Getenv(\"OUT\") to get the output path: \"out/target/product/generic_x86_64\" and modified codes:\n\njfpath :\u003d filepath.Join(ctx.Config().Getenv(\"OUT\"), jdepsJsonFileName)",
+      "parentUuid": "e598a5eb_86ed64cc",
+      "range": {
+        "startLine": 72,
+        "startChar": 35,
+        "endLine": 72,
+        "endChar": 111
+      },
+      "revId": "347bda450722bd8b8438b8f96ca358534e79fc56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36f0116e_ac967c7e",
         "filename": "java/jdeps.go",
         "patchSetId": 13
