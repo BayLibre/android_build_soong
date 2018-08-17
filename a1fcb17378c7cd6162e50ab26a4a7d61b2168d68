@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d2a51c02_fb0e8f13",
+        "filename": "cc/config/tidy.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-08-17T20:07:01Z",
+      "side": 1,
+      "message": "Done. Moved to tidy.mk.",
+      "parentUuid": "1770190b_d8294592",
+      "revId": "a1fcb17378c7cd6162e50ab26a4a7d61b2168d68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56813462_659b65df",
         "filename": "scripts/clang-tidy.sh",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2018-08-17T17:45:22Z",
       "side": 1,
       "message": "You could keep this script alongside clang since it is likely to change with clang prebuilts updates.",
+      "revId": "a1fcb17378c7cd6162e50ab26a4a7d61b2168d68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "845db092_e327dda4",
+        "filename": "scripts/clang-tidy.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-08-17T20:07:01Z",
+      "side": 1,
+      "message": "The prebuilts binaries are not changed as frequently as build rules and flags.\nWe are more likely to test and fix new flag issues in build rules without updating to the prebuilts, e.g. flto and fsnaitize flags. So I think it is easier to keep this wrapper here.",
+      "parentUuid": "56813462_659b65df",
       "revId": "a1fcb17378c7cd6162e50ab26a4a7d61b2168d68",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
