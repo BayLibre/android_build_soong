@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9085b063_a0ce53ff",
+        "filename": "android/module.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 1540,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-17T01:42:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96cfd2f6_38011717",
+      "range": {
+        "startLine": 1539,
+        "startChar": 1,
+        "endLine": 1540,
+        "endChar": 50
+      },
+      "revId": "347bda450722bd8b8438b8f96ca358534e79fc56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca64b161_4cdc2c24",
         "filename": "genrule/genrule.go",
         "patchSetId": 13
@@ -36,6 +60,30 @@
       "writtenOn": "2018-08-16T16:36:49Z",
       "side": 1,
       "message": "Excuse my go noobness but I would expect g to be what we are returning? Anyone have a good link to explain this?",
+      "range": {
+        "startLine": 461,
+        "startChar": 0,
+        "endLine": 462,
+        "endChar": 30
+      },
+      "revId": "347bda450722bd8b8438b8f96ca358534e79fc56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3985d91b_45190b7e",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-17T01:42:09Z",
+      "side": 1,
+      "message": "(g *Module) is not a return. It\u0027s the struct name and we implement a interface called IDEInfo. There is a return in this function.",
+      "parentUuid": "ca64b161_4cdc2c24",
       "range": {
         "startLine": 461,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "240dabdf_7f9fbe72",
+        "filename": "java/jdeps.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-17T01:42:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d97f7ec3_16a8ae9a",
+      "range": {
+        "startLine": 68,
+        "startChar": 23,
+        "endLine": 68,
+        "endChar": 54
+      },
+      "revId": "347bda450722bd8b8438b8f96ca358534e79fc56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "89cf1c6c_fa798457",
         "filename": "java/jdeps.go",
         "patchSetId": 13
@@ -82,6 +154,30 @@
       "writtenOn": "2018-08-16T16:36:49Z",
       "side": 1,
       "message": "There\u0027s likely an env variable for this you can use.",
+      "range": {
+        "startLine": 72,
+        "startChar": 35,
+        "endLine": 72,
+        "endChar": 111
+      },
+      "revId": "347bda450722bd8b8438b8f96ca358534e79fc56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf1653dd_daff80d8",
+        "filename": "java/jdeps.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-17T01:42:09Z",
+      "side": 1,
+      "message": "I use printenv to display environment variables but can\u0027t find one. I search in build folder and didn\u0027t find either. I\u0027ll replace it with an env variable if I find one in the future.",
+      "parentUuid": "89cf1c6c_fa798457",
       "range": {
         "startLine": 72,
         "startChar": 35,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "3b58f61a_0f27516b",
+        "filename": "java/jdeps.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-17T01:42:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36f0116e_ac967c7e",
+      "range": {
+        "startLine": 73,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 54
+      },
+      "revId": "347bda450722bd8b8438b8f96ca358534e79fc56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bcc2062d_25899652",
         "filename": "java/jdeps.go",
         "patchSetId": 13
@@ -137,6 +257,30 @@
       "revId": "347bda450722bd8b8438b8f96ca358534e79fc56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4787256d_7cb8d695",
+        "filename": "java/jdeps.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-17T01:42:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcc2062d_25899652",
+      "range": {
+        "startLine": 150,
+        "startChar": 29,
+        "endLine": 150,
+        "endChar": 40
+      },
+      "revId": "347bda450722bd8b8438b8f96ca358534e79fc56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -180,6 +324,30 @@
     },
     {
       "key": {
+        "uuid": "65fcfd44_2edef9dd",
+        "filename": "java/jdeps_test.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-17T01:42:09Z",
+      "side": 1,
+      "message": "Because there is a assert equal function in golang, if I\u0027d to use assert I have to write one myself and add t.Helper() so that it marks the calling function as a test helper function.",
+      "parentUuid": "0e97d2be_867b5541",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 1
+      },
+      "revId": "347bda450722bd8b8438b8f96ca358534e79fc56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "81d4ffe6_a5b98281",
         "filename": "java/jdeps_test.go",
         "patchSetId": 13
@@ -200,6 +368,30 @@
       "revId": "347bda450722bd8b8438b8f96ca358534e79fc56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9462686_3fd2e4b6",
+        "filename": "java/jdeps_test.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-17T01:42:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81d4ffe6_a5b98281",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 26
+      },
+      "revId": "347bda450722bd8b8438b8f96ca358534e79fc56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
