@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a21efe06_c2fad671",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-17T17:27:14Z",
+      "side": 1,
+      "message": "As long as you are renaming this it should be Product_services_specific so the .bp file is product_services_specific",
+      "revId": "50f195d54d56d2bc507eaf81f7b548fa5600a578",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
