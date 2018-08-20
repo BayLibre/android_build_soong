@@ -70,6 +70,24 @@
       "revId": "6c5403d2f66566893d49d911b2f7e321fa72246e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25f75f7f_d99c847c",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-20T22:15:28Z",
+      "side": 1,
+      "message": "Can you add to make it explicit:\n\nfunc (p *prebuiltLibraryLinker) linkerProps() []interface{} {\n\treturn p.libraryDecorator.linkerProps()\n}",
+      "parentUuid": "0c69ced6_5a997c4b",
+      "revId": "6c5403d2f66566893d49d911b2f7e321fa72246e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
