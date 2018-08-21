@@ -16,6 +16,10 @@ package config
 
 var (
 	KotlinStdlibJar = "external/kotlinc/lib/kotlin-stdlib.jar"
+	IllegalFlags    = []string{
+		"-no-jdk",
+		"-no-stdlib",
+	}
 )
 
 func init() {
