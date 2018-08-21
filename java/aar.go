@@ -186,15 +186,31 @@ func (a *aapt) buildActions(ctx android.ModuleContext, sdkContext sdkContext, ex
 	// This file isn't used by Soong, but is generated for exporting
 	extraPackages := android.PathForModuleOut(ctx, "extra_packages")
 
-	var compiledRes, compiledOverlay android.Paths
+	var compiledResDirs []android.Paths
 	for _, dir := range resDirs {
-		compiledRes = append(compiledRes, aapt2Compile(ctx, dir.dir, dir.files).Paths()...)
+		compiledResDirs = append(compiledResDirs, aapt2Compile(ctx, dir.dir, dir.files).Paths())
 	}
+
+	var compiledRes, compiledOverlay android.Paths
+	if len(transitiveStaticLibs) > 0 {
+		// If we are using static android libraries, every source file becomes an overlay.
+		// This is to emulate old AAPT behavior which simulated library support.
+		compiledOverlay = append(compiledOverlay, transitiveStaticLibs...)
+		for _, compiledResDir := range compiledResDirs {
+			compiledOverlay = append(compiledOverlay, compiledResDir...)
+		}
+	} else if len(compiledResDirs) > 0 {
+		// Without static libraries, the first directory is our directory, which can then be
+		// overlaid by the rest.
+		compiledRes = append(compiledRes, compiledResDirs[0]...)
+		for _, compiledResDir := range compiledResDirs[1:] {
+			compiledOverlay = append(compiledOverlay, compiledResDir...)
+		}
+	}
+
 	for _, dir := range overlayDirs {
 		compiledOverlay = append(compiledOverlay, aapt2Compile(ctx, dir.dir, dir.files).Paths()...)
 	}
-
-	compiledOverlay = append(compiledOverlay, transitiveStaticLibs...)
 
 	aapt2Link(ctx, packageRes, srcJar, proguardOptionsFile, rTxt, extraPackages,
 		linkFlags, linkDeps, compiledRes, compiledOverlay)
