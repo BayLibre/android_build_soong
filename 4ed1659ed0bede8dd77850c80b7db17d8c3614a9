@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b9230fb_2b9bee2d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-21T17:48:23Z",
+      "side": 1,
+      "message": "What flags are you worried about?  Adding a new property for every kotlinc flag isn\u0027t going to scale well.  For cc_* modules we have checks to explicitly error on flags we don\u0027t want passed by the Android.bp files (https://android.googlesource.com/platform/build/soong/+/master/cc/check.go)",
+      "revId": "4ed1659ed0bede8dd77850c80b7db17d8c3614a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fd54bdc_a9498341",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-21T17:48:23Z",
+      "side": 1,
+      "message": "These should have comments which will show up in the documentation at out/soong/docs/soong_build.html",
+      "revId": "4ed1659ed0bede8dd77850c80b7db17d8c3614a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3c40da0_65ca61e2",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1308,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-21T17:48:23Z",
+      "side": 1,
+      "message": "I\u0027m a little worried about this given the non-final nature of the coroutine apis.  Encouraging using them will make it hard to update the kotlin version later if the api has changed - every user would need to be fixed.",
+      "revId": "4ed1659ed0bede8dd77850c80b7db17d8c3614a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1eaa0162_9d8a010f",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1319,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-21T17:48:23Z",
+      "side": 1,
+      "message": "Maybe we should take advantage of the low amount of kotlin code to add -Werror to the default flags, and then let modules disable any warnings they don\u0027t want to fix?",
+      "revId": "4ed1659ed0bede8dd77850c80b7db17d8c3614a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
