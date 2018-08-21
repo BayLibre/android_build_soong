@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73979f9b_1131d1fa",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-21T17:36:58Z",
+      "side": 1,
+      "message": "Maybe add a comment here:\n\nDroiddoc always gets -source 1.8 because it doesn\u0027t support 1.9 sources.  For modules with 1.9\nsources, droiddoc will get sources produced by metalava which will have already stripped out the\n1.9 language features.",
+      "revId": "56a857cacb7b916b7f845e0f06b90d1ca6b8a903",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
