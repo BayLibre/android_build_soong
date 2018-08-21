@@ -89,6 +89,9 @@ type CompilerProperties struct {
 	// list of module-specific flags that will be used for javac compiles
 	Javacflags []string `android:"arch_variant"`
 
+	// list of module-specific flags that will be used for kotlinc compiles
+	Kotlincflags []string `android:"arch_variant"`
+
 	// list of of java libraries that will be in the classpath
 	Libs []string `android:"arch_variant"`
 
@@ -979,6 +982,7 @@ func (j *Module) collectBuilderFlags(ctx android.ModuleContext, deps deps) javaB
 		flags.aidlFlags = "$aidlFlags"
 	}
 
+
 	if len(javacFlags) > 0 {
 		// optimization.
 		ctx.Variable(pctx, "javacFlags", strings.Join(javacFlags, " "))
@@ -1024,11 +1028,22 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars ...android.Path
 	var kotlinJars android.Paths
 
 	if srcFiles.HasExt(".kt") {
+
+		// kotlin flags.
+		kotlincFlags := j.properties.Kotlincflags
+		kotlincFlags, _ = android.FilterList(kotlincFlags, config.IllegalFlags)
+		CheckKotlincFlags(ctx, kotlincFlags)
+		if len(kotlincFlags) > 0 {
+			// optimization.
+			ctx.Variable(pctx, "kotlincFlags", strings.Join(kotlincFlags, " "))
+			flags.kotlincFlags = "$kotlincFlags"
+		}
+
+		flags.kotlincFlags += fmt.Sprintf(" -kotlin-home %s", config.KotlinHome)
 		// If there are kotlin files, compile them first but pass all the kotlin and java files
 		// kotlinc will use the java files to resolve types referenced by the kotlin files, but
 		// won't emit any classes for them.
-
-		flags.kotlincFlags = "-no-stdlib"
+		flags.kotlincFlags += " -no-stdlib"
 		if ctx.Device() {
 			flags.kotlincFlags += " -no-jdk"
 		}
@@ -1266,6 +1281,29 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars ...android.Path
 
 	// Save the output file with no relative path so that it doesn't end up in a subdirectory when used as a resource
 	j.outputFile = outputFile.WithoutRel()
+}
+
+// Check for invalid kotlinc flags. Only use this for flags explicitly passed by the user,
+// since some of these flags may be used internally.
+func CheckKotlincFlags(ctx android.ModuleContext, flags []string) {
+	for _, flag := range flags {
+		flag = strings.TrimSpace(flag)
+
+		if !strings.HasPrefix(flag, "-") {
+			ctx.PropertyErrorf("kotlincflags", "Flag `%s` must start with `-`", flag)
+		} else if strings.HasPrefix(flag, "-Xintellij-plugin-root") {
+			ctx.PropertyErrorf("kotlincflags", "Bad flag: `%s`, only use internal compiler for consistency.", flag)
+		} else if inList(flag, config.IllegalFlags) {
+			ctx.PropertyErrorf("kotlincflags", "Flag `%s` already used by build system", flag)
+		} else if flag == "-include-runtime" {
+			ctx.PropertyErrorf("kotlincflags", "Bad flag: `%s`, do not include runtime, build for JVM", flag)
+		}  else if strings.Contains(flag, " ") {
+			args := strings.Split(flag, " ")
+			if args[0] == "-kotlin-home" {
+				ctx.PropertyErrorf("kotlincflags", "Flag `-kotlin-home` already used by build system and points to `%s`", config.KotlinHome)
+			}
+		}
+	}
 }
 
 func (j *Module) compileJavaHeader(ctx android.ModuleContext, srcFiles, srcJars android.Paths,
