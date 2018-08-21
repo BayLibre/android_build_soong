@@ -93,6 +93,11 @@ type CompilerProperties struct {
 	// list of module-specific flags that will be used for javac compiles
 	Javacflags []string `android:"arch_variant"`
 
+	Kotlincflags struct {
+		Warningerrors *bool
+		Coroutines *string
+	}
+
 	// list of of java libraries that will be in the classpath
 	Libs []string `android:"arch_variant"`
 
@@ -1040,6 +1045,8 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars ...android.Path
 			flags.kotlincFlags += " -no-jdk"
 		}
 
+		flags.kotlincFlags += j.kotlincFlags(ctx)
+
 		var kotlinSrcFiles android.Paths
 		kotlinSrcFiles = append(kotlinSrcFiles, uniqueSrcFiles...)
 		kotlinSrcFiles = append(kotlinSrcFiles, srcFiles.FilterByExt(".kt")...)
@@ -1293,6 +1300,26 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars ...android.Path
 
 	// Save the output file with no relative path so that it doesn't end up in a subdirectory when used as a resource
 	j.outputFile = outputFile.WithoutRel()
+}
+
+func (j *Module) kotlincFlags(ctx android.ModuleContext) string {
+
+	ret := ""
+	if j.properties.Kotlincflags.Coroutines != nil {
+		cor := j.properties.Kotlincflags.Coroutines
+		if *cor == "enable" || *cor == "warn" || *cor == "error" {
+			ret += " -Xcoroutines=" + *cor
+		} else {
+			ctx.PropertyErrorf("kotlincflags", "Unknown coroutines flag: %s", *cor)
+			return ""
+		}
+	}
+
+	if Bool(j.properties.Kotlincflags.Warningerrors) {
+		ret += " -Werror"
+	}
+
+	return ret
 }
 
 func (j *Module) compileJavaHeader(ctx android.ModuleContext, srcFiles, srcJars android.Paths,
