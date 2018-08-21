@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "295e291f_85cf1b18",
+        "filename": "ui/build/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2018-08-21T16:13:23Z",
+      "side": 1,
+      "message": "Shall I mention lower case variant here?",
+      "range": {
+        "startLine": 292,
+        "startChar": 22,
+        "endLine": 292,
+        "endChar": 29
+      },
+      "revId": "d236e0e4f55505a501311b4a29b15913eeb57aa2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
