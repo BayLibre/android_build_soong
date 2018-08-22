@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5b8356a3_95696f87",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1010077
+      },
+      "writtenOn": "2018-08-22T10:11:48Z",
+      "side": 1,
+      "message": "E.g. -include-runtime might not be the best idea to allow on Android, -X flags are experimental and subject to change. Anyway, gradle (and AFAIK bazel and buck) wrap support in their DSL, so e.g. treating warnings as errors in gradle is accomplished by:\n\n compileKotlin {\n    kotlinOptions.allWarningsAsErrors \u003d true\n }\n\nand trying out coroutines looks something like this:\n\n  kotlin {\n    experimental {\n        coroutines \u0027enable\u0027\n    }\n  }\n\n\n\nI think I agree with the idea of adding support for certain features incrementally rather than opening the gates for all and then chase the ones to remove.\n\nIn fact, I\u0027d like to see a way to add support for plugins like kapt and android extensions done in a similar fashion. I think support from Jetbrains would be needed for that to go smoother.",
+      "parentUuid": "4b9230fb_2b9bee2d",
+      "revId": "4ed1659ed0bede8dd77850c80b7db17d8c3614a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3fd54bdc_a9498341",
         "filename": "java/java.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "4ed1659ed0bede8dd77850c80b7db17d8c3614a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff2275d4_46c7b9b6",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1010077
+      },
+      "writtenOn": "2018-08-22T10:11:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fd54bdc_a9498341",
+      "revId": "4ed1659ed0bede8dd77850c80b7db17d8c3614a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "c98db474_96a63f12",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1308,
+      "author": {
+        "id": 1010077
+      },
+      "writtenOn": "2018-08-22T10:11:48Z",
+      "side": 1,
+      "message": "From what I hear, coroutines are in fact stabilized from kotlin 1.3. Not sure what the flags look like there, haven\u0027t tried 1.3 yet. On the other hand, it\u0027s one of the most sought for features among my colleagues to have until 1.3 stable release.",
+      "parentUuid": "d3c40da0_65ca61e2",
+      "revId": "4ed1659ed0bede8dd77850c80b7db17d8c3614a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1eaa0162_9d8a010f",
         "filename": "java/java.go",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2018-08-21T17:48:23Z",
       "side": 1,
       "message": "Maybe we should take advantage of the low amount of kotlin code to add -Werror to the default flags, and then let modules disable any warnings they don\u0027t want to fix?",
+      "revId": "4ed1659ed0bede8dd77850c80b7db17d8c3614a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76fe1e05_fcd973bf",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1319,
+      "author": {
+        "id": 1010077
+      },
+      "writtenOn": "2018-08-22T10:11:48Z",
+      "side": 1,
+      "message": "I don\u0027t disagree. Not sure how consistent the use of -Werror is, though. Maybe going with compiler\u0027s defaults is sane in this case? Sounds reasonable to list warnings and then use switches to either not show them at all (-no-warn) or treat them as errors (-Werror). Mind you, this implementation would not allow ignoring warnings, but warning suppression should be trivial to add this way.",
+      "parentUuid": "1eaa0162_9d8a010f",
       "revId": "4ed1659ed0bede8dd77850c80b7db17d8c3614a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
