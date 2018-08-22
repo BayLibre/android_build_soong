@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "04cc38b7_395d9054",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-22T06:18:47Z",
+      "side": 1,
+      "message": "Done\n\nfunc (m my_type) my_func() int {\n   //code\n}\nIn the case of golang, return value is int. Return value is after function name, not before.",
+      "parentUuid": "3985d91b_45190b7e",
+      "range": {
+        "startLine": 461,
+        "startChar": 0,
+        "endLine": 462,
+        "endChar": 30
+      },
+      "revId": "347bda450722bd8b8438b8f96ca358534e79fc56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d97f7ec3_16a8ae9a",
         "filename": "java/jdeps.go",
         "patchSetId": 13
@@ -349,6 +373,24 @@
     },
     {
       "key": {
+        "uuid": "01eecc7f_ce473504",
+        "filename": "java/jdeps.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-22T06:18:47Z",
+      "side": 1,
+      "message": "Done, fix in patch 14.",
+      "parentUuid": "aa64394b_9ea46dd7",
+      "revId": "347bda450722bd8b8438b8f96ca358534e79fc56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e97d2be_867b5541",
         "filename": "java/jdeps_test.go",
         "patchSetId": 13
@@ -393,6 +435,30 @@
       "revId": "347bda450722bd8b8438b8f96ca358534e79fc56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "193d65bf_2a7b7ac0",
+        "filename": "java/jdeps_test.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-22T06:18:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65fcfd44_2edef9dd",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 1
+      },
+      "revId": "347bda450722bd8b8438b8f96ca358534e79fc56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
