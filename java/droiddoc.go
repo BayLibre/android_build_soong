@@ -341,6 +341,16 @@ type DroidstubsProperties struct {
 
 	// if set to true, allow Metalava to generate doc_stubs source files. Defaults to false.
 	Create_doc_stubs *bool
+
+	// is set to true, Metalava will allow framework SDK to contain API levels annotations.
+	Api_levels_annotations_enabled *bool
+
+	// the dirs which Metalava extracts API levels annotations from.
+	Api_levels_annotations_dirs []string
+
+	// if set to true, collect the values used by the Dev tools and
+	// write them in files packaged with the SDK. Defaults to false.
+	Write_sdk_values *bool
 }
 
 //
@@ -357,9 +367,9 @@ type droiddocBuilderFlags struct {
 	doclavaDocsFlags  string
 	postDoclavaCmds   string
 
-	metalavaStubsFlags       string
-	metalavaAnnotationsFlags string
-	metalavaJavadocFlags     string
+	metalavaStubsFlags                string
+	metalavaAnnotationsFlags          string
+	metalavaApiLevelsAnnotationsFlags string
 
 	metalavaDokkaFlags string
 }
@@ -1180,6 +1190,7 @@ type Droidstubs struct {
 	checkLastReleasedApiTimestamp android.WritablePath
 
 	annotationsZip android.WritablePath
+	apiVersionsXml android.WritablePath
 
 	apiFilePath android.Path
 }
@@ -1228,6 +1239,12 @@ func (d *Droidstubs) DepsMutator(ctx android.BottomUpMutatorContext) {
 	if len(d.properties.Merge_annotations_dirs) != 0 {
 		for _, mergeAnnotationsDir := range d.properties.Merge_annotations_dirs {
 			ctx.AddDependency(ctx.Module(), metalavaMergeAnnotationsDirTag, mergeAnnotationsDir)
+		}
+	}
+
+	if len(d.properties.Api_levels_annotations_dirs) != 0 {
+		for _, apiLevelsAnnotationsDir := range d.properties.Api_levels_annotations_dirs {
+			ctx.AddDependency(ctx.Module(), metalavaAPILevelsAnnotationsDirTag, apiLevelsAnnotationsDir)
 		}
 	}
 }
@@ -1302,6 +1319,10 @@ func (d *Droidstubs) collectStubsFlags(ctx android.ModuleContext,
 		*implicitOutputs = append(*implicitOutputs, d.exactApiFile)
 	}
 
+	if Bool(d.properties.Write_sdk_values) {
+		metalavaFlags = metalavaFlags + " --sdk-values " + android.PathForModuleOut(ctx, "out").String()
+	}
+
 	if Bool(d.properties.Create_doc_stubs) {
 		metalavaFlags += " --doc-stubs " + android.PathForModuleOut(ctx, "stubsDir").String()
 	} else {
@@ -1331,7 +1352,7 @@ func (d *Droidstubs) collectAnnotationsFlags(ctx android.ModuleContext,
 		flags += " --extract-annotations " + d.annotationsZip.String()
 
 		if len(d.properties.Merge_annotations_dirs) == 0 {
-			ctx.PropertyErrorf("metalava_merge_annotations_dirs",
+			ctx.PropertyErrorf("merge_annotations_dirs",
 				"has to be non-empty if annotations was enabled!")
 		}
 		ctx.VisitDirectDepsWithTag(metalavaMergeAnnotationsDirTag, func(m android.Module) {
@@ -1339,7 +1360,7 @@ func (d *Droidstubs) collectAnnotationsFlags(ctx android.ModuleContext,
 				*implicits = append(*implicits, t.deps...)
 				flags += " --merge-annotations " + t.dir.String()
 			} else {
-				ctx.PropertyErrorf("metalava_merge_annotations_dirs",
+				ctx.PropertyErrorf("merge_annotations_dirs",
 					"module %q is not a metalava merge-annotations dir", ctx.OtherModuleName(m))
 			}
 		})
@@ -1350,9 +1371,47 @@ func (d *Droidstubs) collectAnnotationsFlags(ctx android.ModuleContext,
 	return flags
 }
 
+func (d *Droidstubs) collectAPILevelsAnnotationsFlags(ctx android.ModuleContext,
+	implicits *android.Paths, implicitOutputs *android.WritablePaths) string {
+	var flags string
+	if Bool(d.properties.Api_levels_annotations_enabled) {
+		d.apiVersionsXml = android.PathForModuleOut(ctx, "api-versions.xml")
+		*implicitOutputs = append(*implicitOutputs, d.apiVersionsXml)
+
+		if len(d.properties.Api_levels_annotations_dirs) == 0 {
+			ctx.PropertyErrorf("api_levels_annotations_dirs",
+				"has to be non-empty if api levels annotations was enabled!")
+		}
+
+		flags = " --generate-api-levels " + d.apiVersionsXml.String() + " --apply-api-levels " +
+			d.apiVersionsXml.String() + " --current-version " + ctx.Config().PlatformSdkVersion() +
+			" --current-codename " + ctx.Config().PlatformSdkCodename() + " "
+
+		ctx.VisitDirectDepsWithTag(metalavaAPILevelsAnnotationsDirTag, func(m android.Module) {
+			if t, ok := m.(*ExportedDroiddocDir); ok {
+				var androidJars android.Paths
+				for _, dep := range t.deps {
+					if strings.HasSuffix(dep.String(), "android.jar") {
+						androidJars = append(androidJars, dep)
+					}
+				}
+				*implicits = append(*implicits, androidJars...)
+				flags += " --android-jar-pattern " + t.dir.String() + "/%/android.jar "
+			} else {
+				ctx.PropertyErrorf("api_levels_annotations_dirs",
+					"module %q is not a metalava api-levels-annotations dir", ctx.OtherModuleName(m))
+			}
+		})
+
+	}
+
+	return flags
+}
+
 func (d *Droidstubs) transformMetalava(ctx android.ModuleContext, implicits android.Paths,
 	implicitOutputs android.WritablePaths, javaVersion,
 	bootclasspathArgs, classpathArgs, sourcepathArgs, opts string) {
+
 	ctx.Build(pctx, android.BuildParams{
 		Rule:            metalava,
 		Description:     "Metalava",
@@ -1423,6 +1482,7 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	flags.metalavaStubsFlags = d.collectStubsFlags(ctx, &implicitOutputs)
 	flags.metalavaAnnotationsFlags = d.collectAnnotationsFlags(ctx, &implicits, &implicitOutputs)
+	flags.metalavaApiLevelsAnnotationsFlags = d.collectAPILevelsAnnotationsFlags(ctx, &implicits, &implicitOutputs)
 	if strings.Contains(d.Javadoc.args, "--generate-documentation") {
 		// Currently Metalava have the ability to invoke Javadoc in a seperate process.
 		// Pass "-nodocs" to suppress the Javadoc invocation when Metalava receives
@@ -1431,7 +1491,8 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 	d.transformMetalava(ctx, implicits, implicitOutputs, javaVersion,
 		flags.bootClasspathArgs, flags.classpathArgs, flags.sourcepathArgs,
-		flags.metalavaStubsFlags+flags.metalavaAnnotationsFlags+" "+d.Javadoc.args)
+		flags.metalavaStubsFlags+flags.metalavaAnnotationsFlags+
+			flags.metalavaApiLevelsAnnotationsFlags+" "+d.Javadoc.args)
 
 	if apiCheckEnabled(d.properties.Check_api.Current, "current") &&
 		!ctx.Config().IsPdkBuild() {
@@ -1489,6 +1550,7 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 //
 var droiddocTemplateTag = dependencyTag{name: "droiddoc-template"}
 var metalavaMergeAnnotationsDirTag = dependencyTag{name: "metalava-merge-annotations-dir"}
+var metalavaAPILevelsAnnotationsDirTag = dependencyTag{name: "metalava-api-levels-annotations-dir"}
 
 type ExportedDroiddocDirProperties struct {
 	// path to the directory containing Droiddoc related files.
