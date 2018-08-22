@@ -39,6 +39,7 @@ var d8 = pctx.AndroidStaticRule("d8",
 var r8 = pctx.AndroidStaticRule("r8",
 	blueprint.RuleParams{
 		Command: `rm -rf "$outDir" && mkdir -p "$outDir" && ` +
+			`rm -f "$outDict" && touch "$outDict" && ` +
 			`${config.R8Cmd} -injars $in --output $outDir ` +
 			`--force-proguard-compatibility ` +
 			`-printmapping $outDict ` +
