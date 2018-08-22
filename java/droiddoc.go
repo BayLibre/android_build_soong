@@ -341,6 +341,9 @@ type DroidstubsProperties struct {
 
 	// if set to true, allow Metalava to generate doc_stubs source files. Defaults to false.
 	Create_doc_stubs *bool
+
+	// is set to true, Metalava will allow framework SDK to contain API level annotations.
+	Api_level_annotations_enabled *bool
 }
 
 //
@@ -359,7 +362,7 @@ type droiddocBuilderFlags struct {
 
 	metalavaStubsFlags       string
 	metalavaAnnotationsFlags string
-	metalavaJavadocFlags     string
+	metalavaApiLevelFlags    string
 
 	metalavaDokkaFlags string
 }
@@ -1180,6 +1183,7 @@ type Droidstubs struct {
 	checkLastReleasedApiTimestamp android.WritablePath
 
 	annotationsZip android.WritablePath
+	apiVersionsXml android.WritablePath
 
 	apiFilePath android.Path
 }
@@ -1302,6 +1306,10 @@ func (d *Droidstubs) collectStubsFlags(ctx android.ModuleContext,
 		*implicitOutputs = append(*implicitOutputs, d.exactApiFile)
 	}
 
+	if Bool(d.properties.Write_sdk_values) {
+		metalavaFlags = metalavaFlags + " --sdk-values " + android.PathForModuleOut(ctx, "out").String()
+	}
+
 	if Bool(d.properties.Create_doc_stubs) {
 		metalavaFlags += " --doc-stubs " + android.PathForModuleOut(ctx, "stubsDir").String()
 	} else {
@@ -1350,9 +1358,28 @@ func (d *Droidstubs) collectAnnotationsFlags(ctx android.ModuleContext,
 	return flags
 }
 
+func (d *Droidstubs) collectAPILevelFlags(ctx android.ModuleContext,
+	implicitOutputs *android.WritablePaths) string {
+	var flags string
+	if Bool(d.properties.Api_level_annotations_enabled) {
+		d.apiVersionsXml = android.PathForModuleOut(ctx, "api-versions.xml")
+		*implicitOutputs = append(*implicitOutputs, d.apiVersionsXml)
+		// TODO(nanzhang): Add a check to make sure all android.jar files in
+		// prebuilts are part of dependencies.
+		flags = " --generate-api-levels " + d.apiVersionsXml.String() +
+			" --apply-api-levels " + d.apiVersionsXml.String() + " --android-jar-pattern " +
+			" prebuilts/tools/common/api-versions/android-%/android.jar " + " --android-jar-pattern " +
+			" prebuilts/sdk/%/android.jar " + " --current-version " + ctx.Config().PlatformSdkVersion() +
+			" --current-codename " + ctx.Config().PlatformSdkCodename() + " "
+	}
+
+	return flags
+}
+
 func (d *Droidstubs) transformMetalava(ctx android.ModuleContext, implicits android.Paths,
 	implicitOutputs android.WritablePaths, javaVersion,
 	bootclasspathArgs, classpathArgs, sourcepathArgs, opts string) {
+
 	ctx.Build(pctx, android.BuildParams{
 		Rule:            metalava,
 		Description:     "Metalava",
@@ -1370,6 +1397,7 @@ func (d *Droidstubs) transformMetalava(ctx android.ModuleContext, implicits andr
 			"classpathArgs":     classpathArgs,
 			"sourcepathArgs":    sourcepathArgs,
 			"opts":              opts,
+			"postDoclavaCmds":   postDoclavaCmds,
 		},
 	})
 }
@@ -1423,6 +1451,7 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	flags.metalavaStubsFlags = d.collectStubsFlags(ctx, &implicitOutputs)
 	flags.metalavaAnnotationsFlags = d.collectAnnotationsFlags(ctx, &implicits, &implicitOutputs)
+	flags.metalavaApiLevelFlags = d.collectAPILevelFlags(ctx, &implicitOutputs)
 	if strings.Contains(d.Javadoc.args, "--generate-documentation") {
 		// Currently Metalava have the ability to invoke Javadoc in a seperate process.
 		// Pass "-nodocs" to suppress the Javadoc invocation when Metalava receives
@@ -1431,7 +1460,7 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 	d.transformMetalava(ctx, implicits, implicitOutputs, javaVersion,
 		flags.bootClasspathArgs, flags.classpathArgs, flags.sourcepathArgs,
-		flags.metalavaStubsFlags+flags.metalavaAnnotationsFlags+" "+d.Javadoc.args)
+		flags.metalavaStubsFlags+flags.metalavaAnnotationsFlags+flags.metalavaApiLevelFlags+" "+d.Javadoc.args)
 
 	if apiCheckEnabled(d.properties.Check_api.Current, "current") &&
 		!ctx.Config().IsPdkBuild() {
