@@ -74,7 +74,7 @@ var (
 				`$bootclasspathArgs $classpathArgs -sourcepath $sourcepath --no-banner --color --quiet ` +
 				`--stubs $stubsDir $opts && ` +
 				`${config.SoongZipCmd} -write_if_changed -d -o $docZip -C $outDir -D $outDir && ` +
-				`${config.SoongZipCmd} -write_if_changed -jar -o $out -C $stubsDir -D $stubsDir`,
+				`${config.SoongZipCmd} -write_if_changed -jar -o $out -C $stubsDir -D $stubsDir $postDoclavaCmds`,
 			CommandDeps: []string{
 				"${config.ZipSyncCmd}",
 				"${config.JavaCmd}",
@@ -87,7 +87,7 @@ var (
 			Restat:         true,
 		},
 		"outDir", "srcJarDir", "stubsDir", "docStubsDir", "srcJars", "javaVersion", "bootclasspathArgs",
-		"classpathArgs", "sourcepath", "opts", "docZip")
+		"classpathArgs", "sourcepath", "opts", "docZip", "postDoclavaCmds")
 )
 
 func init() {
@@ -266,6 +266,9 @@ type DroiddocProperties struct {
 	// a list of top-level directories containing files to merge annotations from.
 	Metalava_merge_annotations_dirs []string
 
+	// is set to true, Metalava will allow framework SDK to contain API level annotations.
+	Metalava_api_level_annotations_enabled *bool
+
 	// if set to true, generate docs through Dokka instead of Doclava. Valid only when
 	// metalava_enabled is set to true.
 	Dokka_enabled *bool
@@ -288,6 +291,7 @@ type droiddocBuilderFlags struct {
 	metalavaStubsFlags       string
 	metalavaAnnotationsFlags string
 	metalavaJavadocFlags     string
+	metalavaApiLevelFlags    string
 
 	metalavaDokkaFlags string
 }
@@ -613,6 +617,8 @@ type Droiddoc struct {
 
 	annotationsZip android.WritablePath
 
+	apiVersionsXml android.WritablePath
+
 	apiFilePath android.Path
 }
 
@@ -855,11 +861,11 @@ func (d *Droiddoc) collectDoclavaDocsFlags(ctx android.ModuleContext, implicits 
 }
 
 func (d *Droiddoc) collectStubsFlags(ctx android.ModuleContext, implicitOutputs *android.WritablePaths) (string, string) {
-	var doclavaFlags, MetalavaFlags string
+	var doclavaFlags, metalavaFlags string
 	if d.checkCurrentApi() || d.checkLastReleasedApi() || String(d.properties.Api_filename) != "" {
 		d.apiFile = android.PathForModuleOut(ctx, ctx.ModuleName()+"_api.txt")
 		doclavaFlags += " -api " + d.apiFile.String()
-		MetalavaFlags = MetalavaFlags + " --api " + d.apiFile.String()
+		metalavaFlags = metalavaFlags + " --api " + d.apiFile.String()
 		*implicitOutputs = append(*implicitOutputs, d.apiFile)
 		d.apiFilePath = d.apiFile
 	}
@@ -867,14 +873,14 @@ func (d *Droiddoc) collectStubsFlags(ctx android.ModuleContext, implicitOutputs 
 	if d.checkCurrentApi() || d.checkLastReleasedApi() || String(d.properties.Removed_api_filename) != "" {
 		d.removedApiFile = android.PathForModuleOut(ctx, ctx.ModuleName()+"_removed.txt")
 		doclavaFlags += " -removedApi " + d.removedApiFile.String()
-		MetalavaFlags = MetalavaFlags + " --removed-api " + d.removedApiFile.String()
+		metalavaFlags = metalavaFlags + " --removed-api " + d.removedApiFile.String()
 		*implicitOutputs = append(*implicitOutputs, d.removedApiFile)
 	}
 
 	if String(d.properties.Private_api_filename) != "" {
 		d.privateApiFile = android.PathForModuleOut(ctx, String(d.properties.Private_api_filename))
 		doclavaFlags += " -privateApi " + d.privateApiFile.String()
-		MetalavaFlags = MetalavaFlags + " --private-api " + d.privateApiFile.String()
+		metalavaFlags = metalavaFlags + " --private-api " + d.privateApiFile.String()
 		*implicitOutputs = append(*implicitOutputs, d.privateApiFile)
 	}
 
@@ -887,21 +893,21 @@ func (d *Droiddoc) collectStubsFlags(ctx android.ModuleContext, implicitOutputs 
 	if String(d.properties.Private_dex_api_filename) != "" {
 		d.privateDexApiFile = android.PathForModuleOut(ctx, String(d.properties.Private_dex_api_filename))
 		doclavaFlags += " -privateDexApi " + d.privateDexApiFile.String()
-		MetalavaFlags = MetalavaFlags + " --private-dex-api " + d.privateDexApiFile.String()
+		metalavaFlags = metalavaFlags + " --private-dex-api " + d.privateDexApiFile.String()
 		*implicitOutputs = append(*implicitOutputs, d.privateDexApiFile)
 	}
 
 	if String(d.properties.Removed_dex_api_filename) != "" {
 		d.removedDexApiFile = android.PathForModuleOut(ctx, String(d.properties.Removed_dex_api_filename))
 		doclavaFlags += " -removedDexApi " + d.removedDexApiFile.String()
-		MetalavaFlags = MetalavaFlags + " --removed-dex-api " + d.removedDexApiFile.String()
+		metalavaFlags = metalavaFlags + " --removed-dex-api " + d.removedDexApiFile.String()
 		*implicitOutputs = append(*implicitOutputs, d.removedDexApiFile)
 	}
 
 	if String(d.properties.Exact_api_filename) != "" {
 		d.exactApiFile = android.PathForModuleOut(ctx, String(d.properties.Exact_api_filename))
 		doclavaFlags += " -exactApi " + d.exactApiFile.String()
-		MetalavaFlags = MetalavaFlags + " --exact-api " + d.exactApiFile.String()
+		metalavaFlags = metalavaFlags + " --exact-api " + d.exactApiFile.String()
 		*implicitOutputs = append(*implicitOutputs, d.exactApiFile)
 	}
 
@@ -918,8 +924,9 @@ func (d *Droiddoc) collectStubsFlags(ctx android.ModuleContext, implicitOutputs 
 
 	if Bool(d.properties.Write_sdk_values) {
 		doclavaFlags += " -sdkvalues " + android.PathForModuleOut(ctx, "out").String()
+		metalavaFlags += metalavaFlags + " --sdk-values " + android.PathForModuleOut(ctx, "out").String()
 	}
-	return doclavaFlags, MetalavaFlags
+	return doclavaFlags, metalavaFlags
 }
 
 func (d *Droiddoc) getPostDoclavaCmds(ctx android.ModuleContext, implicits *android.Paths) string {
@@ -1001,9 +1008,27 @@ func (d *Droiddoc) collectMetalavaDokkaFlags(ctx android.ModuleContext, implicit
 		docStubsDir + " " + classpathArgs + " -format dac -dacRoot /reference/kotlin -output " + outDir
 }
 
+func (d *Droiddoc) collectMetalavaAPILevelFlags(ctx android.ModuleContext,
+	implicitOutputs *android.WritablePaths) string {
+	var flags string
+	if Bool(d.properties.Metalava_api_level_annotations_enabled) {
+		d.apiVersionsXml = android.PathForModuleOut(ctx, "api-versions.xml")
+		*implicitOutputs = append(*implicitOutputs, d.apiVersionsXml)
+		// TODO(nanzhang): Add a check to make sure all android.jar files in
+		// prebuilts are part of dependencies.
+		flags = " --generate-api-levels " + d.apiVersionsXml.String() +
+			" --apply-api-levels " + d.apiVersionsXml.String() + " --android-jar-pattern " +
+			" prebuilts/tools/common/api-versions/android-%/android.jar " + " --android-jar-pattern " +
+			" prebuilts/sdk/%/android.jar " + " --current-version " + ctx.Config().PlatformSdkVersion() +
+			" --current-codename " + ctx.Config().PlatformSdkCodename() + " "
+	}
+
+	return flags
+}
+
 func (d *Droiddoc) transformMetalava(ctx android.ModuleContext, implicits android.Paths,
 	implicitOutputs android.WritablePaths, outDir, docStubsDir, javaVersion,
-	bootclasspathArgs, classpathArgs, opts string) {
+	bootclasspathArgs, classpathArgs, opts, postDoclavaCmds string) {
 	ctx.Build(pctx, android.BuildParams{
 		Rule:            metalava,
 		Description:     "Metalava",
@@ -1023,6 +1048,7 @@ func (d *Droiddoc) transformMetalava(ctx android.ModuleContext, implicits androi
 			"sourcepath":        strings.Join(d.Javadoc.sourcepaths.Strings(), ":"),
 			"docZip":            d.Javadoc.docZip.String(),
 			"opts":              opts,
+			"postDoclavaCmds":   postDoclavaCmds,
 		},
 	})
 }
@@ -1114,6 +1140,7 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	flags.doclavaStubsFlags, flags.metalavaStubsFlags = d.collectStubsFlags(ctx, &implicitOutputs)
 	if Bool(d.properties.Metalava_enabled) {
 		flags.metalavaAnnotationsFlags = d.collectMetalavaAnnotationsFlags(ctx, &implicits, &implicitOutputs)
+		flags.metalavaApiLevelFlags = d.collectMetalavaAPILevelFlags(ctx, &implicitOutputs)
 		outDir := android.PathForModuleOut(ctx, "out").String()
 		docStubsDir := android.PathForModuleOut(ctx, "docStubsDir").String()
 		// TODO(nanzhang): Add a Soong property to handle documentation args.
@@ -1123,22 +1150,25 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 					flags.dokkaClasspathArgs, outDir, docStubsDir)
 				d.transformMetalava(ctx, implicits, implicitOutputs, outDir, docStubsDir, javaVersion,
 					flags.bootClasspathArgs, flags.classpathArgs, flags.metalavaStubsFlags+
-						flags.metalavaAnnotationsFlags+" "+strings.Split(flags.args, "--generate-documentation")[0]+
-						flags.metalavaDokkaFlags+" "+strings.Split(flags.args, "--generate-documentation")[1])
+						flags.metalavaAnnotationsFlags+" "+flags.metalavaApiLevelFlags+" "+
+						strings.Split(flags.args, "--generate-documentation")[0]+
+						flags.metalavaDokkaFlags+" "+strings.Split(flags.args, "--generate-documentation")[1], "")
 			} else {
 				flags.metalavaJavadocFlags = d.collectMetalavaJavadocFlags(
 					ctx, flags.bootClasspathArgs, flags.classpathArgs, outDir, docStubsDir)
 				flags.doclavaDocsFlags = d.collectDoclavaDocsFlags(ctx, &implicits, jsilver, doclava)
+				flags.postDoclavaCmds = d.getPostDoclavaCmds(ctx, &implicits)
 				d.transformMetalava(ctx, implicits, implicitOutputs, outDir, docStubsDir, javaVersion,
 					flags.bootClasspathArgs, flags.classpathArgs, flags.metalavaStubsFlags+
-						flags.metalavaAnnotationsFlags+" "+strings.Split(flags.args, "--generate-documentation")[0]+
+						flags.metalavaAnnotationsFlags+" "+flags.metalavaApiLevelFlags+" "+
+						strings.Split(flags.args, "--generate-documentation")[0]+
 						flags.metalavaJavadocFlags+flags.doclavaDocsFlags+
-						" "+strings.Split(flags.args, "--generate-documentation")[1])
+						" "+strings.Split(flags.args, "--generate-documentation")[1], flags.postDoclavaCmds)
 			}
 		} else {
 			d.transformMetalava(ctx, implicits, implicitOutputs, outDir, docStubsDir, javaVersion,
 				flags.bootClasspathArgs, flags.classpathArgs,
-				flags.metalavaStubsFlags+flags.metalavaAnnotationsFlags+flags.args)
+				flags.metalavaStubsFlags+flags.metalavaAnnotationsFlags+flags.metalavaApiLevelFlags+flags.args, "")
 		}
 	} else {
 		flags.doclavaDocsFlags = d.collectDoclavaDocsFlags(ctx, &implicits, jsilver, doclava)
