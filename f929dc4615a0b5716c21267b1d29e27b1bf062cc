@@ -22,6 +22,30 @@
       "revId": "f929dc4615a0b5716c21267b1d29e27b1bf062cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a3d5701_f1f3d2d6",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1121678
+      },
+      "writtenOn": "2018-08-23T09:22:55Z",
+      "side": 1,
+      "message": "I think we should actually make sure that it is empty here, as it will be written by R8 if it is not empty, and the end result is present but empty if R8 did not write anything.\n\nChanged to use truncate -s0 instead.",
+      "parentUuid": "a8c6a8b3_af94d904",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 20
+      },
+      "revId": "f929dc4615a0b5716c21267b1d29e27b1bf062cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
