@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19553229_9cda27a9",
+        "filename": "java/jdeps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2018-08-23T16:31:12Z",
+      "side": 1,
+      "message": "is this the only dep to be hard coded? maybe we should do a list for this const? same for specialModuleName.",
+      "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1073e2cf_416c5854",
+        "filename": "java/jdeps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2018-08-23T16:31:12Z",
+      "side": 1,
+      "message": "why we need this?",
+      "range": {
+        "startLine": 64,
+        "startChar": 21,
+        "endLine": 64,
+        "endChar": 29
+      },
+      "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b73ca483_b2390b01",
+        "filename": "java/jdeps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2018-08-23T16:31:12Z",
+      "side": 1,
+      "message": "maybe rephrase it a bit:\nThe dependency specified in \"srcs\" is a static path, let\u0027s hardcode this to Deps for now until we find a better solution.",
+      "range": {
+        "startLine": 142,
+        "startChar": 4,
+        "endLine": 142,
+        "endChar": 87
+      },
+      "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c3715bb_cfc4ad60",
+        "filename": "java/jdeps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2018-08-23T16:31:12Z",
+      "side": 1,
+      "message": "Extract the base module name from the Import name. Often the Import name has a prefix \"prebuilt_\". Remove the prefix explicitly if needed until we find a better solution to get the Import name.",
+      "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95a24f7e_57bc4341",
+        "filename": "java/jdeps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2018-08-23T16:31:12Z",
+      "side": 1,
+      "message": "do we need this else? line 220 is a loop on range of moduleInfos already, this else shall never be hit.",
+      "range": {
+        "startLine": 201,
+        "startChar": 3,
+        "endLine": 201,
+        "endChar": 7
+      },
+      "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
