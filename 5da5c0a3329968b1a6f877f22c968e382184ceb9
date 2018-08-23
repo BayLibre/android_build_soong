@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b8172901_9ec9d5c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2018-08-23T08:30:52Z",
+      "side": 1,
+      "message": "FYI I don\u0027t know what this is telling me and what the semantics of \"--dex-api\" are intended to be, so I will refrain from reviewing this CL. I trust that some other reviewer on this CL is already familiar enough to be able to review; if not, then please provide more context and I can have another look.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "5da5c0a3329968b1a6f877f22c968e382184ceb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eebdb6ce_e457b5a0",
         "filename": "java/droiddoc.go",
         "patchSetId": 1
