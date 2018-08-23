@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8c6a8b3_af94d904",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1263609
+      },
+      "writtenOn": "2018-08-23T07:22:29Z",
+      "side": 1,
+      "message": "Maybe we should use \u0027touch -a\u0027 so we don\u0027t make the impression we change anything if it\u0027s already there.",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 20
+      },
+      "revId": "f929dc4615a0b5716c21267b1d29e27b1bf062cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
