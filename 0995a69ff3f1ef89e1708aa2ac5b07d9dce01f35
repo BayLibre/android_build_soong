@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "d1ee324f_2bd827ab",
+        "filename": "java/jdeps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-08-24T05:54:47Z",
+      "side": 1,
+      "message": "where is this structure defined?",
+      "range": {
+        "startLine": 58,
+        "startChar": 32,
+        "endLine": 58,
+        "endChar": 47
+      },
+      "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1073e2cf_416c5854",
         "filename": "java/jdeps.go",
         "patchSetId": 17
@@ -42,6 +65,69 @@
     },
     {
       "key": {
+        "uuid": "44b6fe46_bfd4fa75",
+        "filename": "java/jdeps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-08-24T05:54:47Z",
+      "side": 1,
+      "message": "names are not unique identifiers, you may get the configuration for the host variant or android variant (or the prebuilt vs source). It\u0027s generally not safe to combine them -- they may be very different.",
+      "range": {
+        "startLine": 67,
+        "startChar": 15,
+        "endLine": 67,
+        "endChar": 19
+      },
+      "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8422d6d_895dbb33",
+        "filename": "java/jdeps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-08-24T05:54:47Z",
+      "side": 1,
+      "message": "android.PathForOutput(ctx, jdepsJsonFileName).String()",
+      "range": {
+        "startLine": 75,
+        "startChar": 11,
+        "endLine": 75,
+        "endChar": 71
+      },
+      "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8642d9a4_c7194139",
+        "filename": "java/jdeps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-08-24T05:54:47Z",
+      "side": 1,
+      "message": "Why aren\u0027t you using the computed sources list? (*java.Module).compiledJavaSrcs and compiledSrcJars\n\nThat fixes filegroup/module references like this, and handles exclude_srcs.",
+      "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b73ca483_b2390b01",
         "filename": "java/jdeps.go",
         "patchSetId": 17
@@ -59,6 +145,23 @@
         "endLine": 142,
         "endChar": 87
       },
+      "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "377193b5_7b9655af",
+        "filename": "java/jdeps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-08-24T05:54:47Z",
+      "side": 1,
+      "message": "If the core parts of this were in build/soong/android/... like the similar AndroidMk functionality, it could get the BaseModuleName() without the prebuilt hack below",
       "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -98,6 +201,121 @@
         "startChar": 3,
         "endLine": 201,
         "endChar": 7
+      },
+      "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69e7af1b_7af51028",
+        "filename": "java/jdeps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-08-24T05:54:47Z",
+      "side": 1,
+      "message": "Why aren\u0027t you using encoding/json?",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 0
+      },
+      "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70288f00_fadeaf0e",
+        "filename": "java/jdeps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-08-24T05:54:47Z",
+      "side": 1,
+      "message": "panic never returns, so line 213 isn\u0027t needed. Or more likely, we should just return the error:\n\n  return fmt.Errorf(\"Failed to create file: %s, relative: %v\", jdepsJsonFileName, err)",
+      "range": {
+        "startLine": 212,
+        "startChar": 2,
+        "endLine": 212,
+        "endChar": 7
+      },
+      "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d99e635f_d16cff33",
+        "filename": "java/jdeps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-08-24T05:54:47Z",
+      "side": 1,
+      "message": "don\u0027t indent this, since execution won\u0027t continue from the other side of this if statement:\n\n  file, err :\u003d os.Create(jfpath)\n  if err !\u003d nil {\n    return ...\n  }\n  defer file.Close()\n\n  f :\u003d ...",
+      "range": {
+        "startLine": 214,
+        "startChar": 2,
+        "endLine": 214,
+        "endChar": 9
+      },
+      "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf10b152_0671eb44",
+        "filename": "java/jdeps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-08-24T05:54:47Z",
+      "side": 1,
+      "message": "same comment as line 323",
+      "range": {
+        "startLine": 224,
+        "startChar": 4,
+        "endLine": 224,
+        "endChar": 9
+      },
+      "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10d490bc_4991b464",
+        "filename": "java/jdeps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-08-24T05:54:47Z",
+      "side": 1,
+      "message": "this is a pollution of the java package namespace. it would be better if you could make it so that `*dpInfo \u003d\u003d android.IdeInfo{}` would work. But even if that doesn\u0027t work this should be a method on android.IdeInfo instead of a raw function.",
+      "range": {
+        "startLine": 237,
+        "startChar": 5,
+        "endLine": 237,
+        "endChar": 12
       },
       "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
