@@ -16,6 +16,24 @@
       "revId": "262c2ff348f39c4a1e8372d8fa2f3eac5add8ab6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2934bd4_c7221295",
+        "filename": "java/dex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-08-24T20:19:59Z",
+      "side": 1,
+      "message": "truncate doesn\u0027t exist on mac either (and it\u0027s not in our allowed tools list, so it presents a warning, soon to be error, on linux)",
+      "parentUuid": "f5207ad1_56c5567e",
+      "revId": "262c2ff348f39c4a1e8372d8fa2f3eac5add8ab6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
