@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5207ad1_56c5567e",
+        "filename": "java/dex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-24T15:23:09Z",
+      "side": 1,
+      "message": "I\u0027d prefer rm -f $outDict \u0026\u0026 touch $outDict",
+      "revId": "262c2ff348f39c4a1e8372d8fa2f3eac5add8ab6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
