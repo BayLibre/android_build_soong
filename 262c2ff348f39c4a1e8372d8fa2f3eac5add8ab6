@@ -34,6 +34,24 @@
       "revId": "262c2ff348f39c4a1e8372d8fa2f3eac5add8ab6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e3eb971_9b86b4d8",
+        "filename": "java/dex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1121678
+      },
+      "writtenOn": "2018-08-27T11:00:01Z",
+      "side": 1,
+      "message": "Done. Ended up placing the rm before the invocation of R8, and the touch after.",
+      "parentUuid": "c2934bd4_c7221295",
+      "revId": "262c2ff348f39c4a1e8372d8fa2f3eac5add8ab6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
