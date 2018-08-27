@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a7d81898_531f54a7",
+        "filename": "java/jdeps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-27T08:04:24Z",
+      "side": 1,
+      "message": "Done\n\nFix in https://android-review.googlesource.com/c/platform/build/soong/+/730085 PatchSet 18.\nI removed these two const and in genrule/genrule.go, I get its dependency from src.",
+      "parentUuid": "19553229_9cda27a9",
+      "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1ee324f_2bd827ab",
         "filename": "java/jdeps.go",
         "patchSetId": 17
@@ -30,6 +48,30 @@
       "writtenOn": "2018-08-24T05:54:47Z",
       "side": 1,
       "message": "where is this structure defined?",
+      "range": {
+        "startLine": 58,
+        "startChar": 32,
+        "endLine": 58,
+        "endChar": 47
+      },
+      "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7104082f_2666ce13",
+        "filename": "java/jdeps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-27T08:04:24Z",
+      "side": 1,
+      "message": "It\u0027s in android/module.go.",
+      "parentUuid": "d1ee324f_2bd827ab",
       "range": {
         "startLine": 58,
         "startChar": 32,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "cfe8d310_f956b9d5",
+        "filename": "java/jdeps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-27T08:04:24Z",
+      "side": 1,
+      "message": "Done\n\nFix in https://android-review.googlesource.com/c/platform/build/soong/+/730085 PatchSet 18.\n\nI removed this check and use encoding/json to write json file.",
+      "parentUuid": "1073e2cf_416c5854",
+      "range": {
+        "startLine": 64,
+        "startChar": 21,
+        "endLine": 64,
+        "endChar": 29
+      },
+      "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44b6fe46_bfd4fa75",
         "filename": "java/jdeps.go",
         "patchSetId": 17
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "cedf4609_e8f01435",
+        "filename": "java/jdeps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-27T08:04:24Z",
+      "side": 1,
+      "message": "Done,\n\nFix in https://android-review.googlesource.com/c/platform/build/soong/+/730085 PatchSet 18.\nAdd BaseModuleName() string to type IDEInfo interface. In jdeps.go I filter modules out by checking,\n\nif ctx.ModuleSubDir(module) !\u003d \"android_common\" {\n    return\n}",
+      "parentUuid": "44b6fe46_bfd4fa75",
+      "range": {
+        "startLine": 67,
+        "startChar": 15,
+        "endLine": 67,
+        "endChar": 19
+      },
+      "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8422d6d_895dbb33",
         "filename": "java/jdeps.go",
         "patchSetId": 17
@@ -99,6 +189,30 @@
       "writtenOn": "2018-08-24T05:54:47Z",
       "side": 1,
       "message": "android.PathForOutput(ctx, jdepsJsonFileName).String()",
+      "range": {
+        "startLine": 75,
+        "startChar": 11,
+        "endLine": 75,
+        "endChar": 71
+      },
+      "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29076a86_dfa3e3c2",
+        "filename": "java/jdeps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-27T08:04:24Z",
+      "side": 1,
+      "message": "If I use,\n\njfpath :\u003d android.PathForOutput(ctx, jdepsJsonFileName).String()\n\nthe path would be: \"out/soong/module_bp_java_depend.json\"",
+      "parentUuid": "e8422d6d_895dbb33",
       "range": {
         "startLine": 75,
         "startChar": 11,
@@ -128,6 +242,24 @@
     },
     {
       "key": {
+        "uuid": "6b9d58b5_8accecbf",
+        "filename": "java/jdeps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-27T08:04:24Z",
+      "side": 1,
+      "message": "Done,\n\nFix in https://android-review.googlesource.com/c/platform/build/soong/+/730085 PatchSet 18.\nI removed these two const and in genrule/genrule.go, I get its dependency from src.",
+      "parentUuid": "8642d9a4_c7194139",
+      "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b73ca483_b2390b01",
         "filename": "java/jdeps.go",
         "patchSetId": 17
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "b8116161_667ca480",
+        "filename": "java/jdeps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-27T08:04:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b73ca483_b2390b01",
+      "range": {
+        "startLine": 142,
+        "startChar": 4,
+        "endLine": 142,
+        "endChar": 87
+      },
+      "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "377193b5_7b9655af",
         "filename": "java/jdeps.go",
         "patchSetId": 17
@@ -168,6 +324,24 @@
     },
     {
       "key": {
+        "uuid": "fb55bdd6_707bb22e",
+        "filename": "java/jdeps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-27T08:04:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "377193b5_7b9655af",
+      "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c3715bb_cfc4ad60",
         "filename": "java/jdeps.go",
         "patchSetId": 17
@@ -182,6 +356,24 @@
       "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06d336e3_ab822522",
+        "filename": "java/jdeps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-27T08:04:24Z",
+      "side": 1,
+      "message": "Done,\n\nFix in https://android-review.googlesource.com/c/platform/build/soong/+/730085 PatchSet 18.\nAdd BaseModuleName() string to type IDEInfo interface. In jdeps.go I filter modules out by checking,\n\nif ctx.ModuleSubDir(module) !\u003d \"android_common\" {\n    return\n}",
+      "parentUuid": "7c3715bb_cfc4ad60",
+      "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -208,6 +400,30 @@
     },
     {
       "key": {
+        "uuid": "88b1087c_84fb3dc6",
+        "filename": "java/jdeps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-27T08:04:24Z",
+      "side": 1,
+      "message": "Done,\n\nFix in https://android-review.googlesource.com/c/platform/build/soong/+/730085 PatchSet 18.\nI use encoding/json to rewrite it.",
+      "parentUuid": "95a24f7e_57bc4341",
+      "range": {
+        "startLine": 201,
+        "startChar": 3,
+        "endLine": 201,
+        "endChar": 7
+      },
+      "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "69e7af1b_7af51028",
         "filename": "java/jdeps.go",
         "patchSetId": 17
@@ -228,6 +444,30 @@
       "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "948adbc6_a6f8bed0",
+        "filename": "java/jdeps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-27T08:04:24Z",
+      "side": 1,
+      "message": "Done,\n\nFix in https://android-review.googlesource.com/c/platform/build/soong/+/730085 PatchSet 18.\nI use encoding/json to rewrite it.",
+      "parentUuid": "69e7af1b_7af51028",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 0
+      },
+      "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -254,6 +494,30 @@
     },
     {
       "key": {
+        "uuid": "3cc85dbe_566c4f7c",
+        "filename": "java/jdeps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-27T08:04:24Z",
+      "side": 1,
+      "message": "Done,\n\nFix in https://android-review.googlesource.com/c/platform/build/soong/+/730085 PatchSet 18.\nI use fmt.Errorf to rewrite it.",
+      "parentUuid": "70288f00_fadeaf0e",
+      "range": {
+        "startLine": 212,
+        "startChar": 2,
+        "endLine": 212,
+        "endChar": 7
+      },
+      "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d99e635f_d16cff33",
         "filename": "java/jdeps.go",
         "patchSetId": 17
@@ -274,6 +538,30 @@
       "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b767fe9_6c2df8e2",
+        "filename": "java/jdeps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-27T08:04:24Z",
+      "side": 1,
+      "message": "Done,\n\nFix in https://android-review.googlesource.com/c/platform/build/soong/+/730085 PatchSet 18.\nRemove else statement.",
+      "parentUuid": "d99e635f_d16cff33",
+      "range": {
+        "startLine": 214,
+        "startChar": 2,
+        "endLine": 214,
+        "endChar": 9
+      },
+      "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -300,6 +588,30 @@
     },
     {
       "key": {
+        "uuid": "99619373_6819144a",
+        "filename": "java/jdeps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-27T08:04:24Z",
+      "side": 1,
+      "message": "Done,\n\nFix in https://android-review.googlesource.com/c/platform/build/soong/+/730085 PatchSet 18.\nI use fmt.Errorf to rewrite it.",
+      "parentUuid": "bf10b152_0671eb44",
+      "range": {
+        "startLine": 224,
+        "startChar": 4,
+        "endLine": 224,
+        "endChar": 9
+      },
+      "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10d490bc_4991b464",
         "filename": "java/jdeps.go",
         "patchSetId": 17
@@ -320,6 +632,30 @@
       "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ac28576_bf2fabe1",
+        "filename": "java/jdeps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-27T08:04:24Z",
+      "side": 1,
+      "message": "Done,\nFix in https://android-review.googlesource.com/c/platform/build/soong/+/730085 PatchSet 18.\nRemove this checking.",
+      "parentUuid": "10d490bc_4991b464",
+      "range": {
+        "startLine": 237,
+        "startChar": 5,
+        "endLine": 237,
+        "endChar": 12
+      },
+      "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
