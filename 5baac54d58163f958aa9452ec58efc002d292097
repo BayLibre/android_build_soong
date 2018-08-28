@@ -70,6 +70,30 @@
       "revId": "5baac54d58163f958aa9452ec58efc002d292097",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21f14577_3e2cbaf3",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-08-28T08:11:31Z",
+      "side": 1,
+      "message": "yeah there are \u0027some\u0027. But they should be moved away from the recovery partition. We are already mounting vendor partition even in recovery mode and those device specific bits should come from there. So, yes, \u0027recovery partition as part of platform\u0027 is not the current state, but a goal.",
+      "parentUuid": "af80531e_31e7fd45",
+      "range": {
+        "startLine": 1051,
+        "startChar": 10,
+        "endLine": 1051,
+        "endChar": 14
+      },
+      "revId": "5baac54d58163f958aa9452ec58efc002d292097",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
