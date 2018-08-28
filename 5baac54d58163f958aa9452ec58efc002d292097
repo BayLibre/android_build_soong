@@ -46,6 +46,30 @@
       "revId": "5baac54d58163f958aa9452ec58efc002d292097",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af80531e_31e7fd45",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-08-28T08:08:48Z",
+      "side": 1,
+      "message": "\u003e And I would like to think the recovery partition as part of the platform based on the functionalities of the things in the partition.\n\nBut it does contain device-specific code, so it is fundamentally different from what we\u0027ve been labelling as platform.\n\nIt sounds like we\u0027re OK here though, so I\u0027ll approve this.",
+      "parentUuid": "8931f368_652902f7",
+      "range": {
+        "startLine": 1051,
+        "startChar": 10,
+        "endLine": 1051,
+        "endChar": 14
+      },
+      "revId": "5baac54d58163f958aa9452ec58efc002d292097",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
