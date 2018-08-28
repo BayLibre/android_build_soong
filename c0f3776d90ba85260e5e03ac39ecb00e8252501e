@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b7823fe_5bfff859",
+        "filename": "java/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-28T21:40:36Z",
+      "side": 1,
+      "message": "This is just a shell script that wraps multiple jars, so the rule won\u0027t rerun if the jetifier implementation changes.  I\u0027d suggest creating a java_import rule that imports the whole classpath from https://cs.corp.google.com/android/prebuilts/sdk/tools/jetifier/jetifier-standalone/bin/jetifier-standalone?q\u003djetifier-standalone.jar\u0026sq\u003dpackage:%5Eandroid$\u0026g\u003d0\u0026l\u003d67 into a single module, then call it directly with java -jar so we can track the full dependencies.",
+      "range": {
+        "startLine": 129,
+        "startChar": 26,
+        "endLine": 129,
+        "endChar": 47
+      },
+      "revId": "c0f3776d90ba85260e5e03ac39ecb00e8252501e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
