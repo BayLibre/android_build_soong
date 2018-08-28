@@ -22,6 +22,30 @@
       "revId": "c0f3776d90ba85260e5e03ac39ecb00e8252501e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d149f2f1_89c58066",
+        "filename": "java/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1137668
+      },
+      "writtenOn": "2018-08-28T22:41:50Z",
+      "side": 1,
+      "message": "Another option would be to make jetifier-standalone into a single .jar (the same as the java_import rule would build) and check that into prebuilts/sdk (and if you feel like it, update prebuilts/sdk/update_prebuilts/update_prebuilts.py such that `./update_prebuilts.py -j \u003cbuild_id\u003e` generates that .jar automatically (which enforces that the true list of dependencies is guaranteed to match what Soong expects))\n\nI think that the number of times we plan to update that prebuilt of jetifier in the future is small, probably 0, so whatever is simplest and/or most convenient for you would get my +1",
+      "parentUuid": "0b7823fe_5bfff859",
+      "range": {
+        "startLine": 129,
+        "startChar": 26,
+        "endLine": 129,
+        "endChar": 47
+      },
+      "revId": "c0f3776d90ba85260e5e03ac39ecb00e8252501e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
