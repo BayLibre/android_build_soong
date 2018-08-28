@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "daf4ea71_345c7ad4",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-08-28T05:33:23Z",
+      "side": 1,
+      "message": "Should we add a recoverySpecificModule kind?",
+      "range": {
+        "startLine": 1051,
+        "startChar": 10,
+        "endLine": 1051,
+        "endChar": 14
+      },
+      "revId": "5baac54d58163f958aa9452ec58efc002d292097",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
