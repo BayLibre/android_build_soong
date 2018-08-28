@@ -22,6 +22,30 @@
       "revId": "5baac54d58163f958aa9452ec58efc002d292097",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8931f368_652902f7",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-08-28T08:06:41Z",
+      "side": 1,
+      "message": "I don\u0027t think so.  InstallInRecovery() is already there for the purpose.\n\nAnd I would like to think the recovery partition as part of the platform based on the functionalities of the things in the partition.\n\n(Of course, we still need to prevent linkage in between core and recovery variants and that is already being enforced at least in Soong)",
+      "parentUuid": "daf4ea71_345c7ad4",
+      "range": {
+        "startLine": 1051,
+        "startChar": 10,
+        "endLine": 1051,
+        "endChar": 14
+      },
+      "revId": "5baac54d58163f958aa9452ec58efc002d292097",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
