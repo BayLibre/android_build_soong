@@ -46,6 +46,30 @@
       "revId": "c0f3776d90ba85260e5e03ac39ecb00e8252501e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfcfe777_279ae69d",
+        "filename": "java/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-08-28T22:50:23Z",
+      "side": 1,
+      "message": "just for curiosity, now that we have java_import, does that mean we can eventually deprecate update_prebuilts.py ? if we migrate all java prebuilts to java_import. Since sometime update_prebuilts.py is kind of magic for me to track where the prebuilts jar get defined.",
+      "parentUuid": "d149f2f1_89c58066",
+      "range": {
+        "startLine": 129,
+        "startChar": 26,
+        "endLine": 129,
+        "endChar": 47
+      },
+      "revId": "c0f3776d90ba85260e5e03ac39ecb00e8252501e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
