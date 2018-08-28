@@ -1,0 +1,8 @@
+Verified+1: Anton Hansson <hansson@google.com>
+Code-Review+2: Dan Willemsen <dwillemsen@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Anton Hansson <hansson@google.com>
+Submitted-at: Tue, 28 Aug 2018 07:27:57 +0000
+Reviewed-on: https://android-review.googlesource.com/734689
+Project: platform/build/soong
+Branch: refs/heads/master
