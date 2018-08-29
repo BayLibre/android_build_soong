@@ -1535,3 +1535,18 @@ func (s AndroidModulesByName) Less(i, j int) bool {
 	}
 }
 func (s AndroidModulesByName) Swap(i, j int) { s.slice[i], s.slice[j] = s.slice[j], s.slice[i] }
+
+type IDEInfo interface {
+	IDEInfo(ideInfo *IdeInfo)
+	BaseModuleName() string
+}
+
+type IdeInfo struct {
+	Deps              []string `json:"dependencies,omitempty"`
+	Srcs              []string `json:"srcs,omitempty"`
+	Aidl_include_dirs []string `json:"aidl_include_dirs,omitempty"`
+	Jarjar_rules      []string `json:"jarjar_rules,omitempty"`
+	Jars              []string `json:"jars,omitempty"`
+	Classes           []string `json:"class,omitempty"`
+	Installed_paths   []string `json:"installed,omitempty"`
+}
