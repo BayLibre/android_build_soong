@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "6b02c1fb_ad92df5f",
+        "filename": "java/jdeps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-29T05:51:15Z",
+      "side": 1,
+      "message": "Done,\n\nIt\u0027s in android/module.go.",
+      "parentUuid": "7104082f_2666ce13",
+      "range": {
+        "startLine": 58,
+        "startChar": 32,
+        "endLine": 58,
+        "endChar": 47
+      },
+      "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1073e2cf_416c5854",
         "filename": "java/jdeps.go",
         "patchSetId": 17
@@ -222,6 +246,30 @@
       "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c35fa305_3889e357",
+        "filename": "java/jdeps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-29T05:51:15Z",
+      "side": 1,
+      "message": "Done,\n\nFix in https://android-review.googlesource.com/c/platform/build/soong/+/730085 patchset 20\nChange to jfpath :\u003d android.PathForOutput(ctx, jdepsJsonFileName).String()\nand change output folder to out/soong.",
+      "parentUuid": "29076a86_dfa3e3c2",
+      "range": {
+        "startLine": 75,
+        "startChar": 11,
+        "endLine": 75,
+        "endChar": 71
+      },
+      "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
