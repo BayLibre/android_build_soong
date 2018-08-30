@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcfb58b9_e68f332c",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-30T17:57:34Z",
+      "side": 1,
+      "message": "It seems error-prone to call linkerDeps and then ignore most of the results.  Maybe split the parts of linkerDeps that are relevant to a separate function to call directly?  Or maybe we need to split out all of the functionality that prebuiltLibraryLinker needs from libraryDecorator into a separate object.",
+      "revId": "35b57c471cf75c18237197cf43a2a5685ddb5563",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
