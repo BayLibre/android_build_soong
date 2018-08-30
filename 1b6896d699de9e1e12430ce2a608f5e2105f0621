@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1bdfcb99_a93607e3",
+        "filename": "android/filegroup.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1083173
+      },
+      "writtenOn": "2018-08-30T08:55:19Z",
+      "side": 1,
+      "message": "Just curious if this len check is required, because it\u0027s wouldn\u0027t need to be in python.",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 19
+      },
+      "revId": "1b6896d699de9e1e12430ce2a608f5e2105f0621",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4abdbfdf_5d325f73",
+        "filename": "android/module.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 1551,
+      "author": {
+        "id": 1083173
+      },
+      "writtenOn": "2018-08-30T08:55:19Z",
+      "side": 1,
+      "message": "Is this meant to be plural?\n\nIt\u0027s kind of weird because \"install\" is a verb not a noun.",
+      "range": {
+        "startLine": 1551,
+        "startChar": 1,
+        "endLine": 1551,
+        "endChar": 11
+      },
+      "revId": "1b6896d699de9e1e12430ce2a608f5e2105f0621",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "011a037b_946524cb",
+        "filename": "java/jdeps.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1083173
+      },
+      "writtenOn": "2018-08-30T08:55:19Z",
+      "side": 1,
+      "message": "module_bp_java_deps?",
+      "range": {
+        "startLine": 45,
+        "startChar": 31,
+        "endLine": 45,
+        "endChar": 52
+      },
+      "revId": "1b6896d699de9e1e12430ce2a608f5e2105f0621",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "911d5186_1b972621",
+        "filename": "java/jdeps.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1083173
+      },
+      "writtenOn": "2018-08-30T08:55:19Z",
+      "side": 1,
+      "message": "Make a constant?",
+      "range": {
+        "startLine": 57,
+        "startChar": 33,
+        "endLine": 57,
+        "endChar": 49
+      },
+      "revId": "1b6896d699de9e1e12430ce2a608f5e2105f0621",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de85a729_b8e81ff9",
+        "filename": "java/jdeps.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1083173
+      },
+      "writtenOn": "2018-08-30T08:55:19Z",
+      "side": 1,
+      "message": "Add a comment about what is happening here.",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 3
+      },
+      "revId": "1b6896d699de9e1e12430ce2a608f5e2105f0621",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "829579c3_23b66741",
+        "filename": "java/jdeps.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1083173
+      },
+      "writtenOn": "2018-08-30T08:55:19Z",
+      "side": 1,
+      "message": "Create a bug please.",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 134,
+        "endChar": 9
+      },
+      "revId": "1b6896d699de9e1e12430ce2a608f5e2105f0621",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
