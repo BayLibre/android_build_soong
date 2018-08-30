@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5834972d_0006f412",
+        "filename": "java/jdeps.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2018-08-30T18:48:19Z",
+      "side": 1,
+      "message": "We only need one installed path,\n\nI don\u0027t quite understand the logic in this statement, what\u0027s the relationship between LinuxBionic and installed path.",
+      "range": {
+        "startLine": 71,
+        "startChar": 5,
+        "endLine": 71,
+        "endChar": 36
+      },
+      "revId": "14ecf2b51a08fdeab47ad227ec7b80808fe1129b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
