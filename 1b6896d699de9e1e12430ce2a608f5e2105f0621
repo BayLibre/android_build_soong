@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2a5b2344_392b83cf",
+        "filename": "android/filegroup.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-30T10:34:15Z",
+      "side": 1,
+      "message": "Done,\nIf fileGroup doesn\u0027t contain a \"srcs\" item, then we don\u0027t collect info from it.",
+      "parentUuid": "1bdfcb99_a93607e3",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 19
+      },
+      "revId": "1b6896d699de9e1e12430ce2a608f5e2105f0621",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4abdbfdf_5d325f73",
         "filename": "android/module.go",
         "patchSetId": 21
@@ -45,6 +69,30 @@
       "revId": "1b6896d699de9e1e12430ce2a608f5e2105f0621",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49360355_4c7d837d",
+        "filename": "android/module.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 1551,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-30T10:34:15Z",
+      "side": 1,
+      "message": "Done,\nChange to Installed_paths.",
+      "parentUuid": "4abdbfdf_5d325f73",
+      "range": {
+        "startLine": 1551,
+        "startChar": 1,
+        "endLine": 1551,
+        "endChar": 11
+      },
+      "revId": "1b6896d699de9e1e12430ce2a608f5e2105f0621",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b282ed80_afb5103b",
+        "filename": "java/jdeps.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-30T10:34:15Z",
+      "side": 1,
+      "message": "Done,\nChange file name to module_bp_java_deps.json.",
+      "parentUuid": "011a037b_946524cb",
+      "range": {
+        "startLine": 45,
+        "startChar": 31,
+        "endLine": 45,
+        "endChar": 52
+      },
+      "revId": "1b6896d699de9e1e12430ce2a608f5e2105f0621",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "911d5186_1b972621",
         "filename": "java/jdeps.go",
         "patchSetId": 21
@@ -91,6 +163,30 @@
       "revId": "1b6896d699de9e1e12430ce2a608f5e2105f0621",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "976d3aac_cafcfda8",
+        "filename": "java/jdeps.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-30T10:34:15Z",
+      "side": 1,
+      "message": "Done,\nMake a constant android_variant.",
+      "parentUuid": "911d5186_1b972621",
+      "range": {
+        "startLine": 57,
+        "startChar": 33,
+        "endLine": 57,
+        "endChar": 49
+      },
+      "revId": "1b6896d699de9e1e12430ce2a608f5e2105f0621",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "215225b8_9831adbb",
+        "filename": "java/jdeps.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-30T10:34:15Z",
+      "side": 1,
+      "message": "Done,\nAdd a comment,\n// Make does not understand LinuxBionic.\n// We need one installed path only, so filter out LinuxBionic case.",
+      "parentUuid": "de85a729_b8e81ff9",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 71,
+        "endChar": 3
+      },
+      "revId": "1b6896d699de9e1e12430ce2a608f5e2105f0621",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "829579c3_23b66741",
         "filename": "java/jdeps.go",
         "patchSetId": 21
@@ -137,6 +257,30 @@
       "revId": "1b6896d699de9e1e12430ce2a608f5e2105f0621",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a76b378_b5f609d8",
+        "filename": "java/jdeps.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-30T10:34:15Z",
+      "side": 1,
+      "message": "Done,\nBugID: 113562217",
+      "parentUuid": "829579c3_23b66741",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 134,
+        "endChar": 9
+      },
+      "revId": "1b6896d699de9e1e12430ce2a608f5e2105f0621",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
