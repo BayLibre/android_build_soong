@@ -16,6 +16,24 @@
       "revId": "35b57c471cf75c18237197cf43a2a5685ddb5563",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd3bd958_3f3b2758",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2018-08-30T21:38:54Z",
+      "side": 1,
+      "message": "Done. Avoided calling linkerDeps by getting the flags directly from baseLinker.",
+      "parentUuid": "dcfb58b9_e68f332c",
+      "revId": "35b57c471cf75c18237197cf43a2a5685ddb5563",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
