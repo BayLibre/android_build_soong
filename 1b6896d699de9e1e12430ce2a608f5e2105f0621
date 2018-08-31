@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "4b3d9603_aa58fdbf",
+        "filename": "android/filegroup.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-31T03:50:16Z",
+      "side": 1,
+      "message": "Done,\n\nRemove if len(srcs) \u003e 0 {\nthe checking is unnecessary.",
+      "parentUuid": "2a5b2344_392b83cf",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 19
+      },
+      "revId": "1b6896d699de9e1e12430ce2a608f5e2105f0621",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4abdbfdf_5d325f73",
         "filename": "android/module.go",
         "patchSetId": 21
