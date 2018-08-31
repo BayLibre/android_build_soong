@@ -495,6 +495,7 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 		sanitizeArg := "-fsanitize=" + strings.Join(sanitizers, ",")
 
 		flags.CFlags = append(flags.CFlags, sanitizeArg)
+		flags.AsFlags = append(flags.AsFlags, sanitizeArg)
 		if ctx.Host() {
 			flags.CFlags = append(flags.CFlags, "-fno-sanitize-recover=all")
 			flags.LdFlags = append(flags.LdFlags, sanitizeArg)
