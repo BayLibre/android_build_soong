@@ -601,6 +601,10 @@ func (p *ModuleBase) InstallInRecovery() bool {
 	return Bool(p.commonProperties.Recovery)
 }
 
+func (a *ModuleBase) Owner() string {
+	return String(a.commonProperties.Owner)
+}
+
 func (a *ModuleBase) generateModuleTarget(ctx ModuleContext) {
 	allInstalledFiles := Paths{}
 	allCheckbuildFiles := Paths{}
