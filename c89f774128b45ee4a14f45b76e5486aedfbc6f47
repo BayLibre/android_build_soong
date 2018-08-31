@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "226e0bb2_a132ee01",
+        "filename": "android/filegroup.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2018-08-31T06:51:21Z",
+      "side": 1,
+      "message": "once",
+      "range": {
+        "startLine": 101,
+        "startChar": 50,
+        "endLine": 101,
+        "endChar": 52
+      },
+      "revId": "c89f774128b45ee4a14f45b76e5486aedfbc6f47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
