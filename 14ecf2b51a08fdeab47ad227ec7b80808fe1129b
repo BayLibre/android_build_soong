@@ -22,6 +22,30 @@
       "revId": "14ecf2b51a08fdeab47ad227ec7b80808fe1129b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56ead432_94656c83",
+        "filename": "java/jdeps.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-08-31T00:02:51Z",
+      "side": 1,
+      "message": "Done,\nYes, I should make it more clear. I change to,\n\n// Make does not understand LinuxBionic, LinuxBionic case isn\u0027t written\n// in out/soong/Android-aosp_x86_64.mk. We only need the installed path\n// written in Android-aosp_x86_64.mk, so we filter out LinuxBionic case.",
+      "parentUuid": "5834972d_0006f412",
+      "range": {
+        "startLine": 71,
+        "startChar": 5,
+        "endLine": 71,
+        "endChar": 36
+      },
+      "revId": "14ecf2b51a08fdeab47ad227ec7b80808fe1129b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
