@@ -1,0 +1,318 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a75f263_76c167ef",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-31T21:48:11Z",
+      "side": 1,
+      "message": "Doesn\u0027t this logic apply whether or not dpInfo.Srcs is empty?",
+      "range": {
+        "startLine": 466,
+        "startChar": 3,
+        "endLine": 471,
+        "endChar": 4
+      },
+      "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e2f8ca5_42a58b1b",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-31T21:48:11Z",
+      "side": 1,
+      "message": "I\u0027d suggest:\n\n  dpInfo.Srcs \u003d append(dpInfo.Srcs)\n  dpInfo.Srcs \u003d FirstUniqueStrings(dpInfo.Srcs)\n\nThe second line could be moved to jdeps.go so it doesn\u0027t need to be in every implementation of IDEInfo",
+      "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a4c897d_33b1d58d",
+        "filename": "java/jdeps.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-31T21:48:11Z",
+      "side": 1,
+      "message": "Don\u0027t compare against bools\n\n!ctx.Config().IsEnvTrue(envVariableCollectJavaDeps)",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 63
+      },
+      "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8959fabd_6cba933f",
+        "filename": "java/jdeps.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-31T21:48:11Z",
+      "side": 1,
+      "message": "use module.Target().Os \u003d\u003d android.Android\n\nBut why are you limiting to device modules?  What if you want to edit a host-only module in an IDE?",
+      "range": {
+        "startLine": 58,
+        "startChar": 5,
+        "endLine": 58,
+        "endChar": 50
+      },
+      "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8fc3916_e0471342",
+        "filename": "java/jdeps.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-31T21:48:11Z",
+      "side": 1,
+      "message": "Just append the class, and dedup once at the end with android.FirstUniqueStrings",
+      "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "477259e0_649cc790",
+        "filename": "java/jdeps.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-31T21:48:11Z",
+      "side": 1,
+      "message": "Propagate errors from createJsonFile to ctx.Errorf()",
+      "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40ef2b30_43fda2bf",
+        "filename": "java/jdeps.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-31T21:48:11Z",
+      "side": 1,
+      "message": "It\u0027s unnecessary to return a bool, appending an empty list or nil slice is fine:\n\ndpInfo.Deps \u003d append(dpInfo.Deps, module.CompilerDeps()...)",
+      "range": {
+        "startLine": 112,
+        "startChar": 10,
+        "endLine": 112,
+        "endChar": 12
+      },
+      "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7eba2d23_cca1c321",
+        "filename": "java/jdeps.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-31T21:48:11Z",
+      "side": 1,
+      "message": "These should go in java.go",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 1
+      },
+      "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "200309b2_861ebddf",
+        "filename": "java/jdeps.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-31T21:48:11Z",
+      "side": 1,
+      "message": "Don\u0027t override BaseModuleName, it should only be implemented once in android/module.go.",
+      "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ca00d2e_2d756d38",
+        "filename": "java/jdeps.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-31T21:48:11Z",
+      "side": 1,
+      "message": "This should go in java.go",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 0
+      },
+      "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd797b3b_f1bd6dbd",
+        "filename": "java/jdeps.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-31T21:48:11Z",
+      "side": 1,
+      "message": "The buffered writer is unnecessary, you are already marshalling the json into an in-memory buffer, so you can just write it directly to the file.\n\nIf you want to avoid buffering the whole json in memory, keep the bufio.Writer and use json.NewEncoder(f).",
+      "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68124538_6ed9e468",
+        "filename": "java/jdeps.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-31T21:48:11Z",
+      "side": 1,
+      "message": "You can convert a []byte to a string with string(buf)",
+      "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d635110_c96a6835",
+        "filename": "java/jdeps_test.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-31T21:48:11Z",
+      "side": 1,
+      "message": "Don\u0027t compare against bools:\n!reflect.DeepEqual(a, b)",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 36
+      },
+      "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34d63d08_50c0297b",
+        "filename": "java/jdeps_test.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-31T21:48:11Z",
+      "side": 1,
+      "message": "It\u0027s better to use Errorf so the test can keep running unless the failure invalidates the rest of the test assertions",
+      "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8f5ab7d_9ecd102b",
+        "filename": "java/jdeps_test.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-31T21:48:11Z",
+      "side": 1,
+      "message": "This is unused",
+      "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b81b9bcc_656a87c6",
+        "filename": "java/jdeps_test.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-08-31T21:48:11Z",
+      "side": 1,
+      "message": "I\u0027d suggest open-coding this and printing a more-specific failure:\n\nif !reflect.DeepEqual(dpInfo.Deps, expected) {\n    t.Errorf(\"Library.IDEInfo() Deps \u003d %v, want %v\", dpInfo.Deps, expected)\n}",
+      "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
