@@ -81,6 +81,8 @@ func runKati(ctx Context, config Config) {
 		"--warn_real_to_phony",
 		"--warn_phony_looks_real",
 		"--kati_stats",
+		"--writable", config.OutDir() + "/",
+		"--writable", config.DistDir() + "/",
 		"-f", "build/make/core/main.mk",
 	}
 
