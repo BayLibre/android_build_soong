@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "ce97fdd4_baa91b54",
+        "filename": "android/filegroup.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1348646
+      },
+      "writtenOn": "2018-09-03T14:59:25Z",
+      "side": 1,
+      "message": "Correct statement, to use \"SourceFileProducer\" interface to judge in \"java.go\" and call Srcs() to collect src data directly.",
+      "parentUuid": "b70eb598_92e91417",
+      "range": {
+        "startLine": 97,
+        "startChar": 9,
+        "endLine": 97,
+        "endChar": 17
+      },
+      "revId": "1bea9f01036556e936801c16fd89ffb292dcc8b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f0aac7ad_589f8ff1",
         "filename": "android/module.go",
         "patchSetId": 27
