@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3d5bd946_8ca8ef80",
+        "filename": "android/filegroup.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-03T09:39:15Z",
+      "side": 1,
+      "message": "Done,\nRemove checking.",
+      "parentUuid": "64e12600_c58c2388",
+      "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a75f263_76c167ef",
         "filename": "genrule/genrule.go",
         "patchSetId": 26
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "e97020d0_9b0de1e0",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-03T09:39:15Z",
+      "side": 1,
+      "message": "Done,\n\nChange to,\nif strings.HasPrefix(src, \":\") {\n\tsrc \u003d strings.Trim(src, \":\")\n\tdpInfo.Deps \u003d append(dpInfo.Deps, src)\n}",
+      "parentUuid": "8a75f263_76c167ef",
+      "range": {
+        "startLine": 466,
+        "startChar": 3,
+        "endLine": 471,
+        "endChar": 4
+      },
+      "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e2f8ca5_42a58b1b",
         "filename": "genrule/genrule.go",
         "patchSetId": 26
@@ -56,6 +98,24 @@
       "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07934edd_2bdf7410",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-03T09:39:15Z",
+      "side": 1,
+      "message": "Done,\n\nRemove this part.",
+      "parentUuid": "2e2f8ca5_42a58b1b",
+      "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "8ae272e0_798e9186",
+        "filename": "java/jdeps.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-03T09:39:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a4c897d_33b1d58d",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 63
+      },
+      "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8959fabd_6cba933f",
         "filename": "java/jdeps.go",
         "patchSetId": 26
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "08ccba7b_b1387725",
+        "filename": "java/jdeps.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-03T09:39:15Z",
+      "side": 1,
+      "message": "Done,\n\nhttps://android-review.googlesource.com/c/platform/build/soong/+/730085/17/java/jdeps.go#67\nDan mentioned, \n\"names are not unique identifiers, you may get the configuration for the host variant or android variant (or the prebuilt vs source). It\u0027s generally not safe to combine them -- they may be very different.\"\nI\u0027m not quite sure how to separate different variants for a module, so I just remove it first.",
+      "parentUuid": "8959fabd_6cba933f",
+      "range": {
+        "startLine": 58,
+        "startChar": 5,
+        "endLine": 58,
+        "endChar": 50
+      },
+      "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8fc3916_e0471342",
         "filename": "java/jdeps.go",
         "patchSetId": 26
@@ -122,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "64c83e7f_28b70d55",
+        "filename": "java/jdeps.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-03T09:39:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8fc3916_e0471342",
+      "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "477259e0_649cc790",
         "filename": "java/jdeps.go",
         "patchSetId": 26
@@ -136,6 +262,24 @@
       "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71c1c7b8_592ac4de",
+        "filename": "java/jdeps.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-03T09:39:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "477259e0_649cc790",
+      "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -162,6 +306,30 @@
     },
     {
       "key": {
+        "uuid": "0ec77858_0898bd05",
+        "filename": "java/jdeps.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-03T09:39:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40ef2b30_43fda2bf",
+      "range": {
+        "startLine": 112,
+        "startChar": 10,
+        "endLine": 112,
+        "endChar": 12
+      },
+      "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7eba2d23_cca1c321",
         "filename": "java/jdeps.go",
         "patchSetId": 26
@@ -185,6 +353,30 @@
     },
     {
       "key": {
+        "uuid": "69e76dbf_aa0ca69e",
+        "filename": "java/jdeps.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-03T09:39:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7eba2d23_cca1c321",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 1
+      },
+      "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "200309b2_861ebddf",
         "filename": "java/jdeps.go",
         "patchSetId": 26
@@ -199,6 +391,24 @@
       "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a74598c6_c422ff78",
+        "filename": "java/jdeps.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-03T09:39:15Z",
+      "side": 1,
+      "message": "Done,\n\nIn android/module.go add,\n\ntype IDECustomizedModuleName interface {\n\tIDECustomizedModuleName() string\n}\n\nin java/java.go add, \nfunc (j *Import) IDECustomizedModuleName() string {\n}\nto deal with special prefix and in java/jdeps.go,\nideModuelNameProvider, ok :\u003d module.(android.IDECustomizedModuleName)\nif ok {\n\tname \u003d ideModuelNameProvider.IDECustomizedModuleName()\n}",
+      "parentUuid": "200309b2_861ebddf",
+      "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -225,6 +435,30 @@
     },
     {
       "key": {
+        "uuid": "51838b9a_ed51b852",
+        "filename": "java/jdeps.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-03T09:39:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ca00d2e_2d756d38",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 0
+      },
+      "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd797b3b_f1bd6dbd",
         "filename": "java/jdeps.go",
         "patchSetId": 26
@@ -242,6 +476,24 @@
     },
     {
       "key": {
+        "uuid": "b633c49d_28e44ae5",
+        "filename": "java/jdeps.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-03T09:39:15Z",
+      "side": 1,
+      "message": "Done,\nJust remove it.",
+      "parentUuid": "cd797b3b_f1bd6dbd",
+      "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68124538_6ed9e468",
         "filename": "java/jdeps.go",
         "patchSetId": 26
@@ -256,6 +508,24 @@
       "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f036529_dc42e491",
+        "filename": "java/jdeps.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-03T09:39:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68124538_6ed9e468",
+      "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -282,6 +552,30 @@
     },
     {
       "key": {
+        "uuid": "6491e7bf_f8618c1d",
+        "filename": "java/jdeps_test.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-03T09:39:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d635110_c96a6835",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 36
+      },
+      "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "34d63d08_50c0297b",
         "filename": "java/jdeps_test.go",
         "patchSetId": 26
@@ -296,6 +590,24 @@
       "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9aff3aae_496f0681",
+        "filename": "java/jdeps_test.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-03T09:39:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34d63d08_50c0297b",
+      "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -316,6 +628,24 @@
     },
     {
       "key": {
+        "uuid": "abf75011_356a0f66",
+        "filename": "java/jdeps_test.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-03T09:39:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8f5ab7d_9ecd102b",
+      "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b81b9bcc_656a87c6",
         "filename": "java/jdeps_test.go",
         "patchSetId": 26
@@ -330,6 +660,24 @@
       "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f1a13de_e6fc019c",
+        "filename": "java/jdeps_test.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-03T09:39:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b81b9bcc_656a87c6",
+      "revId": "7d98abe855e43ed9f5d42a1ec4a7c008b3b03bd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
