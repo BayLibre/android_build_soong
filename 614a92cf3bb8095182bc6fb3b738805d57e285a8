@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f3efe25_8cc3ced8",
+        "filename": "java/jdeps.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1348646
+      },
+      "writtenOn": "2018-09-03T11:12:08Z",
+      "side": 1,
+      "message": "Please add more comment for reviewers to know that there\u0027s another command line action to init this flag to control the flow of below \"GenerateBuildActions\".",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 27
+      },
+      "revId": "614a92cf3bb8095182bc6fb3b738805d57e285a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
