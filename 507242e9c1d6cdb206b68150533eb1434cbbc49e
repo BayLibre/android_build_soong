@@ -22,6 +22,30 @@
       "revId": "507242e9c1d6cdb206b68150533eb1434cbbc49e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c37fe035_ae5baaf7",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2018-09-04T21:46:08Z",
+      "side": 1,
+      "message": "It should not matter for assembly files.",
+      "parentUuid": "1e6f6d28_b7ecd5ec",
+      "range": {
+        "startLine": 43,
+        "startChar": 32,
+        "endLine": 43,
+        "endChar": 54
+      },
+      "revId": "507242e9c1d6cdb206b68150533eb1434cbbc49e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
