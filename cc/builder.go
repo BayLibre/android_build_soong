@@ -217,7 +217,7 @@ var (
 
 	unzipRefSAbiDump = pctx.AndroidStaticRule("unzipRefSAbiDump",
 		blueprint.RuleParams{
-			Command: "gunzip -c $in > $out",
+			Command: "gzip -d -c $in > $out",
 		})
 )
 
@@ -716,7 +716,7 @@ func UnzipRefDump(ctx android.ModuleContext, zippedRefDump android.Path, baseNam
 	outputFile := android.PathForModuleOut(ctx, baseName+"_ref.lsdump")
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        unzipRefSAbiDump,
-		Description: "gunzip" + outputFile.Base(),
+		Description: "gunzip " + outputFile.Base(),
 		Output:      outputFile,
 		Input:       zippedRefDump,
 	})
