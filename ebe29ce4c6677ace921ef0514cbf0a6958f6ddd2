@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de018a7c_43ca4048",
+        "filename": "java/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-09-04T16:31:16Z",
+      "side": 1,
+      "message": "Don\u0027t change this one, the sources only need to be exported once.",
+      "revId": "ebe29ce4c6677ace921ef0514cbf0a6958f6ddd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
