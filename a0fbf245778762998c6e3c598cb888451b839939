@@ -39,6 +39,30 @@
       "revId": "a0fbf245778762998c6e3c598cb888451b839939",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45cf2009_e61e3610",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-09-04T07:35:42Z",
+      "side": 1,
+      "message": "Let\u0027s just allow gunzip",
+      "parentUuid": "0263b439_ce20cc39",
+      "range": {
+        "startLine": 719,
+        "startChar": 16,
+        "endLine": 719,
+        "endChar": 23
+      },
+      "revId": "a0fbf245778762998c6e3c598cb888451b839939",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
