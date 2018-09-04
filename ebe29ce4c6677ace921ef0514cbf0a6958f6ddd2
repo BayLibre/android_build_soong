@@ -16,6 +16,24 @@
       "revId": "ebe29ce4c6677ace921ef0514cbf0a6958f6ddd2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3b3136a_fda2a31e",
+        "filename": "java/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2018-09-04T17:24:50Z",
+      "side": 1,
+      "message": "Thanks!\n\n(I just kept changing them until it worked... you can probably tell!)",
+      "parentUuid": "de018a7c_43ca4048",
+      "revId": "ebe29ce4c6677ace921ef0514cbf0a6958f6ddd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
