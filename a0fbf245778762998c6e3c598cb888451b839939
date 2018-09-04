@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17fc34da_9c2663af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1014807
+      },
+      "writtenOn": "2018-09-04T07:21:13Z",
+      "side": 1,
+      "message": "Mention the relevant change:\nhttps://android-review.googlesource.com/c/platform/build/soong/+/732867",
+      "revId": "a0fbf245778762998c6e3c598cb888451b839939",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
