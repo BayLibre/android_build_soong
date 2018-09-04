@@ -63,6 +63,30 @@
       "revId": "a0fbf245778762998c6e3c598cb888451b839939",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "154dd8d8_33049506",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2018-09-04T07:39:16Z",
+      "side": 1,
+      "message": "Sounds good. I\u0027ll abandon this patch.",
+      "parentUuid": "45cf2009_e61e3610",
+      "range": {
+        "startLine": 719,
+        "startChar": 16,
+        "endLine": 719,
+        "endChar": 23
+      },
+      "revId": "a0fbf245778762998c6e3c598cb888451b839939",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
