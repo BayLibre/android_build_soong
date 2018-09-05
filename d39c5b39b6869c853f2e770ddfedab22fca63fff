@@ -16,6 +16,24 @@
       "revId": "d39c5b39b6869c853f2e770ddfedab22fca63fff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f568e1c_19613fa4",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-09-05T20:57:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "169faabd_73745694",
+      "revId": "d39c5b39b6869c853f2e770ddfedab22fca63fff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
