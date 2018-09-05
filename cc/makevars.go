@@ -145,6 +145,7 @@ func makeVarsProvider(ctx android.MakeVarsContext) {
 	ctx.Strict("DEFAULT_TIDY_HEADER_DIRS", "${config.TidyDefaultHeaderDirs}")
 
 	ctx.Strict("AIDL_CPP", "${aidlCmd}")
+	ctx.Strict("SYSPROP_CPP", "${syspropCmd}")
 
 	ctx.Strict("RS_GLOBAL_INCLUDES", "${config.RsGlobalIncludes}")
 
