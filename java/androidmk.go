@@ -319,7 +319,7 @@ func (ddoc *Droiddoc) AndroidMk() android.AndroidMkData {
 		Include:    "$(BUILD_SYSTEM)/soong_droiddoc_prebuilt.mk",
 		Extra: []android.AndroidMkExtraFunc{
 			func(w io.Writer, outputFile android.Path) {
-				if BoolDefault(ddoc.Javadoc.properties.Installable, true) {
+				if BoolDefault(ddoc.Javadoc.properties.Installable, true) && ddoc.Javadoc.docZip != nil {
 					fmt.Fprintln(w, "LOCAL_DROIDDOC_DOC_ZIP := ", ddoc.Javadoc.docZip.String())
 				}
 				if ddoc.Javadoc.stubsSrcJar != nil {
