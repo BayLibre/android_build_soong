@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "523997d8_33cba26c",
+        "filename": "android/filegroup.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-05T00:55:41Z",
+      "side": 1,
+      "message": "Add a comment,\n// Collect infomation for opening IDE project files in java/jdeps.go.",
+      "parentUuid": "033dd092_d6f37346",
+      "range": {
+        "startLine": 96,
+        "startChar": 20,
+        "endLine": 96,
+        "endChar": 27
+      },
+      "revId": "1bea9f01036556e936801c16fd89ffb292dcc8b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b70eb598_92e91417",
         "filename": "android/filegroup.go",
         "patchSetId": 27
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "ffa7161d_427ccc5f",
+        "filename": "android/filegroup.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-05T00:55:41Z",
+      "side": 1,
+      "message": "I used SourceFileProducer when I collected the data from java/jdeps.go, but Collin wants us to move it here and collect the data we need here. The codes in patchset 1,\n\nswitch fModule :\u003d module.(type) {\n\tcase android.SourceFileProducer:\n        ...\n\nChange codes to for _, src :\u003d range g.srcs {\n\nAbout \"Correct statement, to use \"SourceFileProducer\" interface to judge in \"java.go\" and call Srcs() to collect src data directly.\" comment,\n\n\"SourceFileProducer\" can be used as a module type in java.go, but can\u0027t used as a struct to collect info in java.go.",
+      "parentUuid": "ce97fdd4_baa91b54",
+      "range": {
+        "startLine": 97,
+        "startChar": 9,
+        "endLine": 97,
+        "endChar": 17
+      },
+      "revId": "1bea9f01036556e936801c16fd89ffb292dcc8b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0aac7ad_589f8ff1",
         "filename": "android/module.go",
         "patchSetId": 27
@@ -83,6 +131,30 @@
       "writtenOn": "2018-09-03T11:12:08Z",
       "side": 1,
       "message": "Let\u0027s think about it : Should we need to set a size limitation for thousands of source files for a file group case ?",
+      "range": {
+        "startLine": 1554,
+        "startChar": 19,
+        "endLine": 1554,
+        "endChar": 27
+      },
+      "revId": "1bea9f01036556e936801c16fd89ffb292dcc8b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cc499e2_3fd6b144",
+        "filename": "android/module.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 1554,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-05T00:55:41Z",
+      "side": 1,
+      "message": "I think we don\u0027t have to do it now. The size is OK, less than 20M, and we might filter out the important info.",
+      "parentUuid": "f0aac7ad_589f8ff1",
       "range": {
         "startLine": 1554,
         "startChar": 19,
@@ -118,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "e49f7bf8_367f6d58",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-05T00:55:41Z",
+      "side": 1,
+      "message": "Done,\nAdd a comment,\n\n// Collect infomation for opening IDE project files in java/jdeps.go.",
+      "parentUuid": "0ecf18d2_13e08b27",
+      "range": {
+        "startLine": 461,
+        "startChar": 17,
+        "endLine": 461,
+        "endChar": 24
+      },
+      "revId": "1bea9f01036556e936801c16fd89ffb292dcc8b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ca0b7f9_2ec1db66",
         "filename": "java/java.go",
         "patchSetId": 27
@@ -138,6 +234,30 @@
       "revId": "1bea9f01036556e936801c16fd89ffb292dcc8b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5297317_ccd968c1",
+        "filename": "java/java.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 1769,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-05T00:55:41Z",
+      "side": 1,
+      "message": "Done,\n\nAdd a comment,\n\n// Collect infomation for opening IDE project files in java/jdeps.go.\n\nand only left CompilerDeps() other functions use j.properties.xxx to directly get info.",
+      "parentUuid": "7ca0b7f9_2ec1db66",
+      "range": {
+        "startLine": 1743,
+        "startChar": 0,
+        "endLine": 1769,
+        "endChar": 1
+      },
+      "revId": "1bea9f01036556e936801c16fd89ffb292dcc8b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -164,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "770eeacb_aabb3296",
+        "filename": "java/java.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 1790,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-05T00:55:41Z",
+      "side": 1,
+      "message": "Done,\n\nAdd a comment,\n\n// Collect infomation for opening IDE project files in java/jdeps.go.",
+      "parentUuid": "4e098620_4a7c3c1e",
+      "range": {
+        "startLine": 1771,
+        "startChar": 0,
+        "endLine": 1790,
+        "endChar": 1
+      },
+      "revId": "1bea9f01036556e936801c16fd89ffb292dcc8b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "42486d41_ba9ea8f3",
         "filename": "java/jdeps.go",
         "patchSetId": 27
@@ -184,6 +328,30 @@
       "revId": "1bea9f01036556e936801c16fd89ffb292dcc8b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56f0a1ae_9b06614e",
+        "filename": "java/jdeps.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-05T00:55:41Z",
+      "side": 1,
+      "message": "Done,\n\nAdd a comment,\n\n// Remove the prefix when a Import module name has a prefix \n// \"prebuilt_\" in it.",
+      "parentUuid": "42486d41_ba9ea8f3",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 63,
+        "endChar": 0
+      },
+      "revId": "1bea9f01036556e936801c16fd89ffb292dcc8b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
