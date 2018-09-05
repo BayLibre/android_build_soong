@@ -308,6 +308,24 @@
     },
     {
       "key": {
+        "uuid": "ec54e5ba_60fa42b0",
+        "filename": "java/jdeps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2018-09-05T18:46:52Z",
+      "side": 1,
+      "message": "Brandon, please revisit this comment.",
+      "parentUuid": "6b9d58b5_8accecbf",
+      "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b73ca483_b2390b01",
         "filename": "java/jdeps.go",
         "patchSetId": 17
