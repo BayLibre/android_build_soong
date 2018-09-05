@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "169faabd_73745694",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-09-05T20:52:12Z",
+      "side": 1,
+      "message": "This seems weird.  Maybe below after generating finalProductsList:\n\nproducts :\u003d make(chan string)\ngo func() {\n    for _, product :\u003d range finalProductsList {\n        products \u003c- product\n    }\n    close(products)\n}",
+      "revId": "d39c5b39b6869c853f2e770ddfedab22fca63fff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
