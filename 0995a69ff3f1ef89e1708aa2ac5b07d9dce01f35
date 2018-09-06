@@ -421,6 +421,30 @@
     },
     {
       "key": {
+        "uuid": "c48bd14a_ae6bcc19",
+        "filename": "java/jdeps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2018-09-06T16:15:31Z",
+      "side": 1,
+      "message": "do you mean to add this comment in the discussion in line 139?",
+      "parentUuid": "5994943f_45bd6a04",
+      "range": {
+        "startLine": 142,
+        "startChar": 4,
+        "endLine": 142,
+        "endChar": 87
+      },
+      "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "377193b5_7b9655af",
         "filename": "java/jdeps.go",
         "patchSetId": 17

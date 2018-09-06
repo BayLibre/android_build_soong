@@ -46,6 +46,30 @@
       "revId": "614a92cf3bb8095182bc6fb3b738805d57e285a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed3c00f6_c6291503",
+        "filename": "java/jdeps.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2018-09-06T16:15:31Z",
+      "side": 1,
+      "message": "should that be set in build/envsetup.sh ?",
+      "parentUuid": "33d7df39_0a40c3c9",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 27
+      },
+      "revId": "614a92cf3bb8095182bc6fb3b738805d57e285a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
