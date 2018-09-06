@@ -70,6 +70,30 @@
       "revId": "614a92cf3bb8095182bc6fb3b738805d57e285a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ff7ec0c_371a5311",
+        "filename": "java/jdeps.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-06T23:31:41Z",
+      "side": 1,
+      "message": "OK, I will try it.",
+      "parentUuid": "ed3c00f6_c6291503",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 27
+      },
+      "revId": "614a92cf3bb8095182bc6fb3b738805d57e285a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
