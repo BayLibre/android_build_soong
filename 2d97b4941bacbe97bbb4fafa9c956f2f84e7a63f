@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ed71e3c_edd91b3a",
+        "filename": "cc/gen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-09-06T02:20:50Z",
+      "side": 1,
+      "message": "is it always guaranteed that the generated headers and cpp have same name as the input file?\n\nI also don\u0027t like putting headers and sources in the same directory. Can you move headers to a dir like ./include?",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 107
+      },
+      "revId": "2d97b4941bacbe97bbb4fafa9c956f2f84e7a63f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
