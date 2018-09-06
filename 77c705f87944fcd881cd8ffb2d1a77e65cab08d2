@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6536829_f44c9020",
+        "filename": "ui/build/finder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2018-09-06T20:03:51Z",
+      "side": 1,
+      "message": "maybe this should be \"OWNERS files\"\nI did some copy paste in line 115. That \"modules\" should be \"TEST_MAPPING files\"",
+      "range": {
+        "startLine": 109,
+        "startChar": 29,
+        "endLine": 109,
+        "endChar": 36
+      },
+      "revId": "77c705f87944fcd881cd8ffb2d1a77e65cab08d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
