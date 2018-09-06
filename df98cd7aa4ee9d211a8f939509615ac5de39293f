@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e2206c6_2d8b8a1a",
+        "filename": "ui/build/finder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2018-09-06T23:19:57Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "df98cd7aa4ee9d211a8f939509615ac5de39293f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
