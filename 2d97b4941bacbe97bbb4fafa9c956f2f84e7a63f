@@ -22,6 +22,30 @@
       "revId": "2d97b4941bacbe97bbb4fafa9c956f2f84e7a63f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "058a012f_029974e9",
+        "filename": "cc/gen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-09-06T05:35:04Z",
+      "side": 1,
+      "message": "As I mentioned in the Make review, we\u0027ll want either a single ctx.Build for all the source files for a particular module (starting with `rm -rf .../include`), or this include directory should be specific to the input file. Otherwise stale headers can continue to be used during incremental builds.",
+      "parentUuid": "6ed71e3c_edd91b3a",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 107
+      },
+      "revId": "2d97b4941bacbe97bbb4fafa9c956f2f84e7a63f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
