@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b4ccb3c_4e7dfd5c",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-09-06T23:45:22Z",
+      "side": 1,
+      "message": "This must have Restat: true if it uses -write_if_changed",
+      "revId": "d1b2070e07191c2a2b016ae39b7538dbbd6c24af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62bea343_0db40b44",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-09-06T23:45:22Z",
+      "side": 1,
+      "message": "Could it ever have both srcFiles and srcjars?  Is there a better marker for having generated sources than len(srcFiles) \u003d\u003d 0?",
+      "revId": "d1b2070e07191c2a2b016ae39b7538dbbd6c24af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f84afe80_7298d6d3",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-09-06T23:45:22Z",
+      "side": 1,
+      "message": "This appears to put a directory containing jars in -sourcepath, does that do anything?  I thought most java tools either wanted directories containing java files or paths to jars as -sourcepath arguments.",
+      "revId": "d1b2070e07191c2a2b016ae39b7538dbbd6c24af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e8341a8_98966f94",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1213,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-09-06T23:45:22Z",
+      "side": 1,
+      "message": "Why not?  Could a single module generate stubs, dokka docs, and maybe doclava docs?  If not, maybe they should be 2 or 3 different module types, doc_stubs+doc_html, or doc_stubs+doc_dokka+doc_doclava?",
+      "revId": "d1b2070e07191c2a2b016ae39b7538dbbd6c24af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
