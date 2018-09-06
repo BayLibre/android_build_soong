@@ -397,6 +397,30 @@
     },
     {
       "key": {
+        "uuid": "5994943f_45bd6a04",
+        "filename": "java/jdeps.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-06T08:02:16Z",
+      "side": 1,
+      "message": "Done,\n\nAdd (j *Module) collectIDEInfoCompiledSrcs(ctx android.ModuleContext) in java/java.go to collect compiledJavaSrcs, compiledSrcJars and handle with Exclude_srcs.",
+      "parentUuid": "82d13b20_21ba490c",
+      "range": {
+        "startLine": 142,
+        "startChar": 4,
+        "endLine": 142,
+        "endChar": 87
+      },
+      "revId": "0995a69ff3f1ef89e1708aa2ac5b07d9dce01f35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "377193b5_7b9655af",
         "filename": "java/jdeps.go",
         "patchSetId": 17

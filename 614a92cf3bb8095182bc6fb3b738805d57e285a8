@@ -22,6 +22,30 @@
       "revId": "614a92cf3bb8095182bc6fb3b738805d57e285a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33d7df39_0a40c3c9",
+        "filename": "java/jdeps.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-06T08:02:16Z",
+      "side": 1,
+      "message": "The environment will be setup in the beginning of python code with command: export SOONG_COLLECT_JAVA_DEPS\u003d1",
+      "parentUuid": "0f3efe25_8cc3ced8",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 27
+      },
+      "revId": "614a92cf3bb8095182bc6fb3b738805d57e285a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
