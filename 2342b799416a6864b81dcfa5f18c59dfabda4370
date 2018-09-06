@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "65554996_358569f3",
+        "filename": "android/filegroup.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1083173
+      },
+      "writtenOn": "2018-09-06T23:50:32Z",
+      "side": 1,
+      "message": "replace",
+      "range": {
+        "startLine": 102,
+        "startChar": 23,
+        "endLine": 102,
+        "endChar": 30
+      },
+      "revId": "2342b799416a6864b81dcfa5f18c59dfabda4370",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f98eb747_9e1ca785",
+        "filename": "java/java.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1083173
+      },
+      "writtenOn": "2018-09-06T23:50:32Z",
+      "side": 1,
+      "message": "source",
+      "range": {
+        "startLine": 315,
+        "startChar": 12,
+        "endLine": 315,
+        "endChar": 18
+      },
+      "revId": "2342b799416a6864b81dcfa5f18c59dfabda4370",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "87890bd6_cb949d09",
         "filename": "java/java.go",
         "patchSetId": 31
