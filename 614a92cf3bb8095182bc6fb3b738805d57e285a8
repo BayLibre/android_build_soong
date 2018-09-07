@@ -94,6 +94,30 @@
       "revId": "614a92cf3bb8095182bc6fb3b738805d57e285a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f453606d_c1cda70b",
+        "filename": "java/jdeps.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-07T01:36:17Z",
+      "side": 1,
+      "message": "If this env variable is set in build/envsetup.sh, the json will be generated all the time and slow down build performance. We write in module_info_util.py and control it when users use aidegen then we start the process to collect info and gen json file.",
+      "parentUuid": "2ff7ec0c_371a5311",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 27
+      },
+      "revId": "614a92cf3bb8095182bc6fb3b738805d57e285a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

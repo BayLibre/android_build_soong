@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "54e3e410_343fdcf0",
+        "filename": "android/filegroup.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-07T01:36:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65554996_358569f3",
+      "range": {
+        "startLine": 102,
+        "startChar": 23,
+        "endLine": 102,
+        "endChar": 30
+      },
+      "revId": "2342b799416a6864b81dcfa5f18c59dfabda4370",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f98eb747_9e1ca785",
         "filename": "java/java.go",
         "patchSetId": 31
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "84e3af71_e7c7e602",
+        "filename": "java/java.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-07T01:36:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f98eb747_9e1ca785",
+      "range": {
+        "startLine": 315,
+        "startChar": 12,
+        "endLine": 315,
+        "endChar": 18
+      },
+      "revId": "2342b799416a6864b81dcfa5f18c59dfabda4370",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "87890bd6_cb949d09",
         "filename": "java/java.go",
         "patchSetId": 31
@@ -68,6 +116,30 @@
       "revId": "2342b799416a6864b81dcfa5f18c59dfabda4370",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfdeb7a0_ed911d70",
+        "filename": "java/java.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-07T01:36:17Z",
+      "side": 1,
+      "message": "Done,\n\nChange it to \"will be used by android.IDEInfo struct\".",
+      "parentUuid": "87890bd6_cb949d09",
+      "range": {
+        "startLine": 316,
+        "startChar": 57,
+        "endLine": 316,
+        "endChar": 60
+      },
+      "revId": "2342b799416a6864b81dcfa5f18c59dfabda4370",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
