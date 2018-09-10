@@ -86,6 +86,11 @@ type CompilerProperties struct {
 	// ext, and framework for device targets)
 	No_framework_libs *bool
 
+	// use the core API stubs for core libraries, not the core-all (implementation) when
+	// no_standard_libs: false but no_framework_libs: true
+	// TODO: Change default to true when safe to do so.
+	Use_core_api_stubs *bool
+
 	// list of module-specific flags that will be used for javac compiles
 	Javacflags []string `android:"arch_variant"`
 
@@ -552,9 +557,21 @@ func (j *Module) deps(ctx android.BottomUpMutatorContext) {
 		if !Bool(j.properties.No_standard_libs) {
 			sdkDep := decodeSdkDep(ctx, sdkContext(j))
 			if sdkDep.useDefaultLibs {
-				ctx.AddVariationDependencies(nil, bootClasspathTag, config.DefaultBootclasspathLibraries...)
+				var bootClasspathLibraries []string
+				if Bool(j.properties.Use_core_api_stubs) {
+					bootClasspathLibraries = config.DefaultBootclasspathLibrariesStubs
+				} else {
+					bootClasspathLibraries = config.DefaultBootclasspathLibraries
+				}
+				ctx.AddVariationDependencies(nil, bootClasspathTag, bootClasspathLibraries...)
 				if ctx.Config().TargetOpenJDK9() {
-					ctx.AddVariationDependencies(nil, systemModulesTag, config.DefaultSystemModules)
+					var systemModules string
+					if Bool(j.properties.Use_core_api_stubs) {
+						systemModules = config.DefaultSystemModulesStubs
+					} else {
+						systemModules = config.DefaultSystemModules
+					}
+					ctx.AddVariationDependencies(nil, systemModulesTag, systemModules)
 				}
 				if !Bool(j.properties.No_framework_libs) {
 					ctx.AddVariationDependencies(nil, libTag, config.DefaultLibraries...)
