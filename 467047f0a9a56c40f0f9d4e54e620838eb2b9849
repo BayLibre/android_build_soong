@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44ec6a1f_f85da37d",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1506,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-09-10T17:53:20Z",
+      "side": 1,
+      "message": "?",
+      "range": {
+        "startLine": 1505,
+        "startChar": 0,
+        "endLine": 1506,
+        "endChar": 56
+      },
+      "revId": "467047f0a9a56c40f0f9d4e54e620838eb2b9849",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
