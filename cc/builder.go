@@ -144,11 +144,11 @@ var (
 		blueprint.RuleParams{
 			Depfile:     "${out}.d",
 			Deps:        blueprint.DepsGCC,
-			Command:     "CROSS_COMPILE=$crossCompile $tocPath -i ${in} -o ${out} -d ${out}.d",
+			Command:     "CROSS_COMPILE=$crossCompile $tocPath $format -i ${in} -o ${out} -d ${out}.d",
 			CommandDeps: []string{"$tocPath"},
 			Restat:      true,
 		},
-		"crossCompile")
+		"crossCompile", "format")
 
 	clangTidy = pctx.AndroidStaticRule("clangTidy",
 		blueprint.RuleParams{
@@ -761,6 +761,15 @@ func TransformSharedObjectToToc(ctx android.ModuleContext, inputFile android.Pat
 
 	crossCompile := gccCmd(flags.toolchain, "")
 
+	var format string
+	if ctx.Darwin() {
+		format = "--macho"
+	} else if ctx.Windows() {
+		format = "--pe"
+	} else {
+		format = "--elf"
+	}
+
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        toc,
 		Description: "generate toc " + inputFile.Base(),
@@ -768,6 +777,7 @@ func TransformSharedObjectToToc(ctx android.ModuleContext, inputFile android.Pat
 		Input:       inputFile,
 		Args: map[string]string{
 			"crossCompile": crossCompile,
+			"format":       format,
 		},
 	})
 }
