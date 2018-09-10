@@ -27,11 +27,13 @@ import (
 var (
 	pctx = android.NewPackageContext("android/soong/java/config")
 
-	DefaultBootclasspathLibraries = []string{"core-oj", "core-libart", "core-simple"}
-	DefaultSystemModules          = "core-system-modules"
-	DefaultLibraries              = []string{"ext", "framework", "okhttp"}
-	DefaultLambdaStubsLibrary     = "core-lambda-stubs"
-	SdkLambdaStubsPath            = "prebuilts/sdk/tools/core-lambda-stubs.jar"
+	DefaultBootclasspathLibrariesStubs = []string{"core.api.stubs"}
+	DefaultSystemModulesStubs          = "core-api-stubs-system-modules"
+	DefaultBootclasspathLibraries      = []string{"core-oj", "core-libart", "core-simple"}
+	DefaultSystemModules               = "core-system-modules"
+	DefaultLibraries                   = []string{"ext", "framework", "okhttp"}
+	DefaultLambdaStubsLibrary          = "core-lambda-stubs"
+	SdkLambdaStubsPath                 = "prebuilts/sdk/tools/core-lambda-stubs.jar"
 
 	DefaultJacocoExcludeFilter = []string{"org.junit.*", "org.jacoco.*", "org.mockito.*"}
 
