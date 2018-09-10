@@ -39,6 +39,24 @@
       "revId": "30a74bf835d9d52cc1e81a23a9a328c9a4b465e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "530b8093_eb1707f3",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-09-10T17:28:00Z",
+      "side": 1,
+      "message": "From your email, it sounds like core.api.stubs will be a larger API service than core.current.stubs, which is the libcore subset of the SDK.  I think those two concepts will need more differentiation, similar to public APIs vs. @SystemApi in the SDK.  Maybe @CoreSystemApi, or @CorePlatformApi?",
+      "parentUuid": "2ce569d9_22d52719",
+      "revId": "30a74bf835d9d52cc1e81a23a9a328c9a4b465e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
