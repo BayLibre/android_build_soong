@@ -87,7 +87,7 @@ type CompilerProperties struct {
 	No_framework_libs *bool
 
 	// use the core platform API stubs when compiling, not the implementation when
-	// no_standard_libs: false AND no_framework_libs: true
+	// no_standard_libs is false (the default)
 	// TODO: Change default to true when safe to do so.
 	Use_core_platform_api_stubs *bool
 
