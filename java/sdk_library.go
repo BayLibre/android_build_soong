@@ -128,6 +128,18 @@ type sdkLibraryProperties struct {
 	// Defaults to "android.annotation".
 	Srcs_lib_whitelist_pkgs []string
 
+	// don't build against the default libraries (bootclasspath, legacy-test, core-junit,
+	// ext, and framework for device targets)
+	No_standard_libs *bool
+
+	Openjdk9 struct {
+		// List of source files that should only be used when passing -source 1.9
+		Srcs []string
+
+		// List of javac flags that should only be used when passing -source 1.9
+		Javacflags []string
+	}
+
 	// TODO: determines whether to create HTML doc or not
 	//Html_doc *bool
 }
@@ -157,13 +169,17 @@ type sdkLibrary struct {
 func (module *sdkLibrary) DepsMutator(ctx android.BottomUpMutatorContext) {
 	// Add dependencies to the stubs library
 	ctx.AddVariationDependencies(nil, publicApiStubsTag, module.stubsName(apiScopePublic))
-	ctx.AddVariationDependencies(nil, systemApiStubsTag, module.stubsName(apiScopeSystem))
-	ctx.AddVariationDependencies(nil, testApiStubsTag, module.stubsName(apiScopeTest))
+	if module.isStandardLib() == true {
+		ctx.AddVariationDependencies(nil, systemApiStubsTag, module.stubsName(apiScopeSystem))
+		ctx.AddVariationDependencies(nil, testApiStubsTag, module.stubsName(apiScopeTest))
+	}
 	ctx.AddVariationDependencies(nil, implLibTag, module.implName())
 
 	ctx.AddVariationDependencies(nil, publicApiFileTag, module.docsName(apiScopePublic))
-	ctx.AddVariationDependencies(nil, systemApiFileTag, module.docsName(apiScopeSystem))
-	ctx.AddVariationDependencies(nil, testApiFileTag, module.docsName(apiScopeTest))
+	if module.isStandardLib() == true {
+		ctx.AddVariationDependencies(nil, systemApiFileTag, module.docsName(apiScopeSystem))
+		ctx.AddVariationDependencies(nil, testApiFileTag, module.docsName(apiScopeTest))
+	}
 }
 
 func (module *sdkLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
@@ -360,6 +376,13 @@ func (module *sdkLibrary) latestRemovedApiFilegroupName(apiScope apiScope) strin
 	return name
 }
 
+func (module *sdkLibrary) isStandardLib() bool {
+	if module.properties.No_standard_libs != nil && Bool(module.properties.No_standard_libs) {
+		return false
+	}
+	return true
+}
+
 // Creates a static java library that has API stubs
 func (module *sdkLibrary) createStubsLibrary(mctx android.TopDownMutatorContext, apiScope apiScope) {
 	props := struct {
@@ -371,6 +394,8 @@ func (module *sdkLibrary) createStubsLibrary(mctx android.TopDownMutatorContext,
 		Device_specific   *bool
 		Product_specific  *bool
 		Compile_dex       *bool
+		No_standard_libs  *bool
+		System_modules    *string
 		Product_variables struct {
 			Unbundled_build struct {
 				Enabled *bool
@@ -378,6 +403,10 @@ func (module *sdkLibrary) createStubsLibrary(mctx android.TopDownMutatorContext,
 			Pdk struct {
 				Enabled *bool
 			}
+		}
+		Openjdk9 struct {
+			Srcs       []string
+			Javacflags []string
 		}
 	}{}
 
@@ -389,6 +418,10 @@ func (module *sdkLibrary) createStubsLibrary(mctx android.TopDownMutatorContext,
 	// Unbundled apps will use the prebult one from /prebuilts/sdk
 	props.Product_variables.Unbundled_build.Enabled = proptools.BoolPtr(false)
 	props.Product_variables.Pdk.Enabled = proptools.BoolPtr(false)
+	props.No_standard_libs = module.properties.No_standard_libs
+	props.System_modules = module.deviceProperties.System_modules
+	props.Openjdk9.Srcs = module.properties.Openjdk9.Srcs
+	props.Openjdk9.Javacflags = module.properties.Openjdk9.Javacflags
 	if module.properties.Compile_dex != nil {
 		props.Compile_dex = module.properties.Compile_dex
 	}
@@ -494,25 +527,28 @@ func (module *sdkLibrary) createDocs(mctx android.TopDownMutatorContext, apiScop
 		"-error 7 -error 8 -error 9 -error 10 -error 11 -error 12 -error 13 -error 14 " +
 		"-error 15 -error 16 -error 17 -error 18")
 
-	// Include the part of the framework source. This is required for the case when
-	// API class is extending from the framework class. In that case, doclava needs
-	// to know whether the base class is hidden or not. Since that information is
-	// encoded as @hide string in the comment, we need source files for the classes,
-	// not the compiled ones.
-	props.Srcs_lib = proptools.StringPtr("framework")
-	props.Srcs_lib_whitelist_dirs = []string{"core/java"}
-	// Add android.annotation package to give access to the framework-defined
-	// annotations such as SystemApi, NonNull, etc.
-	if module.properties.Srcs_lib_whitelist_pkgs != nil {
-		props.Srcs_lib_whitelist_pkgs = module.properties.Srcs_lib_whitelist_pkgs
-	} else {
-		props.Srcs_lib_whitelist_pkgs = []string{"android.annotation"}
+	if module.isStandardLib() == true {
+		// Include the part of the framework source. This is required for the case when
+		// API class is extending from the framework class. In that case, doclava needs
+		// to know whether the base class is hidden or not. Since that information is
+		// encoded as @hide string in the comment, we need source files for the classes,
+		// not the compiled ones.
+		props.Srcs_lib = proptools.StringPtr("framework")
+		props.Srcs_lib_whitelist_dirs = []string{"core/java"}
+
+		// Add android.annotation package to give access to the framework-defined
+		// annotations such as SystemApi, NonNull, etc.
+		if module.properties.Srcs_lib_whitelist_pkgs != nil {
+			props.Srcs_lib_whitelist_pkgs = module.properties.Srcs_lib_whitelist_pkgs
+		} else {
+			props.Srcs_lib_whitelist_pkgs = []string{"android.annotation"}
+		}
+		// These libs are required by doclava to parse the framework sources add via
+		// Src_lib and Src_lib_whitelist_* properties just above.
+		// If we don't add them to the classpath, errors messages are generated by doclava,
+		// though they don't break the build.
+		props.Libs = append(props.Libs, "conscrypt", "bouncycastle", "okhttp", "framework")
 	}
-	// These libs are required by doclava to parse the framework sources add via
-	// Src_lib and Src_lib_whitelist_* properties just above.
-	// If we don't add them to the classpath, errors messages are generated by doclava,
-	// though they don't break the build.
-	props.Libs = append(props.Libs, "conscrypt", "bouncycastle", "okhttp", "framework")
 
 	mctx.CreateModule(android.ModuleFactoryAdaptor(DroiddocFactory), &props)
 }
@@ -529,7 +565,12 @@ func (module *sdkLibrary) createImplLibrary(mctx android.TopDownMutatorContext) 
 		Product_specific *bool
 		Installable      *bool
 		Required         []string
+		No_standard_libs *bool
 		Errorprone       struct {
+			Javacflags []string
+		}
+		Openjdk9 struct {
+			Srcs       []string
 			Javacflags []string
 		}
 	}{}
@@ -542,6 +583,9 @@ func (module *sdkLibrary) createImplLibrary(mctx android.TopDownMutatorContext) 
 	// XML file is installed along with the impl lib
 	props.Required = []string{module.xmlFileName()}
 	props.Errorprone.Javacflags = module.properties.Errorprone.Javacflags
+	props.No_standard_libs = module.properties.No_standard_libs
+	props.Openjdk9.Srcs = module.properties.Openjdk9.Srcs
+	props.Openjdk9.Javacflags = module.properties.Openjdk9.Javacflags
 
 	if module.SocSpecific() {
 		props.Soc_specific = proptools.BoolPtr(true)
@@ -638,6 +682,11 @@ func (module *sdkLibrary) ImplementationJars(linkType linkType) android.Paths {
 	}
 }
 
+// to satisfy SdkLibraryDependency interface
+func (module *sdkLibrary) IsStandardLib() bool {
+	return module.isStandardLib()
+}
+
 func javaSdkLibraries(config android.Config) *[]string {
 	return config.Once("javaSdkLibraries", func() interface{} {
 		return &[]string{}
@@ -660,16 +709,20 @@ func sdkLibraryMutator(mctx android.TopDownMutatorContext) {
 		module.createStubsLibrary(mctx, apiScopePublic)
 		module.createDocs(mctx, apiScopePublic)
 
-		// for system API stubs
-		module.createStubsLibrary(mctx, apiScopeSystem)
-		module.createDocs(mctx, apiScopeSystem)
+		if module.isStandardLib() == true {
+			// for system API stubs
+			module.createStubsLibrary(mctx, apiScopeSystem)
+			module.createDocs(mctx, apiScopeSystem)
 
-		// for test API stubs
-		module.createStubsLibrary(mctx, apiScopeTest)
-		module.createDocs(mctx, apiScopeTest)
+			// for test API stubs
+			module.createStubsLibrary(mctx, apiScopeTest)
+			module.createDocs(mctx, apiScopeTest)
+
+			// for runtime
+			module.createXmlFile(mctx)
+		}
 
 		// for runtime
-		module.createXmlFile(mctx)
 		module.createImplLibrary(mctx)
 
 		// record java_sdk_library modules so that they are exported to make
