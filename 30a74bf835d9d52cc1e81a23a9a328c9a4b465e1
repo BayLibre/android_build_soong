@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c2424f00_15e9ff4a",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2018-09-10T17:42:14Z",
+      "side": 1,
+      "message": "Good point. Will do.",
+      "parentUuid": "053c1cdb_247bede5",
+      "range": {
+        "startLine": 89,
+        "startChar": 55,
+        "endLine": 89,
+        "endChar": 63
+      },
+      "revId": "30a74bf835d9d52cc1e81a23a9a328c9a4b465e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2ce569d9_22d52719",
         "filename": "java/java.go",
         "patchSetId": 1
@@ -54,6 +78,24 @@
       "side": 1,
       "message": "From your email, it sounds like core.api.stubs will be a larger API service than core.current.stubs, which is the libcore subset of the SDK.  I think those two concepts will need more differentiation, similar to public APIs vs. @SystemApi in the SDK.  Maybe @CoreSystemApi, or @CorePlatformApi?",
       "parentUuid": "2ce569d9_22d52719",
+      "revId": "30a74bf835d9d52cc1e81a23a9a328c9a4b465e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb8f4368_f18e80e8",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2018-09-10T17:42:14Z",
+      "side": 1,
+      "message": "As you say; it\u0027s not the same.\n\nIIRC, core.current.stubs relates to the VNDK and they don\u0027t get to depend on the Core API, just the public set. If they did we wouldn\u0027t be able to change it as freely as we want.\n\nI think both should be renamed, TBH. Renaming core.current smells of yak so it\u0027s one I want to leave for now (even assuming it\u0027s not set in stone because of VNDK restrictions).\n\nI don\u0027t like CoreSystemApi because people will think it relates to @SystemApi. I\u0027ll go with CorePlatformApi, adjust the attribute name, and send out a separate rename. I\u0027ll also have a few docs to edit.",
+      "parentUuid": "530b8093_eb1707f3",
       "revId": "30a74bf835d9d52cc1e81a23a9a328c9a4b465e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
