@@ -662,8 +662,8 @@ func (library *libraryDecorator) link(ctx ModuleContext,
 			}
 			library.reexportFlags(flags)
 			library.reuseExportedFlags = append(library.reuseExportedFlags, flags...)
-			library.reexportDeps(library.baseCompiler.pathDeps) // TODO: restrict to aidl deps
-			library.reuseExportedDeps = append(library.reuseExportedDeps, library.baseCompiler.pathDeps...)
+			library.reexportDeps(library.baseCompiler.cFlagsDeps) // TODO: restrict to aidl deps
+			library.reuseExportedDeps = append(library.reuseExportedDeps, library.baseCompiler.cFlagsDeps...)
 		}
 	}
 

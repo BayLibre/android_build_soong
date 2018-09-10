@@ -29,7 +29,7 @@ func init() {
 	pctx.SourcePathVariable("yaccCmd", "prebuilts/build-tools/${config.HostPrebuiltTag}/bin/bison")
 	pctx.SourcePathVariable("yaccDataDir", "prebuilts/build-tools/common/bison")
 
-	pctx.HostBinToolVariable("aidlCmd", "aidl-cpp")
+	pctx.HostBinToolVariable("aidlCmd", "aidl")
 }
 
 var (
@@ -46,14 +46,30 @@ var (
 			CommandDeps: []string{"$lexCmd"},
 		})
 
+	// AIDL compiler generates multiple header files but the build system does
+	// not mark them as outputs of the build rule because the names of the headers
+	// can't be inferred from the input AIDL file name, but only by parsing the
+	// input. As a result, there is no direct dependency edges from the generated
+	// headers to the input AIDL file.
+	//
+	// In order to trigger rebuild of any source code using the generated headers
+	// when the input AIDL file is updated, a timestamp file is created and added
+	// as an (implicit) dependency when compiling the source code. The timestamp
+	// file depends on the input AIDL file(s) and is updated whenever the headers
+	// are newly generated. Specifically, --dependency_target makes the depfile
+	// to have the timestamp file as the target rule so that dependency from
+	// the timestamp file to the input AIDL files are introduced.
 	aidl = pctx.AndroidStaticRule("aidl",
 		blueprint.RuleParams{
-			Command:     "$aidlCmd -d${out}.d --ninja $aidlFlags $in $outDir $out",
+			Command: "$aidlCmd --lang=cpp $aidlFlags " +
+				"-d ${out}.d --ninja --dependency_target ${out} " +
+				"--cpp_source_out ${outFile} -h ${outHeadersDir} ${in} && " +
+				"touch ${out}",
 			CommandDeps: []string{"$aidlCmd"},
 			Depfile:     "${out}.d",
 			Deps:        blueprint.DepsGCC,
 		},
-		"aidlFlags", "outDir")
+		"aidlFlags", "outFile", "outHeadersDir")
 
 	windmc = pctx.AndroidStaticRule("windmc",
 		blueprint.RuleParams{
@@ -81,21 +97,23 @@ func genYacc(ctx android.ModuleContext, yaccFile android.Path, outFile android.M
 	return headerFile
 }
 
-func genAidl(ctx android.ModuleContext, aidlFile android.Path, outFile android.ModuleGenPath, aidlFlags string) android.Paths {
+func genAidl(ctx android.ModuleContext, aidlFile android.Path, outFile android.ModuleGenPath, aidlFlags string) (timestampFile android.ModuleGenPath) {
+	timestampFile = android.GenPathWithExt(ctx, "aidl", aidlFile, "timestamp")
 
 	ctx.Build(pctx, android.BuildParams{
-		Rule:        aidl,
-		Description: "aidl " + aidlFile.Rel(),
-		Output:      outFile,
-		Input:       aidlFile,
+		Rule:           aidl,
+		Description:    "aidl " + aidlFile.Rel(),
+		Output:         timestampFile,
+		ImplicitOutput: outFile,
+		Input:          aidlFile,
 		Args: map[string]string{
-			"aidlFlags": aidlFlags,
-			"outDir":    android.PathForModuleGen(ctx, "aidl").String(),
+			"aidlFlags":     aidlFlags,
+			"outFile":       outFile.String(),
+			"outHeadersDir": android.PathForModuleGen(ctx, "aidl").String(),
 		},
 	})
 
-	// TODO: This should return the generated headers, not the source file.
-	return android.Paths{outFile}
+	return timestampFile
 }
 
 func genLex(ctx android.ModuleContext, lexFile android.Path, outFile android.ModuleGenPath) {
@@ -128,9 +146,10 @@ func genWinMsg(ctx android.ModuleContext, srcFile android.Path, flags builderFla
 }
 
 func genSources(ctx android.ModuleContext, srcFiles android.Paths,
-	buildFlags builderFlags) (android.Paths, android.Paths) {
+	buildFlags builderFlags) (android.Paths, android.Paths, android.Paths) {
 
 	var deps android.Paths
+	var orderOnlyDeps android.Paths
 
 	var rsFiles android.Paths
 
@@ -139,11 +158,11 @@ func genSources(ctx android.ModuleContext, srcFiles android.Paths,
 		case ".y":
 			cFile := android.GenPathWithExt(ctx, "yacc", srcFile, "c")
 			srcFiles[i] = cFile
-			deps = append(deps, genYacc(ctx, srcFile, cFile, buildFlags.yaccFlags))
+			orderOnlyDeps = append(orderOnlyDeps, genYacc(ctx, srcFile, cFile, buildFlags.yaccFlags))
 		case ".yy":
 			cppFile := android.GenPathWithExt(ctx, "yacc", srcFile, "cpp")
 			srcFiles[i] = cppFile
-			deps = append(deps, genYacc(ctx, srcFile, cppFile, buildFlags.yaccFlags))
+			orderOnlyDeps = append(orderOnlyDeps, genYacc(ctx, srcFile, cppFile, buildFlags.yaccFlags))
 		case ".l":
 			cFile := android.GenPathWithExt(ctx, "lex", srcFile, "c")
 			srcFiles[i] = cFile
@@ -156,11 +175,13 @@ func genSources(ctx android.ModuleContext, srcFiles android.Paths,
 			ccFile, headerFile := genProto(ctx, srcFile, buildFlags.protoFlags,
 				buildFlags.protoOutParams, buildFlags.protoRoot)
 			srcFiles[i] = ccFile
-			deps = append(deps, headerFile)
+			orderOnlyDeps = append(orderOnlyDeps, headerFile)
 		case ".aidl":
 			cppFile := android.GenPathWithExt(ctx, "aidl", srcFile, "cpp")
 			srcFiles[i] = cppFile
-			deps = append(deps, genAidl(ctx, srcFile, cppFile, buildFlags.aidlFlags)...)
+			// Note: this is NOT orderOnlyDeps, but deps which are added as (implicit)
+			// dependencies
+			deps = append(deps, genAidl(ctx, srcFile, cppFile, buildFlags.aidlFlags))
 		case ".rs", ".fs":
 			cppFile := rsGeneratedCppFile(ctx, srcFile)
 			rsFiles = append(rsFiles, srcFiles[i])
@@ -168,13 +189,13 @@ func genSources(ctx android.ModuleContext, srcFiles android.Paths,
 		case ".mc":
 			rcFile, headerFile := genWinMsg(ctx, srcFile, buildFlags)
 			srcFiles[i] = rcFile
-			deps = append(deps, headerFile)
+			orderOnlyDeps = append(orderOnlyDeps, headerFile)
 		}
 	}
 
 	if len(rsFiles) > 0 {
-		deps = append(deps, rsGenerateCpp(ctx, rsFiles, buildFlags.rsFlags)...)
+		orderOnlyDeps = append(orderOnlyDeps, rsGenerateCpp(ctx, rsFiles, buildFlags.rsFlags)...)
 	}
 
-	return srcFiles, deps
+	return srcFiles, deps, orderOnlyDeps
 }

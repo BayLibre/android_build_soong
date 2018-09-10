@@ -575,24 +575,27 @@ func ndkPathDeps(ctx ModuleContext) android.Paths {
 }
 
 func (compiler *baseCompiler) compile(ctx ModuleContext, flags Flags, deps PathDeps) Objects {
-	pathDeps := deps.GeneratedHeaders
-	pathDeps = append(pathDeps, ndkPathDeps(ctx)...)
-
+	// Get the list of source files to compile and additional dependencies
 	buildFlags := flagsToBuilderFlags(flags)
-
 	srcs := append(android.Paths(nil), compiler.srcsBeforeGen...)
+	srcs, genDeps, orderOnlyDeps := genSources(ctx, srcs, buildFlags)
 
-	srcs, genDeps := genSources(ctx, srcs, buildFlags)
-	pathDeps = append(pathDeps, genDeps...)
+	// These are added as order-only dependencies
+	pathDeps := ndkPathDeps(ctx)
+	pathDeps = append(pathDeps, orderOnlyDeps...)
 
-	compiler.pathDeps = pathDeps
-	compiler.cFlagsDeps = flags.CFlagsDeps
+	// These are added as (implicit) dependencies
+	cFlagsDeps := flags.CFlagsDeps
+	cFlagsDeps = append(cFlagsDeps, deps.GeneratedHeaders...)
+	cFlagsDeps = append(cFlagsDeps, genDeps...)
 
 	// Save src, buildFlags and context
 	compiler.srcs = srcs
+	compiler.pathDeps = pathDeps
+	compiler.cFlagsDeps = cFlagsDeps
 
 	// Compile files listed in c.Properties.Srcs into objects
-	objs := compileObjs(ctx, buildFlags, "", srcs, pathDeps, compiler.cFlagsDeps)
+	objs := compileObjs(ctx, buildFlags, "", srcs, pathDeps, cFlagsDeps)
 
 	if ctx.Failed() {
 		return Objects{}
