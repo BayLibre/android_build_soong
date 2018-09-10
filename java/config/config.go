@@ -27,8 +27,8 @@ import (
 var (
 	pctx = android.NewPackageContext("android/soong/java/config")
 
-	DefaultBootclasspathLibrariesStubs = []string{"core.api.stubs"}
-	DefaultSystemModulesStubs          = "core-api-stubs-system-modules"
+	DefaultBootclasspathLibrariesStubs = []string{"core.platform.api.stubs"}
+	DefaultSystemModulesStubs          = "core-platform-api-stubs-system-modules"
 	DefaultBootclasspathLibraries      = []string{"core-oj", "core-libart", "core-simple"}
 	DefaultSystemModules               = "core-system-modules"
 	DefaultLibraries                   = []string{"ext", "framework", "okhttp"}
