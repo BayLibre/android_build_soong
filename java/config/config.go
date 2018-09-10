@@ -27,7 +27,7 @@ import (
 var (
 	pctx = android.NewPackageContext("android/soong/java/config")
 
-	DefaultBootclasspathLibraries = []string{"core-oj", "core-libart", "core-simple"}
+	DefaultBootclasspathLibraries = []string{"core-oj", "core-libart", "core-simple.impl"}
 	DefaultSystemModules          = "core-system-modules"
 	DefaultLibraries              = []string{"ext", "framework", "okhttp"}
 	DefaultLambdaStubsLibrary     = "core-lambda-stubs"

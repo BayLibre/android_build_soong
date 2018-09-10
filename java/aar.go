@@ -547,6 +547,10 @@ func (a *AARImport) ExportedSdkLibs() []string {
 	return nil
 }
 
+func (a *AARImport) IsStandardLib() bool {
+	return true
+}
+
 var _ android.PrebuiltInterface = (*Import)(nil)
 
 func AARImportFactory() android.Module {
