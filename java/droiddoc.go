@@ -139,6 +139,10 @@ type JavadocProperties struct {
 	// list of java libraries that will be in the classpath.
 	Libs []string `android:"arch_variant"`
 
+	// don't build against the default libraries (bootclasspath, legacy-test, core-junit,
+	// ext, and framework for device targets)
+	No_standard_libs *bool
+
 	// don't build against the framework libraries (legacy-test, core-junit,
 	// ext, and framework for device targets)
 	No_framework_libs *bool
@@ -157,6 +161,9 @@ type JavadocProperties struct {
 
 	// if not blank, set to the version of the sdk to compile against
 	Sdk_version *string `android:"arch_variant"`
+
+	// When targeting 1.9, override the modules to use with --system
+	System_modules *string
 
 	Aidl struct {
 		// Top level directories to pass to aidl tool
@@ -369,20 +376,27 @@ func (j *Javadoc) minSdkVersion() string {
 
 func (j *Javadoc) addDeps(ctx android.BottomUpMutatorContext) {
 	if ctx.Device() {
-		sdkDep := decodeSdkDep(ctx, sdkContext(j))
-		if sdkDep.useDefaultLibs {
-			ctx.AddVariationDependencies(nil, bootClasspathTag, config.DefaultBootclasspathLibraries...)
-			if ctx.Config().TargetOpenJDK9() {
-				ctx.AddVariationDependencies(nil, systemModulesTag, config.DefaultSystemModules)
+		if !Bool(j.properties.No_standard_libs) {
+			sdkDep := decodeSdkDep(ctx, sdkContext(j))
+			if sdkDep.useDefaultLibs {
+				ctx.AddVariationDependencies(nil, bootClasspathTag, config.DefaultBootclasspathLibraries...)
+				if ctx.Config().TargetOpenJDK9() {
+					ctx.AddVariationDependencies(nil, systemModulesTag, config.DefaultSystemModules)
+				}
+				if !Bool(j.properties.No_framework_libs) {
+					ctx.AddVariationDependencies(nil, libTag, config.DefaultLibraries...)
+				}
+			} else if sdkDep.useModule {
+				if ctx.Config().TargetOpenJDK9() {
+					ctx.AddVariationDependencies(nil, systemModulesTag, sdkDep.systemModules)
+				}
+				ctx.AddVariationDependencies(nil, bootClasspathTag, sdkDep.modules...)
 			}
-			if !Bool(j.properties.No_framework_libs) {
-				ctx.AddVariationDependencies(nil, libTag, config.DefaultLibraries...)
-			}
-		} else if sdkDep.useModule {
-			if ctx.Config().TargetOpenJDK9() {
-				ctx.AddVariationDependencies(nil, systemModulesTag, sdkDep.systemModules)
-			}
-			ctx.AddVariationDependencies(nil, bootClasspathTag, sdkDep.modules...)
+		} else if j.properties.System_modules == nil {
+			ctx.PropertyErrorf("no_standard_libs",
+				"system_modules is required to be set when no_standard_libs is true, did you mean no_framework_libs?")
+		} else if *j.properties.System_modules != "none" && ctx.Config().TargetOpenJDK9() {
+			ctx.AddVariationDependencies(nil, systemModulesTag, *j.properties.System_modules)
 		}
 	}
 

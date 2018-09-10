@@ -326,11 +326,13 @@ type Dependency interface {
 	ImplementationAndResourcesJars() android.Paths
 	AidlIncludeDirs() android.Paths
 	ExportedSdkLibs() []string
+	IsStandardLib() bool
 }
 
 type SdkLibraryDependency interface {
 	HeaderJars(linkType linkType) android.Paths
 	ImplementationJars(linkType linkType) android.Paths
+	IsStandardLib() bool
 }
 
 type SrcDependency interface {
@@ -833,7 +835,13 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 				// names of sdk libs that are directly depended are exported
 				j.exportedSdkLibs = append(j.exportedSdkLibs, otherName)
 			default:
-				ctx.ModuleErrorf("dependency on java_sdk_library %q can only be in libs", otherName)
+				if dep.IsStandardLib() == false {
+					deps.classpath = append(deps.classpath, dep.HeaderJars(getLinkType(j, ctx.ModuleName()))...)
+					// names of sdk libs that are directly depended are exported
+					j.exportedSdkLibs = append(j.exportedSdkLibs, otherName)
+				} else {
+					ctx.ModuleErrorf("dependency on java_sdk_library %q can only be in libs", otherName)
+				}
 			}
 		case android.SourceFileProducer:
 			switch tag {
@@ -1354,6 +1362,10 @@ func (j *Module) ExportedSdkLibs() []string {
 	return j.exportedSdkLibs
 }
 
+func (j *Module) IsStandardLib() bool {
+	return true
+}
+
 var _ logtagsProducer = (*Module)(nil)
 
 func (j *Module) logtags() android.Paths {
@@ -1687,6 +1699,10 @@ func (j *Import) AidlIncludeDirs() android.Paths {
 
 func (j *Import) ExportedSdkLibs() []string {
 	return j.exportedSdkLibs
+}
+
+func (j *Import) IsStandardLib() bool {
+	return true
 }
 
 var _ android.PrebuiltInterface = (*Import)(nil)
