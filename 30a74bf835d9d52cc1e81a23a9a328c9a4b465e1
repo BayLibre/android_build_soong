@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "053c1cdb_247bede5",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-09-10T16:44:12Z",
+      "side": 1,
+      "message": "I wouldn\u0027t mention core-all here, this ends up at go/Android.bp, and nothing should build against core-all except for core-oj/core-libart.",
+      "range": {
+        "startLine": 89,
+        "startChar": 55,
+        "endLine": 89,
+        "endChar": 63
+      },
+      "revId": "30a74bf835d9d52cc1e81a23a9a328c9a4b465e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ce569d9_22d52719",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-09-10T16:44:12Z",
+      "side": 1,
+      "message": "This seems equivalent to sdk_version: \"core_current\", which uses core.current.stubs that is basically the same as core.api.stubs.",
+      "revId": "30a74bf835d9d52cc1e81a23a9a328c9a4b465e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
