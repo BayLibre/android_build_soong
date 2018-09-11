@@ -94,6 +94,30 @@
       "revId": "352d94b8e4b28bfba8375726f7fc4878e62ce5ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ab1df47_86a0ff0f",
+        "filename": "cc/gen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-09-11T02:50:42Z",
+      "side": 1,
+      "message": "\u003e Removing an header while not updating the timestamp file is impossible at least in this case. Headers are updated only via the invocation of the AIDL compiler and the timestamp file is always updated then.\n\nIf you only look at what\u0027s happening during the build, sure. But we\u0027ve had CleanSpec.mk entries and users delete the generated files, but not the timestamp files before. Many of those were when we kept the timestamp file in a different directory than the generated sources, but it can happen.",
+      "parentUuid": "8d40faf7_f00ba0b0",
+      "range": {
+        "startLine": 51,
+        "startChar": 47,
+        "endLine": 52,
+        "endChar": 51
+      },
+      "revId": "352d94b8e4b28bfba8375726f7fc4878e62ce5ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
