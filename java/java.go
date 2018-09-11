@@ -520,8 +520,8 @@ func decodeSdkDep(ctx android.BaseContext, sdkContext sdkContext) sdkDep {
 		}
 		if m == "core.current.stubs" {
 			ret.systemModules = "core-system-modules"
-		} else if m == "core.api.stubs" {
-			ret.systemModules = "core-api-stubs-system-modules"
+		} else if m == "core.platform.api.stubs" {
+			ret.systemModules = "core-platform-api-stubs-system-modules"
 		}
 		return ret
 	}
@@ -545,7 +545,7 @@ func decodeSdkDep(ctx android.BaseContext, sdkContext sdkContext) sdkDep {
 	case "core_current":
 		return toModule("core.current.stubs", "")
 	case "core_platform_current":
-		return toModule("core.api.stubs", "")
+		return toModule("core.platform.api.stubs", "")
 	default:
 		return toPrebuilt(v)
 	}
@@ -712,7 +712,7 @@ func getLinkType(m *Module, name string) linkType {
 	ver := m.sdkVersion()
 	noStdLibs := Bool(m.properties.No_standard_libs)
 	switch {
-	case name == "core.current.stubs" || ver == "core_current" || name == "core.api.stubs" || ver == "core_platform_current" || noStdLibs || name == "stub-annotations" ||
+	case name == "core.current.stubs" || ver == "core_current" || name == "core.platform.api.stubs" || ver == "core_platform_current" || noStdLibs || name == "stub-annotations" ||
 		name == "private-stub-annotations-jar":
 		return javaCore
 	case name == "android_system_stubs_current" || strings.HasPrefix(ver, "system_"):
