@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "19a263c1_d5ad905a",
+        "filename": "java/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-09-11T21:32:01Z",
+      "side": 1,
+      "message": "yes. some stubs targets still are generated using doclava. Once we migrated all stubs targets to metalava, we can delete them.",
+      "parentUuid": "f239b50e_4e51c614",
+      "range": {
+        "startLine": 354,
+        "startChar": 4,
+        "endLine": 380,
+        "endChar": 83
+      },
+      "revId": "aee64d9e863127a8c68509f1c4cb87e3205c931d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0a602870_1413527f",
         "filename": "java/droiddoc.go",
         "patchSetId": 2
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "9fa0b141_6db5f60a",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-09-11T21:32:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a602870_1413527f",
+      "revId": "aee64d9e863127a8c68509f1c4cb87e3205c931d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36a124bb_1dcf97a5",
         "filename": "java/droiddoc.go",
         "patchSetId": 2
@@ -56,6 +98,24 @@
       "revId": "aee64d9e863127a8c68509f1c4cb87e3205c931d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2837332_6ff63109",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-09-11T21:32:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36a124bb_1dcf97a5",
+      "revId": "aee64d9e863127a8c68509f1c4cb87e3205c931d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
