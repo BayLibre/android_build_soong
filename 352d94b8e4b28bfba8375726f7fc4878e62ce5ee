@@ -22,6 +22,30 @@
       "revId": "352d94b8e4b28bfba8375726f7fc4878e62ce5ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75deaf96_60cfa0d4",
+        "filename": "cc/gen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-09-11T01:17:38Z",
+      "side": 1,
+      "message": "filenames can\u0027t be inferred in following cases:\n\n1) package name: an interface or parcelable defined in pkg.name package can be at xxx/yyy/pkg/name/IFoo.aidl. We can\u0027t sure that the output would be \u003cout\u003e/xxx/yyy/pkg/name/[I|Bn|Bp]Foo.h.\n\n2) when a single AIDL file has multiple types in it (not here but in aidl_interface), we can\u0027t even infer basename of the file.\n\n3) When the input is parcelable, the Bn* and Bp* headers are not created. (Note: we are currently generating the headers but they are meaningless and thus shouldn\u0027t be created)",
+      "parentUuid": "a5ab3bf0_14a729e1",
+      "range": {
+        "startLine": 51,
+        "startChar": 47,
+        "endLine": 52,
+        "endChar": 51
+      },
+      "revId": "352d94b8e4b28bfba8375726f7fc4878e62ce5ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
