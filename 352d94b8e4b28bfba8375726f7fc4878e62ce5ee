@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5ab3bf0_14a729e1",
+        "filename": "cc/gen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-09-11T01:04:46Z",
+      "side": 1,
+      "message": "Timestamp files are not going to be supported in the future, and have generally caused problems in the past (when something ends up removing the underlying header, but not the timestamp file, etc).\n\nWhy can\u0027t the filenames be inferred? What information are we missing? From what I\u0027m seeing, just the package name? It doesn\u0027t matter if it\u0027s a parcel or not, we still export three headers. Are they not consistently named?\n\nI\u0027m exploring some options here.",
+      "range": {
+        "startLine": 51,
+        "startChar": 47,
+        "endLine": 52,
+        "endChar": 51
+      },
+      "revId": "352d94b8e4b28bfba8375726f7fc4878e62ce5ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
