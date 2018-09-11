@@ -70,6 +70,30 @@
       "revId": "352d94b8e4b28bfba8375726f7fc4878e62ce5ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d40faf7_f00ba0b0",
+        "filename": "cc/gen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-09-11T02:11:03Z",
+      "side": 1,
+      "message": "I don\u0027t understand what\u0027s wrong with timestamp file. Removing an header while not updating the timestamp file is impossible at least in this case. Headers are updated only via the invocation of the AIDL compiler and the timestamp file is always updated then.\n\n1) in my understanding, it\u0027s not just better checks/error messages. ./src/xxx/yyy/pkg/name/IFoo.aidl is a \"valid\" src path when the type is in pkg.name. The problem is that we just don\u0027t know the path elements that corresponds to the package name. For Java, this is not a problem as Java compiler doesn\u0027t complain as long as the generated output is under pkg/name sub directory, i.e. random/path/pkg/name is also okay. But in case of headers, it should be exactly under \u003cinclude_path\u003e/pkg/name/. \n\n2) and 3): In general, I think I agree, but I don\u0027t understand why it is a problem with the existence of the timestamp file.\n\n\u003e I\u0027ve got a local prototype that can compile vold using explicit header outputs\n\nOk, I am waiting for the CL.",
+      "parentUuid": "8767eadc_300e6cce",
+      "range": {
+        "startLine": 51,
+        "startChar": 47,
+        "endLine": 52,
+        "endChar": 51
+      },
+      "revId": "352d94b8e4b28bfba8375726f7fc4878e62ce5ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
