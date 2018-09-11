@@ -46,6 +46,30 @@
       "revId": "352d94b8e4b28bfba8375726f7fc4878e62ce5ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8767eadc_300e6cce",
+        "filename": "cc/gen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-09-11T01:35:53Z",
+      "side": 1,
+      "message": "1) Package name isn\u0027t that hard, we\u0027ve solved that in other places. We mainly just need better checks / error messages.\n\n2) For a tool to be used during a build, it needs to be designed to have predictable outputs. If it isn\u0027t, it needs to be redesigned.\n\n3) That\u0027s not a problem for today -- generating meaningless headers is fine if it solves the predictability problems. Or we\u0027d want to differentiate parcelables vs not in the Android.bp files.\n\nI\u0027ve got a local prototype that can compile vold using explicit header outputs, I\u0027ll clean it up and test it wider then upload. I\u0027m wrapping the aidl call in sbox since it verifies that all the outputs were actually created, and has reasonable error messages. The more annoying bit is that we need an output (thus header) directory per aidl file (that\u0027s needed to improve incremental builds anyways).",
+      "parentUuid": "75deaf96_60cfa0d4",
+      "range": {
+        "startLine": 51,
+        "startChar": 47,
+        "endLine": 52,
+        "endChar": 51
+      },
+      "revId": "352d94b8e4b28bfba8375726f7fc4878e62ce5ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
