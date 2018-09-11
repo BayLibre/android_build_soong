@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f239b50e_4e51c614",
+        "filename": "java/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-09-11T20:57:13Z",
+      "side": 1,
+      "message": "Is this still necessary?",
+      "range": {
+        "startLine": 354,
+        "startChar": 4,
+        "endLine": 380,
+        "endChar": 83
+      },
+      "revId": "aee64d9e863127a8c68509f1c4cb87e3205c931d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a602870_1413527f",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-09-11T20:57:13Z",
+      "side": 1,
+      "message": "This flag doesn\u0027t exist any more?",
+      "revId": "aee64d9e863127a8c68509f1c4cb87e3205c931d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36a124bb_1dcf97a5",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-09-11T20:57:13Z",
+      "side": 1,
+      "message": "Why would droidstubs need dokka?",
+      "revId": "aee64d9e863127a8c68509f1c4cb87e3205c931d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
