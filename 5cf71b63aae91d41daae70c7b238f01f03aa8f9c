@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc5b6566_0cca9d60",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-09-11T20:19:41Z",
+      "side": 1,
+      "message": "Maybe just Isolated *bool, and anyone who wants no_main can use gtest: false, static_libs: [\"libgtest_isolated\"]",
+      "revId": "5cf71b63aae91d41daae70c7b238f01f03aa8f9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ba55f88_9e65ca05",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-09-11T20:19:41Z",
+      "side": 1,
+      "message": "I don\u0027t think the helper is very useful, since you\u0027re about to read one of the variables directly anyways.",
+      "revId": "5cf71b63aae91d41daae70c7b238f01f03aa8f9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
