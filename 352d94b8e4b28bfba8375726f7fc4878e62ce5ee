@@ -118,6 +118,30 @@
       "revId": "352d94b8e4b28bfba8375726f7fc4878e62ce5ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3105cb6a_cd06076f",
+        "filename": "cc/gen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-09-11T03:17:57Z",
+      "side": 1,
+      "message": "Well, then IMHO, the proper fix should be disallowing the intermediates directories (perhaps under out/soong/.intermediates but not out/target/ or out/host) to be specified in CleanSpec.mk.\n\nIn general, some one shouldn\u0027t rely on CleanSpec.mk at least for things under out/soong/.intermediates, right?",
+      "parentUuid": "1ab1df47_86a0ff0f",
+      "range": {
+        "startLine": 51,
+        "startChar": 47,
+        "endLine": 52,
+        "endChar": 51
+      },
+      "revId": "352d94b8e4b28bfba8375726f7fc4878e62ce5ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
