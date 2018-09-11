@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "67ffb565_0a43fd1b",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-09-11T02:06:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b4ccb3c_4e7dfd5c",
+      "revId": "d1b2070e07191c2a2b016ae39b7538dbbd6c24af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62bea343_0db40b44",
         "filename": "java/droiddoc.go",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2018-09-06T23:45:22Z",
       "side": 1,
       "message": "Could it ever have both srcFiles and srcjars?  Is there a better marker for having generated sources than len(srcFiles) \u003d\u003d 0?",
+      "revId": "d1b2070e07191c2a2b016ae39b7538dbbd6c24af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9124779_e4563e9b",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-09-11T02:06:42Z",
+      "side": 1,
+      "message": "removed this if- statement for now.",
+      "parentUuid": "62bea343_0db40b44",
       "revId": "d1b2070e07191c2a2b016ae39b7538dbbd6c24af",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "47f6c819_e2d5e14a",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 782,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-09-11T02:06:42Z",
+      "side": 1,
+      "message": "javadoc expects directories on the sourcepath, not jar files.",
+      "parentUuid": "f84afe80_7298d6d3",
+      "revId": "d1b2070e07191c2a2b016ae39b7538dbbd6c24af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5e8341a8_98966f94",
         "filename": "java/droiddoc.go",
         "patchSetId": 1
@@ -67,6 +121,24 @@
       "revId": "d1b2070e07191c2a2b016ae39b7538dbbd6c24af",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab803990_acf36b24",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1213,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-09-11T02:06:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e8341a8_98966f94",
+      "revId": "d1b2070e07191c2a2b016ae39b7538dbbd6c24af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
