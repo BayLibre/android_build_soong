@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "ae08b5d3_2bdb54b8",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1308,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-09-11T20:46:39Z",
+      "side": 1,
+      "message": "According to https://blog.jetbrains.com/kotlin/2018/07/see-whats-coming-in-kotlin-1-3-m1/, code using experimental coroutines will not compile in 1.3, so I think this should wait until 1.3 is available, at which point it probably won\u0027t even need the -Xcoroutines flag.",
+      "parentUuid": "c98db474_96a63f12",
+      "revId": "4ed1659ed0bede8dd77850c80b7db17d8c3614a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1eaa0162_9d8a010f",
         "filename": "java/java.go",
         "patchSetId": 1
@@ -136,6 +154,24 @@
       "side": 1,
       "message": "I don\u0027t disagree. Not sure how consistent the use of -Werror is, though. Maybe going with compiler\u0027s defaults is sane in this case? Sounds reasonable to list warnings and then use switches to either not show them at all (-no-warn) or treat them as errors (-Werror). Mind you, this implementation would not allow ignoring warnings, but warning suppression should be trivial to add this way.",
       "parentUuid": "1eaa0162_9d8a010f",
+      "revId": "4ed1659ed0bede8dd77850c80b7db17d8c3614a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07e76fd0_e1246a8c",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1319,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-09-11T20:46:39Z",
+      "side": 1,
+      "message": "Preventing introducing new warnings is important to us, but again I don\u0027t think we want a flag for every warning type.",
+      "parentUuid": "76fe1e05_fcd973bf",
       "revId": "4ed1659ed0bede8dd77850c80b7db17d8c3614a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
