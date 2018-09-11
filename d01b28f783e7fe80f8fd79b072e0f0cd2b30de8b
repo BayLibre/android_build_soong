@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2b50a35_7439dd26",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-09-11T18:47:57Z",
+      "side": 1,
+      "message": "This is unlikely to work, the next version will be 1.10 which will return -1.  I\u0027d suggest just doing javaVersion \u003d\u003d \"1.9\", and we can revisit when we support a newer version.",
+      "range": {
+        "startLine": 896,
+        "startChar": 8,
+        "endLine": 896,
+        "endChar": 23
+      },
+      "revId": "d01b28f783e7fe80f8fd79b072e0f0cd2b30de8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
