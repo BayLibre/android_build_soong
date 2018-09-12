@@ -23,6 +23,7 @@ import (
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/pathtools"
+	"github.com/google/blueprint/proptools"
 )
 
 var (
@@ -819,11 +820,11 @@ func convertBuildParams(params BuildParams) blueprint.BuildParams {
 		Rule:            params.Rule,
 		Description:     params.Description,
 		Deps:            params.Deps,
-		Outputs:         params.Outputs.Strings(),
-		ImplicitOutputs: params.ImplicitOutputs.Strings(),
-		Inputs:          params.Inputs.Strings(),
-		Implicits:       params.Implicits.Strings(),
-		OrderOnly:       params.OrderOnly.Strings(),
+		Outputs:         proptools.NinjaEscape(params.Outputs.Strings()),
+		ImplicitOutputs: proptools.NinjaEscape(params.ImplicitOutputs.Strings()),
+		Inputs:          proptools.NinjaEscape(params.Inputs.Strings()),
+		Implicits:       proptools.NinjaEscape(params.Implicits.Strings()),
+		OrderOnly:       proptools.NinjaEscape(params.OrderOnly.Strings()),
 		Args:            params.Args,
 		Optional:        !params.Default,
 	}
