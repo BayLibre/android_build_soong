@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f45f08c_0829aabb",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-09-12T17:54:53Z",
+      "side": 1,
+      "message": "Do we also allow output paths to have \"$\" within the pathname?",
+      "revId": "792593f55241c08e5d5b61a02b780a0ca68b55b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
