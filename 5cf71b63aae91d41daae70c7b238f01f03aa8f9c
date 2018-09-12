@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "edbf3edf_02e8d914",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-09-12T00:53:18Z",
+      "side": 1,
+      "message": "Changed to a bool and modified the bionic tests to use gtest: false and directly include the library.",
+      "parentUuid": "bc5b6566_0cca9d60",
+      "revId": "5cf71b63aae91d41daae70c7b238f01f03aa8f9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3ba55f88_9e65ca05",
         "filename": "cc/test.go",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2018-09-11T20:19:41Z",
       "side": 1,
       "message": "I don\u0027t think the helper is very useful, since you\u0027re about to read one of the variables directly anyways.",
+      "revId": "5cf71b63aae91d41daae70c7b238f01f03aa8f9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1ef9fe0_ccf60309",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2018-09-12T00:53:18Z",
+      "side": 1,
+      "message": "I removed the helper since it\u0027s only used once.",
+      "parentUuid": "3ba55f88_9e65ca05",
       "revId": "5cf71b63aae91d41daae70c7b238f01f03aa8f9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
