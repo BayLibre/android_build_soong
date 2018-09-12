@@ -1,0 +1,8 @@
+Verified+1: Neil Fuller <nfuller@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Neil Fuller <nfuller@google.com>
+Submitted-at: Wed, 12 Sep 2018 14:52:31 +0000
+Reviewed-on: https://android-review.googlesource.com/753248
+Project: platform/build/soong
+Branch: refs/heads/master
