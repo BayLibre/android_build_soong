@@ -70,6 +70,30 @@
       "revId": "2d97b4941bacbe97bbb4fafa9c956f2f84e7a63f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b803b351_f1534edb",
+        "filename": "cc/gen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2018-09-13T03:33:08Z",
+      "side": 1,
+      "message": "For headers, what is the concern about putting headers and sources in the same directory? I found that protobuf does like that, and I think code will become more complex if we don\u0027t. I\u0027d like to put them together if there\u0027s not specific reason.",
+      "parentUuid": "ef8a6039_f9851ed6",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 107
+      },
+      "revId": "2d97b4941bacbe97bbb4fafa9c956f2f84e7a63f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
