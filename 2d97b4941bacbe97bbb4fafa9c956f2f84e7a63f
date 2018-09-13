@@ -94,6 +94,30 @@
       "revId": "2d97b4941bacbe97bbb4fafa9c956f2f84e7a63f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c9a961d_cc1dc046",
+        "filename": "cc/gen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-09-13T17:56:19Z",
+      "side": 1,
+      "message": "All of the Google projects tend towards keeping headers and source files together; I\u0027m not sure why though.  Within Android, we\u0027ve had a strong tendency to have a separate include/\u003cproject\u003e/ headers directory.  I\u0027d recommend that for this library as well.",
+      "parentUuid": "b803b351_f1534edb",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 107
+      },
+      "revId": "2d97b4941bacbe97bbb4fafa9c956f2f84e7a63f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
