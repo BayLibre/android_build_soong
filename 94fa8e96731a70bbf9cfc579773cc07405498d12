@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "341c8b41_68fe9ef4",
+        "filename": "java/java.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 1405,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-09-13T23:50:33Z",
+      "side": 1,
+      "message": "If you store srcFiles for reuse it will already be expanded.",
+      "parentUuid": "ae4e4270_ca1f9ad4",
+      "range": {
+        "startLine": 1390,
+        "startChar": 0,
+        "endLine": 1405,
+        "endChar": 13
+      },
+      "revId": "94fa8e96731a70bbf9cfc579773cc07405498d12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a7634451_688f89ae",
         "filename": "java/java.go",
         "patchSetId": 40
