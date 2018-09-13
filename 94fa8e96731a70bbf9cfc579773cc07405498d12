@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "ae4e4270_ca1f9ad4",
+        "filename": "java/java.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 1405,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-13T23:44:51Z",
+      "side": 1,
+      "message": "https://android-review.googlesource.com/c/platform/build/soong/+/730085/17/java/jdeps.go#139\n\nWe try to collect srcs: [\":some_module\"] in Android.bp if the source file is recorded in filegroup/genrules, we want to expand it here.",
+      "parentUuid": "d988c596_1f3aefce",
+      "range": {
+        "startLine": 1390,
+        "startChar": 0,
+        "endLine": 1405,
+        "endChar": 13
+      },
+      "revId": "94fa8e96731a70bbf9cfc579773cc07405498d12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a7634451_688f89ae",
         "filename": "java/java.go",
         "patchSetId": 40
@@ -68,6 +92,30 @@
       "revId": "94fa8e96731a70bbf9cfc579773cc07405498d12",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ade8da2_f928064d",
+        "filename": "java/java.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 1747,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-13T23:44:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7634451_688f89ae",
+      "range": {
+        "startLine": 1747,
+        "startChar": 9,
+        "endLine": 1747,
+        "endChar": 15
+      },
+      "revId": "94fa8e96731a70bbf9cfc579773cc07405498d12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
