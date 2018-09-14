@@ -223,6 +223,24 @@
       "revId": "94fa8e96731a70bbf9cfc579773cc07405498d12",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7f0e28f_9e5857f9",
+        "filename": "java/jdeps.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-14T00:45:42Z",
+      "side": 1,
+      "message": "Done,\n\nI move it to the beginning of VistAllModules function.",
+      "parentUuid": "c847d959_0d308c6a",
+      "revId": "94fa8e96731a70bbf9cfc579773cc07405498d12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
