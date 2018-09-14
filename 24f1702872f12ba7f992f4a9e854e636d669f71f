@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1432f09_bdfc56fd",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-09-14T23:58:38Z",
+      "side": 1,
+      "message": "d8 too?",
+      "revId": "24f1702872f12ba7f992f4a9e854e636d669f71f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
