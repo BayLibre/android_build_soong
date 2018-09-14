@@ -118,6 +118,30 @@
       "revId": "2d97b4941bacbe97bbb4fafa9c956f2f84e7a63f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88f58814_882bb679",
+        "filename": "cc/gen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2018-09-14T01:09:24Z",
+      "side": 1,
+      "message": "I got it, yes Android has such tendency. So what I wonder is, should we follow that convention for generated sources as well?",
+      "parentUuid": "5c9a961d_cc1dc046",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 107
+      },
+      "revId": "2d97b4941bacbe97bbb4fafa9c956f2f84e7a63f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
