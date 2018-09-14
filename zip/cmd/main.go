@@ -159,6 +159,7 @@ func main() {
 	compLevel := flags.Int("L", 5, "deflate compression level (0-9)")
 	emulateJar := flags.Bool("jar", false, "modify the resultant .zip to emulate the output of 'jar'")
 	writeIfChanged := flags.Bool("write_if_changed", false, "only update resultant .zip if it has changed")
+	nonDeflateAllFiles := flags.Bool("0", false, "store all files within the zip without compression")
 
 	cpuProfile := flags.String("cpuprofile", "", "write cpu profile to file")
 	traceFile := flags.String("trace", "", "write trace to file")
@@ -181,6 +182,7 @@ func main() {
 		ManifestSourcePath:       *manifest,
 		NumParallelJobs:          *parallelJobs,
 		NonDeflatedFiles:         nonDeflatedFiles,
+		NonDeflateAllFiles:       *nonDeflateAllFiles,
 		WriteIfChanged:           *writeIfChanged,
 	})
 	if err != nil {

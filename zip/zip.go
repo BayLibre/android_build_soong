@@ -130,6 +130,7 @@ type ZipArgs struct {
 	ManifestSourcePath       string
 	NumParallelJobs          int
 	NonDeflatedFiles         map[string]bool
+	NonDeflateAllFiles       bool
 	WriteIfChanged           bool
 }
 
@@ -227,7 +228,8 @@ func Run(args ZipArgs) (err error) {
 		}
 		for _, src := range srcs {
 			if err := fillPathPairs(fa.PathPrefixInZip,
-				fa.SourcePrefixToStrip, src, &pathMappings, args.NonDeflatedFiles); err != nil {
+				fa.SourcePrefixToStrip, src, &pathMappings,
+				args.NonDeflatedFiles, args.NonDeflateAllFiles); err != nil {
 				log.Fatal(err)
 			}
 		}
@@ -267,7 +269,9 @@ func Run(args ZipArgs) (err error) {
 	return nil
 }
 
-func fillPathPairs(prefix, rel, src string, pathMappings *[]pathMapping, nonDeflatedFiles map[string]bool) error {
+func fillPathPairs(prefix, rel, src string, pathMappings *[]pathMapping,
+	nonDeflatedFiles map[string]bool, nonDeflateAllFiles bool) error {
+
 	src = strings.TrimSpace(src)
 	if src == "" {
 		return nil
@@ -280,7 +284,7 @@ func fillPathPairs(prefix, rel, src string, pathMappings *[]pathMapping, nonDefl
 	dest = filepath.Join(prefix, dest)
 
 	zipMethod := zip.Deflate
-	if _, found := nonDeflatedFiles[dest]; found {
+	if _, found := nonDeflatedFiles[dest]; found || nonDeflateAllFiles {
 		zipMethod = zip.Store
 	}
 	*pathMappings = append(*pathMappings,
