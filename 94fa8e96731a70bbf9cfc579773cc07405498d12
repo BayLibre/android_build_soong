@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "aa5ef632_3aeede29",
+        "filename": "android/filegroup.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-14T00:35:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d0e28bf_2869bf54",
+      "range": {
+        "startLine": 98,
+        "startChar": 9,
+        "endLine": 98,
+        "endChar": 15
+      },
+      "revId": "94fa8e96731a70bbf9cfc579773cc07405498d12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d988c596_1f3aefce",
         "filename": "java/java.go",
         "patchSetId": 40
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "7a1dd4fb_c9456a65",
+        "filename": "java/java.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 1405,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-14T00:35:16Z",
+      "side": 1,
+      "message": "Done, update codes:\n\nj.expandIDEInfoCompiledSrcs \u003d append(j.expandIDEInfoCompiledSrcs, srcFiles.Strings()...)",
+      "parentUuid": "341c8b41_68fe9ef4",
+      "range": {
+        "startLine": 1390,
+        "startChar": 0,
+        "endLine": 1405,
+        "endChar": 13
+      },
+      "revId": "94fa8e96731a70bbf9cfc579773cc07405498d12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7634451_688f89ae",
         "filename": "java/java.go",
         "patchSetId": 40
@@ -154,6 +202,24 @@
       "writtenOn": "2018-09-13T20:51:13Z",
       "side": 1,
       "message": "Are you seeing java modules that are LinuxBionic?  That would be unexpected.",
+      "revId": "94fa8e96731a70bbf9cfc579773cc07405498d12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c847d959_0d308c6a",
+        "filename": "java/jdeps.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-14T00:35:16Z",
+      "side": 1,
+      "message": "If we don\u0027t filter it here, we get two installed paths in our collection data and that\u0027s not supposed to be what we want.",
+      "parentUuid": "18ebeb09_c4a612e9",
       "revId": "94fa8e96731a70bbf9cfc579773cc07405498d12",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
