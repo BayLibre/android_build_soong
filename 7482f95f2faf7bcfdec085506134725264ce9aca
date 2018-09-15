@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef8d7b84_21a4755e",
+        "filename": "zip/cmd/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-09-15T00:42:09Z",
+      "side": 1,
+      "message": "How is this different from -L 0? (Other than we should probably special case that to never attempt to use flate, since we should always decide that store is better anyways)",
+      "range": {
+        "startLine": 162,
+        "startChar": 1,
+        "endLine": 162,
+        "endChar": 99
+      },
+      "revId": "7482f95f2faf7bcfdec085506134725264ce9aca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
