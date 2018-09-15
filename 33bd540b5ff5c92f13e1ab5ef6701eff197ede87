@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e67ad81_779ce15d",
+        "filename": "java/jdeps.go",
+        "patchSetId": 44
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-09-15T00:15:18Z",
+      "side": 1,
+      "message": "I confused why any module with module.Target().Os \u003d\u003d android.LinuxBionic would also pass this check, since only java and genrule modules implement android.IDEInfo and I wouldn\u0027t expect them to have LinuxBionic variants.  Which module has a LinuxBionic variant?",
+      "revId": "33bd540b5ff5c92f13e1ab5ef6701eff197ede87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
