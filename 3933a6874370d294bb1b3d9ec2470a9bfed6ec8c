@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6441de0_70574107",
+        "filename": "java/jdeps.go",
+        "patchSetId": 47
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-09-17T17:06:53Z",
+      "side": 1,
+      "message": "if data.Class !\u003d \"\" {\n    append(dpInfo.Classes, data.Class)\n}\n\nthen you won\u0027t need the RemoveFromList below.",
+      "revId": "3933a6874370d294bb1b3d9ec2470a9bfed6ec8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b758c8db_5e82355c",
+        "filename": "java/jdeps.go",
+        "patchSetId": 47
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-09-17T17:06:53Z",
+      "side": 1,
+      "message": "Same, only append if it is non-empty",
+      "revId": "3933a6874370d294bb1b3d9ec2470a9bfed6ec8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afe05c7e_2a8dd06f",
+        "filename": "java/jdeps.go",
+        "patchSetId": 47
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-09-17T17:06:53Z",
+      "side": 1,
+      "message": "How are you getting module references (paths that start with \":\") here?  In java.go you are using the expanded sources, which won\u0027t have any \":\" paths left.  Do you need to do the same for another module type, maybe droiddoc?",
+      "revId": "3933a6874370d294bb1b3d9ec2470a9bfed6ec8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
