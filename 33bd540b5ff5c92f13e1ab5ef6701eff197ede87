@@ -16,6 +16,24 @@
       "revId": "33bd540b5ff5c92f13e1ab5ef6701eff197ede87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23ddaecc_8334f7d2",
+        "filename": "java/jdeps.go",
+        "patchSetId": 44
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-17T00:11:30Z",
+      "side": 1,
+      "message": "Done,\nYes, you\u0027re right. I removed if module.Target().Os \u003d\u003d android.LinuxBionic statement and found the result is the same, so I removed it.",
+      "parentUuid": "2e67ad81_779ce15d",
+      "revId": "33bd540b5ff5c92f13e1ab5ef6701eff197ede87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
