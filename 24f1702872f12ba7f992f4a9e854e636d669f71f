@@ -16,6 +16,24 @@
       "revId": "24f1702872f12ba7f992f4a9e854e636d669f71f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48a45a74_5a178598",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1121678
+      },
+      "writtenOn": "2018-09-17T06:42:43Z",
+      "side": 1,
+      "message": "No, this R8 only. D8 will not try to process anything but Java class files (and dex files when merging) - everything else is ignored.",
+      "parentUuid": "c1432f09_bdfc56fd",
+      "revId": "24f1702872f12ba7f992f4a9e854e636d669f71f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
