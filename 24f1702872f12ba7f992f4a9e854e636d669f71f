@@ -34,6 +34,24 @@
       "revId": "24f1702872f12ba7f992f4a9e854e636d669f71f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d7cb909_2b49d703",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-09-17T17:09:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "48a45a74_5a178598",
+      "revId": "24f1702872f12ba7f992f4a9e854e636d669f71f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
