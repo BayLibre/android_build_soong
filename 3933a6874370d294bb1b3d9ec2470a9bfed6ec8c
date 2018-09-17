@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "407f1f5c_06ba3c93",
+        "filename": "android/filegroup.go",
+        "patchSetId": 47
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1348646
+      },
+      "writtenOn": "2018-09-17T23:50:52Z",
+      "side": 1,
+      "message": "A specific issue should be filed to mention about the case you comment from line 99 - line 101. Please don\u0027t use the high level ticket for it. It\u0027s ambiguous for the reviewers to  get information from the issue.",
+      "range": {
+        "startLine": 98,
+        "startChar": 9,
+        "endLine": 98,
+        "endChar": 20
+      },
+      "revId": "3933a6874370d294bb1b3d9ec2470a9bfed6ec8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b6441de0_70574107",
         "filename": "java/jdeps.go",
         "patchSetId": 47
