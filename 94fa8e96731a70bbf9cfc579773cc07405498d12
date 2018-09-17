@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "6111f68d_bb82588e",
+        "filename": "java/java.go",
+        "patchSetId": 40
+      },
+      "lineNbr": 1405,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-17T02:27:56Z",
+      "side": 1,
+      "message": "Sorry, I have to roll back this for the reason that we need the overlap type of source paths which contain \"**/*\" and expanded source paths for filegroup/genrules at the same time. Therefore we keep j.properties.Srcs and replace the paths which have prefix \":\" in them if their j.compiledJavaSrcs or j.compiledSrcJars is not empty. If their j.compiledJavaSrcs and j.compiledSrcJars is empty, there must be other types of module to replace with. For example, \":hwbinder-stubs-docs\" source file type in module name: \"hwbinder.stubs\" is drooiddoc. In this case we will keep \":module_name\" in j.properties.Srcs.",
+      "parentUuid": "7a1dd4fb_c9456a65",
+      "range": {
+        "startLine": 1390,
+        "startChar": 0,
+        "endLine": 1405,
+        "endChar": 13
+      },
+      "revId": "94fa8e96731a70bbf9cfc579773cc07405498d12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7634451_688f89ae",
         "filename": "java/java.go",
         "patchSetId": 40
