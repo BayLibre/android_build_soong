@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "efcc8557_c751542d",
+        "filename": "android/filegroup.go",
+        "patchSetId": 48
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1348646
+      },
+      "writtenOn": "2018-09-18T21:09:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba880801_36eaf0fd",
+      "range": {
+        "startLine": 97,
+        "startChar": 20,
+        "endLine": 97,
+        "endChar": 27
+      },
+      "revId": "99f4de9ede7ace43d7e2a7b799d98cd1de9db45f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5fce70d4_b8a1c2f4",
         "filename": "java/java.go",
         "patchSetId": 48
@@ -45,6 +69,30 @@
       "revId": "99f4de9ede7ace43d7e2a7b799d98cd1de9db45f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bc8dd04_a52b824d",
+        "filename": "java/java.go",
+        "patchSetId": 48
+      },
+      "lineNbr": 1377,
+      "author": {
+        "id": 1348646
+      },
+      "writtenOn": "2018-09-18T21:09:08Z",
+      "side": 1,
+      "message": "It\u0027s no impact, and let\u0027s merge this cl first.",
+      "parentUuid": "5fce70d4_b8a1c2f4",
+      "range": {
+        "startLine": 1377,
+        "startChar": 8,
+        "endLine": 1377,
+        "endChar": 25
+      },
+      "revId": "99f4de9ede7ace43d7e2a7b799d98cd1de9db45f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
