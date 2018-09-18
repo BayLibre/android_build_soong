@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "263ad755_010e839e",
+        "filename": "java/config/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-09-18T18:06:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "511160c4_a3b34fc3",
+      "revId": "2be676bc49a24d0dba45c71fbff65bcd2b47b3ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "13ca16a8_6e09cbce",
         "filename": "java/droiddoc.go",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "2be676bc49a24d0dba45c71fbff65bcd2b47b3ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d231562_e5c50657",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-09-18T18:06:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13ca16a8_6e09cbce",
+      "range": {
+        "startLine": 360,
+        "startChar": 34,
+        "endLine": 360,
+        "endChar": 43
+      },
+      "revId": "2be676bc49a24d0dba45c71fbff65bcd2b47b3ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
