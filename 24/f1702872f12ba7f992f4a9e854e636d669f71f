@@ -1,0 +1,9 @@
+Code-Review+2: Søren Gjesse <sgjesse@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: Søren Gjesse <sgjesse@google.com>
+Submitted-by: Søren Gjesse <sgjesse@google.com>
+Submitted-at: Tue, 18 Sep 2018 06:22:19 +0000
+Reviewed-on: https://android-review.googlesource.com/757251
+Project: platform/build/soong
+Branch: refs/heads/master
