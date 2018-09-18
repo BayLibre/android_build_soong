@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "55431174_46780510",
+        "filename": "android/filegroup.go",
+        "patchSetId": 47
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-18T00:59:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "407f1f5c_06ba3c93",
+      "range": {
+        "startLine": 98,
+        "startChar": 9,
+        "endLine": 98,
+        "endChar": 20
+      },
+      "revId": "3933a6874370d294bb1b3d9ec2470a9bfed6ec8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6441de0_70574107",
         "filename": "java/jdeps.go",
         "patchSetId": 47
@@ -39,6 +63,24 @@
       "revId": "3933a6874370d294bb1b3d9ec2470a9bfed6ec8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "721bbf6a_119b4879",
+        "filename": "java/jdeps.go",
+        "patchSetId": 47
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-18T00:59:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6441de0_70574107",
+      "revId": "3933a6874370d294bb1b3d9ec2470a9bfed6ec8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "f0639735_f6b10838",
+        "filename": "java/jdeps.go",
+        "patchSetId": 47
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-18T00:59:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b758c8db_5e82355c",
+      "revId": "3933a6874370d294bb1b3d9ec2470a9bfed6ec8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "afe05c7e_2a8dd06f",
         "filename": "java/jdeps.go",
         "patchSetId": 47
@@ -73,6 +133,24 @@
       "revId": "3933a6874370d294bb1b3d9ec2470a9bfed6ec8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cd2c212_699dae4d",
+        "filename": "java/jdeps.go",
+        "patchSetId": 47
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-09-18T00:59:29Z",
+      "side": 1,
+      "message": "Yes, I checked it\u0027s done here for droiddoc also. For example, \njava_library_static {\n    name: \"hwbinder.stubs\",\n    sdk_version: \"core_current\",\n    srcs: [\n        \":hwbinder-stubs-docs\",\n    ],\n}\nIn the json file I\u0027ve got,\n\t\"hwbinder.stubs\": {\n\t\t\"srcs\": [\n\t\t\t\"out/soong/.intermediates/frameworks/base/hwbinder-stubs-docs/android_common/hwbinder-stubs-docs-stubs.srcjar\"\n\t\t],\n...\nI think droiddoc is also expanded. I can remove this function.",
+      "parentUuid": "afe05c7e_2a8dd06f",
+      "revId": "3933a6874370d294bb1b3d9ec2470a9bfed6ec8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
