@@ -22,6 +22,30 @@
       "revId": "d67bca229b2d84e4dc9eeb92e6f9521339b336ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3063f867_8735047c",
+        "filename": "java/java.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 1371,
+      "author": {
+        "id": 1348646
+      },
+      "writtenOn": "2018-09-18T21:15:28Z",
+      "side": 1,
+      "message": "Skip it to let this 50 PS can merge first.",
+      "parentUuid": "a9e8f294_dca7d2a2",
+      "range": {
+        "startLine": 1371,
+        "startChar": 11,
+        "endLine": 1371,
+        "endChar": 21
+      },
+      "revId": "d67bca229b2d84e4dc9eeb92e6f9521339b336ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

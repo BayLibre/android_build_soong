@@ -261,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "abaa4cdf_f616f961",
+        "filename": "java/java.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 1769,
+      "author": {
+        "id": 1348646
+      },
+      "writtenOn": "2018-09-18T21:15:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5297317_ccd968c1",
+      "range": {
+        "startLine": 1743,
+        "startChar": 0,
+        "endLine": 1769,
+        "endChar": 1
+      },
+      "revId": "1bea9f01036556e936801c16fd89ffb292dcc8b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e098620_4a7c3c1e",
         "filename": "java/java.go",
         "patchSetId": 27
@@ -296,6 +320,30 @@
       "side": 1,
       "message": "Done,\n\nAdd a comment,\n\n// Collect infomation for opening IDE project files in java/jdeps.go.",
       "parentUuid": "4e098620_4a7c3c1e",
+      "range": {
+        "startLine": 1771,
+        "startChar": 0,
+        "endLine": 1790,
+        "endChar": 1
+      },
+      "revId": "1bea9f01036556e936801c16fd89ffb292dcc8b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ccf07204_c34ac689",
+        "filename": "java/java.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 1790,
+      "author": {
+        "id": 1348646
+      },
+      "writtenOn": "2018-09-18T21:15:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "770eeacb_aabb3296",
       "range": {
         "startLine": 1771,
         "startChar": 0,
