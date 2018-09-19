@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4afbdddb_056331e3",
+        "filename": "zip/cmd/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-09-19T00:19:41Z",
+      "side": 1,
+      "message": "can we do the filepath.Clean here instead of above so that we don\u0027t end up with:\n\n  SourcePrefixToStrip: \".\",\n  JunkPaths:           true,\n\nIt shouldn\u0027t change anything today because of the if/else you\u0027ve added below, but could reduce confusion in the future.",
+      "range": {
+        "startLine": 131,
+        "startChar": 16,
+        "endLine": 131,
+        "endChar": 17
+      },
+      "revId": "7c89c832f3136795aa170345272820c56f7f6725",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
