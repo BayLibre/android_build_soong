@@ -22,6 +22,13 @@ import (
 	"android/soong/android"
 )
 
+func getTestConfigTemplate(ctx android.ModuleContext, prop *string) android.Path {
+	if p := ctx.ExpandOptionalSource(prop, "test_config_template"); p.Valid() {
+		return p.Path()
+	}
+	return nil
+}
+
 func getTestConfig(ctx android.ModuleContext, prop *string) android.Path {
 	if p := ctx.ExpandOptionalSource(prop, "test_config"); p.Valid() {
 		return p.Path()
@@ -41,8 +48,7 @@ func testConfigPath(ctx android.ModuleContext, prop *string) (path android.Path,
 		return p, nil
 	} else if !strings.HasPrefix(ctx.ModuleDir(), "cts/") {
 		outputFile := android.PathForModuleOut(ctx, ctx.ModuleName()+".config")
-
-		return outputFile, outputFile
+		return nil, outputFile
 	} else {
 		// CTS modules can be used for test data, so test config files must be
 		// explicitly created using AndroidTest.xml
@@ -66,11 +72,17 @@ func autogenTemplate(ctx android.ModuleContext, output android.WritablePath, tem
 func AutoGenNativeTestConfig(ctx android.ModuleContext, prop *string) android.Path {
 	path, autogenPath := testConfigPath(ctx, prop)
 	if autogenPath != nil {
-		if ctx.Device() {
-			autogenTemplate(ctx, autogenPath, "${NativeTestConfigTemplate}")
+		templatePath := getTestConfigTemplate(ctx, prop)
+		if templatePath == nil {
+			if ctx.Device() {
+				autogenTemplate(ctx, autogenPath, "${NativeTestConfigTemplate}")
+			} else {
+				autogenTemplate(ctx, autogenPath, "${NativeHostTestConfigTemplate}")
+			}
 		} else {
-			autogenTemplate(ctx, autogenPath, "${NativeHostTestConfigTemplate}")
+			autogenTemplate(ctx, autogenPath, templatePath.String())
 		}
+		return autogenPath
 	}
 	return path
 }
@@ -78,7 +90,13 @@ func AutoGenNativeTestConfig(ctx android.ModuleContext, prop *string) android.Pa
 func AutoGenNativeBenchmarkTestConfig(ctx android.ModuleContext, prop *string) android.Path {
 	path, autogenPath := testConfigPath(ctx, prop)
 	if autogenPath != nil {
-		autogenTemplate(ctx, autogenPath, "${NativeBenchmarkTestConfigTemplate}")
+		templatePath := getTestConfigTemplate(ctx, prop)
+		if templatePath == nil {
+			autogenTemplate(ctx, autogenPath, "${NativeBenchmarkTestConfigTemplate}")
+		} else {
+			autogenTemplate(ctx, autogenPath, templatePath.String())
+		}
+		return autogenPath
 	}
 	return path
 }
@@ -86,11 +104,17 @@ func AutoGenNativeBenchmarkTestConfig(ctx android.ModuleContext, prop *string) a
 func AutoGenJavaTestConfig(ctx android.ModuleContext, prop *string) android.Path {
 	path, autogenPath := testConfigPath(ctx, prop)
 	if autogenPath != nil {
-		if ctx.Device() {
-			autogenTemplate(ctx, autogenPath, "${JavaTestConfigTemplate}")
+		templatePath := getTestConfigTemplate(ctx, prop)
+		if templatePath == nil {
+			if ctx.Device() {
+				autogenTemplate(ctx, autogenPath, "${JavaTestConfigTemplate}")
+			} else {
+				autogenTemplate(ctx, autogenPath, "${JavaHostTestConfigTemplate}")
+			}
 		} else {
-			autogenTemplate(ctx, autogenPath, "${JavaHostTestConfigTemplate}")
+			autogenTemplate(ctx, autogenPath, templatePath.String())
 		}
+		return autogenPath
 	}
 	return path
 }
@@ -116,6 +140,7 @@ func AutoGenInstrumentationTestConfig(ctx android.ModuleContext, prop *string, m
 				"name": ctx.ModuleName(),
 			},
 		})
+		return autogenPath
 	}
 	return path
 }
