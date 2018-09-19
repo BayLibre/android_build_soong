@@ -47,10 +47,23 @@ function gettop
     fi
 }
 
+function sanity-check
+{
+    for f in Android.mk CleanSpec.mk; do
+        if [[ -e "${TOP}/$f" ]]; then
+            echo "Found $f in tree root. This file needs to be removed to build." >&2
+            echo "    rm ${TOP}/$f" >&2
+            exit 1
+        fi
+    done
+}
+
 # Save the current PWD for use in soong_ui
 export ORIGINAL_PWD=${PWD}
 export TOP=$(gettop)
 source ${TOP}/build/soong/scripts/microfactory.bash
+
+sanity-check
 
 soong_build_go soong_ui android/soong/cmd/soong_ui
 
