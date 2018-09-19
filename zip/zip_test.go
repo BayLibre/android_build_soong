@@ -126,6 +126,34 @@ func TestZip(t *testing.T) {
 			},
 		},
 		{
+			name: "files glob",
+			args: fileArgsBuilder().
+				SourcePrefixToStrip("a").
+				File("a/**/*"),
+			compressionLevel: 9,
+
+			files: []zip.FileHeader{
+				fh("a/a", fileA, zip.Deflate),
+				fh("a/b", fileB, zip.Deflate),
+				fhLink("a/c", "../../c"),
+				fhLink("a/d", "b"),
+			},
+		},
+		{
+			name: "dir",
+			args: fileArgsBuilder().
+				SourcePrefixToStrip("a").
+				Dir("a"),
+			compressionLevel: 9,
+
+			files: []zip.FileHeader{
+				fh("a/a", fileA, zip.Deflate),
+				fh("a/b", fileB, zip.Deflate),
+				fhLink("a/c", "../../c"),
+				fhLink("a/d", "b"),
+			},
+		},
+		{
 			name: "stored files",
 			args: fileArgsBuilder().
 				File("a/a/a").

@@ -271,9 +271,25 @@ func ZipTo(args ZipArgs, w io.Writer) error {
 	noCompression := args.CompressionLevel == 0
 
 	for _, fa := range args.FileArgs {
-		srcs := fa.SourceFiles
+		var srcs []string
+		for _, s := range fa.SourceFiles {
+			s = strings.TrimSpace(s)
+			if s == "" {
+				continue
+			}
+
+			globbed, _, err := z.fs.Glob(s, nil, pathtools.DontFollowSymlinks)
+			if err != nil {
+				return err
+			}
+			srcs = append(srcs, globbed...)
+		}
 		if fa.GlobDir != "" {
-			srcs = append(srcs, recursiveGlobFiles(fa.GlobDir)...)
+			globbed, _, err := z.fs.Glob(filepath.Join(fa.GlobDir, "**/*"), nil, pathtools.DontFollowSymlinks)
+			if err != nil {
+				return err
+			}
+			srcs = append(srcs, globbed...)
 		}
 		for _, src := range srcs {
 			err := fillPathPairs(fa, src, &pathMappings, args.NonDeflatedFiles, noCompression)
@@ -328,11 +344,6 @@ func Zip(args ZipArgs) error {
 func fillPathPairs(fa FileArg, src string, pathMappings *[]pathMapping,
 	nonDeflatedFiles map[string]bool, noCompression bool) error {
 
-	src = strings.TrimSpace(src)
-	if src == "" {
-		return nil
-	}
-	src = filepath.Clean(src)
 	var dest string
 
 	if fa.JunkPaths {
@@ -343,6 +354,10 @@ func fillPathPairs(fa FileArg, src string, pathMappings *[]pathMapping,
 		if err != nil {
 			return err
 		}
+		if strings.HasPrefix(dest, "../") {
+			return fmt.Errorf("path %q is outside relative root %q", src, fa.SourcePrefixToStrip)
+		}
+
 	}
 	dest = filepath.Join(fa.PathPrefixInZip, dest)
 
@@ -888,16 +903,4 @@ func (z *ZipWriter) writeSymlink(rel, file string) error {
 	z.writeOps <- ze
 
 	return nil
-}
-
-func recursiveGlobFiles(path string) []string {
-	var files []string
-	filepath.Walk(path, func(path string, info os.FileInfo, err error) error {
-		if !info.IsDir() {
-			files = append(files, path)
-		}
-		return nil
-	})
-
-	return files
 }
