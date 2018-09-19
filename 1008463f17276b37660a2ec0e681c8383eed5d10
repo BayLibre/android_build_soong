@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "167d58b9_94d99b34",
+        "filename": "cc/gen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-09-19T05:32:56Z",
+      "side": 1,
+      "message": "I am a little bit confused here.\n\nheaderFile \u003d sysprop/include/foo.sysprop.h\nincludeName \u003d foo.h\n\nShouldn\u0027t these be the same?",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 44
+      },
+      "revId": "1008463f17276b37660a2ec0e681c8383eed5d10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
