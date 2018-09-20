@@ -70,6 +70,30 @@
       "revId": "1008463f17276b37660a2ec0e681c8383eed5d10",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80d25ce9_5a68d554",
+        "filename": "cc/gen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2018-09-20T07:21:18Z",
+      "side": 1,
+      "message": "so that final header will be located at \"sysprop/include/foo/bar.sysprop.h\"? But referring to Dan\u0027s comment, I wanted to make each output path of all sysprop files unique. Will it be OK to use only syspropFile.Rel()?",
+      "parentUuid": "3f4c3211_dcfddbd9",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 44
+      },
+      "revId": "1008463f17276b37660a2ec0e681c8383eed5d10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
