@@ -46,6 +46,30 @@
       "revId": "1008463f17276b37660a2ec0e681c8383eed5d10",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f4c3211_dcfddbd9",
+        "filename": "cc/gen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-09-20T06:09:40Z",
+      "side": 1,
+      "message": "I think this is okay as long as clients can use this via \"#include \u003cfoo/bar.sysprop.h\u003e\"\n\nIt looks like you want to omit path/to/module/ part from headerFile. Then don\u0027t you just need to give syspropFile.Rel() instead of syspropFile, when assigning to headerFile?",
+      "parentUuid": "85f93081_1cf104b4",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 44
+      },
+      "revId": "1008463f17276b37660a2ec0e681c8383eed5d10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
