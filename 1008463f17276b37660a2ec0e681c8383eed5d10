@@ -22,6 +22,30 @@
       "revId": "1008463f17276b37660a2ec0e681c8383eed5d10",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85f93081_1cf104b4",
+        "filename": "cc/gen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2018-09-20T00:28:01Z",
+      "side": 1,
+      "message": "For example, let\u0027s say we\u0027re compiling \"path/to/module/foo/bar.sysprop\". Then...\n\n1) headerFile will be \"sysprop/include/path/to/module/foo/bar.sysprop.h\"\n2) \"sysprop/include/path/to/module\" will be added to include paths so that we can include the output header with \"#include \u003cfoo/bar.sysprop.h\u003e\"\n3) includeName will be \"foo/bar.sysprop.h\"\n\nI admit that this doesn\u0027t seem very good. I appreciate any suggestions for clearer solution.",
+      "parentUuid": "167d58b9_94d99b34",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 44
+      },
+      "revId": "1008463f17276b37660a2ec0e681c8383eed5d10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
