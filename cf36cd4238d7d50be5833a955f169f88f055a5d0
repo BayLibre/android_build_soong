@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2a5c1e18_2ff3aa1c",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1203210
+      },
+      "writtenOn": "2018-09-20T11:13:01Z",
+      "side": 1,
+      "message": "The distinction is that these are annotations that appear in the public API (like nullability).\n\nCan you suggest a better way of making that clear?\n\nHappy to rename as a follow-up.",
+      "parentUuid": "7b958214_835a4260",
+      "range": {
+        "startLine": 344,
+        "startChar": 1,
+        "endLine": 344,
+        "endChar": 23
+      },
+      "revId": "cf36cd4238d7d50be5833a955f169f88f055a5d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6eacb80d_6ba321d8",
         "filename": "java/droiddoc.go",
         "patchSetId": 1
