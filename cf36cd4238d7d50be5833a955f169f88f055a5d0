@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "c4e56791_b29983cb",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2018-09-20T11:25:25Z",
+      "side": 1,
+      "message": "These strike me as API contract or similar API qualifiers / decorators, where as the one below relate to API inclusion/restriction.\n\nMaybe something around \"qualifier\" or \"decoration\" would make it clear.\n\nUnless we change this we end up with:\n\nannotations_dir\nvisibility_annotations_dir \n\nand without better naming or documentation it\u0027s inviting the question \"what\u0027s the difference?\", \"what\u0027s a visibility annotation and how is it different from an api annotation?\" and \"when would I use one over the other\". If we can\u0027t come up with a good name, then document them more fully.",
+      "parentUuid": "2a5c1e18_2ff3aa1c",
+      "range": {
+        "startLine": 344,
+        "startChar": 1,
+        "endLine": 344,
+        "endChar": 23
+      },
+      "revId": "cf36cd4238d7d50be5833a955f169f88f055a5d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6eacb80d_6ba321d8",
         "filename": "java/droiddoc.go",
         "patchSetId": 1
