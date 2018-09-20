@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "70774d9e_7c5fd6f0",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1203210
+      },
+      "writtenOn": "2018-09-20T14:03:32Z",
+      "side": 1,
+      "message": "Changed terminology as discussed. The existing attribute rename will follow.",
+      "parentUuid": "c4e56791_b29983cb",
+      "range": {
+        "startLine": 344,
+        "startChar": 1,
+        "endLine": 344,
+        "endChar": 23
+      },
+      "revId": "cf36cd4238d7d50be5833a955f169f88f055a5d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6eacb80d_6ba321d8",
         "filename": "java/droiddoc.go",
         "patchSetId": 1
@@ -93,6 +117,30 @@
       "revId": "cf36cd4238d7d50be5833a955f169f88f055a5d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a431478_1454468d",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1203210
+      },
+      "writtenOn": "2018-09-20T14:03:32Z",
+      "side": 1,
+      "message": "Done as discussed.",
+      "parentUuid": "6eacb80d_6ba321d8",
+      "range": {
+        "startLine": 346,
+        "startChar": 82,
+        "endLine": 346,
+        "endChar": 93
+      },
+      "revId": "cf36cd4238d7d50be5833a955f169f88f055a5d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
