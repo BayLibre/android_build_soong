@@ -94,6 +94,30 @@
       "revId": "1008463f17276b37660a2ec0e681c8383eed5d10",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b0816e8_6eadee9c",
+        "filename": "cc/gen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-09-20T15:06:29Z",
+      "side": 1,
+      "message": "Yeah, each output path should be unique. But I don\u0027t understand why you think we will have duplicated paths when we use syspropFile.Rel().",
+      "parentUuid": "80d25ce9_5a68d554",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 44
+      },
+      "revId": "1008463f17276b37660a2ec0e681c8383eed5d10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
