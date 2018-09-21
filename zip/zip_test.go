@@ -103,7 +103,9 @@ func TestZip(t *testing.T) {
 		nonDeflatedFiles map[string]bool
 		dirEntries       bool
 		manifest         string
-		files            []zip.FileHeader
+		storeSymlinks    bool
+
+		files []zip.FileHeader
 	}{
 		{
 			name: "empty args",
@@ -131,6 +133,7 @@ func TestZip(t *testing.T) {
 				SourcePrefixToStrip("a").
 				File("a/**/*"),
 			compressionLevel: 9,
+			storeSymlinks:    true,
 
 			files: []zip.FileHeader{
 				fh("a/a", fileA, zip.Deflate),
@@ -145,6 +148,7 @@ func TestZip(t *testing.T) {
 				SourcePrefixToStrip("a").
 				Dir("a"),
 			compressionLevel: 9,
+			storeSymlinks:    true,
 
 			files: []zip.FileHeader{
 				fh("a/a", fileA, zip.Deflate),
@@ -175,12 +179,30 @@ func TestZip(t *testing.T) {
 				File("a/a/c").
 				File("a/a/d"),
 			compressionLevel: 9,
+			storeSymlinks:    true,
 
 			files: []zip.FileHeader{
 				fh("a/a/a", fileA, zip.Deflate),
 				fh("a/a/b", fileB, zip.Deflate),
 				fhLink("a/a/c", "../../c"),
 				fhLink("a/a/d", "b"),
+			},
+		},
+		{
+			name: "follow symlinks",
+			args: fileArgsBuilder().
+				File("a/a/a").
+				File("a/a/b").
+				File("a/a/c").
+				File("a/a/d"),
+			compressionLevel: 9,
+			storeSymlinks:    false,
+
+			files: []zip.FileHeader{
+				fh("a/a/a", fileA, zip.Deflate),
+				fh("a/a/b", fileB, zip.Deflate),
+				fh("a/a/c", fileC, zip.Deflate),
+				fh("a/a/d", fileB, zip.Deflate),
 			},
 		},
 		{
@@ -328,6 +350,7 @@ func TestZip(t *testing.T) {
 			args.AddDirectoryEntriesToZip = test.dirEntries
 			args.NonDeflatedFiles = test.nonDeflatedFiles
 			args.ManifestSourcePath = test.manifest
+			args.StoreSymlinks = test.storeSymlinks
 			args.Filesystem = mockFs
 
 			buf := &bytes.Buffer{}
