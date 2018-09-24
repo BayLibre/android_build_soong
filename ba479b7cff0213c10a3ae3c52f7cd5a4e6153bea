@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ee28118_7ce69362",
+        "filename": "cc/config/clang.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2018-09-24T20:54:03Z",
+      "side": 1,
+      "message": "This can be removed",
+      "range": {
+        "startLine": 186,
+        "startChar": 2,
+        "endLine": 186,
+        "endChar": 34
+      },
+      "revId": "ba479b7cff0213c10a3ae3c52f7cd5a4e6153bea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfafb45b_11ad0f75",
+        "filename": "cc/config/clang.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2018-09-24T20:54:03Z",
+      "side": 1,
+      "message": "This as well",
+      "range": {
+        "startLine": 192,
+        "startChar": 2,
+        "endLine": 192,
+        "endChar": 24
+      },
+      "revId": "ba479b7cff0213c10a3ae3c52f7cd5a4e6153bea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
