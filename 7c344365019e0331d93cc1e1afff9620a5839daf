@@ -46,6 +46,30 @@
       "revId": "7c344365019e0331d93cc1e1afff9620a5839daf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5efbea8_8e0d147b",
+        "filename": "java/dex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1099852
+      },
+      "writtenOn": "2018-09-24T19:27:38Z",
+      "side": 1,
+      "message": "I\u0027ll delegate this question to Mads, but in short we call library the jars which will be provided in runtime and classpath the jars that will be shipped as part of final DEX file. \n\nThe main difference is that while we assume we know everything about classes coming from classpath jars, we cannot assume it for classes coming from library jars (and even we knew something, it can be different on different art versions). Library classes also don\u0027t have method code in android jar.\n\nIn context of desugaring, and specifically in default interface method desugaring, we assume that if desugaring is needed, library classes must not have default methods (since desugaring is needed exactly because the platform does not support default methods). Meaning that if you pass all jars as library jars, you will only be able to desugar default interface methods for interfaces and classes you are compiling in one single D8/R8 invocation.",
+      "parentUuid": "5cc6e2e4_4defa2d7",
+      "range": {
+        "startLine": 89,
+        "startChar": 33,
+        "endLine": 89,
+        "endChar": 42
+      },
+      "revId": "7c344365019e0331d93cc1e1afff9620a5839daf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
