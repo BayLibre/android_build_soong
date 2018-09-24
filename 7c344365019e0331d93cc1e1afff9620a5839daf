@@ -22,6 +22,30 @@
       "revId": "7c344365019e0331d93cc1e1afff9620a5839daf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cc6e2e4_4defa2d7",
+        "filename": "java/dex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-09-24T18:26:37Z",
+      "side": 1,
+      "message": "What\u0027s the difference between --lib and --classpath?  Compiling for the platform is more complicated than just android.jar.  For platform modules we have core-oj:core-libart on the bootclasspath containing the java.* classes, and framework.jar and shared libraries on the classpath containing android.* and app library classes.",
+      "parentUuid": "01671542_8183b770",
+      "range": {
+        "startLine": 89,
+        "startChar": 33,
+        "endLine": 89,
+        "endChar": 42
+      },
+      "revId": "7c344365019e0331d93cc1e1afff9620a5839daf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
