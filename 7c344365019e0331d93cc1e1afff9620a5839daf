@@ -94,6 +94,30 @@
       "revId": "7c344365019e0331d93cc1e1afff9620a5839daf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ceef2c6b_0bbbd66e",
+        "filename": "java/dex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1099852
+      },
+      "writtenOn": "2018-09-24T20:48:20Z",
+      "side": 1,
+      "message": "Right, I guess the question is: would there be interfaces with default interface methods in those \"libraries outside the APK\". If the answer is NO, I think you are good with using --lib.",
+      "parentUuid": "e05e2483_a06a1608",
+      "range": {
+        "startLine": 89,
+        "startChar": 33,
+        "endLine": 89,
+        "endChar": 42
+      },
+      "revId": "7c344365019e0331d93cc1e1afff9620a5839daf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
