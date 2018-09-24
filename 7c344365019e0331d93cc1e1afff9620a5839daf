@@ -70,6 +70,30 @@
       "revId": "7c344365019e0331d93cc1e1afff9620a5839daf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e05e2483_a06a1608",
+        "filename": "java/dex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-09-24T20:35:27Z",
+      "side": 1,
+      "message": "Anything that will be in the dex file on the device should have already been combined into the input jar.  The only things in classpath and bootclasspath should be libraries that will be outside the APK.  I think that means we should be using --lib for everything?",
+      "parentUuid": "b5efbea8_8e0d147b",
+      "range": {
+        "startLine": 89,
+        "startChar": 33,
+        "endLine": 89,
+        "endChar": 42
+      },
+      "revId": "7c344365019e0331d93cc1e1afff9620a5839daf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
