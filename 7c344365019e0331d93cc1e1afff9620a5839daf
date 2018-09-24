@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01671542_8183b770",
+        "filename": "java/dex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1099852
+      },
+      "writtenOn": "2018-09-24T14:55:24Z",
+      "side": 1,
+      "message": "Sorry, not sure what is the difference between \u0027bootClasspath\u0027 and \u0027classpath\u0027, but you should use --lib only for android.jar and --classpath for all other application classes.",
+      "range": {
+        "startLine": 89,
+        "startChar": 33,
+        "endLine": 89,
+        "endChar": 42
+      },
+      "revId": "7c344365019e0331d93cc1e1afff9620a5839daf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
