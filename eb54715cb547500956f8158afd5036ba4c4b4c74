@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ff16990_c2da88f7",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1634,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2018-09-24T17:05:25Z",
+      "side": 1,
+      "message": "Please use android-api-council@ instead of a specific person.  :)",
+      "revId": "eb54715cb547500956f8158afd5036ba4c4b4c74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
