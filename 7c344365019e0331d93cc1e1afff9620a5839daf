@@ -118,6 +118,30 @@
       "revId": "7c344365019e0331d93cc1e1afff9620a5839daf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d3f6341_62c7ace8",
+        "filename": "java/dex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-09-24T20:55:24Z",
+      "side": 1,
+      "message": "That\u0027s hard for us to guarantee, because we\u0027ll put anything listed as LOCAL_JAVA_LIBRARIES on the classpath.  What happens if someone uses a default interface method in something that was desugared separately?",
+      "parentUuid": "ceef2c6b_0bbbd66e",
+      "range": {
+        "startLine": 89,
+        "startChar": 33,
+        "endLine": 89,
+        "endChar": 42
+      },
+      "revId": "7c344365019e0331d93cc1e1afff9620a5839daf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
