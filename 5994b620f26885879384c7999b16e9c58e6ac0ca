@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa9de172_71ce8d7c",
+        "filename": "cc/compiler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2018-09-25T21:31:52Z",
+      "side": 0,
+      "message": "There are a lot of checks for flags.Clang.  Is this ever false or just cleanup that we haven\u0027t gotten around to?",
+      "range": {
+        "startLine": 447,
+        "startChar": 5,
+        "endLine": 447,
+        "endChar": 16
+      },
+      "revId": "5994b620f26885879384c7999b16e9c58e6ac0ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
