@@ -16,6 +16,24 @@
       "revId": "0ee63f4bd4597b54d14dbcbe4f0a7ef36a841b29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c7b281f_9a0c3015",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-09-25T20:26:13Z",
+      "side": 1,
+      "message": "Yes, some vendor, external, and other projects are built with -fexceptions.\nI have updated commit message. This change is still useful to reduce the amount of warnings for now, before we add noexcept to those source files.",
+      "parentUuid": "3737bbc0_a046d99c",
+      "revId": "0ee63f4bd4597b54d14dbcbe4f0a7ef36a841b29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
