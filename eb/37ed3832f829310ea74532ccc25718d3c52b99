@@ -1,0 +1,10 @@
+Code-Review+2: Stephen Hines <srhines@google.com>
+Code-Review+1: Dan Willemsen <dwillemsen@google.com>
+Code-Review+1: Luis Hector Chavez <lhchavez@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: Richard Fung <richardfung@google.com>
+Submitted-by: Richard Fung <richardfung@google.com>
+Submitted-at: Tue, 25 Sep 2018 15:27:37 +0000
+Reviewed-on: https://android-review.googlesource.com/765942
+Project: platform/build/soong
+Branch: refs/heads/master
