@@ -1,0 +1,9 @@
+Autosubmit+1: Nan Zhang <nanzhang@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Verified+1: Nan Zhang <nanzhang@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Tue, 25 Sep 2018 22:41:33 +0000
+Reviewed-on: https://android-review.googlesource.com/761941
+Project: platform/build/soong
+Branch: refs/heads/master
