@@ -22,6 +22,30 @@
       "revId": "5994b620f26885879384c7999b16e9c58e6ac0ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ede45f3d_447be02e",
+        "filename": "cc/compiler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-09-25T21:52:20Z",
+      "side": 0,
+      "message": "They\u0027re still used in toolchain_library, but shouldn\u0027t be anywhere else. This in particular shouldn\u0027t be necessary for toolchain_library though.",
+      "parentUuid": "fa9de172_71ce8d7c",
+      "range": {
+        "startLine": 447,
+        "startChar": 5,
+        "endLine": 447,
+        "endChar": 16
+      },
+      "revId": "5994b620f26885879384c7999b16e9c58e6ac0ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
