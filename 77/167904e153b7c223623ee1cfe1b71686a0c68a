@@ -1,0 +1,9 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: Pete Gillin <peteg@google.com>
+Code-Review+1: Neil Fuller <nfuller@google.com>
+Code-Review+2: Nan Zhang <nanzhang@google.com>
+Submitted-by: Pete Gillin <peteg@google.com>
+Submitted-at: Tue, 25 Sep 2018 12:50:01 +0000
+Reviewed-on: https://android-review.googlesource.com/762861
+Project: platform/build/soong
+Branch: refs/heads/master
