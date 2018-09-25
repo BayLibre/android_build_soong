@@ -142,6 +142,30 @@
       "revId": "7c344365019e0331d93cc1e1afff9620a5839daf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffa3a389_6ba3b765",
+        "filename": "java/dex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1095168
+      },
+      "writtenOn": "2018-09-25T07:31:17Z",
+      "side": 1,
+      "message": "From your comments on the bug report it looks like your understanding is correct Colin. Just a quick response here.\n\nThe assumption that we have is that everything that is on the classpath has been desugared by D8 with the same min-api as the current compilation unit. (Meaning that we assume that we can desugar the code in this compilation unit under the assumption that D8 was used to desugar everything on the classpath). Therefore, as long your libraries are built with D8 with the same min-api you should put them on the --classpath for D8. If there are libraries that will just be present at runtime but for which you cannot guarantee that it has been built with D8 with the same min-api they need to go in --lib. However, as Denis points out that then means that there cannot be default methods in those libraries if they are used at a min-api level that does not support default methods.\n\nI would find it a little worrying if we put anything other than android.jar in --lib. If we are shipping to a min-sdk that does not support default interface methods, we should make sure that all of the code that we ship as part of the app (i.e., anything that is not android.jar) has been properly desugared with D8 and then put it in the --classpath for other D8 invocations. Otherwise, I\u0027m not sure we can guarantee that things will work.",
+      "parentUuid": "1d3f6341_62c7ace8",
+      "range": {
+        "startLine": 89,
+        "startChar": 33,
+        "endLine": 89,
+        "endChar": 42
+      },
+      "revId": "7c344365019e0331d93cc1e1afff9620a5839daf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
