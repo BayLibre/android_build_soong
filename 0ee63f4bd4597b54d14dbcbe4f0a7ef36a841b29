@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3737bbc0_a046d99c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-09-25T19:45:20Z",
+      "side": 1,
+      "message": "I don\u0027t know if it matters, but this is not globally true.  Individual modules can pass -fexceptions in their cflags.",
+      "revId": "0ee63f4bd4597b54d14dbcbe4f0a7ef36a841b29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
