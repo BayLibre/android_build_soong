@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e5dd60b_7ff1660f",
+        "filename": "cc/cmakelists.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-09-25T20:50:00Z",
+      "side": 1,
+      "message": "It would be better to store this as an array of structs that contain a flag and path.",
+      "range": {
+        "startLine": 282,
+        "startChar": 23,
+        "endLine": 282,
+        "endChar": 33
+      },
+      "revId": "ff2bd12305a2384084ba38af2d7ec588c8b92c8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "533d3a6a_e6a70931",
+        "filename": "cc/cmakelists.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-09-25T20:50:00Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem right, you\u0027re not parsing params[i+1].",
+      "revId": "ff2bd12305a2384084ba38af2d7ec588c8b92c8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
