@@ -166,6 +166,30 @@
       "revId": "7c344365019e0331d93cc1e1afff9620a5839daf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "396e61d0_4c69d6d0",
+        "filename": "java/dex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-09-26T21:24:08Z",
+      "side": 1,
+      "message": "After discussion in b/116243313 I\u0027m going to stick with --lib for now.",
+      "parentUuid": "ffa3a389_6ba3b765",
+      "range": {
+        "startLine": 89,
+        "startChar": 33,
+        "endLine": 89,
+        "endChar": 42
+      },
+      "revId": "7c344365019e0331d93cc1e1afff9620a5839daf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
