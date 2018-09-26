@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4072c2a_f1f2482a",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-09-26T20:03:13Z",
+      "side": 1,
+      "message": "Might as well make this return the OptionalPath, and then use templatePath.Valid() instead of templatePath \u003d\u003d nil in the callers.",
+      "range": {
+        "startLine": 25,
+        "startChar": 68,
+        "endLine": 25,
+        "endChar": 80
+      },
+      "revId": "b99611b019144af78e7daff99561f881d50e1bf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bab343a_e69f3049",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-09-26T20:03:13Z",
+      "side": 1,
+      "message": "prop is the value of the test_config property here, you\u0027ll need to pass a separate parameter for the value of the test_config_template property.  That also means adding it to each of the module types that use these functions.  And also call ctx.ExtractSourceDeps() on it in each of them. Look for references to Test_config.",
+      "revId": "b99611b019144af78e7daff99561f881d50e1bf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
