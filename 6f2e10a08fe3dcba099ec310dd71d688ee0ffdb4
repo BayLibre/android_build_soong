@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61aae2c5_bbab9b09",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-09-26T22:49:12Z",
+      "side": 1,
+      "message": "seems like this should just be an OptionalPath, and we can return early after the loop if it\u0027s still not valid. Then we don\u0027t call .Path() when we shouldn\u0027t.",
+      "revId": "6f2e10a08fe3dcba099ec310dd71d688ee0ffdb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
