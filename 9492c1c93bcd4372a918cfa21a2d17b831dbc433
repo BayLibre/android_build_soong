@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a799b45_1eb4d6d5",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2018-09-26T19:02:59Z",
+      "side": 1,
+      "message": "I think there is no side effect to force all test config to go through the autogenTemplate process to replace {MODULE} etc.\n\nI\u0027m wondering if it can be cleaner for bp has a new setting like (refer to aosp/740868):\ntest_config_template: \":BluetoothTestConfig\",\n\nIn autogen.go, we can check if test_config_template is set. If so, use that template instead of the default ones, to call autogenTemplate.\n\nThis change should just work, but adding a new key in bp can be cleaner.\n\nColin, what do you think?",
+      "revId": "9492c1c93bcd4372a918cfa21a2d17b831dbc433",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
