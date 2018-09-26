@@ -16,6 +16,24 @@
       "revId": "df98cd7aa4ee9d211a8f939509615ac5de39293f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac9dd622_6f74695b",
+        "filename": "ui/build/finder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1083173
+      },
+      "writtenOn": "2018-09-26T00:55:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e2206c6_2d8b8a1a",
+      "revId": "df98cd7aa4ee9d211a8f939509615ac5de39293f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
