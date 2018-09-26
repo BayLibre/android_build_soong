@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "43e713a3_8338466f",
+        "filename": "cc/config/clang.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2018-09-26T21:15:01Z",
+      "side": 1,
+      "message": "I\u0027m keeping these for now.",
+      "parentUuid": "7ee28118_7ce69362",
+      "range": {
+        "startLine": 186,
+        "startChar": 2,
+        "endLine": 186,
+        "endChar": 34
+      },
+      "revId": "ba479b7cff0213c10a3ae3c52f7cd5a4e6153bea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cfafb45b_11ad0f75",
         "filename": "cc/config/clang.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "ba479b7cff0213c10a3ae3c52f7cd5a4e6153bea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70deb704_f9573a5f",
+        "filename": "cc/config/clang.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2018-09-26T21:15:01Z",
+      "side": 1,
+      "message": "I\u0027m keeping these for now.",
+      "parentUuid": "cfafb45b_11ad0f75",
+      "range": {
+        "startLine": 192,
+        "startChar": 2,
+        "endLine": 192,
+        "endChar": 24
+      },
+      "revId": "ba479b7cff0213c10a3ae3c52f7cd5a4e6153bea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
