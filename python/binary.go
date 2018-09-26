@@ -92,7 +92,11 @@ func (binary *binaryDecorator) bootstrap(ctx android.ModuleContext, actualVersio
 					panic(fmt.Errorf("launcher path was found before: %q",
 						launcherPath))
 				}
-				launcherPath = provider.IntermPathForModuleOut().Path()
+				if provider.IntermPathForModuleOut().Valid() {
+					launcherPath = provider.IntermPathForModuleOut().Path()
+				} else {
+					return android.OptionalPathForPath(nil)
+				}
 			}
 		})
 	}
