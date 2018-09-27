@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0dc16677_375b84b4",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2018-09-27T10:06:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4072c2a_f1f2482a",
+      "range": {
+        "startLine": 25,
+        "startChar": 68,
+        "endLine": 25,
+        "endChar": 80
+      },
+      "revId": "b99611b019144af78e7daff99561f881d50e1bf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7bab343a_e69f3049",
         "filename": "tradefed/autogen.go",
         "patchSetId": 4
@@ -39,6 +63,24 @@
       "revId": "b99611b019144af78e7daff99561f881d50e1bf1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d58c0ba_0309125c",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2018-09-27T10:06:39Z",
+      "side": 1,
+      "message": "Done in latest patch set. Added test_config_template parser for java_test, cc_test, and benchmark",
+      "parentUuid": "7bab343a_e69f3049",
+      "revId": "b99611b019144af78e7daff99561f881d50e1bf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
