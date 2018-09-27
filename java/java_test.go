@@ -109,6 +109,7 @@ func testContext(config android.Config, bp string,
 		"android_system_stubs_current",
 		"android_test_stubs_current",
 		"core.current.stubs",
+		"core.platform.api.stubs",
 		"kotlin-stdlib",
 	}
 
@@ -119,7 +120,7 @@ func testContext(config android.Config, bp string,
 				srcs: ["a.java"],
 				no_standard_libs: true,
 				sdk_version: "core_current",
-				system_modules: "core-system-modules",
+				system_modules: "core-platform-api-stubs-system-modules",
 			}
 		`, extra)
 	}
@@ -133,6 +134,7 @@ func testContext(config android.Config, bp string,
 
 	systemModules := []string{
 		"core-system-modules",
+		"core-platform-api-stubs-system-modules",
 		"android_stubs_current_system_modules",
 		"android_system_stubs_current_system_modules",
 		"android_test_stubs_current_system_modules",
@@ -352,15 +354,15 @@ var classpathTestcases = []struct {
 }{
 	{
 		name:          "default",
-		bootclasspath: []string{"core-oj", "core-libart", "core-simple"},
-		system:        "core-system-modules",
+		bootclasspath: []string{"core.platform.api.stubs"},
+		system:        "core-platform-api-stubs-system-modules",
 		classpath:     []string{"ext", "framework", "okhttp"},
 	},
 	{
 		name:          "blank sdk version",
 		properties:    `sdk_version: "",`,
-		bootclasspath: []string{"core-oj", "core-libart", "core-simple"},
-		system:        "core-system-modules",
+		bootclasspath: []string{"core.platform.api.stubs"},
+		system:        "core-platform-api-stubs-system-modules",
 		classpath:     []string{"ext", "framework", "okhttp"},
 	},
 	{
@@ -418,8 +420,8 @@ var classpathTestcases = []struct {
 	{
 
 		name:          "nostdlib system_modules",
-		properties:    `no_standard_libs: true, system_modules: "core-system-modules"`,
-		system:        "core-system-modules",
+		properties:    `no_standard_libs: true, system_modules: "core-platform-api-stubs-system-modules"`,
+		system:        "core-platform-api-stubs-system-modules",
 		bootclasspath: []string{`""`},
 		classpath:     []string{},
 	},

@@ -29,6 +29,8 @@ var (
 
 	DefaultBootclasspathLibraries = []string{"core-oj", "core-libart", "core-simple"}
 	DefaultSystemModules          = "core-system-modules"
+	DefaultBootclasspathStubs     = []string{"core.platform.api.stubs"}
+	DefaultSystemModulesStubs     = "core-platform-api-stubs-system-modules"
 	DefaultLibraries              = []string{"ext", "framework", "okhttp"}
 	DefaultLambdaStubsLibrary     = "core-lambda-stubs"
 	SdkLambdaStubsPath            = "prebuilts/sdk/tools/core-lambda-stubs.jar"
