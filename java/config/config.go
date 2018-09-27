@@ -29,6 +29,9 @@ var (
 
 	DefaultBootclasspathLibraries = []string{"core-oj", "core-libart", "core-simple"}
 	DefaultSystemModules          = "core-system-modules"
+	// Not clear why core-lambda-stubs is needed. It wasn't for the ones above.
+	DefaultBootclasspathStubs     = []string{"core.platform.api.stubs", "core-lambda-stubs"}
+	DefaultSystemModulesStubs     = "core-platform-api-stubs-system-modules"
 	DefaultLibraries              = []string{"ext", "framework", "okhttp"}
 	DefaultLambdaStubsLibrary     = "core-lambda-stubs"
 	SdkLambdaStubsPath            = "prebuilts/sdk/tools/core-lambda-stubs.jar"

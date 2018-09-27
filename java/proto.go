@@ -75,7 +75,11 @@ func protoDeps(ctx android.BottomUpMutatorContext, p *android.ProtoProperties) {
 	case "micro":
 		ctx.AddVariationDependencies(nil, staticLibTag, "libprotobuf-java-micro")
 	case "nano":
-		ctx.AddVariationDependencies(nil, staticLibTag, "libprotobuf-java-nano")
+		if ctx.Host() {
+			ctx.AddVariationDependencies(nil, staticLibTag, "host-libprotobuf-java-nano")
+		} else {
+			ctx.AddVariationDependencies(nil, staticLibTag, "libprotobuf-java-nano")
+		}
 	case "lite", "":
 		ctx.AddVariationDependencies(nil, staticLibTag, "libprotobuf-java-lite")
 	case "full":
