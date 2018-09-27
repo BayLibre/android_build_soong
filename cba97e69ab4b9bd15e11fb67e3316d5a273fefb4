@@ -22,6 +22,30 @@
       "revId": "cba97e69ab4b9bd15e11fb67e3316d5a273fefb4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a2ef5a3_b58ad6e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-09-27T18:19:34Z",
+      "side": 1,
+      "message": "Just downloaded the clang-tools branch locally:\nmkdir clang-tools \u0026\u0026 cd clang-tools \u0026\u0026 repo init -u persistent-https://android.git.corp.google.com/platform/manifest -b clang-tools \u0026\u0026 repo sync -j32\n\n,and deleted project: \"external/python\".\nRan command: `OUT_DIR\u003dout prebuilts/clang-tools/build-prebuilts.sh` after cherry-picking my CL.\nThe build was finished successfully.",
+      "parentUuid": "db2c8b41_7c9274b0",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 9
+      },
+      "revId": "cba97e69ab4b9bd15e11fb67e3316d5a273fefb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
