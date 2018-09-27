@@ -109,6 +109,7 @@ func testContext(config android.Config, bp string,
 		"android_system_stubs_current",
 		"android_test_stubs_current",
 		"core.current.stubs",
+		"core.platform.api.stubs",
 		"kotlin-stdlib",
 	}
 
