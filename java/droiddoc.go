@@ -487,9 +487,9 @@ func (j *Javadoc) addDeps(ctx android.BottomUpMutatorContext) {
 		if !Bool(j.properties.No_standard_libs) {
 			sdkDep := decodeSdkDep(ctx, sdkContext(j))
 			if sdkDep.useDefaultLibs {
-				ctx.AddVariationDependencies(nil, bootClasspathTag, config.DefaultBootclasspathLibraries...)
+				ctx.AddVariationDependencies(nil, bootClasspathTag, config.DefaultBootclasspathStubs...)
 				if ctx.Config().TargetOpenJDK9() {
-					ctx.AddVariationDependencies(nil, systemModulesTag, config.DefaultSystemModules)
+					ctx.AddVariationDependencies(nil, systemModulesTag, config.DefaultSystemModulesStubs)
 				}
 				if !Bool(j.properties.No_framework_libs) {
 					ctx.AddVariationDependencies(nil, libTag, config.DefaultLibraries...)
