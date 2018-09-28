@@ -16,6 +16,24 @@
       "revId": "9492c1c93bcd4372a918cfa21a2d17b831dbc433",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22b621de_8d37cb18",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2018-09-28T00:27:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a799b45_1eb4d6d5",
+      "revId": "9492c1c93bcd4372a918cfa21a2d17b831dbc433",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
