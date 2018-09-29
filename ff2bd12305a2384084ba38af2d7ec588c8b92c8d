@@ -39,6 +39,24 @@
       "revId": "ff2bd12305a2384084ba38af2d7ec588c8b92c8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03e7da93_a00ec8c8",
+        "filename": "cc/cmakelists.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2018-09-29T05:39:19Z",
+      "side": 1,
+      "message": "Yes, you are right. i is incremented in the for loop at line 320. Since I am only parsing one parameter at a time, I shouldn\u0027t increment it here. Removed in latest patch set.",
+      "parentUuid": "533d3a6a_e6a70931",
+      "revId": "ff2bd12305a2384084ba38af2d7ec588c8b92c8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
