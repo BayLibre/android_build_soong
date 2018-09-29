@@ -81,6 +81,24 @@
       "revId": "ff2bd12305a2384084ba38af2d7ec588c8b92c8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e11ffdd9_0da8e468",
+        "filename": "cc/cmakelists.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2018-09-29T05:40:40Z",
+      "side": 1,
+      "message": "Somehow nothing breaks when I increment i here. Perhaps that flag did not affect cmake.",
+      "parentUuid": "03e7da93_a00ec8c8",
+      "revId": "ff2bd12305a2384084ba38af2d7ec588c8b92c8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
