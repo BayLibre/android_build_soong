@@ -173,16 +173,14 @@ def raise_min_sdk_version(doc, min_sdk_version, target_sdk_version, library):
     if compare_version_gt(min_sdk_version, min_attr.value):
       min_attr.value = min_sdk_version
 
-  # Insert the targetSdkVersion attribute if it is missing.  If it is already
-  # present leave it as is.
-  target_attr = element.getAttributeNodeNS(android_ns, 'targetSdkVersion')
-  if target_attr is None:
-    target_attr = doc.createAttributeNS(android_ns, 'android:targetSdkVersion')
-    if library:
-      target_attr.value = '1'
-    else:
+  if not library:
+    # Insert the targetSdkVersion attribute if it is missing.  If it is already
+    # present leave it as is.
+    target_attr = element.getAttributeNodeNS(android_ns, 'targetSdkVersion')
+    if target_attr is None:
+      target_attr = doc.createAttributeNS(android_ns, 'android:targetSdkVersion')
       target_attr.value = target_sdk_version
-    element.setAttributeNode(target_attr)
+      element.setAttributeNode(target_attr)
 
 
 def add_uses_libraries(doc, new_uses_libraries):
