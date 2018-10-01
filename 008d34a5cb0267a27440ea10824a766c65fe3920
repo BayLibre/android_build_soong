@@ -16,6 +16,24 @@
       "revId": "008d34a5cb0267a27440ea10824a766c65fe3920",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40538731_2a7d95d5",
+        "filename": "cc/cmakelists.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2018-10-01T15:01:39Z",
+      "side": 1,
+      "message": "Good catch. Thanks!",
+      "parentUuid": "da6942f7_a05d50c0",
+      "revId": "008d34a5cb0267a27440ea10824a766c65fe3920",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
