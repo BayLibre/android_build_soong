@@ -15,6 +15,7 @@
 package tradefed
 
 import (
+	"fmt"
 	"strings"
 
 	"github.com/google/blueprint"
@@ -34,6 +35,14 @@ func getTestConfig(ctx android.ModuleContext, prop *string) android.Path {
 	}
 	return nil
 }
+
+var insertSedCmd = "sed -i '/testtype.GTest\" >/a\\        <option name=\"run-test-as\" value=\"$uid\" />' $out"
+var insertProp = "function insertProp {    if [ ! -z \"%s\" ] ; then     	%s;     fi } ; insertProp;"
+var autogenNativeTestConfig = pctx.StaticRule("autogenNativeTestConfig", blueprint.RuleParams{
+	Command: "sed 's&{MODULE}&${name}&g' $template > $out ;" +
+		fmt.Sprintf(insertProp, "$uid", insertSedCmd),
+	CommandDeps: []string{"$template"},
+}, "name", "template", "uid")
 
 var autogenTestConfig = pctx.StaticRule("autogenTestConfig", blueprint.RuleParams{
 	Command:     "sed 's&{MODULE}&${name}&g' $template > $out",
@@ -66,18 +75,41 @@ func autogenTemplate(ctx android.ModuleContext, output android.WritablePath, tem
 	})
 }
 
+func autogenNativeTemplate(ctx android.ModuleContext, output android.WritablePath, template string, props map[string]*string) {
+	args := map[string]string{
+		"name":     ctx.ModuleName(),
+		"template": template,
+	}
+	if props != nil {
+		for key, value := range props {
+			if value != nil {
+				args[key] = *value
+			} else {
+				args[key] = ""
+			}
+		}
+	}
+
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        autogenNativeTestConfig,
+		Description: "test config",
+		Output:      output,
+		Args:        args,
+	})
+}
+
 func AutoGenNativeTestConfig(ctx android.ModuleContext, testConfigProp *string,
-	testConfigTemplateProp *string) android.Path {
+	testConfigTemplateProp *string, props map[string]*string) android.Path {
 	path, autogenPath := testConfigPath(ctx, testConfigProp)
 	if autogenPath != nil {
 		templatePath := getTestConfigTemplate(ctx, testConfigTemplateProp)
 		if templatePath.Valid() {
-			autogenTemplate(ctx, autogenPath, templatePath.String())
+			autogenNativeTemplate(ctx, autogenPath, templatePath.String(), props)
 		} else {
 			if ctx.Device() {
-				autogenTemplate(ctx, autogenPath, "${NativeTestConfigTemplate}")
+				autogenNativeTemplate(ctx, autogenPath, "${NativeTestConfigTemplate}", props)
 			} else {
-				autogenTemplate(ctx, autogenPath, "${NativeHostTestConfigTemplate}")
+				autogenNativeTemplate(ctx, autogenPath, "${NativeHostTestConfigTemplate}", props)
 			}
 		}
 		return autogenPath
