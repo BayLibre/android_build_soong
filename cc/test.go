@@ -53,6 +53,9 @@ type TestBinaryProperties struct {
 	// the name of the test configuration template (for example "AndroidTestTemplate.xml") that
 	// should be installed with the module.
 	Test_config_template *string `android:"arch_variant"`
+
+	// the UID that you want to run in device.
+	Run_tests_as *string `android:"arch_variant"`
 }
 
 func init() {
@@ -240,7 +243,7 @@ func (test *testBinary) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 func (test *testBinary) install(ctx ModuleContext, file android.Path) {
 	test.data = ctx.ExpandSources(test.Properties.Data, nil)
 	test.testConfig = tradefed.AutoGenNativeTestConfig(ctx, test.Properties.Test_config,
-		test.Properties.Test_config_template)
+		test.Properties.Test_config_template, test.Properties.Run_tests_as)
 
 	test.binaryDecorator.baseInstaller.dir = "nativetest"
 	test.binaryDecorator.baseInstaller.dir64 = "nativetest64"
