@@ -20,6 +20,7 @@ import (
 	"github.com/google/blueprint"
 
 	"android/soong/android"
+	"fmt"
 )
 
 func getTestConfigTemplate(ctx android.ModuleContext, prop *string) android.OptionalPath {
@@ -39,6 +40,12 @@ var autogenTestConfig = pctx.StaticRule("autogenTestConfig", blueprint.RuleParam
 	Command:     "sed 's&{MODULE}&${name}&g' $template > $out",
 	CommandDeps: []string{"$template"},
 }, "name", "template")
+
+var autogenTestConfigWithUID = pctx.StaticRule("autogenTestConfigWithUID", blueprint.RuleParams{
+	Command: "sed 's&{MODULE}&${name}&g' $template > $out ;" +
+		"${uidCmd} $out",
+	CommandDeps: []string{"$template"},
+}, "name", "template", "uidCmd")
 
 func testConfigPath(ctx android.ModuleContext, prop *string) (path android.Path, autogenPath android.WritablePath) {
 	if p := getTestConfig(ctx, prop); p != nil {
@@ -66,18 +73,37 @@ func autogenTemplate(ctx android.ModuleContext, output android.WritablePath, tem
 	})
 }
 
+func autogenNativeConfigTemplate(ctx android.ModuleContext, output android.WritablePath, template string, runTestAsProp *string) {
+	//If no runTestAsProp then delete {UID_OPTION} line, else replace it to corresponding run-test-as option format.
+	uidCmd := "sed -i '/{UID_OPTION}/d'"
+	if runTestAsProp != nil {
+		uidOption := fmt.Sprintf("<option name=\"run-test-as\" value=\"%s\" />", *runTestAsProp)
+		uidCmd = fmt.Sprintf("sed -i 's&{UID_OPTION}&%s&g'", uidOption)
+	}
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        autogenTestConfigWithUID,
+		Description: "test config",
+		Output:      output,
+		Args: map[string]string{
+			"name":     ctx.ModuleName(),
+			"template": template,
+			"uidCmd":   uidCmd,
+		},
+	})
+}
+
 func AutoGenNativeTestConfig(ctx android.ModuleContext, testConfigProp *string,
-	testConfigTemplateProp *string) android.Path {
+	testConfigTemplateProp *string, runTestAsProp *string) android.Path {
 	path, autogenPath := testConfigPath(ctx, testConfigProp)
 	if autogenPath != nil {
 		templatePath := getTestConfigTemplate(ctx, testConfigTemplateProp)
 		if templatePath.Valid() {
-			autogenTemplate(ctx, autogenPath, templatePath.String())
+			autogenNativeConfigTemplate(ctx, autogenPath, templatePath.String(), runTestAsProp)
 		} else {
 			if ctx.Device() {
-				autogenTemplate(ctx, autogenPath, "${NativeTestConfigTemplate}")
+				autogenNativeConfigTemplate(ctx, autogenPath, "${NativeTestConfigTemplate}", runTestAsProp)
 			} else {
-				autogenTemplate(ctx, autogenPath, "${NativeHostTestConfigTemplate}")
+				autogenNativeConfigTemplate(ctx, autogenPath, "${NativeHostTestConfigTemplate}", runTestAsProp)
 			}
 		}
 		return autogenPath
