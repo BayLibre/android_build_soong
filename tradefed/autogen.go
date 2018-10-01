@@ -40,6 +40,13 @@ var autogenTestConfig = pctx.StaticRule("autogenTestConfig", blueprint.RuleParam
 	CommandDeps: []string{"$template"},
 }, "name", "template")
 
+var autogenTestConfigWithUID = pctx.StaticRule("autogenTestConfigWithUID", blueprint.RuleParams{
+	Command: "sed 's&{MODULE}&${name}&g' $template > $out ;" +
+		"sed -i '/testtype.GTest\" >/a\\        " +
+		"<option name=\"run-test-as\" value=\"$uid\" />' $out",
+	CommandDeps: []string{"$template"},
+}, "name", "template", "uid")
+
 func testConfigPath(ctx android.ModuleContext, prop *string) (path android.Path, autogenPath android.WritablePath) {
 	if p := getTestConfig(ctx, prop); p != nil {
 		return p, nil
@@ -66,8 +73,21 @@ func autogenTemplate(ctx android.ModuleContext, output android.WritablePath, tem
 	})
 }
 
+func autogenTemplateWithUID(ctx android.ModuleContext, output android.WritablePath, template string, runTestAsProp string) {
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        autogenTestConfigWithUID,
+		Description: "test config",
+		Output:      output,
+		Args: map[string]string{
+			"name":     ctx.ModuleName(),
+			"template": template,
+			"uid":      runTestAsProp,
+		},
+	})
+}
+
 func AutoGenNativeTestConfig(ctx android.ModuleContext, testConfigProp *string,
-	testConfigTemplateProp *string) android.Path {
+	testConfigTemplateProp *string, runTestAsProp *string) android.Path {
 	path, autogenPath := testConfigPath(ctx, testConfigProp)
 	if autogenPath != nil {
 		templatePath := getTestConfigTemplate(ctx, testConfigTemplateProp)
@@ -75,7 +95,11 @@ func AutoGenNativeTestConfig(ctx android.ModuleContext, testConfigProp *string,
 			autogenTemplate(ctx, autogenPath, templatePath.String())
 		} else {
 			if ctx.Device() {
-				autogenTemplate(ctx, autogenPath, "${NativeTestConfigTemplate}")
+				if runTestAsProp != nil {
+					autogenTemplateWithUID(ctx, autogenPath, "${NativeTestConfigTemplate}", *runTestAsProp)
+				} else {
+					autogenTemplate(ctx, autogenPath, "${NativeTestConfigTemplate}")
+				}
 			} else {
 				autogenTemplate(ctx, autogenPath, "${NativeHostTestConfigTemplate}")
 			}
