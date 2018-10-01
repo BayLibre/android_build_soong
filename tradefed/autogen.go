@@ -15,6 +15,8 @@
 package tradefed
 
 import (
+	"encoding/json"
+	"fmt"
 	"strings"
 
 	"github.com/google/blueprint"
@@ -36,9 +38,10 @@ func getTestConfig(ctx android.ModuleContext, prop *string) android.Path {
 }
 
 var autogenTestConfig = pctx.StaticRule("autogenTestConfig", blueprint.RuleParams{
-	Command:     "sed 's&{MODULE}&${name}&g' $template > $out",
+	Command: "sed 's&{MODULE}&${name}&g' $template > $out &&" +
+		"${optionCmd} $out",
 	CommandDeps: []string{"$template"},
-}, "name", "template")
+}, "name", "template", "optionCmd")
 
 func testConfigPath(ctx android.ModuleContext, prop *string) (path android.Path, autogenPath android.WritablePath) {
 	if p := getTestConfig(ctx, prop); p != nil {
@@ -54,30 +57,48 @@ func testConfigPath(ctx android.ModuleContext, prop *string) (path android.Path,
 	}
 }
 
-func autogenTemplate(ctx android.ModuleContext, output android.WritablePath, template string) {
+func autogenTemplate(ctx android.ModuleContext, output android.WritablePath, template string, testOptionsJson []byte) {
+	// If no test option found, delete {UID_OPTION} line.
+	// If found, replace it with corresponding options format.
+	optionCmd := "sed -i '/{UID_OPTION}/d'"
+	if testOptionsJson != nil {
+		var optionsMap map[string]*string
+		if err := json.Unmarshal(testOptionsJson, &optionsMap); err == nil {
+			var options []string
+			//Append options
+			for optionName, value := range optionsMap {
+				if value == nil {
+					continue
+				}
+				options = append(options, fmt.Sprintf("<option name=\"%s\" value=%s />", optionName, *value))
+			}
+			optionCmd = fmt.Sprintf("sed -i 's&{UID_OPTION}&%s&g'", strings.Join(options, "\\n        "))
+		}
+	}
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        autogenTestConfig,
 		Description: "test config",
 		Output:      output,
 		Args: map[string]string{
-			"name":     ctx.ModuleName(),
-			"template": template,
+			"name":      ctx.ModuleName(),
+			"template":  template,
+			"optionCmd": optionCmd,
 		},
 	})
 }
 
 func AutoGenNativeTestConfig(ctx android.ModuleContext, testConfigProp *string,
-	testConfigTemplateProp *string) android.Path {
+	testConfigTemplateProp *string, testOptionsJson []byte) android.Path {
 	path, autogenPath := testConfigPath(ctx, testConfigProp)
 	if autogenPath != nil {
 		templatePath := getTestConfigTemplate(ctx, testConfigTemplateProp)
 		if templatePath.Valid() {
-			autogenTemplate(ctx, autogenPath, templatePath.String())
+			autogenTemplate(ctx, autogenPath, templatePath.String(), testOptionsJson)
 		} else {
 			if ctx.Device() {
-				autogenTemplate(ctx, autogenPath, "${NativeTestConfigTemplate}")
+				autogenTemplate(ctx, autogenPath, "${NativeTestConfigTemplate}", testOptionsJson)
 			} else {
-				autogenTemplate(ctx, autogenPath, "${NativeHostTestConfigTemplate}")
+				autogenTemplate(ctx, autogenPath, "${NativeHostTestConfigTemplate}", testOptionsJson)
 			}
 		}
 		return autogenPath
@@ -91,9 +112,9 @@ func AutoGenNativeBenchmarkTestConfig(ctx android.ModuleContext, testConfigProp 
 	if autogenPath != nil {
 		templatePath := getTestConfigTemplate(ctx, testConfigTemplateProp)
 		if templatePath.Valid() {
-			autogenTemplate(ctx, autogenPath, templatePath.String())
+			autogenTemplate(ctx, autogenPath, templatePath.String(), nil)
 		} else {
-			autogenTemplate(ctx, autogenPath, "${NativeBenchmarkTestConfigTemplate}")
+			autogenTemplate(ctx, autogenPath, "${NativeBenchmarkTestConfigTemplate}", nil)
 		}
 		return autogenPath
 	}
@@ -105,12 +126,12 @@ func AutoGenJavaTestConfig(ctx android.ModuleContext, testConfigProp *string, te
 	if autogenPath != nil {
 		templatePath := getTestConfigTemplate(ctx, testConfigTemplateProp)
 		if templatePath.Valid() {
-			autogenTemplate(ctx, autogenPath, templatePath.String())
+			autogenTemplate(ctx, autogenPath, templatePath.String(), nil)
 		} else {
 			if ctx.Device() {
-				autogenTemplate(ctx, autogenPath, "${JavaTestConfigTemplate}")
+				autogenTemplate(ctx, autogenPath, "${JavaTestConfigTemplate}", nil)
 			} else {
-				autogenTemplate(ctx, autogenPath, "${JavaHostTestConfigTemplate}")
+				autogenTemplate(ctx, autogenPath, "${JavaHostTestConfigTemplate}", nil)
 			}
 		}
 		return autogenPath
