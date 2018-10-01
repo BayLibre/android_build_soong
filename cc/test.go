@@ -15,6 +15,7 @@
 package cc
 
 import (
+	"encoding/json"
 	"path/filepath"
 	"runtime"
 	"strings"
@@ -29,6 +30,17 @@ type TestProperties struct {
 
 	// if set, use the isolated gtest runner. Defaults to false.
 	Isolated *bool
+}
+
+// Test option struct. Adding fields must follow format below:
+// Run_test_as *string  `json:"run-test-as,string"`
+//       ^                          ^
+//   option value                option name
+// It will append new line in template like below
+// <option name="run-test-as" value="1234" />
+type TestOptions struct {
+	// the UID that you want to run in device.
+	Run_test_as *string `json:"run-test-as,string"`
 }
 
 type TestBinaryProperties struct {
@@ -56,6 +68,9 @@ type TestBinaryProperties struct {
 	// the name of the test configuration template (for example "AndroidTestTemplate.xml") that
 	// should be installed with the module.
 	Test_config_template *string `android:"arch_variant"`
+
+	// Test options.
+	Test_options *TestOptions
 }
 
 func init() {
@@ -244,8 +259,15 @@ func (test *testBinary) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 
 func (test *testBinary) install(ctx ModuleContext, file android.Path) {
 	test.data = ctx.ExpandSources(test.Properties.Data, nil)
+
+	var optionsMap map[string]string
+	if nil != test.Properties.Test_options {
+		testOptionsJson, _ := json.Marshal(&test.Properties.Test_options)
+		json.Unmarshal(testOptionsJson, &optionsMap)
+	}
+
 	test.testConfig = tradefed.AutoGenNativeTestConfig(ctx, test.Properties.Test_config,
-		test.Properties.Test_config_template)
+		test.Properties.Test_config_template, optionsMap)
 
 	test.binaryDecorator.baseInstaller.dir = "nativetest"
 	test.binaryDecorator.baseInstaller.dir64 = "nativetest64"
