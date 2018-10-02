@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a2a79a3d_319fc8e8",
+        "filename": "cmd/javac_wrapper/javac_wrapper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-10-02T23:47:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f35f9d49_ac45b31e",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 82
+      },
+      "revId": "9001019656293652ba245b5a6162be6b606bbee7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f3525b6_9985101a",
         "filename": "cmd/javac_wrapper/javac_wrapper.go",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2018-10-02T23:28:49Z",
       "side": 1,
       "message": "I thought we weren\u0027t going to pass -target 1.9 to droiddoc any more?",
+      "revId": "9001019656293652ba245b5a6162be6b606bbee7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3580cf6e_fa346ccd",
+        "filename": "cmd/javac_wrapper/javac_wrapper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-10-02T23:47:07Z",
+      "side": 1,
+      "message": "It seems a javadoc issue for running jdk9 javadoc against jdk8 sources:\nhttps://bugs.openjdk.java.net/browse/JDK-8187588",
+      "parentUuid": "6f3525b6_9985101a",
       "revId": "9001019656293652ba245b5a6162be6b606bbee7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -56,6 +98,24 @@
       "revId": "9001019656293652ba245b5a6162be6b606bbee7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82d99638_af90f329",
+        "filename": "cmd/javac_wrapper/javac_wrapper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-10-02T23:47:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c429b226_10f7693b",
+      "revId": "9001019656293652ba245b5a6162be6b606bbee7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
