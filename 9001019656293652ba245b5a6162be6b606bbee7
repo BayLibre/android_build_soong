@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f35f9d49_ac45b31e",
+        "filename": "cmd/javac_wrapper/javac_wrapper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-02T23:28:49Z",
+      "side": 1,
+      "message": "Can you separate this message with newlines above and below?",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 82
+      },
+      "revId": "9001019656293652ba245b5a6162be6b606bbee7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f3525b6_9985101a",
+        "filename": "cmd/javac_wrapper/javac_wrapper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-02T23:28:49Z",
+      "side": 1,
+      "message": "I thought we weren\u0027t going to pass -target 1.9 to droiddoc any more?",
+      "revId": "9001019656293652ba245b5a6162be6b606bbee7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c429b226_10f7693b",
+        "filename": "cmd/javac_wrapper/javac_wrapper.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-02T23:28:49Z",
+      "side": 1,
+      "message": "This one we can just remove in the source:\nhttps://android.googlesource.com/platform/external/doclava/+/master/src/com/google/doclava/Doclava.java#578",
+      "revId": "9001019656293652ba245b5a6162be6b606bbee7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
