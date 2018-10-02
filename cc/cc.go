@@ -325,6 +325,7 @@ var (
 type Module struct {
 	android.ModuleBase
 	android.DefaultableModuleBase
+	android.ApexModuleBase
 
 	Properties       BaseProperties
 	VendorProperties VendorProperties
@@ -409,6 +410,8 @@ func (c *Module) Init() android.Module {
 	android.InitAndroidArchModule(c, c.hod, c.multilib)
 
 	android.InitDefaultableModule(c)
+
+	android.InitApexModule(c)
 
 	return c
 }
@@ -789,7 +792,7 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		c.outputFile = android.OptionalPathForPath(outputFile)
 	}
 
-	if c.installer != nil && !c.Properties.PreventInstall && c.outputFile.Valid() {
+	if c.installer != nil && !c.Properties.PreventInstall && c.IsForPlatform() && c.outputFile.Valid() {
 		c.installer.install(ctx, c.outputFile.Path())
 		if ctx.Failed() {
 			return
@@ -1514,12 +1517,24 @@ func (c *Module) getMakeLinkType() string {
 	}
 }
 
+// Overrides ApexModule.IsInstallabeToApex()
+// Only shared libraries are installable to APEX.
+func (c *Module) IsInstallableToApex() bool {
+	if shared, ok := c.linker.(interface {
+		shared() bool
+	}); ok {
+		return shared.shared()
+	}
+	return false
+}
+
 //
 // Defaults
 //
 type Defaults struct {
 	android.ModuleBase
 	android.DefaultsModuleBase
+	android.ApexModuleBase
 }
 
 func (*Defaults) GenerateAndroidBuildActions(ctx android.ModuleContext) {
@@ -1561,6 +1576,7 @@ func DefaultsFactory(props ...interface{}) android.Module {
 	)
 
 	android.InitDefaultsModule(module)
+	android.InitApexModule(module)
 
 	return module
 }
