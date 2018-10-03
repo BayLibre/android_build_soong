@@ -304,6 +304,7 @@ func archMutator(mctx BottomUpMutatorContext) {
 	osClasses := base.OsClassSupported()
 
 	var moduleTargets []Target
+	moduleMultiTargets := make(map[int][]Target)
 	primaryModules := make(map[int]bool)
 
 	for _, class := range osClasses {
@@ -311,23 +312,10 @@ func archMutator(mctx BottomUpMutatorContext) {
 		if len(classTargets) == 0 {
 			continue
 		}
+
 		// only the primary arch in the recovery partition
 		if module.InstallInRecovery() {
 			classTargets = []Target{mctx.Config().Targets[Device][0]}
-		}
-
-		var multilib string
-		switch class {
-		case Device:
-			multilib = String(base.commonProperties.Target.Android.Compile_multilib)
-		case Host, HostCross:
-			multilib = String(base.commonProperties.Target.Host.Compile_multilib)
-		}
-		if multilib == "" {
-			multilib = String(base.commonProperties.Compile_multilib)
-		}
-		if multilib == "" {
-			multilib = base.commonProperties.Default_multilib
 		}
 
 		prefer32 := false
@@ -335,12 +323,23 @@ func archMutator(mctx BottomUpMutatorContext) {
 			prefer32 = base.prefer32(mctx, base, class)
 		}
 
-		targets, err := decodeMultilib(multilib, classTargets, prefer32)
+		multilib, extraMultilib := decodeMultilib(base, class)
+		targets, err := decodeMultilibTargets(multilib, classTargets, prefer32)
 		if err != nil {
 			mctx.ModuleErrorf("%s", err.Error())
 		}
+
+		var multiTargets []Target
+		if extraMultilib != "" {
+			multiTargets, err = decodeMultilibTargets(extraMultilib, classTargets, prefer32)
+			if err != nil {
+				mctx.ModuleErrorf("%s", err.Error())
+			}
+		}
+
 		if len(targets) > 0 {
 			primaryModules[len(moduleTargets)] = true
+			moduleMultiTargets[len(moduleTargets)] = multiTargets
 			moduleTargets = append(moduleTargets, targets...)
 		}
 	}
@@ -358,8 +357,34 @@ func archMutator(mctx BottomUpMutatorContext) {
 
 	modules := mctx.CreateVariations(targetNames...)
 	for i, m := range modules {
-		m.(Module).base().SetTarget(moduleTargets[i], primaryModules[i])
+		m.(Module).base().SetTarget(moduleTargets[i], moduleMultiTargets[i], primaryModules[i])
 		m.(Module).base().setArchProperties(mctx)
+	}
+}
+
+func decodeMultilib(base *ModuleBase, class OsClass) (multilib, extraMultilib string) {
+	switch class {
+	case Device:
+		multilib = String(base.commonProperties.Target.Android.Compile_multilib)
+	case Host, HostCross:
+		multilib = String(base.commonProperties.Target.Host.Compile_multilib)
+	}
+	if multilib == "" {
+		multilib = String(base.commonProperties.Compile_multilib)
+	}
+	if multilib == "" {
+		multilib = base.commonProperties.Default_multilib
+	}
+
+	if base.commonProperties.UseTargetVariants {
+		return multilib, ""
+	} else {
+		// For app modules a single arch variant will be created per OS class which is expected to handle all the
+		// selected arches.  Return the common-type as multilib and any Android.bp provided multilib as extraMultilib
+		if multilib == base.commonProperties.Default_multilib {
+			multilib = "first"
+		}
+		return base.commonProperties.Default_multilib, multilib
 	}
 }
 
@@ -1114,7 +1139,7 @@ func firstTarget(targets []Target, filters ...string) []Target {
 }
 
 // Use the module multilib setting to select one or more targets from a target list
-func decodeMultilib(multilib string, targets []Target, prefer32 bool) ([]Target, error) {
+func decodeMultilibTargets(multilib string, targets []Target, prefer32 bool) ([]Target, error) {
 	buildTargets := []Target{}
 
 	switch multilib {
