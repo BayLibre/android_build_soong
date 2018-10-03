@@ -23,7 +23,7 @@ import (
 //
 
 func init() {
-	android.RegisterModuleType("toolchain_library", toolchainLibraryFactory)
+	android.RegisterModuleType("toolchain_library", ToolchainLibraryFactory)
 }
 
 type toolchainLibraryDecorator struct {
@@ -35,7 +35,7 @@ func (*toolchainLibraryDecorator) linkerDeps(ctx DepsContext, deps Deps) Deps {
 	return deps
 }
 
-func toolchainLibraryFactory() android.Module {
+func ToolchainLibraryFactory() android.Module {
 	module, library := NewLibrary(android.HostAndDeviceSupported)
 	library.BuildOnlyStatic()
 	toolchainLibrary := &toolchainLibraryDecorator{
