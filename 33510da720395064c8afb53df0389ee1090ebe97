@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35e87ab8_890c1abc",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-10-04T14:51:28Z",
+      "side": 1,
+      "message": "in the example above you mention that a module can be included in multiple APEXes (as expected); so would this need to be a list instead of a single APEX? I think I\u0027m missing something...",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 18
+      },
+      "revId": "33510da720395064c8afb53df0389ee1090ebe97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5818f433_c3be9cdc",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-10-04T14:51:28Z",
+      "side": 1,
+      "message": "this appears to be unused.",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 6
+      },
+      "revId": "33510da720395064c8afb53df0389ee1090ebe97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
