@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "747036d0_3959e84d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2018-10-04T23:13:09Z",
+      "side": 1,
+      "message": "core-system-modules needs to remain consistent with the default bootclasspath so if those get added to the default bootclasspath then they also need to be added to core-system-modules.\n\nI don\u0027t know any *particular* problem with adding all of these APIs to the default bootclasspath (and therefore, necessarily, to the default system modules) except that I previously had the impression that you were quite keen on keeping the set of APIs in the default system modules as small as possible. What prompted the change of perspective?\n\nThe rationale above notes that those APIs already appear in the stubs (core.common.stubs), but they were only added to those very recently (by you) so there must be a further explanation and it seems worth expanding on that here?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 56
+      },
+      "revId": "8bd202a8c2657a551a06eef737a7fabda262e2e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
