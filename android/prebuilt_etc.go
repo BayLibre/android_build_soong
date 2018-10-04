@@ -84,6 +84,14 @@ func (p *PrebuiltEtc) SetAdditionalDependencies(paths Paths) {
 	p.additionalDependencies = &paths
 }
 
+func (p *PrebuiltEtc) SourceFile() Path {
+	return p.sourceFilePath
+}
+
+func (p *PrebuiltEtc) SubDir() string {
+	return String(p.properties.Sub_dir)
+}
+
 func (p *PrebuiltEtc) GenerateAndroidBuildActions(ctx ModuleContext) {
 	p.sourceFilePath = ctx.ExpandSource(String(p.properties.Src), "src")
 	p.installDirPath = PathForModuleInstall(ctx, "etc", String(p.properties.Sub_dir))
