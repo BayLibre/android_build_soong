@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d5c45838_2f440c85",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-10-04T17:27:49Z",
+      "side": 1,
+      "message": "variations.",
+      "range": {
+        "startLine": 28,
+        "startChar": 3,
+        "endLine": 28,
+        "endChar": 14
+      },
+      "revId": "33510da720395064c8afb53df0389ee1090ebe97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "35e87ab8_890c1abc",
         "filename": "android/apex.go",
         "patchSetId": 2
@@ -46,6 +69,53 @@
       "revId": "33510da720395064c8afb53df0389ee1090ebe97",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1344bfdb_b658c848",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-10-04T17:27:49Z",
+      "side": 1,
+      "message": "Ah ok, I understand. Does it make sense to put this in the comments somewhere, or is this just a soong thing (eg a variant of a module is itself also a module)?",
+      "parentUuid": "d0830f57_bc535f39",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 18
+      },
+      "revId": "33510da720395064c8afb53df0389ee1090ebe97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "abe5f32d_def11103",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-10-04T17:27:49Z",
+      "side": 1,
+      "message": "can vs has a need to are different things; isn\u0027t \"has a need to\" determined by whether this module is used by an APEX module, eg the build system itself, and not by this function?",
+      "range": {
+        "startLine": 48,
+        "startChar": 25,
+        "endLine": 48,
+        "endChar": 47
+      },
+      "revId": "33510da720395064c8afb53df0389ee1090ebe97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
