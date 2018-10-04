@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d0830f57_bc535f39",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-04T15:20:05Z",
+      "side": 1,
+      "message": "Yeah, this could be confusing. When a module is included for multiple apexs, the module is mutated into multiple variants each of which is for an apex. So, yes, each variant is also a module and ApexName() returns the name of the apex that the variant will be built for.",
+      "parentUuid": "35e87ab8_890c1abc",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 18
+      },
+      "revId": "33510da720395064c8afb53df0389ee1090ebe97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5818f433_c3be9cdc",
         "filename": "android/apex.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "33510da720395064c8afb53df0389ee1090ebe97",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6f6f407_d3c9aff8",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-04T15:20:05Z",
+      "side": 1,
+      "message": "Thanks. Forgot to delete.",
+      "parentUuid": "5818f433_c3be9cdc",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 6
+      },
+      "revId": "33510da720395064c8afb53df0389ee1090ebe97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
