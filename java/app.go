@@ -68,6 +68,7 @@ type appProperties struct {
 	Jni_libs []string `android:"arch_variant"`
 
 	EmbedJNI bool `blueprint:"mutated"`
+	StripDex bool `blueprint:"mutated"`
 }
 
 type AndroidApp struct {
@@ -184,11 +185,20 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 	a.Module.extraProguardFlagFiles = append(a.Module.extraProguardFlagFiles, staticLibProguardFlagFiles...)
 	a.Module.extraProguardFlagFiles = append(a.Module.extraProguardFlagFiles, a.proguardOptionsFile)
 
+	if Bool(a.appProperties.Privileged) && !ctx.Config().DontUncompressPrivAppDexs() ||
+		inList(ctx.ModuleName(), ctx.Config().ProductLoadedByPrivilegedModules()) {
+		a.deviceProperties.UncompressDex = true
+		a.appProperties.StripDex = false
+	}
+
 	if ctx.ModuleName() != "framework-res" {
 		a.Module.compile(ctx, a.aaptSrcJar)
 	}
+	dexJarFile := a.dexJarFile
 
-	packageFile := android.PathForModuleOut(ctx, "package.apk")
+	if a.appProperties.StripDex {
+		dexJarFile = nil
+	}
 
 	var certificates []certificate
 
@@ -226,8 +236,8 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 
 	certificates = append([]certificate{a.certificate}, certificateDeps...)
 
-	CreateAppPackage(ctx, packageFile, a.exportPackage, jniJarFile, a.outputFile, certificates)
-
+	packageFile := android.PathForModuleOut(ctx, "package.apk")
+	CreateAppPackage(ctx, packageFile, a.exportPackage, jniJarFile, dexJarFile, certificates)
 	a.outputFile = packageFile
 
 	if ctx.ModuleName() == "framework-res" {
@@ -284,6 +294,7 @@ func AndroidAppFactory() android.Module {
 
 	module.Module.properties.Instrument = true
 	module.Module.properties.Installable = proptools.BoolPtr(true)
+	module.appProperties.StripDex = true
 
 	module.AddProperties(
 		&module.Module.properties,
