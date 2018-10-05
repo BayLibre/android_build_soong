@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b0494bcf_1a6b0edd",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-05T05:15:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5c45838_2f440c85",
+      "range": {
+        "startLine": 28,
+        "startChar": 3,
+        "endLine": 28,
+        "endChar": 14
+      },
+      "revId": "33510da720395064c8afb53df0389ee1090ebe97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35e87ab8_890c1abc",
         "filename": "android/apex.go",
         "patchSetId": 2
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "2b072668_3ed5e680",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-05T05:15:03Z",
+      "side": 1,
+      "message": "That\u0027s a soong thing. But I\u0027ve added a small note.",
+      "parentUuid": "1344bfdb_b658c848",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 18
+      },
+      "revId": "33510da720395064c8afb53df0389ee1090ebe97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abe5f32d_def11103",
         "filename": "android/apex.go",
         "patchSetId": 2
@@ -116,6 +164,30 @@
       "revId": "33510da720395064c8afb53df0389ee1090ebe97",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be3f9db6_209e24f6",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-05T05:15:03Z",
+      "side": 1,
+      "message": "Ok, I\u0027ve removed (...) for clarity.",
+      "parentUuid": "abe5f32d_def11103",
+      "range": {
+        "startLine": 48,
+        "startChar": 25,
+        "endLine": 48,
+        "endChar": 47
+      },
+      "revId": "33510da720395064c8afb53df0389ee1090ebe97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
