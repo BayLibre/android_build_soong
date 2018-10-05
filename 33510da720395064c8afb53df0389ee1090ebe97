@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "f637032d_b8dc0d43",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-10-05T06:35:22Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "2b072668_3ed5e680",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 18
+      },
+      "revId": "33510da720395064c8afb53df0389ee1090ebe97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abe5f32d_def11103",
         "filename": "android/apex.go",
         "patchSetId": 2
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "Ok, I\u0027ve removed (...) for clarity.",
       "parentUuid": "abe5f32d_def11103",
+      "range": {
+        "startLine": 48,
+        "startChar": 25,
+        "endLine": 48,
+        "endChar": 47
+      },
+      "revId": "33510da720395064c8afb53df0389ee1090ebe97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "89218d2a_584637f3",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-10-05T06:35:22Z",
+      "side": 1,
+      "message": "Not yet removed in PS4?",
+      "parentUuid": "be3f9db6_209e24f6",
       "range": {
         "startLine": 48,
         "startChar": 25,
