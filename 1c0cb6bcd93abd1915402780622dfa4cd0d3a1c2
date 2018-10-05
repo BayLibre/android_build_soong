@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e58bf38_955d1b7a",
+        "filename": "android/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-05T23:05:19Z",
+      "side": 1,
+      "message": "Remove this",
+      "revId": "1c0cb6bcd93abd1915402780622dfa4cd0d3a1c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62fbf9f9_7174a624",
+        "filename": "android/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-05T23:05:19Z",
+      "side": 1,
+      "message": "How will the apex.foo variant and apex.bar variant differ?",
+      "range": {
+        "startLine": 30,
+        "startChar": 60,
+        "endLine": 31,
+        "endChar": 11
+      },
+      "revId": "1c0cb6bcd93abd1915402780622dfa4cd0d3a1c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
