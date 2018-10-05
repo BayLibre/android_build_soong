@@ -713,6 +713,14 @@ func (c *config) HostStaticBinaries() bool {
 	return Bool(c.productVariables.HostStaticBinaries)
 }
 
+func (c *config) DontUncompressPrivAppDexs() bool {
+	return Bool(c.productVariables.DontUncompressPrivAppDexs)
+}
+
+func (c *config) ProductLoadedByPrivilegedModules() []string {
+	return c.productVariables.ProductLoadedByPrivilegedModules
+}
+
 func (c *deviceConfig) Arches() []Arch {
 	var arches []Arch
 	for _, target := range c.config.Targets[Device] {
