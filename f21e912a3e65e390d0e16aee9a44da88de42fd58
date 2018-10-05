@@ -16,6 +16,24 @@
       "revId": "f21e912a3e65e390d0e16aee9a44da88de42fd58",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac697cfb_14588b96",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-05T19:56:06Z",
+      "side": 1,
+      "message": "It\u0027s necessary for the genrule to know the correct arch to use for the dependency on the testTool module.",
+      "parentUuid": "2af4f7a4_60efa4de",
+      "revId": "f21e912a3e65e390d0e16aee9a44da88de42fd58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
