@@ -33,6 +33,24 @@
       "revId": "f73d7a751b1bc99c25885cb454bd172345f9ab95",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ae34263_ce1a434e",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-10-05T20:29:43Z",
+      "side": 1,
+      "message": "oh it seems we are going to deprecate tool_files.",
+      "parentUuid": "053349ef_4b1e639c",
+      "revId": "f73d7a751b1bc99c25885cb454bd172345f9ab95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
