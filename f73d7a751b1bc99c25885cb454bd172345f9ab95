@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c79cff6e_c587864e",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-10-05T20:27:04Z",
+      "side": 1,
+      "message": "Do we need $(location output)? it seems that $(genDir)/dir1/dir2.../output can do same thing?",
+      "revId": "f73d7a751b1bc99c25885cb454bd172345f9ab95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "053349ef_4b1e639c",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-10-05T20:27:04Z",
+      "side": 1,
+      "message": "It seems tool_files[] has same meaning as how Srcs[] does once $(location input) is supported? or tool_files will be added order-only dependency?",
+      "revId": "f73d7a751b1bc99c25885cb454bd172345f9ab95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
