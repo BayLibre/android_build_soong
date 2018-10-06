@@ -81,6 +81,30 @@
       "revId": "1c0cb6bcd93abd1915402780622dfa4cd0d3a1c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1204cdf3_fbd475c6",
+        "filename": "android/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-06T00:18:55Z",
+      "side": 1,
+      "message": "\u003e while apex.foo includes libX and libY\n\ns/foo/bar",
+      "parentUuid": "f7a1dc35_d1960c3f",
+      "range": {
+        "startLine": 30,
+        "startChar": 60,
+        "endLine": 31,
+        "endChar": 11
+      },
+      "revId": "1c0cb6bcd93abd1915402780622dfa4cd0d3a1c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
