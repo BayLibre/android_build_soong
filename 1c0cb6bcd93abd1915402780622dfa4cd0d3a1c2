@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b7c0e982_99e49a55",
+        "filename": "android/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-06T00:17:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e58bf38_955d1b7a",
+      "revId": "1c0cb6bcd93abd1915402780622dfa4cd0d3a1c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62fbf9f9_7174a624",
         "filename": "android/apex.go",
         "patchSetId": 5
@@ -30,6 +48,30 @@
       "writtenOn": "2018-10-05T23:05:19Z",
       "side": 1,
       "message": "How will the apex.foo variant and apex.bar variant differ?",
+      "range": {
+        "startLine": 30,
+        "startChar": 60,
+        "endLine": 31,
+        "endChar": 11
+      },
+      "revId": "1c0cb6bcd93abd1915402780622dfa4cd0d3a1c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7a1dc35_d1960c3f",
+        "filename": "android/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-06T00:17:47Z",
+      "side": 1,
+      "message": "This isn\u0027t currently implemented yet, but the plan is this:\n\nLet\u0027s assume libX -\u003e libY, and libY exports stable C interface. Also assume that apex.foo includes libX while apex.foo includes libX and libY. Then libX in apex.foo is linked with the stubs of libY. However, libX in apex.bar is linked directly with libY, because they are included in the same APEX. \n\nIn general, list of stubs libs that a lib should link against is determined by the APEX in which the lib is.",
+      "parentUuid": "62fbf9f9_7174a624",
       "range": {
         "startLine": 30,
         "startChar": 60,
