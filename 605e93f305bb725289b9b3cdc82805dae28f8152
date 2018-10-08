@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "233041bd_c3f0d850",
+        "filename": "java/app.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-10-08T20:50:44Z",
+      "side": 1,
+      "message": "This should be an OptionalPath into CreateAppPackage",
+      "range": {
+        "startLine": 202,
+        "startChar": 24,
+        "endLine": 202,
+        "endChar": 36
+      },
+      "revId": "605e93f305bb725289b9b3cdc82805dae28f8152",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee64f3b1_d5b88126",
+        "filename": "java/app.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-10-08T20:50:44Z",
+      "side": 1,
+      "message": "lib.",
+      "range": {
+        "startLine": 241,
+        "startChar": 14,
+        "endLine": 241,
+        "endChar": 31
+      },
+      "revId": "605e93f305bb725289b9b3cdc82805dae28f8152",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e6c5b14_8ef12a43",
+        "filename": "java/app_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-10-08T20:50:44Z",
+      "side": 1,
+      "message": "Once my toolchain_library change goes in, you\u0027ll need a `src: \"\",` entry in each of these",
+      "range": {
+        "startLine": 345,
+        "startChar": 2,
+        "endLine": 345,
+        "endChar": 19
+      },
+      "revId": "605e93f305bb725289b9b3cdc82805dae28f8152",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
