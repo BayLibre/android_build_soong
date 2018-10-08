@@ -21,9 +21,7 @@ import (
 )
 
 var (
-	linuxBionicCflags = ClangFilterUnknownCflags([]string{
-		"-fdiagnostics-color",
-
+	linuxBionicCflags = []string{
 		"-Wa,--noexecstack",
 
 		"-fPIC",
@@ -34,21 +32,17 @@ var (
 
 		// From x86_64_device
 		"-ffunction-sections",
-		"-finline-functions",
-		"-finline-limit=300",
 		"-fno-short-enums",
-		"-funswitch-loops",
 		"-funwind-tables",
-		"-fno-canonical-system-headers",
 
 		// Tell clang where the gcc toolchain is
 		"--gcc-toolchain=${LinuxBionicGccRoot}",
 
 		// This is normally in ClangExtraTargetCflags, but this is considered host
 		"-nostdlibinc",
-	})
+	}
 
-	linuxBionicLdflags = ClangFilterUnknownCflags([]string{
+	linuxBionicLdflags = []string{
 		"-Wl,-z,noexecstack",
 		"-Wl,-z,relro",
 		"-Wl,-z,now",
@@ -60,7 +54,7 @@ var (
 
 		// Use the device gcc toolchain
 		"--gcc-toolchain=${LinuxBionicGccRoot}",
-	})
+	}
 
 	linuxBionicLldflags = ClangFilterUnknownLldflags(linuxBionicLdflags)
 )

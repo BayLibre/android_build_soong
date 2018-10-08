@@ -130,20 +130,16 @@ func init() {
 	pctx.StaticVariable("X86_64IncludeFlags", bionicHeaders("x86"))
 
 	// Clang cflags
-	pctx.StaticVariable("X86_64ClangCflags", strings.Join(ClangFilterUnknownCflags(x86_64Cflags), " "))
-	pctx.StaticVariable("X86_64ClangLdflags", strings.Join(ClangFilterUnknownCflags(x86_64Ldflags), " "))
-	pctx.StaticVariable("X86_64ClangLldflags", strings.Join(ClangFilterUnknownCflags(x86_64Lldflags), " "))
-	pctx.StaticVariable("X86_64ClangCppflags", strings.Join(ClangFilterUnknownCflags(x86_64Cppflags), " "))
+	pctx.StaticVariable("X86_64ClangCflags", strings.Join(x86_64Cflags, " "))
+	pctx.StaticVariable("X86_64ClangCppflags", strings.Join(x86_64Cppflags, " "))
 
 	// Yasm flags
 	pctx.StaticVariable("X86_64YasmFlags", "-f elf64 -m amd64")
 
-	// Extended cflags
-
 	// Architecture variant cflags
 	for variant, cflags := range x86_64ArchVariantCflags {
 		pctx.StaticVariable("X86_64"+variant+"VariantClangCflags",
-			strings.Join(ClangFilterUnknownCflags(cflags), " "))
+			strings.Join(cflags, " "))
 	}
 }
 
