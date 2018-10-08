@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6a74f0d_7caed158",
+        "filename": "java/app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-10-08T20:59:23Z",
+      "side": 1,
+      "message": "It looks like these must now be \":module\" forms instead of paths?",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 52
+      },
+      "revId": "6067a4f52ec5abac243c0198a299e4eef51014ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ccdfd1a_6c074406",
+        "filename": "java/app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-10-08T20:59:23Z",
+      "side": 1,
+      "message": "Is the ordering here guaranteed (or does it not matter?)",
+      "revId": "6067a4f52ec5abac243c0198a299e4eef51014ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72f6026b_9045b615",
+        "filename": "java/app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-10-08T20:59:23Z",
+      "side": 1,
+      "message": "So additional_certificates are only supported when the first key is a module reference?",
+      "range": {
+        "startLine": 214,
+        "startChar": 2,
+        "endLine": 214,
+        "endChar": 17
+      },
+      "revId": "6067a4f52ec5abac243c0198a299e4eef51014ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
