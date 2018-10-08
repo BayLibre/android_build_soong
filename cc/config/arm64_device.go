@@ -99,10 +99,8 @@ func init() {
 	pctx.StaticVariable("Arm64Lldflags", strings.Join(arm64Lldflags, " "))
 	pctx.StaticVariable("Arm64IncludeFlags", bionicHeaders("arm64"))
 
-	pctx.StaticVariable("Arm64ClangCflags", strings.Join(ClangFilterUnknownCflags(arm64Cflags), " "))
-	pctx.StaticVariable("Arm64ClangLdflags", strings.Join(ClangFilterUnknownCflags(arm64Ldflags), " "))
-	pctx.StaticVariable("Arm64ClangLldflags", strings.Join(ClangFilterUnknownCflags(arm64Lldflags), " "))
-	pctx.StaticVariable("Arm64ClangCppflags", strings.Join(ClangFilterUnknownCflags(arm64Cppflags), " "))
+	pctx.StaticVariable("Arm64ClangCflags", strings.Join(arm64Cflags, " "))
+	pctx.StaticVariable("Arm64ClangCppflags", strings.Join(arm64Cppflags, " "))
 
 	pctx.StaticVariable("Arm64ClangArmv8ACflags", strings.Join(arm64ArchVariantCflags["armv8-a"], " "))
 	pctx.StaticVariable("Arm64ClangArmv82ACflags", strings.Join(arm64ArchVariantCflags["armv8-2a"], " "))

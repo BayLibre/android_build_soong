@@ -22,8 +22,6 @@ import (
 
 var (
 	linuxCflags = []string{
-		"-fdiagnostics-color",
-
 		"-Wa,--noexecstack",
 
 		"-fPIC",
@@ -36,6 +34,10 @@ var (
 		//See bug 12708004.
 		"-D__STDC_FORMAT_MACROS",
 		"-D__STDC_CONSTANT_MACROS",
+
+		"--gcc-toolchain=${LinuxGccRoot}",
+		"--sysroot ${LinuxGccRoot}/sysroot",
+		"-fstack-protector-strong",
 	}
 
 	linuxLdflags = []string{
@@ -43,12 +45,14 @@ var (
 		"-Wl,-z,relro",
 		"-Wl,-z,now",
 		"-Wl,--no-undefined-version",
+
+		"--gcc-toolchain=${LinuxGccRoot}",
+		"--sysroot ${LinuxGccRoot}/sysroot",
 	}
 
 	// Extended cflags
 	linuxX86Cflags = []string{
 		"-msse3",
-		"-mfpmath=sse",
 		"-m32",
 		"-march=prescott",
 		"-D_FILE_OFFSET_BITS=64",
@@ -61,40 +65,25 @@ var (
 
 	linuxX86Ldflags = []string{
 		"-m32",
+
+		"-B${LinuxGccRoot}/lib/gcc/${LinuxGccTriple}/${LinuxGccVersion}/32",
+		"-L${LinuxGccRoot}/lib/gcc/${LinuxGccTriple}/${LinuxGccVersion}/32",
+		"-L${LinuxGccRoot}/${LinuxGccTriple}/lib32",
 	}
 
 	linuxX8664Ldflags = []string{
 		"-m64",
-	}
 
-	linuxClangCflags = append(ClangFilterUnknownCflags(linuxCflags), []string{
-		"--gcc-toolchain=${LinuxGccRoot}",
-		"--sysroot ${LinuxGccRoot}/sysroot",
-		"-fstack-protector-strong",
-	}...)
-
-	linuxClangLdflags = append(ClangFilterUnknownCflags(linuxLdflags), []string{
-		"--gcc-toolchain=${LinuxGccRoot}",
-		"--sysroot ${LinuxGccRoot}/sysroot",
-	}...)
-
-	linuxClangLldflags = ClangFilterUnknownLldflags(linuxClangLdflags)
-
-	linuxX86ClangLdflags = append(ClangFilterUnknownCflags(linuxX86Ldflags), []string{
-		"-B${LinuxGccRoot}/lib/gcc/${LinuxGccTriple}/${LinuxGccVersion}/32",
-		"-L${LinuxGccRoot}/lib/gcc/${LinuxGccTriple}/${LinuxGccVersion}/32",
-		"-L${LinuxGccRoot}/${LinuxGccTriple}/lib32",
-	}...)
-
-	linuxX86ClangLldflags = ClangFilterUnknownLldflags(linuxX86ClangLdflags)
-
-	linuxX8664ClangLdflags = append(ClangFilterUnknownCflags(linuxX8664Ldflags), []string{
 		"-B${LinuxGccRoot}/lib/gcc/${LinuxGccTriple}/${LinuxGccVersion}",
 		"-L${LinuxGccRoot}/lib/gcc/${LinuxGccTriple}/${LinuxGccVersion}",
 		"-L${LinuxGccRoot}/${LinuxGccTriple}/lib64",
-	}...)
+	}
 
-	linuxX8664ClangLldflags = ClangFilterUnknownLldflags(linuxX8664ClangLdflags)
+	linuxClangLldflags = ClangFilterUnknownLldflags(linuxLdflags)
+
+	linuxX86ClangLldflags = ClangFilterUnknownLldflags(linuxX86Ldflags)
+
+	linuxX8664ClangLldflags = ClangFilterUnknownLldflags(linuxX8664Ldflags)
 
 	linuxAvailableLibraries = addPrefix([]string{
 		"c",
@@ -122,17 +111,15 @@ func init() {
 
 	pctx.StaticVariable("LinuxGccTriple", "x86_64-linux")
 
-	pctx.StaticVariable("LinuxClangCflags", strings.Join(linuxClangCflags, " "))
-	pctx.StaticVariable("LinuxClangLdflags", strings.Join(linuxClangLdflags, " "))
+	pctx.StaticVariable("LinuxClangCflags", strings.Join(linuxCflags, " "))
+	pctx.StaticVariable("LinuxClangLdflags", strings.Join(linuxLdflags, " "))
 	pctx.StaticVariable("LinuxClangLldflags", strings.Join(linuxClangLldflags, " "))
 
-	pctx.StaticVariable("LinuxX86ClangCflags",
-		strings.Join(ClangFilterUnknownCflags(linuxX86Cflags), " "))
-	pctx.StaticVariable("LinuxX8664ClangCflags",
-		strings.Join(ClangFilterUnknownCflags(linuxX8664Cflags), " "))
-	pctx.StaticVariable("LinuxX86ClangLdflags", strings.Join(linuxX86ClangLdflags, " "))
+	pctx.StaticVariable("LinuxX86ClangCflags", strings.Join(linuxX86Cflags, " "))
+	pctx.StaticVariable("LinuxX8664ClangCflags", strings.Join(linuxX8664Cflags, " "))
+	pctx.StaticVariable("LinuxX86ClangLdflags", strings.Join(linuxX86Ldflags, " "))
 	pctx.StaticVariable("LinuxX86ClangLldflags", strings.Join(linuxX86ClangLldflags, " "))
-	pctx.StaticVariable("LinuxX8664ClangLdflags", strings.Join(linuxX8664ClangLdflags, " "))
+	pctx.StaticVariable("LinuxX8664ClangLdflags", strings.Join(linuxX8664Ldflags, " "))
 	pctx.StaticVariable("LinuxX8664ClangLldflags", strings.Join(linuxX8664ClangLldflags, " "))
 	// Yasm flags
 	pctx.StaticVariable("LinuxX86YasmFlags", "-f elf32 -m x86")

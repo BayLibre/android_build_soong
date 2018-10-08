@@ -16,7 +16,6 @@ package config
 
 import (
 	"sort"
-	"strings"
 )
 
 // Cflags that should be filtered out when compiling with clang
@@ -100,104 +99,6 @@ var ClangLibToolingUnknownCflags = []string{
 }
 
 func init() {
-	pctx.StaticVariable("ClangExtraCflags", strings.Join([]string{
-		"-D__compiler_offsetof=__builtin_offsetof",
-
-		// Help catch common 32/64-bit errors.
-		"-Werror=int-conversion",
-
-		// Disable overly aggressive warning for macros defined with a leading underscore
-		// This happens in AndroidConfig.h, which is included nearly everywhere.
-		// TODO: can we remove this now?
-		"-Wno-reserved-id-macro",
-
-		// Disable overly aggressive warning for format strings.
-		// Bug: 20148343
-		"-Wno-format-pedantic",
-
-		// Workaround for ccache with clang.
-		// See http://petereisentraut.blogspot.com/2011/05/ccache-and-clang.html.
-		"-Wno-unused-command-line-argument",
-
-		// Force clang to always output color diagnostics. Ninja will strip the ANSI
-		// color codes if it is not running in a terminal.
-		"-fcolor-diagnostics",
-
-		// http://b/29823425 Disable -Wexpansion-to-defined for Clang update to r271374
-		"-Wno-expansion-to-defined",
-
-		// http://b/68236239 Allow 0/NULL instead of using nullptr everywhere.
-		"-Wno-zero-as-null-pointer-constant",
-
-		// Warnings from clang-7.0
-		"-Wno-deprecated-register",
-		"-Wno-sign-compare",
-	}, " "))
-
-	pctx.StaticVariable("ClangExtraCppflags", strings.Join([]string{
-		// Disable -Winconsistent-missing-override until we can clean up the existing
-		// codebase for it.
-		"-Wno-inconsistent-missing-override",
-
-		// Bug: http://b/29823425 Disable -Wnull-dereference until the
-		// new instances detected by this warning are fixed.
-		"-Wno-null-dereference",
-
-		// Enable clang's thread-safety annotations in libcxx.
-		// Turn off -Wthread-safety-negative, to avoid breaking projects that use -Weverything.
-		"-D_LIBCPP_ENABLE_THREAD_SAFETY_ANNOTATIONS",
-		"-Wno-thread-safety-negative",
-
-		// libc++'s math.h has an #include_next outside of system_headers.
-		"-Wno-gnu-include-next",
-	}, " "))
-
-	pctx.StaticVariable("ClangExtraTargetCflags", strings.Join([]string{
-		"-nostdlibinc",
-	}, " "))
-
-	pctx.StaticVariable("ClangExtraNoOverrideCflags", strings.Join([]string{
-		"-Werror=address-of-temporary",
-		// Bug: http://b/29823425 Disable -Wnull-dereference until the
-		// new cases detected by this warning in Clang r271374 are
-		// fixed.
-		//"-Werror=null-dereference",
-		"-Werror=return-type",
-
-		// http://b/72331526 Disable -Wtautological-* until the instances detected by these
-		// new warnings are fixed.
-		"-Wno-tautological-constant-compare",
-		"-Wno-tautological-type-limit-compare",
-		"-Wno-tautological-unsigned-enum-zero-compare",
-		"-Wno-tautological-unsigned-zero-compare",
-
-		// http://b/72331524 Allow null pointer arithmetic until the instances detected by
-		// this new warning are fixed.
-		"-Wno-null-pointer-arithmetic",
-
-		// Disable c++98-specific warning since Android is not concerned with C++98
-		// compatibility.
-		"-Wno-c++98-compat-extra-semi",
-
-		// Disable this warning until we can fix all instances where it fails.
-		"-Wno-self-assign-overloaded",
-
-		// Disable this warning until we can fix all instances where it fails.
-		"-Wno-constant-logical-operand",
-
-		// Disable this warning because we don't care about behavior with older compilers.
-		"-Wno-return-std-move-in-c++11",
-
-		// Disable this warning until we can fix all instances where it fails.
-		"-Wno-dangling-field",
-	}, " "))
-
-	// Extra cflags for projects under external/ directory to disable warnings that are infeasible
-	// to fix in all the external projects and their upstream repos.
-	pctx.StaticVariable("ClangExtraExternalCflags", strings.Join([]string{
-		"-Wno-enum-compare",
-		"-Wno-enum-compare-switch",
-	}, " "))
 }
 
 func ClangFilterUnknownCflags(cflags []string) []string {
