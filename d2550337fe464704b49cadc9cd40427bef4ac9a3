@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "940b0ef6_5c724c0d",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2018-10-08T21:26:53Z",
+      "side": 1,
+      "message": "Same question about this being passed to GNU as sometimes.",
+      "revId": "d2550337fe464704b49cadc9cd40427bef4ac9a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96ec73e5_c767370f",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2018-10-08T21:26:53Z",
+      "side": 1,
+      "message": "Do we use this variable for asflags in some cases? I am just concerned if there are some other -fno-integrated-as cases that could break.",
+      "revId": "d2550337fe464704b49cadc9cd40427bef4ac9a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
