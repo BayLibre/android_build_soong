@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c870c34d_dd7ab613",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-10-08T20:18:06Z",
+      "side": 1,
+      "message": "We modify this flag per source (line 390), so we shouldn\u0027t be overwriting flags.tidy",
+      "parentUuid": "32c5f6b5_10e71aa4",
+      "revId": "5c1b0dfa44e2b61580bfb5530576729a7ea298e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e4567c98_0ec6041c",
         "filename": "cc/builder.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "5c1b0dfa44e2b61580bfb5530576729a7ea298e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6160f31c_a488ab03",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-10-08T20:18:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4567c98_0ec6041c",
+      "revId": "5c1b0dfa44e2b61580bfb5530576729a7ea298e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
