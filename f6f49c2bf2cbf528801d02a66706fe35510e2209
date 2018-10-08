@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "538702a8_08b59a23",
+        "filename": "android/arch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-10-08T20:31:44Z",
+      "side": 1,
+      "message": "64",
+      "range": {
+        "startLine": 308,
+        "startChar": 7,
+        "endLine": 308,
+        "endChar": 9
+      },
+      "revId": "f6f49c2bf2cbf528801d02a66706fe35510e2209",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
