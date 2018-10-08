@@ -21,16 +21,14 @@ import (
 )
 
 var (
-	x86Cflags = []string{}
-
-	x86ClangCflags = append(x86Cflags, []string{
+	x86Cflags = []string{
 		"-msse3",
 
 		// -mstackrealign is needed to realign stack in native code
 		// that could be called from JNI, so that movaps instruction
 		// will work on assumed stack aligned local variables.
 		"-mstackrealign",
-	}...)
+	}
 
 	x86Cppflags = []string{}
 
@@ -49,23 +47,18 @@ var (
 		},
 		"atom": []string{
 			"-march=atom",
-			"-mfpmath=sse",
 		},
 		"haswell": []string{
 			"-march=core-avx2",
-			"-mfpmath=sse",
 		},
 		"ivybridge": []string{
 			"-march=core-avx-i",
-			"-mfpmath=sse",
 		},
 		"sandybridge": []string{
 			"-march=corei7",
-			"-mfpmath=sse",
 		},
 		"silvermont": []string{
 			"-march=slm",
-			"-mfpmath=sse",
 		},
 	}
 
@@ -154,10 +147,8 @@ func init() {
 	pctx.StaticVariable("X86IncludeFlags", bionicHeaders("x86"))
 
 	// Clang cflags
-	pctx.StaticVariable("X86ClangCflags", strings.Join(ClangFilterUnknownCflags(x86ClangCflags), " "))
-	pctx.StaticVariable("X86ClangLdflags", strings.Join(ClangFilterUnknownCflags(x86Ldflags), " "))
-	pctx.StaticVariable("X86ClangLldflags", strings.Join(ClangFilterUnknownCflags(x86Lldflags), " "))
-	pctx.StaticVariable("X86ClangCppflags", strings.Join(ClangFilterUnknownCflags(x86Cppflags), " "))
+	pctx.StaticVariable("X86ClangCflags", strings.Join(x86Cflags, " "))
+	pctx.StaticVariable("X86ClangCppflags", strings.Join(x86Cppflags, " "))
 
 	// Yasm flags
 	pctx.StaticVariable("X86YasmFlags", "-f elf32 -m x86")
@@ -167,7 +158,7 @@ func init() {
 	// Architecture variant cflags
 	for variant, cflags := range x86ArchVariantCflags {
 		pctx.StaticVariable("X86"+variant+"VariantClangCflags",
-			strings.Join(ClangFilterUnknownCflags(cflags), " "))
+			strings.Join(cflags, " "))
 	}
 }
 

@@ -26,11 +26,9 @@ var (
 
 		// Help catch common 32/64-bit errors.
 		"-Werror=implicit-function-declaration",
-	}
 
-	mips64ClangCflags = append(mips64Cflags, []string{
 		"-fintegrated-as",
-	}...)
+	}
 
 	mips64Cppflags = []string{}
 
@@ -41,11 +39,9 @@ var (
 	mips64ArchVariantCflags = map[string][]string{
 		"mips64r2": []string{
 			"-mips64r2",
-			"-msynci",
 		},
 		"mips64r6": []string{
 			"-mips64r6",
-			"-msynci",
 		},
 	}
 )
@@ -72,16 +68,14 @@ func init() {
 	pctx.StaticVariable("Mips64IncludeFlags", bionicHeaders("mips"))
 
 	// Clang cflags
-	pctx.StaticVariable("Mips64ClangCflags", strings.Join(ClangFilterUnknownCflags(mips64ClangCflags), " "))
-	pctx.StaticVariable("Mips64ClangLdflags", strings.Join(ClangFilterUnknownCflags(mips64Ldflags), " "))
-	pctx.StaticVariable("Mips64ClangCppflags", strings.Join(ClangFilterUnknownCflags(mips64Cppflags), " "))
-
-	// Extended cflags
+	pctx.StaticVariable("Mips64ClangCflags", strings.Join(mips64Cflags, " "))
+	pctx.StaticVariable("Mips64ClangLdflags", strings.Join(mips64Ldflags, " "))
+	pctx.StaticVariable("Mips64ClangCppflags", strings.Join(mips64Cppflags, " "))
 
 	// Architecture variant cflags
 	for variant, cflags := range mips64ArchVariantCflags {
 		pctx.StaticVariable("Mips64"+variant+"VariantClangCflags",
-			strings.Join(ClangFilterUnknownCflags(cflags), " "))
+			strings.Join(cflags, " "))
 	}
 }
 

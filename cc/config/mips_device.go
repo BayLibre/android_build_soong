@@ -24,12 +24,10 @@ var (
 	mipsCflags = []string{
 		"-fomit-frame-pointer",
 		"-Umips",
-	}
 
-	mipsClangCflags = append(mipsCflags, []string{
 		"-fPIC",
 		"-fintegrated-as",
-	}...)
+	}
 
 	mipsCppflags = []string{}
 
@@ -46,40 +44,34 @@ var (
 			"-mips32",
 			"-mfp32",
 			"-modd-spreg",
-			"-mno-synci",
 		},
 		"mips32r2-fp": []string{
 			"-mips32r2",
 			"-mfp32",
 			"-modd-spreg",
-			"-msynci",
 		},
 		"mips32r2-fp-xburst": []string{
 			"-mips32r2",
 			"-mfp32",
 			"-modd-spreg",
 			"-mno-fused-madd",
-			"-mno-synci",
 		},
 		"mips32r2dsp-fp": []string{
 			"-mips32r2",
 			"-mfp32",
 			"-modd-spreg",
 			"-mdsp",
-			"-msynci",
 		},
 		"mips32r2dspr2-fp": []string{
 			"-mips32r2",
 			"-mfp32",
 			"-modd-spreg",
 			"-mdspr2",
-			"-msynci",
 		},
 		"mips32r6": []string{
 			"-mips32r6",
 			"-mfp64",
 			"-mno-odd-spreg",
-			"-msynci",
 		},
 	}
 )
@@ -114,16 +106,14 @@ func init() {
 	pctx.StaticVariable("MipsIncludeFlags", bionicHeaders("mips"))
 
 	// Clang cflags
-	pctx.StaticVariable("MipsClangCflags", strings.Join(ClangFilterUnknownCflags(mipsClangCflags), " "))
-	pctx.StaticVariable("MipsClangLdflags", strings.Join(ClangFilterUnknownCflags(mipsLdflags), " "))
-	pctx.StaticVariable("MipsClangCppflags", strings.Join(ClangFilterUnknownCflags(mipsCppflags), " "))
-
-	// Extended cflags
+	pctx.StaticVariable("MipsClangCflags", strings.Join(mipsCflags, " "))
+	pctx.StaticVariable("MipsClangLdflags", strings.Join(mipsLdflags, " "))
+	pctx.StaticVariable("MipsClangCppflags", strings.Join(mipsCppflags, " "))
 
 	// Architecture variant cflags
 	for variant, cflags := range mipsArchVariantCflags {
 		pctx.StaticVariable("Mips"+variant+"VariantClangCflags",
-			strings.Join(ClangFilterUnknownCflags(cflags), " "))
+			strings.Join(cflags, " "))
 	}
 }
 
