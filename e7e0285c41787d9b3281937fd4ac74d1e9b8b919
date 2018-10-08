@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96595943_d6901311",
+        "filename": "cc/binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2018-10-08T21:23:20Z",
+      "side": 1,
+      "message": "I will follow up on making this redundant as well. llvm-strip should be the only option.",
+      "revId": "e7e0285c41787d9b3281937fd4ac74d1e9b8b919",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
