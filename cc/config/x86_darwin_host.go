@@ -24,8 +24,6 @@ import (
 
 var (
 	darwinCflags = []string{
-		"-fdiagnostics-color",
-
 		"-fPIC",
 		"-funwind-tables",
 
@@ -39,6 +37,9 @@ var (
 		"-DMACOSX_DEPLOYMENT_TARGET=${macMinVersion}",
 
 		"-m64",
+
+		"-integrated-as",
+		"-fstack-protector-strong",
 	}
 
 	darwinLdflags = []string{
@@ -48,14 +49,7 @@ var (
 		"-m64",
 	}
 
-	darwinClangCflags = append(ClangFilterUnknownCflags(darwinCflags), []string{
-		"-integrated-as",
-		"-fstack-protector-strong",
-	}...)
-
-	darwinClangLdflags = ClangFilterUnknownCflags(darwinLdflags)
-
-	darwinClangLldflags = ClangFilterUnknownLldflags(darwinClangLdflags)
+	darwinClangLldflags = ClangFilterUnknownLldflags(darwinLdflags)
 
 	darwinSupportedSdkVersions = []string{
 		"10.10",
@@ -117,8 +111,8 @@ func init() {
 
 	pctx.StaticVariable("DarwinGccTriple", "i686-apple-darwin11")
 
-	pctx.StaticVariable("DarwinClangCflags", strings.Join(darwinClangCflags, " "))
-	pctx.StaticVariable("DarwinClangLdflags", strings.Join(darwinClangLdflags, " "))
+	pctx.StaticVariable("DarwinClangCflags", strings.Join(darwinCflags, " "))
+	pctx.StaticVariable("DarwinClangLdflags", strings.Join(darwinLdflags, " "))
 	pctx.StaticVariable("DarwinClangLldflags", strings.Join(darwinClangLldflags, " "))
 
 	pctx.StaticVariable("DarwinYasmFlags", "-f macho -m amd64")

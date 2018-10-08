@@ -23,7 +23,6 @@ import (
 
 var (
 	armToolchainCflags = []string{
-		"-mthumb-interwork",
 		"-msoft-float",
 	}
 
@@ -181,15 +180,13 @@ func init() {
 	pctx.StaticVariable("ArmIncludeFlags", bionicHeaders("arm"))
 
 	// Clang cflags
-	pctx.StaticVariable("ArmToolchainClangCflags", strings.Join(ClangFilterUnknownCflags(armToolchainCflags), " "))
-	pctx.StaticVariable("ArmClangCflags", strings.Join(ClangFilterUnknownCflags(armCflags), " "))
-	pctx.StaticVariable("ArmClangLdflags", strings.Join(ClangFilterUnknownCflags(armLdflags), " "))
-	pctx.StaticVariable("ArmClangLldflags", strings.Join(ClangFilterUnknownCflags(armLldflags), " "))
-	pctx.StaticVariable("ArmClangCppflags", strings.Join(ClangFilterUnknownCflags(armCppflags), " "))
+	pctx.StaticVariable("ArmToolchainClangCflags", strings.Join(armToolchainCflags, " "))
+	pctx.StaticVariable("ArmClangCflags", strings.Join(armCflags, " "))
+	pctx.StaticVariable("ArmClangCppflags", strings.Join(armCppflags, " "))
 
 	// Clang ARM vs. Thumb instruction set cflags
-	pctx.StaticVariable("ArmClangArmCflags", strings.Join(ClangFilterUnknownCflags(armArmCflags), " "))
-	pctx.StaticVariable("ArmClangThumbCflags", strings.Join(ClangFilterUnknownCflags(armThumbCflags), " "))
+	pctx.StaticVariable("ArmClangArmCflags", strings.Join(armArmCflags, " "))
+	pctx.StaticVariable("ArmClangThumbCflags", strings.Join(armThumbCflags, " "))
 
 	// Clang arch variant cflags
 	pctx.StaticVariable("ArmClangArmv7ACflags",
