@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "56c7d682_252591b0",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-10-08T23:42:34Z",
+      "side": 1,
+      "message": "Same here, nothing has changed.",
+      "parentUuid": "940b0ef6_5c724c0d",
+      "revId": "d2550337fe464704b49cadc9cd40427bef4ac9a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96ec73e5_c767370f",
         "filename": "cc/config/arm_device.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "d2550337fe464704b49cadc9cd40427bef4ac9a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "834a8696_9e6df978",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-10-08T23:42:34Z",
+      "side": 1,
+      "message": "Nothing here would have changed -- we\u0027ve been using this flag whenever we\u0027ve been using clang (which has been true except for toolchain_library for a while now). I just removed the copyVariantFlags/replaceFirst calls.",
+      "parentUuid": "96ec73e5_c767370f",
+      "revId": "d2550337fe464704b49cadc9cd40427bef4ac9a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
