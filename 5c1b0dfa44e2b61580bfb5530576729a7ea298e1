@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32c5f6b5_10e71aa4",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-08T20:14:08Z",
+      "side": 1,
+      "message": "Replace usages of tidy with flags.tidy?",
+      "revId": "5c1b0dfa44e2b61580bfb5530576729a7ea298e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4567c98_0ec6041c",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-08T20:14:08Z",
+      "side": 1,
+      "message": "\"clang\"",
+      "revId": "5c1b0dfa44e2b61580bfb5530576729a7ea298e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
