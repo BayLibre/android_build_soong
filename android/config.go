@@ -106,6 +106,8 @@ type config struct {
 
 	inMake bool
 
+	hasFrameworksBase bool
+
 	captureBuild      bool // true for tests, saves build parameters for each module
 	ignoreEnvironment bool // true for tests, returns empty from all Getenv calls
 
@@ -289,6 +291,11 @@ func NewConfig(srcDir, buildDir string) (Config, error) {
 	inMakeFile := filepath.Join(buildDir, ".soong.in_make")
 	if _, err := os.Stat(inMakeFile); err == nil {
 		config.inMake = true
+	}
+
+	hasFrameworksBaseDir := filepath.Join(srcDir, "frameworks", "base")
+	if info, err := os.Stat(hasFrameworksBaseDir); err == nil && info.IsDir() {
+		config.hasFrameworksBase = true
 	}
 
 	targets, err := decodeTargetProductVariables(config)
@@ -568,6 +575,10 @@ func (c *config) UnbundledBuild() bool {
 
 func (c *config) IsPdkBuild() bool {
 	return Bool(c.productVariables.Pdk)
+}
+
+func (c *config) HasFrameworksBase() bool {
+	return c.hasFrameworksBase
 }
 
 func (c *config) MinimizeJavaDebugInfo() bool {
