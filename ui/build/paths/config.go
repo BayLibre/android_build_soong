@@ -110,7 +110,6 @@ var Configuration = map[string]PathConfig{
 	"openssl":   Allowed,
 	"paste":     Allowed,
 	"patch":     Allowed,
-	"perl":      Log,
 	"pgrep":     Allowed,
 	"pkill":     Allowed,
 	"ps":        Allowed,
