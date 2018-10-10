@@ -34,6 +34,24 @@
       "revId": "abf6740126318155f4b75b43f6a6786644ef0964",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "049f3ab5_6e1daf69",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2018-10-10T21:09:06Z",
+      "side": 1,
+      "message": "In that case, move the libc comment closer to its check and add a comment for the no_libcrt workaround.",
+      "parentUuid": "0c04c786_790ac40c",
+      "revId": "abf6740126318155f4b75b43f6a6786644ef0964",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
