@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcaab04d_fe288320",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2018-10-10T21:02:15Z",
+      "side": 1,
+      "message": "Fold the two \u0027if\u0027 statements together?",
+      "revId": "abf6740126318155f4b75b43f6a6786644ef0964",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
