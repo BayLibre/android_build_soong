@@ -16,6 +16,24 @@
       "revId": "abf6740126318155f4b75b43f6a6786644ef0964",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c04c786_790ac40c",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2018-10-10T21:06:50Z",
+      "side": 1,
+      "message": "These are two separate workarounds for different issues. It\u0027s clearer to put in two lines.",
+      "parentUuid": "bcaab04d_fe288320",
+      "revId": "abf6740126318155f4b75b43f6a6786644ef0964",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
