@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "926a89d5_1c0279ce",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-10-10T05:39:23Z",
+      "side": 1,
+      "message": "This list has the same problem",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 47
+      },
+      "revId": "3644db91914ffd554b1f6cbc4169cd8024e23a45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
