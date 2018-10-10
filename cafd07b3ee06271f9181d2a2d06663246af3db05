@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58e24733_f3beb30b",
+        "filename": "cc/test_gen_stub_libs.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-10-10T20:40:33Z",
+      "side": 1,
+      "message": "should this agree with line 568?",
+      "range": {
+        "startLine": 563,
+        "startChar": 66,
+        "endLine": 563,
+        "endChar": 68
+      },
+      "revId": "cafd07b3ee06271f9181d2a2d06663246af3db05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14ae70da_9637d55d",
+        "filename": "cc/test_gen_stub_libs.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-10-10T20:40:33Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 613,
+        "startChar": 66,
+        "endLine": 613,
+        "endChar": 68
+      },
+      "revId": "cafd07b3ee06271f9181d2a2d06663246af3db05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
