@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba810c87_d0e5e3a3",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-11T04:55:01Z",
+      "side": 1,
+      "message": "This should probably be Native_shared_libs",
+      "range": {
+        "startLine": 163,
+        "startChar": 1,
+        "endLine": 163,
+        "endChar": 26
+      },
+      "revId": "18487df68af04ff49c6a32d0c99e010df73c3ac0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66316ad2_5e7720a4",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-11T04:55:01Z",
+      "side": 1,
+      "message": "Maybe Binaries, since they will come from cc_binary modules?",
+      "revId": "18487df68af04ff49c6a32d0c99e010df73c3ac0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21b0a725_420359c7",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-11T04:55:01Z",
+      "side": 1,
+      "message": "Java_libs?",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 169,
+        "endChar": 13
+      },
+      "revId": "18487df68af04ff49c6a32d0c99e010df73c3ac0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "270a7be4_246cac3f",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-11T04:55:01Z",
+      "side": 1,
+      "message": "The new MultiTargets model might help here, use InitAndroidMultiTargetsArchModule instead of InitAndroidArchModule, and then you can get the list of targets you need to handle from ctx.MultiTargets().  That way you can specify compile_multilib: \"first\" on an apex module to specify that it only needs a single architecture in it.",
+      "revId": "18487df68af04ff49c6a32d0c99e010df73c3ac0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1923e3d7_5ff16bca",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-11T04:55:01Z",
+      "side": 1,
+      "message": "This needs an arch variation, otherwise it could pick up a host binary.  Same for java and prebuilt modules.",
+      "revId": "18487df68af04ff49c6a32d0c99e010df73c3ac0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb7fd732_6c9cd22d",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-11T04:55:01Z",
+      "side": 1,
+      "message": "iterating over the map is non-deterministic, and will cause build.ninja to change and rules to unnecessarily rerun.  You\u0027re not actually looking anything up by name in the map, so I\u0027d suggest replacing it with []string{name string, path android.Path}",
+      "revId": "18487df68af04ff49c6a32d0c99e010df73c3ac0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
