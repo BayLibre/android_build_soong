@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b322b5b2_e3fcbcf0",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-11T04:56:06Z",
+      "side": 1,
+      "message": "implicitInputs \u003d append(android.Paths(nil), filesToCopy...)",
+      "revId": "5c6022a4b545018b60ad9e3c6aa33b118ad95940",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
