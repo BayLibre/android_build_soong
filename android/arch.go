@@ -327,9 +327,8 @@ func archMutator(mctx BottomUpMutatorContext) {
 
 	osClasses := base.OsClassSupported()
 
-	var moduleTargets []Target
-	moduleMultiTargets := make(map[int][]Target)
-	primaryModules := make(map[int]bool)
+	var osTypes []OsType
+	targetsByOs := make(map[OsType][]Target)
 
 	for _, class := range osClasses {
 		classTargets := mctx.Config().Targets[class]
@@ -337,25 +336,41 @@ func archMutator(mctx BottomUpMutatorContext) {
 			continue
 		}
 
+		for _, target := range classTargets {
+			targets, ok := targetsByOs[target.Os]
+			if !ok {
+				osTypes = append(osTypes, target.Os)
+			}
+			targetsByOs[target.Os] = append(targets, target)
+		}
+	}
+
+	var moduleTargets []Target
+	moduleMultiTargets := make(map[int][]Target)
+	primaryModules := make(map[int]bool)
+
+	for _, os := range osTypes {
+		osTargets := targetsByOs[os]
+
 		// only the primary arch in the recovery partition
 		if module.InstallInRecovery() {
-			classTargets = []Target{mctx.Config().Targets[Device][0]}
+			osTargets = []Target{mctx.Config().Targets[Device][0]}
 		}
 
 		prefer32 := false
 		if base.prefer32 != nil {
-			prefer32 = base.prefer32(mctx, base, class)
+			prefer32 = base.prefer32(mctx, base, os.Class)
 		}
 
-		multilib, extraMultilib := decodeMultilib(base, class)
-		targets, err := decodeMultilibTargets(multilib, classTargets, prefer32)
+		multilib, extraMultilib := decodeMultilib(base, os.Class)
+		targets, err := decodeMultilibTargets(multilib, osTargets, prefer32)
 		if err != nil {
 			mctx.ModuleErrorf("%s", err.Error())
 		}
 
 		var multiTargets []Target
 		if extraMultilib != "" {
-			multiTargets, err = decodeMultilibTargets(extraMultilib, classTargets, prefer32)
+			multiTargets, err = decodeMultilibTargets(extraMultilib, osTargets, prefer32)
 			if err != nil {
 				mctx.ModuleErrorf("%s", err.Error())
 			}
