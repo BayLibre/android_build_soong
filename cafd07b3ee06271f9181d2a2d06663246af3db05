@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "03bf4836_d8111b9a",
+        "filename": "cc/test_gen_stub_libs.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2018-10-11T20:51:21Z",
+      "side": 1,
+      "message": "For this test case it shouldn\u0027t make a difference, but yes, better to be consistent. Fixed.",
+      "parentUuid": "58e24733_f3beb30b",
+      "range": {
+        "startLine": 563,
+        "startChar": 66,
+        "endLine": 563,
+        "endChar": 68
+      },
+      "revId": "cafd07b3ee06271f9181d2a2d06663246af3db05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14ae70da_9637d55d",
         "filename": "cc/test_gen_stub_libs.py",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "cafd07b3ee06271f9181d2a2d06663246af3db05",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe664c60_f78f7d18",
+        "filename": "cc/test_gen_stub_libs.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2018-10-11T20:51:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14ae70da_9637d55d",
+      "range": {
+        "startLine": 613,
+        "startChar": 66,
+        "endLine": 613,
+        "endChar": 68
+      },
+      "revId": "cafd07b3ee06271f9181d2a2d06663246af3db05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
