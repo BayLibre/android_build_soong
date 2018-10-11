@@ -227,7 +227,7 @@ def add_uses_libraries(doc, new_uses_libraries):
 
     ul = doc.createElement('uses-library')
     ul.setAttributeNS(android_ns, 'android:name', name)
-    ul.setAttributeNS(android_ns, 'android:required', 'true')
+    ul.setAttributeNS(android_ns, 'android:required', 'false')
 
     application.insertBefore(doc.createTextNode(indent), last)
     application.insertBefore(ul, last)
