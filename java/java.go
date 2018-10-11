@@ -1738,7 +1738,7 @@ func (j *Import) IDECustomizedModuleName() string {
 	// solution to get the Import name.
 	name := j.Name()
 	if strings.HasPrefix(name, removedPrefix) {
-		name = strings.Trim(name, removedPrefix)
+		name = strings.TrimPrefix(name, removedPrefix)
 	}
 	return name
 }
