@@ -105,6 +105,30 @@
       "revId": "1c0cb6bcd93abd1915402780622dfa4cd0d3a1c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ccb99e7_51f62b68",
+        "filename": "android/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-11T07:40:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1204cdf3_fbd475c6",
+      "range": {
+        "startLine": 30,
+        "startChar": 60,
+        "endLine": 31,
+        "endChar": 11
+      },
+      "revId": "1c0cb6bcd93abd1915402780622dfa4cd0d3a1c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
