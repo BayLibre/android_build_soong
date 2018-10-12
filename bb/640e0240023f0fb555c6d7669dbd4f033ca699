@@ -1,0 +1,14 @@
+Verified+1: Patrick Tu <patricktu@google.com>
+Verified+1: Albal Tai <albaltai@google.com>
+Code-Review+2: Dan Shi <dshi@google.com>
+Code-Review+2: Simran Basi <sbasi@google.com>
+Code-Review+1: Albal Tai <albaltai@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Autosubmit+1: Patrick Tu <patricktu@google.com>
+Autosubmit+1: Albal Tai <albaltai@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Fri, 12 Oct 2018 05:05:33 +0000
+Reviewed-on: https://android-review.googlesource.com/786497
+Project: platform/build/soong
+Branch: refs/heads/master
