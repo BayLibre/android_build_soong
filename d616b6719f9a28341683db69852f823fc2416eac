@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58e0277f_4e7e6ed5",
+        "filename": "scripts/manifest_fixer.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-12T17:45:28Z",
+      "side": 1,
+      "message": "I\u0027m not sure what the ramifications of this will be.  Can you special-case it here or filter out android.test.base in the build system instead until we figure out the right solution?",
+      "revId": "d616b6719f9a28341683db69852f823fc2416eac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
