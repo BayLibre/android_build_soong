@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a108a6d_08fb5752",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1083173
+      },
+      "writtenOn": "2018-10-12T22:08:28Z",
+      "side": 1,
+      "message": "Instead of looking for testtype.Gtest can you search the \u003ctest clause? I\u0027m thinking let\u0027s make this more generic.",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 34
+      },
+      "revId": "a7fbb075f1ac370b5933fd2d9a4931324314cef6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
