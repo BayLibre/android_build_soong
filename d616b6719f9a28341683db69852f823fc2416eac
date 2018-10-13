@@ -16,6 +16,24 @@
       "revId": "d616b6719f9a28341683db69852f823fc2416eac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad8112be_372c6815",
+        "filename": "scripts/manifest_fixer.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-13T07:55:53Z",
+      "side": 1,
+      "message": "I agree with Colin (also have left a comment on the bug).",
+      "parentUuid": "58e0277f_4e7e6ed5",
+      "revId": "d616b6719f9a28341683db69852f823fc2416eac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
