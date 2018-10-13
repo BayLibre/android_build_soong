@@ -29,13 +29,19 @@ func init() {
 			return override
 		}
 		return strings.Join([]string{
+			//"*",
+			//"-clang-analyzer-*",
+			//"-readability-*",
+			//"-google-readability-*",
+			//"-google-runtime-references",
+			//"-cppcoreguidelines-*",
+			//"-modernize-*",
+			//"-llvm-*",
+			//"-misc-non-private-member-variables-in-classes",
+			//"-misc-unused-parameters",
+			//"-hicpp-*",
 			"-*",
-			"clang-diagnostic-unused-command-line-argument",
-			"google*",
-			"misc-macro-parentheses",
-			"performance*",
-			"-google-readability*",
-			"-google-runtime-references",
+			"fuchsia-*",
 		}, ",")
 	})
 
@@ -47,14 +53,15 @@ func init() {
 		}
 		return strings.Join([]string{
 			"-*",
-			"clang-diagnostic-unused-command-line-argument",
-			"google*",
-			"-google-build-using-namespace",
-			"-google-default-arguments",
-			"-google-explicit-constructor",
-			"-google-readability*",
-			"-google-runtime-int",
-			"-google-runtime-references",
+			"fuchsia-*",
+			//"clang-diagnostic-unused-command-line-argument",
+			//"google*",
+			//"-google-build-using-namespace",
+			//"-google-default-arguments",
+			//"-google-explicit-constructor",
+			//"-google-readability*",
+			//"-google-runtime-int",
+			//"-google-runtime-references",
 		}, ",")
 	})
 
