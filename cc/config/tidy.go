@@ -29,13 +29,17 @@ func init() {
 			return override
 		}
 		return strings.Join([]string{
-			"-*",
-			"clang-diagnostic-unused-command-line-argument",
-			"google*",
-			"misc-macro-parentheses",
-			"performance*",
-			"-google-readability*",
+			"*",
+			"-readability-*",
+			"-google-readability-*",
 			"-google-runtime-references",
+			"-cppcoreguidelines-*",
+			"-modernize-*",
+			"-llvm-*",
+			"-misc-non-private-member-variables-in-classes",
+			"-misc-unused-parameters",
+			"-hicpp-*",
+			"-fuchsia-*",
 		}, ",")
 	})
 
