@@ -96,6 +96,7 @@ var ClangLibToolingUnknownCflags = sorted([]string{})
 func init() {
 	pctx.StaticVariable("ClangExtraCflags", strings.Join([]string{
 		"-D__compiler_offsetof=__builtin_offsetof",
+		"-DCHH_TEST_ANDROID_FULL_BUILD",
 
 		// -Wimplicit fallthrough is not enabled by -Wall.
 		"-Wimplicit-fallthrough",
