@@ -96,6 +96,7 @@ var ClangLibToolingUnknownCflags []string = nil
 func init() {
 	pctx.StaticVariable("ClangExtraCflags", strings.Join([]string{
 		"-D__compiler_offsetof=__builtin_offsetof",
+		"-DCHH_TEST_ANDROID_FULL_BUILD",
 
 		// Make implicit fallthrough an error in the future.
 		"-Wimplicit-fallthrough",
