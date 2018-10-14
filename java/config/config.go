@@ -66,7 +66,6 @@ func init() {
 	pctx.StaticVariable("CommonJdkFlags", strings.Join([]string{
 		`-Xmaxerrs 9999999`,
 		`-encoding UTF-8`,
-		`-sourcepath ""`,
 		`-g`,
 		// Turbine leaves out bridges which can cause javac to unnecessarily insert them into
 		// subclasses (b/65645120).  Setting this flag causes our custom javac to assume that
