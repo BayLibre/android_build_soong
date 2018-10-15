@@ -52,6 +52,24 @@
       "revId": "d616b6719f9a28341683db69852f823fc2416eac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc1d2efd_7ae9e694",
+        "filename": "scripts/manifest_fixer.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-15T17:29:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "82a65716_ff441e22",
+      "revId": "d616b6719f9a28341683db69852f823fc2416eac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
