@@ -27,8 +27,8 @@ func TestLibraryReuse(t *testing.T) {
 			srcs: ["foo.c"],
 		}`)
 
-		libfooShared := ctx.ModuleForTests("libfoo", "android_arm_armv7-a-neon_core_shared").Rule("ld")
-		libfooStatic := ctx.ModuleForTests("libfoo", "android_arm_armv7-a-neon_core_static").Output("libfoo.a")
+		libfooShared := ctx.ModuleForTests("libfoo", "android_arm_armv7-a-neon_core_shared_impl").Rule("ld")
+		libfooStatic := ctx.ModuleForTests("libfoo", "android_arm_armv7-a-neon_core_static_impl").Output("libfoo.a")
 
 		if len(libfooShared.Inputs) != 1 {
 			t.Fatalf("unexpected inputs to libfoo shared: %#v", libfooShared.Inputs.Strings())
@@ -53,8 +53,8 @@ func TestLibraryReuse(t *testing.T) {
 			},
 		}`)
 
-		libfooShared := ctx.ModuleForTests("libfoo", "android_arm_armv7-a-neon_core_shared").Rule("ld")
-		libfooStatic := ctx.ModuleForTests("libfoo", "android_arm_armv7-a-neon_core_static").Output("libfoo.a")
+		libfooShared := ctx.ModuleForTests("libfoo", "android_arm_armv7-a-neon_core_shared_impl").Rule("ld")
+		libfooStatic := ctx.ModuleForTests("libfoo", "android_arm_armv7-a-neon_core_static_impl").Output("libfoo.a")
 
 		if len(libfooShared.Inputs) != 1 {
 			t.Fatalf("unexpected inputs to libfoo shared: %#v", libfooShared.Inputs.Strings())
@@ -79,8 +79,8 @@ func TestLibraryReuse(t *testing.T) {
 			},
 		}`)
 
-		libfooShared := ctx.ModuleForTests("libfoo", "android_arm_armv7-a-neon_core_shared").Rule("ld")
-		libfooStatic := ctx.ModuleForTests("libfoo", "android_arm_armv7-a-neon_core_static").Output("libfoo.a")
+		libfooShared := ctx.ModuleForTests("libfoo", "android_arm_armv7-a-neon_core_shared_impl").Rule("ld")
+		libfooStatic := ctx.ModuleForTests("libfoo", "android_arm_armv7-a-neon_core_static_impl").Output("libfoo.a")
 
 		if len(libfooShared.Inputs) != 2 {
 			t.Fatalf("unexpected inputs to libfoo shared: %#v", libfooShared.Inputs.Strings())
@@ -105,8 +105,8 @@ func TestLibraryReuse(t *testing.T) {
 			},
 		}`)
 
-		libfooShared := ctx.ModuleForTests("libfoo", "android_arm_armv7-a-neon_core_shared").Rule("ld")
-		libfooStatic := ctx.ModuleForTests("libfoo", "android_arm_armv7-a-neon_core_static").Output("libfoo.a")
+		libfooShared := ctx.ModuleForTests("libfoo", "android_arm_armv7-a-neon_core_shared_impl").Rule("ld")
+		libfooStatic := ctx.ModuleForTests("libfoo", "android_arm_armv7-a-neon_core_static_impl").Output("libfoo.a")
 
 		if len(libfooShared.Inputs) != 1 {
 			t.Fatalf("unexpected inputs to libfoo shared: %#v", libfooShared.Inputs.Strings())
@@ -131,8 +131,8 @@ func TestLibraryReuse(t *testing.T) {
 			},
 		}`)
 
-		libfooShared := ctx.ModuleForTests("libfoo", "android_arm_armv7-a-neon_core_shared").Rule("ld")
-		libfooStatic := ctx.ModuleForTests("libfoo", "android_arm_armv7-a-neon_core_static").Output("libfoo.a")
+		libfooShared := ctx.ModuleForTests("libfoo", "android_arm_armv7-a-neon_core_shared_impl").Rule("ld")
+		libfooStatic := ctx.ModuleForTests("libfoo", "android_arm_armv7-a-neon_core_static_impl").Output("libfoo.a")
 
 		if len(libfooShared.Inputs) != 1 {
 			t.Fatalf("unexpected inputs to libfoo shared: %#v", libfooShared.Inputs.Strings())
@@ -162,8 +162,8 @@ func TestLibraryReuse(t *testing.T) {
 			},
 		}`)
 
-		libfooShared := ctx.ModuleForTests("libfoo", "android_arm_armv7-a-neon_core_shared").Rule("ld")
-		libfooStatic := ctx.ModuleForTests("libfoo", "android_arm_armv7-a-neon_core_static").Output("libfoo.a")
+		libfooShared := ctx.ModuleForTests("libfoo", "android_arm_armv7-a-neon_core_shared_impl").Rule("ld")
+		libfooStatic := ctx.ModuleForTests("libfoo", "android_arm_armv7-a-neon_core_static_impl").Output("libfoo.a")
 
 		if len(libfooShared.Inputs) != 3 {
 			t.Fatalf("unexpected inputs to libfoo shared: %#v", libfooShared.Inputs.Strings())
@@ -177,7 +177,7 @@ func TestLibraryReuse(t *testing.T) {
 			t.Errorf("static objects not reused for shared library")
 		}
 
-		libfoo := ctx.ModuleForTests("libfoo", "android_arm_armv7-a-neon_core_shared").Module().(*Module)
+		libfoo := ctx.ModuleForTests("libfoo", "android_arm_armv7-a-neon_core_shared_impl").Module().(*Module)
 		if !inList("-DGOOGLE_PROTOBUF_NO_RTTI", libfoo.flags.CFlags) {
 			t.Errorf("missing protobuf cflags")
 		}
