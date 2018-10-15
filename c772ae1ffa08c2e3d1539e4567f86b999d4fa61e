@@ -2,6 +2,86 @@
   "comments": [
     {
       "key": {
+        "uuid": "d18e14ce_9cc5b273",
+        "filename": "cc/test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-15T16:48:53Z",
+      "side": 1,
+      "message": "If these are going to proliferate it might make sense to group them in a test_options struct?",
+      "revId": "c772ae1ffa08c2e3d1539e4567f86b999d4fa61e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e7ea077_376ec708",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-15T16:48:53Z",
+      "side": 1,
+      "message": "This should go with the stdlib imports next to \"strings\"",
+      "revId": "c772ae1ffa08c2e3d1539e4567f86b999d4fa61e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12c215c8_46e8081e",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-15T16:48:53Z",
+      "side": 1,
+      "message": "commands always need to be joined with \u0026\u0026 so that a failure in the first command causes the rule to fail",
+      "range": {
+        "startLine": 45,
+        "startChar": 55,
+        "endLine": 45,
+        "endChar": 56
+      },
+      "revId": "c772ae1ffa08c2e3d1539e4567f86b999d4fa61e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0b4432e_2ead61f5",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-15T16:48:53Z",
+      "side": 1,
+      "message": "This doesn\u0027t need to be a separate command or a separate rule, it can just be an extra option to sed in the autogenTestConfig rule.",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 12
+      },
+      "revId": "c772ae1ffa08c2e3d1539e4567f86b999d4fa61e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7d2b8aaf_59b157d4",
         "filename": "tradefed/autogen.go",
         "patchSetId": 6
