@@ -34,6 +34,24 @@
       "revId": "d616b6719f9a28341683db69852f823fc2416eac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82a65716_ff441e22",
+        "filename": "scripts/manifest_fixer.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2018-10-15T11:50:32Z",
+      "side": 1,
+      "message": "The only consequence of that change is that it will not prevent the application from being installed if the library is not supported. That could lead to problems at runtime if the application calls classes from that library and they are not provided on the bootclasspath. If the library is supported then it will behave just as it did before.\n\nThis is only intended to be a temporary solution that will let the GTS tests to be run on O. In that case it will allow the GTS tests to run properly.\n\nIn terms of its effect on non-GTS tests it will at worst replace an install error with a runtime error although that should be impossible with the android.test.. libraries.",
+      "parentUuid": "ad8112be_372c6815",
+      "revId": "d616b6719f9a28341683db69852f823fc2416eac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
