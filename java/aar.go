@@ -250,7 +250,7 @@ func aaptLibs(ctx android.ModuleContext, sdkContext sdkContext) (transitiveStati
 		}
 
 		switch ctx.OtherModuleDependencyTag(module) {
-		case libTag, frameworkResTag:
+		case frameworkResTag:
 			if exportPackage != nil {
 				sharedLibs = append(sharedLibs, exportPackage)
 			}

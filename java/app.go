@@ -318,12 +318,6 @@ type AndroidTest struct {
 }
 
 func (a *AndroidTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
-	if String(a.appTestProperties.Instrumentation_for) != "" {
-		a.AndroidApp.extraLinkFlags = append(a.AndroidApp.extraLinkFlags,
-			"--rename-instrumentation-target-package",
-			String(a.appTestProperties.Instrumentation_for))
-	}
-
 	a.generateAndroidBuildActions(ctx)
 
 	a.testConfig = tradefed.AutoGenInstrumentationTestConfig(ctx, a.testProperties.Test_config, a.testProperties.Test_config_template, a.manifestPath)
@@ -335,6 +329,9 @@ func (a *AndroidTest) DepsMutator(ctx android.BottomUpMutatorContext) {
 	android.ExtractSourceDeps(ctx, a.testProperties.Test_config_template)
 	android.ExtractSourcesDeps(ctx, a.testProperties.Data)
 	a.AndroidApp.DepsMutator(ctx)
+	if a.appTestProperties.Instrumentation_for != nil {
+		ctx.AddVariationDependencies(nil, libTag, String(a.appTestProperties.Instrumentation_for))
+	}
 }
 
 func AndroidTestFactory() android.Module {
