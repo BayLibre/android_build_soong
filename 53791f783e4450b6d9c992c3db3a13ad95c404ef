@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "458ced7f_1dd8d092",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1014807
+      },
+      "writtenOn": "2018-10-16T07:57:39Z",
+      "side": 1,
+      "message": "\"VNDK-core\"\n\nFor some historical reason, the build system uses VNDK-core to denote the libraries that belong to VNDK but not VNDK-SP.  Let\u0027s keep this convention.",
+      "range": {
+        "startLine": 176,
+        "startChar": 22,
+        "endLine": 176,
+        "endChar": 31
+      },
+      "revId": "53791f783e4450b6d9c992c3db3a13ad95c404ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b3ff72f_9b40b9f9",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1014807
+      },
+      "writtenOn": "2018-10-16T07:57:39Z",
+      "side": 1,
+      "message": "\"VNDK-core\"",
+      "range": {
+        "startLine": 185,
+        "startChar": 52,
+        "endLine": 185,
+        "endChar": 61
+      },
+      "revId": "53791f783e4450b6d9c992c3db3a13ad95c404ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cab75f41_04b0062c",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1014807
+      },
+      "writtenOn": "2018-10-16T07:57:39Z",
+      "side": 1,
+      "message": "\"VNDK-core\"",
+      "range": {
+        "startLine": 185,
+        "startChar": 22,
+        "endLine": 185,
+        "endChar": 31
+      },
+      "revId": "53791f783e4450b6d9c992c3db3a13ad95c404ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
