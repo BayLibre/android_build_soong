@@ -16,6 +16,24 @@
       "revId": "1f498a97839854651b030bf628198dc34d73e3fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d2ac57f_e45cfb41",
+        "filename": "scripts/manifest_fixer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-16T09:08:09Z",
+      "side": 1,
+      "message": "It worked with \u0027True\u0027 and \u0027False\u0027, but I think it\u0027s good to explicitly convert to lowercase.\n\nDone.",
+      "parentUuid": "39eed09e_fdee029f",
+      "revId": "1f498a97839854651b030bf628198dc34d73e3fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
