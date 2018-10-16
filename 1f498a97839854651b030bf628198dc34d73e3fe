@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39eed09e_fdee029f",
+        "filename": "scripts/manifest_fixer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2018-10-16T08:44:22Z",
+      "side": 1,
+      "message": "do you want lowercase \u0027true\u0027 and \u0027false\u0027 here? (maybe both are allowed, I\u0027m not sure)",
+      "revId": "1f498a97839854651b030bf628198dc34d73e3fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
