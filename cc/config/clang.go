@@ -97,9 +97,9 @@ func init() {
 	pctx.StaticVariable("ClangExtraCflags", strings.Join([]string{
 		"-D__compiler_offsetof=__builtin_offsetof",
 
-		// Make implicit fallthrough an error in the future.
+		// -Wimplicit fallthrough is not enabled by -Wall.
 		"-Wimplicit-fallthrough",
-		"-Wno-error=implicit-fallthrough",
+		"-D__CHH_TEST_WHOLE_BUILD__=2",
 
 		// Help catch common 32/64-bit errors.
 		"-Werror=int-conversion",
