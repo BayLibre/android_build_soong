@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "609a826a_7713d626",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1397,
+      "author": {
+        "id": 1203210
+      },
+      "writtenOn": "2018-10-17T14:15:24Z",
+      "side": 1,
+      "message": "Done. Looks like this string update was missed in http://r.android.com/748068 which renamed the property.",
+      "parentUuid": "2746601e_2922b2fb",
+      "revId": "546cbaf2bde695e12ddbe11969cddc077cf88fcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e7071dcc_2764b3f2",
         "filename": "java/droiddoc.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "546cbaf2bde695e12ddbe11969cddc077cf88fcf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "439dd848_c9cc32e1",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1402,
+      "author": {
+        "id": 1203210
+      },
+      "writtenOn": "2018-10-17T14:15:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7071dcc_2764b3f2",
+      "revId": "546cbaf2bde695e12ddbe11969cddc077cf88fcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
