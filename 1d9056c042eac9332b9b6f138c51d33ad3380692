@@ -70,6 +70,30 @@
       "revId": "1d9056c042eac9332b9b6f138c51d33ad3380692",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dca26af7_e0c6a07b",
+        "filename": "cc/test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-18T17:46:14Z",
+      "side": 1,
+      "message": "This should be TestOptions",
+      "parentUuid": "01dc980c_4ada50da",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 17
+      },
+      "revId": "1d9056c042eac9332b9b6f138c51d33ad3380692",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }

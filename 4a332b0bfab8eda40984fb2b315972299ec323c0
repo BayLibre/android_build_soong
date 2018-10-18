@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d45c632c_d721cc68",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-18T17:46:14Z",
+      "side": 1,
+      "message": "make this map[string]string and manually insert the properties in it in the caller.",
+      "range": {
+        "startLine": 60,
+        "startChar": 110,
+        "endLine": 60,
+        "endChar": 116
+      },
+      "revId": "4a332b0bfab8eda40984fb2b315972299ec323c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
