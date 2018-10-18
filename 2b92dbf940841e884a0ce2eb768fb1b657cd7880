@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64daecce_f299c96c",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-10-18T21:32:14Z",
+      "side": 1,
+      "message": "maybe we can call this generatedManifest to distinguish with properties.Manifest.",
+      "revId": "2b92dbf940841e884a0ce2eb768fb1b657cd7880",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
