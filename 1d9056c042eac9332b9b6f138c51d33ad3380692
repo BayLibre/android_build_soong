@@ -22,6 +22,30 @@
       "revId": "1d9056c042eac9332b9b6f138c51d33ad3380692",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "454e1979_caa6d58d",
+        "filename": "cc/test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2018-10-18T10:38:02Z",
+      "side": 1,
+      "message": "I am also not sure about this, most case use TestOptions, but I could also find this kind of naming under soong.\n./android/variable.go:\tProduct_variables struct {\n./android/variable.go:\t\tPlatform_sdk_version struct {\n./android/variable.go:\t\tUnbundled_build struct {\n./android/variable.go:\t\tMalloc_not_svelte struct {",
+      "parentUuid": "7d9b3ba5_5c3cd5c5",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 17
+      },
+      "revId": "1d9056c042eac9332b9b6f138c51d33ad3380692",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
