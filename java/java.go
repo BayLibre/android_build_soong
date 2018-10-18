@@ -428,7 +428,7 @@ type sdkContext interface {
 
 func sdkVersionOrDefault(ctx android.BaseContext, v string) string {
 	switch v {
-	case "", "current", "system_current", "test_current", "core_current", "core_platform_current":
+	case "", "current", "system_current", "test_current", "core_current":
 		return ctx.Config().DefaultAppTargetSdk()
 	default:
 		return v
@@ -439,7 +439,7 @@ func sdkVersionOrDefault(ctx android.BaseContext, v string) string {
 // it returns android.FutureApiLevel (10000).
 func sdkVersionToNumber(ctx android.BaseContext, v string) (int, error) {
 	switch v {
-	case "", "current", "test_current", "system_current", "core_current", "core_platform_current":
+	case "", "current", "test_current", "system_current", "core_current":
 		return ctx.Config().DefaultAppTargetSdkInt(), nil
 	default:
 		n := android.GetNumericSdkVersion(v)
@@ -536,8 +536,6 @@ func decodeSdkDep(ctx android.BaseContext, sdkContext sdkContext) sdkDep {
 		}
 		if m == "core.current.stubs" {
 			ret.systemModules = "core-system-modules"
-		} else if m == "core.platform.api.stubs" {
-			ret.systemModules = "core-platform-api-stubs-system-modules"
 		}
 		return ret
 	}
@@ -560,8 +558,6 @@ func decodeSdkDep(ctx android.BaseContext, sdkContext sdkContext) sdkDep {
 		return toModule("android_test_stubs_current", "framework-res")
 	case "core_current":
 		return toModule("core.current.stubs", "")
-	case "core_platform_current":
-		return toModule("core.platform.api.stubs", "")
 	default:
 		return toPrebuilt(v)
 	}
@@ -725,9 +721,8 @@ func getLinkType(m *Module, name string) linkType {
 	ver := m.sdkVersion()
 	noStdLibs := Bool(m.properties.No_standard_libs)
 	switch {
-	case name == "core.current.stubs" || ver == "core_current" ||
-		name == "core.platform.api.stubs" || ver == "core_platform_current" ||
-		noStdLibs || name == "stub-annotations" || name == "private-stub-annotations-jar":
+	case name == "core.current.stubs" || ver == "core_current" || noStdLibs || name == "stub-annotations" ||
+		name == "private-stub-annotations-jar":
 		return javaCore
 	case name == "android_system_stubs_current" || strings.HasPrefix(ver, "system_"):
 		return javaSystem
