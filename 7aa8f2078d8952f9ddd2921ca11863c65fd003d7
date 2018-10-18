@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "974a02ab_e8c39b30",
+        "filename": "android/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-10-18T21:47:51Z",
+      "side": 1,
+      "message": "maybe we can reverse the logic to UncompressPrevAppDexs() to match  deviceProperties.UncompressDex",
+      "revId": "7aa8f2078d8952f9ddd2921ca11863c65fd003d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1eaa9a09_33b356ab",
         "filename": "android/variable.go",
         "patchSetId": 7
@@ -42,6 +59,23 @@
         "endLine": 189,
         "endChar": 75
       },
+      "revId": "7aa8f2078d8952f9ddd2921ca11863c65fd003d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f524389_537ff733",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-10-18T21:47:51Z",
+      "side": 1,
+      "message": "It seems UncompressDex doesn\u0027t need `blueprint:\"mutated\"` ?",
       "revId": "7aa8f2078d8952f9ddd2921ca11863c65fd003d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
