@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d9b3ba5_5c3cd5c5",
+        "filename": "cc/test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1330217
+      },
+      "writtenOn": "2018-10-18T08:48:22Z",
+      "side": 1,
+      "message": "Not sure if TestOptions is better than Test_options.",
+      "range": {
+        "startLine": 41,
+        "startChar": 5,
+        "endLine": 41,
+        "endChar": 17
+      },
+      "revId": "1d9056c042eac9332b9b6f138c51d33ad3380692",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
