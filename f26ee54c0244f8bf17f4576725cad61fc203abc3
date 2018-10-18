@@ -22,6 +22,30 @@
       "revId": "f26ee54c0244f8bf17f4576725cad61fc203abc3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8aed258_6506bf7a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-18T21:22:54Z",
+      "side": 1,
+      "message": "Ah, I missed there are two separate -I lines in aapt2-link.",
+      "parentUuid": "eda50e05_78f12a5b",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 64
+      },
+      "revId": "f26ee54c0244f8bf17f4576725cad61fc203abc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
