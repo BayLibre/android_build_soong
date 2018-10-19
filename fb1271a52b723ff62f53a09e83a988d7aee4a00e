@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6f61506e_bf4f2c4e",
+        "filename": "ui/build/environment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-10-19T19:45:47Z",
+      "side": 1,
+      "message": "I think that\u0027s fine - some of them may be optionally set by the user.",
+      "parentUuid": "fa819109_4d21b3d7",
+      "revId": "fb1271a52b723ff62f53a09e83a988d7aee4a00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1d9c7030_7e1e5ae7",
         "filename": "ui/build/kati.go",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2018-10-19T18:16:38Z",
       "side": 1,
       "message": "I assume only kati_packaging needs setting \"DIST_DIR\", so maybe we can unset it globally by default?\nhttps://cs.corp.google.com/aosp-master/build/soong/ui/build/config.go?rcl\u003d1b4aa43303fb21b79ae25e8275c07818d2203443\u0026l\u003d92\n\nAnd only doing the \"DIST_DIR\"setting in runKatiPackage?",
+      "revId": "fb1271a52b723ff62f53a09e83a988d7aee4a00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42c43abe_697ab432",
+        "filename": "ui/build/kati.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-10-19T19:45:47Z",
+      "side": 1,
+      "message": "dumpvars (to give it to Soong) and ninja (because some rules use it) need it right now, so I decided to just unset it in these two locations.\n\nhttps://android.googlesource.com/platform/build/+/60c342189600637b9acd1c8f9ee33f421938cfc9/core/soong_config.mk#144\nhttps://android.googlesource.com/platform/build/+/60c342189600637b9acd1c8f9ee33f421938cfc9/core/Makefile#1924",
+      "parentUuid": "1d9c7030_7e1e5ae7",
       "revId": "fb1271a52b723ff62f53a09e83a988d7aee4a00e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -50,6 +86,24 @@
       "revId": "fb1271a52b723ff62f53a09e83a988d7aee4a00e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d38e82dc_a42efa5c",
+        "filename": "ui/status/kati.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-10-19T19:45:47Z",
+      "side": 1,
+      "message": "These are just static $(info) lines in the makefiles:\n\nhttps://android.googlesource.com/platform/build/+/60c342189600637b9acd1c8f9ee33f421938cfc9/core/main.mk#29\nhttps://android.googlesource.com/platform/build/+/252b2df47ba13587a2feeab24ae415a58532ddc9/packaging/main.mk#26",
+      "parentUuid": "4e24242b_ebc852cc",
+      "revId": "fb1271a52b723ff62f53a09e83a988d7aee4a00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

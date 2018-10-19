@@ -16,6 +16,24 @@
       "revId": "1b4aa43303fb21b79ae25e8275c07818d2203443",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c542dfa_52612bc4",
+        "filename": "ui/build/dumpvars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-10-19T19:45:47Z",
+      "side": 0,
+      "message": "It\u0027s just set in build/make/core/config.mk now instead of here and build/make/core/main.mk",
+      "parentUuid": "c9ca63e5_d9ffd826",
+      "revId": "1b4aa43303fb21b79ae25e8275c07818d2203443",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
