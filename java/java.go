@@ -902,6 +902,8 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 				deps.staticHeaderJars = append(deps.staticHeaderJars, dep.Srcs()...)
 			case android.DefaultsDepTag, android.SourceDepTag:
 				// Nothing to do
+			case publicApiFileTag, systemApiFileTag, testApiFileTag:
+				// Nothing to do
 			default:
 				ctx.ModuleErrorf("dependency on genrule %q may only be in srcs, libs, or static_libs", otherName)
 			}
