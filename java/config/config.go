@@ -43,7 +43,7 @@ var (
 		"android.car7",
 		"core-oj",
 		"core-libart",
-		"core-simple",
+		"core-simple.impl",
 	}
 
 	ManifestMergerClasspath = []string{
