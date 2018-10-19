@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5efcee4_7b0d4432",
+        "filename": "cc/test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-19T22:24:14Z",
+      "side": 1,
+      "message": "Prefer test.Properties.Test_options !\u003d nil",
+      "range": {
+        "startLine": 264,
+        "startChar": 4,
+        "endLine": 264,
+        "endChar": 39
+      },
+      "revId": "0f4a4e1a340f2d4e5d3445df86b54d620881fe46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40a67e5b_85055af5",
+        "filename": "cc/test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-19T22:24:14Z",
+      "side": 1,
+      "message": "This is overcomplicated, just use:\noptions :\u003d map[string]string{}\nif test.Properties.Test_options.Run_test_as !\u003d nil {\n    options[\"run-test-as\"] \u003d string(test.Properties.Test_options.Run_test_as)\n}",
+      "revId": "0f4a4e1a340f2d4e5d3445df86b54d620881fe46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
