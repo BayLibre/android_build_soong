@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa819109_4d21b3d7",
+        "filename": "ui/build/environment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-10-19T18:16:38Z",
+      "side": 1,
+      "message": "what if some element in keys actually doesn\u0027t exist in *e? should we report a warning like \"we allow this env_var, but it is found in current Environment?\"",
+      "revId": "fb1271a52b723ff62f53a09e83a988d7aee4a00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d9c7030_7e1e5ae7",
+        "filename": "ui/build/kati.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-10-19T18:16:38Z",
+      "side": 1,
+      "message": "I assume only kati_packaging needs setting \"DIST_DIR\", so maybe we can unset it globally by default?\nhttps://cs.corp.google.com/aosp-master/build/soong/ui/build/config.go?rcl\u003d1b4aa43303fb21b79ae25e8275c07818d2203443\u0026l\u003d92\n\nAnd only doing the \"DIST_DIR\"setting in runKatiPackage?",
+      "revId": "fb1271a52b723ff62f53a09e83a988d7aee4a00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e24242b_ebc852cc",
+        "filename": "ui/status/kati.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-10-19T18:16:38Z",
+      "side": 1,
+      "message": "How does ckati know that rules it running is for packaging specifically, and give the status message like \"finishing packaging rules..\"?",
+      "revId": "fb1271a52b723ff62f53a09e83a988d7aee4a00e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
