@@ -45,6 +45,17 @@ func registerNeverallowMutator(ctx RegisterMutatorsContext) {
 	ctx.BottomUp("neverallow", neverallowMutator).Parallel()
 }
 
+var coreLibraryProjects = []string{
+	"libcore",
+	"external/apache-harmony",
+	"external/apache-xml",
+	"external/bouncycastle",
+	"external/conscrypt",
+	"external/icu",
+	"external/okhttp",
+	"external/wycheproof",
+}
+
 var neverallows = []*rule{
 	neverallow().
 		in("vendor", "device").
@@ -56,9 +67,45 @@ var neverallows = []*rule{
 		without("vendor", "true").
 		without("owner", "").
 		because("a VNDK module can never have an owner."),
+
+	// Core library constraints. Prevent targets adding dependencies on core
+	// library internals, which could lead to compatibility issues with the ART
+	// mainline module. They should use core.platform.api.stubs instead.
 	neverallow().
-		notIn("libcore", "development", "external/apache-harmony", "external/apache-xml", "external/bouncycastle", "external/conscrypt", "external/icu", "external/okhttp", "external/wycheproof").
+		notIn(append(coreLibraryProjects, "development")...).
 		with("no_standard_libs", "true"),
+	neverallow().
+		notIn(coreLibraryProjects...).
+		with("libs", "core-all").
+		because("Only core libraries projects can depend on core-all"),
+	neverallow().
+		notIn(coreLibraryProjects...).
+		with("libs", "core-oj").
+		because("Only core libraries projects can depend on core-oj"),
+	neverallow().
+		notIn(coreLibraryProjects...).
+		with("libs", "core-libart").
+		because("Only core libraries projects can depend on core-libart"),
+	neverallow().
+		notIn(coreLibraryProjects...).
+		with("libs", "core-simple").
+		because("Only core libraries projects can depend on core-simple"),
+	neverallow().
+		notIn(coreLibraryProjects...).
+		with("libs", "okhttp").
+		because("Only core libraries projects can depend on okhttp"),
+	neverallow().
+		notIn(coreLibraryProjects...).
+		with("libs", "bouncycastle").
+		because("Only core libraries projects can depend on bouncycastle"),
+	neverallow().
+		notIn(coreLibraryProjects...).
+		with("libs", "conscrypt").
+		because("Only core libraries projects can depend on conscrypt"),
+	neverallow().
+		notIn(coreLibraryProjects...).
+		with("libs", "apache-xml").
+		because("Only core libraries projects can depend on apache-xml"),
 
 	// TODO(b/67974785): always enforce the manifest
 	neverallow().
