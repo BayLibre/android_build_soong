@@ -137,6 +137,17 @@ var neverallowTests = []struct {
 		},
 		expectedError: "",
 	},
+	{
+		name: "dependency on core-libart",
+		fs: map[string][]byte{
+			"Blueprints": []byte(`
+				java_library {
+					name: "needs_core_libart",
+					libs: ["core-libart"],
+				}`),
+		},
+		expectedError: "Only core libraries projects can depend on core-libart",
+	},
 }
 
 func TestNeverallow(t *testing.T) {
