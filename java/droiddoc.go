@@ -1424,7 +1424,7 @@ func (d *Droidstubs) collectAnnotationsFlags(ctx android.ModuleContext,
 	ctx.VisitDirectDepsWithTag(metalavaMergeInclusionAnnotationsDirTag, func(m android.Module) {
 		if t, ok := m.(*ExportedDroiddocDir); ok {
 			*implicits = append(*implicits, t.deps...)
-			flags += " --merge-inclusion-annotations " + t.dir.String()
+			flags += " --merge-inclusion-annotations " + t.dir.String() + " "
 		} else {
 			ctx.PropertyErrorf("merge_inclusion_annotations_dirs",
 				"module %q is not a metalava merge-annotations dir", ctx.OtherModuleName(m))
@@ -1496,7 +1496,7 @@ func (d *Droidstubs) collectApiToXmlFlags(ctx android.ModuleContext, implicits *
 		*implicitOutputs = append(*implicitOutputs, d.lastReleasedApiXmlFile)
 
 		flags += " --convert-to-jdiff " + lastReleasedApi.String() + " " +
-			d.lastReleasedApiXmlFile.String()
+			d.lastReleasedApiXmlFile.String() + " "
 	}
 
 	return flags
@@ -1610,8 +1610,8 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 	d.transformMetalava(ctx, implicits, implicitOutputs, javaVersion,
 		flags.bootClasspathArgs, flags.classpathArgs, flags.sourcepathArgs,
-		flags.metalavaStubsFlags+flags.metalavaAnnotationsFlags+
-			flags.metalavaApiLevelsAnnotationsFlags+flags.metalavaApiToXmlFlags+" "+d.Javadoc.args)
+		flags.metalavaStubsFlags+flags.metalavaAnnotationsFlags+flags.metalavaApiLevelsAnnotationsFlags+
+			flags.metalavaApiToXmlFlags+d.Javadoc.args)
 
 	if apiCheckEnabled(d.properties.Check_api.Current, "current") &&
 		!ctx.Config().IsPdkBuild() {
@@ -1622,7 +1622,8 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 		d.checkCurrentApiTimestamp = android.PathForModuleOut(ctx, "check_current_api.timestamp")
 		opts := d.Javadoc.args + " --check-compatibility:api:current " + apiFile.String() +
-			" --check-compatibility:removed:current " + removedApiFile.String() + " "
+			" --check-compatibility:removed:current " + removedApiFile.String() +
+			flags.metalavaAnnotationsFlags
 
 		d.transformCheckApi(ctx, apiFile, removedApiFile, metalavaCheckApiImplicits,
 			javaVersion, flags.bootClasspathArgs, flags.classpathArgs, flags.sourcepathArgs, opts,
