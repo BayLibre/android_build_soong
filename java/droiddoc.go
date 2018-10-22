@@ -106,6 +106,22 @@ var (
 		},
 		"srcJarDir", "srcJars", "javaVersion", "bootclasspathArgs", "classpathArgs", "sourcepathArgs", "opts", "msg")
 
+	nullabilityWarningsCheck = pctx.AndroidStaticRule("nullabilityWarningsCheck",
+		blueprint.RuleParams{
+			Command:        `( diff $expected $actual && touch $out ) || ( echo -e "$msg" ; exit 38 )`,
+			Rspfile:        "$out.rsp",
+			RspfileContent: "$in",
+		},
+		"expected", "actual", "msg")
+
+	nullabilityWarningsUpdate = pctx.AndroidStaticRule("nullabilityWarningsUpdate",
+		blueprint.RuleParams{
+			Command:        `( cp $actual $expected && touch $out ) || ( echo Failed to update nullability warnings ; exit 38 )`,
+			Rspfile:        "$out.rsp",
+			RspfileContent: "$in",
+		},
+		"expected", "actual")
+
 	dokka = pctx.AndroidStaticRule("dokka",
 		blueprint.RuleParams{
 			Command: `rm -rf "$outDir" "$srcJarDir" "$stubsDir" && ` +
@@ -353,6 +369,9 @@ type DroidstubsProperties struct {
 
 	// a list of top-level directories containing Java stub files to merge show/hide annotations from.
 	Merge_inclusion_annotations_dirs []string
+
+	// a file containing expected warnings produced by validation of nullability annotations.
+	Check_nullability_warnings *string
 
 	// if set to true, allow Metalava to generate doc_stubs source files. Defaults to false.
 	Create_doc_stubs *bool
@@ -1207,22 +1226,26 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 type Droidstubs struct {
 	Javadoc
 
-	properties             DroidstubsProperties
-	apiFile                android.WritablePath
-	apiXmlFile             android.WritablePath
-	lastReleasedApiXmlFile android.WritablePath
-	dexApiFile             android.WritablePath
-	privateApiFile         android.WritablePath
-	privateDexApiFile      android.WritablePath
-	removedApiFile         android.WritablePath
-	removedDexApiFile      android.WritablePath
-	apiMappingFile         android.WritablePath
-	exactApiFile           android.WritablePath
-	proguardFile           android.WritablePath
+	properties              DroidstubsProperties
+	apiFile                 android.WritablePath
+	apiXmlFile              android.WritablePath
+	lastReleasedApiXmlFile  android.WritablePath
+	dexApiFile              android.WritablePath
+	privateApiFile          android.WritablePath
+	privateDexApiFile       android.WritablePath
+	removedApiFile          android.WritablePath
+	removedDexApiFile       android.WritablePath
+	apiMappingFile          android.WritablePath
+	exactApiFile            android.WritablePath
+	proguardFile            android.WritablePath
+	nullabilityWarningsFile android.WritablePath
 
 	checkCurrentApiTimestamp      android.WritablePath
 	updateCurrentApiTimestamp     android.WritablePath
 	checkLastReleasedApiTimestamp android.WritablePath
+
+	checkNullabilityWarningsTimestamp  android.WritablePath
+	updateNullabilityWarningsTimestamp android.WritablePath
 
 	annotationsZip android.WritablePath
 	apiVersionsXml android.WritablePath
@@ -1284,6 +1307,10 @@ func (d *Droidstubs) DepsMutator(ctx android.BottomUpMutatorContext) {
 		for _, mergeInclusionAnnotationsDir := range d.properties.Merge_inclusion_annotations_dirs {
 			ctx.AddDependency(ctx.Module(), metalavaMergeInclusionAnnotationsDirTag, mergeInclusionAnnotationsDir)
 		}
+	}
+
+	if String(d.properties.Check_nullability_warnings) != "" {
+		android.ExtractSourceDeps(ctx, d.properties.Check_nullability_warnings)
 	}
 
 	if len(d.properties.Api_levels_annotations_dirs) != 0 {
@@ -1403,9 +1430,9 @@ func (d *Droidstubs) collectAnnotationsFlags(ctx android.ModuleContext,
 			flags += " --migrate-nullness " + previousApi.String()
 		}
 		if validatingNullability {
-			nullabilityWarningsTxt := android.PathForModuleOut(ctx, ctx.ModuleName()+"_nullability_warnings.txt")
-			*implicitOutputs = append(*implicitOutputs, nullabilityWarningsTxt)
-			flags += " --nullability-warnings-txt " + nullabilityWarningsTxt.String()
+			d.nullabilityWarningsFile = android.PathForModuleOut(ctx, ctx.ModuleName()+"_nullability_warnings.txt")
+			*implicitOutputs = append(*implicitOutputs, d.nullabilityWarningsFile)
+			flags += " --nullability-warnings-txt " + d.nullabilityWarningsFile.String()
 		}
 
 		d.annotationsZip = android.PathForModuleOut(ctx, ctx.ModuleName()+"_annotations.zip")
@@ -1679,6 +1706,47 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 				`an SDK.  Please fix the errors listed above.\n`+
 				`******************************\n`,
 			d.checkLastReleasedApiTimestamp)
+	}
+
+	if String(d.properties.Check_nullability_warnings) != "" {
+		if d.nullabilityWarningsFile == nil {
+			ctx.PropertyErrorf("check_nullability_warnings",
+				"Cannot specify check_nullability_warnings unless validating nullability")
+		}
+		checkNullabilityWarnings := ctx.ExpandSource(String(d.properties.Check_nullability_warnings),
+			"check_nullability_warnings")
+		d.checkNullabilityWarningsTimestamp = android.PathForModuleOut(ctx, "check_nullability_warnings.timestamp")
+		d.updateNullabilityWarningsTimestamp = android.PathForModuleOut(ctx, "update_nullability_warnings.timestamp")
+		msg := fmt.Sprintf(`\n******************************\n`+
+			`The warnings encountered during nullability annotation validation did\n`+
+			`not match the checked in file of expected warnings. The diffs are shown\n`+
+			`above. You have two options:\n`+
+			`   1. Resolve the differences by editing the nullability annotations.\n`+
+			`   2. Update the file of expected warnings by running:\n`+
+			`         make %s-update-nullability-warnings\n`+
+			`       and submitting the updated file as part of your change.`,
+			ctx.ModuleName())
+		ctx.Build(pctx, android.BuildParams{
+			Rule:        nullabilityWarningsCheck,
+			Description: "Nullability Warnings Check",
+			Output:      d.checkNullabilityWarningsTimestamp,
+			Implicits:   android.Paths{checkNullabilityWarnings, d.nullabilityWarningsFile},
+			Args: map[string]string{
+				"expected": checkNullabilityWarnings.String(),
+				"actual":   d.nullabilityWarningsFile.String(),
+				"msg":      msg,
+			},
+		})
+		ctx.Build(pctx, android.BuildParams{
+			Rule:        nullabilityWarningsUpdate,
+			Description: "Nullability Warnings Update",
+			Output:      d.updateNullabilityWarningsTimestamp,
+			Implicits:   android.Paths{checkNullabilityWarnings, d.nullabilityWarningsFile},
+			Args: map[string]string{
+				"expected": checkNullabilityWarnings.String(),
+				"actual":   d.nullabilityWarningsFile.String(),
+			},
+		})
 	}
 
 	if Bool(d.properties.Jdiff_enabled) && !ctx.Config().IsPdkBuild() {
