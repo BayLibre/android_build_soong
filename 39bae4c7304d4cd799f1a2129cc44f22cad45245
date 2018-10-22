@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f63c586c_190b0bc9",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-22T19:53:05Z",
+      "side": 1,
+      "message": "could we use a metacharacter that won\u0027t collide with libnames (like HIDL)? I don\u0027t like how it\u0027s ambiguous whether \u0027libfoo@3\u0027 references a library named \u0027libfoo@3\u0027 or version 3 of a library named libfoo.",
+      "range": {
+        "startLine": 942,
+        "startChar": 39,
+        "endLine": 942,
+        "endChar": 40
+      },
+      "revId": "39bae4c7304d4cd799f1a2129cc44f22cad45245",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
