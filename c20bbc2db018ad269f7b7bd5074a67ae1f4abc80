@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a0fbdaa_560c7511",
+        "filename": "cc/binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-22T03:51:17Z",
+      "side": 1,
+      "message": "This goes before android",
+      "revId": "c20bbc2db018ad269f7b7bd5074a67ae1f4abc80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b88f7562_8be08e95",
+        "filename": "cmd/host_bionic_inject/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-22T03:51:17Z",
+      "side": 1,
+      "message": "I prefer not to call everything main.go",
+      "revId": "c20bbc2db018ad269f7b7bd5074a67ae1f4abc80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
