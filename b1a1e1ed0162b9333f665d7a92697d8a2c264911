@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a59c54da_b96122b6",
+        "filename": "android/arch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-22T03:27:56Z",
+      "side": 1,
+      "message": "This function gets called a lot, compute this once in the Config?",
+      "revId": "b1a1e1ed0162b9333f665d7a92697d8a2c264911",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
