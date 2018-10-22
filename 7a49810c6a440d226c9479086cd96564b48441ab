@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de833824_e7492941",
+        "filename": "symbol_inject/cmd/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-22T03:34:33Z",
+      "side": 1,
+      "message": "Can you call this symbol_inject.go?  It\u0027s much easier to find with a project-wide search that way, even if there end up being 2 files called symbol_inject.go",
+      "revId": "7a49810c6a440d226c9479086cd96564b48441ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
