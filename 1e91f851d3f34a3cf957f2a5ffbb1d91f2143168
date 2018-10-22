@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb0f6dc2_df4dd52e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-10-22T17:05:34Z",
+      "side": 1,
+      "message": "Could these comments be replaced with only\n ... requires clang-r328903.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 50
+      },
+      "revId": "1e91f851d3f34a3cf957f2a5ffbb1d91f2143168",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
