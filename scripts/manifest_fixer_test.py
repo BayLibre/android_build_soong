@@ -346,5 +346,58 @@ class AddUsesNonSdkApiTest(unittest.TestCase):
     self.assertEqual(output, expected)
 
 
+class PreferIntegrityTest(unittest.TestCase):
+  """Unit tests for update_prefer_integrity function."""
+
+  def run_test(self, input_manifest, arg_value):
+    doc = minidom.parseString(input_manifest)
+    manifest_fixer.update_prefer_integrity(doc, arg_value)
+    output = StringIO.StringIO()
+    manifest_fixer.write_xml(output, doc)
+    return output.getvalue()
+
+  manifest_tmpl = (
+      '<?xml version="1.0" encoding="utf-8"?>\n'
+      '<manifest xmlns:android="http://schemas.android.com/apk/res/android">\n'
+      '    <application%s/>\n'
+      '</manifest>\n')
+
+  def prefer_integrity(self, value):
+    return ' android:preferIntegrity="%s"' % ('true' if value else 'false')
+
+  def test_undeclared_manifest_and_no_option(self):
+    manifest_input = self.manifest_tmpl % ''
+    expected = manifest_input
+    output = self.run_test(manifest_input, None)
+    self.assertEqual(output, expected)
+
+  def test_undeclared_manifest_and_provided_option(self):
+    for value in [True, False]:
+      manifest_input = self.manifest_tmpl % ''
+      expected = self.manifest_tmpl % self.prefer_integrity(value)
+      output = self.run_test(manifest_input, value)
+      self.assertEqual(output, expected)
+
+  def test_declared_manifest_and_no_option(self):
+    for value in [True, False]:
+      manifest_input = self.manifest_tmpl % self.prefer_integrity(value)
+      expected = manifest_input
+      output = self.run_test(manifest_input, None)
+      self.assertEqual(output, expected)
+
+  def test_declared_manifest_and_matched_option(self):
+    for value in [True, False]:
+      manifest_input = self.manifest_tmpl % self.prefer_integrity(value)
+      expected = manifest_input
+      output = self.run_test(manifest_input, value)
+      self.assertEqual(output, expected)
+
+  def test_declared_manifest_and_mismatched_option(self):
+    for value in [True, False]:
+      manifest_input = self.manifest_tmpl % self.prefer_integrity(value)
+      opposite_arg_value = str(not value).lower()
+      self.assertRaises(RuntimeError, self.run_test, manifest_input, opposite_arg_value)
+
+
 if __name__ == '__main__':
   unittest.main()

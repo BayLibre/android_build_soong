@@ -61,6 +61,8 @@ def parse_args():
                       help='specify additional <uses-library> tag to add. android:requred is set to false')
   parser.add_argument('--uses-non-sdk-api', dest='uses_non_sdk_api', action='store_true',
                       help='manifest is for a package built against the platform')
+  parser.add_argument('--prefer-integrity', type=bool, dest='prefer_integrity',
+                      help='specify whether the app prefers strict integrity')
   parser.add_argument('input', help='input AndroidManifest.xml file')
   parser.add_argument('output', help='output AndroidManifest.xml file')
   return parser.parse_args()
@@ -269,6 +271,30 @@ def add_uses_non_sdk_api(doc):
     application.setAttributeNode(attr)
 
 
+def update_prefer_integrity(doc, value):
+  if value is None:
+    return
+  manifest = parse_manifest(doc)
+  elems = get_children_with_tag(manifest, 'application')
+  application = elems[0] if len(elems) == 1 else None
+  if len(elems) > 1:
+    raise RuntimeError('found multiple <application> tags')
+  elif not elems:
+    application = doc.createElement('application')
+    indent = get_indent(manifest.firstChild, 1)
+    first = manifest.firstChild
+    manifest.insertBefore(doc.createTextNode(indent), first)
+    manifest.insertBefore(application, first)
+
+  attr = application.getAttributeNodeNS(android_ns, 'preferIntegrity')
+  if attr is None:
+    attr = doc.createAttributeNS(android_ns, 'android:preferIntegrity')
+    attr.value = str(value).lower()
+    application.setAttributeNode(attr)
+  elif attr.value != str(value).lower():
+    raise RuntimeError('existing attribute mismatches the option of --prefer-integrity')
+
+
 def write_xml(f, doc):
   f.write('<?xml version="1.0" encoding="utf-8"?>\n')
   for node in doc.childNodes:
@@ -295,6 +321,9 @@ def main():
 
     if args.uses_non_sdk_api:
       add_uses_non_sdk_api(doc)
+
+    if args.prefer_integrity is not None:
+      update_prefer_integrity(doc, args.prefer_integrity)
 
     with open(args.output, 'wb') as f:
       write_xml(f, doc)
