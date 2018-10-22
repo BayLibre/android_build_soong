@@ -448,6 +448,16 @@ func (dstubs *Droidstubs) AndroidMk() android.AndroidMkData {
 					fmt.Fprintln(w, dstubs.Name()+"-check-last-released-api:",
 						dstubs.checkLastReleasedApiTimestamp.String())
 				}
+				if dstubs.checkNullabilityWarningsTimestamp != nil {
+					fmt.Fprintln(w, ".PHONY:", dstubs.Name()+"-check-nullability-warnings")
+					fmt.Fprintln(w, dstubs.Name()+"-check-nullability-warnings:",
+						dstubs.checkNullabilityWarningsTimestamp.String())
+				}
+				if dstubs.updateNullabilityWarningsTimestamp != nil {
+					fmt.Fprintln(w, ".PHONY:", dstubs.Name()+"-update-nullability-warnings")
+					fmt.Fprintln(w, dstubs.Name()+"-update-nullability-warnings:",
+						dstubs.updateNullabilityWarningsTimestamp.String())
+				}
 				apiFilePrefix := "INTERNAL_PLATFORM_"
 				if String(dstubs.properties.Api_tag_name) != "" {
 					apiFilePrefix += String(dstubs.properties.Api_tag_name) + "_"
