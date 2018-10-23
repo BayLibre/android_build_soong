@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "e593782f_e44f5aed",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1626,
+      "author": {
+        "id": 1004689
+      },
+      "writtenOn": "2018-10-23T16:31:17Z",
+      "side": 1,
+      "message": "Yes, \"metalavaAnnotationsFlags\" should probably be broken up since there are several unrelated annotations-related things metalava does:\n\n-- merging in annotations\n-- extracting annotations from the source code and writing them into an annotations.zip (used by the tools)\n-- including (or excluding) annotations from the generated stub files\n\nFor check API, you only want the merge annotations flags.",
+      "parentUuid": "e0510ba9_1a6ae59d",
+      "revId": "5403b15f6e507a36c2a969c858b4df5c7a4d3178",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "21db0eae_24c47887",
         "filename": "java/droiddoc.go",
         "patchSetId": 3
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "I don\u0027t know. Anyone know how it works? Does it just compare two .txt files?",
       "parentUuid": "21db0eae_24c47887",
+      "revId": "5403b15f6e507a36c2a969c858b4df5c7a4d3178",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0b11897_81df16f6",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1656,
+      "author": {
+        "id": 1004689
+      },
+      "writtenOn": "2018-10-23T16:31:17Z",
+      "side": 1,
+      "message": "Yes, you should pass this flag to both check-current- and check-last. In both cases, metalava (1) reads the given signature file, (2) reads the current source files, and then does a compatibility check between the two codebases. So the merge annotations step here is necessary to treat the new codebase correctly.",
+      "parentUuid": "f54a5fc6_471dbf45",
       "revId": "5403b15f6e507a36c2a969c858b4df5c7a4d3178",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
