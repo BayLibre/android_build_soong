@@ -22,6 +22,30 @@
       "revId": "39bae4c7304d4cd799f1a2129cc44f22cad45245",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f57b30c0_02d88509",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-23T04:13:57Z",
+      "side": 1,
+      "message": "Yes we could. But I couldn\u0027t find a good metacharacter. Could you please suggest one?\n\n(Anyway, we can detect the ambiguity and generate an error)",
+      "parentUuid": "f63c586c_190b0bc9",
+      "range": {
+        "startLine": 942,
+        "startChar": 39,
+        "endLine": 942,
+        "endChar": 40
+      },
+      "revId": "39bae4c7304d4cd799f1a2129cc44f22cad45245",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
