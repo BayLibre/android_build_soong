@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "5a2be97a_290b1e62",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1626,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-10-23T18:32:04Z",
+      "side": 1,
+      "message": "Probably we can extract the logic from line1401 - line1431 to a separate function called something like: collectMergingDirsForAnnotationsFlags",
+      "parentUuid": "e593782f_e44f5aed",
+      "revId": "5403b15f6e507a36c2a969c858b4df5c7a4d3178",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "21db0eae_24c47887",
         "filename": "java/droiddoc.go",
         "patchSetId": 3
