@@ -16,6 +16,24 @@
       "revId": "ef35448ac579a525b59ad110c2ca32ff8f252a9e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30897f41_a7d29b0c",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-23T19:19:44Z",
+      "side": 1,
+      "message": "I\u0027d prefer that to be handled automatically based on the tag instead of being manually added to every property.",
+      "parentUuid": "e07b3872_05946143",
+      "revId": "ef35448ac579a525b59ad110c2ca32ff8f252a9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
