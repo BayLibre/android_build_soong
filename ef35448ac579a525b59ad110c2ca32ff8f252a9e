@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e07b3872_05946143",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-10-23T19:11:14Z",
+      "side": 1,
+      "message": "do we need to update the comment: it can vary by multi-arch.",
+      "revId": "ef35448ac579a525b59ad110c2ca32ff8f252a9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
