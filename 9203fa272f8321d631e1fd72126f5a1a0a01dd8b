@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "827f156d_4ea8045d",
+        "filename": "android/neverallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-23T20:43:03Z",
+      "side": 1,
+      "message": "This should be good enough for now:\n\ncoreModules \u003d []string{\n\t\"core-all\",\n\t...\n}\n\nfor _, m :\u003d range coreModules {\n\tneverallow().\n\t\tnotIn(coreLibraryProjects...).\n\t\twith(\"libs\", m).\n\t\tbecause(\"Only core libraries projects can depend on \" + m),\n}\n\nWe could also add a withAny method that takes a []string for the 2nd argument.",
+      "revId": "9203fa272f8321d631e1fd72126f5a1a0a01dd8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
