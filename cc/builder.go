@@ -328,15 +328,17 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 		flags.asFlags,
 	}, " ")
 
-	var sAbiDumpFiles android.Paths
-	if flags.sAbiDump {
-		sAbiDumpFiles = make(android.Paths, 0, len(srcFiles))
-	}
-
 	cflags += " ${config.NoOverrideClangGlobalCflags}"
 	toolingCflags += " ${config.NoOverrideClangGlobalCflags}"
 	cppflags += " ${config.NoOverrideClangGlobalCflags}"
 	toolingCppflags += " ${config.NoOverrideClangGlobalCflags}"
+
+	var sAbiDumpFiles android.Paths
+	if flags.sAbiDump {
+		headerDumpFiles := transformHeaderToDump(ctx, subdir, toolingCppflags+" -x c++", flags, pathDeps, cFlagsDeps)
+		sAbiDumpFiles = make(android.Paths, 0, len(srcFiles)+len(headerDumpFiles))
+		sAbiDumpFiles = append(sAbiDumpFiles, headerDumpFiles...)
+	}
 
 	for i, srcFile := range srcFiles {
 		objFile := android.ObjPathWithExt(ctx, subdir, srcFile, "o")
@@ -469,6 +471,48 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 		coverageFiles: coverageFiles,
 		sAbiDumpFiles: sAbiDumpFiles,
 	}
+}
+
+// Generate rules for compiling multiple .h files to .hdump files
+func transformHeaderToDump(ctx android.ModuleContext, subdir string, cflags string,
+	flags builderFlags, pathDeps android.Paths, cFlagsDeps android.Paths) android.Paths {
+
+	var exportedHeaders android.Paths
+	for _, sourceAbiFlag := range strings.Split(flags.sAbiFlags, " ") {
+		if !strings.HasPrefix(sourceAbiFlag, "-I") {
+			continue
+		}
+		exportedIncludeDir := strings.TrimPrefix(sourceAbiFlag, "-I")
+		if !strings.HasPrefix(exportedIncludeDir, ctx.ModuleDir()+"/") {
+			continue
+		}
+		for _, ext := range []string{".h", ".hh", ".hpp", ".hxx"} {
+			globbedExportedHeaders := ctx.GlobFiles(filepath.Join(exportedIncludeDir, "**", "*"+ext), nil)
+			exportedHeaders = append(exportedHeaders, globbedExportedHeaders...)
+		}
+	}
+	exportedHeaders = android.FirstUniquePaths(exportedHeaders)
+
+	sAbiDumpFiles := make(android.Paths, 0, len(exportedHeaders))
+
+	for _, exportedHeader := range exportedHeaders {
+		sAbiDumpFile := android.ObjPathWithExt(ctx, subdir, exportedHeader, "hdump")
+		sAbiDumpFiles = append(sAbiDumpFiles, sAbiDumpFile)
+		ctx.Build(pctx, android.BuildParams{
+			Rule:        sAbiDump,
+			Description: "header-abi-dumper " + exportedHeader.Rel(),
+			Output:      sAbiDumpFile,
+			Input:       exportedHeader,
+			OrderOnly:   pathDeps,
+			Implicits:   cFlagsDeps,
+			Args: map[string]string{
+				"cFlags":     cflags,
+				"exportDirs": "-suppress-errors -include-undefined-functions " + flags.sAbiFlags,
+			},
+		})
+	}
+
+	return sAbiDumpFiles
 }
 
 // Generate a rule for compiling multiple .o files to a static library (.a)
