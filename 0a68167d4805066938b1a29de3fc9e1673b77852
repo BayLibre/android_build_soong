@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "caad0555_7acfb989",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2018-10-24T23:36:03Z",
+      "side": 1,
+      "message": "Can you put Bug: http://b/111759196 as well? This way, we will see this patch to revert upon submitting that rebase.",
+      "revId": "0a68167d4805066938b1a29de3fc9e1673b77852",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
