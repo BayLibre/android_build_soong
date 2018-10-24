@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5056ce18_0aeb7b16",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-24T21:51:27Z",
+      "side": 1,
+      "message": "Why?  And why is no_standard_libs the trigger for it?",
+      "revId": "200e969eb46e49530431faf9d8b2d923d389d19e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86466cda_f4bbe0ce",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-24T21:51:27Z",
+      "side": 1,
+      "message": "This is unnecessary",
+      "range": {
+        "startLine": 407,
+        "startChar": 4,
+        "endLine": 407,
+        "endChar": 48
+      },
+      "revId": "200e969eb46e49530431faf9d8b2d923d389d19e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
