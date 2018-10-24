@@ -16,6 +16,24 @@
       "revId": "86d00f465186184eea3c47e6fbe6ab2047036c0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0e67fb6_8df0c9d7",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-24T23:17:38Z",
+      "side": 1,
+      "message": "Good point. Doesn\u0027t work. But, I don\u0027t understand this. Doesn\u0027t MultiTargets() return 32-bit target first when prefer32 ?\n\n\u003e-------case \"both\":\n\u003e-------\u003e-------if prefer32 {\n\u003e-------\u003e-------\u003e-------buildTargets \u003d append(buildTargets, filterMultilibTargets(targets, \"lib32\")...)\n\u003e-------\u003e-------\u003e-------buildTargets \u003d append(buildTargets, filterMultilibTargets(targets, \"lib64\")...)\n\u003e-------\u003e-------} else {\n\u003e-------\u003e-------\u003e-------buildTargets \u003d append(buildTargets, filterMultilibTargets(targets, \"lib64\")...)\n\u003e-------\u003e-------\u003e-------buildTargets \u003d append(buildTargets, filterMultilibTargets(targets, \"lib32\")...)\n\u003e-------\u003e-------}",
+      "parentUuid": "030d0bf7_f50813ca",
+      "revId": "86d00f465186184eea3c47e6fbe6ab2047036c0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
