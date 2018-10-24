@@ -176,6 +176,17 @@ type apexBundleProperties struct {
 
 	// Name of the apex_key module that provides the private key to sign APEX
 	Key *string
+
+	Multilib struct {
+		Lib32 struct {
+			Native_shared_libs []string
+			Binaries           []string
+		}
+		Lib64 struct {
+			Native_shared_libs []string
+			Binaries           []string
+		}
+	}
 }
 
 type apexBundle struct {
@@ -189,21 +200,46 @@ type apexBundle struct {
 }
 
 func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
-	for _, arch := range ctx.MultiTargets() {
+	for _, target := range ctx.MultiTargets() {
 		// Use *FarVariation* to be able to depend on modules having
 		// conflicting variations with this module. This is required since
 		// arch variant of an APEX bundle is 'common' but it is 'arm' or 'arm64'
 		// for native shared libs.
 		ctx.AddFarVariationDependencies([]blueprint.Variation{
-			{Mutator: "arch", Variation: arch.String()},
+			{Mutator: "arch", Variation: target.String()},
 			{Mutator: "image", Variation: "core"},
 			{Mutator: "link", Variation: "shared"},
 		}, sharedLibTag, a.properties.Native_shared_libs...)
 
 		ctx.AddFarVariationDependencies([]blueprint.Variation{
-			{Mutator: "arch", Variation: arch.String()},
+			{Mutator: "arch", Variation: target.String()},
 			{Mutator: "image", Variation: "core"},
 		}, executableTag, a.properties.Binaries...)
+
+		if target.Arch.ArchType.Multilib == "lib32" {
+			ctx.AddFarVariationDependencies([]blueprint.Variation{
+				{Mutator: "arch", Variation: target.String()},
+				{Mutator: "image", Variation: "core"},
+				{Mutator: "link", Variation: "shared"},
+			}, sharedLibTag, a.properties.Multilib.Lib32.Native_shared_libs...)
+
+			ctx.AddFarVariationDependencies([]blueprint.Variation{
+				{Mutator: "arch", Variation: target.String()},
+				{Mutator: "image", Variation: "core"},
+			}, executableTag, a.properties.Multilib.Lib32.Binaries...)
+
+		} else if target.Arch.ArchType.Multilib == "lib64" {
+			ctx.AddFarVariationDependencies([]blueprint.Variation{
+				{Mutator: "arch", Variation: target.String()},
+				{Mutator: "image", Variation: "core"},
+				{Mutator: "link", Variation: "shared"},
+			}, sharedLibTag, a.properties.Multilib.Lib64.Native_shared_libs...)
+
+			ctx.AddFarVariationDependencies([]blueprint.Variation{
+				{Mutator: "arch", Variation: target.String()},
+				{Mutator: "image", Variation: "core"},
+			}, executableTag, a.properties.Multilib.Lib64.Binaries...)
+		}
 	}
 
 	ctx.AddFarVariationDependencies([]blueprint.Variation{
