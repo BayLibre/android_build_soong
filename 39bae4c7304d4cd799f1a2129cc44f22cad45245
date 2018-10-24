@@ -46,6 +46,30 @@
       "revId": "39bae4c7304d4cd799f1a2129cc44f22cad45245",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b6b4a00_b5849fee",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-10-24T02:14:46Z",
+      "side": 1,
+      "message": "I can\u0027t think of one. Maybe we should reserve the pipe character \u0027|\u0027? It\u0027s not used in any module names right now.",
+      "parentUuid": "f57b30c0_02d88509",
+      "range": {
+        "startLine": 942,
+        "startChar": 39,
+        "endLine": 942,
+        "endChar": 40
+      },
+      "revId": "39bae4c7304d4cd799f1a2129cc44f22cad45245",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
