@@ -34,6 +34,24 @@
       "revId": "86d00f465186184eea3c47e6fbe6ab2047036c0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcdba2c7_d60a783d",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-24T23:24:38Z",
+      "side": 1,
+      "message": "prefer32 delegates to a function provided by the module type.  See the call to c.Prefer32() in cc.go for how cc_binary modules determine prefer32.",
+      "parentUuid": "e0e67fb6_8df0c9d7",
+      "revId": "86d00f465186184eea3c47e6fbe6ab2047036c0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
