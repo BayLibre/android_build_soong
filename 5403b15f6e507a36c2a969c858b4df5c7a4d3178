@@ -159,6 +159,24 @@
       "revId": "5403b15f6e507a36c2a969c858b4df5c7a4d3178",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f8d50f3_8637dc7d",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1656,
+      "author": {
+        "id": 1004689
+      },
+      "writtenOn": "2018-10-24T13:29:37Z",
+      "side": 1,
+      "message": "I saw the same thing when I was trying to debug your previous issue.\nAnd I discovered that metalava wasn\u0027t invoked at all.\nTo really trigger it, change source code in your source tree incompatibly instead of changing the signature file. Let me know if that doesn\u0027t work and I\u0027ll take a look.",
+      "parentUuid": "5783b033_5b4f2baa",
+      "revId": "5403b15f6e507a36c2a969c858b4df5c7a4d3178",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
