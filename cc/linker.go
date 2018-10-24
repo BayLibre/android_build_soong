@@ -114,6 +114,9 @@ type BaseLinkerProperties struct {
 			// list of runtime libs that should not be installed along with the vendor
 			// variant of the C/C++ module.
 			Exclude_runtime_libs []string
+
+			// version script for this vendor variant
+			Version_script *string `android:"arch_variant"`
 		}
 		Recovery struct {
 			// list of shared libs that should not be used to build
@@ -132,23 +135,12 @@ type BaseLinkerProperties struct {
 
 	// make android::build:GetBuildNumber() available containing the build ID.
 	Use_version_lib *bool `android:"arch_variant"`
-}
 
-// TODO(http://b/80437643): BaseLinkerProperties is getting too big,
-// more than 2^16 bytes. New properties are defined in MoreBaseLinkerProperties.
-type MoreBaseLinkerProperties struct {
 	// Generate compact dynamic relocation table, default true.
 	Pack_relocations *bool `android:"arch_variant"`
 
 	// local file name to pass to the linker as --version_script
 	Version_script *string `android:"arch_variant"`
-
-	Target struct {
-		Vendor struct {
-			// version script for this vendor variant
-			Version_script *string `android:"arch_variant"`
-		}
-	}
 }
 
 func NewBaseLinker(sanitize *sanitize) *baseLinker {
@@ -158,7 +150,6 @@ func NewBaseLinker(sanitize *sanitize) *baseLinker {
 // baseLinker provides support for shared_libs, static_libs, and whole_static_libs properties
 type baseLinker struct {
 	Properties        BaseLinkerProperties
-	MoreProperties    MoreBaseLinkerProperties
 	dynamicProperties struct {
 		RunPaths []string `blueprint:"mutated"`
 	}
@@ -179,7 +170,7 @@ func (linker *baseLinker) linkerInit(ctx BaseModuleContext) {
 }
 
 func (linker *baseLinker) linkerProps() []interface{} {
-	return []interface{}{&linker.Properties, &linker.MoreProperties, &linker.dynamicProperties}
+	return []interface{}{&linker.Properties, &linker.dynamicProperties}
 }
 
 func (linker *baseLinker) linkerDeps(ctx DepsContext, deps Deps) Deps {
@@ -269,9 +260,9 @@ func (linker *baseLinker) linkerDeps(ctx DepsContext, deps Deps) Deps {
 		deps.LateStaticLibs = append(deps.LateStaticLibs, "libwinpthread")
 	}
 
-	android.ExtractSourceDeps(ctx, linker.MoreProperties.Version_script)
+	android.ExtractSourceDeps(ctx, linker.Properties.Version_script)
 	android.ExtractSourceDeps(ctx,
-		linker.MoreProperties.Target.Vendor.Version_script)
+		linker.Properties.Target.Vendor.Version_script)
 
 	return deps
 }
@@ -304,7 +295,7 @@ func (linker *baseLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 
 	if linker.useClangLld(ctx) {
 		flags.LdFlags = append(flags.LdFlags, fmt.Sprintf("${config.%sGlobalLldflags}", hod))
-		if !BoolDefault(linker.MoreProperties.Pack_relocations, true) {
+		if !BoolDefault(linker.Properties.Pack_relocations, true) {
 			flags.LdFlags = append(flags.LdFlags, "-Wl,--pack-dyn-relocs=none")
 		}
 	} else {
@@ -376,11 +367,11 @@ func (linker *baseLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 	}
 
 	versionScript := ctx.ExpandOptionalSource(
-		linker.MoreProperties.Version_script, "version_script")
+		linker.Properties.Version_script, "version_script")
 
-	if ctx.useVndk() && linker.MoreProperties.Target.Vendor.Version_script != nil {
+	if ctx.useVndk() && linker.Properties.Target.Vendor.Version_script != nil {
 		versionScript = ctx.ExpandOptionalSource(
-			linker.MoreProperties.Target.Vendor.Version_script,
+			linker.Properties.Target.Vendor.Version_script,
 			"target.vendor.version_script")
 	}
 
