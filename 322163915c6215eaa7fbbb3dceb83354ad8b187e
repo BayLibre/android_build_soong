@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60be6c1f_5bdc8beb",
+        "filename": "java/java.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1078,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-24T22:10:26Z",
+      "side": 1,
+      "message": "This will silently ignore illegal flags, and they are already checked by CheckKotlincFlags",
+      "revId": "322163915c6215eaa7fbbb3dceb83354ad8b187e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6f225f1_1bd7809d",
+        "filename": "java/java.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1086,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-24T22:10:26Z",
+      "side": 1,
+      "message": "What does this do?  We don\u0027t want kotlinc finding files in here on its own, then we won\u0027t have dependencies on the files if they change.",
+      "revId": "322163915c6215eaa7fbbb3dceb83354ad8b187e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3d54492_85841c8b",
+        "filename": "java/java.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1344,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-24T22:10:26Z",
+      "side": 1,
+      "message": "What does -include-runtime have to do with the JVM?",
+      "revId": "322163915c6215eaa7fbbb3dceb83354ad8b187e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
