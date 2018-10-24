@@ -70,6 +70,30 @@
       "revId": "39bae4c7304d4cd799f1a2129cc44f22cad45245",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92cdaff6_660386ca",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-10-24T02:33:17Z",
+      "side": 1,
+      "message": "Considering the pipe is a special shell character, that\u0027s not a good idea.",
+      "parentUuid": "3b6b4a00_b5849fee",
+      "range": {
+        "startLine": 942,
+        "startChar": 39,
+        "endLine": 942,
+        "endChar": 40
+      },
+      "revId": "39bae4c7304d4cd799f1a2129cc44f22cad45245",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
