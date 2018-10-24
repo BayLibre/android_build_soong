@@ -118,6 +118,30 @@
       "revId": "39bae4c7304d4cd799f1a2129cc44f22cad45245",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd26e322_2e03da66",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-24T22:18:59Z",
+      "side": 1,
+      "message": "# is a special shell character too, but I don\u0027t think it matters, these characters will only be in properties and not module names.",
+      "parentUuid": "c339e7f8_469f71c0",
+      "range": {
+        "startLine": 942,
+        "startChar": 39,
+        "endLine": 942,
+        "endChar": 40
+      },
+      "revId": "39bae4c7304d4cd799f1a2129cc44f22cad45245",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
