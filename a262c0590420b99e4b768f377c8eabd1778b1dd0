@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "695d1c19_1b84c322",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1408,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-10-25T19:25:16Z",
+      "side": 1,
+      "message": "just want to confirm if we need to pass these args \"--nullability-warnings-txt\", and \"--validate-nullability-from-merged-stubs\" to check-api rule (line 1640) in case the check-api didn\u0027t catch API compatibility issues due to missing these args in future (go/oag/797137 is a case like that).",
+      "revId": "a262c0590420b99e4b768f377c8eabd1778b1dd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
