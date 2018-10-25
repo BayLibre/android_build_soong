@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0e19dcf_2c284477",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-10-25T12:21:55Z",
+      "side": 1,
+      "message": "Nit: Long line.",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 135
+      },
+      "revId": "89c0fc4908b02978a8e93b7c2089c48f4cbff846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a78930d1_a82da13a",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-10-25T12:21:55Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 502,
+        "startChar": 0,
+        "endLine": 502,
+        "endChar": 108
+      },
+      "revId": "89c0fc4908b02978a8e93b7c2089c48f4cbff846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
