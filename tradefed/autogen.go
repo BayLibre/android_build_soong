@@ -59,7 +59,7 @@ func testConfigPath(ctx android.ModuleContext, prop *string) (path android.Path,
 func autogenTemplate(ctx android.ModuleContext, output android.WritablePath, template string, optionsMap map[string]string) {
 	// If no test option found, delete {UID_OPTION} line.
 	// If found, replace it with corresponding options format.
-	optionCmd := "sed -i '/{UID_OPTION}/d'"
+	optionCmd := "sed -ie '/{UID_OPTION}/d'"
 	if optionsMap != nil {
 		//Append options
 		var options []string
@@ -68,7 +68,7 @@ func autogenTemplate(ctx android.ModuleContext, output android.WritablePath, tem
 				options = append(options, fmt.Sprintf("<option name=\"%s\" value=\"%s\" />", optionName, value))
 			}
 		}
-		optionCmd = fmt.Sprintf("sed -i 's&{UID_OPTION}&%s&g'", strings.Join(options, "\\n        "))
+		optionCmd = fmt.Sprintf("sed -ie 's&{UID_OPTION}&%s&g'", strings.Join(options, "\\n        "))
 	}
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        autogenTestConfig,
