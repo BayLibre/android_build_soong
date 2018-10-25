@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f91ff9ea_2fa566b8",
+        "filename": "android/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-25T20:20:04Z",
+      "side": 1,
+      "message": "Don\u0027t use stat directly, there will be no dependency on frameworks/base to rerun soong if it is added or removed.  Use ctx.Glob or android.ExistentPathForSource.",
+      "revId": "99b3f62d4f92da8039c6b8ba8b38176848ed4fe9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99193c0d_4d043545",
+        "filename": "android/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-25T20:20:04Z",
+      "side": 1,
+      "message": "I don\u0027t think we want this check globally in Soong, can you put it in apex.go for now?",
+      "revId": "99b3f62d4f92da8039c6b8ba8b38176848ed4fe9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
