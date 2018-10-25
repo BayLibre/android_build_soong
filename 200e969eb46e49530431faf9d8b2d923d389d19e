@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c50542b2_cec8a7b6",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2018-10-25T01:12:49Z",
+      "side": 1,
+      "message": "We can get prebuilt libraries and api txt files from go/ab (https://android-build.googleplex.com/builds/submitted/5090058/sdk_phone_armv7-sdk/latest) and their path are apistubs/{owner}/{api_scope}. Then all libraries which owner is \"android\" are stored in prebuilts/sdk. \nHowever, the core library does not sync with the android version, and all core libraries are no_standard_libs is true. Therefore, I want to use the no_standard_libs as a trigger to store the prebuilts in apistubs/libcore/{api_scope}.",
+      "parentUuid": "5056ce18_0aeb7b16",
+      "revId": "200e969eb46e49530431faf9d8b2d923d389d19e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86466cda_f4bbe0ce",
         "filename": "java/sdk_library.go",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "200e969eb46e49530431faf9d8b2d923d389d19e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "845d18cf_ac3f7cc5",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2018-10-25T01:12:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86466cda_f4bbe0ce",
+      "range": {
+        "startLine": 407,
+        "startChar": 4,
+        "endLine": 407,
+        "endChar": 48
+      },
+      "revId": "200e969eb46e49530431faf9d8b2d923d389d19e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
