@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c49b836f_9b9e0af3",
+        "filename": "android/neverallow_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-25T16:55:38Z",
+      "side": 1,
+      "message": "You\u0027d need to add a mock java_library here.",
+      "revId": "6d01ae1d30d3dab7bc2a224758d2609bcc97c355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
