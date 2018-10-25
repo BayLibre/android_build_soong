@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2fe151c_81a4177d",
+        "filename": "android/config.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-10-25T23:56:47Z",
+      "side": 1,
+      "message": "Should this just be an InList call like DisableDexPreopt?",
+      "revId": "5a0dcd5acf0788a8bd97d903a40b5d7931e5b2cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
