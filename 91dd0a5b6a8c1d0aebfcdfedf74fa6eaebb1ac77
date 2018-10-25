@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a00651ab_4d4ae0ea",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-25T20:22:23Z",
+      "side": 1,
+      "message": "Short term just android.ExistentPathForSource(ctx, \"frameworks/base\").Valid() here.  Long term, I think aapt2 should move to system/tools/aapt2 if it is used for non-frameworks builds now.",
+      "revId": "91dd0a5b6a8c1d0aebfcdfedf74fa6eaebb1ac77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
