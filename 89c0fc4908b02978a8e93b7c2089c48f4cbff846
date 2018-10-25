@@ -49,6 +49,52 @@
     },
     {
       "key": {
+        "uuid": "0abee42a_74e0f23f",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-10-25T13:30:22Z",
+      "side": 1,
+      "message": "So I\u0027ve tried this with the on-going ART APEX work with lunch target `aosp_taimen-userdebug`, and the `ctx.MultiTargets()` returns a single `target` (instead of two), which is such that `target.Arch.ArchType.Multilib \u003d\u003d \"lib64\"`…",
+      "range": {
+        "startLine": 242,
+        "startChar": 1,
+        "endLine": 242,
+        "endChar": 30
+      },
+      "revId": "89c0fc4908b02978a8e93b7c2089c48f4cbff846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d66bc69_bb9db2b3",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-10-25T13:30:22Z",
+      "side": 1,
+      "message": "Use\n\n  switch target.Arch.ArchType.Multilib { // ...\n\ninstead?",
+      "range": {
+        "startLine": 277,
+        "startChar": 2,
+        "endLine": 277,
+        "endChar": 34
+      },
+      "revId": "89c0fc4908b02978a8e93b7c2089c48f4cbff846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a78930d1_a82da13a",
         "filename": "apex/apex.go",
         "patchSetId": 4
