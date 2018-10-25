@@ -22,6 +22,30 @@
       "revId": "20780c8ca8f61949161ce7ba0d9e009df0e058b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4d46468_08b652d7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2018-10-25T07:12:35Z",
+      "side": 1,
+      "message": "Sorry, I didn\u0027t realize this.\nJust updated.\nThanks",
+      "parentUuid": "e384235a_42a04063",
+      "range": {
+        "startLine": 11,
+        "startChar": 19,
+        "endLine": 11,
+        "endChar": 42
+      },
+      "revId": "20780c8ca8f61949161ce7ba0d9e009df0e058b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
