@@ -52,6 +52,24 @@
       "revId": "86d00f465186184eea3c47e6fbe6ab2047036c0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ed52d0b_12a3a02c",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-25T02:01:20Z",
+      "side": 1,
+      "message": "Thanks. Fixed.",
+      "parentUuid": "dcdba2c7_d60a783d",
+      "revId": "86d00f465186184eea3c47e6fbe6ab2047036c0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
