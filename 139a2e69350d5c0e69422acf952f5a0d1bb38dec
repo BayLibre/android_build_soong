@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2f17a96_f9a82219",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-26T13:16:26Z",
+      "side": 1,
+      "message": "This was a stupid mistake. :(",
+      "revId": "139a2e69350d5c0e69422acf952f5a0d1bb38dec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
