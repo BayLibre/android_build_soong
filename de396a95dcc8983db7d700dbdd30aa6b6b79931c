@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f3cc707d_eeb88084",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-26T06:27:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02890014_c2b201ad",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 8
+      },
+      "revId": "de396a95dcc8983db7d700dbdd30aa6b6b79931c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dac567ab_4d0a5429",
         "filename": "cc/cc.go",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "808f3590_a215f1ce",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 949,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-26T06:27:43Z",
+      "side": 1,
+      "message": "Hmm, you are right. \n\nThis was required when I used @ as the delimiter. In that case, because we already have module names having @ (e.g., android.hardware.audio@4.0), I had to filter them out by requiring that a module is defined with stubs: {...}. But since we now use # and no module is using this, we can eliminate this condition.\n\nDone.",
+      "parentUuid": "dac567ab_4d0a5429",
+      "range": {
+        "startLine": 949,
+        "startChar": 44,
+        "endLine": 949,
+        "endChar": 72
+      },
+      "revId": "de396a95dcc8983db7d700dbdd30aa6b6b79931c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd7a242c_ee91285b",
         "filename": "cc/cc.go",
         "patchSetId": 5
@@ -62,6 +110,24 @@
       "revId": "de396a95dcc8983db7d700dbdd30aa6b6b79931c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af7fb3eb_332e0942",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-26T06:27:43Z",
+      "side": 1,
+      "message": "Good point. Added a routine that detect the version mismatch and triggers an error.",
+      "parentUuid": "bd7a242c_ee91285b",
+      "revId": "de396a95dcc8983db7d700dbdd30aa6b6b79931c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "950e247b_bad04078",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 989,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-26T06:27:43Z",
+      "side": 1,
+      "message": "Version numbers must be removed from SharedLibs, LateSharedLibs, etc. before running rewriteNdkLibs just below.\n\nOtherwise, lib names like \"libc#10\" are incorrectly recognized as non-NDK (or non-LLNDK) libs. So, for example, when building for libutils for vendor, shared_libs: [\"libc#10\"] will not make a dependency to the LLNDK stub of libc, but a dependency to the vendor variant of libc, which does not exist.\n\nerror: system/core/libutils/Android.bp:126:1: dependency \"libc\" of \"libutils\" missing variant:\n  arch:android_arm64_armv8-a_cortex-a73, image:vendor, link:shared, version:impl\navailable variants:\n  arch:android_arm64_armv8-a_cortex-a73, image:core, link:shared, version:25\n  arch:android_arm64_armv8-a_cortex-a73, image:core, link:shared, version:26\n  arch:android_arm64_armv8-a_cortex-a73, image:core, link:shared, version:27\n  arch:android_arm64_armv8-a_cortex-a73, image:core, link:shared, version:impl\n...",
+      "parentUuid": "edb8d02d_359dc50d",
+      "revId": "de396a95dcc8983db7d700dbdd30aa6b6b79931c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76f3ad31_1dc37b39",
         "filename": "cc/genrule.go",
         "patchSetId": 5
@@ -96,6 +180,24 @@
       "revId": "de396a95dcc8983db7d700dbdd30aa6b6b79931c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0091ed50_0f2a8342",
+        "filename": "cc/genrule.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-26T06:27:43Z",
+      "side": 1,
+      "message": "https://android-review.googlesource.com/c/platform/build/soong/+/797094/5/cc/library.go#939\n\n... in order not to create the version variants for recovery variant of a genrule.",
+      "parentUuid": "76f3ad31_1dc37b39",
+      "revId": "de396a95dcc8983db7d700dbdd30aa6b6b79931c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -122,6 +224,30 @@
     },
     {
       "key": {
+        "uuid": "8210514d_1a8f4fb1",
+        "filename": "cc/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-26T06:27:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97608f9c_5859c112",
+      "range": {
+        "startLine": 96,
+        "startChar": 14,
+        "endLine": 96,
+        "endChar": 21
+      },
+      "revId": "de396a95dcc8983db7d700dbdd30aa6b6b79931c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d604fb33_b22bd981",
         "filename": "cc/library.go",
         "patchSetId": 5
@@ -136,6 +262,24 @@
       "revId": "de396a95dcc8983db7d700dbdd30aa6b6b79931c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3150e4b5_8e0baa64",
+        "filename": "cc/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-26T06:27:43Z",
+      "side": 1,
+      "message": "This list is no longer required because we apply name#ver syntax for all modules.\n\nRemoved.",
+      "parentUuid": "d604fb33_b22bd981",
+      "revId": "de396a95dcc8983db7d700dbdd30aa6b6b79931c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -159,6 +303,30 @@
       "revId": "de396a95dcc8983db7d700dbdd30aa6b6b79931c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b49453b_913eaa43",
+        "filename": "cc/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 917,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-26T06:27:43Z",
+      "side": 1,
+      "message": "Oh, I didn\u0027t know that a variant name can be \"\". Fixed.\n\nThis also allows me to revert the many changes of adding _impl in the *_test.go files. Great.",
+      "parentUuid": "9ea9f9c3_ca38648b",
+      "range": {
+        "startLine": 917,
+        "startChar": 24,
+        "endLine": 917,
+        "endChar": 30
+      },
+      "revId": "de396a95dcc8983db7d700dbdd30aa6b6b79931c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
