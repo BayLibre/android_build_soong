@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02890014_c2b201ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-26T05:11:31Z",
+      "side": 1,
+      "message": "the",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 24,
+        "endChar": 8
+      },
+      "revId": "de396a95dcc8983db7d700dbdd30aa6b6b79931c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dac567ab_4d0a5429",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 949,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-26T05:11:31Z",
+      "side": 1,
+      "message": "I don\u0027t think this should be conditional",
+      "range": {
+        "startLine": 949,
+        "startChar": 44,
+        "endLine": 949,
+        "endChar": 72
+      },
+      "revId": "de396a95dcc8983db7d700dbdd30aa6b6b79931c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd7a242c_ee91285b",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-26T05:11:31Z",
+      "side": 1,
+      "message": "What happens if deps.SharedLibs and deps.ReexportSharedLibHeaders have the same library with different versions?",
+      "revId": "de396a95dcc8983db7d700dbdd30aa6b6b79931c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edb8d02d_359dc50d",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 989,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-26T05:11:31Z",
+      "side": 1,
+      "message": "Why strip this information out of deps.SharedLibs if you\u0027re just going to have to look it up again when iterating over deps.SharedLibs below?  Why not call extractVersion on each element in the loop?",
+      "revId": "de396a95dcc8983db7d700dbdd30aa6b6b79931c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76f3ad31_1dc37b39",
+        "filename": "cc/genrule.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-26T05:11:31Z",
+      "side": 1,
+      "message": "What is this used for?",
+      "revId": "de396a95dcc8983db7d700dbdd30aa6b6b79931c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97608f9c_5859c112",
+        "filename": "cc/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-26T05:11:31Z",
+      "side": 1,
+      "message": "You can use string instead of *string for a mutated property.  *string is only necessary for properties that might be merged with arch-specific properties or defaults modules.",
+      "range": {
+        "startLine": 96,
+        "startChar": 14,
+        "endLine": 96,
+        "endChar": 21
+      },
+      "revId": "de396a95dcc8983db7d700dbdd30aa6b6b79931c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d604fb33_b22bd981",
+        "filename": "cc/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-26T05:11:31Z",
+      "side": 1,
+      "message": "This needs to be attached to the context with ctx.Config().Once()",
+      "revId": "de396a95dcc8983db7d700dbdd30aa6b6b79931c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ea9f9c3_ca38648b",
+        "filename": "cc/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 917,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-26T05:11:31Z",
+      "side": 1,
+      "message": "This is going to change the location of every shared library in out/soong.  Can we avoid impl and just use \"\"?  If not, we\u0027ll need a cleanspec to remove the old ones, which will probably need to be rm -rf out/soong/.intermediates.",
+      "range": {
+        "startLine": 917,
+        "startChar": 24,
+        "endLine": 917,
+        "endChar": 30
+      },
+      "revId": "de396a95dcc8983db7d700dbdd30aa6b6b79931c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
