@@ -81,6 +81,10 @@ func runKati(ctx Context, config Config, extraSuffix string, args []string, envF
 		"--kati_stats",
 	}, args...)
 
+	if config.Environment().IsEnvTrue("SKIP_NINJA_WRITE") {
+		args = append(args, "--empty_ninja_file")
+	}
+
 	cmd := Command(ctx, config, "ckati", executable, args...)
 	cmd.Sandbox = katiSandbox
 	pipe, err := cmd.StdoutPipe()

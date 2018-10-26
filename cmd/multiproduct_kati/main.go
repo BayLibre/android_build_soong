@@ -393,6 +393,7 @@ func buildProduct(mpctx *mpContext, product string) {
 
 	config := build.NewConfig(ctx, flag.Args()...)
 	config.Environment().Set("OUT_DIR", outDir)
+	config.Environment().Set("SKIP_NINJA_WRITE", "true")
 	build.FindSources(ctx, config, mpctx.Finder)
 	config.Lunch(ctx, product, *buildVariant)
 
@@ -414,10 +415,12 @@ func buildProduct(mpctx *mpContext, product string) {
 			}
 		}
 		if *incremental {
-			// Save space, Kati doesn't notice
-			if f := config.KatiBuildNinjaFile(); f != "" {
-				os.Truncate(f, 0)
-			}
+			//if config.HasKatiSuffix() {
+			//	// Save space, Kati doesn't notice
+			//	if f := config.KatiBuildNinjaFile(); f != "" {
+			//		os.Truncate(f, 0)
+			//	}
+			//}
 		} else {
 			os.RemoveAll(outDir)
 		}

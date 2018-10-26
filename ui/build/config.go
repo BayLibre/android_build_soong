@@ -143,6 +143,9 @@ func NewConfig(ctx Context, args ...string) Config {
 		"ANDROID_DEV_SCRIPTS",
 		"ANDROID_EMULATOR_PREBUILTS",
 		"ANDROID_PRE_BUILD_PATHS",
+
+		// Only set in multiproduct_kati after config generation
+		"SKIP_NINJA_WRITE",
 	)
 
 	// Tell python not to spam the source tree with .pyc files.
