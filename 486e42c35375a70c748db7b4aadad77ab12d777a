@@ -22,6 +22,30 @@
       "revId": "486e42c35375a70c748db7b4aadad77ab12d777a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "501636cc_c925e5de",
+        "filename": "cc/object.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2018-10-26T23:02:18Z",
+      "side": 1,
+      "message": "No, this flag is only used for cc_object (i.e. ld -r) links, and it should only be used in that case because it suppresses information that is used to implement safe ICF. If we pass this when compiling every object file, safe ICF wouldn\u0027t be able to ICF anything.",
+      "parentUuid": "a11f4385_6f18b725",
+      "range": {
+        "startLine": 44,
+        "startChar": 40,
+        "endLine": 44,
+        "endChar": 52
+      },
+      "revId": "486e42c35375a70c748db7b4aadad77ab12d777a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
