@@ -152,4 +152,6 @@ func init() {
 
 	pctx.SourcePathsVariable("ManifestMergerJars", " ", ManifestMergerClasspath...)
 	pctx.SourcePathsVariable("ManifestMergerClasspath", ":", ManifestMergerClasspath...)
+
+	pctx.HostBinToolVariable("ProtocGenJavaLiteCmd", "protoc-gen-javalite")
 }
