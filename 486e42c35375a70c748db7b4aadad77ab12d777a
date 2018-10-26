@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a11f4385_6f18b725",
+        "filename": "cc/object.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-10-26T22:53:37Z",
+      "side": 1,
+      "message": "Here it looks like global clang compiler flag. Shouldn\u0027t it be added to cc/config/clang.go ClangExtraCflags?",
+      "range": {
+        "startLine": 44,
+        "startChar": 40,
+        "endLine": 44,
+        "endChar": 52
+      },
+      "revId": "486e42c35375a70c748db7b4aadad77ab12d777a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
