@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b5d39fc_ba6fbee2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1311067
+      },
+      "writtenOn": "2018-10-26T10:13:22Z",
+      "side": 1,
+      "message": "cat $ANDROID_TARGET_OUT_TESTCASES/hello_world_test/hello_world_test.config | grep run-test-as -ab2",
+      "range": {
+        "startLine": 22,
+        "startChar": 4,
+        "endLine": 22,
+        "endChar": 82
+      },
+      "revId": "65980823de72a516ecfb2e378f4df469a67a63d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
