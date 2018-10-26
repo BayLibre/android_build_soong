@@ -16,6 +16,24 @@
       "revId": "a262c0590420b99e4b768f377c8eabd1778b1dd0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f985d8ca_20ecc0a7",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1408,
+      "author": {
+        "id": 1203210
+      },
+      "writtenOn": "2018-10-26T09:42:35Z",
+      "side": 1,
+      "message": "That shouldn\u0027t be necessary. These flags don\u0027t change the API metalava produces so I don\u0027t think we need them on the check-api run.",
+      "parentUuid": "695d1c19_1b84c322",
+      "revId": "a262c0590420b99e4b768f377c8eabd1778b1dd0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
