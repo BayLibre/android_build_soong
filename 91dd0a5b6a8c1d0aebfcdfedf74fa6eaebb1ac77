@@ -16,6 +16,24 @@
       "revId": "91dd0a5b6a8c1d0aebfcdfedf74fa6eaebb1ac77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8ed48ad_09c80941",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-26T06:55:46Z",
+      "side": 1,
+      "message": "The short term solution looks good.",
+      "parentUuid": "a00651ab_4d4ae0ea",
+      "revId": "91dd0a5b6a8c1d0aebfcdfedf74fa6eaebb1ac77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
