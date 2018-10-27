@@ -389,7 +389,9 @@ func buildProduct(mpctx *mpContext, product string) {
 		Thread:  mpctx.Tracer.NewThread(product),
 		Status:  &status.Status{},
 	}}
+	defer ctx.Status.Finish()
 	ctx.Status.AddOutput(terminal.NewStatusOutput(ctx.Writer, ""))
+	ctx.Status.AddOutput(status.NewVerboseLog(log, filepath.Join(logsDir, "verbose.log")))
 
 	config := build.NewConfig(ctx, flag.Args()...)
 	config.Environment().Set("OUT_DIR", outDir)
