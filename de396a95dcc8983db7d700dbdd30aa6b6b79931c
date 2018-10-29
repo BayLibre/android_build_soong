@@ -166,6 +166,24 @@
     },
     {
       "key": {
+        "uuid": "994392fc_f069382a",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 989,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-29T23:56:58Z",
+      "side": 1,
+      "message": "I think it would be cleaner to make rewriteNdkLibs call stubsLibNameAndVersion instead.",
+      "parentUuid": "950e247b_bad04078",
+      "revId": "de396a95dcc8983db7d700dbdd30aa6b6b79931c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "76f3ad31_1dc37b39",
         "filename": "cc/genrule.go",
         "patchSetId": 5
