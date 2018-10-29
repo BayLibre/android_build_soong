@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29e58798_4cd236ee",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-10-29T21:04:08Z",
+      "side": 1,
+      "message": "Probably we can use this built-in copy rule?\nhttps://cs.corp.google.com/aosp-master/build/soong/java/java.go?rcl\u003dc04455e1e10e959bd41c1480f059c8de811e4ce7\u0026l\u003d1230",
+      "revId": "886ca321db034b6534dbfec9b57029840b165799",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d243a5db_cd5fb7cf",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1241,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-10-29T21:04:08Z",
+      "side": 1,
+      "message": "probably we also call this \"*File\" instead of \"*Txt\"?",
+      "revId": "886ca321db034b6534dbfec9b57029840b165799",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
