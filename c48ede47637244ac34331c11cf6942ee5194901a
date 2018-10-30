@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33ba7ad5_5c821b66",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-30T23:55:44Z",
+      "side": 1,
+      "message": "This is an intermediate file, it doesn\u0027t need to be stored in the module struct.",
+      "revId": "c48ede47637244ac34331c11cf6942ee5194901a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bd47a41_a4709480",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-30T23:55:44Z",
+      "side": 1,
+      "message": "We call this \".unsigned\" in at https://cs.corp.google.com/android/build/make/core/definitions.mk?rcl\u003d4f29f01a16052841ff1b0b12c14a5ca24605caa5\u0026l\u003d2319",
+      "range": {
+        "startLine": 479,
+        "startChar": 91,
+        "endLine": 479,
+        "endChar": 105
+      },
+      "revId": "c48ede47637244ac34331c11cf6942ee5194901a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
