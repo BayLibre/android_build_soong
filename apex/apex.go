@@ -71,15 +71,17 @@ type dependencyTag struct {
 }
 
 var (
-	sharedLibTag  = dependencyTag{name: "sharedLib"}
-	executableTag = dependencyTag{name: "executable"}
-	javaLibTag    = dependencyTag{name: "javaLib"}
-	prebuiltTag   = dependencyTag{name: "prebuilt"}
-	keyTag        = dependencyTag{name: "key"}
+	sharedLibTag   = dependencyTag{name: "sharedLib"}
+	executableTag  = dependencyTag{name: "executable"}
+	javaLibTag     = dependencyTag{name: "javaLib"}
+	prebuiltTag    = dependencyTag{name: "prebuilt"}
+	keyTag         = dependencyTag{name: "key"}
+	certificateTag = dependencyTag{name: "certificate"}
 )
 
 func init() {
 	pctx.Import("android/soong/common")
+	pctx.Import("android/soong/java")
 	pctx.HostBinToolVariable("apexer", "apexer")
 	pctx.HostBinToolVariable("aapt2", "aapt2")
 	pctx.HostBinToolVariable("avbtool", "avbtool")
@@ -177,6 +179,10 @@ type apexBundleProperties struct {
 	// Name of the apex_key module that provides the private key to sign APEX
 	Key *string
 
+	// The name of a certificate in the default certificate directory, blank to use the default product certificate,
+	// or an android_app_certificate module name in the form ":module".
+	Certificate *string
+
 	Multilib struct {
 		First struct {
 			// List of native libraries whose compile_multilib is "first"
@@ -217,8 +223,9 @@ type apexBundle struct {
 
 	properties apexBundleProperties
 
-	outputFile android.WritablePath
-	installDir android.OutputPath
+	outputFileNotApkSigned android.WritablePath
+	outputFile             android.WritablePath
+	installDir             android.OutputPath
 }
 
 func addDependenciesForNativeModules(ctx android.BottomUpMutatorContext,
@@ -313,6 +320,11 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 		return
 	}
 	ctx.AddDependency(ctx.Module(), keyTag, String(a.properties.Key))
+
+	cert := android.SrcIsModule(String(a.properties.Certificate))
+	if cert != "" {
+		ctx.AddDependency(ctx.Module(), certificateTag, cert)
+	}
 }
 
 func getCopyManifestForNativeLibrary(cc *cc.Module) (fileToCopy android.Path, dirInApex string) {
@@ -355,6 +367,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	copyManifest := make(map[android.Path]string)
 
 	var keyFile android.Path
+	var certificate java.Certificate
 
 	ctx.WalkDeps(func(child, parent android.Module) bool {
 		if _, ok := parent.(*apexBundle); ok {
@@ -401,6 +414,13 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 				} else {
 					ctx.PropertyErrorf("key", "%q is not an apex_key module", depName)
 				}
+			case certificateTag:
+				if dep, ok := child.(*java.AndroidAppCertificate); ok {
+					certificate = dep.Certificate
+					return false
+				} else {
+					ctx.ModuleErrorf("certificate dependency %q must be an android_app_certificate module", depName)
+				}
 			}
 		} else {
 			// indirect dependencies
@@ -414,6 +434,18 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		}
 		return false
 	})
+
+	cert := String(a.properties.Certificate)
+	if cert != "" && android.SrcIsModule(cert) == "" {
+		defaultDir := ctx.Config().DefaultAppCertificateDir(ctx)
+		certificate = java.Certificate{
+			defaultDir.Join(ctx, cert+".x509.pem"),
+			defaultDir.Join(ctx, cert+".pk8"),
+		}
+	} else if cert == "" {
+		pem, key := ctx.Config().DefaultAppCertificate(ctx)
+		certificate = java.Certificate{pem, key}
+	}
 
 	// files and dirs that will be created in apex
 	var readOnlyPaths []string
@@ -444,7 +476,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	manifest := android.PathForModuleSrc(ctx, proptools.StringDefault(a.properties.Manifest, "manifest.json"))
 	fileContexts := android.PathForModuleSrc(ctx, proptools.StringDefault(a.properties.File_contexts, "file_contexts"))
 
-	a.outputFile = android.PathForModuleOut(ctx, a.ModuleBase.Name()+apexSuffix)
+	a.outputFileNotApkSigned = android.PathForModuleOut(ctx, a.ModuleBase.Name()+apexSuffix+".not-apk-signed")
 
 	filesToCopy := []android.Path{}
 	for file := range copyManifest {
@@ -468,7 +500,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	ctx.ModuleBuild(pctx, android.ModuleBuildParams{
 		Rule:      apexRule,
 		Implicits: implicitInputs,
-		Output:    a.outputFile,
+		Output:    a.outputFileNotApkSigned,
 		Args: map[string]string{
 			"tool_path":        outHostBinDir + ":" + prebuiltSdkToolsBinDir,
 			"image_dir":        android.PathForModuleOut(ctx, "image").String(),
@@ -477,6 +509,17 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			"file_contexts":    fileContexts.String(),
 			"canned_fs_config": cannedFsConfig.String(),
 			"key":              keyFile.String(),
+		},
+	})
+
+	a.outputFile = android.PathForModuleOut(ctx, a.ModuleBase.Name()+apexSuffix)
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        java.Signapk,
+		Description: "signapk",
+		Output:      a.outputFile,
+		Input:       a.outputFileNotApkSigned,
+		Args: map[string]string{
+			"certificates": strings.Join([]string{certificate.Pem.String(), certificate.Key.String()}, " "),
 		},
 	})
 
