@@ -184,6 +184,24 @@
     },
     {
       "key": {
+        "uuid": "83040150_7355b8b6",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 989,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-30T00:56:21Z",
+      "side": 1,
+      "message": "Done. Thanks for the suggestion.",
+      "parentUuid": "994392fc_f069382a",
+      "revId": "de396a95dcc8983db7d700dbdd30aa6b6b79931c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76f3ad31_1dc37b39",
         "filename": "cc/genrule.go",
         "patchSetId": 5
