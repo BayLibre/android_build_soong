@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4a742ef_c2f33d37",
+        "filename": "android/prebuilt_etc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-31T14:45:10Z",
+      "side": 1,
+      "message": "I think we should keep installable to mean whether it should end up on the device through any means.  For example, you wouldn\u0027t want a java_library with installable: false to be in an apex module.",
+      "revId": "ad9ce044fb9c556b0962bf07422f4743a42c33eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
