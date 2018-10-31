@@ -16,6 +16,24 @@
       "revId": "ad9ce044fb9c556b0962bf07422f4743a42c33eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d54fdcc5_62d04282",
+        "filename": "android/prebuilt_etc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-10-31T15:16:36Z",
+      "side": 1,
+      "message": "Hmm, I thought this could be okay because for example static libs are also uninstallable though they can be \u0027indirectly\u0027 installed on the device by being linked to other shared libs or executables. To me, this sounds very similar to a module being indirectly installed on the device by being included in an APEX.\n\nFurthermore, even a shared lib can be made uninstallable while it is installed by being embedded in an unbundled apk. \n\n\u003e  For example, you wouldn\u0027t want a java_library with installable: false to be in an apex module.\nOf course no. However, \u0027installable: false\u0027 is NOT a requirement for a module to be in an apex. It just prevents the module from being installed as a standalone file.\n\n\nAnyway, then, are you suggesting to have another property name for this, or do you have another idea? I can\u0027t think of a good name, can you?",
+      "parentUuid": "a4a742ef_c2f33d37",
+      "revId": "ad9ce044fb9c556b0962bf07422f4743a42c33eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
