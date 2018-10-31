@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6750bc8_7167f9c0",
+        "filename": "java/androidmk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-10-31T20:04:58Z",
+      "side": 1,
+      "message": "I think we have to add a PHONY rule: droidcore to depend on this check rule, just like line434. Otherwise, presubmit won\u0027t always build the this check rule.",
+      "revId": "bd48efa951bfaf2d31139507b1d30399d6253c06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10624649_c293fad5",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-10-31T20:04:58Z",
+      "side": 1,
+      "message": "we don\u0027t need Rspfile and RspfileContent.",
+      "revId": "bd48efa951bfaf2d31139507b1d30399d6253c06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3002dff2_57bd8b29",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-10-31T20:04:58Z",
+      "side": 1,
+      "message": "we don\u0027t need Rspfile and RspfileContent.",
+      "revId": "bd48efa951bfaf2d31139507b1d30399d6253c06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
