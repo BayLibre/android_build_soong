@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "71c1fe01_4d3a4380",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-10-31T20:08:47Z",
+      "side": 1,
+      "message": "The build is not supposed to be writing to the source directory anyways, and that will soon stop being supported at all. The VNDK creates a script that the user can run to update the source file: https://android.googlesource.com/platform/build/+/master/target/product/vndk/Android.mk#53",
+      "parentUuid": "282b342e_ff55ee16",
+      "revId": "886ca321db034b6534dbfec9b57029840b165799",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d243a5db_cd5fb7cf",
         "filename": "java/droiddoc.go",
         "patchSetId": 3
