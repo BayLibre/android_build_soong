@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "145c26bd_a609fb39",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-10-31T14:33:59Z",
+      "side": 1,
+      "message": "Core library does change with API level, we just haven\u0027t tracked it in the past, but it has caused some problems where we can\u0027t say that a module should work on an old API level but only needs core APIs.\n\nAlso, No_standard_libs is not the right way to identify a core library module.  I\u0027d suggest adding a new flag.",
+      "parentUuid": "c50542b2_cec8a7b6",
+      "revId": "200e969eb46e49530431faf9d8b2d923d389d19e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "86466cda_f4bbe0ce",
         "filename": "java/sdk_library.go",
         "patchSetId": 2
