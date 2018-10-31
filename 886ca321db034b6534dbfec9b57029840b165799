@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "282b342e_ff55ee16",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1203210
+      },
+      "writtenOn": "2018-10-31T14:28:04Z",
+      "side": 1,
+      "message": "If we don\u0027t touch a timestamp file for this rule, how do we make the phony target in androidmk.go work? (There may be a way, I have to admit I don\u0027t really know how that stuff works and was just following the pattern of the update-api rule.)",
+      "parentUuid": "29e58798_4cd236ee",
+      "revId": "886ca321db034b6534dbfec9b57029840b165799",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d243a5db_cd5fb7cf",
         "filename": "java/droiddoc.go",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "886ca321db034b6534dbfec9b57029840b165799",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba155aac_77b4a94f",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1241,
+      "author": {
+        "id": 1203210
+      },
+      "writtenOn": "2018-10-31T14:28:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d243a5db_cd5fb7cf",
+      "revId": "886ca321db034b6534dbfec9b57029840b165799",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
