@@ -34,6 +34,24 @@
       "revId": "ad9ce044fb9c556b0962bf07422f4743a42c33eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b4c879a_06be8708",
+        "filename": "android/prebuilt_etc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-11-01T01:40:08Z",
+      "side": 1,
+      "message": "ping?",
+      "parentUuid": "d54fdcc5_62d04282",
+      "revId": "ad9ce044fb9c556b0962bf07422f4743a42c33eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
