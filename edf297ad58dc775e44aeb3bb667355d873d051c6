@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "47c81750_bb9593ed",
+        "filename": "java/config/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-11-01T22:28:18Z",
+      "side": 1,
+      "message": "This isn\u0027t used?",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 72
+      },
+      "revId": "edf297ad58dc775e44aeb3bb667355d873d051c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
