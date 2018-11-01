@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "d9dbc177_ac3373fc",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2018-11-01T05:05:16Z",
+      "side": 1,
+      "message": "I added core_lib property for it.",
+      "parentUuid": "145c26bd_a609fb39",
+      "revId": "200e969eb46e49530431faf9d8b2d923d389d19e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86466cda_f4bbe0ce",
         "filename": "java/sdk_library.go",
         "patchSetId": 2
