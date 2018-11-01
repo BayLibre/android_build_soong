@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c90022b5_859a0dc3",
+        "filename": "Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-11-01T23:35:16Z",
+      "side": 1,
+      "message": "We don\u0027t support using ../ to escape out of the current directory anywhere else, we shouldn\u0027t here either. This helps make it really obvious that others are referring to files in your directory, since you, or a parent, has to export it. We\u0027d prefer not to use absolute paths either, but we haven\u0027t gone that far yet.\n\nIn prebuilts/gcc/linux-x86/host/x86_64-w64-mingw32-4.8/Android.bp, add a filegroup definition:\n\n  filegroup {\n    name: \"winpthreads.COPYING\",\n    srcs: [\"licenses/mingw-w64-svn-r5861/mingw-w64-libraries/winpthreads/COPYING\"],\n  }\n\nThen here you can use:\n\n  notice: \":winpthreads.COPYING\",\n\nYou\u0027ll need to use ctx.ExpandSource / ExtractSourceDeps for it to resolve the filegroup. Then we won\u0027t need to prefix $(LOCAL_PATH)/ in androidmk.go",
+      "range": {
+        "startLine": 438,
+        "startChar": 13,
+        "endLine": 438,
+        "endChar": 19
+      },
+      "revId": "5d19e1de88b7ae9e0e9b74212881e11df57a3833",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
