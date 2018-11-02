@@ -22,6 +22,30 @@
       "revId": "5d19e1de88b7ae9e0e9b74212881e11df57a3833",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ed01faa_4e70131d",
+        "filename": "Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2018-11-02T20:38:59Z",
+      "side": 1,
+      "message": "As discussed offline, let me fix it in a separate CL. I implemented the logic and now see a lot of errors triggered by the existing ../ usages in notice properties. I\u0027ll fix them all together.",
+      "parentUuid": "c90022b5_859a0dc3",
+      "range": {
+        "startLine": 438,
+        "startChar": 13,
+        "endLine": 438,
+        "endChar": 19
+      },
+      "revId": "5d19e1de88b7ae9e0e9b74212881e11df57a3833",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
