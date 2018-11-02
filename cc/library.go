@@ -16,6 +16,7 @@ package cc
 
 import (
 	"strings"
+	"sync"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/pathtools"
@@ -443,6 +444,8 @@ func (library *libraryDecorator) getLibName(ctx ModuleContext) string {
 	return name + library.MutatedProperties.VariantName
 }
 
+var versioningMacroNamesListMutex sync.Mutex
+
 func (library *libraryDecorator) linkerInit(ctx BaseModuleContext) {
 	location := InstallInSystem
 	if library.baseLinker.sanitize.inSanitizerDir() {
@@ -453,6 +456,18 @@ func (library *libraryDecorator) linkerInit(ctx BaseModuleContext) {
 	// Let baseLinker know whether this variant is for stubs or not, so that
 	// it can omit things that are not required for linking stubs.
 	library.baseLinker.dynamicProperties.BuildStubs = library.buildStubs()
+
+	if library.buildStubs() {
+		macroNames := versioningMacroNamesList(ctx.Config())
+		myName := versioningMacroName(ctx.ModuleName())
+		versioningMacroNamesListMutex.Lock()
+		defer versioningMacroNamesListMutex.Unlock()
+		if (*macroNames)[myName] == "" {
+			(*macroNames)[myName] = ctx.ModuleName()
+		} else if (*macroNames)[myName] != ctx.ModuleName() {
+			ctx.ModuleErrorf("Macro name %q for versioning conflicts with macro name from module %q ", myName, (*macroNames)[myName])
+		}
+	}
 }
 
 func (library *libraryDecorator) linkerDeps(ctx DepsContext, deps Deps) Deps {
@@ -715,6 +730,10 @@ func (library *libraryDecorator) link(ctx ModuleContext,
 		library.reuseExportedFlags = append(library.reuseExportedFlags, flags...)
 	}
 
+	if library.buildStubs() {
+		library.reexportFlags([]string{"-D" + versioningMacroName(ctx.ModuleName()) + "=" + library.stubsVersion()})
+	}
+
 	return out
 }
 
@@ -821,6 +840,22 @@ func (library *libraryDecorator) buildStubs() bool {
 
 func (library *libraryDecorator) stubsVersion() string {
 	return library.MutatedProperties.StubsVersion
+}
+
+func versioningMacroNamesList(config android.Config) *map[string]string {
+	return config.Once("versioningMacroNamesList", func() interface{} {
+		m := make(map[string]string)
+		return &m
+	}).(*map[string]string)
+}
+
+func versioningMacroName(moduleName string) string {
+	specialCharacters := []string{".", "@", "-"}
+	macroName := strings.ToUpper(moduleName)
+	for _, char := range specialCharacters {
+		macroName = strings.Replace(macroName, char, "_", -1)
+	}
+	return "__" + macroName + "_API__"
 }
 
 func NewLibrary(hod android.HostOrDeviceSupported) (*Module, *libraryDecorator) {
