@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ccb1fda8_b283b9d7",
+        "filename": "java/java.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1078,
+      "author": {
+        "id": 1010077
+      },
+      "writtenOn": "2018-11-02T13:22:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60be6c1f_5bdc8beb",
+      "revId": "322163915c6215eaa7fbbb3dceb83354ad8b187e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a6f225f1_1bd7809d",
         "filename": "java/java.go",
         "patchSetId": 6
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "dba773b1_98e00ab5",
+        "filename": "java/java.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1086,
+      "author": {
+        "id": 1010077
+      },
+      "writtenOn": "2018-11-02T13:22:16Z",
+      "side": 1,
+      "message": "I thought it was better to be specific about where kotlin home is, but that\u0027s wrong. It\u0027s better to use default path. I\u0027\u0027 remove.",
+      "parentUuid": "a6f225f1_1bd7809d",
+      "revId": "322163915c6215eaa7fbbb3dceb83354ad8b187e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d3d54492_85841c8b",
         "filename": "java/java.go",
         "patchSetId": 6
@@ -47,6 +83,24 @@
       "writtenOn": "2018-10-24T22:10:26Z",
       "side": 1,
       "message": "What does -include-runtime have to do with the JVM?",
+      "revId": "322163915c6215eaa7fbbb3dceb83354ad8b187e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46e356c6_28e56ae9",
+        "filename": "java/java.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1344,
+      "author": {
+        "id": 1010077
+      },
+      "writtenOn": "2018-11-02T13:22:16Z",
+      "side": 1,
+      "message": "Not much. Will remove.",
+      "parentUuid": "d3d54492_85841c8b",
       "revId": "322163915c6215eaa7fbbb3dceb83354ad8b187e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
