@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62ccf960_36b0d107",
+        "filename": "java/config/kotlin.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-11-02T22:06:20Z",
+      "side": 1,
+      "message": "This ends up in the java.config package, so KotlincIllegalFlags.",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 13
+      },
+      "revId": "bdb9386b96cfa0f04c8913b98dc01b9ea239b83e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5cfb97b_d049ebce",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1094,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-11-02T22:06:20Z",
+      "side": 1,
+      "message": "Might as well finish modifying the flags before applying this optimization.",
+      "revId": "bdb9386b96cfa0f04c8913b98dc01b9ea239b83e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fd9366a_70a829ee",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1361,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-11-02T22:06:20Z",
+      "side": 1,
+      "message": "This is no longer correct",
+      "revId": "bdb9386b96cfa0f04c8913b98dc01b9ea239b83e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
