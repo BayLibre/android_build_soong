@@ -16,6 +16,24 @@
       "revId": "4362e4ef1f5aa331a57e07b8f8d04192baf41d9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac1c9ac7_47241723",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-11-02T22:31:55Z",
+      "side": 1,
+      "message": "We usually prefer a whitelist instead, it\u0027s easier to prevent future problems.",
+      "parentUuid": "3cee9713_f9976b7c",
+      "revId": "4362e4ef1f5aa331a57e07b8f8d04192baf41d9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
