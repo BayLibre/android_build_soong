@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f23980c_134013de",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 856,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-11-03T05:54:35Z",
+      "side": 1,
+      "message": "Move this to a global to avoid recompiling every time",
+      "revId": "036f0ea3bb4737feed85ca9596af0bad52786942",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
