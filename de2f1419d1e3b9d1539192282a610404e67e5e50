@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "957931a0_a02361ae",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-11-03T15:22:49Z",
+      "side": 1,
+      "message": "Use MustCompile which will panic on error",
+      "revId": "de2f1419d1e3b9d1539192282a610404e67e5e50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
