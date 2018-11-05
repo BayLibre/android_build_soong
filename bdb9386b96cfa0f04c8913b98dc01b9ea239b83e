@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cbdbef80_35bc81cb",
+        "filename": "java/config/kotlin.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1010077
+      },
+      "writtenOn": "2018-11-05T10:39:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62ccf960_36b0d107",
+      "range": {
+        "startLine": 19,
+        "startChar": 1,
+        "endLine": 19,
+        "endChar": 13
+      },
+      "revId": "bdb9386b96cfa0f04c8913b98dc01b9ea239b83e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f5cfb97b_d049ebce",
         "filename": "java/java.go",
         "patchSetId": 7
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "6fab3499_f9386acc",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1094,
+      "author": {
+        "id": 1010077
+      },
+      "writtenOn": "2018-11-05T10:39:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5cfb97b_d049ebce",
+      "revId": "bdb9386b96cfa0f04c8913b98dc01b9ea239b83e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4fd9366a_70a829ee",
         "filename": "java/java.go",
         "patchSetId": 7
@@ -53,6 +95,24 @@
       "writtenOn": "2018-11-02T22:06:20Z",
       "side": 1,
       "message": "This is no longer correct",
+      "revId": "bdb9386b96cfa0f04c8913b98dc01b9ea239b83e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ba8f055_a1a32d2b",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1361,
+      "author": {
+        "id": 1010077
+      },
+      "writtenOn": "2018-11-05T10:39:19Z",
+      "side": 1,
+      "message": "It is, at least partially: setting \"-verbose\" flag in bp file will print the line \"logging: using Kotlin home directory /full/path/to/android/repo/external/kotlinc\" in stdout, i.e. kotlinc sets kotlin-home by default. However it seems that (at least) plugins are exempt from looking for plugins in default home cause \"-Xplugin\u003d/path/to/plugin\" requires the full path to plugin even if it resides in kotlin-home path, like kapt does for example.",
+      "parentUuid": "4fd9366a_70a829ee",
       "revId": "bdb9386b96cfa0f04c8913b98dc01b9ea239b83e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
