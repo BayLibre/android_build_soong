@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51f87687_e43d2274",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2018-11-05T10:07:47Z",
+      "side": 1,
+      "message": "Naive question: is u+w necessary in these commands?",
+      "range": {
+        "startLine": 40,
+        "startChar": 31,
+        "endLine": 40,
+        "endChar": 32
+      },
+      "revId": "2b11f7413051fff4f209fa71fb3aac627bc0f0fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
