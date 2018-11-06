@@ -283,6 +283,7 @@ bootstrap_go_package {
     deps: [
         "blueprint",
         "soong-android",
+        "soong-tradefed",
     ],
     srcs: [
         "python/androidmk.go",
