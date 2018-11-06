@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0fe4bdc5_f15ac54a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1311067
+      },
+      "writtenOn": "2018-11-06T09:06:45Z",
+      "side": 1,
+      "message": "This CL is for more comprehensive purposes, not only for Atest.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "a2dc33afbb48f8589b1ff4196a0e9d6e53f85a10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b7c8285_e3850354",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1311067
+      },
+      "writtenOn": "2018-11-06T09:06:45Z",
+      "side": 1,
+      "message": "remove this.",
+      "range": {
+        "startLine": 15,
+        "startChar": 107,
+        "endLine": 15,
+        "endChar": 116
+      },
+      "revId": "a2dc33afbb48f8589b1ff4196a0e9d6e53f85a10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
