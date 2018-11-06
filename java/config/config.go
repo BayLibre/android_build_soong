@@ -88,6 +88,7 @@ func init() {
 	pctx.SourcePathVariable("JlinkCmd", "${JavaToolchain}/jlink")
 	pctx.SourcePathVariable("JmodCmd", "${JavaToolchain}/jmod")
 	pctx.SourcePathVariable("JrtFsJar", "${JavaHome}/lib/jrt-fs.jar")
+	pctx.SourcePathVariable("JavaKytheExtractorJar", "${JavaHome}/lib/javac_extractor.jar")
 	pctx.SourcePathVariable("Ziptime", "prebuilts/build-tools/${hostPrebuiltTag}/bin/ziptime")
 
 	pctx.SourcePathVariable("GenKotlinBuildFileCmd", "build/soong/scripts/gen-kotlin-build-file.sh")
