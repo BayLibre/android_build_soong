@@ -72,6 +72,7 @@ func init() {
 		ctx.TopDown("double_loadable", checkDoubleLoadableLibraries).Parallel()
 	})
 
+	android.RegisterSingletonType("kythe_extract_all", kytheExtractAllFactory)
 	pctx.Import("android/soong/cc/config")
 }
 
@@ -153,6 +154,7 @@ type Flags struct {
 	Tidy      bool
 	Coverage  bool
 	SAbiDump  bool
+	Kythe     bool
 
 	RequiredInstructionSet string
 	DynamicLinker          string
@@ -387,6 +389,7 @@ type Module struct {
 	lto       *lto
 	pgo       *pgo
 	xom       *xom
+	kythe     *kythe
 
 	androidMkSharedLibDeps []string
 
@@ -406,6 +409,9 @@ type Module struct {
 
 	// only non-nil when this is a shared library that reuses the objects of a static library
 	staticVariant *Module
+
+	// Kythe (source file indexer) paths for this compilation module
+	kytheFiles android.Paths
 }
 
 func (c *Module) OutputFile() android.OptionalPath {
@@ -460,6 +466,9 @@ func (c *Module) Init() android.Module {
 	}
 	if c.xom != nil {
 		c.AddProperties(c.xom.props()...)
+	}
+	if c.kythe != nil {
+		c.AddProperties(c.kythe.props()...)
 	}
 	for _, feature := range c.features {
 		c.AddProperties(feature.props()...)
@@ -613,6 +622,10 @@ func isBionic(name string) bool {
 		return true
 	}
 	return false
+}
+
+func (c *Module) KytheFiles() android.Paths {
+	return c.kytheFiles
 }
 
 type baseModuleContext struct {
@@ -821,6 +834,7 @@ func newModule(hod android.HostOrDeviceSupported, multilib android.Multilib) *Mo
 	module.lto = &lto{}
 	module.pgo = &pgo{}
 	module.xom = &xom{}
+	module.kythe = &kythe{}
 	return module
 }
 
@@ -949,6 +963,9 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	if c.xom != nil {
 		flags = c.xom.flags(ctx, flags)
 	}
+	if c.kythe != nil {
+		flags = c.kythe.flags(ctx, flags)
+	}
 	for _, feature := range c.features {
 		flags = feature.flags(ctx, flags)
 	}
@@ -981,6 +998,7 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		if ctx.Failed() {
 			return
 		}
+		c.kytheFiles = objs.kytheFiles
 	}
 
 	if c.linker != nil {
@@ -1048,6 +1066,9 @@ func (c *Module) begin(ctx BaseModuleContext) {
 	if c.pgo != nil {
 		c.pgo.begin(ctx)
 	}
+	if c.kythe != nil {
+		c.kythe.begin(ctx)
+	}
 	for _, feature := range c.features {
 		feature.begin(ctx)
 	}
@@ -1092,6 +1113,9 @@ func (c *Module) deps(ctx DepsContext) Deps {
 	}
 	if c.lto != nil {
 		deps = c.lto.deps(ctx, deps)
+	}
+	if c.kythe != nil {
+		deps = c.kythe.deps(ctx, deps)
 	}
 	for _, feature := range c.features {
 		deps = feature.deps(ctx, deps)
@@ -2011,6 +2035,7 @@ func DefaultsFactory(props ...interface{}) android.Module {
 		&LTOProperties{},
 		&PgoProperties{},
 		&XomProperties{},
+		&KytheProperties{},
 		&android.ProtoProperties{},
 	)
 
@@ -2241,6 +2266,35 @@ func getCurrentNdkPrebuiltVersion(ctx DepsContext) string {
 		return strconv.Itoa(config.NdkMaxPrebuiltVersionInt)
 	}
 	return ctx.Config().PlatformSdkVersion()
+}
+
+func kytheExtractAllFactory() android.Singleton {
+	return &kytheExtractAllSingleton{}
+}
+
+type kytheExtractAllSingleton struct {
+}
+
+func (ks *kytheExtractAllSingleton) GenerateBuildActions(ctx android.SingletonContext) {
+	var targets android.Paths
+	ctx.VisitAllModules(func(module android.Module) {
+		ccModule, ok := module.(*Module)
+		if !ok {
+			return
+		}
+		kytheFiles := ccModule.KytheFiles()
+		if len(kytheFiles) > 0 {
+			targets = append(targets, kytheFiles...)
+		}
+	})
+	if len(targets) >= 0 {
+		ctx.Build(pctx, android.BuildParams{
+			Rule:    blueprint.Phony,
+			Output:  android.PathForPhony(ctx, "kythe_all_cxx_extractions"),
+			Inputs:  targets,
+			Default: true,
+		})
+	}
 }
 
 var Bool = proptools.Bool

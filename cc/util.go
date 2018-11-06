@@ -79,6 +79,7 @@ func flagsToBuilderFlags(in Flags) builderFlags {
 		coverage:        in.Coverage,
 		tidy:            in.Tidy,
 		sAbiDump:        in.SAbiDump,
+		kythe:           in.Kythe,
 
 		systemIncludeFlags: strings.Join(in.SystemIncludeFlags, " "),
 
