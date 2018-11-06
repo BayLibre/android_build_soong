@@ -77,6 +77,7 @@ func init() {
 		ctx.TopDown("double_loadable", checkDoubleLoadableLibraries).Parallel()
 	})
 
+	android.RegisterSingletonType("kythe_extract_all", kytheExtractAllFactory)
 	pctx.Import("android/soong/cc/config")
 }
 
@@ -162,6 +163,7 @@ type Flags struct {
 	Tidy      bool
 	Coverage  bool
 	SAbiDump  bool
+	EmitXrefs bool // If true, generate Ninja rules to generate emitXrefs input files for Kythe
 
 	RequiredInstructionSet string
 	DynamicLinker          string
@@ -343,6 +345,10 @@ type dependencyTag struct {
 	explicitlyVersioned bool
 }
 
+type ccKythe interface {
+	CcKytheFiles() android.Paths
+}
+
 var (
 	sharedDepTag          = dependencyTag{name: "shared", library: true}
 	sharedExportDepTag    = dependencyTag{name: "shared", library: true, reexportFlags: true}
@@ -419,6 +425,8 @@ type Module struct {
 	staticVariant *Module
 
 	makeLinkType string
+	// Kythe (source file indexer) paths for this compilation module
+	kytheFiles android.Paths
 }
 
 func (c *Module) OutputFile() android.OptionalPath {
@@ -643,6 +651,10 @@ func installToBootstrap(name string, config android.Config) bool {
 		return inList("hwaddress", config.SanitizeDevice())
 	}
 	return isBionic(name)
+}
+
+func (c *Module) CcKytheFiles() android.Paths {
+	return c.kytheFiles
 }
 
 type baseModuleContext struct {
@@ -956,6 +968,7 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 
 	flags := Flags{
 		Toolchain: c.toolchain(ctx),
+		EmitXrefs: ctx.Config().EmitXrefRules(),
 	}
 	if c.compiler != nil {
 		flags = c.compiler.compilerFlags(ctx, flags, deps)
@@ -1021,6 +1034,7 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		if ctx.Failed() {
 			return
 		}
+		c.kytheFiles = objs.kytheFiles
 	}
 
 	if c.linker != nil {
@@ -2324,6 +2338,38 @@ func getCurrentNdkPrebuiltVersion(ctx DepsContext) string {
 		return strconv.Itoa(config.NdkMaxPrebuiltVersionInt)
 	}
 	return ctx.Config().PlatformSdkVersion()
+}
+
+func kytheExtractAllFactory() android.Singleton {
+	return &kytheExtractAllSingleton{}
+}
+
+type kytheExtractAllSingleton struct {
+}
+
+func (ks *kytheExtractAllSingleton) GenerateBuildActions(ctx android.SingletonContext) {
+	var targets android.Paths
+	// TODO(asmundak): another way to collect all xref targets for C++ is to
+	// make kytheExtractSingleton read them from a channel where that are written
+	// by the TransformSourceToObj when it emits the rule for such target.
+	ctx.VisitAllModules(func(module android.Module) {
+		ccModule, ok := module.(ccKythe)
+		if !ok {
+			return
+		}
+		kytheFiles := ccModule.CcKytheFiles()
+		if len(kytheFiles) > 0 {
+			targets = append(targets, kytheFiles...)
+		}
+	})
+	if len(targets) >= 0 {
+		ctx.Build(pctx, android.BuildParams{
+			Rule:    blueprint.Phony,
+			Output:  android.PathForPhony(ctx, "xref_cxx"),
+			Inputs:  targets,
+			Default: true,
+		})
+	}
 }
 
 var Bool = proptools.Bool

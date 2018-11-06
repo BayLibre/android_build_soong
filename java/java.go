@@ -50,6 +50,7 @@ func init() {
 	android.RegisterModuleType("dex_import", DexImportFactory)
 
 	android.RegisterSingletonType("logtags", LogtagsSingleton)
+	android.RegisterSingletonType("kythe_java_extract", kytheExtractJavaFactory)
 }
 
 // TODO:
@@ -345,6 +346,9 @@ type Module struct {
 
 	hiddenAPI
 	dexpreopter
+
+	// list of the kythe extraction files
+	kytheFiles android.Paths
 }
 
 func (j *Module) OutputFiles(tag string) (android.Paths, error) {
@@ -385,12 +389,20 @@ type SrcDependency interface {
 	CompiledSrcJars() android.Paths
 }
 
+type kythe interface {
+	JavaKytheFiles() android.Paths
+}
+
 func (j *Module) CompiledSrcs() android.Paths {
 	return j.compiledJavaSrcs
 }
 
 func (j *Module) CompiledSrcJars() android.Paths {
 	return j.compiledSrcJars
+}
+
+func (j *Module) JavaKytheFiles() android.Paths {
+	return j.kytheFiles
 }
 
 var _ SrcDependency = (*Module)(nil)
@@ -1115,6 +1127,13 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 			RunErrorProne(ctx, errorprone, uniqueSrcFiles, srcJars, flags)
 			extraJarDeps = append(extraJarDeps, errorprone)
 		}
+		/*
+			if ctx.Config().EmitXrefRules() {
+				extractionFile := android.PathForModuleOut(ctx, ctx.ModuleName()+".kzip")
+				RunKytheExtractor(ctx, extractionFile, uniqueSrcFiles, srcJars, flags)
+				j.kytheFiles = append(j.kytheFiles, extractionFile)
+			}
+		*/
 
 		if enable_sharding {
 			flags.classpath = append(flags.classpath, j.headerJarFile)
@@ -1137,6 +1156,12 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 			classes := android.PathForModuleOut(ctx, "javac", jarName)
 			TransformJavaToClasses(ctx, classes, -1, uniqueSrcFiles, srcJars, flags, extraJarDeps)
 			jars = append(jars, classes)
+		}
+		if ctx.Config().EmitXrefRules() {
+			extractionFile := android.PathForModuleOut(ctx, ctx.ModuleName()+".kzip")
+			emitXrefRule(ctx, extractionFile, uniqueSrcFiles, srcJars, flags, extraJarDeps, "kythe")
+			j.kytheFiles = append(j.kytheFiles, extractionFile)
+
 		}
 		if ctx.Failed() {
 			return
@@ -2207,6 +2232,39 @@ func DefaultsFactory(props ...interface{}) android.Module {
 	android.InitDefaultsModule(module)
 
 	return module
+}
+
+func kytheExtractJavaFactory() android.Singleton {
+	return &kytheExtractJavaSingleton{}
+}
+
+type kytheExtractJavaSingleton struct {
+}
+
+func (ks *kytheExtractJavaSingleton) GenerateBuildActions(ctx android.SingletonContext) {
+	var allKytheFiles android.Paths
+	// TODO(asmundak): another way to collect all xref targets for C++ is to
+	// make kytheExtractSingleton read them from a channel where that are written
+	// by the module.compile when it emits the rule for such target.
+	ctx.VisitAllModules(func(module android.Module) {
+		javaModule, ok := module.(kythe)
+		if !ok {
+			return
+		}
+		kytheFiles := javaModule.JavaKytheFiles()
+		if len(kytheFiles) > 0 {
+			allKytheFiles = append(allKytheFiles, kytheFiles...)
+		}
+	})
+	if len(allKytheFiles) >= 0 {
+		ctx.Build(pctx, android.BuildParams{
+			Rule:    blueprint.Phony,
+			Output:  android.PathForPhony(ctx, "xref_java"),
+			Inputs:  allKytheFiles,
+			Default: true,
+		})
+	}
+
 }
 
 var Bool = proptools.Bool
