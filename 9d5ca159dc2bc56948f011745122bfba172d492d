@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea6f5621_1f3bf2c7",
+        "filename": "Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-11-06T16:35:38Z",
+      "side": 1,
+      "message": "This creates a new build dependency on project (prebuilt) \"platform/prebuilts/gcc/linux-x86/host/x86_64-w64-mingw32-4.8\" for AOSP branch master-art. Is there a way to work around this?\n\n(Stop-gap fix: https://android-review.googlesource.com/c/platform/manifest/+/814942)",
+      "range": {
+        "startLine": 438,
+        "startChar": 4,
+        "endLine": 438,
+        "endChar": 141
+      },
+      "revId": "9d5ca159dc2bc56948f011745122bfba172d492d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
