@@ -881,6 +881,10 @@ func (c *config) NdkAbis() bool {
 	return Bool(c.productVariables.Ndk_abis)
 }
 
+func (c *config) FlattenApexs() bool {
+	return Bool(c.productVariables.FlattenApexs)
+}
+
 func stringSlice(s *[]string) []string {
 	if s != nil {
 		return *s
