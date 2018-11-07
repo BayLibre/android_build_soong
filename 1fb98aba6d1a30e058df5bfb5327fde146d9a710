@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35ce88f9_40756745",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1041673
+      },
+      "writtenOn": "2018-11-07T13:58:51Z",
+      "side": 1,
+      "message": "I am unsure if overrides is necessary here. Will this work with stem only?",
+      "revId": "1fb98aba6d1a30e058df5bfb5327fde146d9a710",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
