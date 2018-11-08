@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2afec77_13a94d64",
+        "filename": "java/java.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1093,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-11-08T00:01:15Z",
+      "side": 1,
+      "message": "Why not put these into $kotlincFlags?",
+      "revId": "1e1bcaa4146c2cfcc1599c7c56cd67e2fcd08f32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
