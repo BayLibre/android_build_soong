@@ -22,6 +22,30 @@
       "revId": "ef449fe62e43fcec42e073bcb9ca91ae28720eb2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffe64f56_d970419e",
+        "filename": "cc/linker.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-11-08T00:02:57Z",
+      "side": 1,
+      "message": "I\u0027d just leave it as exclude wins.  Otherwise if we made shared_libs arch variant you couldn\u0027t add to shared_libs in vendor and then remove in arch.arm64.vendor.",
+      "parentUuid": "3f5574c0_bf9d3e77",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 108
+      },
+      "revId": "ef449fe62e43fcec42e073bcb9ca91ae28720eb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
