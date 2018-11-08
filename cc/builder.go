@@ -248,7 +248,7 @@ type builderFlags struct {
 	stripKeepSymbols       bool
 	stripKeepMiniDebugInfo bool
 	stripAddGnuDebuglink   bool
-	stripUseLlvmStrip      bool
+	stripUseGnuStrip       bool
 
 	protoDeps        android.Paths
 	protoFlags       string
@@ -795,8 +795,8 @@ func TransformStrip(ctx android.ModuleContext, inputFile android.Path,
 	if flags.stripKeepSymbols {
 		args += " --keep-symbols"
 	}
-	if flags.stripUseLlvmStrip {
-		args += " --use-llvm-strip"
+	if flags.stripUseGnuStrip {
+		args += " --use-gnu-strip"
 	}
 
 	ctx.Build(pctx, android.BuildParams{
