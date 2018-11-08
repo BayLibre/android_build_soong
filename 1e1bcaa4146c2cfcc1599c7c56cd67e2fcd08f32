@@ -16,6 +16,24 @@
       "revId": "1e1bcaa4146c2cfcc1599c7c56cd67e2fcd08f32",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de641dd6_ee5ac85e",
+        "filename": "java/java.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1093,
+      "author": {
+        "id": 1010077
+      },
+      "writtenOn": "2018-11-08T07:29:15Z",
+      "side": 1,
+      "message": "Originally, smaller patch, easier diff. Then, making distinction between default and user flags.\n\nShould I still move them there?",
+      "parentUuid": "e2afec77_13a94d64",
+      "revId": "1e1bcaa4146c2cfcc1599c7c56cd67e2fcd08f32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
