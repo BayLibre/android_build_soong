@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5855c3d8_d4d65626",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-11-09T09:23:43Z",
+      "side": 1,
+      "message": "Nit: Long line.",
+      "range": {
+        "startLine": 449,
+        "startChar": 0,
+        "endLine": 449,
+        "endChar": 94
+      },
+      "revId": "fa0a37365b1f1536d8d66e996da827f9ceb88211",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
