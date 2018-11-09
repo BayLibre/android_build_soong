@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7883c9c2_1d33ff1b",
+        "filename": "cc/config/global.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2018-11-09T04:06:25Z",
+      "side": 0,
+      "message": "I think we haven\u0027t switched to use llvm-ar on Darwin. Does it still build without GOLD plugin?",
+      "range": {
+        "startLine": 215,
+        "startChar": 2,
+        "endLine": 215,
+        "endChar": 76
+      },
+      "revId": "ec2f6cba80a696b707560704fd0ae241302f63ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
