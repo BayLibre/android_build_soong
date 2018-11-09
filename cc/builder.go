@@ -485,9 +485,6 @@ func TransformObjToStaticLib(ctx android.ModuleContext, objFiles android.Paths,
 	if !ctx.Darwin() {
 		arFlags += " -format=gnu"
 	}
-	if flags.arGoldPlugin {
-		arFlags += " --plugin ${config.LLVMGoldPlugin}"
-	}
 	if flags.arFlags != "" {
 		arFlags += " " + flags.arFlags
 	}
