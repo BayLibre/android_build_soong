@@ -22,6 +22,30 @@
       "revId": "ec2f6cba80a696b707560704fd0ae241302f63ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcf4e190_0ead8a32",
+        "filename": "cc/config/global.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2018-11-09T04:09:58Z",
+      "side": 0,
+      "message": "If this is for host builds I believe that Darwin\u0027s ar has builtin support for LTO and does not even support gold plugins.",
+      "parentUuid": "7883c9c2_1d33ff1b",
+      "range": {
+        "startLine": 215,
+        "startChar": 2,
+        "endLine": 215,
+        "endChar": 76
+      },
+      "revId": "ec2f6cba80a696b707560704fd0ae241302f63ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
