@@ -109,6 +109,7 @@ type SanitizeProperties struct {
 		Cfi              *bool    `android:"arch_variant"`
 		Integer_overflow *bool    `android:"arch_variant"`
 		Scudo            *bool    `android:"arch_variant"`
+		Scs              *bool    `android:"arch_variant"`
 
 		// Sanitizers to run in the diagnostic mode (as opposed to the release mode).
 		// Replaces abort() on error with a human-readable error message.
@@ -257,6 +258,10 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 		if inList("cfi", ctx.Config().SanitizeDeviceDiag()) {
 			s.Diag.Cfi = boolPtr(true)
 		}
+	}
+
+	if s.Scs == nil && strings.HasPrefix(ctx.ModuleDir(), "system/bt") && ctx.Arch().ArchType == android.Arm64 {
+		s.Scs = boolPtr(true)
 	}
 
 	// CFI needs gold linker, and mips toolchain does not have one.
@@ -488,6 +493,10 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 
 	if Bool(sanitize.Properties.Sanitize.Scudo) {
 		sanitizers = append(sanitizers, "scudo")
+	}
+
+	if Bool(sanitize.Properties.Sanitize.Scs) {
+		sanitizers = append(sanitizers, "shadow-call-stack")
 	}
 
 	if len(sanitizers) > 0 {
