@@ -141,8 +141,9 @@ type sdkLibrary struct {
 	android.ModuleBase
 	android.DefaultableModuleBase
 
-	properties       sdkLibraryProperties
-	deviceProperties CompilerDeviceProperties
+	properties          sdkLibraryProperties
+	deviceProperties    CompilerDeviceProperties
+	dexpreoptProperties DexpreoptProperties
 
 	publicApiStubsPath android.Paths
 	systemApiStubsPath android.Paths
@@ -569,6 +570,7 @@ func (module *sdkLibrary) createImplLibrary(mctx android.TopDownMutatorContext) 
 		Errorprone       struct {
 			Javacflags []string
 		}
+		IsSDKLibrary bool
 	}{}
 
 	props.Name = proptools.StringPtr(module.implName())
@@ -579,6 +581,7 @@ func (module *sdkLibrary) createImplLibrary(mctx android.TopDownMutatorContext) 
 	// XML file is installed along with the impl lib
 	props.Required = []string{module.xmlFileName()}
 	props.Errorprone.Javacflags = module.properties.Errorprone.Javacflags
+	props.IsSDKLibrary = true
 
 	if module.SocSpecific() {
 		props.Soc_specific = proptools.BoolPtr(true)
@@ -588,7 +591,10 @@ func (module *sdkLibrary) createImplLibrary(mctx android.TopDownMutatorContext) 
 		props.Product_specific = proptools.BoolPtr(true)
 	}
 
-	mctx.CreateModule(android.ModuleFactoryAdaptor(LibraryFactory), &props, &module.deviceProperties)
+	mctx.CreateModule(android.ModuleFactoryAdaptor(LibraryFactory),
+		&props,
+		&module.deviceProperties,
+		&module.dexpreoptProperties)
 }
 
 // Creates the xml file that publicizes the runtime library
@@ -721,6 +727,7 @@ func sdkLibraryFactory() android.Module {
 	module := &sdkLibrary{}
 	module.AddProperties(&module.properties)
 	module.AddProperties(&module.deviceProperties)
+	module.AddProperties(&module.dexpreoptProperties)
 	InitJavaModule(module, android.DeviceSupported)
 	return module
 }
