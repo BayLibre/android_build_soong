@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d1c3ed4_98d295d2",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-11-13T04:54:32Z",
+      "side": 1,
+      "message": "This was fixed today, can you rebase and remove this?",
+      "revId": "ea419f55e310c89accfc30681cf98027fbe006d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dedd68db_9f571cd4",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-11-13T04:54:32Z",
+      "side": 1,
+      "message": "Go doesn\u0027t fall through by default, either put a separate comment for each one or use:\n\n  case \"armv8-a\", \"armv8-2a\":",
+      "revId": "ea419f55e310c89accfc30681cf98027fbe006d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
