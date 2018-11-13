@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72b9e459_da172a2a",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-11-13T06:42:43Z",
+      "side": 1,
+      "message": "Use ctx.InstallFile too, so that this will work if we move installation out of make.",
+      "revId": "9ccca2fa13151a3eadc8b0e6bbc3c2911ad74d4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dcf17e7_07423d8f",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-11-13T06:42:43Z",
+      "side": 1,
+      "message": "You know the types of each of these modules when adding them to filesInfo, maybe add an enum there with a Class() method that returns these strings?",
+      "revId": "9ccca2fa13151a3eadc8b0e6bbc3c2911ad74d4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08bfb32e_3e51364d",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-11-13T06:42:43Z",
+      "side": 1,
+      "message": "You can combine these:\n\ncase \"lib\", \"lib64\":\n    clsasStr \u003d \"SHARED_LIBRARIES\"",
+      "range": {
+        "startLine": 623,
+        "startChar": 0,
+        "endLine": 626,
+        "endChar": 35
+      },
+      "revId": "9ccca2fa13151a3eadc8b0e6bbc3c2911ad74d4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
