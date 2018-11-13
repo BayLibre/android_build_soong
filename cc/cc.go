@@ -264,6 +264,7 @@ type ModuleContextIntf interface {
 	hasStubsVariants() bool
 	isStubs() bool
 	bootstrap() bool
+	mustUseVendorVariant() bool
 }
 
 type ModuleContext interface {
@@ -556,6 +557,10 @@ func (c *Module) isVndkExt() bool {
 	return false
 }
 
+func (c *Module) mustUseVendorVariant() bool {
+	return c.isVndkSp() || inList(c.Name(), vndkMustUseVendorVariantList)
+}
+
 func (c *Module) getVndkExtendsModuleName() string {
 	if vndkdep := c.vndkdep; vndkdep != nil {
 		return vndkdep.getVndkExtendsModuleName()
@@ -697,6 +702,10 @@ func (ctx *moduleContextImpl) isVndkSp() bool {
 
 func (ctx *moduleContextImpl) isVndkExt() bool {
 	return ctx.mod.isVndkExt()
+}
+
+func (ctx *moduleContextImpl) mustUseVendorVariant() bool {
+	return ctx.mod.mustUseVendorVariant()
 }
 
 func (ctx *moduleContextImpl) inRecovery() bool {
@@ -1746,7 +1755,12 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			isLLndk := inList(libName, llndkLibraries)
 			isVendorPublicLib := inList(libName, vendorPublicLibraries)
 			bothVendorAndCoreVariantsExist := ccDep.hasVendorVariant() || isLLndk
-			if c.useVndk() && bothVendorAndCoreVariantsExist {
+
+			if ctx.DeviceConfig().VndkUseCoreVariant() && ccDep.isVndk() && !ccDep.mustUseVendorVariant() {
+				// The vendor module is a no-vendor-variant VNDK library.  Depend on the
+				// core module instead.
+				return libName
+			} else if c.useVndk() && bothVendorAndCoreVariantsExist {
 				// The vendor module in Make will have been renamed to not conflict with the core
 				// module, so update the dependency name here accordingly.
 				return libName + vendorSuffix
