@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "405036f1_6d2d51e1",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-11-13T08:34:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72b9e459_da172a2a",
+      "revId": "9ccca2fa13151a3eadc8b0e6bbc3c2911ad74d4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9dcf17e7_07423d8f",
         "filename": "apex/apex.go",
         "patchSetId": 5
@@ -33,6 +51,24 @@
       "revId": "9ccca2fa13151a3eadc8b0e6bbc3c2911ad74d4a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2d98ec0_f732c930",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-11-13T08:34:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dcf17e7_07423d8f",
+      "revId": "9ccca2fa13151a3eadc8b0e6bbc3c2911ad74d4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -56,6 +92,30 @@
       "revId": "9ccca2fa13151a3eadc8b0e6bbc3c2911ad74d4a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df18fe12_9785acbf",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-11-13T08:34:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08bfb32e_3e51364d",
+      "range": {
+        "startLine": 623,
+        "startChar": 0,
+        "endLine": 626,
+        "endChar": 35
+      },
+      "revId": "9ccca2fa13151a3eadc8b0e6bbc3c2911ad74d4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
