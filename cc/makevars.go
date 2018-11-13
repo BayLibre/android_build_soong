@@ -97,6 +97,8 @@ func makeVarsProvider(ctx android.MakeVarsContext) {
 	ctx.Strict("VNDK_SAMEPROCESS_LIBRARIES", strings.Join(vndkSpLibraries, " "))
 	ctx.Strict("LLNDK_LIBRARIES", strings.Join(llndkLibraries, " "))
 	ctx.Strict("VNDK_PRIVATE_LIBRARIES", strings.Join(vndkPrivateLibraries, " "))
+	ctx.Strict("VNDK_USING_CORE_VARIANT_LIBRARIES", strings.Join(vndkUsingCoreVariantLibraries, " "))
+	ctx.Strict("VNDK_SP_USING_CORE_VARIANT_LIBRARIES", strings.Join(vndkSpUsingCoreVariantLibraries, " "))
 
 	// Filter vendor_public_library that are exported to make
 	exportedVendorPublicLibraries := []string{}
