@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5da7ba2_5c7298c5",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-11-13T21:37:34Z",
+      "side": 1,
+      "message": "This should use fi.class too",
+      "revId": "cb50a2dd35ed1f1927c0c50ec4dc9fbdc76455e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
