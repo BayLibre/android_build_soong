@@ -285,6 +285,10 @@ type libraryDecorator struct {
 
 	versionScriptPath android.ModuleGenPath
 
+	// If useCoreVariant is true, the vendor variant of a VNDK library is
+	// not installed.
+	useCoreVariant bool
+
 	// Decorated interafaces
 	*baseCompiler
 	*baseLinker
@@ -879,8 +883,14 @@ func (library *libraryDecorator) install(ctx ModuleContext, file android.Path) {
 	if library.shared() {
 		if ctx.Device() && ctx.useVndk() {
 			if ctx.isVndkSp() {
+				if ctx.DeviceConfig().VndkUseCoreVariant() && !ctx.mustUseVendorVariant() {
+					ctx.PropertyErrorf("vndk.support_system_process", "vndk.must_use_vendor_variant must be set to true for VNDK-SP libraries")
+				}
 				library.baseInstaller.subDir = "vndk-sp"
 			} else if ctx.isVndk() {
+				if ctx.DeviceConfig().VndkUseCoreVariant() && !ctx.mustUseVendorVariant() {
+					library.useCoreVariant = true
+				}
 				library.baseInstaller.subDir = "vndk"
 			}
 
