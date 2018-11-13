@@ -250,6 +250,7 @@ type ModuleContextIntf interface {
 	isPgoCompile() bool
 	useClangLld(actx ModuleContext) bool
 	isApex() bool
+	mustUseVendorVariant() bool
 }
 
 type ModuleContext interface {
@@ -494,6 +495,13 @@ func (c *Module) isVndkExt() bool {
 	return false
 }
 
+func (c *Module) mustUseVendorVariant() bool {
+	if vndkdep := c.vndkdep; vndkdep != nil {
+		return vndkdep.mustUseVendorVariant()
+	}
+	return false
+}
+
 func (c *Module) getVndkExtendsModuleName() string {
 	if vndkdep := c.vndkdep; vndkdep != nil {
 		return vndkdep.getVndkExtendsModuleName()
@@ -614,6 +622,10 @@ func (ctx *moduleContextImpl) isVndkSp() bool {
 
 func (ctx *moduleContextImpl) isVndkExt() bool {
 	return ctx.mod.isVndkExt()
+}
+
+func (ctx *moduleContextImpl) mustUseVendorVariant() bool {
+	return ctx.mod.mustUseVendorVariant()
 }
 
 func (ctx *moduleContextImpl) inRecovery() bool {

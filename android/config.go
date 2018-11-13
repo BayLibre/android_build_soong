@@ -783,6 +783,10 @@ func (c *deviceConfig) ExtraVndkVersions() []string {
 	return c.config.productVariables.ExtraVndkVersions
 }
 
+func (c *deviceConfig) VndkUseCoreVariant() bool {
+	return Bool(c.config.productVariables.VndkUseCoreVariant)
+}
+
 func (c *deviceConfig) SystemSdkVersions() []string {
 	if c.config.productVariables.DeviceSystemSdkVersions == nil {
 		return nil

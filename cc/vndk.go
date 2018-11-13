@@ -46,6 +46,8 @@ type VndkProperties struct {
 
 		// Extending another module
 		Extends *string
+
+		Must_use_vendor_variant *bool
 	}
 }
 
@@ -73,6 +75,10 @@ func (vndk *vndkdep) isVndkSp() bool {
 
 func (vndk *vndkdep) isVndkExt() bool {
 	return vndk.Properties.Vndk.Extends != nil
+}
+
+func (vndk *vndkdep) mustUseVendorVariant() bool {
+	return Bool(vndk.Properties.Vndk.Must_use_vendor_variant)
 }
 
 func (vndk *vndkdep) getVndkExtendsModuleName() string {
@@ -191,11 +197,12 @@ func vndkIsVndkDepAllowed(from *vndkdep, to *vndkdep) error {
 }
 
 var (
-	vndkCoreLibraries    []string
-	vndkSpLibraries      []string
-	llndkLibraries       []string
-	vndkPrivateLibraries []string
-	vndkLibrariesLock    sync.Mutex
+	vndkCoreLibraries             []string
+	vndkSpLibraries               []string
+	llndkLibraries                []string
+	vndkPrivateLibraries          []string
+	vndkUsingCoreVariantLibraries []string
+	vndkLibrariesLock             sync.Mutex
 )
 
 // gather list of vndk-core, vndk-sp, and ll-ndk libs
@@ -223,6 +230,12 @@ func VndkMutator(mctx android.BottomUpMutatorContext) {
 				if m.vndkdep.isVndk() && !m.vndkdep.isVndkExt() {
 					vndkLibrariesLock.Lock()
 					defer vndkLibrariesLock.Unlock()
+					if mctx.DeviceConfig().VndkUseCoreVariant() && !m.vndkdep.mustUseVendorVariant() {
+						if !inList(name, vndkUsingCoreVariantLibraries) {
+							vndkUsingCoreVariantLibraries = append(vndkUsingCoreVariantLibraries, name)
+							sort.Strings(vndkUsingCoreVariantLibraries)
+						}
+					}
 					if m.vndkdep.isVndkSp() {
 						if !inList(name, vndkSpLibraries) {
 							vndkSpLibraries = append(vndkSpLibraries, name)
