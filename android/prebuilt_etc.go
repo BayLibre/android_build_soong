@@ -107,7 +107,7 @@ func (p *PrebuiltEtc) GenerateAndroidBuildActions(ctx ModuleContext) {
 	p.sourceFilePath = ctx.ExpandSource(String(p.properties.Src), "src")
 	filename := String(p.properties.Filename)
 	if filename == "" {
-		filename = ctx.ModuleName()
+		filename = p.sourceFilePath.Base()
 	}
 	p.outputFilePath = PathForModuleOut(ctx, filename).OutputPath
 	p.installDirPath = PathForModuleInstall(ctx, "etc", String(p.properties.Sub_dir))
