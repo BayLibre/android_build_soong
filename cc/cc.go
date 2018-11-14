@@ -172,6 +172,8 @@ type BaseProperties struct {
 	// Deprecated. true is the default, false is invalid.
 	Clang *bool `android:"arch_variant"`
 
+	No_elf_file_check *bool
+
 	// Minimum sdk version supported when compiling against the ndk
 	Sdk_version *string
 

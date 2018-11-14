@@ -74,6 +74,9 @@ func (c *Module) AndroidMk() android.AndroidMkData {
 				if c.useVndk() {
 					fmt.Fprintln(w, "LOCAL_USE_VNDK := true")
 				}
+				if Bool(c.Properties.No_elf_file_check) {
+					fmt.Fprintln(w, "LOCAL_NO_ELF_FILE_CHECK := true")
+				}
 			},
 		},
 	}
