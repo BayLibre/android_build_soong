@@ -493,7 +493,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	manifest := android.PathForModuleSrc(ctx, proptools.StringDefault(a.properties.Manifest, "manifest.json"))
 
 	fcName := proptools.StringDefault(a.properties.File_contexts, a.ModuleBase.Name())
-	fileContextsPath := "system/sepolicy/apex/" + fcName + "_file_contexts"
+	fileContextsPath := "system/sepolicy/apex/" + fcName + "-file_contexts"
 	fileContextsOptionalPath := android.ExistentPathForSource(ctx, fileContextsPath)
 	if !fileContextsOptionalPath.Valid() {
 		ctx.ModuleErrorf("Cannot find file_contexts file: %q", fileContextsPath)
