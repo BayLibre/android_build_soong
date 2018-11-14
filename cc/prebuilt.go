@@ -31,8 +31,11 @@ type prebuiltLinkerInterface interface {
 
 type prebuiltLinker struct {
 	android.Prebuilt
+
 	properties struct {
 		Srcs []string `android:"arch_variant"`
+
+		Check_elf_files *bool
 	}
 }
 
