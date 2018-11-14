@@ -46,6 +46,30 @@
       "revId": "df0704bab83026508f9474bd99c631435fa82584",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5bf0bc46_e5c16288",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-11-14T12:01:56Z",
+      "side": 1,
+      "message": "Sure; SGTM. :)",
+      "parentUuid": "b453861f_5287ef52",
+      "range": {
+        "startLine": 496,
+        "startChar": 57,
+        "endLine": 496,
+        "endChar": 58
+      },
+      "revId": "df0704bab83026508f9474bd99c631435fa82584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
