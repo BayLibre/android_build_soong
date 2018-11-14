@@ -22,6 +22,30 @@
       "revId": "dddd8f49a7527851b6dfcb40f43f61af5c46e593",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f05c44a4_fd95b562",
+        "filename": "cc/config/clang.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-11-14T22:13:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce8034b9_897ee7ea",
+      "range": {
+        "startLine": 160,
+        "startChar": 65,
+        "endLine": 160,
+        "endChar": 72
+      },
+      "revId": "dddd8f49a7527851b6dfcb40f43f61af5c46e593",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
