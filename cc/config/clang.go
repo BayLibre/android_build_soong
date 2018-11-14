@@ -157,6 +157,9 @@ func init() {
 	}, " "))
 
 	pctx.StaticVariable("ClangExtraNoOverrideCflags", strings.Join([]string{
+		// Bug: http://b/119508853 alignof is changed in new clang-abi-compact=8
+		"-fclang-abi-compat=7",
+
 		"-Werror=address-of-temporary",
 		// Bug: http://b/29823425 Disable -Wnull-dereference until the
 		// new cases detected by this warning in Clang r271374 are
