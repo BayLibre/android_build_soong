@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce8034b9_897ee7ea",
+        "filename": "cc/config/clang.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-11-14T22:00:57Z",
+      "side": 1,
+      "message": "compat",
+      "range": {
+        "startLine": 160,
+        "startChar": 65,
+        "endLine": 160,
+        "endChar": 72
+      },
+      "revId": "dddd8f49a7527851b6dfcb40f43f61af5c46e593",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
