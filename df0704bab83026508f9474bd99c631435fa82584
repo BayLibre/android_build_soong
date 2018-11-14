@@ -22,6 +22,30 @@
       "revId": "df0704bab83026508f9474bd99c631435fa82584",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b453861f_5287ef52",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-11-14T03:56:47Z",
+      "side": 1,
+      "message": "Oh I just saw this and I think this is a good point. Will fix in a follow-up CL. I don\u0027t want to rebase the whole topic as this took so many days to get in.",
+      "parentUuid": "3b515dd6_3aa76299",
+      "range": {
+        "startLine": 496,
+        "startChar": 57,
+        "endLine": 496,
+        "endChar": 58
+      },
+      "revId": "df0704bab83026508f9474bd99c631435fa82584",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
