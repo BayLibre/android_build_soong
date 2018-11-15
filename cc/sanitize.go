@@ -358,6 +358,16 @@ func (sanitize *sanitize) deps(ctx BaseModuleContext, deps Deps) Deps {
 	return deps
 }
 
+func hasSanitizeInteger(flags []string) bool {
+	// returns true if any flag is fsanitize*integer
+	for _, f := range flags {
+		if strings.HasPrefix(f, "-fsanitize") && strings.Contains(f, "integer") {
+			return true
+		}
+	}
+	return false
+}
+
 func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 	minimalRuntimeLib := config.UndefinedBehaviorSanitizerMinimalRuntimeLibrary(ctx.toolchain()) + ".a"
 	minimalRuntimePath := "${config.ClangAsanLibDir}/" + minimalRuntimeLib
@@ -510,6 +520,10 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 				flags.libFlags = append([]string{minimalRuntimePath}, flags.libFlags...)
 				flags.LdFlags = append(flags.LdFlags, "-Wl,--exclude-libs,"+minimalRuntimeLib)
 			}
+		}
+		// http://b/119329758, Android core does not boot up with this sanitizer yet.
+		if hasSanitizeInteger(flags.CFlags) {
+			flags.CFlags = append(flags.CFlags, "-fno-sanitize=implicit-integer-sign-change")
 		}
 	}
 
