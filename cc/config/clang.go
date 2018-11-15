@@ -157,6 +157,9 @@ func init() {
 	}, " "))
 
 	pctx.StaticVariable("ClangExtraNoOverrideCflags", strings.Join([]string{
+		// http://b/119329758, Android core does not boot up with this sanitizer yet.
+		"-fno-sanitize=implicit-integer-sign-change",
+
 		"-Werror=address-of-temporary",
 		// Bug: http://b/29823425 Disable -Wnull-dereference until the
 		// new cases detected by this warning in Clang r271374 are
