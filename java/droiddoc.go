@@ -1562,13 +1562,36 @@ func (d *Droidstubs) transformMetalava(ctx android.ModuleContext, implicits andr
 	})
 }
 
-func (d *Droidstubs) transformCheckApi(ctx android.ModuleContext,
+// Check the current API using apicheck, which does a comparison of the api and removed text files.
+func (d *Droidstubs) transformCheckCurrentApi(ctx android.ModuleContext, apiFile, removedApiFile android.Path,
+	checkApiClasspath classpath, msg, opts string, output android.WritablePath) {
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        apiCheck,
+		Description: "check current API",
+		Output:      output,
+		Inputs:      nil,
+		Implicits: append(android.Paths{apiFile, removedApiFile, d.apiFile, d.removedApiFile},
+			checkApiClasspath...),
+		Args: map[string]string{
+			"msg":                   msg,
+			"classpath":             checkApiClasspath.FormJavaClassPath(""),
+			"opts":                  opts,
+			"apiFile":               apiFile.String(),
+			"apiFileToCheck":        d.apiFile.String(),
+			"removedApiFile":        removedApiFile.String(),
+			"removedApiFileToCheck": d.removedApiFile.String(),
+		},
+	})
+}
+
+// Check the last API using Metalava, which compares the APIs for compatibility
+func (d *Droidstubs) transformCheckLastApi(ctx android.ModuleContext,
 	apiFile, removedApiFile android.Path, implicits android.Paths,
 	javaVersion, bootclasspathArgs, classpathArgs, sourcepathArgs, opts, msg string,
 	output android.WritablePath) {
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        metalavaApiCheck,
-		Description: "Metalava Check API",
+		Description: "check last API",
 		Output:      output,
 		Inputs:      d.Javadoc.srcFiles,
 		Implicits: append(android.Paths{apiFile, removedApiFile, d.apiFile, d.removedApiFile},
@@ -1661,7 +1684,7 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			" --check-compatibility:removed:current " + removedApiFile.String() +
 			flags.metalavaInclusionAnnotationsFlags
 
-		d.transformCheckApi(ctx, apiFile, removedApiFile, metalavaCheckApiImplicits,
+		d.transformCheckCurrentApi(ctx, apiFile, removedApiFile, metalavaCheckApiImplicits,
 			javaVersion, flags.bootClasspathArgs, flags.classpathArgs, flags.sourcepathArgs, opts,
 			fmt.Sprintf(`\n******************************\n`+
 				`You have tried to change the API from what has been previously approved.\n\n`+
@@ -1692,7 +1715,7 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			flags.metalavaInclusionAnnotationsFlags + " --check-compatibility:removed:released " +
 			removedApiFile.String() + " "
 
-		d.transformCheckApi(ctx, apiFile, removedApiFile, metalavaCheckApiImplicits,
+		d.transformCheckLastApi(ctx, apiFile, removedApiFile, metalavaCheckApiImplicits,
 			javaVersion, flags.bootClasspathArgs, flags.classpathArgs, flags.sourcepathArgs, opts,
 			`\n******************************\n`+
 				`You have tried to change the API from what has been previously released in\n`+
