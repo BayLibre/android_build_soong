@@ -61,6 +61,18 @@ var (
 			"${soong_zip}", "${zipalign}", "${aapt2}"},
 		Description: "APEX ${image_dir} => ${out}",
 	}, "tool_path", "image_dir", "copy_commands", "manifest", "file_contexts", "canned_fs_config", "key")
+
+	apexProtoConvertRule = pctx.AndroidStaticRule("apexProtoConvertRule",
+		blueprint.RuleParams{
+			Command:     `${aapt2} convert --output-format proto $in -o $out`,
+			CommandDeps: []string{"${aapt2}"},
+		})
+
+	apexBundleRule = pctx.StaticRule("apexBundleRule", blueprint.RuleParams{
+		Command:     `${zip2zip} -i $in -o $out image.img:apex/${abi}.img manifest.json:root/manifest.json AndroidManifest.xml:manifest/AndroidManifest.xml`,
+		CommandDeps: []string{"${zip2zip}"},
+		Description: "app bundle",
+	}, "abi")
 )
 
 var apexSuffix = ".apex"
@@ -102,6 +114,7 @@ func init() {
 	pctx.HostBinToolVariable("resize2fs", "resize2fs")
 	pctx.HostBinToolVariable("sefcontext_compile", "sefcontext_compile")
 	pctx.HostBinToolVariable("soong_zip", "soong_zip")
+	pctx.HostBinToolVariable("zip2zip", "zip2zip")
 	pctx.HostBinToolVariable("zipalign", "zipalign")
 
 	android.RegisterModuleType("apex", apexBundleFactory)
@@ -123,7 +136,7 @@ func apexBundleNamesFor(config android.Config) map[string]map[string]bool {
 // can be built for the apex bundles.
 func apexDepsMutator(mctx android.TopDownMutatorContext) {
 	if _, ok := mctx.Module().(*apexBundle); ok {
-		apexBundleName := mctx.Module().Name()
+		apexBundleName := mctx.ModuleName()
 		mctx.WalkDeps(func(child, parent android.Module) bool {
 			if am, ok := child.(android.ApexModule); ok && am.CanHaveApexVariants() {
 				moduleName := am.Name() + "-" + am.Target().String()
@@ -144,7 +157,7 @@ func apexDepsMutator(mctx android.TopDownMutatorContext) {
 // Create apex variations if a module is included in APEX(s).
 func apexMutator(mctx android.BottomUpMutatorContext) {
 	if am, ok := mctx.Module().(android.ApexModule); ok && am.CanHaveApexVariants() {
-		moduleName := am.Name() + "-" + am.Target().String()
+		moduleName := mctx.ModuleName() + "-" + am.Target().String()
 		if bundleNames, ok := apexBundleNamesFor(mctx.Config())[moduleName]; ok {
 			variations := []string{"platform"}
 			for bn := range bundleNames {
@@ -234,8 +247,9 @@ type apexBundle struct {
 
 	properties apexBundleProperties
 
-	outputFile android.WritablePath
-	installDir android.OutputPath
+	bundleModuleFile android.WritablePath
+	outputFile       android.WritablePath
+	installDir       android.OutputPath
 }
 
 func addDependenciesForNativeModules(ctx android.BottomUpMutatorContext,
@@ -479,9 +493,10 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	sort.Strings(readOnlyPaths)
 	sort.Strings(executablePaths)
 	cannedFsConfig := android.PathForModuleOut(ctx, "canned_fs_config")
-	ctx.ModuleBuild(pctx, android.ModuleBuildParams{
-		Rule:   generateFsConfig,
-		Output: cannedFsConfig,
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        generateFsConfig,
+		Output:      cannedFsConfig,
+		Description: "generate fs config",
 		Args: map[string]string{
 			"ro_paths":   strings.Join(readOnlyPaths, " "),
 			"exec_paths": strings.Join(executablePaths, " "),
@@ -491,7 +506,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	manifest := android.PathForModuleSrc(ctx, proptools.StringDefault(a.properties.Manifest, "manifest.json"))
 	fileContexts := android.PathForModuleSrc(ctx, proptools.StringDefault(a.properties.File_contexts, "file_contexts"))
 
-	unsignedOutputFile := android.PathForModuleOut(ctx, a.ModuleBase.Name()+apexSuffix+".unsigned")
+	unsignedOutputFile := android.PathForModuleOut(ctx, ctx.ModuleName()+apexSuffix+".unsigned")
 
 	filesToCopy := []android.Path{}
 	for file := range copyManifest {
@@ -512,10 +527,11 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	implicitInputs = append(implicitInputs, cannedFsConfig, manifest, fileContexts, keyFile)
 	outHostBinDir := android.PathForOutput(ctx, "host", ctx.Config().PrebuiltOS(), "bin").String()
 	prebuiltSdkToolsBinDir := filepath.Join("prebuilts", "sdk", "tools", runtime.GOOS, "bin")
-	ctx.ModuleBuild(pctx, android.ModuleBuildParams{
-		Rule:      apexRule,
-		Implicits: implicitInputs,
-		Output:    unsignedOutputFile,
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        apexRule,
+		Implicits:   implicitInputs,
+		Output:      unsignedOutputFile,
+		Description: "apex",
 		Args: map[string]string{
 			"tool_path":        outHostBinDir + ":" + prebuiltSdkToolsBinDir,
 			"image_dir":        android.PathForModuleOut(ctx, "image").String(),
@@ -527,7 +543,34 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		},
 	})
 
-	a.outputFile = android.PathForModuleOut(ctx, a.ModuleBase.Name()+apexSuffix)
+	var abis []string
+	for _, target := range ctx.MultiTargets() {
+		abis = append(abis, target.Arch.Abi[0])
+	}
+	abis = android.FirstUniqueStrings(abis)
+
+	apexProtoFile := android.PathForModuleOut(ctx, ctx.ModuleName()+".pb"+apexSuffix)
+	bundleModuleFile := android.PathForModuleOut(ctx, ctx.ModuleName()+"-base.zip")
+	a.bundleModuleFile = bundleModuleFile
+
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        apexProtoConvertRule,
+		Input:       unsignedOutputFile,
+		Output:      apexProtoFile,
+		Description: "apex proto convert",
+	})
+
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        apexBundleRule,
+		Input:       apexProtoFile,
+		Output:      bundleModuleFile,
+		Description: "apex bundle module",
+		Args: map[string]string{
+			"abi": strings.Join(abis, "."),
+		},
+	})
+
+	a.outputFile = android.PathForModuleOut(ctx, ctx.ModuleName()+apexSuffix)
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        java.Signapk,
 		Description: "signapk",
@@ -553,6 +596,8 @@ func (a *apexBundle) AndroidMk() android.AndroidMkData {
 			fmt.Fprintln(w, "LOCAL_INSTALLED_MODULE_STEM :=", name+apexSuffix)
 			fmt.Fprintln(w, "LOCAL_REQUIRED_MODULES :=", String(a.properties.Key))
 			fmt.Fprintln(w, "include $(BUILD_PREBUILT)")
+
+			fmt.Fprintln(w, "ALL_MODULES.$(LOCAL_MODULE).BUNDLE :=", a.bundleModuleFile.String())
 		}}
 }
 
