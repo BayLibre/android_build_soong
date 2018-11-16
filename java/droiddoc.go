@@ -1562,13 +1562,68 @@ func (d *Droidstubs) transformMetalava(ctx android.ModuleContext, implicits andr
 	})
 }
 
-func (d *Droidstubs) transformCheckApi(ctx android.ModuleContext,
+// Check the current API using apicheck, which does a comparison of the api and removed text files.
+func (d *Droidstubs) transformCheckCurrentApi(ctx android.ModuleContext, apiFile, removedApiFile android.Path,
+	msg, opts string, output android.WritablePath) {
+
+	jsilver := android.PathForOutput(ctx, "host", ctx.Config().PrebuiltOS(), "framework", "jsilver.jar")
+	doclava := android.PathForOutput(ctx, "host", ctx.Config().PrebuiltOS(), "framework", "doclava.jar")
+	java8Home := ctx.Config().Getenv("ANDROID_JAVA8_HOME")
+	checkApiClasspath := classpath{jsilver, doclava, android.PathForSource(ctx, java8Home, "lib/tools.jar")}
+
+	errorOpts := strings.Join([]string{
+		"-error 2",
+		"-error 3",
+		"-error 4",
+		"-error 5",
+		"-error 6",
+		"-error 7",
+		"-error 8",
+		"-error 9",
+		"-error 10",
+		"-error 11",
+		"-error 12",
+		"-error 13",
+		"-error 14",
+		"-error 15",
+		"-error 16",
+		"-error 17",
+		"-error 18",
+		"-error 19",
+		"-error 20",
+		"-error 21",
+		"-error 23",
+		"-error 24",
+		"-error 25",
+	}, " ")
+
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        apiCheck,
+		Description: "check current API",
+		Output:      output,
+		Inputs:      nil,
+		Implicits: append(android.Paths{apiFile, removedApiFile, d.apiFile, d.removedApiFile},
+			checkApiClasspath...),
+		Args: map[string]string{
+			"msg":                   msg,
+			"classpath":             checkApiClasspath.FormJavaClassPath(""),
+			"opts":                  opts + " " + errorOpts,
+			"apiFile":               apiFile.String(),
+			"apiFileToCheck":        d.apiFile.String(),
+			"removedApiFile":        removedApiFile.String(),
+			"removedApiFileToCheck": d.removedApiFile.String(),
+		},
+	})
+}
+
+// Check the last API using Metalava, which compares the APIs for compatibility
+func (d *Droidstubs) transformCheckLastApi(ctx android.ModuleContext,
 	apiFile, removedApiFile android.Path, implicits android.Paths,
 	javaVersion, bootclasspathArgs, classpathArgs, sourcepathArgs, opts, msg string,
 	output android.WritablePath) {
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        metalavaApiCheck,
-		Description: "Metalava Check API",
+		Description: "check last API",
 		Output:      output,
 		Inputs:      d.Javadoc.srcFiles,
 		Implicits: append(android.Paths{apiFile, removedApiFile, d.apiFile, d.removedApiFile},
@@ -1657,12 +1712,8 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			"check_api.current_removed_api_file")
 
 		d.checkCurrentApiTimestamp = android.PathForModuleOut(ctx, "check_current_api.timestamp")
-		opts := " " + d.Javadoc.args + " --check-compatibility:api:current " + apiFile.String() +
-			" --check-compatibility:removed:current " + removedApiFile.String() +
-			flags.metalavaInclusionAnnotationsFlags
 
-		d.transformCheckApi(ctx, apiFile, removedApiFile, metalavaCheckApiImplicits,
-			javaVersion, flags.bootClasspathArgs, flags.classpathArgs, flags.sourcepathArgs, opts,
+		d.transformCheckCurrentApi(ctx, apiFile, removedApiFile,
 			fmt.Sprintf(`\n******************************\n`+
 				`You have tried to change the API from what has been previously approved.\n\n`+
 				`To make these errors go away, you have two choices:\n`+
@@ -1673,7 +1724,7 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 				`      To submit the revised current.txt to the main Android repository,\n`+
 				`      you will need approval.\n`+
 				`******************************\n`, ctx.ModuleName()),
-			d.checkCurrentApiTimestamp)
+			String(d.properties.Check_api.Current.Args), d.checkCurrentApiTimestamp)
 
 		d.updateCurrentApiTimestamp = android.PathForModuleOut(ctx, "update_current_api.timestamp")
 		transformUpdateApi(ctx, apiFile, removedApiFile, d.apiFile, d.removedApiFile,
@@ -1692,7 +1743,7 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			flags.metalavaInclusionAnnotationsFlags + " --check-compatibility:removed:released " +
 			removedApiFile.String() + " "
 
-		d.transformCheckApi(ctx, apiFile, removedApiFile, metalavaCheckApiImplicits,
+		d.transformCheckLastApi(ctx, apiFile, removedApiFile, metalavaCheckApiImplicits,
 			javaVersion, flags.bootClasspathArgs, flags.classpathArgs, flags.sourcepathArgs, opts,
 			`\n******************************\n`+
 				`You have tried to change the API from what has been previously released in\n`+
