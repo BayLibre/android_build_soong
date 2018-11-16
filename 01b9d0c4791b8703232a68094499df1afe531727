@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98db9406_dcd74876",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1574,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2018-11-16T22:05:42Z",
+      "side": 1,
+      "message": "Did you leave out 26 and 27 intentionally? If so, can you add a comment on why?\n\nIt\u0027d also be nice to make it clean what these options are for, e.g. \"Treat API verification failures as errors\".",
+      "revId": "01b9d0c4791b8703232a68094499df1afe531727",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
