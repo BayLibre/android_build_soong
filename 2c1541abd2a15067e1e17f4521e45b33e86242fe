@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61a7a497_0ca09db9",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1577,
+      "author": {
+        "id": 1004689
+      },
+      "writtenOn": "2018-11-17T01:02:19Z",
+      "side": 1,
+      "message": "FYI these flags are handled in doclava in ReleaseType.kt:\nhttps://android.googlesource.com/platform/tools/metalava/+/HEAD/src/main/java/com/android/tools/metalava/ReleaseType.kt\n\nInstead of having the build system pass in a large set of logical enable/disable flags, it just passes in the \"type\" of check to be made (current vs last api) and then the right set of flags is picked based on that. But these flag overrides will work too.",
+      "revId": "2c1541abd2a15067e1e17f4521e45b33e86242fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
