@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "374284d5_ae0506af",
+        "filename": "cc/proto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-11-17T22:04:34Z",
+      "side": 1,
+      "message": "This doesn\u0027t match the logic in protoDeps, but it matches the previous behavior, and based on treehugger, it looks like code is relying on this.",
+      "range": {
+        "startLine": 150,
+        "startChar": 13,
+        "endLine": 150,
+        "endChar": 16
+      },
+      "revId": "7d476bddbfaf7388d01e4242a3d85f4c843b0283",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
