@@ -16,6 +16,8 @@ package cc
 
 import (
 	"regexp"
+	"sort"
+	"strconv"
 	"strings"
 	"sync"
 
@@ -925,10 +927,14 @@ func reuseStaticLibrary(mctx android.BottomUpMutatorContext, static, shared *Mod
 			len(sharedCompiler.Properties.Shared.Cflags) == 0 {
 
 			mctx.AddInterVariantDependency(reuseObjTag, shared, static)
-			sharedCompiler.baseCompiler.Properties.OriginalSrcs =
-				sharedCompiler.baseCompiler.Properties.Srcs
-			sharedCompiler.baseCompiler.Properties.Srcs = nil
-			sharedCompiler.baseCompiler.Properties.Generated_sources = nil
+			// Don't reset Srcs and Generated_sources. Just mark that we "prefer"
+			// to reuse objects. Final decision on whether to reuse or not will
+			// be made when generating build actions depending on the context.
+			// To be specific, objects are not reused when building for APEX in
+			// order to have exported cflags from the bionic libs (libc, etc.)
+			// This is required because we don't add the bionic libs to the
+			// LateSharedLibs when building for static variant.
+			sharedCompiler.baseCompiler.Properties.ReuseObjs = true
 		}
 	}
 }
@@ -958,30 +964,65 @@ func LinkageMutator(mctx android.BottomUpMutatorContext) {
 	}
 }
 
+// maps a module name to the list of stubs versions available for the module
+func stubsVersionsFor(config android.Config) map[string][]string {
+	return config.Once("stubVersions", func() interface{} {
+		return make(map[string][]string)
+	}).(map[string][]string)
+}
+
+var stubsVersionsLock sync.Mutex
+
+func latestStubsVersionFor(config android.Config, name string) string {
+	versions, ok := stubsVersionsFor(config)[name]
+	if ok && len(versions) > 0 {
+		// the versions are alreay sorted in ascending order
+		return versions[len(versions)-1]
+	}
+	return ""
+}
+
 // Version mutator splits a module into the mandatory non-stubs variant
-// (which is named "impl") and zero or more stubs variants.
-func versionMutator(mctx android.BottomUpMutatorContext) {
+// (which is unnamed) and zero or more stubs variants.
+func VersionMutator(mctx android.BottomUpMutatorContext) {
 	if mctx.Os() != android.Android {
 		return
 	}
 
 	if m, ok := mctx.Module().(*Module); ok && !m.inRecovery() && m.linker != nil {
-		if library, ok := m.linker.(*libraryDecorator); ok && library.buildShared() {
-			versions := []string{""}
+		if library, ok := m.linker.(*libraryDecorator); ok && library.buildShared() &&
+			len(library.Properties.Stubs.Versions) > 0 {
+			versions := []string{}
 			for _, v := range library.Properties.Stubs.Versions {
+				if _, err := strconv.Atoi(v); err != nil {
+					mctx.PropertyErrorf("versions", "%q is not a number", v)
+				}
 				versions = append(versions, v)
 			}
+			sort.Slice(versions, func(i, j int) bool {
+				left, _ := strconv.Atoi(versions[i])
+				right, _ := strconv.Atoi(versions[j])
+				return left < right
+			})
+
+			// save the list of versions for later use
+			copiedVersions := make([]string, len(versions))
+			copy(copiedVersions, versions)
+			stubsVersionsLock.Lock()
+			defer stubsVersionsLock.Unlock()
+			stubsVersionsFor(mctx.Config())[mctx.ModuleName()] = copiedVersions
+
+			// "" is for the non-stubs variant
+			versions = append(versions, "")
+
 			modules := mctx.CreateVariations(versions...)
 			for i, m := range modules {
 				l := m.(*Module).linker.(*libraryDecorator)
-				if i == 0 {
-					l.MutatedProperties.BuildStubs = false
-					continue
+				if versions[i] != "" {
+					l.MutatedProperties.BuildStubs = true
+					l.MutatedProperties.StubsVersion = versions[i]
+					m.(*Module).Properties.HideFromMake = true
 				}
-				// Mark that this variant is for stubs.
-				l.MutatedProperties.BuildStubs = true
-				l.MutatedProperties.StubsVersion = versions[i]
-				m.(*Module).Properties.HideFromMake = true
 			}
 		} else {
 			mctx.CreateVariations("")
