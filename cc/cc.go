@@ -39,7 +39,7 @@ func init() {
 		ctx.BottomUp("vndk", vndkMutator).Parallel()
 		ctx.BottomUp("ndk_api", ndkApiMutator).Parallel()
 		ctx.BottomUp("test_per_src", testPerSrcMutator).Parallel()
-		ctx.BottomUp("version", versionMutator).Parallel()
+		ctx.BottomUp("version", VersionMutator).Parallel()
 		ctx.BottomUp("begin", BeginMutator).Parallel()
 	})
 
@@ -244,6 +244,7 @@ type ModuleContextIntf interface {
 	baseModuleName() string
 	getVndkExtendsModuleName() string
 	isPgoCompile() bool
+	isApex() bool
 }
 
 type ModuleContext interface {
@@ -303,6 +304,8 @@ type dependencyTag struct {
 	library bool
 
 	reexportFlags bool
+
+	explicitlyVersioned bool
 }
 
 var (
@@ -502,6 +505,20 @@ func (c *Module) onlyInRecovery() bool {
 	return c.ModuleBase.InstallInRecovery()
 }
 
+func (c *Module) IsStubs() bool {
+	if library, ok := c.linker.(*libraryDecorator); ok {
+		return library.buildStubs()
+	}
+	return false
+}
+
+func (c *Module) HasStubsVariants() bool {
+	if library, ok := c.linker.(*libraryDecorator); ok {
+		return len(library.Properties.Stubs.Versions) > 0
+	}
+	return false
+}
+
 type baseModuleContext struct {
 	android.BaseContext
 	moduleContextImpl
@@ -634,6 +651,11 @@ func (ctx *moduleContextImpl) baseModuleName() string {
 
 func (ctx *moduleContextImpl) getVndkExtendsModuleName() string {
 	return ctx.mod.getVndkExtendsModuleName()
+}
+
+// Tests if this module is built for APEX
+func (ctx *moduleContextImpl) isApex() bool {
+	return ctx.mod.ApexName() != ""
 }
 
 func newBaseModule(hod android.HostOrDeviceSupported, multilib android.Multilib) *Module {
@@ -1064,6 +1086,30 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 		{Mutator: "link", Variation: "static"},
 	}, lateStaticDepTag, deps.LateStaticLibs...)
 
+	addSharedLibDependencies := func(depTag dependencyTag, name string, version string) {
+		var variations []blueprint.Variation
+		variations = append(variations, blueprint.Variation{Mutator: "link", Variation: "shared"})
+		versionVariantAvail := ctx.Os() == android.Android && !ctx.useVndk() && !c.inRecovery()
+		if version != "" && versionVariantAvail {
+			// Version is explicitly specified. i.e. libFoo#30
+			variations = append(variations, blueprint.Variation{Mutator: "version", Variation: version})
+			depTag.explicitlyVersioned = true
+		}
+		actx.AddVariationDependencies(variations, depTag, name)
+
+		// If the version is not specified, add dependency to the latest stubs library.
+		// The stubs library will be used when the depending module is built for APEX and
+		// the dependent module is not in the same APEX.
+		latestVersion := latestStubsVersionFor(actx.Config(), name)
+		if version == "" && latestVersion != "" && versionVariantAvail {
+			actx.AddVariationDependencies([]blueprint.Variation{
+				{Mutator: "link", Variation: "shared"},
+				{Mutator: "version", Variation: latestVersion},
+			}, depTag, name)
+			// Note that depTag.explicitlyVersioned is false in this case.
+		}
+	}
+
 	// shared lib names without the #version suffix
 	var sharedLibNames []string
 
@@ -1074,29 +1120,17 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 		if inList(lib, deps.ReexportSharedLibHeaders) {
 			depTag = sharedExportDepTag
 		}
-		var variations []blueprint.Variation
-		variations = append(variations, blueprint.Variation{Mutator: "link", Variation: "shared"})
-		if version != "" && ctx.Os() == android.Android && !ctx.useVndk() && !c.inRecovery() {
-			variations = append(variations, blueprint.Variation{Mutator: "version", Variation: version})
-		}
-		actx.AddVariationDependencies(variations, depTag, name)
+		addSharedLibDependencies(depTag, name, version)
 	}
 
 	for _, lib := range deps.LateSharedLibs {
-		name, version := stubsLibNameAndVersion(lib)
-		if inList(name, sharedLibNames) {
+		if inList(lib, sharedLibNames) {
 			// This is to handle the case that some of the late shared libs (libc, libdl, libm, ...)
 			// are added also to SharedLibs with version (e.g., libc#10). If not skipped, we will be
 			// linking against both the stubs lib and the non-stubs lib at the same time.
 			continue
 		}
-		depTag := lateSharedDepTag
-		var variations []blueprint.Variation
-		variations = append(variations, blueprint.Variation{Mutator: "link", Variation: "shared"})
-		if version != "" && ctx.Os() == android.Android && !ctx.useVndk() && !c.inRecovery() {
-			variations = append(variations, blueprint.Variation{Mutator: "version", Variation: version})
-		}
-		actx.AddVariationDependencies(variations, depTag, name)
+		addSharedLibDependencies(lateSharedDepTag, lib, "")
 	}
 
 	actx.AddVariationDependencies([]blueprint.Variation{
@@ -1346,14 +1380,60 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 		// re-exporting flags
 		if depTag == reuseObjTag {
 			if l, ok := ccDep.compiler.(libraryInterface); ok {
-				c.staticVariant = ccDep
-				objs, flags, deps := l.reuseObjs()
-				depPaths.Objs = depPaths.Objs.Append(objs)
-				depPaths.ReexportedFlags = append(depPaths.ReexportedFlags, flags...)
-				depPaths.ReexportedFlagsDeps = append(depPaths.ReexportedFlagsDeps, deps...)
-				return
+				if _, ok := c.compiler.(*libraryDecorator); ok && !c.IsForPlatform() {
+					// Don't reuse objects when building for APEX
+				} else {
+					c.staticVariant = ccDep
+					objs, flags, deps := l.reuseObjs()
+					depPaths.Objs = depPaths.Objs.Append(objs)
+					depPaths.ReexportedFlags = append(depPaths.ReexportedFlags, flags...)
+					depPaths.ReexportedFlagsDeps = append(depPaths.ReexportedFlagsDeps, deps...)
+					return
+				}
 			}
 		}
+
+		// Extract explicitlyVersioned field from the depTag and reset it inside the struct.
+		// Otherwise, sharedDepTag and lateSharedDepTag with explicitlyVersioned set to true
+		// won't be matched to sharedDepTag and lateSharedDepTag.
+		explicitlyVersioned := false
+		if t, ok := depTag.(dependencyTag); ok {
+			explicitlyVersioned = t.explicitlyVersioned
+			t.explicitlyVersioned = false
+			depTag = t
+		}
+
+		if dependentLibrary, ok := ccDep.linker.(*libraryDecorator); ok {
+			depIsStubs := dependentLibrary.buildStubs()
+			depHasStubs := ccDep.HasStubsVariants()
+			depInSameApex := android.DirectlyInApex(ctx.Config(), c.ApexName(), depName+"-"+ccDep.Target().String())
+
+			var useThisDep bool
+			// Always respect dependency to the versioned stubs (i.e. libX#10)
+			if depIsStubs && explicitlyVersioned {
+				useThisDep = true
+			} else if c.IsForPlatform() {
+				// If not building for APEX, use non-stub variant.
+				// stubs variant is ignored unless explicitly versioned.
+				useThisDep = !depIsStubs
+			} else {
+				// If building for APEX ...
+				if !depHasStubs {
+					// use non-stub variant if that is the only choics property)
+					// (i.e. depending on a lib without stubs.version property)
+					useThisDep = true
+				} else {
+					// if stubs variant is available, use stubs only when
+					// it is not from the same APEX.
+					useThisDep = (depInSameApex != depIsStubs)
+				}
+			}
+
+			if !useThisDep {
+				return // stop processing this dep
+			}
+		}
+
 		if t, ok := depTag.(dependencyTag); ok && t.library {
 			if i, ok := ccDep.linker.(exportedFlagsProducer); ok {
 				flags := i.exportedFlags()
