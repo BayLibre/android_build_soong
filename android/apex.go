@@ -94,6 +94,28 @@ func (m *ApexModuleBase) IsInstallableToApex() bool {
 	return false
 }
 
+// This structure maps a module name to the set of APEX bundle names that the module
+// should be built for. Examples:
+//
+// ...["foo"]["bar"] == true: module foo is directly depended on by APEX bar
+// ...["foo"]["bar"] == false: module foo is indirectly depended on by APEX bar
+// ...["foo"]["bar"] doesn't exist: foo is not built for APEX bar
+// ...["foo"] doesn't exist: foo is not built for any APEX
+func ApexBundleNamesFor(config Config) map[string]map[string]bool {
+	return config.Once("apexBundleNames", func() interface{} {
+		return make(map[string]map[string]bool)
+	}).(map[string]map[string]bool)
+}
+
+// Tests if moduleName is directly depended on by bundleName (i.e. referenced in
+// native_shared_libs, etc.)
+func DirectlyInApex(config Config, bundleName string, moduleName string) bool {
+	if bundleNames, ok := ApexBundleNamesFor(config)[moduleName]; ok {
+		return bundleNames[bundleName]
+	}
+	return false
+}
+
 func InitApexModule(m ApexModule) {
 	base := m.apexModuleBase()
 	base.canHaveApexVariants = true
