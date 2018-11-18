@@ -165,6 +165,9 @@ type BaseCompilerProperties struct {
 	// Stores the original list of source files before being cleared by library reuse
 	OriginalSrcs []string `blueprint:"mutated"`
 
+	// Whether this module prefer reusing objects from static variant
+	ReuseObjs bool `blueprint:"mutated"`
+
 	// Build and link with OpenMP
 	Openmp *bool `android:"arch_variant"`
 }
@@ -255,8 +258,19 @@ func addToModuleList(ctx ModuleContext, list string, module string) {
 func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps PathDeps) Flags {
 	tc := ctx.toolchain()
 
-	compiler.srcsBeforeGen = ctx.ExpandSources(compiler.Properties.Srcs, compiler.Properties.Exclude_srcs)
-	compiler.srcsBeforeGen = append(compiler.srcsBeforeGen, deps.GeneratedSources...)
+	reuseObjs := compiler.Properties.ReuseObjs
+
+	// When building for APEX, don't reuse objects from static variant. This is to have
+	// source code compiled with cflags from bionic libs (e.g., __LIBC_API__),
+	// which are NOT added for static libraries.
+	if ctx.isApex() {
+		reuseObjs = false
+	}
+
+	if !reuseObjs {
+		compiler.srcsBeforeGen = ctx.ExpandSources(compiler.Properties.Srcs, compiler.Properties.Exclude_srcs)
+		compiler.srcsBeforeGen = append(compiler.srcsBeforeGen, deps.GeneratedSources...)
+	}
 
 	CheckBadCompilerFlags(ctx, "cflags", compiler.Properties.Cflags)
 	CheckBadCompilerFlags(ctx, "cppflags", compiler.Properties.Cppflags)
