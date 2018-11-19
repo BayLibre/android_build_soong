@@ -59,6 +59,8 @@ var (
 		"sse4_2": []string{"-msse4.2"},
 		"popcnt": []string{"-mpopcnt"},
 		"avx":    []string{"-mavx"},
+		"avx2":   []string{"-mavx2"},
+		"avx512": []string{"-mavx512"},
 		"aes_ni": []string{"-maes"},
 	}
 )
@@ -69,10 +71,17 @@ const (
 
 func init() {
 	android.RegisterArchVariants(android.X86_64,
+		"amberlake",
+		"broadwell",
 		"haswell",
+		"icelake",
 		"ivybridge",
+		"kabylake",
 		"sandybridge",
-		"silvermont")
+		"silvermont",
+		"skylake",
+		"tigerlake",
+		"whiskeylake")
 	android.RegisterArchFeatures(android.X86_64,
 		"ssse3",
 		"sse4",
@@ -80,12 +89,32 @@ func init() {
 		"sse4_2",
 		"aes_ni",
 		"avx",
+		"avx2",
+		"avx512",
 		"popcnt")
 	android.RegisterArchVariantFeatures(android.X86_64, "",
 		"ssse3",
 		"sse4",
 		"sse4_1",
 		"sse4_2",
+		"popcnt")
+	android.RegisterArchVariantFeatures(android.X86_64, "amberlake",
+		"ssse3",
+		"sse4",
+		"sse4_1",
+		"sse4_2",
+		"aes_ni",
+		"avx",
+		"avx2",
+		"popcnt")
+	android.RegisterArchVariantFeatures(android.X86_64, "broadwell",
+		"ssse3",
+		"sse4",
+		"sse4_1",
+		"sse4_2",
+		"aes_ni",
+		"avx",
+		"avx2",
 		"popcnt")
 	android.RegisterArchVariantFeatures(android.X86_64, "haswell",
 		"ssse3",
@@ -95,6 +124,16 @@ func init() {
 		"aes_ni",
 		"avx",
 		"popcnt")
+	android.RegisterArchVariantFeatures(android.X86_64, "icelake",
+		"ssse3",
+		"sse4",
+		"sse4_1",
+		"sse4_2",
+		"aes_ni",
+		"avx",
+		"avx2",
+		"avx512",
+		"popcnt")
 	android.RegisterArchVariantFeatures(android.X86_64, "ivybridge",
 		"ssse3",
 		"sse4",
@@ -102,6 +141,15 @@ func init() {
 		"sse4_2",
 		"aes_ni",
 		"avx",
+		"popcnt")
+	android.RegisterArchVariantFeatures(android.X86_64, "kabylake",
+		"ssse3",
+		"sse4",
+		"sse4_1",
+		"sse4_2",
+		"aes_ni",
+		"avx",
+		"avx2",
 		"popcnt")
 	android.RegisterArchVariantFeatures(android.X86_64, "sandybridge",
 		"ssse3",
@@ -116,7 +164,36 @@ func init() {
 		"sse4_2",
 		"aes_ni",
 		"popcnt")
-
+	android.RegisterArchVariantFeatures(android.X86_64, "skylake",
+		"ssse3",
+		"sse4",
+		"sse4_1",
+		"sse4_2",
+		"aes_ni",
+		"avx",
+		"avx2",
+		"avx512",
+		"popcnt")
+	android.RegisterArchVariantFeatures(android.X86_64, "tigerlake",
+		"ssse3",
+		"sse4",
+		"sse4_1",
+		"sse4_2",
+		"aes_ni",
+		"avx",
+		"avx2",
+		"avx512",
+		"popcnt")
+	android.RegisterArchVariantFeatures(android.X86_64, "whiskeylake",
+		"ssse3",
+		"sse4",
+		"sse4_1",
+		"sse4_2",
+		"aes_ni",
+		"avx",
+		"avx2",
+		"avx512",
+		"popcnt")
 	pctx.StaticVariable("x86_64GccVersion", x86_64GccVersion)
 
 	pctx.SourcePathVariable("X86_64GccRoot",
