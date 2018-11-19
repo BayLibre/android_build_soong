@@ -435,7 +435,6 @@ toolchain_library {
             src: "prebuilts/gcc/linux-x86/host/x86_64-w64-mingw32-4.8/x86_64-w64-mingw32/lib/libwinpthread.a",
         },
     },
-    notice: ":mingw-libwinpthread-notice",
 }
 
 toolchain_library {
