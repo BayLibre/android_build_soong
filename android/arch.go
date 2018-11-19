@@ -1110,12 +1110,14 @@ func getMegaDeviceConfig() []archConfig {
 		{"x86", "ivybridge", "", []string{"x86"}},
 		{"x86", "sandybridge", "", []string{"x86"}},
 		{"x86", "silvermont", "", []string{"x86"}},
+		{"x86", "avx2_arch", "", []string{"x86"}},
 		{"x86", "x86_64", "", []string{"x86"}},
 		{"x86_64", "", "", []string{"x86_64"}},
 		{"x86_64", "haswell", "", []string{"x86_64"}},
 		{"x86_64", "ivybridge", "", []string{"x86_64"}},
 		{"x86_64", "sandybridge", "", []string{"x86_64"}},
 		{"x86_64", "silvermont", "", []string{"x86_64"}},
+		{"x86_64", "avx2_arch", "", []string{"x86_64"}},
 	}
 }
 
