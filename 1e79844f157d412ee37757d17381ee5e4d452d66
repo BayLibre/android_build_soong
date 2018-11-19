@@ -16,6 +16,24 @@
       "revId": "1e79844f157d412ee37757d17381ee5e4d452d66",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cda03cf1_352988ee",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2018-11-19T20:51:31Z",
+      "side": 1,
+      "message": "Do you mean in bionic/libc/Android.bp? We don\u0027t want to enable hwasan in production builds.",
+      "parentUuid": "9e02f8ee_d9955c6a",
+      "revId": "1e79844f157d412ee37757d17381ee5e4d452d66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
