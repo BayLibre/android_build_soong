@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e02f8ee_d9955c6a",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-11-19T20:46:10Z",
+      "side": 1,
+      "message": "There is already a hwaddress Android.bp property, how about setting that and not overriding it in recovery?  So ctx.inRecovery() overrides SANITIZE_TARGET\u003dhwaddress, but not hwaddress: true in the Android.bp.",
+      "revId": "1e79844f157d412ee37757d17381ee5e4d452d66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
