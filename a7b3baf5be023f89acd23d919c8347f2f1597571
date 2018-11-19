@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7bc7f9fb_ec568e46",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1434,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-11-19T17:42:10Z",
+      "side": 1,
+      "message": "Wrap this line, or do something like:\n\nif s :\u003d String(d.properties.Validate_nullability_from_list); s !\u003d \"\" {\n    flags +\u003d \" --validate-nullability-from-list \" + ctx.ExpandSource(s, \"validate_nullability_from_list\").String()\n}",
+      "revId": "a7b3baf5be023f89acd23d919c8347f2f1597571",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
