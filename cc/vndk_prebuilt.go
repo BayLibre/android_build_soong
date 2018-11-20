@@ -60,6 +60,8 @@ type vndkPrebuiltProperties struct {
 
 	// Prebuilt files for each arch.
 	Srcs []string `android:"arch_variant"`
+
+	Check_elf_files *bool
 }
 
 type vndkPrebuiltLibraryDecorator struct {
@@ -154,6 +156,8 @@ func vndkPrebuiltSharedLibrary() *Module {
 	prebuilt := &vndkPrebuiltLibraryDecorator{
 		libraryDecorator: library,
 	}
+
+	prebuilt.properties.Check_elf_files = BoolPtr(false)
 
 	module.compiler = nil
 	module.linker = prebuilt
