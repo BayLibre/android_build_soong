@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7600f160_34062fcf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-11-20T18:26:59Z",
+      "side": 1,
+      "message": "Could you add this:\n\n  Bug: 119564566\n\nhere (that\u0027s our internal bug number for this issue). Thanks!",
+      "revId": "bf8f264a4592ca1a94306539e1da99d1b3420c7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
