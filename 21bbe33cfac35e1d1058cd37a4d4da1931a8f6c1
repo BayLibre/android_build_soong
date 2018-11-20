@@ -16,6 +16,24 @@
       "revId": "21bbe33cfac35e1d1058cd37a4d4da1931a8f6c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "299c7280_405687ff",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 877,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2018-11-20T01:32:48Z",
+      "side": 1,
+      "message": "I think that\u0027s true. But it looks like I can work around the issue by passing -Xclang before -fsanitize-minimal-runtime to bypass the check in the driver. I\u0027ll upload a new patch with that workaround.",
+      "parentUuid": "42deff45_e0ea0df3",
+      "revId": "21bbe33cfac35e1d1058cd37a4d4da1931a8f6c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
