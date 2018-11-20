@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d320fdcf_b0412606",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2018-11-20T17:20:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dca6f250_3e7304a3",
+      "revId": "9dc75d4cb88f1af2eb5e11abd263d4b26add6adf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6becc4c9_802357ca",
         "filename": "cc/config/arm_device.go",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "9dc75d4cb88f1af2eb5e11abd263d4b26add6adf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b481247_0f828937",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2018-11-20T17:20:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6becc4c9_802357ca",
+      "range": {
+        "startLine": 155,
+        "startChar": 3,
+        "endLine": 155,
+        "endChar": 77
+      },
+      "revId": "9dc75d4cb88f1af2eb5e11abd263d4b26add6adf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
