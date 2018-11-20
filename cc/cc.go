@@ -190,7 +190,8 @@ type BaseProperties struct {
 	HideFromMake             bool     `blueprint:"mutated"`
 	PreventInstall           bool     `blueprint:"mutated"`
 
-	UseVndk bool `blueprint:"mutated"`
+	UseVndk       bool `blueprint:"mutated"`
+	CoreOnProduct bool `blueprint:"mutated"`
 
 	// *.logtags files, to combine together in order to generate the /system/etc/event-log-tags
 	// file
@@ -221,6 +222,11 @@ type VendorProperties struct {
 	// Nothing happens if BOARD_VNDK_VERSION isn't set in the BoardConfig.mk
 	Vendor_available *bool
 
+	// whether the core variant of the `vendor_availabe` modules should be installed on
+	// product partition. If `core_on_product: true` is not defined, the core variant
+	// will be installed on the /system by default.
+	Core_on_product *bool
+
 	// whether this module is capable of being loaded with other instance
 	// (possibly an older version) of the same module in the same process.
 	// Currently, a shared library that is a member of VNDK (vndk: {enabled: true})
@@ -241,6 +247,7 @@ type ModuleContextIntf interface {
 	isVndk() bool
 	isVndkSp() bool
 	isVndkExt() bool
+	isCoreOnProduct() bool
 	inRecovery() bool
 	shouldCreateVndkSourceAbiDump() bool
 	selectedStl() string
@@ -491,6 +498,10 @@ func (c *Module) getVndkExtendsModuleName() string {
 	return ""
 }
 
+func (c *Module) isCoreOnProduct() bool {
+	return c.Properties.CoreOnProduct
+}
+
 // Returns true only when this module is configured to have core and vendor
 // variants.
 func (c *Module) hasVendorVariant() bool {
@@ -523,6 +534,11 @@ type moduleContext struct {
 func (ctx *moduleContext) SocSpecific() bool {
 	return ctx.ModuleContext.SocSpecific() ||
 		(ctx.mod.hasVendorVariant() && ctx.mod.useVndk() && !ctx.mod.isVndk())
+}
+
+func (ctx *moduleContext) ProductSpecific() bool {
+	return ctx.ModuleContext.ProductSpecific() ||
+		(ctx.mod.hasVendorVariant() && !ctx.mod.useVndk() && ctx.mod.isCoreOnProduct())
 }
 
 type moduleContextImpl struct {
@@ -590,6 +606,10 @@ func (ctx *moduleContextImpl) isVndkSp() bool {
 
 func (ctx *moduleContextImpl) isVndkExt() bool {
 	return ctx.mod.isVndkExt()
+}
+
+func (ctx *moduleContextImpl) isCoreOnProduct() bool {
+	return ctx.mod.isCoreOnProduct()
 }
 
 func (ctx *moduleContextImpl) inRecovery() bool {
@@ -1741,11 +1761,20 @@ func imageMutator(mctx android.BottomUpMutatorContext) {
 
 	// Sanity check
 	vendorSpecific := mctx.SocSpecific() || mctx.DeviceSpecific()
+	coreOnProduct := Bool(m.VendorProperties.Core_on_product)
 
-	if m.VendorProperties.Vendor_available != nil && vendorSpecific {
-		mctx.PropertyErrorf("vendor_available",
-			"doesn't make sense at the same time as `vendor: true`, `proprietary: true`, or `device_specific:true`")
-		return
+	if m.VendorProperties.Vendor_available != nil {
+		if vendorSpecific {
+			mctx.PropertyErrorf("vendor_available",
+				"doesn't make sense at the same time as `vendor: true`, `proprietary: true`, or `device_specific:true`")
+			return
+		}
+	} else {
+		if coreOnProduct {
+			mctx.PropertyErrorf("core_on_product",
+				"must set together with `vendor_available`")
+			return
+		}
 	}
 
 	if vndkdep := m.vndkdep; vndkdep != nil {
@@ -1766,6 +1795,11 @@ func imageMutator(mctx android.BottomUpMutatorContext) {
 				if m.VendorProperties.Vendor_available == nil {
 					mctx.PropertyErrorf("vndk",
 						"vendor_available must be set to either true or false when `vndk: {enabled: true}`")
+					return
+				}
+				if coreOnProduct {
+					mctx.PropertyErrorf("core_on_product",
+						"core variant of a VNDK lib must be installed in /system")
 					return
 				}
 			}
@@ -1847,7 +1881,10 @@ func imageMutator(mctx android.BottomUpMutatorContext) {
 	}
 	mod := mctx.CreateVariations(variants...)
 	for i, v := range variants {
-		if v == vendorMode {
+		if v == coreMode {
+			m := mod[i].(*Module)
+			m.Properties.CoreOnProduct = coreOnProduct
+		} else if v == vendorMode {
 			m := mod[i].(*Module)
 			m.Properties.UseVndk = true
 			squashVendorSrcs(m)
