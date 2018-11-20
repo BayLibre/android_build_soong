@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42deff45_e0ea0df3",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 877,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2018-11-20T01:11:27Z",
+      "side": 1,
+      "message": "AFAIU this will switch a bunch of targets from minimal ubsan runtime to full ubsan runtime in production builds.",
+      "revId": "21bbe33cfac35e1d1058cd37a4d4da1931a8f6c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
