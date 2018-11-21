@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "c845c6ea_1ba14216",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1308278
+      },
+      "writtenOn": "2018-11-21T15:56:17Z",
+      "side": 1,
+      "message": "\u003e Is cortex-a53 actually the best choice? Did we ask the CPU architects\n\u003e for their suggested flags?\n\nIt is a question to Clang/LLVM compiler engineers.\nFrom my knowledge of Clang/LLVM, when a correct \u0027march\u0027 is used, a particular \u0027mcpu\u0027 can provide additional information for tuning, e.g. enable an instruction scheduler. What I see in the LLVM sources Cortex-A55/A75 are mostly modelled with Cortex-A53/A57. Of course, this can be changed in the future.\nI think the best solution would be if Qualcomm engineers add support of kryo385 to Clang/LLVM. At the moment Clang/LLVM supports only kryo (Snapdragon 820). I don\u0027t know why Qualcomm has not upstreamed the support of kryo385 yet.\nBTW Clang/LLVM supports the latest Samsung Exynos M3.",
+      "parentUuid": "491dc909_13b311a7",
+      "revId": "7836cd84c51dd856c680cfa6478ae66afd97bc48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a980dc93_283960d2",
         "filename": "cc/config/arm_device.go",
         "patchSetId": 3
