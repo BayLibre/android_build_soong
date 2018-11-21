@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5565018d_cfbb9941",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-11-21T09:16:17Z",
+      "side": 1,
+      "message": "is it not the other way around? You use the stubs *only* if the dependent lib is not directly included in the same APEX.",
+      "range": {
+        "startLine": 10,
+        "startChar": 60,
+        "endLine": 12,
+        "endChar": 36
+      },
+      "revId": "aacb4600146eb59b94e7ea9fdc08966839b75d23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd7aa22b_38b7f3ef",
+        "filename": "android/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-11-21T09:16:17Z",
+      "side": 1,
+      "message": "\u0027depended on by\u0027",
+      "range": {
+        "startLine": 100,
+        "startChar": 53,
+        "endLine": 100,
+        "endChar": 64
+      },
+      "revId": "aacb4600146eb59b94e7ea9fdc08966839b75d23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5716b168_fc6eb3fa",
+        "filename": "android/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-11-21T09:16:17Z",
+      "side": 1,
+      "message": "depended",
+      "range": {
+        "startLine": 110,
+        "startChar": 35,
+        "endLine": 110,
+        "endChar": 46
+      },
+      "revId": "aacb4600146eb59b94e7ea9fdc08966839b75d23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
