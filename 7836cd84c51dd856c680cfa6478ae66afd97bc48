@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9fbf1c4_52a770f0",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2018-11-21T05:26:19Z",
+      "side": 1,
+      "message": "Is cortex-a53 actually the best choice? Did we ask the CPU architects for their suggested flags?",
+      "revId": "7836cd84c51dd856c680cfa6478ae66afd97bc48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a980dc93_283960d2",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2018-11-21T05:26:19Z",
+      "side": 1,
+      "message": "I believe this line is completely redundant. Looking at the cc1 flags passed to Clang during a verbose compile (32-bit), the same \"-target-feature -fp-armv8\" gets passed in both cases. The only difference that this flag makes is with the ordering of where the crypto target feature gets added, which doesn\u0027t change the functionality.\n\nI realize that there are other instances of this in this file, but there is no reason to propagate an unnecessary flag.",
+      "revId": "7836cd84c51dd856c680cfa6478ae66afd97bc48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
