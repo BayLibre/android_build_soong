@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0e7a214_2a6a2f0b",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2018-11-21T23:34:39Z",
+      "side": 1,
+      "message": "I just got an even better suggestion from Yi. We could be using \"-target aarch64-linux-android -march\u003darmv8.2a -mcpu\u003dgeneric -mtune\u003dcortex-a55\". -mtune will get us the cortex-a55 scheduling, but not any optional instructions. Using just armv8.2a as the -march gives us the minimal instruction set (without dotprod - actually there\u0027s a bug too where nodotprod does the wrong thing, but I\u0027ll get that addressed). The generic CPU is there in case the defaults change.\n\nCould you change the flags here to:\n\n...\n\"-march\u003darmv8.2a\",\n\"-mcpu\u003dgeneric\",\n\"-mtune\u003dcortex-a55\",\n...\n?\n\nI think that would be the optimal path forward, and also gives us the same code we are currently generating actually.",
+      "revId": "d3072b0c7cef7f5a217a055e66d85890c78620bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
