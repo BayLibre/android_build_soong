@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "491dc909_13b311a7",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2018-11-21T10:18:17Z",
+      "side": 1,
+      "message": "The intent of this CL to fix the *correctness* bug; kryo385 is not a cortex-a75 and doesn\u0027t have DOT_PRODUCT instruction features (this will result into SIGILL when trying to execute related instructions).\n\nI\u0027ve put a53 from the best of my knowledge and as a conservative option; I believe it is better than to put \"generic\" cpu variant.\n\nIn a future CL one could experiment on fine tuning and optimizations, it would be great if Qualcomm engineers were involved.",
+      "parentUuid": "b9fbf1c4_52a770f0",
+      "revId": "7836cd84c51dd856c680cfa6478ae66afd97bc48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a980dc93_283960d2",
         "filename": "cc/config/arm_device.go",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "7836cd84c51dd856c680cfa6478ae66afd97bc48",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d68a38c6_997a5bb6",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1089808
+      },
+      "writtenOn": "2018-11-21T10:18:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a980dc93_283960d2",
+      "revId": "7836cd84c51dd856c680cfa6478ae66afd97bc48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
