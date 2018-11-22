@@ -34,6 +34,24 @@
       "revId": "d3072b0c7cef7f5a217a055e66d85890c78620bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cbc8079_a0bc2102",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1308278
+      },
+      "writtenOn": "2018-11-22T15:42:11Z",
+      "side": 1,
+      "message": "It won\u0027t work. \u0027mtune\u0027 will have no effect. So an instruction scheduler will be generic.\nBTW, the cortex-a53 scheduler is used for cortex-a55 and cortex-a57 one is used for cortex-a75.",
+      "parentUuid": "792b9c4f_a0c6a2a2",
+      "revId": "d3072b0c7cef7f5a217a055e66d85890c78620bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
