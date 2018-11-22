@@ -52,6 +52,24 @@
       "revId": "d3072b0c7cef7f5a217a055e66d85890c78620bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dd2797e_9f673202",
+        "filename": "cc/config/arm_device.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2018-11-22T19:44:59Z",
+      "side": 1,
+      "message": "I confirmed that mtune currently doesn\u0027t work for this, so we should keep cortex-a53 for now. I\u0027ll also follow up with Qualcomm to get kryo385 added to upstream LLVM, so we can remove this.",
+      "parentUuid": "3cbc8079_a0bc2102",
+      "revId": "d3072b0c7cef7f5a217a055e66d85890c78620bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
