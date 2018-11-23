@@ -62,6 +62,12 @@ type variableProperties struct {
 			Cflags []string
 		}
 
+		// TODO(b/113373927): Remove this variable when all
+		// products include the Android Runtime APEX.
+		Dont_include_runtime_apex struct {
+			Cflags []string
+		}
+
 		// Product_is_iot is true for Android Things devices.
 		Product_is_iot struct {
 			Cflags       []string
@@ -191,13 +197,16 @@ type productVariables struct {
 	Debuggable                 *bool `json:",omitempty"`
 	Eng                        *bool `json:",omitempty"`
 	Device_uses_hwc2           *bool `json:",omitempty"`
-	Treble_linker_namespaces   *bool `json:",omitempty"`
-	Enforce_vintf_manifest     *bool `json:",omitempty"`
-	Pdk                        *bool `json:",omitempty"`
-	Uml                        *bool `json:",omitempty"`
-	Use_lmkd_stats_log         *bool `json:",omitempty"`
-	Arc                        *bool `json:",omitempty"`
-	MinimizeJavaDebugInfo      *bool `json:",omitempty"`
+	// TODO(b/113373927): Remove this variable when all products
+	// include the Android Runtime APEX.
+	Dont_include_runtime_apex *bool `json:",omitempty"`
+	Treble_linker_namespaces  *bool `json:",omitempty"`
+	Enforce_vintf_manifest    *bool `json:",omitempty"`
+	Pdk                       *bool `json:",omitempty"`
+	Uml                       *bool `json:",omitempty"`
+	Use_lmkd_stats_log        *bool `json:",omitempty"`
+	Arc                       *bool `json:",omitempty"`
+	MinimizeJavaDebugInfo     *bool `json:",omitempty"`
 
 	UncompressPrivAppDex             *bool    `json:",omitempty"`
 	ModulesLoadedByPrivilegedModules []string `json:",omitempty"`
