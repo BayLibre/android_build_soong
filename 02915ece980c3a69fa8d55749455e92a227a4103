@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91308309_be879d7c",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-11-23T04:32:31Z",
+      "side": 1,
+      "message": "This can just be resources.pb since we\u0027re not renaming the file.",
+      "revId": "02915ece980c3a69fa8d55749455e92a227a4103",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
