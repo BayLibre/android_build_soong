@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5bd5548_4efe3c29",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2018-11-26T11:37:05Z",
+      "side": 1,
+      "message": "I think we should use product_specific (or rename that flag if folks think it\u0027s a bad name)",
+      "revId": "2fb9d4c4d82d66b4ef1d6985f5f905b00d744db3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
