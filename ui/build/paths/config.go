@@ -149,7 +149,6 @@ var Configuration = map[string]PathConfig{
 	"wc":        Allowed,
 	"which":     Allowed,
 	"xargs":     Allowed,
-	"xxd":       Allowed,
 	"xz":        Allowed,
 	"zip":       Allowed,
 	"zipinfo":   Allowed,
@@ -178,6 +177,7 @@ var Configuration = map[string]PathConfig{
 	"uname":  Toybox,
 	"uniq":   Toybox,
 	"whoami": Toybox,
+	"xxd":    Toybox,
 }
 
 func init() {
