@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e61e418a_95170822",
+        "filename": "android/apex.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-11-27T15:01:30Z",
+      "side": 1,
+      "message": "You\u0027ll need locking around accesses to this object.   I\u0027d suggest moving all accesses into functions in this file to keep the locking localized.",
+      "revId": "656ecfc4fafc1a97cb43f45687069edb3a184e5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
