@@ -16,6 +16,24 @@
       "revId": "2fb9d4c4d82d66b4ef1d6985f5f905b00d744db3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26090764_9931bba6",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2018-11-27T00:24:10Z",
+      "side": 1,
+      "message": "I got your point.\nAs commented on the bug, product_specific could be used with vendor_available.\nLet me update the CL.",
+      "parentUuid": "e5bd5548_4efe3c29",
+      "revId": "2fb9d4c4d82d66b4ef1d6985f5f905b00d744db3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
