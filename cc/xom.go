@@ -47,6 +47,11 @@ func (xom *xom) flags(ctx ModuleContext, flags Flags) Flags {
 		return flags
 	}
 
+	// XOM is only supported on AArch64 with lld
+	if ctx.Arch().ArchType == android.Arm64 && !ctx.useClangLld() {
+		return flags
+	}
+
 	// If any static dependencies have XOM disabled, we should disable XOM in this module,
 	// the assumption being if it's been explicitly disabled then there's probably incompatible
 	// code in the library which may get pulled in.
