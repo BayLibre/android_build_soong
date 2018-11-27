@@ -247,6 +247,7 @@ type ModuleContextIntf interface {
 	baseModuleName() string
 	getVndkExtendsModuleName() string
 	isPgoCompile() bool
+	useClangLld(BaseModuleContext) bool
 }
 
 type ModuleContext interface {
@@ -633,6 +634,10 @@ func (ctx *moduleContextImpl) selectedStl() string {
 		return stl.Properties.SelectedStl
 	}
 	return ""
+}
+
+func (ctx *moduleContextImpl) useClangLld(bctx BaseModuleContext) bool {
+	return ctx.mod.lto.useClangLld(bctx)
 }
 
 func (ctx *moduleContextImpl) baseModuleName() string {
