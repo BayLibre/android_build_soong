@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a603728_2b519a06",
+        "filename": "cc/xom.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-11-27T23:58:23Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be:\n\n  ctx.Arch().ArchType !\u003d Arm64 || !ctx.useClangLld()\n\nAFAICT, we need both Arm64 and LLD in order to use XOM.",
+      "range": {
+        "startLine": 51,
+        "startChar": 24,
+        "endLine": 51,
+        "endChar": 43
+      },
+      "revId": "70ab890a8c27522d08a51a920c4732a71902e39c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
