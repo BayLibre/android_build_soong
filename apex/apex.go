@@ -17,6 +17,7 @@ package apex
 import (
 	"fmt"
 	"io"
+	"log"
 	"path/filepath"
 	"runtime"
 	"sort"
@@ -241,6 +242,9 @@ type apexBundleProperties struct {
 			Binaries []string
 		}
 	}
+
+	// If we should build a host-version of the apex. TODO BS
+	Host_supported *bool
 }
 
 type apexFileClass int
@@ -313,7 +317,7 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 	targets := ctx.MultiTargets()
 	has32BitTarget := false
 	for _, target := range targets {
-		if target.Arch.ArchType.Multilib == "lib32" {
+		if target.Os.Class == android.Device && target.Arch.ArchType.Multilib == "lib32" {
 			has32BitTarget = true
 		}
 	}
@@ -347,14 +351,17 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 
 		switch target.Arch.ArchType.Multilib {
 		case "lib32":
-			// Add native modules targetting 32-bit ABI
-			addDependenciesForNativeModules(ctx,
-				a.properties.Multilib.Lib32.Native_shared_libs,
-				a.properties.Multilib.Lib32.Binaries, target.String())
+			// We only care about 64-bit for host targets.
+			if target.Os.Class == android.Device {
+				// Add native modules targetting 32-bit ABI
+				addDependenciesForNativeModules(ctx,
+					a.properties.Multilib.Lib32.Native_shared_libs,
+					a.properties.Multilib.Lib32.Binaries, target.String())
 
-			addDependenciesForNativeModules(ctx,
-				a.properties.Multilib.Prefer32.Native_shared_libs,
-				a.properties.Multilib.Prefer32.Binaries, target.String())
+				addDependenciesForNativeModules(ctx,
+					a.properties.Multilib.Prefer32.Native_shared_libs,
+					a.properties.Multilib.Prefer32.Binaries, target.String())
+			}
 		case "lib64":
 			// Add native modules targetting 64-bit ABI
 			addDependenciesForNativeModules(ctx,
@@ -629,7 +636,9 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext, keyFile and
 
 	var abis []string
 	for _, target := range ctx.MultiTargets() {
-		abis = append(abis, target.Arch.Abi[0])
+		if len(target.Arch.Abi) > 0 {
+			abis = append(abis, target.Arch.Abi[0])
+		}
 	}
 	abis = android.FirstUniqueStrings(abis)
 
@@ -688,9 +697,22 @@ func (a *apexBundle) AndroidMk() android.AndroidMkData {
 						moduleNames = append(moduleNames, fi.moduleName)
 					}
 				}
+				// var end string
+				// if name == "linux-x86" {
+				// 	end = "-linux"
+				// } else {
+				// 	end = ""
+				// }
+				var end string
+				if strings.Contains(a.installDir.RelPathString(), "linux") {
+					end = "-linux"
+				} else {
+					end = ""
+				}
+				log.Print("Flattened: " + name + " md " + moduleDir)
 				fmt.Fprintln(w, "\ninclude $(CLEAR_VARS)")
 				fmt.Fprintln(w, "LOCAL_PATH :=", moduleDir)
-				fmt.Fprintln(w, "LOCAL_MODULE :=", name)
+				fmt.Fprintln(w, "LOCAL_MODULE :=", name+end)
 				fmt.Fprintln(w, "LOCAL_REQUIRED_MODULES :=", strings.Join(moduleNames, " "))
 				fmt.Fprintln(w, "include $(BUILD_PHONY_PACKAGE)")
 
@@ -718,9 +740,16 @@ func (a *apexBundle) AndroidMk() android.AndroidMkData {
 	} else {
 		return android.AndroidMkData{
 			Custom: func(w io.Writer, name, prefix, moduleDir string, data android.AndroidMkData) {
+				var end string
+				if strings.Contains(a.installDir.RelPathString(), "linux") {
+					end = "-linux"
+				} else {
+					end = ""
+				}
+				log.Print("Unflattened: " + name + " md " + moduleDir)
 				fmt.Fprintln(w, "\ninclude $(CLEAR_VARS)")
 				fmt.Fprintln(w, "LOCAL_PATH :=", moduleDir)
-				fmt.Fprintln(w, "LOCAL_MODULE :=", name)
+				fmt.Fprintln(w, "LOCAL_MODULE :=", name+end)
 				fmt.Fprintln(w, "LOCAL_MODULE_CLASS := ETC") // do we need a new class?
 				fmt.Fprintln(w, "LOCAL_PREBUILT_MODULE_FILE :=", a.outputFile.String())
 				fmt.Fprintln(w, "LOCAL_MODULE_PATH :=", filepath.Join("$(OUT_DIR)", a.installDir.RelPathString()))
@@ -740,7 +769,14 @@ func apexBundleFactory() android.Module {
 		class android.OsClass) bool {
 		return class == android.Device && ctx.Config().DevicePrefer32BitExecutables()
 	})
-	android.InitAndroidMultiTargetsArchModule(module, android.DeviceSupported, android.MultilibCommon)
+	var support android.HostOrDeviceSupported
+	if module.properties.Host_supported == nil || (*module.properties.Host_supported) == false {
+		support = android.DeviceSupported
+	} else {
+		support = android.HostAndDeviceSupported
+	}
+	support = android.HostAndDeviceSupported
+	android.InitAndroidMultiTargetsArchModule(module, support, android.MultilibCommon)
 	android.InitDefaultableModule(module)
 	return module
 }
