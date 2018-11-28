@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "90104acd_0b1e931b",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2018-11-28T17:25:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f482a9be_a834ede8",
+      "revId": "cf509cf6d5a6e11ded0644427d41540b837a652b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d39bf82_0244faa7",
         "filename": "cc/cc.go",
         "patchSetId": 2
@@ -51,6 +69,24 @@
       "revId": "cf509cf6d5a6e11ded0644427d41540b837a652b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f39bb6cc_7bc3b6d5",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2018-11-28T17:25:27Z",
+      "side": 1,
+      "message": "I think using the right useClangLld() takes care of this concern? I think most things are building with LLD now except a handful of modules.",
+      "parentUuid": "7d39bf82_0244faa7",
+      "revId": "cf509cf6d5a6e11ded0644427d41540b837a652b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
