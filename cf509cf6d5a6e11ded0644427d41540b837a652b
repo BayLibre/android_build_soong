@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f482a9be_a834ede8",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2018-11-28T17:08:30Z",
+      "side": 1,
+      "message": "Ah I\u0027m using the wrong useClangLld aren\u0027t I. Disregard patchset 3, I\u0027ll upload a 4th patchset with the proper function.",
+      "parentUuid": "c0093fc6_06ce8af1",
+      "revId": "cf509cf6d5a6e11ded0644427d41540b837a652b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7d39bf82_0244faa7",
         "filename": "cc/cc.go",
         "patchSetId": 2
