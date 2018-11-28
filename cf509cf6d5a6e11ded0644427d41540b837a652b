@@ -87,6 +87,24 @@
       "revId": "cf509cf6d5a6e11ded0644427d41540b837a652b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6341abd8_dc646036",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2018-11-28T23:35:10Z",
+      "side": 1,
+      "message": "I meant Android.bp vs. Android.mk opt-outs. https://cs.corp.google.com/search/?q\u003dLOCAL_USE_CLANG_LLD\u0026sq\u003dpackage:%5Eandroid$ shows nothing of consequence, so we don\u0027t need a corresponding change to the Android.mk rules.",
+      "parentUuid": "f39bb6cc_7bc3b6d5",
+      "revId": "cf509cf6d5a6e11ded0644427d41540b837a652b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
