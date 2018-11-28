@@ -1751,6 +1751,7 @@ func imageMutator(mctx android.BottomUpMutatorContext) {
 
 	// Sanity check
 	vendorSpecific := mctx.SocSpecific() || mctx.DeviceSpecific()
+	productSpecific := mctx.ProductSpecific()
 
 	if m.VendorProperties.Vendor_available != nil && vendorSpecific {
 		mctx.PropertyErrorf("vendor_available",
@@ -1760,6 +1761,11 @@ func imageMutator(mctx android.BottomUpMutatorContext) {
 
 	if vndkdep := m.vndkdep; vndkdep != nil {
 		if vndkdep.isVndk() {
+			if productSpecific {
+				mctx.PropertyErrorf("product_specific",
+					"core variant of a VNDK lib must be installed in /system")
+				return
+			}
 			if vendorSpecific {
 				if !vndkdep.isVndkExt() {
 					mctx.PropertyErrorf("vndk",
