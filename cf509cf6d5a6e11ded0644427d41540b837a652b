@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0093fc6_06ce8af1",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2018-11-28T03:28:34Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this use the method to get whether LLD is in use (i.e. useClangLld())?",
+      "revId": "cf509cf6d5a6e11ded0644427d41540b837a652b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d39bf82_0244faa7",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2018-11-28T03:28:34Z",
+      "side": 1,
+      "message": "Are we really at the point where everything is using LLD from Android.bp except for LTO-related holdouts?",
+      "revId": "cf509cf6d5a6e11ded0644427d41540b837a652b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
