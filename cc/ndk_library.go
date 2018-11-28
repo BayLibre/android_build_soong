@@ -26,13 +26,11 @@ import (
 )
 
 var (
-	toolPath = pctx.SourcePathVariable("toolPath", "build/soong/cc/gen_stub_libs.py")
-
 	genStubSrc = pctx.AndroidStaticRule("genStubSrc",
 		blueprint.RuleParams{
-			Command: "$toolPath --arch $arch --api $apiLevel --api-map " +
+			Command: "$genStubLib --arch $arch --api $apiLevel --api-map " +
 				"$apiMap $vndk $in $out",
-			CommandDeps: []string{"$toolPath"},
+			CommandDeps: []string{"$genStubLib"},
 		}, "arch", "apiLevel", "apiMap", "vndk")
 
 	ndkLibrarySuffix = ".ndk"
@@ -63,6 +61,10 @@ var (
 	ndkMigratedLibs     = []string{}
 	ndkMigratedLibsLock sync.Mutex // protects ndkMigratedLibs writes during parallel BeginMutator
 )
+
+func init() {
+	pctx.HostBinToolVariable("genStubLib", "gen_stub_libs.py")
+}
 
 // Creates a stub shared library based on the provided version file.
 //

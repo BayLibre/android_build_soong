@@ -505,3 +505,9 @@ cc_genrule {
     srcs: [":linker"],
     out: ["linker.flags"],
 }
+
+python_binary_host {
+    name: "gen_stub_libs.py",
+    main: "cc/gen_stub_libs.py",
+    srcs: ["cc/gen_stub_libs.py"],
+}
