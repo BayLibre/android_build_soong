@@ -54,7 +54,7 @@ var (
 
 	embeddedPar = pctx.AndroidStaticRule("embeddedPar",
 		blueprint.RuleParams{
-			Command: `echo '$main' > $entryPoint &&` +
+			Command: `echo -n '$main' > $entryPoint &&` +
 				`$mergeParCmd -p --prefix $launcher -e $entryPoint $out $srcsZips && ` +
 				`chmod +x $out && (rm -f $entryPoint)`,
 			CommandDeps: []string{"$mergeParCmd"},
@@ -114,7 +114,7 @@ func registerBuildActionForParFile(ctx android.ModuleContext, embeddedLauncher b
 			Output:      binFile,
 			Implicits:   implicits,
 			Args: map[string]string{
-				"main":       main,
+				"main":       strings.Replace(strings.TrimSuffix(main, ".py"), "/", ".", -1),
 				"entryPoint": entryPoint,
 				"srcsZips":   strings.Join(srcsZips.Strings(), " "),
 				"launcher":   launcherPath.String(),
