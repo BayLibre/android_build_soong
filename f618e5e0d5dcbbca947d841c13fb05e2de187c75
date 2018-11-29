@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db25ac45_a21f6fa0",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-11-29T23:27:00Z",
+      "side": 1,
+      "message": "just for curiosity, all the above r8Flags are single dash(\u0027-\u0027) prefixed?",
+      "revId": "f618e5e0d5dcbbca947d841c13fb05e2de187c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
