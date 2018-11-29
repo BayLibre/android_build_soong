@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f07ab258_fc762cbb",
+        "filename": "cc/linker.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2018-11-29T01:21:37Z",
+      "side": 1,
+      "message": "Rather than \"Newer\", would it be better to use \"AtLeast\"? Whenever I see something like this, I always wonder when the behavior changed. It\u0027s more likely that I grep for what changed in P (28), than what changed after that release right before P (27).",
+      "revId": "7c7212402c61228b7ca78d1e348cae591beb0a94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e3db542_c91c0000",
+        "filename": "cc/linker.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2018-11-29T01:21:37Z",
+      "side": 1,
+      "message": "In similar places in soong already, we generally check for \" \u003d\u003d current\" first, and then early return. This trims a level of indentation, which makes the code a bit easier to read as well.",
+      "revId": "7c7212402c61228b7ca78d1e348cae591beb0a94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
