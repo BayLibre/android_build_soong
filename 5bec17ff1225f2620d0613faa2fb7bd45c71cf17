@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "067a186f_377f5dfe",
+        "filename": "cc/linker.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2018-11-29T07:40:34Z",
+      "side": 1,
+      "message": "This needs to go into the LLD flags, and not just the generic LdFlags. oatdump is still not using LLD yet, so this option breaks. If you look at the previous code, it is a bit hard to read (yay mixed case L\u0027s), but the options only get added for LLD.",
+      "revId": "5bec17ff1225f2620d0613faa2fb7bd45c71cf17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
