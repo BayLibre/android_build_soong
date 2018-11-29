@@ -16,6 +16,24 @@
       "revId": "62e08d5d08006d31815e8f4e48b2248391166e79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "140585be_e7e19e36",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2018-11-29T01:05:25Z",
+      "side": 1,
+      "message": "yes, this code is in P.",
+      "parentUuid": "44355843_eed77ac6",
+      "revId": "62e08d5d08006d31815e8f4e48b2248391166e79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
