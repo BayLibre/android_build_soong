@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44355843_eed77ac6",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2018-11-29T00:55:38Z",
+      "side": 1,
+      "message": "IIUC, the Android P linker understands these relocations.  enh@: Can you confirm?\n\nIf yes, these can be turned on for API \u003e\u003d 28.",
+      "revId": "62e08d5d08006d31815e8f4e48b2248391166e79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
