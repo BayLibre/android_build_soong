@@ -34,6 +34,24 @@
       "revId": "62e08d5d08006d31815e8f4e48b2248391166e79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4edf0d37_cb6bf0f0",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1126348
+      },
+      "writtenOn": "2018-11-29T01:11:06Z",
+      "side": 1,
+      "message": "Thanks for confirming, changed it to \u003e\u003d 28.",
+      "parentUuid": "140585be_e7e19e36",
+      "revId": "62e08d5d08006d31815e8f4e48b2248391166e79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
