@@ -17,6 +17,7 @@ package apex
 import (
 	"fmt"
 	"io"
+	"log"
 	"path/filepath"
 	"runtime"
 	"sort"
@@ -55,12 +56,13 @@ var (
 			`${apexer} --force --manifest ${manifest} ` +
 			`--file_contexts ${file_contexts} ` +
 			`--canned_fs_config ${canned_fs_config} ` +
+			`--apex-type ${apex_type} ` +
 			`--key ${key} ${image_dir} ${out} `,
 		CommandDeps: []string{"${apexer}", "${avbtool}", "${e2fsdroid}", "${merge_zips}",
 			"${mke2fs}", "${resize2fs}", "${sefcontext_compile}",
 			"${soong_zip}", "${zipalign}", "${aapt2}"},
-		Description: "APEX ${image_dir} => ${out}",
-	}, "tool_path", "image_dir", "copy_commands", "manifest", "file_contexts", "canned_fs_config", "key")
+		Description: "APEX (${apex_type}) ${image_dir} => ${out}",
+	}, "tool_path", "image_dir", "copy_commands", "manifest", "file_contexts", "canned_fs_config", "key", "apex_type")
 
 	apexProtoConvertRule = pctx.AndroidStaticRule("apexProtoConvertRule",
 		blueprint.RuleParams{
@@ -78,7 +80,11 @@ var (
 	}, "abi")
 )
 
-var apexSuffix = ".apex"
+var imageApexSuffix = ".apex"
+var zipApexSuffix = ".zipapex"
+
+var imageApexType = "image"
+var zipApexType = "zip"
 
 type dependencyTag struct {
 	blueprint.BaseDependencyTag
@@ -121,6 +127,7 @@ func init() {
 	pctx.HostBinToolVariable("zipalign", "zipalign")
 
 	android.RegisterModuleType("apex", apexBundleFactory)
+	android.RegisterModuleType("zip_apex", zipApexBundleFactory)
 
 	android.PostDepsMutators(func(ctx android.RegisterMutatorsContext) {
 		ctx.TopDown("apex_deps", apexDepsMutator)
@@ -255,6 +262,38 @@ const (
 	javaSharedLib
 )
 
+type apexPackaging int
+
+const (
+	etcpck apexPackaging = iota
+	imageApex
+	zipApex
+)
+
+func (a apexPackaging) getSuffix() string {
+	switch a {
+	case imageApex:
+		return imageApexSuffix
+	case zipApex:
+		return zipApexSuffix
+	default:
+		log.Fatal("Unknown apex type!")
+		return ""
+	}
+}
+
+func (a apexPackaging) getTypeName() string {
+	switch a {
+	case imageApex:
+		return imageApexType
+	case zipApex:
+		return zipApexType
+	default:
+		log.Fatal("Unknown apex type!")
+		return ""
+	}
+}
+
 func (class apexFileClass) NameInMake() string {
 	switch class {
 	case etc:
@@ -283,6 +322,8 @@ type apexBundle struct {
 	android.DefaultableModuleBase
 
 	properties apexBundleProperties
+
+	apexType apexPackaging
 
 	bundleModuleFile android.WritablePath
 	outputFile       android.WritablePath
@@ -319,6 +360,7 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 		if target.Arch.ArchType.Multilib == "lib32" {
 			has32BitTarget = true
 		}
+		log.Print("building for " + target.String())
 	}
 	for i, target := range targets {
 		// When multilib.* is omitted for native_shared_libs, it implies
@@ -538,7 +580,10 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	a.flattened = ctx.Config().FlattenApex() && !ctx.Config().UnbundledBuild()
 	a.installDir = android.PathForModuleInstall(ctx, "apex")
 	a.filesInfo = filesInfo
-	if ctx.Config().FlattenApex() {
+
+	if a.apexType == zipApex {
+		a.buildUnflattenedApex(ctx, keyFile, certificate)
+	} else if ctx.Config().FlattenApex() {
 		a.buildFlattenedApex(ctx)
 	} else {
 		a.buildUnflattenedApex(ctx, keyFile, certificate)
@@ -596,7 +641,8 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext, keyFile and
 	}
 	fileContexts := fileContextsOptionalPath.Path()
 
-	unsignedOutputFile := android.PathForModuleOut(ctx, ctx.ModuleName()+apexSuffix+".unsigned")
+	suffix := a.apexType.getSuffix()
+	unsignedOutputFile := android.PathForModuleOut(ctx, ctx.ModuleName()+suffix+".unsigned")
 
 	filesToCopy := []android.Path{}
 	for _, f := range a.filesInfo {
@@ -618,7 +664,7 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext, keyFile and
 		Rule:        apexRule,
 		Implicits:   implicitInputs,
 		Output:      unsignedOutputFile,
-		Description: "apex",
+		Description: "apex (" + a.apexType.getTypeName() + ")",
 		Args: map[string]string{
 			"tool_path":        outHostBinDir + ":" + prebuiltSdkToolsBinDir,
 			"image_dir":        android.PathForModuleOut(ctx, "image").String(),
@@ -627,16 +673,19 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext, keyFile and
 			"file_contexts":    fileContexts.String(),
 			"canned_fs_config": cannedFsConfig.String(),
 			"key":              keyFile.String(),
+			"apex_type":        a.apexType.getTypeName(),
 		},
 	})
 
 	var abis []string
 	for _, target := range ctx.MultiTargets() {
-		abis = append(abis, target.Arch.Abi[0])
+		if len(target.Arch.Abi) > 0 {
+			abis = append(abis, target.Arch.Abi[0])
+		}
 	}
 	abis = android.FirstUniqueStrings(abis)
 
-	apexProtoFile := android.PathForModuleOut(ctx, ctx.ModuleName()+".pb"+apexSuffix)
+	apexProtoFile := android.PathForModuleOut(ctx, ctx.ModuleName()+".pb"+suffix)
 	bundleModuleFile := android.PathForModuleOut(ctx, ctx.ModuleName()+"-base.zip")
 	a.bundleModuleFile = bundleModuleFile
 
@@ -657,7 +706,7 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext, keyFile and
 		},
 	})
 
-	a.outputFile = android.PathForModuleOut(ctx, ctx.ModuleName()+apexSuffix)
+	a.outputFile = android.PathForModuleOut(ctx, ctx.ModuleName()+suffix)
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        java.Signapk,
 		Description: "signapk",
@@ -668,6 +717,9 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext, keyFile and
 			"flags":        "-a 4096", //alignment
 		},
 	})
+
+	// Install to $OUT/soong/{target,host}/.../apex
+	ctx.InstallFile(android.PathForModuleInstall(ctx, "apex"), ctx.ModuleName()+suffix, a.outputFile)
 }
 
 func (a *apexBundle) buildFlattenedApex(ctx android.ModuleContext) {
@@ -728,7 +780,7 @@ func (a *apexBundle) AndroidMk() android.AndroidMkData {
 				fmt.Fprintln(w, "LOCAL_MODULE_CLASS := ETC") // do we need a new class?
 				fmt.Fprintln(w, "LOCAL_PREBUILT_MODULE_FILE :=", a.outputFile.String())
 				fmt.Fprintln(w, "LOCAL_MODULE_PATH :=", filepath.Join("$(OUT_DIR)", a.installDir.RelPathString()))
-				fmt.Fprintln(w, "LOCAL_INSTALLED_MODULE_STEM :=", name+apexSuffix)
+				fmt.Fprintln(w, "LOCAL_INSTALLED_MODULE_STEM :=", name+a.apexType.getSuffix())
 				fmt.Fprintln(w, "LOCAL_REQUIRED_MODULES :=", String(a.properties.Key))
 				fmt.Fprintln(w, "include $(BUILD_PREBUILT)")
 
@@ -737,14 +789,22 @@ func (a *apexBundle) AndroidMk() android.AndroidMkData {
 	}
 }
 
-func apexBundleFactory() android.Module {
+func createApexBundle(apexType apexPackaging, support android.HostOrDeviceSupported) android.Module {
 	module := &apexBundle{}
 	module.AddProperties(&module.properties)
-	module.Prefer32(func(ctx android.BaseModuleContext, base *android.ModuleBase,
-		class android.OsClass) bool {
+	module.Prefer32(func(ctx android.BaseModuleContext, base *android.ModuleBase, class android.OsClass) bool {
 		return class == android.Device && ctx.Config().DevicePrefer32BitExecutables()
 	})
-	android.InitAndroidMultiTargetsArchModule(module, android.DeviceSupported, android.MultilibCommon)
+	module.apexType = apexType
+	android.InitAndroidMultiTargetsArchModule(module, support, android.MultilibCommon)
 	android.InitDefaultableModule(module)
 	return module
+}
+
+func apexBundleFactory() android.Module {
+	return createApexBundle(imageApex, android.DeviceSupported)
+}
+
+func zipApexBundleFactory() android.Module {
+	return createApexBundle(zipApex, android.HostAndDeviceSupported)
 }
