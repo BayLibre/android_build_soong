@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "81d3390a_680764c7",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-11-30T02:29:40Z",
+      "side": 1,
+      "message": "We\u0027ve got productVariables.Eng as a pre-parsed boolean for this, though it\u0027s not exposed through a Config() method currently. (See Debuggable).\n\nI wonder if it makes sense to pair this with !MinimizeJavaDebugInfo? That\u0027s a check for eng as well, though it allows products to change the eng behavior if they\u0027re space-limited.",
+      "range": {
+        "startLine": 164,
+        "startChar": 17,
+        "endLine": 164,
+        "endChar": 56
+      },
+      "revId": "f618e5e0d5dcbbca947d841c13fb05e2de187c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "db25ac45_a21f6fa0",
         "filename": "java/dex.go",
         "patchSetId": 1
