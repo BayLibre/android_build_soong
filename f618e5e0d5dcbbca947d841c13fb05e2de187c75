@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c191ecbd_e068ece1",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2018-11-30T15:16:26Z",
+      "side": 1,
+      "message": "The problem with MinimizeJavaDebugInfo is that it is not set to true not only for eng builds but also for userdebug builds (and probably user builds too). We want for the debug info to only be available in eng builds unless specified otherwise as discussed in the bug.\n\nI\u0027ll expose productVariables.Eng through Config.",
+      "parentUuid": "81d3390a_680764c7",
+      "range": {
+        "startLine": 164,
+        "startChar": 17,
+        "endLine": 164,
+        "endChar": 56
+      },
+      "revId": "f618e5e0d5dcbbca947d841c13fb05e2de187c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "db25ac45_a21f6fa0",
         "filename": "java/dex.go",
         "patchSetId": 1
