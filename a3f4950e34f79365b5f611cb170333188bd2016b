@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40587f65_da7b6d4d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-11-30T02:18:45Z",
+      "side": 1,
+      "message": "libY?",
+      "range": {
+        "startLine": 37,
+        "startChar": 19,
+        "endLine": 37,
+        "endChar": 20
+      },
+      "revId": "a3f4950e34f79365b5f611cb170333188bd2016b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "165158f2_9b58d51d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-11-30T02:18:45Z",
+      "side": 1,
+      "message": "Yet you\u0027re saying that we can still depend on the unstable parts of the headers (which may be more behavioral, and not caught by linking against stubs). Why would we want to build them differently? Especially since it means that these two (valid) ways of saying the same thing will give different build results:\n\n cc_library {\n   name: \"libfoo\",\n   srcs: [\"*.c\"],\n   shared_libs: [\"libY\"],\n }\n\nvs\n\n cc_library_shared {\n   name: \"libfoo\",\n   whole_static_libs: [\"libfoo_static\"],\n   shared_libs: [\"libY\"],\n }\n\n cc_library_static {\n   name: \"libfoo_static\",\n   srcs: [\"*.c\"],\n   shared_libs: [\"libY\"],\n }\n\nThis was a very common way to declare libraries in Make, though we don\u0027t see it as often with cc_library in soong.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 27
+      },
+      "revId": "a3f4950e34f79365b5f611cb170333188bd2016b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a662281a_38927b00",
+        "filename": "cc/cc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 1122,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-11-30T02:18:45Z",
+      "side": 1,
+      "message": "Why are we calling AddVariationDependencies twice?",
+      "revId": "a3f4950e34f79365b5f611cb170333188bd2016b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddbc065d_02cc10bd",
+        "filename": "cc/cc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 1424,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-11-30T02:18:45Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this only happen if the dependency tag\u0027s library flag is set? We don\u0027t want to assume that all dependencies that are libraries are used as shared/static libs here.",
+      "range": {
+        "startLine": 1424,
+        "startChar": 0,
+        "endLine": 1424,
+        "endChar": 67
+      },
+      "revId": "a3f4950e34f79365b5f611cb170333188bd2016b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42ac64e6_59010220",
+        "filename": "cc/cc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 1433,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-11-30T02:18:45Z",
+      "side": 1,
+      "message": "Doesn\u0027t the platform need to link against the stubs provided by the APEXs?",
+      "range": {
+        "startLine": 1433,
+        "startChar": 0,
+        "endLine": 1433,
+        "endChar": 32
+      },
+      "revId": "a3f4950e34f79365b5f611cb170333188bd2016b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ece96a14_6455fe4f",
+        "filename": "cc/library.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-11-30T02:18:45Z",
+      "side": 1,
+      "message": "Why should bionic be special? We add user-specified shared libs to the dependencies of the static variant.",
+      "range": {
+        "startLine": 935,
+        "startChar": 3,
+        "endLine": 936,
+        "endChar": 54
+      },
+      "revId": "a3f4950e34f79365b5f611cb170333188bd2016b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
