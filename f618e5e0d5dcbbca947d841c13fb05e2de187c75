@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "5e136ac0_afc32748",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2018-11-30T15:23:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c191ecbd_e068ece1",
+      "range": {
+        "startLine": 164,
+        "startChar": 17,
+        "endLine": 164,
+        "endChar": 56
+      },
+      "revId": "f618e5e0d5dcbbca947d841c13fb05e2de187c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db25ac45_a21f6fa0",
         "filename": "java/dex.go",
         "patchSetId": 1
@@ -81,6 +105,24 @@
       "revId": "f618e5e0d5dcbbca947d841c13fb05e2de187c75",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "788c4ad5_a042ef9f",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2018-11-30T15:23:41Z",
+      "side": 1,
+      "message": "Thanks! Marking as resolved.",
+      "parentUuid": "8ae5f53b_9fb08165",
+      "revId": "f618e5e0d5dcbbca947d841c13fb05e2de187c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
