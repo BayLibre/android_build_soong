@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "11d13ac8_79e7f0de",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-11-30T19:40:48Z",
+      "side": 1,
+      "message": "Done.\n\nAdded \u0027apex_type: {\"both\",\"zip\",\"image\"}\u0027 and support for both being HostOrDevice.\n\n(I mostly did it like this b/c for art we need slightly different artifacts on host b/c device is \u0027Prefer32\u0027 but host is \u0027first\u0027 and unlike other stuff apex doesn\u0027t support the \u0027target: { host: { ... }, android: { ... } } pattern).",
+      "parentUuid": "4775ac3e_cafec19c",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 61
+      },
+      "revId": "6f0c8cb3708d8f2ff7316cf3a5f4b0fa8791a720",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c88482f_c5d84c21",
         "filename": "apex/apex.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "6f0c8cb3708d8f2ff7316cf3a5f4b0fa8791a720",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37d76f7c_3fea7c17",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-11-30T19:40:48Z",
+      "side": 1,
+      "message": "It\u0027s nice to have the apex as identical as possible with just the payload being packed differently. Since apexer is what does most of the layout of the actual apex file it\u0027s best to put it in there.",
+      "parentUuid": "4c88482f_c5d84c21",
+      "range": {
+        "startLine": 663,
+        "startChar": 0,
+        "endLine": 677,
+        "endChar": 4
+      },
+      "revId": "6f0c8cb3708d8f2ff7316cf3a5f4b0fa8791a720",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
