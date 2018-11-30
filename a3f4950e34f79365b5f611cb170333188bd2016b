@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5286eb51_93ac646d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-11-30T05:05:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40587f65_da7b6d4d",
+      "range": {
+        "startLine": 37,
+        "startChar": 19,
+        "endLine": 37,
+        "endChar": 20
+      },
+      "revId": "a3f4950e34f79365b5f611cb170333188bd2016b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "165158f2_9b58d51d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 12
@@ -36,6 +60,30 @@
       "writtenOn": "2018-11-30T02:18:45Z",
       "side": 1,
       "message": "Yet you\u0027re saying that we can still depend on the unstable parts of the headers (which may be more behavioral, and not caught by linking against stubs). Why would we want to build them differently? Especially since it means that these two (valid) ways of saying the same thing will give different build results:\n\n cc_library {\n   name: \"libfoo\",\n   srcs: [\"*.c\"],\n   shared_libs: [\"libY\"],\n }\n\nvs\n\n cc_library_shared {\n   name: \"libfoo\",\n   whole_static_libs: [\"libfoo_static\"],\n   shared_libs: [\"libY\"],\n }\n\n cc_library_static {\n   name: \"libfoo_static\",\n   srcs: [\"*.c\"],\n   shared_libs: [\"libY\"],\n }\n\nThis was a very common way to declare libraries in Make, though we don\u0027t see it as often with cc_library in soong.",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 27
+      },
+      "revId": "a3f4950e34f79365b5f611cb170333188bd2016b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7696270_4ca82848",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-11-30T05:05:06Z",
+      "side": 1,
+      "message": "I would like to ask why we have added the system libs only when !ctx.static(). I think that is the real problem.\n\nThis already makes foo.c below to be compiled differently (even without this CL)\n\n1) cc_library_shared { name: \"libfoo\", src: [\"foo.c\"] } // not cc_library but cc_library_shared\n2) cc_library_shared { name: \"libfoo\", whole_static_libs: [\"libfoo_static\"] }\n   cc_library_static { name: \"libfoo_static\", srcs: [\"foo.c\"] }\n\nThe former is with \n-Iexternal/libcxx/include \n-Iexternal/libcxxabi/include \n-Ibionic/libc/include \n-Ibionic/libc/system_properties/include \n-Isystem/core/property_service/libpropertyinfoparser/include \n\nwhile the latter is with\n-Iexternal/libcxx/include \n-Iexternal/libcxxabi/include \n\nIf you agree that this is a problem to be solved, I would like to handle it later in a separate CL.\n\nAnd as you said, since this pattern is not popular in Soong, I don\u0027t see an immediate breakage due to this.",
+      "parentUuid": "165158f2_9b58d51d",
       "range": {
         "startLine": 47,
         "startChar": 0,
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "c97df36a_6e4f8395",
+        "filename": "cc/cc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 1122,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-11-30T05:05:06Z",
+      "side": 1,
+      "message": "Because otherwise we can\u0027t build against the stub when a module is built for APEX.\n\nOnly one dependency among these two will actually be used in GenerateAndroidBuildActions depending on whether the module is built for apex or not.",
+      "parentUuid": "a662281a_38927b00",
+      "revId": "a3f4950e34f79365b5f611cb170333188bd2016b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ddbc065d_02cc10bd",
         "filename": "cc/cc.go",
         "patchSetId": 12
@@ -85,6 +151,30 @@
       "revId": "a3f4950e34f79365b5f611cb170333188bd2016b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a5d0fd2_9c8f1a1b",
+        "filename": "cc/cc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 1424,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-11-30T05:05:06Z",
+      "side": 1,
+      "message": "Good point. Done.",
+      "parentUuid": "ddbc065d_02cc10bd",
+      "range": {
+        "startLine": 1424,
+        "startChar": 0,
+        "endLine": 1424,
+        "endChar": 67
+      },
+      "revId": "a3f4950e34f79365b5f611cb170333188bd2016b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "f3f496f6_3ae9040e",
+        "filename": "cc/cc.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 1433,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-11-30T05:05:06Z",
+      "side": 1,
+      "message": "Hmm, true. To be precise, \"only if\" the lib is provided by an APEX, not by the platform.\nIf the stub is not provided by any APEX, then the platform should have the right to use private APIs from the dep.\n\nFixed.",
+      "parentUuid": "42ac64e6_59010220",
+      "range": {
+        "startLine": 1433,
+        "startChar": 0,
+        "endLine": 1433,
+        "endChar": 32
+      },
+      "revId": "a3f4950e34f79365b5f611cb170333188bd2016b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ece96a14_6455fe4f",
         "filename": "cc/library.go",
         "patchSetId": 12
@@ -131,6 +245,30 @@
       "revId": "a3f4950e34f79365b5f611cb170333188bd2016b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c244330f_7dcb3828",
+        "filename": "cc/library.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-11-30T05:05:06Z",
+      "side": 1,
+      "message": "(at linkerDeps in linker.go)\nWe have been adding libc, libm, libdl automatically to the shared libs when !ctx.static() and many modules are depending on the build system behavior; they don\u0027t have shared_libs: [\"libc\", ...]. \n\nAs a result, when their static variant is built (to be reused by shared variant), the bionic libs are not added to the dependencies.",
+      "parentUuid": "ece96a14_6455fe4f",
+      "range": {
+        "startLine": 935,
+        "startChar": 3,
+        "endLine": 936,
+        "endChar": 54
+      },
+      "revId": "a3f4950e34f79365b5f611cb170333188bd2016b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
