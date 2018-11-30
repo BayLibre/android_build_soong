@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18aa7205_b4961b6d",
+        "filename": "cc/linker.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2018-11-30T21:56:31Z",
+      "side": 1,
+      "message": "The change should be moved here - so we don\u0027t pass the flags if Pack_relocations is true.",
+      "revId": "b10d2e8cf5b1a4ced0c1f976fdd8376ac9bc4d93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
