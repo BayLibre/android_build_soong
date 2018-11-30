@@ -39,6 +39,24 @@
       "revId": "f618e5e0d5dcbbca947d841c13fb05e2de187c75",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ae5f53b_9fb08165",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1121678
+      },
+      "writtenOn": "2018-11-30T07:49:01Z",
+      "side": 1,
+      "message": "This is correct, as there are actually two types of flags. The \"real\" R8 flags are all double dash. However for the Android Platform we have added a \"Proguard compatible CLI for R8\", where it is also possible to pass Proguard CLI flags, and these flags are single dash.\n\nFor the Proguard flags -dontshrink and - dontobfuscate there are corresponding R8 flags --no-tree-shaking and --no-minification - but we can change that at a later time.",
+      "parentUuid": "db25ac45_a21f6fa0",
+      "revId": "f618e5e0d5dcbbca947d841c13fb05e2de187c75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
