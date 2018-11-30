@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4775ac3e_cafec19c",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-11-30T08:57:54Z",
+      "side": 1,
+      "message": "Instead of having a new module type, how about having a boolean property like \u0027gen_zip\u0027 or \u0027gen_for_host\u0027, which creates a zip-backed apex in addition to the normal one?",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 61
+      },
+      "revId": "6f0c8cb3708d8f2ff7316cf3a5f4b0fa8791a720",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c88482f_c5d84c21",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-11-30T08:57:54Z",
+      "side": 1,
+      "message": "Why don\u0027t you just have a rule (that runs zip) here when a.apexType \u003d\u003d zipApex? I don\u0027t think you need to amend apexer for this.",
+      "range": {
+        "startLine": 663,
+        "startChar": 0,
+        "endLine": 677,
+        "endChar": 4
+      },
+      "revId": "6f0c8cb3708d8f2ff7316cf3a5f4b0fa8791a720",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
