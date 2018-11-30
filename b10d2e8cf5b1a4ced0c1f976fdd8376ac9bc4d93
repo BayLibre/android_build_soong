@@ -16,6 +16,24 @@
       "revId": "b10d2e8cf5b1a4ced0c1f976fdd8376ac9bc4d93",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e070bba6_c60a6bee",
+        "filename": "cc/linker.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1126348
+      },
+      "writtenOn": "2018-11-30T22:08:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18aa7205_b4961b6d",
+      "revId": "b10d2e8cf5b1a4ced0c1f976fdd8376ac9bc4d93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
