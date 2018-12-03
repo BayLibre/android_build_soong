@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1df40476_5cb05c30",
+        "filename": "python/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-12-03T21:02:28Z",
+      "side": 1,
+      "message": "probably we may add some comments to explain why we don\u0027t need a newline here?",
+      "revId": "ae2b460ac0be466faf993addea94fd8447814544",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c3217ea_33b5402a",
+        "filename": "python/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-12-03T21:02:28Z",
+      "side": 1,
+      "message": "TrimSuffix(main, pyExt) ?\nhttps://cs.corp.google.com/aosp-master/build/soong/python/python.go?rcl\u003d5b46a085d767a4a2d2e181421d5aec4fcc9eacd8\u0026l\u003d209",
+      "revId": "ae2b460ac0be466faf993addea94fd8447814544",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
