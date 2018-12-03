@@ -117,6 +117,30 @@
       "revId": "6f0c8cb3708d8f2ff7316cf3a5f4b0fa8791a720",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ceb519c_e20429ab",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-12-03T22:32:46Z",
+      "side": 1,
+      "message": "This is for go/art-apex-update-e2e not purely art-testing and we do need the manifest to keep track of the version.",
+      "parentUuid": "33213904_2abfb590",
+      "range": {
+        "startLine": 663,
+        "startChar": 0,
+        "endLine": 677,
+        "endChar": 4
+      },
+      "revId": "6f0c8cb3708d8f2ff7316cf3a5f4b0fa8791a720",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
