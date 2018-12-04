@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c11bf4e_c7e290c6",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-12-04T18:40:52Z",
+      "side": 1,
+      "message": "When building for \"both\", and unflattened for each, it seems like these intermediates will collide, won\u0027t they?",
+      "range": {
+        "startLine": 723,
+        "startChar": 0,
+        "endLine": 724,
+        "endChar": 59
+      },
+      "revId": "271fe6a2a8ddd2ba2e5856ea5245d09ffb68c219",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
