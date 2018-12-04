@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "026a1ba0_2ea97353",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-12-04T03:50:08Z",
+      "side": 1,
+      "message": "Ok, so it looks like you will have \"two distinct\" modules each of which having different payload_type, right?\n\nI thought it would be nice to have a single module where an extra APEX with zip-type payload is created \"in addition\" to the ordinary APEX (which can be flattened or not).\n\nGot it.",
+      "parentUuid": "515768b1_21a73b29",
+      "range": {
+        "startLine": 218,
+        "startChar": 1,
+        "endLine": 218,
+        "endChar": 6
+      },
+      "revId": "394cdf87a4a65b95e5197b36c4f5a1acbc18654c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c35e828_6e9f0b39",
         "filename": "apex/apex.go",
         "patchSetId": 2
@@ -319,6 +343,30 @@
       "side": 1,
       "message": "I\u0027m not sure what you mean by this. flattened is only meaninful for image apex\u0027s. We need this structure.",
       "parentUuid": "e6700668_7d7912b6",
+      "range": {
+        "startLine": 815,
+        "startChar": 1,
+        "endLine": 816,
+        "endChar": 37
+      },
+      "revId": "394cdf87a4a65b95e5197b36c4f5a1acbc18654c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "079b04bc_5ed58e8e",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-12-04T03:50:08Z",
+      "side": 1,
+      "message": "https://android-review.googlesource.com/c/platform/build/soong/+/837680/2..3/apex/apex.go#b218\n\nexplained what you mean. Got it.",
+      "parentUuid": "5e1b8bc5_75dcfda9",
       "range": {
         "startLine": 815,
         "startChar": 1,
