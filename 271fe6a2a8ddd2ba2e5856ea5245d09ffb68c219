@@ -22,6 +22,30 @@
       "revId": "271fe6a2a8ddd2ba2e5856ea5245d09ffb68c219",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18555a7e_549dbf7b",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2018-12-04T18:43:04Z",
+      "side": 1,
+      "message": "it cleans up before starting (\u0027rm -rf ${image_dir}\u0027)",
+      "parentUuid": "4c11bf4e_c7e290c6",
+      "range": {
+        "startLine": 723,
+        "startChar": 0,
+        "endLine": 724,
+        "endChar": 59
+      },
+      "revId": "271fe6a2a8ddd2ba2e5856ea5245d09ffb68c219",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
