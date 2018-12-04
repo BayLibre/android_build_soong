@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7ba06b86_f633b8bf",
+        "filename": "python/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-12-04T00:01:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1df40476_5cb05c30",
+      "revId": "ae2b460ac0be466faf993addea94fd8447814544",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c3217ea_33b5402a",
         "filename": "python/builder.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "ae2b460ac0be466faf993addea94fd8447814544",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a8aa6e2_c0629889",
+        "filename": "python/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-12-04T00:01:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c3217ea_33b5402a",
+      "revId": "ae2b460ac0be466faf993addea94fd8447814544",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
