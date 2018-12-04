@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab1e33f2_3fd6eddc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-12-04T19:07:15Z",
+      "side": 1,
+      "message": "There seems to be an extra word here.",
+      "range": {
+        "startLine": 10,
+        "startChar": 52,
+        "endLine": 11,
+        "endChar": 4
+      },
+      "revId": "96ce228337c3da43b339f4a01c4add25adbc02b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bba5e7e_9151e860",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-12-04T19:07:15Z",
+      "side": 1,
+      "message": "Also mention apex/apex_test.go?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 15
+      },
+      "revId": "96ce228337c3da43b339f4a01c4add25adbc02b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29945bb7_d47641be",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-12-04T19:07:15Z",
+      "side": 1,
+      "message": "APEX",
+      "range": {
+        "startLine": 218,
+        "startChar": 16,
+        "endLine": 218,
+        "endChar": 20
+      },
+      "revId": "96ce228337c3da43b339f4a01c4add25adbc02b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8702cfd0_34c90c40",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-12-04T19:07:15Z",
+      "side": 1,
+      "message": "APEX",
+      "range": {
+        "startLine": 218,
+        "startChar": 49,
+        "endLine": 218,
+        "endChar": 53
+      },
+      "revId": "96ce228337c3da43b339f4a01c4add25adbc02b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "993cd7e8_22a5115c",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-12-04T19:07:15Z",
+      "side": 1,
+      "message": "Nit: Move the \"both\" case after the \"zip\" case to match the (\"image\", \"zip\", \"both\") order followed in the rest of this file.",
+      "range": {
+        "startLine": 502,
+        "startChar": 0,
+        "endLine": 503,
+        "endChar": 20
+      },
+      "revId": "96ce228337c3da43b339f4a01c4add25adbc02b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53296e69_5ac773a9",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-12-04T19:07:15Z",
+      "side": 1,
+      "message": "APEX",
+      "range": {
+        "startLine": 677,
+        "startChar": 44,
+        "endLine": 677,
+        "endChar": 48
+      },
+      "revId": "96ce228337c3da43b339f4a01c4add25adbc02b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9157c37_8f002bad",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-12-04T19:07:15Z",
+      "side": 1,
+      "message": "APEXes",
+      "range": {
+        "startLine": 812,
+        "startChar": 15,
+        "endLine": 812,
+        "endChar": 21
+      },
+      "revId": "96ce228337c3da43b339f4a01c4add25adbc02b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d47e89c_8bc9a85e",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2018-12-04T19:07:15Z",
+      "side": 1,
+      "message": "APEX (here and below).",
+      "range": {
+        "startLine": 232,
+        "startChar": 16,
+        "endLine": 232,
+        "endChar": 20
+      },
+      "revId": "96ce228337c3da43b339f4a01c4add25adbc02b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
