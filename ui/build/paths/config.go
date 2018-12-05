@@ -85,6 +85,7 @@ var Configuration = map[string]PathConfig{
 	"dd":        Allowed,
 	"diff":      Allowed,
 	"dirname":   Allowed,
+	"dot":       Allowed,
 	"du":        Allowed,
 	"echo":      Allowed,
 	"egrep":     Allowed,
