@@ -1579,6 +1579,15 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 		// Export the shared libs to Make.
 		switch depTag {
 		case sharedDepTag, sharedExportDepTag, lateSharedDepTag:
+			// Dependency to the stubs lib which is already included in an APEX
+			// is not added to the androidmk dependency
+			if dependentLibrary, ok := ccDep.linker.(*libraryDecorator); ok {
+				depNameWithTarget := depName + "-" + ccDep.Target().String()
+				if dependentLibrary.buildStubs() && android.InAnyApex(ctx.Config(), depNameWithTarget) {
+					break
+				}
+			}
+
 			// Note: the order of libs in this list is not important because
 			// they merely serve as Make dependencies and do not affect this lib itself.
 			c.Properties.AndroidMkSharedLibs = append(
