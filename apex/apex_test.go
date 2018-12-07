@@ -316,6 +316,9 @@ func TestApexWithStubs(t *testing.T) {
 	ensureContains(t, mylibLdFlags, "mylib3/android_arm64_armv8-a_shared_myapex/mylib3.so")
 	// .. and not linking to the stubs variant of mylib3
 	ensureNotContains(t, mylibLdFlags, "mylib3/android_arm64_armv8-a_shared_12_myapex/mylib3.so")
+
+	// Ensure that genstub is invoked with --apex
+	ensureContains(t, "--apex", ctx.ModuleForTests("mylib2", "android_arm64_armv8-a_static_3_myapex").Rule("genStubSrc").Args["flags"])
 }
 
 func TestApexWithSystemLibsStubs(t *testing.T) {
