@@ -228,6 +228,7 @@ func createTestContext(t *testing.T, config android.Config, bp string, os androi
 		ctx.BottomUp("vndk", VndkMutator).Parallel()
 		ctx.BottomUp("version", VersionMutator).Parallel()
 		ctx.BottomUp("begin", BeginMutator).Parallel()
+		ctx.BottomUp("coverage", coverageMutator).Parallel()
 	})
 	ctx.Register()
 
