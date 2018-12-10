@@ -58,6 +58,10 @@ func (library *Library) AndroidMk() android.AndroidMkData {
 					fmt.Fprintln(w, "LOCAL_EXPORT_SDK_LIBRARIES :=", strings.Join(library.exportedSdkLibs, " "))
 				}
 
+				if Bool(library.properties.Core_platform) {
+					fmt.Fprintln(w, "LOCAL_CORE_PLATFORM := true")
+				}
+
 				// Temporary hack: export sources used to compile framework.jar to Make
 				// to be used for droiddoc
 				// TODO(ccross): remove this once droiddoc is in soong
