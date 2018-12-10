@@ -325,3 +325,13 @@ func (a *androidTopDownMutatorContext) PrependProperties(props ...interface{}) {
 		}
 	}
 }
+
+func RemoveMutatorFromVariations(variations []blueprint.Variation, mutator string) []blueprint.Variation {
+	output := make([]blueprint.Variation, 0, len(variations))
+	for _, variation := range variations {
+		if variation.Mutator != mutator {
+			output = append(output, blueprint.Variation{Mutator: variation.Mutator, Variation: variation.Variation})
+		}
+	}
+	return output
+}
