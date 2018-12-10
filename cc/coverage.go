@@ -15,6 +15,8 @@
 package cc
 
 import (
+	"strconv"
+
 	"android/soong/android"
 )
 
@@ -93,27 +95,63 @@ func (cov *coverage) flags(ctx ModuleContext, flags Flags) Flags {
 	return flags
 }
 
-func coverageLinkingMutator(mctx android.BottomUpMutatorContext) {
-	if c, ok := mctx.Module().(*Module); ok && c.coverage != nil {
-		var enabled bool
+func coverageMutator(mctx android.BottomUpMutatorContext) {
+	// Coverage is disabled globally
+	if !mctx.DeviceConfig().NativeCoverageEnabled() {
+		return
+	}
 
-		if !mctx.DeviceConfig().NativeCoverageEnabled() {
-			// Coverage is disabled globally
-		} else if mctx.Host() {
+	if c, ok := mctx.Module().(*Module); ok {
+		var needCoverageVariant bool
+		var needCoverageBuild bool
+
+		hideFromMake := c.Properties.HideFromMake
+		preventInstall := c.Properties.PreventInstall
+
+		if mctx.Host() {
 			// TODO(dwillemsen): because of -nodefaultlibs, we must depend on libclang_rt.profile-*.a
 			// Just turn off for now.
-		} else if c.coverage.Properties.Native_coverage != nil {
-			enabled = *c.coverage.Properties.Native_coverage
-		} else {
-			enabled = mctx.DeviceConfig().CoverageEnabledForPath(mctx.ModuleDir())
+		} else if c.useVndk() || c.hasVendorVariant() {
+			// Do not enable coverage for VNDK libraries
+		} else if c.isNDKStubLibrary() {
+			// Do not enable coverage for NDK stub libraries
+		} else if c.coverage != nil {
+			if c.coverage.Properties.Native_coverage == nil {
+				// Native_coverage property defaults to true.  Enable coverage if this property is absent
+				needCoverageVariant = true
+			} else {
+				// Native_coverage property present.  Use its value.
+				needCoverageVariant = *c.coverage.Properties.Native_coverage
+			}
+
+			if sdk_version := String(c.Properties.Sdk_version); sdk_version != "current" {
+				// Native coverage is not supported for SDK versions < 23
+				if fromApi, err := strconv.Atoi(sdk_version); err == nil && fromApi < 23 {
+					needCoverageVariant = false
+				}
+			}
+
+			if needCoverageVariant {
+				// Coverage variant is actually built with coverage if enabled for its module path
+				needCoverageBuild = mctx.DeviceConfig().CoverageEnabledForPath(mctx.ModuleDir())
+			}
 		}
 
-		if enabled {
-			// Create a variation so that we don't need to recompile objects
-			// when turning on or off coverage. We'll still relink the necessary
-			// binaries, since we don't know which ones those are until later.
-			m := mctx.CreateLocalVariations("cov")
-			m[0].(*Module).coverage.Properties.CoverageEnabled = true
+		if needCoverageVariant {
+			m := mctx.CreateVariations("", "cov")
+
+			// Setup the non-coverage version.  Set HideFromMake and
+			// PreventInstall if set in the original module, or if there's
+			// a coverage-enabled variant.
+			if c.coverage != nil {
+				m[0].(*Module).coverage.Properties.CoverageEnabled = false
+			}
+			m[0].(*Module).Properties.HideFromMake = true
+			m[0].(*Module).Properties.PreventInstall = true
+
+			m[1].(*Module).coverage.Properties.CoverageEnabled = needCoverageBuild
+			m[1].(*Module).Properties.HideFromMake = hideFromMake
+			m[1].(*Module).Properties.PreventInstall = preventInstall
 		}
 	}
 }
