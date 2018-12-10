@@ -16,6 +16,24 @@
       "revId": "8e3facad738b6f7784d95d663d808b9a5f20e6e4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6363ac74_dd9391f0",
+        "filename": "genrule/genrule_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2018-12-10T21:34:28Z",
+      "side": 1,
+      "message": "Good question. I thought it\u0027d return an error as it does when a child module that depends on defaults modules tries to override a property, but obviously I was wrong. It didn\u0027t cause a failure. For example, if both defaults have a cmd, we always choose the one that appears first in the list.\n\nI looked into it, and it seems like this piece of code handles the merging.\nhttp://cs/aosp-master/build/blueprint/proptools/extend.go\n\nThe merging behavior depends on the type. For example, for slices, we do array merging. In the cmd\u0027s case, it\u0027s a string pointer (I honestly don\u0027t know why it isn\u0027t just a string, though) hence just replacement.",
+      "parentUuid": "6de68524_93574319",
+      "revId": "8e3facad738b6f7784d95d663d808b9a5f20e6e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
