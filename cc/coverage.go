@@ -15,7 +15,14 @@
 package cc
 
 import (
+	"sync"
+
 	"android/soong/android"
+	"android/soong/cc/config"
+)
+
+var (
+	coverageModuleLock sync.Mutex
 )
 
 type CoverageProperties struct {
@@ -38,6 +45,10 @@ func (cov *coverage) props() []interface{} {
 func (cov *coverage) begin(ctx BaseModuleContext) {}
 
 func (cov *coverage) deps(ctx BaseModuleContext, deps Deps) Deps {
+	if cov.Properties.CoverageEnabled {
+		runtimeLibrary := config.ProfileRuntimeLibrary(ctx.toolchain())
+		deps.LateStaticLibs = append(deps.LateStaticLibs, runtimeLibrary)
+	}
 	return deps
 }
 
@@ -87,33 +98,73 @@ func (cov *coverage) flags(ctx ModuleContext, flags Flags) Flags {
 	}
 
 	if cov.linkCoverage {
-		flags.LdFlags = append(flags.LdFlags, "--coverage")
+		// flags.LdFlags = append(flags.LdFlags, "--coverage")
 	}
 
 	return flags
 }
 
-func coverageLinkingMutator(mctx android.BottomUpMutatorContext) {
+func coverageMutator(mctx android.BottomUpMutatorContext) {
+	// Coverage is disabled globally
+	if !mctx.DeviceConfig().NativeCoverageEnabled() {
+		return
+	}
+
+	// TODO(dwillemsen): because of -nodefaultlibs, we must depend on libclang_rt.profile-*.a
+	// Just turn off for now.
+	if mctx.Host() {
+		return
+	}
+
 	if c, ok := mctx.Module().(*Module); ok && c.coverage != nil {
 		var enabled bool
 
-		if !mctx.DeviceConfig().NativeCoverageEnabled() {
-			// Coverage is disabled globally
-		} else if mctx.Host() {
-			// TODO(dwillemsen): because of -nodefaultlibs, we must depend on libclang_rt.profile-*.a
-			// Just turn off for now.
-		} else if c.coverage.Properties.Native_coverage != nil {
+		if c.coverage.Properties.Native_coverage != nil {
 			enabled = *c.coverage.Properties.Native_coverage
+		} else if c.useVndk() || c.hasVendorVariant() {
+			// Do not enable coverage for VNDK libraries
+		} else if c.isNDKStubLibrary() {
+			// Do not enable coverage for NDK stub libraries
 		} else {
 			enabled = mctx.DeviceConfig().CoverageEnabledForPath(mctx.ModuleDir())
 		}
 
+		hideFromMake := c.Properties.HideFromMake
+		preventInstall := c.Properties.PreventInstall
+
 		if enabled {
-			// Create a variation so that we don't need to recompile objects
-			// when turning on or off coverage. We'll still relink the necessary
-			// binaries, since we don't know which ones those are until later.
-			m := mctx.CreateLocalVariations("cov")
-			m[0].(*Module).coverage.Properties.CoverageEnabled = true
+			m := mctx.CreateVariations("none", "cov")
+
+			coverageEnabledModules := coverageEnabledModules(mctx.Config())
+			coverageModuleLock.Lock()
+			(*coverageEnabledModules)[c.Name()] = "cov"
+			coverageModuleLock.Unlock()
+
+			// Setup the non-coverage version.  Set HideFromMake and
+			// PreventInstall if set in the original module, or if there's
+			// a coverage-enabled variant.
+			m[0].(*Module).coverage.Properties.CoverageEnabled = false
+			m[0].(*Module).Properties.HideFromMake = hideFromMake
+			m[0].(*Module).Properties.PreventInstall = preventInstall
+
+			m[1].(*Module).coverage.Properties.CoverageEnabled = true
+			m[1].(*Module).Properties.HideFromMake = hideFromMake
+			m[1].(*Module).Properties.PreventInstall = preventInstall
 		}
 	}
+}
+
+func coverageEnabledModules(config android.Config) *map[string]string {
+	return config.Once("coverageEnabledModules", func() interface{} {
+		moduleMap := make(map[string]string)
+		return &moduleMap
+	}).(*map[string]string)
+}
+
+func GetCoverageVariation(config android.Config, moduleName string) string {
+	coverageModuleLock.Lock()
+	val := (*coverageEnabledModules(config))[moduleName]
+	coverageModuleLock.Unlock()
+
+	return val
 }
