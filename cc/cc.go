@@ -41,6 +41,7 @@ func init() {
 		ctx.BottomUp("test_per_src", testPerSrcMutator).Parallel()
 		ctx.BottomUp("version", VersionMutator).Parallel()
 		ctx.BottomUp("begin", BeginMutator).Parallel()
+		ctx.BottomUp("coverage", coverageLinkingMutator).Parallel()
 	})
 
 	android.PostDepsMutators(func(ctx android.RegisterMutatorsContext) {
@@ -61,7 +62,6 @@ func init() {
 
 		ctx.TopDown("sanitize_runtime_deps", sanitizerRuntimeDepsMutator)
 
-		ctx.BottomUp("coverage", coverageLinkingMutator).Parallel()
 		ctx.TopDown("vndk_deps", sabiDepsMutator)
 
 		ctx.TopDown("lto_deps", ltoDepsMutator)
@@ -247,6 +247,7 @@ type ModuleContextIntf interface {
 	baseModuleName() string
 	getVndkExtendsModuleName() string
 	isPgoCompile() bool
+	isNDKStubLibrary() bool
 	useClangLld(actx ModuleContext) bool
 	isApex() bool
 }
@@ -479,6 +480,13 @@ func (c *Module) isPgoCompile() bool {
 	return false
 }
 
+func (c *Module) isNDKStubLibrary() bool {
+	if compiler, ok := c.compiler.(*stubDecorator); ok {
+		return compiler != nil
+	}
+	return false
+}
+
 func (c *Module) isVndkSp() bool {
 	if vndkdep := c.vndkdep; vndkdep != nil {
 		return vndkdep.isVndkSp()
@@ -605,6 +613,10 @@ func (ctx *moduleContextImpl) isVndk() bool {
 
 func (ctx *moduleContextImpl) isPgoCompile() bool {
 	return ctx.mod.isPgoCompile()
+}
+
+func (ctx *moduleContextImpl) isNDKStubLibrary() bool {
+	return ctx.mod.isNDKStubLibrary()
 }
 
 func (ctx *moduleContextImpl) isVndkSp() bool {
@@ -918,6 +930,9 @@ func (c *Module) deps(ctx DepsContext) Deps {
 	// in linkerDeps().
 	if c.pgo != nil {
 		deps = c.pgo.deps(ctx, deps)
+	}
+	if c.coverage != nil {
+		deps = c.coverage.deps(ctx, deps)
 	}
 	if c.linker != nil {
 		deps = c.linker.linkerDeps(ctx, deps)
