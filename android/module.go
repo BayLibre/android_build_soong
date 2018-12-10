@@ -89,6 +89,7 @@ type BaseModuleContext interface {
 	ModuleName() string
 	ModuleDir() string
 	Config() Config
+	Variations() []blueprint.Variation
 
 	ContainsProperty(name string) bool
 	Errorf(pos scanner.Position, fmt string, args ...interface{})
