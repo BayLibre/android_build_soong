@@ -126,6 +126,8 @@ type CompilerProperties struct {
 	// Add host jdk tools.jar to bootclasspath
 	Use_tools_jar *bool
 
+	Core_platform *bool
+
 	Openjdk9 struct {
 		// List of source files that should only be used when passing -source 1.9
 		Srcs []string
