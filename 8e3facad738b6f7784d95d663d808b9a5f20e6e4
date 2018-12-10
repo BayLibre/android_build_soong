@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6de68524_93574319",
+        "filename": "genrule/genrule_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2018-12-10T21:05:03Z",
+      "side": 1,
+      "message": "I am a little confused how \"gen\" will behave, if both \"gen_defaults1\" and \"gen_default2\" have the non-empty field: cmd. Are the string fields going to be concatenated together?",
+      "revId": "8e3facad738b6f7784d95d663d808b9a5f20e6e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
