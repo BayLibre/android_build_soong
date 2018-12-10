@@ -41,6 +41,7 @@ func init() {
 		ctx.BottomUp("test_per_src", testPerSrcMutator).Parallel()
 		ctx.BottomUp("version", VersionMutator).Parallel()
 		ctx.BottomUp("begin", BeginMutator).Parallel()
+		ctx.BottomUp("coverage", coverageMutator).Parallel()
 	})
 
 	android.PostDepsMutators(func(ctx android.RegisterMutatorsContext) {
@@ -61,7 +62,6 @@ func init() {
 
 		ctx.TopDown("sanitize_runtime_deps", sanitizerRuntimeDepsMutator)
 
-		ctx.BottomUp("coverage", coverageLinkingMutator).Parallel()
 		ctx.TopDown("vndk_deps", sabiDepsMutator)
 
 		ctx.TopDown("lto_deps", ltoDepsMutator)
@@ -248,6 +248,7 @@ type ModuleContextIntf interface {
 	baseModuleName() string
 	getVndkExtendsModuleName() string
 	isPgoCompile() bool
+	isNDKStubLibrary() bool
 	useClangLld(actx ModuleContext) bool
 	isApex() bool
 }
@@ -480,6 +481,13 @@ func (c *Module) isPgoCompile() bool {
 	return false
 }
 
+func (c *Module) isNDKStubLibrary() bool {
+	if compiler, ok := c.compiler.(*stubDecorator); ok {
+		return compiler != nil
+	}
+	return false
+}
+
 func (c *Module) isVndkSp() bool {
 	if vndkdep := c.vndkdep; vndkdep != nil {
 		return vndkdep.isVndkSp()
@@ -606,6 +614,10 @@ func (ctx *moduleContextImpl) isVndk() bool {
 
 func (ctx *moduleContextImpl) isPgoCompile() bool {
 	return ctx.mod.isPgoCompile()
+}
+
+func (ctx *moduleContextImpl) isNDKStubLibrary() bool {
+	return ctx.mod.isNDKStubLibrary()
 }
 
 func (ctx *moduleContextImpl) isVndkSp() bool {
@@ -1078,15 +1090,36 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 		}
 	}
 
+	resolveCoverageAndAddVariationDep := func(variations []blueprint.Variation, depTag dependencyTag, libs ...string) {
+		thisCoverageVariant := GetCoverageVariation(actx.Config(), c.Name())
+		for _, lib := range libs {
+			var otherCoverageVariant string
+			if thisCoverageVariant == "" {
+				otherCoverageVariant = ""
+			} else {
+				otherCoverageVariant = GetCoverageVariation(actx.Config(), lib)
+			}
+
+			if actx.Host() || thisCoverageVariant == otherCoverageVariant {
+				actx.AddVariationDependencies(variations, depTag, lib)
+			} else {
+				newVariations := make([]blueprint.Variation, len(variations))
+				copy(newVariations, variations)
+				newVariations = append(newVariations, blueprint.Variation{Mutator: "coverage", Variation: otherCoverageVariant})
+				actx.AddVariationDependencies(newVariations, depTag, lib)
+			}
+		}
+	}
+
 	for _, lib := range deps.HeaderLibs {
 		depTag := headerDepTag
 		if inList(lib, deps.ReexportHeaderLibHeaders) {
 			depTag = headerExportDepTag
 		}
-		actx.AddVariationDependencies(nil, depTag, lib)
+		resolveCoverageAndAddVariationDep(nil, depTag, lib)
 	}
 
-	actx.AddVariationDependencies([]blueprint.Variation{
+	resolveCoverageAndAddVariationDep([]blueprint.Variation{
 		{Mutator: "link", Variation: "static"},
 	}, wholeStaticDepTag, deps.WholeStaticLibs...)
 
@@ -1095,14 +1128,19 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 		if inList(lib, deps.ReexportStaticLibHeaders) {
 			depTag = staticExportDepTag
 		}
-		actx.AddVariationDependencies([]blueprint.Variation{
-			{Mutator: "link", Variation: "static"},
-		}, depTag, lib)
+
+		var variations []blueprint.Variation
+		variations = append(variations, blueprint.Variation{Mutator: "link", Variation: "static"})
+
+		resolveCoverageAndAddVariationDep(variations, depTag, lib)
 	}
 
-	actx.AddVariationDependencies([]blueprint.Variation{
-		{Mutator: "link", Variation: "static"},
-	}, lateStaticDepTag, deps.LateStaticLibs...)
+	for _, lib := range deps.LateStaticLibs {
+		var variations []blueprint.Variation
+		variations = append(variations, blueprint.Variation{Mutator: "link", Variation: "static"})
+
+		resolveCoverageAndAddVariationDep(variations, lateStaticDepTag, lib)
+	}
 
 	addSharedLibDependencies := func(depTag dependencyTag, name string, version string) {
 		var variations []blueprint.Variation
@@ -1113,14 +1151,14 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 			variations = append(variations, blueprint.Variation{Mutator: "version", Variation: version})
 			depTag.explicitlyVersioned = true
 		}
-		actx.AddVariationDependencies(variations, depTag, name)
+		resolveCoverageAndAddVariationDep(variations, depTag, name)
 
 		// If the version is not specified, add dependency to the latest stubs library.
 		// The stubs library will be used when the depending module is built for APEX and
 		// the dependent module is not in the same APEX.
 		latestVersion := latestStubsVersionFor(actx.Config(), name)
 		if version == "" && latestVersion != "" && versionVariantAvail {
-			actx.AddVariationDependencies([]blueprint.Variation{
+			resolveCoverageAndAddVariationDep([]blueprint.Variation{
 				{Mutator: "link", Variation: "shared"},
 				{Mutator: "version", Variation: latestVersion},
 			}, depTag, name)
@@ -1151,41 +1189,56 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 		addSharedLibDependencies(lateSharedDepTag, lib, "")
 	}
 
-	actx.AddVariationDependencies([]blueprint.Variation{
+	resolveCoverageAndAddVariationDep([]blueprint.Variation{
 		{Mutator: "link", Variation: "shared"},
 	}, runtimeDepTag, deps.RuntimeLibs...)
 
-	actx.AddDependency(c, genSourceDepTag, deps.GeneratedSources...)
+	addDependencySansCoverage := func(depTag dependencyTag, libs ...string) {
+		thisVariations := actx.Variations()
+		newVariations := make([]blueprint.Variation, len(thisVariations))
+		for _, variation := range thisVariations {
+			if variation.Mutator == "coverage" {
+				continue
+			}
+			newVariations = append(newVariations, blueprint.Variation{Mutator: variation.Mutator, Variation: variation.Variation})
+		}
+
+		for _, lib := range libs {
+			actx.AddFarVariationDependencies(newVariations, depTag, lib)
+		}
+	}
+
+	addDependencySansCoverage(genSourceDepTag, deps.GeneratedSources...)
 
 	for _, gen := range deps.GeneratedHeaders {
 		depTag := genHeaderDepTag
 		if inList(gen, deps.ReexportGeneratedHeaders) {
 			depTag = genHeaderExportDepTag
 		}
-		actx.AddDependency(c, depTag, gen)
+		addDependencySansCoverage(depTag, gen)
 	}
 
-	actx.AddVariationDependencies(nil, objDepTag, deps.ObjFiles...)
+	resolveCoverageAndAddVariationDep(nil, objDepTag, deps.ObjFiles...)
 
 	if deps.CrtBegin != "" {
-		actx.AddVariationDependencies(nil, crtBeginDepTag, deps.CrtBegin)
+		resolveCoverageAndAddVariationDep(nil, crtBeginDepTag, deps.CrtBegin)
 	}
 	if deps.CrtEnd != "" {
-		actx.AddVariationDependencies(nil, crtEndDepTag, deps.CrtEnd)
+		resolveCoverageAndAddVariationDep(nil, crtEndDepTag, deps.CrtEnd)
 	}
 	if deps.LinkerFlagsFile != "" {
-		actx.AddDependency(c, linkerFlagsDepTag, deps.LinkerFlagsFile)
+		addDependencySansCoverage(linkerFlagsDepTag, deps.LinkerFlagsFile)
 	}
 	if deps.DynamicLinker != "" {
-		actx.AddDependency(c, dynamicLinkerDepTag, deps.DynamicLinker)
+		addDependencySansCoverage(dynamicLinkerDepTag, deps.DynamicLinker)
 	}
 
 	version := ctx.sdkVersion()
-	actx.AddVariationDependencies([]blueprint.Variation{
+	resolveCoverageAndAddVariationDep([]blueprint.Variation{
 		{Mutator: "ndk_api", Variation: version},
 		{Mutator: "link", Variation: "shared"},
 	}, ndkStubDepTag, variantNdkLibs...)
-	actx.AddVariationDependencies([]blueprint.Variation{
+	resolveCoverageAndAddVariationDep([]blueprint.Variation{
 		{Mutator: "ndk_api", Variation: version},
 		{Mutator: "link", Variation: "shared"},
 	}, ndkLateStubDepTag, variantLateNdkLibs...)
@@ -1196,7 +1249,7 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 			if actx.DeviceConfig().VndkVersion() == "" {
 				baseModuleMode = coreMode
 			}
-			actx.AddVariationDependencies([]blueprint.Variation{
+			resolveCoverageAndAddVariationDep([]blueprint.Variation{
 				{Mutator: "image", Variation: baseModuleMode},
 				{Mutator: "link", Variation: "shared"},
 			}, vndkExtDepTag, vndkdep.getVndkExtendsModuleName())
