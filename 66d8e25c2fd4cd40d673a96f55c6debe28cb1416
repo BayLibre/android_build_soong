@@ -16,6 +16,70 @@
       "revId": "66d8e25c2fd4cd40d673a96f55c6debe28cb1416",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "816527df_ed0bbada",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-12-11T08:56:06Z",
+      "side": 1,
+      "message": "I\u0027ve left some comments below to give you some pointers. Basically, this follows the architecture of the enclosing APEX;\nIf the APEX is for device, all its dependencies are for device. If the APEX is for host (currently, we only have one such apex: com.android.runtime.host), then the dependencies are for host.",
+      "parentUuid": "2ef0320f_9c789014",
+      "revId": "66d8e25c2fd4cd40d673a96f55c6debe28cb1416",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c2be949_4b198df0",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-12-11T08:56:06Z",
+      "side": 1,
+      "message": "This follows target of the enclosing APEX.",
+      "range": {
+        "startLine": 349,
+        "startChar": 49,
+        "endLine": 349,
+        "endChar": 53
+      },
+      "revId": "66d8e25c2fd4cd40d673a96f55c6debe28cb1416",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dac25ed1_ecbfe017",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 877,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-12-11T08:56:06Z",
+      "side": 1,
+      "message": "host is supported actually",
+      "range": {
+        "startLine": 877,
+        "startChar": 59,
+        "endLine": 877,
+        "endChar": 81
+      },
+      "revId": "66d8e25c2fd4cd40d673a96f55c6debe28cb1416",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
