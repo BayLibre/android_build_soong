@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81775a75_3d67e6cb",
+        "filename": "android/paths.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1054,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2018-12-11T18:12:57Z",
+      "side": 1,
+      "message": "s/Rel/MaybeRel?",
+      "range": {
+        "startLine": 1054,
+        "startChar": 3,
+        "endLine": 1054,
+        "endChar": 6
+      },
+      "revId": "7c47b87e24435d7bb6a9a97d462b6fe92a48cd2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bc3d3dd_b15b596d",
+        "filename": "android/paths.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1059,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2018-12-11T18:12:57Z",
+      "side": 1,
+      "message": "Don\u0027t we need a return statement after this in case it doesn\u0027t panic?",
+      "revId": "7c47b87e24435d7bb6a9a97d462b6fe92a48cd2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
