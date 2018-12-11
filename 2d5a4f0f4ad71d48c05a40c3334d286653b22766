@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb08f710_57b4dfb5",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1589,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-12-11T07:03:51Z",
+      "side": 1,
+      "message": "Don\u0027t we need a LOCAL_REQUIRED_MODULE of the apex instead, so that \"m \u003cmodule\u003e\" will updated/build all dependencies?",
+      "revId": "2d5a4f0f4ad71d48c05a40c3334d286653b22766",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
