@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ef0320f_9c789014",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-12-11T07:23:36Z",
+      "side": 1,
+      "message": "Is logic being limited to device-side modules somewhere that I\u0027m not seeing?",
+      "revId": "66d8e25c2fd4cd40d673a96f55c6debe28cb1416",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
