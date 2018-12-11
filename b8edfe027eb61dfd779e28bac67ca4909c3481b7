@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a770ae50_726eb5b9",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-12-11T23:35:18Z",
+      "side": 1,
+      "message": "Just making sure, you\u0027re intending to leave these TODOs in for now, right?",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 17
+      },
+      "revId": "b8edfe027eb61dfd779e28bac67ca4909c3481b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
