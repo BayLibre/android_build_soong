@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6638b616_4c0f76b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-12-12T00:24:38Z",
+      "side": 1,
+      "message": "But this isn\u0027t being set anywhere, and we support doing fairly massive changes to the vendor versions of the libraries. Where are the changes to clean all of those up, and continuously check for problems? As this is, it\u0027s blindly assuming that two (potentially) very different libraries have the same interface.",
+      "range": {
+        "startLine": 11,
+        "startChar": 34,
+        "endLine": 11,
+        "endChar": 62
+      },
+      "revId": "dfd545ecd265a7727a1355f744e0ed38296855fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
