@@ -1185,3 +1185,169 @@ func TestCompilerFlags(t *testing.T) {
 		}
 	}
 }
+
+func patchModuleTestContext(bp string) *android.TestContext {
+	ctx := android.NewTestArchContext()
+	ctx.RegisterModuleType("android_app", android.ModuleFactoryAdaptor(AndroidAppFactory))
+	ctx.RegisterModuleType("android_library", android.ModuleFactoryAdaptor(AndroidLibraryFactory))
+	ctx.RegisterModuleType("android_test", android.ModuleFactoryAdaptor(AndroidTestFactory))
+	ctx.RegisterModuleType("java_binary_host", android.ModuleFactoryAdaptor(BinaryHostFactory))
+	ctx.RegisterModuleType("java_library", android.ModuleFactoryAdaptor(LibraryFactory))
+	ctx.RegisterModuleType("java_library_host", android.ModuleFactoryAdaptor(LibraryHostFactory))
+	ctx.RegisterModuleType("java_import", android.ModuleFactoryAdaptor(ImportFactory))
+	ctx.RegisterModuleType("java_defaults", android.ModuleFactoryAdaptor(defaultsFactory))
+	ctx.RegisterModuleType("java_system_modules", android.ModuleFactoryAdaptor(SystemModulesFactory))
+	ctx.RegisterModuleType("java_genrule", android.ModuleFactoryAdaptor(genRuleFactory))
+	ctx.RegisterModuleType("filegroup", android.ModuleFactoryAdaptor(android.FileGroupFactory))
+	ctx.RegisterModuleType("genrule", android.ModuleFactoryAdaptor(genrule.GenRuleFactory))
+	ctx.RegisterModuleType("droiddoc", android.ModuleFactoryAdaptor(DroiddocFactory))
+	ctx.RegisterModuleType("droiddoc_host", android.ModuleFactoryAdaptor(DroiddocHostFactory))
+	ctx.RegisterModuleType("droiddoc_template", android.ModuleFactoryAdaptor(ExportedDroiddocDirFactory))
+	ctx.RegisterModuleType("java_sdk_library", android.ModuleFactoryAdaptor(sdkLibraryFactory))
+	ctx.RegisterModuleType("prebuilt_apis", android.ModuleFactoryAdaptor(prebuiltApisFactory))
+	//ctx.PreArchMutators(android.RegisterPrebuiltsPreArchMutators)
+	//ctx.PreArchMutators(android.RegisterPrebuiltsPostDepsMutators)
+	//ctx.PreArchMutators(android.RegisterDefaultsPreArchMutators)
+	//ctx.PreArchMutators(func(ctx android.RegisterMutatorsContext) {
+	//	ctx.TopDown("prebuilt_apis", prebuiltApisMutator).Parallel()
+	//	ctx.TopDown("java_sdk_library", sdkLibraryMutator).Parallel()
+	//})
+	//ctx.RegisterPreSingletonType("overlay", android.SingletonFactoryAdaptor(OverlaySingletonFactory))
+
+	ctx.Register()
+
+	mockFS := map[string][]byte{
+		"Android.bp":             []byte(bp),
+		"a.java":                 nil,
+		"b.java":                 nil,
+		"c.java":                 nil,
+		"b.kt":                   nil,
+		"a.jar":                  nil,
+		"b.jar":                  nil,
+		"java-res/a/a":           nil,
+		"java-res/b/b":           nil,
+		"java-res2/a":            nil,
+		"java-fg/a.java":         nil,
+		"java-fg/b.java":         nil,
+		"java-fg/c.java":         nil,
+		"api/current.txt":        nil,
+		"api/removed.txt":        nil,
+		"api/system-current.txt": nil,
+		"api/system-removed.txt": nil,
+		"api/test-current.txt":   nil,
+		"api/test-removed.txt":   nil,
+
+		"prebuilts/sdk/14/public/android.jar":         nil,
+		"prebuilts/sdk/14/public/framework.aidl":      nil,
+		"prebuilts/sdk/14/system/android.jar":         nil,
+		"prebuilts/sdk/current/core/android.jar":      nil,
+		"prebuilts/sdk/current/public/android.jar":    nil,
+		"prebuilts/sdk/current/public/framework.aidl": nil,
+		"prebuilts/sdk/current/public/core.jar":       nil,
+		"prebuilts/sdk/current/system/android.jar":    nil,
+		"prebuilts/sdk/current/test/android.jar":      nil,
+		"prebuilts/sdk/28/public/api/foo.txt":         nil,
+		"prebuilts/sdk/28/system/api/foo.txt":         nil,
+		"prebuilts/sdk/28/test/api/foo.txt":           nil,
+		"prebuilts/sdk/28/public/api/foo-removed.txt": nil,
+		"prebuilts/sdk/28/system/api/foo-removed.txt": nil,
+		"prebuilts/sdk/28/test/api/foo-removed.txt":   nil,
+		"prebuilts/sdk/28/public/api/bar.txt":         nil,
+		"prebuilts/sdk/28/system/api/bar.txt":         nil,
+		"prebuilts/sdk/28/test/api/bar.txt":           nil,
+		"prebuilts/sdk/28/public/api/bar-removed.txt": nil,
+		"prebuilts/sdk/28/system/api/bar-removed.txt": nil,
+		"prebuilts/sdk/28/test/api/bar-removed.txt":   nil,
+		"prebuilts/sdk/tools/core-lambda-stubs.jar":   nil,
+		"prebuilts/sdk/Android.bp":                    []byte(`prebuilt_apis { name: "sdk", api_dirs: ["14", "28", "current"],}`),
+
+		// For framework-res, which is an implicit dependency for framework
+		"AndroidManifest.xml":                   nil,
+		"build/target/product/security/testkey": nil,
+
+		"build/soong/scripts/jar-wrapper.sh": nil,
+
+		"build/make/core/proguard.flags":             nil,
+		"build/make/core/proguard_basic_keeps.flags": nil,
+
+		"jdk8/jre/lib/jce.jar": nil,
+		"jdk8/jre/lib/rt.jar":  nil,
+		"jdk8/lib/tools.jar":   nil,
+
+		"bar-doc/a.java":                 nil,
+		"bar-doc/b.java":                 nil,
+		"bar-doc/IFoo.aidl":              nil,
+		"bar-doc/known_oj_tags.txt":      nil,
+		"external/doclava/templates-sdk": nil,
+	}
+
+	//for k, v := range fs {
+	//	mockFS[k] = v
+	//}
+
+	ctx.MockFileSystem(mockFS)
+
+	return ctx
+}
+
+// TODO(jungjw): Consider making this more robust by ignoring path order.
+func checkPatchModuleFlag(t *testing.T, ctx *android.TestContext, moduleName string, expected string) {
+	variables := ctx.ModuleForTests(moduleName, "android_common").Module().VariablesForTests()
+	flags := strings.Split(variables["javacFlags"], " ")
+	got := ""
+	for _, flag := range flags {
+		keyEnd := strings.Index(flag, "=")
+		if keyEnd > -1 && flag[:keyEnd] == "--patch-module" {
+			got = flag[keyEnd+1:]
+			break
+		}
+	}
+	if expected != got {
+		t.Errorf("Unexpected patch-module flag for module %q - expected %q, but got %q", moduleName, expected, got)
+	}
+}
+
+func TestPatchModule(t *testing.T) {
+	bp := `
+		java_library {
+			name: "foo",
+			srcs: ["a.java"],
+		}
+
+		java_library {
+			name: "bar",
+			srcs: ["b.java"],
+			no_standard_libs: true,
+			system_modules: "none",
+	    patch_module: "java.base",
+		}
+
+		java_library {
+			name: "baz",
+			srcs: ["c.java"],
+	    patch_module: "java.base",
+		}
+	`
+
+	t.Run("1.8", func(t *testing.T) {
+		// Test default javac 1.8
+		ctx := testJava(t, bp)
+
+		checkPatchModuleFlag(t, ctx, "foo", "")
+		checkPatchModuleFlag(t, ctx, "bar", "")
+		checkPatchModuleFlag(t, ctx, "baz", "")
+	})
+
+	t.Run("1.9", func(t *testing.T) {
+		// Test again with javac 1.9
+		config := testConfig(map[string]string{"EXPERIMENTAL_USE_OPENJDK9": "true"})
+		ctx := testContext(config, bp, nil)
+		run(t, ctx, config)
+
+		checkPatchModuleFlag(t, ctx, "foo", "")
+		expected := "java.base=.:" + buildDir
+		checkPatchModuleFlag(t, ctx, "bar", expected)
+		expected = "java.base=" + strings.Join([]string{".", buildDir, moduleToPath("ext"), moduleToPath("framework")}, ":")
+		checkPatchModuleFlag(t, ctx, "baz", expected)
+	})
+}
