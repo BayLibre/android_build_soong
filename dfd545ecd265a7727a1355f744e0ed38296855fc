@@ -22,6 +22,30 @@
       "revId": "dfd545ecd265a7727a1355f744e0ed38296855fc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b20841e5_29bc942e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1349653
+      },
+      "writtenOn": "2018-12-12T06:51:57Z",
+      "side": 1,
+      "message": "Agreed. This set of CLs is not enough for us to enable TARGET_VNDK_USE_CORE_VARIANT yet. The plan for what\u0027s coming after this change is:\n  1. Set vndk.must_use_vendor_variant to true for all VNDK libraries.\n  2. Make change to disallow use of __ANDROID_VNDK__ and vendor-variant properties when building libraries with vndk.must_use_vendor_variant\u003dfalse.\n  3. Clean up vendor-variant-specific behavior in VNDK libraries one by one, and only enable vndk.must_use_vendor_variant for those cleaned up.",
+      "parentUuid": "6638b616_4c0f76b2",
+      "range": {
+        "startLine": 11,
+        "startChar": 34,
+        "endLine": 11,
+        "endChar": 62
+      },
+      "revId": "dfd545ecd265a7727a1355f744e0ed38296855fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
