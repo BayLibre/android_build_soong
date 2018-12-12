@@ -49,7 +49,7 @@ var (
 	cfiStaticLibsMutex    sync.Mutex
 	hwasanStaticLibsMutex sync.Mutex
 
-	intOverflowCflags   = []string{"-fsanitize-blacklist=build/soong/cc/config/integer_overflow_blacklist.txt"}
+	intOverflowCflags = []string{"-fsanitize-blacklist=build/soong/cc/config/integer_overflow_blacklist.txt"}
 
 	// Pass -Xclang before -fsanitize-minimal-runtime to work around a driver
 	// check which rejects -fsanitize-minimal-runtime together with
@@ -128,6 +128,7 @@ type SanitizeProperties struct {
 			Cfi              *bool    `android:"arch_variant"`
 			Integer_overflow *bool    `android:"arch_variant"`
 			Misc_undefined   []string `android:"arch_variant"`
+			No_recover       []string
 		}
 
 		// value to pass to -fsanitize-recover=
@@ -543,6 +544,11 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 	if sanitize.Properties.Sanitize.Recover != nil {
 		flags.CFlags = append(flags.CFlags, "-fsanitize-recover="+
 			strings.Join(sanitize.Properties.Sanitize.Recover, ","))
+	}
+
+	if sanitize.Properties.Sanitize.Diag.No_recover != nil {
+		flags.CFlags = append(flags.CFlags, "-fno-sanitize-recover="+
+			strings.Join(sanitize.Properties.Sanitize.Diag.No_recover, ","))
 	}
 
 	// Link a runtime library if needed.
