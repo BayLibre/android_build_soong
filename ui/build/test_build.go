@@ -37,7 +37,7 @@ func testForDanglingRules(ctx Context, config Config) {
 		return
 	}
 
-	ctx.BeginTrace("test for dangling rules")
+	ctx.BeginTrace("test", "test for dangling rules")
 	defer ctx.EndTrace()
 
 	ts := ctx.Status.StartTool()
