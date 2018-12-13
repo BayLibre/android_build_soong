@@ -19,6 +19,7 @@ import (
 	"fmt"
 	"strings"
 
+	"android/soong/ui/metrics"
 	"android/soong/ui/status"
 )
 
@@ -69,7 +70,7 @@ func DumpMakeVars(ctx Context, config Config, goals, vars []string) (map[string]
 }
 
 func dumpMakeVars(ctx Context, config Config, goals, vars []string, write_soong_vars bool) (map[string]string, error) {
-	ctx.BeginTrace("dumpvars")
+	ctx.BeginTrace(metrics.RunKati, "dumpvars")
 	defer ctx.EndTrace()
 
 	cmd := Command(ctx, config, "dumpvars",
