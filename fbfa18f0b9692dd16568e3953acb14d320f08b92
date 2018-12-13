@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2afdd7c4_158fecd2",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2018-12-13T15:54:57Z",
+      "side": 1,
+      "message": "Are there any tests for the stub generation that could check this?",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 358,
+        "endChar": 51
+      },
+      "revId": "fbfa18f0b9692dd16568e3953acb14d320f08b92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
