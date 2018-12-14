@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2e4c670_ae1e80f8",
+        "filename": "bpf/bpf_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-12-14T01:00:17Z",
+      "side": 1,
+      "message": "Can you put our standard copyright header here?",
+      "revId": "df09e098b0d26b4783ea1fb6cab9b0baef4316d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d09b445c_2dbc591f",
+        "filename": "bpf/bpf_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-12-14T01:00:17Z",
+      "side": 1,
+      "message": "Why does this need to be cc2?",
+      "range": {
+        "startLine": 5,
+        "startChar": 1,
+        "endLine": 5,
+        "endChar": 4
+      },
+      "revId": "df09e098b0d26b4783ea1fb6cab9b0baef4316d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bc92110_730c9be8",
+        "filename": "bpf/bpf_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-12-14T01:00:17Z",
+      "side": 1,
+      "message": "Our normal ordering/spacing here has been:\n\n  stdlib\n\n  other packages (blueprint, etc)\n\n  soong packages\n\nbut that\u0027s just a nit",
+      "revId": "df09e098b0d26b4783ea1fb6cab9b0baef4316d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
