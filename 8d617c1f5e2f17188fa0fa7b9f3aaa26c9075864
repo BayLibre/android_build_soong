@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22d9ec7f_7a4d1114",
+        "filename": "bpf/bpf_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-12-14T23:53:33Z",
+      "side": 1,
+      "message": "2018",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "8d617c1f5e2f17188fa0fa7b9f3aaa26c9075864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
