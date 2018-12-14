@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "96b68dd8_05362ca1",
+        "filename": "bpf/bpf_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2018-12-14T15:13:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2e4c670_ae1e80f8",
+      "revId": "df09e098b0d26b4783ea1fb6cab9b0baef4316d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d09b445c_2dbc591f",
         "filename": "bpf/bpf_test.go",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "2eecefe0_8c264bb5",
+        "filename": "bpf/bpf_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2018-12-14T15:13:48Z",
+      "side": 1,
+      "message": "Because of this:\nhttp://cs/aosp-master/build/soong/bpf/bpf.go?l\u003d36\u0026rcl\u003dfee2bff77ce6d5c6a9c4f3971c385432dd7d8859",
+      "parentUuid": "d09b445c_2dbc591f",
+      "range": {
+        "startLine": 5,
+        "startChar": 1,
+        "endLine": 5,
+        "endChar": 4
+      },
+      "revId": "df09e098b0d26b4783ea1fb6cab9b0baef4316d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0bc92110_730c9be8",
         "filename": "bpf/bpf_test.go",
         "patchSetId": 2
@@ -56,6 +98,24 @@
       "revId": "df09e098b0d26b4783ea1fb6cab9b0baef4316d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd4a6b43_23e822fb",
+        "filename": "bpf/bpf_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2018-12-14T15:13:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bc92110_730c9be8",
+      "revId": "df09e098b0d26b4783ea1fb6cab9b0baef4316d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
