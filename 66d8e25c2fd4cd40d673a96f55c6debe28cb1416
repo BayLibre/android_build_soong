@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "b3ec9aa9_19d89c0b",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-12-15T13:43:20Z",
+      "side": 1,
+      "message": "Got it. Theoretically, it is not just device/host; the mapping can vary across architectures. I will try to address that in a follow-up CL. Thanks for the insight.",
+      "parentUuid": "5fb17f3c_732c0640",
+      "revId": "66d8e25c2fd4cd40d673a96f55c6debe28cb1416",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c2be949_4b198df0",
         "filename": "apex/apex.go",
         "patchSetId": 1
