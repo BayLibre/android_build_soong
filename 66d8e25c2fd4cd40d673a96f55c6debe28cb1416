@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "5fb17f3c_732c0640",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-12-15T07:45:13Z",
+      "side": 1,
+      "message": "My main concern is that we\u0027re storing a lot of data about modules and their apexes by name, and the module names will be the same across host \u0026 device, but the list of apexes is different between host and device, so the data for the host and device needs to be independent.\n\nThis change doesn\u0027t really affect that problem though, so I won\u0027t delay it any longer.",
+      "parentUuid": "816527df_ed0bbada",
+      "revId": "66d8e25c2fd4cd40d673a96f55c6debe28cb1416",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c2be949_4b198df0",
         "filename": "apex/apex.go",
         "patchSetId": 1
