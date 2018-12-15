@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ae8092e_7a8a0978",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-12-15T07:48:50Z",
+      "side": 1,
+      "message": "See https://github.com/golang/go/wiki/SliceTricks#filtering-without-allocating for how to do this without allocating",
+      "revId": "a897e2020321546bbe42e31095834683cb75c171",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
