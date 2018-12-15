@@ -22,6 +22,30 @@
       "revId": "2ddf619ddfbb29853a6ae130f2701ebc78dbdc35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf99502e_e2d79605",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-12-15T13:39:24Z",
+      "side": 1,
+      "message": "Thank you. I have been so accustomed to the term..\nFixed.",
+      "parentUuid": "819727f9_5c1688b2",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 9
+      },
+      "revId": "2ddf619ddfbb29853a6ae130f2701ebc78dbdc35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
