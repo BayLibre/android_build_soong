@@ -23,6 +23,23 @@
       "revId": "52b6c572fb239afefa67ff5f1fada87153a1317d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b5d9acb_c5f1280d",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-12-15T07:48:47Z",
+      "side": 1,
+      "message": "This needs fixing too, .dex files from tests are getting stripped.",
+      "revId": "52b6c572fb239afefa67ff5f1fada87153a1317d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
