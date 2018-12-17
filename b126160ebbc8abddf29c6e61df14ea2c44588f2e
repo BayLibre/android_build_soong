@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ad8d8f2_464c57e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2018-12-17T08:06:26Z",
+      "side": 1,
+      "message": "maybe also mention the addition of runtimeDir? Is that related to this in some way?",
+      "revId": "b126160ebbc8abddf29c6e61df14ea2c44588f2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
