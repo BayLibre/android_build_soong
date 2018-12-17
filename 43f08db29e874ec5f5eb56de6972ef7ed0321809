@@ -22,6 +22,30 @@
       "revId": "43f08db29e874ec5f5eb56de6972ef7ed0321809",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6fe78e6_0e6b470e",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-12-17T21:42:14Z",
+      "side": 1,
+      "message": "We use lower_case for properties in Android.bp files.  Unfortunately, due to Go\u0027s reflection rules we have to uppercase the first letter to make it exported, which leads to this suboptimal style.",
+      "parentUuid": "ec92f4d0_e37091d8",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 11
+      },
+      "revId": "43f08db29e874ec5f5eb56de6972ef7ed0321809",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
