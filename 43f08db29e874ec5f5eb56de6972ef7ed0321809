@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec92f4d0_e37091d8",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2018-12-17T20:41:16Z",
+      "side": 1,
+      "message": "Not really a comment, but a question. In which cases do we use an underscore in a struct name? I initially thought this was a mistake, but found a surprisingly many cases like this. Do we use it for some special types?",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 11
+      },
+      "revId": "43f08db29e874ec5f5eb56de6972ef7ed0321809",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
