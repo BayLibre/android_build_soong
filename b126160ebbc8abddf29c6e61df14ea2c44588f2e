@@ -16,6 +16,24 @@
       "revId": "b126160ebbc8abddf29c6e61df14ea2c44588f2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "facd42a9_66fce1f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-12-17T08:23:19Z",
+      "side": 1,
+      "message": "The runtimeDir itself is a implementation detail. I don\u0027t think I need to specifically mention it.\n\nHowever, I feel this comment is too simplified. I\u0027ve just amended.",
+      "parentUuid": "6ad8d8f2_464c57e7",
+      "revId": "b126160ebbc8abddf29c6e61df14ea2c44588f2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
