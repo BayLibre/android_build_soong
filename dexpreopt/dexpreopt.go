@@ -201,6 +201,8 @@ func dexpreoptCommand(global GlobalConfig, module ModuleConfig, rule *Rule, prof
 	vdexPath := pathtools.ReplaceExtension(odexPath, "vdex")
 	vdexInstallPath := pathtools.ReplaceExtension(odexInstallPath, "vdex")
 
+	invocationPath := pathtools.ReplaceExtension(odexPath, "invocation")
+
 	// bootImageLocation is $OUT/dex_bootjars/system/framework/boot.art, but dex2oat actually reads
 	// $OUT/dex_bootjars/system/framework/arm64/boot.art
 	var bootImagePath string
@@ -287,6 +289,7 @@ func dexpreoptCommand(global GlobalConfig, module ModuleConfig, rule *Rule, prof
 		Text(`ANDROID_LOG_TAGS="*:e"`).
 		Tool(global.Tools.Dex2oat).
 		Flag("--avoid-storing-invocation").
+		FlagWithOutput("--write-invocation-to=", invocationPath).ImplicitOutput(invocationPath).
 		Flag("--runtime-arg").FlagWithArg("-Xms", global.Dex2oatXms).
 		Flag("--runtime-arg").FlagWithArg("-Xmx", global.Dex2oatXmx).
 		Flag("${class_loader_context_arg}").
