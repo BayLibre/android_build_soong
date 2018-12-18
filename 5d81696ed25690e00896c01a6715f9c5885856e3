@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c87ecc03_d90fa662",
+        "filename": "cc/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-12-18T20:56:00Z",
+      "side": 1,
+      "message": "Could we clear out sharedLibs and avoid adding them to linkerDeps instead?",
+      "revId": "5d81696ed25690e00896c01a6715f9c5885856e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
