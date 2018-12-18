@@ -16,6 +16,24 @@
       "revId": "5d81696ed25690e00896c01a6715f9c5885856e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66c2537f_3d06bfee",
+        "filename": "cc/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2018-12-18T21:45:35Z",
+      "side": 1,
+      "message": "Sure, that should work as well. What about in library.go then? Do I need to revert it or update it similarly too?",
+      "parentUuid": "c87ecc03_d90fa662",
+      "revId": "5d81696ed25690e00896c01a6715f9c5885856e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
