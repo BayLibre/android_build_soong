@@ -60,6 +60,7 @@ func init() {
 		ctx.BottomUp("tsan", sanitizerMutator(tsan)).Parallel()
 
 		ctx.TopDown("sanitize_runtime_deps", sanitizerRuntimeDepsMutator)
+		ctx.BottomUp("sanitize_runtime", sanitizerRuntimeMutator).Parallel()
 
 		ctx.BottomUp("coverage", coverageLinkingMutator).Parallel()
 		ctx.TopDown("vndk_deps", sabiDepsMutator)
@@ -861,7 +862,7 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	}
 }
 
-func (c *Module) toolchain(ctx BaseModuleContext) config.Toolchain {
+func (c *Module) toolchain(ctx android.BaseContext) config.Toolchain {
 	if c.cachedToolchain == nil {
 		c.cachedToolchain = config.FindToolchain(ctx.Os(), ctx.Arch())
 	}
@@ -1247,6 +1248,11 @@ func checkLinkType(ctx android.ModuleContext, from *Module, to *Module, tag depe
 		// the NDK.
 		return
 	}
+	if _, ok := to.linker.(*prebuiltLibraryLinker); ok && strings.HasPrefix(ctx.OtherModuleName(to), "libclang_rt.") {
+		// clang prebuilt runtime libs are exempted from link type check
+		return
+	}
+
 	if String(to.Properties.Sdk_version) == "" {
 		// NDK code linking to platform code is never okay.
 		ctx.ModuleErrorf("depends on non-NDK-built library %q",
