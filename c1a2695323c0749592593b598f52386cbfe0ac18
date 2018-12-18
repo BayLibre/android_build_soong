@@ -16,6 +16,24 @@
       "revId": "c1a2695323c0749592593b598f52386cbfe0ac18",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3df49e19_d4c3e185",
+        "filename": "dexpreopt/OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2018-12-18T20:28:49Z",
+      "side": 1,
+      "message": "Doh! Thought it was under this dir. Done.",
+      "parentUuid": "aecb4875_9a7fbcec",
+      "revId": "c1a2695323c0749592593b598f52386cbfe0ac18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
