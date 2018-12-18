@@ -244,7 +244,7 @@ func dexpreoptCommand(global GlobalConfig, module ModuleConfig, rule *Rule, prof
 			classLoaderContextHost = append(classLoaderContextHost,
 				pathForLibrary(module, l))
 			classLoaderContextTarget = append(classLoaderContextTarget,
-				filepath.Join("/system/framework", l+".jar"))
+				installPathForLibrary(module, l))
 		}
 
 		const httpLegacy = "org.apache.http.legacy"
@@ -258,7 +258,7 @@ func dexpreoptCommand(global GlobalConfig, module ModuleConfig, rule *Rule, prof
 			conditionalClassLoaderContextHost28 = append(conditionalClassLoaderContextHost28,
 				pathForLibrary(module, httpLegacyImpl))
 			conditionalClassLoaderContextTarget28 = append(conditionalClassLoaderContextTarget28,
-				filepath.Join("/system/framework", httpLegacyImpl+".jar"))
+				installPathForLibrary(module, httpLegacyImpl))
 		}
 
 		const hidlBase = "android.hidl.base-V1.0-java"
@@ -267,11 +267,11 @@ func dexpreoptCommand(global GlobalConfig, module ModuleConfig, rule *Rule, prof
 		conditionalClassLoaderContextHost29 = append(conditionalClassLoaderContextHost29,
       pathForLibrary(module, hidlManager))
 		conditionalClassLoaderContextTarget29 = append(conditionalClassLoaderContextTarget29,
-			filepath.Join("/system/framework", hidlManager+".jar"))
+			filepath.Join(installPathForLibrary(module, hidlManager)))
 		conditionalClassLoaderContextHost29 = append(conditionalClassLoaderContextHost29,
       pathForLibrary(module, hidlBase))
 		conditionalClassLoaderContextTarget29 = append(conditionalClassLoaderContextTarget29,
-			filepath.Join("/system/framework", hidlBase+".jar"))
+			filepath.Join(installPathForLibrary(module, hidlBase)))
 	} else {
 		// Pass special class loader context to skip the classpath and collision check.
 		// This will get removed once LOCAL_USES_LIBRARIES is enforced.
@@ -501,6 +501,14 @@ func pathForLibrary(module ModuleConfig, lib string) string {
 	path := module.LibraryPaths[lib]
 	if path == "" {
 		panic(fmt.Errorf("unknown library path for %q", lib))
+	}
+	return path
+}
+
+func installPathForLibrary(module ModuleConfig, lib string) string {
+	path := module.InstallLibraryPaths[lib]
+	if path == "" {
+		panic(fmt.Errorf("unknown install library path for %q", lib))
 	}
 	return path
 }
