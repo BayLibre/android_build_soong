@@ -60,6 +60,7 @@ func init() {
 		ctx.BottomUp("tsan", sanitizerMutator(tsan)).Parallel()
 
 		ctx.TopDown("sanitize_runtime_deps", sanitizerRuntimeDepsMutator)
+		ctx.BottomUp("sanitize_runtime", sanitizerRuntimeMutator).Parallel()
 
 		ctx.BottomUp("coverage", coverageLinkingMutator).Parallel()
 		ctx.TopDown("vndk_deps", sabiDepsMutator)
@@ -518,6 +519,8 @@ func (c *Module) onlyInRecovery() bool {
 func (c *Module) IsStubs() bool {
 	if library, ok := c.linker.(*libraryDecorator); ok {
 		return library.buildStubs()
+	} else if _, ok := c.linker.(*llndkStubDecorator); ok {
+		return true
 	}
 	return false
 }
@@ -861,7 +864,7 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	}
 }
 
-func (c *Module) toolchain(ctx BaseModuleContext) config.Toolchain {
+func (c *Module) toolchain(ctx android.BaseContext) config.Toolchain {
 	if c.cachedToolchain == nil {
 		c.cachedToolchain = config.FindToolchain(ctx.Os(), ctx.Arch())
 	}
