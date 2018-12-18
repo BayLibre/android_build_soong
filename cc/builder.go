@@ -586,7 +586,7 @@ func transformDarwinObjToStaticLib(ctx android.ModuleContext, objFiles android.P
 // and shared libraries, to a shared library (.so) or dynamic executable
 func TransformObjToDynamicBinary(ctx android.ModuleContext,
 	objFiles, sharedLibs, staticLibs, lateStaticLibs, wholeStaticLibs, deps android.Paths,
-	crtBegin, crtEnd android.OptionalPath, groupLate bool, flags builderFlags, outputFile android.WritablePath) {
+	crtBegin, crtEnd android.OptionalPath, groupLate bool, flags builderFlags, outputFile android.WritablePath, static bool) {
 
 	ldCmd := "${config.ClangBin}/clang++"
 
@@ -622,8 +622,10 @@ func TransformObjToDynamicBinary(ctx android.ModuleContext,
 		libFlagsList = append(libFlagsList, "-Wl,--end-group")
 	}
 
-	for _, lib := range sharedLibs {
-		libFlagsList = append(libFlagsList, lib.String())
+	if !static {
+		for _, lib := range sharedLibs {
+			libFlagsList = append(libFlagsList, lib.String())
+		}
 	}
 
 	deps = append(deps, staticLibs...)

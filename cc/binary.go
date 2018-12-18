@@ -370,7 +370,7 @@ func (binary *binaryDecorator) link(ctx ModuleContext,
 
 	TransformObjToDynamicBinary(ctx, objs.objFiles, sharedLibs, deps.StaticLibs,
 		deps.LateStaticLibs, deps.WholeStaticLibs, linkerDeps, deps.CrtBegin, deps.CrtEnd, true,
-		builderFlags, outputFile)
+		builderFlags, outputFile, binary.staticBinary())
 
 	objs.coverageFiles = append(objs.coverageFiles, deps.StaticLibObjs.coverageFiles...)
 	objs.coverageFiles = append(objs.coverageFiles, deps.WholeStaticLibObjs.coverageFiles...)
