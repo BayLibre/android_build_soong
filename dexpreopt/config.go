@@ -99,6 +99,7 @@ type ModuleConfig struct {
 	OptionalUsesLibraries []string
 	UsesLibraries         []string
 	LibraryPaths          map[string]string
+	InstallLibraryPaths   map[string]string
 
 	Archs                  []string
 	DexPreoptImageLocation string

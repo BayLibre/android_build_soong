@@ -163,6 +163,7 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.Mo
 		OptionalUsesLibraries: nil,
 		UsesLibraries:         nil,
 		LibraryPaths:          nil,
+		InstallLibraryPaths:   nil,
 
 		Archs:                  archs,
 		DexPreoptImageLocation: "",

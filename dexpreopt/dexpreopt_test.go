@@ -76,6 +76,7 @@ var testModuleConfig = ModuleConfig{
 	OptionalUsesLibraries:  nil,
 	UsesLibraries:          nil,
 	LibraryPaths:           nil,
+	InstallLibraryPaths:    nil,
 	Archs:                  nil,
 	DexPreoptImageLocation: "",
 	PreoptExtractedApk:     false,
