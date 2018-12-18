@@ -103,6 +103,10 @@ func (p *prebuiltLibraryLinker) link(ctx ModuleContext,
 	return nil
 }
 
+func (p *prebuiltLibraryLinker) shared() bool {
+	return p.libraryDecorator.shared()
+}
+
 func prebuiltSharedLibraryFactory() android.Module {
 	module, _ := NewPrebuiltSharedLibrary(android.HostAndDeviceSupported)
 	return module.Init()
@@ -121,6 +125,7 @@ func NewPrebuiltSharedLibrary(hod android.HostOrDeviceSupported) (*Module, *libr
 	module.AddProperties(&prebuilt.properties)
 
 	android.InitPrebuiltModule(module, &prebuilt.properties.Srcs)
+	android.InitApexModule(module)
 	return module, library
 }
 

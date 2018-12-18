@@ -456,6 +456,10 @@ func (a *apexBundle) installable() bool {
 	return a.properties.Installable == nil || proptools.Bool(a.properties.Installable)
 }
 
+func (a *apexBundle) IsSanitizerEnabled() bool {
+	return true
+}
+
 func getCopyManifestForNativeLibrary(cc *cc.Module) (fileToCopy android.Path, dirInApex string) {
 	// Decide the APEX-local directory by the multilib of the library
 	// In the future, we may query this to the module.
