@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aecb4875_9a7fbcec",
+        "filename": "dexpreopt/OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-12-18T20:11:07Z",
+      "side": 1,
+      "message": "This needs to be in the parent directory or the java directory",
+      "revId": "c1a2695323c0749592593b598f52386cbfe0ac18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
