@@ -261,7 +261,7 @@ type Module struct {
 
 	// jar file containing header classes including static library dependencies, suitable for
 	// inserting into the bootclasspath/classpath of another compile
-	headerJarFile android.Path
+	HeaderJarFile android.Path
 
 	// jar file containing implementation classes including static library dependencies but no
 	// resources
@@ -272,7 +272,7 @@ type Module struct {
 
 	// jar file containing implementation classes and resources including static library
 	// dependencies
-	implementationAndResourcesJar android.Path
+	ImplementationAndResourcesJar android.Path
 
 	// output file containing classes.dex and resources
 	dexJarFile android.Path
@@ -1134,7 +1134,7 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars ...android.Path
 					j.properties.Javac_shard_size)
 			}
 		}
-		j.headerJarFile = j.compileJavaHeader(ctx, uniqueSrcFiles, srcJars, deps, flags, jarName, kotlinJars)
+		j.HeaderJarFile = j.compileJavaHeader(ctx, uniqueSrcFiles, srcJars, deps, flags, jarName, kotlinJars)
 		if ctx.Failed() {
 			return
 		}
@@ -1153,7 +1153,7 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars ...android.Path
 		}
 
 		if enable_sharding {
-			flags.classpath = append(flags.classpath, j.headerJarFile)
+			flags.classpath = append(flags.classpath, j.HeaderJarFile)
 			shardSize := int(*(j.properties.Javac_shard_size))
 			var shardSrcs []android.Paths
 			if len(uniqueSrcFiles) > 0 {
@@ -1275,8 +1275,8 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars ...android.Path
 		}
 	}
 	j.implementationJarFile = outputFile
-	if j.headerJarFile == nil {
-		j.headerJarFile = j.implementationJarFile
+	if j.HeaderJarFile == nil {
+		j.HeaderJarFile = j.implementationJarFile
 	}
 
 	if ctx.Config().IsEnvTrue("EMMA_INSTRUMENT_FRAMEWORK") {
@@ -1290,16 +1290,16 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars ...android.Path
 	}
 
 	// merge implementation jar with resources if necessary
-	implementationAndResourcesJar := outputFile
+	ImplementationAndResourcesJar := outputFile
 	if j.resourceJar != nil {
-		jars := android.Paths{implementationAndResourcesJar, j.resourceJar}
+		jars := android.Paths{ImplementationAndResourcesJar, j.resourceJar}
 		combinedJar := android.PathForModuleOut(ctx, "withres", jarName)
 		TransformJarsToJar(ctx, combinedJar, "for resources", jars, android.OptionalPath{},
 			false, nil, nil)
-		implementationAndResourcesJar = combinedJar
+		ImplementationAndResourcesJar = combinedJar
 	}
 
-	j.implementationAndResourcesJar = implementationAndResourcesJar
+	j.ImplementationAndResourcesJar = ImplementationAndResourcesJar
 
 	if ctx.Device() && (Bool(j.properties.Installable) || Bool(j.deviceProperties.Compile_dex)) {
 		var dexOutputFile android.ModuleOutPath
@@ -1329,7 +1329,7 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars ...android.Path
 			return
 		}
 	} else {
-		outputFile = implementationAndResourcesJar
+		outputFile = ImplementationAndResourcesJar
 	}
 
 	ctx.CheckbuildFile(outputFile)
@@ -1423,7 +1423,7 @@ func (j *Module) instrument(ctx android.ModuleContext, flags javaBuilderFlags,
 var _ Dependency = (*Library)(nil)
 
 func (j *Module) HeaderJars() android.Paths {
-	return android.Paths{j.headerJarFile}
+	return android.Paths{j.HeaderJarFile}
 }
 
 func (j *Module) ImplementationJars() android.Paths {
@@ -1438,7 +1438,7 @@ func (j *Module) ResourceJars() android.Paths {
 }
 
 func (j *Module) ImplementationAndResourcesJars() android.Paths {
-	return android.Paths{j.implementationAndResourcesJar}
+	return android.Paths{j.ImplementationAndResourcesJar}
 }
 
 func (j *Module) AidlIncludeDirs() android.Paths {

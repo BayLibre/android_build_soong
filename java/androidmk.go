@@ -47,8 +47,8 @@ func (library *Library) AndroidMk() android.AndroidMkData {
 					fmt.Fprintln(w, "LOCAL_SOONG_BUILT_INSTALLED :=", strings.Join(library.dexpreopter.builtInstalled, " "))
 				}
 				fmt.Fprintln(w, "LOCAL_SDK_VERSION :=", library.sdkVersion())
-				fmt.Fprintln(w, "LOCAL_SOONG_CLASSES_JAR :=", library.implementationAndResourcesJar.String())
-				fmt.Fprintln(w, "LOCAL_SOONG_HEADER_JAR :=", library.headerJarFile.String())
+				fmt.Fprintln(w, "LOCAL_SOONG_CLASSES_JAR :=", library.ImplementationAndResourcesJar.String())
+				fmt.Fprintln(w, "LOCAL_SOONG_HEADER_JAR :=", library.HeaderJarFile.String())
 
 				if library.jacocoReportClassesFile != nil {
 					fmt.Fprintln(w, "LOCAL_SOONG_JACOCO_REPORT_CLASSES_JAR :=", library.jacocoReportClassesFile.String())
@@ -81,8 +81,8 @@ func (library *Library) AndroidMk() android.AndroidMkData {
 				if library.dexJarFile != nil {
 					fmt.Fprintln(w, "LOCAL_SOONG_DEX_JAR :=", library.dexJarFile.String())
 				}
-				fmt.Fprintln(w, "LOCAL_SOONG_HEADER_JAR :=", library.headerJarFile.String())
-				fmt.Fprintln(w, "LOCAL_SOONG_CLASSES_JAR :=", library.implementationAndResourcesJar.String())
+				fmt.Fprintln(w, "LOCAL_SOONG_HEADER_JAR :=", library.HeaderJarFile.String())
+				fmt.Fprintln(w, "LOCAL_SOONG_CLASSES_JAR :=", library.ImplementationAndResourcesJar.String())
 				fmt.Fprintln(w, "LOCAL_REQUIRED_MODULES := "+strings.Join(data.Required, " "))
 				fmt.Fprintln(w, "include $(BUILD_SYSTEM)/soong_java_prebuilt.mk")
 			}
@@ -155,8 +155,8 @@ func (binary *Binary) AndroidMk() android.AndroidMkData {
 			Include:    "$(BUILD_SYSTEM)/soong_java_prebuilt.mk",
 			Extra: []android.AndroidMkExtraFunc{
 				func(w io.Writer, outputFile android.Path) {
-					fmt.Fprintln(w, "LOCAL_SOONG_HEADER_JAR :=", binary.headerJarFile.String())
-					fmt.Fprintln(w, "LOCAL_SOONG_CLASSES_JAR :=", binary.implementationAndResourcesJar.String())
+					fmt.Fprintln(w, "LOCAL_SOONG_HEADER_JAR :=", binary.HeaderJarFile.String())
+					fmt.Fprintln(w, "LOCAL_SOONG_CLASSES_JAR :=", binary.ImplementationAndResourcesJar.String())
 				},
 			},
 			Custom: func(w io.Writer, name, prefix, moduleDir string, data android.AndroidMkData) {
@@ -196,11 +196,11 @@ func (app *AndroidApp) AndroidMk() android.AndroidMkData {
 				if app.dexJarFile != nil {
 					fmt.Fprintln(w, "LOCAL_SOONG_DEX_JAR :=", app.dexJarFile.String())
 				}
-				if app.implementationAndResourcesJar != nil {
-					fmt.Fprintln(w, "LOCAL_SOONG_CLASSES_JAR :=", app.implementationAndResourcesJar.String())
+				if app.ImplementationAndResourcesJar != nil {
+					fmt.Fprintln(w, "LOCAL_SOONG_CLASSES_JAR :=", app.ImplementationAndResourcesJar.String())
 				}
-				if app.headerJarFile != nil {
-					fmt.Fprintln(w, "LOCAL_SOONG_HEADER_JAR :=", app.headerJarFile.String())
+				if app.HeaderJarFile != nil {
+					fmt.Fprintln(w, "LOCAL_SOONG_HEADER_JAR :=", app.HeaderJarFile.String())
 				}
 				if app.bundleFile != nil {
 					fmt.Fprintln(w, "LOCAL_SOONG_BUNDLE :=", app.bundleFile.String())
