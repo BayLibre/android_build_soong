@@ -32,7 +32,11 @@ type GlobalConfig struct {
 
 	DisableGenerateProfile bool // don't generate profiles
 
-	BootJars         []string // jars that form the boot image
+	ProductOut                 string // output dir for product files
+	PreoptBootJarDir           string // relative path for boot jars dir
+
+	BootJars         []string // jars that form the boot class path
+	PreoptBootJars   []string // jars that form the boot image
 	SystemServerJars []string // jars that form the system server
 	SystemServerApps []string // apps that are loaded into system server
 	SpeedApps        []string // apps that should be speed optimized

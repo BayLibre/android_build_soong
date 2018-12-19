@@ -145,6 +145,10 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.Mo
 		(d.isPrivApp || inList(ctx.ModuleName(), ctx.Config().ModulesLoadedByPrivilegedModules())) {
 		uncompressedDex = true
 	}
+	if contains(globalConfig.BootJars, ctx.ModuleName()) &&
+		!contains(globalConfig.PreoptBootJars, ctx.ModuleName()) {
+		uncompressedDex = true
+	}
 
 	dexpreoptConfig := dexpreopt.ModuleConfig{
 		Name:            ctx.ModuleName(),
@@ -243,6 +247,15 @@ type bootImagePath struct {
 }
 
 var _ android.Path = (*bootImagePath)(nil)
+
+func contains(l []string, s string) bool {
+	for _, e := range l {
+		if e == s {
+			return true
+		}
+	}
+	return false
+}
 
 func (p *bootImagePath) String() string { return p.path }
 func (p *bootImagePath) Ext() string    { return filepath.Ext(p.path) }
