@@ -32,7 +32,11 @@ type GlobalConfig struct {
 
 	DisableGenerateProfile bool // don't generate profiles
 
-	BootJars         []string // jars that form the boot image
+	PreoptBootClassPathDexFiles     []string // boot class path files
+	PreoptBootClassPathDexLocations []string // boot class path locations
+
+	BootJars         []string // jars that form the boot class path
+	PreoptBootJars   []string // jars that form the boot image
 	SystemServerJars []string // jars that form the system server
 	SystemServerApps []string // apps that are loaded into system server
 	SpeedApps        []string // apps that should be speed optimized
@@ -77,6 +81,7 @@ type Tools struct {
 	Aapt     string
 	SoongZip string
 	Zip2zip  string
+	ZipAlign string
 
 	VerifyUsesLibraries string
 	ConstructContext    string
