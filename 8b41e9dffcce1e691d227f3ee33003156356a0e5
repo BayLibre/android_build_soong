@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0c8ecab_80ab3dd2",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-12-19T21:20:39Z",
+      "side": 1,
+      "message": "Why is this necessary?  Giving this path to dexpreopt is dangerous, it is likely to cause someone to read a file they don\u0027t have a dependency on in the future.",
+      "revId": "8b41e9dffcce1e691d227f3ee33003156356a0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9bb190c_dbe9ced3",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-12-19T21:20:39Z",
+      "side": 1,
+      "message": "Isn\u0027t this already available through DefaultDexPreoptImageLocation?",
+      "revId": "8b41e9dffcce1e691d227f3ee33003156356a0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b4824a4_2437ebaf",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-12-19T21:20:39Z",
+      "side": 1,
+      "message": "This is wrong if bootImageLocation is set",
+      "revId": "8b41e9dffcce1e691d227f3ee33003156356a0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc971708_bbd95437",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-12-19T21:20:39Z",
+      "side": 1,
+      "message": "What is dex2oat going to do with this path?  It must not read any files that are not dependencies of the rules that run this.",
+      "revId": "8b41e9dffcce1e691d227f3ee33003156356a0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
