@@ -104,7 +104,8 @@ func writeScripts(global dexpreopt.GlobalConfig, module dexpreopt.ModuleConfig,
 	installDir := filepath.Join(filepath.Dir(module.BuildPath), "dexpreopt_install")
 
 	dexpreoptRule.Command().FlagWithArg("rm -rf ", installDir)
-
+	dexpreoptRule.Command().FlagWithArg("mkdir -p ", installDir)
+  
 	for _, install := range dexpreoptRule.Installs() {
 		installPath := filepath.Join(installDir, install.To)
 		dexpreoptRule.Command().Text("mkdir -p").Flag(filepath.Dir(installPath))
