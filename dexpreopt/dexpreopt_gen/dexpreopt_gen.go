@@ -1,4 +1,4 @@
-// Copyright 2018 Google Inc. All rights reserved.
+I'm// Copyright 2018 Google Inc. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -104,6 +104,7 @@ func writeScripts(global dexpreopt.GlobalConfig, module dexpreopt.ModuleConfig,
 	installDir := filepath.Join(filepath.Dir(module.BuildPath), "dexpreopt_install")
 
 	dexpreoptRule.Command().FlagWithArg("rm -rf ", installDir)
+	dexpreoptRule.Command().FlagWithArg("mkdir -p ", installDir)
 
 	for _, install := range dexpreoptRule.Installs() {
 		installPath := filepath.Join(installDir, install.To)
