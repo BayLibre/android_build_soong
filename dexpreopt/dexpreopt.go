@@ -192,6 +192,10 @@ func dexpreoptCommand(global GlobalConfig, module ModuleConfig, rule *Rule, prof
 			pathtools.ReplaceExtension(filepath.Base(path), "odex"))
 	}
 
+	bcp_target_dir := filepath.Join(global.ProductOut, global.BootJarsDir)
+	bcp := boot_class_path(bcp_target_dir, global.BootJars)
+	bcp_locations := boot_class_path("/"+global.BootJarsDir, global.BootJars)
+
 	odexPath := toOdexPath(filepath.Join(filepath.Dir(module.BuildPath), base))
 	odexInstallPath := toOdexPath(module.DexLocation)
 	if odexOnSystemOther(module, global) {
@@ -307,6 +311,8 @@ func dexpreoptCommand(global GlobalConfig, module ModuleConfig, rule *Rule, prof
 		Flag("--avoid-storing-invocation").
 		Flag("--runtime-arg").FlagWithArg("-Xms", global.Dex2oatXms).
 		Flag("--runtime-arg").FlagWithArg("-Xmx", global.Dex2oatXmx).
+		Flag("--runtime-arg").FlagWithArg("-Xbootclasspath:", bcp).
+		Flag("--runtime-arg").FlagWithArg("-Xbootclasspath-locations:", bcp_locations).
 		Flag("${class_loader_context_arg}").
 		Flag("${stored_class_loader_context_arg}").
 		FlagWithArg("--boot-image=", bootImageLocation).Implicit(bootImagePath).
@@ -515,6 +521,14 @@ func makefileMatch(pattern, s string) bool {
 	default:
 		panic(fmt.Errorf("unsupported makefile pattern %q", pattern))
 	}
+}
+
+func boot_class_path(path string, modules []string) string {
+	paths := copyOf(modules)
+	for i := range paths {
+		paths[i] = filepath.Join(path, paths[i]+".jar")
+	}
+	return strings.Join(paths, ":")
 }
 
 func contains(l []string, s string) bool {
