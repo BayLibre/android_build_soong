@@ -192,6 +192,9 @@ func dexpreoptCommand(global GlobalConfig, module ModuleConfig, rule *Rule, prof
 			pathtools.ReplaceExtension(filepath.Base(path), "odex"))
 	}
 
+	bcp := strings.Join(global.PreoptBootClassPathDexFiles, ":")
+	bcp_locations := strings.Join(global.PreoptBootClassPathDexLocations, ":")
+
 	odexPath := toOdexPath(filepath.Join(filepath.Dir(module.BuildPath), base))
 	odexInstallPath := toOdexPath(module.DexLocation)
 	if odexOnSystemOther(module, global) {
@@ -307,6 +310,8 @@ func dexpreoptCommand(global GlobalConfig, module ModuleConfig, rule *Rule, prof
 		Flag("--avoid-storing-invocation").
 		Flag("--runtime-arg").FlagWithArg("-Xms", global.Dex2oatXms).
 		Flag("--runtime-arg").FlagWithArg("-Xmx", global.Dex2oatXmx).
+		Flag("--runtime-arg").FlagWithArg("-Xbootclasspath:", bcp).
+		Flag("--runtime-arg").FlagWithArg("-Xbootclasspath-locations:", bcp_locations).
 		Flag("${class_loader_context_arg}").
 		Flag("${stored_class_loader_context_arg}").
 		FlagWithArg("--boot-image=", bootImageLocation).Implicit(bootImagePath).
@@ -323,6 +328,10 @@ func dexpreoptCommand(global GlobalConfig, module ModuleConfig, rule *Rule, prof
 		Flag("--abort-on-hard-verifier-error").
 		Flag("--force-determinism").
 		FlagWithArg("--no-inline-from=", "core-oj.jar")
+
+	for i := range global.PreoptBootClassPathDexFiles {
+		cmd.Implicit(global.PreoptBootClassPathDexFiles[i])
+	}
 
 	var preoptFlags []string
 	if len(module.PreoptFlags) > 0 {
