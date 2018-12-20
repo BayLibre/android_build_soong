@@ -16,6 +16,24 @@
       "revId": "5a8320201a12d8c8cf1238b99789d300867f5ea7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d64466dc_c02b285d",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-12-20T01:42:25Z",
+      "side": 1,
+      "message": "Yes, I am aware of that. But, right now, it is not a big problem since we are using this only for \u0027data\u0027 in test modules.\n\nIn the future, we could build *.apex (but not install) even when TARGET_FLATTEN_APEX is set.",
+      "parentUuid": "c2f49dfc_534fa9d3",
+      "revId": "5a8320201a12d8c8cf1238b99789d300867f5ea7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
