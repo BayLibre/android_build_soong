@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2f49dfc_534fa9d3",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-12-20T01:01:14Z",
+      "side": 1,
+      "message": "This might come back to bite you later, anything that references an apex module with :module will work and then fail with TARGET_FLATTEN_APEX",
+      "revId": "5a8320201a12d8c8cf1238b99789d300867f5ea7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
