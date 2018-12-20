@@ -72,6 +72,13 @@ func (installer *baseInstaller) installDir(ctx ModuleContext) android.OutputPath
 	if installer.location == InstallInData && ctx.useVndk() {
 		dir = filepath.Join(dir, "vendor")
 	}
+
+	// If a lib that is directly included in an APEX has stubs variants, then
+	// the non-stubs variant is installed to /system/bootstrap/lib[64].
+	if ctx.hasStubsVariants() && android.DirectlyInAnyApex(ctx.baseModuleName()) &&
+		!ctx.inRecovery() && !ctx.useVndk() && !ctx.static() && !ctx.isStubs() {
+		dir = filepath.Join("bootstrap", dir)
+	}
 	return android.PathForModuleInstall(ctx, dir, installer.subDir,
 		String(installer.Properties.Relative_install_path), installer.relative)
 }

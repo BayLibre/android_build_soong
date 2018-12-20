@@ -29,9 +29,12 @@ var (
 )
 
 type AndroidMkContext interface {
+	Name() string
 	Target() android.Target
 	subAndroidMk(*android.AndroidMkData, interface{})
 	useVndk() bool
+	static() bool
+	inRecovery() bool
 }
 
 type subAndroidMkProvider interface {
@@ -172,12 +175,22 @@ func (library *libraryDecorator) AndroidMk(ctx AndroidMkContext, ret *android.An
 		}
 	})
 
-	if library.shared() {
+	if library.shared() && !library.buildStubs() {
 		ctx.subAndroidMk(ret, library.baseInstaller)
 	} else {
 		ret.Extra = append(ret.Extra, func(w io.Writer, outputFile android.Path) {
 			fmt.Fprintln(w, "LOCAL_UNINSTALLABLE_MODULE := true")
+			if library.buildStubs() {
+				fmt.Fprintln(w, "LOCAL_NO_NOTICE_FILE := true")
+			}
 		})
+	}
+
+	if len(library.Properties.Stubs.Versions) > 0 && android.DirectlyInAnyApex(ctx.Name()) &&
+		!ctx.inRecovery() && !ctx.useVndk() && !ctx.static() {
+		if !library.buildStubs() {
+			ret.SubName = ".bootstrap"
+		}
 	}
 }
 
