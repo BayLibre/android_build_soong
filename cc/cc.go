@@ -851,6 +851,24 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 			return
 		}
 		c.outputFile = android.OptionalPathForPath(outputFile)
+
+		if library, ok := c.linker.(*libraryDecorator); ok {
+			// If this is a non-stubs variant and is directly included in any of the APEXes,
+			// hide from make. Instead, the stubs variant having the latest version gets
+			// visible to make. This is to force anythin in the make world to link against the stubs
+			// library. Since we can't have make module in an APEX, the make modules are all considered
+			// as part of the platform. And having this lib in an APEX means that all platform modules
+			// need to link against the stubs of this lib.
+			if len(library.Properties.Stubs.Versions) > 0 && android.DirectlyInAnyApex(ctx.baseModuleName()) &&
+				!c.inRecovery() && !c.useVndk() && !c.static() {
+				if library.buildStubs() {
+					c.Properties.HideFromMake = false // unhide
+					// Note: this is still non-installable
+				} else {
+					c.Properties.HideFromMake = true
+				}
+			}
+		}
 	}
 
 	if c.installer != nil && !c.Properties.PreventInstall && c.IsForPlatform() && c.outputFile.Valid() {
