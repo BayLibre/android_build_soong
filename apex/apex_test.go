@@ -495,11 +495,11 @@ func TestApexWithSystemLibsStubs(t *testing.T) {
 
 	// Ensure that mylib, libm, libdl are included.
 	ensureContains(t, copyCmds, "image.apex/lib64/mylib.so")
-	ensureContains(t, copyCmds, "image.apex/lib64/libm.so")
-	ensureContains(t, copyCmds, "image.apex/lib64/libdl.so")
+	ensureContains(t, copyCmds, "image.apex/lib64/bionic/libm.so")
+	ensureContains(t, copyCmds, "image.apex/lib64/bionic/libdl.so")
 
 	// Ensure that libc is not included (since it has stubs and not listed in native_shared_libs)
-	ensureNotContains(t, copyCmds, "image.apex/lib64/libc.so")
+	ensureNotContains(t, copyCmds, "image.apex/lib64/bionic/libc.so")
 
 	mylibLdFlags := ctx.ModuleForTests("mylib", "android_arm64_armv8-a_core_shared_myapex").Rule("ld").Args["libFlags"]
 	mylibCFlags := ctx.ModuleForTests("mylib", "android_arm64_armv8-a_core_static_myapex").Rule("cc").Args["cFlags"]
