@@ -11,6 +11,7 @@ import zipfile
 PYTHON_BINARY = '%interpreter%'
 MAIN_FILE = '%main%'
 PYTHON_PATH = 'PYTHONPATH'
+PYTHON_ARGS = %args%
 
 def SearchPathEnv(name):
   search_path = os.getenv('PATH', os.defpath).split(os.pathsep)
@@ -73,7 +74,12 @@ def Main():
     python_program = FindPythonBinary()
     if python_program is None:
       raise AssertionError('Could not find python binary: ' + PYTHON_BINARY)
-    args = [python_program, main_filepath] + args
+    if PYTHON_ARGS:
+      tmp_args = [python_program] + PYTHON_ARGS
+      tmp_args.append(main_filepath)
+      args = tmp_args + args
+    else:
+      args = [python_program, main_filepath] + args
 
     os.environ.update(new_env)
 
