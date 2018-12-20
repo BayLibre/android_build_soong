@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "de70e821_9fd35def",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-12-20T13:39:42Z",
+      "side": 1,
+      "message": "Rewritten to pass boot image dex files and locations instead.",
+      "parentUuid": "c0c8ecab_80ab3dd2",
+      "revId": "8b41e9dffcce1e691d227f3ee33003156356a0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9bb190c_dbe9ced3",
         "filename": "dexpreopt/config.go",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "8b41e9dffcce1e691d227f3ee33003156356a0e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36964086_b13cd174",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-12-20T13:39:42Z",
+      "side": 1,
+      "message": "Rewritten to pass boot image dex files and locations instead.",
+      "parentUuid": "b9bb190c_dbe9ced3",
+      "revId": "8b41e9dffcce1e691d227f3ee33003156356a0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "2257070a_5d7d322d",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-12-20T13:39:42Z",
+      "side": 1,
+      "message": "Rewritten to pass boot image dex files and locations instead.",
+      "parentUuid": "6b4824a4_2437ebaf",
+      "revId": "8b41e9dffcce1e691d227f3ee33003156356a0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc971708_bbd95437",
         "filename": "dexpreopt/dexpreopt.go",
         "patchSetId": 3
@@ -67,6 +121,24 @@
       "revId": "8b41e9dffcce1e691d227f3ee33003156356a0e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22fae0cd_1e828314",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-12-20T13:39:42Z",
+      "side": 1,
+      "message": "Added \"implicit\" dependencies in PS4.",
+      "parentUuid": "cc971708_bbd95437",
+      "revId": "8b41e9dffcce1e691d227f3ee33003156356a0e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
