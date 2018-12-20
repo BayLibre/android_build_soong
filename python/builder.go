@@ -44,13 +44,13 @@ var (
 
 	hostPar = pctx.AndroidStaticRule("hostPar",
 		blueprint.RuleParams{
-			Command: `sed -e 's/%interpreter%/$interp/g' -e 's/%main%/$main/g' $template > $stub && ` +
+			Command: `sed -e 's/%interpreter%/$interp/g' -e 's/%main%/$main/g' -e 's/%args%/$pyArgs/g' $template > $stub && ` +
 				`echo "#!/usr/bin/env python" >${out}.prefix &&` +
 				`$mergeParCmd -p --prefix ${out}.prefix -pm $stub $out $srcsZips && ` +
 				`chmod +x $out && (rm -f $stub; rm -f ${out}.prefix)`,
 			CommandDeps: []string{"$mergeParCmd"},
 		},
-		"interp", "main", "template", "stub", "srcsZips")
+		"interp", "main", "template", "stub", "srcsZips", "pyArgs")
 
 	embeddedPar = pctx.AndroidStaticRule("embeddedPar",
 		blueprint.RuleParams{
@@ -75,7 +75,7 @@ func init() {
 
 func registerBuildActionForParFile(ctx android.ModuleContext, embeddedLauncher bool,
 	launcherPath android.OptionalPath, interpreter, main, binName string,
-	srcsZips android.Paths) android.Path {
+	srcsZips android.Paths, pyArgs string) android.Path {
 
 	// .intermediate output path for bin executable.
 	binFile := android.PathForModuleOut(ctx, binName)
@@ -102,6 +102,7 @@ func registerBuildActionForParFile(ctx android.ModuleContext, embeddedLauncher b
 				"template": template.String(),
 				"stub":     stub,
 				"srcsZips": strings.Join(srcsZips.Strings(), " "),
+				"pyArgs":   pyArgs,
 			},
 		})
 	} else if launcherPath.Valid() {
