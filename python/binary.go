@@ -42,6 +42,9 @@ type BinaryProperties struct {
 	// list of compatibility suites (for example "cts", "vts") that the module should be
 	// installed into.
 	Test_suites []string `android:"arch_variant"`
+
+	// Python_args.
+	Python_args *string `android:"arch_variant"`
 }
 
 type binaryDecorator struct {
@@ -97,9 +100,11 @@ func (binary *binaryDecorator) bootstrap(ctx android.ModuleContext, actualVersio
 		})
 	}
 
+      pyArgs := String(binary.binaryProperties.Python_args)
+
 	binFile := registerBuildActionForParFile(ctx, embeddedLauncher, launcherPath,
 		binary.getHostInterpreterName(ctx, actualVersion),
-		main, binary.getStem(ctx), append(android.Paths{srcsZip}, depsSrcsZips...))
+		main, binary.getStem(ctx), append(android.Paths{srcsZip}, depsSrcsZips...), pyArgs)
 
 	return android.OptionalPathForPath(binFile)
 }
