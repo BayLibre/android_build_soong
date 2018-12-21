@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9909717b_c53827a9",
+        "filename": "python/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1308042
+      },
+      "writtenOn": "2018-12-21T02:46:32Z",
+      "side": 1,
+      "message": "Is it necessary?",
+      "range": {
+        "startLine": 47,
+        "startChar": 70,
+        "endLine": 47,
+        "endChar": 79
+      },
+      "revId": "43a8d87985f2969c54b53d5e8477d9fed8e5bf73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
