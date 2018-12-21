@@ -16,6 +16,24 @@
       "revId": "faf029bbbc058f96718dc1d175620c581a081bbc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5ba3b22_7c5f653b",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1252,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-12-21T05:34:53Z",
+      "side": 1,
+      "message": "Because they are prebuilt, they don\u0027t have sdk_version set. As a result, they fall into the very next \u0027if\u0027 block.",
+      "parentUuid": "0e317644_f79eb0f8",
+      "revId": "faf029bbbc058f96718dc1d175620c581a081bbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
