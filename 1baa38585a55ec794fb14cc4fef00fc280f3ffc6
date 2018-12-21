@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b027a477_b20d2e99",
+        "filename": "dexpreopt/script.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-12-21T21:05:22Z",
+      "side": 1,
+      "message": "This can just be:\n\n    c.inputs \u003d append(c.inputs, paths...)",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 2
+      },
+      "revId": "1baa38585a55ec794fb14cc4fef00fc280f3ffc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
