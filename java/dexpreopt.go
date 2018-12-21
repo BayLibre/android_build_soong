@@ -247,6 +247,15 @@ type bootImagePath struct {
 
 var _ android.Path = (*bootImagePath)(nil)
 
+func contains(l []string, s string) bool {
+	for _, e := range l {
+		if e == s {
+			return true
+		}
+	}
+	return false
+}
+
 func (p *bootImagePath) String() string { return p.path }
 func (p *bootImagePath) Ext() string    { return filepath.Ext(p.path) }
 func (p *bootImagePath) Base() string   { return filepath.Base(p.path) }
