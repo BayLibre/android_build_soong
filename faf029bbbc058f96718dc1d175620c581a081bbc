@@ -34,6 +34,24 @@
       "revId": "faf029bbbc058f96718dc1d175620c581a081bbc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8551ac1_4ad74fc5",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1252,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-12-21T06:14:16Z",
+      "side": 1,
+      "message": "That seems like a general problem, do we need a way to mark prebuilt modules as only depending on the NDK, and then maybe verify it with Logan\u0027s ELF checker?",
+      "parentUuid": "f5ba3b22_7c5f653b",
+      "revId": "faf029bbbc058f96718dc1d175620c581a081bbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
