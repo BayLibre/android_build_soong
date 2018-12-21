@@ -1319,6 +1319,7 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars ...android.Path
 
 		j.dexJarFile = dexOutputFile
 
+		j.dexpreopter.uncompressedDex = j.deviceProperties.UncompressDex
 		dexOutputFile = j.dexpreopt(ctx, dexOutputFile)
 
 		j.maybeStrippedDexJarFile = dexOutputFile
@@ -1480,9 +1481,14 @@ type Library struct {
 	Module
 }
 
+func (j *Library) shouldUncompressDex(ctx android.ModuleContext) bool {
+	return false
+}
+
 func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	j.dexpreopter.installPath = android.PathForModuleInstall(ctx, "framework", ctx.ModuleName()+".jar")
 	j.dexpreopter.isSDKLibrary = j.deviceProperties.IsSDKLibrary
+	j.deviceProperties.UncompressDex = j.shouldUncompressDex(ctx)
 	j.compile(ctx)
 
 	if Bool(j.properties.Installable) || ctx.Host() {
