@@ -46,6 +46,29 @@
       "revId": "43a8d87985f2969c54b53d5e8477d9fed8e5bf73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c59e5a4_39c613d4",
+        "filename": "python/scripts/stub_template_host.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-12-21T03:50:15Z",
+      "side": 1,
+      "message": "args \u003d append(args, [python_program, PYTHON_ARGS, main_filepath])",
+      "range": {
+        "startLine": 78,
+        "startChar": 6,
+        "endLine": 78,
+        "endChar": 64
+      },
+      "revId": "43a8d87985f2969c54b53d5e8477d9fed8e5bf73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
