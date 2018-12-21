@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6dc58ce4_051f6394",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-12-21T16:22:34Z",
+      "side": 1,
+      "message": "Why isn\u0027t dexpreopt using the PackageContext and HostBinToolVariable(\"zip2zip\", \"zip2zip\") like apex.go?",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 16
+      },
+      "revId": "da09628b7d4a42b4b788d6966f00ab7e4bf62a87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
