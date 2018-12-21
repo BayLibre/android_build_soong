@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3dd2a4f8_2b85f128",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-12-21T15:22:30Z",
+      "side": 1,
+      "message": "Improved in PS7.",
+      "parentUuid": "7740b361_cc1459f2",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 59
+      },
+      "revId": "b667100bc93990685239e9de7cab64eec8bf8a8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "371ef257_f09b31ac",
         "filename": "dexpreopt/dexpreopt.go",
         "patchSetId": 5
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "fe27804a_498649cb",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-12-21T15:22:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "371ef257_f09b31ac",
+      "revId": "b667100bc93990685239e9de7cab64eec8bf8a8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a057b9d7_3edbb38b",
         "filename": "java/dexpreopt.go",
         "patchSetId": 5
@@ -53,6 +95,30 @@
       "writtenOn": "2018-12-21T05:43:14Z",
       "side": 1,
       "message": "This block should probably be removed, I think it is left over from when I tried to do the uncompressing in the strip.sh script, but since Soong and Make need to know about uncompressing I moved it out.  Soong has already computed deviceProperties.UncompressDex, the new check should update that and the value should be reused here.",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 2
+      },
+      "revId": "b667100bc93990685239e9de7cab64eec8bf8a8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13e897d4_11e17337",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2018-12-21T15:22:30Z",
+      "side": 1,
+      "message": "I see where you\u0027re going but I don\u0027t know how to get there. Should I move the new logic to shouldUncompressDex()? If so, what do I do with the globalConfig? And do I need to initialize the \"UncompressedDex\" below with \"false\"?",
+      "parentUuid": "a057b9d7_3edbb38b",
       "range": {
         "startLine": 143,
         "startChar": 0,
