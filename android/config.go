@@ -824,18 +824,7 @@ func (c *deviceConfig) NativeCoverageEnabled() bool {
 }
 
 func (c *deviceConfig) CoverageEnabledForPath(path string) bool {
-	coverage := false
-	if c.config.productVariables.CoveragePaths != nil {
-		if PrefixInList(path, *c.config.productVariables.CoveragePaths) {
-			coverage = true
-		}
-	}
-	if coverage && c.config.productVariables.CoverageExcludePaths != nil {
-		if PrefixInList(path, *c.config.productVariables.CoverageExcludePaths) {
-			coverage = false
-		}
-	}
-	return coverage
+	return true
 }
 
 func (c *deviceConfig) PgoAdditionalProfileDirs() []string {
