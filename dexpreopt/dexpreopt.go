@@ -72,6 +72,17 @@ func GenerateStripRule(global GlobalConfig, module ModuleConfig) (rule *Rule, er
 			Tool(tools.Zip2zip).FlagWithInput("-i ", module.StripInputPath).FlagWithOutput("-o ", module.StripOutputPath).
 			FlagWithArg("-x ", `"classes*.dex"`).
 			Textf(`; else cp -f %s %s; fi`, module.StripInputPath, module.StripOutputPath)
+	} else if module.UncompressedDex {
+		unaligned_temp_file := module.StripOutputPath + ".unaligned"
+		rule.Command().Tool(tools.Zip2zip).
+			FlagWithInput("-i ", module.StripInputPath).
+			FlagWithArg("-o ", unaligned_temp_file).
+			FlagWithArg("-0 ", `"classes*.dex"`)
+		rule.Command().Tool(tools.ZipAlign).
+			Flag("-f").Flag("-p").Flag("4").
+			Textf(unaligned_temp_file).
+			Output(module.StripOutputPath)
+		rule.Command().Textf("rm").Textf(unaligned_temp_file)
 	} else {
 		rule.Command().Text("cp -f").Input(module.StripInputPath).Output(module.StripOutputPath)
 	}
