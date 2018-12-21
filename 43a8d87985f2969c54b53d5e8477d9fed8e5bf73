@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "309b4793_273942a1",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1308035
+      },
+      "writtenOn": "2018-12-21T06:38:06Z",
+      "side": 1,
+      "message": "Use []string to avoid shell injection in python.",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 20
+      },
+      "revId": "43a8d87985f2969c54b53d5e8477d9fed8e5bf73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9909717b_c53827a9",
         "filename": "python/builder.go",
         "patchSetId": 1
