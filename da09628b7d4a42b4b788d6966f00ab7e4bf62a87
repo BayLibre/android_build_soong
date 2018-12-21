@@ -22,6 +22,64 @@
       "revId": "da09628b7d4a42b4b788d6966f00ab7e4bf62a87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38a45372_e28f3405",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-12-21T20:53:15Z",
+      "side": 1,
+      "message": "See the comment at the top of dexpreopt/dexpreopt.go.  This directory is used by both Make and Soong, so soong-isms like HostBinToolVariable have to be precomputed by the time they reach here.",
+      "parentUuid": "6dc58ce4_051f6394",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 16
+      },
+      "revId": "da09628b7d4a42b4b788d6966f00ab7e4bf62a87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "51e17533_da8a4617",
+        "filename": "java/dex.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-12-21T20:53:15Z",
+      "side": 1,
+      "message": "Soong will already zip the jar with uncompressed classes.dex files here",
+      "revId": "da09628b7d4a42b4b788d6966f00ab7e4bf62a87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1269666_fd6b34e9",
+        "filename": "java/java.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1491,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-12-21T20:53:15Z",
+      "side": 1,
+      "message": "Soong will already run zipalign here, you just need to arrange for UncompressDex to be set for bootclasspath modules.",
+      "revId": "da09628b7d4a42b4b788d6966f00ab7e4bf62a87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
