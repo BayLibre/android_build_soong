@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1a84113_79988b62",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1430,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-12-24T15:53:57Z",
+      "side": 1,
+      "message": "The nil path is probably coming from here or another ImplementationJars method.  Can you change this and the similar methods to have the same nil check as ResourceJars?",
+      "revId": "0695f34a580a46247bb56bf4528f0f751c728c33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "208fffcc_5128cc02",
+        "filename": "java/jdeps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-12-24T15:53:57Z",
+      "side": 1,
+      "message": "This nil check is unnecessary, range on a nil slice is the same as range on an empty slice.",
+      "revId": "0695f34a580a46247bb56bf4528f0f751c728c33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
