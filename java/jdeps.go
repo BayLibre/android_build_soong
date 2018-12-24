@@ -78,9 +78,18 @@ func (j *jdepsGeneratorSingleton) GenerateBuildActions(ctx android.SingletonCont
 		if data.Class != "" {
 			dpInfo.Classes = append(dpInfo.Classes, data.Class)
 		}
-
 		if dep, ok := module.(Dependency); ok {
-			dpInfo.Installed_paths = append(dpInfo.Installed_paths, dep.ImplementationJars().Strings()...)
+			// TODO(b/111044346): We can't directly use,
+			// dpInfo.Installed_paths = append(dpInfo.Installed_paths, dep.ImplementationJars().Strings()...)
+			// because if the string contained in dep.ImplementationJars().Strings() is nil,
+			// it'll crash. We'll replace it once the issue is fixed.
+			if dep.ImplementationJars() != nil {
+				for _, jar := range dep.ImplementationJars() {
+					if jar != nil {
+						dpInfo.Installed_paths = append(dpInfo.Installed_paths, jar.String())
+					}
+				}
+			}
 		}
 		dpInfo.Classes = android.FirstUniqueStrings(dpInfo.Classes)
 		dpInfo.Installed_paths = android.FirstUniqueStrings(dpInfo.Installed_paths)
