@@ -16,6 +16,24 @@
       "revId": "dfefa44bdb0104e6f7e6b61e98cb9d07074ec63d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d620315_c93cff8d",
+        "filename": "java/jdeps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-12-25T02:27:54Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "cc492348_a38c464a",
+      "revId": "dfefa44bdb0104e6f7e6b61e98cb9d07074ec63d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
