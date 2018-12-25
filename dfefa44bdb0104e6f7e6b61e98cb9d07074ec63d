@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc492348_a38c464a",
+        "filename": "java/jdeps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-12-25T02:16:50Z",
+      "side": 0,
+      "message": "This change is no longer necessary",
+      "revId": "dfefa44bdb0104e6f7e6b61e98cb9d07074ec63d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
