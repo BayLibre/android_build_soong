@@ -33,6 +33,29 @@
       "revId": "0695f34a580a46247bb56bf4528f0f751c728c33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24d94045_49de91b1",
+        "filename": "java/jdeps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2018-12-25T00:44:22Z",
+      "side": 1,
+      "message": "Remove this,\n+1",
+      "range": {
+        "startLine": 86,
+        "startChar": 3,
+        "endLine": 86,
+        "endChar": 39
+      },
+      "revId": "0695f34a580a46247bb56bf4528f0f751c728c33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
