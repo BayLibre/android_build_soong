@@ -72,7 +72,7 @@ var (
 				`mkdir -p "$outDir" "$srcJarDir" "$stubsDir" && ` +
 				`${config.ZipSyncCmd} -d $srcJarDir -l $srcJarDir/list -f "*.java" $srcJars && ` +
 				`${config.JavaCmd} -jar ${config.MetalavaJar} -encoding UTF-8 -source $javaVersion @$out.rsp @$srcJarDir/list ` +
-				`$bootclasspathArgs $classpathArgs $sourcepathArgs --no-banner --color --quiet ` +
+				`$bootclasspathArgs $classpathArgs $sourcepathArgs --no-banner --color --quiet --format=v2 ` +
 				`$opts && ` +
 				`${config.SoongZipCmd} -write_if_changed -jar -o $out -C $stubsDir -D $stubsDir`,
 			CommandDeps: []string{
@@ -93,7 +93,11 @@ var (
 			Command: `( rm -rf "$srcJarDir" && mkdir -p "$srcJarDir" && ` +
 				`${config.ZipSyncCmd} -d $srcJarDir -l $srcJarDir/list -f "*.java" $srcJars && ` +
 				`${config.JavaCmd} -jar ${config.MetalavaJar} -encoding UTF-8 -source $javaVersion @$out.rsp @$srcJarDir/list ` +
-				`$bootclasspathArgs $classpathArgs $sourcepathArgs --no-banner --color --quiet ` +
+                                // Temporary workaround until
+                                //   https://android-review.googlesource.com/c/platform/build/soong/+/857980
+                                // is submitted
+                                `--hide InvalidNullConversion ` +
+				`$bootclasspathArgs $classpathArgs $sourcepathArgs --no-banner --color --quiet --format=v2 ` +
 				`$opts && touch $out ) || ` +
 				`( echo -e "$msg" ; exit 38 )`,
 			CommandDeps: []string{
