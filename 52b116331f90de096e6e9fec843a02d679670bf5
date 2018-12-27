@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8cf7d855_5b0efc5a",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2018-12-27T21:12:52Z",
+      "side": 1,
+      "message": "Does this add a static runtime library dependency to static libraries, and a shared runtime library dependency - to shared libraries?\n\nThis does not sound right. This should depend on the type of the top-level target, i.e. static executables get static runtime library; shared executables and shared libraries get shared runtime library.",
+      "revId": "52b116331f90de096e6e9fec843a02d679670bf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
