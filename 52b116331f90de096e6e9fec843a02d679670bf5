@@ -16,6 +16,24 @@
       "revId": "52b116331f90de096e6e9fec843a02d679670bf5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "807a6958_a80f79bb",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 806,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-12-28T13:34:10Z",
+      "side": 1,
+      "message": "Yes, you are right. Fixed. PTAL.",
+      "parentUuid": "8cf7d855_5b0efc5a",
+      "revId": "52b116331f90de096e6e9fec843a02d679670bf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
