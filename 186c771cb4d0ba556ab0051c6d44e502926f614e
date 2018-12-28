@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2ffddcd_9353bc5b",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2018-12-28T19:24:19Z",
+      "side": 0,
+      "message": "This vendor \u0026 recovery stuff is not in the new code. Will it be done automatically by some other mutator?",
+      "revId": "186c771cb4d0ba556ab0051c6d44e502926f614e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

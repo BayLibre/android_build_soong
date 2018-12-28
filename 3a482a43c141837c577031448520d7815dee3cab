@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "615667ec_9ce5245e",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2018-12-28T19:24:19Z",
+      "side": 1,
+      "message": "should this check for staticBinary(), too?",
+      "revId": "3a482a43c141837c577031448520d7815dee3cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "caf1b21f_407d2895",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2018-12-28T19:24:19Z",
+      "side": 1,
+      "message": "this check is redundant",
+      "revId": "3a482a43c141837c577031448520d7815dee3cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
