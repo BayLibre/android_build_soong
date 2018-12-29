@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "afb6fa8c_bea4bec1",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 764,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-12-29T08:49:05Z",
+      "side": 1,
+      "message": "well, these if c.static() check is no longer necessary as we anyway don\u0027t add runtimeLibrary when c.static().\n\nI\u0027ve removed them all except for the hwasan.",
+      "parentUuid": "615667ec_9ce5245e",
+      "revId": "3a482a43c141837c577031448520d7815dee3cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "caf1b21f_407d2895",
         "filename": "cc/sanitize.go",
         "patchSetId": 12
@@ -33,6 +51,24 @@
       "revId": "3a482a43c141837c577031448520d7815dee3cab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcbcf0b6_95b8c874",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-12-29T08:49:05Z",
+      "side": 1,
+      "message": "oh, thanks. I forgot that I left the one at #764 while refactoring.",
+      "parentUuid": "caf1b21f_407d2895",
+      "revId": "3a482a43c141837c577031448520d7815dee3cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

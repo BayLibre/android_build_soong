@@ -16,6 +16,24 @@
       "revId": "186c771cb4d0ba556ab0051c6d44e502926f614e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d8c84fe_b3f12652",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-12-29T08:49:05Z",
+      "side": 0,
+      "message": "They are now handled in depsToPaths() in cc/cc.go  \n\n\t\t\tif c.useVndk() \u0026\u0026 bothVendorAndCoreVariantsExist {\n\t\t\t\t// The vendor module in Make will have been renamed to not conflict with the core\n\t\t\t\t// module, so update the dependency name here accordingly.\n\t\t\t\treturn libName + vendorSuffix\n\t\t\t} else if (ctx.Platform() || ctx.ProductSpecific()) \u0026\u0026 isVendorPublicLib {\n\t\t\t\treturn libName + vendorPublicLibrarySuffix\n\t\t\t} else if ccDep.inRecovery() \u0026\u0026 !ccDep.onlyInRecovery() {\n\t\t\t\treturn libName + recoverySuffix\n\t\t\t} else {\n\t\t\t\treturn libName\n\t\t\t}",
+      "parentUuid": "f2ffddcd_9353bc5b",
+      "revId": "186c771cb4d0ba556ab0051c6d44e502926f614e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
