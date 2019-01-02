@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a7e182da_ea1b0d9e",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2019-01-02T09:24:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "309b4793_273942a1",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 20
+      },
+      "revId": "43a8d87985f2969c54b53d5e8477d9fed8e5bf73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9909717b_c53827a9",
         "filename": "python/builder.go",
         "patchSetId": 1
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "f3e66055_61504b52",
+        "filename": "python/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2019-01-02T09:24:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56655300_82ffba81",
+      "range": {
+        "startLine": 47,
+        "startChar": 70,
+        "endLine": 47,
+        "endChar": 79
+      },
+      "revId": "43a8d87985f2969c54b53d5e8477d9fed8e5bf73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c59e5a4_39c613d4",
         "filename": "python/scripts/stub_template_host.txt",
         "patchSetId": 1
@@ -83,6 +131,30 @@
       "writtenOn": "2018-12-21T03:50:15Z",
       "side": 1,
       "message": "args \u003d append(args, [python_program, PYTHON_ARGS, main_filepath])",
+      "range": {
+        "startLine": 78,
+        "startChar": 6,
+        "endLine": 78,
+        "endChar": 64
+      },
+      "revId": "43a8d87985f2969c54b53d5e8477d9fed8e5bf73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cc61034_97e3b912",
+        "filename": "python/scripts/stub_template_host.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2019-01-02T09:24:57Z",
+      "side": 1,
+      "message": "Hi Brandon,\nThis file is for python not golan. :)",
+      "parentUuid": "3c59e5a4_39c613d4",
       "range": {
         "startLine": 78,
         "startChar": 6,
