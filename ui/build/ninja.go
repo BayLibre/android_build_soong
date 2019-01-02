@@ -57,6 +57,7 @@ func runNinja(ctx Context, config Config) {
 	args = append(args, "-w", "dupbuild=err")
 
 	cmd := Command(ctx, config, "ninja", executable, args...)
+	cmd.Sandbox = ninjaSandbox
 	if config.HasKatiSuffix() {
 		cmd.Environment.AppendFromKati(config.KatiEnvFile())
 	}
