@@ -1,0 +1,291 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d7667a1_2a5aefdf",
+        "filename": "ui/build/context.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-03T22:40:46Z",
+      "side": 1,
+      "message": "This is changing to a more generic name it looks like. Should we be passing in `desc` instead? (Same with CompleteTrace)",
+      "range": {
+        "startLine": 48,
+        "startChar": 17,
+        "endLine": 48,
+        "endChar": 21
+      },
+      "revId": "3c8ac0eafbe5507d34f9c2a9a4635f323897f4f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e7a8b2d_6465fc17",
+        "filename": "ui/build/test_build.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-03T22:40:46Z",
+      "side": 1,
+      "message": "nit: You\u0027ve made the rest of these constants.",
+      "range": {
+        "startLine": 40,
+        "startChar": 16,
+        "endLine": 40,
+        "endChar": 23
+      },
+      "revId": "3c8ac0eafbe5507d34f9c2a9a4635f323897f4f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97d4cd1a_cc8c3e4c",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-03T22:40:46Z",
+      "side": 1,
+      "message": "This isn\u0027t guaranteed to be unique, multiple builds can have the same one if they\u0027re started at the same time.",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 11
+      },
+      "revId": "3c8ac0eafbe5507d34f9c2a9a4635f323897f4f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c97fc69a_0053b593",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-03T22:40:46Z",
+      "side": 1,
+      "message": "This is the number of seconds since the unix epoch, so it seems like this should at least be a numeric type, if not converted to a timestamp type.",
+      "range": {
+        "startLine": 24,
+        "startChar": 11,
+        "endLine": 24,
+        "endChar": 17
+      },
+      "revId": "3c8ac0eafbe5507d34f9c2a9a4635f323897f4f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e75bec3_cd156193",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-03T22:40:46Z",
+      "side": 1,
+      "message": "Can this be an enum, since we only support three values?",
+      "range": {
+        "startLine": 36,
+        "startChar": 11,
+        "endLine": 36,
+        "endChar": 17
+      },
+      "revId": "3c8ac0eafbe5507d34f9c2a9a4635f323897f4f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "424a90fc_85fc49d6",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-03T22:40:46Z",
+      "side": 1,
+      "message": "We should either drop this entirely (it\u0027s not really used, though there are a few things that do change), or switch it to an enum.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 40
+      },
+      "revId": "3c8ac0eafbe5507d34f9c2a9a4635f323897f4f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52faaf70_4afd9838",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-03T22:40:46Z",
+      "side": 1,
+      "message": "We could have an enum for TARGET_ARCH and HOST*ARCH",
+      "range": {
+        "startLine": 42,
+        "startChar": 11,
+        "endLine": 42,
+        "endChar": 17
+      },
+      "revId": "3c8ac0eafbe5507d34f9c2a9a4635f323897f4f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d4004cc_c2f9870d",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-03T22:40:46Z",
+      "side": 1,
+      "message": "Just preemptively drop this, nothing actually uses it today.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 39
+      },
+      "revId": "3c8ac0eafbe5507d34f9c2a9a4635f323897f4f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c7b027b_c82f6e9e",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-03T22:40:46Z",
+      "side": 1,
+      "message": "can you specify how this should be represented/read? (number of nanoseconds since something?)",
+      "range": {
+        "startLine": 97,
+        "startChar": 28,
+        "endLine": 97,
+        "endChar": 29
+      },
+      "revId": "3c8ac0eafbe5507d34f9c2a9a4635f323897f4f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "748c7a44_995ebaec",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-03T22:40:46Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 100,
+        "startChar": 26,
+        "endLine": 100,
+        "endChar": 27
+      },
+      "revId": "3c8ac0eafbe5507d34f9c2a9a4635f323897f4f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28d31d5c_5d9bf9a6",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-03T22:40:46Z",
+      "side": 1,
+      "message": "this isn\u0027t used yet, but same idea -- what are the units.",
+      "range": {
+        "startLine": 103,
+        "startChar": 19,
+        "endLine": 103,
+        "endChar": 20
+      },
+      "revId": "3c8ac0eafbe5507d34f9c2a9a4635f323897f4f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3955e159_3d10b54f",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-03T22:40:46Z",
+      "side": 1,
+      "message": "The csv file that we export has another field to say whether it\u0027s Soong or Make",
+      "revId": "3c8ac0eafbe5507d34f9c2a9a4635f323897f4f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec9db871_a0ab6eef",
+        "filename": "ui/metrics/time.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-03T22:40:46Z",
+      "side": 1,
+      "message": "Copyright header?",
+      "revId": "3c8ac0eafbe5507d34f9c2a9a4635f323897f4f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
