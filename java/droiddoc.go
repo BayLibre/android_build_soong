@@ -382,6 +382,15 @@ type DroidstubsProperties struct {
 	// If set to true, .xml based public API file will be also generated, and
 	// JDiff tool will be invoked to genreate javadoc files. Defaults to false.
 	Jdiff_enabled *bool
+
+        // if set to true, perform API lint checking on the API as well
+        Api_lint *bool
+
+        // If set to true, update any baseline files with the current set of reported errors
+        Update_baseline *bool
+
+        // If set, configures the given baseline path for this project
+        Baseline_filename *string
 }
 
 //
@@ -1409,6 +1418,19 @@ func (d *Droidstubs) collectStubsFlags(ctx android.ModuleContext,
 	} else {
 		metalavaFlags += " --stubs " + android.PathForModuleOut(ctx, "stubsDir").String()
 	}
+
+	if BoolDefault(d.properties.Api_lint, false) {
+		metalavaFlags += " --api-lint "
+	}
+
+	if BoolDefault(d.properties.Update_baseline, false) {
+		metalavaFlags += " --update-baseline "
+	}
+
+	if String(d.properties.Baseline_filename) != "" {
+		metalavaFlags += " --baseline " + android.PathForSource(ctx, ctx.ModuleDir(), String(d.properties.Baseline_filename)).String()
+	}
+
 	return metalavaFlags
 }
 
