@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6e48378c_9401c96a",
+        "filename": "apex/apex.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-03T18:05:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1727a03_296bed7f",
+      "range": {
+        "startLine": 496,
+        "startChar": 46,
+        "endLine": 496,
+        "endChar": 52
+      },
+      "revId": "dc5dc1b34678f9a12fe3c9a02359a7be63b53aaf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8437a6d1_407b09ce",
         "filename": "cc/androidmk.go",
         "patchSetId": 7
@@ -39,6 +63,24 @@
       "revId": "dc5dc1b34678f9a12fe3c9a02359a7be63b53aaf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ca6bf10_6c865702",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-03T18:05:50Z",
+      "side": 1,
+      "message": "I was my oversight but it should be okay because ApexesProvidingSharedLibs is currently empty.\nIt becomes non-empty only when there is a lib with stubs, but we don\u0027t have such lib yet.\n\nThe merged CL will become a problem when the stubs variant for the bionic libs are added via\nhttps://android-review.googlesource.com/c/platform/bionic/+/849044  \nSo we should land this CL prior to the bionic one.",
+      "parentUuid": "8437a6d1_407b09ce",
+      "revId": "dc5dc1b34678f9a12fe3c9a02359a7be63b53aaf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
