@@ -46,6 +46,30 @@
       "revId": "a54d4d0482ab018bd7fa9a39a29d493773e254f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e54ada96_511bcaf3",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1455,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-03T19:15:58Z",
+      "side": 1,
+      "message": "But this isn\u0027t returning --merge-qualifier-annotations multiple times, it\u0027s only returning the last one, even if we added several of them to the flags.",
+      "parentUuid": "e4b10c47_02694ea3",
+      "range": {
+        "startLine": 1455,
+        "startChar": 22,
+        "endLine": 1455,
+        "endChar": 23
+      },
+      "revId": "a54d4d0482ab018bd7fa9a39a29d493773e254f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
