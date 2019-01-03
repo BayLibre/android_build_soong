@@ -70,6 +70,30 @@
       "revId": "a54d4d0482ab018bd7fa9a39a29d493773e254f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fad45792_549f0930",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1455,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2019-01-03T19:29:48Z",
+      "side": 1,
+      "message": "you are right. my mistake",
+      "parentUuid": "e54ada96_511bcaf3",
+      "range": {
+        "startLine": 1455,
+        "startChar": 22,
+        "endLine": 1455,
+        "endChar": 23
+      },
+      "revId": "a54d4d0482ab018bd7fa9a39a29d493773e254f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
