@@ -350,6 +350,12 @@ type DroidstubsProperties struct {
 		Last_released ApiToCheck
 
 		Current ApiToCheck
+
+		// if set to true, perform API lint against the current API
+		Api_lint *bool
+
+		// If set, performs api_lint on any new APIs not found in the given signature file
+		Api_lint_new_since *string
 	}
 
 	// user can specify the version of previous released API file in order to do compatibility check.
@@ -386,6 +392,9 @@ type DroidstubsProperties struct {
 	// If set to true, .xml based public API file will be also generated, and
 	// JDiff tool will be invoked to genreate javadoc files. Defaults to false.
 	Jdiff_enabled *bool
+
+	// If set, configures the given baseline path for this project
+	Baseline_filename *string
 }
 
 //
@@ -1233,6 +1242,7 @@ type Droidstubs struct {
 	apiMappingFile          android.WritablePath
 	exactApiFile            android.WritablePath
 	proguardFile            android.WritablePath
+	updatedBaselineFile     android.WritablePath
 	nullabilityWarningsFile android.WritablePath
 
 	checkCurrentApiTimestamp      android.WritablePath
@@ -1337,6 +1347,7 @@ func (d *Droidstubs) initBuilderFlags(ctx android.ModuleContext, implicits *andr
 }
 
 func (d *Droidstubs) collectStubsFlags(ctx android.ModuleContext,
+	implicits *android.Paths,
 	implicitOutputs *android.WritablePaths) string {
 	var metalavaFlags string
 	if apiCheckEnabled(d.properties.Check_api.Current, "current") ||
@@ -1346,6 +1357,12 @@ func (d *Droidstubs) collectStubsFlags(ctx android.ModuleContext,
 		metalavaFlags = metalavaFlags + " --api " + d.apiFile.String()
 		*implicitOutputs = append(*implicitOutputs, d.apiFile)
 		d.apiFilePath = d.apiFile
+
+		if String(d.properties.Check_api.Api_lint_new_since) != "" {
+			metalavaFlags += " --api-lint " + ctx.ExpandSource(String(d.properties.Check_api.Api_lint_new_since), "api_lint_new_since").String()
+		} else if BoolDefault(d.properties.Check_api.Api_lint, false) {
+			metalavaFlags += " --api-lint"
+		}
 	}
 
 	if apiCheckEnabled(d.properties.Check_api.Current, "current") ||
@@ -1407,6 +1424,20 @@ func (d *Droidstubs) collectStubsFlags(ctx android.ModuleContext,
 	} else {
 		metalavaFlags += " --stubs " + android.PathForModuleOut(ctx, "stubsDir").String()
 	}
+
+	if String(d.properties.Baseline_filename) != "" {
+        var name = String(d.properties.Baseline_filename)
+		baseline := ctx.ExpandSource(name, "baseline.txt")
+		*implicits = append(*implicits, baseline)
+		metalavaFlags += " --baseline " + baseline.String()
+
+		// Also point to an output file with the updated baseline, so we can
+		// tell users how to update the baseline if there's a delta
+		d.updatedBaselineFile = android.PathForModuleOut(ctx, name)
+		metalavaFlags += " --update-baseline " + d.updatedBaselineFile.String()
+		*implicitOutputs = append(*implicitOutputs, d.updatedBaselineFile)
+	}
+
 	return metalavaFlags
 }
 
@@ -1642,7 +1673,7 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		return
 	}
 
-	flags.metalavaStubsFlags = d.collectStubsFlags(ctx, &implicitOutputs)
+	flags.metalavaStubsFlags = d.collectStubsFlags(ctx, &implicits, &implicitOutputs)
 	flags.metalavaAnnotationsFlags, flags.metalavaMergeAnnoDirFlags =
 		d.collectAnnotationsFlags(ctx, &implicits, &implicitOutputs)
 	flags.metalavaInclusionAnnotationsFlags = d.collectInclusionAnnotationsFlags(ctx, &implicits, &implicitOutputs)
