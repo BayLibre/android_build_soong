@@ -22,6 +22,30 @@
       "revId": "a54d4d0482ab018bd7fa9a39a29d493773e254f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4b10c47_02694ea3",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1455,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2019-01-03T19:14:39Z",
+      "side": 1,
+      "message": "Yes. I had online chat with tnorbye@ before, and he mentioned:\n\nOn Wed, Dec 12, 2018 at 1:14 PM Nan Zhang \u003cnanzhang@google.com\u003e wrote:\n Thanks Tor for the heads up! And yes, Pete made quite some changes regarding merge-qualifier- \n annotations, but I\u0027d like to help to adjust the code since he is out of office for a few weeks.\n\n Do we only just need pass the flag: \"--merge-qualifier-annotations\" to check-api, or we also \n need other annotations flags in function (i.e. --include-annotations) below:\n https://cs.corp.google.com/aosp-master/build/soong/java/droiddoc.go? \n rcl\u003df576fcd4135ca4167dc2fd8e0c4f1f1925186cf6\u0026l\u003d1415\n\nWe don\u0027t need the other flags; those are controlling unrelated things:\n--include-annotations: Whether we should include class retention annotations in the stubs (e.g. whether android.jar will have nullability annotations)\n--migrate-nullness: IF we are using --include-annotations, whether we should change those annotations to be @RecentlyNullable instead of just @Nullable if the annotation is newly added in the latest API level\n--validate-nullability/--nullability-warnings -- some special checking only done by libcore, Pete has the details. Not needed for API check.\n--extract-annotations: Whether we should create a standalone .xml file containing source level retention annotations (typedefs). This is only relevant for a single target: the SDK one. I\u0027m surprised it doesn\u0027t look conditional in the build file.\n--merge-qualifier-annotations: Files to merge in annotations from, to be used in all analysis. This is equivalent to the source code itself containing these annotations.\n\nIt\u0027s only the last one (which can be repeated multiple times) that should be identical in both regular/updateapi-metalava and in checkapi.\n\nAnd for check-api, I assume both the check-current-api and check-last-released-api need this code adjustment, correct?\n\nYes. In both cases we\u0027re comparing an old signature file with the current source tree -- and these annotations are basically decorating the current source tree.",
+      "parentUuid": "152e0181_61391f49",
+      "range": {
+        "startLine": 1455,
+        "startChar": 22,
+        "endLine": 1455,
+        "endChar": 23
+      },
+      "revId": "a54d4d0482ab018bd7fa9a39a29d493773e254f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
