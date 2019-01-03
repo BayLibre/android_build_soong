@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1727a03_296bed7f",
+        "filename": "apex/apex.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-03T17:43:01Z",
+      "side": 1,
+      "message": "nit: prevent",
+      "range": {
+        "startLine": 496,
+        "startChar": 46,
+        "endLine": 496,
+        "endChar": 52
+      },
+      "revId": "dc5dc1b34678f9a12fe3c9a02359a7be63b53aaf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8437a6d1_407b09ce",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-03T17:43:01Z",
+      "side": 1,
+      "message": "does this mean that https://android-review.googlesource.com/c/platform/build/soong/+/858260 shouldn\u0027t have been merged?",
+      "revId": "dc5dc1b34678f9a12fe3c9a02359a7be63b53aaf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
