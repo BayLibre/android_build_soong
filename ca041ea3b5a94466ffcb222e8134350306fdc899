@@ -46,6 +46,30 @@
       "revId": "ca041ea3b5a94466ffcb222e8134350306fdc899",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cb020fa_6364ee63",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-04T08:41:31Z",
+      "side": 1,
+      "message": "Yes, update-api will be changing. The newer API checks (vndk, etc) already implement alternatives. You can either tell the user to copy/paste a command (which is usually a cp), or create a script that the user can execute outside of the build (either programatically during the build into the output out/host/*/bin/, or just an executable script checked into the source tree that talks to the build to figure out what needs to happen)",
+      "parentUuid": "148bf97c_3c0742c4",
+      "range": {
+        "startLine": 388,
+        "startChar": 0,
+        "endLine": 390,
+        "endChar": 29
+      },
+      "revId": "ca041ea3b5a94466ffcb222e8134350306fdc899",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
