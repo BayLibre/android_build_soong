@@ -46,6 +46,30 @@
       "revId": "62fc184b1dc6cca7099c5c5e92df8c65d259b7f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96c0721c_13bf2858",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2019-01-04T11:50:19Z",
+      "side": 1,
+      "message": "Discussed with Hung-Ying and Issac, how about keep a55 above (L53 + L56).\n\nAnd only change gcc from a55 -\u003e a53 here?\n\u003d\u003d\u003e This CL can go to aosp/master first, then backport to pie-gsi.",
+      "parentUuid": "82b6a13f_19ee212b",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 95
+      },
+      "revId": "62fc184b1dc6cca7099c5c5e92df8c65d259b7f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
