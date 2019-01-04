@@ -22,6 +22,30 @@
       "revId": "ca041ea3b5a94466ffcb222e8134350306fdc899",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "148bf97c_3c0742c4",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1004689
+      },
+      "writtenOn": "2019-01-04T06:12:01Z",
+      "side": 1,
+      "message": "What about the update-api target? Is that going away? (This is morally equivalent to that one, though of course it could have metalava write its updated baseline into some file in out/ and then have some subsequent soong code go and copy it in; is that acceptable?)",
+      "parentUuid": "5a9a1f15_ff9e7b5d",
+      "range": {
+        "startLine": 388,
+        "startChar": 0,
+        "endLine": 390,
+        "endChar": 29
+      },
+      "revId": "ca041ea3b5a94466ffcb222e8134350306fdc899",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
