@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4ab551a_2d6405e8",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2019-01-04T11:14:20Z",
+      "side": 1,
+      "message": "Ah, I see.\n\nIf I revert the original change, then it won\u0027t have this part here.\n\nhttps://android-review.googlesource.com/c/platform/build/soong/+/861558/1/cc/config/arm64_device.go",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 95
+      },
+      "revId": "62fc184b1dc6cca7099c5c5e92df8c65d259b7f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
