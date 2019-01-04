@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "fc3a57fd_a1dc50e2",
+        "filename": "ui/build/test_build.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-04T23:49:47Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem to be fixed",
+      "parentUuid": "e1f0c381_d510f875",
+      "range": {
+        "startLine": 40,
+        "startChar": 17,
+        "endLine": 40,
+        "endChar": 21
+      },
+      "revId": "980133939be99de661bb39417f397abe608b9b2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f0609f22_9ee7d7e9",
         "filename": "ui/metrics/metrics.go",
         "patchSetId": 7
