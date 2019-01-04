@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ebeef9b_bd0452dc",
+        "filename": "ui/build/test_build.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-04T20:59:16Z",
+      "side": 1,
+      "message": "Use metrics.RunTest here",
+      "range": {
+        "startLine": 40,
+        "startChar": 17,
+        "endLine": 40,
+        "endChar": 21
+      },
+      "revId": "980133939be99de661bb39417f397abe608b9b2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0609f22_9ee7d7e9",
+        "filename": "ui/metrics/metrics.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-04T20:59:16Z",
+      "side": 1,
+      "message": "we don\u0027t seem to be setting build_date_timestamp anymore?",
+      "revId": "980133939be99de661bb39417f397abe608b9b2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1a85d1d_37c65941",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-04T20:59:16Z",
+      "side": 1,
+      "message": "Just use Arch/ARCH here, then it can be reused for Host as well",
+      "range": {
+        "startLine": 43,
+        "startChar": 7,
+        "endLine": 43,
+        "endChar": 17
+      },
+      "revId": "980133939be99de661bb39417f397abe608b9b2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72834424_cbe77d3d",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-04T20:59:16Z",
+      "side": 1,
+      "message": "This should be the same as host_arch (though it needs to be able to represent a missing value, I\u0027m not sure if optional enums can do that, or whether we\u0027d need to have an enum value of \"None\")",
+      "range": {
+        "startLine": 66,
+        "startChar": 11,
+        "endLine": 66,
+        "endChar": 17
+      },
+      "revId": "980133939be99de661bb39417f397abe608b9b2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
