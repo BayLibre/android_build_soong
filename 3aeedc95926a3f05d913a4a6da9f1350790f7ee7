@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b2ef80f_16f62b00",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1014807
+      },
+      "writtenOn": "2019-01-04T05:57:04Z",
+      "side": 1,
+      "message": "PS#4 updates this because https://android-review.googlesource.com/c/platform/build/soong/+/860491 was merged before this CL is merged.",
+      "revId": "3aeedc95926a3f05d913a4a6da9f1350790f7ee7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
