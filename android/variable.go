@@ -122,6 +122,26 @@ type variableProperties struct {
 			Static_libs  []string
 			Srcs         []string
 		}
+
+		// Requires_scs_vdso_workaround is true on devices that were ever released with a kernel
+		// that clobbers the x18 register in the vDSO, most likely because it included the
+		// following kernel patch:
+		// https://android.googlesource.com/kernel/msm/+/1bfa5df2a35bb81cd58f6c87cf3695ed880fac50
+		// without the fix:
+		// https://patchwork.kernel.org/patch/10671685/
+		//
+		// Setting this to true will activate code in bionic that works around the issue with old
+		// kernels by preserving the value of x18 when calling into the kernel's vDSO. Because
+		// shadow call stack (SCS) relies on the system not clobbering x18, this is required in
+		// order for SCS to work on those devices when using an old kernel (which is allowed by
+		// Treble). It should only be set on devices that need it because activating this code
+		// can have performance or security implications.
+		//
+		// Note that the kernel patch never made it into the upstream or common kernels without the
+		// fix, so the workaround should only be required on certain devices based on kernel/msm.
+		Requires_scs_vdso_workaround struct {
+			Cflags []string
+		}
 	} `android:"arch_variant"`
 }
 
@@ -261,6 +281,8 @@ type productVariables struct {
 	FlattenApex *bool `json:",omitempty"`
 
 	DexpreoptGlobalConfig *string `json:",omitempty"`
+
+	Requires_scs_vdso_workaround *bool `json:",omitempty"`
 }
 
 func boolPtr(v bool) *bool {
