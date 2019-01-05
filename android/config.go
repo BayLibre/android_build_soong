@@ -20,6 +20,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"regexp"
 	"runtime"
 	"strconv"
 	"strings"
@@ -860,6 +861,40 @@ func (c *deviceConfig) PlatPublicSepolicyDirs() []string {
 
 func (c *deviceConfig) PlatPrivateSepolicyDirs() []string {
 	return c.config.productVariables.BoardPlatPrivateSepolicyDirs
+}
+
+func (c *deviceConfig) OverrideManifestPackageNameFor(name string) (manifestName string, overridden bool) {
+	overrides := c.config.productVariables.ManifestPackageNameOverrides
+	if overrides == nil || len(overrides) == 0 {
+		return "", false
+	}
+	errMessage := "invalid override rule %q in PRODUCT_MANIFEST_PACKAGE_NAME_OVERRIDES: "
+	for _, o := range overrides {
+		split := strings.Split(o, ":")
+		if len(split) != 2 {
+			panic(fmt.Errorf(errMessage+" should be <module_name>:<maifest_name>", o))
+		}
+		countLeft := strings.Count(split[0], "%")
+		countRight := strings.Count(split[1], "%")
+		if countLeft != countRight {
+			panic(fmt.Errorf(errMessage+" number of wildcards %% does not match", o))
+		}
+		if countLeft > 1 || countRight > 1 {
+			panic(fmt.Errorf(errMessage+" wildcard %% cannot appear more than once", o))
+		}
+
+		// gnumake style pattern subst
+		regexpStr := strings.Replace(split[0], ".", "\\.", -1)
+		regexpStr = strings.Replace(regexpStr, "%", "(.*)", 1)
+		pattern := regexp.MustCompile(regexpStr)
+		if !pattern.MatchString(name) {
+			continue
+		}
+
+		replacement := strings.Replace(split[1], "%", "$1", 1)
+		return pattern.ReplaceAllString(name, replacement), true
+	}
+	return "", false
 }
 
 func (c *config) SecondArchIsTranslated() bool {
