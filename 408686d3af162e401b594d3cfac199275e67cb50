@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8b7772d_8cc173c6",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-01-07T05:10:19Z",
+      "side": 1,
+      "message": "Can\u0027t we use inList() instead of defining a new one?",
+      "range": {
+        "startLine": 143,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 2
+      },
+      "revId": "408686d3af162e401b594d3cfac199275e67cb50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c60ac460_5ef7ffd9",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-01-07T05:10:19Z",
+      "side": 1,
+      "message": "Do you have any reason to add this here, not in \"generateAndroidBuildActions()\"?\nWe may add this before adding certficateDeps to check the certificate of the module itself.",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 2
+      },
+      "revId": "408686d3af162e401b594d3cfac199275e67cb50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
