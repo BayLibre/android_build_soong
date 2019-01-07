@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88c0ea12_53e4290f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-01-07T20:44:26Z",
+      "side": 1,
+      "message": "Don\u0027t we need separate build rules for the bootstrap and non-bootstrap variants anyway?",
+      "range": {
+        "startLine": 10,
+        "startChar": 68,
+        "endLine": 12,
+        "endChar": 35
+      },
+      "revId": "05f147d6abcae393cbc855d29fe68a7738becb16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "406c9819_68424bef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-01-07T20:44:26Z",
+      "side": 1,
+      "message": "I\u0027m not sure what this sentence tries to say. Delete this word?",
+      "range": {
+        "startLine": 15,
+        "startChar": 40,
+        "endLine": 15,
+        "endChar": 42
+      },
+      "revId": "05f147d6abcae393cbc855d29fe68a7738becb16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d92e539_9f8e71aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-01-07T20:44:26Z",
+      "side": 1,
+      "message": "If the bootstrap variants have separate build rules, then these early modules can mention them explicitly without the need for this special property.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 40
+      },
+      "revId": "05f147d6abcae393cbc855d29fe68a7738becb16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b07a1426_b8a010d9",
+        "filename": "apex/apex.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-01-07T20:44:26Z",
+      "side": 1,
+      "message": "Rather than this hardcoded kludge, can we add a property to specify a subdirectory under ${LIB} for selected libraries in native_shared_libs?",
+      "range": {
+        "startLine": 495,
+        "startChar": 0,
+        "endLine": 495,
+        "endChar": 30
+      },
+      "revId": "05f147d6abcae393cbc855d29fe68a7738becb16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
