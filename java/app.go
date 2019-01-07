@@ -140,6 +140,23 @@ func (a *AndroidApp) DepsMutator(ctx android.BottomUpMutatorContext) {
 
 func (a *AndroidApp) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	a.generateAndroidBuildActions(ctx)
+	contains := func(l []string, s string) bool {
+		for _, e := range l {
+			if e == s {
+				return true
+			}
+		}
+		return false
+	}
+	if !a.Module.Platform() {
+		certPath := a.certificate.Pem.String()
+		systemCertPath := ctx.Config().DefaultAppCertificateDir(ctx).String()
+		if strings.HasPrefix(certPath, systemCertPath) {
+			if ctx.Config().EnforceSystemCertificate() && !contains(ctx.Config().EnforceSystemCertificateWhitelist(), a.Module.Name()) {
+				ctx.PropertyErrorf("certificate", "The module in product partition cannot be signed with certificate in system.")
+			}
+		}
+	}
 }
 
 // Returns whether this module should have the dex file stored uncompressed in the APK.
