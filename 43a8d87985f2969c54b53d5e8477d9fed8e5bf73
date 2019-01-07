@@ -164,6 +164,30 @@
       "revId": "43a8d87985f2969c54b53d5e8477d9fed8e5bf73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1def96a3_ef9fc3c2",
+        "filename": "python/scripts/stub_template_host.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2019-01-07T02:41:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cc61034_97e3b912",
+      "range": {
+        "startLine": 78,
+        "startChar": 6,
+        "endLine": 78,
+        "endChar": 64
+      },
+      "revId": "43a8d87985f2969c54b53d5e8477d9fed8e5bf73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
