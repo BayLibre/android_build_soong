@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7a1a03c_042dbfae",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-07T22:04:15Z",
+      "side": 1,
+      "message": "Can you move this section up between line 207 and 208 so that we change the name even if we can\u0027t parse the srcs list?",
+      "revId": "fb8dd38d54a18fbfd103c24d711332a4dcf96784",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28bac908_59b49ffd",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-07T22:04:15Z",
+      "side": 1,
+      "message": "This should just be _ if we don\u0027t care about the value",
+      "range": {
+        "startLine": 230,
+        "startChar": 8,
+        "endLine": 230,
+        "endChar": 10
+      },
+      "revId": "fb8dd38d54a18fbfd103c24d711332a4dcf96784",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
