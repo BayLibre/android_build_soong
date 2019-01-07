@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1df52f79_81057e26",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2019-01-07T07:04:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8b7772d_8cc173c6",
+      "range": {
+        "startLine": 143,
+        "startChar": 1,
+        "endLine": 150,
+        "endChar": 2
+      },
+      "revId": "408686d3af162e401b594d3cfac199275e67cb50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c60ac460_5ef7ffd9",
         "filename": "java/app.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "408686d3af162e401b594d3cfac199275e67cb50",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b0ce075_3d668e2d",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2019-01-07T07:04:06Z",
+      "side": 1,
+      "message": "Done\nI move it into generateAndroidBuildActions()",
+      "parentUuid": "c60ac460_5ef7ffd9",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 2
+      },
+      "revId": "408686d3af162e401b594d3cfac199275e67cb50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
