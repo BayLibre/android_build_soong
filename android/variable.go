@@ -261,6 +261,9 @@ type productVariables struct {
 	FlattenApex *bool `json:",omitempty"`
 
 	DexpreoptGlobalConfig *string `json:",omitempty"`
+
+	EnforceSystemCertificate          *bool    `json:",omitempty"`
+	EnforceSystemCertificateWhitelist []string `json:",omitempty"`
 }
 
 func boolPtr(v bool) *bool {
