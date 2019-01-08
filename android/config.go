@@ -210,6 +210,7 @@ func TestConfig(buildDir string, env map[string]string, bp string, fs map[string
 	for k, v := range env {
 		envCopy[k] = v
 	}
+	envCopy["ALLOW_MISSING_LSDUMPS"] = "true"
 
 	// Copy the real PATH value to the test environment, it's needed by HostSystemTool() used in x86_darwin_host.go
 	envCopy["PATH"] = originalEnv["PATH"]
@@ -593,6 +594,10 @@ func (c *config) ProductResourceOverlays() []string {
 
 func (c *config) PlatformVersionName() string {
 	return String(c.productVariables.Platform_version_name)
+}
+
+func (c *config) IsPlatformSdkFinal() bool {
+	return Bool(c.productVariables.Platform_sdk_final)
 }
 
 func (c *config) PlatformSdkVersionInt() int {

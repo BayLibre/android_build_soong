@@ -1052,7 +1052,44 @@ func (library *libraryDecorator) coverageOutputFilePath() android.OptionalPath {
 	return library.coverageOutputFile
 }
 
-func getRefAbiDumpFile(ctx ModuleContext, vndkVersion, fileName string) android.Path {
+var archVariantsMustHaveLsdumps = []string{
+	"arm64_armv8-a",
+	"arm_armv7-a-neon",
+	"arm_armv8-a",
+	"x86",
+	"x86_64",
+	"x86_x86_64",
+}
+
+func reportMissingReferenceAbiDumpFile(ctx ModuleContext, needLlndkFlag, isNdk bool) {
+	// If the ALLOW_MISSING_LSDUMPS environment variable is defined, don't emit errors when some
+	// ABI dumps are missing. This is necessary when we are bootstrapping and generating lsdump
+	// files for new LLNDK/NDK/VNDK shared libs.
+	allowMissingLsdumps := ctx.Config().IsEnvTrue("ALLOW_MISSING_LSDUMPS")
+
+	// If this is a release branch and we cannot find the lsdump file for NDK, LL-NDK, or VNDK,
+	// emit an error.
+	isFinal := ctx.Config().IsPlatformSdkFinal()
+
+	// Only certain arch variants have ABI dumps. Don't emit errors on other arch variants.
+	archVariant := ctx.Arch().NameAndVariantString()
+
+	if !allowMissingLsdumps && (isFinal || isNdk) && inList(archVariant, archVariantsMustHaveLsdumps) {
+		ctx.ModuleErrorf("Reference ABI dumps are missing for arch variant %s", archVariant)
+		ctx.ModuleErrorf("To fix this error, run:")
+		extraOptions := ""
+		if needLlndkFlag {
+			extraOptions = " --llndk"
+		}
+		ctx.ModuleErrorf(
+			"ALLOW_MISSING_LSDUMPS=true "+
+				"development/vndk/tools/header-checker/utils/create_reference_dumps.py "+
+				"-lib %s%s",
+			ctx.ModuleName(), extraOptions)
+	}
+}
+
+func getReferenceAbiDumpFile(ctx ModuleContext, vndkVersion, fileName string) android.Path {
 	// The logic must be consistent with classifySourceAbiDump.
 	isNdk := ctx.isNdk()
 	isLlndkOrVndk := ctx.isLlndkPublic(ctx.Config()) || (ctx.useVndk() && ctx.isVndk())
@@ -1072,6 +1109,7 @@ func getRefAbiDumpFile(ctx ModuleContext, vndkVersion, fileName string) android.
 	if refAbiDumpGzipFile.Valid() {
 		return UnzipRefDump(ctx, refAbiDumpGzipFile.Path(), fileName)
 	}
+	reportMissingReferenceAbiDumpFile(ctx, isNdk || ctx.isLlndkPublic(ctx.Config()), isNdk)
 	return nil
 }
 
@@ -1098,7 +1136,7 @@ func (library *libraryDecorator) linkSAbiDumpFiles(ctx ModuleContext, objs Objec
 
 		addLsdumpPath(library.classifySourceAbiDump(ctx) + ":" + library.sAbiOutputFile.String())
 
-		refAbiDumpFile := getRefAbiDumpFile(ctx, vndkVersion, fileName)
+		refAbiDumpFile := getReferenceAbiDumpFile(ctx, vndkVersion, fileName)
 		if refAbiDumpFile != nil {
 			library.sAbiDiff = SourceAbiDiff(ctx, library.sAbiOutputFile.Path(),
 				refAbiDumpFile, fileName, exportedHeaderFlags,
