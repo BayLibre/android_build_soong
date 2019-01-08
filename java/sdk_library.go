@@ -525,22 +525,22 @@ func (module *sdkLibrary) createDocs(mctx android.TopDownMutatorContext, apiScop
 			"-hide 6 -hide 24 -hide 25 -hide 26 -hide 27 " +
 			"-error 7 -error 8 -error 9 -error 10 -error 11 -error 12 -error 13 -error 14 " +
 			"-error 15 -error 16 -error 17 -error 18")
+	}
 
-		// Include the part of the framework source. This is required for the case when
-		// API class is extending from the framework class. In that case, doclava needs
-		// to know whether the base class is hidden or not. Since that information is
-		// encoded as @hide string in the comment, we need source files for the classes,
-		// not the compiled ones.
-		props.Srcs_lib = proptools.StringPtr("framework")
-		props.Srcs_lib_whitelist_dirs = []string{"core/java"}
+	// Include the part of the framework source. This is required for the case when
+	// API class is extending from the framework class. In that case, doclava needs
+	// to know whether the base class is hidden or not. Since that information is
+	// encoded as @hide string in the comment, we need source files for the classes,
+	// not the compiled ones.
+	props.Srcs_lib = proptools.StringPtr("framework")
+	props.Srcs_lib_whitelist_dirs = []string{"core/java"}
 
-		// Add android.annotation package to give access to the framework-defined
-		// annotations such as SystemApi, NonNull, etc.
-		if module.properties.Srcs_lib_whitelist_pkgs != nil {
-			props.Srcs_lib_whitelist_pkgs = module.properties.Srcs_lib_whitelist_pkgs
-		} else {
-			props.Srcs_lib_whitelist_pkgs = []string{"android.annotation"}
-		}
+	// Add android.annotation package to give access to the framework-defined
+	// annotations such as SystemApi, NonNull, etc.
+	if module.properties.Srcs_lib_whitelist_pkgs != nil {
+		props.Srcs_lib_whitelist_pkgs = module.properties.Srcs_lib_whitelist_pkgs
+	} else {
+		props.Srcs_lib_whitelist_pkgs = []string{"android.annotation"}
 	}
 
 	if Bool(module.properties.Metalava_enabled) == true {
@@ -601,9 +601,9 @@ func (module *sdkLibrary) createXmlFile(mctx android.TopDownMutatorContext) {
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
      You may obtain a copy of the License at
-  
+
           http://www.apache.org/licenses/LICENSE-2.0
-  
+
      Unless required by applicable law or agreed to in writing, software
      distributed under the License is distributed on an "AS IS" BASIS,
      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
