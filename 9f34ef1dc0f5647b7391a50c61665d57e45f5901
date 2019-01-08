@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12a7593c_6098d7f1",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-01-08T16:48:27Z",
+      "side": 1,
+      "message": "Tests for the \"bootstrap\" flag, or will that come later?",
+      "revId": "9f34ef1dc0f5647b7391a50c61665d57e45f5901",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

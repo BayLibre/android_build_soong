@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "3e39f12a_0282d3b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-01-08T16:48:27Z",
+      "side": 1,
+      "message": "I meant two separate build rules, e.g. one for libc.bootstrap next to [1]. We\u0027ll want to pass different defines to them during building - see [2], and there might very well be more build differences in the future.\n\nAnother option is to add \"bootstrap\" as another target in the target{} clause, to specify the overrides there.\n\n[1] http://cs/aosp-master/bionic/libc/Android.bp?l\u003d1522\n[2] http://doc/1nG7X_WmKMfAZmgOkVTFrp_U2K8po4TyxI2rDEkGBZPI#heading\u003dh.spst322u84vo",
+      "parentUuid": "74eb4bc0_6d4b2f50",
+      "range": {
+        "startLine": 10,
+        "startChar": 68,
+        "endLine": 12,
+        "endChar": 35
+      },
+      "revId": "05f147d6abcae393cbc855d29fe68a7738becb16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "406c9819_68424bef",
         "filename": "/COMMIT_MSG",
         "patchSetId": 11
@@ -143,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "665dd675_2d90854e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-01-08T16:48:27Z",
+      "side": 1,
+      "message": "So overriding them with system_shared_libs doesn\u0027t work because it doesn\u0027t propagate to all the library dependencies, whereas this new flag does?",
+      "parentUuid": "dab37fbd_c9c62c64",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 40
+      },
+      "revId": "05f147d6abcae393cbc855d29fe68a7738becb16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b07a1426_b8a010d9",
         "filename": "apex/apex.go",
         "patchSetId": 11
@@ -178,6 +226,30 @@
       "side": 1,
       "message": "I really don\u0027t think we need to make this generic because libs other than bionic won\u0027t have such requirement. I will revisit this if there are similar request for other libs. This topic is already too big so I am opposed to add more feature to it right now.",
       "parentUuid": "b07a1426_b8a010d9",
+      "range": {
+        "startLine": 495,
+        "startChar": 0,
+        "endLine": 495,
+        "endChar": 30
+      },
+      "revId": "05f147d6abcae393cbc855d29fe68a7738becb16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83de093c_d7d45baf",
+        "filename": "apex/apex.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-01-08T16:48:27Z",
+      "side": 1,
+      "message": "I don\u0027t expect it to see much general use either. The point is rather to avoid hardcoded and hidden behaviour that makes the Soong files hard to understand.\n\nDon\u0027t dependencies like libc_malloc_debug.so need to be present here as well (c.f. https://groups.google.com/a/google.com/d/msg/android-aml-apex/UAQxF_sKrP0/fVvQiQrQDgAJ etc)?\n\n\u003e This topic is already too big so I am opposed to add more feature to it right now.\n\nFair enough, and I agree. I think the best approach is to submit this provided it works well enough and iterate afterwards. Same goes for the other comments I have on this CL.",
+      "parentUuid": "34135882_e6be8805",
       "range": {
         "startLine": 495,
         "startChar": 0,
