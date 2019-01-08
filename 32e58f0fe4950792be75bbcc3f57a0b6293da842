@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "859732f4_9ea0f1cd",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-08T19:14:51Z",
+      "side": 1,
+      "message": "Since these are user errors, they shouldn\u0027t be panics. Maybe we should verify this first in a context that can throw errors better (maybe even make?)",
+      "revId": "32e58f0fe4950792be75bbcc3f57a0b6293da842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f44a0918_27e95182",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-08T19:14:51Z",
+      "side": 1,
+      "message": "manifest",
+      "range": {
+        "startLine": 875,
+        "startChar": 58,
+        "endLine": 875,
+        "endChar": 70
+      },
+      "revId": "32e58f0fe4950792be75bbcc3f57a0b6293da842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd545f99_f7d0f60d",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 887,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-08T19:14:51Z",
+      "side": 1,
+      "message": "There are a number of other characters that can cause issues here -- maybe we should just do the prefix/suffix calculations",
+      "range": {
+        "startLine": 887,
+        "startChar": 0,
+        "endLine": 887,
+        "endChar": 56
+      },
+      "revId": "32e58f0fe4950792be75bbcc3f57a0b6293da842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48ab3e3a_fca08469",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-08T19:14:51Z",
+      "side": 1,
+      "message": "This should probably be a helper function with a bunch of tests around it.",
+      "range": {
+        "startLine": 872,
+        "startChar": 0,
+        "endLine": 896,
+        "endChar": 2
+      },
+      "revId": "32e58f0fe4950792be75bbcc3f57a0b6293da842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
