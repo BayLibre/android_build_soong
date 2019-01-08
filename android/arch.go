@@ -488,11 +488,16 @@ type Arch struct {
 	ArchFeatures []string
 }
 
-func (a Arch) String() string {
+func (a Arch) NameAndVariantString() string {
 	s := a.ArchType.String()
 	if a.ArchVariant != "" {
 		s += "_" + a.ArchVariant
 	}
+	return s
+}
+
+func (a Arch) String() string {
+	s := a.NameAndVariantString()
 	if a.CpuVariant != "" {
 		s += "_" + a.CpuVariant
 	}
