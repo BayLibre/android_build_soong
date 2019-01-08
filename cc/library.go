@@ -714,6 +714,15 @@ func (library *libraryDecorator) linkShared(ctx ModuleContext,
 	return ret
 }
 
+var archVariantsMustHaveAbiDumps = []string{
+	"arm64_armv8-a",
+	"arm_armv7-a-neon",
+	"arm_armv8-a",
+	"x86",
+	"x86_64",
+	"x86_x86_64",
+}
+
 func getRefAbiDumpFile(ctx ModuleContext, vndkVersion, fileName string) android.Path {
 	isLlndk := inList(ctx.baseModuleName(), llndkLibraries) || inList(ctx.baseModuleName(), ndkMigratedLibs)
 
@@ -732,6 +741,27 @@ func getRefAbiDumpFile(ctx ModuleContext, vndkVersion, fileName string) android.
 	if refAbiDumpGzipFile.Valid() {
 		return UnzipRefDump(ctx, refAbiDumpGzipFile.Path(), fileName)
 	}
+
+	// If this is a released branch and we cannot find the lsdump file for
+	// NDK, LL-NDK, or VNDK, emit an error.
+	allowMissingLsdump := ctx.Config().IsEnvTrue("ALLOW_MISSING_LSDUMPS")
+	isFreezed := ctx.Config().IsPlatformSdkFinal()
+	archVariant := ctx.Arch().NameAndVariantString()
+	if !allowMissingLsdump && isFreezed && inList(archVariant, archVariantsMustHaveAbiDumps) && isLlndk {
+		ctx.ModuleErrorf("Reference ABI dumps are missing for arch variant %s", archVariant)
+		ctx.ModuleErrorf("To fix this error, run:")
+		extraOptions := ""
+		if isLlndk {
+			extraOptions = " --llndk"
+		}
+		ctx.ModuleErrorf(
+			"ALLOW_MISSING_LSDUMPS=true "+
+				"./development/vndk/tools/header-checker/utils/create_reference_dumps.py "+
+				"-lib %s%s",
+			ctx.ModuleName(), extraOptions)
+
+	}
+
 	return nil
 }
 
