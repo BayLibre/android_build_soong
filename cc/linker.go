@@ -229,8 +229,8 @@ func (linker *baseLinker) linkerDeps(ctx DepsContext, deps Deps) Deps {
 		// b/117565638
 		if !Bool(linker.Properties.No_libcrt) {
 			// libclang_rt.builtins, libgcc and libatomic have to be last on the command line
-			// TODO: Also enable for libc and libm
-			if ctx.ModuleName() != "libc" && ctx.ModuleName() != "libm" {
+			// TODO: Also enable for libc
+			if ctx.ModuleName() != "libc" {
 				deps.LateStaticLibs = append(deps.LateStaticLibs, config.BuiltinsRuntimeLibrary(ctx.toolchain()))
 			}
 		}
