@@ -486,6 +486,10 @@ func (c *config) PlatformVersionName() string {
 	return String(c.productVariables.Platform_version_name)
 }
 
+func (c *config) IsPlatformSdkFinal() bool {
+	return Bool(c.productVariables.Platform_sdk_final)
+}
+
 func (c *config) PlatformSdkVersionInt() int {
 	return *c.productVariables.Platform_sdk_version
 }
