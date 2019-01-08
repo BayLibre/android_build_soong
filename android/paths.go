@@ -804,15 +804,7 @@ func pathForModule(ctx ModuleContext) OutputPath {
 func PathForVndkRefAbiDump(ctx ModuleContext, version, fileName string,
 	isLlndk, isGzip bool) OptionalPath {
 
-	arches := ctx.DeviceConfig().Arches()
-	if len(arches) == 0 {
-		panic("device build with no primary arch")
-	}
-	currentArch := ctx.Arch()
-	archNameAndVariant := currentArch.ArchType.String()
-	if currentArch.ArchVariant != "" {
-		archNameAndVariant += "_" + currentArch.ArchVariant
-	}
+	archNameAndVariant := ctx.Arch().NameAndVariantString()
 
 	var dirName string
 	if isLlndk {
