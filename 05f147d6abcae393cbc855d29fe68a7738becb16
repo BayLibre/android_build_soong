@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "74eb4bc0_6d4b2f50",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-08T06:32:42Z",
+      "side": 1,
+      "message": "We already have different variants. The one in the apex is the \"com.android.runtime\" variant while the one in the system image is the \"platform\" variant.",
+      "parentUuid": "88c0ea12_53e4290f",
+      "range": {
+        "startLine": 10,
+        "startChar": 68,
+        "endLine": 12,
+        "endChar": 35
+      },
+      "revId": "05f147d6abcae393cbc855d29fe68a7738becb16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "406c9819_68424bef",
         "filename": "/COMMIT_MSG",
         "patchSetId": 11
@@ -45,6 +69,30 @@
       "revId": "05f147d6abcae393cbc855d29fe68a7738becb16",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cadd925a_d2101367",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-08T06:32:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "406c9819_68424bef",
+      "range": {
+        "startLine": 15,
+        "startChar": 40,
+        "endLine": 15,
+        "endChar": 42
+      },
+      "revId": "05f147d6abcae393cbc855d29fe68a7738becb16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "dab37fbd_c9c62c64",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-08T06:32:42Z",
+      "side": 1,
+      "message": "I\u0027ve considered that option but that\u0027s impractical because usually the dependency to bionic libs are implicit (i.e., not shown in Android.bp but done by the build system)",
+      "parentUuid": "8d92e539_9f8e71aa",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 40
+      },
+      "revId": "05f147d6abcae393cbc855d29fe68a7738becb16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b07a1426_b8a010d9",
         "filename": "apex/apex.go",
         "patchSetId": 11
@@ -91,6 +163,30 @@
       "revId": "05f147d6abcae393cbc855d29fe68a7738becb16",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34135882_e6be8805",
+        "filename": "apex/apex.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-08T06:32:42Z",
+      "side": 1,
+      "message": "I really don\u0027t think we need to make this generic because libs other than bionic won\u0027t have such requirement. I will revisit this if there are similar request for other libs. This topic is already too big so I am opposed to add more feature to it right now.",
+      "parentUuid": "b07a1426_b8a010d9",
+      "range": {
+        "startLine": 495,
+        "startChar": 0,
+        "endLine": 495,
+        "endChar": 30
+      },
+      "revId": "05f147d6abcae393cbc855d29fe68a7738becb16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
