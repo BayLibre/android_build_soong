@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d55f1e08_96d28672",
+        "filename": "java/app.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-01-09T22:56:43Z",
+      "side": 1,
+      "message": "So, it looks like this can replace LOCAL_PACKAGE_OVERRIDES (and effectively inherit-package as well). Do you plan to do that or do you want to keep them separately?",
+      "revId": "7f67f48cbbd7a0c6079acb2d811ac85c47aaf356",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
