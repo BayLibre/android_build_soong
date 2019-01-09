@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a283b32_35251395",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-01-09T05:18:45Z",
+      "side": 1,
+      "message": "This is much more readable. I like it :)",
+      "revId": "10a3ae6f0300b496eae670bedbcc09b4ea9ef583",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
