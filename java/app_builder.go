@@ -45,11 +45,28 @@ var (
 			Description: "merge manifest files",
 		},
 		"libsManifests")
+
+	appcompatLog = pctx.AndroidStaticRule("appcompatLog",
+		blueprint.RuleParams{
+			Command: "rm -f ${out} && " +
+				"echo -n \"Package name: \" >> ${out} && " +
+				"${aapt2} dump resources ${in} | awk -F ' |=' '/^Package/{print $$3}' >> ${out} && " +
+				"echo \"Module name in Android tree: ${moduleName}\" >> ${out} && " +
+				"echo \"Local path in Android tree: ${modulePath}\" >> ${out} && " +
+				"echo \"Install path on ${product}-${variant}: ${installPath}\" >> ${out} && " +
+				"echo >> ${out} &&" +
+				"echo \"appcompat.sh output:\" >> ${out} &&" +
+				"PACKAGING=${commonIntermediatesPath}/PACKAGING ANDROID_LOG_TAGS=\"*:e\" art/tools/veridex/appcompat.sh --dex-file=${in} 2>&1 >> ${out}",
+			CommandDeps: []string{"$aapt2"},
+			Description: "generate appcompat log",
+		},
+		"moduleName", "modulePath", "product", "variant", "installPath", "commonIntermediatesPath")
 )
 
 func init() {
 	pctx.SourcePathVariable("androidManifestMergerCmd", "prebuilts/devtools/tools/lib/manifest-merger.jar")
 	pctx.HostBinToolVariable("aaptCmd", "aapt")
+	pctx.HostBinToolVariable("aapt2", "aapt2")
 	pctx.HostJavaToolVariable("signapkCmd", "signapk.jar")
 	// TODO(ccross): this should come from the signapk dependencies, but we don't have any way
 	// to express host JNI dependencies yet.
