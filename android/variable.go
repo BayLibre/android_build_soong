@@ -122,6 +122,10 @@ type variableProperties struct {
 			Static_libs  []string
 			Srcs         []string
 		}
+
+		BionicUpdatable struct {
+			Cflags []string
+		}
 	} `android:"arch_variant"`
 }
 
@@ -261,6 +265,8 @@ type productVariables struct {
 	FlattenApex *bool `json:",omitempty"`
 
 	DexpreoptGlobalConfig *string `json:",omitempty"`
+
+	BionicUpdatable *bool `json:",omitempty"`
 }
 
 func boolPtr(v bool) *bool {
