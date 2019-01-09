@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "df9dd242_55aa4b88",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-01-09T14:40:40Z",
+      "side": 1,
+      "message": "We could, but that would mean even more hidden functionality that is hard to track down. It\u0027d be much better to have these things openly visible in the Android.bp files, and since the bootstrap stuff is limited in scope it\u0027s not an issue that a little bit more boilerplate gets added here and there.",
+      "parentUuid": "03d17b33_7bc0020d",
+      "range": {
+        "startLine": 10,
+        "startChar": 68,
+        "endLine": 12,
+        "endChar": 35
+      },
+      "revId": "05f147d6abcae393cbc855d29fe68a7738becb16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "406c9819_68424bef",
         "filename": "/COMMIT_MSG",
         "patchSetId": 11
@@ -236,6 +260,30 @@
       "revId": "05f147d6abcae393cbc855d29fe68a7738becb16",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a87d3bb_c2ad08c3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-01-09T14:40:40Z",
+      "side": 1,
+      "message": "So intermediate libraries get another variant as well then? To discuss an example:\n\n- vold needs libc.bootstrap.\n- vold depends on some library libfoo.\n- libfoo depends on libc, which is normally the default, potentially stubbed, variant.\n\nWe\u0027d implicitly compile another variant libfoo.bootstrap here to get vold -\u003e libfoo.bootstrap -\u003e libc.bootstrap?",
+      "parentUuid": "fe21b51f_9314f245",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 40
+      },
+      "revId": "05f147d6abcae393cbc855d29fe68a7738becb16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
