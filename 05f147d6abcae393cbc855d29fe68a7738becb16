@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "0ce08a47_27061db7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-09T15:33:22Z",
+      "side": 1,
+      "message": "No. Since the build system creates the platform and apex variants, there really is no need to define two modules explicitly in Android.bp. This is how other variants (e.g. vendor, recovery, etc.) are handled.\n\nThe platform variant is not a minor one. For any module that is directly or indirectly included in an apex, both platform and apex variants are created (\u003ddefined by build system).",
+      "parentUuid": "df9dd242_55aa4b88",
+      "range": {
+        "startLine": 10,
+        "startChar": 68,
+        "endLine": 12,
+        "endChar": 35
+      },
+      "revId": "05f147d6abcae393cbc855d29fe68a7738becb16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "406c9819_68424bef",
         "filename": "/COMMIT_MSG",
         "patchSetId": 11
@@ -284,6 +308,30 @@
       "revId": "05f147d6abcae393cbc855d29fe68a7738becb16",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5816573f_8acd694c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-09T15:33:22Z",
+      "side": 1,
+      "message": "In that casae, vold will link with the platform variant of libfoo. apex variant of libfoo may or may not be created depending on whether libfoo is directly(or indirectly) included in an APEX.\n\nThe platform variant of libfoo, unless specified with \u0027bootstrap: true\u0027, is linked to the stubs variant of libc.\n\nThere is no libfoo.bootstrap defined unless libfoo is defined with stubs: {...} and is directly included in an APEX.",
+      "parentUuid": "2a87d3bb_c2ad08c3",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 40
+      },
+      "revId": "05f147d6abcae393cbc855d29fe68a7738becb16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
