@@ -829,6 +829,10 @@ func (c *deviceConfig) ProductPath() string {
 	return "product"
 }
 
+func (c *config) CommonIntermediatesPath() string {
+	return *c.productVariables.CommonIntermediatesPath
+}
+
 func (c *deviceConfig) ProductServicesPath() string {
 	if c.config.productVariables.ProductServicesPath != nil {
 		return *c.config.productVariables.ProductServicesPath

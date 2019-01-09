@@ -84,6 +84,8 @@ type AndroidApp struct {
 	installJniLibs []jniLib
 
 	bundleFile android.Path
+
+	appcompatLogPath android.Path
 }
 
 func (a *AndroidApp) ExportedProguardFlagFiles() android.Paths {
@@ -282,14 +284,40 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 	bundleFile := android.PathForModuleOut(ctx, "base.zip")
 	BuildBundleModule(ctx, bundleFile, a.exportPackage, jniJarFile, dexJarFile)
 	a.bundleFile = bundleFile
-
+	installPath := ""
 	if ctx.ModuleName() == "framework-res" {
 		// framework-res.apk is installed as system/framework/framework-res.apk
-		ctx.InstallFile(android.PathForModuleInstall(ctx, "framework"), ctx.ModuleName()+".apk", a.outputFile)
+		installPath = ctx.InstallFile(android.PathForModuleInstall(ctx, "framework"), ctx.ModuleName()+".apk", a.outputFile).String()
 	} else if Bool(a.appProperties.Privileged) {
-		ctx.InstallFile(android.PathForModuleInstall(ctx, "priv-app", ctx.ModuleName()), ctx.ModuleName()+".apk", a.outputFile)
+		installPath = ctx.InstallFile(android.PathForModuleInstall(ctx, "priv-app", ctx.ModuleName()), ctx.ModuleName()+".apk", a.outputFile).String()
 	} else {
-		ctx.InstallFile(android.PathForModuleInstall(ctx, "app", ctx.ModuleName()), ctx.ModuleName()+".apk", a.outputFile)
+		installPath = ctx.InstallFile(android.PathForModuleInstall(ctx, "app", ctx.ModuleName()), ctx.ModuleName()+".apk", a.outputFile).String()
+	}
+
+	if !ctx.Platform() {
+		installPath := strings.Replace(installPath, "/soong", "", 1)
+		variant := "user"
+		if ctx.Config().Eng() {
+			variant = "eng"
+		} else if ctx.Config().Debuggable() {
+			variant = "userdebug"
+		}
+		logPath := android.PathForModuleOut(ctx, "appcompat.log")
+		a.appcompatLogPath = logPath
+		ctx.Build(pctx, android.BuildParams{
+			Rule:        appcompatLog,
+			Description: "generate appcompat log for " + ctx.ModuleName(),
+			Input:       a.outputFile,
+			Output:      logPath,
+			Args: map[string]string{
+				"moduleName":              ctx.ModuleName(),
+				"modulePath":              ctx.ModuleDir(),
+				"product":                 ctx.Config().DeviceName(),
+				"variant":                 variant,
+				"installPath":             installPath,
+				"commonIntermediatesPath": ctx.Config().CommonIntermediatesPath(),
+			},
+		})
 	}
 }
 

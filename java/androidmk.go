@@ -246,6 +246,10 @@ func (app *AndroidApp) AndroidMk() android.AndroidMkData {
 				if len(app.dexpreopter.builtInstalled) > 0 {
 					fmt.Fprintln(w, "LOCAL_SOONG_BUILT_INSTALLED :=", strings.Join(app.dexpreopter.builtInstalled, " "))
 				}
+
+				if app.appcompatLogPath != nil {
+					fmt.Fprintln(w, "LOCAL_SOONG_APPCOMPAT_LOG :=", app.appcompatLogPath.String())
+				}
 			},
 		},
 	}
