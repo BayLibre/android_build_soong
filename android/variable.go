@@ -122,6 +122,10 @@ type variableProperties struct {
 			Static_libs  []string
 			Srcs         []string
 		}
+
+		BionicUpdatable struct {
+			Cflags []string
+		}
 	} `android:"arch_variant"`
 }
 
@@ -266,6 +270,8 @@ type productVariables struct {
 
 	EnforceSystemCertificate          *bool    `json:",omitempty"`
 	EnforceSystemCertificateWhitelist []string `json:",omitempty"`
+
+	BionicUpdatable *bool `json:",omitempty"`
 }
 
 func boolPtr(v bool) *bool {
