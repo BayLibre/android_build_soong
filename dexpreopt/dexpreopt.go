@@ -95,22 +95,6 @@ func GenerateDexpreoptRule(global GlobalConfig, module ModuleConfig) (rule *Rule
 
 	rule = &Rule{}
 
-	dexpreoptDisabled := contains(global.DisablePreoptModules, module.Name)
-
-	if contains(global.BootJars, module.Name) {
-		// Don't preopt individual boot jars, they will be preopted together
-		dexpreoptDisabled = true
-	}
-
-	// If OnlyPreoptBootImageAndSystemServer=true and module is not in boot class path skip
-	// Also preopt system server jars since selinux prevents system server from loading anything from
-	// /data. If we don't do this they will need to be extracted which is not favorable for RAM usage
-	// or performance. If PreoptExtractedApk is true, we ignore the only preopt boot image options.
-	if global.OnlyPreoptBootImageAndSystemServer && !contains(global.BootJars, module.Name) &&
-		!contains(global.SystemServerJars, module.Name) && !module.PreoptExtractedApk {
-		dexpreoptDisabled = true
-	}
-
 	generateProfile := module.ProfileClassListing != "" && !global.DisableGenerateProfile
 
 	var profile string
@@ -118,7 +102,7 @@ func GenerateDexpreoptRule(global GlobalConfig, module ModuleConfig) (rule *Rule
 		profile = profileCommand(global, module, rule)
 	}
 
-	if !dexpreoptDisabled {
+	if !dexpreoptDisabled(global, module) {
 		appImage := (generateProfile || module.ForceCreateAppImage || global.DefaultAppImages) &&
 			!module.NoCreateAppImage
 
@@ -134,6 +118,28 @@ func GenerateDexpreoptRule(global GlobalConfig, module ModuleConfig) (rule *Rule
 	}
 
 	return rule, nil
+}
+
+func dexpreoptDisabled(global GlobalConfig, module ModuleConfig) bool {
+	if contains(global.DisablePreoptModules, module.Name) {
+		return true
+	}
+
+	if contains(global.BootJars, module.Name) {
+		// Don't preopt individual boot jars, they will be preopted together
+		return true
+	}
+
+	// If OnlyPreoptBootImageAndSystemServer=true and module is not in boot class path skip
+	// Also preopt system server jars since selinux prevents system server from loading anything from
+	// /data. If we don't do this they will need to be extracted which is not favorable for RAM usage
+	// or performance. If PreoptExtractedApk is true, we ignore the only preopt boot image options.
+	if global.OnlyPreoptBootImageAndSystemServer && !contains(global.BootJars, module.Name) &&
+		!contains(global.SystemServerJars, module.Name) && !module.PreoptExtractedApk {
+		return true
+	}
+
+	return false
 }
 
 func profileCommand(global GlobalConfig, module ModuleConfig, rule *Rule) string {
@@ -444,6 +450,10 @@ func dexpreoptCommand(global GlobalConfig, module ModuleConfig, rule *Rule, prof
 // dex2oat time it will not be stripped even if strip=true.
 func shouldStripDex(module ModuleConfig, global GlobalConfig) bool {
 	strip := !global.DefaultNoStripping
+
+	if dexpreoptDisabled(global, module) {
+		strip = false
+	}
 
 	// Don't strip modules that are not on the system partition in case the oat/vdex version in system ROM
 	// doesn't match the one in other partitions. It needs to be able to fall back to the APK for that case.
