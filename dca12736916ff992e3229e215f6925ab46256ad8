@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1b2a413_4f1e6ff8",
+        "filename": "ui/build/goma.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-09T16:10:27Z",
+      "side": 1,
+      "message": "That\u0027s right, this interface changed recently to take two strings:\n\n  build/soong/ui/build/goma.go:27:16: not enough arguments in call to ctx.ContextImpl.BeginTrace\n\thave (string)\n\twant (string, string)\n\nSo this should be:\n\n  ctx.BeginTrace(metrics.RunSetupTool, \"goma_ctl\")",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 27
+      },
+      "revId": "dca12736916ff992e3229e215f6925ab46256ad8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
