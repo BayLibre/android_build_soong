@@ -42,6 +42,48 @@
     },
     {
       "key": {
+        "uuid": "13149cdd_b940d599",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-09T02:03:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f44a0918_27e95182",
+      "range": {
+        "startLine": 875,
+        "startChar": 58,
+        "endLine": 875,
+        "endChar": 70
+      },
+      "revId": "32e58f0fe4950792be75bbcc3f57a0b6293da842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1577fe48_424f09ef",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-09T02:03:39Z",
+      "side": 1,
+      "message": "Good idea. I\u0027ve move the check to make.",
+      "parentUuid": "859732f4_9ea0f1cd",
+      "revId": "32e58f0fe4950792be75bbcc3f57a0b6293da842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd545f99_f7d0f60d",
         "filename": "android/config.go",
         "patchSetId": 2
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "16ccb49c_bf92e50c",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 887,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-09T02:03:39Z",
+      "side": 1,
+      "message": "Ok. I\u0027ve copied the util routine from kati. So now the logic is very identical to what is being done in make.",
+      "parentUuid": "fd545f99_f7d0f60d",
+      "range": {
+        "startLine": 887,
+        "startChar": 0,
+        "endLine": 887,
+        "endChar": 56
+      },
+      "revId": "32e58f0fe4950792be75bbcc3f57a0b6293da842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48ab3e3a_fca08469",
         "filename": "android/config.go",
         "patchSetId": 2
@@ -85,6 +151,30 @@
       "revId": "32e58f0fe4950792be75bbcc3f57a0b6293da842",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9f1b516_27fa9424",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-09T02:03:39Z",
+      "side": 1,
+      "message": "Since I\u0027ve copied the utils from kati (which I believe is well tested), I don\u0027t feel I need to have new tests for the copied utils.",
+      "parentUuid": "48ab3e3a_fca08469",
+      "range": {
+        "startLine": 872,
+        "startChar": 0,
+        "endLine": 896,
+        "endChar": 2
+      },
+      "revId": "32e58f0fe4950792be75bbcc3f57a0b6293da842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
