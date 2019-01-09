@@ -54,6 +54,10 @@ type variableProperties struct {
 			Cflags []string
 		}
 
+		Media_drm_32_bit struct {
+			Compile_multilib *string
+		}
+
 		Override_rs_driver struct {
 			Cflags []string
 		}
@@ -184,6 +188,7 @@ type productVariables struct {
 	Safestack                        *bool `json:",omitempty"`
 	HostStaticBinaries               *bool `json:",omitempty"`
 	Binder32bit                      *bool `json:",omitempty"`
+	Media_drm_32_bit                 *bool `json:",omitempty"`
 	UseGoma                          *bool `json:",omitempty"`
 	Debuggable                       *bool `json:",omitempty"`
 	Eng                              *bool `json:",omitempty"`
