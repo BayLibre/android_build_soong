@@ -122,6 +122,10 @@ type variableProperties struct {
 			Static_libs  []string
 			Srcs         []string
 		}
+
+		BionicUpdatable struct {
+			Cflags []string
+		}
 	} `android:"arch_variant"`
 }
 
@@ -263,6 +267,7 @@ type productVariables struct {
 	DexpreoptGlobalConfig *string `json:",omitempty"`
 
 	ManifestPackageNameOverrides []string `json:",omitempty"`
+	BionicUpdatable              *bool    `json:",omitempty"`
 }
 
 func boolPtr(v bool) *bool {
