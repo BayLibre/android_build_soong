@@ -22,6 +22,30 @@
       "revId": "dca12736916ff992e3229e215f6925ab46256ad8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5300ee21_d919a48d",
+        "filename": "ui/build/goma.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1067895
+      },
+      "writtenOn": "2019-01-10T01:15:19Z",
+      "side": 1,
+      "message": "Thank you!\nI fixed the code to follow the new interface.",
+      "parentUuid": "b1b2a413_4f1e6ff8",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 27
+      },
+      "revId": "dca12736916ff992e3229e215f6925ab46256ad8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
