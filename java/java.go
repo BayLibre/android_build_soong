@@ -555,7 +555,9 @@ func decodeSdkDep(ctx android.BaseContext, sdkContext sdkContext) sdkDep {
 		return ret
 	}
 
-	if ctx.Config().UnbundledBuildPrebuiltSdks() && v != "" {
+	// Use prebuilts for unbundled builds that aren't building the SDKs from source, or for PDK builds which won't
+	// have sources for the SDKs.
+	if (ctx.Config().UnbundledBuildPrebuiltSdks() || ctx.Config().IsPdkBuild()) && v != "" {
 		return toPrebuilt(v)
 	}
 
