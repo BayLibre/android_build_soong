@@ -16,6 +16,24 @@
       "revId": "17f2767724e7c7e8e2c4dcd595bd34b4de40f623",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de489409_4a2677eb",
+        "filename": "ui/build/context.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1136354
+      },
+      "writtenOn": "2019-01-10T22:23:02Z",
+      "side": 1,
+      "message": "basically desc is more descriptive than \"name\", and the \"desc\" is not used in metrics, but it is only used for tracer. In metrics, we matters how \"names\" belongs to which type as we need that info to populate the proto. You can think of the \"desc\" as \"name\" before this change.",
+      "parentUuid": "b7298a3a_77d75f73",
+      "revId": "17f2767724e7c7e8e2c4dcd595bd34b4de40f623",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
