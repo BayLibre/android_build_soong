@@ -16,6 +16,24 @@
       "revId": "7f67f48cbbd7a0c6079acb2d811ac85c47aaf356",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01e616d7_68c36e84",
+        "filename": "java/app.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-10T02:42:10Z",
+      "side": 1,
+      "message": "Sorry that I didn\u0027t answer to this comment before submitting.\n\nI would like to replace inherit-package with this. There might be unfulfilled requests right now but I think we can support them by extending the scheme like \u003cmodule_name\u003e:\u003cmanifest_name\u003e:\u003csome_prop\u003e:\u003csome_prop2\u003e ...",
+      "parentUuid": "d55f1e08_96d28672",
+      "revId": "7f67f48cbbd7a0c6079acb2d811ac85c47aaf356",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
