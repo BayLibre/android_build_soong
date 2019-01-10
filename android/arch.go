@@ -952,7 +952,7 @@ func decodeTargetProductVariables(config *config) (map[OsType][]Target, error) {
 			return
 		}
 
-		arch, err := decodeArch(archName, archVariant, cpuVariant, abi)
+		arch, err := decodeArch(archName, archVariant, cpuVariant, abi, os.Class)
 		if err != nil {
 			targetErr = err
 			return
@@ -1132,7 +1132,7 @@ func decodeArchSettings(archConfigs []archConfig) ([]Target, error) {
 
 	for _, config := range archConfigs {
 		arch, err := decodeArch(config.arch, &config.archVariant,
-			&config.cpuVariant, &config.abi)
+			&config.cpuVariant, &config.abi, Android.Class)
 		if err != nil {
 			return nil, err
 		}
@@ -1147,7 +1147,7 @@ func decodeArchSettings(archConfigs []archConfig) ([]Target, error) {
 }
 
 // Convert a set of strings from product variables into a single Arch struct
-func decodeArch(arch string, archVariant, cpuVariant *string, abi *[]string) (Arch, error) {
+func decodeArch(arch string, archVariant, cpuVariant *string, abi *[]string, class OsClass) (Arch, error) {
 	stringPtr := func(p *string) string {
 		if p != nil {
 			return *p
@@ -1190,7 +1190,7 @@ func decodeArch(arch string, archVariant, cpuVariant *string, abi *[]string) (Ar
 		}
 	}
 
-	if featureMap, ok := archFeatureMap[archType]; ok {
+	if featureMap, ok := archFeatureMap[archType]; ok && class != Host {
 		a.ArchFeatures = featureMap[a.ArchVariant]
 	}
 
