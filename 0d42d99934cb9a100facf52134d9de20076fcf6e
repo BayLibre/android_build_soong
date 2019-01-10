@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc399403_352f0285",
+        "filename": "android/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1193,
+      "author": {
+        "id": 1364646
+      },
+      "writtenOn": "2019-01-10T02:02:45Z",
+      "side": 1,
+      "message": "I\u0027m unsure about this. Should `HostCross` be treated the same? Is `class \u003d\u003d Device` more correct?",
+      "range": {
+        "startLine": 1193,
+        "startChar": 54,
+        "endLine": 1193,
+        "endChar": 67
+      },
+      "revId": "0d42d99934cb9a100facf52134d9de20076fcf6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
