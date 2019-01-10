@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d145a9fe_47f720d3",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-10T08:22:40Z",
+      "side": 1,
+      "message": "I think you need to export this via a new make variable (e.g. LOCAL_APPCOMPAT_LOG :\u003d out/soong/.intermediate/..../appcompat.log) which is then copied to the final directory in make.",
+      "range": {
+        "startLine": 289,
+        "startChar": 0,
+        "endLine": 289,
+        "endChar": 59
+      },
+      "revId": "be330dee45a54f5fd1b3931ec6cdae8c44e4cc5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
