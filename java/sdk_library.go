@@ -20,6 +20,7 @@ import (
 	"fmt"
 	"io"
 	"path"
+	"path/filepath"
 	"sort"
 	"strings"
 	"sync"
@@ -159,6 +160,10 @@ type sdkLibrary struct {
 	publicApiFilePath android.Path
 	systemApiFilePath android.Path
 	testApiFilePath   android.Path
+
+	// list of source files, collected from properties' Srcs and will be used
+	// by android.IDEInfo struct
+	srcFiles []string
 }
 
 func (module *sdkLibrary) DepsMutator(ctx android.BottomUpMutatorContext) {
@@ -212,6 +217,10 @@ func (module *sdkLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext)
 			}
 		}
 	})
+	// expand properties' Srcs data to module.srcFiles and will be used by android.IDEInfo struct
+	for _, src := range module.properties.Srcs {
+		module.srcFiles = append(module.srcFiles, ctx.GlobFiles(filepath.Join(ctx.ModuleDir(), src), nil).Strings()...)
+	}
 }
 
 func (module *sdkLibrary) AndroidMk() android.AndroidMkData {
@@ -629,6 +638,13 @@ func (module *sdkLibrary) ImplementationJars(linkType linkType) android.Paths {
 	} else {
 		return module.publicApiStubsImplPath
 	}
+}
+
+// Add compile time check for interface implementation
+var _ android.IDEInfo = (*sdkLibrary)(nil)
+
+func (module *sdkLibrary) IDEInfo(dpInfo *android.IdeInfo) {
+	dpInfo.Srcs = append(dpInfo.Jars, module.srcFiles...)
 }
 
 func javaSdkLibraries(config android.Config) *[]string {
