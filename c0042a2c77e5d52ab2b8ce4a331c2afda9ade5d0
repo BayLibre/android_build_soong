@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c232cff_3800d86b",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2019-01-11T19:09:48Z",
+      "side": 1,
+      "message": "It\u0027s actually clang-346389c, without \"r\"",
+      "revId": "c0042a2c77e5d52ab2b8ce4a331c2afda9ade5d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
