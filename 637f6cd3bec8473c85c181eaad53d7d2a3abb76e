@@ -39,6 +39,24 @@
       "revId": "637f6cd3bec8473c85c181eaad53d7d2a3abb76e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d4598e4_e5bf6b75",
+        "filename": "ui/build/goma.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1067895
+      },
+      "writtenOn": "2019-01-11T04:29:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cca62ded_c2ca4d68",
+      "revId": "637f6cd3bec8473c85c181eaad53d7d2a3abb76e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
