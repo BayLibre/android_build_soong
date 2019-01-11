@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a468607_9b70e308",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-11T03:54:39Z",
+      "side": 1,
+      "message": "This should be specific to the prebuilt cc types, not in BaseProperties",
+      "revId": "a5e75affb7d2f6a4c856b82854fda69fc3cdd77a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
