@@ -317,6 +317,8 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	if Bool(g.properties.Depfile) && !referencedDepfile {
 		ctx.PropertyErrorf("cmd", "specified depfile=true but did not include a reference to '${depfile}' in cmd")
+	} else if !Bool(g.properties.Depfile) && referencedDepfile {
+		ctx.PropertyErrorf("cmd", "depfile=false but did include a reference to '${depfile}' in cmd")
 	}
 
 	// tell the sbox command which directory to use as its sandbox root
