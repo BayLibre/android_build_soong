@@ -78,7 +78,8 @@ func (library *Library) AndroidMk() android.AndroidMkData {
 				if library.installFile == nil {
 					fmt.Fprintln(w, "LOCAL_UNINSTALLABLE_MODULE := true")
 				}
-				if library.dexJarFile != nil {
+				// Do not set SOONG_DEX_JAR when hostdex and compile_dex are set simultaneously.
+				if library.dexJarFile != nil && Bool(library.properties.Installable) {
 					fmt.Fprintln(w, "LOCAL_SOONG_DEX_JAR :=", library.dexJarFile.String())
 				}
 				fmt.Fprintln(w, "LOCAL_SOONG_HEADER_JAR :=", library.headerJarFile.String())
