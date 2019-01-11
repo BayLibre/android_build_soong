@@ -34,6 +34,24 @@
       "revId": "c0042a2c77e5d52ab2b8ce4a331c2afda9ade5d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6071dd20_a8a11604",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2019-01-11T21:54:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e2668eb_d56a6623",
+      "revId": "c0042a2c77e5d52ab2b8ce4a331c2afda9ade5d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
