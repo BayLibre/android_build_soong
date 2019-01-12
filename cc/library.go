@@ -646,6 +646,10 @@ func (library *libraryDecorator) linkShared(ctx ModuleContext,
 			linkerDeps = append(linkerDeps, forceWeakSymbols.Path())
 		}
 	}
+	if library.buildStubs() {
+		linkerScriptFlags := "-Wl,--version-script," + library.versionScriptPath.String()
+		flags.LdFlags = append(flags.LdFlags, linkerScriptFlags)
+	}
 
 	fileName := library.getLibName(ctx) + flags.Toolchain.ShlibSuffix()
 	outputFile := android.PathForModuleOut(ctx, fileName)
