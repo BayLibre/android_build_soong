@@ -34,6 +34,24 @@
       "revId": "64868047672622480f0ac3b0a49c8eafa499f4f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24ccd25a_98eac785",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-12T17:45:15Z",
+      "side": 1,
+      "message": "There has to be a dependency on the gen_stub_libs.py rule, and eventually we will need a dependency for every input file, so might as well add it now.",
+      "parentUuid": "ff8c2c22_53cd7aff",
+      "revId": "64868047672622480f0ac3b0a49c8eafa499f4f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
