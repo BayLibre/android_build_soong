@@ -22,6 +22,30 @@
       "revId": "4075b8e1041470a309f3a3a55d85f42f4d6b684e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74b18100_7f666c64",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2019-01-13T23:25:28Z",
+      "side": 1,
+      "message": "That might be incorrect. You should have a \"android.test.base\" like this,\n\"android.test.base\": {\n\t\"srcs\": [...]\n}",
+      "parentUuid": "59219f6d_1d75a15a",
+      "range": {
+        "startLine": 13,
+        "startChar": 2,
+        "endLine": 13,
+        "endChar": 42
+      },
+      "revId": "4075b8e1041470a309f3a3a55d85f42f4d6b684e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
