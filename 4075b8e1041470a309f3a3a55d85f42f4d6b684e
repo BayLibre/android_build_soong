@@ -46,6 +46,30 @@
       "revId": "4075b8e1041470a309f3a3a55d85f42f4d6b684e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab24427c_4cd36a3e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-14T20:26:36Z",
+      "side": 1,
+      "message": "java_sdk_library modules are a little weird, they create a few other modules.  The one with the sources ends up being called \"android.test.base.impl\".  I have a request to rename that main module to \"android.test.base\".",
+      "parentUuid": "74b18100_7f666c64",
+      "range": {
+        "startLine": 13,
+        "startChar": 2,
+        "endLine": 13,
+        "endChar": 42
+      },
+      "revId": "4075b8e1041470a309f3a3a55d85f42f4d6b684e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
