@@ -22,6 +22,30 @@
       "revId": "c2f9f9aab24c5d1873b97691c1b9bb0743a8c673",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa3ffe9a_40c07e49",
+        "filename": "cc/vndk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1349653
+      },
+      "writtenOn": "2019-01-14T18:14:29Z",
+      "side": 1,
+      "message": "That would mean the build file in a module doesn\u0027t entirely determine how the module is built. I\u0027m not sure if that is something we are okay with and if there is already precedence of this kind of behavior. Dan is probably the better person to answer this.",
+      "parentUuid": "18539a09_768e9627",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 31
+      },
+      "revId": "c2f9f9aab24c5d1873b97691c1b9bb0743a8c673",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
