@@ -19,6 +19,7 @@ import (
 	"android/soong/cc/config"
 	"fmt"
 	"strconv"
+	"strings"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
@@ -221,7 +222,7 @@ func (linker *baseLinker) linkerDeps(ctx DepsContext, deps Deps) Deps {
 		deps.WholeStaticLibs = removeListFromList(deps.WholeStaticLibs, linker.Properties.Target.Recovery.Exclude_static_libs)
 	}
 
-	if ctx.toolchain().Bionic() {
+	if ctx.toolchain().Bionic() && !strings.HasPrefix(ctx.ModuleName(), "libclang_rt.") {
 		// Allow individual projects to opt out of libcrt,builtins
 		// b/117565638
 		if !Bool(linker.Properties.No_libcrt) {
