@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18539a09_768e9627",
+        "filename": "cc/vndk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-14T09:22:22Z",
+      "side": 1,
+      "message": "I have an idea. Instead of having a per-module property and changing tens of projects here and there, can we have a single file with the names of modules that must use the vendor variant? I think that would be much more convenient to manage.\n\nWhat do you think, Dan, Victor?",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 31
+      },
+      "revId": "c2f9f9aab24c5d1873b97691c1b9bb0743a8c673",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
