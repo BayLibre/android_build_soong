@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86467fb2_1bbf1d00",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-14T20:33:25Z",
+      "side": 1,
+      "message": "Can this be system_shared_libs: [] in the libclang_rt.* definitions instead?",
+      "range": {
+        "startLine": 225,
+        "startChar": 29,
+        "endLine": 225,
+        "endChar": 84
+      },
+      "revId": "0483f60de9455705e3adaa39e212b65248190aa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e25c0ed6_c5f78a44",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-14T20:33:25Z",
+      "side": 0,
+      "message": "See aosp/730769 for some history here.\n\nIf you want to call baseLinker linkerDeps, make it explicit:\n\nfunc (p *prebuiltLibraryLinker) linkerDeps(ctx DepsContext, deps Deps) Deps {\n    return p.baseLinker.linkerDeps(ctx, deps)\n}",
+      "revId": "3f6cd491b6c7bd94f53e6a8bcd04645d5adb0710",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
