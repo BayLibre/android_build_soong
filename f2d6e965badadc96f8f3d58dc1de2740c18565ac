@@ -22,6 +22,46 @@
       "revId": "f2d6e965badadc96f8f3d58dc1de2740c18565ac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f486592b_cd519eca",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-15T21:49:44Z",
+      "side": 1,
+      "message": "Alternatively you could make this take a ctx and check ctx.Host() itself.",
+      "revId": "f2d6e965badadc96f8f3d58dc1de2740c18565ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e4246ad_f5b2fc49",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-15T21:49:44Z",
+      "side": 1,
+      "message": "!ctx.Host()",
+      "range": {
+        "startLine": 192,
+        "startChar": 4,
+        "endLine": 192,
+        "endChar": 41
+      },
+      "revId": "f2d6e965badadc96f8f3d58dc1de2740c18565ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
