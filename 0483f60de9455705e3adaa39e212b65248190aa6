@@ -70,6 +70,30 @@
       "revId": "0483f60de9455705e3adaa39e212b65248190aa6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8383fb6e_9b47bc7c",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-15T06:44:10Z",
+      "side": 1,
+      "message": "system_shared_libs: [] is supposed to be way to opt out of the default bionic libs, if it doesn\u0027t work we should fix it not add another one.",
+      "parentUuid": "3d6e74ad_4cbd6e3f",
+      "range": {
+        "startLine": 225,
+        "startChar": 29,
+        "endLine": 225,
+        "endChar": 84
+      },
+      "revId": "0483f60de9455705e3adaa39e212b65248190aa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
