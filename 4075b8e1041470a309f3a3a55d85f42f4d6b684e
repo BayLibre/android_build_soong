@@ -70,6 +70,30 @@
       "revId": "4075b8e1041470a309f3a3a55d85f42f4d6b684e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "629a9043_4c2b1380",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2019-01-15T07:15:20Z",
+      "side": 1,
+      "message": "Hi Colin, I don\u0027t get your point, \"android.test.base.impl\" and \"android.test.base\" both exist in module_bp_java_deps.json.",
+      "parentUuid": "ab24427c_4cd36a3e",
+      "range": {
+        "startLine": 13,
+        "startChar": 2,
+        "endLine": 13,
+        "endChar": 42
+      },
+      "revId": "4075b8e1041470a309f3a3a55d85f42f4d6b684e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
