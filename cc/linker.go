@@ -86,6 +86,10 @@ type BaseLinkerProperties struct {
 	// present in generated_headers.
 	Export_generated_headers []string `android:"arch_variant"`
 
+	// Whether to export any headers as -isystem instead of -I. Mainly for use by
+	// bionic/libc.
+	Export_headers_as_system *bool
+
 	// don't link in crt_begin and crt_end.  This flag should only be necessary for
 	// compiling crt or libc.
 	Nocrt *bool `android:"arch_variant"`

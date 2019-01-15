@@ -777,7 +777,11 @@ func (library *libraryDecorator) link(ctx ModuleContext,
 		out = library.linkShared(ctx, flags, deps, objs)
 	}
 
-	library.exportIncludes(ctx, "-I")
+	includePrefix := "-I"
+	if Bool(library.baseLinker.Properties.Export_headers_as_system) {
+		includePrefix = "-isystem "
+	}
+	library.exportIncludes(ctx, includePrefix)
 	library.reexportFlags(deps.ReexportedFlags)
 	library.reexportDeps(deps.ReexportedFlagsDeps)
 
