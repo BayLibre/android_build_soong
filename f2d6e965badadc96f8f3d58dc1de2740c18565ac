@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "16b48047_03c86381",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-15T22:24:52Z",
+      "side": 1,
+      "message": "I\u0027ve tried, but apex.go cannot have a dependency on ModuleContext (build complained of a circular dependency - I don\u0027t know go enough if that\u0027s easy to adjust?).",
+      "parentUuid": "f486592b_cd519eca",
+      "revId": "f2d6e965badadc96f8f3d58dc1de2740c18565ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6e4246ad_f5b2fc49",
         "filename": "cc/androidmk.go",
         "patchSetId": 2
@@ -53,6 +71,30 @@
       "writtenOn": "2019-01-15T21:49:44Z",
       "side": 1,
       "message": "!ctx.Host()",
+      "range": {
+        "startLine": 192,
+        "startChar": 4,
+        "endLine": 192,
+        "endChar": 41
+      },
+      "revId": "f2d6e965badadc96f8f3d58dc1de2740c18565ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe46be9e_2610ba30",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-15T22:24:52Z",
+      "side": 1,
+      "message": "I\u0027m getting:\nbuild/soong/cc/androidmk.go:192:9: ctx.Host undefined (type AndroidMkContext has no field or method Host)",
+      "parentUuid": "6e4246ad_f5b2fc49",
       "range": {
         "startLine": 192,
         "startChar": 4,
