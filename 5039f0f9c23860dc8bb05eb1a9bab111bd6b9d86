@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d939d14_afcfd2ce",
+        "filename": "ui/build/sandbox_linux.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-15T21:35:04Z",
+      "side": 1,
+      "message": "This confused me, does this mean \"allowed to use goma\", or \"goma might be used\"?",
+      "revId": "5039f0f9c23860dc8bb05eb1a9bab111bd6b9d86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57de99f7_d4eb12be",
+        "filename": "ui/build/sandbox_linux.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-15T21:35:04Z",
+      "side": 1,
+      "message": "Is this supposed to be either the google group or issuetracker?  If so, link to the google group?",
+      "revId": "5039f0f9c23860dc8bb05eb1a9bab111bd6b9d86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
