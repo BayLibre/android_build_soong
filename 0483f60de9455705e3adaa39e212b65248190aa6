@@ -94,6 +94,23 @@
       "revId": "0483f60de9455705e3adaa39e212b65248190aa6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "934e1bca_f835ad04",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-15T06:46:14Z",
+      "side": 1,
+      "message": "I think setting sdk_version: \"14\" is causing this check to skip setting systemSharedLibs, which results in using the defaults.",
+      "revId": "0483f60de9455705e3adaa39e212b65248190aa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
