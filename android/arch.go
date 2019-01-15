@@ -342,8 +342,11 @@ func archMutator(mctx BottomUpMutatorContext) {
 	}
 
 	var moduleTargets []Target
+	// jungjw: ???????
 	moduleMultiTargets := make(map[int][]Target)
+	// jungjw: ???????
 	primaryModules := make(map[int]bool)
+	// jungjw: Supported OS classes, e.g. {Host, HostCross, Device}
 	osClasses := base.OsClassSupported()
 
 	for _, os := range osTypeList {
@@ -357,6 +360,7 @@ func archMutator(mctx BottomUpMutatorContext) {
 			continue
 		}
 
+		// jungjw: Build config targets?
 		osTargets := mctx.Config().Targets[os]
 		if len(osTargets) == 0 {
 			continue
@@ -412,6 +416,7 @@ func archMutator(mctx BottomUpMutatorContext) {
 }
 
 func decodeMultilib(base *ModuleBase, class OsClass) (multilib, extraMultilib string) {
+	// jungjw: Try Android.bp settings first
 	switch class {
 	case Device:
 		multilib = String(base.commonProperties.Target.Android.Compile_multilib)
@@ -421,6 +426,7 @@ func decodeMultilib(base *ModuleBase, class OsClass) (multilib, extraMultilib st
 	if multilib == "" {
 		multilib = String(base.commonProperties.Compile_multilib)
 	}
+	// jungjw: Per-module type setting
 	if multilib == "" {
 		multilib = base.commonProperties.Default_multilib
 	}
@@ -430,6 +436,7 @@ func decodeMultilib(base *ModuleBase, class OsClass) (multilib, extraMultilib st
 	} else {
 		// For app modules a single arch variant will be created per OS class which is expected to handle all the
 		// selected arches.  Return the common-type as multilib and any Android.bp provided multilib as extraMultilib
+		// jungjw: i.e. modules configured by InitAndroidMultiTargetsArchModule
 		if multilib == base.commonProperties.Default_multilib {
 			multilib = "first"
 		}
@@ -695,7 +702,7 @@ func (a *ModuleBase) appendProperties(ctx BottomUpMutatorContext,
 
 	src = src.FieldByName(field)
 	if !src.IsValid() {
-		ctx.ModuleErrorf("field %q does not exist", srcPrefix)
+		ctx.ModuleErrorf("srcPrefix %q does not exist, field: %q", srcPrefix, field)
 		return src
 	}
 
