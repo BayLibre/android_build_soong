@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "d351f820_82bf5aa6",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1014807
+      },
+      "writtenOn": "2019-01-15T13:59:42Z",
+      "side": 1,
+      "message": "It turns out to be more complex than expected.  I split them into 5 CLs (across projects):\n\n[1] https://android-review.googlesource.com/c/platform/build/soong/+/871993/1\n[2] https://android-review.googlesource.com/c/platform/build/soong/+/871994/1\n[3] https://android-review.googlesource.com/c/platform/prebuilts/clang/host/linux-x86/+/872012\n[4] https://android-review.googlesource.com/c/platform/bionic/+/871992\n[5] https://android-review.googlesource.com/c/platform/system/core/+/871835",
+      "parentUuid": "8383fb6e_9b47bc7c",
+      "range": {
+        "startLine": 225,
+        "startChar": 29,
+        "endLine": 225,
+        "endChar": 84
+      },
+      "revId": "0483f60de9455705e3adaa39e212b65248190aa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "934e1bca_f835ad04",
         "filename": "cc/linker.go",
         "patchSetId": 2
