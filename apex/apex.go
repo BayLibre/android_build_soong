@@ -410,6 +410,10 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 				a.getImageVariation())
 		}
 
+		ctx.AddFarVariationDependencies([]blueprint.Variation{
+			{Mutator: "arch", Variation: target.String()},
+		}, prebuiltTag, a.properties.Prebuilts...)
+
 		switch target.Arch.ArchType.Multilib {
 		case "lib32":
 			// Add native modules targetting 32-bit ABI
@@ -442,10 +446,6 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 	ctx.AddFarVariationDependencies([]blueprint.Variation{
 		{Mutator: "arch", Variation: "android_common"},
 	}, javaLibTag, a.properties.Java_libs...)
-
-	ctx.AddFarVariationDependencies([]blueprint.Variation{
-		{Mutator: "arch", Variation: "android_common"},
-	}, prebuiltTag, a.properties.Prebuilts...)
 
 	if String(a.properties.Key) == "" {
 		ctx.ModuleErrorf("key is missing")

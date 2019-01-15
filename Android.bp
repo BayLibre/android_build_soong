@@ -46,6 +46,7 @@ bootstrap_go_package {
         "android/config.go",
         "android/defaults.go",
         "android/defs.go",
+        "android/devices.go",
         "android/expand.go",
         "android/filegroup.go",
         "android/hooks.go",
