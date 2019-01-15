@@ -46,6 +46,30 @@
       "revId": "0483f60de9455705e3adaa39e212b65248190aa6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d6e74ad_4cbd6e3f",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1014807
+      },
+      "writtenOn": "2019-01-15T01:12:50Z",
+      "side": 1,
+      "message": "Another alternative is to introduce another property (e.g. No_bionic_default_libs) to BaseLinkerProperties, and check it here.  How do you think?",
+      "parentUuid": "8cc6fcc4_a2c8d3a6",
+      "range": {
+        "startLine": 225,
+        "startChar": 29,
+        "endLine": 225,
+        "endChar": 84
+      },
+      "revId": "0483f60de9455705e3adaa39e212b65248190aa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
