@@ -19,7 +19,6 @@ import (
 	"android/soong/cc/config"
 	"fmt"
 	"strconv"
-	"strings"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
@@ -226,7 +225,7 @@ func (linker *baseLinker) linkerDeps(ctx DepsContext, deps Deps) Deps {
 		deps.WholeStaticLibs = removeListFromList(deps.WholeStaticLibs, linker.Properties.Target.Recovery.Exclude_static_libs)
 	}
 
-	if ctx.toolchain().Bionic() && !strings.HasPrefix(ctx.ModuleName(), "libclang_rt.") {
+	if ctx.toolchain().Bionic() {
 		// Allow individual projects to opt out of libcrt,builtins
 		// b/117565638
 		if !Bool(linker.Properties.No_libcrt) {
@@ -242,11 +241,11 @@ func (linker *baseLinker) linkerDeps(ctx DepsContext, deps Deps) Deps {
 			deps.LateStaticLibs = append(deps.LateStaticLibs, "libgcc")
 		}
 
-		var systemSharedLibs []string
-		if !ctx.useSdk() && !ctx.useVndk() {
-			systemSharedLibs = linker.Properties.System_shared_libs
-		}
+		systemSharedLibs := linker.Properties.System_shared_libs
 		if systemSharedLibs == nil {
+			// Provide a default system_shared_libs if it is unspecified. Note: If an
+			// empty list [] is specified, it implies that the module declines the
+			// default system_shared_libs.
 			systemSharedLibs = []string{"libc", "libm", "libdl"}
 		}
 
