@@ -60,6 +60,24 @@
     },
     {
       "key": {
+        "uuid": "2586267a_9252ade4",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-15T23:03:24Z",
+      "side": 1,
+      "message": "It should work, make sure you use ModuleContext and not android.ModuleContext because this is already in the android package.",
+      "parentUuid": "16b48047_03c86381",
+      "revId": "f2d6e965badadc96f8f3d58dc1de2740c18565ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6e4246ad_f5b2fc49",
         "filename": "cc/androidmk.go",
         "patchSetId": 2
