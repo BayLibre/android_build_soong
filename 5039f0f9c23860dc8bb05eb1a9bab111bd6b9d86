@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1269d6cf_3e7b09d7",
+        "filename": "ui/build/sandbox_linux.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-15T21:47:44Z",
+      "side": 1,
+      "message": "I switched it to DisableWhenUsingGoma, is that better?",
+      "parentUuid": "5d939d14_afcfd2ce",
+      "revId": "5039f0f9c23860dc8bb05eb1a9bab111bd6b9d86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "57de99f7_d4eb12be",
         "filename": "ui/build/sandbox_linux.go",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "5039f0f9c23860dc8bb05eb1a9bab111bd6b9d86",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84bfb01c_3402e7d3",
+        "filename": "ui/build/sandbox_linux.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-15T21:47:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57de99f7_d4eb12be",
+      "revId": "5039f0f9c23860dc8bb05eb1a9bab111bd6b9d86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
