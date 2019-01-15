@@ -111,6 +111,24 @@
       "revId": "0483f60de9455705e3adaa39e212b65248190aa6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4eaeb0c0_6211ef38",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1014807
+      },
+      "writtenOn": "2019-01-15T08:23:59Z",
+      "side": 1,
+      "message": "After further investigation [1], I feel that we don\u0027t need this special case.  The old code [2] do not special case this either.  We can (and should) always read system_shared_libs from `linker.Properties.System_shared_libs`.\n\nAccording to [2], build errors occurred in the past.  I\u0027ll try to see if we can fix it this time or not.\n\n[1] https://android-review.git.corp.google.com/c/platform/build/soong/+/839575/1/cc/linker.go#240\n[2] https://android-review.git.corp.google.com/c/platform/build/soong/+/461936/3/cc/linker.go",
+      "parentUuid": "934e1bca_f835ad04",
+      "revId": "0483f60de9455705e3adaa39e212b65248190aa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
