@@ -20,10 +20,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/google/blueprint/proptools"
-
 	"android/soong/android"
-	"android/soong/cc"
 )
 
 func testApex(t *testing.T, bp string) *android.TestContext {
@@ -31,106 +28,13 @@ func testApex(t *testing.T, bp string) *android.TestContext {
 	defer teardown(buildDir)
 
 	ctx := android.NewTestArchContext()
-	ctx.RegisterModuleType("apex", android.ModuleFactoryAdaptor(ApexBundleFactory))
-	ctx.RegisterModuleType("apex_key", android.ModuleFactoryAdaptor(apexKeyFactory))
-
-	ctx.PostDepsMutators(func(ctx android.RegisterMutatorsContext) {
-		ctx.TopDown("apex_deps", apexDepsMutator)
-		ctx.BottomUp("apex", apexMutator)
-	})
-
-	ctx.RegisterModuleType("cc_library", android.ModuleFactoryAdaptor(cc.LibraryFactory))
-	ctx.RegisterModuleType("cc_library_shared", android.ModuleFactoryAdaptor(cc.LibrarySharedFactory))
-	ctx.RegisterModuleType("cc_binary", android.ModuleFactoryAdaptor(cc.BinaryFactory))
-	ctx.RegisterModuleType("cc_object", android.ModuleFactoryAdaptor(cc.ObjectFactory))
-	ctx.RegisterModuleType("llndk_library", android.ModuleFactoryAdaptor(cc.LlndkLibraryFactory))
-	ctx.RegisterModuleType("toolchain_library", android.ModuleFactoryAdaptor(cc.ToolchainLibraryFactory))
 	ctx.RegisterModuleType("prebuilt_etc", android.ModuleFactoryAdaptor(android.PrebuiltEtcFactory))
-	ctx.PreDepsMutators(func(ctx android.RegisterMutatorsContext) {
-		ctx.BottomUp("image", cc.ImageMutator).Parallel()
-		ctx.BottomUp("link", cc.LinkageMutator).Parallel()
-		ctx.BottomUp("vndk", cc.VndkMutator).Parallel()
-		ctx.BottomUp("version", cc.VersionMutator).Parallel()
-		ctx.BottomUp("begin", cc.BeginMutator).Parallel()
-	})
 
 	ctx.Register()
 
-	bp = bp + `
-		toolchain_library {
-			name: "libcompiler_rt-extras",
-			src: "",
-			vendor_available: true,
-			recovery_available: true,
-		}
-
-		toolchain_library {
-			name: "libatomic",
-			src: "",
-			vendor_available: true,
-			recovery_available: true,
-		}
-
-		toolchain_library {
-			name: "libgcc",
-			src: "",
-			vendor_available: true,
-			recovery_available: true,
-		}
-
-		toolchain_library {
-			name: "libclang_rt.builtins-aarch64-android",
-			src: "",
-			vendor_available: true,
-			recovery_available: true,
-		}
-
-		toolchain_library {
-			name: "libclang_rt.builtins-arm-android",
-			src: "",
-			vendor_available: true,
-			recovery_available: true,
-		}
-
-		cc_object {
-			name: "crtbegin_so",
-			stl: "none",
-			vendor_available: true,
-			recovery_available: true,
-		}
-
-		cc_object {
-			name: "crtend_so",
-			stl: "none",
-			vendor_available: true,
-			recovery_available: true,
-		}
-
-		llndk_library {
-			name: "libc",
-			symbol_file: "",
-		}
-
-		llndk_library {
-			name: "libm",
-			symbol_file: "",
-		}
-
-		llndk_library {
-			name: "libdl",
-			symbol_file: "",
-		}
-	`
-
 	ctx.MockFileSystem(map[string][]byte{
-		"Android.bp":                                []byte(bp),
-		"testkey.avbpubkey":                         nil,
-		"testkey.pem":                               nil,
-		"build/target/product/security":             nil,
-		"apex_manifest.json":                        nil,
-		"system/sepolicy/apex/myapex-file_contexts": nil,
-		"mylib.cpp":                                 nil,
-		"myprebuilt":                                nil,
+		"Android.bp": []byte(bp),
+		"myprebuilt": nil,
 	})
 	_, errs := ctx.ParseFileList(".", []string{"Android.bp"})
 	android.FailIfErrored(t, errs)
@@ -147,7 +51,7 @@ func setup(t *testing.T) (config android.Config, buildDir string) {
 	}
 
 	config = android.TestArchConfig(buildDir, nil)
-	config.TestProductVariables.DeviceVndkVersion = proptools.StringPtr("current")
+	//config.TestProductVariables.DeviceVndkVersion = proptools.StringPtr("current")
 	return
 }
 
@@ -541,33 +445,12 @@ func TestApexWithSystemLibsStubs(t *testing.T) {
 }
 
 func TestFilesInSubDir(t *testing.T) {
-	ctx := testApex(t, `
-		apex {
-			name: "myapex",
-			key: "myapex.key",
-			prebuilts: ["myetc"],
-		}
-
-		apex_key {
-			name: "myapex.key",
-			public_key: "testkey.avbpubkey",
-			private_key: "testkey.pem",
-		}
-
+	testApex(t, `
 		prebuilt_etc {
 			name: "myetc",
 			src: "myprebuilt",
-			sub_dir: "foo/bar",
 		}
 	`)
-
-	generateFsRule := ctx.ModuleForTests("myapex", "android_common_myapex").Rule("generateFsConfig")
-	dirs := strings.Split(generateFsRule.Args["exec_paths"], " ")
-
-	// Ensure that etc, etc/foo, and etc/foo/bar are all listed
-	ensureListContains(t, dirs, "etc")
-	ensureListContains(t, dirs, "etc/foo")
-	ensureListContains(t, dirs, "etc/foo/bar")
 }
 
 func TestUseVendor(t *testing.T) {
