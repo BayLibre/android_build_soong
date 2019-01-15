@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2fc17eb9_e704d4fb",
+        "filename": "android/variable.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-15T06:10:32Z",
+      "side": 1,
+      "message": "Soong shouldn\u0027t be reading or writing Make\u0027s intermediates directories, so we don\u0027t pass paths like this to Soong.",
+      "revId": "68c82adf23e2daa5f528411aa217276df7ca2f92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ce9eb9c_1d028b29",
+        "filename": "java/app_builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-15T06:10:32Z",
+      "side": 1,
+      "message": "appcompat.sh seems to use this to read files from this directory:\n\n    --core-stubs\u003d${PACKAGING}/core_dex_intermediates/classes.dex:${PACKAGING}/oahl_dex_intermediates/classes.dex \\\n\nThere are no dependencies on these files, which means there is no guarantee that they are present when appcompat.sh is run, nor will appcompat.sh rerun of those files are changed.\n\nWe don\u0027t read Make intermediates from Soong, so you\u0027ll need to generate these files in Soong, add proper dependencies on them, and export the Soong locations to Make for use in appcompat-files and run-appcompat.",
+      "range": {
+        "startLine": 59,
+        "startChar": 5,
+        "endLine": 59,
+        "endChar": 51
+      },
+      "revId": "68c82adf23e2daa5f528411aa217276df7ca2f92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
