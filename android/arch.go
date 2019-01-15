@@ -679,7 +679,7 @@ func (a *ModuleBase) appendProperties(ctx BottomUpMutatorContext,
 
 	src = src.FieldByName(field)
 	if !src.IsValid() {
-		ctx.ModuleErrorf("field %q does not exist", srcPrefix)
+		ctx.ModuleErrorf("srcPrefix %q does not exist, field: %q", srcPrefix, field)
 		return src
 	}
 

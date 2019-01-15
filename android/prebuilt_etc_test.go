@@ -20,22 +20,19 @@ import (
 	"testing"
 )
 
-func testPrebuiltEtc(t *testing.T, bp string) *TestContext {
-	config, buildDir := setUp(t)
-	defer tearDown(buildDir)
+func testApex(t *testing.T, bp string) *TestContext {
+	config, buildDir := setup(t)
+	defer teardown(buildDir)
+
 	ctx := NewTestArchContext()
 	ctx.RegisterModuleType("prebuilt_etc", ModuleFactoryAdaptor(PrebuiltEtcFactory))
-	ctx.PreDepsMutators(func(ctx RegisterMutatorsContext) {
-		ctx.BottomUp("prebuilt_etc", prebuiltEtcMutator).Parallel()
-	})
+
 	ctx.Register()
-	mockFiles := map[string][]byte{
+
+	ctx.MockFileSystem(map[string][]byte{
 		"Android.bp": []byte(bp),
-		"foo.conf":   nil,
-		"bar.conf":   nil,
-		"baz.conf":   nil,
-	}
-	ctx.MockFileSystem(mockFiles)
+		"myprebuilt": nil,
+	})
 	_, errs := ctx.ParseFileList(".", []string{"Android.bp"})
 	FailIfErrored(t, errs)
 	_, errs = ctx.PrepareBuildActions(config)
@@ -44,8 +41,8 @@ func testPrebuiltEtc(t *testing.T, bp string) *TestContext {
 	return ctx
 }
 
-func setUp(t *testing.T) (config Config, buildDir string) {
-	buildDir, err := ioutil.TempDir("", "soong_prebuilt_etc_test")
+func setup(t *testing.T) (config Config, buildDir string) {
+	buildDir, err := ioutil.TempDir("", "soong_apex_test")
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -54,79 +51,15 @@ func setUp(t *testing.T) (config Config, buildDir string) {
 	return
 }
 
-func tearDown(buildDir string) {
+func teardown(buildDir string) {
 	os.RemoveAll(buildDir)
 }
 
-func TestPrebuiltEtcVariants(t *testing.T) {
-	ctx := testPrebuiltEtc(t, `
+func TestFilesInSubDir(t *testing.T) {
+	testApex(t, `
 		prebuilt_etc {
-			name: "foo.conf",
-			src: "foo.conf",
-		}
-		prebuilt_etc {
-			name: "bar.conf",
-			src: "bar.conf",
-			recovery_available: true,
-		}
-		prebuilt_etc {
-			name: "baz.conf",
-			src: "baz.conf",
-			recovery: true,
+			name: "myetc",
+			src: "myprebuilt",
 		}
 	`)
-
-	foo_variants := ctx.ModuleVariantsForTests("foo.conf")
-	if len(foo_variants) != 1 {
-		t.Errorf("expected 1, got %#v", foo_variants)
-	}
-
-	bar_variants := ctx.ModuleVariantsForTests("bar.conf")
-	if len(bar_variants) != 2 {
-		t.Errorf("expected 2, got %#v", bar_variants)
-	}
-
-	baz_variants := ctx.ModuleVariantsForTests("baz.conf")
-	if len(baz_variants) != 1 {
-		t.Errorf("expected 1, got %#v", bar_variants)
-	}
-}
-
-func TestPrebuiltEtcOutputPath(t *testing.T) {
-	ctx := testPrebuiltEtc(t, `
-		prebuilt_etc {
-			name: "foo.conf",
-			src: "foo.conf",
-			filename: "foo.installed.conf",
-		}
-	`)
-
-	p := ctx.ModuleForTests("foo.conf", "android_common_core").Module().(*PrebuiltEtc)
-	if p.outputFilePath.Base() != "foo.installed.conf" {
-		t.Errorf("expected foo.installed.conf, got %q", p.outputFilePath.Base())
-	}
-}
-
-func TestPrebuiltEtcGlob(t *testing.T) {
-	ctx := testPrebuiltEtc(t, `
-		prebuilt_etc {
-			name: "my_foo",
-			src: "foo.*",
-		}
-		prebuilt_etc {
-			name: "my_bar",
-			src: "bar.*",
-			filename_from_src: true,
-		}
-	`)
-
-	p := ctx.ModuleForTests("my_foo", "android_common_core").Module().(*PrebuiltEtc)
-	if p.outputFilePath.Base() != "my_foo" {
-		t.Errorf("expected my_foo, got %q", p.outputFilePath.Base())
-	}
-
-	p = ctx.ModuleForTests("my_bar", "android_common_core").Module().(*PrebuiltEtc)
-	if p.outputFilePath.Base() != "bar.conf" {
-		t.Errorf("expected bar.conf, got %q", p.outputFilePath.Base())
-	}
 }
