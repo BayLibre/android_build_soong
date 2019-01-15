@@ -189,9 +189,9 @@ func (library *libraryDecorator) AndroidMk(ctx AndroidMkContext, ret *android.An
 			}
 		})
 	}
-
-	if len(library.Properties.Stubs.Versions) > 0 && android.DirectlyInAnyApex(ctx.Name()) &&
-		!ctx.inRecovery() && !ctx.useVndk() && !ctx.static() {
+	if ctx.Target().Os.Class != android.Host && len(library.Properties.Stubs.Versions) > 0 &&
+		android.DirectlyInAnyApex(ctx.Name()) && !ctx.inRecovery() && !ctx.useVndk() &&
+		!ctx.static() {
 		if !library.buildStubs() {
 			ret.SubName = ".bootstrap"
 		}
