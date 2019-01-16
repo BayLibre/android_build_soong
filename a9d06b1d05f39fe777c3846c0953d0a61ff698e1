@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "553a0369_52741e66",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-16T22:52:14Z",
+      "side": 1,
+      "message": "A comment here shows up as user-facing documentation at go/Android.bp, which would need a clearer definition of \"misbehave\", and uses \"not set\" and not \"not nil\".  I\u0027d just comment below where the check was so we don\u0027t lose track of it",
+      "revId": "a9d06b1d05f39fe777c3846c0953d0a61ff698e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
