@@ -394,6 +394,10 @@ func (linker *baseLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 				flags.LdFlags = append(flags.LdFlags, "-Wl,-rpath,"+rpath_prefix+rpath)
 			}
 		}
+	} else {
+		if ctx.bootstrap() && !ctx.static() {
+			flags.LdFlags = append(flags.LdFlags, `-Wl,-rpath,/system/\$${LIB}/bootstrap`)
+		}
 	}
 
 	if ctx.useSdk() && (ctx.Arch().ArchType != android.Mips && ctx.Arch().ArchType != android.Mips64) {
