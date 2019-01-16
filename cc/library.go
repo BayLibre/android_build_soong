@@ -91,6 +91,13 @@ type LibraryProperties struct {
 	// binaries would be installed by default (in PRODUCT_PACKAGES) the other library will be removed
 	// from PRODUCT_PACKAGES.
 	Overrides []string
+
+	Header_abi_checker struct {
+		Symbol_file *string
+
+		Exclude_symbol_versions []string
+		Exclude_symbol_tags     []string
+	}
 }
 
 type LibraryMutatedProperties struct {
@@ -756,7 +763,10 @@ func (library *libraryDecorator) linkSAbiDumpFiles(ctx ModuleContext, objs Objec
 			SourceAbiFlags = append(SourceAbiFlags, reexportedInclude)
 		}
 		exportedHeaderFlags := strings.Join(SourceAbiFlags, " ")
-		library.sAbiOutputFile = TransformDumpToLinkedDump(ctx, objs.sAbiDumpFiles, soFile, fileName, exportedHeaderFlags)
+		library.sAbiOutputFile = TransformDumpToLinkedDump(ctx, objs.sAbiDumpFiles, soFile, fileName, exportedHeaderFlags,
+			android.OptionalPathForModuleSrc(ctx, library.Properties.Header_abi_checker.Symbol_file),
+			library.Properties.Header_abi_checker.Exclude_symbol_versions,
+			library.Properties.Header_abi_checker.Exclude_symbol_tags)
 
 		refAbiDumpFile := getRefAbiDumpFile(ctx, vndkVersion, fileName)
 		if refAbiDumpFile != nil {
