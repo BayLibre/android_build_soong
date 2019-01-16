@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a6c49b1_b675c70c",
+        "filename": "python/androidmk.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-16T21:56:13Z",
+      "side": 1,
+      "message": "This seems like something that should be encoded the launcher module.",
+      "revId": "9cd49c147767e30f65bff5f4fe06f22976df9522",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
