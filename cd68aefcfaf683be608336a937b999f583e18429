@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f86edd83_b471f600",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-01-16T19:18:46Z",
+      "side": 1,
+      "message": "nit: it seems like it would be nice to have a couple of functions on moduleContextImpl: isLlNdk, isVndkPrivate, etc... For instance, it\u0027s not clear that this means \u0027isLlNdkPrivate\u0027, but if you had a function \u0027isLlNdkPublic \u003d isLlNdk \u0026\u0026 !isVndkPrivate\u0027, then it would be more clear/self-documenting.",
+      "range": {
+        "startLine": 648,
+        "startChar": 1,
+        "endLine": 648,
+        "endChar": 103
+      },
+      "revId": "cd68aefcfaf683be608336a937b999f583e18429",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6d87eee_1b7df422",
         "filename": "cc/cc.go",
         "patchSetId": 1
