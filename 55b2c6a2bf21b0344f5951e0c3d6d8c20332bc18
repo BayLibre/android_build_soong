@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fc2fc52_22e90042",
+        "filename": "android/devices.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-16T22:50:13Z",
+      "side": 1,
+      "message": "This doesn\u0027t need the extra indirection of RegisterArchFeatures or RegisterArchVariantFeatures any more, it can be:\n\nvar archFeatures \u003d map[ArchType][]string{\n    Arm: []string {\n        \"neon\",\n    },\n    ...\n}",
+      "revId": "55b2c6a2bf21b0344f5951e0c3d6d8c20332bc18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
