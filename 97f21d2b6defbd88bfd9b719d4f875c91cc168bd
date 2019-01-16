@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce981201_48caee8e",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1019,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-16T22:04:14Z",
+      "side": 1,
+      "message": "You can use Bool(variables.Fuschia) here",
+      "range": {
+        "startLine": 1019,
+        "startChar": 5,
+        "endLine": 1019,
+        "endChar": 51
+      },
+      "revId": "97f21d2b6defbd88bfd9b719d4f875c91cc168bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
