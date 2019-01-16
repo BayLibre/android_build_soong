@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "014df6bf_55270114",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-16T17:19:40Z",
+      "side": 1,
+      "message": "instead of doing this, can we use cc_prebuilt_library_shared, etc.?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 47
+      },
+      "revId": "e41954ee8b508cdb0ad9e77ef913ca3c6da44b13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9680401b_9b25ab4a",
+        "filename": "android/devices.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-16T17:19:40Z",
+      "side": 1,
+      "message": "I am neutral to this refactoring, but shouldn\u0027t we make this a separate CL?",
+      "revId": "e41954ee8b508cdb0ad9e77ef913ca3c6da44b13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
