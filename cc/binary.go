@@ -384,6 +384,9 @@ func (binary *binaryDecorator) link(ctx ModuleContext,
 }
 
 func (binary *binaryDecorator) install(ctx ModuleContext, file android.Path) {
+	if android.DirectlyInAnyApex(ctx, ctx.ModuleName()) && ctx.ModuleName() == "linker" && !ctx.inRecovery() {
+		binary.baseInstaller.subDir = "bootstrap"
+	}
 	binary.baseInstaller.install(ctx, file)
 	for _, symlink := range binary.Properties.Symlinks {
 		binary.symlinks = append(binary.symlinks,
