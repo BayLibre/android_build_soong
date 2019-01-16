@@ -45,6 +45,30 @@
       "revId": "72635cc835812c8cf40a1d74f1630a8194a369d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fef2248e_77d2a876",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 877,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-16T09:30:36Z",
+      "side": 1,
+      "message": "Leftover, removed.",
+      "parentUuid": "60895e7c_a0892af7",
+      "range": {
+        "startLine": 877,
+        "startChar": 5,
+        "endLine": 877,
+        "endChar": 16
+      },
+      "revId": "72635cc835812c8cf40a1d74f1630a8194a369d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

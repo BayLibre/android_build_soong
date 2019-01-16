@@ -113,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "c0feef09_46032839",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-16T09:30:36Z",
+      "side": 1,
+      "message": "Done, though I probably need more guidance as I couldn\u0027t use ctx.Host() below :)",
+      "parentUuid": "8d72b4a7_c86d7bc0",
+      "revId": "f2d6e965badadc96f8f3d58dc1de2740c18565ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e4246ad_f5b2fc49",
         "filename": "cc/androidmk.go",
         "patchSetId": 2
