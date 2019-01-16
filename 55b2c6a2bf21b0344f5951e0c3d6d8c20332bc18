@@ -16,6 +16,24 @@
       "revId": "55b2c6a2bf21b0344f5951e0c3d6d8c20332bc18",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "361033b0_5521c013",
+        "filename": "android/devices.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-01-16T23:10:27Z",
+      "side": 1,
+      "message": "Thanks for the tip. Do you think it make sense to add init function to arch.go and handle archFeatures initialization there instead?",
+      "parentUuid": "8fc2fc52_22e90042",
+      "revId": "55b2c6a2bf21b0344f5951e0c3d6d8c20332bc18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
