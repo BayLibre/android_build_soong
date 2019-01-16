@@ -249,7 +249,11 @@ func (binary *binaryDecorator) linkerFlags(ctx ModuleContext, flags Flags) Flags
 				} else {
 					switch ctx.Os() {
 					case android.Android:
-						flags.DynamicLinker = "/system/bin/linker"
+						if ctx.bootstrap() && !ctx.inRecovery() {
+							flags.DynamicLinker = "/system/bin/bootstrap/linker"
+						} else {
+							flags.DynamicLinker = "/system/bin/linker"
+						}
 						if flags.Toolchain.Is64Bit() {
 							flags.DynamicLinker += "64"
 						}
@@ -384,7 +388,7 @@ func (binary *binaryDecorator) link(ctx ModuleContext,
 }
 
 func (binary *binaryDecorator) install(ctx ModuleContext, file android.Path) {
-	if android.DirectlyInAnyApex(ctx.ModuleName()) && ctx.ModuleName() == "linker" {
+	if android.DirectlyInAnyApex(ctx, ctx.ModuleName()) && ctx.ModuleName() == "linker" {
 		binary.baseInstaller.subDir = "bootstrap"
 	}
 	binary.baseInstaller.install(ctx, file)
