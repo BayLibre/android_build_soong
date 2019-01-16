@@ -213,6 +213,7 @@ var (
 	LinuxBionic = NewOsType("linux_bionic", Host, false)
 	Windows     = NewOsType("windows", HostCross, true)
 	Android     = NewOsType("android", Device, false)
+	Fuchsia     = NewOsType("fuchsia", Device, false)
 
 	osArchTypeMap = map[OsType][]ArchType{
 		Linux:       []ArchType{X86, X86_64},
@@ -220,6 +221,7 @@ var (
 		Darwin:      []ArchType{X86_64},
 		Windows:     []ArchType{X86, X86_64},
 		Android:     []ArchType{Arm, Arm64, Mips, Mips64, X86, X86_64},
+		Fuchsia:     []ArchType{Arm64, X86_64},
 	}
 )
 
@@ -1013,7 +1015,12 @@ func decodeTargetProductVariables(config *config) (map[OsType][]Target, error) {
 	}
 
 	if variables.DeviceArch != nil && *variables.DeviceArch != "" {
-		addTarget(Android, *variables.DeviceArch, variables.DeviceArchVariant,
+		var target = Android
+		if variables.Fuchsia != nil && *variables.Fuchsia {
+			target = Fuchsia
+		}
+
+		addTarget(target, *variables.DeviceArch, variables.DeviceArchVariant,
 			variables.DeviceCpuVariant, variables.DeviceAbi)
 
 		if variables.DeviceSecondaryArch != nil && *variables.DeviceSecondaryArch != "" {
