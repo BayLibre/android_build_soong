@@ -863,7 +863,7 @@ func (library *libraryDecorator) install(ctx ModuleContext, file android.Path) {
 					library.baseInstaller.subDir += "-" + vndkVersion
 				}
 			}
-		} else if len(library.Properties.Stubs.Versions) > 0 && android.DirectlyInAnyApex(ctx.ModuleName()) {
+		} else if len(library.Properties.Stubs.Versions) > 0 && android.DirectlyInAnyApex(ctx, ctx.ModuleName()) {
 			if !library.buildStubs() && !ctx.inRecovery() {
 				library.baseInstaller.subDir = "bootstrap"
 			}
