@@ -261,6 +261,7 @@ type ModuleContextIntf interface {
 	isApex() bool
 	hasStubsVariants() bool
 	isStubs() bool
+	bootstrap() bool
 }
 
 type ModuleContext interface {
@@ -561,6 +562,10 @@ func (c *Module) HasStubsVariants() bool {
 	return false
 }
 
+func (c *Module) bootstrap() bool {
+	return Bool(c.Properties.Bootstrap)
+}
+
 type baseModuleContext struct {
 	android.BaseContext
 	moduleContextImpl
@@ -725,6 +730,10 @@ func (ctx *moduleContextImpl) hasStubsVariants() bool {
 
 func (ctx *moduleContextImpl) isStubs() bool {
 	return ctx.mod.IsStubs()
+}
+
+func (ctx *moduleContextImpl) bootstrap() bool {
+	return ctx.mod.bootstrap()
 }
 
 func newBaseModule(hod android.HostOrDeviceSupported, multilib android.Multilib) *Module {
@@ -1510,7 +1519,7 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 					// If not building for APEX, use stubs only when it is from
 					// an APEX (and not from platform)
 					useThisDep = (depInPlatform != depIsStubs)
-					if c.inRecovery() || Bool(c.Properties.Bootstrap) {
+					if c.inRecovery() || c.bootstrap() {
 						// However, for recovery or bootstrap modules,
 						// always link to non-stub variant
 						useThisDep = !depIsStubs
