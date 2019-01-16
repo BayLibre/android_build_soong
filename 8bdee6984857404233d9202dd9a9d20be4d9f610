@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e9d4d8c_e62feba6",
+        "filename": "android/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-16T22:00:25Z",
+      "side": 1,
+      "message": "You can create a new interface here, either:\n\ntype hostContext interface {\n    Host() bool\n}\n\nfunc DirectlyInAnyApex(ctx hostContext, moduleName string) bool {\n\nor:\n\nfunc DirectlyInAnyApex(ctx interface { Host() bool }, moduleName string) bool {",
+      "revId": "8bdee6984857404233d9202dd9a9d20be4d9f610",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
