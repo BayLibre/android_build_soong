@@ -642,10 +642,10 @@ func (ctx *moduleContextImpl) shouldCreateVndkSourceAbiDump() bool {
 		// APEX variants do not need ABI dumps.
 		return false
 	}
-	if inList(ctx.baseModuleName(), llndkLibraries) {
+	if inList(ctx.baseModuleName(), ndkMigratedLibs) {
 		return true
 	}
-	if inList(ctx.baseModuleName(), ndkMigratedLibs) {
+	if inList(ctx.baseModuleName(), llndkLibraries) && !inList(ctx.baseModuleName(), vndkPrivateLibraries) {
 		return true
 	}
 	if ctx.useVndk() && ctx.isVndk() {
