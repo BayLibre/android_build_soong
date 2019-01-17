@@ -34,6 +34,24 @@
       "revId": "55b2c6a2bf21b0344f5951e0c3d6d8c20332bc18",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9457e79d_357c84fb",
+        "filename": "android/devices.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-01-17T02:39:31Z",
+      "side": 1,
+      "message": "Done as discussed offline. (Putting everything in the variable definitions)",
+      "parentUuid": "361033b0_5521c013",
+      "revId": "55b2c6a2bf21b0344f5951e0c3d6d8c20332bc18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
