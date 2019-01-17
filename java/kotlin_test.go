@@ -80,3 +80,50 @@ func TestKotlin(t *testing.T) {
 			bazHeaderJar.Output.String(), barKotlinc.Implicits.Strings())
 	}
 }
+
+func TestKapt(t *testing.T) {
+	ctx := testJava(t, `
+		java_library {
+			name: "foo",
+			srcs: ["a.java", "b.kt"],
+			annotation_processors: ["bar"],
+		}
+
+		java_library_host {
+			name: "bar",
+		}
+		`)
+
+	kapt := ctx.ModuleForTests("foo", "android_common").Rule("kapt")
+	kotlinc := ctx.ModuleForTests("foo", "android_common").Rule("kotlinc")
+	javac := ctx.ModuleForTests("foo", "android_common").Rule("javac")
+
+	// Test that the kotlin and java sources are passed to kapt and kotlinc
+	if len(kapt.Inputs) != 2 || kapt.Inputs[0].String() != "a.java" || kapt.Inputs[1].String() != "b.kt" {
+		t.Errorf(`foo kapt inputs %v != ["a.java", "b.kt"]`, kapt.Inputs)
+	}
+	if len(kotlinc.Inputs) != 2 || kotlinc.Inputs[0].String() != "a.java" || kotlinc.Inputs[1].String() != "b.kt" {
+		t.Errorf(`foo kotlinc inputs %v != ["a.java", "b.kt"]`, kotlinc.Inputs)
+	}
+
+	// Test that only the java sources are passed to javac
+	if len(javac.Inputs) != 1 || javac.Inputs[0].String() != "a.java" {
+		t.Errorf(`foo inputs %v != ["a.java"]`, javac.Inputs)
+	}
+
+	// Test that the kapt srcjar is a dependency of kotlinc and javac rules
+	if !inList(kapt.Output.String(), kotlinc.Implicits.Strings()) {
+		t.Errorf("expected %q in kotlinc implicits %v", kapt.Output.String(), kotlinc.Implicits.Strings())
+	}
+	if !inList(kapt.Output.String(), javac.Implicits.Strings()) {
+		t.Errorf("expected %q in javac implicits %v", kapt.Output.String(), javac.Implicits.Strings())
+	}
+
+	// Test that the kapt srcjar is extracted by the kotlinc and javac rules
+	if kotlinc.Args["srcJars"] != kapt.Output.String() {
+		t.Errorf("expected %q in kotlinc srcjars %v", kapt.Output.String(), kotlinc.Args["srcJars"])
+	}
+	if javac.Args["srcJars"] != kapt.Output.String() {
+		t.Errorf("expected %q in javac srcjars %v", kapt.Output.String(), kotlinc.Args["srcJars"])
+	}
+}

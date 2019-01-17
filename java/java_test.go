@@ -953,3 +953,51 @@ func TestPatchModule(t *testing.T) {
 		checkPatchModuleFlag(t, ctx, "baz", expected)
 	})
 }
+
+func TestKaptEncodeFlags(t *testing.T) {
+	tests := []struct {
+		in  [][2]string
+		out string
+	}{
+		{
+			in: [][2]string{
+				{"-source", "1.8"},
+				{"-target", "1.8"},
+			},
+			out: "rO0ABXcgAAAAAgAHLXNvdXJjZQADMS44AActdGFyZ2V0AAMxLjg=",
+		},
+		{
+			in: [][2]string{
+				{"-source", "1.8"},
+				{"-target", "1.8"},
+				{"a", strings.Repeat("b", 218)},
+			},
+			out: "rO0ABXf/AAAAAwAHLXNvdXJjZQADMS44AActdGFyZ2V0AAMxLjgAAWEA2mJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJi",
+		},
+		{
+			in: [][2]string{
+				{"-source", "1.8"},
+				{"-target", "1.8"},
+				{"a", strings.Repeat("b", 219)},
+			},
+			out: "rO0ABXoAAAEAAAAAAwAHLXNvdXJjZQADMS44AActdGFyZ2V0AAMxLjgAAWEA22JiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYg==",
+		},
+		{
+			in: [][2]string{
+				{"-source", "1.8"},
+				{"-target", "1.8"},
+				{"a", strings.Repeat("b", 220)},
+			},
+			out: "rO0ABXoAAAEBAAAAAwAHLXNvdXJjZQADMS44AActdGFyZ2V0AAMxLjgAAWEA3GJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmJiYmI=",
+		},
+	}
+
+	for i, test := range tests {
+		t.Run(strconv.Itoa(i), func(t *testing.T) {
+			got := kaptEncodeFlags(test.in)
+			if got != test.out {
+				t.Errorf("\nwant %q\n got %q", test.out, got)
+			}
+		})
+	}
+}

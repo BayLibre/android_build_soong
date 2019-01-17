@@ -973,6 +973,15 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars ...android.Path
 		flags.kotlincClasspath = append(flags.kotlincClasspath, deps.kotlinStdlib...)
 		flags.kotlincClasspath = append(flags.kotlincClasspath, deps.classpath...)
 
+		if len(flags.processorPath) > 0 {
+			// Use kapt for annotation processing
+			kaptSrcJar := android.PathForModuleOut(ctx, "kapt", "kapt-sources.jar")
+			kotlinKapt(ctx, kaptSrcJar, kotlinSrcFiles, srcJars, flags)
+			srcJars = append(srcJars, kaptSrcJar)
+			// Disable annotation processing in javac, it's already been handled by kapt
+			flags.javacFlags += " -proc:none"
+		}
+
 		kotlinJar := android.PathForModuleOut(ctx, "kotlin", jarName)
 		kotlinCompile(ctx, kotlinJar, kotlinSrcFiles, srcJars, flags)
 		if ctx.Failed() {
