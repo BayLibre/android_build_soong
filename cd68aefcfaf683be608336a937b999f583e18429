@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "472161ea_125cac4a",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1014807
+      },
+      "writtenOn": "2019-01-17T11:56:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f86edd83_b471f600",
+      "range": {
+        "startLine": 648,
+        "startChar": 1,
+        "endLine": 648,
+        "endChar": 103
+      },
+      "revId": "cd68aefcfaf683be608336a937b999f583e18429",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6d87eee_1b7df422",
         "filename": "cc/cc.go",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "Yes.  I think so although the mapping is less intuitive.",
       "parentUuid": "e6d87eee_1b7df422",
+      "range": {
+        "startLine": 652,
+        "startChar": 0,
+        "endLine": 653,
+        "endChar": 18
+      },
+      "revId": "cd68aefcfaf683be608336a937b999f583e18429",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3cb768c7_0824121d",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1014807
+      },
+      "writtenOn": "2019-01-17T11:56:09Z",
+      "side": 1,
+      "message": "Revised the logic in PS#3 so that it looks more intuitive.",
+      "parentUuid": "f6a73d11_c19455bd",
       "range": {
         "startLine": 652,
         "startChar": 0,
