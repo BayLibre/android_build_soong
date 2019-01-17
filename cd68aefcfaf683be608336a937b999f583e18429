@@ -117,6 +117,30 @@
       "revId": "cd68aefcfaf683be608336a937b999f583e18429",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d647db21_41713fa0",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-01-17T15:23:25Z",
+      "side": 1,
+      "message": "Thanks! It\u0027s much more readable indeed. :)",
+      "parentUuid": "3cb768c7_0824121d",
+      "range": {
+        "startLine": 652,
+        "startChar": 0,
+        "endLine": 653,
+        "endChar": 18
+      },
+      "revId": "cd68aefcfaf683be608336a937b999f583e18429",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
