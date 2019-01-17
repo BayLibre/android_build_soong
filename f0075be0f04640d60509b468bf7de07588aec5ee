@@ -16,6 +16,23 @@
       "revId": "f0075be0f04640d60509b468bf7de07588aec5ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f515cc2_96663ec7",
+        "filename": "java/hiddenapi.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-17T14:50:31Z",
+      "side": 1,
+      "message": "Missing copyright",
+      "revId": "f0075be0f04640d60509b468bf7de07588aec5ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
