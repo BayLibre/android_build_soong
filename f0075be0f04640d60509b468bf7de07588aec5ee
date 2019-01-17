@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ae9e7a8b_a9c183f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-01-17T15:52:35Z",
+      "side": 1,
+      "message": "1) out/target/common/obj/PACKAGING/hiddenapi-flags.csv hasn\u0027t changed (tracked automatically from artifacts, so we\u0027d notice a problem)\n2) cts/tests/signature/runSignatureTests.sh",
+      "parentUuid": "fbdb3e12_2f4402f8",
+      "revId": "f0075be0f04640d60509b468bf7de07588aec5ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8f515cc2_96663ec7",
         "filename": "java/hiddenapi.go",
         "patchSetId": 7
@@ -30,6 +48,29 @@
       "writtenOn": "2019-01-17T14:50:31Z",
       "side": 1,
       "message": "Missing copyright",
+      "revId": "f0075be0f04640d60509b468bf7de07588aec5ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "757a84b2_67d9bb53",
+        "filename": "java/hiddenapi.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-01-17T15:52:35Z",
+      "side": 1,
+      "message": "Feel free to add a TODO for me to make this part of the dex rule so we don\u0027t have to unzip/rezip anymore",
+      "range": {
+        "startLine": 50,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 26
+      },
       "revId": "f0075be0f04640d60509b468bf7de07588aec5ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
