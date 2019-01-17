@@ -16,6 +16,24 @@
       "revId": "82985178b378e60b18592bcb1aec0bd27b71c43e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cf71091_0330ae36",
+        "filename": "cc/vndk_prebuilt.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1014807
+      },
+      "writtenOn": "2019-01-17T12:06:10Z",
+      "side": 1,
+      "message": "It is read by `module.AddProperties(...)` on Line 166-168.",
+      "parentUuid": "cf65133b_f3dda8ab",
+      "revId": "82985178b378e60b18592bcb1aec0bd27b71c43e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
