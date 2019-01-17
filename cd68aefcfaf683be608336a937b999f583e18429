@@ -45,6 +45,30 @@
       "revId": "cd68aefcfaf683be608336a937b999f583e18429",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6a73d11_c19455bd",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1014807
+      },
+      "writtenOn": "2019-01-17T02:29:37Z",
+      "side": 1,
+      "message": "Yes.  I think so although the mapping is less intuitive.",
+      "parentUuid": "e6d87eee_1b7df422",
+      "range": {
+        "startLine": 652,
+        "startChar": 0,
+        "endLine": 653,
+        "endChar": 18
+      },
+      "revId": "cd68aefcfaf683be608336a937b999f583e18429",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
