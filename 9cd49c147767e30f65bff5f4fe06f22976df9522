@@ -16,6 +16,24 @@
       "revId": "9cd49c147767e30f65bff5f4fe06f22976df9522",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95b9ff09_4c9e38e6",
+        "filename": "python/androidmk.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1014807
+      },
+      "writtenOn": "2019-01-17T12:22:03Z",
+      "side": 1,
+      "message": "It seems that py_test (and its launcher) is very different from cc_library (or other cc_*).  It does not have a linker in android.Module.  I have no idea how to do so.  May you provide some pointers?  Thanks.",
+      "parentUuid": "8a6c49b1_b675c70c",
+      "revId": "9cd49c147767e30f65bff5f4fe06f22976df9522",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
