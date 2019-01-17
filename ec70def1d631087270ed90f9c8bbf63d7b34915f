@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "edac1782_d213520c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-17T21:23:27Z",
+      "side": 1,
+      "message": "Can you combine \"deps\" and \"cov\" into a single \"cov\" variation, which I think removes the need for resolveCoverageAndAddVariationDep?  Then dependency resolution is simple, because it\u0027s always \"cov\"-\u003e\"cov\", and use COVERAGE_PATHS to determine whether the \"cov\" variation builds with coverage.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 55
+      },
+      "revId": "ec70def1d631087270ed90f9c8bbf63d7b34915f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d652f7ac_c2163aa2",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-17T21:23:27Z",
+      "side": 1,
+      "message": "compiler should never be nil here if the type of c.compiler is *stubDecorator, that would imply someone set c.compiler to (*stubDecorator)(nil).  If c.compiler is nil then the type check won\u0027t return true.",
+      "revId": "ec70def1d631087270ed90f9c8bbf63d7b34915f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "248f52d5_407de5cc",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1098,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-17T21:23:27Z",
+      "side": 1,
+      "message": "This is unnecessary, \"\" is the zero value for string",
+      "revId": "ec70def1d631087270ed90f9c8bbf63d7b34915f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc88da82_063e575a",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1107,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-17T21:23:27Z",
+      "side": 1,
+      "message": "More idiomatic would be:\n\nnewVariations :\u003d append([]blueprint.Variation(nil), variations...)",
+      "range": {
+        "startLine": 1106,
+        "startChar": 0,
+        "endLine": 1107,
+        "endChar": 35
+      },
+      "revId": "ec70def1d631087270ed90f9c8bbf63d7b34915f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a80f1f5_4a0dda88",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1134,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-17T21:23:27Z",
+      "side": 1,
+      "message": "Why is this one not a literal struct like line 1122?",
+      "range": {
+        "startLine": 1132,
+        "startChar": 0,
+        "endLine": 1134,
+        "endChar": 0
+      },
+      "revId": "ec70def1d631087270ed90f9c8bbf63d7b34915f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c4590ff_7353e235",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1140,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-17T21:23:27Z",
+      "side": 1,
+      "message": "Why is this one not a literal struct like line 1122?",
+      "revId": "ec70def1d631087270ed90f9c8bbf63d7b34915f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecc2f641_93acd0e5",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1198,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-17T21:23:27Z",
+      "side": 1,
+      "message": "This creates a slice with len(thisVariations) zero values in it, and then you\u0027ll append more values onto the end.  If you really wan\u0027t to pre-size it, use 0 for len and len(thisVariations) for cap.",
+      "revId": "ec70def1d631087270ed90f9c8bbf63d7b34915f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e89ca6c6_a51b15cb",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1206,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-17T21:23:27Z",
+      "side": 1,
+      "message": "This might be worth extracting to a helper function in the android package that removes a mutator from a Variation list.",
+      "range": {
+        "startLine": 1199,
+        "startChar": 0,
+        "endLine": 1206,
+        "endChar": 0
+      },
+      "revId": "ec70def1d631087270ed90f9c8bbf63d7b34915f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
