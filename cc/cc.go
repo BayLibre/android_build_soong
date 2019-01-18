@@ -767,6 +767,15 @@ func (c *Module) Name() string {
 	return name
 }
 
+func (c *Module) SymlinkPreferredArch() bool {
+	if p, ok := c.installer.(interface {
+		symlinkPreferredArch() bool
+	}); ok {
+		return p.symlinkPreferredArch()
+	}
+	return false
+}
+
 // orderDeps reorders dependencies into a list such that if module A depends on B, then
 // A will precede B in the resultant list.
 // This is convenient for passing into a linker.

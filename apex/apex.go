@@ -102,12 +102,13 @@ type dependencyTag struct {
 }
 
 var (
-	sharedLibTag   = dependencyTag{name: "sharedLib"}
-	executableTag  = dependencyTag{name: "executable"}
-	javaLibTag     = dependencyTag{name: "javaLib"}
-	prebuiltTag    = dependencyTag{name: "prebuilt"}
-	keyTag         = dependencyTag{name: "key"}
-	certificateTag = dependencyTag{name: "certificate"}
+	sharedLibTag           = dependencyTag{name: "sharedLib"}
+	primaryExecutableTag   = dependencyTag{name: "primaryExecutable"}
+	secondaryExecutableTag = dependencyTag{name: "secondaryExecutable"}
+	javaLibTag             = dependencyTag{name: "javaLib"}
+	prebuiltTag            = dependencyTag{name: "prebuilt"}
+	keyTag                 = dependencyTag{name: "key"}
+	certificateTag         = dependencyTag{name: "certificate"}
 )
 
 func init() {
@@ -333,6 +334,7 @@ type apexFile struct {
 	installDir string
 	class      apexFileClass
 	module     android.Module
+	symlink    *string
 }
 
 type apexBundle struct {
@@ -354,7 +356,7 @@ type apexBundle struct {
 }
 
 func addDependenciesForNativeModules(ctx android.BottomUpMutatorContext,
-	native_shared_libs []string, binaries []string, arch string, imageVariation string) {
+	native_shared_libs []string, binaries []string, arch string, imageVariation string, isPrimaryAbi bool) {
 	// Use *FarVariation* to be able to depend on modules having
 	// conflicting variations with this module. This is required since
 	// arch variant of an APEX bundle is 'common' but it is 'arm' or 'arm64'
@@ -366,10 +368,14 @@ func addDependenciesForNativeModules(ctx android.BottomUpMutatorContext,
 		{Mutator: "version", Variation: ""}, // "" is the non-stub variant
 	}, sharedLibTag, native_shared_libs...)
 
+	exeTag := secondaryExecutableTag
+	if isPrimaryAbi {
+		exeTag = primaryExecutableTag
+	}
 	ctx.AddFarVariationDependencies([]blueprint.Variation{
 		{Mutator: "arch", Variation: arch},
 		{Mutator: "image", Variation: imageVariation},
-	}, executableTag, binaries...)
+	}, exeTag, binaries...)
 }
 
 func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
@@ -390,25 +396,28 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 			{Mutator: "link", Variation: "shared"},
 		}, sharedLibTag, a.properties.Native_shared_libs...)
 
+		isPrimaryAbi := i == 0
 		// Add native modules targetting both ABIs
 		addDependenciesForNativeModules(ctx,
 			a.properties.Multilib.Both.Native_shared_libs,
 			a.properties.Multilib.Both.Binaries, target.String(),
-			a.getImageVariation(config))
+			a.getImageVariation(config),
+			isPrimaryAbi)
 
-		if i == 0 {
+		if isPrimaryAbi {
 			// When multilib.* is omitted for binaries, it implies
 			// multilib.first.
 			ctx.AddFarVariationDependencies([]blueprint.Variation{
 				{Mutator: "arch", Variation: target.String()},
 				{Mutator: "image", Variation: a.getImageVariation(config)},
-			}, executableTag, a.properties.Binaries...)
+			}, primaryExecutableTag, a.properties.Binaries...)
 
 			// Add native modules targetting the first ABI
 			addDependenciesForNativeModules(ctx,
 				a.properties.Multilib.First.Native_shared_libs,
 				a.properties.Multilib.First.Binaries, target.String(),
-				a.getImageVariation(config))
+				a.getImageVariation(config),
+				isPrimaryAbi)
 
 			// When multilib.* is omitted for prebuilts, it implies multilib.first.
 			ctx.AddFarVariationDependencies([]blueprint.Variation{
@@ -422,24 +431,28 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 			addDependenciesForNativeModules(ctx,
 				a.properties.Multilib.Lib32.Native_shared_libs,
 				a.properties.Multilib.Lib32.Binaries, target.String(),
-				a.getImageVariation(config))
+				a.getImageVariation(config),
+				isPrimaryAbi)
 
 			addDependenciesForNativeModules(ctx,
 				a.properties.Multilib.Prefer32.Native_shared_libs,
 				a.properties.Multilib.Prefer32.Binaries, target.String(),
-				a.getImageVariation(config))
+				a.getImageVariation(config),
+				true)
 		case "lib64":
 			// Add native modules targetting 64-bit ABI
 			addDependenciesForNativeModules(ctx,
 				a.properties.Multilib.Lib64.Native_shared_libs,
 				a.properties.Multilib.Lib64.Binaries, target.String(),
-				a.getImageVariation(config))
+				a.getImageVariation(config),
+				isPrimaryAbi)
 
 			if !has32BitTarget {
 				addDependenciesForNativeModules(ctx,
 					a.properties.Multilib.Prefer32.Native_shared_libs,
 					a.properties.Multilib.Prefer32.Binaries, target.String(),
-					a.getImageVariation(config))
+					a.getImageVariation(config),
+					true)
 			}
 		}
 
@@ -563,12 +576,12 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			case sharedLibTag:
 				if cc, ok := child.(*cc.Module); ok {
 					fileToCopy, dirInApex := getCopyManifestForNativeLibrary(cc)
-					filesInfo = append(filesInfo, apexFile{fileToCopy, depName, cc.Arch().ArchType, dirInApex, nativeSharedLib, cc})
+					filesInfo = append(filesInfo, apexFile{fileToCopy, depName, cc.Arch().ArchType, dirInApex, nativeSharedLib, cc, nil})
 					return true
 				} else {
 					ctx.PropertyErrorf("native_shared_libs", "%q is not a cc_library or cc_library_shared module", depName)
 				}
-			case executableTag:
+			case primaryExecutableTag, secondaryExecutableTag:
 				if cc, ok := child.(*cc.Module); ok {
 					if !cc.Arch().Native {
 						// There is only one 'bin' directory so we shouldn't bother copying in
@@ -576,7 +589,12 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 						return true
 					}
 					fileToCopy, dirInApex := getCopyManifestForExecutable(cc)
-					filesInfo = append(filesInfo, apexFile{fileToCopy, depName, cc.Arch().ArchType, dirInApex, nativeExecutable, cc})
+					var symlink *string = nil
+					if depTag == primaryExecutableTag && cc.SymlinkPreferredArch() {
+						tmpSymlink := cc.Name()
+						symlink = &tmpSymlink
+					}
+					filesInfo = append(filesInfo, apexFile{fileToCopy, depName, cc.Arch().ArchType, dirInApex, nativeExecutable, cc, symlink})
 					return true
 				} else {
 					ctx.PropertyErrorf("binaries", "%q is not a cc_binary module", depName)
@@ -587,7 +605,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 					if fileToCopy == nil {
 						ctx.PropertyErrorf("java_libs", "%q is not configured to be compiled into dex", depName)
 					} else {
-						filesInfo = append(filesInfo, apexFile{fileToCopy, depName, java.Arch().ArchType, dirInApex, javaSharedLib, java})
+						filesInfo = append(filesInfo, apexFile{fileToCopy, depName, java.Arch().ArchType, dirInApex, javaSharedLib, java, nil})
 					}
 					return true
 				} else {
@@ -596,7 +614,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			case prebuiltTag:
 				if prebuilt, ok := child.(*android.PrebuiltEtc); ok {
 					fileToCopy, dirInApex := getCopyManifestForPrebuiltEtc(prebuilt)
-					filesInfo = append(filesInfo, apexFile{fileToCopy, depName, prebuilt.Arch().ArchType, dirInApex, etc, prebuilt})
+					filesInfo = append(filesInfo, apexFile{fileToCopy, depName, prebuilt.Arch().ArchType, dirInApex, etc, prebuilt, nil})
 					return true
 				} else {
 					ctx.PropertyErrorf("prebuilts", "%q is not a prebuilt_etc module", depName)
@@ -631,7 +649,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 					}
 					depName := ctx.OtherModuleName(child)
 					fileToCopy, dirInApex := getCopyManifestForNativeLibrary(cc)
-					filesInfo = append(filesInfo, apexFile{fileToCopy, depName, cc.Arch().ArchType, dirInApex, nativeSharedLib, cc})
+					filesInfo = append(filesInfo, apexFile{fileToCopy, depName, cc.Arch().ArchType, dirInApex, nativeSharedLib, cc, nil})
 					return true
 				}
 			}
@@ -724,6 +742,10 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext, keyFile and
 		dest_path := filepath.Join(android.PathForModuleOut(ctx, "image"+suffix).String(), dest)
 		copyCommands = append(copyCommands, "mkdir -p "+filepath.Dir(dest_path))
 		copyCommands = append(copyCommands, "cp "+src.String()+" "+dest_path)
+		if a.filesInfo[i].symlink != nil {
+			symlinkDest := filepath.Join(filepath.Dir(dest_path), *a.filesInfo[i].symlink)
+			copyCommands = append(copyCommands, "ln -s "+filepath.Base(dest)+" "+symlinkDest)
+		}
 	}
 	implicitInputs := append(android.Paths(nil), filesToCopy...)
 	implicitInputs = append(implicitInputs, manifest)
@@ -739,6 +761,9 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext, keyFile and
 			pathInApex := filepath.Join(f.installDir, f.builtFile.Base())
 			if f.installDir == "bin" {
 				executablePaths = append(executablePaths, pathInApex)
+				if f.symlink != nil {
+					executablePaths = append(executablePaths, filepath.Join("bin", *f.symlink))
+				}
 			} else {
 				readOnlyPaths = append(readOnlyPaths, pathInApex)
 			}
@@ -871,7 +896,7 @@ func (a *apexBundle) buildFlattenedApex(ctx android.ModuleContext) {
 			Input:  manifest,
 			Output: copiedManifest,
 		})
-		a.filesInfo = append(a.filesInfo, apexFile{copiedManifest, ctx.ModuleName() + ".apex_manifest.json", android.Common, ".", etc, nil})
+		a.filesInfo = append(a.filesInfo, apexFile{copiedManifest, ctx.ModuleName() + ".apex_manifest.json", android.Common, ".", etc, nil, nil})
 
 		for _, fi := range a.filesInfo {
 			dir := filepath.Join("apex", ctx.ModuleName(), fi.installDir)
