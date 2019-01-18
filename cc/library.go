@@ -276,6 +276,8 @@ type libraryDecorator struct {
 
 	sabi *sabi
 
+	pagerando *pagerando
+
 	// Output archive of gcno coverage information files
 	coverageOutputFile android.OptionalPath
 
@@ -522,6 +524,9 @@ func (library *libraryDecorator) linkerInit(ctx BaseModuleContext) {
 	// Let baseLinker know whether this variant is for stubs or not, so that
 	// it can omit things that are not required for linking stubs.
 	library.baseLinker.dynamicProperties.BuildStubs = library.buildStubs()
+	if library.pagerando.Pagerando() {
+		library.baseLinker.Properties.Use_clang_lld = BoolPtr(false)
+	}
 
 	if library.buildStubs() {
 		macroNames := versioningMacroNamesList(ctx.Config())
@@ -979,6 +984,14 @@ func (library *libraryDecorator) header() bool {
 	return !library.static() && !library.shared()
 }
 
+func (library *libraryDecorator) staticLibrary() bool {
+	return library.static()
+}
+
+func (library *libraryDecorator) sharedLibrary() bool {
+	return library.shared()
+}
+
 func (library *libraryDecorator) setStatic() {
 	library.MutatedProperties.VariantIsStatic = true
 	library.MutatedProperties.VariantIsShared = false
@@ -1041,6 +1054,7 @@ func NewLibrary(hod android.HostOrDeviceSupported) (*Module, *libraryDecorator) 
 		baseLinker:    NewBaseLinker(module.sanitize),
 		baseInstaller: NewBaseInstaller("lib", "lib64", InstallInSystem),
 		sabi:          module.sabi,
+		pagerando:     module.pagerando,
 	}
 
 	module.compiler = library
