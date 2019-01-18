@@ -16,6 +16,7 @@ package apex
 
 import (
 	"io/ioutil"
+	"log"
 	"os"
 	"strings"
 	"testing"
@@ -191,6 +192,11 @@ func TestBasicApex(t *testing.T) {
 			name: "myapex",
 			key: "myapex.key",
 			native_shared_libs: ["mylib"],
+			multilib: {
+				both: {
+					binaries: ["foo",],
+				}
+			}
 		}
 
 		apex_key {
@@ -207,6 +213,35 @@ func TestBasicApex(t *testing.T) {
 			stl: "none",
 		}
 
+		cc_binary {
+			name: "foo",
+			srcs: ["mylib.cpp"],
+			compile_multilib: "both",
+			multilib: {
+					lib32: {
+							suffix: "32",
+					},
+					lib64: {
+							suffix: "64",
+					},
+			},
+			symlinks: ["foo123"],
+			symlink_preferred_arch: true,
+			system_shared_libs: [],
+			static_executable: true,
+			stl: "none",
+		}
+
+		cc_object {
+			name: "crtbegin_static",
+			stl: "none",
+		}
+
+		cc_object {
+			name: "crtend_android",
+			stl: "none",
+		}
+
 		cc_library {
 			name: "mylib2",
 			srcs: ["mylib.cpp"],
@@ -220,6 +255,7 @@ func TestBasicApex(t *testing.T) {
 
 	// Ensure that main rule creates an output
 	ensureContains(t, apexRule.Output.String(), "myapex.apex.unsigned")
+	log.Printf(copyCmds)
 
 	// Ensure that apex variant is created for the direct dep
 	ensureListContains(t, ctx.ModuleVariantsForTests("mylib"), "android_arm64_armv8-a_core_shared_myapex")

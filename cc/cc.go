@@ -19,6 +19,7 @@ package cc
 // is handled in builder.go
 
 import (
+	"log"
 	"strconv"
 	"strings"
 
@@ -765,6 +766,16 @@ func (c *Module) Name() string {
 		name = p.Name(name)
 	}
 	return name
+}
+
+func (c *Module) Symlinks() []string {
+	if p, ok := c.installer.(interface {
+		symlinkList() []string
+	}); ok {
+		log.Println("SymlinkList called!")
+		return p.symlinkList()
+	}
+	return nil
 }
 
 // orderDeps reorders dependencies into a list such that if module A depends on B, then

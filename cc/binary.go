@@ -15,6 +15,8 @@
 package cc
 
 import (
+	"log"
+
 	"github.com/google/blueprint"
 
 	"android/soong/android"
@@ -383,6 +385,10 @@ func (binary *binaryDecorator) link(ctx ModuleContext,
 	return ret
 }
 
+func (binary *binaryDecorator) symlinkList() []string {
+	return binary.symlinks
+}
+
 func (binary *binaryDecorator) install(ctx ModuleContext, file android.Path) {
 	binary.baseInstaller.install(ctx, file)
 	for _, symlink := range binary.Properties.Symlinks {
@@ -391,15 +397,18 @@ func (binary *binaryDecorator) install(ctx ModuleContext, file android.Path) {
 	}
 
 	if Bool(binary.Properties.Symlink_preferred_arch) {
+		log.Printf("Symlink preferred arch for " + file.String())
 		if String(binary.Properties.Stem) == "" && String(binary.Properties.Suffix) == "" {
 			ctx.PropertyErrorf("symlink_preferred_arch", "must also specify stem or suffix")
 		}
 		if ctx.TargetPrimary() {
 			binary.symlinks = append(binary.symlinks, ctx.baseModuleName())
+			log.Printf("Is preferred arch for " + file.String())
 		}
 	}
 
 	for _, symlink := range binary.symlinks {
+		log.Printf("%s: Symlink for "+ctx.baseModuleName()+" -> "+symlink, ctx.ModuleSubDir())
 		ctx.InstallSymlink(binary.baseInstaller.installDir(ctx), symlink, binary.baseInstaller.path)
 	}
 
