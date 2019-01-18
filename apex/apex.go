@@ -102,12 +102,13 @@ type dependencyTag struct {
 }
 
 var (
-	sharedLibTag   = dependencyTag{name: "sharedLib"}
-	executableTag  = dependencyTag{name: "executable"}
-	javaLibTag     = dependencyTag{name: "javaLib"}
-	prebuiltTag    = dependencyTag{name: "prebuilt"}
-	keyTag         = dependencyTag{name: "key"}
-	certificateTag = dependencyTag{name: "certificate"}
+	sharedLibTag           = dependencyTag{name: "sharedLib"}
+	primaryExecutableTag   = dependencyTag{name: "primaryExecutable"}
+	secondaryExecutableTag = dependencyTag{name: "secondaryExecutable"}
+	javaLibTag             = dependencyTag{name: "javaLib"}
+	prebuiltTag            = dependencyTag{name: "prebuilt"}
+	keyTag                 = dependencyTag{name: "key"}
+	certificateTag         = dependencyTag{name: "certificate"}
 )
 
 func init() {
@@ -335,6 +336,11 @@ type apexFile struct {
 	module     android.Module
 }
 
+type apexBinarySymlink struct {
+	source string
+	dest   string
+}
+
 type apexBundle struct {
 	android.ModuleBase
 	android.DefaultableModuleBase
@@ -350,11 +356,14 @@ type apexBundle struct {
 	// list of files to be included in this apex
 	filesInfo []apexFile
 
+	// List of binary symlinks to create
+	binarySymlinks []apexBinarySymlink
+
 	flattened bool
 }
 
 func addDependenciesForNativeModules(ctx android.BottomUpMutatorContext,
-	native_shared_libs []string, binaries []string, arch string, imageVariation string) {
+	native_shared_libs []string, binaries []string, arch string, imageVariation string, isPrimaryAbi bool) {
 	// Use *FarVariation* to be able to depend on modules having
 	// conflicting variations with this module. This is required since
 	// arch variant of an APEX bundle is 'common' but it is 'arm' or 'arm64'
@@ -366,10 +375,14 @@ func addDependenciesForNativeModules(ctx android.BottomUpMutatorContext,
 		{Mutator: "version", Variation: ""}, // "" is the non-stub variant
 	}, sharedLibTag, native_shared_libs...)
 
+	exeTag := secondaryExecutableTag
+	if isPrimaryAbi {
+		exeTag = primaryExecutableTag
+	}
 	ctx.AddFarVariationDependencies([]blueprint.Variation{
 		{Mutator: "arch", Variation: arch},
 		{Mutator: "image", Variation: imageVariation},
-	}, executableTag, binaries...)
+	}, exeTag, binaries...)
 }
 
 func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
@@ -390,25 +403,28 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 			{Mutator: "link", Variation: "shared"},
 		}, sharedLibTag, a.properties.Native_shared_libs...)
 
+		isPrimaryAbi := i == 0
 		// Add native modules targetting both ABIs
 		addDependenciesForNativeModules(ctx,
 			a.properties.Multilib.Both.Native_shared_libs,
 			a.properties.Multilib.Both.Binaries, target.String(),
-			a.getImageVariation(config))
+			a.getImageVariation(config),
+			isPrimaryAbi)
 
-		if i == 0 {
+		if isPrimaryAbi {
 			// When multilib.* is omitted for binaries, it implies
 			// multilib.first.
 			ctx.AddFarVariationDependencies([]blueprint.Variation{
 				{Mutator: "arch", Variation: target.String()},
 				{Mutator: "image", Variation: a.getImageVariation(config)},
-			}, executableTag, a.properties.Binaries...)
+			}, primaryExecutableTag, a.properties.Binaries...)
 
 			// Add native modules targetting the first ABI
 			addDependenciesForNativeModules(ctx,
 				a.properties.Multilib.First.Native_shared_libs,
 				a.properties.Multilib.First.Binaries, target.String(),
-				a.getImageVariation(config))
+				a.getImageVariation(config),
+				isPrimaryAbi)
 
 			// When multilib.* is omitted for prebuilts, it implies multilib.first.
 			ctx.AddFarVariationDependencies([]blueprint.Variation{
@@ -422,24 +438,28 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 			addDependenciesForNativeModules(ctx,
 				a.properties.Multilib.Lib32.Native_shared_libs,
 				a.properties.Multilib.Lib32.Binaries, target.String(),
-				a.getImageVariation(config))
+				a.getImageVariation(config),
+				isPrimaryAbi)
 
 			addDependenciesForNativeModules(ctx,
 				a.properties.Multilib.Prefer32.Native_shared_libs,
 				a.properties.Multilib.Prefer32.Binaries, target.String(),
-				a.getImageVariation(config))
+				a.getImageVariation(config),
+				true)
 		case "lib64":
 			// Add native modules targetting 64-bit ABI
 			addDependenciesForNativeModules(ctx,
 				a.properties.Multilib.Lib64.Native_shared_libs,
 				a.properties.Multilib.Lib64.Binaries, target.String(),
-				a.getImageVariation(config))
+				a.getImageVariation(config),
+				isPrimaryAbi)
 
 			if !has32BitTarget {
 				addDependenciesForNativeModules(ctx,
 					a.properties.Multilib.Prefer32.Native_shared_libs,
 					a.properties.Multilib.Prefer32.Binaries, target.String(),
-					a.getImageVariation(config))
+					a.getImageVariation(config),
+					true)
 			}
 		}
 
@@ -538,6 +558,7 @@ func getCopyManifestForPrebuiltEtc(prebuilt *android.PrebuiltEtc) (fileToCopy an
 
 func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	filesInfo := []apexFile{}
+	binarySymlinks := []apexBinarySymlink{}
 
 	var keyFile android.Path
 	var pubKeyFile android.Path
@@ -568,10 +589,13 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 				} else {
 					ctx.PropertyErrorf("native_shared_libs", "%q is not a cc_library or cc_library_shared module", depName)
 				}
-			case executableTag:
+			case primaryExecutableTag, secondaryExecutableTag:
 				if cc, ok := child.(*cc.Module); ok {
 					fileToCopy, dirInApex := getCopyManifestForExecutable(cc)
 					filesInfo = append(filesInfo, apexFile{fileToCopy, depName, cc.Arch().ArchType, dirInApex, nativeExecutable, cc})
+					if depTag == primaryExecutableTag && cc.SymlinkPreferredArch() {
+						binarySymlinks = append(binarySymlinks, apexBinarySymlink{fileToCopy.Base(), cc.Name()})
+					}
 					return true
 				} else {
 					ctx.PropertyErrorf("binaries", "%q is not a cc_binary module", depName)
@@ -667,6 +691,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	a.installDir = android.PathForModuleInstall(ctx, "apex")
 	a.filesInfo = filesInfo
+	a.binarySymlinks = binarySymlinks
 
 	if a.apexTypes.zip() {
 		a.buildUnflattenedApex(ctx, keyFile, pubKeyFile, certificate, zipApex)
@@ -720,6 +745,10 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext, keyFile and
 		copyCommands = append(copyCommands, "mkdir -p "+filepath.Dir(dest_path))
 		copyCommands = append(copyCommands, "cp "+src.String()+" "+dest_path)
 	}
+	for _, link := range a.binarySymlinks {
+		dest := filepath.Join(android.PathForModuleOut(ctx, "image"+suffix).String(), "bin", link.dest)
+		copyCommands = append(copyCommands, "ln -s "+link.source+" "+dest)
+	}
 	implicitInputs := append(android.Paths(nil), filesToCopy...)
 	implicitInputs = append(implicitInputs, manifest)
 
@@ -730,6 +759,9 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext, keyFile and
 		// files and dirs that will be created in APEX
 		var readOnlyPaths []string
 		var executablePaths []string // this also includes dirs
+		for _, f := range a.binarySymlinks {
+			executablePaths = append(executablePaths, filepath.Join("bin", f.dest))
+		}
 		for _, f := range a.filesInfo {
 			pathInApex := filepath.Join(f.installDir, f.builtFile.Base())
 			if f.installDir == "bin" {
