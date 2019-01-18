@@ -46,6 +46,30 @@
       "revId": "c2f9f9aab24c5d1873b97691c1b9bb0743a8c673",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48869843_4a367905",
+        "filename": "cc/vndk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-18T06:46:48Z",
+      "side": 1,
+      "message": "Even today, there are many config parameters outside of Android.bp file that change how a module is built. TARGET_* ones. I think we are good as long as the dependencies are all tracked and the result does not change if the input dependencies are the same. But yes, as always, Dan should have an answer.",
+      "parentUuid": "fa3ffe9a_40c07e49",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 31
+      },
+      "revId": "c2f9f9aab24c5d1873b97691c1b9bb0743a8c673",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
