@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a6bab130_4668d2bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-18T06:31:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "428e4236_7d150327",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 47
+      },
+      "revId": "e41954ee8b508cdb0ad9e77ef913ca3c6da44b13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9680401b_9b25ab4a",
         "filename": "android/devices.go",
         "patchSetId": 8
