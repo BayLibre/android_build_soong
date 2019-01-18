@@ -77,9 +77,9 @@ var hiddenAPIEncodeDexRule = pctx.AndroidStaticRule("hiddenAPIEncodeDex", bluepr
 	},
 }, "flags", "tmpDir")
 
-func hiddenAPIEncodeDex(ctx android.ModuleContext, output android.WritablePath, dexInput android.WritablePath) {
+func hiddenAPIEncodeDex(ctx android.ModuleContext, output *android.ModuleOutPath, dexInput android.ModuleOutPath) {
 	if ctx.Config().IsEnvTrue("UNSAFE_DISABLE_HIDDENAPI_FLAGS") {
-		output = dexInput
+		*output = dexInput
 		return
 	}
 
@@ -89,7 +89,7 @@ func hiddenAPIEncodeDex(ctx android.ModuleContext, output android.WritablePath, 
 		Rule:        hiddenAPIEncodeDexRule,
 		Description: "hiddenapi encode dex",
 		Input:       dexInput,
-		Output:      output,
+		Output:      *output,
 		Implicit:    flags,
 		Args: map[string]string{
 			"flags":  flags.String(),
