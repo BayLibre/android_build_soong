@@ -39,6 +39,30 @@
       "revId": "8faf8fc06076cda933232204f643c35e244b0938",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91a1a23e_138a94e7",
+        "filename": "java/hiddenapi.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-01-18T14:49:39Z",
+      "side": 1,
+      "message": "yep, noticed that too: aosp/877873",
+      "parentUuid": "d3f8b42a_8d18e3ba",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 10
+      },
+      "revId": "8faf8fc06076cda933232204f643c35e244b0938",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
