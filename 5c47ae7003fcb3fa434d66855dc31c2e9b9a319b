@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c43d9fb_0d99dc1b",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-18T21:20:26Z",
+      "side": 1,
+      "message": "This doesn\u0027t need to be a pointer, android.Path is an interface which is implictly pointer-ish.  Also the naming should be Go style (jarjarRules), we only use the Jarjar_rules style for properties to make them come out right in the bp files.",
+      "revId": "5c47ae7003fcb3fa434d66855dc31c2e9b9a319b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
