@@ -74,14 +74,14 @@ func TestCollectJavaLibraryPropertiesAddAidlIncludeDirs(t *testing.T) {
 }
 
 func TestCollectJavaLibraryPropertiesAddJarjarRules(t *testing.T) {
-	expected := "Jarjar_rules.txt"
+	expected := android.PathForTesting("Jarjar_rules.txt")
 	module := LibraryFactory().(*Library)
-	module.properties.Jarjar_rules = &expected
+	module.expandJarjar_rules = &expected
 	dpInfo := &android.IdeInfo{}
 
 	module.IDEInfo(dpInfo)
 
-	if dpInfo.Jarjar_rules[0] != expected {
-		t.Errorf("Library.IDEInfo() Jarjar_rules = %v, want %v", dpInfo.Jarjar_rules[0], expected)
+	if dpInfo.Jarjar_rules[0] != expected.String() {
+		t.Errorf("Library.IDEInfo() Jarjar_rules = %v, want %v", dpInfo.Jarjar_rules[0], expected.String())
 	}
 }
