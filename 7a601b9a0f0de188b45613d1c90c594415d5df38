@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4d5e6a6e_9abf154f",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2019-01-18T23:40:51Z",
+      "side": 1,
+      "message": "I wasn\u0027t able to figure out a clean way to communicate which variant we are using down to the module. The install flow uses the context but we will only have the \u0027common\u0027 one for the full apex file here.\n\nAlso the install flow needs to deal with the fact you can provide other symlinks too which I didn\u0027t want to deal with.",
+      "parentUuid": "210fe720_2b0c6faf",
+      "revId": "7a601b9a0f0de188b45613d1c90c594415d5df38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9a5177c_399df3ee",
         "filename": "cc/binary.go",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "e35c3675_e60daa08",
+        "filename": "cc/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2019-01-18T23:40:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9a5177c_399df3ee",
+      "range": {
+        "startLine": 386,
+        "startChar": 38,
+        "endLine": 386,
+        "endChar": 47
+      },
+      "revId": "7a601b9a0f0de188b45613d1c90c594415d5df38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ca8ff2a_0b9efbaa",
         "filename": "cc/cc.go",
         "patchSetId": 1
@@ -62,6 +104,30 @@
       "revId": "7a601b9a0f0de188b45613d1c90c594415d5df38",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aae8519e_a648ea3d",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2019-01-18T23:40:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ca8ff2a_0b9efbaa",
+      "range": {
+        "startLine": 770,
+        "startChar": 24,
+        "endLine": 770,
+        "endChar": 33
+      },
+      "revId": "7a601b9a0f0de188b45613d1c90c594415d5df38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
