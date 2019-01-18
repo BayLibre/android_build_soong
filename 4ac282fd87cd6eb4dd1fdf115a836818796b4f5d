@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1cb7f71_7122b413",
+        "filename": "cc/cc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1319,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-18T23:44:02Z",
+      "side": 1,
+      "message": "Can you add a comment here with a link to the bug?",
+      "revId": "4ac282fd87cd6eb4dd1fdf115a836818796b4f5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
