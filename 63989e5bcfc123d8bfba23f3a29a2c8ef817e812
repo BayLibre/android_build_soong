@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c5d8285_09c17490",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-01-18T21:22:52Z",
+      "side": 0,
+      "message": "was copying the style from here. Ack\u0026ack.",
+      "range": {
+        "startLine": 1130,
+        "startChar": 2,
+        "endLine": 1130,
+        "endChar": 14
+      },
+      "revId": "63989e5bcfc123d8bfba23f3a29a2c8ef817e812",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
