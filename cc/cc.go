@@ -1662,7 +1662,6 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 						c.Properties.ApexesProvidingSharedLibs = append(
 							c.Properties.ApexesProvidingSharedLibs, an)
 					}
-					break
 				}
 			}
 
