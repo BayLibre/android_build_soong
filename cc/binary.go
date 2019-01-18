@@ -383,6 +383,10 @@ func (binary *binaryDecorator) link(ctx ModuleContext,
 	return ret
 }
 
+func (binary *binaryDecorator) symlinkPreferredArch() bool {
+	return Bool(binary.Properties.Symlink_preferred_arch)
+}
+
 func (binary *binaryDecorator) install(ctx ModuleContext, file android.Path) {
 	binary.baseInstaller.install(ctx, file)
 	for _, symlink := range binary.Properties.Symlinks {
