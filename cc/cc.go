@@ -96,9 +96,9 @@ type Deps struct {
 
 type PathDeps struct {
 	// Paths to .so files
-	SharedLibs, LateSharedLibs android.Paths
+	SharedLibs, EarlySharedLibs, LateSharedLibs android.Paths
 	// Paths to the dependencies to use for .so files (.so.toc files)
-	SharedLibsDeps, LateSharedLibsDeps android.Paths
+	SharedLibsDeps, EarlySharedLibsDeps, LateSharedLibsDeps android.Paths
 	// Paths to .a files
 	StaticLibs, LateStaticLibs, WholeStaticLibs android.Paths
 
@@ -328,6 +328,7 @@ type dependencyTag struct {
 var (
 	sharedDepTag          = dependencyTag{name: "shared", library: true}
 	sharedExportDepTag    = dependencyTag{name: "shared", library: true, reexportFlags: true}
+	earlySharedDepTag     = dependencyTag{name: "early_shared", library: true}
 	lateSharedDepTag      = dependencyTag{name: "late shared", library: true}
 	staticDepTag          = dependencyTag{name: "static", library: true}
 	staticExportDepTag    = dependencyTag{name: "static", library: true, reexportFlags: true}
@@ -1558,6 +1559,11 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			depPtr = &depPaths.SharedLibsDeps
 			depFile = ccDep.linker.(libraryInterface).toc()
 			directSharedDeps = append(directSharedDeps, ccDep)
+		case earlySharedDepTag:
+			ptr = &depPaths.EarlySharedLibs
+			depPtr = &depPaths.EarlySharedLibsDeps
+			depFile = ccDep.linker.(libraryInterface).toc()
+			directSharedDeps = append(directSharedDeps, ccDep)
 		case lateSharedDepTag, ndkLateStubDepTag:
 			ptr = &depPaths.LateSharedLibs
 			depPtr = &depPaths.LateSharedLibsDeps
@@ -1651,7 +1657,7 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 
 		// Export the shared libs to Make.
 		switch depTag {
-		case sharedDepTag, sharedExportDepTag, lateSharedDepTag:
+		case sharedDepTag, sharedExportDepTag, lateSharedDepTag, earlySharedDepTag:
 			// Dependency to the stubs lib which is already included in an APEX
 			// is not added to the androidmk dependency
 			if dependentLibrary, ok := ccDep.linker.(*libraryDecorator); ok {
