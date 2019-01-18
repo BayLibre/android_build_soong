@@ -995,6 +995,10 @@ func (c *config) HiddenAPIExtraAppUsageJars() []string {
 	return c.productVariables.HiddenAPIExtraAppUsageJars
 }
 
+func (c *config) DisableHiddenAPI() bool {
+	return Bool(c.productVariables.DisableHiddenAPI)
+}
+
 func stringSlice(s *[]string) []string {
 	if s != nil {
 		return *s

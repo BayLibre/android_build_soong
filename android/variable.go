@@ -276,6 +276,7 @@ type productVariables struct {
 	HiddenAPIPublicList        *string  `json:",omitempty"`
 	HiddenAPIFlags             *string  `json:",omitempty"`
 	HiddenAPIExtraAppUsageJars []string `json:",omitempty"`
+	DisableHiddenAPI           *bool    `json:",omitempty"`
 }
 
 func boolPtr(v bool) *bool {

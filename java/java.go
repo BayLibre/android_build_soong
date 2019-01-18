@@ -1185,7 +1185,7 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars ...android.Path
 			// Derive the greylist from classes jar.
 			hiddenAPIGenerateCSV(ctx, j.implementationJarFile)
 		}
-		if isBootJar {
+		if isBootJar && !ctx.Config().DisableHiddenAPI() {
 			hiddenAPIJar := android.PathForModuleOut(ctx, "hiddenapi", jarName)
 			hiddenAPIEncodeDex(ctx, hiddenAPIJar, dexOutputFile)
 			dexOutputFile = hiddenAPIJar
