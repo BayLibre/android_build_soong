@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "210fe720_2b0c6faf",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-18T23:33:58Z",
+      "side": 1,
+      "message": "Could all of this go into cc, so you would call cc.Symlinks() and it would return the list of symlinks for the current variant, which would be empty for the secondary arch and the name of the symlink for the primary arch?",
+      "revId": "7a601b9a0f0de188b45613d1c90c594415d5df38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9a5177c_399df3ee",
+        "filename": "cc/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-18T23:33:58Z",
+      "side": 1,
+      "message": "Preferred",
+      "range": {
+        "startLine": 386,
+        "startChar": 38,
+        "endLine": 386,
+        "endChar": 47
+      },
+      "revId": "7a601b9a0f0de188b45613d1c90c594415d5df38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ca8ff2a_0b9efbaa",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-18T23:33:58Z",
+      "side": 1,
+      "message": "Preferred",
+      "range": {
+        "startLine": 770,
+        "startChar": 24,
+        "endLine": 770,
+        "endChar": 33
+      },
+      "revId": "7a601b9a0f0de188b45613d1c90c594415d5df38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
