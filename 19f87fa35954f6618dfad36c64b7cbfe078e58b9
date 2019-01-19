@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a3f732e_2a0d0050",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-19T00:28:43Z",
+      "side": 1,
+      "message": "sdkLibrary now embeds Library here, which means it will get Library\u0027s version of IDEInfo without this patch.",
+      "revId": "19f87fa35954f6618dfad36c64b7cbfe078e58b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
