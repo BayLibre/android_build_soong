@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "169ebd78_ad59c388",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-19T00:23:40Z",
+      "side": 1,
+      "message": "When you are calling into the module you are already calling the specific variant.",
+      "parentUuid": "4d5e6a6e_9abf154f",
+      "revId": "7a601b9a0f0de188b45613d1c90c594415d5df38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b9a5177c_399df3ee",
         "filename": "cc/binary.go",
         "patchSetId": 1
