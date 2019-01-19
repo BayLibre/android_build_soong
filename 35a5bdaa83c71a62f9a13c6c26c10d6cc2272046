@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7afbd188_34313bfb",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-19T02:08:37Z",
+      "side": 1,
+      "message": "I think adding \u0027symlink string\u0027 to apexFile struct is better. This allows us to have symlink for any file in APEX.",
+      "range": {
+        "startLine": 339,
+        "startChar": 0,
+        "endLine": 342,
+        "endChar": 1
+      },
+      "revId": "35a5bdaa83c71a62f9a13c6c26c10d6cc2272046",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dff22e9_7a24d0d2",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-19T02:08:37Z",
+      "side": 1,
+      "message": "I don\u0027t think we need these two tags. \n\nWe can ask cc.Module to see if it has symlink to be installed. If symlink_preferred_arch is true, the module will return symlink path for the primary arch, but nil for the secondary arch.",
+      "range": {
+        "startLine": 592,
+        "startChar": 3,
+        "endLine": 592,
+        "endChar": 53
+      },
+      "revId": "35a5bdaa83c71a62f9a13c6c26c10d6cc2272046",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43457392_a400851f",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-19T02:08:37Z",
+      "side": 1,
+      "message": "This doesn\u0027t look good. You could use filePath.Dir(dest_path)",
+      "range": {
+        "startLine": 749,
+        "startChar": 10,
+        "endLine": 749,
+        "endChar": 85
+      },
+      "revId": "35a5bdaa83c71a62f9a13c6c26c10d6cc2272046",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fa39cb9_1010d606",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-19T02:08:37Z",
+      "side": 1,
+      "message": "This could be moved inside the loop below, with a condition that f.symlink is not empty.",
+      "range": {
+        "startLine": 763,
+        "startChar": 3,
+        "endLine": 763,
+        "endChar": 74
+      },
+      "revId": "35a5bdaa83c71a62f9a13c6c26c10d6cc2272046",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
