@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4723ff5_c52fa0bf",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 957,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-19T01:23:13Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be in kotlin_test.go?",
+      "revId": "4e3fe2ec6ff2100f67dd3ae7424e0ee2ea0deff2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
