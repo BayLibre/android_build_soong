@@ -19,6 +19,7 @@ package status
 
 import (
 	"sync"
+	"time"
 )
 
 // Action describes an action taken (or as Ninja calls them, Edges).
@@ -50,6 +51,14 @@ type ActionResult struct {
 	// Error is nil if the Action succeeded, or set to an error if it
 	// failed.
 	Error error
+
+	// The time spent executing the action in user mode. This may be 0 for
+	// some actions that don't report timing information.
+	UserTime time.Duration
+
+	// The time spent executing the action in kernel mode. This may be 0
+	// for some actions that don't report timing information.
+	SystemTime time.Duration
 }
 
 // Counts describes the number of actions in each state

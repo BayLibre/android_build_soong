@@ -20,6 +20,7 @@ import (
 	"io"
 	"os"
 	"syscall"
+	"time"
 
 	"github.com/golang/protobuf/proto"
 
@@ -102,9 +103,11 @@ func ninjaReader(status ToolStatus, fifo string) {
 				}
 
 				status.FinishAction(ActionResult{
-					Action: started,
-					Output: msg.EdgeFinished.GetOutput(),
-					Error:  err,
+					Action:     started,
+					Output:     msg.EdgeFinished.GetOutput(),
+					Error:      err,
+					UserTime:   time.Duration(msg.EdgeFinished.GetUserTime()) * time.Millisecond,
+					SystemTime: time.Duration(msg.EdgeFinished.GetSystemTime()) * time.Millisecond,
 				})
 			}
 		}

@@ -53,6 +53,9 @@ func (v *verboseLog) FinishAction(result ActionResult, counts Counts) {
 	}
 
 	fmt.Fprintf(v.w, "[%d/%d] %s\n", counts.FinishedActions, counts.TotalActions, cmd)
+	if result.UserTime != 0 || result.SystemTime != 0 {
+		fmt.Fprintf(v.w, "user: %s sys: %s\n", result.UserTime, result.SystemTime)
+	}
 
 	if result.Error != nil {
 		fmt.Fprintf(v.w, "FAILED: %s\n", strings.Join(result.Outputs, " "))
