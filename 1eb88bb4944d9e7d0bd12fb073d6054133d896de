@@ -46,6 +46,30 @@
       "revId": "1eb88bb4944d9e7d0bd12fb073d6054133d896de",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ed14456_0f928d57",
+        "filename": "java/androidmk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-21T14:48:21Z",
+      "side": 0,
+      "message": "ok, so even though a jar is not installed to the device, you will still be installing host dex for it. Got it.",
+      "parentUuid": "5ccc2e38_0e773c03",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 3
+      },
+      "revId": "1eb88bb4944d9e7d0bd12fb073d6054133d896de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
