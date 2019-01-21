@@ -174,12 +174,15 @@ func (j *Module) compileDex(ctx android.ModuleContext, flags javaBuilderFlags,
 	useR8 := Bool(j.deviceProperties.Optimize.Enabled)
 
 	// Compile classes.jar into classes.dex and then javalib.jar
-	javalibJar := android.PathForModuleOut(ctx, "dex", jarName)
+	finalJavalibJar := android.PathForModuleOut(ctx, "dex", jarName)
+	tempJavalibJar := finalJavalibJar
 	outDir := android.PathForModuleOut(ctx, "dex")
 
 	zipFlags := ""
 	if j.deviceProperties.UncompressDex {
 		zipFlags = "-L 0"
+		tempJavalibJar = android.PathForModuleOut(ctx, "unaligned", jarName)
+		outDir = android.PathForModuleOut(ctx, "unaligned")
 	}
 
 	if useR8 {
@@ -189,7 +192,7 @@ func (j *Module) compileDex(ctx android.ModuleContext, flags javaBuilderFlags,
 		ctx.Build(pctx, android.BuildParams{
 			Rule:           r8,
 			Description:    "r8",
-			Output:         javalibJar,
+			Output:         tempJavalibJar,
 			ImplicitOutput: proguardDictionary,
 			Input:          classesJar,
 			Implicits:      r8Deps,
@@ -205,7 +208,7 @@ func (j *Module) compileDex(ctx android.ModuleContext, flags javaBuilderFlags,
 		ctx.Build(pctx, android.BuildParams{
 			Rule:        d8,
 			Description: "d8",
-			Output:      javalibJar,
+			Output:      tempJavalibJar,
 			Input:       classesJar,
 			Implicits:   d8Deps,
 			Args: map[string]string{
@@ -215,6 +218,9 @@ func (j *Module) compileDex(ctx android.ModuleContext, flags javaBuilderFlags,
 			},
 		})
 	}
+	if j.deviceProperties.UncompressDex {
+		TransformZipAlign(ctx, finalJavalibJar, tempJavalibJar)
+	}
 
-	return javalibJar
+	return finalJavalibJar
 }
