@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "c4282c2a_cdc1fa2e",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2019-01-22T21:17:17Z",
+      "side": 1,
+      "message": "The problem is that by having apex{} rules specify prefer32/64 and so on it could make the apex rule writer and the cc_binary rule writer (and soong module) have a different idea over which should be the primary api (at least that\u0027s how I think of it).",
+      "parentUuid": "1dff22e9_7a24d0d2",
+      "range": {
+        "startLine": 592,
+        "startChar": 3,
+        "endLine": 592,
+        "endChar": 53
+      },
+      "revId": "35a5bdaa83c71a62f9a13c6c26c10d6cc2272046",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "43457392_a400851f",
         "filename": "apex/apex.go",
         "patchSetId": 2
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "f63edb2e_e7f9cd58",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2019-01-22T21:17:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43457392_a400851f",
+      "range": {
+        "startLine": 749,
+        "startChar": 10,
+        "endLine": 749,
+        "endChar": 85
+      },
+      "revId": "35a5bdaa83c71a62f9a13c6c26c10d6cc2272046",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8fa39cb9_1010d606",
         "filename": "apex/apex.go",
         "patchSetId": 2
@@ -91,6 +139,30 @@
       "revId": "35a5bdaa83c71a62f9a13c6c26c10d6cc2272046",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c9a33df_55597ec7",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2019-01-22T21:17:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fa39cb9_1010d606",
+      "range": {
+        "startLine": 763,
+        "startChar": 3,
+        "endLine": 763,
+        "endChar": 74
+      },
+      "revId": "35a5bdaa83c71a62f9a13c6c26c10d6cc2272046",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

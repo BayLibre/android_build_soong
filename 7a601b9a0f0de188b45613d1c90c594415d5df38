@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "ff753e60_acb1a4d8",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2019-01-22T21:17:17Z",
+      "side": 1,
+      "message": "yeah but because the apex rule overrides what is considered the preferred arch I\u0027m not sure we can use that.",
+      "parentUuid": "169ebd78_ad59c388",
+      "revId": "7a601b9a0f0de188b45613d1c90c594415d5df38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9a5177c_399df3ee",
         "filename": "cc/binary.go",
         "patchSetId": 1
