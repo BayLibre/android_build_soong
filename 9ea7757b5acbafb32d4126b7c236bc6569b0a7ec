@@ -16,6 +16,23 @@
       "revId": "9ea7757b5acbafb32d4126b7c236bc6569b0a7ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6ea2f5c_9c5eca9d",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-22T22:09:51Z",
+      "side": 1,
+      "message": "Can you add a comment here on what this logic is determining?",
+      "revId": "9ea7757b5acbafb32d4126b7c236bc6569b0a7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
