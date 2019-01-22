@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7c8cd4a_bcc21797",
+        "filename": "java/dex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-22T18:40:52Z",
+      "side": 1,
+      "message": "I\u0027d suggest removing these lines, leaving javalibJar above",
+      "revId": "3bb9048237723f0e5044f3ae63b7c9179d2df8e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8fca2e0_cdead10a",
+        "filename": "java/dex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-22T18:40:52Z",
+      "side": 1,
+      "message": "Then here do:\n\n    alignedJavalibJar :\u003d android.PathForModuleOut(ctx, \"aligned\", jarName)\n    TransformZipAlign(ctx, alignedJavalibJar, javalibJar)\n    javalibJar \u003d alignedJavalibJar",
+      "revId": "3bb9048237723f0e5044f3ae63b7c9179d2df8e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63c50e55_dcfc81d9",
+        "filename": "java/hiddenapi.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-22T18:40:52Z",
+      "side": 1,
+      "message": "Same as dex.go",
+      "revId": "3bb9048237723f0e5044f3ae63b7c9179d2df8e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
