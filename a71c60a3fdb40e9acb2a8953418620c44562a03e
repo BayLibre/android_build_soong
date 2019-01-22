@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11a87ac2_0eb73678",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-22T21:48:25Z",
+      "side": 1,
+      "message": "Can we get some documentation here? It\u0027ll go into http://go/Android.bp",
+      "revId": "a71c60a3fdb40e9acb2a8953418620c44562a03e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "653c4787_4fb2964b",
+        "filename": "cc/vndk_prebuilt.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-22T21:48:25Z",
+      "side": 1,
+      "message": "You can probably copy-paste it here as well, though I don\u0027t expect users to be manually writing these modules.",
+      "revId": "a71c60a3fdb40e9acb2a8953418620c44562a03e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
