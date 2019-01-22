@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d5fe085f_047e554b",
+        "filename": "java/dex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-22T19:02:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7c8cd4a_bcc21797",
+      "revId": "3bb9048237723f0e5044f3ae63b7c9179d2df8e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8fca2e0_cdead10a",
         "filename": "java/dex.go",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "86ec9925_f42caf26",
+        "filename": "java/dex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-22T19:02:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8fca2e0_cdead10a",
+      "revId": "3bb9048237723f0e5044f3ae63b7c9179d2df8e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "63c50e55_dcfc81d9",
         "filename": "java/hiddenapi.go",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2019-01-22T18:40:52Z",
       "side": 1,
       "message": "Same as dex.go",
+      "revId": "3bb9048237723f0e5044f3ae63b7c9179d2df8e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d743bbe6_5882fdfe",
+        "filename": "java/hiddenapi.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-22T19:02:30Z",
+      "side": 1,
+      "message": "Unfortunately, for this rule, the output is given as an argument, so I cannot change it. Would you prefer I change this function to return the (potentially new) output?",
+      "parentUuid": "63c50e55_dcfc81d9",
       "revId": "3bb9048237723f0e5044f3ae63b7c9179d2df8e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
