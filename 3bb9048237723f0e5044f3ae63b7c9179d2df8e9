@@ -104,6 +104,24 @@
       "revId": "3bb9048237723f0e5044f3ae63b7c9179d2df8e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9e85472_c139886c",
+        "filename": "java/hiddenapi.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-22T19:06:12Z",
+      "side": 1,
+      "message": "I guess leave it for now, hopefully one day it will be integrated into the hiddenapi encode command.",
+      "parentUuid": "d743bbe6_5882fdfe",
+      "revId": "3bb9048237723f0e5044f3ae63b7c9179d2df8e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
