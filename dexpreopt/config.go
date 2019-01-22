@@ -32,7 +32,6 @@ type GlobalConfig struct {
 
 	DisableGenerateProfile bool // don't generate profiles
 
-	PreoptBootClassPathDexFiles     []string // file paths of boot class path files
 	PreoptBootClassPathDexLocations []string // virtual locations of boot class path files
 
 	BootJars         []string // modules for jars that form the boot class path
