@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f331071e_b788555f",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-22T21:56:28Z",
+      "side": 0,
+      "message": "Just to make sure, dex2oat is not going to use the locations to read the files, right?",
+      "revId": "f8c06c159e8ba3fa7afdc263d72f91cbd50a9e36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
