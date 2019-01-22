@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4c2e39b_0683b99f",
+        "filename": "cc/binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-22T22:09:27Z",
+      "side": 1,
+      "message": "Can this be relative_install_path on the linker module?",
+      "revId": "9ea7757b5acbafb32d4126b7c236bc6569b0a7ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
