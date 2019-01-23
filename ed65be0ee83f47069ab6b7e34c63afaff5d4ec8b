@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9981bbfc_ed5fff9d",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-23T22:01:11Z",
+      "side": 1,
+      "message": "Run this through gofmt",
+      "revId": "ed65be0ee83f47069ab6b7e34c63afaff5d4ec8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee678abc_790b6c06",
+        "filename": "java/hiddenapi.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-23T22:01:11Z",
+      "side": 1,
+      "message": "Run this through gofmt",
+      "revId": "ed65be0ee83f47069ab6b7e34c63afaff5d4ec8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
