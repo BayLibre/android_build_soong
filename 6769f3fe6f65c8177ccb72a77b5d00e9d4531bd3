@@ -94,6 +94,30 @@
       "revId": "6769f3fe6f65c8177ccb72a77b5d00e9d4531bd3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fdef223c_bafc48ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-01-23T17:51:26Z",
+      "side": 1,
+      "message": "Thanks; the CL number is also useful for other people looking at this change.",
+      "parentUuid": "94e001ef_0211a1a6",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 4
+      },
+      "revId": "6769f3fe6f65c8177ccb72a77b5d00e9d4531bd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
