@@ -835,6 +835,11 @@ func PathForVndkRefAbiDump(ctx ModuleContext, version, fileName string,
 		fileName+ext)
 }
 
+// PathForFrameworksBaseDir returns an OptionalPath to "frameworks/base".
+func PathForFrameworksBaseDir(ctx PathContext) OptionalPath {
+	return ExistentPathForSource(ctx, "frameworks", "base")
+}
+
 // PathForModuleOut returns a Path representing the paths... under the module's
 // output directory.
 func PathForModuleOut(ctx ModuleContext, paths ...string) ModuleOutPath {
