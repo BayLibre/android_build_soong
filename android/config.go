@@ -774,6 +774,12 @@ func (c *config) DexPreoptProfileDir() string {
 	return String(c.productVariables.DexPreoptProfileDir)
 }
 
+func (c *config) FrameworksBaseDirExists() bool {
+  path := filepath.Join(c.srcDir, "frameworks", "base")
+  _, err := os.Stat(path)
+  return err == nil || !os.IsNotExist(err)
+}
+
 func (c *deviceConfig) Arches() []Arch {
 	var arches []Arch
 	for _, target := range c.config.Targets[Android] {
