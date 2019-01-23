@@ -22,6 +22,30 @@
       "revId": "d2f9414e443a12cf2fad67121507d3a19849141c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac0a52d5_6533fb6a",
+        "filename": "java/app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-01-23T15:27:02Z",
+      "side": 1,
+      "message": "Yeah, Dan and I talked about this before making this change and concluded that assuming all users to use modules is a reasonable compromise because one can simply add a cert module whenever needed, and this provides much cleaner (and thus readable) representation.\n\nFWIW, if we eventually decide to support the both use cases, I personally think the format should be the opposite, prepending module names with a colon, to be consistent with the bp syntax.",
+      "parentUuid": "e4fad0f1_b2147301",
+      "range": {
+        "startLine": 333,
+        "startChar": 9,
+        "endLine": 333,
+        "endChar": 12
+      },
+      "revId": "d2f9414e443a12cf2fad67121507d3a19849141c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
