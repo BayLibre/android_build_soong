@@ -46,6 +46,30 @@
       "revId": "6769f3fe6f65c8177ccb72a77b5d00e9d4531bd3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4536f1ad_503f93b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-01-23T17:48:31Z",
+      "side": 1,
+      "message": "Could you point at the CL implementing this change?",
+      "parentUuid": "52f40d5b_878b4a9f",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 4
+      },
+      "revId": "6769f3fe6f65c8177ccb72a77b5d00e9d4531bd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
