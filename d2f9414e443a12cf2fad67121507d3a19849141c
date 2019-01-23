@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4fad0f1_b2147301",
+        "filename": "java/app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-23T08:40:18Z",
+      "side": 1,
+      "message": "this assumes that the overriding certificate is always a module not a path? isn\u0027t this too strict?\n\nCan we detect if \u0027/\u0027 is in certificate to determine it is a path or a module name?",
+      "range": {
+        "startLine": 333,
+        "startChar": 9,
+        "endLine": 333,
+        "endChar": 12
+      },
+      "revId": "d2f9414e443a12cf2fad67121507d3a19849141c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
