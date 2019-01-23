@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "033b0bfc_6c7fbec3",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-23T21:53:50Z",
+      "side": 1,
+      "message": "Soong can\u0027t use stat directly, otherwise there is no dependency if frameworks/base is added.  apex.go uses:\n\n\tif !android.ExistentPathForSource(ctx, \"frameworks/base\").Valid()\n\nMaybe that should be promoted to a config method.",
+      "revId": "af4b33c998b8c5c69e631ae6894f1b41c7bf1258",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
