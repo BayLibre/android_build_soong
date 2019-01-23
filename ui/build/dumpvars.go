@@ -214,7 +214,9 @@ func runMakeProductConfig(ctx Context, config Config) {
 	}
 
 	// Print the banner like make does
-	ctx.Writer.Print(Banner(make_vars))
+	if !config.Environment().IsEnvTrue("QUIET_BUILD") {
+		ctx.Writer.Print(Banner(make_vars))
+	}
 
 	// Populate the environment
 	env := config.Environment()

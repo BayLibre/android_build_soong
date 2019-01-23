@@ -16,6 +16,7 @@ package terminal
 
 import (
 	"fmt"
+	"os"
 	"strings"
 	"time"
 
@@ -27,6 +28,7 @@ type statusOutput struct {
 	format string
 
 	start time.Time
+	quiet bool
 }
 
 // NewStatusOutput returns a StatusOutput that represents the
@@ -36,11 +38,20 @@ type statusOutput struct {
 // statusFormat takes nearly all the same options as NINJA_STATUS.
 // %c is currently unsupported.
 func NewStatusOutput(w Writer, statusFormat string) status.StatusOutput {
+	quiet := false
+	for _, ev := range os.Environ() {
+		if ev == "QUIET_BUILD=1" || ev == "QUIET_BUILD=y" || ev == "QUIET_BUILD=yes" || ev == "QUIET_BUILD=on" || ev == "QUIET_BUILD=true" {
+			quiet = true
+			break
+		}
+	}
+
 	return &statusOutput{
 		writer: w,
 		format: statusFormat,
 
 		start: time.Now(),
+		quiet: quiet,
 	}
 }
 
@@ -76,13 +87,12 @@ func (s *statusOutput) FinishAction(result status.ActionResult, counts status.Co
 	progress := s.progress(counts) + str
 
 	if result.Error != nil {
-		hasCommand := ""
-		if result.Command != "" {
-			hasCommand = "\n"
+		targets := strings.Join(result.Outputs, " ")
+		if s.quiet || result.Command == "" {
+			s.writer.StatusAndMessage(progress, fmt.Sprintf("FAILED: %s\n%s", targets, result.Output))
+		} else {
+			s.writer.StatusAndMessage(progress, fmt.Sprintf("FAILED: %s\n%s\n%s", targets, result.Command, result.Output))
 		}
-
-		s.writer.StatusAndMessage(progress, fmt.Sprintf("FAILED: %s\n%s%s%s",
-			strings.Join(result.Outputs, " "), result.Command, hasCommand, result.Output))
 	} else if result.Output != "" {
 		s.writer.StatusAndMessage(progress, result.Output)
 	} else {
