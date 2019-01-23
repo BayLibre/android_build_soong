@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61275bbd_55f370e6",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-01-23T18:32:05Z",
+      "side": 1,
+      "message": "This if block is the only change that might affect the function\u0027s behavior, IMO. Previously, it ran after assigning a final value to certificates and creating the app package, but now it runs before them. Based on my interpretation of the code, there shouldn\u0027t be any diffs, but I thought it\u0027s worth bringing your attention.",
+      "revId": "731df35247f40d4e8afcd48e59c5ed95ad2cbcc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
