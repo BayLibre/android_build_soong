@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bdc89faf_27ea4bc7",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-01-23T23:41:43Z",
+      "side": 1,
+      "message": "At the moment it will spit out invalid property, say:\nandroid_test {\n    ...\n    local_module_path: {\n        var: \"TARGET_OUT_DATA_APPS\",\n    },\n    ...\n\nPerhaps rewriteAndroidPrebuiltEtc in bpfix.go should remove this property for the module types it doesn\u0027t handle? Or local_module_path handling should be moved to a separate function where this property is handled when needed and removed otherwise?",
+      "parentUuid": "f9ff1f0f_44fe5f21",
+      "revId": "3046fba5016681224939624cbcfb709036c105b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "db6b9ed6_f02e95c6",
         "filename": "androidmk/cmd/androidmk/android.go",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "08949b50_f0c29516",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-01-23T23:41:43Z",
+      "side": 1,
+      "message": "It will show as\n    // ANDROIDMK TRANSLATION ERROR: Cannot handle appending to LOCAL_MODULE_PATH\n    // LOCAL_MODULE_PATH +\u003d $(TARGET_OUT)/etc/seccomp_policy",
+      "parentUuid": "db6b9ed6_f02e95c6",
+      "revId": "3046fba5016681224939624cbcfb709036c105b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0dcf252a_28644e61",
         "filename": "androidmk/cmd/androidmk/android.go",
         "patchSetId": 2
@@ -50,6 +86,24 @@
       "revId": "3046fba5016681224939624cbcfb709036c105b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b99c32ec_01ff7fc6",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-01-23T23:41:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0dcf252a_28644e61",
+      "revId": "3046fba5016681224939624cbcfb709036c105b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "a965f1d6_11bcc345",
+        "filename": "androidmk/cmd/androidmk/androidmk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-01-23T23:41:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc33b51a_537caf01",
+      "range": {
+        "startLine": 817,
+        "startChar": 0,
+        "endLine": 817,
+        "endChar": 28
+      },
+      "revId": "3046fba5016681224939624cbcfb709036c105b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9512ec0_2267c7e6",
         "filename": "bpfix/bpfix/bpfix.go",
         "patchSetId": 2
@@ -90,6 +168,24 @@
       "revId": "3046fba5016681224939624cbcfb709036c105b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "034c4195_f34a4777",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-01-23T23:41:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9512ec0_2267c7e6",
+      "revId": "3046fba5016681224939624cbcfb709036c105b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -110,6 +206,24 @@
     },
     {
       "key": {
+        "uuid": "c961bf73_3efb13f4",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-01-23T23:41:43Z",
+      "side": 1,
+      "message": "If there are multiple items, I am not sure what to do.\nNot sure what to do with multiple items.",
+      "parentUuid": "1528e0d7_6d15edc1",
+      "revId": "3046fba5016681224939624cbcfb709036c105b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c9fd92c5_0f67e43d",
         "filename": "bpfix/bpfix/bpfix_test.go",
         "patchSetId": 2
@@ -121,6 +235,24 @@
       "writtenOn": "2019-01-23T05:05:13Z",
       "side": 1,
       "message": "Assuming either input from androidmk, or a valid Android.bp file, won\u0027t this always be a list?",
+      "revId": "3046fba5016681224939624cbcfb709036c105b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7caaa554_632b8632",
+        "filename": "bpfix/bpfix/bpfix_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-01-23T23:41:43Z",
+      "side": 1,
+      "message": "No. \n  FOO :\u003d $(BAR)\nin the Android.mk will result in a bpparser.Variable node for BAR,\n  FOO :\u003d $(BAR) x\nwill result in something more bizarre.\nI\u0027ve added tests.",
+      "parentUuid": "c9fd92c5_0f67e43d",
       "revId": "3046fba5016681224939624cbcfb709036c105b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
