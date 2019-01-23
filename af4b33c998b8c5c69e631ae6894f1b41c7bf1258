@@ -16,6 +16,24 @@
       "revId": "af4b33c998b8c5c69e631ae6894f1b41c7bf1258",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39808b26_cdfb90ce",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-01-23T22:20:05Z",
+      "side": 1,
+      "message": "Ok. Left it in paths.go though. Seemed like Config doesn\u0027t really have anything to do with it and it would just add unnecessary dependencies between the files.",
+      "parentUuid": "033b0bfc_6c7fbec3",
+      "revId": "af4b33c998b8c5c69e631ae6894f1b41c7bf1258",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
