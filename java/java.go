@@ -1017,6 +1017,7 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars ...android.Path
 			srcJars = append(srcJars, kaptSrcJar)
 			// Disable annotation processing in javac, it's already been handled by kapt
 			flags.processorPath = nil
+			flags.processor = ""
 		}
 
 		kotlinJar := android.PathForModuleOut(ctx, "kotlin", jarName)
