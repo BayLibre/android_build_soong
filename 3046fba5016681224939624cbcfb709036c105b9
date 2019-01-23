@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9ff1f0f_44fe5f21",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-23T05:05:13Z",
+      "side": 1,
+      "message": "LOCAL_MODULE_PATH is used in other places than just prebuilts -- what does it do in those cases? Can we get some tests around those (even if they\u0027re just testing the error comment, or the invalid property that\u0027s created)",
+      "revId": "3046fba5016681224939624cbcfb709036c105b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db6b9ed6_f02e95c6",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-23T05:05:13Z",
+      "side": 1,
+      "message": "Does this return enough information to the user to understand what the problem was? (mainly what was being appended, or at least the location in the source file)",
+      "revId": "3046fba5016681224939624cbcfb709036c105b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dcf252a_28644e61",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-23T05:05:13Z",
+      "side": 1,
+      "message": "COPY",
+      "revId": "3046fba5016681224939624cbcfb709036c105b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc33b51a_537caf01",
+        "filename": "androidmk/cmd/androidmk/androidmk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-23T05:05:13Z",
+      "side": 1,
+      "message": "This actually isn\u0027t representable in soong (or allowed in make unless OUT_DIR\u003dfoo, which would be bad to assume). It\u0027s effectively a full output path, including the out directory.",
+      "range": {
+        "startLine": 817,
+        "startChar": 0,
+        "endLine": 817,
+        "endChar": 28
+      },
+      "revId": "3046fba5016681224939624cbcfb709036c105b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9512ec0_2267c7e6",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-23T05:05:13Z",
+      "side": 1,
+      "message": "Should this be submitted, or was it just temporary debugging?",
+      "revId": "3046fba5016681224939624cbcfb709036c105b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1528e0d7_6d15edc1",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-23T05:05:13Z",
+      "side": 1,
+      "message": "Even if we can\u0027t convert srcs -\u003e src, it would still be good to convert local_module_path so that the user doesn\u0027t have to do everything manually.\n\nCan we get a test showing the error message the user sees too?",
+      "revId": "3046fba5016681224939624cbcfb709036c105b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9fd92c5_0f67e43d",
+        "filename": "bpfix/bpfix/bpfix_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-23T05:05:13Z",
+      "side": 1,
+      "message": "Assuming either input from androidmk, or a valid Android.bp file, won\u0027t this always be a list?",
+      "revId": "3046fba5016681224939624cbcfb709036c105b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
