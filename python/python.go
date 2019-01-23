@@ -208,6 +208,7 @@ var (
 	pyIdentifierRegexp = regexp.MustCompile(`^[a-zA-Z_][a-zA-Z0-9_-]*$`)
 	pyExt              = ".py"
 	protoExt           = ".proto"
+      soExt              = ".so"
 	pyVersion2         = "PY2"
 	pyVersion3         = "PY3"
 	initFileName       = "__init__.py"
@@ -438,7 +439,7 @@ func (p *Module) genModulePathMappings(ctx android.ModuleContext, pkgPath string
 	destToPyData := make(map[string]string)
 
 	for _, s := range expandedSrcs {
-		if s.Ext() != pyExt && s.Ext() != protoExt {
+		if s.Ext() != pyExt && s.Ext() != protoExt && s.Ext() != soExt {
 			ctx.PropertyErrorf("srcs", "found non (.py|.proto) file: %q!", s.String())
 			continue
 		}
