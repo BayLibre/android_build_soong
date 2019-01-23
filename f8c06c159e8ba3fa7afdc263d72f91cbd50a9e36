@@ -16,6 +16,24 @@
       "revId": "f8c06c159e8ba3fa7afdc263d72f91cbd50a9e36",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e3c6289_01ac75f0",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-23T16:09:41Z",
+      "side": 0,
+      "message": "In the current way, no. But I now realize a config change might make dex2oat read them. Here\u0027s the proper CL:\nhttps://android-review.googlesource.com/c/platform/build/+/882297",
+      "parentUuid": "f331071e_b788555f",
+      "revId": "f8c06c159e8ba3fa7afdc263d72f91cbd50a9e36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
