@@ -364,6 +364,8 @@ func (ddoc *Droiddoc) AndroidMk() android.AndroidMkData {
 					fmt.Fprintln(w, ".PHONY: checkapi")
 					fmt.Fprintln(w, "checkapi:",
 						ddoc.checkCurrentApiTimestamp.String())
+					fmt.Fprintln(w, "checkapi:",
+						ddoc.checkLastReleasedApiTimestamp.String())
 
 					fmt.Fprintln(w, ".PHONY: droidcore")
 					fmt.Fprintln(w, "droidcore: checkapi")
