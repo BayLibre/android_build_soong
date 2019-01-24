@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "3264c6b9_4ef9bc33",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-24T23:26:19Z",
+      "side": 1,
+      "message": "The apex can tell what it\u0027s primary arch is by looking at the first arch in ctx.MultiTargets().  The binary module can if it is the primary arch by calling ctx.PrimaryArch(), and storing a bool on the module if it is true.  Then you can add Symlinks(isPrimaryArch bool) that returns the symlinks for the module, verifying that it is the primary arch if that\u0027s what the apex expects.",
+      "parentUuid": "601cdfda_7988e1cd",
+      "range": {
+        "startLine": 592,
+        "startChar": 3,
+        "endLine": 592,
+        "endChar": 53
+      },
+      "revId": "35a5bdaa83c71a62f9a13c6c26c10d6cc2272046",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "43457392_a400851f",
         "filename": "apex/apex.go",
         "patchSetId": 2
