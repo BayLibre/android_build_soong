@@ -16,6 +16,24 @@
       "revId": "c32c6b0d79b0f907328cce9077d6d5a3864ca269",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36b45eb0_efb84d4b",
+        "filename": "cc/linker.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1113708
+      },
+      "writtenOn": "2019-01-24T19:29:36Z",
+      "side": 1,
+      "message": "These are provided as prebuilts from the Fuchsia SDK. While they are still evolving now, in the future they should be tied to a specific sdk release, we believe.",
+      "parentUuid": "8501af28_83d3bcb2",
+      "revId": "c32c6b0d79b0f907328cce9077d6d5a3864ca269",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
