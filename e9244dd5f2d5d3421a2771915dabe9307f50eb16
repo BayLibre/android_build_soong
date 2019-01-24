@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d45a0e6c_7d2bd408",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-24T21:05:18Z",
+      "side": 1,
+      "message": "Can you reuse classifyLocalOrGlobalPath here?",
+      "revId": "e9244dd5f2d5d3421a2771915dabe9307f50eb16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
