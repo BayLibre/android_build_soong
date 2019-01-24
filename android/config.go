@@ -902,6 +902,11 @@ func (c *deviceConfig) OverrideCertificateFor(name string) (certificatePath stri
 		"invalid override rule %q in PRODUCT_CERTIFICATE_OVERRIDES should be <module_name>:<certificate_module_name>")
 }
 
+func (c *deviceConfig) OverridePackageNameFor(name string) (packageName string, overridden bool) {
+	return findOverrideValue(c.config.productVariables.PackageNameOverrides, name,
+		"invalid override rule %q in PRODUCT_PACKAGE_NAME_OVERRIDES should be <module_name>:<package_name>")
+}
+
 func findOverrideValue(overrides []string, name string, errorMsg string) (newValue string, overridden bool) {
 	if overrides == nil || len(overrides) == 0 {
 		return "", false

@@ -208,6 +208,21 @@ func (m TestingModule) Output(file string) BuildParams {
 	return p
 }
 
+// AllOutputs returns all BuildParams.Output's and BuildParams.Outputspath's in their full path string forms.
+func (m TestingModule) AllOutputs() []string {
+	var outputFullPaths []string
+	for _, p := range m.module.BuildParamsForTests() {
+		outputs := append(WritablePaths(nil), p.Outputs...)
+		if p.Output != nil {
+			outputs = append(outputs, p.Output)
+		}
+		for _, f := range outputs {
+			outputFullPaths = append(outputFullPaths, f.String())
+		}
+	}
+	return outputFullPaths
+}
+
 func FailIfErrored(t *testing.T, errs []error) {
 	t.Helper()
 	if len(errs) > 0 {

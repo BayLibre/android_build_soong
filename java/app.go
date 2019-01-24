@@ -215,11 +215,11 @@ func (a *AndroidApp) dexBuildActions(ctx android.ModuleContext) android.Path {
 		// framework-res.apk is installed as system/framework/framework-res.apk
 		installDir = "framework"
 	} else if Bool(a.appProperties.Privileged) {
-		installDir = filepath.Join("priv-app", ctx.ModuleName())
+		installDir = filepath.Join("priv-app", getInstallPackageName(ctx))
 	} else {
-		installDir = filepath.Join("app", ctx.ModuleName())
+		installDir = filepath.Join("app", getInstallPackageName(ctx))
 	}
-	a.dexpreopter.installPath = android.PathForModuleInstall(ctx, installDir, ctx.ModuleName()+".apk")
+	a.dexpreopter.installPath = android.PathForModuleInstall(ctx, installDir, getInstallPackageName(ctx)+".apk")
 
 	if ctx.ModuleName() != "framework-res" {
 		a.Module.compile(ctx, a.aaptSrcJar)
@@ -307,9 +307,15 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 		// framework-res.apk is installed as system/framework/framework-res.apk
 		ctx.InstallFile(android.PathForModuleInstall(ctx, "framework"), ctx.ModuleName()+".apk", a.outputFile)
 	} else if Bool(a.appProperties.Privileged) {
-		ctx.InstallFile(android.PathForModuleInstall(ctx, "priv-app", ctx.ModuleName()), ctx.ModuleName()+".apk", a.outputFile)
+		ctx.InstallFile(
+			android.PathForModuleInstall(ctx, "priv-app", getInstallPackageName(ctx)),
+			getInstallPackageName(ctx)+".apk",
+			a.outputFile)
 	} else {
-		ctx.InstallFile(android.PathForModuleInstall(ctx, "app", ctx.ModuleName()), ctx.ModuleName()+".apk", a.outputFile)
+		ctx.InstallFile(
+			android.PathForModuleInstall(ctx, "app", getInstallPackageName(ctx)),
+			getInstallPackageName(ctx)+".apk",
+			a.outputFile)
 	}
 }
 
@@ -355,6 +361,16 @@ func (a *AndroidApp) getCertString(ctx android.BaseContext) string {
 		return ":" + certificate
 	}
 	return String(a.appProperties.Certificate)
+}
+
+// Gets an install package name. It is normally the module name, but can also be overridden with a
+// production variable. The returned name should not be used in intermediate outputs.
+func getInstallPackageName(ctx android.BaseContext) string {
+	overridingName, overridden := ctx.DeviceConfig().OverridePackageNameFor(ctx.ModuleName())
+	if overridden {
+		return overridingName
+	}
+	return ctx.ModuleName()
 }
 
 func AndroidAppFactory() android.Module {
