@@ -56,6 +56,7 @@ var rewriteProperties = map[string](func(variableAssignmentContext) error){
 	"LOCAL_CFLAGS":                cflags,
 	"LOCAL_UNINSTALLABLE_MODULE":  invert("installable"),
 	"LOCAL_PROGUARD_ENABLED":      proguardEnabled,
+	"LOCAL_PROTOC_FLAGS":          protocFlags,
 
 	// composite functions
 	"LOCAL_MODULE_TAGS": includeVariableIf(bpVariable{"tags", bpparser.ListType}, not(valueDumpEquals("optional"))),
@@ -162,6 +163,8 @@ func init() {
 			// Jacoco filters:
 			"LOCAL_JACK_COVERAGE_INCLUDE_FILTER": "jacoco.include_filter",
 			"LOCAL_JACK_COVERAGE_EXCLUDE_FILTER": "jacoco.exclude_filter",
+
+			"LOCAL_PROTO_JAVA_OUTPUT_PARAMS": "proto.output_params",
 		})
 
 	addStandardProperties(bpparser.BoolType,
@@ -640,6 +643,36 @@ func proguardEnabled(ctx variableAssignmentContext) error {
 	return nil
 }
 
+func protocFlags(ctx variableAssignmentContext) error {
+	fields := ctx.mkvalue.Split(" \t")
+	localIncludeDirs := &bpparser.List{}
+	globalIncludeDirs := &bpparser.List{}
+	for _, field := range fields {
+		if len(field.Variables) == 0 {
+			withoutPrefix := strings.TrimPrefix(field.Strings[0], "--proto_path=")
+			if withoutPrefix != field.Strings[0] {
+				globalIncludeDirs.Values = append(globalIncludeDirs.Values, &bpparser.String{Value: withoutPrefix})
+			} else {
+				return fmt.Errorf("Only --proto_path= option is supported in LOCAL_PROTOC_FLAGS values, got %s", field.Strings[0])
+			}
+		} else if len(field.Variables) == 1 && len(field.Strings) == 2 && field.Strings[0] == "--proto_path=" /* TODO: check that variable is LOCAL_PATH */ {
+			localIncludeDirs.Values = append(localIncludeDirs.Values,
+				&bpparser.String{Value: strings.TrimPrefix(field.Strings[1], "/")})
+		} else {
+			return fmt.Errorf("Cannot handle this assignment")
+		}
+	}
+	if len(localIncludeDirs.Values) > 0 {
+		if err := setVariable(ctx.file, false, "proto", "local_include_dirs", localIncludeDirs, true); err != nil {
+			return err
+		}
+	}
+	if len(globalIncludeDirs.Values) > 0 {
+		return setVariable(ctx.file, false, "proto", "include_dirs", globalIncludeDirs, true)
+	}
+
+	return nil
+}
 func invert(name string) func(ctx variableAssignmentContext) error {
 	return func(ctx variableAssignmentContext) error {
 		val, err := makeVariableToBlueprint(ctx.file, ctx.mkvalue, bpparser.BoolType)
