@@ -57,6 +57,7 @@ var rewriteProperties = map[string](func(variableAssignmentContext) error){
 	"LOCAL_UNINSTALLABLE_MODULE":  invert("installable"),
 	"LOCAL_PROGUARD_ENABLED":      proguardEnabled,
 	"LOCAL_MODULE_PATH":           prebuiltModulePath,
+	"LOCAL_PROTOC_FLAGS":          protocFlags,
 
 	// composite functions
 	"LOCAL_MODULE_TAGS": includeVariableIf(bpVariable{"tags", bpparser.ListType}, not(valueDumpEquals("optional"))),
@@ -164,6 +165,8 @@ func init() {
 			// Jacoco filters:
 			"LOCAL_JACK_COVERAGE_INCLUDE_FILTER": "jacoco.include_filter",
 			"LOCAL_JACK_COVERAGE_EXCLUDE_FILTER": "jacoco.exclude_filter",
+
+			"LOCAL_PROTO_JAVA_OUTPUT_PARAMS": "proto.output_params",
 		})
 
 	addStandardProperties(bpparser.BoolType,
@@ -688,6 +691,67 @@ func proguardEnabled(ctx variableAssignmentContext) error {
 		set("optimize.enabled", true)
 	}
 
+	return nil
+}
+
+func protocFlags(ctx variableAssignmentContext) error {
+	fields := ctx.mkvalue.Split(" \t")
+	localIncludeDirs := &bpparser.List{}
+	globalIncludeDirs := &bpparser.List{}
+	indexDashI := -2
+	for index, field := range fields {
+		var bpvalue bpparser.Expression
+		var err error
+		if len(field.Variables) == 0 {
+			if field.Strings[0] == "-I" {
+				indexDashI = index
+				continue
+			}
+			withoutPrefix := strings.TrimPrefix(field.Strings[0], "--proto_path=")
+			if withoutPrefix == field.Strings[0] {
+				withoutPrefix = strings.TrimPrefix(field.Strings[0], "-I")
+			}
+			if withoutPrefix == field.Strings[0] {
+				return fmt.Errorf("Only --proto_path= and -I options are supported in LOCAL_PROTOC_FLAGS values, got %s", field.Strings[0])
+			}
+			bpvalue = &bpparser.String{Value: withoutPrefix}
+			err = nil
+		} else if len(field.Variables) == 1 && varLiteralName(field.Variables[0]) == "LOCAL_PATH" && len(field.Strings) == 2 {
+			dashOpt := field.Strings[0]
+			if dashOpt == "--proto_path=" || dashOpt == "-I" {
+				temp := field
+				temp.Strings[0] = ""
+				bpvalue, err = makeVariableToBlueprint(ctx.file, temp, bpparser.StringType)
+			} else if index == indexDashI+1 {
+				bpvalue, err = makeVariableToBlueprint(ctx.file, field, bpparser.StringType)
+			} else {
+				return fmt.Errorf("Cannot handle '%s' item in LOCAL_PROTOC_FLAGS values", field.Strings[0])
+			}
+		} else {
+			return fmt.Errorf("Cannot handle '%s' item in LOCAL_PROTOC_FLAGS values", field.Strings[0])
+		}
+		if err != nil {
+			return err
+		}
+		path_class, path, err := classifyLocalOrGlobalPath(bpvalue)
+		if err != nil {
+			return err
+		}
+		if path_class == "local" {
+			localIncludeDirs.Values = append(localIncludeDirs.Values, path)
+		} else if path_class == "global" {
+			globalIncludeDirs.Values = append(globalIncludeDirs.Values, path)
+		}
+	}
+
+	if len(localIncludeDirs.Values) > 0 {
+		if err := setVariable(ctx.file, ctx.append, "", "proto.local_include_dirs", localIncludeDirs, true); err != nil {
+			return err
+		}
+	}
+	if len(globalIncludeDirs.Values) > 0 {
+		return setVariable(ctx.file, false, "proto", "include_dirs", globalIncludeDirs, true)
+	}
 	return nil
 }
 

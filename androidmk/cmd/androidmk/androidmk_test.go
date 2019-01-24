@@ -1028,6 +1028,27 @@ prebuilt_etc {
 }
 `,
 	},
+	{
+		desc: "proto options for java library",
+		in: `
+include $(CLEAR_VARS)
+LOCAL_PROTOC_FLAGS := --proto_path=$(LOCAL_PATH)/foo --proto_path=external -I $(LOCAL_PATH)/bar
+LOCAL_PROTO_JAVA_OUTPUT_PARAMS := enum_style=java
+include $(BUILD_STATIC_JAVA_LIBRARY)
+`,
+		expected: `
+java_library {
+    proto: {
+        local_include_dirs: [
+			"foo",
+			"bar",
+		],
+        include_dirs: ["external"],
+        output_params:["enum_style=java"],
+    },
+}
+`,
+	},
 }
 
 func TestEndToEnd(t *testing.T) {
