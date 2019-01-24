@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "efabe0a8_92c7fc36",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-24T21:29:48Z",
+      "side": 1,
+      "message": "Is that a case we need to support?  Could we just check that the apex matches the binary?",
+      "parentUuid": "e1e6260e_39f2a55d",
+      "range": {
+        "startLine": 592,
+        "startChar": 3,
+        "endLine": 592,
+        "endChar": 53
+      },
+      "revId": "35a5bdaa83c71a62f9a13c6c26c10d6cc2272046",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "43457392_a400851f",
         "filename": "apex/apex.go",
         "patchSetId": 2
