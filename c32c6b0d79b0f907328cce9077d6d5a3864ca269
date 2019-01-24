@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8501af28_83d3bcb2",
+        "filename": "cc/linker.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-24T19:14:30Z",
+      "side": 1,
+      "message": "Where do these libraries come from?  If you use ldflags to link them there will be no dependency on them to relink if they change.",
+      "revId": "c32c6b0d79b0f907328cce9077d6d5a3864ca269",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
