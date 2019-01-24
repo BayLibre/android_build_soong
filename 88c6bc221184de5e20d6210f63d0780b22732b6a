@@ -16,6 +16,24 @@
       "revId": "88c6bc221184de5e20d6210f63d0780b22732b6a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be6f7e75_18eb9335",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1322,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-24T23:25:09Z",
+      "side": 1,
+      "message": "I suspect it should be, but I\u0027m not sure anything in the ndk build actually cares about the abi list.",
+      "parentUuid": "eefd5d2a_b3b832e3",
+      "revId": "88c6bc221184de5e20d6210f63d0780b22732b6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
