@@ -56,6 +56,7 @@ var rewriteProperties = map[string](func(variableAssignmentContext) error){
 	"LOCAL_CFLAGS":                cflags,
 	"LOCAL_UNINSTALLABLE_MODULE":  invert("installable"),
 	"LOCAL_PROGUARD_ENABLED":      proguardEnabled,
+	"LOCAL_PROTOC_FLAGS":          protocFlags,
 
 	// composite functions
 	"LOCAL_MODULE_TAGS": includeVariableIf(bpVariable{"tags", bpparser.ListType}, not(valueDumpEquals("optional"))),
@@ -162,6 +163,8 @@ func init() {
 			// Jacoco filters:
 			"LOCAL_JACK_COVERAGE_INCLUDE_FILTER": "jacoco.include_filter",
 			"LOCAL_JACK_COVERAGE_EXCLUDE_FILTER": "jacoco.exclude_filter",
+
+			"LOCAL_PROTO_JAVA_OUTPUT_PARAMS": "proto.output_params",
 		})
 
 	addStandardProperties(bpparser.BoolType,
@@ -637,6 +640,50 @@ func proguardEnabled(ctx variableAssignmentContext) error {
 		set("optimize.enabled", true)
 	}
 
+	return nil
+}
+
+func protocFlags(ctx variableAssignmentContext) error {
+	fields := ctx.mkvalue.Split(" \t")
+	localIncludeDirs := &bpparser.List{}
+	globalIncludeDirs := &bpparser.List{}
+	for _, field := range fields {
+		var bpvalue bpparser.Expression
+		var err error
+		if len(field.Variables) == 0 {
+			withoutPrefix := strings.TrimPrefix(field.Strings[0], "--proto_path=")
+			if withoutPrefix == field.Strings[0] {
+				return fmt.Errorf("Only --proto_path= option is supported in LOCAL_PROTOC_FLAGS values, got %s", field.Strings[0])
+			}
+			bpvalue = &bpparser.String{Value: withoutPrefix}
+		} else if len(field.Variables) == 1 && len(field.Strings) == 2 && field.Strings[0] == "--proto_path=" /* TODO: check that variable is LOCAL_PATH */ {
+			temp := field
+			temp.Strings[0] = ""
+			if bpvalue, err = makeVariableToBlueprint(ctx.file, temp, bpparser.StringType); err != nil {
+				return err
+			}
+		} else {
+			return fmt.Errorf("Cannot handle '%s' item in LOCAL_PROTOC_FLAGS values", field.Strings[0])
+		}
+		path_class, path, err := classifyLocalOrGlobalPath(bpvalue)
+		if err != nil {
+			return err
+		}
+		if path_class == "local" {
+			localIncludeDirs.Values = append(localIncludeDirs.Values, path)
+		} else if path_class == "global" {
+			globalIncludeDirs.Values = append(globalIncludeDirs.Values, path)
+		}
+	}
+
+	if len(localIncludeDirs.Values) > 0 {
+		if err := setVariable(ctx.file, ctx.append, "", "proto.local_include_dirs", localIncludeDirs, true); err != nil {
+			return err
+		}
+	}
+	if len(globalIncludeDirs.Values) > 0 {
+		return setVariable(ctx.file, false, "proto", "include_dirs", globalIncludeDirs, true)
+	}
 	return nil
 }
 
