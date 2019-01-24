@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eefd5d2a_b3b832e3",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1322,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-24T23:12:50Z",
+      "side": 1,
+      "message": "+danalbert since this will affect the NDK build\n\nshould armeabi be armeabi-v7a?",
+      "revId": "88c6bc221184de5e20d6210f63d0780b22732b6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
