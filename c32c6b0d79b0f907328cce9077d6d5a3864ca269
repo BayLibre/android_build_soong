@@ -52,6 +52,24 @@
       "revId": "c32c6b0d79b0f907328cce9077d6d5a3864ca269",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16051951_e1410ff7",
+        "filename": "cc/linker.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1113708
+      },
+      "writtenOn": "2019-01-24T19:35:21Z",
+      "side": 1,
+      "message": "Hmm, ok, that\u0027s good to know. I\u0027ve filed b/123355960 on my team to fix that, thanks.",
+      "parentUuid": "dea00b3d_5f353be4",
+      "revId": "c32c6b0d79b0f907328cce9077d6d5a3864ca269",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
