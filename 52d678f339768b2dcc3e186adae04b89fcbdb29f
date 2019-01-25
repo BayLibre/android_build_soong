@@ -16,6 +16,24 @@
       "revId": "52d678f339768b2dcc3e186adae04b89fcbdb29f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24e03c0e_4e2a1ee7",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1668,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-25T03:08:06Z",
+      "side": 1,
+      "message": ":(  result of a bad rebase. Removed.",
+      "parentUuid": "8e86261c_fb4ea484",
+      "revId": "52d678f339768b2dcc3e186adae04b89fcbdb29f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
