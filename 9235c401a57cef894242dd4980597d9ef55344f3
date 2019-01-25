@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f9ef7e5_863f30e0",
+        "filename": "ui/build/dumpvars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-25T19:11:48Z",
+      "side": 1,
+      "message": "maybe ANDROID_QUIET_BUILD, or ANDROID_HIDE_BANNER?",
+      "range": {
+        "startLine": 217,
+        "startChar": 37,
+        "endLine": 217,
+        "endChar": 48
+      },
+      "revId": "9235c401a57cef894242dd4980597d9ef55344f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e47021e7_ae72b7e1",
+        "filename": "ui/terminal/status.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-25T19:11:48Z",
+      "side": 1,
+      "message": "This seems like something that should be passed in by the caller.  Either add a quiet bool, or add a\n\nfunc (s *statusOutput) Quiet() status.StatusOutput {\n    s.quiet \u003d true\n}\n\nthat can be used as:\n\n    status :\u003d NewStatusOutput(w, fmt).Quiet()",
+      "revId": "9235c401a57cef894242dd4980597d9ef55344f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c8ec959_3c264d49",
+        "filename": "ui/terminal/status.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-25T19:11:48Z",
+      "side": 1,
+      "message": "Now that we have out/error.log and can adjust output however we want, maybe we should rethink how we display all of this?  We could remove the command line except from error.log, or we could keep the immediate error message as-is, but then at the end of the build print a big red \"build failed\" banner followed by an error synopsis that is designed to be as actionable as possible by keeping a high signal to noise ratio?",
+      "revId": "9235c401a57cef894242dd4980597d9ef55344f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
