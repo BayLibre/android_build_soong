@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "149a11d6_0b74a053",
+        "filename": "android/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-01-25T01:39:33Z",
+      "side": 1,
+      "message": "I copied and pasted it from the above functions thinking there must be a var named Outputspath, lol. Fixed this one and removed \u0027path\u0027 from the above two because they didn\u0027t seem to need it.",
+      "parentUuid": "adff0700_bf40c2f7",
+      "range": {
+        "startLine": 211,
+        "startChar": 63,
+        "endLine": 211,
+        "endChar": 76
+      },
+      "revId": "406c210f31745128b2199cc2b4858daa4077fb9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35107169_48c4860c",
         "filename": "android/testing.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "eb694296_16482968",
+        "filename": "android/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-01-25T01:39:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35107169_48c4860c",
+      "range": {
+        "startLine": 219,
+        "startChar": 2,
+        "endLine": 221,
+        "endChar": 3
+      },
+      "revId": "406c210f31745128b2199cc2b4858daa4077fb9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6d71b1c_2c978651",
         "filename": "java/app.go",
         "patchSetId": 1
@@ -62,6 +110,24 @@
       "revId": "406c210f31745128b2199cc2b4858daa4077fb9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5852b47_3d7a41e1",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-01-25T01:39:33Z",
+      "side": 1,
+      "message": "Done. Also changed the name to installApkName because \u0027package name\u0027 can be very confusing in android_app\u0027s context.",
+      "parentUuid": "b6d71b1c_2c978651",
+      "revId": "406c210f31745128b2199cc2b4858daa4077fb9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -85,6 +151,30 @@
       "revId": "406c210f31745128b2199cc2b4858daa4077fb9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "449e6620_91bc4a1a",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-01-25T01:39:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7a833d1_07415124",
+      "range": {
+        "startLine": 370,
+        "startChar": 1,
+        "endLine": 373,
+        "endChar": 24
+      },
+      "revId": "406c210f31745128b2199cc2b4858daa4077fb9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
