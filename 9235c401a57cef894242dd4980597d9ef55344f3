@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cf639391_6e55b2da",
+        "filename": "ui/build/dumpvars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-01-25T23:18:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f9ef7e5_863f30e0",
+      "range": {
+        "startLine": 217,
+        "startChar": 37,
+        "endLine": 217,
+        "endChar": 48
+      },
+      "revId": "9235c401a57cef894242dd4980597d9ef55344f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e47021e7_ae72b7e1",
         "filename": "ui/terminal/status.go",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "2d754671_4f67c526",
+        "filename": "ui/terminal/status.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-01-25T23:18:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e47021e7_ae72b7e1",
+      "revId": "9235c401a57cef894242dd4980597d9ef55344f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c8ec959_3c264d49",
         "filename": "ui/terminal/status.go",
         "patchSetId": 1
@@ -56,6 +98,24 @@
       "revId": "9235c401a57cef894242dd4980597d9ef55344f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e54a5bd6_868a0156",
+        "filename": "ui/terminal/status.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-01-25T23:18:53Z",
+      "side": 1,
+      "message": "This setting (ANDROID_QUIET_BUILD\u003dt) is obviously aimed at the incremental development where the typical output looks like the one in the description where a build results in a single failure that almost immediately terminates it. IMHO providing an additional summary wouldn\u0027t help much in such scenario, except perhaps displaying a reminder to check the error.log",
+      "parentUuid": "8c8ec959_3c264d49",
+      "revId": "9235c401a57cef894242dd4980597d9ef55344f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
