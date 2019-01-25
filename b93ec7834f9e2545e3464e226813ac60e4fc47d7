@@ -22,6 +22,30 @@
       "revId": "b93ec7834f9e2545e3464e226813ac60e4fc47d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5a245b2_6c8eb47a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-01-25T05:49:31Z",
+      "side": 1,
+      "message": "Yeah, it can be super-confusing. Which is why I used a different name, \u0027installApkName\u0027 in java/app.go. However, when used outside the java package, I thought keeping the old name, \u0027package name\u0027 as in the original make var, LOCAL_PACKAGE_NAME, was the right thing to do. I don\u0027t feel strong about it, though. Always open to suggestions especially when it comes to naming. :)\n\nThe commit message body definitely needs to be updated. Will work on it.",
+      "parentUuid": "5fa48f8c_aa6c2446",
+      "range": {
+        "startLine": 7,
+        "startChar": 27,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "b93ec7834f9e2545e3464e226813ac60e4fc47d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
