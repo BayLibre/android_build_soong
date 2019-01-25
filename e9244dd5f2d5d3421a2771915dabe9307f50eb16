@@ -16,6 +16,24 @@
       "revId": "e9244dd5f2d5d3421a2771915dabe9307f50eb16",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7732634_39a6aea4",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-01-25T00:24:32Z",
+      "side": 1,
+      "message": "Did that. Alas, because of the peculiarities of the blueprint parser I wasn\u0027t able to leverage splitAndAssign. \nBTW, addValues() in values.go doesn\u0027t concatenate the lists, so passing [\"far\"] and \"bar\" to it yields [\"far\"] + [\"bar\"]. I would expect [\"far\",\"bar\"], this would reduce the code size in this change and would also make androidmk output in several cases a bit prettier.",
+      "parentUuid": "d45a0e6c_7d2bd408",
+      "revId": "e9244dd5f2d5d3421a2771915dabe9307f50eb16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
