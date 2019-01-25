@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "adff0700_bf40c2f7",
+        "filename": "android/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-25T00:29:16Z",
+      "side": 1,
+      "message": "missing space",
+      "range": {
+        "startLine": 211,
+        "startChar": 63,
+        "endLine": 211,
+        "endChar": 76
+      },
+      "revId": "406c210f31745128b2199cc2b4858daa4077fb9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35107169_48c4860c",
+        "filename": "android/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-25T00:29:16Z",
+      "side": 1,
+      "message": "outputFullPaths \u003d append(outputFullPaths, outputs.Strings())",
+      "range": {
+        "startLine": 219,
+        "startChar": 2,
+        "endLine": 221,
+        "endChar": 3
+      },
+      "revId": "406c210f31745128b2199cc2b4858daa4077fb9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6d71b1c_2c978651",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-25T00:29:16Z",
+      "side": 1,
+      "message": "This is a lot of lookups, maybe look it up once and store it on the *AndroidApp?",
+      "revId": "406c210f31745128b2199cc2b4858daa4077fb9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7a833d1_07415124",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-25T00:29:16Z",
+      "side": 1,
+      "message": "This logic could go in OverridePackageName",
+      "range": {
+        "startLine": 370,
+        "startChar": 1,
+        "endLine": 373,
+        "endChar": 24
+      },
+      "revId": "406c210f31745128b2199cc2b4858daa4077fb9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
