@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0fa1c7f8_d3fb5ae7",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-25T05:23:24Z",
+      "side": 1,
+      "message": "Any reason you can\u0027t use makeVariableToBlueprint(..., bpparser.ListType)?",
+      "revId": "33878ecc1bf50bb4db60e7dba0cc45bb1f104217",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6538dfd_a2258fbe",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-25T05:23:24Z",
+      "side": 1,
+      "message": "I see one use of -I instead of --proto_path\u003d",
+      "revId": "33878ecc1bf50bb4db60e7dba0cc45bb1f104217",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cf681bb_5168babc",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-25T05:23:24Z",
+      "side": 1,
+      "message": "I normally do this with strings.HasPrefix + strings.TrimPrefix, although that requires passing the prefix in twice.",
+      "revId": "33878ecc1bf50bb4db60e7dba0cc45bb1f104217",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6551bdfc_f802b312",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-25T05:23:24Z",
+      "side": 1,
+      "message": "I\u0027d suggest adding a function that can take a bp string and strip off a prefix, returning a bool whether the prefix was found.  Then this can be:\n\nbpvalue, err \u003d makeVariableToBlueprint(ctx.file, field, bpparser.StringType)\nbpvalue, ok :\u003d stripPrefix(bpvalue, \"--proto_path\")\nif !ok {\n    return fmt.Errorf(\"Only --proto_path\u003d option is supported...\n}\nclassifyLocalOrGlobalPath(bpvalue)\n\nYou could also make splitAndAssign take a prefix to strip or a lambda to run on each element.",
+      "revId": "33878ecc1bf50bb4db60e7dba0cc45bb1f104217",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
