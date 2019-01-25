@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5fa48f8c_aa6c2446",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-25T03:24:27Z",
+      "side": 1,
+      "message": "This doesn\u0027t override the package name but output file name, right? If so, can we name this differently?",
+      "range": {
+        "startLine": 7,
+        "startChar": 27,
+        "endLine": 7,
+        "endChar": 41
+      },
+      "revId": "b93ec7834f9e2545e3464e226813ac60e4fc47d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
