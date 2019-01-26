@@ -19,12 +19,19 @@ import (
 	"bytes"
 	"html/template"
 	"io/ioutil"
+	"reflect"
 
 	"github.com/google/blueprint/bootstrap"
 )
 
 func writeDocs(ctx *android.Context, filename string) error {
-	moduleTypeList, err := bootstrap.ModuleTypeDocs(ctx.Context)
+	moduleTypeFactories := android.ModuleTypeFactories()
+	bpModuleTypeFactories := make(map[string]reflect.Value)
+	for moduleType, factory := range moduleTypeFactories {
+		bpModuleTypeFactories[moduleType] = reflect.ValueOf(factory)
+	}
+
+	moduleTypeList, err := bootstrap.ModuleTypeDocs(ctx.Context, bpModuleTypeFactories)
 	if err != nil {
 		return err
 	}
