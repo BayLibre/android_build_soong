@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93f31f37_2d6a053a",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-28T17:48:33Z",
+      "side": 1,
+      "message": "won\u0027t this be called for host apex bundles as well?",
+      "range": {
+        "startLine": 487,
+        "startChar": 38,
+        "endLine": 487,
+        "endChar": 52
+      },
+      "revId": "8ff9c7d3ae1b73b8b346cb7aeab44787c05e3f32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
