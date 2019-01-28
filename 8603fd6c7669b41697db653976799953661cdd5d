@@ -16,6 +16,24 @@
       "revId": "8603fd6c7669b41697db653976799953661cdd5d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05af4130_48f334f1",
+        "filename": "android/sh_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-28T18:59:42Z",
+      "side": 1,
+      "message": "(this was largely modeled after prebuilt_etc). I think the intent here was to describe why we were doing the copy instead of just using the sourceFilePath everywhere. I\u0027ll update the comment.",
+      "parentUuid": "1b76ee8c_3c2189ff",
+      "revId": "8603fd6c7669b41697db653976799953661cdd5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
