@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9cc1da8b_795bc59e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-01-28T22:53:47Z",
+      "side": 1,
+      "message": "@ngeoffray, is there a CTS test or similar I can run here? Anything I should run other than boot and checking logs?",
+      "range": {
+        "startLine": 21,
+        "startChar": 6,
+        "endLine": 21,
+        "endChar": 9
+      },
+      "revId": "81125fff67d92a114c1206112e0474ebb62b9f05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
