@@ -35,11 +35,12 @@ type GlobalConfig struct {
 	PreoptBootClassPathDexFiles     []string // file paths of boot class path files
 	PreoptBootClassPathDexLocations []string // virtual locations of boot class path files
 
-	BootJars         []string // modules for jars that form the boot class path
-	PreoptBootJars   []string // modules for jars that form the boot image
-	SystemServerJars []string // jars that form the system server
-	SystemServerApps []string // apps that are loaded into system server
-	SpeedApps        []string // apps that should be speed optimized
+	BootJars          []string // modules for jars that form the boot class path
+	PreoptBootJars    []string // modules for jars that form the boot image
+	SystemServerJars  []string // jars that form the system server
+	SystemServerApps  []string // apps that are loaded into system server
+	SpeedApps         []string // apps that should be speed optimized
+	LegacyHidlApiApps []string // apps that should be given legacy hidl boot jars
 
 	PreoptFlags []string // global dex2oat flags that should be used if no module-specific dex2oat flags are specified
 
