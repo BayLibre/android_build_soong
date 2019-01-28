@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9c04d18c_351f9ad8",
+        "filename": "apex/apex.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-01-28T22:03:51Z",
+      "side": 1,
+      "message": "is this the best way we have to test for the primary abi?",
+      "range": {
+        "startLine": 400,
+        "startChar": 18,
+        "endLine": 400,
+        "endChar": 24
+      },
+      "revId": "0ec14d526a432591e4dc5dd7ce62f1d1ba2903e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cd989d86_1d8bcf6b",
         "filename": "apex/apex_test.go",
         "patchSetId": 9
