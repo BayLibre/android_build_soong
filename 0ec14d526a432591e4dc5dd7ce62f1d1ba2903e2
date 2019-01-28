@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e0ae734f_848cde0b",
+        "filename": "apex/apex.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-28T22:12:13Z",
+      "side": 1,
+      "message": "For ctx.MultiTarget(), yes - the module has been asked to build for multiple targets all at once, so the first one is the primary target.  For a normal single-target module we have ctx.PrimaryArch().",
+      "parentUuid": "9c04d18c_351f9ad8",
+      "range": {
+        "startLine": 400,
+        "startChar": 18,
+        "endLine": 400,
+        "endChar": 24
+      },
+      "revId": "0ec14d526a432591e4dc5dd7ce62f1d1ba2903e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd989d86_1d8bcf6b",
         "filename": "apex/apex_test.go",
         "patchSetId": 9
