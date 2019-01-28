@@ -1143,11 +1143,11 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 		deps.ReexportSharedLibHeaders, _ = rewriteNdkLibs(deps.ReexportSharedLibHeaders)
 	}
 
+	buildStubs := false
 	if c.linker != nil {
 		if library, ok := c.linker.(*libraryDecorator); ok {
 			if library.buildStubs() {
-				// Stubs lib does not have dependency to other libraries. Don't proceed.
-				return
+				buildStubs = true
 			}
 		}
 	}
@@ -1157,7 +1157,26 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 		if inList(lib, deps.ReexportHeaderLibHeaders) {
 			depTag = headerExportDepTag
 		}
-		actx.AddVariationDependencies(nil, depTag, lib)
+		if buildStubs {
+			imageVariation := "core"
+			if c.useVndk() {
+				imageVariation = "vendor"
+			} else if c.inRecovery() {
+				imageVariation = "recovery"
+			}
+			actx.AddFarVariationDependencies([]blueprint.Variation{
+				{Mutator: "arch", Variation: ctx.Target().String()},
+				{Mutator: "image", Variation: imageVariation},
+			}, depTag, lib)
+		} else {
+			actx.AddVariationDependencies(nil, depTag, lib)
+		}
+	}
+
+	if buildStubs {
+		// Stubs lib does not have dependency to other static/shared libraries.
+		// Don't proceed.
+		return
 	}
 
 	actx.AddVariationDependencies([]blueprint.Variation{
