@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "609abf88_3e6340b6",
+        "filename": "Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-28T22:15:54Z",
+      "side": 1,
+      "message": "The per-package documentation will come out better if this is in its own package.",
+      "revId": "b05526711edfc1d42658ceffcca520558085b50a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
