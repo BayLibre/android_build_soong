@@ -39,6 +39,8 @@ import (
 	"path/filepath"
 	"strings"
 
+	"android/soong/android"
+
 	"github.com/google/blueprint/pathtools"
 )
 
@@ -271,17 +273,21 @@ func dexpreoptCommand(global GlobalConfig, module ModuleConfig, rule *Rule, prof
 				filepath.Join("/system/framework", httpLegacyImpl+".jar"))
 		}
 
-		const hidlBase = "android.hidl.base-V1.0-java"
-		const hidlManager = "android.hidl.manager-V1.0-java"
+		// if whitelist is empty, full backwards compatibility is given
+		if android.InList(module.Name, global.LegacyHidlApiApps) ||
+			len(global.LegacyHidlApiApps) == 0 {
+			const hidlBase = "android.hidl.base-V1.0-java"
+			const hidlManager = "android.hidl.manager-V1.0-java"
 
-		conditionalClassLoaderContextHost29 = append(conditionalClassLoaderContextHost29,
-			pathForLibrary(module, hidlManager))
-		conditionalClassLoaderContextTarget29 = append(conditionalClassLoaderContextTarget29,
-			filepath.Join("/system/framework", hidlManager+".jar"))
-		conditionalClassLoaderContextHost29 = append(conditionalClassLoaderContextHost29,
-			pathForLibrary(module, hidlBase))
-		conditionalClassLoaderContextTarget29 = append(conditionalClassLoaderContextTarget29,
-			filepath.Join("/system/framework", hidlBase+".jar"))
+			conditionalClassLoaderContextHost29 = append(conditionalClassLoaderContextHost29,
+				pathForLibrary(module, hidlManager))
+			conditionalClassLoaderContextTarget29 = append(conditionalClassLoaderContextTarget29,
+				filepath.Join("/system/framework", hidlManager+".jar"))
+			conditionalClassLoaderContextHost29 = append(conditionalClassLoaderContextHost29,
+				pathForLibrary(module, hidlBase))
+			conditionalClassLoaderContextTarget29 = append(conditionalClassLoaderContextTarget29,
+				filepath.Join("/system/framework", hidlBase+".jar"))
+		}
 	} else {
 		// Pass special class loader context to skip the classpath and collision check.
 		// This will get removed once LOCAL_USES_LIBRARIES is enforced.

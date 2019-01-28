@@ -11,5 +11,6 @@ bootstrap_go_package {
     ],
     deps: [
         "blueprint-pathtools",
+        "soong-android",
     ],
 }
