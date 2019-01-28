@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b76ee8c_3c2189ff",
+        "filename": "android/sh_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-01-28T18:13:44Z",
+      "side": 1,
+      "message": "Hmm, this comment is about one of the above if clauses, not ctx.Build, isn\u0027t it?",
+      "revId": "8603fd6c7669b41697db653976799953661cdd5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
