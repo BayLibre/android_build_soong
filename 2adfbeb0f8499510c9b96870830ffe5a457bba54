@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02285582_8383c9fa",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-29T18:59:53Z",
+      "side": 1,
+      "message": "This will be out/soong/target/product/.../apex, so probably not where you mean to install them.  You\u0027re not really using this though.",
+      "revId": "2adfbeb0f8499510c9b96870830ffe5a457bba54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bcd6ca0_5aca7a0a",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 933,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-29T18:59:53Z",
+      "side": 1,
+      "message": "Use:\n\n    fmt.Fprintln(w, \"LOCAL_MODULE_PATH :\u003d\", filepath.Join(\"$(PRODUCT_OUT)\", \"apex\", name, fi.installDir)",
+      "range": {
+        "startLine": 932,
+        "startChar": 5,
+        "endLine": 933,
+        "endChar": 57
+      },
+      "revId": "2adfbeb0f8499510c9b96870830ffe5a457bba54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d51d308_82af5bef",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 944,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-29T18:59:53Z",
+      "side": 1,
+      "message": "include $(BUILD_PREBUILT) doesn\u0027t read LOCAL_SOONG_UNSTRIPPED_BINARY, only soong_cc_prebuilt.mk does.",
+      "revId": "2adfbeb0f8499510c9b96870830ffe5a457bba54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7acd98fb_c148d4f6",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-29T18:59:53Z",
+      "side": 1,
+      "message": "I\u0027d prefer to make this an interface on the linker, for example:\n\nif unstripped, ok :\u003d c.linker.(interface{ unstrippedOutputFile() android.Path }); ok {\n    return unstripped.unstrippedOutputFile()\n}\n\nor just add it to the existing linker interface, and return nil from implementations that don\u0027t have one.",
+      "revId": "2adfbeb0f8499510c9b96870830ffe5a457bba54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
