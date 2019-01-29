@@ -34,6 +34,24 @@
       "revId": "9cd49c147767e30f65bff5f4fe06f22976df9522",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e2de99f_4b360025",
+        "filename": "python/androidmk.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1014807
+      },
+      "writtenOn": "2019-01-29T14:29:06Z",
+      "side": 1,
+      "message": "Revised in PS#16.  PTAL",
+      "parentUuid": "95b9ff09_4c9e38e6",
+      "revId": "9cd49c147767e30f65bff5f4fe06f22976df9522",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
