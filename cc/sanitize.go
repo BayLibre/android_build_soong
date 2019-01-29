@@ -787,7 +787,7 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 		}
 
 		if mctx.Device() && runtimeLibrary != "" {
-			if inList(runtimeLibrary, llndkLibraries) && !c.static() {
+			if inList(runtimeLibrary, llndkLibraries) && !c.static() && c.useVndk() {
 				runtimeLibrary = runtimeLibrary + llndkLibrarySuffix
 			}
 
@@ -798,16 +798,24 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 			//
 			// Note that by adding dependency with {static|shared}DepTag, the lib is
 			// added to libFlags and LOCAL_SHARED_LIBRARIES by cc.Module
+			imageVariation := "core"
+			if c.useVndk() {
+				imageVariation = "vendor"
+			} else if c.inRecovery() {
+				imageVariation = "recovery"
+			}
 			if c.staticBinary() {
 				// static executable gets static runtime libs
 				mctx.AddFarVariationDependencies([]blueprint.Variation{
 					{Mutator: "link", Variation: "static"},
+					{Mutator: "image", Variation: imageVariation},
 					{Mutator: "arch", Variation: mctx.Target().String()},
 				}, staticDepTag, runtimeLibrary)
 			} else if !c.static() {
-				// dynamic executable andshared libs get shared runtime libs
+				// dynamic executable and shared libs get shared runtime libs
 				mctx.AddFarVariationDependencies([]blueprint.Variation{
 					{Mutator: "link", Variation: "shared"},
+					{Mutator: "image", Variation: imageVariation},
 					{Mutator: "arch", Variation: mctx.Target().String()},
 				}, earlySharedDepTag, runtimeLibrary)
 			}
