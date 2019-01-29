@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96aafef1_9dc6714a",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-29T18:48:09Z",
+      "side": 1,
+      "message": "This code is ending up duplicated in a lot of places, worth refactoring into a helper function?",
+      "range": {
+        "startLine": 801,
+        "startChar": 0,
+        "endLine": 807,
+        "endChar": 0
+      },
+      "revId": "217402c1b48cd71e5428ec4210d2ee8fefae7713",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
