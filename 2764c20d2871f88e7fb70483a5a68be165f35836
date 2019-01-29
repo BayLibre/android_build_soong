@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0d1d89c_648f0a7a",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-29T09:44:32Z",
+      "side": 1,
+      "message": "remove change.",
+      "range": {
+        "startLine": 223,
+        "startChar": 78,
+        "endLine": 223,
+        "endChar": 86
+      },
+      "revId": "2764c20d2871f88e7fb70483a5a68be165f35836",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1f3aad4_e9daa065",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-01-29T09:44:32Z",
+      "side": 1,
+      "message": "Why this check? Add a comment if you need it.",
+      "range": {
+        "startLine": 277,
+        "startChar": 3,
+        "endLine": 277,
+        "endChar": 37
+      },
+      "revId": "2764c20d2871f88e7fb70483a5a68be165f35836",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
