@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a4dd2d51_727e9c0c",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-01-29T21:03:57Z",
+      "side": 1,
+      "message": "Oops. Thanks. Done.",
+      "parentUuid": "c0d1d89c_648f0a7a",
+      "range": {
+        "startLine": 223,
+        "startChar": 78,
+        "endLine": 223,
+        "endChar": 86
+      },
+      "revId": "2764c20d2871f88e7fb70483a5a68be165f35836",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1f3aad4_e9daa065",
         "filename": "dexpreopt/dexpreopt.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "2764c20d2871f88e7fb70483a5a68be165f35836",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "204df90d_946db18a",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-01-29T21:03:57Z",
+      "side": 1,
+      "message": "Done (it\u0027s to match pm utility. This is for vendor images that are built before they could have added the compat list).",
+      "parentUuid": "d1f3aad4_e9daa065",
+      "range": {
+        "startLine": 277,
+        "startChar": 3,
+        "endLine": 277,
+        "endChar": 37
+      },
+      "revId": "2764c20d2871f88e7fb70483a5a68be165f35836",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
