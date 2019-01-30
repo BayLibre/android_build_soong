@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de42fc02_26579993",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-30T20:27:41Z",
+      "side": 1,
+      "message": "This seems like it should come through the config object instead of reading the environment every time, but that introduces a circular dependency.  Dan, any suggestions?",
+      "revId": "109944c1f13ac6f9996c5c37ecb2953963fd2c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
