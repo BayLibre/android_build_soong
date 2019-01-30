@@ -22,6 +22,30 @@
       "revId": "08ec1372718ba0fcf1f7664a880ca5585f201ca2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c097e4c_a356a72e",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1047769
+      },
+      "writtenOn": "2019-01-30T17:25:31Z",
+      "side": 1,
+      "message": "We could. I could see instances where being able to turn this off for device builds could be useful though. If you wanted to actually package your own bionic for whatever reason or if we add additional libs here.\n\nYour choice though.",
+      "parentUuid": "2f96a417_c8eee59a",
+      "range": {
+        "startLine": 560,
+        "startChar": 0,
+        "endLine": 560,
+        "endChar": 23
+      },
+      "revId": "08ec1372718ba0fcf1f7664a880ca5585f201ca2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
