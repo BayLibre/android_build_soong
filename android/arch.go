@@ -1452,6 +1452,9 @@ func decodeMultilibTargets(multilib string, targets []Target, prefer32 bool) ([]
 		} else {
 			buildTargets = append(buildTargets, firstTarget(targets, "lib64", "lib32")...)
 		}
+	case "common_both":
+		buildTargets = getCommonTargets(targets)
+		fallthrough
 	case "both":
 		if prefer32 {
 			buildTargets = append(buildTargets, filterMultilibTargets(targets, "lib32")...)
