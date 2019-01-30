@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e70ddf29_3933aa66",
+        "filename": "java/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-30T19:24:32Z",
+      "side": 1,
+      "message": "Is this needed for test-api-stubs-docs too?",
+      "revId": "62e34b9f38f670479d9f54d90f0434c8f3248f39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
