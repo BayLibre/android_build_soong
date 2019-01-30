@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "221ff375_cd12cc6e",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 939,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-01-30T22:04:49Z",
+      "side": 1,
+      "message": "I\u0027ve missed having the unpacked apexes in a discoverable place in out/, so just wanted to say thanks for adding this!",
+      "range": {
+        "startLine": 937,
+        "startChar": 5,
+        "endLine": 939,
+        "endChar": 35
+      },
+      "revId": "719b4467aa620b069743c7bbc2000571bb06d1ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
