@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "5ede0892_206850d8",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-30T20:25:56Z",
+      "side": 1,
+      "message": "We follow Go style, which is a soft 100 characters (you can go over the limit if it improves readability, for example not breaking up a long string with nothing interesting after it).",
+      "parentUuid": "b5340467_a51d21aa",
+      "revId": "8779af17f117d9145eff78039b701b237e2339f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b18ce881_ae6ac74d",
         "filename": "cmd/multiproduct_kati/main.go",
         "patchSetId": 2
