@@ -668,6 +668,14 @@ func (c *config) EnableCFI() bool {
 	}
 }
 
+func (c *config) DisableScudo() bool {
+	if c.productVariables.DisableScudo == nil {
+		return false
+	} else {
+		return *c.productVariables.DisableScudo
+	}
+}
+
 func (c *config) EnableXOM() bool {
 	if c.productVariables.EnableXOM == nil {
 		return true
