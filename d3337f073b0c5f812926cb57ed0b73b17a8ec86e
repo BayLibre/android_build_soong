@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "088c4c82_ea7c1b13",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-30T18:24:22Z",
+      "side": 1,
+      "message": "This could be:\n\n   proptools.AppendProperties(\u0026a.properties.Multilib, \u0026a.targetProperties.Target.Android.Multilib, nil)",
+      "revId": "d3337f073b0c5f812926cb57ed0b73b17a8ec86e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
