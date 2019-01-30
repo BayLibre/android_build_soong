@@ -133,6 +133,24 @@
       "revId": "2adfbeb0f8499510c9b96870830ffe5a457bba54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84abd67a_2147f8ae",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-30T16:56:43Z",
+      "side": 1,
+      "message": "Oh I missed this comment. Will address in a follow-up CL.",
+      "parentUuid": "7acd98fb_c148d4f6",
+      "revId": "2adfbeb0f8499510c9b96870830ffe5a457bba54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
