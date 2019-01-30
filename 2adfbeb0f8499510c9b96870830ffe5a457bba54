@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c4b18b79_a151e31c",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-30T03:35:25Z",
+      "side": 1,
+      "message": "You are right. Thanks. Removed.",
+      "parentUuid": "02285582_8383c9fa",
+      "revId": "2adfbeb0f8499510c9b96870830ffe5a457bba54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3bcd6ca0_5aca7a0a",
         "filename": "apex/apex.go",
         "patchSetId": 3
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "9870bf35_27bdcd89",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 933,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-30T03:35:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bcd6ca0_5aca7a0a",
+      "range": {
+        "startLine": 932,
+        "startChar": 5,
+        "endLine": 933,
+        "endChar": 57
+      },
+      "revId": "2adfbeb0f8499510c9b96870830ffe5a457bba54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d51d308_82af5bef",
         "filename": "apex/apex.go",
         "patchSetId": 3
@@ -56,6 +98,24 @@
       "revId": "2adfbeb0f8499510c9b96870830ffe5a457bba54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c38a658_95a28a77",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 944,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-01-30T03:35:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d51d308_82af5bef",
+      "revId": "2adfbeb0f8499510c9b96870830ffe5a457bba54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
