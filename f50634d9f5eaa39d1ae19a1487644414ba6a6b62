@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "adb12d4f_43c5475d",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-30T22:05:44Z",
+      "side": 1,
+      "message": "return Bool(c.productVariables.DisableScudo)",
+      "range": {
+        "startLine": 672,
+        "startChar": 1,
+        "endLine": 676,
+        "endChar": 2
+      },
+      "revId": "f50634d9f5eaa39d1ae19a1487644414ba6a6b62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
