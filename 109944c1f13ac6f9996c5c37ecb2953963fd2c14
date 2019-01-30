@@ -16,6 +16,24 @@
       "revId": "109944c1f13ac6f9996c5c37ecb2953963fd2c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9511671d_3e08a14b",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-01-30T23:12:13Z",
+      "side": 1,
+      "message": "We could push this line below the NewConfig (~line 101-103), then you could use a method on the config object. I think that should be safe, NewConfig shouldn\u0027t need to use the status outputs.",
+      "parentUuid": "de42fc02_26579993",
+      "revId": "109944c1f13ac6f9996c5c37ecb2953963fd2c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
