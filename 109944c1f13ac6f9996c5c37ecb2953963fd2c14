@@ -34,6 +34,24 @@
       "revId": "109944c1f13ac6f9996c5c37ecb2953963fd2c14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "222336f7_ebe37bf8",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-01-31T01:33:14Z",
+      "side": 1,
+      "message": "Actually the environment is read only once if build succeeds, I don\u0027t think this is a concern.\nThe code can be moved below to read \nstat.AddOutput(terminal.NewStatusOutput(writer, os.Getenv(\"NINJA_STATUS\"),\n    config.Environment().IsEnvTrue(\"ANDROID_QUIET_BUILD\")))\nbut how it\u0027s going to improve the things? Do you mean adding something like config.IsQuiet() method?\nWhat about the same change in the multiproduct_kati/main.go?",
+      "parentUuid": "9511671d_3e08a14b",
+      "revId": "109944c1f13ac6f9996c5c37ecb2953963fd2c14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
