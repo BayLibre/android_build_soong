@@ -306,6 +306,7 @@ type linker interface {
 
 	link(ctx ModuleContext, flags Flags, deps PathDeps, objs Objects) android.Path
 	appendLdflags([]string)
+	unstrippedOutputFilePath() android.Path
 }
 
 type installer interface {
@@ -406,12 +407,7 @@ func (c *Module) OutputFile() android.OptionalPath {
 }
 
 func (c *Module) UnstrippedOutputFile() android.Path {
-	if library, ok := c.linker.(*libraryDecorator); ok {
-		return library.unstrippedOutputFile
-	} else if binary, ok := c.linker.(*binaryDecorator); ok {
-		return binary.unstrippedOutputFile
-	}
-	return nil
+	return c.linker.unstrippedOutputFilePath()
 }
 
 func (c *Module) Init() android.Module {
