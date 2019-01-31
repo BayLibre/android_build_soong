@@ -150,7 +150,11 @@ var testEnforceRROTests = []struct {
 			},
 		},
 		rroDirs: map[string][]string{
-			"foo": []string{"device/vendor/blah/overlay/foo/res"},
+			"foo": []string{
+				"device/vendor/blah/overlay/foo/res",
+				// TODO: should this be RRO?
+				// "device/vendor/blah/overlay/lib/res", */
+			},
 			"bar": nil,
 		},
 	},
@@ -167,7 +171,10 @@ var testEnforceRROTests = []struct {
 			"bar": []string{"device/vendor/blah/static_overlay/bar/res/values/strings.xml"},
 		},
 		rroDirs: map[string][]string{
-			"foo": []string{"device/vendor/blah/overlay/foo/res"},
+			"foo": []string{
+				"device/vendor/blah/overlay/foo/res",
+				"device/vendor/blah/overlay/lib/res",
+			},
 			"bar": []string{"device/vendor/blah/overlay/bar/res"},
 		},
 	},
