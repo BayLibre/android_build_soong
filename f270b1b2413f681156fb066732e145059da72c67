@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "84fc2f91_f013dec3",
+        "filename": "scripts/strip.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2019-01-31T06:49:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1752c83f_8a3cc44a",
+      "range": {
+        "startLine": 43,
+        "startChar": 41,
+        "endLine": 43,
+        "endChar": 42
+      },
+      "revId": "f270b1b2413f681156fb066732e145059da72c67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3420e91_587049b0",
         "filename": "scripts/strip.sh",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "f270b1b2413f681156fb066732e145059da72c67",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60b6f040_711e7d05",
+        "filename": "scripts/strip.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2019-01-31T06:49:48Z",
+      "side": 1,
+      "message": "This is intended. llvm-objcopy does not support \u0027--only-keep-debug\u0027 flag.",
+      "parentUuid": "c3420e91_587049b0",
+      "revId": "f270b1b2413f681156fb066732e145059da72c67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "f270b1b2413f681156fb066732e145059da72c67",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a8a2da7_bde2b92a",
+        "filename": "scripts/strip.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2019-01-31T06:49:48Z",
+      "side": 1,
+      "message": "ditto.",
+      "parentUuid": "2b94f25f_0fb4b045",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 43
+      },
+      "revId": "f270b1b2413f681156fb066732e145059da72c67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
