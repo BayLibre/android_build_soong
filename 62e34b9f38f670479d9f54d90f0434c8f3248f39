@@ -34,6 +34,24 @@
       "revId": "62e34b9f38f670479d9f54d90f0434c8f3248f39",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bac20e88_c0e39d43",
+        "filename": "java/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1061009
+      },
+      "writtenOn": "2019-01-31T13:13:31Z",
+      "side": 1,
+      "message": "Restating my out-of-band reply here: the test api has no compat guarantees between releases",
+      "parentUuid": "2e1dd971_7ec8b015",
+      "revId": "62e34b9f38f670479d9f54d90f0434c8f3248f39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
