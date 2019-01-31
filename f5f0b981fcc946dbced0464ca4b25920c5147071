@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "acf1a31d_c6e59fe6",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-01-31T19:29:18Z",
+      "side": 1,
+      "message": "Check if linker !\u003d nil",
+      "revId": "f5f0b981fcc946dbced0464ca4b25920c5147071",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
