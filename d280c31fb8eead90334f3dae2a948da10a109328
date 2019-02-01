@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e1d5282_fb7a36ad",
+        "filename": "java/app_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2019-02-01T18:00:52Z",
+      "side": 1,
+      "message": "could you add a comment here about what\u0027s going on? I think you need to sync in my MaybeOutput change from above too",
+      "revId": "d280c31fb8eead90334f3dae2a948da10a109328",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
