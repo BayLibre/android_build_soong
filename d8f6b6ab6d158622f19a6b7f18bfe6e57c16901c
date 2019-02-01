@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57f0f5e6_52158e46",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2019-02-01T02:18:27Z",
+      "side": 1,
+      "message": "SANITIZE_TARGET\n(without R)",
+      "revId": "d8f6b6ab6d158622f19a6b7f18bfe6e57c16901c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
