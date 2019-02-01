@@ -207,14 +207,16 @@ type productVariables struct {
 	DisableDexPreoptModules []string `json:",omitempty"`
 	DexPreoptProfileDir     *string  `json:",omitempty"`
 
-	IntegerOverflowExcludePaths []string `json:",omitempty"`
+	IntegerOverflowExcludePaths *[]string `json:",omitempty"`
 
-	EnableCFI       *bool    `json:",omitempty"`
-	CFIExcludePaths []string `json:",omitempty"`
-	CFIIncludePaths []string `json:",omitempty"`
+	EnableCFI       *bool     `json:",omitempty"`
+	CFIExcludePaths *[]string `json:",omitempty"`
+	CFIIncludePaths *[]string `json:",omitempty"`
 
-	EnableXOM       *bool    `json:",omitempty"`
-	XOMExcludePaths []string `json:",omitempty"`
+	DisableScudo *bool `json:",omitempty"`
+
+	EnableXOM       *bool     `json:",omitempty"`
+	XOMExcludePaths *[]string `json:",omitempty"`
 
 	VendorPath          *string `json:",omitempty"`
 	OdmPath             *string `json:",omitempty"`
