@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e935596_f15496af",
+        "filename": "java/app_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2019-02-01T17:59:56Z",
+      "side": 1,
+      "message": "Ideally, probably, but I don\u0027t think we have a practical use case of this. Someone might be caught by surprise when that doesn\u0027t work, but I think using libs with resources is pretty sparse within the tree.. (just sysui?).",
+      "revId": "28688747c2df4d4ebf57be39b5a2b8f6880d2035",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21ccb0e9_d5667640",
+        "filename": "java/app_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2019-02-01T17:59:56Z",
+      "side": 1,
+      "message": "every app with this lib will get its own RRO APK with this res right?",
+      "revId": "28688747c2df4d4ebf57be39b5a2b8f6880d2035",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
