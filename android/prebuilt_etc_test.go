@@ -25,6 +25,7 @@ func testPrebuiltEtc(t *testing.T, bp string) *TestContext {
 	defer tearDown(buildDir)
 	ctx := NewTestArchContext()
 	ctx.RegisterModuleType("prebuilt_etc", ModuleFactoryAdaptor(PrebuiltEtcFactory))
+	ctx.RegisterModuleType("prebuilt_etc_host", ModuleFactoryAdaptor(prebuiltEtcHostFactory))
 	ctx.PreDepsMutators(func(ctx RegisterMutatorsContext) {
 		ctx.BottomUp("prebuilt_etc", prebuiltEtcMutator).Parallel()
 	})
@@ -128,5 +129,20 @@ func TestPrebuiltEtcGlob(t *testing.T) {
 	p = ctx.ModuleForTests("my_bar", "android_arm64_armv8-a_core").Module().(*PrebuiltEtc)
 	if p.outputFilePath.Base() != "bar.conf" {
 		t.Errorf("expected bar.conf, got %q", p.outputFilePath.Base())
+	}
+}
+
+func TestPrebuiltEtcHost(t *testing.T) {
+	ctx := testPrebuiltEtc(t, `
+		prebuilt_etc_host {
+			name: "foo.conf",
+			src: "foo.conf",
+		}
+	`)
+
+	buildOS := BuildOs.String()
+	p := ctx.ModuleForTests("foo.conf", buildOS+"_common").Module().(*PrebuiltEtc)
+	if !p.Host() {
+		t.Errorf("host bit is not set for a prebuilt_etc_host module.")
 	}
 }
