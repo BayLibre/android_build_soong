@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8987977_5e53168a",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-02-05T15:11:24Z",
+      "side": 1,
+      "message": "Can we filter these out in Inputs()?",
+      "revId": "2fa46218c38cd97f9bd3603a1528ce7dcf67c266",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
