@@ -36,6 +36,7 @@ var testGlobalConfig = GlobalConfig{
 	DefaultCompilerFilter:              "",
 	SystemServerCompilerFilter:         "",
 	GenerateDMFiles:                    false,
+	NeverAllowStripping:                false,
 	NoDebugInfo:                        false,
 	AlwaysSystemServerDebugInfo:        false,
 	NeverSystemServerDebugInfo:         false,
