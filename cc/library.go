@@ -189,11 +189,18 @@ func LibraryHeaderFactory() android.Module {
 	return module.Init()
 }
 
+type syspropFlags struct {
+	internalFlags []string
+	systemFlags   []string
+}
+
 type flagExporter struct {
 	Properties FlagExporterProperties
 
 	flags     []string
 	flagsDeps android.Paths
+
+	syspropFlags syspropFlags
 }
 
 func (f *flagExporter) exportedIncludes(ctx ModuleContext) android.Paths {
@@ -202,6 +209,14 @@ func (f *flagExporter) exportedIncludes(ctx ModuleContext) android.Paths {
 	} else {
 		return android.PathsForModuleSrc(ctx, f.Properties.Export_include_dirs)
 	}
+}
+
+func (f *flagExporter) exportedSyspropFlags() syspropFlags {
+	return f.syspropFlags
+}
+
+func (f *flagExporter) reexportSyspropFlags(syspropFlags syspropFlags) {
+	f.syspropFlags = syspropFlags
 }
 
 func (f *flagExporter) exportIncludes(ctx ModuleContext, inc string) {
@@ -230,6 +245,7 @@ func (f *flagExporter) exportedFlagsDeps() android.Paths {
 type exportedFlagsProducer interface {
 	exportedFlags() []string
 	exportedFlagsDeps() android.Paths
+	exportedSyspropFlags() syspropFlags
 }
 
 var _ exportedFlagsProducer = (*flagExporter)(nil)
@@ -839,9 +855,19 @@ func (library *libraryDecorator) link(ctx ModuleContext,
 		flags := []string{
 			"-I" + android.PathForModuleGen(ctx, "sysprop", "include").String(),
 		}
+
 		library.reexportFlags(flags)
 		library.reexportDeps(library.baseCompiler.pathDeps)
 		library.reuseExportedFlags = append(library.reuseExportedFlags, flags...)
+
+		library.reexportSyspropFlags(syspropFlags{
+			internalFlags: []string{
+				"-I" + android.PathForModuleGen(ctx, "sysprop", "include").String(),
+			},
+			systemFlags: []string{
+				"-I" + android.PathForModuleGen(ctx, "sysprop/system", "include").String(),
+			},
+		})
 	}
 
 	if library.buildStubs() {
@@ -1037,6 +1063,12 @@ func reuseStaticLibrary(mctx android.BottomUpMutatorContext, static, shared *Mod
 }
 
 func LinkageMutator(mctx android.BottomUpMutatorContext) {
+	if _, ok := mctx.Module().(syspropLibraryInterface); ok {
+		if mctx.Arch().ArchType != android.Common {
+			mctx.CreateVariations("static", "shared")
+		}
+		return
+	}
 	if m, ok := mctx.Module().(*Module); ok && m.linker != nil {
 		if library, ok := m.linker.(libraryInterface); ok {
 			var modules []blueprint.Module
@@ -1084,6 +1116,12 @@ func latestStubsVersionFor(config android.Config, name string) string {
 // Version mutator splits a module into the mandatory non-stubs variant
 // (which is unnamed) and zero or more stubs variants.
 func VersionMutator(mctx android.BottomUpMutatorContext) {
+	if _, ok := mctx.Module().(syspropLibraryInterface); ok {
+		if mctx.Arch().ArchType != android.Common {
+			mctx.CreateVariations("")
+		}
+		return
+	}
 	if m, ok := mctx.Module().(*Module); ok && !m.inRecovery() && m.linker != nil {
 		if library, ok := m.linker.(*libraryDecorator); ok && library.buildShared() &&
 			len(library.Properties.Stubs.Versions) > 0 {
