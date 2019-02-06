@@ -113,6 +113,7 @@ type PathDeps struct {
 
 	Flags, ReexportedFlags []string
 	ReexportedFlagsDeps    android.Paths
+	ReexportedSyspropFlags syspropFlags
 
 	// Paths to crt*.o files
 	CrtBegin, CrtEnd android.OptionalPath
@@ -401,6 +402,12 @@ type Module struct {
 
 	// only non-nil when this is a shared library that reuses the objects of a static library
 	staticVariant *Module
+}
+
+type syspropLibraryInterface interface {
+	PropertyOwner() string
+	SyspropCcModule() *Module
+	CcModuleVariations(vndkVersion string) []string
 }
 
 func (c *Module) OutputFile() android.OptionalPath {
@@ -1472,6 +1479,69 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 
 		ccDep, _ := dep.(*Module)
 		if ccDep == nil {
+			if syspropLib, ok := dep.(syspropLibraryInterface); ok {
+				implModule := syspropLib.SyspropCcModule()
+				staticModule := implModule
+
+				mkDepName := implModule.Name()
+				if c.useVndk() && implModule.hasVendorVariant() {
+					mkDepName += vendorSuffix
+				}
+
+				linkFile := implModule.outputFile
+				depFile := implModule.linker.(libraryInterface).toc()
+
+				switch depTag {
+				case sharedDepTag:
+					dep := depFile
+					if !dep.Valid() {
+						dep = linkFile
+					}
+					depPaths.SharedLibs = append(depPaths.SharedLibs, linkFile.Path())
+					depPaths.SharedLibsDeps = append(depPaths.SharedLibsDeps, dep.Path())
+					directSharedDeps = append(directSharedDeps, implModule)
+					c.Properties.AndroidMkSharedLibs = append(
+						c.Properties.AndroidMkSharedLibs, mkDepName)
+					staticModule = implModule.staticVariant
+				case staticDepTag:
+					directStaticDeps = append(directStaticDeps, implModule)
+					depPaths.StaticLibObjs.coverageFiles = append(depPaths.StaticLibObjs.coverageFiles,
+						implModule.linker.(libraryInterface).objs().coverageFiles...)
+					depPaths.StaticLibObjs.sAbiDumpFiles = append(depPaths.StaticLibObjs.sAbiDumpFiles,
+						implModule.linker.(libraryInterface).objs().sAbiDumpFiles...)
+					c.Properties.AndroidMkStaticLibs = append(
+						c.Properties.AndroidMkStaticLibs, mkDepName)
+				default:
+					ctx.ModuleErrorf("sysprop_library %q should be linked as shared or static", depName)
+					return
+				}
+
+				// We have three access levels: Internal / System / Public. Java has three matched
+				// link types: java:platform/java:system/java:sdk. But C++ has no corresponding
+				// link types, so first cut the NDK libraries and manually check each owner of client
+				// library and sysprop_library. If they go into the same partition, the client uses
+				// internal. If not, use SystemApi's.
+				if String(c.Properties.Sdk_version) != "" {
+					ctx.ModuleErrorf("Module %q built with NDK should not link against sysprop_library %q",
+						c.Name(), depName)
+				}
+
+				flagsProducer := staticModule.compiler.(exportedFlagsProducer)
+				syspropFlags := flagsProducer.exportedSyspropFlags()
+
+				if ctx.ProductSpecific() {
+					// There's no product-defined properties exportable.
+					depPaths.Flags = append(depPaths.Flags, syspropFlags.systemFlags...)
+				} else if ctx.Platform() == (syspropLib.PropertyOwner() == "Platform") {
+					// Platform vs. Vendor + Odm
+					depPaths.Flags = append(depPaths.Flags, syspropFlags.internalFlags...)
+				} else {
+					depPaths.Flags = append(depPaths.Flags, syspropFlags.systemFlags...)
+				}
+
+				return
+			}
+
 			// handling for a few module types that aren't cc Module but that are also supported
 			switch depTag {
 			case genSourceDepTag:
@@ -1804,6 +1874,13 @@ func (c *Module) Srcs() android.Paths {
 	return android.Paths{}
 }
 
+func (c *Module) SyspropFlags() syspropFlags {
+	if f, ok := c.compiler.(exportedFlagsProducer); ok {
+		return f.exportedSyspropFlags()
+	}
+	return syspropFlags{}
+}
+
 func (c *Module) static() bool {
 	if static, ok := c.linker.(interface {
 		static() bool
@@ -1998,6 +2075,13 @@ func ImageMutator(mctx android.BottomUpMutatorContext) {
 				}
 			}
 		}
+	}
+
+	if m, ok := mctx.Module().(syspropLibraryInterface); ok {
+		if mctx.Arch().ArchType != android.Common {
+			mctx.CreateVariations(m.CcModuleVariations(mctx.DeviceConfig().VndkVersion())...)
+		}
+		return
 	}
 
 	m, ok := mctx.Module().(*Module)
