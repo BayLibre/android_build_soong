@@ -43,11 +43,15 @@ var manifestMergerRule = pctx.AndroidStaticRule("manifestMerger",
 	"libs")
 
 func manifestMerger(ctx android.ModuleContext, manifest android.Path, sdkContext sdkContext,
-	staticLibManifests android.Paths, isLibrary bool) android.Path {
+	staticLibManifests android.Paths, isLibrary bool, uncompressedJNI bool) android.Path {
 
 	var args []string
 	if isLibrary {
 		args = append(args, "--library")
+	}
+
+	if uncompressedJNI {
+		args = append(args, "--extract-native-libs=false")
 	}
 
 	// Inject minSdkVersion into the manifest

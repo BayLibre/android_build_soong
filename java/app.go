@@ -136,7 +136,18 @@ func (a *AndroidApp) DepsMutator(ctx android.BottomUpMutatorContext) {
 }
 
 func (a *AndroidApp) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	a.aapt.uncompressedJNI = a.shouldUncompressJNI(ctx)
 	a.generateAndroidBuildActions(ctx)
+}
+
+// shouldUncompressJNI returns true if the native libraries should be stored in the APK uncompressed and the
+// extractNativeLibs application flag should be set to false in the manifest.
+func (a *AndroidApp) shouldUncompressJNI(ctx android.ModuleContext) bool {
+	minSdkVersion, err := sdkVersionToNumber(ctx, a.minSdkVersion())
+	if err != nil {
+		ctx.PropertyErrorf("min_sdk_version", "invalid value %q: %s", a.minSdkVersion(), err)
+	}
+	return minSdkVersion >= 23
 }
 
 // Returns whether this module should have the dex file stored uncompressed in the APK.
@@ -233,7 +244,7 @@ func (a *AndroidApp) jniBuildActions(jniLibs []jniLib, ctx android.ModuleContext
 		embedJni := ctx.Config().UnbundledBuild() || a.appProperties.EmbedJNI
 		if embedJni {
 			jniJarFile = android.PathForModuleOut(ctx, "jnilibs.zip")
-			TransformJniLibsToJar(ctx, jniJarFile, jniLibs)
+			TransformJniLibsToJar(ctx, jniJarFile, jniLibs, a.shouldUncompressJNI(ctx))
 		} else {
 			a.installJniLibs = jniLibs
 		}
