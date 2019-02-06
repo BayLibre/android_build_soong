@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7fe4e228_f9c827ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-06T18:43:49Z",
+      "side": 1,
+      "message": "package",
+      "range": {
+        "startLine": 7,
+        "startChar": 25,
+        "endLine": 7,
+        "endChar": 31
+      },
+      "revId": "90e26f469107d654e9a19d7697ddce3c206fa124",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b5ea7c7_ccd2feda",
+        "filename": "java/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-06T18:43:49Z",
+      "side": 1,
+      "message": "Maybe just print a comment that it was overridden by PRODUCT_...?  It wouldn\u0027t be bad to have the override obviously visible in the Android.mk file.",
+      "revId": "90e26f469107d654e9a19d7697ddce3c206fa124",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dc4467a_ad0bb7cd",
+        "filename": "java/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-06T18:43:49Z",
+      "side": 1,
+      "message": "Returning bool seems unnecessary, just return a nil slice and have the caller use:\n\nif overriddenPkgs :\u003d app.getOverriddenPackages(); len(overriddenPkgs) \u003e 0 {\n    ...\n}",
+      "range": {
+        "startLine": 269,
+        "startChar": 56,
+        "endLine": 269,
+        "endChar": 60
+      },
+      "revId": "90e26f469107d654e9a19d7697ddce3c206fa124",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b4554fe_a76de821",
+        "filename": "java/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-06T18:43:49Z",
+      "side": 1,
+      "message": "Appending to a slice that is not owned by this code is dangerous, if there is room in the underlying backing array then the new slice will share the same backing array.  If it happens twice, the second call will overwrite the appended data from the first call.\n\nAlso, is appending a.Name() correct if a.Name() \u003d\u003d a.installApkName?",
+      "revId": "90e26f469107d654e9a19d7697ddce3c206fa124",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
