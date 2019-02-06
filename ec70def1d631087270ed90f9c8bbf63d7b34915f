@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e72f4190_7a7cacee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2019-02-06T19:13:02Z",
+      "side": 1,
+      "message": "Upon further thought, I\u0027ll do what Colin suggested.  As I started prototyping it, the code got a lot simpler.",
+      "parentUuid": "272c31fb_f4b7c63d",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 55
+      },
+      "revId": "ec70def1d631087270ed90f9c8bbf63d7b34915f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d652f7ac_c2163aa2",
         "filename": "cc/cc.go",
         "patchSetId": 3
