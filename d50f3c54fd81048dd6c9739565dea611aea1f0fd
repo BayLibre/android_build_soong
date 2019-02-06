@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a713d17f_a0276a59",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-02-06T01:04:25Z",
+      "side": 1,
+      "message": "Is this going to work properly with manifests that do not have frameworks/base?",
+      "range": {
+        "startLine": 190,
+        "startChar": 7,
+        "endLine": 190,
+        "endChar": 96
+      },
+      "revId": "d50f3c54fd81048dd6c9739565dea611aea1f0fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
