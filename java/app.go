@@ -146,9 +146,17 @@ func (a *AndroidApp) shouldUncompressDex(ctx android.ModuleContext) bool {
 	}
 
 	// Uncompress dex in APKs of privileged apps, and modules used by privileged apps.
-	return ctx.Config().UncompressPrivAppDex() &&
+	if ctx.Config().UncompressPrivAppDex() &&
 		(Bool(a.appProperties.Privileged) ||
-			inList(ctx.ModuleName(), ctx.Config().ModulesLoadedByPrivilegedModules()))
+			inList(ctx.ModuleName(), ctx.Config().ModulesLoadedByPrivilegedModules())) {
+		return true
+	}
+
+	if !a.dexpreopter.dexpreoptDisabled(ctx) && (ctx.Host() || !odexOnSystemOther(ctx, a.dexpreopter.installPath)) {
+		return true
+	}
+
+	return false
 }
 
 func (a *AndroidApp) aaptBuildActions(ctx android.ModuleContext) {
@@ -207,7 +215,6 @@ func (a *AndroidApp) proguardBuildActions(ctx android.ModuleContext) {
 }
 
 func (a *AndroidApp) dexBuildActions(ctx android.ModuleContext) android.Path {
-	a.deviceProperties.UncompressDex = a.shouldUncompressDex(ctx)
 
 	var installDir string
 	if ctx.ModuleName() == "framework-res" {
@@ -219,6 +226,8 @@ func (a *AndroidApp) dexBuildActions(ctx android.ModuleContext) android.Path {
 		installDir = filepath.Join("app", a.installApkName)
 	}
 	a.dexpreopter.installPath = android.PathForModuleInstall(ctx, installDir, a.installApkName+".apk")
+	a.dexpreopter.isInstallable = Bool(a.properties.Installable)
+	a.deviceProperties.UncompressDex = a.shouldUncompressDex(ctx)
 
 	if ctx.ModuleName() != "framework-res" {
 		a.Module.compile(ctx, a.aaptSrcJar)
