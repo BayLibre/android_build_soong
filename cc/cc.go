@@ -2118,6 +2118,7 @@ func ImageMutator(mctx android.BottomUpMutatorContext) {
 		variants = append(variants, recoveryMode)
 	}
 	mod := mctx.CreateVariations(variants...)
+
 	for i, v := range variants {
 		if v == vendorMode {
 			m := mod[i].(*Module)
