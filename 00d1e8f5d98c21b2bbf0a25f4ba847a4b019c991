@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c8a166e_1fbc783a",
+        "filename": "cc/cc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-02-07T14:42:42Z",
+      "side": 1,
+      "message": "this doesn\u0027t seem to be used",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 24
+      },
+      "revId": "00d1e8f5d98c21b2bbf0a25f4ba847a4b019c991",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eaa611ac_3e6bee49",
+        "filename": "cc/cc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1527,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-02-07T14:42:42Z",
+      "side": 1,
+      "message": "These look quite redundant to me. Can we have a dependency directly from a client to the impl module?",
+      "range": {
+        "startLine": 1483,
+        "startChar": 0,
+        "endLine": 1527,
+        "endChar": 5
+      },
+      "revId": "00d1e8f5d98c21b2bbf0a25f4ba847a4b019c991",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9dfef50a_3413e25f",
+        "filename": "cc/cc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 2085,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-02-07T14:42:42Z",
+      "side": 1,
+      "message": "recovery variant isn\u0027t created here, so this will break when a recovery variant is using a sysprop library module.\n\nAgain, this could be solved if there is a direct dep from a client to the impl lib.",
+      "range": {
+        "startLine": 2080,
+        "startChar": 0,
+        "endLine": 2085,
+        "endChar": 2
+      },
+      "revId": "00d1e8f5d98c21b2bbf0a25f4ba847a4b019c991",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "466a31c6_80dca6e8",
+        "filename": "cc/library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-02-07T14:42:42Z",
+      "side": 1,
+      "message": "I feel guilty with adding this here. Can\u0027t we just use flags which is set differently depending on the image variant?",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 26
+      },
+      "revId": "00d1e8f5d98c21b2bbf0a25f4ba847a4b019c991",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd07f209_0dd83e9a",
+        "filename": "cc/library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-02-07T14:42:42Z",
+      "side": 1,
+      "message": "if ctx.ProductSpecific() {\n    // flag is with sysprop/system/include\n} else ...",
+      "range": {
+        "startLine": 863,
+        "startChar": 2,
+        "endLine": 870,
+        "endChar": 4
+      },
+      "revId": "00d1e8f5d98c21b2bbf0a25f4ba847a4b019c991",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c652fc57_477f551e",
+        "filename": "cc/library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1071,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-02-07T14:42:42Z",
+      "side": 1,
+      "message": "can be removed if the direct dep exists",
+      "range": {
+        "startLine": 1066,
+        "startChar": 0,
+        "endLine": 1071,
+        "endChar": 2
+      },
+      "revId": "00d1e8f5d98c21b2bbf0a25f4ba847a4b019c991",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79d6761b_42bbcbd1",
+        "filename": "cc/library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1124,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-02-07T14:42:42Z",
+      "side": 1,
+      "message": "same as above",
+      "range": {
+        "startLine": 1119,
+        "startChar": 0,
+        "endLine": 1124,
+        "endChar": 2
+      },
+      "revId": "00d1e8f5d98c21b2bbf0a25f4ba847a4b019c991",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
