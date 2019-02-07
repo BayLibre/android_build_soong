@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "660eac44_e376f744",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-07T21:37:38Z",
+      "side": 1,
+      "message": "I\u0027d suggest removing this and sorting all the properties together.  It just causes confusion when subcategories like \"proto\" end up split between two sections because some of their properties are compiler properties and some are linker properties.  It turns out not to be a distinction that is very meaningful to end users.",
+      "revId": "131fa24a67e03269364162d1a67d50f912992151",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
