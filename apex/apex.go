@@ -136,7 +136,8 @@ func init() {
 	pctx.HostBinToolVariable("zip2zip", "zip2zip")
 	pctx.HostBinToolVariable("zipalign", "zipalign")
 
-	android.RegisterModuleType("apex", ApexBundleFactory)
+	android.RegisterModuleType("apex", normalApexBundleFactory)
+	android.RegisterModuleType("test_apex", testApexBundleFactory)
 	android.RegisterModuleType("apex_defaults", defaultsFactory)
 
 	android.PostDepsMutators(func(ctx android.RegisterMutatorsContext) {
@@ -154,7 +155,7 @@ func apexDepsMutator(mctx android.TopDownMutatorContext) {
 			depName := mctx.OtherModuleName(child)
 			// If the parent is apexBundle, this child is directly depended.
 			_, directDep := parent.(*apexBundle)
-			if a.installable() {
+			if a.installable() && !a.testApex() {
 				// TODO(b/123892969): Workaround for not having any way to annotate test-apexs
 				// non-installable apex's cannot be installed and so should not prevent libraries from being
 				// installed to the system.
@@ -292,6 +293,13 @@ const (
 	both
 )
 
+type ApexClass int
+
+const (
+	NormalApex ApexClass = iota
+	TestApex
+)
+
 func (a apexPackaging) image() bool {
 	switch a {
 	case imageApex, both:
@@ -375,6 +383,8 @@ type apexBundle struct {
 	filesInfo []apexFile
 
 	flattened bool
+
+	class ApexClass
 }
 
 func addDependenciesForNativeModules(ctx android.BottomUpMutatorContext,
@@ -513,6 +523,10 @@ func (a *apexBundle) Srcs() android.Paths {
 
 func (a *apexBundle) installable() bool {
 	return a.properties.Installable == nil || proptools.Bool(a.properties.Installable)
+}
+
+func (a *apexBundle) testApex() bool {
+	return a.class == TestApex
 }
 
 func (a *apexBundle) getImageVariation(config android.DeviceConfig) string {
@@ -1091,9 +1105,18 @@ func (a *apexBundle) androidMkForType(apexType apexPackaging) android.AndroidMkD
 		}}
 }
 
-func ApexBundleFactory() android.Module {
+func testApexBundleFactory() android.Module {
+	return ApexBundleFactory(TestApex)
+}
+
+func normalApexBundleFactory() android.Module {
+	return ApexBundleFactory(NormalApex)
+}
+
+func ApexBundleFactory(class ApexClass) android.Module {
 	module := &apexBundle{
 		outputFiles: map[apexPackaging]android.WritablePath{},
+		class:       class,
 	}
 	module.AddProperties(&module.properties)
 	module.AddProperties(&module.targetProperties)
