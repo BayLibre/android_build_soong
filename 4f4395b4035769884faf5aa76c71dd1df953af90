@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fcfc99de_1007b488",
+        "filename": "java/androidmk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-07T06:03:45Z",
+      "side": 1,
+      "message": "It\u0027s better to use:\n\n  var overridden []string\n\nThis will create a nil slice, which doesn\u0027t require allocating a backing array.  Then if any of the appends occur (which is the unlikely case), they will allocate a backing array.",
+      "revId": "4f4395b4035769884faf5aa76c71dd1df953af90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
