@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3966b15_d0d8c8db",
+        "filename": "dexpreopt/dexpreopt_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-07T18:40:59Z",
+      "side": 1,
+      "message": "Can you add a test that sets this to true, with and without stripping?  See https://cs.corp.google.com/android/build/soong/android/paths_test.go?rcl\u003dd7229b3df63e47fd07f5047bfbcb34f8a2daedee\u0026l\u003d153 for an example of a test that verifies a panic occurs.",
+      "revId": "b88a75c09d3c0f4929d75ecd979163958b2662ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
