@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01d459a3_e8688ac1",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-07T21:51:18Z",
+      "side": 1,
+      "message": "I\u0027d leave this as apexBundleFactory",
+      "revId": "c16a30185518d4b0a2440b97c989664600bb0a72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84260197_61344580",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-07T21:51:18Z",
+      "side": 1,
+      "message": "Unless you have reason to think there will be more classes later, just make this a bool.",
+      "revId": "c16a30185518d4b0a2440b97c989664600bb0a72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
