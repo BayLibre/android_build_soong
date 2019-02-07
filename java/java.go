@@ -1427,6 +1427,11 @@ func (j *Library) shouldUncompressDex(ctx android.ModuleContext) bool {
 		android.DirectlyInAnyApex(ctx, ctx.ModuleName()) {
 		return true
 	}
+	if ctx.Config().UncompressPrivAppDex() &&
+		inList(ctx.ModuleName(), ctx.Config().ModulesLoadedByPrivilegedModules()) {
+		return true
+	}
+
 	return false
 }
 
