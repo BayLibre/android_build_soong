@@ -172,6 +172,21 @@ func (a *aapt) deps(ctx android.BottomUpMutatorContext, sdkContext sdkContext) {
 	}
 }
 
+func appendUnique(elems android.Paths, dest ...android.Path) android.Paths {
+	existing := make(map[string]bool)
+	for _, e := range dest {
+		existing[e.String()] = true
+	}
+
+	for _, e := range elems {
+		if !existing[e.String()] {
+			dest = append(dest, e)
+			existing[e.String()] = true
+		}
+	}
+	return dest
+}
+
 func (a *aapt) buildActions(ctx android.ModuleContext, sdkContext sdkContext, extraLinkFlags ...string) {
 	transitiveStaticLibs, staticLibManifests, staticRRODirs, libDeps, libFlags := aaptLibs(ctx, sdkContext)
 
@@ -183,7 +198,8 @@ func (a *aapt) buildActions(ctx android.ModuleContext, sdkContext sdkContext, ex
 
 	linkFlags, linkDeps, resDirs, overlayDirs, rroDirs := a.aapt2Flags(ctx, sdkContext, manifestPath)
 
-	rroDirs = append(rroDirs, staticRRODirs...)
+	// TODO(b/124035856): append normally again when there are no more dupe resource dirs.
+	rroDirs = appendUnique(rroDirs, staticRRODirs...)
 
 	linkFlags = append(linkFlags, libFlags...)
 	linkDeps = append(linkDeps, libDeps...)

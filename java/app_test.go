@@ -178,8 +178,8 @@ func TestEnforceRRO(t *testing.T) {
 			},
 			rroDirs: map[string][]string{
 				"foo": []string{
-					"device/vendor/blah/overlay/foo/res",
 					"device/vendor/blah/overlay/lib/res",
+					"device/vendor/blah/overlay/foo/res",
 				},
 				"bar": []string{"device/vendor/blah/overlay/bar/res"},
 			},
