@@ -283,7 +283,7 @@ func init() {
 // Both paths are used to call dist-for-goals.
 func hiddenAPIMakeVars(ctx android.MakeVarsContext) {
 	if !ctx.Config().IsEnvTrue("UNSAFE_DISABLE_HIDDENAPI_FLAGS") {
-		singletonPaths := ctx.Config().Get(hiddenAPISingletonPathsKey).(hiddenAPISingletonPathsStruct)
+		singletonPaths := hiddenAPISingletonPaths(ctx)
 		ctx.Strict("INTERNAL_PLATFORM_HIDDENAPI_FLAGS", singletonPaths.flags.String())
 		ctx.Strict("INTERNAL_PLATFORM_HIDDENAPI_GREYLIST_METADATA", singletonPaths.metadata.String())
 	}
