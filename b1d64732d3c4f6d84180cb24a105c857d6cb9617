@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "b73257f7_3d1592bc",
+        "filename": "java/aar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-07T18:01:22Z",
+      "side": 1,
+      "message": "Use:\n\n   rroDirs \u003d append(rroDirs, staticRRODirs...)\n   rroDirs \u003d android.FirstUniquePaths(rroDirs)",
+      "revId": "b1d64732d3c4f6d84180cb24a105c857d6cb9617",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cda53916_333280b1",
         "filename": "java/app_test.go",
         "patchSetId": 1
@@ -13,6 +30,24 @@
       "writtenOn": "2019-02-07T12:23:03Z",
       "side": 1,
       "message": "not sure why the order swapped around here..",
+      "revId": "b1d64732d3c4f6d84180cb24a105c857d6cb9617",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "950fad85_38b0429f",
+        "filename": "java/app_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-07T18:01:22Z",
+      "side": 1,
+      "message": "I don\u0027t think we want the order to swap, foo should be higher priority than lib",
+      "parentUuid": "cda53916_333280b1",
       "revId": "b1d64732d3c4f6d84180cb24a105c857d6cb9617",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
