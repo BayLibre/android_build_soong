@@ -19,8 +19,10 @@ import (
 	"bytes"
 	"html/template"
 	"io/ioutil"
+	"sort"
 
 	"github.com/google/blueprint/bootstrap"
+	"github.com/google/blueprint/bootstrap/bpdoc"
 )
 
 func writeDocs(ctx *android.Context, filename string) error {
@@ -31,15 +33,66 @@ func writeDocs(ctx *android.Context, filename string) error {
 
 	buf := &bytes.Buffer{}
 
-	unique := 0
-
+	// We need a module name getter/setter function because I couldn't
+	// find a way to keep it in a variable defined within the template.
+	currentModuleName := ""
+	moduleProperties := make(map[string][]bpdoc.Property)
 	tmpl, err := template.New("file").Funcs(map[string]interface{}{
-		"unique": func() int {
-			unique++
-			return unique
-		}}).Parse(fileTemplate)
+		"setModule": func(moduleName string) string {
+			currentModuleName = moduleName
+			return ""
+		},
+		"getModule": func() string {
+			return currentModuleName
+		},
+		"getModuleProperties": func() []bpdoc.Property {
+			if props, ok := moduleProperties[currentModuleName]; ok {
+				return props
+			}
+			return []bpdoc.Property{}
+		},
+	}).Parse(fileTemplate)
 	if err != nil {
 		return err
+	}
+
+	var specialAttributesIndices = map[string]int{
+		"name":             0,
+		"srcs":             1,
+		"defautls":         2,
+		"host_supported":   3,
+		"device_supported": 4,
+	}
+
+	// We don't care about PropertyStruct groups. Flatten properties list and arrange it
+	// by putting "important" ones first, followed by the rest in alphabetic order
+	for _, module := range moduleTypeList {
+		specialProperties := make([]bpdoc.Property, len(specialAttributesIndices), len(specialAttributesIndices))
+		properties := make([]bpdoc.Property, 0, 30)
+		specialPropertiesCount := 0
+		for _, propStruct := range module.PropertyStructs {
+			for _, property := range propStruct.Properties {
+				if index, ok := specialAttributesIndices[property.Name]; ok {
+					specialProperties[index] = property
+					specialPropertiesCount++
+				} else {
+					properties = append(properties, property)
+				}
+			}
+		}
+		sort.Slice(properties, func(i, j int) bool {
+			return properties[i].Name < properties[j].Name
+		})
+		sortedProperties := make([]bpdoc.Property, specialPropertiesCount+len(properties))
+		i := 0
+		for _, prop := range specialProperties {
+			if prop.Name != "" {
+				sortedProperties[i] = prop
+				i++
+			}
+		}
+		copy(sortedProperties[i:], properties)
+		moduleProperties[module.Name] = sortedProperties
 	}
 
 	err = tmpl.Execute(buf, moduleTypeList)
@@ -60,70 +113,101 @@ const (
 <html>
 <head>
 <title>Build Docs</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+<style>
+.accordion,.simple{margin-left:1.5em;text-indent:-1.5em;margin-top:.25em}
+.collapsible{border-width:0 0 0 1;margin-left:.25em;padding-left:.25em;border-style:solid;border-color:grey;display:none;}
+span.fixed{display: block; float: left; clear: left; width: 1em;}
+ul {
+	list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 30ch;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+li a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+li a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+</style>
 </head>
 <body>
-<h1>Build Docs</h1>
-<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-  {{range .}}
-    {{ $collapseIndex := unique }}
-    <div class="panel panel-default">
-      <div class="panel-heading" role="tab" id="heading{{$collapseIndex}}">
-        <h2 class="panel-title">
-          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$collapseIndex}}" aria-expanded="false" aria-controls="collapse{{$collapseIndex}}">
-             {{.Name}}
-          </a>
-        </h2>
-      </div>
-    </div>
-    <div id="collapse{{$collapseIndex}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{$collapseIndex}}">
-      <div class="panel-body">
-        <p>{{.Text}}</p>
-        {{range .PropertyStructs}}
-          <p>{{.Text}}</p>
-          {{template "properties" .Properties}}
-        {{end}}
-      </div>
-    </div>
-  {{end}}
-</div>
-</body>
-</html>
-
-{{define "properties"}}
-  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-    {{range .}}
-      {{$collapseIndex := unique}}
-      {{if .Properties}}
-        <div class="panel panel-default">
-          <div class="panel-heading" role="tab" id="heading{{$collapseIndex}}">
-            <h4 class="panel-title">
-              <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$collapseIndex}}" aria-expanded="false" aria-controls="collapse{{$collapseIndex}}">
-                 {{.Name}}{{range .OtherNames}}, {{.}}{{end}}
-              </a>
-            </h4>
-          </div>
-        </div>
-        <div id="collapse{{$collapseIndex}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{$collapseIndex}}">
-          <div class="panel-body">
-            <p>{{.Text}}</p>
-            {{range .OtherTexts}}<p>{{.}}</p>{{end}}
-            {{template "properties" .Properties}}
-          </div>
-        </div>
-      {{else}}
-        <div>
-          <h4>{{.Name}}{{range .OtherNames}}, {{.}}{{end}}</h4>
-          <p>{{.Text}}</p>
-          {{range .OtherTexts}}<p>{{.}}</p>{{end}}
-          <p><i>Type: {{.Type}}</i></p>
-          {{if .Default}}<p><i>Default: {{.Default}}</i></p>{{end}}
-        </div>
-      {{end}}
-    {{end}}
+{{- /* Fixed sidebar with module names */ -}}
+<ul>
+<li><h3>Modules:</h3></li>
+{{range $module := .}}<li><a href="#{{$module.Name}}">{{$module.Name}}</a></li>
+{{end -}}
+</ul>
+{{/* Main panel with H1 section per module*/}}
+<div style="margin-left:30ch;padding:1px 16px;">
+{{range $imodule, $module := .}}
+  {{setModule $module.Name}}
+  <h1 id="{{$module.Name}}">Module {{$module.Name}}</h1>
+  {{if .Text }}{{.Text}}{{else}}<i>Missing synopsis</i>{{end}}
+  {{- /* Comma-separated list of module attributes' links module attributes */ -}}
+	<div class="breadcrumb">
+    {{range $i,$prop := getModuleProperties }}
+				{{ if gt $i 0 }},&nbsp;{{end -}}
+				<a href=#{{getModule}}.{{$prop.Name}}>{{$prop.Name}}</a>
+		{{- end -}}
   </div>
-{{end}}
+
+	{{- /* Property description */ -}}
+	{{- template "properties" getModuleProperties -}}{{- end -}}
+
+{{define "properties" -}}
+  {{range .}}
+    {{if .Properties -}}
+      <div class="accordion"  id="{{getModule}}.{{.Name}}">
+        <span class="fixed">&#x2295</span><b>{{.Name}}</b>
+        {{- range .OtherNames -}}, {{.}}{{- end -}}
+      </div>
+      <div class="collapsible">
+        {{- .Text}} {{range .OtherTexts}}{{.}}{{end}}
+        {{template "properties" .Properties -}}
+      </div>
+    {{- else -}}
+      <div class="simple" id="{{getModule}}.{{.Name}}">
+        <span class="fixed">&nbsp;</span><b>{{.Name}} {{range .OtherNames}}, {{.}}{{end -}}</b>
+        {{- if .Text -}}{{.Text}}{{- end -}}
+        {{- with .OtherTexts -}}{{.}}{{- end -}}<i>{{.Type}}</i>{{- if .Default -}}<i>Default: {{.Default}}</i>{{- end -}}
+      </div>
+    {{- end}}
+  {{- end -}}
+{{- end -}}
+
+</div>
+<script>
+  accordions = document.getElementsByClassName('accordion');
+  for (i=0; i < accordions.length; ++i) {
+    accordions[i].addEventListener("click", function() {
+      var panel = this.nextElementSibling;
+      var child = this.firstElementChild;
+      if (panel.style.display === "block") {
+          panel.style.display = "none";
+          child.textContent = '\u2295';
+      } else {
+          panel.style.display = "block";
+          child.textContent = '\u2296';
+      }
+    });
+  }
+</script>
+</body>
 `
 )
