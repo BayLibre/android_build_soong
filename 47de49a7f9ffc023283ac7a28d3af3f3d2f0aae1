@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "571fa9d6_49512a26",
+        "filename": "cc/cc.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1200,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-07T19:10:59Z",
+      "side": 1,
+      "message": "This doesn\u0027t do anything any more, remove it?",
+      "revId": "47de49a7f9ffc023283ac7a28d3af3f3d2f0aae1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "823d9d79_be998369",
+        "filename": "cc/coverage.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-07T19:10:59Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem necessary to move to a property, it\u0027s only used in the GenerateAndroidBuildActions stage which is after all mutators have run.",
+      "revId": "47de49a7f9ffc023283ac7a28d3af3f3d2f0aae1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1583b50f_fdb6ae41",
+        "filename": "cc/coverage.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-07T19:10:59Z",
+      "side": 1,
+      "message": "This can be \"\", \"cov\"",
+      "range": {
+        "startLine": 142,
+        "startChar": 30,
+        "endLine": 142,
+        "endChar": 43
+      },
+      "revId": "47de49a7f9ffc023283ac7a28d3af3f3d2f0aae1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "881f5af5_e83c0c2e",
+        "filename": "cc/coverage.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-07T19:10:59Z",
+      "side": 1,
+      "message": "len(m) will always be 2",
+      "range": {
+        "startLine": 150,
+        "startChar": 59,
+        "endLine": 150,
+        "endChar": 70
+      },
+      "revId": "47de49a7f9ffc023283ac7a28d3af3f3d2f0aae1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
