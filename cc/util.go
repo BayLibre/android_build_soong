@@ -133,3 +133,172 @@ func splitFileExt(name string) (string, string, string) {
 
 	return root, suffix, ext
 }
+
+func GatherRequiredDepsForTest(os android.OsType) string {
+	ret := `
+		toolchain_library {
+			name: "libatomic",
+			vendor_available: true,
+			recovery_available: true,
+			src: "",
+		}
+
+		toolchain_library {
+			name: "libcompiler_rt-extras",
+			vendor_available: true,
+			recovery_available: true,
+			src: "",
+		}
+
+		toolchain_library {
+			name: "libclang_rt.builtins-arm-android",
+			vendor_available: true,
+			recovery_available: true,
+			src: "",
+		}
+
+		toolchain_library {
+			name: "libclang_rt.builtins-aarch64-android",
+			vendor_available: true,
+			recovery_available: true,
+			src: "",
+		}
+
+		toolchain_library {
+			name: "libclang_rt.builtins-i686-android",
+			vendor_available: true,
+			recovery_available: true,
+			src: "",
+		}
+
+		toolchain_library {
+			name: "libclang_rt.builtins-x86_64-android",
+			vendor_available: true,
+			recovery_available: true,
+			src: "",
+		}
+
+		toolchain_library {
+			name: "libgcc",
+			vendor_available: true,
+			recovery_available: true,
+			src: "",
+		}
+
+		cc_library {
+			name: "libbase",
+			no_libgcc: true,
+			nocrt: true,
+			vendor_available: true,
+			vndk: {
+				enabled: true,
+				support_system_process: true,
+			}
+		}
+		cc_library {
+			name: "libc",
+			no_libgcc: true,
+			nocrt: true,
+			system_shared_libs: [],
+			recovery_available: true,
+		}
+		llndk_library {
+			name: "libc",
+			symbol_file: "",
+		}
+		cc_library {
+			name: "libm",
+			no_libgcc: true,
+			nocrt: true,
+			system_shared_libs: [],
+			recovery_available: true,
+		}
+		llndk_library {
+			name: "libm",
+			symbol_file: "",
+		}
+		cc_library {
+			name: "libdl",
+			no_libgcc: true,
+			nocrt: true,
+			system_shared_libs: [],
+			recovery_available: true,
+		}
+		llndk_library {
+			name: "libdl",
+			symbol_file: "",
+		}
+		cc_library {
+			name: "libc++_static",
+			no_libgcc: true,
+			nocrt: true,
+			system_shared_libs: [],
+			stl: "none",
+			vendor_available: true,
+			recovery_available: true,
+		}
+		cc_library {
+			name: "libc++",
+			no_libgcc: true,
+			nocrt: true,
+			system_shared_libs: [],
+			stl: "none",
+			vendor_available: true,
+			recovery_available: true,
+			vndk: {
+				enabled: true,
+				support_system_process: true,
+			},
+		}
+		cc_library {
+			name: "libunwind_llvm",
+			no_libgcc: true,
+			nocrt: true,
+			system_shared_libs: [],
+			stl: "none",
+			vendor_available: true,
+			recovery_available: true,
+		}
+
+		cc_object {
+			name: "crtbegin_so",
+			recovery_available: true,
+			vendor_available: true,
+		}
+
+		cc_object {
+			name: "crtbegin_static",
+			recovery_available: true,
+			vendor_available: true,
+		}
+
+		cc_object {
+			name: "crtend_so",
+			recovery_available: true,
+			vendor_available: true,
+		}
+
+		cc_object {
+			name: "crtend_android",
+			recovery_available: true,
+			vendor_available: true,
+		}
+
+		cc_library {
+			name: "libprotobuf-cpp-lite",
+		}
+		`
+	if os == android.Fuchsia {
+		ret += `
+		cc_library {
+			name: "libbioniccompat",
+			stl: "none",
+		}
+		cc_library {
+			name: "libcompiler_rt",
+			stl: "none",
+		}
+		`
+	}
+	return ret
+}
