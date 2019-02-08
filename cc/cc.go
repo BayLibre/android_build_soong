@@ -41,6 +41,7 @@ func init() {
 		ctx.BottomUp("test_per_src", testPerSrcMutator).Parallel()
 		ctx.BottomUp("version", VersionMutator).Parallel()
 		ctx.BottomUp("begin", BeginMutator).Parallel()
+		ctx.BottomUp("sysprop", SyspropMutator).Parallel()
 	})
 
 	android.PostDepsMutators(func(ctx android.RegisterMutatorsContext) {
@@ -1216,6 +1217,11 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 		if inList(lib, deps.ReexportStaticLibHeaders) {
 			depTag = staticExportDepTag
 		}
+
+		if impl, ok := syspropImplLibraries[lib]; ok {
+			lib = impl
+		}
+
 		actx.AddVariationDependencies([]blueprint.Variation{
 			{Mutator: "link", Variation: "static"},
 		}, depTag, lib)
@@ -1253,12 +1259,18 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 	var sharedLibNames []string
 
 	for _, lib := range deps.SharedLibs {
-		name, version := stubsLibNameAndVersion(lib)
-		sharedLibNames = append(sharedLibNames, name)
 		depTag := sharedDepTag
 		if inList(lib, deps.ReexportSharedLibHeaders) {
 			depTag = sharedExportDepTag
 		}
+
+		if impl, ok := syspropImplLibraries[lib]; ok {
+			lib = impl
+		}
+
+		name, version := stubsLibNameAndVersion(lib)
+		sharedLibNames = append(sharedLibNames, name)
+
 		addSharedLibDependencies(depTag, name, version)
 	}
 
