@@ -1211,10 +1211,17 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 	}, wholeStaticDepTag, deps.WholeStaticLibs...)
 
 	for _, lib := range deps.StaticLibs {
+		// Workaround for sysprop_library
+		// TODO: can we determine more neatly whether this lib is indeed a sysprop library?
+		if actx.OtherModuleExists("lib"+lib) && actx.OtherModuleExists(lib+".stubs") {
+			lib = "lib" + lib
+		}
+
 		depTag := staticDepTag
 		if inList(lib, deps.ReexportStaticLibHeaders) {
 			depTag = staticExportDepTag
 		}
+
 		actx.AddVariationDependencies([]blueprint.Variation{
 			{Mutator: "link", Variation: "static"},
 		}, depTag, lib)
@@ -1252,12 +1259,19 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 	var sharedLibNames []string
 
 	for _, lib := range deps.SharedLibs {
+		// Workaround for sysprop_library.
+		// TODO: can we determine more neatly whether this lib is indeed a sysprop library?
+		if actx.OtherModuleExists("lib"+lib) && actx.OtherModuleExists(lib+".stubs") {
+			lib = "lib" + lib
+		}
+
 		name, version := stubsLibNameAndVersion(lib)
 		sharedLibNames = append(sharedLibNames, name)
 		depTag := sharedDepTag
 		if inList(lib, deps.ReexportSharedLibHeaders) {
 			depTag = sharedExportDepTag
 		}
+
 		addSharedLibDependencies(depTag, name, version)
 	}
 
