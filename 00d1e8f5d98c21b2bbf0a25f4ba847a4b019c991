@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "774f0e74_d525fd0d",
+        "filename": "cc/cc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1527,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-02-08T03:45:36Z",
+      "side": 1,
+      "message": "What does \"direct dependency\" mean? Did you mean that clients link against generated cc_library, not sysprop_library? say,\n\nsysprop_library { name: \"props\" }, cc_binary { name: \"bin\", shared_libs: [\"libprops\"] }",
+      "parentUuid": "eaa611ac_3e6bee49",
+      "range": {
+        "startLine": 1483,
+        "startChar": 0,
+        "endLine": 1527,
+        "endChar": 5
+      },
+      "revId": "00d1e8f5d98c21b2bbf0a25f4ba847a4b019c991",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9dfef50a_3413e25f",
         "filename": "cc/cc.go",
         "patchSetId": 8
