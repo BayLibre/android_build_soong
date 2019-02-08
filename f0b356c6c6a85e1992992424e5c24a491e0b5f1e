@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60774933_31fe5145",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-08T21:28:19Z",
+      "side": 1,
+      "message": "I prefer panics to be error types, can you leave this as fmt.Errorf?",
+      "revId": "f0b356c6c6a85e1992992424e5c24a491e0b5f1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
