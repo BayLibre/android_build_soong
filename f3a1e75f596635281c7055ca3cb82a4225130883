@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb674e49_dc9d6ded",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-08T06:05:24Z",
+      "side": 1,
+      "message": "You could translate the moduleTypeList data structure into a new structure that is better suited to text/template:\n\ntype templateData []struct {\n    ModuleTypeName string\n    ModuleTypeDocs string\n    Properties []bpdoc.Property\n}",
+      "revId": "f3a1e75f596635281c7055ca3cb82a4225130883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21b2b264_5362dd75",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-08T06:05:24Z",
+      "side": 1,
+      "message": "Properties",
+      "range": {
+        "startLine": 59,
+        "startChar": 12,
+        "endLine": 59,
+        "endChar": 22
+      },
+      "revId": "f3a1e75f596635281c7055ca3cb82a4225130883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f036b72_6e7345f7",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-08T06:05:24Z",
+      "side": 1,
+      "message": "Don\u0027t set the capacity unless there is a specific reason to.",
+      "range": {
+        "startLine": 71,
+        "startChar": 37,
+        "endLine": 71,
+        "endChar": 44
+      },
+      "revId": "f3a1e75f596635281c7055ca3cb82a4225130883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "464663c2_9492116f",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-08T06:05:24Z",
+      "side": 1,
+      "message": "I think this could be a single sort:\n\nsort.Slice(properties, func(i, j int) bool {\n    specialIndexI, special :\u003d specialAttributesIndices[properties[i].Name]\n    if !special {\n        specialIndexI \u003d len(specialAttributesIndices)\n    }\n    specialIndexJ, special :\u003d specialAttributesIndices[properties[j].Name]\n    if !special {\n        specialIndexJ \u003d len(specialAttributesIndices)\n    }\n    if speicalIndexI !\u003d specialIndexJ {\n        return speicalIndexI \u003c specialIndexJ\n    }\n    return properties[i].Name \u003c properties[j].Name\n})",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 95,
+        "endChar": 50
+      },
+      "revId": "f3a1e75f596635281c7055ca3cb82a4225130883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f33d276_f1b5e625",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-08T06:05:24Z",
+      "side": 1,
+      "message": "Module types",
+      "range": {
+        "startLine": 152,
+        "startChar": 8,
+        "endLine": 152,
+        "endChar": 15
+      },
+      "revId": "f3a1e75f596635281c7055ca3cb82a4225130883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44a6a16e_f3a41526",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-08T06:05:24Z",
+      "side": 1,
+      "message": "Can this not be {{$module.Name}} ?",
+      "range": {
+        "startLine": 166,
+        "startChar": 13,
+        "endLine": 166,
+        "endChar": 26
+      },
+      "revId": "f3a1e75f596635281c7055ca3cb82a4225130883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
