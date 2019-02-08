@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "154203cc_f400ab22",
+        "filename": "android/arch.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-02-08T01:07:28Z",
+      "side": 1,
+      "message": "A number of these are only partially added in this file, without the necessary cflags variables specified in the cc config. Are they actually needed?",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 14
+      },
+      "revId": "7870201e1981c74a582eee0daef2b2ef650aed53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
