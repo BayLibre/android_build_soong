@@ -73,7 +73,7 @@ func (installer *baseInstaller) installDir(ctx ModuleContext) android.OutputPath
 		dir = filepath.Join(dir, "vendor")
 	}
 	return android.PathForModuleInstall(ctx, dir, installer.subDir,
-		installer.relativeInstallPath(), installer.relative)
+		String(installer.Properties.Relative_install_path), installer.relative)
 }
 
 func (installer *baseInstaller) install(ctx ModuleContext, file android.Path) {
@@ -90,8 +90,4 @@ func (installer *baseInstaller) inSanitizerDir() bool {
 
 func (installer *baseInstaller) hostToolPath() android.OptionalPath {
 	return android.OptionalPath{}
-}
-
-func (installer *baseInstaller) relativeInstallPath() string {
-	return String(installer.Properties.Relative_install_path)
 }
