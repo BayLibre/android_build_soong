@@ -34,6 +34,41 @@
       "revId": "f0b356c6c6a85e1992992424e5c24a491e0b5f1e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e9fb2d1_1a544df5",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-09T00:14:11Z",
+      "side": 1,
+      "message": "Oh, the panic is being caught and turned into a runtime error.",
+      "parentUuid": "cccad601_6ec76d0a",
+      "revId": "f0b356c6c6a85e1992992424e5c24a491e0b5f1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "392569ef_392e7efa",
+        "filename": "dexpreopt/dexpreopt_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-09T00:14:11Z",
+      "side": 1,
+      "message": "GenerateStripRule is already converting the panic into an error, check the return value of GenerateStripRule instead.",
+      "revId": "f0b356c6c6a85e1992992424e5c24a491e0b5f1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
