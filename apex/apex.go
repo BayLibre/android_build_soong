@@ -540,7 +540,6 @@ func getCopyManifestForNativeLibrary(cc *cc.Module, handleSpecialLibs bool) (fil
 	case "lib64":
 		dirInApex = "lib64"
 	}
-	dirInApex = filepath.Join(dirInApex, cc.RelativeInstallPath())
 	if !cc.Arch().Native {
 		dirInApex = filepath.Join(dirInApex, cc.Arch().ArchType.String())
 	}
@@ -565,8 +564,6 @@ func getCopyManifestForNativeLibrary(cc *cc.Module, handleSpecialLibs bool) (fil
 }
 
 func getCopyManifestForExecutable(cc *cc.Module) (fileToCopy android.Path, dirInApex string) {
-	// TODO(b/123721777) respect relative_install_path also for binaries
-	// dirInApex = filepath.Join("bin", cc.RelativeInstallPath())
 	dirInApex = "bin"
 	fileToCopy = cc.OutputFile().Path()
 	return
