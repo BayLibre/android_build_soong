@@ -100,7 +100,13 @@ type sdkLibraryProperties struct {
 	// list of package names that must be hidden from the API
 	Hidden_api_packages []string
 
-	// Additional droiddoc options
+	// local files that are used within user customized droiddoc options.
+	Droiddoc_option_files []string
+
+	// additional droiddoc options
+	// Available variables for substitution:
+	//
+	//  $(location <label>): the path to the droiddoc_option_files with name <label>
 	Droiddoc_options []string
 
 	// the java library (in classpath) for documentation that provides java srcs and srcjars.
@@ -431,6 +437,7 @@ func (module *sdkLibrary) createDocs(mctx android.TopDownMutatorContext, apiScop
 		Srcs_lib_whitelist_dirs          []string
 		Srcs_lib_whitelist_pkgs          []string
 		Libs                             []string
+		Arg_files                        []string
 		Args                             *string
 		Api_tag_name                     *string
 		Api_filename                     *string
@@ -465,6 +472,7 @@ func (module *sdkLibrary) createDocs(mctx android.TopDownMutatorContext, apiScop
 	props.Merge_annotations_dirs = module.sdkLibraryProperties.Merge_annotations_dirs
 	props.Merge_inclusion_annotations_dirs = module.sdkLibraryProperties.Merge_inclusion_annotations_dirs
 
+	droiddocArgFiles := module.sdkLibraryProperties.Droiddoc_option_files
 	droiddocArgs := " --stub-packages " + strings.Join(module.sdkLibraryProperties.Api_packages, ":") +
 		" " + android.JoinWithPrefix(module.sdkLibraryProperties.Hidden_api_packages, " --hide-package ") +
 		" " + android.JoinWithPrefix(module.sdkLibraryProperties.Droiddoc_options, " ") +
@@ -478,6 +486,7 @@ func (module *sdkLibrary) createDocs(mctx android.TopDownMutatorContext, apiScop
 	case apiScopeTest:
 		droiddocArgs = droiddocArgs + " -showAnnotation android.annotation.TestApi"
 	}
+	props.Arg_files = droiddocArgFiles
 	props.Args = proptools.StringPtr(droiddocArgs)
 
 	// List of APIs identified from the provided source files are created. They are later
