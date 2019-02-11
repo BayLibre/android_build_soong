@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0bcce94b_8ad27544",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-02-11T21:41:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb674e49_dc9d6ded",
+      "revId": "f3a1e75f596635281c7055ca3cb82a4225130883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21b2b264_5362dd75",
         "filename": "cmd/soong_build/writedocs.go",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "f3a1e75f596635281c7055ca3cb82a4225130883",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "410d39bf_326d0d90",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-02-11T21:41:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21b2b264_5362dd75",
+      "range": {
+        "startLine": 59,
+        "startChar": 12,
+        "endLine": 59,
+        "endChar": 22
+      },
+      "revId": "f3a1e75f596635281c7055ca3cb82a4225130883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "e523e901_2357b1fd",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-02-11T21:41:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f036b72_6e7345f7",
+      "range": {
+        "startLine": 71,
+        "startChar": 37,
+        "endLine": 71,
+        "endChar": 44
+      },
+      "revId": "f3a1e75f596635281c7055ca3cb82a4225130883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "464663c2_9492116f",
         "filename": "cmd/soong_build/writedocs.go",
         "patchSetId": 3
@@ -85,6 +151,30 @@
       "revId": "f3a1e75f596635281c7055ca3cb82a4225130883",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ba797c1_d64d9e3b",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-02-11T21:41:39Z",
+      "side": 1,
+      "message": "OK, I was lazy. Done.",
+      "parentUuid": "464663c2_9492116f",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 95,
+        "endChar": 50
+      },
+      "revId": "f3a1e75f596635281c7055ca3cb82a4225130883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "674ed920_0411cf54",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-02-11T21:41:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f33d276_f1b5e625",
+      "range": {
+        "startLine": 152,
+        "startChar": 8,
+        "endLine": 152,
+        "endChar": 15
+      },
+      "revId": "f3a1e75f596635281c7055ca3cb82a4225130883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44a6a16e_f3a41526",
         "filename": "cmd/soong_build/writedocs.go",
         "patchSetId": 3
@@ -131,6 +245,30 @@
       "revId": "f3a1e75f596635281c7055ca3cb82a4225130883",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6755f456_9bb5ee74",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-02-11T21:41:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44a6a16e_f3a41526",
+      "range": {
+        "startLine": 166,
+        "startChar": 13,
+        "endLine": 166,
+        "endChar": 26
+      },
+      "revId": "f3a1e75f596635281c7055ca3cb82a4225130883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
