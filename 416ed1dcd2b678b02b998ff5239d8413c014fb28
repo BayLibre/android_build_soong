@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d74e152_0aed60fd",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-11T23:58:49Z",
+      "side": 1,
+      "message": "The temporary assignment is unncessary, just do props.Arg_files here.",
+      "revId": "416ed1dcd2b678b02b998ff5239d8413c014fb28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
