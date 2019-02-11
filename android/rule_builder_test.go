@@ -130,6 +130,14 @@ func ExampleRuleBuilderCommand_FlagWithArg() {
 	// ls --sort=time
 }
 
+func ExampleRuleBuilderCommand_FlagForEachArg() {
+	fmt.Println(NewRuleBuilder().Command().
+		Tool("ls").
+		FlagForEachArg("--sort=", []string{"time", "size"}))
+	// Output:
+	// ls --sort=time --sort=size
+}
+
 func ExampleRuleBuilderCommand_FlagForEachInput() {
 	fmt.Println(NewRuleBuilder().Command().
 		Tool("turbine").
