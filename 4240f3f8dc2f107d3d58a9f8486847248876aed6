@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1063b1e5_55d030bc",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-02-12T19:29:32Z",
+      "side": 1,
+      "message": "Glad to see this. Does bpfix support this? It\u0027ll be cool if it does. Of course, just a question, not asking to implement it in this change. :)",
+      "revId": "4240f3f8dc2f107d3d58a9f8486847248876aed6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bf5f63e_8ebad4e7",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-02-12T19:29:32Z",
+      "side": 1,
+      "message": "Can you add \u0027src\u0027, too?\n\nAlso, we\u0027ll probably want to make this something like tag-based in the future, because some modules have different types of source properties, e.g. android_app_certificate - certificate. Can you add a TODO or file a bug for this? Feel free to assign it to me.",
+      "revId": "4240f3f8dc2f107d3d58a9f8486847248876aed6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1974bdc3_5139d77a",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-02-12T19:29:32Z",
+      "side": 1,
+      "message": "nit: I don\u0027t think we use \u00272\u0027 in function names to represent \u0027To\u0027. Not a big deal, but still think it\u0027s better to be consistent across the project.",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 29
+      },
+      "revId": "4240f3f8dc2f107d3d58a9f8486847248876aed6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d2e5ef6_a5cfc903",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-02-12T19:29:32Z",
+      "side": 1,
+      "message": "\u0027Flatten\u0027 is misleading, IMO. We don\u0027t and shouldn\u0027t flatten nested properties.",
+      "revId": "4240f3f8dc2f107d3d58a9f8486847248876aed6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "335d637d_01f779b8",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-02-12T19:29:32Z",
+      "side": 1,
+      "message": "So, we only sort top-level properties? Shouldn\u0027t we sort the nested properties too?\n\nI\u0027m okay with leaving a TODO and addressing it later, though.",
+      "revId": "4240f3f8dc2f107d3d58a9f8486847248876aed6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd3c3aad_6e11dbc4",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-02-12T19:29:32Z",
+      "side": 1,
+      "message": "Interesting. This should\u0027ve been done in bpdoc.go, but now I see how it\u0027s not the case. Can you add a TODO (assigned to me) to improve combineDuplicateProperties so that it covers top-level ones, too?",
+      "revId": "4240f3f8dc2f107d3d58a9f8486847248876aed6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
