@@ -16,6 +16,24 @@
       "revId": "416ed1dcd2b678b02b998ff5239d8413c014fb28",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e270a8b0_bcbb3d65",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-02-12T13:11:02Z",
+      "side": 1,
+      "message": "Removed the temporary variable as suggested but moved the assignment to props.Arg_files down next to the assignment to props.Args as they are related.",
+      "parentUuid": "3d74e152_0aed60fd",
+      "revId": "416ed1dcd2b678b02b998ff5239d8413c014fb28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
