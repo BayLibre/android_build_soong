@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68924220_f34173d7",
+        "filename": "cc/cc.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-12T00:32:55Z",
+      "side": 1,
+      "message": "You could do this in two passes.  First add a dependency on the sysprop_library using a sysprop dependency tag, then have a second sysprop mutator that does VisitDirectDeps on each module, checks if any of the dependencies are have the sysprop dependency tag, and if so asks the sysprop_library for the correct dependency name and adds the new dependency.",
+      "revId": "3c8b74c0f4b8e792547c577ea887fceb43ea19d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53cee82b_49373132",
+        "filename": "cc/library.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-12T00:32:55Z",
+      "side": 1,
+      "message": "This needs a comment that will turn into documentation at go/Android.bp",
+      "revId": "3c8b74c0f4b8e792547c577ea887fceb43ea19d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84c15dd4_6b02de0a",
+        "filename": "cc/util.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-12T00:32:55Z",
+      "side": 1,
+      "message": "Can you put this in a new file called cc/testing.go?",
+      "revId": "3c8b74c0f4b8e792547c577ea887fceb43ea19d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
