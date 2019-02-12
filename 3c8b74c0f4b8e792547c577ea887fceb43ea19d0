@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7975db55_e9ddf281",
+        "filename": "cc/cc.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-02-12T10:12:13Z",
+      "side": 1,
+      "message": "I\u0027ve chosen to use mutator to gather sysprop_libraries and corresponding cc implementation modules. After that, only cc implementation modules are linked from client modules. Does it look fine?",
+      "parentUuid": "68924220_f34173d7",
+      "revId": "3c8b74c0f4b8e792547c577ea887fceb43ea19d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "53cee82b_49373132",
         "filename": "cc/library.go",
         "patchSetId": 13
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "1f8a81fa_7bc62980",
+        "filename": "cc/library.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-02-12T10:12:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53cee82b_49373132",
+      "revId": "3c8b74c0f4b8e792547c577ea887fceb43ea19d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84c15dd4_6b02de0a",
         "filename": "cc/util.go",
         "patchSetId": 13
@@ -50,6 +86,24 @@
       "revId": "3c8b74c0f4b8e792547c577ea887fceb43ea19d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fde9a0d_46a29a26",
+        "filename": "cc/util.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-02-12T10:12:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84c15dd4_6b02de0a",
+      "revId": "3c8b74c0f4b8e792547c577ea887fceb43ea19d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
