@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df8e2e46_8aa9bfcb",
+        "filename": "cc/library.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-12T21:10:47Z",
+      "side": 1,
+      "message": "Would vendor, platform, odm bools match better with vendor: true for other modules?",
+      "revId": "b97f365fd50ef0702859e15e0345e64e88078261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "013622a7_a365460c",
+        "filename": "cc/sysprop.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-12T21:10:47Z",
+      "side": 1,
+      "message": "Global variables like this make testing hard.  If you have to do this, it must be with a variable attached to ctx.Config().Once().  See http://cs/android/build/soong/java/sdk_library.go?l\u003d632\u0026rcl\u003dc76704edce7e0ecc43a47848bb65ed7bb6ee2d31 for an example.",
+      "revId": "b97f365fd50ef0702859e15e0345e64e88078261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d44ccaa5_b59ef2c4",
+        "filename": "sysprop/sysprop_library.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-12T21:10:47Z",
+      "side": 1,
+      "message": "This is unnecessary, you can get it from ctx.Module().(*syspropLibrary)",
+      "range": {
+        "startLine": 81,
+        "startChar": 53,
+        "endLine": 81,
+        "endChar": 70
+      },
+      "revId": "b97f365fd50ef0702859e15e0345e64e88078261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d609ed93_bcf9ede2",
+        "filename": "sysprop/sysprop_library.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-12T21:10:47Z",
+      "side": 1,
+      "message": "You can move the contents of syspropMutator here, a LoadHook is just a very early mutator.",
+      "revId": "b97f365fd50ef0702859e15e0345e64e88078261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
