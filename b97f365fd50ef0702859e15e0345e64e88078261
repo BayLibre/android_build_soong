@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fcf315bd_b4b0030b",
+        "filename": "cc/library.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-02-13T01:54:45Z",
+      "side": 1,
+      "message": "Done (replaced with \"Platform *bool\")",
+      "parentUuid": "df8e2e46_8aa9bfcb",
+      "revId": "b97f365fd50ef0702859e15e0345e64e88078261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "013622a7_a365460c",
         "filename": "cc/sysprop.go",
         "patchSetId": 14
@@ -33,6 +51,24 @@
       "revId": "b97f365fd50ef0702859e15e0345e64e88078261",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d509935c_5d83ed8d",
+        "filename": "cc/sysprop.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-02-13T01:54:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "013622a7_a365460c",
+      "revId": "b97f365fd50ef0702859e15e0345e64e88078261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
