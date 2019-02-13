@@ -169,7 +169,7 @@ func convertFile(filename string, buffer *bytes.Buffer) (string, []error) {
 			handleAssignment(file, x, assignmentCond)
 		case *mkparser.Directive:
 			switch x.Name {
-			case "include":
+			case "include", "-include":
 				val := x.Args.Value(file.scope)
 				switch {
 				case soongModuleTypes[val]:
@@ -180,6 +180,8 @@ func convertFile(filename string, buffer *bytes.Buffer) (string, []error) {
 				case val == include_ignored:
 					// subdirs are already automatically included in Soong
 					continue
+				case val == include_vts_config:
+					makeModule(file, "vts_config")
 				default:
 					file.errorf(x, "unsupported include")
 					continue
