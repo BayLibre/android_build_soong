@@ -16,6 +16,24 @@
       "revId": "02eaccafbdd3b4865e0d46a8fd066e11361e6592",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4ff1cd9_9eac0f19",
+        "filename": "ui/build/goma.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1067895
+      },
+      "writtenOn": "2019-02-13T05:23:28Z",
+      "side": 1,
+      "message": "Since the buganizer page clearly ask the users to attach \u0027goma_ctl.py report\u0027, we might not need to tell that.",
+      "parentUuid": "6f33ed93_c657aa75",
+      "revId": "02eaccafbdd3b4865e0d46a8fd066e11361e6592",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
