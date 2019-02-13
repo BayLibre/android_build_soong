@@ -110,7 +110,7 @@ func GenerateDexpreoptRule(global GlobalConfig, module ModuleConfig) (rule *andr
 	if !dexpreoptDisabled(global, module) {
 		// Don't preopt individual boot jars, they will be preopted together.
 		// This check is outside dexpreoptDisabled because they still need to be stripped.
-		if !contains(global.BootJars, module.Name) {
+		if !Contains(global.BootJars, module.Name) {
 			appImage := (generateProfile || module.ForceCreateAppImage || global.DefaultAppImages) &&
 				!module.NoCreateAppImage
 
@@ -127,7 +127,7 @@ func GenerateDexpreoptRule(global GlobalConfig, module ModuleConfig) (rule *andr
 }
 
 func dexpreoptDisabled(global GlobalConfig, module ModuleConfig) bool {
-	if contains(global.DisablePreoptModules, module.Name) {
+	if Contains(global.DisablePreoptModules, module.Name) {
 		return true
 	}
 
@@ -135,8 +135,8 @@ func dexpreoptDisabled(global GlobalConfig, module ModuleConfig) bool {
 	// Also preopt system server jars since selinux prevents system server from loading anything from
 	// /data. If we don't do this they will need to be extracted which is not favorable for RAM usage
 	// or performance. If PreoptExtractedApk is true, we ignore the only preopt boot image options.
-	if global.OnlyPreoptBootImageAndSystemServer && !contains(global.BootJars, module.Name) &&
-		!contains(global.SystemServerJars, module.Name) && !module.PreoptExtractedApk {
+	if global.OnlyPreoptBootImageAndSystemServer && !Contains(global.BootJars, module.Name) &&
+		!Contains(global.SystemServerJars, module.Name) && !module.PreoptExtractedApk {
 		return true
 	}
 
@@ -266,7 +266,7 @@ func dexpreoptCommand(global GlobalConfig, module ModuleConfig, rule *android.Ru
 		replace(verifyUsesLibs, httpLegacyImpl, httpLegacy)
 		replace(verifyOptionalUsesLibs, httpLegacyImpl, httpLegacy)
 
-		if !contains(verifyUsesLibs, httpLegacy) && !contains(verifyOptionalUsesLibs, httpLegacy) {
+		if !Contains(verifyUsesLibs, httpLegacy) && !Contains(verifyOptionalUsesLibs, httpLegacy) {
 			conditionalClassLoaderContextHost28 = append(conditionalClassLoaderContextHost28,
 				pathForLibrary(module, httpLegacyImpl))
 			conditionalClassLoaderContextTarget28 = append(conditionalClassLoaderContextTarget28,
@@ -357,14 +357,14 @@ func dexpreoptCommand(global GlobalConfig, module ModuleConfig, rule *android.Ru
 
 	if !anyHavePrefix(preoptFlags, "--compiler-filter=") {
 		var compilerFilter string
-		if contains(global.SystemServerJars, module.Name) {
+		if Contains(global.SystemServerJars, module.Name) {
 			// Jars of system server, use the product option if it is set, speed otherwise.
 			if global.SystemServerCompilerFilter != "" {
 				compilerFilter = global.SystemServerCompilerFilter
 			} else {
 				compilerFilter = "speed"
 			}
-		} else if contains(global.SpeedApps, module.Name) || contains(global.SystemServerApps, module.Name) {
+		} else if Contains(global.SpeedApps, module.Name) || Contains(global.SystemServerApps, module.Name) {
 			// Apps loaded into system server, and apps the product default to being compiled with the
 			// 'speed' compiler filter.
 			compilerFilter = "speed"
@@ -402,7 +402,7 @@ func dexpreoptCommand(global GlobalConfig, module ModuleConfig, rule *android.Ru
 
 	// PRODUCT_SYSTEM_SERVER_DEBUG_INFO overrides WITH_DEXPREOPT_DEBUG_INFO.
 	// PRODUCT_OTHER_JAVA_DEBUG_INFO overrides WITH_DEXPREOPT_DEBUG_INFO.
-	if contains(global.SystemServerJars, module.Name) {
+	if Contains(global.SystemServerJars, module.Name) {
 		if global.AlwaysSystemServerDebugInfo {
 			debugInfo = true
 		} else if global.NeverSystemServerDebugInfo {
@@ -496,7 +496,7 @@ func shouldGenerateDM(module ModuleConfig, global GlobalConfig) bool {
 	// Generating DM files only makes sense for verify, avoid doing for non verify compiler filter APKs.
 	// No reason to use a dm file if the dex is already uncompressed.
 	return global.GenerateDMFiles && !module.UncompressedDex &&
-		contains(module.PreoptFlags, "--compiler-filter=verify")
+		Contains(module.PreoptFlags, "--compiler-filter=verify")
 }
 
 func OdexOnSystemOtherByName(name string, dexLocation string, global GlobalConfig) bool {
@@ -508,7 +508,7 @@ func OdexOnSystemOtherByName(name string, dexLocation string, global GlobalConfi
 		return false
 	}
 
-	if contains(global.SpeedApps, name) || contains(global.SystemServerApps, name) {
+	if Contains(global.SpeedApps, name) || Contains(global.SystemServerApps, name) {
 		return false
 	}
 
@@ -554,7 +554,7 @@ func makefileMatch(pattern, s string) bool {
 	}
 }
 
-func contains(l []string, s string) bool {
+func Contains(l []string, s string) bool {
 	for _, e := range l {
 		if e == s {
 			return true
@@ -567,7 +567,7 @@ func contains(l []string, s string) bool {
 func filterOut(a []string, b []string) []string {
 	var ret []string
 	for _, x := range b {
-		if !contains(a, x) {
+		if !Contains(a, x) {
 			ret = append(ret, x)
 		}
 	}
