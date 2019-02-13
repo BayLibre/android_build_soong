@@ -16,6 +16,24 @@
       "revId": "c3fcdb4baa21c2be267fae4d877373bc18371b41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d21960c3_2d352415",
+        "filename": "android/prebuilt_etc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-02-13T21:07:59Z",
+      "side": 1,
+      "message": "Yes, we do. I was going to discuss it with you and Dan offline. (as to whether defining a regualr/host module type pair for each usage is a good idea)",
+      "parentUuid": "64237edd_795cdab8",
+      "revId": "c3fcdb4baa21c2be267fae4d877373bc18371b41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
