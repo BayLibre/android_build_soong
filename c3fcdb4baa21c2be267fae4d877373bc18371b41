@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64237edd_795cdab8",
+        "filename": "android/prebuilt_etc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-13T21:02:36Z",
+      "side": 1,
+      "message": "Do we need prebuilt_usr_share_host too?",
+      "revId": "c3fcdb4baa21c2be267fae4d877373bc18371b41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
