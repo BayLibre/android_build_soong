@@ -29,6 +29,7 @@ func testPrebuiltEtc(t *testing.T, bp string) *TestContext {
 	ctx := NewTestArchContext()
 	ctx.RegisterModuleType("prebuilt_etc", ModuleFactoryAdaptor(PrebuiltEtcFactory))
 	ctx.RegisterModuleType("prebuilt_etc_host", ModuleFactoryAdaptor(PrebuiltEtcHostFactory))
+	ctx.RegisterModuleType("shareable", ModuleFactoryAdaptor(ShareableFactory))
 	ctx.PreDepsMutators(func(ctx RegisterMutatorsContext) {
 		ctx.BottomUp("prebuilt_etc", prebuiltEtcMutator).Parallel()
 	})
@@ -191,5 +192,21 @@ func TestPrebuiltEtcHost(t *testing.T) {
 	p := ctx.ModuleForTests("foo.conf", buildOS+"_common").Module().(*PrebuiltEtc)
 	if !p.Host() {
 		t.Errorf("host bit is not set for a prebuilt_etc_host module.")
+	}
+}
+
+func TestShareableInstallDirPath(t *testing.T) {
+	ctx := testPrebuiltEtc(t, `
+		shareable {
+			name: "foo.conf",
+			src: "foo.conf",
+			sub_dir: "bar",
+		}
+	`)
+
+	p := ctx.ModuleForTests("foo.conf", "android_arm64_armv8-a_core").Module().(*PrebuiltEtc)
+	expected := "target/product/test_device/system/usr/share/bar"
+	if p.installDirPath.RelPathString() != expected {
+		t.Errorf("expected %q, got %q", expected, p.installDirPath.RelPathString())
 	}
 }
