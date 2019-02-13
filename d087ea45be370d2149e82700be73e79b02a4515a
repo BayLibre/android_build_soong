@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7f42ffa1_05a5c7f3",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-13T18:39:32Z",
+      "side": 1,
+      "message": "No, it\u0027s attached to the module type via the call to android.RegisterModuleType at the top of the file.  bpdoc finds the docs attached to the factory function for each module type.",
+      "parentUuid": "7e621d4b_64a36edd",
+      "range": {
+        "startLine": 375,
+        "startChar": 0,
+        "endLine": 375,
+        "endChar": 25
+      },
+      "revId": "d087ea45be370d2149e82700be73e79b02a4515a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86a3a9ca_b6ca6d98",
         "filename": "java/java.go",
         "patchSetId": 2
