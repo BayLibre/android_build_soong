@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9230be81_bd72f32a",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1446,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-13T21:49:27Z",
+      "side": 1,
+      "message": "Maybe this should be added to TopDownMutatorContext as ctx.GetDependencyPath() for use inside ctx.WalkDeps or ctx.VisitDepsDepthFirst?",
+      "range": {
+        "startLine": 1443,
+        "startChar": 2,
+        "endLine": 1446,
+        "endChar": 3
+      },
+      "revId": "8d69c6122a92d2d16776706e147d556b7bcbff84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23ea5bae_028bee7c",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1474,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-13T21:49:27Z",
+      "side": 1,
+      "message": "dependency",
+      "range": {
+        "startLine": 1474,
+        "startChar": 5,
+        "endLine": 1474,
+        "endChar": 14
+      },
+      "revId": "8d69c6122a92d2d16776706e147d556b7bcbff84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
