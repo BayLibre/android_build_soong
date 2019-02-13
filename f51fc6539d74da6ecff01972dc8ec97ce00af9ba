@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2e0edec_cb7afa5b",
+        "filename": "android/prebuilt_etc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-02-13T18:03:39Z",
+      "side": 1,
+      "message": "This is a placeholder name. Any suggestions would be greatly appreciated. :)",
+      "range": {
+        "startLine": 28,
+        "startChar": 21,
+        "endLine": 28,
+        "endChar": 30
+      },
+      "revId": "f51fc6539d74da6ecff01972dc8ec97ce00af9ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
