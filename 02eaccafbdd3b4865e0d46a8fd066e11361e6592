@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f33ed93_c657aa75",
+        "filename": "ui/build/goma.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1112789
+      },
+      "writtenOn": "2019-02-13T01:54:29Z",
+      "side": 1,
+      "message": "better to ask to file a bug with log from `goma_ctl.py report` or run the command from soong?",
+      "revId": "02eaccafbdd3b4865e0d46a8fd066e11361e6592",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
