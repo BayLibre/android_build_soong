@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "982ab960_6f260efe",
+        "filename": "sysprop/sysprop_library.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-02-13T00:26:01Z",
+      "side": 1,
+      "message": "ctx.Module() gives me compile error.. I can\u0027t find Module() method in android.LoadHookContext,",
+      "parentUuid": "d44ccaa5_b59ef2c4",
+      "range": {
+        "startLine": 81,
+        "startChar": 53,
+        "endLine": 81,
+        "endChar": 70
+      },
+      "revId": "b97f365fd50ef0702859e15e0345e64e88078261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d609ed93_bcf9ede2",
         "filename": "sysprop/sysprop_library.go",
         "patchSetId": 14
@@ -70,6 +94,24 @@
       "writtenOn": "2019-02-12T21:10:47Z",
       "side": 1,
       "message": "You can move the contents of syspropMutator here, a LoadHook is just a very early mutator.",
+      "revId": "b97f365fd50ef0702859e15e0345e64e88078261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dade466d_23af506e",
+        "filename": "sysprop/sysprop_library.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-02-13T00:26:01Z",
+      "side": 1,
+      "message": "DepsMutator of cc neeeds the list of sysprop module, and I can\u0027t make dependency from cc package to sysprop package. So I\u0027ve placed syspropMutator inside cc package.",
+      "parentUuid": "d609ed93_bcf9ede2",
       "revId": "b97f365fd50ef0702859e15e0345e64e88078261",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
