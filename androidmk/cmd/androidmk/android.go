@@ -24,8 +24,9 @@ import (
 )
 
 const (
-	clear_vars      = "__android_mk_clear_vars"
-	include_ignored = "__android_mk_include_ignored"
+	clear_vars         = "__android_mk_clear_vars"
+	include_ignored    = "__android_mk_include_ignored"
+	include_vts_config = "test/vts/tools/build/Android.host_config.mk"
 )
 
 type bpVariable struct {
@@ -105,6 +106,7 @@ func init() {
 			"LOCAL_MANIFEST_FILE":           "manifest",
 
 			"LOCAL_DEX_PREOPT_PROFILE_CLASS_LISTING": "dex_preopt.profile",
+			"LOCAL_TEST_CONFIG":                      "manifest",
 		})
 	addStandardProperties(bpparser.ListType,
 		map[string]string{
