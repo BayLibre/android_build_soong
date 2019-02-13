@@ -334,6 +334,7 @@ bootstrap_go_package {
     deps: [
         "blueprint",
         "soong-android",
+        "soong-dexpreopt",
     ],
     srcs: [
         "tradefed/autogen.go",
