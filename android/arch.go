@@ -159,6 +159,7 @@ var archVariants = map[ArchType][]string{
 		"ivybridge",
 		"sandybridge",
 		"silvermont",
+		"stoneyridge",
 		"x86_64",
 	},
 	X86_64: {
@@ -166,6 +167,7 @@ var archVariants = map[ArchType][]string{
 		"ivybridge",
 		"sandybridge",
 		"silvermont",
+		"stoneyridge",
 	},
 }
 
@@ -189,6 +191,7 @@ var archFeatures = map[ArchType][]string{
 		"sse4_2",
 		"aes_ni",
 		"avx",
+		"avx2",
 		"popcnt",
 		"movbe",
 	},
@@ -199,6 +202,7 @@ var archFeatures = map[ArchType][]string{
 		"sse4_2",
 		"aes_ni",
 		"avx",
+		"avx2",
 		"popcnt",
 	},
 }
@@ -268,6 +272,17 @@ var archFeatureMap = map[ArchType]map[string][]string{
 			"popcnt",
 			"movbe",
 		},
+		"stoneyridge": {
+			"ssse3",
+			"sse4",
+			"sse4_1",
+			"sse4_2",
+			"aes_ni",
+			"avx",
+			"avx2",
+			"popcnt",
+			"movbe",
+		},
 		"x86_64": {
 			"ssse3",
 			"sse4",
@@ -308,6 +323,16 @@ var archFeatureMap = map[ArchType]map[string][]string{
 			"sse4_1",
 			"sse4_2",
 			"aes_ni",
+			"popcnt",
+		},
+		"stoneyridge": {
+			"ssse3",
+			"sse4",
+			"sse4_1",
+			"sse4_2",
+			"aes_ni",
+			"avx",
+			"avx2",
 			"popcnt",
 		},
 	},
@@ -1354,12 +1379,14 @@ func getMegaDeviceConfig() []archConfig {
 		{"x86", "ivybridge", "", []string{"x86"}},
 		{"x86", "sandybridge", "", []string{"x86"}},
 		{"x86", "silvermont", "", []string{"x86"}},
+		{"x86", "stoneyridge", "", []string{"x86"}},
 		{"x86", "x86_64", "", []string{"x86"}},
 		{"x86_64", "", "", []string{"x86_64"}},
 		{"x86_64", "haswell", "", []string{"x86_64"}},
 		{"x86_64", "ivybridge", "", []string{"x86_64"}},
 		{"x86_64", "sandybridge", "", []string{"x86_64"}},
 		{"x86_64", "silvermont", "", []string{"x86_64"}},
+		{"x86_64", "stoneyridge", "", []string{"x86_64"}},
 	}
 }
 
