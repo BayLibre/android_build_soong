@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8936fcb4_17d6b201",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-02-14T09:32:31Z",
+      "side": 1,
+      "message": "I\u0027m currently working on a CL that generates another boot image (say apex.art). I managed to get it working with makefiles, but is that implementation flexible so that it can generate two different bootJarsInfo for the same build?",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 67
+      },
+      "revId": "e4245c3250b2128c3c4456d6a525f9d7eaa14421",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b481137f_81e8f8f2",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-02-14T09:32:31Z",
+      "side": 1,
+      "message": "This isn\u0027t really related to bootjars and boot classpath, is there another place we could compute this?",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 0
+      },
+      "revId": "e4245c3250b2128c3c4456d6a525f9d7eaa14421",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
