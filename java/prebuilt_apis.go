@@ -109,7 +109,7 @@ func prebuiltSdkStubs(mctx android.TopDownMutatorContext) {
 	var files []string
 	for _, apiver := range mctx.Module().(*prebuiltApis).properties.Api_dirs {
 		for _, scope := range []string{"public", "system", "test", "core"} {
-			vfiles, err := mctx.GlobWithDeps(mydir+apiver+"/"+scope+"*/*.jar", nil)
+			vfiles, err := mctx.GlobWithDeps(mydir+apiver+"/"+scope+"/*.jar", nil)
 			if err != nil {
 				mctx.ModuleErrorf("failed to glob jar files under %q: %s", mydir+apiver+"/"+scope, err)
 			}
@@ -128,10 +128,17 @@ func prebuiltSdkStubs(mctx android.TopDownMutatorContext) {
 func prebuiltApiFiles(mctx android.TopDownMutatorContext) {
 	mydir := mctx.ModuleDir() + "/"
 	// <apiver>/<scope>/api/<module>.txt
-	files, err := mctx.GlobWithDeps(mydir+"*/*/api/*.txt", nil)
-	if err != nil {
-		mctx.ModuleErrorf("failed to glob api txt files under %q: %s", mydir, err)
+	var files []string
+	for _, apiver := range mctx.Module().(*prebuiltApis).properties.Api_dirs {
+		for _, scope := range []string{"public", "system", "test", "core"} {
+			vfiles, err := mctx.GlobWithDeps(mydir+apiver+"/"+scope+"/api/*.txt", nil)
+			if err != nil {
+				mctx.ModuleErrorf("failed to glob jar files under %q: %s", mydir+apiver+"/"+scope, err)
+			}
+			files = append(files, vfiles...)
+		}
 	}
+
 	if len(files) == 0 {
 		mctx.ModuleErrorf("no api file found under %q", mydir)
 	}
@@ -161,6 +168,7 @@ func prebuiltApiFiles(mctx android.TopDownMutatorContext) {
 			strings.Compare(apiver, info.apiver) > 0) {
 			info.apiver = apiver
 			info.path = localPath
+			m[key] = info
 		}
 	}
 	// create filegroups for the latest version of (<module>, <scope>) pairs
