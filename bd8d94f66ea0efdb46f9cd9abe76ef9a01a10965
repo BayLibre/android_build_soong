@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3cb5cb1a_2e22f39f",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-02-14T03:35:14Z",
+      "side": 1,
+      "message": "This should be checking the sanitization of the target, not host.",
+      "range": {
+        "startLine": 197,
+        "startChar": 21,
+        "endLine": 197,
+        "endChar": 33
+      },
+      "revId": "bd8d94f66ea0efdb46f9cd9abe76ef9a01a10965",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
