@@ -1,0 +1,10 @@
+Verified+1: Joel Fernandes <joelaf@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+1: Colin Cross <ccross@android.com>
+Code-Review+2: Joel Fernandes <joelaf@google.com>
+Code-Review+1: Chenbo Feng <fengc@google.com>
+Submitted-by: Joel Fernandes <joelaf@google.com>
+Submitted-at: Thu, 14 Feb 2019 21:40:42 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/901419
+Project: platform/build/soong
+Branch: refs/heads/master
