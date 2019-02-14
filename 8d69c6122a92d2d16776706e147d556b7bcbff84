@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "07a24c14_ded71fc2",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1446,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-02-14T04:24:35Z",
+      "side": 1,
+      "message": "For now, I added GetWalkPath() to android.TopDownMutatorContext. As a follow-up, I\u0027ll move it to blueprint.Context, then GetWalkPath() can delegate to blueprint.Context\u0027s method.",
+      "parentUuid": "1b281254_d7b36d82",
+      "range": {
+        "startLine": 1443,
+        "startChar": 2,
+        "endLine": 1446,
+        "endChar": 3
+      },
+      "revId": "8d69c6122a92d2d16776706e147d556b7bcbff84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23ea5bae_028bee7c",
         "filename": "cc/cc.go",
         "patchSetId": 3
@@ -93,6 +117,30 @@
       "revId": "8d69c6122a92d2d16776706e147d556b7bcbff84",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86ac1b65_4e7ddaa5",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1474,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-02-14T04:24:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23ea5bae_028bee7c",
+      "range": {
+        "startLine": 1474,
+        "startChar": 5,
+        "endLine": 1474,
+        "endChar": 14
+      },
+      "revId": "8d69c6122a92d2d16776706e147d556b7bcbff84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
