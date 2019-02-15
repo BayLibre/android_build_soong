@@ -95,6 +95,8 @@ type BaseProperties struct {
 		Py3 VersionProperties `android:"arch_variant"`
 	} `android:"arch_variant"`
 
+	Autorun *bool `android:"arch_variant"`
+
 	// the actual version each module uses after variations created.
 	// this property name is hidden from users' perspectives, and soong will populate it during
 	// runtime.
@@ -307,9 +309,14 @@ func (p *Module) DepsMutator(ctx android.BottomUpMutatorContext) {
 
 		if p.bootstrapper != nil && p.isEmbeddedLauncherEnabled(pyVersion2) {
 			ctx.AddVariationDependencies(nil, pythonLibTag, "py2-stdlib")
+
+			launcherModule := "py2-launcher"
+			if BoolDefault(p.properties.Autorun, true) {
+				launcherModule = "py2-launcher-autorun"
+			}
 			ctx.AddFarVariationDependencies([]blueprint.Variation{
 				{Mutator: "arch", Variation: ctx.Target().String()},
-			}, launcherTag, "py2-launcher")
+			}, launcherTag, launcherModule)
 
 			// Add py2-launcher shared lib dependencies. Ideally, these should be
 			// derived from the `shared_libs` property of "py2-launcher". However, we
@@ -422,7 +429,7 @@ func (p *Module) GeneratePythonBuildActions(ctx android.ModuleContext) {
 			p.properties.Actual_version, ctx.ModuleName()))
 	}
 	expandedSrcs := ctx.ExpandSources(srcs, exclude_srcs)
-	if len(expandedSrcs) == 0 {
+	if len(expandedSrcs) == 0 && BoolDefault(p.properties.Autorun, true) {
 		ctx.ModuleErrorf("doesn't have any source files!")
 	}
 
@@ -656,4 +663,5 @@ func (p *Module) InstallInData() bool {
 }
 
 var Bool = proptools.Bool
+var BoolDefault = proptools.BoolDefault
 var String = proptools.String
