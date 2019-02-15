@@ -69,6 +69,10 @@ def parse_args():
                       default=None, type=lambda x: (str(x).lower() == 'true'),
                       help=('specify if the app wants to use embedded native libraries. Must not conflict '
                             'if already declared in the manifest.'))
+  parser.add_argument('--has-code', dest='has_code', default=None,
+                      type=lambda x: (str(x).lower() == 'true'),
+                      help='add the hasCode attribute to the application tag. Must not conflict '
+                           'if already declared in the manifest.')
   parser.add_argument('input', help='input AndroidManifest.xml file')
   parser.add_argument('output', help='output AndroidManifest.xml file')
   return parser.parse_args()
@@ -323,6 +327,30 @@ def add_extract_native_libs(doc, extract_native_libs):
                        (attr.value, value))
 
 
+def add_has_code(doc, value):
+  manifest = parse_manifest(doc)
+  elems = get_children_with_tag(manifest, 'application')
+  application = elems[0] if len(elems) == 1 else None
+  if len(elems) > 1:
+    raise RuntimeError('found multiple <application> tags')
+  elif not elems:
+    application = doc.createElement('application')
+    indent = get_indent(manifest.firstChild, 1)
+    first = manifest.firstChild
+    manifest.insertBefore(doc.createTextNode(indent), first)
+    manifest.insertBefore(application, first)
+
+  value = str(value).lower()
+  attr = application.getAttributeNodeNS(android_ns, 'hasCode')
+  if attr is None:
+    attr = doc.createAttributeNS(android_ns, 'android:hasCode')
+    attr.value = value
+    application.setAttributeNode(attr)
+  elif attr.value != value:
+    raise RuntimeError('existing attribute hasCode="%s" conflicts with --has-code="%s"' %
+                       (attr.value, value))
+
+
 def write_xml(f, doc):
   f.write('<?xml version="1.0" encoding="utf-8"?>\n')
   for node in doc.childNodes:
@@ -355,6 +383,9 @@ def main():
 
     if args.extract_native_libs is not None:
       add_extract_native_libs(doc, args.extract_native_libs)
+
+    if args.has_code is not None:
+      add_has_code(doc, args.has_code)
 
     with open(args.output, 'wb') as f:
       write_xml(f, doc)

@@ -424,5 +424,47 @@ class AddExtractNativeLibsTest(unittest.TestCase):
     self.assertRaises(RuntimeError, self.run_test, manifest_input, False)
 
 
+class AddHasCodeTest(unittest.TestCase):
+  """Unit tests for add_has_code function."""
+
+  def run_test(self, input_manifest, value):
+    doc = minidom.parseString(input_manifest)
+    manifest_fixer.add_has_code(doc, value)
+    output = StringIO.StringIO()
+    manifest_fixer.write_xml(output, doc)
+    return output.getvalue()
+
+  manifest_tmpl = (
+    '<?xml version="1.0" encoding="utf-8"?>\n'
+    '<manifest xmlns:android="http://schemas.android.com/apk/res/android">\n'
+    '    <application%s/>\n'
+    '</manifest>\n')
+
+  def has_code(self, value):
+    return ' android:hasCode="%s"' % value
+
+  def test_set_true(self):
+    manifest_input = self.manifest_tmpl % ''
+    expected = self.manifest_tmpl % self.has_code('true')
+    output = self.run_test(manifest_input, True)
+    self.assertEqual(output, expected)
+
+  def test_set_false(self):
+    manifest_input = self.manifest_tmpl % ''
+    expected = self.manifest_tmpl % self.has_code('false')
+    output = self.run_test(manifest_input, False)
+    self.assertEqual(output, expected)
+
+  def test_match(self):
+    manifest_input = self.manifest_tmpl % self.has_code('true')
+    expected = manifest_input
+    output = self.run_test(manifest_input, True)
+    self.assertEqual(output, expected)
+
+  def test_conflict(self):
+    manifest_input = self.manifest_tmpl % self.has_code('true')
+    self.assertRaises(RuntimeError, self.run_test, manifest_input, False)
+
+
 if __name__ == '__main__':
   unittest.main()
