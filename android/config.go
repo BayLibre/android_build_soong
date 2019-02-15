@@ -1030,6 +1030,19 @@ func (c *config) ProductHiddenAPIStubsSystem() []string {
 	return c.productVariables.ProductHiddenAPIStubsSystem
 }
 
+<<<<<<< HEAD
 func (c *config) ProductHiddenAPIStubsTest() []string {
 	return c.productVariables.ProductHiddenAPIStubsTest
+=======
+func (c *config) FlattenAtm() bool {
+	return Bool(c.productVariables.FlattenAtm)
+}
+
+func stringSlice(s *[]string) []string {
+	if s != nil {
+		return *s
+	} else {
+		return nil
+	}
+>>>>>>> atm change
 }

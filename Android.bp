@@ -43,6 +43,7 @@ bootstrap_go_package {
         "android/apex.go",
         "android/api_levels.go",
         "android/arch.go",
+        "android/atm_module.go",
         "android/config.go",
         "android/defaults.go",
         "android/defs.go",

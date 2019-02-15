@@ -269,6 +269,8 @@ type productVariables struct {
 
 	FlattenApex *bool `json:",omitempty"`
 
+	FlattenAtm *bool `json:",omitempty"`
+
 	DexpreoptGlobalConfig *string `json:",omitempty"`
 
 	ManifestPackageNameOverrides []string `json:",omitempty"`
