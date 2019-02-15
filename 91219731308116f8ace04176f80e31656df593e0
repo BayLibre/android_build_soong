@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c30e477_89e0b6ab",
+        "filename": "ui/build/paths/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2019-02-15T17:08:12Z",
+      "side": 1,
+      "message": "thinking ahead, should these be PrebuiltLinux/PrebuiltDarwin/Prebuilt (or PrebuiltBoth if you\u0027re not into the whole brevity thing)?",
+      "revId": "91219731308116f8ace04176f80e31656df593e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
