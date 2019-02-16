@@ -599,9 +599,7 @@ func replace(l []string, from, to string) {
 	}
 }
 
-func copyOf(l []string) []string {
-	return append([]string(nil), l...)
-}
+var copyOf = android.CopyOf
 
 func anyHavePrefix(l []string, prefix string) bool {
 	for _, x := range l {
