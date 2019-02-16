@@ -96,6 +96,28 @@ func TestOncePer_Get_wait(t *testing.T) {
 	}
 }
 
+func TestOncePer_Set(t *testing.T) {
+	once := OncePer{}
+	key := NewOnceKey("key")
+
+	once.Set(key, "a")
+	a := once.Get(key).(string)
+
+	if a != "a" {
+		t.Errorf("expect %q, got %q", "a", a)
+	}
+
+	defer func() {
+		p := recover()
+
+		if p == nil {
+			t.Error("call to Set for already used key should panic")
+		}
+	}()
+
+	once.Set(key, "b")
+}
+
 func TestOncePer_OnceStringSlice(t *testing.T) {
 	once := OncePer{}
 	key := NewOnceKey("key")
