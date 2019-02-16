@@ -46,6 +46,30 @@
       "revId": "f25598b2231f0ccd8488924810f9b4ad8765cae5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81f5c241_5f703b89",
+        "filename": "Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-02-16T01:18:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3df5a7ba_6a9ec019",
+      "range": {
+        "startLine": 271,
+        "startChar": 14,
+        "endLine": 271,
+        "endChar": 21
+      },
+      "revId": "f25598b2231f0ccd8488924810f9b4ad8765cae5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
