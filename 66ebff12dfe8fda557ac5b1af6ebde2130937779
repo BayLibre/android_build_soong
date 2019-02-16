@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b3df7cb_cba7a659",
+        "filename": "android/vts_config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-16T00:29:04Z",
+      "side": 1,
+      "message": "This is Test_config in other modules",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 9
+      },
+      "revId": "66ebff12dfe8fda557ac5b1af6ebde2130937779",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb8fbf81_d606564b",
+        "filename": "android/vts_config_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-16T00:29:04Z",
+      "side": 1,
+      "message": "You won\u0027t need this, the tests don\u0027t actually parse any makefiles.",
+      "revId": "66ebff12dfe8fda557ac5b1af6ebde2130937779",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c3e1cb8_578c38c5",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-16T00:29:04Z",
+      "side": 1,
+      "message": "Add this to moduleTypes below.  You may need to fix some of the unnecessary trickiness there.",
+      "revId": "66ebff12dfe8fda557ac5b1af6ebde2130937779",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60fa5fa2_40c5ce15",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 895,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-16T00:29:04Z",
+      "side": 1,
+      "message": "This is unnecessarily tricky, the globalScope.Set(k, v) is causing the evaluation of $(BUILD_SHARED_LIBRARY) to be cc_library_shared, and then it is treating include cc_library_shared as makeModule(\"cc_library_shared\").  Maybe instead this should be:\n\nvar soongModuleTypes \u003d map[string]string{\n\t\"BUILD_SHARED_LIBRARY\":        \"cc_library_shared\",\n\t...\n\t\"test/vts/tools/build/Android.host_config.mk\": \"vts_config\",\n}\nfor k, v :\u003d range moduleTypes {\n\tglobalScope.Set(k, k)\n}\n\nThen $(BUILD_SHARED_LIBRARY) will just resolve to BUILD_SHARED_LIBRARY, and you can look up BUILD_SHARED_LIBRARY or test/vts/tools/build/Android.host_config.mk in soongModuleTypes to get \"cc_library_shared\" or \"vts_config\".",
+      "range": {
+        "startLine": 892,
+        "startChar": 1,
+        "endLine": 895,
+        "endChar": 2
+      },
+      "revId": "66ebff12dfe8fda557ac5b1af6ebde2130937779",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4078373_1e2afc1a",
+        "filename": "androidmk/cmd/androidmk/androidmk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-16T00:29:04Z",
+      "side": 1,
+      "message": "this isn\u0027t needed if it is in soongModuleTypes",
+      "revId": "66ebff12dfe8fda557ac5b1af6ebde2130937779",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
