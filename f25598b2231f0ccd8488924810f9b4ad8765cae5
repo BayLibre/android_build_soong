@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d5b5ca5_763068da",
+        "filename": "Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-02-16T01:09:48Z",
+      "side": 1,
+      "message": "Is there a reason this isn\u0027t a _test.go source in testSrcs?",
+      "range": {
+        "startLine": 271,
+        "startChar": 14,
+        "endLine": 271,
+        "endChar": 21
+      },
+      "revId": "f25598b2231f0ccd8488924810f9b4ad8765cae5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
