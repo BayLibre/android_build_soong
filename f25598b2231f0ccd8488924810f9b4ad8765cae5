@@ -22,6 +22,30 @@
       "revId": "f25598b2231f0ccd8488924810f9b4ad8765cae5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3df5a7ba_6a9ec019",
+        "filename": "Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-16T01:10:37Z",
+      "side": 1,
+      "message": "It needs to be available to sysprop_test.go which is in another package",
+      "parentUuid": "8d5b5ca5_763068da",
+      "range": {
+        "startLine": 271,
+        "startChar": 14,
+        "endLine": 271,
+        "endChar": 21
+      },
+      "revId": "f25598b2231f0ccd8488924810f9b4ad8765cae5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
