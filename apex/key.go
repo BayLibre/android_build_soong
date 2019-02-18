@@ -17,6 +17,7 @@ package apex
 import (
 	"fmt"
 	"io"
+	"strings"
 
 	"android/soong/android"
 
@@ -27,6 +28,7 @@ var String = proptools.String
 
 func init() {
 	android.RegisterModuleType("apex_key", apexKeyFactory)
+	android.RegisterSingletonType("apex_keys_text", apexKeysTextFactory)
 }
 
 type apexKey struct {
@@ -101,4 +103,51 @@ func (m *apexKey) AndroidMk() android.AndroidMkData {
 			},
 		},
 	}
+}
+
+////////////////////////////////////////////////////////////////////////
+// apex_keys_text
+type apexKeysText struct {
+	output android.OutputPath
+}
+
+func (s *apexKeysText) GenerateBuildActions(ctx android.SingletonContext) {
+	s.output = android.PathForOutput(ctx, "apex_keys.txt")
+	var filecontent strings.Builder
+	ctx.VisitAllModules(func(module android.Module) {
+		if m, ok := module.(android.Module); ok && !m.Enabled() {
+			return
+		}
+
+		if m, ok := module.(*apexBundle); ok && m.Key() != nil && m.Certificate() != nil {
+			filecontent.WriteString(fmt.Sprintf(
+				"name=%q public_key=%q private_key=%q container_certificate=%q container_private_key=%q\\n",
+				m.Name()+".apex",
+				m.Key().public_key_file.String(),
+				m.Key().private_key_file.String(),
+				m.Certificate().Pem.String(),
+				m.Certificate().Key.String()))
+		}
+	})
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        android.WriteFile,
+		Description: "apex_keys.txt",
+		Output:      s.output,
+		Args: map[string]string{
+			"content": filecontent.String(),
+		},
+	})
+}
+
+func (s *apexKeysText) AndroidMk() android.AndroidMkData {
+	return android.AndroidMkData{
+		Custom: func(w io.Writer, name, prefix, moduleDir string, data android.AndroidMkData) {
+			fmt.Fprintln(w, "ifneq (,$(TARGET_BUILD_APPS))")
+			fmt.Fprintln(w, "$(call dist-for-goals, apps_only, %s:%s)", s.output.String(), "apex_keys.txt")
+			fmt.Fprintln(w, "endif")
+		}}
+}
+
+func apexKeysTextFactory() android.Singleton {
+	return &apexKeysText{}
 }

@@ -378,6 +378,8 @@ type apexBundle struct {
 	bundleModuleFile android.WritablePath
 	outputFiles      map[apexPackaging]android.WritablePath
 	installDir       android.OutputPath
+	key              *apexKey
+	certificate      *java.Certificate
 
 	// list of files to be included in this apex
 	filesInfo []apexFile
@@ -632,6 +634,14 @@ func getCopyManifestForPrebuiltEtc(prebuilt *android.PrebuiltEtc) (fileToCopy an
 	return
 }
 
+func (a *apexBundle) Key() *apexKey {
+	return a.key
+}
+
+func (a *apexBundle) Certificate() *java.Certificate {
+	return a.certificate
+}
+
 func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	filesInfo := []apexFile{}
 
@@ -704,6 +714,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 				}
 			case keyTag:
 				if key, ok := child.(*apexKey); ok {
+					a.key = key
 					keyFile = key.private_key_file
 					if !key.installable() && ctx.Config().Debuggable() {
 						// If the key is not installed, bundled it with the APEX.
@@ -718,6 +729,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			case certificateTag:
 				if dep, ok := child.(*java.AndroidAppCertificate); ok {
 					certificate = dep.Certificate
+					a.certificate = &certificate
 					return false
 				} else {
 					ctx.ModuleErrorf("certificate dependency %q must be an android_app_certificate module", depName)
@@ -796,9 +808,11 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext, keyFile and
 			defaultDir.Join(ctx, cert+".x509.pem"),
 			defaultDir.Join(ctx, cert+".pk8"),
 		}
+		a.certificate = &certificate
 	} else if cert == "" {
 		pem, key := ctx.Config().DefaultAppCertificate(ctx)
 		certificate = java.Certificate{pem, key}
+		a.certificate = &certificate
 	}
 
 	manifest := ctx.ExpandSource(proptools.StringDefault(a.properties.Manifest, "apex_manifest.json"), "manifest")
@@ -969,7 +983,7 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext, keyFile and
 
 	// Install to $OUT/soong/{target,host}/.../apex
 	if a.installable() && (!ctx.Config().FlattenApex() || apexType.zip()) {
-		ctx.InstallFile(android.PathForModuleInstall(ctx, "apex"), ctx.ModuleName()+suffix, a.outputFiles[apexType])
+		ctx.InstallFile(a.installDir, ctx.ModuleName()+suffix, a.outputFiles[apexType])
 	}
 }
 
