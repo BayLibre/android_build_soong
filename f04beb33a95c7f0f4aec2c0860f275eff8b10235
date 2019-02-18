@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa957a5f_dceb226a",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1083173
+      },
+      "writtenOn": "2019-02-18T03:06:47Z",
+      "side": 1,
+      "message": "testSuites?",
+      "range": {
+        "startLine": 42,
+        "startChar": 61,
+        "endLine": 42,
+        "endChar": 70
+      },
+      "revId": "f04beb33a95c7f0f4aec2c0860f275eff8b10235",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
