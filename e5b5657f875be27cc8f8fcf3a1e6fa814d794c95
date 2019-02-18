@@ -22,6 +22,30 @@
       "revId": "e5b5657f875be27cc8f8fcf3a1e6fa814d794c95",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fba5d3f0_d732c531",
+        "filename": "java/config/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-02-18T12:25:44Z",
+      "side": 1,
+      "message": "I thought about that myself and had a look but I do not understand the build well enough to know how to organize this. It looks as though the hiddenapi support applies to a number of different modules, java_sdk_library and java_library at least, so would need to ensure that the properties were added in the correct place/inherited properly. I am happy to look at switching over to properties if someone have me some pointers as to where to start. If I did so then I would also look at removing the HiddenAPIExtraAppUsageJars list as well.",
+      "parentUuid": "d429dfb9_2a0a153d",
+      "range": {
+        "startLine": 38,
+        "startChar": 2,
+        "endLine": 38,
+        "endChar": 22
+      },
+      "revId": "e5b5657f875be27cc8f8fcf3a1e6fa814d794c95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
