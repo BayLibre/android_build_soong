@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0accea15_45c6b873",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1119,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2019-02-18T08:22:53Z",
+      "side": 1,
+      "message": "This doesn\u0027t have the same semantics we had before if !a.debuggable, right?",
+      "range": {
+        "startLine": 1119,
+        "startChar": 45,
+        "endLine": 1119,
+        "endChar": 47
+      },
+      "revId": "bea80405b71265c243fca90422f5b99b168e6d22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
