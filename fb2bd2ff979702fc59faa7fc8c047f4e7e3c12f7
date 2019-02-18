@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff5904d1_9c9b3d84",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-18T16:29:28Z",
+      "side": 1,
+      "message": "It\u0027s better not to store pointers to other modules, it\u0027s easy to cause data races by doing the wrong thing with a pointer at the wrong time.  Can you store the necessary data from the module instead?",
+      "revId": "fb2bd2ff979702fc59faa7fc8c047f4e7e3c12f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbd43e98_ce5fc171",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-18T16:29:28Z",
+      "side": 1,
+      "message": "java.Certificate only contains pointer types (android.Path is an interface, which stores a tuple of a pointer to a type and a pointer to a value), and you don\u0027t need to modify anything through it, so this can be java.Certificate instead of *java.Certificate.",
+      "revId": "fb2bd2ff979702fc59faa7fc8c047f4e7e3c12f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37f7e759_f35d7eb7",
+        "filename": "apex/key.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-18T16:29:28Z",
+      "side": 1,
+      "message": "fmt.Fprintf(file content, ...",
+      "revId": "fb2bd2ff979702fc59faa7fc8c047f4e7e3c12f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8b791bb_d0d0bb17",
+        "filename": "apex/key.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-18T16:29:28Z",
+      "side": 1,
+      "message": "The AndroidMk singleton doesn\u0027t visit other singletons (although maybe it should?  That would simplify a bunch of my code).  For now you have to save this into ctx.Config().Once and then use RegisterMakeVarsProvider to call a function that prints the value.",
+      "revId": "fb2bd2ff979702fc59faa7fc8c047f4e7e3c12f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
