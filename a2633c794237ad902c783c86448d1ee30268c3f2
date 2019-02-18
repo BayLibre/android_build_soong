@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9698d557_724bd345",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-18T04:58:18Z",
+      "side": 1,
+      "message": "Don\u0027t export this one, you can use android.InList instead.",
+      "revId": "a2633c794237ad902c783c86448d1ee30268c3f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22843f74_feffb0c2",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-18T04:58:18Z",
+      "side": 1,
+      "message": "use android.InList",
+      "range": {
+        "startLine": 45,
+        "startChar": 12,
+        "endLine": 45,
+        "endChar": 30
+      },
+      "revId": "a2633c794237ad902c783c86448d1ee30268c3f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
