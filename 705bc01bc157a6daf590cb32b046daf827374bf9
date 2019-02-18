@@ -22,6 +22,30 @@
       "revId": "705bc01bc157a6daf590cb32b046daf827374bf9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d1eab37_090bb2f9",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2019-02-18T03:39:35Z",
+      "side": 1,
+      "message": "This contains\u0027 target is an array string not an single string. :)\nI use another function instead.\nThanks.",
+      "parentUuid": "cdc67303_830374c5",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 1
+      },
+      "revId": "705bc01bc157a6daf590cb32b046daf827374bf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
