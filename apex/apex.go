@@ -392,6 +392,8 @@ type apexBundle struct {
 	flattened bool
 
 	testApex bool
+
+	debuggable bool
 }
 
 func addDependenciesForNativeModules(ctx android.BottomUpMutatorContext,
@@ -749,6 +751,8 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		return
 	}
 
+	a.debuggable = ctx.Config().Debuggable()
+
 	// remove duplicates in filesInfo
 	removeDup := func(filesInfo []apexFile) []apexFile {
 		encountered := make(map[android.Path]bool)
@@ -1104,8 +1108,16 @@ func (a *apexBundle) androidMkForType(apexType apexPackaging) android.AndroidMkD
 				fmt.Fprintln(w, "\ninclude $(CLEAR_VARS)")
 				fmt.Fprintln(w, "LOCAL_PATH :=", moduleDir)
 				fmt.Fprintln(w, "LOCAL_MODULE :=", name)
+				if a.debuggable {
+					// Normally, when an APEX is flattened, we don't install the public key
+					// associated with it because the APEX can't be verified and we don't
+					// support updating the APEX. However, on debuggable builds, we install
+					// the public keys in order to use the device with flattened APEX for
+					// testing purpose.
+					fmt.Fprintln(w, "LOCAL_REQUIRED_MODULES :=", String(a.properties.Key))
+				}
 				if len(moduleNames) > 0 {
-					fmt.Fprintln(w, "LOCAL_REQUIRED_MODULES :=", strings.Join(moduleNames, " "))
+					fmt.Fprintln(w, "LOCAL_REQUIRED_MODULES +=", strings.Join(moduleNames, " "))
 				}
 				fmt.Fprintln(w, "include $(BUILD_PHONY_PACKAGE)")
 			} else {
