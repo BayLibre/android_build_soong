@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "edb27b52_30d19bd5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-02-18T06:32:30Z",
+      "side": 1,
+      "message": "This is being tested in the presubmit for https://android-review.googlesource.com/c/platform/prebuilts/build-tools/+/907394",
+      "revId": "6ca390f0b4be216226f31bc05ed5e3bba3105e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1c46509_8d68d8e3",
         "filename": "python/builder.go",
         "patchSetId": 2
@@ -13,6 +30,24 @@
       "writtenOn": "2019-02-18T05:25:00Z",
       "side": 1,
       "message": "Seems like an opportunity for RuleBuilder",
+      "revId": "6ca390f0b4be216226f31bc05ed5e3bba3105e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "48f732a1_3b70d72e",
+        "filename": "python/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-02-18T06:32:30Z",
+      "side": 1,
+      "message": "Yeah, but I\u0027ll wait to do that until after your path change gets in.",
+      "parentUuid": "d1c46509_8d68d8e3",
       "revId": "6ca390f0b4be216226f31bc05ed5e3bba3105e17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
