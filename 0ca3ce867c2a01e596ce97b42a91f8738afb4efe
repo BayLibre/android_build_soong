@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1ce0728_8056d6c5",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-19T05:43:26Z",
+      "side": 1,
+      "message": "Using Certificate was fine here, because that is just a container struct.  apexKey was a full module.  But this is fine too.",
+      "revId": "0ca3ce867c2a01e596ce97b42a91f8738afb4efe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
