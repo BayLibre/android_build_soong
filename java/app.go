@@ -146,6 +146,7 @@ func (a *AndroidApp) DepsMutator(ctx android.BottomUpMutatorContext) {
 func (a *AndroidApp) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	a.aapt.uncompressedJNI = a.shouldUncompressJNI(ctx)
 	a.aapt.useEmbeddedDex = Bool(a.appProperties.Use_embedded_dex)
+	a.aapt.useHasCodeFalse = len(a.Library.Module.properties.Srcs) == 0
 	a.generateAndroidBuildActions(ctx)
 }
 

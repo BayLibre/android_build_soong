@@ -78,6 +78,7 @@ type aapt struct {
 	uncompressedJNI       bool
 	useEmbeddedDex        bool
 	usesNonSdkApis        bool
+	useHasCodeFalse       bool
 
 	aaptProperties aaptProperties
 }
@@ -185,7 +186,7 @@ func (a *aapt) buildActions(ctx android.ModuleContext, sdkContext sdkContext, ex
 	manifestSrcPath := android.PathForModuleSrc(ctx, manifestFile)
 
 	manifestPath := manifestMerger(ctx, manifestSrcPath, sdkContext, staticLibManifests, a.isLibrary,
-		a.uncompressedJNI, a.useEmbeddedDex, a.usesNonSdkApis)
+		a.uncompressedJNI, a.useEmbeddedDex, a.usesNonSdkApis, a.useHasCodeFalse)
 
 	linkFlags, linkDeps, resDirs, overlayDirs, rroDirs := a.aapt2Flags(ctx, sdkContext, manifestPath)
 
