@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29f1a2d9_c54deff6",
+        "filename": "cc/coverage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-19T17:56:02Z",
+      "side": 1,
+      "message": "These don\u0027t seem like they need to be conditional, just always add them?",
+      "revId": "217b2c9e8bbe6e5c33588b3e3db3090a4670329e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
