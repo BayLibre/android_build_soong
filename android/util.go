@@ -77,6 +77,15 @@ func PrefixInList(s string, list []string) bool {
 	return false
 }
 
+func PrefixOfItemInList(prefix string, list []string) bool {
+	for _, s := range list {
+		if strings.HasPrefix(s, prefix) {
+			return true
+		}
+	}
+	return false
+}
+
 func FilterList(list []string, filter []string) (remainder []string, filtered []string) {
 	for _, l := range list {
 		if InList(l, filter) {
