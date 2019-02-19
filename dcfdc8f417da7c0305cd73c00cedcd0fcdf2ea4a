@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "643af8d1_10fe410f",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-19T04:28:20Z",
+      "side": 1,
+      "message": "This is also dangerous, if anything in apexKey is a pointer type then accidentally calling methods on key could mutate shared data.  Just store the public and private keys",
+      "revId": "dcfdc8f417da7c0305cd73c00cedcd0fcdf2ea4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
