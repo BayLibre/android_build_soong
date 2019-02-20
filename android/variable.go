@@ -200,8 +200,7 @@ type productVariables struct {
 	UncompressPrivAppDex             *bool    `json:",omitempty"`
 	ModulesLoadedByPrivilegedModules []string `json:",omitempty"`
 
-	BootJars       []string `json:",omitempty"`
-	PreoptBootJars []string `json:",omitempty"`
+	BootJars []string `json:",omitempty"`
 
 	DisableDexPreopt        *bool    `json:",omitempty"`
 	DisableDexPreoptModules []string `json:",omitempty"`
