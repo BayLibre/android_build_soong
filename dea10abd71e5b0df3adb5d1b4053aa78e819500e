@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "f6566961_be04d00d",
+        "filename": "android/writedocs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-20T22:21:17Z",
+      "side": 1,
+      "message": "This stage won\u0027t know the names of all the output files, so I don\u0027t think there\u0027s much you can do.  We should delete everything in the docs directory in the rule though so that stale files don\u0027t stick around.",
+      "revId": "dea10abd71e5b0df3adb5d1b4053aa78e819500e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aee2fb2a_10220425",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-20T22:21:17Z",
+      "side": 1,
+      "message": "if you pass a struct to Execute that contains Name and data then you won\u0027t need this function",
+      "revId": "dea10abd71e5b0df3adb5d1b4053aa78e819500e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "27ceb05f_f07f4764",
         "filename": "cmd/soong_build/writedocs.go",
         "patchSetId": 3
@@ -13,6 +47,24 @@
       "writtenOn": "2019-02-20T21:09:45Z",
       "side": 1,
       "message": "I\u0027m not very sure if this content is guaranteed to be static. I plan to work on unifying the styles in my next change, so it wouldn\u0027t matter too much for now, though.",
+      "revId": "dea10abd71e5b0df3adb5d1b4053aa78e819500e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc843a45_4166f66e",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-20T22:21:17Z",
+      "side": 1,
+      "message": "Probably a question for claym.",
+      "parentUuid": "27ceb05f_f07f4764",
       "revId": "dea10abd71e5b0df3adb5d1b4053aa78e819500e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
