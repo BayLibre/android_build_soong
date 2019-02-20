@@ -59,6 +59,7 @@ func (c *docsSingleton) GenerateBuildActions(ctx SingletonContext) {
 			Description: fmt.Sprintf("%s docs $out", primaryBuilder.Base()),
 		})
 
+	// TODO(jungjw): Consider adding all per-package html files as outputs here.
 	ctx.Build(pctx, BuildParams{
 		Rule:   soongDocs,
 		Output: docsFile,
