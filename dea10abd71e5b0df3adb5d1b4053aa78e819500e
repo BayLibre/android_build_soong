@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27ceb05f_f07f4764",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-02-20T21:09:45Z",
+      "side": 1,
+      "message": "I\u0027m not very sure if this content is guaranteed to be static. I plan to work on unifying the styles in my next change, so it wouldn\u0027t matter too much for now, though.",
+      "revId": "dea10abd71e5b0df3adb5d1b4053aa78e819500e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
