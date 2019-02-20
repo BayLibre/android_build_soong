@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "13d97dc0_f1c49207",
+        "filename": "android/writedocs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-02-20T23:46:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6566961_be04d00d",
+      "revId": "dea10abd71e5b0df3adb5d1b4053aa78e819500e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aee2fb2a_10220425",
         "filename": "cmd/soong_build/writedocs.go",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "dea10abd71e5b0df3adb5d1b4053aa78e819500e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8a2bac3_6c6d4b43",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-02-20T23:46:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aee2fb2a_10220425",
+      "revId": "dea10abd71e5b0df3adb5d1b4053aa78e819500e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +101,24 @@
       "side": 1,
       "message": "Probably a question for claym.",
       "parentUuid": "27ceb05f_f07f4764",
+      "revId": "dea10abd71e5b0df3adb5d1b4053aa78e819500e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17ed6878_091984bd",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-02-20T23:46:33Z",
+      "side": 1,
+      "message": "It was claym@ who found this file, but he wasn\u0027t sure about it, either. He suggested using another file which seems to have a canonical, human-readable URL, but it turns out to not have all the style definitions I need.",
+      "parentUuid": "fc843a45_4166f66e",
       "revId": "dea10abd71e5b0df3adb5d1b4053aa78e819500e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
