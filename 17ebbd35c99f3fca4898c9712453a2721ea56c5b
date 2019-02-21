@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b94cd1dc_d651d5ee",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-21T15:07:48Z",
+      "side": 1,
+      "message": "This check is not sufficient, the app could only have static libraries, and those may or may not have code.  There may be prebuilts in the dependency chain for which we don\u0027t have any information on whether they have code or not.",
+      "revId": "17ebbd35c99f3fca4898c9712453a2721ea56c5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
