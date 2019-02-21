@@ -34,6 +34,24 @@
       "revId": "17ebbd35c99f3fca4898c9712453a2721ea56c5b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebcf8f3e_41798ccb",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-21T23:54:34Z",
+      "side": 1,
+      "message": "We could try to do a better job of tracking hasCode.  We would need each locally-built module to store whether or not it or any of its dependencies have code, and we would need to require prebuilts with no code to set has_code: false and verify that during the build.",
+      "parentUuid": "b4c8d6c0_2dc22b17",
+      "revId": "17ebbd35c99f3fca4898c9712453a2721ea56c5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
