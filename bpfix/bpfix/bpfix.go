@@ -98,6 +98,10 @@ var fixSteps = []fixStep{
 		name: "removeTags",
 		fix:  runPatchListMod(removeTags),
 	},
+	{
+		name: "rewriteAndroidTest",
+		fix:  rewriteAndroidTest,
+	},
 }
 
 func NewFixRequest() FixRequest {
@@ -556,6 +560,28 @@ func rewriteAndroidmkPrebuiltEtc(f *Fixer) error {
 			} else {
 				return indicateAttributeError(mod, "filename", "Cannot handle $(%s) for the prebuilt_etc", prefixVariableName)
 			}
+		}
+	}
+	return nil
+}
+
+func rewriteAndroidTest(f *Fixer) error {
+	for _, def := range f.tree.Defs {
+		mod, ok := def.(*parser.Module)
+		if !(ok && mod.Type == "android_test") {
+			continue
+		}
+		// The rewriter converts LOCAL_MODULE_PATH attribute into a struct attribute
+		// 'local_module_path'. Drop it if it is $(TARGET_OUT_DATA_APPS)
+		const local_module_path = "local_module_path"
+		if prop_local_module_path, ok := mod.GetProperty(local_module_path); ok {
+			removeProperty(mod, local_module_path)
+			prefixVariableName := getStringProperty(prop_local_module_path, "var")
+			path := getStringProperty(prop_local_module_path, "fixed")
+			if prefixVariableName == "TARGET_OUT_DATA_APPS" && path == "" {
+				continue
+			}
+			return indicateAttributeError(mod, "filename", "Only LOCAL_MODULE_PATH := $(TARGET_OUT_DATA_APPS) is allowed for the android_test")
 		}
 	}
 	return nil
