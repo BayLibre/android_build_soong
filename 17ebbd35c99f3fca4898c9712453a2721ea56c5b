@@ -16,6 +16,24 @@
       "revId": "17ebbd35c99f3fca4898c9712453a2721ea56c5b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4c8d6c0_2dc22b17",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1006469
+      },
+      "writtenOn": "2019-02-21T18:52:09Z",
+      "side": 1,
+      "message": "If we can\u0027t tell the correct value of hasCode from the Android.bp file alone, we\u0027re left with these options:\n\n1. update the overlay packages\u0027 manifests to explicitly state \u003capplication hasCode\u003dfalse\u003e; this means accepting that a breaking change was introduced, but on the other hand that change only affects overlay packages built as part of the Android platform (so, a subset of a subset of a subset of packages), and it only impacts overlay packages built today: already existing APKs will continue to work.\n\n2. postpone fixing the manifest until just before the aapt2 link step; at this point, check the module\u0027s intermediate.COMMON directory for classes.dex. This means existing sources continue to work, but it increases complexity. I\u0027m also not sure about changing the dependency graph.\n\n3. something else\n\nWhat are your thoughts? [Personally, I\u0027m leaning towards option 1 because it\u0027s simple and easy to reason about. The downside is that not including hasCode\u003dfalse in overlay packages leads to  unexpected behaviour unless you know that your manifest will be changed during compilation.]",
+      "parentUuid": "b94cd1dc_d651d5ee",
+      "revId": "17ebbd35c99f3fca4898c9712453a2721ea56c5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
