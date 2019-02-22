@@ -26,6 +26,7 @@ func init() {
 	RegisterModuleType("prebuilt_etc", PrebuiltEtcFactory)
 	RegisterModuleType("prebuilt_etc_host", PrebuiltEtcHostFactory)
 	RegisterModuleType("prebuilt_usr_share", PrebuiltUserShareFactory)
+	RegisterModuleType("prebuild_user_share_host", PrebuiltUserShareHostFactory)
 
 	PreDepsMutators(func(ctx RegisterMutatorsContext) {
 		ctx.BottomUp("prebuilt_etc", prebuiltEtcMutator).Parallel()
@@ -199,6 +200,14 @@ func PrebuiltUserShareFactory() Module {
 	InitPrebuiltEtcModule(module)
 	// This module is device-only
 	InitAndroidArchModule(module, DeviceSupported, MultilibFirst)
+	return module
+}
+
+func PrebuiltUserShareHostFactory() Module {
+	module := &PrebuiltEtc{installDirBase: "usr/share"}
+	InitPrebuiltEtcModule(module)
+	// This module is host-only
+	InitAndroidArchModule(module, HostSupported, MultilibCommon)
 	return module
 }
 
