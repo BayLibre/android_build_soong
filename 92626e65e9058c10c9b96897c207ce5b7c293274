@@ -16,6 +16,24 @@
       "revId": "92626e65e9058c10c9b96897c207ce5b7c293274",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "527d63f0_2978c456",
+        "filename": "bpfix/bpfix/bpfix_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-02-22T16:58:25Z",
+      "side": 1,
+      "message": "Done. Actually, \u0027gofmt -w\u0027 doesn\u0027t strip the trailing tabs.",
+      "parentUuid": "eb93da51_bc4a66bc",
+      "revId": "92626e65e9058c10c9b96897c207ce5b7c293274",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
