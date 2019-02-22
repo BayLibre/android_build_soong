@@ -44,6 +44,7 @@ func init() {
 	android.RegisterModuleType("java_test_host", TestHostFactory)
 	android.RegisterModuleType("java_import", ImportFactory)
 	android.RegisterModuleType("java_import_host", ImportFactoryHost)
+	android.RegisterModuleType("dex_import", DexImportFactory)
 
 	android.RegisterSingletonType("logtags", LogtagsSingleton)
 }
@@ -1893,6 +1894,83 @@ func ImportFactoryHost() android.Module {
 	return module
 }
 
+// dex_import module
+
+type DexImportProperties struct {
+	Jars []string
+}
+
+type DexImport struct {
+	android.ModuleBase
+	android.DefaultableModuleBase
+	prebuilt android.Prebuilt
+
+	properties DexImportProperties
+
+	dexJarFile              android.Path
+	maybeStrippedDexJarFile android.Path
+
+	dexpreopter
+}
+
+func (j *DexImport) Prebuilt() *android.Prebuilt {
+	return &j.prebuilt
+}
+
+func (j *DexImport) PrebuiltSrcs() []string {
+	return j.properties.Jars
+}
+
+func (j *DexImport) Name() string {
+	return j.prebuilt.Name(j.ModuleBase.Name())
+}
+
+func (j *DexImport) DepsMutator(ctx android.BottomUpMutatorContext) {
+	android.ExtractSourcesDeps(ctx, j.properties.Jars)
+}
+
+func (j *DexImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	if len(j.properties.Jars) != 1 {
+		ctx.PropertyErrorf("jars", "exactly one jar must be provided")
+	}
+
+	dexOutputFile := android.PathForModuleOut(ctx, ctx.ModuleName()+".jar")
+
+	ctx.Build(pctx, android.BuildParams{
+		Rule:   android.Cp,
+		Input:  ctx.ExpandSource(j.properties.Jars[0], "jars"),
+		Output: dexOutputFile,
+	})
+
+	j.dexJarFile = dexOutputFile
+
+	// Dexpreopting
+	dexOutputFile = j.dexpreopt(ctx, dexOutputFile)
+
+	j.maybeStrippedDexJarFile = dexOutputFile
+
+	ctx.InstallFile(android.PathForModuleInstall(ctx, "framework"),
+		ctx.ModuleName()+".jar", dexOutputFile)
+}
+
+func (j *DexImport) DexJar() android.Path {
+	return j.dexJarFile
+}
+
+// dex_import imports a `.jar` file containing classes.dex files.
+//
+// A dex_import module cannot be used as a dependency of a java_* or android_* module, it can only be installed
+// to the device.
+func DexImportFactory() android.Module {
+	module := &DexImport{}
+
+	module.AddProperties(&module.properties)
+
+	android.InitPrebuiltModule(module, &module.properties.Jars)
+	InitJavaModule(module, android.DeviceSupported)
+	return module
+}
+
 //
 // Defaults
 //
@@ -1955,6 +2033,7 @@ func DefaultsFactory(props ...interface{}) android.Module {
 		&ImportProperties{},
 		&AARImportProperties{},
 		&sdkLibraryProperties{},
+		&DexImportProperties{},
 	)
 
 	android.InitDefaultsModule(module)
