@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "90133432_44c13497",
+        "filename": "androidmk/cmd/androidmk/androidmk_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-02-22T23:02:17Z",
+      "side": 1,
+      "message": "The code is correct. When a variable is dropped during the conversion, it leaves an empty line.",
+      "parentUuid": "26fcb908_a7a121e7",
+      "revId": "6d4790b5a341065037e752b3c9a50eb475c7787f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c7bb56d8_c7a4d057",
         "filename": "androidmk/cmd/androidmk/androidmk_test.go",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "fab616ac_4ac08857",
+        "filename": "androidmk/cmd/androidmk/androidmk_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-02-22T23:02:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c7bb56d8_c7a4d057",
+      "revId": "6d4790b5a341065037e752b3c9a50eb475c7787f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0132626_9425b8e0",
         "filename": "bpfix/bpfix/bpfix.go",
         "patchSetId": 3
@@ -50,6 +86,24 @@
       "revId": "6d4790b5a341065037e752b3c9a50eb475c7787f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf429387_a3f51b68",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-02-22T23:02:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0132626_9425b8e0",
+      "revId": "6d4790b5a341065037e752b3c9a50eb475c7787f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
