@@ -173,7 +173,8 @@ td {
   word-wrap:break-word;
 }
 </style>
-</head>
+` + copyBaseUrl +
+		`</head>
 <body>
 <div id="main">
 <H1>Soong Modules Reference</H1>
@@ -203,9 +204,7 @@ files for the Soong build system.
 </body>
 </html>
 `
-)
 
-const (
 	perPackageTemplate = `
 <html>
 <head>
@@ -243,7 +242,8 @@ li a:hover:not(.active) {
   color: white;
 }
 </style>
-</head>
+` + copyBaseUrl +
+		`</head>
 <body>
 {{- /* Fixed sidebar with module types */ -}}
 <ul>
@@ -308,5 +308,22 @@ li a:hover:not(.active) {
   }
 </script>
 </body>
+`
+
+	copyBaseUrl = `
+<script type="text/javascript">
+window.addEventListener('message', (e) => {
+  if (e != null && e.data != null && e.data.type === "SET_BASE" && e.data.base != null) {
+    const existingBase = document.querySelector('base');
+    if (existingBase != null) {
+      existingBase.parentElement.removeChild(existingBase);
+    }
+
+    const base = document.createElement('base');
+    base.setAttribute('href', e.data.base);
+    document.head.appendChild(base);
+  }
+});
+</script>
 `
 )
