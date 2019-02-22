@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb93da51_bc4a66bc",
+        "filename": "bpfix/bpfix/bpfix_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-02-22T15:48:39Z",
+      "side": 1,
+      "message": "Can you remove extra tab bytes here? (gofmt -w would do it, i suppose?)",
+      "revId": "92626e65e9058c10c9b96897c207ce5b7c293274",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
