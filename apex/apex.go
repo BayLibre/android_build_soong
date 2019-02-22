@@ -1006,7 +1006,10 @@ func (a *apexBundle) buildFlattenedApex(ctx android.ModuleContext) {
 		if ctx.Config().FlattenApex() {
 			for _, fi := range a.filesInfo {
 				dir := filepath.Join("apex", ctx.ModuleName(), fi.installDir)
-				ctx.InstallFile(android.PathForModuleInstall(ctx, dir), fi.builtFile.Base(), fi.builtFile)
+				target := ctx.InstallFile(android.PathForModuleInstall(ctx, dir), fi.builtFile.Base(), fi.builtFile)
+				for _, sym := range fi.symlinks {
+					ctx.InstallSymlink(android.PathForModuleInstall(ctx, dir), sym, target)
+				}
 			}
 		}
 	}
@@ -1045,6 +1048,13 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, name, moduleDir string, apex
 			// /system/apex/<name>/{lib|framework|...}
 			fmt.Fprintln(w, "LOCAL_MODULE_PATH :=", filepath.Join("$(OUT_DIR)",
 				a.installDir.RelPathString(), name, fi.installDir))
+			if len(fi.symlinks) > 0 {
+				lst := ""
+				for _, sym := range fi.symlinks {
+					lst = fmt.Sprintf("%s %s", lst, sym)
+				}
+				fmt.Fprintln(w, "LOCAL_MODULE_SYMLINKS :=", lst)
+			}
 		} else {
 			// /apex/<name>/{lib|framework|...}
 			fmt.Fprintln(w, "LOCAL_MODULE_PATH :=", filepath.Join("$(PRODUCT_OUT)",
