@@ -142,6 +142,16 @@ func defaultBootclasspath(ctx android.PathContext) []string {
 
 var defaultBootclasspathKey = android.NewOnceKey("defaultBootclasspath")
 
+func dex2oatBootclasspath(ctx android.PathContext) []string {
+	return ctx.Config().OnceStringSlice(defaultBootclasspathKey, func() []string {
+		image := defaultBootImageConfig(ctx)
+		dex2oatBootclasspath := image.dexLocations
+		return dex2oatBootclasspath
+	})
+}
+
+var dex2oatBootclasspathKey = android.NewOnceKey("dex2oatBootclasspath")
+
 var copyOf = android.CopyOf
 
 func init() {
@@ -150,6 +160,7 @@ func init() {
 
 func dexpreoptConfigMakevars(ctx android.MakeVarsContext) {
 	ctx.Strict("PRODUCT_BOOTCLASSPATH", strings.Join(defaultBootclasspath(ctx), ":"))
+	ctx.Strict("PRODUCT_DEX2OAT_BOOTCLASSPATH", strings.Join(dex2oatBootclasspath(ctx), ":"))
 	ctx.Strict("PRODUCT_SYSTEM_SERVER_CLASSPATH", strings.Join(systemServerClasspath(ctx), ":"))
 
 	ctx.Strict("DEXPREOPT_BOOT_JARS_MODULES", strings.Join(defaultBootImageConfig(ctx).modules, ":"))
