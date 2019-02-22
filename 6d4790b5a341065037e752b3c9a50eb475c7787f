@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26fcb908_a7a121e7",
+        "filename": "androidmk/cmd/androidmk/androidmk_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-02-22T18:36:35Z",
+      "side": 1,
+      "message": "There\u0027s still an extra line.",
+      "revId": "6d4790b5a341065037e752b3c9a50eb475c7787f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7bb56d8_c7a4d057",
+        "filename": "androidmk/cmd/androidmk/androidmk_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-02-22T18:36:35Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "6d4790b5a341065037e752b3c9a50eb475c7787f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0132626_9425b8e0",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-02-22T18:36:35Z",
+      "side": 1,
+      "message": "This comment is inaccurate. What the code does is checking if LOCAL_MODULE_PATH, if exists, is $(TARGET_OUT_DATA_APPS) and throwing an error if not.",
+      "revId": "6d4790b5a341065037e752b3c9a50eb475c7787f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
