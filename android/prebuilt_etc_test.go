@@ -30,6 +30,7 @@ func testPrebuiltEtc(t *testing.T, bp string) *TestContext {
 	ctx.RegisterModuleType("prebuilt_etc", ModuleFactoryAdaptor(PrebuiltEtcFactory))
 	ctx.RegisterModuleType("prebuilt_etc_host", ModuleFactoryAdaptor(PrebuiltEtcHostFactory))
 	ctx.RegisterModuleType("prebuilt_usr_share", ModuleFactoryAdaptor(PrebuiltUserShareFactory))
+	ctx.RegisterModuleType("prebuilt_usr_share_host", ModuleFactoryAdaptor(PrebuiltUserShareHostFactory))
 	ctx.PreDepsMutators(func(ctx RegisterMutatorsContext) {
 		ctx.BottomUp("prebuilt_etc", prebuiltEtcMutator).Parallel()
 	})
@@ -206,6 +207,23 @@ func TestPrebuiltUserShareInstallDirPath(t *testing.T) {
 
 	p := ctx.ModuleForTests("foo.conf", "android_arm64_armv8-a_core").Module().(*PrebuiltEtc)
 	expected := "target/product/test_device/system/usr/share/bar"
+	if p.installDirPath.RelPathString() != expected {
+		t.Errorf("expected %q, got %q", expected, p.installDirPath.RelPathString())
+	}
+}
+
+func TestPrebuiltUserShareHostInstallDirPath(t *testing.T) {
+	ctx := testPrebuiltEtc(t, `
+		prebuilt_usr_share_host {
+			name: "foo.conf",
+			src: "foo.conf",
+			sub_dir: "bar",
+		}
+	`)
+
+	buildOS := BuildOs.String()
+	p := ctx.ModuleForTests("foo.conf", buildOS+"_common").Module().(*PrebuiltEtc)
+	expected := "host/linux-x86/usr/share/bar"
 	if p.installDirPath.RelPathString() != expected {
 		t.Errorf("expected %q, got %q", expected, p.installDirPath.RelPathString())
 	}
