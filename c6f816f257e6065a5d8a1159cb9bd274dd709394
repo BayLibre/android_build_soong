@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6f01276_2830ab7b",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1934,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-02-22T17:21:31Z",
+      "side": 1,
+      "message": "I noticed we do this for android_library_import too, but if we allow only one source file anyway, why don\u0027t we just make it a (say) *string, like we do for prebuilt_etc?",
+      "revId": "c6f816f257e6065a5d8a1159cb9bd274dd709394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
