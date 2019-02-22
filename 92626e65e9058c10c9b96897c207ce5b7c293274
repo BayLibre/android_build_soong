@@ -34,6 +34,24 @@
       "revId": "92626e65e9058c10c9b96897c207ce5b7c293274",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "290a3910_b7b1583c",
+        "filename": "bpfix/bpfix/bpfix_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-22T17:01:01Z",
+      "side": 1,
+      "message": "This is a raw string, gofmt won\u0027t touch it.",
+      "parentUuid": "527d63f0_2978c456",
+      "revId": "92626e65e9058c10c9b96897c207ce5b7c293274",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
