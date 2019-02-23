@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d45ed9dc_293162dc",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1099348
+      },
+      "writtenOn": "2019-02-23T02:19:42Z",
+      "side": 1,
+      "message": "recommend pulling this into a shared variable instead of duplicating.",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 9
+      },
+      "revId": "4755cbbb8741ebe1f07843882c81b990e6c99905",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
