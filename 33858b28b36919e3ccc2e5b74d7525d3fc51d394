@@ -45,6 +45,30 @@
       "revId": "33858b28b36919e3ccc2e5b74d7525d3fc51d394",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3292198d_73fd0600",
+        "filename": "android/prebuilt_etc_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-02-23T03:48:17Z",
+      "side": 1,
+      "message": "Ah, I remember struggling with this. I couldn\u0027t find a way to produce this, particularly the arch part programmatically, so decided to not check it.\n\nOff the top of your head, do you remember some simple way to generate them?",
+      "parentUuid": "8c96780b_8f04a752",
+      "range": {
+        "startLine": 226,
+        "startChar": 19,
+        "endLine": 226,
+        "endChar": 28
+      },
+      "revId": "33858b28b36919e3ccc2e5b74d7525d3fc51d394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
