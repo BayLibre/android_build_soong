@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15f3b82f_c362bb85",
+        "filename": "android/prebuilt_etc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-02-23T00:14:37Z",
+      "side": 1,
+      "message": "Please add a comment about the module type. Factory function comments are automatically extracted and added to go/android.bp as corresponding module definitions.",
+      "revId": "1109763d777d523841e09569dcfc51f9c7026b40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
