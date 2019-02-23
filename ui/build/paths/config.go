@@ -76,7 +76,6 @@ func GetConfig(name string) PathConfig {
 var Configuration = map[string]PathConfig{
 	"bash":     Allowed,
 	"bc":       Allowed,
-	"bzip2":    Allowed,
 	"date":     Allowed,
 	"dd":       Allowed,
 	"diff":     Allowed,
@@ -121,6 +120,9 @@ var Configuration = map[string]PathConfig{
 	"ld.bfd":     Forbidden,
 	"ld.gold":    Forbidden,
 	"pkg-config": Forbidden,
+
+	// Avoid using any bzip2 already on the path.
+	"bzip2": Forbidden,
 
 	// On Linux we'll use the toybox versions of these instead.
 	"basename":  LinuxOnlyPrebuilt,
