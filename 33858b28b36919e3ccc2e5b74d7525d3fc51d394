@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81cc77d1_9eb4a37b",
+        "filename": "android/prebuilt_etc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-02-23T03:10:02Z",
+      "side": 1,
+      "message": "This should be prebuilt_usr, not prebuild_user (the test got this right)",
+      "range": {
+        "startLine": 29,
+        "startChar": 21,
+        "endLine": 29,
+        "endChar": 34
+      },
+      "revId": "33858b28b36919e3ccc2e5b74d7525d3fc51d394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c96780b_8f04a752",
+        "filename": "android/prebuilt_etc_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-02-23T03:10:02Z",
+      "side": 1,
+      "message": "This will only be true on linux, but will fail on Mac.",
+      "range": {
+        "startLine": 226,
+        "startChar": 19,
+        "endLine": 226,
+        "endChar": 28
+      },
+      "revId": "33858b28b36919e3ccc2e5b74d7525d3fc51d394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
