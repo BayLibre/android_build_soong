@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e25888fa_1ebc9a12",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-02-23T03:06:55Z",
+      "side": 1,
+      "message": "Could this call a function generator instead of having all of the repetition below?\n\n  \"LOCAL_RESOURCE_DIR\": localizedPathList(\"resource_dirs\"),\n  \"LOCAL_ASSET_DIR\":    localizedPathList(\"asset_dirs\"),\n  ...\n  \"LOCAL_JARJAR_RULES\": localizedPath(\"jarjar_rules\"),\n  ...\n\nThat would keep the configuration together a bit better",
+      "range": {
+        "startLine": 60,
+        "startChar": 34,
+        "endLine": 60,
+        "endChar": 51
+      },
+      "revId": "1c07245c4b8b8c489b40cb677f6db0cb062f452e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
