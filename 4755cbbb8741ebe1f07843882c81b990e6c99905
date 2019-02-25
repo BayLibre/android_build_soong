@@ -22,6 +22,30 @@
       "revId": "4755cbbb8741ebe1f07843882c81b990e6c99905",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "734199ba_a2055974",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-02-25T17:12:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d45ed9dc_293162dc",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 9
+      },
+      "revId": "4755cbbb8741ebe1f07843882c81b990e6c99905",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
