@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d74f0bfa_657ce183",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-25T17:24:05Z",
+      "side": 1,
+      "message": "Use:\n\ntmpl :\u003d template.New(\"file\").Must(Parse(packageListTemplate)).Must(Parse(copyBaseUrl))",
+      "revId": "5f8a7ad423bc4d21593e5b6352b24507c00d3447",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec56faea_f8484fd0",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-25T17:24:05Z",
+      "side": 1,
+      "message": "{{template copyBaseUrl}}",
+      "revId": "5f8a7ad423bc4d21593e5b6352b24507c00d3447",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1334461_f93eab00",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-25T17:24:05Z",
+      "side": 1,
+      "message": "Make this its own named template by wrapping it with {{define copyBaseUrl}} and {{end}}",
+      "revId": "5f8a7ad423bc4d21593e5b6352b24507c00d3447",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
