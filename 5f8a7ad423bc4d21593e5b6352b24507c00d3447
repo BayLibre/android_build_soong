@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f50ce05b_518874ca",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-02-25T17:45:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d74f0bfa_657ce183",
+      "revId": "5f8a7ad423bc4d21593e5b6352b24507c00d3447",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ec56faea_f8484fd0",
         "filename": "cmd/soong_build/writedocs.go",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "031b1ae6_dd15c3b1",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-02-25T17:45:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec56faea_f8484fd0",
+      "revId": "5f8a7ad423bc4d21593e5b6352b24507c00d3447",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1334461_f93eab00",
         "filename": "cmd/soong_build/writedocs.go",
         "patchSetId": 4
@@ -50,6 +86,24 @@
       "revId": "5f8a7ad423bc4d21593e5b6352b24507c00d3447",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5a8af75_f2b3e80d",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-02-25T17:45:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1334461_f93eab00",
+      "revId": "5f8a7ad423bc4d21593e5b6352b24507c00d3447",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
