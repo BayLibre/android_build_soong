@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "640c61bc_7117eb42",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-02-25T18:29:31Z",
+      "side": 1,
+      "message": "Done. Both are now wrapped by Must.",
+      "parentUuid": "f2d529f5_34e71e82",
+      "revId": "9383698254426a0e2b18c344a680707d0b6d4fa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa1156a1_47dfb68e",
         "filename": "cmd/soong_build/writedocs.go",
         "patchSetId": 5
@@ -33,6 +51,24 @@
       "revId": "9383698254426a0e2b18c344a680707d0b6d4fa6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bd74847_2e351095",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-02-25T18:29:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa1156a1_47dfb68e",
+      "revId": "9383698254426a0e2b18c344a680707d0b6d4fa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
