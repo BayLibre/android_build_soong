@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2d529f5_34e71e82",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-25T18:04:55Z",
+      "side": 1,
+      "message": "This will have a little bit odd behavior, if parsing packageListTemplate fails this will panic in Must, but if copyBaseUrl fails it will return an error.\n\nIf you want to continue handling the errors manually I\u0027d suggest:\n\ntmpl, err :\u003d template.New(\"file\").Parse(packageListTemplate)\n...\ntmpl, err \u003d tmpl.Parse(copyBaseUrl)",
+      "revId": "9383698254426a0e2b18c344a680707d0b6d4fa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa1156a1_47dfb68e",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-25T18:04:55Z",
+      "side": 1,
+      "message": "trailing whitespace",
+      "revId": "9383698254426a0e2b18c344a680707d0b6d4fa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
