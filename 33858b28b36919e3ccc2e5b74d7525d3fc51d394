@@ -117,6 +117,30 @@
       "revId": "33858b28b36919e3ccc2e5b74d7525d3fc51d394",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01d9df56_35facd05",
+        "filename": "android/prebuilt_etc_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-26T05:19:27Z",
+      "side": 1,
+      "message": "Using the config from testPrebuiltEtc you can do config.PrebuiltOS()",
+      "parentUuid": "8156c72b_e3d9ec93",
+      "range": {
+        "startLine": 226,
+        "startChar": 19,
+        "endLine": 226,
+        "endChar": 28
+      },
+      "revId": "33858b28b36919e3ccc2e5b74d7525d3fc51d394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
