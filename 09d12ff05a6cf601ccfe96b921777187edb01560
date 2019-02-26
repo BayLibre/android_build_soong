@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb3767f7_a25f4589",
+        "filename": "sysprop/sysprop_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-26T00:30:58Z",
+      "side": 1,
+      "message": "Is this related to the rest of this change?",
+      "revId": "09d12ff05a6cf601ccfe96b921777187edb01560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
