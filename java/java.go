@@ -1538,6 +1538,10 @@ type testProperties struct {
 	// list of files or filegroup modules that provide data that should be installed alongside
 	// the test
 	Data []string
+
+	// list of java libraries that will be in the classpath and that should be installed alongside the
+	// test
+	Data_libs []string `android:"arch_variant"`
 }
 
 type Test struct {
@@ -1553,10 +1557,21 @@ func (j *Test) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	j.testConfig = tradefed.AutoGenJavaTestConfig(ctx, j.testProperties.Test_config, j.testProperties.Test_config_template, j.testProperties.Test_suites)
 	j.data = ctx.ExpandSources(j.testProperties.Data, nil)
 
+	for _, tl := range j.testProperties.Data_libs {
+		dep, _ := ctx.GetDirectDep(tl)
+		if jdep, ok := dep.(*Library); ok {
+			j.data = append(j.data, jdep.outputFile)
+		} else {
+			ctx.ModuleErrorf("%s is not a java module!", tl)
+		}
+	}
+
 	j.Library.GenerateAndroidBuildActions(ctx)
 }
 
 func (j *Test) DepsMutator(ctx android.BottomUpMutatorContext) {
+	// Mark all Data_libs as direct 'Libs' dependencies as far as compilation is concerened.
+	j.Library.properties.Libs = append(j.Library.properties.Libs, j.testProperties.Data_libs...)
 	j.deps(ctx)
 	android.ExtractSourceDeps(ctx, j.testProperties.Test_config)
 	android.ExtractSourceDeps(ctx, j.testProperties.Test_config_template)
