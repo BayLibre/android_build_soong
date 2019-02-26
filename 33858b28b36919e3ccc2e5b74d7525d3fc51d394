@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a15a2c94_ef6d7c65",
+        "filename": "android/prebuilt_etc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-02-26T02:33:41Z",
+      "side": 1,
+      "message": "Opps. Done. Will be submitted for review when the other comment is addressed.",
+      "parentUuid": "81cc77d1_9eb4a37b",
+      "range": {
+        "startLine": 29,
+        "startChar": 21,
+        "endLine": 29,
+        "endChar": 34
+      },
+      "revId": "33858b28b36919e3ccc2e5b74d7525d3fc51d394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c96780b_8f04a752",
         "filename": "android/prebuilt_etc_test.go",
         "patchSetId": 3
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "Ah, I remember struggling with this. I couldn\u0027t find a way to produce this, particularly the arch part programmatically, so decided to not check it.\n\nOff the top of your head, do you remember some simple way to generate them?",
       "parentUuid": "8c96780b_8f04a752",
+      "range": {
+        "startLine": 226,
+        "startChar": 19,
+        "endLine": 226,
+        "endChar": 28
+      },
+      "revId": "33858b28b36919e3ccc2e5b74d7525d3fc51d394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8156c72b_e3d9ec93",
+        "filename": "android/prebuilt_etc_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-02-26T02:33:41Z",
+      "side": 1,
+      "message": "I did some digging in the arch.go and I noticed that for Darwin, we have only X86_64 in the osArchTypeMap map in arch.go. Based on our discussion, I heard that we hardcoded the arch to X86 which represents 64 bits, am I right?\n\nDo you think it\u0027s better for me to do:\n\nexpected :\u003d filepath.Join(\"host\", buildOs+\"-x86\", \"usr\", \"share\", \"bar\")\n\nor define a BuildArch and BuildTarget function in arch.go:\n\nvar BuildArch \u003d func() ArchType {\n    for arch :\u003d range archTypeMap {\n       // there are architectures that has additional suffix string (i.e. amd 64 with 4gb address space: amd64p32)\n       if strings.Contains(runtime.GOARCH, arch)) {\n          return archTypeMap[arch]\n       }\n    }\n    panic(fmt.Errorf(\"unsupported Arch: %s\", runtime.GOARCH))\n}\n\nfunc BuildTarget() string {\n    return fmt.Sprintf(\"%s-%s\", BuildOs.String(), BuildArch.String())\n}\n\nand then use it as follows:\n\nexpected :\u003d filepath.Join(\"host\", BuildTarget(), \"usr\", \"share\", \"bar\")",
+      "parentUuid": "3292198d_73fd0600",
       "range": {
         "startLine": 226,
         "startChar": 19,
