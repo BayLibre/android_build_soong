@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1186dbed_f59160df",
+        "filename": "cc/library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 887,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-27T19:39:42Z",
+      "side": 1,
+      "message": "Should this be implied by support_system_process instead of an error?",
+      "revId": "18bd179628206ed3f9ce7630e39026980fe39155",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
