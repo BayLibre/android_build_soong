@@ -94,6 +94,30 @@
       "revId": "c2f9f9aab24c5d1873b97691c1b9bb0743a8c673",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99113fa6_15a2ee62",
+        "filename": "cc/vndk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1349653
+      },
+      "writtenOn": "2019-02-27T22:34:09Z",
+      "side": 1,
+      "message": "I\u0027ll give this a try before I attempt to submit these CLs. If this works out, the changes will be much more localized, which will be great.",
+      "parentUuid": "526d3d13_f0a05a52",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 31
+      },
+      "revId": "c2f9f9aab24c5d1873b97691c1b9bb0743a8c673",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
