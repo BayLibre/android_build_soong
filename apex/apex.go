@@ -25,8 +25,10 @@ import (
 	"android/soong/android"
 	"android/soong/cc"
 	"android/soong/java"
+	"android/soong/python"
 
 	"github.com/google/blueprint"
+	"github.com/google/blueprint/bootstrap"
 	"github.com/google/blueprint/proptools"
 )
 
@@ -289,6 +291,8 @@ const (
 	nativeSharedLib
 	nativeExecutable
 	shBinary
+	pyBinary
+	goBinary
 	javaSharedLib
 )
 
@@ -348,7 +352,7 @@ func (class apexFileClass) NameInMake() string {
 		return "ETC"
 	case nativeSharedLib:
 		return "SHARED_LIBRARIES"
-	case nativeExecutable, shBinary:
+	case nativeExecutable, shBinary, pyBinary, goBinary:
 		return "EXECUTABLES"
 	case javaSharedLib:
 		return "JAVA_LIBRARIES"
@@ -364,6 +368,26 @@ type apexFile struct {
 	class      apexFileClass
 	module     android.Module
 	symlinks   []string
+}
+
+type goToolPath struct {
+	path string
+}
+
+func (t goToolPath) String() string {
+	return t.path
+}
+
+func (t goToolPath) Rel() string {
+	return t.path
+}
+
+func (t goToolPath) Base() string {
+	return filepath.Base(t.path)
+}
+
+func (t goToolPath) Ext() string {
+	return filepath.Ext(t.path)
 }
 
 type apexBundle struct {
@@ -624,6 +648,17 @@ func getCopyManifestForExecutable(cc *cc.Module) (fileToCopy android.Path, dirIn
 	return
 }
 
+func getCopyManifestForPyBinary(py *python.Module) (fileToCopy android.Path, dirInApex string) {
+	dirInApex = "bin"
+	fileToCopy = py.HostToolPath().Path()
+	return
+}
+func getCopyManifestForGoBinary(gb bootstrap.GoBinaryTool) (fileToCopy android.Path, dirInApex string) {
+	dirInApex = "bin"
+	fileToCopy = goToolPath{gb.InstallPath()}
+	return
+}
+
 func getCopyManifestForShBinary(sh *android.ShBinary) (fileToCopy android.Path, dirInApex string) {
 	dirInApex = filepath.Join("bin", sh.SubDir())
 	fileToCopy = sh.OutputFile()
@@ -658,7 +693,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	handleSpecialLibs := !android.Bool(a.properties.Ignore_system_library_special_case)
 
-	ctx.WalkDeps(func(child, parent android.Module) bool {
+	ctx.WalkDepsBlueprint(func(child, parent blueprint.Module) bool {
 		if _, ok := parent.(*apexBundle); ok {
 			// direct dependencies
 			depTag := ctx.OtherModuleDependencyTag(child)
@@ -685,8 +720,17 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 				} else if sh, ok := child.(*android.ShBinary); ok {
 					fileToCopy, dirInApex := getCopyManifestForShBinary(sh)
 					filesInfo = append(filesInfo, apexFile{fileToCopy, depName, dirInApex, shBinary, sh, nil})
+				} else if py, ok := child.(*python.Module); ok && py.HostToolPath().Valid() {
+					fileToCopy, dirInApex := getCopyManifestForPyBinary(py)
+					filesInfo = append(filesInfo, apexFile{fileToCopy, depName, dirInApex, pyBinary, py, nil})
+				} else if gb, ok := child.(bootstrap.GoBinaryTool); ok && a.Host() {
+					fileToCopy, dirInApex := getCopyManifestForGoBinary(gb)
+					// NB: Since go binaries are static we don't need the module for anything here, which is
+					// good since the go tool is a blueprint.Module not an android.Module like we would
+					// normally use.
+					filesInfo = append(filesInfo, apexFile{fileToCopy, depName, dirInApex, goBinary, nil, nil})
 				} else {
-					ctx.PropertyErrorf("binaries", "%q is neithher cc_binary nor sh_binary", depName)
+					ctx.PropertyErrorf("binaries", "%q is neither cc_binary, (embedded) py_binary, (host) blueprint_go_binary, (host) bootstrap_go_binary, nor sh_binary", depName)
 				}
 			case javaLibTag:
 				if java, ok := child.(*java.Library); ok {
