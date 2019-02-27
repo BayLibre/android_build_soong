@@ -70,6 +70,30 @@
       "revId": "c2f9f9aab24c5d1873b97691c1b9bb0743a8c673",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "526d3d13_f0a05a52",
+        "filename": "cc/vndk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-27T22:30:54Z",
+      "side": 1,
+      "message": "It would be fine to have a list like this in cc/config/vndk.go",
+      "parentUuid": "48869843_4a367905",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 31
+      },
+      "revId": "c2f9f9aab24c5d1873b97691c1b9bb0743a8c673",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
