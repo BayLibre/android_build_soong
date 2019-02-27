@@ -16,6 +16,7 @@ package java
 
 import (
 	"path/filepath"
+	"sort"
 	"strings"
 
 	"android/soong/android"
@@ -137,6 +138,8 @@ func (d *dexpreoptBootJars) GenerateBuildActions(ctx android.SingletonContext) {
 	if global.GenerateApexImage {
 		d.otherImages = append(d.otherImages, buildBootImage(ctx, apexBootImageConfig(ctx)))
 	}
+
+	dumpOatRules(ctx, d.defaultBootImage)
 }
 
 // buildBootImage takes a bootImageConfig, creates rules to build it, and returns a *bootImage.
@@ -388,6 +391,49 @@ func bootImageProfileRule(ctx android.SingletonContext, image *bootImage, missin
 }
 
 var bootImageProfileRuleKey = android.NewOnceKey("bootImageProfileRule")
+
+func dumpOatRules(ctx android.SingletonContext, image *bootImage) {
+	var archs []android.ArchType
+	for arch := range image.images {
+		archs = append(archs, arch)
+	}
+	sort.Slice(archs, func(i, j int) bool { return archs[i].String() < archs[j].String() })
+
+	outputDir := ctx.Config().GetenvWithDefault("ART_DUMP_OAT_PATH", android.PathForOutput(ctx).String())
+
+	var allPhonies android.Paths
+	for _, arch := range archs {
+		phony := android.PathForPhony(ctx, "dump-oat-boot-"+arch.String())
+
+		//TODO
+		output := filepath.Join(outputDir, "boot."+arch.String()+".oatdump.txt")
+
+		rule := android.NewRuleBuilder()
+		rule.Command().ImplicitOutput(phony).
+			// TODO: for now, use the debug version for better error reporting
+			Tool(ctx.Config().HostToolPath(ctx, "oatdumpd")).
+			FlagWithInputList("--runtime-arg -Xbootclasspath:", image.dexPaths.Paths(), ":").
+			FlagWithList("--runtime-arg -Xbootclasspath-locations:", image.dexLocations, ":").
+			FlagWithArg("--image=", dexpreopt.PathToLocation(image.images[arch], arch)).Implicit(image.images[arch]).
+			FlagWithArg("--output=", output).
+			FlagWithArg("--instruction-set=", arch.String())
+
+		rule.Command().Text("echo").FlagWithArg("Output in ", output)
+
+		rule.Build(pctx, ctx, "dump-oat-boot-"+arch.String(), "dump oat boot "+arch.String())
+
+		allPhonies = append(allPhonies, phony)
+	}
+
+	phony := android.PathForPhony(ctx, "dump-oat-boot")
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        android.Phony,
+		Output:      phony,
+		Inputs:      allPhonies,
+		Description: "dump-oat-boot",
+	})
+
+}
 
 // Export paths for default boot image to Make
 func (d *dexpreoptBootJars) MakeVars(ctx android.MakeVarsContext) {
