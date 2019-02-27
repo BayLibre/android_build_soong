@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4483388f_abfea9e1",
+        "filename": "android/override_module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-27T22:21:51Z",
+      "side": 1,
+      "message": "An alternative implementation would be to move this to a post-deps mutator, use VisitDirectDepsWithTag to visit the base module, and then type assert it to an interface with SetOverrides(name string, cert, manifest *string).  The implementation of that interface on android_app and apex would stash those values in properties that would be checked in the GenerateAndroidBuildActions implementations.  It would avoid having to use the untyped sync.Maps to store everything.",
+      "revId": "76f7b0fb01e53b9bea98b70ecc31bbe0c57e521a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1284c4b4_f8ad0d0f",
+        "filename": "android/override_module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-27T22:21:51Z",
+      "side": 1,
+      "message": "Since you know it\u0027s not nil just use *p.Certificate",
+      "range": {
+        "startLine": 40,
+        "startChar": 44,
+        "endLine": 40,
+        "endChar": 75
+      },
+      "revId": "76f7b0fb01e53b9bea98b70ecc31bbe0c57e521a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e57899a7_b0edbbb5",
+        "filename": "android/override_module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-27T22:21:51Z",
+      "side": 1,
+      "message": "*p.Manifest_package_name",
+      "range": {
+        "startLine": 44,
+        "startChar": 52,
+        "endLine": 44,
+        "endChar": 93
+      },
+      "revId": "76f7b0fb01e53b9bea98b70ecc31bbe0c57e521a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
