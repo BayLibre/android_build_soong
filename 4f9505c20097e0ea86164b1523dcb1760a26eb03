@@ -22,6 +22,30 @@
       "revId": "4f9505c20097e0ea86164b1523dcb1760a26eb03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0689b96_3144e690",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-27T17:40:04Z",
+      "side": 1,
+      "message": "Oh yeah, I had a question here.  Is ART_DUMP_OAT_PATH necessary?  If not, I can make this a real OutputPath object and have proper dependencies, so that m dump-oat-boot would be a no-op (but still print the output path if that is desired) if it was already up-to-date.  If yes, I could still make it a real output path in $OUT_DIR and make the phony rule just copy it to ART_DUMP_OAT_PATH.",
+      "parentUuid": "f3a9b273_961550a3",
+      "range": {
+        "startLine": 408,
+        "startChar": 2,
+        "endLine": 408,
+        "endChar": 8
+      },
+      "revId": "4f9505c20097e0ea86164b1523dcb1760a26eb03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
