@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "19d94244_b4eac5f7",
+        "filename": "android/override_module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-02-27T22:38:02Z",
+      "side": 1,
+      "message": "That\u0027s a good idea. One big benefit of the current design is that it shares the overall code flow with PRODUCT_*_OVERRIDES vars, and so saves a good amount of past and future work. Let me work with the team to see if we can migrate everything to this new module type. Added a TODO.",
+      "parentUuid": "4483388f_abfea9e1",
+      "revId": "76f7b0fb01e53b9bea98b70ecc31bbe0c57e521a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1284c4b4_f8ad0d0f",
         "filename": "android/override_module.go",
         "patchSetId": 3
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "5de9ef1f_42c2b84a",
+        "filename": "android/override_module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-02-27T22:38:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1284c4b4_f8ad0d0f",
+      "range": {
+        "startLine": 40,
+        "startChar": 44,
+        "endLine": 40,
+        "endChar": 75
+      },
+      "revId": "76f7b0fb01e53b9bea98b70ecc31bbe0c57e521a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e57899a7_b0edbbb5",
         "filename": "android/override_module.go",
         "patchSetId": 3
@@ -62,6 +104,30 @@
       "revId": "76f7b0fb01e53b9bea98b70ecc31bbe0c57e521a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f589735_1cd00f4c",
+        "filename": "android/override_module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-02-27T22:38:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e57899a7_b0edbbb5",
+      "range": {
+        "startLine": 44,
+        "startChar": 52,
+        "endLine": 44,
+        "endChar": 93
+      },
+      "revId": "76f7b0fb01e53b9bea98b70ecc31bbe0c57e521a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
