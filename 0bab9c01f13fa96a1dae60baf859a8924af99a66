@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "895e4ac1_18c41000",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-02-28T12:45:02Z",
+      "side": 1,
+      "message": "ignore_missing_latest_api ?",
+      "range": {
+        "startLine": 313,
+        "startChar": 2,
+        "endLine": 313,
+        "endChar": 30
+      },
+      "revId": "0bab9c01f13fa96a1dae60baf859a8924af99a66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68d0cd60_3c22ea8b",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-02-28T12:45:02Z",
+      "side": 1,
+      "message": "Use SrcIsModule() function?",
+      "range": {
+        "startLine": 439,
+        "startChar": 0,
+        "endLine": 447,
+        "endChar": 64
+      },
+      "revId": "0bab9c01f13fa96a1dae60baf859a8924af99a66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
