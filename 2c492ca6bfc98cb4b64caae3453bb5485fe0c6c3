@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "591eaccc_2f7e47a3",
+        "filename": "cc/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1121894
+      },
+      "writtenOn": "2019-02-28T19:25:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c12ef777_466042ca",
+      "range": {
+        "startLine": 247,
+        "startChar": 4,
+        "endLine": 247,
+        "endChar": 62
+      },
+      "revId": "2c492ca6bfc98cb4b64caae3453bb5485fe0c6c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef4458cb_98cc0174",
         "filename": "tradefed/autogen.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "98589dd6_73583e5c",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1121894
+      },
+      "writtenOn": "2019-02-28T19:25:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef4458cb_98cc0174",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 24
+      },
+      "revId": "2c492ca6bfc98cb4b64caae3453bb5485fe0c6c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fef43754_feb0c37f",
         "filename": "tradefed/autogen.go",
         "patchSetId": 1
@@ -62,6 +110,24 @@
       "revId": "2c492ca6bfc98cb4b64caae3453bb5485fe0c6c3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8669003_8d9914b3",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1121894
+      },
+      "writtenOn": "2019-02-28T19:25:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fef43754_feb0c37f",
+      "revId": "2c492ca6bfc98cb4b64caae3453bb5485fe0c6c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "065a880a_a97bbfe7",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1121894
+      },
+      "writtenOn": "2019-02-28T19:25:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ffd9b8d_4057892a",
+      "range": {
+        "startLine": 65,
+        "startChar": 42,
+        "endLine": 65,
+        "endChar": 79
+      },
+      "revId": "2c492ca6bfc98cb4b64caae3453bb5485fe0c6c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "184e48ae_efed3215",
         "filename": "tradefed/autogen.go",
         "patchSetId": 1
@@ -99,6 +189,30 @@
       "writtenOn": "2019-02-28T18:44:33Z",
       "side": 1,
       "message": "Instead of manually escaping here, use proptools.NinjaAndShellEscape:\n\nextraOptions \u003d proptools.NinjaAndShellEscape([]strings{extraOptions})[0]\n\nThe slice ugliness is because we don\u0027t have anything to escape a single string, I\u0027ll work on fixing that.",
+      "range": {
+        "startLine": 68,
+        "startChar": 40,
+        "endLine": 68,
+        "endChar": 43
+      },
+      "revId": "2c492ca6bfc98cb4b64caae3453bb5485fe0c6c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65d65faf_ee9fb4de",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1121894
+      },
+      "writtenOn": "2019-02-28T19:25:11Z",
+      "side": 1,
+      "message": "Tried it and it seems to surround the full string with \u0027\u0027\n\n\u0027\u003coption name\u003d\"not-shardable\" value\u003d\"true\" /\u003e\u0027\n\nwhich fails in sed:\n\nFAILED: out/soong/.intermediates/bionic/benchmarks/bionic-benchmarks-tests/android_arm_armv7-a-neon_core/bionic-benchmarks-tests.config\nsed \u0027s\u0026{MODULE}\u0026bionic-benchmarks-tests\u0026g;s\u0026{EXTRA_OPTIONS}\u0026\u0027\u003coption name\u003d\"not-shardable\" value\u003d\"true\" /\u003e\u0027\u0026g\u0027 build/make/core/native_test_config_template.xml \u003e out/soong/.intermediates/bionic/benchmarks/bionic-benchmarks-tests/android_arm_armv7-a-neon_core/bionic-benchmarks-tests.config\n/bin/sh: option: No such file or directory\n11:19:11 ninja failed with: exit status 1",
+      "parentUuid": "184e48ae_efed3215",
       "range": {
         "startLine": 68,
         "startChar": 40,
