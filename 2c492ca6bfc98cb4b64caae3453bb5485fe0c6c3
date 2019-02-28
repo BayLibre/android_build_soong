@@ -222,6 +222,30 @@
       "revId": "2c492ca6bfc98cb4b64caae3453bb5485fe0c6c3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e152fb95_55aeb0c9",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-28T20:53:29Z",
+      "side": 1,
+      "message": "What if you close the sed single quotes first:\n\n\tCommand:     \"sed \u0027s\u0026{MODULE}\u0026${name}\u0026g;s\u0026{EXTRA_OPTIONS}\u0026\u0027${extraOptions}\u0027\u0026g\u0027 $template \u003e $out\",",
+      "parentUuid": "65d65faf_ee9fb4de",
+      "range": {
+        "startLine": 68,
+        "startChar": 40,
+        "endLine": 68,
+        "endChar": 43
+      },
+      "revId": "2c492ca6bfc98cb4b64caae3453bb5485fe0c6c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
