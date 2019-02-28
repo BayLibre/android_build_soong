@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "23973628_9404a53c",
+        "filename": "java/app_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-02-28T23:42:56Z",
+      "side": 1,
+      "message": "This part of the code has been reverted.",
+      "parentUuid": "c141f3a6_b7126a92",
+      "revId": "fc0eb82a11c87f3c945c33fa81c7e05b97801c43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0dd94a09_4a969953",
         "filename": "java/app_test.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "fc0eb82a11c87f3c945c33fa81c7e05b97801c43",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "032585b5_3d361f4c",
+        "filename": "java/app_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-02-28T23:42:56Z",
+      "side": 1,
+      "message": "This part of the code has been reverted.",
+      "parentUuid": "0dd94a09_4a969953",
+      "revId": "fc0eb82a11c87f3c945c33fa81c7e05b97801c43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -56,6 +92,30 @@
       "revId": "fc0eb82a11c87f3c945c33fa81c7e05b97801c43",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48a63785_70796402",
+        "filename": "java/app_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-02-28T23:42:56Z",
+      "side": 1,
+      "message": "It\u0027d be possible. However, I don\u0027t see any particular reasons that we\u0027d want to do that. Unless we suspect (and yet still want to allow) that the code somehow puts different space characters than a single whie space.",
+      "parentUuid": "e1a056e9_3f8b691d",
+      "range": {
+        "startLine": 825,
+        "startChar": 0,
+        "endLine": 827,
+        "endChar": 38
+      },
+      "revId": "fc0eb82a11c87f3c945c33fa81c7e05b97801c43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
