@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9fab9295_b385020f",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-02-28T03:18:27Z",
+      "side": 1,
+      "message": "Introducing a new type here doesn\u0027t seem to ideal to me.\n\nHow about creating the path using android.PathForOutput?",
+      "range": {
+        "startLine": 658,
+        "startChar": 14,
+        "endLine": 658,
+        "endChar": 24
+      },
+      "revId": "2097d7ec83418c0a8b98946206eee6aadb69b49e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
