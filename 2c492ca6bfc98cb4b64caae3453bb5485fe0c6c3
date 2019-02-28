@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c12ef777_466042ca",
+        "filename": "cc/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-28T18:44:33Z",
+      "side": 1,
+      "message": "Bool(test.testDecorator.Properties.Isolated)",
+      "range": {
+        "startLine": 247,
+        "startChar": 4,
+        "endLine": 247,
+        "endChar": 62
+      },
+      "revId": "2c492ca6bfc98cb4b64caae3453bb5485fe0c6c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef4458cb_98cc0174",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-28T18:44:33Z",
+      "side": 1,
+      "message": "We separate this into stdlib, then blueprint, then soong with blank lines between them.  So:\n\nimport (\n\t\"fmt\"\n\t\"strings\"\n\n\t\"github.com/google/blueprint\"\n\n\t\"android/soong/android\"\n)",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 24
+      },
+      "revId": "2c492ca6bfc98cb4b64caae3453bb5485fe0c6c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fef43754_feb0c37f",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-28T18:44:33Z",
+      "side": 1,
+      "message": "No need to check for nil, ranging over a nil map is valid, only writing to a nil map will panic.",
+      "revId": "2c492ca6bfc98cb4b64caae3453bb5485fe0c6c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ffd9b8d_4057892a",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-28T18:44:33Z",
+      "side": 1,
+      "message": "You can use backticks (raw strings) to avoid having to escape the quotes:\n\n`\u003coption name\u003d\"%s\" value\u003d\"%s\" /\u003e`",
+      "range": {
+        "startLine": 65,
+        "startChar": 42,
+        "endLine": 65,
+        "endChar": 79
+      },
+      "revId": "2c492ca6bfc98cb4b64caae3453bb5485fe0c6c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "184e48ae_efed3215",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-28T18:44:33Z",
+      "side": 1,
+      "message": "Instead of manually escaping here, use proptools.NinjaAndShellEscape:\n\nextraOptions \u003d proptools.NinjaAndShellEscape([]strings{extraOptions})[0]\n\nThe slice ugliness is because we don\u0027t have anything to escape a single string, I\u0027ll work on fixing that.",
+      "range": {
+        "startLine": 68,
+        "startChar": 40,
+        "endLine": 68,
+        "endChar": 43
+      },
+      "revId": "2c492ca6bfc98cb4b64caae3453bb5485fe0c6c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
