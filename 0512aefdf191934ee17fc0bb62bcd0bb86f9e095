@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be490dda_5b4a7055",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-28T06:33:57Z",
+      "side": 1,
+      "message": "vaild -\u003e valid",
+      "revId": "0512aefdf191934ee17fc0bb62bcd0bb86f9e095",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a031bddf_6c37695e",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-28T06:33:57Z",
+      "side": 1,
+      "message": "return nil",
+      "revId": "0512aefdf191934ee17fc0bb62bcd0bb86f9e095",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
