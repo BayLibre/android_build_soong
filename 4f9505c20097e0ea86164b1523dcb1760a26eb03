@@ -46,6 +46,30 @@
       "revId": "4f9505c20097e0ea86164b1523dcb1760a26eb03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2391620_a5521ec1",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-02-28T13:22:28Z",
+      "side": 1,
+      "message": "I don\u0027t think anyone is using ART_DUMP_OAT_PATH at the moment. It was added in commit fa82427c68b09f4aedbee319dc71579afbfc66f5 when the output was moved from /tmp/ to out/ . I see no reason to preserve the ART_DUMP_OAT_PATH.\n\nNow that you\u0027re moving the output from out/ to out/soong/ and you should mention that in the commit message.",
+      "parentUuid": "e0689b96_3144e690",
+      "range": {
+        "startLine": 408,
+        "startChar": 2,
+        "endLine": 408,
+        "endChar": 8
+      },
+      "revId": "4f9505c20097e0ea86164b1523dcb1760a26eb03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
