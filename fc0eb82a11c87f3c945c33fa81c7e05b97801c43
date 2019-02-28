@@ -33,6 +33,29 @@
       "revId": "fc0eb82a11c87f3c945c33fa81c7e05b97801c43",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1a056e9_3f8b691d",
+        "filename": "java/app_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-02-28T21:40:12Z",
+      "side": 1,
+      "message": "Would it be possible to split the aapt2Flags into a list of args and check if it has \"--rename-instrumentation-target-package\", \"org.dandroid.bp\" to be more precised?",
+      "range": {
+        "startLine": 825,
+        "startChar": 0,
+        "endLine": 827,
+        "endChar": 38
+      },
+      "revId": "fc0eb82a11c87f3c945c33fa81c7e05b97801c43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
