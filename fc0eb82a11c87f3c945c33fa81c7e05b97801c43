@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c141f3a6_b7126a92",
+        "filename": "java/app_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-28T15:24:19Z",
+      "side": 1,
+      "message": "Tabs vs spaces",
+      "revId": "fc0eb82a11c87f3c945c33fa81c7e05b97801c43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dd94a09_4a969953",
+        "filename": "java/app_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-02-28T15:24:19Z",
+      "side": 1,
+      "message": "android.InList",
+      "revId": "fc0eb82a11c87f3c945c33fa81c7e05b97801c43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
