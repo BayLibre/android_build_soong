@@ -246,6 +246,30 @@
       "revId": "2c492ca6bfc98cb4b64caae3453bb5485fe0c6c3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea76d617_df37276b",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1121894
+      },
+      "writtenOn": "2019-02-28T21:48:29Z",
+      "side": 1,
+      "message": "that seems to do the trick. Thanks !",
+      "parentUuid": "e152fb95_55aeb0c9",
+      "range": {
+        "startLine": 68,
+        "startChar": 40,
+        "endLine": 68,
+        "endChar": 43
+      },
+      "revId": "2c492ca6bfc98cb4b64caae3453bb5485fe0c6c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
