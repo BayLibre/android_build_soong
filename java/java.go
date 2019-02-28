@@ -1976,6 +1976,7 @@ func DefaultsFactory(props ...interface{}) android.Module {
 		&androidLibraryProperties{},
 		&appProperties{},
 		&appTestProperties{},
+		&overridableAppProperties{},
 		&ImportProperties{},
 		&AARImportProperties{},
 		&sdkLibraryProperties{},
