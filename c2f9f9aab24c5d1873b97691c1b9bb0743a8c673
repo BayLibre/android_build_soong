@@ -118,6 +118,30 @@
       "revId": "c2f9f9aab24c5d1873b97691c1b9bb0743a8c673",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc3d5743_18e65c75",
+        "filename": "cc/vndk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1349653
+      },
+      "writtenOn": "2019-02-28T20:59:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99113fa6_15a2ee62",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 31
+      },
+      "revId": "c2f9f9aab24c5d1873b97691c1b9bb0743a8c673",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
