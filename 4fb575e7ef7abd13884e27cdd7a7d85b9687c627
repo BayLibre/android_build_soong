@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2280045_c8a6d983",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-01T02:22:42Z",
+      "side": 1,
+      "message": "This is unnecessary now, if there are no options then extraOptions will end up empty",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 19
+      },
+      "revId": "4fb575e7ef7abd13884e27cdd7a7d85b9687c627",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5263e807_8bd716bb",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-01T02:22:42Z",
+      "side": 1,
+      "message": "Add:\n\n   sort.Strings(options)\n\nRanging over maps is non-deterministic order, so without sorting this will cause the command line to be different for every run (if there are multiple options), which will cause ninja to rerun the rules that changed.",
+      "revId": "4fb575e7ef7abd13884e27cdd7a7d85b9687c627",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2e81348_ec01a25b",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-01T02:22:42Z",
+      "side": 1,
+      "message": ":\u003d",
+      "range": {
+        "startLine": 69,
+        "startChar": 14,
+        "endLine": 69,
+        "endChar": 15
+      },
+      "revId": "4fb575e7ef7abd13884e27cdd7a7d85b9687c627",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
