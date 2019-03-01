@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16e2f466_165e6a99",
+        "filename": "Android.bp",
+        "patchSetId": 9
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-01T19:05:50Z",
+      "side": 1,
+      "message": "Put vndk.go here to keep this semi-sorted.",
+      "revId": "845fe989c40e912577ad7fc0b63ec17aa6875e1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
