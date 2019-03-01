@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "209fb0a4_89f4036c",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2019-03-01T23:27:50Z",
+      "side": 1,
+      "message": "I could instead check for \u0027ALL\u0027 in productVariables.CoveragePaths if that\u0027s cleaner.",
+      "revId": "4c02c1981a582d8150b87713d6382939d96e15be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
