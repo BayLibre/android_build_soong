@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "eca895cf_ad0f1190",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2019-03-01T15:43:53Z",
+      "side": 1,
+      "message": "why isn\u0027t this made optional instead of adding the new bool? the caller passing a non-existant API to check seems like a bug?",
+      "revId": "0bab9c01f13fa96a1dae60baf859a8924af99a66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "895e4ac1_18c41000",
         "filename": "java/droiddoc.go",
         "patchSetId": 1
