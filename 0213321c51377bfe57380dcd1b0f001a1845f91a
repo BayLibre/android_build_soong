@@ -39,6 +39,48 @@
       "revId": "0213321c51377bfe57380dcd1b0f001a1845f91a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efe6e3a8_485162bf",
+        "filename": "cc/vndk.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1349653
+      },
+      "writtenOn": "2019-03-01T17:20:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c4f94e6_19fea59d",
+      "revId": "0213321c51377bfe57380dcd1b0f001a1845f91a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d2361fa9_9b649037",
+        "filename": "cc/vndk.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1349653
+      },
+      "writtenOn": "2019-03-01T17:20:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31f51356_25936876",
+      "range": {
+        "startLine": 29,
+        "startChar": 33,
+        "endLine": 29,
+        "endChar": 41
+      },
+      "revId": "0213321c51377bfe57380dcd1b0f001a1845f91a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
