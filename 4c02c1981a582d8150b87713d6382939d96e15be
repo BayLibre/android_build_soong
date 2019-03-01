@@ -16,6 +16,24 @@
       "revId": "4c02c1981a582d8150b87713d6382939d96e15be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdd6515d_e56e0a7a",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-01T23:59:54Z",
+      "side": 1,
+      "message": "Check for \"*\", that\u0027s what we do for RROs",
+      "parentUuid": "209fb0a4_89f4036c",
+      "revId": "4c02c1981a582d8150b87713d6382939d96e15be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
