@@ -1843,6 +1843,10 @@ func (c *Module) Srcs() android.Paths {
 	return android.Paths{}
 }
 
+func (c *Module) IDEInfo(dpInfo *android.IdeInfo) {
+	dpInfo.Srcs = append(dpInfo.Srcs, c.Srcs().Strings()...)
+}
+
 func (c *Module) static() bool {
 	if static, ok := c.linker.(interface {
 		static() bool
