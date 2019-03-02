@@ -22,6 +22,23 @@
       "revId": "7870201e1981c74a582eee0daef2b2ef650aed53",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a10459c_4f809a55",
+        "filename": "android/arch.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2019-03-02T07:16:32Z",
+      "side": 1,
+      "message": "This should be before haswell.",
+      "revId": "7870201e1981c74a582eee0daef2b2ef650aed53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
