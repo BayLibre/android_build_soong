@@ -1,0 +1,12 @@
+Verified+1: Brandon Lee <bralee@google.com>
+Verified+1: David LO <daviddclo@google.com>
+Code-Review+1: Brandon Lee <bralee@google.com>
+Code-Review+1: David LO <daviddclo@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Autosubmit+1: Brandon Lee <bralee@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Mon, 04 Mar 2019 06:01:09 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/916636
+Project: platform/build/soong
+Branch: refs/heads/master
