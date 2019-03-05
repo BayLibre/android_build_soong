@@ -620,6 +620,15 @@ func (p SourcePath) Join(ctx PathContext, paths ...string) SourcePath {
 	return p.withRel(path)
 }
 
+// join is like Join but does less path validation.
+func (p SourcePath) join(ctx PathContext, paths ...string) SourcePath {
+	path, err := validateSafePath(paths...)
+	if err != nil {
+		reportPathError(ctx, err)
+	}
+	return p.withRel(path)
+}
+
 // OverlayPath returns the overlay for `path' if it exists. This assumes that the
 // SourcePath is the path to a resource overlay directory.
 func (p SourcePath) OverlayPath(ctx ModuleContext, path Path) OptionalPath {
@@ -773,7 +782,29 @@ func PathForModuleSrc(ctx ModuleContext, paths ...string) ModuleSrcPath {
 	} else if !exists {
 		reportPathErrorf(ctx, "module source path %q does not exist", path)
 	}
+	return path
+}
 
+// PathsWithModuleSrcSubDir takes a list of Paths and returns a new list of Paths where Rel() on any path
+// that is inside subDir in the module's src dir will return the path relative to subDir.
+func PathsWithModuleSrcSubDir(ctx ModuleContext, paths Paths, subDir string) Paths {
+	paths = append(Paths(nil), paths...)
+	subDirFullPath := PathForModuleSrc(ctx, subDir)
+	for i, path := range paths {
+		if rel, ok := MaybeRel(ctx, subDirFullPath.String(), path.String()); ok {
+			paths[i] = subDirFullPath.join(ctx, rel)
+		}
+	}
+	return paths
+}
+
+// PathsWithModuleSrcSubDir takes a Path and returns a Path such that if the path is subDir in the module's src dir then
+// Rel() will return the path relative to subDir.
+func PathWithModuleSrcSubDir(ctx ModuleContext, path Path, subDir string) Path {
+	subDirFullPath := PathForModuleSrc(ctx, subDir)
+	if rel, ok := MaybeRel(ctx, subDirFullPath.String(), path.String()); ok {
+		return subDirFullPath.Join(ctx, rel)
+	}
 	return path
 }
 
@@ -797,12 +828,6 @@ func (p ModuleSrcPath) objPathWithExt(ctx ModuleContext, subdir, ext string) Mod
 func (p ModuleSrcPath) resPathWithName(ctx ModuleContext, name string) ModuleResPath {
 	// TODO: Use full directory if the new ctx is not the current ctx?
 	return PathForModuleRes(ctx, p.path, name)
-}
-
-func (p ModuleSrcPath) WithSubDir(ctx ModuleContext, subdir string) ModuleSrcPath {
-	subdir = PathForModuleSrc(ctx, subdir).String()
-	p.rel = Rel(ctx, subdir, p.path)
-	return p
 }
 
 // ModuleOutPath is a Path representing a module's output directory.
