@@ -42,7 +42,7 @@ type TestBinaryProperties struct {
 
 	// list of files or filegroup modules that provide data that should be installed alongside
 	// the test
-	Data []string
+	Data []string `android:"path"`
 
 	// list of compatibility suites (for example "cts", "vts") that the module should be
 	// installed into.
@@ -50,11 +50,11 @@ type TestBinaryProperties struct {
 
 	// the name of the test configuration (for example "AndroidTest.xml") that should be
 	// installed with the module.
-	Test_config *string `android:"arch_variant"`
+	Test_config *string `android:"path,arch_variant"`
 
 	// the name of the test configuration template (for example "AndroidTestTemplate.xml") that
 	// should be installed with the module.
-	Test_config_template *string `android:"arch_variant"`
+	Test_config_template *string `android:"path,arch_variant"`
 }
 
 func init() {
@@ -226,10 +226,6 @@ func (test *testBinary) linkerInit(ctx BaseModuleContext) {
 }
 
 func (test *testBinary) linkerDeps(ctx DepsContext, deps Deps) Deps {
-	android.ExtractSourcesDeps(ctx, test.Properties.Data)
-	android.ExtractSourceDeps(ctx, test.Properties.Test_config)
-	android.ExtractSourceDeps(ctx, test.Properties.Test_config_template)
-
 	deps = test.testDecorator.linkerDeps(ctx, deps)
 	deps = test.binaryDecorator.linkerDeps(ctx, deps)
 	return deps
@@ -323,7 +319,7 @@ func NewTestLibrary(hod android.HostOrDeviceSupported) *Module {
 type BenchmarkProperties struct {
 	// list of files or filegroup modules that provide data that should be installed alongside
 	// the test
-	Data []string
+	Data []string `android:"path"`
 
 	// list of compatibility suites (for example "cts", "vts") that the module should be
 	// installed into.
@@ -331,11 +327,11 @@ type BenchmarkProperties struct {
 
 	// the name of the test configuration (for example "AndroidTest.xml") that should be
 	// installed with the module.
-	Test_config *string `android:"arch_variant"`
+	Test_config *string `android:"path,arch_variant"`
 
 	// the name of the test configuration template (for example "AndroidTestTemplate.xml") that
 	// should be installed with the module.
-	Test_config_template *string `android:"arch_variant"`
+	Test_config_template *string `android:"path,arch_variant"`
 }
 
 type benchmarkDecorator struct {
@@ -361,10 +357,6 @@ func (benchmark *benchmarkDecorator) linkerProps() []interface{} {
 }
 
 func (benchmark *benchmarkDecorator) linkerDeps(ctx DepsContext, deps Deps) Deps {
-	android.ExtractSourcesDeps(ctx, benchmark.Properties.Data)
-	android.ExtractSourceDeps(ctx, benchmark.Properties.Test_config)
-	android.ExtractSourceDeps(ctx, benchmark.Properties.Test_config_template)
-
 	deps = benchmark.binaryDecorator.linkerDeps(ctx, deps)
 	deps.StaticLibs = append(deps.StaticLibs, "libgoogle-benchmark")
 	return deps
