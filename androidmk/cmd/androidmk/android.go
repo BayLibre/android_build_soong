@@ -76,6 +76,7 @@ var rewriteProperties = map[string](func(variableAssignmentContext) error){
 
 	"LOCAL_ANNOTATION_PROCESSOR_CLASSES": skip, // Soong gets the processor classes from the plugin
 	"LOCAL_CTS_TEST_PACKAGE":             skip, // Obsolete
+	"LOCAL_MODULE_FILENAME":              skip, // Obsolete, ignored in Make
 }
 
 // adds a group of properties all having the same type
