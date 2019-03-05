@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fe6ed0fe_8b0f8bd8",
+        "filename": "android/arch.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1371444
+      },
+      "writtenOn": "2019-03-05T07:29:15Z",
+      "side": 1,
+      "message": "Valid target CPU values for clang in prebuilts: nocona, core2, penryn, bonnell, atom, silvermont, slm, goldmont, nehalem, corei7, westmere, sandybridge, corei7-avx,ivybridge, core-avx-i, haswell, core-avx2, broadwell, skylake, skylake-avx512, skx, cannonlake, icelake, knl, knm, k8, athlon64, athlon-fx, opteron, k8-sse3, athlon64-sse3, opteron-sse3, amdfam10, barcelona, btver1, btver2, bdver1, bdver2, bdver3, bdver4, znver1, x86-64. \nSo, I did not add -march\u003d cflag for all the micro architectures. However, we can add -march\u003dcore-avx2 for others.Thanks for pointing out. We need these arches to be present as want to add support for AVX2 in bionic module. This micro-architecture name can be read from BoardConfig.mk of supported device and avx2 will be enabled.",
+      "parentUuid": "154203cc_f400ab22",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 14
+      },
+      "revId": "7870201e1981c74a582eee0daef2b2ef650aed53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1a10459c_4f809a55",
         "filename": "android/arch.go",
         "patchSetId": 10
