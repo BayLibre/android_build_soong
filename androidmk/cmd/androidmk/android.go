@@ -109,6 +109,7 @@ func init() {
 
 			"LOCAL_DEX_PREOPT_PROFILE_CLASS_LISTING": "dex_preopt.profile",
 			"LOCAL_TEST_CONFIG":                      "test_config",
+			"LOCAL_MODULE_FILENAME":                  "filename",
 		})
 	addStandardProperties(bpparser.ListType,
 		map[string]string{
