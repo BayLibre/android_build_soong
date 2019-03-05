@@ -1094,6 +1094,26 @@ android_app {
 }
 `,
 	},
+	{
+
+		desc: "LOCAL_MODULE_FILENAME",
+		in: `
+include $(CLEAR_VARS)
+LOCAL_MODULE := FooTest
+LOCAL_MODULE_FILENAME := FooName
+LOCAL_MODULE_CLASS := ETC
+LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_ETC)/foo
+include $(BUILD_PREBUILT)
+		`,
+		expected: `
+prebuilt_etc {
+	name: "FooTest",
+	sub_dir: "foo",
+	proprietary: true,
+
+}
+		`,
+	},
 }
 
 func TestEndToEnd(t *testing.T) {
