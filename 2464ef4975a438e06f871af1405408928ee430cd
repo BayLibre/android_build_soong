@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec8b70de_c75e7c7d",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-03-06T18:39:45Z",
+      "side": 1,
+      "message": "Looks a bit hacky :) If symlinks change again we need to update this code again (and don\u0027t have a good way to detect it). Is there\u0027s a \"central\" place in which this symlink may be defined?",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 340,
+        "endChar": 2
+      },
+      "revId": "2464ef4975a438e06f871af1405408928ee430cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
