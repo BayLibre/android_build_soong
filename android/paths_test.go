@@ -706,7 +706,7 @@ func TestPathForSource(t *testing.T) {
 	}
 }
 
-type expandSourcesTestModule struct {
+type pathForModuleSrcTestModule struct {
 	ModuleBase
 	props struct {
 		Srcs         []string `android:"path"`
@@ -717,22 +717,22 @@ type expandSourcesTestModule struct {
 	rels []string
 }
 
-func expandSourcesTestModuleFactory() Module {
-	module := &expandSourcesTestModule{}
+func pathForModuleSrcTestModuleFactory() Module {
+	module := &pathForModuleSrcTestModule{}
 	module.AddProperties(&module.props)
 	InitAndroidModule(module)
 	return module
 }
 
-func (p *expandSourcesTestModule) GenerateAndroidBuildActions(ctx ModuleContext) {
-	p.srcs = ctx.ExpandSources(p.props.Srcs, p.props.Exclude_srcs)
+func (p *pathForModuleSrcTestModule) GenerateAndroidBuildActions(ctx ModuleContext) {
+	p.srcs = PathsForModuleSrcExcludes(ctx, p.props.Srcs, p.props.Exclude_srcs)
 
 	for _, src := range p.srcs {
 		p.rels = append(p.rels, src.Rel())
 	}
 }
 
-func TestExpandSources(t *testing.T) {
+func TestPathForModuleSrc(t *testing.T) {
 	tests := []struct {
 		name string
 		bp   string
@@ -805,7 +805,7 @@ func TestExpandSources(t *testing.T) {
 			config := TestConfig(buildDir, nil)
 			ctx := NewTestContext()
 
-			ctx.RegisterModuleType("test", ModuleFactoryAdaptor(expandSourcesTestModuleFactory))
+			ctx.RegisterModuleType("test", ModuleFactoryAdaptor(pathForModuleSrcTestModuleFactory))
 			ctx.RegisterModuleType("filegroup", ModuleFactoryAdaptor(FileGroupFactory))
 
 			fgBp := `
@@ -834,7 +834,7 @@ func TestExpandSources(t *testing.T) {
 			_, errs = ctx.PrepareBuildActions(config)
 			FailIfErrored(t, errs)
 
-			m := ctx.ModuleForTests("foo", "").Module().(*expandSourcesTestModule)
+			m := ctx.ModuleForTests("foo", "").Module().(*pathForModuleSrcTestModule)
 
 			if g, w := m.srcs.Strings(), test.srcs; !reflect.DeepEqual(g, w) {
 				t.Errorf("want srcs %q, got %q", w, g)
