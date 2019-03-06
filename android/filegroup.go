@@ -15,6 +15,7 @@
 package android
 
 import (
+	"fmt"
 	"io"
 	"strings"
 	"text/template"
@@ -60,10 +61,25 @@ func FileGroupFactory() Module {
 }
 
 func (fg *fileGroup) GenerateAndroidBuildActions(ctx ModuleContext) {
-	fg.srcs = ctx.ExpandSources(fg.properties.Srcs, fg.properties.Exclude_srcs)
+	fg.srcs = PathsForModuleSrcExcludes(ctx, fg.properties.Srcs, fg.properties.Exclude_srcs)
 
 	if fg.properties.Path != nil {
 		fg.srcs = PathsWithModuleSrcSubDir(ctx, fg.srcs, String(fg.properties.Path))
+	}
+
+	if len(ctx.GetMissingDependencies()) > 0 {
+		// If there are missing dependencies create a dummy output file so that there is a rule to print
+		// the missing dependencies error.
+		outputFile := PathForModuleOut(ctx, "missing_dependencies")
+		fg.srcs = append(fg.srcs, outputFile)
+		ctx.Build(pctx, BuildParams{
+			Rule:   ErrorRule,
+			Output: outputFile,
+			Args: map[string]string{
+				"error": fmt.Sprintf("module %s missing dependencies: %s\n",
+					ctx.ModuleName(), strings.Join(ctx.GetMissingDependencies(), ", ")),
+			},
+		})
 	}
 }
 
