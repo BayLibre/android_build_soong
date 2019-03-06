@@ -24,6 +24,7 @@ import (
 	"testing"
 
 	"github.com/google/blueprint/pathtools"
+	"github.com/google/blueprint/proptools"
 )
 
 type strsTestCase struct {
@@ -706,7 +707,7 @@ func TestPathForSource(t *testing.T) {
 	}
 }
 
-type expandSourcesTestModule struct {
+type pathForModuleSrcTestModule struct {
 	ModuleBase
 	props struct {
 		Srcs         []string `android:"path"`
@@ -717,22 +718,22 @@ type expandSourcesTestModule struct {
 	rels []string
 }
 
-func expandSourcesTestModuleFactory() Module {
-	module := &expandSourcesTestModule{}
+func pathForModuleSrcTestModuleFactory() Module {
+	module := &pathForModuleSrcTestModule{}
 	module.AddProperties(&module.props)
 	InitAndroidModule(module)
 	return module
 }
 
-func (p *expandSourcesTestModule) GenerateAndroidBuildActions(ctx ModuleContext) {
-	p.srcs = ctx.ExpandSources(p.props.Srcs, p.props.Exclude_srcs)
+func (p *pathForModuleSrcTestModule) GenerateAndroidBuildActions(ctx ModuleContext) {
+	p.srcs = PathsForModuleSrcExcludes(ctx, p.props.Srcs, p.props.Exclude_srcs)
 
 	for _, src := range p.srcs {
 		p.rels = append(p.rels, src.Rel())
 	}
 }
 
-func TestExpandSources(t *testing.T) {
+func TestPathForModuleSrc(t *testing.T) {
 	tests := []struct {
 		name string
 		bp   string
@@ -805,7 +806,7 @@ func TestExpandSources(t *testing.T) {
 			config := TestConfig(buildDir, nil)
 			ctx := NewTestContext()
 
-			ctx.RegisterModuleType("test", ModuleFactoryAdaptor(expandSourcesTestModuleFactory))
+			ctx.RegisterModuleType("test", ModuleFactoryAdaptor(pathForModuleSrcTestModuleFactory))
 			ctx.RegisterModuleType("filegroup", ModuleFactoryAdaptor(FileGroupFactory))
 
 			fgBp := `
@@ -834,7 +835,7 @@ func TestExpandSources(t *testing.T) {
 			_, errs = ctx.PrepareBuildActions(config)
 			FailIfErrored(t, errs)
 
-			m := ctx.ModuleForTests("foo", "").Module().(*expandSourcesTestModule)
+			m := ctx.ModuleForTests("foo", "").Module().(*pathForModuleSrcTestModule)
 
 			if g, w := m.srcs.Strings(), test.srcs; !reflect.DeepEqual(g, w) {
 				t.Errorf("want srcs %q, got %q", w, g)
@@ -844,6 +845,54 @@ func TestExpandSources(t *testing.T) {
 				t.Errorf("want rels %q, got %q", w, g)
 			}
 		})
+	}
+}
+
+func TestPathForModuleSrc_AllowMissingDependencies(t *testing.T) {
+	buildDir, err := ioutil.TempDir("", "soong_path_for_module_src_allow_missing_dependencies_test")
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer os.RemoveAll(buildDir)
+
+	config := TestConfig(buildDir, nil)
+	config.TestProductVariables.Allow_missing_dependencies = proptools.BoolPtr(true)
+
+	ctx := NewTestContext()
+	ctx.SetAllowMissingDependencies(true)
+
+	ctx.RegisterModuleType("filegroup", ModuleFactoryAdaptor(FileGroupFactory))
+
+	bp := `
+		filegroup {
+			name: "a",
+			srcs: [":b"],
+			exclude_srcs: [":c"],
+		}
+	`
+
+	mockFS := map[string][]byte{
+		"Android.bp": []byte(bp),
+	}
+
+	ctx.MockFileSystem(mockFS)
+
+	ctx.Register()
+	_, errs := ctx.ParseFileList(".", []string{"Android.bp"})
+	FailIfErrored(t, errs)
+	_, errs = ctx.PrepareBuildActions(config)
+	FailIfErrored(t, errs)
+
+	a := ctx.ModuleForTests("a", "")
+	aSrcs := a.Module().(*fileGroup).srcs.Strings()
+
+	if g, w := aSrcs, []string{buildDir + "/.intermediates/a/missing_dependencies"}; !reflect.DeepEqual(g, w) {
+		t.Fatalf("want srcs %q, got %q", w, g)
+	}
+
+	missingDepsRule := a.Output(aSrcs[0])
+	if g, w := missingDepsRule.Args["error"], "module a missing dependencies: b, c\n"; g != w {
+		t.Errorf("want error args %q, got %q", w, g)
 	}
 }
 
