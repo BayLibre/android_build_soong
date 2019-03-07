@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05dc08d2_64e09d1b",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-03-07T18:39:57Z",
+      "side": 1,
+      "message": "extra newline?",
+      "revId": "21c66bb8d940dea7577fdd534dae836081e698c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
