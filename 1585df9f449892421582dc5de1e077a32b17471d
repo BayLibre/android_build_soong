@@ -22,6 +22,30 @@
       "revId": "1585df9f449892421582dc5de1e077a32b17471d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9663b843_e4bb987d",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 794,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-07T18:36:06Z",
+      "side": 1,
+      "message": "Yeah, but that doesn\u0027t work at all with filegroups.  This shouldn\u0027t change any behavior of an existing Android.bp file.",
+      "parentUuid": "89dc0465_a03b3881",
+      "range": {
+        "startLine": 794,
+        "startChar": 16,
+        "endLine": 794,
+        "endChar": 24
+      },
+      "revId": "1585df9f449892421582dc5de1e077a32b17471d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
