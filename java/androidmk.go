@@ -304,6 +304,38 @@ func (a *AndroidApp) getOverriddenPackages() []string {
 	return overridden
 }
 
+func (app *AndroidAppImport) AndroidMk() android.AndroidMkData {
+	return android.AndroidMkData{
+		Class:      "APPS",
+		OutputFile: android.OptionalPathForPath(app.outputFile),
+		Include:    "$(BUILD_SYSTEM)/soong_app_prebuilt.mk",
+		Extra: []android.AndroidMkExtraFunc{
+			func(w io.Writer, outputFile android.Path) {
+				// TODO(jungjw): This, outputting two LOCAL_MODULE lines, works, but is not ideal. Find a better solution.
+				//if app.Name() != app.installApkName {
+				//	fmt.Fprintln(w, "# Overridden by PRODUCT_PACKAGE_NAME_OVERRIDES")
+				//	fmt.Fprintln(w, "LOCAL_MODULE :=", app.installApkName)
+				//}
+				if Bool(app.properties.Privileged) {
+					fmt.Fprintln(w, "LOCAL_PRIVILEGED_MODULE := true")
+				}
+
+				fmt.Fprintln(w, "LOCAL_CERTIFICATE :=", app.certificate.Pem.String())
+				//if overriddenPkgs := app.getOverriddenPackages(); len(overriddenPkgs) > 0 {
+				//	fmt.Fprintln(w, "LOCAL_OVERRIDES_PACKAGES :=", strings.Join(overriddenPkgs, " "))
+				//}
+
+				//for _, jniLib := range app.installJniLibs {
+				//	fmt.Fprintln(w, "LOCAL_SOONG_JNI_LIBS_"+jniLib.target.Arch.ArchType.String(), "+=", jniLib.name)
+				//}
+				if len(app.dexpreopter.builtInstalled) > 0 {
+					fmt.Fprintln(w, "LOCAL_SOONG_BUILT_INSTALLED :=", app.dexpreopter.builtInstalled)
+				}
+			},
+		},
+	}
+}
+
 func (a *AndroidTest) AndroidMk() android.AndroidMkData {
 	data := a.AndroidApp.AndroidMk()
 	data.Extra = append(data.Extra, func(w io.Writer, outputFile android.Path) {

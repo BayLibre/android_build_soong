@@ -933,6 +933,7 @@ var prebuiltTypes = map[string]string{
 	"EXECUTABLES":      "cc_prebuilt_binary",
 	"JAVA_LIBRARIES":   "java_import",
 	"ETC":              "prebuilt_etc",
+	"APPS":             "android_app_import",
 }
 
 var soongModuleTypes = map[string]bool{}

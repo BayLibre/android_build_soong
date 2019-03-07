@@ -575,3 +575,103 @@ func (c *AndroidAppCertificate) GenerateAndroidBuildActions(ctx android.ModuleCo
 		android.PathForModuleSrc(ctx, cert+".pk8"),
 	}
 }
+
+// android_app_import (prebuilt apps)
+
+// android_app_import imports a prebuilt `.apk` file into the build graph.
+func AndroidAppImportFactory() android.Module {
+	module := &AndroidAppImport{}
+	InitJavaModule(module, android.DeviceSupported)
+	android.InitSingleSourcePrebuiltModule(module, &module.properties.Apk)
+
+	return module
+}
+
+type AndroidAppImport struct {
+	android.ModuleBase
+	android.DefaultableModuleBase
+	prebuilt android.Prebuilt
+
+	properties AndroidAppImportProperties
+
+	outputFile  android.Path
+	certificate Certificate
+
+	dexpreopter dexpreopter
+}
+
+type AndroidAppImportProperties struct {
+	// The name of a certificate in the default certificate directory, blank to use the default product certificate,
+	// or an android_app_certificate module name in the form ":module".
+	Certificate *string
+
+	// Names of extra android_app_certificate modules to sign the apk with in the form ":module".
+	Additional_certificates []string
+
+	// Specifies that this app should be installed to the priv-app directory,
+	// where the system will grant it additional privileges not available to
+	// normal apps.
+	Privileged *bool
+
+	// Names of modules to be overridden. Listed modules can only be other binaries
+	// (in Make or Soong).
+	// This does not completely prevent installation of the overridden binaries, but if both
+	// binaries would be installed by default (in PRODUCT_PACKAGES) the other binary will be removed
+	// from PRODUCT_PACKAGES.
+	Overrides []string
+
+	// Store native libraries uncompressed in the APK and set the android:extractNativeLibs="false" manifest
+	// flag so that they are used from inside the APK at runtime.  Defaults to true for android_test modules unless
+	// sdk_version or min_sdk_version is set to a version that doesn't support it (<23), defaults to false for other
+	// module types where the native libraries are generally preinstalled outside the APK.
+	Use_embedded_native_libs *bool
+
+	// Store dex files uncompressed in the APK and set the android:useEmbeddedDex="true" manifest attribute so that
+	// they are used from inside the APK at runtime.
+	Use_embedded_dex *bool
+
+	// If set, strip all native libs that are not listed.
+	Embedded_native_libs []string `android:"arch_variant"`
+
+	// Paths to native library prebuilts
+	Prebuilt_native_libs []string `android:"path,arch_variant"`
+
+	Apk string
+}
+
+func (a *AndroidAppImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	// TODO: LOCAL_EXTRACT_APK/LOCAL_EXTRACT_DPI_APK
+	// TODO: LOCAL_DPI_VARIANTS
+	// TODO: LOCAL_PACKAGE_SPLITS
+
+	if String(a.properties.Certificate) == "" {
+		ctx.PropertyErrorf("certificate", "No certificate specified for prebuilt")
+	}
+
+	apk := a.prebuilt.SingleSourcePath(ctx)
+
+	outputFile := android.PathForModuleOut(ctx, ctx.ModuleName()+".apk")
+	// TODO: Install or embed JNI libraries
+
+	// TODO: uncompress JNI
+
+	// TODO: uncompress dex
+
+	// TODO: dexpreopt
+
+	// TODO: signing or align for PRESIGNED
+
+	apk = a.dexpreopter.dexpreopt(ctx, outputFile)
+
+	a.outputFile = apk
+
+	// TODO: androidmk converter jni libs
+}
+
+func (a *AndroidAppImport) Prebuilt() *android.Prebuilt {
+	return &a.prebuilt
+}
+
+func (a *AndroidAppImport) Name() string {
+	return a.prebuilt.Name(a.ModuleBase.Name())
+}

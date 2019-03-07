@@ -42,6 +42,7 @@ type Prebuilt struct {
 	properties PrebuiltProperties
 	module     Module
 	srcs       *[]string
+	src        *string
 }
 
 func (p *Prebuilt) Name(name string) string {
@@ -49,25 +50,35 @@ func (p *Prebuilt) Name(name string) string {
 }
 
 func (p *Prebuilt) SingleSourcePath(ctx ModuleContext) Path {
-	if len(*p.srcs) == 0 {
-		ctx.PropertyErrorf("srcs", "missing prebuilt source file")
-		return nil
-	}
+	if p.srcs != nil {
+		if len(*p.srcs) == 0 {
+			ctx.PropertyErrorf("srcs", "missing prebuilt source file")
+			return nil
+		}
 
-	if len(*p.srcs) > 1 {
-		ctx.PropertyErrorf("srcs", "multiple prebuilt source files")
-		return nil
-	}
+		if len(*p.srcs) > 1 {
+			ctx.PropertyErrorf("srcs", "multiple prebuilt source files")
+			return nil
+		}
 
-	// Return the singleton source after expanding any filegroup in the
-	// sources.
-	return PathForModuleSrc(ctx, (*p.srcs)[0])
+		// Return the singleton source after expanding any filegroup in the
+		// sources.
+		return PathForModuleSrc(ctx, (*p.srcs)[0])
+	} else {
+		return PathForModuleSrc(ctx, *p.src)
+	}
 }
 
 func InitPrebuiltModule(module PrebuiltInterface, srcs *[]string) {
 	p := module.Prebuilt()
 	module.AddProperties(&p.properties)
 	p.srcs = srcs
+}
+
+func InitSingleSourcePrebuiltModule(module PrebuiltInterface, src *string) {
+	p := module.Prebuilt()
+	module.AddProperties(&p.properties)
+	p.src = src
 }
 
 type PrebuiltInterface interface {
@@ -104,7 +115,7 @@ func prebuiltMutator(ctx BottomUpMutatorContext) {
 func PrebuiltSelectModuleMutator(ctx TopDownMutatorContext) {
 	if m, ok := ctx.Module().(PrebuiltInterface); ok && m.Prebuilt() != nil {
 		p := m.Prebuilt()
-		if p.srcs == nil {
+		if p.srcs == nil && p.src == nil {
 			panic(fmt.Errorf("prebuilt module did not have InitPrebuiltModule called on it"))
 		}
 		if !p.properties.SourceExists {
@@ -143,7 +154,11 @@ func PrebuiltPostDepsMutator(ctx BottomUpMutatorContext) {
 // usePrebuilt returns true if a prebuilt should be used instead of the source module.  The prebuilt
 // will be used if it is marked "prefer" or if the source module is disabled.
 func (p *Prebuilt) usePrebuilt(ctx TopDownMutatorContext, source Module) bool {
-	if len(*p.srcs) == 0 {
+	if p.srcs != nil && len(*p.srcs) == 0 {
+		return false
+	}
+
+	if p.src != nil && *p.src == "" {
 		return false
 	}
 
