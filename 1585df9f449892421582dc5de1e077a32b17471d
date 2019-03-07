@@ -46,6 +46,30 @@
       "revId": "1585df9f449892421582dc5de1e077a32b17471d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c13fca0a_0434b205",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 794,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-03-07T20:47:37Z",
+      "side": 1,
+      "message": "That makes sense for most modules, but when passing path into the filegroup module, it\u0027s a bit weird. Since you could now write:\n\n  filegroup {\n      name: ...,\n      srcs: [\"foo/bar.c\"],\n      path: \"baz\",\n  }",
+      "parentUuid": "9663b843_e4bb987d",
+      "range": {
+        "startLine": 794,
+        "startChar": 16,
+        "endLine": 794,
+        "endChar": 24
+      },
+      "revId": "1585df9f449892421582dc5de1e077a32b17471d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
