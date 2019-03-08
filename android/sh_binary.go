@@ -17,6 +17,7 @@ package android
 import (
 	"fmt"
 	"io"
+	"strings"
 )
 
 // sh_binary is for shell scripts (and batch files) that are installed as
@@ -28,6 +29,7 @@ import (
 func init() {
 	RegisterModuleType("sh_binary", ShBinaryFactory)
 	RegisterModuleType("sh_binary_host", ShBinaryHostFactory)
+	RegisterModuleType("sh_test", ShTestBinaryFactory)
 }
 
 type shBinaryProperties struct {
@@ -48,6 +50,16 @@ type shBinaryProperties struct {
 	Installable *bool
 }
 
+type TestProperties struct {
+	// list of compatibility suites (for example "cts", "vts") that the module should be
+	// installed into.
+	Test_suites []string `android:"arch_variant"`
+
+	// the name of the test configuration (for example "AndroidTest.xml") that should be
+	// installed with the module.
+	Test_config *string `android:"arch_variant"`
+}
+
 type ShBinary struct {
 	ModuleBase
 
@@ -55,6 +67,12 @@ type ShBinary struct {
 
 	sourceFilePath Path
 	outputFilePath OutputPath
+}
+
+type ShTestBinary struct {
+	*ShBinary
+
+	testProperties TestProperties
 }
 
 func (s *ShBinary) DepsMutator(ctx BottomUpMutatorContext) {
@@ -119,6 +137,23 @@ func (s *ShBinary) AndroidMk() AndroidMkData {
 	}
 }
 
+func (s *ShTestBinary) AndroidMk() AndroidMkData {
+	return AndroidMkData{
+		Class:      "EXECUTABLES",
+		OutputFile: OptionalPathForPath(s.ShBinary.outputFilePath),
+		Include:    "$(BUILD_SYSTEM)/soong_cc_prebuilt.mk",
+		Extra: []AndroidMkExtraFunc{
+			func(w io.Writer, outputFile Path) {
+				fmt.Fprintln(w, "LOCAL_MODULE_RELATIVE_PATH :=", String(s.ShBinary.properties.Sub_dir))
+				fmt.Fprintln(w, "LOCAL_MODULE_SUFFIX :=")
+				fmt.Fprintln(w, "LOCAL_MODULE_STEM :=", s.ShBinary.outputFilePath.Rel())
+				fmt.Fprintln(w, "LOCAL_COMPATIBILITY_SUITE :=", strings.Join(s.testProperties.Test_suites, " "))
+				fmt.Fprintln(w, "LOCAL_TEST_CONFIG :=", String(s.testProperties.Test_config))
+			},
+		},
+	}
+}
+
 func InitShBinaryModule(s *ShBinary) {
 	s.AddProperties(&s.properties)
 }
@@ -134,5 +169,15 @@ func ShBinaryHostFactory() Module {
 	module := &ShBinary{}
 	InitShBinaryModule(module)
 	InitAndroidArchModule(module, HostSupported, MultilibFirst)
+	return module
+}
+
+func ShTestBinaryFactory() Module {
+	binary := &ShBinary{}
+	InitShBinaryModule(binary)
+	module := &ShTestBinary{ShBinary: binary}
+	module.AddProperties(&module.testProperties)
+
+	InitAndroidArchModule(module, HostAndDeviceSupported, MultilibFirst)
 	return module
 }
