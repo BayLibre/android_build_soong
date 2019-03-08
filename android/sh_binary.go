@@ -17,6 +17,7 @@ package android
 import (
 	"fmt"
 	"io"
+	"strings"
 )
 
 // sh_binary is for shell scripts (and batch files) that are installed as
@@ -46,6 +47,14 @@ type shBinaryProperties struct {
 
 	// Whether this module is directly installable to one of the partitions. Default: true.
 	Installable *bool
+
+	// list of compatibility suites (for example "cts", "vts") that the module should be
+	// installed into.
+	Test_suites []string `android:"arch_variant"`
+
+	// the name of the test configuration (for example "AndroidTest.xml") that should be
+	// installed with the module.
+	Test_config *string `android:"arch_variant"`
 }
 
 type ShBinary struct {
@@ -117,6 +126,8 @@ func (s *ShBinary) AndroidMk() AndroidMkData {
 				fmt.Fprintln(w, "LOCAL_MODULE_RELATIVE_PATH :=", String(s.properties.Sub_dir))
 				fmt.Fprintln(w, "LOCAL_MODULE_SUFFIX :=")
 				fmt.Fprintln(w, "LOCAL_MODULE_STEM :=", s.outputFilePath.Rel())
+				fmt.Fprintln(w, "LOCAL_COMPATIBILITY_SUITE :=", strings.Join(s.properties.Test_suites, " "))
+				fmt.Fprintln(w, "LOCAL_TEST_CONFIG :=", String(s.properties.Test_config))
 			},
 		},
 	}
