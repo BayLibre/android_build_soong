@@ -1,0 +1,9 @@
+Code-Review+2: Mathew Inwood <mathewi@google.com>
+Code-Review+2: David Brazdil <dbrazdil@google.com>
+Code-Review+2: Jaewoong Jung <jungjw@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Andrei-Valentin Onea <andreionea@google.com>
+Submitted-at: Fri, 08 Mar 2019 16:22:09 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/917437
+Project: platform/build/soong
+Branch: refs/heads/master
