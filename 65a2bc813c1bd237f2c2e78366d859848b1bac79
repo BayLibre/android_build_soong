@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ccd579f8_02ba10bc",
+        "filename": "android/sh_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1121894
+      },
+      "writtenOn": "2019-03-09T00:07:56Z",
+      "side": 1,
+      "message": "Is there a nice trick in Go to avoid the duplication ? \n\nis it possible to call the AndroidMK() from ShBinary and add more rules to Extra?",
+      "range": {
+        "startLine": 140,
+        "startChar": 35,
+        "endLine": 140,
+        "endChar": 48
+      },
+      "revId": "65a2bc813c1bd237f2c2e78366d859848b1bac79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
