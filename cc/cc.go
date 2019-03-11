@@ -21,6 +21,7 @@ package cc
 import (
 	"strconv"
 	"strings"
+	"sync"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
@@ -45,6 +46,8 @@ func init() {
 	})
 
 	android.PostDepsMutators(func(ctx android.RegisterMutatorsContext) {
+		registerDoubleLoadableMutators(ctx)
+
 		ctx.TopDown("asan_deps", sanitizerDepsMutator(asan))
 		ctx.BottomUp("asan", sanitizerMutator(asan)).Parallel()
 
@@ -68,8 +71,6 @@ func init() {
 
 		ctx.TopDown("lto_deps", ltoDepsMutator)
 		ctx.BottomUp("lto", ltoMutator).Parallel()
-
-		ctx.TopDown("double_loadable", checkDoubleLoadableLibraries).Parallel()
 	})
 
 	pctx.Import("android/soong/cc/config")
@@ -1470,44 +1471,87 @@ func checkLinkType(ctx android.ModuleContext, from *Module, to *Module, tag depe
 	}
 }
 
+func registerDoubleLoadableMutators(ctx android.RegisterMutatorsContext) {
+	var doubleLoadables sync.Map
+	ctx.TopDown("double_loadables", checkDoubleLoadableLibraries(&doubleLoadables)).Parallel()
+	ctx.TopDown("double_loadable_is_necessary", checkDoubleLoadableIsNecessary(&doubleLoadables)).Parallel()
+}
+
 // Tests whether the dependent library is okay to be double loaded inside a single process.
 // If a library has a vendor variant and is a (transitive) dependency of an LLNDK library,
 // it is subject to be double loaded. Such lib should be explicitly marked as double_loadable: true
 // or as vndk-sp (vndk: { enabled: true, support_system_process: true}).
-func checkDoubleLoadableLibraries(ctx android.TopDownMutatorContext) {
-	check := func(child, parent android.Module) bool {
-		to, ok := child.(*Module)
-		if !ok {
-			// follow thru cc.Defaults, etc.
-			return true
-		}
+func checkDoubleLoadableLibraries(doubleLoadables *sync.Map) func(ctx android.TopDownMutatorContext) {
+	return func(ctx android.TopDownMutatorContext) {
+		check := func(child, parent android.Module) bool {
+			to, ok := child.(*Module)
+			if !ok {
+				// follow thru cc.Defaults, etc.
+				return true
+			}
 
-		if lib, ok := to.linker.(*libraryDecorator); !ok || !lib.shared() {
+			if lib, ok := to.linker.(*libraryDecorator); !ok || !lib.shared() {
+				return false
+			}
+
+			// if target lib has no vendor variant, keep checking dependency graph
+			if !to.hasVendorVariant() {
+				return true
+			}
+
+			// VNDK-SP is okay to be double-loaded and LL-NDK has a single instance
+			if to.isVndkSp() || inList(child.Name(), llndkLibraries) {
+				return false
+			}
+
+			if Bool(to.VendorProperties.Double_loadable) {
+				// keep this as "valid" double_loadable modules.
+				// store its name to merge 32/64 list (because "double_loadable" can't be specified separately)
+				doubleLoadables.Store(to.Name(), nil)
+				return false
+			}
+
+			var stringPath []string
+			for _, m := range ctx.GetWalkPath() {
+				stringPath = append(stringPath, m.Name())
+			}
+			ctx.ModuleErrorf("links a library %q which is not LL-NDK, "+
+				"VNDK-SP, or explicitly marked as 'double_loadable:true'. "+
+				"(dependency: %s)", ctx.OtherModuleName(to), strings.Join(stringPath, " -> "))
 			return false
 		}
-
-		// if target lib has no vendor variant, keep checking dependency graph
-		if !to.hasVendorVariant() {
-			return true
+		if module, ok := ctx.Module().(*Module); ok && !module.inRecovery() {
+			if lib, ok := module.linker.(*libraryDecorator); ok && lib.shared() && !lib.buildStubs() {
+				if inList(ctx.ModuleName(), llndkLibraries) || Bool(module.VendorProperties.Double_loadable) {
+					ctx.WalkDeps(check)
+				}
+			}
 		}
-
-		if to.isVndkSp() || inList(child.Name(), llndkLibraries) || Bool(to.VendorProperties.Double_loadable) {
-			return false
-		}
-
-		var stringPath []string
-		for _, m := range ctx.GetWalkPath() {
-			stringPath = append(stringPath, m.Name())
-		}
-		ctx.ModuleErrorf("links a library %q which is not LL-NDK, "+
-			"VNDK-SP, or explicitly marked as 'double_loadable:true'. "+
-			"(dependency: %s)", ctx.OtherModuleName(to), strings.Join(stringPath, " -> "))
-		return false
 	}
-	if module, ok := ctx.Module().(*Module); ok {
-		if lib, ok := module.linker.(*libraryDecorator); ok && lib.shared() {
-			if inList(ctx.ModuleName(), llndkLibraries) || Bool(module.VendorProperties.Double_loadable) {
-				ctx.WalkDeps(check)
+}
+
+func checkDoubleLoadableIsNecessary(doubleLoadables *sync.Map) func(ctx android.TopDownMutatorContext) {
+	return func(ctx android.TopDownMutatorContext) {
+		if module, ok := ctx.Module().(*Module); ok {
+			if lib, ok := module.linker.(*libraryDecorator); ok {
+				// Do not deal with "recovery" or "vendor" variant
+				if module.inRecovery() || module.useVndk() {
+					return
+				}
+				// Do not deal with "static" or "stubs"
+				if !lib.shared() || lib.buildStubs() {
+					return
+				}
+
+				// Do not deal with core-only or not double_loadable libs
+				if !module.hasVendorVariant() || !Bool(module.VendorProperties.Double_loadable) {
+					return
+				}
+
+				// Check if it is actually used by LL-NDK
+				if _, ok := doubleLoadables.Load(module.Name()); !ok {
+					ctx.PropertyErrorf("double_loadable", "This is not double-loaded.")
+				}
 			}
 		}
 	}

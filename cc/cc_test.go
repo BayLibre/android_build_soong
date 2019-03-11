@@ -71,9 +71,7 @@ func createTestContext(t *testing.T, config android.Config, bp string, os androi
 		ctx.BottomUp("version", VersionMutator).Parallel()
 		ctx.BottomUp("begin", BeginMutator).Parallel()
 	})
-	ctx.PostDepsMutators(func(ctx android.RegisterMutatorsContext) {
-		ctx.TopDown("double_loadable", checkDoubleLoadableLibraries).Parallel()
-	})
+	ctx.PostDepsMutators(registerDoubleLoadableMutators)
 	ctx.Register()
 
 	// add some modules that are required by the compiler and/or linker
@@ -511,7 +509,7 @@ func TestVndkDepError(t *testing.T) {
 	`)
 }
 
-func TestDoubleLoadbleDep(t *testing.T) {
+func TestDoubleLoadableDepSuccess(t *testing.T) {
 	// okay to link : LLNDK -> double_loadable VNDK
 	testCc(t, `
 		cc_library {
@@ -557,6 +555,16 @@ func TestDoubleLoadbleDep(t *testing.T) {
 	// okay to link : double_loadable -> double_loadable
 	testCc(t, `
 		cc_library {
+			name: "libllndk",
+			shared_libs: ["libdoubleloadable1"],
+		}
+
+		llndk_library {
+			name: "libllndk",
+			symbol_file: "",
+		}
+
+		cc_library {
 			name: "libdoubleloadable1",
 			shared_libs: ["libdoubleloadable2"],
 			vendor_available: true,
@@ -571,6 +579,16 @@ func TestDoubleLoadbleDep(t *testing.T) {
 	`)
 	// okay to link : double_loadable VNDK -> double_loadable VNDK private
 	testCc(t, `
+		cc_library {
+			name: "libllndk",
+			shared_libs: ["libdoubleloadable"],
+		}
+
+		llndk_library {
+			name: "libllndk",
+			symbol_file: "",
+		}
+
 		cc_library {
 			name: "libdoubleloadable",
 			vendor_available: true,
@@ -732,6 +750,15 @@ func TestDoubleLoadableDepError(t *testing.T) {
 		cc_library {
 			name: "libvendoravailable",
 			vendor_available: true,
+		}
+	`)
+
+	// Check whether an error is emitted when a double_loadable is unnecessary
+	testCcError(t, `module "libfoo" variant ".*": double_loadable: This is not double-loaded.`, `
+		cc_library {
+			name: "libfoo",
+			vendor_available: true,
+			double_loadable: true,
 		}
 	`)
 }
