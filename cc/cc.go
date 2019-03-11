@@ -21,6 +21,7 @@ package cc
 import (
 	"strconv"
 	"strings"
+	"sync"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
@@ -69,7 +70,7 @@ func init() {
 		ctx.TopDown("lto_deps", ltoDepsMutator)
 		ctx.BottomUp("lto", ltoMutator).Parallel()
 
-		ctx.TopDown("double_loadable", checkDoubleLoadableLibraries).Parallel()
+		ctx.TopDown("double_loadable", checkDoubleLoadableLibraries()).Parallel()
 	})
 
 	pctx.Import("android/soong/cc/config")
@@ -1474,40 +1475,61 @@ func checkLinkType(ctx android.ModuleContext, from *Module, to *Module, tag depe
 // If a library has a vendor variant and is a (transitive) dependency of an LLNDK library,
 // it is subject to be double loaded. Such lib should be explicitly marked as double_loadable: true
 // or as vndk-sp (vndk: { enabled: true, support_system_process: true}).
-func checkDoubleLoadableLibraries(ctx android.TopDownMutatorContext) {
-	check := func(child, parent android.Module) bool {
-		to, ok := child.(*Module)
-		if !ok {
-			// follow thru cc.Defaults, etc.
-			return true
-		}
+func checkDoubleLoadableLibraries() func(ctx android.TopDownMutatorContext) {
+	// declared in the closure for test to run with a fresh map object.
+	var doubleLoadables sync.Map
 
-		if lib, ok := to.linker.(*libraryDecorator); !ok || !lib.shared() {
+	return func(ctx android.TopDownMutatorContext) {
+		check := func(child, parent android.Module) bool {
+			to, ok := child.(*Module)
+			if !ok {
+				// follow thru cc.Defaults, etc.
+				return true
+			}
+
+			if lib, ok := to.linker.(*libraryDecorator); !ok || !lib.shared() {
+				return false
+			}
+
+			// if target lib has no vendor variant, keep checking dependency graph
+			if !to.hasVendorVariant() {
+				return true
+			}
+
+			// VNDK-SP is okay to be double-loaded and LL-NDK has a single instance
+			if to.isVndkSp() || inList(child.Name(), llndkLibraries) {
+				return false
+			}
+
+			if Bool(to.VendorProperties.Double_loadable) {
+				// keep this as "valid" double_loadable modules.
+				doubleLoadables.Store(to.Name(), nil)
+				return false
+			}
+
+			var stringPath []string
+			for _, m := range ctx.GetWalkPath() {
+				stringPath = append(stringPath, m.Name())
+			}
+			ctx.ModuleErrorf("links a library %q which is not LL-NDK, "+
+				"VNDK-SP, or explicitly marked as 'double_loadable:true'. "+
+				"(dependency: %s)", ctx.OtherModuleName(to), strings.Join(stringPath, " -> "))
 			return false
 		}
-
-		// if target lib has no vendor variant, keep checking dependency graph
-		if !to.hasVendorVariant() {
-			return true
-		}
-
-		if to.isVndkSp() || inList(child.Name(), llndkLibraries) || Bool(to.VendorProperties.Double_loadable) {
-			return false
-		}
-
-		var stringPath []string
-		for _, m := range ctx.GetWalkPath() {
-			stringPath = append(stringPath, m.Name())
-		}
-		ctx.ModuleErrorf("links a library %q which is not LL-NDK, "+
-			"VNDK-SP, or explicitly marked as 'double_loadable:true'. "+
-			"(dependency: %s)", ctx.OtherModuleName(to), strings.Join(stringPath, " -> "))
-		return false
-	}
-	if module, ok := ctx.Module().(*Module); ok {
-		if lib, ok := module.linker.(*libraryDecorator); ok && lib.shared() {
-			if inList(ctx.ModuleName(), llndkLibraries) || Bool(module.VendorProperties.Double_loadable) {
-				ctx.WalkDeps(check)
+		if module, ok := ctx.Module().(*Module); ok {
+			if lib, ok := module.linker.(*libraryDecorator); ok && lib.shared() {
+				if inList(ctx.ModuleName(), llndkLibraries) || Bool(module.VendorProperties.Double_loadable) {
+					ctx.WalkDeps(check)
+				}
+				// Check if "double_loadable" is defined by demand.
+				// Note: This check works because this mutator is top-down.
+				// If a module is a valid "double_loadable", there is a LL-NDK module depending on this
+				// And the top-down mutator visits the LL-NDK before its dependencies.s
+				if !module.useVndk() && module.hasVendorVariant() && Bool(module.VendorProperties.Double_loadable) {
+					if _, ok := doubleLoadables.Load(module.Name()); !ok {
+						ctx.PropertyErrorf("double_loadable", "This is not double-loaded.")
+					}
+				}
 			}
 		}
 	}
