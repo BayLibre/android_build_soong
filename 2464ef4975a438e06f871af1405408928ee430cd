@@ -94,6 +94,30 @@
       "revId": "2464ef4975a438e06f871af1405408928ee430cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9b299a6_6d8ffc24",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2019-03-11T17:40:26Z",
+      "side": 1,
+      "message": "\u003e Can you expand? I quite don\u0027t get your question. But this is to mimic on-device behavior, where the dexopt invocation only sees what\u0027s in the permissions file, eg files tarting with /product.\n\nWas just curious whether the path is actually used on the host (would have expected some sort of out/target/product/... path)",
+      "parentUuid": "9690c4e3_ac2def4f",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 340,
+        "endChar": 2
+      },
+      "revId": "2464ef4975a438e06f871af1405408928ee430cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
