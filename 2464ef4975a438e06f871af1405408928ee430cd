@@ -46,6 +46,30 @@
       "revId": "2464ef4975a438e06f871af1405408928ee430cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91913cd9_432ca757",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2019-03-11T16:36:28Z",
+      "side": 1,
+      "message": "yeah, not ideal. The next time a new partition is added, this will probably crop up as P1 problem down the line again\n- is the only usage of the arg off-device to compare with the invocation on-device?\n- it would probably be a good idea to deal with other partitions toot (vendor, odm etc)\n- dynamic partitions gaining prevalence should mean this problem goes away over time\n- soong should probably be made aware of what the partition setup is instead, filed b/128311826 for that",
+      "parentUuid": "6a9f3a33_72698ce2",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 340,
+        "endChar": 2
+      },
+      "revId": "2464ef4975a438e06f871af1405408928ee430cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
