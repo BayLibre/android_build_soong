@@ -118,6 +118,30 @@
       "revId": "2464ef4975a438e06f871af1405408928ee430cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "292e79c2_407b3fd3",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-03-11T18:15:48Z",
+      "side": 1,
+      "message": "Ah no, this is just to store the on-device location in the generated odex file.",
+      "parentUuid": "e9b299a6_6d8ffc24",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 340,
+        "endChar": 2
+      },
+      "revId": "2464ef4975a438e06f871af1405408928ee430cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
