@@ -123,6 +123,8 @@ func InitShBinaryModule(s *ShBinary) {
 	s.AddProperties(&s.properties)
 }
 
+// sh_binary is for a shell script or batch file to be installed as an
+// executable binary to <partition>/bin.
 func ShBinaryFactory() Module {
 	module := &ShBinary{}
 	InitShBinaryModule(module)
@@ -130,6 +132,8 @@ func ShBinaryFactory() Module {
 	return module
 }
 
+// sh_binary is for a shell script to be installed as an executable binary
+// to <host>/bin.
 func ShBinaryHostFactory() Module {
 	module := &ShBinary{}
 	InitShBinaryModule(module)
