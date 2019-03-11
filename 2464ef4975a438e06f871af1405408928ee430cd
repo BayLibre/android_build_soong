@@ -70,6 +70,30 @@
       "revId": "2464ef4975a438e06f871af1405408928ee430cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9690c4e3_ac2def4f",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-03-11T17:30:25Z",
+      "side": 1,
+      "message": "\u003e is the only usage of the arg off-device to compare with the invocation on-device?\n\nCan you expand? I quite don\u0027t get your question. But this is to mimic on-device behavior, where the dexopt invocation only sees what\u0027s in the permissions file, eg files tarting with /product.\n\nAnd yeah, I\u0027m assuming this problem to go away once all devices do get all these partitions, and we don\u0027t need to stuff things on /system?",
+      "parentUuid": "91913cd9_432ca757",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 340,
+        "endChar": 2
+      },
+      "revId": "2464ef4975a438e06f871af1405408928ee430cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
