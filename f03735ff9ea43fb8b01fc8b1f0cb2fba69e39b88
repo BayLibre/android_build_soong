@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "28991e14_3cb7d38a",
+        "filename": "android/sh_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-11T21:27:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c35d1974_915bf06a",
+      "revId": "f03735ff9ea43fb8b01fc8b1f0cb2fba69e39b88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1053c1e0_fa3b5e08",
         "filename": "android/sh_binary.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "f03735ff9ea43fb8b01fc8b1f0cb2fba69e39b88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fb21107_5262db47",
+        "filename": "android/sh_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-11T21:27:11Z",
+      "side": 1,
+      "message": "Sure. It\u0027s much better.",
+      "parentUuid": "1053c1e0_fa3b5e08",
+      "revId": "f03735ff9ea43fb8b01fc8b1f0cb2fba69e39b88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
