@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f61e8ea5_3c8f9088",
+        "filename": "android/namespace.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-13T17:50:14Z",
+      "side": 1,
+      "message": "for 1) I agree. The reason I put optional is because you only use the imports property when importing the set of modules you are interested.\n\n2) I\u0027ll dig in the code further to get a full understanding.",
+      "parentUuid": "3f905e4f_6232ce36",
+      "revId": "0f3525511c22578b7ff311161543664f6340f497",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "faee3c80_132526d8",
         "filename": "android/namespace.go",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "0f3525511c22578b7ff311161543664f6340f497",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20550b13_44eb247f",
+        "filename": "android/namespace.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-13T17:50:14Z",
+      "side": 1,
+      "message": "Updated the comment to include that all sub directories are affected as well.",
+      "parentUuid": "faee3c80_132526d8",
+      "range": {
+        "startLine": 382,
+        "startChar": 0,
+        "endLine": 383,
+        "endChar": 7
+      },
+      "revId": "0f3525511c22578b7ff311161543664f6340f497",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
