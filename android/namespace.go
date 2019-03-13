@@ -355,15 +355,18 @@ func NewNamespace(path string) *Namespace {
 
 var _ blueprint.Namespace = (*Namespace)(nil)
 
+type namespaceProperties struct {
+	// optional a list of namespaces to import for module(s) build.
+	Imports []string `android:"path"`
+}
+
 type NamespaceModule struct {
 	ModuleBase
 
 	namespace *Namespace
 	resolver  *NameResolver
 
-	properties struct {
-		Imports []string
-	}
+	properties namespaceProperties
 }
 
 func (n *NamespaceModule) GenerateAndroidBuildActions(ctx ModuleContext) {
@@ -376,6 +379,10 @@ func (n *NamespaceModule) Name() (name string) {
 	return *n.nameProperties.Name
 }
 
+// soong_namespace provides a scope to modules defined in a soong blueprint
+// file to allow multiple same named modules in different soong blueprint
+// files. soong_namespace allows the granularity of modules to be pulled in
+// to a product build.
 func NamespaceFactory() Module {
 	module := &NamespaceModule{}
 
