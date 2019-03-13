@@ -355,15 +355,19 @@ func NewNamespace(path string) *Namespace {
 
 var _ blueprint.Namespace = (*Namespace)(nil)
 
+type namespaceProperties struct {
+	// a list of namespaces that contains modules that will be referenced
+	// by modules in this namespace.
+	Imports []string `android:"path"`
+}
+
 type NamespaceModule struct {
 	ModuleBase
 
 	namespace *Namespace
 	resolver  *NameResolver
 
-	properties struct {
-		Imports []string
-	}
+	properties namespaceProperties
 }
 
 func (n *NamespaceModule) GenerateAndroidBuildActions(ctx ModuleContext) {
@@ -376,6 +380,14 @@ func (n *NamespaceModule) Name() (name string) {
 	return *n.nameProperties.Name
 }
 
+// soong_namespace provides a scope to modules in an Android.bp file to prevent
+// module name conflicts with other defined modules in different Android.bp
+// files. Once soong_namespace has been defined in an Android.bp file, the
+// namespacing is applied to all modules that follow the soong_namespace in
+// the current Android.bp file, as well as modules defined in Android.bp files
+// in subdirectories unless they contain their own soong_namespace module.
+// soong_namespace can also be used to select which modules are visible to Make
+// by listing them in PRODUCT_SOONG_NAMESPACES.
 func NamespaceFactory() Module {
 	module := &NamespaceModule{}
 
