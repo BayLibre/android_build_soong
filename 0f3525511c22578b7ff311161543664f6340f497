@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f905e4f_6232ce36",
+        "filename": "android/namespace.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-13T17:26:28Z",
+      "side": 1,
+      "message": "1. Please remove \u0027optional\u0027. Or change it to \u0027an optional list\u0027 as we\u0027re doing for some of other optional properties. If we decide to mark properties with \u0027required\u0027 and \u0027optional\u0027 tags, we\u0027ll probably handle it in a different way, like using tags.\n\n2. I don\u0027t think this description is accurate. Can you check the code behavior and/or consult Dan?",
+      "revId": "0f3525511c22578b7ff311161543664f6340f497",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faee3c80_132526d8",
+        "filename": "android/namespace.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-13T17:26:28Z",
+      "side": 1,
+      "message": "A Soong namespace affects all blueprint files under its subdirectories including its own, not just a single one.",
+      "range": {
+        "startLine": 382,
+        "startChar": 0,
+        "endLine": 383,
+        "endChar": 7
+      },
+      "revId": "0f3525511c22578b7ff311161543664f6340f497",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
