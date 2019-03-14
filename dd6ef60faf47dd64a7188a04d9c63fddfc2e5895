@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b638b942_68f271c8",
+        "filename": "android/vts_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-03-14T18:58:03Z",
+      "side": 1,
+      "message": "Never saw \"override ... from\" before -- are you sure it\u0027s correct?\nI am not a native speaker, though.",
+      "range": {
+        "startLine": 27,
+        "startChar": 45,
+        "endLine": 27,
+        "endChar": 46
+      },
+      "revId": "dd6ef60faf47dd64a7188a04d9c63fddfc2e5895",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
