@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f8eab6a3_d2bcc067",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-03-14T18:00:16Z",
+      "side": 1,
+      "message": "This should be \u0026\u0026 so that we catch errors",
+      "range": {
+        "startLine": 162,
+        "startChar": 90,
+        "endLine": 162,
+        "endChar": 91
+      },
+      "revId": "b70cc5f70e743377b4bdbd609b32f959a3f19d49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65c5dd53_b3b2c5f5",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-03-14T18:00:16Z",
+      "side": 1,
+      "message": "Same here",
+      "range": {
+        "startLine": 238,
+        "startChar": 88,
+        "endLine": 238,
+        "endChar": 89
+      },
+      "revId": "b70cc5f70e743377b4bdbd609b32f959a3f19d49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
