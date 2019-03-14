@@ -22,6 +22,30 @@
       "revId": "dd6ef60faf47dd64a7188a04d9c63fddfc2e5895",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5fcf6f0_4a172d97",
+        "filename": "android/vts_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-14T19:03:52Z",
+      "side": 1,
+      "message": "You are right. It doesn\u0027t really make sense to say from. Reworded the sentence.",
+      "parentUuid": "b638b942_68f271c8",
+      "range": {
+        "startLine": 27,
+        "startChar": 45,
+        "endLine": 27,
+        "endChar": 46
+      },
+      "revId": "dd6ef60faf47dd64a7188a04d9c63fddfc2e5895",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
