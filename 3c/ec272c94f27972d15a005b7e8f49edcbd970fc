@@ -1,0 +1,9 @@
+Code-Review+2: Alexander Smundak <asmundak@google.com>
+Verified+1: Patrice Arruda <patricearruda@google.com>
+Autosubmit+1: Patrice Arruda <patricearruda@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Fri, 15 Mar 2019 01:22:26 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/928694
+Project: platform/build/soong
+Branch: refs/heads/master
