@@ -1,0 +1,10 @@
+Code-Review+2: Stephen Hines <srhines@google.com>
+Code-Review+1: Dan Willemsen <dwillemsen@google.com>
+Verified+1: Benjamin Gordon <bmgordon@google.com>
+Autosubmit+1: Benjamin Gordon <bmgordon@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Fri, 15 Mar 2019 21:41:31 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/906274
+Project: platform/build/soong
+Branch: refs/heads/master
