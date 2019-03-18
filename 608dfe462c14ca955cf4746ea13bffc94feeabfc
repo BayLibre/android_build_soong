@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2cb6fc55_1263fb81",
+        "filename": "scripts/gen-java-current-api-files.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-03-18T08:02:39Z",
+      "side": 1,
+      "message": "copied from other script??",
+      "revId": "608dfe462c14ca955cf4746ea13bffc94feeabfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
