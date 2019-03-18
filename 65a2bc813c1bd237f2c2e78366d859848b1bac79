@@ -22,6 +22,30 @@
       "revId": "65a2bc813c1bd237f2c2e78366d859848b1bac79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75d35911_cdb9e991",
+        "filename": "android/sh_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-18T20:16:24Z",
+      "side": 1,
+      "message": "See https://android.googlesource.com/platform/build/soong/+/cd2e52870a89494eb0105d77e2977ac259de4a0a/java/androidmk.go#99 for an example of reusing and extending an AndroidMkData.",
+      "parentUuid": "ccd579f8_02ba10bc",
+      "range": {
+        "startLine": 140,
+        "startChar": 35,
+        "endLine": 140,
+        "endChar": 48
+      },
+      "revId": "65a2bc813c1bd237f2c2e78366d859848b1bac79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
