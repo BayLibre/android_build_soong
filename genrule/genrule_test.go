@@ -441,6 +441,18 @@ func TestGenruleCmd(t *testing.T) {
 
 			expect: "cat ***error source path*** > __SBOX_OUT_FILES__",
 		},
+		{
+			name: "tool allow missing dependencies",
+			prop: `
+				tools: [":missing"],
+				out: ["out"],
+				cmd: "$(location :missing) > $(out)",
+			`,
+
+			allowMissingDependencies: true,
+
+			expect: "***missing :missing*** > __SBOX_OUT_FILES__",
+		},
 	}
 
 	for _, test := range testcases {

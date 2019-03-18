@@ -182,6 +182,8 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	if len(g.properties.Tools) > 0 {
+		seenTools := make(map[string]bool)
+
 		ctx.VisitDirectDepsBlueprint(func(module blueprint.Module) {
 			switch tag := ctx.OtherModuleDependencyTag(module).(type) {
 			case hostToolDependencyTag:
@@ -213,11 +215,25 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 				if path.Valid() {
 					g.deps = append(g.deps, path.Path())
 					addLocationLabel(tag.label, []string{path.Path().String()})
+					seenTools[tag.label] = true
 				} else {
 					ctx.ModuleErrorf("host tool %q missing output file", tool)
 				}
 			}
 		})
+
+		// If AllowMissingDependencies is enabled then the build will not have stopped when
+		// AddFarVariationDependencies was called on a missing tool, which will result in nonsensical
+		// "cmd: unknown location label ..." errors later.  Add a dummy file to the local label.  The
+		// command that uses this dummy file will never be executed because the rule will be replaced with
+		// an android.Error rule reporting the missing dependencies.
+		if ctx.Config().AllowMissingDependencies() {
+			for _, tool := range g.properties.Tools {
+				if !seenTools[tool] {
+					addLocationLabel(tool, []string{"***missing " + tool + "***"})
+				}
+			}
+		}
 	}
 
 	if ctx.Failed() {
