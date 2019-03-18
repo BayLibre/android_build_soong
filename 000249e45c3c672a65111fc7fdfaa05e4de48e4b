@@ -22,6 +22,30 @@
       "revId": "000249e45c3c672a65111fc7fdfaa05e4de48e4b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7da7fa09_252bb9e6",
+        "filename": "android/filegroup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-18T20:48:11Z",
+      "side": 1,
+      "message": "No, they would probably get unhappy, they need to run all of GenerateAndroidBuildActions to come up with the output files whose rules will be replaced ErrorRule.\n\nThe filegroup needs to produce at least one file, otherwise there is nothing to report the error on.  Maybe cc has to know about this kind of file and ignore it?",
+      "parentUuid": "f70ed3a6_a9ebfe93",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 29
+      },
+      "revId": "000249e45c3c672a65111fc7fdfaa05e4de48e4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
