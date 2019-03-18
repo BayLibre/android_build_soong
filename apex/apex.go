@@ -90,6 +90,12 @@ var (
 		CommandDeps: []string{"${zip2zip}"},
 		Description: "app bundle",
 	}, "abi")
+
+	apexMergeNoticeRule = pctx.StaticRule("apexMergeNoticeRule", blueprint.RuleParams{
+		Command:     `${mergenotice} --output $out $inputs`,
+		CommandDeps: []string{"${mergenotice}"},
+		Description: "merge notice files into $out",
+	}, "inputs")
 )
 
 var imageApexSuffix = ".apex"
@@ -137,6 +143,8 @@ func init() {
 	pctx.HostBinToolVariable("soong_zip", "soong_zip")
 	pctx.HostBinToolVariable("zip2zip", "zip2zip")
 	pctx.HostBinToolVariable("zipalign", "zipalign")
+
+	pctx.SourcePathVariable("mergenotice", "build/soong/scripts/mergenotice.py")
 
 	android.RegisterModuleType("apex", apexBundleFactory)
 	android.RegisterModuleType("apex_test", testApexBundleFactory)
@@ -389,6 +397,8 @@ type apexBundle struct {
 
 	container_certificate_file android.Path
 	container_private_key_file android.Path
+
+	noticeFile android.WritablePath
 
 	// list of files to be included in this apex
 	filesInfo []apexFile
@@ -810,6 +820,8 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	a.installDir = android.PathForModuleInstall(ctx, "apex")
 	a.filesInfo = filesInfo
 
+	a.buildNoticeFile(ctx)
+
 	if a.apexTypes.zip() {
 		a.buildUnflattenedApex(ctx, zipApex)
 	}
@@ -820,6 +832,37 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		// or unflattened APEX is made.
 		a.buildUnflattenedApex(ctx, imageApex)
 		a.buildFlattenedApex(ctx)
+	}
+}
+
+func (a *apexBundle) buildNoticeFile(ctx android.ModuleContext) {
+	noticeFiles := []android.Path{}
+	noticeFilesString := []string{}
+	for _, f := range a.filesInfo {
+		if f.module != nil {
+			notice := f.module.NoticeFile()
+			if notice.Valid() {
+				noticeFiles = append(noticeFiles, notice.Path())
+				noticeFilesString = append(noticeFilesString, notice.Path().String())
+			}
+		}
+	}
+	// append the notice file specified in the apex module itself
+	if a.NoticeFile().Valid() {
+		noticeFiles = append(noticeFiles, a.NoticeFile().Path())
+		noticeFilesString = append(noticeFilesString, a.NoticeFile().Path().String())
+	}
+
+	if len(noticeFiles) > 0 {
+		a.noticeFile = android.PathForModuleOut(ctx, "NOTICE")
+		ctx.Build(pctx, android.BuildParams{
+			Rule:   apexMergeNoticeRule,
+			Inputs: noticeFiles,
+			Output: a.noticeFile,
+			Args: map[string]string{
+				"inputs": strings.Join(noticeFilesString, " "),
+			},
+		})
 	}
 }
 
@@ -1070,6 +1113,10 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, name, moduleDir string, apex
 			if len(fi.symlinks) > 0 {
 				fmt.Fprintln(w, "LOCAL_MODULE_SYMLINKS :=", strings.Join(fi.symlinks, " "))
 			}
+
+			if fi.module != nil && fi.module.NoticeFile().Valid() {
+				fmt.Fprintln(w, "LOCAL_NOTICE_FILE :=", fi.module.NoticeFile().Path().String())
+			}
 		} else {
 			// /apex/<name>/{lib|framework|...}
 			fmt.Fprintln(w, "LOCAL_MODULE_PATH :=", filepath.Join("$(PRODUCT_OUT)",
@@ -1162,6 +1209,9 @@ func (a *apexBundle) androidMkForType(apexType apexPackaging) android.AndroidMkD
 				fmt.Fprintln(w, "LOCAL_MODULE_STEM :=", name+apexType.suffix())
 				fmt.Fprintln(w, "LOCAL_UNINSTALLABLE_MODULE :=", !a.installable())
 				fmt.Fprintln(w, "LOCAL_REQUIRED_MODULES :=", String(a.properties.Key))
+				if a.installable() && a.noticeFile != nil {
+					fmt.Fprintln(w, "LOCAL_NOTICE_FILE :=", a.noticeFile.String())
+				}
 				if len(moduleNames) > 0 {
 					fmt.Fprintln(w, "LOCAL_REQUIRED_MODULES +=", strings.Join(moduleNames, " "))
 				}
