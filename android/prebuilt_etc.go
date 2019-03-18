@@ -24,6 +24,7 @@ import (
 
 func init() {
 	RegisterModuleType("prebuilt_etc", PrebuiltEtcFactory)
+	RegisterModuleType("prebuilt_apex", PrebuiltApexFactory)
 	RegisterModuleType("prebuilt_etc_host", PrebuiltEtcHostFactory)
 	RegisterModuleType("prebuilt_usr_share", PrebuiltUserShareFactory)
 	RegisterModuleType("prebuilt_usr_share_host", PrebuiltUserShareHostFactory)
@@ -178,6 +179,16 @@ func InitPrebuiltEtcModule(p *PrebuiltEtc) {
 // <partition>/etc/<sub_dir> directory.
 func PrebuiltEtcFactory() Module {
 	module := &PrebuiltEtc{installDirBase: "etc"}
+	InitPrebuiltEtcModule(module)
+	// This module is device-only
+	InitAndroidArchModule(module, DeviceSupported, MultilibFirst)
+	return module
+}
+
+// prebuilt_apex is for a prebuilt artifact that is installed in
+// <partition>/apex/<sub_dir> directory.
+func PrebuiltApexFactory() Module {
+	module := &PrebuiltEtc{installDirBase: "apex"}
 	InitPrebuiltEtcModule(module)
 	// This module is device-only
 	InitAndroidArchModule(module, DeviceSupported, MultilibFirst)
