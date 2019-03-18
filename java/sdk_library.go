@@ -675,6 +675,24 @@ func (module *SdkLibrary) createInternalModules(mctx android.TopDownMutatorConte
 	if module.sdkLibraryProperties.Api_packages == nil {
 		mctx.PropertyErrorf("api_packages", "java_sdk_library must specify api_packages")
 	}
+
+	missing_current_api := false
+
+	for _, scope := range []string{"", "system-", "test-"} {
+		for _, api := range []string{"current.txt", "removed.txt"} {
+			path := path.Join(mctx.ModuleDir(), "api", scope+api)
+			z := android.ExistentPathForSource(mctx, path)
+			if !z.Valid() {
+				mctx.ModuleErrorf("Current api file %#v doesn't exist", path)
+				missing_current_api = true
+			}
+		}
+	}
+
+	if missing_current_api {
+		mctx.ModuleErrorf("One or more current api files are missing. Please touch them and run \"make update-api\"")
+	}
+
 	// for public API stubs
 	module.createStubsLibrary(mctx, apiScopePublic)
 	module.createDocs(mctx, apiScopePublic)
