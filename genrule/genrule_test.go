@@ -22,6 +22,8 @@ import (
 
 	"android/soong/android"
 	"reflect"
+
+	"github.com/google/blueprint/proptools"
 )
 
 var buildDir string
@@ -123,307 +125,333 @@ func TestGenruleCmd(t *testing.T) {
 		name string
 		prop string
 
+		allowMissingDependencies bool
+
 		err    string
 		expect string
 	}{
+		//{
+		//	name: "empty location tool",
+		//	prop: `
+		//		tools: ["tool"],
+		//		out: ["out"],
+		//		cmd: "$(location) > $(out)",
+		//	`,
+		//	expect: "out/tool > __SBOX_OUT_FILES__",
+		//},
+		//{
+		//	name: "empty location tool2",
+		//	prop: `
+		//		tools: [":tool"],
+		//		out: ["out"],
+		//		cmd: "$(location) > $(out)",
+		//	`,
+		//	expect: "out/tool > __SBOX_OUT_FILES__",
+		//},
+		//{
+		//	name: "empty location tool file",
+		//	prop: `
+		//		tool_files: ["tool_file1"],
+		//		out: ["out"],
+		//		cmd: "$(location) > $(out)",
+		//	`,
+		//	expect: "tool_file1 > __SBOX_OUT_FILES__",
+		//},
+		//{
+		//	name: "empty location tool file fg",
+		//	prop: `
+		//		tool_files: [":1tool_file"],
+		//		out: ["out"],
+		//		cmd: "$(location) > $(out)",
+		//	`,
+		//	expect: "tool_file1 > __SBOX_OUT_FILES__",
+		//},
+		//{
+		//	name: "empty location tool and tool file",
+		//	prop: `
+		//		tools: ["tool"],
+		//		tool_files: ["tool_file1"],
+		//		out: ["out"],
+		//		cmd: "$(location) > $(out)",
+		//	`,
+		//	expect: "out/tool > __SBOX_OUT_FILES__",
+		//},
+		//{
+		//	name: "tool",
+		//	prop: `
+		//		tools: ["tool"],
+		//		out: ["out"],
+		//		cmd: "$(location tool) > $(out)",
+		//	`,
+		//	expect: "out/tool > __SBOX_OUT_FILES__",
+		//},
+		//{
+		//	name: "tool2",
+		//	prop: `
+		//		tools: [":tool"],
+		//		out: ["out"],
+		//		cmd: "$(location :tool) > $(out)",
+		//	`,
+		//	expect: "out/tool > __SBOX_OUT_FILES__",
+		//},
+		//{
+		//	name: "tool file",
+		//	prop: `
+		//		tool_files: ["tool_file1"],
+		//		out: ["out"],
+		//		cmd: "$(location tool_file1) > $(out)",
+		//	`,
+		//	expect: "tool_file1 > __SBOX_OUT_FILES__",
+		//},
+		//{
+		//	name: "tool file fg",
+		//	prop: `
+		//		tool_files: [":1tool_file"],
+		//		out: ["out"],
+		//		cmd: "$(location :1tool_file) > $(out)",
+		//	`,
+		//	expect: "tool_file1 > __SBOX_OUT_FILES__",
+		//},
+		//{
+		//	name: "tool files",
+		//	prop: `
+		//		tool_files: [":tool_files"],
+		//		out: ["out"],
+		//		cmd: "$(locations :tool_files) > $(out)",
+		//	`,
+		//	expect: "tool_file1 tool_file2 > __SBOX_OUT_FILES__",
+		//},
+		//{
+		//	name: "in1",
+		//	prop: `
+		//		srcs: ["in1"],
+		//		out: ["out"],
+		//		cmd: "cat $(in) > $(out)",
+		//	`,
+		//	expect: "cat ${in} > __SBOX_OUT_FILES__",
+		//},
+		//{
+		//	name: "in1 fg",
+		//	prop: `
+		//		srcs: [":1in"],
+		//		out: ["out"],
+		//		cmd: "cat $(in) > $(out)",
+		//	`,
+		//	expect: "cat ${in} > __SBOX_OUT_FILES__",
+		//},
+		//{
+		//	name: "ins",
+		//	prop: `
+		//		srcs: ["in1", "in2"],
+		//		out: ["out"],
+		//		cmd: "cat $(in) > $(out)",
+		//	`,
+		//	expect: "cat ${in} > __SBOX_OUT_FILES__",
+		//},
+		//{
+		//	name: "ins fg",
+		//	prop: `
+		//		srcs: [":ins"],
+		//		out: ["out"],
+		//		cmd: "cat $(in) > $(out)",
+		//	`,
+		//	expect: "cat ${in} > __SBOX_OUT_FILES__",
+		//},
+		//{
+		//	name: "location in1",
+		//	prop: `
+		//		srcs: ["in1"],
+		//		out: ["out"],
+		//		cmd: "cat $(location in1) > $(out)",
+		//	`,
+		//	expect: "cat in1 > __SBOX_OUT_FILES__",
+		//},
+		//{
+		//	name: "location in1 fg",
+		//	prop: `
+		//		srcs: [":1in"],
+		//		out: ["out"],
+		//		cmd: "cat $(location :1in) > $(out)",
+		//	`,
+		//	expect: "cat in1 > __SBOX_OUT_FILES__",
+		//},
+		//{
+		//	name: "location ins",
+		//	prop: `
+		//		srcs: ["in1", "in2"],
+		//		out: ["out"],
+		//		cmd: "cat $(location in1) > $(out)",
+		//	`,
+		//	expect: "cat in1 > __SBOX_OUT_FILES__",
+		//},
+		//{
+		//	name: "location ins fg",
+		//	prop: `
+		//		srcs: [":ins"],
+		//		out: ["out"],
+		//		cmd: "cat $(locations :ins) > $(out)",
+		//	`,
+		//	expect: "cat in1 in2 > __SBOX_OUT_FILES__",
+		//},
+		//{
+		//	name: "outs",
+		//	prop: `
+		//		out: ["out", "out2"],
+		//		cmd: "echo foo > $(out)",
+		//	`,
+		//	expect: "echo foo > __SBOX_OUT_FILES__",
+		//},
+		//{
+		//	name: "location out",
+		//	prop: `
+		//		out: ["out", "out2"],
+		//		cmd: "echo foo > $(location out2)",
+		//	`,
+		//	expect: "echo foo > __SBOX_OUT_DIR__/out2",
+		//},
+		//{
+		//	name: "depfile",
+		//	prop: `
+		//		out: ["out"],
+		//		depfile: true,
+		//		cmd: "echo foo > $(out) && touch $(depfile)",
+		//	`,
+		//	expect: "echo foo > __SBOX_OUT_FILES__ && touch __SBOX_DEPFILE__",
+		//},
+		//{
+		//	name: "gendir",
+		//	prop: `
+		//		out: ["out"],
+		//		cmd: "echo foo > $(genDir)/foo && cp $(genDir)/foo $(out)",
+		//	`,
+		//	expect: "echo foo > __SBOX_OUT_DIR__/foo && cp __SBOX_OUT_DIR__/foo __SBOX_OUT_FILES__",
+		//},
+		//
+		//{
+		//	name: "error empty location",
+		//	prop: `
+		//		out: ["out"],
+		//		cmd: "$(location) > $(out)",
+		//	`,
+		//	err: "at least one `tools` or `tool_files` is required if $(location) is used",
+		//},
+		//{
+		//	name: "error empty location no files",
+		//	prop: `
+		//		tool_files: [":empty"],
+		//		out: ["out"],
+		//		cmd: "$(location) > $(out)",
+		//	`,
+		//	err: `default label ":empty" has no files`,
+		//},
+		//{
+		//	name: "error empty location multiple files",
+		//	prop: `
+		//		tool_files: [":tool_files"],
+		//		out: ["out"],
+		//		cmd: "$(location) > $(out)",
+		//	`,
+		//	err: `default label ":tool_files" has multiple files`,
+		//},
+		//{
+		//	name: "error location",
+		//	prop: `
+		//		out: ["out"],
+		//		cmd: "echo foo > $(location missing)",
+		//	`,
+		//	err: `unknown location label "missing"`,
+		//},
+		//{
+		//	name: "error locations",
+		//	prop: `
+		//			out: ["out"],
+		//			cmd: "echo foo > $(locations missing)",
+		//	`,
+		//	err: `unknown locations label "missing"`,
+		//},
+		//{
+		//	name: "error location no files",
+		//	prop: `
+		//			out: ["out"],
+		//			srcs: [":empty"],
+		//			cmd: "echo $(location :empty) > $(out)",
+		//	`,
+		//	err: `label ":empty" has no files`,
+		//},
+		//{
+		//	name: "error locations no files",
+		//	prop: `
+		//			out: ["out"],
+		//			srcs: [":empty"],
+		//			cmd: "echo $(locations :empty) > $(out)",
+		//	`,
+		//	err: `label ":empty" has no files`,
+		//},
+		//{
+		//	name: "error location multiple files",
+		//	prop: `
+		//			out: ["out"],
+		//			srcs: [":ins"],
+		//			cmd: "echo $(location :ins) > $(out)",
+		//	`,
+		//	err: `label ":ins" has multiple files`,
+		//},
+		//{
+		//	name: "error variable",
+		//	prop: `
+		//			out: ["out"],
+		//			srcs: ["in1"],
+		//			cmd: "echo $(foo) > $(out)",
+		//	`,
+		//	err: `unknown variable '$(foo)'`,
+		//},
+		//{
+		//	name: "error depfile",
+		//	prop: `
+		//		out: ["out"],
+		//		cmd: "echo foo > $(out) && touch $(depfile)",
+		//	`,
+		//	err: "$(depfile) used without depfile property",
+		//},
+		//{
+		//	name: "error no depfile",
+		//	prop: `
+		//		out: ["out"],
+		//		depfile: true,
+		//		cmd: "echo foo > $(out)",
+		//	`,
+		//	err: "specified depfile=true but did not include a reference to '${depfile}' in cmd",
+		//},
+		//{
+		//	name: "error no out",
+		//	prop: `
+		//		cmd: "echo foo > $(out)",
+		//	`,
+		//	err: "must have at least one output file",
+		//},
 		{
-			name: "empty location tool",
+			name: "srcs allow missing dependencies",
 			prop: `
-				tools: ["tool"],
+				srcs: [":missing"],
 				out: ["out"],
-				cmd: "$(location) > $(out)",
+				cmd: "cat $(location :missing) > $(out)",
 			`,
-			expect: "out/tool > __SBOX_OUT_FILES__",
-		},
-		{
-			name: "empty location tool2",
-			prop: `
-				tools: [":tool"],
-				out: ["out"],
-				cmd: "$(location) > $(out)",
-			`,
-			expect: "out/tool > __SBOX_OUT_FILES__",
-		},
-		{
-			name: "empty location tool file",
-			prop: `
-				tool_files: ["tool_file1"],
-				out: ["out"],
-				cmd: "$(location) > $(out)",
-			`,
-			expect: "tool_file1 > __SBOX_OUT_FILES__",
-		},
-		{
-			name: "empty location tool file fg",
-			prop: `
-				tool_files: [":1tool_file"],
-				out: ["out"],
-				cmd: "$(location) > $(out)",
-			`,
-			expect: "tool_file1 > __SBOX_OUT_FILES__",
-		},
-		{
-			name: "empty location tool and tool file",
-			prop: `
-				tools: ["tool"],
-				tool_files: ["tool_file1"],
-				out: ["out"],
-				cmd: "$(location) > $(out)",
-			`,
-			expect: "out/tool > __SBOX_OUT_FILES__",
-		},
-		{
-			name: "tool",
-			prop: `
-				tools: ["tool"],
-				out: ["out"],
-				cmd: "$(location tool) > $(out)",
-			`,
-			expect: "out/tool > __SBOX_OUT_FILES__",
-		},
-		{
-			name: "tool2",
-			prop: `
-				tools: [":tool"],
-				out: ["out"],
-				cmd: "$(location :tool) > $(out)",
-			`,
-			expect: "out/tool > __SBOX_OUT_FILES__",
-		},
-		{
-			name: "tool file",
-			prop: `
-				tool_files: ["tool_file1"],
-				out: ["out"],
-				cmd: "$(location tool_file1) > $(out)",
-			`,
-			expect: "tool_file1 > __SBOX_OUT_FILES__",
-		},
-		{
-			name: "tool file fg",
-			prop: `
-				tool_files: [":1tool_file"],
-				out: ["out"],
-				cmd: "$(location :1tool_file) > $(out)",
-			`,
-			expect: "tool_file1 > __SBOX_OUT_FILES__",
-		},
-		{
-			name: "tool files",
-			prop: `
-				tool_files: [":tool_files"],
-				out: ["out"],
-				cmd: "$(locations :tool_files) > $(out)",
-			`,
-			expect: "tool_file1 tool_file2 > __SBOX_OUT_FILES__",
-		},
-		{
-			name: "in1",
-			prop: `
-				srcs: ["in1"],
-				out: ["out"],
-				cmd: "cat $(in) > $(out)",
-			`,
-			expect: "cat ${in} > __SBOX_OUT_FILES__",
-		},
-		{
-			name: "in1 fg",
-			prop: `
-				srcs: [":1in"],
-				out: ["out"],
-				cmd: "cat $(in) > $(out)",
-			`,
-			expect: "cat ${in} > __SBOX_OUT_FILES__",
-		},
-		{
-			name: "ins",
-			prop: `
-				srcs: ["in1", "in2"],
-				out: ["out"],
-				cmd: "cat $(in) > $(out)",
-			`,
-			expect: "cat ${in} > __SBOX_OUT_FILES__",
-		},
-		{
-			name: "ins fg",
-			prop: `
-				srcs: [":ins"],
-				out: ["out"],
-				cmd: "cat $(in) > $(out)",
-			`,
-			expect: "cat ${in} > __SBOX_OUT_FILES__",
-		},
-		{
-			name: "location in1",
-			prop: `
-				srcs: ["in1"],
-				out: ["out"],
-				cmd: "cat $(location in1) > $(out)",
-			`,
-			expect: "cat in1 > __SBOX_OUT_FILES__",
-		},
-		{
-			name: "location in1 fg",
-			prop: `
-				srcs: [":1in"],
-				out: ["out"],
-				cmd: "cat $(location :1in) > $(out)",
-			`,
-			expect: "cat in1 > __SBOX_OUT_FILES__",
-		},
-		{
-			name: "location ins",
-			prop: `
-				srcs: ["in1", "in2"],
-				out: ["out"],
-				cmd: "cat $(location in1) > $(out)",
-			`,
-			expect: "cat in1 > __SBOX_OUT_FILES__",
-		},
-		{
-			name: "location ins fg",
-			prop: `
-				srcs: [":ins"],
-				out: ["out"],
-				cmd: "cat $(locations :ins) > $(out)",
-			`,
-			expect: "cat in1 in2 > __SBOX_OUT_FILES__",
-		},
-		{
-			name: "outs",
-			prop: `
-				out: ["out", "out2"],
-				cmd: "echo foo > $(out)",
-			`,
-			expect: "echo foo > __SBOX_OUT_FILES__",
-		},
-		{
-			name: "location out",
-			prop: `
-				out: ["out", "out2"],
-				cmd: "echo foo > $(location out2)",
-			`,
-			expect: "echo foo > __SBOX_OUT_DIR__/out2",
-		},
-		{
-			name: "depfile",
-			prop: `
-				out: ["out"],
-				depfile: true,
-				cmd: "echo foo > $(out) && touch $(depfile)",
-			`,
-			expect: "echo foo > __SBOX_OUT_FILES__ && touch __SBOX_DEPFILE__",
-		},
-		{
-			name: "gendir",
-			prop: `
-				out: ["out"],
-				cmd: "echo foo > $(genDir)/foo && cp $(genDir)/foo $(out)",
-			`,
-			expect: "echo foo > __SBOX_OUT_DIR__/foo && cp __SBOX_OUT_DIR__/foo __SBOX_OUT_FILES__",
-		},
 
+			allowMissingDependencies: true,
+
+			expect: "cat ***missing srcs :missing*** > __SBOX_OUT_FILES__",
+		},
 		{
-			name: "error empty location",
+			name: "tool allow missing dependencies",
 			prop: `
+				tools: [":missing"],
 				out: ["out"],
-				cmd: "$(location) > $(out)",
+				cmd: "$(location :missing) > $(out)",
 			`,
-			err: "at least one `tools` or `tool_files` is required if $(location) is used",
-		},
-		{
-			name: "error empty location no files",
-			prop: `
-				tool_files: [":empty"],
-				out: ["out"],
-				cmd: "$(location) > $(out)",
-			`,
-			err: `default label ":empty" has no files`,
-		},
-		{
-			name: "error empty location multiple files",
-			prop: `
-				tool_files: [":tool_files"],
-				out: ["out"],
-				cmd: "$(location) > $(out)",
-			`,
-			err: `default label ":tool_files" has multiple files`,
-		},
-		{
-			name: "error location",
-			prop: `
-				out: ["out"],
-				cmd: "echo foo > $(location missing)",
-			`,
-			err: `unknown location label "missing"`,
-		},
-		{
-			name: "error locations",
-			prop: `
-					out: ["out"],
-					cmd: "echo foo > $(locations missing)",
-			`,
-			err: `unknown locations label "missing"`,
-		},
-		{
-			name: "error location no files",
-			prop: `
-					out: ["out"],
-					srcs: [":empty"],
-					cmd: "echo $(location :empty) > $(out)",
-			`,
-			err: `label ":empty" has no files`,
-		},
-		{
-			name: "error locations no files",
-			prop: `
-					out: ["out"],
-					srcs: [":empty"],
-					cmd: "echo $(locations :empty) > $(out)",
-			`,
-			err: `label ":empty" has no files`,
-		},
-		{
-			name: "error location multiple files",
-			prop: `
-					out: ["out"],
-					srcs: [":ins"],
-					cmd: "echo $(location :ins) > $(out)",
-			`,
-			err: `label ":ins" has multiple files`,
-		},
-		{
-			name: "error variable",
-			prop: `
-					out: ["out"],
-					srcs: ["in1"],
-					cmd: "echo $(foo) > $(out)",
-			`,
-			err: `unknown variable '$(foo)'`,
-		},
-		{
-			name: "error depfile",
-			prop: `
-				out: ["out"],
-				cmd: "echo foo > $(out) && touch $(depfile)",
-			`,
-			err: "$(depfile) used without depfile property",
-		},
-		{
-			name: "error no depfile",
-			prop: `
-				out: ["out"],
-				depfile: true,
-				cmd: "echo foo > $(out)",
-			`,
-			err: "specified depfile=true but did not include a reference to '${depfile}' in cmd",
-		},
-		{
-			name: "error no out",
-			prop: `
-				cmd: "echo foo > $(out)",
-			`,
-			err: "must have at least one output file",
+
+			allowMissingDependencies: true,
+
+			expect: "***missing tool :missing*** > __SBOX_OUT_FILES__",
 		},
 	}
 
@@ -435,7 +463,10 @@ func TestGenruleCmd(t *testing.T) {
 			bp += test.prop
 			bp += "}\n"
 
+			config.TestProductVariables.Allow_missing_dependencies = proptools.BoolPtr(test.allowMissingDependencies)
+
 			ctx := testContext(config, bp, nil)
+			ctx.SetAllowMissingDependencies(test.allowMissingDependencies)
 
 			_, errs := ctx.ParseFileList(".", []string{"Android.bp"})
 			if errs == nil {
@@ -460,8 +491,8 @@ func TestGenruleCmd(t *testing.T) {
 			}
 
 			gen := ctx.ModuleForTests("gen", "").Module().(*Module)
-			if gen.rawCommand != "'"+test.expect+"'" {
-				t.Errorf("want %q, got %q", test.expect, gen.rawCommand)
+			if g, w := gen.rawCommand, "'"+test.expect+"'"; w != g {
+				t.Errorf("want %q, got %q", w, g)
 			}
 		})
 	}
