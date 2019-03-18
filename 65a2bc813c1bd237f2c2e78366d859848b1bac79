@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "45424b22_47faedbc",
+        "filename": "android/sh_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-18T20:25:03Z",
+      "side": 1,
+      "message": "ShTest",
+      "range": {
+        "startLine": 72,
+        "startChar": 5,
+        "endLine": 72,
+        "endChar": 17
+      },
+      "revId": "65a2bc813c1bd237f2c2e78366d859848b1bac79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8755003_a27dfb6e",
+        "filename": "android/sh_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-18T20:25:03Z",
+      "side": 1,
+      "message": "Use non-pointer ShBinary",
+      "revId": "65a2bc813c1bd237f2c2e78366d859848b1bac79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ccd579f8_02ba10bc",
         "filename": "android/sh_binary.go",
         "patchSetId": 3
@@ -42,6 +82,52 @@
         "startChar": 35,
         "endLine": 140,
         "endChar": 48
+      },
+      "revId": "65a2bc813c1bd237f2c2e78366d859848b1bac79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f50ac16e_a81c6e47",
+        "filename": "android/sh_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-18T20:25:03Z",
+      "side": 1,
+      "message": "ShTestFactory",
+      "range": {
+        "startLine": 175,
+        "startChar": 5,
+        "endLine": 175,
+        "endChar": 24
+      },
+      "revId": "65a2bc813c1bd237f2c2e78366d859848b1bac79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3d9c490_0403e2f4",
+        "filename": "android/sh_binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-18T20:25:03Z",
+      "side": 1,
+      "message": "Use:\n\n    module :\u003d \u0026ShTestBinary{}\n    InitShBinaryModule(\u0026module.ShBinary)",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 178,
+        "endChar": 42
       },
       "revId": "65a2bc813c1bd237f2c2e78366d859848b1bac79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
