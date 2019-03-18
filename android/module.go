@@ -854,7 +854,7 @@ func (a *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 
 		if a.commonProperties.Notice != nil {
 			// For filegroup-based notice file references.
-			a.noticeFile = ctx.ExpandSource(*a.commonProperties.Notice, "notice")
+			a.noticeFile = PathForModuleSrc(ctx, *a.commonProperties.Notice)
 		}
 	}
 
@@ -1438,7 +1438,7 @@ func (ctx *androidModuleContext) ExpandSource(srcFile, prop string) Path {
 // dependency resolution.
 func (ctx *androidModuleContext) ExpandOptionalSource(srcFile *string, prop string) OptionalPath {
 	if srcFile != nil {
-		return OptionalPathForPath(ctx.ExpandSource(*srcFile, prop))
+		return OptionalPathForPath(PathForModuleSrc(ctx, *srcFile))
 	}
 	return OptionalPath{}
 }
