@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1120ff9b_cb1690f5",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-03-18T03:45:18Z",
+      "side": 1,
+      "message": "wouldn\u0027t it be nicer if the touch commands are shown so that users can just copy/paste?",
+      "range": {
+        "startLine": 693,
+        "startChar": 64,
+        "endLine": 693,
+        "endChar": 85
+      },
+      "revId": "4442de24c49014bf5f1172ee2cf1bb9ffe69f0c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "208ba094_70a4a0c1",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-03-18T03:45:18Z",
+      "side": 1,
+      "message": "return the function because there is no reason to go further?",
+      "revId": "4442de24c49014bf5f1172ee2cf1bb9ffe69f0c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
