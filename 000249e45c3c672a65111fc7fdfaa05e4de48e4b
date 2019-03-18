@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f70ed3a6_a9ebfe93",
+        "filename": "android/filegroup.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-03-18T20:26:28Z",
+      "side": 1,
+      "message": "Does this actually work with cc_* modules that expect to understand how to build each source file? (Are they aborting before they\u0027d get to that error?)",
+      "range": {
+        "startLine": 71,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 29
+      },
+      "revId": "000249e45c3c672a65111fc7fdfaa05e4de48e4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
