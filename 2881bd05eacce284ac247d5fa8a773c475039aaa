@@ -22,6 +22,30 @@
       "revId": "2881bd05eacce284ac247d5fa8a773c475039aaa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e49e95fe_e44bcab5",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-03-19T22:49:29Z",
+      "side": 1,
+      "message": "Notice files from modules that are packaged in an APEX are merged together to generate a big notice file for the APEX. Since this is done entirely in Soong, we need to be able to take NOTICE file even if the notice property isn\u0027t set.",
+      "parentUuid": "d5f664a0_d0d5e204",
+      "range": {
+        "startLine": 861,
+        "startChar": 0,
+        "endLine": 866,
+        "endChar": 56
+      },
+      "revId": "2881bd05eacce284ac247d5fa8a773c475039aaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
