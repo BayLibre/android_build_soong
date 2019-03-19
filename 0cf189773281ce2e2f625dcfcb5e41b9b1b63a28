@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e7753c28_c861a064",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2019-03-19T04:21:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28009b76_b99ec12f",
+      "revId": "0cf189773281ce2e2f625dcfcb5e41b9b1b63a28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3235c6b1_fbf4e32c",
         "filename": "cc/config/clang.go",
         "patchSetId": 2
