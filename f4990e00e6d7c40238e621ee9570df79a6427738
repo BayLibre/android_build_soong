@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "111724ed_84d5b804",
+        "filename": "android/override_module.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-19T23:39:15Z",
+      "side": 1,
+      "message": "Could this be done by transitively walking dependencies with overrideBaseDepTag using ctx.WalkDeps instead?",
+      "revId": "f4990e00e6d7c40238e621ee9570df79a6427738",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4504a1f4_216a4dff",
+        "filename": "android/override_module.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-19T23:39:15Z",
+      "side": 1,
+      "message": "This would panic if the module didn\u0027t implement OverridesGetter.  If you want to ignore failures and return nil you have to use the two-value form:\n\n   getter, _ :\u003d mods[i+1].(OverridesGetter)",
+      "range": {
+        "startLine": 212,
+        "startChar": 50,
+        "endLine": 212,
+        "endChar": 77
+      },
+      "revId": "f4990e00e6d7c40238e621ee9570df79a6427738",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
