@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3235c6b1_fbf4e32c",
+        "filename": "cc/config/clang.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2019-03-19T03:26:15Z",
+      "side": 1,
+      "message": "Minor nit: \"are\". Please don\u0027t run presubmits again just for this though.",
+      "range": {
+        "startLine": 178,
+        "startChar": 80,
+        "endLine": 178,
+        "endChar": 82
+      },
+      "revId": "0cf189773281ce2e2f625dcfcb5e41b9b1b63a28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
