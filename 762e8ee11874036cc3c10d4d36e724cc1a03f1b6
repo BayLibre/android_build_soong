@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8d84389_a0663ca3",
+        "filename": "android/namespace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-19T17:49:44Z",
+      "side": 1,
+      "message": "How about:\n\n// a list of namespaces that contain modules that will be referenced by modules in this namespace.",
+      "revId": "762e8ee11874036cc3c10d4d36e724cc1a03f1b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc2545a6_af865621",
+        "filename": "android/namespace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-19T17:49:44Z",
+      "side": 1,
+      "message": "Use Android.bp file instead of blueprint file, especially in user-facing documenation, to avoid confusion with go/blueprint.",
+      "range": {
+        "startLine": 382,
+        "startChar": 52,
+        "endLine": 382,
+        "endChar": 61
+      },
+      "revId": "762e8ee11874036cc3c10d4d36e724cc1a03f1b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3238b318_d50bcc87",
+        "filename": "android/namespace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-19T17:49:44Z",
+      "side": 1,
+      "message": "is applied to all modules that follow the soong_namespace in the current Android.bp, as well as modules defined in Android.bp files in subdirectories unless they contain their own soong_namespace module.",
+      "range": {
+        "startLine": 385,
+        "startChar": 3,
+        "endLine": 385,
+        "endChar": 60
+      },
+      "revId": "762e8ee11874036cc3c10d4d36e724cc1a03f1b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfcf4aef_4822b75c",
+        "filename": "android/namespace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-19T17:49:44Z",
+      "side": 1,
+      "message": "can also be used to select which modules are visible to Make by listing them in PRODUCT_SOONG_NAMESPACES.",
+      "range": {
+        "startLine": 386,
+        "startChar": 3,
+        "endLine": 386,
+        "endChar": 72
+      },
+      "revId": "762e8ee11874036cc3c10d4d36e724cc1a03f1b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
