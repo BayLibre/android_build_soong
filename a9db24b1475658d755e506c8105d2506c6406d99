@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e35b9006_47958d67",
+        "filename": "android/override_module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-19T18:20:48Z",
+      "side": 1,
+      "message": "comment on the locking strategy here, particularly around why addOverride uses the lock but getOverrides does not.",
+      "revId": "a9db24b1475658d755e506c8105d2506c6406d99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "595df5f9_0d3e1616",
+        "filename": "android/override_module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-19T18:20:48Z",
+      "side": 1,
+      "message": "You can probably do this without reflection by using an interface that returns a pointer to the Overrides property.",
+      "revId": "a9db24b1475658d755e506c8105d2506c6406d99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9909de63_05e964c5",
+        "filename": "android/override_module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-19T18:20:48Z",
+      "side": 1,
+      "message": "You may be able to avoid this extra mutator by implementing a DepsMutator method on OverrideModuleBase.",
+      "revId": "a9db24b1475658d755e506c8105d2506c6406d99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69cf51f2_f78e6e88",
+        "filename": "android/override_module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-19T18:20:48Z",
+      "side": 1,
+      "message": "overrideBaseDepTag",
+      "range": {
+        "startLine": 172,
+        "startChar": 28,
+        "endLine": 172,
+        "endChar": 55
+      },
+      "revId": "a9db24b1475658d755e506c8105d2506c6406d99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d38668c_7e4c198a",
+        "filename": "android/override_module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-19T18:20:48Z",
+      "side": 1,
+      "message": "This may not be an app",
+      "range": {
+        "startLine": 173,
+        "startChar": 5,
+        "endLine": 173,
+        "endChar": 8
+      },
+      "revId": "a9db24b1475658d755e506c8105d2506c6406d99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
