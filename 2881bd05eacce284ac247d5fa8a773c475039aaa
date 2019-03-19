@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5f664a0_d0d5e204",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-19T15:17:12Z",
+      "side": 1,
+      "message": "Why do you need this change? This is being done by notice_files.mk. Do prebuilt APEX files get assembled through an unusual path that doesn\u0027t include the mk file?",
+      "range": {
+        "startLine": 861,
+        "startChar": 0,
+        "endLine": 866,
+        "endChar": 56
+      },
+      "revId": "2881bd05eacce284ac247d5fa8a773c475039aaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
