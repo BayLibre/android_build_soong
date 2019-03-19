@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cab60c08_31e0a9ad",
+        "filename": "android/override_module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-19T23:16:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e35b9006_47958d67",
+      "revId": "a9db24b1475658d755e506c8105d2506c6406d99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "595df5f9_0d3e1616",
         "filename": "android/override_module.go",
         "patchSetId": 5
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "f7db01d8_dc1280df",
+        "filename": "android/override_module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-19T23:16:59Z",
+      "side": 1,
+      "message": "Done. Not sure if I\u0027m doing this correctly, my go-flu is not strong enough yet, haha.",
+      "parentUuid": "595df5f9_0d3e1616",
+      "revId": "a9db24b1475658d755e506c8105d2506c6406d99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9909de63_05e964c5",
         "filename": "android/override_module.go",
         "patchSetId": 5
@@ -50,6 +86,24 @@
       "revId": "a9db24b1475658d755e506c8105d2506c6406d99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "283a79e3_287478eb",
+        "filename": "android/override_module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-19T23:16:59Z",
+      "side": 1,
+      "message": "I intentionally did this to finish all override actions before DepsMutator so that properties that add dependencies to other modules (e.g. certificate) can be overridden.",
+      "parentUuid": "9909de63_05e964c5",
+      "revId": "a9db24b1475658d755e506c8105d2506c6406d99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "34a88be0_2bb52506",
+        "filename": "android/override_module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-19T23:16:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69cf51f2_f78e6e88",
+      "range": {
+        "startLine": 172,
+        "startChar": 28,
+        "endLine": 172,
+        "endChar": 55
+      },
+      "revId": "a9db24b1475658d755e506c8105d2506c6406d99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0d38668c_7e4c198a",
         "filename": "android/override_module.go",
         "patchSetId": 5
@@ -96,6 +174,30 @@
       "revId": "a9db24b1475658d755e506c8105d2506c6406d99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b80ba7c4_ee665dec",
+        "filename": "android/override_module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-19T23:16:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d38668c_7e4c198a",
+      "range": {
+        "startLine": 173,
+        "startChar": 5,
+        "endLine": 173,
+        "endChar": 8
+      },
+      "revId": "a9db24b1475658d755e506c8105d2506c6406d99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
