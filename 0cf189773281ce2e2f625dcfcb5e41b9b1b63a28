@@ -56,6 +56,24 @@
       "revId": "0cf189773281ce2e2f625dcfcb5e41b9b1b63a28",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47114883_023cfbb3",
+        "filename": "cc/config/clang.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2019-03-19T04:18:53Z",
+      "side": 1,
+      "message": "One project in internal master needs to suppress the warning in its build file. I\u0027ll remove these lines once the switch-over gets merged to internal and the project specific warning suppression is added.",
+      "parentUuid": "e1b8674d_91100a35",
+      "revId": "0cf189773281ce2e2f625dcfcb5e41b9b1b63a28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
