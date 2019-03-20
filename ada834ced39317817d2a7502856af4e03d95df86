@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5928144c_7ba6067b",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-03-20T16:47:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "600da7e0_54722a04",
+      "revId": "ada834ced39317817d2a7502856af4e03d95df86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "abc15949_98583f5b",
         "filename": "apex/apex.go",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2019-03-20T16:08:38Z",
       "side": 1,
       "message": "if len(noticeFiles) \u003e **1**?",
+      "revId": "ada834ced39317817d2a7502856af4e03d95df86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1b07f90_07ecf955",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-03-20T16:47:31Z",
+      "side": 1,
+      "message": "When len(noticeFiles) \u003d\u003d 1, we could just copy noticeFiles[0] to a.mergedNoticeFile, but apexMergeNoticeRule can actually handle that case too. I don\u0027t want to have an unnecessary branch.",
+      "parentUuid": "abc15949_98583f5b",
       "revId": "ada834ced39317817d2a7502856af4e03d95df86",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -68,6 +104,24 @@
       "revId": "ada834ced39317817d2a7502856af4e03d95df86",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "455a76cf_26b72f68",
+        "filename": "scripts/mergenotice.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-03-20T16:47:31Z",
+      "side": 1,
+      "message": "Yeah I did, but that one critically assumes that input NOTICE files are all found in the same directory, which can\u0027t be true for our case. I could amend the script to accept input files as positional parameters, but it will only complicate the script without giving much benefit.\n\nIn addition, I don\u0027t think the duplicate check routine should be the same. set() used here is good enough to detect duplicate. I frankly think the use of md5 hash in the script is a little bit overkill.\n\nI\u0027ve update the comment.\n\n---------------\nFor the second comment:\n\nTo generate-notice-files.py, individual files inside an APEX aren\u0027t visible. It only sees a big APEX having multiple licenses.\n\nIt looks like you want to reveal them all, which I don\u0027t think necessary. We don\u0027t do that for other packing formats like APK either.",
+      "parentUuid": "9124c60a_dc331e12",
+      "revId": "ada834ced39317817d2a7502856af4e03d95df86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
