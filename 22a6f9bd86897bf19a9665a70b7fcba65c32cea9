@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a6f15d2_1fca7324",
+        "filename": "java/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2019-03-20T12:59:44Z",
+      "side": 1,
+      "message": "do we ever sanity-check the entries in this list, or is test suite names entirely freeform?",
+      "range": {
+        "startLine": 103,
+        "startChar": 16,
+        "endLine": 103,
+        "endChar": 27
+      },
+      "revId": "22a6f9bd86897bf19a9665a70b7fcba65c32cea9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
