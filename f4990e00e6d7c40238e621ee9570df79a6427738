@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8d0c7737_0fb8dbbb",
+        "filename": "android/override_module.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-20T17:29:59Z",
+      "side": 1,
+      "message": "The \"overrides\" here means the regular plain LOCAL_OVERRIDES_PACKAGES overrides, so this is the only way. It got me thinking though. Do we want to change the name of these modules to (say) InheritModule and InheritableModule to avoid confusion? WDYT?",
+      "parentUuid": "111724ed_84d5b804",
+      "revId": "f4990e00e6d7c40238e621ee9570df79a6427738",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4504a1f4_216a4dff",
         "filename": "android/override_module.go",
         "patchSetId": 6
@@ -39,6 +57,30 @@
       "revId": "f4990e00e6d7c40238e621ee9570df79a6427738",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36ed8bfb_89a88e83",
+        "filename": "android/override_module.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-20T17:29:59Z",
+      "side": 1,
+      "message": "Thanks! Good to know. Done.",
+      "parentUuid": "4504a1f4_216a4dff",
+      "range": {
+        "startLine": 212,
+        "startChar": 50,
+        "endLine": 212,
+        "endChar": 77
+      },
+      "revId": "f4990e00e6d7c40238e621ee9570df79a6427738",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
