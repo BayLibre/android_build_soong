@@ -16,6 +16,24 @@
       "revId": "3b0b057c9dd5e862af41e43d372e0557985811e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da1ef350_482df86d",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2019-03-20T14:35:12Z",
+      "side": 1,
+      "message": "I originally had \"outer: for _, d :\u003d ...\" but gofmt produced this output instead. Maybe a boolean would be cleaner?",
+      "parentUuid": "76df30bf_0fc0d61f",
+      "revId": "3b0b057c9dd5e862af41e43d372e0557985811e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
