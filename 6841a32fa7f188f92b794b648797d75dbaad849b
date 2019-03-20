@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b852086_20b173a8",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-20T06:26:41Z",
+      "side": 1,
+      "message": "-j is the default, leave it out",
+      "range": {
+        "startLine": 702,
+        "startChar": 18,
+        "endLine": 702,
+        "endChar": 20
+      },
+      "revId": "6841a32fa7f188f92b794b648797d75dbaad849b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac0bfd13_1fed23dc",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-20T06:26:41Z",
+      "side": 1,
+      "message": "suggest m instead of make",
+      "range": {
+        "startLine": 702,
+        "startChar": 13,
+        "endLine": 702,
+        "endChar": 17
+      },
+      "revId": "6841a32fa7f188f92b794b648797d75dbaad849b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
