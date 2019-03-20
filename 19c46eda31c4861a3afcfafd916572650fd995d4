@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1b679019_fbf6b6eb",
+        "filename": "cc/binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-20T18:13:43Z",
+      "side": 1,
+      "message": "It sounds fine to me :-). I restructure the sentence to make it sound better (???). Let me know what you think.",
+      "parentUuid": "9d9323a3_20568e54",
+      "range": {
+        "startLine": 60,
+        "startChar": 13,
+        "endLine": 60,
+        "endChar": 54
+      },
+      "revId": "19c46eda31c4861a3afcfafd916572650fd995d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "582e780f_d243bbc2",
         "filename": "cc/cc.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "19c46eda31c4861a3afcfafd916572650fd995d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9842f1f_2cc2c430",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1957,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-20T18:13:43Z",
+      "side": 1,
+      "message": "Done. Added that merging may not be possible.",
+      "parentUuid": "582e780f_d243bbc2",
+      "range": {
+        "startLine": 1955,
+        "startChar": 43,
+        "endLine": 1957,
+        "endChar": 36
+      },
+      "revId": "19c46eda31c4861a3afcfafd916572650fd995d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
