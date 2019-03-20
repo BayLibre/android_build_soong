@@ -158,6 +158,24 @@
       "revId": "ada834ced39317817d2a7502856af4e03d95df86",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0952ebb0_9d9895ec",
+        "filename": "scripts/mergenotice.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-20T23:18:31Z",
+      "side": 1,
+      "message": "generate-notice-files.py is agnostic to modules. It just collects all .txt files under a given directory, dedups/merges them, and output it to a given out directory in a given format. It\u0027s notice_files.mk that finds and copies NOTICE files to the directory you mentioned.\nhttp://cs/aosp-master/build/make/core/notice_files.mk?l\u003d88\u0026rcl\u003d299d782ecd517ade1765e13ad98eba6814eb55d9\n\nThe problem is notice_files.mk assumes there\u0027s zero or one notice file for each module, so updating it to handle multiple notice files may be trickier than it may seem. Which is why I don\u0027t feel too strong about this. I still think handling all dedup/merge works in one place is ideal, though.",
+      "parentUuid": "76d75740_950f3ce0",
+      "revId": "ada834ced39317817d2a7502856af4e03d95df86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
