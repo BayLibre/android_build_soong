@@ -34,6 +34,24 @@
       "revId": "3b0b057c9dd5e862af41e43d372e0557985811e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ecc79a9_1712250a",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-20T14:39:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "da1ef350_482df86d",
+      "revId": "3b0b057c9dd5e862af41e43d372e0557985811e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
