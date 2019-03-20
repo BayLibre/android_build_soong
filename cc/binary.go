@@ -57,13 +57,14 @@ func init() {
 	android.RegisterModuleType("cc_binary_host", binaryHostFactory)
 }
 
-// Module factory for binaries
+// cc_binary produces a binary that is runnable on a device.
 func BinaryFactory() android.Module {
 	module, _ := NewBinary(android.HostAndDeviceSupported)
 	return module.Init()
 }
 
-// Module factory for host binaries
+// cc_binary_host produces a binary that is runnable on a host. The binary is
+// built based on the defined properties.
 func binaryHostFactory() android.Module {
 	module, _ := NewBinary(android.HostSupported)
 	return module.Init()
