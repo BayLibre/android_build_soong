@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d9323a3_20568e54",
+        "filename": "cc/binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-20T15:12:37Z",
+      "side": 1,
+      "message": "Is the grammar correct here? It sounds weird to me, but what do I know? :)",
+      "range": {
+        "startLine": 60,
+        "startChar": 13,
+        "endLine": 60,
+        "endChar": 54
+      },
+      "revId": "19c46eda31c4861a3afcfafd916572650fd995d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "582e780f_d243bbc2",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1957,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-20T15:12:37Z",
+      "side": 1,
+      "message": "This would be easier to understand in a form like this?\n\n\"Properties that exist in both modules are merged, when possible, by prepending the defaults module\u0027s values to the depending module\u0027s values.\"\n\nAnyway, we should note that merging is not always possible.",
+      "range": {
+        "startLine": 1955,
+        "startChar": 43,
+        "endLine": 1957,
+        "endChar": 36
+      },
+      "revId": "19c46eda31c4861a3afcfafd916572650fd995d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
