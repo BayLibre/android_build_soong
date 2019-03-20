@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "600da7e0_54722a04",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-20T16:08:38Z",
+      "side": 1,
+      "message": "How about \u0027combinedNoticeFile\u0027 or \u0027mergedNoticeFile\u0027 to avoid confusion?",
+      "revId": "ada834ced39317817d2a7502856af4e03d95df86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abc15949_98583f5b",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-20T16:08:38Z",
+      "side": 1,
+      "message": "if len(noticeFiles) \u003e **1**?",
+      "revId": "ada834ced39317817d2a7502856af4e03d95df86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9124c60a_dc331e12",
+        "filename": "scripts/mergenotice.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-20T16:08:38Z",
+      "side": 1,
+      "message": "Have you thought about using build/make/tools/generate-notice-files.py instead? I\u0027m okay with adding this one because generate-notice-files.py will probably add an additional step in your use case, though. If you decide to keep this script, please consider adding a comment about its limited use case, i.e. should not be used for the final output, and using the same duplicate check logic as generate-notice-files.py\u0027s.",
+      "revId": "ada834ced39317817d2a7502856af4e03d95df86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
