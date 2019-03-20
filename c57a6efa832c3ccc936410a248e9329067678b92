@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "0e2d291a_a96396f6",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-03-20T10:30:11Z",
+      "side": 1,
+      "message": "Generally I agree, yes it\u0027d always be a good practice to think about adding new variants. I just took a look overall scripts, and found that refactoring will be quite tough, especially due to inconsistency with public scope. So one question: will we ever need other variations?\n\nI\u0027ll continue thinking about how to re-structure this. Let me clean up with separate commit.",
+      "parentUuid": "1c3edae6_c7ddba31",
+      "range": {
+        "startLine": 681,
+        "startChar": 23,
+        "endLine": 681,
+        "endChar": 55
+      },
+      "revId": "c57a6efa832c3ccc936410a248e9329067678b92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec81c49d_8c5e0f5a",
         "filename": "java/sdk_library.go",
         "patchSetId": 3
