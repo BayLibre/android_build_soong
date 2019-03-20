@@ -65,31 +65,41 @@ func init() {
 	android.RegisterModuleType("cc_benchmark_host", BenchmarkHostFactory)
 }
 
-// Module factory for tests
+// cc_test generates a test config file and an executable binary file to test
+// specific functionality on a device. The executable binary gets an implicit
+// static_libs dependency on libgtests unless the gtest flag is set to false.
 func TestFactory() android.Module {
 	module := NewTest(android.HostAndDeviceSupported)
 	return module.Init()
 }
 
-// Module factory for test libraries
+// cc_test_library creates an archive of files (i.e. .o files) which is later
+// referenced by another module (such as cc_test, cc_defaults or cc_test_library)
+// for archiving or linking.
 func TestLibraryFactory() android.Module {
 	module := NewTestLibrary(android.HostAndDeviceSupported)
 	return module.Init()
 }
 
-// Module factory for benchmarks
+// cc_benchmark compiles an executable binary that performs benchmark testing
+// of a specific component in a device. Additional files such as test suites
+// and test configuration are installed on the side of the compiled executed
+// binary.
 func BenchmarkFactory() android.Module {
 	module := NewBenchmark(android.HostAndDeviceSupported)
 	return module.Init()
 }
 
-// Module factory for host tests
+// cc_test_host compiles a test host binary.
 func TestHostFactory() android.Module {
 	module := NewTest(android.HostSupported)
 	return module.Init()
 }
 
-// Module factory for host benchmarks
+// cc_benchmark_host compiles an executable binary that performs benchmark
+// testing of a specific component in the host. Additional files such as
+// test suites and test configuration are installed on the side of the
+// compiled executed binary.
 func BenchmarkHostFactory() android.Module {
 	module := NewBenchmark(android.HostSupported)
 	return module.Init()
@@ -253,7 +263,7 @@ func (test *testBinary) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 }
 
 func (test *testBinary) install(ctx ModuleContext, file android.Path) {
-	test.data = ctx.ExpandSources(test.Properties.Data, nil)
+	test.data = android.PathsForModuleSrc(ctx, test.Properties.Data)
 	optionsMap := map[string]string{}
 	if Bool(test.testDecorator.Properties.Isolated) {
 		optionsMap["not-shardable"] = "true"
@@ -378,7 +388,7 @@ func (benchmark *benchmarkDecorator) linkerDeps(ctx DepsContext, deps Deps) Deps
 }
 
 func (benchmark *benchmarkDecorator) install(ctx ModuleContext, file android.Path) {
-	benchmark.data = ctx.ExpandSources(benchmark.Properties.Data, nil)
+	benchmark.data = android.PathsForModuleSrc(ctx, benchmark.Properties.Data)
 	benchmark.testConfig = tradefed.AutoGenNativeBenchmarkTestConfig(ctx, benchmark.Properties.Test_config,
 		benchmark.Properties.Test_config_template, benchmark.Properties.Test_suites)
 
