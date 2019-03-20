@@ -140,6 +140,24 @@
       "revId": "ada834ced39317817d2a7502856af4e03d95df86",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76d75740_950f3ce0",
+        "filename": "scripts/mergenotice.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-03-20T22:59:31Z",
+      "side": 1,
+      "message": "generate-notice-files.py associates a module and its license file by looking at $(PRODUCT_OUT)/obj/NOTICE_FILES/src directory. If there is a file system/foo/bar/file.ext.txt under the directory then the file is assumed to be the license file for system/foo/bar/file.ext\n\nSince what we are installing is a big APK, not individual files in it, $(PRODUCT_OUT)/obj/NOTICE_FILES/src/system/apex/com.android.xxx.apex.txt should be the notice file for the APEX. We can\u0027t have multiple notice files for the single APEX... because path to the file encodes the associated file on the device.\n\nDan, do you have any comment? I thought this is what you suggested.",
+      "parentUuid": "a59907e5_8fa8d5fb",
+      "revId": "ada834ced39317817d2a7502856af4e03d95df86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
