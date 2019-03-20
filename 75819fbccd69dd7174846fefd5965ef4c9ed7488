@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1ac48b8_f87ad375",
+        "filename": "android/namespace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-20T15:21:13Z",
+      "side": 1,
+      "message": "contain",
+      "range": {
+        "startLine": 359,
+        "startChar": 30,
+        "endLine": 359,
+        "endChar": 38
+      },
+      "revId": "75819fbccd69dd7174846fefd5965ef4c9ed7488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1b0c5f7_6bca973a",
+        "filename": "android/namespace.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-20T15:21:13Z",
+      "side": 1,
+      "message": "I think this is technically incorrect, i.e. it should be something like \"they or their parent directory modules contain another soong_namespace\", but am not sure how to phrase it concisely or whether that level of details is required. Up to you.",
+      "range": {
+        "startLine": 388,
+        "startChar": 21,
+        "endLine": 388,
+        "endChar": 73
+      },
+      "revId": "75819fbccd69dd7174846fefd5965ef4c9ed7488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
