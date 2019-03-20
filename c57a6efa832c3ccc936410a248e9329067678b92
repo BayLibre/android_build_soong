@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "1c3edae6_c7ddba31",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2019-03-20T10:01:43Z",
+      "side": 1,
+      "message": "well they\u0027re enumerated in a bazillion places in this file one way or another (this particular format only once). I guess my point is there\u0027s a good amount of enumerations in this file that could be converted to loops with some re-structuring, which would make it much less error prone to add a new variant.\n\nThe separate script seems like a particularly likely place to miss adding new variants.",
+      "parentUuid": "dd142c81_c923a9aa",
+      "range": {
+        "startLine": 681,
+        "startChar": 23,
+        "endLine": 681,
+        "endChar": 55
+      },
+      "revId": "c57a6efa832c3ccc936410a248e9329067678b92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec81c49d_8c5e0f5a",
         "filename": "java/sdk_library.go",
         "patchSetId": 3
