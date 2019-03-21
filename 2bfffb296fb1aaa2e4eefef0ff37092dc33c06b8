@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2852a02_86b0923e",
+        "filename": "android/override_module.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-21T20:09:18Z",
+      "side": 1,
+      "message": "This doesn\u0027t get set by InitOverrideableModule (which also suggests it could use a test)",
+      "revId": "2bfffb296fb1aaa2e4eefef0ff37092dc33c06b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07248466_66ac4ac3",
+        "filename": "java/app.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-21T20:09:18Z",
+      "side": 1,
+      "message": "This can be removed",
+      "revId": "2bfffb296fb1aaa2e4eefef0ff37092dc33c06b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
