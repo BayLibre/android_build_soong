@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "45b9dff9_558db671",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-21T22:06:38Z",
+      "side": 1,
+      "message": "I don\u0027t know. I didn\u0027t write this, but had no problem understanding what \u0027generates\u0027 means when I first read this. As a matter of fact, \u0027defines\u0027 kind of feels weird to me in this case, but it might be because I know the implementation details.\n\nI can ask native English speakers if you feel strongly about this.",
+      "parentUuid": "d9ca4530_5b71f507",
+      "range": {
+        "startLine": 184,
+        "startChar": 27,
+        "endLine": 184,
+        "endChar": 33
+      },
+      "revId": "0f31b2e419444354e2927e72776dcb4347449c10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "935ffef8_809011ac",
         "filename": "java/prebuilt_apis.go",
         "patchSetId": 1
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "Is this the largest of the version numbers in `api_dirs`? I am asking because vendor/google/media/mca/prebuilts/Android.bp contains \n    api_dirs: [ \"28\", \"current\",],\nwill \u0027\u003cmodule\u003e-api.\u003cscope\u003e.latest\u0027 be the same is \u0027\u003cmodule\u003e-api.\u003cscope\u003e.28\u0027?\nBTW, there is no current/ subdirectory under vendor/google/media/mca/prebuilts, I guess there will be no filegroup \u0027\u003cmodule\u003e-api.\u003cscope\u003e.current\u0027 at all?",
       "parentUuid": "96ed87e6_35f6e4ce",
+      "range": {
+        "startLine": 189,
+        "startChar": 63,
+        "endLine": 189,
+        "endChar": 64
+      },
+      "revId": "0f31b2e419444354e2927e72776dcb4347449c10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "044dc6b6_aacd92f7",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-21T22:06:38Z",
+      "side": 1,
+      "message": "They\u0027ll be the same as \u0027current\u0027.\n\nHowever, if there isn\u0027t a \u0027current\u0027 directory, there\u0027ll be no \u0027current\u0027 filegroups and the latest ones will be the same as \u002728\u0027.",
+      "parentUuid": "4dbb7375_ae9606ee",
       "range": {
         "startLine": 189,
         "startChar": 63,
