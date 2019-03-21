@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5bff3707_04854ea0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-03-21T17:38:16Z",
+      "side": 1,
+      "message": "s/sypnosis/synopsis/",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "2c4f9ce01021bba975865e32513acde819875840",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76195029_5e129d9d",
+        "filename": "cc/binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-03-21T17:38:16Z",
+      "side": 1,
+      "message": "* \"executable to a device\"?\n* Every module is built based on the defined properties, so IMHO the second sentence is redundant. The same  applies to the cc_binary_host below.",
+      "revId": "2c4f9ce01021bba975865e32513acde819875840",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05b48483_dfbcdd1c",
+        "filename": "cc/test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-03-21T17:38:16Z",
+      "side": 1,
+      "message": "Perhaps it\u0027s worth explaining the difference between cc_binary and cc_test?",
+      "range": {
+        "startLine": 68,
+        "startChar": 22,
+        "endLine": 68,
+        "endChar": 26
+      },
+      "revId": "2c4f9ce01021bba975865e32513acde819875840",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ef3017d_29054211",
+        "filename": "cc/test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-03-21T17:38:16Z",
+      "side": 1,
+      "message": "What does \"archive of compiled list of source code files\" mean? Is it an archive of source files?",
+      "range": {
+        "startLine": 74,
+        "startChar": 30,
+        "endLine": 74,
+        "endChar": 37
+      },
+      "revId": "2c4f9ce01021bba975865e32513acde819875840",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
