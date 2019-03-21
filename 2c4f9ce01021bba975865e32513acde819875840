@@ -60,6 +60,24 @@
     },
     {
       "key": {
+        "uuid": "1efe83f7_2394b70b",
+        "filename": "cc/binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-03-21T19:33:56Z",
+      "side": 1,
+      "message": "I am not a native speaker, but \"is executable to a device\" sounds wrong. Maybe \"runnable on a device\"?",
+      "parentUuid": "f3473863_a86608f9",
+      "revId": "2c4f9ce01021bba975865e32513acde819875840",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "05b48483_dfbcdd1c",
         "filename": "cc/test.go",
         "patchSetId": 4
