@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "f3473863_a86608f9",
+        "filename": "cc/binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-21T17:56:06Z",
+      "side": 1,
+      "message": "\"executable to a device\" -\u003e We have cc_binary_host and cc_binary. cc_binary, isn\u0027it it a binary that eventually goes to a device? A device means Android Auto, phone, wearable devices, etc...\n\nRemoved the second sentence for both cc_binary_host and cc_binary.",
+      "parentUuid": "76195029_5e129d9d",
+      "revId": "2c4f9ce01021bba975865e32513acde819875840",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "05b48483_dfbcdd1c",
         "filename": "cc/test.go",
         "patchSetId": 4
@@ -53,6 +71,30 @@
       "writtenOn": "2019-03-21T17:38:16Z",
       "side": 1,
       "message": "Perhaps it\u0027s worth explaining the difference between cc_binary and cc_test?",
+      "range": {
+        "startLine": 68,
+        "startChar": 22,
+        "endLine": 68,
+        "endChar": 26
+      },
+      "revId": "2c4f9ce01021bba975865e32513acde819875840",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a34ada03_75df2717",
+        "filename": "cc/test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-21T17:56:06Z",
+      "side": 1,
+      "message": "I don\u0027t have enough context on a difference between cc_binary and cc_test. Is cc_test binaries are used for test infra?",
+      "parentUuid": "05b48483_dfbcdd1c",
       "range": {
         "startLine": 68,
         "startChar": 22,
@@ -85,6 +127,30 @@
       "revId": "2c4f9ce01021bba975865e32513acde819875840",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c822d31_2e07dcb1",
+        "filename": "cc/test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-21T17:56:06Z",
+      "side": 1,
+      "message": "Ah. Up to now, I assumed that archive file (.a) contained the obj files. It can also contain additional files. Fixed the sentence.",
+      "parentUuid": "6ef3017d_29054211",
+      "range": {
+        "startLine": 74,
+        "startChar": 30,
+        "endLine": 74,
+        "endChar": 37
+      },
+      "revId": "2c4f9ce01021bba975865e32513acde819875840",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
