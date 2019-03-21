@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d12fbb0_acc9b624",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-03-21T09:33:32Z",
+      "side": 1,
+      "message": "you can just omit this condition. len(x) returns 0 if x is nil",
+      "range": {
+        "startLine": 671,
+        "startChar": 4,
+        "endLine": 671,
+        "endChar": 51
+      },
+      "revId": "9dcf8b21374317c2c93cdb77c9c5d8e899a6ff1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
