@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "4275d9dd_2c57219f",
+        "filename": "cc/binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-21T14:59:06Z",
+      "side": 1,
+      "message": "FWIW, I wasn\u0027t sure whether \u0027produces ... to a device\u0027 makes sense.",
+      "parentUuid": "1b679019_fbf6b6eb",
+      "range": {
+        "startLine": 60,
+        "startChar": 13,
+        "endLine": 60,
+        "endChar": 54
+      },
+      "revId": "19c46eda31c4861a3afcfafd916572650fd995d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "582e780f_d243bbc2",
         "filename": "cc/cc.go",
         "patchSetId": 2
