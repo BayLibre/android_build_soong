@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7c0c9da4_fcdde73f",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-21T20:14:35Z",
+      "side": 1,
+      "message": "I think the meta prefix is self-explanatory enough for our target audience.\n\nhttps://stackoverflow.com/questions/1130031/what-does-word-meta-mean\nhttps://www.webopedia.com/TERM/M/meta.html",
+      "parentUuid": "8a34f454_0799ef3b",
+      "range": {
+        "startLine": 184,
+        "startChar": 27,
+        "endLine": 184,
+        "endChar": 33
+      },
+      "revId": "0f31b2e419444354e2927e72776dcb4347449c10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "935ffef8_809011ac",
         "filename": "java/prebuilt_apis.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "545ccdd3_2e8cb6dd",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-21T20:14:35Z",
+      "side": 1,
+      "message": "See the above line, \"an API file located at ./\u003cver\u003e/\u003cscope\u003e/api/\u003cmodule\u003e.txt\".",
+      "parentUuid": "935ffef8_809011ac",
+      "range": {
+        "startLine": 187,
+        "startChar": 47,
+        "endLine": 187,
+        "endChar": 50
+      },
+      "revId": "0f31b2e419444354e2927e72776dcb4347449c10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e5e49de_b56cfbac",
         "filename": "java/prebuilt_apis.go",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "0f31b2e419444354e2927e72776dcb4347449c10",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96ed87e6_35f6e4ce",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-21T20:14:35Z",
+      "side": 1,
+      "message": "I think it\u0027s a typo of \u0027latest\u0027. \u0027latest\u0027 and \u0027last\u0027 can have very different meanings when used with \u0027version\u0027. Done.",
+      "parentUuid": "6e5e49de_b56cfbac",
+      "range": {
+        "startLine": 189,
+        "startChar": 63,
+        "endLine": 189,
+        "endChar": 64
+      },
+      "revId": "0f31b2e419444354e2927e72776dcb4347449c10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
