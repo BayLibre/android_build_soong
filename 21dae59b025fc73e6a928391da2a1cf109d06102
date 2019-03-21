@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9e9643a_6bbe9233",
+        "filename": "cc/binary.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-03-21T22:33:22Z",
+      "side": 1,
+      "message": "This one still has \u0027The binary is built based on the defined properties.\u0027",
+      "range": {
+        "startLine": 66,
+        "startChar": 56,
+        "endLine": 66,
+        "endChar": 57
+      },
+      "revId": "21dae59b025fc73e6a928391da2a1cf109d06102",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
