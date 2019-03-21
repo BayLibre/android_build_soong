@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "457c683c_4712b511",
+        "filename": "apex/key.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-21T17:16:21Z",
+      "side": 1,
+      "message": "This is a deprecated wrapper around android.PathForModuleSrc now, just call that directly",
+      "range": {
+        "startLine": 75,
+        "startChar": 26,
+        "endLine": 75,
+        "endChar": 38
+      },
+      "revId": "d9a5d135ea10868b4857ca3ff2381350f1899bbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
