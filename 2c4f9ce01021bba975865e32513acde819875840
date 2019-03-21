@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "94b3042a_507ba0cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-21T22:42:10Z",
+      "side": 1,
+      "message": "I updated the one in line 9 and missed this one. opps.",
+      "parentUuid": "6993c273_8829d64d",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "2c4f9ce01021bba975865e32513acde819875840",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76195029_5e129d9d",
         "filename": "cc/binary.go",
         "patchSetId": 4
