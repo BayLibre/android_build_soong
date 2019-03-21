@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6b2a3598_888f062c",
+        "filename": "android/override_module.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-21T19:44:00Z",
+      "side": 1,
+      "message": "Done. I removed OverridesGetter since it\u0027s no longer needed.",
+      "parentUuid": "23255363_0e051af3",
+      "revId": "3a81bd51ed53105eed9554f30ad4a0308e8b3153",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e5ab5688_36bb8083",
         "filename": "android/override_module.go",
         "patchSetId": 9
@@ -33,6 +51,24 @@
       "revId": "3a81bd51ed53105eed9554f30ad4a0308e8b3153",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e04ff3c_c60b88e2",
+        "filename": "android/override_module.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-21T19:44:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5ab5688_36bb8083",
+      "revId": "3a81bd51ed53105eed9554f30ad4a0308e8b3153",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
