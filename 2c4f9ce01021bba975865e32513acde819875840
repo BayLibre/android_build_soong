@@ -107,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "059b7d94_736cdeed",
+        "filename": "cc/test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-21T18:16:40Z",
+      "side": 1,
+      "message": "Added more details on what cc_test which will differentiate of what cc_binary is.",
+      "parentUuid": "a34ada03_75df2717",
+      "range": {
+        "startLine": 68,
+        "startChar": 22,
+        "endLine": 68,
+        "endChar": 26
+      },
+      "revId": "2c4f9ce01021bba975865e32513acde819875840",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ef3017d_29054211",
         "filename": "cc/test.go",
         "patchSetId": 4
