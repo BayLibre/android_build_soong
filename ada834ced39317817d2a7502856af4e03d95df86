@@ -212,6 +212,24 @@
       "revId": "ada834ced39317817d2a7502856af4e03d95df86",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37a6a702_e4db4481",
+        "filename": "scripts/mergenotice.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-03-21T01:47:23Z",
+      "side": 1,
+      "message": "Cool, thanks both!",
+      "parentUuid": "cec62bb5_d5d143bb",
+      "revId": "ada834ced39317817d2a7502856af4e03d95df86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
