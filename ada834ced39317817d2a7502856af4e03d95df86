@@ -194,6 +194,24 @@
       "revId": "ada834ced39317817d2a7502856af4e03d95df86",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cec62bb5_d5d143bb",
+        "filename": "scripts/mergenotice.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-21T01:25:33Z",
+      "side": 1,
+      "message": "Discussed this with dwillemsen@, and he pointed out apex_bundles are standalone packages, so there\u0027s no point in trying to dedup their notice files with others. This should work just fine, then.",
+      "parentUuid": "7a22cb99_0d349537",
+      "revId": "ada834ced39317817d2a7502856af4e03d95df86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
