@@ -668,11 +668,13 @@ func SdkLibraryMutator(mctx android.TopDownMutatorContext) {
 }
 
 func (module *SdkLibrary) createInternalModules(mctx android.TopDownMutatorContext) {
-	if module.Library.Module.properties.Srcs == nil {
+	if module.Library.Module.properties.Srcs == nil ||
+		len(module.Library.Module.properties.Srcs) == 0 {
 		mctx.PropertyErrorf("srcs", "java_sdk_library must specify srcs")
 	}
 
-	if module.sdkLibraryProperties.Api_packages == nil {
+	if module.sdkLibraryProperties.Api_packages == nil ||
+		len(module.sdkLibraryProperties.Api_packages) == 0 {
 		mctx.PropertyErrorf("api_packages", "java_sdk_library must specify api_packages")
 	}
 
