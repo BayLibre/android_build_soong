@@ -78,6 +78,24 @@
     },
     {
       "key": {
+        "uuid": "e06b48b1_d0f87ad3",
+        "filename": "cc/binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-21T22:22:30Z",
+      "side": 1,
+      "message": "either one works for me. I followed your advice.",
+      "parentUuid": "1efe83f7_2394b70b",
+      "revId": "2c4f9ce01021bba975865e32513acde819875840",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05b48483_dfbcdd1c",
         "filename": "cc/test.go",
         "patchSetId": 4
