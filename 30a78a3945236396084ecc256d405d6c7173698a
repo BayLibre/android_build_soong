@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2884dbd7_547b90e9",
+        "filename": "ui/status/ninja.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-03-21T23:51:33Z",
+      "side": 1,
+      "message": "This could use time.After instead of a custom implementation",
+      "revId": "30a78a3945236396084ecc256d405d6c7173698a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
