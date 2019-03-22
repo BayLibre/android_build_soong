@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88d01186_f108b7d2",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-22T00:05:29Z",
+      "side": 1,
+      "message": "nit: text",
+      "range": {
+        "startLine": 185,
+        "startChar": 7,
+        "endLine": 185,
+        "endChar": 10
+      },
+      "revId": "02612ad82a9283162912280fd80497830217ae59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0e2e52a_ba969fd0",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-22T00:05:29Z",
+      "side": 1,
+      "message": "Specifically",
+      "range": {
+        "startLine": 186,
+        "startChar": 3,
+        "endLine": 186,
+        "endChar": 14
+      },
+      "revId": "02612ad82a9283162912280fd80497830217ae59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4f5f2f0_7599c16f",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-22T00:05:29Z",
+      "side": 1,
+      "message": "Nit: prebuilt_apis also creates \u003cmodule\u003e-api.\u003cscope\u003e.latest file for the latest \u003cver\u003e.",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 68
+      },
+      "revId": "02612ad82a9283162912280fd80497830217ae59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
