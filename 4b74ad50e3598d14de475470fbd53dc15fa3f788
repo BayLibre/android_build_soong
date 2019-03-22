@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f2ad558_6d442ace",
+        "filename": "apex/key.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-22T02:06:46Z",
+      "side": 1,
+      "message": "Same here",
+      "revId": "4b74ad50e3598d14de475470fbd53dc15fa3f788",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
