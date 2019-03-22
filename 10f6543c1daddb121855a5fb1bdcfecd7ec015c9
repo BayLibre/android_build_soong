@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6165d9dc_68d6cd97",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-22T00:13:14Z",
+      "side": 1,
+      "message": "s/then/,/",
+      "range": {
+        "startLine": 225,
+        "startChar": 44,
+        "endLine": 225,
+        "endChar": 48
+      },
+      "revId": "10f6543c1daddb121855a5fb1bdcfecd7ec015c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
