@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3658988c_ec031476",
+        "filename": "android/namespace.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-25T18:09:15Z",
+      "side": 1,
+      "message": "Modules in a soong_namespace",
+      "range": {
+        "startLine": 390,
+        "startChar": 47,
+        "endLine": 390,
+        "endChar": 70
+      },
+      "revId": "b7e329f73a196aae222b2ed23eb68ff2825c5f78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
