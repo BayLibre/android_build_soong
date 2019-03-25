@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4e35e285_9fbb50ff",
+        "filename": "android/namespace.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-25T17:19:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dc757e4_3d43f656",
+      "range": {
+        "startLine": 388,
+        "startChar": 63,
+        "endLine": 388,
+        "endChar": 70
+      },
+      "revId": "c8b86b5e256abaaebe1c3a90d6864c28a9278255",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f27c4e23_066d322d",
         "filename": "android/namespace.go",
         "patchSetId": 5
@@ -107,6 +131,30 @@
       "side": 1,
       "message": "The last sentence came from Colin.",
       "parentUuid": "1d871151_2a400b34",
+      "range": {
+        "startLine": 390,
+        "startChar": 63,
+        "endLine": 390,
+        "endChar": 79
+      },
+      "revId": "c8b86b5e256abaaebe1c3a90d6864c28a9278255",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e8452b4_aa2fb81f",
+        "filename": "android/namespace.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-25T17:19:27Z",
+      "side": 1,
+      "message": "Had an offline discussion about \"can also be used\". Our main concern is that in order to use a particular soong_namespace, we need to make it visible by adding the path in the PRODUCT_SOONG_NAMESPACE makefile variable. Reworded the sentence a bit. PTAL.",
+      "parentUuid": "98f6054e_bc7c7121",
       "range": {
         "startLine": 390,
         "startChar": 63,
