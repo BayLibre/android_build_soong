@@ -83,7 +83,8 @@ func (lto *lto) flags(ctx BaseModuleContext, flags Flags) Flags {
 	if lto.LTO() {
 		var ltoFlag string
 		if Bool(lto.Properties.Lto.Thin) {
-			ltoFlag = "-flto=thin -fsplit-lto-unit"
+			ltoFlag = "-flto=thin"
+
 		} else {
 			ltoFlag = "-flto"
 		}
