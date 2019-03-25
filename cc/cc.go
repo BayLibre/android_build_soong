@@ -243,6 +243,7 @@ type VendorProperties struct {
 type ModuleContextIntf interface {
 	static() bool
 	staticBinary() bool
+	header() bool
 	toolchain() config.Toolchain
 	useSdk() bool
 	sdkVersion() string
@@ -254,6 +255,8 @@ type ModuleContextIntf interface {
 	isVndk() bool
 	isVndkSp() bool
 	isVndkExt() bool
+	isPrebuilt() bool
+	isToolchainLibrary() bool
 	inRecovery() bool
 	shouldCreateVndkSourceAbiDump() bool
 	selectedStl() string
@@ -563,6 +566,20 @@ func (c *Module) mustUseVendorVariant() bool {
 	return c.isVndkSp() || inList(c.Name(), config.VndkMustUseVendorVariantList)
 }
 
+func (c *Module) isPrebuilt() bool {
+	if _, ok := c.linker.(*prebuiltLibraryLinker); ok {
+		return true
+	}
+	return false
+}
+
+func (c *Module) isToolchainLibrary() bool {
+	if _, ok := c.linker.(*toolchainLibraryDecorator); ok {
+		return true
+	}
+	return false
+}
+
 func (c *Module) getVndkExtendsModuleName() string {
 	if vndkdep := c.vndkdep; vndkdep != nil {
 		return vndkdep.getVndkExtendsModuleName()
@@ -649,6 +666,10 @@ func (ctx *moduleContextImpl) staticBinary() bool {
 	return ctx.mod.staticBinary()
 }
 
+func (ctx *moduleContextImpl) header() bool {
+	return ctx.mod.header()
+}
+
 func (ctx *moduleContextImpl) useSdk() bool {
 	if ctx.ctx.Device() && !ctx.useVndk() && !ctx.inRecovery() && !ctx.ctx.Fuchsia() {
 		return String(ctx.mod.Properties.Sdk_version) != ""
@@ -716,6 +737,14 @@ func (ctx *moduleContextImpl) isVndkExt() bool {
 
 func (ctx *moduleContextImpl) mustUseVendorVariant() bool {
 	return ctx.mod.mustUseVendorVariant()
+}
+
+func (ctx *moduleContextImpl) isPrebuilt() bool {
+	return ctx.mod.isPrebuilt()
+}
+
+func (ctx *moduleContextImpl) isToolchainLibrary() bool {
+	return ctx.mod.isToolchainLibrary()
 }
 
 func (ctx *moduleContextImpl) inRecovery() bool {
@@ -1900,6 +1929,15 @@ func (c *Module) staticBinary() bool {
 		staticBinary() bool
 	}); ok {
 		return static.staticBinary()
+	}
+	return false
+}
+
+func (c *Module) header() bool {
+	if static, ok := c.linker.(interface {
+		header() bool
+	}); ok {
+		return static.header()
 	}
 	return false
 }
