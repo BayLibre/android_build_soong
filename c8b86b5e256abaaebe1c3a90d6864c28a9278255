@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f27c4e23_066d322d",
+        "filename": "android/namespace.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-25T14:41:54Z",
+      "side": 1,
+      "message": "its",
+      "range": {
+        "startLine": 389,
+        "startChar": 43,
+        "endLine": 389,
+        "endChar": 47
+      },
+      "revId": "c8b86b5e256abaaebe1c3a90d6864c28a9278255",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d871151_2a400b34",
+        "filename": "android/namespace.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-25T14:41:54Z",
+      "side": 1,
+      "message": "I thought selecting namespaces with PRODUCT_SOONG_NAMESPACES variables is the whole point of using namespaces? Can you check with Dan and/or Colin?",
+      "range": {
+        "startLine": 390,
+        "startChar": 63,
+        "endLine": 390,
+        "endChar": 79
+      },
+      "revId": "c8b86b5e256abaaebe1c3a90d6864c28a9278255",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
