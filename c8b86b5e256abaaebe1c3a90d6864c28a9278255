@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7dc757e4_3d43f656",
+        "filename": "android/namespace.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-03-25T16:39:54Z",
+      "side": 1,
+      "message": "s/defeined/define/",
+      "range": {
+        "startLine": 388,
+        "startChar": 63,
+        "endLine": 388,
+        "endChar": 70
+      },
+      "revId": "c8b86b5e256abaaebe1c3a90d6864c28a9278255",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f27c4e23_066d322d",
         "filename": "android/namespace.go",
         "patchSetId": 5
