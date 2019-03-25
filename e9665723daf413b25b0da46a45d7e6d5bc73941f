@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50efe66b_82068489",
+        "filename": "cc/lto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2019-03-25T23:15:25Z",
+      "side": 0,
+      "message": "We should probably be removing this possibility entirely from the build system, although maybe it makes sense to leave it for Q (so people can debug problems).",
+      "range": {
+        "startLine": 109,
+        "startChar": 33,
+        "endLine": 109,
+        "endChar": 44
+      },
+      "revId": "e9665723daf413b25b0da46a45d7e6d5bc73941f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
