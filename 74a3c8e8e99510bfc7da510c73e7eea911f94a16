@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5341175d_15994af1",
+        "filename": "cc/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-26T16:45:11Z",
+      "side": 1,
+      "message": "By default this only creates libraries for the device, but supports enabling them for the host with host_supported: true (and disabling them for the device with device_supported: false, but that\u0027s pretty rare).  The java_library module documentation words this as:\n\njava_library builds and links sources into a `.jar` file for the device, and possibly for the host as well. By default, a java_library has a single variant that produces a `.jar` file containing `.class` files that were compiled against the device bootclasspath. \u003ctrimmed\u003e  Specifying `host_supported: true` will produce two variants, one compiled against the device bootclasspath and one compiled against the host bootclasspath.",
+      "parentUuid": "e9435b11_5ce89183",
+      "range": {
+        "startLine": 156,
+        "startChar": 68,
+        "endLine": 156,
+        "endChar": 71
+      },
+      "revId": "74a3c8e8e99510bfc7da510c73e7eea911f94a16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ce02e167_a404b254",
         "filename": "cc/library.go",
         "patchSetId": 4
