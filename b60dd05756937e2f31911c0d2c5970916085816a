@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e95cadb_75e055ed",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-26T17:55:17Z",
+      "side": 1,
+      "message": "Add \"The\" in front of package to keep it more consistent with line 81.\n\n\"If not given, the one in the manifest file is used.\" -\u003e Does this way sound better: The package name in the manifest file is used if one was not given\"?",
+      "revId": "b60dd05756937e2f31911c0d2c5970916085816a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
