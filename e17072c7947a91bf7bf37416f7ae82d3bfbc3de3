@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "946d2914_81281957",
+        "filename": "cc/object.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-26T18:16:23Z",
+      "side": 1,
+      "message": "How about:\n\n// cc_object runs the compiler without running the linker.  It is rarely necessary,\n// but sometimes used to generate .s files from .c files to use as an input to\n// a cc_genrule module.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 75
+      },
+      "revId": "e17072c7947a91bf7bf37416f7ae82d3bfbc3de3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
