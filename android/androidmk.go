@@ -161,6 +161,10 @@ func (a *AndroidMkEntries) fillInEntries(config Config, bpPath string, mod bluep
 		}
 	}
 
+	if amod.Target().NativeBridge {
+		a.SubName += ".native_bridge"
+	}
+
 	fmt.Fprintln(&a.header, "\ninclude $(CLEAR_VARS)")
 
 	// Collect make variable assignment entries.
@@ -190,7 +194,23 @@ func (a *AndroidMkEntries) fillInEntries(config Config, bpPath string, mod bluep
 	case Device:
 		// Make cannot identify LOCAL_MODULE_TARGET_ARCH:= common.
 		if archStr != "common" {
-			a.SetString("LOCAL_MODULE_TARGET_ARCH", archStr)
+			if amod.Target().NativeBridge {
+				// TODO: Unhardcode these rules.
+				guestArchStr := archStr
+				hostArchStr := ""
+				if guestArchStr == "arm" {
+					hostArchStr = "x86"
+				} else if guestArchStr == "arm64" {
+					hostArchStr = "x86_64"
+				}
+
+				if hostArchStr != "" {
+					a.SetString("LOCAL_MODULE_TARGET_ARCH", hostArchStr)
+					a.SetString("LOCAL_MODULE_NATIVE_BRIDGE", "true")
+				}
+			} else {
+				a.SetString("LOCAL_MODULE_TARGET_ARCH", archStr)
+			}
 		}
 
 		a.AddStrings("LOCAL_INIT_RC", amod.commonProperties.Init_rc...)
