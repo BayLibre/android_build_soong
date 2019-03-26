@@ -122,7 +122,13 @@ func syspropLibraryHook(ctx android.LoadHookContext, m *syspropLibrary) {
 		Soc_specific     *bool
 		Device_specific  *bool
 		Product_specific *bool
-		Sysprop          struct {
+		Shared           struct {
+			Shared_libs []string
+		}
+		Static struct {
+			Whole_static_libs []string
+		}
+		Sysprop struct {
 			Platform *bool
 		}
 	}{}
@@ -131,6 +137,8 @@ func syspropLibraryHook(ctx android.LoadHookContext, m *syspropLibrary) {
 	ccProps.Soc_specific = proptools.BoolPtr(socSpecific)
 	ccProps.Device_specific = proptools.BoolPtr(deviceSpecific)
 	ccProps.Product_specific = proptools.BoolPtr(productSpecific)
+	ccProps.Shared.Shared_libs = []string{"libbase"}
+	ccProps.Static.Whole_static_libs = []string{"libbase"}
 	ccProps.Sysprop.Platform = proptools.BoolPtr(owner == "Platform")
 
 	ctx.CreateModule(android.ModuleFactoryAdaptor(cc.LibraryFactory), &m.commonProperties, &ccProps)

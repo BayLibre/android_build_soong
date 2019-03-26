@@ -225,10 +225,6 @@ func (compiler *baseCompiler) compilerDeps(ctx DepsContext, deps Deps) Deps {
 		deps = protoDeps(ctx, deps, &compiler.Proto, Bool(compiler.Properties.Proto.Static))
 	}
 
-	if compiler.hasSrcExt(".sysprop") {
-		deps.SharedLibs = append(deps.SharedLibs, "libbase")
-	}
-
 	if Bool(compiler.Properties.Openmp) {
 		deps.StaticLibs = append(deps.StaticLibs, "libomp")
 	}

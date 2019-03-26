@@ -249,12 +249,14 @@ func TestSyspropLibrary(t *testing.T) {
 		cc_library {
 			name: "cc-client-platform",
 			srcs: ["d.cpp"],
+			shared_libs: ["liblog"],
 			static_libs: ["sysprop-platform"],
 		}
 
 		cc_library_static {
 			name: "cc-client-platform-static",
 			srcs: ["d.cpp"],
+			shared_libs: ["liblog"],
 			whole_static_libs: ["sysprop-platform"],
 		}
 
@@ -262,6 +264,7 @@ func TestSyspropLibrary(t *testing.T) {
 			name: "cc-client-product",
 			srcs: ["d.cpp"],
 			product_specific: true,
+			shared_libs: ["liblog"],
 			static_libs: ["sysprop-platform-on-product", "sysprop-vendor"],
 		}
 
@@ -269,6 +272,7 @@ func TestSyspropLibrary(t *testing.T) {
 			name: "cc-client-vendor",
 			srcs: ["d.cpp"],
 			soc_specific: true,
+			shared_libs: ["liblog"],
 			static_libs: ["sysprop-platform", "sysprop-vendor"],
 		}
 		`)
