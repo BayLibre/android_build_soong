@@ -22,6 +22,30 @@
       "revId": "7446606eeb9994fabc62201031d604081c7c3aac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e27485c_970b6490",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-03-26T07:51:03Z",
+      "side": 0,
+      "message": "isn\u0027t needed if we use .sysprop files only with sysprop_library, and we don\u0027t directly include them as srcs in cc modules (cc_library, cc_binary, etc.)",
+      "parentUuid": "d94a7beb_746eadc4",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 0
+      },
+      "revId": "7446606eeb9994fabc62201031d604081c7c3aac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
