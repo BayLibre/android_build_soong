@@ -16,6 +16,24 @@
       "revId": "4980f411a80ba349a90b18cd3ba389aa35c91692",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db4fffe0_a7ff768a",
+        "filename": "android/namespace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-26T16:09:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "881727c6_76959bbd",
+      "revId": "4980f411a80ba349a90b18cd3ba389aa35c91692",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
