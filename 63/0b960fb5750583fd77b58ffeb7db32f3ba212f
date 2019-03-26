@@ -1,0 +1,7 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Stephen Hines <srhines@google.com>
+Submitted-by: Yi Kong <yikong@google.com>
+Submitted-at: Tue, 26 Mar 2019 00:02:33 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/932710
+Project: platform/build/soong
+Branch: refs/heads/master
