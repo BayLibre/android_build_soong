@@ -33,6 +33,9 @@ type objectLinker struct {
 	Properties ObjectLinkerProperties
 }
 
+// cc_object generates an object file which is fed to another module for
+// additional processing. Not recommended to use cc_object unless used by crt*.o
+// objects or perform additional propressing (feeding into genrule module).
 func ObjectFactory() android.Module {
 	module := newBaseModule(android.HostAndDeviceSupported, android.MultilibBoth)
 	module.linker = &objectLinker{
