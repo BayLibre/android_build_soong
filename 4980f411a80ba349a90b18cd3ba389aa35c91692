@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "881727c6_76959bbd",
+        "filename": "android/namespace.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-26T01:35:50Z",
+      "side": 1,
+      "message": "its",
+      "revId": "4980f411a80ba349a90b18cd3ba389aa35c91692",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
