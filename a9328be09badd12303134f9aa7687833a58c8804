@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d8b15790_b256065e",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-26T16:15:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e20cb7bd_b02b5324",
+      "range": {
+        "startLine": 163,
+        "startChar": 49,
+        "endLine": 163,
+        "endChar": 53
+      },
+      "revId": "a9328be09badd12303134f9aa7687833a58c8804",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97fe71a7_fb8549f7",
         "filename": "cc/library.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-03-26T15:34:38Z",
       "side": 1,
       "message": "I know we had a somewhat length discussion about this, and you said it felt natural to you as a native speaker last time. But, how you use \u0027to\u0027 in these comments just feels a bit awkward to me. Also, from my cs/ queries, it seems like an uncommon usage in this domain.",
+      "range": {
+        "startLine": 177,
+        "startChar": 51,
+        "endLine": 177,
+        "endChar": 53
+      },
+      "revId": "a9328be09badd12303134f9aa7687833a58c8804",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8f59fe1_1cdada8e",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-26T16:15:47Z",
+      "side": 1,
+      "message": "No problem. Re-worded a bit on this module and the cc_library_host_shared one too.",
+      "parentUuid": "97fe71a7_fb8549f7",
       "range": {
         "startLine": 177,
         "startChar": 51,
