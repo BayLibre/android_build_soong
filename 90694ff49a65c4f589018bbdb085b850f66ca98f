@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca864254_d6c1e294",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-26T21:42:24Z",
+      "side": 1,
+      "message": "nit: I would move this part of the sentence after the explanation. I was confused if this was used only for testing.",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 35
+      },
+      "revId": "90694ff49a65c4f589018bbdb085b850f66ca98f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24b96c65_383bc80c",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-26T21:42:24Z",
+      "side": 1,
+      "message": "for my knowledge: are there cases for unaligned?",
+      "revId": "90694ff49a65c4f589018bbdb085b850f66ca98f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6e11a283_0d9d20b2",
+        "filename": "java/app_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 672,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-26T21:42:24Z",
+      "side": 1,
+      "message": "nit: I usually write my unit test cases as descriptions and not name since it easier to understand what failed: app - not package, not compressed",
+      "range": {
+        "startLine": 672,
+        "startChar": 4,
+        "endLine": 672,
+        "endChar": 7
+      },
+      "revId": "90694ff49a65c4f589018bbdb085b850f66ca98f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
