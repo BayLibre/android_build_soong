@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9435b11_5ce89183",
+        "filename": "cc/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-26T16:41:28Z",
+      "side": 1,
+      "message": "Please use and/or instead.",
+      "range": {
+        "startLine": 156,
+        "startChar": 68,
+        "endLine": 156,
+        "endChar": 71
+      },
+      "revId": "74a3c8e8e99510bfc7da510c73e7eea911f94a16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce02e167_a404b254",
+        "filename": "cc/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-26T16:41:28Z",
+      "side": 1,
+      "message": "nit: This sentence fits in one line.",
+      "revId": "74a3c8e8e99510bfc7da510c73e7eea911f94a16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf4e5026_05d0e110",
+        "filename": "cc/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-26T16:41:28Z",
+      "side": 1,
+      "message": "1. \u0027to\u0027 is still there.\n2. Please use and/or. Some, especially engineers, may interpret \u0027or\u0027 as exclusive.",
+      "revId": "74a3c8e8e99510bfc7da510c73e7eea911f94a16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c27bbb2_c427eb00",
+        "filename": "cc/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-26T16:41:28Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "74a3c8e8e99510bfc7da510c73e7eea911f94a16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
