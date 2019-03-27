@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "055bca03_1bc0cc2a",
+        "filename": "scripts/setup_go_workspace_for_soong.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-27T22:38:12Z",
+      "side": 1,
+      "message": "You are right. After the offline discussion, we still need to refer the common scripts using relative paths. I will slowly chew the cleanup of the bash scripts safely once I get a buy in from Ed.",
+      "parentUuid": "9daa9627_1e732a65",
+      "revId": "827f2455b5319b5c2ba5702ee136a8796b5ce8e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "351a0ef5_46731ee5",
         "filename": "scripts/setup_go_workspace_for_soong.sh",
         "patchSetId": 1
