@@ -1,0 +1,9 @@
+# Test if new file: directive works.
+file: ../scripts/OWNERS
+
+# Current uploader does not check included files yet.
+file: ../dummy/extra.owners
+
+per-file *tidy* = file: ../scripts/OWNERS
+
+per-file *.jave, *.js = file: ../java/java_owners
