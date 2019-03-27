@@ -398,6 +398,10 @@ func dexpreoptCommand(ctx android.PathContext, global GlobalConfig, module Modul
 			compilerFilter = "speed-profile"
 		} else if global.DefaultCompilerFilter != "" {
 			compilerFilter = global.DefaultCompilerFilter
+		} else if strings.HasSuffix(module.DexLocation, ".jar") {
+			// Compile 'speed' shared libraries and .jar files in general.
+			// These are usually used by many apps so useful the share the code.
+			compilerFilter = "speed"
 		} else {
 			compilerFilter = "quicken"
 		}
