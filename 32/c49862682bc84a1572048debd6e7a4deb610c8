@@ -1,0 +1,8 @@
+Code-Review+1: Colin Cross <ccross@android.com>
+Code-Review+2: Chih-hung Hsieh <chh@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Nikita Ioffe <ioffe@google.com>
+Submitted-at: Wed, 27 Mar 2019 10:18:14 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/933824
+Project: platform/build/soong
+Branch: refs/heads/master
