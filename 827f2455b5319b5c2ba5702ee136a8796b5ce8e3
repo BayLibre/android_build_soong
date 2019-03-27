@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "9daa9627_1e732a65",
+        "filename": "scripts/setup_go_workspace_for_soong.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-27T22:03:04Z",
+      "side": 1,
+      "message": "A common shell framework wouldn\u0027t help in this case, because you would need to know the top of the tree to find the common scripts.",
+      "parentUuid": "c99d5353_07959356",
+      "revId": "827f2455b5319b5c2ba5702ee136a8796b5ce8e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "351a0ef5_46731ee5",
         "filename": "scripts/setup_go_workspace_for_soong.sh",
         "patchSetId": 1
