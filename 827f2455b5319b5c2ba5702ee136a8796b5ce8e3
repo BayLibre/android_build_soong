@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "163c57d1_839f40ec",
+        "filename": "scripts/setup_go_workspace_for_soong.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-27T18:13:08Z",
+      "side": 1,
+      "message": "There\u0027s no guarantee that the source tree was managed with repo, some vendors use other tools.  build/make/core/envsetup.sh has a gettop function that looks for \"build/make/core/envsetup.mk\" as the canonical indicator that it is the root of a tree.  Or you can require the caller to have run lunch first, which will set ANDROID_BUILD_TOP to point to the root of the tree.",
+      "revId": "827f2455b5319b5c2ba5702ee136a8796b5ce8e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "351a0ef5_46731ee5",
+        "filename": "scripts/setup_go_workspace_for_soong.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-27T18:13:08Z",
+      "side": 1,
+      "message": "Does this work on darwin too?",
+      "revId": "827f2455b5319b5c2ba5702ee136a8796b5ce8e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
