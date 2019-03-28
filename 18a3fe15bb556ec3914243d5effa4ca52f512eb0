@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e3db383_9cd575ac",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-28T16:13:49Z",
+      "side": 1,
+      "message": "This is just implementation detail and doesn\u0027t really matter to the user. Besides, this may change (depending on how one defines \"the soong\u0027s out directory\" though) in the future as we increase Soong\u0027s roles in the entire build process.",
+      "range": {
+        "startLine": 112,
+        "startChar": 44,
+        "endLine": 112,
+        "endChar": 74
+      },
+      "revId": "18a3fe15bb556ec3914243d5effa4ca52f512eb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6e7f241_10426115",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-28T16:13:49Z",
+      "side": 1,
+      "message": "Any particular reasons to emphasize this only for these prebuilt libraries?",
+      "range": {
+        "startLine": 113,
+        "startChar": 14,
+        "endLine": 114,
+        "endChar": 62
+      },
+      "revId": "18a3fe15bb556ec3914243d5effa4ca52f512eb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
