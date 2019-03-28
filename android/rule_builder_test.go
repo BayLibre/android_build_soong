@@ -375,8 +375,8 @@ func TestRuleBuilder_Build(t *testing.T) {
 			t.Errorf("want Implicits = [%q], got %q", "bar", params.Implicits.Strings())
 		}
 
-		if len(params.Outputs) != 1 || params.Outputs[0].String() != wantOutput {
-			t.Errorf("want Outputs = [%q], got %q", wantOutput, params.Outputs.Strings())
+		if params.Output.String() != wantOutput {
+			t.Errorf("want Output = %q, got %q", wantOutput, params.Output)
 		}
 
 		if !params.RuleParams.Restat {

@@ -171,6 +171,33 @@ func (r *RuleBuilder) Outputs() WritablePaths {
 	return outputList
 }
 
+func (r *RuleBuilder) depFileSet() map[string]WritablePath {
+	depFiles := make(map[string]WritablePath)
+	for _, c := range r.commands {
+		for _, depFile := range c.depFiles {
+			depFiles[depFile.String()] = depFile
+		}
+	}
+	return depFiles
+}
+
+// DepFiles returns the list of paths that were passed to the RuleBuilderCommand methods that take depfile paths, such
+// as RuleBuilderCommand.DepFile or RuleBuilderCommand.FlagWithDepFile.
+func (r *RuleBuilder) DepFiles() WritablePaths {
+	depFiles := r.depFileSet()
+
+	var depFileList WritablePaths
+	for _, depFile := range depFiles {
+		depFileList = append(depFileList, depFile)
+	}
+
+	sort.Slice(depFileList, func(i, j int) bool {
+		return depFileList[i].String() < depFileList[j].String()
+	})
+
+	return depFileList
+}
+
 // Installs returns the list of tuples passed to Install.
 func (r *RuleBuilder) Installs() RuleBuilderInstalls {
 	return append(RuleBuilderInstalls(nil), r.installs...)
@@ -225,6 +252,8 @@ var _ BuilderContext = SingletonContext(nil)
 // Build adds the built command line to the build graph, with dependencies on Inputs and Tools, and output files for
 // Outputs.
 func (r *RuleBuilder) Build(pctx PackageContext, ctx BuilderContext, name string, desc string) {
+	name = ninjaNameEsacpe(name)
+
 	if len(r.missingDeps) > 0 {
 		ctx.Build(pctx, BuildParams{
 			Rule:        ErrorRule,
@@ -237,6 +266,25 @@ func (r *RuleBuilder) Build(pctx PackageContext, ctx BuilderContext, name string
 		return
 	}
 
+	var depFile WritablePath
+	var depFormat blueprint.Deps
+	if depFiles := r.DepFiles(); len(depFiles) == 1 {
+		depFile = depFiles[0]
+		depFormat = blueprint.DepsGCC
+	} else if len(depFiles) > 1 {
+		panic(fmt.Errorf("rule %s %q has more than one depfile", name, desc))
+	}
+
+	// Ninja doesn't like multiple outputs when depfiles are enabled, move all but the first output to
+	// ImplicitOutputs.  RuleBuilder never uses "$out", so the distinction between Outputs and ImplicitOutputs
+	// doesn't matter.
+	var output WritablePath
+	var implicitOutputs WritablePaths
+	if outputs := r.Outputs(); len(outputs) > 0 {
+		output = outputs[0]
+		implicitOutputs = outputs[1:]
+	}
+
 	if len(r.Commands()) > 0 {
 		ctx.Build(pctx, BuildParams{
 			Rule: ctx.Rule(pctx, name, blueprint.RuleParams{
@@ -244,9 +292,12 @@ func (r *RuleBuilder) Build(pctx PackageContext, ctx BuilderContext, name string
 				CommandDeps: r.Tools().Strings(),
 				Restat:      r.restat,
 			}),
-			Implicits:   r.Inputs(),
-			Outputs:     r.Outputs(),
-			Description: desc,
+			Implicits:       r.Inputs(),
+			Output:          output,
+			ImplicitOutputs: implicitOutputs,
+			Depfile:         depFile,
+			Deps:            depFormat,
+			Description:     desc,
 		})
 	}
 }
@@ -256,10 +307,11 @@ func (r *RuleBuilder) Build(pctx PackageContext, ctx BuilderContext, name string
 // RuleBuilderCommand, so they can be used chained or unchained.  All methods that add text implicitly add a single
 // space as a separator from the previous method.
 type RuleBuilderCommand struct {
-	buf     []byte
-	inputs  Paths
-	outputs WritablePaths
-	tools   Paths
+	buf      []byte
+	inputs   Paths
+	outputs  WritablePaths
+	depFiles WritablePaths
+	tools    Paths
 }
 
 // Text adds the specified raw text to the command line.  The text should not contain input or output paths or the
@@ -282,6 +334,15 @@ func (c *RuleBuilderCommand) Textf(format string, a ...interface{}) *RuleBuilder
 // rule will not have them listed in its dependencies or outputs.
 func (c *RuleBuilderCommand) Flag(flag string) *RuleBuilderCommand {
 	return c.Text(flag)
+}
+
+// Flags adds the specified raw text to the command line.  The text should not contain input or output paths or the
+// rule will not have them listed in its dependencies or outputs.
+func (c *RuleBuilderCommand) Flags(flags []string) *RuleBuilderCommand {
+	for _, flag := range flags {
+		return c.Text(flag)
+	}
+	return c
 }
 
 // FlagWithArg adds the specified flag and argument text to the command line, with no separator between them.  The flag
@@ -374,6 +435,14 @@ func (c *RuleBuilderCommand) ImplicitOutputs(paths WritablePaths) *RuleBuilderCo
 	return c
 }
 
+// Depfile adds the specified depfile path to the paths returned by RuleBuilder.DepFiles without modifying
+// the command line, and causes RuleBuilder.Build file to set the depfile flag for ninja.  Only a single
+// DepFile can be added to any command in a single RuleBuilder.
+func (c *RuleBuilderCommand) DepFile(path WritablePath) *RuleBuilderCommand {
+	c.depFiles = append(c.depFiles, path)
+	return c
+}
+
 // FlagWithInput adds the specified flag and input path to the command line, with no separator between them.  The path
 // will also be added to the dependencies returned by RuleBuilder.Inputs.
 func (c *RuleBuilderCommand) FlagWithInput(flag string, path Path) *RuleBuilderCommand {
@@ -406,7 +475,35 @@ func (c *RuleBuilderCommand) FlagWithOutput(flag string, path WritablePath) *Rul
 	return c.Text(flag + path.String())
 }
 
+// FlagWithDepFile adds the specified flag and depfile path to the command line, with no separator between them.  The path
+// will also be added to the outputs returned by RuleBuilder.Outputs.
+func (c *RuleBuilderCommand) FlagWithDepFile(flag string, path WritablePath) *RuleBuilderCommand {
+	c.depFiles = append(c.depFiles, path)
+	return c.Text(flag + path.String())
+}
+
 // String returns the command line.
 func (c *RuleBuilderCommand) String() string {
 	return string(c.buf)
+}
+
+func ninjaNameEsacpe(s string) string {
+	b := []byte(s)
+	escaped := false
+	for i, c := range b {
+		valid := (c >= 'a' && c <= 'z') ||
+			(c >= 'A' && c <= 'Z') ||
+			(c >= '0' && c <= '9') ||
+			(c == '_') ||
+			(c == '-') ||
+			(c == '.')
+		if !valid {
+			b[i] = '_'
+			escaped = true
+		}
+	}
+	if escaped {
+		s = string(b)
+	}
+	return s
 }
