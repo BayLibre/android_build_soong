@@ -80,6 +80,7 @@ var preArch = []RegisterMutatorFunc{
 	RegisterPrebuiltsPreArchMutators,
 	RegisterDefaultsPreArchMutators,
 	RegisterOverridePreArchMutators,
+	registerVisibilityRuleGatherer,
 }
 
 func registerArchMutator(ctx RegisterMutatorsContext) {
@@ -94,6 +95,7 @@ var preDeps = []RegisterMutatorFunc{
 var postDeps = []RegisterMutatorFunc{
 	registerPathDepsMutator,
 	RegisterPrebuiltsPostDepsMutators,
+	registerVisibilityRuleEnforcer,
 	registerNeverallowMutator,
 }
 
@@ -120,6 +122,7 @@ type TopDownMutatorContext interface {
 	Module() Module
 
 	OtherModuleName(m blueprint.Module) string
+	OtherModuleDir(m blueprint.Module) string
 	OtherModuleErrorf(m blueprint.Module, fmt string, args ...interface{})
 	OtherModuleDependencyTag(m blueprint.Module) blueprint.DependencyTag
 
