@@ -55,6 +55,29 @@
     },
     {
       "key": {
+        "uuid": "3bc9a767_e39f1f21",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1303,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-03-28T11:54:42Z",
+      "side": 1,
+      "message": "I am not sure if `android:\"arch_variant\"` can be added here.\n\nFor APEX, we will have multiple prebuilts each of which is for different arches.",
+      "range": {
+        "startLine": 1303,
+        "startChar": 1,
+        "endLine": 1303,
+        "endChar": 11
+      },
+      "revId": "e894bdeb4183da00bf878e99840e330e227d3a82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b5cf68a0_cd19bd59",
         "filename": "apex/apex_test.go",
         "patchSetId": 3
