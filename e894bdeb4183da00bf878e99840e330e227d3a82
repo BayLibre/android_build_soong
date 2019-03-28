@@ -78,6 +78,30 @@
     },
     {
       "key": {
+        "uuid": "66a89e33_22ca36f3",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1303,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-28T14:54:43Z",
+      "side": 1,
+      "message": "I thought about that, but wasn\u0027t sure how we\u0027re gonna group these files. On a second thought, it\u0027s a nice to have since we can use it when we need it. Done.\n\nTo really make this work, I\u0027ll have to change the Multilib type of both apex AND prebuilt_apex. (it\u0027s a prebuilt thing...) Let me update it in a separate change so that we can revert it easily if it causes any trouble.",
+      "parentUuid": "3bc9a767_e39f1f21",
+      "range": {
+        "startLine": 1303,
+        "startChar": 1,
+        "endLine": 1303,
+        "endChar": 11
+      },
+      "revId": "e894bdeb4183da00bf878e99840e330e227d3a82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5cf68a0_cd19bd59",
         "filename": "apex/apex_test.go",
         "patchSetId": 3
