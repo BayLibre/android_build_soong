@@ -108,6 +108,8 @@ func (p *prebuiltLibraryLinker) shared() bool {
 	return p.libraryDecorator.shared()
 }
 
+// cc_prebuilt_library_shared installs the list of precompiled shared libraries
+// that are listed in the srcs property in the target's directory.
 func prebuiltSharedLibraryFactory() android.Module {
 	module, _ := NewPrebuiltSharedLibrary(android.HostAndDeviceSupported)
 	return module.Init()
@@ -133,6 +135,8 @@ func NewPrebuiltSharedLibrary(hod android.HostOrDeviceSupported) (*Module, *libr
 	return module, library
 }
 
+// cc_prebuilt_library_static installs the list of precompiled static libraries
+// that are listed in the srcs property in the target's directory.
 func prebuiltStaticLibraryFactory() android.Module {
 	module, _ := NewPrebuiltStaticLibrary(android.HostAndDeviceSupported)
 	return module.Init()
@@ -193,6 +197,10 @@ func (p *prebuiltBinaryLinker) link(ctx ModuleContext,
 	return nil
 }
 
+// cc_prebuilt_binary installs the list of precompiled executables listed in srcs
+// property in the target's directory. A target can be
+// listed in the srcs properties which can generate an executable file using
+// the genrule module.
 func prebuiltBinaryFactory() android.Module {
 	module, _ := NewPrebuiltBinary(android.HostAndDeviceSupported)
 	return module.Init()
