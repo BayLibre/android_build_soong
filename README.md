@@ -139,6 +139,54 @@ should be a space-separated list of namespaces that Soong export to Make to be
 built by the `m` command. After we have fully converted from Make to Soong, the
 details of enabling namespaces could potentially change.
 
+### Visibility
+
+The `visibility` property on a module controls whether the module can be
+used by other packages. Modules are always visible to other modules declared
+in the same package.
+
+If specified the `visibility` property must contain at least one rule. That
+is because the meaning of an empty list is a little unclear, e.g. it could mean
+no visibility and it could mean public visibility. Requiring at least one rule
+makes the owner's intent clear.
+
+Some of the rules have behavior that is dependent on their package. Those rules
+use _this package_ to refer to the directory containing the `.bp` file that
+contains the rule. Each rule in the property must be in one of the following
+forms:
+* ["//visibility:public"]: Anyone can use this module.
+* ["//visibility:private"]: Only rules in _this package_ can use this module.
+* ["//some/package:__pkg__", "//other/package:__pkg__"]: Only modules in
+`some/package` and `other/package` (defined in `some/package/*.bp` and
+`other/package/*.bp`) have access to this module. Note that sub-packages do not
+have access to the rule; for example, `//some/package/foo:bar` or 
+`//other/package/testing:bla` wouldn't have access. `__pkg__` is a special
+module and must be used verbatim. It represents all of the modules in the
+package.
+* ["//project:__subpackages__", "//other:__subpackages__"]: Only modules in
+packages `project` or `other` or in one of their sub-packages have access to
+this module. For example, `//project:rule`, `//project/library:lib` or 
+`//other/testing/internal:munge` are allowed to depend on this rule (but not
+`//independent:evil`)
+* ["//project"]: This is shorthand for `["//project:__pkg__"]
+* [":__subpackages__"]: This is shorthand for `["//project:__subpackages__"]`
+where `//project` is _this package_. e.g. using it in
+`packages/apps/Settings/Android.bp` is equivalent to
+`//packages/apps/Settings:__subpackages__`.
+* ["//visibility:legacy_public"]: The default visibility, behaves as
+`//visibility:public` for now. It is an error if it is used in a module.  
+
+The visibility rules of `//visibility:public` and `//visibility:private` can
+not be combined with any other visibility specifications. 
+
+If a module does not specify the `visibility` property the module is
+`//visibility:legacy_public`. Once the build has been completely switched over to
+soong it is possible that a global refactoring will be done to change this to
+`//visibility:private` at which point all modules that do not currently specify
+a `visibility` property will be updated to have
+`visibility = [//visibility:legacy_public]` added. It will then be the owner's
+responsibility to replace that with a more appropriate visibility. 
+
 ### Formatter
 
 Soong includes a canonical formatter for blueprint files, similar to

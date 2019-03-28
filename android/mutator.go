@@ -94,6 +94,7 @@ var preDeps = []RegisterMutatorFunc{
 var postDeps = []RegisterMutatorFunc{
 	registerPathDepsMutator,
 	RegisterPrebuiltsPostDepsMutators,
+	registerVisibilityMutator,
 	registerNeverallowMutator,
 }
 
@@ -120,6 +121,7 @@ type TopDownMutatorContext interface {
 	Module() Module
 
 	OtherModuleName(m blueprint.Module) string
+	OtherModuleDir(m blueprint.Module) string
 	OtherModuleErrorf(m blueprint.Module, fmt string, args ...interface{})
 	OtherModuleDependencyTag(m blueprint.Module) blueprint.DependencyTag
 
