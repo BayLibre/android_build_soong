@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e46de70b_67381a19",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-28T05:08:47Z",
+      "side": 1,
+      "message": "Only for the ones that call SingleSourcePath. And even for them, the property syntax is strange when you think about it. i.e. the source properties are string lists, but actually accept only one value. This change allows prebuilt modules like prebuilt_apex to have a single string source property, which feels much more natural.\n\nccross@, did you have other goals in mind when you suggested this change via the android_app_import sample change?",
+      "parentUuid": "e4543479_35debab4",
+      "revId": "e894bdeb4183da00bf878e99840e330e227d3a82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5cf68a0_cd19bd59",
         "filename": "apex/apex_test.go",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "e894bdeb4183da00bf878e99840e330e227d3a82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "713c229c_cbe421a2",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1256,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-03-28T05:08:47Z",
+      "side": 1,
+      "message": "I was going to test it in prebuilt_test.go as it\u0027s a common behavior of prebuilt-based modules. It turns out it is already being tested there throughly.",
+      "parentUuid": "b5cf68a0_cd19bd59",
+      "revId": "e894bdeb4183da00bf878e99840e330e227d3a82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
