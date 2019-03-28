@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9bc0c0f_bf9a3fc4",
+        "filename": "android/mutator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-28T15:33:10Z",
+      "side": 1,
+      "message": "This should go at the end of the list, before or after the NeverallowMutator.  PathDeps mutator adds dependencies on modules that use the :module syntax in properties, and we would want visibility to affect those too.",
+      "revId": "33ab2d6f6a0d100df89b0f5e9aae321d3dd4da5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "939428cd_ad806c8f",
+        "filename": "android/visibility.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-28T15:33:10Z",
+      "side": 1,
+      "message": "Using a global here will make testing hard, because all of your tests will accumulate data, and tests run in parallel mean you can just clear it between tests.  Use ctx.Config().Once() to create a sync.Map that is attached to the ctx.",
+      "revId": "33ab2d6f6a0d100df89b0f5e9aae321d3dd4da5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
