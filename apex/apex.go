@@ -1252,7 +1252,7 @@ func ApexBundleFactory(testApex bool) android.Module {
 	module.Prefer32(func(ctx android.BaseModuleContext, base *android.ModuleBase, class android.OsClass) bool {
 		return class == android.Device && ctx.Config().DevicePrefer32BitExecutables()
 	})
-	android.InitAndroidMultiTargetsArchModule(module, android.HostAndDeviceSupported, android.MultilibCommon)
+	android.InitAndroidMultiTargetsArchModule(module, android.HostAndDeviceSupported, android.MultilibFirst)
 	android.InitDefaultableModule(module)
 	return module
 }
@@ -1348,6 +1348,6 @@ func PrebuiltFactory() android.Module {
 	module := &Prebuilt{}
 	module.AddProperties(&module.properties)
 	android.InitSingleSourcePrebuiltModule(module, &module.properties.Src)
-	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibCommon)
+	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibFirst)
 	return module
 }

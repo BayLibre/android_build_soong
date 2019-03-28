@@ -297,7 +297,7 @@ func TestBasicApex(t *testing.T) {
 		}
 	`)
 
-	apexRule := ctx.ModuleForTests("myapex", "android_common_myapex").Rule("apexRule")
+	apexRule := ctx.ModuleForTests("myapex", "android_arm64_armv8-a_myapex").Rule("apexRule")
 	copyCmds := apexRule.Args["copy_commands"]
 
 	// Ensure that main rule creates an output
@@ -334,7 +334,7 @@ func TestBasicApex(t *testing.T) {
 		t.Errorf("Could not find all expected symlinks! foo: %t, foo_link_64: %t. Command was %s", found_foo, found_foo_link_64, copyCmds)
 	}
 
-	apexMergeNoticeRule := ctx.ModuleForTests("myapex", "android_common_myapex").Rule("apexMergeNoticeRule")
+	apexMergeNoticeRule := ctx.ModuleForTests("myapex", "android_arm64_armv8-a_myapex").Rule("apexMergeNoticeRule")
 	noticeInputs := strings.Split(apexMergeNoticeRule.Args["inputs"], " ")
 	if len(noticeInputs) != 3 {
 		t.Errorf("number of input notice files: expected = 3, actual = %d", len(noticeInputs))
@@ -374,7 +374,7 @@ func TestBasicZipApex(t *testing.T) {
 		}
 	`)
 
-	zipApexRule := ctx.ModuleForTests("myapex", "android_common_myapex").Rule("zipApexRule")
+	zipApexRule := ctx.ModuleForTests("myapex", "android_arm64_armv8-a_myapex").Rule("zipApexRule")
 	copyCmds := zipApexRule.Args["copy_commands"]
 
 	// Ensure that main rule creates an output
@@ -443,7 +443,7 @@ func TestApexWithStubs(t *testing.T) {
 		}
 	`)
 
-	apexRule := ctx.ModuleForTests("myapex", "android_common_myapex").Rule("apexRule")
+	apexRule := ctx.ModuleForTests("myapex", "android_arm64_armv8-a_myapex").Rule("apexRule")
 	copyCmds := apexRule.Args["copy_commands"]
 
 	// Ensure that direct non-stubs dep is always included
@@ -517,7 +517,7 @@ func TestApexWithExplicitStubsDependency(t *testing.T) {
 
 	`)
 
-	apexRule := ctx.ModuleForTests("myapex", "android_common_myapex").Rule("apexRule")
+	apexRule := ctx.ModuleForTests("myapex", "android_arm64_armv8-a_myapex").Rule("apexRule")
 	copyCmds := apexRule.Args["copy_commands"]
 
 	// Ensure that direct non-stubs dep is always included
@@ -611,7 +611,7 @@ func TestApexWithSystemLibsStubs(t *testing.T) {
 		}
 	`)
 
-	apexRule := ctx.ModuleForTests("myapex", "android_common_myapex").Rule("apexRule")
+	apexRule := ctx.ModuleForTests("myapex", "android_arm64_armv8-a_myapex").Rule("apexRule")
 	copyCmds := apexRule.Args["copy_commands"]
 
 	// Ensure that mylib, libm, libdl are included.
@@ -704,7 +704,7 @@ func TestFilesInSubDir(t *testing.T) {
 		}
 	`)
 
-	generateFsRule := ctx.ModuleForTests("myapex", "android_common_myapex").Rule("generateFsConfig")
+	generateFsRule := ctx.ModuleForTests("myapex", "android_arm64_armv8-a_myapex").Rule("generateFsConfig")
 	dirs := strings.Split(generateFsRule.Args["exec_paths"], " ")
 
 	// Ensure that the subdirectories are all listed
@@ -757,7 +757,7 @@ func TestUseVendor(t *testing.T) {
 	`)
 
 	inputsList := []string{}
-	for _, i := range ctx.ModuleForTests("myapex", "android_common_myapex").Module().BuildParamsForTests() {
+	for _, i := range ctx.ModuleForTests("myapex", "android_arm64_armv8-a_myapex").Module().BuildParamsForTests() {
 		for _, implicit := range i.Implicits {
 			inputsList = append(inputsList, implicit.String())
 		}
@@ -860,7 +860,7 @@ func TestKeys(t *testing.T) {
 	}
 
 	// check the APK certs. It should be overridden to myapex.certificate.override
-	certs := ctx.ModuleForTests("myapex_keytest", "android_common_myapex_keytest").Rule("signapk").Args["certificates"]
+	certs := ctx.ModuleForTests("myapex_keytest", "android_arm64_armv8-a_myapex_keytest").Rule("signapk").Args["certificates"]
 	if certs != "testkey.override.x509.pem testkey.override.pk8" {
 		t.Errorf("cert and private key %q are not %q", certs,
 			"testkey.override.509.pem testkey.override.pk8")
@@ -981,7 +981,7 @@ func TestNonTestApex(t *testing.T) {
 		}
 	`)
 
-	module := ctx.ModuleForTests("myapex", "android_common_myapex")
+	module := ctx.ModuleForTests("myapex", "android_arm64_armv8-a_myapex")
 	apexRule := module.Rule("apexRule")
 	copyCmds := apexRule.Args["copy_commands"]
 
@@ -1032,7 +1032,7 @@ func TestTestApex(t *testing.T) {
 		}
 	`)
 
-	module := ctx.ModuleForTests("myapex", "android_common_myapex")
+	module := ctx.ModuleForTests("myapex", "android_arm64_armv8-a_myapex")
 	apexRule := module.Rule("apexRule")
 	copyCmds := apexRule.Args["copy_commands"]
 
@@ -1116,7 +1116,7 @@ func TestApexWithTarget(t *testing.T) {
 		}
 	`)
 
-	apexRule := ctx.ModuleForTests("myapex", "android_common_myapex").Rule("apexRule")
+	apexRule := ctx.ModuleForTests("myapex", "android_arm64_armv8-a_myapex").Rule("apexRule")
 	copyCmds := apexRule.Args["copy_commands"]
 
 	// Ensure that main rule creates an output
@@ -1160,7 +1160,7 @@ func TestApexWithShBinary(t *testing.T) {
 		}
 	`)
 
-	apexRule := ctx.ModuleForTests("myapex", "android_common_myapex").Rule("apexRule")
+	apexRule := ctx.ModuleForTests("myapex", "android_arm64_armv8-a_myapex").Rule("apexRule")
 	copyCmds := apexRule.Args["copy_commands"]
 
 	ensureContains(t, copyCmds, "image.apex/bin/script/myscript.sh")
@@ -1190,7 +1190,7 @@ func TestApexInProductPartition(t *testing.T) {
 		}
 	`)
 
-	apex := ctx.ModuleForTests("myapex", "android_common_myapex").Module().(*apexBundle)
+	apex := ctx.ModuleForTests("myapex", "android_arm64_armv8-a_myapex").Module().(*apexBundle)
 	expected := "target/product/test_device/product/apex"
 	actual := apex.installDir.RelPathString()
 	if actual != expected {
@@ -1255,7 +1255,7 @@ func TestPrebuilt(t *testing.T) {
 		}
 	`)
 
-	prebuilt := ctx.ModuleForTests("myapex", "android_common").Module().(*Prebuilt)
+	prebuilt := ctx.ModuleForTests("myapex", "android_arm64_armv8-a").Module().(*Prebuilt)
 
 	// Check if the key module is added as a required module.
 	buf := &bytes.Buffer{}
