@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "26fbe954_e386a32d",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-28T17:00:43Z",
+      "side": 1,
+      "message": "After offline discussion, I was trying to say that I want to install a particular set of libraries based on the target. I thought that out directory is soong\u0027s output directory where the artifacts are installed. Reworded the sentence.",
+      "parentUuid": "2e3db383_9cd575ac",
+      "range": {
+        "startLine": 112,
+        "startChar": 44,
+        "endLine": 112,
+        "endChar": 74
+      },
+      "revId": "18a3fe15bb556ec3914243d5effa4ca52f512eb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6e7f241_10426115",
         "filename": "cc/prebuilt.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "18a3fe15bb556ec3914243d5effa4ca52f512eb0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fa41fe1_96c76627",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-28T17:00:43Z",
+      "side": 1,
+      "message": "Not necessary needed to repeat this info here. I removed it here and the other ones.",
+      "parentUuid": "f6e7f241_10426115",
+      "range": {
+        "startLine": 113,
+        "startChar": 14,
+        "endLine": 114,
+        "endChar": 62
+      },
+      "revId": "18a3fe15bb556ec3914243d5effa4ca52f512eb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
