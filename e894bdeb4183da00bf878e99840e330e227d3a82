@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4543479_35debab4",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-03-28T04:50:00Z",
+      "side": 1,
+      "message": "I don\u0027t think this is a mandatory. We are already ensuring len(*p.srcs) \u003d\u003d 1",
+      "revId": "e894bdeb4183da00bf878e99840e330e227d3a82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5cf68a0_cd19bd59",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1256,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-03-28T04:50:00Z",
+      "side": 1,
+      "message": "It would be nicer if apex {...} of the same name is defined here to check if the prebuilt apex is preferred over the source one.",
+      "revId": "e894bdeb4183da00bf878e99840e330e227d3a82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
