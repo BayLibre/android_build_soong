@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "624d4dca_a1fd3f85",
+        "filename": "cc/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-28T17:30:08Z",
+      "side": 1,
+      "message": "how about \"targets the device\"",
+      "range": {
+        "startLine": 157,
+        "startChar": 60,
+        "endLine": 158,
+        "endChar": 30
+      },
+      "revId": "fa78f5a2f711624b9ccc36d1c644ea0260fa810c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0bc6359_0d248c53",
+        "filename": "cc/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-28T17:30:08Z",
+      "side": 1,
+      "message": "targets the host",
+      "range": {
+        "startLine": 159,
+        "startChar": 18,
+        "endLine": 159,
+        "endChar": 63
+      },
+      "revId": "fa78f5a2f711624b9ccc36d1c644ea0260fa810c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
