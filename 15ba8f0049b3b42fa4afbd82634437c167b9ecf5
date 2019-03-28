@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e78b3a1_15b6cde5",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-28T21:57:15Z",
+      "side": 1,
+      "message": "Move this down with the other blueprint import",
+      "revId": "15ba8f0049b3b42fa4afbd82634437c167b9ecf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9bb7017e_5eb5688a",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1320,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-28T21:57:15Z",
+      "side": 1,
+      "message": "Call ctx.InstallFile, it\u0027s a noop in builds running inside Make, but it will be necessary for Soong-only builds.",
+      "revId": "15ba8f0049b3b42fa4afbd82634437c167b9ecf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75b141da_f88d406f",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1267,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-28T21:57:15Z",
+      "side": 1,
+      "message": "This seems worth splitting out into a helper in android/testing.go that takes a module and returns all of what AndroidMk() generates as a list of lines.  Maybe TestingModule.AndroidMk()?  Could be a followup change.",
+      "range": {
+        "startLine": 1261,
+        "startChar": 1,
+        "endLine": 1267,
+        "endChar": 24
+      },
+      "revId": "15ba8f0049b3b42fa4afbd82634437c167b9ecf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
