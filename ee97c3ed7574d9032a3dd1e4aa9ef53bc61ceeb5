@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb2b510a_1e620fc0",
+        "filename": "android/neverallow_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1472615
+      },
+      "writtenOn": "2019-03-29T10:21:32Z",
+      "side": 0,
+      "message": "GenerateAndroidBuildActions",
+      "revId": "ee97c3ed7574d9032a3dd1e4aa9ef53bc61ceeb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
