@@ -1059,6 +1059,7 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 	}
 
 	var kotlinJars android.Paths
+	javacAnnotationProcessorsEnabled := deps.disableTurbine
 
 	if srcFiles.HasExt(".kt") {
 		// user defined kotlin flags.
@@ -1096,6 +1097,7 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 			// Disable annotation processing in javac, it's already been handled by kapt
 			flags.processorPath = nil
 			flags.processor = ""
+			javacAnnotationProcessorsEnabled = false
 		}
 
 		kotlinJar := android.PathForModuleOut(ctx, "kotlin", jarName)
@@ -1119,7 +1121,8 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 	j.compiledSrcJars = srcJars
 
 	enable_sharding := false
-	if ctx.Device() && !ctx.Config().IsEnvFalse("TURBINE_ENABLED") && !deps.disableTurbine {
+	if ctx.Device() && !ctx.Config().IsEnvFalse("TURBINE_ENABLED") &&
+		!javacAnnotationProcessorsEnabled {
 		if j.properties.Javac_shard_size != nil && *(j.properties.Javac_shard_size) > 0 {
 			enable_sharding = true
 			// Formerly, there was a check here that prevented annotation processors
