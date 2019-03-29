@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "3791e0ba_9a9ca83d",
+        "filename": "android/namespace_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 1472615
+      },
+      "writtenOn": "2019-03-29T13:03:18Z",
+      "side": 0,
+      "message": "func failIfErrored",
+      "revId": "9c6bc37da1dd47ff61e324f2b477e9e3d7a98a99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "124eb2ec_22c38191",
+        "filename": "android/prebuilt_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1472615
+      },
+      "writtenOn": "2019-03-29T13:03:18Z",
+      "side": 0,
+      "message": "func fail",
+      "revId": "9c6bc37da1dd47ff61e324f2b477e9e3d7a98a99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "927815ea_77bb3e30",
         "filename": "python/python_test.go",
         "patchSetId": 3

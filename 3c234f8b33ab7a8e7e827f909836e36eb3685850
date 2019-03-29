@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c655903_e9f444e7",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1472615
+      },
+      "writtenOn": "2019-03-29T13:03:18Z",
+      "side": 1,
+      "message": ",",
+      "range": {
+        "startLine": 76,
+        "startChar": 9,
+        "endLine": 76,
+        "endChar": 36
+      },
+      "revId": "3c234f8b33ab7a8e7e827f909836e36eb3685850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2c85d173_050bebd6",
+        "filename": "android/test_util_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1472615
+      },
+      "writtenOn": "2019-03-29T13:03:18Z",
+      "side": 1,
+      "message": "C",
+      "revId": "3c234f8b33ab7a8e7e827f909836e36eb3685850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

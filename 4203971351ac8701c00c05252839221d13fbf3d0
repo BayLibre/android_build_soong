@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "184a6de5_a2ef439e",
+        "filename": "android/testing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1472615
+      },
+      "writtenOn": "2019-03-29T13:03:18Z",
+      "side": 1,
+      "message": "package android",
+      "revId": "4203971351ac8701c00c05252839221d13fbf3d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08d656c5_cc52790e",
+        "filename": "android/testing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1472615
+      },
+      "writtenOn": "2019-03-29T13:03:18Z",
+      "side": 1,
+      "message": "func NewTestContext",
+      "revId": "4203971351ac8701c00c05252839221d13fbf3d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "acb7e249_11e87b90",
+        "filename": "cc/test_data_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1472615
+      },
+      "writtenOn": "2019-03-29T13:03:18Z",
+      "side": 1,
+      "message": "func newTest",
+      "revId": "4203971351ac8701c00c05252839221d13fbf3d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c6ed80e7_76746700",
         "filename": "cc/test_data_test.go",
         "patchSetId": 5
@@ -13,6 +64,24 @@
       "writtenOn": "2019-03-29T12:32:52Z",
       "side": 1,
       "message": "testDataTest",
+      "revId": "4203971351ac8701c00c05252839221d13fbf3d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54a5887b_e62e7a41",
+        "filename": "cc/test_data_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1472615
+      },
+      "writtenOn": "2019-03-29T13:03:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c6ed80e7_76746700",
       "revId": "4203971351ac8701c00c05252839221d13fbf3d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
