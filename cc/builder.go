@@ -258,7 +258,6 @@ type builderFlags struct {
 	stripAddGnuDebuglink   bool
 	stripUseGnuStrip       bool
 
-	protoDeps        android.Paths
 	proto            android.ProtoFlags
 	protoC           bool
 	protoOptionsFile bool
