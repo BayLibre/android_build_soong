@@ -15,21 +15,31 @@
 package java
 
 import (
+	"strconv"
+
 	"android/soong/android"
 )
 
-func genProto(ctx android.ModuleContext, protoFile android.Path, flags android.ProtoFlags) android.Path {
-	srcJarFile := android.GenPathWithExt(ctx, "proto", protoFile, "srcjar")
-
-	outDir := srcJarFile.ReplaceExtension(ctx, "tmp")
-	depFile := srcJarFile.ReplaceExtension(ctx, "srcjar.d")
+func genProtos(ctx android.ModuleContext, protoFiles android.Paths, flags android.ProtoFlags) android.Path {
+	srcJarFile := android.PathForModuleGen(ctx, "proto.srcjar")
+	outDir := android.PathForModuleGen(ctx, "proto")
 
 	rule := android.NewRuleBuilder()
 
 	rule.Command().Text("rm -rf").Flag(outDir.String())
 	rule.Command().Text("mkdir -p").Flag(outDir.String())
 
-	android.ProtoRule(ctx, rule, protoFile, flags, flags.Deps, outDir, depFile, nil)
+	for i, f := range protoFiles {
+		var depFileName string
+		if i == 0 {
+			depFileName = "proto.srcjar.d"
+		} else {
+			depFileName = "proto.srcjar." + strconv.Itoa(i) + ".d"
+		}
+
+		depFile := android.PathForModuleGen(ctx, depFileName)
+		android.ProtoRule(ctx, rule, f, flags, flags.Deps, outDir, depFile, nil)
+	}
 
 	// Proto generated java files have an unknown package name in the path, so package the entire output directory
 	// into a srcjar.
@@ -40,9 +50,7 @@ func genProto(ctx android.ModuleContext, protoFile android.Path, flags android.P
 		FlagWithArg("-C ", outDir.String()).
 		FlagWithArg("-D ", outDir.String())
 
-	rule.Command().Text("rm -rf").Flag(outDir.String())
-
-	rule.Build(pctx, ctx, "protoc_"+protoFile.Rel(), "protoc "+protoFile.Rel())
+	rule.Build(pctx, ctx, "protoc", "protoc")
 
 	return srcJarFile
 }
