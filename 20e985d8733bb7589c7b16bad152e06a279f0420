@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bea84c81_d6527deb",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-29T17:15:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d11f53f1_00432ef3",
+      "range": {
+        "startLine": 111,
+        "startChar": 39,
+        "endLine": 111,
+        "endChar": 79
+      },
+      "revId": "20e985d8733bb7589c7b16bad152e06a279f0420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b107af83_6782c4c4",
         "filename": "cc/prebuilt.go",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "8b25dda9_c9b3a0a3",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-29T17:15:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b107af83_6782c4c4",
+      "range": {
+        "startLine": 112,
+        "startChar": 47,
+        "endLine": 112,
+        "endChar": 55
+      },
+      "revId": "20e985d8733bb7589c7b16bad152e06a279f0420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81730944_59d565b0",
         "filename": "cc/prebuilt.go",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "20e985d8733bb7589c7b16bad152e06a279f0420",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62bf5b93_78747940",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-29T17:15:42Z",
+      "side": 1,
+      "message": "Makes sense. I added the reworded sentence to the srcs property.",
+      "parentUuid": "81730944_59d565b0",
+      "range": {
+        "startLine": 201,
+        "startChar": 39,
+        "endLine": 203,
+        "endChar": 22
+      },
+      "revId": "20e985d8733bb7589c7b16bad152e06a279f0420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
