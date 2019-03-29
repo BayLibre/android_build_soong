@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b605561c_645325aa",
+        "filename": "python/python_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1472615
+      },
+      "writtenOn": "2019-03-29T12:32:52Z",
+      "side": 1,
+      "message": "func expectErrors",
+      "revId": "9e4e038e6f72250a1537267f0d93d274fda35ee6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d07a89e9_9f097bbd",
+        "filename": "python/python_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1472615
+      },
+      "writtenOn": "2019-03-29T12:32:52Z",
+      "side": 1,
+      "message": "func tearDownBuildEnv",
+      "revId": "9e4e038e6f72250a1537267f0d93d274fda35ee6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
