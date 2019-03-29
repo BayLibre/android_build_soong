@@ -1300,7 +1300,21 @@ type Prebuilt struct {
 
 type PrebuiltProperties struct {
 	// the path to the prebuilt .apex file to import.
-	Src string `android:"arch_variant"`
+	Src  *string
+	Arch struct {
+		Arm struct {
+			Src *string
+		}
+		Arm64 struct {
+			Src *string
+		}
+		X86 struct {
+			Src *string
+		}
+		X86_64 struct {
+			Src *string
+		}
+	}
 
 	// the name of the apex_key module that contains the matching public key to be installed.
 	Key *string
@@ -1316,7 +1330,28 @@ func (p *Prebuilt) DepsMutator(ctx android.BottomUpMutatorContext) {
 
 func (p *Prebuilt) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// TODO(jungjw): Check the key validity.
-	p.inputApex = p.prebuilt.SingleSourcePath(ctx)
+	if len(ctx.MultiTargets()) != 1 {
+		ctx.ModuleErrorf("compile_multilib shouldn't be \"both\" for prebuilt_apex")
+		return
+	}
+	var src string
+	switch ctx.MultiTargets()[0].Arch.ArchType {
+	case android.Arm:
+		src = String(p.properties.Arch.Arm.Src)
+	case android.Arm64:
+		src = String(p.properties.Arch.Arm64.Src)
+	case android.X86:
+		src = String(p.properties.Arch.X86.Src)
+	case android.X86_64:
+		src = String(p.properties.Arch.X86_64.Src)
+	default:
+		ctx.ModuleErrorf("prebuilt_apex does not support %q", ctx.MultiTargets()[0].Arch.String())
+		return
+	}
+	if src == "" {
+		src = String(p.properties.Src)
+	}
+	p.inputApex = android.PathForModuleSrc(ctx, src)
 	p.installDir = android.PathForModuleInstall(ctx, "apex")
 	ctx.InstallFile(p.installDir, ctx.ModuleName()+imageApexSuffix, p.inputApex)
 }
@@ -1348,7 +1383,8 @@ func (p *Prebuilt) AndroidMk() android.AndroidMkData {
 func PrebuiltFactory() android.Module {
 	module := &Prebuilt{}
 	module.AddProperties(&module.properties)
-	android.InitSingleSourcePrebuiltModule(module, &module.properties.Src)
-	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibCommon)
+	// prebuilt.go anyway requires src or srcs to be a valid string.
+	android.InitSingleSourcePrebuiltModule(module, proptools.StringPtr("dummy"))
+	android.InitAndroidMultiTargetsArchModule(module, android.DeviceSupported, android.MultilibCommon)
 	return module
 }
