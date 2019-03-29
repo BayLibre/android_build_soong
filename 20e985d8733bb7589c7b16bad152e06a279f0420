@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d11f53f1_00432ef3",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-29T15:35:56Z",
+      "side": 1,
+      "message": "Despite taking a list property, these modules require exactly one source file to be listed.",
+      "range": {
+        "startLine": 111,
+        "startChar": 39,
+        "endLine": 111,
+        "endChar": 79
+      },
+      "revId": "20e985d8733bb7589c7b16bad152e06a279f0420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b107af83_6782c4c4",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-29T15:35:56Z",
+      "side": 1,
+      "message": "The Makefile\u0027s historically used \"target\" to refer to the device, but we try to use \"device\" in Soong.",
+      "range": {
+        "startLine": 112,
+        "startChar": 47,
+        "endLine": 112,
+        "endChar": 55
+      },
+      "revId": "20e985d8733bb7589c7b16bad152e06a279f0420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81730944_59d565b0",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-29T15:35:56Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem like it needs to be in the synopsis, it could go on the srcs property if you want to document it.  I\u0027d reword it as \"The srcs property can reference a genrule module that generates an executable file\".",
+      "range": {
+        "startLine": 201,
+        "startChar": 39,
+        "endLine": 203,
+        "endChar": 22
+      },
+      "revId": "20e985d8733bb7589c7b16bad152e06a279f0420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
