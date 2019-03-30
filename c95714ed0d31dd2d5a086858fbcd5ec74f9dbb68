@@ -16,6 +16,24 @@
       "revId": "c95714ed0d31dd2d5a086858fbcd5ec74f9dbb68",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a319a8c1_e426cbbf",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1393,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-03-30T06:03:51Z",
+      "side": 1,
+      "message": "Src is a property set by user (when the apex is not arch-specific). I thought overwriting a user-set property is not a good practice.",
+      "parentUuid": "029a31e7_b23eddb1",
+      "revId": "c95714ed0d31dd2d5a086858fbcd5ec74f9dbb68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
