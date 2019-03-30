@@ -46,6 +46,30 @@
       "revId": "9a218a299d5faadcaae84bed94955b2078342dac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "874feecb_fe5c81aa",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1387,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-30T01:26:00Z",
+      "side": 1,
+      "message": "See the check at http://cs/android/build/soong/android/prebuilt.go?l\u003d166\u0026rcl\u003d0727bda73d35bd571b7dc166bcb9ab9985cf04a4.  It\u0027s designed to handle the case where both the source and prebuilt modules exist in the build, the prebuilt is marked preferred, and a prebuilt exists for the device but not for host (or for arm but not x86).  In that case usePrebuilt() should return true for the host and false for the device.  That\u0027s a pretty small corner case though, and maybe it doesn\u0027t matter for apex modules.\n\nTo make it work you need to set p.properties.Srcs sometime between the arch mutator and the prebuilt mutator.  A new mutator would work, or we could add an optional interface that the arch mutator calls for MultiTarget modules.",
+      "parentUuid": "67b8713a_1c9136d8",
+      "range": {
+        "startLine": 1387,
+        "startChar": 48,
+        "endLine": 1387,
+        "endChar": 76
+      },
+      "revId": "9a218a299d5faadcaae84bed94955b2078342dac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
