@@ -22,6 +22,30 @@
       "revId": "9a218a299d5faadcaae84bed94955b2078342dac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67b8713a_1c9136d8",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1387,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-03-30T01:10:31Z",
+      "side": 1,
+      "message": "Sorry, I don\u0027t understand. This module is mutated only for android_common, and not for arm, arm64, etc. So, *src being not empty should be fine?\n\n------\nAssuming I missed something above, what do you think the best way to update *p.properties.Src? Shall I run a post-arch mutator for this module to copy p.properties.Arch.\u003cxxx\u003e.Src to p.properties.Src? Is that what you are saying?",
+      "parentUuid": "c10083f6_efc07b22",
+      "range": {
+        "startLine": 1387,
+        "startChar": 48,
+        "endLine": 1387,
+        "endChar": 76
+      },
+      "revId": "9a218a299d5faadcaae84bed94955b2078342dac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
