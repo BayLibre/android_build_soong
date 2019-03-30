@@ -70,6 +70,30 @@
       "revId": "9a218a299d5faadcaae84bed94955b2078342dac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fe6bf13_a3b210d8",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1387,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-03-30T02:19:19Z",
+      "side": 1,
+      "message": "Thanks. Done.",
+      "parentUuid": "874feecb_fe5c81aa",
+      "range": {
+        "startLine": 1387,
+        "startChar": 48,
+        "endLine": 1387,
+        "endChar": 76
+      },
+      "revId": "9a218a299d5faadcaae84bed94955b2078342dac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
