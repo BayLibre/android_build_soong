@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c10083f6_efc07b22",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1387,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-03-30T00:51:39Z",
+      "side": 1,
+      "message": "This will confuse the checks for p.src !\u003d nil, which is necessary to handle a prebuilt for one arch but not for another arch - an arch variant of a prebuilt module marks itself as disabled if *src \u003d\u003d \"\".  I think you need to update *p.properties.Src for each arch.",
+      "range": {
+        "startLine": 1387,
+        "startChar": 48,
+        "endLine": 1387,
+        "endChar": 76
+      },
+      "revId": "9a218a299d5faadcaae84bed94955b2078342dac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
