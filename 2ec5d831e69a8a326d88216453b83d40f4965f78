@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ebfe925_582e4a6a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-31T19:01:30Z",
+      "side": 1,
+      "message": "I had a hard time parsing this sentence :-S",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 52
+      },
+      "revId": "2ec5d831e69a8a326d88216453b83d40f4965f78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4063999_69665cdd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-31T19:01:30Z",
+      "side": 1,
+      "message": "Unnecessary",
+      "range": {
+        "startLine": 10,
+        "startChar": 38,
+        "endLine": 10,
+        "endChar": 48
+      },
+      "revId": "2ec5d831e69a8a326d88216453b83d40f4965f78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "262ee3fd_c3ca7b67",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-31T19:01:30Z",
+      "side": 1,
+      "message": "update? (no idea what\u0027s the policy on copyright years when updating a src file)",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "2ec5d831e69a8a326d88216453b83d40f4965f78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
