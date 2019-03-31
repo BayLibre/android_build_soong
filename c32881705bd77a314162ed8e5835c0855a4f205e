@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "924ba410_4d3477c6",
+        "filename": "cmd/diff_target_files/diff_target_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-31T19:10:53Z",
+      "side": 1,
+      "message": "Have \"Error\" prefix string to match the other error statements?",
+      "range": {
+        "startLine": 46,
+        "startChar": 26,
+        "endLine": 46,
+        "endChar": 63
+      },
+      "revId": "c32881705bd77a314162ed8e5835c0855a4f205e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dda68d5f_eafb89e7",
+        "filename": "cmd/diff_target_files/diff_target_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-31T19:10:53Z",
+      "side": 1,
+      "message": "s?",
+      "range": {
+        "startLine": 58,
+        "startChar": 50,
+        "endLine": 58,
+        "endChar": 51
+      },
+      "revId": "c32881705bd77a314162ed8e5835c0855a4f205e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "042e5ae0_1ffbbe65",
+        "filename": "cmd/diff_target_files/diff_target_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-03-31T19:10:53Z",
+      "side": 1,
+      "message": "Shouldn\u0027t you close the priZip on line 61 as you can open successfully and then fail to open refZip on line 62.",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 69,
+        "endChar": 16
+      },
+      "revId": "c32881705bd77a314162ed8e5835c0855a4f205e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
