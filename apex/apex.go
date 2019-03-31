@@ -1215,7 +1215,9 @@ func (a *apexBundle) androidMkForType(apexType apexPackaging) android.AndroidMkD
 				fmt.Fprintln(w, "LOCAL_MODULE_PATH :=", filepath.Join("$(OUT_DIR)", a.installDir.RelPathString()))
 				fmt.Fprintln(w, "LOCAL_MODULE_STEM :=", name+apexType.suffix())
 				fmt.Fprintln(w, "LOCAL_UNINSTALLABLE_MODULE :=", !a.installable())
-				fmt.Fprintln(w, "LOCAL_REQUIRED_MODULES :=", String(a.properties.Key))
+				if a.installable() {
+					fmt.Fprintln(w, "LOCAL_REQUIRED_MODULES :=", String(a.properties.Key))
+				}
 				if a.installable() && a.mergedNoticeFile != nil {
 					fmt.Fprintln(w, "LOCAL_NOTICE_FILE :=", a.mergedNoticeFile.String())
 				}
