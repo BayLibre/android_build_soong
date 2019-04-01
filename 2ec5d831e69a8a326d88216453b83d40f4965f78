@@ -118,6 +118,30 @@
       "revId": "2ec5d831e69a8a326d88216453b83d40f4965f78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2587c408_5e50462c",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-01T17:45:40Z",
+      "side": 1,
+      "message": "We usually don\u0027t touch old copyright headers.",
+      "parentUuid": "262ee3fd_c3ca7b67",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "2ec5d831e69a8a326d88216453b83d40f4965f78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
