@@ -172,6 +172,8 @@ func vndkPrebuiltSharedLibrary() *Module {
 	return module
 }
 
+// vndk_prebuilt_shared installs Vendor Native Development kit (VNDK) snapshot
+// shared libraries for system build.
 func vndkPrebuiltSharedFactory() android.Module {
 	module := vndkPrebuiltSharedLibrary()
 	return module.Init()
