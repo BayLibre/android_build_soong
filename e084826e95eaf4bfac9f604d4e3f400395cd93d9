@@ -49,6 +49,29 @@
     },
     {
       "key": {
+        "uuid": "696feca2_409cc602",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2019-04-01T16:23:19Z",
+      "side": 1,
+      "message": "should have some documentation, say that this holds a specification of the set of build targets *to* which the current target is visible? And perhaps refer to visibilityRuleGatherer in visibility.go for more detail?",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 20
+      },
+      "revId": "e084826e95eaf4bfac9f604d4e3f400395cd93d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd848ebc_e5793ab7",
         "filename": "android/visibility.go",
         "patchSetId": 2
@@ -93,6 +116,52 @@
       "revId": "e084826e95eaf4bfac9f604d4e3f400395cd93d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4c043db1_b3612466",
+        "filename": "android/visibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2019-04-01T16:23:19Z",
+      "side": 1,
+      "message": "nit: Might be following be clearer?\n\n// Rule defining which modules a particular build target is visible to.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 18
+      },
+      "revId": "e084826e95eaf4bfac9f604d4e3f400395cd93d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "661b2e86_456ce36b",
+        "filename": "android/visibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2019-04-01T16:23:19Z",
+      "side": 1,
+      "message": "Feels like this documentation belongs in /build/soong/README.md or so?",
+      "range": {
+        "startLine": 129,
+        "startChar": 3,
+        "endLine": 134,
+        "endChar": 2
+      },
+      "revId": "e084826e95eaf4bfac9f604d4e3f400395cd93d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
