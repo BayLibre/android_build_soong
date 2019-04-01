@@ -162,6 +162,29 @@
       "revId": "e084826e95eaf4bfac9f604d4e3f400395cd93d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66144f62_c4984e93",
+        "filename": "android/visibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-04-01T19:12:04Z",
+      "side": 1,
+      "message": "I suggest introducing a separate //visibility:legacy_public to use as default. That to make migration to more restrictive visibilities easier: At some point the default can change to //visibility:private while a machine refactoring tool adds //visibility:legacy_public to all rules. Then packages can be gradually converted to better explicit visibility settings, and we can tell the difference between public (\u003d intentionally made public) and legacy_public (\u003d no conscious decision on visibility).\n\n(This is under the premise that we aim to move away from public visibility by default, which I think is a good goal.)",
+      "range": {
+        "startLine": 141,
+        "startChar": 61,
+        "endLine": 141,
+        "endChar": 72
+      },
+      "revId": "e084826e95eaf4bfac9f604d4e3f400395cd93d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
