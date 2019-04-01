@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6a6a2f3_1aa493e0",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-04-01T16:12:38Z",
+      "side": 1,
+      "message": "ugly, but I guess we don\u0027t have a better alternative...",
+      "range": {
+        "startLine": 402,
+        "startChar": 3,
+        "endLine": 402,
+        "endChar": 65
+      },
+      "revId": "6846ee89b8916f5a1aa184ddca180538a5381e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
