@@ -299,6 +299,10 @@ func TestBasicApex(t *testing.T) {
 	`)
 
 	apexRule := ctx.ModuleForTests("myapex", "android_common_myapex").Rule("apexRule")
+
+	optFlags := apexRule.Args["opt_flags"]
+	ensureContains(t, optFlags, "--pubkey vendor/foo/devkeys/testkey.avbpubkey")
+
 	copyCmds := apexRule.Args["copy_commands"]
 
 	// Ensure that main rule creates an output
