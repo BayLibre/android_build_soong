@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f2405ba8_b802fcbc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-01T15:51:47Z",
+      "side": 1,
+      "message": "See visibilityRuleGatherer function in visibility.go. I added the docs there because it is the code that processes the rules and I don\u0027t know where is the best place to put it to make it visible to all.",
+      "parentUuid": "846e92c0_069dc7d9",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "e084826e95eaf4bfac9f604d4e3f400395cd93d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd848ebc_e5793ab7",
         "filename": "android/visibility.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "e084826e95eaf4bfac9f604d4e3f400395cd93d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2077012c_476b5c13",
+        "filename": "android/visibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-01T15:51:47Z",
+      "side": 1,
+      "message": "See below on visibilityRuleGatherer.",
+      "parentUuid": "fd848ebc_e5793ab7",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 45
+      },
+      "revId": "e084826e95eaf4bfac9f604d4e3f400395cd93d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
