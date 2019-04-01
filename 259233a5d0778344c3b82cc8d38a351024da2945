@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f21c2e21_2be43031",
+        "filename": "cmd/diff_target_files/compare.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-04-01T17:54:27Z",
+      "side": 1,
+      "message": "Maybe it\u0027s worth showing this in git style, e.g.,\nM \u003cfilename\u003e xxx (xxx -\u003e xxx)\nA \u003cfilename\u003e +xxx bytes\nD \u003cfilename\u003e -xxx bytes\n\nThen there can be a single array of ([M|A|D], \u003cZipArtifactFile\u003e) pairs instead of this struct",
+      "range": {
+        "startLine": 52,
+        "startChar": 12,
+        "endLine": 52,
+        "endChar": 13
+      },
+      "revId": "259233a5d0778344c3b82cc8d38a351024da2945",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
