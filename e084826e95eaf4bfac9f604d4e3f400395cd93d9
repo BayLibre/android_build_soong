@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "846e92c0_069dc7d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2019-04-01T15:40:19Z",
+      "side": 1,
+      "message": "Can you please add more details about what \"visibility support\" is and where to go for more information on how it is used?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "e084826e95eaf4bfac9f604d4e3f400395cd93d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd848ebc_e5793ab7",
+        "filename": "android/visibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2019-04-01T15:40:19Z",
+      "side": 1,
+      "message": "Can we have some docs for how to use the visibility rules and what their semantics are?\n\nEg. I\u0027m guessing that \"//libcore\" means \"any build target defined in /libcore or below\" (would it be clearer if the rule was written as \"//libcore/...\"?).\n\nWould \"//libcore:core-tests\" mean \"the \u0027core-tests\u0027 build target defined in a .bp or .mk file that lives directly in /libcore/\"?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 45
+      },
+      "revId": "e084826e95eaf4bfac9f604d4e3f400395cd93d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
