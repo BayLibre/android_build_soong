@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4fdd5580_70222fdb",
+        "filename": "java/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-04-02T14:46:19Z",
+      "side": 1,
+      "message": "I\u0027m wondering if there isn\u0027t a cleaner way of adding the check that doesn\u0027t require this copy, like optionally appending it to the jarjar rule.",
+      "range": {
+        "startLine": 120,
+        "startChar": 5,
+        "endLine": 120,
+        "endChar": 16
+      },
+      "revId": "2eea96538828812d571e42a4422c307af5b27f19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d2a3fe6_b447de39",
+        "filename": "scripts/package-check.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-04-02T14:46:19Z",
+      "side": 1,
+      "message": "Style nit: Most shell scripts I\u0027ve seen in the Android sources use uppercase only for exported environment variables, and lowercase otherwise.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 8
+      },
+      "revId": "2eea96538828812d571e42a4422c307af5b27f19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e93a216d_9705c399",
+        "filename": "scripts/package-check.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-04-02T14:46:19Z",
+      "side": 1,
+      "message": "[[ ${PACKAGE} \u003d */* ]] is perhaps a bit clearer.",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 44
+      },
+      "revId": "2eea96538828812d571e42a4422c307af5b27f19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "861efce6_7c9a811b",
+        "filename": "scripts/package-check.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-04-02T14:46:19Z",
+      "side": 1,
+      "message": "Instead of this I suggest \"set -e\" at the start. Less fuss and it catches all unchecked errors.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 2
+      },
+      "revId": "2eea96538828812d571e42a4422c307af5b27f19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cf8ab32_cb2a5bc2",
+        "filename": "scripts/package-check.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-04-02T14:46:19Z",
+      "side": 1,
+      "message": "[[ ${ZIP_ENTRY} \u003d *.class ]]",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 32
+      },
+      "revId": "2eea96538828812d571e42a4422c307af5b27f19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4054cd64_7c04e048",
+        "filename": "scripts/package-check.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-04-02T14:46:19Z",
+      "side": 1,
+      "message": "[[ ${ZIP_ENTRY} \u003d ${PREFIX}* ]], or maybe even [[ ${ZIP_ENTRY} \u003d ${PREFIX}/* ]] so you can skip explaining the trailing slash above.",
+      "range": {
+        "startLine": 66,
+        "startChar": 9,
+        "endLine": 66,
+        "endChar": 56
+      },
+      "revId": "2eea96538828812d571e42a4422c307af5b27f19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
