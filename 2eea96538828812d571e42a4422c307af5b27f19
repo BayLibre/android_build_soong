@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "3eb6d8fe_6948887f",
+        "filename": "scripts/package-check.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-04-02T15:02:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d2a3fe6_b447de39",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 8
+      },
+      "revId": "2eea96538828812d571e42a4422c307af5b27f19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e93a216d_9705c399",
         "filename": "scripts/package-check.sh",
         "patchSetId": 1
@@ -68,6 +92,30 @@
       "revId": "2eea96538828812d571e42a4422c307af5b27f19",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af30c12f_21ce2eb7",
+        "filename": "scripts/package-check.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-04-02T15:02:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e93a216d_9705c399",
+      "range": {
+        "startLine": 37,
+        "startChar": 5,
+        "endLine": 37,
+        "endChar": 44
+      },
+      "revId": "2eea96538828812d571e42a4422c307af5b27f19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "454205f0_7fd17c75",
+        "filename": "scripts/package-check.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-04-02T15:02:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "861efce6_7c9a811b",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 2
+      },
+      "revId": "2eea96538828812d571e42a4422c307af5b27f19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7cf8ab32_cb2a5bc2",
         "filename": "scripts/package-check.sh",
         "patchSetId": 1
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "b5c76ffc_e2057ca9",
+        "filename": "scripts/package-check.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-04-02T15:02:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cf8ab32_cb2a5bc2",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 62,
+        "endChar": 32
+      },
+      "revId": "2eea96538828812d571e42a4422c307af5b27f19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4054cd64_7c04e048",
         "filename": "scripts/package-check.sh",
         "patchSetId": 1
@@ -137,6 +233,30 @@
       "revId": "2eea96538828812d571e42a4422c307af5b27f19",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "323a42fe_ecc22663",
+        "filename": "scripts/package-check.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-04-02T15:02:33Z",
+      "side": 1,
+      "message": "Done but without the /, so that I do not need to rename \"prefix\" to \"slash_delimited_package\".",
+      "parentUuid": "4054cd64_7c04e048",
+      "range": {
+        "startLine": 66,
+        "startChar": 9,
+        "endLine": 66,
+        "endChar": 56
+      },
+      "revId": "2eea96538828812d571e42a4422c307af5b27f19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
