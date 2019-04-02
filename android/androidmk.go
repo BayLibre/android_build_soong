@@ -38,13 +38,15 @@ type AndroidMkDataProvider interface {
 }
 
 type AndroidMkData struct {
-	Class      string
-	SubName    string
-	DistFile   OptionalPath
-	OutputFile OptionalPath
-	Disabled   bool
-	Include    string
-	Required   []string
+	Class           string
+	SubName         string
+	DistFile        OptionalPath
+	OutputFile      OptionalPath
+	Disabled        bool
+	Include         string
+	Required        []string
+	Host_required   []string
+	Target_required []string
 
 	Custom func(w io.Writer, name, prefix, moduleDir string, data AndroidMkData)
 
@@ -200,6 +202,8 @@ func translateAndroidModule(ctx SingletonContext, w io.Writer, mod blueprint.Mod
 	}
 
 	data.Required = append(data.Required, amod.commonProperties.Required...)
+	data.Host_required = append(data.Host_required, amod.commonProperties.Host_required...)
+	data.Target_required = append(data.Target_required, amod.commonProperties.Target_required...)
 
 	// Make does not understand LinuxBionic
 	if amod.Os() == LinuxBionic {
@@ -270,6 +274,12 @@ func translateAndroidModule(ctx SingletonContext, w io.Writer, mod blueprint.Mod
 
 	if len(data.Required) > 0 {
 		fmt.Fprintln(&data.preamble, "LOCAL_REQUIRED_MODULES := "+strings.Join(data.Required, " "))
+	}
+	if len(data.Host_required) > 0 {
+		fmt.Fprintln(&data.preamble, "LOCAL_HOST_REQUIRED_MODULES := ", strings.Join(data.Host_required, " "))
+	}
+	if len(data.Target_required) > 0 {
+		fmt.Fprintln(&data.preamble, "LOCAL_TARGET_REQUIRED_MODULES := ", strings.Join(data.Target_required, " "))
 	}
 
 	archStr := amod.Arch().ArchType.String()
