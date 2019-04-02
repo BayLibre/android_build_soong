@@ -209,6 +209,30 @@
       "revId": "e084826e95eaf4bfac9f604d4e3f400395cd93d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53a225d4_b7190def",
+        "filename": "android/visibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-04-02T14:11:47Z",
+      "side": 1,
+      "message": "The reason to do it now is that it makes the purpose of //visibility:public clear. It can e.g. encourage users to specify //visibility:public explicitly early on, instead of relying on the default.\n\n\u003e Doing it any earlier would just make the conversion to soong more difficult.\n\nIn what way? (Note that I don\u0027t advocate doing the refactoring step at any particular time.)",
+      "parentUuid": "e3fc92b0_a2dfd385",
+      "range": {
+        "startLine": 141,
+        "startChar": 61,
+        "endLine": 141,
+        "endChar": 72
+      },
+      "revId": "e084826e95eaf4bfac9f604d4e3f400395cd93d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
