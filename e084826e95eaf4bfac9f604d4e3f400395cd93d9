@@ -257,6 +257,30 @@
       "revId": "e084826e95eaf4bfac9f604d4e3f400395cd93d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a02c4a1a_bc44099a",
+        "filename": "android/visibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-04-02T17:26:28Z",
+      "side": 1,
+      "message": "Right, so I\u0027m not saying //visibility:private should be made the default right now, with the requisite refactoring to keep all packages publicly visible.\n\nWhat I am saying is only to pave the way a bit for it by introducing //visibility:legacy_public and make that default instead of //visibility:public. That\u0027s all - no makefile migration troubles there.\n\n\u003e /.../ anymore than say simply advising them.\n\nThat\u0027s one important purpose with adding legacy_public here, because what place is better to advise people than having it in the code and doc comments? Something like:\n\n  //visibility:public - gives all target access explicitly\n  //visibility:legacy_public - gives all target access by legacy -\n                               the default, please don\u0027t use explicitly",
+      "parentUuid": "07db052c_f4281979",
+      "range": {
+        "startLine": 141,
+        "startChar": 61,
+        "endLine": 141,
+        "endChar": 72
+      },
+      "revId": "e084826e95eaf4bfac9f604d4e3f400395cd93d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
