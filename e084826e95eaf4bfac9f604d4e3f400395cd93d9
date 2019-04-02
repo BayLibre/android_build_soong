@@ -185,6 +185,30 @@
       "revId": "e084826e95eaf4bfac9f604d4e3f400395cd93d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3fc92b0_a2dfd385",
+        "filename": "android/visibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-02T13:45:13Z",
+      "side": 1,
+      "message": "I don\u0027t see the point in adding legacy_public now. It provides no advantage over simply not specifying the visibility property altogether. I definitely agree that defaulting to private is better though. We can easily add legacy_public later once everything has been switched to soong. Doing it any earlier would just make the conversion to soong more difficult.",
+      "parentUuid": "66144f62_c4984e93",
+      "range": {
+        "startLine": 141,
+        "startChar": 61,
+        "endLine": 141,
+        "endChar": 72
+      },
+      "revId": "e084826e95eaf4bfac9f604d4e3f400395cd93d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
