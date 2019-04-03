@@ -159,6 +159,9 @@ func (m *headerModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 }
 
+// ndk_headers installs the sets of ndk headers defined in the srcs properties
+// to the sysroot base + "usr/include" + to directory + directory component.
+// ndk_headers requires the license file to be specified.
 func ndkHeadersFactory() android.Module {
 	module := &headerModule{}
 	module.AddProperties(&module.properties)
@@ -278,6 +281,9 @@ func processHeadersWithVersioner(ctx android.ModuleContext, srcDir, outDir andro
 	return timestampFile
 }
 
+// versioned_ndk_headers follows similarity to ndk_headers where each header
+// file in the the from property directory is processed with the bionic
+// versioner tool.
 func versionedNdkHeadersFactory() android.Module {
 	module := &versionedHeaderModule{}
 
@@ -360,6 +366,8 @@ func (m *preprocessedHeadersModule) GenerateAndroidBuildActions(ctx android.Modu
 	}
 }
 
+// preprocessed_ndk_headers preprocess all the ndk headers listed in the srcs
+// property by executing the command defined in the preprocessor property.
 func preprocessedNdkHeadersFactory() android.Module {
 	module := &preprocessedHeadersModule{}
 
