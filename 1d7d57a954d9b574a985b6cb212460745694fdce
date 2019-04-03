@@ -16,6 +16,24 @@
       "revId": "1d7d57a954d9b574a985b6cb212460745694fdce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cf6030b_1f1fab9d",
+        "filename": "cc/vndk_prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-04-03T16:08:08Z",
+      "side": 1,
+      "message": "I decided to follow this format to be more descriptive and more specific (it creates shared libraries). The one mentioned in the properties is not that specific. I decided to paste the example in the synopsis.",
+      "parentUuid": "6fe820cf_e4e76a4c",
+      "revId": "1d7d57a954d9b574a985b6cb212460745694fdce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
