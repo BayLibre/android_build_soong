@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6fe820cf_e4e76a4c",
+        "filename": "cc/vndk_prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-04-03T14:40:37Z",
+      "side": 1,
+      "message": "Why don\u0027t we just reuse the comment for vndkPrebuiltProperties? It even has an example code snippet.",
+      "revId": "1d7d57a954d9b574a985b6cb212460745694fdce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
