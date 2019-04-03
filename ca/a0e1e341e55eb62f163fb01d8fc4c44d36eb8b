@@ -1,0 +1,8 @@
+Autosubmit+1: Colin Cross <ccross@android.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Jaewoong Jung <jungjw@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Wed, 03 Apr 2019 13:53:44 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/938288
+Project: platform/build/soong
+Branch: refs/heads/master
