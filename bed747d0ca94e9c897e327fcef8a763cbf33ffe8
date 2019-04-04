@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "359283ce_b6d32edc",
+        "filename": "cc/ndk_prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-04-04T15:34:50Z",
+      "side": 1,
+      "message": "1. Is it Soong that decided to use the name format? Or, did Soong just follow the existing one?\n2. There isn\u0027t always a file extension.\n3. SDK_VERSION in the path doesn\u0027t really come from the module name.\n4. Please be consistent in use of \"\u003c\u003e\".",
+      "range": {
+        "startLine": 68,
+        "startChar": 15,
+        "endLine": 70,
+        "endChar": 100
+      },
+      "revId": "bed747d0ca94e9c897e327fcef8a763cbf33ffe8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc1d4eba_5309e387",
+        "filename": "cc/ndk_prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-04-04T15:34:50Z",
+      "side": 1,
+      "message": "static",
+      "range": {
+        "startLine": 124,
+        "startChar": 16,
+        "endLine": 124,
+        "endChar": 22
+      },
+      "revId": "bed747d0ca94e9c897e327fcef8a763cbf33ffe8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
