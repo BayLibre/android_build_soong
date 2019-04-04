@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7f6f576_63c2786a",
+        "filename": "android/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-04-04T19:52:26Z",
+      "side": 1,
+      "message": "Can these three lines be\n  if dest, err :\u003d validateSafePath(*amod.commonProperties.Dist.Dest); err !\u003d nil {",
+      "range": {
+        "startLine": 132,
+        "startChar": 12,
+        "endLine": 132,
+        "endChar": 13
+      },
+      "revId": "c75ba5397af7df0533942d93e49f10fe5e6e2bc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d57c00b_b078d028",
+        "filename": "android/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-04-04T19:52:26Z",
+      "side": 1,
+      "message": "It\u0027s harder to read long lines, perhaps limit it to 100 chars?",
+      "range": {
+        "startLine": 191,
+        "startChar": 48,
+        "endLine": 191,
+        "endChar": 52
+      },
+      "revId": "c75ba5397af7df0533942d93e49f10fe5e6e2bc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8ae6eae_2a8bce82",
+        "filename": "android/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-04-04T19:52:26Z",
+      "side": 1,
+      "message": "The body of this function can be written as a single return statement:\n  return !module.Enabled() ||\n    module.commonProperties.SkipInstall || \n    !module.CommonPropreties.NamespaceExportedToMake ||\n    module.Os() \u003d\u003d LinuxBionic\nand then this return statement can be inlined. Saves a dozen lines without sacrificing readability IMHO.",
+      "range": {
+        "startLine": 460,
+        "startChar": 41,
+        "endLine": 460,
+        "endChar": 42
+      },
+      "revId": "c75ba5397af7df0533942d93e49f10fe5e6e2bc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
