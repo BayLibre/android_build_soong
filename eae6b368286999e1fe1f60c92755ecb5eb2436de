@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57b3e6e2_be869947",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1362,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-04-04T23:11:18Z",
+      "side": 1,
+      "message": "p.installFileName \u003d proptools.StringDefault(p.properties.Filename, ctx.ModuleName() + imageApexSuffix) ?",
+      "range": {
+        "startLine": 1359,
+        "startChar": 0,
+        "endLine": 1362,
+        "endChar": 44
+      },
+      "revId": "eae6b368286999e1fe1f60c92755ecb5eb2436de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "123941d8_c05187f3",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1365,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-04-04T23:11:18Z",
+      "side": 1,
+      "message": "I don\u0027t like this part. Can we just trigger an error if it does not ends with .apex?",
+      "range": {
+        "startLine": 1363,
+        "startChar": 0,
+        "endLine": 1365,
+        "endChar": 3
+      },
+      "revId": "eae6b368286999e1fe1f60c92755ecb5eb2436de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d09adf43_863acc78",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1386,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-04-04T23:11:18Z",
+      "side": 1,
+      "message": "This should be p.installFilename",
+      "range": {
+        "startLine": 1386,
+        "startChar": 44,
+        "endLine": 1386,
+        "endChar": 78
+      },
+      "revId": "eae6b368286999e1fe1f60c92755ecb5eb2436de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
