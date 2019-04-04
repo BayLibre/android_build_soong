@@ -1294,8 +1294,9 @@ type Prebuilt struct {
 
 	properties PrebuiltProperties
 
-	inputApex  android.Path
-	installDir android.OutputPath
+	inputApex       android.Path
+	installDir      android.OutputPath
+	installFilename string
 }
 
 type PrebuiltProperties struct {
@@ -1317,6 +1318,10 @@ type PrebuiltProperties struct {
 			Src *string
 		}
 	}
+
+	// Optional name for the installed apex. If unspecified, name of the
+	// module is used as the file name
+	Filename *string
 }
 
 func (p *Prebuilt) DepsMutator(ctx android.BottomUpMutatorContext) {
@@ -1351,7 +1356,15 @@ func (p *Prebuilt) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// TODO(jungjw): Check the key validity.
 	p.inputApex = p.Prebuilt().SingleSourcePath(ctx)
 	p.installDir = android.PathForModuleInstall(ctx, "apex")
-	ctx.InstallFile(p.installDir, ctx.ModuleName()+imageApexSuffix, p.inputApex)
+	if p.properties.Filename == nil {
+		p.installFilename = ctx.ModuleName() + imageApexSuffix
+	} else {
+		p.installFilename = *p.properties.Filename
+		if !strings.HasSuffix(p.installFilename, imageApexSuffix) {
+			p.installFilename = p.installFilename + imageApexSuffix
+		}
+	}
+	ctx.InstallFile(p.installDir, p.installFilename, p.inputApex)
 }
 
 func (p *Prebuilt) Prebuilt() *android.Prebuilt {
