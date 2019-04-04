@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "502f5271_36e6397a",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1207,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-04-04T17:29:46Z",
+      "side": 1,
+      "message": "This is probably not the best file name now. What would be appropriate, Colin?",
+      "range": {
+        "startLine": 1207,
+        "startChar": 15,
+        "endLine": 1207,
+        "endChar": 70
+      },
+      "revId": "f04ff16dc1949d014705bdd25a11ab68596459a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
