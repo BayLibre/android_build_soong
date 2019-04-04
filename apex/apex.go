@@ -1294,8 +1294,9 @@ type Prebuilt struct {
 
 	properties PrebuiltProperties
 
-	inputApex  android.Path
-	installDir android.OutputPath
+	inputApex       android.Path
+	installDir      android.OutputPath
+	installFilename string
 }
 
 type PrebuiltProperties struct {
@@ -1317,6 +1318,10 @@ type PrebuiltProperties struct {
 			Src *string
 		}
 	}
+
+	// Optional name for the installed apex. If unspecified, name of the
+	// module is used as the file name
+	Filename *string
 }
 
 func (p *Prebuilt) DepsMutator(ctx android.BottomUpMutatorContext) {
@@ -1351,7 +1356,11 @@ func (p *Prebuilt) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// TODO(jungjw): Check the key validity.
 	p.inputApex = p.Prebuilt().SingleSourcePath(ctx)
 	p.installDir = android.PathForModuleInstall(ctx, "apex")
-	ctx.InstallFile(p.installDir, ctx.ModuleName()+imageApexSuffix, p.inputApex)
+	p.installFilename = proptools.StringDefault(p.properties.Filename, ctx.ModuleName()+imageApexSuffix)
+	if !strings.HasSuffix(p.installFilename, imageApexSuffix) {
+		ctx.ModuleErrorf("filename should end in %s for prebuilt_apex", imageApexSuffix)
+	}
+	ctx.InstallFile(p.installDir, p.installFilename, p.inputApex)
 }
 
 func (p *Prebuilt) Prebuilt() *android.Prebuilt {
@@ -1370,7 +1379,7 @@ func (p *Prebuilt) AndroidMk() android.AndroidMkData {
 		Extra: []android.AndroidMkExtraFunc{
 			func(w io.Writer, outputFile android.Path) {
 				fmt.Fprintln(w, "LOCAL_MODULE_PATH :=", filepath.Join("$(OUT_DIR)", p.installDir.RelPathString()))
-				fmt.Fprintln(w, "LOCAL_MODULE_STEM :=", p.BaseModuleName()+imageApexSuffix)
+				fmt.Fprintln(w, "LOCAL_MODULE_STEM :=", p.installFilename)
 			},
 		},
 	}
