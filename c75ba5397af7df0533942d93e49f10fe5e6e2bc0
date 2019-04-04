@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d634a7f7_e293b221",
+        "filename": "android/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-04-04T21:49:27Z",
+      "side": 1,
+      "message": "Done. For the below one too.",
+      "parentUuid": "d7f6f576_63c2786a",
+      "range": {
+        "startLine": 132,
+        "startChar": 12,
+        "endLine": 132,
+        "endChar": 13
+      },
+      "revId": "c75ba5397af7df0533942d93e49f10fe5e6e2bc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d57c00b_b078d028",
         "filename": "android/androidmk.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "91e0f309_a9221e88",
+        "filename": "android/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-04-04T21:49:27Z",
+      "side": 1,
+      "message": "I\u0027d like to keep the current form if you don\u0027t feel too strongly about it for several reasons:\n1. Our 100 chars rule is a soft rule, which leads to my next point...\n2. The readability is probably better this way since all other lines are formatted the same way.\n3. Most developers use 2 or 4 space tabs, so this doesn\u0027t exceed 100 chars for them.",
+      "parentUuid": "6d57c00b_b078d028",
+      "range": {
+        "startLine": 191,
+        "startChar": 48,
+        "endLine": 191,
+        "endChar": 52
+      },
+      "revId": "c75ba5397af7df0533942d93e49f10fe5e6e2bc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8ae6eae_2a8bce82",
         "filename": "android/androidmk.go",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "c75ba5397af7df0533942d93e49f10fe5e6e2bc0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb82a519_d5409149",
+        "filename": "android/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-04-04T21:49:27Z",
+      "side": 1,
+      "message": "Done. I left !module.commonProperties.NamespaceExportedToMake out to preserve the TODO comment in its original context.",
+      "parentUuid": "c8ae6eae_2a8bce82",
+      "range": {
+        "startLine": 460,
+        "startChar": 41,
+        "endLine": 460,
+        "endChar": 42
+      },
+      "revId": "c75ba5397af7df0533942d93e49f10fe5e6e2bc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
