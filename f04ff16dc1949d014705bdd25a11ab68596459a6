@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "a21dff5a_e95ba96e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-05T15:49:48Z",
+      "side": 1,
+      "message": "checkbuild-soong isn\u0027t connected to checkbuild, so this won\u0027t actually run on any build server/treehugger builds.  I tried running m checkbuild followed by m checkbuild-soong, and it built 58K new targets, so I don\u0027t think we can just add checkbuild-soong as a dependency of checkbuild without looking into why.  Can you do the LOCAL_ADDITIONAL_CHECKED_MODULE option instead?",
+      "parentUuid": "6035ddb6_aa4e1ef1",
+      "revId": "f04ff16dc1949d014705bdd25a11ab68596459a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "502f5271_36e6397a",
         "filename": "java/java.go",
         "patchSetId": 4
