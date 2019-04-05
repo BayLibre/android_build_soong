@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "47802e97_323ed181",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-05T16:24:07Z",
+      "side": 1,
+      "message": "Something like http://cs/android/build/soong/java/androidmk.go?l\u003d65\u0026rcl\u003d11056f6f7059354c224bb5f20bb6f108812108ca, but use +\u003d instead of :\u003d because multiple places might try to set LOCAL_ADDITIONAL_CHECKED_MODULE.",
+      "parentUuid": "81301204_053ba284",
+      "revId": "f04ff16dc1949d014705bdd25a11ab68596459a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "502f5271_36e6397a",
         "filename": "java/java.go",
         "patchSetId": 4
