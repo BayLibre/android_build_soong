@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f7566eda_24f6ec99",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-05T12:17:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "696feca2_409cc602",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 20
+      },
+      "revId": "e084826e95eaf4bfac9f604d4e3f400395cd93d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd848ebc_e5793ab7",
         "filename": "android/visibility.go",
         "patchSetId": 2
@@ -142,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "64e41146_be414d45",
+        "filename": "android/visibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-05T12:17:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c043db1_b3612466",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 18
+      },
+      "revId": "e084826e95eaf4bfac9f604d4e3f400395cd93d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "661b2e86_456ce36b",
         "filename": "android/visibility.go",
         "patchSetId": 2
@@ -162,6 +210,30 @@
       "revId": "e084826e95eaf4bfac9f604d4e3f400395cd93d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b725ec9d_8714043b",
+        "filename": "android/visibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-05T12:17:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "661b2e86_456ce36b",
+      "range": {
+        "startLine": 129,
+        "startChar": 3,
+        "endLine": 134,
+        "endChar": 2
+      },
+      "revId": "e084826e95eaf4bfac9f604d4e3f400395cd93d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -281,6 +353,30 @@
       "revId": "e084826e95eaf4bfac9f604d4e3f400395cd93d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddb2e9c3_b2115678",
+        "filename": "android/visibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-05T12:17:57Z",
+      "side": 1,
+      "message": "Understood. I have added legacy_public and documentation to explain it but made it so that it cannot be used by developers.",
+      "parentUuid": "a02c4a1a_bc44099a",
+      "range": {
+        "startLine": 141,
+        "startChar": 61,
+        "endLine": 141,
+        "endChar": 72
+      },
+      "revId": "e084826e95eaf4bfac9f604d4e3f400395cd93d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
