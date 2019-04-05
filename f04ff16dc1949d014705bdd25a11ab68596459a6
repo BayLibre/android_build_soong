@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6035ddb6_aa4e1ef1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-04-05T10:24:21Z",
+      "side": 1,
+      "message": "It doesn\u0027t. But the build takes so long that it didn\u0027t finish yesterday and I didn\u0027t want to wait an extra day for your opinion.\n\nChanged to checkbuild-soong.",
+      "parentUuid": "67a525f7_200eceac",
+      "revId": "f04ff16dc1949d014705bdd25a11ab68596459a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "502f5271_36e6397a",
         "filename": "java/java.go",
         "patchSetId": 4
@@ -63,6 +81,30 @@
       "revId": "f04ff16dc1949d014705bdd25a11ab68596459a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99d8fce7_9e2bedef",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1207,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-04-05T10:24:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64787dc7_b243df91",
+      "range": {
+        "startLine": 1207,
+        "startChar": 15,
+        "endLine": 1207,
+        "endChar": 70
+      },
+      "revId": "f04ff16dc1949d014705bdd25a11ab68596459a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
