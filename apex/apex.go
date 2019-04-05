@@ -1347,6 +1347,10 @@ func (p *Prebuilt) DepsMutator(ctx android.BottomUpMutatorContext) {
 	p.properties.Source = src
 }
 
+func (p *Prebuilt) Srcs() android.Paths {
+	return android.Paths{p.inputApex}
+}
+
 func (p *Prebuilt) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// TODO(jungjw): Check the key validity.
 	p.inputApex = p.Prebuilt().SingleSourcePath(ctx)
@@ -1371,6 +1375,7 @@ func (p *Prebuilt) AndroidMk() android.AndroidMkData {
 			func(w io.Writer, outputFile android.Path) {
 				fmt.Fprintln(w, "LOCAL_MODULE_PATH :=", filepath.Join("$(OUT_DIR)", p.installDir.RelPathString()))
 				fmt.Fprintln(w, "LOCAL_MODULE_STEM :=", p.BaseModuleName()+imageApexSuffix)
+				fmt.Fprintln(w, "LOCAL_PREBUILT_MODULE_FILE :=", p.inputApex.String())
 			},
 		},
 	}
