@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ccc1ffa2_e1e4afff",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1351,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-04-06T07:59:05Z",
+      "side": 1,
+      "message": "I think this should be the output of this module type.\n\nYou could have a android.Cp rule to copy p.inputApex to p.outputApex in GenerateAndroidBuildActions and then return p.ouotputApex from here.",
+      "range": {
+        "startLine": 1351,
+        "startChar": 1,
+        "endLine": 1351,
+        "endChar": 34
+      },
+      "revId": "a17ac2143ad5725c9d41c14bcaa1e54e139078ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
