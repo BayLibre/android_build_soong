@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f75192a_c8384c36",
+        "filename": "android/paths.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-04-07T16:21:46Z",
+      "side": 1,
+      "message": "this should be on the next line",
+      "range": {
+        "startLine": 248,
+        "startChar": 115,
+        "endLine": 248,
+        "endChar": 116
+      },
+      "revId": "616b5026f276899a3ea8891565f76c50f10086e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eba90b65_bdcc4a41",
+        "filename": "genrule/genrule_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-04-07T16:21:46Z",
+      "side": 1,
+      "message": "I\u0027m assuming you didn\u0027t mean to comment these out",
+      "range": {
+        "startLine": 133,
+        "startChar": 2,
+        "endLine": 133,
+        "endChar": 4
+      },
+      "revId": "616b5026f276899a3ea8891565f76c50f10086e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
