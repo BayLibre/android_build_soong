@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d02a055b_d4af61da",
+        "filename": "java/java.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-04-08T14:36:31Z",
+      "side": 1,
+      "message": "Just curious, shouldn\u0027t something like this go into a more common place, like android.ModuleBase?",
+      "range": {
+        "startLine": 327,
+        "startChar": 0,
+        "endLine": 328,
+        "endChar": 39
+      },
+      "revId": "0975ee0de3d2befefa613754b4dd684a1a9b8c0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
