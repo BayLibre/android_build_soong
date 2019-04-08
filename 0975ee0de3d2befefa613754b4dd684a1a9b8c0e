@@ -22,6 +22,30 @@
       "revId": "0975ee0de3d2befefa613754b4dd684a1a9b8c0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45156ba7_7d45a0a1",
+        "filename": "java/java.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-04-08T14:40:49Z",
+      "side": 1,
+      "message": "I don\u0027t know. Colin pointed me to java/androidmk.go and the changes I\u0027ve made there match this declaration. If we wanted to put it to some base class, we\u0027d also have to find a better place for the java/androidmk.go changes.",
+      "parentUuid": "d02a055b_d4af61da",
+      "range": {
+        "startLine": 327,
+        "startChar": 0,
+        "endLine": 328,
+        "endChar": 39
+      },
+      "revId": "0975ee0de3d2befefa613754b4dd684a1a9b8c0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
