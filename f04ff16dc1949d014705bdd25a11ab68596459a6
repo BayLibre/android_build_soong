@@ -109,6 +109,24 @@
     },
     {
       "key": {
+        "uuid": "f0eb7fcb_d0e45de7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-04-08T13:10:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47802e97_323ed181",
+      "revId": "f04ff16dc1949d014705bdd25a11ab68596459a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "502f5271_36e6397a",
         "filename": "java/java.go",
         "patchSetId": 4
