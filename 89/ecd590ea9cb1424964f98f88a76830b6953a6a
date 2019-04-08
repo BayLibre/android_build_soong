@@ -1,0 +1,7 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Jiyong Park <jiyong@google.com>
+Submitted-by: Nikita Ioffe <ioffe@google.com>
+Submitted-at: Mon, 08 Apr 2019 05:22:03 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/939992
+Project: platform/build/soong
+Branch: refs/heads/master
