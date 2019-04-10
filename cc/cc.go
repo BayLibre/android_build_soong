@@ -19,6 +19,7 @@ package cc
 // is handled in builder.go
 
 import (
+	"io"
 	"strconv"
 	"strings"
 
@@ -1963,6 +1964,14 @@ func (c *Module) imageVariation() string {
 
 func (c *Module) IDEInfo(dpInfo *android.IdeInfo) {
 	dpInfo.Srcs = append(dpInfo.Srcs, c.Srcs().Strings()...)
+}
+
+func (c *Module) AndroidMkWriteAdditionalDependenciesForSourceAbiDiff(w io.Writer) {
+	if c.linker != nil {
+		if library, ok := c.linker.(*libraryDecorator); ok {
+			library.androidMkWriteAdditionalDependenciesForSourceAbiDiff(w)
+		}
+	}
 }
 
 //
