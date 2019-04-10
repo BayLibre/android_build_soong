@@ -15,6 +15,7 @@
 package cc
 
 import (
+	"io"
 	"path/filepath"
 	"regexp"
 	"sort"
@@ -96,6 +97,9 @@ type LibraryProperties struct {
 
 	// Properties for ABI compatibility checker
 	Header_abi_checker struct {
+		// Enable ABI checks (even if this is not an LLNDK/VNDK lib)
+		Enabled *bool
+
 		// Path to a symbol file that specifies the symbols to be included in the generated
 		// ABI dump file
 		Symbol_file *string `android:"path"`
@@ -420,6 +424,13 @@ func extractExportIncludesFromFlags(flags []string) []string {
 	return exportedIncludes
 }
 
+func (library *libraryDecorator) shouldCreateVndkSourceAbiDump(ctx ModuleContext) bool {
+	if ctx.shouldCreateVndkSourceAbiDump() {
+		return true
+	}
+	return Bool(library.Properties.Header_abi_checker.Enabled)
+}
+
 func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps PathDeps) Objects {
 	if library.buildStubs() {
 		objs, versionScript := compileStubLibrary(ctx, flags, String(library.Properties.Stubs.Symbol_file), library.MutatedProperties.StubsVersion, "--apex")
@@ -439,7 +450,7 @@ func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 		}
 		return Objects{}
 	}
-	if ctx.shouldCreateVndkSourceAbiDump() || library.sabi.Properties.CreateSAbiDumps {
+	if library.shouldCreateVndkSourceAbiDump(ctx) || library.sabi.Properties.CreateSAbiDumps {
 		exportIncludeDirs := library.flagExporter.exportedIncludes(ctx)
 		var SourceAbiFlags []string
 		for _, dir := range exportIncludeDirs.Strings() {
@@ -486,6 +497,9 @@ type libraryInterface interface {
 	// Sets whether a specific variant is static or shared
 	setStatic()
 	setShared()
+
+	// Write LOCAL_ADDITIONAL_DEPENDENCIES for ABI diff
+	androidMkWriteAdditionalDependenciesForSourceAbiDiff(w io.Writer)
 }
 
 func (library *libraryDecorator) getLibName(ctx ModuleContext) string {
@@ -760,10 +774,8 @@ func (library *libraryDecorator) nativeCoverage() bool {
 }
 
 func getRefAbiDumpFile(ctx ModuleContext, vndkVersion, fileName string) android.Path {
-	isLlndk := inList(ctx.baseModuleName(), llndkLibraries) || inList(ctx.baseModuleName(), ndkMigratedLibs)
-
-	refAbiDumpTextFile := android.PathForVndkRefAbiDump(ctx, vndkVersion, fileName, isLlndk, false)
-	refAbiDumpGzipFile := android.PathForVndkRefAbiDump(ctx, vndkVersion, fileName, isLlndk, true)
+	refAbiDumpTextFile := android.PathForVndkRefAbiDump(ctx, vndkVersion, fileName, ctx.isVndk(), false)
+	refAbiDumpGzipFile := android.PathForVndkRefAbiDump(ctx, vndkVersion, fileName, ctx.isVndk(), true)
 
 	if refAbiDumpTextFile.Valid() {
 		if refAbiDumpGzipFile.Valid() {
@@ -781,7 +793,7 @@ func getRefAbiDumpFile(ctx ModuleContext, vndkVersion, fileName string) android.
 }
 
 func (library *libraryDecorator) linkSAbiDumpFiles(ctx ModuleContext, objs Objects, fileName string, soFile android.Path) {
-	if len(objs.sAbiDumpFiles) > 0 && ctx.shouldCreateVndkSourceAbiDump() {
+	if len(objs.sAbiDumpFiles) > 0 && library.shouldCreateVndkSourceAbiDump(ctx) {
 		vndkVersion := ctx.DeviceConfig().PlatformVndkVersion()
 		if ver := ctx.DeviceConfig().VndkVersion(); ver != "" && ver != "current" {
 			vndkVersion = ver
