@@ -60,6 +60,12 @@ type hostToolDependencyTag struct {
 	label string
 }
 
+type CustomFunc func(ctx android.ModuleContext) (val string, deps android.Paths)
+type CustomFuncEntry struct {
+	Name string     `blueprint:"mutated"`
+	Func CustomFunc `blueprint:"mutated"`
+}
+
 type generatorProperties struct {
 	// The command to run on one or more input files. Cmd supports substitution of a few variables
 	// (the actual substitution is implemented in GenerateAndroidBuildActions below)
@@ -96,6 +102,8 @@ type generatorProperties struct {
 
 	// input files to exclude
 	Exclude_srcs []string `android:"path,arch_variant"`
+
+	CustomFuncs []CustomFuncEntry `blueprint:"mutated"`
 }
 
 type Module struct {
@@ -340,6 +348,16 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 				} else {
 					return reportError("unknown locations label %q", label)
 				}
+			} else if strings.HasPrefix(name, "call ") {
+				funcName := strings.TrimSpace(strings.TrimPrefix(name, "call "))
+				for _, custom := range g.properties.CustomFuncs {
+					if custom.Name == funcName {
+						val, deps := custom.Func(ctx)
+						g.deps = append(g.deps, deps...)
+						return val, nil
+					}
+				}
+				return reportError("unknown custom function %q", funcName)
 			} else {
 				return reportError("unknown variable '$(%s)'", name)
 			}
@@ -436,6 +454,13 @@ func (g *Module) IDEInfo(dpInfo *android.IdeInfo) {
 			dpInfo.Deps = append(dpInfo.Deps, src)
 		}
 	}
+}
+
+func (g *Module) AddCustomFunc(name string, f CustomFunc) {
+	g.properties.CustomFuncs = append(g.properties.CustomFuncs, CustomFuncEntry{
+		Name: name,
+		Func: f,
+	})
 }
 
 func (g *Module) AndroidMk() android.AndroidMkData {
