@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "ee32129b_d04371ab",
+        "filename": "README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-10T22:02:37Z",
+      "side": 1,
+      "message": "I don\u0027t think a link is necessary, it could be confusing because only some of the information there will be relevant, but I don\u0027t like copying this much verbatim without at least an acknowledgement.",
+      "parentUuid": "795142c3_3cdfa93e",
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6949b077_49e93b3e",
         "filename": "README.md",
         "patchSetId": 5
@@ -989,6 +1007,30 @@
     },
     {
       "key": {
+        "uuid": "a094f018_9467b353",
+        "filename": "android/visibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-10T22:02:37Z",
+      "side": 1,
+      "message": "You could convert to a []string (which has to be done with a for loop), and then strings.Join",
+      "parentUuid": "597f7db3_0490e84e",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 12
+      },
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2251cb11_d678928b",
         "filename": "android/visibility.go",
         "patchSetId": 5
@@ -1138,6 +1180,24 @@
       "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5c24e4e_d8bf7cf7",
+        "filename": "android/visibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-10T22:02:37Z",
+      "side": 1,
+      "message": "In practice [] is unlikely to get used, I\u0027d suggest just mentioning that empty permissions means default permissions in the property docs.\n\ndefaults are just normal modules in the global namespace, so can be used from anywhere.  Is it possible to make visibility apply to them?  Could be in a followup.",
+      "parentUuid": "bf6f91d9_dc8b9d97",
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
