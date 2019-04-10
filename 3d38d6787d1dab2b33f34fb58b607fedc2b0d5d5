@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "541ba68c_2a7dbae5",
+        "filename": "cc/ndk_headers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-04-10T01:50:59Z",
+      "side": 1,
+      "message": "D\u0027oh.",
+      "parentUuid": "41608f35_38bd80e9",
+      "range": {
+        "startLine": 162,
+        "startChar": 68,
+        "endLine": 162,
+        "endChar": 78
+      },
+      "revId": "3d38d6787d1dab2b33f34fb58b607fedc2b0d5d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8150bcb9_fa35c7de",
         "filename": "cc/ndk_headers.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6c070a2b_e45c5b28",
+        "filename": "cc/ndk_headers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-04-10T01:50:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8150bcb9_fa35c7de",
+      "range": {
+        "startLine": 163,
+        "startChar": 3,
+        "endLine": 163,
+        "endChar": 76
+      },
+      "revId": "3d38d6787d1dab2b33f34fb58b607fedc2b0d5d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1a1bfa6_48e5af96",
         "filename": "cc/ndk_headers.go",
         "patchSetId": 2
@@ -62,6 +110,24 @@
       "revId": "3d38d6787d1dab2b33f34fb58b607fedc2b0d5d5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7eb285d_7d4106ce",
+        "filename": "cc/ndk_headers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-04-10T01:50:59Z",
+      "side": 1,
+      "message": "Sure. I re-worded a bit.",
+      "parentUuid": "d1a1bfa6_48e5af96",
+      "revId": "3d38d6787d1dab2b33f34fb58b607fedc2b0d5d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -85,6 +151,30 @@
       "revId": "3d38d6787d1dab2b33f34fb58b607fedc2b0d5d5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e3b5297_7f83f0de",
+        "filename": "cc/ndk_headers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-04-10T01:50:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fda41689_880b6a15",
+      "range": {
+        "startLine": 369,
+        "startChar": 28,
+        "endLine": 369,
+        "endChar": 38
+      },
+      "revId": "3d38d6787d1dab2b33f34fb58b607fedc2b0d5d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
