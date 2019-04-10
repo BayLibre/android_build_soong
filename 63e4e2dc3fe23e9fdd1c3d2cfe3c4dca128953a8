@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1ad47708_b52e7216",
+        "filename": "Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-10T14:47:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12adfc33_7ac53df4",
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f9098b9_201be5de",
         "filename": "README.md",
         "patchSetId": 5
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "795142c3_3cdfa93e",
+        "filename": "README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-10T14:47:13Z",
+      "side": 1,
+      "message": "I did think about that but was not sure how useful that information would be to developers. Should I provide a link to the Bazel information about visibility?",
+      "parentUuid": "9f9098b9_201be5de",
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6949b077_49e93b3e",
         "filename": "README.md",
         "patchSetId": 5
@@ -47,6 +83,30 @@
       "writtenOn": "2019-04-09T15:13:59Z",
       "side": 1,
       "message": "The \"package\" concept ought to be introduced. There hasn\u0027t been anything like it in Soong before, right? I suggest making a separate section for it (even if it\u0027s short) so that it gets its own header.",
+      "range": {
+        "startLine": 145,
+        "startChar": 14,
+        "endLine": 145,
+        "endChar": 22
+      },
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "603631a8_4d547b88",
+        "filename": "README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-10T14:47:13Z",
+      "side": 1,
+      "message": "Agreed, will do that in the next update.",
+      "parentUuid": "6949b077_49e93b3e",
       "range": {
         "startLine": 145,
         "startChar": 14,
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "1d00c643_12176984",
+        "filename": "README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-10T14:47:13Z",
+      "side": 1,
+      "message": "Agreed, will do that in the next update.",
+      "parentUuid": "1ffd5722_e493c0e9",
+      "range": {
+        "startLine": 148,
+        "startChar": 70,
+        "endLine": 151,
+        "endChar": 31
+      },
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ae86c653_9a6c8567",
         "filename": "README.md",
         "patchSetId": 5
@@ -93,6 +177,30 @@
       "writtenOn": "2019-04-10T06:22:42Z",
       "side": 1,
       "message": "I think if you define package separately then defining _this package_ becomes unnecessary.",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 6
+      },
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72d6d93b_56616738",
+        "filename": "README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-10T14:47:13Z",
+      "side": 1,
+      "message": "Agreed, will do that in the next update.",
+      "parentUuid": "ae86c653_9a6c8567",
       "range": {
         "startLine": 152,
         "startChar": 0,
@@ -128,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "579f31ab_e76d7775",
+        "filename": "README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-10T14:47:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83ee2172_707eea8f",
+      "range": {
+        "startLine": 157,
+        "startChar": 2,
+        "endLine": 157,
+        "endChar": 25
+      },
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8d0e953_976cc94e",
         "filename": "README.md",
         "patchSetId": 5
@@ -139,6 +271,30 @@
       "writtenOn": "2019-04-09T15:13:59Z",
       "side": 1,
       "message": "Maybe clarify that it excludes subpackages.",
+      "range": {
+        "startLine": 158,
+        "startChar": 42,
+        "endLine": 158,
+        "endChar": 56
+      },
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9f9d2cc_d5b08d1b",
+        "filename": "README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-10T14:47:13Z",
+      "side": 1,
+      "message": "Agreed, will do that in the next update.",
+      "parentUuid": "c8d0e953_976cc94e",
       "range": {
         "startLine": 158,
         "startChar": 42,
@@ -174,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "310f89aa_a8523e4a",
+        "filename": "README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-10T14:47:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da539d78_3eb8e12c",
+      "range": {
+        "startLine": 159,
+        "startChar": 19,
+        "endLine": 159,
+        "endChar": 21
+      },
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "313bb956_d5729b8d",
         "filename": "README.md",
         "patchSetId": 5
@@ -197,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "abe222fa_157571e4",
+        "filename": "README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-10T14:47:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "313bb956_d5729b8d",
+      "range": {
+        "startLine": 162,
+        "startChar": 65,
+        "endLine": 162,
+        "endChar": 66
+      },
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a83678f1_0cd55a11",
         "filename": "android/module.go",
         "patchSetId": 5
@@ -208,6 +412,24 @@
       "writtenOn": "2019-04-10T06:22:42Z",
       "side": 1,
       "message": "This becomes documentation at go/Android.bp, where the ../README.md link won\u0027t work.  I\u0027d suggest putting the full documentation of the valid values here, and maybe link to it from the README.md",
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a592ce0_82a44d43",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-10T14:47:13Z",
+      "side": 1,
+      "message": "What URL do I use to link to it from README.md? How do I test it? Can I use Markdown syntax here or HTML or just plain text?",
+      "parentUuid": "a83678f1_0cd55a11",
       "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -261,6 +483,30 @@
     },
     {
       "key": {
+        "uuid": "8fb8e431_52ac3fea",
+        "filename": "android/visibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-10T14:47:13Z",
+      "side": 1,
+      "message": "I\u0027ve tried to keep with what was already there but some of the code has really long lines so I was not sure what the convention was. I will check to make sure that all the code fits in the 100 character limit on the next update.",
+      "parentUuid": "7a1193ea_aafc6a9c",
+      "range": {
+        "startLine": 27,
+        "startChar": 80,
+        "endLine": 27,
+        "endChar": 94
+      },
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "66d173a6_39ef9ff0",
         "filename": "android/visibility.go",
         "patchSetId": 5
@@ -284,6 +530,30 @@
     },
     {
       "key": {
+        "uuid": "fd0e7f81_7d372789",
+        "filename": "android/visibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-10T14:47:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66d173a6_39ef9ff0",
+      "range": {
+        "startLine": 47,
+        "startChar": 3,
+        "endLine": 47,
+        "endChar": 8
+      },
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "601803ef_51398a04",
         "filename": "android/visibility.go",
         "patchSetId": 5
@@ -295,6 +565,30 @@
       "writtenOn": "2019-04-09T15:13:59Z",
       "side": 1,
       "message": "Sounds like this is discussing possible options instead of actual implementation. Maybe it rather belongs in a ticket tracking this issue?",
+      "range": {
+        "startLine": 47,
+        "startChar": 92,
+        "endLine": 48,
+        "endChar": 21
+      },
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eab82743_635b8bcf",
+        "filename": "android/visibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-10T14:47:13Z",
+      "side": 1,
+      "message": "It was mainly in response to some issues that Dan had raised in the associated bug. If people are happy with this work being submitted without prebuilts working then I will raise a separate bug and remove this stuff. Otherwise, I need to fix it in this change.",
+      "parentUuid": "601803ef_51398a04",
       "range": {
         "startLine": 47,
         "startChar": 92,
@@ -330,6 +624,30 @@
     },
     {
       "key": {
+        "uuid": "ca4b50fe_86cc90ea",
+        "filename": "android/visibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-10T14:47:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "560a3c77_435aa2ed",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 9
+      },
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ffaa73da_2421e44f",
         "filename": "android/visibility.go",
         "patchSetId": 5
@@ -353,6 +671,30 @@
     },
     {
       "key": {
+        "uuid": "3b28c186_1f428107",
+        "filename": "android/visibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-10T14:47:13Z",
+      "side": 1,
+      "message": "No. I\u0027ve updated to try and clarify.",
+      "parentUuid": "ffaa73da_2421e44f",
+      "range": {
+        "startLine": 53,
+        "startChar": 81,
+        "endLine": 54,
+        "endChar": 29
+      },
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8c37b70d_3ee3c077",
         "filename": "android/visibility.go",
         "patchSetId": 5
@@ -373,6 +715,30 @@
       "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b332f2f_5f7bff25",
+        "filename": "android/visibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-10T14:47:13Z",
+      "side": 1,
+      "message": "It is. Addressed that above.\n\nAgreed.",
+      "parentUuid": "8c37b70d_3ee3c077",
+      "range": {
+        "startLine": 54,
+        "startChar": 88,
+        "endLine": 55,
+        "endChar": 11
+      },
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -423,6 +789,30 @@
     },
     {
       "key": {
+        "uuid": "9618b8ec_35339f00",
+        "filename": "android/visibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-10T14:47:13Z",
+      "side": 1,
+      "message": "Inlined the constants.\n\nI tried parsing it with strings.Split but there were many different paths and edge cases that made the code a lot more complicated. Is there any specific reason why regexps should not be used?",
+      "parentUuid": "6292d5c6_f7cba25b",
+      "range": {
+        "startLine": 63,
+        "startChar": 25,
+        "endLine": 63,
+        "endChar": 40
+      },
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "00ba4e7b_16b0aa19",
         "filename": "android/visibility.go",
         "patchSetId": 5
@@ -446,6 +836,30 @@
     },
     {
       "key": {
+        "uuid": "c2c4c449_4061d5a9",
+        "filename": "android/visibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-10T14:47:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00ba4e7b_16b0aa19",
+      "range": {
+        "startLine": 71,
+        "startChar": 5,
+        "endLine": 71,
+        "endChar": 20
+      },
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "957e6de1_29c3e274",
         "filename": "android/visibility.go",
         "patchSetId": 5
@@ -460,6 +874,24 @@
       "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "827ca81a_456d91fd",
+        "filename": "android/visibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-10T14:47:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "957e6de1_29c3e274",
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -486,6 +918,30 @@
     },
     {
       "key": {
+        "uuid": "3f88f009_aafe905e",
+        "filename": "android/visibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-10T14:47:13Z",
+      "side": 1,
+      "message": "They don\u0027t need to composed recursively at the moment. This type was created to keep the other code that stores it and uses it simpler.\n\nHowever, I can imagine that we could add //visibility:inherit which allows a module to extend a visibility list defined in a defaults module that it references.",
+      "parentUuid": "a3317e1e_27cdb6ea",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 1
+      },
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94913c89_032cafd9",
         "filename": "android/visibility.go",
         "patchSetId": 5
@@ -509,6 +965,30 @@
     },
     {
       "key": {
+        "uuid": "597f7db3_0490e84e",
+        "filename": "android/visibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-10T14:47:13Z",
+      "side": 1,
+      "message": "I tried but unfortunately that only works on strings and r.rules is a visibilityRule not a string.",
+      "parentUuid": "94913c89_032cafd9",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 12
+      },
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2251cb11_d678928b",
         "filename": "android/visibility.go",
         "patchSetId": 5
@@ -523,6 +1003,24 @@
       "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "514f27ba_7d4fbcb7",
+        "filename": "android/visibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-10T14:47:13Z",
+      "side": 1,
+      "message": "The gatherer can run pre deps but the enforcer has to run post deps which is not possible for do within one function to register both so I\u0027ll split that and register them in separate phases.",
+      "parentUuid": "2251cb11_d678928b",
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -549,6 +1047,30 @@
     },
     {
       "key": {
+        "uuid": "e2f36571_3590c967",
+        "filename": "android/visibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-10T14:47:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8229afc6_caa7085f",
+      "range": {
+        "startLine": 175,
+        "startChar": 15,
+        "endLine": 175,
+        "endChar": 23
+      },
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db5d1564_213094b7",
         "filename": "android/visibility.go",
         "patchSetId": 5
@@ -563,6 +1085,24 @@
       "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac5b9082_96149dc2",
+        "filename": "android/visibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-10T14:47:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db5d1564_213094b7",
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -583,6 +1123,24 @@
     },
     {
       "key": {
+        "uuid": "bf6f91d9_dc8b9d97",
+        "filename": "android/visibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-10T14:47:13Z",
+      "side": 1,
+      "message": "As mentioned elsewhere [] seems a little ambiguous to me. In terms of how it is implemented it would be no permissions, e.g. equivalent to //visibility:private but when defaults are used it could mean the default, which at the moment is //visibility:legacy-private but will eventually be //visibility:private. That is why visibility:[] is not valid, it must always have at least one rule.\n\nAs for the defaults you can have visibility set in a defaults module and then override that by setting visibility:[\"//visibility:private\"] or visibility:[\"//visibility:public\"].\n\nAt the moment visibility information is processed after applying the defaults and so defaults modules are not protected by visibility. I thought that defaults had to be in the same package and appear before any references so would always be visible.",
+      "parentUuid": "4329df6c_7522ae59",
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c010ffb_6bb5b909",
         "filename": "android/visibility.go",
         "patchSetId": 5
@@ -594,6 +1152,30 @@
       "writtenOn": "2019-04-09T15:13:59Z",
       "side": 1,
       "message": "Maybe worth mentioning this special rule in the README.md docs?",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 77
+      },
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ad0c464_5a14c11f",
+        "filename": "android/visibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-10T14:47:13Z",
+      "side": 1,
+      "message": "Agreed, will do that in the next update.",
+      "parentUuid": "9c010ffb_6bb5b909",
       "range": {
         "startLine": 228,
         "startChar": 0,
@@ -629,6 +1211,30 @@
     },
     {
       "key": {
+        "uuid": "513eeeb8_145b0b37",
+        "filename": "android/visibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-10T14:47:13Z",
+      "side": 1,
+      "message": "Actually it can as both parts are optional so that it can match //A:B, //A and :B.",
+      "parentUuid": "c4743086_cfe7fe32",
+      "range": {
+        "startLine": 273,
+        "startChar": 4,
+        "endLine": 273,
+        "endChar": 24
+      },
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8e4b73f_6f36a5a3",
         "filename": "android/visibility.go",
         "patchSetId": 5
@@ -649,6 +1255,30 @@
       "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b26cd7a_a5b44ef7",
+        "filename": "android/visibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-10T14:47:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8e4b73f_6f36a5a3",
+      "range": {
+        "startLine": 276,
+        "startChar": 9,
+        "endLine": 276,
+        "endChar": 18
+      },
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
