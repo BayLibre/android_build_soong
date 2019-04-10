@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "12adfc33_7ac53df4",
+        "filename": "Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-10T06:22:42Z",
+      "side": 1,
+      "message": "Add visibility_test.go",
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f9098b9_201be5de",
+        "filename": "README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-10T06:22:42Z",
+      "side": 1,
+      "message": "Call out that this is based on Bazel\u0027s visibility.",
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6949b077_49e93b3e",
         "filename": "README.md",
         "patchSetId": 5
@@ -18,6 +52,52 @@
         "startChar": 14,
         "endLine": 145,
         "endChar": 22
+      },
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ffd5722_e493c0e9",
+        "filename": "README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-10T06:22:42Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem necessary in the documentation, maybe a comment in the code for the rationale?",
+      "range": {
+        "startLine": 148,
+        "startChar": 70,
+        "endLine": 151,
+        "endChar": 31
+      },
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae86c653_9a6c8567",
+        "filename": "README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-10T06:22:42Z",
+      "side": 1,
+      "message": "I think if you define package separately then defining _this package_ becomes unnecessary.",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 6
       },
       "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -71,6 +151,29 @@
     },
     {
       "key": {
+        "uuid": "da539d78_3eb8e12c",
+        "filename": "README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-10T06:22:42Z",
+      "side": 1,
+      "message": "This is being treated as markup, put `` around the whole list",
+      "range": {
+        "startLine": 159,
+        "startChar": 19,
+        "endLine": 159,
+        "endChar": 21
+      },
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "313bb956_d5729b8d",
         "filename": "README.md",
         "patchSetId": 5
@@ -94,6 +197,23 @@
     },
     {
       "key": {
+        "uuid": "a83678f1_0cd55a11",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-10T06:22:42Z",
+      "side": 1,
+      "message": "This becomes documentation at go/Android.bp, where the ../README.md link won\u0027t work.  I\u0027d suggest putting the full documentation of the valid values here, and maybe link to it from the README.md",
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "682349da_08d5e234",
         "filename": "android/visibility.go",
         "patchSetId": 5
@@ -105,6 +225,30 @@
       "writtenOn": "2019-04-09T15:13:59Z",
       "side": 1,
       "message": "Style nit: Even if Go doesn\u0027t limit line lengths, it does encourage folding of long lines for readability[1]. I suggest keeping to the common 80 characters in multiline comments like this, so e.g. Gerrit doesn\u0027t break them in diff views.\n\n[1] https://golang.org/doc/effective_go.html#commentary",
+      "range": {
+        "startLine": 27,
+        "startChar": 80,
+        "endLine": 27,
+        "endChar": 94
+      },
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a1193ea_aafc6a9c",
+        "filename": "android/visibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-10T06:22:42Z",
+      "side": 1,
+      "message": "We usually aim for 100 characters",
+      "parentUuid": "682349da_08d5e234",
       "range": {
         "startLine": 27,
         "startChar": 80,
@@ -156,6 +300,29 @@
         "startChar": 92,
         "endLine": 48,
         "endChar": 21
+      },
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "560a3c77_435aa2ed",
+        "filename": "android/visibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-10T06:22:42Z",
+      "side": 1,
+      "message": "Use TODO(ldap): or TODO(b/######):",
+      "range": {
+        "startLine": 50,
+        "startChar": 3,
+        "endLine": 50,
+        "endChar": 9
       },
       "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -232,6 +399,30 @@
     },
     {
       "key": {
+        "uuid": "6292d5c6_f7cba25b",
+        "filename": "android/visibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-10T06:22:42Z",
+      "side": 1,
+      "message": "Also consider parsing this with strings.Split instead of a regex?",
+      "parentUuid": "4639af70_6ac19bf1",
+      "range": {
+        "startLine": 63,
+        "startChar": 25,
+        "endLine": 63,
+        "endChar": 40
+      },
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "00ba4e7b_16b0aa19",
         "filename": "android/visibility.go",
         "patchSetId": 5
@@ -249,6 +440,23 @@
         "endLine": 71,
         "endChar": 20
       },
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "957e6de1_29c3e274",
+        "filename": "android/visibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-10T06:22:42Z",
+      "side": 1,
+      "message": "You can use type compositeRule []visibilityRule",
       "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -295,6 +503,80 @@
         "endLine": 113,
         "endChar": 12
       },
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2251cb11_d678928b",
+        "filename": "android/visibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-10T06:22:42Z",
+      "side": 1,
+      "message": "Since this happens after the arch mutator, it is going to visit every variant of each module, all of which will have the same visibility and the same qualified module name.  Maybe use ctx.PrimaryModule() to only run it once?  Or move the rule gatherer early, after LoadHooks but before any variants?",
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8229afc6_caa7085f",
+        "filename": "android/visibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-10T06:22:42Z",
+      "side": 1,
+      "message": "Use ctx.ModuleName(), it\u0027s subtly different than m.Name(). m.Name() won\u0027t track renamed modules, which are used for prebuilts.",
+      "range": {
+        "startLine": 175,
+        "startChar": 15,
+        "endLine": 175,
+        "endChar": 23
+      },
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db5d1564_213094b7",
+        "filename": "android/visibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-10T06:22:42Z",
+      "side": 1,
+      "message": "This could be a helper function that takes ctx (as an android.BaseModuleContext)",
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4329df6c_7522ae59",
+        "filename": "android/visibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-10T06:22:42Z",
+      "side": 1,
+      "message": "The distinction between nil and [] doesn\u0027t seem necessary to me, and means that you can\u0027t have visibility set in a defaults module and then overridden back to [] in the real module.\n\nWhich brings up a second issue, what should the behavior of a visibility property be in a defaults module?  Set the visibility of the defaults module itself, which sometimes need to be public, or set the visibility of modules that use the defaults module?",
       "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
