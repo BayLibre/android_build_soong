@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8c281d1e_c42114ca",
+        "filename": "android/paths.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 988,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2019-04-11T13:00:55Z",
+      "side": 1,
+      "message": "\u003e do we have a better name?\n\nHow about letting the module owner specify the location of the dump\nso that internal projects can opt-in?\n\nheader_abi_checker: {\n    reference_dump_dir: \"system/netd/abi-dumps\"\n},",
+      "parentUuid": "09c38699_4dc13c0a",
+      "range": {
+        "startLine": 988,
+        "startChar": 13,
+        "endLine": 988,
+        "endChar": 16
+      },
+      "revId": "a87d64c97b90b98fd579c7aaf0aa476673b2e32e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a7aa476c_126d446d",
         "filename": "cc/library.go",
         "patchSetId": 3
