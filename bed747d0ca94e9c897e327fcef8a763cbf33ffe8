@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e6b8d9c5_906a1ced",
+        "filename": "cc/ndk_prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-04-12T19:44:59Z",
+      "side": 1,
+      "message": "\u003e1: Soong requires the module name to be in ndk_NAME.EXT.SDK_VERSION format. See the function ndkPrebuiltModuleToPath.\n\u003e2: See my response for 1. Should I replace EXT with .o?\n\u003e3: It\u0027s good to follow the naming style as we have today under prebuilts/ndk/Android.bp\n\u003e4: I don\u0027t quite follow?",
+      "parentUuid": "359283ce_b6d32edc",
+      "range": {
+        "startLine": 68,
+        "startChar": 15,
+        "endLine": 70,
+        "endChar": 100
+      },
+      "revId": "bed747d0ca94e9c897e327fcef8a763cbf33ffe8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cc1d4eba_5309e387",
         "filename": "cc/ndk_prebuilt.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "bed747d0ca94e9c897e327fcef8a763cbf33ffe8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "710f83b5_c8ad7ef2",
+        "filename": "cc/ndk_prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-04-12T19:44:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc1d4eba_5309e387",
+      "range": {
+        "startLine": 124,
+        "startChar": 16,
+        "endLine": 124,
+        "endChar": 22
+      },
+      "revId": "bed747d0ca94e9c897e327fcef8a763cbf33ffe8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
