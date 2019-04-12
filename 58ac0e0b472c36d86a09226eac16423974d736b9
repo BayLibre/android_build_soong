@@ -16,6 +16,24 @@
       "revId": "58ac0e0b472c36d86a09226eac16423974d736b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6441ccc6_0d5f1ddf",
+        "filename": "cc/kernel_headers.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-04-12T17:25:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ef25351_dac17939",
+      "revId": "58ac0e0b472c36d86a09226eac16423974d736b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
