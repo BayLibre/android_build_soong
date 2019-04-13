@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ff1f025_a805c065",
+        "filename": "cc/gen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-13T01:10:55Z",
+      "side": 1,
+      "message": "I\u0027d suggest doing this in the caller so you can pass a *android.RuleBuilder.  Maybe with a lambda?\n\nvar _rule *android.RuleBuilder\nrule :\u003d func() *android.RuleBuilder {\n    if rule_ \u003d\u003d nil {\n        rule_ \u003d android.NewRuleBuilder().Sbox(android.PathForModuleGen(ctx, \"yacc\"))\n    }\n    return rule_\n}",
+      "range": {
+        "startLine": 82,
+        "startChar": 2,
+        "endLine": 82,
+        "endChar": 47
+      },
+      "revId": "9e24d8d5ace3cc55760589378846199549f671df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed627e58_883fc546",
+        "filename": "cc/gen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-13T01:10:55Z",
+      "side": 1,
+      "message": "I usually put these on a separate line if they are unrelated.",
+      "range": {
+        "startLine": 109,
+        "startChar": 13,
+        "endLine": 109,
+        "endChar": 26
+      },
+      "revId": "9e24d8d5ace3cc55760589378846199549f671df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
