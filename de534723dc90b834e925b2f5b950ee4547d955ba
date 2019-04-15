@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eea1219c_70886758",
+        "filename": "android/visibility.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-04-15T20:11:21Z",
+      "side": 1,
+      "message": "Style nit: It\u0027s typically \"TODO\", in all-caps.",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 7
+      },
+      "revId": "de534723dc90b834e925b2f5b950ee4547d955ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

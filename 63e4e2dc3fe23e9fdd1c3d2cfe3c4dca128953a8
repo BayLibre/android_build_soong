@@ -960,6 +960,30 @@
     },
     {
       "key": {
+        "uuid": "13cd9b59_60b9249a",
+        "filename": "android/visibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-04-15T20:11:21Z",
+      "side": 1,
+      "message": "\u003e keep the other code that stores it and uses it simpler.\n\nI was thinking that a visibility spec could always be a compositeRule, which is a list of visibilityRules, which are strings, and then drop the polymorphism to make compositeRule and visiblityRule the same type. In my experience such a more rigid structure generally make things simpler - you can for instance entirely do away with the switch on lines 251-258.\n\n[] could then be defined to mean \"no visibility setting\" rather than \"the set of no visibility rules\" (which you already - rightly imo - disallow at the user visible level), and nil be left as a programming tool.\n\n\u003e we could add //visibility:inherit\n\nAt that point there\u0027d be a call to make whether to flatten the inherits to keep it a plain list, or extend the type (my gut feeling would be the former, to keep it simple, but there might be reasons otherwise). In any case, it still seems apt to make a type-wise distinction between a \"visibility spec\", which is what is applied to a module, and the individual rules, which are the atoms in the \"spec\".",
+      "parentUuid": "3f88f009_aafe905e",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 1
+      },
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "94913c89_032cafd9",
         "filename": "android/visibility.go",
         "patchSetId": 5
