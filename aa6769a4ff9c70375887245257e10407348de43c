@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "78337a88_26f6dd50",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-15T21:20:53Z",
+      "side": 1,
+      "message": "It seemed reasonable to not ask to do anything, but asking to do something but not outputting anything seems like a definite bug.",
+      "parentUuid": "f6550bd6_028b66e6",
+      "range": {
+        "startLine": 330,
+        "startChar": 26,
+        "endLine": 330,
+        "endChar": 43
+      },
+      "revId": "aa6769a4ff9c70375887245257e10407348de43c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "748e4483_6fceb792",
         "filename": "android/rule_builder_test.go",
         "patchSetId": 3
