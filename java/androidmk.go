@@ -38,7 +38,7 @@ func (library *Library) AndroidMkHostDex(w io.Writer, name string, data android.
 		}
 		fmt.Fprintln(w, "LOCAL_SOONG_HEADER_JAR :=", library.headerJarFile.String())
 		fmt.Fprintln(w, "LOCAL_SOONG_CLASSES_JAR :=", library.implementationAndResourcesJar.String())
-		android.WriteRequiredModulesSettings(w, data)
+		android.WriteRequiredModulesSettingsForHost(w, data)
 		fmt.Fprintln(w, "include $(BUILD_SYSTEM)/soong_java_prebuilt.mk")
 	}
 }

@@ -271,24 +271,26 @@ func translateAndroidModule(ctx SingletonContext, w io.Writer, mod blueprint.Mod
 	fmt.Fprintln(&data.preamble, "LOCAL_MODULE :=", name+data.SubName)
 	fmt.Fprintln(&data.preamble, "LOCAL_MODULE_CLASS :=", data.Class)
 	fmt.Fprintln(&data.preamble, "LOCAL_PREBUILT_MODULE_FILE :=", data.OutputFile.String())
-	WriteRequiredModulesSettings(&data.preamble, data)
 
 	archStr := amod.Arch().ArchType.String()
 	host := false
 	switch amod.Os().Class {
 	case Host:
+		WriteRequiredModulesSettingsForHost(&data.preamble, data)
 		// Make cannot identify LOCAL_MODULE_HOST_ARCH:= common.
 		if archStr != "common" {
 			fmt.Fprintln(&data.preamble, "LOCAL_MODULE_HOST_ARCH :=", archStr)
 		}
 		host = true
 	case HostCross:
+		WriteRequiredModulesSettingsForHost(&data.preamble, data)
 		// Make cannot identify LOCAL_MODULE_HOST_CROSS_ARCH:= common.
 		if archStr != "common" {
 			fmt.Fprintln(&data.preamble, "LOCAL_MODULE_HOST_CROSS_ARCH :=", archStr)
 		}
 		host = true
 	case Device:
+		WriteRequiredModulesSettings(&data.preamble, data)
 		// Make cannot identify LOCAL_MODULE_TARGET_ARCH:= common.
 		if archStr != "common" {
 			fmt.Fprintln(&data.preamble, "LOCAL_MODULE_TARGET_ARCH :=", archStr)
@@ -368,6 +370,17 @@ func WriteRequiredModulesSettings(w io.Writer, data AndroidMkData) {
 	}
 	if len(data.Host_required) > 0 {
 		fmt.Fprintln(w, "LOCAL_HOST_REQUIRED_MODULES :=", strings.Join(data.Host_required, " "))
+	}
+	if len(data.Target_required) > 0 {
+		fmt.Fprintln(w, "LOCAL_TARGET_REQUIRED_MODULES :=", strings.Join(data.Target_required, " "))
+	}
+}
+
+// For host-only modules (e.g. hostdex), just append any Host_required modules onto LOCAL_REQUIRED_MODULES
+func WriteRequiredModulesSettingsForHost(w io.Writer, data AndroidMkData) {
+	var requiredModules = append(data.Required, data.Host_required...)
+	if len(requiredModules) > 0 {
+		fmt.Fprintln(w, "LOCAL_REQUIRED_MODULES :=", strings.Join(requiredModules, " "))
 	}
 	if len(data.Target_required) > 0 {
 		fmt.Fprintln(w, "LOCAL_TARGET_REQUIRED_MODULES :=", strings.Join(data.Target_required, " "))
