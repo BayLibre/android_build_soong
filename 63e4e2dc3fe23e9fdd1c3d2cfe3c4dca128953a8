@@ -1235,6 +1235,30 @@
     },
     {
       "key": {
+        "uuid": "4311a763_f733d6c3",
+        "filename": "android/visibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-16T22:05:13Z",
+      "side": 1,
+      "message": "It\u0027s slightly more efficient, as strings are immutable in Go so every +\u003d here is a malloc + strcpy.  Creating a list of strings just stores pointers to the strings, and then Join can do a single malloc and copy each string once.  It\u0027s unfortunately also idomatic in Go to have to do loop copies like this.  Maybe it will get better when Go gets generics.",
+      "parentUuid": "7cbf8f5a_0ad8f014",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 12
+      },
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2251cb11_d678928b",
         "filename": "android/visibility.go",
         "patchSetId": 5
@@ -1420,6 +1444,24 @@
       "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a2692e0_647d8d64",
+        "filename": "android/visibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-16T22:05:13Z",
+      "side": 1,
+      "message": "I\u0027m fine with it this way.",
+      "parentUuid": "d3d0ef6a_ece509a3",
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {

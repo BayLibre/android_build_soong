@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "067ef72d_fa6a2aa7",
+        "filename": "README.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-16T22:05:13Z",
+      "side": 1,
+      "message": "I would interpret \"each package corresponds to a single directory\" as establishing a 1-1 relationship between packages and directories.  Maybe \"each package corresponds to a directory with an Android.bp file\"?",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 9
+      },
+      "revId": "f253a16873f3c13b93c13a21d0f52dc94238b13f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5eebfa2_6584ac0e",
+        "filename": "README.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-16T22:05:13Z",
+      "side": 1,
+      "message": "Use \"module\", \"target\" is very overloaded and usually refers to a product (lunch target).",
+      "range": {
+        "startLine": 115,
+        "startChar": 41,
+        "endLine": 115,
+        "endChar": 54
+      },
+      "revId": "f253a16873f3c13b93c13a21d0f52dc94238b13f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbb1b94a_c50d232a",
+        "filename": "README.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-16T22:05:13Z",
+      "side": 1,
+      "message": "Maybe pick an example where the module name and directory name are different for clarity?",
+      "range": {
+        "startLine": 116,
+        "startChar": 68,
+        "endLine": 116,
+        "endChar": 73
+      },
+      "revId": "f253a16873f3c13b93c13a21d0f52dc94238b13f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
