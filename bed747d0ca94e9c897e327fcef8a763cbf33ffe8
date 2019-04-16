@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "86770b51_d1a508b8",
+        "filename": "cc/ndk_prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-04-16T17:09:22Z",
+      "side": 1,
+      "message": "Re 1: I know Soong expects a certain name format and uses it to infer the file location. My question was more about whether the format was introduce by Soong or legacy mk files. The current wording looks okay though. Just Capitalize \u0027s\u0027 in \u0027soong\u0027.\nRe 2: I think you gotta remove the \".EXT\" part completely from the format description and replace it with .o in the path string.\nRe 3: If you look at the code that calls ndkPrebuiltModuleToPath, the SDK_VERSION in the path comes from the sdk_version property, not the module name.\nRe 4: You put \u003c\u003e around SDK_VERSION and PLATFORM, but not NAME and EXT.",
+      "parentUuid": "e6b8d9c5_906a1ced",
+      "range": {
+        "startLine": 68,
+        "startChar": 15,
+        "endLine": 70,
+        "endChar": 100
+      },
+      "revId": "bed747d0ca94e9c897e327fcef8a763cbf33ffe8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cc1d4eba_5309e387",
         "filename": "cc/ndk_prebuilt.go",
         "patchSetId": 1
