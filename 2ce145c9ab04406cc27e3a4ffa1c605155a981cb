@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da514a72_4b3900e8",
+        "filename": "android/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-16T21:03:06Z",
+      "side": 1,
+      "message": "If you use \"Deprecated: \u003cmsg\u003e\" then the Go tools will treat it as deprecated (intellij will show it with strikethrough).",
+      "revId": "2ce145c9ab04406cc27e3a4ffa1c605155a981cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c04750b_e2bfbad9",
+        "filename": "android/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-16T21:03:06Z",
+      "side": 1,
+      "message": "These seem very verbose, which will make it hard to fit long Make variable names on a single line and may actually decrease readability.  Maybe SetString, SetBool/SetBoolIfTrue, and SetList?",
+      "revId": "2ce145c9ab04406cc27e3a4ffa1c605155a981cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cee498f8_f2036d26",
+        "filename": "android/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-16T21:03:06Z",
+      "side": 1,
+      "message": "The caller may want to have BoolDefault(flag, true), maybe have them call Bool and take a bool instead of a *bool?",
+      "range": {
+        "startLine": 96,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 15
+      },
+      "revId": "2ce145c9ab04406cc27e3a4ffa1c605155a981cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e90ca8fb_aa748a45",
+        "filename": "android/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-16T21:03:06Z",
+      "side": 1,
+      "message": "write?",
+      "range": {
+        "startLine": 248,
+        "startChar": 27,
+        "endLine": 248,
+        "endChar": 32
+      },
+      "revId": "2ce145c9ab04406cc27e3a4ffa1c605155a981cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "772280e6_fa4423a0",
+        "filename": "android/prebuilt_etc_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-16T21:03:06Z",
+      "side": 1,
+      "message": "Can you avoid the module test having to know about AndroidMkEntries implementation details?  Maybe have a method in the android package that takes a module, calls AndroidMkEntries() on it, and then calls fillInEntries().",
+      "revId": "2ce145c9ab04406cc27e3a4ffa1c605155a981cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e4d82ce_d6e4ef22",
+        "filename": "java/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-16T21:03:06Z",
+      "side": 1,
+      "message": "Is this intentional?",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 3
+      },
+      "revId": "2ce145c9ab04406cc27e3a4ffa1c605155a981cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
