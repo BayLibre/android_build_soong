@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "718dfa14_905e546b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-16T15:10:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2405ba8_b802fcbc",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "e084826e95eaf4bfac9f604d4e3f400395cd93d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "696feca2_409cc602",
         "filename": "android/module.go",
         "patchSetId": 2
