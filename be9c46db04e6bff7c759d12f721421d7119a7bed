@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35573051_4c942d6e",
+        "filename": "cc/kernel_headers.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-04-16T19:05:22Z",
+      "side": 1,
+      "message": "Can you rephrase this? Perhaps making it a separate sentence or two? It\u0027s kinda hard to tell what it really means.",
+      "range": {
+        "startLine": 37,
+        "startChar": 48,
+        "endLine": 38,
+        "endChar": 71
+      },
+      "revId": "be9c46db04e6bff7c759d12f721421d7119a7bed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
