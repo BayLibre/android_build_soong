@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05631a72_c30fb61d",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-17T20:24:09Z",
+      "side": 1,
+      "message": "This can be return BoolDefault(me.Optimize.Enabled, me.Optimize.EnabledByDefault)",
+      "revId": "567438e5383016b0399c77088bdc4a6c7d9d2782",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
