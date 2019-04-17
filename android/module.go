@@ -1042,6 +1042,31 @@ func (a *androidModuleContext) validateAndroidModule(module blueprint.Module) Mo
 	return aModule
 }
 
+func (a *androidModuleContext) GetDirectDepWithTag(name string, tag blueprint.DependencyTag) blueprint.Module {
+	mod := a.ModuleContext.GetDirectDepWithTag(name, tag)
+	if mod == nil {
+		// Try again with "prebuilt_" prefix in case when the original module was
+		// replaced by a prebuilt module.
+		mod = a.ModuleContext.GetDirectDepWithTag("prebuilt_"+name, tag)
+		if _, ok := mod.(PrebuiltInterface); !ok {
+			// Respect the result only when the module is actually a prebuilt module
+			mod = nil
+		}
+	}
+	return mod
+}
+
+func (a *androidModuleContext) GetDirectDep(name string) (blueprint.Module, blueprint.DependencyTag) {
+	mod, tag := a.ModuleContext.GetDirectDep(name)
+	if mod == nil {
+		mod, tag = a.ModuleContext.GetDirectDep("prebuilt_" + name)
+		if _, ok := mod.(PrebuiltInterface); !ok {
+			mod = nil
+		}
+	}
+	return mod, tag
+}
+
 func (a *androidModuleContext) VisitDirectDepsBlueprint(visit func(blueprint.Module)) {
 	a.ModuleContext.VisitDirectDeps(visit)
 }
