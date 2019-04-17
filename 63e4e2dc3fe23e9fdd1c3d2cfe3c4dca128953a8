@@ -775,6 +775,30 @@
     },
     {
       "key": {
+        "uuid": "9cc1a779_8e31c40b",
+        "filename": "android/visibility.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-04-17T12:35:59Z",
+      "side": 1,
+      "message": "Thanks. Can you please leave a TODO(b/130631145) comment here that just mentions that support for prebuilts is an open issue?",
+      "parentUuid": "418e93f8_40e06373",
+      "range": {
+        "startLine": 47,
+        "startChar": 92,
+        "endLine": 48,
+        "endChar": 21
+      },
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "560a3c77_435aa2ed",
         "filename": "android/visibility.go",
         "patchSetId": 5
