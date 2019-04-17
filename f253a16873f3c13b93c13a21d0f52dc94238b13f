@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d432fd2c_291e7a4c",
+        "filename": "README.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-17T15:05:37Z",
+      "side": 1,
+      "message": "Is there something particularly wrong with a 1:1 relationship?\n\nWhat if project/Android.bp file includes say other/Common.bp? Wouldn\u0027t any rules in other/Common.bp be in the `other` not the `project` package?\n\nI\u0027m thinking in particular of the libcore/JavaLibrary.bp file.",
+      "parentUuid": "067ef72d_fa6a2aa7",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 9
+      },
+      "revId": "f253a16873f3c13b93c13a21d0f52dc94238b13f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "18483666_90613d5e",
         "filename": "README.md",
         "patchSetId": 8
