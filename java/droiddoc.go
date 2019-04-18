@@ -574,13 +574,8 @@ func (j *Javadoc) genWhitelistPathPrefixes(whitelistPathPrefixes map[string]bool
 func (j *Javadoc) collectAidlFlags(ctx android.ModuleContext, deps deps) droiddocBuilderFlags {
 	var flags droiddocBuilderFlags
 
-	// aidl flags.
 	aidlFlags := j.aidlFlags(ctx, deps.aidlPreprocess, deps.aidlIncludeDirs)
-	if len(aidlFlags) > 0 {
-		// optimization.
-		ctx.Variable(pctx, "aidlFlags", strings.Join(aidlFlags, " "))
-		flags.aidlFlags = "$aidlFlags"
-	}
+	flags.aidlFlags = strings.Join(aidlFlags, " ")
 
 	return flags
 }
