@@ -29,11 +29,12 @@ import (
 func init() {
 	android.RegisterPreSingletonType("sdk_versions", sdkPreSingletonFactory)
 	android.RegisterSingletonType("sdk", sdkSingletonFactory)
-	android.RegisterMakeVarsProvider(pctx, sdkFrameworkAidlMakeVars)
+	android.RegisterMakeVarsProvider(pctx, sdkMakeVars)
 }
 
 var sdkVersionsKey = android.NewOnceKey("sdkVersionsKey")
 var sdkFrameworkAidlPathKey = android.NewOnceKey("sdkFrameworkAidlPathKey")
+var sdkSha256PathKey = android.NewOnceKey("sdkSha256PathKey")
 
 type sdkContext interface {
 	// sdkVersion eturns the sdk_version property of the current module, or an empty string if it is not set.
@@ -171,7 +172,7 @@ func decodeSdkDep(ctx android.BaseContext, sdkContext sdkContext) sdkDep {
 		}
 	}
 
-	if ctx.Config().UnbundledBuildPrebuiltSdks() && v != "" {
+	if ctx.Config().UnbundledBuildUsePrebuiltSdks() && v != "" {
 		return toPrebuilt(v)
 	}
 
@@ -230,12 +231,16 @@ func sdkSingletonFactory() android.Singleton {
 type sdkSingleton struct{}
 
 func (sdkSingleton) GenerateBuildActions(ctx android.SingletonContext) {
-	if ctx.Config().UnbundledBuildPrebuiltSdks() || ctx.Config().IsPdkBuild() {
+	if ctx.Config().UnbundledBuildUsePrebuiltSdks() || ctx.Config().IsPdkBuild() {
 		return
 	}
 
-	// Create framework.aidl by extracting anything that implements android.os.Parcelable from the SDK stubs modules.
+	createSdkFrameworkAidl(ctx)
+	createSdkSha256(ctx)
+}
 
+// Create framework.aidl by extracting anything that implements android.os.Parcelable from the SDK stubs modules.
+func createSdkFrameworkAidl(ctx android.SingletonContext) {
 	stubsModules := []string{
 		"android_stubs_current",
 		"android_test_stubs_current",
@@ -308,10 +313,35 @@ func sdkFrameworkAidlPath(ctx android.PathContext) android.OutputPath {
 	}).(android.OutputPath)
 }
 
-func sdkFrameworkAidlMakeVars(ctx android.MakeVarsContext) {
-	if ctx.Config().UnbundledBuildPrebuiltSdks() || ctx.Config().IsPdkBuild() {
+// Create current.txt.sha256
+func createSdkSha256(ctx android.SingletonContext) {
+	out := sdkSha256Path(ctx)
+	in := android.PathForSource(ctx, "frameworks/base/api/current.txt")
+
+	rule := android.NewRuleBuilder()
+
+	rule.Command().
+		Text("rm -f").Output(out)
+	rule.Command().
+		Text("sha256sum").
+		Input(in).
+		Text("| cut -d' ' -f1 >").
+		Output(out)
+
+	rule.Build(pctx, ctx, "current_txt_sha256", "generate current.txt.sha256")
+}
+
+func sdkSha256Path(ctx android.PathContext) android.OutputPath {
+	return ctx.Config().Once(sdkSha256PathKey, func() interface{} {
+		return android.PathForOutput(ctx, "current.txt.sha256")
+	}).(android.OutputPath)
+}
+
+func sdkMakeVars(ctx android.MakeVarsContext) {
+	if ctx.Config().UnbundledBuildUsePrebuiltSdks() || ctx.Config().IsPdkBuild() {
 		return
 	}
 
 	ctx.Strict("FRAMEWORK_AIDL", sdkFrameworkAidlPath(ctx).String())
+	ctx.Strict("CURRENT_TXT_SHA256", sdkSha256Path(ctx).String())
 }
