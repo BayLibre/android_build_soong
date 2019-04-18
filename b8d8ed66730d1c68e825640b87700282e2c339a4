@@ -22,6 +22,30 @@
       "revId": "b8d8ed66730d1c68e825640b87700282e2c339a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8861bba1_34440287",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-18T04:30:06Z",
+      "side": 1,
+      "message": "Sounds like there may be another bug somewhere, this \"proguardRaiseTag\" dependency isn\u0027t supposed to have any effect on the aidl rule, only on the r8 rule.  The sdk_version: \"test_current\" should cause it to use the generated SDK framework.aidl file whether or not this dependency exists.",
+      "parentUuid": "56f3a14a_09c30996",
+      "range": {
+        "startLine": 469,
+        "startChar": 26,
+        "endLine": 469,
+        "endChar": 50
+      },
+      "revId": "b8d8ed66730d1c68e825640b87700282e2c339a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
