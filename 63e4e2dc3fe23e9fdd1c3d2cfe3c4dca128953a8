@@ -604,6 +604,24 @@
     },
     {
       "key": {
+        "uuid": "29eaa580_81f3b963",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-18T22:02:06Z",
+      "side": 1,
+      "message": "This is not godoc, it is handled by our own code.  File a bug at go/soong-bug if it\u0027s not formatting well for you.\n\nYou can link to the latest version of README.md at https://android.googlesource.com/platform/build/soong/+/master/README.md#visibility",
+      "parentUuid": "5c3bfb35_95733025",
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "682349da_08d5e234",
         "filename": "android/visibility.go",
         "patchSetId": 5
