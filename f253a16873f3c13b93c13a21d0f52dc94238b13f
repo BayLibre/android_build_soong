@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "e27cca79_f109358a",
+        "filename": "README.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-18T15:22:55Z",
+      "side": 1,
+      "message": "Replaced it with bazel\u0027s package concept, almost verbatim.",
+      "parentUuid": "810df737_827cf255",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 9
+      },
+      "revId": "f253a16873f3c13b93c13a21d0f52dc94238b13f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "18483666_90613d5e",
         "filename": "README.md",
         "patchSetId": 8
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "828ca5df_5df827de",
+        "filename": "README.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-18T15:22:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18483666_90613d5e",
+      "range": {
+        "startLine": 113,
+        "startChar": 71,
+        "endLine": 114,
+        "endChar": 20
+      },
+      "revId": "f253a16873f3c13b93c13a21d0f52dc94238b13f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5eebfa2_6584ac0e",
         "filename": "README.md",
         "patchSetId": 8
@@ -116,6 +164,30 @@
       "revId": "f253a16873f3c13b93c13a21d0f52dc94238b13f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bae3199_91c99603",
+        "filename": "README.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-18T15:22:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5eebfa2_6584ac0e",
+      "range": {
+        "startLine": 115,
+        "startChar": 41,
+        "endLine": 115,
+        "endChar": 54
+      },
+      "revId": "f253a16873f3c13b93c13a21d0f52dc94238b13f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -162,6 +234,54 @@
       "revId": "f253a16873f3c13b93c13a21d0f52dc94238b13f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a83042a0_fb46731c",
+        "filename": "README.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-18T15:22:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbb1b94a_c50d232a",
+      "range": {
+        "startLine": 116,
+        "startChar": 68,
+        "endLine": 116,
+        "endChar": 73
+      },
+      "revId": "f253a16873f3c13b93c13a21d0f52dc94238b13f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "581f5bef_d31454e4",
+        "filename": "README.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-18T15:22:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1db2d27b_dc13a6b1",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 56
+      },
+      "revId": "f253a16873f3c13b93c13a21d0f52dc94238b13f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
