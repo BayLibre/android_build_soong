@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56f3a14a_09c30996",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-04-18T00:58:53Z",
+      "side": 1,
+      "message": "Looks like the logic here is not correct, and results in build failure while running `aidl` for `CtsCorpOwnedManagedProfile` module. This happens because when optimize.enabled is cleared, the module that fails will not depend on `framework` and aidl compiler will be be invoked without then correct aidl include libraries (framework/*). We haven\u0027t seen it before because it has been masked by the bug being by this CL. I have verified that explicitly adding `framework` to the `libs` list of the `CtsCorpOwnedManagedProfile` fixes the problem, but I am not sure this is the right approach. Please advise",
+      "range": {
+        "startLine": 469,
+        "startChar": 26,
+        "endLine": 469,
+        "endChar": 50
+      },
+      "revId": "b8d8ed66730d1c68e825640b87700282e2c339a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
