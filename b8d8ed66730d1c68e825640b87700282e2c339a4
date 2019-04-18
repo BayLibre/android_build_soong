@@ -46,6 +46,30 @@
       "revId": "b8d8ed66730d1c68e825640b87700282e2c339a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b46553e_d254b8ad",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-18T04:43:15Z",
+      "side": 1,
+      "message": "Yeah, apparently this is completely broken.  The logic in Make uses out/target/common/obj/framework.aidl for LOCAL_SDK_VERSION :\u003d test_current (https://android.googlesource.com/platform/build/+/3cd4267b79b5574c802d07f58cc3264b8075d465/core/java.mk#111), but to do that in Soong we need to move the framework.aidl generation into Soong.",
+      "parentUuid": "8861bba1_34440287",
+      "range": {
+        "startLine": 469,
+        "startChar": 26,
+        "endLine": 469,
+        "endChar": 50
+      },
+      "revId": "b8d8ed66730d1c68e825640b87700282e2c339a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
