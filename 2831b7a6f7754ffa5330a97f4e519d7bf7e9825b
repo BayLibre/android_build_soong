@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d249516c_c286d994",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-19T04:40:04Z",
+      "side": 1,
+      "message": "var deps []dep, which will be nil until the first append",
+      "revId": "2831b7a6f7754ffa5330a97f4e519d7bf7e9825b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b34e45ee_34d063dd",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1062,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-19T04:40:04Z",
+      "side": 1,
+      "message": "Use fmt.Errorf as the panic value",
+      "revId": "2831b7a6f7754ffa5330a97f4e519d7bf7e9825b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
