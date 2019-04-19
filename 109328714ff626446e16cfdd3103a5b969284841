@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d16573b1_35ae1858",
+        "filename": "java/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-04-19T22:20:16Z",
+      "side": 1,
+      "message": "We should be able to populate this now, since we\u0027ve been updating the SDK from builds that should have distributed the api_fingerprint file",
+      "revId": "109328714ff626446e16cfdd3103a5b969284841",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
