@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "036be223_a89e5a7b",
+        "filename": "android/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-04-22T19:20:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da514a72_4b3900e8",
+      "revId": "2ce145c9ab04406cc27e3a4ffa1c605155a981cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c04750b_e2bfbad9",
         "filename": "android/androidmk.go",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "2ce145c9ab04406cc27e3a4ffa1c605155a981cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a089db7_962528f9",
+        "filename": "android/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-04-22T19:20:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c04750b_e2bfbad9",
+      "revId": "2ce145c9ab04406cc27e3a4ffa1c605155a981cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "71e319fc_7b470f33",
+        "filename": "android/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-04-22T19:20:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cee498f8_f2036d26",
+      "range": {
+        "startLine": 96,
+        "startChar": 4,
+        "endLine": 96,
+        "endChar": 15
+      },
+      "revId": "2ce145c9ab04406cc27e3a4ffa1c605155a981cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e90ca8fb_aa748a45",
         "filename": "android/androidmk.go",
         "patchSetId": 4
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "d28374e9_f4afbbd1",
+        "filename": "android/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-04-22T19:20:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e90ca8fb_aa748a45",
+      "range": {
+        "startLine": 248,
+        "startChar": 27,
+        "endLine": 248,
+        "endChar": 32
+      },
+      "revId": "2ce145c9ab04406cc27e3a4ffa1c605155a981cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "772280e6_fa4423a0",
         "filename": "android/prebuilt_etc_test.go",
         "patchSetId": 4
@@ -96,6 +180,24 @@
       "revId": "2ce145c9ab04406cc27e3a4ffa1c605155a981cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "568c9325_814df9c6",
+        "filename": "android/prebuilt_etc_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-04-22T19:20:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "772280e6_fa4423a0",
+      "revId": "2ce145c9ab04406cc27e3a4ffa1c605155a981cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -119,6 +221,30 @@
       "revId": "2ce145c9ab04406cc27e3a4ffa1c605155a981cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30724b4b_a3d51522",
+        "filename": "java/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-04-22T19:20:47Z",
+      "side": 1,
+      "message": "Yes, it is. r.android.com/937595 added WriteRequiredModulesSettings, a shared function used in 3 places, and this change removes 2 of them, so I inlined it here, the only caller. Even this will be removed in the future as we migrate to this new androidmk composing logic.",
+      "parentUuid": "5e4d82ce_d6e4ef22",
+      "range": {
+        "startLine": 41,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 3
+      },
+      "revId": "2ce145c9ab04406cc27e3a4ffa1c605155a981cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
