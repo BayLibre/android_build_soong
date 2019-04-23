@@ -2,6 +2,69 @@
   "comments": [
     {
       "key": {
+        "uuid": "c8382a8b_b21c978a",
+        "filename": "README.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-04-23T14:57:07Z",
+      "side": 1,
+      "message": "Not sure what this is supposed to say. Maybe: \"..., and its name is the path to that directory under the build root.\" ?",
+      "range": {
+        "startLine": 115,
+        "startChar": 74,
+        "endLine": 116,
+        "endChar": 32
+      },
+      "revId": "4e523c4b51d5230e5a4d2881318f7060fa83f6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82de7c0f_0826c070",
+        "filename": "README.md",
+        "patchSetId": 11
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-04-23T14:57:07Z",
+      "side": 1,
+      "message": "This \"src\" directory level isn\u0027t explained, so imo it\u0027s more confusing than helpful. Either make it more clear that it\u0027s the Android build tree root or else just remove it, because it\u0027s probably clear from the context that all paths are relative to it.",
+      "range": {
+        "startLine": 125,
+        "startChar": 4,
+        "endLine": 125,
+        "endChar": 8
+      },
+      "revId": "4e523c4b51d5230e5a4d2881318f7060fa83f6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "074bd8a4_ec67dd42",
+        "filename": "android/visibility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-04-23T14:57:07Z",
+      "side": 1,
+      "message": "A sentence here clarifying the meaning of [] would be helpful.",
+      "revId": "4e523c4b51d5230e5a4d2881318f7060fa83f6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d86a704e_fc5b161a",
         "filename": "android/visibility.go",
         "patchSetId": 11
