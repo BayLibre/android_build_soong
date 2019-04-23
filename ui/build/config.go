@@ -61,6 +61,38 @@ type configImpl struct {
 
 const srcDirFileCheck = "build/soong/root.bp"
 
+// newConfig variable is defined to override the creating of Config instance for testing purposes.
+var newConfig = NewConfig
+
+const (
+	// Builds from the top of the tree.
+	M = iota
+
+	// Builds all of the modules in the current directory, but not their dependencies.
+	MM
+
+	// Builds all of the modules in the supplied directories, but not their dependencies.
+	MMM
+
+	// Builds all of the modules in the current directory, and their dependencies.
+	MMA
+
+	// Builds all of the modules in the supplied directories, and their dependencies.
+	MMMA
+)
+
+type BuildAction uint
+
+// checkTopDir validates that the current directory is at the root directory of the source tree.
+func checkTopDir(ctx Context) {
+	if _, err := os.Stat(srcDirFileCheck); err != nil {
+		if os.IsNotExist(err) {
+			ctx.Fatalf("Current working directory must be the source tree. %q not found", srcDirFileCheck)
+		}
+		ctx.Fatalln("Error verifying tree state:", err)
+	}
+}
+
 func NewConfig(ctx Context, args ...string) Config {
 	ret := &configImpl{
 		environ: OsEnvironment(),
@@ -154,12 +186,7 @@ func NewConfig(ctx Context, args ...string) Config {
 	ret.environ.Set("TMPDIR", absPath(ctx, ret.TempDir()))
 
 	// Precondition: the current directory is the top of the source tree
-	if _, err := os.Stat(srcDirFileCheck); err != nil {
-		if os.IsNotExist(err) {
-			log.Fatalf("Current working directory must be the source tree. %q not found", srcDirFileCheck)
-		}
-		log.Fatalln("Error verifying tree state:", err)
-	}
+	checkTopDir(ctx)
 
 	if srcDir := absPath(ctx, "."); strings.ContainsRune(srcDir, ' ') {
 		log.Println("You are building in a directory whose absolute path contains a space character:")
@@ -227,6 +254,192 @@ func NewConfig(ctx Context, args ...string) Config {
 	ret.environ.Set("BUILD_DATETIME_FILE", buildDateTimeFile)
 
 	return Config{ret}
+}
+
+// NewBuildActionConfig returns a build configuration based on the build action. The arguments are
+// processed based on the build action and extracts any arguments that belongs to the build action.
+func NewBuildActionConfig(action BuildAction, dir string, ctx Context, args ...string) Config {
+	// The next block of code verifies that the current directory is the root directory of the source
+	// tree. It then finds the relative path of dir based on the root directory of the source tree
+	// and verify that dir is inside of the source tree.
+	checkTopDir(ctx)
+	topDir, err := os.Getwd()
+	if err != nil {
+		ctx.Fatalf("Error retrieving top directory: %v", err)
+	}
+	dir, err = filepath.Abs(dir)
+	if err != nil {
+		ctx.Fatalf("Unable to find absolute path %s: %v", dir, err)
+	}
+	relDir, err := filepath.Rel(topDir, dir)
+	if err != nil {
+		ctx.Fatalf("Unable to find relative path %s of %s: %v", relDir, topDir, err)
+	}
+	// If there are ".." in the path, it's not in the source tree.
+	if strings.Contains(relDir, "..") {
+		ctx.Fatalf("Directory %s is not under the source tree %s", dir, topDir)
+	}
+
+	targetNamePrefix := "MODULES-IN-"
+	for i, arg := range args {
+		if arg == "GET-INSTALL-PATH" {
+			targetNamePrefix = "GET-INSTALL-PATH-IN-"
+			// remove the entry from the args
+			args = append(args[0:i], args[i+1:]...)
+			break
+		}
+	}
+	tidyOnly := os.Getenv("WITH_TIDY_ONLY")
+	// For mm and mma, if the topDir is the root source tree, just run M.
+	if action == MM && topDir != dir {
+		buildFile := findBuildFile(ctx, relDir)
+		if buildFile == "" {
+			ctx.Fatalf("Couldn't locate a makefile from %s directory", relDir)
+		}
+		if err := os.Setenv("ONE_SHOT_MAKEFILE", buildFile); err != nil {
+			ctx.Fatalf("Unable to set ONE_SHOT_MAKEFILE environment variable: %v", err)
+		}
+		if tidyOnly == "" {
+			args = append(args, convertToTarget(filepath.Dir(buildFile), targetNamePrefix))
+		}
+	} else if action == MMA && topDir != dir {
+		// Find the build file from the directory where the build action was triggered by traversing up
+		// the source tree. If a blank build file is returned, simply use the directory where the build
+		// action was invoked.
+		targetDir := relDir
+		if buildFile := findBuildFile(ctx, relDir); buildFile != "" {
+			targetDir = filepath.Dir(buildFile)
+		}
+		args = append(args, convertToTarget(targetDir, targetNamePrefix))
+	} else if action == MMM || action == MMMA {
+		processedArgs, targets, makefiles := getTargets(ctx, relDir, args, targetNamePrefix)
+		args = processedArgs
+		if action == MMM {
+			if err := os.Setenv("ONE_SHOT_MAKEFILE", strings.Join(makefiles, " ")); err != nil {
+				ctx.Fatalf("Unable to set ONE_SHOT_MAKEFILE environment variable: %v", err)
+			}
+		}
+		// Tidy only override all other specified targets.
+		if tidyOnly == "" {
+			args = append(args, targets...)
+		}
+	}
+
+	if tidyOnly == "true" || tidyOnly == "1" {
+		args = append(args, "tidy_only")
+	}
+
+	return newConfig(ctx, args...)
+}
+
+// convertToTarget replaces "/" to "-" in dir and pre-append the targetNamePrefix to the target name.
+func convertToTarget(dir string, targetNamePrefix string) string {
+	return targetNamePrefix + strings.ReplaceAll(dir, "/", "-")
+}
+
+// findBuildFile finds a build file (makefile or blueprint file) by looking at dir first. If not
+// found, go up one level and repeat again until one is found and the path of that build file
+// relative to the root directory of the source tree is returned. The returned filename of build
+// file is "Android.mk". If one was not found, a blank string is returned.
+func findBuildFile(ctx Context, dir string) string {
+	// If the string is empty, assume it is top directory of the source tree.
+	if dir == "" {
+		dir = "."
+	}
+
+	for ; dir != "."; dir = filepath.Dir(dir) {
+		for _, buildFile := range []string{"Android.bp", "Android.mk"} {
+			_, err := os.Stat(filepath.Join(dir, buildFile))
+			if err == nil {
+				return filepath.Join(dir, "Android.mk")
+			}
+			if !os.IsNotExist(err) {
+				ctx.Fatalf("Error retrieving the build file stats: %v", err)
+			}
+		}
+	}
+
+	return ""
+}
+
+// getTargets iterates over the arguments list and extracts any argument that seems to be a
+// directory. If the directory does not exist or the argument is not one of the targets or a dash
+// argument, a fatal error is raised. relDir is related to the source root tree where the build
+// action command was invoked. Each directory is validated if the build file can be found. A
+// specified directory is in the following format:
+//    dir1:target1,target2,...
+// The returned arguments does not contain the build directories. The ordering of the returned
+// arguments is kept.
+func getTargets(ctx Context, relDir string, args []string, targetNamePrefix string) (newArgs []string, targets []string, buildFiles []string) {
+	specialArgs := map[string]bool{
+		"showcommands": true,
+		"snod":         true,
+		"dist":         true,
+		"checkbuild":   true,
+	}
+
+	for _, arg := range args {
+		// It's a dash argument if it starts with "-" or it's a key=value pair, it's not a directory.
+		if strings.IndexRune(arg, '-') == 0 || strings.IndexRune(arg, '=') != -1 {
+			newArgs = append(newArgs, arg)
+			continue
+		}
+
+		if _, ok := specialArgs[arg]; ok {
+			newArgs = append(newArgs, arg)
+			continue
+		}
+
+		dir := arg
+		errMsgBuildFileNotFound := "Couldn't locate a build file from %s directory"
+		errMsgDirNotCorrectFormat := "%s not in proper directory:target1,target2,... format"
+
+		// The directory may have specified specific modules to build. ":" is the separator to separate
+		// the directory and the list of modules.
+		s := strings.Split(dir, ":")
+		l := len(s)
+		if l > 2 { // more than one ":" was specified.
+			ctx.Fatalf(errMsgDirNotCorrectFormat, arg)
+		}
+
+		dir = filepath.Join(relDir, s[0])
+		if _, err := os.Stat(dir); err != nil {
+			ctx.Fatalf("Couldn't find directory %s", dir)
+		}
+
+		// Verify that if there are any targets specified after ":". Each target is separated by ",".
+		var newTargets []string
+		if l == 2 && s[1] != "" {
+			newTargets = strings.Split(s[1], ",")
+			for _, moduleName := range newTargets {
+				if moduleName == "" {
+					ctx.Fatalf(errMsgDirNotCorrectFormat, dir)
+				}
+			}
+		}
+
+		buildFile := findBuildFile(ctx, dir)
+		if buildFile == "" {
+			ctx.Fatalf(errMsgBuildFileNotFound, dir)
+		}
+		buildFileDir := filepath.Dir(buildFile)
+
+		// If there are specified targets, find the build file in the directory. If  dir does not
+		// contain the build file, bail out as it is required for one shot build. If there are no
+		// target specified, build all the modules in dir (or the closest one in the dir path).
+		if len(newTargets) > 0 {
+			if buildFileDir != dir {
+				ctx.Fatalf(errMsgBuildFileNotFound, dir)
+			}
+		} else {
+			newTargets = []string{convertToTarget(buildFileDir, targetNamePrefix)}
+		}
+
+		buildFiles = append(buildFiles, buildFile)
+		targets = append(targets, newTargets...)
+	}
+
+	return newArgs, targets, buildFiles
 }
 
 func (c *configImpl) parseArgs(ctx Context, args []string) {
