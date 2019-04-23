@@ -17,6 +17,9 @@ package build
 import (
 	"bytes"
 	"context"
+	"io/ioutil"
+	"os"
+	"path/filepath"
 	"reflect"
 	"strings"
 	"testing"
@@ -170,6 +173,779 @@ func TestConfigParseArgsVars(t *testing.T) {
 					tc.env, tc.args,
 					tc.remaining, c.arguments)
 			}
+		})
+	}
+}
+
+func TestConfigTopDir(t *testing.T) {
+	ctx := testContext()
+	buildRootDir := filepath.Dir(srcDirFileCheck)
+
+	tests := []struct {
+		description         string
+		path                string
+		wantErr             bool
+		createBuildRootFile bool
+	}{{
+		description:         "already at the root source tree",
+		createBuildRootFile: true,
+	}, {
+		description:         "one level deep in the source tree",
+		path:                "1",
+		createBuildRootFile: true,
+		wantErr:             true,
+	}, {
+		description:         "deep in the source tree",
+		createBuildRootFile: true,
+		path:                "1/2/3/4/5/6/7/8/9/1/2/3/4/5/6/7/8/9/1/2/3/4/5/6/7/8/9/1/2/3/4/5/6/7",
+		wantErr:             true,
+	}, {
+		description: "not in source tree",
+		path:        "1/2/3/4/5",
+		wantErr:     true,
+	}}
+
+	for _, tt := range tests {
+		t.Run(tt.description, func(t *testing.T) {
+			defer logger.Recover(func(err error) {
+				if !tt.wantErr {
+					t.Fatalf("Got unexpected error: %v", err)
+				}
+			})
+
+			// create the root source tree
+			rootDir, err := ioutil.TempDir("", "")
+			if err != nil {
+				t.Fatalf("failed to create temp dir: %v", err)
+			}
+			defer os.RemoveAll(rootDir)
+
+			// create the build root file. This is to test if topDir returns
+			// an error if the build root file does not exist.
+			if tt.createBuildRootFile {
+				dir := filepath.Join(rootDir, buildRootDir)
+				if err := os.MkdirAll(dir, 0755); err != nil {
+					t.Errorf("failed to create %s directory: %v", dir, err)
+				}
+				f := filepath.Join(rootDir, srcDirFileCheck)
+				if err := ioutil.WriteFile(f, []byte{}, 0644); err != nil {
+					t.Errorf("failed to create file %s: %v", f, err)
+				}
+			}
+
+			// next block of code is to set the current directory
+			dir := rootDir
+			if tt.path != "" {
+				dir = filepath.Join(dir, tt.path)
+				if err := os.MkdirAll(dir, 0755); err != nil {
+					t.Errorf("failed to create %s directory: %v", dir, err)
+				}
+			}
+			curDir, err := os.Getwd()
+			if err != nil {
+				t.Fatalf("failed to get the current directory: %v", err)
+			}
+			defer func() { os.Chdir(curDir) }()
+
+			if err := os.Chdir(dir); err != nil {
+				t.Fatalf("failed to change directory to %s: %v", dir, err)
+			}
+
+			topDir := TopDir(ctx)
+			if topDir != rootDir {
+				t.Errorf("expected %s, got %s for top dir", rootDir, topDir)
+			}
+		})
+	}
+}
+
+func TestConfigConvertToTarget(t *testing.T) {
+	tests := []struct {
+		description    string
+		dir            string
+		prefix         string
+		expectedTarget string
+	}{{
+		description:    "one level directory in source tree",
+		dir:            "test1",
+		prefix:         "MODULES-IN-",
+		expectedTarget: "MODULES-IN-test1",
+	}, {
+		description:    "multiple level directories in source tree",
+		dir:            "test1/test2/test3/test4",
+		prefix:         "GET-INSTALL-PATH-IN-",
+		expectedTarget: "GET-INSTALL-PATH-IN-test1-test2-test3-test4",
+	}}
+
+	for _, tt := range tests {
+		t.Run(tt.description, func(t *testing.T) {
+			target := convertToTarget(tt.dir, tt.prefix)
+			if target != tt.expectedTarget {
+				t.Errorf("expected %s, got %s for target", tt.expectedTarget, target)
+			}
+		})
+	}
+}
+
+func setTop(t *testing.T, dir string) func() {
+	curDir, err := os.Getwd()
+	if err != nil {
+		t.Fatalf("failed to get current directory: %v", err)
+	}
+	if err := os.Chdir(dir); err != nil {
+		t.Fatalf("failed to change directory to top dir %s: %v", dir, err)
+	}
+	return func() { os.Chdir(curDir) }
+}
+
+func createBuildFiles(t *testing.T, topDir string, buildFiles []string) {
+	for _, buildFile := range buildFiles {
+		buildFile = filepath.Join(topDir, buildFile)
+		if err := ioutil.WriteFile(buildFile, []byte{}, 0644); err != nil {
+			t.Errorf("failed to create file %s: %v", buildFile, err)
+		}
+	}
+}
+
+func createDirectories(t *testing.T, topDir string, dirs []string) {
+	for _, dir := range dirs {
+		dir = filepath.Join(topDir, dir)
+		if err := os.MkdirAll(dir, 0755); err != nil {
+			t.Errorf("failed to create %s directory: %v", dir, err)
+		}
+	}
+}
+
+func TestConfigGetTargets(t *testing.T) {
+	ctx := testContext()
+	tests := []struct {
+		// test description
+		description string
+
+		// arguments passed in to soong_ui
+		args []string
+
+		// directories to be created in order to get the targets
+		createDirs []string
+
+		// build files to be created to validate if they exist
+		createBuildFiles []string
+
+		// current directory that the user executed the build action command
+		curDir string
+
+		// the target prefix name
+		targetPrefixName string
+
+		// expected targets from the function
+		expectedTargets []string
+
+		// expected build from the build system
+		expectedBuildFiles []string
+
+		// expected returned arguments
+		expectedArgs []string
+
+		// expecting error from running test case
+		wantErr bool
+	}{{
+		description:        "one target dir specified",
+		args:               []string{"test_key=test_value", "snod", "--test", "1/2/3", "-j", "-k"},
+		createDirs:         []string{"0/1/2/3"},
+		createBuildFiles:   []string{"0/1/2/3/Android.bp"},
+		targetPrefixName:   "MODULES-IN-",
+		curDir:             "0",
+		expectedTargets:    []string{"MODULES-IN-0-1-2-3"},
+		expectedBuildFiles: []string{"0/1/2/3/Android.mk"},
+		expectedArgs:       []string{"test_key=test_value", "snod", "--test", "-j", "-k"},
+	}, {
+		description:      "one target dir specified, build file does not exist",
+		args:             []string{"test_key=test_value", "snod", "--test", "1/2/3", "-j", "-k"},
+		createDirs:       []string{"0/1/2/3"},
+		targetPrefixName: "MODULES-IN-",
+		curDir:           "test0",
+		wantErr:          true,
+	}, {
+		description:      "one target dir specified, invalid targets specified",
+		args:             []string{"test_key=test_value", "snod", "--test", "1/2/3:t1:t2", "-j", "-k"},
+		createDirs:       []string{"0/1/2/3"},
+		targetPrefixName: "MODULES-IN-",
+		curDir:           "test0",
+		wantErr:          true,
+	}, {
+		description:        "one target dir specified, no target specified but has colon",
+		args:               []string{"test_key=test_value", "checkbuild", "--test", "1/2/3:", "-j", "-k"},
+		createDirs:         []string{"0/1/2/3"},
+		createBuildFiles:   []string{"0/1/2/3/Android.bp"},
+		targetPrefixName:   "MODULES-IN-",
+		curDir:             "0",
+		expectedTargets:    []string{"MODULES-IN-0-1-2-3"},
+		expectedBuildFiles: []string{"0/1/2/3/Android.mk"},
+		expectedArgs:       []string{"test_key=test_value", "checkbuild", "--test", "-j", "-k"},
+	}, {
+		description:        "one target dir specified, single target specified",
+		args:               []string{"test_key=test_value", "--test", "1/2/3:t1,t2", "-j", "-k"},
+		createDirs:         []string{"0/1/2/3"},
+		createBuildFiles:   []string{"0/1/2/3/Android.bp"},
+		targetPrefixName:   "MODULES-IN-",
+		curDir:             "0",
+		expectedTargets:    []string{"t1", "t2"},
+		expectedBuildFiles: []string{"0/1/2/3/Android.mk"},
+		expectedArgs:       []string{"test_key=test_value", "--test", "-j", "-k"},
+	}, {
+		description:      "one target dir specified, blank targets",
+		args:             []string{"test_key=test_value", "snod", "--test", "1/2/3:,", "-j", "-k"},
+		createDirs:       []string{"0/1/2/3"},
+		createBuildFiles: []string{"0/1/2/3/Android.bp"},
+		targetPrefixName: "MODULES-IN-",
+		curDir:           "0",
+		wantErr:          true,
+	}, {
+		description:      "one target dir specified, blank target",
+		args:             []string{"test_key=test_value", "snod", "--test", "1/2/3:,t1", "-j", "-k"},
+		createDirs:       []string{"0/1/2/3"},
+		createBuildFiles: []string{"0/1/2/3/Android.bp"},
+		targetPrefixName: "MODULES-IN-",
+		curDir:           "0",
+		wantErr:          true,
+	}, {
+		description:      "one target dir specified, blank target",
+		args:             []string{"test_key=test_value", "snod", "--test", "1/2/3:t1,", "-j", "-k"},
+		createDirs:       []string{"0/1/2/3"},
+		createBuildFiles: []string{"0/1/2/3/Android.bp"},
+		targetPrefixName: "MODULES-IN-",
+		curDir:           "0",
+		wantErr:          true,
+	}, {
+		description:        "one target dir specified, many targets",
+		args:               []string{"test_key=test_value", "dist", "--test", "1/2/3:t1,t2,t3,t4,t5,t6,t7,t8,t9,t10", "-j", "-k"},
+		createDirs:         []string{"0/1/2/3"},
+		createBuildFiles:   []string{"0/1/2/3/Android.bp"},
+		targetPrefixName:   "MODULES-IN-",
+		curDir:             "0",
+		expectedTargets:    []string{"t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9", "t10"},
+		expectedBuildFiles: []string{"0/1/2/3/Android.mk"},
+		expectedArgs:       []string{"test_key=test_value", "dist", "--test", "-j", "-k"},
+	}, {
+		description:      "one target dir specified, one target specified, no build file",
+		args:             []string{"test_key=test_value", "snod", "--test", "1/2/3:t1", "-j", "-k"},
+		createDirs:       []string{"0/1/2/3"},
+		targetPrefixName: "MODULES-IN-",
+		curDir:           "0",
+		wantErr:          true,
+	}, {
+		description:      "one target dir specified, one target specified, build file not in target dir",
+		args:             []string{"test_key=test_value", "snod", "--test", "1/2/3:t1", "-j", "-k"},
+		createDirs:       []string{"0/1/2/3"},
+		createBuildFiles: []string{"0/1/2/Android.mk"},
+		targetPrefixName: "MODULES-IN-",
+		curDir:           "0",
+		wantErr:          true,
+	}, {
+		description:        "one target dir specified, build file not in target dir",
+		args:               []string{"test_key=test_value", "snod", "--test", "1/2/3", "-j", "-k"},
+		createDirs:         []string{"0/1/2/3"},
+		createBuildFiles:   []string{"0/1/2/Android.mk"},
+		targetPrefixName:   "MODULES-IN-",
+		curDir:             "0",
+		expectedTargets:    []string{"MODULES-IN-0-1-2"},
+		expectedBuildFiles: []string{"0/1/2/Android.mk"},
+		expectedArgs:       []string{"test_key=test_value", "snod", "--test", "-j", "-k"},
+	}, {
+		description:        "multiple targets dir specified, targets specified",
+		args:               []string{"test_key=test_value", "--test", "1/2/3:t1,t2", "3/4:t3,t4,t5", "-j", "-k"},
+		createDirs:         []string{"0/1/2/3", "0/3/4"},
+		createBuildFiles:   []string{"0/1/2/3/Android.bp", "0/3/4/Android.mk"},
+		targetPrefixName:   "MODULES-IN-",
+		curDir:             "0",
+		expectedTargets:    []string{"t1", "t2", "t3", "t4", "t5"},
+		expectedBuildFiles: []string{"0/1/2/3/Android.mk", "0/3/4/Android.mk"},
+		expectedArgs:       []string{"test_key=test_value", "--test", "-j", "-k"},
+	}, {
+		description:        "multiple targets dir specified, one directory has targets specified",
+		args:               []string{"test_key=test_value", "--test", "1/2/3:t1,t2", "3/4", "-j", "-k"},
+		createDirs:         []string{"0/1/2/3", "0/3/4"},
+		createBuildFiles:   []string{"0/1/2/3/Android.bp", "0/3/4/Android.mk"},
+		targetPrefixName:   "GET-INSTALL-PATH-IN-",
+		curDir:             "0",
+		expectedTargets:    []string{"t1", "t2", "GET-INSTALL-PATH-IN-0-3-4"},
+		expectedBuildFiles: []string{"0/1/2/3/Android.mk", "0/3/4/Android.mk"},
+		expectedArgs:       []string{"test_key=test_value", "--test", "-j", "-k"},
+	}, {
+		description:      "two target dirs specified, one dir exist",
+		args:             []string{"test_key=test_value", "snod", "--test", "1/2/3:t1", "3/4", "-j", "-k"},
+		createDirs:       []string{"0/1/2/3"},
+		createBuildFiles: []string{"0/1/2/Android.mk"},
+		targetPrefixName: "MODULES-IN-",
+		curDir:           "0",
+		wantErr:          true,
+	}, {
+		description:        "multiple targets dirs specified at root source tree",
+		args:               []string{"test_key=test_value", "--test", "0/1/2/3:t1,t2", "0/3/4", "-j", "-k"},
+		createDirs:         []string{"0/1/2/3", "0/3/4"},
+		createBuildFiles:   []string{"0/1/2/3/Android.bp", "0/3/4/Android.mk"},
+		targetPrefixName:   "GET-INSTALL-PATH-IN-",
+		curDir:             ".",
+		expectedTargets:    []string{"t1", "t2", "GET-INSTALL-PATH-IN-0-3-4"},
+		expectedBuildFiles: []string{"0/1/2/3/Android.mk", "0/3/4/Android.mk"},
+		expectedArgs:       []string{"test_key=test_value", "--test", "-j", "-k"},
+	}, {
+		description:      "no directories specified",
+		args:             []string{"test_key=test_value", "--test", "-j", "-k"},
+		createDirs:       []string{"0/1/2/3", "0/3/4"},
+		createBuildFiles: []string{"0/1/2/3/Android.bp", "0/3/4/Android.mk"},
+		targetPrefixName: "GET-INSTALL-PATH-IN-",
+		curDir:           ".",
+		expectedArgs:     []string{"test_key=test_value", "--test", "-j", "-k"},
+	}}
+
+	for _, tt := range tests {
+		t.Run(tt.description, func(t *testing.T) {
+			defer logger.Recover(func(err error) {
+				if !tt.wantErr {
+					t.Fatalf("Got unexpected error: %v", err)
+				}
+			})
+
+			// create the root source tree
+			topDir, err := ioutil.TempDir("", "")
+			if err != nil {
+				t.Fatalf("failed to create temp dir: %v", err)
+			}
+			defer os.RemoveAll(topDir)
+
+			createDirectories(t, topDir, tt.createDirs)
+			createBuildFiles(t, topDir, tt.createBuildFiles)
+			r := setTop(t, topDir)
+			defer r()
+
+			args, targets, buildFiles := getTargets(ctx, tt.curDir, tt.args, tt.targetPrefixName)
+			if !reflect.DeepEqual(targets, tt.expectedTargets) {
+				t.Errorf("expected %v, got %v for targets", tt.expectedTargets, targets)
+			}
+			if !reflect.DeepEqual(buildFiles, tt.expectedBuildFiles) {
+				t.Errorf("expected %v, got %v for build files", tt.expectedBuildFiles, buildFiles)
+			}
+			if !reflect.DeepEqual(args, tt.expectedArgs) {
+				t.Errorf("expected %v, got %v for args", tt.expectedArgs, args)
+			}
+		})
+	}
+}
+
+func TestConfigFindBuildFile(t *testing.T) {
+	ctx := testContext()
+
+	tests := []struct {
+		// description of the test case
+		description string
+
+		// dir to create, also the base directory is where
+		// findBuildFile is invoked.
+		dir string
+
+		// array of build files to create in dir
+		buildFiles []string
+
+		// expected build file path to find
+		expectedBuildFile string
+	}{{
+		description:       "build file exists at leaf directory",
+		dir:               "1/2/3",
+		buildFiles:        []string{"1/2/3/Android.bp"},
+		expectedBuildFile: "1/2/3/Android.mk",
+	}, {
+		description:       "build file exists in all directory paths",
+		dir:               "1/2/3",
+		buildFiles:        []string{"1/Android.mk", "1/2/Android.mk", "1/2/3/Android.mk"},
+		expectedBuildFile: "1/2/3/Android.mk",
+	}, {
+		description: "build file does not exist in all directory paths",
+		dir:         "1/2/3",
+	}, {
+		description: "build file exists only at top directory",
+		dir:         "1/2/3",
+		buildFiles:  []string{"Android.bp"},
+	}, {
+		description:       "build file exist in a subdirectory",
+		dir:               "1/2/3",
+		buildFiles:        []string{"1/2/Android.bp"},
+		expectedBuildFile: "1/2/Android.mk",
+	}, {
+		description:       "build file exists in a subdirectory",
+		dir:               "1/2/3",
+		buildFiles:        []string{"1/Android.mk"},
+		expectedBuildFile: "1/Android.mk",
+	}, {
+		description: "top directory",
+		buildFiles:  []string{"Android.bp"},
+	}}
+
+	for _, tt := range tests {
+		t.Run(tt.description, func(t *testing.T) {
+			defer logger.Recover(func(err error) {
+				t.Fatalf("Got unexpected error: %v", err)
+			})
+
+			topDir, err := ioutil.TempDir("", "")
+			if err != nil {
+				t.Fatalf("failed to create temp dir: %v", err)
+			}
+			defer os.RemoveAll(topDir)
+
+			if tt.dir != "" {
+				createDirectories(t, topDir, []string{tt.dir})
+			}
+
+			createBuildFiles(t, topDir, tt.buildFiles)
+
+			curDir, err := os.Getwd()
+			if err != nil {
+				t.Fatalf("Could not get working directory: %v", err)
+			}
+			defer func() { os.Chdir(curDir) }()
+			if err := os.Chdir(topDir); err != nil {
+				t.Fatalf("Could not change top dir to %s: %v", topDir, err)
+			}
+
+			buildFile := findBuildFile(ctx, tt.dir)
+			if buildFile != tt.expectedBuildFile {
+				t.Errorf("expected %q, got %q for build file", tt.expectedBuildFile, buildFile)
+			}
+		})
+	}
+}
+
+// newTestConfig is a fake NewConfig function call to test the
+// NewBuildActionConfig function.
+func newTestConfig(ctx Context, args ...string) Config {
+	config := configImpl{}
+	config.arguments = args
+	return Config{&config}
+}
+
+type envVar struct {
+	name  string
+	value string
+}
+
+type buildActionTestCase struct {
+	// unit test description
+	description string
+
+	// build arguments
+	args []string
+
+	// directories to be created
+	createDirs []string
+
+	// build files to be created
+	createBuildFiles []string
+
+	// directory where the build action was invoked
+	curDir string
+
+	// WITH_TIDY_ONLY environment variable specified
+	tidyOnly string
+
+	// expected arguments to be in Config instance.
+	expectedArgs []string
+
+	// expected environment variables to be set
+	expectedEnvVars []envVar
+
+	// expecting an error?
+	wantErr bool
+}
+
+func testBuildAction(t *testing.T, tt buildActionTestCase, action BuildAction) {
+	ctx := testContext()
+
+	// environment variables to set it to blank on every test case run
+	resetEnvVars := []string{
+		"ONE_SHOT_MAKEFILE",
+		"WITH_TIDY_ONLY",
+	}
+
+	for _, name := range resetEnvVars {
+		if err := os.Unsetenv(name); err != nil {
+			t.Fatalf("failed to unset environment variable %s: %v", name, err)
+		}
+	}
+	if tt.tidyOnly != "" {
+		if err := os.Setenv("WITH_TIDY_ONLY", tt.tidyOnly); err != nil {
+			t.Errorf("failed to set WITH_TIDY_ONLY to %s: %v", tt.tidyOnly, err)
+		}
+	}
+
+	defer logger.Recover(func(err error) {
+		if !tt.wantErr {
+			t.Fatalf("Got unexpected error: %v", err)
+		}
+	})
+
+	// create the root source tree
+	topDir, err := ioutil.TempDir("", "")
+	if err != nil {
+		t.Fatalf("failed to create temp dir: %v", err)
+	}
+	defer os.RemoveAll(topDir)
+
+	createDirectories(t, topDir, tt.createDirs)
+	createBuildFiles(t, topDir, tt.createBuildFiles)
+
+	r := setTop(t, topDir)
+	defer r()
+
+	// the next block is to create the root build file
+	rootBuildFileDir := filepath.Dir(srcDirFileCheck)
+	if err := os.MkdirAll(rootBuildFileDir, 0755); err != nil {
+		t.Fatalf("Failed to create %s directory: %v", rootBuildFileDir, err)
+	}
+
+	if err := ioutil.WriteFile(srcDirFileCheck, []byte{}, 0644); err != nil {
+		t.Fatalf("failed to create %s file: %v", srcDirFileCheck, err)
+	}
+
+	// use the test version of the new config to avoid setting up extra stuff on Config
+	orgNewConfig := newConfig
+	newConfig = newTestConfig
+	defer func() { newConfig = orgNewConfig }()
+
+	config := NewBuildActionConfig(action, tt.curDir, ctx, tt.args...)
+	if !reflect.DeepEqual(tt.expectedArgs, config.arguments) {
+		t.Fatalf("expected %v, got %v for config arguments", tt.expectedArgs, config.arguments)
+	}
+
+	for _, env := range tt.expectedEnvVars {
+		if val := os.Getenv(env.name); val != env.value {
+			t.Errorf("expecting %s, got %s for environment variable %s", env.value, val, env.name)
+		}
+	}
+
+	// if it has reached here, it means the error path was not triggered
+	if tt.wantErr {
+		t.Errorf("expecting error")
+	}
+}
+
+func TestConfigNewBuildActionConfigMM(t *testing.T) {
+	tests := []buildActionTestCase{{
+		description:      "normal execution in a directory",
+		createDirs:       []string{"0/1/2"},
+		createBuildFiles: []string{"0/1/2/Android.mk"},
+		curDir:           "0/1/2",
+		args:             []string{"-j", "-k", "showcommands"},
+		expectedArgs:     []string{"-j", "-k", "showcommands", "MODULES-IN-0-1-2"},
+		expectedEnvVars: []envVar{
+			envVar{
+				name:  "ONE_SHOT_MAKEFILE",
+				value: "0/1/2/Android.mk"}},
+	}, {
+		description:      "makefile in parent directory",
+		createDirs:       []string{"0/1/2"},
+		createBuildFiles: []string{"0/1/Android.mk"},
+		curDir:           "0/1/2",
+		expectedArgs:     []string{"MODULES-IN-0-1"},
+		expectedEnvVars: []envVar{
+			envVar{
+				name:  "ONE_SHOT_MAKEFILE",
+				value: "0/1/Android.mk"}},
+	}, {
+		description: "build file not found",
+		createDirs:  []string{"0/1/2"},
+		curDir:      "0/1/2",
+		wantErr:     true,
+	}, {
+		description: "build action executed at root directory",
+		expectedEnvVars: []envVar{
+			envVar{
+				name:  "ONE_SHOT_MAKEFILE",
+				value: ""}},
+	}, {
+		description:      "GET-INSTALL-PATH specified,",
+		args:             []string{"GET-INSTALL-PATH"},
+		createDirs:       []string{"0/1/2"},
+		createBuildFiles: []string{"0/1/Android.mk"},
+		curDir:           "0/1/2",
+		expectedArgs:     []string{"GET-INSTALL-PATH-IN-0-1"},
+		expectedEnvVars: []envVar{
+			envVar{
+				name:  "ONE_SHOT_MAKEFILE",
+				value: "0/1/Android.mk"}},
+	}, {
+		description:      "tidy only environment variable specified,",
+		args:             []string{"GET-INSTALL-PATH"},
+		createDirs:       []string{"0/1/2"},
+		createBuildFiles: []string{"0/1/Android.mk"},
+		curDir:           "0/1/2",
+		tidyOnly:         "true",
+		expectedArgs:     []string{"tidy_only"},
+		expectedEnvVars: []envVar{
+			envVar{
+				name:  "ONE_SHOT_MAKEFILE",
+				value: "0/1/Android.mk"}},
+	}}
+	for _, tt := range tests {
+		t.Run("build action mm, "+tt.description, func(t *testing.T) {
+			testBuildAction(t, tt, MM)
+		})
+	}
+}
+
+func TestConfigNewBuildActionConfigMMA(t *testing.T) {
+	tests := []buildActionTestCase{{
+		description:      "normal execution in a directory",
+		createDirs:       []string{"0/1/2"},
+		createBuildFiles: []string{"0/1/2/Android.mk"},
+		curDir:           "0/1/2",
+		expectedArgs:     []string{"MODULES-IN-0-1-2"},
+	}, {
+		description:      "build file in parent directory",
+		createDirs:       []string{"0/1/2"},
+		createBuildFiles: []string{"0/1/Android.mk"},
+		curDir:           "0/1/2",
+		expectedArgs:     []string{"MODULES-IN-0-1"},
+	}, {
+		description:      "build file in 2nd level parent directory",
+		createDirs:       []string{"0/1/2"},
+		createBuildFiles: []string{"0/Android.bp"},
+		curDir:           "0/1/2",
+		expectedArgs:     []string{"MODULES-IN-0"},
+	}, {
+		description: "build action executed at root directory",
+	}, {
+		description:  "build file not found - no error is expected to return",
+		createDirs:   []string{"0/1/2"},
+		curDir:       "0/1/2",
+		expectedArgs: []string{"MODULES-IN-0-1-2"},
+	}, {
+		description:      "GET-INSTALL-PATH specified,",
+		args:             []string{"GET-INSTALL-PATH"},
+		createDirs:       []string{"0/1/2"},
+		createBuildFiles: []string{"0/1/Android.mk"},
+		curDir:           "0/1/2",
+		expectedArgs:     []string{"GET-INSTALL-PATH-IN-0-1"},
+	}, {
+		description:      "tidy only environment variable specified,",
+		args:             []string{"GET-INSTALL-PATH"},
+		createDirs:       []string{"0/1/2"},
+		createBuildFiles: []string{"0/1/Android.mk"},
+		curDir:           "0/1/2",
+		tidyOnly:         "true",
+		expectedArgs:     []string{"GET-INSTALL-PATH-IN-0-1", "tidy_only"},
+	}}
+	for _, tt := range tests {
+		t.Run("build action mma, "+tt.description, func(t *testing.T) {
+			testBuildAction(t, tt, MMA)
+		})
+	}
+}
+
+func TestConfigNewBuildActionConfigMMM(t *testing.T) {
+	tests := []buildActionTestCase{{
+		description:      "normal execution in a directory",
+		createDirs:       []string{"0/1/2/3.1", "0/1/2/3.2", "0/1/2/3.3"},
+		createBuildFiles: []string{"0/1/2/3.1/Android.bp", "0/1/2/3.2/Android.bp", "0/1/2/3.3/Android.bp"},
+		curDir:           "0/1/2",
+		args:             []string{"3.1/:t1,t2", "3.2/:t3,t4", "3.3/:t5,t6"},
+		expectedArgs:     []string{"t1", "t2", "t3", "t4", "t5", "t6"},
+		expectedEnvVars: []envVar{
+			envVar{
+				name:  "ONE_SHOT_MAKEFILE",
+				value: "0/1/2/3.1/Android.mk 0/1/2/3.2/Android.mk 0/1/2/3.3/Android.mk"}},
+	}, {
+		description:      "GET-INSTALL-PATH specified",
+		createDirs:       []string{"0/1/2/3.1", "0/1/2/3.2", "0/1/2/3.3"},
+		createBuildFiles: []string{"0/1/2/3.1/Android.bp", "0/1/2/3.2/Android.bp", "0/1/2/3.3/Android.bp"},
+		curDir:           "0/1/2",
+		args:             []string{"GET-INSTALL-PATH", "3.1/", "3.2/", "3.3/:t6"},
+		expectedArgs:     []string{"GET-INSTALL-PATH-IN-0-1-2-3.1", "GET-INSTALL-PATH-IN-0-1-2-3.2", "t6"},
+		expectedEnvVars: []envVar{
+			envVar{
+				name:  "ONE_SHOT_MAKEFILE",
+				value: "0/1/2/3.1/Android.mk 0/1/2/3.2/Android.mk 0/1/2/3.3/Android.mk"}},
+	}, {
+		description:      "tidy only environment variable specified",
+		createDirs:       []string{"0/1/2/3.1", "0/1/2/3.2", "0/1/2/3.3"},
+		createBuildFiles: []string{"0/1/2/3.1/Android.bp", "0/1/2/3.2/Android.bp", "0/1/2/3.3/Android.bp"},
+		curDir:           "0/1/2",
+		args:             []string{"GET-INSTALL-PATH", "3.1/", "3.2/", "3.3/:t6"},
+		tidyOnly:         "1",
+		expectedArgs:     []string{"tidy_only"},
+		expectedEnvVars: []envVar{
+			envVar{
+				name:  "ONE_SHOT_MAKEFILE",
+				value: "0/1/2/3.1/Android.mk 0/1/2/3.2/Android.mk 0/1/2/3.3/Android.mk"}},
+	}, {
+		description:      "normal execution from top dir directory",
+		createDirs:       []string{"0/1/2/3.1", "0/1/2/3.2", "0/1/2/3.3"},
+		createBuildFiles: []string{"0/1/2/3.1/Android.bp", "0/1/2/3.2/Android.bp", "0/1/2/3.3/Android.bp"},
+		curDir:           ".",
+		args:             []string{"0/1/2/3.1", "0/1/2/3.2/:t3,t4", "0/1/2/3.3/:t5,t6"},
+		expectedArgs:     []string{"MODULES-IN-0-1-2-3.1", "t3", "t4", "t5", "t6"},
+		expectedEnvVars: []envVar{
+			envVar{
+				name:  "ONE_SHOT_MAKEFILE",
+				value: "0/1/2/3.1/Android.mk 0/1/2/3.2/Android.mk 0/1/2/3.3/Android.mk"}},
+	}}
+	for _, tt := range tests {
+		t.Run("build action mmm, "+tt.description, func(t *testing.T) {
+			testBuildAction(t, tt, MMM)
+		})
+	}
+}
+
+func TestConfigNewBuildActionConfigMMMA(t *testing.T) {
+	tests := []buildActionTestCase{{
+		description:      "normal execution in a directory",
+		createDirs:       []string{"0/1/2/3.1", "0/1/2/3.2", "0/1/2/3.3"},
+		createBuildFiles: []string{"0/1/2/3.1/Android.bp", "0/1/2/3.2/Android.bp", "0/1/2/3.3/Android.bp"},
+		curDir:           "0/1/2",
+		args:             []string{"3.1/", "3.2/", "3.3/"},
+		expectedArgs:     []string{"MODULES-IN-0-1-2-3.1", "MODULES-IN-0-1-2-3.2", "MODULES-IN-0-1-2-3.3"},
+		expectedEnvVars: []envVar{
+			envVar{
+				name:  "ONE_SHOT_MAKEFILE",
+				value: ""}},
+	}, {
+		description:      "GET-INSTALL-PATH specified",
+		createDirs:       []string{"0/1/2/3.1", "0/1/2/3.2", "0/1/3"},
+		createBuildFiles: []string{"0/1/2/3.1/Android.bp", "0/1/2/3.2/Android.bp", "0/1/Android.bp"},
+		curDir:           "0/1",
+		args:             []string{"GET-INSTALL-PATH", "2/3.1/", "2/3.2", "3"},
+		expectedArgs:     []string{"GET-INSTALL-PATH-IN-0-1-2-3.1", "GET-INSTALL-PATH-IN-0-1-2-3.2", "GET-INSTALL-PATH-IN-0-1"},
+		expectedEnvVars: []envVar{
+			envVar{
+				name:  "ONE_SHOT_MAKEFILE",
+				value: ""}},
+	}, {
+		description:      "tidy only environment variable specified",
+		createDirs:       []string{"0/1/2/3.1", "0/1/2/3.2", "0/1/2/3.3"},
+		createBuildFiles: []string{"0/1/2/3.1/Android.bp", "0/1/2/3.2/Android.bp", "0/1/2/3.3/Android.bp"},
+		curDir:           "0/1/2",
+		args:             []string{"GET-INSTALL-PATH", "3.1/", "3.2/", "3.3"},
+		tidyOnly:         "1",
+		expectedArgs:     []string{"tidy_only"},
+		expectedEnvVars: []envVar{
+			envVar{
+				name:  "ONE_SHOT_MAKEFILE",
+				value: ""}},
+	}, {
+		description:      "normal execution from top dir directory",
+		createDirs:       []string{"0/1/2/3.1", "0/1/2/3.2", "0/1/3", "0/2"},
+		createBuildFiles: []string{"0/1/2/3.1/Android.bp", "0/1/2/3.2/Android.bp", "0/1/3/Android.bp", "0/2/Android.bp"},
+		curDir:           ".",
+		args:             []string{"0/1/2/3.1", "0/1/2/3.2", "0/1/3", "0/2"},
+		expectedArgs:     []string{"MODULES-IN-0-1-2-3.1", "MODULES-IN-0-1-2-3.2", "MODULES-IN-0-1-3", "MODULES-IN-0-2"},
+		expectedEnvVars: []envVar{
+			envVar{
+				name:  "ONE_SHOT_MAKEFILE",
+				value: ""}},
+	}}
+	for _, tt := range tests {
+		t.Run("build action mmma, "+tt.description, func(t *testing.T) {
+			testBuildAction(t, tt, MMMA)
 		})
 	}
 }
