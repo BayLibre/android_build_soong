@@ -22,6 +22,30 @@
       "revId": "2767f2c5b7756693f7007d19c5094a4a2edc90f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38ea4f80_5c5095a2",
+        "filename": "cc/ndk_prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-04-24T23:50:47Z",
+      "side": 1,
+      "message": "opps, missed this comment. Done.",
+      "parentUuid": "abf0912c_3eedd01c",
+      "range": {
+        "startLine": 70,
+        "startChar": 3,
+        "endLine": 70,
+        "endChar": 14
+      },
+      "revId": "2767f2c5b7756693f7007d19c5094a4a2edc90f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
