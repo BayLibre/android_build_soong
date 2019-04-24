@@ -22,6 +22,30 @@
       "revId": "28c3eb6829f6516ff3bb94d8c59ecd0b8ff16f17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23f4ad45_c2ae7931",
+        "filename": "java/device_host_converter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-24T19:15:40Z",
+      "side": 1,
+      "message": "No, this is merging multiple header jars (which were created by turbine in other modules) into one.",
+      "parentUuid": "3516c000_c2e63830",
+      "range": {
+        "startLine": 121,
+        "startChar": 2,
+        "endLine": 121,
+        "endChar": 20
+      },
+      "revId": "28c3eb6829f6516ff3bb94d8c59ecd0b8ff16f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
