@@ -597,6 +597,9 @@ func (c *Module) HasStubsVariants() bool {
 	if library, ok := c.linker.(*libraryDecorator); ok {
 		return len(library.Properties.Stubs.Versions) > 0
 	}
+	if library, ok := c.linker.(*prebuiltLibraryLinker); ok {
+		return len(library.Properties.Stubs.Versions) > 0
+	}
 	return false
 }
 
@@ -610,7 +613,7 @@ func (c *Module) nativeCoverage() bool {
 
 func isBionic(name string) bool {
 	switch name {
-	case "libc", "libm", "libdl", "linker":
+	case "libc", "libm", "libdl", "libclang_rt.hwasan-aarch64-android", "linker":
 		return true
 	}
 	return false

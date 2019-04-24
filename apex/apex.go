@@ -608,7 +608,7 @@ func getCopyManifestForNativeLibrary(cc *cc.Module, handleSpecialLibs bool) (fil
 	}
 	if handleSpecialLibs {
 		switch cc.Name() {
-		case "libc", "libm", "libdl":
+		case "libc", "libm", "libdl", "prebuilt_libclang_rt.hwasan-aarch64-android":
 			// Special case for bionic libs. This is to prevent the bionic libs
 			// from being included in the search path /apex/com.android.apex/lib.
 			// This exclusion is required because bionic libs in the runtime APEX
@@ -690,8 +690,10 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			switch depTag {
 			case sharedLibTag:
 				if cc, ok := child.(*cc.Module); ok {
-					fileToCopy, dirInApex := getCopyManifestForNativeLibrary(cc, handleSpecialLibs)
-					filesInfo = append(filesInfo, apexFile{fileToCopy, depName, dirInApex, nativeSharedLib, cc, nil})
+					if cc.Enabled() {
+						fileToCopy, dirInApex := getCopyManifestForNativeLibrary(cc, handleSpecialLibs)
+						filesInfo = append(filesInfo, apexFile{fileToCopy, depName, dirInApex, nativeSharedLib, cc, nil})
+					}
 					return true
 				} else {
 					ctx.PropertyErrorf("native_shared_libs", "%q is not a cc_library or cc_library_shared module", depName)
