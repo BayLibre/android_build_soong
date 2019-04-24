@@ -441,7 +441,7 @@ func (binary *binaryDecorator) install(ctx ModuleContext, file android.Path) {
 	// The original path becomes a symlink to the corresponding file in the
 	// runtime APEX.
 	if isBionic(ctx.baseModuleName()) && ctx.Arch().Native && ctx.apexName() == "" && !ctx.inRecovery() {
-		if ctx.Device() {
+		if ctx.Device() && requiresLegacySymlink(ctx.baseModuleName()) {
 			binary.installSymlinkToRuntimeApex(ctx, file)
 		}
 		binary.baseInstaller.subDir = "bootstrap"

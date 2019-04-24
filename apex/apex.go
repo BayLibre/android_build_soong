@@ -157,6 +157,19 @@ func init() {
 	})
 }
 
+// The HWASAN runtime in the runtime APEX is special because it is an optional
+// LL-NDK library. The runtime is only part of the LL-NDK in builds in which
+// libc depends on HWASAN. This is modeled by not declaring an explicit direct
+// dependency on the runtime from the runtime APEX. Instead, we make this
+// function return true for the runtime. This causes an indirect dependency
+// on the runtime from the APEX to be treated like a direct dependency. In this
+// way, the runtime appears in the APEX in the case where there is an indirect
+// dependency from the runtime APEX via libc.
+func isOptionalLLNDKLib(apexName, targetName string) bool {
+	targetName = strings.TrimPrefix(targetName, "prebuilt_")
+	return strings.HasPrefix(apexName, "com.android.runtime") && targetName == "libclang_rt.hwasan-aarch64-android"
+}
+
 // Mark the direct and transitive dependencies of apex bundles so that they
 // can be built for the apex bundles.
 func apexDepsMutator(mctx android.TopDownMutatorContext) {
@@ -166,6 +179,9 @@ func apexDepsMutator(mctx android.TopDownMutatorContext) {
 			depName := mctx.OtherModuleName(child)
 			// If the parent is apexBundle, this child is directly depended.
 			_, directDep := parent.(*apexBundle)
+			if !directDep && isOptionalLLNDKLib(apexBundleName, depName) {
+				directDep = true
+			}
 			if a.installable() && !a.testApex {
 				// TODO(b/123892969): Workaround for not having any way to annotate test-apexs
 				// non-installable apex's cannot be installed and so should not prevent libraries from being
@@ -762,7 +778,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			// indirect dependencies
 			if am, ok := child.(android.ApexModule); ok && am.CanHaveApexVariants() && am.IsInstallableToApex() {
 				if cc, ok := child.(*cc.Module); ok {
-					if !a.Host() && (cc.IsStubs() || cc.HasStubsVariants()) {
+					if !a.Host() && (cc.IsStubs() || cc.HasStubsVariants()) && !isOptionalLLNDKLib(a.Name(), child.Name()) {
 						// If the dependency is a stubs lib, don't include it in this APEX,
 						// but make sure that the lib is installed on the device.
 						// In case no APEX is having the lib, the lib is installed to the system
