@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3516c000_c2e63830",
+        "filename": "java/device_host_converter.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-04-24T17:19:25Z",
+      "side": 1,
+      "message": "Did you mean to use TransformJavaToHeaderClasses here? TransformJavaToHeaderClasses doesn\u0027t seem to be using turbine.",
+      "range": {
+        "startLine": 121,
+        "startChar": 2,
+        "endLine": 121,
+        "endChar": 20
+      },
+      "revId": "28c3eb6829f6516ff3bb94d8c59ecd0b8ff16f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
