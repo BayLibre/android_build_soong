@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c7c46da_8ee98433",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-04-24T16:27:36Z",
+      "side": 1,
+      "message": "Can you add a comment on why we\u0027re adding the flag for libraries?",
+      "revId": "3193efce2209b57350e1b10e714e5f4e3e90a015",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
