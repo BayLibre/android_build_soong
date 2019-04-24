@@ -69,6 +69,8 @@ func init() {
 		ctx.TopDown("lto_deps", ltoDepsMutator)
 		ctx.BottomUp("lto", ltoMutator).Parallel()
 
+		ctx.TopDown("bionic_deps", bionicDepsMutator)
+
 		ctx.TopDown("double_loadable", checkDoubleLoadableLibraries).Parallel()
 	})
 
@@ -597,6 +599,9 @@ func (c *Module) HasStubsVariants() bool {
 	if library, ok := c.linker.(*libraryDecorator); ok {
 		return len(library.Properties.Stubs.Versions) > 0
 	}
+	if library, ok := c.linker.(*prebuiltLibraryLinker); ok {
+		return len(library.Properties.Stubs.Versions) > 0
+	}
 	return false
 }
 
@@ -849,6 +854,13 @@ func (c *Module) Symlinks() []string {
 		return p.symlinkList()
 	}
 	return nil
+}
+
+func (c *Module) isStaticExecutable() bool {
+	if p, ok := c.linker.(*binaryDecorator); ok {
+		return Bool(p.Properties.Static_executable)
+	}
+	return false
 }
 
 // orderDeps reorders dependencies into a list such that if module A depends on B, then
@@ -2242,6 +2254,28 @@ func getCurrentNdkPrebuiltVersion(ctx DepsContext) string {
 		return strconv.Itoa(config.NdkMaxPrebuiltVersionInt)
 	}
 	return ctx.Config().PlatformSdkVersion()
+}
+
+var bionicDeps = make(map[string]struct{})
+
+func bionicDepsMutator(mctx android.TopDownMutatorContext) {
+	if m, ok := mctx.Module().(*Module); ok && isBionic(m.Name()) {
+		bionicDeps[m.Name()] = struct{}{}
+		if m.isStaticExecutable() {
+			return
+		}
+		mctx.WalkDeps(func(dep android.Module, parent android.Module) bool {
+			if m, ok := dep.(*Module); ok {
+				// TODO: libdl_android should be considered a bionic dep as
+				// well, but that will require more yak shaving.
+				if m.Name() == "libdl_android" {
+					return true
+				}
+				bionicDeps[m.Name()] = struct{}{}
+			}
+			return true
+		})
+	}
 }
 
 var Bool = proptools.Bool
