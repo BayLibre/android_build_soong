@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dfafbfe3_db9a9704",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2019-04-24T22:11:15Z",
+      "side": 1,
+      "message": "should it say prebuilt_libclang_rt.... ,  as in the other file ?",
+      "revId": "57780c9b9c0b97557950d313506aa31dcdb400d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
