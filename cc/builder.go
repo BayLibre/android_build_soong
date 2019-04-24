@@ -215,6 +215,12 @@ var (
 		blueprint.RuleParams{
 			Command: "gunzip -c $in > $out",
 		})
+
+	zip = pctx.AndroidStaticRule("zip",
+		blueprint.RuleParams{
+			Command:     "echo ${in} | tr ' ' '\\n' | sort -u > ${out}.tmp && ${SoongZipCmd} -o ${out} -l ${out}.tmp",
+			CommandDeps: []string{"${SoongZipCmd}"},
+		})
 )
 
 func init() {
@@ -227,6 +233,8 @@ func init() {
 		// Darwin doesn't have /proc
 		pctx.StaticVariable("relPwd", "")
 	}
+
+	pctx.HostBinToolVariable("SoongZipCmd", "soong_zip")
 }
 
 type builderFlags struct {
@@ -862,13 +870,18 @@ func TransformDarwinStrip(ctx android.ModuleContext, inputFile android.Path,
 	})
 }
 
-func TransformCoverageFilesToLib(ctx android.ModuleContext,
-	inputs Objects, flags builderFlags, baseName string) android.OptionalPath {
+func TransformCoverageFilesToZip(ctx android.ModuleContext,
+	inputs Objects, baseName string) android.OptionalPath {
 
 	if len(inputs.coverageFiles) > 0 {
-		outputFile := android.PathForModuleOut(ctx, baseName+".gcnodir")
+		outputFile := android.PathForModuleOut(ctx, baseName+".zip")
 
-		TransformObjToStaticLib(ctx, inputs.coverageFiles, flags, outputFile, nil)
+		ctx.Build(pctx, android.BuildParams{
+			Rule:        zip,
+			Description: "zip " + outputFile.Base(),
+			Inputs:      inputs.coverageFiles,
+			Output:      outputFile,
+		})
 
 		return android.OptionalPathForPath(outputFile)
 	}
