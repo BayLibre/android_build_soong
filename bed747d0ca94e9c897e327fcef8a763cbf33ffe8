@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "ec9b113d_9382418f",
+        "filename": "cc/ndk_prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-04-24T18:06:58Z",
+      "side": 1,
+      "message": "1: Done.\n2: Done.\n3: Done. Replace the SDK_VERSION in the name format to \u003csdk_version\u003e, the property name.\n4: Ah! ok, done.",
+      "parentUuid": "86770b51_d1a508b8",
+      "range": {
+        "startLine": 68,
+        "startChar": 15,
+        "endLine": 70,
+        "endChar": 100
+      },
+      "revId": "bed747d0ca94e9c897e327fcef8a763cbf33ffe8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc1d4eba_5309e387",
         "filename": "cc/ndk_prebuilt.go",
         "patchSetId": 1
