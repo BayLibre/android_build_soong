@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "32e8f575_7a669dcc",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-04-25T12:44:10Z",
+      "side": 1,
+      "message": "No need to have this here. Please refer to my comment in the other file.",
+      "range": {
+        "startLine": 611,
+        "startChar": 30,
+        "endLine": 611,
+        "endChar": 77
+      },
+      "revId": "57780c9b9c0b97557950d313506aa31dcdb400d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f782823_9c6a5347",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-04-25T12:44:10Z",
+      "side": 1,
+      "message": "This looks dangerous as reference to a disable module is silently ignored.",
+      "range": {
+        "startLine": 697,
+        "startChar": 0,
+        "endLine": 697,
+        "endChar": 16
+      },
+      "revId": "57780c9b9c0b97557950d313506aa31dcdb400d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dfafbfe3_db9a9704",
         "filename": "cc/cc.go",
         "patchSetId": 1
@@ -31,6 +77,24 @@
       "side": 1,
       "message": "The other file matches on the string returned by ctx.Name() and this one matches on the string returned by ctx.baseModuleName(). This is one case where they are different.",
       "parentUuid": "dfafbfe3_db9a9704",
+      "revId": "57780c9b9c0b97557950d313506aa31dcdb400d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f950193e_2e360622",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-04-25T12:44:10Z",
+      "side": 1,
+      "message": "I don\u0027t think you need to add this lib here because you won\u0027t need the symlink for this file. AFAIK, no one is hard-coding that the library is accessible from /system/lib.",
+      "parentUuid": "be60c26e_20787b6a",
       "revId": "57780c9b9c0b97557950d313506aa31dcdb400d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
