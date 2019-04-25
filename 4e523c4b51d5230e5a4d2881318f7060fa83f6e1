@@ -178,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "a4a11fe3_17629deb",
+        "filename": "android/visibility.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-25T20:34:19Z",
+      "side": 1,
+      "message": "This isn\u0027t fixed, it should either be:\n\n\ts :\u003d make([]string, 0, len(r)+2)\n\nor\n\n\tvar s []string\n\nor\n\n\ts :\u003d make([]string, len(r)+2)\n\tfor i, r :\u003d range r {\n\t\ts[i] \u003d r.String()\n\t}\n\nA test for this method would make this obvious.",
+      "parentUuid": "a51610fd_e3be4316",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 30
+      },
+      "revId": "4e523c4b51d5230e5a4d2881318f7060fa83f6e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "292602e8_ba5eb10d",
         "filename": "android/visibility.go",
         "patchSetId": 11
