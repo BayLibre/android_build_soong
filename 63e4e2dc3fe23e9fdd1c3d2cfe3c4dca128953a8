@@ -622,6 +622,24 @@
     },
     {
       "key": {
+        "uuid": "2750d77e_e71431f4",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-04-25T14:58:20Z",
+      "side": 1,
+      "message": "Raised http://b/131310615 to cover the issues I found. Copied the documentation from README.md over here and tried to use the link. It does not work well but hopefully this is more like what you want.",
+      "parentUuid": "29eaa580_81f3b963",
+      "revId": "63e4e2dc3fe23e9fdd1c3d2cfe3c4dca128953a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "682349da_08d5e234",
         "filename": "android/visibility.go",
         "patchSetId": 5
