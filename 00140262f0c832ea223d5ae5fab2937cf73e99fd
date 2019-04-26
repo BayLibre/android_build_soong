@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b79122b_603a5378",
+        "filename": "cc/kernel_headers.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-04-26T20:25:03Z",
+      "side": 1,
+      "message": "I kind of understand what you\u0027re trying to say here, but am not really sure if it is grammatically correct. Also, if it means what I think it does, is it really necessary information?",
+      "range": {
+        "startLine": 37,
+        "startChar": 13,
+        "endLine": 37,
+        "endChar": 69
+      },
+      "revId": "00140262f0c832ea223d5ae5fab2937cf73e99fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79ef50c8_cb408361",
+        "filename": "cc/kernel_headers.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-04-26T20:25:03Z",
+      "side": 1,
+      "message": "just \u0027them\u0027?",
+      "range": {
+        "startLine": 39,
+        "startChar": 23,
+        "endLine": 40,
+        "endChar": 33
+      },
+      "revId": "00140262f0c832ea223d5ae5fab2937cf73e99fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
