@@ -642,6 +642,28 @@ type AndroidAppImportProperties struct {
 	// A prebuilt apk to import
 	Apk string
 
+	// Per-DPI settings
+	Dpi_variants struct {
+		Ldpi struct {
+			Apk *string
+		}
+		Mdpi struct {
+			Apk *string
+		}
+		Hdpi struct {
+			Apk *string
+		}
+		Xhdpi struct {
+			Apk *string
+		}
+		Xxhdpi struct {
+			Apk *string
+		}
+		Xxxhdpi struct {
+			Apk *string
+		}
+	}
+
 	// The name of a certificate in the default certificate directory, blank to use the default
 	// product certificate, or an android_app_certificate module name in the form ":module". If the
 	// prebuilt apk is already signed, set this flag to "PRESIGNED".
@@ -658,6 +680,55 @@ type AndroidAppImportProperties struct {
 	// binaries would be installed by default (in PRODUCT_PACKAGES) the other binary will be removed
 	// from PRODUCT_PACKAGES.
 	Overrides []string
+}
+
+// Chooses a source APK path to use based on the module's per-DPI settings and the product config.
+func (a *AndroidAppImport) getSrcApkPath(ctx android.ModuleContext) string {
+	// Use the generic APK if there's no preferred DPI for this product.
+	config := ctx.Config()
+	if config.ProductAAPTPreferredConfig() == "" && len(config.ProductAAPTPrebuiltDPI()) == 0 {
+		return a.properties.Apk
+	}
+
+	// Collect per-DPI apk paths.
+	dpiApkMap := make(map[string]*string)
+	if a.properties.Dpi_variants.Ldpi.Apk != nil {
+		dpiApkMap["ldpi"] = a.properties.Dpi_variants.Ldpi.Apk
+	}
+	if a.properties.Dpi_variants.Mdpi.Apk != nil {
+		dpiApkMap["mdpi"] = a.properties.Dpi_variants.Mdpi.Apk
+	}
+	if a.properties.Dpi_variants.Hdpi.Apk != nil {
+		dpiApkMap["hdpi"] = a.properties.Dpi_variants.Hdpi.Apk
+	}
+	if a.properties.Dpi_variants.Xhdpi.Apk != nil {
+		dpiApkMap["xhdpi"] = a.properties.Dpi_variants.Xhdpi.Apk
+	}
+	if a.properties.Dpi_variants.Xxhdpi.Apk != nil {
+		dpiApkMap["xxhdpi"] = a.properties.Dpi_variants.Xxhdpi.Apk
+	}
+	if a.properties.Dpi_variants.Xxxhdpi.Apk != nil {
+		dpiApkMap["xxxhdpi"] = a.properties.Dpi_variants.Xxxhdpi.Apk
+	}
+	// Use the generic APK if there's no per-DPI apk paths specified.
+	if len(dpiApkMap) == 0 {
+		return a.properties.Apk
+	}
+
+	// Match PRODUCT_AAPT_PREF_CONFIG first and then PRODUCT_AAPT_PREBUILT_DPI.
+	if config.ProductAAPTPreferredConfig() != "" {
+		if apk, ok := dpiApkMap[config.ProductAAPTPreferredConfig()]; ok {
+			return *apk
+		}
+	}
+	for _, dpi := range config.ProductAAPTPrebuiltDPI() {
+		if apk, ok := dpiApkMap[dpi]; ok {
+			return *apk
+		}
+	}
+
+	// No match. Use the generic one.
+	return a.properties.Apk
 }
 
 func (a *AndroidAppImport) DepsMutator(ctx android.BottomUpMutatorContext) {
@@ -691,10 +762,9 @@ func (a *AndroidAppImport) GenerateAndroidBuildActions(ctx android.ModuleContext
 	_, certificates := collectAppDeps(ctx)
 
 	// TODO: LOCAL_EXTRACT_APK/LOCAL_EXTRACT_DPI_APK
-	// TODO: LOCAL_DPI_VARIANTS
 	// TODO: LOCAL_PACKAGE_SPLITS
 
-	srcApk := a.prebuilt.SingleSourcePath(ctx)
+	srcApk := android.PathForModuleSrc(ctx, a.getSrcApkPath(ctx))
 
 	// TODO: Install or embed JNI libraries
 
