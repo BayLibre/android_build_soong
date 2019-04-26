@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1b71ea01_99c8642d",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2019-04-26T07:08:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32e8f575_7a669dcc",
+      "range": {
+        "startLine": 611,
+        "startChar": 30,
+        "endLine": 611,
+        "endChar": 77
+      },
+      "revId": "57780c9b9c0b97557950d313506aa31dcdb400d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f782823_9c6a5347",
         "filename": "apex/apex.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-04-25T12:44:10Z",
       "side": 1,
       "message": "This looks dangerous as reference to a disable module is silently ignored.",
+      "range": {
+        "startLine": 697,
+        "startChar": 0,
+        "endLine": 697,
+        "endChar": 16
+      },
+      "revId": "57780c9b9c0b97557950d313506aa31dcdb400d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b502599_f09f78eb",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2019-04-26T07:08:39Z",
+      "side": 1,
+      "message": "I\u0027ve now reverted this part. As I mentioned in my other comment I\u0027ve reimplemented the runtime library inclusion directly.",
+      "parentUuid": "9f782823_9c6a5347",
       "range": {
         "startLine": 697,
         "startChar": 0,
@@ -95,6 +143,24 @@
       "side": 1,
       "message": "I don\u0027t think you need to add this lib here because you won\u0027t need the symlink for this file. AFAIK, no one is hard-coding that the library is accessible from /system/lib.",
       "parentUuid": "be60c26e_20787b6a",
+      "revId": "57780c9b9c0b97557950d313506aa31dcdb400d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5ef53c9_d543f4d3",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2019-04-26T07:08:39Z",
+      "side": 1,
+      "message": "Yes, I won\u0027t need the symlink, but I will need the library to be moved into the bootstrap directory. I ended up splitting this function in two.",
+      "parentUuid": "f950193e_2e360622",
       "revId": "57780c9b9c0b97557950d313506aa31dcdb400d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
