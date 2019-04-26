@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "106510cd_562b8e8d",
+        "filename": "cc/ndk_prebuilt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-04-26T20:33:56Z",
+      "side": 1,
+      "message": "This still looks confusing to me. Why NAME is in uppercase when ndk_ is in lowercase? What\u0027s the difference between \u003csdk_version\u003e and \u003cSDK_VERSION\u003e? Is this intended? (I know it isn\u0027t, but from a random developer\u0027s point of view...) Where does \u003cPLATFORM\u003e come from? And so on... (Similar confusion from the two comments below.)",
+      "revId": "b241fe9882baa3de37c6cb5c84c456f2201409eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
