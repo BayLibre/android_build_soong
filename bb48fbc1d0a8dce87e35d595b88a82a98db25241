@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2221101b_738adec0",
+        "filename": "cc/ndk_prebuilt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-04-27T00:16:20Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be .a?",
+      "range": {
+        "startLine": 127,
+        "startChar": 79,
+        "endLine": 127,
+        "endChar": 82
+      },
+      "revId": "bb48fbc1d0a8dce87e35d595b88a82a98db25241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
