@@ -22,6 +22,30 @@
       "revId": "bb48fbc1d0a8dce87e35d595b88a82a98db25241",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db6ecdce_35c3d283",
+        "filename": "cc/ndk_prebuilt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-04-27T01:37:08Z",
+      "side": 1,
+      "message": "Good catch. Yes it is. done.",
+      "parentUuid": "2221101b_738adec0",
+      "range": {
+        "startLine": 127,
+        "startChar": 79,
+        "endLine": 127,
+        "endChar": 82
+      },
+      "revId": "bb48fbc1d0a8dce87e35d595b88a82a98db25241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
