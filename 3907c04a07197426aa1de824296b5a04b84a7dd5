@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0dafd213_0717a12d",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 951,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-04-29T08:00:54Z",
+      "side": 1,
+      "message": "Could you create a Top-down mutator to mark the dependencies of the bionic libs so that they can later be installed to the same bootstrap subdir? Then we don\u0027t need to hard code the libclang_rt lib name here.\n\nOr, we might be able to utilize the bootstrap property. If it is set to true for a library, its non-APEX version is installed to bootstrap subdir. libc/dl/m and the clang runtime library could set it to true.",
+      "range": {
+        "startLine": 951,
+        "startChar": 6,
+        "endLine": 951,
+        "endChar": 36
+      },
+      "revId": "3907c04a07197426aa1de824296b5a04b84a7dd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
