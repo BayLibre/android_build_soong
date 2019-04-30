@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cb53bcfb_0c22e943",
+        "filename": "Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2019-04-30T20:49:03Z",
+      "side": 1,
+      "message": "It\u0027s more maintainable this way (unmodified output of `nm -g libgcc.a`).",
+      "parentUuid": "56f05116_cd57ffed",
+      "revId": "acee27cd7236554d0112001c96b9b5790c1c7097",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "16c9bd3b_51ff9fe7",
         "filename": "scripts/strip.sh",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2019-04-30T20:06:21Z",
       "side": 1,
       "message": "I guess we had just removed the functionality here without removing the actual option (at least from the help and/or implementation of it).",
+      "revId": "acee27cd7236554d0112001c96b9b5790c1c7097",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5a0990b_43c5eda1",
+        "filename": "scripts/strip.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2019-04-30T20:49:03Z",
+      "side": 1,
+      "message": "We still use GNU strip on Darwin.",
+      "parentUuid": "16c9bd3b_51ff9fe7",
       "revId": "acee27cd7236554d0112001c96b9b5790c1c7097",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
