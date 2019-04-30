@@ -1,0 +1,7 @@
+Code-Review+2: David Srbecky <dsrbecky@google.com>
+Presubmit-Ready+1: David Srbecky <dsrbecky@google.com>
+Submitted-by: Nicolas Geoffray <ngeoffray@google.com>
+Submitted-at: Tue, 30 Apr 2019 13:33:27 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/954098
+Project: platform/build/soong
+Branch: refs/heads/master
