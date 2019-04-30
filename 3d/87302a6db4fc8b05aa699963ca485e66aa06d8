@@ -1,0 +1,9 @@
+Code-Review+2: Elliott Hughes <enh@google.com>
+Code-Review+2: Dan Willemsen <dwillemsen@google.com>
+Autosubmit+1: Elliott Hughes <enh@google.com>
+Presubmit-Ready+1: Elliott Hughes <enh@google.com>
+Submitted-by: Elliott Hughes <enh@google.com>
+Submitted-at: Tue, 30 Apr 2019 22:39:50 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/954351
+Project: platform/build/soong
+Branch: refs/heads/master
