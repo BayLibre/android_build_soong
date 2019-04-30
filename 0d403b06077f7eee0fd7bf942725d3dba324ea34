@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f45dc1a_5f63af99",
+        "filename": "java/app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-30T20:26:59Z",
+      "side": 1,
+      "message": "maybe make this a Presigned *bool instead, and make it mutually exclusive with certificate?",
+      "range": {
+        "startLine": 647,
+        "startChar": 54,
+        "endLine": 647,
+        "endChar": 63
+      },
+      "revId": "0d403b06077f7eee0fd7bf942725d3dba324ea34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
