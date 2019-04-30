@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a124da09_ffe54a06",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2019-04-30T17:10:50Z",
+      "side": 1,
+      "message": "Is it worth also manually confirming/spot checking that the dependency restrictions still work correctly after this CL?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 18
+      },
+      "revId": "1965add20d58994e711c2066326043cab2c7ddb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
