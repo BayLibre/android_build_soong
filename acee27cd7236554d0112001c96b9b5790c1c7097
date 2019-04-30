@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fb06c22f_79d8c3c1",
+        "filename": "Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2019-04-30T22:02:15Z",
+      "side": 1,
+      "message": "Not through a linker script, since linker script doesn\u0027t distinguish which achieve a symbol is sourced from. Alternatively we could put this list in the libgcc prebuilt directory, but that\u0027s a lot more complicated...",
+      "parentUuid": "88545d1f_7a06c4ef",
+      "revId": "acee27cd7236554d0112001c96b9b5790c1c7097",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "56f05116_cd57ffed",
         "filename": "Android.bp",
         "patchSetId": 2
