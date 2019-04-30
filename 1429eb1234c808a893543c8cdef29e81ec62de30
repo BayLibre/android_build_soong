@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5021b61f_985d07e9",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-04-30T20:53:57Z",
+      "side": 1,
+      "message": "you could do this with reflection, something like (untested):\n\nv :\u003d reflect.ValueOf(a.properties.Dpi_variants)\nfor _, dpi :\u003d range dpiVariants {\n    f :\u003d v.FieldByName(proptools.FieldNameForProperty(dpi))\n    dpiApkMap[dpi] \u003d f.Interface().(*string)\n}\n\nYou could also create the Dpi_variants struct at runtime by making the type interface{} in AndroidAppImportProperties, using reflect.StructOf to create the a reflect.Type at runtime (inside a func init()?), then reflect.PtrTo to make it a pointer to the struct, and then in the factory assign a.properties.Dpi_variants \u003d reflect.Zero(runtimeCreatedType).  I think that would mean no hardcoded *dpi values, only a single list of valid values.",
+      "revId": "1429eb1234c808a893543c8cdef29e81ec62de30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
