@@ -370,16 +370,13 @@ func (linker *baseLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 		flags.LdFlags = append(flags.LdFlags, linker.Properties.Host_ldlibs...)
 
 		if !ctx.Windows() {
-			// Add -ldl, -lpthread, -lm and -lrt to host builds to match the default behavior of device
+			// Add -ldl, -lpthread, and -lm to host builds to match the default behavior of device
 			// builds
 			flags.LdFlags = append(flags.LdFlags,
 				"-ldl",
 				"-lpthread",
 				"-lm",
 			)
-			if !ctx.Darwin() {
-				flags.LdFlags = append(flags.LdFlags, "-lrt")
-			}
 		}
 	}
 
