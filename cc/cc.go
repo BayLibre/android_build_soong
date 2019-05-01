@@ -52,6 +52,15 @@ func init() {
 		ctx.TopDown("hwasan_deps", sanitizerDepsMutator(hwasan))
 		ctx.BottomUp("hwasan", sanitizerMutator(hwasan)).Parallel()
 
+		// TODO(b/131771163): LTO and Fuzzer support is mutually incompatible.
+		// Ensure that the LTO mutator comes before the fuzzer mutator, as the
+		// fuzzer mutator will explicitly add -fno-lto to the flags.
+		ctx.TopDown("lto_deps", ltoDepsMutator)
+		ctx.BottomUp("lto", ltoMutator).Parallel()
+
+		ctx.TopDown("fuzzer_deps", sanitizerDepsMutator(fuzzer))
+		ctx.BottomUp("fuzzer", sanitizerMutator(fuzzer)).Parallel()
+
 		ctx.TopDown("cfi_deps", sanitizerDepsMutator(cfi))
 		ctx.BottomUp("cfi", sanitizerMutator(cfi)).Parallel()
 
@@ -66,9 +75,6 @@ func init() {
 
 		ctx.BottomUp("coverage", coverageMutator).Parallel()
 		ctx.TopDown("vndk_deps", sabiDepsMutator)
-
-		ctx.TopDown("lto_deps", ltoDepsMutator)
-		ctx.BottomUp("lto", ltoMutator).Parallel()
 
 		ctx.TopDown("double_loadable", checkDoubleLoadableLibraries).Parallel()
 	})
@@ -936,14 +942,18 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	if c.stl != nil {
 		flags = c.stl.flags(ctx, flags)
 	}
+	// TODO(b/131771163): LTO and Fuzzer support is mutually incompatible.
+	// Ensure that the LTO flags comes before the sanitizer flags, as the
+	// sanitizer mutator will explicitly add -fno-lto to the flags when fuzzing
+	// support is enabled.
+	if c.lto != nil {
+		flags = c.lto.flags(ctx, flags)
+	}
 	if c.sanitize != nil {
 		flags = c.sanitize.flags(ctx, flags)
 	}
 	if c.coverage != nil {
 		flags = c.coverage.flags(ctx, flags)
-	}
-	if c.lto != nil {
-		flags = c.lto.flags(ctx, flags)
 	}
 	if c.pgo != nil {
 		flags = c.pgo.flags(ctx, flags)
