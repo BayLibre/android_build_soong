@@ -22,6 +22,30 @@
       "revId": "3907c04a07197426aa1de824296b5a04b84a7dd5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ee2e9cb_9c987a7d",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 951,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2019-05-01T02:50:31Z",
+      "side": 1,
+      "message": "I created the mutator, but it turned out that that on its own didn\u0027t result in the behaviour that we want because in non-HWASAN builds it resulted in the HWASAN runtime being installed to /system/lib64 instead of /system/lib64/bootstrap. What we really want in that case is for the HWASAN runtime not to be installed at all.\n\nIt turns out that the reason why it was being installed in non-HWASAN builds was that it was being added to LLNDK_LIBRARIES. Any libraries in LLNDK_LIBRARIES are installed by default even if nothing depends on them. So I also made a change to filter out HWASAN from LLNDK_LIBRARIES. If an explicit dependency on HWASAN is declared (or an implicit one via SANITIZE_TARGET), that should still result in the sanitizer runtime being installed because of build dependencies.\n\nThat also required that I change ld.config.txt to include %SANITIZER_RUNTIME_LIBRARIES% in shared_libs in one case in which we weren\u0027t including both sets of libraries.",
+      "parentUuid": "0dafd213_0717a12d",
+      "range": {
+        "startLine": 951,
+        "startChar": 6,
+        "endLine": 951,
+        "endChar": 36
+      },
+      "revId": "3907c04a07197426aa1de824296b5a04b84a7dd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
