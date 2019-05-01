@@ -34,6 +34,24 @@
       "revId": "1429eb1234c808a893543c8cdef29e81ec62de30",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ab74a63_87dc7d6e",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-01T23:19:31Z",
+      "side": 1,
+      "message": "True, we have the original struct as a reflect.Value, but we only use that for finding the default values, not for getting a list of the values.  I wonder if we should be using reflection on that original value to find the fields, and then just using the AST to find the documentation for the field.",
+      "parentUuid": "8556f3d9_def54668",
+      "revId": "1429eb1234c808a893543c8cdef29e81ec62de30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
