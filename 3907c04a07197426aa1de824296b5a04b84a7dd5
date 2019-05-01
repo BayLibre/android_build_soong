@@ -46,6 +46,30 @@
       "revId": "3907c04a07197426aa1de824296b5a04b84a7dd5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d13781c7_f0bbf3b8",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 951,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-05-01T10:55:27Z",
+      "side": 1,
+      "message": "The dependency from libc to the runtime library is created by the sanitizer mutator only for the sanitizing builds. By running a (new) Top-down mutator, you can enumerate the dependencies of the libc module. Then you can set a new mutated property (e.g. subdir) as \u0027bootstrap\u0027 for the dependencies. Then this install() function could use the value of the subdir property to set subDir to the installer.\n\nFor non-sanitized builds, the runtime lib won\u0027t appear as a dependency of libc. So, the subdir property won\u0027t be set.",
+      "parentUuid": "3ee2e9cb_9c987a7d",
+      "range": {
+        "startLine": 951,
+        "startChar": 6,
+        "endLine": 951,
+        "endChar": 36
+      },
+      "revId": "3907c04a07197426aa1de824296b5a04b84a7dd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
