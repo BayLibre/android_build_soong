@@ -16,6 +16,24 @@
       "revId": "1429eb1234c808a893543c8cdef29e81ec62de30",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8556f3d9_def54668",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-01T21:56:17Z",
+      "side": 1,
+      "message": "I tried it. Though it works fine, and the code becomes much simpler, it\u0027s not compatible with the bpdoc logic. bpdoc relies on AST when it comes to traversing property structures. Which means dynamic structures added at run time like this are not available to it. I can of course introduce some hybrid approach to bpdoc, so that it also uses reflection to cover this kind of use cases, but am not sure if we want to do that just for this one case.",
+      "parentUuid": "5021b61f_985d07e9",
+      "revId": "1429eb1234c808a893543c8cdef29e81ec62de30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
