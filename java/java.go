@@ -1467,18 +1467,31 @@ type Library struct {
 	Module
 }
 
-func shouldUncompressDex(ctx android.ModuleContext, dexpreopter *dexpreopter) bool {
-	// Store uncompressed (and do not strip) dex files from boot class path jars.
-	if inList(ctx.ModuleName(), ctx.Config().BootJars()) {
+// Returns whether this module should have the dex file stored uncompressed.
+func shouldUncompressDex(ctx android.ModuleContext, dexpreopter *dexpreopter, isApp, useEmbeddedDex, privileged bool) bool {
+	if isApp {
+		if useEmbeddedDex {
+			return true
+		}
+
+		if ctx.Config().UnbundledBuild() {
+			return false
+		}
+	} else {
+		// Store uncompressed (and do not strip) dex files from boot class path jars.
+		if inList(ctx.ModuleName(), ctx.Config().BootJars()) {
+			return true
+		}
+	}
+
+	// Uncompress dex in APKs of privileged apps, and modules used by privileged apps.
+	if ctx.Config().UncompressPrivAppDex() &&
+		(privileged || inList(ctx.ModuleName(), ctx.Config().ModulesLoadedByPrivilegedModules())) {
 		return true
 	}
 
 	// Store uncompressed dex files that are preopted on /system.
 	if !dexpreopter.dexpreoptDisabled(ctx) && (ctx.Host() || !odexOnSystemOther(ctx, dexpreopter.installPath)) {
-		return true
-	}
-	if ctx.Config().UncompressPrivAppDex() &&
-		inList(ctx.ModuleName(), ctx.Config().ModulesLoadedByPrivilegedModules()) {
 		return true
 	}
 
@@ -1489,7 +1502,7 @@ func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	j.dexpreopter.installPath = android.PathForModuleInstall(ctx, "framework", ctx.ModuleName()+".jar")
 	j.dexpreopter.isSDKLibrary = j.deviceProperties.IsSDKLibrary
 	j.dexpreopter.isInstallable = Bool(j.properties.Installable)
-	j.dexpreopter.uncompressedDex = shouldUncompressDex(ctx, &j.dexpreopter)
+	j.dexpreopter.uncompressedDex = shouldUncompressDex(ctx, &j.dexpreopter, false, false, false)
 	j.deviceProperties.UncompressDex = j.dexpreopter.uncompressedDex
 	j.compile(ctx)
 
@@ -2013,7 +2026,7 @@ func (j *DexImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	j.dexpreopter.installPath = android.PathForModuleInstall(ctx, "framework", ctx.ModuleName()+".jar")
 	j.dexpreopter.isInstallable = true
-	j.dexpreopter.uncompressedDex = shouldUncompressDex(ctx, &j.dexpreopter)
+	j.dexpreopter.uncompressedDex = shouldUncompressDex(ctx, &j.dexpreopter, false, false, false)
 
 	inputJar := ctx.ExpandSource(j.properties.Jars[0], "jars")
 	dexOutputFile := android.PathForModuleOut(ctx, ctx.ModuleName()+".jar")
