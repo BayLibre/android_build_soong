@@ -52,6 +52,24 @@
       "revId": "1429eb1234c808a893543c8cdef29e81ec62de30",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa4a169f_f1374e43",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-02T00:57:33Z",
+      "side": 1,
+      "message": "That\u0027s the hybrid approach I\u0027ve been thinking about. The question is, do we want to invest our precious time in that? (It\u0027d also make the already complicated code even harder to understand.) In other words, (1) does it have additional benefits than being able to detect runtime-composed structures? Or, (2) do we expect to have more cases like this? My answers are (1) I don\u0027t think so and (2) I have no idea. :)",
+      "parentUuid": "5ab74a63_87dc7d6e",
+      "revId": "1429eb1234c808a893543c8cdef29e81ec62de30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
