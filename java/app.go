@@ -178,31 +178,6 @@ func (a *AndroidApp) shouldUncompressJNI(ctx android.ModuleContext) bool {
 	return minSdkVersion >= 23 && Bool(a.appProperties.Use_embedded_native_libs)
 }
 
-// Returns whether this module should have the dex file stored uncompressed in the APK.
-func (a *AndroidApp) shouldUncompressDex(ctx android.ModuleContext) bool {
-	if Bool(a.appProperties.Use_embedded_dex) {
-		return true
-	}
-
-	if ctx.Config().UnbundledBuild() {
-		return false
-	}
-
-	// Uncompress dex in APKs of privileged apps, and modules used by privileged apps.
-	if ctx.Config().UncompressPrivAppDex() &&
-		(Bool(a.appProperties.Privileged) ||
-			inList(ctx.ModuleName(), ctx.Config().ModulesLoadedByPrivilegedModules())) {
-		return true
-	}
-
-	// Uncompress if the dex files is preopted on /system.
-	if !a.dexpreopter.dexpreoptDisabled(ctx) && (ctx.Host() || !odexOnSystemOther(ctx, a.dexpreopter.installPath)) {
-		return true
-	}
-
-	return false
-}
-
 func (a *AndroidApp) aaptBuildActions(ctx android.ModuleContext) {
 	a.aapt.usesNonSdkApis = Bool(a.Module.deviceProperties.Platform_apis)
 
@@ -278,7 +253,8 @@ func (a *AndroidApp) dexBuildActions(ctx android.ModuleContext) android.Path {
 	}
 	a.dexpreopter.installPath = android.PathForModuleInstall(ctx, installDir, a.installApkName+".apk")
 	a.dexpreopter.isInstallable = Bool(a.properties.Installable)
-	a.dexpreopter.uncompressedDex = a.shouldUncompressDex(ctx)
+	a.dexpreopter.uncompressedDex = shouldUncompressDex(
+		ctx, &a.dexpreopter, true, Bool(a.appProperties.Use_embedded_dex), Bool(a.appProperties.Privileged))
 	a.deviceProperties.UncompressDex = a.dexpreopter.uncompressedDex
 
 	if ctx.ModuleName() != "framework-res" {
@@ -703,12 +679,11 @@ func (a *AndroidAppImport) GenerateAndroidBuildActions(ctx android.ModuleContext
 	jnisUncompressed := android.PathForModuleOut(ctx, "jnis-uncompressed", ctx.ModuleName()+".apk")
 	a.uncompressEmbeddedJniLibs(ctx, srcApk, jnisUncompressed.OutputPath)
 
-	// TODO: Uncompress dex if applicable
-
 	installDir := android.PathForModuleInstall(ctx, "app", a.BaseModuleName())
 	a.dexpreopter.installPath = installDir.Join(ctx, a.BaseModuleName()+".apk")
 	a.dexpreopter.isInstallable = true
 	a.dexpreopter.isPresignedPrebuilt = Bool(a.properties.Presigned)
+	a.dexpreopter.uncompressedDex = shouldUncompressDex(ctx, &a.dexpreopter, true, false, Bool(a.properties.Privileged))
 	dexOutput := a.dexpreopter.dexpreopt(ctx, jnisUncompressed)
 
 	// Sign or align the package
