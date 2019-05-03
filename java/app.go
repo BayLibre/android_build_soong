@@ -205,7 +205,6 @@ func (a *AndroidApp) shouldUncompressDex(ctx android.ModuleContext) bool {
 
 func (a *AndroidApp) aaptBuildActions(ctx android.ModuleContext) {
 	a.aapt.usesNonSdkApis = Bool(a.Module.deviceProperties.Platform_apis)
-
 	aaptLinkFlags := []string{}
 
 	// Add TARGET_AAPT_CHARACTERISTICS values to AAPT link flags if they exist and --product flags were not provided.
