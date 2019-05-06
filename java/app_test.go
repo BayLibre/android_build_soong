@@ -1178,3 +1178,69 @@ func TestAndroidAppImport_DpiVariants(t *testing.T) {
 		}
 	}
 }
+
+func TestUseNdkStlLibs(t *testing.T) {
+	ctx := testJava(t, cc.GatherRequiredDepsForTest(android.Android)+`
+		cc_library {
+			name: "libjni",
+		}
+
+		android_test {
+			name: "ndk_stl_libs",
+			jni_libs: ["libjni"],
+			compile_multilib: "both",
+			sdk_version: "current",
+			stl: "c++_shared",
+		}
+
+		android_test {
+			name: "system",
+			jni_libs: ["libjni"],
+			compile_multilib: "both",
+			sdk_version: "current",
+		}
+		`)
+
+	testCases := []struct {
+		name string
+		jnis []string
+	}{
+		{"ndk_stl_libs",
+			[]string{
+				"lib/arm64-v8a/libjni.so",
+				"lib/arm64-v8a/libc++.so",
+				"lib/armeabi-v7a/libjni.so",
+				"lib/armeabi-v7a/libc++.so",
+			},
+		},
+		{"system",
+			[]string{
+				"lib/arm64-v8a/libjni.so",
+				"lib/armeabi-v7a/libjni.so",
+			},
+		},
+	}
+
+	for _, test := range testCases {
+		t.Run(test.name, func(t *testing.T) {
+			app := ctx.ModuleForTests(test.name, "android_common")
+			jniLibZip := app.Output("jnilibs.zip")
+			var jnis []string
+			args := strings.Fields(jniLibZip.Args["jarArgs"])
+			for i := 0; i < len(args); i++ {
+				if args[i] == "-P" {
+					jniLibPath := args[i+1]
+					if args[i+2] != "-f" {
+						t.Errorf("missing -f arg after -P in %q", args)
+					}
+					jniLibPath = filepath.Join(jniLibPath, filepath.Base(args[i+3]))
+					jnis = append(jnis, jniLibPath)
+					i += 3
+				}
+			}
+			if !reflect.DeepEqual(jnis, test.jnis) {
+				t.Errorf("want jnis %q, got %q", test.jnis, jnis)
+			}
+		})
+	}
+}
