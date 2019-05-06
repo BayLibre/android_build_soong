@@ -78,9 +78,14 @@ func init() {
 	android.RegisterModuleType("java_sdk_library_import", sdkLibraryImportFactory)
 
 	android.RegisterMakeVarsProvider(pctx, func(ctx android.MakeVarsContext) {
-		javaSdkLibraries := javaSdkLibraries(ctx.Config())
-		sort.Strings(*javaSdkLibraries)
-		ctx.Strict("JAVA_SDK_LIBRARIES", strings.Join(*javaSdkLibraries, " "))
+		javaSdkLibraries := copyOf(*javaSdkLibraries(ctx.Config()))
+
+		for _, lib := range javaSdkLibraries {
+			javaSdkLibraries = append(javaSdkLibraries, lib+sdkStubsLibrarySuffix)
+		}
+
+		sort.Strings(javaSdkLibraries)
+		ctx.Strict("JAVA_SDK_LIBRARIES", strings.Join(javaSdkLibraries, " "))
 	})
 }
 
