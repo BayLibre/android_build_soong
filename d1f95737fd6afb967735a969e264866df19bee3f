@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c2b44dd8_e630a9d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-05-06T20:08:45Z",
+      "side": 1,
+      "message": "If I recall correctly, when I did the cherry pick of go/aog/94380 to internal one, it used the same change id in the log file. I decided to abandon go/aog/943802 and create a separate branch.",
+      "parentUuid": "f57df344_7a362932",
+      "revId": "d1f95737fd6afb967735a969e264866df19bee3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "18a42cc6_46a50fc9",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "d1f95737fd6afb967735a969e264866df19bee3f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "193aaf90_b6ed7b3e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-05-06T20:08:45Z",
+      "side": 1,
+      "message": "Ah darn, I forgot to remove the comments in the internal change. I will submit the removal of the comments in a separate CL. Added back the comments and now should be the same.",
+      "parentUuid": "18a42cc6_46a50fc9",
+      "revId": "d1f95737fd6afb967735a969e264866df19bee3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
