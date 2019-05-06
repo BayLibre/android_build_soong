@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "064bb4cd_57f671a7",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-06T22:43:07Z",
+      "side": 1,
+      "message": "I\u0027m not sure this is the right approach.  It requires adding a bunch of new concepts into Soong that don\u0027t fit very well, for example tracking dependencies of libc.  How hard would it be to special case exactly what you want?  Only install the library into the runtime APEX if hwasan is enabled?",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 45
+      },
+      "revId": "42b8eb3a54cbef297802be3775efca1ae2749a39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da19c2c0_5d8697ac",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-06T22:43:07Z",
+      "side": 1,
+      "message": "If you use ctx.OtherModuleName() you\u0027ll get the renamed name, which won\u0027t have the prebuilt_ prefix.",
+      "revId": "42b8eb3a54cbef297802be3775efca1ae2749a39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7febb0a4_bc310c52",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-06T22:43:07Z",
+      "side": 1,
+      "message": "ctx.ModuleName()",
+      "range": {
+        "startLine": 781,
+        "startChar": 84,
+        "endLine": 781,
+        "endChar": 92
+      },
+      "revId": "42b8eb3a54cbef297802be3775efca1ae2749a39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95e4e44c_c398a4a5",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-06T22:43:07Z",
+      "side": 1,
+      "message": "ctx.OtherModuleName(child)",
+      "range": {
+        "startLine": 781,
+        "startChar": 94,
+        "endLine": 781,
+        "endChar": 106
+      },
+      "revId": "42b8eb3a54cbef297802be3775efca1ae2749a39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a06ad4ef_d5809955",
+        "filename": "cc/binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-06T22:43:07Z",
+      "side": 1,
+      "message": "This seems really messy.  Would it be better to annotate modules that need to go into the bootstrap directory manually?",
+      "revId": "42b8eb3a54cbef297802be3775efca1ae2749a39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48de0e34_7324ba1f",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2259,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-06T22:43:07Z",
+      "side": 1,
+      "message": "Don\u0027t use global variables here, when we run tests they will accumulate data across tests.  You can use ctx.Config().Once() to get a variable attached to the context, see the cfiStaticLibs function for an example.",
+      "revId": "42b8eb3a54cbef297802be3775efca1ae2749a39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a6f1666_8470c9da",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2268,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-06T22:43:07Z",
+      "side": 1,
+      "message": "You should probably look at ctx.OtherModuleDependencyTag(child) before deciding to recurse, otherwise you\u0027ll be recursing into genrules which will take you to host tools and their dependencies.",
+      "revId": "42b8eb3a54cbef297802be3775efca1ae2749a39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
