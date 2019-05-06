@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a3618d6_f6f98991",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-05-06T21:45:26Z",
+      "side": 1,
+      "message": "Alternatively, these to returns can be combined:\n  return (ctx.Config().UncompressPrivAppDex() \u0026\u0026 Bool(a.properties.Privileged)) || \n      shouldUncompressDex(ctx, \u0026a.dexpreopter)",
+      "range": {
+        "startLine": 688,
+        "startChar": 0,
+        "endLine": 688,
+        "endChar": 1
+      },
+      "revId": "acf18d7c63875ec2e833b04015c864582c112334",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
