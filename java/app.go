@@ -66,6 +66,9 @@ type appProperties struct {
 	// list of native libraries that will be provided in or alongside the resulting jar
 	Jni_libs []string `android:"arch_variant"`
 
+	// Whether to use the prebuilt NDK STL shared libraries instead of the system ones. Defaults to false.
+	Use_ndk_stl_libs *bool
+
 	// Store native libraries uncompressed in the APK and set the android:extractNativeLibs="false" manifest
 	// flag so that they are used from inside the APK at runtime.  Defaults to true for android_test modules unless
 	// sdk_version or min_sdk_version is set to a version that doesn't support it (<23), defaults to false for other
@@ -134,6 +137,10 @@ func (a *AndroidApp) DepsMutator(ctx android.BottomUpMutatorContext) {
 		a.aapt.deps(ctx, sdkContext(a))
 	}
 
+	embedJni := a.shouldEmbedJnis(ctx)
+	if embedJni && Bool(a.appProperties.Use_ndk_stl_libs) && a.sdkVersion() == "" {
+		ctx.PropertyErrorf("use_ndk_stl_libs", "sdk_version must be set in order to use use_ndk_stl_libs")
+	}
 	for _, jniTarget := range ctx.MultiTargets() {
 		variation := []blueprint.Variation{
 			{Mutator: "arch", Variation: jniTarget.String()},
@@ -143,6 +150,11 @@ func (a *AndroidApp) DepsMutator(ctx android.BottomUpMutatorContext) {
 			target: jniTarget,
 		}
 		ctx.AddFarVariationDependencies(variation, tag, a.appProperties.Jni_libs...)
+		if Bool(a.appProperties.Use_ndk_stl_libs) {
+			if embedJni {
+				ctx.AddFarVariationDependencies(variation, tag, "libc++")
+			}
+		}
 	}
 
 	cert := android.SrcIsModule(a.getCertString(ctx))
@@ -194,6 +206,11 @@ func (a *AndroidApp) shouldUncompressDex(ctx android.ModuleContext) bool {
 	}
 
 	return shouldUncompressDex(ctx, &a.dexpreopter)
+}
+
+func (a *AndroidApp) shouldEmbedJnis(ctx android.BaseModuleContext) bool {
+	return ctx.Config().UnbundledBuild() || Bool(a.appProperties.Use_embedded_native_libs) ||
+		a.appProperties.AlwaysPackageNativeLibs
 }
 
 func (a *AndroidApp) aaptBuildActions(ctx android.ModuleContext) {
@@ -284,9 +301,7 @@ func (a *AndroidApp) dexBuildActions(ctx android.ModuleContext) android.Path {
 func (a *AndroidApp) jniBuildActions(jniLibs []jniLib, ctx android.ModuleContext) android.WritablePath {
 	var jniJarFile android.WritablePath
 	if len(jniLibs) > 0 {
-		embedJni := ctx.Config().UnbundledBuild() || Bool(a.appProperties.Use_embedded_native_libs) ||
-			a.appProperties.AlwaysPackageNativeLibs
-		if embedJni {
+		if a.shouldEmbedJnis(ctx) {
 			jniJarFile = android.PathForModuleOut(ctx, "jnilibs.zip")
 			TransformJniLibsToJar(ctx, jniJarFile, jniLibs, a.useEmbeddedNativeLibs(ctx))
 		} else {
