@@ -70,6 +70,24 @@
       "revId": "1429eb1234c808a893543c8cdef29e81ec62de30",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbedfafb_124a9ccb",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-06T22:29:15Z",
+      "side": 1,
+      "message": "You could do the runtime structures and then document the DPI-specific properties in the overview until we fix the docs.  Architecture-specific properties are also handled with runtime structs, and we may want to at least be able to list those in the docs, so probably worth fixing eventually.",
+      "parentUuid": "aa4a169f_f1374e43",
+      "revId": "1429eb1234c808a893543c8cdef29e81ec62de30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
