@@ -16,6 +16,8 @@ package cc
 
 import (
 	"errors"
+	"fmt"
+	"path/filepath"
 	"sort"
 	"strings"
 	"sync"
@@ -197,59 +199,345 @@ var (
 	llndkLibraries                []string
 	vndkPrivateLibraries          []string
 	vndkUsingCoreVariantLibraries []string
+	modulePathsKey                = android.NewOnceKey("modulePaths")
+	vndkSnapshotOutputsKey        = android.NewOnceKey("vndkSnapshotOutputs")
 	vndkLibrariesLock             sync.Mutex
 )
 
+type vndkSnapshotOutputPaths struct {
+	configs         android.Paths
+	notices         android.Paths
+	vndkCoreLibs    android.Paths
+	vndkCoreLibs2nd android.Paths
+	vndkSpLibs      android.Paths
+	vndkSpLibs2nd   android.Paths
+}
+
+func modulePaths(config android.Config) map[string]string {
+	return config.Once(modulePathsKey, func() interface{} {
+		return make(map[string]string)
+	}).(map[string]string)
+}
+
+func vndkSnapshotOutputs(config android.Config) *vndkSnapshotOutputPaths {
+	return config.Once(vndkSnapshotOutputsKey, func() interface{} {
+		return &vndkSnapshotOutputPaths{}
+	}).(*vndkSnapshotOutputPaths)
+}
+
+func processLlndkLibrary(mctx android.BottomUpMutatorContext, m *Module) {
+	lib := m.linker.(*llndkStubDecorator)
+	name := strings.TrimSuffix(m.Name(), llndkLibrarySuffix)
+
+	vndkLibrariesLock.Lock()
+	defer vndkLibrariesLock.Unlock()
+	if !inList(name, llndkLibraries) {
+		llndkLibraries = append(llndkLibraries, name)
+		sort.Strings(llndkLibraries)
+	}
+	if !Bool(lib.Properties.Vendor_available) {
+		if !inList(name, vndkPrivateLibraries) {
+			vndkPrivateLibraries = append(vndkPrivateLibraries, name)
+			sort.Strings(vndkPrivateLibraries)
+		}
+	}
+}
+
+func processVndkLibrary(mctx android.BottomUpMutatorContext, m *Module) {
+	name := strings.TrimPrefix(m.Name(), "prebuilt_")
+
+	vndkLibrariesLock.Lock()
+	defer vndkLibrariesLock.Unlock()
+
+	modulePaths := modulePaths(mctx.Config())
+	if mctx.DeviceConfig().VndkUseCoreVariant() && !inList(name, config.VndkMustUseVendorVariantList) {
+		if !inList(name, vndkUsingCoreVariantLibraries) {
+			vndkUsingCoreVariantLibraries = append(vndkUsingCoreVariantLibraries, name)
+			sort.Strings(vndkUsingCoreVariantLibraries)
+		}
+	}
+	if m.vndkdep.isVndkSp() {
+		if !inList(name, vndkSpLibraries) {
+			vndkSpLibraries = append(vndkSpLibraries, name)
+			sort.Strings(vndkSpLibraries)
+			modulePaths[name] = mctx.ModuleDir()
+		}
+	} else {
+		if !inList(name, vndkCoreLibraries) {
+			vndkCoreLibraries = append(vndkCoreLibraries, name)
+			sort.Strings(vndkCoreLibraries)
+			modulePaths[name] = mctx.ModuleDir()
+		}
+	}
+	if !Bool(m.VendorProperties.Vendor_available) {
+		if !inList(name, vndkPrivateLibraries) {
+			vndkPrivateLibraries = append(vndkPrivateLibraries, name)
+			sort.Strings(vndkPrivateLibraries)
+		}
+	}
+}
+
 // gather list of vndk-core, vndk-sp, and ll-ndk libs
 func VndkMutator(mctx android.BottomUpMutatorContext) {
-	if m, ok := mctx.Module().(*Module); ok && m.Enabled() {
-		if lib, ok := m.linker.(*llndkStubDecorator); ok {
-			vndkLibrariesLock.Lock()
-			defer vndkLibrariesLock.Unlock()
-			name := strings.TrimSuffix(m.Name(), llndkLibrarySuffix)
-			if !inList(name, llndkLibraries) {
-				llndkLibraries = append(llndkLibraries, name)
-				sort.Strings(llndkLibraries)
+	m, ok := mctx.Module().(*Module)
+	if !ok {
+		return
+	}
+
+	if !m.Enabled() {
+		return
+	}
+
+	if _, ok := m.linker.(*llndkStubDecorator); ok {
+		processLlndkLibrary(mctx, m)
+		return
+	}
+
+	lib, is_lib := m.linker.(*libraryDecorator)
+	prebuilt_lib, is_prebuilt_lib := m.linker.(*prebuiltLibraryLinker)
+
+	if (is_lib && lib.shared()) || (is_prebuilt_lib && prebuilt_lib.shared()) {
+		if m.vndkdep.isVndk() && !m.vndkdep.isVndkExt() {
+			processVndkLibrary(mctx, m)
+			return
+		}
+	}
+}
+
+func joinPaths(paths android.Paths) string {
+	var ret strings.Builder
+	for i, p := range paths {
+		if i > 0 {
+			ret.WriteString(" ")
+		}
+		ret.WriteString(p.String())
+	}
+	return ret.String()
+}
+
+func init() {
+	android.RegisterSingletonType("vndk-snapshot", VndkSnapshotSingleton)
+	android.RegisterMakeVarsProvider(pctx, func(ctx android.MakeVarsContext) {
+		outputs := vndkSnapshotOutputs(ctx.Config())
+
+		ctx.Strict("SOONG_VNDK_SNAPSHOT_CONFIGS", joinPaths(outputs.configs))
+		ctx.Strict("SOONG_VNDK_SNAPSHOT_NOTICES", joinPaths(outputs.notices))
+		ctx.Strict("SOONG_VNDK_SNAPSHOT_CORE_LIBS", joinPaths(outputs.vndkCoreLibs))
+		ctx.Strict("SOONG_VNDK_SNAPSHOT_SP_LIBS", joinPaths(outputs.vndkSpLibs))
+		ctx.Strict("SOONG_VNDK_SNAPSHOT_CORE_LIBS_2ND", joinPaths(outputs.vndkCoreLibs2nd))
+		ctx.Strict("SOONG_VNDK_SNAPSHOT_SP_LIBS_2ND", joinPaths(outputs.vndkSpLibs2nd))
+	})
+}
+
+func VndkSnapshotSingleton() android.Singleton {
+	return &vndkSnapshotSingleton{}
+}
+
+type vndkSnapshotSingleton struct{}
+
+func installVndkSnapshotLib(ctx android.SingletonContext, name string, module *Module, dir string) android.Path {
+	if !module.outputFile.Valid() {
+		panic(fmt.Errorf("module %s has no outputFile\n", name))
+	}
+
+	out := android.PathForOutput(ctx, dir, name+".so")
+
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        android.Cp,
+		Input:       module.outputFile.Path(),
+		Output:      out,
+		Description: "vndk snapshot " + dir + "/" + name + ".so",
+		Args: map[string]string{
+			"cpFlags": "-f -L",
+		},
+	})
+
+	return out
+}
+
+func (c *vndkSnapshotSingleton) GenerateBuildActions(ctx android.SingletonContext) {
+	// BOARD_VNDK_VERSION must be set to 'current' in order to generate a VNDK snapshot.
+	if ctx.DeviceConfig().VndkVersion() != "current" {
+		return
+	}
+
+	if ctx.DeviceConfig().PlatformVndkVersion() == "" {
+		return
+	}
+
+	if ctx.DeviceConfig().BoardVndkRuntimeDisable() {
+		return
+	}
+
+	outputs := vndkSnapshotOutputs(ctx.Config())
+
+	snapshotDir := "vndk-snapshot"
+
+	vndkCoreModules := make(map[string]*Module)
+	vndkSpModules := make(map[string]*Module)
+	vndkCore2ndModules := make(map[string]*Module)
+	vndkSp2ndModules := make(map[string]*Module)
+
+	var vndkLibPath, vndkLib2ndPath string
+
+	snapshotVariantPath := filepath.Join(snapshotDir, ctx.DeviceConfig().DeviceArch())
+	if ctx.DeviceConfig().BinderBitness() == "32" {
+		vndkLibPath = filepath.Join(snapshotVariantPath, "binder32", fmt.Sprintf(
+			"arch-%s-%s", ctx.DeviceConfig().DeviceArch(), ctx.DeviceConfig().DeviceArchVariant()))
+		vndkLib2ndPath = filepath.Join(snapshotVariantPath, "binder32", fmt.Sprintf(
+			"arch-%s-%s", ctx.DeviceConfig().DeviceSecondaryArch(), ctx.DeviceConfig().DeviceSecondaryArchVariant()))
+	} else {
+		vndkLibPath = filepath.Join(snapshotVariantPath, fmt.Sprintf(
+			"arch-%s-%s", ctx.DeviceConfig().DeviceArch(), ctx.DeviceConfig().DeviceArchVariant()))
+		vndkLib2ndPath = filepath.Join(snapshotVariantPath, fmt.Sprintf(
+			"arch-%s-%s", ctx.DeviceConfig().DeviceSecondaryArch(), ctx.DeviceConfig().DeviceSecondaryArchVariant()))
+	}
+
+	ctx.VisitAllModules(func(module android.Module) {
+		m, ok := module.(*Module)
+		if !ok {
+			return
+		}
+
+		if !m.Enabled() {
+			return
+		}
+
+		if !m.useVndk() {
+			return
+		}
+
+		lib, is_lib := m.linker.(*libraryDecorator)
+		prebuilt_lib, is_prebuilt_lib := m.linker.(*prebuiltLibraryLinker)
+
+		if !(is_lib && lib.shared()) && !(is_prebuilt_lib && prebuilt_lib.shared()) {
+			return
+		}
+
+		is_2nd := m.Target().Arch.ArchType != ctx.Config().DevicePrimaryArchType()
+
+		name := ctx.ModuleName(module)
+
+		if inList(name, vndkCoreLibraries) {
+			if is_2nd {
+				vndkCore2ndModules[name] = m
+			} else {
+				vndkCoreModules[name] = m
 			}
-			if !Bool(lib.Properties.Vendor_available) {
-				if !inList(name, vndkPrivateLibraries) {
-					vndkPrivateLibraries = append(vndkPrivateLibraries, name)
-					sort.Strings(vndkPrivateLibraries)
-				}
-			}
-		} else {
-			lib, is_lib := m.linker.(*libraryDecorator)
-			prebuilt_lib, is_prebuilt_lib := m.linker.(*prebuiltLibraryLinker)
-			if (is_lib && lib.shared()) || (is_prebuilt_lib && prebuilt_lib.shared()) {
-				name := strings.TrimPrefix(m.Name(), "prebuilt_")
-				if m.vndkdep.isVndk() && !m.vndkdep.isVndkExt() {
-					vndkLibrariesLock.Lock()
-					defer vndkLibrariesLock.Unlock()
-					if mctx.DeviceConfig().VndkUseCoreVariant() && !inList(name, config.VndkMustUseVendorVariantList) {
-						if !inList(name, vndkUsingCoreVariantLibraries) {
-							vndkUsingCoreVariantLibraries = append(vndkUsingCoreVariantLibraries, name)
-							sort.Strings(vndkUsingCoreVariantLibraries)
-						}
-					}
-					if m.vndkdep.isVndkSp() {
-						if !inList(name, vndkSpLibraries) {
-							vndkSpLibraries = append(vndkSpLibraries, name)
-							sort.Strings(vndkSpLibraries)
-						}
-					} else {
-						if !inList(name, vndkCoreLibraries) {
-							vndkCoreLibraries = append(vndkCoreLibraries, name)
-							sort.Strings(vndkCoreLibraries)
-						}
-					}
-					if !Bool(m.VendorProperties.Vendor_available) {
-						if !inList(name, vndkPrivateLibraries) {
-							vndkPrivateLibraries = append(vndkPrivateLibraries, name)
-							sort.Strings(vndkPrivateLibraries)
-						}
-					}
-				}
+		} else if inList(name, vndkSpLibraries) {
+			if is_2nd {
+				vndkSp2ndModules[name] = m
+			} else {
+				vndkSpModules[name] = m
 			}
 		}
+	})
+
+	configsPath := filepath.Join(snapshotVariantPath, "configs")
+	vndkCoreTxt := android.PathForOutput(ctx, configsPath, "vndkcore.libraries.txt")
+	vndkPrivateTxt := android.PathForOutput(ctx, configsPath, "vndkprivate.libraries.txt")
+	modulePathTxt := android.PathForOutput(ctx, configsPath, "module_paths.txt")
+
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        android.WriteFile,
+		Output:      vndkCoreTxt,
+		Description: "vndk snapshot vndkcore.libraries.txt",
+		Args: map[string]string{
+			"content": android.JoinWithSuffix(vndkCoreLibraries, ".so", "\\n"),
+		},
+	})
+	outputs.configs = append(outputs.configs, vndkCoreTxt)
+
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        android.WriteFile,
+		Output:      vndkPrivateTxt,
+		Description: "vndk snapshot vndkprivate.libraries.txt",
+		Args: map[string]string{
+			"content": android.JoinWithSuffix(vndkPrivateLibraries, ".so", "\\n"),
+		},
+	})
+	outputs.configs = append(outputs.configs, vndkPrivateTxt)
+
+	var modulePathTxtBuilder strings.Builder
+
+	first := true
+	for lib, dir := range modulePaths(ctx.Config()) {
+		if first {
+			first = false
+		} else {
+			modulePathTxtBuilder.WriteString("\\n")
+		}
+		modulePathTxtBuilder.WriteString(lib)
+		modulePathTxtBuilder.WriteString(".so ")
+		modulePathTxtBuilder.WriteString(dir)
+	}
+
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        android.WriteFile,
+		Output:      modulePathTxt,
+		Description: "vndk snapshot module_paths.txt",
+		Args: map[string]string{
+			"content": modulePathTxtBuilder.String(),
+		},
+	})
+	outputs.configs = append(outputs.configs, modulePathTxt)
+
+	vndkCoreLibPath := filepath.Join(vndkLibPath, "shared", "vndk-core")
+	vndkSpLibPath := filepath.Join(vndkLibPath, "shared", "vndk-sp")
+	vndkCoreLib2ndPath := filepath.Join(vndkLib2ndPath, "shared", "vndk-core")
+	vndkSpLib2ndPath := filepath.Join(vndkLib2ndPath, "shared", "vndk-sp")
+
+	for name, module := range vndkCoreModules {
+		outputs.vndkCoreLibs = append(outputs.vndkCoreLibs, installVndkSnapshotLib(ctx, name, module, vndkCoreLibPath))
+	}
+
+	for name, module := range vndkSpModules {
+		outputs.vndkSpLibs = append(outputs.vndkSpLibs, installVndkSnapshotLib(ctx, name, module, vndkSpLibPath))
+	}
+
+	for name, module := range vndkCore2ndModules {
+		outputs.vndkCoreLibs2nd = append(outputs.vndkCoreLibs2nd, installVndkSnapshotLib(ctx, name, module, vndkCoreLib2ndPath))
+	}
+
+	for name, module := range vndkSp2ndModules {
+		outputs.vndkSpLibs2nd = append(outputs.vndkSpLibs2nd, installVndkSnapshotLib(ctx, name, module, vndkSpLib2ndPath))
+	}
+
+	noticePath := filepath.Join(snapshotVariantPath, "NOTICE_FILES")
+
+	tryBuildNotice := func(m *Module) {
+		name := ctx.ModuleName(m)
+
+		if m.NoticeFile().Valid() {
+			out := android.PathForOutput(ctx, noticePath, name+".so.txt")
+			ctx.Build(pctx, android.BuildParams{
+				Rule:        android.Cp,
+				Input:       m.NoticeFile().Path(),
+				Output:      out,
+				Description: "vndk snapshot notice " + name + ".so.txt",
+				Args: map[string]string{
+					"cpFlags": "-f -L",
+				},
+			})
+			outputs.notices = append(outputs.notices, out)
+		}
+	}
+
+	for _, lib := range vndkCoreLibraries {
+		m, ok := vndkCoreModules[lib]
+		if !ok {
+			m = vndkCore2ndModules[lib]
+		}
+
+		tryBuildNotice(m)
+	}
+
+	for _, lib := range vndkSpLibraries {
+		m, ok := vndkSpModules[lib]
+		if !ok {
+			m = vndkSp2ndModules[lib]
+		}
+
+		tryBuildNotice(m)
 	}
 }
