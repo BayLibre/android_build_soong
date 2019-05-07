@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d0abec52_6a7b45b4",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1203210
+      },
+      "writtenOn": "2019-05-07T14:06:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "176db3af_16a09a4c",
+      "range": {
+        "startLine": 352,
+        "startChar": 18,
+        "endLine": 352,
+        "endChar": 44
+      },
+      "revId": "a8d196042ebb18cee6058d14729b16da294677ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58a1d625_18af7920",
         "filename": "android/config.go",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-05-03T02:09:41Z",
       "side": 1,
       "message": "should we specify that \"default\" currently means \"language level 8\", or should this code here not concern itself with what the default is? Up to you.",
+      "range": {
+        "startLine": 354,
+        "startChar": 14,
+        "endLine": 354,
+        "endChar": 21
+      },
+      "revId": "a8d196042ebb18cee6058d14729b16da294677ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47e445d3_61bb5248",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1203210
+      },
+      "writtenOn": "2019-05-07T14:06:30Z",
+      "side": 1,
+      "message": "I think the comment is here because it\u0027s good style to avoid empty case blocks, so all it needs to do is explain why doing nothing is correct here.",
+      "parentUuid": "58a1d625_18af7920",
       "range": {
         "startLine": 354,
         "startChar": 14,
@@ -68,6 +116,30 @@
       "revId": "a8d196042ebb18cee6058d14729b16da294677ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d0a44d5_6e93f9a5",
+        "filename": "java/sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1203210
+      },
+      "writtenOn": "2019-05-07T14:06:30Z",
+      "side": 1,
+      "message": "Done. I think your comment applies to java_test.go as well, so I did the same thing there.",
+      "parentUuid": "12602812_6369cb09",
+      "range": {
+        "startLine": 275,
+        "startChar": 10,
+        "endLine": 275,
+        "endChar": 16
+      },
+      "revId": "a8d196042ebb18cee6058d14729b16da294677ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
