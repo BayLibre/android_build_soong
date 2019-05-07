@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "61daff4b_38cb758d",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-07T21:53:31Z",
+      "side": 1,
+      "message": "All of these will make testing hard, because they will accumulate data for every test.  They should be moved to a structure attached to the Context using ctx.Config().Once().",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 56
+      },
+      "revId": "50207f996dbbbc6af899c055a92253eac3255413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ac718291_aa5359ab",
         "filename": "cc/vndk.go",
         "patchSetId": 1
@@ -30,6 +53,40 @@
       "writtenOn": "2019-05-07T12:58:27Z",
       "side": 1,
       "message": "why don\u0027t you move this android/utils.go? ...and implement the existing JoinWithSuffix using this?",
+      "revId": "50207f996dbbbc6af899c055a92253eac3255413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fab747f_05418ec2",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-07T21:53:31Z",
+      "side": 1,
+      "message": "Can you add tests for this using SingletonForTests to get the Singleton and then Output to get the Build params, and then verify the contents of Args[\"content\"]?",
+      "revId": "50207f996dbbbc6af899c055a92253eac3255413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62851a13_4d3cd282",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-07T21:53:31Z",
+      "side": 1,
+      "message": "Add a Description for each of these build statements.",
       "revId": "50207f996dbbbc6af899c055a92253eac3255413",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -70,6 +127,24 @@
       "writtenOn": "2019-05-07T12:58:27Z",
       "side": 1,
       "message": "Use BaseModuleName() instead",
+      "revId": "50207f996dbbbc6af899c055a92253eac3255413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3a17c55_08a4e4be",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-07T21:53:31Z",
+      "side": 1,
+      "message": "ctx.ModuleName(module) is better.",
+      "parentUuid": "4eb31cd2_7bcede19",
       "revId": "50207f996dbbbc6af899c055a92253eac3255413",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -133,6 +208,23 @@
         "endLine": 517,
         "endChar": 3
       },
+      "revId": "50207f996dbbbc6af899c055a92253eac3255413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60d9f7b4_9cacc74d",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-07T21:53:31Z",
+      "side": 1,
+      "message": "Directories cannot be outputs, their timestamps change whenever a file is created or deleted in the directory, which will mess up dependencies.",
       "revId": "50207f996dbbbc6af899c055a92253eac3255413",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
