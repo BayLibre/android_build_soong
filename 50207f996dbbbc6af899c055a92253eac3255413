@@ -1,0 +1,141 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac718291_aa5359ab",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-05-07T12:58:27Z",
+      "side": 1,
+      "message": "why vndk private isn\u0027t recorded in modulePaths? I think it should be part of the vndk snapshot.",
+      "revId": "50207f996dbbbc6af899c055a92253eac3255413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51bbdc14_4871bdc6",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-05-07T12:58:27Z",
+      "side": 1,
+      "message": "why don\u0027t you move this android/utils.go? ...and implement the existing JoinWithSuffix using this?",
+      "revId": "50207f996dbbbc6af899c055a92253eac3255413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f3260b2_534f0177",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-05-07T12:58:27Z",
+      "side": 1,
+      "message": "why vndk-snapshot inside vndk-snapshot?",
+      "range": {
+        "startLine": 365,
+        "startChar": 1,
+        "endLine": 365,
+        "endChar": 54
+      },
+      "revId": "50207f996dbbbc6af899c055a92253eac3255413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4eb31cd2_7bcede19",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-05-07T12:58:27Z",
+      "side": 1,
+      "message": "Use BaseModuleName() instead",
+      "revId": "50207f996dbbbc6af899c055a92253eac3255413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95ddd92a_dd792023",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-05-07T12:58:27Z",
+      "side": 1,
+      "message": "Move this part to VndkMutator?",
+      "range": {
+        "startLine": 387,
+        "startChar": 0,
+        "endLine": 425,
+        "endChar": 3
+      },
+      "revId": "50207f996dbbbc6af899c055a92253eac3255413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17ad1b97_180b6fca",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-05-07T12:58:27Z",
+      "side": 1,
+      "message": "use ModuleBaseName()",
+      "revId": "50207f996dbbbc6af899c055a92253eac3255413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed355710_af4adb40",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-05-07T12:58:27Z",
+      "side": 1,
+      "message": "I don\u0027t understand why this is needed. It looks like the default \u0027NOTICE\u0027 file is recognized inside module.go",
+      "range": {
+        "startLine": 511,
+        "startChar": 0,
+        "endLine": 517,
+        "endChar": 3
+      },
+      "revId": "50207f996dbbbc6af899c055a92253eac3255413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
