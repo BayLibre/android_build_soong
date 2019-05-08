@@ -431,14 +431,6 @@ func getStringProperty(prop *parser.Property, fieldName string) string {
 	return ""
 }
 
-// Create sub_dir: attribute for the given path
-func makePrebuiltEtcDestination(mod *parser.Module, path string) {
-	mod.Properties = append(mod.Properties, &parser.Property{
-		Name:  "sub_dir",
-		Value: &parser.String{Value: path},
-	})
-}
-
 // Set the value of the given attribute to the error message
 func indicateAttributeError(mod *parser.Module, attributeName string, format string, a ...interface{}) error {
 	msg := fmt.Sprintf(format, a...)
@@ -464,16 +456,41 @@ func resolveLocalModule(mod *parser.Module, val parser.Expression) parser.Expres
 	return val
 }
 
-// A prefix to strip before setting 'filename' attribute and an array of boolean attributes to set.
-type filenamePrefixToFlags struct {
+// etcPrebuiltModuleUpdate contains information on rewriting certain parts of a defined module.
+type etcPrebuiltModuleUpdate struct {
+	modType string
+
+	// A prefix to strip before setting 'filename' attribute and an array of boolean attributes to set.
 	prefix string
 	flags  []string
 }
 
-var localModulePathRewrite = map[string][]filenamePrefixToFlags{
-	"HOST_OUT":                        {{prefix: "/etc"}},
+func (f etcPrebuiltModuleUpdate) rewrite(m *parser.Module, path string) bool {
+	rewritten := false
+	if path == f.prefix {
+		rewritten = true
+	} else if trimmedPath := strings.TrimPrefix(path, f.prefix+"/"); trimmedPath != path {
+		m.Properties = append(m.Properties, &parser.Property{
+			Name:  "sub_dir",
+			Value: &parser.String{Value: trimmedPath},
+		})
+		rewritten = true
+	}
+	if rewritten {
+		for _, flag := range f.flags {
+			m.Properties = append(m.Properties, &parser.Property{Name: flag, Value: &parser.Bool{Value: true, Token: "true"}})
+		}
+		if f.modType != "" {
+			m.Type = f.modType
+		}
+	}
+	return rewritten
+}
+
+var localModuleUpdatePathRewrite = map[string][]etcPrebuiltModuleUpdate{
+	"HOST_OUT":                        {{prefix: "/etc", modType: "prebuilt_etc_host"}, {prefix: "/usr/share", modType: "prebuilt_usr_share_host"}},
 	"PRODUCT_OUT":                     {{prefix: "/system/etc"}, {prefix: "/vendor/etc", flags: []string{"proprietary"}}},
-	"TARGET_OUT":                      {{prefix: "/etc"}},
+	"TARGET_OUT":                      {{prefix: "/etc"}, {prefix: "/usr/share", modType: "prebuilt_usr_share"}},
 	"TARGET_OUT_ETC":                  {{prefix: ""}},
 	"TARGET_OUT_PRODUCT":              {{prefix: "/etc", flags: []string{"product_specific"}}},
 	"TARGET_OUT_PRODUCT_ETC":          {{prefix: "", flags: []string{"product_specific"}}},
@@ -525,23 +542,12 @@ func rewriteAndroidmkPrebuiltEtc(f *Fixer) error {
 		const local_module_path = "local_module_path"
 		if prop_local_module_path, ok := mod.GetProperty(local_module_path); ok {
 			removeProperty(mod, local_module_path)
-			prefixVariableName := getStringProperty(prop_local_module_path, "var")
-			path := getStringProperty(prop_local_module_path, "fixed")
-			if prefixRewrites, ok := localModulePathRewrite[prefixVariableName]; ok {
+			moduleUpdate := getStringProperty(prop_local_module_path, "var")
+			if prefixRewrites, ok := localModuleUpdatePathRewrite[moduleUpdate]; ok {
+				path := getStringProperty(prop_local_module_path, "fixed")
 				rewritten := false
-				for _, prefixRewrite := range prefixRewrites {
-					if path == prefixRewrite.prefix {
-						rewritten = true
-					} else if trimmedPath := strings.TrimPrefix(path, prefixRewrite.prefix+"/"); trimmedPath != path {
-						makePrebuiltEtcDestination(mod, trimmedPath)
-						rewritten = true
-					}
-					if rewritten {
-						for _, flag := range prefixRewrite.flags {
-							mod.Properties = append(mod.Properties, &parser.Property{Name: flag, Value: &parser.Bool{Value: true, Token: "true"}})
-						}
-						break
-					}
+				for i := 0; i < len(prefixRewrites) && !rewritten; i++ {
+					rewritten = prefixRewrites[i].rewrite(mod, path)
 				}
 				if !rewritten {
 					expectedPrefices := ""
@@ -552,13 +558,10 @@ func rewriteAndroidmkPrebuiltEtc(f *Fixer) error {
 						expectedPrefices += prefixRewrite.prefix
 					}
 					return indicateAttributeError(mod, "filename",
-						"LOCAL_MODULE_PATH value under $(%s) should start with %s", prefixVariableName, expectedPrefices)
-				}
-				if prefixVariableName == "HOST_OUT" {
-					mod.Type = "prebuilt_etc_host"
+						"LOCAL_MODULE_PATH value under $(%s) should start with %s", moduleUpdate, expectedPrefices)
 				}
 			} else {
-				return indicateAttributeError(mod, "filename", "Cannot handle $(%s) for the prebuilt_etc", prefixVariableName)
+				return indicateAttributeError(mod, "filename", "Cannot handle $(%s) for the prebuilt_etc", moduleUpdate)
 			}
 		}
 	}
