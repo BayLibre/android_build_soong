@@ -88,6 +88,24 @@
       "revId": "1429eb1234c808a893543c8cdef29e81ec62de30",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00607bc4_95771a6d",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-08T00:57:10Z",
+      "side": 1,
+      "message": "Done. Also will file a bug for a bpdoc change.",
+      "parentUuid": "dbedfafb_124a9ccb",
+      "revId": "1429eb1234c808a893543c8cdef29e81ec62de30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
