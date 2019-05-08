@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "96df03bd_4169602d",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-08T23:38:24Z",
+      "side": 1,
+      "message": "Call getMakeLinkType() in Module.GenerateAndroidBuildActions() and store the value for later use in Module.AndroidMk()",
+      "parentUuid": "69ddaabe_700a0399",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 56
+      },
+      "revId": "50207f996dbbbc6af899c055a92253eac3255413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ac718291_aa5359ab",
         "filename": "cc/vndk.go",
         "patchSetId": 1
@@ -324,6 +348,30 @@
       "side": 1,
       "message": "I\u0027m not sure if storing modules in mutator is safe",
       "parentUuid": "95ddd92a_dd792023",
+      "range": {
+        "startLine": 387,
+        "startChar": 0,
+        "endLine": 425,
+        "endChar": 3
+      },
+      "revId": "50207f996dbbbc6af899c055a92253eac3255413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10d46b52_223737dc",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-08T23:38:24Z",
+      "side": 1,
+      "message": "Storing modules in a mutator is not safe, they may be invalidated by a later mutator.\n\nStoring modules at all is risky, although it\u0027s not too bad in a singleton.  Why do you need to store them at all, instead of just creating the rules as you go?",
+      "parentUuid": "196b9e6c_25811c7b",
       "range": {
         "startLine": 387,
         "startChar": 0,
