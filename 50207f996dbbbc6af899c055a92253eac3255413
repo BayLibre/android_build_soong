@@ -108,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "6a23a623_b5befeee",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-05-09T04:23:46Z",
+      "side": 1,
+      "message": "VNDK private libs must be included in snapshot, but not in the list because the lists are used for generating ld.config.txt file.",
+      "parentUuid": "6062d9cf_a4c2a33c",
+      "revId": "50207f996dbbbc6af899c055a92253eac3255413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "51bbdc14_4871bdc6",
         "filename": "cc/vndk.go",
         "patchSetId": 1
