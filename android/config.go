@@ -1100,3 +1100,23 @@ func (c *config) ProductPrivateSepolicyDirs() []string {
 func (c *config) ProductCompatibleProperty() bool {
 	return Bool(c.productVariables.ProductCompatibleProperty)
 }
+
+func (c *deviceConfig) BoardVndkRuntimeDisable() bool {
+	return Bool(c.config.productVariables.BoardVndkRuntimeDisable)
+}
+
+func (c *deviceConfig) DeviceArch() string {
+	return String(c.config.productVariables.DeviceArch)
+}
+
+func (c *deviceConfig) DeviceArchVariant() string {
+	return String(c.config.productVariables.DeviceArchVariant)
+}
+
+func (c *deviceConfig) DeviceSecondaryArch() string {
+	return String(c.config.productVariables.DeviceSecondaryArch)
+}
+
+func (c *deviceConfig) DeviceSecondaryArchVariant() string {
+	return String(c.config.productVariables.DeviceSecondaryArchVariant)
+}
