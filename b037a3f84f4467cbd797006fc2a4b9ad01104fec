@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5bba6327_db8ef795",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-09T15:08:54Z",
+      "side": 1,
+      "message": "prop_local_module_path is only used to get the path value. Why don\u0027t you just pass the path value instead then? It\u0027ll also let you call getStringProperty just once.",
+      "revId": "b037a3f84f4467cbd797006fc2a4b9ad01104fec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5385d704_7d308570",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-09T15:08:54Z",
+      "side": 1,
+      "message": "localModuleUpdate? (since you changed the struct name)",
+      "range": {
+        "startLine": 491,
+        "startChar": 4,
+        "endLine": 491,
+        "endChar": 26
+      },
+      "revId": "b037a3f84f4467cbd797006fc2a4b9ad01104fec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a38574e_bf4716b9",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-09T15:08:54Z",
+      "side": 1,
+      "message": "moduleUpdate?",
+      "range": {
+        "startLine": 547,
+        "startChar": 6,
+        "endLine": 547,
+        "endChar": 20
+      },
+      "revId": "b037a3f84f4467cbd797006fc2a4b9ad01104fec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
