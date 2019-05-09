@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4295a29e_84ab3b72",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-09T18:42:14Z",
+      "side": 1,
+      "message": "Also consider s/rewrite/update and s/rewritten/updated here and below. I think keeping rewrite is just fine though.",
+      "range": {
+        "startLine": 468,
+        "startChar": 33,
+        "endLine": 468,
+        "endChar": 40
+      },
+      "revId": "226c2ddb8da79c279dd5f1d3cad613421611406a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0622ffcc_11e8f331",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-09T18:42:14Z",
+      "side": 1,
+      "message": "This is not what I meant. Why do you want to keep the old name suffix, \"PathRewrite\" here?",
+      "range": {
+        "startLine": 490,
+        "startChar": 4,
+        "endLine": 490,
+        "endChar": 32
+      },
+      "revId": "226c2ddb8da79c279dd5f1d3cad613421611406a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cb361b7_bf8dfbc7",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-09T18:42:14Z",
+      "side": 1,
+      "message": "You changed the wrong var name here.",
+      "range": {
+        "startLine": 545,
+        "startChar": 3,
+        "endLine": 545,
+        "endChar": 15
+      },
+      "revId": "226c2ddb8da79c279dd5f1d3cad613421611406a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1908917_9f8be5f2",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-09T18:42:14Z",
+      "side": 1,
+      "message": "What I meant was s/prefixRewrites/moduleUpdates.",
+      "range": {
+        "startLine": 546,
+        "startChar": 6,
+        "endLine": 546,
+        "endChar": 20
+      },
+      "revId": "226c2ddb8da79c279dd5f1d3cad613421611406a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
