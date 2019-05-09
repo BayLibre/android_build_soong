@@ -126,6 +126,24 @@
     },
     {
       "key": {
+        "uuid": "521ab529_6ee06d35",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-05-09T05:27:33Z",
+      "side": 1,
+      "message": "I noticed that VNDK private libs are either VNDK-core or VNDK-sp libs. So they are already in the modulePaths and installed in the snapshot.",
+      "parentUuid": "6a23a623_b5befeee",
+      "revId": "50207f996dbbbc6af899c055a92253eac3255413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "51bbdc14_4871bdc6",
         "filename": "cc/vndk.go",
         "patchSetId": 1
