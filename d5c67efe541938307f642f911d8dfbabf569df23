@@ -16,6 +16,24 @@
       "revId": "d5c67efe541938307f642f911d8dfbabf569df23",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "622510d8_66f45cf2",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-05-10T19:59:48Z",
+      "side": 1,
+      "message": "no worries and I agree, it\u0027s super confusing. I didn\u0027t realize it has the same name. Done.",
+      "parentUuid": "8a2f3429_9bcb6ddb",
+      "revId": "d5c67efe541938307f642f911d8dfbabf569df23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
