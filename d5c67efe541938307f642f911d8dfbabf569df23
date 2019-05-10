@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a2f3429_9bcb6ddb",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-10T18:23:08Z",
+      "side": 1,
+      "message": "So, my bad name suggestion in an earlier comment made this line super-confusing. Sorry for that. Can you change the array var\u0027s name to moduleUpdates so that it looks like this?\n\nfor _, moduleUpdate :\u003d range moduleUpdates {",
+      "revId": "d5c67efe541938307f642f911d8dfbabf569df23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
