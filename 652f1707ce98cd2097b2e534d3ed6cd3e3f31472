@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72ac1f29_c88c259a",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-10T13:39:37Z",
+      "side": 1,
+      "message": "Now that the new comment doesn\u0027t really explain how corresponding modules are modified, would you mind adding some comments on modType and flags regarding how they work?",
+      "revId": "652f1707ce98cd2097b2e534d3ed6cd3e3f31472",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19920010_17176158",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-10T13:39:37Z",
+      "side": 1,
+      "message": "Switch this and prefix? I think it makes more sense given prefix is practically treated as a key.",
+      "revId": "652f1707ce98cd2097b2e534d3ed6cd3e3f31472",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
