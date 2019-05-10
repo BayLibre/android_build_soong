@@ -1,0 +1,9 @@
+Code-Review+2: Colin Cross <ccross@android.com>
+Code-Review+2: Tobias Thierer <tobiast@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: Pete Gillin <peteg@google.com>
+Submitted-by: Pete Gillin <peteg@google.com>
+Submitted-at: Fri, 10 May 2019 11:50:07 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/955486
+Project: platform/build/soong
+Branch: refs/heads/master
