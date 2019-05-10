@@ -163,7 +163,9 @@ func (a *AndroidApp) DepsMutator(ctx android.BottomUpMutatorContext) {
 		}
 		ctx.AddFarVariationDependencies(variation, tag, a.appProperties.Jni_libs...)
 	}
+}
 
+func (a *AndroidApp) OverridablePropertiesDepsMutator(ctx android.BottomUpMutatorContext) {
 	cert := android.SrcIsModule(a.getCertString(ctx))
 	if cert != "" {
 		ctx.AddDependency(ctx.Module(), certificateTag, cert)
@@ -511,11 +513,13 @@ func (a *AndroidTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 func (a *AndroidTest) DepsMutator(ctx android.BottomUpMutatorContext) {
 	a.AndroidApp.DepsMutator(ctx)
+	a.AndroidApp.OverridablePropertiesDepsMutator(ctx)
 	if a.appTestProperties.Instrumentation_for != nil {
 		// The android_app dependency listed in instrumentation_for needs to be added to the classpath for javac,
 		// but not added to the aapt2 link includes like a normal android_app or android_library dependency, so
 		// use instrumentationForTag instead of libTag.
 		ctx.AddVariationDependencies(nil, instrumentationForTag, String(a.appTestProperties.Instrumentation_for))
+		//		ctx.AddFarVariationDependencies([]blueprint.Variation{{Mutator:"arch", Variation:"android_common"}}, instrumentationForTag, String(a.appTestProperties.Instrumentation_for))
 	}
 }
 
@@ -632,7 +636,7 @@ func OverrideAndroidAppModuleFactory() android.Module {
 	m := &OverrideAndroidApp{}
 	m.AddProperties(&overridableAppProperties{})
 
-	android.InitAndroidModule(m)
+	android.InitAndroidMultiTargetsArchModule(m, android.DeviceSupported, android.MultilibCommon)
 	android.InitOverrideModule(m)
 	return m
 }
