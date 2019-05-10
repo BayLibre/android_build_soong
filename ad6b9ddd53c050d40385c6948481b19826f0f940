@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50b5353d_68fe4784",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-10T17:46:28Z",
+      "side": 1,
+      "message": "As I commented on your other CL, our char limit is soft 100.",
+      "revId": "ad6b9ddd53c050d40385c6948481b19826f0f940",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "598c8e7f_0047ba30",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-10T17:46:28Z",
+      "side": 1,
+      "message": "This comment is inaccurate.",
+      "revId": "ad6b9ddd53c050d40385c6948481b19826f0f940",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "599bca2c_73b6c105",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-10T17:46:28Z",
+      "side": 1,
+      "message": "This comment can be very confusing for those who don\u0027t already know what you\u0027re talking about.",
+      "range": {
+        "startLine": 469,
+        "startChar": 4,
+        "endLine": 469,
+        "endChar": 43
+      },
+      "revId": "ad6b9ddd53c050d40385c6948481b19826f0f940",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19231aee_d549d16d",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-10T17:46:28Z",
+      "side": 1,
+      "message": "- Capitalize the first letter.\n- \u0027which each one\u0027 here can also be very confusing as to what it actually refers to.",
+      "revId": "ad6b9ddd53c050d40385c6948481b19826f0f940",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
