@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21ecf13c_1b6555a5",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-10T15:20:58Z",
+      "side": 1,
+      "message": "DEX_PREOPT here, but DEXPREOPTs below, which are we gonna use going forward?",
+      "revId": "fdc659b4fb01b666abd09d5fbe7dfe9e2f05d7b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
