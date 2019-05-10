@@ -1,0 +1,180 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f7043fb_2996bf51",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-10T16:10:45Z",
+      "side": 1,
+      "message": "Capitalize the first letter? (other comments in the tests too)",
+      "revId": "9e68c4ff4017033765cac393f16de02789b53c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0b2a5fe_3c74b7a0",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-10T16:10:45Z",
+      "side": 1,
+      "message": "If this is a test variable, please mark it as so to avoid confusion.",
+      "revId": "9e68c4ff4017033765cac393f16de02789b53c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acdc56bd_d62ba908",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-10T16:10:45Z",
+      "side": 1,
+      "message": "Soong uses soft 100 char width limit.",
+      "revId": "9e68c4ff4017033765cac393f16de02789b53c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5278b9b0_0bae58a8",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-10T16:10:45Z",
+      "side": 1,
+      "message": "It seems to me that this func could benefit from *fewer* blank lines by grouping relevant clauses together.",
+      "revId": "9e68c4ff4017033765cac393f16de02789b53c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f12c108_5ba7c281",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-10T16:10:45Z",
+      "side": 1,
+      "message": "This confuses me. Can this function be called from a sub dir? I guess so given we can execute the build commands from anywhere. Then, wouldn\u0027t this trigger an error? (See my comment on TopDir also.)",
+      "revId": "9e68c4ff4017033765cac393f16de02789b53c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "710398a4_204a8314",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-10T16:10:45Z",
+      "side": 1,
+      "message": "For example, like this one. It servers little or no purpose and only increases the vertical length that the reader has to scan.",
+      "revId": "9e68c4ff4017033765cac393f16de02789b53c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "215807e6_7ebbff98",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-10T16:10:45Z",
+      "side": 1,
+      "message": "And this. You\u0027re doing preliminary checks above and below. Grouping them together without blank lines would give readers a hint that they serve similar purposes.",
+      "revId": "9e68c4ff4017033765cac393f16de02789b53c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a27a52cb_8ccc2a40",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-10T16:10:45Z",
+      "side": 1,
+      "message": "skip?",
+      "range": {
+        "startLine": 281,
+        "startChar": 19,
+        "endLine": 281,
+        "endChar": 26
+      },
+      "revId": "9e68c4ff4017033765cac393f16de02789b53c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ed20a2f_1b14a598",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-10T16:10:45Z",
+      "side": 1,
+      "message": "I don\u0027t think this (having this serve two different functions) is a good idea, partly because the two functions rather sound contradictory. If the current directory is the top dir, which this func makes sure, why does the caller need its help to get the top dir path when it could just call os.Getwd() itself?",
+      "revId": "9e68c4ff4017033765cac393f16de02789b53c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa74b11c_d4f4f880",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-10T16:10:45Z",
+      "side": 1,
+      "message": "Is this gonna be used outside this package?",
+      "revId": "9e68c4ff4017033765cac393f16de02789b53c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
