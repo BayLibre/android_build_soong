@@ -16,6 +16,24 @@
       "revId": "fdc659b4fb01b666abd09d5fbe7dfe9e2f05d7b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4ce6161_bd6a36d4",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-11T04:11:51Z",
+      "side": 1,
+      "message": "Unfortunately the names used in make were inconsistent.  I left this one as DEX_PREOPT to match DEX_PREOPT_CONFIG in Make.  I can look at making the names consistent in a separate patch.",
+      "parentUuid": "21ecf13c_1b6555a5",
+      "revId": "fdc659b4fb01b666abd09d5fbe7dfe9e2f05d7b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
