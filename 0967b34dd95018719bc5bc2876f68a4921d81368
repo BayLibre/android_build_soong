@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fbd338a_3f3a23ba",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-05-13T09:58:29Z",
+      "side": 0,
+      "message": "can we just add\n\nif Bool(module.sdkLibraryProperties.No_dist) {\n        return\n}\n\nhere?",
+      "revId": "0967b34dd95018719bc5bc2876f68a4921d81368",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
