@@ -962,7 +962,7 @@ func (j *Module) collectBuilderFlags(ctx android.ModuleContext, deps deps) javaB
 	return flags
 }
 
-func (j *Module) compile(ctx android.ModuleContext, extraSrcJars ...android.Path) {
+func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 
 	j.exportAidlIncludeDirs = android.PathsForModuleSrc(ctx, j.deviceProperties.Aidl.Export_include_dirs)
 
@@ -981,7 +981,9 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars ...android.Path
 
 	srcJars := srcFiles.FilterByExt(".srcjar")
 	srcJars = append(srcJars, deps.srcJars...)
-	srcJars = append(srcJars, extraSrcJars...)
+	if aaptSrcJar != nil {
+		srcJars = append(srcJars, aaptSrcJar)
+	}
 
 	// Collect source files from compiledJavaSrcs, compiledSrcJars and filter out Exclude_srcs
 	// that IDEInfo struct will use
@@ -1281,7 +1283,14 @@ func (j *Module) compile(ctx android.ModuleContext, extraSrcJars ...android.Path
 
 	j.implementationAndResourcesJar = implementationAndResourcesJar
 
-	if ctx.Device() && (Bool(j.properties.Installable) || Bool(j.deviceProperties.Compile_dex)) {
+	// Condition for sourceless apps.
+	// * No other src jars than AAPT src jar (R.java)
+	// * No src files
+	// * No additional jars (static libs) than srcJars, which is essentially AAPT src jar
+	isSrclessApp := aaptSrcJar != nil && len(srcJars) == 1 && len(uniqueSrcFiles) == 0 && len(jars) == 1
+	if ctx.Device() &&
+		(Bool(j.properties.Installable) || Bool(j.deviceProperties.Compile_dex)) &&
+		!isSrclessApp {
 		// Dex compilation
 		var dexOutputFile android.ModuleOutPath
 		dexOutputFile = j.compileDex(ctx, flags, outputFile, jarName)
@@ -1514,7 +1523,7 @@ func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	j.dexpreopter.isInstallable = Bool(j.properties.Installable)
 	j.dexpreopter.uncompressedDex = shouldUncompressDex(ctx, &j.dexpreopter)
 	j.deviceProperties.UncompressDex = j.dexpreopter.uncompressedDex
-	j.compile(ctx)
+	j.compile(ctx, nil)
 
 	if (Bool(j.properties.Installable) || ctx.Host()) && !android.DirectlyInAnyApex(ctx, ctx.ModuleName()) {
 		j.installFile = ctx.InstallFile(android.PathForModuleInstall(ctx, "framework"),
