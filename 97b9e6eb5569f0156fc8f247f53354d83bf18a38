@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca81abe1_6d510efb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1329611
+      },
+      "writtenOn": "2019-05-13T07:28:40Z",
+      "side": 1,
+      "message": "Check module_bp_java_deps.json in /out/soong\nIn SettingsProvider section there should contain\n\"srcjars\": [\n\t\t\t\"out/soong/.intermediates/frameworks/base/packages/SettingsProvider/SettingsProvider/android_common/gen/R.jar\"\n\t\t]\n--------\nIt would be more clear, if there are someones out our team want to take a try.",
+      "range": {
+        "startLine": 12,
+        "startChar": 9,
+        "endLine": 12,
+        "endChar": 79
+      },
+      "revId": "97b9e6eb5569f0156fc8f247f53354d83bf18a38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
