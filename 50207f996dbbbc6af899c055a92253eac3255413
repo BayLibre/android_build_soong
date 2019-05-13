@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "0012a967_33940535",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-05-13T06:31:21Z",
+      "side": 1,
+      "message": "Raised a separate CL here: aosp/958618",
+      "parentUuid": "96df03bd_4169602d",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 56
+      },
+      "revId": "50207f996dbbbc6af899c055a92253eac3255413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac718291_aa5359ab",
         "filename": "cc/vndk.go",
         "patchSetId": 1
@@ -229,6 +253,24 @@
       "revId": "50207f996dbbbc6af899c055a92253eac3255413",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abe80fd8_ebb70a85",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-05-13T06:31:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe499d48_2fa67dc5",
+      "revId": "50207f996dbbbc6af899c055a92253eac3255413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -435,6 +477,30 @@
       "revId": "50207f996dbbbc6af899c055a92253eac3255413",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0eb209f9_6dc0f8a0",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-05-13T06:31:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10d46b52_223737dc",
+      "range": {
+        "startLine": 387,
+        "startChar": 0,
+        "endLine": 425,
+        "endChar": 3
+      },
+      "revId": "50207f996dbbbc6af899c055a92253eac3255413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
