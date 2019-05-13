@@ -126,6 +126,9 @@ type sdkLibraryProperties struct {
 	// If set to true, the path of dist files is apistubs/core. Defaults to false.
 	Core_lib *bool
 
+	// don't create dist rules.
+	No_dist *bool
+
 	// TODO: determines whether to create HTML doc or not
 	//Html_doc *bool
 }
@@ -208,56 +211,63 @@ func (module *SdkLibrary) AndroidMk() android.AndroidMkData {
 	data := module.Library.AndroidMk()
 	data.Required = append(data.Required, module.xmlFileName())
 
-	data.Custom = func(w io.Writer, name, prefix, moduleDir string, data android.AndroidMkData) {
-		android.WriteAndroidMkData(w, data)
+	if Bool(module.sdkLibraryProperties.No_dist) {
+		data.Custom = func(w io.Writer, name, prefix, moduleDir string, data android.AndroidMkData) {
+			android.WriteAndroidMkData(w, data)
+			module.Library.AndroidMkHostDex(w, name, data)
+		}
+	} else {
+		data.Custom = func(w io.Writer, name, prefix, moduleDir string, data android.AndroidMkData) {
+			android.WriteAndroidMkData(w, data)
 
-		module.Library.AndroidMkHostDex(w, name, data)
-		// Create a phony module that installs the impl library, for the case when this lib is
-		// in PRODUCT_PACKAGES.
-		owner := module.ModuleBase.Owner()
-		if owner == "" {
-			if Bool(module.sdkLibraryProperties.Core_lib) {
-				owner = "core"
-			} else {
-				owner = "android"
+			module.Library.AndroidMkHostDex(w, name, data)
+			// Create a phony module that installs the impl library, for the case when this lib is
+			// in PRODUCT_PACKAGES.
+			owner := module.ModuleBase.Owner()
+			if owner == "" {
+				if Bool(module.sdkLibraryProperties.Core_lib) {
+					owner = "core"
+				} else {
+					owner = "android"
+				}
 			}
-		}
-		// Create dist rules to install the stubs libs to the dist dir
-		if len(module.publicApiStubsPath) == 1 {
-			fmt.Fprintln(w, "$(call dist-for-goals,sdk win_sdk,"+
-				module.publicApiStubsImplPath.Strings()[0]+
-				":"+path.Join("apistubs", owner, "public",
-				module.BaseModuleName()+".jar")+")")
-		}
-		if len(module.systemApiStubsPath) == 1 {
-			fmt.Fprintln(w, "$(call dist-for-goals,sdk win_sdk,"+
-				module.systemApiStubsImplPath.Strings()[0]+
-				":"+path.Join("apistubs", owner, "system",
-				module.BaseModuleName()+".jar")+")")
-		}
-		if len(module.testApiStubsPath) == 1 {
-			fmt.Fprintln(w, "$(call dist-for-goals,sdk win_sdk,"+
-				module.testApiStubsImplPath.Strings()[0]+
-				":"+path.Join("apistubs", owner, "test",
-				module.BaseModuleName()+".jar")+")")
-		}
-		if module.publicApiFilePath != nil {
-			fmt.Fprintln(w, "$(call dist-for-goals,sdk win_sdk,"+
-				module.publicApiFilePath.String()+
-				":"+path.Join("apistubs", owner, "public", "api",
-				module.BaseModuleName()+".txt")+")")
-		}
-		if module.systemApiFilePath != nil {
-			fmt.Fprintln(w, "$(call dist-for-goals,sdk win_sdk,"+
-				module.systemApiFilePath.String()+
-				":"+path.Join("apistubs", owner, "system", "api",
-				module.BaseModuleName()+".txt")+")")
-		}
-		if module.testApiFilePath != nil {
-			fmt.Fprintln(w, "$(call dist-for-goals,sdk win_sdk,"+
-				module.testApiFilePath.String()+
-				":"+path.Join("apistubs", owner, "test", "api",
-				module.BaseModuleName()+".txt")+")")
+			// Create dist rules to install the stubs libs to the dist dir
+			if len(module.publicApiStubsPath) == 1 {
+				fmt.Fprintln(w, "$(call dist-for-goals,sdk win_sdk,"+
+					module.publicApiStubsImplPath.Strings()[0]+
+					":"+path.Join("apistubs", owner, "public",
+					module.BaseModuleName()+".jar")+")")
+			}
+			if len(module.systemApiStubsPath) == 1 {
+				fmt.Fprintln(w, "$(call dist-for-goals,sdk win_sdk,"+
+					module.systemApiStubsImplPath.Strings()[0]+
+					":"+path.Join("apistubs", owner, "system",
+					module.BaseModuleName()+".jar")+")")
+			}
+			if len(module.testApiStubsPath) == 1 {
+				fmt.Fprintln(w, "$(call dist-for-goals,sdk win_sdk,"+
+					module.testApiStubsImplPath.Strings()[0]+
+					":"+path.Join("apistubs", owner, "test",
+					module.BaseModuleName()+".jar")+")")
+			}
+			if module.publicApiFilePath != nil {
+				fmt.Fprintln(w, "$(call dist-for-goals,sdk win_sdk,"+
+					module.publicApiFilePath.String()+
+					":"+path.Join("apistubs", owner, "public", "api",
+					module.BaseModuleName()+".txt")+")")
+			}
+			if module.systemApiFilePath != nil {
+				fmt.Fprintln(w, "$(call dist-for-goals,sdk win_sdk,"+
+					module.systemApiFilePath.String()+
+					":"+path.Join("apistubs", owner, "system", "api",
+					module.BaseModuleName()+".txt")+")")
+			}
+			if module.testApiFilePath != nil {
+				fmt.Fprintln(w, "$(call dist-for-goals,sdk win_sdk,"+
+					module.testApiFilePath.String()+
+					":"+path.Join("apistubs", owner, "test", "api",
+					module.BaseModuleName()+".txt")+")")
+			}
 		}
 	}
 	return data
@@ -639,6 +649,10 @@ func (module *SdkLibrary) SdkImplementationJars(ctx android.BaseContext, sdkVers
 			return module.publicApiStubsImplPath
 		}
 	}
+}
+
+func (module *SdkLibrary) SetNoDist() {
+	module.sdkLibraryProperties.No_dist = proptools.BoolPtr(true)
 }
 
 var javaSdkLibrariesKey = android.NewOnceKey("javaSdkLibraries")
