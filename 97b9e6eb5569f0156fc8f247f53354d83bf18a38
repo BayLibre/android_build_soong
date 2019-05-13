@@ -22,6 +22,30 @@
       "revId": "97b9e6eb5569f0156fc8f247f53354d83bf18a38",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c9436b3_7800a094",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308042
+      },
+      "writtenOn": "2019-05-13T07:37:31Z",
+      "side": 1,
+      "message": "Thanks for the reminder.",
+      "parentUuid": "ca81abe1_6d510efb",
+      "range": {
+        "startLine": 12,
+        "startChar": 9,
+        "endLine": 12,
+        "endChar": 79
+      },
+      "revId": "97b9e6eb5569f0156fc8f247f53354d83bf18a38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
