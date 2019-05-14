@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf0a2122_e11bb2c6",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-05-14T23:57:02Z",
+      "side": 1,
+      "message": "Remove this commented out code?",
+      "range": {
+        "startLine": 459,
+        "startChar": 24,
+        "endLine": 459,
+        "endChar": 26
+      },
+      "revId": "146614006d31f4ce149bede487a18f041fab4a6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af1c773e_81ab3c36",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-05-14T23:57:02Z",
+      "side": 1,
+      "message": "This fragment is similar to the one in RewriteAndroidMkPrebuiltEtc, perhaps it could be refactored without introducing too many arguments?",
+      "range": {
+        "startLine": 619,
+        "startChar": 20,
+        "endLine": 619,
+        "endChar": 21
+      },
+      "revId": "146614006d31f4ce149bede487a18f041fab4a6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
