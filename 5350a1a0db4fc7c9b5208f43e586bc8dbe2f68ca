@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99d682e2_8c3ec8f6",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-14T21:27:20Z",
+      "side": 1,
+      "message": "These seem worth adding to TestArchConfig so they stay consistent",
+      "range": {
+        "startLine": 315,
+        "startChar": 1,
+        "endLine": 318,
+        "endChar": 93
+      },
+      "revId": "5350a1a0db4fc7c9b5208f43e586bc8dbe2f68ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea7c9ed0_b8cfcad3",
+        "filename": "cc/vndk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-14T21:27:20Z",
+      "side": 1,
+      "message": "strings.Join(paths.Strings(), \" \")",
+      "range": {
+        "startLine": 345,
+        "startChar": 1,
+        "endLine": 352,
+        "endChar": 20
+      },
+      "revId": "5350a1a0db4fc7c9b5208f43e586bc8dbe2f68ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
