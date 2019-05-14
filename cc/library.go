@@ -897,6 +897,7 @@ func (library *libraryDecorator) link(ctx ModuleContext,
 		library.reexportFlags(flags)
 		library.reexportDeps(library.baseCompiler.pathDeps)
 		library.reuseExportedFlags = append(library.reuseExportedFlags, flags...)
+		library.reuseExportedDeps = append(library.reuseExportedDeps, library.baseCompiler.pathDeps...)
 	}
 
 	if library.buildStubs() {
