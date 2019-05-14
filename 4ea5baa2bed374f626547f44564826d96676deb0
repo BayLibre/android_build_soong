@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4fc60561_8a9486a8",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2019-05-14T18:20:00Z",
+      "side": 1,
+      "message": "Could you set Lto \u003d nil here, too?",
+      "revId": "4ea5baa2bed374f626547f44564826d96676deb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
