@@ -16,6 +16,24 @@
       "revId": "4ea5baa2bed374f626547f44564826d96676deb0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5375bff8_cbd0d094",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-05-14T20:06:38Z",
+      "side": 1,
+      "message": "Unfortunately not, LTO is done with the `ltoMutator`, which is inaccessible to the sanitizer mutator.",
+      "parentUuid": "4fc60561_8a9486a8",
+      "revId": "4ea5baa2bed374f626547f44564826d96676deb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
