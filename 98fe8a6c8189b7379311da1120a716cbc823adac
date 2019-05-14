@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d164baef_547f52b7",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-14T23:41:19Z",
+      "side": 1,
+      "message": "Should this ever be set in an Android.bp file?  If not, you can tag it with \u0027blueprint:\"mutated\"` to make it unsettable.",
+      "revId": "98fe8a6c8189b7379311da1120a716cbc823adac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
