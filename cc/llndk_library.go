@@ -122,7 +122,9 @@ func (stub *llndkStubDecorator) processHeaders(ctx ModuleContext, srcHeaderDir s
 			continue
 		}
 
-		installPaths = append(installPaths, outDir.Join(ctx, relHeaderDir, header.Base()))
+		installPath := outDir.Join(ctx, relHeaderDir, header.Base())
+		installPaths = append(installPaths, installPath)
+		stub.reexportDeps(android.Paths{installPath})
 	}
 
 	return processHeadersWithVersioner(ctx, srcDir, outDir, srcFiles, installPaths)
