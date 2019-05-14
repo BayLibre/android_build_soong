@@ -102,6 +102,10 @@ var fixSteps = []fixStep{
 		name: "rewriteAndroidTest",
 		fix:  rewriteAndroidTest,
 	},
+	{
+		name: "rewriteAndroidAppImport",
+		fix:  rewriteAndroidAppImport,
+	},
 }
 
 func NewFixRequest() FixRequest {
@@ -452,6 +456,8 @@ func resolveLocalModule(mod *parser.Module, val parser.Expression) parser.Expres
 				return v
 			}
 		}
+		//} else if operator, ok := val.(*parser.Operator); ok {
+		//	operator.
 	}
 	return val
 }
@@ -598,6 +604,49 @@ func rewriteAndroidTest(f *Fixer) error {
 			}
 			return indicateAttributeError(mod, "filename",
 				"Only LOCAL_MODULE_PATH := $(TARGET_OUT_DATA_APPS) is allowed for the android_test")
+		}
+	}
+	return nil
+}
+
+func rewriteAndroidAppImport(f *Fixer) error {
+	for _, def := range f.tree.Defs {
+		mod, ok := def.(*parser.Module)
+		if !(ok && mod.Type == "android_app_import") {
+			continue
+		}
+		// Rewrite 'srcs' property to 'apk', the source property for android_app_import.
+		if srcs, ok := mod.GetProperty("srcs"); ok {
+			if srcList, ok := srcs.Value.(*parser.List); ok {
+				removeProperty(mod, "srcs")
+				if len(srcList.Values) == 1 {
+					mod.Properties = append(mod.Properties,
+						&parser.Property{Name: "apk", NamePos: srcs.NamePos, ColonPos: srcs.ColonPos, Value: resolveLocalModule(mod, srcList.Values[0])})
+				} else if len(srcList.Values) > 1 {
+					indicateAttributeError(mod, "apk", "LOCAL_SRC_FILES should contain at most one item")
+				}
+			} else if _, ok = srcs.Value.(*parser.Variable); ok {
+				removeProperty(mod, "srcs")
+				mod.Properties = append(mod.Properties,
+					&parser.Property{Name: "apk", NamePos: srcs.NamePos, ColonPos: srcs.ColonPos, Value: resolveLocalModule(mod, srcs.Value)})
+			} else {
+				renameProperty(mod, "srcs", "apk")
+			}
+		}
+		// Handle special certificate value, "PRESIGNED".
+		if cert, ok := mod.GetProperty("certificate"); ok {
+			if certStr, ok := cert.Value.(*parser.String); ok {
+				if certStr.Value == "PRESIGNED" {
+					removeProperty(mod, "certificate")
+					prop := &parser.Property{
+						Name: "presigned",
+						Value: &parser.Bool{
+							Value: true,
+						},
+					}
+					mod.Properties = append(mod.Properties, prop)
+				}
+			}
 		}
 	}
 	return nil
