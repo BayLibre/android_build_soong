@@ -45,6 +45,54 @@
       "revId": "f8ebe52dc610f03bee75f395368ebc17c3135604",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3e4495b_f392c352",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1290,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-15T22:53:21Z",
+      "side": 1,
+      "message": "Done. As a bonus, this change addresses the installable, but no srcs library case as it is now agnostic to aaptSrcJar.",
+      "parentUuid": "ce9e4f00_5b94399f",
+      "range": {
+        "startLine": 1290,
+        "startChar": 38,
+        "endLine": 1290,
+        "endChar": 56
+      },
+      "revId": "f8ebe52dc610f03bee75f395368ebc17c3135604",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "95fcd076_29162c9c",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1290,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-15T22:53:21Z",
+      "side": 1,
+      "message": "Resolved along with the below comment.",
+      "parentUuid": "01e7e45d_a1e8a5a4",
+      "range": {
+        "startLine": 1290,
+        "startChar": 86,
+        "endLine": 1290,
+        "endChar": 101
+      },
+      "revId": "f8ebe52dc610f03bee75f395368ebc17c3135604",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
