@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "439ea262_21164811",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-15T19:33:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf0a2122_e11bb2c6",
+      "range": {
+        "startLine": 459,
+        "startChar": 24,
+        "endLine": 459,
+        "endChar": 26
+      },
+      "revId": "146614006d31f4ce149bede487a18f041fab4a6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "af1c773e_81ab3c36",
         "filename": "bpfix/bpfix/bpfix.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "146614006d31f4ce149bede487a18f041fab4a6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11ecbc61_c4ac69e1",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-15T19:33:39Z",
+      "side": 1,
+      "message": "Good point. Done.",
+      "parentUuid": "af1c773e_81ab3c36",
+      "range": {
+        "startLine": 619,
+        "startChar": 20,
+        "endLine": 619,
+        "endChar": 21
+      },
+      "revId": "146614006d31f4ce149bede487a18f041fab4a6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
