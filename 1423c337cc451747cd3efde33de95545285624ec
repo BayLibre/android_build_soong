@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94c0389d_779ed23d",
+        "filename": "cc/prebuilt_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-05-15T16:01:23Z",
+      "side": 1,
+      "message": "Funny characters...",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 2
+      },
+      "revId": "1423c337cc451747cd3efde33de95545285624ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
