@@ -246,8 +246,8 @@ type ModuleContextIntf interface {
 	sdkVersion() string
 	useVndk() bool
 	isNdk() bool
-	isLlndk(config android.Config) bool
-	isLlndkPublic(config android.Config) bool
+	isLlndk() bool
+	isLlndkPublic() bool
 	isVndkPrivate(config android.Config) bool
 	isVndk() bool
 	isVndkSp() bool
@@ -512,14 +512,19 @@ func (c *Module) isNdk() bool {
 	return inList(c.Name(), ndkMigratedLibs)
 }
 
-func (c *Module) isLlndk(config android.Config) bool {
-	// Returns true for both LLNDK (public) and LLNDK-private libs.
-	return inList(c.Name(), *llndkLibraries(config))
+// isLlndk returns true for both LLNDK (public) and LLNDK-private libs.
+func (c *Module) isLlndk() bool {
+	_, ok := c.linker.(*llndkStubDecorator)
+	return ok
 }
 
-func (c *Module) isLlndkPublic(config android.Config) bool {
-	// Returns true only for LLNDK (public) libs.
-	return c.isLlndk(config) && !c.isVndkPrivate(config)
+// isLlndkPublic returns true only for LLNDK (public) libs.
+func (c *Module) isLlndkPublic() bool {
+	if lib, ok := c.linker.(*llndkStubDecorator); ok {
+		// Note that llndkStubDecorator sets default value(true)
+		return Bool(lib.Properties.Vendor_available)
+	}
+	return false
 }
 
 func (c *Module) isVndkPrivate(config android.Config) bool {
@@ -689,12 +694,12 @@ func (ctx *moduleContextImpl) isNdk() bool {
 	return ctx.mod.isNdk()
 }
 
-func (ctx *moduleContextImpl) isLlndk(config android.Config) bool {
-	return ctx.mod.isLlndk(config)
+func (ctx *moduleContextImpl) isLlndk() bool {
+	return ctx.mod.isLlndk()
 }
 
-func (ctx *moduleContextImpl) isLlndkPublic(config android.Config) bool {
-	return ctx.mod.isLlndkPublic(config)
+func (ctx *moduleContextImpl) isLlndkPublic() bool {
+	return ctx.mod.isLlndkPublic()
 }
 
 func (ctx *moduleContextImpl) isVndkPrivate(config android.Config) bool {
@@ -755,7 +760,7 @@ func (ctx *moduleContextImpl) shouldCreateVndkSourceAbiDump(config android.Confi
 	if ctx.isNdk() {
 		return true
 	}
-	if ctx.isLlndkPublic(config) {
+	if ctx.isLlndkPublic() {
 		return true
 	}
 	if ctx.useVndk() && ctx.isVndk() && !ctx.isVndkPrivate(config) {
@@ -1931,18 +1936,21 @@ func (c *Module) staticBinary() bool {
 }
 
 func (c *Module) getMakeLinkType(config android.Config) string {
+	name := strings.TrimPrefix(c.Name(), "prebuilt_")
 	if c.useVndk() {
-		if inList(c.Name(), *vndkCoreLibraries(config)) ||
-			inList(c.Name(), *vndkSpLibraries(config)) ||
-			inList(c.Name(), *llndkLibraries(config)) {
-			if inList(c.Name(), *vndkPrivateLibraries(config)) {
-				return "native:vndk_private"
-			} else {
+		if c.isLlndk() {
+			if c.isLlndkPublic() {
 				return "native:vndk"
 			}
-		} else {
-			return "native:vendor"
+			return "native:vndk_private"
 		}
+		if c.isVndk() && !c.isVndkExt() {
+			if Bool(c.VendorProperties.Vendor_available) {
+				return "native:vndk"
+			}
+			return "native:vndk_private"
+		}
+		return "native:vendor"
 	} else if c.inRecovery() {
 		return "native:recovery"
 	} else if c.Target().Os == android.Android && String(c.Properties.Sdk_version) != "" {
@@ -1950,7 +1958,7 @@ func (c *Module) getMakeLinkType(config android.Config) string {
 		// TODO(b/114741097): use the correct ndk stl once build errors have been fixed
 		//family, link := getNdkStlFamilyAndLinkType(c)
 		//return fmt.Sprintf("native:ndk:%s:%s", family, link)
-	} else if inList(c.Name(), *vndkUsingCoreVariantLibraries(config)) {
+	} else if inList(name, *vndkUsingCoreVariantLibraries(config)) {
 		return "native:platform_vndk"
 	} else {
 		return "native:platform"
