@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c238720_d999e31b",
+        "filename": "android/prebuilt_etc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-15T16:14:58Z",
+      "side": 1,
+      "message": "This comment fits in one line just fine.",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 246,
+        "endChar": 31
+      },
+      "revId": "22e7d54dc20bc906d7d9664b8eaf7a60a8bda82d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4ae201b_c540362f",
+        "filename": "android/prebuilt_etc_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-15T16:14:58Z",
+      "side": 1,
+      "message": "Please fix formatting here.",
+      "range": {
+        "startLine": 226,
+        "startChar": 1,
+        "endLine": 230,
+        "endChar": 4
+      },
+      "revId": "22e7d54dc20bc906d7d9664b8eaf7a60a8bda82d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
