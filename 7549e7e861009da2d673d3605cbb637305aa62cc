@@ -16,6 +16,24 @@
       "revId": "7549e7e861009da2d673d3605cbb637305aa62cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a564a2ac_ed221e5c",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-15T19:12:41Z",
+      "side": 1,
+      "message": "You\u0027re right since AndroidTest is still AndroidApp (and OverridableModule). Done.",
+      "parentUuid": "457e6c83_91ddd2fe",
+      "revId": "7549e7e861009da2d673d3605cbb637305aa62cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
