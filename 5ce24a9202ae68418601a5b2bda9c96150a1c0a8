@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c366359_f3265aca",
+        "filename": "android/prebuilt_etc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-15T17:39:28Z",
+      "side": 1,
+      "message": "1. Aren\u0027t font files all prebuilt?\n2. Double whitespaces after \u0027in\u0027.",
+      "revId": "5ce24a9202ae68418601a5b2bda9c96150a1c0a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c7c0af6_9bf5549e",
+        "filename": "android/prebuilt_etc_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-15T17:39:28Z",
+      "side": 1,
+      "message": "The indentation still looks off.",
+      "range": {
+        "startLine": 229,
+        "startChar": 1,
+        "endLine": 230,
+        "endChar": 4
+      },
+      "revId": "5ce24a9202ae68418601a5b2bda9c96150a1c0a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
