@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ce9e4f00_5b94399f",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1290,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-15T21:16:20Z",
+      "side": 1,
+      "message": "This seems error-prone, can you move adding aaptSrcJar to srcJars until later and then check if len(srcJars) \u003d\u003d 0?  Maybe this would be better as a hasSrcs :\u003d false a the top, and then set it to true in any of the places that can pull in sources?",
+      "range": {
+        "startLine": 1290,
+        "startChar": 38,
+        "endLine": 1290,
+        "endChar": 56
+      },
+      "revId": "f8ebe52dc610f03bee75f395368ebc17c3135604",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01e7e45d_a1e8a5a4",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1290,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-15T21:16:20Z",
+      "side": 1,
+      "message": "This is confusing, the most recent use of \"jars\" is a different variable.\n\nIt would also be good to propagate this information through static_libs dependencies, so depending only on static_libs that are srcless is still srcless.",
+      "range": {
+        "startLine": 1290,
+        "startChar": 86,
+        "endLine": 1290,
+        "endChar": 101
+      },
+      "revId": "f8ebe52dc610f03bee75f395368ebc17c3135604",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
