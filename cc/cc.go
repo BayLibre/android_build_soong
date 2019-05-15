@@ -1931,11 +1931,12 @@ func (c *Module) staticBinary() bool {
 }
 
 func (c *Module) getMakeLinkType(config android.Config) string {
+	name := strings.TrimPrefix(c.Name(), "prebuilt_")
 	if c.useVndk() {
-		if inList(c.Name(), *vndkCoreLibraries(config)) ||
-			inList(c.Name(), *vndkSpLibraries(config)) ||
-			inList(c.Name(), *llndkLibraries(config)) {
-			if inList(c.Name(), *vndkPrivateLibraries(config)) {
+		if inList(name, *vndkCoreLibraries(config)) ||
+			inList(name, *vndkSpLibraries(config)) ||
+			inList(name, *llndkLibraries(config)) {
+			if inList(name, *vndkPrivateLibraries(config)) {
 				return "native:vndk_private"
 			} else {
 				return "native:vndk"
@@ -1950,7 +1951,7 @@ func (c *Module) getMakeLinkType(config android.Config) string {
 		// TODO(b/114741097): use the correct ndk stl once build errors have been fixed
 		//family, link := getNdkStlFamilyAndLinkType(c)
 		//return fmt.Sprintf("native:ndk:%s:%s", family, link)
-	} else if inList(c.Name(), *vndkUsingCoreVariantLibraries(config)) {
+	} else if inList(name, *vndkUsingCoreVariantLibraries(config)) {
 		return "native:platform_vndk"
 	} else {
 		return "native:platform"
