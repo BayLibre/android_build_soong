@@ -34,6 +34,24 @@
       "revId": "0967b34dd95018719bc5bc2876f68a4921d81368",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5772d207_e2885980",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-05-15T03:25:19Z",
+      "side": 0,
+      "message": "I suggested that to avoid indenting the \"else\" part.",
+      "parentUuid": "6a4ed817_b115d126",
+      "revId": "0967b34dd95018719bc5bc2876f68a4921d81368",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
