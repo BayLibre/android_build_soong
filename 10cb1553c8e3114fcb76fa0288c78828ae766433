@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33533662_0fe1a3c7",
+        "filename": "android/prebuilt_etc_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-15T18:04:02Z",
+      "side": 1,
+      "message": "Put a blank line above this line.",
+      "revId": "10cb1553c8e3114fcb76fa0288c78828ae766433",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
