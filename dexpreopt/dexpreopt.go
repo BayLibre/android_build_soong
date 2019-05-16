@@ -226,11 +226,6 @@ func dexpreoptCommand(ctx android.PathContext, global GlobalConfig, module Modul
 		bootImageLocation = PathToLocation(bootImage, arch)
 	}
 
-	// Lists of used and optional libraries from the build config, with optional libraries that are known to not
-	// be present in the current product removed.
-	var filteredUsesLibs []string
-	var filteredOptionalUsesLibs []string
-
 	// The class loader context using paths in the build
 	var classLoaderContextHost android.Paths
 
@@ -248,11 +243,10 @@ func dexpreoptCommand(ctx android.PathContext, global GlobalConfig, module Modul
 	var classLoaderContextHostString string
 
 	if module.EnforceUsesLibraries {
-		filteredOptionalUsesLibs = filterOut(global.MissingUsesLibraries, module.OptionalUsesLibraries)
-		filteredUsesLibs = append(copyOf(module.UsesLibraries), filteredOptionalUsesLibs...)
+		usesLibs := append(copyOf(module.UsesLibraries), module.PresentOptionalUsesLibraries...)
 
 		// Create class loader context for dex2oat from uses libraries and filtered optional libraries
-		for _, l := range filteredUsesLibs {
+		for _, l := range usesLibs {
 
 			classLoaderContextHost = append(classLoaderContextHost,
 				pathForLibrary(module, l))
@@ -263,7 +257,9 @@ func dexpreoptCommand(ctx android.PathContext, global GlobalConfig, module Modul
 		const httpLegacy = "org.apache.http.legacy"
 		const httpLegacyImpl = "org.apache.http.legacy.impl"
 
-		if !contains(module.UsesLibraries, httpLegacy) && !contains(module.OptionalUsesLibraries, httpLegacy) {
+		module.LibraryPaths[httpLegacyImpl] = module.LibraryPaths[httpLegacy]
+
+		if !contains(module.UsesLibraries, httpLegacy) && !contains(module.PresentOptionalUsesLibraries, httpLegacy) {
 			conditionalClassLoaderContextHost28 = append(conditionalClassLoaderContextHost28,
 				pathForLibrary(module, httpLegacyImpl))
 			conditionalClassLoaderContextTarget28 = append(conditionalClassLoaderContextTarget28,
