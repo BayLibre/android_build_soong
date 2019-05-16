@@ -274,6 +274,9 @@ type apexBundleProperties struct {
 
 	// List of sanitizer names that this APEX is enabled for
 	SanitizerNames []string `blueprint:"mutated"`
+
+	// Support translated architecture (i.e. arm on x86). Default is false.
+	Support_translated_arch *bool
 }
 
 type apexTargetBundleProperties struct {
@@ -461,6 +464,11 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 		}
 	}
 	for i, target := range targets {
+		if !proptools.Bool(a.properties.Support_translated_arch) && !target.Arch.Native {
+			// non-translated architectures are included only when requested
+			continue
+		}
+
 		// When multilib.* is omitted for native_shared_libs, it implies
 		// multilib.both.
 		ctx.AddFarVariationDependencies([]blueprint.Variation{
