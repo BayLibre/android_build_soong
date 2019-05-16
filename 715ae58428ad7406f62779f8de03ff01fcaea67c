@@ -68,6 +68,30 @@
       "revId": "715ae58428ad7406f62779f8de03ff01fcaea67c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1fb8794_8383d75a",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1041673
+      },
+      "writtenOn": "2019-05-16T13:59:18Z",
+      "side": 1,
+      "message": "Yes, native_bridge_supported tag is supposed to address this once we switch to the new build schema. which is coming to android tree soon(tm).",
+      "parentUuid": "fe5e6989_0dfc4f00",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 30
+      },
+      "revId": "715ae58428ad7406f62779f8de03ff01fcaea67c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
