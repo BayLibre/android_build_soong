@@ -22,6 +22,30 @@
       "revId": "bc625cd942bb218cc35250f9050d05b3caf5720a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96fcd3a5_a973e521",
+        "filename": "java/app_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1235,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-16T20:58:50Z",
+      "side": 1,
+      "message": "I don\u0027t think InList is better because -f flag values are full paths. If I just take the file names, we lose some potentially important debugging info in case the test fails. Keeping the full path list additionally doesn\u0027t seem like a better solution than this.",
+      "parentUuid": "b9b5ffbf_5c82f26b",
+      "range": {
+        "startLine": 1235,
+        "startChar": 7,
+        "endLine": 1235,
+        "endChar": 41
+      },
+      "revId": "bc625cd942bb218cc35250f9050d05b3caf5720a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
