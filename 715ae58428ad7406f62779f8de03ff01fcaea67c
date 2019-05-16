@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99f958a5_8365fbc3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-05-16T13:36:22Z",
+      "side": 1,
+      "message": "Spello: \"considering\"",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 12
+      },
+      "revId": "715ae58428ad7406f62779f8de03ff01fcaea67c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd697c1c_162c2123",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-05-16T13:36:22Z",
+      "side": 1,
+      "message": "Please also remove the lines from art_apex_test.py that lets them through: http://cs/aosp-master/art/build/apex/art_apex_test.py?l\u003d499-504\u0026rcl\u003d0dda8c84938d6bb4ce5a1707e5e109ea187fc33d",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 58
+      },
+      "revId": "715ae58428ad7406f62779f8de03ff01fcaea67c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe5e6989_0dfc4f00",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-05-16T13:36:22Z",
+      "side": 1,
+      "message": "So this is needed in addition to the per-library native_bridge_supported property[1] because of the current setup where the ARM libs still are in /system/lib*/arm?\n\nIiuc the majority of the libs in lib*/arm in the APEX shouldn\u0027t be built at all, not even in /system. Does native_bridge_supported address that? (Question for Dimitry.) If it does, do we still need this?\n\n[1] http://cs/aosp-master/build/soong/android/module.go?l\u003d294\u0026rcl\u003df50406eecc7b2b0c82bc39ed4a8db819bc742804",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 30
+      },
+      "revId": "715ae58428ad7406f62779f8de03ff01fcaea67c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
