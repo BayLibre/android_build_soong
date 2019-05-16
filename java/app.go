@@ -17,11 +17,12 @@ package java
 // This file contains the module types for compiling Android apps.
 
 import (
-	"github.com/google/blueprint"
-	"github.com/google/blueprint/proptools"
 	"path/filepath"
 	"reflect"
 	"strings"
+
+	"github.com/google/blueprint"
+	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
 	"android/soong/cc"
@@ -99,6 +100,17 @@ type appProperties struct {
 	// Use_embedded_native_libs still selects whether they are stored uncompressed and aligned or compressed.
 	// True for android_test* modules.
 	AlwaysPackageNativeLibs bool `blueprint:"mutated"`
+
+	// A list of shared library modules that will be listed in uses-library tags in the AndroidManifest.xml file.
+	Uses_libs []string
+
+	// A list of shared library modules that will be listed in uses-library tags in the AndroidManifest.xml file with
+	// required=false.
+	Optional_uses_libs []string
+
+	// If true, the list of uses_libs and optional_uses_libs modules must match the AndroidManifest.xml file.  Defaults
+	// to true if either uses_libs or optional_uses_libs is set.  Will unconditionally default to true in the future.
+	Enforce_uses_libs *bool
 }
 
 // android_app properties that can be overridden by override_android_app
@@ -180,6 +192,10 @@ func (a *AndroidApp) OverridablePropertiesDepsMutator(ctx android.BottomUpMutato
 				`must be names of android_app_certificate modules in the form ":module"`)
 		}
 	}
+
+	ctx.AddVariationDependencies(nil, usesLibTag, a.appProperties.Uses_libs...)
+	ctx.AddVariationDependencies(nil, usesLibTag, a.appProperties.Optional_uses_libs...)
+	ctx.AddVariationDependencies(nil, usesLibTag, "android.hidl.base-V1.0-java", "android.hidl.manager-V1.0-java")
 }
 
 func (a *AndroidApp) GenerateAndroidBuildActions(ctx android.ModuleContext) {
@@ -258,6 +274,7 @@ func (a *AndroidApp) aaptBuildActions(ctx android.ModuleContext) {
 	aaptLinkFlags = append(aaptLinkFlags, a.additionalAaptFlags...)
 
 	a.aapt.splitNames = a.appProperties.Package_splits
+	a.aapt.sdkLibraries = a.exportedSdkLibs
 
 	a.aapt.buildActions(ctx, sdkContext(a), aaptLinkFlags...)
 
@@ -290,9 +307,33 @@ func (a *AndroidApp) dexBuildActions(ctx android.ModuleContext) android.Path {
 	} else {
 		installDir = filepath.Join("app", a.installApkName)
 	}
+
+	usesLibPaths := map[string]android.Path{}
+
+	ctx.VisitDirectDepsWithTag(usesLibTag, func(m android.Module) {
+		if lib, ok := m.(Dependency); ok {
+			if dexJar := lib.DexJar(); dexJar != nil {
+				usesLibPaths[ctx.OtherModuleName(m)] = dexJar
+			} else {
+				ctx.ModuleErrorf("module %q in uses_libs or optional_uses_libs must produce a dex jar, does it have installable: true?",
+					ctx.OtherModuleName(m))
+			}
+		} else {
+			ctx.ModuleErrorf("module %q in uses_libs or optional_uses_libs must be a java library",
+				ctx.OtherModuleName(m))
+		}
+	})
+
 	a.dexpreopter.installPath = android.PathForModuleInstall(ctx, installDir, a.installApkName+".apk")
 	a.dexpreopter.isInstallable = Bool(a.properties.Installable)
 	a.dexpreopter.uncompressedDex = a.shouldUncompressDex(ctx)
+
+	defaultEnforceUsesLibs := len(a.appProperties.Uses_libs) > 0 || len(a.appProperties.Optional_uses_libs) > 0
+	a.dexpreopter.enforceUsesLibs = BoolDefault(a.appProperties.Enforce_uses_libs, defaultEnforceUsesLibs)
+	a.dexpreopter.usesLibs = a.appProperties.Uses_libs
+	a.dexpreopter.optionalUsesLibs = a.appProperties.Optional_uses_libs
+	a.dexpreopter.libraryPaths = usesLibPaths
+
 	a.deviceProperties.UncompressDex = a.dexpreopter.uncompressedDex
 
 	if ctx.ModuleName() != "framework-res" {
