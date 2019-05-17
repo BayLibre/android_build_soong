@@ -289,7 +289,10 @@ func (a *AndroidApp) dexBuildActions(ctx android.ModuleContext) android.Path {
 		installDir = filepath.Join("app", a.installApkName)
 	}
 	a.dexpreopter.installPath = android.PathForModuleInstall(ctx, installDir, a.installApkName+".apk")
+	a.dexpreopter.isApp = true
 	a.dexpreopter.isInstallable = Bool(a.properties.Installable)
+	a.dexpreopter.isPlatformSigned = (a.getCertString(ctx) == "platform")
+	a.dexpreopter.usesNonSdkApis = Bool(a.Module.deviceProperties.Platform_apis)
 	a.dexpreopter.uncompressedDex = a.shouldUncompressDex(ctx)
 	a.deviceProperties.UncompressDex = a.dexpreopter.uncompressedDex
 
@@ -802,6 +805,9 @@ func (a *AndroidAppImport) GenerateAndroidBuildActions(ctx android.ModuleContext
 	a.dexpreopter.installPath = installDir.Join(ctx, a.BaseModuleName()+".apk")
 	a.dexpreopter.isInstallable = true
 	a.dexpreopter.isPresignedPrebuilt = Bool(a.properties.Presigned)
+	a.dexpreopter.isPlatformSigned = !Bool(a.properties.Presigned) &&
+		(String(a.properties.Certificate) == "platform")
+	a.dexpreopter.usesNonSdkApis = false
 	a.dexpreopter.uncompressedDex = a.shouldUncompressDex(ctx)
 	dexOutput := a.dexpreopter.dexpreopt(ctx, jnisUncompressed)
 	if a.dexpreopter.uncompressedDex {

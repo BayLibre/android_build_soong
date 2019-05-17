@@ -133,11 +133,15 @@ type ModuleConfig struct {
 	NoCreateAppImage    bool
 	ForceCreateAppImage bool
 
-	PresignedPrebuilt bool
+	PresignedPrebuilt             bool
+	SignedWithPlatformCertificate bool
 
 	NoStripping     bool
 	StripInputPath  android.Path
 	StripOutputPath android.WritablePath
+
+	IsApp          bool
+	UsesNonSdkApis bool
 }
 
 func constructPath(ctx android.PathContext, path string) android.Path {

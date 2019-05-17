@@ -24,10 +24,13 @@ type dexpreopter struct {
 
 	installPath         android.OutputPath
 	uncompressedDex     bool
+	isApp               bool
 	isSDKLibrary        bool
 	isTest              bool
 	isInstallable       bool
 	isPresignedPrebuilt bool
+	isPlatformSigned    bool
+	usesNonSdkApis      bool
 
 	builtInstalled string
 }
@@ -180,11 +183,15 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.Mo
 		NoCreateAppImage:    !BoolDefault(d.dexpreoptProperties.Dex_preopt.App_image, true),
 		ForceCreateAppImage: BoolDefault(d.dexpreoptProperties.Dex_preopt.App_image, false),
 
-		PresignedPrebuilt: d.isPresignedPrebuilt,
+		PresignedPrebuilt:             d.isPresignedPrebuilt,
+		SignedWithPlatformCertificate: d.isPlatformSigned,
 
 		NoStripping:     Bool(d.dexpreoptProperties.Dex_preopt.No_stripping),
 		StripInputPath:  dexJarFile,
 		StripOutputPath: strippedDexJarFile.OutputPath,
+
+		IsApp:          d.isApp,
+		UsesNonSdkApis: d.usesNonSdkApis,
 	}
 
 	dexpreoptRule, err := dexpreopt.GenerateDexpreoptRule(ctx, global, dexpreoptConfig)
