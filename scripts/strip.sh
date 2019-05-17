@@ -63,6 +63,15 @@ do_strip() {
     fi
 }
 
+do_strip_keep_symbols_and_debug_frame() {
+    REMOVE_SECTIONS=`"${CROSS_COMPILE}readelf" -S "${infile}" | awk '/.debug_/ {if ($2 != ".debug_frame") {print "--remove-section " $2}}' | xargs`
+    if [ -z "${use_gnu_strip}" ]; then
+        "${CLANG_BIN}/llvm-objcopy" "${infile}" "${outfile}.tmp" ${REMOVE_SECTIONS}
+    else
+        "${CROSS_COMPILE}objcopy" "${infile}" "${outfile}.tmp" ${REMOVE_SECTIONS}
+    fi
+}
+
 do_strip_keep_symbols() {
     REMOVE_SECTIONS=`"${CROSS_COMPILE}readelf" -S "${infile}" | awk '/.debug_/ {print "--remove-section " $2}' | xargs`
     if [ -z "${use_gnu_strip}" ]; then
@@ -148,6 +157,7 @@ while getopts $OPTSTRING opt; do
                 add-gnu-debuglink) add_gnu_debuglink=true ;;
                 keep-mini-debug-info) keep_mini_debug_info=true ;;
                 keep-symbols) keep_symbols=true ;;
+                keep-symbols-and-debug-frame) keep_symbols_and_debug_frame=true ;;
                 remove-build-id) remove_build_id=true ;;
                 use-gnu-strip) use_gnu_strip=true ;;
                 *) echo "Unknown option --${OPTARG}"; usage ;;
@@ -189,7 +199,9 @@ fi
 
 rm -f "${outfile}.tmp"
 
-if [ ! -z "${keep_symbols}" ]; then
+if [ ! -z "${keep_symbols_and_debug_frame}" ]; then
+    do_strip_keep_symbols_and_debug_frame
+elif [ ! -z "${keep_symbols}" ]; then
     do_strip_keep_symbols
 elif [ ! -z "${symbols_to_keep}" ]; then
     do_strip_keep_symbol_list
