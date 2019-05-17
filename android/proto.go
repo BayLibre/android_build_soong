@@ -130,8 +130,7 @@ func ProtoRule(ctx ModuleContext, rule *RuleBuilder, protoFile Path, flags Proto
 	if flags.CanonicalPathFromRoot {
 		protoBase = "."
 	} else {
-		rel := protoFile.Rel()
-		protoBase = strings.TrimSuffix(protoFile.String(), rel)
+		protoBase = protoFile.RelBase()
 	}
 
 	rule.Command().

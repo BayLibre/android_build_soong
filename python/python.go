@@ -508,7 +508,7 @@ func (p *Module) createSrcsZip(ctx android.ModuleContext, pkgPath string) androi
 			protoSrcs = append(protoSrcs, path.src)
 		} else {
 			var relativeRoot string
-			relativeRoot = strings.TrimSuffix(path.src.String(), path.src.Rel())
+			relativeRoot = path.src.RelBase()
 			if v, found := relativeRootMap[relativeRoot]; found {
 				relativeRootMap[relativeRoot] = append(v, path.src)
 			} else {

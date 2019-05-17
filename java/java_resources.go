@@ -100,16 +100,11 @@ func resourcePathsToJarArgs(files android.Paths) []string {
 
 	lastDir := ""
 	for i, f := range files {
-		rel := f.Rel()
-		path := f.String()
-		if !strings.HasSuffix(path, rel) {
-			panic(fmt.Errorf("path %q does not end with %q", path, rel))
-		}
-		dir := filepath.Clean(strings.TrimSuffix(path, rel))
+		dir := filepath.Clean(f.RelBase())
 		if i == 0 || dir != lastDir {
 			args = append(args, "-C", dir)
 		}
-		args = append(args, "-f", pathtools.MatchEscape(path))
+		args = append(args, "-f", pathtools.MatchEscape(f.String()))
 		lastDir = dir
 	}
 

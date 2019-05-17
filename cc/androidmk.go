@@ -119,13 +119,7 @@ func (c *Module) AndroidMk() android.AndroidMkData {
 func androidMkWriteTestData(data android.Paths, ctx AndroidMkContext, ret *android.AndroidMkData) {
 	var testFiles []string
 	for _, d := range data {
-		rel := d.Rel()
-		path := d.String()
-		if !strings.HasSuffix(path, rel) {
-			panic(fmt.Errorf("path %q does not end with %q", path, rel))
-		}
-		path = strings.TrimSuffix(path, rel)
-		testFiles = append(testFiles, path+":"+rel)
+		testFiles = append(testFiles, d.RelBase()+":"+d.Rel())
 	}
 	if len(testFiles) > 0 {
 		ret.Extra = append(ret.Extra, func(w io.Writer, outputFile android.Path) {

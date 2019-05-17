@@ -102,6 +102,11 @@ type Path interface {
 	// example, Rel on a PathsForModuleSrc would return the path relative to the module source
 	// directory, and OutputPath.Join("foo").Rel() would return "foo".
 	Rel() string
+
+	// RelBase returns the base part of the path that the Rel() portion of the path is rooted in. For
+	// example, RelBase on a PathsForModuleSrc would return the module source directory. Not to be
+	// confused with Base()
+	RelBase() string
 }
 
 // WritablePath is a type of path that can be used as an output for build rules.
@@ -587,6 +592,16 @@ func (p basePath) Rel() string {
 		return p.rel
 	}
 	return p.path
+}
+
+func (p basePath) RelBase() string {
+	if p.rel == "" {
+		return p.path
+	}
+	if !strings.HasSuffix(p.path, p.rel) {
+		panic(fmt.Errorf("path %q does not end with %q", p.path, p.rel))
+	}
+	return strings.TrimSuffix(p.path, p.rel)
 }
 
 func (p basePath) String() string {
