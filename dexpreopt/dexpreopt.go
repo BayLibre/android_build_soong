@@ -339,6 +339,15 @@ func dexpreoptCommand(ctx android.PathContext, global GlobalConfig, module Modul
 		dexLocationArg = strings.TrimPrefix(dexLocationArg, "/system")
 	}
 
+	// This logic must be kept in sync with ApplicationInfo.isAllowedToUseHiddenApis().
+	var hiddenApiPolicy string
+	if module.SignedWithPlatformCertificate ||
+		(module.UsesNonSdkApis && strings.HasPrefix(module.DexLocation, "/system/")) {
+		hiddenApiPolicy = "disabled"
+	} else {
+		hiddenApiPolicy = "enabled"
+	}
+
 	cmd := rule.Command().
 		Text(`ANDROID_LOG_TAGS="*:e"`).
 		Tool(global.Tools.Dex2oat).
@@ -363,7 +372,8 @@ func dexpreoptCommand(ctx android.PathContext, global GlobalConfig, module Modul
 		Flag("--generate-build-id").
 		Flag("--abort-on-hard-verifier-error").
 		Flag("--force-determinism").
-		FlagWithArg("--no-inline-from=", "core-oj.jar")
+		FlagWithArg("--no-inline-from=", "core-oj.jar").
+		Flag("--runtime-arg").FlagWithArg("-Xhidden-api-policy:", hiddenApiPolicy)
 
 	var preoptFlags []string
 	if len(module.PreoptFlags) > 0 {
