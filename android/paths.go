@@ -1115,6 +1115,10 @@ func InstallPathToOnDevicePath(ctx PathContext, path OutputPath) string {
 	return "/" + rel
 }
 
+func IsInstalledOnSystem(ctx ModuleInstallPathContext) bool {
+  return ctx.Device() && modulePartition(ctx) == "system"
+}
+
 func modulePartition(ctx ModuleInstallPathContext) string {
 	var partition string
 	if ctx.InstallInData() {

@@ -138,6 +138,10 @@ type ModuleConfig struct {
 	NoStripping     bool
 	StripInputPath  android.Path
 	StripOutputPath android.WritablePath
+
+	UsesNonSdkApis         bool
+	IsSystemApp            bool
+	IsSignedByPlatformCert bool
 }
 
 func constructPath(ctx android.PathContext, path string) android.Path {

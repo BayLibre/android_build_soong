@@ -290,6 +290,7 @@ func (a *AndroidApp) dexBuildActions(ctx android.ModuleContext) android.Path {
 	}
 	a.dexpreopter.installPath = android.PathForModuleInstall(ctx, installDir, a.installApkName+".apk")
 	a.dexpreopter.isInstallable = Bool(a.properties.Installable)
+	a.dexpreopter.usesNonSdkApis = Bool(a.Module.deviceProperties.Platform_apis)
 	a.dexpreopter.uncompressedDex = a.shouldUncompressDex(ctx)
 	a.deviceProperties.UncompressDex = a.dexpreopter.uncompressedDex
 

@@ -28,6 +28,7 @@ type dexpreopter struct {
 	isTest              bool
 	isInstallable       bool
 	isPresignedPrebuilt bool
+  usesNonSdkApis      bool
 
 	builtInstalled string
 }
@@ -185,6 +186,10 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.Mo
 		NoStripping:     Bool(d.dexpreoptProperties.Dex_preopt.No_stripping),
 		StripInputPath:  dexJarFile,
 		StripOutputPath: strippedDexJarFile.OutputPath,
+
+    UsesNonSdkApis:         d.usesNonSdkApis,
+    IsSystemApp:            android.IsInstalledOnSystem(ctx),
+    IsSignedByPlatformCert: false,
 	}
 
 	dexpreoptRule, err := dexpreopt.GenerateDexpreoptRule(ctx, global, dexpreoptConfig)
