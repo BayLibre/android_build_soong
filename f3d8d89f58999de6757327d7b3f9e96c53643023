@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ef1baab_c6905e7f",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-17T16:43:24Z",
+      "side": 1,
+      "message": "return inList(\"hwaddress\", config.SanitizeDevice())\n\nWill hwasan end up always turned on for a few modules like ubsan is?  Could we just always install the hwasan runtime?",
+      "range": {
+        "startLine": 627,
+        "startChar": 2,
+        "endLine": 631,
+        "endChar": 3
+      },
+      "revId": "f3d8d89f58999de6757327d7b3f9e96c53643023",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
