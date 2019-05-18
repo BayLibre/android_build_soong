@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c674270f_a877bf0a",
+        "filename": "cc/strip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2019-05-18T00:19:14Z",
+      "side": 1,
+      "message": "I prefer to avoid this override rule, see comment in another CL?",
+      "range": {
+        "startLine": 49,
+        "startChar": 49,
+        "endLine": 49,
+        "endChar": 53
+      },
+      "revId": "ed5fbcf8d52bd60866fb43c767a6fe32bb6363b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb22e8f9_ce46ec63",
+        "filename": "scripts/strip.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1056364
+      },
+      "writtenOn": "2019-05-18T00:19:14Z",
+      "side": 1,
+      "message": "add help msg?",
+      "range": {
+        "startLine": 44,
+        "startChar": 53,
+        "endLine": 44,
+        "endChar": 56
+      },
+      "revId": "ed5fbcf8d52bd60866fb43c767a6fe32bb6363b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
