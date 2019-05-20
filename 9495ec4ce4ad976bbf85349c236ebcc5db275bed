@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83e89eb2_94d98547",
+        "filename": "cc/vndk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-20T17:37:33Z",
+      "side": 1,
+      "message": "This will be visible as documentation at go/Android.bp, can you phrase it so that it will be useful to people writing Android.bp files?",
+      "revId": "9495ec4ce4ad976bbf85349c236ebcc5db275bed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf8c2221_9f774409",
+        "filename": "cc/vndk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-20T17:37:33Z",
+      "side": 1,
+      "message": "Use *string to make the property work with defaults modules.",
+      "range": {
+        "startLine": 56,
+        "startChar": 9,
+        "endLine": 56,
+        "endChar": 15
+      },
+      "revId": "9495ec4ce4ad976bbf85349c236ebcc5db275bed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
