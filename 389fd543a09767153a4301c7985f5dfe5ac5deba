@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75b80fb2_0c25d2f3",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-05-20T11:55:10Z",
+      "side": 1,
+      "message": "This must be under c.useVndk(), otherwise core variant will have LOCAL_SOONG_VNDK_VERSION.",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 95,
+        "endChar": 5
+      },
+      "revId": "389fd543a09767153a4301c7985f5dfe5ac5deba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
