@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0bb349a1_b11f17b5",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-05-20T20:30:09Z",
+      "side": 1,
+      "message": "Updated the comments in the tests.",
+      "parentUuid": "5f7043fb_2996bf51",
+      "revId": "9e68c4ff4017033765cac393f16de02789b53c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d0b2a5fe_3c74b7a0",
         "filename": "ui/build/config.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "9e68c4ff4017033765cac393f16de02789b53c1c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33749840_7a634712",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-05-20T20:30:09Z",
+      "side": 1,
+      "message": "The comment was not very clear. I reworded it.",
+      "parentUuid": "d0b2a5fe_3c74b7a0",
+      "revId": "9e68c4ff4017033765cac393f16de02789b53c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "4adb395a_d8b2aec4",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-05-20T20:30:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acdc56bd_d62ba908",
+      "revId": "9e68c4ff4017033765cac393f16de02789b53c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5278b9b0_0bae58a8",
         "filename": "ui/build/config.go",
         "patchSetId": 1
@@ -67,6 +121,24 @@
       "revId": "9e68c4ff4017033765cac393f16de02789b53c1c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7ca973d_82fa7760",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-05-20T20:30:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5278b9b0_0bae58a8",
+      "revId": "9e68c4ff4017033765cac393f16de02789b53c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "d1a9eb2c_8c0b6ef7",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-05-20T20:30:09Z",
+      "side": 1,
+      "message": "Yup, the m* commands can be run in a sub directory. I refactored the code a bit around this area. Basically, when soong_ui is executed, the current directory is the root directory of the source tree. This is done by the bash scripts (the scripts cd to the root dir). The first thing I now do is call checkTopDir to verify that the current directory is at the root directory of the source tree. The remaining block of code is extracting the sub dir which is used to convert the directory to a target.",
+      "parentUuid": "0f12c108_5ba7c281",
+      "revId": "9e68c4ff4017033765cac393f16de02789b53c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "710398a4_204a8314",
         "filename": "ui/build/config.go",
         "patchSetId": 1
@@ -104,6 +194,24 @@
     },
     {
       "key": {
+        "uuid": "b3ef49bf_aca106b9",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-05-20T20:30:09Z",
+      "side": 1,
+      "message": "I moved the tidyOnly variable to be with the block of code where it\u0027s being used (at line 283).",
+      "parentUuid": "710398a4_204a8314",
+      "revId": "9e68c4ff4017033765cac393f16de02789b53c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "215807e6_7ebbff98",
         "filename": "ui/build/config.go",
         "patchSetId": 1
@@ -118,6 +226,24 @@
       "revId": "9e68c4ff4017033765cac393f16de02789b53c1c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ea3b5d4_227332b4",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-05-20T20:30:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "215807e6_7ebbff98",
+      "revId": "9e68c4ff4017033765cac393f16de02789b53c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -144,6 +270,30 @@
     },
     {
       "key": {
+        "uuid": "57030445_7ac2c541",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-05-20T20:30:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a27a52cb_8ccc2a40",
+      "range": {
+        "startLine": 281,
+        "startChar": 19,
+        "endLine": 281,
+        "endChar": 26
+      },
+      "revId": "9e68c4ff4017033765cac393f16de02789b53c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ed20a2f_1b14a598",
         "filename": "ui/build/config.go",
         "patchSetId": 1
@@ -161,6 +311,24 @@
     },
     {
       "key": {
+        "uuid": "aa3ce8fc_bf1c29da",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-05-20T20:30:09Z",
+      "side": 1,
+      "message": "Agreed. I refactored the function to checkTopDir which is used by both NewBuildActionConfig and NewConfig. As for os.Getwd(), it is only used by NewBuildActionConfig so I moved that logic of the code in NewBuildActionConfig when retrieving the topDir.",
+      "parentUuid": "3ed20a2f_1b14a598",
+      "revId": "9e68c4ff4017033765cac393f16de02789b53c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa74b11c_d4f4f880",
         "filename": "ui/build/config.go",
         "patchSetId": 1
@@ -175,6 +343,24 @@
       "revId": "9e68c4ff4017033765cac393f16de02789b53c1c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f93c80f_b1e0fb4c",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-05-20T20:30:09Z",
+      "side": 1,
+      "message": "Not in the foreseeable future.",
+      "parentUuid": "fa74b11c_d4f4f880",
+      "revId": "9e68c4ff4017033765cac393f16de02789b53c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
