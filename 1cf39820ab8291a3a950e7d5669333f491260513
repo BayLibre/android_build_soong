@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31c549ee_b4548556",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1936,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-05-20T22:53:54Z",
+      "side": 1,
+      "message": "LLNDKs are not correctly classified and marked as native:vendor with this.\nLLNDKs must have \"native:vndk\".",
+      "revId": "1cf39820ab8291a3a950e7d5669333f491260513",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fe01992_c47a49b5",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1266,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-05-20T22:53:54Z",
+      "side": 1,
+      "message": "Please add the test for llndk_library.",
+      "range": {
+        "startLine": 1266,
+        "startChar": 5,
+        "endLine": 1266,
+        "endChar": 21
+      },
+      "revId": "1cf39820ab8291a3a950e7d5669333f491260513",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
