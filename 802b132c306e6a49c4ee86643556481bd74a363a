@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aed993a7_04d06ff8",
+        "filename": "cc/vndk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-20T17:35:25Z",
+      "side": 1,
+      "message": "Should this be covered in one of the checks above?  For example, should any VNDK modules be native bridge?",
+      "revId": "802b132c306e6a49c4ee86643556481bd74a363a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
