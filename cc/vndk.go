@@ -50,6 +50,10 @@ type VndkProperties struct {
 		// Extending another module
 		Extends *string
 	}
+
+	// Set as PlatformVndkVersion for VNDK libs
+	// In case of vndk_prebuilt_shared, set in .bp
+	Version string
 }
 
 type vndkdep struct {
@@ -334,6 +338,11 @@ func VndkMutator(mctx android.BottomUpMutatorContext) {
 	prebuilt_lib, is_prebuilt_lib := m.linker.(*prebuiltLibraryLinker)
 
 	if (is_lib && lib.shared()) || (is_prebuilt_lib && prebuilt_lib.shared()) {
+		if m.vndkdep.isVndk() {
+			if m.vndkdep.Properties.Version == "" {
+				m.vndkdep.Properties.Version = mctx.DeviceConfig().PlatformVndkVersion()
+			}
+		}
 		if m.vndkdep.isVndk() && !m.vndkdep.isVndkExt() {
 			processVndkLibrary(mctx, m)
 			return
