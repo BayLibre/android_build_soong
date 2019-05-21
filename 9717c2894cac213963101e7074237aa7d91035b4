@@ -46,6 +46,30 @@
       "revId": "9717c2894cac213963101e7074237aa7d91035b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edea0fa8_01ed389c",
+        "filename": "android/visibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-05-21T20:29:56Z",
+      "side": 1,
+      "message": "Thanks, but I get the same problem with that - Visibility is just an empty array:\n\n\tfunc visibilityRuleChecker(ctx BottomUpMutatorContext) {\n\t\tif m, ok :\u003d ctx.Module().(Module); ok {\n\t\t\tlog.Printf(\"%q %q\", createQualifiedModuleName(ctx), m.base().visibility())\n\t\t}\n\t}\n\n/.../\n2019/05/21 21:22:29 \"//top:libexample_defaults\" []\n2019/05/21 21:22:29 \"//top:libexample\" [\"//visibility:private\"]\n2019/05/21 21:22:29 \"//top:libexample_defaults\" []\n2019/05/21 21:22:29 \"//top:libexample\" [\"//namespace\"]\n/.../",
+      "parentUuid": "fd515add_ddf56703",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 3
+      },
+      "revId": "9717c2894cac213963101e7074237aa7d91035b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
