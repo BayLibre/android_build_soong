@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "157e41c6_66d7544e",
+        "filename": "android/visibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-05-21T19:55:51Z",
+      "side": 1,
+      "message": "Appreciate some advice on how to do this better. I found that the mock_defaults module I added in the unit test does not expose the visibility property in the same way as an ordinary module.",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 3
+      },
+      "revId": "9717c2894cac213963101e7074237aa7d91035b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
