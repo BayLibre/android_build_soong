@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "156ba565_6da956f3",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-05-21T01:32:40Z",
+      "side": 1,
+      "message": "I don\u0027t think these are the same functions to replace.\n\"isLlndk\" was actually finding the core variant of LLNDK to dump their ABIs.",
+      "range": {
+        "startLine": 515,
+        "startChar": 0,
+        "endLine": 527,
+        "endChar": 13
+      },
+      "revId": "6b4f9a4ac0f821d881ae9161c899362af8d74f3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43b11bba_0b252ddb",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 763,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-05-21T01:32:40Z",
+      "side": 1,
+      "message": "This must return for core variant of LLNDK.",
+      "range": {
+        "startLine": 763,
+        "startChar": 4,
+        "endLine": 763,
+        "endChar": 23
+      },
+      "revId": "6b4f9a4ac0f821d881ae9161c899362af8d74f3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
