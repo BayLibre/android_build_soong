@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "364287ae_bb3efcff",
+        "filename": "cc/vndk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-05-21T06:09:55Z",
+      "side": 1,
+      "message": "I switched \"Version\" property as \u0027mutated\u0027 since it is not supposed to be set in .bp files.",
+      "parentUuid": "83e89eb2_94d98547",
+      "revId": "9495ec4ce4ad976bbf85349c236ebcc5db275bed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cf8c2221_9f774409",
         "filename": "cc/vndk.go",
         "patchSetId": 3
@@ -30,6 +48,30 @@
       "writtenOn": "2019-05-20T17:37:33Z",
       "side": 1,
       "message": "Use *string to make the property work with defaults modules.",
+      "range": {
+        "startLine": 56,
+        "startChar": 9,
+        "endLine": 56,
+        "endChar": 15
+      },
+      "revId": "9495ec4ce4ad976bbf85349c236ebcc5db275bed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5486bf44_942f83f3",
+        "filename": "cc/vndk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-05-21T06:09:55Z",
+      "side": 1,
+      "message": "Can I use \u0027string\u0027 for mutated properties?",
+      "parentUuid": "cf8c2221_9f774409",
       "range": {
         "startLine": 56,
         "startChar": 9,
