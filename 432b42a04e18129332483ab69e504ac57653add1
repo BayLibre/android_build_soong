@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "316f1d20_7b2bfcf3",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1934,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-22T16:44:32Z",
+      "side": 1,
+      "message": "Use ctx.ModuleName() to get the name after renaming, which will already have trimmed the prebuilt_ prefix.",
+      "revId": "432b42a04e18129332483ab69e504ac57653add1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
