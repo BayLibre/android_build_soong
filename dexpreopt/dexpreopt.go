@@ -252,9 +252,6 @@ func dexpreoptCommand(ctx android.PathContext, global GlobalConfig, module Modul
 	var classLoaderContextHostString string
 
 	if module.EnforceUsesLibraries {
-		verifyUsesLibs = copyOf(module.UsesLibraries)
-		verifyOptionalUsesLibs = copyOf(module.OptionalUsesLibraries)
-
 		filteredOptionalUsesLibs = filterOut(global.MissingUsesLibraries, module.OptionalUsesLibraries)
 		filteredUsesLibs = append(copyOf(module.UsesLibraries), filteredOptionalUsesLibs...)
 
@@ -270,11 +267,7 @@ func dexpreoptCommand(ctx android.PathContext, global GlobalConfig, module Modul
 		const httpLegacy = "org.apache.http.legacy"
 		const httpLegacyImpl = "org.apache.http.legacy.impl"
 
-		// Fix up org.apache.http.legacy.impl since it should be org.apache.http.legacy in the manifest.
-		replace(verifyUsesLibs, httpLegacyImpl, httpLegacy)
-		replace(verifyOptionalUsesLibs, httpLegacyImpl, httpLegacy)
-
-		if !contains(verifyUsesLibs, httpLegacy) && !contains(verifyOptionalUsesLibs, httpLegacy) {
+		if !contains(module.UsesLibraries, httpLegacy) && !contains(module.OptionalUsesLibraries, httpLegacy) {
 			conditionalClassLoaderContextHost28 = append(conditionalClassLoaderContextHost28,
 				pathForLibrary(module, httpLegacyImpl))
 			conditionalClassLoaderContextTarget28 = append(conditionalClassLoaderContextTarget28,
@@ -309,9 +302,21 @@ func dexpreoptCommand(ctx android.PathContext, global GlobalConfig, module Modul
 	rule.Command().Text(`stored_class_loader_context_arg=""`)
 
 	if module.EnforceUsesLibraries {
-		rule.Command().Textf(`uses_library_names="%s"`, strings.Join(verifyUsesLibs, " "))
-		rule.Command().Textf(`optional_uses_library_names="%s"`, strings.Join(verifyOptionalUsesLibs, " "))
-		rule.Command().Textf(`aapt_binary="%s"`, global.Tools.Aapt)
+		if module.ManifestPath != nil {
+			rule.Command().Text(`target_sdk_version="$(`).
+				Tool(global.Tools.ManifestCheck).
+				Flag("--extract-target-sdk-version").
+				Input(module.ManifestPath).
+				Text(`)"`)
+		} else {
+			// No manifest to extract targetSdkVersion from, hope that DexJar is an APK
+			rule.Command().Text(`target_sdk_version="$(`).
+				Tool(global.Tools.Aapt).
+				Flag("dump badging").
+				Input(module.DexPath).
+				Text(`| grep "targetSdkVersion" | sed -n "s/targetSdkVersion:'\(.*\)'/\1/p"`).
+				Text(`)"`)
+		}
 		rule.Command().Textf(`dex_preopt_host_libraries="%s"`,
 			strings.Join(classLoaderContextHost.Strings(), " ")).
 			Implicits(classLoaderContextHost)
@@ -327,8 +332,7 @@ func dexpreoptCommand(ctx android.PathContext, global GlobalConfig, module Modul
 			Implicits(conditionalClassLoaderContextHost29)
 		rule.Command().Textf(`conditional_target_libs_29="%s"`,
 			strings.Join(conditionalClassLoaderContextTarget29, " "))
-		rule.Command().Text("source").Tool(global.Tools.VerifyUsesLibraries).Input(module.DexPath)
-		rule.Command().Text("source").Tool(global.Tools.ConstructContext)
+		rule.Command().Text("source").Tool(global.Tools.ConstructContext).Input(module.DexPath)
 	}
 
 	// Devices that do not have a product partition use a symlink from /product to /system/product.
