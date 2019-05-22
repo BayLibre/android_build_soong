@@ -16,6 +16,24 @@
       "revId": "3f20548f78a2c5802658b06f9a7e307b8198f509",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f524d674_f9b840bb",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-05-22T17:33:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a32c6306_26d78fd8",
+      "revId": "3f20548f78a2c5802658b06f9a7e307b8198f509",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
