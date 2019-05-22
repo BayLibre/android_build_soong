@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a32c6306_26d78fd8",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-22T05:24:52Z",
+      "side": 1,
+      "message": "I\u0027d use more descriptive arguments here too.",
+      "revId": "3f20548f78a2c5802658b06f9a7e307b8198f509",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
