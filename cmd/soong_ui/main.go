@@ -61,10 +61,8 @@ var commands []command = []command{
 		config: func(ctx build.Context, args ...string) build.Config {
 			return build.NewConfig(ctx, args...)
 		},
-		stdio: func() terminal.StdioInterface {
-			return terminal.StdioImpl{}
-		},
-		run: make,
+		stdio: stdio,
+		run:   make,
 	}, {
 		flag:        "--dumpvar-mode",
 		description: "print the value of the legacy make variable VAR to stdout",
@@ -77,6 +75,12 @@ var commands []command = []command{
 		config:      dumpVarConfig,
 		stdio:       customStdio,
 		run:         dumpVars,
+	}, {
+		flag:        "--build-mode",
+		description: "build modules based on the specified build action",
+		config:      buildActionConfig,
+		stdio:       stdio,
+		run:         make,
 	},
 }
 
@@ -300,6 +304,10 @@ func dumpVars(ctx build.Context, config build.Config, args []string, _ string) {
 	}
 }
 
+func stdio() terminal.StdioInterface {
+	return terminal.StdioImpl{}
+}
+
 func customStdio() terminal.StdioInterface {
 	return terminal.NewCustomStdio(os.Stdin, os.Stderr, os.Stderr)
 }
@@ -307,6 +315,86 @@ func customStdio() terminal.StdioInterface {
 // dumpVarConfig does not require any arguments to be parsed by the NewConfig.
 func dumpVarConfig(ctx build.Context, args ...string) build.Config {
 	return build.NewConfig(ctx)
+}
+
+func buildActionConfig(ctx build.Context, args ...string) build.Config {
+	flags := flag.NewFlagSet("build-mode", flag.ContinueOnError)
+	flags.Usage = func() {
+		fmt.Fprintf(os.Stderr, "usage: %s --build-mode --dir=<path> <build action> [<build arg 1> <build arg 2> ...]\n\n", os.Args[0])
+		fmt.Fprintln(os.Stderr, "In build mode, build the set of modules based on the specified build")
+		fmt.Fprintln(os.Stderr, "action. The --dir flag is required to determine what is needed to")
+		fmt.Fprintln(os.Stderr, "build in the source tree based on the build action. See below for")
+		fmt.Fprintln(os.Stderr, "the list of acceptable build action flags.")
+		fmt.Fprintln(os.Stderr, "")
+		flags.PrintDefaults()
+	}
+
+	buildActionFlags := []struct {
+		name        string
+		action      build.BuildAction
+		description string
+		value       bool
+	}{{
+		name:        "m",
+		action:      build.M,
+		description: "Build action: build from the top of the source tree.",
+	}, {
+		name:        "mm",
+		action:      build.MM,
+		description: "Build action: builds all of the modules in the current directory, but not their dependencies.",
+	}, {
+		name:        "mmm",
+		action:      build.MMM,
+		description: "Build action: builds all of the modules in the supplied directories, but not their dependencies.",
+	}, {
+		name:        "mma",
+		action:      build.MMA,
+		description: "Build action: builds all of the modules in the current directory, and their dependencies.",
+	}, {
+		name:        "mmma",
+		action:      build.MMMA,
+		description: "Build action: builds all of the modules in the supplied directories, and their dependencies.",
+	}}
+	for i, flag := range buildActionFlags {
+		flags.BoolVar(&buildActionFlags[i].value, flag.name, false, flag.description)
+	}
+	dir := flags.String("dir", "", "Directory of the executed build command.")
+
+	// Build action expects at least two flags: the build action, dir with the argument.
+	if len(args) < 2 {
+		flags.Usage()
+		os.Exit(1)
+	}
+
+	// Only interested in the first two args which defines the build action and the directory.
+	// The remaining arguments are passed down to the build system.
+	const numBuildActionFlags = 2
+	flags.Parse(args[0:numBuildActionFlags])
+
+	// The next block of code is to validate the flags passed in to soong_ui. Only one build action
+	// is allowed to be defined. The dir flag must be specified and all the arguments are processed.
+	buildActionCount := 0
+	var buildAction build.BuildAction
+	for _, flag := range buildActionFlags {
+		if flag.value {
+			buildActionCount++
+			buildAction = flag.action
+		}
+	}
+	if buildActionCount != 1 {
+		fmt.Fprintln(os.Stderr, "Build action not defined.")
+		flags.Usage()
+		os.Exit(1)
+	}
+	if *dir == "" {
+		ctx.Fatalln("-dir not specified.")
+	}
+
+	// Remove the first two flags from the args. At this point, the first two flags
+	// are the --dir and the build action which was verified in the previous block
+	// of code.
+	args = args[numBuildActionFlags:]
+	return build.NewBuildActionConfig(buildAction, *dir, ctx, args...)
 }
 
 func make(ctx build.Context, config build.Config, _ []string, logsDir string) {
