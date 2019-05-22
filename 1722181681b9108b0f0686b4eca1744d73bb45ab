@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb3ccee2_815be6c8",
+        "filename": "ui/build/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-22T20:25:38Z",
+      "side": 1,
+      "message": "Is sharing the core logic between BUILD_MODULES_IN_DIR_NO_DEPS and BUILD_MODULES_IN_DIRS_NO_DEPS (and between BUILD_MODULES_IN_DIR and BUILD_MODULES_IN_DIRS) a possibility? Like, basically having only two internal modes BUILD_MODULES_IN_DIRS_NO_DEPS and BUILD_MODULES_IN_DIRS and emulating other two modes with them? That\u0027d be really awesome.",
+      "revId": "1722181681b9108b0f0686b4eca1744d73bb45ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
