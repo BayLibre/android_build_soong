@@ -128,7 +128,7 @@ var (
 	darwinStripPool = func() blueprint.Pool {
 		if runtime.GOOS == "darwin" {
 			return pctx.StaticPool("darwinStripPool", blueprint.PoolParams{
-				Depth: 10,
+				Depth: 5,
 			})
 		} else {
 			return nil
