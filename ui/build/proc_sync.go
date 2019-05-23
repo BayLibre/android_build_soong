@@ -34,15 +34,17 @@ func BecomeSingletonOrFail(ctx Context, config Config) (lock *fileLock) {
 	if err != nil {
 		ctx.Logger.Fatal(err)
 	}
+	lockfilePollDuration := time.Second
+	lockfileTimeout, parseError := time.ParseDuration(os.Getenv("SOONG_LOCK_TIMEOUT"))
+	if parseError != nil {
+		lockfileTimeout = time.Second * 10
+	}
 	err = lockSynchronous(*lockingInfo, newSleepWaiter(lockfilePollDuration, lockfileTimeout), ctx.Logger)
 	if err != nil {
 		ctx.Logger.Fatal(err)
 	}
 	return lockingInfo
 }
-
-var lockfileTimeout = time.Second * 10
-var lockfilePollDuration = time.Second
 
 type lockable interface {
 	tryLock() error
@@ -80,15 +82,18 @@ func lockSynchronous(lock lockable, waiter waiter, logger logger.Logger) (err er
 			return nil
 		}
 
-		waited = true
-
 		done, description := waiter.checkDeadline()
+
+		if !waited {
+			logger.Printf("Waiting up to %s to lock %v to ensure no other Soong process is running in the same output directory\n", description, lock.description())
+		}
+
+		waited = true
 
 		if done {
 			return fmt.Errorf("Tried to lock %s, but timed out %s . Make sure no other Soong process is using it",
 				lock.description(), waiter.summarize())
 		} else {
-			logger.Printf("Waiting up to %s to lock %v to ensure no other Soong process is running in the same output directory\n", description, lock.description())
 			waiter.wait()
 		}
 	}
