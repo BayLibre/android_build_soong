@@ -16,6 +16,24 @@
       "revId": "1722181681b9108b0f0686b4eca1744d73bb45ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc13571d_07005c3d",
+        "filename": "ui/build/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-05-23T03:32:47Z",
+      "side": 1,
+      "message": "Oh, I didn\u0027t see in that angle. Yes, it is very possible to do that. I just have to define a boolean variable named buildDependencies which will set the ONE_SHOT_MAKEFILE to the list of found makefiles. The only difference between BUILD_MODULES_IN_DIR_NO_DEPS and BUILD_MODULES_IN_DIR is BUILD_MODULES_IN_DIR_NO_DEPS requires a build file to exist since ONE_SHOT_MAKEFILE needs to be set. Since mm and mmm are going to be deprecated, mm will follow the same logic as mma. That is, if a build file is not found, just assume one exist. It will eventually fail the build.\n\nFollowing your suggestion, it helped to reduce the code greatly in terms of size and complexity. And it is much easier to deprecate the mm and mmm commands, including the test cases.",
+      "parentUuid": "bb3ccee2_815be6c8",
+      "revId": "1722181681b9108b0f0686b4eca1744d73bb45ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
