@@ -52,6 +52,24 @@
       "revId": "1722181681b9108b0f0686b4eca1744d73bb45ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ce56005_5421fa06",
+        "filename": "ui/build/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-05-23T16:07:56Z",
+      "side": 1,
+      "message": "Ah ok. I tried it before and the reason it is separated is because we have cases such as \"mm \u003ctarget\u003e\". If the logic is shared between the two, BUILD_MODULES_IN_DIRS_NO_DEPS assumes that \u003ctarget\u003e is a directory and checks if it exists.",
+      "parentUuid": "f42ee8cb_956ba63c",
+      "revId": "1722181681b9108b0f0686b4eca1744d73bb45ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
