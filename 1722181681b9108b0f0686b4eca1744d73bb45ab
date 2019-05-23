@@ -34,6 +34,24 @@
       "revId": "1722181681b9108b0f0686b4eca1744d73bb45ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f42ee8cb_956ba63c",
+        "filename": "ui/build/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-23T14:39:17Z",
+      "side": 1,
+      "message": "No, my question was about sharing the logic between BUILD_MODULES_IN_DIR_NO_DEPS (curr work dir) and BUILD_MODULES_IN_DIRS_NO_DEPS (any given dirs), not between BUILD_MODULES_IN_DIR_NO_DEPS and BUILD_MODULES_IN_DIR. Though consolidating NO_DEPS logic and the regular ones is also a good thing to do.",
+      "parentUuid": "cc13571d_07005c3d",
+      "revId": "1722181681b9108b0f0686b4eca1744d73bb45ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
