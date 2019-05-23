@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca466a0c_5633cb66",
+        "filename": "android/visibility_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-05-23T14:39:10Z",
+      "side": 1,
+      "message": "Why did the order of these change? Aren\u0027t they enforced by gofmt?",
+      "revId": "8edeb6372e296629ba11ecaf8bf3517f373c3efe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
