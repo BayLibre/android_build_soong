@@ -699,7 +699,7 @@ type AndroidAppImport struct {
 
 type AndroidAppImportProperties struct {
 	// A prebuilt apk to import
-	Apk string
+	Apk *string
 
 	// Per-DPI settings. This property makes it possible to specify a different source apk path for
 	// each DPI.
@@ -742,39 +742,36 @@ type AndroidAppImportProperties struct {
 	Overrides []string
 }
 
-func getApkPathForDpi(dpiVariantsValue reflect.Value, dpi string) string {
+func getMatchingDpiInterface(dpiVariantsValue reflect.Value, dpi string) interface{} {
 	dpiField := dpiVariantsValue.FieldByName(proptools.FieldNameForProperty(dpi))
 	if !dpiField.IsValid() {
-		return ""
+		return nil
 	}
 	apkValue := dpiField.FieldByName("Apk").Elem()
 	if apkValue.IsValid() {
-		return apkValue.String()
+		return dpiField.Addr().Interface()
 	}
-	return ""
+	return nil
 }
 
-// Chooses a source APK path to use based on the module's per-DPI settings and the product config.
-func (a *AndroidAppImport) getSrcApkPath(ctx android.ModuleContext) string {
-	config := ctx.Config()
+func (a *AndroidAppImport) updateSrcApkField(config android.Config) {
 	dpiVariantsValue := reflect.ValueOf(a.properties.Dpi_variants).Elem()
 	if !dpiVariantsValue.IsValid() {
-		return a.properties.Apk
+		return
 	}
 	// Match PRODUCT_AAPT_PREF_CONFIG first and then PRODUCT_AAPT_PREBUILT_DPI.
 	if config.ProductAAPTPreferredConfig() != "" {
-		if apk := getApkPathForDpi(dpiVariantsValue, config.ProductAAPTPreferredConfig()); apk != "" {
-			return apk
+		if props := getMatchingDpiInterface(dpiVariantsValue, config.ProductAAPTPreferredConfig()); props != nil {
+			a.prebuilt.SetSingleSourceField(props, "Apk")
+			return
 		}
 	}
 	for _, dpi := range config.ProductAAPTPrebuiltDPI() {
-		if apk := getApkPathForDpi(dpiVariantsValue, dpi); apk != "" {
-			return apk
+		if props := getMatchingDpiInterface(dpiVariantsValue, dpi); props != nil {
+			a.prebuilt.SetSingleSourceField(props, "Apk")
+			return
 		}
 	}
-
-	// No match. Use the generic one.
-	return a.properties.Apk
 }
 
 func (a *AndroidAppImport) DepsMutator(ctx android.BottomUpMutatorContext) {
@@ -784,6 +781,8 @@ func (a *AndroidAppImport) DepsMutator(ctx android.BottomUpMutatorContext) {
 	}
 
 	a.usesLibrary.deps(ctx, false)
+
+	a.updateSrcApkField(ctx.Config())
 }
 
 func (a *AndroidAppImport) uncompressEmbeddedJniLibs(
@@ -839,8 +838,7 @@ func (a *AndroidAppImport) GenerateAndroidBuildActions(ctx android.ModuleContext
 	// TODO: LOCAL_EXTRACT_APK/LOCAL_EXTRACT_DPI_APK
 	// TODO: LOCAL_PACKAGE_SPLITS
 
-	var srcApk android.Path
-	srcApk = android.PathForModuleSrc(ctx, a.getSrcApkPath(ctx))
+	srcApk := a.prebuilt.SingleSourcePath(ctx)
 
 	if a.usesLibrary.enforceUsesLibraries() {
 		srcApk = a.usesLibrary.verifyUsesLibrariesAPK(ctx, srcApk)
@@ -911,7 +909,7 @@ func AndroidAppImportFactory() android.Module {
 	module.AddProperties(&module.usesLibrary.usesLibraryProperties)
 
 	InitJavaModule(module, android.DeviceSupported)
-	android.InitSingleSourcePrebuiltModule(module, &module.properties.Apk)
+	android.InitSingleSourcePrebuiltModule(module, &module.properties, "Apk")
 
 	return module
 }

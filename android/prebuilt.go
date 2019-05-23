@@ -16,6 +16,7 @@ package android
 
 import (
 	"fmt"
+	"reflect"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
@@ -30,6 +31,10 @@ type prebuiltDependencyTag struct {
 
 var prebuiltDepTag prebuiltDependencyTag
 
+// Used as nil for PrebuiltProperties.SrcProps. The value itself doesn't really matter here because
+// this is only to make the unpack process happy. It frowns if a nil interface property is found.
+var nilSrcProps *struct{}
+
 type PrebuiltProperties struct {
 	// When prefer is set to true the prebuilt will be used instead of any source module with
 	// a matching name.
@@ -37,17 +42,27 @@ type PrebuiltProperties struct {
 
 	SourceExists bool `blueprint:"mutated"`
 	UsePrebuilt  bool `blueprint:"mutated"`
+
+	// Metadata for single source Prebuilt modules.
+	SrcProps interface{} `blueprint:"mutated"`
+	SrcField string      `blueprint:"mutated"`
 }
 
 type Prebuilt struct {
 	properties PrebuiltProperties
 	module     Module
 	srcs       *[]string
-	src        *string
 }
 
 func (p *Prebuilt) Name(name string) string {
 	return "prebuilt_" + name
+}
+
+// Updates single source field metadata.
+func (p *Prebuilt) SetSingleSourceField(srcProps interface{}, srcField string) {
+	p.properties.SrcProps = srcProps
+	p.properties.SrcField = srcField
+	p.checkSingleSourceProperties()
 }
 
 // The below source-related functions and the srcs, src fields are based on an assumption that
@@ -71,11 +86,16 @@ func (p *Prebuilt) SingleSourcePath(ctx ModuleContext) Path {
 		// sources.
 		return PathForModuleSrc(ctx, (*p.srcs)[0])
 	} else {
-		if proptools.String(p.src) == "" {
-			ctx.PropertyErrorf("src", "missing prebuilt source file")
+		if p.properties.SrcProps == nilSrcProps {
+			ctx.ModuleErrorf("prebuilt source was not set")
+		}
+		src := p.getSingleSourceFieldValue()
+		if src == "" {
+			ctx.PropertyErrorf(proptools.FieldNameForProperty(p.properties.SrcField),
+				"missing prebuilt source file")
 			return nil
 		}
-		return PathForModuleSrc(ctx, *p.src)
+		return PathForModuleSrc(ctx, src)
 	}
 }
 
@@ -87,12 +107,16 @@ func InitPrebuiltModule(module PrebuiltInterface, srcs *[]string) {
 	p := module.Prebuilt()
 	module.AddProperties(&p.properties)
 	p.srcs = srcs
+	p.properties.SrcProps = nilSrcProps
 }
 
-func InitSingleSourcePrebuiltModule(module PrebuiltInterface, src *string) {
+func InitSingleSourcePrebuiltModule(
+	module PrebuiltInterface, srcProps interface{}, srcField string) {
 	p := module.Prebuilt()
 	module.AddProperties(&p.properties)
-	p.src = src
+	p.properties.SrcProps = srcProps
+	p.properties.SrcField = srcField
+	p.checkSingleSourceProperties()
 }
 
 type PrebuiltInterface interface {
@@ -129,7 +153,7 @@ func PrebuiltMutator(ctx BottomUpMutatorContext) {
 func PrebuiltSelectModuleMutator(ctx TopDownMutatorContext) {
 	if m, ok := ctx.Module().(PrebuiltInterface); ok && m.Prebuilt() != nil {
 		p := m.Prebuilt()
-		if p.srcs == nil && p.src == nil {
+		if p.srcs == nil && p.properties.SrcProps == nilSrcProps {
 			panic(fmt.Errorf("prebuilt module did not have InitPrebuiltModule called on it"))
 		}
 		if !p.properties.SourceExists {
@@ -172,7 +196,7 @@ func (p *Prebuilt) usePrebuilt(ctx TopDownMutatorContext, source Module) bool {
 		return false
 	}
 
-	if p.src != nil && *p.src == "" {
+	if p.properties.SrcProps != nilSrcProps && p.getSingleSourceFieldValue() == "" {
 		return false
 	}
 
@@ -182,4 +206,27 @@ func (p *Prebuilt) usePrebuilt(ctx TopDownMutatorContext, source Module) bool {
 	}
 
 	return source == nil || !source.Enabled()
+}
+
+func (p *Prebuilt) checkSingleSourceProperties() {
+	if p.properties.SrcProps == nilSrcProps || p.properties.SrcField == "" {
+		panic(fmt.Errorf("invalid single source prebuilt %q", p))
+	}
+
+	props := reflect.ValueOf(p.properties.SrcProps)
+	if props.Kind() != reflect.Ptr ||
+		props.Elem().Kind() != reflect.Struct && props.Elem().Kind() != reflect.Interface {
+		panic(fmt.Errorf("invalid single source prebuilt %q", p))
+	}
+}
+
+func (p *Prebuilt) getSingleSourceFieldValue() string {
+	value := reflect.ValueOf(p.properties.SrcProps).Elem().FieldByName(p.properties.SrcField)
+	if value.Kind() == reflect.Ptr {
+		value = value.Elem()
+	}
+	if value.Kind() != reflect.String {
+		return ""
+	}
+	return value.String()
 }
