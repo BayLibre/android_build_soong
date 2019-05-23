@@ -34,6 +34,24 @@
       "revId": "8edeb6372e296629ba11ecaf8bf3517f373c3efe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4aaa7be_6195c6d9",
+        "filename": "android/visibility_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-05-23T16:31:45Z",
+      "side": 1,
+      "message": "I see the same split into two sections in module.go as well, so I reckon this is correct.",
+      "parentUuid": "f716cfab_e5716e3e",
+      "revId": "8edeb6372e296629ba11ecaf8bf3517f373c3efe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
