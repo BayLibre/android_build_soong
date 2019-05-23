@@ -16,6 +16,24 @@
       "revId": "8edeb6372e296629ba11ecaf8bf3517f373c3efe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f716cfab_e5716e3e",
+        "filename": "android/visibility_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-05-23T16:09:05Z",
+      "side": 1,
+      "message": "Yes, I run gofmt automatically on save and it ended up this way. It comes from the google3 style: http://go/gocomments#TOC-Imports You mean you\u0027ve used gofmt too and it has a different idea of how it should look?",
+      "parentUuid": "ca466a0c_5633cb66",
+      "revId": "8edeb6372e296629ba11ecaf8bf3517f373c3efe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
