@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7152a6cf_ee386777",
+        "filename": "android/visibility_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-05-24T14:19:50Z",
+      "side": 1,
+      "message": "\"defaults union basic\"",
+      "range": {
+        "startLine": 383,
+        "startChar": 25,
+        "endLine": 383,
+        "endChar": 26
+      },
+      "revId": "7af1362f3eb71698d56f44bdef4e36c3ba20bc85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee058dbf_2fd8fa99",
+        "filename": "android/visibility_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-05-24T14:19:50Z",
+      "side": 1,
+      "message": "\"defaults union, multiple defaults\"",
+      "range": {
+        "startLine": 421,
+        "startChar": 9,
+        "endLine": 421,
+        "endChar": 17
+      },
+      "revId": "7af1362f3eb71698d56f44bdef4e36c3ba20bc85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
