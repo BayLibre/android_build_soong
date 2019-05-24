@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "007f1b89_08c86fe6",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-24T20:59:31Z",
+      "side": 1,
+      "message": "I\u0027d suggest something like:\n\nlockfileTimeout :\u003d time.Second * 10\nif envTimeout :\u003d os.Getenv(\"SOONG_LOCK_TIMEOUT\"); envTimeout !\u003d \"\" {\n    lockfileTimeout, err :\u003d time.ParseDuration(envTimeout)\n    if err !\u003d nil {\n        ctx.Logger.Fatalf(\"failure parsing duration %q: %s\", envTimeout, err)\n    }\n}",
+      "revId": "dd1bcbd98b711fe6ea6fab20e8ae2e8462ee0104",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
