@@ -34,6 +34,24 @@
       "revId": "dd1bcbd98b711fe6ea6fab20e8ae2e8462ee0104",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a1cba85_c5d49965",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1122613
+      },
+      "writtenOn": "2019-05-24T21:11:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf7b74ce_cc99a855",
+      "revId": "dd1bcbd98b711fe6ea6fab20e8ae2e8462ee0104",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
