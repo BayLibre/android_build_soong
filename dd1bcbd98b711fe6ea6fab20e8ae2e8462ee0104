@@ -16,6 +16,24 @@
       "revId": "dd1bcbd98b711fe6ea6fab20e8ae2e8462ee0104",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf7b74ce_cc99a855",
+        "filename": "ui/build/proc_sync.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-24T21:00:31Z",
+      "side": 1,
+      "message": "s/parsing duration /parsing SOONG_LOCK_TIMEOUT\u003d/",
+      "parentUuid": "007f1b89_08c86fe6",
+      "revId": "dd1bcbd98b711fe6ea6fab20e8ae2e8462ee0104",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
