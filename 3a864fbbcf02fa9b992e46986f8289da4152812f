@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b82360b_0c8dbf87",
+        "filename": "scripts/manifest_check.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-24T17:45:51Z",
+      "side": 1,
+      "message": "I suppose this tool will run after manifest_fixer, right?",
+      "revId": "3a864fbbcf02fa9b992e46986f8289da4152812f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9435def2_a6457507",
+        "filename": "scripts/manifest_check.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-24T17:45:51Z",
+      "side": 1,
+      "message": "OOC, is there a reason you decided to given an abbreviated option name to output, but not to input?",
+      "revId": "3a864fbbcf02fa9b992e46986f8289da4152812f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb2c65d1_07e34092",
+        "filename": "scripts/manifest_check.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-24T17:45:51Z",
+      "side": 1,
+      "message": "nit: maybe just call it dedupe?",
+      "range": {
+        "startLine": 133,
+        "startChar": 4,
+        "endLine": 133,
+        "endChar": 25
+      },
+      "revId": "3a864fbbcf02fa9b992e46986f8289da4152812f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf8da855_b98e931d",
+        "filename": "scripts/manifest_check_test.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-24T17:45:51Z",
+      "side": 1,
+      "message": "Add a test case to check incorrect order cases?",
+      "revId": "3a864fbbcf02fa9b992e46986f8289da4152812f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
