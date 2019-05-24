@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "c185260f_abb53a43",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-05-24T20:52:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e65bc2d_495990d2",
+      "revId": "b98d5c358743c2e8b6affadbaaf4e24f234452b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1c6c3d9b_ab00676c",
         "filename": "cc/cc.go",
         "patchSetId": 3
@@ -48,6 +66,24 @@
       "writtenOn": "2019-05-22T23:13:35Z",
       "side": 1,
       "message": "You could also put a pointer to the lto module inside the sanitizer module when it is created in cc.newModule(), and then you can disable LTO explicitly.",
+      "revId": "b98d5c358743c2e8b6affadbaaf4e24f234452b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "858d10f6_d3e0b0aa",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 945,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-05-24T20:52:42Z",
+      "side": 1,
+      "message": "I think we already kind-of have a way around this, as per what we do with \"-Wl,--no-undefined\". I\u0027ve changed the build system to try this method instead (where we removeFromList(\"-flto\") from LdFlags). Will test it out.\n\nI think this is better than passing a ptr to the lto mutator into sanitizer mutator to fix a linker issue that should be resolved soon-ish.",
+      "parentUuid": "1c6c3d9b_ab00676c",
       "revId": "b98d5c358743c2e8b6affadbaaf4e24f234452b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
