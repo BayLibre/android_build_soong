@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9cedb4dd_a00e09d4",
+        "filename": "android/visibility_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-05-24T15:36:37Z",
+      "side": 0,
+      "message": "Yes, registerVisibilityRuleChecker and registerVisibilityRuleGatherer are now on PreArchMutators whereas the latter used to be on PreDepsMutators before this change. I changed it because the mutators are on PreArch in the real code in mutator.go.",
+      "parentUuid": "4636c23c_c915de3a",
+      "revId": "d14e5c6ed441448d174724db13fc0b41aa6cb17b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8463cb2_5f9dfad8",
         "filename": "android/visibility_test.go",
         "patchSetId": 5
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "0631250a_12f89f42",
+        "filename": "android/visibility_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-05-24T15:36:37Z",
+      "side": 0,
+      "message": "Exactly.",
+      "parentUuid": "d8463cb2_5f9dfad8",
+      "revId": "d14e5c6ed441448d174724db13fc0b41aa6cb17b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe7dad3f_a292c3ee",
         "filename": "android/visibility_test.go",
         "patchSetId": 5
@@ -50,6 +86,24 @@
       "revId": "d14e5c6ed441448d174724db13fc0b41aa6cb17b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f594269_8edc4412",
+        "filename": "android/visibility_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-05-24T15:36:37Z",
+      "side": 0,
+      "message": "See commit message. I realise this is a matter of opinion to a degree, but the major reason is that it becomes a wall of text when the visibility rules are nontrivial, and so I found it to not be very useful. Another option could be to change the formatting to present the list in a more readable way, but it\u0027d still require a special case to handle the //visibility:public override. I opted to do this because most other error messages don\u0027t dump this amount of context info.\n\nWhat I\u0027d rather like to see is a soong debug tool that can dump modules after defaults expansion (or for that matter any other mutator).",
+      "parentUuid": "fe7dad3f_a292c3ee",
+      "revId": "d14e5c6ed441448d174724db13fc0b41aa6cb17b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
