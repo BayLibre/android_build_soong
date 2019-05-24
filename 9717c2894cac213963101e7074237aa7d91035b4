@@ -94,6 +94,30 @@
       "revId": "9717c2894cac213963101e7074237aa7d91035b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e2464ee_9a67a879",
+        "filename": "android/visibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-05-24T10:42:14Z",
+      "side": 1,
+      "message": "Following the discussion yesterday I played around with adding the \"real\" property structs from ModuleBase in InitDefaultsModule. That resulted in:\n\nerror: external/compiler-rt/lib/lsan/Android.bp:18:1: module \"liblsan\" variant \"linux_glibc_x86_64_static\": depends on disabled module \"asan_arch_defaults\"\n\nI.e. a defaults module containing \"enabled: false\" disabled the defaults module itself. Considering that I think the current pattern with registering separate property struct instances in InitDefaultsModule is correct. Created http://r.android.com/970583 to add some docs about it, and I\u0027ll leave this as-is.",
+      "parentUuid": "7e2e9ede_3ee9c9ca",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 3
+      },
+      "revId": "9717c2894cac213963101e7074237aa7d91035b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
