@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8eca321_5cad7dc6",
+        "filename": "java/app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 941,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-25T22:05:47Z",
+      "side": 1,
+      "message": "Do you know why we\u0027re doing this in dex_preopt_odex_install.mk (which I presume you took this from)? If so, could you add a brief comment? I was only able to track down aosp/853709 and its associated bug.",
+      "revId": "26e13daf5c61105ad07d2416c0501b429f1940b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ba330f8_bbf46641",
+        "filename": "java/app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1009,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-25T22:05:47Z",
+      "side": 1,
+      "message": "verifyUsesLibrariesAPK",
+      "range": {
+        "startLine": 1009,
+        "startChar": 3,
+        "endLine": 1009,
+        "endChar": 31
+      },
+      "revId": "26e13daf5c61105ad07d2416c0501b429f1940b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01095016_bdb81dcc",
+        "filename": "java/app_builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-25T22:05:47Z",
+      "side": 1,
+      "message": "implicitDeps or implicits for clarity?",
+      "range": {
+        "startLine": 66,
+        "startChar": 79,
+        "endLine": 66,
+        "endChar": 84
+      },
+      "revId": "26e13daf5c61105ad07d2416c0501b429f1940b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
