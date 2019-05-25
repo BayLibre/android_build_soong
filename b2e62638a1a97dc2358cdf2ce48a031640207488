@@ -1,0 +1,318 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c411d76f_e324f73e",
+        "filename": "ui/build/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-25T00:01:09Z",
+      "side": 1,
+      "message": "You can simply do a wrapper function approach, where the nested core function handles everything and only returns args, and the wrapper function just takes the args and call NewConfig. Now you can test the inner core function without a hassle like this.",
+      "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e358938f_5cb5f03f",
+        "filename": "ui/build/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-25T00:01:09Z",
+      "side": 1,
+      "message": "Did you mean the current directory or working directory here? They can also be confusing though, since this runs from the top dir. Can\u0027t think of any good terms. :(",
+      "range": {
+        "startLine": 71,
+        "startChar": 33,
+        "endLine": 71,
+        "endChar": 55
+      },
+      "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49ed74f2_f508707b",
+        "filename": "ui/build/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-25T00:01:09Z",
+      "side": 1,
+      "message": "In a similar vein, I think it\u0027d be nice if you can rename this something substantially different from BUILD_MODULES_IN_DIRS. The two names are too similar and thus error-prone.",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 21
+      },
+      "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a92fecf1_8b8ea4e9",
+        "filename": "ui/build/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-25T00:01:09Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 74,
+        "startChar": 46,
+        "endLine": 74,
+        "endChar": 56
+      },
+      "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6265f55e_105d15d7",
+        "filename": "ui/build/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-25T00:01:09Z",
+      "side": 1,
+      "message": "Don\u0027t we do this for no-deps build modes only?",
+      "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd9ebd98_5b3da930",
+        "filename": "ui/build/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-25T00:01:09Z",
+      "side": 1,
+      "message": "What\u0027s \u0027it\u0027?",
+      "range": {
+        "startLine": 278,
+        "startChar": 20,
+        "endLine": 278,
+        "endChar": 22
+      },
+      "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8c2a45b_6fb3c734",
+        "filename": "ui/build/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-25T00:01:09Z",
+      "side": 1,
+      "message": "Isn\u0027t it just filtering that you\u0027re doing here? Calling it \u0027processed\u0027 may confuse readers.",
+      "range": {
+        "startLine": 281,
+        "startChar": 5,
+        "endLine": 281,
+        "endChar": 19
+      },
+      "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9d2482a_ff9179d7",
+        "filename": "ui/build/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-25T00:01:09Z",
+      "side": 1,
+      "message": "I\u0027d use inList to check if args has \"GET-INSTALL-PATH\". If it doesn\u0027t, no filtering and move on. If it does, change targetNamePrefix and do filtering. This is probably more reader-friendly and even faster because 99% of the use cases wouldn\u0027t have GET-INSTALL-PATH in them.",
+      "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e5286ad_6217b330",
+        "filename": "ui/build/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-25T00:01:09Z",
+      "side": 1,
+      "message": "So, where is this handled? I mean, I can\u0027t find where BUILD_ALL_MODULES is referenced. Probably implicitly, I suppose? If then, could you make it explicit or improve this comment accordingly?",
+      "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "158d429d_e3163e09",
+        "filename": "ui/build/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-25T00:01:09Z",
+      "side": 1,
+      "message": "Make this more readable, like this:\n\nswitch action {\ncase BUILD_MODULES_IN_DIR:\n  // If the topDir is the root source tree, just run BUILD_ALL_MODULES.\n  if topDir !\u003d dir {\n    // Find the build file from the directory where...\n      :\n      :\n  }\ncase BUILD_MODULES_IN_DIRS:\n  args, targets, buildFiles \u003d getTargets(ctx, relDir, args, targetNamePrefix)\n}",
+      "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cda2941_66d64c22",
+        "filename": "ui/build/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-25T00:01:09Z",
+      "side": 1,
+      "message": "Is it really a blank file?",
+      "range": {
+        "startLine": 296,
+        "startChar": 25,
+        "endLine": 296,
+        "endChar": 43
+      },
+      "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d09744d6_349c7f88",
+        "filename": "ui/build/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-25T00:01:09Z",
+      "side": 1,
+      "message": "Just define new args var instead of reusing the input param? I don\u0027t think this is a good coding practice.",
+      "range": {
+        "startLine": 305,
+        "startChar": 2,
+        "endLine": 305,
+        "endChar": 6
+      },
+      "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d22cdcbc_742cf5d5",
+        "filename": "ui/build/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-25T00:01:09Z",
+      "side": 1,
+      "message": "Isn\u0027t this only for mm and mmm?",
+      "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0649284c_4d7c406e",
+        "filename": "ui/build/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-25T00:01:09Z",
+      "side": 1,
+      "message": "If I\u0027m reading the code correctly, you\u0027ll return an empty string in this case. Why don\u0027t you just do it here then?",
+      "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "beaa4309_25331d91",
+        "filename": "ui/build/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-25T00:01:09Z",
+      "side": 1,
+      "message": "Add a comment why we blindly use Android.mk?",
+      "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4346c097_13fdaeab",
+        "filename": "ui/build/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-25T00:01:09Z",
+      "side": 1,
+      "message": "Though this may save a few lines, it makes it cumbersome to track down an error because you now have to search twice to find where your error might have been thrown from.",
+      "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
