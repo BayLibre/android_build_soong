@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5f5e542_fde03c42",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-28T17:28:48Z",
+      "side": 0,
+      "message": "Just to verify my understanding. We\u0027re removing this because they fixed all impl module references early this year, right? i.e. we\u0027re not moving this to somewhere else?",
+      "revId": "7211910fd0d158cd2a4e7d610f1e32b8c9d25817",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
