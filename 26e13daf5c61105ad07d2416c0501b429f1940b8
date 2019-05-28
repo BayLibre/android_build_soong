@@ -131,6 +131,30 @@
       "revId": "26e13daf5c61105ad07d2416c0501b429f1940b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09252c3b_4ce0b0a5",
+        "filename": "java/app_builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-28T14:26:28Z",
+      "side": 1,
+      "message": "Got it. Consistency is more important than proper naming, not to mention what is proper is unclear here.",
+      "parentUuid": "d00ea596_4ad1ee34",
+      "range": {
+        "startLine": 66,
+        "startChar": 79,
+        "endLine": 66,
+        "endChar": 84
+      },
+      "revId": "26e13daf5c61105ad07d2416c0501b429f1940b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
