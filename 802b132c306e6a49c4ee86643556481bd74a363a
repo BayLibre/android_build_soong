@@ -16,6 +16,24 @@
       "revId": "802b132c306e6a49c4ee86643556481bd74a363a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68a1f498_b045b64c",
+        "filename": "cc/vndk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1041673
+      },
+      "writtenOn": "2019-05-28T13:23:55Z",
+      "side": 1,
+      "message": "I tried to include this check to useVndk, which is the only possible candidate here as far as I can see, this leads to the situation of missing dependencies on the modules depending on llndk modules.\n\nIt seems like we need separate check to avoid conflicts on vndk snapshot installation. I do not think native_bridge vndk modules need a snapshot.\n\n(The broken llndk dependencies coming from libbacktrace header modules.)",
+      "parentUuid": "aed993a7_04d06ff8",
+      "revId": "802b132c306e6a49c4ee86643556481bd74a363a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
