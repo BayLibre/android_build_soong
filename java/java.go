@@ -351,15 +351,20 @@ type Module struct {
 	dexpreopter
 }
 
-func (j *Module) Srcs() android.Paths {
-	return append(android.Paths{j.outputFile}, j.extraOutputFiles...)
+func (j *Module) OutputFiles(tag string) (android.Paths, error) {
+	switch tag {
+	case "":
+		return append(android.Paths{j.outputFile}, j.extraOutputFiles...), nil
+	default:
+		return nil, fmt.Errorf("unsupported module reference tag %q", tag)
+	}
 }
 
 func (j *Module) DexJarFile() android.Path {
 	return j.dexJarFile
 }
 
-var _ android.SourceFileProducer = (*Module)(nil)
+var _ android.OutputFileProducer = (*Module)(nil)
 
 type Dependency interface {
 	HeaderJars() android.Paths
