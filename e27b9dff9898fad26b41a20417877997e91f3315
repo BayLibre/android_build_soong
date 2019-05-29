@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4500c6b_8d09a4cc",
+        "filename": "cmd/zipsync/zipsync.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-29T20:53:49Z",
+      "side": 1,
+      "message": "How about mentioning prefix is trimmed from the extracted file paths?",
+      "range": {
+        "startLine": 33,
+        "startChar": 44,
+        "endLine": 33,
+        "endChar": 92
+      },
+      "revId": "e27b9dff9898fad26b41a20417877997e91f3315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8a29f09_837f8288",
+        "filename": "java/aar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-29T20:53:49Z",
+      "side": 1,
+      "message": "This comment needs be updated. $expectedDirs is now gone, and it\u0027s probably worth mentioning res dir is removed.",
+      "revId": "e27b9dff9898fad26b41a20417877997e91f3315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99ca4899_18a7dadb",
+        "filename": "java/aar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-29T20:53:49Z",
+      "side": 1,
+      "message": "It deletes a res dir under the working directory, right? It\u0027s either I\u0027m misinterpreting it or it doesn\u0027t do what it\u0027s supposed to do?",
+      "range": {
+        "startLine": 562,
+        "startChar": 32,
+        "endLine": 562,
+        "endChar": 42
+      },
+      "revId": "e27b9dff9898fad26b41a20417877997e91f3315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
