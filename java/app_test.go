@@ -130,7 +130,11 @@ func TestAppSplits(t *testing.T) {
 		foo.Output(expectedOutput)
 	}
 
-	if g, w := foo.Module().(*AndroidApp).Srcs().Strings(), expectedOutputs; !reflect.DeepEqual(g, w) {
+	outputFiles, err := foo.Module().(*AndroidApp).OutputFiles("")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if g, w := outputFiles.Strings(), expectedOutputs; !reflect.DeepEqual(g, w) {
 		t.Errorf("want Srcs() = %q, got %q", w, g)
 	}
 }
