@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff113e13_c6651dc0",
+        "filename": "android/sh_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-05-30T19:54:50Z",
+      "side": 1,
+      "message": "nit: add period at the end of the sentence (to keep it consistent from the other comments in TestProperties)",
+      "range": {
+        "startLine": 62,
+        "startChar": 8,
+        "endLine": 62,
+        "endChar": 12
+      },
+      "revId": "eb17c013bf7d493b772fcb8bded7004469c63540",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
