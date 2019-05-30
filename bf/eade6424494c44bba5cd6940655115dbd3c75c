@@ -1,0 +1,7 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Submitted-by: Mitch Phillips <mitchp@google.com>
+Submitted-at: Thu, 30 May 2019 22:24:04 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/954925
+Project: platform/build/soong
+Branch: refs/heads/master
