@@ -59,6 +59,9 @@ def parse_args():
                       default=None, type=lambda x: (str(x).lower() == 'true'),
                       help=('specify if the app wants to use embedded native libraries. Must not conflict '
                             'if already declared in the manifest.'))
+  parser.add_argument('--add-no-code-application', dest='add_no_code_application', action='store_true',
+                      help=('add an application element with the hasCode attribute set to false. '
+                            'Ingored if there is already an application element.'))
   parser.add_argument('input', help='input AndroidManifest.xml file')
   parser.add_argument('output', help='output AndroidManifest.xml file')
   return parser.parse_args()
@@ -245,6 +248,23 @@ def add_extract_native_libs(doc, extract_native_libs):
                        (attr.value, value))
 
 
+def add_no_code_application(doc):
+  manifest = parse_manifest(doc)
+  elems = get_children_with_tag(manifest, 'application')
+  if len(elems) > 0:
+    return
+
+  application = doc.createElement('application')
+  indent = get_indent(manifest.firstChild, 1)
+  first = manifest.firstChild
+  manifest.insertBefore(doc.createTextNode(indent), first)
+  manifest.insertBefore(application, first)
+
+  attr = doc.createAttributeNS(android_ns, 'android:hasCode')
+  attr.value = 'false'
+  application.setAttributeNode(attr)
+
+
 def main():
   """Program entry point."""
   try:
@@ -268,6 +288,9 @@ def main():
 
     if args.use_embedded_dex:
       add_use_embedded_dex(doc)
+
+    if args.add_no_code_application:
+      add_no_code_application(doc)
 
     if args.extract_native_libs is not None:
       add_extract_native_libs(doc, args.extract_native_libs)
