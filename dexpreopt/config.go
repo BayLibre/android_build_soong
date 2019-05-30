@@ -93,12 +93,13 @@ type GlobalConfig struct {
 // Tools contains paths to tools possibly used by the generated commands.  If you add a new tool here you MUST add it
 // to the order-only dependency list in DEXPREOPT_GEN_DEPS.
 type Tools struct {
-	Profman       android.Path
-	Dex2oat       android.Path
-	Aapt          android.Path
-	SoongZip      android.Path
-	Zip2zip       android.Path
-	ManifestCheck android.Path
+	Profman         android.Path
+	Dex2oat         android.Path
+	Aapt            android.Path
+	SoongZip        android.Path
+	Zip2zip         android.Path
+	ManifestCheck   android.Path
+	HiddenApiPolicy android.Path
 
 	ConstructContext android.Path
 }
@@ -133,11 +134,15 @@ type ModuleConfig struct {
 	NoCreateAppImage    bool
 	ForceCreateAppImage bool
 
-	PresignedPrebuilt bool
+	PresignedPrebuilt             bool
+	SignedWithPlatformCertificate bool
 
 	NoStripping     bool
 	StripInputPath  android.Path
 	StripOutputPath android.WritablePath
+
+	IsApp          bool
+	UsesNonSdkApis bool
 }
 
 func constructPath(ctx android.PathContext, path string) android.Path {
@@ -187,12 +192,13 @@ func LoadGlobalConfig(ctx android.PathContext, path string) (GlobalConfig, []byt
 		BootImageProfiles []string
 
 		Tools struct {
-			Profman       string
-			Dex2oat       string
-			Aapt          string
-			SoongZip      string
-			Zip2zip       string
-			ManifestCheck string
+			Profman         string
+			Dex2oat         string
+			Aapt            string
+			SoongZip        string
+			Zip2zip         string
+			ManifestCheck   string
+			HiddenApiPolicy string
 
 			ConstructContext string
 		}
@@ -216,6 +222,7 @@ func LoadGlobalConfig(ctx android.PathContext, path string) (GlobalConfig, []byt
 	config.GlobalConfig.Tools.Zip2zip = constructPath(ctx, config.Tools.Zip2zip)
 	config.GlobalConfig.Tools.ManifestCheck = constructPath(ctx, config.Tools.ManifestCheck)
 	config.GlobalConfig.Tools.ConstructContext = constructPath(ctx, config.Tools.ConstructContext)
+	config.GlobalConfig.Tools.HiddenApiPolicy = constructPath(ctx, config.Tools.HiddenApiPolicy)
 
 	return config.GlobalConfig, data, nil
 }
@@ -334,6 +341,7 @@ func GlobalConfigForTests(ctx android.PathContext) GlobalConfig {
 			SoongZip:         android.PathForTesting("soong_zip"),
 			Zip2zip:          android.PathForTesting("zip2zip"),
 			ManifestCheck:    android.PathForTesting("manifest_check"),
+			HiddenApiPolicy:  android.PathForTesting("hiddenapi_policy"),
 			ConstructContext: android.PathForTesting("construct_context.sh"),
 		},
 	}

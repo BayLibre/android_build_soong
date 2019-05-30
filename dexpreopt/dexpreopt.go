@@ -343,6 +343,32 @@ func dexpreoptCommand(ctx android.PathContext, global GlobalConfig, module Modul
 		dexLocationArg = strings.TrimPrefix(dexLocationArg, "/system")
 	}
 
+	// Decide the hidden API enforcement policy of this module.
+	// The logic is kept in hiddenapi_policy.py and must be kept in sync with
+	// ApplicationInfo.isAllowedToUseHiddenApis().
+	// NB1: The script would ideally always read 'usesNonSdkApis' from the APK's manifest
+	// but the pipeline builds bytecode and resources separately, merging them at the end.
+	// Reading it from the APK is necessary for prebuilts.
+	// NB2: The script would ideally compare the signature chain of the APK against the
+	// signature of 'framework-res.jar' (the "android" package), like the framework does.
+	// For simplicity, we assume that prebuilts are never platform-signed.
+	hiddenapi_policy_cmd := rule.Command().
+		Text(`hidden_api_policy="$(`).
+		Tool(global.Tools.HiddenApiPolicy).
+		Input(module.DexPath).
+		Flag("--dex-location").Flag(dexLocationArg).
+		Flag("--aapt").Tool(global.Tools.Aapt)
+	if module.IsApp {
+		hiddenapi_policy_cmd.Flag("--app")
+	}
+	if module.SignedWithPlatformCertificate {
+		hiddenapi_policy_cmd.Flag("--platform-signed")
+	}
+	if module.UsesNonSdkApis {
+		hiddenapi_policy_cmd.Flag("--uses-non-sdk-apis")
+	}
+	hiddenapi_policy_cmd.Text(`)"`)
+
 	cmd := rule.Command().
 		Text(`ANDROID_LOG_TAGS="*:e"`).
 		Tool(global.Tools.Dex2oat).
@@ -367,7 +393,8 @@ func dexpreoptCommand(ctx android.PathContext, global GlobalConfig, module Modul
 		Flag("--generate-build-id").
 		Flag("--abort-on-hard-verifier-error").
 		Flag("--force-determinism").
-		FlagWithArg("--no-inline-from=", "core-oj.jar")
+		FlagWithArg("--no-inline-from=", "core-oj.jar").
+		Flag("--runtime-arg").Flag("-Xhidden-api-policy:${hidden_api_policy}")
 
 	var preoptFlags []string
 	if len(module.PreoptFlags) > 0 {
