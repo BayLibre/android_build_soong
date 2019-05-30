@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e739e562_aa73c985",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-05-30T17:36:40Z",
+      "side": 1,
+      "message": "can you dedup #531 and #581?",
+      "revId": "8caf1ff49cae6d638abcfec114d243ff36c08404",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e5c8320_c99c6e8b",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-05-30T17:36:40Z",
+      "side": 1,
+      "message": "where is this file used? not yet?",
+      "revId": "8caf1ff49cae6d638abcfec114d243ff36c08404",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d84b976_3549d549",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-05-30T17:36:40Z",
+      "side": 1,
+      "message": "wrong description?",
+      "range": {
+        "startLine": 677,
+        "startChar": 31,
+        "endLine": 677,
+        "endChar": 47
+      },
+      "revId": "8caf1ff49cae6d638abcfec114d243ff36c08404",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
