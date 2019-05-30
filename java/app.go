@@ -238,6 +238,11 @@ func (a *AndroidApp) shouldEmbedJnis(ctx android.BaseModuleContext) bool {
 func (a *AndroidApp) aaptBuildActions(ctx android.ModuleContext) {
 	a.aapt.usesNonSdkApis = Bool(a.Module.deviceProperties.Platform_apis)
 
+	// Ask manifest_fixer to add an application element indicating this app has no code if there are
+	// no source files and no static libraries.
+	srcFiles := android.PathsForModuleSrcExcludes(ctx, a.properties.Srcs, a.properties.Exclude_srcs)
+	a.aapt.addNoCodeApplication = len(srcFiles) == 0 && len(ctx.GetDirectDepsWithTag(staticLibTag)) == 0
+
 	aaptLinkFlags := []string{}
 
 	// Add TARGET_AAPT_CHARACTERISTICS values to AAPT link flags if they exist and --product flags were not provided.

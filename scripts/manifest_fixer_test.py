@@ -424,5 +424,41 @@ class AddExtractNativeLibsTest(unittest.TestCase):
     self.assertRaises(RuntimeError, self.run_test, manifest_input, False)
 
 
+class AddNoCodeApplicationTest(unittest.TestCase):
+  """Unit tests for add_no_code_application function."""
+
+  def run_test(self, input_manifest):
+    doc = minidom.parseString(input_manifest)
+    manifest_fixer.add_no_code_application(doc)
+    output = StringIO.StringIO()
+    manifest_fixer.write_xml(output, doc)
+    return output.getvalue()
+
+  manifest_tmpl = (
+      '<?xml version="1.0" encoding="utf-8"?>\n'
+      '<manifest xmlns:android="http://schemas.android.com/apk/res/android">\n'
+      '%s'
+      '</manifest>\n')
+
+  def test_no_application(self):
+    manifest_input = self.manifest_tmpl % ''
+    expected = self.manifest_tmpl % '    <application android:hasCode="false"/>\n'
+    output = self.run_test(manifest_input)
+    self.assertEqual(output, expected)
+
+  def test_has_application_without_code(self):
+    """ Do nothing if there's already an application elemeent. """
+    manifest_input = self.manifest_tmpl % '    <application android:hasCode="false"/>\n'
+    output = self.run_test(manifest_input)
+    self.assertEqual(output, manifest_input)
+
+  def test_has_application_wit_code(self):
+    """ Do nothing if there's already an application elemeent even if its
+     hasCode attribute is true. """
+    manifest_input = self.manifest_tmpl % '    <application android:hasCode="true"/>\n'
+    output = self.run_test(manifest_input)
+    self.assertEqual(output, manifest_input)
+
+
 if __name__ == '__main__':
   unittest.main(verbosity=2)
