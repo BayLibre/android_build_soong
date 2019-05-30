@@ -149,6 +149,7 @@ func init() {
 
 	pctx.HostBinToolVariable("ManifestCheckCmd", "manifest_check")
 	pctx.HostBinToolVariable("ManifestFixerCmd", "manifest_fixer")
+	pctx.HostBinToolVariable("HiddenApiPolicy", "hiddenapi_policy")
 
 	pctx.HostBinToolVariable("ManifestMergerCmd", "manifest-merger")
 

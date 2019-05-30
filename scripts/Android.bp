@@ -85,3 +85,19 @@ python_binary_host {
         },
     }
 }
+
+python_binary_host {
+    name: "hiddenapi_policy",
+    main: "hiddenapi_policy.py",
+    srcs: [
+        "hiddenapi_policy.py",
+    ],
+    version: {
+        py2: {
+            enabled: true,
+        },
+        py3: {
+            enabled: false,
+        },
+    },
+}
