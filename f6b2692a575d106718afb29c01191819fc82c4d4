@@ -51,6 +51,24 @@
       "revId": "f6b2692a575d106718afb29c01191819fc82c4d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9dd34f5_8a2ff361",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1542,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-31T17:38:08Z",
+      "side": 1,
+      "message": "Ah, it makes sense then. Could you add a TODO comment on this or SourceFileProducer to clear things up?\n\nAlso, could you reply to my CL-level question about an alternative?",
+      "parentUuid": "9e913afe_a5d08e9c",
+      "revId": "f6b2692a575d106718afb29c01191819fc82c4d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
