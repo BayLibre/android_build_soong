@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e61e3d0e_ab557bf8",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1466,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-31T16:54:16Z",
+      "side": 1,
+      "message": "Thanks a lot for adding these comments and naming return values. They\u0027re really helpful.",
+      "revId": "f6b2692a575d106718afb29c01191819fc82c4d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e8da0ace_2b3673f0",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1542,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-31T16:54:16Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this still be called a sort of source file producer? SourceFileProducer is named so, not because the produced files are originally source files (a lot of them are not, actually), but because the produced files are used as source files of sorts. Because of this, I\u0027m worried that naming this OutputFileProducer would give wrong impression about what SourceFileProducers actually do.\n\nHow about calling it something like TaggedSourceFileProducer?",
+      "revId": "f6b2692a575d106718afb29c01191819fc82c4d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
