@@ -202,6 +202,12 @@ type Module interface {
 	BuildParamsForTests() []BuildParams
 	RuleParamsForTests() map[blueprint.Rule]blueprint.RuleParams
 	VariablesForTests() map[string]string
+
+	// Get the visibility rules that determine the visibility of this module.
+	visibility() []string
+
+	// Get information about the properties that can contain visibility rules.
+	visibilityProperties() []visibilityProperty
 }
 
 type nameProperties struct {
@@ -236,6 +242,13 @@ type commonProperties struct {
 	//      //packages/apps/Settings:__subpackages__.
 	//  ["//visibility:legacy_public"]: The default visibility, behaves as //visibility:public
 	//      for now. It is an error if it is used in a module.
+	//
+	// If a module does not specify the `visibility` property then it uses the
+	// `default_visibility` property of the `package` module in the module's package.
+	//
+	// If the `default_visibility` property is not set for the module's package then
+	// the module uses `//visibility:legacy_public`.
+	//
 	// See https://android.googlesource.com/platform/build/soong/+/master/README.md#visibility for
 	// more details.
 	Visibility []string
@@ -569,6 +582,16 @@ func (m *ModuleBase) BaseModuleName() string {
 
 func (m *ModuleBase) base() *ModuleBase {
 	return m
+}
+
+func (a *ModuleBase) visibility() []string {
+	return a.base().commonProperties.Visibility
+}
+
+func (a *ModuleBase) visibilityProperties() []visibilityProperty {
+	return []visibilityProperty{
+		visibilityProperty{name: "visibility", getter: a.visibility},
+	}
 }
 
 func (m *ModuleBase) SetTarget(target Target, multiTargets []Target, primary bool) {

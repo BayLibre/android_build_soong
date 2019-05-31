@@ -77,6 +77,7 @@ var preArch = []RegisterMutatorFunc{
 	RegisterNamespaceMutator,
 	RegisterPrebuiltsPreArchMutators,
 	registerVisibilityRuleChecker,
+	registerPackageInfoGatherer,
 	RegisterDefaultsPreArchMutators,
 	registerVisibilityRuleGatherer,
 }
