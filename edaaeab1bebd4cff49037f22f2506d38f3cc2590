@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e9f2da2_19ef683e",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-05-31T00:18:59Z",
+      "side": 1,
+      "message": "FYI, I decided to not reuse the hasSrcs var in java.go\u0027s compile func because it runs after aapt2 (more importantly, manifest_fixer), and AFAICT, there\u0027s no reliable way to share the flag between the two places while still being future-proof.",
+      "revId": "edaaeab1bebd4cff49037f22f2506d38f3cc2590",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
