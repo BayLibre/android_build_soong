@@ -197,7 +197,7 @@ where `//project` is the module's package. e.g. using `[":__subpackages__"]` in
 * `["//visibility:legacy_public"]`: The default visibility, behaves as
 `//visibility:public` for now. It is an error if it is used in a module.
 
-The visibility rules of `//visibility:public` and `//visibility:private` can not
+The visibility rules of `//visibility:public` and `//visibility:private` cannot
 be combined with any other visibility specifications, except
 `//visibility:public` is allowed to override visibility specifications imported
 through the `defaults` property.
@@ -207,13 +207,18 @@ in `vendor/`, e.g. a module in `libcore` cannot declare that it is visible to
 say `vendor/google`, instead it must make itself visible to all packages within
 `vendor/` using `//vendor:__subpackages__`.
 
-If a module does not specify the `visibility` property the module is
-`//visibility:legacy_public`. Once the build has been completely switched over to
-soong it is possible that a global refactoring will be done to change this to
-`//visibility:private` at which point all modules that do not currently specify
-a `visibility` property will be updated to have
-`visibility = [//visibility:legacy_public]` added. It will then be the owner's
-responsibility to replace that with a more appropriate visibility.
+If a module does not specify the `visibility` property then it uses the
+`default_visibility` property of the `package` module in the module's package.
+
+If the `default_visibility` property is not set for the module's package then
+the module uses `//visibility:legacy_public`.
+
+Once the build has been completely switched over to soong it is possible that a
+global refactoring will be done to change this to `//visibility:private` at
+which point all packages that do not currently specify a `default_visibility`
+property will be updated to have
+`default_visibility = [//visibility:legacy_public]` added. It will then be the
+owner's responsibility to replace that with a more appropriate visibility.
 
 ### Formatter
 
