@@ -33,6 +33,24 @@
       "revId": "f6b2692a575d106718afb29c01191819fc82c4d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e913afe_a5d08e9c",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1542,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-31T17:00:27Z",
+      "side": 1,
+      "message": "The idea is that everything that is currently a SourceFileProducer would become an OutputFileProducer except for genrules and filegroups, which are actually producing source files.",
+      "parentUuid": "e8da0ace_2b3673f0",
+      "revId": "f6b2692a575d106718afb29c01191819fc82c4d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
