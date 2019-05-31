@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "847c2ea8_9534b380",
+        "filename": "cc/vndk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-31T21:40:39Z",
+      "side": 1,
+      "message": "How about:\n\nvndkLibDir :\u003d map[android.ArchType]string\n\nfor _, target :\u003d range ctx.Config().Targets[android.Android] {\n    dir :\u003d snapshotVariantDir\n    if ctx.DeviceConfig().BinderBitness() \u003d\u003d \"32\" {\n        dir \u003d filepath.Join(dir, \"binder32\")\n    }\n    dir \u003d filepath.Join(dir, \"arch-\"+target.Arch.ArchType.String()+\"-\"+target.Arch.ArchVariant)\n    vndkLibDir[target.Arch.ArchType] \u003d dir\n}",
+      "revId": "40fa1bed8561d60095ffe09ac8d9ee1d6aa6c57e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9066b23c_8f5d3631",
         "filename": "cc/vndk.go",
         "patchSetId": 2
@@ -25,6 +42,80 @@
     },
     {
       "key": {
+        "uuid": "b721a6e9_e8ec320d",
+        "filename": "cc/vndk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-31T21:40:39Z",
+      "side": 1,
+      "message": "baseDir \u003d vndkLibDir[m.Target().Arch.ArchType]",
+      "range": {
+        "startLine": 473,
+        "startChar": 0,
+        "endLine": 480,
+        "endChar": 3
+      },
+      "revId": "40fa1bed8561d60095ffe09ac8d9ee1d6aa6c57e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebf459c6_7447f3e2",
+        "filename": "cc/vndk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-31T21:40:39Z",
+      "side": 1,
+      "message": "Use an interface to provide the methods you need instead of type asserting to each possible implementation.",
+      "revId": "40fa1bed8561d60095ffe09ac8d9ee1d6aa6c57e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc126545_a40515e6",
+        "filename": "cc/vndk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-31T21:40:39Z",
+      "side": 1,
+      "message": "I\u0027d prefer to get this as structured data from the module instead of parsing it out of flags.",
+      "revId": "40fa1bed8561d60095ffe09ac8d9ee1d6aa6c57e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19a508ab_3bfbf778",
+        "filename": "cc/vndk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-31T21:40:39Z",
+      "side": 1,
+      "message": "This won\u0027t work if you set OUT_DIR",
+      "revId": "40fa1bed8561d60095ffe09ac8d9ee1d6aa6c57e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "56377fda_dcc46011",
         "filename": "cc/vndk.go",
         "patchSetId": 2
@@ -41,6 +132,46 @@
         "startChar": 11,
         "endLine": 553,
         "endChar": 14
+      },
+      "revId": "40fa1bed8561d60095ffe09ac8d9ee1d6aa6c57e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "053fcf3b_0dd366d9",
+        "filename": "cc/vndk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-31T21:40:39Z",
+      "side": 1,
+      "message": "You can use android.PathForSource which will handle printing an error for the nonexistent case.",
+      "revId": "40fa1bed8561d60095ffe09ac8d9ee1d6aa6c57e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99714a82_b148c652",
+        "filename": "cc/vndk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-31T21:40:39Z",
+      "side": 1,
+      "message": "Move this out to a helper function so that this can be:\n\n    if !isHeader(header) {\n        continue\n    }",
+      "range": {
+        "startLine": 583,
+        "startChar": 0,
+        "endLine": 592,
+        "endChar": 3
       },
       "revId": "40fa1bed8561d60095ffe09ac8d9ee1d6aa6c57e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
