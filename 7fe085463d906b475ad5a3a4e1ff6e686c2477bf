@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2176eead_8986c23e",
+        "filename": "cc/strip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-31T21:23:50Z",
+      "side": 1,
+      "message": "Can you add stripStatic and stripShared that call strip with the appropriate bool?",
+      "revId": "7fe085463d906b475ad5a3a4e1ff6e686c2477bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
