@@ -23,14 +23,21 @@ import (
 
 // Enforces visibility rules between modules.
 //
-// Two stage process:
-// * First stage works bottom up to extract visibility information from the modules, parse it,
+// Multi stage process:
+// * First stage works bottom up, before defaults expansion, to check the syntax of the visibility
+//   rules that have been specified.
+//
+// * Second stage works bottom up to extract the package info for each package and store them in a
+//   map by package name. See package.go for functionality for this.
+//
+// * Third stage works bottom up to extract visibility information from the modules, parse it,
 //   create visibilityRule structures and store them in a map keyed by the module's
 //   qualifiedModuleName instance, i.e. //<pkg>:<name>. The map is stored in the context rather
 //   than a global variable for testing. Each test has its own Config so they do not share a map
-//   and so can be run in parallel.
+//   and so can be run in parallel. If a module has no visibility specified then it uses the
+//   default package visibility if specified.
 //
-// * Second stage works top down and iterates over all the deps for each module. If the dep is in
+// * Fourth stage works top down and iterates over all the deps for each module. If the dep is in
 //   the same package then it is automatically visible. Otherwise, for each dep it first extracts
 //   its visibilityRule from the config map. If one could not be found then it assumes that it is
 //   publicly visible. Otherwise, it calls the visibility rule to check that the module can see
@@ -173,9 +180,12 @@ func registerVisibilityRuleChecker(ctx RegisterMutatorsContext) {
 	ctx.BottomUp("visibilityRuleChecker", visibilityRuleChecker).Parallel()
 }
 
+// Registers the function that gathers the visibility rules for each module.
+//
 // Visibility is not dependent on arch so this must be registered before the arch phase to avoid
 // having to process multiple variants for each module. This goes after defaults expansion to gather
-// the complete visibility lists from flat lists.
+// the complete visibility lists from flat lists and after the package info is gathered to ensure
+// that default_visibility is available.
 func registerVisibilityRuleGatherer(ctx RegisterMutatorsContext) {
 	ctx.BottomUp("visibilityRuleGatherer", visibilityRuleGatherer).Parallel()
 }
@@ -198,7 +208,7 @@ func visibilityRuleChecker(ctx BottomUpMutatorContext) {
 			}
 		}
 	} else if m, ok := ctx.Module().(Module); ok {
-		if visibility := m.base().commonProperties.Visibility; visibility != nil {
+		if visibility := m.visibility(); visibility != nil {
 			checkRules(ctx, qualified.pkg, visibility)
 		}
 	}
@@ -267,12 +277,22 @@ func visibilityRuleGatherer(ctx BottomUpMutatorContext) {
 
 	qualified := createQualifiedModuleName(ctx)
 
-	visibility := m.base().commonProperties.Visibility
+	visibility := m.base().visibility()
+	var rule compositeRule = nil
+
 	if visibility != nil {
-		rule := parseRules(ctx, qualified.pkg, visibility)
-		if rule != nil {
-			moduleToVisibilityRuleMap(ctx).Store(qualified, rule)
+		rule = parseRules(ctx, qualified.pkg, visibility)
+	} else {
+		// If no visibility is specified then check to see if the package specified a default
+		// visibility.
+		packageInfo := packageInfo(ctx, "//"+qualified.pkg)
+		if packageInfo != nil {
+			rule = packageInfo.defaultVisibilityRule
 		}
+	}
+
+	if rule != nil {
+		moduleToVisibilityRuleMap(ctx).Store(qualified, rule)
 	}
 }
 
