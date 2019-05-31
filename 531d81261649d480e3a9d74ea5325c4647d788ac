@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23e36088_b48cad6d",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-31T23:22:40Z",
+      "side": 1,
+      "message": "This seems like an odd name, maybe --has-no-code?",
+      "range": {
+        "startLine": 91,
+        "startChar": 25,
+        "endLine": 91,
+        "endChar": 48
+      },
+      "revId": "531d81261649d480e3a9d74ea5325c4647d788ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "632b7586_866c4c4a",
+        "filename": "java/app_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1349,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-31T23:22:40Z",
+      "side": 1,
+      "message": "Add a test for app without sources with library without sources?  I assume that is treated as noCode: false right now, add a comment on the current state and the desired future state.",
+      "revId": "531d81261649d480e3a9d74ea5325c4647d788ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "731ce79e_955ac91f",
+        "filename": "scripts/manifest_fixer.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-05-31T23:22:40Z",
+      "side": 1,
+      "message": "Should this handle the case where the application tag already exists and just needs the android:hasCode\u003dfalse attribute added?",
+      "revId": "531d81261649d480e3a9d74ea5325c4647d788ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
