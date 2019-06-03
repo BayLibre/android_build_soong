@@ -69,6 +69,24 @@
       "revId": "f6b2692a575d106718afb29c01191819fc82c4d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d23b903f_c5e7641d",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1542,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-03T22:14:00Z",
+      "side": 1,
+      "message": "Since a module class can return any paths it deems appropriate, wouldn\u0027t this interfere with our RBE experiment? Given this and the fact that we think this feature should be used only by a small number of exceptions, do we want to add a whitelist filtering to this feature?",
+      "parentUuid": "e9dd34f5_8a2ff361",
+      "revId": "f6b2692a575d106718afb29c01191819fc82c4d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
