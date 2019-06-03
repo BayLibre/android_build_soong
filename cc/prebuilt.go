@@ -85,7 +85,11 @@ func (p *prebuiltLibraryLinker) link(ctx ModuleContext,
 	flags Flags, deps PathDeps, objs Objects) android.Path {
 	// TODO(ccross): verify shared library dependencies
 	if len(p.properties.Srcs) > 0 {
-		p.libraryDecorator.exportIncludes(ctx, "-I")
+		p.libraryDecorator.exportIncludes(ctx)
+		p.libraryDecorator.reexportDirs(deps.ReexportedDirs)
+		p.libraryDecorator.reexportSystemDirs(deps.ReexportedSystemDirs)
+		p.libraryDecorator.reexportGeneratedDirs(deps.ReexportedGeneratedDirs)
+		p.libraryDecorator.reexportGeneratedSystemDirs(deps.ReexportedGeneratedSystemDirs)
 		p.libraryDecorator.reexportFlags(deps.ReexportedFlags)
 		p.libraryDecorator.reexportDeps(deps.ReexportedFlagsDeps)
 
