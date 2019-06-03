@@ -224,6 +224,24 @@
     },
     {
       "key": {
+        "uuid": "4f1ceb70_472069b4",
+        "filename": "cc/vndk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-03T23:06:50Z",
+      "side": 1,
+      "message": "It\u0027s a little dirty, but you could do strings.HasPrefix(dir, ctx.PathForOutput(ctx).String())",
+      "parentUuid": "19a508ab_3bfbf778",
+      "revId": "40fa1bed8561d60095ffe09ac8d9ee1d6aa6c57e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "56377fda_dcc46011",
         "filename": "cc/vndk.go",
         "patchSetId": 2
