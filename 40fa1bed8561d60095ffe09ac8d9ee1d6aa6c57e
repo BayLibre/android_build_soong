@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "de288366_ff7cfa55",
+        "filename": "cc/vndk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-06-03T00:39:38Z",
+      "side": 1,
+      "message": "In case of VNDK snapshot, we actually use the modified name from the \"BaseModuleName\". So I don\u0027t think BaseModuleName() works here.",
+      "parentUuid": "9066b23c_8f5d3631",
+      "range": {
+        "startLine": 444,
+        "startChar": 3,
+        "endLine": 444,
+        "endChar": 62
+      },
+      "revId": "40fa1bed8561d60095ffe09ac8d9ee1d6aa6c57e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b721a6e9_e8ec320d",
         "filename": "cc/vndk.go",
         "patchSetId": 2
