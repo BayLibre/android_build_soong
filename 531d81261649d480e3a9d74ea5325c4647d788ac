@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "379cae4e_14b5780b",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-03T17:55:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23e36088_b48cad6d",
+      "range": {
+        "startLine": 91,
+        "startChar": 25,
+        "endLine": 91,
+        "endChar": 48
+      },
+      "revId": "531d81261649d480e3a9d74ea5325c4647d788ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "632b7586_866c4c4a",
         "filename": "java/app_test.go",
         "patchSetId": 3
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "6b5f8550_21dd3a8d",
+        "filename": "java/app_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1349,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-03T17:55:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "632b7586_866c4c4a",
+      "revId": "531d81261649d480e3a9d74ea5325c4647d788ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "731ce79e_955ac91f",
         "filename": "scripts/manifest_fixer.py",
         "patchSetId": 3
@@ -56,6 +98,24 @@
       "revId": "531d81261649d480e3a9d74ea5325c4647d788ac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "487f6266_dfb5993d",
+        "filename": "scripts/manifest_fixer.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-03T17:55:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "731ce79e_955ac91f",
+      "revId": "531d81261649d480e3a9d74ea5325c4647d788ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
