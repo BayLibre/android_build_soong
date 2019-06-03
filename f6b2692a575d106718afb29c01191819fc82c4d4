@@ -87,6 +87,24 @@
       "revId": "f6b2692a575d106718afb29c01191819fc82c4d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e3e2345_69a477b1",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1542,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-03T22:55:54Z",
+      "side": 1,
+      "message": "I converted all the existing modules that are actually producing output files to OutputFileProducer.\n\nI don\u0027t think this is problematic for RBE, because these are all straightforward path dependencies.",
+      "parentUuid": "d23b903f_c5e7641d",
+      "revId": "f6b2692a575d106718afb29c01191819fc82c4d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
