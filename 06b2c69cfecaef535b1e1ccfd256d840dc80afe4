@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44d930a7_41915111",
+        "filename": "cc/linker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2019-06-04T09:26:42Z",
+      "side": 0,
+      "message": "If this has to be done gradually, you could just remove this functionality/check first (and then rely on no_libcrt to be doing all the work elsewhere).",
+      "revId": "06b2c69cfecaef535b1e1ccfd256d840dc80afe4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
