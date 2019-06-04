@@ -141,6 +141,24 @@
       "revId": "f6b2692a575d106718afb29c01191819fc82c4d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dde7e4b4_d1191964",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1542,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-04T03:30:26Z",
+      "side": 1,
+      "message": "Thanks. I still have a question, but it\u0027s not a blocker.",
+      "parentUuid": "bcbec7fc_d97a6537",
+      "revId": "f6b2692a575d106718afb29c01191819fc82c4d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
