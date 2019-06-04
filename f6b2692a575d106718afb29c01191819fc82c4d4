@@ -123,6 +123,24 @@
       "revId": "f6b2692a575d106718afb29c01191819fc82c4d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcbec7fc_d97a6537",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1542,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-04T02:01:11Z",
+      "side": 1,
+      "message": "A dependency on a file in out/ that does not have a rule to create it will hit the dangling rules check that happens on every checkbuild.",
+      "parentUuid": "f74343df_b4be6e2e",
+      "revId": "f6b2692a575d106718afb29c01191819fc82c4d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
