@@ -105,6 +105,24 @@
       "revId": "f6b2692a575d106718afb29c01191819fc82c4d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f74343df_b4be6e2e",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1542,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-04T01:30:32Z",
+      "side": 1,
+      "message": "Sorry, I wasn\u0027t very clear about my concern in my previous comment. What I\u0027m worried bout is this corner case - if a module, for example a custom module added by a plugin, returns an output path that isn\u0027t listed in the ninja file, could it interfere with our RBE experiment? (as it assumes all input files are listed) Correct me if I\u0027m wrong.\n\nIf a whitelist is an overkill considering the slim chance where a plugin uses it in the wrong way, maybe we could add a NOTE?",
+      "parentUuid": "5e3e2345_69a477b1",
+      "revId": "f6b2692a575d106718afb29c01191819fc82c4d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
