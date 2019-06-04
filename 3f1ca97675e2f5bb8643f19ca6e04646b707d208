@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "8d5e8c97_c0c6ef91",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-06-04T15:25:23Z",
+      "side": 1,
+      "message": "That\u0027s not how it works in Blaze but we already have some differences so it\u0027s not a deal breaker.\n\nLonger term we are going to switch to having private be the default. The idea is that we would do a LSC which set the default visibility in each package to legacy_private and then switch the global default to private. If the default visibility affected sub packages as well that could be quite confusing.",
+      "parentUuid": "4a2e7513_1949c7ac",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 45
+      },
+      "revId": "3f1ca97675e2f5bb8643f19ca6e04646b707d208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fdb9ce01_a08c793b",
         "filename": "android/package.go",
         "patchSetId": 2
@@ -88,6 +112,30 @@
     },
     {
       "key": {
+        "uuid": "fa03bac5_57a4deff",
+        "filename": "android/package.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-06-04T15:25:23Z",
+      "side": 1,
+      "message": "The error message you would get would be:\n\nmodule \"soong package \u003cnon deterministic number\u003e\": Duplicate package modules in \"//top\"\n\nWhile having duplicate entries is an edge case I think that would be incredibly confusing to a developer to see a message like that.\n\nI could avoid using this field if there was a way to get hold of the scanner.Position to pass to the BaseModuleContext.Errorf(...) function but that is internal. I might be able to fake one up but the line number would be wrong.",
+      "parentUuid": "a39d8bd5_b6ea02eb",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 16
+      },
+      "revId": "3f1ca97675e2f5bb8643f19ca6e04646b707d208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "25ba6d2d_9d2c19d7",
         "filename": "android/package.go",
         "patchSetId": 2
@@ -99,6 +147,30 @@
       "writtenOn": "2019-06-04T12:57:27Z",
       "side": 1,
       "message": "Can this be done in visibilityRuleGatherer instead? That would contain the visibility code in visibility.go and its own mutators, and the mutators here would be less coupled.\n\nThen I think the package mutators could be registered earlier, which seems like a good thing if other mutators need to use the package modules.",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 70
+      },
+      "revId": "3f1ca97675e2f5bb8643f19ca6e04646b707d208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cf15f54_69949759",
+        "filename": "android/package.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-06-04T15:25:23Z",
+      "side": 1,
+      "message": "It can\u0027t be done as part of the visibilityRuleGatherer because that relies on information stored by this mutator. So, this mutator has to run before it. This mutator could store the unparsed value and then have the visibilityRuleGatherer parse it for every module but that would be doing a lot of duplicate work.\n\nI don\u0027t see why this being separate from visibilityRuleGatherer prevents it from being registered as early as possible.",
+      "parentUuid": "25ba6d2d_9d2c19d7",
       "range": {
         "startLine": 163,
         "startChar": 0,
