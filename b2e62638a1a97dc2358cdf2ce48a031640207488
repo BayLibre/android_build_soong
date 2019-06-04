@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4012c5ec_6f1d261b",
+        "filename": "ui/build/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-04T23:49:00Z",
+      "side": 1,
+      "message": "Ah. Good idea. Done!",
+      "parentUuid": "c411d76f_e324f73e",
+      "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e358938f_5cb5f03f",
         "filename": "ui/build/config.go",
         "patchSetId": 8
@@ -39,6 +57,30 @@
       "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b7a170e_70421174",
+        "filename": "ui/build/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-04T23:49:00Z",
+      "side": 1,
+      "message": "Ehh neither. It\u0027s the directory that the function received that is relative to top dir. I rephrase it to clear some of the confusion. Hope it helps.",
+      "parentUuid": "e358938f_5cb5f03f",
+      "range": {
+        "startLine": 71,
+        "startChar": 33,
+        "endLine": 71,
+        "endChar": 55
+      },
+      "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "610a1476_6d8a0c12",
+        "filename": "ui/build/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-04T23:49:00Z",
+      "side": 1,
+      "message": "Renamed them. Hopefully is less error-prone.",
+      "parentUuid": "49ed74f2_f508707b",
+      "range": {
+        "startLine": 72,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 21
+      },
+      "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a92fecf1_8b8ea4e9",
         "filename": "ui/build/config.go",
         "patchSetId": 8
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "a052422b_811988a4",
+        "filename": "ui/build/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-04T23:49:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a92fecf1_8b8ea4e9",
+      "range": {
+        "startLine": 74,
+        "startChar": 46,
+        "endLine": 74,
+        "endChar": 56
+      },
+      "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6265f55e_105d15d7",
         "filename": "ui/build/config.go",
         "patchSetId": 8
@@ -102,6 +192,24 @@
       "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2ad6916_820cd8a3",
+        "filename": "ui/build/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-04T23:49:00Z",
+      "side": 1,
+      "message": "Yes but since we\u0027re deprecating mm and mmm soon, we need to provide that functionality.",
+      "parentUuid": "6265f55e_105d15d7",
+      "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -128,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "ea22e80b_9593c774",
+        "filename": "ui/build/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-04T23:49:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd9ebd98_5b3da930",
+      "range": {
+        "startLine": 278,
+        "startChar": 20,
+        "endLine": 278,
+        "endChar": 22
+      },
+      "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8c2a45b_6fb3c734",
         "filename": "ui/build/config.go",
         "patchSetId": 8
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "45f80ed6_72b37e11",
+        "filename": "ui/build/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-04T23:49:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8c2a45b_6fb3c734",
+      "range": {
+        "startLine": 281,
+        "startChar": 5,
+        "endLine": 281,
+        "endChar": 19
+      },
+      "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9d2482a_ff9179d7",
         "filename": "ui/build/config.go",
         "patchSetId": 8
@@ -165,6 +321,24 @@
       "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f72e75c_f134f187",
+        "filename": "ui/build/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-04T23:49:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9d2482a_ff9179d7",
+      "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -185,6 +359,24 @@
     },
     {
       "key": {
+        "uuid": "7f594ed0_f7606da7",
+        "filename": "ui/build/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-04T23:49:00Z",
+      "side": 1,
+      "message": "It\u0027s implicit. I made it explicit so now it\u0027s much clearer what action it is being executed.",
+      "parentUuid": "7e5286ad_6217b330",
+      "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "158d429d_e3163e09",
         "filename": "ui/build/config.go",
         "patchSetId": 8
@@ -199,6 +391,24 @@
       "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aad752dd_92d73c79",
+        "filename": "ui/build/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-04T23:49:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "158d429d_e3163e09",
+      "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -225,6 +435,30 @@
     },
     {
       "key": {
+        "uuid": "19b2b27a_c96cdd22",
+        "filename": "ui/build/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-04T23:49:00Z",
+      "side": 1,
+      "message": "D\u0027oh. Done.",
+      "parentUuid": "0cda2941_66d64c22",
+      "range": {
+        "startLine": 296,
+        "startChar": 25,
+        "endLine": 296,
+        "endChar": 43
+      },
+      "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d09744d6_349c7f88",
         "filename": "ui/build/config.go",
         "patchSetId": 8
@@ -248,6 +482,30 @@
     },
     {
       "key": {
+        "uuid": "a4bd185b_1c363a2f",
+        "filename": "ui/build/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-04T23:49:00Z",
+      "side": 1,
+      "message": "I thought about it and I feel that getTargets is doing too much. I split the functionality into two functions so it\u0027s clearer what BUILD_MODULES_IN_DIRS does.",
+      "parentUuid": "d09744d6_349c7f88",
+      "range": {
+        "startLine": 305,
+        "startChar": 2,
+        "endLine": 305,
+        "endChar": 6
+      },
+      "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d22cdcbc_742cf5d5",
         "filename": "ui/build/config.go",
         "patchSetId": 8
@@ -262,6 +520,24 @@
       "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d26fddc_9dca09bf",
+        "filename": "ui/build/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-04T23:49:00Z",
+      "side": 1,
+      "message": "Yes but as I said before, mm and mmm is going to be deprecated soon.",
+      "parentUuid": "d22cdcbc_742cf5d5",
+      "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -282,6 +558,24 @@
     },
     {
       "key": {
+        "uuid": "21b81bb8_ae4287c2",
+        "filename": "ui/build/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-04T23:49:00Z",
+      "side": 1,
+      "message": "I saw two return statements with \"\". I also thought that in the future, there might be additional processing after for loop. Since this is a simple function enough, I can replace it with \u0027return \"\"\u0027.",
+      "parentUuid": "0649284c_4d7c406e",
+      "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "beaa4309_25331d91",
         "filename": "ui/build/config.go",
         "patchSetId": 8
@@ -299,6 +593,24 @@
     },
     {
       "key": {
+        "uuid": "03581561_dfead532",
+        "filename": "ui/build/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-04T23:49:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "beaa4309_25331d91",
+      "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4346c097_13fdaeab",
         "filename": "ui/build/config.go",
         "patchSetId": 8
@@ -313,6 +625,24 @@
       "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c637de6_abf04346",
+        "filename": "ui/build/config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-04T23:49:00Z",
+      "side": 1,
+      "message": "Good point. I made the errors to be more specific.",
+      "parentUuid": "4346c097_13fdaeab",
+      "revId": "b2e62638a1a97dc2358cdf2ce48a031640207488",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
