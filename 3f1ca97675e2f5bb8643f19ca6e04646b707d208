@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ed694e3_7a5b31ce",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-06-04T12:57:27Z",
+      "side": 1,
+      "message": "This section ought to mention package modules, preferably with a small example.",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 12
+      },
+      "revId": "3f1ca97675e2f5bb8643f19ca6e04646b707d208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a2e7513_1949c7ac",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-06-04T12:57:27Z",
+      "side": 1,
+      "message": "What about inheriting the parent directory package default_visibility before falling back to this?\n\nWhat this feature gives over normal defaults inheritance is the guarantee that no modules are unintentionally missed. With a parent directory fallback that would extend to a whole directory tree, so we could e.g. put a default_visibility\u003d[\"//art:__subpackages__\"] in art/Android.bp and be assured it applies everywhere in art/ where there aren\u0027t other visibility properties.",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 45
+      },
+      "revId": "3f1ca97675e2f5bb8643f19ca6e04646b707d208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdb9ce01_a08c793b",
+        "filename": "android/package.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-06-04T12:57:27Z",
+      "side": 1,
+      "message": "Unfinished sentence?",
+      "revId": "3f1ca97675e2f5bb8643f19ca6e04646b707d208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a39d8bd5_b6ea02eb",
+        "filename": "android/package.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-06-04T12:57:27Z",
+      "side": 1,
+      "message": "Is all this business with the `duplicated` bool and the logic around it just to get a message that start with the package name? Isn\u0027t it overall simpler to just mention the package in the free text message instead? E.g:\n\nmodule \"\u003csome weird internal name\u003e\": Duplicate package modules in \"//top\"\n\nI think it\u0027d be good to avoid this property because it can cause uncertainty about whether duplicate packages actually are supported somehow.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 16
+      },
+      "revId": "3f1ca97675e2f5bb8643f19ca6e04646b707d208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25ba6d2d_9d2c19d7",
+        "filename": "android/package.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-06-04T12:57:27Z",
+      "side": 1,
+      "message": "Can this be done in visibilityRuleGatherer instead? That would contain the visibility code in visibility.go and its own mutators, and the mutators here would be less coupled.\n\nThen I think the package mutators could be registered earlier, which seems like a good thing if other mutators need to use the package modules.",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 70
+      },
+      "revId": "3f1ca97675e2f5bb8643f19ca6e04646b707d208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf940f1e_5f249378",
+        "filename": "android/visibility.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-06-04T12:57:27Z",
+      "side": 1,
+      "message": "Please change to Visibility().",
+      "range": {
+        "startLine": 280,
+        "startChar": 24,
+        "endLine": 280,
+        "endChar": 51
+      },
+      "revId": "3f1ca97675e2f5bb8643f19ca6e04646b707d208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
