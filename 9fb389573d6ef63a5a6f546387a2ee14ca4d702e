@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8131e652_30dd8e1f",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-06-04T10:59:52Z",
+      "side": 0,
+      "message": "Why is this error message no longer required?",
+      "revId": "9fb389573d6ef63a5a6f546387a2ee14ca4d702e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

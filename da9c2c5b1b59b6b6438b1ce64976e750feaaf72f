@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c80f590b_b7ba3bff",
+        "filename": "java/app_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-06-04T10:59:52Z",
+      "side": 1,
+      "message": "Why is switching from Srcs() to OutputFiles(\"\") the correct thing to do here?",
+      "revId": "da9c2c5b1b59b6b6438b1ce64976e750feaaf72f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f88e18cd_c74b4eba",
+        "filename": "java/app_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-06-04T10:59:52Z",
+      "side": 1,
+      "message": "Should this be OutputFiles not Srcs?",
+      "revId": "da9c2c5b1b59b6b6438b1ce64976e750feaaf72f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
