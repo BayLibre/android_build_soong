@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d35874d0_4e1c6192",
+        "filename": "cc/binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-05T17:16:51Z",
+      "side": 1,
+      "message": "You can allow symlink_preferred_arch inside target.android by putting `android:\"arch_variant\"` at the end of this line",
+      "revId": "e3bd34c77cc3fcff121db514426ad3500d5291b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
