@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97becb60_7f217745",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-05T17:53:54Z",
+      "side": 1,
+      "message": "This should depend on whether or not sdk_version is set.  If sdk_version is unset then it should continue to use libc++.",
+      "revId": "710756a6fff0b06871ded4e6dc8d1da45a2b1ca2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
