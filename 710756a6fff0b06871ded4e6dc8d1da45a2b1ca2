@@ -16,6 +16,24 @@
       "revId": "710756a6fff0b06871ded4e6dc8d1da45a2b1ca2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae04e13d_3bff996b",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-05T18:08:05Z",
+      "side": 1,
+      "message": "Right now, we don\u0027t allow empty sdk_version for this particular case. See the line 159 above. (Also, install_jni_libs_internal.mk where I replicated this behavior from.)",
+      "parentUuid": "97becb60_7f217745",
+      "revId": "710756a6fff0b06871ded4e6dc8d1da45a2b1ca2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
