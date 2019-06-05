@@ -699,7 +699,7 @@ type AndroidAppImport struct {
 
 type AndroidAppImportProperties struct {
 	// A prebuilt apk to import
-	Apk *string
+	Apk *string `android:"path,arch_variant"`
 
 	// Per-DPI settings. This property makes it possible to specify a different source apk path for
 	// each DPI.
@@ -908,7 +908,7 @@ func AndroidAppImportFactory() android.Module {
 	module.AddProperties(&module.dexpreoptProperties)
 	module.AddProperties(&module.usesLibrary.usesLibraryProperties)
 
-	InitJavaModule(module, android.DeviceSupported)
+	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibCommon)
 	android.InitSingleSourcePrebuiltModule(module, &module.properties, "Apk")
 
 	return module
@@ -942,7 +942,7 @@ func (u *usesLibrary) deps(ctx android.BottomUpMutatorContext, noFrameworkLibs b
 		// dexpreopt/dexpreopt.go needs the paths to the dex jars of these libraries in case construct_context.sh needs
 		// to pass them to dex2oat.  Add them as a dependency so we can determine the path to the dex jar of each
 		// library to dexpreopt.
-		ctx.AddVariationDependencies(nil, usesLibTag,
+		ctx.AddFarVariationDependencies(nil, usesLibTag,
 			"org.apache.http.legacy",
 			"android.hidl.base-V1.0-java",
 			"android.hidl.manager-V1.0-java")

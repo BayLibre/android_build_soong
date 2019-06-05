@@ -1183,6 +1183,78 @@ func TestAndroidAppImport_DpiVariants(t *testing.T) {
 	}
 }
 
+func TestAndroidAppImport_ArchVariants(t *testing.T) {
+	bp := `
+		android_app_import {
+			name: "foo",
+			apk: "prebuilts/apk/app.apk",
+			arch: {
+				arm: {
+					apk: "prebuilts/apk/app_arm.apk",
+				},
+				arm64: {
+					apk: "prebuilts/apk/app_arm64.apk",
+				},
+			},
+			certificate: "PRESIGNED",
+			dex_preopt: {
+				enabled: true,
+			},
+			target: {
+				android: {
+					compile_multilib: "first",
+				},
+			},
+		}
+		`
+	testCases := []struct {
+		name       string
+		targetArch android.Arch
+		expected   string
+	}{
+		{
+			name: "arm",
+			targetArch: android.Arch{
+				ArchType: android.Arm, ArchVariant: "armv7-a-neon", Native: true, Abi: []string{"armeabi-v7a"},
+			},
+			expected: "prebuilts/apk/app_arm.apk",
+		},
+		{
+			name: "arm64",
+			targetArch: android.Arch{
+				ArchType: android.Arm64, ArchVariant: "armv8-a", Native: true, Abi: []string{"arm64-v8a"},
+			},
+			expected: "prebuilts/apk/app_arm64.apk",
+		},
+		{
+			name: "no match",
+			targetArch: android.Arch{
+				ArchType: android.X86, ArchVariant: "silvermont", Native: true, Abi: []string{"armeabi-v7a"},
+			},
+			expected: "prebuilts/apk/app.apk",
+		},
+	}
+
+	jniRuleRe := regexp.MustCompile("^if \\(zipinfo (\\S+)")
+	for _, test := range testCases {
+		config := testConfig(nil)
+		config.Targets[android.Android][0].Arch = test.targetArch
+		ctx := testAppContext(config, bp, nil)
+
+		run(t, ctx, config)
+
+		variant := ctx.ModuleForTests("foo", config.Targets[android.Android][0].String())
+		jniRuleCommand := variant.Output("jnis-uncompressed/foo.apk").RuleParams.Command
+		matches := jniRuleRe.FindStringSubmatch(jniRuleCommand)
+		if len(matches) != 2 {
+			t.Errorf("failed to extract the src apk path from %q", jniRuleCommand)
+		}
+		if test.expected != matches[1] {
+			t.Errorf("wrong src apk, expected: %q got: %q", test.expected, matches[1])
+		}
+	}
+}
+
 func TestStl(t *testing.T) {
 	ctx := testJava(t, cc.GatherRequiredDepsForTest(android.Android)+`
 		cc_library {
