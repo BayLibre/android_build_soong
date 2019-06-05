@@ -1,0 +1,175 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "443a88fc_65d64aea",
+        "filename": "ui/build/config.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-05T18:00:51Z",
+      "side": 1,
+      "message": "If this is essentially the same as BUILD_MODULES_IN_A_DIRECTORY in the top dir, why don\u0027t we just do away with it?\n\nAlso, please do BUILD_ALL_MODULES BuildAction \u003d iota",
+      "revId": "872bee74f81b267789ed146821881ac908ca81c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f255554_6a6fc8e5",
+        "filename": "ui/build/config.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-05T18:00:51Z",
+      "side": 1,
+      "message": "removeFromList",
+      "range": {
+        "startLine": 287,
+        "startChar": 9,
+        "endLine": 287,
+        "endChar": 21
+      },
+      "revId": "872bee74f81b267789ed146821881ac908ca81c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "871515ca_fda00650",
+        "filename": "ui/build/config.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-05T18:00:51Z",
+      "side": 1,
+      "message": "I\u0027d like to discourage reusing an input parameter as a return value. You can name the return value configArgs?",
+      "revId": "872bee74f81b267789ed146821881ac908ca81c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8dda4b5_b57df5ce",
+        "filename": "ui/build/config.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-05T18:00:51Z",
+      "side": 1,
+      "message": "This is not related to the logic of this function and repeated below. Maybe you can just remove it?",
+      "range": {
+        "startLine": 366,
+        "startChar": 14,
+        "endLine": 366,
+        "endChar": 87
+      },
+      "revId": "872bee74f81b267789ed146821881ac908ca81c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20deba59_ca9c30c7",
+        "filename": "ui/build/config.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-05T18:00:51Z",
+      "side": 1,
+      "message": "Don\u0027t think this is accurate?",
+      "range": {
+        "startLine": 396,
+        "startChar": 28,
+        "endLine": 397,
+        "endChar": 30
+      },
+      "revId": "872bee74f81b267789ed146821881ac908ca81c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f6b6848_2e74bce3",
+        "filename": "ui/build/config.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-05T18:00:51Z",
+      "side": 1,
+      "message": "inList?",
+      "revId": "872bee74f81b267789ed146821881ac908ca81c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc3bc014_a171d4d5",
+        "filename": "ui/build/config_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-05T18:00:51Z",
+      "side": 1,
+      "message": "The property orders in this variable definition are very inconsistent.",
+      "revId": "872bee74f81b267789ed146821881ac908ca81c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35546e81_96378d4c",
+        "filename": "ui/build/config_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-05T18:00:51Z",
+      "side": 1,
+      "message": "This way, you\u0027re only testing if each causes an error, but not what kind of error it actually triggers. It\u0027s error-prone and makes it hard to understand what you\u0027re really trying to test. It\u0027s probably a sign that you\u0027ll want to split up the test case? The same applies to some of the test funcs below.",
+      "revId": "872bee74f81b267789ed146821881ac908ca81c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71d67462_45ffd5e5",
+        "filename": "ui/build/config_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-05T18:00:51Z",
+      "side": 1,
+      "message": "I find it difficult to understand the test cases here (and in other test funcs too), probably due to the order of test case struct properties. Normally, you want to follow this convention (or make it clear what each data piece does). test setup -\u003e action -\u003e verification\n\nNow if we look at this struct, the properties are somewhat mixed up between setup and action, and some of their names are very confusing because they describe what you do with them, not how readers should interpret them. For example, createDirs. One would probably think it holds the action you\u0027re testing accept and creates these, when it is essentially just a test setup. The same applies to createBuildFiles. Initially I was very confused because I thought you\u0027re testing if getTargetsFromDirs creates these build files or you need to supply these to the func and ask it to create them.",
+      "revId": "872bee74f81b267789ed146821881ac908ca81c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
