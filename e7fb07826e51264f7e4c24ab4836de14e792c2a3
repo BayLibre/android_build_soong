@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "589e1ab6_ebcc22a0",
+        "filename": "cc/vndk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-05T17:48:33Z",
+      "side": 1,
+      "message": "This seems generally useful, maybe put this in android/util.go as SortedStringKeys?",
+      "range": {
+        "startLine": 365,
+        "startChar": 5,
+        "endLine": 365,
+        "endChar": 15
+      },
+      "revId": "e7fb07826e51264f7e4c24ab4836de14e792c2a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0daf941d_b9044133",
+        "filename": "cc/vndk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-05T17:48:33Z",
+      "side": 1,
+      "message": "Minor optimization that may be useful if this ends up used more widely:\n\n    keys :\u003d reflect.ValueOf(m).MapKeys()\n    ret :\u003d make([]string, 0, len(keys))",
+      "revId": "e7fb07826e51264f7e4c24ab4836de14e792c2a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "374797d6_57b6b0e3",
+        "filename": "cc/vndk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-05T17:48:33Z",
+      "side": 1,
+      "message": "This is better documented as named return values:\n\n   func(m *Module) (interface vndkSnapshotLibraryInterface, libDir string, isVndkSnapshotLib bool)",
+      "revId": "e7fb07826e51264f7e4c24ab4836de14e792c2a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a671fa5_81ad781f",
+        "filename": "cc/vndk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-05T17:48:33Z",
+      "side": 1,
+      "message": "with the sortedKeys helper function this might as well be sortedKeys(modulePaths(ctx.Config())",
+      "range": {
+        "startLine": 652,
+        "startChar": 32,
+        "endLine": 652,
+        "endChar": 43
+      },
+      "revId": "e7fb07826e51264f7e4c24ab4836de14e792c2a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
