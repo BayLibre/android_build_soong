@@ -112,7 +112,11 @@ func (binary *binaryDecorator) getStem(ctx BaseModuleContext) string {
 		stem = String(binary.Properties.Stem)
 	}
 
-	return stem + String(binary.Properties.Suffix)
+	return stem
+}
+
+func (binary *binaryDecorator) getFileName(ctx BaseModuleContext) string {
+	return binary.getStem(ctx) + String(binary.Properties.Suffix)
 }
 
 func (binary *binaryDecorator) linkerDeps(ctx DepsContext, deps Deps) Deps {
@@ -301,7 +305,7 @@ func (binary *binaryDecorator) linkerFlags(ctx ModuleContext, flags Flags) Flags
 func (binary *binaryDecorator) link(ctx ModuleContext,
 	flags Flags, deps PathDeps, objs Objects) android.Path {
 
-	fileName := binary.getStem(ctx) + flags.Toolchain.ExecutableSuffix()
+	fileName := binary.getFileName(ctx) + flags.Toolchain.ExecutableSuffix()
 	outputFile := android.PathForModuleOut(ctx, fileName)
 	ret := outputFile
 
@@ -388,7 +392,7 @@ func (binary *binaryDecorator) link(ctx ModuleContext,
 
 	objs.coverageFiles = append(objs.coverageFiles, deps.StaticLibObjs.coverageFiles...)
 	objs.coverageFiles = append(objs.coverageFiles, deps.WholeStaticLibObjs.coverageFiles...)
-	binary.coverageOutputFile = TransformCoverageFilesToLib(ctx, objs, builderFlags, binary.getStem(ctx))
+	binary.coverageOutputFile = TransformCoverageFilesToLib(ctx, objs, builderFlags, binary.getFileName(ctx))
 
 	// Need to determine symlinks early since some targets (ie APEX) need this
 	// information but will not call 'install'
@@ -398,11 +402,11 @@ func (binary *binaryDecorator) link(ctx ModuleContext,
 	}
 
 	if Bool(binary.Properties.Symlink_preferred_arch) {
-		if String(binary.Properties.Stem) == "" && String(binary.Properties.Suffix) == "" {
-			ctx.PropertyErrorf("symlink_preferred_arch", "must also specify stem or suffix")
+		if String(binary.Properties.Suffix) == "" {
+			ctx.PropertyErrorf("symlink_preferred_arch", "must also specify suffix")
 		}
 		if ctx.TargetPrimary() {
-			binary.symlinks = append(binary.symlinks, ctx.baseModuleName())
+			binary.symlinks = append(binary.symlinks, binary.getStem(ctx))
 		}
 	}
 
