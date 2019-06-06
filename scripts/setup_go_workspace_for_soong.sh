@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 # Copyright 2019 Google Inc. All rights reserved.
 #
@@ -18,53 +17,9 @@ set -e
 # Mounts the components of soong into a directory structure that Go tools
 # and editors expect.
 
+set -e
 
-#####################################################################
-# Print the message to stderr with the prefix ERROR and abort this
-# script.
-#####################################################################
-function log_FATAL() {
-  echo "ERROR:" "$*" >&2
-  exit 1
-}
-
-#####################################################################
-# Print the message to stderr with the prefix WARN
-#####################################################################
-function log_WARN() {
-  echo "WARN:" "$*" >&2
-}
-
-
-#####################################################################
-# Print the message with the prefix INFO.
-#####################################################################
-function log_INFO() {
-  echo "INFO:" "$*"
-}
-
-
-#####################################################################
-# Find the root project directory of this repo. This is done by
-# finding the directory of where this script lives and then go up one
-# directory to check the ".repo" directory exist. If not, keep going
-# up until we find the ".repo" file or we reached to the filesystem
-# root. Project root directory is printed to stdout.
-#####################################################################
-function root_dir() (
-  local dir
-  if ! dir="$("${readlink}" -e $(dirname "$0"))"; then
-    log_FATAL "failed to read the script's current directory."
-  fi
-
-  dir=${dir}/../../..
-  if ! dir="$("${readlink}" -e "${dir}")"; then
-    log_FATAL "Cannot find the root project directory"
-  fi
-
-  echo "${dir}"
-)
-
+source "$(cd "$(dirname $0)" ; pwd -P)/common.sh"
 
 #####################################################################
 # executes a shell command by printing out to the screen first and
@@ -147,7 +102,7 @@ function bind_all() (
   done
 
   echo
-  log_INFO "Created GOPATH-compatible directory structure at ${OUTPUT_PATH}."
+  common::log_INFO "Created GOPATH-compatible directory structure at ${OUTPUT_PATH}."
 )
 
 
@@ -165,7 +120,7 @@ function unbind_all() (
 
     # continue to unmount even one of them fails
     if ! "${unbind_dir}" "${dst_dir}"; then
-      log_WARN "Failed to umount ${dst_dir}."
+      common::log_WARN "Failed to umount ${dst_dir}."
       exit_code=1
     fi
   done
@@ -175,7 +130,7 @@ function unbind_all() (
   fi
 
   echo
-  log_INFO "Unmounted the GOPATH-compatible directory structure at ${OUTPUT_PATH}."
+  common::log_INFO "Unmounted the GOPATH-compatible directory structure at ${OUTPUT_PATH}."
 )
 
 
@@ -193,7 +148,7 @@ function confirm() (
       if [ "${decision}" == "n" ]; then
         return 1
       else
-        log_WARN "Invalid choice ${decision}; choose either 'y' or 'n'"
+        common::log_WARN "Invalid choice ${decision}; choose either 'y' or 'n'"
       fi
     fi
   done
@@ -243,7 +198,7 @@ function parse_arguments() {
             exit 0
             ;;
           *)
-            log_WARN "Unknown option: $1"
+            common::log_WARN "Unknown option: $1"
             help
             exit 1
             ;;
@@ -263,7 +218,7 @@ function parse_arguments() {
 function check_exec_existence() (
   function check() {
     if ! hash "$1" &>/dev/null; then
-      log_FATAL "missing $1"
+      common::log_FATAL "missing $1"
     fi
   }
 
@@ -276,7 +231,7 @@ function check_exec_existence() (
       bins=("bindfs" "fusermount")
       ;;
     *)
-      log_FATAL "${os_type} is not a recognized system."
+      common::log_FATAL "${os_type} is not a recognized system."
   esac
 
   for bin in "${bins[@]}"; do
@@ -304,38 +259,34 @@ function main() {
   fi
 }
 
-readonly os_type="$(uname -s)"
 case "${os_type}" in
   Darwin)
     bind_dir=darwin_bind_dir
     unbind_dir=darwin_unbind_dir
-    readlink=greadlink
     ;;
   Linux)
     bind_dir=linux_bind_dir
     unbind_dir=linux_unbind_dir
-    readlink=readlink
     ;;
     *)
-    log_FATAL "${os_type} is not a recognized system."
+    common::log_FATAL "${os_type} is not a recognized system."
 esac
 readonly bind_dir
 readonly unbind_dir
-readonly readlink
 
 
-if ! ANDROID_PATH="$(root_dir)"; then
-  log_FATAL "failed to find the root of the repo checkout"
+if ! ANDROID_PATH="$(common::root_dir)"; then
+  common:log_FATAL "failed to find the root of the repo checkout"
 fi
 readonly ANDROID_PATH
 
 #if GOPATH contains multiple paths, use the first one
 if ! OUTPUT_PATH="$(echo ${GOPATH} | sed 's/\:.*//')"; then
-  log_FATAL "failed to extract the first GOPATH environment variable"
+  common::log_FATAL "failed to extract the first GOPATH environment variable"
 fi
 readonly OUTPUT_PATH
 if [ -z "${OUTPUT_PATH}" ]; then
-  log_FATAL "Could not determine the desired location at which to create a" \
+  common::log_FATAL "Could not determine the desired location at which to create a" \
             "Go-compatible workspace. Please update GOPATH to specify the" \
             "desired destination directory."
 fi
