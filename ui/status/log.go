@@ -15,11 +15,16 @@
 package status
 
 import (
-	"android/soong/ui/logger"
 	"compress/gzip"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"strings"
+
+	"android/soong/ui/logger"
+	"android/soong/ui/status/build_status_proto"
+
+	"github.com/golang/protobuf/proto"
 )
 
 type verboseLog struct {
@@ -71,13 +76,20 @@ func (v *verboseLog) Message(level MsgLevel, message string) {
 	fmt.Fprintf(v.w, "%s%s\n", level.Prefix(), message)
 }
 
-type errorLog struct {
-	w io.WriteCloser
+type buildStatus struct {
+	build_status_proto.BuildStatus
 
-	empty bool
+	filename string
 }
 
-func NewErrorLog(log logger.Logger, filename string) StatusOutput {
+type errorLog struct {
+	w              io.WriteCloser
+	buildRunStatus buildStatus
+	log            logger.Logger
+	empty          bool
+}
+
+func NewErrorLog(log logger.Logger, filename string, protoFilename string) StatusOutput {
 	f, err := logger.CreateFileWithRotation(filename, 5)
 	if err != nil {
 		log.Println("Failed to create error log file:", err)
@@ -86,20 +98,20 @@ func NewErrorLog(log logger.Logger, filename string) StatusOutput {
 
 	return &errorLog{
 		w:     f,
+		log:   log,
 		empty: true,
+		buildRunStatus: buildStatus{
+			filename: protoFilename,
+		},
 	}
 }
 
 func (e *errorLog) StartAction(action *Action, counts Counts) {}
 
 func (e *errorLog) FinishAction(result ActionResult, counts Counts) {
+	e.buildRunStatus.add(result)
 	if result.Error == nil {
 		return
-	}
-
-	cmd := result.Command
-	if cmd == "" {
-		cmd = result.Description
 	}
 
 	if !e.empty {
@@ -108,9 +120,11 @@ func (e *errorLog) FinishAction(result ActionResult, counts Counts) {
 	e.empty = false
 
 	fmt.Fprintf(e.w, "FAILED: %s\n", result.Description)
+
 	if len(result.Outputs) > 0 {
 		fmt.Fprintf(e.w, "Outputs: %s\n", strings.Join(result.Outputs, " "))
 	}
+
 	fmt.Fprintf(e.w, "Error: %s\n", result.Error)
 	if result.Command != "" {
 		fmt.Fprintf(e.w, "Command: %s\n", result.Command)
@@ -119,6 +133,8 @@ func (e *errorLog) FinishAction(result ActionResult, counts Counts) {
 }
 
 func (e *errorLog) Flush() {
+	e.buildRunStatus.setBuildResult()
+	e.buildRunStatus.dump(e.log)
 	e.w.Close()
 }
 
@@ -133,4 +149,37 @@ func (e *errorLog) Message(level MsgLevel, message string) {
 	e.empty = false
 
 	fmt.Fprintf(e.w, "error: %s\n", message)
+	e.buildRunStatus.ErrorMessages = append(e.buildRunStatus.ErrorMessages, message)
+}
+
+func (b *buildStatus) add(result ActionResult) {
+	if result.Error == nil {
+		return
+	}
+	bae := &build_status_proto.BuildActionError{}
+	bae.Error = proto.String(result.Error.Error())
+	bae.Description = proto.String(result.Description)
+	bae.Command = proto.String(result.Command)
+	bae.Output = proto.String(strings.Join(append(result.Outputs, result.Output), " "))
+	b.BuildStatus.ActionErrors = append(b.BuildStatus.ActionErrors, bae)
+}
+
+func (b *buildStatus) setBuildResult() {
+	if len(b.ActionErrors) == 0 {
+		b.Result = build_status_proto.BuildStatus_PASSED.Enum()
+	} else {
+		b.Result = build_status_proto.BuildStatus_FAILED.Enum()
+	}
+}
+
+func (b *buildStatus) dump(log logger.Logger) {
+	data, err := proto.Marshal(&b.BuildStatus)
+	if err != nil {
+		log.Println("Failed to marshal build status proto: %v", err)
+		return
+	}
+	err = ioutil.WriteFile(b.filename, []byte(data), 0644)
+	if err != nil {
+		log.Println("Failed to write file %s: %v", b.filename, err)
+	}
 }

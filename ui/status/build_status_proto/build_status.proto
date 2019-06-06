@@ -1,0 +1,50 @@
+// Copyright 2019 Google Inc. All Rights Reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//   http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto2";
+
+option optimize_for = LITE_RUNTIME;
+
+package build_status;
+option go_package = "build_status_proto";
+
+message BuildStatus {
+  enum RESULT {
+    PASSED = 0;
+    FAILED = 1;
+  }
+
+  // The overall build result.
+  optional RESULT result = 1;
+
+  // List of error messages of the overall build.
+  repeated string error_messages = 2;
+
+  // List of build action errors.
+  repeated BuildActionError action_errors = 3;
+}
+
+message BuildActionError {
+  // Description of the error.
+  optional string description = 1;
+
+  // The build command that raised the error.
+  optional string command = 2;
+
+  // Any additional output from the executed command.
+  optional string output = 3;
+
+  // The error string that failed the build.
+  optional string error = 4;
+}
