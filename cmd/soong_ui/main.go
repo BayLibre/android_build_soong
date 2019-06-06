@@ -157,7 +157,7 @@ func main() {
 	log.SetOutput(filepath.Join(logsDir, "soong.log"))
 	trace.SetOutput(filepath.Join(logsDir, "build.trace"))
 	stat.AddOutput(status.NewVerboseLog(log, filepath.Join(logsDir, "verbose.log")))
-	stat.AddOutput(status.NewErrorLog(log, filepath.Join(logsDir, "error.log")))
+	stat.AddOutput(status.NewErrorLog(log, filepath.Join(logsDir, "error.log"), filepath.Join(logsDir, "build_result")))
 
 	defer met.Dump(filepath.Join(logsDir, "build_metrics"))
 
