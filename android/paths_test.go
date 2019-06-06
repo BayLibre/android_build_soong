@@ -758,6 +758,14 @@ func (p *pathForModuleSrcTestModule) GenerateAndroidBuildActions(ctx ModuleConte
 	if !p.props.Module_handles_missing_deps {
 		p.missingDeps = ctx.GetMissingDependencies()
 	}
+
+	// Create a build statement that can be replaced with a ninjaError if there are missing dependencies.  This is
+	// required to trigger a call to ModuleContext.GetMissingDependencies, which is necessary to notify Blueprint
+	// that the primary builder is handling missing dependencies and PrepareBuildActions should not return an error.
+	ctx.Build(pctx, BuildParams{
+		Rule:   Touch,
+		Output: PathForModuleOut(ctx, "output"),
+	})
 }
 
 type pathForModuleSrcOutputFileProviderModule struct {

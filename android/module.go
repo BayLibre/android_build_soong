@@ -109,6 +109,8 @@ type BaseModuleContext interface {
 	Fs() pathtools.FileSystem
 	AddNinjaFileDeps(deps ...string)
 
+	AddMissingDependencies(missingDeps []string)
+
 	Target() Target
 	TargetPrimary() bool
 	MultiTargets() []Target
@@ -150,8 +152,6 @@ type ModuleContext interface {
 	InstallSymlink(installPath OutputPath, name string, srcPath OutputPath) OutputPath
 	InstallAbsoluteSymlink(installPath OutputPath, name string, absPath string) OutputPath
 	CheckbuildFile(srcPath Path)
-
-	AddMissingDependencies(deps []string)
 
 	InstallInData() bool
 	InstallInSanitizerDir() bool
@@ -344,6 +344,8 @@ type commonProperties struct {
 	SkipInstall bool `blueprint:"mutated"`
 
 	NamespaceExportedToMake bool `blueprint:"mutated"`
+
+	MissingDeps []string `blueprint:"mutated"`
 }
 
 type hostAndDeviceProperties struct {
@@ -847,7 +849,6 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 		baseModuleContext: m.baseModuleContextFactory(blueprintCtx),
 		installDeps:       m.computeInstallDeps(blueprintCtx),
 		installFiles:      m.installFiles,
-		missingDeps:       blueprintCtx.GetMissingDependencies(),
 		variables:         make(map[string]string),
 	}
 
@@ -949,7 +950,6 @@ type moduleContext struct {
 	installDeps     Paths
 	installFiles    Paths
 	checkbuildFiles Paths
-	missingDeps     []string
 	module          Module
 
 	// For tests
@@ -1046,18 +1046,14 @@ func (m *moduleContext) Build(pctx PackageContext, params BuildParams) {
 		bparams.Description = "${moduleDesc}" + params.Description + "${moduleDescSuffix}"
 	}
 
-	if m.missingDeps != nil {
+	if missingDeps := m.GetMissingDependencies(); len(missingDeps) > 0 {
 		m.ninjaError(bparams.Description, bparams.Outputs,
 			fmt.Errorf("module %s missing dependencies: %s\n",
-				m.ModuleName(), strings.Join(m.missingDeps, ", ")))
+				m.ModuleName(), strings.Join(missingDeps, ", ")))
 		return
 	}
 
 	m.bp.Build(pctx.PackageContext, bparams)
-}
-
-func (m *moduleContext) Module() Module {
-	return m.baseModuleContext.Module()
 }
 
 func (b *baseModuleContext) Module() Module {
@@ -1070,13 +1066,18 @@ func (b *baseModuleContext) Config() Config {
 }
 
 func (m *moduleContext) GetMissingDependencies() []string {
-	return m.missingDeps
+	var missingDeps []string
+	missingDeps = append(missingDeps, m.Module().base().commonProperties.MissingDeps...)
+	missingDeps = append(missingDeps, m.bp.GetMissingDependencies()...)
+	missingDeps = FirstUniqueStrings(missingDeps)
+	return missingDeps
 }
 
-func (m *moduleContext) AddMissingDependencies(deps []string) {
+func (b *baseModuleContext) AddMissingDependencies(deps []string) {
 	if deps != nil {
-		m.missingDeps = append(m.missingDeps, deps...)
-		m.missingDeps = FirstUniqueStrings(m.missingDeps)
+		missingDeps := &b.Module().base().commonProperties.MissingDeps
+		*missingDeps = append(*missingDeps, deps...)
+		*missingDeps = FirstUniqueStrings(*missingDeps)
 	}
 }
 
