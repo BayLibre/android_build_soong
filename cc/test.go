@@ -64,6 +64,10 @@ type TestBinaryProperties struct {
 
 	// Test options.
 	Test_options TestOptions
+
+	// Add RootTargetPreparer to auto generated test config. This guarantees the test to run
+	// with root permission.
+	Require_root *bool
 }
 
 func init() {
@@ -284,7 +288,7 @@ func (test *testBinary) install(ctx ModuleContext, file android.Path) {
 
 	test.testConfig = tradefed.AutoGenNativeTestConfig(ctx, test.Properties.Test_config,
 		test.Properties.Test_config_template,
-		test.Properties.Test_suites, optionsMap)
+		test.Properties.Test_suites, optionsMap, Bool(test.Properties.Require_root))
 
 	test.binaryDecorator.baseInstaller.dir = "nativetest"
 	test.binaryDecorator.baseInstaller.dir64 = "nativetest64"
@@ -371,6 +375,10 @@ type BenchmarkProperties struct {
 	// the name of the test configuration template (for example "AndroidTestTemplate.xml") that
 	// should be installed with the module.
 	Test_config_template *string `android:"path,arch_variant"`
+
+	// Add RootTargetPreparer to auto generated test config. This guarantees the test to run
+	// with root permission.
+	Require_root *bool
 }
 
 type benchmarkDecorator struct {
@@ -404,7 +412,7 @@ func (benchmark *benchmarkDecorator) linkerDeps(ctx DepsContext, deps Deps) Deps
 func (benchmark *benchmarkDecorator) install(ctx ModuleContext, file android.Path) {
 	benchmark.data = android.PathsForModuleSrc(ctx, benchmark.Properties.Data)
 	benchmark.testConfig = tradefed.AutoGenNativeBenchmarkTestConfig(ctx, benchmark.Properties.Test_config,
-		benchmark.Properties.Test_config_template, benchmark.Properties.Test_suites)
+		benchmark.Properties.Test_config_template, benchmark.Properties.Test_suites, Bool(benchmark.Properties.Require_root))
 
 	benchmark.binaryDecorator.baseInstaller.dir = filepath.Join("benchmarktest", ctx.ModuleName())
 	benchmark.binaryDecorator.baseInstaller.dir64 = filepath.Join("benchmarktest64", ctx.ModuleName())
