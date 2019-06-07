@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "187ab0e4_25f592d0",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-06-07T19:41:22Z",
+      "side": 1,
+      "message": "Is this really needed? We should be providing stable inputs to this rule anyway",
+      "range": {
+        "startLine": 221,
+        "startChar": 45,
+        "endLine": 221,
+        "endChar": 52
+      },
+      "revId": "8b5d04f271166c6a9117633f38d8655e399187d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd76019a_6f68ad14",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-06-07T19:41:22Z",
+      "side": 1,
+      "message": "This should be configured with -C so that we don\u0027t get absolute paths names here",
+      "range": {
+        "startLine": 221,
+        "startChar": 94,
+        "endLine": 221,
+        "endChar": 96
+      },
+      "revId": "8b5d04f271166c6a9117633f38d8655e399187d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
