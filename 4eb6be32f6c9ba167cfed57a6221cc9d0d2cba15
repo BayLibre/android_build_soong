@@ -22,6 +22,30 @@
       "revId": "4eb6be32f6c9ba167cfed57a6221cc9d0d2cba15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0f9066b_eb74693f",
+        "filename": "java/system_modules.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1203210
+      },
+      "writtenOn": "2019-06-07T11:38:56Z",
+      "side": 1,
+      "message": "\"here\" \u003d \"on Android\", yes. I already said \"on Android\" explicitly on the previous line so I hoped that was clear enough...",
+      "parentUuid": "70bd32a8_5082c8bc",
+      "range": {
+        "startLine": 48,
+        "startChar": 70,
+        "endLine": 48,
+        "endChar": 74
+      },
+      "revId": "4eb6be32f6c9ba167cfed57a6221cc9d0d2cba15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
