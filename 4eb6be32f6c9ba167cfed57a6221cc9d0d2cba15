@@ -46,6 +46,30 @@
       "revId": "4eb6be32f6c9ba167cfed57a6221cc9d0d2cba15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ad5f4e2_3815874e",
+        "filename": "java/system_modules.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2019-06-07T11:43:06Z",
+      "side": 1,
+      "message": "Yes, I saw that. Mostly but not entirely clear IMO. Anyway, doesn\u0027t matter enough to be worth going through another round of +2 review. Don\u0027t mind me.",
+      "parentUuid": "b0f9066b_eb74693f",
+      "range": {
+        "startLine": 48,
+        "startChar": 70,
+        "endLine": 48,
+        "endChar": 74
+      },
+      "revId": "4eb6be32f6c9ba167cfed57a6221cc9d0d2cba15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
