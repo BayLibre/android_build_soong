@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "430be147_5646b75e",
+        "filename": "android/mutator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-07T17:04:30Z",
+      "side": 1,
+      "message": "overridden",
+      "range": {
+        "startLine": 225,
+        "startChar": 10,
+        "endLine": 225,
+        "endChar": 19
+      },
+      "revId": "892eda7b7e11c15b45b6ffda2d23aaee5f586b7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
