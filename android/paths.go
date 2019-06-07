@@ -221,7 +221,7 @@ func ExistentPathsForSources(ctx PathContext, paths []string) Paths {
 // `android:"path"` so that dependencies on SourceFileProducer modules will have already been handled by the
 // path_properties mutator.  If ctx.Config().AllowMissingDependencies() is true then any missing SourceFileProducer or
 // OutputFileProducer dependencies will cause the module to be marked as having missing dependencies.
-func PathsForModuleSrc(ctx ModuleContext, paths []string) Paths {
+func PathsForModuleSrc(ctx BaseModuleContext, paths []string) Paths {
 	return PathsForModuleSrcExcludes(ctx, paths, nil)
 }
 
@@ -232,7 +232,7 @@ func PathsForModuleSrc(ctx ModuleContext, paths []string) Paths {
 // will have already been handled by the path_properties mutator.  If ctx.Config().AllowMissingDependencies() is
 // truethen any missing SourceFileProducer or OutputFileProducer dependencies will cause the module to be marked as
 // having missing dependencies.
-func PathsForModuleSrcExcludes(ctx ModuleContext, paths, excludes []string) Paths {
+func PathsForModuleSrcExcludes(ctx BaseModuleContext, paths, excludes []string) Paths {
 	ret, missingDeps := PathsAndMissingDepsForModuleSrcExcludes(ctx, paths, excludes)
 	if ctx.Config().AllowMissingDependencies() {
 		ctx.AddMissingDependencies(missingDeps)
@@ -252,7 +252,7 @@ func PathsForModuleSrcExcludes(ctx ModuleContext, paths, excludes []string) Path
 // path_properties mutator.  If ctx.Config().AllowMissingDependencies() is true then any missing SourceFileProducer or
 // OutputFileProducer dependencies will be returned, and they will NOT cause the module to be marked as having missing
 // dependencies.
-func PathsAndMissingDepsForModuleSrcExcludes(ctx ModuleContext, paths, excludes []string) (Paths, []string) {
+func PathsAndMissingDepsForModuleSrcExcludes(ctx BaseModuleContext, paths, excludes []string) (Paths, []string) {
 	prefix := pathForModuleSrc(ctx).String()
 
 	var expandedExcludes []string
@@ -315,7 +315,7 @@ func (e missingDependencyError) Error() string {
 	return "missing dependencies: " + strings.Join(e.missingDeps, ", ")
 }
 
-func expandOneSrcPath(ctx ModuleContext, s string, expandedExcludes []string) (Paths, error) {
+func expandOneSrcPath(ctx BaseModuleContext, s string, expandedExcludes []string) (Paths, error) {
 	if m, t := SrcIsModuleWithTag(s); m != "" {
 		module := ctx.GetDirectDepWithTag(m, sourceOrOutputDepTag(t))
 		if module == nil {
@@ -367,7 +367,7 @@ func expandOneSrcPath(ctx ModuleContext, s string, expandedExcludes []string) (P
 // each string. If incDirs is false, strip paths with a trailing '/' from the list.
 // It intended for use in globs that only list files that exist, so it allows '$' in
 // filenames.
-func pathsForModuleSrcFromFullPath(ctx ModuleContext, paths []string, incDirs bool) Paths {
+func pathsForModuleSrcFromFullPath(ctx BaseModuleContext, paths []string, incDirs bool) Paths {
 	prefix := filepath.Join(ctx.Config().srcDir, ctx.ModuleDir()) + "/"
 	if prefix == "./" {
 		prefix = ""
@@ -398,7 +398,7 @@ func pathsForModuleSrcFromFullPath(ctx ModuleContext, paths []string, incDirs bo
 
 // PathsWithOptionalDefaultForModuleSrc returns Paths rooted from the module's
 // local source directory. If input is nil, use the default if it exists.  If input is empty, returns nil.
-func PathsWithOptionalDefaultForModuleSrc(ctx ModuleContext, input []string, def string) Paths {
+func PathsWithOptionalDefaultForModuleSrc(ctx BaseModuleContext, input []string, def string) Paths {
 	if input != nil {
 		return PathsForModuleSrc(ctx, input)
 	}
@@ -698,7 +698,7 @@ func PathForSource(ctx PathContext, pathComponents ...string) SourcePath {
 		reportPathErrorf(ctx, "path may not contain a glob: %s", path.String())
 	}
 
-	if modCtx, ok := ctx.(ModuleContext); ok && ctx.Config().AllowMissingDependencies() {
+	if modCtx, ok := ctx.(BaseModuleContext); ok && ctx.Config().AllowMissingDependencies() {
 		exists, err := existsWithDependencies(ctx, path)
 		if err != nil {
 			reportPathError(ctx, err)
@@ -765,7 +765,7 @@ func (p SourcePath) join(ctx PathContext, paths ...string) SourcePath {
 
 // OverlayPath returns the overlay for `path' if it exists. This assumes that the
 // SourcePath is the path to a resource overlay directory.
-func (p SourcePath) OverlayPath(ctx ModuleContext, path Path) OptionalPath {
+func (p SourcePath) OverlayPath(ctx BaseModuleContext, path Path) OptionalPath {
 	var relDir string
 	if srcPath, ok := path.(SourcePath); ok {
 		relDir = srcPath.path
@@ -885,7 +885,7 @@ var _ resPathProvider = SourcePath{}
 
 // PathForModuleSrc returns a Path representing the paths... under the
 // module's local source directory.
-func PathForModuleSrc(ctx ModuleContext, pathComponents ...string) Path {
+func PathForModuleSrc(ctx BaseModuleContext, pathComponents ...string) Path {
 	p, err := validatePath(pathComponents...)
 	if err != nil {
 		reportPathError(ctx, err)
@@ -911,7 +911,7 @@ func PathForModuleSrc(ctx ModuleContext, pathComponents ...string) Path {
 	return paths[0]
 }
 
-func pathForModuleSrc(ctx ModuleContext, paths ...string) SourcePath {
+func pathForModuleSrc(ctx BaseModuleContext, paths ...string) SourcePath {
 	p, err := validatePath(paths...)
 	if err != nil {
 		reportPathError(ctx, err)
@@ -930,7 +930,7 @@ func pathForModuleSrc(ctx ModuleContext, paths ...string) SourcePath {
 // PathsWithModuleSrcSubDir takes a list of Paths and returns a new list of Paths where Rel() on each path
 // will return the path relative to subDir in the module's source directory.  If any input paths are not located
 // inside subDir then a path error will be reported.
-func PathsWithModuleSrcSubDir(ctx ModuleContext, paths Paths, subDir string) Paths {
+func PathsWithModuleSrcSubDir(ctx BaseModuleContext, paths Paths, subDir string) Paths {
 	paths = append(Paths(nil), paths...)
 	subDirFullPath := pathForModuleSrc(ctx, subDir)
 	for i, path := range paths {
@@ -942,7 +942,7 @@ func PathsWithModuleSrcSubDir(ctx ModuleContext, paths Paths, subDir string) Pat
 
 // PathWithModuleSrcSubDir takes a Path and returns a Path where Rel() will return the path relative to subDir in the
 // module's source directory.  If the input path is not located inside subDir then a path error will be reported.
-func PathWithModuleSrcSubDir(ctx ModuleContext, path Path, subDir string) Path {
+func PathWithModuleSrcSubDir(ctx BaseModuleContext, path Path, subDir string) Path {
 	subDirFullPath := pathForModuleSrc(ctx, subDir)
 	rel := Rel(ctx, subDirFullPath.String(), path.String())
 	return subDirFullPath.Join(ctx, rel)
@@ -950,7 +950,7 @@ func PathWithModuleSrcSubDir(ctx ModuleContext, path Path, subDir string) Path {
 
 // OptionalPathForModuleSrc returns an OptionalPath. The OptionalPath contains a
 // valid path if p is non-nil.
-func OptionalPathForModuleSrc(ctx ModuleContext, p *string) OptionalPath {
+func OptionalPathForModuleSrc(ctx BaseModuleContext, p *string) OptionalPath {
 	if p == nil {
 		return OptionalPath{}
 	}
@@ -983,7 +983,7 @@ func pathForModule(ctx ModuleContext) OutputPath {
 
 // PathForVndkRefAbiDump returns an OptionalPath representing the path of the
 // reference abi dump for the given module. This is not guaranteed to be valid.
-func PathForVndkRefAbiDump(ctx ModuleContext, version, fileName string,
+func PathForVndkRefAbiDump(ctx BaseModuleContext, version, fileName string,
 	isLlndkOrNdk, isVndk, isGzip bool) OptionalPath {
 
 	arches := ctx.DeviceConfig().Arches()
