@@ -958,12 +958,13 @@ type moduleContext struct {
 	variables   map[string]string
 }
 
-func (m *moduleContext) ninjaError(desc string, outputs []string, err error) {
+func (m *moduleContext) ninjaError(desc string, outputs, implicitOutputs []string, err error) {
 	m.bp.Build(pctx.PackageContext, blueprint.BuildParams{
-		Rule:        ErrorRule,
-		Description: desc,
-		Outputs:     outputs,
-		Optional:    true,
+		Rule:            ErrorRule,
+		Description:     desc,
+		Outputs:         outputs,
+		ImplicitOutputs: implicitOutputs,
+		Optional:        true,
 		Args: map[string]string{
 			"error": err.Error(),
 		},
@@ -1047,7 +1048,7 @@ func (m *moduleContext) Build(pctx PackageContext, params BuildParams) {
 	}
 
 	if missingDeps := m.GetMissingDependencies(); len(missingDeps) > 0 {
-		m.ninjaError(bparams.Description, bparams.Outputs,
+		m.ninjaError(bparams.Description, bparams.Outputs, bparams.ImplicitOutputs,
 			fmt.Errorf("module %s missing dependencies: %s\n",
 				m.ModuleName(), strings.Join(missingDeps, ", ")))
 		return
