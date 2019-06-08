@@ -876,8 +876,8 @@ func (library *libraryDecorator) link(ctx ModuleContext,
 		internalFlags := []string{
 			"-I" + android.PathForModuleGen(ctx, "sysprop", "include").String(),
 		}
-		systemFlags := []string{
-			"-I" + android.PathForModuleGen(ctx, "sysprop/system", "include").String(),
+		publicFlags := []string{
+			"-I" + android.PathForModuleGen(ctx, "sysprop/public", "include").String(),
 		}
 
 		flags := internalFlags
@@ -887,16 +887,17 @@ func (library *libraryDecorator) link(ctx ModuleContext,
 			isVendor := ctx.useVndk()
 			isOwnerPlatform := Bool(library.Properties.Sysprop.Platform)
 
-			useSystem := isProduct || (isOwnerPlatform == isVendor)
+			usePublic := isProduct || (isOwnerPlatform == isVendor)
 
-			if useSystem {
-				flags = systemFlags
+			if usePublic {
+				flags = publicFlags
 			}
 		}
 
 		library.reexportFlags(flags)
-		library.reexportDeps(library.baseCompiler.pathDeps)
 		library.reuseExportedFlags = append(library.reuseExportedFlags, flags...)
+		library.reexportDeps(library.baseCompiler.pathDeps)
+		library.reuseExportedDeps = append(library.reuseExportedDeps, library.baseCompiler.pathDeps...)
 	}
 
 	if library.buildStubs() {
