@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "323228ff_b08fcd1c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-06-09T11:20:01Z",
+      "side": 1,
+      "message": "This description doesn\u0027t seem to match with the actual change, which rather seems to be renaming system to public. Could you elaborate?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 77
+      },
+      "revId": "84c9d389ba7785e6ead5bc7bb1b4619cef147b65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
