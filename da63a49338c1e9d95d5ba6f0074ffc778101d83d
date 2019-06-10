@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a281a13_b3765993",
+        "filename": "cc/gen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-10T17:32:33Z",
+      "side": 1,
+      "message": "If these should only be used in sysprop_library, maybe remove this function and have sysprop_library emit a genrule?",
+      "revId": "da63a49338c1e9d95d5ba6f0074ffc778101d83d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
