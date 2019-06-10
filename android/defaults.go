@@ -64,12 +64,16 @@ func InitDefaultableModule(module DefaultableModule) {
 type DefaultsModuleBase struct {
 	DefaultableModuleBase
 	defaultProperties []interface{}
+
+	missingDeps []string
 }
 
 type Defaults interface {
 	Defaultable
 	isDefaults() bool
 	properties() []interface{}
+	getMissingDependencies() []string
+	addMissingDependency(string)
 }
 
 func (d *DefaultsModuleBase) isDefaults() bool {
@@ -81,6 +85,20 @@ func (d *DefaultsModuleBase) properties() []interface{} {
 }
 
 func (d *DefaultsModuleBase) GenerateAndroidBuildActions(ctx ModuleContext) {
+	// Call ctx.GetMissingDependencies() so that blueprint doesn't report an error on this module if it has missing
+	// dependencies when AllowMissingDependencies() == true, they have already been handled by propagating them to
+	// the module that depends on this one.
+	if ctx.Config().AllowMissingDependencies() {
+		ctx.GetMissingDependencies()
+	}
+}
+
+func (d *DefaultsModuleBase) getMissingDependencies() []string {
+	return d.missingDeps
+}
+
+func (d *DefaultsModuleBase) addMissingDependency(missingDep string) {
+	d.missingDeps = append(d.missingDeps, missingDep)
 }
 
 func InitDefaultsModule(module DefaultableModule) {
@@ -126,8 +144,24 @@ func RegisterDefaultsPreArchMutators(ctx RegisterMutatorsContext) {
 }
 
 func defaultsDepsMutator(ctx BottomUpMutatorContext) {
+
 	if defaultable, ok := ctx.Module().(Defaultable); ok {
-		ctx.AddDependency(ctx.Module(), DefaultsDepTag, defaultable.defaults().Defaults...)
+		// When AllowMissingDependencies is set, handle Defaults modules specially, as they don't build anything so the
+		// normal missing dependency behavior (replacing build rules with error rules) doesn't apply.  Manually track
+		// the missing dependencies, and then add them as missing dependencies of anything that uses the defaults
+		// module.  If AllowMissingDependencies is not set, then Defaults modules will be handled by the Defaultable
+		// case below.
+		if defaults, ok := ctx.Module().(Defaults); ok && ctx.Config().AllowMissingDependencies() {
+			for _, dep := range defaults.defaults().Defaults {
+				if ctx.OtherModuleExists(dep) {
+					ctx.AddDependency(ctx.Module(), DefaultsDepTag, dep)
+				} else {
+					defaults.addMissingDependency(dep)
+				}
+			}
+		} else {
+			ctx.AddDependency(ctx.Module(), DefaultsDepTag, defaultable.defaults().Defaults...)
+		}
 	}
 }
 
@@ -142,6 +176,9 @@ func defaultsMutator(ctx TopDownMutatorContext) {
 					if !seen[defaults] {
 						seen[defaults] = true
 						defaultsList = append(defaultsList, defaults)
+						if missingDeps := defaults.getMissingDependencies(); len(missingDeps) > 0 {
+							ctx.AddMissingDependencies(missingDeps)
+						}
 						return len(defaults.defaults().Defaults) > 0
 					}
 				} else {

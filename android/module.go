@@ -851,11 +851,6 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 		variables:         make(map[string]string),
 	}
 
-	// Temporarily continue to call blueprintCtx.GetMissingDependencies() to maintain the previous behavior of never
-	// reporting missing dependency errors in Blueprint when AllowMissingDependencies == true.
-	// TODO: This will be removed once defaults modules handle missing dependency errors
-	blueprintCtx.GetMissingDependencies()
-
 	// For the final GenerateAndroidBuildActions pass, require that all visited dependencies Soong modules and
 	// are enabled.
 	ctx.baseModuleContext.strictVisitDeps = true
