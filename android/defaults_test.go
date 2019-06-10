@@ -111,6 +111,11 @@ func TestDefaultsAllowMissingDependencies(t *testing.T) {
 		t.Errorf("want error %q, got %q", w, g)
 	}
 
-	// TODO: missing transitive defaults is currently not handled
-	_ = missingTransitiveDefaults
+	if missingTransitiveDefaults.Rule != ErrorRule {
+		t.Errorf("expected missing_transitive_defaults rule to be ErrorRule, got %#v", missingDefaults.Rule)
+	}
+
+	if g, w := missingTransitiveDefaults.Args["error"], "module missing_transitive_defaults missing dependencies: missing\n"; g != w {
+		t.Errorf("want error %q, got %q", w, g)
+	}
 }
