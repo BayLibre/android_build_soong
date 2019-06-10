@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a5ba6635_9da3e7e8",
+        "filename": "ui/build/config.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-10T20:53:06Z",
+      "side": 1,
+      "message": "Done. Removed it. Root dir can be build with BUILD_MODULES_IN_A_DIRECTORY since root dir is a directory.",
+      "parentUuid": "443a88fc_65d64aea",
+      "revId": "872bee74f81b267789ed146821881ac908ca81c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1f255554_6a6fc8e5",
         "filename": "ui/build/config.go",
         "patchSetId": 11
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "3bd24ba2_4c3c0877",
+        "filename": "ui/build/config.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-10T20:53:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f255554_6a6fc8e5",
+      "range": {
+        "startLine": 287,
+        "startChar": 9,
+        "endLine": 287,
+        "endChar": 21
+      },
+      "revId": "872bee74f81b267789ed146821881ac908ca81c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "871515ca_fda00650",
         "filename": "ui/build/config.go",
         "patchSetId": 11
@@ -56,6 +98,24 @@
       "revId": "872bee74f81b267789ed146821881ac908ca81c3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afe3f74b_86826a11",
+        "filename": "ui/build/config.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-10T20:53:06Z",
+      "side": 1,
+      "message": "I\u0027m ok with the name. Done.",
+      "parentUuid": "871515ca_fda00650",
+      "revId": "872bee74f81b267789ed146821881ac908ca81c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "d409614b_5dab98d4",
+        "filename": "ui/build/config.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-10T20:53:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8dda4b5_b57df5ce",
+      "range": {
+        "startLine": 366,
+        "startChar": 14,
+        "endLine": 366,
+        "endChar": 87
+      },
+      "revId": "872bee74f81b267789ed146821881ac908ca81c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20deba59_ca9c30c7",
         "filename": "ui/build/config.go",
         "patchSetId": 11
@@ -105,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "3ea7efc4_6b618497",
+        "filename": "ui/build/config.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-10T20:53:06Z",
+      "side": 1,
+      "message": "You are right. It\u0027s not. It\u0027s supposed to be each directory dirs... Fixed it.",
+      "parentUuid": "20deba59_ca9c30c7",
+      "range": {
+        "startLine": 396,
+        "startChar": 28,
+        "endLine": 397,
+        "endChar": 30
+      },
+      "revId": "872bee74f81b267789ed146821881ac908ca81c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f6b6848_2e74bce3",
         "filename": "ui/build/config.go",
         "patchSetId": 11
@@ -119,6 +227,24 @@
       "revId": "872bee74f81b267789ed146821881ac908ca81c3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5379225_e680f70f",
+        "filename": "ui/build/config.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-10T20:53:06Z",
+      "side": 1,
+      "message": "Yup. That works too!",
+      "parentUuid": "7f6b6848_2e74bce3",
+      "revId": "872bee74f81b267789ed146821881ac908ca81c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -139,6 +265,24 @@
     },
     {
       "key": {
+        "uuid": "f7a345e9_eb93914a",
+        "filename": "ui/build/config_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-10T20:53:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc3bc014_a171d4d5",
+      "revId": "872bee74f81b267789ed146821881ac908ca81c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35546e81_96378d4c",
         "filename": "ui/build/config_test.go",
         "patchSetId": 11
@@ -156,6 +300,24 @@
     },
     {
       "key": {
+        "uuid": "29a58221_999b5e30",
+        "filename": "ui/build/config_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-10T20:53:06Z",
+      "side": 1,
+      "message": "I added the checking of the error to make sure the error is correctly raised. As for splitting the test case, I don\u0027t see the benefits of it as most of it is testing the error path. There\u0027s only one valid case which is the current directory is at the root source tree dir.",
+      "parentUuid": "35546e81_96378d4c",
+      "revId": "872bee74f81b267789ed146821881ac908ca81c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "71d67462_45ffd5e5",
         "filename": "ui/build/config_test.go",
         "patchSetId": 11
@@ -170,6 +332,24 @@
       "revId": "872bee74f81b267789ed146821881ac908ca81c3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6212756_8f67398e",
+        "filename": "ui/build/config_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-10T20:53:06Z",
+      "side": 1,
+      "message": "I cleaned up all the test cases to follow the convention: test setup -\u003e action -\u003e verification. I also made some of the test cases simpler and made the error ones be more specific.",
+      "parentUuid": "71d67462_45ffd5e5",
+      "revId": "872bee74f81b267789ed146821881ac908ca81c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
