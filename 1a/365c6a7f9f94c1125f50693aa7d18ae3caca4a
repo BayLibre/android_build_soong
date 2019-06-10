@@ -1,0 +1,9 @@
+Verified+1: Inseob Kim <inseob@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Autosubmit+1: Inseob Kim <inseob@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Mon, 10 Jun 2019 19:16:12 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/980108
+Project: platform/build/soong
+Branch: refs/heads/master
