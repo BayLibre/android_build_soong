@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48de421b_66835a37",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-10T16:52:34Z",
+      "side": 1,
+      "message": "this is no longer flags deps, it may be deps for the directories too.",
+      "range": {
+        "startLine": 213,
+        "startChar": 1,
+        "endLine": 213,
+        "endChar": 10
+      },
+      "revId": "78306d3f9c3e391cff2038716526b6871ddf9ed4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e521215d_de8e2509",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-10T16:52:34Z",
+      "side": 1,
+      "message": "Maybe check that there are no -I or -isystem flags?  Exporting include flags through this method would lead to strange behavior later.",
+      "revId": "78306d3f9c3e391cff2038716526b6871ddf9ed4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f2e1bf7_4b43a2cc",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-10T16:52:34Z",
+      "side": 1,
+      "message": "Either add reexportDir that takes a string, or make reexportDirs take a ...string",
+      "range": {
+        "startLine": 854,
+        "startChar": 11,
+        "endLine": 854,
+        "endChar": 23
+      },
+      "revId": "78306d3f9c3e391cff2038716526b6871ddf9ed4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
