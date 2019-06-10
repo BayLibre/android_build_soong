@@ -45,6 +45,54 @@
       "revId": "8b5d04f271166c6a9117633f38d8655e399187d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a82f085_ff8b2b25",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1345967
+      },
+      "writtenOn": "2019-06-10T22:56:13Z",
+      "side": 1,
+      "message": "Yes, this is needed since the files from a shared library may be included multiple times, e.g. if A depends on B and C, and B depends on C, the files from C will have multiple entries and cause soong_zip to fail.",
+      "parentUuid": "187ab0e4_25f592d0",
+      "range": {
+        "startLine": 221,
+        "startChar": 45,
+        "endLine": 221,
+        "endChar": 52
+      },
+      "revId": "8b5d04f271166c6a9117633f38d8655e399187d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6948a56d_b1a267ef",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1345967
+      },
+      "writtenOn": "2019-06-10T22:56:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd76019a_6f68ad14",
+      "range": {
+        "startLine": 221,
+        "startChar": 94,
+        "endLine": 221,
+        "endChar": 96
+      },
+      "revId": "8b5d04f271166c6a9117633f38d8655e399187d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
