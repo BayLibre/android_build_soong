@@ -16,6 +16,24 @@
       "revId": "da63a49338c1e9d95d5ba6f0074ffc778101d83d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "183ddabb_dd645e82",
+        "filename": "cc/gen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-06-10T19:15:49Z",
+      "side": 1,
+      "message": "Sounds good, let me do that in a separate commit.",
+      "parentUuid": "4a281a13_b3765993",
+      "revId": "da63a49338c1e9d95d5ba6f0074ffc778101d83d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
