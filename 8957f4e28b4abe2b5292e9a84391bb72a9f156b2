@@ -22,6 +22,155 @@
       "revId": "8957f4e28b4abe2b5292e9a84391bb72a9f156b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c25ce5fc_4b5ff78e",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-10T17:25:52Z",
+      "side": 1,
+      "message": "make this `visibility()` so it is not usable outside this package.",
+      "range": {
+        "startLine": 204,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 11
+      },
+      "revId": "8957f4e28b4abe2b5292e9a84391bb72a9f156b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4a201c4_f687b32a",
+        "filename": "android/package.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-10T17:25:52Z",
+      "side": 1,
+      "message": "put blueprint imports in a separate group:\n\nimport (\n    \"fmt\"\n    \"sync\"\n    \"sync/atomic\"\n\n    \"github.com/google/blueprint\"\n)",
+      "revId": "8957f4e28b4abe2b5292e9a84391bb72a9f156b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f96b910e_15dda9cd",
+        "filename": "android/package.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-10T17:25:52Z",
+      "side": 1,
+      "message": "An alternative would be adding a ctx blueprint.NameContext here, which could provide ctx.ModuleDir()",
+      "revId": "8957f4e28b4abe2b5292e9a84391bb72a9f156b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaabc111_7214d205",
+        "filename": "android/package.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-10T17:25:52Z",
+      "side": 1,
+      "message": "Don\u0027t put a space in the name",
+      "range": {
+        "startLine": 93,
+        "startChar": 35,
+        "endLine": 93,
+        "endChar": 36
+      },
+      "revId": "8957f4e28b4abe2b5292e9a84391bb72a9f156b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "616b0d52_0d9dd538",
+        "filename": "android/package.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-10T17:25:52Z",
+      "side": 1,
+      "message": "Might as well add Name string `blueprint:\"mutated\"` to packageProperties instead of resusing the otherwise unused nameProperties.  Setting values in property structs that are not reported to blueprint can cause confusion if a mutator calls CreateVariations, because blueprint won\u0027t know to clone the value of nameProperties.  That\u0027s unlikely to ever happen here, but best not to use that pattern in case it gets propagated somewhere where it matters.",
+      "range": {
+        "startLine": 95,
+        "startChar": 8,
+        "endLine": 95,
+        "endChar": 22
+      },
+      "revId": "8957f4e28b4abe2b5292e9a84391bb72a9f156b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62c4034d_0a398495",
+        "filename": "android/package.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-10T17:25:52Z",
+      "side": 1,
+      "message": "Once is already a sync.Map, maybe use:\n\ntype defaultPackageInfoKey string\n\nfunc packageInfo(ctx BaseModuleContext, packageName string, module PackageModule) *PackageInfo {\n    key :\u003d NewCustomOnceKey(defaultPackageInfoKey(packageName))\n\n    return ctx.Config().Once(key, func() interface{} {\n        return \u0026PackageInfo{module: module}\n    }).(*PackageInfo)\n}\n\n...\n\nvalue :\u003d packageInfo(ctx, packageName, m)\nif value.module !\u003d m {\n    // duplicate\n} else {\n    // not duplicate\n}",
+      "range": {
+        "startLine": 184,
+        "startChar": 21,
+        "endLine": 184,
+        "endChar": 25
+      },
+      "revId": "8957f4e28b4abe2b5292e9a84391bb72a9f156b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6050ded5_a6ecb836",
+        "filename": "android/visibility_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-10T17:25:52Z",
+      "side": 1,
+      "message": "trailing whitespace (gofmt doesn\u0027t fix this because it is inside a raw string).  Also 3 places below.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 1
+      },
+      "revId": "8957f4e28b4abe2b5292e9a84391bb72a9f156b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
