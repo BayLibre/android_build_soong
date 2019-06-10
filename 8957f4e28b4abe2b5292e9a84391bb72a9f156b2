@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "efaa495c_c998a83f",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-06-10T13:46:32Z",
+      "side": 1,
+      "message": "Spello: Capital \"E\".",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 1
+      },
+      "revId": "8957f4e28b4abe2b5292e9a84391bb72a9f156b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

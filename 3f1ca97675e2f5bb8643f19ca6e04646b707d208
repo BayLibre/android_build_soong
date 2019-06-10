@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "46ed77f0_44be1c63",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-06-10T13:46:32Z",
+      "side": 1,
+      "message": "\u003e /.../ and won\u0027t really give us any advantages for the purpose I need it.\n\nIt would for me in the use case I mentioned: I can put a package_module{default_visibility\u003d[\"//art:__subpackages__\"]} in art/Android.bp and rest assured that no one accidentally adds a new subdirectory with its own Android.bp where they simply forget to limit visibility (before the global default is changed to legacy_private).\n\nBut I\u0027m fine to descope that to a separate CL. Would be good to decide if that\u0027s the way to go though; I can take on the implementation myself.",
+      "parentUuid": "075c13eb_9f53263d",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 45
+      },
+      "revId": "3f1ca97675e2f5bb8643f19ca6e04646b707d208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fdb9ce01_a08c793b",
         "filename": "android/package.go",
         "patchSetId": 2
