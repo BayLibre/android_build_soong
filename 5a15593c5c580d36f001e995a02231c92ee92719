@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7515dfed_699105a6",
+        "filename": "ui/status/build_status_proto/build_status.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-11T15:52:26Z",
+      "side": 1,
+      "message": "I just realized enum names in our metrics.proto are all caps. Do you know why? Or, is it something we can change at this point?",
+      "range": {
+        "startLine": 23,
+        "startChar": 7,
+        "endLine": 23,
+        "endChar": 13
+      },
+      "revId": "5a15593c5c580d36f001e995a02231c92ee92719",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f61a203_cfaaedeb",
+        "filename": "ui/status/build_status_proto/build_status.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-11T15:52:26Z",
+      "side": 1,
+      "message": "FYI, the convention is making the first value \"FOO_UNKNOWN\" or \"FOO_UNSPECIFIED\".\n\nhttps://engdoc.corp.google.com/eng/doc/devguide/proto/index.md?cl\u003dhead#do-include-an-unspecified-value-in-an-enum",
+      "revId": "5a15593c5c580d36f001e995a02231c92ee92719",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "652b6509_82334d8c",
+        "filename": "ui/status/build_status_proto/build_status.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-11T15:52:26Z",
+      "side": 1,
+      "message": "Can you check if this is accurate?",
+      "revId": "5a15593c5c580d36f001e995a02231c92ee92719",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b051bd5_3e018e00",
+        "filename": "ui/status/log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-11T15:52:26Z",
+      "side": 1,
+      "message": "Why the nested structure? Is this shared somewhere else?",
+      "revId": "5a15593c5c580d36f001e995a02231c92ee92719",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3545976a_873914bb",
+        "filename": "ui/status/log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-11T15:52:26Z",
+      "side": 1,
+      "message": "nit: error or err?",
+      "range": {
+        "startLine": 159,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 4
+      },
+      "revId": "5a15593c5c580d36f001e995a02231c92ee92719",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34e69aa7_8af52ae2",
+        "filename": "ui/status/log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-11T15:52:26Z",
+      "side": 1,
+      "message": "Are you sure about this? They don\u0027t seem to mean the same \"output\".",
+      "range": {
+        "startLine": 163,
+        "startChar": 40,
+        "endLine": 163,
+        "endChar": 77
+      },
+      "revId": "5a15593c5c580d36f001e995a02231c92ee92719",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
