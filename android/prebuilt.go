@@ -16,6 +16,7 @@ package android
 
 import (
 	"fmt"
+	"reflect"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
@@ -43,7 +44,10 @@ type Prebuilt struct {
 	properties PrebuiltProperties
 	module     Module
 	srcs       *[]string
-	src        *string
+
+	// Metadata for single source Prebuilt modules.
+	SrcProps interface{}
+	SrcField string
 }
 
 func (p *Prebuilt) Name(name string) string {
@@ -71,11 +75,16 @@ func (p *Prebuilt) SingleSourcePath(ctx ModuleContext) Path {
 		// sources.
 		return PathForModuleSrc(ctx, (*p.srcs)[0])
 	} else {
-		if proptools.String(p.src) == "" {
-			ctx.PropertyErrorf("src", "missing prebuilt source file")
+		if p.SrcProps == nil {
+			ctx.ModuleErrorf("prebuilt source was not set")
+		}
+		src := p.getSingleSourceFieldValue()
+		if src == "" {
+			ctx.PropertyErrorf(proptools.FieldNameForProperty(p.SrcField),
+				"missing prebuilt source file")
 			return nil
 		}
-		return PathForModuleSrc(ctx, *p.src)
+		return PathForModuleSrc(ctx, src)
 	}
 }
 
@@ -89,10 +98,12 @@ func InitPrebuiltModule(module PrebuiltInterface, srcs *[]string) {
 	p.srcs = srcs
 }
 
-func InitSingleSourcePrebuiltModule(module PrebuiltInterface, src *string) {
+func InitSingleSourcePrebuiltModule(module PrebuiltInterface, srcProps interface{}, srcField string) {
 	p := module.Prebuilt()
 	module.AddProperties(&p.properties)
-	p.src = src
+	p.SrcProps = srcProps
+	p.SrcField = srcField
+	p.checkSingleSourceProperties()
 }
 
 type PrebuiltInterface interface {
@@ -129,7 +140,7 @@ func PrebuiltMutator(ctx BottomUpMutatorContext) {
 func PrebuiltSelectModuleMutator(ctx TopDownMutatorContext) {
 	if m, ok := ctx.Module().(PrebuiltInterface); ok && m.Prebuilt() != nil {
 		p := m.Prebuilt()
-		if p.srcs == nil && p.src == nil {
+		if p.srcs == nil && p.SrcProps == nil {
 			panic(fmt.Errorf("prebuilt module did not have InitPrebuiltModule called on it"))
 		}
 		if !p.properties.SourceExists {
@@ -172,7 +183,7 @@ func (p *Prebuilt) usePrebuilt(ctx TopDownMutatorContext, source Module) bool {
 		return false
 	}
 
-	if p.src != nil && *p.src == "" {
+	if p.SrcProps != nil && p.getSingleSourceFieldValue() == "" {
 		return false
 	}
 
@@ -182,4 +193,27 @@ func (p *Prebuilt) usePrebuilt(ctx TopDownMutatorContext, source Module) bool {
 	}
 
 	return source == nil || !source.Enabled()
+}
+
+func (p *Prebuilt) checkSingleSourceProperties() {
+	if p.SrcProps == nil || p.SrcField == "" {
+		panic(fmt.Errorf("invalid single source prebuilt %q", p))
+	}
+
+	props := reflect.ValueOf(p.SrcProps)
+	if props.Kind() != reflect.Ptr ||
+		props.Elem().Kind() != reflect.Struct && props.Elem().Kind() != reflect.Interface {
+		panic(fmt.Errorf("invalid single source prebuilt %q", p))
+	}
+}
+
+func (p *Prebuilt) getSingleSourceFieldValue() string {
+	value := reflect.ValueOf(p.SrcProps).Elem().FieldByName(p.SrcField)
+	if value.Kind() == reflect.Ptr {
+		value = value.Elem()
+	}
+	if value.Kind() != reflect.String {
+		return ""
+	}
+	return value.String()
 }
