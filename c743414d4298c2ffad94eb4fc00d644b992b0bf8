@@ -22,6 +22,30 @@
       "revId": "c743414d4298c2ffad94eb4fc00d644b992b0bf8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "169bb1f6_579505a6",
+        "filename": "cc/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1345967
+      },
+      "writtenOn": "2019-06-11T23:09:54Z",
+      "side": 1,
+      "message": "The Rspfile will quote filenames containing @ with single quotes, but this causes soong_zip to not be able to find the file (this happens for HIDL interfaces).",
+      "parentUuid": "d0c1bbd4_8e2ef43a",
+      "range": {
+        "startLine": 233,
+        "startChar": 50,
+        "endLine": 233,
+        "endChar": 59
+      },
+      "revId": "c743414d4298c2ffad94eb4fc00d644b992b0bf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
