@@ -17,11 +17,19 @@ package terminal
 import (
 	"fmt"
 	"io"
+	"os"
+	"strconv"
 	"strings"
 	"sync"
+	"time"
 
 	"android/soong/ui/status"
 )
+
+type statusTableEntry struct {
+	action    *status.Action
+	startTime time.Time
+}
 
 type smartStatusOutput struct {
 	writer    io.Writer
@@ -30,18 +38,53 @@ type smartStatusOutput struct {
 	lock sync.Mutex
 
 	haveBlankLine bool
+
+	tableHeight int
+
+	runningActions []statusTableEntry
 }
 
 // NewSmartStatusOutput returns a StatusOutput that represents the
 // current build status similarly to Ninja's built-in terminal
 // output.
 func NewSmartStatusOutput(w io.Writer, formatter formatter) status.StatusOutput {
-	return &smartStatusOutput{
+	tableHeight, _ := strconv.Atoi(os.Getenv("SOONG_UI_TABLE_HEIGHT"))
+
+	s := &smartStatusOutput{
 		writer:    w,
 		formatter: formatter,
 
 		haveBlankLine: true,
+		tableHeight:   tableHeight,
 	}
+
+	if tableHeight > 0 {
+		if _, height, ok := termSize(s.writer); ok {
+			if tableHeight > height-1 {
+				tableHeight = height - 1
+			}
+
+			// Add empty lines at the bottom of the screen to scroll back the existing history
+			// and make room for the status table.
+			// TODO: read the cursor position to see if the empty lines are necessary?
+			for i := 0; i < tableHeight; i++ {
+				fmt.Fprintln(w)
+			}
+			fmt.Fprintf(s.writer, "\x1b[?25l") // Hide cursor
+			s.statusTable()
+			ticker := time.NewTicker(time.Second)
+			go func() {
+				for {
+					<-ticker.C
+					s.lock.Lock()
+					s.statusTable()
+					s.lock.Unlock()
+				}
+			}()
+		}
+	}
+
+	return s
 }
 
 func (s *smartStatusOutput) Message(level status.MsgLevel, message string) {
@@ -62,6 +105,8 @@ func (s *smartStatusOutput) Message(level status.MsgLevel, message string) {
 }
 
 func (s *smartStatusOutput) StartAction(action *status.Action, counts status.Counts) {
+	startTime := time.Now()
+
 	str := action.Description
 	if str == "" {
 		str = action.Command
@@ -71,6 +116,11 @@ func (s *smartStatusOutput) StartAction(action *status.Action, counts status.Cou
 
 	s.lock.Lock()
 	defer s.lock.Unlock()
+
+	s.runningActions = append(s.runningActions, statusTableEntry{
+		action:    action,
+		startTime: startTime,
+	})
 
 	s.statusLine(progress + str)
 }
@@ -88,6 +138,13 @@ func (s *smartStatusOutput) FinishAction(result status.ActionResult, counts stat
 	s.lock.Lock()
 	defer s.lock.Unlock()
 
+	for i, runningAction := range s.runningActions {
+		if runningAction.action == result.Action {
+			s.runningActions = append(s.runningActions[:i], s.runningActions[i+1:]...)
+			break
+		}
+	}
+
 	if output != "" {
 		s.statusLine(progress)
 		s.requestLine()
@@ -102,6 +159,17 @@ func (s *smartStatusOutput) Flush() {
 	defer s.lock.Unlock()
 
 	s.requestLine()
+
+	s.runningActions = nil
+
+	if s.tableHeight > 0 {
+		s.statusTable()
+
+		fmt.Fprintf(s.writer, "\x1b[r") // Set Top and Bottom Margins DECSTBM
+		_, height, _ := termSize(s.writer)
+		fmt.Fprintf(s.writer, "\x1b[%d;0H", height-s.tableHeight) // Direct cursor addressing
+		fmt.Fprintf(s.writer, "\x1b[?25h")                        // Show cursor
+	}
 }
 
 func (s *smartStatusOutput) Write(p []byte) (int, error) {
@@ -141,12 +209,8 @@ func (s *smartStatusOutput) statusLine(str string) {
 	// Run this on every line in case the window has been resized while
 	// we're printing. This could be optimized to only re-run when we get
 	// SIGWINCH if it ever becomes too time consuming.
-	if max, ok := termWidth(s.writer); ok {
-		if len(str) > max {
-			// TODO: Just do a max. Ninja elides the middle, but that's
-			// more complicated and these lines aren't that important.
-			str = str[:max]
-		}
+	if width, _, ok := termSize(s.writer); ok {
+		str = s.elide(str, width)
 	}
 
 	// Move to the beginning on the line, turn on bold, print the output,
@@ -155,4 +219,52 @@ func (s *smartStatusOutput) statusLine(str string) {
 	end := "\x1b[0m\x1b[K"
 	fmt.Fprint(s.writer, start, str, end)
 	s.haveBlankLine = false
+}
+
+func (s *smartStatusOutput) elide(str string, width int) string {
+	if len(str) > width {
+		// TODO: Just do a max. Ninja elides the middle, but that's
+		// more complicated and these lines aren't that important.
+		str = str[:width]
+	}
+
+	return str
+}
+
+func (s *smartStatusOutput) statusTable() {
+	width, height, ok := termSize(s.writer)
+	if !ok {
+		return
+	}
+
+	tableHeight := s.tableHeight
+	if tableHeight > height-1 {
+		tableHeight = height - 1
+	}
+
+	scrollingHeight := height - tableHeight
+
+	fmt.Fprintf(s.writer, "\x1b[0;%dr", scrollingHeight)   // Set Top and Bottom Margins DECSTBM
+	fmt.Fprintf(s.writer, "\x1b[%d;0H", scrollingHeight+1) // Direct cursor addressing
+
+	var tableLine int
+	var runningAction statusTableEntry
+	for tableLine, runningAction = range s.runningActions {
+		if tableLine > tableHeight {
+			break
+		}
+
+		runningTime := time.Since(runningAction.startTime).Round(time.Second)
+
+		str := fmt.Sprintf("   %2d:%02d %s",
+			int(runningTime.Minutes()), int(runningTime.Seconds())%60, runningAction.action.Description)
+		str = s.elide(str, width)
+		fmt.Fprint(s.writer, str, "\x1b[K\n")
+	}
+
+	for ; tableLine < tableHeight; tableLine++ {
+		fmt.Fprintln(s.writer, "\x1b[K")
+	}
+
+	fmt.Fprintf(s.writer, "\x1b[%d;0H", scrollingHeight) // Direct cursor addressing
 }
