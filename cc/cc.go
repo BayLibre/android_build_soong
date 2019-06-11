@@ -983,6 +983,15 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		return
 	}
 
+	// http://b/131390872
+	// Automatically initialize any uninitialized stack variables.
+	// Prefer zero-init if both options are set.
+	if ctx.Config().IsEnvTrue("AUTO_ZERO_INITIALIZE") {
+		flags.CFlags = append(flags.CFlags, "-ftrivial-auto-var-init=zero -enable-trivial-auto-var-init-zero-knowing-it-will-be-removed-from-clang")
+	} else if ctx.Config().IsEnvTrue("AUTO_PATTERN_INITIALIZE") {
+		flags.CFlags = append(flags.CFlags, "-ftrivial-auto-var-init=pattern")
+	}
+
 	flags.CFlags, _ = filterList(flags.CFlags, config.IllegalFlags)
 	flags.CppFlags, _ = filterList(flags.CppFlags, config.IllegalFlags)
 	flags.ConlyFlags, _ = filterList(flags.ConlyFlags, config.IllegalFlags)
