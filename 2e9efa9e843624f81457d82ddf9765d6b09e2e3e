@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d74b8cc_263ee308",
+        "filename": "android/neverallow_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-11T20:43:49Z",
+      "side": 1,
+      "message": "inside core libraries is not relevant here?",
+      "range": {
+        "startLine": 189,
+        "startChar": 12,
+        "endLine": 189,
+        "endChar": 33
+      },
+      "revId": "2e9efa9e843624f81457d82ddf9765d6b09e2e3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
