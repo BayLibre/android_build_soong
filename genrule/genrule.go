@@ -60,6 +60,12 @@ type hostToolDependencyTag struct {
 	label string
 }
 
+type ExtraDependencyTag struct {
+	blueprint.BaseDependencyTag
+	Label string
+	Tag   string
+}
+
 type generatorProperties struct {
 	// The command to run on one or more input files. Cmd supports substitution of a few variables
 	// (the actual substitution is implemented in GenerateAndroidBuildActions below)
@@ -103,10 +109,6 @@ type Module struct {
 	android.DefaultableModuleBase
 	android.ApexModuleBase
 
-	// For other packages to make their own genrules with extra
-	// properties
-	Extra interface{}
-
 	properties generatorProperties
 
 	taskGenerator taskFunc
@@ -149,16 +151,14 @@ func (g *Module) GeneratedDeps() android.Paths {
 }
 
 func (g *Module) DepsMutator(ctx android.BottomUpMutatorContext) {
-	if g, ok := ctx.Module().(*Module); ok {
-		for _, tool := range g.properties.Tools {
-			tag := hostToolDependencyTag{label: tool}
-			if m := android.SrcIsModule(tool); m != "" {
-				tool = m
-			}
-			ctx.AddFarVariationDependencies([]blueprint.Variation{
-				{Mutator: "arch", Variation: ctx.Config().BuildOsVariant},
-			}, tag, tool)
+	for _, tool := range g.properties.Tools {
+		tag := hostToolDependencyTag{label: tool}
+		if m := android.SrcIsModule(tool); m != "" {
+			tool = m
 		}
+		ctx.AddFarVariationDependencies([]blueprint.Variation{
+			{Mutator: "arch", Variation: ctx.Config().BuildOsVariant},
+		}, tag, tool)
 	}
 }
 
@@ -243,6 +243,45 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			}
 		}
 	}
+
+	// TODO: add locations like above
+	ctx.VisitDirectDepsBlueprint(func(bm blueprint.Module) {
+		module, ok := bm.(android.Module)
+		if !ok {
+			return
+		}
+
+		switch tag := ctx.OtherModuleDependencyTag(module).(type) {
+		case ExtraDependencyTag:
+			otherName := ctx.OtherModuleName(module)
+
+			if m, ok := module.(android.OutputFileProducer); ok {
+				if !module.Enabled() {
+					if ctx.Config().AllowMissingDependencies() {
+						ctx.AddMissingDependencies([]string{otherName})
+					} else {
+						ctx.ModuleErrorf("depends on disabled module %q", otherName)
+					}
+					break
+				}
+
+				paths, err := m.OutputFiles(tag.Tag)
+				if err != nil {
+					ctx.ModuleErrorf("cannot find files from %q: %v", otherName, err)
+				}
+
+				if len(paths) == 0 {
+					ctx.ModuleErrorf("dependency %q missing output file(s)", otherName)
+					break
+				}
+
+				g.deps = append(g.deps, paths...)
+				addLocationLabel(tag.Label, paths.Strings())
+			} else {
+				ctx.ModuleErrorf("dependency %q is not an OutputFileProducer", otherName)
+			}
+		}
+	})
 
 	if ctx.Failed() {
 		return

@@ -17,6 +17,8 @@ package cc
 import (
 	"android/soong/android"
 	"android/soong/genrule"
+
+	"github.com/google/blueprint"
 )
 
 func init() {
@@ -27,18 +29,48 @@ type GenruleExtraProperties struct {
 	Vendor_available   *bool
 	Recovery_available *bool
 
+	Shared_libs []string
+	Static_libs []string
+
 	// This genrule is for recovery variant
 	InRecovery bool `blueprint:"mutated"`
+}
+
+type GenruleModule struct {
+	*genrule.Module
+
+	Properties GenruleExtraProperties
+}
+
+func (g *GenruleModule) DepsMutator(ctx android.BottomUpMutatorContext) {
+	g.Module.DepsMutator(ctx)
+
+	for _, lib := range g.Properties.Shared_libs {
+		ctx.AddFarVariationDependencies([]blueprint.Variation{
+			{Mutator: "link", Variation: "shared"},
+		}, &genrule.ExtraDependencyTag{
+			Label: lib,
+		}, lib)
+	}
+	for _, lib := range g.Properties.Static_libs {
+		// TODO: add tag
+		ctx.AddFarVariationDependencies([]blueprint.Variation{
+			{Mutator: "link", Variation: "static"},
+		}, &genrule.ExtraDependencyTag{
+			Label: lib,
+		}, lib)
+	}
 }
 
 // cc_genrule is a genrule that can depend on other cc_* objects.
 // The cmd may be run multiple times, once for each of the different arch/etc
 // variations.
 func genRuleFactory() android.Module {
-	module := genrule.NewGenRule()
+	module := &GenruleModule{
+		Module: genrule.NewGenRule(),
+	}
 
-	module.Extra = &GenruleExtraProperties{}
-	module.AddProperties(module.Extra)
+	module.AddProperties(&module.Properties)
 
 	android.InitAndroidArchModule(module, android.HostAndDeviceSupported, android.MultilibBoth)
 

@@ -2197,49 +2197,47 @@ func ImageMutator(mctx android.BottomUpMutatorContext) {
 		return
 	}
 
-	if g, ok := mctx.Module().(*genrule.Module); ok {
-		if props, ok := g.Extra.(*GenruleExtraProperties); ok {
-			var coreVariantNeeded bool = false
-			var vendorVariantNeeded bool = false
-			var recoveryVariantNeeded bool = false
-			if mctx.DeviceConfig().VndkVersion() == "" {
-				coreVariantNeeded = true
-			} else if Bool(props.Vendor_available) {
-				coreVariantNeeded = true
-				vendorVariantNeeded = true
-			} else if mctx.SocSpecific() || mctx.DeviceSpecific() {
-				vendorVariantNeeded = true
-			} else {
-				coreVariantNeeded = true
-			}
-			if Bool(props.Recovery_available) {
-				recoveryVariantNeeded = true
-			}
+	if g, ok := mctx.Module().(*GenruleModule); ok {
+		var coreVariantNeeded bool = false
+		var vendorVariantNeeded bool = false
+		var recoveryVariantNeeded bool = false
+		if mctx.DeviceConfig().VndkVersion() == "" {
+			coreVariantNeeded = true
+		} else if Bool(g.Properties.Vendor_available) {
+			coreVariantNeeded = true
+			vendorVariantNeeded = true
+		} else if mctx.SocSpecific() || mctx.DeviceSpecific() {
+			vendorVariantNeeded = true
+		} else {
+			coreVariantNeeded = true
+		}
+		if Bool(g.Properties.Recovery_available) {
+			recoveryVariantNeeded = true
+		}
 
-			if recoveryVariantNeeded {
-				primaryArch := mctx.Config().DevicePrimaryArchType()
-				moduleArch := g.Target().Arch.ArchType
-				if moduleArch != primaryArch {
-					recoveryVariantNeeded = false
-				}
+		if recoveryVariantNeeded {
+			primaryArch := mctx.Config().DevicePrimaryArchType()
+			moduleArch := g.Target().Arch.ArchType
+			if moduleArch != primaryArch {
+				recoveryVariantNeeded = false
 			}
+		}
 
-			var variants []string
-			if coreVariantNeeded {
-				variants = append(variants, coreMode)
-			}
-			if vendorVariantNeeded {
-				variants = append(variants, vendorMode)
-			}
-			if recoveryVariantNeeded {
-				variants = append(variants, recoveryMode)
-			}
-			mod := mctx.CreateVariations(variants...)
-			for i, v := range variants {
-				if v == recoveryMode {
-					m := mod[i].(*genrule.Module)
-					m.Extra.(*GenruleExtraProperties).InRecovery = true
-				}
+		var variants []string
+		if coreVariantNeeded {
+			variants = append(variants, coreMode)
+		}
+		if vendorVariantNeeded {
+			variants = append(variants, vendorMode)
+		}
+		if recoveryVariantNeeded {
+			variants = append(variants, recoveryMode)
+		}
+		mod := mctx.CreateVariations(variants...)
+		for i, v := range variants {
+			if v == recoveryMode {
+				m := mod[i].(*GenruleModule)
+				m.Properties.InRecovery = true
 			}
 		}
 	}

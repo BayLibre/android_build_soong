@@ -28,7 +28,6 @@ import (
 
 	"android/soong/android"
 	"android/soong/cc/config"
-	"android/soong/genrule"
 )
 
 type StaticSharedLibraryProperties struct {
@@ -1223,8 +1222,8 @@ func VersionMutator(mctx android.BottomUpMutatorContext) {
 		}
 		return
 	}
-	if genrule, ok := mctx.Module().(*genrule.Module); ok {
-		if props, ok := genrule.Extra.(*GenruleExtraProperties); ok && !props.InRecovery {
+	if genrule, ok := mctx.Module().(*GenruleModule); ok {
+		if !genrule.Properties.InRecovery {
 			mctx.CreateVariations("")
 			return
 		}
