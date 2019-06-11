@@ -178,6 +178,18 @@ var neverallowTests = []struct {
 				}`),
 		},
 	},
+	// java_library_host rule tests
+	{
+		name: "java_library_host with no_framework_libs: true",
+		fs: map[string][]byte{
+			"libcore/Blueprints": []byte(`
+				java_library_host {
+					name: "host-target",
+					no_framework_libs: true,
+				}`),
+		},
+		expectedError: "module \"host-target\": violates neverallow",
+	},
 }
 
 func TestNeverallow(t *testing.T) {
@@ -252,8 +264,9 @@ func (p *mockCcLibraryModule) GenerateAndroidBuildActions(ModuleContext) {
 }
 
 type mockJavaLibraryProperties struct {
-	Libs        []string
-	Sdk_version *string
+	Libs              []string
+	No_framework_libs *bool
+	Sdk_version       *string
 }
 
 type mockJavaLibraryModule struct {
