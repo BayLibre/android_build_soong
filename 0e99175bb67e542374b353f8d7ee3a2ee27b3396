@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "008a0186_cb431d3d",
+        "filename": "android/defaults_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-12T18:55:32Z",
+      "side": 1,
+      "message": "nit: define w in a separate line for readability?",
+      "revId": "0e99175bb67e542374b353f8d7ee3a2ee27b3396",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
