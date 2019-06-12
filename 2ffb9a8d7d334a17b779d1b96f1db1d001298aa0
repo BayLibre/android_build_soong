@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b55c8c15_7a5477c3",
+        "filename": "android/android_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-12T16:27:26Z",
+      "side": 1,
+      "message": "All other Go TestMains I saw both internally and externally do the simple style like,\n\nfunc TestMain(m *testing.M) {\n  setUp()\n  defer tearDown()\n  os.Exit(m.Run())\n}\n\ne.g. https://golang.org/src/net/main_test.go?h\u003dTestMain#L48 (slightly different style)\n\nIs there any reason that we wrap setUp and tearDown in the func that calls m.Run()? OOC",
+      "revId": "2ffb9a8d7d334a17b779d1b96f1db1d001298aa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
