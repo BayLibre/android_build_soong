@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f444c20_e64e9144",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 923,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-12T19:37:57Z",
+      "side": 1,
+      "message": "Interesting. Didn\u0027t know about this. Good to know. :)",
+      "revId": "dc35e21124b684087aeb66fb74e9ca43f0e7c741",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
