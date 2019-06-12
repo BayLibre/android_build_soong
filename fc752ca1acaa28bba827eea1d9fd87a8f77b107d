@@ -16,6 +16,24 @@
       "revId": "fc752ca1acaa28bba827eea1d9fd87a8f77b107d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c022ee5_96705618",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-06-12T05:03:11Z",
+      "side": 1,
+      "message": "Right. Unless android.InitApexModule() is called, just having ApexModuleBase is not harmful.",
+      "parentUuid": "70daf920_b998cacd",
+      "revId": "fc752ca1acaa28bba827eea1d9fd87a8f77b107d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
