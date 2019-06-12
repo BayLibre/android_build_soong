@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d971612f_22714b8c",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 991,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-06-12T21:01:12Z",
+      "side": 1,
+      "message": "Two comments:\n- maybe Dan could answer better, but wouldn\u0027t TARGET_AUTO_INITIALIZE be better (PRODUCT_,BOARD_, etc)?\n- why not provide options for both (zero and pattern)? TARGET_AUTO_INITIALIZE_ZERO/TARGET_AUTO_INITIALIZE_PATTERN for further comparisons?",
+      "range": {
+        "startLine": 986,
+        "startChar": 0,
+        "endLine": 991,
+        "endChar": 0
+      },
+      "revId": "3b684dbe4fa54cef630015058317fb1b7cd6670d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
