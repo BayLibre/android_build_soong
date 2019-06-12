@@ -16,6 +16,24 @@
       "revId": "2ffb9a8d7d334a17b779d1b96f1db1d001298aa0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b68f893_83ca4ce7",
+        "filename": "android/android_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-06-12T17:10:32Z",
+      "side": 1,
+      "message": "That defer would never run, since os.Exit never returns (and you\u0027ll never return out of TestMain): https://play.golang.org/p/TplfTzKDxdf",
+      "parentUuid": "b55c8c15_7a5477c3",
+      "revId": "2ffb9a8d7d334a17b779d1b96f1db1d001298aa0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
