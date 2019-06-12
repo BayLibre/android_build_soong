@@ -1,0 +1,187 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14e5afd2_5966ae22",
+        "filename": "ui/build/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-12T17:50:15Z",
+      "side": 1,
+      "message": "seems to be a typo?",
+      "range": {
+        "startLine": 256,
+        "startChar": 3,
+        "endLine": 256,
+        "endChar": 5
+      },
+      "revId": "768ea8472b7de3c41b4c94dd25d09fcaaa663485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de43c6e0_a9b55b2e",
+        "filename": "ui/build/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-12T17:50:15Z",
+      "side": 1,
+      "message": "This fits in one line.",
+      "range": {
+        "startLine": 363,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 15
+      },
+      "revId": "768ea8472b7de3c41b4c94dd25d09fcaaa663485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "417f8a3b_1cb05c3a",
+        "filename": "ui/build/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-12T17:50:15Z",
+      "side": 1,
+      "message": "The below error message would probably be more helpful, \"%s not in proper directory:target1,target2,... format\"?",
+      "revId": "768ea8472b7de3c41b4c94dd25d09fcaaa663485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f478ea98_577c691d",
+        "filename": "ui/build/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-12T17:50:15Z",
+      "side": 1,
+      "message": "What should happen l \u003d\u003d 2, but s[1] \u003d\u003d \"\"? Given the below error check, \"if inList(\"\", newTargets) {\", should this be an error, too?",
+      "range": {
+        "startLine": 413,
+        "startChar": 12,
+        "endLine": 413,
+        "endChar": 25
+      },
+      "revId": "768ea8472b7de3c41b4c94dd25d09fcaaa663485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f6cb3cb_d40ac9a2",
+        "filename": "ui/build/config_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-12T17:50:15Z",
+      "side": 1,
+      "message": "You\u0027re checking the same error. Making this a bool flag, like \u0027succeed\u0027, will make this test more readable.",
+      "revId": "768ea8472b7de3c41b4c94dd25d09fcaaa663485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc1d050e_f8e45276",
+        "filename": "ui/build/config_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-12T17:50:15Z",
+      "side": 1,
+      "message": "Doesn\u0027t seem like you need to handle this separately?",
+      "revId": "768ea8472b7de3c41b4c94dd25d09fcaaa663485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96111275_63671957",
+        "filename": "ui/build/config_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-12T17:50:15Z",
+      "side": 1,
+      "message": "You don\u0027t really need to provide customized error messages for all these exception cases. They won\u0027t probably happen, so the messages will only distract readers. Just t.Fatal(err) suffices.",
+      "range": {
+        "startLine": 234,
+        "startChar": 4,
+        "endLine": 234,
+        "endChar": 50
+      },
+      "revId": "768ea8472b7de3c41b4c94dd25d09fcaaa663485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe2221dd_bd37fb8e",
+        "filename": "ui/build/config_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-12T17:50:15Z",
+      "side": 1,
+      "message": "did you mean \u0027got\u0027?",
+      "range": {
+        "startLine": 500,
+        "startChar": 28,
+        "endLine": 500,
+        "endChar": 32
+      },
+      "revId": "768ea8472b7de3c41b4c94dd25d09fcaaa663485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52b33335_f76bf5a8",
+        "filename": "ui/build/config_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-12T17:50:15Z",
+      "side": 1,
+      "message": "This error message can be improved.",
+      "revId": "768ea8472b7de3c41b4c94dd25d09fcaaa663485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
