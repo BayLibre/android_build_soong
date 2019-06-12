@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea47ae76_f8b6c892",
+        "filename": "cc/vndk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-06-12T04:54:09Z",
+      "side": 1,
+      "message": "This is also repeated many times. Can you refactor?",
+      "range": {
+        "startLine": 411,
+        "startChar": 0,
+        "endLine": 420,
+        "endChar": 5
+      },
+      "revId": "f9aa7a7df8cc713af48bd7691116e4f1a3794b5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc268e47_7e9ef410",
+        "filename": "cc/vndk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-06-12T04:54:09Z",
+      "side": 1,
+      "message": "I see this being repeated a lot in this function. Can we do this later all at once? (or make a function?)",
+      "range": {
+        "startLine": 421,
+        "startChar": 0,
+        "endLine": 424,
+        "endChar": 5
+      },
+      "revId": "f9aa7a7df8cc713af48bd7691116e4f1a3794b5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d854b9d7_b99f4f1d",
+        "filename": "cc/vndk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-06-12T04:54:09Z",
+      "side": 1,
+      "message": "why not .json?",
+      "range": {
+        "startLine": 477,
+        "startChar": 21,
+        "endLine": 477,
+        "endChar": 25
+      },
+      "revId": "f9aa7a7df8cc713af48bd7691116e4f1a3794b5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
