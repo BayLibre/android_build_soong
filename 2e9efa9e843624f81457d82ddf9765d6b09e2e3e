@@ -22,6 +22,30 @@
       "revId": "2e9efa9e843624f81457d82ddf9765d6b09e2e3e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63601064_80bc341e",
+        "filename": "android/neverallow_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-06-12T09:55:51Z",
+      "side": 1,
+      "message": "It is because no_standard_libs is only allowed inside core libraries.",
+      "parentUuid": "7d74b8cc_263ee308",
+      "range": {
+        "startLine": 189,
+        "startChar": 12,
+        "endLine": 189,
+        "endChar": 33
+      },
+      "revId": "2e9efa9e843624f81457d82ddf9765d6b09e2e3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
