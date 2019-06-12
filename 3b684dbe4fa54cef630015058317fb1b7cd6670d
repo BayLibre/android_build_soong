@@ -22,6 +22,30 @@
       "revId": "3b684dbe4fa54cef630015058317fb1b7cd6670d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10566ffd_e7fba4da",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 991,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2019-06-12T21:43:18Z",
+      "side": 1,
+      "message": "I\u0027m all for bike-shedding the naming here. I just wanted to start with something obvious. Note that these flags also apply to the HOST, so TARGET is a bit of a misnomer.\n\nI\u0027ll add a different option for switching between ZERO and PATTERN, but my hope is that we just experiment for a bit with zero-init, and then turn it on to see what happens. ;)",
+      "parentUuid": "d971612f_22714b8c",
+      "range": {
+        "startLine": 986,
+        "startChar": 0,
+        "endLine": 991,
+        "endChar": 0
+      },
+      "revId": "3b684dbe4fa54cef630015058317fb1b7cd6670d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
