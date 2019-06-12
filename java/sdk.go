@@ -84,6 +84,11 @@ func sdkVersionToNumberAsString(ctx android.BaseModuleContext, v string) (string
 
 func decodeSdkDep(ctx android.BaseModuleContext, sdkContext sdkContext) sdkDep {
 	v := sdkContext.sdkVersion()
+
+	if sdkContext.noFrameworkLibs() && v != "" {
+		ctx.PropertyErrorf("sdk_version", "sdk_version: %q must not be specified with no_framework_libs: true", v)
+	}
+
 	// For PDK builds, use the latest SDK version instead of "current"
 	if ctx.Config().IsPdkBuild() && (v == "" || v == "current") {
 		sdkVersions := ctx.Config().Get(sdkVersionsKey).([]int)
@@ -161,6 +166,8 @@ func decodeSdkDep(ctx android.BaseModuleContext, sdkContext sdkContext) sdkDep {
 
 		if m == "core.current.stubs" {
 			ret.systemModules = "core-current-stubs-system-modules"
+			// The core_current does not include framework classes.
+			ret.noFrameworksLibs = true
 		} else if m == "core.platform.api.stubs" {
 			ret.systemModules = "core-platform-api-stubs-system-modules"
 		}
