@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a2dc688_63fbafda",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-12T17:15:39Z",
+      "side": 1,
+      "message": "Put \"fmt\" in a separate block above android/* imports",
+      "revId": "272493d698ccf8f542c041fe9590dd269df3049e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bda050db_b7729b13",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-12T17:15:39Z",
+      "side": 1,
+      "message": "Remove this",
+      "revId": "272493d698ccf8f542c041fe9590dd269df3049e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
