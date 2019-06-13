@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22782e61_300d25a4",
+        "filename": "android/arch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1153,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-13T22:28:00Z",
+      "side": 1,
+      "message": "I\u0027m not sure this part is generically relevant, maybe just use proptools.ExtendMatchingProperties directly?",
+      "revId": "bf79b63e2da58363389b12200f2b3fc40c62ea79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b87d65f_ad245db1",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-13T22:28:00Z",
+      "side": 1,
+      "message": "AppendProperties isn\u0027t doing much for you here, proptools.ExtendMatchingProperties is doing most of the heavy lifting.  Also, you may want to prepend so that a dpi_variant overwrites the base apk value?",
+      "range": {
+        "startLine": 721,
+        "startChar": 5,
+        "endLine": 721,
+        "endChar": 21
+      },
+      "revId": "bf79b63e2da58363389b12200f2b3fc40c62ea79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9c35f05_a2ae4892",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-13T22:28:00Z",
+      "side": 1,
+      "message": "This cast seems unnecessary",
+      "range": {
+        "startLine": 865,
+        "startChar": 9,
+        "endLine": 865,
+        "endChar": 15
+      },
+      "revId": "bf79b63e2da58363389b12200f2b3fc40c62ea79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0904f9ca_2c65593a",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-13T22:28:00Z",
+      "side": 1,
+      "message": "dpiStruct",
+      "range": {
+        "startLine": 869,
+        "startChar": 1,
+        "endLine": 869,
+        "endChar": 9
+      },
+      "revId": "bf79b63e2da58363389b12200f2b3fc40c62ea79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
