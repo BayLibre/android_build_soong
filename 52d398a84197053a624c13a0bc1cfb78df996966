@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96e65355_d8a84560",
+        "filename": "java/java.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-13T20:49:58Z",
+      "side": 1,
+      "message": "Doesn\u0027t have to be this CL, but this should probably be its own link type so that you can\u0027t link a \"none\" module against any other types of modules.",
+      "range": {
+        "startLine": 685,
+        "startChar": 16,
+        "endLine": 685,
+        "endChar": 33
+      },
+      "revId": "52d398a84197053a624c13a0bc1cfb78df996966",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
