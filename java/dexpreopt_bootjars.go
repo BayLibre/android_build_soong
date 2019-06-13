@@ -58,6 +58,7 @@ type bootImageConfig struct {
 	symbolsDir   android.OutputPath
 	targets      []android.Target
 	images       map[android.ArchType]android.OutputPath
+	imagesDeps   map[android.ArchType]android.Paths
 	zip          android.WritablePath
 }
 
@@ -496,6 +497,7 @@ func (d *dexpreoptBootJars) MakeVars(ctx android.MakeVarsContext) {
 			for _, arch := range arches {
 				ctx.Strict("DEXPREOPT_IMAGE_VDEX_BUILT_INSTALLED_"+current.name+"_"+arch.String(), current.vdexInstalls[arch].String())
 				ctx.Strict("DEXPREOPT_IMAGE_"+current.name+"_"+arch.String(), current.images[arch].String())
+				ctx.Strict("DEXPREOPT_IMAGE_DEPS_"+current.name+"_"+arch.String(), strings.Join(current.imagesDeps[arch].Strings(), " "))
 				ctx.Strict("DEXPREOPT_IMAGE_BUILT_INSTALLED_"+current.name+"_"+arch.String(), current.installs[arch].String())
 				ctx.Strict("DEXPREOPT_IMAGE_UNSTRIPPED_BUILT_INSTALLED_"+current.name+"_"+arch.String(), current.unstrippedInstalls[arch].String())
 				if current.zip != nil {

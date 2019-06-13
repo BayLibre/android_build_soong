@@ -138,13 +138,27 @@ func defaultBootImageConfig(ctx android.PathContext) bootImageConfig {
 		dir := android.PathForOutput(ctx, ctx.Config().DeviceName(), "dex_bootjars")
 		symbolsDir := android.PathForOutput(ctx, ctx.Config().DeviceName(), "dex_bootjars_unstripped")
 		images := make(map[android.ArchType]android.OutputPath)
+		imagesDeps := make(map[android.ArchType]android.Paths)
 		zip := dir.Join(ctx, "boot.zip")
 
 		targets := dexpreoptTargets(ctx)
 
 		for _, target := range targets {
-			images[target.Arch.ArchType] = dir.Join(ctx,
-				"system/framework", target.Arch.ArchType.String()).Join(ctx, "boot.art")
+			imageDir := dir.Join(ctx, "system/framework", target.Arch.ArchType.String())
+			images[target.Arch.ArchType] = imageDir.Join(ctx, "boot.art")
+
+			deps := make(android.Paths, 0, len(nonUpdatableBootModules)*3)
+			for i, m := range nonUpdatableBootModules {
+				name := "boot"
+				if i != 0 {
+					name += "-" + m
+				}
+				deps = append(deps,
+					imageDir.Join(ctx, name+".art"),
+					imageDir.Join(ctx, name+".oat"),
+					imageDir.Join(ctx, name+".vdex"))
+			}
+			imagesDeps[target.Arch.ArchType] = deps
 		}
 
 		return bootImageConfig{
@@ -155,6 +169,7 @@ func defaultBootImageConfig(ctx android.PathContext) bootImageConfig {
 			dir:          dir,
 			symbolsDir:   symbolsDir,
 			images:       images,
+			imagesDeps:   imagesDeps,
 			targets:      targets,
 			zip:          zip,
 		}
@@ -197,12 +212,26 @@ func apexBootImageConfig(ctx android.PathContext) bootImageConfig {
 		dir := android.PathForOutput(ctx, ctx.Config().DeviceName(), "dex_apexjars")
 		symbolsDir := android.PathForOutput(ctx, ctx.Config().DeviceName(), "dex_apexjars_unstripped")
 		images := make(map[android.ArchType]android.OutputPath)
+		imagesDeps := make(map[android.ArchType]android.Paths)
 
 		targets := dexpreoptTargets(ctx)
 
 		for _, target := range targets {
-			images[target.Arch.ArchType] = dir.Join(ctx,
-				"system/framework", target.Arch.ArchType.String(), "apex.art")
+			imageDir := dir.Join(ctx, "system/framework", target.Arch.ArchType.String())
+			images[target.Arch.ArchType] = imageDir.Join(ctx, "apex.art")
+
+			deps := make(android.Paths, 0, len(imageModules)*3)
+			for i, m := range imageModules {
+				name := "apex"
+				if i != 0 {
+					name += "-" + m
+				}
+				deps = append(deps,
+					imageDir.Join(ctx, name+".art"),
+					imageDir.Join(ctx, name+".oat"),
+					imageDir.Join(ctx, name+".vdex"))
+			}
+			imagesDeps[target.Arch.ArchType] = deps
 		}
 
 		return bootImageConfig{
@@ -214,6 +243,7 @@ func apexBootImageConfig(ctx android.PathContext) bootImageConfig {
 			symbolsDir:   symbolsDir,
 			targets:      targets,
 			images:       images,
+			imagesDeps:   imagesDeps,
 		}
 	}).(bootImageConfig)
 }
