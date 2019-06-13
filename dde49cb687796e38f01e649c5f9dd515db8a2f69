@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af2d0ec6_e2ed9813",
+        "filename": "ui/terminal/writer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-06-13T05:49:20Z",
+      "side": 0,
+      "message": "What\u0027s preventing the logger and status output from racing and writing to stdout at the same time?",
+      "range": {
+        "startLine": 120,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 22
+      },
+      "revId": "dde49cb687796e38f01e649c5f9dd515db8a2f69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
