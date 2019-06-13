@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e1110eec_8270f246",
+        "filename": "ui/status/build_status_proto/build_status.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-13T17:52:14Z",
+      "side": 1,
+      "message": "lite doesn\u0027t seem correct here, it would only be necessary if code on a phone were going to use this proto.",
+      "parentUuid": "7f746858_46a7f7ce",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 35
+      },
+      "revId": "ed7e98db8504dc27676c6cdea357a4e1cdb5d862",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ab3cc680_acefd595",
         "filename": "ui/status/build_status_proto/build_status.proto",
         "patchSetId": 4
