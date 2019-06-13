@@ -618,6 +618,7 @@ type deps struct {
 	srcs               android.Paths
 	srcJars            android.Paths
 	systemModules      android.Path
+	systemModulesDeps  android.Paths
 	aidlPreprocess     android.OptionalPath
 	kotlinStdlib       android.Paths
 	kotlinAnnotations  android.Paths
@@ -825,10 +826,11 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 					panic("Found two system module dependencies")
 				}
 				sm := module.(*SystemModules)
-				if sm.outputFile == nil {
+				if sm.outputDir == nil || len(sm.outputDeps) == 0 {
 					panic("Missing directory for system module dependency")
 				}
-				deps.systemModules = sm.outputFile
+				deps.systemModules = sm.outputDir
+				deps.systemModulesDeps = sm.outputDeps
 			}
 		}
 	})
@@ -953,6 +955,7 @@ func (j *Module) collectBuilderFlags(ctx android.ModuleContext, deps deps) javaB
 	// systemModules
 	if deps.systemModules != nil {
 		flags.systemModules = append(flags.systemModules, deps.systemModules)
+		flags.systemModulesDeps = append(flags.systemModulesDeps, deps.systemModulesDeps...)
 	}
 
 	// aidl flags.
