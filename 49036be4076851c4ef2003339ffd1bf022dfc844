@@ -22,6 +22,30 @@
       "revId": "49036be4076851c4ef2003339ffd1bf022dfc844",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "738527fd_803ac6bd",
+        "filename": "ui/terminal/smart_status.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-06-13T06:30:09Z",
+      "side": 1,
+      "message": "and somehow I completely missed the s.lock in the sigwinch loop...",
+      "parentUuid": "e0dab204_9ded7137",
+      "range": {
+        "startLine": 196,
+        "startChar": 2,
+        "endLine": 196,
+        "endChar": 17
+      },
+      "revId": "49036be4076851c4ef2003339ffd1bf022dfc844",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
