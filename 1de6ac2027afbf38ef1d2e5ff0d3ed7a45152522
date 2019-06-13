@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "efe36c2b_3bdc06e5",
+        "filename": "ui/terminal/smart_status.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-06-13T07:14:34Z",
+      "side": 1,
+      "message": "I wonder if we could delay starting the table until we knew that we were actually running enough things to use it? In the no-op case, or when we\u0027re only compiling a few quick items, I can\u0027t even visually see the table, but it still uses up more vertical scrolling space in my terminal.\n\nMaybe use one of the lines to show the currently running execution count? (bazel uses the progress line when there\u0027s more than one thing running to provide that count, and never shows a completed action description)\n\nSomewhat separately, I was wondering if we shouldn\u0027t even add things to the table until they\u0027ve hit 1(2?) second of runtime, just to limit churn on short actions. The progress/finished line can show that something is quickly happening.",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 40
+      },
+      "revId": "1de6ac2027afbf38ef1d2e5ff0d3ed7a45152522",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e061b07_38263ae0",
+        "filename": "ui/terminal/smart_status.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-06-13T07:14:34Z",
+      "side": 1,
+      "message": "We may still want to update the progress if the totals changed, even if we keep the string from the last status line. (That could be useful to save in order to repaint when the terminal gets wider too)\n\n  [385/385 100%] initializing build system   (this is the FinishAction)\n\nPreviously, we\u0027d then immediately replace it with:\n\n  [385/746  52%] including out/soong/Android-aosp_arm.mk ...    (StartAction)\n\nbut now we keep it on 100% until we load soong\u0027s Android-*.mk, which takes a while.\n\nOr we do a refactor to know when we\u0027re expecting more actions, and show something like [385/385+ 99%], but that seems strange as well.",
+      "revId": "1de6ac2027afbf38ef1d2e5ff0d3ed7a45152522",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df33c514_e1cca932",
+        "filename": "ui/terminal/smart_status.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-06-13T07:14:34Z",
+      "side": 1,
+      "message": "So with iterm on Mac, plus tmux on the remote machine, this seems to work fine when I make the terminal bigger (zoom into the pane, so one large jump). Doing the reverse -- going from the full screen to a quarter screen (un-zoom), I get a bunch of blank lines, from the top of my new status line past the top of the (new) screen, and into the tmux scrollback. After those blank lines I find my previous status line.\n\nI highly suspect this is more to do with tmux than iterm, since the scrollback is within tmux, not iterm.",
+      "revId": "1de6ac2027afbf38ef1d2e5ff0d3ed7a45152522",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
