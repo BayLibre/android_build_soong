@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f746858_46a7f7ce",
+        "filename": "ui/status/build_status_proto/build_status.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-13T17:07:33Z",
+      "side": 1,
+      "message": "Is this something the build infra team requested? This wouldn\u0027t probably affect Soong as it doesn\u0027t affect the generated Go code, AFAIK. However, it\u0027ll definitely affect how the infra team ingest the produced data.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 35
+      },
+      "revId": "ed7e98db8504dc27676c6cdea357a4e1cdb5d862",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab3cc680_acefd595",
+        "filename": "ui/status/build_status_proto/build_status.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-13T17:07:33Z",
+      "side": 1,
+      "message": "This may be very confusing to the infra team? As \u0027build status\u0027 normally means the ongoing branch/target build status, especially to them.",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 19
+      },
+      "revId": "ed7e98db8504dc27676c6cdea357a4e1cdb5d862",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
