@@ -22,6 +22,30 @@
       "revId": "3192c1cf5930291769607741feda848ad973a677",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4e98710_91c3f77c",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2019-06-13T20:02:32Z",
+      "side": 1,
+      "message": "Mixing options with preparers can be a bit over complicated here. options are keyval pair, while preparers are a list of classes. Maybe we can have a special key for preparers like prefixing keys with \"target_preparer_\", e.g.,\ntarget_preparer_1: class1\ntarget_preparer_2: class2\n\ncreate a map of target preparer with unique keys is a bit messy.\nDo you know if there is a cleaner way to do that in go?",
+      "parentUuid": "f1fda8e2_63ea270f",
+      "range": {
+        "startLine": 60,
+        "startChar": 124,
+        "endLine": 60,
+        "endChar": 142
+      },
+      "revId": "3192c1cf5930291769607741feda848ad973a677",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
