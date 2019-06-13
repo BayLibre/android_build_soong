@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5cb8d90_d2bf92c1",
+        "filename": "java/app_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-13T20:57:14Z",
+      "side": 1,
+      "message": "This is OK since you\u0027re about to delete the duplication, but you could also share the code and use strings.Replace on the bp file to rewrite `sdk_version: \"core_platform\"` back to `no_frameworks_lib: true` to test both ways.",
+      "revId": "849f3a4d7277eb55f77b29dac57b6b953cbcfbba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05b76bf2_2f1539a4",
+        "filename": "java/java.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-13T20:57:14Z",
+      "side": 1,
+      "message": "This also seems like it is going to want its own link type",
+      "range": {
+        "startLine": 677,
+        "startChar": 36,
+        "endLine": 677,
+        "endChar": 59
+      },
+      "revId": "849f3a4d7277eb55f77b29dac57b6b953cbcfbba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
