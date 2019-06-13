@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ddb11741_89184aa0",
+        "filename": "cc/config/global.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-13T05:18:12Z",
+      "side": 1,
+      "message": "You could avoid having to do anything in make if you add the flags here:\n\n\tpctx.VariableFunc(\"CommonClangGlobalCflags\", func(ctx android.PackageVarContext) string {\n\t\tflags :\u003d ClangFilterUnknownCflags(commonGlobalCflags)\n\t\tflags \u003d append(flags, \"${ClangExtraCflags}\")\n\n\t\t// http://b/131390872\n\t\t// Automatically initialize any uninitialized stack variables.\n\t\t// Prefer zero-init if both options are set.\n\t\tif ctx.Config().IsEnvTrue(\"AUTO_ZERO_INITIALIZE\") {\n\t\t\tflags \u003d append(flags, \"-ftrivial-auto-var-init\u003dzero\",\n\t\t\t\t\"-enable-trivial-auto-var-init-zero-knowing-it-will-be-removed-from-clang\")\n\t\t} else if ctx.Config().IsEnvTrue(\"AUTO_PATTERN_INITIALIZE\") {\n\t\t\tflags \u003d append(flags, \"-ftrivial-auto-var-init\u003dpattern\")\n\t\t}\n\n\t\treturn strings.Join(flags, \" \")\n\t}",
+      "revId": "82f41d10f14f99a9dd0cba478d6c8b16aa03bbf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
