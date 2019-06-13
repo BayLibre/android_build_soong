@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1fda8e2_63ea270f",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-13T19:52:51Z",
+      "side": 1,
+      "message": "Can you make this fit in optionsMap? That may mean changing its type to something that can hold a description of an option or a preparer.",
+      "range": {
+        "startLine": 60,
+        "startChar": 124,
+        "endLine": 60,
+        "endChar": 142
+      },
+      "revId": "3192c1cf5930291769607741feda848ad973a677",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
