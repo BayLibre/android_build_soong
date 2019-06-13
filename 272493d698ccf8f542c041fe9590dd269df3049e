@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "22488ed6_9f99db4f",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-06-13T09:36:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a2dc688_63fbafda",
+      "revId": "272493d698ccf8f542c041fe9590dd269df3049e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bda050db_b7729b13",
         "filename": "java/hiddenapi_singleton.go",
         "patchSetId": 4
@@ -33,6 +51,24 @@
       "revId": "272493d698ccf8f542c041fe9590dd269df3049e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3dfe9f28_8f507e23",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-06-13T09:36:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bda050db_b7729b13",
+      "revId": "272493d698ccf8f542c041fe9590dd269df3049e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
