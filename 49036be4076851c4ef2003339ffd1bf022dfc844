@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0dab204_9ded7137",
+        "filename": "ui/terminal/smart_status.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-06-13T06:14:23Z",
+      "side": 1,
+      "message": "Does this need to be a locked / atomic update? We probably don\u0027t care if it\u0027s slightly out of date, but partial updates could be annoying (even though I\u0027d be surprised if this value is very often over a single byte\u0027s worth of an int)",
+      "range": {
+        "startLine": 196,
+        "startChar": 2,
+        "endLine": 196,
+        "endChar": 17
+      },
+      "revId": "49036be4076851c4ef2003339ffd1bf022dfc844",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
