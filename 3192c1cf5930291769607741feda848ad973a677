@@ -46,6 +46,30 @@
       "revId": "3192c1cf5930291769607741feda848ad973a677",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26c9bb28_ec6c58af",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-13T20:12:16Z",
+      "side": 1,
+      "message": "Something like:\n\ntype Config interface {\n    Config() string\n}\n\ntype Option struct {\n    Name string\n    Value string\n}\n\nvar _ Config \u003d Option{}\n\nfunc (o Option) Config() string {\n    return fmt.Sprintf(`\u003coption name\u003d\"%s\" value\u003d\"%s\" /\u003e`, o.Name, o.Value)\n}\n\ntype Preparer struct {\n    Class string\n}\n\nvar _ Config \u003d Preparer{}\n\nfunc (p Preparer) Config() string {\n    fmt.Sprintf(`\u003ctarget_preparer class\u003d\"%s\" /\u003e`, p.Class)\n}\n\n\nThen replace optionsMap map[string]string with config []Config, and have the caller do:\n\nvar config []tradefed.Config\nif Require_root {\n    config \u003d append(config, tradefed.Preparer{\".RootPreparer\"})\n}",
+      "parentUuid": "f4e98710_91c3f77c",
+      "range": {
+        "startLine": 60,
+        "startChar": 124,
+        "endLine": 60,
+        "endChar": 142
+      },
+      "revId": "3192c1cf5930291769607741feda848ad973a677",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
