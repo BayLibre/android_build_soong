@@ -142,6 +142,24 @@
     },
     {
       "key": {
+        "uuid": "7ea6c01c_7107f960",
+        "filename": "android/package.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-13T20:01:04Z",
+      "side": 1,
+      "message": "That would be a new blueprint feature.",
+      "parentUuid": "190dc8b4_e4bc14b1",
+      "revId": "8957f4e28b4abe2b5292e9a84391bb72a9f156b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aaabc111_7214d205",
         "filename": "android/package.go",
         "patchSetId": 3
@@ -271,6 +289,30 @@
       "side": 1,
       "message": "The semantics of the packageInfo() function would be a bit different taking this approach. Currently, when it is called by the visibility module it could return nil if it did not find a PackageInfo. However, switching to this would mean that packageInfo() always return a valid, albeit it empty, PackageInfo object. Is that creation of lots of PackageInfo objects going to be an issue?",
       "parentUuid": "62c4034d_0a398495",
+      "range": {
+        "startLine": 184,
+        "startChar": 21,
+        "endLine": 184,
+        "endChar": 25
+      },
+      "revId": "8957f4e28b4abe2b5292e9a84391bb72a9f156b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd10708a_7924829e",
+        "filename": "android/package.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-13T20:01:04Z",
+      "side": 1,
+      "message": "Use the above code for newPackageInfo, and implement packageInfo as:\n\nfunc packageInfo(ctx BaseModuleContext, packageName string) *PackageInfo {\n    key :\u003d NewCustomOnceKey(defaultPackageInfoKey(packageName))\n\n    return ctx.Config().Once(key, func() interface{} {\n        return nil\n    }).(*PackageInfo)\n}",
+      "parentUuid": "c099992b_6ab79b58",
       "range": {
         "startLine": 184,
         "startChar": 21,
