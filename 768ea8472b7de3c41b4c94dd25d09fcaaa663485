@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "76431328_a04e602e",
+        "filename": "ui/build/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-13T17:13:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14e5afd2_5966ae22",
+      "range": {
+        "startLine": 256,
+        "startChar": 3,
+        "endLine": 256,
+        "endChar": 5
+      },
+      "revId": "768ea8472b7de3c41b4c94dd25d09fcaaa663485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de43c6e0_a9b55b2e",
         "filename": "ui/build/config.go",
         "patchSetId": 12
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6b5cbc57_25b70332",
+        "filename": "ui/build/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-13T17:13:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de43c6e0_a9b55b2e",
+      "range": {
+        "startLine": 363,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 15
+      },
+      "revId": "768ea8472b7de3c41b4c94dd25d09fcaaa663485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "417f8a3b_1cb05c3a",
         "filename": "ui/build/config.go",
         "patchSetId": 12
@@ -62,6 +110,24 @@
       "revId": "768ea8472b7de3c41b4c94dd25d09fcaaa663485",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be54e911_1d08fc75",
+        "filename": "ui/build/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-13T17:13:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "417f8a3b_1cb05c3a",
+      "revId": "768ea8472b7de3c41b4c94dd25d09fcaaa663485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -85,6 +151,30 @@
       "revId": "768ea8472b7de3c41b4c94dd25d09fcaaa663485",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "379fc9b1_418a3f00",
+        "filename": "ui/build/config.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-13T17:13:05Z",
+      "side": 1,
+      "message": "No, it\u0027s fine that if the user specified the following: mmma external: It will basically build all the modules under that directory. I covered it in my unit test cases.",
+      "parentUuid": "f478ea98_577c691d",
+      "range": {
+        "startLine": 413,
+        "startChar": 12,
+        "endLine": 413,
+        "endChar": 25
+      },
+      "revId": "768ea8472b7de3c41b4c94dd25d09fcaaa663485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -123,6 +213,24 @@
     },
     {
       "key": {
+        "uuid": "d5ee032d_8aab562b",
+        "filename": "ui/build/config_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-13T17:13:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ecc6fa6_f1c786d4",
+      "revId": "768ea8472b7de3c41b4c94dd25d09fcaaa663485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0ecdf2a2_97e68045",
         "filename": "ui/build/config_test.go",
         "patchSetId": 12
@@ -146,6 +254,30 @@
     },
     {
       "key": {
+        "uuid": "7c5eae83_1ac8d8a7",
+        "filename": "ui/build/config_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-13T17:13:05Z",
+      "side": 1,
+      "message": "I would leave as it as the function is only isolated to ui/build go package and any error in the ui layer, the UI just ends the execution in the spot. If I change the function definition to return a boolean value, there is no point of having the function defined as we just check if the directory exists. I created this function since there was code duplication.",
+      "parentUuid": "0ecdf2a2_97e68045",
+      "range": {
+        "startLine": 222,
+        "startChar": 3,
+        "endLine": 222,
+        "endChar": 41
+      },
+      "revId": "768ea8472b7de3c41b4c94dd25d09fcaaa663485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc1d050e_f8e45276",
         "filename": "ui/build/config_test.go",
         "patchSetId": 12
@@ -160,6 +292,24 @@
       "revId": "768ea8472b7de3c41b4c94dd25d09fcaaa663485",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "872f9294_f3de30ac",
+        "filename": "ui/build/config_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-13T17:13:05Z",
+      "side": 1,
+      "message": "If I understand correctly, there is one case \"Error verifying tree state:\" that will be raised. This can happen if the os.IsNotExist returned a different, unexpected error.",
+      "parentUuid": "fc1d050e_f8e45276",
+      "revId": "768ea8472b7de3c41b4c94dd25d09fcaaa663485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +336,30 @@
     },
     {
       "key": {
+        "uuid": "1195d3f2_6f44c887",
+        "filename": "ui/build/config_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-13T17:13:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96111275_63671957",
+      "range": {
+        "startLine": 234,
+        "startChar": 4,
+        "endLine": 234,
+        "endChar": 50
+      },
+      "revId": "768ea8472b7de3c41b4c94dd25d09fcaaa663485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe2221dd_bd37fb8e",
         "filename": "ui/build/config_test.go",
         "patchSetId": 12
@@ -209,6 +383,30 @@
     },
     {
       "key": {
+        "uuid": "356cfbd0_d92c32bb",
+        "filename": "ui/build/config_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-13T17:13:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe2221dd_bd37fb8e",
+      "range": {
+        "startLine": 500,
+        "startChar": 28,
+        "endLine": 500,
+        "endChar": 32
+      },
+      "revId": "768ea8472b7de3c41b4c94dd25d09fcaaa663485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52b33335_f76bf5a8",
         "filename": "ui/build/config_test.go",
         "patchSetId": 12
@@ -223,6 +421,24 @@
       "revId": "768ea8472b7de3c41b4c94dd25d09fcaaa663485",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4aff9017_523f9def",
+        "filename": "ui/build/config_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-13T17:13:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52b33335_f76bf5a8",
+      "revId": "768ea8472b7de3c41b4c94dd25d09fcaaa663485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
