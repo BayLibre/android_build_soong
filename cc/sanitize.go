@@ -78,6 +78,7 @@ const (
 	cfi
 	scs
 	fuzzer
+	ubsan
 )
 
 // Name of the sanitizer variation for this sanitizer type
@@ -97,6 +98,8 @@ func (t sanitizerType) variationName() string {
 		return "scs"
 	case fuzzer:
 		return "fuzzer"
+	case ubsan:
+		return "ubsan"
 	default:
 		panic(fmt.Errorf("unknown sanitizerType %d", t))
 	}
@@ -119,6 +122,8 @@ func (t sanitizerType) name() string {
 		return "shadow-call-stack"
 	case fuzzer:
 		return "fuzzer"
+	case ubsan:
+		return "all_undefined"
 	default:
 		panic(fmt.Errorf("unknown sanitizerType %d", t))
 	}
@@ -130,13 +135,13 @@ type SanitizeProperties struct {
 		Never *bool `android:"arch_variant"`
 
 		// main sanitizers
-		Address   *bool `android:"arch_variant"`
-		Thread    *bool `android:"arch_variant"`
-		Hwaddress *bool `android:"arch_variant"`
+		Address       *bool `android:"arch_variant"`
+		Thread        *bool `android:"arch_variant"`
+		Hwaddress     *bool `android:"arch_variant"`
+		All_undefined *bool `android:"arch_variant"`
 
 		// local sanitizers
 		Undefined        *bool    `android:"arch_variant"`
-		All_undefined    *bool    `android:"arch_variant"`
 		Misc_undefined   []string `android:"arch_variant"`
 		Fuzzer           *bool    `android:"arch_variant"`
 		Safestack        *bool    `android:"arch_variant"`
@@ -321,16 +326,6 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 		s.Diag.Cfi = nil
 	}
 
-	// Disable sanitizers that depend on the UBSan runtime for host builds.
-	if ctx.Host() {
-		s.Cfi = nil
-		s.Diag.Cfi = nil
-		s.Misc_undefined = nil
-		s.Undefined = nil
-		s.All_undefined = nil
-		s.Integer_overflow = nil
-	}
-
 	// Also disable CFI for VNDK variants of components
 	if ctx.isVndk() && ctx.useVndk() {
 		s.Cfi = nil
@@ -349,8 +344,13 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 		s.Thread = nil
 	}
 
-	if Bool(s.All_undefined) {
+	// All_undefined is the overarching UBSan option. If it is explicitly specified
+	// (either enabled or disabled), we wish to override the settings of other UBSan
+	// subsets.
+	if s.All_undefined != nil {
 		s.Undefined = nil
+		s.Misc_undefined = nil
+		s.Integer_overflow = nil
 	}
 
 	if !ctx.toolchain().Is64Bit() {
@@ -491,8 +491,13 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 		}
 	}
 
-	if Bool(sanitize.Properties.Sanitize.Integer_overflow) {
-		flags.CFlags = append(flags.CFlags, intOverflowCflags...)
+	// All_undefined is the overarching UBSan option. If it is explicitly specified
+	// (either enabled or disabled), we wish to override the settings of other UBSan
+	// subsets.
+	if sanitize.Properties.Sanitize.All_undefined == nil {
+		if Bool(sanitize.Properties.Sanitize.Integer_overflow) {
+			flags.CFlags = append(flags.CFlags, intOverflowCflags...)
+		}
 	}
 
 	if len(sanitize.Properties.Sanitizers) > 0 {
@@ -585,6 +590,8 @@ func (sanitize *sanitize) getSanitizerBoolPtr(t sanitizerType) *bool {
 		return sanitize.Properties.Sanitize.Scs
 	case fuzzer:
 		return sanitize.Properties.Sanitize.Fuzzer
+	case ubsan:
+		return sanitize.Properties.Sanitize.All_undefined
 	default:
 		panic(fmt.Errorf("unknown sanitizerType %d", t))
 	}
@@ -596,7 +603,8 @@ func (sanitize *sanitize) isUnsanitizedVariant() bool {
 		!sanitize.isSanitizerEnabled(tsan) &&
 		!sanitize.isSanitizerEnabled(cfi) &&
 		!sanitize.isSanitizerEnabled(scs) &&
-		!sanitize.isSanitizerEnabled(fuzzer)
+		!sanitize.isSanitizerEnabled(fuzzer) &&
+		!sanitize.isSanitizerEnabled(ubsan)
 }
 
 func (sanitize *sanitize) isVariantOnProductionDevice() bool {
@@ -622,6 +630,8 @@ func (sanitize *sanitize) SetSanitizer(t sanitizerType, b bool) {
 		sanitize.Properties.Sanitize.Scs = boolPtr(b)
 	case fuzzer:
 		sanitize.Properties.Sanitize.Fuzzer = boolPtr(b)
+	case ubsan:
+		sanitize.Properties.Sanitize.All_undefined = boolPtr(b)
 	default:
 		panic(fmt.Errorf("unknown sanitizerType %d", t))
 	}
@@ -707,7 +717,8 @@ func sanitizerRuntimeDepsMutator(mctx android.TopDownMutatorContext) {
 					// make sure we include the ubsan minimal runtime.
 					c.sanitize.Properties.MinimalRuntimeDep = true
 				} else if Bool(d.sanitize.Properties.Sanitize.Diag.Integer_overflow) ||
-					len(d.sanitize.Properties.Sanitize.Diag.Misc_undefined) > 0 {
+					len(d.sanitize.Properties.Sanitize.Diag.Misc_undefined) > 0 ||
+					Bool(d.sanitize.Properties.Sanitize.All_undefined) {
 					// If a static dependency runs with full ubsan diagnostics,
 					// make sure we include the ubsan runtime.
 					c.sanitize.Properties.UbsanRuntimeDep = true
@@ -729,7 +740,11 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 
 		if Bool(c.sanitize.Properties.Sanitize.All_undefined) {
 			sanitizers = append(sanitizers, "undefined")
-		} else {
+			diagSanitizers = append(diagSanitizers, "undefined")
+		} else if c.sanitize.Properties.Sanitize.All_undefined == nil {
+			// All_undefined is the overarching UBSan option. Only enable "undefined",
+			// "misc_undefined", and "integer_overflow" options if All_undefined is not
+			// specified.
 			if Bool(c.sanitize.Properties.Sanitize.Undefined) {
 				sanitizers = append(sanitizers,
 					"bool",
@@ -754,15 +769,20 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 					// http://reviews.llvm.org/D6974
 					// "object-size",
 				)
+				diagSanitizers = append(diagSanitizers, "undefined")
 			}
 			sanitizers = append(sanitizers, c.sanitize.Properties.Sanitize.Misc_undefined...)
-		}
+			diagSanitizers = append(diagSanitizers, c.sanitize.Properties.Sanitize.Diag.Misc_undefined...)
 
-		if Bool(c.sanitize.Properties.Sanitize.Diag.Undefined) {
-			diagSanitizers = append(diagSanitizers, "undefined")
+			if Bool(c.sanitize.Properties.Sanitize.Integer_overflow) {
+				sanitizers = append(sanitizers, "unsigned-integer-overflow")
+				sanitizers = append(sanitizers, "signed-integer-overflow")
+				if Bool(c.sanitize.Properties.Sanitize.Diag.Integer_overflow) {
+					diagSanitizers = append(diagSanitizers, "unsigned-integer-overflow")
+					diagSanitizers = append(diagSanitizers, "signed-integer-overflow")
+				}
+			}
 		}
-
-		diagSanitizers = append(diagSanitizers, c.sanitize.Properties.Sanitize.Diag.Misc_undefined...)
 
 		if Bool(c.sanitize.Properties.Sanitize.Address) {
 			sanitizers = append(sanitizers, "address")
@@ -786,15 +806,6 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 
 			if Bool(c.sanitize.Properties.Sanitize.Diag.Cfi) {
 				diagSanitizers = append(diagSanitizers, "cfi")
-			}
-		}
-
-		if Bool(c.sanitize.Properties.Sanitize.Integer_overflow) {
-			sanitizers = append(sanitizers, "unsigned-integer-overflow")
-			sanitizers = append(sanitizers, "signed-integer-overflow")
-			if Bool(c.sanitize.Properties.Sanitize.Diag.Integer_overflow) {
-				diagSanitizers = append(diagSanitizers, "unsigned-integer-overflow")
-				diagSanitizers = append(diagSanitizers, "signed-integer-overflow")
 			}
 		}
 
@@ -834,6 +845,8 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 			} else {
 				runtimeLibrary = config.ScudoRuntimeLibrary(toolchain)
 			}
+		} else if Bool(c.sanitize.Properties.Sanitize.All_undefined) {
+			runtimeLibrary = config.UndefinedBehaviorSanitizerRuntimeLibrary(toolchain)
 		} else if len(diagSanitizers) > 0 || c.sanitize.Properties.UbsanRuntimeDep {
 			runtimeLibrary = config.UndefinedBehaviorSanitizerRuntimeLibrary(toolchain)
 		}
@@ -961,6 +974,14 @@ func sanitizerMutator(t sanitizerType) func(android.BottomUpMutatorContext) {
 						modules[1].(*Module).Properties.PreventInstall = true
 						modules[1].(*Module).Properties.HideFromMake = true
 					}
+				} else if t == ubsan {
+					if isSanitizerEnabled {
+						modules[0].(*Module).Properties.PreventInstall = true
+						modules[0].(*Module).Properties.HideFromMake = true
+					} else {
+						modules[1].(*Module).Properties.PreventInstall = true
+						modules[1].(*Module).Properties.HideFromMake = true
+					}
 				} else if t == hwasan {
 					if mctx.Device() {
 						// CFI and HWASAN are currently mutually exclusive so disable
@@ -1024,16 +1045,25 @@ func hwasanVendorStaticLibs(config android.Config) *[]string {
 }
 
 func enableMinimalRuntime(sanitize *sanitize) bool {
-	if !Bool(sanitize.Properties.Sanitize.Address) &&
-		!Bool(sanitize.Properties.Sanitize.Hwaddress) &&
-		!Bool(sanitize.Properties.Sanitize.Fuzzer) &&
-		(Bool(sanitize.Properties.Sanitize.Integer_overflow) ||
-			len(sanitize.Properties.Sanitize.Misc_undefined) > 0) &&
-		!(Bool(sanitize.Properties.Sanitize.Diag.Integer_overflow) ||
-			Bool(sanitize.Properties.Sanitize.Diag.Cfi) ||
-			len(sanitize.Properties.Sanitize.Diag.Misc_undefined) > 0) {
+	prop := &sanitize.Properties.Sanitize
+	if Bool(prop.Address) || Bool(prop.Hwaddress) || Bool(prop.Fuzzer) {
+		return false
+	}
+
+	if Bool(prop.All_undefined) {
 		return true
 	}
+
+	// Diagnostic sanitizers should use the full runtime.
+	if Bool(prop.Diag.Integer_overflow) || Bool(prop.Diag.Cfi) ||
+		len(sanitize.Properties.Sanitize.Diag.Misc_undefined) > 0 {
+		return false
+	}
+
+	if len(prop.Misc_undefined) > 0 || Bool(prop.Integer_overflow) {
+		return true
+	}
+
 	return false
 }
 
