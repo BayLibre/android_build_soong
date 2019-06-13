@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "37e7ea2b_4c2ede28",
+        "filename": "ui/terminal/smart_status.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-13T17:37:16Z",
+      "side": 1,
+      "message": "Leaving this for a future improvement.",
+      "parentUuid": "efe36c2b_3bdc06e5",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 80,
+        "endChar": 40
+      },
+      "revId": "1de6ac2027afbf38ef1d2e5ff0d3ed7a45152522",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e061b07_38263ae0",
         "filename": "ui/terminal/smart_status.go",
         "patchSetId": 4
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "1f06be04_d71a4618",
+        "filename": "ui/terminal/smart_status.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-13T17:37:16Z",
+      "side": 1,
+      "message": "I went back to updating the status when starting actions.",
+      "parentUuid": "8e061b07_38263ae0",
+      "revId": "1de6ac2027afbf38ef1d2e5ff0d3ed7a45152522",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df33c514_e1cca932",
         "filename": "ui/terminal/smart_status.go",
         "patchSetId": 4
@@ -56,6 +98,24 @@
       "revId": "1de6ac2027afbf38ef1d2e5ff0d3ed7a45152522",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f41e436_11d3bc14",
+        "filename": "ui/terminal/smart_status.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-13T17:37:16Z",
+      "side": 1,
+      "message": "Fixed the panning logic to only pan in one direction, and cap the pan to the table height.",
+      "parentUuid": "df33c514_e1cca932",
+      "revId": "1de6ac2027afbf38ef1d2e5ff0d3ed7a45152522",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
