@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d20511bc_3f578f0f",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-14T21:23:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac0313f8_5202e225",
+      "range": {
+        "startLine": 323,
+        "startChar": 14,
+        "endLine": 323,
+        "endChar": 23
+      },
+      "revId": "8b86543b69a5ae78cea7d32091b488e54b587b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d2a0da2_66292a57",
         "filename": "cmd/soong_ui/main.go",
         "patchSetId": 15
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "5eec1228_dc8e102b",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-14T21:23:05Z",
+      "side": 1,
+      "message": "Ah ok. Makes sense. Done.",
+      "parentUuid": "7d2a0da2_66292a57",
+      "range": {
+        "startLine": 374,
+        "startChar": 2,
+        "endLine": 374,
+        "endChar": 12
+      },
+      "revId": "8b86543b69a5ae78cea7d32091b488e54b587b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be6ce658_ccf3a34b",
         "filename": "cmd/soong_ui/main.go",
         "patchSetId": 15
@@ -68,6 +116,30 @@
       "revId": "8b86543b69a5ae78cea7d32091b488e54b587b2b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d8b17a5_79412267",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-14T21:23:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be6ce658_ccf3a34b",
+      "range": {
+        "startLine": 393,
+        "startChar": 0,
+        "endLine": 393,
+        "endChar": 12
+      },
+      "revId": "8b86543b69a5ae78cea7d32091b488e54b587b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
