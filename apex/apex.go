@@ -274,6 +274,9 @@ type apexBundleProperties struct {
 
 	// List of sanitizer names that this APEX is enabled for
 	SanitizerNames []string `blueprint:"mutated"`
+
+	// Omit hashtree from avb footer of payload image. Default is false.
+	No_hashtree *bool
 }
 
 type apexTargetBundleProperties struct {
@@ -1003,6 +1006,10 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext, apexType ap
 			implicitInputs = append(implicitInputs, apiFingerprint)
 		}
 		optFlags = append(optFlags, "--target_sdk_version "+targetSdkVersion)
+
+		if proptools.Bool(a.properties.No_hashtree) {
+			optFlags = append(optFlags, "--no_hashtree")
+		}
 
 		ctx.Build(pctx, android.BuildParams{
 			Rule:        apexRule,
