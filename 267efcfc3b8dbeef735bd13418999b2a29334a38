@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1397585_8c0b5477",
+        "filename": "ui/status/log.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-14T20:32:06Z",
+      "side": 1,
+      "message": "put this in a separate section after the stdlib imports but before the soong imports",
+      "revId": "267efcfc3b8dbeef735bd13418999b2a29334a38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1370c47b_0b543f91",
+        "filename": "ui/status/log.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-14T20:32:06Z",
+      "side": 1,
+      "message": "Would this be better as a separate NewProtoErrorLog?",
+      "revId": "267efcfc3b8dbeef735bd13418999b2a29334a38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
