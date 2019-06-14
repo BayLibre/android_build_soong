@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "90c47927_aff51303",
+        "filename": "ui/status/build_status_proto/build_status.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-14T19:01:39Z",
+      "side": 1,
+      "message": "I copied the template from the metrics.proto file (https://cs.corp.google.com/android/build/soong/ui/metrics/metrics_proto/metrics.proto?dr\u0026q\u003dbuild_metrics\u0026sq\u003dpackage:android\u0026g\u003d0\u0026l\u003d19). Both proto files will be ingested by the dremel_exporter. Removed it.",
+      "parentUuid": "e1110eec_8270f246",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 35
+      },
+      "revId": "ed7e98db8504dc27676c6cdea357a4e1cdb5d862",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ab3cc680_acefd595",
         "filename": "ui/status/build_status_proto/build_status.proto",
         "patchSetId": 4
@@ -69,6 +93,30 @@
       "revId": "ed7e98db8504dc27676c6cdea357a4e1cdb5d862",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6843e96c_27c7f48e",
+        "filename": "ui/status/build_status_proto/build_status.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-14T19:01:39Z",
+      "side": 1,
+      "message": "Good point. busytown has BuildStatus enum (https://cs.corp.google.com/piper///depot/google3/wireless/android/busytown/proto/build.proto?dr\u0026rcl\u003d252742750\u0026g\u003d0\u0026l\u003d165) so I renamed the message so it is specifically to soong.",
+      "parentUuid": "ab3cc680_acefd595",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 19
+      },
+      "revId": "ed7e98db8504dc27676c6cdea357a4e1cdb5d862",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

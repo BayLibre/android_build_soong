@@ -172,6 +172,24 @@
     },
     {
       "key": {
+        "uuid": "0b223e9c_19c8cbdc",
+        "filename": "ui/status/log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-14T19:01:39Z",
+      "side": 1,
+      "message": "Ah! I wanted to make it clear that it\u0027s related to the proto file. I have no problem merge in to errorLog struct.",
+      "parentUuid": "cb023989_4c665cc4",
+      "revId": "5a15593c5c580d36f001e995a02231c92ee92719",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3545976a_873914bb",
         "filename": "ui/status/log.go",
         "patchSetId": 2
@@ -278,6 +296,30 @@
       "side": 1,
       "message": "Please check them again (and the actual codes that write to them). I don\u0027t really think they are meant to hold the same type of data.",
       "parentUuid": "1eb765af_d17ac7cc",
+      "range": {
+        "startLine": 163,
+        "startChar": 40,
+        "endLine": 163,
+        "endChar": 77
+      },
+      "revId": "5a15593c5c580d36f001e995a02231c92ee92719",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb81d589_96ab1d3f",
+        "filename": "ui/status/log.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-14T19:01:39Z",
+      "side": 1,
+      "message": "@dwillemsen: Dan, is this ok to combine the two outputs? I read the comments and basically it says that Outputs is a list of files but it can be any string. Do you rather have a separate field in the proto message?",
+      "parentUuid": "d30db674_d584b0ec",
       "range": {
         "startLine": 163,
         "startChar": 40,
