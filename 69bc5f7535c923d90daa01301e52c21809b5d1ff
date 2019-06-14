@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2235ca71_1e218f0c",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-14T17:35:48Z",
+      "side": 1,
+      "message": "Can you share this logic with dexpreopt_bootjars.go somehow?",
+      "revId": "69bc5f7535c923d90daa01301e52c21809b5d1ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
