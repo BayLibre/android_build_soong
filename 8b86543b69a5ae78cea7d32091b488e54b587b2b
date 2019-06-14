@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac0313f8_5202e225",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-06-14T20:28:07Z",
+      "side": 1,
+      "message": "This should be using the ctx.Writer, like the `make` function does",
+      "range": {
+        "startLine": 323,
+        "startChar": 14,
+        "endLine": 323,
+        "endChar": 23
+      },
+      "revId": "8b86543b69a5ae78cea7d32091b488e54b587b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d2a0da2_66292a57",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-06-14T20:28:07Z",
+      "side": 1,
+      "message": "This should use ctx.Fatal*, not exit directly, so that the caller can perform cleanup",
+      "range": {
+        "startLine": 374,
+        "startChar": 2,
+        "endLine": 374,
+        "endChar": 12
+      },
+      "revId": "8b86543b69a5ae78cea7d32091b488e54b587b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be6ce658_ccf3a34b",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-06-14T20:28:07Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 393,
+        "startChar": 0,
+        "endLine": 393,
+        "endChar": 12
+      },
+      "revId": "8b86543b69a5ae78cea7d32091b488e54b587b2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
