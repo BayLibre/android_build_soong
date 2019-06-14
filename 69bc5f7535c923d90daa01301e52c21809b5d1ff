@@ -16,6 +16,24 @@
       "revId": "69bc5f7535c923d90daa01301e52c21809b5d1ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bb51d49_94d7923a",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-06-14T17:47:53Z",
+      "side": 1,
+      "message": "I had tried that at first, but everything uses the bootImageConfig, instead of the bootImage that dexpreopt_bootjars deals with.\n\nWe could save the computed module names in the bootImageConfig instead of regenerating them, but that\u0027s really not that much code... And dexpreopt_bootjars.go needs to know which files are which for the install rules, so it can\u0027t just use imagesDeps.",
+      "parentUuid": "2235ca71_1e218f0c",
+      "revId": "69bc5f7535c923d90daa01301e52c21809b5d1ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
