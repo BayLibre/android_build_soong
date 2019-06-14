@@ -34,6 +34,24 @@
       "revId": "69bc5f7535c923d90daa01301e52c21809b5d1ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1067b936_f44ec2fc",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-14T17:49:00Z",
+      "side": 1,
+      "message": "Move it to a helper function that takes an output directory and list of modules?",
+      "parentUuid": "7bb51d49_94d7923a",
+      "revId": "69bc5f7535c923d90daa01301e52c21809b5d1ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
