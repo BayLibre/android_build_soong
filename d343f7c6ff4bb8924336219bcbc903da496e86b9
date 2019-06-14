@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f30b9cd5_24ef7274",
+        "filename": "java/robolectric_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-14T20:02:25Z",
+      "side": 1,
+      "message": "Is there a reason you removed it?",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 20
+      },
+      "revId": "d343f7c6ff4bb8924336219bcbc903da496e86b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
