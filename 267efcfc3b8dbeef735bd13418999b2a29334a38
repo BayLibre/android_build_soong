@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "17d08dc0_8e941dd6",
+        "filename": "ui/status/log.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-14T22:07:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1397585_8c0b5477",
+      "revId": "267efcfc3b8dbeef735bd13418999b2a29334a38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1370c47b_0b543f91",
         "filename": "ui/status/log.go",
         "patchSetId": 5
@@ -33,6 +51,24 @@
       "revId": "267efcfc3b8dbeef735bd13418999b2a29334a38",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b0ed061_a5a68a51",
+        "filename": "ui/status/log.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-14T22:07:56Z",
+      "side": 1,
+      "message": "Good idea. It made the code much cleaner. Done.",
+      "parentUuid": "1370c47b_0b543f91",
+      "revId": "267efcfc3b8dbeef735bd13418999b2a29334a38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
