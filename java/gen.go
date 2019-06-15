@@ -109,6 +109,7 @@ func (j *Module) genSources(ctx android.ModuleContext, srcFiles android.Paths,
 	flags javaBuilderFlags) android.Paths {
 
 	outSrcFiles := make(android.Paths, 0, len(srcFiles))
+	var protoSrcs android.Paths
 
 	for _, srcFile := range srcFiles {
 		switch srcFile.Ext() {
@@ -120,14 +121,18 @@ func (j *Module) genSources(ctx android.ModuleContext, srcFiles android.Paths,
 			javaFile := genLogtags(ctx, srcFile)
 			outSrcFiles = append(outSrcFiles, javaFile)
 		case ".proto":
-			srcJarFile := genProto(ctx, srcFile, flags.proto)
-			outSrcFiles = append(outSrcFiles, srcJarFile)
+			protoSrcs = append(protoSrcs, srcFile)
 		case ".sysprop":
 			srcJarFile := genSysprop(ctx, srcFile)
 			outSrcFiles = append(outSrcFiles, srcJarFile)
 		default:
 			outSrcFiles = append(outSrcFiles, srcFile)
 		}
+	}
+
+	if len(protoSrcs) > 0 {
+		srcJarFiles := genProto(ctx, protoSrcs, flags.proto)
+		outSrcFiles = append(outSrcFiles, srcJarFiles...)
 	}
 
 	return outSrcFiles
