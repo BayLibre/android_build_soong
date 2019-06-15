@@ -18,6 +18,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"reflect"
 	"strconv"
 	"strings"
 	"testing"
@@ -674,18 +675,22 @@ func TestDroiddoc(t *testing.T) {
 		}
 		`)
 
-	stubsJar := filepath.Join(buildDir, ".intermediates", "bar-doc", "android_common", "bar-doc-stubs.srcjar")
-	barDoc := ctx.ModuleForTests("bar-doc", "android_common").Output("bar-doc-stubs.srcjar")
-	if stubsJar != barDoc.Output.String() {
-		t.Errorf("expected stubs Jar [%q], got %q", stubsJar, barDoc.Output.String())
-	}
-	inputs := ctx.ModuleForTests("bar-doc", "android_common").Rule("javadoc").Inputs
+	barDoc := ctx.ModuleForTests("bar-doc", "android_common").Rule("javadoc")
 	var javaSrcs []string
-	for _, i := range inputs {
+	for _, i := range barDoc.Inputs {
 		javaSrcs = append(javaSrcs, i.Base())
 	}
-	if len(javaSrcs) != 2 || javaSrcs[0] != "a.java" || javaSrcs[1] != "IFoo.java" {
-		t.Errorf("inputs of bar-doc must be []string{\"a.java\", \"IFoo.java\", but was %#v.", javaSrcs)
+	if len(javaSrcs) != 1 || javaSrcs[0] != "a.java" {
+		t.Errorf("inputs of bar-doc must be []string{\"a.java\"}, but was %#v.", javaSrcs)
+	}
+
+	aidl := ctx.ModuleForTests("bar-doc", "android_common").Rule("aidl")
+	if g, w := barDoc.Implicits.Strings(), aidl.Output.String(); !inList(w, g) {
+		t.Errorf("implicits of bar-doc must contain %q, but was %q.", w, g)
+	}
+
+	if g, w := aidl.Implicits.Strings(), []string{"bar-doc/IFoo.aidl"}; !reflect.DeepEqual(w, g) {
+		t.Errorf("aidl inputs must be %q, but was %q", w, g)
 	}
 }
 

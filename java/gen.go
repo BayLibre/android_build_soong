@@ -15,7 +15,11 @@
 package java
 
 import (
+	"strconv"
+	"strings"
+
 	"github.com/google/blueprint"
+	"github.com/google/blueprint/pathtools"
 
 	"android/soong/android"
 )
@@ -28,13 +32,6 @@ func init() {
 }
 
 var (
-	aidl = pctx.AndroidStaticRule("aidl",
-		blueprint.RuleParams{
-			Command:     "$aidlCmd -d$depFile $aidlFlags $in $out",
-			CommandDeps: []string{"$aidlCmd"},
-		},
-		"depFile", "aidlFlags")
-
 	logtags = pctx.AndroidStaticRule("logtags",
 		blueprint.RuleParams{
 			Command:     "$logtagsCmd -o $out $in",
@@ -59,23 +56,64 @@ var (
 		})
 )
 
-func genAidl(ctx android.ModuleContext, aidlFile android.Path, aidlFlags string, deps android.Paths) android.Path {
-	javaFile := android.GenPathWithExt(ctx, "aidl", aidlFile, "java")
-	depFile := javaFile.String() + ".d"
+func genAidl(ctx android.ModuleContext, aidlFiles android.Paths, aidlFlags string, deps android.Paths) android.Paths {
+	// Shard aidl files into groups of 50 to avoid having to recompile all of them if one changes and to avoid
+	// hitting command line length limits.
+	shards := shardPaths(aidlFiles, 50)
 
-	ctx.Build(pctx, android.BuildParams{
-		Rule:        aidl,
-		Description: "aidl " + aidlFile.Rel(),
-		Output:      javaFile,
-		Input:       aidlFile,
-		Implicits:   deps,
-		Args: map[string]string{
-			"depFile":   depFile,
-			"aidlFlags": aidlFlags,
-		},
-	})
+	srcJarFiles := make(android.Paths, 0, len(shards))
 
-	return javaFile
+	for i, shard := range shards {
+		srcJarFile := android.PathForModuleGen(ctx, "aidl", "aidl"+strconv.Itoa(i)+".srcjar")
+		srcJarFiles = append(srcJarFiles, srcJarFile)
+
+		outDir := srcJarFile.ReplaceExtension(ctx, "tmp")
+
+		rule := android.NewRuleBuilder()
+
+		rule.Command().Text("rm -rf").Flag(outDir.String())
+		rule.Command().Text("mkdir -p").Flag(outDir.String())
+		rule.Command().Text("FLAGS=' " + aidlFlags + "'")
+
+		for _, aidlFile := range shard {
+			depFile := srcJarFile.InSameDir(ctx, aidlFile.String()+".d")
+			javaFile := outDir.Join(ctx, pathtools.ReplaceExtension(aidlFile.String(), "java"))
+			rule.Command().
+				Tool(ctx.Config().HostToolPath(ctx, "aidl")).
+				FlagWithDepFile("-d", depFile).
+				Flag("$FLAGS").
+				Input(aidlFile).
+				Output(javaFile).
+				Implicits(deps)
+			rule.Temporary(javaFile)
+		}
+
+		rule.Command().
+			Tool(ctx.Config().HostToolPath(ctx, "soong_zip")).
+			// TODO(b/124333557): this can't use -srcjar for now, aidl on parcelables generates java files
+			//  without a package statement, which causes -srcjar to put them in the top level of the zip file.
+			//  Once aidl skips parcelables we can use -srcjar.
+			//Flag("-srcjar").
+			Flag("-write_if_changed").
+			FlagWithOutput("-o ", srcJarFile).
+			FlagWithArg("-C ", outDir.String()).
+			FlagWithArg("-D ", outDir.String())
+
+		rule.Command().Text("rm -rf").Flag(outDir.String())
+
+		rule.Restat()
+
+		ruleName := "aidl"
+		ruleDesc := "aidl"
+		if len(shards) > 1 {
+			ruleName += "_" + strconv.Itoa(i)
+			ruleDesc += " " + strconv.Itoa(i)
+		}
+
+		rule.Build(pctx, ctx, ruleName, ruleDesc)
+	}
+
+	return srcJarFiles
 }
 
 func genLogtags(ctx android.ModuleContext, logtagsFile android.Path) android.Path {
@@ -104,16 +142,31 @@ func genSysprop(ctx android.ModuleContext, syspropFile android.Path) android.Pat
 	return srcJarFile
 }
 
+func genAidlIncludeFlags(srcFiles android.Paths) string {
+	var baseDirs []string
+	for _, srcFile := range srcFiles {
+		if srcFile.Ext() == ".aidl" {
+			baseDir := strings.TrimSuffix(srcFile.String(), srcFile.Rel())
+			if baseDir != "" && !android.InList(baseDir, baseDirs) {
+				baseDirs = append(baseDirs, baseDir)
+			}
+		}
+	}
+	return android.JoinWithPrefix(baseDirs, " -I")
+}
+
 func (j *Module) genSources(ctx android.ModuleContext, srcFiles android.Paths,
 	flags javaBuilderFlags) android.Paths {
 
 	outSrcFiles := make(android.Paths, 0, len(srcFiles))
+	var aidlSrcs android.Paths
+
+	aidlIncludeFlags := genAidlIncludeFlags(srcFiles)
 
 	for _, srcFile := range srcFiles {
 		switch srcFile.Ext() {
 		case ".aidl":
-			javaFile := genAidl(ctx, srcFile, flags.aidlFlags, flags.aidlDeps)
-			outSrcFiles = append(outSrcFiles, javaFile)
+			aidlSrcs = append(aidlSrcs, srcFile)
 		case ".logtags":
 			j.logtagsSrcs = append(j.logtagsSrcs, srcFile)
 			javaFile := genLogtags(ctx, srcFile)
@@ -127,6 +180,12 @@ func (j *Module) genSources(ctx android.ModuleContext, srcFiles android.Paths,
 		default:
 			outSrcFiles = append(outSrcFiles, srcFile)
 		}
+	}
+
+	// Process all aidl files together to support sharding them into one or more rules that produce srcjars.
+	if len(aidlSrcs) > 0 {
+		srcJarFiles := genAidl(ctx, aidlSrcs, flags.aidlFlags+aidlIncludeFlags, flags.aidlDeps)
+		outSrcFiles = append(outSrcFiles, srcJarFiles...)
 	}
 
 	return outSrcFiles
