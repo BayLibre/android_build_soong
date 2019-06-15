@@ -458,20 +458,25 @@ func (j *Javadoc) genSources(ctx android.ModuleContext, srcFiles android.Paths,
 	flags droiddocBuilderFlags) android.Paths {
 
 	outSrcFiles := make(android.Paths, 0, len(srcFiles))
+	var aidlSrcs android.Paths
 
 	aidlIncludeFlags := genAidlIncludeFlags(srcFiles)
 
 	for _, srcFile := range srcFiles {
 		switch srcFile.Ext() {
 		case ".aidl":
-			javaFile := genAidl(ctx, srcFile, flags.aidlFlags+aidlIncludeFlags, flags.aidlDeps)
-			outSrcFiles = append(outSrcFiles, javaFile)
+			aidlSrcs = append(aidlSrcs, srcFile)
 		case ".logtags":
 			javaFile := genLogtags(ctx, srcFile)
 			outSrcFiles = append(outSrcFiles, javaFile)
 		default:
 			outSrcFiles = append(outSrcFiles, srcFile)
 		}
+	}
+
+	if len(aidlSrcs) > 0 {
+		srcJarFiles := genAidl(ctx, aidlSrcs, flags.aidlFlags+aidlIncludeFlags, flags.aidlDeps)
+		outSrcFiles = append(outSrcFiles, srcJarFiles...)
 	}
 
 	return outSrcFiles
