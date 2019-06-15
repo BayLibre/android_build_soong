@@ -615,18 +615,23 @@ func (j *Javadoc) genSources(ctx android.ModuleContext, srcFiles android.Paths,
 	flags droiddocBuilderFlags) android.Paths {
 
 	outSrcFiles := make(android.Paths, 0, len(srcFiles))
+	var aidlSrcs android.Paths
 
 	for _, srcFile := range srcFiles {
 		switch srcFile.Ext() {
 		case ".aidl":
-			javaFile := genAidl(ctx, srcFile, flags.aidlFlags, flags.aidlDeps)
-			outSrcFiles = append(outSrcFiles, javaFile)
+			aidlSrcs = append(aidlSrcs, srcFile)
 		case ".sysprop":
 			javaFile := genSysprop(ctx, srcFile)
 			outSrcFiles = append(outSrcFiles, javaFile)
 		default:
 			outSrcFiles = append(outSrcFiles, srcFile)
 		}
+	}
+
+	if len(aidlSrcs) > 0 {
+		srcJarFiles := genAidl(ctx, aidlSrcs, flags.aidlFlags, flags.aidlDeps)
+		outSrcFiles = append(outSrcFiles, srcJarFiles...)
 	}
 
 	return outSrcFiles
