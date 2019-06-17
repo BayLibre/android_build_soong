@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0dd9e68b_53358ab9",
+        "filename": "java/app_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-06-17T14:57:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f5cb8d90_d2bf92c1",
+      "revId": "849f3a4d7277eb55f77b29dac57b6b953cbcfbba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05b76bf2_2f1539a4",
         "filename": "java/java.go",
         "patchSetId": 6
@@ -30,6 +48,30 @@
       "writtenOn": "2019-06-13T20:57:14Z",
       "side": 1,
       "message": "This also seems like it is going to want its own link type",
+      "range": {
+        "startLine": 677,
+        "startChar": 36,
+        "endLine": 677,
+        "endChar": 59
+      },
+      "revId": "849f3a4d7277eb55f77b29dac57b6b953cbcfbba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eac82531_2d37dc00",
+        "filename": "java/java.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-06-17T14:57:09Z",
+      "side": 1,
+      "message": "The core_platform condition was added here (as was the none condition) so that it would return the same link type as it did before. I think that the link type should be part of sdkDep.",
+      "parentUuid": "05b76bf2_2f1539a4",
       "range": {
         "startLine": 677,
         "startChar": 36,
