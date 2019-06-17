@@ -2,6 +2,63 @@
   "comments": [
     {
       "key": {
+        "uuid": "a125c074_47441ef3",
+        "filename": "ui/status/build_error_proto/build_error.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-17T22:44:22Z",
+      "side": 1,
+      "message": "Maybe mention that these are error messages that are not associated with a build action?\n\nIs it necessary to preserve the ordering of these messages w.r.t. the action_errors?",
+      "revId": "38e8577220a0a0758ca872778038dad57959f096",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be08a6d3_485c67c0",
+        "filename": "ui/status/build_error_proto/build_error.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-17T22:44:22Z",
+      "side": 1,
+      "message": "I don\u0027t think this is \"additional\" - this is all of the output from the failing command, and in most cases is the only place that will contain the error message.",
+      "range": {
+        "startLine": 37,
+        "startChar": 9,
+        "endLine": 37,
+        "endChar": 19
+      },
+      "revId": "38e8577220a0a0758ca872778038dad57959f096",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da136aff_1b9ae7f2",
+        "filename": "ui/status/build_error_proto/build_error.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-17T22:44:22Z",
+      "side": 1,
+      "message": "In practice this will usually by \"exited with code: %d\", so not very useful for debugging.",
+      "revId": "38e8577220a0a0758ca872778038dad57959f096",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "123c149d_4f8d4d17",
         "filename": "ui/status/log.go",
         "patchSetId": 6
