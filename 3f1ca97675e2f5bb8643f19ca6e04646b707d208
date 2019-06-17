@@ -192,6 +192,30 @@
     },
     {
       "key": {
+        "uuid": "1b03abfd_3ed1b48a",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-17T19:36:35Z",
+      "side": 1,
+      "message": "I think that when the global default is private it makes sense for the package default visibility to not affect subpackages, but when the default is public it makes more sense to affect subpackages so you can set a whole package+subpackages to be private.\n\nI\u0027m not sure what the best way from here to there is.  Maybe affect subpackages for now, and then as part of the \"legacy_public\" transition we can copy package visiblity down to subpackages and then turn off affecting subpackages?",
+      "parentUuid": "295f04a8_ad90e396",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 45
+      },
+      "revId": "3f1ca97675e2f5bb8643f19ca6e04646b707d208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fdb9ce01_a08c793b",
         "filename": "android/package.go",
         "patchSetId": 2
