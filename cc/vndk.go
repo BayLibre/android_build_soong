@@ -102,29 +102,38 @@ func (vndk *vndkdep) typeName() string {
 	return "native:vendor:vndkspext"
 }
 
-func (vndk *vndkdep) vndkCheckLinkType(ctx android.ModuleContext, to *Module, tag dependencyTag) {
+func (vndk *vndkdep) vndkCheckLinkType(ctx android.ModuleContext, from *Module, to *Module, tag dependencyTag) {
 	if to.linker == nil {
 		return
+	}
+	fromStaticLib := false
+	if fromLib, ok := from.linker.(*libraryDecorator); ok {
+		fromStaticLib = fromLib.static()
 	}
 	if !vndk.isVndk() {
 		// Non-VNDK modules (those installed to /vendor) can't depend on modules marked with
 		// vendor_available: false.
 		violation := false
 		if lib, ok := to.linker.(*llndkStubDecorator); ok && !Bool(lib.Properties.Vendor_available) {
-			violation = true
+			if !fromStaticLib {
+				violation = true
+			}
 		} else {
-			if _, ok := to.linker.(libraryInterface); ok && to.VendorProperties.Vendor_available != nil && !Bool(to.VendorProperties.Vendor_available) {
+			if toLib, ok := to.linker.(libraryInterface); ok && to.VendorProperties.Vendor_available != nil && !Bool(to.VendorProperties.Vendor_available) {
 				// Vendor_available == nil && !Bool(Vendor_available) should be okay since
 				// it means a vendor-only library which is a valid dependency for non-VNDK
 				// modules.
-				violation = true
+				if !fromStaticLib || toLib.static() {
+					// non-VNDK vendor static libs are not allowed to depend on VNDK-private static libs.
+					violation = true
+				}
 			}
 		}
 		if violation {
 			ctx.ModuleErrorf("Vendor module that is not VNDK should not link to %q which is marked as `vendor_available: false`", to.Name())
 		}
 	}
-	if lib, ok := to.linker.(*libraryDecorator); !ok || !lib.shared() {
+	if toLib, ok := to.linker.(*libraryDecorator); !ok || !toLib.shared() {
 		// Check only shared libraries.
 		// Other (static and LL-NDK) libraries are allowed to link.
 		return
