@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db6382dc_b07021f9",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-06-17T16:56:14Z",
+      "side": 1,
+      "message": "it seems this still doesn\u0027t work for allowing static libs to link to VNDK-private libraries:\n\nerror: system/libhwbinder/Android.bp:78:1: module \"libhwbinder-impl-internal\" variant \"android_arm64_armv8-a_vendor_static\": Vendor module that is not VNDK should not link to \"libbinderthreadstate\" which is marked as `vendor_available: false`",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 161
+      },
+      "revId": "5a6dba8aecaa079db8e47f8cc3c5b861c990d0e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
