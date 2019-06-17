@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "123c149d_4f8d4d17",
+        "filename": "ui/status/log.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-17T22:40:59Z",
+      "side": 1,
+      "message": "result.Output and result.Action.Outputs are not the same thing (despite the naming) and should not be joined together.  result.Output is stdout from the command, which will generally contain the error messages.  result.Action.Outputs is the files in the build graph that the command products, i.e. \"out/soong/.intermediates/frameworks/base/framework/android_common/framework.jar\".  result.Action.Outputs should be added to a separate repeated string in the proto.",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 29
+      },
+      "revId": "38e8577220a0a0758ca872778038dad57959f096",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
