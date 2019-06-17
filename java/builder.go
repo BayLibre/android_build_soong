@@ -62,6 +62,48 @@ var (
 		"javacFlags", "bootClasspath", "classpath", "processorpath", "processor", "srcJars", "srcJarDir",
 		"outDir", "annoDir", "javaVersion")
 
+	// Run it with -add-opens=java.base/java.nio=ALL-UNNAMED to avoid JDK9's warning about
+	// "Illegal reflective access by com.google.protobuf.Utf8$UnsafeProcessor ... to field java.nio.Buffer.address
+	kytheExtract1 = pctx.AndroidStaticRule("kythe1",
+		blueprint.RuleParams{
+			Command: `[ ! -s $out.rsp ] || ` +
+				`KYTHE_ROOT_DIRECTORY=. KYTHE_OUTPUT_FILE=$out KYTHE_CORPUS=aosp ` +
+				`${config.SoongJavacWrapper} ${config.JavaCmd} --add-opens=java.base/java.nio=ALL-UNNAMED -jar ${config.JavaKytheExtractorJar} ` +
+				`${config.JavacHeapFlags} ${config.CommonJdkFlags} $processorpath $javacFlags $bootClasspath $classpath ` +
+				`-source $javaVersion -target $javaVersion -d $outDir -s $annoDir @$out.rsp`,
+			CommandDeps: []string{
+				"${config.JavaCmd}",
+				"${config.JavaKytheExtractorJar}",
+				"${config.ZipSyncCmd}",
+			},
+			CommandOrderOnly: []string{"${config.SoongJavacWrapper}"},
+			Rspfile:          "$out.rsp",
+			RspfileContent:   "$in",
+		},
+		"javacFlags", "bootClasspath", "classpath", "processorpath", "srcJars", "srcJarDir",
+		"outDir", "annoDir", "javaVersion")
+
+	kytheExtract2 = pctx.AndroidStaticRule("kythe2",
+		blueprint.RuleParams{
+			Command: `${config.ZipSyncCmd} -d $srcJarDir -l $srcJarDir/list -f "*.java" $srcJars && ` +
+				`( [ ! -s $srcJarDir/list -a ! -s $out.rsp ] || ` +
+				`KYTHE_ROOT_DIRECTORY=. KYTHE_OUTPUT_FILE=$out KYTHE_CORPUS=aosp ` +
+				`${config.SoongJavacWrapper} ${config.JavaCmd} --add-opens=java.base/java.nio=ALL-UNNAMED -jar ${config.JavaKytheExtractorJar} ` +
+				`${config.JavacHeapFlags} ${config.CommonJdkFlags} $processorpath $javacFlags $bootClasspath $classpath ` +
+				`-source $javaVersion -target $javaVersion ` +
+				`-d $outDir -s $annoDir @$out.rsp @$srcJarDir/list)`,
+			CommandDeps: []string{
+				"${config.JavaCmd}",
+				"${config.JavaKytheExtractorJar}",
+				"${config.ZipSyncCmd}",
+			},
+			CommandOrderOnly: []string{"${config.SoongJavacWrapper}"},
+			Rspfile:          "$out.rsp",
+			RspfileContent:   "$in",
+		},
+		"javacFlags", "bootClasspath", "classpath", "processorpath", "srcJars", "srcJarDir",
+		"outDir", "annoDir", "javaVersion")
+
 	turbine = pctx.AndroidStaticRule("turbine",
 		blueprint.RuleParams{
 			Command: `rm -rf "$outDir" && mkdir -p "$outDir" && ` +
@@ -194,6 +236,71 @@ func RunErrorProne(ctx android.ModuleContext, outputFile android.WritablePath,
 
 	transformJavaToClasses(ctx, outputFile, -1, srcFiles, srcJars, flags, nil,
 		"errorprone", "errorprone")
+}
+
+func RunKytheExtractor(ctx android.ModuleContext, extractionFile android.WritablePath,
+	srcFiles, srcJars android.Paths, flags javaBuilderFlags) {
+
+	deps := srcJars
+	var bootClasspath string
+	if flags.javaVersion == "1.9" {
+		deps = append(deps, flags.systemModules...)
+		bootClasspath = flags.systemModules.FormJavaSystemModulesPath("--system=", ctx.Device())
+	} else {
+		deps = append(deps, flags.bootClasspath...)
+		if len(flags.bootClasspath) == 0 && ctx.Device() {
+			// explicitly specify -bootclasspath "" if the bootclasspath is empty to
+			// ensure java does not fall back to the default bootclasspath.
+			bootClasspath = `-bootclasspath ""`
+		} else {
+			bootClasspath = flags.bootClasspath.FormJavaClassPath("-bootclasspath")
+		}
+	}
+
+	deps = append(deps, flags.classpath...)
+	deps = append(deps, flags.processorPath...)
+
+	srcJarDir := "srcjars.kythe"
+	outDir := "classes"
+	annoDir := "anno"
+	intermediatesDir := "javac"
+	if len(srcJars) > 0 {
+		ctx.Build(pctx, android.BuildParams{
+			Rule:        kytheExtract2,
+			Description: "Kythe Java extractor",
+			Output:      extractionFile,
+			Inputs:      srcFiles,
+			Implicits:   deps,
+			Args: map[string]string{
+				"javacFlags":    flags.javacFlags,
+				"bootClasspath": bootClasspath,
+				"classpath":     flags.classpath.FormJavaClassPath("-classpath"),
+				"processorpath": flags.processorPath.FormJavaClassPath("-processorpath"),
+				"srcJars":       strings.Join(srcJars.Strings(), " "),
+				"srcJarDir":     android.PathForModuleOut(ctx, intermediatesDir, srcJarDir).String(),
+				"outDir":        android.PathForModuleOut(ctx, "javac", outDir).String(),
+				"annoDir":       android.PathForModuleOut(ctx, intermediatesDir, annoDir).String(),
+				"javaVersion":   flags.javaVersion,
+			},
+		})
+	} else {
+		ctx.Build(pctx, android.BuildParams{
+			Rule:        kytheExtract1,
+			Description: "Kythe Java extractor",
+			Output:      extractionFile,
+			Inputs:      srcFiles,
+			Implicits:   deps,
+			Args: map[string]string{
+				"javacFlags":    flags.javacFlags,
+				"bootClasspath": bootClasspath,
+				"classpath":     flags.classpath.FormJavaClassPath("-classpath"),
+				"processorpath": flags.processorPath.FormJavaClassPath("-processorpath"),
+				"outDir":        android.PathForModuleOut(ctx, "javac", outDir).String(),
+				"annoDir":       android.PathForModuleOut(ctx, intermediatesDir, annoDir).String(),
+				"javaVersion":   flags.javaVersion,
+			},
+		})
+	}
 }
 
 func TransformJavaToHeaderClasses(ctx android.ModuleContext, outputFile android.WritablePath,
