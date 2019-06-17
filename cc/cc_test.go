@@ -514,6 +514,44 @@ func TestVndkDepError(t *testing.T) {
 			nocrt: true,
 		}
 	`)
+
+	// Check if a static lib is allowed to link with a vndk lib.
+	testCc(t, `
+		cc_library {
+			name: "libvndk",
+			vendor_available: true,
+			vndk: {
+				enabled: true,
+			},
+		}
+
+		cc_library_static {
+			name: "libvendorstatic",
+			soc_specific:true,
+			whole_static_libs: [
+				"libvndk",
+			],
+		}
+	`)
+
+	// Check if a static lib is allowed to link with a vndk-private lib.
+	testCc(t, `
+		cc_library {
+			name: "libvndkprivate",
+			vendor_available: false,
+			vndk: {
+				enabled: true,
+			},
+		}
+
+		cc_library_static {
+			name: "libvendorstatic",
+			soc_specific:true,
+			whole_static_libs: [
+				"libvndkprivate",
+			],
+		}
+	`)
 }
 
 func TestDoubleLoadbleDep(t *testing.T) {
