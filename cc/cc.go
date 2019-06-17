@@ -1449,7 +1449,7 @@ func checkLinkType(ctx android.ModuleContext, from *Module, to *Module, tag depe
 		// each vendor-available module needs to check
 		// link-type for VNDK.
 		if from.vndkdep != nil {
-			from.vndkdep.vndkCheckLinkType(ctx, to, tag)
+			from.vndkdep.vndkCheckLinkType(ctx, from, to, tag)
 		}
 		return
 	}
