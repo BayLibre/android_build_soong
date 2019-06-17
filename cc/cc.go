@@ -1448,6 +1448,10 @@ func checkLinkType(ctx android.ModuleContext, from *Module, to *Module, tag depe
 		// Though vendor code is limited by the vendor mutator,
 		// each vendor-available module needs to check
 		// link-type for VNDK.
+		if lib, ok := from.linker.(*libraryDecorator); ok && lib.static() {
+			// Vendor static libs have no restriction on using VNDK.
+			return
+		}
 		if from.vndkdep != nil {
 			from.vndkdep.vndkCheckLinkType(ctx, to, tag)
 		}

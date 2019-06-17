@@ -337,6 +337,119 @@ func TestVndk(t *testing.T) {
 	checkVndkSnapshot(t, ctx, "libvndk_sp", vndkSpLib2ndPath, variant2nd)
 }
 
+func TestVndkDep(t *testing.T) {
+	// Check if a vendor available static lib is allowed to depend on VNDK and VNDK-private libs;
+	// while a vendor available shared lib is allowed to depend on VNDK libs except VNDK-private libs.
+	testCc(t, `
+		cc_library {
+			name: "libllndk-private",
+			nocrt: true,
+		}
+
+		llndk_library {
+			name: "libllndk-private",
+			symbol_file: "",
+			vendor_available: false,
+		}
+
+		cc_library {
+			name: "libvndk-private",
+			vendor_available: false,
+			vndk: {
+				enabled: true,
+			},
+			shared_libs: [
+				"libllndk",
+				"libllndk-private",
+				"libvndksp",
+				"libvndksp-private",
+			],
+			nocrt: true,
+		}
+
+		cc_library {
+			name: "libvndksp-private",
+			vendor_available: false,
+			vndk: {
+				enabled: true,
+				support_system_process: true,
+			},
+			shared_libs: [
+				"libllndk",
+				"libllndk-private",
+			],
+			nocrt: true,
+		}
+
+		cc_library {
+			name: "libllndk",
+			shared_libs: [
+				"libllndk-private",
+			],
+			nocrt: true,
+		}
+
+		llndk_library {
+			name: "libllndk",
+			symbol_file: "",
+		}
+
+		cc_library {
+			name: "libvndk",
+			vendor_available: true,
+			vndk: {
+				enabled: true,
+			},
+			shared_libs: [
+				"libllndk",
+				"libllndk-private",
+				"libvndksp",
+				"libvndksp-private",
+				"libvndk-private",
+			],
+			nocrt: true,
+		}
+
+		cc_library {
+			name: "libvndksp",
+			vendor_available: true,
+			vndk: {
+				enabled: true,
+				support_system_process: true,
+			},
+			shared_libs: [
+				"libllndk",
+				"libllndk-private",
+				"libvndksp-private",
+			],
+			nocrt: true,
+		}
+
+		cc_library_static {
+			name: "libvendorstatic",
+			vendor_available: true,
+			shared_libs: [
+				"libllndk-private",
+				"libvndksp-private",
+				"libvndk-private",
+				"libllndk",
+				"libvndk",
+				"libvndksp",
+			],
+		}
+
+		cc_library {
+			name: "libvendor",
+			vendor_available: true,
+			shared_libs: [
+				"libllndk",
+				"libvndk",
+				"libvndksp",
+			],
+		}
+	`)
+}
+
 func TestVndkDepError(t *testing.T) {
 	// Check whether an error is emitted when a VNDK lib depends on a system lib.
 	testCcError(t, "dependency \".*\" of \".*\" missing variant", `
@@ -512,6 +625,68 @@ func TestVndkDepError(t *testing.T) {
 			name: "libnonvndk",
 			vendor_available: true,
 			nocrt: true,
+		}
+	`)
+
+	// Check whether an error is emitted when a non-VNDK lib depends on a VNDK-private lib.
+	testCcError(t, "module \"libvendor\" variant \".*\": Vendor module that is not VNDK should not link to \"libvndkprivate\" which is marked as `vendor_available: false`", `
+		cc_library {
+			name: "libvndkprivate",
+			vendor_available: false,
+			vndk: {
+				enabled: true,
+			},
+			nocrt: true,
+		}
+
+		cc_library {
+			name: "libvendor",
+			vendor_available: true,
+			shared_libs: [
+				"libvndkprivate",
+			],
+		}
+	`)
+
+	// Check whether an error is emitted when a non-VNDK lib depends on a VNDK-private lib statically.
+	testCcError(t, "module \"libvendorstaticlink\" variant \".*\": Vendor module that is not VNDK should not link to \"libvndkprivate\" which is marked as `vendor_available: false`", `
+		cc_library {
+			name: "libvndkprivate",
+			vendor_available: false,
+			vndk: {
+				enabled: true,
+			},
+			nocrt: true,
+		}
+
+		cc_library {
+			name: "libvendorstaticlink",
+			vendor_available: true,
+			static_libs: [
+				"libvndkprivate",
+			],
+		}
+	`)
+
+	// Check whether an error is emitted when a non-VNDK lib depends on an LLNDK-private lib.
+	testCcError(t, "module \"libvendor\" variant \".*\": Vendor module that is not VNDK should not link to \"libllndk-private.llndk\" which is marked as `vendor_available: false`", `
+		cc_library {
+			name: "libllndk-private",
+			nocrt: true,
+		}
+
+		llndk_library {
+			name: "libllndk-private",
+			symbol_file: "",
+			vendor_available: false,
+		}
+
+		cc_library {
+			name: "libvendor",
+			vendor_available: true,
+			shared_libs: [
+				"libllndk-private",
+			],
 		}
 	`)
 }
