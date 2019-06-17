@@ -1986,7 +1986,7 @@ func checkLinkType(ctx android.ModuleContext, from LinkableInterface, to Linkabl
 		// link-type for VNDK.
 		if ccTo, ok := to.(*Module); ok {
 			if ccFrom.vndkdep != nil {
-				ccFrom.vndkdep.vndkCheckLinkType(ctx, ccTo, tag)
+				ccFrom.vndkdep.vndkCheckLinkType(ctx, ccFrom, ccTo, tag)
 			}
 		} else {
 			ctx.ModuleErrorf("Attempting to link VNDK cc.Module with unsupported module type")
