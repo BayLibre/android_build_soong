@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "69362969_c75b079d",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-06-17T15:20:47Z",
+      "side": 1,
+      "message": "Small nit still unresolved.",
+      "parentUuid": "efaa495c_c998a83f",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 1
+      },
+      "revId": "8957f4e28b4abe2b5292e9a84391bb72a9f156b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c25ce5fc_4b5ff78e",
         "filename": "android/module.go",
         "patchSetId": 3
@@ -387,6 +411,30 @@
       "revId": "8957f4e28b4abe2b5292e9a84391bb72a9f156b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d591ccf_68a493cf",
+        "filename": "android/visibility_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-06-17T15:20:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6050ded5_a6ecb836",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 1
+      },
+      "revId": "8957f4e28b4abe2b5292e9a84391bb72a9f156b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
