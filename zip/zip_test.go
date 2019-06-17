@@ -554,3 +554,70 @@ func TestReadRespFile(t *testing.T) {
 		})
 	}
 }
+
+func TestSrcJar(t *testing.T) {
+	mockFs := pathtools.MockFs(map[string][]byte{
+		"wrong_package.java":       []byte("package foo;"),
+		"foo/correct_package.java": []byte("package foo;"),
+		"src/no_package.java":      nil,
+		"src2/parse_error.java":    []byte("error"),
+	})
+
+	want := []string{
+		"foo/",
+		"foo/wrong_package.java",
+		"foo/correct_package.java",
+		"no_package.java",
+		"src2/",
+		"src2/parse_error.java",
+	}
+
+	args := ZipArgs{}
+	args.FileArgs = NewFileArgsBuilder().File("**/*.java").FileArgs()
+
+	args.SrcJar = true
+	args.AddDirectoryEntriesToZip = true
+	args.Filesystem = mockFs
+	args.Stderr = &bytes.Buffer{}
+
+	buf := &bytes.Buffer{}
+	err := ZipTo(args, buf)
+	if err != nil {
+		t.Fatalf("got error %v", err)
+	}
+
+	br := bytes.NewReader(buf.Bytes())
+	zr, err := zip.NewReader(br, int64(br.Len()))
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	var got []string
+	for _, f := range zr.File {
+		r, err := f.Open()
+		if err != nil {
+			t.Fatalf("error when opening %s: %s", f.Name, err)
+		}
+
+		crc := crc32.NewIEEE()
+		len, err := io.Copy(crc, r)
+		r.Close()
+		if err != nil {
+			t.Fatalf("error when reading %s: %s", f.Name, err)
+		}
+
+		if uint64(len) != f.UncompressedSize64 {
+			t.Errorf("incorrect length for %s, want %d got %d", f.Name, f.UncompressedSize64, len)
+		}
+
+		if crc.Sum32() != f.CRC32 {
+			t.Errorf("incorrect crc for %s, want %x got %x", f.Name, f.CRC32, crc)
+		}
+
+		got = append(got, f.Name)
+	}
+
+	if !reflect.DeepEqual(want, got) {
+		t.Errorf("want files %q, got %q", want, got)
+	}
+}
