@@ -113,7 +113,8 @@ func (vndk *vndkdep) vndkCheckLinkType(ctx android.ModuleContext, to *Module, ta
 		if lib, ok := to.linker.(*llndkStubDecorator); ok && !Bool(lib.Properties.Vendor_available) {
 			violation = true
 		} else {
-			if _, ok := to.linker.(libraryInterface); ok && to.VendorProperties.Vendor_available != nil && !Bool(to.VendorProperties.Vendor_available) {
+			if lib, ok := to.linker.(*libraryDecorator); ok && lib.shared() && to.VendorProperties.Vendor_available != nil && !Bool(to.VendorProperties.Vendor_available) {
+				// This rule is only for shared libs.
 				// Vendor_available == nil && !Bool(Vendor_available) should be okay since
 				// it means a vendor-only library which is a valid dependency for non-VNDK
 				// modules.

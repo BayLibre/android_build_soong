@@ -514,6 +514,106 @@ func TestVndkDepError(t *testing.T) {
 			nocrt: true,
 		}
 	`)
+
+	// Check whether an error is emitted when a non-VNDK lib depends on a VNDK-private lib.
+	testCcError(t, "module \".*\" variant \".*\": Vendor module that is not VNDK should not link to \".*\" which is marked as `vendor_available: false`", `
+		cc_library {
+			name: "libvndkprivate",
+			vendor_available: false,
+			vndk: {
+				enabled: true,
+			},
+			nocrt: true,
+		}
+
+		cc_library {
+			name: "libvendor",
+			vendor_available: true,
+			shared_libs: [
+				"libvndkprivate",
+			],
+		}
+	`)
+
+	// Check if a static lib is allowed to link with a VNDK lib.
+	testCc(t, `
+		cc_library {
+			name: "libvndk",
+			vendor_available: true,
+			vndk: {
+				enabled: true,
+			},
+			nocrt: true,
+		}
+
+		cc_library_static {
+			name: "libvendorstatic",
+			vendor_available: true,
+			shared_libs: [
+				"libvndk",
+			],
+		}
+	`)
+
+	// Check if a static lib is allowed to link with a VNDK-private lib.
+	testCc(t, `
+		cc_library {
+			name: "libvndkprivate",
+			vendor_available: false,
+			vndk: {
+				enabled: true,
+			},
+			nocrt: true,
+		}
+
+		cc_library_static {
+			name: "libvendorstatic",
+			vendor_available:true,
+			shared_libs: [
+				"libvndkprivate",
+			],
+		}
+	`)
+
+	// Check if a non-VNDK lib is allowed to static link with a VNDK lib.
+	testCc(t, `
+		cc_library {
+			name: "libvndk",
+			vendor_available: true,
+			vndk: {
+				enabled: true,
+			},
+			nocrt: true,
+		}
+
+		cc_library {
+			name: "libvendorstatic",
+			vendor_available: true,
+			static_libs: [
+				"libvndk",
+			],
+		}
+	`)
+
+	// Check if a non-VNDK lib is allowed to static link with a VNDK-private lib.
+	testCc(t, `
+		cc_library {
+			name: "libvndkprivate",
+			vendor_available: false,
+			vndk: {
+				enabled: true,
+			},
+			nocrt: true,
+		}
+
+		cc_library {
+			name: "libvendorstatic",
+			vendor_available:true,
+			static_libs: [
+				"libvndkprivate",
+			],
+		}
+	`)
 }
 
 func TestDoubleLoadbleDep(t *testing.T) {
