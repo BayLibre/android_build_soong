@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6eda2420_f1400ff0",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1451,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-06-18T05:44:59Z",
+      "side": 1,
+      "message": "Isn\u0027t this too permissive? What if a vendor creates a static lib linking to private platform libs and include the static libs to vendor shared libs or executable?",
+      "revId": "3f6fd7be31173bb922611d1541764868ddcdfa54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
