@@ -16,6 +16,24 @@
       "revId": "78ff901e16892d4aca8a5b96552196d957b391de",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "051dd342_8dced7ff",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-06-18T20:27:33Z",
+      "side": 1,
+      "message": "Except ctx.Writer is what every other error would be written out with, so that should probably be using Stderr (whether it is right now or not), so that all errors are handled the same.\n\nWe keep the writer as stdout in the normal case, since we had issues with buildbot splitting the stdout and stderr streams, combining them again out-of-sync from each other. But w/dumpvars we expect stdout to just be the variable information, while stderr should have all the user-visible errors.",
+      "parentUuid": "4e669521_f487612b",
+      "revId": "78ff901e16892d4aca8a5b96552196d957b391de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
