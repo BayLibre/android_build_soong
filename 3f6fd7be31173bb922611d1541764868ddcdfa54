@@ -52,6 +52,47 @@
       "revId": "3f6fd7be31173bb922611d1541764868ddcdfa54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b1be263a_f9a26711",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1451,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-06-18T17:12:50Z",
+      "side": 1,
+      "message": "Thanks, you can see on my internal topic that this fixes the issue there.",
+      "parentUuid": "d43780d2_a3580bd2",
+      "revId": "3f6fd7be31173bb922611d1541764868ddcdfa54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75fb03bf_7ee547a4",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-06-18T17:12:50Z",
+      "side": 1,
+      "message": "this case shouldn\u0027t be allowed (since libvendorstatic here has a shared variant)?",
+      "range": {
+        "startLine": 598,
+        "startChar": 0,
+        "endLine": 616,
+        "endChar": 3
+      },
+      "revId": "3f6fd7be31173bb922611d1541764868ddcdfa54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
