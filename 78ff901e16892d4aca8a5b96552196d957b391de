@@ -52,6 +52,24 @@
       "revId": "78ff901e16892d4aca8a5b96552196d957b391de",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c59702b_69ad1452",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-18T20:43:13Z",
+      "side": 1,
+      "message": "Never mind. I got confused as we are setting up the stdio in the commands table.",
+      "parentUuid": "ace42492_bc91647c",
+      "revId": "78ff901e16892d4aca8a5b96552196d957b391de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
