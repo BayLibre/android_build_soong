@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e669521_f487612b",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-18T20:15:44Z",
+      "side": 1,
+      "message": "Using ctx.Writer is going to move this to os.Stdout, which may not be what we want.  It would mean scripts that call dumpvar could end up evaluating a usage message, instead of printing the usage message on stdout.",
+      "revId": "78ff901e16892d4aca8a5b96552196d957b391de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
