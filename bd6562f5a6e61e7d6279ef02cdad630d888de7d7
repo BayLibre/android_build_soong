@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4bc68fa7_e893882a",
+        "filename": "zip/zip.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-06-18T20:30:28Z",
+      "side": 1,
+      "message": "This should go above createParentDirs",
+      "range": {
+        "startLine": 623,
+        "startChar": 0,
+        "endLine": 628,
+        "endChar": 12
+      },
+      "revId": "bd6562f5a6e61e7d6279ef02cdad630d888de7d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
