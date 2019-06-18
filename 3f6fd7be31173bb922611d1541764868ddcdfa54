@@ -16,6 +16,24 @@
       "revId": "3f6fd7be31173bb922611d1541764868ddcdfa54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "411293c2_cd9b6ffa",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1451,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-06-18T05:59:14Z",
+      "side": 1,
+      "message": "vendors can create a static lib that depends on private platfrom libs. That is intended.\nHowever, to used the static lib from any vendor modules, they must add the shared libs that was included in the static lib. LinkType check will fail in this stage.",
+      "parentUuid": "6eda2420_f1400ff0",
+      "revId": "3f6fd7be31173bb922611d1541764868ddcdfa54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
