@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7162c12c_fd305ac6",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-18T05:54:40Z",
+      "side": 1,
+      "message": "len(image.modules)*len(exts)?",
+      "range": {
+        "startLine": 66,
+        "startChar": 38,
+        "endLine": 66,
+        "endChar": 56
+      },
+      "revId": "04ac7575e5cae8a75233057e47caebb1c8b38118",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ffa66d1_fb3bf79a",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-18T05:54:40Z",
+      "side": 1,
+      "message": "artOrOat",
+      "range": {
+        "startLine": 333,
+        "startChar": 8,
+        "endLine": 333,
+        "endChar": 14
+      },
+      "revId": "04ac7575e5cae8a75233057e47caebb1c8b38118",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
