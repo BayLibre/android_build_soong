@@ -308,6 +308,8 @@ type productVariables struct {
 	TargetFSConfigGen []string `json:",omitempty"`
 
 	MissingUsesLibraries []string `json:",omitempty"`
+
+	EmbedNotices *bool `json:",omitempty"`
 }
 
 func boolPtr(v bool) *bool {

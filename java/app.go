@@ -103,6 +103,8 @@ type appProperties struct {
 	// Use_embedded_native_libs still selects whether they are stored uncompressed and aligned or compressed.
 	// True for android_test* modules.
 	AlwaysPackageNativeLibs bool `blueprint:"mutated"`
+
+	Embed_notices *bool
 }
 
 // android_app properties that can be overridden by override_android_app
@@ -351,6 +353,49 @@ func (a *AndroidApp) jniBuildActions(jniLibs []jniLib, ctx android.ModuleContext
 	return jniJarFile
 }
 
+func (a *AndroidApp) noticeBuildActions(
+	ctx android.ModuleContext, installDir android.OutputPath) android.OptionalPath {
+	if !Bool(a.appProperties.Embed_notices) && !ctx.Config().EmbedNotices() {
+		return android.OptionalPath{}
+	}
+
+	// Collect NOTICE files from all dependencies.
+	noticePathMap := make(map[string]android.OptionalPath)
+	numNotices := 0
+	ctx.WalkDepsBlueprint(func(child blueprint.Module, parent blueprint.Module) bool {
+		if _, ok := child.(android.Module); !ok {
+			return false
+		}
+		path := child.(android.Module).NoticeFile()
+		if _, ok := noticePathMap[child.Name()]; !ok {
+			noticePathMap[child.Name()] = path
+			if path.Valid() {
+				numNotices++
+			}
+			return true
+		}
+		return false
+	})
+	// If the app has one, add it too.
+	if a.NoticeFile().Valid() {
+		noticePathMap[a.Name()] = a.NoticeFile()
+		numNotices++
+	}
+
+	if numNotices == 0 {
+		return android.OptionalPath{}
+	}
+	noticePaths := make([]android.Path, 0, numNotices)
+	for _, p := range noticePathMap {
+		if p.Valid() {
+			noticePaths = append(noticePaths, p.Path())
+		}
+	}
+	noticeFile := android.BuildNoticeHtml(ctx, installDir, a.installApkName+".apk", noticePaths)
+
+	return android.OptionalPathForPath(noticeFile)
+}
+
 // Reads and prepends a main cert from the default cert dir if it hasn't been set already, i.e. it
 // isn't a cert module reference. Also checks and enforces system cert restriction if applicable.
 func processMainCert(m android.ModuleBase, certPropValue string, certificates []Certificate, ctx android.ModuleContext) []Certificate {
@@ -390,6 +435,18 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 
 	// Check if the install APK name needs to be overridden.
 	a.installApkName = ctx.DeviceConfig().OverridePackageNameFor(a.Name())
+
+	var installDir android.OutputPath
+	if ctx.ModuleName() == "framework-res" {
+		// framework-res.apk is installed as system/framework/framework-res.apk
+		installDir = android.PathForModuleInstall(ctx, "framework")
+	} else if Bool(a.appProperties.Privileged) {
+		installDir = android.PathForModuleInstall(ctx, "priv-app", a.installApkName)
+	} else {
+		installDir = android.PathForModuleInstall(ctx, "app", a.installApkName)
+	}
+
+	a.aapt.noticeFile = a.noticeBuildActions(ctx, installDir)
 
 	// Process all building blocks, from AAPT to certificates.
 	a.aaptBuildActions(ctx)
@@ -432,16 +489,6 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 	a.bundleFile = bundleFile
 
 	// Install the app package.
-	var installDir android.OutputPath
-	if ctx.ModuleName() == "framework-res" {
-		// framework-res.apk is installed as system/framework/framework-res.apk
-		installDir = android.PathForModuleInstall(ctx, "framework")
-	} else if Bool(a.appProperties.Privileged) {
-		installDir = android.PathForModuleInstall(ctx, "priv-app", a.installApkName)
-	} else {
-		installDir = android.PathForModuleInstall(ctx, "app", a.installApkName)
-	}
-
 	ctx.InstallFile(installDir, a.installApkName+".apk", a.outputFile)
 	for _, split := range a.aapt.splits {
 		ctx.InstallFile(installDir, a.installApkName+"_"+split.suffix+".apk", split.path)
