@@ -46,6 +46,30 @@
       "revId": "8dcb06bcb4e5f9500bee09c1df817d754e437740",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ecf0cc4_43355cd7",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-06-18T01:53:05Z",
+      "side": 1,
+      "message": "I think the tool should be able to detect if the APEX being re-signed is with or without hashtree. If it is without hashtree, then the signed APEX should also be without hashtree, and vice versa.",
+      "parentUuid": "e0558ae2_ba87b0e0",
+      "range": {
+        "startLine": 278,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 20
+      },
+      "revId": "8dcb06bcb4e5f9500bee09c1df817d754e437740",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
