@@ -1087,6 +1087,10 @@ func (c *config) ProductHiddenAPIStubsTest() []string {
 	return c.productVariables.ProductHiddenAPIStubsTest
 }
 
+func (c *config) AlwaysEmbedNotices() bool {
+	return Bool(c.productVariables.AlwaysEmbedNotices)
+}
+
 func (c *deviceConfig) TargetFSConfigGen() []string {
 	return c.config.productVariables.TargetFSConfigGen
 }

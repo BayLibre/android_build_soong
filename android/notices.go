@@ -1,0 +1,80 @@
+package android
+
+import (
+	"path/filepath"
+	"strings"
+
+	"github.com/google/blueprint"
+)
+
+func init() {
+	pctx.SourcePathVariable("merge_notices", "build/soong/scripts/mergenotice.py")
+	pctx.SourcePathVariable("generate_notice", "build/make/tools/generate-notice-files.py")
+
+	pctx.HostBinToolVariable("soong_zip", "soong_zip")
+}
+
+var (
+	mergeNoticesRule = pctx.AndroidStaticRule("mergeNoticesRule", blueprint.RuleParams{
+		Command:     `${merge_notices} --output $out $inputs`,
+		CommandDeps: []string{"${merge_notices}"},
+		Description: "merge notice files into $out",
+	}, "inputs")
+
+	generateNoticeRule = pctx.AndroidStaticRule("generateNoticeRule", blueprint.RuleParams{
+		Command: `rm -rf $tmpDir $$(dirname $noticeOutput) && ` +
+			`mkdir -p $tmpDir $$(dirname $noticeOutput) && ` +
+			`${generate_notice} --text-output $tmpDir/NOTICE.txt --html-output $tmpDir/NOTICE.html -t "$title" -s $inputDir && ` +
+			`${soong_zip} -o $noticeOutput -C $tmpDir -f $tmpDir/NOTICE.html`,
+		CommandDeps: []string{"${generate_notice}", "${soong_zip}"},
+		Description: "producing notice file $noticeOutput",
+	}, "noticeOutput", "tmpDir", "title", "inputDir")
+)
+
+func MergeNotices(ctx ModuleContext, mergedNotice WritablePath, noticePaths []Path) {
+	noticePathStrings := make([]string, len(noticePaths))
+	for i := 0; i < len(noticePaths); i++ {
+		noticePathStrings[i] = noticePaths[i].String()
+	}
+	ctx.Build(pctx, BuildParams{
+		Rule:   mergeNoticesRule,
+		Inputs: noticePaths,
+		Output: mergedNotice,
+		Args: map[string]string{
+			"inputs": strings.Join(noticePathStrings, " "),
+		},
+	})
+}
+
+func BuildNoticeOutput(
+	ctx ModuleContext, installPath OutputPath, installFilename string, noticePaths []Path) ModuleOutPath {
+	// Merge all NOTICE files into one.
+	// TODO(jungjw): We should just produce a well-formatted NOTICE.html file in a single pass.
+	//
+	// generate-notice-files.py, which processes the merged NOTICE file, has somewhat strict rules
+	// about input NOTICE file paths.
+	// 1. Their relative paths to the src root become their NOTICE index titles. We want to use
+	// on-device paths as titles, and so output the merged NOTICE file the corresponding location.
+	// 2. They must end with .txt extension. Otherwise, they're ignored.
+	noticeRelPath := InstallPathToOnDevicePath(ctx, installPath.Join(ctx, installFilename+".txt"))
+	mergedNotice := PathForModuleOut(ctx, filepath.Join("NOTICE_FILES/src", noticeRelPath))
+	MergeNotices(ctx, mergedNotice, noticePaths)
+
+	// Transform the merged NOTICE file into a gzipped HTML file.
+	noticeOutput := PathForModuleOut(ctx, "NOTICE", "NOTICE.html.gz")
+	tmpDir := PathForModuleOut(ctx, "NOTICE_tmp")
+	title := "Notices for " + ctx.ModuleName()
+	ctx.Build(pctx, BuildParams{
+		Rule:   generateNoticeRule,
+		Input:  mergedNotice,
+		Output: noticeOutput,
+		Args: map[string]string{
+			"noticeOutput": noticeOutput.String(),
+			"tmpDir":       tmpDir.String(),
+			"title":        title,
+			"inputDir":     PathForModuleOut(ctx, "NOTICE_FILES/src").String(),
+		},
+	})
+
+	return noticeOutput
+}
