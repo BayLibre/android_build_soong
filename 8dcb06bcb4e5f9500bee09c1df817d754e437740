@@ -70,6 +70,30 @@
       "revId": "8dcb06bcb4e5f9500bee09c1df817d754e437740",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81838689_2d534c1a",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-06-18T04:21:23Z",
+      "side": 1,
+      "message": "Renamed zero_hashtree to no_hashtree.\n\nAlso, I filed b/135490716 to make release tool aware of no_hashtree APEXes and b/135490851 to control no_hashtree option without touching Android.bp .",
+      "parentUuid": "5ecf0cc4_43355cd7",
+      "range": {
+        "startLine": 278,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 20
+      },
+      "revId": "8dcb06bcb4e5f9500bee09c1df817d754e437740",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
