@@ -216,6 +216,30 @@
     },
     {
       "key": {
+        "uuid": "7acb488e_2bde3b6e",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-06-18T16:36:50Z",
+      "side": 1,
+      "message": "SGTM. If we\u0027d do the transition to legacy_private within a relatively short time frame I wouldn\u0027t push for recursive behaviour, but I don\u0027t think it\u0027s wise to count on that.\n\nI\u0027ll put it on my TODO.",
+      "parentUuid": "1b03abfd_3ed1b48a",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 45
+      },
+      "revId": "3f1ca97675e2f5bb8643f19ca6e04646b707d208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fdb9ce01_a08c793b",
         "filename": "android/package.go",
         "patchSetId": 2
