@@ -93,6 +93,30 @@
       "revId": "3f6fd7be31173bb922611d1541764868ddcdfa54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00fa8d40_3c2f9e22",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-06-18T23:24:00Z",
+      "side": 1,
+      "message": "True.\nThe shared library may not depends on the required shared library for the VNDK private libs even though it is linked with static. This does not break the linktype check but adds nothing either.\nLet me remove this cases.",
+      "parentUuid": "75fb03bf_7ee547a4",
+      "range": {
+        "startLine": 598,
+        "startChar": 0,
+        "endLine": 616,
+        "endChar": 3
+      },
+      "revId": "3f6fd7be31173bb922611d1541764868ddcdfa54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
