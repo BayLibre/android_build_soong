@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a282cae_0f2fee34",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-06-18T00:23:20Z",
+      "side": 1,
+      "message": "rename to no_hashtree or similar? (also update the description)\n\nIt would be nicer if this can be controlled from outside (e.g. Make variable) without touching Android.bp. We will have to have two variants of an APEX with and without hashtree. The former is required for APEXes on Q devices.",
+      "range": {
+        "startLine": 278,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 20
+      },
+      "revId": "8dcb06bcb4e5f9500bee09c1df817d754e437740",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
