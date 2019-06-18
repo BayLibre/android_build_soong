@@ -22,6 +22,30 @@
       "revId": "8dcb06bcb4e5f9500bee09c1df817d754e437740",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0558ae2_ba87b0e0",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-06-18T01:27:21Z",
+      "side": 1,
+      "message": "no_hashtree sounds better. Note that there is still a descriptor for hashtree which contains root digest and other infos.\n\nAs a release process, there is a step to re-sign image file with avbtool (ref https://cs.corp.google.com/android/build/make/tools/releasetools/apex_utils.py?type\u003dcs\u0026g\u003d0\u0026l\u003d45)\n\nIs this a better place to override whether image is with/without hashtree?",
+      "parentUuid": "2a282cae_0f2fee34",
+      "range": {
+        "startLine": 278,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 20
+      },
+      "revId": "8dcb06bcb4e5f9500bee09c1df817d754e437740",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
