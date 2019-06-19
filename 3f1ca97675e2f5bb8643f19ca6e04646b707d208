@@ -240,6 +240,23 @@
     },
     {
       "key": {
+        "uuid": "2160f1e2_97474900",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-06-19T15:17:36Z",
+      "side": 1,
+      "message": "Ok. As Colin (who will have to support this longer term) is happy with it I will add support for having a package definition affect the default visibility of subpackages.\n\nIf the global default is private then any package definitions that set the default visibility to private can be removed and the use case Martin has (of not allowing new modules in new packages under art to have public visibility) is sorted.",
+      "revId": "3f1ca97675e2f5bb8643f19ca6e04646b707d208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fdb9ce01_a08c793b",
         "filename": "android/package.go",
         "patchSetId": 2
@@ -394,6 +411,30 @@
     },
     {
       "key": {
+        "uuid": "45f75925_6c810f1a",
+        "filename": "android/package.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-06-19T15:17:36Z",
+      "side": 1,
+      "message": "For future reference.\n\nIt is complicated because the package name should be the name of the package in which it is in, i.e. derived from the ModuleDir(). However, neither the code for creating the module instance or returning the name has access to the ModuleDir(). The name is used to register the module instance in the namespace before any code that does have access to the ModuleDir() can run. So, the module has to have a unique generated name.\n\nIn order to ensure that the module has a name that makes sense to the developers it is necessary to rename the module. Renaming a module does not take effect immediately, instead the renames are queued up until the current mutator has run and then they are performed. That means that the rename has to happen in a separate mutator that cannot report any errors, otherwise it will use the generated name.\n\nTwo packages cannot be renamed to the same name as that causes an error during the renaming process. The error is reported on the second, not yet renamed, package and so will use the generated named. That means that if two packages are created for the same package only one package can be renamed and an error must be deferred and reported in a mutator that runs after the renames have been completed.",
+      "parentUuid": "7a9633e6_b832dbd9",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 16
+      },
+      "revId": "3f1ca97675e2f5bb8643f19ca6e04646b707d208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "25ba6d2d_9d2c19d7",
         "filename": "android/package.go",
         "patchSetId": 2
@@ -525,6 +566,30 @@
       "side": 1,
       "message": "Doesn\u0027t what I suggested earlier work? Personally I\u0027d go with the package default lookup in visibilityRuleEnforcer, something like:\n\n   rule, ok :\u003d moduleToVisibilityRule.Load(depQualified)\n   if !ok {\n     // Fall back to package module.\n     depPackageName :\u003d \"//\" + depDir\n     depPackage :\u003d qualifiedModuleName{depDir, depPackageName}\n     rule, ok :\u003d moduleToVisibilityRule.Load(depPackage)\n   }\n   if ok {\n     ...",
       "parentUuid": "40b3010a_e4903287",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 70
+      },
+      "revId": "3f1ca97675e2f5bb8643f19ca6e04646b707d208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6636ca2f_82ffe207",
+        "filename": "android/package.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-06-19T15:17:36Z",
+      "side": 1,
+      "message": "I think it would work. However, it is a big change and as Colin had not yet commented on it I did not want to spend a lot of time restructuring it only to have Colin suggest an alternative approach requiring me to redo it.",
+      "parentUuid": "47a4168b_a0e8b59f",
       "range": {
         "startLine": 163,
         "startChar": 0,
