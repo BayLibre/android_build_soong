@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ca95acdb_3b02662c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-06-19T20:22:19Z",
+      "side": 1,
+      "message": "To clarify: the commit message should primarily explain why the change is being made, and less of what the change is doing (though a short summary is fine). In this case, the \u0027why\u0027 should include a justification of why it\u0027s safe.",
+      "parentUuid": "485becd9_8524a06c",
+      "revId": "2423ae52af0d004878ff9c50c71b1e203eaa26f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f78cc75c_03c341db",
         "filename": "cc/cc.go",
         "patchSetId": 4
