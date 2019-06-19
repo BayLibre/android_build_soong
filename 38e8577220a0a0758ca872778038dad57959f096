@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f2c980cb_9c558d0b",
+        "filename": "ui/status/build_error_proto/build_error.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-19T18:23:45Z",
+      "side": 1,
+      "message": "Done: updated the comment.\n\nAs for preserving the ordering of the message, it is somewhat ordered. Soong goes through a sequential list of build actions (in ui/build/build/build.go:Build). For specific (super) action (ui/status/Ninja.go), there could be multiple actions that are running concurrently. A message can pop up in any of those running actions where I may not be able to pinpoint exactly which one it belongs to.",
+      "parentUuid": "a125c074_47441ef3",
+      "revId": "38e8577220a0a0758ca872778038dad57959f096",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "be08a6d3_485c67c0",
         "filename": "ui/status/build_error_proto/build_error.proto",
         "patchSetId": 6
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "fc98cd84_59bf3245",
+        "filename": "ui/status/build_error_proto/build_error.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-19T18:23:45Z",
+      "side": 1,
+      "message": "Changed it to add the repeated field from the comment you mentioned in log.go. I got mixed up with Output and Outputs fields.",
+      "parentUuid": "be08a6d3_485c67c0",
+      "range": {
+        "startLine": 37,
+        "startChar": 9,
+        "endLine": 37,
+        "endChar": 19
+      },
+      "revId": "38e8577220a0a0758ca872778038dad57959f096",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da136aff_1b9ae7f2",
         "filename": "ui/status/build_error_proto/build_error.proto",
         "patchSetId": 6
@@ -56,6 +98,24 @@
       "revId": "38e8577220a0a0758ca872778038dad57959f096",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5950d6c4_968e4ef6",
+        "filename": "ui/status/build_error_proto/build_error.proto",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-19T18:23:45Z",
+      "side": 1,
+      "message": "That\u0027s what I noticed when I was testing. We should capture in case a command outputted a different error string.",
+      "parentUuid": "da136aff_1b9ae7f2",
+      "revId": "38e8577220a0a0758ca872778038dad57959f096",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -79,6 +139,30 @@
       "revId": "38e8577220a0a0758ca872778038dad57959f096",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "546b8148_e6ebf3e8",
+        "filename": "ui/status/log.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-19T18:23:45Z",
+      "side": 1,
+      "message": "Ah, outputs. Ok, I got mixed up. I thought Outputs was an io stream. Done.",
+      "parentUuid": "123c149d_4f8d4d17",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 29
+      },
+      "revId": "38e8577220a0a0758ca872778038dad57959f096",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
