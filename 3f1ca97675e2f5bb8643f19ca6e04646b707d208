@@ -602,6 +602,30 @@
     },
     {
       "key": {
+        "uuid": "f3a05ae2_63f2d54f",
+        "filename": "android/package.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-19T23:36:49Z",
+      "side": 1,
+      "message": "I don\u0027t have an opinion on which mutator it should go in, but note that each mutator has some overhead because it has to visit and type assert on every module, so if you can reuse an existing mutator that is better than adding a new one.  If you just want to keep the code separate then move it to separate functions called from the same mutator.",
+      "parentUuid": "6636ca2f_82ffe207",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 70
+      },
+      "revId": "3f1ca97675e2f5bb8643f19ca6e04646b707d208",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cf940f1e_5f249378",
         "filename": "android/visibility.go",
         "patchSetId": 2
