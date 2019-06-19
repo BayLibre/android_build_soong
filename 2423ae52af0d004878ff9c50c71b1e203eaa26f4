@@ -37,6 +37,29 @@
     },
     {
       "key": {
+        "uuid": "5f6d10c4_82448c02",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1452,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-06-19T23:59:38Z",
+      "side": 1,
+      "message": "Yes, they shouldn\u0027t be able to use whole_static_libraries to include a private library\u0027s functionality, unless we only care about the ABI stability, in which case we should just explicitly allow vndk-private static libraries to be used by any vendor library.\n\nAnd in general, we care about more than whether something can link against a library or not -- the implementation (which includes headers) may contain unstable behaviors.",
+      "range": {
+        "startLine": 1452,
+        "startChar": 0,
+        "endLine": 1452,
+        "endChar": 59
+      },
+      "revId": "2423ae52af0d004878ff9c50c71b1e203eaa26f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f78cc75c_03c341db",
         "filename": "cc/cc.go",
         "patchSetId": 4
@@ -65,6 +88,24 @@
       "writtenOn": "2019-06-19T19:57:33Z",
       "side": 1,
       "message": "Why not just move this check above the previous if statement?",
+      "revId": "2423ae52af0d004878ff9c50c71b1e203eaa26f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b095c7f4_4b6f1590",
+        "filename": "cc/vndk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-06-19T23:59:38Z",
+      "side": 1,
+      "message": "Because this to `to`, not `from`. But all the logic should still be in this function, not split between this function and the caller.",
+      "parentUuid": "f543267e_b4e243c7",
       "revId": "2423ae52af0d004878ff9c50c71b1e203eaa26f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
