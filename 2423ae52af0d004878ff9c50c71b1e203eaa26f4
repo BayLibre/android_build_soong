@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f78cc75c_03c341db",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1500,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-06-19T18:15:13Z",
+      "side": 1,
+      "message": "actually, should some of these things still be checked?",
+      "revId": "2423ae52af0d004878ff9c50c71b1e203eaa26f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
