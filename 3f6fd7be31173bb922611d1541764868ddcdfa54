@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "4e421e06_ee9763f2",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1451,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-06-19T20:03:44Z",
+      "side": 1,
+      "message": "\u003e vendors can create a static lib that depends on private platfrom libs. That is intended.\n\nNo, private *platform* libraries really shouldn\u0027t be, as that can embed platform-specific behavior which may be wrong in future runtimes. I believe that is protected by the image mutator creating variations, so private platform libraries don\u0027t even get this far. Private VNDK libraries would be allowed by this check (which is the intent).",
+      "parentUuid": "b1be263a_f9a26711",
+      "revId": "3f6fd7be31173bb922611d1541764868ddcdfa54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75fb03bf_7ee547a4",
         "filename": "cc/cc_test.go",
         "patchSetId": 2
