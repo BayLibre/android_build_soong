@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "485becd9_8524a06c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-06-19T19:57:33Z",
+      "side": 1,
+      "message": "Please justify why this is safe",
+      "revId": "2423ae52af0d004878ff9c50c71b1e203eaa26f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f78cc75c_03c341db",
         "filename": "cc/cc.go",
         "patchSetId": 4
@@ -13,6 +30,23 @@
       "writtenOn": "2019-06-19T18:15:13Z",
       "side": 1,
       "message": "actually, should some of these things still be checked?",
+      "revId": "2423ae52af0d004878ff9c50c71b1e203eaa26f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f543267e_b4e243c7",
+        "filename": "cc/vndk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-06-19T19:57:33Z",
+      "side": 1,
+      "message": "Why not just move this check above the previous if statement?",
       "revId": "2423ae52af0d004878ff9c50c71b1e203eaa26f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
