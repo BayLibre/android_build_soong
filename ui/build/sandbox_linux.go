@@ -66,6 +66,10 @@ func (c *Cmd) sandboxSupported() bool {
 		return false
 	}
 
+	if dlv, _ := c.config.Environment().Get("SOONG_DELVE"); dlv != "" {
+		return false
+	}
+
 	sandboxConfig.once.Do(func() {
 		sandboxConfig.group = "nogroup"
 		if _, err := user.LookupGroup(sandboxConfig.group); err != nil {

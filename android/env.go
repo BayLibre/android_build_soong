@@ -38,7 +38,6 @@ func init() {
 			originalEnv[env[:idx]] = env[idx+1:]
 		}
 	}
-	os.Clearenv()
 }
 
 func EnvSingleton() Singleton {
