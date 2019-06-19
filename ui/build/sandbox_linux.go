@@ -66,6 +66,10 @@ func (c *Cmd) sandboxSupported() bool {
 		return false
 	}
 
+	if dlv, _ := c.config.Environment().Get("SOONG_DELVE"); dlv != "" {
+		return false
+	}
+
 	sandboxConfig.once.Do(func() {
 		sandboxConfig.group = "nogroup"
 		if _, err := user.LookupGroup(sandboxConfig.group); err != nil {
@@ -161,6 +165,9 @@ func (c *Cmd) wrapSandbox() {
 	if c.Sandbox.AllowBuildBrokenUsesNetwork && c.config.BuildBrokenUsesNetwork() {
 		c.ctx.Printf("AllowBuildBrokenUsesNetwork: %v", c.Sandbox.AllowBuildBrokenUsesNetwork)
 		c.ctx.Printf("BuildBrokenUsesNetwork: %v", c.config.BuildBrokenUsesNetwork())
+		sandboxArgs = append(sandboxArgs, "-N")
+	} else if dlv, _ := c.config.Environment().Get("SOONG_DELVE"); dlv != "" {
+		c.ctx.Printf("SOONG_DELVE enabled, allowing network connections")
 		sandboxArgs = append(sandboxArgs, "-N")
 	}
 
