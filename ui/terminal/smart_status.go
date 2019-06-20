@@ -346,6 +346,11 @@ func (s *smartStatusOutput) actionTable() {
 
 		str := fmt.Sprintf("   %2d:%02d %s", seconds/60, seconds%60, desc)
 		str = s.elide(str)
+		if seconds >= 60 {
+			str = ansi.red() + str + ansi.black()
+		} else if seconds >= 30 {
+			str = ansi.yellow() + str + ansi.black()
+		}
 		fmt.Fprint(s.writer, str, ansi.clearToEndOfLine())
 		if tableLine < s.tableHeight-1 {
 			fmt.Fprint(s.writer, "\n")
@@ -385,6 +390,18 @@ func (ansiImpl) setScrollingMargins(top, bottom int) string {
 func (ansiImpl) resetScrollingMargins() string {
 	// Set Top and Bottom Margins DECSTBM
 	return fmt.Sprintf("\x1b[r")
+}
+
+func (ansiImpl) black() string {
+	return "\x1b[30m"
+}
+
+func (ansiImpl) red() string {
+	return "\x1b[31m"
+}
+
+func (ansiImpl) yellow() string {
+	return "\x1b[33m"
 }
 
 func (ansiImpl) bold() string {
