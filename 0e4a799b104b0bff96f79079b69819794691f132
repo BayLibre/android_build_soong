@@ -22,6 +22,47 @@
       "revId": "0e4a799b104b0bff96f79079b69819794691f132",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "083244ad_9982463e",
+        "filename": "ui/terminal/smart_status.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2019-06-20T23:13:37Z",
+      "side": 1,
+      "message": "Yes, 30m wouldn\u0027t be visible on my black background. :)",
+      "parentUuid": "7e4f1281_c883f265",
+      "range": {
+        "startLine": 350,
+        "startChar": 33,
+        "endLine": 350,
+        "endChar": 38
+      },
+      "revId": "0e4a799b104b0bff96f79079b69819794691f132",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ebaa3c8_cd0b6455",
+        "filename": "ui/terminal/smart_status.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2019-06-20T23:13:37Z",
+      "side": 1,
+      "message": "Note these colors are actually not very visible on my environment -- konsole with black background. \n\nWhat colors do we use for errors and warnings? These are easier to see. (Probably just adding bold.)",
+      "revId": "0e4a799b104b0bff96f79079b69819794691f132",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
