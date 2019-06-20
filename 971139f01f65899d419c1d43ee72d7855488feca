@@ -22,6 +22,30 @@
       "revId": "971139f01f65899d419c1d43ee72d7855488feca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d8aa553_a5d514ff",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-20T21:44:44Z",
+      "side": 1,
+      "message": "I\u0027d expect this to occur part way through WalkDeps",
+      "parentUuid": "d459984a_0e6859df",
+      "range": {
+        "startLine": 703,
+        "startChar": 0,
+        "endLine": 703,
+        "endChar": 81
+      },
+      "revId": "971139f01f65899d419c1d43ee72d7855488feca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
