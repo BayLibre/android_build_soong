@@ -45,6 +45,7 @@ var (
 		"c",
 		"camera2ndk",
 		"dl",
+		"dl_android",
 		"EGL",
 		"GLESv1_CM",
 		"GLESv2",
