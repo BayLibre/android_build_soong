@@ -698,9 +698,16 @@ func sanitizerDepsMutator(t sanitizerType) func(android.TopDownMutatorContext) {
 func sanitizerRuntimeDepsMutator(mctx android.TopDownMutatorContext) {
 	if c, ok := mctx.Module().(*Module); ok && c.sanitize != nil {
 		mctx.WalkDeps(func(child, parent android.Module) bool {
+			if c.sanitize.Properties.MinimalRuntimeDep &&
+				c.sanitize.Properties.UbsanRuntimeDep {
+				// both flags that this mutator might set are true, so don't bother recursing
+				return false
+			}
+
 			if !isSanitizableDependencyTag(mctx.OtherModuleDependencyTag(child)) {
 				return false
 			}
+
 			if d, ok := child.(*Module); ok && d.static() && d.sanitize != nil {
 
 				if enableMinimalRuntime(d.sanitize) {
@@ -713,8 +720,10 @@ func sanitizerRuntimeDepsMutator(mctx android.TopDownMutatorContext) {
 					// make sure we include the ubsan runtime.
 					c.sanitize.Properties.UbsanRuntimeDep = true
 				}
+				return true
+			} else {
+				return false
 			}
-			return true
 		})
 	}
 }
