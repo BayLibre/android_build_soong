@@ -1,0 +1,203 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a3d0c6f_134a2ba7",
+        "filename": "android/notices.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-20T05:04:11Z",
+      "side": 1,
+      "message": "You don\u0027t need this, but if you did use noticePaths.Strings()",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 2
+      },
+      "revId": "f283ced12887523b890d804590b97f99f81b03a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71dd3d8c_d448726c",
+        "filename": "android/notices.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-20T05:04:11Z",
+      "side": 1,
+      "message": "Add a Description here, if BuildParams has a description we can prefix it with //path/module",
+      "revId": "f283ced12887523b890d804590b97f99f81b03a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eeb777e3_798f885e",
+        "filename": "android/notices.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-20T05:04:11Z",
+      "side": 1,
+      "message": "You don\u0027t need this variable, everything in Inputs is automatically available as $in",
+      "revId": "f283ced12887523b890d804590b97f99f81b03a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f10ccf3_aa3f4047",
+        "filename": "android/notices.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-20T05:04:11Z",
+      "side": 1,
+      "message": "we generally put as many of these as will fit on the first line, although you may have to wrap before the last argument because you can\u0027t wrap between the argument list and the output",
+      "revId": "f283ced12887523b890d804590b97f99f81b03a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69ed3f1d_7b0c4591",
+        "filename": "android/notices.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-20T05:04:11Z",
+      "side": 1,
+      "message": "Add a Description here, if BuildParams has a description we can prefix it with //path/module",
+      "revId": "f283ced12887523b890d804590b97f99f81b03a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6a958de_1130f567",
+        "filename": "android/notices.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-20T05:04:11Z",
+      "side": 1,
+      "message": "You don\u0027t need this, it\u0027s already available as $out",
+      "revId": "f283ced12887523b890d804590b97f99f81b03a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48163061_beec442b",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-20T05:04:11Z",
+      "side": 1,
+      "message": "You probably don\u0027t want WalkDepsBlueprint here, since you are only looking at android.Module anyways",
+      "range": {
+        "startLine": 367,
+        "startChar": 5,
+        "endLine": 367,
+        "endChar": 22
+      },
+      "revId": "f283ced12887523b890d804590b97f99f81b03a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e258bbbb_509f09a1",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-20T05:04:11Z",
+      "side": 1,
+      "message": "I\u0027d suggest using the map to store a bool on whether a child has been visited, and then use a list to store the notice files.",
+      "revId": "f283ced12887523b890d804590b97f99f81b03a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9acb5090_eb6ac46b",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-20T05:04:11Z",
+      "side": 1,
+      "message": "This is going to recurse through every dependency type, including through genrules to host tools used in the genrule.  It should be limiting to dependency tags that cause code to be statically included.",
+      "revId": "f283ced12887523b890d804590b97f99f81b03a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5108c08_2b3eb184",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-20T05:04:11Z",
+      "side": 1,
+      "message": "Iterating a map is non-deterministic order, which would lead to the command line changing any time soong_build runs and unnecessary rebuilds.  If you use a map, sort after converting back to a list.",
+      "revId": "f283ced12887523b890d804590b97f99f81b03a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc917b10_47180f5c",
+        "filename": "java/app_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1561,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-20T05:04:11Z",
+      "side": 1,
+      "message": "Test some dependencies that should not produce NOTICE files, like libs, or a genrule with a tool with a notice file.",
+      "revId": "f283ced12887523b890d804590b97f99f81b03a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
