@@ -70,6 +70,30 @@
       "revId": "971139f01f65899d419c1d43ee72d7855488feca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2d90f20_e5713b06",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-20T22:25:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6d60a6a_a9939bdf",
+      "range": {
+        "startLine": 703,
+        "startChar": 0,
+        "endLine": 703,
+        "endChar": 81
+      },
+      "revId": "971139f01f65899d419c1d43ee72d7855488feca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
