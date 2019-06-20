@@ -413,11 +413,7 @@ func visibilityRuleEnforcer(ctx TopDownMutatorContext) {
 		if ok {
 			rule = value.(compositeRule)
 		} else {
-			packageQualifiedId := qualifiedModuleName{depQualified.pkg, ""}
-			value, ok = moduleToVisibilityRule.Load(packageQualifiedId)
-			if ok {
-				rule = value.(compositeRule)
-			}
+			rule = packageDefaultVisibility(ctx, depQualified.pkg)
 		}
 		if rule != nil && !rule.matches(qualified) {
 			ctx.ModuleErrorf("depends on %s which is not visible to this module", depQualified)
@@ -430,4 +426,22 @@ func createQualifiedModuleName(ctx BaseModuleContext) qualifiedModuleName {
 	dir := ctx.ModuleDir()
 	qualified := qualifiedModuleName{dir, moduleName}
 	return qualified
+}
+
+func packageDefaultVisibility(ctx BaseModuleContext, packageName string) compositeRule {
+	moduleToVisibilityRule := moduleToVisibilityRuleMap(ctx)
+	for {
+		packageQualifiedId := qualifiedModuleName{packageName, ""}
+		value, ok := moduleToVisibilityRule.Load(packageQualifiedId)
+		if ok {
+			return value.(compositeRule)
+		}
+
+		index := strings.LastIndex(packageName, "/")
+		if index == -1 {
+			return nil
+		}
+
+		packageName = packageName[:index]
+	}
 }
