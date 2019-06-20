@@ -46,6 +46,30 @@
       "revId": "971139f01f65899d419c1d43ee72d7855488feca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6d60a6a_a9939bdf",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-06-20T21:50:13Z",
+      "side": 1,
+      "message": "Ah. Shouldn\u0027t this be directly below the modifications, so if we just set the remaining property to true, it returns false instead of true?",
+      "parentUuid": "4d8aa553_a5d514ff",
+      "range": {
+        "startLine": 703,
+        "startChar": 0,
+        "endLine": 703,
+        "endChar": 81
+      },
+      "revId": "971139f01f65899d419c1d43ee72d7855488feca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
