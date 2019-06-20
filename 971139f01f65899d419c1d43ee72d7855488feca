@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d459984a_0e6859df",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-06-20T20:55:43Z",
+      "side": 1,
+      "message": "Why even call WalkDeps?",
+      "range": {
+        "startLine": 703,
+        "startChar": 0,
+        "endLine": 703,
+        "endChar": 81
+      },
+      "revId": "971139f01f65899d419c1d43ee72d7855488feca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
