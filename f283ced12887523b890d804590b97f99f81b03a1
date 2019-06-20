@@ -133,6 +133,30 @@
     },
     {
       "key": {
+        "uuid": "050174d0_372d1948",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-20T05:14:37Z",
+      "side": 1,
+      "message": "I chose this because qt-dev has a bug where WalkDeps crashes. Do you want me to use WalkDeps here and change it to WalkDepsBlueprint when I cherrypick to qt-dev?",
+      "parentUuid": "48163061_beec442b",
+      "range": {
+        "startLine": 367,
+        "startChar": 5,
+        "endLine": 367,
+        "endChar": 22
+      },
+      "revId": "f283ced12887523b890d804590b97f99f81b03a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e258bbbb_509f09a1",
         "filename": "java/app.go",
         "patchSetId": 2
