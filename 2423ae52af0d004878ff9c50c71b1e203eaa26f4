@@ -102,6 +102,30 @@
     },
     {
       "key": {
+        "uuid": "6c39bee4_c66bc187",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1452,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-06-21T01:51:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b02825c6_90137639",
+      "range": {
+        "startLine": 1452,
+        "startChar": 0,
+        "endLine": 1452,
+        "endChar": 59
+      },
+      "revId": "2423ae52af0d004878ff9c50c71b1e203eaa26f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f78cc75c_03c341db",
         "filename": "cc/cc.go",
         "patchSetId": 4
@@ -169,6 +193,24 @@
       "revId": "2423ae52af0d004878ff9c50c71b1e203eaa26f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d30074b_85685187",
+        "filename": "cc/vndk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-06-21T01:51:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b095c7f4_4b6f1590",
+      "revId": "2423ae52af0d004878ff9c50c71b1e203eaa26f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
