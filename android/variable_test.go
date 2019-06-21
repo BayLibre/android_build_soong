@@ -214,12 +214,18 @@ var testProductVariableDefaultsProperties = struct {
 		Eng struct {
 			Foo []string
 			Bar []string
+			Optimize struct {
+				Enabled *bool
+			}
 		}
 	}
 }{}
 
 type productVariablesDefaultsTestProperties struct {
 	Foo []string
+	Optimize struct {
+		Enabled *bool
+	}
 }
 
 type productVariablesDefaultsTestProperties2 struct {
@@ -333,5 +339,119 @@ func BenchmarkSliceToTypeArray(b *testing.B) {
 				_ = sliceToTypeArray(propStructs)
 			}
 		})
+	}
+}
+
+func TestProductVariablesOptimize(t *testing.T) {
+	bp := `
+		defaults {
+			name: "defaultIsTrue",
+		}
+		defaults {
+			name: "defaultWithProductVarIsFalse",
+			product_variables: {
+				eng: {
+					optimize: {
+						enabled: false,
+					},
+				},
+			},
+		}
+		test {
+			name: "applyDefaultIsTrue",
+			defaults: ["defaultIsTrue"],
+		}
+		test {
+			name: "applyDefaultProductVarIsFalse",
+			defaults: ["defaultWithProductVarIsFalse"],
+		}
+		test {
+			name: "trueWithoutProductVar",
+			optimize: {
+				enabled: true,
+			},
+		}
+		test {
+			name: "falseWithoutProductVar",
+			optimize: {
+				enabled: false,
+			},
+		}
+		test {
+			name: "falseWithProductVar",
+			optimize: {
+				enabled: true,
+			},
+			product_variables: {
+				eng: {
+					optimize: {
+						enabled: false,
+					},
+				},
+			},
+		}
+		test {
+			name: "trueWithProductVar",
+			optimize: {
+				enabled: false,
+			},
+			product_variables: {
+				eng: {
+					optimize: {
+						enabled: true,
+					},
+				},
+			},
+		}
+	`
+	config := TestConfig(buildDir, nil, bp, nil)
+	config.TestProductVariables.Eng = boolPtr(true)
+
+	ctx := NewTestContext()
+
+	ctx.RegisterModuleType("test", productVariablesDefaultsTestModuleFactory)
+	ctx.RegisterModuleType("defaults", productVariablesDefaultsTestDefaultsFactory)
+
+	ctx.PreArchMutators(RegisterDefaultsPreArchMutators)
+	ctx.PreDepsMutators(func(ctx RegisterMutatorsContext) {
+		ctx.BottomUp("variable", VariableMutator).Parallel()
+	})
+
+	ctx.Register(config)
+
+	_, errs := ctx.ParseFileList(".", []string{"Android.bp"})
+	FailIfErrored(t, errs)
+	_, errs = ctx.PrepareBuildActions(config)
+	FailIfErrored(t, errs)
+
+	applyDefaultIsTrue := ctx.ModuleForTests("applyDefaultIsTrue", "").Module().(*productVariablesDefaultsTestModule)
+	applyDefaultProductVarIsFalse := ctx.ModuleForTests("applyDefaultProductVarIsFalse", "").Module().(*productVariablesDefaultsTestModule)
+	trueWithoutProductVar := ctx.ModuleForTests("trueWithoutProductVar", "").Module().(*productVariablesDefaultsTestModule)
+	falseWithoutProductVar := ctx.ModuleForTests("falseWithoutProductVar", "").Module().(*productVariablesDefaultsTestModule)
+	falseWithProductVar := ctx.ModuleForTests("falseWithProductVar", "").Module().(*productVariablesDefaultsTestModule)
+	trueWithProductVar := ctx.ModuleForTests("trueWithProductVar", "").Module().(*productVariablesDefaultsTestModule)
+
+	if !(applyDefaultIsTrue.properties.Optimize.Enabled == nil) {
+		t.Errorf("expected null, got %t", *applyDefaultIsTrue.properties.Optimize.Enabled)
+	}
+
+	if !(*applyDefaultProductVarIsFalse.properties.Optimize.Enabled == false) {
+		t.Errorf("expected false, got %t", *applyDefaultProductVarIsFalse.properties.Optimize.Enabled)
+	}
+
+	if !(*trueWithoutProductVar.properties.Optimize.Enabled == true) {
+		t.Errorf("expected false, got %t", *trueWithoutProductVar.properties.Optimize.Enabled)
+	}
+
+	if !(*falseWithoutProductVar.properties.Optimize.Enabled == false) {
+		t.Errorf("expected true, got %t", *falseWithoutProductVar.properties.Optimize.Enabled)
+	}
+
+	if !(*falseWithProductVar.properties.Optimize.Enabled == false) {
+		t.Errorf("expected false, got %t", *trueWithProductVar.properties.Optimize.Enabled)
+	}
+
+	if !(*trueWithProductVar.properties.Optimize.Enabled == true) {
+		t.Errorf("expected true, got %t", *trueWithProductVar.properties.Optimize.Enabled)
 	}
 }
