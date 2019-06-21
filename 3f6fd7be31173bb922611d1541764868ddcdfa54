@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "7a095be3_dce05ca8",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1451,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-06-21T00:41:39Z",
+      "side": 1,
+      "message": "Oh, I thought private platform libs as a private libs from the system partition.\nAs Dan commented, image mutator protects the vendor variants from linking to core variants, so we don\u0027t need to care for core variants here.",
+      "parentUuid": "4e421e06_ee9763f2",
+      "revId": "3f6fd7be31173bb922611d1541764868ddcdfa54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75fb03bf_7ee547a4",
         "filename": "cc/cc_test.go",
         "patchSetId": 2

@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "e84fbe26_57fda5c3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-06-21T00:41:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca95acdb_3b02662c",
+      "revId": "2423ae52af0d004878ff9c50c71b1e203eaa26f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f6d10c4_82448c02",
         "filename": "cc/cc.go",
         "patchSetId": 4
@@ -48,6 +66,30 @@
       "writtenOn": "2019-06-19T23:59:38Z",
       "side": 1,
       "message": "Yes, they shouldn\u0027t be able to use whole_static_libraries to include a private library\u0027s functionality, unless we only care about the ABI stability, in which case we should just explicitly allow vndk-private static libraries to be used by any vendor library.\n\nAnd in general, we care about more than whether something can link against a library or not -- the implementation (which includes headers) may contain unstable behaviors.",
+      "range": {
+        "startLine": 1452,
+        "startChar": 0,
+        "endLine": 1452,
+        "endChar": 59
+      },
+      "revId": "2423ae52af0d004878ff9c50c71b1e203eaa26f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b02825c6_90137639",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1452,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-06-21T00:41:39Z",
+      "side": 1,
+      "message": "\u003e\u003e actually, should some of these things still be checked?\n\u003e\n\u003e Yes, they shouldn\u0027t be able to use whole_static_libraries to include a private library\u0027s functionality, unless we only care about the ABI stability, in which case we should just explicitly allow vndk-private static libraries to be used by any vendor library.\n\u003e \n\u003e And in general, we care about more than whether something can link against a library or not -- the implementation (which includes headers) may contain unstable behaviors.\n\nGot it. So vendor static to whole_static link may allow non-VNDK vendor modules to use VNDK-private libs directly.",
+      "parentUuid": "5f6d10c4_82448c02",
       "range": {
         "startLine": 1452,
         "startChar": 0,
@@ -74,6 +116,24 @@
       "revId": "2423ae52af0d004878ff9c50c71b1e203eaa26f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e48b5de4_76b376ed",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1500,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-06-21T00:41:39Z",
+      "side": 1,
+      "message": "The message is posted in a wrong line. (gerrit bug?)\nLet me copy this comment to above comment.",
+      "parentUuid": "f78cc75c_03c341db",
+      "revId": "2423ae52af0d004878ff9c50c71b1e203eaa26f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
