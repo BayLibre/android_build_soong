@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56e09d83_db3fdbb0",
+        "filename": "java/app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-21T00:34:54Z",
+      "side": 1,
+      "message": "can you use child instead of child.Name()?",
+      "range": {
+        "startLine": 370,
+        "startChar": 26,
+        "endLine": 370,
+        "endChar": 38
+      },
+      "revId": "7fa14534baf1a9ab89279aa9ba4ab8b07fdf7e7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03ab7f6a_b84631ac",
+        "filename": "java/app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-21T00:34:54Z",
+      "side": 1,
+      "message": "The WalkDeps order should be deterministic, no need to sort here unless you specifically want this sorted by path",
+      "revId": "7fa14534baf1a9ab89279aa9ba4ab8b07fdf7e7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f49ccecb_2d6d2c58",
+        "filename": "java/app_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1600,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-21T00:34:54Z",
+      "side": 1,
+      "message": "I\u0027m not sure what should happen to this file, if the genrule has a notice it should probably end up in the APK, although I don\u0027t expect that to ever be the case.  The case I\u0027m specifically thinking about is tools: [\"host_tool\"], and host_tool\u0027s notice should not end up in the APK.",
+      "revId": "7fa14534baf1a9ab89279aa9ba4ab8b07fdf7e7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e1b98f4_4c40858f",
+        "filename": "java/app_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1609,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-21T00:34:54Z",
+      "side": 1,
+      "message": "This isn\u0027t correct, the genrule is not a host module, but it may have a dependency on a host module through tools: [\"host_tool\"].  The fact that it is not ending up in the list despite not being a host module suggests there might be a hole in the notice file collection.",
+      "revId": "7fa14534baf1a9ab89279aa9ba4ab8b07fdf7e7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
