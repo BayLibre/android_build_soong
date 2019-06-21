@@ -107,6 +107,24 @@
       "revId": "0e4a799b104b0bff96f79079b69819794691f132",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe8294c7_dc948a9a",
+        "filename": "ui/terminal/smart_status.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-06-21T00:56:42Z",
+      "side": 1,
+      "message": "The original colors were fine on my solarized dark theme (which makes some of the bold/bright colors weird -- the bold yellow is a strange grey-ish color).\n\nClang uses bold magenta for warnings, and bold red for errors: https://android.googlesource.com/toolchain/llvm-project/+/2a90cc9d899e6fe6dcf0da193244b25f75735c7b/llvm/lib/Support/WithColor.cpp#21",
+      "parentUuid": "6ebaa3c8_cd0b6455",
+      "revId": "0e4a799b104b0bff96f79079b69819794691f132",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
