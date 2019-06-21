@@ -96,6 +96,9 @@ type variableProperties struct {
 		// eng is true for -eng builds, and can be used to turn on additionaly heavyweight debugging
 		// features.
 		Eng struct {
+			Optimize struct {
+				Enabled *bool
+			}
 			Cflags   []string
 			Cppflags []string
 			Lto      struct {

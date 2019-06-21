@@ -216,6 +216,10 @@ type BaseProperties struct {
 	// Allows this module to use non-APEX version of libraries. Useful
 	// for building binaries that are started before APEXes are activated.
 	Bootstrap *bool
+
+	Optimize struct {
+		Enabled *bool
+	}
 }
 
 type VendorProperties struct {
