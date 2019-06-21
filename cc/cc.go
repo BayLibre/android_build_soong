@@ -216,6 +216,12 @@ type BaseProperties struct {
 	// Allows this module to use non-APEX version of libraries. Useful
 	// for building binaries that are started before APEXes are activated.
 	Bootstrap *bool
+
+	// TODO: b/130259652 For cc modules, it should not assign any optimization level
+	//  when optimize.enabled is false.
+	Optimize struct {
+		Enabled *bool
+	}
 }
 
 type VendorProperties struct {
