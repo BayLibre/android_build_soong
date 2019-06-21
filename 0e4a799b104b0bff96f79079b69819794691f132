@@ -125,6 +125,24 @@
       "revId": "0e4a799b104b0bff96f79079b69819794691f132",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a86f1e9c_0b023c3c",
+        "filename": "ui/terminal/smart_status.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1003801
+      },
+      "writtenOn": "2019-06-21T15:18:21Z",
+      "side": 1,
+      "message": "- Okay I guess Konsole is stupid. Red is 178,24,24 and that\u0027s unlike anything listed in https://en.wikipedia.org/wiki/ANSI_escape_code#3/4_bit ...\n\n- Yes the warning / error colors used during build should work fine. (java seems to use bold yellow for warnings? but if that\u0027s hard to see...)\n\n- Changing the color on duration sound good too. Maybe then, we might not even need colors? Something like...\n0:15 !\n0:30 !!\n0:45 !!!\n  :\n\nOr faces...\n0:30 (-_-)\n1:00 ¯\\_(ツ)_/¯\n\n0:30 :-(\n1:00 \u003e:(\n\n(Choose your selection! https://en.wikipedia.org/wiki/List_of_emoticons)",
+      "parentUuid": "fe8294c7_dc948a9a",
+      "revId": "0e4a799b104b0bff96f79079b69819794691f132",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
