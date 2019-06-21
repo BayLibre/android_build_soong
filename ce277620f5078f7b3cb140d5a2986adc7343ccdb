@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a94d6f22_e5d33404",
+        "filename": "ui/status/build_error_proto/build_error.proto",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-21T23:56:20Z",
+      "side": 1,
+      "message": "This is not output by the command, this is the Go variable of type \"error\" that was used to mark the command as a failure.  In most cases this will be created by https://android.git.corp.google.com/platform/build/soong/+/e264f22bec969dfb27177264cde098a7f1cd8c33/ui/status/ninja.go#157",
+      "range": {
+        "startLine": 44,
+        "startChar": 22,
+        "endLine": 44,
+        "endChar": 45
+      },
+      "revId": "ce277620f5078f7b3cb140d5a2986adc7343ccdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
