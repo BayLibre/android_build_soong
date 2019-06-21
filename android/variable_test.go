@@ -214,12 +214,18 @@ var testProductVariableDefaultsProperties = struct {
 		Eng struct {
 			Foo []string
 			Bar []string
+			Optimize struct {
+				Enabled *bool
+			}
 		}
 	}
 }{}
 
 type productVariablesDefaultsTestProperties struct {
 	Foo []string
+	Optimize struct {
+		Enabled *bool
+	}
 }
 
 type productVariablesDefaultsTestProperties2 struct {
@@ -333,5 +339,114 @@ func BenchmarkSliceToTypeArray(b *testing.B) {
 				_ = sliceToTypeArray(propStructs)
 			}
 		})
+	}
+}
+
+func TestProductVariablesOptimize(t *testing.T) {
+	bp := `
+		defaults {
+			name: "defaultNil",
+		}
+		defaults {
+			name: "defaultProductVarFalse",
+			product_variables: {
+				eng: {
+					optimize: {
+						enabled: false,
+					},
+				},
+			},
+		}
+		test {
+			name: "applyDefaultNil",
+			defaults: ["defaultNil"],
+		}
+		test {
+			name: "applyDefaultProductVarFalse",
+			defaults: ["defaultProductVarFalse"],
+		}
+		test {
+			name: "PropertyTrue",
+			optimize: {
+				enabled: true,
+			},
+		}
+		test {
+			name: "PropertyFalse",
+			optimize: {
+				enabled: false,
+			},
+		}
+		test {
+			name: "ProductVarFalse",
+			optimize: {
+				enabled: true,
+			},
+			product_variables: {
+				eng: {
+					optimize: {
+						enabled: false,
+					},
+				},
+			},
+		}
+		test {
+			name: "ProductVarTrue",
+			optimize: {
+				enabled: false,
+			},
+			product_variables: {
+				eng: {
+					optimize: {
+						enabled: true,
+					},
+				},
+			},
+		}
+	`
+	config := TestConfig(buildDir, nil, bp, nil)
+	config.TestProductVariables.Eng = boolPtr(true)
+
+	ctx := NewTestContext()
+
+	ctx.RegisterModuleType("test", productVariablesDefaultsTestModuleFactory)
+	ctx.RegisterModuleType("defaults", productVariablesDefaultsTestDefaultsFactory)
+
+	ctx.PreArchMutators(RegisterDefaultsPreArchMutators)
+	ctx.PreDepsMutators(func(ctx RegisterMutatorsContext) {
+		ctx.BottomUp("variable", VariableMutator).Parallel()
+	})
+
+	ctx.Register(config)
+
+	_, errs := ctx.ParseFileList(".", []string{"Android.bp"})
+	FailIfErrored(t, errs)
+	_, errs = ctx.PrepareBuildActions(config)
+	FailIfErrored(t, errs)
+
+	want := []bool{true, false, true, false, false, true}
+	actualComponentsName := []string{"applyDefaultNil",
+		"applyDefaultProductVarFalse",
+		"PropertyTrue",
+		"PropertyFalse",
+		"ProductVarFalse",
+		"ProductVarTrue"}
+	var boolResult = make([]bool, len(want))
+	for i, componentName := range actualComponentsName {
+		component := ctx.ModuleForTests(componentName, "").
+			Module().(*productVariablesDefaultsTestModule)
+		boolPtr := component.properties.Optimize.Enabled;
+		if boolPtr == nil {
+			boolResult[i] = true
+		} else {
+			boolResult[i] = *boolPtr
+		}
+	}
+
+	for i, v := range want {
+		if v != boolResult[i] {
+			t.Errorf("expected %q to get %v, got %v", actualComponentsName,
+				want, boolResult)
+		}
 	}
 }
