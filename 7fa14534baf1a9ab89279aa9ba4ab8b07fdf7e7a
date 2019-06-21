@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bb7be08d_cf5ffb7b",
+        "filename": "java/app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-21T17:48:56Z",
+      "side": 1,
+      "message": "Done. This made me realize that we could boost performance a little bit by deduping notice paths here. (mergenotice.py does it in a much less efficient way.) Added it too.",
+      "parentUuid": "56e09d83_db3fdbb0",
+      "range": {
+        "startLine": 370,
+        "startChar": 26,
+        "endLine": 370,
+        "endChar": 38
+      },
+      "revId": "7fa14534baf1a9ab89279aa9ba4ab8b07fdf7e7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "03ab7f6a_b84631ac",
         "filename": "java/app.go",
         "patchSetId": 5
@@ -39,6 +63,24 @@
       "revId": "7fa14534baf1a9ab89279aa9ba4ab8b07fdf7e7a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6eefc8f_bee6370e",
+        "filename": "java/app.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-21T17:48:56Z",
+      "side": 1,
+      "message": "I did it here to make it easier to merge them across variants in the future. On a second thought, we can sort later or just use a set when merging. However, this became required after adding path deduping logic, so I\u0027m gonna still keep it.",
+      "parentUuid": "03ab7f6a_b84631ac",
+      "revId": "7fa14534baf1a9ab89279aa9ba4ab8b07fdf7e7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "7ea5ec4b_3147c9dd",
+        "filename": "java/app_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1600,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-21T17:48:56Z",
+      "side": 1,
+      "message": "It turns out my host filtering condition was incorrect as you guessed. Fixed now.",
+      "parentUuid": "f49ccecb_2d6d2c58",
+      "revId": "7fa14534baf1a9ab89279aa9ba4ab8b07fdf7e7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e1b98f4_4c40858f",
         "filename": "java/app_test.go",
         "patchSetId": 5
@@ -73,6 +133,24 @@
       "revId": "7fa14534baf1a9ab89279aa9ba4ab8b07fdf7e7a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "653bd26f_66d6c84f",
+        "filename": "java/app_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1609,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-21T17:48:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e1b98f4_4c40858f",
+      "revId": "7fa14534baf1a9ab89279aa9ba4ab8b07fdf7e7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
