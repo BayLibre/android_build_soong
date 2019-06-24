@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7bf5d835_e0b81a26",
+        "filename": "ui/terminal/smart_status.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-24T17:29:44Z",
+      "side": 1,
+      "message": "nit:\ncolor :\u003d ansi.black()\nif seconds \u003e 60: {\n   color \u003d ansi.red()\n} else if \n   color \u003d ansi.yellow()\n}\ndurationStr \u003d color + ansi.bold() + durationStr + ansi.regular()\n\nThat way, in the future, we can just modify the style of the text in one line instead of two lines.",
+      "range": {
+        "startLine": 347,
+        "startChar": 2,
+        "endLine": 351,
+        "endChar": 3
+      },
+      "revId": "c9f3992c1e3c6d6efb8c709d6b085620dc98390e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
