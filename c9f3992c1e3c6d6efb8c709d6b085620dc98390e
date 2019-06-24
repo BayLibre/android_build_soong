@@ -22,6 +22,30 @@
       "revId": "c9f3992c1e3c6d6efb8c709d6b085620dc98390e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "166460ef_93b87e94",
+        "filename": "ui/terminal/smart_status.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-24T17:53:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bf5d835_e0b81a26",
+      "range": {
+        "startLine": 347,
+        "startChar": 2,
+        "endLine": 351,
+        "endChar": 3
+      },
+      "revId": "c9f3992c1e3c6d6efb8c709d6b085620dc98390e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
