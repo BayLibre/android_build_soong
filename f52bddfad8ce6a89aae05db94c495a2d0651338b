@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "043f7844_350257f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-06-25T14:09:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eef2cdab_0d81af6b",
+      "revId": "f52bddfad8ce6a89aae05db94c495a2d0651338b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e20f040_68c959ec",
         "filename": "android/visibility.go",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "c1aa54cb_72880c61",
+        "filename": "android/visibility.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-06-25T14:09:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e20f040_68c959ec",
+      "range": {
+        "startLine": 333,
+        "startChar": 0,
+        "endLine": 335,
+        "endChar": 2
+      },
+      "revId": "f52bddfad8ce6a89aae05db94c495a2d0651338b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6096ff21_88425f8e",
         "filename": "android/visibility.go.orig",
         "patchSetId": 1
@@ -56,6 +98,24 @@
       "revId": "f52bddfad8ce6a89aae05db94c495a2d0651338b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "365ed31c_5be89f9a",
+        "filename": "android/visibility.go.orig",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-06-25T14:09:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6096ff21_88425f8e",
+      "revId": "f52bddfad8ce6a89aae05db94c495a2d0651338b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
