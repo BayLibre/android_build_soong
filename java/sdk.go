@@ -40,6 +40,7 @@ var apiFingerprintPathKey = android.NewOnceKey("apiFingerprintPathKey")
 type sdkContext interface {
 	// sdkVersion returns the sdk_version property of the current module, or an empty string if it is not set.
 	sdkVersion() string
+	setSdkVersion(v string)
 	// minSdkVersion returns the min_sdk_version property of the current module, or sdkVersion() if it is not set.
 	minSdkVersion() string
 	// targetSdkVersion returns the target_sdk_version property of the current module, or sdkVersion() if it is not set.

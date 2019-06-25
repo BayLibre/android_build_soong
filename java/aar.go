@@ -502,6 +502,10 @@ func (a *AARImport) sdkVersion() string {
 	return String(a.properties.Sdk_version)
 }
 
+func (a *AARImport) setSdkVersion(v string) {
+	a.properties.Sdk_version = proptools.StringPtr(v)
+}
+
 func (a *AARImport) minSdkVersion() string {
 	if a.properties.Min_sdk_version != nil {
 		return *a.properties.Min_sdk_version

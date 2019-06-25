@@ -50,6 +50,19 @@ func init() {
 	android.RegisterModuleType("dex_import", DexImportFactory)
 
 	android.RegisterSingletonType("logtags", LogtagsSingleton)
+
+	android.PreDepsMutators(func(ctx android.RegisterMutatorsContext) {
+		ctx.BottomUp("sdkVersionMutator", sdkVersionMutator)
+	})
+}
+func sdkVersionMutator(mctx android.BottomUpMutatorContext) {
+	if len(mctx.DeviceConfig().SystemSdkVersions()) > 0 {
+		if mctx.DeviceSpecific() || mctx.SocSpecific() {
+			if sc, ok := mctx.Module().(sdkContext); ok && sc.sdkVersion() == "" {
+				sc.setSdkVersion("system_current")
+			}
+		}
+	}
 }
 
 // TODO:
@@ -466,6 +479,10 @@ func (j *Module) shouldInstrumentStatic(ctx android.BaseModuleContext) bool {
 
 func (j *Module) sdkVersion() string {
 	return String(j.deviceProperties.Sdk_version)
+}
+
+func (j *Module) setSdkVersion(v string) {
+	j.deviceProperties.Sdk_version = proptools.StringPtr(v)
 }
 
 func (j *Module) minSdkVersion() string {
@@ -1870,6 +1887,10 @@ type Import struct {
 
 func (j *Import) sdkVersion() string {
 	return String(j.properties.Sdk_version)
+}
+
+func (j *Import) setSdkVersion(v string) {
+	j.properties.Sdk_version = proptools.StringPtr(v)
 }
 
 func (j *Import) minSdkVersion() string {

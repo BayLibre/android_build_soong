@@ -26,6 +26,8 @@ import (
 	"android/soong/cc"
 	"android/soong/dexpreopt"
 	"android/soong/genrule"
+
+	"github.com/google/blueprint/proptools"
 )
 
 var buildDir string
@@ -109,6 +111,7 @@ func testContext(config android.Config, bp string,
 	ctx.PreDepsMutators(func(ctx android.RegisterMutatorsContext) {
 		ctx.BottomUp("link", cc.LinkageMutator).Parallel()
 		ctx.BottomUp("begin", cc.BeginMutator).Parallel()
+		ctx.BottomUp("sdkVersionMutator", sdkVersionMutator).Parallel()
 	})
 
 	bp += GatherRequiredDepsForTest()
@@ -280,6 +283,33 @@ func TestSimple(t *testing.T) {
 	if len(combineJar.Inputs) != 2 || combineJar.Inputs[1].String() != baz {
 		t.Errorf("foo combineJar inputs %v does not contain %q", combineJar.Inputs, baz)
 	}
+}
+
+func TestSdkVersion(t *testing.T) {
+	ctx := testJava(t, `
+		java_library {
+			name: "foo",
+			srcs: ["a.java"],
+			vendor: true,
+		}
+
+		java_library {
+			name: "bar",
+			srcs: ["b.java"],
+		}
+	`)
+
+	foo := ctx.ModuleForTests("foo", "android_common").Module().(*Library)
+	bar := ctx.ModuleForTests("bar", "android_common").Module().(*Library)
+
+	if proptools.String(foo.deviceProperties.Sdk_version) != "system_current" {
+		t.Errorf("If sdk version of vendor module is empty, it must change to system_current.")
+	}
+
+	if proptools.String(bar.deviceProperties.Sdk_version) != "" {
+		t.Errorf("If sdk version of non-vendor module is empty, it keeps empty.")
+	}
+
 }
 
 func TestArchSpecific(t *testing.T) {
