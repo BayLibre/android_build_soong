@@ -283,12 +283,8 @@ func buildBootImageRuleForArch(ctx android.SingletonContext, image *bootImage,
 		Flag("--runtime-arg").FlagWithArg("-Xms", global.Dex2oatImageXms).
 		Flag("--runtime-arg").FlagWithArg("-Xmx", global.Dex2oatImageXmx)
 
-	if profile != nil {
-		cmd.FlagWithArg("--compiler-filter=", "speed-profile")
-		cmd.FlagWithInput("--profile-file=", profile)
-	} else if global.PreloadedClasses.Valid() {
-		cmd.FlagWithInput("--image-classes=", global.PreloadedClasses.Path())
-	}
+	cmd.FlagWithArg("--compiler-filter=", "speed-profile")
+	cmd.FlagWithInput("--profile-file=", profile)
 
 	if global.DirtyImageObjects.Valid() {
 		cmd.FlagWithInput("--dirty-image-objects=", global.DirtyImageObjects.Path())
@@ -374,7 +370,7 @@ Rebuild with ART_BOOT_IMAGE_EXTRA_ARGS="--runtime-arg -verbose:verifier" to see 
 func bootImageProfileRule(ctx android.SingletonContext, image *bootImage, missingDeps []string) android.WritablePath {
 	global := dexpreoptGlobalConfig(ctx)
 
-	if !global.UseProfileForBootImage || ctx.Config().IsPdkBuild() || ctx.Config().UnbundledBuild() {
+	if ctx.Config().IsPdkBuild() || ctx.Config().UnbundledBuild() {
 		return nil
 	}
 	return ctx.Config().Once(bootImageProfileRuleKey, func() interface{} {
