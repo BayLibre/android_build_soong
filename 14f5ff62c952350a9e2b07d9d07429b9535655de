@@ -22,6 +22,30 @@
       "revId": "14f5ff62c952350a9e2b07d9d07429b9535655de",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1737464f_3fe41db0",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-25T16:46:43Z",
+      "side": 1,
+      "message": "Sorry, missed this comment. Will address it separately.",
+      "parentUuid": "33c8481a_91729b33",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 0
+      },
+      "revId": "14f5ff62c952350a9e2b07d9d07429b9535655de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
