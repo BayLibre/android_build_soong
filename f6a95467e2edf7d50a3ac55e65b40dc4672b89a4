@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "389f12ad_6180ad8c",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2019-06-25T08:24:45Z",
+      "side": 1,
+      "message": "Is this the proper way to avoid the following error?\n\nerror: VNDK library: libc\u0027s ABI has INCOMPATIBLE CHANGES Please check compatibility report at: out/soong/.intermediates/bionic/libc/libc/android_arm64_armv8-a_core_shared_10000/libc.so.abidiff",
+      "range": {
+        "startLine": 781,
+        "startChar": 4,
+        "endLine": 781,
+        "endChar": 17
+      },
+      "revId": "f6a95467e2edf7d50a3ac55e65b40dc4672b89a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
