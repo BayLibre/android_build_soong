@@ -68,9 +68,6 @@ var (
 		"sse4_1": []string{"-msse4.1"},
 		"sse4_2": []string{"-msse4.2"},
 		"popcnt": []string{"-mpopcnt"},
-		"avx":    []string{"-mavx"},
-		"avx2":   []string{"-mavx2"},
-		"avx512": []string{"-mavx512"},
 		"aes_ni": []string{"-maes"},
 	}
 )
