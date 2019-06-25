@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "291c1de0_82fead37",
+        "filename": "android/package.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-06-25T20:14:59Z",
+      "side": 1,
+      "message": "Still here.",
+      "parentUuid": "f0a01ee7_2d7e1d02",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 36
+      },
+      "revId": "b59d08e192a0b51484a44e8af41281bd7253b141",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c2f4a204_0b469cb4",
         "filename": "android/package.go",
         "patchSetId": 9
@@ -375,6 +399,30 @@
       "revId": "b59d08e192a0b51484a44e8af41281bd7253b141",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6d09384_363aa437",
+        "filename": "android/package.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-06-25T20:14:59Z",
+      "side": 1,
+      "message": "It can\u0027t be done by supplying \"//\"+depDir as the name in at visibility.go:416 instead? The reason I ask is that it\u0027d be cleaner to avoid a special case in qualifiedModuleId() if other code starts to use it via the android.Module interface.",
+      "parentUuid": "b04a90e6_da3e7d36",
+      "range": {
+        "startLine": 84,
+        "startChar": 56,
+        "endLine": 84,
+        "endChar": 58
+      },
+      "revId": "b59d08e192a0b51484a44e8af41281bd7253b141",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
