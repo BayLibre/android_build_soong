@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "681455bd_bca14b62",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-25T18:01:38Z",
+      "side": 0,
+      "message": "I\u0027m pretty sure that if you remove these lines then the arch.x86_64.avx2 properties won\u0027t be available.",
+      "revId": "d5dd5344658f140b15d42f5660e1a6bda208a607",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42f73674_e3de91a7",
+        "filename": "cc/config/x86_64_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-25T18:01:38Z",
+      "side": 0,
+      "message": "This will remove -mavx from existing non-avx2 products, is that what you want?",
+      "revId": "d5dd5344658f140b15d42f5660e1a6bda208a607",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
