@@ -139,6 +139,30 @@
       "revId": "f52bddfad8ce6a89aae05db94c495a2d0651338b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1c2893c_727befa2",
+        "filename": "android/visibility_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-06-25T20:17:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f56d606_8c4194ec",
+      "range": {
+        "startLine": 792,
+        "startChar": 0,
+        "endLine": 792,
+        "endChar": 1
+      },
+      "revId": "f52bddfad8ce6a89aae05db94c495a2d0651338b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
