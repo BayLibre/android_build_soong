@@ -126,7 +126,7 @@ type BaseModuleContext interface {
 	DeviceSpecific() bool
 	SocSpecific() bool
 	ProductSpecific() bool
-	ProductServicesSpecific() bool
+	SystemExtSpecific() bool
 	AConfig() Config
 	DeviceConfig() DeviceConfig
 }
@@ -284,10 +284,14 @@ type commonProperties struct {
 	// /system/product if product partition does not exist).
 	Product_specific *bool
 
-	// whether this module provides services owned by the OS provider to the core platform. When set
-	// to true, it is installed into  /product_services (or /system/product_services if
-	// product_services partition does not exist).
+	// TODO(b/135957588) Product_services_specific will be removed once we clear all Android.bp
+	// files that have 'product_services_specific: true'. This will be converted to
+	// Product_speicific as a workaround.
 	Product_services_specific *bool
+
+	// whether this module extends system. When set to true, it is installed into /system_ext
+	// (or /system/ext if system_ext partition does not exist).
+	System_ext_specific *bool
 
 	// Whether this module is installed to recovery partition
 	Recovery *bool
@@ -398,7 +402,7 @@ const (
 	deviceSpecificModule
 	socSpecificModule
 	productSpecificModule
-	productServicesSpecificModule
+	systemExtSpecificModule
 )
 
 func (k moduleKind) String() string {
@@ -411,8 +415,8 @@ func (k moduleKind) String() string {
 		return "soc-specific"
 	case productSpecificModule:
 		return "product-specific"
-	case productServicesSpecificModule:
-		return "productservices-specific"
+	case systemExtSpecificModule:
+		return "systemext-specific"
 	default:
 		panic(fmt.Errorf("unknown module kind %d", k))
 	}
@@ -638,7 +642,7 @@ func (m *ModuleBase) DeviceSupported() bool {
 }
 
 func (m *ModuleBase) Platform() bool {
-	return !m.DeviceSpecific() && !m.SocSpecific() && !m.ProductSpecific() && !m.ProductServicesSpecific()
+	return !m.DeviceSpecific() && !m.SocSpecific() && !m.ProductSpecific() && !m.SystemExtSpecific()
 }
 
 func (m *ModuleBase) DeviceSpecific() bool {
@@ -653,8 +657,8 @@ func (m *ModuleBase) ProductSpecific() bool {
 	return Bool(m.commonProperties.Product_specific)
 }
 
-func (m *ModuleBase) ProductServicesSpecific() bool {
-	return Bool(m.commonProperties.Product_services_specific)
+func (m *ModuleBase) SystemExtSpecific() bool {
+	return Bool(m.commonProperties.System_ext_specific)
 }
 
 func (m *ModuleBase) Enabled() bool {
@@ -775,7 +779,7 @@ func determineModuleKind(m *ModuleBase, ctx blueprint.BaseModuleContext) moduleK
 	var socSpecific = Bool(m.commonProperties.Vendor) || Bool(m.commonProperties.Proprietary) || Bool(m.commonProperties.Soc_specific)
 	var deviceSpecific = Bool(m.commonProperties.Device_specific)
 	var productSpecific = Bool(m.commonProperties.Product_specific)
-	var productServicesSpecific = Bool(m.commonProperties.Product_services_specific)
+	var systemExtSpecific = Bool(m.commonProperties.System_ext_specific)
 
 	msg := "conflicting value set here"
 	if socSpecific && deviceSpecific {
@@ -791,16 +795,16 @@ func determineModuleKind(m *ModuleBase, ctx blueprint.BaseModuleContext) moduleK
 		}
 	}
 
-	if productSpecific && productServicesSpecific {
-		ctx.PropertyErrorf("product_specific", "a module cannot be specific to product and product_services at the same time.")
-		ctx.PropertyErrorf("product_services_specific", msg)
+	if productSpecific && systemExtSpecific {
+		ctx.PropertyErrorf("product_specific", "a module cannot be specific to product and system_ext at the same time.")
+		ctx.PropertyErrorf("system_ext_specific", msg)
 	}
 
-	if (socSpecific || deviceSpecific) && (productSpecific || productServicesSpecific) {
+	if (socSpecific || deviceSpecific) && (productSpecific || systemExtSpecific) {
 		if productSpecific {
 			ctx.PropertyErrorf("product_specific", "a module cannot be specific to SoC or device and product at the same time.")
 		} else {
-			ctx.PropertyErrorf("product_services_specific", "a module cannot be specific to SoC or device and product_services at the same time.")
+			ctx.PropertyErrorf("system_ext_specific", "a module cannot be specific to SoC or device and system_ext at the same time.")
 		}
 		if deviceSpecific {
 			ctx.PropertyErrorf("device_specific", msg)
@@ -819,8 +823,8 @@ func determineModuleKind(m *ModuleBase, ctx blueprint.BaseModuleContext) moduleK
 
 	if productSpecific {
 		return productSpecificModule
-	} else if productServicesSpecific {
-		return productServicesSpecificModule
+	} else if systemExtSpecific {
+		return systemExtSpecificModule
 	} else if deviceSpecific {
 		return deviceSpecificModule
 	} else if socSpecific {
@@ -1333,18 +1337,18 @@ func (b *baseModuleContext) ProductSpecific() bool {
 	return b.kind == productSpecificModule
 }
 
-func (b *baseModuleContext) ProductServicesSpecific() bool {
-	return b.kind == productServicesSpecificModule
+func (b *baseModuleContext) SystemExtSpecific() bool {
+	return b.kind == systemExtSpecificModule
 }
 
 // Makes this module a platform module, i.e. not specific to soc, device,
-// product, or product_services.
+// product, or system_ext.
 func (m *ModuleBase) MakeAsPlatform() {
 	m.commonProperties.Vendor = boolPtr(false)
 	m.commonProperties.Proprietary = boolPtr(false)
 	m.commonProperties.Soc_specific = boolPtr(false)
 	m.commonProperties.Product_specific = boolPtr(false)
-	m.commonProperties.Product_services_specific = boolPtr(false)
+	m.commonProperties.System_ext_specific = boolPtr(false)
 }
 
 func (m *ModuleBase) EnableNativeBridgeSupportByDefault() {
