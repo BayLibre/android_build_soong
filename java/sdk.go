@@ -94,6 +94,12 @@ func decodeSdkDep(ctx android.BaseModuleContext, sdkContext sdkContext) sdkDep {
 		v = strconv.Itoa(latestSdkVersion)
 	}
 
+	if len(ctx.DeviceConfig().SystemSdkVersions()) > 0 {
+		if (ctx.DeviceSpecific() || ctx.SocSpecific()) && v == "" {
+			ctx.PropertyErrorf("sdk_version", "invalid sdk version, it cannot be empty if it is a devices-specfic or soc-specific module")
+			return sdkDep{}
+		}
+	}
 	numericSdkVersion, err := sdkVersionToNumber(ctx, v)
 	if err != nil {
 		ctx.PropertyErrorf("sdk_version", "%s", err)
