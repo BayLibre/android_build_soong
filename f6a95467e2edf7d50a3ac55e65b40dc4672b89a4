@@ -46,6 +46,30 @@
       "revId": "f6a95467e2edf7d50a3ac55e65b40dc4672b89a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "966bef34_d046d08a",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2019-06-25T08:40:53Z",
+      "side": 1,
+      "message": "Stubs have no source files, and the dumps don\u0027t have structure layouts and vtables.\nThe tool reports them as INCOMPATIBLE.",
+      "parentUuid": "b8a728a8_14f0412c",
+      "range": {
+        "startLine": 781,
+        "startChar": 4,
+        "endLine": 781,
+        "endChar": 17
+      },
+      "revId": "f6a95467e2edf7d50a3ac55e65b40dc4672b89a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
