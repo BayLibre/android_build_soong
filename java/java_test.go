@@ -221,6 +221,29 @@ func run(t *testing.T, ctx *android.TestContext, config android.Config) {
 	android.FailIfErrored(t, errs)
 }
 
+func testJavaError(t *testing.T, pattern string, bp string) {
+	t.Helper()
+	config := testConfig(nil)
+	ctx := testContext(config, bp, nil)
+
+	pathCtx := android.PathContextForTesting(config, nil)
+	setDexpreoptTestGlobalConfig(config, dexpreopt.GlobalConfigForTests(pathCtx))
+
+	ctx.Register()
+	_, errs := ctx.ParseBlueprintsFiles("Android.bp")
+	if len(errs) > 0 {
+		android.FailIfNoMatchingErrors(t, pattern, errs)
+		return
+	}
+	_, errs = ctx.PrepareBuildActions(config)
+	if len(errs) > 0 {
+		android.FailIfNoMatchingErrors(t, pattern, errs)
+		return
+	}
+
+	t.Fatalf("missing expected error %q (0 errors are returned)", pattern)
+}
+
 func testJava(t *testing.T, bp string) *android.TestContext {
 	t.Helper()
 	config := testConfig(nil)
@@ -310,6 +333,25 @@ func TestSdkVersion(t *testing.T) {
 		t.Errorf("If sdk version of non-vendor module is empty, it keeps empty.")
 	}
 
+}
+
+func TestPlatformAPIs(t *testing.T) {
+	testJava(t, `
+		java_library {
+			name: "foo",
+			srcs: ["a.java"],
+			platform_apis: true,
+		}
+	`)
+
+	testJavaError(t, "Platform_apis can be true only if Sdk_version is empty. Current sdk_version: .*", `
+		java_library {
+			name: "bar",
+			srcs: ["b.java"],
+			sdk_version: "system_current",
+			platform_apis: true,
+		}
+	`)
 }
 
 func TestArchSpecific(t *testing.T) {
