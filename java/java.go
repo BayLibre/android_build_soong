@@ -57,9 +57,12 @@ func init() {
 }
 func sdkVersionMutator(mctx android.BottomUpMutatorContext) {
 	if len(mctx.DeviceConfig().SystemSdkVersions()) > 0 {
-		if mctx.DeviceSpecific() || mctx.SocSpecific() {
-			if sc, ok := mctx.Module().(sdkContext); ok && sc.sdkVersion() == "" {
+		if sc, ok := mctx.Module().(sdkContext); ok {
+			if mctx.DeviceSpecific() || mctx.SocSpecific() && sc.sdkVersion() == "" {
 				sc.setSdkVersion("system_current")
+			}
+			if p, ok := mctx.Module().(platformAPI); ok && p.usePlatformAPI() && sc.sdkVersion() != "" {
+				mctx.PropertyErrorf("platform_apis", "Platfrom_apis can be true only if Sdk_version is empty. current sdk_version: %s", sc.sdkVersion())
 			}
 		}
 	}
@@ -376,6 +379,14 @@ func (j *Module) DexJarFile() android.Path {
 }
 
 var _ android.OutputFileProducer = (*Module)(nil)
+
+func (j *Module) usePlatformAPI() bool {
+	return proptools.Bool(j.deviceProperties.Platform_apis)
+}
+
+type platformAPI interface {
+	usePlatformAPI() bool
+}
 
 type Dependency interface {
 	HeaderJars() android.Paths
