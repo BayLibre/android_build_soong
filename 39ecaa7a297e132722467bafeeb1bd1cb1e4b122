@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "423e6f95_cc228718",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-26T15:41:53Z",
+      "side": 1,
+      "message": "If we\u0027re gonna add a fake dependency here anyway, why do we need the above action, retrieving a SOONG_DELVE value through config.Genenv()?",
+      "revId": "39ecaa7a297e132722467bafeeb1bd1cb1e4b122",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
