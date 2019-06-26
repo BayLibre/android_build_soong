@@ -16,6 +16,24 @@
       "revId": "39ecaa7a297e132722467bafeeb1bd1cb1e4b122",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37b2963d_d397efde",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-26T23:10:02Z",
+      "side": 1,
+      "message": "The environment dependency is necessary to rerun Soong the first time you build after setting SOONG_DELVE.  This dependency makes sure it reruns the second time you build after setting SOONG_DELVE.",
+      "parentUuid": "423e6f95_cc228718",
+      "revId": "39ecaa7a297e132722467bafeeb1bd1cb1e4b122",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
