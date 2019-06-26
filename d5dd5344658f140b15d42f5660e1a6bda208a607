@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e62a9989_6b7f759e",
+        "filename": "cc/config/x86_64_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-26T05:41:42Z",
+      "side": 0,
+      "message": "I\u0027d suggest leaving a comment here on why these flags are not provided by default.",
+      "revId": "d5dd5344658f140b15d42f5660e1a6bda208a607",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
