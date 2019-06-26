@@ -474,6 +474,30 @@
     },
     {
       "key": {
+        "uuid": "0eeab292_94efa5f9",
+        "filename": "android/package.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-06-26T17:25:42Z",
+      "side": 1,
+      "message": "For debug purposes that\u0027s nicer, agreed.",
+      "parentUuid": "7e29ed7c_d0eecdd5",
+      "range": {
+        "startLine": 84,
+        "startChar": 56,
+        "endLine": 84,
+        "endChar": 58
+      },
+      "revId": "b59d08e192a0b51484a44e8af41281bd7253b141",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd6cb867_9cbf8e39",
         "filename": "android/visibility.go",
         "patchSetId": 9
