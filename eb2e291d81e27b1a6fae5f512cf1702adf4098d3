@@ -354,6 +354,24 @@
     },
     {
       "key": {
+        "uuid": "06add18d_6afd38e3",
+        "filename": "java/builder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-26T22:15:40Z",
+      "side": 1,
+      "message": "But you already have the complexity of the rule to run zipsync, and zipsync is fine with no srcjars, so why not always use the version with zipsync?",
+      "parentUuid": "a6b8a105_bb2a7290",
+      "revId": "eb2e291d81e27b1a6fae5f512cf1702adf4098d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c0e43b0f_d1943c74",
         "filename": "java/java.go",
         "patchSetId": 7
