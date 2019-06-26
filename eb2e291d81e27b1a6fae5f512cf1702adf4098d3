@@ -372,6 +372,24 @@
     },
     {
       "key": {
+        "uuid": "877975a8_18e9d390",
+        "filename": "java/builder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-06-26T23:37:37Z",
+      "side": 1,
+      "message": "It\u0027s just less commands to execute. Is there anything wrong with this?",
+      "parentUuid": "06add18d_6afd38e3",
+      "revId": "eb2e291d81e27b1a6fae5f512cf1702adf4098d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0e43b0f_d1943c74",
         "filename": "java/java.go",
         "patchSetId": 7
