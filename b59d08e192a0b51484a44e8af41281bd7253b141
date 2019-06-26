@@ -214,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "adca1aac_572016b8",
+        "filename": "android/package.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-06-26T11:13:14Z",
+      "side": 1,
+      "message": "Really Done",
+      "parentUuid": "291c1de0_82fead37",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 36
+      },
+      "revId": "b59d08e192a0b51484a44e8af41281bd7253b141",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2f4a204_0b469cb4",
         "filename": "android/package.go",
         "patchSetId": 9
@@ -423,6 +447,30 @@
       "revId": "b59d08e192a0b51484a44e8af41281bd7253b141",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e29ed7c_d0eecdd5",
+        "filename": "android/package.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-06-26T11:13:14Z",
+      "side": 1,
+      "message": "A module Y in package X has an id of //X:Y I think it\u0027s clearer if the id of the package is //X rather than //X://X.\n\nWhat issue would it cause if other code starts to use qualifiedModuleId()? The ids that are returned are unique for each module.\n\nI will remove the duplication so that the special casing is all in one place which should remove the potential for inconsistencies to be introduced.",
+      "parentUuid": "d6d09384_363aa437",
+      "range": {
+        "startLine": 84,
+        "startChar": 56,
+        "endLine": 84,
+        "endChar": 58
+      },
+      "revId": "b59d08e192a0b51484a44e8af41281bd7253b141",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
