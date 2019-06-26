@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "128916c7_3acc4af8",
+        "filename": "ui/status/critical_path.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-06-26T16:41:55Z",
+      "side": 1,
+      "message": "totalDuration or accumulatedDuration? criticalPath is also the struct\u0027s name, and so can be very confusing. Besides, it\u0027s technically not a path.",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 13
+      },
+      "revId": "31285c23f70d105012810a1f1868c6dab9ffceb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
