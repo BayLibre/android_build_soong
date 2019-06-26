@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "075898db_c3c899ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-06-26T21:39:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74e68301_b3d8172f",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 53
+      },
+      "revId": "eb2e291d81e27b1a6fae5f512cf1702adf4098d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8a0ccf3_f5654f55",
         "filename": "cc/builder.go",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "eb2e291d81e27b1a6fae5f512cf1702adf4098d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "422098e1_a284a212",
+        "filename": "cc/builder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-06-26T21:39:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8a0ccf3_f5654f55",
+      "range": {
+        "startLine": 231,
+        "startChar": 33,
+        "endLine": 231,
+        "endChar": 35
+      },
+      "revId": "eb2e291d81e27b1a6fae5f512cf1702adf4098d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "22ed532b_4da91921",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-06-26T21:39:06Z",
+      "side": 1,
+      "message": "Renamed.",
+      "parentUuid": "f61f00c3_b3da1dd6",
+      "range": {
+        "startLine": 348,
+        "startChar": 5,
+        "endLine": 348,
+        "endChar": 7
+      },
+      "revId": "eb2e291d81e27b1a6fae5f512cf1702adf4098d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9dc79fca_ed603ea0",
         "filename": "cc/cc.go",
         "patchSetId": 7
@@ -91,6 +163,30 @@
       "revId": "eb2e291d81e27b1a6fae5f512cf1702adf4098d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f697b79_58d032bb",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2354,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-06-26T21:39:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dc79fca_ed603ea0",
+      "range": {
+        "startLine": 2352,
+        "startChar": 1,
+        "endLine": 2354,
+        "endChar": 71
+      },
+      "revId": "eb2e291d81e27b1a6fae5f512cf1702adf4098d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "d3a97df1_dafb78a0",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2361,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-06-26T21:39:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ab9d1d1_64f760a1",
+      "range": {
+        "startLine": 2361,
+        "startChar": 2,
+        "endLine": 2361,
+        "endChar": 26
+      },
+      "revId": "eb2e291d81e27b1a6fae5f512cf1702adf4098d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8bb1d5b4_9d48cdd5",
         "filename": "cc/cc.go",
         "patchSetId": 7
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "004be4c6_ba6a1fba",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2365,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-06-26T21:39:06Z",
+      "side": 1,
+      "message": "Actually, it\u0027s a wrong check",
+      "parentUuid": "8bb1d5b4_9d48cdd5",
+      "range": {
+        "startLine": 2365,
+        "startChar": 17,
+        "endLine": 2365,
+        "endChar": 19
+      },
+      "revId": "eb2e291d81e27b1a6fae5f512cf1702adf4098d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db79fa6a_0731be45",
         "filename": "cc/cc.go",
         "patchSetId": 7
@@ -154,6 +298,24 @@
       "revId": "eb2e291d81e27b1a6fae5f512cf1702adf4098d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a802945_abda2b91",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2370,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-06-26T21:39:06Z",
+      "side": 1,
+      "message": "I removed it as I don\u0027t see any effect of it on the the execution of the \u0027m\u0027 command without arguments, but I don\u0027t understand this comment.",
+      "parentUuid": "db79fa6a_0731be45",
+      "revId": "eb2e291d81e27b1a6fae5f512cf1702adf4098d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -174,6 +336,24 @@
     },
     {
       "key": {
+        "uuid": "a6b8a105_bb2a7290",
+        "filename": "java/builder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-06-26T21:39:06Z",
+      "side": 1,
+      "message": "If srcJars is empty, there is no need to run zipsync.",
+      "parentUuid": "c8bae1b7_ea2457c6",
+      "revId": "eb2e291d81e27b1a6fae5f512cf1702adf4098d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0e43b0f_d1943c74",
         "filename": "java/java.go",
         "patchSetId": 7
@@ -191,6 +371,24 @@
     },
     {
       "key": {
+        "uuid": "27442cf8_b4cd543f",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-06-26T21:39:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0e43b0f_d1943c74",
+      "revId": "eb2e291d81e27b1a6fae5f512cf1702adf4098d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d9593e2_f8b7bb49",
         "filename": "java/java.go",
         "patchSetId": 7
@@ -205,6 +403,24 @@
       "revId": "eb2e291d81e27b1a6fae5f512cf1702adf4098d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd748424_fa0d261a",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2264,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-06-26T21:39:06Z",
+      "side": 1,
+      "message": "Removed, although I am confused -- please see the response in cc/cc.go",
+      "parentUuid": "5d9593e2_f8b7bb49",
+      "revId": "eb2e291d81e27b1a6fae5f512cf1702adf4098d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
