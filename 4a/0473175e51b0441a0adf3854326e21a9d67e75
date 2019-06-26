@@ -1,0 +1,9 @@
+Code-Review+2: Calin Juravle <calin@google.com>
+Code-Review+1: Colin Cross <ccross@android.com>
+Code-Review+2: Nicolas Geoffray <ngeoffray@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Mathieu Chartier <mathieuc@google.com>
+Submitted-at: Wed, 26 Jun 2019 15:56:34 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/989457
+Project: platform/build/soong
+Branch: refs/heads/master
