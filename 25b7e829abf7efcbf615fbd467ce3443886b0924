@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "464c149b_1dc8edc0",
+        "filename": "android/module.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-26T23:06:49Z",
+      "side": 1,
+      "message": "How often is this function called?  In a quick benchmark, using + is 3x faster than Sprintf here.",
+      "revId": "25b7e829abf7efcbf615fbd467ce3443886b0924",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c3f8188_775168d0",
+        "filename": "android/module.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-26T23:06:49Z",
+      "side": 1,
+      "message": "This isn\u0027t used any more",
+      "range": {
+        "startLine": 575,
+        "startChar": 1,
+        "endLine": 575,
+        "endChar": 16
+      },
+      "revId": "25b7e829abf7efcbf615fbd467ce3443886b0924",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
