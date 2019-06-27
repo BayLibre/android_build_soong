@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec3bd7e7_d843afe4",
+        "filename": "java/gen.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-27T10:13:11Z",
+      "side": 1,
+      "message": "Put a small comment that this is done out of the for loop to optimize the generation of srcJarFiles using sharding. I noticed in the for loop that the ourSrcFiles is being appended per each source file and this new block of code doesn\u0027t follow the pattern.",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 24
+      },
+      "revId": "a07c3367da603231397b46df5106ed14c8915a81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
