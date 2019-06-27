@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "12707009_c8cd866d",
+        "filename": "android/module.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-06-27T12:25:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "464c149b_1dc8edc0",
+      "revId": "25b7e829abf7efcbf615fbd467ce3443886b0924",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c3f8188_775168d0",
         "filename": "android/module.go",
         "patchSetId": 11
@@ -39,6 +57,30 @@
       "revId": "25b7e829abf7efcbf615fbd467ce3443886b0924",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4e0104d_684f3529",
+        "filename": "android/module.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-06-27T12:25:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c3f8188_775168d0",
+      "range": {
+        "startLine": 575,
+        "startChar": 1,
+        "endLine": 575,
+        "endChar": 16
+      },
+      "revId": "25b7e829abf7efcbf615fbd467ce3443886b0924",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
