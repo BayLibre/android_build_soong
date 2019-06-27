@@ -1266,8 +1266,8 @@ func (b *baseModuleContext) VisitDirectDeps(visit func(Module)) {
 
 func (b *baseModuleContext) VisitDirectDepsWithTag(tag blueprint.DependencyTag, visit func(Module)) {
 	b.BaseModuleContext.VisitDirectDeps(func(module blueprint.Module) {
-		if aModule := b.validateAndroidModule(module, b.strictVisitDeps); aModule != nil {
-			if b.BaseModuleContext.OtherModuleDependencyTag(aModule) == tag {
+		if b.BaseModuleContext.OtherModuleDependencyTag(module) == tag {
+			if aModule := b.validateAndroidModule(module, b.strictVisitDeps); aModule != nil {
 				visit(aModule)
 			}
 		}
