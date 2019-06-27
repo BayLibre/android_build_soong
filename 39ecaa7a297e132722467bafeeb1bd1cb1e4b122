@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9e18cfaf_7a37c6af",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-27T08:05:22Z",
+      "side": 1,
+      "message": "Nit: Starting",
+      "range": {
+        "startLine": 69,
+        "startChar": 15,
+        "endLine": 69,
+        "endChar": 16
+      },
+      "revId": "39ecaa7a297e132722467bafeeb1bd1cb1e4b122",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "423e6f95_cc228718",
         "filename": "cmd/soong_build/main.go",
         "patchSetId": 1
@@ -34,6 +57,29 @@
       "revId": "39ecaa7a297e132722467bafeeb1bd1cb1e4b122",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf43c67f_b199eb7e",
+        "filename": "ui/build/sandbox_linux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-27T08:05:22Z",
+      "side": 1,
+      "message": "Could you expand why sandbox requires SOONG_DELVE to be defined?",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 2
+      },
+      "revId": "39ecaa7a297e132722467bafeeb1bd1cb1e4b122",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
