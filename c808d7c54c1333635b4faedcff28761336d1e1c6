@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5426d064_29c9e01f",
+        "filename": "ui/build/exec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-06-27T11:50:00Z",
+      "side": 1,
+      "message": "Should we kill the entire build since we could not read the stream? We should just log the error and continue until the build is finished.",
+      "range": {
+        "startLine": 168,
+        "startChar": 3,
+        "endLine": 168,
+        "endChar": 19
+      },
+      "revId": "c808d7c54c1333635b4faedcff28761336d1e1c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
