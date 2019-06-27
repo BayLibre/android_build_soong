@@ -22,6 +22,30 @@
       "revId": "f4bcc65c074ea8057d29b6ca723e4bb74626ada5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c74bf8fa_8fcf9339",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2019-06-27T14:03:26Z",
+      "side": 1,
+      "message": "Good catch, thanks",
+      "parentUuid": "ce2f8085_bc6961bb",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 13
+      },
+      "revId": "f4bcc65c074ea8057d29b6ca723e4bb74626ada5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
