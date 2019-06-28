@@ -194,6 +194,7 @@ type Module interface {
 	InstallInRecovery() bool
 	SkipInstall()
 	ExportedToMake() bool
+	DontExportToMake()
 	NoticeFile() OptionalPath
 
 	AddProperties(props ...interface{})
@@ -774,6 +775,10 @@ func (m *ModuleBase) SkipInstall() {
 
 func (m *ModuleBase) ExportedToMake() bool {
 	return m.commonProperties.NamespaceExportedToMake
+}
+
+func (m *ModuleBase) DontExportToMake() {
+	m.commonProperties.NamespaceExportedToMake = false
 }
 
 func (m *ModuleBase) computeInstallDeps(
