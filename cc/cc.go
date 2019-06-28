@@ -368,6 +368,7 @@ var (
 	ndkLateStubDepTag     = dependencyTag{name: "ndk late stub", library: true}
 	vndkExtDepTag         = dependencyTag{name: "vndk extends", library: true}
 	runtimeDepTag         = dependencyTag{name: "runtime lib"}
+	testPerSrcDepTag      = dependencyTag{name: "test_per_src"}
 )
 
 // Module contains the properties and members used by all C/C++ module types, and implements
@@ -403,6 +404,9 @@ type Module struct {
 
 	outputFile android.OptionalPath
 
+	// Test output files, in the case of a test module using `test_per_src`.
+	testPerSrcOutputFiles []android.Path
+
 	cachedToolchain config.Toolchain
 
 	subAndroidMkOnce map[subAndroidMkProvider]bool
@@ -423,6 +427,10 @@ type Module struct {
 
 func (c *Module) OutputFile() android.OptionalPath {
 	return c.outputFile
+}
+
+func (c *Module) TestPerSrcOutputFiles() []android.Path {
+	return c.testPerSrcOutputFiles
 }
 
 func (c *Module) UnstrippedOutputFile() android.Path {
@@ -1046,6 +1054,26 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 			c.IsStubs() {
 			c.Properties.HideFromMake = false // unhide
 			// Note: this is still non-installable
+		}
+	}
+
+	// Handle the case of a test module split by `test_per_src` mutator.
+	if test, ok := c.linker.(testPerSrc); ok {
+		stem := test.stem()
+		// The `test_per_src` mutator adds an extra variant named "", depending on all the
+		// other `test_per_src` variants of the test module. Collect the output files of
+		// these dependencies and record them in the `testPerSrcOutputFiles` for later use
+		// (see e.g. `apexBundle.GenerateAndroidBuildActions`).
+		if stem != nil && *stem == "" {
+			var testPerSrcOutputFiles []android.Path
+			for _, dep := range actx.GetDirectDepsWithTag(testPerSrcDepTag) {
+				if ccDep, ok := dep.(*Module); ok {
+					depOutputFile := ccDep.OutputFile().Path()
+					testPerSrcOutputFiles =
+						append(testPerSrcOutputFiles, depOutputFile)
+				}
+			}
+			c.testPerSrcOutputFiles = testPerSrcOutputFiles
 		}
 	}
 
