@@ -139,7 +139,7 @@ func (test *testBinary) setSrc(name, src string) {
 
 var _ testPerSrc = (*testBinary)(nil)
 
-func testPerSrcMutator(mctx android.BottomUpMutatorContext) {
+func TestPerSrcMutator(mctx android.BottomUpMutatorContext) {
 	if m, ok := mctx.Module().(*Module); ok {
 		if test, ok := m.linker.(testPerSrc); ok {
 			if test.testPerSrc() && len(test.srcs()) > 0 {
