@@ -408,6 +408,24 @@
     },
     {
       "key": {
+        "uuid": "b11a8f5f_27e34267",
+        "filename": "java/builder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-06-28T16:40:53Z",
+      "side": 1,
+      "message": "Done. 612 additional zipsync invocations per build.",
+      "parentUuid": "0ab5c9bb_af416325",
+      "revId": "eb2e291d81e27b1a6fae5f512cf1702adf4098d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0e43b0f_d1943c74",
         "filename": "java/java.go",
         "patchSetId": 7
