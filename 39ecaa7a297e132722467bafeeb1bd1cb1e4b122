@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "b57d632c_70b9cbbd",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-28T19:37:56Z",
+      "side": 1,
+      "message": "I\u0027m having trouble with this kill.  dlv seems to exec a grandchild process, and both dlv processes inherit Ninja\u0027s extra pipe fd that lets it know when the process ends.  This kill kills the child but not the grandchild, the grandchild stays forever, that keeps the pipe open, and ninja thinks soong_build has not finished.",
+      "revId": "39ecaa7a297e132722467bafeeb1bd1cb1e4b122",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "423e6f95_cc228718",
         "filename": "cmd/soong_build/main.go",
         "patchSetId": 1
