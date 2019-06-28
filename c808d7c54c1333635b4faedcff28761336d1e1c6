@@ -22,6 +22,30 @@
       "revId": "c808d7c54c1333635b4faedcff28761336d1e1c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebc4ad36_e1d30592",
+        "filename": "ui/build/exec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-06-28T16:42:58Z",
+      "side": 1,
+      "message": "I\u0027m not sure we can recover here, if we can\u0027t read from the pipe and the pipe gets full then the process may get stuck writing and never finish, and we would deadlock if we called Wait().",
+      "parentUuid": "5426d064_29c9e01f",
+      "range": {
+        "startLine": 168,
+        "startChar": 3,
+        "endLine": 168,
+        "endChar": 19
+      },
+      "revId": "c808d7c54c1333635b4faedcff28761336d1e1c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
