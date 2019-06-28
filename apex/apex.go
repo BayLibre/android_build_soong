@@ -433,7 +433,7 @@ func addDependenciesForNativeModules(ctx android.BottomUpMutatorContext,
 		{Mutator: "image", Variation: imageVariation},
 	}, executableTag, binaries...)
 
-	ctx.AddFarVariationDependencies([]blueprint.Variation{
+	ctx.AddAllFarVariationDependencies([]blueprint.Variation{
 		{Mutator: "arch", Variation: arch},
 		{Mutator: "image", Variation: imageVariation},
 	}, testTag, tests...)
@@ -476,7 +476,7 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 
 		// When multilib.* is omitted for tests, it implies
 		// multilib.both.
-		ctx.AddFarVariationDependencies([]blueprint.Variation{
+		ctx.AddAllFarVariationDependencies([]blueprint.Variation{
 			{Mutator: "arch", Variation: target.String()},
 			{Mutator: "image", Variation: a.getImageVariation(config)},
 		}, testTag, a.properties.Tests...)
@@ -784,7 +784,12 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			case testTag:
 				if cc, ok := child.(*cc.Module); ok {
 					fileToCopy, dirInApex := getCopyManifestForExecutable(cc)
-					filesInfo = append(filesInfo, apexFile{fileToCopy, depName, dirInApex, nativeTest, cc, nil})
+					// Handle modules created as `test_per_src` variations of a single test module:
+					// replace the name of the original test module (`depName`, shared by all
+					// `test_per_src` variants of that module) with the name of the generated test
+					// binary.
+					moduleName := filepath.Base(fileToCopy.String())
+					filesInfo = append(filesInfo, apexFile{fileToCopy, moduleName, dirInApex, nativeTest, cc, nil})
 					return true
 				} else {
 					ctx.PropertyErrorf("tests", "%q is not a cc module", depName)
