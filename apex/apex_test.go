@@ -97,6 +97,7 @@ func testApexContext(t *testing.T, bp string) (*android.TestContext, android.Con
 		ctx.BottomUp("image", cc.ImageMutator).Parallel()
 		ctx.BottomUp("link", cc.LinkageMutator).Parallel()
 		ctx.BottomUp("vndk", cc.VndkMutator).Parallel()
+		ctx.BottomUp("test_per_src", cc.TestPerSrcMutator).Parallel()
 		ctx.BottomUp("version", cc.VersionMutator).Parallel()
 		ctx.BottomUp("begin", cc.BeginMutator).Parallel()
 	})
@@ -196,8 +197,11 @@ func testApexContext(t *testing.T, bp string) (*android.TestContext, android.Con
 		"system/sepolicy/apex/otherapex-file_contexts":      nil,
 		"system/sepolicy/apex/commonapex-file_contexts":     nil,
 		"mylib.cpp":                            nil,
-		"mytest.cpp":                           nil,
 		"mylib_common.cpp":                     nil,
+		"mytest.cpp":                           nil,
+		"mytest1.cpp":                          nil,
+		"mytest2.cpp":                          nil,
+		"mytest3.cpp":                          nil,
 		"myprebuilt":                           nil,
 		"my_include":                           nil,
 		"vendor/foo/devkeys/test.x509.pem":     nil,
@@ -1346,6 +1350,7 @@ func TestApexWithTests(t *testing.T) {
 			key: "myapex.key",
 			tests: [
 				"mytest",
+				"mytests",
 			],
 		}
 
@@ -1364,6 +1369,21 @@ func TestApexWithTests(t *testing.T) {
 			static_executable: true,
 			stl: "none",
 		}
+
+		cc_test {
+			name: "mytests",
+			gtest: false,
+			srcs: [
+				"mytest1.cpp",
+				"mytest2.cpp",
+				"mytest3.cpp",
+			],
+			test_per_src: true,
+			relative_install_path: "test",
+			system_shared_libs: [],
+			static_executable: true,
+			stl: "none",
+		}
 	`)
 
 	apexRule := ctx.ModuleForTests("myapex", "android_common_myapex").Rule("apexRule")
@@ -1371,6 +1391,11 @@ func TestApexWithTests(t *testing.T) {
 
 	// Ensure that test dep is copied into apex.
 	ensureContains(t, copyCmds, "image.apex/bin/test/mytest")
+
+	// Ensure that test deps built with `test_per_src` are copied into apex.
+	ensureContains(t, copyCmds, "image.apex/bin/test/mytest1")
+	ensureContains(t, copyCmds, "image.apex/bin/test/mytest2")
+	ensureContains(t, copyCmds, "image.apex/bin/test/mytest3")
 }
 
 func TestApexUsesOtherApex(t *testing.T) {
