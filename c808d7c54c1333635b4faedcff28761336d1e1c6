@@ -46,6 +46,30 @@
       "revId": "c808d7c54c1333635b4faedcff28761336d1e1c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cdc8cab_65e67c47",
+        "filename": "ui/build/exec.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-07-01T19:54:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ebc4ad36_e1d30592",
+      "range": {
+        "startLine": 168,
+        "startChar": 3,
+        "endLine": 168,
+        "endChar": 19
+      },
+      "revId": "c808d7c54c1333635b4faedcff28761336d1e1c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
