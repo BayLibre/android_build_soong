@@ -22,6 +22,30 @@
       "revId": "f3dbedbb071eef1162c3002f11cad50c8f72b7e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b97ede3_69459eab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-07-01T19:45:18Z",
+      "side": 1,
+      "message": "Good call; I added a unit test in PS2.",
+      "parentUuid": "61e21eac_6c168311",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 7
+      },
+      "revId": "f3dbedbb071eef1162c3002f11cad50c8f72b7e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
