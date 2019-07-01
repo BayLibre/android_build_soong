@@ -68,6 +68,7 @@ type BaseModuleContext interface {
 
 	OtherModuleName(m blueprint.Module) string
 	OtherModuleDir(m blueprint.Module) string
+	OtherModuleSubDir(m blueprint.Module) string
 	OtherModuleErrorf(m blueprint.Module, fmt string, args ...interface{})
 	OtherModuleDependencyTag(m blueprint.Module) blueprint.DependencyTag
 	OtherModuleExists(name string) bool
