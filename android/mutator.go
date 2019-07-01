@@ -263,11 +263,26 @@ func (b *bottomUpMutatorContext) AddReverseDependency(module blueprint.Module, t
 }
 
 func (b *bottomUpMutatorContext) CreateVariations(variations ...string) []blueprint.Module {
-	return b.bp.CreateVariations(variations...)
+	modules := b.bp.CreateVariations(variations...)
+
+	for i := range variations {
+		base := modules[i].(Module).base()
+		base.commonProperties.DebugMutators = append(base.commonProperties.DebugMutators, b.MutatorName())
+		base.commonProperties.DebugVariations = append(base.commonProperties.DebugVariations, variations[i])
+	}
+
+	return modules
 }
 
 func (b *bottomUpMutatorContext) CreateLocalVariations(variations ...string) []blueprint.Module {
-	return b.bp.CreateLocalVariations(variations...)
+	modules := b.bp.CreateLocalVariations(variations...)
+
+	for i := range variations {
+		base := modules[i].(Module).base()
+		base.commonProperties.DebugVariations = append(base.commonProperties.DebugVariations, variations[i])
+	}
+
+	return modules
 }
 
 func (b *bottomUpMutatorContext) SetDependencyVariation(variation string) {
