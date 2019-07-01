@@ -189,9 +189,11 @@ func apexMutator(mctx android.BottomUpMutatorContext) {
 
 type apexNativeDependencies struct {
 	// List of native libraries
-	Native_shared_libs []string
+	Native_shared_libs      []string
+	Core_native_shared_libs []string
 	// List of native executables
-	Binaries []string
+	Binaries      []string
+	Core_binaries []string
 }
 type apexMultilibProperties struct {
 	// Native dependencies whose compile_multilib is "first"
@@ -232,8 +234,12 @@ type apexBundleProperties struct {
 	// List of native shared libs that are embedded inside this APEX bundle
 	Native_shared_libs []string
 
+	Core_native_shared_libs []string
+
 	// List of native executables that are embedded inside this APEX bundle
 	Binaries []string
+
+	Core_binaries []string
 
 	// List of java libraries that are embedded inside this APEX bundle
 	Java_libs []string
@@ -458,12 +464,21 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 			{Mutator: "image", Variation: a.getImageVariation(config)},
 			{Mutator: "link", Variation: "shared"},
 		}, sharedLibTag, a.properties.Native_shared_libs...)
+		ctx.AddFarVariationDependencies([]blueprint.Variation{
+			{Mutator: "arch", Variation: target.String()},
+			{Mutator: "image", Variation: "core"},
+			{Mutator: "link", Variation: "shared"},
+		}, sharedLibTag, a.properties.Core_native_shared_libs...)
 
 		// Add native modules targetting both ABIs
 		addDependenciesForNativeModules(ctx,
 			a.properties.Multilib.Both.Native_shared_libs,
 			a.properties.Multilib.Both.Binaries, target.String(),
 			a.getImageVariation(config))
+		addDependenciesForNativeModules(ctx,
+			a.properties.Multilib.Both.Core_native_shared_libs,
+			a.properties.Multilib.Both.Core_binaries, target.String(),
+			"core")
 
 		isPrimaryAbi := i == 0
 		if isPrimaryAbi {
@@ -473,12 +488,20 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 				{Mutator: "arch", Variation: target.String()},
 				{Mutator: "image", Variation: a.getImageVariation(config)},
 			}, executableTag, a.properties.Binaries...)
+			ctx.AddFarVariationDependencies([]blueprint.Variation{
+				{Mutator: "arch", Variation: target.String()},
+				{Mutator: "image", Variation: "core"},
+			}, executableTag, a.properties.Core_binaries...)
 
 			// Add native modules targetting the first ABI
 			addDependenciesForNativeModules(ctx,
 				a.properties.Multilib.First.Native_shared_libs,
 				a.properties.Multilib.First.Binaries, target.String(),
 				a.getImageVariation(config))
+			addDependenciesForNativeModules(ctx,
+				a.properties.Multilib.First.Core_native_shared_libs,
+				a.properties.Multilib.First.Core_binaries, target.String(),
+				"core")
 
 			// When multilib.* is omitted for prebuilts, it implies multilib.first.
 			ctx.AddFarVariationDependencies([]blueprint.Variation{
@@ -493,28 +516,45 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 				a.properties.Multilib.Lib32.Native_shared_libs,
 				a.properties.Multilib.Lib32.Binaries, target.String(),
 				a.getImageVariation(config))
+			addDependenciesForNativeModules(ctx,
+				a.properties.Multilib.Lib32.Core_native_shared_libs,
+				a.properties.Multilib.Lib32.Core_binaries, target.String(),
+				"core")
 
 			addDependenciesForNativeModules(ctx,
 				a.properties.Multilib.Prefer32.Native_shared_libs,
 				a.properties.Multilib.Prefer32.Binaries, target.String(),
 				a.getImageVariation(config))
+			addDependenciesForNativeModules(ctx,
+				a.properties.Multilib.Prefer32.Core_native_shared_libs,
+				a.properties.Multilib.Prefer32.Core_binaries, target.String(),
+				"core")
 		case "lib64":
 			// Add native modules targetting 64-bit ABI
 			addDependenciesForNativeModules(ctx,
 				a.properties.Multilib.Lib64.Native_shared_libs,
 				a.properties.Multilib.Lib64.Binaries, target.String(),
 				a.getImageVariation(config))
+			addDependenciesForNativeModules(ctx,
+				a.properties.Multilib.Lib64.Core_native_shared_libs,
+				a.properties.Multilib.Lib64.Core_binaries, target.String(),
+				"core")
 
 			if !has32BitTarget {
 				addDependenciesForNativeModules(ctx,
 					a.properties.Multilib.Prefer32.Native_shared_libs,
 					a.properties.Multilib.Prefer32.Binaries, target.String(),
 					a.getImageVariation(config))
+				addDependenciesForNativeModules(ctx,
+					a.properties.Multilib.Prefer32.Core_native_shared_libs,
+					a.properties.Multilib.Prefer32.Core_binaries, target.String(),
+					"core")
 			}
 
 			if strings.HasPrefix(ctx.ModuleName(), "com.android.runtime") && target.Os.Class == android.Device {
 				for _, sanitizer := range ctx.Config().SanitizeDevice() {
 					if sanitizer == "hwaddress" {
+						// FIXME: What to do with core variation here?
 						addDependenciesForNativeModules(ctx,
 							[]string{"libclang_rt.hwasan-aarch64-android"},
 							nil, target.String(), a.getImageVariation(config))
@@ -689,10 +729,17 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	handleSpecialLibs := !android.Bool(a.properties.Ignore_system_library_special_case)
 
 	ctx.WalkDepsBlueprint(func(child, parent blueprint.Module) bool {
+		depSuffix := ""
+		if cc, ok := child.(*cc.Module); ok {
+			if !cc.Properties.UseVndk && proptools.Bool(a.properties.Use_vendor) {
+				depSuffix = ".core"
+			}
+		}
+
 		if _, ok := parent.(*apexBundle); ok {
 			// direct dependencies
 			depTag := ctx.OtherModuleDependencyTag(child)
-			depName := ctx.OtherModuleName(child)
+			depName := ctx.OtherModuleName(child) + depSuffix
 			switch depTag {
 			case sharedLibTag:
 				if cc, ok := child.(*cc.Module); ok {
@@ -782,7 +829,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 						// Don't track further
 						return false
 					}
-					depName := ctx.OtherModuleName(child)
+					depName := ctx.OtherModuleName(child) + depSuffix
 					fileToCopy, dirInApex := getCopyManifestForNativeLibrary(cc, handleSpecialLibs)
 					filesInfo = append(filesInfo, apexFile{fileToCopy, depName, dirInApex, nativeSharedLib, cc, nil})
 					return true
