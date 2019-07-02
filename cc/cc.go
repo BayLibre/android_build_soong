@@ -368,6 +368,7 @@ var (
 	ndkLateStubDepTag     = dependencyTag{name: "ndk late stub", library: true}
 	vndkExtDepTag         = dependencyTag{name: "vndk extends", library: true}
 	runtimeDepTag         = dependencyTag{name: "runtime lib"}
+	coverageDepTag        = dependencyTag{name: "coverage"}
 )
 
 // Module contains the properties and members used by all C/C++ module types, and implements
@@ -505,6 +506,13 @@ func (c *Module) isDependencyRoot() bool {
 		isDependencyRoot() bool
 	}); ok {
 		return root.isDependencyRoot()
+	}
+	return false
+}
+
+func (c *Module) useSdk(ctx android.BaseModuleContext) bool {
+	if ctx.Device() && !ctx.Fuchsia() && !c.useVndk() && !c.inRecovery() {
+		return String(c.Properties.Sdk_version) != ""
 	}
 	return false
 }
@@ -683,10 +691,7 @@ func (ctx *moduleContextImpl) staticBinary() bool {
 }
 
 func (ctx *moduleContextImpl) useSdk() bool {
-	if ctx.ctx.Device() && !ctx.useVndk() && !ctx.inRecovery() && !ctx.ctx.Fuchsia() {
-		return String(ctx.mod.Properties.Sdk_version) != ""
-	}
-	return false
+	return ctx.mod.useSdk(ctx.ctx)
 }
 
 func (ctx *moduleContextImpl) sdkVersion() string {
@@ -974,7 +979,7 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		flags = c.sanitize.flags(ctx, flags)
 	}
 	if c.coverage != nil {
-		flags = c.coverage.flags(ctx, flags)
+		flags, deps = c.coverage.flags(ctx, flags, deps)
 	}
 	if c.lto != nil {
 		flags = c.lto.flags(ctx, flags)
