@@ -292,7 +292,7 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 		flags.YasmFlags = append(flags.YasmFlags, "-I"+android.PathForModuleSrc(ctx).String())
 	}
 
-	if !(ctx.useSdk() || ctx.useVndk()) || ctx.Host() {
+	if !(ctx.useSdk() || (ctx.useVndk() && false)) || ctx.Host() {
 		flags.SystemIncludeFlags = append(flags.SystemIncludeFlags,
 			"${config.CommonGlobalIncludes}",
 			tc.IncludeFlags(),
