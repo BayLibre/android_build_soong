@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43017a97_efd9e997",
+        "filename": "android/package_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-07-02T20:51:49Z",
+      "side": 0,
+      "message": "Do you still want to pass in the buildDir variable or use the global one?",
+      "range": {
+        "startLine": 92,
+        "startChar": 17,
+        "endLine": 92,
+        "endChar": 25
+      },
+      "revId": "e2353960a958b4cb82dbb33520324447c5ae1059",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
