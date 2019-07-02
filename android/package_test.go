@@ -1,8 +1,6 @@
 package android
 
 import (
-	"io/ioutil"
-	"os"
 	"testing"
 )
 
@@ -58,12 +56,6 @@ var packageTests = []struct {
 }
 
 func TestPackage(t *testing.T) {
-	buildDir, err := ioutil.TempDir("", "soong_package_test")
-	if err != nil {
-		t.Fatal(err)
-	}
-	defer os.RemoveAll(buildDir)
-
 	for _, test := range packageTests {
 		t.Run(test.name, func(t *testing.T) {
 			_, errs := testPackage(buildDir, test.fs)
