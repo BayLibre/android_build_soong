@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26a90cec_df7e6f97",
+        "filename": "android/module.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-07-03T21:56:23Z",
+      "side": 1,
+      "message": "Could you add a comment since it is visible in go/Android.bp?",
+      "range": {
+        "startLine": 414,
+        "startChar": 0,
+        "endLine": 416,
+        "endChar": 47
+      },
+      "revId": "54dff5127f8f57636ce1bed3a400f7c2e3821639",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a597689a_66484fc5",
+        "filename": "android/module.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-07-03T21:56:23Z",
+      "side": 1,
+      "message": "nit: Up to you on this. I see Name and BaseModuleName as it has documentation. But SetTarget, Target, ... doesn\u0027t have it.",
+      "range": {
+        "startLine": 634,
+        "startChar": 0,
+        "endLine": 634,
+        "endChar": 38
+      },
+      "revId": "54dff5127f8f57636ce1bed3a400f7c2e3821639",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e9cf920_22e8af42",
+        "filename": "android/module.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-07-03T21:56:23Z",
+      "side": 1,
+      "message": "Are the arrays guarantee to have the same length? As I mentioned in mutator.go file, the CreateLocalVariations does not append the  module name to the Debug Mutators.",
+      "range": {
+        "startLine": 642,
+        "startChar": 0,
+        "endLine": 644,
+        "endChar": 55
+      },
+      "revId": "54dff5127f8f57636ce1bed3a400f7c2e3821639",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77ab7e9c_7a3b43aa",
+        "filename": "android/mutator.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-07-03T21:56:23Z",
+      "side": 1,
+      "message": "I noticed in CreateVariations that you append MutatorName to DebugMutators. Shouldn\u0027t that be done here as well?",
+      "range": {
+        "startLine": 282,
+        "startChar": 2,
+        "endLine": 283,
+        "endChar": 102
+      },
+      "revId": "54dff5127f8f57636ce1bed3a400f7c2e3821639",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
