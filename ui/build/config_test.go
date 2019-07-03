@@ -690,6 +690,9 @@ type buildActionTestCase struct {
 	// Build files that exists in the source tree.
 	buildFiles []string
 
+	// Create root symlink that points to topDir.
+	rootSymlink bool
+
 	// ********* Action *********
 	// Arguments passed in to soong_ui.
 	args []string
@@ -738,6 +741,22 @@ func testGetConfigArgs(t *testing.T, tt buildActionTestCase, action BuildAction,
 	createDirectories(t, topDir, tt.dirsInTrees)
 	createBuildFiles(t, topDir, tt.buildFiles)
 
+	if tt.rootSymlink {
+		// Create a secondary root source tree which points to the true root source tree.
+		symlinkTopDir, err := ioutil.TempDir("", "")
+		if err != nil {
+			t.Fatalf("failed to create symlink temp dir: %v", err)
+		}
+		defer os.RemoveAll(symlinkTopDir)
+
+		symlinkTopDir = filepath.Join(symlinkTopDir, "root")
+		err = os.Symlink(topDir, symlinkTopDir)
+		if err != nil {
+			t.Fatalf("failed to create symlink: %v", err)
+		}
+		topDir = symlinkTopDir
+	}
+
 	r := setTop(t, topDir)
 	defer r()
 
@@ -768,6 +787,7 @@ func TestGetConfigArgsBuildModules(t *testing.T) {
 		description:     "normal execution from the root source tree directory",
 		dirsInTrees:     []string{"0/1/2", "0/2", "0/3"},
 		buildFiles:      []string{"0/1/2/Android.mk", "0/2/Android.bp", "0/3/Android.mk"},
+		rootSymlink:     false,
 		args:            []string{"-j", "fake_module", "fake_module2"},
 		curDir:          ".",
 		tidyOnly:        "",
@@ -777,6 +797,7 @@ func TestGetConfigArgsBuildModules(t *testing.T) {
 		description:     "normal execution in deep directory",
 		dirsInTrees:     []string{"0/1/2", "0/2", "0/3", "1/2/3/4/5/6/7/8/9/1/2/3/4/5/6"},
 		buildFiles:      []string{"0/1/2/Android.mk", "0/2/Android.bp", "1/2/3/4/5/6/7/8/9/1/2/3/4/5/6/Android.mk"},
+		rootSymlink:     false,
 		args:            []string{"-j", "fake_module", "fake_module2", "-k"},
 		curDir:          "1/2/3/4/5/6/7/8/9",
 		tidyOnly:        "",
@@ -786,6 +807,7 @@ func TestGetConfigArgsBuildModules(t *testing.T) {
 		description:     "normal execution in deep directory, no targets",
 		dirsInTrees:     []string{"0/1/2", "0/2", "0/3", "1/2/3/4/5/6/7/8/9/1/2/3/4/5/6"},
 		buildFiles:      []string{"0/1/2/Android.mk", "0/2/Android.bp", "1/2/3/4/5/6/7/8/9/1/2/3/4/5/6/Android.mk"},
+		rootSymlink:     false,
 		args:            []string{"-j", "-k"},
 		curDir:          "1/2/3/4/5/6/7/8/9",
 		tidyOnly:        "",
@@ -795,8 +817,19 @@ func TestGetConfigArgsBuildModules(t *testing.T) {
 		description:     "normal execution in root source tree, no args",
 		dirsInTrees:     []string{"0/1/2", "0/2", "0/3"},
 		buildFiles:      []string{"0/1/2/Android.mk", "0/2/Android.bp"},
+		rootSymlink:     false,
 		args:            []string{},
-		curDir:          "1/2/3/4/5/6/7/8/9",
+		curDir:          "0/2",
+		tidyOnly:        "",
+		expectedArgs:    []string{},
+		expectedEnvVars: []envVar{},
+	}, {
+		description:     "normal execution in symlink root source tree, no args",
+		dirsInTrees:     []string{"0/1/2", "0/2", "0/3"},
+		buildFiles:      []string{"0/1/2/Android.mk", "0/2/Android.bp"},
+		rootSymlink:     true,
+		args:            []string{},
+		curDir:          "0/2",
 		tidyOnly:        "",
 		expectedArgs:    []string{},
 		expectedEnvVars: []envVar{},
@@ -814,6 +847,7 @@ func TestGetConfigArgsBuildModulesInDirecotoryNoDeps(t *testing.T) {
 		description:  "normal execution in a directory",
 		dirsInTrees:  []string{"0/1/2"},
 		buildFiles:   []string{"0/1/2/Android.mk"},
+		rootSymlink:  false,
 		args:         []string{"-j", "-k", "showcommands", "fake-module"},
 		curDir:       "0/1/2",
 		tidyOnly:     "",
@@ -826,6 +860,7 @@ func TestGetConfigArgsBuildModulesInDirecotoryNoDeps(t *testing.T) {
 		description:  "makefile in parent directory",
 		dirsInTrees:  []string{"0/1/2"},
 		buildFiles:   []string{"0/1/Android.mk"},
+		rootSymlink:  false,
 		args:         []string{},
 		curDir:       "0/1/2",
 		tidyOnly:     "",
@@ -838,6 +873,7 @@ func TestGetConfigArgsBuildModulesInDirecotoryNoDeps(t *testing.T) {
 		description:  "build file not found",
 		dirsInTrees:  []string{"0/1/2"},
 		buildFiles:   []string{},
+		rootSymlink:  false,
 		args:         []string{},
 		curDir:       "0/1/2",
 		tidyOnly:     "",
@@ -850,6 +886,7 @@ func TestGetConfigArgsBuildModulesInDirecotoryNoDeps(t *testing.T) {
 		description:  "build action executed at root directory",
 		dirsInTrees:  []string{},
 		buildFiles:   []string{},
+		rootSymlink:  false,
 		args:         []string{},
 		curDir:       ".",
 		tidyOnly:     "",
@@ -862,6 +899,7 @@ func TestGetConfigArgsBuildModulesInDirecotoryNoDeps(t *testing.T) {
 		description:  "GET-INSTALL-PATH specified,",
 		dirsInTrees:  []string{"0/1/2"},
 		buildFiles:   []string{"0/1/Android.mk"},
+		rootSymlink:  false,
 		args:         []string{"GET-INSTALL-PATH"},
 		curDir:       "0/1/2",
 		tidyOnly:     "",
@@ -874,6 +912,7 @@ func TestGetConfigArgsBuildModulesInDirecotoryNoDeps(t *testing.T) {
 		description:  "tidy only environment variable specified,",
 		dirsInTrees:  []string{"0/1/2"},
 		buildFiles:   []string{"0/1/Android.mk"},
+		rootSymlink:  false,
 		args:         []string{"GET-INSTALL-PATH"},
 		curDir:       "0/1/2",
 		tidyOnly:     "true",
@@ -895,6 +934,7 @@ func TestGetConfigArgsBuildModulesInDirectory(t *testing.T) {
 		description:     "normal execution in a directory",
 		dirsInTrees:     []string{"0/1/2"},
 		buildFiles:      []string{"0/1/2/Android.mk"},
+		rootSymlink:     false,
 		args:            []string{"fake-module"},
 		curDir:          "0/1/2",
 		tidyOnly:        "",
@@ -904,6 +944,7 @@ func TestGetConfigArgsBuildModulesInDirectory(t *testing.T) {
 		description:     "build file in parent directory",
 		dirsInTrees:     []string{"0/1/2"},
 		buildFiles:      []string{"0/1/Android.mk"},
+		rootSymlink:     false,
 		args:            []string{},
 		curDir:          "0/1/2",
 		tidyOnly:        "",
@@ -914,6 +955,7 @@ func TestGetConfigArgsBuildModulesInDirectory(t *testing.T) {
 			description:     "build file in parent directory, multiple module names passed in",
 			dirsInTrees:     []string{"0/1/2"},
 			buildFiles:      []string{"0/1/Android.mk"},
+			rootSymlink:     false,
 			args:            []string{"fake-module1", "fake-module2", "fake-module3"},
 			curDir:          "0/1/2",
 			tidyOnly:        "",
@@ -923,6 +965,7 @@ func TestGetConfigArgsBuildModulesInDirectory(t *testing.T) {
 			description:     "build file in 2nd level parent directory",
 			dirsInTrees:     []string{"0/1/2"},
 			buildFiles:      []string{"0/Android.bp"},
+			rootSymlink:     false,
 			args:            []string{},
 			curDir:          "0/1/2",
 			tidyOnly:        "",
@@ -932,6 +975,7 @@ func TestGetConfigArgsBuildModulesInDirectory(t *testing.T) {
 			description:     "build action executed at root directory",
 			dirsInTrees:     []string{},
 			buildFiles:      []string{},
+			rootSymlink:     true,
 			args:            []string{},
 			curDir:          ".",
 			tidyOnly:        "",
@@ -941,6 +985,7 @@ func TestGetConfigArgsBuildModulesInDirectory(t *testing.T) {
 			description:     "build file not found - no error is expected to return",
 			dirsInTrees:     []string{"0/1/2"},
 			buildFiles:      []string{},
+			rootSymlink:     false,
 			args:            []string{},
 			curDir:          "0/1/2",
 			tidyOnly:        "",
@@ -950,6 +995,7 @@ func TestGetConfigArgsBuildModulesInDirectory(t *testing.T) {
 			description:     "GET-INSTALL-PATH specified,",
 			dirsInTrees:     []string{"0/1/2"},
 			buildFiles:      []string{"0/1/Android.mk"},
+			rootSymlink:     false,
 			args:            []string{"GET-INSTALL-PATH", "-j", "-k", "GET-INSTALL-PATH"},
 			curDir:          "0/1/2",
 			tidyOnly:        "",
@@ -959,6 +1005,7 @@ func TestGetConfigArgsBuildModulesInDirectory(t *testing.T) {
 			description:     "tidy only environment variable specified,",
 			dirsInTrees:     []string{"0/1/2"},
 			buildFiles:      []string{"0/1/Android.mk"},
+			rootSymlink:     false,
 			args:            []string{"GET-INSTALL-PATH"},
 			curDir:          "0/1/2",
 			tidyOnly:        "true",
@@ -968,6 +1015,7 @@ func TestGetConfigArgsBuildModulesInDirectory(t *testing.T) {
 			description:     "normal execution in root directory with args",
 			dirsInTrees:     []string{},
 			buildFiles:      []string{},
+			rootSymlink:     false,
 			args:            []string{"-j", "-k", "fake_module"},
 			curDir:          "",
 			tidyOnly:        "",
@@ -987,6 +1035,7 @@ func TestGetConfigArgsBuildModulesInDirectoriesNoDeps(t *testing.T) {
 		description:  "normal execution in a directory",
 		dirsInTrees:  []string{"0/1/2/3.1", "0/1/2/3.2", "0/1/2/3.3"},
 		buildFiles:   []string{"0/1/2/3.1/Android.bp", "0/1/2/3.2/Android.bp", "0/1/2/3.3/Android.bp"},
+		rootSymlink:  false,
 		args:         []string{"3.1/:t1,t2", "3.2/:t3,t4", "3.3/:t5,t6"},
 		curDir:       "0/1/2",
 		tidyOnly:     "",
@@ -999,6 +1048,7 @@ func TestGetConfigArgsBuildModulesInDirectoriesNoDeps(t *testing.T) {
 		description:  "GET-INSTALL-PATH specified",
 		dirsInTrees:  []string{"0/1/2/3.1", "0/1/2/3.2", "0/1/2/3.3"},
 		buildFiles:   []string{"0/1/2/3.1/Android.bp", "0/1/2/3.2/Android.bp", "0/1/2/3.3/Android.bp"},
+		rootSymlink:  false,
 		args:         []string{"GET-INSTALL-PATH", "3.1/", "3.2/", "3.3/:t6"},
 		curDir:       "0/1/2",
 		tidyOnly:     "",
@@ -1011,6 +1061,7 @@ func TestGetConfigArgsBuildModulesInDirectoriesNoDeps(t *testing.T) {
 		description:  "tidy only environment variable specified",
 		dirsInTrees:  []string{"0/1/2/3.1", "0/1/2/3.2", "0/1/2/3.3"},
 		buildFiles:   []string{"0/1/2/3.1/Android.bp", "0/1/2/3.2/Android.bp", "0/1/2/3.3/Android.bp"},
+		rootSymlink:  false,
 		args:         []string{"GET-INSTALL-PATH", "3.1/", "3.2/", "3.3/:t6"},
 		curDir:       "0/1/2",
 		tidyOnly:     "1",
@@ -1023,6 +1074,7 @@ func TestGetConfigArgsBuildModulesInDirectoriesNoDeps(t *testing.T) {
 		description:  "normal execution from top dir directory",
 		dirsInTrees:  []string{"0/1/2/3.1", "0/1/2/3.2", "0/1/2/3.3"},
 		buildFiles:   []string{"0/1/2/3.1/Android.bp", "0/1/2/3.2/Android.bp", "0/1/2/3.3/Android.bp"},
+		rootSymlink:  false,
 		args:         []string{"0/1/2/3.1", "0/1/2/3.2/:t3,t4", "0/1/2/3.3/:t5,t6"},
 		curDir:       ".",
 		tidyOnly:     "",
@@ -1044,6 +1096,7 @@ func TestGetConfigArgsBuildModulesInDirectories(t *testing.T) {
 		description:  "normal execution in a directory",
 		dirsInTrees:  []string{"0/1/2/3.1", "0/1/2/3.2", "0/1/2/3.3"},
 		buildFiles:   []string{"0/1/2/3.1/Android.bp", "0/1/2/3.2/Android.bp", "0/1/2/3.3/Android.bp"},
+		rootSymlink:  false,
 		args:         []string{"3.1/", "3.2/", "3.3/"},
 		curDir:       "0/1/2",
 		tidyOnly:     "",
@@ -1056,6 +1109,7 @@ func TestGetConfigArgsBuildModulesInDirectories(t *testing.T) {
 		description:  "GET-INSTALL-PATH specified",
 		dirsInTrees:  []string{"0/1/2/3.1", "0/1/2/3.2", "0/1/3"},
 		buildFiles:   []string{"0/1/2/3.1/Android.bp", "0/1/2/3.2/Android.bp", "0/1/Android.bp"},
+		rootSymlink:  false,
 		args:         []string{"GET-INSTALL-PATH", "2/3.1/", "2/3.2", "3"},
 		curDir:       "0/1",
 		tidyOnly:     "",
@@ -1068,6 +1122,7 @@ func TestGetConfigArgsBuildModulesInDirectories(t *testing.T) {
 		description:  "tidy only environment variable specified",
 		dirsInTrees:  []string{"0/1/2/3.1", "0/1/2/3.2", "0/1/2/3.3"},
 		buildFiles:   []string{"0/1/2/3.1/Android.bp", "0/1/2/3.2/Android.bp", "0/1/2/3.3/Android.bp"},
+		rootSymlink:  false,
 		args:         []string{"GET-INSTALL-PATH", "3.1/", "3.2/", "3.3"},
 		curDir:       "0/1/2",
 		tidyOnly:     "1",
@@ -1080,6 +1135,7 @@ func TestGetConfigArgsBuildModulesInDirectories(t *testing.T) {
 		description:  "normal execution from top dir directory",
 		dirsInTrees:  []string{"0/1/2/3.1", "0/1/2/3.2", "0/1/3", "0/2"},
 		buildFiles:   []string{"0/1/2/3.1/Android.bp", "0/1/2/3.2/Android.bp", "0/1/3/Android.bp", "0/2/Android.bp"},
+		rootSymlink:  true,
 		args:         []string{"0/1/2/3.1", "0/1/2/3.2", "0/1/3", "0/2"},
 		curDir:       ".",
 		tidyOnly:     "",
