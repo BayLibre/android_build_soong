@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ef491b1_07e8bfaa",
+        "filename": "ui/build/config_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 971,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-03T18:19:45Z",
+      "side": 1,
+      "message": "+ \"in symlink\"",
+      "revId": "856bad10e6edc20225a8b16b60f02b7992edd303",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc65e686_97d53479",
+        "filename": "ui/build/config_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1133,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-03T18:19:45Z",
+      "side": 1,
+      "message": "+ \"in symlink\"",
+      "revId": "856bad10e6edc20225a8b16b60f02b7992edd303",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
