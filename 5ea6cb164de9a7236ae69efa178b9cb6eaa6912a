@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f61933ab_357fdcbb",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-07-03T13:37:10Z",
+      "side": 1,
+      "message": "I was about to suggest that we ought to have a separate module type for test apexes, for clearer separation etc, but that already seems to be the case.\n\nSo can we only allow the \"tests\" property in this variant?",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 63
+      },
+      "revId": "5ea6cb164de9a7236ae69efa178b9cb6eaa6912a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
