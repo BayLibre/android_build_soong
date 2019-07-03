@@ -50,6 +50,30 @@
     },
     {
       "key": {
+        "uuid": "0835dad8_d629696b",
+        "filename": "android/module.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-07-03T22:55:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4d562e4b_3c77a3e9",
+      "range": {
+        "startLine": 414,
+        "startChar": 0,
+        "endLine": 416,
+        "endChar": 47
+      },
+      "revId": "54dff5127f8f57636ce1bed3a400f7c2e3821639",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a597689a_66484fc5",
         "filename": "android/module.go",
         "patchSetId": 6
@@ -146,6 +170,30 @@
     },
     {
       "key": {
+        "uuid": "9dd0f8bb_291c1120",
+        "filename": "android/module.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-07-03T22:55:13Z",
+      "side": 1,
+      "message": "Panicking here is good enough.",
+      "parentUuid": "1d7ce790_72413fa9",
+      "range": {
+        "startLine": 642,
+        "startChar": 0,
+        "endLine": 644,
+        "endChar": 55
+      },
+      "revId": "54dff5127f8f57636ce1bed3a400f7c2e3821639",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77ab7e9c_7a3b43aa",
         "filename": "android/mutator.go",
         "patchSetId": 6
@@ -206,6 +254,30 @@
       "side": 1,
       "message": "I added test coverage for this and for the topDownMutatorContext.Rename that was missing in PS5.",
       "parentUuid": "ef35261e_c5a61160",
+      "range": {
+        "startLine": 282,
+        "startChar": 2,
+        "endLine": 283,
+        "endChar": 102
+      },
+      "revId": "54dff5127f8f57636ce1bed3a400f7c2e3821639",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d8796c4_3258d786",
+        "filename": "android/mutator.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-07-03T22:55:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2518176a_225c65b2",
       "range": {
         "startLine": 282,
         "startChar": 2,
