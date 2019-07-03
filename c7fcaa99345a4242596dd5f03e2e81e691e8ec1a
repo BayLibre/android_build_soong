@@ -22,6 +22,30 @@
       "revId": "c7fcaa99345a4242596dd5f03e2e81e691e8ec1a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be5147fc_cb8c1160",
+        "filename": "cc/coverage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2019-07-03T21:13:07Z",
+      "side": 1,
+      "message": "Yes, I am able to do that.  I also removed the refactoring that added cc.Module.useSdk().",
+      "parentUuid": "17c0f605_69998751",
+      "range": {
+        "startLine": 46,
+        "startChar": 31,
+        "endLine": 46,
+        "endChar": 56
+      },
+      "revId": "c7fcaa99345a4242596dd5f03e2e81e691e8ec1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
