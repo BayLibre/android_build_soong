@@ -16,6 +16,24 @@
       "revId": "3dd0a1e69c53fc9d34e3890419ed8c4e5f9b497b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4517706_3f28a1d8",
+        "filename": "ui/build/config_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 850,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-07-03T18:11:49Z",
+      "side": 1,
+      "message": "Sounds good to me. I removed all \"rootSymlink: false\" and added two new test cases which is a clone of another test case with the \"rootSymlink: true\" to test the root symlink functionality to mma and mmma.",
+      "parentUuid": "674a2cc9_90ed9771",
+      "revId": "3dd0a1e69c53fc9d34e3890419ed8c4e5f9b497b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
