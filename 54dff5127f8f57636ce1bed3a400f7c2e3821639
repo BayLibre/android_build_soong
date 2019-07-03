@@ -191,6 +191,30 @@
       "revId": "54dff5127f8f57636ce1bed3a400f7c2e3821639",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2518176a_225c65b2",
+        "filename": "android/mutator.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-03T22:41:18Z",
+      "side": 1,
+      "message": "I added test coverage for this and for the topDownMutatorContext.Rename that was missing in PS5.",
+      "parentUuid": "ef35261e_c5a61160",
+      "range": {
+        "startLine": 282,
+        "startChar": 2,
+        "endLine": 283,
+        "endChar": 102
+      },
+      "revId": "54dff5127f8f57636ce1bed3a400f7c2e3821639",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
