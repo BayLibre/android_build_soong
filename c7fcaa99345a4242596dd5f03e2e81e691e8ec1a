@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17c0f605_69998751",
+        "filename": "cc/coverage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-03T20:55:44Z",
+      "side": 1,
+      "message": "If you make this ModuleContextIntf can you use ctx.useSdk() below?",
+      "range": {
+        "startLine": 46,
+        "startChar": 31,
+        "endLine": 46,
+        "endChar": 56
+      },
+      "revId": "c7fcaa99345a4242596dd5f03e2e81e691e8ec1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
