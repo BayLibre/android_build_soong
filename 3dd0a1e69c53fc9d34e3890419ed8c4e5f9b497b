@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "674a2cc9_90ed9771",
+        "filename": "ui/build/config_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 850,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-03T18:02:33Z",
+      "side": 1,
+      "message": "You can leave out all these rootSymlink: false if you want, that is the default value, and only put it in when the value is true or when the value is false but you want to call it out specifically (for example if you run the same test with and without symlinks).",
+      "revId": "3dd0a1e69c53fc9d34e3890419ed8c4e5f9b497b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
