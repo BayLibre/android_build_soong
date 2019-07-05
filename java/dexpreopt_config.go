@@ -117,7 +117,7 @@ func defaultBootImageConfig(ctx android.PathContext) bootImageConfig {
 		for _, m := range runtimeModules {
 			nonUpdatableBootModules = append(nonUpdatableBootModules, m)
 			nonUpdatableBootLocations = append(nonUpdatableBootLocations,
-				filepath.Join("/apex/com.android.runtime/javalib", m+".jar"))
+				filepath.Join("/apex/com.android.art/javalib", m+".jar"))
 		}
 
 		for _, m := range frameworkModules {
@@ -185,7 +185,7 @@ func apexBootImageConfig(ctx android.PathContext) bootImageConfig {
 
 		for _, m := range runtimeModules {
 			bootLocations = append(bootLocations,
-				filepath.Join("/apex/com.android.runtime/javalib", m+".jar"))
+				filepath.Join("/apex/com.android.art/javalib", m+".jar"))
 		}
 
 		for _, m := range frameworkModules {
