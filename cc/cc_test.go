@@ -2264,6 +2264,9 @@ func TestStaticDepsOrderWithStubs(t *testing.T) {
 	}
 }
 
+func TestAidl(t *testing.T) {
+}
+
 func assertString(t *testing.T, got, expected string) {
 	t.Helper()
 	if got != expected {
