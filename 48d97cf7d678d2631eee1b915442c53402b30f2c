@@ -16,6 +16,24 @@
       "revId": "48d97cf7d678d2631eee1b915442c53402b30f2c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "788b2375_8d561d6e",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-07-08T18:32:39Z",
+      "side": 1,
+      "message": "This seems to be working: the Testing Runtime APEX (see https://android-review.googlesource.com/c/platform/art/+/1008034/) includes both ART tests which have `test_per_src` set to true (e.g. `art_runtime_tests`,  via `art_gtest_defaults`) and tests for which it is set to false (e.g. `art_libdexfile_support_tests`, via `art_test_defaults`).\n\nThere\u0027s also the `TestApexWithTests` unit test in build/soong/apex/apex_test.go which contains an APEX including these two kinds of test modules.",
+      "parentUuid": "0ece6c88_dc7508b6",
+      "revId": "48d97cf7d678d2631eee1b915442c53402b30f2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
