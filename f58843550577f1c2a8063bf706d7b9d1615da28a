@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27affec2_8d5a28b2",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2019-07-08T10:16:33Z",
+      "side": 1,
+      "message": "Not sure what this check does, but do we want the new check outside it?",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 54
+      },
+      "revId": "f58843550577f1c2a8063bf706d7b9d1615da28a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68790b90_cb499274",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2019-07-08T10:16:33Z",
+      "side": 1,
+      "message": "We also want the inverse check - usePlatformAPI can be false only if sdkVersion is set. Maybe that\u0027s already done somewhere else (dunno)?",
+      "range": {
+        "startLine": 64,
+        "startChar": 47,
+        "endLine": 64,
+        "endChar": 68
+      },
+      "revId": "f58843550577f1c2a8063bf706d7b9d1615da28a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
