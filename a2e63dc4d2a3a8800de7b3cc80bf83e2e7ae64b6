@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25bdaee8_10e12a5d",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-08T23:05:15Z",
+      "side": 1,
+      "message": "can these be unexported?",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 51,
+        "endChar": 0
+      },
+      "revId": "a2e63dc4d2a3a8800de7b3cc80bf83e2e7ae64b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d31b6a6e_b4e8f858",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-08T23:05:15Z",
+      "side": 1,
+      "message": "I wonder if it would be better to store the reflect.Value for SrcProps and the reflect.StructField for SrcField, having InitSingleSourcePrebuiltModule call reflect.TypeOf(srcProps).FieldByName(srcField)).  Then you can get the value with p.SrcProps.FieldByIndex(p.SrcField.Index).",
+      "range": {
+        "startLine": 211,
+        "startChar": 57,
+        "endLine": 211,
+        "endChar": 67
+      },
+      "revId": "a2e63dc4d2a3a8800de7b3cc80bf83e2e7ae64b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "104ad39a_6abb8255",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-08T23:05:15Z",
+      "side": 1,
+      "message": "Should this be a panic?",
+      "revId": "a2e63dc4d2a3a8800de7b3cc80bf83e2e7ae64b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
