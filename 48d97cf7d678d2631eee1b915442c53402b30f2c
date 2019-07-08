@@ -34,6 +34,24 @@
       "revId": "48d97cf7d678d2631eee1b915442c53402b30f2c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79cfccad_0a4b7fc9",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-08T20:01:44Z",
+      "side": 1,
+      "message": "Does it still work if you remove this line?",
+      "parentUuid": "788b2375_8d561d6e",
+      "revId": "48d97cf7d678d2631eee1b915442c53402b30f2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
