@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ece6c88_dc7508b6",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-08T17:37:21Z",
+      "side": 1,
+      "message": "Does this work for tests that are not test_per_src: true?  Can the dependency on a test_per_src module be be resolved if you leave this out?",
+      "revId": "48d97cf7d678d2631eee1b915442c53402b30f2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
