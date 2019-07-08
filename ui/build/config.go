@@ -78,6 +78,30 @@ const (
 	BUILD_MODULES
 )
 
+// getOutDir returns the output directory of the build artifacts. The default output directory is
+// out. If OUT_DIR is specified in the args, OUT_DIR value is returned. If OUT_DIR_COMMON_BASE
+// if specified, the OUT_DIR_COMMON_BASE + base directory of the root source tree dir is returned.
+func getOutDir(ctx Context, args []string) string {
+	outDir := "out"
+	for _, arg := range args {
+		if k, v, ok := decodeKeyValue(arg); ok {
+			switch k {
+			case "OUT_DIR":
+				outDir = v
+				break
+			case "OUT_DIR_COMMON_BASE":
+				if wd, err := os.Getwd(); err != nil {
+					ctx.Fatalln("Failed to get working directory:", err)
+				} else {
+					outDir = filepath.Join(v, filepath.Base(wd))
+				}
+				break
+			}
+		}
+	}
+	return filepath.Clean(outDir)
+}
+
 // checkTopDir validates that the current directory is at the root directory of the source tree.
 func checkTopDir(ctx Context) {
 	if _, err := os.Stat(srcDirFileCheck); err != nil {
@@ -100,19 +124,7 @@ func NewConfig(ctx Context, args ...string) Config {
 	ret.parseArgs(ctx, args)
 
 	// Make sure OUT_DIR is set appropriately
-	if outDir, ok := ret.environ.Get("OUT_DIR"); ok {
-		ret.environ.Set("OUT_DIR", filepath.Clean(outDir))
-	} else {
-		outDir := "out"
-		if baseDir, ok := ret.environ.Get("OUT_DIR_COMMON_BASE"); ok {
-			if wd, err := os.Getwd(); err != nil {
-				ctx.Fatalln("Failed to get working directory:", err)
-			} else {
-				outDir = filepath.Join(baseDir, filepath.Base(wd))
-			}
-		}
-		ret.environ.Set("OUT_DIR", outDir)
-	}
+	ret.environ.Set("OUT_DIR", getOutDir(ctx, args))
 
 	if distDir, ok := ret.environ.Get("DIST_DIR"); ok {
 		ret.distDir = filepath.Clean(distDir)

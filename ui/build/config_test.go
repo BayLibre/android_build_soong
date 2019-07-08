@@ -1149,3 +1149,61 @@ func TestGetConfigArgsBuildModulesInDirectories(t *testing.T) {
 		})
 	}
 }
+
+func TestGetOutDir(t *testing.T) {
+	ctx := testContext()
+
+	// Create the root source tree.
+	topDir, err := ioutil.TempDir("", "")
+	if err != nil {
+		t.Fatalf("failed to create temp dir: %v", err)
+	}
+	defer os.RemoveAll(topDir)
+
+	tests := []struct {
+		description    string
+		args           []string
+		expectedOutDir string
+	}{{
+		description:    "No arguments defined",
+		args:           []string{},
+		expectedOutDir: "out",
+	}, {
+		description:    "OUT_DIR argument defined",
+		args:           []string{"OUT_DIR=/tmp/test", "arg1", "arg2"},
+		expectedOutDir: "/tmp/test",
+	}, {
+		description:    "dirty OUT_DIR argument defined",
+		args:           []string{"OUT_DIR=/tmp//test/fakepath/..", "soong_docs"},
+		expectedOutDir: "/tmp/test",
+	}, {
+		description:    "OUT_DIR_COMMON_BASE argument defined",
+		args:           []string{"OUT_DIR_COMMON_BASE=/tmp/fake"},
+		expectedOutDir: "/tmp/fake/test",
+	}, {
+		description:    "dirty OUT_DIR_COMMON_BASE argument defined",
+		args:           []string{"OUT_DIR_COMMON_BASE=/tmp/fake/fakepath/.."},
+		expectedOutDir: "/tmp/fake/test",
+	}}
+	for _, tt := range tests {
+		t.Run(tt.description, func(t *testing.T) {
+			defer logger.Recover(func(err error) {
+				t.Fatalf("Got unexpected error: %v", err)
+			})
+
+			dir := filepath.Join(topDir, "test")
+			if err := os.Mkdir(dir, 0755); err != nil {
+				t.Fatalf("failed to create %s directory: %v", dir, err)
+			}
+			defer os.Remove(dir)
+			if err := os.Chdir(dir); err != nil {
+				t.Fatalf("failed to change directory to %s: %v", dir, err)
+			}
+
+			outDir := getOutDir(ctx, tt.args)
+			if tt.expectedOutDir != outDir {
+				t.Errorf("expected %s, got %s", tt.expectedOutDir, outDir)
+			}
+		})
+	}
+}
