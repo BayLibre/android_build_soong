@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4b1fbc9c_c98f1b0c",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1010567
+      },
+      "writtenOn": "2019-07-08T08:02:23Z",
+      "side": 1,
+      "message": "How about \"provide_cpp_shared_libs\"? I think this is quite expressive :-)\nAnd \"use_cpp_shared_libs_from\" for the counterpart(if we could agree on using \u0027uses\u0027 property below)",
+      "parentUuid": "a907c7ba_18ed43a4",
+      "range": {
+        "startLine": 278,
+        "startChar": 1,
+        "endLine": 278,
+        "endChar": 9
+      },
+      "revId": "5ab513ed45f17ad353063dfe53ef89d7af98fa43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "587d6a2b_91f650c6",
         "filename": "apex/apex.go",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-07-08T07:01:55Z",
       "side": 1,
       "message": "Why should this be specified?",
+      "range": {
+        "startLine": 281,
+        "startChar": 1,
+        "endLine": 281,
+        "endChar": 5
+      },
+      "revId": "5ab513ed45f17ad353063dfe53ef89d7af98fa43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68d8efa2_86623236",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1010567
+      },
+      "writtenOn": "2019-07-08T08:02:23Z",
+      "side": 1,
+      "message": "IIUC, APEXes can use shared libraries from other APEXes implicitly (If libfoo.so in APEX A has a stable C interface and other APEX B depends on libfoo.so, then libfoo.so is shared between A and B.) I think that the dependency can be explicit via \"uses\" property. So, even if the common APEX provides libc++.so, other APEX can choose not to use the common libc++.so by not setting \"uses\". \n\nDo you think this will conflict with the current behavior or this is somewhat away from the original APEX ideas?",
+      "parentUuid": "587d6a2b_91f650c6",
       "range": {
         "startLine": 281,
         "startChar": 1,
