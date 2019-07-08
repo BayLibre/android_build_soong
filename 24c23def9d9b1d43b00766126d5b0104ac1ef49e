@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "735080a1_5c97b81d",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-08T17:34:44Z",
+      "side": 1,
+      "message": "testPerSrcDepTag",
+      "range": {
+        "startLine": 371,
+        "startChar": 1,
+        "endLine": 371,
+        "endChar": 11
+      },
+      "revId": "24c23def9d9b1d43b00766126d5b0104ac1ef49e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad88bc3f_f0b2dbb7",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-08T17:34:44Z",
+      "side": 1,
+      "message": "The pointer shouldn\u0027t be necessary here, a slice is already a pointer to a backing array.",
+      "range": {
+        "startLine": 408,
+        "startChar": 17,
+        "endLine": 408,
+        "endChar": 18
+      },
+      "revId": "24c23def9d9b1d43b00766126d5b0104ac1ef49e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8a2e7c4_4e666695",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-08T17:34:44Z",
+      "side": 1,
+      "message": "testPerSrcOutputFiles",
+      "range": {
+        "startLine": 408,
+        "startChar": 1,
+        "endLine": 408,
+        "endChar": 16
+      },
+      "revId": "24c23def9d9b1d43b00766126d5b0104ac1ef49e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21f6a845_5c860d10",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1069,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-08T17:34:44Z",
+      "side": 1,
+      "message": "for _, dep :\u003d range actx.GetDirectDepsWithTag(testDepTag)",
+      "range": {
+        "startLine": 1069,
+        "startChar": 3,
+        "endLine": 1069,
+        "endChar": 50
+      },
+      "revId": "24c23def9d9b1d43b00766126d5b0104ac1ef49e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5de0d4e9_d7b9fce8",
+        "filename": "cc/test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-08T17:34:44Z",
+      "side": 1,
+      "message": "nil",
+      "range": {
+        "startLine": 147,
+        "startChar": 37,
+        "endLine": 147,
+        "endChar": 47
+      },
+      "revId": "24c23def9d9b1d43b00766126d5b0104ac1ef49e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f21cbb9_44ba1998",
+        "filename": "cc/test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-08T17:34:44Z",
+      "side": 1,
+      "message": "nil",
+      "range": {
+        "startLine": 148,
+        "startChar": 40,
+        "endLine": 148,
+        "endChar": 53
+      },
+      "revId": "24c23def9d9b1d43b00766126d5b0104ac1ef49e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
