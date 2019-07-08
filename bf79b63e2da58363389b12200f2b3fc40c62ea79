@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d623a874_16ebae7f",
+        "filename": "android/arch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1153,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-07-08T20:07:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22782e61_300d25a4",
+      "revId": "bf79b63e2da58363389b12200f2b3fc40c62ea79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b87d65f_ad245db1",
         "filename": "java/app.go",
         "patchSetId": 3
@@ -39,6 +57,30 @@
       "revId": "bf79b63e2da58363389b12200f2b3fc40c62ea79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "465ab672_9abfa0b1",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-07-08T20:07:13Z",
+      "side": 1,
+      "message": "Done. As for prepend vs append, it turns out append is the right choice here. Append only overwrites nil pointers. I\u0027ll update the comments separately.",
+      "parentUuid": "2b87d65f_ad245db1",
+      "range": {
+        "startLine": 721,
+        "startChar": 5,
+        "endLine": 721,
+        "endChar": 21
+      },
+      "revId": "bf79b63e2da58363389b12200f2b3fc40c62ea79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "42ce1536_fe2a6fce",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-07-08T20:07:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9c35f05_a2ae4892",
+      "range": {
+        "startLine": 865,
+        "startChar": 9,
+        "endLine": 865,
+        "endChar": 15
+      },
+      "revId": "bf79b63e2da58363389b12200f2b3fc40c62ea79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0904f9ca_2c65593a",
         "filename": "java/app.go",
         "patchSetId": 3
@@ -85,6 +151,30 @@
       "revId": "bf79b63e2da58363389b12200f2b3fc40c62ea79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b84373bb_27fe497c",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-07-08T20:07:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0904f9ca_2c65593a",
+      "range": {
+        "startLine": 869,
+        "startChar": 1,
+        "endLine": 869,
+        "endChar": 9
+      },
+      "revId": "bf79b63e2da58363389b12200f2b3fc40c62ea79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
