@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a907c7ba_18ed43a4",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-07-08T07:01:55Z",
+      "side": 1,
+      "message": "APEX has been able to provide shared libraries to others. What is special with the common APEX is its ability to export libs with C++ interface. I suggest you to rename the property accordingly.",
+      "range": {
+        "startLine": 278,
+        "startChar": 1,
+        "endLine": 278,
+        "endChar": 9
+      },
+      "revId": "5ab513ed45f17ad353063dfe53ef89d7af98fa43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "587d6a2b_91f650c6",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-07-08T07:01:55Z",
+      "side": 1,
+      "message": "Why should this be specified?",
+      "range": {
+        "startLine": 281,
+        "startChar": 1,
+        "endLine": 281,
+        "endChar": 5
+      },
+      "revId": "5ab513ed45f17ad353063dfe53ef89d7af98fa43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
