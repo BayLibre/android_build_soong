@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "265a45ec_de036d1c",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-07-09T01:15:39Z",
+      "side": 1,
+      "message": "What\u0027s the actual difference between this and javadoc, in terms of use cases? Do we need both because they sometimes depend on device only or host only modules?",
+      "revId": "936e28ac06ad846375ca4270d48bcfd1871229d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
