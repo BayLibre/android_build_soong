@@ -955,7 +955,8 @@ func (library *libraryDecorator) install(ctx ModuleContext, file android.Path) {
 			// Bionic libraries (e.g. libc.so) is installed to the bootstrap subdirectory.
 			// The original path becomes a symlink to the corresponding file in the
 			// runtime APEX.
-			if installToBootstrap(ctx.baseModuleName(), ctx.Config()) && !library.buildStubs() && ctx.Arch().Native && !ctx.inRecovery() {
+			bridged := ctx.Target().NativeBridge == android.NativeBridgeEnabled
+			if installToBootstrap(ctx.baseModuleName(), ctx.Config()) && !library.buildStubs() && !bridged && !ctx.inRecovery() {
 				if ctx.Device() && isBionic(ctx.baseModuleName()) {
 					library.installSymlinkToRuntimeApex(ctx, file)
 				}

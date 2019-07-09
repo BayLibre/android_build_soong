@@ -609,7 +609,7 @@ func getCopyManifestForNativeLibrary(cc *cc.Module, handleSpecialLibs bool) (fil
 		dirInApex = "lib64"
 	}
 	dirInApex = filepath.Join(dirInApex, cc.RelativeInstallPath())
-	if !cc.Arch().Native {
+	if cc.Target().NativeBridge == android.NativeBridgeEnabled {
 		dirInApex = filepath.Join(dirInApex, cc.Arch().ArchType.String())
 	}
 	if handleSpecialLibs {
@@ -704,7 +704,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 				}
 			case executableTag:
 				if cc, ok := child.(*cc.Module); ok {
-					if !cc.Arch().Native {
+					if cc.Target().NativeBridge == android.NativeBridgeEnabled {
 						// There is only one 'bin' directory so we shouldn't bother copying in
 						// native-bridge'd binaries and only use main ones.
 						return true
