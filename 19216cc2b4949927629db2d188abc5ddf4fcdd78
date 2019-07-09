@@ -16,6 +16,46 @@
       "revId": "19216cc2b4949927629db2d188abc5ddf4fcdd78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af753fe5_4951fb85",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1041673
+      },
+      "writtenOn": "2019-07-09T17:56:30Z",
+      "side": 1,
+      "message": "not anymore.. binaries are currently installed the same way as libraries to a subfolder.",
+      "revId": "19216cc2b4949927629db2d188abc5ddf4fcdd78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb101109_93050cc9",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 958,
+      "author": {
+        "id": 1041673
+      },
+      "writtenOn": "2019-07-09T17:56:30Z",
+      "side": 1,
+      "message": "translated?",
+      "range": {
+        "startLine": 958,
+        "startChar": 3,
+        "endLine": 958,
+        "endChar": 10
+      },
+      "revId": "19216cc2b4949927629db2d188abc5ddf4fcdd78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
