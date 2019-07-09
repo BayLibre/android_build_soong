@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df231b3e_8693b255",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-09T21:47:38Z",
+      "side": 1,
+      "message": "!p.srcProps.IsValid()",
+      "range": {
+        "startLine": 143,
+        "startChar": 23,
+        "endLine": 143,
+        "endChar": 52
+      },
+      "revId": "1ddd17ced652735039f3415451c4d04f9a181e5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92188b02_10b02aa8",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-09T21:47:38Z",
+      "side": 1,
+      "message": "p.srcProps.IsValid()",
+      "range": {
+        "startLine": 186,
+        "startChar": 5,
+        "endLine": 186,
+        "endChar": 34
+      },
+      "revId": "1ddd17ced652735039f3415451c4d04f9a181e5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae13bb97_2f123030",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-09T21:47:38Z",
+      "side": 1,
+      "message": "!p.srcProps.IsValid()",
+      "range": {
+        "startLine": 199,
+        "startChar": 5,
+        "endLine": 199,
+        "endChar": 34
+      },
+      "revId": "1ddd17ced652735039f3415451c4d04f9a181e5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
