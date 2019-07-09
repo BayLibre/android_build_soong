@@ -24,7 +24,10 @@ import (
 	"strings"
 	"time"
 
+	"android/soong/finder"
+	"android/soong/finder/fs"
 	"android/soong/shared"
+	"android/soong/ui/logger"
 )
 
 type Config struct{ *configImpl }
@@ -307,6 +310,8 @@ func getConfigArgs(action BuildAction, dir string, buildDependencies bool, ctx C
 		configArgs = removeFromList("GET-INSTALL-PATH", configArgs)
 	}
 
+	f := createFinder(ctx, topDir, filepath.Join(getOutDir(ctx, args), ".build_modules.db"))
+
 	var buildFiles []string
 	var targets []string
 
@@ -319,19 +324,17 @@ func getConfigArgs(action BuildAction, dir string, buildDependencies bool, ctx C
 		if topDir == dir {
 			break
 		}
-		// Find the build file from the directory where the build action was triggered by traversing up
-		// the source tree. If a blank build filename is returned, simply use the directory where the build
-		// action was invoked.
-		buildFile := findBuildFile(ctx, relDir)
+
+		buildFile := findBuildFile(ctx, f, relDir)
 		if buildFile == "" {
-			buildFile = filepath.Join(relDir, "Android.mk")
+			ctx.Fatalf("Build file not found for %s directory", relDir)
 		}
 		buildFiles = []string{buildFile}
 		targets = []string{convertToTarget(filepath.Dir(buildFile), targetNamePrefix)}
 	case BUILD_MODULES_IN_DIRECTORIES:
 		newConfigArgs, dirs := splitArgs(configArgs)
 		configArgs = newConfigArgs
-		targets, buildFiles = getTargetsFromDirs(ctx, relDir, dirs, targetNamePrefix)
+		targets, buildFiles = getTargetsFromDirs(ctx, f, relDir, dirs, targetNamePrefix)
 	}
 
 	// This is to support building modules without building their dependencies. Soon, this will be
@@ -353,6 +356,21 @@ func getConfigArgs(action BuildAction, dir string, buildDependencies bool, ctx C
 	return configArgs
 }
 
+// createFinder creates a Finder to find Android build files.
+func createFinder(ctx Context, topDir, dbPath string) *finder.Finder {
+	cacheParams := finder.CacheParams{
+		WorkingDirectory: topDir,
+		RootDirs:         []string{"."},
+		ExcludeDirs:      []string{".git", ".repo"},
+		IncludeFiles:     buildFiles,
+	}
+	f, err := finder.New(cacheParams, fs.OsFs, logger.New(ioutil.Discard), dbPath)
+	if err != nil {
+		ctx.Fatalf("Could not create build files finder: %v", err)
+	}
+	return f
+}
+
 // convertToTarget replaces "/" to "-" in dir and pre-append the targetNamePrefix to the target name.
 func convertToTarget(dir string, targetNamePrefix string) string {
 	return targetNamePrefix + strings.ReplaceAll(dir, "/", "-")
@@ -372,19 +390,25 @@ func hasBuildFile(ctx Context, dir string) bool {
 	return false
 }
 
-// findBuildFile finds a build file (makefile or blueprint file) by looking at dir first. If not
-// found, go up one level and repeat again until one is found and the path of that build file
-// relative to the root directory of the source tree is returned. The returned filename of build
-// file is "Android.mk". If one was not found, a blank string is returned.
-func findBuildFile(ctx Context, dir string) string {
-	// If the string is empty, assume it is top directory of the source tree.
-	if dir == "" {
+// findBuildFile finds a build file (makefile or blueprint file) by looking if there is a build file
+// in the current and any sub directory of dir. If a build file is not found, traverse the path
+// checking if a build file exist. The returned filename of build file is "Android.mk". If one was
+// not found, a blank string is returned.
+func findBuildFile(ctx Context, f *finder.Finder, dir string) string {
+	// If the string is empty or ".", assume it is top directory of the source tree.
+	if dir == "" || dir == "." {
 		return ""
 	}
 
-	for ; dir != "."; dir = filepath.Dir(dir) {
-		if hasBuildFile(ctx, dir) {
+	for _, buildFile := range buildFiles {
+		if len(f.FindNamedAt(dir, buildFile)) > 0 {
 			return filepath.Join(dir, "Android.mk")
+		}
+	}
+
+	for buildDir := filepath.Dir(dir); buildDir != "."; buildDir = filepath.Dir(buildDir) {
+		if hasBuildFile(ctx, buildDir) {
+			return filepath.Join(buildDir, "Android.mk")
 		}
 	}
 
@@ -425,7 +449,7 @@ func splitArgs(args []string) (newArgs []string, dirs []string) {
 // directory from the dirs list does not exist, a fatal error is raised. relDir is related to the
 // source root tree where the build action command was invoked. Each directory is validated if the
 // build file can be found and follows the format "dir1:target1,target2,...". Target is optional.
-func getTargetsFromDirs(ctx Context, relDir string, dirs []string, targetNamePrefix string) (targets []string, buildFiles []string) {
+func getTargetsFromDirs(ctx Context, f *finder.Finder, relDir string, dirs []string, targetNamePrefix string) (targets []string, buildFiles []string) {
 	for _, dir := range dirs {
 		// The directory may have specified specific modules to build. ":" is the separator to separate
 		// the directory and the list of modules.
@@ -458,7 +482,7 @@ func getTargetsFromDirs(ctx Context, relDir string, dirs []string, targetNamePre
 			}
 			buildFiles = append(buildFiles, filepath.Join(dir, "Android.mk"))
 		} else {
-			buildFile := findBuildFile(ctx, dir)
+			buildFile := findBuildFile(ctx, f, dir)
 			if buildFile == "" {
 				ctx.Fatalf("Build file not found for %s directory", dir)
 			}
