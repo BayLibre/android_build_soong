@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "c0a9a6c3_fc87a0d1",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-07-09T12:47:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a76c7cc0_1f98d4eb",
+      "range": {
+        "startLine": 278,
+        "startChar": 1,
+        "endLine": 278,
+        "endChar": 9
+      },
+      "revId": "5ab513ed45f17ad353063dfe53ef89d7af98fa43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "587d6a2b_91f650c6",
         "filename": "apex/apex.go",
         "patchSetId": 3
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "I just am not sure if that (not using libc++ from the common APEX) would be actually needed. My general idea has been that an APEX shouldn\u0027t need to know about (or depend on) other APEXes explicitly.",
       "parentUuid": "68d8efa2_86623236",
+      "range": {
+        "startLine": 281,
+        "startChar": 1,
+        "endLine": 281,
+        "endChar": 5
+      },
+      "revId": "5ab513ed45f17ad353063dfe53ef89d7af98fa43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3a85586_36986472",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-07-09T12:47:19Z",
+      "side": 1,
+      "message": "I\u0027ve experimented with both cases(with and without \"uses\") and I\u0027d prefer using \"uses\" because the explicit dependency was easier and clearer for me. :-)\nBut I\u0027m not strong on this and still open to switching to user idea.\n(I\u0027m even thinking that using \"uses\" prop even for C interface libs, for example, libandroidio.)",
+      "parentUuid": "b8bf3341_33139717",
       "range": {
         "startLine": 281,
         "startChar": 1,
