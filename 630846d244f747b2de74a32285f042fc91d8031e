@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5298193_90ed4f45",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-07-10T14:54:36Z",
+      "side": 1,
+      "message": "Would be nice to have an assertion here that this doesn\u0027t happen for !a.testApex.",
+      "range": {
+        "startLine": 789,
+        "startChar": 3,
+        "endLine": 789,
+        "endChar": 16
+      },
+      "revId": "630846d244f747b2de74a32285f042fc91d8031e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
