@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd22f600_f77852ac",
+        "filename": "apex/apex.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-07-10T15:14:52Z",
+      "side": 1,
+      "message": "It\u0027s a bit weird that getCopyManifestForTestExecutables is only sometimes used for test deps. Put this condition and the logic below in that function instead? (Using the file basename for the binary works in the non-test_per_src case too, doesn\u0027t it?)",
+      "range": {
+        "startLine": 836,
+        "startChar": 5,
+        "endLine": 836,
+        "endChar": 43
+      },
+      "revId": "9f1b824e3c494b0a50c32dbcedaee0bf855cbb33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
