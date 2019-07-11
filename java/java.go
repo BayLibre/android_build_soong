@@ -50,6 +50,45 @@ func init() {
 	android.RegisterModuleType("dex_import", DexImportFactory)
 
 	android.RegisterSingletonType("logtags", LogtagsSingleton)
+
+	android.PreDepsMutators(func(ctx android.RegisterMutatorsContext) {
+		ctx.BottomUp("platform_api_checker", platformAPIChecker)
+	})
+}
+
+type platformAPICheckable interface {
+	usePlatformAPI() bool
+	shouldPlatformAPICheck() bool
+}
+
+func (j *AndroidApp) usePlatformAPI() bool {
+	return proptools.Bool(j.deviceProperties.Platform_apis)
+}
+
+func (j *AndroidApp) shouldPlatformAPICheck() bool {
+	return true
+}
+
+func (j *AndroidTest) shouldPlatformAPICheck() bool {
+	return false
+}
+
+func (j *AndroidTestHelperApp) shouldPlatformAPICheck() bool {
+	return false
+}
+
+func platformAPIChecker(mctx android.BottomUpMutatorContext) {
+	if sc, ok := mctx.Module().(sdkContext); ok {
+		if p, ok := mctx.Module().(platformAPICheckable); ok {
+			if p.shouldPlatformAPICheck() && p.usePlatformAPI() != (sc.sdkVersion() == "") {
+				if p.usePlatformAPI() {
+					mctx.PropertyErrorf("platform_apis", "platform_apis must be false when sdk_version is not empty.")
+				} else {
+					mctx.PropertyErrorf("platform_apis", "platform_apis must be true when sdk_version is empty.")
+				}
+			}
+		}
+	}
 }
 
 // TODO:
@@ -178,8 +217,8 @@ type CompilerDeviceProperties struct {
 	// list of module-specific flags that will be used for dex compiles
 	Dxflags []string `android:"arch_variant"`
 
-	// if not blank, set to the version of the sdk to compile against.  Defaults to compiling against the current
-	// sdk if platform_apis is not set.
+	// if not blank, set to the version of the sdk to compile against.
+	// Defaults to compiling against the current platform, and platform_apis must be true in this case.
 	Sdk_version *string
 
 	// if not blank, set the minimum version of the sdk that the compiled artifacts will run against.
@@ -190,7 +229,7 @@ type CompilerDeviceProperties struct {
 	// Defaults to sdk_version if not set.
 	Target_sdk_version *string
 
-	// if true, compile against the platform APIs instead of an SDK.
+	// It must be true only if sdk_version is empty.
 	Platform_apis *bool
 
 	Aidl struct {
