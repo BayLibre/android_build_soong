@@ -22,6 +22,30 @@
       "revId": "1cf60fe852dc63c1ed361bb0ef8f762ffe2eea11",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7163d35b_101bbf38",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-07-11T17:46:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bd68508_9fb45780",
+      "range": {
+        "startLine": 789,
+        "startChar": 27,
+        "endLine": 789,
+        "endChar": 42
+      },
+      "revId": "1cf60fe852dc63c1ed361bb0ef8f762ffe2eea11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
