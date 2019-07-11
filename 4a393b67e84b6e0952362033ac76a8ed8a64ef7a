@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbed5df5_3c939861",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-07-11T20:48:53Z",
+      "side": 0,
+      "message": "These are environment lookups, not args. parseArgs takes any key-value arguments and sets them into the environment, overwriting what\u0027s already in the environment. But most of the time it\u0027ll be getting the environment variable, so looking it up directly in args won\u0027t be correct.",
+      "range": {
+        "startLine": 103,
+        "startChar": 18,
+        "endLine": 103,
+        "endChar": 33
+      },
+      "revId": "4a393b67e84b6e0952362033ac76a8ed8a64ef7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
