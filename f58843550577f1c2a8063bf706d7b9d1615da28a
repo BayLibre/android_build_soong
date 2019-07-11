@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "303d590f_b84d9b12",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2019-07-11T07:09:31Z",
+      "side": 1,
+      "message": "Removed. It looks unnecessary",
+      "parentUuid": "27affec2_8d5a28b2",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 54
+      },
+      "revId": "f58843550577f1c2a8063bf706d7b9d1615da28a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68790b90_cb499274",
         "filename": "java/java.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "f58843550577f1c2a8063bf706d7b9d1615da28a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d07ea3a9_b55f48fd",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2019-07-11T07:09:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68790b90_cb499274",
+      "range": {
+        "startLine": 64,
+        "startChar": 47,
+        "endLine": 64,
+        "endChar": 68
+      },
+      "revId": "f58843550577f1c2a8063bf706d7b9d1615da28a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
