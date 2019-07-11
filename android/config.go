@@ -227,7 +227,7 @@ func TestConfig(buildDir string, env map[string]string) Config {
 		config: config,
 	}
 	config.TestProductVariables = &config.productVariables
-
+	config.inMake = config.IsEnvTrue("SOONG_IN_MAKE")
 	if err := config.fromEnv(); err != nil {
 		panic(err)
 	}
