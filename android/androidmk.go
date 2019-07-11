@@ -391,6 +391,31 @@ func translateGoBinaryModule(ctx SingletonContext, w io.Writer, mod blueprint.Mo
 	return nil
 }
 
+func (data *AndroidMkData) fillInEntries(config Config, bpPath string, mod blueprint.Module) {
+	// Get the preamble content through AndroidMkEntries logic.
+	entries := AndroidMkEntries{
+		Class:           data.Class,
+		SubName:         data.SubName,
+		DistFile:        data.DistFile,
+		OutputFile:      data.OutputFile,
+		Disabled:        data.Disabled,
+		Include:         data.Include,
+		Required:        data.Required,
+		Host_required:   data.Host_required,
+		Target_required: data.Target_required,
+	}
+	entries.fillInEntries(config, bpPath, mod)
+
+	// preamble doesn't need the footer content.
+	entries.footer = bytes.Buffer{}
+	entries.write(&data.preamble)
+
+	// copy entries back to data since it is used in Custom
+	data.Required = entries.Required
+	data.Host_required = entries.Host_required
+	data.Target_required = entries.Target_required
+}
+
 func translateAndroidModule(ctx SingletonContext, w io.Writer, mod blueprint.Module,
 	provider AndroidMkDataProvider) error {
 
@@ -404,44 +429,26 @@ func translateAndroidModule(ctx SingletonContext, w io.Writer, mod blueprint.Mod
 		data.Include = "$(BUILD_PREBUILT)"
 	}
 
-	// Get the preamble content through AndroidMkEntries logic.
-	entries := AndroidMkEntries{
-		Class:           data.Class,
-		SubName:         data.SubName,
-		DistFile:        data.DistFile,
-		OutputFile:      data.OutputFile,
-		Disabled:        data.Disabled,
-		Include:         data.Include,
-		Required:        data.Required,
-		Host_required:   data.Host_required,
-		Target_required: data.Target_required,
-	}
-	entries.fillInEntries(ctx.Config(), ctx.BlueprintFile(mod), mod)
-	// preamble doesn't need the footer content.
-	entries.footer = bytes.Buffer{}
-	entries.write(&data.preamble)
-
-	prefix := ""
-	if amod.ArchSpecific() {
-		switch amod.Os().Class {
-		case Host:
-			prefix = "HOST_"
-		case HostCross:
-			prefix = "HOST_CROSS_"
-		case Device:
-			prefix = "TARGET_"
-
-		}
-
-		if amod.Arch().ArchType != ctx.Config().Targets[amod.Os()][0].Arch.ArchType {
-			prefix = "2ND_" + prefix
-		}
-	}
-
-	name := provider.BaseModuleName()
-	blueprintDir := filepath.Dir(ctx.BlueprintFile(mod))
+	data.fillInEntries(ctx.Config(), ctx.BlueprintFile(mod), mod)
 
 	if data.Custom != nil {
+		prefix := ""
+		if amod.ArchSpecific() {
+			switch amod.Os().Class {
+			case Host:
+				prefix = "HOST_"
+			case HostCross:
+				prefix = "HOST_CROSS_"
+			case Device:
+				prefix = "TARGET_"
+			}
+			if amod.Arch().ArchType != ctx.Config().Targets[amod.Os()][0].Arch.ArchType {
+				prefix = "2ND_" + prefix
+			}
+		}
+		name := provider.BaseModuleName()
+		blueprintDir := filepath.Dir(ctx.BlueprintFile(mod))
+
 		data.Custom(w, name, prefix, blueprintDir, data)
 	} else {
 		WriteAndroidMkData(w, data)

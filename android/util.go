@@ -102,6 +102,16 @@ func IndexList(s string, list []string) int {
 	return -1
 }
 
+func IndexListPred(list []string, pred func(s string) bool) int {
+	for i, l := range list {
+		if pred(l) {
+			return i
+		}
+	}
+
+	return -1
+}
+
 func InList(s string, list []string) bool {
 	return IndexList(s, list) != -1
 }
