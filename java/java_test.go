@@ -224,7 +224,11 @@ func run(t *testing.T, ctx *android.TestContext, config android.Config) {
 
 func testJava(t *testing.T, bp string) *android.TestContext {
 	t.Helper()
-	config := testConfig(nil)
+	return testJavaConfig(t, bp, testConfig(nil))
+}
+
+func testJavaConfig(t *testing.T, bp string, config android.Config) *android.TestContext {
+	t.Helper()
 	ctx := testContext(config, bp, nil)
 	run(t, ctx, config)
 
@@ -1067,8 +1071,7 @@ func TestPatchModule(t *testing.T) {
 	t.Run("Java language level 9", func(t *testing.T) {
 		// Test again with javac -source 9 -target 9
 		config := testConfig(map[string]string{"EXPERIMENTAL_JAVA_LANGUAGE_LEVEL_9": "true"})
-		ctx := testContext(config, bp, nil)
-		run(t, ctx, config)
+		ctx := testJavaConfig(t, bp, config)
 
 		checkPatchModuleFlag(t, ctx, "foo", "")
 		expected := "java.base=.:" + buildDir
