@@ -16,6 +16,24 @@
       "revId": "4a393b67e84b6e0952362033ac76a8ed8a64ef7a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96c07e26_8c3faad5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-07-11T21:39:04Z",
+      "side": 1,
+      "message": "My apologies. I actually ran the unit test cases in config_test.go in Intellij. The TestConfigGetTargets unit test case covers the scenarios for mmm and mmma. I then finally executed the lunch command to make sure it compiled soong_ui successfully.\n\nThis was code refactoring. There are two types of directory inputs that mmm and mmma takes: \u003cdir\u003e:\u003ctargets\u003e and \u003cdir\u003e.\n\nFor \u003cdir\u003e, we just follow the mma process which is to find the applicable build file (hence the refactoring of the findBuildFile function for go/aog/1012454). For the \u003cdir\u003e:\u003ctargets\u003e, the build file in \u003cdir\u003e has to exist. The issue here is in the old code for both modes, findBuildFile would execute to find the build file. In go/aog/1012454, this would invoke the find function. With the refactored code, findBuildFile is only executed if \u003ctargets\u003e are not specified.",
+      "parentUuid": "92bf1c51_94ae146d",
+      "revId": "4a393b67e84b6e0952362033ac76a8ed8a64ef7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
