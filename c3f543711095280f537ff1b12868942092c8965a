@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "719bf53b_481d6412",
+        "filename": "ui/build/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-07-11T20:52:59Z",
+      "side": 1,
+      "message": "Why do we need to keep multiple finder databases? This means we\u0027ll be scanning the source tree more than once on every build.\n\nI\u0027d assume that we\u0027re using finder to improve speed, otherwise you can implement this logic with the normal filesystem operations.",
+      "range": {
+        "startLine": 313,
+        "startChar": 0,
+        "endLine": 313,
+        "endChar": 89
+      },
+      "revId": "c3f543711095280f537ff1b12868942092c8965a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
