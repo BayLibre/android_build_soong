@@ -192,6 +192,7 @@ func (a *AndroidApp) OverridablePropertiesDepsMutator(ctx android.BottomUpMutato
 }
 
 func (a *AndroidApp) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	checkPlatformAPI(ctx)
 	a.aapt.useEmbeddedNativeLibs = a.useEmbeddedNativeLibs(ctx)
 	a.aapt.useEmbeddedDex = Bool(a.appProperties.Use_embedded_dex)
 	a.generateAndroidBuildActions(ctx)
