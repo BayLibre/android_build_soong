@@ -61,6 +61,7 @@ func testContext(config android.Config, bp string,
 	fs map[string][]byte) *android.TestContext {
 
 	ctx := android.NewTestArchContext()
+	ctx.RegisterSingletonType("androidmk", android.SingletonFactoryAdaptor(android.AndroidMkSingleton))
 	ctx.RegisterModuleType("android_app", android.ModuleFactoryAdaptor(AndroidAppFactory))
 	ctx.RegisterModuleType("android_app_certificate", android.ModuleFactoryAdaptor(AndroidAppCertificateFactory))
 	ctx.RegisterModuleType("android_app_import", android.ModuleFactoryAdaptor(AndroidAppImportFactory))
@@ -224,7 +225,11 @@ func run(t *testing.T, ctx *android.TestContext, config android.Config) {
 
 func testJava(t *testing.T, bp string) *android.TestContext {
 	t.Helper()
-	config := testConfig(nil)
+	return testJavaConfig(t, bp, testConfig(nil))
+}
+
+func testJavaConfig(t *testing.T, bp string, config android.Config) *android.TestContext {
+	t.Helper()
 	ctx := testContext(config, bp, nil)
 	run(t, ctx, config)
 
@@ -1067,8 +1072,7 @@ func TestPatchModule(t *testing.T) {
 	t.Run("Java language level 9", func(t *testing.T) {
 		// Test again with javac -source 9 -target 9
 		config := testConfig(map[string]string{"EXPERIMENTAL_JAVA_LANGUAGE_LEVEL_9": "true"})
-		ctx := testContext(config, bp, nil)
-		run(t, ctx, config)
+		ctx := testJavaConfig(t, bp, config)
 
 		checkPatchModuleFlag(t, ctx, "foo", "")
 		expected := "java.base=.:" + buildDir
@@ -1076,4 +1080,158 @@ func TestPatchModule(t *testing.T) {
 		expected = "java.base=" + strings.Join([]string{".", buildDir, moduleToPath("ext"), moduleToPath("framework")}, ":")
 		checkPatchModuleFlag(t, ctx, "baz", expected)
 	})
+}
+
+func findIndex(ss []string, pred func(s string) bool) int {
+	for i, s := range ss {
+		if pred(s) {
+			return i
+		}
+	}
+	return -1
+}
+
+type testAndroidMk struct {
+	*testing.T
+	lines []string
+}
+type testAndroidMkModule struct {
+	*testing.T
+	lines []string
+}
+
+func newTestAndroidMk(t *testing.T, ctx *android.TestContext) *testAndroidMk {
+	t.Helper()
+	mkFiles := ctx.SingletonForTests("androidmk").Output("Android.mk")
+	buf, _ := ioutil.ReadFile(mkFiles.Output.String())
+	return &testAndroidMk{
+		T:     t,
+		lines: strings.Split(string(buf), "\n"),
+	}
+}
+
+func (t *testAndroidMk) moduleFor(moduleName string) *testAndroidMkModule {
+	t.Helper()
+	index := findIndex(t.lines, func(line string) bool {
+		return line == "LOCAL_MODULE := "+moduleName
+	})
+	if index == -1 {
+		t.Errorf("%q is not found.", moduleName)
+	}
+	lines := t.lines[index:]
+	includeIndex := findIndex(lines, func(line string) bool {
+		return strings.HasPrefix(line, "include")
+	})
+	if includeIndex == -1 {
+		t.Errorf("%q is not properly defined. (\"include\" not found).", moduleName)
+	}
+	return &testAndroidMkModule{
+		T:     t.T,
+		lines: lines[:includeIndex],
+	}
+}
+
+func (t *testAndroidMkModule) hasRequired(dep string) {
+	t.Helper()
+	index := findIndex(t.lines, func(line string) bool {
+		return strings.HasPrefix(line, "LOCAL_REQUIRED_MODULES")
+	})
+	if index == -1 {
+		t.Error("LOCAL_REQUIRED_MODULES is not found.", strings.Join(t.lines, "\n"))
+		return
+	}
+	for _, word := range strings.Split(t.lines[index], " ") {
+		if word == dep {
+			return
+		}
+	}
+	t.Errorf("Expected %q is not found in LOCAL_REQUIRED_MODULES.", t.lines[index])
+}
+
+func (t *testAndroidMkModule) hasNoRequired(dep string) {
+	t.Helper()
+	index := findIndex(t.lines, func(line string) bool {
+		return strings.HasPrefix(line, "LOCAL_REQUIRED_MODULES")
+	})
+	if index == -1 {
+		return
+	}
+	for _, word := range strings.Split(t.lines[index], " ") {
+		if word == dep {
+			t.Errorf("%q is not expected in LOCAL_REQUIRED_MODULES.", t.lines[index])
+		}
+	}
+}
+
+func TestRequired(t *testing.T) {
+	config := testConfig(map[string]string{
+		"SOONG_IN_MAKE": "true",
+	})
+	ctx := testJavaConfig(t, `
+		java_library {
+			name: "foo",
+			srcs: ["a.java"],
+			required: ["libfoo"],
+		}
+	`, config)
+
+	mk := newTestAndroidMk(t, ctx)
+	mk.moduleFor("foo").hasRequired("libfoo")
+}
+
+func TestHostdex(t *testing.T) {
+	config := testConfig(map[string]string{
+		"SOONG_IN_MAKE": "true",
+	})
+	ctx := testJavaConfig(t, `
+		java_library {
+			name: "foo",
+			srcs: ["a.java"],
+			hostdex: true,
+		}
+	`, config)
+
+	mk := newTestAndroidMk(t, ctx)
+	mk.moduleFor("foo")
+	mk.moduleFor("foo-hostdex")
+}
+
+func TestHostdexRequired(t *testing.T) {
+	config := testConfig(map[string]string{
+		"SOONG_IN_MAKE": "true",
+	})
+	ctx := testJavaConfig(t, `
+		java_library {
+			name: "foo",
+			srcs: ["a.java"],
+			hostdex: true,
+			required: ["libfoo"],
+		}
+	`, config)
+
+	mk := newTestAndroidMk(t, ctx)
+	mk.moduleFor("foo").hasRequired("libfoo")
+	mk.moduleFor("foo-hostdex").hasRequired("libfoo")
+}
+
+func TestHostdexSpecificRequired(t *testing.T) {
+	config := testConfig(map[string]string{
+		"SOONG_IN_MAKE": "true",
+	})
+	ctx := testJavaConfig(t, `
+		java_library {
+			name: "foo",
+			srcs: ["a.java"],
+			hostdex: true,
+			target: {
+				hostdex: {
+					required: ["libfoo"],
+				},
+			},
+		}
+	`, config)
+
+	mk := newTestAndroidMk(t, ctx)
+	mk.moduleFor("foo").hasNoRequired("libfoo")
+	mk.moduleFor("foo-hostdex").hasRequired("libfoo")
 }

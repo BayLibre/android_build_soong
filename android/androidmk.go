@@ -442,6 +442,10 @@ func translateAndroidModule(ctx SingletonContext, w io.Writer, mod blueprint.Mod
 	blueprintDir := filepath.Dir(ctx.BlueprintFile(mod))
 
 	if data.Custom != nil {
+		// copy entries to data back
+		data.Required = entries.Required
+		data.Host_required = entries.Host_required
+		data.Target_required = entries.Target_required
 		data.Custom(w, name, prefix, blueprintDir, data)
 	} else {
 		WriteAndroidMkData(w, data)

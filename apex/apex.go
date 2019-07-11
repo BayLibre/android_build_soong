@@ -587,6 +587,8 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 	if cert != "" {
 		ctx.AddDependency(ctx.Module(), certificateTag, cert)
 	}
+
+	//todo: how to set dependency from javalib to its 'required' modules
 }
 
 func (a *apexBundle) getCertString(ctx android.BaseModuleContext) string {
