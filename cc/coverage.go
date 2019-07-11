@@ -20,6 +20,7 @@ import (
 	"github.com/google/blueprint"
 
 	"android/soong/android"
+	"android/soong/cc/config"
 )
 
 type CoverageProperties struct {
@@ -53,11 +54,19 @@ func getProfileLibraryName(ctx ModuleContextIntf) string {
 	}
 }
 
+func getCoverageRuntimeLibrary(ctx ModuleContextIntf) string {
+	return config.ProfileRuntimeLibrary(ctx.toolchain())
+}
+
 func (cov *coverage) deps(ctx DepsContext, deps Deps) Deps {
 	if cov.Properties.NeedCoverageVariant {
 		ctx.AddVariationDependencies([]blueprint.Variation{
 			{Mutator: "link", Variation: "static"},
 		}, coverageDepTag, getProfileLibraryName(ctx))
+
+		ctx.AddVariationDependencies([]blueprint.Variation{
+			{Mutator: "link", Variation: "static"},
+		}, coverageDepTag, getCoverageRuntimeLibrary(ctx))
 	}
 	return deps
 }
@@ -113,6 +122,12 @@ func (cov *coverage) flags(ctx ModuleContext, flags Flags, deps PathDeps) (Flags
 
 	if cov.linkCoverage {
 		flags.LdFlags = append(flags.LdFlags, "--coverage")
+
+		// The coverage runtime gets implicitly added by the clang
+		// coverage with --coverage.  Add it to LdFlagsDeps for proper
+		// incremental builds.
+		coverageRuntime := ctx.GetDirectDepWithTag(getCoverageRuntimeLibrary(ctx), coverageDepTag).(*Module)
+		flags.LdFlagsDeps = append(flags.LdFlagsDeps, coverageRuntime.OutputFile().Path())
 
 		coverage := ctx.GetDirectDepWithTag(getProfileLibraryName(ctx), coverageDepTag).(*Module)
 		deps.WholeStaticLibs = append(deps.WholeStaticLibs, coverage.OutputFile().Path())
