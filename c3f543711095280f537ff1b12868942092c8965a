@@ -22,6 +22,30 @@
       "revId": "c3f543711095280f537ff1b12868942092c8965a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "529d6522_417b8a41",
+        "filename": "ui/build/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-07-11T23:57:03Z",
+      "side": 1,
+      "message": "Yup, I am using the finder to improve build command speed (i.e. user executes the build command several times due to compilation errors). \n\nI created the build_modules.db to keep track of the build files, which caused me to create the getOutDir function. At the end, I am going to use the normal find operations as it is causing more problems to setup or use files.db. If performance is an issue, we can fix it in a separate cl.",
+      "parentUuid": "719bf53b_481d6412",
+      "range": {
+        "startLine": 313,
+        "startChar": 0,
+        "endLine": 313,
+        "endChar": 89
+      },
+      "revId": "c3f543711095280f537ff1b12868942092c8965a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
