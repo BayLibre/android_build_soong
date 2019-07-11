@@ -191,17 +191,9 @@ func (a *AndroidMkEntries) fillInEntries(config Config, bpPath string, mod bluep
 		// Make cannot identify LOCAL_MODULE_TARGET_ARCH:= common.
 		if archStr != "common" {
 			if amod.Target().NativeBridge {
-				// TODO: Unhardcode these rules.
-				guestArchStr := archStr
-				hostArchStr := ""
-				if guestArchStr == "arm" {
-					hostArchStr = "x86"
-				} else if guestArchStr == "arm64" {
-					hostArchStr = "x86_64"
-				}
-
-				if hostArchStr != "" {
-					a.SetString("LOCAL_MODULE_TARGET_ARCH", hostArchStr)
+				hostArchStr := amod.Target().NativeBridgeHostArchName
+				if hostArchStr != nil && *hostArchStr != "" {
+					a.SetString("LOCAL_MODULE_TARGET_ARCH", *hostArchStr)
 				}
 			} else {
 				a.SetString("LOCAL_MODULE_TARGET_ARCH", archStr)
