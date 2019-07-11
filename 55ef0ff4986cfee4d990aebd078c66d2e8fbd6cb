@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae3a9f61_2658c68e",
+        "filename": "android/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-07-11T20:12:01Z",
+      "side": 1,
+      "message": "I think this needs to be done whether or not a Custom func is defined, in case an Extra func references them. Can you move this up, probably after entries.writes, and see if it causes any issues?",
+      "revId": "55ef0ff4986cfee4d990aebd078c66d2e8fbd6cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11570dca_bc03410d",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-07-11T20:12:01Z",
+      "side": 1,
+      "message": "Is this relevant to this change?",
+      "revId": "55ef0ff4986cfee4d990aebd078c66d2e8fbd6cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06ed9d76_31315f73",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-07-11T20:12:01Z",
+      "side": 1,
+      "message": "I think whole this testAndroidMk business is an overkill given that we plan to deprecate AndroidMkData. As a matter of fact, requiring a cumbersome setup like this is the primary reason why we want to deprecate it.\n\nAs an interim solution, can you do something like this?\nhttp://cs/aosp-master/build/soong/android/prebuilt_etc_test.go?l\u003d141\u0026rcl\u003db6d230515e3104a2630388d11810d98d440a7943\n\nI\u0027m totally fine if you make an assumption that all the required fields have been properly filled by android/androidmk.go.\n\nAlso consider factoring this out as java/androidmk_test.go.",
+      "revId": "55ef0ff4986cfee4d990aebd078c66d2e8fbd6cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
