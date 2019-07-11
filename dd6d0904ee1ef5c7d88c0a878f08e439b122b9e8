@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "416cfec8_ce2d5e75",
+        "filename": "android/arch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-11T17:52:48Z",
+      "side": 1,
+      "message": "Can these be string instead of *string?  You are always checking for foo !\u003d nil \u0026\u0026 *foo \u003d\u003d \"\", which might as well be foo !\u003d \"\".",
+      "range": {
+        "startLine": 697,
+        "startChar": 26,
+        "endLine": 697,
+        "endChar": 33
+      },
+      "revId": "dd6d0904ee1ef5c7d88c0a878f08e439b122b9e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
