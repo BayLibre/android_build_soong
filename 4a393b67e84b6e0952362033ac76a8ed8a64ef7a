@@ -22,6 +22,30 @@
       "revId": "4a393b67e84b6e0952362033ac76a8ed8a64ef7a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aead17d3_e5370d7d",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-07-11T23:48:46Z",
+      "side": 0,
+      "message": "Ah yes, I missed at line 93. In that function, it sucks in the environment in. The solution I provided here will not work as I am overriding the one that may have been specified in the environment variable.\n\nI am going to abandon this CL as this was created to allow dumping of a new database for quicker search. This CL is not needed as I am planning to use the regular find operation.",
+      "parentUuid": "dbed5df5_3c939861",
+      "range": {
+        "startLine": 103,
+        "startChar": 18,
+        "endLine": 103,
+        "endChar": 33
+      },
+      "revId": "4a393b67e84b6e0952362033ac76a8ed8a64ef7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
