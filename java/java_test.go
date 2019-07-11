@@ -109,6 +109,7 @@ func testContext(config android.Config, bp string,
 	ctx.PreDepsMutators(func(ctx android.RegisterMutatorsContext) {
 		ctx.BottomUp("link", cc.LinkageMutator).Parallel()
 		ctx.BottomUp("begin", cc.BeginMutator).Parallel()
+		ctx.BottomUp("platform_api_checker", platformAPIChecker)
 	})
 
 	bp += GatherRequiredDepsForTest()
@@ -220,6 +221,29 @@ func run(t *testing.T, ctx *android.TestContext, config android.Config) {
 	android.FailIfErrored(t, errs)
 	_, errs = ctx.PrepareBuildActions(config)
 	android.FailIfErrored(t, errs)
+}
+
+func testJavaError(t *testing.T, pattern string, bp string) {
+	t.Helper()
+	config := testConfig(nil)
+	ctx := testContext(config, bp, nil)
+
+	pathCtx := android.PathContextForTesting(config, nil)
+	setDexpreoptTestGlobalConfig(config, dexpreopt.GlobalConfigForTests(pathCtx))
+
+	ctx.Register()
+	_, errs := ctx.ParseBlueprintsFiles("Android.bp")
+	if len(errs) > 0 {
+		android.FailIfNoMatchingErrors(t, pattern, errs)
+		return
+	}
+	_, errs = ctx.PrepareBuildActions(config)
+	if len(errs) > 0 {
+		android.FailIfNoMatchingErrors(t, pattern, errs)
+		return
+	}
+
+	t.Fatalf("missing expected error %q (0 errors are returned)", pattern)
 }
 
 func testJava(t *testing.T, bp string) *android.TestContext {
