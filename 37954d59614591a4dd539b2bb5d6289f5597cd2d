@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "471f37bc_2cd1f01d",
+        "filename": "cc/coverage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-11T22:52:55Z",
+      "side": 1,
+      "message": "Is it possible to make this more explicit in clang?  Otherwise we are just hoping that clang and Soong agree.  Alternatively, deps file output from ld would work too.",
+      "revId": "37954d59614591a4dd539b2bb5d6289f5597cd2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
