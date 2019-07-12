@@ -46,6 +46,30 @@
       "revId": "c3f543711095280f537ff1b12868942092c8965a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c26be6c_4c19315e",
+        "filename": "ui/build/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-07-12T23:05:28Z",
+      "side": 1,
+      "message": "I decided to use the walk function. I ran through the AOSP tree and the maximum time to find a build file is 100us.",
+      "parentUuid": "529d6522_417b8a41",
+      "range": {
+        "startLine": 313,
+        "startChar": 0,
+        "endLine": 313,
+        "endChar": 89
+      },
+      "revId": "c3f543711095280f537ff1b12868942092c8965a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
