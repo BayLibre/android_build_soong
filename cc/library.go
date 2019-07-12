@@ -1024,6 +1024,10 @@ func (library *libraryDecorator) stubsVersion() string {
 	return library.MutatedProperties.StubsVersion
 }
 
+func isNNAPI(name string) bool {
+	return name == "libneuralnetworks"
+}
+
 var versioningMacroNamesListKey = android.NewOnceKey("versioningMacroNamesList")
 
 func versioningMacroNamesList(config android.Config) *map[string]string {
