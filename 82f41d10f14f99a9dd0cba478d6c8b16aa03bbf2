@@ -16,6 +16,24 @@
       "revId": "82f41d10f14f99a9dd0cba478d6c8b16aa03bbf2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c617f07_2dd0b7fa",
+        "filename": "cc/config/global.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2019-07-12T09:33:34Z",
+      "side": 1,
+      "message": "Thanks for the better suggestion here. I had thought originally about converting this to a VariableFunc, but wasn\u0027t sure if there were any reasons not to.",
+      "parentUuid": "ddb11741_89184aa0",
+      "revId": "82f41d10f14f99a9dd0cba478d6c8b16aa03bbf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
