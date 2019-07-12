@@ -16,6 +16,24 @@
       "revId": "37954d59614591a4dd539b2bb5d6289f5597cd2d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0d802c7_73244ade",
+        "filename": "cc/coverage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2019-07-12T01:11:17Z",
+      "side": 1,
+      "message": "Can you expand on how we can make this explicit in Clang?  I cannot find an option for the linker to output a deps file.  So that maybe a nonstarter.\n\nNote that incremental builds are only broken when updating the libclang_rt.profile libraries for debugging (i.e. it\u0027s only broken for me ATM).  The general case (developers and build servers) are unaffected by the lack of dependency tracking since our team only switches between prebuilts and never updates files in an existing prebuilt directory.",
+      "parentUuid": "471f37bc_2cd1f01d",
+      "revId": "37954d59614591a4dd539b2bb5d6289f5597cd2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
