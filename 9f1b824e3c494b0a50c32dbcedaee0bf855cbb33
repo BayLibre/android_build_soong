@@ -22,6 +22,30 @@
       "revId": "9f1b824e3c494b0a50c32dbcedaee0bf855cbb33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a50a10d5_b7531eef",
+        "filename": "apex/apex.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-07-12T18:49:23Z",
+      "side": 1,
+      "message": "I tried to follow the style in use here. For a bit more clarity, I renamed `getCopyManifestForTestExecutables` as `getCopyManifestForTestPerSrcExecutables` in PS10.",
+      "parentUuid": "dd22f600_f77852ac",
+      "range": {
+        "startLine": 836,
+        "startChar": 5,
+        "endLine": 836,
+        "endChar": 43
+      },
+      "revId": "9f1b824e3c494b0a50c32dbcedaee0bf855cbb33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
