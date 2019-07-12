@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b50143d5_867947f9",
+        "filename": "android/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-07-12T06:15:18Z",
+      "side": 1,
+      "message": "Having moved this up after entries.writes, then I found that \"entries\" is used for consistent behavior between AndroidMkData and AndroidMkEntries by relying on AndroidMkEntries\u0027s methods(fillIn and write). I extracted \"entries\"-related section into a separate function.",
+      "parentUuid": "ae3a9f61_2658c68e",
+      "revId": "55ef0ff4986cfee4d990aebd078c66d2e8fbd6cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "11570dca_bc03410d",
         "filename": "apex/apex.go",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "d6533f8e_a82839dd",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-07-12T06:15:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11570dca_bc03410d",
+      "revId": "55ef0ff4986cfee4d990aebd078c66d2e8fbd6cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06ed9d76_31315f73",
         "filename": "java/java_test.go",
         "patchSetId": 1
@@ -50,6 +86,24 @@
       "revId": "55ef0ff4986cfee4d990aebd078c66d2e8fbd6cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91a34bfa_c3aa29cf",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-07-12T06:15:18Z",
+      "side": 1,
+      "message": "Moved this test to java/androidmk_test.go",
+      "parentUuid": "06ed9d76_31315f73",
+      "revId": "55ef0ff4986cfee4d990aebd078c66d2e8fbd6cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
