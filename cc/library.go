@@ -959,6 +959,10 @@ func (library *libraryDecorator) install(ctx ModuleContext, file android.Path) {
 				}
 				library.baseInstaller.subDir = "bootstrap"
 			}
+		} else if android.DirectlyInAnyApex(ctx, ctx.ModuleName()) && !library.buildStubs() && isNNAPI(ctx.baseModuleName()) {
+			// LLNDK libneuralnetworks.so (also known as NNAPI) moved to com.android.nnapi APEX package. It should NOT
+			// be installed in /system image.
+			ctx.Module().SkipInstall()
 		}
 		library.baseInstaller.install(ctx, file)
 	}
@@ -1022,6 +1026,10 @@ func (library *libraryDecorator) buildStubs() bool {
 
 func (library *libraryDecorator) stubsVersion() string {
 	return library.MutatedProperties.StubsVersion
+}
+
+func isNNAPI(name string) bool {
+	return name == "libneuralnetworks"
 }
 
 var versioningMacroNamesListKey = android.NewOnceKey("versioningMacroNamesList")
