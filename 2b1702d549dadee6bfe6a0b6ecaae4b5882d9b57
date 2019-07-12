@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "03a0decc_d1e0d46d",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1062,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-07-12T18:42:19Z",
+      "side": 1,
+      "message": "Maybe; I\u0027m not very familiar with this logic. It does not seem to be the style used in this method though. Colin, what do you think?",
+      "parentUuid": "1434873b_995651ce",
+      "revId": "2b1702d549dadee6bfe6a0b6ecaae4b5882d9b57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ec6379ad_a6509ac6",
         "filename": "cc/test.go",
         "patchSetId": 5
@@ -39,6 +57,30 @@
       "revId": "2b1702d549dadee6bfe6a0b6ecaae4b5882d9b57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78119b1a_ea23a852",
+        "filename": "cc/test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-07-12T18:42:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec6379ad_a6509ac6",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 124,
+        "endChar": 15
+      },
+      "revId": "2b1702d549dadee6bfe6a0b6ecaae4b5882d9b57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
