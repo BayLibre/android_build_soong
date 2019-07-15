@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07f505c0_10f41899",
+        "filename": "android/arch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1422,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-15T17:34:31Z",
+      "side": 1,
+      "message": "you can use String(nativeBridgeRelativePath), which will return \"\" if nativeBridgeRelativePath is nil.",
+      "range": {
+        "startLine": 1419,
+        "startChar": 2,
+        "endLine": 1422,
+        "endChar": 3
+      },
+      "revId": "c79247bd45dfd9ff9be699548a88cc842dc05a76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
