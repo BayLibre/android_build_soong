@@ -34,6 +34,24 @@
       "revId": "4b761d5a94d82bd56400113256439c3d3c3d79c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26bc91d8_4bb036e1",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-15T17:38:36Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem like the right place to solve this, Make is force-installing all the LLNDK modules somewhere.  Would it be better to tell Make what libraries are being installed through apex packages so it can filter them out of the LLNDK rules?",
+      "parentUuid": "62e26a0a_4fb01030",
+      "revId": "4b761d5a94d82bd56400113256439c3d3c3d79c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
