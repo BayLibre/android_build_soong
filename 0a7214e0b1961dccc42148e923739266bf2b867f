@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "03f203b9_90de2382",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-07-15T22:44:26Z",
+      "side": 1,
+      "message": "I\u0027ve added a very simple smoke test. I would love to check in this test that -fsanitize\u003dfuzzer-no-link is added to the CFlags, but I\u0027m not exactly sure how to do this (as cc.Args[\"cFlags\"] \u003d\u003d \".*$cflags.*\" and I can\u0027t figure out how to lower the \"$cflags\" into the actual sanitizer mutator pass).",
+      "parentUuid": "3325c60d_e1fd6782",
+      "revId": "0a7214e0b1961dccc42148e923739266bf2b867f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa774106_a8e3758f",
         "filename": "cc/fuzz.go",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "21557f77_772e9854",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-07-15T22:44:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa774106_a8e3758f",
+      "revId": "0a7214e0b1961dccc42148e923739266bf2b867f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f86ff7d7_23c36768",
         "filename": "cc/fuzz.go",
         "patchSetId": 3
@@ -50,6 +86,24 @@
       "revId": "0a7214e0b1961dccc42148e923739266bf2b867f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5c3ee76_ede46bae",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-07-15T22:44:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f86ff7d7_23c36768",
+      "revId": "0a7214e0b1961dccc42148e923739266bf2b867f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
