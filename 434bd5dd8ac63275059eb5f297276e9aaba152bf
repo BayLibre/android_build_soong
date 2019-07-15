@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9db541c_a695ce80",
+        "filename": "android/androidmk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-07-15T01:27:42Z",
+      "side": 1,
+      "message": "Let\u0027s call this fillInData instead.",
+      "range": {
+        "startLine": 394,
+        "startChar": 27,
+        "endLine": 394,
+        "endChar": 40
+      },
+      "revId": "434bd5dd8ac63275059eb5f297276e9aaba152bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "306a22a2_7a5906b9",
+        "filename": "android/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-07-15T01:27:42Z",
+      "side": 1,
+      "message": "For your specific use case, I assume you can just add PrefixIndexList and make PrefixInList depend on it? (Like IndexList and InList)",
+      "revId": "434bd5dd8ac63275059eb5f297276e9aaba152bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94136c00_b5884a7b",
+        "filename": "java/androidmk_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-07-15T01:27:42Z",
+      "side": 1,
+      "message": "Do you still need this?",
+      "revId": "434bd5dd8ac63275059eb5f297276e9aaba152bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99b0e938_22074cbf",
+        "filename": "java/java_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-07-15T01:27:42Z",
+      "side": 1,
+      "message": "I don\u0027t think you need a custom config anymore?",
+      "revId": "434bd5dd8ac63275059eb5f297276e9aaba152bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
