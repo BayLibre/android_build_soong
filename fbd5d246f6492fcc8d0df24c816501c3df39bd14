@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "85c7aae1_5a15d8c7",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-07-15T23:53:32Z",
+      "side": 1,
+      "message": "Should we fix this in a more central location? (I suspect the escaping is actually coming from Make escaping, not ninja...)",
+      "range": {
+        "startLine": 919,
+        "startChar": 26,
+        "endLine": 919,
+        "endChar": 50
+      },
+      "revId": "fbd5d246f6492fcc8d0df24c816501c3df39bd14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
