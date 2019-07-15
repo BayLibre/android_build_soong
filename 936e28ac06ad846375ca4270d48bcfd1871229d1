@@ -35,6 +35,24 @@
       "revId": "936e28ac06ad846375ca4270d48bcfd1871229d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43d6db27_c92baaf7",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-07-15T22:29:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b851ae49_f9a83441",
+      "revId": "936e28ac06ad846375ca4270d48bcfd1871229d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
