@@ -1,0 +1,132 @@
+// Copyright 2016 Google Inc. All rights reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+package cc
+
+import (
+	"android/soong/android"
+)
+
+func init() {
+	android.RegisterModuleType("cc_fuzz", FuzzFactory)
+}
+
+// cc_fuzz creates a host/device fuzzer binary. Host binaries can be found at
+// $ANDROID_HOST_OUT/fuzz/, and device binaries can be found at /data/fuzz on
+// your device, or $ANDROID_PRODUCT_OUT/data/fuzz in your build tree.
+func FuzzFactory() android.Module {
+	module := NewFuzz(android.HostAndDeviceSupported)
+	return module.Init()
+}
+
+type fuzzDecorator struct {
+	linker *baseLinker
+}
+
+func (fuzz *fuzzDecorator) linkerFlags(ctx ModuleContext, flags Flags) Flags {
+	return flags
+}
+
+func (fuzz *fuzzDecorator) linkerDeps(ctx BaseModuleContext, deps Deps) Deps {
+	if ctx.Device() {
+		deps.StaticLibs = append(deps.StaticLibs, "libFuzzer")
+	} else if ctx.toolchain().Is64Bit() {
+		deps.WholeStaticLibs = append(deps.WholeStaticLibs, "libclang_rt.fuzzer-x86_64")
+	}
+
+	return deps
+}
+
+func (fuzz *fuzzDecorator) linkerInit(ctx BaseModuleContext, linker *baseLinker) {
+	// Add ../lib[64] to rpath so that out/host/linux-x86/fuzz/<fuzzer> can
+	// find out/host/linux-x86/lib[64]/library.so
+	runpaths := []string{"../lib"}
+	for _, runpath := range runpaths {
+		if ctx.toolchain().Is64Bit() {
+			runpath += "64"
+		}
+		linker.dynamicProperties.RunPaths = append(linker.dynamicProperties.RunPaths, runpath)
+	}
+
+	// add "" to rpath so that fuzzer binaries can find libraries in their own fuzz directory
+	linker.dynamicProperties.RunPaths = append(linker.dynamicProperties.RunPaths, "")
+}
+
+func (fuzz *fuzzDecorator) linkerProps() []interface{} {
+	return []interface{}{}
+}
+
+func NewFuzzInstaller() *baseInstaller {
+	return NewBaseInstaller("fuzz", "fuzz", InstallInData)
+}
+
+type fuzzBinary struct {
+	fuzzDecorator
+	*binaryDecorator
+	*baseCompiler
+}
+
+func (fuzz *fuzzBinary) linkerProps() []interface{} {
+	props := append(fuzz.fuzzDecorator.linkerProps(), fuzz.binaryDecorator.linkerProps()...)
+	return props
+}
+
+func (fuzz *fuzzBinary) linkerInit(ctx BaseModuleContext) {
+	fuzz.fuzzDecorator.linkerInit(ctx, fuzz.binaryDecorator.baseLinker)
+	fuzz.binaryDecorator.linkerInit(ctx)
+}
+
+func (fuzz *fuzzBinary) linkerDeps(ctx DepsContext, deps Deps) Deps {
+	deps = fuzz.fuzzDecorator.linkerDeps(ctx, deps)
+	deps = fuzz.binaryDecorator.linkerDeps(ctx, deps)
+	return deps
+}
+
+func (fuzz *fuzzBinary) linkerFlags(ctx ModuleContext, flags Flags) Flags {
+	flags = fuzz.binaryDecorator.linkerFlags(ctx, flags)
+	flags = fuzz.fuzzDecorator.linkerFlags(ctx, flags)
+	return flags
+}
+
+func (fuzz *fuzzBinary) install(ctx ModuleContext, file android.Path) {
+	fuzz.binaryDecorator.baseInstaller.dir = "fuzz"
+	fuzz.binaryDecorator.baseInstaller.dir64 = "fuzz"
+	fuzz.binaryDecorator.baseInstaller.install(ctx, file)
+}
+
+func NewFuzz(hod android.HostOrDeviceSupported) *Module {
+	module, binary := NewBinary(hod)
+
+	// TODO(mitchp): The toolchain does not currently export the x86 (32-bit)
+	// variant of libFuzzer for host. There is no way to only disable the host
+	// 32-bit variant, so we specify cc_fuzz targets as 64-bit only. This doesn't
+	// hurt anyone, as cc_fuzz is mostly for experimental targets as of this
+	// moment.
+	module.multilib = "64"
+
+	binary.baseInstaller = NewFuzzInstaller()
+	module.sanitize.SetSanitizer(fuzzer, true)
+
+	fuzz := &fuzzBinary{
+		fuzzDecorator: fuzzDecorator{
+			linker: NewBaseLinker(module.sanitize),
+		},
+		binaryDecorator: binary,
+		baseCompiler:    NewBaseCompiler(),
+	}
+	module.compiler = fuzz
+	module.linker = fuzz
+	module.installer = fuzz
+	return module
+}
