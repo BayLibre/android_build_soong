@@ -16,6 +16,24 @@
       "revId": "4b761d5a94d82bd56400113256439c3d3c3d79c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62e26a0a_4fb01030",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 1015680
+      },
+      "writtenOn": "2019-07-15T12:49:59Z",
+      "side": 1,
+      "message": "There\u0027s no plumbing for \"installable\" for cc_library in blueprint, will try to add it.",
+      "parentUuid": "6613fa38_27904a48",
+      "revId": "4b761d5a94d82bd56400113256439c3d3c3d79c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
