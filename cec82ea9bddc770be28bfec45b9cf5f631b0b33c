@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f032379a_01e7c32a",
+        "filename": "ui/build/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-07-15T21:39:47Z",
+      "side": 1,
+      "message": "This ends up being a depth first search -- is that actually the desired behavior? Or do we want to find the Android.mk/Android.bp closest to the dir argument?\n\nOr just pass in the MODULES-IN-* file and make it so that we build everything under that directory, regardless of which makefile it is? That really only works after we remove ONE_SHOT_MAKEFILE probably -- maybe do that first?\n\nThe only thing that we\u0027d need to handle then is walking up the tree until there\u0027s an Android.bp or Android.mk that exists somewhere under that directory. The use case being:\n\n $ find foo -type f\n  foo/Android.bp\n  foo/src/main.c\n $ cd foo/src\n $ mma\n\nThe naive `mma` would use MODULES-IN-foo-src, but that doesn\u0027t exist. I don\u0027t think it would work with this change either. It would want to walk up to foo, discover an Android.bp / Android.mk, and use MODULES-IN-foo. But you also don\u0027t want to walk up too far (and build too much), so if there wasn\u0027t a foo/Android.bp, but there was a foo/test/Android.bp, we should still use MODULES-IN-foo.",
+      "revId": "cec82ea9bddc770be28bfec45b9cf5f631b0b33c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
