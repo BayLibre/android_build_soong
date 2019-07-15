@@ -174,6 +174,10 @@ func GatherRequiredDepsForTest(os android.OsType) string {
 		cc_library {
 			name: "libprotobuf-cpp-lite",
 		}
+
+		cc_library {
+			name: "libFuzzer"
+		}
 		`
 	if os == android.Fuchsia {
 		ret += `
@@ -196,6 +200,7 @@ func CreateTestContext(bp string, fs map[string][]byte,
 	ctx := android.NewTestArchContext()
 	ctx.RegisterModuleType("cc_binary", android.ModuleFactoryAdaptor(BinaryFactory))
 	ctx.RegisterModuleType("cc_binary_host", android.ModuleFactoryAdaptor(binaryHostFactory))
+	ctx.RegisterModuleType("cc_fuzz", android.ModuleFactoryAdaptor(FuzzFactory))
 	ctx.RegisterModuleType("cc_library", android.ModuleFactoryAdaptor(LibraryFactory))
 	ctx.RegisterModuleType("cc_library_shared", android.ModuleFactoryAdaptor(LibrarySharedFactory))
 	ctx.RegisterModuleType("cc_library_static", android.ModuleFactoryAdaptor(LibraryStaticFactory))
