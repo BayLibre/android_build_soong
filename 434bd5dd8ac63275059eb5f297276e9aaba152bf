@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dad5f4a4_903b202e",
+        "filename": "android/androidmk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-07-15T02:12:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9db541c_a695ce80",
+      "range": {
+        "startLine": 394,
+        "startChar": 27,
+        "endLine": 394,
+        "endChar": 40
+      },
+      "revId": "434bd5dd8ac63275059eb5f297276e9aaba152bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "306a22a2_7a5906b9",
         "filename": "android/util.go",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2019-07-15T01:27:42Z",
       "side": 1,
       "message": "For your specific use case, I assume you can just add PrefixIndexList and make PrefixInList depend on it? (Like IndexList and InList)",
+      "revId": "434bd5dd8ac63275059eb5f297276e9aaba152bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "960433ee_7cd49886",
+        "filename": "android/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-07-15T02:12:25Z",
+      "side": 1,
+      "message": "I thought that way, but PrefixInList is not what I wanted. It checks if a string is matching with given \"prefix\" lists. In my case, I want to find an index of a given \"prefix\" in the string list.\n\nI tried to make up for a proper name for my use case, such as \"IndexPrefixInList\" but I  couldn\u0027t come up with a good name. So I renamed it as FindIndex, which is just borrowed from other language, Haskell.",
+      "parentUuid": "306a22a2_7a5906b9",
       "revId": "434bd5dd8ac63275059eb5f297276e9aaba152bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "04ec152f_d7f93ff3",
+        "filename": "java/androidmk_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-07-15T02:12:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94136c00_b5884a7b",
+      "revId": "434bd5dd8ac63275059eb5f297276e9aaba152bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "99b0e938_22074cbf",
         "filename": "java/java_test.go",
         "patchSetId": 3
@@ -70,6 +130,24 @@
       "writtenOn": "2019-07-15T01:27:42Z",
       "side": 1,
       "message": "I don\u0027t think you need a custom config anymore?",
+      "revId": "434bd5dd8ac63275059eb5f297276e9aaba152bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7093b118_da7ce6a3",
+        "filename": "java/java_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-07-15T02:12:25Z",
+      "side": 1,
+      "message": "I needed a Config. So there are two ways: 1) make an config and pass it to testJava (like this), and 2) testJava() returns config also (like other tests in Soong, such as prebuilt_etc_test).\n\nHowever, at line 1073, there is another use case for a custom config arg. I think this is okay.",
+      "parentUuid": "99b0e938_22074cbf",
       "revId": "434bd5dd8ac63275059eb5f297276e9aaba152bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
