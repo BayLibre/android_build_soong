@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6613fa38_27904a48",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-07-15T01:30:50Z",
+      "side": 1,
+      "message": "doesn\u0027t specifying \u0027installable: false\u0027 in Android.bp for libneuralnetwork work?",
+      "revId": "4b761d5a94d82bd56400113256439c3d3c3d79c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
