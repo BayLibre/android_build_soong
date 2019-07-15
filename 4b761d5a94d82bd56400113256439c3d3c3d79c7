@@ -52,6 +52,24 @@
       "revId": "4b761d5a94d82bd56400113256439c3d3c3d79c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2f5dbf5_f3739402",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-07-15T17:51:25Z",
+      "side": 1,
+      "message": "This sounds very similar to the art case where an apex is meant to replace the system version, but the apex rules aren\u0027t preventing it from being installed into /system (which also means that we\u0027re building things more often than necessary in checkbuild). It\u0027s not a LLNDK or NNAPI specific problem.",
+      "parentUuid": "26bc91d8_4bb036e1",
+      "revId": "4b761d5a94d82bd56400113256439c3d3c3d79c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
