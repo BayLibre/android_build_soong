@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "08b07371_2be17baa",
+        "filename": "android/util.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-07-15T04:26:49Z",
+      "side": 1,
+      "message": "I see, makes sense. Could you please revert it back to your original naming, then? I\u0027m worried Findindex is a too general name.",
+      "parentUuid": "960433ee_7cd49886",
+      "revId": "434bd5dd8ac63275059eb5f297276e9aaba152bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "94136c00_b5884a7b",
         "filename": "java/androidmk_test.go",
         "patchSetId": 3
@@ -148,6 +166,24 @@
       "side": 1,
       "message": "I needed a Config. So there are two ways: 1) make an config and pass it to testJava (like this), and 2) testJava() returns config also (like other tests in Soong, such as prebuilt_etc_test).\n\nHowever, at line 1073, there is another use case for a custom config arg. I think this is okay.",
       "parentUuid": "99b0e938_22074cbf",
+      "revId": "434bd5dd8ac63275059eb5f297276e9aaba152bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0aba837_8c42b525",
+        "filename": "java/java_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-07-15T04:26:49Z",
+      "side": 1,
+      "message": "The conventional way to handle your case is having the test util func return a config, not supplying it one.\ne.g. http://cs/aosp-master/build/soong/android/sh_binary_test.go?l\u003d8\u0026rcl\u003db940a1499b7edea4e0d21f8d97a08497f76f0c40\n\nRefactoring all relevant java tests is probably out of the scope for your change. Please do it the plain way, we\u0027ll refactor them all at once later.",
+      "parentUuid": "7093b118_da7ce6a3",
       "revId": "434bd5dd8ac63275059eb5f297276e9aaba152bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
