@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3325c60d_e1fd6782",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-15T20:47:25Z",
+      "side": 1,
+      "message": "Can you add a simple test for cc_fuzz in fuzz_test.go?  A test that exercises the code and makes sure it doesn\u0027t panic or hit any of the checks in the common code is valuable even if it doesn\u0027t assert much about the module.",
+      "revId": "0a7214e0b1961dccc42148e923739266bf2b867f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa774106_a8e3758f",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-15T20:47:25Z",
+      "side": 1,
+      "message": "This isn\u0027t used",
+      "revId": "0a7214e0b1961dccc42148e923739266bf2b867f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f86ff7d7_23c36768",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-15T20:47:25Z",
+      "side": 1,
+      "message": "Do you expect to reuse this for shared libraries too?  If not, it would be much simpler to move all of fuzzDecorator into fuzzBinary",
+      "revId": "0a7214e0b1961dccc42148e923739266bf2b867f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
