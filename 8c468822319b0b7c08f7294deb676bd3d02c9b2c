@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "29ba7d09_a7f974c3",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2272,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-07-16T20:11:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7550a47_6b6e1ce7",
+      "revId": "8c468822319b0b7c08f7294deb676bd3d02c9b2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c1f8cb8b_7c64148e",
         "filename": "cc/fuzz.go",
         "patchSetId": 4
@@ -30,6 +48,30 @@
       "writtenOn": "2019-07-16T19:43:12Z",
       "side": 1,
       "message": "This should be coming from the toolchain, can you add something similar to AddressSanitizerRuntimeLibrary?",
+      "range": {
+        "startLine": 70,
+        "startChar": 54,
+        "endLine": 70,
+        "endChar": 81
+      },
+      "revId": "8c468822319b0b7c08f7294deb676bd3d02c9b2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7ec2ee3_b0b0f186",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-07-16T20:11:14Z",
+      "side": 1,
+      "message": "The only problem with those toolchain libraries is that they\u0027re `libclang_rt.*-android` specific. I definitely plan to get the target fuzzers onto this method of picking up libraries in the future when we\u0027re ready to deprecate libFuzzer.a from the toolchain exports.\n\nFor now, we should be able to actually make this better, as the host builds only require linkage of the libclang_rt-* libraries through the driver at link time. I\u0027ve added this to linkerFlags instead. LGTY?",
+      "parentUuid": "c1f8cb8b_7c64148e",
       "range": {
         "startLine": 70,
         "startChar": 54,
