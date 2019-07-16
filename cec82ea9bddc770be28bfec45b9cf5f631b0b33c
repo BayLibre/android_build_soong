@@ -16,6 +16,24 @@
       "revId": "cec82ea9bddc770be28bfec45b9cf5f631b0b33c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bcf3505_ac22d741",
+        "filename": "ui/build/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-07-16T18:20:06Z",
+      "side": 1,
+      "message": "After our discussion, the code will first do a depth first search to see if there is a build file in one of the subdirectories in dir. If one is not found, then line of code 398 starts going up to find the next closest build file.\n\nThe case that was not covered is not to go up to the tree to far to build too much. I fixed that case.",
+      "parentUuid": "f032379a_01e7c32a",
+      "revId": "cec82ea9bddc770be28bfec45b9cf5f631b0b33c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
