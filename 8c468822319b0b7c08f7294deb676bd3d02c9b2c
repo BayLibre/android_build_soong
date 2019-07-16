@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7550a47_6b6e1ce7",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2272,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-16T19:43:12Z",
+      "side": 1,
+      "message": "put this in testing.go so it is available to all the tests",
+      "revId": "8c468822319b0b7c08f7294deb676bd3d02c9b2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1f8cb8b_7c64148e",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-16T19:43:12Z",
+      "side": 1,
+      "message": "This should be coming from the toolchain, can you add something similar to AddressSanitizerRuntimeLibrary?",
+      "range": {
+        "startLine": 70,
+        "startChar": 54,
+        "endLine": 70,
+        "endChar": 81
+      },
+      "revId": "8c468822319b0b7c08f7294deb676bd3d02c9b2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

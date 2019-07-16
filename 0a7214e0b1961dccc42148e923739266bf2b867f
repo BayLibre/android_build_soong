@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "a57cc1b2_05372de6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-16T19:43:12Z",
+      "side": 1,
+      "message": "Testing cflags is hard because of the optimization at https://android-review.googlesource.com/c/platform/build/soong/+/1040276/4/cc/cc.go#1016",
+      "parentUuid": "03f203b9_90de2382",
+      "revId": "0a7214e0b1961dccc42148e923739266bf2b867f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa774106_a8e3758f",
         "filename": "cc/fuzz.go",
         "patchSetId": 3
