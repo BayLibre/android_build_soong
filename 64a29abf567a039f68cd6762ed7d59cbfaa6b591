@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d677ec9_c5f0ff48",
+        "filename": "scripts/jar-wrapper.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-16T17:45:42Z",
+      "side": 1,
+      "message": "This isn\u0027t working on darwin",
+      "range": {
+        "startLine": 53,
+        "startChar": 24,
+        "endLine": 53,
+        "endChar": 27
+      },
+      "revId": "64a29abf567a039f68cd6762ed7d59cbfaa6b591",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
