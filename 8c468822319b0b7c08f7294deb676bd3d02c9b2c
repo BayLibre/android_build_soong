@@ -129,6 +129,30 @@
       "revId": "8c468822319b0b7c08f7294deb676bd3d02c9b2c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa09847d_743932f6",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-16T21:08:31Z",
+      "side": 1,
+      "message": "It means that if you update the static library and run a build it won\u0027t rebuild the fuzz tests.  There are likely many places we have this problem, because clang doesn\u0027t tell us when it is pulling in random libraries as dependencies (thus the request for linker deps files).",
+      "parentUuid": "1ceba050_58b2e310",
+      "range": {
+        "startLine": 70,
+        "startChar": 54,
+        "endLine": 70,
+        "endChar": 81
+      },
+      "revId": "8c468822319b0b7c08f7294deb676bd3d02c9b2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
