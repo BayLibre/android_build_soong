@@ -105,6 +105,30 @@
       "revId": "8c468822319b0b7c08f7294deb676bd3d02c9b2c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ceba050_58b2e310",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-07-16T20:44:04Z",
+      "side": 1,
+      "message": "Forgive me if I misunderstand - is this to mean that soong won\u0027t see the dependency between a cc_fuzz target and the statically linked (http://llvm-cs.pcc.me.uk/tools/clang/lib/Driver/ToolChains/CommonArgs.cpp#711) libclang_rt.fuzzer library?\n\nIs this a big problem for static libraries?\n\nAlso, isn\u0027t this \"deferred to clang driver\" already the default behaviour for sanitizer configurations on host (https://cs.corp.google.com/android/build/soong/cc/sanitize.go?rcl\u003dbf5ba930a3aa3dcf5c17c12af0e9337d4130412a\u0026l\u003d512)?",
+      "parentUuid": "aacb4364_bb197133",
+      "range": {
+        "startLine": 70,
+        "startChar": 54,
+        "endLine": 70,
+        "endChar": 81
+      },
+      "revId": "8c468822319b0b7c08f7294deb676bd3d02c9b2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
