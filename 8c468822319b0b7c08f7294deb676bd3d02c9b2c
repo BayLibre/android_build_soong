@@ -153,6 +153,30 @@
       "revId": "8c468822319b0b7c08f7294deb676bd3d02c9b2c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d6441ec_5c135160",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-07-16T23:30:15Z",
+      "side": 1,
+      "message": "Got it. I\u0027ve fangled some things around and added a LibFuzzerRuntimeLibrary that picks up the right libclang_rt variant based on whether we\u0027re building for bionic or not. Hopefully this is what you\u0027re looking for.",
+      "parentUuid": "aa09847d_743932f6",
+      "range": {
+        "startLine": 70,
+        "startChar": 54,
+        "endLine": 70,
+        "endChar": 81
+      },
+      "revId": "8c468822319b0b7c08f7294deb676bd3d02c9b2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
