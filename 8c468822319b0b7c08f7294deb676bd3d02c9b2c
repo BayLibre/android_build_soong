@@ -81,6 +81,30 @@
       "revId": "8c468822319b0b7c08f7294deb676bd3d02c9b2c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aacb4364_bb197133",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-16T20:24:16Z",
+      "side": 1,
+      "message": "This means we don\u0027t get any dependency on the fuzzer library, see http://aosp/c/platform/build/soong/+/1014134/1/cc/coverage.go#127 for a similar discussion.",
+      "parentUuid": "f7ec2ee3_b0b0f186",
+      "range": {
+        "startLine": 70,
+        "startChar": 54,
+        "endLine": 70,
+        "endChar": 81
+      },
+      "revId": "8c468822319b0b7c08f7294deb676bd3d02c9b2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
