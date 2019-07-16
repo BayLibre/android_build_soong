@@ -34,6 +34,24 @@
       "revId": "37954d59614591a4dd539b2bb5d6289f5597cd2d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07472846_50e289ff",
+        "filename": "cc/coverage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-16T20:23:48Z",
+      "side": 1,
+      "message": "Linker dep file is a feature request for clang.\n\nYou can make it explicit by putting it on the command line instead of letting it be added by --coverage, but if --coverage has other behaviors that may not be possible.  For the toolchain_library modules we ask gcc where library it would use is, and then use -nostdlib and manually pass the library back to gcc.  Can we ask clang what runtime library it would use in each situation?",
+      "parentUuid": "a0d802c7_73244ade",
+      "revId": "37954d59614591a4dd539b2bb5d6289f5597cd2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
