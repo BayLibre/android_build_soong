@@ -20,37 +20,10 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
 	"android/soong/java/config"
-)
-
-var (
-	javadoc = pctx.AndroidStaticRule("javadoc",
-		blueprint.RuleParams{
-			Command: `rm -rf "$outDir" "$srcJarDir" "$stubsDir" && mkdir -p "$outDir" "$srcJarDir" "$stubsDir" && ` +
-				`${config.ZipSyncCmd} -d $srcJarDir -l $srcJarDir/list -f "*.java" $srcJars && ` +
-				`${config.SoongJavacWrapper} ${config.JavadocCmd} -encoding UTF-8 @$out.rsp @$srcJarDir/list ` +
-				`$opts $bootclasspathArgs $classpathArgs $sourcepathArgs ` +
-				`-d $outDir -quiet  && ` +
-				`${config.SoongZipCmd} -write_if_changed -d -o $docZip -C $outDir -D $outDir && ` +
-				`${config.SoongZipCmd} -write_if_changed -jar -o $out -C $stubsDir -D $stubsDir $postDoclavaCmds && ` +
-				`rm -rf "$srcJarDir"`,
-
-			CommandDeps: []string{
-				"${config.ZipSyncCmd}",
-				"${config.JavadocCmd}",
-				"${config.SoongZipCmd}",
-			},
-			CommandOrderOnly: []string{"${config.SoongJavacWrapper}"},
-			Rspfile:          "$out.rsp",
-			RspfileContent:   "$in",
-			Restat:           true,
-		},
-		"outDir", "srcJarDir", "stubsDir", "srcJars", "opts",
-		"bootclasspathArgs", "classpathArgs", "sourcepathArgs", "docZip", "postDoclavaCmds")
 )
 
 func init() {
@@ -651,49 +624,36 @@ func (j *Javadoc) DepsMutator(ctx android.BottomUpMutatorContext) {
 func (j *Javadoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	deps := j.collectDeps(ctx)
 
-	var implicits android.Paths
-	implicits = append(implicits, deps.bootClasspath...)
-	implicits = append(implicits, deps.classpath...)
+	outDir := android.PathForModuleOut(ctx, "out")
+	srcJarDir := android.PathForModuleOut(ctx, "srcjars")
 
-	var bootClasspathArgs, classpathArgs, sourcepathArgs string
+	rule := android.NewRuleBuilder()
+
+	srcJarList := zipSyncCmd(ctx, rule, srcJarDir, j.srcJars)
 
 	javaVersion := getJavaVersion(ctx, String(j.properties.Java_version), sdkContext(j))
-	if len(deps.bootClasspath) > 0 {
-		var systemModulesDeps android.Paths
-		bootClasspathArgs, systemModulesDeps = deps.systemModules.FormJavaSystemModulesPath("--system ", ctx.Device())
-		bootClasspathArgs = bootClasspathArgs + " --patch-module java.base=."
-		implicits = append(implicits, systemModulesDeps...)
-	}
-	if len(deps.classpath.Strings()) > 0 {
-		classpathArgs = "-classpath " + strings.Join(deps.classpath.Strings(), ":")
-	}
 
-	implicits = append(implicits, j.srcJars...)
-	implicits = append(implicits, j.argFiles...)
+	cmd := javadocSystemModulesCmd(ctx, rule, j.srcFiles, outDir, srcJarDir, srcJarList,
+		deps.systemModules, deps.classpath, j.sourcepaths)
 
-	opts := "-source " + javaVersion + " -J-Xmx1024m -XDignore.symbol.file -Xdoclint:none"
+	cmd.FlagWithArg("-source ", javaVersion).
+		Flag("-J-Xmx1024m").
+		Flag("-XDignore.symbol.file").
+		Flag("-Xdoclint:none")
 
-	sourcepathArgs = "-sourcepath " + strings.Join(j.sourcepaths.Strings(), ":")
+	rule.Command().
+		BuiltTool(ctx, "soong_zip").
+		Flag("-write_if_changed").
+		Flag("-d").
+		FlagWithOutput("-o ", j.docZip).
+		FlagWithArg("-C ", outDir.String()).
+		FlagWithArg("-D ", outDir.String())
 
-	ctx.Build(pctx, android.BuildParams{
-		Rule:           javadoc,
-		Description:    "Javadoc",
-		Output:         j.stubsSrcJar,
-		ImplicitOutput: j.docZip,
-		Inputs:         j.srcFiles,
-		Implicits:      implicits,
-		Args: map[string]string{
-			"outDir":            android.PathForModuleOut(ctx, "out").String(),
-			"srcJarDir":         android.PathForModuleOut(ctx, "srcjars").String(),
-			"stubsDir":          android.PathForModuleOut(ctx, "stubsDir").String(),
-			"srcJars":           strings.Join(j.srcJars.Strings(), " "),
-			"opts":              proptools.NinjaEscape(opts),
-			"bootclasspathArgs": bootClasspathArgs,
-			"classpathArgs":     classpathArgs,
-			"sourcepathArgs":    sourcepathArgs,
-			"docZip":            j.docZip.String(),
-		},
-	})
+	rule.Restat()
+
+	zipSyncCleanupCmd(rule, srcJarDir)
+
+	rule.Build(pctx, ctx, "javadoc", "javadoc")
 }
 
 //
@@ -916,24 +876,14 @@ func (d *Droiddoc) postDoclavaCmds(ctx android.ModuleContext, rule *android.Rule
 }
 
 func javadocCmd(ctx android.ModuleContext, rule *android.RuleBuilder, srcs android.Paths,
-	outDir, srcJarDir, srcJarList android.Path, bootclasspath, classpath classpath,
-	sourcepaths android.Paths) *android.RuleBuilderCommand {
+	outDir, srcJarDir, srcJarList android.Path, sourcepaths android.Paths) *android.RuleBuilderCommand {
 
 	cmd := rule.Command().
 		BuiltTool(ctx, "soong_javac_wrapper").Tool(config.JavadocCmd(ctx)).
 		Flag(config.JavacVmFlags).
 		FlagWithArg("-encoding ", "UTF-8").
-		FlagWithArg("-source ", "1.8").
 		FlagWithRspFileInputList("@", srcs).
 		FlagWithInput("@", srcJarList)
-
-	if len(bootclasspath) > 0 {
-		cmd.FlagWithInputList("-bootclasspath ", bootclasspath.Paths(), ":")
-	}
-
-	if len(classpath) > 0 {
-		cmd.FlagWithInputList("-classpath ", classpath.Paths(), ":")
-	}
 
 	// TODO(ccross): Remove this if- statement once we finish migration for all Doclava
 	// based stubs generation.
@@ -948,6 +898,45 @@ func javadocCmd(ctx android.ModuleContext, rule *android.RuleBuilder, srcs andro
 
 	cmd.FlagWithArg("-d ", outDir.String()).
 		Flag("-quiet")
+
+	return cmd
+}
+
+func javadocSystemModulesCmd(ctx android.ModuleContext, rule *android.RuleBuilder, srcs android.Paths,
+	outDir, srcJarDir, srcJarList android.Path, systemModules *systemModules,
+	classpath classpath, sourcepaths android.Paths) *android.RuleBuilderCommand {
+
+	cmd := javadocCmd(ctx, rule, srcs, outDir, srcJarDir, srcJarList, sourcepaths)
+
+	flag, deps := systemModules.FormJavaSystemModulesPath("--system ", ctx.Device())
+	cmd.Flag(flag).Implicits(deps)
+
+	cmd.FlagWithArg("--patch-module ", "java.base=.")
+
+	if len(classpath) > 0 {
+		cmd.FlagWithInputList("-classpath ", classpath.Paths(), ":")
+	}
+
+	return cmd
+}
+
+func javadocBootclasspathCmd(ctx android.ModuleContext, rule *android.RuleBuilder, srcs android.Paths,
+	outDir, srcJarDir, srcJarList android.Path, bootclasspath, classpath classpath,
+	sourcepaths android.Paths) *android.RuleBuilderCommand {
+
+	cmd := javadocCmd(ctx, rule, srcs, outDir, srcJarDir, srcJarList, sourcepaths)
+
+	if len(bootclasspath) == 0 && ctx.Device() {
+		// explicitly specify -bootclasspath "" if the bootclasspath is empty to
+		// ensure java does not fall back to the default bootclasspath.
+		cmd.FlagWithArg("-bootclasspath ", `""`)
+	} else if len(bootclasspath) > 0 {
+		cmd.FlagWithInputList("-bootclasspath ", bootclasspath.Paths(), ":")
+	}
+
+	if len(classpath) > 0 {
+		cmd.FlagWithInputList("-classpath ", classpath.Paths(), ":")
+	}
 
 	return cmd
 }
@@ -991,7 +980,7 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	if Bool(d.properties.Dokka_enabled) {
 		cmd = dokkaCmd(ctx, rule, outDir, srcJarDir, deps.bootClasspath, deps.classpath)
 	} else {
-		cmd = javadocCmd(ctx, rule, d.Javadoc.srcFiles, outDir, srcJarDir, srcJarList,
+		cmd = javadocBootclasspathCmd(ctx, rule, d.Javadoc.srcFiles, outDir, srcJarDir, srcJarList,
 			deps.bootClasspath, deps.classpath, d.Javadoc.sourcepaths)
 	}
 
@@ -1683,7 +1672,7 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 		srcJarList := zipSyncCmd(ctx, rule, srcJarDir, d.Javadoc.srcJars)
 
-		cmd := javadocCmd(ctx, rule, d.Javadoc.srcFiles, outDir, srcJarDir, srcJarList,
+		cmd := javadocBootclasspathCmd(ctx, rule, d.Javadoc.srcFiles, outDir, srcJarDir, srcJarList,
 			deps.bootClasspath, deps.classpath, d.sourcepaths)
 
 		cmd.Flag("-J-Xmx1600m").
