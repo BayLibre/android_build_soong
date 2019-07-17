@@ -130,7 +130,21 @@ func PrebuiltMutator(ctx BottomUpMutatorContext) {
 			ctx.AddReverseDependency(ctx.Module(), PrebuiltDepTag, name)
 			p.properties.SourceExists = true
 		} else {
-			ctx.Rename(name)
+			// When there is no source module for the same base module name, the prebuilt module is
+			// renamed to its base module name, effectively dropping the prebuilt- prefix so that
+			// it can satisfy dependencies to the base module name.
+			//
+			// In case of the prebuilt modules in an SDK, we don't rename to the base module name
+			// because we might have multiple prebuilt modules having the same base module name,
+			// but with different versions. If we rename, they will all have the same name which
+			// isn't allowed. For the prebuilt modules in SDK, the dependencies to the base module
+			// name is replaced to one of the prebuilt modules via sdk.sdkDepsReplaceMutator
+			// mutator.
+			s, ok := ctx.Module().(SdkAware)
+			dontRename := ok && s.IsInAnySdk()
+			if !dontRename {
+				ctx.Rename(name)
+			}
 		}
 	}
 }
