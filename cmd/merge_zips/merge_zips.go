@@ -30,6 +30,7 @@ import (
 
 	"android/soong/jar"
 	"android/soong/third_party/zip"
+	ziputil "android/soong/zip"
 )
 
 type fileList []string
@@ -68,6 +69,7 @@ var (
 	pyMain           = flag.String("pm", "", "__main__.py file to insert in par")
 	prefix           = flag.String("prefix", "", "A file to prefix to the zip file")
 	ignoreDuplicates = flag.Bool("ignore-duplicates", false, "take each entry from the first zip it exists in and don't warn")
+	simpleMerge      = flag.Bool("simple-merge", false, "just copy entries, ignoring duplicates")
 )
 
 func init() {
@@ -80,6 +82,7 @@ func main() {
 	flag.Usage = func() {
 		fmt.Fprintln(os.Stderr, "usage: merge_zips [-jpsD] [-m manifest] [--prefix script] [-pm __main__.py] output [inputs...]")
 		flag.PrintDefaults()
+		fmt.Fprintf(os.Stderr, "Or, to copy entries ignoring duplicates: merge_zips --simple-merge output @input")
 	}
 
 	// parse args
@@ -89,8 +92,30 @@ func main() {
 		flag.Usage()
 		os.Exit(1)
 	}
+	if *simpleMerge &&
+		(*sortEntries || *emulateJar || *emulatePar || *stripDirEntries || *ignoreDuplicates ||
+			*manifest != "" || *pyMain != "" || *prefix != "") {
+		fmt.Fprintln(os.Stderr, "--simple-merge is mutually exclusive with other flags")
+		flag.Usage()
+		os.Exit(1)
+	}
 	outputPath := args[0]
-	inputs := args[1:]
+	inputs := []string{}
+	for _, input := range args[1:] {
+		if input[0] == '@' {
+			if !*simpleMerge {
+				log.Fatal("Cannot use indirect file list without --simple-merge")
+			}
+			bytes, err := ioutil.ReadFile(input[1:])
+			if err != nil {
+				log.Fatal(err)
+			}
+			inputs = append(inputs, ziputil.ReadRespFile(bytes)...)
+			continue
+		}
+		inputs = append(inputs, input)
+		continue
+	}
 
 	log.SetFlags(log.Lshortfile)
 
@@ -121,6 +146,12 @@ func main() {
 		}
 	}()
 	writer.SetOffset(offset)
+	if *simpleMerge {
+		if err := mergeZipsSimple(inputs, writer); err != nil {
+			log.Fatal(err)
+		}
+		return
+	}
 
 	// make readers
 	readers := []namedZipReader{}
@@ -410,6 +441,39 @@ func mergeZips(readers []namedZipReader, writer *zip.Writer, manifest, pyMain st
 		}
 	}
 
+	return nil
+}
+
+func mergeZipsSimple(inputZips []string, writer *zip.Writer) error {
+	sourceByDest := make(map[string]zipSource, 0)
+	for _, inputZip := range inputZips {
+		if inputZip == "" {
+			continue
+		}
+		reader, err := zip.OpenReader(inputZip)
+		if err != nil {
+			log.Fatalf("'%s': %v\n", inputZip, err)
+		}
+		for _, file := range reader.Reader.File {
+			// check for other files or directories destined for the same path
+			dest := file.Name
+			mapKey := filepath.Clean(dest)
+			source := zipEntry{path: zipEntryPath{zipName: inputZip, entryName: file.Name}, content: file}
+			if existingSource, exists := sourceByDest[mapKey]; exists {
+				if existingSource.IsDir() != source.IsDir() {
+					return fmt.Errorf("Directory/file mismatch at %v from %v and %v\n",
+						dest, existingSource, source)
+				}
+				continue
+			}
+			// make a new entry to add
+			sourceByDest[mapKey] = source
+			if err := source.WriteToZip(dest, writer); err != nil {
+				return err
+			}
+		}
+		reader.Close()
+	}
 	return nil
 }
 
