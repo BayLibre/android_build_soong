@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "ec8dd288_a0b84e86",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-17T14:56:44Z",
+      "side": 1,
+      "message": "Keep this in a separate group between stdlib and android/soong imports",
+      "revId": "6a6de45619a2016e39165257e8cefb1f242a97ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51ca53f2_921304fd",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-17T14:56:44Z",
+      "side": 1,
+      "message": "How is this different from ignore-duplicates?",
+      "revId": "6a6de45619a2016e39165257e8cefb1f242a97ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d101412e_929713c3",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-17T14:56:44Z",
+      "side": 1,
+      "message": "See http://cs/android/build/soong/zip/cmd/main.go?l\u003d110\u0026rcl\u003d553208d25b0824c917517931d56228cc8adf29f9 for a way to generically support @ file arguments that can contain any flag, which would mean you wouldn\u0027t have to restrict this to --simple-merge.",
+      "revId": "6a6de45619a2016e39165257e8cefb1f242a97ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "04c50362_67af35bf",
         "filename": "cmd/merge_zips/merge_zips.go",
         "patchSetId": 1
