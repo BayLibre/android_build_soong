@@ -71,6 +71,7 @@ type BaseModuleContext interface {
 	OtherModuleErrorf(m blueprint.Module, fmt string, args ...interface{})
 	OtherModuleDependencyTag(m blueprint.Module) blueprint.DependencyTag
 	OtherModuleExists(name string) bool
+	OtherModuleType(m blueprint.Module) string
 
 	GetDirectDepsWithTag(tag blueprint.DependencyTag) []Module
 	GetDirectDepWithTag(name string, tag blueprint.DependencyTag) blueprint.Module
@@ -188,6 +189,7 @@ type Module interface {
 	DepsMutator(BottomUpMutatorContext)
 
 	base() *ModuleBase
+	BaseModuleName() string
 	Enabled() bool
 	Target() Target
 	InstallInData() bool
