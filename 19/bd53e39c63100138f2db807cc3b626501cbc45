@@ -1,0 +1,9 @@
+Autosubmit+1: Patrice Arruda <patricearruda@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: Patrice Arruda <patricearruda@google.com>
+Code-Review+2: Dan Willemsen <dwillemsen@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Wed, 17 Jul 2019 20:53:37 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1012456
+Project: platform/build/soong
+Branch: refs/heads/master
