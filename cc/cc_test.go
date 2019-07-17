@@ -1771,6 +1771,31 @@ func TestStaticLibDepReorderingWithShared(t *testing.T) {
 	}
 }
 
+func TestExportStaticLibHeaders(t *testing.T) {
+	testCcError(t,
+		`module "d" variant ".*": export_static_lib_headers: Static library not in static_libs or whole_static_libs: 'a'`,
+		`
+	cc_library {
+		name: "a",
+    export_include_dirs: ["."],
+	}
+	cc_library {
+		name: "b",
+		static_libs: ["a"],
+    export_static_lib_headers: ["a"],
+	}
+	cc_library {
+		name: "c",
+		whole_static_libs: ["a"],
+    export_static_lib_headers: ["a"],
+	}
+	cc_library {
+		name: "d",
+    export_static_lib_headers: ["a"],
+	}
+	`)
+}
+
 func TestLlndkHeaders(t *testing.T) {
 	ctx := testCc(t, `
 	llndk_headers {
