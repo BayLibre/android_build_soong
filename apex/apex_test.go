@@ -74,9 +74,9 @@ func testApexContext(t *testing.T, bp string) (*android.TestContext, android.Con
 	config.TestProductVariables.Platform_sdk_final = proptools.BoolPtr(false)
 
 	ctx := android.NewTestArchContext()
-	ctx.RegisterModuleType("apex", android.ModuleFactoryAdaptor(apexBundleFactory))
+	ctx.RegisterModuleType("apex", android.ModuleFactoryAdaptor(BundleFactory))
 	ctx.RegisterModuleType("apex_test", android.ModuleFactoryAdaptor(testApexBundleFactory))
-	ctx.RegisterModuleType("apex_key", android.ModuleFactoryAdaptor(apexKeyFactory))
+	ctx.RegisterModuleType("apex_key", android.ModuleFactoryAdaptor(ApexKeyFactory))
 	ctx.RegisterModuleType("apex_defaults", android.ModuleFactoryAdaptor(defaultsFactory))
 	ctx.RegisterModuleType("prebuilt_apex", android.ModuleFactoryAdaptor(PrebuiltFactory))
 	ctx.PreArchMutators(android.RegisterDefaultsPreArchMutators)
