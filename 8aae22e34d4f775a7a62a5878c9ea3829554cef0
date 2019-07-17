@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cefba49f_9e39d5c8",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-17T23:54:23Z",
+      "side": 1,
+      "message": "In cc_binary this is called \"stem\", although that name is often a source of confusion.  Any reason this one is different?",
+      "range": {
+        "startLine": 768,
+        "startChar": 1,
+        "endLine": 768,
+        "endChar": 9
+      },
+      "revId": "8aae22e34d4f775a7a62a5878c9ea3829554cef0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
