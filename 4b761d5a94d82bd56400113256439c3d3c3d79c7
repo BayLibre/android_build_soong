@@ -70,6 +70,24 @@
       "revId": "4b761d5a94d82bd56400113256439c3d3c3d79c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f99bdaa_44a0b64a",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 1015680
+      },
+      "writtenOn": "2019-07-17T13:03:39Z",
+      "side": 1,
+      "message": "I\u0027m happy to attempt to filter LLNDK list used for force-installing them, but I don\u0027t have enough context to propose a general solution that would prevent installing packages that are used in apex. I\u0027m happy to create a feature request for it :). Would you be fine with LLNDK filtering as short term solution?",
+      "parentUuid": "f2f5dbf5_f3739402",
+      "revId": "4b761d5a94d82bd56400113256439c3d3c3d79c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
