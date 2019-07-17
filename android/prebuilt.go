@@ -130,7 +130,11 @@ func PrebuiltMutator(ctx BottomUpMutatorContext) {
 			ctx.AddReverseDependency(ctx.Module(), PrebuiltDepTag, name)
 			p.properties.SourceExists = true
 		} else {
-			ctx.Rename(name)
+			s, ok := ctx.Module().(SdkAware)
+			dontRename := ok && s.IsInAnySdk()
+			if !dontRename {
+				ctx.Rename(name)
+			}
 		}
 	}
 }
