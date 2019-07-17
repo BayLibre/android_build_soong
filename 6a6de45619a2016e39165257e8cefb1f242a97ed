@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0e751818_f79c2ddc",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-07-17T20:54:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec8dd288_a0b84e86",
+      "revId": "6a6de45619a2016e39165257e8cefb1f242a97ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51ca53f2_921304fd",
         "filename": "cmd/merge_zips/merge_zips.go",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "7f19bfd8_b7053d1a",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-07-17T20:54:56Z",
+      "side": 1,
+      "message": "--simple-merge is not compatible with the other options. Added a check for this.",
+      "parentUuid": "51ca53f2_921304fd",
+      "revId": "6a6de45619a2016e39165257e8cefb1f242a97ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d101412e_929713c3",
         "filename": "cmd/merge_zips/merge_zips.go",
         "patchSetId": 1
@@ -50,6 +86,24 @@
       "revId": "6a6de45619a2016e39165257e8cefb1f242a97ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9220213a_00dab0f2",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-07-17T20:54:56Z",
+      "side": 1,
+      "message": "The actual reason for the restriction is that mergeZips has all input zips open (and it\u0027s somewhat cumbersome to fix). This is not going to work for 100K+ input zips.",
+      "parentUuid": "d101412e_929713c3",
+      "revId": "6a6de45619a2016e39165257e8cefb1f242a97ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -73,6 +127,30 @@
       "revId": "6a6de45619a2016e39165257e8cefb1f242a97ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b075306c_fe963f01",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-07-17T20:54:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04c50362_67af35bf",
+      "range": {
+        "startLine": 449,
+        "startChar": 2,
+        "endLine": 449,
+        "endChar": 13
+      },
+      "revId": "6a6de45619a2016e39165257e8cefb1f242a97ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
