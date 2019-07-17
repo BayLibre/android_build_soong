@@ -163,16 +163,18 @@ func init() {
 	pctx.HostBinToolVariable("zipalign", "zipalign")
 	pctx.HostBinToolVariable("jsonmodify", "jsonmodify")
 
-	android.RegisterModuleType("apex", apexBundleFactory)
+	android.RegisterModuleType("apex", BundleFactory)
 	android.RegisterModuleType("apex_test", testApexBundleFactory)
 	android.RegisterModuleType("apex_defaults", defaultsFactory)
 	android.RegisterModuleType("prebuilt_apex", PrebuiltFactory)
 
-	android.PostDepsMutators(func(ctx android.RegisterMutatorsContext) {
-		ctx.TopDown("apex_deps", apexDepsMutator)
-		ctx.BottomUp("apex", apexMutator).Parallel()
-		ctx.BottomUp("apex_uses", apexUsesMutator).Parallel()
-	})
+	android.PostDepsMutators(RegisterPostDepsMutators)
+}
+
+func RegisterPostDepsMutators(ctx android.RegisterMutatorsContext) {
+	ctx.TopDown("apex_deps", apexDepsMutator)
+	ctx.BottomUp("apex", apexMutator).Parallel()
+	ctx.BottomUp("apex_uses", apexUsesMutator).Parallel()
 }
 
 // Mark the direct and transitive dependencies of apex bundles so that they
@@ -312,6 +314,12 @@ type apexBundleProperties struct {
 
 	// List of providing APEXes' names so that this APEX can depend on provided shared libraries.
 	Uses []string
+
+	// List of SDKs that are used to build this APEX. A reference to an SDK should be either
+	// `name#version` or `name` which is an alias for `name#dev`. If left empty, `platform#dev`
+	// is implied. This value affects all modules included in this APEX. In other words, they are
+	// also built with the SDKs specified here.
+	Uses_sdks []string
 }
 
 type apexTargetBundleProperties struct {
@@ -427,6 +435,7 @@ type apexFile struct {
 type apexBundle struct {
 	android.ModuleBase
 	android.DefaultableModuleBase
+	android.SdkBase
 
 	properties       apexBundleProperties
 	targetProperties apexTargetBundleProperties
@@ -620,6 +629,16 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 	cert := android.SrcIsModule(a.getCertString(ctx))
 	if cert != "" {
 		ctx.AddDependency(ctx.Module(), certificateTag, cert)
+	}
+
+	// TODO(jiyong): ensure that all apexes are with non-empty uses_sdks
+	if len(a.properties.Uses_sdks) > 0 {
+		sdkRefs := []android.SdkRef{}
+		for _, str := range a.properties.Uses_sdks {
+			parsed := android.ParseSdkRef(ctx, str, "uses_sdks")
+			sdkRefs = append(sdkRefs, parsed)
+		}
+		a.BuildWithSdks(sdkRefs)
 	}
 }
 
@@ -1479,7 +1498,7 @@ func testApexBundleFactory() android.Module {
 	return ApexBundleFactory(true /*testApex*/)
 }
 
-func apexBundleFactory() android.Module {
+func BundleFactory() android.Module {
 	return ApexBundleFactory(false /*testApex*/)
 }
 
@@ -1495,6 +1514,7 @@ func ApexBundleFactory(testApex bool) android.Module {
 	})
 	android.InitAndroidMultiTargetsArchModule(module, android.HostAndDeviceSupported, android.MultilibCommon)
 	android.InitDefaultableModule(module)
+	android.InitSdkAwareModule(module)
 	return module
 }
 

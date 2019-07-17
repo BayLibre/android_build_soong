@@ -289,6 +289,7 @@ type Module struct {
 	android.ModuleBase
 	android.DefaultableModuleBase
 	android.ApexModuleBase
+	android.SdkBase
 
 	properties       CompilerProperties
 	protoProperties  android.ProtoProperties
@@ -496,6 +497,10 @@ type jniLib struct {
 	name   string
 	path   android.Path
 	target android.Target
+}
+
+func (j *Module) Name() string {
+	return j.NameWithSdk(j.ModuleBase.Name())
 }
 
 func (j *Module) shouldInstrument(ctx android.BaseModuleContext) bool {
@@ -1623,6 +1628,7 @@ func LibraryFactory() android.Module {
 
 	InitJavaModule(module, android.HostAndDeviceSupported)
 	android.InitApexModule(module)
+	android.InitSdkAwareModule(module)
 	return module
 }
 
@@ -1903,6 +1909,7 @@ type Import struct {
 	android.DefaultableModuleBase
 	android.ApexModuleBase
 	prebuilt android.Prebuilt
+	android.SdkBase
 
 	properties ImportProperties
 
@@ -1927,7 +1934,12 @@ func (j *Import) PrebuiltSrcs() []string {
 }
 
 func (j *Import) Name() string {
-	return j.prebuilt.Name(j.ModuleBase.Name())
+	baseName := j.ModuleBase.Name()
+	if j.IsInAnySdk() {
+		return j.NameWithSdk(baseName)
+	} else {
+		return j.prebuilt.Name(baseName)
+	}
 }
 
 func (j *Import) DepsMutator(ctx android.BottomUpMutatorContext) {
@@ -2059,6 +2071,7 @@ func ImportFactory() android.Module {
 	android.InitPrebuiltModule(module, &module.properties.Jars)
 	InitJavaModule(module, android.HostAndDeviceSupported)
 	android.InitApexModule(module)
+	android.InitSdkAwareModule(module)
 	return module
 }
 
