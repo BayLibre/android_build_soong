@@ -189,6 +189,7 @@ type Module interface {
 	DepsMutator(BottomUpMutatorContext)
 
 	base() *ModuleBase
+	BaseModuleName() string
 	Enabled() bool
 	Target() Target
 	InstallInData() bool
