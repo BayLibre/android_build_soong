@@ -151,7 +151,9 @@ func InitDefaultsModule(module DefaultsModule) {
 	module.AddProperties(
 		&hostAndDeviceProperties{},
 		commonProperties,
-		&variableProperties{})
+		&variableProperties{},
+		&sdkProperties{},
+	)
 
 	InitArchModule(module)
 	InitDefaultableModule(module)
