@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04c50362_67af35bf",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-07-17T14:29:27Z",
+      "side": 1,
+      "message": "This does not seem to be necessary as it is never used as a whole, i.e. it is not passed to methods or updated. Instead its fields are initialized once and then used separately so this could be removed and field references replaced with initial values.",
+      "range": {
+        "startLine": 449,
+        "startChar": 2,
+        "endLine": 449,
+        "endChar": 13
+      },
+      "revId": "6a6de45619a2016e39165257e8cefb1f242a97ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
