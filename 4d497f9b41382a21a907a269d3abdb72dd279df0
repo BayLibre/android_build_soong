@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a8a7f50_3cf08bb5",
+        "filename": "java/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-07-18T16:34:55Z",
+      "side": 1,
+      "message": "Why do we bother specifying an optName value here if this is supposed to be used only for --system arguments?",
+      "range": {
+        "startLine": 460,
+        "startChar": 3,
+        "endLine": 460,
+        "endChar": 30
+      },
+      "revId": "4d497f9b41382a21a907a269d3abdb72dd279df0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
