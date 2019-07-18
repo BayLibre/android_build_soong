@@ -70,6 +70,30 @@
       "revId": "cfece3e4ad619832a417060312596f3fdc520234",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe69ab53_4625f3d3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1015378
+      },
+      "writtenOn": "2019-07-18T20:37:52Z",
+      "side": 1,
+      "message": "For checking what\u0027s compiled on device you can maybe use \"adb shell dumpsys package dexopt\"",
+      "parentUuid": "8c9dd85e_30c588f1",
+      "range": {
+        "startLine": 9,
+        "startChar": 6,
+        "endLine": 9,
+        "endChar": 9
+      },
+      "revId": "cfece3e4ad619832a417060312596f3fdc520234",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
