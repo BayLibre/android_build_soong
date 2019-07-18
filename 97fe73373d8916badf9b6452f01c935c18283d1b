@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7cb16762_94f2172c",
+        "filename": "cc/test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-18T19:26:14Z",
+      "side": 1,
+      "message": "all_tests.(*Module).Properties.PreventInstall \u003d true\nall_tests.(*Module).Properties.HideFromMake \u003d true",
+      "revId": "97fe73373d8916badf9b6452f01c935c18283d1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
