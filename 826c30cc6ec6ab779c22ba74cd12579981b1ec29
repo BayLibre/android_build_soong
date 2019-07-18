@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b92c1fe4_4934629a",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1485,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-07-18T21:06:24Z",
+      "side": 1,
+      "message": "This is no longer required? I think it should\u0027ve been deleted in If7deef0da738645efe7d3a8376ff2bb3dec92c01.",
+      "revId": "826c30cc6ec6ab779c22ba74cd12579981b1ec29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
