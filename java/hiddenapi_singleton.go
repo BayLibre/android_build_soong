@@ -152,6 +152,23 @@ func stubFlagsRule(ctx android.SingletonContext) {
 		// Collect dex jar paths for modules that had hiddenapi encode called on them.
 		if h, ok := module.(hiddenAPIIntf); ok {
 			if jar := h.bootDexJar(); jar != nil {
+				// For a java lib included in an APEX, only take the one built for
+				// APEX, and skip the one built for platform. Otherwise, the hiddenapi
+				// tool will complain about duplicated classes.
+				if a, ok := module.(android.ApexModule); ok {
+					if android.InAnyApex(module.Name()) && a.IsForPlatform() {
+						return
+					}
+					// A special case for libs in the runtime APEX. A same java library
+					// is included in multiple flavors of the runtime APEX. Take a single variant
+					// of the lib that is built for com.android.runtime.debug.
+					// built for com.android.runtime.debug
+					debugRuntimeApexName := "com.android.runtime.debug"
+					if inList(debugRuntimeApexName, android.GetApexesForModule(module.Name())) &&
+						a.ApexName() != debugRuntimeApexName {
+						return
+					}
+				}
 				bootDexJars = append(bootDexJars, jar)
 			}
 		}
