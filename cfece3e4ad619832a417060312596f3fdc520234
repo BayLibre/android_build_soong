@@ -46,6 +46,30 @@
       "revId": "cfece3e4ad619832a417060312596f3fdc520234",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c9dd85e_30c588f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2019-07-18T20:21:38Z",
+      "side": 1,
+      "message": "Not the right person to ask. This is owned by ngeoffray/mathieuc/calin.\n\nWipe and boot a device, ensure that the set of stuff compiled at first-boot stays the same (I think it isn\u0027t \"clean\" right now).",
+      "parentUuid": "a1d55824_39e11e56",
+      "range": {
+        "startLine": 9,
+        "startChar": 6,
+        "endLine": 9,
+        "endChar": 9
+      },
+      "revId": "cfece3e4ad619832a417060312596f3fdc520234",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
