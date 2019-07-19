@@ -16,6 +16,24 @@
       "revId": "e6d0f62ce08c3776c8c3742f582b65b7927105eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4d3f711_1fc0b30d",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2019-07-19T19:41:35Z",
+      "side": 0,
+      "message": "The toolchain is already going to do this automatically and we probably shouldn\u0027t be doubly linking it. Is there some dependency-only (i.e. LOCAL_REQUIRED_MODULES equivalent) list I can add to to cause a rebuild without actually linking the module I refer to? I don\u0027t see one in the deps struct.",
+      "parentUuid": "1f0aada9_de803e92",
+      "revId": "e6d0f62ce08c3776c8c3742f582b65b7927105eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
