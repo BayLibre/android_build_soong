@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f0aada9_de803e92",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-19T19:17:32Z",
+      "side": 0,
+      "message": "This means we don\u0027t depend on the asan runtime at all, which will cause incremental build problems if you update the asan runtime library.  It won\u0027t be an issue for real users, since they will get the new asan runtime in a new clang directory so the path to clang will change and force a rebuild, but it could cause issues for the LLVM team.  Consider AddressSanitizerRuntimeLibrary(ctx.Toolchain())?",
+      "revId": "e6d0f62ce08c3776c8c3742f582b65b7927105eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
