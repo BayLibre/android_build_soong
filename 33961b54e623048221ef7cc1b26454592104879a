@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3cd75e9f_e8612130",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1870,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-07-19T00:47:57Z",
+      "side": 1,
+      "message": "I wonder why you decided to create a dedicated util function only for this while you handle other \"rm -rf \u003cdirs\u003e\" commands inline.\n\nDon\u0027t get me wrong. I\u0027m not opposed to this kind of util functions. I actually believe being able to take advantage of util functions like this is a great benefit of RuleBuilder. I\u0027m just curious why we don\u0027t define and use util functions like rmDirsCmd or resetDirsCmd (rm -rf + mkdir).",
+      "revId": "33961b54e623048221ef7cc1b26454592104879a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
