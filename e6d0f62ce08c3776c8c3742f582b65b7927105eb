@@ -34,6 +34,24 @@
       "revId": "e6d0f62ce08c3776c8c3742f582b65b7927105eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3b0dc9a_a49309cc",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-19T19:43:59Z",
+      "side": 0,
+      "message": "You could add it to flags.LdFlagsDeps, but that requires a path, not a module name, so you\u0027d have to add it as some sort of dependency here and then convert the module name to a path.\n\nFrom other similar discussions, could we leave out the --sanitize\u003daddress from the ldflags and manually specify the library, or does --sanitize\u003daddress cause other behavior changes in the linker?",
+      "parentUuid": "a4d3f711_1fc0b30d",
+      "revId": "e6d0f62ce08c3776c8c3742f582b65b7927105eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
