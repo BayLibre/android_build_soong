@@ -22,6 +22,30 @@
       "revId": "c35aada7c2e2b768f44f0f043655c867ce9ff96c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d7fbc16_e380fa31",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-07-19T02:32:09Z",
+      "side": 1,
+      "message": "Yes. That\u0027s more correct. I\u0027ve rephrased the sentence.\n\nAnd that\u0027s an interesting suggestion. But as you said, I wonder if we have a use case for that. Maybe in the future.",
+      "parentUuid": "f1292efe_e0bc05f4",
+      "range": {
+        "startLine": 21,
+        "startChar": 13,
+        "endLine": 21,
+        "endChar": 29
+      },
+      "revId": "c35aada7c2e2b768f44f0f043655c867ce9ff96c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
