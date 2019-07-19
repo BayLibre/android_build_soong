@@ -40,9 +40,6 @@ type BaseLinkerProperties struct {
 	// list of modules that should be dynamically linked into this module.
 	Shared_libs []string `android:"arch_variant"`
 
-	// list of modules that should only provide headers for this module.
-	Header_libs []string `android:"arch_variant,variant_prepend"`
-
 	// list of module-specific flags that will be used for all link steps
 	Ldflags []string `android:"arch_variant"`
 
@@ -185,7 +182,6 @@ func (linker *baseLinker) linkerProps() []interface{} {
 
 func (linker *baseLinker) linkerDeps(ctx DepsContext, deps Deps) Deps {
 	deps.WholeStaticLibs = append(deps.WholeStaticLibs, linker.Properties.Whole_static_libs...)
-	deps.HeaderLibs = append(deps.HeaderLibs, linker.Properties.Header_libs...)
 	deps.StaticLibs = append(deps.StaticLibs, linker.Properties.Static_libs...)
 	deps.SharedLibs = append(deps.SharedLibs, linker.Properties.Shared_libs...)
 	deps.RuntimeLibs = append(deps.RuntimeLibs, linker.Properties.Runtime_libs...)

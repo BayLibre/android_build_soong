@@ -72,6 +72,9 @@ type BaseCompilerProperties struct {
 	// be added to the include path using -I
 	Local_include_dirs []string `android:"arch_variant,variant_prepend"`
 
+	// list of modules that should only provide headers for this module.
+	Header_libs []string `android:"arch_variant,variant_prepend"`
+
 	// Add the directory containing the Android.bp file to the list of include
 	// directories. Defaults to true.
 	Include_build_directory *bool
@@ -228,6 +231,8 @@ func (compiler *baseCompiler) compilerDeps(ctx DepsContext, deps Deps) Deps {
 	if Bool(compiler.Properties.Openmp) {
 		deps.StaticLibs = append(deps.StaticLibs, "libomp")
 	}
+
+	deps.HeaderLibs = append(deps.HeaderLibs, compiler.Properties.Header_libs...)
 
 	return deps
 }
