@@ -118,6 +118,30 @@
       "revId": "cfece3e4ad619832a417060312596f3fdc520234",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3a73059_240c5e83",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1022077
+      },
+      "writtenOn": "2019-07-19T10:00:25Z",
+      "side": 1,
+      "message": "I don\u0027t think there\u0027s an easy test :(\n\nWhat Andreas recommended + Mathieu\u0027s suggestion for \"adb shell dumpsys package dexopt\". During preopt we don\u0027t use \u0027verify\u0027 which is the default compilation filter for boot (set with pm.dexopt.boot) so it should be easy to check that things matches.",
+      "parentUuid": "c52e2dfd_0c7285f1",
+      "range": {
+        "startLine": 9,
+        "startChar": 6,
+        "endLine": 9,
+        "endChar": 9
+      },
+      "revId": "cfece3e4ad619832a417060312596f3fdc520234",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
