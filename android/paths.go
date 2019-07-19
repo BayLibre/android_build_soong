@@ -977,6 +977,10 @@ type ModuleOutPath struct {
 
 var _ Path = ModuleOutPath{}
 
+func (p ModuleOutPath) objPathWithExt(ctx ModuleContext, subdir, ext string) ModuleObjPath {
+	return PathForModuleObj(ctx, subdir, pathtools.ReplaceExtension(p.path, ext))
+}
+
 func pathForModule(ctx ModuleContext) OutputPath {
 	return PathForOutput(ctx, ".intermediates", ctx.ModuleDir(), ctx.ModuleName(), ctx.ModuleSubDir())
 }
@@ -1071,6 +1075,7 @@ type ModuleObjPath struct {
 }
 
 var _ Path = ModuleObjPath{}
+var _ objPathProvider = ModuleObjPath{}
 
 // PathForModuleObj returns a Path representing the paths... under the module's
 // 'obj' directory.
