@@ -106,6 +106,24 @@
       "revId": "4b761d5a94d82bd56400113256439c3d3c3d79c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ec6e3d2_f7d43708",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 1015680
+      },
+      "writtenOn": "2019-07-19T09:36:51Z",
+      "side": 1,
+      "message": "LLNDK filtering works only for builds without tests. If any test (or anything else) depends on libneuralnetworks.so, it will get pulled into /system which causes check-apex-libs-absence to fail.",
+      "parentUuid": "ddc8722e_06ccb987",
+      "revId": "4b761d5a94d82bd56400113256439c3d3c3d79c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
