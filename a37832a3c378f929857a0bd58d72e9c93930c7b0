@@ -16,6 +16,24 @@
       "revId": "a37832a3c378f929857a0bd58d72e9c93930c7b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b81197a_f5a3cd4c",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-07-19T10:17:53Z",
+      "side": 1,
+      "message": "I copied this from an identical definition in BaseLinkerProperties which you added in http://aosp/313685. I assumed that they should both have the same tags.\n\nIt seems to make sense that arch specific headers should be inserted before general headers as I presume the headers are searched in order and that behavior allows arch specific headers to replace the general headers. I removed the \u0027variant-prepend\u0027 tag from them and ran m droid for aosp_taimen-userbuild and the build worked so it may be that no one relies on this behavior. Although it is possible that it is used in another device build.\n\nI did a quick search and it seems as though \u0027variant_prepend\u0027 is used on include_dirs, local_include_dirs, whole_static_libs, static_libs as well as header_libs. \n\nOn a related note I did not like duplicating this field but adding the BaseLinkerProperties to the set of properties supported by cc_object seemed wrong. Header libraries seems as though it is something that should be part of the compiler rather than linker as they add include directories which are used by the compiler.",
+      "parentUuid": "74e57493_134406eb",
+      "revId": "a37832a3c378f929857a0bd58d72e9c93930c7b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
