@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1292efe_e0bc05f4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-07-19T01:55:04Z",
+      "side": 1,
+      "message": "That\u0027s not what this implementation does -- it\u0027s for the files in \"foo\", not for everything in the module \"bar\".\n\nIt may be interesting to have it the other way around, so if you used :foo and :bar, they could see each other instead of only themselves, but that\u0027s a more complicated system without a user.",
+      "range": {
+        "startLine": 21,
+        "startChar": 13,
+        "endLine": 21,
+        "endChar": 29
+      },
+      "revId": "c35aada7c2e2b768f44f0f043655c867ce9ff96c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
