@@ -16,6 +16,24 @@
       "revId": "33961b54e623048221ef7cc1b26454592104879a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32af4a97_51722f78",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1870,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-19T19:34:42Z",
+      "side": 1,
+      "message": "I made this a utility because I\u0027d abstracted out the complicated zipSyncCmd, and it seemed strange to have to manually do the cleanup.  There is definitely room for adding more helper commands, maybe even to android/rule_builder.go.",
+      "parentUuid": "3cd75e9f_e8612130",
+      "revId": "33961b54e623048221ef7cc1b26454592104879a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
