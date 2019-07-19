@@ -52,6 +52,24 @@
       "revId": "e6d0f62ce08c3776c8c3742f582b65b7927105eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd708ef7_d3d717a2",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2019-07-19T19:55:11Z",
+      "side": 0,
+      "message": "Turns out this is already handled elsewhere in the file. No changes needed aside from the incorrect commit message.",
+      "parentUuid": "d3b0dc9a_a49309cc",
+      "revId": "e6d0f62ce08c3776c8c3742f582b65b7927105eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
