@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0bda744_8275ecdc",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 980,
+      "author": {
+        "id": 1334152
+      },
+      "writtenOn": "2019-07-19T21:03:05Z",
+      "side": 1,
+      "message": "Ah, thanks!  That explains and presumably fixes a problem I was having",
+      "range": {
+        "startLine": 980,
+        "startChar": 7,
+        "endLine": 980,
+        "endChar": 8
+      },
+      "revId": "d9115fffed190137b9b6895505f00db3235fc824",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
