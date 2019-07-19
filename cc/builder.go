@@ -78,10 +78,10 @@ var (
 		blueprint.RuleParams{
 			// Without -no-pie, clang 7.0 adds -pie to link Android files,
 			// but -r and -pie cannot be used together.
-			Command:     "$ldCmd -fuse-ld=lld -nostdlib -no-pie -Wl,-r ${in} -o ${out} ${ldFlags}",
+			Command:     "$ldCmd -fuse-ld=lld -nostdlib ${pieFlags} ${in} -o ${out} ${ldFlags}",
 			CommandDeps: []string{"$ldCmd"},
 		},
-		"ldCmd", "ldFlags")
+		"ldCmd", "ldFlags", "pieFlags")
 
 	ar = pctx.AndroidStaticRule("ar",
 		blueprint.RuleParams{
@@ -133,6 +133,11 @@ var (
 	emptyFile = pctx.AndroidStaticRule("emptyFile",
 		blueprint.RuleParams{
 			Command: "rm -f $out && touch $out",
+		})
+
+	cp = pctx.AndroidStaticRule("cp",
+		blueprint.RuleParams{
+			Command: "cp ${in} ${out}",
 		})
 
 	_ = pctx.SourcePathVariable("tocPath", "build/soong/scripts/toc.sh")
@@ -409,6 +414,14 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 					"windresCmd": gccCmd(flags.toolchain, "windres"),
 					"flags":      flags.toolchain.WindresFlags(),
 				},
+			})
+			continue
+		case ".o":
+			ctx.Build(pctx, android.BuildParams{
+				Rule:        cp,
+				Description: "objFile " + srcFile.Rel(),
+				Output:      objFile,
+				Input:       srcFile,
 			})
 			continue
 		}
@@ -757,6 +770,12 @@ func TransformObjsToObj(ctx android.ModuleContext, objFiles android.Paths,
 	flags builderFlags, outputFile android.WritablePath) {
 
 	ldCmd := "${config.ClangBin}/clang++"
+	var pieFlags string
+	if ctx.Windows() {
+		pieFlags = "" // XXX
+	} else {
+		pieFlags = "-no-pie -Wl,-r"
+	}
 
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        partialLd,
@@ -764,8 +783,9 @@ func TransformObjsToObj(ctx android.ModuleContext, objFiles android.Paths,
 		Output:      outputFile,
 		Inputs:      objFiles,
 		Args: map[string]string{
-			"ldCmd":   ldCmd,
-			"ldFlags": flags.ldFlags,
+			"ldCmd":    ldCmd,
+			"ldFlags":  flags.ldFlags,
+			"pieFlags": pieFlags,
 		},
 	})
 }
