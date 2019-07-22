@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e688454_de95e519",
+        "filename": "java/java.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-22T20:51:41Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem like it needs to be in a mutator, put it in java.Module.GenerateAndroidBuildActions?",
+      "revId": "66afe598b141b2e8528503d7977ae530f3f47e73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
