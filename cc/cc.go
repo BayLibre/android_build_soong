@@ -408,9 +408,6 @@ type Module struct {
 
 	outputFile android.OptionalPath
 
-	// Test output files, in the case of a test module using `test_per_src`.
-	testPerSrcOutputFiles []android.Path
-
 	cachedToolchain config.Toolchain
 
 	subAndroidMkOnce map[subAndroidMkProvider]bool
@@ -431,10 +428,6 @@ type Module struct {
 
 func (c *Module) OutputFile() android.OptionalPath {
 	return c.outputFile
-}
-
-func (c *Module) TestPerSrcOutputFiles() []android.Path {
-	return c.testPerSrcOutputFiles
 }
 
 func (c *Module) UnstrippedOutputFile() android.Path {
@@ -950,28 +943,35 @@ func orderStaticModuleDeps(module *Module, staticDeps []*Module, sharedDeps []*M
 	return results
 }
 
+func (c *Module) IsTestPerSrcAllTestsVariation() bool {
+	test, ok := c.linker.(testPerSrc)
+	return ok && test.isAllTestsVariation()
+}
+
+func (c *Module) VisitAllTestsVariationTestPerSrcDeps(actx android.ModuleContext, visit func(Module) bool) {
+	if !c.IsTestPerSrcAllTestsVariation() {
+		return
+	}
+	actx.WalkDeps(func(child, parent android.Module) bool {
+		depTag := actx.OtherModuleDependencyTag(child)
+		if parent == c && depTag == testPerSrcDepTag {
+			if ccDep, ok := child.(*Module); ok {
+				visit(*ccDep)
+			}
+		}
+		return true
+	})
+}
+
 func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	// Handle the case of a test module split by `test_per_src` mutator.
-	if test, ok := c.linker.(testPerSrc); ok {
-		// The `test_per_src` mutator adds an extra variant named "", depending on all the
-		// other `test_per_src` variants of the test module. Collect the output files of
-		// these dependencies and record them in the `testPerSrcOutputFiles` for later use
-		// (see e.g. `apexBundle.GenerateAndroidBuildActions`).
-		if test.isAllTestsVariation() {
-			var testPerSrcOutputFiles []android.Path
-			for _, dep := range actx.GetDirectDepsWithTag(testPerSrcDepTag) {
-				if ccDep, ok := dep.(*Module); ok {
-					depOutputFile := ccDep.OutputFile().Path()
-					testPerSrcOutputFiles =
-						append(testPerSrcOutputFiles, depOutputFile)
-				}
-			}
-			c.testPerSrcOutputFiles = testPerSrcOutputFiles
-			// Set outputFile to an empty path, as this module does not produce an
-			// output file per se.
-			c.outputFile = android.OptionalPath{}
-			return
-		}
+	//
+	// The `test_per_src` mutator adds an extra variation named "", depending on all the other
+	// `test_per_src` variations of the test module. Set `outputFile` to an empty path for this
+	// module and return early, as this module does not produce an output file per se.
+	if c.IsTestPerSrcAllTestsVariation() {
+		c.outputFile = android.OptionalPath{}
+		return
 	}
 
 	c.makeLinkType = c.getMakeLinkType(actx)
