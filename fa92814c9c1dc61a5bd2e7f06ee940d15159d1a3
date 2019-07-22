@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fcf0ba67_18a20299",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-22T21:01:35Z",
+      "side": 1,
+      "message": "Storing pointers to other modules is dangerous, they are invalidated after being split by a mutator.  In this case it is OK because it only happens in GenerateAndroidBuildActions, but it is a dangerous pattern to set precedent for.  Can you avoid it by either precomputing and storing information about the dependencies, or using something like ctx.WalkDeps to visit the dependencies of the test_per_src \"\" module?",
+      "revId": "fa92814c9c1dc61a5bd2e7f06ee940d15159d1a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
