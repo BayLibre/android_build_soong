@@ -22,6 +22,30 @@
       "revId": "cf7a06a87dcae29a99bb03550fae03db2bd41e6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77fbe593_d93ef86f",
+        "filename": "cc/makevars.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1015680
+      },
+      "writtenOn": "2019-07-22T12:32:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "283e062f_6ff2b0a6",
+      "range": {
+        "startLine": 113,
+        "startChar": 9,
+        "endLine": 113,
+        "endChar": 13
+      },
+      "revId": "cf7a06a87dcae29a99bb03550fae03db2bd41e6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
