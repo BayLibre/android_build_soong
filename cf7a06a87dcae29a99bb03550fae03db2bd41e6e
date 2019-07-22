@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "283e062f_6ff2b0a6",
+        "filename": "cc/makevars.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-07-22T12:04:40Z",
+      "side": 1,
+      "message": "uses",
+      "range": {
+        "startLine": 113,
+        "startChar": 9,
+        "endLine": 113,
+        "endChar": 13
+      },
+      "revId": "cf7a06a87dcae29a99bb03550fae03db2bd41e6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
