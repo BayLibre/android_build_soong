@@ -694,12 +694,6 @@ func getCopyManifestForExecutable(cc *cc.Module) (fileToCopy android.Path, dirIn
 	return
 }
 
-func getCopyManifestForTestPerSrcExecutables(cc *cc.Module) (filesToCopy []android.Path, dirInApex string) {
-	dirInApex = filepath.Join("bin", cc.RelativeInstallPath())
-	filesToCopy = cc.TestPerSrcOutputFiles()
-	return
-}
-
 func getCopyManifestForPyBinary(py *python.Module) (fileToCopy android.Path, dirInApex string) {
 	dirInApex = "bin"
 	fileToCopy = py.HostToolPath().Path()
@@ -835,16 +829,16 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 				}
 			case testTag:
 				if cc, ok := child.(*cc.Module); ok {
-					if cc.TestPerSrcOutputFiles() != nil {
-						// Multiple-output test module (using `test_per_src`).
-						filesToCopy, dirInApex := getCopyManifestForTestPerSrcExecutables(cc)
-						for _, fileToCopy := range filesToCopy {
+					if cc.TestPerSrcModules() != nil {
+						// Multiple-output test module (using `test_per_src: true`).
+						for _, testModule := range cc.TestPerSrcModules() {
+							fileToCopy, dirInApex := getCopyManifestForExecutable(testModule)
 							// Handle modules created as `test_per_src` variations of a single test module:
 							// replace the name of the original test module (`depName`, shared by all
 							// `test_per_src` variants of that module) with the name of the generated test
 							// binary.
 							moduleName := filepath.Base(fileToCopy.String())
-							filesInfo = append(filesInfo, apexFile{fileToCopy, moduleName, dirInApex, nativeTest, cc, nil})
+							filesInfo = append(filesInfo, apexFile{fileToCopy, moduleName, dirInApex, nativeTest, testModule, nil})
 						}
 					} else {
 						// Single-output test module (not using `test_per_src`).
