@@ -694,12 +694,6 @@ func getCopyManifestForExecutable(cc *cc.Module) (fileToCopy android.Path, dirIn
 	return
 }
 
-func getCopyManifestForTestPerSrcExecutables(cc *cc.Module) (filesToCopy []android.Path, dirInApex string) {
-	dirInApex = filepath.Join("bin", cc.RelativeInstallPath())
-	filesToCopy = cc.TestPerSrcOutputFiles()
-	return
-}
-
 func getCopyManifestForPyBinary(py *python.Module) (fileToCopy android.Path, dirInApex string) {
 	dirInApex = "bin"
 	fileToCopy = py.HostToolPath().Path()
@@ -834,22 +828,23 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 					ctx.PropertyErrorf("prebuilts", "%q is not a prebuilt_etc module", depName)
 				}
 			case testTag:
-				if cc, ok := child.(*cc.Module); ok {
-					if cc.TestPerSrcOutputFiles() != nil {
-						// Multiple-output test module (using `test_per_src`).
-						filesToCopy, dirInApex := getCopyManifestForTestPerSrcExecutables(cc)
-						for _, fileToCopy := range filesToCopy {
+				if ccTest, ok := child.(*cc.Module); ok {
+					if ccTest.IsTestPerSrcAllTestsVariation() {
+						// Multiple-output test module (variation "" of a test module using `test_per_src: true`).
+						ccTest.VisitAllTestsVariationTestPerSrcDeps(ctx, func(ccTestDep cc.Module) bool {
+							fileToCopy, dirInApex := getCopyManifestForExecutable(&ccTestDep)
 							// Handle modules created as `test_per_src` variations of a single test module:
-							// replace the name of the original test module (`depName`, shared by all
-							// `test_per_src` variants of that module) with the name of the generated test
-							// binary.
+							// use the name of the generated test binary (`fileToCopy`) instead of the name
+							// of the original test module (`depName`, shared by all `test_per_src`
+							// variations of that module).
 							moduleName := filepath.Base(fileToCopy.String())
-							filesInfo = append(filesInfo, apexFile{fileToCopy, moduleName, dirInApex, nativeTest, cc, nil})
-						}
+							filesInfo = append(filesInfo, apexFile{fileToCopy, moduleName, dirInApex, nativeTest, &ccTestDep, nil})
+							return true
+						})
 					} else {
 						// Single-output test module (not using `test_per_src`).
-						fileToCopy, dirInApex := getCopyManifestForExecutable(cc)
-						filesInfo = append(filesInfo, apexFile{fileToCopy, depName, dirInApex, nativeTest, cc, nil})
+						fileToCopy, dirInApex := getCopyManifestForExecutable(ccTest)
+						filesInfo = append(filesInfo, apexFile{fileToCopy, depName, dirInApex, nativeTest, ccTest, nil})
 					}
 					return true
 				} else {
