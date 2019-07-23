@@ -911,15 +911,21 @@ func sanitizerMutator(t sanitizerType) func(android.BottomUpMutatorContext) {
 				// We don't need both variants active for anything but CFI-enabled
 				// target static libraries, so suppress the appropriate variant in
 				// all other cases.
+
+				// By the way, the suppress is done only for the platform variant
+				// (i.e. not built for apex). For apex variants, we activate both
+				// sanitized and non-sanitized variants, and let apex to choose
+				// amont them. b/138103882#comment5 for more details
+				reallySuppress := c.IsForPlatform()
 				if t == cfi {
 					if c.static() {
 						if !mctx.Device() {
 							if isSanitizerEnabled {
-								modules[0].(*Module).Properties.PreventInstall = true
-								modules[0].(*Module).Properties.HideFromMake = true
+								modules[0].(*Module).Properties.PreventInstall = reallySuppress
+								modules[0].(*Module).Properties.HideFromMake = reallySuppress
 							} else {
-								modules[1].(*Module).Properties.PreventInstall = true
-								modules[1].(*Module).Properties.HideFromMake = true
+								modules[1].(*Module).Properties.PreventInstall = reallySuppress
+								modules[1].(*Module).Properties.HideFromMake = reallySuppress
 							}
 						} else {
 							cfiStaticLibs := cfiStaticLibs(mctx.Config())
@@ -929,8 +935,8 @@ func sanitizerMutator(t sanitizerType) func(android.BottomUpMutatorContext) {
 							cfiStaticLibsMutex.Unlock()
 						}
 					} else {
-						modules[0].(*Module).Properties.PreventInstall = true
-						modules[0].(*Module).Properties.HideFromMake = true
+						modules[0].(*Module).Properties.PreventInstall = reallySuppress
+						modules[0].(*Module).Properties.HideFromMake = reallySuppress
 					}
 				} else if t == asan {
 					if mctx.Device() {
@@ -940,11 +946,11 @@ func sanitizerMutator(t sanitizerType) func(android.BottomUpMutatorContext) {
 						modules[1].(*Module).sanitize.SetSanitizer(cfi, false)
 					}
 					if isSanitizerEnabled {
-						modules[0].(*Module).Properties.PreventInstall = true
-						modules[0].(*Module).Properties.HideFromMake = true
+						modules[0].(*Module).Properties.PreventInstall = reallySuppress
+						modules[0].(*Module).Properties.HideFromMake = reallySuppress
 					} else {
-						modules[1].(*Module).Properties.PreventInstall = true
-						modules[1].(*Module).Properties.HideFromMake = true
+						modules[1].(*Module).Properties.PreventInstall = reallySuppress
+						modules[1].(*Module).Properties.HideFromMake = reallySuppress
 					}
 				} else if t == scs {
 					// We don't currently link any static libraries built with make into
@@ -952,11 +958,11 @@ func sanitizerMutator(t sanitizerType) func(android.BottomUpMutatorContext) {
 					// SCSness of dependencies into make.
 					if !c.static() {
 						if isSanitizerEnabled {
-							modules[0].(*Module).Properties.PreventInstall = true
-							modules[0].(*Module).Properties.HideFromMake = true
+							modules[0].(*Module).Properties.PreventInstall = reallySuppress
+							modules[0].(*Module).Properties.HideFromMake = reallySuppress
 						} else {
-							modules[1].(*Module).Properties.PreventInstall = true
-							modules[1].(*Module).Properties.HideFromMake = true
+							modules[1].(*Module).Properties.PreventInstall = reallySuppress
+							modules[1].(*Module).Properties.HideFromMake = reallySuppress
 						}
 					}
 				} else if t == fuzzer {
@@ -966,11 +972,11 @@ func sanitizerMutator(t sanitizerType) func(android.BottomUpMutatorContext) {
 						modules[1].(*Module).sanitize.SetSanitizer(cfi, false)
 					}
 					if isSanitizerEnabled {
-						modules[0].(*Module).Properties.PreventInstall = true
-						modules[0].(*Module).Properties.HideFromMake = true
+						modules[0].(*Module).Properties.PreventInstall = reallySuppress
+						modules[0].(*Module).Properties.HideFromMake = reallySuppress
 					} else {
-						modules[1].(*Module).Properties.PreventInstall = true
-						modules[1].(*Module).Properties.HideFromMake = true
+						modules[1].(*Module).Properties.PreventInstall = reallySuppress
+						modules[1].(*Module).Properties.HideFromMake = reallySuppress
 					}
 				} else if t == hwasan {
 					if mctx.Device() {
@@ -993,11 +999,11 @@ func sanitizerMutator(t sanitizerType) func(android.BottomUpMutatorContext) {
 						}
 					} else {
 						if isSanitizerEnabled {
-							modules[0].(*Module).Properties.PreventInstall = true
-							modules[0].(*Module).Properties.HideFromMake = true
+							modules[0].(*Module).Properties.PreventInstall = reallySuppress
+							modules[0].(*Module).Properties.HideFromMake = reallySuppress
 						} else {
-							modules[1].(*Module).Properties.PreventInstall = true
-							modules[1].(*Module).Properties.HideFromMake = true
+							modules[1].(*Module).Properties.PreventInstall = reallySuppress
+							modules[1].(*Module).Properties.HideFromMake = reallySuppress
 						}
 					}
 				}
