@@ -779,6 +779,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		providedNativeSharedLibs = append(providedNativeSharedLibs, other.properties.Native_shared_libs...)
 	})
 
+	a.flattened = ctx.Config().FlattenApex() && !ctx.Config().UnbundledBuild()
 	ctx.WalkDepsBlueprint(func(child, parent blueprint.Module) bool {
 		if _, ok := parent.(*apexBundle); ok {
 			// direct dependencies
@@ -789,6 +790,12 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 				if cc, ok := child.(*cc.Module); ok {
 					fileToCopy, dirInApex := getCopyManifestForNativeLibrary(cc, handleSpecialLibs)
 					filesInfo = append(filesInfo, apexFile{fileToCopy, depName, dirInApex, nativeSharedLib, cc, nil})
+					// b/138103882: make sure that shared libs that are part of the flattened APEX
+					// are all installable.
+					if a.flattened {
+						cc.Properties.PreventInstall = false
+						cc.Properties.HideFromMake = false
+					}
 					return true
 				} else {
 					ctx.PropertyErrorf("native_shared_libs", "%q is not a cc_library or cc_library_shared module", depName)
@@ -898,6 +905,12 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 					depName := ctx.OtherModuleName(child)
 					fileToCopy, dirInApex := getCopyManifestForNativeLibrary(cc, handleSpecialLibs)
 					filesInfo = append(filesInfo, apexFile{fileToCopy, depName, dirInApex, nativeSharedLib, cc, nil})
+					// b/138103882: make sure that shared libs that are part of the flattened APEX
+					// are all installable.
+					if a.flattened {
+						cc.Properties.PreventInstall = false
+						cc.Properties.HideFromMake = false
+					}
 					return true
 				}
 			}
@@ -905,7 +918,6 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		return false
 	})
 
-	a.flattened = ctx.Config().FlattenApex() && !ctx.Config().UnbundledBuild()
 	if a.private_key_file == nil {
 		ctx.PropertyErrorf("key", "private_key for %q could not be found", String(a.properties.Key))
 		return
@@ -913,11 +925,12 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	// remove duplicates in filesInfo
 	removeDup := func(filesInfo []apexFile) []apexFile {
-		encountered := make(map[android.Path]bool)
+		encountered := make(map[string]bool)
 		result := []apexFile{}
 		for _, f := range filesInfo {
-			if !encountered[f.builtFile] {
-				encountered[f.builtFile] = true
+			sig := filepath.Join(f.installDir, f.builtFile.Base())
+			if !encountered[sig] {
+				encountered[sig] = true
 				result = append(result, f)
 			}
 		}
