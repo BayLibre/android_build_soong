@@ -46,6 +46,13 @@ func init() {
 		ctx.BottomUp("sysprop", SyspropMutator).Parallel()
 	})
 
+	pctx.Import("android/soong/cc/config")
+}
+
+func RegisterPostDepsMutators() {
+	// b/138103882 These post dep mutators are added by the apex package after
+	// apexMutator is registered. This is needed in order to distinguish
+	// apex and non-apex variants inside the sanitizerMutator
 	android.PostDepsMutators(func(ctx android.RegisterMutatorsContext) {
 		ctx.TopDown("asan_deps", sanitizerDepsMutator(asan))
 		ctx.BottomUp("asan", sanitizerMutator(asan)).Parallel()
@@ -76,8 +83,6 @@ func init() {
 
 		ctx.TopDown("double_loadable", checkDoubleLoadableLibraries).Parallel()
 	})
-
-	pctx.Import("android/soong/cc/config")
 }
 
 type Deps struct {
