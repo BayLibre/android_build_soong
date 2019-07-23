@@ -1,0 +1,9 @@
+Verified+1: Kousik Kumar <kousikk@google.com>
+Code-Review+1: Kousik Kumar <kousikk@google.com>
+Code-Review+2: Dan Willemsen <dwillemsen@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Ramy Medhat <abdelaal@google.com>
+Submitted-at: Tue, 23 Jul 2019 11:49:09 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1055970
+Project: platform/build/soong
+Branch: refs/heads/master
