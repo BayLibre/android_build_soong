@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95be80d4_308e7f19",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-07-23T01:14:15Z",
+      "side": 1,
+      "message": "In what way? We\u0027ve got plenty of libraries that are compiled against the NDK, but probably shouldn\u0027t be, and the reverse -- that\u0027s starting to get better, but it\u0027s not fully there yet. IIRC, Soong has more restrictions than Make (where\u0027s the equivalent of this change for Make?)\n\nPlus different modules use a bunch of random values for the sdk_version that don\u0027t necessarily make a lot of sense (we\u0027ve considered raising them all up to the latest for platform builds, since those generally aren\u0027t expected to be re-distributed).",
+      "range": {
+        "startLine": 10,
+        "startChar": 24,
+        "endLine": 11,
+        "endChar": 79
+      },
+      "revId": "0f724fafcb4f3365e9b066fc486cd038ce7c4feb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
