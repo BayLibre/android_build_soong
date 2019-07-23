@@ -22,6 +22,30 @@
       "revId": "0f724fafcb4f3365e9b066fc486cd038ce7c4feb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71fbe903_983e43c5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2019-07-23T02:25:02Z",
+      "side": 1,
+      "message": "\u003e In what way?\n\nBasically, the way in which HWASAN will instrument global variables is ABI incompatible with old API levels, but code that does not instrument globals will be compatible with the new API level. So in the compiler we will only instrument globals when targeting a sufficiently new API level.\n\nSo there\u0027s no harm in compiling things for the NDK when they shouldn\u0027t be because of the compatibility between new API level and non-instrumented globals. There could be a problem going in the other direction but since the planned change to the compiler will only affect SANITIZE_TARGET\u003dhwaddress builds (and if what you say is true we generally aren\u0027t even distributing non-SANITIZE_TARGET build products) I wouldn\u0027t anticipate a significant problem.\n\n\u003e (where\u0027s the equivalent of this change for Make?)\n\nSorry, forgot about that -- I\u0027ll prepare one.",
+      "parentUuid": "95be80d4_308e7f19",
+      "range": {
+        "startLine": 10,
+        "startChar": 24,
+        "endLine": 11,
+        "endChar": 79
+      },
+      "revId": "0f724fafcb4f3365e9b066fc486cd038ce7c4feb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
