@@ -150,6 +150,10 @@ func init() {
 		ctx.BottomUp("apex", apexMutator).Parallel()
 		ctx.BottomUp("apex_uses", apexUsesMutator).Parallel()
 	})
+
+	// b/138103882 Ensure modules are mutated for apex prior to be mutated for
+	// the sanitier.
+	cc.RegisterPostDepsMutators()
 }
 
 // Mark the direct and transitive dependencies of apex bundles so that they
@@ -911,13 +915,32 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		return
 	}
 
-	// remove duplicates in filesInfo
-	removeDup := func(filesInfo []apexFile) []apexFile {
-		encountered := make(map[android.Path]bool)
+	// remove modules with HideFromMake and PreventInstall
+	removeNonInstallable := func(filesInfo []apexFile) []apexFile {
 		result := []apexFile{}
 		for _, f := range filesInfo {
-			if !encountered[f.builtFile] {
-				encountered[f.builtFile] = true
+			if cc, ok := f.module.(*cc.Module); ok {
+				// TODO(jiyong) remove the check for TestPerSrcOutputFiles
+				if cc.TestPerSrcOutputFiles() == nil {
+					if cc.Properties.PreventInstall && cc.Properties.HideFromMake {
+						continue
+					}
+				}
+			}
+			result = append(result, f)
+		}
+		return result
+	}
+	filesInfo = removeNonInstallable(filesInfo)
+
+	// remove duplicates in filesInfo
+	removeDup := func(filesInfo []apexFile) []apexFile {
+		encountered := make(map[string]bool)
+		result := []apexFile{}
+		for _, f := range filesInfo {
+			sig := filepath.Join(f.installDir, f.builtFile.Base())
+			if !encountered[sig] {
+				encountered[sig] = true
 				result = append(result, f)
 			}
 		}
