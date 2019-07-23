@@ -16,6 +16,24 @@
       "revId": "fa92814c9c1dc61a5bd2e7f06ee940d15159d1a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa802487_23810869",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-07-23T15:21:09Z",
+      "side": 1,
+      "message": "I tried to implement your proposal in PS2; let me know if this is what you had in mind.",
+      "parentUuid": "fcf0ba67_18a20299",
+      "revId": "fa92814c9c1dc61a5bd2e7f06ee940d15159d1a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
