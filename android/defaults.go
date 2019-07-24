@@ -87,12 +87,7 @@ type DefaultsModuleBase struct {
 // rather than disabling the defaults module itself.
 type Defaults interface {
 	Defaultable
-	isDefaults() bool
 	properties() []interface{}
-}
-
-func (d *DefaultsModuleBase) isDefaults() bool {
-	return true
 }
 
 func (d *DefaultsModuleBase) properties() []interface{} {
