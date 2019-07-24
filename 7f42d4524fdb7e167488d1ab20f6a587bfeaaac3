@@ -116,6 +116,30 @@
       "revId": "7f42d4524fdb7e167488d1ab20f6a587bfeaaac3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3acd27de_824afeb6",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-24T21:36:35Z",
+      "side": 1,
+      "message": "Once needs the return value as that\u0027s what it will return to the next caller of Once with the same key",
+      "parentUuid": "a190fed8_83778993",
+      "range": {
+        "startLine": 428,
+        "startChar": 100,
+        "endLine": 428,
+        "endChar": 120
+      },
+      "revId": "7f42d4524fdb7e167488d1ab20f6a587bfeaaac3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
