@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a914199_c5644212",
+        "filename": "android/defaults.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-24T21:45:38Z",
+      "side": 0,
+      "message": "This is necessary even if not called to ensure that only modules that embed DefaultsModuleBase will type-assert to the Defaults interface.",
+      "revId": "1ab2b7b8c5a6e92fd2123fb9eede0f2f4e292f8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
