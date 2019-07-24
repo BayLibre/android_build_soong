@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af187ed4_9b757045",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-24T20:40:24Z",
+      "side": 1,
+      "message": "This seems dangerous, it was generally hidden from make for a reason (for example it would result in two modules with the same name).  Maybe make it an error here, and then fix the root cause to make the incorrectly hidden modules visible?",
+      "revId": "b5c56324dacc9a115ba49fe5c202fc31c65397f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
