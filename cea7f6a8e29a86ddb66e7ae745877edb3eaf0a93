@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f9b9cf0_cb9ed48f",
+        "filename": "android/defaults.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-24T19:44:55Z",
+      "side": 1,
+      "message": "\"Contract\" is likely to be come an overloaded term if the current Go generics proposals come to fruition (https://go.googlesource.com/proposal/+/master/design/go2draft-contracts.md).  \"Interface\" is the correct term here.",
+      "range": {
+        "startLine": 45,
+        "startChar": 3,
+        "endLine": 45,
+        "endChar": 11
+      },
+      "revId": "cea7f6a8e29a86ddb66e7ae745877edb3eaf0a93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
