@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9cc45822_ad1fe56d",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-24T20:23:34Z",
+      "side": 1,
+      "message": "This results in no dependency on the file if it doesn\u0027t exist, so an incremental build after creating the file will not rerun soong to pick it up.  Use android.ExistentPathForSource to get an OptionalPath for a source file, which probably means passing the path in through ModuleConfig in both Soong and Make.",
+      "revId": "7f42d4524fdb7e167488d1ab20f6a587bfeaaac3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f5a2087_c8501750",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-24T20:23:34Z",
+      "side": 1,
+      "message": "You should always use cmd.FlagWithInput for an input file, otherwise there is no dependency on the file.",
+      "revId": "7f42d4524fdb7e167488d1ab20f6a587bfeaaac3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54e23390_fefc0b7b",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-24T20:23:34Z",
+      "side": 1,
+      "message": "You don\u0027t use the return value.",
+      "range": {
+        "startLine": 428,
+        "startChar": 100,
+        "endLine": 428,
+        "endChar": 120
+      },
+      "revId": "7f42d4524fdb7e167488d1ab20f6a587bfeaaac3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
