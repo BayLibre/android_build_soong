@@ -211,16 +211,7 @@ func registerVisibilityRuleEnforcer(ctx RegisterMutatorsContext) {
 // Checks the per-module visibility rule lists before defaults expansion.
 func visibilityRuleChecker(ctx BottomUpMutatorContext) {
 	qualified := createQualifiedModuleName(ctx)
-	if d, ok := ctx.Module().(Defaults); ok {
-		// Defaults modules don't store the payload properties in m.base().
-		for _, props := range d.properties() {
-			if cp, ok := props.(*commonProperties); ok {
-				if visibility := cp.Visibility; visibility != nil {
-					checkRules(ctx, qualified.pkg, "visibility", visibility)
-				}
-			}
-		}
-	} else if m, ok := ctx.Module().(Module); ok {
+	if m, ok := ctx.Module().(Module); ok {
 		visibilityProperties := m.visibilityProperties()
 		for _, p := range visibilityProperties {
 			if visibility := p.getStrings(); visibility != nil {
@@ -294,14 +285,12 @@ func visibilityRuleGatherer(ctx BottomUpMutatorContext) {
 	qualifiedModuleId := m.qualifiedModuleId(ctx)
 	currentPkg := qualifiedModuleId.pkg
 
-	// Parse all the properties into rules and store them.
-	visibilityProperties := m.visibilityProperties()
-	for _, p := range visibilityProperties {
-		if visibility := p.getStrings(); visibility != nil {
-			rule := parseRules(ctx, currentPkg, visibility)
-			if rule != nil {
-				moduleToVisibilityRuleMap(ctx).Store(qualifiedModuleId, rule)
-			}
+	// Parse the visibility rules that control access to the module and store them by id
+	// for use when enforcing the rules.
+	if visibility := m.visibility(); visibility != nil {
+		rule := parseRules(ctx, currentPkg, m.visibility())
+		if rule != nil {
+			moduleToVisibilityRuleMap(ctx).Store(qualifiedModuleId, rule)
 		}
 	}
 }
