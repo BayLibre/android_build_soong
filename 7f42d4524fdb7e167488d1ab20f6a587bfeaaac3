@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d323dbe2_0165e00e",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-24T21:30:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cc45822_ad1fe56d",
+      "revId": "7f42d4524fdb7e167488d1ab20f6a587bfeaaac3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f5a2087_c8501750",
         "filename": "dexpreopt/dexpreopt.go",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "545f513b_7a931473",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-24T21:30:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f5a2087_c8501750",
+      "revId": "7f42d4524fdb7e167488d1ab20f6a587bfeaaac3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "54e23390_fefc0b7b",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 1
@@ -47,6 +83,30 @@
       "writtenOn": "2019-07-24T20:23:34Z",
       "side": 1,
       "message": "You don\u0027t use the return value.",
+      "range": {
+        "startLine": 428,
+        "startChar": 100,
+        "endLine": 428,
+        "endChar": 120
+      },
+      "revId": "7f42d4524fdb7e167488d1ab20f6a587bfeaaac3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a190fed8_83778993",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-07-24T21:30:44Z",
+      "side": 1,
+      "message": "Indeed - same for ctx.Config().Once but it looks like this one requires to have a return value? So I made it consistent with the other bootProfileRule by returning a path.",
+      "parentUuid": "54e23390_fefc0b7b",
       "range": {
         "startLine": 428,
         "startChar": 100,
