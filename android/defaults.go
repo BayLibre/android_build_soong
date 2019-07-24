@@ -99,6 +99,11 @@ type Defaults interface {
 	properties() []interface{}
 }
 
+type DefaultsModule interface {
+	Module
+	Defaults
+}
+
 func (d *DefaultsModuleBase) properties() []interface{} {
 	return d.defaultableProperties
 }
@@ -106,7 +111,7 @@ func (d *DefaultsModuleBase) properties() []interface{} {
 func (d *DefaultsModuleBase) GenerateAndroidBuildActions(ctx ModuleContext) {
 }
 
-func InitDefaultsModule(module DefaultableModule) {
+func InitDefaultsModule(module DefaultsModule) {
 	module.AddProperties(
 		&hostAndDeviceProperties{},
 		&commonProperties{},
