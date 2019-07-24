@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37dbb6dd_846559da",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 955,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-24T16:54:40Z",
+      "side": 1,
+      "message": "I don\u0027t think we\u0027ve ever used WalkDeps inside a WalkDeps visit function before, I don\u0027t think we have any tests for that.  I\u0027ll need to do some verification that it won\u0027t cause any problems.",
+      "revId": "89363c64f7eefb81e87b61c89bde5e6db4fe9463",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
