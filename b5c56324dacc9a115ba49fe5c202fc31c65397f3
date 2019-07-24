@@ -16,6 +16,24 @@
       "revId": "b5c56324dacc9a115ba49fe5c202fc31c65397f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7c1aeca_1e3c9a1e",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-07-24T23:37:15Z",
+      "side": 1,
+      "message": "We won\u0027t have the problem because modules installed for an APEX is renamed to \u003cmodule_name\u003e.\u003capex_name\u003e.\n\nThe root cause is that sanitizerDepsMutator runs before apexMutator. Is there any way to fine control the order?",
+      "parentUuid": "af187ed4_9b757045",
+      "revId": "b5c56324dacc9a115ba49fe5c202fc31c65397f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
