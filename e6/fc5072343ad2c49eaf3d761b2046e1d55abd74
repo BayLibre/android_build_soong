@@ -1,0 +1,8 @@
+Code-Review+2: Przemyslaw Szczepaniak <pszczepaniak@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Przemyslaw Szczepaniak <pszczepaniak@google.com>
+Submitted-at: Wed, 24 Jul 2019 09:12:16 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1014644
+Project: platform/build/soong
+Branch: refs/heads/master
