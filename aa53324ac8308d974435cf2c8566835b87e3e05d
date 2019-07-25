@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "365091c0_b712363f",
+        "filename": "java/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-07-25T04:55:08Z",
+      "side": 0,
+      "message": "In the NDK build, we don\u0027t use Make, so these checks aren\u0027t used. Instead, we handle our own installation rules, which seems to be the ones that are conflicting. (That\u0027s the PreventInstall/HideFromMake pairing often seen in the mutators that create variants)",
+      "revId": "aa53324ac8308d974435cf2c8566835b87e3e05d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
