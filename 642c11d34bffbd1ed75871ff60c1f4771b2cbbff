@@ -46,6 +46,30 @@
       "revId": "642c11d34bffbd1ed75871ff60c1f4771b2cbbff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "209936f4_09055db7",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1554,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-07-25T23:30:06Z",
+      "side": 1,
+      "message": "Yes, I should have done in that way. Will follow that from now on.",
+      "parentUuid": "f57300f0_ebca6aa8",
+      "range": {
+        "startLine": 1554,
+        "startChar": 55,
+        "endLine": 1554,
+        "endChar": 72
+      },
+      "revId": "642c11d34bffbd1ed75871ff60c1f4771b2cbbff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
