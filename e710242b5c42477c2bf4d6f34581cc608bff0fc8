@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef53ffdc_42f4d813",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-25T15:39:19Z",
+      "side": 1,
+      "message": "You\u0027ll also need to add ProfileBootListing here",
+      "revId": "e710242b5c42477c2bf4d6f34581cc608bff0fc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f08cc5f_6198cb00",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-25T15:39:19Z",
+      "side": 1,
+      "message": "And plumb it through here.",
+      "revId": "e710242b5c42477c2bf4d6f34581cc608bff0fc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
