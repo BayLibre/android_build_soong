@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ffb7a384_ad28e712",
+        "filename": "android/defaults.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-25T19:31:06Z",
+      "side": 1,
+      "message": "FYI, anywhere you see this pattern is somewhere we have failed to use composition instead of inheritance, and this is how you can emulate inheritance in Go.  The stored interface value lets you call methods on the \"subclass\" from the \"superclass\".",
+      "revId": "63c6e183d508927611264944a7de1982cfdec8e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
