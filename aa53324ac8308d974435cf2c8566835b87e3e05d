@@ -16,6 +16,24 @@
       "revId": "aa53324ac8308d974435cf2c8566835b87e3e05d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10919d40_9d82e605",
+        "filename": "java/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-07-25T05:05:19Z",
+      "side": 0,
+      "message": "ok, so I need to set PreventInstall/HideFromMake when mutatating for apex. Thanks.",
+      "parentUuid": "365091c0_b712363f",
+      "revId": "aa53324ac8308d974435cf2c8566835b87e3e05d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
