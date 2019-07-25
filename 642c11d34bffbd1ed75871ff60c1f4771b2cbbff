@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68ab5c7f_8e02d1e4",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1554,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-07-25T14:55:29Z",
+      "side": 1,
+      "message": "This is the changed part after the revert^2. Previously, only the java libraries that are directly depended by an APEX were skipped from installation.\nSince now we mutate java libraries for apexes, the indirect dependencies are also included in the apex. So we need to\nskip installation for the indirect deps as well.",
+      "range": {
+        "startLine": 1554,
+        "startChar": 55,
+        "endLine": 1554,
+        "endChar": 72
+      },
+      "revId": "642c11d34bffbd1ed75871ff60c1f4771b2cbbff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
