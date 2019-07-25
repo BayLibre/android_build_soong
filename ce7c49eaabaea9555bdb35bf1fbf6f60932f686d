@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9fc7352a_2a1501f1",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-25T00:05:34Z",
+      "side": 1,
+      "message": "Why don\u0027t these check?  I would think we would always want to enforce the check.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 0
+      },
+      "revId": "ce7c49eaabaea9555bdb35bf1fbf6f60932f686d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0df1881_4f3a0688",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-25T00:05:34Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be called on java_library modules too?\n\nAs it is, if you implementd this as a method on *AndroidApp you wouldn\u0027t need the usePlatformAPI method to access j.deviceProperties.Platform_apis.",
+      "revId": "ce7c49eaabaea9555bdb35bf1fbf6f60932f686d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6abe312c_3120a0d9",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-25T00:05:34Z",
+      "side": 1,
+      "message": "This is not currently true, as you don\u0027t check java_* modules.",
+      "range": {
+        "startLine": 217,
+        "startChar": 55,
+        "endLine": 217,
+        "endChar": 100
+      },
+      "revId": "ce7c49eaabaea9555bdb35bf1fbf6f60932f686d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
