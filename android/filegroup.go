@@ -39,6 +39,9 @@ type fileGroupProperties struct {
 	// Create a make variable with the specified name that contains the list of files in the
 	// filegroup, relative to the root of the source tree.
 	Export_to_make_var *string
+
+	// List of paths that must not overlap with this filegroup.
+	Disjoint_from []string `android:"path"`
 }
 
 type fileGroup struct {
@@ -61,6 +64,36 @@ func FileGroupFactory() Module {
 
 func (fg *fileGroup) GenerateAndroidBuildActions(ctx ModuleContext) {
 	fg.srcs = PathsForModuleSrcExcludes(ctx, fg.properties.Srcs, fg.properties.Exclude_srcs)
+
+	// If this module is intended to be disjoint from other groups and paths then check for overlaps
+	// before rebasing the paths relative to a different location so that error messages are reported
+	// using same values as specified in the blueprint file.
+	if fg.properties.Disjoint_from != nil {
+		for _, disjoint_src := range fg.properties.Disjoint_from {
+			disjoint_srcs := PathsForModuleSrc(ctx, []string{disjoint_src})
+			overlaps := []string{}
+
+			// Not the most efficient way of finding overlaps but seems to work well at the moment.
+			for _, p1 := range disjoint_srcs {
+				for _, p2 := range fg.srcs {
+					// Compare paths relative to the root.
+					if p1.String() == p2.String() {
+						// Report the paths as specified in this module.
+						overlaps = append(overlaps, p2.Rel())
+						break
+					}
+				}
+			}
+
+			if len(overlaps) > 0 {
+				s := ""
+				for _, overlap := range overlaps {
+					s = s + "    " + overlap + "\n"
+				}
+				ctx.ModuleErrorf("overlaps with the following paths from %s\n%s", disjoint_src, s)
+			}
+		}
+	}
 
 	if fg.properties.Path != nil {
 		fg.srcs = PathsWithModuleSrcSubDir(ctx, fg.srcs, String(fg.properties.Path))
