@@ -22,6 +22,30 @@
       "revId": "642c11d34bffbd1ed75871ff60c1f4771b2cbbff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f57300f0_ebca6aa8",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1554,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-25T19:57:37Z",
+      "side": 1,
+      "message": "It\u0027s easier to review if you use Gerrit to cleanly revert the revert, then upload your fix as PS2.  Then diffing PS1 and PS2 shows the changes.",
+      "parentUuid": "68ab5c7f_8e02d1e4",
+      "range": {
+        "startLine": 1554,
+        "startChar": 55,
+        "endLine": 1554,
+        "endChar": 72
+      },
+      "revId": "642c11d34bffbd1ed75871ff60c1f4771b2cbbff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
