@@ -16,6 +16,24 @@
       "revId": "1ab2b7b8c5a6e92fd2123fb9eede0f2f4e292f8a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20e2b573_4d66a2b2",
+        "filename": "android/defaults.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-07-25T09:51:40Z",
+      "side": 0,
+      "message": "I have removed this from the stack of changes and will add a comment on the isDefaults() method to explain what you said.\n\nIf I understand you correctly what you mean is that the isDefaults() method acts as a feature of this interface which avoids other types from being mistaken as a Defaults type.\n\nIf so then why is the properties() function not sufficient to do that?",
+      "parentUuid": "2a914199_c5644212",
+      "revId": "1ab2b7b8c5a6e92fd2123fb9eede0f2f4e292f8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
