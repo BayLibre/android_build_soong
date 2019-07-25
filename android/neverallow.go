@@ -189,6 +189,10 @@ func neverallowMutator(ctx BottomUpMutatorContext) {
 			continue
 		}
 
+		if !n.appliesToDirectDeps(ctx) {
+			continue
+		}
+
 		ctx.ModuleErrorf("violates " + n.String())
 	}
 }
@@ -246,6 +250,8 @@ type Rule interface {
 
 	NotIn(path ...string) Rule
 
+	InDirectDeps(deps ...string) Rule
+
 	ModuleType(types ...string) Rule
 
 	NotModuleType(types ...string) Rule
@@ -268,6 +274,8 @@ type rule struct {
 	paths       []string
 	unlessPaths []string
 
+	directDeps map[string]bool
+
 	moduleTypes       []string
 	unlessModuleTypes []string
 
@@ -287,6 +295,16 @@ func (r *rule) In(path ...string) Rule {
 
 func (r *rule) NotIn(path ...string) Rule {
 	r.unlessPaths = append(r.unlessPaths, cleanPaths(path)...)
+	return r
+}
+
+func (r *rule) InDirectDeps(deps ...string) Rule {
+	if r.directDeps == nil {
+		r.directDeps = make(map[string]bool)
+	}
+	for _, d := range deps {
+		r.directDeps[d] = true
+	}
 	return r
 }
 
@@ -356,6 +374,9 @@ func (r *rule) String() string {
 	for _, v := range r.unlessProps {
 		s += " -" + strings.Join(v.fields, ".") + v.matcher.String()
 	}
+	for k := range r.directDeps {
+		s += " deps:" + k
+	}
 	if len(r.reason) != 0 {
 		s += " which is restricted because " + r.reason
 	}
@@ -366,6 +387,22 @@ func (r *rule) appliesToPath(dir string) bool {
 	includePath := len(r.paths) == 0 || hasAnyPrefix(dir, r.paths)
 	excludePath := hasAnyPrefix(dir, r.unlessPaths)
 	return includePath && !excludePath
+}
+
+func (r *rule) appliesToDirectDeps(ctx BottomUpMutatorContext) bool {
+	if len(r.directDeps) == 0 {
+		return true
+	}
+
+	matches := false
+	ctx.VisitDirectDeps(func(m Module) {
+		if !matches {
+			name := ctx.OtherModuleName(m)
+			matches = r.directDeps[name]
+		}
+	})
+
+	return matches
 }
 
 func (r *rule) appliesToModuleType(moduleType string) bool {
