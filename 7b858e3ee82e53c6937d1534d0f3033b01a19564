@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "87b236e7_83851d0e",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-07-25T23:24:15Z",
+      "side": 1,
+      "message": "ack. thanks for the heads up. I will look into that. I am removing this comment.",
+      "parentUuid": "123259ed_a2f37ea7",
+      "range": {
+        "startLine": 851,
+        "startChar": 0,
+        "endLine": 852,
+        "endChar": 83
+      },
+      "revId": "7b858e3ee82e53c6937d1534d0f3033b01a19564",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a65e2dc1_a5050682",
         "filename": "cc/sanitize.go",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "7b858e3ee82e53c6937d1534d0f3033b01a19564",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31b0a6f3_eaa37e42",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 918,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-07-25T23:24:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a65e2dc1_a5050682",
+      "range": {
+        "startLine": 918,
+        "startChar": 7,
+        "endLine": 918,
+        "endChar": 12
+      },
+      "revId": "7b858e3ee82e53c6937d1534d0f3033b01a19564",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
