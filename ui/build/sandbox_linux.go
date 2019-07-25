@@ -62,7 +62,7 @@ func (c *Cmd) sandboxSupported() bool {
 	}
 
 	// Goma is incompatible with PID namespaces and Mount namespaces. b/122767582
-	if c.Sandbox.DisableWhenUsingGoma && c.config.UseGoma() {
+	if c.Sandbox.DisableWhenUsingGoma && (c.config.UseGoma() || c.config.UseRBE()) {
 		return false
 	}
 
