@@ -51,7 +51,7 @@ var (
 
 	// TODO(b/114327326): automate the generation of file_contexts
 	apexRule = pctx.StaticRule("apexRule", blueprint.RuleParams{
-		Command: `rm -rf ${image_dir} && mkdir -p ${image_dir} && ` +
+		Command: `rm -rf ${prebuilt_file} && rm -rf ${image_dir} && mkdir -p ${image_dir} && ` +
 			`(${copy_commands}) && ` +
 			`APEXER_TOOL_PATH=${tool_path} ` +
 			`${apexer} --force --manifest ${manifest} ` +
@@ -63,7 +63,7 @@ var (
 			"${mke2fs}", "${resize2fs}", "${sefcontext_compile}",
 			"${soong_zip}", "${zipalign}", "${aapt2}", "prebuilts/sdk/current/public/android.jar"},
 		Description: "APEX ${image_dir} => ${out}",
-	}, "tool_path", "image_dir", "copy_commands", "manifest", "file_contexts", "canned_fs_config", "key", "opt_flags")
+	}, "tool_path", "image_dir", "copy_commands", "manifest", "file_contexts", "canned_fs_config", "key", "opt_flags", "prebuilt_file")
 
 	zipApexRule = pctx.StaticRule("zipApexRule", blueprint.RuleParams{
 		Command: `rm -rf ${image_dir} && mkdir -p ${image_dir} && ` +
@@ -409,6 +409,7 @@ type apexBundle struct {
 	bundleModuleFile android.WritablePath
 	outputFiles      map[apexPackaging]android.WritablePath
 	installDir       android.OutputPath
+	prebuiltFileName string
 
 	public_key_file  android.Path
 	private_key_file android.Path
@@ -871,6 +872,10 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 				} else {
 					ctx.ModuleErrorf("certificate dependency %q must be an android_app_certificate module", depName)
 				}
+			case android.PrebuiltDepTag:
+				if prebuilt, ok := child.(*Prebuilt); ok {
+					a.prebuiltFileName = prebuilt.InstallFilename()
+				}
 			}
 		} else {
 			// indirect dependencies
@@ -1103,6 +1108,12 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext, apexType ap
 			optFlags = append(optFlags, "--assets_dir "+filepath.Dir(noticeFile.String()))
 		}
 
+		var prebuilt_file_path string
+		if a.prebuiltFileName != "" {
+			prebuilt_file_path = strings.Replace(a.installDir.Join(ctx, a.prebuiltFileName).String(),
+				"/soong", "", 1)
+		}
+
 		ctx.Build(pctx, android.BuildParams{
 			Rule:        apexRule,
 			Implicits:   implicitInputs,
@@ -1117,6 +1128,7 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext, apexType ap
 				"canned_fs_config": cannedFsConfig.String(),
 				"key":              a.private_key_file.String(),
 				"opt_flags":        strings.Join(optFlags, " "),
+				"prebuilt_file":    prebuilt_file_path,
 			},
 		})
 
