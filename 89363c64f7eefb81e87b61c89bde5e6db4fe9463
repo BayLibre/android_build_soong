@@ -16,6 +16,24 @@
       "revId": "89363c64f7eefb81e87b61c89bde5e6db4fe9463",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "386a91e4_1be21237",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 955,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-07-29T13:24:14Z",
+      "side": 1,
+      "message": "Colin, do you think this approach is correct? Otherwise, how should I implement this? Thanks for your help.",
+      "parentUuid": "37dbb6dd_846559da",
+      "revId": "89363c64f7eefb81e87b61c89bde5e6db4fe9463",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
