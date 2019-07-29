@@ -142,6 +142,7 @@ type BottomUpMutatorContext interface {
 	AddReverseDependency(module blueprint.Module, tag blueprint.DependencyTag, name string)
 	CreateVariations(...string) []blueprint.Module
 	CreateLocalVariations(...string) []blueprint.Module
+	CreateVariationsWithDefault(string, ...string) []blueprint.Module
 	SetDependencyVariation(string)
 	AddVariationDependencies([]blueprint.Variation, blueprint.DependencyTag, ...string)
 	AddFarVariationDependencies([]blueprint.Variation, blueprint.DependencyTag, ...string)
@@ -277,6 +278,18 @@ func (b *bottomUpMutatorContext) CreateVariations(variations ...string) []bluepr
 
 func (b *bottomUpMutatorContext) CreateLocalVariations(variations ...string) []blueprint.Module {
 	modules := b.bp.CreateLocalVariations(variations...)
+
+	for i := range variations {
+		base := modules[i].(Module).base()
+		base.commonProperties.DebugMutators = append(base.commonProperties.DebugMutators, b.MutatorName())
+		base.commonProperties.DebugVariations = append(base.commonProperties.DebugVariations, variations[i])
+	}
+
+	return modules
+}
+
+func (b *bottomUpMutatorContext) CreateVariationsWithDefault(defaultVariation string, variations ...string) []blueprint.Module {
+	modules := b.bp.CreateVariationsWithDefault(defaultVariation, variations...)
 
 	for i := range variations {
 		base := modules[i].(Module).base()
