@@ -63,7 +63,7 @@ type DexpreoptProperties struct {
 }
 
 func (d *dexpreopter) dexpreoptDisabled(ctx android.ModuleContext) bool {
-	global := dexpreoptGlobalConfig(ctx)
+	global := DexpreoptGlobalConfig(ctx)
 
 	if global.DisablePreopt {
 		return true
@@ -95,7 +95,7 @@ func (d *dexpreopter) dexpreoptDisabled(ctx android.ModuleContext) bool {
 }
 
 func odexOnSystemOther(ctx android.ModuleContext, installPath android.OutputPath) bool {
-	return dexpreopt.OdexOnSystemOtherByName(ctx.ModuleName(), android.InstallPathToOnDevicePath(ctx, installPath), dexpreoptGlobalConfig(ctx))
+	return dexpreopt.OdexOnSystemOtherByName(ctx.ModuleName(), android.InstallPathToOnDevicePath(ctx, installPath), DexpreoptGlobalConfig(ctx))
 }
 
 func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.ModuleOutPath) android.ModuleOutPath {
@@ -103,7 +103,7 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.Mo
 		return dexJarFile
 	}
 
-	global := dexpreoptGlobalConfig(ctx)
+	global := DexpreoptGlobalConfig(ctx)
 	bootImage := defaultBootImageConfig(ctx)
 	defaultBootImage := bootImage
 	if global.UseApexImage {
