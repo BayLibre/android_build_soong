@@ -51,6 +51,24 @@
       "revId": "3557e1d343d34eb5e46da9ee832b4be852b0d50d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87d727dd_d66cdc89",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 894,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-07-29T16:41:08Z",
+      "side": 1,
+      "message": "Proposed implementation here: https://android-review.googlesource.com/c/platform/build/soong/+/1092071.",
+      "parentUuid": "842bc096_da4896f8",
+      "revId": "3557e1d343d34eb5e46da9ee832b4be852b0d50d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
