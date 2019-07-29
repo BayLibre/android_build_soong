@@ -151,7 +151,7 @@ func (d *dexpreoptBootJars) GenerateBuildActions(ctx android.SingletonContext) {
 	d.dexpreoptConfigForMake = android.PathForOutput(ctx, ctx.Config().DeviceName(), "dexpreopt.config")
 	writeGlobalConfigForMake(ctx, d.dexpreoptConfigForMake)
 
-	global := dexpreoptGlobalConfig(ctx)
+	global := DexpreoptGlobalConfig(ctx)
 
 	// Skip recompiling the boot image for the second sanitization phase. We'll get separate paths
 	// and invalidate first-stage artifacts which are crucial to SANITIZE_LITE builds.
@@ -174,7 +174,7 @@ func (d *dexpreoptBootJars) GenerateBuildActions(ctx android.SingletonContext) {
 
 // buildBootImage takes a bootImageConfig, creates rules to build it, and returns a *bootImage.
 func buildBootImage(ctx android.SingletonContext, config bootImageConfig) *bootImage {
-	global := dexpreoptGlobalConfig(ctx)
+	global := DexpreoptGlobalConfig(ctx)
 
 	image := newBootImage(ctx, config)
 
@@ -244,7 +244,7 @@ func buildBootImage(ctx android.SingletonContext, config bootImageConfig) *bootI
 func buildBootImageRuleForArch(ctx android.SingletonContext, image *bootImage,
 	arch android.ArchType, profile android.Path, missingDeps []string) android.WritablePaths {
 
-	global := dexpreoptGlobalConfig(ctx)
+	global := DexpreoptGlobalConfig(ctx)
 
 	symbolsDir := image.symbolsDir.Join(ctx, "system/framework", arch.String())
 	symbolsFile := symbolsDir.Join(ctx, image.name+".oat")
@@ -372,7 +372,7 @@ It is likely that the boot classpath is inconsistent.
 Rebuild with ART_BOOT_IMAGE_EXTRA_ARGS="--runtime-arg -verbose:verifier" to see verification errors.`
 
 func bootImageProfileRule(ctx android.SingletonContext, image *bootImage, missingDeps []string) android.WritablePath {
-	global := dexpreoptGlobalConfig(ctx)
+	global := DexpreoptGlobalConfig(ctx)
 
 	if global.DisableGenerateProfile || ctx.Config().IsPdkBuild() || ctx.Config().UnbundledBuild() {
 		return nil
@@ -427,7 +427,7 @@ func bootImageProfileRule(ctx android.SingletonContext, image *bootImage, missin
 var bootImageProfileRuleKey = android.NewOnceKey("bootImageProfileRule")
 
 func bootFrameworkProfileRule(ctx android.SingletonContext, image *bootImage, missingDeps []string) android.WritablePath {
-	global := dexpreoptGlobalConfig(ctx)
+	global := DexpreoptGlobalConfig(ctx)
 
 	if global.DisableGenerateProfile || ctx.Config().IsPdkBuild() || ctx.Config().UnbundledBuild() {
 		return nil

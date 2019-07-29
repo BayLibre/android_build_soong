@@ -22,10 +22,10 @@ import (
 	"android/soong/dexpreopt"
 )
 
-// dexpreoptGlobalConfig returns the global dexpreopt.config.  It is loaded once the first time it is called for any
+// DexpreoptGlobalConfig returns the global dexpreopt.config.  It is loaded once the first time it is called for any
 // ctx.Config(), and returns the same data for all future calls with the same ctx.Config().  A value can be inserted
 // for tests using setDexpreoptTestGlobalConfig.
-func dexpreoptGlobalConfig(ctx android.PathContext) dexpreopt.GlobalConfig {
+func DexpreoptGlobalConfig(ctx android.PathContext) dexpreopt.GlobalConfig {
 	return dexpreoptGlobalConfigRaw(ctx).global
 }
 
@@ -56,8 +56,8 @@ func dexpreoptGlobalConfigRaw(ctx android.PathContext) globalConfigAndRaw {
 	}).(globalConfigAndRaw)
 }
 
-// setDexpreoptTestGlobalConfig sets a GlobalConfig that future calls to dexpreoptGlobalConfig will return.  It must
-// be called before the first call to dexpreoptGlobalConfig for the config.
+// setDexpreoptTestGlobalConfig sets a GlobalConfig that future calls to DexpreoptGlobalConfig will return.  It must
+// be called before the first call to DexpreoptGlobalConfig for the config.
 func setDexpreoptTestGlobalConfig(config android.Config, globalConfig dexpreopt.GlobalConfig) {
 	config.Once(dexpreoptTestGlobalConfigKey, func() interface{} { return globalConfigAndRaw{globalConfig, nil} })
 }
@@ -70,7 +70,7 @@ var dexpreoptTestGlobalConfigKey = android.NewOnceKey("TestDexpreoptGlobalConfig
 // ctx.Config().
 func systemServerClasspath(ctx android.PathContext) []string {
 	return ctx.Config().OnceStringSlice(systemServerClasspathKey, func() []string {
-		global := dexpreoptGlobalConfig(ctx)
+		global := DexpreoptGlobalConfig(ctx)
 
 		var systemServerClasspathLocations []string
 		for _, m := range global.SystemServerJars {
@@ -105,7 +105,7 @@ func dexpreoptTargets(ctx android.PathContext) []android.Target {
 // ctx.Config().
 func defaultBootImageConfig(ctx android.PathContext) bootImageConfig {
 	return ctx.Config().Once(defaultBootImageConfigKey, func() interface{} {
-		global := dexpreoptGlobalConfig(ctx)
+		global := DexpreoptGlobalConfig(ctx)
 
 		runtimeModules := global.RuntimeApexJars
 		nonFrameworkModules := concat(runtimeModules, global.ProductUpdatableBootModules)
@@ -174,7 +174,7 @@ var defaultBootImageConfigKey = android.NewOnceKey("defaultBootImageConfig")
 
 func apexBootImageConfig(ctx android.PathContext) bootImageConfig {
 	return ctx.Config().Once(apexBootImageConfigKey, func() interface{} {
-		global := dexpreoptGlobalConfig(ctx)
+		global := DexpreoptGlobalConfig(ctx)
 
 		runtimeModules := global.RuntimeApexJars
 		nonFrameworkModules := concat(runtimeModules, global.ProductUpdatableBootModules)
@@ -239,7 +239,7 @@ var apexBootImageConfigKey = android.NewOnceKey("apexBootImageConfig")
 
 func defaultBootclasspath(ctx android.PathContext) []string {
 	return ctx.Config().OnceStringSlice(defaultBootclasspathKey, func() []string {
-		global := dexpreoptGlobalConfig(ctx)
+		global := DexpreoptGlobalConfig(ctx)
 		image := defaultBootImageConfig(ctx)
 		bootclasspath := append(copyOf(image.dexLocations), global.ProductUpdatableBootLocations...)
 		return bootclasspath
