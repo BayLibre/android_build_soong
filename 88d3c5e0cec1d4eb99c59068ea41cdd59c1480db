@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b5ce700a_6e05c7b4",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1349653
+      },
+      "writtenOn": "2019-07-29T20:26:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1485e133_416c600e",
+      "range": {
+        "startLine": 774,
+        "startChar": 2,
+        "endLine": 774,
+        "endChar": 22
+      },
+      "revId": "88d3c5e0cec1d4eb99c59068ea41cdd59c1480db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fce7dda3_029eefd4",
         "filename": "cc/linker.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "8710235a_ee4c6706",
+        "filename": "cc/linker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1349653
+      },
+      "writtenOn": "2019-07-29T20:26:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fce7dda3_029eefd4",
+      "range": {
+        "startLine": 490,
+        "startChar": 83,
+        "endLine": 490,
+        "endChar": 103
+      },
+      "revId": "88d3c5e0cec1d4eb99c59068ea41cdd59c1480db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cca7ffb3_434a97d1",
         "filename": "cc/linker.go",
         "patchSetId": 1
@@ -59,6 +107,24 @@
       "writtenOn": "2019-07-29T17:33:44Z",
       "side": 1,
       "message": "You may find this easier to maintain using android.NewRuleBuilder() instead of pctx.AndroidStaticRule/ctx.Build.  It makes it easier to avoid missing dependencies.",
+      "revId": "88d3c5e0cec1d4eb99c59068ea41cdd59c1480db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f04f5a1_77b63480",
+        "filename": "cc/linker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1349653
+      },
+      "writtenOn": "2019-07-29T20:26:23Z",
+      "side": 1,
+      "message": "Tried doing this but RuleBuilder escapes everything so the output from gccCmd() doesn\u0027t get proper substitution (it contains ${config.\u003carch\u003eGccRoot}). Is there a way to add unescaped text to RuleBuilder?",
+      "parentUuid": "cca7ffb3_434a97d1",
       "revId": "88d3c5e0cec1d4eb99c59068ea41cdd59c1480db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
