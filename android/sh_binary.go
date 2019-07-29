@@ -71,7 +71,10 @@ type ShBinary struct {
 
 	sourceFilePath Path
 	outputFilePath OutputPath
+	installedFile  OutputPath
 }
+
+var _ HostToolProvider = (*ShBinary)(nil)
 
 type ShTest struct {
 	ShBinary
@@ -81,14 +84,14 @@ type ShTest struct {
 	data Paths
 }
 
+func (s *ShBinary) HostToolPath() OptionalPath {
+	return OptionalPathForPath(s.installedFile)
+}
+
 func (s *ShBinary) DepsMutator(ctx BottomUpMutatorContext) {
 	if s.properties.Src == nil {
 		ctx.PropertyErrorf("src", "missing prebuilt source file")
 	}
-}
-
-func (s *ShBinary) SourceFilePath(ctx ModuleContext) Path {
-	return PathForModuleSrc(ctx, String(s.properties.Src))
 }
 
 func (s *ShBinary) OutputFile() OutputPath {
@@ -126,6 +129,9 @@ func (s *ShBinary) GenerateAndroidBuildActions(ctx ModuleContext) {
 		Output: s.outputFilePath,
 		Input:  s.sourceFilePath,
 	})
+
+	s.installedFile = ctx.InstallExecutable(PathForModuleInstall(ctx, "bin"),
+		ctx.ModuleName(), s.outputFilePath)
 }
 
 func (s *ShBinary) AndroidMkEntries() AndroidMkEntries {
