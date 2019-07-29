@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "24846410_f3ae0272",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2019-07-29T11:55:47Z",
+      "side": 1,
+      "message": "https://cs.corp.google.com/android/build/make/core/sdk_check.mk?type\u003dcs\u0026q\u003dJAVA_SDK_ENFORCEMENT_ERROR\u0026sq\u003dpackage:%5Eandroid$\u0026g\u003d0\u0026l\u003d13\nIt follows a logic in make, IMO, it sounds reasonable because test_app is not target for release.\nBut if you still want to do this, I think we\u0027d rather do it in follow-up CLs, because a lot of test modules have neither sdk_version nor platform_apis for now :(",
+      "parentUuid": "9fc7352a_2a1501f1",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 0
+      },
+      "revId": "ce7c49eaabaea9555bdb35bf1fbf6f60932f686d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d0df1881_4f3a0688",
         "filename": "java/java.go",
         "patchSetId": 7
@@ -39,6 +63,24 @@
       "revId": "ce7c49eaabaea9555bdb35bf1fbf6f60932f686d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "363b9733_a14a5f8d",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2019-07-29T11:55:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0df1881_4f3a0688",
+      "revId": "ce7c49eaabaea9555bdb35bf1fbf6f60932f686d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "ce7c49eaabaea9555bdb35bf1fbf6f60932f686d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7261b290_5762885c",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2019-07-29T11:55:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6abe312c_3120a0d9",
+      "range": {
+        "startLine": 217,
+        "startChar": 55,
+        "endLine": 217,
+        "endChar": 100
+      },
+      "revId": "ce7c49eaabaea9555bdb35bf1fbf6f60932f686d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
