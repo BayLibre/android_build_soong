@@ -243,7 +243,8 @@ func (t *topDownMutatorContext) Rename(name string) {
 }
 
 func (t *topDownMutatorContext) CreateModule(factory blueprint.ModuleFactory, props ...interface{}) {
-	t.bp.CreateModule(factory, props...)
+	var common []interface{} = []interface{}{&t.Module().base().commonProperties}
+	t.bp.CreateModule(factory, append(common, props...)...)
 }
 
 func (b *bottomUpMutatorContext) MutatorName() string {
