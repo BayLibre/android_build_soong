@@ -155,6 +155,7 @@ type ModuleContext interface {
 	InstallInData() bool
 	InstallInSanitizerDir() bool
 	InstallInRecovery() bool
+	InstallBypassMake() bool
 
 	RequiredModuleNames() []string
 	HostRequiredModuleNames() []string
@@ -192,6 +193,7 @@ type Module interface {
 	InstallInData() bool
 	InstallInSanitizerDir() bool
 	InstallInRecovery() bool
+	InstallBypassMake() bool
 	SkipInstall()
 	ExportedToMake() bool
 	NoticeFile() OptionalPath
@@ -809,6 +811,10 @@ func (m *ModuleBase) InstallInSanitizerDir() bool {
 
 func (m *ModuleBase) InstallInRecovery() bool {
 	return Bool(m.commonProperties.Recovery)
+}
+
+func (m *ModuleBase) InstallBypassMake() bool {
+	return false
 }
 
 func (m *ModuleBase) Owner() string {
@@ -1467,6 +1473,10 @@ func (m *moduleContext) InstallInRecovery() bool {
 	return m.module.InstallInRecovery()
 }
 
+func (m *moduleContext) InstallBypassMake() bool {
+	return m.module.InstallBypassMake()
+}
+
 func (m *moduleContext) skipInstall(fullInstallPath OutputPath) bool {
 	if m.module.base().commonProperties.SkipInstall {
 		return true
@@ -1480,7 +1490,7 @@ func (m *moduleContext) skipInstall(fullInstallPath OutputPath) bool {
 	}
 
 	if m.Device() {
-		if m.Config().SkipDeviceInstall() {
+		if m.Config().EmbeddedInMake() && !m.InstallBypassMake() {
 			return true
 		}
 
