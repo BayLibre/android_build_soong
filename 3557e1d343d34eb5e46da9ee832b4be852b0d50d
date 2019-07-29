@@ -33,6 +33,24 @@
       "revId": "3557e1d343d34eb5e46da9ee832b4be852b0d50d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "842bc096_da4896f8",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 894,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-07-29T14:54:28Z",
+      "side": 1,
+      "message": "This sounds like a better approach; thanks for the suggestion, Jiyong! I\u0027ll upload another CL soon.",
+      "parentUuid": "2694c4c6_c1a4d89b",
+      "revId": "3557e1d343d34eb5e46da9ee832b4be852b0d50d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
