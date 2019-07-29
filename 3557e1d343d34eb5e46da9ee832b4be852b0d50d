@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a260dba_f10dec3f",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-07-29T13:40:00Z",
+      "side": 1,
+      "message": "I think you can just return true without appending anything to filesInfo, when cc.TestPerSrcOutputFiles() returns non nil.\n\nInstead, you need to follow the dependency from the test module to the individual src modules below.",
+      "revId": "3557e1d343d34eb5e46da9ee832b4be852b0d50d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2694c4c6_c1a4d89b",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 894,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-07-29T13:40:00Z",
+      "side": 1,
+      "message": "Here we need to check the type of \u0027child\u0027. Currently, it is assumed that the child is always a library. We need to distinguish the type of children (via depTag or by other maens) and call appropriate getCopyManifestFor* functions.",
+      "revId": "3557e1d343d34eb5e46da9ee832b4be852b0d50d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
