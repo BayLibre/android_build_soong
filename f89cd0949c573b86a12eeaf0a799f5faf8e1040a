@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93bf1862_d281092c",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-07-30T02:59:03Z",
+      "side": 1,
+      "message": "Hmm, I thought we can just make them public then. But, yeah, this also works.",
+      "range": {
+        "startLine": 869,
+        "startChar": 0,
+        "endLine": 870,
+        "endChar": 60
+      },
+      "revId": "f89cd0949c573b86a12eeaf0a799f5faf8e1040a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
