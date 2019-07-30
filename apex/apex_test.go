@@ -270,6 +270,27 @@ func ensureListNotContains(t *testing.T, result []string, notExpected string) {
 	}
 }
 
+func readFile(t *testing.T, filename string) string {
+	t.Helper()
+	b, err := ioutil.ReadFile(filename)
+	if err != nil {
+		t.Errorf("error while reading file %q: %q", filename, err)
+	}
+	return string(b)
+}
+
+func ensureFileContains(t *testing.T, resultFile string, expected string) {
+	t.Helper()
+	result := readFile(t, resultFile)
+	ensureContains(t, result, expected)
+}
+
+func ensureFileNotContains(t *testing.T, resultFile string, notExpected string) {
+	t.Helper()
+	result := readFile(t, resultFile)
+	ensureNotContains(t, result, notExpected)
+}
+
 // Minimal test
 func TestBasicApex(t *testing.T) {
 	ctx, _ := testApex(t, `
@@ -368,7 +389,7 @@ func TestBasicApex(t *testing.T) {
 	// Ensure that the NOTICE output is being packaged as an asset.
 	ensureContains(t, optFlags, "--assets_dir "+buildDir+"/.intermediates/myapex/android_common_myapex/NOTICE")
 
-	copyCmds := apexRule.Args["copy_commands"]
+	copyScript := apexRule.Args["copy_script"]
 
 	// Ensure that main rule creates an output
 	ensureContains(t, apexRule.Output.String(), "myapex.apex.unsigned")
@@ -382,11 +403,11 @@ func TestBasicApex(t *testing.T) {
 	ensureListContains(t, ctx.ModuleVariantsForTests("myotherjar"), "android_common_myapex")
 
 	// Ensure that both direct and indirect deps are copied into apex
-	ensureContains(t, copyCmds, "image.apex/lib64/mylib.so")
-	ensureContains(t, copyCmds, "image.apex/lib64/mylib2.so")
-	ensureContains(t, copyCmds, "image.apex/javalib/myjar.jar")
+	ensureFileContains(t, copyScript, "image.apex/lib64/mylib.so")
+	ensureFileContains(t, copyScript, "image.apex/lib64/mylib2.so")
+	ensureFileContains(t, copyScript, "image.apex/javalib/myjar.jar")
 	// .. but not for java libs
-	ensureNotContains(t, copyCmds, "image.apex/javalib/myotherjar.jar")
+	ensureFileNotContains(t, copyScript, "image.apex/javalib/myotherjar.jar")
 
 	// Ensure that the platform variant ends with _core_shared or _common
 	ensureListContains(t, ctx.ModuleVariantsForTests("mylib"), "android_arm64_armv8-a_core_shared")
@@ -397,6 +418,7 @@ func TestBasicApex(t *testing.T) {
 	// Ensure that all symlinks are present.
 	found_foo_link_64 := false
 	found_foo := false
+	copyCmds := readFile(t, copyScript)
 	for _, cmd := range strings.Split(copyCmds, " && ") {
 		if strings.HasPrefix(cmd, "ln -s foo64") {
 			if strings.HasSuffix(cmd, "bin/foo") {
@@ -452,7 +474,7 @@ func TestBasicZipApex(t *testing.T) {
 	`)
 
 	zipApexRule := ctx.ModuleForTests("myapex", "android_common_myapex").Rule("zipApexRule")
-	copyCmds := zipApexRule.Args["copy_commands"]
+	copyScript := zipApexRule.Args["copy_script"]
 
 	// Ensure that main rule creates an output
 	ensureContains(t, zipApexRule.Output.String(), "myapex.zipapex.unsigned")
@@ -464,8 +486,8 @@ func TestBasicZipApex(t *testing.T) {
 	ensureListContains(t, ctx.ModuleVariantsForTests("mylib2"), "android_arm64_armv8-a_core_shared_myapex")
 
 	// Ensure that both direct and indirect deps are copied into apex
-	ensureContains(t, copyCmds, "image.zipapex/lib64/mylib.so")
-	ensureContains(t, copyCmds, "image.zipapex/lib64/mylib2.so")
+	ensureFileContains(t, copyScript, "image.zipapex/lib64/mylib.so")
+	ensureFileContains(t, copyScript, "image.zipapex/lib64/mylib2.so")
 }
 
 func TestApexWithStubs(t *testing.T) {
@@ -521,16 +543,16 @@ func TestApexWithStubs(t *testing.T) {
 	`)
 
 	apexRule := ctx.ModuleForTests("myapex", "android_common_myapex").Rule("apexRule")
-	copyCmds := apexRule.Args["copy_commands"]
+	copyScript := apexRule.Args["copy_script"]
 
 	// Ensure that direct non-stubs dep is always included
-	ensureContains(t, copyCmds, "image.apex/lib64/mylib.so")
+	ensureFileContains(t, copyScript, "image.apex/lib64/mylib.so")
 
 	// Ensure that indirect stubs dep is not included
-	ensureNotContains(t, copyCmds, "image.apex/lib64/mylib2.so")
+	ensureFileNotContains(t, copyScript, "image.apex/lib64/mylib2.so")
 
 	// Ensure that direct stubs dep is included
-	ensureContains(t, copyCmds, "image.apex/lib64/mylib3.so")
+	ensureFileContains(t, copyScript, "image.apex/lib64/mylib3.so")
 
 	mylibLdFlags := ctx.ModuleForTests("mylib", "android_arm64_armv8-a_core_shared_myapex").Rule("ld").Args["libFlags"]
 
@@ -595,16 +617,16 @@ func TestApexWithExplicitStubsDependency(t *testing.T) {
 	`)
 
 	apexRule := ctx.ModuleForTests("myapex", "android_common_myapex").Rule("apexRule")
-	copyCmds := apexRule.Args["copy_commands"]
+	copyScript := apexRule.Args["copy_script"]
 
 	// Ensure that direct non-stubs dep is always included
-	ensureContains(t, copyCmds, "image.apex/lib64/mylib.so")
+	ensureFileContains(t, copyScript, "image.apex/lib64/mylib.so")
 
 	// Ensure that indirect stubs dep is not included
-	ensureNotContains(t, copyCmds, "image.apex/lib64/libfoo.so")
+	ensureFileNotContains(t, copyScript, "image.apex/lib64/libfoo.so")
 
 	// Ensure that dependency of stubs is not included
-	ensureNotContains(t, copyCmds, "image.apex/lib64/libbar.so")
+	ensureFileNotContains(t, copyScript, "image.apex/lib64/libbar.so")
 
 	mylibLdFlags := ctx.ModuleForTests("mylib", "android_arm64_armv8-a_core_shared_myapex").Rule("ld").Args["libFlags"]
 
@@ -689,15 +711,15 @@ func TestApexWithSystemLibsStubs(t *testing.T) {
 	`)
 
 	apexRule := ctx.ModuleForTests("myapex", "android_common_myapex").Rule("apexRule")
-	copyCmds := apexRule.Args["copy_commands"]
+	copyScript := apexRule.Args["copy_script"]
 
 	// Ensure that mylib, libm, libdl are included.
-	ensureContains(t, copyCmds, "image.apex/lib64/mylib.so")
-	ensureContains(t, copyCmds, "image.apex/lib64/bionic/libm.so")
-	ensureContains(t, copyCmds, "image.apex/lib64/bionic/libdl.so")
+	ensureFileContains(t, copyScript, "image.apex/lib64/mylib.so")
+	ensureFileContains(t, copyScript, "image.apex/lib64/bionic/libm.so")
+	ensureFileContains(t, copyScript, "image.apex/lib64/bionic/libdl.so")
 
 	// Ensure that libc is not included (since it has stubs and not listed in native_shared_libs)
-	ensureNotContains(t, copyCmds, "image.apex/lib64/bionic/libc.so")
+	ensureFileNotContains(t, copyScript, "image.apex/lib64/bionic/libc.so")
 
 	mylibLdFlags := ctx.ModuleForTests("mylib", "android_arm64_armv8-a_core_shared_myapex").Rule("ld").Args["libFlags"]
 	mylibCFlags := ctx.ModuleForTests("mylib", "android_arm64_armv8-a_core_static_myapex").Rule("cc").Args["cFlags"]
@@ -1084,7 +1106,7 @@ func TestNonTestApex(t *testing.T) {
 
 	module := ctx.ModuleForTests("myapex", "android_common_myapex")
 	apexRule := module.Rule("apexRule")
-	copyCmds := apexRule.Args["copy_commands"]
+	copyScript := apexRule.Args["copy_script"]
 
 	if apex, ok := module.Module().(*apexBundle); !ok || apex.testApex {
 		t.Log("Apex was a test apex!")
@@ -1097,7 +1119,7 @@ func TestNonTestApex(t *testing.T) {
 	ensureListContains(t, ctx.ModuleVariantsForTests("mylib_common"), "android_arm64_armv8-a_core_shared_myapex")
 
 	// Ensure that both direct and indirect deps are copied into apex
-	ensureContains(t, copyCmds, "image.apex/lib64/mylib_common.so")
+	ensureFileContains(t, copyScript, "image.apex/lib64/mylib_common.so")
 
 	// Ensure that the platform variant ends with _core_shared
 	ensureListContains(t, ctx.ModuleVariantsForTests("mylib_common"), "android_arm64_armv8-a_core_shared")
@@ -1135,7 +1157,7 @@ func TestTestApex(t *testing.T) {
 
 	module := ctx.ModuleForTests("myapex", "android_common_myapex")
 	apexRule := module.Rule("apexRule")
-	copyCmds := apexRule.Args["copy_commands"]
+	copyScript := apexRule.Args["copy_script"]
 
 	if apex, ok := module.Module().(*apexBundle); !ok || !apex.testApex {
 		t.Log("Apex was not a test apex!")
@@ -1148,7 +1170,7 @@ func TestTestApex(t *testing.T) {
 	ensureListContains(t, ctx.ModuleVariantsForTests("mylib_common_test"), "android_arm64_armv8-a_core_shared_myapex")
 
 	// Ensure that both direct and indirect deps are copied into apex
-	ensureContains(t, copyCmds, "image.apex/lib64/mylib_common_test.so")
+	ensureFileContains(t, copyScript, "image.apex/lib64/mylib_common_test.so")
 
 	// Ensure that the platform variant ends with _core_shared
 	ensureListContains(t, ctx.ModuleVariantsForTests("mylib_common_test"), "android_arm64_armv8-a_core_shared")
@@ -1218,7 +1240,7 @@ func TestApexWithTarget(t *testing.T) {
 	`)
 
 	apexRule := ctx.ModuleForTests("myapex", "android_common_myapex").Rule("apexRule")
-	copyCmds := apexRule.Args["copy_commands"]
+	copyScript := apexRule.Args["copy_script"]
 
 	// Ensure that main rule creates an output
 	ensureContains(t, apexRule.Output.String(), "myapex.apex.unsigned")
@@ -1229,9 +1251,9 @@ func TestApexWithTarget(t *testing.T) {
 	ensureListNotContains(t, ctx.ModuleVariantsForTests("mylib2"), "android_arm64_armv8-a_core_shared_myapex")
 
 	// Ensure that both direct and indirect deps are copied into apex
-	ensureContains(t, copyCmds, "image.apex/lib64/mylib.so")
-	ensureContains(t, copyCmds, "image.apex/lib64/mylib_common.so")
-	ensureNotContains(t, copyCmds, "image.apex/lib64/mylib2.so")
+	ensureFileContains(t, copyScript, "image.apex/lib64/mylib.so")
+	ensureFileContains(t, copyScript, "image.apex/lib64/mylib_common.so")
+	ensureFileNotContains(t, copyScript, "image.apex/lib64/mylib2.so")
 
 	// Ensure that the platform variant ends with _core_shared
 	ensureListContains(t, ctx.ModuleVariantsForTests("mylib"), "android_arm64_armv8-a_core_shared")
@@ -1262,9 +1284,9 @@ func TestApexWithShBinary(t *testing.T) {
 	`)
 
 	apexRule := ctx.ModuleForTests("myapex", "android_common_myapex").Rule("apexRule")
-	copyCmds := apexRule.Args["copy_commands"]
+	copyScript := apexRule.Args["copy_script"]
 
-	ensureContains(t, copyCmds, "image.apex/bin/script/myscript.sh")
+	ensureFileContains(t, copyScript, "image.apex/bin/script/myscript.sh")
 }
 
 func TestApexInProductPartition(t *testing.T) {
@@ -1436,15 +1458,15 @@ func TestApexWithTests(t *testing.T) {
 	`)
 
 	apexRule := ctx.ModuleForTests("myapex", "android_common_myapex").Rule("apexRule")
-	copyCmds := apexRule.Args["copy_commands"]
+	copyScript := apexRule.Args["copy_script"]
 
 	// Ensure that test dep is copied into apex.
-	ensureContains(t, copyCmds, "image.apex/bin/test/mytest")
+	ensureFileContains(t, copyScript, "image.apex/bin/test/mytest")
 
 	// Ensure that test deps built with `test_per_src` are copied into apex.
-	ensureContains(t, copyCmds, "image.apex/bin/test/mytest1")
-	ensureContains(t, copyCmds, "image.apex/bin/test/mytest2")
-	ensureContains(t, copyCmds, "image.apex/bin/test/mytest3")
+	ensureFileContains(t, copyScript, "image.apex/bin/test/mytest1")
+	ensureFileContains(t, copyScript, "image.apex/bin/test/mytest2")
+	ensureFileContains(t, copyScript, "image.apex/bin/test/mytest3")
 
 	// Ensure the module is correctly translated.
 	apexBundle := ctx.ModuleForTests("myapex", "android_common_myapex").Module().(*apexBundle)
@@ -1503,17 +1525,17 @@ func TestApexUsesOtherApex(t *testing.T) {
 
 	module1 := ctx.ModuleForTests("myapex", "android_common_myapex")
 	apexRule1 := module1.Rule("apexRule")
-	copyCmds1 := apexRule1.Args["copy_commands"]
+	copyScript1 := apexRule1.Args["copy_script"]
 
 	module2 := ctx.ModuleForTests("commonapex", "android_common_commonapex")
 	apexRule2 := module2.Rule("apexRule")
-	copyCmds2 := apexRule2.Args["copy_commands"]
+	copyScript2 := apexRule2.Args["copy_script"]
 
 	ensureListContains(t, ctx.ModuleVariantsForTests("mylib"), "android_arm64_armv8-a_core_shared_myapex")
 	ensureListContains(t, ctx.ModuleVariantsForTests("libcommon"), "android_arm64_armv8-a_core_shared_commonapex")
-	ensureContains(t, copyCmds1, "image.apex/lib64/mylib.so")
-	ensureContains(t, copyCmds2, "image.apex/lib64/libcommon.so")
-	ensureNotContains(t, copyCmds1, "image.apex/lib64/libcommon.so")
+	ensureFileContains(t, copyScript1, "image.apex/lib64/mylib.so")
+	ensureFileContains(t, copyScript2, "image.apex/lib64/libcommon.so")
+	ensureFileNotContains(t, copyScript1, "image.apex/lib64/libcommon.so")
 }
 
 func TestApexUsesFailsIfNotProvided(t *testing.T) {

@@ -17,6 +17,8 @@ package apex
 import (
 	"fmt"
 	"io"
+	"io/ioutil"
+	"os"
 	"path/filepath"
 	"runtime"
 	"sort"
@@ -52,7 +54,7 @@ var (
 	// TODO(b/114327326): automate the generation of file_contexts
 	apexRule = pctx.StaticRule("apexRule", blueprint.RuleParams{
 		Command: `rm -rf ${image_dir} && mkdir -p ${image_dir} && ` +
-			`(${copy_commands}) && ` +
+			`${copy_script} && ` +
 			`APEXER_TOOL_PATH=${tool_path} ` +
 			`${apexer} --force --manifest ${manifest} ` +
 			`--file_contexts ${file_contexts} ` +
@@ -63,18 +65,18 @@ var (
 			"${mke2fs}", "${resize2fs}", "${sefcontext_compile}",
 			"${soong_zip}", "${zipalign}", "${aapt2}", "prebuilts/sdk/current/public/android.jar"},
 		Description: "APEX ${image_dir} => ${out}",
-	}, "tool_path", "image_dir", "copy_commands", "manifest", "file_contexts", "canned_fs_config", "key", "opt_flags")
+	}, "tool_path", "image_dir", "copy_script", "manifest", "file_contexts", "canned_fs_config", "key", "opt_flags")
 
 	zipApexRule = pctx.StaticRule("zipApexRule", blueprint.RuleParams{
 		Command: `rm -rf ${image_dir} && mkdir -p ${image_dir} && ` +
-			`(${copy_commands}) && ` +
+			`${copy_script} && ` +
 			`APEXER_TOOL_PATH=${tool_path} ` +
 			`${apexer} --force --manifest ${manifest} ` +
 			`--payload_type zip ` +
 			`${image_dir} ${out} `,
 		CommandDeps: []string{"${apexer}", "${merge_zips}", "${soong_zip}", "${zipalign}", "${aapt2}"},
 		Description: "ZipAPEX ${image_dir} => ${out}",
-	}, "tool_path", "image_dir", "copy_commands", "manifest")
+	}, "tool_path", "image_dir", "copy_script", "manifest")
 
 	apexProtoConvertRule = pctx.AndroidStaticRule("apexProtoConvertRule",
 		blueprint.RuleParams{
@@ -1005,13 +1007,18 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext, apexType ap
 	abis = android.FirstUniqueStrings(abis)
 
 	suffix := apexType.suffix()
-	unsignedOutputFile := android.PathForModuleOut(ctx, ctx.ModuleName()+suffix+".unsigned")
+	unsignedOutputStem := ctx.ModuleName() + suffix + ".unsigned"
+	unsignedOutputFile := android.PathForModuleOut(ctx, unsignedOutputStem)
 
 	filesToCopy := []android.Path{}
 	for _, f := range a.filesInfo {
 		filesToCopy = append(filesToCopy, f.builtFile)
 	}
 
+	// In some cases the set of files to copy may be so large that the copy commands would
+	// exceed the maximum length of argument to the exec() functions (ARG_MAX), thus preventing
+	// their execution as part of a Ninja shell command. To work around this limitation, record
+	// these copy commands in a script to be executed as part of the Ninja command.
 	copyCommands := []string{}
 	for i, src := range filesToCopy {
 		dest := filepath.Join(a.filesInfo[i].installDir, src.Base())
@@ -1023,6 +1030,19 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext, apexType ap
 			copyCommands = append(copyCommands, "ln -s "+filepath.Base(dest)+" "+symlinkDest)
 		}
 	}
+	copyScriptPath :=
+		android.PathForModuleOut(ctx, "copy-files-to-"+unsignedOutputStem+".sh").String()
+	copyScriptContents := strings.Join(copyCommands, " && ")
+	copyScriptDir := filepath.Dir(copyScriptPath)
+	err := os.MkdirAll(copyScriptDir, 0755)
+	if err != nil {
+		panic(fmt.Errorf("error creating directory %q: %q", copyScriptPath, err))
+	}
+	err = ioutil.WriteFile(copyScriptPath, []byte(copyScriptContents), 0755)
+	if err != nil {
+		panic(fmt.Errorf("error writing file %q: %q", copyScriptPath, err))
+	}
+
 	implicitInputs := append(android.Paths(nil), filesToCopy...)
 	implicitInputs = append(implicitInputs, manifest)
 
@@ -1118,7 +1138,7 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext, apexType ap
 			Args: map[string]string{
 				"tool_path":        outHostBinDir + ":" + prebuiltSdkToolsBinDir,
 				"image_dir":        android.PathForModuleOut(ctx, "image"+suffix).String(),
-				"copy_commands":    strings.Join(copyCommands, " && "),
+				"copy_script":      copyScriptPath,
 				"manifest":         manifest.String(),
 				"file_contexts":    fileContexts.String(),
 				"canned_fs_config": cannedFsConfig.String(),
@@ -1154,10 +1174,10 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext, apexType ap
 			Output:      unsignedOutputFile,
 			Description: "apex (" + apexType.name() + ")",
 			Args: map[string]string{
-				"tool_path":     outHostBinDir + ":" + prebuiltSdkToolsBinDir,
-				"image_dir":     android.PathForModuleOut(ctx, "image"+suffix).String(),
-				"copy_commands": strings.Join(copyCommands, " && "),
-				"manifest":      manifest.String(),
+				"tool_path":   outHostBinDir + ":" + prebuiltSdkToolsBinDir,
+				"image_dir":   android.PathForModuleOut(ctx, "image"+suffix).String(),
+				"copy_script": copyScriptPath,
+				"manifest":    manifest.String(),
 			},
 		})
 	}
