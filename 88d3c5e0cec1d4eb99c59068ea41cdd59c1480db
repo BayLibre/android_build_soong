@@ -128,6 +128,24 @@
       "revId": "88d3c5e0cec1d4eb99c59068ea41cdd59c1480db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77aaf77c_ef81f369",
+        "filename": "cc/linker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-07-30T00:16:03Z",
+      "side": 1,
+      "message": "RuleBuilder currently doesn\u0027t support passing ninja variables, you would have to make Go variables to pass the full values.",
+      "parentUuid": "7f04f5a1_77b63480",
+      "revId": "88d3c5e0cec1d4eb99c59068ea41cdd59c1480db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
