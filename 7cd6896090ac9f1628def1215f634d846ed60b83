@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "278e97cf_cafc64d6",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1041,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-07-30T21:01:01Z",
+      "side": 1,
+      "message": "Soong can\u0027t write this file directly, this should probably be using the rspfile support in ninja (where ninja writes out a file at the time it runs the rule)",
+      "range": {
+        "startLine": 1041,
+        "startChar": 7,
+        "endLine": 1041,
+        "endChar": 23
+      },
+      "revId": "7cd6896090ac9f1628def1215f634d846ed60b83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
