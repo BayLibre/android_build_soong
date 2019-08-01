@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34c1d005_861f9e52",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 974,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-01T11:21:29Z",
+      "side": 1,
+      "message": "Save this to apexBundle struct, so that we don\u0027t need to repeat the same code in build*Apex() functions?",
+      "range": {
+        "startLine": 974,
+        "startChar": 1,
+        "endLine": 974,
+        "endChar": 9
+      },
+      "revId": "c5d81726bdf65b08485ba10e463abff07cddc0f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2427358_ba155fc9",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 976,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-01T11:21:29Z",
+      "side": 1,
+      "message": "do we need to sort these to be consistent?",
+      "range": {
+        "startLine": 975,
+        "startChar": 0,
+        "endLine": 976,
+        "endChar": 48
+      },
+      "revId": "c5d81726bdf65b08485ba10e463abff07cddc0f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
