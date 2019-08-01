@@ -144,6 +144,7 @@ var BannerVars = []string{
 	"HOST_CROSS_2ND_ARCH",
 	"HOST_BUILD_TYPE",
 	"BUILD_ID",
+	"TOP",
 	"OUT_DIR",
 	"AUX_OS_VARIANT_LIST",
 	"TARGET_BUILD_PDK",
