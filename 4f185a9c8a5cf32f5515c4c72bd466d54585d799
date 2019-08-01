@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c36f96c_eb01d5b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-08-01T05:44:36Z",
+      "side": 1,
+      "message": "This essentially allows any plugin to make changes to the global config as well -- should we expose a way to get a copy, or un-export the values and provide accessors?",
+      "revId": "4f185a9c8a5cf32f5515c4c72bd466d54585d799",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
