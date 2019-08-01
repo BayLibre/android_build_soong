@@ -1,0 +1,8 @@
+Code-Review+2: Dan Albert <danalbert@google.com>
+Presubmit-Ready+1: Slava Shklyaev <slavash@google.com>
+Autosubmit+1: Slava Shklyaev <slavash@google.com>
+Submitted-by: Slava Shklyaev <slavash@google.com>
+Submitted-at: Thu, 01 Aug 2019 10:29:58 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1091432
+Project: platform/build/soong
+Branch: refs/heads/master
