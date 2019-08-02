@@ -113,6 +113,9 @@ type LibraryProperties struct {
 
 	// Order symbols in .bss section by their sizes.  Only useful for shared libraries.
 	Sort_bss_symbols_by_size *bool
+
+	// Do not pass --gc-sections to linkers
+	No_gc_sections *bool `android:"arch_variant"`
 }
 
 type LibraryMutatedProperties struct {
@@ -369,10 +372,10 @@ func (library *libraryDecorator) linkerFlags(ctx ModuleContext, flags Flags) Fla
 		libName := library.getLibName(ctx)
 		var f []string
 		if ctx.toolchain().Bionic() {
-			f = append(f,
-				"-nostdlib",
-				"-Wl,--gc-sections",
-			)
+			f = append(f, "-nostdlib")
+			if !Bool(library.Properties.No_gc_sections) {
+				f = append(f, "-Wl,--gc-sections")
+			}
 		}
 
 		if ctx.Darwin() {
