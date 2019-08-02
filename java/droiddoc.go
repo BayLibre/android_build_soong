@@ -1290,6 +1290,8 @@ func (d *Droidstubs) stubsFlags(ctx android.ModuleContext, cmd *android.RuleBuil
 	} else {
 		cmd.FlagWithArg("--stubs ", stubsDir.String())
 	}
+
+	cmd.FlagWithArg("--hide ", "UnresolvedReference")
 }
 
 func (d *Droidstubs) annotationsFlags(ctx android.ModuleContext, cmd *android.RuleBuilderCommand) {
@@ -1521,7 +1523,8 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 		cmd.Flag(d.Javadoc.args).Implicits(d.Javadoc.argFiles).
 			FlagWithInput("--check-compatibility:api:current ", apiFile).
-			FlagWithInput("--check-compatibility:removed:current ", removedApiFile)
+			FlagWithInput("--check-compatibility:removed:current ", removedApiFile).
+			FlagWithArg("--hide ", "UnresolvedReference")
 
 		d.inclusionAnnotationsFlags(ctx, cmd)
 		d.mergeAnnoDirFlags(ctx, cmd)
@@ -1598,7 +1601,8 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			deps.bootClasspath, deps.classpath, d.Javadoc.sourcepaths)
 
 		cmd.Flag(d.Javadoc.args).Implicits(d.Javadoc.argFiles).
-			FlagWithInput("--check-compatibility:api:released ", apiFile)
+			FlagWithInput("--check-compatibility:api:released ", apiFile).
+			FlagWithArg("--hide ", "UnresolvedReference")
 
 		d.inclusionAnnotationsFlags(ctx, cmd)
 
