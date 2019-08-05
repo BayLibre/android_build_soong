@@ -16,6 +16,24 @@
       "revId": "34b493fec5da05b815b7b444d6625f050a0cf543",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84aae3ca_21f0cd47",
+        "filename": "cc/lto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-08-05T18:13:08Z",
+      "side": 1,
+      "message": "Yep - would definitely consider doing this as a more bulletproof long-term solution, but the fix should be upstream relatively soon AFAIK :).",
+      "parentUuid": "ad5b5669_8ad4a979",
+      "revId": "34b493fec5da05b815b7b444d6625f050a0cf543",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
