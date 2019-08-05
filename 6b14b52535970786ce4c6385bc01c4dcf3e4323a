@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6eebbacf_a092f08d",
+        "filename": "android/neverallow.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-05T16:54:56Z",
+      "side": 1,
+      "message": "You could also put this into NeverAllow(), an empty map[string]bool is one allocation of 48 bytes, and only a few of these are created during startup.",
+      "range": {
+        "startLine": 302,
+        "startChar": 1,
+        "endLine": 304,
+        "endChar": 2
+      },
+      "revId": "6b14b52535970786ce4c6385bc01c4dcf3e4323a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
