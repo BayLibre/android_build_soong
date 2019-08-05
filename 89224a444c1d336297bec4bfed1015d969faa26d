@@ -22,6 +22,30 @@
       "revId": "89224a444c1d336297bec4bfed1015d969faa26d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "665f3617_31ac0df3",
+        "filename": "android/neverallow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-08-05T10:34:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c113f3c5_bd4cd814",
+      "range": {
+        "startLine": 396,
+        "startChar": 3,
+        "endLine": 400,
+        "endChar": 4
+      },
+      "revId": "89224a444c1d336297bec4bfed1015d969faa26d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
