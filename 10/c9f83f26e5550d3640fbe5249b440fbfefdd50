@@ -1,0 +1,8 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+1: allenhair <allenhair@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Submitted-by: Kun Niu <kunniu@google.com>
+Submitted-at: Mon, 05 Aug 2019 18:04:48 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1092840
+Project: platform/build/soong
+Branch: refs/heads/master
