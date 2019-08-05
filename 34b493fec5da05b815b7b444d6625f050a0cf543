@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad5b5669_8ad4a979",
+        "filename": "cc/lto.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-05T16:42:31Z",
+      "side": 1,
+      "message": "This is fine short term, but if these limitations are going to be around for a while I\u0027d suggest connecting the lto and sanitizer mixins, similar to the way the linker and santizer mixins are linked by passing one to the other in the module factories: https://cs.corp.google.com/android/build/soong/cc/library.go?rcl\u003d0f62bcf360cb47a9e6266e45f11a405d7df29411\u0026l\u003d1074",
+      "revId": "34b493fec5da05b815b7b444d6625f050a0cf543",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
