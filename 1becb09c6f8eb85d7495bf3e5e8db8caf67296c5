@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22d6dee7_8f923b4f",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-05T20:12:00Z",
+      "side": 1,
+      "message": "This can be return \u0026iz, or iz :\u003d \u0026ManagedInputZip{...} above and return iz here",
+      "range": {
+        "startLine": 413,
+        "startChar": 1,
+        "endLine": 414,
+        "endChar": 9
+      },
+      "revId": "1becb09c6f8eb85d7495bf3e5e8db8caf67296c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40d76409_cbf81df5",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-05T20:12:00Z",
+      "side": 1,
+      "message": "what is ciz short for?",
+      "range": {
+        "startLine": 418,
+        "startChar": 36,
+        "endLine": 418,
+        "endChar": 39
+      },
+      "revId": "1becb09c6f8eb85d7495bf3e5e8db8caf67296c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bb84409_c081a9ae",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-05T20:12:00Z",
+      "side": 1,
+      "message": "Why two?  Would this be simpler as an izm.closeOldest(), and then call it twice?",
+      "revId": "1becb09c6f8eb85d7495bf3e5e8db8caf67296c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "837ae4bc_1fde536e",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-05T20:12:00Z",
+      "side": 1,
+      "message": "This is a little odd, since ziputil is not the name that android/soong/zip uses for itself.  I wonder if android/soong/jar would be a better place for that function, since it emulates jar\u0027s @ file behavior?",
+      "range": {
+        "startLine": 658,
+        "startChar": 27,
+        "endLine": 658,
+        "endChar": 34
+      },
+      "revId": "1becb09c6f8eb85d7495bf3e5e8db8caf67296c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fb3557a_9f6a0b7e",
+        "filename": "cmd/merge_zips/merge_zips.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-05T20:12:00Z",
+      "side": 1,
+      "message": "This seems really high, the default limit on mac is something like 256, and I think we recommend bumping it up to 2500.  What does setting this to something like 100 do to performance?",
+      "range": {
+        "startLine": 704,
+        "startChar": 54,
+        "endLine": 704,
+        "endChar": 59
+      },
+      "revId": "1becb09c6f8eb85d7495bf3e5e8db8caf67296c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
