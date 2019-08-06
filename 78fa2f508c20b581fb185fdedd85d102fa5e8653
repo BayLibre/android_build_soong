@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "daa78676_d1bdde44",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-06T11:55:37Z",
+      "side": 1,
+      "message": "nit: it would be nicer if this part is made as a function defined in sabi.go",
+      "range": {
+        "startLine": 882,
+        "startChar": 0,
+        "endLine": 885,
+        "endChar": 0
+      },
+      "revId": "78fa2f508c20b581fb185fdedd85d102fa5e8653",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
