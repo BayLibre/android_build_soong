@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2b6f80a_645fc06c",
+        "filename": "cc/linker.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2019-08-06T20:35:59Z",
+      "side": 1,
+      "message": "We use linker script to explicitly export libgcc/libcrt symbols through libm. This shouldn\u0027t be necessary.",
+      "range": {
+        "startLine": 381,
+        "startChar": 4,
+        "endLine": 381,
+        "endChar": 30
+      },
+      "revId": "4a86afc940cf6dda5dfc0ef3b069a60466493072",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
