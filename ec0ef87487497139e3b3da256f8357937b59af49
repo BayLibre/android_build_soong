@@ -196,6 +196,24 @@
     },
     {
       "key": {
+        "uuid": "55be6e98_301aec05",
+        "filename": "java/platform_compat_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1463094
+      },
+      "writtenOn": "2019-08-06T17:53:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cae317c9_a2cf12f8",
+      "revId": "ec0ef87487497139e3b3da256f8357937b59af49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "549020a7_0efca598",
         "filename": "java/platform_compat_config.go",
         "patchSetId": 2
