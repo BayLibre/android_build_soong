@@ -44,6 +44,7 @@ var (
 		"conscrypt",
 		"core-oj",
 		"core-libart",
+		"core-icu4j",
 	}
 )
 
