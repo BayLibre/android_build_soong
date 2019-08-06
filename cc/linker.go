@@ -475,6 +475,26 @@ func (linker *baseLinker) injectVersionSymbol(ctx ModuleContext, in android.Path
 	})
 }
 
+// Injecting BSSL crypto hash
+func init() {
+	pctx.HostBinToolVariable("cryptoHashInjectCmd", "bssl_inject_hash")
+}
+
+var injectCryptoHash = pctx.AndroidStaticRule("injectCryptoHash",
+	blueprint.RuleParams{
+		Command:     "$cryptoHashInjectCmd -in-object $in -o $out",
+		CommandDeps: []string{"$cryptoHashInjectCmd"},
+	})
+
+func (linker *baseLinker) injectCryptoHash(ctx ModuleContext, in android.Path, out android.WritablePath) {
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        injectCryptoHash,
+		Description: "inject crypto hash",
+		Input:       in,
+		Output:      out,
+	})
+}
+
 // Rule to generate .bss symbol ordering file.
 
 var (

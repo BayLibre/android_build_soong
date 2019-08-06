@@ -113,6 +113,9 @@ type LibraryProperties struct {
 
 	// Order symbols in .bss section by their sizes.  Only useful for shared libraries.
 	Sort_bss_symbols_by_size *bool
+
+	// Inject bssl hash
+	Inject_bssl_hash *bool `android:"arch_variant"`
 }
 
 type LibraryMutatedProperties struct {
@@ -730,8 +733,13 @@ func (library *libraryDecorator) linkShared(ctx ModuleContext,
 		outputFile = android.PathForModuleOut(ctx, "unstripped", fileName)
 		library.stripper.stripExecutableOrSharedLib(ctx, outputFile, strippedOutputFile, builderFlags)
 	}
-
 	library.unstrippedOutputFile = outputFile
+
+	if BoolDefault(library.Properties.Inject_bssl_hash, false) {
+		hashedOutputfile := outputFile
+		outputFile = android.PathForModuleOut(ctx, "unhashed", fileName)
+		library.injectCryptoHash(ctx, outputFile, hashedOutputfile)
+	}
 
 	if Bool(library.baseLinker.Properties.Use_version_lib) {
 		if ctx.Host() {
