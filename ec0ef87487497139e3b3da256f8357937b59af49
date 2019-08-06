@@ -178,6 +178,24 @@
     },
     {
       "key": {
+        "uuid": "cae317c9_a2cf12f8",
+        "filename": "java/platform_compat_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-06T16:39:39Z",
+      "side": 1,
+      "message": "Raw strings do not lose \" characters, but you are putting this onto the command line where bash needs escaping.  Before using the raw string the \\\" was treated as \", which then ended/restarted the bash \"-quoted strings on the command line. The raw string is keeping both the \\ and the \" character, which then escapes the \" and works fine.\n\nA better solution would be to drop the \\ here and use \u0027 quoting instead of \" quoting in the command line, or leave out the quoting and use proptools.ShellEscape() on the string to escape it for the command line.",
+      "parentUuid": "eb4cd617_f72031f3",
+      "revId": "ec0ef87487497139e3b3da256f8357937b59af49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "549020a7_0efca598",
         "filename": "java/platform_compat_config.go",
         "patchSetId": 2
