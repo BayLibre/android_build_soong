@@ -1725,10 +1725,53 @@ type SourceFileProducer interface {
 }
 
 // A module that implements OutputFileProducer can be referenced from any property that is tagged with `android:"path"`
-// using the ":module" syntax or ":module{.tag}" syntax and provides a list of otuput files to be used as if they were
+// using the ":module" syntax or ":module{.tag}" syntax and provides a list of output files to be used as if they were
 // listed in the property.
 type OutputFileProducer interface {
 	OutputFiles(tag string) (Paths, error)
+}
+
+// OutputFilesForModule returns the paths from an OutputFileProducer with the given tag.  On error, including if the
+// module produced zero paths, it reports errors to the ctx and returns nil.
+func OutputFilesForModule(ctx PathContext, module blueprint.Module, tag string) Paths {
+	paths, err := outputFilesForModule(ctx, module, tag)
+	if err != nil {
+		reportPathError(ctx, err)
+		return nil
+	}
+	return paths
+}
+
+// OutputFileForModule returns the path from an OutputFileProducer with the given tag.  On error, including if the
+// module produced zero or multiple paths, it reports errors to the ctx and returns nil.
+func OutputFileForModule(ctx PathContext, module blueprint.Module, tag string) Path {
+	paths, err := outputFilesForModule(ctx, module, tag)
+	if err != nil {
+		reportPathError(ctx, err)
+		return nil
+	}
+	if len(paths) > 1 {
+		reportPathErrorf(ctx, "got multiple output files from module %q, expected exactly one",
+			pathContextName(ctx, module))
+		return nil
+	}
+	return paths[0]
+}
+
+func outputFilesForModule(ctx PathContext, module blueprint.Module, tag string) (Paths, error) {
+	if outputFileProducer, ok := module.(OutputFileProducer); ok {
+		paths, err := outputFileProducer.OutputFiles(tag)
+		if err != nil {
+			return nil, fmt.Errorf("failed to get output file from module %q: %s",
+				pathContextName(ctx, module), err.Error())
+		}
+		if len(paths) == 0 {
+			return nil, fmt.Errorf("failed to get output files from module %q", pathContextName(ctx, module))
+		}
+		return paths, nil
+	} else {
+		return nil, fmt.Errorf("module %q is not an OutputFileProducer", pathContextName(ctx, module))
+	}
 }
 
 type HostToolProvider interface {
