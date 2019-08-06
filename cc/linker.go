@@ -378,6 +378,10 @@ func (linker *baseLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 		flags.LdFlags = append(flags.LdFlags, "-lfdio", "-lzircon")
 	}
 
+	if ctx.ModuleName() != "libm" {
+		flags.LdFlags = append(flags.LdFlags, "-Wl,--exclude-libs=libclang_rt.builtins")
+	}
+
 	CheckBadLinkerFlags(ctx, "ldflags", linker.Properties.Ldflags)
 
 	flags.LdFlags = append(flags.LdFlags, proptools.NinjaAndShellEscapeList(linker.Properties.Ldflags)...)
