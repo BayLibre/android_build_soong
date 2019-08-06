@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d03180b_1c89d696",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-06T17:35:04Z",
+      "side": 1,
+      "message": "This seems confusing with \"sdk_version\", which is implicitly the Android SDK.  Any way we can differentiate them?",
+      "revId": "8131d12ee5859413833942a799f696f63d72dd6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
