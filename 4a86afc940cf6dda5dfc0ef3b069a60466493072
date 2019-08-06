@@ -22,6 +22,30 @@
       "revId": "4a86afc940cf6dda5dfc0ef3b069a60466493072",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eec0d282_2143abf0",
+        "filename": "cc/linker.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-08-06T21:48:34Z",
+      "side": 1,
+      "message": "Done.  I see the below with and without this check for libm:\n\n $ readelf -a /work/aosp/out/target/product/walleye/system/apex/com.android.runtime.debug/lib/bionic/libm.so | grep float\n  Flags:                             0x5000200, Version5 EABI, soft-float ABI\n   187: 0001ddf8    64 FUNC    GLOBAL DEFAULT   17 __floatdidf@@LIBC_DEPRECATED",
+      "parentUuid": "c2b6f80a_645fc06c",
+      "range": {
+        "startLine": 381,
+        "startChar": 4,
+        "endLine": 381,
+        "endChar": 30
+      },
+      "revId": "4a86afc940cf6dda5dfc0ef3b069a60466493072",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
