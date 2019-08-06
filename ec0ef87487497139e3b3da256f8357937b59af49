@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "afebaf00_40c09751",
+        "filename": "java/platform_compat_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1463094
+      },
+      "writtenOn": "2019-08-06T13:14:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fe8c3265_e0fd024a",
+      "range": {
+        "startLine": 26,
+        "startChar": 8,
+        "endLine": 26,
+        "endChar": 14
+      },
+      "revId": "ec0ef87487497139e3b3da256f8357937b59af49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2162250c_859d8f2a",
         "filename": "java/platform_compat_config.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "ec0ef87487497139e3b3da256f8357937b59af49",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edaa9806_bbb83b6c",
+        "filename": "java/platform_compat_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1463094
+      },
+      "writtenOn": "2019-08-06T13:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2162250c_859d8f2a",
+      "range": {
+        "startLine": 41,
+        "startChar": 19,
+        "endLine": 41,
+        "endChar": 38
+      },
+      "revId": "ec0ef87487497139e3b3da256f8357937b59af49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "2a5617a6_fdcbf4c2",
+        "filename": "java/platform_compat_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1463094
+      },
+      "writtenOn": "2019-08-06T13:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b940f4a9_b1be53f8",
+      "range": {
+        "startLine": 43,
+        "startChar": 21,
+        "endLine": 43,
+        "endChar": 60
+      },
+      "revId": "ec0ef87487497139e3b3da256f8357937b59af49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "602ee583_67ad9e99",
         "filename": "java/platform_compat_config.go",
         "patchSetId": 2
@@ -88,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "eb4cd617_f72031f3",
+        "filename": "java/platform_compat_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1463094
+      },
+      "writtenOn": "2019-08-06T13:14:34Z",
+      "side": 1,
+      "message": "unescaped \" disappear from a `` string, which causes a parse error. I just switched to `` but kept the esacping.",
+      "parentUuid": "602ee583_67ad9e99",
+      "revId": "ec0ef87487497139e3b3da256f8357937b59af49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "549020a7_0efca598",
         "filename": "java/platform_compat_config.go",
         "patchSetId": 2
@@ -102,6 +192,24 @@
       "revId": "ec0ef87487497139e3b3da256f8357937b59af49",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df753323_be9a28e3",
+        "filename": "java/platform_compat_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1463094
+      },
+      "writtenOn": "2019-08-06T13:14:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "549020a7_0efca598",
+      "revId": "ec0ef87487497139e3b3da256f8357937b59af49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
