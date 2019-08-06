@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f5414619_f3549b3b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-08-06T19:52:43Z",
+      "side": 1,
+      "message": "And indeed, the fact that this boots, is not a good sign.",
+      "parentUuid": "796dc09a_095b7a88",
+      "revId": "2c3c6a0b52ab07af8eef6e865b9ceb7c8e4ae5ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9e6e2094_1b840a0f",
         "filename": "cc/linker.go",
         "patchSetId": 2
