@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "494213fe_8f36d37b",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-06T21:57:14Z",
+      "side": 1,
+      "message": "Can you leave a TODO to move this to a cc_genrule once they support operating on a shared library?",
+      "revId": "6ec5da89e74bd5d621d9eee63b0189e3baa4d610",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75d10c90_1f1391c2",
+        "filename": "cc/linker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-06T21:57:14Z",
+      "side": 1,
+      "message": "I\u0027d suggest using the android.RuleBuilder style instead of the separate rule + build:\n\n    rule :\u003d android.NewRuleBuilder()\n    rule.Command().\n        BuiltTool(\"bssl_inject_hash\").\n        FlagWithInput(\"-in-object \", in).\n        FlagWithOutput(\"-o \", out)\n    rule.Build(pctx, ctx, \"injectCryptoHash\", \"inject crypto hash\")\n\nThen you can drop the AndroidStaticRule and HostBinToolVariable",
+      "revId": "6ec5da89e74bd5d621d9eee63b0189e3baa4d610",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
