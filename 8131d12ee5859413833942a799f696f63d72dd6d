@@ -16,6 +16,24 @@
       "revId": "8131d12ee5859413833942a799f696f63d72dd6d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1978fe56_3d9cd651",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-06T23:06:14Z",
+      "side": 1,
+      "message": "Ok. sdk_version is to specify the sdk (and version) that a module is \"depending\" on, but sdk.name/version is for specifying the one that the module is a \"member of\".\n\nI will rename this to provides_sdk. If you have a better name though, I will be happy to rename to it.",
+      "parentUuid": "3d03180b_1c89d696",
+      "revId": "8131d12ee5859413833942a799f696f63d72dd6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
