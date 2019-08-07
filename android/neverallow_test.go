@@ -20,16 +20,19 @@ import (
 	"github.com/google/blueprint"
 )
 
-func init() {
-	// Add extra rules needed for testing.
-	AddNeverAllowRules(
-		NeverAllow().InDirectDeps("not_allowed_in_direct_deps"),
-	)
-}
-
 var neverallowTests = []struct {
-	name           string
-	fs             map[string][]byte
+	// The name of the test.
+	name string
+
+	// Optional test specific rules. If specified then they are used instead of the default rules.
+	rules []Rule
+
+	// Additional contents to add to the virtual filesystem used by the tests.
+	fs map[string][]byte
+
+	// The expected error patterns. If empty then no errors are expected, otherwise each error
+	// reported must be matched by at least one of these patterns. A pattern matches if the error
+	// message contains the pattern. A pattern does not have to match the whole error message.
 	expectedErrors []string
 }{
 	// Test General Functionality
@@ -37,6 +40,9 @@ var neverallowTests = []struct {
 	// in direct deps tests
 	{
 		name: "not_allowed_in_direct_deps",
+		rules: []Rule{
+			NeverAllow().InDirectDeps("not_allowed_in_direct_deps"),
+		},
 		fs: map[string][]byte{
 			"top/Blueprints": []byte(`
 				cc_library {
@@ -53,7 +59,7 @@ var neverallowTests = []struct {
 		},
 	},
 
-	// Test specific rules
+	// Test android specific rules
 
 	// include_dir rule tests
 	{
@@ -252,7 +258,10 @@ func TestNeverallow(t *testing.T) {
 	for _, test := range neverallowTests {
 
 		t.Run(test.name, func(t *testing.T) {
-			_, errs := testNeverallow(config, test.fs)
+			var errs []error
+			runWithOptionalCustomRules(test.rules, func() {
+				_, errs = testNeverallow(config, test.fs)
+			})
 			CheckErrorsAgainstExpectations(t, errs, test.expectedErrors)
 		})
 	}

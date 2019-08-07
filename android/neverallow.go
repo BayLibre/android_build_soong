@@ -551,3 +551,23 @@ func matchValue(value reflect.Value, check func(string) bool) bool {
 
 	panic("Can't handle type: " + value.Kind().String())
 }
+
+// Executes the supplied runner with either the default rules (if the supplied rules is empty) or
+// the supplied rules.
+//
+// For testing only.
+func runWithOptionalCustomRules(rules []Rule, runner func()) {
+	if len(rules) > 0 {
+		// Reset the default rules after executing the runner.
+		defer setDefaultRules(neverallows)
+
+		// Override the default rules while executing the runner.
+		setDefaultRules(rules)
+	}
+
+	runner()
+}
+
+func setDefaultRules(rules []Rule) {
+	neverallows = rules
+}
