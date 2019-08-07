@@ -22,6 +22,30 @@
       "revId": "3864d7db07b5132a5a2aaeb051738fe7c9b95560",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5eaa492_643b83bc",
+        "filename": "cc/linker.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2019-08-07T17:35:09Z",
+      "side": 1,
+      "message": "I think it\u0027s correct as is.  I\u0027m seeing the right behavior and there\u0027re other examples in the tree doing the same:\n\nhttps://cs.corp.google.com/android/bionic/libdl/Android.bp?type\u003dcs\u0026q\u003d\"--exclude-libs\"\u0026sq\u003dpackage:%5Eandroid$\u0026g\u003d0\u0026l\u003d50",
+      "parentUuid": "466c8e34_db615aa6",
+      "range": {
+        "startLine": 381,
+        "startChar": 61,
+        "endLine": 381,
+        "endChar": 112
+      },
+      "revId": "3864d7db07b5132a5a2aaeb051738fe7c9b95560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
