@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75e6c925_eb597b23",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-08-07T17:28:52Z",
+      "side": 1,
+      "message": "Any thoughts on this name? Or preference for another one?",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 25
+      },
+      "revId": "843838cb1f116d9ac9b1ea454cffcdbafc6d08fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a174f7fd_a03d6318",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-08-07T17:28:52Z",
+      "side": 1,
+      "message": "I couldn\u0027t find a way to do this. Let me know if you think there is a better one.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 42
+      },
+      "revId": "843838cb1f116d9ac9b1ea454cffcdbafc6d08fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5ec56ee_a51f6e9f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-08-07T17:28:52Z",
+      "side": 1,
+      "message": "Specifically:\nhttps://android-review.googlesource.com/c/platform/system/tools/aidl/+/1093510/11/generate_ndk.cpp#142",
+      "range": {
+        "startLine": 17,
+        "startChar": 6,
+        "endLine": 17,
+        "endChar": 59
+      },
+      "revId": "843838cb1f116d9ac9b1ea454cffcdbafc6d08fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
