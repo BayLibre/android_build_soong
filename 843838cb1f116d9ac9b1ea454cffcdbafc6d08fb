@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "f056f8eb_c0eca283",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-08-07T17:46:46Z",
+      "side": 1,
+      "message": "In this case, I am trying to distinguish platform/VNDK code from NDK code. Anything that is #apex, #vndk, or platform, I want to distinguish from code in an app. I\u0027m looking for a way to say \"not app code\"",
+      "parentUuid": "905b96b3_b5e2c7ea",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 42
+      },
+      "revId": "843838cb1f116d9ac9b1ea454cffcdbafc6d08fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5ec56ee_a51f6e9f",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
