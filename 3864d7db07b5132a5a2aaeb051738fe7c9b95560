@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "466c8e34_db615aa6",
+        "filename": "cc/linker.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-07T03:06:35Z",
+      "side": 1,
+      "message": "This just returns the name of the archive, not the path to the file. I am not sure if --exclude-libs is smart enough to find a lib only with its name.\n\nI think we need to find the dep to the module for the built-in library and query its output file path.",
+      "range": {
+        "startLine": 381,
+        "startChar": 61,
+        "endLine": 381,
+        "endChar": 112
+      },
+      "revId": "3864d7db07b5132a5a2aaeb051738fe7c9b95560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
