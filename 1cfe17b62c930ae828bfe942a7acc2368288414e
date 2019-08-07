@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "887a53da_5f235d4a",
+        "filename": "android/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-07T19:01:26Z",
+      "side": 1,
+      "message": "add t.Helper() to make test failure messages point to the line that called this function",
+      "revId": "1cfe17b62c930ae828bfe942a7acc2368288414e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
