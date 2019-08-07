@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "bf616e16_25b8d969",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-08-07T17:43:26Z",
+      "side": 1,
+      "message": "The presence of __ANDROID_API__? At least that worked before https://android.googlesource.com/platform/build/+/e3606ae6514ca9d68780fb259536a7aee20d0a00%5E%21/#F0 -- it looks like it may now apply to non-NDK/non-VNDK code as well?",
+      "parentUuid": "a174f7fd_a03d6318",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 42
+      },
+      "revId": "843838cb1f116d9ac9b1ea454cffcdbafc6d08fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5ec56ee_a51f6e9f",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
