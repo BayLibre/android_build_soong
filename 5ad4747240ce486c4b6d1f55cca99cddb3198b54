@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53f52ce9_db106bf6",
+        "filename": "android/neverallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-07T18:59:27Z",
+      "side": 1,
+      "message": "It would be better to make the neverallowMutator get the rules from the ctx-scoped Config with an override for testing, something like:\n\nvar neverallowRulesKey \u003d NewOnceKey(\"neverallowRules\")\n\nfunc neverallowRules(config Config) []Rule {\n    return config.Once(neverallowRulesKey, func() interface{} {\n        // No test rules were set by setTestNeverallowRules, use the global rules\n        return neverallows\n    }).([]Rule)\n} \n\nfunc setTestNeverallowRules(config android.Config, testRules []Rule) {\n\tconfig.Once(neverallowRulesKey, func() interface{} { return testRules })\n}\n\n\nThen neverallowMutator gets the rules with neverallowRules(ctx.Config()), and the tests can call setTestNeverallowRules(config, rules).  That way tests that run in parallel won\u0027t corrupt the global state.",
+      "revId": "5ad4747240ce486c4b6d1f55cca99cddb3198b54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
