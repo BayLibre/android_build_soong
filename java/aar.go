@@ -69,6 +69,9 @@ type aaptProperties struct {
 
 	// path to AndroidManifest.xml.  If unset, defaults to "AndroidManifest.xml".
 	Manifest *string `android:"path"`
+
+	// path to additional manifest files to merge with main manifest.
+	Additional_manifest []string `android:"path"`
 }
 
 type aapt struct {
@@ -220,7 +223,11 @@ func (a *aapt) buildActions(ctx android.ModuleContext, sdkContext sdkContext, ex
 	a.transitiveManifestPaths = append(android.Paths{manifestPath}, transitiveStaticLibManifests...)
 
 	if len(transitiveStaticLibManifests) > 0 {
-		a.mergedManifestFile = manifestMerger(ctx, manifestPath, transitiveStaticLibManifests, a.isLibrary)
+		// Merge additional manifest files with app manifest.
+		additionalManifestPaths := android.PathsForModuleSrc(ctx, a.aaptProperties.Additional_manifest)
+		targetManifests := append(transitiveStaticLibManifests, additionalManifestPaths...)
+
+		a.mergedManifestFile = manifestMerger(ctx, manifestPath, targetManifests, a.isLibrary)
 		if !a.isLibrary {
 			// Only use the merged manifest for applications.  For libraries, the transitive closure of manifests
 			// will be propagated to the final application and merged there.  The merged manifest for libraries is
