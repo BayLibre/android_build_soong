@@ -22,6 +22,30 @@
       "revId": "630846d244f747b2de74a32285f042fc91d8031e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23e4e5e8_409a1b91",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-08-08T13:04:49Z",
+      "side": 1,
+      "message": "This should be covered by the assertion line 723; did you want to add another assertion here?",
+      "parentUuid": "a5298193_90ed4f45",
+      "range": {
+        "startLine": 789,
+        "startChar": 3,
+        "endLine": 789,
+        "endChar": 16
+      },
+      "revId": "630846d244f747b2de74a32285f042fc91d8031e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
