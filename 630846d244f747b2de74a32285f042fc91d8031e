@@ -46,6 +46,30 @@
       "revId": "630846d244f747b2de74a32285f042fc91d8031e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffe8012a_a4a558cb",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-08-08T16:39:06Z",
+      "side": 1,
+      "message": "That assertion covers the \"tests\" property, while here we\u0027re looking for testTag recursively in the dependency tree. I don\u0027t think it\u0027s obvious that the latter cannot ever happen without the former, so I think an assertion on a.testApex here would be reassuring, yes.",
+      "parentUuid": "23e4e5e8_409a1b91",
+      "range": {
+        "startLine": 789,
+        "startChar": 3,
+        "endLine": 789,
+        "endChar": 16
+      },
+      "revId": "630846d244f747b2de74a32285f042fc91d8031e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
