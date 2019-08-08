@@ -22,6 +22,30 @@
       "revId": "92f4e129e161b9f53e2d685fcf1b7b32ffba7209",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1cd8d0d_18a618f8",
+        "filename": "ui/build/dumpvars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2019-08-08T17:35:22Z",
+      "side": 1,
+      "message": "Emitting a constant \".\" does not solve the problem.\nMy local tests got \"TOP\" output as the absolute path to source root directory.\nIs there other make condition not initializing the TOP?\nOr should we use a different variable?",
+      "parentUuid": "a3f194b8_d65d2372",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 7
+      },
+      "revId": "92f4e129e161b9f53e2d685fcf1b7b32ffba7209",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
