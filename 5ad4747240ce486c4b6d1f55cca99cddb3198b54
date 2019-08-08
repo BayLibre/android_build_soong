@@ -16,6 +16,24 @@
       "revId": "5ad4747240ce486c4b6d1f55cca99cddb3198b54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b788626e_deddf748",
+        "filename": "android/neverallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-08-08T18:45:32Z",
+      "side": 1,
+      "message": "I did look at trying to use config.Once() (which you recommended for visibility testing) but could not work out how to use it. I didn\u0027t realise that you could provide different functions to each call.\n\nDone.",
+      "parentUuid": "53f52ce9_db106bf6",
+      "revId": "5ad4747240ce486c4b6d1f55cca99cddb3198b54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
