@@ -371,14 +371,14 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// Escape the command for the shell
 	rawCommand = "'" + strings.Replace(rawCommand, "'", `'\''`, -1) + "'"
 	g.rawCommand = rawCommand
-	sandboxCommand := fmt.Sprintf("$sboxCmd --sandbox-path %s --output-root %s -c %s %s $allouts",
+	sandboxCommand := fmt.Sprintf("$sboxCmd --sandbox-path %s --output-root %s -c %s %s $allouts$timestamp",
 		sandboxPath, genDir, rawCommand, depfilePlaceholder)
 
 	ruleParams := blueprint.RuleParams{
 		Command:     sandboxCommand,
 		CommandDeps: []string{"$sboxCmd"},
 	}
-	args := []string{"allouts"}
+	args := []string{"allouts", "timestamp"}
 	if Bool(g.properties.Depfile) {
 		ruleParams.Deps = blueprint.DepsGCC
 		args = append(args, "depfileArgs")
@@ -420,12 +420,26 @@ func (g *Module) generateSourceFile(ctx android.ModuleContext, task generateTask
 		params.Args["depfileArgs"] = "--depfile-out " + depFile.String()
 	}
 
-	ctx.Build(pctx, params)
-
 	for _, outputFile := range task.out {
 		g.outputFiles = append(g.outputFiles, outputFile)
 	}
-	g.outputDeps = append(g.outputDeps, task.out[0])
+
+	if len(task.out) <= 6 {
+		params.Output = task.out[0]
+		params.ImplicitOutputs = task.out[1:]
+
+		g.outputDeps = g.outputFiles
+	} else {
+		timestampFile := android.PathForModuleGen(ctx, "genrule.timestamp")
+
+		params.Output = timestampFile
+		params.ImplicitOutputs = task.out
+		params.Args["timestamp"] = " && touch " + timestampFile.String()
+
+		g.outputDeps = append(g.outputDeps, timestampFile)
+	}
+
+	ctx.Build(pctx, params)
 }
 
 // Collect information for opening IDE project files in java/jdeps.go.
