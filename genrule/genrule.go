@@ -40,6 +40,7 @@ var (
 )
 
 func init() {
+	pctx.Import("android/soong/android")
 	pctx.HostBinToolVariable("sboxCmd", "sbox")
 }
 
@@ -425,7 +426,20 @@ func (g *Module) generateSourceFile(ctx android.ModuleContext, task generateTask
 	for _, outputFile := range task.out {
 		g.outputFiles = append(g.outputFiles, outputFile)
 	}
-	g.outputDeps = append(g.outputDeps, task.out[0])
+
+	if len(task.out) <= 6 {
+		g.outputDeps = g.outputFiles
+	} else {
+		phonyFile := android.PathForModuleGen(ctx, "genrule-phony")
+
+		ctx.Build(pctx, android.BuildParams{
+			Rule:   android.Phony,
+			Output: phonyFile,
+			Inputs: g.outputFiles,
+		})
+
+		g.outputDeps = append(g.outputDeps, phonyFile)
+	}
 }
 
 // Collect information for opening IDE project files in java/jdeps.go.
