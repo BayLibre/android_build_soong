@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d343c56d_24da95e0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-09T18:26:28Z",
+      "side": 1,
+      "message": "Can you add:\nFixes: 123374442\n\nThat\u0027s our internal bug number tracking adding this feature.",
+      "revId": "f518b1b2618b26fbf4cfc205c15b42c26697a987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "892a3935_a1ef411c",
+        "filename": "androidmk/cmd/androidmk/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-09T18:26:28Z",
+      "side": 1,
+      "message": "Can you also add here:\n\n\t\t\t\"LOCAL_FULL_LIBS_MANIFEST_FILES\": \"additional_manifests\",",
+      "revId": "f518b1b2618b26fbf4cfc205c15b42c26697a987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2255f9b0_3d510400",
+        "filename": "java/aar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-09T18:26:28Z",
+      "side": 1,
+      "message": "paths",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 8
+      },
+      "revId": "f518b1b2618b26fbf4cfc205c15b42c26697a987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67ab5fc0_71e2213e",
+        "filename": "java/aar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-09T18:26:28Z",
+      "side": 1,
+      "message": "Additional_manifests",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 20
+      },
+      "revId": "f518b1b2618b26fbf4cfc205c15b42c26697a987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fcede46_3ea6b843",
+        "filename": "java/aar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-09T18:26:28Z",
+      "side": 1,
+      "message": "Appending to an existing slice into a new slice can have strange behavior in Go depending on whether or not append needs to reallocate the backing array.  Also, in Make the LOCAL_FULL_LIBS_MANIFEST_FILES come before libraries.  How about:\n\n\tadditionalManifests :\u003d android.PathsForModuleSrc(ctx, a.aaptProperties.Additional_manifest)\n\tadditionalManifests :\u003d append(additionalManifests, transitiveStaticLibManifests...)",
+      "revId": "f518b1b2618b26fbf4cfc205c15b42c26697a987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
