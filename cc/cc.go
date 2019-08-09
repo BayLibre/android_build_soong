@@ -461,6 +461,17 @@ func (c *Module) UnstrippedOutputFile() android.Path {
 	return nil
 }
 
+func (c *Module) CoverageOutputFile() android.OptionalPath {
+	if c.linker != nil {
+		if library, ok := c.linker.(*libraryDecorator); ok {
+			return library.coverageOutputFile
+		} else if binary, ok := c.linker.(*binaryDecorator); ok {
+			return binary.coverageOutputFile
+		}
+	}
+	return android.OptionalPath{}
+}
+
 func (c *Module) RelativeInstallPath() string {
 	if c.installer != nil {
 		return c.installer.relativeInstallPath()
