@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ced053a0_be6c4eb4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-08-09T05:58:14Z",
+      "side": 1,
+      "message": "I hope see the minimal definition of \"mysdk\" module here.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 52
+      },
+      "revId": "540ad9668a2625ff30145f1ca8dc862289d73f15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7340eca7_7dd79c96",
+        "filename": "android/defaults.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-08-09T05:58:14Z",
+      "side": 1,
+      "message": "How about formatting like this..\n\n       \u0026sdkProperties{},\n    )",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 19
+      },
+      "revId": "540ad9668a2625ff30145f1ca8dc862289d73f15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2bc4028_3da966ba",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-08-09T05:58:14Z",
+      "side": 1,
+      "message": "I hope to see some comments why we don\u0027t want to rename prebuilt. I think that it will return mangled name instead of renameing it, right?",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 37
+      },
+      "revId": "540ad9668a2625ff30145f1ca8dc862289d73f15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c160590_19732c7c",
+        "filename": "android/sdk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-08-09T05:58:14Z",
+      "side": 1,
+      "message": "I see \"sdk#ver\" format elsewhere. Can we use the same format for value of provides_sdk?\nlike: provides_sdk: \"mysdk#20\"",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 17
+      },
+      "revId": "540ad9668a2625ff30145f1ca8dc862289d73f15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac8efd01_a4d40358",
+        "filename": "android/sdk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-08-09T05:58:14Z",
+      "side": 1,
+      "message": "I\u0027m not sure, but do we need to accumulate these SdkRefs?",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 0
+      },
+      "revId": "540ad9668a2625ff30145f1ca8dc862289d73f15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30ad3b74_c3a6f547",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-08-09T05:58:14Z",
+      "side": 1,
+      "message": "I think that if we gather sdkMembers as map[string][]android.SdkAware, then following code could be simpler.",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 4
+      },
+      "revId": "540ad9668a2625ff30145f1ca8dc862289d73f15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
