@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e0a1b1ac_7561df07",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-09T10:11:46Z",
+      "side": 1,
+      "message": "It does not have any property other than \u0027name\u0027. Nothing to demonstrate for now. :)",
+      "parentUuid": "ced053a0_be6c4eb4",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 52
+      },
+      "revId": "540ad9668a2625ff30145f1ca8dc862289d73f15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7340eca7_7dd79c96",
         "filename": "android/defaults.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "540ad9668a2625ff30145f1ca8dc862289d73f15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64b5afc0_16e5ae41",
+        "filename": "android/defaults.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-09T10:11:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7340eca7_7dd79c96",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 19
+      },
+      "revId": "540ad9668a2625ff30145f1ca8dc862289d73f15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9faff173_fb7703ad",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-09T10:11:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2bc4028_3da966ba",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 37
+      },
+      "revId": "540ad9668a2625ff30145f1ca8dc862289d73f15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c160590_19732c7c",
         "filename": "android/sdk.go",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "540ad9668a2625ff30145f1ca8dc862289d73f15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51976706_2b5dcf53",
+        "filename": "android/sdk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-09T10:11:46Z",
+      "side": 1,
+      "message": "I\u0027d want to avoid magic characters as much as possible.\n\nI am using name#version for uses_sdks just because it is easier to write an array. However, since we don\u0027t need an array here, I would like to keep the separate properties.\n\nWe will have more properties here in the future. (e.g. shared_libs_only, etc.)",
+      "parentUuid": "3c160590_19732c7c",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 17
+      },
+      "revId": "540ad9668a2625ff30145f1ca8dc862289d73f15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "751cd5cd_98aab3ab",
+        "filename": "android/sdk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-09T10:11:46Z",
+      "side": 1,
+      "message": "No. In the future, I will trigger an error if s.properties.RequiredSdks don\u0027t comply with sdks.",
+      "parentUuid": "ac8efd01_a4d40358",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 0
+      },
+      "revId": "540ad9668a2625ff30145f1ca8dc862289d73f15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30ad3b74_c3a6f547",
         "filename": "sdk/sdk.go",
         "patchSetId": 3
@@ -137,6 +257,30 @@
       "revId": "540ad9668a2625ff30145f1ca8dc862289d73f15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dbb7796_467bcc05",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-09T10:11:46Z",
+      "side": 1,
+      "message": "Hmm, I am not sure. We anyway have to collect info from []android.SdkAware. The information that we want here is not []android.SdkAware, but whether they have a dev version and their module type.",
+      "parentUuid": "30ad3b74_c3a6f547",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 4
+      },
+      "revId": "540ad9668a2625ff30145f1ca8dc862289d73f15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
