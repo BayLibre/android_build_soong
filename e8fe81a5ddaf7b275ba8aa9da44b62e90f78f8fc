@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eec4af22_8cbe49de",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2019-08-09T19:02:37Z",
+      "side": 1,
+      "message": "Do we also need the other constraints for native coverage?  i.e. module\u0027s path is in COVERAGE_PATHS, but not in COVERAGE_EXCLUDE_PATHS?\n\nIf apex modules don\u0027t need native_coverage blueprint property, that can be ignored.",
+      "revId": "e8fe81a5ddaf7b275ba8aa9da44b62e90f78f8fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38a7bc1c_e2f19f3e",
+        "filename": "cc/coverage.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2019-08-09T19:02:37Z",
+      "side": 1,
+      "message": "refers",
+      "range": {
+        "startLine": 191,
+        "startChar": 74,
+        "endLine": 191,
+        "endChar": 81
+      },
+      "revId": "e8fe81a5ddaf7b275ba8aa9da44b62e90f78f8fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
