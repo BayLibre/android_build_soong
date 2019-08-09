@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91a64519_1640d2c9",
+        "filename": "build_kzip.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-09T15:52:29Z",
+      "side": 1,
+      "message": "Why not?",
+      "range": {
+        "startLine": 7,
+        "startChar": 33,
+        "endLine": 8,
+        "endChar": 77
+      },
+      "revId": "c2575590f99d71eadc165978e498105db0142656",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63efba86_07923a65",
+        "filename": "build_kzip.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-09T15:52:29Z",
+      "side": 1,
+      "message": "Are these necessary?  They should already be in the environment for local builds via lunch, or build server builds via TARGET_PRODUCT\u003d on the command line.  The build also has its own defaults if any of these aren\u0027t set.",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 13,
+        "endChar": 26
+      },
+      "revId": "c2575590f99d71eadc165978e498105db0142656",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26f92d41_3f0100a2",
+        "filename": "build_kzip.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-09T15:52:29Z",
+      "side": 1,
+      "message": "Could this be done in a singleton rule in Soong?",
+      "revId": "c2575590f99d71eadc165978e498105db0142656",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
