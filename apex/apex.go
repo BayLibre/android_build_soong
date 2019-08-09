@@ -116,14 +116,15 @@ type dependencyTag struct {
 }
 
 var (
-	sharedLibTag   = dependencyTag{name: "sharedLib"}
-	executableTag  = dependencyTag{name: "executable"}
-	javaLibTag     = dependencyTag{name: "javaLib"}
-	prebuiltTag    = dependencyTag{name: "prebuilt"}
-	testTag        = dependencyTag{name: "test"}
-	keyTag         = dependencyTag{name: "key"}
-	certificateTag = dependencyTag{name: "certificate"}
-	usesTag        = dependencyTag{name: "uses"}
+	sharedLibTag       = dependencyTag{name: "sharedLib"}
+	executableTag      = dependencyTag{name: "executable"}
+	javaLibTag         = dependencyTag{name: "javaLib"}
+	prebuiltJavaLibTag = dependencyTag{name: "prebuiltJavaLib"}
+	prebuiltTag        = dependencyTag{name: "prebuilt"}
+	testTag            = dependencyTag{name: "test"}
+	keyTag             = dependencyTag{name: "key"}
+	certificateTag     = dependencyTag{name: "certificate"}
+	usesTag            = dependencyTag{name: "uses"}
 )
 
 func init() {
@@ -260,6 +261,9 @@ type apexBundleProperties struct {
 
 	// List of java libraries that are embedded inside this APEX bundle
 	Java_libs []string
+
+	// List of prebuilt java libraries that are embedded inside this APEX bundle
+	Prebuilt_java_libs []string
 
 	// List of prebuilt files that are embedded inside this APEX bundle
 	Prebuilts []string
@@ -597,6 +601,10 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 		{Mutator: "arch", Variation: "android_common"},
 	}, javaLibTag, a.properties.Java_libs...)
 
+	ctx.AddFarVariationDependencies([]blueprint.Variation{
+		{Mutator: "arch", Variation: "android_common"},
+	}, prebuiltJavaLibTag, a.properties.Prebuilt_java_libs...)
+
 	if String(a.properties.Key) == "" {
 		ctx.ModuleErrorf("key is missing")
 		return
@@ -740,6 +748,13 @@ func getCopyManifestForJavaLibrary(java *java.Library) (fileToCopy android.Path,
 	return
 }
 
+func getCopyManifestForPrebuiltJavaLibrary(java *java.Import) (fileToCopy android.Path, dirInApex string) {
+	dirInApex = "javalib"
+	// The output is only one, but for some reason, ImplementationJars returns Paths, not Path
+	fileToCopy = java.ImplementationJars()[0]
+	return
+}
+
 func getCopyManifestForPrebuiltEtc(prebuilt *android.PrebuiltEtc) (fileToCopy android.Path, dirInApex string) {
 	dirInApex = filepath.Join("etc", prebuilt.SubDir())
 	fileToCopy = prebuilt.OutputFile()
@@ -843,6 +858,18 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 					return true
 				} else {
 					ctx.PropertyErrorf("java_libs", "%q is not a java_library module", depName)
+				}
+			case prebuiltJavaLibTag:
+				if java, ok := child.(*java.Import); ok {
+					fileToCopy, dirInApex := getCopyManifestForPrebuiltJavaLibrary(java)
+					if fileToCopy == nil {
+						ctx.PropertyErrorf("prebuilt_java_libs", "%q is not configured to be compiled into dex", depName)
+					} else {
+						filesInfo = append(filesInfo, apexFile{fileToCopy, depName, dirInApex, javaSharedLib, java, nil})
+					}
+					return true
+				} else {
+					ctx.PropertyErrorf("prebuilt_java_libs", "%q is not a java_library module", depName)
 				}
 			case prebuiltTag:
 				if prebuilt, ok := child.(*android.PrebuiltEtc); ok {
