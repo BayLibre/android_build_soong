@@ -1,0 +1,10 @@
+Code-Review+1: Roland Levillain <rpl@google.com>
+Code-Review+1: Evgenii Stepanov <eugenis@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Autosubmit+1: Jiyong Park <jiyong@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Sun, 11 Aug 2019 17:12:45 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1093149
+Project: platform/build/soong
+Branch: refs/heads/master
