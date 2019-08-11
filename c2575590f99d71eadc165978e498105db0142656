@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b7959eab_69597c7a",
+        "filename": "build_kzip.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-08-11T22:08:10Z",
+      "side": 1,
+      "message": "If kzip generation is requested, Ninja files that Soong generates contain additional rules.",
+      "parentUuid": "91a64519_1640d2c9",
+      "range": {
+        "startLine": 7,
+        "startChar": 33,
+        "endLine": 8,
+        "endChar": 77
+      },
+      "revId": "c2575590f99d71eadc165978e498105db0142656",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "63efba86_07923a65",
         "filename": "build_kzip.bash",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1d3537cb_a3f29059",
+        "filename": "build_kzip.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-08-11T22:08:10Z",
+      "side": 1,
+      "message": "This script will be run by the build server. \nI was not able to find out the description of its environment, so all I know is what I see in aosp-master.gcl, where TARGET_PRODUCT et al. has been put on the command line (see line 63, for instance).",
+      "parentUuid": "63efba86_07923a65",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 13,
+        "endChar": 26
+      },
+      "revId": "c2575590f99d71eadc165978e498105db0142656",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "26f92d41_3f0100a2",
         "filename": "build_kzip.bash",
         "patchSetId": 1
@@ -59,6 +107,24 @@
       "writtenOn": "2019-08-09T15:52:29Z",
       "side": 1,
       "message": "Could this be done in a singleton rule in Soong?",
+      "revId": "c2575590f99d71eadc165978e498105db0142656",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb332915_099c0e9b",
+        "filename": "build_kzip.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-08-11T22:08:10Z",
+      "side": 1,
+      "message": "It can, at the expense of Soong writing 1Mb+ to the .ninja file and Ninja having additonal rule with 200K dependencies. IMHO it\u0027s not worth it.",
+      "parentUuid": "26f92d41_3f0100a2",
       "revId": "c2575590f99d71eadc165978e498105db0142656",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
