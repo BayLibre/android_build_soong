@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06e9e4de_3dd6d614",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-12T20:51:23Z",
+      "side": 1,
+      "message": "Maybe add an error or a panic if there are zero or more than one?",
+      "revId": "828551cca92f8fbdc3e7942f56a5800c46545b8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
