@@ -126,6 +126,10 @@ var (
 	usesTag        = dependencyTag{name: "uses"}
 )
 
+var (
+	whitelistNoApex = []string{"libbinder"}
+)
+
 func init() {
 	pctx.Import("android/soong/android")
 	pctx.Import("android/soong/java")
@@ -957,12 +961,18 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 							// Don't track further
 							return false
 						}
+						if am.NoApex() && !android.InList(ctx.OtherModuleName(child), whitelistNoApex) {
+							ctx.PropertyErrorf("no_apex", "requested by APEX %s", am.ApexName())
+						}
 						fileToCopy, dirInApex := getCopyManifestForNativeLibrary(cc, handleSpecialLibs)
 						filesInfo = append(filesInfo, apexFile{fileToCopy, depName, dirInApex, nativeSharedLib, cc, nil})
 						return true
 					}
 				} else if cc.IsTestPerSrcDepTag(depTag) {
 					if cc, ok := child.(*cc.Module); ok {
+						if am.NoApex() && !android.InList(ctx.OtherModuleName(child), whitelistNoApex) {
+							ctx.ModuleErrorf("module \"%s\" requested by APEXes: ", ctx.OtherModuleName(am))
+						}
 						fileToCopy, dirInApex := getCopyManifestForExecutable(cc)
 						// Handle modules created as `test_per_src` variations of a single test module:
 						// use the name of the generated test binary (`fileToCopy`) instead of the name
