@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd501939_b649caaa",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-12T22:26:14Z",
+      "side": 1,
+      "message": "comment where this comes from",
+      "range": {
+        "startLine": 430,
+        "startChar": 21,
+        "endLine": 430,
+        "endChar": 22
+      },
+      "revId": "b6811340c9dcc96dcdc69fbd1bf5527e8c70c54e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb925dde_7b9c8bcf",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-12T22:26:14Z",
+      "side": 1,
+      "message": "Why assign here but append below?",
+      "revId": "b6811340c9dcc96dcdc69fbd1bf5527e8c70c54e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
