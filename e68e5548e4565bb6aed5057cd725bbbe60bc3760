@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3675b79f_77f9182f",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1513383
+      },
+      "writtenOn": "2019-08-12T22:57:10Z",
+      "side": 1,
+      "message": "Are there modules that use the .stubsSrcJar? If the major use case is getting the docs.zip, maybe this case should be the default",
+      "range": {
+        "startLine": 362,
+        "startChar": 0,
+        "endLine": 362,
+        "endChar": 18
+      },
+      "revId": "e68e5548e4565bb6aed5057cd725bbbe60bc3760",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
