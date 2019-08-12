@@ -126,6 +126,16 @@ var (
 	usesTag        = dependencyTag{name: "uses"}
 )
 
+var (
+	whitelistNoApex = map[string][]string{
+		"apex_test_build_features":       []string{"libbinder"},
+		"com.android.neuralnetworks":     []string{"libbinder"},
+		"com.android.media":              []string{"libbinder"},
+		"com.android.media.swcodec":      []string{"libbinder"},
+		"test_com.android.media.swcodec": []string{"libbinder"},
+	}
+)
+
 func init() {
 	pctx.Import("android/soong/android")
 	pctx.Import("android/soong/java")
@@ -834,6 +844,11 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 					if cc.HasStubsVariants() {
 						provideNativeLibs = append(provideNativeLibs, cc.OutputFile().Path().Base())
 					}
+					if am, ok := child.(android.ApexModule); ok {
+						if am.NoApex() && !android.InList(depName, whitelistNoApex[am.ApexName()]) {
+							ctx.PropertyErrorf("no_apex", "requested by APEX %s", am.ApexName())
+						}
+					}
 					fileToCopy, dirInApex := getCopyManifestForNativeLibrary(cc, handleSpecialLibs)
 					filesInfo = append(filesInfo, apexFile{fileToCopy, depName, dirInApex, nativeSharedLib, cc, nil})
 					return true
@@ -956,6 +971,9 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 							requireNativeLibs = append(requireNativeLibs, cc.OutputFile().Path().Base())
 							// Don't track further
 							return false
+						}
+						if am.NoApex() && !android.InList(depName, whitelistNoApex[am.ApexName()]) {
+							ctx.PropertyErrorf("no_apex", "requested by APEX %s", am.ApexName())
 						}
 						fileToCopy, dirInApex := getCopyManifestForNativeLibrary(cc, handleSpecialLibs)
 						filesInfo = append(filesInfo, apexFile{fileToCopy, depName, dirInApex, nativeSharedLib, cc, nil})
