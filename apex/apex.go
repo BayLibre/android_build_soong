@@ -126,6 +126,16 @@ var (
 	usesTag        = dependencyTag{name: "uses"}
 )
 
+var (
+	whitelistNoApex = map[string][]string{
+		"apex_test_build_features":       []string{"libbinder"},
+		"com.android.neuralnetworks":     []string{"libbinder"},
+		"com.android.media":              []string{"libbinder"},
+		"com.android.media.swcodec":      []string{"libbinder"},
+		"test_com.android.media.swcodec": []string{"libbinder"},
+	}
+)
+
 func init() {
 	pctx.Import("android/soong/android")
 	pctx.Import("android/soong/java")
@@ -1008,6 +1018,12 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// prepend the name of this APEX to the module names. These names will be the names of
 	// modules that will be defined if the APEX is flattened.
 	for i := range filesInfo {
+		if am, ok := filesInfo[i].module.(android.ApexModule); ok {
+			if am.NoApex() && !android.InList(filesInfo[i].moduleName, whitelistNoApex[am.ApexName()]) {
+				ctx.ModuleErrorf("tries to include no_apex module %s", filesInfo[i].moduleName)
+			}
+		}
+
 		filesInfo[i].moduleName = ctx.ModuleName() + "." + filesInfo[i].moduleName
 	}
 
