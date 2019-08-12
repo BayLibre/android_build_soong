@@ -16,9 +16,11 @@ package android
 
 import (
 	"sort"
+	"strings"
 	"sync"
 
 	"github.com/google/blueprint"
+	"github.com/google/blueprint/proptools"
 )
 
 // ApexModule is the interface that a module type is expected to implement if
@@ -77,6 +79,9 @@ type ApexModule interface {
 }
 
 type ApexProperties struct {
+	// Whether this module should not be part of any APEX. Default is false.
+	No_apex *bool
+
 	// Name of the apex variant that this module is mutated into
 	ApexName string `blueprint:"mutated"`
 }
@@ -127,6 +132,10 @@ func (m *ApexModuleBase) IsInstallableToApex() bool {
 
 func (m *ApexModuleBase) CreateApexVariations(mctx BottomUpMutatorContext) []blueprint.Module {
 	if len(m.apexVariations) > 0 {
+		if proptools.Bool(m.ApexProperties.No_apex) {
+			mctx.PropertyErrorf("no_apex", "requested by APEXes: %s", strings.Join(m.apexVariations, ", "))
+			return nil
+		}
 		sort.Strings(m.apexVariations)
 		variations := []string{""} // Original variation for platform
 		variations = append(variations, m.apexVariations...)
