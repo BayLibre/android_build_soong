@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a2304c44_b92d4f1b",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-08-12T22:49:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd501939_b649caaa",
+      "range": {
+        "startLine": 430,
+        "startChar": 21,
+        "endLine": 430,
+        "endChar": 22
+      },
+      "revId": "b6811340c9dcc96dcdc69fbd1bf5527e8c70c54e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb925dde_7b9c8bcf",
         "filename": "genrule/genrule.go",
         "patchSetId": 2
@@ -39,6 +63,24 @@
       "revId": "b6811340c9dcc96dcdc69fbd1bf5527e8c70c54e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "224b966c_9cf1b70b",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-08-12T22:49:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb925dde_7b9c8bcf",
+      "revId": "b6811340c9dcc96dcdc69fbd1bf5527e8c70c54e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
