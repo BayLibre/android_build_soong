@@ -26,7 +26,7 @@ import (
 )
 
 var (
-	archTypeList []ArchType
+	ArchTypeList []ArchType
 
 	Arm    = newArch("arm", "lib32")
 	Arm64  = newArch("arm64", "lib64")
@@ -553,7 +553,7 @@ func newArch(name, multilib string) ArchType {
 		Field:    proptools.FieldNameForProperty(name),
 		Multilib: multilib,
 	}
-	archTypeList = append(archTypeList, archType)
+	ArchTypeList = append(ArchTypeList, archType)
 	return archType
 }
 
@@ -1012,8 +1012,8 @@ func createArchType(props reflect.Type) []reflect.Type {
 			return ret
 		}
 
-		archFields := make([]reflect.StructField, len(archTypeList))
-		for i, arch := range archTypeList {
+		archFields := make([]reflect.StructField, len(ArchTypeList))
+		for i, arch := range ArchTypeList {
 			variants := []string{}
 
 			for _, archVariant := range archVariants[arch] {

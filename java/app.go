@@ -731,8 +731,9 @@ type AndroidAppImport struct {
 	android.DefaultableModuleBase
 	prebuilt android.Prebuilt
 
-	properties  AndroidAppImportProperties
-	dpiVariants interface{}
+	properties   AndroidAppImportProperties
+	dpiVariants  interface{}
+	archVariants interface{}
 
 	outputFile  android.Path
 	certificate *Certificate
@@ -776,24 +777,22 @@ func (a *AndroidAppImport) updateSrcApkPath(ctx android.LoadHookContext) {
 	// overwrites everything else.
 	// TODO(jungjw): Can we optimize this by making it priority order?
 	for i := len(config.ProductAAPTPrebuiltDPI()) - 1; i >= 0; i-- {
-		dpi := config.ProductAAPTPrebuiltDPI()[i]
-		if inList(dpi, supportedDpis) {
-			MergePropertiesFromVariant(ctx, &a.properties, dpiProps, dpi, "dpi_variants")
-		}
+		MergePropertiesFromVariant(ctx, &a.properties, dpiProps, config.ProductAAPTPrebuiltDPI()[i], "dpi_variants")
 	}
 	if config.ProductAAPTPreferredConfig() != "" {
-		dpi := config.ProductAAPTPreferredConfig()
-		if inList(dpi, supportedDpis) {
-			MergePropertiesFromVariant(ctx, &a.properties, dpiProps, dpi, "dpi_variants")
-		}
+		MergePropertiesFromVariant(ctx, &a.properties, dpiProps, config.ProductAAPTPreferredConfig(), "dpi_variants")
 	}
+
+	archProps := reflect.ValueOf(a.archVariants).Elem().FieldByName("Arch")
+	archType := ctx.Config().Targets[android.Android][0].Arch.ArchType
+	MergePropertiesFromVariant(ctx, &a.properties, archProps, archType.Name, "arch")
 }
 
 func MergePropertiesFromVariant(ctx android.BaseModuleContext,
 	dst interface{}, variantGroup reflect.Value, variant, variantGroupPath string) {
 	src := variantGroup.FieldByName(proptools.FieldNameForProperty(variant))
 	if !src.IsValid() {
-		ctx.ModuleErrorf("field %q does not exist", variantGroupPath+"."+variant)
+		return
 	}
 
 	err := proptools.ExtendMatchingProperties([]interface{}{dst}, src.Interface(), nil, proptools.OrderAppend)
@@ -930,26 +929,37 @@ func (a *AndroidAppImport) Name() string {
 	return a.prebuilt.Name(a.ModuleBase.Name())
 }
 
-// Populates dpi_variants property and its fields at creation time.
-func (a *AndroidAppImport) addDpiVariants() {
-	// TODO(jungjw): Do we want to do some filtering here?
+// Populates all variant struct properties at creation time.
+func (a *AndroidAppImport) populateAllVariantStructs() {
+	a.dpiVariants = a.addVariantStruct(supportedDpis, "Dpi_variants")
+	a.AddProperties(a.dpiVariants)
+
+	archNames := make([]string, len(android.ArchTypeList))
+	for i, archType := range android.ArchTypeList {
+		archNames[i] = archType.Name
+	}
+	a.archVariants = a.addVariantStruct(archNames, "Arch")
+	a.AddProperties(a.archVariants)
+}
+
+func (a *AndroidAppImport) addVariantStruct(variants []string, variantGroupName string) interface{} {
 	props := reflect.ValueOf(&a.properties).Type()
 
-	dpiFields := make([]reflect.StructField, len(supportedDpis))
-	for i, dpi := range supportedDpis {
-		dpiFields[i] = reflect.StructField{
-			Name: proptools.FieldNameForProperty(dpi),
+	variantFields := make([]reflect.StructField, len(variants))
+	for i, variant := range variants {
+		variantFields[i] = reflect.StructField{
+			Name: proptools.FieldNameForProperty(variant),
 			Type: props,
 		}
 	}
-	dpiStruct := reflect.StructOf(dpiFields)
-	a.dpiVariants = reflect.New(reflect.StructOf([]reflect.StructField{
+
+	variantGroupStruct := reflect.StructOf(variantFields)
+	return reflect.New(reflect.StructOf([]reflect.StructField{
 		{
-			Name: "Dpi_variants",
-			Type: dpiStruct,
+			Name: variantGroupName,
+			Type: variantGroupStruct,
 		},
 	})).Interface()
-	a.AddProperties(a.dpiVariants)
 }
 
 // android_app_import imports a prebuilt apk with additional processing specified in the module.
@@ -973,7 +983,7 @@ func AndroidAppImportFactory() android.Module {
 	module.AddProperties(&module.properties)
 	module.AddProperties(&module.dexpreoptProperties)
 	module.AddProperties(&module.usesLibrary.usesLibraryProperties)
-	module.addDpiVariants()
+	module.populateAllVariantStructs()
 	android.AddLoadHook(module, func(ctx android.LoadHookContext) {
 		module.updateSrcApkPath(ctx)
 	})
