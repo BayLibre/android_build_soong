@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "54cd16ca_981dfe1b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-08-13T04:18:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e0a1b1ac_7561df07",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 52
+      },
+      "revId": "540ad9668a2625ff30145f1ca8dc862289d73f15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7340eca7_7dd79c96",
         "filename": "android/defaults.go",
         "patchSetId": 3
@@ -190,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "bf034489_a718aac0",
+        "filename": "android/sdk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-08-13T04:18:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "51976706_2b5dcf53",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 17
+      },
+      "revId": "540ad9668a2625ff30145f1ca8dc862289d73f15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac8efd01_a4d40358",
         "filename": "android/sdk.go",
         "patchSetId": 3
@@ -237,6 +285,30 @@
     },
     {
       "key": {
+        "uuid": "7cfb4cf9_56ae0240",
+        "filename": "android/sdk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-08-13T04:18:33Z",
+      "side": 1,
+      "message": "Ah, now it makes sense to me. I thought that a module can be used by many APEXes with different \"uses_sdks\" and \"BuildWithSdks()\" is called many times with different []SdkRef, which is simply wrong.\n\nBuildWithSdks() can be called many times for a module. But BuildWithSdks() is called by SdkDepsMutator(TopDown), which runs AFTER apexMutator. Therefore, BuildWithSdks() is called only once for each apex variation, right?",
+      "parentUuid": "751cd5cd_98aab3ab",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 0
+      },
+      "revId": "540ad9668a2625ff30145f1ca8dc862289d73f15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30ad3b74_c3a6f547",
         "filename": "sdk/sdk.go",
         "patchSetId": 3
@@ -272,6 +344,30 @@
       "side": 1,
       "message": "Hmm, I am not sure. We anyway have to collect info from []android.SdkAware. The information that we want here is not []android.SdkAware, but whether they have a dev version and their module type.",
       "parentUuid": "30ad3b74_c3a6f547",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 4
+      },
+      "revId": "540ad9668a2625ff30145f1ca8dc862289d73f15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd7eab40_9221a68c",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-08-13T04:18:33Z",
+      "side": 1,
+      "message": "Nevermind, what I meant was a small refactoring like..\n\n// gather sdkMembers \nsdkMembers :\u003d make(map[string][]android.SdkAware)\nmctx.VisitDirectDepsWithTag(..., func(m android.Module) {\n  ..\n  sdkMembers[memberName] \u003d append(sdkMembers[memberName], member)\n})\n\n// and iterate over them to see if there is a dev version\nfor memberName, members :\u003d range sdkMembers {\n  hasDevVersion :\u003d false\n  for _, member :\u003d range members {\n    if member.ContainingSdk().IsDevVersion() {\n      hasDevVersion \u003d true\n      break\n    }\n  }\n  if hasDevVersion {\n    continue\n  }\n  switch ctx.OtherModuleType(members[0]) {\n  case \"java_import\":\n   ...\n  }\n}\n\nThe reason why I suggested at first is that it took me some time to understand why \"hasDevVersion[memberName] \u003d false\" is there even if \"false\" is default value for missing key. (Of course, I know now why. :-)",
+      "parentUuid": "5dbb7796_467bcc05",
       "range": {
         "startLine": 119,
         "startChar": 0,
