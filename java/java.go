@@ -682,7 +682,8 @@ func checkProducesJars(ctx android.ModuleContext, dep android.SourceFileProducer
 type linkType int
 
 const (
-	javaCore linkType = iota
+	none linkType = iota
+	javaCore
 	javaSdk
 	javaSystem
 	javaPlatform
@@ -709,8 +710,10 @@ func getLinkType(m *Module, name string) (ret linkType, stubs bool) {
 		return javaSdk, true
 	case ver == "current":
 		return javaSdk, false
-	case ver == "" || ver == "none" || ver == "core_platform":
+	case ver == "" || ver == "core_platform":
 		return javaPlatform, false
+	case ver == "none":
+		return none, false
 	default:
 		if _, err := strconv.Atoi(ver); err != nil {
 			panic(fmt.Errorf("expected sdk_version to be a number, got %q", ver))
@@ -732,14 +735,18 @@ func checkLinkType(ctx android.ModuleContext, from *Module, to *Library, tag dep
 	commonMessage := "Adjust sdk_version: property of the source or target module so that target module is built with the same or smaller API set than the source."
 
 	switch myLinkType {
+	case none:
+		// Do not enforce the link type of the dependencies until libcore/ needs to restrict its dependencies
+		// and its dependencies use only "none" sdk.
+		break
 	case javaCore:
-		if otherLinkType != javaCore {
+		if otherLinkType != none && otherLinkType != javaCore {
 			ctx.ModuleErrorf("compiles against core Java API, but dependency %q is compiling against non-core Java APIs."+commonMessage,
 				ctx.OtherModuleName(to))
 		}
 		break
 	case javaSdk:
-		if otherLinkType != javaCore && otherLinkType != javaSdk {
+		if otherLinkType != none && otherLinkType != javaCore && otherLinkType != javaSdk {
 			ctx.ModuleErrorf("compiles against Android API, but dependency %q is compiling against non-public Android API."+commonMessage,
 				ctx.OtherModuleName(to))
 		}
