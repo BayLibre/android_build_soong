@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fbb4592c_cdddb29e",
+        "filename": "build_kzip.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-08-13T21:46:57Z",
+      "side": 1,
+      "message": "Elsewhere, yes, but in the build/soong directory all of them has .bash:\n$ ls build/soong/*.bash\nbuild/soong/bootstrap.bash  build/soong/build_test.bash  build/soong/soong.bash  build/soong/soong_ui.bash\n\nI don\u0027t care one way or the other, just tell me.",
+      "parentUuid": "e14cd64c_a559e087",
+      "revId": "c2575590f99d71eadc165978e498105db0142656",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91a64519_1640d2c9",
         "filename": "build_kzip.bash",
         "patchSetId": 1
@@ -161,6 +179,30 @@
     },
     {
       "key": {
+        "uuid": "ae403ee4_f7b99701",
+        "filename": "build_kzip.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-08-13T21:46:57Z",
+      "side": 1,
+      "message": "I\u0027ve removed them. Eventually we might need to change this script to run the build multiple times for different configurations to run more extractors.",
+      "parentUuid": "79043c6a_3261f373",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 13,
+        "endChar": 26
+      },
+      "revId": "c2575590f99d71eadc165978e498105db0142656",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26f92d41_3f0100a2",
         "filename": "build_kzip.bash",
         "patchSetId": 1
@@ -208,6 +250,24 @@
       "side": 1,
       "message": "This seems worth doing eventually, but can wait.",
       "parentUuid": "cb332915_099c0e9b",
+      "revId": "c2575590f99d71eadc165978e498105db0142656",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c04409a3_7c4dd38d",
+        "filename": "build_kzip.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-08-13T21:46:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e9b4a997_3664ff9e",
       "revId": "c2575590f99d71eadc165978e498105db0142656",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
