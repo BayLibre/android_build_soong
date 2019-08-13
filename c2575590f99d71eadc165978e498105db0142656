@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "e14cd64c_a559e087",
+        "filename": "build_kzip.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-13T18:11:10Z",
+      "side": 1,
+      "message": "All the other bash scripts are named .sh",
+      "revId": "c2575590f99d71eadc165978e498105db0142656",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "91a64519_1640d2c9",
         "filename": "build_kzip.bash",
         "patchSetId": 1
@@ -37,6 +54,30 @@
       "side": 1,
       "message": "If kzip generation is requested, Ninja files that Soong generates contain additional rules.",
       "parentUuid": "91a64519_1640d2c9",
+      "range": {
+        "startLine": 7,
+        "startChar": 33,
+        "endLine": 8,
+        "endChar": 77
+      },
+      "revId": "c2575590f99d71eadc165978e498105db0142656",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27531b62_c2dc69f4",
+        "filename": "build_kzip.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-13T18:11:10Z",
+      "side": 1,
+      "message": "That doesn\u0027t preclude reusing the same directory, Soong will notice and update build.ninja whenever XREF_CORPUS is changed or unset.",
+      "parentUuid": "b7959eab_69597c7a",
       "range": {
         "startLine": 7,
         "startChar": 33,
@@ -96,6 +137,30 @@
     },
     {
       "key": {
+        "uuid": "79043c6a_3261f373",
+        "filename": "build_kzip.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-13T18:11:10Z",
+      "side": 1,
+      "message": "When we configure the gcl to run this script on the build servers we will put TARGET_PRODUCT on the command line so that it is in the environment (\"TARGET_PRODUCT\u003daosp_blueline-userdebug build_kzip.bash\"), and that value will be propagated to soong_ui automatically.",
+      "parentUuid": "1d3537cb_a3f29059",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 13,
+        "endChar": 26
+      },
+      "revId": "c2575590f99d71eadc165978e498105db0142656",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "26f92d41_3f0100a2",
         "filename": "build_kzip.bash",
         "patchSetId": 1
@@ -128,6 +193,24 @@
       "revId": "c2575590f99d71eadc165978e498105db0142656",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9b4a997_3664ff9e",
+        "filename": "build_kzip.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-13T18:11:10Z",
+      "side": 1,
+      "message": "This seems worth doing eventually, but can wait.",
+      "parentUuid": "cb332915_099c0e9b",
+      "revId": "c2575590f99d71eadc165978e498105db0142656",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
