@@ -309,6 +309,30 @@
     },
     {
       "key": {
+        "uuid": "728c66c4_0eb6fe79",
+        "filename": "android/sdk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-13T09:39:59Z",
+      "side": 1,
+      "message": "Yes, that\u0027s correct.",
+      "parentUuid": "7cfb4cf9_56ae0240",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 0
+      },
+      "revId": "540ad9668a2625ff30145f1ca8dc862289d73f15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30ad3b74_c3a6f547",
         "filename": "sdk/sdk.go",
         "patchSetId": 3
@@ -368,6 +392,30 @@
       "side": 1,
       "message": "Nevermind, what I meant was a small refactoring like..\n\n// gather sdkMembers \nsdkMembers :\u003d make(map[string][]android.SdkAware)\nmctx.VisitDirectDepsWithTag(..., func(m android.Module) {\n  ..\n  sdkMembers[memberName] \u003d append(sdkMembers[memberName], member)\n})\n\n// and iterate over them to see if there is a dev version\nfor memberName, members :\u003d range sdkMembers {\n  hasDevVersion :\u003d false\n  for _, member :\u003d range members {\n    if member.ContainingSdk().IsDevVersion() {\n      hasDevVersion \u003d true\n      break\n    }\n  }\n  if hasDevVersion {\n    continue\n  }\n  switch ctx.OtherModuleType(members[0]) {\n  case \"java_import\":\n   ...\n  }\n}\n\nThe reason why I suggested at first is that it took me some time to understand why \"hasDevVersion[memberName] \u003d false\" is there even if \"false\" is default value for missing key. (Of course, I know now why. :-)",
       "parentUuid": "5dbb7796_467bcc05",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 4
+      },
+      "revId": "540ad9668a2625ff30145f1ca8dc862289d73f15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9930f5c_0c9aa7db",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-13T09:39:59Z",
+      "side": 1,
+      "message": "Yeah, I just didn\u0027t want to iterate over `members` slice while iterating over `sdkMembers` map. It\u0027s a pity that we don\u0027t have built-in support for operations like reduce in golang. :(",
+      "parentUuid": "cd7eab40_9221a68c",
       "range": {
         "startLine": 119,
         "startChar": 0,
