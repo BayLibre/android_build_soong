@@ -81,6 +81,7 @@ func protoFlags(ctx android.ModuleContext, j *CompilerProperties, p *android.Pro
 			flags.proto.OutTypeFlag = "--javamicro_out"
 			typeToPlugin = "javamicro"
 		case "nano":
+			typeToPlugin = "javanano"
 			flags.proto.OutTypeFlag = "--javanano_out"
 		case "lite":
 			flags.proto.OutTypeFlag = "--java_out"
