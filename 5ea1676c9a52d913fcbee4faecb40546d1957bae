@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "33e9a1a5_9c0639ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-13T11:04:53Z",
+      "side": 1,
+      "message": "Yes, that\u0027s the plan. Each module implementing SdkAware interface (like cc_library, java_library) have their own uses_sdks property. The plan is that build will break when those properties from individual modules do not comply with the uses_sdks property of the containing Module (e.g. apex).\n\nHowever, for now, since I don\u0027t want to touch every modules to add set this property correct, I\u0027ve made them to be inheritable. (there are literally too many modules to be touched if we do this for native libs.)",
+      "parentUuid": "6260d813_b1fec235",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 32
+      },
+      "revId": "5ea1676c9a52d913fcbee4faecb40546d1957bae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "32c581c1_39f917ca",
         "filename": "apex/apex.go",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "9a8ec932_5d82b72c",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-13T11:04:53Z",
+      "side": 1,
+      "message": "Good point. I\u0027ve amended the description.",
+      "parentUuid": "32c581c1_39f917ca",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 15
+      },
+      "revId": "5ea1676c9a52d913fcbee4faecb40546d1957bae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd4c7fe2_56c912b2",
         "filename": "sdk/sdk_test.go",
         "patchSetId": 5
@@ -68,6 +116,30 @@
       "revId": "5ea1676c9a52d913fcbee4faecb40546d1957bae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ca127cb_47a42d45",
+        "filename": "sdk/sdk_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-13T11:04:53Z",
+      "side": 1,
+      "message": "Yeah, it is. That\u0027s simply because we don\u0027t have sdk libraries (e.g. framework.jar, etc.) in this test environment. java.go requires those libraries to be defined unless sdk_version is set to none, which is not what this test is trying to verify here. \n\nFYI: not in this initial CL, but one of my goals here is to model the Android SDKs with the new \u0027sdk\u0027 module type. Then `sdk_version: \"system_20\"` would be converted to `uses_sdks: [\"android_system#20\"]` or similar.",
+      "parentUuid": "bd4c7fe2_56c912b2",
+      "range": {
+        "startLine": 164,
+        "startChar": 3,
+        "endLine": 164,
+        "endChar": 23
+      },
+      "revId": "5ea1676c9a52d913fcbee4faecb40546d1957bae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
