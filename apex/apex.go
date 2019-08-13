@@ -421,6 +421,7 @@ type apexBundle struct {
 
 	bundleModuleFile android.WritablePath
 	outputFiles      map[apexPackaging]android.WritablePath
+	flattenedOutput  android.OutputPath
 	installDir       android.OutputPath
 
 	prebuiltFileToDelete string
@@ -624,6 +625,13 @@ func (a *apexBundle) OutputFiles(tag string) (android.Paths, error) {
 			return android.Paths{file}, nil
 		} else {
 			return nil, nil
+		}
+	case ".flattened":
+		if a.flattened {
+			flattenedApexPath := a.flattenedOutput
+			return android.Paths{flattenedApexPath}, nil
+		} else {
+			return nil, fmt.Errorf("reference tag %q cannot be used for non-flattened APEX", tag)
 		}
 	default:
 		return nil, fmt.Errorf("unsupported module reference tag %q", tag)
@@ -1229,8 +1237,26 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext, apexType ap
 	}
 }
 
+
+// Context "decorator", overriding the InstallBypassMake method to alway reply `true`.
+type flattenedApexContext struct {
+	android.ModuleContext
+}
+
+func (c *flattenedApexContext) InstallBypassMake() bool {
+	return true
+}
+
 func (a *apexBundle) buildFlattenedApex(ctx android.ModuleContext) {
 	if a.installable() {
+		// Temporarily wrap the original `ctx` into a `flattenedApexContext` to have it
+		// reply true to `InstallBypassMake()` (thus making the call
+		// `android.PathForModuleInstall` below use `android.pathForInstallInMakeDir`
+		// instead of `android.PathForOutput`) to return the correct path to the flattened
+		// APEX (as its contents is installed by Make, not Soong).
+		factx := flattenedApexContext{ctx}
+		a.flattenedOutput = android.PathForModuleInstall(&factx, "apex", factx.ModuleName())
+
 		// For flattened APEX, do nothing but make sure that apex_manifest.json and apex_pubkey are also copied along
 		// with other ordinary files.
 		a.filesInfo = append(a.filesInfo, apexFile{a.manifestOut, ctx.ModuleName() + ".apex_manifest.json", ".", etc, nil, nil})
