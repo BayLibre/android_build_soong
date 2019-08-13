@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6260d813_b1fec235",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2019-08-13T10:31:36Z",
+      "side": 1,
+      "message": "It\u0027s seems like really strange semantics that one module can alter how another module is compiled? Shouldn\u0027t the uses_sdks be a property of the java library rule itself, and the apex rule just verify that uses_sdks is set consistently for its transitive deps?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 32
+      },
+      "revId": "5ea1676c9a52d913fcbee4faecb40546d1957bae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32c581c1_39f917ca",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2019-08-13T10:31:36Z",
+      "side": 1,
+      "message": "These docs don\u0027t really explain the effects that setting this has on its transitive deps",
+      "range": {
+        "startLine": 303,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 15
+      },
+      "revId": "5ea1676c9a52d913fcbee4faecb40546d1957bae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd4c7fe2_56c912b2",
+        "filename": "sdk/sdk_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2019-08-13T10:31:36Z",
+      "side": 1,
+      "message": "This looks pretty misleading",
+      "range": {
+        "startLine": 164,
+        "startChar": 3,
+        "endLine": 164,
+        "endChar": 23
+      },
+      "revId": "5ea1676c9a52d913fcbee4faecb40546d1957bae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
