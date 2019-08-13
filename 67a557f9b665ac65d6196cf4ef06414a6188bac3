@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfd38a3e_65cc63a5",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-13T14:51:00Z",
+      "side": 1,
+      "message": "nit: make this a variable?",
+      "range": {
+        "startLine": 629,
+        "startChar": 5,
+        "endLine": 629,
+        "endChar": 18
+      },
+      "revId": "67a557f9b665ac65d6196cf4ef06414a6188bac3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dac138c_a897aa57",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1241,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-13T14:51:00Z",
+      "side": 1,
+      "message": "nit: always",
+      "range": {
+        "startLine": 1241,
+        "startChar": 67,
+        "endLine": 1241,
+        "endChar": 73
+      },
+      "revId": "67a557f9b665ac65d6196cf4ef06414a6188bac3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "451fbc5a_a3fd3457",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1248,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-13T14:51:00Z",
+      "side": 1,
+      "message": "I think you just need to implement this function for apexBundle struct. Doesn\u0027t it work?",
+      "range": {
+        "startLine": 1242,
+        "startChar": 0,
+        "endLine": 1248,
+        "endChar": 1
+      },
+      "revId": "67a557f9b665ac65d6196cf4ef06414a6188bac3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dfbd786_6cb4b544",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1257,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-13T14:51:00Z",
+      "side": 1,
+      "message": "If apexBundle implements InstallBypassMake, this doesn\u0027t seem to be needed.",
+      "range": {
+        "startLine": 1257,
+        "startChar": 2,
+        "endLine": 1257,
+        "endChar": 36
+      },
+      "revId": "67a557f9b665ac65d6196cf4ef06414a6188bac3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
