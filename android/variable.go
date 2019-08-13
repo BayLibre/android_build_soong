@@ -115,6 +115,10 @@ type variableProperties struct {
 			Static_libs  []string
 			Srcs         []string
 		}
+
+		Flatten_apex struct {
+			Cmd *string
+		}
 	} `android:"arch_variant"`
 }
 
