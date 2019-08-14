@@ -622,7 +622,7 @@ func (c *Module) getVndkExtendsModuleName() string {
 }
 
 // Returns true only when this module is configured to have core and vendor
-// variants.
+// variants. FIXME: only one
 func (c *Module) hasVendorVariant() bool {
 	return c.isVndk() || Bool(c.VendorProperties.Vendor_available)
 }
@@ -1989,6 +1989,12 @@ func (c *Module) InstallInRecovery() bool {
 	return c.inRecovery()
 }
 
+func (c *Module) NeedVendorVariant() bool {
+	// FIXME: should only worry about Sdk_version empty if is vendor specific?
+	return c.hasVendorVariant() && String(c.Properties.Sdk_version) == ""
+	    // c.hasVendorVariant()
+}
+
 func (c *Module) HostToolPath() android.OptionalPath {
 	if c.installer == nil {
 		return android.OptionalPath{}
@@ -2203,40 +2209,15 @@ func ImageMutator(mctx android.BottomUpMutatorContext) {
 	}
 
 	if g, ok := mctx.Module().(*genrule.Module); ok {
-		if props, ok := g.Extra.(*GenruleExtraProperties); ok {
-			var coreVariantNeeded bool = false
-			var vendorVariantNeeded bool = false
-			var recoveryVariantNeeded bool = false
-			if mctx.DeviceConfig().VndkVersion() == "" {
-				coreVariantNeeded = true
-			} else if Bool(props.Vendor_available) {
-				coreVariantNeeded = true
-				vendorVariantNeeded = true
-			} else if mctx.SocSpecific() || mctx.DeviceSpecific() {
-				vendorVariantNeeded = true
-			} else {
-				coreVariantNeeded = true
-			}
-			if Bool(props.Recovery_available) {
-				recoveryVariantNeeded = true
-			}
-
-			if recoveryVariantNeeded {
-				primaryArch := mctx.Config().DevicePrimaryArchType()
-				moduleArch := g.Target().Arch.ArchType
-				if moduleArch != primaryArch {
-					recoveryVariantNeeded = false
-				}
-			}
-
+		if _, ok := g.Extra.(*GenruleExtraProperties); ok {
 			var variants []string
-			if coreVariantNeeded {
+			if mctx.NeedCoreVariant() {
 				variants = append(variants, coreMode)
 			}
-			if vendorVariantNeeded {
+			if mctx.NeedVendorVariant() {
 				variants = append(variants, vendorMode)
 			}
-			if recoveryVariantNeeded {
+			if mctx.NeedRecoveryVariant() {
 				variants = append(variants, recoveryMode)
 			}
 			mod := mctx.CreateVariations(variants...)
@@ -2309,6 +2290,7 @@ func ImageMutator(mctx android.BottomUpMutatorContext) {
 	var vendorVariantNeeded bool = false
 	var recoveryVariantNeeded bool = false
 
+	// FIXME: remove
 	if mctx.DeviceConfig().VndkVersion() == "" {
 		// If the device isn't compiling against the VNDK, we always
 		// use the core mode.
@@ -2355,6 +2337,28 @@ func ImageMutator(mctx android.BottomUpMutatorContext) {
 			recoveryVariantNeeded = false
 		}
 	}
+
+	coreVariantNeeded = m.NeedCoreVariant()
+	vendorVariantNeeded = m.NeedVendorVariant()
+	recoveryVariantNeeded = m.NeedRecoveryVariant()
+
+	if _, ok := m.linker.(*llndkStubDecorator); ok {
+		// LL-NDK stubs only exist in the vendor variant, since the
+		// real libraries will be used in the core variant.
+		coreVariantNeeded = false
+		vendorVariantNeeded = true
+	} else if _, ok := m.linker.(*llndkHeadersDecorator); ok {
+		// ... and LL-NDK headers as well
+		coreVariantNeeded = false
+		vendorVariantNeeded = true
+	} else if _, ok := m.linker.(*vndkPrebuiltLibraryDecorator); ok {
+		// Make vendor variants only for the versions in BOARD_VNDK_VERSION and
+		// PRODUCT_EXTRA_VNDK_VERSIONS.
+		coreVariantNeeded = false
+		vendorVariantNeeded = true
+	}
+
+	// next step: find differences between coreVariantNeeded and these
 
 	var variants []string
 	if coreVariantNeeded {

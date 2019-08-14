@@ -129,6 +129,10 @@ type BaseModuleContext interface {
 	SystemExtSpecific() bool
 	AConfig() Config
 	DeviceConfig() DeviceConfig
+
+	NeedCoreVariant() bool
+	NeedRecoveryVariant() bool
+	NeedVendorVariant() bool
 }
 
 // Deprecated: use BaseModuleContext instead
@@ -154,7 +158,7 @@ type ModuleContext interface {
 
 	InstallInData() bool
 	InstallInSanitizerDir() bool
-	InstallInRecovery() bool
+	InstallInRecovery() bool // FIXME: seems we can delete this?
 	InstallBypassMake() bool
 
 	RequiredModuleNames() []string
@@ -194,6 +198,11 @@ type Module interface {
 	InstallInSanitizerDir() bool
 	InstallInRecovery() bool
 	InstallBypassMake() bool
+
+	NeedCoreVariant() bool
+	NeedRecoveryVariant() bool
+	NeedVendorVariant() bool
+
 	SkipInstall()
 	ExportedToMake() bool
 	NoticeFile() OptionalPath
@@ -345,6 +354,25 @@ type commonProperties struct {
 	// Use `soc_specific` instead for better meaning.
 	Vendor *bool
 
+	// whether this module should be allowed to be directly depended by other
+	// modules with `vendor: true`, `proprietary: true`, or `vendor_available:true`.
+	// If set to true, two variants will be built separately, one like
+	// normal, and the other limited to the set of libraries and headers
+	// that are exposed to /vendor modules.
+	//
+	// The vendor variant may be used with a different (newer) /system,
+	// so it shouldn't have any unversioned runtime dependencies, or
+	// make assumptions about the system that may not be true in the
+	// future.
+	//
+	// If set to false, this module becomes inaccessible from /vendor modules.
+	//
+	// Default value is true when vndk: {enabled: true} or vendor: true.
+	//
+	// Nothing happens if BOARD_VNDK_VERSION isn't set in the BoardConfig.mk
+	Vendor_available *bool
+	UseVndk bool `blueprint:"mutated"`
+
 	// whether this module is specific to an SoC (System-On-a-Chip). When set to true,
 	// it is installed into /vendor (or /system/vendor if vendor partition does not exist).
 	Soc_specific *bool
@@ -371,6 +399,10 @@ type commonProperties struct {
 
 	// Whether this module is installed to recovery partition
 	Recovery *bool
+
+	// Make this module available when building for recovery
+	Recovery_available *bool
+	InRecovery bool `blueprint:"mutated"`
 
 	// Whether this module is built for non-native architecures (also known as native bridge binary)
 	Native_bridge_supported *bool `android:"arch_variant"`
@@ -841,6 +873,22 @@ func (m *ModuleBase) InstallInRecovery() bool {
 
 func (m *ModuleBase) InstallBypassMake() bool {
 	return false
+}
+
+func (m *ModuleBase) NeedCoreVariant() bool {
+	return !Bool(m.commonProperties.Recovery) &&
+	       !(m.SocSpecific() || m.DeviceSpecific())
+}
+
+func (m *ModuleBase) NeedRecoveryVariant() bool {
+	return Bool(m.commonProperties.Recovery_available) ||
+	       Bool(m.commonProperties.Recovery)
+
+}
+
+func (m *ModuleBase) NeedVendorVariant() bool {
+	return Bool(m.commonProperties.Vendor_available) ||
+	       m.SocSpecific() || m.DeviceSpecific()
 }
 
 func (m *ModuleBase) Owner() string {
@@ -1471,6 +1519,29 @@ func (b *baseModuleContext) ProductSpecific() bool {
 
 func (b *baseModuleContext) SystemExtSpecific() bool {
 	return b.kind == systemExtSpecificModule
+}
+
+func (m *baseModuleContext) NeedCoreVariant() bool {
+	if m.DeviceConfig().VndkVersion() == "" {
+		return true
+	}
+
+	return m.Module().NeedCoreVariant()
+}
+
+func (m *baseModuleContext) NeedRecoveryVariant() bool {
+	primaryArch := m.Config().DevicePrimaryArchType()
+	moduleArch := m.Target().Arch.ArchType
+	if moduleArch != primaryArch {
+		return false
+	}
+
+	return m.Module().NeedRecoveryVariant()
+
+}
+
+func (m *baseModuleContext) NeedVendorVariant() bool {
+	return m.Module().NeedVendorVariant()
 }
 
 // Makes this module a platform module, i.e. not specific to soc, device,
