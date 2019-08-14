@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "be09f7a5_ef1a9cd1",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1248,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-08-14T17:20:07Z",
+      "side": 1,
+      "message": "This indeed breaks the non-flattened APEX logic: if I replace the code here with this single method:\n\n  func (c *apexBundle) InstallBypassMake() bool {\n  \treturn true\n  }\n\nand replace the code lines 1252–1258 with:\n\n  a.flattenedOutput \u003d android.PathForModuleInstall(ctx, \"apex\", ctx.ModuleName())\n\nthe APEX tests are complaining about the paths where non-flattened APEX are installed:\n\n  $ m nothing\n  […]\n  \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n  [100% 1/1] out/soong/.bootstrap/bin/soong_build out/soong/build.ninja\n  FAILED: out/soong/build.ninja\n  out/soong/.bootstrap/bin/soong_build -t -l out/.module_paths/Android.bp.list -b out/soong -n \n  out -d out/soong/build.ninja.d -globFile out/soong/.bootstrap/build-globs.ninja -o \n  out/soong/build.ninja Android.bp\n  error: system/timezone/testing/data/test1/apex/Android.bp:19:1: module \n  \"test1_com.android.tzdata\" variant \"android_common_test1_com.android.tzdata\": path \n  \"out/target/product/armv8/system/apex/test1_com.android.tzdata.apex.txt\" is not under path \n  \"out/soong/target/product/armv8\"\n  18:17:11 soong bootstrap failed with: exit status 1\n  \n  #### failed to build some targets (7 seconds) ####",
+      "parentUuid": "644a1adc_15e0c816",
+      "range": {
+        "startLine": 1242,
+        "startChar": 0,
+        "endLine": 1248,
+        "endChar": 1
+      },
+      "revId": "67a557f9b665ac65d6196cf4ef06414a6188bac3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8dfbd786_6cb4b544",
         "filename": "apex/apex.go",
         "patchSetId": 1
