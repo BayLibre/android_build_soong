@@ -99,6 +99,7 @@ var Configuration = map[string]PathConfig{
 	"realpath": Allowed,
 	"rsync":    Allowed,
 	"sh":       Allowed,
+	"shasum":   Allowed, // TODO(jiyong) move to LinuxOnPrebuilt when toybox supports this
 	"tr":       Allowed,
 	"unzip":    Allowed,
 	"zip":      Allowed,
