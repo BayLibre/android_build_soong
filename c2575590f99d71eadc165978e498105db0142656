@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "62367bda_bd5e6022",
+        "filename": "build_kzip.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-08-14T15:43:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fbb4592c_cdddb29e",
+      "revId": "c2575590f99d71eadc165978e498105db0142656",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91a64519_1640d2c9",
         "filename": "build_kzip.bash",
         "patchSetId": 1
@@ -105,6 +123,30 @@
       "revId": "c2575590f99d71eadc165978e498105db0142656",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e19340ed_a6e282d0",
+        "filename": "build_kzip.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-08-14T15:43:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "27531b62_c2dc69f4",
+      "range": {
+        "startLine": 7,
+        "startChar": 33,
+        "endLine": 8,
+        "endChar": 77
+      },
+      "revId": "c2575590f99d71eadc165978e498105db0142656",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -191,6 +233,30 @@
       "side": 1,
       "message": "I\u0027ve removed them. Eventually we might need to change this script to run the build multiple times for different configurations to run more extractors.",
       "parentUuid": "79043c6a_3261f373",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 13,
+        "endChar": 26
+      },
+      "revId": "c2575590f99d71eadc165978e498105db0142656",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9e76752_3df4ebe3",
+        "filename": "build_kzip.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-08-14T15:43:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ae403ee4_f7b99701",
       "range": {
         "startLine": 10,
         "startChar": 2,
