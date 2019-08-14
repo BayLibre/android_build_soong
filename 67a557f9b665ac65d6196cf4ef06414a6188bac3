@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9c390cac_53c60c25",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-08-14T16:58:14Z",
+      "side": 1,
+      "message": "I\u0027m not sure to understand; did you want to put this in a constant? This would go against the style currently in use in Soong: all the `OutputFiles` method definitions I\u0027ve seen use string literals for the `case` values used in their tag `switch` statement.",
+      "parentUuid": "bfd38a3e_65cc63a5",
+      "range": {
+        "startLine": 629,
+        "startChar": 5,
+        "endLine": 629,
+        "endChar": 18
+      },
+      "revId": "67a557f9b665ac65d6196cf4ef06414a6188bac3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2dac138c_a897aa57",
         "filename": "apex/apex.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "67a557f9b665ac65d6196cf4ef06414a6188bac3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6689aea8_64778ac8",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1241,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-08-14T16:58:14Z",
+      "side": 1,
+      "message": "Done in PS3.",
+      "parentUuid": "2dac138c_a897aa57",
+      "range": {
+        "startLine": 1241,
+        "startChar": 67,
+        "endLine": 1241,
+        "endChar": 73
+      },
+      "revId": "67a557f9b665ac65d6196cf4ef06414a6188bac3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "644a1adc_15e0c816",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1248,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-08-14T16:58:14Z",
+      "side": 1,
+      "message": "I\u0027ll give it a try (and will update this comment), but wouldn\u0027t that break the non-flattened case? The reason I defined this method in a custom context was to limit its scope to flattened APEXes below.",
+      "parentUuid": "451fbc5a_a3fd3457",
+      "range": {
+        "startLine": 1242,
+        "startChar": 0,
+        "endLine": 1248,
+        "endChar": 1
+      },
+      "revId": "67a557f9b665ac65d6196cf4ef06414a6188bac3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8dfbd786_6cb4b544",
         "filename": "apex/apex.go",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2019-08-13T14:51:00Z",
       "side": 1,
       "message": "If apexBundle implements InstallBypassMake, this doesn\u0027t seem to be needed.",
+      "range": {
+        "startLine": 1257,
+        "startChar": 2,
+        "endLine": 1257,
+        "endChar": 36
+      },
+      "revId": "67a557f9b665ac65d6196cf4ef06414a6188bac3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7753e98f_353097a2",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1257,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-08-14T16:58:14Z",
+      "side": 1,
+      "message": "Ditto.",
+      "parentUuid": "8dfbd786_6cb4b544",
       "range": {
         "startLine": 1257,
         "startChar": 2,
