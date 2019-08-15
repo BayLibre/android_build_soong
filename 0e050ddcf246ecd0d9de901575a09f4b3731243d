@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf925bd4_c9cb5b46",
+        "filename": "java/app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-15T22:52:31Z",
+      "side": 1,
+      "message": "This is unused",
+      "revId": "0e050ddcf246ecd0d9de901575a09f4b3731243d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
