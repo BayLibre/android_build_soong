@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03cecfa4_c7416f9e",
+        "filename": "build_kzip.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-15T19:03:18Z",
+      "side": 1,
+      "message": "You can also do:\n\n . build/make/envsetup.sh\n OUT_DIR\u003d$(get_build_var OUT_DIR)\n\nto get the default from the build system, but this is fine too.",
+      "revId": "b13f9c520c7c869977449fd59ace156495a66536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
