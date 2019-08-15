@@ -22,6 +22,30 @@
       "revId": "39199a3ec787daca44ed34bd9b0f157c47769e17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83fb11ae_aed08154",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-15T20:18:18Z",
+      "side": 1,
+      "message": "Fixing the caching would break though, because this is caching the pointer to an instance of the struct.  Only runtime created type can be cached, each module needs to do its own reflect.New.\n\nSince there are only 2 of these, maybe just create them in an init() function and reference them directly?",
+      "parentUuid": "51f832ff_2ee88e92",
+      "range": {
+        "startLine": 942,
+        "startChar": 39,
+        "endLine": 942,
+        "endChar": 73
+      },
+      "revId": "39199a3ec787daca44ed34bd9b0f157c47769e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
