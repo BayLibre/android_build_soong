@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "63816b12_c47df2e0",
+        "filename": "android/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-08-15T20:01:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d64cda45_83b08b2c",
+      "revId": "6316adf1b2077f8c5c9549b3f2596db7208cf0a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e0784496_63c34eee",
         "filename": "java/app.go",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "6316adf1b2077f8c5c9549b3f2596db7208cf0a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69376f16_22c01711",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 956,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-08-15T20:01:06Z",
+      "side": 1,
+      "message": "Good point. Done. Used variant groups names as keys for now. If I end up generalizing this to use it in other module types, I\u0027ll change it to the variant group name + the property struct type name.",
+      "parentUuid": "e0784496_63c34eee",
+      "revId": "6316adf1b2077f8c5c9549b3f2596db7208cf0a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
