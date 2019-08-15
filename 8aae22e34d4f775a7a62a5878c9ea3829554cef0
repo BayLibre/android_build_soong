@@ -46,6 +46,30 @@
       "revId": "8aae22e34d4f775a7a62a5878c9ea3829554cef0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f6ab6af_ec68eb04",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-15T00:46:56Z",
+      "side": 1,
+      "message": "I don\u0027t see any uses of LOCAL_MODULE_STEM + LOCAL_MODULE_CLASS :\u003d APPS + BUILD_PREBUILT, and stem has always been confusing, so filename SGTM.",
+      "parentUuid": "ec9516a6_87641b42",
+      "range": {
+        "startLine": 768,
+        "startChar": 1,
+        "endLine": 768,
+        "endChar": 9
+      },
+      "revId": "8aae22e34d4f775a7a62a5878c9ea3829554cef0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
