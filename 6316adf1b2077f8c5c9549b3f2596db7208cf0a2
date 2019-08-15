@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d64cda45_83b08b2c",
+        "filename": "android/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-15T00:53:28Z",
+      "side": 1,
+      "message": "Exposing slices is always a little iffy in Go, any soong plugin could modify the slice.  Maybe add an accessor that returns a copy of the slice?",
+      "revId": "6316adf1b2077f8c5c9549b3f2596db7208cf0a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0784496_63c34eee",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 956,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-15T00:53:28Z",
+      "side": 1,
+      "message": "It\u0027s probably worth caching these structs.  See archPropTypeMap in arch.go for how we cache the created properties there, although I\u0027m not entirely sure what the key should be here.",
+      "revId": "6316adf1b2077f8c5c9549b3f2596db7208cf0a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
