@@ -16,6 +16,24 @@
       "revId": "b13f9c520c7c869977449fd59ace156495a66536",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57de7774_6a6cc622",
+        "filename": "build_kzip.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-08-15T23:11:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "03cecfa4_c7416f9e",
+      "revId": "b13f9c520c7c869977449fd59ace156495a66536",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
