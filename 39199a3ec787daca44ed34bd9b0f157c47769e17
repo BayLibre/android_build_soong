@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51f832ff_2ee88e92",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-15T20:15:59Z",
+      "side": 1,
+      "message": "I don\u0027t think this is actually caching, from the godoc on NewOnceKey: Two calls to NewOnceKey with the same key string DO NOT produce the same OnceKey object.",
+      "range": {
+        "startLine": 942,
+        "startChar": 39,
+        "endLine": 942,
+        "endChar": 73
+      },
+      "revId": "39199a3ec787daca44ed34bd9b0f157c47769e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
