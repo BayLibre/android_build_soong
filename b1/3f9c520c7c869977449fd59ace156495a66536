@@ -1,0 +1,9 @@
+Verified+1: Alexander Smundak <asmundak@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Autosubmit+1: Alexander Smundak <asmundak@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Fri, 16 Aug 2019 01:05:40 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1103391
+Project: platform/build/soong
+Branch: refs/heads/master
