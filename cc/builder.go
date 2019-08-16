@@ -135,6 +135,11 @@ var (
 			Command: "rm -f $out && touch $out",
 		})
 
+	cp = pctx.AndroidStaticRule("cp",
+		blueprint.RuleParams{
+			Command: "cp ${in} ${out}",
+		})
+
 	_ = pctx.SourcePathVariable("tocPath", "build/soong/scripts/toc.sh")
 
 	toc = pctx.AndroidStaticRule("toc",
@@ -409,6 +414,14 @@ func TransformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 					"windresCmd": gccCmd(flags.toolchain, "windres"),
 					"flags":      flags.toolchain.WindresFlags(),
 				},
+			})
+			continue
+		case ".o":
+			ctx.Build(pctx, android.BuildParams{
+				Rule:        cp,
+				Description: "objFile " + srcFile.Rel(),
+				Output:      objFile,
+				Input:       srcFile,
 			})
 			continue
 		}
