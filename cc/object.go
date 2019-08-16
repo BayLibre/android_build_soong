@@ -65,21 +65,18 @@ func (object *objectLinker) linkerDeps(ctx DepsContext, deps Deps) Deps {
 		// Needed for VNDK builds where bionic headers aren't automatically added.
 		deps.LateSharedLibs = append(deps.LateSharedLibs, "libc")
 	}
-
 	deps.HeaderLibs = append(deps.HeaderLibs, object.Properties.Header_libs...)
 	deps.ObjFiles = append(deps.ObjFiles, object.Properties.Objs...)
 	return deps
 }
 
-func (*objectLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
+func (object *objectLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 	flags.LdFlags = append(flags.LdFlags, ctx.toolchain().ToolchainClangLdflags())
-
 	return flags
 }
 
 func (object *objectLinker) link(ctx ModuleContext,
 	flags Flags, deps PathDeps, objs Objects) android.Path {
-
 	objs = objs.Append(deps.Objs)
 
 	var outputFile android.Path
