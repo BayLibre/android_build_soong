@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25107fdd_639e33cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-16T22:27:16Z",
+      "side": 1,
+      "message": "I\u0027m still concerned about how these new sdk concepts will fit in with the existing \"sdk_version\" concept.  Maybe we should deprecate sdk_version, and make the Android SDK usable through uses_sdks: [\"android#29\"] or uses_sdks: [\"android_system#current\"]?",
+      "revId": "efdc5573c35354a9a1f0c10356978351990bd8e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0884244_946dd0d1",
+        "filename": "android/sdk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-16T22:27:16Z",
+      "side": 1,
+      "message": "Does this string end up in Android.bp files?  For the Android SDK we call this \"current\".",
+      "revId": "efdc5573c35354a9a1f0c10356978351990bd8e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a5c9a94_8954fb50",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-16T22:27:16Z",
+      "side": 1,
+      "message": "parsed",
+      "range": {
+        "startLine": 624,
+        "startChar": 3,
+        "endLine": 624,
+        "endChar": 9
+      },
+      "revId": "efdc5573c35354a9a1f0c10356978351990bd8e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "373dcdd2_5f8c40bf",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-16T22:27:16Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "efdc5573c35354a9a1f0c10356978351990bd8e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
