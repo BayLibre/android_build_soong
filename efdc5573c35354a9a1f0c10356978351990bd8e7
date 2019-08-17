@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "70421375_4449a78a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-17T00:21:50Z",
+      "side": 1,
+      "message": "Yes, that\u0027s exactly my plan. I would like to model current platform SDKs as \u0027android\u0027, \u0027android_system\u0027, and \u0027android_test\u0027.  https://docs.google.com/document/d/1DbTczpPu1NABf4EptE22ebvk5_9AuvkU3ScQrFeQnGo/edit#heading\u003dh.8wcg5o49pfzc",
+      "parentUuid": "25107fdd_639e33cd",
+      "revId": "efdc5573c35354a9a1f0c10356978351990bd8e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0884244_946dd0d1",
         "filename": "android/sdk.go",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2019-08-16T22:27:16Z",
       "side": 1,
       "message": "Does this string end up in Android.bp files?  For the Android SDK we call this \"current\".",
+      "revId": "efdc5573c35354a9a1f0c10356978351990bd8e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a27bfcc_a39b79f9",
+        "filename": "android/sdk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-17T00:21:50Z",
+      "side": 1,
+      "message": "I\u0027ve thought \u0027current\u0027 is ambiguous. To me, it sounds like an alias of \u0027the latest frozen version\u0027, which it actually isn\u0027t for.\n\nDo you think calling this to \u0027dev\u0027 will cause another confusion? If so, I will change. Let me know.",
+      "parentUuid": "b0884244_946dd0d1",
       "revId": "efdc5573c35354a9a1f0c10356978351990bd8e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "c0e2effd_fade9f53",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-17T00:21:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a5c9a94_8954fb50",
+      "range": {
+        "startLine": 624,
+        "startChar": 3,
+        "endLine": 624,
+        "endChar": 9
+      },
+      "revId": "efdc5573c35354a9a1f0c10356978351990bd8e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "373dcdd2_5f8c40bf",
         "filename": "sdk/sdk.go",
         "patchSetId": 6
@@ -73,6 +133,24 @@
       "revId": "efdc5573c35354a9a1f0c10356978351990bd8e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "760bfb02_6225d679",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-17T00:21:50Z",
+      "side": 1,
+      "message": "oops.. done.",
+      "parentUuid": "373dcdd2_5f8c40bf",
+      "revId": "efdc5573c35354a9a1f0c10356978351990bd8e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
