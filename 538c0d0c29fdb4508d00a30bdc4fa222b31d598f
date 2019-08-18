@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54096678_d4d68694",
+        "filename": "java/java.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2019-08-18T15:19:31Z",
+      "side": 1,
+      "message": "The new help text no longer says what this option does. Can you please reinstate it?\n\nFor example:\n\n// Whether to compile against the platform APIs instead of an SDK.\n// If true, then sdk_version must be empty. The value of this field\n// is ignored when\n\nfollowed by an elaboration of in what cases the field\u0027s value is ignored; I do not understand what what \"works only in android_app\" means.",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 68
+      },
+      "revId": "538c0d0c29fdb4508d00a30bdc4fa222b31d598f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
