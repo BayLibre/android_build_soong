@@ -215,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "718a8e69_f02a90b3",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1248,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-08-19T19:12:22Z",
+      "side": 1,
+      "message": "I\u0027ll give it a try tomorrow, but I\u0027m not sure this will work: there is a single `apexBundle` instance representing both the non-flattened and the flattened flavors, and `a.flattened` will have the same value in both \"contexts\".",
+      "parentUuid": "7cd1676c_748ee956",
+      "range": {
+        "startLine": 1242,
+        "startChar": 0,
+        "endLine": 1248,
+        "endChar": 1
+      },
+      "revId": "67a557f9b665ac65d6196cf4ef06414a6188bac3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8dfbd786_6cb4b544",
         "filename": "apex/apex.go",
         "patchSetId": 1
