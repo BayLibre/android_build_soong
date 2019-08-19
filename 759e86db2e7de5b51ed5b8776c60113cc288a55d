@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9d94877_580a436e",
+        "filename": "android/filegroup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-08-19T18:30:09Z",
+      "side": 1,
+      "message": "I think we need to either (a) make this filter general (e.g. regex, file patterns) or (b) rename the property name to make it clear that this is just for prefix filters.\n\nI personally prefer (a), but Colin is probably the right person to make the call whether it\u0027s an overkill or not?",
+      "revId": "759e86db2e7de5b51ed5b8776c60113cc288a55d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
