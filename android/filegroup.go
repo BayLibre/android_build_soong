@@ -18,6 +18,8 @@ import (
 	"io"
 	"strings"
 	"text/template"
+
+	"github.com/google/blueprint/pathtools"
 )
 
 func init() {
@@ -39,6 +41,10 @@ type fileGroupProperties struct {
 	// Create a make variable with the specified name that contains the list of files in the
 	// filegroup, relative to the root of the source tree.
 	Export_to_make_var *string
+
+	// Filters sources whose relative paths match the patterns listed. Glob pattern is also supported.
+	// If no paths are specified, all sources are included without filtering.
+	Filter_paths []string
 }
 
 type fileGroup struct {
@@ -64,6 +70,21 @@ func (fg *fileGroup) GenerateAndroidBuildActions(ctx ModuleContext) {
 
 	if fg.properties.Path != nil {
 		fg.srcs = PathsWithModuleSrcSubDir(ctx, fg.srcs, String(fg.properties.Path))
+	}
+
+	if fg.properties.Filter_paths != nil {
+		filtered := []Path{}
+		for _, src := range fg.srcs {
+			for _, path := range fg.properties.Filter_paths {
+				if match, err := pathtools.Match(path, src.Rel()); err != nil {
+					ctx.PropertyErrorf("filter_paths", err.Error())
+				} else if match {
+					filtered = append(filtered, src)
+					break
+				}
+			}
+		}
+		fg.srcs = filtered
 	}
 }
 
