@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11a71f1a_5b8ceebe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1402878
+      },
+      "writtenOn": "2019-08-19T10:45:31Z",
+      "side": 1,
+      "message": "what exactly was the error? how did it fail?",
+      "revId": "2cfc3c5a6b407abb951bf28b875853ecc456dd09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9951cac_6f3f2d7e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1402878
+      },
+      "writtenOn": "2019-08-19T10:45:31Z",
+      "side": 1,
+      "message": "nit: typo",
+      "revId": "2cfc3c5a6b407abb951bf28b875853ecc456dd09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90d6750a_a4e2242b",
+        "filename": "build_kzip.bash",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1402878
+      },
+      "writtenOn": "2019-08-19T10:45:31Z",
+      "side": 1,
+      "message": "\"$zip_files_tmp\"",
+      "revId": "2cfc3c5a6b407abb951bf28b875853ecc456dd09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f70c36ca_4fcebce0",
+        "filename": "build_kzip.bash",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1402878
+      },
+      "writtenOn": "2019-08-19T10:45:31Z",
+      "side": 1,
+      "message": "you probably want to quote all variable use",
+      "revId": "2cfc3c5a6b407abb951bf28b875853ecc456dd09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59bdf37c_8dc8e893",
+        "filename": "build_kzip.bash",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1402878
+      },
+      "writtenOn": "2019-08-19T10:45:31Z",
+      "side": 1,
+      "message": "quotes (as in the original version)",
+      "revId": "2cfc3c5a6b407abb951bf28b875853ecc456dd09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
