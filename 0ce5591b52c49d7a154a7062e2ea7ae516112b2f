@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c03c4f26_a601a326",
+        "filename": "cc/object_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1334152
+      },
+      "writtenOn": "2019-08-19T20:46:51Z",
+      "side": 1,
+      "message": "I also wanted to test the script was correctly added to the dependencies here too, but couldn\u0027t get it to work.",
+      "revId": "0ce5591b52c49d7a154a7062e2ea7ae516112b2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
