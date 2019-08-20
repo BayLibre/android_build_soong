@@ -16,6 +16,24 @@
       "revId": "759e86db2e7de5b51ed5b8776c60113cc288a55d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f47bcf4c_415af7fe",
+        "filename": "android/filegroup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-20T07:33:59Z",
+      "side": 1,
+      "message": "I think this is a good point. Supporting glob pattern here is not a difficult task. Then this no longer needs to be a prefix match. Done.",
+      "parentUuid": "d9d94877_580a436e",
+      "revId": "759e86db2e7de5b51ed5b8776c60113cc288a55d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
