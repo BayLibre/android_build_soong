@@ -34,6 +34,24 @@
       "revId": "759e86db2e7de5b51ed5b8776c60113cc288a55d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "540fc0fb_ecc68b16",
+        "filename": "android/filegroup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-08-20T21:42:42Z",
+      "side": 1,
+      "message": "Could you provide some example use cases? I wonder how useful glob filters would be when srcs and exclude_srcs already support glob patterns.",
+      "parentUuid": "f47bcf4c_415af7fe",
+      "revId": "759e86db2e7de5b51ed5b8776c60113cc288a55d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
