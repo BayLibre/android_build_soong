@@ -335,6 +335,30 @@
     },
     {
       "key": {
+        "uuid": "5b8ed4f8_f46859a7",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1248,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-08-20T14:11:56Z",
+      "side": 1,
+      "message": "Filed bug 139716748.",
+      "parentUuid": "9876f292_44bbd096",
+      "range": {
+        "startLine": 1242,
+        "startChar": 0,
+        "endLine": 1248,
+        "endChar": 1
+      },
+      "revId": "67a557f9b665ac65d6196cf4ef06414a6188bac3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8dfbd786_6cb4b544",
         "filename": "apex/apex.go",
         "patchSetId": 1
