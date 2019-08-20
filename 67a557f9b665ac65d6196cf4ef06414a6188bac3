@@ -263,6 +263,30 @@
     },
     {
       "key": {
+        "uuid": "86ff5b4b_74ea1c0a",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1248,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-08-20T13:16:40Z",
+      "side": 1,
+      "message": "\u003e Ah, now I see. Sorry if I have caused confusion. So, you wanted to make InstallBypassMake to return true \u0027temporarily\u0027 when it is generating build rules for flattened APEX.\n\nYes, exactly. As a side discussion, I wonder whether we should mutate the `apexBundle` module to create a flattened variant (when APEX flattening is enabled).\n\n\nFor the sake of completeness, I tried: \n\n  func (c *apexBundle) InstallBypassMake() bool {\n  \treturn a.flattened\n  }\n\nand got an error message similar to the one above:\n\n  $ m nothing\n  […]\n  [100% 1/1] out/soong/.bootstrap/bin/soong_build out/soong/build.ninja\n  FAILED: out/soong/build.ninja\n  out/soong/.bootstrap/bin/soong_build -t -l out/.module_paths/Android.bp.list -b out/soong -n out -d out/soong/build.ninja.d -globFile out/soong/.bootstrap/build-globs.ninja -o out/soong/build.ninja Android.bp\n  error: system/timezone/testing/data/test3/apex/Android.bp:20:1: module \"test3_com.android.tzdata\" variant \"android_common_test3_com.android.tzdata\": path \"out/target/product/armv8/system/apex/test3_com.android.tzdata.apex.txt\" is not under path \"out/soong/target/product/armv8\"\n  error: system/timezone/apex/Android.bp:48:1: module \"com.android.tzdata\" variant \"android_common_com.android.tzdata\": path \"out/target/product/armv8/system/apex/com.android.tzdata.apex.txt\" is not under path \"out/soong/target/product/armv8\"\n  error: system/timezone/testing/data/test1/apex/Android.bp:19:1: module \"test1_com.android.tzdata\" variant \"android_common_test1_com.android.tzdata\": path \"out/target/product/armv8/system/apex/test1_com.android.tzdata.apex.txt\" is not under path \"out/soong/target/product/armv8\"\n  14:04:17 soong bootstrap failed with: exit status 1",
+      "parentUuid": "b3e2764e_39282aae",
+      "range": {
+        "startLine": 1242,
+        "startChar": 0,
+        "endLine": 1248,
+        "endChar": 1
+      },
+      "revId": "67a557f9b665ac65d6196cf4ef06414a6188bac3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8dfbd786_6cb4b544",
         "filename": "apex/apex.go",
         "patchSetId": 1
@@ -307,6 +331,30 @@
       "revId": "67a557f9b665ac65d6196cf4ef06414a6188bac3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f4d112a_707a54f5",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1257,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-08-20T13:16:40Z",
+      "side": 1,
+      "message": "I\u0027ve kept this, following the discussion above.",
+      "parentUuid": "7753e98f_353097a2",
+      "range": {
+        "startLine": 1257,
+        "startChar": 2,
+        "endLine": 1257,
+        "endChar": 36
+      },
+      "revId": "67a557f9b665ac65d6196cf4ef06414a6188bac3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
