@@ -287,6 +287,30 @@
     },
     {
       "key": {
+        "uuid": "41cfd0b4_40253bb9",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1248,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-20T13:46:19Z",
+      "side": 1,
+      "message": "\u003e mutate the `apexBundle` module to create a flattened variant\n\nYeah, that sounds good. One thing to be careful; I don\u0027t want to mutate individual modules into flattened and non-flattened apexes. Only the apex bundle shall be mutated. The flattened variation might have an inter-variant dependency to the non-flattened version to get the list of modules that are part of the apex.\n\nThis might be a separate topic though.",
+      "parentUuid": "86ff5b4b_74ea1c0a",
+      "range": {
+        "startLine": 1242,
+        "startChar": 0,
+        "endLine": 1248,
+        "endChar": 1
+      },
+      "revId": "67a557f9b665ac65d6196cf4ef06414a6188bac3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8dfbd786_6cb4b544",
         "filename": "apex/apex.go",
         "patchSetId": 1
