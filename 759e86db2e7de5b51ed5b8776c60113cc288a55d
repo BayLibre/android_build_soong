@@ -52,6 +52,24 @@
       "revId": "759e86db2e7de5b51ed5b8776c60113cc288a55d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ec06de7_e72bc7ab",
+        "filename": "android/filegroup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-21T03:32:14Z",
+      "side": 1,
+      "message": "This will be used in frameworks/base/Android.bp. I will upload a series of CL related to this. The plan is that\n\n1) we will have multiple filegroups each of which is for a sub-directory in frameworks/base. e.g.,\n\nfilegroup {\n    name: \"framework-core-sources\",\n    srcs: [\"core/java/**/*.java\", \"core/java/**.*.aidl\"],\n    path: \"core/java\",\n}\n\nfilegroup {\n    name: \"framework-media-sources\",\n    srcs: [\"media/java/**/*.java\", \"media/java/**.*.aidl\"],\n    path: \"media/java\",\n}\n\n....\n\nthe path properties here is used as the import directory for the AIDL files.\n\n2) these filegroups will be included in two big filegroups\n\nfilegroup {\n    name: \"framework-sources-all\",\n    srcs: [\":framework-core-sources\", \":framework-media-sources\", ...],\n}\n\nfilegroup {\n    name: \"framework-sources-for-document\",\n    srcs: [\":framework-core-sources\", \":framework-media-sources\", ...],\n    filter_paths: [\"android/**/*\", ...],\n}\n\nfilter_paths will be used to filter Java and AIDL files that are for public packages like \"android\".\n\n3) the former will be used to compile framework.jar, while the latter will be used as an input to the droiddoc modules for API documentation, and API stubs, etc.",
+      "parentUuid": "540fc0fb_ecc68b16",
+      "revId": "759e86db2e7de5b51ed5b8776c60113cc288a55d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
