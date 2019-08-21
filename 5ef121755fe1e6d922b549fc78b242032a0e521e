@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69a0f22c_0412000e",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-21T13:03:09Z",
+      "side": 1,
+      "message": "This should be a mapping from a module name to the list of apexes, or a mapping from an apex name to the list of modules. For example, we want to allow the use of libbinder only from com.android.media, but not from other APEXes.",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 1
+      },
+      "revId": "5ef121755fe1e6d922b549fc78b242032a0e521e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89a2e83f_32278e16",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-21T13:03:09Z",
+      "side": 1,
+      "message": "depName",
+      "range": {
+        "startLine": 964,
+        "startChar": 40,
+        "endLine": 964,
+        "endChar": 66
+      },
+      "revId": "5ef121755fe1e6d922b549fc78b242032a0e521e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54ca4fd4_e4ec7958",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 975,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-21T13:03:09Z",
+      "side": 1,
+      "message": "No need to consider this here",
+      "range": {
+        "startLine": 973,
+        "startChar": 0,
+        "endLine": 975,
+        "endChar": 7
+      },
+      "revId": "5ef121755fe1e6d922b549fc78b242032a0e521e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
