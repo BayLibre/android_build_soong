@@ -70,6 +70,24 @@
       "revId": "759e86db2e7de5b51ed5b8776c60113cc288a55d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7459ca16_b4cb94cb",
+        "filename": "android/filegroup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-21T18:00:16Z",
+      "side": 1,
+      "message": "This seems odd, since filegroups are already often globs in srcs, so having a second level of globs in filter_paths seems redundant.  I see you are using it to filter another filegroup, but could it be inverted, with one filegroup for android/**/*, and then another filegroup that includes the first plus whatever shouldn\u0027t be in the first filegroup?",
+      "parentUuid": "4ec06de7_e72bc7ab",
+      "revId": "759e86db2e7de5b51ed5b8776c60113cc288a55d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
