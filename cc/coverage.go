@@ -69,12 +69,12 @@ func (cov *coverage) flags(ctx ModuleContext, flags Flags, deps PathDeps) (Flags
 
 	if cov.Properties.CoverageEnabled {
 		flags.Coverage = true
-		flags.GlobalFlags = append(flags.GlobalFlags, "--coverage", "-O0")
+		flags.GlobalFlags = append(flags.GlobalFlags, "--coverage", "-O1")
 		cov.linkCoverage = true
 
 		// Override -Wframe-larger-than and non-default optimization
 		// flags that the module may use.
-		flags.CFlags = append(flags.CFlags, "-Wno-frame-larger-than=", "-O0")
+		flags.CFlags = append(flags.CFlags, "-Wno-frame-larger-than=", "-O1")
 	}
 
 	// Even if we don't have coverage enabled, if any of our object files were compiled
