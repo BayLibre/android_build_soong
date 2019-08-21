@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "350d4969_ac7cc544",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-21T19:45:07Z",
+      "side": 1,
+      "message": "this already exists as android.Cp",
+      "revId": "3d68ec2b9bcaa6c221fdf44dc78bf99c3f31466a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "221ba645_09aafd43",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-21T19:45:07Z",
+      "side": 1,
+      "message": "Why is this copy necessary, does objFile[i] \u003d srcFile not work?",
+      "revId": "3d68ec2b9bcaa6c221fdf44dc78bf99c3f31466a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4970c69_9edd0728",
+        "filename": "cc/object.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-21T19:45:07Z",
+      "side": 1,
+      "message": "None of these changes are relevant.",
+      "revId": "3d68ec2b9bcaa6c221fdf44dc78bf99c3f31466a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
