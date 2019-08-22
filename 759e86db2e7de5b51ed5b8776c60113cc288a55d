@@ -106,6 +106,24 @@
       "revId": "759e86db2e7de5b51ed5b8776c60113cc288a55d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29d309e9_6ec06993",
+        "filename": "android/filegroup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-22T01:29:41Z",
+      "side": 1,
+      "message": "\u003e another filegroup that includes the first plus whatever shouldn\u0027t be in the first filegroup?\n\nThis is annoying because filegroup doesn\u0027t remove dups (by design I guess?).\n\nI wish I could do\n\nfilegroup {\n    name: \"framework-core-source-to-document\",\n    srcs: [\"core/java/android/**/*.java\", \"core/java/android/**/*.aidl\"],\n    path: \"core/java\",\n}\n\nfilegroup {\n    name: \"framework-core-source\",\n    srcs: [\n       \":framework-core-source-to-document\",\n       \"core/java/**/*.java\",    // files under core/java/android are de-duped\n       \"core/java/**/*.aidl\",    // files under core/java/android are de-duped\n    ],\n    path: \"core/java\",\n}",
+      "parentUuid": "43b0196d_12a07921",
+      "revId": "759e86db2e7de5b51ed5b8776c60113cc288a55d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
