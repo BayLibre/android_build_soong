@@ -22,6 +22,30 @@
       "revId": "696082e43978a2a894939c0bc42df38ca9708a78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0e4391d_153f0bdb",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-22T03:57:05Z",
+      "side": 1,
+      "message": "Done. I\u0027ve changed the tag to \"aaptSrcJar\" to be distinguishable from ordinary srcjars from Java/AIDL/proto.",
+      "parentUuid": "a5a54bcb_a4eea6ea",
+      "range": {
+        "startLine": 543,
+        "startChar": 13,
+        "endLine": 543,
+        "endChar": 19
+      },
+      "revId": "696082e43978a2a894939c0bc42df38ca9708a78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
