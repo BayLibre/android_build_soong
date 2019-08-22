@@ -124,6 +124,24 @@
       "revId": "759e86db2e7de5b51ed5b8776c60113cc288a55d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b2f3236_0ff854de",
+        "filename": "android/filegroup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-22T22:03:56Z",
+      "side": 1,
+      "message": "It hasn\u0027t come up before.  My only concern with removing dups would be if a source file was listed twice you might remove one and then be confused why the file was still being built.",
+      "parentUuid": "29d309e9_6ec06993",
+      "revId": "759e86db2e7de5b51ed5b8776c60113cc288a55d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
