@@ -29,6 +29,11 @@ type SdkAware interface {
 	ContainingSdk() SdkRef
 	BuildWithSdks(sdks []SdkRef)
 	RequiredSdks() []SdkRef
+	IsFakeModule() bool
+	ContainedInRequiredSdks(ignoreVersion bool) bool
+	IsInSameSdk(other SdkAware) bool
+	ReplaceFakeModule()
+	ShouldReplaceFakeModule() bool
 }
 
 // SdkRef refers to a version of an SDK
@@ -42,12 +47,12 @@ const (
 	currentVersion = "current"
 )
 
-// IsCurrentVersion determines if the SdkRef is referencing to an in-development version of an SDK
+// IsCurrentVersion determines if this SdkRef is referencing to an in-development version of an SDK
 func (s SdkRef) IsCurrentVersion() bool {
 	return s.Version == currentVersion
 }
 
-// IsCurrentVersionOf determines if the SdkRef is referencing to an in-development version of the
+// IsCurrentVersionOf determines if this SdkRef is referencing to an in-development version of the
 // specified SDK
 func (s SdkRef) IsCurrentVersionOf(name string) bool {
 	return s.Name == name && s.IsCurrentVersion()
@@ -81,6 +86,12 @@ type sdkProperties struct {
 
 		// Version of the SDK. If omitted, defaults to "current" meaning ToT
 		Version *string
+
+		// Determines whether this module is an SDK member created by the build system
+		// just because there is no real module defined for dev version
+		// Not intended to be used in Android.bp
+		// TODO: remove the need for this
+		Fake bool
 	}
 
 	// The list of SDK names and versions that are used to build this module
@@ -91,6 +102,8 @@ type sdkProperties struct {
 // interface. InitSdkAwareModule should be called to initialize this struct.
 type SdkBase struct {
 	properties sdkProperties
+
+	ReplaceFake bool
 }
 
 func (s *SdkBase) sdkBase() *SdkBase {
@@ -117,6 +130,48 @@ func (s *SdkBase) BuildWithSdks(sdks []SdkRef) {
 // RequiredSdks returns the SDK(s) that this module has to be built with
 func (s *SdkBase) RequiredSdks() []SdkRef {
 	return s.properties.RequiredSdks
+}
+
+// IsFakeModule returns true if this module is a dev version module that is created by
+// the build system just because there is no real module (which is backed by Android.bp)
+// defined for the dev version
+func (s *SdkBase) IsFakeModule() bool {
+	return s.properties.Provides_sdk.Fake
+}
+
+// ContainedInRequiredSdks is a convenience function that test whether the SDK that contains
+// this module is in the required SDKs that this module has to be built with
+func (s *SdkBase) ContainedInRequiredSdks(ignoreVersion bool) bool {
+	containingSdk := s.ContainingSdk()
+	for _, sdk := range s.RequiredSdks() {
+		if ignoreVersion {
+			if sdk.Name == containingSdk.Name {
+				return true
+			}
+		} else {
+			if sdk == containingSdk {
+				return true
+			}
+		}
+
+	}
+	return false
+}
+
+// IsInSameSdk is a convenience function that test whether this module and the other module
+// are member of in the same SDK
+func (s *SdkBase) IsInSameSdk(other SdkAware) bool {
+	return s.IsInAnySdk() && s.ContainingSdk().Name == other.ContainingSdk().Name
+}
+
+// ReplaceFakeModule marks this module so that it will be used to replace the fake module
+func (s *SdkBase) ReplaceFakeModule() {
+	s.ReplaceFake = true
+}
+
+// ShouldReplaceFakeModule determines whether this module should replace the fake module or not
+func (s *SdkBase) ShouldReplaceFakeModule() bool {
+	return s.ReplaceFake
 }
 
 // NameWithSdk converts a module's base name to the name <basename>.<sdk>.<version> that
