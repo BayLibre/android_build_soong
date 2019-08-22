@@ -15,10 +15,13 @@
 package sdk
 
 import (
+	"strconv"
+
 	"android/soong/android"
 	// This package don't depend on the apex package, but importing it to make its mutators to be
 	// registered before mutators in this package. See RegisterPostDepsMutators for more details.
 	_ "android/soong/apex"
+	"android/soong/cc"
 	"android/soong/java"
 
 	"github.com/google/blueprint"
@@ -42,7 +45,7 @@ type sdk struct {
 // choose to build with.
 func ModuleFactory() android.Module {
 	s := &sdk{}
-	android.InitAndroidMultiTargetsArchModule(s, android.HostAndDeviceSupported, android.MultilibCommon)
+	android.InitAndroidModule(s)
 	android.InitDefaultableModule(s)
 	return s
 }
@@ -153,6 +156,10 @@ func createMissingMemberMutator(mctx android.TopDownMutatorContext) {
 				switch moduleType {
 				case "java_import":
 					createJavaModule(mctx, memberName, sdkName)
+				case "cc_prebuilt_library_shared":
+					createCcLibrarySharedModule(mctx, memberName, sdkName)
+				case "cc_prebuilt_library_static":
+					createCcLibraryStaticModule(mctx, memberName, sdkName)
 				}
 				// TODO(jiyong): add support for more module types
 			}
@@ -164,13 +171,57 @@ func createJavaModule(mctx android.TopDownMutatorContext, memberName string, sdk
 	props := struct {
 		Name         *string
 		Provides_sdk struct {
-			Name *string
+			Name    *string
+			Version *string
+			Fake    bool
 		}
 	}{}
 	props.Name = proptools.StringPtr(memberName)
 	props.Provides_sdk.Name = proptools.StringPtr(sdkName)
-	// provides_sdk.version is omitted; defaults to 'dev'
+	props.Provides_sdk.Version = proptools.StringPtr("dev")
+	props.Provides_sdk.Fake = true
 	mctx.CreateModule(android.ModuleFactoryAdaptor(java.ImportFactory), &props)
+}
+
+func createCcLibrarySharedModule(mctx android.TopDownMutatorContext, memberName string, sdkName string) {
+	props := struct {
+		Name               *string
+		System_shared_libs []string
+		Stl                *string
+		Provides_sdk       struct {
+			Name    *string
+			Version *string
+			Fake    bool
+		}
+		Enabled *bool
+	}{}
+	props.Name = proptools.StringPtr(memberName)
+	props.System_shared_libs = []string{}
+	props.Stl = proptools.StringPtr("none")
+	props.Provides_sdk.Name = proptools.StringPtr(sdkName)
+	props.Provides_sdk.Version = proptools.StringPtr("dev")
+	props.Provides_sdk.Fake = true
+	mctx.CreateModule(android.ModuleFactoryAdaptor(cc.PrebuiltSharedLibraryFactory), &props)
+}
+
+func createCcLibraryStaticModule(mctx android.TopDownMutatorContext, memberName string, sdkName string) {
+	props := struct {
+		Name               *string
+		System_shared_libs []string
+		Stl                *string
+		Provides_sdk       struct {
+			Name    *string
+			Version *string
+			Fake    bool
+		}
+	}{}
+	props.Name = proptools.StringPtr(memberName)
+	props.System_shared_libs = []string{}
+	props.Stl = proptools.StringPtr("none")
+	props.Provides_sdk.Name = proptools.StringPtr(sdkName)
+	props.Provides_sdk.Version = proptools.StringPtr("dev")
+	props.Provides_sdk.Fake = true
+	mctx.CreateModule(android.ModuleFactoryAdaptor(cc.PrebuiltStaticLibraryFactory), &props)
 }
 
 // Step 3: create dependencies from the in-development version of an SDK member to frozen versions
@@ -202,6 +253,44 @@ func sdkDepsMutator(mctx android.TopDownMutatorContext) {
 				}
 			})
 		}
+		// This is a tricky part. I wish I could remove this. Code below is to prevent the auto
+		// generated in-development module (if ever created) from being actually used. The module is
+		// created only when there is no 'real' module defined for the in-development version for
+		// an SDK, just to satisfy dependencies to the module name until the dependencies are
+		// replaced to the correct prebuilts by the sdkDepsReplaceMutator below. This means that
+		// after sdkDepsRelaceMutator is finished, there should be no dependency to the auto
+		// generated module. If there is, the build won't be successful. For example the cc
+		// package will complain since the auto-generated module does not produce any output.
+		//
+		// But note that the dependency replacement is only when there is a sdk requirement;
+		// such as when building modules for an APEX having uses_sdks property set. So, for the
+		// modules built without sdk requirements, the dependency to the auto-generated module
+		// could persist.
+		//
+		// To prevent this, the auto-generated module (that we call a fake module here) tries to
+		// find the latest prebuilt for the SDK and tell it to replace me (the fake module) in
+		// sdkDepsReplaceMutator.
+		if m.IsFakeModule() && !m.ContainedInRequiredSdks( /* ignoreVersion */ true) {
+			latestVerNum := 0
+			var latestSdkMember android.SdkAware
+			mctx.VisitDirectDeps(func(d android.Module) {
+				if dep, ok := d.(android.SdkAware); ok && m.IsInSameSdk(dep) {
+					verNum, err := strconv.Atoi(dep.ContainingSdk().Version)
+					if err != nil {
+						mctx.ModuleErrorf("SDK version %q of %q is not a number",
+							dep.ContainingSdk().Version, dep.Name())
+						return
+					}
+					if verNum > latestVerNum {
+						latestVerNum = verNum
+						latestSdkMember = dep
+					}
+				}
+			})
+			if latestSdkMember != nil {
+				latestSdkMember.ReplaceFakeModule()
+			}
+		}
 	}
 }
 
@@ -209,16 +298,9 @@ func sdkDepsMutator(mctx android.TopDownMutatorContext) {
 // versioned module is used instead of the un-versioned (in-development) module libfoo
 func sdkDepsReplaceMutator(mctx android.BottomUpMutatorContext) {
 	if m, ok := mctx.Module().(android.SdkAware); ok && m.IsInAnySdk() {
-		if sdk := m.ContainingSdk(); !sdk.IsDevVersion() {
-			requiredSdks := m.RequiredSdks()
-			found := false
-			for _, reqSdk := range requiredSdks {
-				if reqSdk == sdk {
-					found = true
-					break
-				}
-			}
-			if found {
+		sdk := m.ContainingSdk()
+		if !sdk.IsDevVersion() {
+			if m.ContainedInRequiredSdks( /* ignoreVersion */ false) || m.ShouldReplaceFakeModule() {
 				// Note that this replacement is done only for the modules that have the same
 				// variations as the current module. Since current module is already mutated for
 				// apex references in other APEXes are not affected by this replacement.
