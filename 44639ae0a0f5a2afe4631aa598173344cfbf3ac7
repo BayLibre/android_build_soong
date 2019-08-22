@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c20b3b50_e56a6208",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1022,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-08-22T07:37:08Z",
+      "side": 1,
+      "message": "\u003d\u003d ctx.ModuleName().\n\nWe can get a list before for-loop. And I prefer separate loop for separate task. (Otherwise, the comment above doesn\u0027t match what is going on the loop body)\n\n// check if no_apex... \nwhitelist :\u003d whitelistNoApex[ctx.ModuleName()]\nfor i, fi :\u003d range filesInfo {\n  ...\n}\n\n// prepend the name of this APEX ...\nfor i :\u003d range filesInfo {\n  ...\n}",
+      "range": {
+        "startLine": 1022,
+        "startChar": 78,
+        "endLine": 1022,
+        "endChar": 91
+      },
+      "revId": "44639ae0a0f5a2afe4631aa598173344cfbf3ac7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
