@@ -398,6 +398,7 @@ type Module struct {
 	android.ModuleBase
 	android.DefaultableModuleBase
 	android.ApexModuleBase
+	android.SdkBase
 
 	Properties       BaseProperties
 	VendorProperties VendorProperties
@@ -524,6 +525,7 @@ func (c *Module) Init() android.Module {
 	android.InitDefaultableModule(c)
 
 	android.InitApexModule(c)
+	android.InitSdkAwareModule(c)
 
 	return c
 }
@@ -894,6 +896,9 @@ func (c *Module) Prebuilt() *android.Prebuilt {
 
 func (c *Module) Name() string {
 	name := c.ModuleBase.Name()
+	if c.IsInAnySdk() {
+		return c.NameWithSdk(name)
+	}
 	if p, ok := c.linker.(interface {
 		Name(string) string
 	}); ok {
