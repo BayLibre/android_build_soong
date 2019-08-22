@@ -88,6 +88,24 @@
       "revId": "759e86db2e7de5b51ed5b8776c60113cc288a55d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43b0196d_12a07921",
+        "filename": "android/filegroup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-22T01:27:26Z",
+      "side": 1,
+      "message": "If I understand you correctly...\n\nfilegroup {\n    name: \"framework-core-source-to-document\",\n    srcs: [\"core/java/android/**/*.java\", \"core/java/android/**/*.aidl\"],\n    path: \"core/java\",\n}\n\nfilegroup {\n    name: \"framework-core-source\",\n    srcs: [\n       \":framework-core-source-to-document\",\n       \"core/java/com/**/*.java\",\n       \"core/java/com/**/*.aidl\",\n    ],\n    path: \"core/java\",\n}\n\ndo the same for media, drm, rs, ...\n\nfilegroup {\n    name: \"framework-sources-all\",\n    srcs: [\":framework-core-source\", ...],\n}\n\nfilegroup {\n    name: \"framework-sources-for-document\",\n    srcs: [\":framework-core-source-to-document\", ...],\n}\n\nright?\n\nWell, this should work but isn\u0027t this too verbose? It becomes more complicated when there are multiple packages to document e.g. android, javax, org.apache.http, ...",
+      "parentUuid": "7459ca16_b4cb94cb",
+      "revId": "759e86db2e7de5b51ed5b8776c60113cc288a55d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
