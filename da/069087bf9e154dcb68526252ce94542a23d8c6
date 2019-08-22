@@ -1,0 +1,9 @@
+Presubmit-Ready+1: Yi Kong <yikong@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Code-Review+1: Evgenii Stepanov <eugenis@google.com>
+Code-Review+2: Pirama Arumuga Nainar <pirama@google.com>
+Submitted-by: Yi Kong <yikong@google.com>
+Submitted-at: Thu, 22 Aug 2019 03:43:49 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1106673
+Project: platform/build/soong
+Branch: refs/heads/master
