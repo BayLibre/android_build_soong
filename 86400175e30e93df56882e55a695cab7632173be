@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa35d837_072516f2",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1771,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-22T09:10:06Z",
+      "side": 1,
+      "message": "I think you need another test where no_apex does not fail the build... because the no_apex library is behind the stubs library.\n\nAlso, I think below test should be separated into two; one for each apex.",
+      "revId": "86400175e30e93df56882e55a695cab7632173be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
