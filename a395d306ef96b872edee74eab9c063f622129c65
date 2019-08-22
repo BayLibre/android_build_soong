@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df88559e_5b861246",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-22T22:05:21Z",
+      "side": 1,
+      "message": "We\u0027ve been using something that looks like a filepath for these, how about \".aapt.srcjar\"?\n\nCan you use a switch statement here to make it easy to add new tags?",
+      "range": {
+        "startLine": 543,
+        "startChar": 12,
+        "endLine": 543,
+        "endChar": 22
+      },
+      "revId": "a395d306ef96b872edee74eab9c063f622129c65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
