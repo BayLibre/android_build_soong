@@ -120,5 +120,17 @@ func NewFuzz(hod android.HostOrDeviceSupported) *Module {
 		ctx.AppendProperties(&disableDarwinAndLinuxBionic)
 	})
 
+	// Statically link the STL. This allows fuzz target deployment to not have to
+	// include the STL.
+	android.AddLoadHook(module, func(ctx android.LoadHookContext) {
+		staticStlLinkage := struct {
+			Stl *string
+		}{}
+
+		static_cxx := "libc++_static"
+		staticStlLinkage.Stl = &static_cxx
+		ctx.AppendProperties(&staticStlLinkage)
+	})
+
 	return module
 }
