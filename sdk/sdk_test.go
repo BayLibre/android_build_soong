@@ -22,6 +22,7 @@ import (
 
 	"android/soong/android"
 	"android/soong/apex"
+	"android/soong/cc"
 	"android/soong/java"
 )
 
@@ -44,7 +45,20 @@ func testSdkContext(t *testing.T, bp string) (*android.TestContext, android.Conf
 	ctx.RegisterModuleType("java_library", android.ModuleFactoryAdaptor(java.LibraryFactory))
 	ctx.RegisterModuleType("java_import", android.ModuleFactoryAdaptor(java.ImportFactory))
 
-	// TODO(jiyong) do the similar for cc package when the support for it is ready
+	// from cc package
+	ctx.RegisterModuleType("cc_library_shared", android.ModuleFactoryAdaptor(cc.LibrarySharedFactory))
+	ctx.RegisterModuleType("cc_prebuilt_library_shared", android.ModuleFactoryAdaptor(cc.PrebuiltSharedLibraryFactory))
+	ctx.RegisterModuleType("cc_prebuilt_library_static", android.ModuleFactoryAdaptor(cc.PrebuiltStaticLibraryFactory))
+	ctx.RegisterModuleType("toolchain_library", android.ModuleFactoryAdaptor(cc.ToolchainLibraryFactory))
+	ctx.RegisterModuleType("cc_object", android.ModuleFactoryAdaptor(cc.ObjectFactory))
+	ctx.PreDepsMutators(func(ctx android.RegisterMutatorsContext) {
+		ctx.BottomUp("image", cc.ImageMutator).Parallel()
+		ctx.BottomUp("link", cc.LinkageMutator).Parallel()
+		ctx.BottomUp("vndk", cc.VndkMutator).Parallel()
+		ctx.BottomUp("test_per_src", cc.TestPerSrcMutator).Parallel()
+		ctx.BottomUp("version", cc.VersionMutator).Parallel()
+		ctx.BottomUp("begin", cc.BeginMutator).Parallel()
+	})
 
 	// from apex package
 	ctx.RegisterModuleType("apex", android.ModuleFactoryAdaptor(apex.BundleFactory))
@@ -69,6 +83,71 @@ func testSdkContext(t *testing.T, bp string) (*android.TestContext, android.Conf
 			name: "myapex.cert",
 			certificate: "myapex",
 		}
+		toolchain_library {
+			name: "libcompiler_rt-extras",
+			src: "",
+			vendor_available: true,
+			recovery_available: true,
+		}
+
+		toolchain_library {
+			name: "libatomic",
+			src: "",
+			vendor_available: true,
+			recovery_available: true,
+		}
+
+		toolchain_library {
+			name: "libgcc",
+			src: "",
+			vendor_available: true,
+			recovery_available: true,
+		}
+
+		toolchain_library {
+			name: "libgcc_stripped",
+			src: "",
+			vendor_available: true,
+			recovery_available: true,
+		}
+
+		toolchain_library {
+			name: "libclang_rt.builtins-aarch64-android",
+			src: "",
+			vendor_available: true,
+			recovery_available: true,
+		}
+
+		toolchain_library {
+			name: "libclang_rt.builtins-arm-android",
+			src: "",
+			vendor_available: true,
+			recovery_available: true,
+		}
+
+		cc_object {
+			name: "crtbegin_so",
+			stl: "none",
+			vendor_available: true,
+			recovery_available: true,
+		}
+
+		cc_object {
+			name: "crtend_so",
+			stl: "none",
+			vendor_available: true,
+			recovery_available: true,
+		}
+
+		cc_object {
+			name: "crtbegin_static",
+			stl: "none",
+		}
+
+		cc_object {
+			name: "crtend_android",
+			stl: "none",
+		}
 	`
 
 	ctx.MockFileSystem(map[string][]byte{
@@ -82,6 +161,8 @@ func testSdkContext(t *testing.T, bp string) (*android.TestContext, android.Conf
 		"myapex.x509.pem":                            nil,
 		"myapex.pk8":                                 nil,
 		"Test.java":                                  nil,
+		"Test.cpp":                                   nil,
+		"libfoo.so":                                  nil,
 	})
 
 	return ctx, config
@@ -134,7 +215,7 @@ func pathsToStrings(paths android.Paths) []string {
 	return ret
 }
 
-func TestBasicSdk(t *testing.T) {
+func TestBasicSdkWithJava(t *testing.T) {
 	ctx, _ := testSdk(t, `
 		sdk {
 			name: "mysdk",
@@ -191,6 +272,70 @@ func TestBasicSdk(t *testing.T) {
 	// Depending on the uses_sdks value, different libs are linked
 	ensureListContains(t, pathsToStrings(javalibForMyApex.Rule("javac").Implicits), sdkMemberV1.String())
 	ensureListContains(t, pathsToStrings(javalibForMyApex2.Rule("javac").Implicits), sdkMemberV2.String())
+}
+
+func TestBasicSdkWithCc(t *testing.T) {
+	ctx, _ := testSdk(t, `
+		sdk {
+			name: "mysdk",
+		}
+
+		cc_prebuilt_library_shared {
+			name: "sdkmember",
+			srcs: ["libfoo.so"],
+			provides_sdk: {
+				name: "mysdk",
+				version: "1",
+			},
+			system_shared_libs: [],
+			stl: "none",
+		}
+
+		cc_prebuilt_library_shared {
+			name: "sdkmember",
+			srcs: ["libfoo.so"],
+			provides_sdk: {
+				name: "mysdk",
+				version: "2",
+			},
+			system_shared_libs: [],
+			stl: "none",
+		}
+
+		cc_library_shared {
+			name: "mycpplib",
+			srcs: ["Test.cpp"],
+			shared_libs: ["sdkmember"],
+			system_shared_libs: [],
+			stl: "none",
+		}
+
+		apex {
+			name: "myapex",
+			native_shared_libs: ["mycpplib"],
+			uses_sdks: ["mysdk#1"],
+			key: "myapex.key",
+			certificate: ":myapex.cert",
+		}
+
+		apex {
+			name: "myapex2",
+			native_shared_libs: ["mycpplib"],
+			uses_sdks: ["mysdk#2"],
+			key: "myapex.key",
+			certificate: ":myapex.cert",
+		}
+	`)
+
+	sdkMemberV1 := ctx.ModuleForTests("sdkmember.mysdk.1", "android_arm64_armv8-a_core_shared_myapex").Rule("toc").Output
+	sdkMemberV2 := ctx.ModuleForTests("sdkmember.mysdk.2", "android_arm64_armv8-a_core_shared_myapex2").Rule("toc").Output
+
+	cpplibForMyApex := ctx.ModuleForTests("mycpplib", "android_arm64_armv8-a_core_shared_myapex")
+	cpplibForMyApex2 := ctx.ModuleForTests("mycpplib", "android_arm64_armv8-a_core_shared_myapex2")
+
+	// Depending on the uses_sdks value, different libs are linked
+	ensureListContains(t, pathsToStrings(cpplibForMyApex.Rule("ld").Implicits), sdkMemberV1.String())
+	ensureListContains(t, pathsToStrings(cpplibForMyApex2.Rule("ld").Implicits), sdkMemberV2.String())
 }
 
 var buildDir string
