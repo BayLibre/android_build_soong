@@ -1,0 +1,8 @@
+Autosubmit+1: Dan Willemsen <dwillemsen@google.com>
+Code-Review+2: Steven Moreland <smoreland@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Thu, 22 Aug 2019 02:16:28 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1106611
+Project: platform/build/soong
+Branch: refs/heads/master
