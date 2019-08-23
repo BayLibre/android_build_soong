@@ -826,6 +826,14 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	ctx.WalkDepsBlueprint(func(child, parent blueprint.Module) bool {
 		depTag := ctx.OtherModuleDependencyTag(child)
 		depName := ctx.OtherModuleName(child)
+
+		if am, ok := child.(android.Module); ok {
+			if !am.Enabled() {
+				ctx.OtherModuleErrorf(child, "not enabled")
+				return false
+			}
+		}
+
 		if _, ok := parent.(*apexBundle); ok {
 			// direct dependencies
 			switch depTag {
