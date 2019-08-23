@@ -22,6 +22,30 @@
       "revId": "84f60adb66635d3fc88cead332a8d9206006344f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "845f63a4_3948fe71",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-08-23T07:16:56Z",
+      "side": 1,
+      "message": "Thanks. As you might have guessed, I added this test to see if Steven\u0027s idea (setting \"target:{apex:{enabled:false}}\" instead of \"no_apex:true\" to avoid being included in apex bundles) would work.\n\nbtw, I found that \"depending on disabled module\" only emits error if \"VisitDeps*\" method is called in \"GenerateAndroidBuildActions()\". So, if a module walks dependency tree using an alternative (\"WalkDeps\" method), error is not emitted. \"apex\" module belongs to this case. So I want to keep this in cc_test with another test for apex in apex_test.\n\n(I guess that there are some reasons why \"WalkDeps\" is more permissive than \"VisitDeps*\" methods. )\n\nWhat do you think?",
+      "parentUuid": "68f0b3f2_131195d2",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 55
+      },
+      "revId": "84f60adb66635d3fc88cead332a8d9206006344f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
