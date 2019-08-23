@@ -70,6 +70,30 @@
       "revId": "84f60adb66635d3fc88cead332a8d9206006344f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af393b91_1f10c79c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-08-23T15:06:46Z",
+      "side": 1,
+      "message": "\u003e target.apex.enabled is completely different from enabled. The former is not interpreted by module.go.\n\nIf target.apex were supported, then target.apex.enabled would be propagated to enabled and treated by module.go. (Just like target.android.enabled). However, on a second thought, I doubt how useful treating apex as target. (For me, apex is something like a partition.) So, no_apex looks simpler than target.apex.enabled.\n\n\u003e Really? That sounds like a bug to me. BTW, I see\n\u003e validateAndroidModule is called inside WalkDeps.\n\nI meant \"WalkDeps\". validateAndroidModule is not called inside WalkDeps. https://cs.corp.google.com/aosp-master/build/soong/android/module.go?l\u003d1358\n\nAnd I agree with you. validateAndroidModule() should be called in WalkDeps(). (But not in WalkDepsBlueprint() as you noted.)\n\n\u003e I originally used WalkDeps in apex.go, but after 778127a04192ffcf6df443f253e8a69868e3c529, allight@ changed it to WalkDepsBlueprint to be able to detect bootstrap.GoBinaryTool. I think we just need to make it back to WalkDeps.\n\n+1.",
+      "parentUuid": "ffcbd47a_8c9dba90",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 55
+      },
+      "revId": "84f60adb66635d3fc88cead332a8d9206006344f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
