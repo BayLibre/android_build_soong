@@ -142,6 +142,24 @@
       "revId": "759e86db2e7de5b51ed5b8776c60113cc288a55d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c28c9efa_2f71e15a",
+        "filename": "android/filegroup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-23T02:08:30Z",
+      "side": 1,
+      "message": "Well, my concern with dedup is about how we should handle paths with same String(), but with different Rel(). Which one should be removed for the other? Or should we keep them both?\n\nBTW, are you still against adding filter_paths? If so, I can workaround it as suggested by you but it will complicate frameworks/base/Android.bp a lot.",
+      "parentUuid": "5b2f3236_0ff854de",
+      "revId": "759e86db2e7de5b51ed5b8776c60113cc288a55d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
