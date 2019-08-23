@@ -22,6 +22,30 @@
       "revId": "0ad79a067dad0453ae76de954f89f170c2d27f5e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6f90792_b673da57",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-08-23T18:27:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c56e9100_1a862646",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 131,
+        "endChar": 36
+      },
+      "revId": "0ad79a067dad0453ae76de954f89f170c2d27f5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
