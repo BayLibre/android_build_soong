@@ -94,6 +94,30 @@
       "revId": "84f60adb66635d3fc88cead332a8d9206006344f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08d9b7d1_3a38d74a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-08-23T16:52:00Z",
+      "side": 1,
+      "message": "As Jiyong suggested at the first comment, the relevant test is added to module_test.go.\n(I left apex_test and cc_test even if they are somewhat redundant. They show more realistic cases.)\n\nCheck for Enabled() is added before calling GenerateAndroidBuildActions().",
+      "parentUuid": "af393b91_1f10c79c",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 55
+      },
+      "revId": "84f60adb66635d3fc88cead332a8d9206006344f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
