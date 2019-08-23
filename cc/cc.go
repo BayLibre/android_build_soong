@@ -478,6 +478,27 @@ func (c *Module) RelativeInstallPath() string {
 	return ""
 }
 
+// IsVndkOnSystem returns true if a module is supposed to be a vndk library provided by system to vendor
+func (c *Module) IsVndkOnSystem() bool {
+	if linker, ok := c.linker.(*prebuiltLibraryLinker); ok {
+		// Note that prebuilt library splits into shared/static variants even if
+		// it is only intended to be used as static (for example, cc_prebuilt_library_static)
+		// However, those invalid variants are disabled by clearing Srcs
+		if len(linker.PrebuiltSrcs()) == 0 {
+			return false
+		}
+	}
+	if linker, ok := c.linker.(libraryInterface); ok {
+		return linker.shared() && c.Enabled() && c.isVndk() && c.useVndk() && !c.isVndkExt()
+	}
+
+	return false
+}
+
+func (c *Module) VndkVersion() string {
+	return c.vndkVersion()
+}
+
 func (c *Module) Init() android.Module {
 	c.AddProperties(&c.Properties, &c.VendorProperties)
 	if c.compiler != nil {
