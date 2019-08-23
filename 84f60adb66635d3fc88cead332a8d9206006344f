@@ -46,6 +46,30 @@
       "revId": "84f60adb66635d3fc88cead332a8d9206006344f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffcbd47a_8c9dba90",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-23T11:58:18Z",
+      "side": 1,
+      "message": "target.apex.enabled is completely different from enabled. The former is not interpreted by module.go.\n\nImplementing the concept of no_apex by disabling the apex variant of the module might work, but personally I don\u0027t see a good value there.\n\n\u003e btw, I found that \"depending on disabled module\" only emits error if \"VisitDeps*\" method is called in \"GenerateAndroidBuildActions()\".\n\nReally? That sounds like a bug to me. BTW, I see validateAndroidModule is called inside WalkDeps.\n\nMaybe you are talking about WalkDepsBlueprint, which is a blueprint thing where \u0027enabled\u0027 does not exist.\n\nI originally used WalkDeps in apex.go, but after 778127a04192ffcf6df443f253e8a69868e3c529, allight@ changed it to WalkDepsBlueprint to be able to detect bootstrap.GoBinaryTool. I think we just need to make it back to WalkDeps.",
+      "parentUuid": "845f63a4_3948fe71",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 55
+      },
+      "revId": "84f60adb66635d3fc88cead332a8d9206006344f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
