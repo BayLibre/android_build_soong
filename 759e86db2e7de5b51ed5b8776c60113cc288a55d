@@ -160,6 +160,24 @@
       "revId": "759e86db2e7de5b51ed5b8776c60113cc288a55d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e7a1697_ee47e324",
+        "filename": "android/filegroup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-23T18:18:56Z",
+      "side": 1,
+      "message": "Duplicate paths with different Rel() is a good point.  I think that would have to be an error if we went down that route.\n\nI still don\u0027t like the generic filter_paths, as the paths returned by an OutputFileProducer are an implementation detail, and not something modules should be using to get a subset of the returned files.\n\nHow about creating a new module type that acts like filegroup but has the custom logic you want, and then you can use module tags to get whichever subset of the files you need?",
+      "parentUuid": "c28c9efa_2f71e15a",
+      "revId": "759e86db2e7de5b51ed5b8776c60113cc288a55d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
