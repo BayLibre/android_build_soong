@@ -178,6 +178,24 @@
       "revId": "759e86db2e7de5b51ed5b8776c60113cc288a55d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5596843_26b01654",
+        "filename": "android/filegroup.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-24T00:55:02Z",
+      "side": 1,
+      "message": "Yeah, that sounds like a plan. So it will be something like\n\nframework_filegroup {\n    name: \"framework-src-to-document\",\n    srcs: [\"framework-core-source\", \"framework-media-source\", ...],\n    packages: [\"android\", ...]\n}\n\nBTW, yesterday, I found a way to do this without filtering. We could exclude some Java packages by placing package.html (or package-info.java) in the directory that represents the package. \n\nI will do as suggested when I again have a need to do the similar filtering.",
+      "parentUuid": "8e7a1697_ee47e324",
+      "revId": "759e86db2e7de5b51ed5b8776c60113cc288a55d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
