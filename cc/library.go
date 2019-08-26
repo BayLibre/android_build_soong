@@ -625,21 +625,23 @@ func (library *libraryDecorator) linkerDeps(ctx DepsContext, deps Deps) Deps {
 		deps.ReexportSharedLibHeaders = append(deps.ReexportSharedLibHeaders, library.Properties.Static.Export_shared_lib_headers...)
 		deps.ReexportStaticLibHeaders = append(deps.ReexportStaticLibHeaders, library.Properties.Static.Export_static_lib_headers...)
 	} else if library.shared() {
-		if ctx.toolchain().Bionic() && !Bool(library.baseLinker.Properties.Nocrt) {
-			if !ctx.useSdk() {
-				deps.CrtBegin = "crtbegin_so"
-				deps.CrtEnd = "crtend_so"
-			} else {
-				// TODO(danalbert): Add generation of crt objects.
-				// For `sdk_version: "current"`, we don't actually have a
-				// freshly generated set of CRT objects. Use the last stable
-				// version.
-				version := ctx.sdkVersion()
-				if version == "current" {
-					version = getCurrentNdkPrebuiltVersion(ctx)
+		if _, ok := ctx.Module().(*Module).linker.(*vndkPrebuiltLibraryDecorator); !ok {
+			if ctx.toolchain().Bionic() && !Bool(library.baseLinker.Properties.Nocrt) {
+				if !ctx.useSdk() {
+					deps.CrtBegin = "crtbegin_so"
+					deps.CrtEnd = "crtend_so"
+				} else {
+					// TODO(danalbert): Add generation of crt objects.
+					// For `sdk_version: "current"`, we don't actually have a
+					// freshly generated set of CRT objects. Use the last stable
+					// version.
+					version := ctx.sdkVersion()
+					if version == "current" {
+						version = getCurrentNdkPrebuiltVersion(ctx)
+					}
+					deps.CrtBegin = "ndk_crtbegin_so." + version
+					deps.CrtEnd = "ndk_crtend_so." + version
 				}
-				deps.CrtBegin = "ndk_crtbegin_so." + version
-				deps.CrtEnd = "ndk_crtend_so." + version
 			}
 		}
 		deps.WholeStaticLibs = append(deps.WholeStaticLibs, library.Properties.Shared.Whole_static_libs...)

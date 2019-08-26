@@ -72,6 +72,7 @@ func testApexContext(t *testing.T, bp string) (*android.TestContext, android.Con
 	config.TestProductVariables.CertificateOverrides = []string{"myapex_keytest:myapex.certificate.override"}
 	config.TestProductVariables.Platform_sdk_codename = proptools.StringPtr("Q")
 	config.TestProductVariables.Platform_sdk_final = proptools.BoolPtr(false)
+	config.TestProductVariables.Platform_vndk_version = proptools.StringPtr("Q")
 
 	ctx := android.NewTestArchContext()
 	ctx.RegisterModuleType("apex", android.ModuleFactoryAdaptor(apexBundleFactory))
@@ -989,8 +990,8 @@ func TestUseVendor(t *testing.T) {
 	inputsString := strings.Join(inputsList, " ")
 
 	// ensure that the apex includes vendor variants of the direct and indirect deps
-	ensureContains(t, inputsString, "android_arm64_armv8-a_vendor_shared_myapex/mylib.so")
-	ensureContains(t, inputsString, "android_arm64_armv8-a_vendor_shared_myapex/mylib2.so")
+	ensureContains(t, inputsString, "android_arm64_armv8-a_vendor.Q_shared_myapex/mylib.so")
+	ensureContains(t, inputsString, "android_arm64_armv8-a_vendor.Q_shared_myapex/mylib2.so")
 
 	// ensure that the apex does not include core variants
 	ensureNotContains(t, inputsString, "android_arm64_armv8-a_core_shared_myapex/mylib.so")
