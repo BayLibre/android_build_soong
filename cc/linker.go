@@ -223,6 +223,10 @@ func (linker *baseLinker) linkerDeps(ctx DepsContext, deps Deps) Deps {
 		deps.WholeStaticLibs = removeListFromList(deps.WholeStaticLibs, linker.Properties.Target.Recovery.Exclude_static_libs)
 	}
 
+	if _, ok := ctx.Module().(*Module).linker.(*vndkPrebuiltLibraryDecorator); ok {
+		return deps
+	}
+
 	if ctx.toolchain().Bionic() {
 		// libclang_rt.builtins, libgcc and libatomic have to be last on the command line
 		if !Bool(linker.Properties.No_libcrt) {

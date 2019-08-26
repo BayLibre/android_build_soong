@@ -167,13 +167,13 @@ func vndkPrebuiltSharedLibrary() *Module {
 	module.stl = nil
 	module.sanitize = nil
 	library.StripProperties.Strip.None = BoolPtr(true)
-	module.Properties.UseVndk = true
 
 	prebuilt := &vndkPrebuiltLibraryDecorator{
 		libraryDecorator: library,
 	}
 
 	prebuilt.properties.Check_elf_files = BoolPtr(false)
+	prebuilt.baseLinker.Properties.Nocrt = BoolPtr(true)
 
 	module.compiler = nil
 	module.linker = prebuilt
