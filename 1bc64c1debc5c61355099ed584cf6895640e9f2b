@@ -117,6 +117,29 @@
     },
     {
       "key": {
+        "uuid": "7d5f9a86_f5428dd5",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-26T15:02:37Z",
+      "side": 1,
+      "message": "why don\u0027t we just automatically set Nocrt for vndkPrebuiltLibraries?",
+      "range": {
+        "startLine": 628,
+        "startChar": 2,
+        "endLine": 628,
+        "endChar": 82
+      },
+      "revId": "1bc64c1debc5c61355099ed584cf6895640e9f2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6f7b24bc_e1f427cd",
         "filename": "cc/vndk.go",
         "patchSetId": 1
