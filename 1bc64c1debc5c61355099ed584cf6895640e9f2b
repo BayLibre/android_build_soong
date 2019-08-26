@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f7b24bc_e1f427cd",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-08-26T13:49:23Z",
+      "side": 1,
+      "message": "Is this covering the left? What happens with \u0027prebuiltLibraryLinker\u0027?",
+      "range": {
+        "startLine": 327,
+        "startChar": 0,
+        "endLine": 327,
+        "endChar": 33
+      },
+      "revId": "1bc64c1debc5c61355099ed584cf6895640e9f2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
