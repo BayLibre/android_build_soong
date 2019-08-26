@@ -2,6 +2,121 @@
   "comments": [
     {
       "key": {
+        "uuid": "0af8e731_43a01b65",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2089,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-08-26T14:20:35Z",
+      "side": 1,
+      "message": "This seems inconsistent with the way \"image\" mutator formats variant name.\nVndkVersion can be \"\" if PlatformVndkVersion is \"\", and in this case, the vendor variant for this version becomes \"vendor.\".\nHowever, this code generates \"vendor\" (without \".\").",
+      "range": {
+        "startLine": 2087,
+        "startChar": 2,
+        "endLine": 2089,
+        "endChar": 46
+      },
+      "revId": "1bc64c1debc5c61355099ed584cf6895640e9f2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19b03dc4_5f0ad7f4",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2093,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-08-26T14:20:35Z",
+      "side": 1,
+      "message": "How about just return in each branch?",
+      "range": {
+        "startLine": 2085,
+        "startChar": 0,
+        "endLine": 2093,
+        "endChar": 2
+      },
+      "revId": "1bc64c1debc5c61355099ed584cf6895640e9f2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63796e11_1f809abc",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2312,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-08-26T14:20:35Z",
+      "side": 1,
+      "message": "Is this a list of vndk versions? or variant names(like \"vendor.27\")? I see this is used in both ways.",
+      "range": {
+        "startLine": 2312,
+        "startChar": 5,
+        "endLine": 2312,
+        "endChar": 19
+      },
+      "revId": "1bc64c1debc5c61355099ed584cf6895640e9f2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9ee750c_8bda7b5a",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2321,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-08-26T14:20:35Z",
+      "side": 1,
+      "message": "Here, adding \"version\" format",
+      "range": {
+        "startLine": 2321,
+        "startChar": 42,
+        "endLine": 2321,
+        "endChar": 83
+      },
+      "revId": "1bc64c1debc5c61355099ed584cf6895640e9f2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dfe52d7f_77fdc1f8",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2323,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-08-26T14:20:35Z",
+      "side": 1,
+      "message": "Here, adding \"vendor.version\" format",
+      "range": {
+        "startLine": 2323,
+        "startChar": 43,
+        "endLine": 2323,
+        "endChar": 69
+      },
+      "revId": "1bc64c1debc5c61355099ed584cf6895640e9f2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6f7b24bc_e1f427cd",
         "filename": "cc/vndk.go",
         "patchSetId": 1
