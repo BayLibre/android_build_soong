@@ -46,6 +46,30 @@
       "revId": "d14d01c26c7fdacb2259b72b51142d900e9e6185",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c65848ce_34e40217",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-08-27T18:16:02Z",
+      "side": 1,
+      "message": "Awesome! Feel free to add this to the commit as well. I think this is valuable information.",
+      "parentUuid": "721eca1c_a15382aa",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 40
+      },
+      "revId": "d14d01c26c7fdacb2259b72b51142d900e9e6185",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
