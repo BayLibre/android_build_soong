@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "752db703_7c77c829",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-08-27T14:14:56Z",
+      "side": 1,
+      "message": "I was too worried about concurrent accesses. After some investigation, I found that golang\u0027s map is safe to be read from concurrent goroutines. As you pointed, lock/unlock is not necessary here. Thanks.",
+      "parentUuid": "ebbf59d5_aa07c648",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 34
+      },
+      "revId": "4d6f7a0790458b75f7fc01965606db9fee89d0c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8f9acd5f_f9fd2ad4",
         "filename": "apex/apex.go",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "4d6f7a0790458b75f7fc01965606db9fee89d0c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9909acb0_70369f24",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-08-27T14:14:56Z",
+      "side": 1,
+      "message": "Oops, my bad.",
+      "parentUuid": "8f9acd5f_f9fd2ad4",
+      "revId": "4d6f7a0790458b75f7fc01965606db9fee89d0c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "2a417db9_192c8322",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-08-27T14:14:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b0f0ae5_4d2b5d95",
+      "revId": "4d6f7a0790458b75f7fc01965606db9fee89d0c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b3901ade_b1708f44",
         "filename": "apex/apex_test.go",
         "patchSetId": 1
@@ -73,6 +133,24 @@
       "revId": "4d6f7a0790458b75f7fc01965606db9fee89d0c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53b2b613_4dcc5442",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1402,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-08-27T14:14:56Z",
+      "side": 1,
+      "message": "Good idea! (in fact, I did mistake while splitting this from above test :-)",
+      "parentUuid": "b3901ade_b1708f44",
+      "revId": "4d6f7a0790458b75f7fc01965606db9fee89d0c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
