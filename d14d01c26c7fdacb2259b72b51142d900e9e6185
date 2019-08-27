@@ -94,6 +94,30 @@
       "revId": "d14d01c26c7fdacb2259b72b51142d900e9e6185",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df376189_c1019b8f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2019-08-27T18:24:25Z",
+      "side": 1,
+      "message": "yes, the actual command is all based on the option of that preparer. \n\nteardown-command is meant to enforce the device state is not leaked.",
+      "parentUuid": "972254fd_3833b2be",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 40
+      },
+      "revId": "d14d01c26c7fdacb2259b72b51142d900e9e6185",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
