@@ -72,13 +72,22 @@ func (o Option) Config() string {
 }
 
 type Preparer struct {
-	Class string
+	Class   string
+	Options []Option
 }
 
 var _ Config = Preparer{}
 
 func (p Preparer) Config() string {
-	return fmt.Sprintf(`<target_preparer class="%s" />`, p.Class)
+	if p.Options == nil {
+		return fmt.Sprintf(`<target_preparer class="%s" />`, p.Class)
+	}
+	var optionStrings []string
+	for _, option := range p.Options {
+		optionStrings = append(optionStrings, option.Config())
+	}
+	options := strings.Join(optionStrings, "\\n        ")
+	return fmt.Sprintf(`<target_preparer class="%s">\n        %s\n    </target_preparer>`, p.Class, options)
 }
 
 func autogenTemplate(ctx android.ModuleContext, output android.WritablePath, template string, configs []Config) {
@@ -86,7 +95,7 @@ func autogenTemplate(ctx android.ModuleContext, output android.WritablePath, tem
 	for _, config := range configs {
 		configStrings = append(configStrings, config.Config())
 	}
-	extraConfigs := strings.Join(configStrings, "\n        ")
+	extraConfigs := strings.Join(configStrings, "\\n    ")
 	extraConfigs = proptools.NinjaAndShellEscape(extraConfigs)
 
 	ctx.Build(pctx, android.BuildParams{
