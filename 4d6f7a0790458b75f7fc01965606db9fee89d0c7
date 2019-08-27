@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ebbf59d5_aa07c648",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-27T11:02:27Z",
+      "side": 1,
+      "message": "do we need this lock even if apexVndkAddDepsMutator is guaranteed to run after apexVndkGatherMutator?",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 34
+      },
+      "revId": "4d6f7a0790458b75f7fc01965606db9fee89d0c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f9acd5f_f9fd2ad4",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-27T11:02:27Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "4d6f7a0790458b75f7fc01965606db9fee89d0c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b0f0ae5_4d2b5d95",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-27T11:02:27Z",
+      "side": 1,
+      "message": "remove",
+      "revId": "4d6f7a0790458b75f7fc01965606db9fee89d0c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3901ade_b1708f44",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1402,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-27T11:02:27Z",
+      "side": 1,
+      "message": "This does not always mean libvndk is from the prebuilt. Perhaps you name cc_library and vndk_prebuilt_shared differently and check that the former is not included and the latter is included.",
+      "revId": "4d6f7a0790458b75f7fc01965606db9fee89d0c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
