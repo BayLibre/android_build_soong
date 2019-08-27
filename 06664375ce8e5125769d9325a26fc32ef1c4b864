@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4c6d23e_1e8a2a47",
+        "filename": "rust/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-27T23:19:28Z",
+      "side": 1,
+      "message": "Same comment as in library.go",
+      "revId": "06664375ce8e5125769d9325a26fc32ef1c4b864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a46c7a11_239e13d4",
+        "filename": "rust/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-27T23:19:28Z",
+      "side": 1,
+      "message": "This seems odd, do you expect the rest of the sources to be found automatically, and if so, are they tracked through a .d file?\n\nThe error should be ctx.PropertyErrorf(\"srcs\", \"srcs can only contain one path for rust modules\")",
+      "revId": "06664375ce8e5125769d9325a26fc32ef1c4b864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c33ab356_38fcc771",
+        "filename": "rust/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-27T23:19:28Z",
+      "side": 1,
+      "message": "ctx.PropertyErrorf",
+      "revId": "06664375ce8e5125769d9325a26fc32ef1c4b864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
