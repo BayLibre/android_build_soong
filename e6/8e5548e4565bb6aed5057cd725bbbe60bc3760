@@ -1,0 +1,9 @@
+Code-Review+1: Gautam Ajjarapu <ajjarapu@google.com>
+Code-Review+2: Jaewoong Jung <jungjw@google.com>
+Autosubmit+1: Tiem Song <tiem@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Tue, 27 Aug 2019 15:28:24 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1100555
+Project: platform/build/soong
+Branch: refs/heads/master
