@@ -70,6 +70,30 @@
       "revId": "d14d01c26c7fdacb2259b72b51142d900e9e6185",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "972254fd_3833b2be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-08-27T18:17:00Z",
+      "side": 1,
+      "message": "RunCommandTargetPreparer can\u0027t understand the semantics of the commands that it\u0027s being asked to run (These commands are just passed as strings). It shouldn\u0027t attempt to combine stops/starts. \n\nI\u0027d rather we not leak device state across test runs, even though it is safe in this case, since performance impact is minimal relative to whole VTS runtime.",
+      "parentUuid": "c91f9bcd_fc448a1a",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 40
+      },
+      "revId": "d14d01c26c7fdacb2259b72b51142d900e9e6185",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
