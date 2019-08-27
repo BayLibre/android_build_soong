@@ -22,6 +22,30 @@
       "revId": "d14d01c26c7fdacb2259b72b51142d900e9e6185",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "721eca1c_a15382aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2019-08-27T18:05:15Z",
+      "side": 1,
+      "message": "Correct, the target preparer is triggered before/after the whole test run.\nIf there are multiple \u003ctest\u003e block in the test config, the preparer will still only run once for the whole test config.",
+      "parentUuid": "c91f9bcd_fc448a1a",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 40
+      },
+      "revId": "d14d01c26c7fdacb2259b72b51142d900e9e6185",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
