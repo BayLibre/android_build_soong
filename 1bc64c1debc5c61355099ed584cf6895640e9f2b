@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "a170ed36_292a6098",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-08-27T06:40:36Z",
+      "side": 1,
+      "message": "Required same change as in aosp/1109275.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 0
+      },
+      "revId": "1bc64c1debc5c61355099ed584cf6895640e9f2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2bfe0ff3_89ff07ee",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-08-27T06:40:36Z",
+      "side": 1,
+      "message": "This must be \"VndkVersion()\" which returns \"BOARD_VNDK_VERSION\". It it to check if the image is for vendor variant.",
+      "range": {
+        "startLine": 652,
+        "startChar": 11,
+        "endLine": 652,
+        "endChar": 30
+      },
+      "revId": "1bc64c1debc5c61355099ed584cf6895640e9f2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7943c73c_3a00cd8c",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-08-27T06:40:36Z",
+      "side": 1,
+      "message": "update this as well?",
+      "range": {
+        "startLine": 118,
+        "startChar": 5,
+        "endLine": 118,
+        "endChar": 12
+      },
+      "revId": "1bc64c1debc5c61355099ed584cf6895640e9f2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0af8e731_43a01b65",
         "filename": "cc/cc.go",
         "patchSetId": 1
@@ -110,6 +179,29 @@
         "startChar": 43,
         "endLine": 2323,
         "endChar": 69
+      },
+      "revId": "1bc64c1debc5c61355099ed584cf6895640e9f2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b27e1e6_64b515cf",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2330,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-08-27T06:40:36Z",
+      "side": 1,
+      "message": "We may make this as a function.",
+      "range": {
+        "startLine": 2327,
+        "startChar": 2,
+        "endLine": 2330,
+        "endChar": 3
       },
       "revId": "1bc64c1debc5c61355099ed584cf6895640e9f2b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
