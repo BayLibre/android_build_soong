@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4870a946_9d513e06",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1020,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-27T06:30:20Z",
+      "side": 1,
+      "message": "Since the check is done while iterating over filesInfo, it can\u0027t prevent people from statically linking libbinder in their APEXes. I think the check should be done while traversing the dependencies.",
+      "range": {
+        "startLine": 1020,
+        "startChar": 16,
+        "endLine": 1020,
+        "endChar": 25
+      },
+      "revId": "4f7dd9b4db0628a4a475d49b8ffe2006d30b5bbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
