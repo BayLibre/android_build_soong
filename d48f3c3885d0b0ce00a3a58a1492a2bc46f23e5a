@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b44b0fe_8985d6ec",
+        "filename": "android/module.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-28T22:46:32Z",
+      "side": 1,
+      "message": "How is this different from\n\n   ctx.VisitDirectDeps(func(Module) {})",
+      "revId": "d48f3c3885d0b0ce00a3a58a1492a2bc46f23e5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
