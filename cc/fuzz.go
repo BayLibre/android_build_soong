@@ -18,6 +18,7 @@ import (
 	"android/soong/android"
 	"android/soong/cc/config"
 	"github.com/google/blueprint/proptools"
+	"path/filepath"
 )
 
 func init() {
@@ -78,20 +79,13 @@ func (fuzz *fuzzBinary) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 }
 
 func (fuzz *fuzzBinary) install(ctx ModuleContext, file android.Path) {
-	fuzz.binaryDecorator.baseInstaller.dir = "fuzz"
-	fuzz.binaryDecorator.baseInstaller.dir64 = "fuzz"
+	fuzz.binaryDecorator.baseInstaller.dir = filepath.Join("fuzz", ctx.Target().Arch.ArchType.String())
+	fuzz.binaryDecorator.baseInstaller.dir64 = filepath.Join("fuzz", ctx.Target().Arch.ArchType.String())
 	fuzz.binaryDecorator.baseInstaller.install(ctx, file)
 }
 
 func NewFuzz(hod android.HostOrDeviceSupported) *Module {
 	module, binary := NewBinary(hod)
-
-	// TODO(mitchp): The toolchain does not currently export the x86 (32-bit)
-	// variant of libFuzzer for host. There is no way to only disable the host
-	// 32-bit variant, so we specify cc_fuzz targets as 64-bit only. This doesn't
-	// hurt anyone, as cc_fuzz is mostly for experimental targets as of this
-	// moment.
-	module.multilib = "64"
 
 	binary.baseInstaller = NewFuzzInstaller()
 	module.sanitize.SetSanitizer(fuzzer, true)
