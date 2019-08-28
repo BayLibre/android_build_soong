@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "476bfca4_1b5b767c",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-28T19:29:43Z",
+      "side": 1,
+      "message": "len(p.Options) \u003d\u003d 0\n\nOr skip this and always use the path below.",
+      "range": {
+        "startLine": 82,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 20
+      },
+      "revId": "e06738d78b79a902211dcb0a82ccca5b679b5109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "faf25f54_d4a1cccf",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-08-28T19:29:43Z",
+      "side": 1,
+      "message": "Make these sequences of spaces into constants to make it clear what they are aligning to",
+      "range": {
+        "startLine": 89,
+        "startChar": 44,
+        "endLine": 89,
+        "endChar": 52
+      },
+      "revId": "e06738d78b79a902211dcb0a82ccca5b679b5109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
