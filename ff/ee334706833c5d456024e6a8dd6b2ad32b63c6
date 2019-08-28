@@ -1,0 +1,7 @@
+Code-Review+2: Colin Cross <ccross@android.com>
+Presubmit-Ready+1: Treehugger Robot <android-test-infra-android-presubmit-service@system.gserviceaccount.com>
+Submitted-by: Ivan Lozano <ivanlozano@google.com>
+Submitted-at: Wed, 28 Aug 2019 22:04:55 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1109247
+Project: platform/build/soong
+Branch: refs/heads/master
