@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22e764af_b6b2ffae",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1214,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-28T02:15:18Z",
+      "side": 1,
+      "message": "There are some apexes that are built with platform but are installed via adb. They are for testing.\n\nSo I think we need to filter-out apexes with \u0027installable: false\u0027 here.",
+      "range": {
+        "startLine": 1214,
+        "startChar": 2,
+        "endLine": 1214,
+        "endChar": 37
+      },
+      "revId": "483195fb4d6380e748b38801e69e9d672f07714b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
