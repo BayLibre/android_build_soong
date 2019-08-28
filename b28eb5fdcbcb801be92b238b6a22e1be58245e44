@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8335bec0_c2fd6070",
+        "filename": "java/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-08-28T22:13:36Z",
+      "side": 1,
+      "message": "FYI, I\u0027m gonna migrate most of AndroidMk() funcs in this file to AndroidMkEntries and dedup this and the androidMkEntriesWriteTestData func below in my next change.",
+      "revId": "b28eb5fdcbcb801be92b238b6a22e1be58245e44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
