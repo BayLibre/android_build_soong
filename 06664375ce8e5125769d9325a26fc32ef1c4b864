@@ -19,6 +19,47 @@
     },
     {
       "key": {
+        "uuid": "b4f03c73_1970c3af",
+        "filename": "rust/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2019-08-28T21:29:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4c6d23e_1e8a2a47",
+      "revId": "06664375ce8e5125769d9325a26fc32ef1c4b864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "681eae9a_9ba9935e",
+        "filename": "rust/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2019-08-28T21:29:18Z",
+      "side": 1,
+      "message": "Per our chat offline, I removed this flag for now until we understand the incremental output a bit more.",
+      "range": {
+        "startLine": 30,
+        "startChar": 60,
+        "endLine": 30,
+        "endChar": 83
+      },
+      "revId": "06664375ce8e5125769d9325a26fc32ef1c4b864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a46c7a11_239e13d4",
         "filename": "rust/library.go",
         "patchSetId": 1
@@ -36,6 +77,24 @@
     },
     {
       "key": {
+        "uuid": "e5c53837_1196f0cd",
+        "filename": "rust/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2019-08-28T21:29:18Z",
+      "side": 1,
+      "message": "Yea, this is just how rustc works, it takes in a single input and discovers the rest of the files based on the directory structure.\n\nDependencies are being generated in a gcc-format \u003cout\u003e.d file via the --emit\u003ddep-info call in the build command (see builder.go).\n\nI\u0027ve updated the error in all the files.",
+      "parentUuid": "a46c7a11_239e13d4",
+      "revId": "06664375ce8e5125769d9325a26fc32ef1c4b864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c33ab356_38fcc771",
         "filename": "rust/prebuilt.go",
         "patchSetId": 1
@@ -50,6 +109,24 @@
       "revId": "06664375ce8e5125769d9325a26fc32ef1c4b864",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04430417_0933a4e8",
+        "filename": "rust/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2019-08-28T21:29:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c33ab356_38fcc771",
+      "revId": "06664375ce8e5125769d9325a26fc32ef1c4b864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
