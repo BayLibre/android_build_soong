@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1dfd8236_a8c36baf",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-08-28T09:05:45Z",
+      "side": 1,
+      "message": "nit: why plural?",
+      "range": {
+        "startLine": 353,
+        "startChar": 0,
+        "endLine": 353,
+        "endChar": 5
+      },
+      "revId": "e8164263ea1fd7818eadbcb3b7057e43ba47c394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0108146d_2b18e732",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-08-28T09:05:45Z",
+      "side": 1,
+      "message": "In app.go, android_app is installed in \"app/{dir}/{name}.apk\" and {dir} is defined as \"a.installApkName \u003d ctx.DeviceConfig().OverridePackageNameFor(a.Name()))\".\nI think we\u0027d better follow this convention. wdyt?",
+      "range": {
+        "startLine": 799,
+        "startChar": 0,
+        "endLine": 799,
+        "endChar": 42
+      },
+      "revId": "e8164263ea1fd7818eadbcb3b7057e43ba47c394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84cb02e5_c222f6ba",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-08-28T09:05:45Z",
+      "side": 1,
+      "message": "I\u0027m not sure, but what about \"split\"? If we don\u0027t support it, then we\u0027d better emit an error in that case.",
+      "range": {
+        "startLine": 800,
+        "startChar": 0,
+        "endLine": 800,
+        "endChar": 30
+      },
+      "revId": "e8164263ea1fd7818eadbcb3b7057e43ba47c394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21b6b0b0_de2d218f",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-08-28T09:05:45Z",
+      "side": 1,
+      "message": "an",
+      "range": {
+        "startLine": 965,
+        "startChar": 43,
+        "endLine": 965,
+        "endChar": 44
+      },
+      "revId": "e8164263ea1fd7818eadbcb3b7057e43ba47c394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
