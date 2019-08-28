@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "53665f55_4c55fba6",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2019-08-28T22:54:11Z",
+      "side": 1,
+      "message": "yeah, skipping this is cleaner.",
+      "parentUuid": "476bfca4_1b5b767c",
+      "range": {
+        "startLine": 82,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 20
+      },
+      "revId": "e06738d78b79a902211dcb0a82ccca5b679b5109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "faf25f54_d4a1cccf",
         "filename": "tradefed/autogen.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "e06738d78b79a902211dcb0a82ccca5b679b5109",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1854c431_52fd4743",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2019-08-28T22:54:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "faf25f54_d4a1cccf",
+      "range": {
+        "startLine": 89,
+        "startChar": 44,
+        "endLine": 89,
+        "endChar": 52
+      },
+      "revId": "e06738d78b79a902211dcb0a82ccca5b679b5109",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
