@@ -228,6 +228,13 @@ func ScudoMinimalRuntimeLibrary(t Toolchain) string {
 }
 
 func LibFuzzerRuntimeLibrary(t Toolchain) string {
+	// TODO(b/140199962): libFuzzer builds for i386 bionic are not exported under
+	// the traditional libclang_rt.fuzzer-{arch}-{variant} name. They still use
+	// the old format.
+	if t.LibclangRuntimeLibraryArch() == "i386" && t.Bionic() {
+		return "libFuzzer.a"
+	}
+
 	return LibclangRuntimeLibrary(t, "fuzzer")
 }
 
