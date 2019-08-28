@@ -16,6 +16,24 @@
       "revId": "d48f3c3885d0b0ce00a3a58a1492a2bc46f23e5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ea726fb_57bf1f86",
+        "filename": "android/module.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-08-28T23:31:51Z",
+      "side": 1,
+      "message": "ctx.VisitDirectDeps() checks all direct deps by calling validAndroidModule(), which checks if a dep is android.Module and it is enabled. So in most cases, we don\u0027t have to check again here.\n\nBTW for some reason \"apex\" module was enabled to depend on non android.Module modules, like \"blueprint_go_binary\" which is blueprint.Module but not android.Module. VisitDirectDepsBlueprint was added along with it. This doesn\u0027t check if deps are android.Module or not.\n\nThat is why I use VisitDirectDepsBlueprint() here instead of VisitDirectDeps(). If I used VisitDirectDeps(), then \"apex\" module(to be specific, apex-derived \"apex_test\") depending on \"blueprint_go_binary\" would fail to build.\n\nIf we could agree on some constraints like that android.Module should not depend on non-android.Module, then we\u0027d better change \"apex_test\" not to depend on \"blueprint_go_binary\", or make \"apex_test\" as non andorid.Module.",
+      "parentUuid": "2b44b0fe_8985d6ec",
+      "revId": "d48f3c3885d0b0ce00a3a58a1492a2bc46f23e5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
