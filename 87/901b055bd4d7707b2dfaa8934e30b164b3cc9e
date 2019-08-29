@@ -1,0 +1,8 @@
+Code-Review+2: Colin Cross <ccross@android.com>
+Code-Review+2: Andrei-Valentin Onea <andreionea@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Anna Trostanetski <atrost@google.com>
+Submitted-at: Thu, 29 Aug 2019 16:57:32 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1110530
+Project: platform/build/soong
+Branch: refs/heads/master
