@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9caf7184_b62b43bc",
+        "filename": "java/proto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-08-29T14:58:46Z",
+      "side": 1,
+      "message": "nit: I\u0027d put this below the flags.proto.OutTypeFlag assignment as with the above \"micro\" case.",
+      "revId": "38689e8593c8acaaaee1882e7c6fd038c804791d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
