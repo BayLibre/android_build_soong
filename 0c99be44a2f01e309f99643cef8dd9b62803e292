@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aff90ec4_3e6fb03b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2019-08-29T13:44:25Z",
+      "side": 1,
+      "message": "nit: Move",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "0c99be44a2f01e309f99643cef8dd9b62803e292",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a8c67a2_ca42bfda",
+        "filename": "java/platform_compat_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2019-08-29T13:44:25Z",
+      "side": 1,
+      "message": "This does look a bit better.",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 46,
+        "endChar": 83
+      },
+      "revId": "0c99be44a2f01e309f99643cef8dd9b62803e292",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
