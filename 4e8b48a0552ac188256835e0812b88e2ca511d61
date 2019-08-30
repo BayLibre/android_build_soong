@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c244f3b_d772d048",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2019-08-30T00:20:26Z",
+      "side": 1,
+      "message": "FYI a difference between these historic versions is that OpenJDK was using the numbering scheme 1.6, 1.7, 1.8 but then switched to 9. I think we could argue that those should be the normalized form of those version numbers, but I don\u0027t know to what extent that might break .bp / .mk files that might currently use the other way, so I\u0027m fine with this CL here also.",
+      "range": {
+        "startLine": 931,
+        "startChar": 1,
+        "endLine": 936,
+        "endChar": 14
+      },
+      "revId": "4e8b48a0552ac188256835e0812b88e2ca511d61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
