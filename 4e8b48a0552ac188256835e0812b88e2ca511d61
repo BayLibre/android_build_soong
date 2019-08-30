@@ -22,6 +22,30 @@
       "revId": "4e8b48a0552ac188256835e0812b88e2ca511d61",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3311afd8_4a0d614e",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1203210
+      },
+      "writtenOn": "2019-08-30T11:27:12Z",
+      "side": 1,
+      "message": "Yes, according to the documentation for javac 9, the canonical values for the -source and -target flags are 1.6, 1.7, 1.8, and 9, with 6, 7, and 8 listed as synonyms; 1.9 is not mentioned in the docs, but appears to be supported.\n\nThis change normalizes to 1.6, 1.7, 1.8, and 1.9. Clearly 1.9 is out of line with the canonical values per the above. But there is a non-trivial amount of code elsewhere in Soong which special-cases the value 1.9, and all of that would have to be changed if we normalized to 9 instead, so I took the path of least resistance.",
+      "parentUuid": "8c244f3b_d772d048",
+      "range": {
+        "startLine": 931,
+        "startChar": 1,
+        "endLine": 936,
+        "endChar": 14
+      },
+      "revId": "4e8b48a0552ac188256835e0812b88e2ca511d61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
