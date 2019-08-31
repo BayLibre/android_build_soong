@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb615dff_e32dd082",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1169,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-31T16:40:48Z",
+      "side": 1,
+      "message": "instead of emitting commands that emits file name, how about directly emitting file names?\n\nfilesList :\u003d []string{}\nfor ... {\n    filesList \u003d append(filesList, dest)\n}\n\nctx.Build(pctx, android.BuildParams{\n    Rule: emitApexContentRule,\n    ...\n    Args: map[string]string {\n        \"filesList\": strings.Join(filesList, \"\\n\")\n    }\n}\n\nemitApexContentRule \u003d ... {\n    Command: `cp ${out}.rsp ${out}`,\n    RspFile: \"${out}.rsp\",\n    RspfileContent: \"${filesList}\",\n    ....\n}, \"filesList\")",
+      "range": {
+        "startLine": 1169,
+        "startChar": 0,
+        "endLine": 1169,
+        "endChar": 88
+      },
+      "revId": "7b03617e3e41bd8956fd735b03d0f09f35c6b781",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7db88e2c_d5016deb",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1194,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-31T16:40:48Z",
+      "side": 1,
+      "message": "add a separator (like . or - ) between module name and the suffix?",
+      "range": {
+        "startLine": 1194,
+        "startChar": 61,
+        "endLine": 1194,
+        "endChar": 62
+      },
+      "revId": "7b03617e3e41bd8956fd735b03d0f09f35c6b781",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
