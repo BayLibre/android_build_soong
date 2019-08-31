@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "68306acf_d10305b8",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1164,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-08-31T16:46:15Z",
+      "side": 1,
+      "message": "Move these over to #1075 so that this can be done for both flattened and non-flattened APEXes?",
+      "revId": "7b03617e3e41bd8956fd735b03d0f09f35c6b781",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bb615dff_e32dd082",
         "filename": "apex/apex.go",
         "patchSetId": 1
