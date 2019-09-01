@@ -994,7 +994,7 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	rule.Build(pctx, ctx, "javadoc", desc)
 
 	if apiCheckEnabled(d.properties.Check_api.Current, "current") &&
-		!ctx.Config().IsPdkBuild() {
+		!ctx.Config().IsPdkBuild() && !ctx.Config().IsEnvTrue("WITHOUT_CHECK_API") {
 
 		apiFile := android.PathForModuleSrc(ctx, String(d.properties.Check_api.Current.Api_file))
 		removedApiFile := android.PathForModuleSrc(ctx, String(d.properties.Check_api.Current.Removed_api_file))
@@ -1063,7 +1063,7 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	if apiCheckEnabled(d.properties.Check_api.Last_released, "last_released") &&
-		!ctx.Config().IsPdkBuild() {
+		!ctx.Config().IsPdkBuild() && !ctx.Config().IsEnvTrue("WITHOUT_CHECK_API") {
 
 		apiFile := android.PathForModuleSrc(ctx, String(d.properties.Check_api.Last_released.Api_file))
 		removedApiFile := android.PathForModuleSrc(ctx, String(d.properties.Check_api.Last_released.Removed_api_file))
@@ -1459,7 +1459,7 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// Create rule for apicheck
 
 	if apiCheckEnabled(d.properties.Check_api.Current, "current") &&
-		!ctx.Config().IsPdkBuild() {
+		!ctx.Config().IsPdkBuild() && !ctx.Config().IsEnvTrue("WITHOUT_CHECK_API") {
 
 		if len(d.Javadoc.properties.Out) > 0 {
 			ctx.PropertyErrorf("out", "out property may not be combined with check_api")
@@ -1544,7 +1544,7 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	if apiCheckEnabled(d.properties.Check_api.Last_released, "last_released") &&
-		!ctx.Config().IsPdkBuild() {
+		!ctx.Config().IsPdkBuild() && !ctx.Config().IsEnvTrue("WITHOUT_CHECK_API") {
 
 		if len(d.Javadoc.properties.Out) > 0 {
 			ctx.PropertyErrorf("out", "out property may not be combined with check_api")
