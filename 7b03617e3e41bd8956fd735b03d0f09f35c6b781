@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "532575e2_38bf42d9",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1164,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2019-09-02T11:13:37Z",
+      "side": 1,
+      "message": "In case of flattened APEXes we still run buildUnflattenedAepx: http://cs/aosp-master/build/soong/apex/apex.go?l\u003d1087\u0026rcl\u003dcc4b0ad70633e729fd86332113678bb728bac654",
+      "parentUuid": "68306acf_d10305b8",
+      "revId": "7b03617e3e41bd8956fd735b03d0f09f35c6b781",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb615dff_e32dd082",
         "filename": "apex/apex.go",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "4fa6b51e_91685798",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1169,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2019-09-02T11:13:37Z",
+      "side": 1,
+      "message": "That was my first idea, but for some reason content of ${out}.rsp doesn\u0027t have \\n... Hence this ugly hack with emitting commands. :(",
+      "parentUuid": "bb615dff_e32dd082",
+      "range": {
+        "startLine": 1169,
+        "startChar": 0,
+        "endLine": 1169,
+        "endChar": 88
+      },
+      "revId": "7b03617e3e41bd8956fd735b03d0f09f35c6b781",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7db88e2c_d5016deb",
         "filename": "apex/apex.go",
         "patchSetId": 1
@@ -62,6 +104,30 @@
       "revId": "7b03617e3e41bd8956fd735b03d0f09f35c6b781",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbcafc80_1f391537",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1194,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2019-09-02T11:13:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7db88e2c_d5016deb",
+      "range": {
+        "startLine": 1194,
+        "startChar": 61,
+        "endLine": 1194,
+        "endChar": 62
+      },
+      "revId": "7b03617e3e41bd8956fd735b03d0f09f35c6b781",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
