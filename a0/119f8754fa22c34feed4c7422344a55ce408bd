@@ -1,0 +1,8 @@
+Code-Review+2: Colin Cross <ccross@android.com>
+Code-Review+2: Stephen Hines <srhines@google.com>
+Presubmit-Ready+1: Treehugger Robot <android-test-infra-android-presubmit-service@system.gserviceaccount.com>
+Submitted-by: Yi Kong <yikong@google.com>
+Submitted-at: Tue, 03 Sep 2019 23:12:01 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1113045
+Project: platform/build/soong
+Branch: refs/heads/master
