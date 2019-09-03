@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "101e41ea_67b03393",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1164,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2019-09-03T12:41:59Z",
+      "side": 1,
+      "message": "Oh, I see. Mostly for simplicity of re-using the same code path as building an APEX is using (e.g. leveraging on same implicit inputs).\n\nBut I don\u0027t have any strong feelings about it. Happy to move outside of buildUnflattenedApex and duplicate the logic if you think it will be clearer.",
+      "parentUuid": "3ffd3cf9_fce04342",
+      "revId": "7b03617e3e41bd8956fd735b03d0f09f35c6b781",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bb615dff_e32dd082",
         "filename": "apex/apex.go",
         "patchSetId": 1
