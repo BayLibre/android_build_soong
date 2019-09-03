@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "4421a5a6_fde58181",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1164,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-09-03T13:44:17Z",
+      "side": 1,
+      "message": "I don\u0027t want to block you for that. Let\u0027s just proceed and refactor later.",
+      "parentUuid": "101e41ea_67b03393",
+      "revId": "7b03617e3e41bd8956fd735b03d0f09f35c6b781",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb615dff_e32dd082",
         "filename": "apex/apex.go",
         "patchSetId": 1
