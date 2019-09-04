@@ -37,6 +37,29 @@
     },
     {
       "key": {
+        "uuid": "03011a68_927b89c2",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-04T21:54:52Z",
+      "side": 1,
+      "message": "This paragraph duplicates the one below?",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 89
+      },
+      "revId": "efdc5573c35354a9a1f0c10356978351990bd8e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b0884244_946dd0d1",
         "filename": "android/sdk.go",
         "patchSetId": 6
@@ -66,6 +89,24 @@
       "side": 1,
       "message": "I\u0027ve thought \u0027current\u0027 is ambiguous. To me, it sounds like an alias of \u0027the latest frozen version\u0027, which it actually isn\u0027t for.\n\nDo you think calling this to \u0027dev\u0027 will cause another confusion? If so, I will change. Let me know.",
       "parentUuid": "b0884244_946dd0d1",
+      "revId": "efdc5573c35354a9a1f0c10356978351990bd8e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3a3d79f_75ef8f16",
+        "filename": "android/sdk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-04T21:54:52Z",
+      "side": 1,
+      "message": "I agree \"current\" is not a great name, but unless you plan to remove all references to \"current\" from the codebase I think adding a new \"dev\" that means the same as \"current\" is confusing.  It\u0027s more important to stay consistent than to have the perfect name.",
+      "parentUuid": "1a27bfcc_a39b79f9",
       "revId": "efdc5573c35354a9a1f0c10356978351990bd8e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
