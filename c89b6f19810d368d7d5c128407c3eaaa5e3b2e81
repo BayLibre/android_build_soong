@@ -22,6 +22,30 @@
       "revId": "c89b6f19810d368d7d5c128407c3eaaa5e3b2e81",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bba5df1_3af946e4",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-09-04T17:08:32Z",
+      "side": 1,
+      "message": "I did this to make it clearer that the value doesn\u0027t actually matter, but either would work",
+      "parentUuid": "4297856d_7fe7e4f5",
+      "range": {
+        "startLine": 296,
+        "startChar": 16,
+        "endLine": 296,
+        "endChar": 28
+      },
+      "revId": "c89b6f19810d368d7d5c128407c3eaaa5e3b2e81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
