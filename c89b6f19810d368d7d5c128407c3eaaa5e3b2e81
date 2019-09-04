@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4297856d_7fe7e4f5",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-04T17:00:47Z",
+      "side": 1,
+      "message": "any reason not to make this allOutputs[0]?",
+      "range": {
+        "startLine": 296,
+        "startChar": 16,
+        "endLine": 296,
+        "endChar": 28
+      },
+      "revId": "c89b6f19810d368d7d5c128407c3eaaa5e3b2e81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
