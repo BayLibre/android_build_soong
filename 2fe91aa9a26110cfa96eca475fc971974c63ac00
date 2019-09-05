@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c82baec3_e05124f2",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-05T18:25:39Z",
+      "side": 1,
+      "message": "can you suggest a better organization to this? It seems like it would be fine if everything inherited these properties, but I\u0027m not sure the best way to do it.",
+      "revId": "2fe91aa9a26110cfa96eca475fc971974c63ac00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2321833d_94121042",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-05T18:25:39Z",
+      "side": 1,
+      "message": "the meaning for this is slightly changed now, it means \"do extensive checks\", but it is used in too many places, it might be hard to change. WDYT?",
+      "range": {
+        "startLine": 391,
+        "startChar": 19,
+        "endLine": 391,
+        "endChar": 40
+      },
+      "revId": "2fe91aa9a26110cfa96eca475fc971974c63ac00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
