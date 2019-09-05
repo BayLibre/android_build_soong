@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d332d0d_f720e9d0",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-05T19:59:32Z",
+      "side": 1,
+      "message": "We prefer:\n\nimport(\n\t\"path/filepath\"\n\n\t\"github.com/google/blueprint/proptools\"\n\n\t\"android/soong/android\"\n\t\"android/soong/cc/config\"\n)",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 16
+      },
+      "revId": "9dbe05ab7fbcf87c5bf0fb4e2a945ebf4c989724",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
