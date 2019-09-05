@@ -105,6 +105,17 @@ func (a *AndroidMkEntries) SetBoolIfTrue(name string, flag bool) {
 	}
 }
 
+func (a *AndroidMkEntries) SetBool(name string, flag bool) {
+	if _, ok := a.EntryMap[name]; !ok {
+		a.entryOrder = append(a.entryOrder, name)
+	}
+	if flag {
+		a.EntryMap[name] = []string{"true"}
+	} else {
+		a.EntryMap[name] = []string{"false"}
+	}
+}
+
 func (a *AndroidMkEntries) AddStrings(name string, value ...string) {
 	if len(value) == 0 {
 		return
