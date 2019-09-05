@@ -37,6 +37,9 @@ type prebuiltLinkerProperties struct {
 	// Check the prebuilt ELF files (e.g. DT_SONAME, DT_NEEDED, resolution of undefined
 	// symbols, etc), default true.
 	Check_elf_files *bool
+
+	// Allow soname mistmatch
+	Allow_mismatched_soname *bool
 }
 
 type prebuiltLinker struct {
