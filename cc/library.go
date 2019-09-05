@@ -116,6 +116,9 @@ type LibraryProperties struct {
 
 	// Inject boringssl hash into the shared library.  This is only intended for use by external/boringssl.
 	Inject_bssl_hash *bool `android:"arch_variant"`
+
+	// Allow soname mistmatch
+	Allow_mismatched_soname *bool
 }
 
 type LibraryMutatedProperties struct {
