@@ -59,7 +59,7 @@ type vndkPrebuiltProperties struct {
 	Binder32bit *bool
 
 	// Prebuilt files for each arch.
-	Srcs []string `android:"arch_variant"`
+	Srcs []string `android:"path,arch_variant"`
 
 	// list of directories relative to the Blueprints file that will be added to the include
 	// path (using -isystem) for any module that links against this module.
@@ -71,6 +71,9 @@ type vndkPrebuiltProperties struct {
 	// Check the prebuilt ELF files (e.g. DT_SONAME, DT_NEEDED, resolution of undefined symbols,
 	// etc).
 	Check_elf_files *bool
+
+	// Allow soname mistmatch
+	Allow_mismatched_soname *bool
 }
 
 type vndkPrebuiltLibraryDecorator struct {
@@ -170,6 +173,7 @@ func vndkPrebuiltSharedLibrary() *Module {
 	}
 
 	prebuilt.properties.Check_elf_files = BoolPtr(false)
+	prebuilt.properties.Allow_mismatched_soname = BoolPtr(true)
 
 	module.compiler = nil
 	module.linker = prebuilt
