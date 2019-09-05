@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3671d695_2e9feb67",
+        "filename": "cc/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2019-09-05T23:51:27Z",
+      "side": 1,
+      "message": "and also by anything that statically links libcrypto, right?",
+      "range": {
+        "startLine": 54,
+        "startChar": 52,
+        "endLine": 54,
+        "endChar": 104
+      },
+      "revId": "d7227f99ebcef0a32db7b56d992cb77a9098a79b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
