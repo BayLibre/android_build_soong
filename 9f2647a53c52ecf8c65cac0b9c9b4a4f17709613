@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a0c2584_a14d1240",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-05T18:25:53Z",
+      "side": 1,
+      "message": "Would it make more sense to make this something like filepath.Join(\"fuzz\", ctx.Target().Arch.ArchType.String())?\nThat would be fuzz/arm vs. fuzz/arm64, but also handle cases like cuttlefish that have two 32-bit architectures (arm and x86).",
+      "revId": "9f2647a53c52ecf8c65cac0b9c9b4a4f17709613",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
