@@ -60,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "8eca03b0_e79d84e3",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-09-05T05:49:11Z",
+      "side": 1,
+      "message": "Thanks. Removed this paragraph.",
+      "parentUuid": "03011a68_927b89c2",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 89
+      },
+      "revId": "efdc5573c35354a9a1f0c10356978351990bd8e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b0884244_946dd0d1",
         "filename": "android/sdk.go",
         "patchSetId": 6
@@ -110,6 +134,24 @@
       "revId": "efdc5573c35354a9a1f0c10356978351990bd8e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6ed84db_4e0f7d3d",
+        "filename": "android/sdk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-09-05T05:49:11Z",
+      "side": 1,
+      "message": "Ok. Renamed \"dev\" to \"current\".",
+      "parentUuid": "f3a3d79f_75ef8f16",
+      "revId": "efdc5573c35354a9a1f0c10356978351990bd8e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
