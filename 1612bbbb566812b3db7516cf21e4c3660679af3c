@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "640a9ec4_35cf7f1f",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-09-05T08:39:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83221bd1_d519d368",
+      "range": {
+        "startLine": 190,
+        "startChar": 41,
+        "endLine": 190,
+        "endChar": 42
+      },
+      "revId": "1612bbbb566812b3db7516cf21e4c3660679af3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d35de95_b38ae42f",
         "filename": "apex/apex.go",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2019-09-04T22:10:31Z",
       "side": 1,
       "message": "This seems inverted, why wouldn\u0027t you build up a list of vndk modules and then use AddDependency from the deps mutator to add dependencies from the apex_vndk module to the vndk libs?",
+      "revId": "1612bbbb566812b3db7516cf21e4c3660679af3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b48fa9eb_3441d73c",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-09-05T08:39:33Z",
+      "side": 1,
+      "message": "I agree that this \"reversed\" dependency looks weird. But when I tried to add a forward dependency in DepsMutator, it was not easy to do it properly. For example, the list for lib32 differs from the list for lib64. Some VNDK modules are disabled/enabled according to the target architecture. It doesn\u0027t feel right to check \"enabled\" before adding dependency.",
+      "parentUuid": "3d35de95_b38ae42f",
       "revId": "1612bbbb566812b3db7516cf21e4c3660679af3c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "03df89a6_dc1fb130",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1574,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-09-05T08:39:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3522e2e_35cf6e6e",
+      "revId": "1612bbbb566812b3db7516cf21e4c3660679af3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "73b0b32b_912df9d0",
         "filename": "apex/apex.go",
         "patchSetId": 2
@@ -70,6 +130,24 @@
       "writtenOn": "2019-09-04T22:10:31Z",
       "side": 1,
       "message": "Can you pass MultilibBoth to InitAndroidMultiTargetsArchModule instead?",
+      "revId": "1612bbbb566812b3db7516cf21e4c3660679af3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "870b0e35_39caa0e7",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1582,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-09-05T08:39:33Z",
+      "side": 1,
+      "message": "When I did that(passing MultilibBoth to InitAndroidMultiTargetsArchModule for apex_vndk module), it behaves differently. apexBundle module got split into two variants and it caused vndk_version conflicts. I\u0027ll investigate further about this.",
+      "parentUuid": "73b0b32b_912df9d0",
       "revId": "1612bbbb566812b3db7516cf21e4c3660679af3c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
