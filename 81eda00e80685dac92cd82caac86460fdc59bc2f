@@ -22,6 +22,30 @@
       "revId": "81eda00e80685dac92cd82caac86460fdc59bc2f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35ece49b_1fadaafb",
+        "filename": "sdk/sdk_test.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-09-06T06:53:22Z",
+      "side": 1,
+      "message": "No worries. About the direction of the dependencies, what you suggested is close to the original design below:\n\nsdk {\n    name: “my_sdk”,\n    native_shared_libs: [“libX”, “libY”],\n    native_static_libs: [“libZ”],\n    java_libs: [“libJava”],\n    static_java_libs: [“libJavaStatic”],\n    imports: [“android_sdk#30”],\n}\n\nPaul suggested following, which I thought make sense and thus accepted: \n\n\u003e I have a concern about specifying the sdk in a special sdk module type. The runtime module consists of nearly a hundred different modules managed by two, maybe three separate teams and spread across over a dozen different git repositories. In the initial development work for creating the SDK for the runtime module that sdk module definition could become a cause of lots of conflict between changes and require extra work for those developers that are making related changes in a git repository that does not contain the sdk definition.\n\n\u003e I think it would be better if the sdk module type simply defined the module and provided general information about the sdk, e.g. the name, maybe where the prebuilts live, etc. and then have each module that contributes to the sdk specify which sdk it belongs to and provide any additional information about what the module contributes. That would prevent the sdk definition from becoming a point of conflict.\n\nWhat do you think about his opinion?\n\nFor the same module names, I didn\u0027t want to encode version number into module names, which will be very confusing especially when the name of the non-prebuilt module has \".N\" suffix.\n\njava_import {\n    name: \"sdkmember.1\", // this name can be arbitrary\n}\n\nYou said the name could be arbitrary, but IMO, it can\u0027t. We have to separate the module name \"sdkmember\" and the version number \"1\", so that other modules could depend on the prebuilt via \u0027shared_libs: [\"sdkmember\"] (of course accompanied with `uses_sdk: [\"my_sdk#1\"]`), not via [\"sdkmember.1\"].",
+      "parentUuid": "afe3b376_a91c9629",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 0
+      },
+      "revId": "81eda00e80685dac92cd82caac86460fdc59bc2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
