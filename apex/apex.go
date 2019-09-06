@@ -190,6 +190,7 @@ func init() {
 	android.PostDepsMutators(func(ctx android.RegisterMutatorsContext) {
 		ctx.TopDown("apex_deps", apexDepsMutator)
 		ctx.BottomUp("apex", apexMutator).Parallel()
+		//ctx.BottomUp("apex_flattened", apexFlattenedMutator).Parallel()
 		ctx.BottomUp("apex_uses", apexUsesMutator).Parallel()
 	})
 }
@@ -226,11 +227,17 @@ func apexMutator(mctx android.BottomUpMutatorContext) {
 		am.CreateApexVariations(mctx)
 	} else if _, ok := mctx.Module().(*apexBundle); ok {
 		// apex bundle itself is mutated so that it and its modules have same
-		// apex variant.
+		// apex variant and with ".flattened" suffix.
+		var variants []string
 		apexBundleName := mctx.ModuleName()
-		mctx.CreateVariations(apexBundleName)
+		variants = append(variants, apexBundleName)
+		variants = append(variants, apexBundleName+".flattened")
+		modules := mctx.CreateVariations(variants...)
+		modules[0].(*apexBundle).SetFlattened(false)
+		modules[1].(*apexBundle).SetFlattened(true)
 	}
 }
+
 func apexUsesMutator(mctx android.BottomUpMutatorContext) {
 	if ab, ok := mctx.Module().(*apexBundle); ok {
 		mctx.AddFarVariationDependencies(nil, usesTag, ab.properties.Uses...)
@@ -337,6 +344,8 @@ type apexBundleProperties struct {
 
 	// List of APKs to package inside APEX
 	Apps []string
+
+	Flattened bool `blueprint:"mutated"`
 }
 
 type apexTargetBundleProperties struct {
@@ -479,8 +488,6 @@ type apexBundle struct {
 
 	// list of module names that this APEX is depending on
 	externalDeps []string
-
-	flattened bool
 
 	testApex bool
 
@@ -673,7 +680,7 @@ func (a *apexBundle) OutputFiles(tag string) (android.Paths, error) {
 			return nil, nil
 		}
 	case ".flattened":
-		if a.flattened {
+		if a.properties.Flattened {
 			flattenedApexPath := a.flattenedOutput
 			return android.Paths{flattenedApexPath}, nil
 		} else {
@@ -730,6 +737,10 @@ func (a *apexBundle) PreventInstall() {
 
 func (a *apexBundle) HideFromMake() {
 	a.properties.HideFromMake = true
+}
+
+func (a *apexBundle) SetFlattened(flattened bool) {
+	a.properties.Flattened = flattened
 }
 
 func getCopyManifestForNativeLibrary(cc *cc.Module, handleSpecialLibs bool) (fileToCopy android.Path, dirInApex string) {
@@ -1055,7 +1066,6 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		return false
 	})
 
-	a.flattened = ctx.Config().FlattenApex() && !ctx.Config().UnbundledBuild()
 	if a.private_key_file == nil {
 		ctx.PropertyErrorf("key", "private_key for %q could not be found", String(a.properties.Key))
 		return
@@ -1094,6 +1104,9 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// modules that will be defined if the APEX is flattened.
 	for i := range filesInfo {
 		filesInfo[i].moduleName = ctx.ModuleName() + "." + filesInfo[i].moduleName
+		if a.properties.Flattened {
+			filesInfo[i].moduleName = filesInfo[i].moduleName + ".flattened"
+		}
 	}
 
 	a.installDir = android.PathForModuleInstall(ctx, "apex")
@@ -1217,7 +1230,11 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext, apexType ap
 		implicitInputs = append(implicitInputs, imageContentFile)
 		whitelistedFilesFile := android.PathForModuleSrc(ctx, proptools.String(a.properties.Whitelisted_files))
 
-		phonyOutput := android.PathForModuleOut(ctx, ctx.ModuleName()+"-diff-phony-output")
+		suffix := ""
+		if a.properties.Flattened {
+			suffix = ".flattened"
+		}
+		phonyOutput := android.PathForModuleOut(ctx, ctx.ModuleName()+suffix+"-diff-phony-output")
 		ctx.Build(pctx, android.BuildParams{
 			Rule:        diffApexContentRule,
 			Implicits:   implicitInputs,
@@ -1393,7 +1410,7 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext, apexType ap
 	})
 
 	// Install to $OUT/soong/{target,host}/.../apex
-	if a.installable() && (!ctx.Config().FlattenApex() || apexType.zip()) {
+	if a.installable() && (!ctx.Config().FlattenApex() || apexType.zip()) && !a.properties.Flattened {
 		ctx.InstallFile(a.installDir, ctx.ModuleName()+suffix, a.outputFiles[apexType])
 	}
 }
@@ -1402,7 +1419,11 @@ func (a *apexBundle) buildFlattenedApex(ctx android.ModuleContext) {
 	if a.installable() {
 		// For flattened APEX, do nothing but make sure that apex_manifest.json and apex_pubkey are also copied along
 		// with other ordinary files.
-		a.filesInfo = append(a.filesInfo, apexFile{a.manifestOut, ctx.ModuleName() + ".apex_manifest.json", ".", etc, nil, nil})
+		suffix := ""
+		if a.properties.Flattened {
+			suffix = ".flattened"
+		}
+		a.filesInfo = append(a.filesInfo, apexFile{a.manifestOut, ctx.ModuleName() + suffix + ".apex_manifest.json", ".", etc, nil, nil})
 
 		// rename to apex_pubkey
 		copiedPubkey := android.PathForModuleOut(ctx, "apex_pubkey")
@@ -1411,7 +1432,7 @@ func (a *apexBundle) buildFlattenedApex(ctx android.ModuleContext) {
 			Input:  a.public_key_file,
 			Output: copiedPubkey,
 		})
-		a.filesInfo = append(a.filesInfo, apexFile{copiedPubkey, ctx.ModuleName() + ".apex_pubkey", ".", etc, nil, nil})
+		a.filesInfo = append(a.filesInfo, apexFile{copiedPubkey, ctx.ModuleName() + suffix + ".apex_pubkey", ".", etc, nil, nil})
 
 		if ctx.Config().FlattenApex() {
 			for _, fi := range a.filesInfo {
@@ -1462,7 +1483,7 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, name, moduleDir string, apex
 		// /apex/<name>/{lib|framework|...}
 		pathWhenActivated := filepath.Join("$(PRODUCT_OUT)", "apex",
 			proptools.StringDefault(a.properties.Apex_name, name), fi.installDir)
-		if a.flattened && apexType.image() {
+		if a.properties.Flattened && apexType.image() {
 			// /system/apex/<name>/{lib|framework|...}
 			fmt.Fprintln(w, "LOCAL_MODULE_PATH :=", filepath.Join("$(OUT_DIR)",
 				a.installDir.RelPathString(), name, fi.installDir))
@@ -1546,7 +1567,11 @@ func (a *apexBundle) androidMkForType(apexType apexPackaging) android.AndroidMkD
 				moduleNames = a.androidMkForFiles(w, name, moduleDir, apexType)
 			}
 
-			if a.flattened && apexType.image() {
+			if a.properties.Flattened {
+				name = name + ".flattened"
+			}
+
+			if a.properties.Flattened && apexType.image() {
 				// Only image APEXes can be flattened.
 				fmt.Fprintln(w, "\ninclude $(CLEAR_VARS)")
 				fmt.Fprintln(w, "LOCAL_PATH :=", moduleDir)
