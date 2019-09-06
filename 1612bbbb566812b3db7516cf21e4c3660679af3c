@@ -154,6 +154,24 @@
     },
     {
       "key": {
+        "uuid": "1b83138d_e2b774aa",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1582,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-09-06T05:49:07Z",
+      "side": 1,
+      "message": "Apex modules should be \"common\" and what I mean here is to set \"compile_multilib\" as \"both\" as a default value to get the same effect of \"compile_multilib: \"both\"\" in Android.bp.\n\nhttps://cs.corp.google.com/android/build/soong/android/arch.go?type\u003dcs\u0026g\u003d0\u0026l\u003d854\n\nPassing \"both\" as defaultMutlilib to InitAndroidMultiTargetsArchModule() would change this behavior.",
+      "parentUuid": "870b0e35_39caa0e7",
+      "revId": "1612bbbb566812b3db7516cf21e4c3660679af3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b6179875_b580170c",
         "filename": "cc/cc.go",
         "patchSetId": 2
