@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "afe3b376_a91c9629",
+        "filename": "sdk/sdk_test.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-06T05:44:09Z",
+      "side": 1,
+      "message": "I don\u0027t see previous discussion of this, but the discussions have been complicated and fragmented, so apologies if I missed it.\n\nThe logic around sdks and the modules that provide them violates a couple of the common patterns in Android.bp files.  The dependencies are backwards, with sdkmember pointing to the sdk it belongs to, and there are multiple modules with the same name.\n\nThe obvious way of making the sdk module list the sdkmember modules it includes for each version doesn\u0027t work because of Android.bp syntax limitations.  What about instead something like:\n\nsdk {\n    name: \"mysdk\",\n    version: \"1\",\n    libs: [\"sdkmember.1\"],\n}\n\nsdk {\n    name: \"mysdk\",\n    version: \"2\",\n    libs: [\"sdkmember.2\"],\n}\n\njava_import {\n    name: \"sdkmember.1\",\n}\n\njava_import {\n    name: \"sdkmember.2\",\n}\n\nNot having a single top level sdk module to depend on might be hard, so an alternative would be:\n\nsdk {\n    name: \"mysdk\",\n}\n\nsdk_version {\n    name: \"mysdk\",\n    version: \"1\",\n    libs: [\"sdkmember.1\"],\n}\n\nsdk_version {\n    name: \"mysdk\",\n    version: \"2\",\n    libs: [\"sdkmember.2\"],\n}\n\njava_import {\n    name: \"sdkmember.1\",\n}\n\njava_import {\n    name: \"sdkmember.2\",\n}\n\nI\u0027d also suggest reconsidering splitting name and version into separate properties.  Developers must already be aware of the mysdk#1 syntax when using an sdk, and using that syntax consistently would both make it easier for developers to understand and solve the modules with the same name problem:\n\nsdk {\n    name: \"mysdk\",\n}\n\nsdk_version {\n    name: \"mysdk#1\",  // this name is verified to match an sdk module and contain a valid version\n    libs: [\"sdkmember.1\"],\n}\n\nsdk_version {\n    name: \"mysdk#2\",\n    libs: [\"sdkmember.2\"],\n}\n\njava_import {\n    name: \"sdkmember.1\",  // this name can be arbitrary\n}\n\njava_import {\n    name: \"sdkmember.2\",\n}",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 0
+      },
+      "revId": "81eda00e80685dac92cd82caac86460fdc59bc2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
