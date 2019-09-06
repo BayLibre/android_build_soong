@@ -108,6 +108,7 @@ func (m *ApexModuleBase) BuildForApex(apexName string) {
 	defer m.apexVariationsLock.Unlock()
 	if !InList(apexName, m.apexVariations) {
 		m.apexVariations = append(m.apexVariations, apexName)
+		m.apexVariations = append(m.apexVariations, apexName+".flattened")
 	}
 }
 
