@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfae44da_66f06ead",
+        "filename": "android/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-09-06T16:09:19Z",
+      "side": 1,
+      "message": "apexName is used to set m.ApexProperties.ApexName (see, CreateApexVariations()) and to check if a module is in an apex with that name. (see, DirectlyInApex() and UpdateApexDependency())\n\nBecause `apexName+\".flattened\"` is not a module name, adding variation name here seems not work.\n\nHow about renaming `m.apexVariations` to apexList or something and calculating proper variations in CreateApexVariations()?\n\nCurrently, CreateApexVariations() just prepends \"\" as a platform variant. You can add two(apexName and apexName.flattened) per apex as well. Otherwise, you need to SetApexName() without suffix.",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 68
+      },
+      "revId": "bbf1cdfd4b1a8dffa6a836f039c2445594e3f643",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "590b3cf4_2026fe39",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-09-06T16:09:19Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 67
+      },
+      "revId": "bbf1cdfd4b1a8dffa6a836f039c2445594e3f643",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "789a7a0b_a547eeb8",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1109,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-09-06T16:09:19Z",
+      "side": 1,
+      "message": "This produces moduleName like \"{apex_name}.{module_name}.flattened\".\nHow about \"{apex_name}.flattened.{module_name}\"? I think this format is consistent with apex_manifest.json and key file below.",
+      "range": {
+        "startLine": 1107,
+        "startChar": 0,
+        "endLine": 1109,
+        "endChar": 3
+      },
+      "revId": "bbf1cdfd4b1a8dffa6a836f039c2445594e3f643",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db363563_ced63204",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1237,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-09-06T16:09:19Z",
+      "side": 1,
+      "message": "This function is \"buildUnflattenedApex()\". Is this necessary?",
+      "range": {
+        "startLine": 1233,
+        "startChar": 0,
+        "endLine": 1237,
+        "endChar": 92
+      },
+      "revId": "bbf1cdfd4b1a8dffa6a836f039c2445594e3f643",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cbf5b30_ed26cec8",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1413,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-09-06T16:09:19Z",
+      "side": 1,
+      "message": "Since we are about to make separate variations (flattened and unflattened), I think we can simplify this condition, removing checks like Config().FlattenApex() or properties.Flattened.",
+      "range": {
+        "startLine": 1413,
+        "startChar": 0,
+        "endLine": 1413,
+        "endChar": 99
+      },
+      "revId": "bbf1cdfd4b1a8dffa6a836f039c2445594e3f643",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
