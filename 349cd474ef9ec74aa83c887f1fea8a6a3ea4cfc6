@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3721b3f2_696c24b7",
+        "filename": "android/mutator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-07T01:30:25Z",
+      "side": 1,
+      "message": "I was originally hoping to add hostAndDeviceProperties for b/124524556, but I couldn\u0027t figure out a way to do it w/o making a blueprint change as well. Thought I would add this though since it seems it should be useful.",
+      "range": {
+        "startLine": 247,
+        "startChar": 84,
+        "endLine": 247,
+        "endChar": 102
+      },
+      "revId": "349cd474ef9ec74aa83c887f1fea8a6a3ea4cfc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
