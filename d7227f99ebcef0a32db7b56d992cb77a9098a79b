@@ -46,6 +46,29 @@
       "revId": "d7227f99ebcef0a32db7b56d992cb77a9098a79b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0bb20d0e_34320225",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1317,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2019-09-08T04:53:28Z",
+      "side": 1,
+      "message": "Any idea what is going wrong here (running with the pending CLs from http://r.android.com/q/topic:bug137267623_bsslselftest):\n\nhttps://android-build.googleplex.com/builds/pending/P9763467/test_suites_arm64/latest/view/logs/error.log\n\n?",
+      "range": {
+        "startLine": 1314,
+        "startChar": 2,
+        "endLine": 1317,
+        "endChar": 42
+      },
+      "revId": "d7227f99ebcef0a32db7b56d992cb77a9098a79b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
