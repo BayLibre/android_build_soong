@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "757c03a7_f7417fce",
+        "filename": "scripts/strip.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2019-09-09T16:56:13Z",
+      "side": 1,
+      "message": "I believe we need two dashes here.  https://android-review.googlesource.com/c/platform/build/soong/+/1116741 to fix.",
+      "revId": "efd249e62a873bbaab0ca367710f4bbc47220930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
