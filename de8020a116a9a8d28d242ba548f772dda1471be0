@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "30b040bc_23f77313",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-09-09T10:02:49Z",
+      "side": 1,
+      "message": "I don\u0027t think you need to create a variation here.",
+      "range": {
+        "startLine": 239,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 53
+      },
+      "revId": "de8020a116a9a8d28d242ba548f772dda1471be0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bffa9d7_106d2884",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-09-09T10:02:49Z",
+      "side": 1,
+      "message": "This doesn\u0027t need to be set here. You can have a field inside apexBundle and set it inside GenerateAndroidBuildActions.",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 53
+      },
+      "revId": "de8020a116a9a8d28d242ba548f772dda1471be0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35eb7b57_99abc789",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-09-09T10:02:49Z",
+      "side": 1,
+      "message": "These two look similar. Please put some comments for them.",
+      "range": {
+        "startLine": 358,
+        "startChar": 0,
+        "endLine": 360,
+        "endChar": 48
+      },
+      "revId": "de8020a116a9a8d28d242ba548f772dda1471be0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b1ef29d_8eff0b3d",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-09-09T10:02:49Z",
+      "side": 1,
+      "message": "Move this to apexBundle",
+      "range": {
+        "startLine": 360,
+        "startChar": 0,
+        "endLine": 360,
+        "endChar": 1
+      },
+      "revId": "de8020a116a9a8d28d242ba548f772dda1471be0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
