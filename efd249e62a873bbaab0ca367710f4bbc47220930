@@ -16,6 +16,24 @@
       "revId": "efd249e62a873bbaab0ca367710f4bbc47220930",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32ee232a_cd54077b",
+        "filename": "scripts/strip.sh",
+        "patchSetId": 13
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1349653
+      },
+      "writtenOn": "2019-09-09T17:12:59Z",
+      "side": 1,
+      "message": "Newer llvm-strip requires two dashes while older ones don\u0027t. It appears the CL that changed how we call llvm-strip missed this function.",
+      "parentUuid": "757c03a7_f7417fce",
+      "revId": "efd249e62a873bbaab0ca367710f4bbc47220930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
