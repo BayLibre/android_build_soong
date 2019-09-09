@@ -16,6 +16,24 @@
       "revId": "4eec50682fe5e1f3cb56e903c5150320a5c8863b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4360a591_fa5a6a51",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2019-09-09T18:49:19Z",
+      "side": 1,
+      "message": "It does get turned on by -Weverything. Reworded the commit message.",
+      "parentUuid": "cfb7d5b6_f30dbea1",
+      "revId": "4eec50682fe5e1f3cb56e903c5150320a5c8863b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
