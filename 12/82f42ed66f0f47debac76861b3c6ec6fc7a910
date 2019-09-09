@@ -1,0 +1,10 @@
+Autosubmit+1: Justin Yun <justinyun@google.com>
+Code-Review+1: Paul Duffin <paulduffin@google.com>
+Code-Review+2: Jiyong Park <jiyong@google.com>
+Verified+1: Justin Yun <justinyun@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Mon, 09 Sep 2019 11:14:37 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1116097
+Project: platform/build/soong
+Branch: refs/heads/master
