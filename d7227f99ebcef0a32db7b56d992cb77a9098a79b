@@ -93,6 +93,30 @@
       "revId": "d7227f99ebcef0a32db7b56d992cb77a9098a79b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5dfbd86_6035488c",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1317,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-09T17:55:06Z",
+      "side": 1,
+      "message": "It appears to not need libcrypto at all, all the code ends up stripped so there is nothing left to inject the hash into.  I\u0027ll add a CL to your topic to remove libcrypto from it.",
+      "parentUuid": "0ea92e8c_23a252d1",
+      "range": {
+        "startLine": 1314,
+        "startChar": 2,
+        "endLine": 1317,
+        "endChar": 42
+      },
+      "revId": "d7227f99ebcef0a32db7b56d992cb77a9098a79b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
