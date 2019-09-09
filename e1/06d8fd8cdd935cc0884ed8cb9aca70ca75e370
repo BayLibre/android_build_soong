@@ -1,0 +1,11 @@
+Code-Review+2: Vic Yang <victoryang@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Code-Review+1: Juju Sung <juju.sung@mediatek.corp-partner.google.com>
+Verified+1: Greg Kaiser <gkaiser@google.com>
+Autosubmit+1: Greg Kaiser <gkaiser@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Mon, 09 Sep 2019 22:06:54 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1116741
+Project: platform/build/soong
+Branch: refs/heads/master
