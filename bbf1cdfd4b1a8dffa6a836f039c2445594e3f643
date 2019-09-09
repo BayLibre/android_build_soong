@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "c3cb0df2_1af24f09",
+        "filename": "android/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-09-09T01:02:42Z",
+      "side": 1,
+      "message": "This will double the number of variations for all modules inheriting from ApexModuleBase. Following was what I imagined.\n\n1) There is another mutator.\n2) The mutator mutates an apex into two. \"nonflattened\" and \"flattened\"\n3) Use CreateLocalVariations when creating the variants so that you don\u0027t need to split ApexModuleBase modules.",
+      "revId": "bbf1cdfd4b1a8dffa6a836f039c2445594e3f643",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "590b3cf4_2026fe39",
         "filename": "apex/apex.go",
         "patchSetId": 3
