@@ -120,6 +120,7 @@ var VndkMustUseVendorVariantList = []string{
 	"libmedia_omx",
 	"libmemtrack",
 	"libnetutils",
+	"libprotobuf-cpp-lite-3.9.1",
 	"libpuresoftkeymasterdevice",
 	"libradio_metadata",
 	"libselinux",
