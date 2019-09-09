@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b91f326_3a4fcf04",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-09T21:30:55Z",
+      "side": 1,
+      "message": "hmmm, it seems I can actually remove some of these: there is another check not running anything on soong libraries.",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 30
+      },
+      "revId": "600d66acdffe79d124836fb6b74562cc319077d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
