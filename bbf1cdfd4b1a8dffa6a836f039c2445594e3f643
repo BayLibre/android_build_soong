@@ -42,6 +42,48 @@
     },
     {
       "key": {
+        "uuid": "4d831af9_c8509a9d",
+        "filename": "android/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2019-09-09T04:18:01Z",
+      "side": 1,
+      "message": "Thanks Jooyung, I agree that.\nBut I didn\u0027t know the CreateLocalVariations func which is mentioned in Jiyong\u0027s comment. \nI removed it.",
+      "parentUuid": "cfae44da_66f06ead",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 68
+      },
+      "revId": "bbf1cdfd4b1a8dffa6a836f039c2445594e3f643",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79aa9056_70bf7489",
+        "filename": "android/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2019-09-09T04:18:01Z",
+      "side": 1,
+      "message": "I understood that.\nI changed to using CreateLocalVariations instead of CreateVariations",
+      "parentUuid": "c3cb0df2_1af24f09",
+      "revId": "bbf1cdfd4b1a8dffa6a836f039c2445594e3f643",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "590b3cf4_2026fe39",
         "filename": "apex/apex.go",
         "patchSetId": 3
@@ -62,6 +104,30 @@
       "revId": "bbf1cdfd4b1a8dffa6a836f039c2445594e3f643",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fefa848_126a35b3",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2019-09-09T04:18:01Z",
+      "side": 1,
+      "message": "I changed to using this func.",
+      "parentUuid": "590b3cf4_2026fe39",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 67
+      },
+      "revId": "bbf1cdfd4b1a8dffa6a836f039c2445594e3f643",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "05f3b2e2_9fd03637",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1109,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2019-09-09T04:18:01Z",
+      "side": 1,
+      "message": "I removed it.",
+      "parentUuid": "789a7a0b_a547eeb8",
+      "range": {
+        "startLine": 1107,
+        "startChar": 0,
+        "endLine": 1109,
+        "endChar": 3
+      },
+      "revId": "bbf1cdfd4b1a8dffa6a836f039c2445594e3f643",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db363563_ced63204",
         "filename": "apex/apex.go",
         "patchSetId": 3
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "747e2790_37410dcd",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1237,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2019-09-09T04:18:01Z",
+      "side": 1,
+      "message": "I removed it.",
+      "parentUuid": "db363563_ced63204",
+      "range": {
+        "startLine": 1233,
+        "startChar": 0,
+        "endLine": 1237,
+        "endChar": 92
+      },
+      "revId": "bbf1cdfd4b1a8dffa6a836f039c2445594e3f643",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2cbf5b30_ed26cec8",
         "filename": "apex/apex.go",
         "patchSetId": 3
@@ -131,6 +245,30 @@
       "revId": "bbf1cdfd4b1a8dffa6a836f039c2445594e3f643",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdd95800_a078dbcf",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1413,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2019-09-09T04:18:01Z",
+      "side": 1,
+      "message": "a.properties.Flattened is ctx.Config().FlattenApex() \u0026\u0026 !ctx.Config().UnbundledBuild()\nSo we can\u0027t use only one of them.",
+      "parentUuid": "2cbf5b30_ed26cec8",
+      "range": {
+        "startLine": 1413,
+        "startChar": 0,
+        "endLine": 1413,
+        "endChar": 99
+      },
+      "revId": "bbf1cdfd4b1a8dffa6a836f039c2445594e3f643",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
