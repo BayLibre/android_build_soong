@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a60cc8d_91e82465",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-09-09T04:34:29Z",
+      "side": 1,
+      "message": "Let\u0027s swap the order. In addition, you can name the unflattened case \"\". So...\n\nCreateLocalVariations(\"\", \"flattened\")",
+      "range": {
+        "startLine": 238,
+        "startChar": 41,
+        "endLine": 238,
+        "endChar": 66
+      },
+      "revId": "44436769154e56599d5c1c04f8a9eb16ea358577",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
