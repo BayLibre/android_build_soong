@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7dfeef68_6b16f1bb",
+        "filename": "apex/apex.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-09-10T11:23:05Z",
+      "side": 1,
+      "message": "This is set after the mutators are run. (i.e. inside GenerateAndroidBuildActions)\nThis could be moved to inside the apexBundle struct.",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 358,
+        "endChar": 48
+      },
+      "revId": "c7aa34f65d191685855177243cfc774f8b558dc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
