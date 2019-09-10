@@ -1,0 +1,8 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Ivan Lozano <ivanlozano@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Submitted-by: Matthew Maurer <mmaurer@google.com>
+Submitted-at: Tue, 10 Sep 2019 17:43:23 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1117474
+Project: platform/build/soong
+Branch: refs/heads/master
