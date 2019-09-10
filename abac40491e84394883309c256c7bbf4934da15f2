@@ -34,6 +34,47 @@
       "revId": "abac40491e84394883309c256c7bbf4934da15f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7b5a90e_6ea8923e",
+        "filename": "java/aar.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-10T20:44:13Z",
+      "side": 1,
+      "message": "Yes, this is doing manifest -\u003e transitive -\u003e additional",
+      "parentUuid": "99315ea5_6df45487",
+      "revId": "abac40491e84394883309c256c7bbf4934da15f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d511055_28083194",
+        "filename": "java/aar.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-10T20:44:13Z",
+      "side": 1,
+      "message": "This needs to be a.transitiveManifestPaths",
+      "range": {
+        "startLine": 228,
+        "startChar": 8,
+        "endLine": 228,
+        "endChar": 36
+      },
+      "revId": "abac40491e84394883309c256c7bbf4934da15f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
