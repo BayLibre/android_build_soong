@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "670f516a_4b3a5329",
+        "filename": "java/aar.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-10T20:37:31Z",
+      "side": 1,
+      "message": "I think the order can matter here, in which case the additional manifests should go after manifestPath but before transitiveStaticLibManifests.",
+      "revId": "abac40491e84394883309c256c7bbf4934da15f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
