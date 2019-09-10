@@ -16,6 +16,24 @@
       "revId": "abac40491e84394883309c256c7bbf4934da15f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99315ea5_6df45487",
+        "filename": "java/aar.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2019-09-10T20:40:05Z",
+      "side": 1,
+      "message": "Honestly I don\u0027t know\nMy logic would say manifest -\u003e additional -\u003e transitive",
+      "parentUuid": "670f516a_4b3a5329",
+      "revId": "abac40491e84394883309c256c7bbf4934da15f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
