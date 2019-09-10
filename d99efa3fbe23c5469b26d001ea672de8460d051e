@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71351990_b16cfc72",
+        "filename": "java/aar.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-10T20:19:12Z",
+      "side": 1,
+      "message": "I think we need to use manifest merger for additional_manifests too, even if there are no transitive static manifests.  Make this:\n\n    if len(a.transitiveManifestPaths) \u003e 1 {",
+      "revId": "d99efa3fbe23c5469b26d001ea672de8460d051e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e55b547_923b7244",
+        "filename": "java/aar.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-10T20:19:12Z",
+      "side": 1,
+      "message": "Drop this",
+      "revId": "d99efa3fbe23c5469b26d001ea672de8460d051e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88d0d1f0_8767e7e5",
+        "filename": "java/aar.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-10T20:19:12Z",
+      "side": 1,
+      "message": "a.transitiveManifestPaths[0], a.transitiveManifestPaths[1:]",
+      "range": {
+        "startLine": 231,
+        "startChar": 45,
+        "endLine": 231,
+        "endChar": 78
+      },
+      "revId": "d99efa3fbe23c5469b26d001ea672de8460d051e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
