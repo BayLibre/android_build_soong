@@ -119,6 +119,10 @@ type variableProperties struct {
 		Flatten_apex struct {
 			Enabled *bool
 		}
+
+		Art_apex struct {
+			Srcs []string
+		}
 	} `android:"arch_variant"`
 }
 
@@ -281,7 +285,8 @@ type productVariables struct {
 	Ndk_abis               *bool `json:",omitempty"`
 	Exclude_draft_ndk_apis *bool `json:",omitempty"`
 
-	Flatten_apex *bool `json:",omitempty"`
+	Flatten_apex *bool   `json:",omitempty"`
+	Art_apex     *string `json:",omitempty"`
 
 	DexpreoptGlobalConfig *string `json:",omitempty"`
 
