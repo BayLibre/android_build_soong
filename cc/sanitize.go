@@ -448,13 +448,19 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 			flags.LdFlags = append(flags.LdFlags, "-Wl,--no-as-needed")
 		} else {
 			flags.CFlags = append(flags.CFlags, "-mllvm", "-asan-globals=0")
-			if ctx.bootstrap() {
-				flags.DynamicLinker = "/system/bin/bootstrap/linker_asan"
-			} else {
-				flags.DynamicLinker = "/system/bin/linker_asan"
-			}
-			if flags.Toolchain.Is64Bit() {
-				flags.DynamicLinker += "64"
+			// Don't use the ASan linker when fuzzing. During fuzzing, we statically
+			// link sanitizer runtimes, which means that ASan fuzzing will use the
+			// preinit_array to initialise the ASan shadow. This can lead to double
+			// initialisation of ASan if library with an ASan variant is dlopen()-ed.
+			if !Bool(sanitize.Properties.Sanitize.Fuzzer) {
+				if ctx.bootstrap() {
+					flags.DynamicLinker = "/system/bin/bootstrap/linker_asan"
+				} else {
+					flags.DynamicLinker = "/system/bin/linker_asan"
+				}
+				if flags.Toolchain.Is64Bit() {
+					flags.DynamicLinker += "64"
+				}
 			}
 		}
 	}
@@ -515,11 +521,15 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 
 		flags.CFlags = append(flags.CFlags, sanitizeArg)
 		flags.AsFlags = append(flags.AsFlags, sanitizeArg)
-		if ctx.Host() {
+		if ctx.Host() || Bool(sanitize.Properties.Sanitize.Fuzzer) {
 			// Host sanitizers only link symbols in the final executable, so
 			// there will always be undefined symbols in intermediate libraries.
+			// We also force this behaviour when fuzzing, as there is no LLNDK variant
+			// of ubsan_standalone, and we don't want to have to worry about
+			// mismatched libclang_rt.* variants.
 			_, flags.LdFlags = removeFromList("-Wl,--no-undefined", flags.LdFlags)
 			flags.LdFlags = append(flags.LdFlags, sanitizeArg)
+			flags.LdFlags = append(flags.LdFlags, "-static-libsan")
 		} else {
 			if enableMinimalRuntime(sanitize) {
 				flags.CFlags = append(flags.CFlags, strings.Join(minimalRuntimeFlags, " "))
@@ -864,7 +874,10 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 			runtimeLibrary = config.UndefinedBehaviorSanitizerRuntimeLibrary(toolchain)
 		}
 
-		if mctx.Device() && runtimeLibrary != "" {
+		// On host and for fuzzing we statically link sanitizer libraries when
+		// linking the final executable. On device (and not fuzzing), we add the
+		// sanitizer runtime as a dependency here.
+		if mctx.Device() && runtimeLibrary != "" && !Bool(c.sanitize.Properties.Sanitize.Fuzzer) {
 			if inList(runtimeLibrary, *llndkLibraries(mctx.Config())) && !c.static() && c.useVndk() {
 				runtimeLibrary = runtimeLibrary + llndkLibrarySuffix
 			}
