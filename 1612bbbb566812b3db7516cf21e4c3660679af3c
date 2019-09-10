@@ -276,6 +276,24 @@
       "revId": "1612bbbb566812b3db7516cf21e4c3660679af3c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2e35ef3_d1724cf2",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-09-10T02:25:30Z",
+      "side": 1,
+      "message": "Uploaded aosp/1117152 which removes \"vndk.enabled \u003d true\" for prebuilt_library_statics.",
+      "parentUuid": "09e8069c_bf65fbfb",
+      "revId": "1612bbbb566812b3db7516cf21e4c3660679af3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
