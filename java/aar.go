@@ -220,11 +220,12 @@ func (a *aapt) buildActions(ctx android.ModuleContext, sdkContext sdkContext, ex
 	manifestPath := manifestFixer(ctx, manifestSrcPath, sdkContext, sdkLibraries,
 		a.isLibrary, a.useEmbeddedNativeLibs, a.usesNonSdkApis, a.useEmbeddedDex, a.hasNoCode)
 
+	// Merge additional manifest files with app manifest.
+	additionalManifests := android.PathsForModuleSrc(ctx, a.aaptProperties.Additional_manifests)
 	a.transitiveManifestPaths = append(android.Paths{manifestPath}, transitiveStaticLibManifests...)
+	a.transitiveManifestPaths = append(a.transitiveManifestPaths, additionalManifests...)
 
 	if len(transitiveStaticLibManifests) > 0 {
-		// Merge additional manifest files with app manifest.
-		additionalManifests := android.PathsForModuleSrc(ctx, a.aaptProperties.Additional_manifests)
 		additionalManifests = append(additionalManifests, transitiveStaticLibManifests...)
 
 		a.mergedManifestFile = manifestMerger(ctx, manifestPath, additionalManifests, a.isLibrary)
