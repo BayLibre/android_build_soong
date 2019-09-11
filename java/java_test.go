@@ -18,6 +18,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"reflect"
 	"strconv"
 	"strings"
 	"testing"
@@ -783,17 +784,11 @@ func TestDroiddoc(t *testing.T) {
 		    name: "droiddoc-templates-sdk",
 		    path: ".",
 		}
-		filegroup {
-		    name: "bar-doc-aidl-srcs",
-		    srcs: ["bar-doc/IBar.aidl"],
-		    path: "bar-doc",
-		}
 		droiddoc {
 		    name: "bar-doc",
 		    srcs: [
 		        "bar-doc/*.java",
 		        "bar-doc/IFoo.aidl",
-		        ":bar-doc-aidl-srcs",
 		    ],
 		    exclude_srcs: [
 		        "bar-doc/b.java"
@@ -811,19 +806,27 @@ func TestDroiddoc(t *testing.T) {
 		}
 		`)
 
+	//stubsJar := filepath.Join(buildDir, ".intermediates", "bar-doc", "android_common", "bar-doc-stubs.srcjar")
+	barDoc := ctx.ModuleForTests("bar-doc", "android_common").Output("bar-doc-stubs.srcjar")
+	//if stubsJar != barDoc.Output.String() {
+	//	t.Errorf("expected stubs Jar [%q], got %q", stubsJar, barDoc.Output.String())
+	//}
 	inputs := ctx.ModuleForTests("bar-doc", "android_common").Rule("javadoc").Inputs
 	var javaSrcs []string
 	for _, i := range inputs {
 		javaSrcs = append(javaSrcs, i.Base())
 	}
-	if len(javaSrcs) != 3 || javaSrcs[0] != "a.java" || javaSrcs[1] != "IFoo.java" || javaSrcs[2] != "IBar.java" {
-		t.Errorf("inputs of bar-doc must be []string{\"a.java\", \"IFoo.java\", \"IBar.java\", but was %#v.", javaSrcs)
+	if len(javaSrcs) != 1 || javaSrcs[0] != "a.java" {
+		t.Errorf("inputs of bar-doc must be []string{\"a.java\"}, but was %#v.", javaSrcs)
 	}
 
-	aidlRule := ctx.ModuleForTests("bar-doc", "android_common").Output(inputs[2].String())
-	aidlFlags := aidlRule.Args["aidlFlags"]
-	if !strings.Contains(aidlFlags, "-Ibar-doc") {
-		t.Errorf("aidl flags for IBar.aidl should contain \"-Ibar-doc\", but was %q", aidlFlags)
+	aidl := ctx.ModuleForTests("bar-doc", "android_common").Rule("aidl_0")
+	if g, w := barDoc.Implicits.Strings(), aidl.Output.String(); !inList(w, g) {
+		t.Errorf("implicits of bar-doc must contain %q, but was %q.", w, g)
+	}
+
+	if g, w := aidl.Implicits.Strings(), []string{"bar-doc/IFoo.aidl"}; !reflect.DeepEqual(w, g) {
+		t.Errorf("aidl inputs must be %q, but was %q", w, g)
 	}
 }
 
