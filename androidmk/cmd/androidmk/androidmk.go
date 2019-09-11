@@ -30,6 +30,10 @@ import (
 	bpparser "github.com/google/blueprint/parser"
 )
 
+var (
+	bpfixExtPattern = flag.String("e", "*", "enable only the bpfix extensions that match the pattern")
+)
+
 var usage = func() {
 	fmt.Fprintf(os.Stderr, "usage: androidmk [flags] <inputFile>\n"+
 		"\nandroidmk parses <inputFile> as an Android.mk file and attempts to output an analogous Android.bp file (to standard out)\n")
@@ -241,7 +245,8 @@ func convertFile(filename string, buffer *bytes.Buffer) (string, []error) {
 
 	// check for common supported but undesirable structures and clean them up
 	fixer := bpfix.NewFixer(tree)
-	tree, err := fixer.Fix(bpfix.NewFixRequest().AddAll())
+	request := bpfix.NewFixRequest().AddBase().AddMatchingExtensions(*bpfixExtPattern)
+	tree, err := fixer.Fix(request)
 	if err != nil {
 		return "", []error{err}
 	}

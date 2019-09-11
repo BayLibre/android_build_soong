@@ -35,9 +35,10 @@ import (
 
 var (
 	// main operation modes
-	list   = flag.Bool("l", false, "list files whose formatting differs from bpfmt's")
-	write  = flag.Bool("w", false, "write result to (source) file instead of stdout")
-	doDiff = flag.Bool("d", false, "display diffs instead of rewriting files")
+	list       = flag.Bool("l", false, "list files whose formatting differs from bpfmt's")
+	write      = flag.Bool("w", false, "write result to (source) file instead of stdout")
+	doDiff     = flag.Bool("d", false, "display diffs instead of rewriting files")
+	extPattern = flag.String("e", "*", "enable only the bpfix extensions that match the pattern")
 )
 
 var (
@@ -131,7 +132,7 @@ func walkDir(path string, fixRequest bpfix.FixRequest) {
 func main() {
 	flag.Parse()
 
-	fixRequest := bpfix.NewFixRequest().AddAll()
+	fixRequest := bpfix.NewFixRequest().AddBase().AddMatchingExtensions(*extPattern)
 
 	if flag.NArg() == 0 {
 		if *write {
