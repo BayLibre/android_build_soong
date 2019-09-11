@@ -21,13 +21,17 @@ import (
 	"testing"
 
 	"android/soong/bpfix/bpfix"
+
+	"github.com/google/blueprint/parser"
 )
 
-var testCases = []struct {
+type testCase struct {
 	desc     string
 	in       string
 	expected string
-}{
+}
+
+var testCases = []testCase{
 	{
 		desc: "basic cc_library_shared with comments",
 		in: `
@@ -1344,7 +1348,81 @@ android_app_import {
 }
 
 func TestEndToEnd(t *testing.T) {
+	// Disable any extensions
+	*bpfixExtPattern = ""
 	for i, test := range testCases {
+		expected, err := bpfix.Reformat(test.expected)
+		if err != nil {
+			t.Error(err)
+		}
+
+		got, errs := convertFile(fmt.Sprintf("<testcase %d>", i), bytes.NewBufferString(test.in))
+		if len(errs) > 0 {
+			t.Errorf("Unexpected errors: %q", errs)
+			continue
+		}
+
+		if got != expected {
+			t.Errorf("failed testcase '%s'\ninput:\n%s\n\nexpected:\n%s\ngot:\n%s\n", test.desc, strings.TrimSpace(test.in), expected, got)
+		}
+	}
+}
+
+var pluginTestCases = []testCase{
+	{
+		desc: "Test Extensions",
+		in: `
+include $(CLEAR_VARS)
+LOCAL_MODULE := foo
+LOCAL_SRC_FILES := a.c
+include $(BUILD_EXECUTABLE)
+		`,
+		expected: `
+cc_binary {
+	name: "foo",
+	srcs: ["a.c"],
+	owner: "bpfix_extension",
+}
+`},
+}
+
+func setOwnerProperty(f *bpfix.Fixer) error {
+	tree := f.Tree()
+	for _, def := range tree.Defs {
+		mod, ok := def.(*parser.Module)
+		if !ok {
+			continue
+		}
+		var owner_prop *parser.Property
+		prop, ok := mod.GetProperty("owner")
+		if ok {
+			owner_prop = prop
+		} else {
+			owner_prop = new(parser.Property)
+			owner_prop.Name = "owner"
+			mod.Properties = append(mod.Properties, owner_prop)
+		}
+		value := new(parser.String)
+		value.Value = "bpfix_extension"
+		owner_prop.Value = value
+	}
+	return nil
+}
+
+func TestBpFixExtension(t *testing.T) {
+	*bpfixExtPattern = "bpfix-test-extension"
+	var testExtension = bpfix.FixStepsExtension{
+		Name: "bpfix-test-extension",
+		Steps: []bpfix.FixStep{
+			{
+				Name: "setOwnerProperty",
+				Fix:  setOwnerProperty,
+			},
+		},
+	}
+	bpfix.RegisterFixStepExtension(&testExtension)
+
+	for i, test := range pluginTestCases {
 		expected, err := bpfix.Reformat(test.expected)
 		if err != nil {
 			t.Error(err)
