@@ -85,6 +85,47 @@
       "revId": "2c9de56baa2518b28c23c231dda7280a833649e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3aa855d3_1fdf3507",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-12T21:16:58Z",
+      "side": 1,
+      "message": "Agreed",
+      "parentUuid": "6368d2f4_b431365e",
+      "range": {
+        "startLine": 504,
+        "startChar": 0,
+        "endLine": 505,
+        "endChar": 26
+      },
+      "revId": "2c9de56baa2518b28c23c231dda7280a833649e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d358329f_fe960f00",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1081,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-12T21:16:58Z",
+      "side": 1,
+      "message": "Can you compute something here, and leave a comment, instead  of complicating all the cases below?  Maybe something like:\n\na.properties.VisibleToMake \u003d true\n\nI\u0027d prefer if all references to a.flattenedConfigValue below were removed, it seems odd to be making decisions based on _why_ the module was flattened instead of using that same logic to compute whatever other information is needed.  I  haven\u0027t followed all the logic, but maybe you also need something like a.properties.HasFlattenedAndUnflattened?",
+      "revId": "2c9de56baa2518b28c23c231dda7280a833649e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
