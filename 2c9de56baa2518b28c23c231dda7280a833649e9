@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f81dcfe1_df9783da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-09-12T17:00:53Z",
+      "side": 1,
+      "message": "create the same MK rules",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 32
+      },
+      "revId": "2c9de56baa2518b28c23c231dda7280a833649e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8e1affd_3b2666c6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-09-12T17:00:53Z",
+      "side": 1,
+      "message": "Maybe mention that this CL is a (partial) revert of 4c047138717ce9d81d517d851591cb011f775056?",
+      "revId": "2c9de56baa2518b28c23c231dda7280a833649e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5885af92_d3860329",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-09-12T17:00:53Z",
+      "side": 1,
+      "message": "Maybe also add a non-regression test for this case in apex/apex_test.go?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 31
+      },
+      "revId": "2c9de56baa2518b28c23c231dda7280a833649e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6368d2f4_b431365e",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-09-12T17:00:53Z",
+      "side": 1,
+      "message": "I\u0027m starting to wonder why this information should be part of an `apexBundle` instance. Instead, shouldn\u0027t it be implemented as a method of the context, as it does not seem `apexBundle` specific? (Maybe something to consider in a follow-up CL.)",
+      "range": {
+        "startLine": 504,
+        "startChar": 0,
+        "endLine": 505,
+        "endChar": 26
+      },
+      "revId": "2c9de56baa2518b28c23c231dda7280a833649e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
