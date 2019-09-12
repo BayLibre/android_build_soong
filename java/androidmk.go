@@ -627,7 +627,7 @@ func (a *AndroidAppImport) AndroidMkEntries() android.AndroidMkEntries {
 				if len(a.dexpreopter.builtInstalled) > 0 {
 					entries.SetString("LOCAL_SOONG_BUILT_INSTALLED", a.dexpreopter.builtInstalled)
 				}
-				entries.AddStrings("LOCAL_INSTALLED_MODULE_STEM", a.installPath.Rel())
+				entries.AddStrings("LOCAL_INSTALLED_MODULE_STEM", a.installPath.Base())
 			},
 		},
 	}

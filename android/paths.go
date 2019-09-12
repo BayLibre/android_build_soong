@@ -820,17 +820,6 @@ func PathForOutput(ctx PathContext, pathComponents ...string) OutputPath {
 	return OutputPath{basePath{path, ctx.Config(), ""}}
 }
 
-// pathForInstallInMakeDir is used by PathForModuleInstall when the module returns true
-// for InstallBypassMake to produce an OutputPath that installs to $OUT_DIR instead of
-// $OUT_DIR/soong.
-func pathForInstallInMakeDir(ctx PathContext, pathComponents ...string) OutputPath {
-	path, err := validatePath(pathComponents...)
-	if err != nil {
-		reportPathError(ctx, err)
-	}
-	return OutputPath{basePath{"../" + path, ctx.Config(), ""}}
-}
-
 // PathsForOutput returns Paths rooted from buildDir
 func PathsForOutput(ctx PathContext, paths []string) WritablePaths {
 	ret := make(WritablePaths, len(paths))
@@ -1118,35 +1107,67 @@ func PathForModuleRes(ctx ModuleContext, pathComponents ...string) ModuleResPath
 	return ModuleResPath{PathForModuleOut(ctx, "res", p)}
 }
 
+type InstallPath struct {
+	OutputPath
+
+	devicePath string
+}
+
+func (p InstallPath) Join(ctx PathContext, paths ...string) InstallPath {
+	return InstallPath{p.OutputPath.Join(ctx, paths...),
+		filepath.Join(append([]string{p.devicePath}, paths...)...)}
+}
+
+func (p InstallPath) OnDevicePathString() string {
+	if !strings.HasPrefix(p.devicePath, "/") {
+		return "/" + p.devicePath
+	}
+	return p.devicePath
+}
+
+func PathForInstall(ctx PathContext, pathComponents ...string) InstallPath {
+	return InstallPath{PathForOutput(ctx, pathComponents...), ""}
+}
+
+// pathForInstallInMakeDir is used by PathForModuleInstall when the module returns true
+// for InstallBypassMake to produce an OutputPath that installs to $OUT_DIR instead of
+// $OUT_DIR/soong.
+func pathForInstallInMakeDir(ctx PathContext, pathComponents ...string) InstallPath {
+	path, err := validatePath(pathComponents...)
+	if err != nil {
+		reportPathError(ctx, err)
+	}
+	return InstallPath{OutputPath{basePath{"../" + path, ctx.Config(), ""}}, ""}
+}
+
 // PathForModuleInstall returns a Path representing the install path for the
 // module appended with paths...
-func PathForModuleInstall(ctx ModuleInstallPathContext, pathComponents ...string) OutputPath {
-	var outPaths []string
+func PathForModuleInstall(ctx ModuleInstallPathContext, pathComponents ...string) InstallPath {
+	var basePaths []string
 	if ctx.Device() {
-		partition := modulePartition(ctx)
-		outPaths = []string{"target", "product", ctx.Config().DeviceName(), partition}
+		pathComponents = append([]string{modulePartition(ctx)}, pathComponents...)
+		basePaths = []string{"target", "product", ctx.Config().DeviceName()}
 	} else {
 		switch ctx.Os() {
 		case Linux:
-			outPaths = []string{"host", "linux-x86"}
+			basePaths = []string{"host", "linux-x86"}
 		case LinuxBionic:
 			// TODO: should this be a separate top level, or shared with linux-x86?
-			outPaths = []string{"host", "linux_bionic-x86"}
+			basePaths = []string{"host", "linux_bionic-x86"}
 		default:
-			outPaths = []string{"host", ctx.Os().String() + "-x86"}
+			basePaths = []string{"host", ctx.Os().String() + "-x86"}
 		}
 	}
 	if ctx.Debug() {
-		outPaths = append([]string{"debug"}, outPaths...)
+		basePaths = append([]string{"debug"}, basePaths...)
 	}
-	outPaths = append(outPaths, pathComponents...)
 	if ctx.InstallBypassMake() && ctx.Config().EmbeddedInMake() {
-		return pathForInstallInMakeDir(ctx, outPaths...)
+		return pathForInstallInMakeDir(ctx, basePaths...).Join(ctx, pathComponents...)
 	}
-	return PathForOutput(ctx, outPaths...)
+	return PathForInstall(ctx, basePaths...).Join(ctx, pathComponents...)
 }
 
-func InstallPathToOnDevicePath(ctx PathContext, path OutputPath) string {
+func InstallPathToOnDevicePath(ctx PathContext, path InstallPath) string {
 	rel := Rel(ctx, PathForOutput(ctx, "target", "product", ctx.Config().DeviceName()).String(), path.String())
 
 	return "/" + rel
