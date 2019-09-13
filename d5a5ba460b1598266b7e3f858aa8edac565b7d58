@@ -25,6 +25,23 @@
     },
     {
       "key": {
+        "uuid": "01932e7c_cb3d7e0a",
+        "filename": "scripts/strip.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2019-09-13T17:48:17Z",
+      "side": 1,
+      "message": "Do you have any status info on these features? We should probably have a tracking bug (referenced here, but separate commit) to make sure that we can get off of the GNU binutils for these cases too.",
+      "revId": "d5a5ba460b1598266b7e3f858aa8edac565b7d58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0815be88_4dd425e6",
         "filename": "scripts/strip.sh",
         "patchSetId": 1
