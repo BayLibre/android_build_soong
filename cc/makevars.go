@@ -24,10 +24,13 @@ import (
 	"android/soong/cc/config"
 )
 
+type modulesTrackedCFlagKeyType string
+
 var (
 	modulesAddedWallKey          = android.NewOnceKey("ModulesAddedWall")
 	modulesUsingWnoErrorKey      = android.NewOnceKey("ModulesUsingWnoError")
 	modulesMissingProfileFileKey = android.NewOnceKey("ModulesMissingProfileFile")
+	modulesCFlagsTracked         = android.NewOnceKey("ModulesCFlagsTracked")
 )
 
 func init() {
@@ -151,6 +154,19 @@ func makeVarsProvider(ctx android.MakeVarsContext) {
 	ctx.Strict("ANDROID_WARNING_ALLOWED_PROJECTS", makeStringOfWarningAllowedProjects())
 	ctx.Strict("SOONG_MODULES_ADDED_WALL", makeStringOfKeys(ctx, modulesAddedWallKey))
 	ctx.Strict("SOONG_MODULES_USING_WNO_ERROR", makeStringOfKeys(ctx, modulesUsingWnoErrorKey))
+	ctx.Strict("SOONG_MODULES_CFLAGS_TRACKED", makeStringOfKeys(ctx, modulesCFlagsTracked))
+	cflags := getNamedMapForConfig(ctx.Config(), modulesCFlagsTracked)
+	cflags.Range(func(key interface{}, value interface{}) bool {
+		cleanedStr := strings.Replace(key.(string), "=", "_", -1)
+		flagKey := android.NewCustomOnceKey(modulesTrackedCFlagKeyType(key.(string)))
+		notFlagKey := android.NewCustomOnceKey(modulesTrackedCFlagKeyType("!" + key.(string)))
+		modules := makeStringOfKeys(ctx, flagKey)
+		ctx.Strict("SOONG_MODULES_CFLAGS"+cleanedStr, modules)
+		notModules := makeStringOfKeys(ctx, notFlagKey)
+		ctx.Strict("SOONG_MODULES_CFLAGS_NOT"+cleanedStr, notModules)
+		return true
+	})
+
 	ctx.Strict("SOONG_MODULES_MISSING_PGO_PROFILE_FILE", makeStringOfKeys(ctx, modulesMissingProfileFileKey))
 
 	ctx.Strict("ADDRESS_SANITIZER_CONFIG_EXTRA_CFLAGS", strings.Join(asanCflags, " "))
