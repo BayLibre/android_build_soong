@@ -244,6 +244,16 @@ func warningsAreAllowed(subdir string) bool {
 	return false
 }
 
+func trackedCFlagsDirAllowed(subdir string) bool {
+	subdir += "/"
+	for _, prefix := range config.TrackedCFlagsDir {
+		if strings.HasPrefix(subdir, prefix) {
+			return true
+		}
+	}
+	return false
+}
+
 func addToModuleList(ctx ModuleContext, key android.OnceKey, module string) {
 	getNamedMapForConfig(ctx.Config(), key).Store(module, true)
 }
@@ -498,6 +508,18 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 				flags.CFlags = append([]string{"-Wall"}, flags.CFlags...)
 			} else {
 				flags.CFlags = append([]string{"-Wall", "-Werror"}, flags.CFlags...)
+			}
+		}
+		if trackedCFlagsDirAllowed(ctx.ModuleDir()) {
+			for _, flag := range config.TrackedCFlags {
+				flagKey := android.NewCustomOnceKey(modulesTrackedCFlagKeyType(flag))
+				notFlagKey := android.NewCustomOnceKey(modulesTrackedCFlagKeyType("!" + flag))
+				addToModuleList(ctx, modulesCFlagsTracked, flag)
+				if inList(flag, flags.CFlags) {
+					addToModuleList(ctx, flagKey, module)
+				} else {
+					addToModuleList(ctx, notFlagKey, module)
+				}
 			}
 		}
 	}

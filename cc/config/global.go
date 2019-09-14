@@ -132,6 +132,19 @@ var (
 		"vendor/",
 	}
 
+	TrackedCFlags = []string{
+		"-Wall",
+		"-Werror",
+		"-Wextra",
+		"-Wthread-safety",
+		"-O3",
+	}
+
+	TrackedCFlagsDir = []string{
+		"device/google/",
+		"vendor/google/",
+	}
+
 	// Directories with warnings from Android.mk files.
 	WarningAllowedOldProjects = []string{}
 )
