@@ -1,0 +1,7 @@
+Build-Cop-Override+1: Sam Saccone <samccone@google.com>
+Autosubmit+1: Julien Desprez <jdesprez@google.com>
+Submitted-by: Julien Desprez <jdesprez@google.com>
+Submitted-at: Sat, 14 Sep 2019 03:08:55 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1121942
+Project: platform/build/soong
+Branch: refs/heads/master
