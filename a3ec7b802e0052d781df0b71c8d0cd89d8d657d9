@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5d2a9d9_d7b5d41f",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-16T22:25:28Z",
+      "side": 1,
+      "message": "Why is this specific to AIDL?  Can you leave a TODO bug?",
+      "revId": "a3ec7b802e0052d781df0b71c8d0cd89d8d657d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
