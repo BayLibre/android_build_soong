@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9e64beb_3f857601",
+        "filename": "sysprop/sysprop_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-09-16T08:48:16Z",
+      "side": 1,
+      "message": "Trigger an error when Srcs contains non *.sysprop files",
+      "revId": "9d2c036982d79aa99964ed36f86c2250d0c27e7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
