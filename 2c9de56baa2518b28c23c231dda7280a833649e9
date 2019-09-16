@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b30d033c_bae4d8d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2019-09-16T03:48:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f81dcfe1_df9783da",
+      "range": {
+        "startLine": 10,
+        "startChar": 8,
+        "endLine": 10,
+        "endChar": 32
+      },
+      "revId": "2c9de56baa2518b28c23c231dda7280a833649e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8e1affd_3b2666c6",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
@@ -39,6 +63,24 @@
       "revId": "2c9de56baa2518b28c23c231dda7280a833649e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ca49b90_20343681",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2019-09-16T03:48:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8e1affd_3b2666c6",
+      "revId": "2c9de56baa2518b28c23c231dda7280a833649e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -62,6 +104,30 @@
       "revId": "2c9de56baa2518b28c23c231dda7280a833649e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b668c977_248260b3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2019-09-16T03:48:04Z",
+      "side": 1,
+      "message": "That error occur when creating build rule from mk files.\nSo it is hard to add to apex_test.go.",
+      "parentUuid": "5885af92_d3860329",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 31
+      },
+      "revId": "2c9de56baa2518b28c23c231dda7280a833649e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -112,6 +178,30 @@
     },
     {
       "key": {
+        "uuid": "5633d36d_5556a38d",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2019-09-16T03:48:04Z",
+      "side": 1,
+      "message": "I\u0027ll create CL for it after merging this CL.",
+      "parentUuid": "3aa855d3_1fdf3507",
+      "range": {
+        "startLine": 504,
+        "startChar": 0,
+        "endLine": 505,
+        "endChar": 26
+      },
+      "revId": "2c9de56baa2518b28c23c231dda7280a833649e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d358329f_fe960f00",
         "filename": "apex/apex.go",
         "patchSetId": 5
@@ -126,6 +216,24 @@
       "revId": "2c9de56baa2518b28c23c231dda7280a833649e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b7efd88_7b848503",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1081,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2019-09-16T03:48:04Z",
+      "side": 1,
+      "message": "Thanks Colin. I think we can use a.isFlattenedVariant(?) instead of a.properties.HasFlattenedAndUnflattened.\na.isFlattenedVariant \u003d a.properties.Flattened \u0026\u0026 !(ctx.Config().FlattenApex() \u0026\u0026 !ctx.Config().UnbundledBuild())\nI\u0027ll create CL after merging this CL.",
+      "parentUuid": "d358329f_fe960f00",
+      "revId": "2c9de56baa2518b28c23c231dda7280a833649e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
