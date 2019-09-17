@@ -398,6 +398,7 @@ type Dependency interface {
 	AidlIncludeDirs() android.Paths
 	ExportedSdkLibs() []string
 	SrcJarArgs() ([]string, android.Paths)
+	Name() string
 }
 
 type SdkLibraryDependency interface {
