@@ -22,6 +22,30 @@
       "revId": "13d377222bf9985fd620b95d19129f7e9bf9e7ac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "351f8aab_281bc1d1",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1081,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2019-09-17T13:37:43Z",
+      "side": 1,
+      "message": "It\u0027s not overwriting.\nWe don\u0027t set under ctx.Config().FlattenApex() \u0026\u0026 !ctx.Config().UnbundledBuild() condition",
+      "parentUuid": "63698e0a_86d70c6c",
+      "range": {
+        "startLine": 1081,
+        "startChar": 2,
+        "endLine": 1081,
+        "endChar": 31
+      },
+      "revId": "13d377222bf9985fd620b95d19129f7e9bf9e7ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
