@@ -71,6 +71,16 @@ type TestBinaryProperties struct {
 
 	// Add RunCommandTargetPreparer to stop framework before the test and start it after the test.
 	Disable_framework *bool
+
+	// Add MinApiLevelModuleController to auto generated test config. This can check the api-level
+	// of the device.
+	Test_use_first_api_level *bool
+
+	// Add option of api-level-prop to get the api-level from device.
+	Api_level_prop *string `ro.product.first_api_level`
+
+	// Add option of min-api-level. If the api-level < min-api-level, skip the module.
+	Test_min_api_level *string `0`
 }
 
 func init() {
@@ -329,6 +339,12 @@ func (test *testBinary) install(ctx ModuleContext, file android.Path) {
 	}
 	if test.Properties.Test_options.Run_test_as != nil {
 		configs = append(configs, tradefed.Option{"run-test-as", String(test.Properties.Test_options.Run_test_as)})
+	}
+	if Bool(test.Properties.Test_use_first_api_level) {
+		var options []tradefed.Option
+		options = append(options, tradefed.Option{"min-api-level", *test.Properties.Test_min_api_level})
+		options = append(options, tradefed.Option{"api-level-prop", *test.Properties.Api_level_prop})
+		configs = append(configs, tradefed.Object{"module_controller", "com.android.tradefed.testtype.suite.module.MinApiLevelModuleController", options})
 	}
 
 	test.testConfig = tradefed.AutoGenNativeTestConfig(ctx, test.Properties.Test_config,
