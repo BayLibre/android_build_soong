@@ -137,6 +137,24 @@
     },
     {
       "key": {
+        "uuid": "7b26e53d_ee0f9250",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-17T22:47:00Z",
+      "side": 1,
+      "message": "Developers writing tests should not have to know the name of the property on the device that sets the SDK version, and if the cost of that is having multiple properties in Soong then I\u0027m fine with that.",
+      "parentUuid": "63287833_b21e93cc",
+      "revId": "c0f5af78e283c496698a8ee3f657b86c5771f6da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ebc325a3_91f9fc9b",
         "filename": "cc/test.go",
         "patchSetId": 2
