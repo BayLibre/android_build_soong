@@ -16,6 +16,7 @@ package cc
 
 import (
 	"path/filepath"
+	"strconv"
 	"strings"
 
 	"android/soong/android"
@@ -71,6 +72,14 @@ type TestBinaryProperties struct {
 
 	// Add RunCommandTargetPreparer to stop framework before the test and start it after the test.
 	Disable_framework *bool
+
+	// Add MinApiLevelModuleController to auto generated test config. If the device property of
+	// "ro.product.first_api_level" < Test_min_api_level, then skip this module.
+	Test_min_api_level *int64
+
+	// Add MinApiLevelModuleController to auto generated test config. If the device property of
+	// "ro.product.first_api_level" < Test_min_sdk_version, then skip this module.
+	Test_min_sdk_version *int64
 }
 
 func init() {
@@ -314,7 +323,9 @@ func (test *testBinary) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 
 func (test *testBinary) install(ctx ModuleContext, file android.Path) {
 	test.data = android.PathsForModuleSrc(ctx, test.Properties.Data)
+	var api_level_prop string
 	var configs []tradefed.Config
+	var min_level string
 	if Bool(test.Properties.Require_root) {
 		configs = append(configs, tradefed.Preparer{"com.android.tradefed.targetprep.RootTargetPreparer", nil})
 	}
@@ -329,6 +340,24 @@ func (test *testBinary) install(ctx ModuleContext, file android.Path) {
 	}
 	if test.Properties.Test_options.Run_test_as != nil {
 		configs = append(configs, tradefed.Option{"run-test-as", String(test.Properties.Test_options.Run_test_as)})
+	}
+	if test.Properties.Test_min_api_level != nil && test.Properties.Test_min_sdk_version != nil {
+		api_level_prop = ""
+	} else if test.Properties.Test_min_api_level != nil {
+		api_level_prop = "ro.product.first_api_level"
+		min_level = strconv.FormatInt(int64(*test.Properties.Test_min_api_level), 10)
+	} else if test.Properties.Test_min_sdk_version != nil {
+		api_level_prop = "ro.build.version.sdk"
+		min_level = strconv.FormatInt(int64(*test.Properties.Test_min_sdk_version), 10)
+	}
+	if test.Properties.Test_min_sdk_version != nil {
+		api_level_prop = "ro.build.version.sdk"
+	}
+	if api_level_prop != "" {
+		var options []tradefed.Option
+		options = append(options, tradefed.Option{"min-api-level", min_level})
+		options = append(options, tradefed.Option{"api-level-prop", api_level_prop})
+		configs = append(configs, tradefed.Object{"module_controller", "com.android.tradefed.testtype.suite.module.MinApiLevelModuleController", options})
 	}
 
 	test.testConfig = tradefed.AutoGenNativeTestConfig(ctx, test.Properties.Test_config,

@@ -95,6 +95,29 @@ func (p Preparer) Config() string {
 	return fmt.Sprintf(`<target_preparer class="%s">%s\n%s</target_preparer>`, p.Class, options, test_xml_indent)
 }
 
+type Object struct {
+	Type    string
+	Class   string
+	Options []Option
+}
+
+var _ Config = Object{}
+
+func (ob Object) Config() string {
+	var optionStrings []string
+	for _, option := range ob.Options {
+		optionStrings = append(optionStrings, option.Config())
+	}
+	var options string
+	if len(ob.Options) == 0 {
+		options = ""
+	} else {
+		optionDelimiter := fmt.Sprintf("\\n%s%s", test_xml_indent, test_xml_indent)
+		options = optionDelimiter + strings.Join(optionStrings, optionDelimiter)
+	}
+	return fmt.Sprintf(`<object type="%s" class="%s">%s\n%s</object>`, ob.Type, ob.Class, options, test_xml_indent)
+}
+
 func autogenTemplate(ctx android.ModuleContext, output android.WritablePath, template string, configs []Config) {
 	var configStrings []string
 	for _, config := range configs {
