@@ -235,11 +235,13 @@ func apexMutator(mctx android.BottomUpMutatorContext) {
 }
 
 func apexFlattenedMutator(mctx android.BottomUpMutatorContext) {
-	if _, ok := mctx.Module().(*apexBundle); ok {
+	if ab, ok := mctx.Module().(*apexBundle); ok {
 		if !mctx.Config().FlattenApex() || mctx.Config().UnbundledBuild() {
 			modules := mctx.CreateLocalVariations("", "flattened")
 			modules[0].(*apexBundle).SetFlattened(false)
 			modules[1].(*apexBundle).SetFlattened(true)
+		} else {
+			ab.SetFlattened(true)
 		}
 	}
 }
@@ -351,8 +353,8 @@ type apexBundleProperties struct {
 	// List of APKs to package inside APEX
 	Apps []string
 
-	// To distinguish between flattened and non-flattened variants.
-	// if set true, then this variant is flattened variant.
+	// To distinguish between flattened and non-flattened apex.
+	// if set true, then output files are flattened.
 	Flattened bool `blueprint:"mutated"`
 }
 
@@ -502,7 +504,8 @@ type apexBundle struct {
 	// intermediate path for apex_manifest.json
 	manifestOut android.WritablePath
 
-	// A config value of (TARGET_FLATTEN_APEX && !TARGET_BUILD_APPS)
+	// if true, it means that TARGET_FLATTEN_APEX is true and
+	// TARGET_BUILD_APPS is false
 	flattenedConfigValue bool
 }
 
@@ -752,6 +755,10 @@ func (a *apexBundle) HideFromMake() {
 
 func (a *apexBundle) SetFlattened(flattened bool) {
 	a.properties.Flattened = flattened
+}
+
+func (a *apexBundle) isFlattenedVariant() bool {
+	return a.properties.Flattened && !a.flattenedConfigValue
 }
 
 func getCopyManifestForNativeLibrary(ccMod *cc.Module, config android.Config, handleSpecialLibs bool) (fileToCopy android.Path, dirInApex string) {
@@ -1076,9 +1083,6 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	})
 
 	a.flattenedConfigValue = ctx.Config().FlattenApex() && !ctx.Config().UnbundledBuild()
-	if a.flattenedConfigValue {
-		a.properties.Flattened = true
-	}
 	if a.private_key_file == nil {
 		ctx.PropertyErrorf("key", "private_key for %q could not be found", String(a.properties.Key))
 		return
@@ -1416,7 +1420,7 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext, apexType ap
 	})
 
 	// Install to $OUT/soong/{target,host}/.../apex
-	if a.installable() && (!ctx.Config().FlattenApex() || apexType.zip()) && (!a.properties.Flattened || a.flattenedConfigValue) {
+	if a.installable() && (!ctx.Config().FlattenApex() || apexType.zip()) && !a.isFlattenedVariant() {
 		ctx.InstallFile(a.installDir, ctx.ModuleName()+suffix, a.outputFiles[apexType])
 	}
 }
@@ -1481,7 +1485,7 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, name, moduleDir string, apex
 		}
 
 		var suffix string
-		if a.properties.Flattened && !a.flattenedConfigValue {
+		if a.isFlattenedVariant() {
 			suffix = ".flattened"
 		}
 
@@ -1499,7 +1503,7 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, name, moduleDir string, apex
 			// /system/apex/<name>/{lib|framework|...}
 			fmt.Fprintln(w, "LOCAL_MODULE_PATH :=", filepath.Join("$(OUT_DIR)",
 				a.installDir.RelPathString(), name, fi.installDir))
-			if a.flattenedConfigValue {
+			if !a.isFlattenedVariant() {
 				fmt.Fprintln(w, "LOCAL_SOONG_SYMBOL_PATH :=", pathWhenActivated)
 			}
 			if len(fi.symlinks) > 0 {
@@ -1581,7 +1585,7 @@ func (a *apexBundle) androidMkForType(apexType apexPackaging) android.AndroidMkD
 				moduleNames = a.androidMkForFiles(w, name, moduleDir, apexType)
 			}
 
-			if a.properties.Flattened && !a.flattenedConfigValue {
+			if a.isFlattenedVariant() {
 				name = name + ".flattened"
 			}
 
@@ -1596,7 +1600,7 @@ func (a *apexBundle) androidMkForType(apexType apexPackaging) android.AndroidMkD
 				fmt.Fprintln(w, "include $(BUILD_PHONY_PACKAGE)")
 				fmt.Fprintln(w, "$(LOCAL_INSTALLED_MODULE): .KATI_IMPLICIT_OUTPUTS :=", a.flattenedOutput.String())
 
-			} else if !a.properties.Flattened || a.flattenedConfigValue {
+			} else if !a.isFlattenedVariant() {
 				// zip-apex is the less common type so have the name refer to the image-apex
 				// only and use {name}.zip if you want the zip-apex
 				if apexType == zipApex && a.apexTypes == both {
