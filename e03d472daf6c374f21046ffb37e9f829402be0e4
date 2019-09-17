@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "84e5a2a9_537237ba",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1945,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-09-17T01:07:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0da842b0_1ff3f9d3",
+      "revId": "e03d472daf6c374f21046ffb37e9f829402be0e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fe167ef_5b719976",
         "filename": "cc/linker.go",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2019-09-16T23:29:06Z",
       "side": 1,
       "message": "What is this for?",
+      "revId": "e03d472daf6c374f21046ffb37e9f829402be0e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e58ad7a_be1e17a6",
+        "filename": "cc/linker.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-09-17T01:07:01Z",
+      "side": 1,
+      "message": "To prevent some libs, e.g. libclang_rt.builtins, libatomic, libgcc_stripped, etc. to be linked from vndk_prebuilt.",
+      "parentUuid": "1fe167ef_5b719976",
       "revId": "e03d472daf6c374f21046ffb37e9f829402be0e4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
