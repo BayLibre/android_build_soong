@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7df326d5_e72bceb7",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1419,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-09-17T13:26:51Z",
+      "side": 0,
+      "message": "why can\u0027t we just have a function that returns this?",
+      "range": {
+        "startLine": 1419,
+        "startChar": 74,
+        "endLine": 1419,
+        "endChar": 125
+      },
+      "revId": "999b5feab3a9b1c84be4eaf8eba40831e4496199",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
