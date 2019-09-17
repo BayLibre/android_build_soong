@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23e2959f_f8ccfe1b",
+        "filename": "cc/makevars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-17T19:31:13Z",
+      "side": 1,
+      "message": "Why not use TrackedCFlags?",
+      "range": {
+        "startLine": 158,
+        "startChar": 11,
+        "endLine": 158,
+        "endChar": 67
+      },
+      "revId": "e366afa61bec3da69ab379a7071cfe1bb3257499",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a64f409_c437e62d",
+        "filename": "cc/makevars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-17T19:31:13Z",
+      "side": 1,
+      "message": "Range on a sync.Map is not a deterministic order, which will cause the generated Android.mk to change every time.  This wouldn\u0027t be a problem with TrackedCFlags, but if you continue to use modulesCFlagsTracked you\u0027ll need to sort the list of keys.",
+      "range": {
+        "startLine": 159,
+        "startChar": 8,
+        "endLine": 159,
+        "endChar": 13
+      },
+      "revId": "e366afa61bec3da69ab379a7071cfe1bb3257499",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
