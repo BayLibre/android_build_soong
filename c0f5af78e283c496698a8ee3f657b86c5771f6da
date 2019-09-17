@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "803ef6e2_cf63bac8",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2019-09-17T16:56:31Z",
+      "side": 1,
+      "message": "so far we only need to support 2 properties, ro.build.version.sdk or ro.product.first_api_level. Maybe a boolean is easier to use. Like Use_sdk_for_api_level: true/false",
+      "revId": "c0f5af78e283c496698a8ee3f657b86c5771f6da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ebc325a3_91f9fc9b",
         "filename": "cc/test.go",
         "patchSetId": 2
@@ -13,6 +30,30 @@
       "writtenOn": "2019-09-17T09:55:29Z",
       "side": 1,
       "message": "How about changing it to a structure?\n\n// TestUseFirstApiLevel struct.\ntype TestUseFirstApiLevel struct {\n      \tApi_level_prop *string `ro.product.first_api_level`\n      \tTest_min_api_level *string `0`\n}\n\nTest_use_first_api_level *TestUseFirstApiLevel",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 31
+      },
+      "revId": "c0f5af78e283c496698a8ee3f657b86c5771f6da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7aba0a61_24dca879",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2019-09-17T16:56:31Z",
+      "side": 1,
+      "message": "I\u0027m not sure if we need a struct or soong prefers a more flat type structure.\n\nColin, can you comment on this?",
+      "parentUuid": "ebc325a3_91f9fc9b",
       "range": {
         "startLine": 74,
         "startChar": 0,
