@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "450a03fc_860bea7b",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-17T18:09:06Z",
+      "side": 1,
+      "message": "This seems redundant with Test_min_api_level !\u003d nil.",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 22
+      },
+      "revId": "c0f5af78e283c496698a8ee3f657b86c5771f6da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "803ef6e2_cf63bac8",
         "filename": "cc/test.go",
         "patchSetId": 2
@@ -13,6 +36,47 @@
       "writtenOn": "2019-09-17T16:56:31Z",
       "side": 1,
       "message": "so far we only need to support 2 properties, ro.build.version.sdk or ro.product.first_api_level. Maybe a boolean is easier to use. Like Use_sdk_for_api_level: true/false",
+      "revId": "c0f5af78e283c496698a8ee3f657b86c5771f6da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c433587e_6da9a205",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-17T18:09:06Z",
+      "side": 1,
+      "message": "This seems like an implementation detail.  Why would a test select one over the other?  Can we use a higher-level concept here instead?",
+      "parentUuid": "803ef6e2_cf63bac8",
+      "revId": "c0f5af78e283c496698a8ee3f657b86c5771f6da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12cd5e14_5869eef2",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-17T18:09:06Z",
+      "side": 1,
+      "message": "What is this struct tag for?",
+      "range": {
+        "startLine": 80,
+        "startChar": 24,
+        "endLine": 80,
+        "endChar": 52
+      },
       "revId": "c0f5af78e283c496698a8ee3f657b86c5771f6da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -59,6 +123,99 @@
         "startChar": 0,
         "endLine": 83,
         "endChar": 31
+      },
+      "revId": "c0f5af78e283c496698a8ee3f657b86c5771f6da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3b6465b_5d22c0ac",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-17T18:09:06Z",
+      "side": 1,
+      "message": "We support int values, would that make more sense here or will it ever need to be a string value like \"current\"?",
+      "range": {
+        "startLine": 83,
+        "startChar": 20,
+        "endLine": 83,
+        "endChar": 27
+      },
+      "revId": "c0f5af78e283c496698a8ee3f657b86c5771f6da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea873d06_86b786c1",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-17T18:09:06Z",
+      "side": 1,
+      "message": "What is this struct tag for?",
+      "range": {
+        "startLine": 83,
+        "startChar": 28,
+        "endLine": 83,
+        "endChar": 31
+      },
+      "revId": "c0f5af78e283c496698a8ee3f657b86c5771f6da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23e2c493_fdfad363",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-17T18:09:06Z",
+      "side": 1,
+      "message": "A structure is fine if it makes the Android.bp file more readable.",
+      "parentUuid": "7aba0a61_24dca879",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 31
+      },
+      "revId": "c0f5af78e283c496698a8ee3f657b86c5771f6da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66f752fd_1ab8b6cd",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-17T18:09:06Z",
+      "side": 1,
+      "message": "This seems like a one-to-one mapping between Android.bp properties and tradefed configuration.  When designing features like this, consider what the test developer is trying to accomplish, and let them specify that using higher level concepts.  That allows us to modify the logic here and in tradefed in the future as the implementation changes without having to go back and edit every Android.bp file.",
+      "range": {
+        "startLine": 345,
+        "startChar": 2,
+        "endLine": 347,
+        "endChar": 148
       },
       "revId": "c0f5af78e283c496698a8ee3f657b86c5771f6da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
