@@ -101,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "4eb6b168_adf2666f",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-17T18:25:35Z",
+      "side": 1,
+      "message": "That link is the exact definition of an implementation detail.  _Why_ would a developer choose one over the other?  What are they trying to say about their test when they choose one?  For example, should this be two different properties, test_min_sdk_version and test_product_first_api_level?",
+      "parentUuid": "64f6a60b_6ce21601",
+      "revId": "c0f5af78e283c496698a8ee3f657b86c5771f6da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ebc325a3_91f9fc9b",
         "filename": "cc/test.go",
         "patchSetId": 2
