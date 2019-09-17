@@ -119,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "63287833_b21e93cc",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2019-09-17T18:35:05Z",
+      "side": 1,
+      "message": "I see. If we want to make it more general, how about name it Test_device_prop? and one can set the value to any device property and potentially used in other preparer.\n\nIf we want the setting to be more specific to the use case, keep the name Api_level_prop maybe better, in case it needs to support a different property name.\nHaving 2 different properties like test_min_sdk_version and test_product_first_api_level works too, if soong team doesn\u0027t mind that this struct contains too many properties.",
+      "parentUuid": "4eb6b168_adf2666f",
+      "revId": "c0f5af78e283c496698a8ee3f657b86c5771f6da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ebc325a3_91f9fc9b",
         "filename": "cc/test.go",
         "patchSetId": 2
