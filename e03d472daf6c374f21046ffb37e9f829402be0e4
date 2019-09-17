@@ -69,6 +69,24 @@
       "revId": "e03d472daf6c374f21046ffb37e9f829402be0e4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "199cce0d_6432220d",
+        "filename": "cc/linker.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-17T01:20:23Z",
+      "side": 1,
+      "message": "This is breaking all sorts of abstraction barriers, can you find a better way?  Maybe split linkerDeps into multiple methods so that vndkPrebuiltLibraryDecorator can call only one of them?  It also needs a comment.",
+      "parentUuid": "6e58ad7a_be1e17a6",
+      "revId": "e03d472daf6c374f21046ffb37e9f829402be0e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
