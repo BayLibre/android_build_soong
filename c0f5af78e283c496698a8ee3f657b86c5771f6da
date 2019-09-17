@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ebc325a3_91f9fc9b",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2019-09-17T09:55:29Z",
+      "side": 1,
+      "message": "How about changing it to a structure?\n\n// TestUseFirstApiLevel struct.\ntype TestUseFirstApiLevel struct {\n      \tApi_level_prop *string `ro.product.first_api_level`\n      \tTest_min_api_level *string `0`\n}\n\nTest_use_first_api_level *TestUseFirstApiLevel",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 31
+      },
+      "revId": "c0f5af78e283c496698a8ee3f657b86c5771f6da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8f911b1_d39dc287",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2019-09-17T09:55:29Z",
+      "side": 1,
+      "message": "if test.Properties.Test_use_first_api_level !\u003d nil {\n\t\tvar options []tradefed.Option\n\t\toptions \u003d append(options, tradefed.Option{\"min-api-level\", *test.Properties.Test_use_first_api_level.Api_level_prop})\n\t\toptions \u003d append(options, tradefed.Option{\"api-level-prop\", *test.Properties.Test_use_first_api_level.Test_min_api_level})\n\t\tconfigs \u003d append(configs, tradefed.Object{\"module_controller\", \"com.android.tradefed.testtype.suite.module.MinApiLevelModuleController\", options})\n\t}",
+      "range": {
+        "startLine": 343,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 2
+      },
+      "revId": "c0f5af78e283c496698a8ee3f657b86c5771f6da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
