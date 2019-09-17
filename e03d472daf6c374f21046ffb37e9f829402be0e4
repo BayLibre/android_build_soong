@@ -87,6 +87,24 @@
       "revId": "e03d472daf6c374f21046ffb37e9f829402be0e4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1ab8c01_1b472f1c",
+        "filename": "cc/linker.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-09-17T01:47:49Z",
+      "side": 1,
+      "message": "It turned out that this can be removed with assigning values to no_libcrt, nocrt, and system_shared_libs. I guess it\u0027s much better now.",
+      "parentUuid": "199cce0d_6432220d",
+      "revId": "e03d472daf6c374f21046ffb37e9f829402be0e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
