@@ -83,6 +83,24 @@
     },
     {
       "key": {
+        "uuid": "64f6a60b_6ce21601",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2019-09-17T18:22:35Z",
+      "side": 1,
+      "message": "MinApiLevelModuleController takes in an option of property name to get api level. So far it can be one of the 2 values:\nhttps://cs.corp.google.com/android/tools/tradefederation/core/src/com/android/tradefed/testtype/suite/module/MinApiLevelModuleController.java?rcl\u003d79d857dd6347374c0dd1763d3f05f121d8ad4e5c\u0026l\u003d31\nand default value is ro.build.version.sdk.\n\nNot sure if we can come up with a more generic name?",
+      "parentUuid": "c433587e_6da9a205",
+      "revId": "c0f5af78e283c496698a8ee3f657b86c5771f6da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ebc325a3_91f9fc9b",
         "filename": "cc/test.go",
         "patchSetId": 2
@@ -193,6 +211,30 @@
         "startChar": 0,
         "endLine": 83,
         "endChar": 31
+      },
+      "revId": "c0f5af78e283c496698a8ee3f657b86c5771f6da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99700a89_ea704aec",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2019-09-17T18:22:35Z",
+      "side": 1,
+      "message": "MinApiLevelModuleController takes in option value of an int or null. \nSo we should make this *int.",
+      "parentUuid": "f3b6465b_5d22c0ac",
+      "range": {
+        "startLine": 83,
+        "startChar": 20,
+        "endLine": 83,
+        "endChar": 27
       },
       "revId": "c0f5af78e283c496698a8ee3f657b86c5771f6da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
