@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0b9b3fb_2db4544c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-09-17T10:52:08Z",
+      "side": 1,
+      "message": "module",
+      "range": {
+        "startLine": 10,
+        "startChar": 35,
+        "endLine": 10,
+        "endChar": 41
+      },
+      "revId": "a54d968191864c73677862ca926560b1e0bfd98e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06633cf0_d51c0fd9",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-09-17T10:52:08Z",
+      "side": 1,
+      "message": "Is this comment still accurate? I\u0027m not sure to understand the distinction between `apexBundleProperties.Flattened` (line 356) and `apexBundle.isFlattenedVariant` (line 505).",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 355,
+        "endChar": 56
+      },
+      "revId": "a54d968191864c73677862ca926560b1e0bfd98e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6694f6a_b6e4aade",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-09-17T10:52:08Z",
+      "side": 1,
+      "message": "I think it\u0027d be nice to copy the information from the commit message as a documentation for this field here.",
+      "range": {
+        "startLine": 505,
+        "startChar": 1,
+        "endLine": 505,
+        "endChar": 24
+      },
+      "revId": "a54d968191864c73677862ca926560b1e0bfd98e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd689243_1def459f",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1080,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-09-17T10:52:08Z",
+      "side": 1,
+      "message": "Is this `else` on purpose here?",
+      "range": {
+        "startLine": 1080,
+        "startChar": 3,
+        "endLine": 1080,
+        "endChar": 7
+      },
+      "revId": "a54d968191864c73677862ca926560b1e0bfd98e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
