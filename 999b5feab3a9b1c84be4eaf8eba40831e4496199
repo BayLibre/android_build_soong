@@ -46,6 +46,30 @@
       "revId": "999b5feab3a9b1c84be4eaf8eba40831e4496199",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d75e226f_f9f270c9",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1419,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-09-17T13:52:16Z",
+      "side": 0,
+      "message": "func (a *apexBundle) isFlattendApexOnDeviceSupportingUpdatableApex() bool { // name could be shortened\n  return a.properties.Flattened \u0026\u0026 !a.flattenedConfigValue\n}",
+      "parentUuid": "4929167b_9daca7e6",
+      "range": {
+        "startLine": 1419,
+        "startChar": 74,
+        "endLine": 1419,
+        "endChar": 125
+      },
+      "revId": "999b5feab3a9b1c84be4eaf8eba40831e4496199",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
