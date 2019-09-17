@@ -105,7 +105,7 @@ func (r *robolectricTest) GenerateAndroidBuildActions(ctx android.ModuleContext)
 	r.roboSrcJar = roboSrcJar
 
 	for _, dep := range ctx.GetDirectDepsWithTag(libTag) {
-		r.libs = append(r.libs, ctx.OtherModuleName(dep))
+		r.libs = append(r.libs, dep.(Dependency).Name())
 	}
 
 	// TODO: this could all be removed if tradefed was used as the test runner, it will find everything
@@ -234,7 +234,9 @@ func RobolectricTestFactory() android.Module {
 	module.AddProperties(
 		&module.Module.properties,
 		&module.Module.protoProperties,
-		&module.robolectricProperties)
+		&module.robolectricProperties,
+		&module.properties,
+		&module.deviceProperties)
 
 	module.Module.dexpreopter.isTest = true
 
