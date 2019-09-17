@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d83b7c47_51bbed7b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2019-09-17T12:54:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0b9b3fb_2db4544c",
+      "range": {
+        "startLine": 10,
+        "startChar": 35,
+        "endLine": 10,
+        "endChar": 41
+      },
+      "revId": "a54d968191864c73677862ca926560b1e0bfd98e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06633cf0_d51c0fd9",
         "filename": "apex/apex.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "a54d968191864c73677862ca926560b1e0bfd98e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2c5576f_76fc8c83",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2019-09-17T12:54:04Z",
+      "side": 1,
+      "message": "I updated comment.",
+      "parentUuid": "06633cf0_d51c0fd9",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 355,
+        "endChar": 56
+      },
+      "revId": "a54d968191864c73677862ca926560b1e0bfd98e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "af45b6aa_c87352a4",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2019-09-17T12:54:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6694f6a_b6e4aade",
+      "range": {
+        "startLine": 505,
+        "startChar": 1,
+        "endLine": 505,
+        "endChar": 24
+      },
+      "revId": "a54d968191864c73677862ca926560b1e0bfd98e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd689243_1def459f",
         "filename": "apex/apex.go",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "a54d968191864c73677862ca926560b1e0bfd98e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24fce892_97878d0d",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1080,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2019-09-17T12:54:04Z",
+      "side": 1,
+      "message": "Yes. The above condition mean variant is created or not.\nFor isFlattenedVariant, flattened variant should be created.",
+      "parentUuid": "cd689243_1def459f",
+      "range": {
+        "startLine": 1080,
+        "startChar": 3,
+        "endLine": 1080,
+        "endChar": 7
+      },
+      "revId": "a54d968191864c73677862ca926560b1e0bfd98e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
