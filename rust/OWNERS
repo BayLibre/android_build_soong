@@ -1,0 +1,2 @@
+per-file config/whitelist.go = set noparent
+per-file config/whitelist.go = ivanlozano@google.com, jeffv@google.com, jgalenson@google.com, srhines@google.com
