@@ -96,6 +96,30 @@ type BaseLinkerProperties struct {
 	Runtime_libs []string `android:"arch_variant"`
 
 	Target struct {
+		Host struct {
+			// list of shared libs that only should be used to build the host
+			// variant of the C/C++ module.
+			Shared_libs []string
+
+			// list of shared libs that should not be used to build the host variant
+			// of the C/C++ module.
+			Exclude_shared_libs []string
+
+			// list of static libs that should not be used to build the host variant
+			// of the C/C++ module.
+			Exclude_static_libs []string
+
+			// list of header libs that should not be used to build the host variant
+			// of the C/C++ module.
+			Exclude_header_libs []string
+
+			// list of runtime libs that should not be installed along with the host
+			// variant of the C/C++ module.
+			Exclude_runtime_libs []string
+
+			// version script for this host variant
+			Version_script *string `android:"arch_variant"`
+		}
 		Vendor struct {
 			// list of shared libs that only should be used to build the vendor
 			// variant of the C/C++ module.
@@ -198,6 +222,17 @@ func (linker *baseLinker) linkerDeps(ctx DepsContext, deps Deps) Deps {
 
 	if Bool(linker.Properties.Use_version_lib) {
 		deps.WholeStaticLibs = append(deps.WholeStaticLibs, "libbuildversion")
+	}
+
+	if ctx.Host() {
+		deps.SharedLibs = append(deps.SharedLibs, linker.Properties.Target.Host.Shared_libs...)
+		deps.SharedLibs = removeListFromList(deps.SharedLibs, linker.Properties.Target.Host.Exclude_shared_libs)
+		deps.ReexportSharedLibHeaders = removeListFromList(deps.ReexportSharedLibHeaders, linker.Properties.Target.Host.Exclude_shared_libs)
+		deps.StaticLibs = removeListFromList(deps.StaticLibs, linker.Properties.Target.Host.Exclude_static_libs)
+		deps.HeaderLibs = removeListFromList(deps.HeaderLibs, linker.Properties.Target.Host.Exclude_header_libs)
+		deps.ReexportStaticLibHeaders = removeListFromList(deps.ReexportStaticLibHeaders, linker.Properties.Target.Host.Exclude_static_libs)
+		deps.WholeStaticLibs = removeListFromList(deps.WholeStaticLibs, linker.Properties.Target.Host.Exclude_static_libs)
+		deps.RuntimeLibs = removeListFromList(deps.RuntimeLibs, linker.Properties.Target.Host.Exclude_runtime_libs)
 	}
 
 	if ctx.useVndk() {
