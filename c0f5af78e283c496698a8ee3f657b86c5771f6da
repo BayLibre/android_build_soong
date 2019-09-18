@@ -209,6 +209,48 @@
     },
     {
       "key": {
+        "uuid": "66fd5e8b_86350d0f",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2019-09-18T16:37:02Z",
+      "side": 1,
+      "message": "Thanks for you suggestion.\nCurrently, developers can add \n          test_min_api_level: 29,\n          or\n          test_min_sdk_version: 29,\nin the Android.bp",
+      "parentUuid": "424ccd27_c7eb6c2e",
+      "revId": "c0f5af78e283c496698a8ee3f657b86c5771f6da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "661c3aad_4e708ecf",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2019-09-18T16:37:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "12cd5e14_5869eef2",
+      "range": {
+        "startLine": 80,
+        "startChar": 24,
+        "endLine": 80,
+        "endChar": 52
+      },
+      "revId": "c0f5af78e283c496698a8ee3f657b86c5771f6da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ebc325a3_91f9fc9b",
         "filename": "cc/test.go",
         "patchSetId": 2
@@ -350,6 +392,78 @@
     },
     {
       "key": {
+        "uuid": "7fcbba15_1372f708",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2019-09-18T16:37:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99700a89_ea704aec",
+      "range": {
+        "startLine": 83,
+        "startChar": 20,
+        "endLine": 83,
+        "endChar": 27
+      },
+      "revId": "c0f5af78e283c496698a8ee3f657b86c5771f6da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c0c15386_66c6b0f6",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2019-09-18T16:37:02Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "ea873d06_86b786c1",
+      "range": {
+        "startLine": 83,
+        "startChar": 28,
+        "endLine": 83,
+        "endChar": 31
+      },
+      "revId": "c0f5af78e283c496698a8ee3f657b86c5771f6da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a94ae80_dbb4fa3d",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2019-09-18T16:37:02Z",
+      "side": 1,
+      "message": "Thanks, using test_min_api_level and test_min_sdk_version in patch3 now.",
+      "parentUuid": "23e2c493_fdfad363",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 31
+      },
+      "revId": "c0f5af78e283c496698a8ee3f657b86c5771f6da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66f752fd_1ab8b6cd",
         "filename": "cc/test.go",
         "patchSetId": 2
@@ -393,6 +507,30 @@
       "revId": "c0f5af78e283c496698a8ee3f657b86c5771f6da",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a076615f_a9c70079",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2019-09-18T16:37:02Z",
+      "side": 1,
+      "message": "ditto.",
+      "parentUuid": "c8f911b1_d39dc287",
+      "range": {
+        "startLine": 343,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 2
+      },
+      "revId": "c0f5af78e283c496698a8ee3f657b86c5771f6da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
