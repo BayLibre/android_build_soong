@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5346dfa0_a3c5e681",
+        "filename": "cc/linker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-18T01:04:17Z",
+      "side": 1,
+      "message": "any standard way to do this without having to define these multiple times and copy the code below?",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 3
+      },
+      "revId": "17b204b7b14db01d70487f96550fbe23364ed17d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
