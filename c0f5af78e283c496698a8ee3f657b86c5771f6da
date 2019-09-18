@@ -191,6 +191,24 @@
     },
     {
       "key": {
+        "uuid": "424ccd27_c7eb6c2e",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2019-09-18T06:38:50Z",
+      "side": 1,
+      "message": "maybe the other way is even cleaner:\ntest_min_api_level *int\ntest_min_sdk_version *int\n\nonly one should be set. If both set, let\u0027s fail.\nIf one is set, we will add the preparer with the corresponding option.",
+      "parentUuid": "e662718b_c318801e",
+      "revId": "c0f5af78e283c496698a8ee3f657b86c5771f6da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ebc325a3_91f9fc9b",
         "filename": "cc/test.go",
         "patchSetId": 2
