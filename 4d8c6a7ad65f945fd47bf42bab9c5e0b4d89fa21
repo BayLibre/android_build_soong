@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d6d98fd_6465a1e9",
+        "filename": "rust/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-18T19:25:16Z",
+      "side": 1,
+      "message": "Is this necessary?  It will make it harder for us to do refactorings that happen to touch this.",
+      "revId": "4d8c6a7ad65f945fd47bf42bab9c5e0b4d89fa21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b2b76e5_392b0292",
+        "filename": "rust/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-18T19:25:16Z",
+      "side": 1,
+      "message": "Other per-file OWNERS entries are in build/soong/OWNERS, does putting it here work?",
+      "revId": "4d8c6a7ad65f945fd47bf42bab9c5e0b4d89fa21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
