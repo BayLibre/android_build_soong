@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0632142c_8ef570a7",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-18T20:07:25Z",
+      "side": 1,
+      "message": "This isn\u0027t necessary, it is already handled by the arch_variant tagged Shared_libs above.",
+      "revId": "f77da1607a3d532c43b19d00a9873a48ac42dff3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8afdbf27_043dfa94",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-18T20:07:25Z",
+      "side": 1,
+      "message": "Don\u0027t add these here, add them to the top level properties and make them arch_variant.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 0
+      },
+      "revId": "f77da1607a3d532c43b19d00a9873a48ac42dff3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "278ecd04_e68f56f3",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-18T20:07:25Z",
+      "side": 1,
+      "message": "This is already handled by the arch_variant tagged property below.",
+      "range": {
+        "startLine": 120,
+        "startChar": 3,
+        "endLine": 121,
+        "endChar": 50
+      },
+      "revId": "f77da1607a3d532c43b19d00a9873a48ac42dff3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
