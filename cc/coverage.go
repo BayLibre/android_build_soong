@@ -69,7 +69,7 @@ func (cov *coverage) flags(ctx ModuleContext, flags Flags, deps PathDeps) (Flags
 
 	if cov.Properties.CoverageEnabled {
 		flags.Coverage = true
-		flags.GlobalFlags = append(flags.GlobalFlags, "--coverage", "-O0")
+		flags.GlobalFlags = append(flags.GlobalFlags, "-fprofile-instr-generate", "-fcoverage-mapping")
 		cov.linkCoverage = true
 
 		// Override -Wframe-larger-than and non-default optimization
@@ -112,7 +112,7 @@ func (cov *coverage) flags(ctx ModuleContext, flags Flags, deps PathDeps) (Flags
 	}
 
 	if cov.linkCoverage {
-		flags.LdFlags = append(flags.LdFlags, "--coverage")
+		flags.LdFlags = append(flags.LdFlags, "-fprofile-instr-generate", "-fcoverage-mapping")
 
 		coverage := ctx.GetDirectDepWithTag(getProfileLibraryName(ctx), coverageDepTag).(*Module)
 		deps.WholeStaticLibs = append(deps.WholeStaticLibs, coverage.OutputFile().Path())
