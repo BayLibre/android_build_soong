@@ -155,6 +155,24 @@
     },
     {
       "key": {
+        "uuid": "d3c72ab7_e5af92bf",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2019-09-18T02:58:54Z",
+      "side": 1,
+      "message": "How about just use the following 2 properties?\n\n1. test_min_api_level: 29\n2. test_use_first_api_level: true\n(if true, \n\u003coption name\u003d\"api-level-prop\" value\u003d\"ro.product.first_api_level\"/\u003e\nelse\n\u003coption name\u003d\"api-level-prop\" value\u003d\"ro.build.version.sdk\"/\u003e\n)\nIf the developers wants to change the api-level-prop by himself, then write his own test configuration by specifying test_config: xxx.xml. They don\u0027t have to use the auto-gen rule in Android.bp\n\nOur original desing in tradefed was to make MinSdkModuleController more generic by allowing to choose the API level via an option. And we are planning to remove the original Sdk29ModuleController.java and Sdk28ModuleController.java since they are duplicated and lack of flexibility. That\u0027s why we also hope developers can change the auto-gen rules in Android.bp.",
+      "parentUuid": "7b26e53d_ee0f9250",
+      "revId": "c0f5af78e283c496698a8ee3f657b86c5771f6da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ebc325a3_91f9fc9b",
         "filename": "cc/test.go",
         "patchSetId": 2
