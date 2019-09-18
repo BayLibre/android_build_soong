@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8a7a8561_c0e5679d",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-18T20:14:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0632142c_8ef570a7",
+      "revId": "f77da1607a3d532c43b19d00a9873a48ac42dff3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8afdbf27_043dfa94",
         "filename": "cc/linker.go",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "cba9e106_466b7d52",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-18T20:14:52Z",
+      "side": 1,
+      "message": "hmm, strange if these were used at the top level, but this is great! I guess we might also want something like image_variant in the future.",
+      "parentUuid": "8afdbf27_043dfa94",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 0
+      },
+      "revId": "f77da1607a3d532c43b19d00a9873a48ac42dff3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "278ecd04_e68f56f3",
         "filename": "cc/linker.go",
         "patchSetId": 2
@@ -62,6 +104,30 @@
       "revId": "f77da1607a3d532c43b19d00a9873a48ac42dff3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c13d0f2_54a1bb78",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-09-18T20:14:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "278ecd04_e68f56f3",
+      "range": {
+        "startLine": 120,
+        "startChar": 3,
+        "endLine": 121,
+        "endChar": 50
+      },
+      "revId": "f77da1607a3d532c43b19d00a9873a48ac42dff3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
