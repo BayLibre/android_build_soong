@@ -173,6 +173,24 @@
     },
     {
       "key": {
+        "uuid": "e662718b_c318801e",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2019-09-18T03:40:50Z",
+      "side": 1,
+      "message": "I think these 2 properties are clean and easy to use.",
+      "parentUuid": "d3c72ab7_e5af92bf",
+      "revId": "c0f5af78e283c496698a8ee3f657b86c5771f6da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ebc325a3_91f9fc9b",
         "filename": "cc/test.go",
         "patchSetId": 2
