@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d01ebc8c_50b67a3c",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-18T22:18:04Z",
+      "side": 1,
+      "message": "Does this error provide value?  If so, do this check when you set fuzz.dictionary, and use ctx.PropertyErrorf instead of panic.",
+      "revId": "eca75acf9b9265b3305bec82cd59617ae07c7dbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
