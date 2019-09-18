@@ -16,6 +16,24 @@
       "revId": "eca75acf9b9265b3305bec82cd59617ae07c7dbf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c912aa83_df155d43",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-09-18T22:48:11Z",
+      "side": 1,
+      "message": "Done:\n\ncc_fuzz {\n  \u003c... snip ...\u003e\n  dictionary: \"example_fuzzer.dictionary\",\n}\n\nerror: tools/security/example_fuzzer/Android.bp:16:15: module \"example_fuzzer\" variant \"linux_glibc_x86_64_fuzzer\": dictionary: Fuzzer dictionary \"tools/security/example_fuzzer/example_fuzzer.dictionary\" does not have \u0027.dict\u0027 extension",
+      "parentUuid": "d01ebc8c_50b67a3c",
+      "revId": "eca75acf9b9265b3305bec82cd59617ae07c7dbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
