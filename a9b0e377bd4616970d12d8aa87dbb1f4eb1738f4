@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8390dd01_80c963c1",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-18T19:38:40Z",
+      "side": 1,
+      "message": "This is very subtle, can you put a comment on this function?  Something like:\n\nisFlattenedVariant returns true when the current module is the flattened variant of an apex that\nhas both a flattened and an unflattened variant.  It returns false when the current module is\nflattened but there is no unflattened variant, which occurs when ctx.Config().FlattenedApex() returns\ntrue.  It can be used to avoid collisions between the install paths of the flattened and unflattened\nvariants.",
+      "revId": "a9b0e377bd4616970d12d8aa87dbb1f4eb1738f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df4f7bb0_e6cec8c4",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-18T19:38:40Z",
+      "side": 1,
+      "message": "This is a dangerous place to set this, if somebody called isFlattenedVariant before this was set then it would return the wrong value.  You should either read them inside isFlattenedVariant, or set a property at the same time that you called ab.SetFlattened in the mutator, which would avoid duplicating the checks that are already in the mutator.",
+      "revId": "a9b0e377bd4616970d12d8aa87dbb1f4eb1738f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
