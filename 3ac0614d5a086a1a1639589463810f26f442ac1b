@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2ee98aa_9a4eaeaa",
+        "filename": "cc/vndk.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-18T19:27:22Z",
+      "side": 1,
+      "message": "libraryInterface",
+      "range": {
+        "startLine": 110,
+        "startChar": 32,
+        "endLine": 110,
+        "endChar": 49
+      },
+      "revId": "3ac0614d5a086a1a1639589463810f26f442ac1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
