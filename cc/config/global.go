@@ -48,6 +48,7 @@ var (
 		"-fno-strict-aliasing",
 
 		"-Werror=date-time",
+		"-Werror=fortify-source",
 	}
 
 	commonGlobalConlyflags = []string{}
