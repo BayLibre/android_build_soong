@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "931decd0_9b3615ea",
+        "filename": "cc/cflag_artifacts.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1562318
+      },
+      "writtenOn": "2019-09-19T02:20:23Z",
+      "side": 1,
+      "message": "Interesting. I was not aware that ModuleSubDir was used for that. Will be updated in next patch.\n\nI based the extraction of the Module directory and name off of the following snippet: https://android.googlesource.com/platform/build/soong/+/refs/heads/master/cc/compiler.go#491. Consequently, I thought ModuleDir and ModuleName was adequate.",
+      "parentUuid": "9f29d17e_0229f485",
+      "range": {
+        "startLine": 55,
+        "startChar": 57,
+        "endLine": 55,
+        "endChar": 81
+      },
+      "revId": "8c554f0eec360ec6ee61d9505870140f357b83dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a34f0dd7_2b8407ce",
+        "filename": "cc/cflag_artifacts.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1562318
+      },
+      "writtenOn": "2019-09-19T02:20:23Z",
+      "side": 1,
+      "message": "Make sense. Will be resolved in the next patch.",
+      "parentUuid": "cfcaa14f_fea7131e",
+      "range": {
+        "startLine": 55,
+        "startChar": 42,
+        "endLine": 55,
+        "endChar": 52
+      },
+      "revId": "8c554f0eec360ec6ee61d9505870140f357b83dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d74754e6_1369a5e3",
         "filename": "cc/cflag_artifacts.go",
         "patchSetId": 3
@@ -62,6 +110,24 @@
       "revId": "8c554f0eec360ec6ee61d9505870140f357b83dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f764175_8e56132c",
+        "filename": "cc/cflag_artifacts.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1562318
+      },
+      "writtenOn": "2019-09-19T02:20:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d74754e6_1369a5e3",
+      "revId": "8c554f0eec360ec6ee61d9505870140f357b83dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "f331ec12_90da3417",
+        "filename": "cc/cflag_artifacts.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1562318
+      },
+      "writtenOn": "2019-09-19T02:20:23Z",
+      "side": 1,
+      "message": "The original intention was to prevent extra new lines from being inserted after each section.\n\nThat said, the additional complexity probably makes this choice not worth it.\n\nWill be removed in new patch.",
+      "parentUuid": "7134c0f0_c3bcd44e",
+      "range": {
+        "startLine": 79,
+        "startChar": 2,
+        "endLine": 81,
+        "endChar": 3
+      },
+      "revId": "8c554f0eec360ec6ee61d9505870140f357b83dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f6084c7e_388ad9f6",
         "filename": "cc/cflag_artifacts.go",
         "patchSetId": 3
@@ -102,6 +192,24 @@
       "revId": "8c554f0eec360ec6ee61d9505870140f357b83dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c97dd161_680510b8",
+        "filename": "cc/cflag_artifacts.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1562318
+      },
+      "writtenOn": "2019-09-19T02:20:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f6084c7e_388ad9f6",
+      "revId": "8c554f0eec360ec6ee61d9505870140f357b83dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
