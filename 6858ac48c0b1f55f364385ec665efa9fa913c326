@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2c94869_01738cc6",
+        "filename": "cc/cflag_artifacts.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-19T03:36:17Z",
+      "side": 1,
+      "message": "BlueprintFile is the full path, you don\u0027t need ModuleDir any more.",
+      "revId": "6858ac48c0b1f55f364385ec665efa9fa913c326",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
