@@ -16,6 +16,24 @@
       "revId": "9d2c036982d79aa99964ed36f86c2250d0c27e7c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c497c269_f062f317",
+        "filename": "sysprop/sysprop_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-09-19T09:29:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9e64beb_3f857601",
+      "revId": "9d2c036982d79aa99964ed36f86c2250d0c27e7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
