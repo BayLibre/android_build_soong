@@ -1,0 +1,192 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0794852e_71987000",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-20T19:58:12Z",
+      "side": 1,
+      "message": "doesn\u0027t",
+      "range": {
+        "startLine": 19,
+        "startChar": 17,
+        "endLine": 19,
+        "endChar": 22
+      },
+      "revId": "c5a47ca9a00a39bd7040a85e79214249aa57c6c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f43d92cb_d074d0d3",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-20T19:58:12Z",
+      "side": 1,
+      "message": "import",
+      "range": {
+        "startLine": 19,
+        "startChar": 55,
+        "endLine": 19,
+        "endChar": 64
+      },
+      "revId": "c5a47ca9a00a39bd7040a85e79214249aa57c6c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb088170_5eb9d0cd",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-20T19:58:12Z",
+      "side": 1,
+      "message": "Put blueprint imports before android",
+      "revId": "c5a47ca9a00a39bd7040a85e79214249aa57c6c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18dbb704_b8bdffd5",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-20T19:58:12Z",
+      "side": 1,
+      "message": "The documentation for this function appears as the module type documentation on go/Android.bp, can you rewrite it as a user facing documentation?",
+      "revId": "c5a47ca9a00a39bd7040a85e79214249aa57c6c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2ef85a8_cf699556",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-20T19:58:12Z",
+      "side": 1,
+      "message": "I think you can drop this, we provide a default empty DepsMutator in ModuleBase now.",
+      "revId": "c5a47ca9a00a39bd7040a85e79214249aa57c6c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89c3d0c3_2d821c84",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-20T19:58:12Z",
+      "side": 1,
+      "message": "It doesn\u0027t seem necessary yet, but it may be useful in the future to make this dependency tag contain data:\n\ntype sdkMemberVesionedDepTag struct {\n    dependencyTag\n    member string\n    version string\n}\n\nThen you have to use a type switch or type assertion to determine if a dependency tag is an sdkMemberVesionedDepTag instead of just \u003d\u003d sdkMemberVesionedDepTag.",
+      "revId": "c5a47ca9a00a39bd7040a85e79214249aa57c6c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c2911ac1_3917784b",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-20T19:58:12Z",
+      "side": 1,
+      "message": "I think this won\u0027t work if java_libs contains java_library modules that have host_supported: true, it would complain about multiple matching modules.\nAlso, this would silently accept java_library_host modules.",
+      "revId": "c5a47ca9a00a39bd7040a85e79214249aa57c6c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "484c311d_1df0eca3",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-20T19:58:12Z",
+      "side": 1,
+      "message": "This is fine, but you could also do something in android/sdk.go like:\n\ntype SdkRefs []SdkRef\n\nfunc (refs SdkRefs) Contains(x SdkRef) bool {\n    for _, r :\u003d range refs {\n        if r \u003d\u003d x {\n            return true\n        }\n    }\n    return false\n}",
+      "range": {
+        "startLine": 164,
+        "startChar": 3,
+        "endLine": 170,
+        "endChar": 4
+      },
+      "revId": "c5a47ca9a00a39bd7040a85e79214249aa57c6c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "500e3afe_6af295f9",
+        "filename": "sdk/sdk_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-20T19:58:12Z",
+      "side": 1,
+      "message": "Can you get these from cc/testing.go?  You might have to split up the function there to only provide what you need.",
+      "revId": "c5a47ca9a00a39bd7040a85e79214249aa57c6c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d44955c4_82ba8d15",
+        "filename": "sdk/sdk_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-20T19:58:12Z",
+      "side": 1,
+      "message": "Add a java_library with host_supported: true",
+      "revId": "c5a47ca9a00a39bd7040a85e79214249aa57c6c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
