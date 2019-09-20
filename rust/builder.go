@@ -28,14 +28,14 @@ var (
 		blueprint.RuleParams{
 			Command: "$rustcCmd " +
 				"-C linker=${config.RustLinker} " +
-				"-C link-args=\"${config.RustLinkerArgs} ${linkFlags}\" " +
+				"-C link-args=\"${crtBegin} ${config.RustLinkerArgs} ${linkFlags} ${crtEnd}\" " +
 				"-o $out $in ${libFlags} $rustcFlags " +
 				"&& $rustcCmd --emit=dep-info -o $out.d $in ${libFlags} $rustcFlags",
 			CommandDeps: []string{"$rustcCmd"},
 			Depfile:     "$out.d",
 			Deps:        blueprint.DepsGCC, // Rustc deps-info writes out make compatible dep files: https://github.com/rust-lang/rust/issues/7633
 		},
-		"rustcFlags", "linkFlags", "libFlags")
+		"rustcFlags", "linkFlags", "libFlags", "crtBegin", "crtEnd")
 )
 
 func init() {
@@ -45,26 +45,26 @@ func init() {
 func TransformSrcToBinary(ctx android.ModuleContext, mainSrc android.Path, deps PathDeps, flags Flags, outputFile android.WritablePath, includeDirs []string) {
 	targetTriple := ctx.(ModuleContext).toolchain().RustTriple()
 
-	transformSrctoCrate(ctx, mainSrc, deps.RLibs, deps.DyLibs, deps.ProcMacros, deps.StaticLibs, deps.SharedLibs, flags, outputFile, "bin", includeDirs, targetTriple)
+	transformSrctoCrate(ctx, mainSrc, deps.RLibs, deps.DyLibs, deps.ProcMacros, deps.StaticLibs, deps.SharedLibs, deps.CrtBegin, deps.CrtEnd, flags, outputFile, "bin", includeDirs, targetTriple)
 }
 
 func TransformSrctoRlib(ctx android.ModuleContext, mainSrc android.Path, deps PathDeps, flags Flags, outputFile android.WritablePath, includeDirs []string) {
 	targetTriple := ctx.(ModuleContext).toolchain().RustTriple()
 
-	transformSrctoCrate(ctx, mainSrc, deps.RLibs, deps.DyLibs, deps.ProcMacros, deps.StaticLibs, deps.SharedLibs, flags, outputFile, "rlib", includeDirs, targetTriple)
+	transformSrctoCrate(ctx, mainSrc, deps.RLibs, deps.DyLibs, deps.ProcMacros, deps.StaticLibs, deps.SharedLibs, deps.CrtBegin, deps.CrtEnd, flags, outputFile, "rlib", includeDirs, targetTriple)
 }
 
 func TransformSrctoDylib(ctx android.ModuleContext, mainSrc android.Path, deps PathDeps, flags Flags, outputFile android.WritablePath, includeDirs []string) {
 	targetTriple := ctx.(ModuleContext).toolchain().RustTriple()
 
-	transformSrctoCrate(ctx, mainSrc, deps.RLibs, deps.DyLibs, deps.ProcMacros, deps.StaticLibs, deps.SharedLibs, flags, outputFile, "dylib", includeDirs, targetTriple)
+	transformSrctoCrate(ctx, mainSrc, deps.RLibs, deps.DyLibs, deps.ProcMacros, deps.StaticLibs, deps.SharedLibs, deps.CrtBegin, deps.CrtEnd, flags, outputFile, "dylib", includeDirs, targetTriple)
 }
 
 func TransformSrctoProcMacro(ctx android.ModuleContext, mainSrc android.Path, deps PathDeps, flags Flags, outputFile android.WritablePath, includeDirs []string) {
 	// Proc macros are compiler plugins, and thus should target the host compiler
 	targetTriple := ""
 
-	transformSrctoCrate(ctx, mainSrc, deps.RLibs, deps.DyLibs, deps.ProcMacros, deps.StaticLibs, deps.SharedLibs, flags, outputFile, "proc-macro", includeDirs, targetTriple)
+	transformSrctoCrate(ctx, mainSrc, deps.RLibs, deps.DyLibs, deps.ProcMacros, deps.StaticLibs, deps.SharedLibs, deps.CrtBegin, deps.CrtEnd, flags, outputFile, "proc-macro", includeDirs, targetTriple)
 }
 
 func rustLibsToPaths(libs RustLibraries) android.Paths {
@@ -76,23 +76,27 @@ func rustLibsToPaths(libs RustLibraries) android.Paths {
 }
 
 func transformSrctoCrate(ctx android.ModuleContext, main android.Path,
-	rlibs, dylibs, proc_macros RustLibraries, static_libs, shared_libs android.Paths, flags Flags, outputFile android.WritablePath, crate_type string, includeDirs []string, targetTriple string) {
+	rlibs, dylibs, proc_macros RustLibraries, static_libs, shared_libs android.Paths, crtBegin, crtEnd android.OptionalPath, flags Flags, outputFile android.WritablePath, crate_type string, includeDirs []string, targetTriple string) {
 
 	var inputs android.Paths
 	var deps android.Paths
-	var libFlags, rustcFlags []string
+	var libFlags, rustcFlags, linkFlags []string
 	crate_name := ctx.(ModuleContext).CrateName()
 
 	inputs = append(inputs, main)
 
 	// Collect rustc flags
-	rustcFlags = append(rustcFlags, flags.GlobalFlags...)
+	rustcFlags = append(rustcFlags, flags.GlobalRustFlags...)
 	rustcFlags = append(rustcFlags, flags.RustFlags...)
 	rustcFlags = append(rustcFlags, "--crate-type="+crate_type)
 	rustcFlags = append(rustcFlags, "--crate-name="+crate_name)
 	if targetTriple != "" {
 		rustcFlags = append(rustcFlags, "--target="+targetTriple)
+		linkFlags = append(linkFlags, "-target "+targetTriple)
 	}
+	// Collect linker flags
+	linkFlags = append(linkFlags, flags.GlobalLinkFlags...)
+	linkFlags = append(linkFlags, flags.LinkFlags...)
 
 	// Collect library/crate flags
 	for _, lib := range rlibs {
@@ -115,6 +119,9 @@ func transformSrctoCrate(ctx android.ModuleContext, main android.Path,
 	deps = append(deps, rustLibsToPaths(proc_macros)...)
 	deps = append(deps, static_libs...)
 	deps = append(deps, shared_libs...)
+	if crtBegin.Valid() {
+		deps = append(deps, crtBegin.Path(), crtEnd.Path())
+	}
 
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        rustc,
@@ -124,8 +131,10 @@ func transformSrctoCrate(ctx android.ModuleContext, main android.Path,
 		Implicits:   deps,
 		Args: map[string]string{
 			"rustcFlags": strings.Join(rustcFlags, " "),
-			"linkFlags":  strings.Join(flags.LinkFlags, " "),
+			"linkFlags":  strings.Join(linkFlags, " "),
 			"libFlags":   strings.Join(libFlags, " "),
+			"crtBegin":   crtBegin.String(),
+			"crtEnd":     crtEnd.String(),
 		},
 	})
 
