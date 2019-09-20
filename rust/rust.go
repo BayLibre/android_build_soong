@@ -60,11 +60,12 @@ func init() {
 }
 
 type Flags struct {
-	GlobalFlags   []string      // Flags that apply globally
-	RustFlags     []string      // Flags that apply to rust
-	LinkFlags     []string      // Flags that apply to linker
-	RustFlagsDeps android.Paths // Files depended on by compiler flags
-	Toolchain     config.Toolchain
+	GlobalRustFlags []string      // Flags that apply globally to rust
+	GlobalLinkFlags []string      // Flags that apply globally to linker
+	RustFlags       []string      // Flags that apply to rust
+	LinkFlags       []string      // Flags that apply to linker
+	RustFlagsDeps   android.Paths // Files depended on by compiler flags
+	Toolchain       config.Toolchain
 }
 
 type BaseProperties struct {
@@ -109,6 +110,9 @@ type PathDeps struct {
 	linkDirs   []string
 	depFlags   []string
 	//ReexportedDeps android.Paths
+
+	CrtBegin android.OptionalPath
+	CrtEnd   android.OptionalPath
 }
 
 type RustLibraries []RustLibrary
@@ -427,6 +431,10 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 				directSharedLibDeps = append(directSharedLibDeps, ccDep)
 				mod.Properties.AndroidMkSharedLibs = append(mod.Properties.AndroidMkSharedLibs, depName)
 				exportDep = true
+			case cc.CrtBeginDepTag():
+				depPaths.CrtBegin = linkFile
+			case cc.CrtEndDepTag():
+				depPaths.CrtEnd = linkFile
 			}
 
 			// Make sure these dependencies are propagated
@@ -509,6 +517,14 @@ func (mod *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 	actx.AddVariationDependencies(append(ccDepVariations, blueprint.Variation{Mutator: "link", Variation: "shared"}), cc.SharedDepTag(), deps.SharedLibs...)
 	actx.AddVariationDependencies(append(ccDepVariations, blueprint.Variation{Mutator: "link", Variation: "static"}), cc.StaticDepTag(), deps.StaticLibs...)
 	actx.AddDependency(mod, procMacroDepTag, deps.ProcMacros...)
+
+	if deps.CrtBegin != "" {
+		actx.AddVariationDependencies(ccDepVariations, cc.CrtBeginDepTag(), deps.CrtBegin)
+	}
+	if deps.CrtEnd != "" {
+		actx.AddVariationDependencies(ccDepVariations, cc.CrtEndDepTag(), deps.CrtEnd)
+	}
+
 }
 
 func (mod *Module) Name() string {
