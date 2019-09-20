@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61307bd8_6006528c",
+        "filename": "cc/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2019-09-20T14:03:56Z",
+      "side": 1,
+      "message": "Move the -Werror\u003d down into this block, to ensure that it isn\u0027t suppressed by distracted developers. :)",
+      "revId": "ba8dd41d671e5eed8c9fa79a16f20a7fc9fee9e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
