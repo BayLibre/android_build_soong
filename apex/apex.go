@@ -149,7 +149,6 @@ var (
 var (
 	whitelistNoApex = map[string][]string{
 		"apex_test_build_features":       []string{"libbinder"},
-		"com.android.neuralnetworks":     []string{"libbinder"},
 		"com.android.media":              []string{"libbinder"},
 		"com.android.media.swcodec":      []string{"libbinder"},
 		"test_com.android.media.swcodec": []string{"libbinder"},
