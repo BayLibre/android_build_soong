@@ -289,6 +289,24 @@
     },
     {
       "key": {
+        "uuid": "3672d345_bc00c494",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-09-21T23:21:53Z",
+      "side": 1,
+      "message": "Thanks. I didn\u0027t notice that even I just touched findMatchingVariant in the other change.\n\nDone.",
+      "parentUuid": "8e419327_a2e3a807",
+      "revId": "c5a47ca9a00a39bd7040a85e79214249aa57c6c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "484c311d_1df0eca3",
         "filename": "sdk/sdk.go",
         "patchSetId": 4
