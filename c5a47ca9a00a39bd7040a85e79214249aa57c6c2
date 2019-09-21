@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "0c7d1940_548c82d6",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-09-21T09:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f43d92cb_d074d0d3",
+      "range": {
+        "startLine": 19,
+        "startChar": 55,
+        "endLine": 19,
+        "endChar": 64
+      },
+      "revId": "c5a47ca9a00a39bd7040a85e79214249aa57c6c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1547e105_5f772320",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-09-21T09:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0794852e_71987000",
+      "range": {
+        "startLine": 19,
+        "startChar": 17,
+        "endLine": 19,
+        "endChar": 22
+      },
+      "revId": "c5a47ca9a00a39bd7040a85e79214249aa57c6c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb088170_5eb9d0cd",
         "filename": "sdk/sdk.go",
         "patchSetId": 4
@@ -62,6 +110,24 @@
       "revId": "c5a47ca9a00a39bd7040a85e79214249aa57c6c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46f4cc8f_15c5cc79",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-09-21T09:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb088170_5eb9d0cd",
+      "revId": "c5a47ca9a00a39bd7040a85e79214249aa57c6c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "711785c7_03882390",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-09-21T09:30:49Z",
+      "side": 1,
+      "message": "Good to know that. Done.",
+      "parentUuid": "18dbb704_b8bdffd5",
+      "revId": "c5a47ca9a00a39bd7040a85e79214249aa57c6c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2ef85a8_cf699556",
         "filename": "sdk/sdk.go",
         "patchSetId": 4
@@ -99,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "fdad3e0b_24d32908",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-09-21T09:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2ef85a8_cf699556",
+      "revId": "c5a47ca9a00a39bd7040a85e79214249aa57c6c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "89c3d0c3_2d821c84",
         "filename": "sdk/sdk.go",
         "patchSetId": 4
@@ -110,6 +212,24 @@
       "writtenOn": "2019-09-20T19:58:12Z",
       "side": 1,
       "message": "It doesn\u0027t seem necessary yet, but it may be useful in the future to make this dependency tag contain data:\n\ntype sdkMemberVesionedDepTag struct {\n    dependencyTag\n    member string\n    version string\n}\n\nThen you have to use a type switch or type assertion to determine if a dependency tag is an sdkMemberVesionedDepTag instead of just \u003d\u003d sdkMemberVesionedDepTag.",
+      "revId": "c5a47ca9a00a39bd7040a85e79214249aa57c6c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea3b3bfe_5ce88df4",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-09-21T09:30:49Z",
+      "side": 1,
+      "message": "Good idea. Done.",
+      "parentUuid": "89c3d0c3_2d821c84",
       "revId": "c5a47ca9a00a39bd7040a85e79214249aa57c6c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -133,6 +253,24 @@
     },
     {
       "key": {
+        "uuid": "e63cc380_25d10440",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-09-21T09:30:49Z",
+      "side": 1,
+      "message": "I don\u0027t understand why it would complain about multiple  matching modules. When I added host_supported: true to the java libraries in sdk_test.go, it worked.\n\njava_library_host is not accepted as the containing APEX (which is HostAndDeviceSupported) will fail to find the device variant of the lib.\n\n    sdk_test.go:114: Android.bp:47:3: dependency \"myjavalib\" of \"myapex2\" missing variant:\n          arch:android_common\n        available variants:\n          arch:linux_glibc_common\n    sdk_test.go:114: Android.bp:39:3: dependency \"myjavalib\" of \"myapex\" missing variant:\n          arch:android_common\n        available variants:\n          arch:linux_glibc_common",
+      "parentUuid": "c2911ac1_3917784b",
+      "revId": "c5a47ca9a00a39bd7040a85e79214249aa57c6c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "484c311d_1df0eca3",
         "filename": "sdk/sdk.go",
         "patchSetId": 4
@@ -144,6 +282,30 @@
       "writtenOn": "2019-09-20T19:58:12Z",
       "side": 1,
       "message": "This is fine, but you could also do something in android/sdk.go like:\n\ntype SdkRefs []SdkRef\n\nfunc (refs SdkRefs) Contains(x SdkRef) bool {\n    for _, r :\u003d range refs {\n        if r \u003d\u003d x {\n            return true\n        }\n    }\n    return false\n}",
+      "range": {
+        "startLine": 164,
+        "startChar": 3,
+        "endLine": 170,
+        "endChar": 4
+      },
+      "revId": "c5a47ca9a00a39bd7040a85e79214249aa57c6c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9e5e5ceb_123c4d08",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-09-21T09:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "484c311d_1df0eca3",
       "range": {
         "startLine": 164,
         "startChar": 3,
@@ -173,6 +335,24 @@
     },
     {
       "key": {
+        "uuid": "e3d80fd9_9d88d79c",
+        "filename": "sdk/sdk_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-09-21T09:30:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "500e3afe_6af295f9",
+      "revId": "c5a47ca9a00a39bd7040a85e79214249aa57c6c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d44955c4_82ba8d15",
         "filename": "sdk/sdk_test.go",
         "patchSetId": 4
@@ -187,6 +367,24 @@
       "revId": "c5a47ca9a00a39bd7040a85e79214249aa57c6c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3af31564_141489a3",
+        "filename": "sdk/sdk_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-09-21T09:30:49Z",
+      "side": 1,
+      "message": "Done. Instead of adding a new host_supported lib, I\u0027ve just added the property to the existing ones.",
+      "parentUuid": "d44955c4_82ba8d15",
+      "revId": "c5a47ca9a00a39bd7040a85e79214249aa57c6c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
