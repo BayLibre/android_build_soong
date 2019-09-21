@@ -271,6 +271,24 @@
     },
     {
       "key": {
+        "uuid": "8e419327_a2e3a807",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-21T18:09:08Z",
+      "side": 1,
+      "message": "AddDependency has a fallback, if there is only one variant of a module it will take it regardless of the variations of the depending module.  The failure you showed is because you have an apex and an sdk module depending on myjavalib, but if you only had an sdk module depending on a host library it would probably accept it.  Can you use mctx.AddVariationDependencies(nil, ...), which will only accept dependencies with matching variations?",
+      "parentUuid": "e63cc380_25d10440",
+      "revId": "c5a47ca9a00a39bd7040a85e79214249aa57c6c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "484c311d_1df0eca3",
         "filename": "sdk/sdk.go",
         "patchSetId": 4
