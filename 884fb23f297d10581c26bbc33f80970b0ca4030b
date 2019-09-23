@@ -1,0 +1,152 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7f71e84_f7337f12",
+        "filename": "cc/cflag_artifacts.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-23T18:03:15Z",
+      "side": 1,
+      "message": "this can be const instead of var",
+      "revId": "884fb23f297d10581c26bbc33f80970b0ca4030b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b6acc3f_c709275a",
+        "filename": "cc/cflag_artifacts.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-23T18:03:15Z",
+      "side": 1,
+      "message": "Prefer to keep paths stored as android.Paths (or android.WritablePaths) as long as possible, and only convert to string when passing to a function that needs a string.",
+      "range": {
+        "startLine": 35,
+        "startChar": 14,
+        "endLine": 35,
+        "endChar": 22
+      },
+      "revId": "884fb23f297d10581c26bbc33f80970b0ca4030b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8ea91c4_c527f873",
+        "filename": "cc/cflag_artifacts.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-23T18:03:15Z",
+      "side": 1,
+      "message": "wrap this at 100 characters",
+      "revId": "884fb23f297d10581c26bbc33f80970b0ca4030b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "384154f1_7e9a5834",
+        "filename": "cc/cflag_artifacts.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-23T18:03:15Z",
+      "side": 1,
+      "message": "there are various shardPaths and shardTests (which operates on strings) functions spread around the tree, they could be consolidated into android/util.go and then reused here.",
+      "revId": "884fb23f297d10581c26bbc33f80970b0ca4030b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e1cf748_3a1503f0",
+        "filename": "cc/cflag_artifacts.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-23T18:03:15Z",
+      "side": 1,
+      "message": "You shouldn\u0027t need regular expressions here, but I\u0027m having a hard time following the logic to suggest a replacement.  It appears to be looking for module_cflags.* files in interOutputs, stripping off just the filename, and then reconstructing the original paths?  Why match at all, since you know that interOutputs only has module_cflags.* files, and you know you want to concatenate all of them?\n\nIf you want just the cflags/module_cflags.txt.1 part and you make interOutputs and android.Paths you can use s.interOutputs[1].Rel(), and if you want just the filename  you can use s.interOutputs[1].Base().",
+      "revId": "884fb23f297d10581c26bbc33f80970b0ca4030b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ef5b8e2_788aa245",
+        "filename": "cc/cflag_artifacts.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-23T18:03:15Z",
+      "side": 1,
+      "message": "This appears to be trying to dedup s.interOutputs, but why would there be duplicates?\n\nIf you really need to dedup it, use android.FirstUniquePaths()",
+      "revId": "884fb23f297d10581c26bbc33f80970b0ca4030b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94a560fd_915daddd",
+        "filename": "cc/cflag_artifacts.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-23T18:03:15Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem to be true, and deleting the output files of another rule would cause the build system to rebuild the missing files every time.",
+      "revId": "884fb23f297d10581c26bbc33f80970b0ca4030b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba0b47c1_a5154a9c",
+        "filename": "cc/cflag_artifacts.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-23T18:03:15Z",
+      "side": 1,
+      "message": "How about:\n(%s)",
+      "range": {
+        "startLine": 165,
+        "startChar": 32,
+        "endLine": 165,
+        "endChar": 35
+      },
+      "revId": "884fb23f297d10581c26bbc33f80970b0ca4030b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
