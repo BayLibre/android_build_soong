@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4fd6be89_54f117d1",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-09-23T02:11:51Z",
+      "side": 1,
+      "message": "Is this safe to be parallel? memberInterVersionMutator calls AddReverseDependency(). If two modules happen to call this to the same target module, race might corrupt while appending context\u0027s internal array.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 76
+      },
+      "revId": "d1063c15869080e5f7c07852a512aaa12905fb11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
