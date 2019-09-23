@@ -22,6 +22,30 @@
       "revId": "d1063c15869080e5f7c07852a512aaa12905fb11",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8e483f9_1074c727",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-09-23T04:17:49Z",
+      "side": 1,
+      "message": "We are already doing the same in cc/prebuilt.go. I think it\u0027s safe because the dependency graph is actually updated in one pass after the mutator run.",
+      "parentUuid": "4fd6be89_54f117d1",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 76
+      },
+      "revId": "d1063c15869080e5f7c07852a512aaa12905fb11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
