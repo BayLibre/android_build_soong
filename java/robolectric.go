@@ -123,25 +123,6 @@ func (r *robolectricTest) GenerateAndroidBuildActions(ctx android.ModuleContext)
 	}
 }
 
-func shardTests(paths []string, shards int) [][]string {
-	if shards > len(paths) {
-		shards = len(paths)
-	}
-	if shards == 0 {
-		return nil
-	}
-	ret := make([][]string, 0, shards)
-	shardSize := (len(paths) + shards - 1) / shards
-	for len(paths) > shardSize {
-		ret = append(ret, paths[0:shardSize])
-		paths = paths[shardSize:]
-	}
-	if len(paths) > 0 {
-		ret = append(ret, paths)
-	}
-	return ret
-}
-
 func generateRoboTestConfig(ctx android.ModuleContext, outputFile android.WritablePath, instrumentedApp *AndroidApp) {
 	manifest := instrumentedApp.mergedManifestFile
 	resourceApk := instrumentedApp.outputFile
@@ -184,7 +165,9 @@ func (r *robolectricTest) AndroidMk() android.AndroidMkData {
 		android.WriteAndroidMkData(w, data)
 
 		if s := r.robolectricProperties.Test_options.Shards; s != nil && *s > 1 {
-			shards := shardTests(r.tests, int(*s))
+			numShards := int(*s)
+			shardSize := (len(r.tests) + numShards - 1) / numShards
+			shards := android.ShardStrings(r.tests, shardSize)
 			for i, shard := range shards {
 				r.writeTestRunner(w, name, "Run"+name+strconv.Itoa(i), shard)
 			}
