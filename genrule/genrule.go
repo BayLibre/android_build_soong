@@ -17,6 +17,7 @@ package genrule
 import (
 	"fmt"
 	"io"
+	"strconv"
 	"strings"
 
 	"github.com/google/blueprint"
@@ -112,9 +113,9 @@ type Module struct {
 
 	taskGenerator taskFunc
 
-	deps       android.Paths
-	rule       blueprint.Rule
-	rawCommand string
+	deps        android.Paths
+	rule        blueprint.Rule
+	rawCommands []string
 
 	exportedIncludeDirs android.Paths
 
@@ -124,13 +125,15 @@ type Module struct {
 	subName string
 }
 
-type taskFunc func(ctx android.ModuleContext, rawCommand string, srcFiles android.Paths) generateTask
+type taskFunc func(ctx android.ModuleContext, rawCommand string, srcFiles android.Paths) []generateTask
 
 type generateTask struct {
 	in          android.Paths
 	out         android.WritablePaths
 	sandboxOuts []string
 	cmd         string
+	shard       int
+	shards      int
 }
 
 func (g *Module) GeneratedSourceFiles() android.Paths {
@@ -277,116 +280,139 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		}
 	}
 
-	task := g.taskGenerator(ctx, String(g.properties.Cmd), srcFiles)
-
-	for _, out := range task.out {
-		addLocationLabel(out.Rel(), []string{filepath.Join("__SBOX_OUT_DIR__", out.Rel())})
-	}
-
-	referencedDepfile := false
-
-	rawCommand, err := android.ExpandNinjaEscaped(task.cmd, func(name string) (string, bool, error) {
-		// report the error directly without returning an error to android.Expand to catch multiple errors in a
-		// single run
-		reportError := func(fmt string, args ...interface{}) (string, bool, error) {
-			ctx.PropertyErrorf("cmd", fmt, args...)
-			return "SOONG_ERROR", false, nil
+	for _, task := range g.taskGenerator(ctx, String(g.properties.Cmd), srcFiles) {
+		for _, out := range task.out {
+			addLocationLabel(out.Rel(), []string{filepath.Join("__SBOX_OUT_DIR__", out.Rel())})
 		}
 
-		switch name {
-		case "location":
-			if len(g.properties.Tools) == 0 && len(g.properties.Tool_files) == 0 {
-				return reportError("at least one `tools` or `tool_files` is required if $(location) is used")
+		referencedDepfile := false
+
+		rawCommand, err := android.ExpandNinjaEscaped(task.cmd, func(name string) (string, bool, error) {
+			// report the error directly without returning an error to android.Expand to catch multiple errors in a
+			// single run
+			reportError := func(fmt string, args ...interface{}) (string, bool, error) {
+				ctx.PropertyErrorf("cmd", fmt, args...)
+				return "SOONG_ERROR", false, nil
 			}
-			paths := locationLabels[firstLabel]
-			if len(paths) == 0 {
-				return reportError("default label %q has no files", firstLabel)
-			} else if len(paths) > 1 {
-				return reportError("default label %q has multiple files, use $(locations %s) to reference it",
-					firstLabel, firstLabel)
-			}
-			return locationLabels[firstLabel][0], false, nil
-		case "in":
-			return "${in}", true, nil
-		case "out":
-			return "__SBOX_OUT_FILES__", false, nil
-		case "depfile":
-			referencedDepfile = true
-			if !Bool(g.properties.Depfile) {
-				return reportError("$(depfile) used without depfile property")
-			}
-			return "__SBOX_DEPFILE__", false, nil
-		case "genDir":
-			return "__SBOX_OUT_DIR__", false, nil
-		default:
-			if strings.HasPrefix(name, "location ") {
-				label := strings.TrimSpace(strings.TrimPrefix(name, "location "))
-				if paths, ok := locationLabels[label]; ok {
-					if len(paths) == 0 {
-						return reportError("label %q has no files", label)
-					} else if len(paths) > 1 {
-						return reportError("label %q has multiple files, use $(locations %s) to reference it",
-							label, label)
-					}
-					return paths[0], false, nil
-				} else {
-					return reportError("unknown location label %q", label)
+
+			switch name {
+			case "location":
+				if len(g.properties.Tools) == 0 && len(g.properties.Tool_files) == 0 {
+					return reportError("at least one `tools` or `tool_files` is required if $(location) is used")
 				}
-			} else if strings.HasPrefix(name, "locations ") {
-				label := strings.TrimSpace(strings.TrimPrefix(name, "locations "))
-				if paths, ok := locationLabels[label]; ok {
-					if len(paths) == 0 {
-						return reportError("label %q has no files", label)
-					}
-					return strings.Join(paths, " "), false, nil
-				} else {
-					return reportError("unknown locations label %q", label)
+				paths := locationLabels[firstLabel]
+				if len(paths) == 0 {
+					return reportError("default label %q has no files", firstLabel)
+				} else if len(paths) > 1 {
+					return reportError("default label %q has multiple files, use $(locations %s) to reference it",
+						firstLabel, firstLabel)
 				}
-			} else {
-				return reportError("unknown variable '$(%s)'", name)
+				return locationLabels[firstLabel][0], false, nil
+			case "in":
+				return "${in}", true, nil
+			case "out":
+				return "__SBOX_OUT_FILES__", false, nil
+			case "depfile":
+				referencedDepfile = true
+				if !Bool(g.properties.Depfile) {
+					return reportError("$(depfile) used without depfile property")
+				}
+				return "__SBOX_DEPFILE__", false, nil
+			case "genDir":
+				return "__SBOX_OUT_DIR__", false, nil
+			default:
+				if strings.HasPrefix(name, "location ") {
+					label := strings.TrimSpace(strings.TrimPrefix(name, "location "))
+					if paths, ok := locationLabels[label]; ok {
+						if len(paths) == 0 {
+							return reportError("label %q has no files", label)
+						} else if len(paths) > 1 {
+							return reportError("label %q has multiple files, use $(locations %s) to reference it",
+								label, label)
+						}
+						return paths[0], false, nil
+					} else {
+						return reportError("unknown location label %q", label)
+					}
+				} else if strings.HasPrefix(name, "locations ") {
+					label := strings.TrimSpace(strings.TrimPrefix(name, "locations "))
+					if paths, ok := locationLabels[label]; ok {
+						if len(paths) == 0 {
+							return reportError("label %q has no files", label)
+						}
+						return strings.Join(paths, " "), false, nil
+					} else {
+						return reportError("unknown locations label %q", label)
+					}
+				} else {
+					return reportError("unknown variable '$(%s)'", name)
+				}
 			}
+		})
+
+		if err != nil {
+			ctx.PropertyErrorf("cmd", "%s", err.Error())
+			return
 		}
-	})
 
-	if err != nil {
-		ctx.PropertyErrorf("cmd", "%s", err.Error())
-		return
+		if Bool(g.properties.Depfile) && !referencedDepfile {
+			ctx.PropertyErrorf("cmd", "specified depfile=true but did not include a reference to '${depfile}' in cmd")
+			return
+		}
+
+		// tell the sbox command which directory to use as its sandbox root
+		buildDir := android.PathForOutput(ctx).String()
+		sandboxPath := shared.TempDirForOutDir(buildDir)
+
+		// recall that Sprintf replaces percent sign expressions, whereas dollar signs expressions remain as written,
+		// to be replaced later by ninja_strings.go
+		depfilePlaceholder := ""
+		if Bool(g.properties.Depfile) {
+			depfilePlaceholder = "$depfileArgs"
+		}
+
+		genDir := android.PathForModuleGen(ctx)
+		// Escape the command for the shell
+		rawCommand = "'" + strings.Replace(rawCommand, "'", `'\''`, -1) + "'"
+		g.rawCommands = append(g.rawCommands, rawCommand)
+		sandboxCommand := fmt.Sprintf("$sboxCmd --sandbox-path %s --output-root %s -c %s %s $allouts",
+			sandboxPath, genDir, rawCommand, depfilePlaceholder)
+
+		ruleParams := blueprint.RuleParams{
+			Command:     sandboxCommand,
+			CommandDeps: []string{"$sboxCmd"},
+		}
+		args := []string{"allouts"}
+		if Bool(g.properties.Depfile) {
+			ruleParams.Deps = blueprint.DepsGCC
+			args = append(args, "depfileArgs")
+		}
+		name := "generator"
+		if task.shards > 0 {
+			name += strconv.Itoa(task.shard)
+		}
+		g.rule = ctx.Rule(pctx, name, ruleParams, args...)
+
+		g.generateSourceFile(ctx, task)
 	}
 
-	if Bool(g.properties.Depfile) && !referencedDepfile {
-		ctx.PropertyErrorf("cmd", "specified depfile=true but did not include a reference to '${depfile}' in cmd")
+	// For <= 6 outputs, just embed those directly in the users. Right now, that covers >90% of
+	// the genrules on AOSP. That will make things simpler to look at the graph in the common
+	// case. For larger sets of outputs, inject a phony target in between to limit ninja file
+	// growth.
+	if len(g.outputFiles) <= 6 {
+		g.outputDeps = g.outputFiles
+	} else {
+		phonyFile := android.PathForModuleGen(ctx, "genrule-phony")
+
+		ctx.Build(pctx, android.BuildParams{
+			Rule:   blueprint.Phony,
+			Output: phonyFile,
+			Inputs: g.outputFiles,
+		})
+
+		g.outputDeps = android.Paths{phonyFile}
 	}
-
-	// tell the sbox command which directory to use as its sandbox root
-	buildDir := android.PathForOutput(ctx).String()
-	sandboxPath := shared.TempDirForOutDir(buildDir)
-
-	// recall that Sprintf replaces percent sign expressions, whereas dollar signs expressions remain as written,
-	// to be replaced later by ninja_strings.go
-	depfilePlaceholder := ""
-	if Bool(g.properties.Depfile) {
-		depfilePlaceholder = "$depfileArgs"
-	}
-
-	genDir := android.PathForModuleGen(ctx)
-	// Escape the command for the shell
-	rawCommand = "'" + strings.Replace(rawCommand, "'", `'\''`, -1) + "'"
-	g.rawCommand = rawCommand
-	sandboxCommand := fmt.Sprintf("$sboxCmd --sandbox-path %s --output-root %s -c %s %s $allouts",
-		sandboxPath, genDir, rawCommand, depfilePlaceholder)
-
-	ruleParams := blueprint.RuleParams{
-		Command:     sandboxCommand,
-		CommandDeps: []string{"$sboxCmd"},
-	}
-	args := []string{"allouts"}
-	if Bool(g.properties.Depfile) {
-		ruleParams.Deps = blueprint.DepsGCC
-		args = append(args, "depfileArgs")
-	}
-	g.rule = ctx.Rule(pctx, "generator", ruleParams, args...)
-
-	g.generateSourceFile(ctx, task)
 
 }
 
@@ -405,9 +431,13 @@ func (g *Module) generateSourceFile(ctx android.ModuleContext, task generateTask
 		depFile = android.PathForModuleGen(ctx, task.out[0].Rel()+".d")
 	}
 
+	if task.shards > 0 {
+		desc += " " + strconv.Itoa(task.shard)
+	}
+
 	params := android.BuildParams{
 		Rule:            g.rule,
-		Description:     "generate",
+		Description:     desc,
 		Output:          task.out[0],
 		ImplicitOutputs: task.out[1:],
 		Inputs:          task.in,
@@ -425,24 +455,6 @@ func (g *Module) generateSourceFile(ctx android.ModuleContext, task generateTask
 
 	for _, outputFile := range task.out {
 		g.outputFiles = append(g.outputFiles, outputFile)
-	}
-
-	// For <= 6 outputs, just embed those directly in the users. Right now, that covers >90% of
-	// the genrules on AOSP. That will make things simpler to look at the graph in the common
-	// case. For larger sets of outputs, inject a phony target in between to limit ninja file
-	// growth.
-	if len(task.out) <= 6 {
-		g.outputDeps = g.outputFiles
-	} else {
-		phonyFile := android.PathForModuleGen(ctx, "genrule-phony")
-
-		ctx.Build(pctx, android.BuildParams{
-			Rule:   blueprint.Phony,
-			Output: phonyFile,
-			Inputs: g.outputFiles,
-		})
-
-		g.outputDeps = android.Paths{phonyFile}
 	}
 }
 
@@ -465,7 +477,7 @@ func (g *Module) AndroidMk() android.AndroidMkData {
 		SubName:    g.subName,
 		Extra: []android.AndroidMkExtraFunc{
 			func(w io.Writer, outputFile android.Path) {
-				fmt.Fprintln(w, "LOCAL_ADDITIONAL_DEPENDENCIES :=", strings.Join(g.outputFiles.Strings(), " "))
+				fmt.Fprintln(w, "LOCAL_ADDITIONAL_DEPENDENCIES :=", strings.Join(g.outputDeps.Strings(), " "))
 			},
 		},
 		Custom: func(w io.Writer, name, prefix, moduleDir string, data android.AndroidMkData) {
@@ -502,44 +514,59 @@ func pathToSandboxOut(path android.Path, genDir android.Path) string {
 func NewGenSrcs() *Module {
 	properties := &genSrcsProperties{}
 
-	taskGenerator := func(ctx android.ModuleContext, rawCommand string, srcFiles android.Paths) generateTask {
-		commands := []string{}
-		outFiles := android.WritablePaths{}
+	taskGenerator := func(ctx android.ModuleContext, rawCommand string, srcFiles android.Paths) []generateTask {
 		genDir := android.PathForModuleGen(ctx)
-		sandboxOuts := []string{}
-		for _, in := range srcFiles {
-			outFile := android.GenPathWithExt(ctx, "", in, String(properties.Output_extension))
-			outFiles = append(outFiles, outFile)
+		shardSize := defaultShardSize
+		if s := properties.Shard_size; s != nil {
+			shardSize = int(*s)
+		}
 
-			sandboxOutfile := pathToSandboxOut(outFile, genDir)
-			sandboxOuts = append(sandboxOuts, sandboxOutfile)
+		shards := android.ShardPaths(srcFiles, shardSize)
+		var generateTasks []generateTask
 
-			command, err := android.Expand(rawCommand, func(name string) (string, error) {
-				switch name {
-				case "in":
-					return in.String(), nil
-				case "out":
-					return sandboxOutfile, nil
-				default:
-					return "$(" + name + ")", nil
+		for i, shard := range shards {
+			var commands []string
+			var outFiles android.WritablePaths
+			var sandboxOuts []string
+
+			for _, in := range shard {
+				outFile := android.GenPathWithExt(ctx, "", in, String(properties.Output_extension))
+				outFiles = append(outFiles, outFile)
+
+				sandboxOutfile := pathToSandboxOut(outFile, genDir)
+				sandboxOuts = append(sandboxOuts, sandboxOutfile)
+
+				command, err := android.Expand(rawCommand, func(name string) (string, error) {
+					switch name {
+					case "in":
+						return in.String(), nil
+					case "out":
+						return sandboxOutfile, nil
+					default:
+						return "$(" + name + ")", nil
+					}
+				})
+				if err != nil {
+					ctx.PropertyErrorf("cmd", err.Error())
 				}
-			})
-			if err != nil {
-				ctx.PropertyErrorf("cmd", err.Error())
+
+				// escape the command in case for example it contains '#', an odd number of '"', etc
+				command = fmt.Sprintf("bash -c %v", proptools.ShellEscape(command))
+				commands = append(commands, command)
 			}
+			fullCommand := strings.Join(commands, " && ")
 
-			// escape the command in case for example it contains '#', an odd number of '"', etc
-			command = fmt.Sprintf("bash -c %v", proptools.ShellEscape(command))
-			commands = append(commands, command)
+			generateTasks = append(generateTasks, generateTask{
+				in:          shard,
+				out:         outFiles,
+				sandboxOuts: sandboxOuts,
+				cmd:         fullCommand,
+				shard:       i,
+				shards:      len(shards),
+			})
 		}
-		fullCommand := strings.Join(commands, " && ")
 
-		return generateTask{
-			in:          srcFiles,
-			out:         outFiles,
-			sandboxOuts: sandboxOuts,
-			cmd:         fullCommand,
-		}
+		return generateTasks
 	}
 
 	return generatorFactory(taskGenerator, properties)
@@ -554,12 +581,17 @@ func GenSrcsFactory() android.Module {
 type genSrcsProperties struct {
 	// extension that will be substituted for each output file
 	Output_extension *string
+
+	// maximum number of files that will be passed on a single command line.
+	Shard_size *int64
 }
+
+const defaultShardSize = 100
 
 func NewGenRule() *Module {
 	properties := &genRuleProperties{}
 
-	taskGenerator := func(ctx android.ModuleContext, rawCommand string, srcFiles android.Paths) generateTask {
+	taskGenerator := func(ctx android.ModuleContext, rawCommand string, srcFiles android.Paths) []generateTask {
 		outs := make(android.WritablePaths, len(properties.Out))
 		sandboxOuts := make([]string, len(properties.Out))
 		genDir := android.PathForModuleGen(ctx)
@@ -567,12 +599,12 @@ func NewGenRule() *Module {
 			outs[i] = android.PathForModuleGen(ctx, out)
 			sandboxOuts[i] = pathToSandboxOut(outs[i], genDir)
 		}
-		return generateTask{
+		return []generateTask{{
 			in:          srcFiles,
 			out:         outs,
 			sandboxOuts: sandboxOuts,
 			cmd:         rawCommand,
-		}
+		}}
 	}
 
 	return generatorFactory(taskGenerator, properties)
