@@ -46,6 +46,30 @@
       "revId": "d1063c15869080e5f7c07852a512aaa12905fb11",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f8e943f_f5ea48ed",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-09-23T04:35:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c8e483f9_1074c727",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 76
+      },
+      "revId": "d1063c15869080e5f7c07852a512aaa12905fb11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
