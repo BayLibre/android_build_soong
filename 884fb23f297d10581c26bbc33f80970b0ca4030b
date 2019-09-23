@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1d8814b3_14bf98ae",
+        "filename": "cc/cflag_artifacts.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1562318
+      },
+      "writtenOn": "2019-09-23T21:43:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7f71e84_f7337f12",
+      "revId": "884fb23f297d10581c26bbc33f80970b0ca4030b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b6acc3f_c709275a",
         "filename": "cc/cflag_artifacts.go",
         "patchSetId": 21
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "ee015608_5083a87f",
+        "filename": "cc/cflag_artifacts.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1562318
+      },
+      "writtenOn": "2019-09-23T21:43:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b6acc3f_c709275a",
+      "range": {
+        "startLine": 35,
+        "startChar": 14,
+        "endLine": 35,
+        "endChar": 22
+      },
+      "revId": "884fb23f297d10581c26bbc33f80970b0ca4030b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d8ea91c4_c527f873",
         "filename": "cc/cflag_artifacts.go",
         "patchSetId": 21
@@ -56,6 +98,24 @@
       "revId": "884fb23f297d10581c26bbc33f80970b0ca4030b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5aac309_464732a7",
+        "filename": "cc/cflag_artifacts.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1562318
+      },
+      "writtenOn": "2019-09-23T21:43:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8ea91c4_c527f873",
+      "revId": "884fb23f297d10581c26bbc33f80970b0ca4030b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +136,24 @@
     },
     {
       "key": {
+        "uuid": "d93affff_4f5b80a5",
+        "filename": "cc/cflag_artifacts.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1562318
+      },
+      "writtenOn": "2019-09-23T21:43:27Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "384154f1_7e9a5834",
+      "revId": "884fb23f297d10581c26bbc33f80970b0ca4030b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e1cf748_3a1503f0",
         "filename": "cc/cflag_artifacts.go",
         "patchSetId": 21
@@ -90,6 +168,24 @@
       "revId": "884fb23f297d10581c26bbc33f80970b0ca4030b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "042f83f4_8812fd96",
+        "filename": "cc/cflag_artifacts.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1562318
+      },
+      "writtenOn": "2019-09-23T21:43:27Z",
+      "side": 1,
+      "message": "The reason for this is because I\u0027m not concatenating all the intermediary files into a single file.\n\nEach tracked C Flag\u0027s module information should placed into a separate artifact. I\u0027m doing a match on the file name in order to extract what the expected output artifact\u0027s name should be.\n\nDuring the execution of this function, s.interOutputs should look something similar to this:\n[\nmodule_cflags-O3.txt.0, \nmodule_cflags-O3.txt.1, \nmodule_cflags-O3.txt.2, \nmodule_cflags-Wall.txt.0, \nmodule_cflags-Wall.txt.1, \nmodule_cflags-Wall.txt.2, \netc..\n]\n\nThe regex extracts the expected output filename without the part number, while the rest of the logic grabs all of the parts associated with each output filename and concatenates them into the matched output file.\n\nThe logic allows me to do the following:\nmodule_cflags-O3.txt.0 + module_cflags-O3.txt.1 + module_cflags-O3.txt.2 -\u003e module_cflags-O3.txt\nmodule_cflags-Wall.txt.0 + module_cflags-Wall.txt.1 + module_cflags-Wall.txt.2 -\u003e module_cflags-Wall.txt\netc...\n\nThis logic also allows me to do a single pass through s.interOutputs. In one traversal it will collect the associated file parts and generate a single build rule that concatenates each part (associated with a specific flag) into a single artifact.",
+      "parentUuid": "5e1cf748_3a1503f0",
+      "revId": "884fb23f297d10581c26bbc33f80970b0ca4030b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -110,6 +206,24 @@
     },
     {
       "key": {
+        "uuid": "eaa6d5e0_dd99bd74",
+        "filename": "cc/cflag_artifacts.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1562318
+      },
+      "writtenOn": "2019-09-23T21:43:27Z",
+      "side": 1,
+      "message": "Every path will be effectively different since s.interOutputs contains a list of all the parts for every expected output directory.\n\nFirstUniquePaths seems like it will return the same array without extracting the information that I need which is all the unique outputs without the part numbers.",
+      "parentUuid": "8ef5b8e2_788aa245",
+      "revId": "884fb23f297d10581c26bbc33f80970b0ca4030b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94a560fd_915daddd",
         "filename": "cc/cflag_artifacts.go",
         "patchSetId": 21
@@ -124,6 +238,24 @@
       "revId": "884fb23f297d10581c26bbc33f80970b0ca4030b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a29411fc_7d5127d5",
+        "filename": "cc/cflag_artifacts.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1562318
+      },
+      "writtenOn": "2019-09-23T21:43:27Z",
+      "side": 1,
+      "message": "Yes. That\u0027s no longer true. I made changes after this comment was written to ensure only the necessary intermediary files were re-created when module information was updated.",
+      "parentUuid": "94a560fd_915daddd",
+      "revId": "884fb23f297d10581c26bbc33f80970b0ca4030b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -147,6 +279,30 @@
       "revId": "884fb23f297d10581c26bbc33f80970b0ca4030b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eabd67be_eb73e509",
+        "filename": "cc/cflag_artifacts.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1562318
+      },
+      "writtenOn": "2019-09-23T21:43:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba0b47c1_a5154a9c",
+      "range": {
+        "startLine": 165,
+        "startChar": 32,
+        "endLine": 165,
+        "endChar": 35
+      },
+      "revId": "884fb23f297d10581c26bbc33f80970b0ca4030b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
