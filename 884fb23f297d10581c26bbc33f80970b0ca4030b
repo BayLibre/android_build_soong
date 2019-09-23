@@ -189,6 +189,24 @@
     },
     {
       "key": {
+        "uuid": "f6a29fc4_25299bba",
+        "filename": "cc/cflag_artifacts.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-23T21:47:40Z",
+      "side": 1,
+      "message": "If you want them separately then make interOutputs a map[string]string with the flag as the key.",
+      "parentUuid": "042f83f4_8812fd96",
+      "revId": "884fb23f297d10581c26bbc33f80970b0ca4030b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8ef5b8e2_788aa245",
         "filename": "cc/cflag_artifacts.go",
         "patchSetId": 21
