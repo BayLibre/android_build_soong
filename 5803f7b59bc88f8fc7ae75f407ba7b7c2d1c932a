@@ -22,6 +22,30 @@
       "revId": "5803f7b59bc88f8fc7ae75f407ba7b7c2d1c932a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8d3e74d_62c18f90",
+        "filename": "cc/cflag_artifacts.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1562318
+      },
+      "writtenOn": "2019-09-23T23:33:36Z",
+      "side": 1,
+      "message": "I get what you\u0027re talking about now.\n\nShould be resolved in the new patch.",
+      "parentUuid": "afb6d1ff_98abcb24",
+      "range": {
+        "startLine": 157,
+        "startChar": 24,
+        "endLine": 157,
+        "endChar": 43
+      },
+      "revId": "5803f7b59bc88f8fc7ae75f407ba7b7c2d1c932a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
