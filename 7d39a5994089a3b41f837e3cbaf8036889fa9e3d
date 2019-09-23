@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4abccb2d_cde68aac",
+        "filename": "sysprop/sysprop_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-23T05:20:38Z",
+      "side": 1,
+      "message": "Check that the tag is \"\" before returning, see the other implementations of OutputFiles.",
+      "revId": "7d39a5994089a3b41f837e3cbaf8036889fa9e3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
