@@ -46,6 +46,30 @@
       "revId": "9bc0db7c9cf8e0d77bfcdc8497f7bdca2326397e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2d15aff_34f6891e",
+        "filename": "cc/cflag_artifacts.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-23T23:04:18Z",
+      "side": 1,
+      "message": "I don\u0027t think you want to ninja escape this, it will already be ninja escaped by android.RuleBuilder.",
+      "parentUuid": "fb9a9df9_fa90bd52",
+      "range": {
+        "startLine": 155,
+        "startChar": 26,
+        "endLine": 155,
+        "endChar": 42
+      },
+      "revId": "9bc0db7c9cf8e0d77bfcdc8497f7bdca2326397e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
