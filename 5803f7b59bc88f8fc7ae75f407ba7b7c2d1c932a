@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "afb6d1ff_98abcb24",
+        "filename": "cc/cflag_artifacts.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-23T23:06:50Z",
+      "side": 1,
+      "message": "I don\u0027t think you want to ninja escape this, it will be ninja escaped by android.RuleBuilder.\n\nAlso, I think it makes more sense to store this unescaped in case it gets used for something else, and then ShellEscape it when passing it to a shell command.",
+      "range": {
+        "startLine": 157,
+        "startChar": 24,
+        "endLine": 157,
+        "endChar": 43
+      },
+      "revId": "5803f7b59bc88f8fc7ae75f407ba7b7c2d1c932a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
