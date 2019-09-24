@@ -16,6 +16,24 @@
       "revId": "7097c1f9d428363f63c50575924385b9c2b96a82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1dc77b3_84fdf8ba",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-09-24T23:11:40Z",
+      "side": 1,
+      "message": "Done\n\n  $ make fuzz\n  $ unzip -l out/soong/fuzz-x86_64.zip\nArchive:  out/soong/fuzz-x86_64.zip\n  Length      Date    Time    Name\n---------  ---------- -----   ----\n  8924128  2008-01-01 00:00   avc_dec_fuzzer/avc_dec_fuzzer\n  6214552  2008-01-01 00:00   example_fuzzer/example_fuzzer\n       23  2008-01-01 00:00   example_fuzzer/corpus/8f9f618d47e1546e24e47eb9cf9160c2b5488306/8f9f618d47e1546e24e47eb9cf9160c2b5488306\n        2  2008-01-01 00:00   example_fuzzer/corpus/902d246adaa6f7d743643c751884ea1d912b4950/902d246adaa6f7d743643c751884ea1d912b4950\n        3  2008-01-01 00:00   example_fuzzer/corpus/95e3b6e7c3b8a064b2ea6cf3ea31dcbb30a1fb18/95e3b6e7c3b8a064b2ea6cf3ea31dcbb30a1fb18\n        6  2008-01-01 00:00   example_fuzzer/corpus/bc90c2fcdc92dc9a8a791800b52027f7482eea44/bc90c2fcdc92dc9a8a791800b52027f7482eea44\n        3  2008-01-01 00:00   example_fuzzer/corpus/c0a0ad26a634840c67a210fefdda76577b03a111/c0a0ad26a634840c67a210fefdda76577b03a111\n        1  2008-01-01 00:00   example_fuzzer/corpus/c4ea21bb365bbeeaf5f2c654883e56d11e43c44e/c4ea21bb365bbeeaf5f2c654883e56d11e43c44e\n        8  2008-01-01 00:00   example_fuzzer/corpus/c586fc26e9f2e97ffd7df1e780ef5782ad0a40bc/c586fc26e9f2e97ffd7df1e780ef5782ad0a40bc\n       12  2008-01-01 00:00   example_fuzzer/corpus/d78c4164b4f861fb55bc47e15a623b2fa49a69a8/d78c4164b4f861fb55bc47e15a623b2fa49a69a8\n        9  2008-01-01 00:00   example_fuzzer/example_fuzzer.dict\n 11310616  2008-01-01 00:00   hevc_dec_fuzzer/hevc_dec_fuzzer\n  5651336  2008-01-01 00:00   mpeg2_dec_fuzzer/mpeg2_dec_fuzzer\n  5338416  2008-01-01 00:00   stack_trace_compressor_fuzzer/stack_trace_compressor_fuzzer\n---------                     -------\n 37439115                     14 files",
+      "parentUuid": "cd9ee364_07a23a8b",
+      "revId": "7097c1f9d428363f63c50575924385b9c2b96a82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
