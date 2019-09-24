@@ -117,6 +117,30 @@
       "revId": "dc9c12bcf6d8cfd6284383797110d5aafd97ccfc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5399a1f_bc42d9ff",
+        "filename": "build_kzip.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1543337
+      },
+      "writtenOn": "2019-09-24T17:40:23Z",
+      "side": 1,
+      "message": "Let\u0027s stick with revision.txt since that\u0027s what we\u0027re already using in cns.\n\nIt\u0027s configurable so any name can work (and I may have referred to it by different names before).",
+      "parentUuid": "e1bfe5b8_4fe81eca",
+      "range": {
+        "startLine": 27,
+        "startChar": 36,
+        "endLine": 27,
+        "endChar": 44
+      },
+      "revId": "dc9c12bcf6d8cfd6284383797110d5aafd97ccfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
