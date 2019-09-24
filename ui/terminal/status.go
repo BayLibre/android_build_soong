@@ -29,7 +29,7 @@ import (
 func NewStatusOutput(w io.Writer, statusFormat string, quietBuild bool) status.StatusOutput {
 	formatter := newFormatter(statusFormat, quietBuild)
 
-	if isSmartTerminal(w) {
+	if IsSmartTerminal(w) {
 		return NewSmartStatusOutput(w, formatter)
 	} else {
 		return NewDumbStatusOutput(w, formatter)

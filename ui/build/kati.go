@@ -70,7 +70,6 @@ func runKati(ctx Context, config Config, extraSuffix string, args []string, envF
 		"--regen",
 		"--ignore_optional_include=" + filepath.Join(config.OutDir(), "%.P"),
 		"--detect_android_echo",
-		"--color_warnings",
 		"--gen_all_targets",
 		"--use_find_emulator",
 		"--werror_find_emulator",
@@ -84,6 +83,9 @@ func runKati(ctx Context, config Config, extraSuffix string, args []string, envF
 		"--top_level_phony",
 		"--kati_stats",
 	}, args...)
+	if stdoutIsSmartTerminal() {
+		args = append(args, "--color_warnings")
+	}
 
 	if config.Environment().IsEnvTrue("EMPTY_NINJA_FILE") {
 		args = append(args, "--empty_ninja_file")

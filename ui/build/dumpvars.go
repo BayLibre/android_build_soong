@@ -73,13 +73,18 @@ func dumpMakeVars(ctx Context, config Config, goals, vars []string, write_soong_
 	ctx.BeginTrace(metrics.RunKati, "dumpvars")
 	defer ctx.EndTrace()
 
-	cmd := Command(ctx, config, "dumpvars",
-		config.PrebuiltBuildTool("ckati"),
+	args := []string{
 		"-f", "build/make/core/config.mk",
-		"--color_warnings",
 		"--kati_stats",
+	}
+	if stdoutIsSmartTerminal() {
+		args = append(args, "--color_warnings")
+	}
+	args = append(args, []string{
 		"dump-many-vars",
-		"MAKECMDGOALS="+strings.Join(goals, " "))
+		"MAKECMDGOALS=" + strings.Join(goals, " "),
+	}...)
+	cmd := Command(ctx, config, "dumpvars", config.PrebuiltBuildTool("ckati"), args...)
 	cmd.Environment.Set("CALLED_FROM_SETUP", "true")
 	if write_soong_vars {
 		cmd.Environment.Set("WRITE_SOONG_VARIABLES", "true")

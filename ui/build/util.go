@@ -18,6 +18,8 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+
+	"android/soong/ui/terminal"
 )
 
 func absPath(ctx Context, p string) string {
@@ -123,4 +125,8 @@ func decodeKeyValue(str string) (string, string, bool) {
 		return "", "", false
 	}
 	return str[:idx], str[idx+1:], true
+}
+
+func stdoutIsSmartTerminal() bool {
+	return terminal.IsSmartTerminal(terminal.StdioImpl{}.Stdout())
 }

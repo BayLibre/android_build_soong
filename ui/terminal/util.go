@@ -22,7 +22,7 @@ import (
 	"unsafe"
 )
 
-func isSmartTerminal(w io.Writer) bool {
+func IsSmartTerminal(w io.Writer) bool {
 	if f, ok := w.(*os.File); ok {
 		if term, ok := os.LookupEnv("TERM"); ok && term == "dumb" {
 			return false
