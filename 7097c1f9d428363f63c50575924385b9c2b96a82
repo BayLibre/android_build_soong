@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd9ee364_07a23a8b",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-24T22:44:38Z",
+      "side": 1,
+      "message": "You\u0027ll need some way to clean this directory between incremental builds, otherwise if you remove a cc_fuzz module the old built artifact will still be lying around here.  Possible options:\n\n1. Add it to the list of directories to clean with installclean\n2. Copy all the files in a single directory as a single rule, then you can rm -rf the directory at the beginning (and zip at the end?)\n3. Skip the copying completely, and do everything with soong_zip arguments: soong_zip -j -P \u003cdirectory in zip\u003e -f \u003csrc\u003e -P \u003cdirectory2\u003e -f \u003csrc2\u003e",
+      "revId": "7097c1f9d428363f63c50575924385b9c2b96a82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
