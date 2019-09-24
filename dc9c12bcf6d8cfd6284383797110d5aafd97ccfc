@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "2540254e_a936d3e7",
+        "filename": "build_kzip.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-24T17:24:09Z",
+      "side": 1,
+      "message": "It should be as or more unique than the superproject revision, it will be unique to a specific ab/ branch and source tree hashes.",
+      "parentUuid": "1434327f_49020149",
+      "revId": "dc9c12bcf6d8cfd6284383797110d5aafd97ccfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ddbb1618_533d3e9c",
         "filename": "build_kzip.bash",
         "patchSetId": 1
