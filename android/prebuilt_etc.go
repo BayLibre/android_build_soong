@@ -50,7 +50,7 @@ type prebuiltEtcProperties struct {
 
 	InRecovery bool `blueprint:"mutated"`
 
-	// Whether this module is directly installable to one of the partitions. Default: true.
+	// Whether this module is directly installable to a device partition (not an APEX). Default: true.
 	Installable *bool
 }
 

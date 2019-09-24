@@ -46,7 +46,7 @@ type shBinaryProperties struct {
 	// is the same as the file name of the source file.
 	Filename_from_src *bool `android:"arch_variant"`
 
-	// Whether this module is directly installable to one of the partitions. Default: true.
+	// Whether this module is directly installable to a device partition (not an APEX). Default: true.
 	Installable *bool
 }
 
