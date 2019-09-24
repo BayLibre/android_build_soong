@@ -23,3 +23,5 @@ declare -r kzip_count=$(find $OUT_DIR -name '*.kzip' | wc -l)
 # TODO(asmundak): this should be done by soong.
 declare -r allkzip=all.kzip
 "${OUT_DIR:-out}/soong/host/linux-x86/bin/merge_zips" "$DIST_DIR/$allkzip" @<(find $OUT_DIR -name '*.kzip')
+declare -ar pseudo_rev=($(sha1sum "$DIST_DIR/$allkzip"))
+echo "${pseudo_rev[0]}" >"$DIST_DIR/revision.txt"
