@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1434327f_49020149",
+        "filename": "build_kzip.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-09-24T16:37:15Z",
+      "side": 1,
+      "message": "Is it unique across all configurations?",
+      "parentUuid": "56674592_385c0f8d",
+      "revId": "dc9c12bcf6d8cfd6284383797110d5aafd97ccfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ddbb1618_533d3e9c",
         "filename": "build_kzip.bash",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "dc9c12bcf6d8cfd6284383797110d5aafd97ccfc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1bfe5b8_4fe81eca",
+        "filename": "build_kzip.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-09-24T16:37:15Z",
+      "side": 1,
+      "message": "According to https://b.corp.google.com/issues/137977523#comment12, it\u0027s revision.txt, and for the \u0027manual\u0027 handoff, that\u0027s what I am writing:\nfileutil ls -l /cns/iu-d/home/android-build-index-oss/kzips/master\n-rw-rw-r-- 1 grok-kythe-team android-build-index-oss   5833154937 2019/09/23 17:34:40 /cns/iu-d/home/android-build-index-oss/kzips/master/allang_plus_go.kzip\n-rw-rw-r-- 1 grok-kythe-team android-build-index-oss           76 2019/09/23 17:41:42 /cns/iu-d/home/android-build-index-oss/kzips/master/revision.txt\n\njustinbuchanan@: Please confirm",
+      "parentUuid": "ddbb1618_533d3e9c",
+      "range": {
+        "startLine": 27,
+        "startChar": 36,
+        "endLine": 27,
+        "endChar": 44
+      },
+      "revId": "dc9c12bcf6d8cfd6284383797110d5aafd97ccfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
