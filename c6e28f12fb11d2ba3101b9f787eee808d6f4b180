@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "329adcd4_e21fdec8",
+        "filename": "cc/cflag_artifacts.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-24T22:22:27Z",
+      "side": 1,
+      "message": "After aosp/1128033 you will be able to drop the Make half of the change and replace this with:\n\n    ctx.DistForGoal(\"droidcore\", s.outputs...)",
+      "revId": "c6e28f12fb11d2ba3101b9f787eee808d6f4b180",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
