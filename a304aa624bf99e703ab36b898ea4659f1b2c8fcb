@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4b82d6f_35d6a95a",
+        "filename": "rust/rust.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-24T17:26:42Z",
+      "side": 1,
+      "message": "ctx.Config().BuildOsVariant",
+      "range": {
+        "startLine": 484,
+        "startChar": 85,
+        "endLine": 484,
+        "endChar": 98
+      },
+      "revId": "a304aa624bf99e703ab36b898ea4659f1b2c8fcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
