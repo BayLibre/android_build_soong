@@ -175,3 +175,23 @@ func TestDepsTracking(t *testing.T) {
 	}
 
 }
+
+// Test to make sure proc_macros use host variants when building device modules.
+func TestProcMacroDeviceDeps(t *testing.T) {
+	testRust(t, `
+		rust_library_host_rlib {
+			name: "libbar",
+			srcs: ["foo.rs"],
+		}
+		rust_proc_macro {
+			name: "libpm",
+			rlibs: ["libbar"],
+			srcs: ["foo.rs"],
+		}
+		rust_binary {
+			name: "fizz-buzz",
+			proc_macros: ["libpm"],
+			srcs: ["foo.rs"],
+		}
+	`)
+}
