@@ -16,6 +16,24 @@
       "revId": "c6e28f12fb11d2ba3101b9f787eee808d6f4b180",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68f84bd7_e1c66b59",
+        "filename": "cc/cflag_artifacts.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1562318
+      },
+      "writtenOn": "2019-09-24T22:29:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "329adcd4_e21fdec8",
+      "revId": "c6e28f12fb11d2ba3101b9f787eee808d6f4b180",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
