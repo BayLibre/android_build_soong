@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3eb02aad_92cd4ae1",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-24T23:19:47Z",
+      "side": 1,
+      "message": "I\u0027d suggest moving this and the builder.Build command inside the for loop to make a rule per zip, that will prevent unnecessarily rebuilding the host zip file when a target fuzzer changes.",
+      "revId": "5a205813b224af05398c4cb44d180372aa61ebef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
