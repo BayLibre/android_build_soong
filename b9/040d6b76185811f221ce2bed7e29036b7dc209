@@ -1,0 +1,7 @@
+Code-Review+2: Colin Cross <ccross@android.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Ivan Lozano <ivanlozano@google.com>
+Submitted-at: Wed, 25 Sep 2019 15:17:28 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1127980
+Project: platform/build/soong
+Branch: refs/heads/master
