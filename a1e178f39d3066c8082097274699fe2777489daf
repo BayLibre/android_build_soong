@@ -22,6 +22,30 @@
       "revId": "a1e178f39d3066c8082097274699fe2777489daf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aec79e63_fabd0371",
+        "filename": "build_kzip.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-09-25T00:28:36Z",
+      "side": 1,
+      "message": "That works only if $OUT_DIR exists.",
+      "parentUuid": "0fc34aba_75d7dbec",
+      "range": {
+        "startLine": 18,
+        "startChar": 26,
+        "endLine": 18,
+        "endChar": 78
+      },
+      "revId": "a1e178f39d3066c8082097274699fe2777489daf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
