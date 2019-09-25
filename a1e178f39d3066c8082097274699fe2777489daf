@@ -46,6 +46,30 @@
       "revId": "a1e178f39d3066c8082097274699fe2777489daf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d967a24d_af1a9864",
+        "filename": "build_kzip.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-25T01:14:41Z",
+      "side": 1,
+      "message": "mkdir -p $OUT_DIR?",
+      "parentUuid": "aec79e63_fabd0371",
+      "range": {
+        "startLine": 18,
+        "startChar": 26,
+        "endLine": 18,
+        "endChar": 78
+      },
+      "revId": "a1e178f39d3066c8082097274699fe2777489daf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
