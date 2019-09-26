@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "68ee7387_67d93580",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1308042
+      },
+      "writtenOn": "2019-09-26T11:44:31Z",
+      "side": 1,
+      "message": "Exactly, it can help to acknowledge the difference.\nWithout the first five steps, you might check the srcjar in srcjars section in module_bp_java_deps.json.",
+      "parentUuid": "835bc881_8013d190",
+      "range": {
+        "startLine": 23,
+        "startChar": 6,
+        "endLine": 28,
+        "endChar": 22
+      },
+      "revId": "7500b8eb39ad4aaa283d6902aa6af7c31c002298",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cea49a51_a58ed604",
         "filename": "java/java.go",
         "patchSetId": 2
