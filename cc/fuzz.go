@@ -15,9 +15,10 @@
 package cc
 
 import (
+	"strings"
+
 	"path/filepath"
 
-	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
@@ -161,6 +162,7 @@ func NewFuzz(hod android.HostOrDeviceSupported) *Module {
 // Responsible for generating GNU Make rules that package fuzz targets into
 // their architecture & target/host specific zip file.
 type fuzzPackager struct {
+	packages android.Paths
 }
 
 func fuzzPackagingFactory() android.Singleton {
@@ -220,15 +222,12 @@ func (s *fuzzPackager) GenerateBuildActions(ctx android.SingletonContext) {
 		}
 	})
 
-	// List of architecture + host/device specific packages to build via. 'make fuzz'.
-	var archDirTargets android.Paths
-
 	for archDir, filesToZip := range archDirs {
 		arch := archDir.Base()
 		hostOrTarget := filepath.Base(filepath.Dir(archDir.String()))
 		builder := android.NewRuleBuilder()
 		outputFile := android.PathForOutput(ctx, "fuzz-"+hostOrTarget+"-"+arch+".zip")
-		archDirTargets = append(archDirTargets, outputFile)
+		s.packages = append(s.packages, outputFile)
 
 		command := builder.Command().BuiltTool(ctx, "soong_zip").
 			Flag("-j").
@@ -242,11 +241,9 @@ func (s *fuzzPackager) GenerateBuildActions(ctx android.SingletonContext) {
 		builder.Build(pctx, ctx, "create-fuzz-package-"+arch+"-"+hostOrTarget,
 			"Create fuzz target packages for "+arch+"-"+hostOrTarget)
 	}
+}
 
-	ctx.Build(pctx, android.BuildParams{
-		Rule:        blueprint.Phony,
-		Output:      android.PathForPhony(ctx, "fuzz"),
-		Implicits:   archDirTargets,
-		Description: "Build all Android fuzz targets, and create packages.",
-	})
+func (s *fuzzPackager) MakeVars(ctx android.MakeVarsContext) {
+	ctx.Strict("SOONG_FUZZ_PACKAGING_ARCH_MODULES", strings.Join(s.packages.Strings(), " "))
+	ctx.DistForGoal("fuzz", s.packages...)
 }
