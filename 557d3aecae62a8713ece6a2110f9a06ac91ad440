@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "858c130e_d7896658",
+        "filename": "go.mod",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-26T20:27:21Z",
+      "side": 1,
+      "message": "Not part of this change",
+      "revId": "557d3aecae62a8713ece6a2110f9a06ac91ad440",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
