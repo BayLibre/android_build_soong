@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9af8a4cb_6157add5",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-09-26T15:42:02Z",
+      "side": 1,
+      "message": "Out of curiosity, here and elsewhere: why use 5 statements instead of a single cts.Fatalf?",
+      "range": {
+        "startLine": 191,
+        "startChar": 6,
+        "endLine": 191,
+        "endChar": 13
+      },
+      "revId": "1f6faeb50fb13f1e3e678296ebd238a614682e81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
