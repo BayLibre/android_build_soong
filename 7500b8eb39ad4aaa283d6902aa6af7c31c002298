@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cea49a51_a58ed604",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1086,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2019-09-26T08:58:04Z",
+      "side": 1,
+      "message": "// Collect java and .kt files for AIDEGen\n        \tj.expandIDEInfoCompiledSrcs \u003d append(j.expandIDEInfoCompiledSrcs, uniqueSrcFiles.Strings()...)\nand remove line 1058 and 1059.",
+      "range": {
+        "startLine": 1085,
+        "startChar": 0,
+        "endLine": 1086,
+        "endChar": 109
+      },
+      "revId": "7500b8eb39ad4aaa283d6902aa6af7c31c002298",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
