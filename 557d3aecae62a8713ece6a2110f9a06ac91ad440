@@ -16,6 +16,24 @@
       "revId": "557d3aecae62a8713ece6a2110f9a06ac91ad440",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f6aa097_6ff3c553",
+        "filename": "go.mod",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2019-09-26T20:30:14Z",
+      "side": 1,
+      "message": "yeah, the IDE made that change, will clean it up.",
+      "parentUuid": "858c130e_d7896658",
+      "revId": "557d3aecae62a8713ece6a2110f9a06ac91ad440",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
