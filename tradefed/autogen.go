@@ -104,8 +104,15 @@ func (ob Object) Config() string {
 
 }
 
-func autogenTemplate(ctx android.ModuleContext, output android.WritablePath, template string, configs []Config) {
+func autogenTemplate(ctx android.ModuleContext, output android.WritablePath, template string, configs []Config, testSuites []string) {
 	var configStrings []string
+	for _, suite := range testSuites {
+		// device-tests and general-tests are not suite names for a compatibility suite.
+		if suite == "device-tests" || suite == "general-tests" {
+			continue
+		}
+		configs = append(configs, Option{"test-suite-tag", suite})
+	}
 	for _, config := range configs {
 		configStrings = append(configStrings, config.Config())
 	}
@@ -130,12 +137,12 @@ func AutoGenNativeTestConfig(ctx android.ModuleContext, testConfigProp *string,
 	if autogenPath != nil {
 		templatePath := getTestConfigTemplate(ctx, testConfigTemplateProp)
 		if templatePath.Valid() {
-			autogenTemplate(ctx, autogenPath, templatePath.String(), config)
+			autogenTemplate(ctx, autogenPath, templatePath.String(), config, testSuites)
 		} else {
 			if ctx.Device() {
-				autogenTemplate(ctx, autogenPath, "${NativeTestConfigTemplate}", config)
+				autogenTemplate(ctx, autogenPath, "${NativeTestConfigTemplate}", config, testSuites)
 			} else {
-				autogenTemplate(ctx, autogenPath, "${NativeHostTestConfigTemplate}", config)
+				autogenTemplate(ctx, autogenPath, "${NativeHostTestConfigTemplate}", config, testSuites)
 			}
 		}
 		return autogenPath
@@ -149,9 +156,9 @@ func AutoGenNativeBenchmarkTestConfig(ctx android.ModuleContext, testConfigProp 
 	if autogenPath != nil {
 		templatePath := getTestConfigTemplate(ctx, testConfigTemplateProp)
 		if templatePath.Valid() {
-			autogenTemplate(ctx, autogenPath, templatePath.String(), configs)
+			autogenTemplate(ctx, autogenPath, templatePath.String(), configs, testSuites)
 		} else {
-			autogenTemplate(ctx, autogenPath, "${NativeBenchmarkTestConfigTemplate}", configs)
+			autogenTemplate(ctx, autogenPath, "${NativeBenchmarkTestConfigTemplate}", configs, testSuites)
 		}
 		return autogenPath
 	}
@@ -164,12 +171,12 @@ func AutoGenJavaTestConfig(ctx android.ModuleContext, testConfigProp *string, te
 	if autogenPath != nil {
 		templatePath := getTestConfigTemplate(ctx, testConfigTemplateProp)
 		if templatePath.Valid() {
-			autogenTemplate(ctx, autogenPath, templatePath.String(), nil)
+			autogenTemplate(ctx, autogenPath, templatePath.String(), nil, testSuites)
 		} else {
 			if ctx.Device() {
-				autogenTemplate(ctx, autogenPath, "${JavaTestConfigTemplate}", nil)
+				autogenTemplate(ctx, autogenPath, "${JavaTestConfigTemplate}", nil, testSuites)
 			} else {
-				autogenTemplate(ctx, autogenPath, "${JavaHostTestConfigTemplate}", nil)
+				autogenTemplate(ctx, autogenPath, "${JavaHostTestConfigTemplate}", nil, testSuites)
 			}
 		}
 		return autogenPath
@@ -184,9 +191,9 @@ func AutoGenPythonBinaryHostTestConfig(ctx android.ModuleContext, testConfigProp
 	if autogenPath != nil {
 		templatePath := getTestConfigTemplate(ctx, testConfigTemplateProp)
 		if templatePath.Valid() {
-			autogenTemplate(ctx, autogenPath, templatePath.String(), nil)
+			autogenTemplate(ctx, autogenPath, templatePath.String(), nil, testSuites)
 		} else {
-			autogenTemplate(ctx, autogenPath, "${PythonBinaryHostTestConfigTemplate}", nil)
+			autogenTemplate(ctx, autogenPath, "${PythonBinaryHostTestConfigTemplate}", nil, testSuites)
 		}
 		return autogenPath
 	}
