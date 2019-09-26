@@ -22,6 +22,30 @@
       "revId": "b0c127cfd730193f9288849c4862145709f16570",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3aa237e_698c67d1",
+        "filename": "android/androidmk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-09-26T21:37:04Z",
+      "side": 1,
+      "message": "Absolutely. As a matter of fact, I had to circumvent the lack of a ctx param in certain AndroidMkEntries funcs, in which case your suggestion would definitely have helped. Will work on it.",
+      "parentUuid": "cbfe48f0_aec97063",
+      "range": {
+        "startLine": 261,
+        "startChar": 13,
+        "endLine": 261,
+        "endChar": 53
+      },
+      "revId": "b0c127cfd730193f9288849c4862145709f16570",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
