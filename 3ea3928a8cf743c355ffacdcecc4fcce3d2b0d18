@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfd6569a_509fa627",
+        "filename": "java/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-26T17:08:03Z",
+      "side": 1,
+      "message": "Would it make sense to add a SetPath method that takes an android.Path to avoid having to call .String() everywhere?",
+      "revId": "3ea3928a8cf743c355ffacdcecc4fcce3d2b0d18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
