@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "05d9464b_637d2529",
+        "filename": "rust/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2019-09-27T16:55:30Z",
+      "side": 1,
+      "message": "\"deny\" and \"allow\" are rust specific lint levels:\nhttps://doc.rust-lang.org/rustc/lints/levels.html\n\"warnings\" is a rust lint group:\nhttps://doc.rust-lang.org/rustc/lints/groups.html\nSo \"deny warnings\" is rust equivalent of -Werror\nand \"allow warnings\" is similar to -Wno-* to suppress/ignore all warnings.\n\"allow warnings\" would be confusing, since we do not need -Wno-*.\nWe want default -Werror, and some projects without -Werror to see and fix all warnings.",
+      "parentUuid": "92391e18_312a58df",
+      "revId": "de46a27be5bfa7e061b261018be1f504d619ff09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f8df20bf_9ac55761",
         "filename": "rust/compiler.go",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "de46a27be5bfa7e061b261018be1f504d619ff09",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfce5537_346f05c8",
+        "filename": "rust/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2019-09-27T16:55:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8df20bf_9ac55761",
+      "range": {
+        "startLine": 115,
+        "startChar": 4,
+        "endLine": 116,
+        "endChar": 36
+      },
+      "revId": "de46a27be5bfa7e061b261018be1f504d619ff09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
