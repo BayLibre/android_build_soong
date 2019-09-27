@@ -33,6 +33,8 @@ var (
 		"libtest",
 	}
 
+	DefaultDenyWarnings = true
+
 	deviceGlobalRustFlags = []string{}
 
 	deviceGlobalLinkFlags = []string{
