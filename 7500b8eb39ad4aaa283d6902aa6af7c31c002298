@@ -141,6 +141,30 @@
       "revId": "7500b8eb39ad4aaa283d6902aa6af7c31c002298",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56a43610_b6e55980",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1086,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2019-09-27T00:32:02Z",
+      "side": 1,
+      "message": "Sorry, I made a mistake. It should be,\n\n// Collect java and .kt files for AIDEGen\n        \tj.expandIDEInfoCompiledSrcs \u003d append(j.expandIDEInfoCompiledSrcs, kotlinSrcFiles.Strings()...)\nand remove line 1058 and 1059.",
+      "parentUuid": "bf17e8cd_39e3a833",
+      "range": {
+        "startLine": 1085,
+        "startChar": 0,
+        "endLine": 1086,
+        "endChar": 109
+      },
+      "revId": "7500b8eb39ad4aaa283d6902aa6af7c31c002298",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
