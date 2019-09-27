@@ -16,6 +16,24 @@
       "revId": "3ea3928a8cf743c355ffacdcecc4fcce3d2b0d18",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2b18a8f_d1801a1e",
+        "filename": "java/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-09-27T15:15:31Z",
+      "side": 1,
+      "message": "I was originally going to add a method for Stringer instances in a separate CL, but it seems like they\u0027re all Path instance, basically? This makes things a bit clearer. Done.",
+      "parentUuid": "bfd6569a_509fa627",
+      "revId": "3ea3928a8cf743c355ffacdcecc4fcce3d2b0d18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
