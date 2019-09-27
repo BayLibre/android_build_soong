@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07f70e93_fe8b9dfe",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-27T05:31:09Z",
+      "side": 1,
+      "message": "kythCxxNames, or just kytheVnames since this is already in the cc package.",
+      "range": {
+        "startLine": 227,
+        "startChar": 30,
+        "endLine": 227,
+        "endChar": 46
+      },
+      "revId": "3115f452f89170a5d811b9ffe6777018cb867cf4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
