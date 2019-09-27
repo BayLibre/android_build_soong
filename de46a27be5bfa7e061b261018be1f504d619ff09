@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92391e18_312a58df",
+        "filename": "rust/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-27T02:50:36Z",
+      "side": 1,
+      "message": "The double-negative here is confusing, can you use allow_warnings: true?",
+      "revId": "de46a27be5bfa7e061b261018be1f504d619ff09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8df20bf_9ac55761",
+        "filename": "rust/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-27T02:50:36Z",
+      "side": 1,
+      "message": "BoolDefault(compiler.Properties.Deny_warnings, true)",
+      "range": {
+        "startLine": 115,
+        "startChar": 4,
+        "endLine": 116,
+        "endChar": 36
+      },
+      "revId": "de46a27be5bfa7e061b261018be1f504d619ff09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
