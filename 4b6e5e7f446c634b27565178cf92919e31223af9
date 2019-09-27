@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8582aff_c682c84d",
+        "filename": "rust/compiler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2019-09-27T17:02:30Z",
+      "side": 1,
+      "message": "Is it possible to set this default in NewBaseCompiler(), similar to the default Edition? That way all defaults are collected in one location.",
+      "range": {
+        "startLine": 115,
+        "startChar": 4,
+        "endLine": 115,
+        "endChar": 56
+      },
+      "revId": "4b6e5e7f446c634b27565178cf92919e31223af9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
