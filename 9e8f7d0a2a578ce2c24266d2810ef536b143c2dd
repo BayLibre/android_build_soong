@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77b093b6_ff0d9774",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1348646
+      },
+      "writtenOn": "2019-09-30T07:59:12Z",
+      "side": 1,
+      "message": "Suggest to change the comment because this object contains all the unique ones in compiledJavaSrcs as the partial of compiledJavaSrcs.",
+      "range": {
+        "startLine": 353,
+        "startChar": 62,
+        "endLine": 353,
+        "endChar": 76
+      },
+      "revId": "9e8f7d0a2a578ce2c24266d2810ef536b143c2dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "834d8fdf_3b24300d",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1083,
+      "author": {
+        "id": 1348646
+      },
+      "writtenOn": "2019-09-30T07:59:12Z",
+      "side": 1,
+      "message": "By adding the following one line under line #1083, you can omit both line 1059 and 1086 you added. \nj.expandIDEInfoCompiledSrcs \u003d append(j.expandIDEInfoCompiledSrcs, kotlinSrcFiles.Strings()...)",
+      "range": {
+        "startLine": 1083,
+        "startChar": 2,
+        "endLine": 1083,
+        "endChar": 16
+      },
+      "revId": "9e8f7d0a2a578ce2c24266d2810ef536b143c2dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
