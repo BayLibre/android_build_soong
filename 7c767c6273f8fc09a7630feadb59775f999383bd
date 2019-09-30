@@ -34,6 +34,24 @@
       "revId": "7c767c6273f8fc09a7630feadb59775f999383bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b62f4bb8_30b252eb",
+        "filename": "rust/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2019-09-30T20:25:23Z",
+      "side": 1,
+      "message": "I\u0027m still searching for rustc upstream bug.\nIf ninja should create output directory, there is another bug to fix. Where does ninja do that?\nWithout mkdir here, this change failed in TH make and my local clean build \"mm\".",
+      "parentUuid": "b211f674_afdfd7dc",
+      "revId": "7c767c6273f8fc09a7630feadb59775f999383bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
