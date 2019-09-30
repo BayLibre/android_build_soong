@@ -52,6 +52,24 @@
       "revId": "7c767c6273f8fc09a7630feadb59775f999383bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee3e3b30_243d9e89",
+        "filename": "rust/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-30T20:46:31Z",
+      "side": 1,
+      "message": "https://github.com/ninja-build/ninja/blob/master/src/build.cc#L910\n\nTH is still failing after you added mkdir.",
+      "parentUuid": "b62f4bb8_30b252eb",
+      "revId": "7c767c6273f8fc09a7630feadb59775f999383bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
