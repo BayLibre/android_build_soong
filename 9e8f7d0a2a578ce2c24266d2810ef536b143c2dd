@@ -45,6 +45,53 @@
       "revId": "9e8f7d0a2a578ce2c24266d2810ef536b143c2dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "849bf05b_0beea53d",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1083,
+      "author": {
+        "id": 1348646
+      },
+      "writtenOn": "2019-09-30T09:52:22Z",
+      "side": 1,
+      "message": "Please ignore this comment, it will fail to collect java source files if there\u0027s no any existing  .kt file.",
+      "parentUuid": "834d8fdf_3b24300d",
+      "range": {
+        "startLine": 1083,
+        "startChar": 2,
+        "endLine": 1083,
+        "endChar": 16
+      },
+      "revId": "9e8f7d0a2a578ce2c24266d2810ef536b143c2dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7f113cf_0fa12bf1",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1086,
+      "author": {
+        "id": 1348646
+      },
+      "writtenOn": "2019-09-30T09:52:22Z",
+      "side": 1,
+      "message": "Do you have idea why the kt source file set doesn\u0027t need to run the unique SrcFiles process like java does?",
+      "range": {
+        "startLine": 1086,
+        "startChar": 68,
+        "endLine": 1086,
+        "endChar": 108
+      },
+      "revId": "9e8f7d0a2a578ce2c24266d2810ef536b143c2dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
