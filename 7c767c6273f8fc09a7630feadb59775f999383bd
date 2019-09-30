@@ -16,6 +16,24 @@
       "revId": "7c767c6273f8fc09a7630feadb59775f999383bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b211f674_afdfd7dc",
+        "filename": "rust/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-30T19:22:06Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be necessary, ninja already guarantees that $$(dirname $out) has been created.",
+      "parentUuid": "6064f49a_3794a0ba",
+      "revId": "7c767c6273f8fc09a7630feadb59775f999383bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
