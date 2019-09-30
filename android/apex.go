@@ -78,11 +78,21 @@ type ApexModule interface {
 
 	// Return the no_apex property
 	NoApex() bool
+
+	// Tests if this module is available for the specified APEX or ":platform"
+	AvailableFor(what string) bool
 }
 
 type ApexProperties struct {
 	// Whether this module should not be part of any APEX. Default is false.
+	// TODO(b/128708192): remove this as this is equal to apex_available: [":platform"]
 	No_apex *bool
+
+	// Availability of this module in APEXes. Only the listed APEXes can include this module.
+	// ":anyapex" is a pseudo APEX name that matches to any APEX. ":platform" refers to non-APEX
+	// partitions like "system.img". Default is [":platform", ":anyapex"].
+	// TODO(b/128708192) change the default to [":platform"]
+	Apex_available []string
 
 	// Name of the apex variant that this module is mutated into
 	ApexName string `blueprint:"mutated"`
@@ -136,15 +146,41 @@ func (m *ApexModuleBase) NoApex() bool {
 	return proptools.Bool(m.ApexProperties.No_apex)
 }
 
+func (m *ApexModuleBase) AvailableFor(what string) bool {
+	if len(m.ApexProperties.Apex_available) == 0 {
+		// apex_available defaults to [":platform", ":anyapex"], which means
+		// 'avaialble to everybody'.
+		return true
+	}
+	return InList(what, m.ApexProperties.Apex_available) ||
+		(what != ":platform" && InList(":anyapex", m.ApexProperties.Apex_available))
+}
+
+func (m *ApexModuleBase) checkApexAvailableProperty(mctx BaseModuleContext) {
+	for _, n := range m.ApexProperties.Apex_available {
+		if n == ":platform" || n == ":anyapex" {
+			continue
+		}
+		if !mctx.OtherModuleExists(n) {
+			mctx.PropertyErrorf("apex_available", "%q is not a valid module name", n)
+		}
+	}
+}
+
 func (m *ApexModuleBase) CreateApexVariations(mctx BottomUpMutatorContext) []blueprint.Module {
 	if len(m.apexVariations) > 0 {
+		m.checkApexAvailableProperty(mctx)
 		sort.Strings(m.apexVariations)
-		variations := []string{""} // Original variation for platform
+		variations := []string{}
+		availableForPlatform := m.AvailableFor(":platform")
+		if availableForPlatform {
+			variations = append(variations, "") // Original variation for platform
+		}
 		variations = append(variations, m.apexVariations...)
 
 		modules := mctx.CreateVariations(variations...)
 		for i, m := range modules {
-			if i == 0 {
+			if availableForPlatform && i == 0 {
 				continue
 			}
 			m.(ApexModule).setApexName(variations[i])
