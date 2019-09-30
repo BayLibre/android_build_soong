@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6064f49a_3794a0ba",
+        "filename": "rust/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2019-09-30T19:13:23Z",
+      "side": 1,
+      "message": "Is there an upstream Rust bug tracking this? Should we leave a TODO here to fix it once that bug is resolved? It seems odd to me that a mkdir is required.",
+      "revId": "7c767c6273f8fc09a7630feadb59775f999383bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
