@@ -78,7 +78,7 @@ func (t *toolchainLinuxX8664) ToolchainLinkFlags() string {
 }
 
 func (t *toolchainLinuxX8664) ToolchainRustFlags() string {
-	return "${config.LinuxToolchainRustFlags} ${config.LinuxToolchainX8664RustFlags}"
+	return "${config.LinuxToolchainRustFlags} ${config.LinuxToolchainX8664RustFlags} ${config.HostGlobalRustFlags}"
 }
 
 func linuxX8664ToolchainFactory(arch android.Arch) Toolchain {
@@ -106,7 +106,7 @@ func (t *toolchainLinuxX86) ToolchainLinkFlags() string {
 }
 
 func (t *toolchainLinuxX86) ToolchainRustFlags() string {
-	return "${config.LinuxToolchainRustFlags} ${config.LinuxToolchainX86RustFlags}"
+	return "${config.LinuxToolchainRustFlags} ${config.LinuxToolchainX86RustFlags} ${config.HostGlobalRustFlags}"
 }
 
 func linuxX86ToolchainFactory(arch android.Arch) Toolchain {

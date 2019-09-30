@@ -37,7 +37,9 @@ var (
 
 	DefaultDenyWarnings = proptools.BoolPtr(true)
 
-	deviceGlobalRustFlags = []string{}
+	deviceGlobalRustFlags = []string{
+		"--remap-path-prefix $$(pwd)=/android/",
+	}
 
 	deviceGlobalLinkFlags = []string{
 		"-Bdynamic",
@@ -53,6 +55,10 @@ var (
 		"-Wl,--use-android-relr-tags",
 		"-Wl,--no-undefined",
 		"-Wl,--hash-style=gnu",
+	}
+
+	hostGlobalRustFlags = []string{
+		"--remap-path-prefix $$(pwd)=/android/",
 	}
 )
 
@@ -82,5 +88,6 @@ func init() {
 	pctx.StaticVariable("RustLinkerArgs", "-B ${ccConfig.ClangBin} -fuse-ld=lld")
 
 	pctx.StaticVariable("DeviceGlobalLinkFlags", strings.Join(deviceGlobalLinkFlags, " "))
+	pctx.StaticVariable("HostGlobalRustFlags", strings.Join(hostGlobalRustFlags, " "))
 
 }
