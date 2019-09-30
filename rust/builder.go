@@ -26,11 +26,11 @@ var (
 	_     = pctx.SourcePathVariable("rustcCmd", "${config.RustBin}/rustc")
 	rustc = pctx.AndroidStaticRule("rustc",
 		blueprint.RuleParams{
-			Command: "$rustcCmd " +
+			// mkdir output directory before rustc to work around rustc error in --emit dep-info
+			Command: "mkdir -p $$(dirname $out) && $rustcCmd " +
 				"-C linker=${config.RustLinker} " +
 				"-C link-args=\"${crtBegin} ${config.RustLinkerArgs} ${linkFlags} ${crtEnd}\" " +
-				"-o $out $in ${libFlags} $rustcFlags " +
-				"&& $rustcCmd --emit=dep-info -o $out.d $in ${libFlags} $rustcFlags",
+				"--emit link=$out --emit dep-info=$out.d $in ${libFlags} $rustcFlags",
 			CommandDeps: []string{"$rustcCmd"},
 			Depfile:     "$out.d",
 			Deps:        blueprint.DepsGCC, // Rustc deps-info writes out make compatible dep files: https://github.com/rust-lang/rust/issues/7633
