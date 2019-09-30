@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eccf6998_c59e680e",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-09-30T17:21:05Z",
+      "side": 1,
+      "message": "Remove the blank line to group all stdlib imports together.",
+      "revId": "ee7bbbca94c4ed6e564c9bd08955955da5c456ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
