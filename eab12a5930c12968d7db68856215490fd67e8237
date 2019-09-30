@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5ea6ff7_2cacf7c3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-09-30T13:57:51Z",
+      "side": 1,
+      "message": "Spello: \"available\"",
+      "range": {
+        "startLine": 21,
+        "startChar": 39,
+        "endLine": 21,
+        "endChar": 48
+      },
+      "revId": "eab12a5930c12968d7db68856215490fd67e8237",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6799c012_d67ea1b5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-09-30T13:57:51Z",
+      "side": 1,
+      "message": "Dito.",
+      "range": {
+        "startLine": 22,
+        "startChar": 51,
+        "endLine": 22,
+        "endChar": 60
+      },
+      "revId": "eab12a5930c12968d7db68856215490fd67e8237",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86e4e6e5_b1826417",
+        "filename": "android/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-09-30T13:57:51Z",
+      "side": 1,
+      "message": "Why not aim for [], i.e. make it practically non-optional? Better clarity.",
+      "range": {
+        "startLine": 94,
+        "startChar": 44,
+        "endLine": 94,
+        "endChar": 57
+      },
+      "revId": "eab12a5930c12968d7db68856215490fd67e8237",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21ac3546_b4a24082",
+        "filename": "android/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-09-30T13:57:51Z",
+      "side": 1,
+      "message": "Dito.",
+      "range": {
+        "startLine": 152,
+        "startChar": 6,
+        "endLine": 152,
+        "endChar": 15
+      },
+      "revId": "eab12a5930c12968d7db68856215490fd67e8237",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c0070a0_c2d8c44c",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2404,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-09-30T13:57:51Z",
+      "side": 1,
+      "message": "Dito.",
+      "range": {
+        "startLine": 2404,
+        "startChar": 18,
+        "endLine": 2404,
+        "endChar": 27
+      },
+      "revId": "eab12a5930c12968d7db68856215490fd67e8237",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce87dd91_56f7b607",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2409,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-09-30T13:57:51Z",
+      "side": 1,
+      "message": "Suggest a test that pulls in an unavailable lib through an indirect dependency, possibly even one that\u0027s shared between the two APEXes.",
+      "range": {
+        "startLine": 2409,
+        "startChar": 24,
+        "endLine": 2409,
+        "endChar": 30
+      },
+      "revId": "eab12a5930c12968d7db68856215490fd67e8237",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
