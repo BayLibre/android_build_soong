@@ -144,11 +144,7 @@ func (p *vndkPrebuiltLibraryDecorator) nativeCoverage() bool {
 }
 
 func (p *vndkPrebuiltLibraryDecorator) install(ctx ModuleContext, file android.Path) {
-	arches := ctx.DeviceConfig().Arches()
-	if len(arches) == 0 || arches[0].ArchType.String() != p.arch() {
-		return
-	}
-	if ctx.DeviceConfig().BinderBitness() != p.binderBit() {
+	if !p.matchesWithDevice(ctx.DeviceConfig()) {
 		return
 	}
 	if p.shared() {
@@ -159,6 +155,17 @@ func (p *vndkPrebuiltLibraryDecorator) install(ctx ModuleContext, file android.P
 		}
 		p.baseInstaller.install(ctx, file)
 	}
+}
+
+func (p *vndkPrebuiltLibraryDecorator) matchesWithDevice(config android.DeviceConfig) bool {
+	arches := config.Arches()
+	if len(arches) == 0 || arches[0].ArchType.String() != p.arch() {
+		return false
+	}
+	if config.BinderBitness() != p.binderBit() {
+		return false
+	}
+	return true
 }
 
 func vndkPrebuiltSharedLibrary() *Module {

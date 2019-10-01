@@ -18,6 +18,7 @@ import (
 	"io/ioutil"
 	"os"
 	"reflect"
+	"sort"
 	"strings"
 	"testing"
 
@@ -83,6 +84,10 @@ func withTargets(targets map[android.OsType][]android.Target) testCustomizer {
 			config.Targets[k] = v
 		}
 	}
+}
+
+func withBinder32bit(fs map[string][]byte, config android.Config) {
+	config.TestProductVariables.Binder32bit = proptools.BoolPtr(true)
 }
 
 func testApexContext(t *testing.T, bp string, handlers ...testCustomizer) (*android.TestContext, android.Config) {
@@ -1270,6 +1275,74 @@ func TestHeaderLibsDependency(t *testing.T) {
 	ensureContains(t, cFlags, "-Imy_include")
 }
 
+func ensureExactContents(t *testing.T, ctx *android.TestContext, moduleName string, files []string) {
+	t.Helper()
+	apexRule := ctx.ModuleForTests(moduleName, "android_common_"+moduleName).Rule("apexRule")
+	copyCmds := apexRule.Args["copy_commands"]
+	imageApexDir := "/image.apex/"
+	dstFiles := []string{}
+	for _, cmd := range strings.Split(copyCmds, "&&") {
+		cmd = strings.TrimSpace(cmd)
+		if cmd == "" {
+			continue
+		}
+		terms := strings.Split(cmd, " ")
+		switch terms[0] {
+		case "mkdir":
+		case "cp":
+			if len(terms) != 3 {
+				t.Fatal("copyCmds contains invalid cp command", cmd)
+			}
+			dst := terms[2]
+			index := strings.Index(dst, imageApexDir)
+			if index == -1 {
+				t.Fatal("copyCmds should copy a file to image.apex/", cmd)
+			}
+			dstFile := dst[index+len(imageApexDir):]
+			dstFiles = append(dstFiles, dstFile)
+		default:
+			t.Fatalf("copyCmds should contain mkdir/cp commands only: %q", cmd)
+		}
+	}
+	sort.Strings(dstFiles)
+	sort.Strings(files)
+	missing := []string{}
+	surplus := []string{}
+	i := 0
+	j := 0
+	for i < len(dstFiles) && j < len(files) {
+		if dstFiles[i] == files[j] {
+			i++
+			j++
+		} else if dstFiles[i] < files[j] {
+			surplus = append(surplus, dstFiles[i])
+			i++
+		} else {
+			missing = append(missing, files[j])
+			j++
+		}
+	}
+	if i < len(dstFiles) {
+		surplus = append(surplus, dstFiles[i:]...)
+	}
+	if j < len(files) {
+		missing = append(missing, files[j:]...)
+	}
+
+	failed := false
+	if len(surplus) > 0 {
+		t.Log("surplus files", surplus)
+		failed = true
+	}
+	if len(missing) > 0 {
+		t.Log("missing files", missing)
+		failed = true
+	}
+	if failed {
+		t.Fail()
+	}
+}
+
 func TestVndkApexCurrent(t *testing.T) {
 	ctx, _ := testApex(t, `
 		apex_vndk {
@@ -1308,12 +1381,12 @@ func TestVndkApexCurrent(t *testing.T) {
 		}
 	`)
 
-	apexRule := ctx.ModuleForTests("myapex", "android_common_myapex").Rule("apexRule")
-	copyCmds := apexRule.Args["copy_commands"]
-	ensureContains(t, copyCmds, "image.apex/lib/libvndk.so")
-	ensureContains(t, copyCmds, "image.apex/lib/libvndksp.so")
-	ensureContains(t, copyCmds, "image.apex/lib64/libvndk.so")
-	ensureContains(t, copyCmds, "image.apex/lib64/libvndksp.so")
+	ensureExactContents(t, ctx, "myapex", []string{
+		"lib/libvndk.so",
+		"lib/libvndksp.so",
+		"lib64/libvndk.so",
+		"lib64/libvndksp.so",
+	})
 }
 
 func TestVndkApexWithPrebuilt(t *testing.T) {
@@ -1344,9 +1417,10 @@ func TestVndkApexWithPrebuilt(t *testing.T) {
 		"libvndkshared.so": nil,
 	}))
 
-	apexRule := ctx.ModuleForTests("myapex", "android_common_myapex").Rule("apexRule")
-	copyCmds := apexRule.Args["copy_commands"]
-	ensureContains(t, copyCmds, "image.apex/lib/libvndkshared.so")
+	ensureExactContents(t, ctx, "myapex", []string{
+		"lib/libvndkshared.so",
+		"lib64/libvndkshared.so",
+	})
 }
 
 func TestVndkApexVersion(t *testing.T) {
@@ -1378,21 +1452,29 @@ func TestVndkApexVersion(t *testing.T) {
 		vndk_prebuilt_shared {
 			name: "libvndk27",
 			version: "27",
+			target_arch: "arm64",
 			vendor_available: true,
 			vndk: {
 				enabled: true,
 			},
-			srcs: ["libvndk27.so"],
+			arch: {
+				arm: {
+					srcs: ["libvndk27_arm.so"],
+				},
+				arm64: {
+					srcs: ["libvndk27_arm64.so"],
+				},
+			}
 		}
 	`, withFiles(map[string][]byte{
-		"libvndk27.so": nil,
+		"libvndk27_arm.so":   nil,
+		"libvndk27_arm64.so": nil,
 	}))
 
-	apexRule := ctx.ModuleForTests("myapex_v27", "android_common_myapex_v27").Rule("apexRule")
-	copyCmds := apexRule.Args["copy_commands"]
-	ensureContains(t, copyCmds, "image.apex/lib/libvndk27.so")
-	ensureContains(t, copyCmds, "image.apex/lib64/libvndk27.so")
-	ensureNotContains(t, copyCmds, "image.apex/lib/libvndk.so")
+	ensureExactContents(t, ctx, "myapex_v27", []string{
+		"lib/libvndk27_arm.so",
+		"lib64/libvndk27_arm64.so",
+	})
 }
 
 func TestVndkApexErrorWithDuplicateVersion(t *testing.T) {
@@ -1476,14 +1558,10 @@ func TestVndkApexSkipsNativeBridgeSupportedModules(t *testing.T) {
 		},
 	}))
 
-	apexRule := ctx.ModuleForTests("myapex", "android_common_myapex").Rule("apexRule")
-	copyCmds := apexRule.Args["copy_commands"]
-	ensureContains(t, copyCmds, "image.apex/lib/libvndk.so")
-	ensureContains(t, copyCmds, "image.apex/lib64/libvndk.so")
-
-	// apex
-	ensureNotContains(t, copyCmds, "image.apex/lib/x86/libvndk.so")
-	ensureNotContains(t, copyCmds, "image.apex/lib64/x86_64/libvndk.so")
+	ensureExactContents(t, ctx, "myapex", []string{
+		"lib/libvndk.so",
+		"lib64/libvndk.so",
+	})
 }
 
 func TestVndkApexDoesntSupportNativeBridgeSupported(t *testing.T) {
@@ -1514,6 +1592,70 @@ func TestVndkApexDoesntSupportNativeBridgeSupported(t *testing.T) {
 			stl: "none",
 		}
 	`)
+}
+
+func TestVndkApexWithBinder32(t *testing.T) {
+	ctx, _ := testApex(t,
+		`
+		apex_vndk {
+			name: "myapex_v27",
+			key: "myapex.key",
+			file_contexts: "myapex",
+			vndk_version: "27",
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
+		vndk_prebuilt_shared {
+			name: "libvndk27",
+			version: "27",
+			target_arch: "arm",
+			vendor_available: true,
+			vndk: {
+				enabled: true,
+			},
+			arch: {
+				arm: {
+					srcs: ["libvndk27.so"],
+				}
+			},
+		}
+
+		vndk_prebuilt_shared {
+			name: "libvndk27",
+			version: "27",
+			target_arch: "arm",
+			binder32bit: true,
+			vendor_available: true,
+			vndk: {
+				enabled: true,
+			},
+			arch: {
+				arm: {
+					srcs: ["libvndk27binder32.so"],
+				}
+			},
+		}
+		`,
+		withFiles(map[string][]byte{
+			"libvndk27.so":         nil,
+			"libvndk27binder32.so": nil,
+		}),
+		withBinder32bit,
+		withTargets(map[android.OsType][]android.Target{
+			android.Android: []android.Target{
+				{Os: android.Android, Arch: android.Arch{ArchType: android.Arm, ArchVariant: "armv7-a-neon", Native: true, Abi: []string{"armeabi-v7a"}}, NativeBridge: android.NativeBridgeDisabled, NativeBridgeHostArchName: "", NativeBridgeRelativePath: ""},
+			},
+		}),
+	)
+
+	ensureExactContents(t, ctx, "myapex_v27", []string{
+		"lib/libvndk27binder32.so",
+	})
 }
 
 func TestDependenciesInApexManifest(t *testing.T) {

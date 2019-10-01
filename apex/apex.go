@@ -236,13 +236,13 @@ func apexVndkGatherMutator(mctx android.TopDownMutatorContext) {
 // apexVndkAddDepsMutator adds (reverse) dependencies from vndk libs to apex_vndk modules.
 // It filters only libs with matching targets.
 func apexVndkAddDepsMutator(mctx android.BottomUpMutatorContext) {
-	if cc, ok := mctx.Module().(*cc.Module); ok && cc.IsVndkOnSystem() {
+	if cc, ok := mctx.Module().(*cc.Module); ok && cc.Enabled() && cc.IsVndkOnSystem(mctx.DeviceConfig()) {
 		vndkApexList := vndkApexList(mctx.Config())
 		if ab, ok := vndkApexList[cc.VndkVersion()]; ok {
 			targetArch := cc.Target().String()
 			for _, target := range ab.MultiTargets() {
 				if target.String() == targetArch {
-					mctx.AddReverseDependency(mctx.Module(), sharedLibTag, ab.Name())
+					mctx.AddReverseDependency(mctx.Module(), sharedLibTag, mctx.OtherModuleName(ab))
 					break
 				}
 			}

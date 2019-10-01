@@ -489,12 +489,16 @@ func (c *Module) RelativeInstallPath() string {
 }
 
 // IsVndkOnSystem returns true if a module is supposed to be a vndk library provided by system to vendor
-func (c *Module) IsVndkOnSystem() bool {
-	if linker, ok := c.linker.(libraryInterface); ok {
-		return linker.shared() && c.isVndk() && c.useVndk() && !c.isVndkExt()
+func (c *Module) IsVndkOnSystem(config android.DeviceConfig) bool {
+	if library, ok := c.linker.(libraryInterface); ok && !library.shared() {
+		return false
 	}
-
-	return false
+	if p, ok := c.linker.(interface {
+		matchesWithDevice(android.DeviceConfig) bool
+	}); ok && !p.matchesWithDevice(config) {
+		return false
+	}
+	return c.isVndk() && c.useVndk() && !c.isVndkExt()
 }
 
 func (c *Module) VndkVersion() string {
