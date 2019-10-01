@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "542e98c2_2bd967f4",
+        "filename": "rust/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1208973
+      },
+      "writtenOn": "2019-10-01T14:37:08Z",
+      "side": 1,
+      "message": "How exactly should I do that?  The C code doesn\u0027t simply append them together, and I don\u0027t know Soong well enough to know the best style for this.",
+      "parentUuid": "8b2e0826_07c03455",
+      "revId": "917ceeea8085fa674a2abd89d4ea52b79671e5a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "52463ca2_b3a80e12",
         "filename": "rust/config/global.go",
         "patchSetId": 2
@@ -53,6 +71,48 @@
       "writtenOn": "2019-10-01T00:54:10Z",
       "side": 1,
       "message": "For native code we use:\nPWD\u003d/proc/self/cwd clang ... -fdebug-prefix-map\u003d/proc/self/cwd\u003d\n\nI don\u0027t remember why we do that instead of $$(pwd) though.  Maybe dwillemsen@ does?",
+      "revId": "917ceeea8085fa674a2abd89d4ea52b79671e5a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68b8ed95_032fb484",
+        "filename": "rust/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1208973
+      },
+      "writtenOn": "2019-10-01T14:37:08Z",
+      "side": 1,
+      "message": "Just replacing the $((pwd)) with /proc/self/cwd doesn\u0027t work, of course, as it uses that string literally instead of its value.  I don\u0027t know how to set PWD explicitly, but wouldn\u0027t that not actually help here?",
+      "parentUuid": "2e7cbf91_da74486a",
+      "revId": "917ceeea8085fa674a2abd89d4ea52b79671e5a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f04388c8_186be27c",
+        "filename": "rust/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1208973
+      },
+      "writtenOn": "2019-10-01T14:37:08Z",
+      "side": 1,
+      "message": "In theory it can be anything, I suppose.  We\u0027re basing this off upstream Rust, which uses /rustc/1.37.0 (or whatever the version is).",
+      "parentUuid": "52463ca2_b3a80e12",
+      "range": {
+        "startLine": 41,
+        "startChar": 31,
+        "endLine": 41,
+        "endChar": 40
+      },
       "revId": "917ceeea8085fa674a2abd89d4ea52b79671e5a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
