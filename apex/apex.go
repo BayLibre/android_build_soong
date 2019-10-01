@@ -149,14 +149,37 @@ var (
 	androidAppTag  = dependencyTag{name: "androidApp"}
 )
 
-var (
-	whitelistNoApex = map[string][]string{
-		"apex_test_build_features":       []string{"libbinder"},
-		"com.android.media.swcodec":      []string{"libbinder"},
-		"test_com.android.media.swcodec": []string{"libbinder"},
-		"com.android.vndk":               []string{"libbinder"},
+type nameMatcher func(string) bool
+
+func equals(expected string) nameMatcher {
+	return func(name string) bool {
+		return expected == name
 	}
-)
+}
+
+func startsWith(prefix string) nameMatcher {
+	return func(name string) bool {
+		return strings.HasPrefix(name, prefix)
+	}
+}
+
+var whitelistNoApex = map[string][]nameMatcher{
+	"libbinder": {
+		equals("apex_test_build_features"),
+		equals("com.android.media.swcodec"),
+		equals("test_com.android.media.swcodec"),
+		startsWith("com.android.vndk."),
+	},
+}
+
+func noApexWhitelisted(moduleName, apexName string) bool {
+	for _, matcher := range whitelistNoApex[moduleName] {
+		if matcher(apexName) {
+			return true
+		}
+	}
+	return false
+}
 
 func init() {
 	pctx.Import("android/soong/android")
@@ -222,12 +245,14 @@ func apexVndkGatherMutator(mctx android.TopDownMutatorContext) {
 		if ab.IsNativeBridgeSupported() {
 			mctx.PropertyErrorf("native_bridge_supported", "%q doesn't support native bridge binary.", mctx.ModuleType())
 		}
-		vndkVersion := proptools.StringDefault(ab.vndkProperties.Vndk_version, mctx.DeviceConfig().PlatformVndkVersion())
+
+		vndkVersion := proptools.String(ab.vndkProperties.Vndk_version)
+
 		vndkApexListMutex.Lock()
 		defer vndkApexListMutex.Unlock()
 		vndkApexList := vndkApexList(mctx.Config())
 		if other, ok := vndkApexList[vndkVersion]; ok {
-			mctx.PropertyErrorf("vndk_version", "%v is already defined in %q", vndkVersion, other.Name())
+			mctx.PropertyErrorf("vndk_version", "%v is already defined in %q", vndkVersion, other.BaseModuleName())
 		}
 		vndkApexList[vndkVersion] = ab
 	}
@@ -1172,7 +1197,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 					ctx.ModuleErrorf("unexpected tag %q for indirect dependency %q", depTag, depName)
 				} else if depTag == android.DefaultsDepTag {
 					return false
-				} else if am.NoApex() && !android.InList(depName, whitelistNoApex[ctx.ModuleName()]) {
+				} else if am.NoApex() && !noApexWhitelisted(depName, ctx.ModuleName()) {
 					ctx.ModuleErrorf("tries to include no_apex module %s", depName)
 				}
 			}
@@ -1206,11 +1231,10 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	})
 
 	// check no_apex modules
-	whitelist := whitelistNoApex[ctx.ModuleName()]
-	for i := range filesInfo {
-		if am, ok := filesInfo[i].module.(android.ApexModule); ok {
-			if am.NoApex() && !android.InList(filesInfo[i].moduleName, whitelist) {
-				ctx.ModuleErrorf("tries to include no_apex module %s", filesInfo[i].moduleName)
+	for _, fi := range filesInfo {
+		if am, ok := fi.module.(android.ApexModule); ok {
+			if am.NoApex() && !noApexWhitelisted(fi.moduleName, ctx.ModuleName()) {
+				ctx.ModuleErrorf("tries to include no_apex module %s", fi.moduleName)
 			}
 		}
 	}
@@ -1791,6 +1815,15 @@ func vndkApexBundleFactory() android.Module {
 		}{
 			proptools.StringPtr("both"),
 		})
+
+		vndkVersion := proptools.StringDefault(bundle.vndkProperties.Vndk_version, "current")
+		if vndkVersion == "current" {
+			vndkVersion = ctx.DeviceConfig().PlatformVndkVersion()
+			bundle.vndkProperties.Vndk_version = proptools.StringPtr(vndkVersion)
+		}
+
+		// Ensure VNDK APEX mount point is formatted as com.android.vndk.v###
+		bundle.properties.Apex_name = proptools.StringPtr("com.android.vndk.v" + vndkVersion)
 	})
 	return bundle
 }
