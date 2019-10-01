@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ce86c40_b64280d2",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-01T16:32:37Z",
+      "side": 1,
+      "message": "is it okay to reuse the syntax from file group?",
+      "range": {
+        "startLine": 151,
+        "startChar": 34,
+        "endLine": 151,
+        "endChar": 35
+      },
+      "revId": "5567aa3f092ed4b6ec534064814446f0224ba278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14d2790b_f873440c",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-01T16:32:37Z",
+      "side": 1,
+      "message": "nit: move to variable, also make more explicit, e.g. why not call it \"platform-vndk\"?",
+      "range": {
+        "startLine": 156,
+        "startChar": 11,
+        "endLine": 156,
+        "endChar": 22
+      },
+      "revId": "5567aa3f092ed4b6ec534064814446f0224ba278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "154434cc_95c70e78",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-01T16:32:37Z",
+      "side": 1,
+      "message": "is it ever useful for this to be specified? I thought it would be the same as not specifying \u0027apex_available\u0027",
+      "range": {
+        "startLine": 156,
+        "startChar": 35,
+        "endLine": 156,
+        "endChar": 42
+      },
+      "revId": "5567aa3f092ed4b6ec534064814446f0224ba278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
