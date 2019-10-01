@@ -152,6 +152,48 @@
       "revId": "917ceeea8085fa674a2abd89d4ea52b79671e5a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d541f8c6_350dd123",
+        "filename": "rust/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-01T17:06:30Z",
+      "side": 1,
+      "message": "You would set PWD\u003d/proc/self/cwd in the environment at the beginning of the command line.\n\nI talked to Dan, apparently the reason for the PWD\u003d/proc/self/cwd trick was because Clang was embedding the command line argument into the .o file, which included the absolute path.  If this change produces identical output files for different source paths then it doesn\u0027t need the same trick.",
+      "parentUuid": "68b8ed95_032fb484",
+      "revId": "917ceeea8085fa674a2abd89d4ea52b79671e5a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af5ed17d_f2e21d42",
+        "filename": "rust/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-01T17:06:30Z",
+      "side": 1,
+      "message": "Does the value affect debugging?  For C++ we want the debug paths to be relative so that gdb run from $ANDROID_BUILD_TOP can find the source files.",
+      "parentUuid": "f04388c8_186be27c",
+      "range": {
+        "startLine": 41,
+        "startChar": 31,
+        "endLine": 41,
+        "endChar": 40
+      },
+      "revId": "917ceeea8085fa674a2abd89d4ea52b79671e5a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
