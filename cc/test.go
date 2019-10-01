@@ -173,7 +173,7 @@ func TestPerSrcMutator(mctx android.BottomUpMutatorContext) {
 		if test, ok := m.linker.(testPerSrc); ok {
 			numTests := len(test.srcs())
 			if test.testPerSrc() && numTests > 0 {
-				if duplicate, found := checkDuplicate(test.srcs()); found {
+				if duplicate, found := CheckDuplicate(test.srcs()); found {
 					mctx.PropertyErrorf("srcs", "found a duplicate entry %q", duplicate)
 					return
 				}
@@ -206,7 +206,7 @@ func TestPerSrcMutator(mctx android.BottomUpMutatorContext) {
 	}
 }
 
-func checkDuplicate(values []string) (duplicate string, found bool) {
+func CheckDuplicate(values []string) (duplicate string, found bool) {
 	seen := make(map[string]string)
 	for _, v := range values {
 		if duplicate, found = seen[v]; found {
