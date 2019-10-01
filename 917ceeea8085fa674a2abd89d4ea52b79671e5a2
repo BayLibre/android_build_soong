@@ -260,6 +260,30 @@
       "revId": "917ceeea8085fa674a2abd89d4ea52b79671e5a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a58dc50_9021e749",
+        "filename": "rust/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1208973
+      },
+      "writtenOn": "2019-10-01T18:07:25Z",
+      "side": 1,
+      "message": "So should I change this to be empty?  I tested it and it works.",
+      "parentUuid": "32486232_50780a8d",
+      "range": {
+        "startLine": 41,
+        "startChar": 31,
+        "endLine": 41,
+        "endChar": 40
+      },
+      "revId": "917ceeea8085fa674a2abd89d4ea52b79671e5a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
