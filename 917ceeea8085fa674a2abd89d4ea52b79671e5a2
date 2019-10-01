@@ -194,6 +194,48 @@
       "revId": "917ceeea8085fa674a2abd89d4ea52b79671e5a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "873e02f0_3075d72d",
+        "filename": "rust/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1208973
+      },
+      "writtenOn": "2019-10-01T17:20:06Z",
+      "side": 1,
+      "message": "Cargo actually used to use the exact arguments as part of a hash, but they stopped doing that for this specific argument a few months ago.  So we should be good.",
+      "parentUuid": "d541f8c6_350dd123",
+      "revId": "917ceeea8085fa674a2abd89d4ea52b79671e5a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03363b4f_83256956",
+        "filename": "rust/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1208973
+      },
+      "writtenOn": "2019-10-01T17:20:06Z",
+      "side": 1,
+      "message": "I believe it does affect debugging.  Although testing locally, even with this flag gdb can find the sources if I\u0027m in the same directory as them, so it\u0027s not simply just checking the absolute path.\n\nMatthew, what do you think is the best way of handling this?",
+      "parentUuid": "af5ed17d_f2e21d42",
+      "range": {
+        "startLine": 41,
+        "startChar": 31,
+        "endLine": 41,
+        "endChar": 40
+      },
+      "revId": "917ceeea8085fa674a2abd89d4ea52b79671e5a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
