@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9bf28737_7fd9ab2f",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1308042
+      },
+      "writtenOn": "2019-10-01T02:20:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77b093b6_ff0d9774",
+      "range": {
+        "startLine": 353,
+        "startChar": 62,
+        "endLine": 353,
+        "endChar": 76
+      },
+      "revId": "9e8f7d0a2a578ce2c24266d2810ef536b143c2dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "834d8fdf_3b24300d",
         "filename": "java/java.go",
         "patchSetId": 3
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "5fb8bbae_b16c6bfc",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1083,
+      "author": {
+        "id": 1308042
+      },
+      "writtenOn": "2019-10-01T02:20:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "849bf05b_0beea53d",
+      "range": {
+        "startLine": 1083,
+        "startChar": 2,
+        "endLine": 1083,
+        "endChar": 16
+      },
+      "revId": "9e8f7d0a2a578ce2c24266d2810ef536b143c2dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7f113cf_0fa12bf1",
         "filename": "java/java.go",
         "patchSetId": 3
@@ -92,6 +140,30 @@
       "revId": "9e8f7d0a2a578ce2c24266d2810ef536b143c2dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6e71fcf_487dd416",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1086,
+      "author": {
+        "id": 1308042
+      },
+      "writtenOn": "2019-10-01T02:20:54Z",
+      "side": 1,
+      "message": "No, it\u0027s doesn\u0027t matter to AIDEGen since only one .kt or .java file will be parsed from each folder.",
+      "parentUuid": "b7f113cf_0fa12bf1",
+      "range": {
+        "startLine": 1086,
+        "startChar": 68,
+        "endLine": 1086,
+        "endChar": 108
+      },
+      "revId": "9e8f7d0a2a578ce2c24266d2810ef536b143c2dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
