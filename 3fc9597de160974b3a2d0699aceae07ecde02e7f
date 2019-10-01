@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a9afade_65fb2f37",
+        "filename": "java/sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2019-10-01T20:59:24Z",
+      "side": 1,
+      "message": "TODO(b/\u003cnumber\u003e)?",
+      "range": {
+        "startLine": 328,
+        "startChar": 7,
+        "endLine": 328,
+        "endChar": 11
+      },
+      "revId": "3fc9597de160974b3a2d0699aceae07ecde02e7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
