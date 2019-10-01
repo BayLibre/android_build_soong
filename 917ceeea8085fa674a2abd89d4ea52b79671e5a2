@@ -236,6 +236,30 @@
       "revId": "917ceeea8085fa674a2abd89d4ea52b79671e5a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32486232_50780a8d",
+        "filename": "rust/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2019-10-01T17:45:02Z",
+      "side": 1,
+      "message": "The primary advantage of having a source tree key in a binary is that you can more cleanly use gdb\u0027s set substitute-path feature if you have a binary containing things from two separate source trees.\n\nFor example, if you build an out-of-tree binary which linked against something from the platform, but wanted to be able to debug through it, you could do\n\nset substitute-path /android/ /path/to/my/android\nset substitute-path /some-other-proj/ /path/to/the/other/proj\n\n(or even place such in your .gdbinit)\nwhich would allow you to correctly resolve source from multiple trees.\n\nThat said, if we are already using a relative path for C++, we\u0027ve already lost this ability, so it might be best to just follow the relative path.\n\ntl;dr:\nUsing a leading /tree-name/ is more composable.\nIf we are already using a relative path in C++, we\u0027ve already lost this composability, and it\u0027d be fine to just do the same thing C++ does, this isn\u0027t a rust-specific decision.",
+      "parentUuid": "03363b4f_83256956",
+      "range": {
+        "startLine": 41,
+        "startChar": 31,
+        "endLine": 41,
+        "endChar": 40
+      },
+      "revId": "917ceeea8085fa674a2abd89d4ea52b79671e5a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
