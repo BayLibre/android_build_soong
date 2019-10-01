@@ -28,8 +28,12 @@ import (
 var (
 	// Add flags to ignore warnings that profiles are old or missing for
 	// some functions.
+	// The combination of the new pass manager and PGO profiles is producing
+	// non-deterministic build result. Disable the new PM as a temporary
+	// workaround. (b/140261284)
 	profileUseOtherFlags = []string{
 		"-Wno-backend-plugin",
+		"-fno-experimental-new-pass-manager",
 	}
 
 	globalPgoProfileProjects = []string{
