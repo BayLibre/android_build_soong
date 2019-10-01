@@ -1,0 +1,9 @@
+Autosubmit+1: Joel Galenson <jgalenson@google.com>
+Code-Review+2: Matthew Maurer <mmaurer@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Tue, 01 Oct 2019 21:08:05 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1131065
+Project: platform/build/soong
+Branch: refs/heads/master
