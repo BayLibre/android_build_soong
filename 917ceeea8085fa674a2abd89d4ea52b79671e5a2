@@ -284,6 +284,30 @@
       "revId": "917ceeea8085fa674a2abd89d4ea52b79671e5a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30c566a2_8b283a63",
+        "filename": "rust/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2019-10-01T18:11:03Z",
+      "side": 1,
+      "message": "Empty is fine by me given that C++ is already doing it.\n\nIf it wasn\u0027t I\u0027d push for /android/ or similar, but given that -fdebug-prefix-map is already remapping relative rather than using a .gdbinit setting, that would be a separate change where we\u0027d propose swapping the other debug prefix as well. They should match.",
+      "parentUuid": "4a58dc50_9021e749",
+      "range": {
+        "startLine": 41,
+        "startChar": 31,
+        "endLine": 41,
+        "endChar": 40
+      },
+      "revId": "917ceeea8085fa674a2abd89d4ea52b79671e5a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
