@@ -36,11 +36,43 @@ func TestPreferDynamicBinary(t *testing.T) {
 	fizzBuzz := ctx.ModuleForTests("fizz-buzz", "linux_glibc_x86_64").Output("fizz-buzz")
 	fizzBuzzDynamic := ctx.ModuleForTests("fizz-buzz-dynamic", "linux_glibc_x86_64").Output("fizz-buzz-dynamic")
 
-	if !strings.Contains(fizzBuzzDynamic.Args["rustcFlags"], "prefer-dynamic") {
-		t.Errorf("missing prefer-dynamic flag, rustcFlags: %#v", fizzBuzzDynamic.Args["rustcFlags"])
+	// Do not compile binary modules with the --test flag.
+	flags := fizzBuzzDynamic.Args["rustcFlags"]
+	if strings.Contains(flags, "--test") {
+		t.Errorf("extra --test flag, rustcFlags: %#v", flags)
+	}
+	if !strings.Contains(flags, "prefer-dynamic") {
+		t.Errorf("missing prefer-dynamic flag, rustcFlags: %#v", flags)
 	}
 
-	if strings.Contains(fizzBuzz.Args["rustcFlags"], "prefer-dynamic") {
-		t.Errorf("unexpected prefer-dynamic flag, rustcFlags: %#v", fizzBuzz.Args["rustcFlags"])
+	flags = fizzBuzz.Args["rustcFlags"]
+	if strings.Contains(flags, "--test") {
+		t.Errorf("extra --test flag, rustcFlags: %#v", flags)
+	}
+	if strings.Contains(flags, "prefer-dynamic") {
+		t.Errorf("unexpected prefer-dynamic flag, rustcFlags: %#v", flags)
+	}
+}
+
+// Check if rust_test_host accepts multiple source files and applies --test flag.
+func TestRustTest(t *testing.T) {
+	ctx := testRust(t, `
+		rust_test_host {
+			name: "my_test",
+			srcs: ["foo.rs", "src/bar.rs"],
+			relative_install_path: "rust/my-test",
+		}`)
+
+	for _, name := range []string{"foo", "bar"} {
+		testingModule := ctx.ModuleForTests("my_test", "linux_glibc_x86_64_"+name)
+		testingBuildParams := testingModule.Output(name)
+		rustcFlags := testingBuildParams.Args["rustcFlags"]
+		if !strings.Contains(rustcFlags, "--test") {
+			t.Errorf("%v missing --test flag, rustcFlags: %#v", name, rustcFlags)
+		}
+		outPath := "/my_test/linux_glibc_x86_64_" + name + "/" + name
+		if !strings.Contains(testingBuildParams.Output.String(), outPath) {
+			t.Errorf("wrong output: %v  expect: %v", testingBuildParams.Output, outPath)
+		}
 	}
 }

@@ -15,6 +15,9 @@
 package rust
 
 import (
+	"path/filepath"
+	"strings"
+
 	"android/soong/android"
 	"android/soong/rust/config"
 )
@@ -22,6 +25,9 @@ import (
 func init() {
 	android.RegisterModuleType("rust_binary", RustBinaryFactory)
 	android.RegisterModuleType("rust_binary_host", RustBinaryHostFactory)
+	// Rust tests are binary files built with --test.
+	android.RegisterModuleType("rust_test", RustTestFactory)
+	android.RegisterModuleType("rust_test_host", RustTestHostFactory)
 }
 
 type BinaryCompilerProperties struct {
@@ -30,6 +36,9 @@ type BinaryCompilerProperties struct {
 
 	// passes -C prefer-dynamic to rustc, which tells it to dynamically link the stdlib (assuming it has no dylib dependencies already)
 	Prefer_dynamic *bool
+
+	// used by multi testcase modules to store the per testcase module SubName
+	Stem *string
 }
 
 type binaryDecorator struct {
@@ -38,31 +47,45 @@ type binaryDecorator struct {
 	Properties           BinaryCompilerProperties
 	distFile             android.OptionalPath
 	unstrippedOutputFile android.Path
+	isTest               bool
 }
 
 var _ compiler = (*binaryDecorator)(nil)
 
 // rust_binary produces a binary that is runnable on a device.
 func RustBinaryFactory() android.Module {
-	module, _ := NewRustBinary(android.HostAndDeviceSupported)
+	module := NewRustBinary(android.HostAndDeviceSupported, false)
 	return module.Init()
 }
 
 func RustBinaryHostFactory() android.Module {
-	module, _ := NewRustBinary(android.HostSupported)
+	module := NewRustBinary(android.HostSupported, false)
 	return module.Init()
 }
 
-func NewRustBinary(hod android.HostOrDeviceSupported) (*Module, *binaryDecorator) {
+func RustTestFactory() android.Module {
+	module := NewRustBinary(android.HostAndDeviceSupported, true)
+	return module.Init()
+}
+
+func RustTestHostFactory() android.Module {
+	module := NewRustBinary(android.HostSupported, true)
+	return module.Init()
+}
+
+func NewRustBinary(hod android.HostOrDeviceSupported, isTest bool) *Module {
 	module := newModule(hod, android.MultilibFirst)
 
-	binary := &binaryDecorator{
-		baseCompiler: NewBaseCompiler("bin", ""),
+	dir := "bin"
+	if isTest {
+		dir = "testcases"
+	}
+	module.compiler = &binaryDecorator{
+		baseCompiler: NewBaseCompiler(dir, ""), // TODO(chh): set up dir64?
+		isTest:       isTest,
 	}
 
-	module.compiler = binary
-
-	return module, binary
+	return module
 }
 
 func (binary *binaryDecorator) preferDynamic() bool {
@@ -71,6 +94,11 @@ func (binary *binaryDecorator) preferDynamic() bool {
 
 func (binary *binaryDecorator) compilerFlags(ctx ModuleContext, flags Flags) Flags {
 	flags = binary.baseCompiler.compilerFlags(ctx, flags)
+
+	if binary.isTest {
+		// Compile a Rust test file like a binary with --test.
+		flags.RustFlags = append(flags.RustFlags, "--test")
+	}
 
 	if ctx.toolchain().Bionic() {
 		// no-undefined-version breaks dylib compilation since __rust_*alloc* functions aren't defined, but we can apply this to binaries.
@@ -122,4 +150,57 @@ func (binary *binaryDecorator) compile(ctx ModuleContext, flags Flags, deps Path
 	TransformSrcToBinary(ctx, srcPath, deps, flags, outputFile, deps.linkDirs)
 
 	return outputFile
+}
+
+func (test *binaryDecorator) testPerSrc() bool {
+	return test.isTest
+}
+
+func (test *binaryDecorator) srcs() []string {
+	return test.Properties.Srcs
+}
+
+func (test *binaryDecorator) setSrc(name, src string) {
+	test.Properties.Srcs = []string{src}
+	test.Properties.Stem = StringPtr(name)
+	test.baseCompiler.Properties.Stem = StringPtr(name)
+	// TODO(chh): keep only one Stem?
+}
+
+func (test *binaryDecorator) unsetSrc() {
+	test.Properties.Srcs = nil
+	test.Properties.Stem = StringPtr("")
+	test.baseCompiler.Properties.Stem = StringPtr("")
+}
+
+type testPerSrc interface {
+	testPerSrc() bool
+	srcs() []string
+	setSrc(string, string)
+	unsetSrc()
+}
+
+var _ testPerSrc = (*binaryDecorator)(nil)
+
+func TestPerSrcMutator(mctx android.BottomUpMutatorContext) {
+	if m, ok := mctx.Module().(*Module); ok {
+		if test, ok := m.compiler.(testPerSrc); ok {
+			numTests := len(test.srcs())
+			if test.testPerSrc() && numTests > 0 {
+				if duplicate, found := android.CheckDuplicate(test.srcs()); found {
+					mctx.PropertyErrorf("srcs", "found a duplicate entry %q", duplicate)
+					return
+				}
+				testNames := make([]string, numTests)
+				for i, src := range test.srcs() {
+					testNames[i] = strings.TrimSuffix(filepath.Base(src), filepath.Ext(src))
+				}
+				// TODO(chh): Add an "all tests" variation like cc/test.go?
+				tests := mctx.CreateLocalVariations(testNames...)
+				for i, src := range test.srcs() {
+					tests[i].(*Module).compiler.(testPerSrc).setSrc(testNames[i], src)
+				}
+			}
+		}
+	}
 }
