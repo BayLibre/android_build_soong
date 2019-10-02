@@ -1290,6 +1290,11 @@ func (c *Module) beginMutator(actx android.BottomUpMutatorContext) {
 	ctx.ctx = ctx
 
 	c.begin(ctx)
+
+	vndkLibrariesLock.Lock()
+	defer vndkLibrariesLock.Unlock()
+	name := strings.TrimPrefix(c.Name(), "prebuilt_")
+	modulePaths(actx.Config())[name] = actx.ModuleDir()
 }
 
 // Split name#version into name and version

@@ -266,7 +266,7 @@ func CreateTestContext(bp string, fs map[string][]byte,
 		ctx.TopDown("double_loadable", checkDoubleLoadableLibraries).Parallel()
 	})
 	ctx.PreArchMutators(android.RegisterDefaultsPreArchMutators)
-	ctx.RegisterSingletonType("vndk-snapshot", android.SingletonFactoryAdaptor(VndkSnapshotSingleton))
+	ctx.RegisterSingletonType("snapshot", android.SingletonFactoryAdaptor(SnapshotSingleton))
 
 	// add some modules that are required by the compiler and/or linker
 	bp = bp + GatherRequiredDepsForTest(os)
