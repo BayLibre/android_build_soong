@@ -59,6 +59,11 @@ type variableProperties struct {
 			Cflags []string
 		}
 
+		// The API level at which this phone originally launched
+		Product_shipping_api_level struct {
+			Cflags []string
+		}
+
 		// treble_linker_namespaces is true when the system/vendor linker namespace separation is
 		// enabled.
 		Treble_linker_namespaces struct {
@@ -144,6 +149,8 @@ type productVariables struct {
 	Platform_preview_sdk_version              *string  `json:",omitempty"`
 	Platform_min_supported_target_sdk_version *string  `json:",omitempty"`
 	Platform_base_os                          *string  `json:",omitempty"`
+
+	Product_shipping_api_level *string `json:",omitempty"`
 
 	DeviceName              *string  `json:",omitempty"`
 	DeviceArch              *string  `json:",omitempty"`
