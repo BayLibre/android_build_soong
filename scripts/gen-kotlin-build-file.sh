@@ -61,6 +61,11 @@ while (( "$#" )); do
       echo "  <javaSourceRoots path=\"${path}\"/>"
     elif [[ $file == *.kt ]]; then
       echo "  <sources path=\"${path}\"/>"
+      if [[ $file == *.common.kt ]]; then
+        echo "  <commonSources path=\"${path}\"/>"
+      elif [[ $file == **/common/**/*.kt ]]; then
+        echo "  <commonSources path=\"${path}\"/>"
+      fi
     else
       echo "Unknown source file type ${file}"
       exit 1
