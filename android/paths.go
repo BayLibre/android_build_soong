@@ -47,6 +47,7 @@ type ModuleInstallPathContext interface {
 	InstallInTestcases() bool
 	InstallInSanitizerDir() bool
 	InstallInRecovery() bool
+	InstallInRoot() bool
 	InstallBypassMake() bool
 }
 
@@ -1123,6 +1124,16 @@ func PathForModuleRes(ctx ModuleContext, pathComponents ...string) ModuleResPath
 func PathForModuleInstall(ctx ModuleInstallPathContext, pathComponents ...string) OutputPath {
 	var outPaths []string
 	if ctx.Device() {
+		if ctx.InstallInRoot() {
+			// Prevent subdirectories when installing into root to prevent installing into arbitrary locations.
+			path, err := validatePath(pathComponents...)
+			if err != nil {
+				reportPathError(ctx, err)
+			}
+			if strings.ContainsRune(path, '/') {
+				reportPathErrorf(ctx, "path %q installing into root must not have a subdirectory", path)
+			}
+		}
 		partition := modulePartition(ctx)
 		outPaths = []string{"target", "product", ctx.Config().DeviceName(), partition}
 	} else {
@@ -1159,8 +1170,12 @@ func modulePartition(ctx ModuleInstallPathContext) string {
 	} else if ctx.InstallInTestcases() {
 		partition = "testcases"
 	} else if ctx.InstallInRecovery() {
-		// the layout of recovery partion is the same as that of system partition
-		partition = "recovery/root/system"
+		if ctx.InstallInRoot() {
+			partition = "recovery/root"
+		} else {
+			// the layout of recovery partion is the same as that of system partition
+			partition = "recovery/root/system"
+		}
 	} else if ctx.SocSpecific() {
 		partition = ctx.DeviceConfig().VendorPath()
 	} else if ctx.DeviceSpecific() {
@@ -1169,6 +1184,8 @@ func modulePartition(ctx ModuleInstallPathContext) string {
 		partition = ctx.DeviceConfig().ProductPath()
 	} else if ctx.SystemExtSpecific() {
 		partition = ctx.DeviceConfig().SystemExtPath()
+	} else if ctx.InstallInRoot() {
+		partition = "root"
 	} else {
 		partition = "system"
 	}
