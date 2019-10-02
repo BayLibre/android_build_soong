@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c916a8bb_fdeabecd",
+        "filename": "android/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-02T04:43:43Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 149,
+        "endChar": 3
+      },
+      "revId": "47ba55234950361d69953455b8e8a34986a1261e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "437f097a_463161c8",
+        "filename": "android/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-02T04:43:43Z",
+      "side": 1,
+      "message": "The : syntax is used elsewhere in Soong to reference modules, this seems to use it as the opposite.  I\u0027d suggest finding a different syntax.  Visibility (https://android.googlesource.com/platform/build/soong/+/master/README.md#visibility) uses a pseudo-package, maybe \"//apex_available:platform\"?",
+      "range": {
+        "startLine": 150,
+        "startChar": 24,
+        "endLine": 150,
+        "endChar": 25
+      },
+      "revId": "47ba55234950361d69953455b8e8a34986a1261e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
