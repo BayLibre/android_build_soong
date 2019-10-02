@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b72c669b_ed5fec51",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-10-02T17:41:01Z",
+      "side": 1,
+      "message": "So, this is kind of gross because it means that in both system/libhidl/vintfdata/Android.mk AND in e.g. surfaceflinger, we specify the API level at which a service is deprecated. The alternative would be to do this in the core build system:\n\nif shipping_api_level \u0026\u0026 shipping_api_level \u003e Q\n    DEPRECATE_FWK_SERVICE_FOO :\u003d true\n\nthen this variable could influence both of the other services (and we\u0027d also have more purpose-driven variables in Soong). However, it feels weird to me to have specific services in the build system. LMK WDYT!",
+      "revId": "304535bb7482a5f37ea563a003d7df4dd112af7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
