@@ -191,6 +191,30 @@
     },
     {
       "key": {
+        "uuid": "42b977c4_844945eb",
+        "filename": "android/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-02T02:46:54Z",
+      "side": 1,
+      "message": "\u003e I think I\u0027ve misunderstood them - I thought they\u0027d only be applicable to modules with exposed APEX interfaces, i.e. where we have stubs{} in case of cc_library.\n\nNo, it\u0027s not. This applies to all modules that can be included in APEXes\n\n\u003e If not, do we want to specify this on all internal intermediate dependencies as well (regardless of default)? \n\nYes, that\u0027s what Dan wanted.\n\n\u003e Isn\u0027t ordinary visibility better suited for them if they need to be restricted?\n\nNo, because of transitive dependencies. Consider \"APEX A -\u003e libX -\u003e libY\". You can\u0027t prevent libY from being included in APEX A using visibility, because APEX A doesn\u0027t reference libY directly.",
+      "parentUuid": "f2eb1d77_660401d8",
+      "range": {
+        "startLine": 94,
+        "startChar": 44,
+        "endLine": 94,
+        "endChar": 57
+      },
+      "revId": "eab12a5930c12968d7db68856215490fd67e8237",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21ac3546_b4a24082",
         "filename": "android/apex.go",
         "patchSetId": 1

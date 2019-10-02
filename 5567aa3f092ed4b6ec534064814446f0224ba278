@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9f2602b4_d88352ff",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-02T02:46:54Z",
+      "side": 1,
+      "message": "The syntax is specific to a property. I think it\u0027s fine as long as it is documented.",
+      "parentUuid": "7ce86c40_b64280d2",
+      "range": {
+        "startLine": 151,
+        "startChar": 34,
+        "endLine": 151,
+        "endChar": 35
+      },
+      "revId": "5567aa3f092ed4b6ec534064814446f0224ba278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14d2790b_f873440c",
         "filename": "android/apex.go",
         "patchSetId": 2
@@ -68,6 +92,54 @@
       "revId": "5567aa3f092ed4b6ec534064814446f0224ba278",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b55967ef_97c13efc",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-02T02:46:54Z",
+      "side": 1,
+      "message": "Yes. If we don\u0027t check this, AvailableFor(\":platform\") would return true even when apex_available is set to [\":anyapex\"]. We need a way to enforce that a module is only included in APEX(es) and not in the platform.",
+      "parentUuid": "154434cc_95c70e78",
+      "range": {
+        "startLine": 156,
+        "startChar": 35,
+        "endLine": 156,
+        "endChar": 42
+      },
+      "revId": "5567aa3f092ed4b6ec534064814446f0224ba278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11761777_bc716399",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-02T02:46:54Z",
+      "side": 1,
+      "message": "moved to variables.\n\nbut I am not sure what do you want to call it platform-vndk. This isn\u0027t related to vndk.",
+      "parentUuid": "14d2790b_f873440c",
+      "range": {
+        "startLine": 156,
+        "startChar": 11,
+        "endLine": 156,
+        "endChar": 22
+      },
+      "revId": "5567aa3f092ed4b6ec534064814446f0224ba278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
