@@ -1,0 +1,9 @@
+Autosubmit+1: Yi Kong <yikong@google.com>
+Code-Review+2: Stephen Hines <srhines@google.com>
+Code-Review+2: Steven Moreland <smoreland@google.com>
+Presubmit-Ready+1: Yi Kong <yikong@google.com>
+Submitted-by: Yi Kong <yikong@google.com>
+Submitted-at: Wed, 02 Oct 2019 05:16:42 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1129654
+Project: platform/build/soong
+Branch: refs/heads/master
