@@ -156,6 +156,7 @@ type ModuleContext interface {
 	InstallInData() bool
 	InstallInSanitizerDir() bool
 	InstallInRecovery() bool
+	InstallInRoot() bool
 	InstallBypassMake() bool
 
 	RequiredModuleNames() []string
@@ -194,6 +195,7 @@ type Module interface {
 	InstallInData() bool
 	InstallInSanitizerDir() bool
 	InstallInRecovery() bool
+	InstallInRoot() bool
 	InstallBypassMake() bool
 	SkipInstall()
 	ExportedToMake() bool
@@ -838,6 +840,10 @@ func (m *ModuleBase) InstallInSanitizerDir() bool {
 
 func (m *ModuleBase) InstallInRecovery() bool {
 	return Bool(m.commonProperties.Recovery)
+}
+
+func (m *ModuleBase) InstallInRoot() bool {
+	return false
 }
 
 func (m *ModuleBase) InstallBypassMake() bool {
@@ -1510,6 +1516,10 @@ func (m *moduleContext) InstallInSanitizerDir() bool {
 
 func (m *moduleContext) InstallInRecovery() bool {
 	return m.module.InstallInRecovery()
+}
+
+func (m *moduleContext) InstallInRoot() bool {
+	return m.module.InstallInRoot()
 }
 
 func (m *moduleContext) InstallBypassMake() bool {
