@@ -352,7 +352,7 @@ func (a *AndroidApp) jniBuildActions(jniLibs []jniLib, ctx android.ModuleContext
 	return jniJarFile
 }
 
-func (a *AndroidApp) noticeBuildActions(ctx android.ModuleContext, installDir android.OutputPath) {
+func (a *AndroidApp) noticeBuildActions(ctx android.ModuleContext, installDir android.InstallPath) {
 	// Collect NOTICE files from all dependencies.
 	seenModules := make(map[android.Module]bool)
 	noticePathSet := make(map[android.Path]bool)
@@ -438,7 +438,7 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 	// Check if the install APK name needs to be overridden.
 	a.installApkName = ctx.DeviceConfig().OverridePackageNameFor(a.Name())
 
-	var installDir android.OutputPath
+	var installDir android.InstallPath
 	if ctx.ModuleName() == "framework-res" {
 		// framework-res.apk is installed as system/framework/framework-res.apk
 		installDir = android.PathForModuleInstall(ctx, "framework")
@@ -764,7 +764,7 @@ type AndroidAppImport struct {
 
 	usesLibrary usesLibrary
 
-	installPath android.OutputPath
+	installPath android.InstallPath
 }
 
 type AndroidAppImportProperties struct {
