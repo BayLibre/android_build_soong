@@ -70,6 +70,30 @@
       "revId": "12b8d427c799de0ff38fea4c71729b794b84eec6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80c7c2e2_a78ddbd7",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2019-10-03T14:33:25Z",
+      "side": 1,
+      "message": "It\u0027s because I\u0027m allowing a pattern entry like \u0027product/app/%\u0027 to match both \u0027/system/product/app/*\u0027 as well as \u0027/product/app/*\u0027. Which one will match depends on whether /product is a logical partition or not",
+      "parentUuid": "f4ac8af0_82af3680",
+      "range": {
+        "startLine": 584,
+        "startChar": 2,
+        "endLine": 585,
+        "endChar": 105
+      },
+      "revId": "12b8d427c799de0ff38fea4c71729b794b84eec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
