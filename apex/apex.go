@@ -137,6 +137,7 @@ var (
 	sharedLibTag   = dependencyTag{name: "sharedLib"}
 	executableTag  = dependencyTag{name: "executable"}
 	javaLibTag     = dependencyTag{name: "javaLib"}
+	bootImageTag   = dependencyTag{name: "bootImage"}
 	prebuiltTag    = dependencyTag{name: "prebuilt"}
 	testTag        = dependencyTag{name: "test"}
 	keyTag         = dependencyTag{name: "key"}
@@ -287,6 +288,9 @@ type apexBundleProperties struct {
 	// List of executables that are embedded inside this APEX bundle
 	Binaries []string
 
+	// Boot image
+	Boot_images []string
+
 	// List of java libraries that are embedded inside this APEX bundle
 	Java_libs []string
 
@@ -370,6 +374,7 @@ const (
 	pyBinary
 	goBinary
 	javaSharedLib
+	bootImage
 	nativeTest
 	app
 )
@@ -434,6 +439,8 @@ func (class apexFileClass) NameInMake() string {
 		return "EXECUTABLES"
 	case javaSharedLib:
 		return "JAVA_LIBRARIES"
+	case bootImage:
+		return "BOOT_IMAGE"
 	case nativeTest:
 		return "NATIVE_TESTS"
 	case app:
@@ -533,6 +540,10 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 	config := ctx.DeviceConfig()
 
 	a.combineProperties(ctx)
+
+	for _, img := range a.properties.Boot_images {
+		ctx.AddDependency(ctx.Module(), bootImageTag, img)
+	}
 
 	has32BitTarget := false
 	for _, target := range targets {
@@ -944,6 +955,17 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 					return true
 				} else {
 					ctx.PropertyErrorf("java_libs", "%q of type %q is not supported", depName, ctx.OtherModuleType(child))
+				}
+			case bootImageTag:
+				if dbj, ok := child.(*java.DexpreoptBootJars); ok {
+					for arch, img := range dbj.AllImages() {
+						dirInApex := filepath.Join("boot", arch.String())
+						name := depName + "_" + arch.String()
+						filesInfo = append(filesInfo, apexFile{img, name, dirInApex, bootImage, dbj, nil})
+					}
+					return true
+				} else {
+					ctx.PropertyErrorf("boot_images", "%q is not a dex_bootjars module", depName)
 				}
 			case prebuiltTag:
 				if prebuilt, ok := child.(*android.PrebuiltEtc); ok {
