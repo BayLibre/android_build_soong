@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d1cdb04_38b7e487",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-10-03T14:11:55Z",
+      "side": 1,
+      "message": "Why can\u0027t we just return true for all?",
+      "range": {
+        "startLine": 584,
+        "startChar": 2,
+        "endLine": 585,
+        "endChar": 105
+      },
+      "revId": "12b8d427c799de0ff38fea4c71729b794b84eec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
