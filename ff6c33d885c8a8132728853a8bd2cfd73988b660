@@ -16,6 +16,24 @@
       "revId": "ff6c33d885c8a8132728853a8bd2cfd73988b660",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "454f1cd8_e2d3e722",
+        "filename": "android/paths.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1138,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-03T21:24:23Z",
+      "side": 1,
+      "message": "That won\u0027t work for the InstallBypassMake case, which needs to create rules to write to the file in Soong and doesn\u0027t know about $(OUT_DIR).",
+      "parentUuid": "c0786009_3e04df92",
+      "revId": "ff6c33d885c8a8132728853a8bd2cfd73988b660",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
