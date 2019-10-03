@@ -272,6 +272,7 @@ bootstrap_go_package {
         "java/dex.go",
         "java/dexpreopt.go",
         "java/dexpreopt_bootjars.go",
+        "java/dexpreopt_bootjars_singleton.go",
         "java/dexpreopt_config.go",
         "java/droiddoc.go",
         "java/gen.go",
@@ -449,6 +450,7 @@ bootstrap_go_package {
     srcs: [
         "apex/apex.go",
         "apex/key.go",
+        "apex/prebuilt_boot.go",
     ],
     testSrcs: [
         "apex/apex_test.go",

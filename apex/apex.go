@@ -137,6 +137,7 @@ var (
 	sharedLibTag   = dependencyTag{name: "sharedLib"}
 	executableTag  = dependencyTag{name: "executable"}
 	javaLibTag     = dependencyTag{name: "javaLib"}
+	bootImageTag   = dependencyTag{name: "bootImage"}
 	prebuiltTag    = dependencyTag{name: "prebuilt"}
 	testTag        = dependencyTag{name: "test"}
 	keyTag         = dependencyTag{name: "key"}
@@ -287,6 +288,9 @@ type apexBundleProperties struct {
 	// List of executables that are embedded inside this APEX bundle
 	Binaries []string
 
+	// Boot image
+	Boot_images []string
+
 	// List of java libraries that are embedded inside this APEX bundle
 	Java_libs []string
 
@@ -370,6 +374,7 @@ const (
 	pyBinary
 	goBinary
 	javaSharedLib
+	bootImage
 	nativeTest
 	app
 )
@@ -434,6 +439,8 @@ func (class apexFileClass) NameInMake() string {
 		return "EXECUTABLES"
 	case javaSharedLib:
 		return "JAVA_LIBRARIES"
+	case bootImage:
+		return "BOOT_IMAGE"
 	case nativeTest:
 		return "NATIVE_TESTS"
 	case app:
@@ -556,6 +563,10 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 			{Mutator: "image", Variation: a.getImageVariation(config)},
 			{Mutator: "test_per_src", Variation: ""}, // "" is the all-tests variant
 		}, testTag, a.properties.Tests...)
+
+		ctx.AddFarVariationDependencies([]blueprint.Variation{
+			{Mutator: "arch", Variation: target.String()},
+		}, bootImageTag, a.properties.Boot_images...)
 
 		// Add native modules targetting both ABIs
 		addDependenciesForNativeModules(ctx,
@@ -824,6 +835,12 @@ func getCopyManifestForPrebuiltEtc(prebuilt *android.PrebuiltEtc) (fileToCopy an
 	return
 }
 
+func getCopyManifestForPrebuiltBoot(image *PrebuiltBoot) (fileToCopy android.Path, dirInApex string) {
+	dirInApex = "boot"
+	fileToCopy = image.OutputFile()
+	return
+}
+
 func getCopyManifestForAndroidApp(app *java.AndroidApp, pkgName string) (fileToCopy android.Path, dirInApex string) {
 	dirInApex = filepath.Join("app", pkgName)
 	fileToCopy = app.OutputFile()
@@ -944,6 +961,14 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 					return true
 				} else {
 					ctx.PropertyErrorf("java_libs", "%q of type %q is not supported", depName, ctx.OtherModuleType(child))
+				}
+			case bootImageTag:
+				if image, ok := child.(*PrebuiltBoot); ok {
+					fileToCopy, dirInApex := getCopyManifestForPrebuiltBoot(image)
+					filesInfo = append(filesInfo, apexFile{fileToCopy, depName, dirInApex, bootImage, image, nil})
+					return true
+				} else {
+					ctx.PropertyErrorf("boot_images", "%q is not a prebuilt_boot module", depName)
 				}
 			case prebuiltTag:
 				if prebuilt, ok := child.(*android.PrebuiltEtc); ok {

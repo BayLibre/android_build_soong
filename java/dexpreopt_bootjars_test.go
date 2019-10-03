@@ -42,6 +42,10 @@ func TestDexpreoptBootJars(t *testing.T) {
 			name: "baz",
 			jars: ["a.jar"],
 		}
+
+		dex_bootjars {
+			name: "dex_bootjars_test",
+		}
 	`
 
 	config := testConfig(nil)
@@ -53,11 +57,11 @@ func TestDexpreoptBootJars(t *testing.T) {
 
 	ctx := testContext(bp, nil)
 
-	ctx.RegisterSingletonType("dex_bootjars", android.SingletonFactoryAdaptor(dexpreoptBootJarsFactory))
+	ctx.RegisterModuleType("dex_bootjars", android.ModuleFactoryAdaptor(DexpreoptBootJarsFactory))
 
 	run(t, ctx, config)
 
-	dexpreoptBootJars := ctx.SingletonForTests("dex_bootjars")
+	dexpreoptBootJars := ctx.ModuleForTests("dex_bootjars_test", "")
 
 	bootArt := dexpreoptBootJars.Output("boot.art")
 
