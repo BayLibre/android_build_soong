@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68f81bfc_b786d58d",
+        "filename": "cc/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2019-10-03T18:01:05Z",
+      "side": 1,
+      "message": "Could this be moved to android/util.go?",
+      "range": {
+        "startLine": 209,
+        "startChar": 5,
+        "endLine": 209,
+        "endChar": 19
+      },
+      "revId": "a3ffca86cf701eb5ec354ce641459bd287386cd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
