@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71763f0d_f1b64937",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1129,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-10-03T16:21:41Z",
+      "side": 1,
+      "message": "Do we need to call this here?\n1. It is already being called below in pathForInstallInMakeDir and before the final return in your new implementation, aosp/1132876.\n2. It is essentially filepath.Join + component checking, but being installed in root means filepath.Join should never be required.",
+      "revId": "dedda6f497c641c6fc74e3f64e7be99644a5a94f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d7833a4_3fb191ad",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1133,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-10-03T16:21:41Z",
+      "side": 1,
+      "message": "I think you could do:\nif len(pathComponent) \u003e 1 || (len(pathComponent) \u003d\u003d 1 \u0026\u0026 strings.ContainsRune(pathComponent[0], \u0027/\u0027)) {\nand get rid of validatePath(pathComponents...) call above.",
+      "revId": "dedda6f497c641c6fc74e3f64e7be99644a5a94f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5dba43a_7b880eb8",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1134,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-10-03T16:21:41Z",
+      "side": 1,
+      "message": "What if one creates a legit root InstallPath without subdirectories and then call Join() to get around it this error check?",
+      "revId": "dedda6f497c641c6fc74e3f64e7be99644a5a94f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
