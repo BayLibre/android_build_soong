@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0786009_3e04df92",
+        "filename": "android/paths.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1138,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-10-03T20:36:06Z",
+      "side": 1,
+      "message": "What about using \"$(OUT_DIR)\" instead? I suppose it\u0027d be more error-proof. For example, if one (either deliberately or by mistake) changes SOONG_DIR to somewhere else, ../ won\u0027t point to the Make output dir.",
+      "revId": "ff6c33d885c8a8132728853a8bd2cfd73988b660",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
