@@ -50,6 +50,24 @@
       "revId": "dedda6f497c641c6fc74e3f64e7be99644a5a94f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9339398_7f8d5700",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1134,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-03T17:05:34Z",
+      "side": 1,
+      "message": "I think I\u0027ll just remove this check, it\u0027s not very abuseable, and tomcherry@ is planning to remove most files from root, which will let us only copy init out of $OUT/root, and then it won\u0027t matter what gets installed there.",
+      "parentUuid": "b5dba43a_7b880eb8",
+      "revId": "dedda6f497c641c6fc74e3f64e7be99644a5a94f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
