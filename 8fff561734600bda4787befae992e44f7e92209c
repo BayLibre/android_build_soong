@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82e3d9ad_96dd6c21",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-10-03T14:47:47Z",
+      "side": 1,
+      "message": "an",
+      "range": {
+        "startLine": 796,
+        "startChar": 37,
+        "endLine": 796,
+        "endChar": 38
+      },
+      "revId": "8fff561734600bda4787befae992e44f7e92209c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "126a8b95_2342ea6d",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-10-03T14:47:47Z",
+      "side": 1,
+      "message": "nit: Put this next to other InstallPath funcs for better discoverability?",
+      "revId": "8fff561734600bda4787befae992e44f7e92209c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a52609e0_695199f8",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1144,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-10-03T14:47:47Z",
+      "side": 1,
+      "message": "I\u0027ve wasted a good amount of time due to this func\u0027s name. It has nothing to do with an actual Rel value. Now that you\u0027re refactoring this, could you rename this so that it doesn\u0027t contain \"Rel\" in the name or add a comment to prevent potential misunderstandings? I\u0027d really prefer renaming given my experience, i.e. IntelliJ showed my OutputPath instance had the \"RelPathString\" func, and I didn\u0027t even think of checking if it\u0027d actually return a stringified rel path or not.",
+      "revId": "8fff561734600bda4787befae992e44f7e92209c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
