@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f7ff3d6_7b0da5fb",
+        "filename": "ui/build/path.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-04T17:18:36Z",
+      "side": 1,
+      "message": "expense",
+      "range": {
+        "startLine": 58,
+        "startChar": 32,
+        "endLine": 58,
+        "endChar": 41
+      },
+      "revId": "aa3dbadadf72dd82d2eb2571877d02b7dc89299a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
