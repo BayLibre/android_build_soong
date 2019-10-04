@@ -22,6 +22,98 @@
       "revId": "aa3dbadadf72dd82d2eb2571877d02b7dc89299a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a29e3f65_a24b4e6b",
+        "filename": "ui/build/path.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-10-04T17:56:09Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be before line 60?",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 21
+      },
+      "revId": "aa3dbadadf72dd82d2eb2571877d02b7dc89299a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bb3e253_9ac02d10",
+        "filename": "ui/build/path.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-10-04T17:56:09Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we bail out if the absolute file path is not found?\n\nAlso, should the path be concatenated using filepath.Join?",
+      "range": {
+        "startLine": 95,
+        "startChar": 16,
+        "endLine": 95,
+        "endChar": 17
+      },
+      "revId": "aa3dbadadf72dd82d2eb2571877d02b7dc89299a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b626801_d8f80c9d",
+        "filename": "ui/build/path.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-10-04T17:56:09Z",
+      "side": 1,
+      "message": "use filepath.Join(prebuiltsPath, myPath)?",
+      "range": {
+        "startLine": 96,
+        "startChar": 9,
+        "endLine": 96,
+        "endChar": 63
+      },
+      "revId": "aa3dbadadf72dd82d2eb2571877d02b7dc89299a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24ea8e5a_f414e0ba",
+        "filename": "ui/build/path.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-10-04T17:56:09Z",
+      "side": 1,
+      "message": "This code is a repeat of SetupPath between 194 and 202. Wrap it around in a function?",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 27
+      },
+      "revId": "aa3dbadadf72dd82d2eb2571877d02b7dc89299a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
