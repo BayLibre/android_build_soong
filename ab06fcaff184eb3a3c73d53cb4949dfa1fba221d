@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eeaec0ca_5315da72",
+        "filename": "java/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018108
+      },
+      "writtenOn": "2019-10-04T16:15:24Z",
+      "side": 1,
+      "message": "Add copyright header.",
+      "revId": "ab06fcaff184eb3a3c73d53cb4949dfa1fba221d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
