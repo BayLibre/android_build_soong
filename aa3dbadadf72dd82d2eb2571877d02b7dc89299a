@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c09e1514_1dd17841",
+        "filename": "ui/build/path.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-10-04T19:54:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f7ff3d6_7b0da5fb",
+      "range": {
+        "startLine": 58,
+        "startChar": 32,
+        "endLine": 58,
+        "endChar": 41
+      },
+      "revId": "aa3dbadadf72dd82d2eb2571877d02b7dc89299a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a29e3f65_a24b4e6b",
         "filename": "ui/build/path.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "aa3dbadadf72dd82d2eb2571877d02b7dc89299a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "647863a9_2a2e43e5",
+        "filename": "ui/build/path.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-10-04T19:54:07Z",
+      "side": 1,
+      "message": "If we never did anything in this function, do we really need to trace it?",
+      "parentUuid": "a29e3f65_a24b4e6b",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 21
+      },
+      "revId": "aa3dbadadf72dd82d2eb2571877d02b7dc89299a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "23c7a9f3_07ec2c3f",
+        "filename": "ui/build/path.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-10-04T19:54:07Z",
+      "side": 1,
+      "message": "Realistically, filepath.Abs only fails when it can\u0027t get the current directory, and we\u0027d fail during Config setup in that case. We\u0027re already doing this elsewhere in this file.",
+      "parentUuid": "1bb3e253_9ac02d10",
+      "range": {
+        "startLine": 95,
+        "startChar": 16,
+        "endLine": 95,
+        "endChar": 17
+      },
+      "revId": "aa3dbadadf72dd82d2eb2571877d02b7dc89299a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b626801_d8f80c9d",
         "filename": "ui/build/path.go",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "dc856712_530e04b3",
+        "filename": "ui/build/path.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-10-04T19:54:07Z",
+      "side": 1,
+      "message": "This is PathListSeparator (`:`), not PathSeparator (`/`)",
+      "parentUuid": "5b626801_d8f80c9d",
+      "range": {
+        "startLine": 96,
+        "startChar": 9,
+        "endLine": 96,
+        "endChar": 63
+      },
+      "revId": "aa3dbadadf72dd82d2eb2571877d02b7dc89299a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24ea8e5a_f414e0ba",
         "filename": "ui/build/path.go",
         "patchSetId": 2
@@ -114,6 +210,30 @@
       "revId": "aa3dbadadf72dd82d2eb2571877d02b7dc89299a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42c2d259_1ee67fe5",
+        "filename": "ui/build/path.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-10-04T19:54:07Z",
+      "side": 1,
+      "message": "It\u0027s a fairly small amount of duplication, and a separate function would make it harder to read. If we get a third copy I\u0027d be far more willing to refactor these to share more.\n\nAt some point I expect we\u0027ll transition away from the interposer and switch the main build over to this function, but that\u0027s not going to happen until everyone has transitioned, and we\u0027ve stopped using as many host tools as possible.",
+      "parentUuid": "24ea8e5a_f414e0ba",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 99,
+        "endChar": 27
+      },
+      "revId": "aa3dbadadf72dd82d2eb2571877d02b7dc89299a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
