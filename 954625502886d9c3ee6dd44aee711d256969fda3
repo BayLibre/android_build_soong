@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c82e6bf7_4e4b492a",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1395887
+      },
+      "writtenOn": "2019-10-04T19:52:28Z",
+      "side": 1,
+      "message": "Is this referenced?",
+      "range": {
+        "startLine": 154,
+        "startChar": 15,
+        "endLine": 154,
+        "endChar": 19
+      },
+      "revId": "954625502886d9c3ee6dd44aee711d256969fda3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
