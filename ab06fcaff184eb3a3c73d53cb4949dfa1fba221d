@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "73a7c1df_81710d8c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-10-07T15:37:40Z",
+      "side": 1,
+      "message": "Ideally it should be just an ordinary module that doesn\u0027t need to be unique, shouldn\u0027t it?\n\nI had a look into why it is this way, and iiuc the reason is that it eventually queries some product variables ([1] -\u003e [2]). If so, this could be made an ordinary module by either adding properties to specify which variables to query, or even better do away with them completely and specify the jars directly in dex_bootjars{} in the bp file.\n\nI\u0027m not suggesting that for this CL; it\u0027d be a fairly sizeable refactoring. Just mentioning it for checking my understanding, and if so phrase this differently.\n\n[1] https://devops-console-stagingoss.corp.google.com/android/platform/build/soong/+/3776d9546a60937c06dcab380aadd38b787b18e7:java/dexpreopt_config.go;l\u003d110-127;drc\u003d402be41aa8df98733a16eb8f96dd769dbe8c5d80\n[2] https://devops-console-stagingoss.corp.google.com/android/platform/build/+/8ca4bf76d682bfc87028c0acff24ca0388e87205:core/dex_preopt_config.mk;l\u003d101-103;drc\u003db324175118f50a1acfb40916215ad5f444338265",
+      "range": {
+        "startLine": 13,
+        "startChar": 61,
+        "endLine": 14,
+        "endChar": 25
+      },
+      "revId": "ab06fcaff184eb3a3c73d53cb4949dfa1fba221d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c4719ac_36d6afdf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-10-07T15:37:40Z",
+      "side": 1,
+      "message": "Better to add a dependency from the system image - create a module that\u0027s put on PRODUCT_PACKAGES in runtime_libart.mk?",
+      "range": {
+        "startLine": 23,
+        "startChar": 57,
+        "endLine": 24,
+        "endChar": 43
+      },
+      "revId": "ab06fcaff184eb3a3c73d53cb4949dfa1fba221d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1d689f9_34151789",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-10-07T15:37:40Z",
+      "side": 1,
+      "message": "build/soong/android, to clarify.",
+      "range": {
+        "startLine": 43,
+        "startChar": 16,
+        "endLine": 43,
+        "endChar": 24
+      },
+      "revId": "ab06fcaff184eb3a3c73d53cb4949dfa1fba221d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "58e763b8_ccd22bc2",
         "filename": "apex/apex.go",
         "patchSetId": 2
@@ -88,6 +157,52 @@
     },
     {
       "key": {
+        "uuid": "0c800b92_5abe3b76",
+        "filename": "apex/prebuilt_boot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-10-07T15:37:40Z",
+      "side": 1,
+      "message": "Should ideally be explicit in the apex module, but for now a comment is enough.",
+      "range": {
+        "startLine": 33,
+        "startChar": 39,
+        "endLine": 33,
+        "endChar": 58
+      },
+      "revId": "ab06fcaff184eb3a3c73d53cb4949dfa1fba221d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30c16eeb_d8c5eaf3",
+        "filename": "apex/prebuilt_boot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-10-07T15:37:40Z",
+      "side": 1,
+      "message": "Can this happen? The dependency is established by name above, and I thought Soong didn\u0027t allow multiple modules with the same name (except in different namespaces, which if I\u0027m not mistaken aren\u0027t in play here). Are you concerned about variants?",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 32
+      },
+      "revId": "ab06fcaff184eb3a3c73d53cb4949dfa1fba221d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b9e946bd_626b59f8",
         "filename": "apex/prebuilt_boot.go",
         "patchSetId": 2
@@ -125,6 +240,75 @@
       "revId": "ab06fcaff184eb3a3c73d53cb4949dfa1fba221d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cd86231_8630039e",
+        "filename": "java/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-10-07T15:37:40Z",
+      "side": 1,
+      "message": "Isn\u0027t it better to have this in art/Android.bp?",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 1
+      },
+      "revId": "ab06fcaff184eb3a3c73d53cb4949dfa1fba221d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "011ffe0d_d8e35e1c",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-10-07T15:37:40Z",
+      "side": 1,
+      "message": "Nit: It\u0027s from the product variables, isn\u0027t it? Wouldn\u0027t call that hardcoded.",
+      "range": {
+        "startLine": 192,
+        "startChar": 4,
+        "endLine": 192,
+        "endChar": 14
+      },
+      "revId": "ab06fcaff184eb3a3c73d53cb4949dfa1fba221d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "458232ef_21261c08",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-10-07T15:37:40Z",
+      "side": 1,
+      "message": "From a code health perspective it\u0027d be nice if stuff like this were fields in the dex_bootjars module and configured in the blueprint file. That would make it more like an ordinary module instead of just a stub for lots of builtin hardcoded stuff.\n\nJust a side note, I don\u0027t think it should be addressed in this CL.",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 93
+      },
+      "revId": "ab06fcaff184eb3a3c73d53cb4949dfa1fba221d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

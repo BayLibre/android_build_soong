@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8c233791_bb497859",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-10-07T15:37:40Z",
+      "side": 0,
+      "message": "Why can\u0027t this stay here? Is there a specific reason more than the potential for conflict if there are more than one dex_bootjars module?",
+      "revId": "1282f42ed66f0f47debac76861b3c6ec6fc7a910",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
