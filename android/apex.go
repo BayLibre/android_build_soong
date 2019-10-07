@@ -39,7 +39,7 @@ import (
 // respectively.
 type ApexModule interface {
 	Module
-	apexModuleBase() *ApexModuleBase
+	GetApexModuleBase() *ApexModuleBase
 
 	// Marks that this module should be built for the APEX of the specified name.
 	// Call this before apex.apexMutator is run.
@@ -110,7 +110,7 @@ type ApexModuleBase struct {
 	apexVariations     []string
 }
 
-func (m *ApexModuleBase) apexModuleBase() *ApexModuleBase {
+func (m *ApexModuleBase) GetApexModuleBase() *ApexModuleBase {
 	return m
 }
 
@@ -152,14 +152,18 @@ const (
 	availableToAnyApex  = "//apex_available:anyapex"
 )
 
-func (m *ApexModuleBase) AvailableFor(what string) bool {
-	if len(m.ApexProperties.Apex_available) == 0 {
+func CheckAvailableForApex(what string, apex_available []string) bool {
+	if len(apex_available) == 0 {
 		// apex_available defaults to ["//apex_available:platform", "//apex_available:anyapex"],
 		// which means 'available to everybody'.
 		return true
 	}
-	return InList(what, m.ApexProperties.Apex_available) ||
-		(what != availableToPlatform && InList(availableToAnyApex, m.ApexProperties.Apex_available))
+	return InList(what, apex_available) ||
+		(what != availableToPlatform && InList(availableToAnyApex, apex_available))
+}
+
+func (m *ApexModuleBase) AvailableFor(what string) bool {
+	return CheckAvailableForApex(what, m.ApexProperties.Apex_available)
 }
 
 func (m *ApexModuleBase) checkApexAvailableProperty(mctx BaseModuleContext) {
@@ -178,7 +182,7 @@ func (m *ApexModuleBase) CreateApexVariations(mctx BottomUpMutatorContext) []blu
 		m.checkApexAvailableProperty(mctx)
 		sort.Strings(m.apexVariations)
 		variations := []string{}
-		availableForPlatform := m.AvailableFor(availableToPlatform)
+		availableForPlatform := mctx.Module().(ApexModule).AvailableFor(availableToPlatform)
 		if availableForPlatform {
 			variations = append(variations, "") // Original variation for platform
 		}
@@ -282,7 +286,7 @@ func GetApexesForModule(moduleName string) []string {
 }
 
 func InitApexModule(m ApexModule) {
-	base := m.apexModuleBase()
+	base := m.GetApexModuleBase()
 	base.canHaveApexVariants = true
 
 	m.AddProperties(&base.ApexProperties)
