@@ -22,6 +22,30 @@
       "revId": "fb97859db1b3b19b5eb55ae24cb099aca549d624",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb6624c7_9c6a976a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1308042
+      },
+      "writtenOn": "2019-10-07T10:25:22Z",
+      "side": 1,
+      "message": "Use aidegen to check this item is good.\nIt saves the build time of aidegen-dev.",
+      "parentUuid": "6bd46ee2_0eb2cdcf",
+      "range": {
+        "startLine": 24,
+        "startChar": 9,
+        "endLine": 24,
+        "endChar": 16
+      },
+      "revId": "fb97859db1b3b19b5eb55ae24cb099aca549d624",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
