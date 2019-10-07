@@ -307,6 +307,28 @@ func processVndkLibrary(mctx android.BottomUpMutatorContext, m *Module) {
 	}
 }
 
+func IsForVndkApex(mctx android.BottomUpMutatorContext, m *Module) bool {
+	if !m.Enabled() {
+		return false
+	}
+
+	if m.Target().NativeBridge == android.NativeBridgeEnabled {
+		return false
+	}
+
+	// prebuilt vndk modules should match with device
+	if p, ok := m.linker.(*vndkPrebuiltLibraryDecorator); ok && !p.matchesWithDevice(mctx.DeviceConfig()) {
+		return false
+	}
+
+	if lib, ok := m.linker.(libraryInterface); ok {
+		name := strings.TrimPrefix(m.Name(), "prebuilt_")
+		useCoreVariant := mctx.DeviceConfig().VndkUseCoreVariant() && !inList(name, config.VndkMustUseVendorVariantList)
+		return lib.shared() && m.useVndk() && m.isVndk() && !m.isVndkExt() && !useCoreVariant
+	}
+	return false
+}
+
 // gather list of vndk-core, vndk-sp, and ll-ndk libs
 func VndkMutator(mctx android.BottomUpMutatorContext) {
 	m, ok := mctx.Module().(*Module)
