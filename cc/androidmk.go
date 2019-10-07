@@ -93,6 +93,9 @@ func (c *Module) AndroidMk() android.AndroidMkData {
 					fmt.Fprintln(w, "LOCAL_USE_VNDK := true")
 					if c.isVndk() && !c.static() {
 						fmt.Fprintln(w, "LOCAL_SOONG_VNDK_VERSION := "+c.vndkVersion())
+						if !c.isVndkExt() {
+							fmt.Fprintln(w, "LOCAL_UNINSTALLABLE_MODULE := true")
+						}
 					}
 				}
 			},
