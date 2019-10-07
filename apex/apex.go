@@ -182,10 +182,7 @@ func init() {
 	android.RegisterModuleType("apex_defaults", defaultsFactory)
 	android.RegisterModuleType("prebuilt_apex", PrebuiltFactory)
 
-	android.PreDepsMutators(func(ctx android.RegisterMutatorsContext) {
-		ctx.TopDown("apex_vndk_gather", apexVndkGatherMutator).Parallel()
-		ctx.BottomUp("apex_vndk_add_deps", apexVndkAddDepsMutator).Parallel()
-	})
+	android.PreDepsMutators(RegisterPreDepsMutators)
 	android.PostDepsMutators(RegisterPostDepsMutators)
 
 	android.RegisterMakeVarsProvider(pctx, func(ctx android.MakeVarsContext) {
@@ -193,6 +190,11 @@ func init() {
 		sort.Strings(*apexFileContextsInfos)
 		ctx.Strict("APEX_FILE_CONTEXTS_INFOS", strings.Join(*apexFileContextsInfos, " "))
 	})
+}
+
+func RegisterPreDepsMutators(ctx android.RegisterMutatorsContext) {
+	ctx.TopDown("apex_vndk", apexVndkMutator).Parallel()
+	ctx.BottomUp("apex_vndk_deps", apexVndkDepsMutator).Parallel()
 }
 
 func RegisterPostDepsMutators(ctx android.RegisterMutatorsContext) {
@@ -207,45 +209,41 @@ var (
 	vndkApexListMutex sync.Mutex
 )
 
-func vndkApexList(config android.Config) map[string]*apexBundle {
+func vndkApexList(config android.Config) map[string]string {
 	return config.Once(vndkApexListKey, func() interface{} {
-		return map[string]*apexBundle{}
-	}).(map[string]*apexBundle)
+		return map[string]string{}
+	}).(map[string]string)
 }
 
-// apexVndkGatherMutator gathers "apex_vndk" modules and puts them in a map with vndk_version as a key.
-func apexVndkGatherMutator(mctx android.TopDownMutatorContext) {
+func apexVndkMutator(mctx android.TopDownMutatorContext) {
 	if ab, ok := mctx.Module().(*apexBundle); ok && ab.vndkApex {
 		if ab.IsNativeBridgeSupported() {
 			mctx.PropertyErrorf("native_bridge_supported", "%q doesn't support native bridge binary.", mctx.ModuleType())
 		}
 
-		vndkVersion := proptools.String(ab.vndkProperties.Vndk_version)
+		vndkVersion := ab.vndkVersion()
+		if vndkVersion == "current" {
+			vndkVersion = mctx.DeviceConfig().PlatformVndkVersion()
+		}
+		// Ensure VNDK APEX mount point is formatted as com.android.vndk.v###
+		ab.properties.Apex_name = proptools.StringPtr("com.android.vndk.v" + vndkVersion)
 
+		// vndk_version should be unique
 		vndkApexListMutex.Lock()
 		defer vndkApexListMutex.Unlock()
 		vndkApexList := vndkApexList(mctx.Config())
 		if other, ok := vndkApexList[vndkVersion]; ok {
-			mctx.PropertyErrorf("vndk_version", "%v is already defined in %q", vndkVersion, other.BaseModuleName())
+			mctx.PropertyErrorf("vndk_version", "%v is already defined in %q", vndkVersion, other)
 		}
-		vndkApexList[vndkVersion] = ab
+		vndkApexList[vndkVersion] = mctx.ModuleName()
 	}
 }
 
-// apexVndkAddDepsMutator adds (reverse) dependencies from vndk libs to apex_vndk modules.
-// It filters only libs with matching targets.
-func apexVndkAddDepsMutator(mctx android.BottomUpMutatorContext) {
-	if cc, ok := mctx.Module().(*cc.Module); ok && cc.IsVndkOnSystem() {
+func apexVndkDepsMutator(mctx android.BottomUpMutatorContext) {
+	if cc.IsVndkOnSystem(mctx) {
+		m := mctx.Module().(*cc.Module)
 		vndkApexList := vndkApexList(mctx.Config())
-		if ab, ok := vndkApexList[cc.VndkVersion()]; ok {
-			targetArch := cc.Target().String()
-			for _, target := range ab.MultiTargets() {
-				if target.String() == targetArch {
-					mctx.AddReverseDependency(mctx.Module(), sharedLibTag, ab.Name())
-					break
-				}
-			}
-		}
+		mctx.AddReverseDependency(mctx.Module(), sharedLibTag, vndkApexList[m.VndkVersion()])
 	}
 }
 
@@ -650,7 +648,6 @@ func (a *apexBundle) combineProperties(ctx android.BottomUpMutatorContext) {
 }
 
 func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
-
 	targets := ctx.MultiTargets()
 	config := ctx.DeviceConfig()
 
@@ -821,6 +818,13 @@ func (a *apexBundle) installable() bool {
 }
 
 func (a *apexBundle) getImageVariation(config android.DeviceConfig) string {
+	if a.vndkApex {
+		vndkVersion := a.vndkVersion()
+		if vndkVersion == "current" {
+			vndkVersion = config.PlatformVndkVersion()
+		}
+		return "vendor." + vndkVersion
+	}
 	if config.VndkVersion() != "" && proptools.Bool(a.properties.Use_vendor) {
 		return "vendor." + config.PlatformVndkVersion()
 	} else {
@@ -1812,17 +1816,12 @@ func vndkApexBundleFactory() android.Module {
 		}{
 			proptools.StringPtr("both"),
 		})
-
-		vndkVersion := proptools.StringDefault(bundle.vndkProperties.Vndk_version, "current")
-		if vndkVersion == "current" {
-			vndkVersion = ctx.DeviceConfig().PlatformVndkVersion()
-			bundle.vndkProperties.Vndk_version = proptools.StringPtr(vndkVersion)
-		}
-
-		// Ensure VNDK APEX mount point is formatted as com.android.vndk.v###
-		bundle.properties.Apex_name = proptools.StringPtr("com.android.vndk.v" + vndkVersion)
 	})
 	return bundle
+}
+
+func (a *apexBundle) vndkVersion() string {
+	return proptools.StringDefault(a.vndkProperties.Vndk_version, "current")
 }
 
 //
