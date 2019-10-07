@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "50442c62_5a5f211d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-07T17:27:30Z",
+      "side": 1,
+      "message": "If you do want to enforce that it is a singleton you can use ctx.Config().Once() to store a token and error if it is called a second time.",
+      "parentUuid": "73a7c1df_81710d8c",
+      "range": {
+        "startLine": 13,
+        "startChar": 61,
+        "endLine": 14,
+        "endChar": 25
+      },
+      "revId": "ab06fcaff184eb3a3c73d53cb4949dfa1fba221d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4c4719ac_36d6afdf",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -48,6 +72,29 @@
     },
     {
       "key": {
+        "uuid": "8d1be077_a7d4baaf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-07T17:27:30Z",
+      "side": 1,
+      "message": "I think this is obsolete after Jiyong\u0027s suggestions, but \"prebuilt\" generally means installing a binary from the source tree to the device, this is taking something built during the build.  I\u0027d call this module \"art_boot_image\".",
+      "range": {
+        "startLine": 39,
+        "startChar": 11,
+        "endLine": 39,
+        "endChar": 24
+      },
+      "revId": "ab06fcaff184eb3a3c73d53cb4949dfa1fba221d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f1d689f9_34151789",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -59,6 +106,30 @@
       "writtenOn": "2019-10-07T15:37:40Z",
       "side": 1,
       "message": "build/soong/android, to clarify.",
+      "range": {
+        "startLine": 43,
+        "startChar": 16,
+        "endLine": 43,
+        "endChar": 24
+      },
+      "revId": "ab06fcaff184eb3a3c73d53cb4949dfa1fba221d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8591bcbb_4c7e1c5d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-07T17:27:30Z",
+      "side": 1,
+      "message": "or \"android/soong/android package, as it needs to import the android/soong/java package\"",
+      "parentUuid": "f1d689f9_34151789",
       "range": {
         "startLine": 43,
         "startChar": 16,
