@@ -196,15 +196,55 @@ func vndkIsVndkDepAllowed(from *vndkdep, to *vndkdep) error {
 var (
 	vndkCoreLibrariesKey             = android.NewOnceKey("vndkCoreLibrarires")
 	vndkSpLibrariesKey               = android.NewOnceKey("vndkSpLibrarires")
+	vndkPrebuiltLibrariesKey         = android.NewOnceKey("vndkPrebuiltLibrariesKey")
 	llndkLibrariesKey                = android.NewOnceKey("llndkLibrarires")
 	vndkPrivateLibrariesKey          = android.NewOnceKey("vndkPrivateLibrarires")
 	vndkUsingCoreVariantLibrariesKey = android.NewOnceKey("vndkUsingCoreVariantLibrarires")
 	modulePathsKey                   = android.NewOnceKey("modulePaths")
 	vndkSnapshotOutputsKey           = android.NewOnceKey("vndkSnapshotOutputs")
 	vndkLibrariesLock                sync.Mutex
+	vndkPrebuiltLibrariesLock        sync.Mutex
 
 	headerExts = []string{".h", ".hh", ".hpp", ".hxx", ".h++", ".inl", ".inc", ".ipp", ".h.generic"}
 )
+
+type stringSet struct {
+	elems map[string]struct{}
+}
+
+func (s *stringSet) add(elem string) {
+	s.elems[elem] = struct{}{}
+}
+
+func (s *stringSet) toList() []string {
+	if s == nil {
+		return nil
+	}
+	list := []string{}
+	for elem := range s.elems {
+		list = append(list, elem)
+	}
+	return list
+}
+
+func newStringSet() *stringSet {
+	return &stringSet{
+		elems: make(map[string]struct{}),
+	}
+}
+
+// GetVndkLibraries returns the list of VNDK libs of a specific VNDK version.
+// Note that you query this after VndkMutator run since the list is filled with it.
+func GetVndkLibraries(config android.Config, vndkVersion string) (list []string) {
+	if vndkVersion == "current" {
+		list = append(list, *vndkCoreLibraries(config)...)
+		list = append(list, *vndkSpLibraries(config)...)
+		return
+	}
+
+	vndkPrebuiltLibraries := vndkPrebuiltLibraries(config)
+	return vndkPrebuiltLibraries[vndkVersion].toList()
+}
 
 func vndkCoreLibraries(config android.Config) *[]string {
 	return config.Once(vndkCoreLibrariesKey, func() interface{} {
@@ -216,6 +256,12 @@ func vndkSpLibraries(config android.Config) *[]string {
 	return config.Once(vndkSpLibrariesKey, func() interface{} {
 		return &[]string{}
 	}).(*[]string)
+}
+
+func vndkPrebuiltLibraries(config android.Config) map[string]*stringSet {
+	return config.Once(vndkPrebuiltLibrariesKey, func() interface{} {
+		return make(map[string]*stringSet)
+	}).(map[string]*stringSet)
 }
 
 func llndkLibraries(config android.Config) *[]string {
@@ -307,6 +353,22 @@ func processVndkLibrary(mctx android.BottomUpMutatorContext, m *Module) {
 	}
 }
 
+func processPrebuiltVndkLibrary(mctx android.BottomUpMutatorContext, m *Module) {
+	p := m.linker.(*vndkPrebuiltLibraryDecorator)
+	if mctx.DeviceConfig().BinderBitness() == p.binderBit() && len(p.properties.Srcs) > 0 {
+		vndkPrebuiltLibraries := vndkPrebuiltLibraries(mctx.Config())
+		vndkPrebuiltLibrariesLock.Lock()
+		defer vndkPrebuiltLibrariesLock.Unlock()
+
+		vndkLibraries, ok := vndkPrebuiltLibraries[m.vndkVersion()]
+		if !ok {
+			vndkLibraries = newStringSet()
+			vndkPrebuiltLibraries[m.vndkVersion()] = vndkLibraries
+		}
+		vndkLibraries.add(mctx.ModuleName())
+	}
+}
+
 // gather list of vndk-core, vndk-sp, and ll-ndk libs
 func VndkMutator(mctx android.BottomUpMutatorContext) {
 	m, ok := mctx.Module().(*Module)
@@ -323,6 +385,11 @@ func VndkMutator(mctx android.BottomUpMutatorContext) {
 
 	if _, ok := m.linker.(*llndkStubDecorator); ok {
 		processLlndkLibrary(mctx, m)
+		return
+	}
+
+	if p, ok := m.linker.(*vndkPrebuiltLibraryDecorator); ok && p.buildShared() {
+		processPrebuiltVndkLibrary(mctx, m)
 		return
 	}
 
