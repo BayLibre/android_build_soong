@@ -93,6 +93,30 @@
       "revId": "d4dc040c624b6b402c76b133d690d55fa616c058",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09f16521_515de1f1",
+        "filename": "cc/compiler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2019-10-08T20:07:55Z",
+      "side": 1,
+      "message": "It may not be complicated if vendor/google* is the only pattern we want to match.  It could just be:\n  \"\u0026\u0026 !strings.HasPrefix(\"vendor/google\")\"",
+      "parentUuid": "bb7a83fd_f68ea0dd",
+      "range": {
+        "startLine": 385,
+        "startChar": 47,
+        "endLine": 385,
+        "endChar": 85
+      },
+      "revId": "d4dc040c624b6b402c76b133d690d55fa616c058",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
