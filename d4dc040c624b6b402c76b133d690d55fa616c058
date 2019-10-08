@@ -22,6 +22,29 @@
       "revId": "d4dc040c624b6b402c76b133d690d55fa616c058",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5d1a601_6e5a3ad5",
+        "filename": "cc/compiler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-08T18:36:02Z",
+      "side": 1,
+      "message": "This seems overly broad, it will match something like vendor/acme/.../with_google.  Maybe check if the directory under vendor/ has google in the name?",
+      "range": {
+        "startLine": 385,
+        "startChar": 47,
+        "endLine": 385,
+        "endChar": 85
+      },
+      "revId": "d4dc040c624b6b402c76b133d690d55fa616c058",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
