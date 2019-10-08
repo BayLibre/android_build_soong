@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c05a1c3c_dae83972",
+        "filename": "java/gen.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-08T00:31:56Z",
+      "side": 1,
+      "message": "Alternatively, we could let aidl compiler to not generate output for a parcelable declaration. And by specifying the output directory instead of specifying the output file name, we could zip all files in the directory.\n\naidl -o \u003coutdir\u003e foo/bar/Input1.aidl;\naidl -o \u003coutdir\u003e foo/bar/Input2.aidl; // this might not generate output\n...\nsoong_zip -srcjar -o out.srcjar -C \u003coutdir\u003e -D \u003coutdir\u003e",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 54
+      },
+      "revId": "c080617c8b0910fda257151aa8141676a1d6a328",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
