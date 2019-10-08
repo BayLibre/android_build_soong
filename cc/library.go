@@ -173,6 +173,7 @@ func init() {
 	android.RegisterModuleType("cc_library", LibraryFactory)
 	android.RegisterModuleType("cc_library_host_static", LibraryHostStaticFactory)
 	android.RegisterModuleType("cc_library_host_shared", LibraryHostSharedFactory)
+	android.RegisterModuleType("cc_library_host", LibraryHostFactory)
 	android.RegisterModuleType("cc_library_headers", LibraryHeaderFactory)
 }
 
@@ -211,6 +212,12 @@ func LibraryHostStaticFactory() android.Module {
 func LibraryHostSharedFactory() android.Module {
 	module, library := NewLibrary(android.HostSupported)
 	library.BuildOnlyShared()
+	return module.Init()
+}
+
+// cc_library_host creates a shared library that is usable on a host.
+func LibraryHostFactory() android.Module {
+	module, _ := NewLibrary(android.HostSupported)
 	return module.Init()
 }
 
