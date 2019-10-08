@@ -1079,6 +1079,10 @@ func (c *config) FlattenApex() bool {
 	return Bool(c.productVariables.Flatten_apex)
 }
 
+func (c *config) FlattenApexToSystemExt() bool {
+	return Bool(c.productVariables.Flatten_apex_to_system_ext)
+}
+
 func (c *config) EnforceSystemCertificate() bool {
 	return Bool(c.productVariables.EnforceSystemCertificate)
 }
