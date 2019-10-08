@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ecfb4306_73009742",
+        "filename": "cc/compiler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2019-10-08T16:08:16Z",
+      "side": 1,
+      "message": "Did you want \u0027!strings.Contains(..., \"google\")\u0027 here?",
+      "range": {
+        "startLine": 385,
+        "startChar": 47,
+        "endLine": 385,
+        "endChar": 63
+      },
+      "revId": "d4dc040c624b6b402c76b133d690d55fa616c058",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
