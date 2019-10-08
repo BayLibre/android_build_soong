@@ -252,6 +252,7 @@ func addToModuleList(ctx ModuleContext, key android.OnceKey, module string) {
 // per-target values, module type values, and per-module Blueprints properties
 func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps PathDeps) Flags {
 	tc := ctx.toolchain()
+	modulePath := android.PathForModuleSrc(ctx).String()
 
 	compiler.srcsBeforeGen = android.PathsForModuleSrcExcludes(ctx, compiler.Properties.Srcs, compiler.Properties.Exclude_srcs)
 	compiler.srcsBeforeGen = append(compiler.srcsBeforeGen, deps.GeneratedSources...)
@@ -289,8 +290,8 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 
 	if compiler.Properties.Include_build_directory == nil ||
 		*compiler.Properties.Include_build_directory {
-		flags.GlobalFlags = append(flags.GlobalFlags, "-I"+android.PathForModuleSrc(ctx).String())
-		flags.YasmFlags = append(flags.YasmFlags, "-I"+android.PathForModuleSrc(ctx).String())
+		flags.GlobalFlags = append(flags.GlobalFlags, "-I"+modulePath)
+		flags.YasmFlags = append(flags.YasmFlags, "-I"+modulePath)
 	}
 
 	if !(ctx.useSdk() || ctx.useVndk()) || ctx.Host() {
@@ -380,7 +381,8 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 		"${config.CommonClangGlobalCflags}",
 		fmt.Sprintf("${config.%sClangGlobalCflags}", hod))
 
-	if strings.HasPrefix(android.PathForModuleSrc(ctx).String(), "external/") {
+	if strings.HasPrefix(modulePath, "external/") ||
+		(strings.HasPrefix(modulePath, "vendor/") && strings.Contains(modulePath, "google")) {
 		flags.GlobalFlags = append([]string{"${config.ClangExternalCflags}"}, flags.GlobalFlags...)
 	}
 
@@ -437,7 +439,7 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 	// vendor/device specific things), we could extend this to be a ternary
 	// value.
 	strict := true
-	if strings.HasPrefix(android.PathForModuleSrc(ctx).String(), "external/") {
+	if strings.HasPrefix(modulePath, "external/") {
 		strict = false
 	}
 
