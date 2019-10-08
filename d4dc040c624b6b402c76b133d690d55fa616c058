@@ -45,6 +45,54 @@
       "revId": "d4dc040c624b6b402c76b133d690d55fa616c058",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a84e5976_53b9be6a",
+        "filename": "cc/compiler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2019-10-08T19:32:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecfb4306_73009742",
+      "range": {
+        "startLine": 385,
+        "startChar": 47,
+        "endLine": 385,
+        "endChar": 63
+      },
+      "revId": "d4dc040c624b6b402c76b133d690d55fa616c058",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb7a83fd_f68ea0dd",
+        "filename": "cc/compiler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2019-10-08T19:32:17Z",
+      "side": 1,
+      "message": "These projects will get more warnings turned on. That\u0027s not a big issue but we can avoid having  complicated string matching...",
+      "parentUuid": "c5d1a601_6e5a3ad5",
+      "range": {
+        "startLine": 385,
+        "startChar": 47,
+        "endLine": 385,
+        "endChar": 85
+      },
+      "revId": "d4dc040c624b6b402c76b133d690d55fa616c058",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
