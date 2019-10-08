@@ -161,7 +161,6 @@ func init() {
 
 		// http://b/72331526 Disable -Wtautological-* until the instances detected by these
 		// new warnings are fixed.
-		"-Wno-tautological-constant-compare",
 		"-Wno-tautological-type-limit-compare",
 	}, " "))
 
@@ -170,6 +169,8 @@ func init() {
 	pctx.StaticVariable("ClangExtraExternalCflags", strings.Join([]string{
 		"-Wno-enum-compare",
 		"-Wno-enum-compare-switch",
+
+		"-Wno-tautological-constant-compare",
 
 		// http://b/72331524 Allow null pointer arithmetic until the instances detected by
 		// this new warning are fixed.
