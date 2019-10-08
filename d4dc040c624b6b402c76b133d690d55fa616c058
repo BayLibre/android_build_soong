@@ -117,6 +117,30 @@
       "revId": "d4dc040c624b6b402c76b133d690d55fa616c058",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43f43e9e_7c2c26ae",
+        "filename": "cc/compiler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-08T20:37:37Z",
+      "side": 1,
+      "message": "I think it is important to get it accurate, it\u0027s already hard enough to determine what flags apply to a module and why, it will be even harder if your build suddenly starts failing with warnings as errors because you happened to have a google anywhere in the path.",
+      "parentUuid": "09f16521_515de1f1",
+      "range": {
+        "startLine": 385,
+        "startChar": 47,
+        "endLine": 385,
+        "endChar": 85
+      },
+      "revId": "d4dc040c624b6b402c76b133d690d55fa616c058",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
