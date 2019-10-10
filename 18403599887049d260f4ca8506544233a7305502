@@ -46,6 +46,30 @@
       "revId": "18403599887049d260f4ca8506544233a7305502",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90c9cce4_fc3ffe01",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-10T03:29:11Z",
+      "side": 1,
+      "message": "Just APEX_FILECONTEXT_INFOS?\n\nIf apex_name and file_contexts could break things, we could add more conditions here to prevent settings that are invalid or don\u0027t make sense. For example, we could prohibit file_context to be set for installable APEXes. We really don\u0027t need to support the full flexibility.",
+      "parentUuid": "c3848353_afd158a0",
+      "range": {
+        "startLine": 312,
+        "startChar": 1,
+        "endLine": 312,
+        "endChar": 61
+      },
+      "revId": "18403599887049d260f4ca8506544233a7305502",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
