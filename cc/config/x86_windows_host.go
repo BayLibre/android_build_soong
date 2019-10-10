@@ -146,6 +146,11 @@ func init() {
 	// Yasm flags
 	pctx.StaticVariable("WindowsX86YasmFlags", "-f win32 -m x86")
 	pctx.StaticVariable("WindowsX8664YasmFlags", "-f win64 -m amd64")
+
+	// mingw's headers mark a bunch of static inline functions with
+	// `__attribute__((unused))`. Clang emits a warning if any of those
+	// functions are used.
+	pctx.StaticVariable("MingwGlobalWorkaroundCflags", "-Wno-used-but-marked-unused")
 }
 
 type toolchainWindows struct {
