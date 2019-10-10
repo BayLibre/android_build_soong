@@ -1,0 +1,6 @@
+Build-Cop-Override+1: Louis Pullen-Freilich <lpf@google.com>
+Submitted-by: Lev Proleev <levp@google.com>
+Submitted-at: Thu, 10 Oct 2019 14:06:40 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1137739
+Project: platform/build/soong
+Branch: refs/heads/master
