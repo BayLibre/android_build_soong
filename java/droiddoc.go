@@ -1193,6 +1193,8 @@ type Droidstubs struct {
 
 	jdiffDocZip      android.WritablePath
 	jdiffStubsSrcJar android.WritablePath
+
+	metadataZip android.WritablePath
 }
 
 // droidstubs passes sources files through Metalava to generate stub .java files that only contain the API to be
@@ -1304,7 +1306,9 @@ func (d *Droidstubs) stubsFlags(ctx android.ModuleContext, cmd *android.RuleBuil
 	}
 
 	if Bool(d.properties.Write_sdk_values) {
-		cmd.FlagWithArg("--sdk-values ", android.PathForModuleOut(ctx, "out").String())
+		medatatDir := android.PathForModuleOut(ctx, "metadata")
+		cmd.FlagWithArg("--sdk-values ", medatatDir.String())
+		cmd.ImplicitOutput(medatatDir)
 	}
 
 	if Bool(d.properties.Create_doc_stubs) {
@@ -1802,6 +1806,21 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		zipSyncCleanupCmd(rule, srcJarDir)
 
 		rule.Build(pctx, ctx, "jdiff", "jdiff")
+	}
+
+	if Bool(d.properties.Write_sdk_values) {
+		d.metadataZip = android.PathForModuleOut(ctx, ctx.ModuleName()+"-metadata.zip")
+		var metadataDir = android.PathForModuleOut(ctx, "metadata")
+		rule := android.NewRuleBuilder()
+		rule.Command().
+			BuiltTool(ctx, "soong_zip").
+			Flag("-write_if_changed").
+			Flag("-d").
+			FlagWithOutput("-o ", d.metadataZip).
+			FlagWithArg("-C ", metadataDir.String()).
+			FlagWithArg("-D ", metadataDir.String()).
+			Implicit(metadataDir)
+		rule.Build(pctx, ctx, "zipMetadata", "Zip metadata files")
 	}
 }
 
