@@ -165,6 +165,7 @@ func createJavaDeviceForHostRules() []Rule {
 		"external/guava",
 		"external/robolectric-shadows",
 		"framework/layoutlib",
+		"libcore",
 	}
 
 	return []Rule{
