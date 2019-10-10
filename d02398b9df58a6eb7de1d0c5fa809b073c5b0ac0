@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6d07122_3a30c09a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-10T22:55:03Z",
+      "side": 1,
+      "message": "Plugin may be a confusing term here, I initially thought this was going to be using Go\u0027s plugin support (https://golang.org/pkg/plugin/).",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "d02398b9df58a6eb7de1d0c5fa809b073c5b0ac0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7f5efb3_a7dc9220",
+        "filename": "androidmk/cmd/androidmk/androidmk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-10T22:55:03Z",
+      "side": 1,
+      "message": "blueprint imports should go above android imports",
+      "revId": "d02398b9df58a6eb7de1d0c5fa809b073c5b0ac0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
