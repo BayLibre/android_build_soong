@@ -26,6 +26,11 @@ var (
 		"-DWIN32_LEAN_AND_MEAN",
 		"-Wno-unused-parameter",
 
+		// mingw's headers mark a bunch of static inline functions with
+		// `__attribute__((unused))`. Clang emits a warning if any of those
+		// functions are used.
+		"-Wno-used-but-marked-unused",
+
 		// Workaround differences in inttypes.h between host and target.
 		//See bug 12708004.
 		"-D__STDC_FORMAT_MACROS",
