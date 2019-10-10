@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50cbab65_00163b7c",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-10T00:19:18Z",
+      "side": 1,
+      "message": "can we call this just \u0027apexlist\u0027? I still think special casing the vndk APEX case is the right approach.",
+      "range": {
+        "startLine": 312,
+        "startChar": 1,
+        "endLine": 312,
+        "endChar": 61
+      },
+      "revId": "18403599887049d260f4ca8506544233a7305502",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
