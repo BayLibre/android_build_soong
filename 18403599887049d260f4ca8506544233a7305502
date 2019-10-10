@@ -94,6 +94,30 @@
       "revId": "18403599887049d260f4ca8506544233a7305502",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34ba0360_a6ab0d52",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-10T04:16:54Z",
+      "side": 1,
+      "message": "Well, I just think we shouldn\u0027t design for the things that we don\u0027t need. My belief is that special casing is not a bad thing if we are sure that it\u0027s really a special case. It\u0027s better than unnecessary flexibility.\n\nNevertheless, I don\u0027t think this disagreement should be a blocker.",
+      "parentUuid": "80700df6_054cd28a",
+      "range": {
+        "startLine": 312,
+        "startChar": 1,
+        "endLine": 312,
+        "endChar": 61
+      },
+      "revId": "18403599887049d260f4ca8506544233a7305502",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
