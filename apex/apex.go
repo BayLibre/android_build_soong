@@ -1703,6 +1703,10 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, apexName, moduleDir string, 
 				}
 			}
 			fmt.Fprintln(w, "include $(BUILD_SYSTEM)/soong_cc_prebuilt.mk")
+		} else if fi.class == app {
+			fmt.Fprintln(w, "LOCAL_MODULE_STEM :=", fi.builtFile.Base())
+			fmt.Fprintln(w, "LOCAL_CERTIFICATE :=", fi.module.(*java.AndroidApp).Certificate().Pem.String())
+			fmt.Fprintln(w, "include $(BUILD_SYSTEM)/soong_app_prebuilt.mk")
 		} else {
 			fmt.Fprintln(w, "LOCAL_MODULE_STEM :=", fi.builtFile.Base())
 			fmt.Fprintln(w, "include $(BUILD_PREBUILT)")

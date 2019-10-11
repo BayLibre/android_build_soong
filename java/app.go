@@ -147,6 +147,10 @@ func (a *AndroidApp) OutputFile() android.Path {
 	return a.outputFile
 }
 
+func (a *AndroidApp) Certificate() Certificate {
+	return a.certificate
+}
+
 var _ AndroidLibraryDependency = (*AndroidApp)(nil)
 
 type Certificate struct {
