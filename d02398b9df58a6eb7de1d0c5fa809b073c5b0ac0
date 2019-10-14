@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2abb89b3_b57bbcfe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-14T21:19:43Z",
+      "side": 1,
+      "message": "I see, this is expected to use Blueprints pluginFor property.\n\nThis is going to cause androidmk built in one tree to have different behavior than androidmk built in another tree.  I think I\u0027d prefer to have this more explicit.  I think each partner should build their own partner_androidmk binary that includes their additional behavior.  That way we don\u0027t get bugreports saying \"androidmk doesn\u0027t work\" when they really mean \"partner_androidmk doesn\u0027t work\".",
+      "parentUuid": "d6d07122_3a30c09a",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "d02398b9df58a6eb7de1d0c5fa809b073c5b0ac0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7f5efb3_a7dc9220",
         "filename": "androidmk/cmd/androidmk/androidmk_test.go",
         "patchSetId": 2
