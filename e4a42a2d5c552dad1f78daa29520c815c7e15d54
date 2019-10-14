@@ -241,6 +241,24 @@
       "revId": "e4a42a2d5c552dad1f78daa29520c815c7e15d54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ae9b809_d0c3b73b",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-10-14T13:07:49Z",
+      "side": 1,
+      "message": "I wanted for VNDKs to be \"guaranteed\" to exist. But as VNDK apex updated the VNDK paths in linker config, just installing the VNDK has no meaning, I agree.",
+      "parentUuid": "05662106_36789a2f",
+      "revId": "e4a42a2d5c552dad1f78daa29520c815c7e15d54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
