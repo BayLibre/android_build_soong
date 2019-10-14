@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "1798e39e_b393eae2",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1246,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-14T04:23:31Z",
+      "side": 1,
+      "message": "This is related with aosp/1139947, which uses \u0027suffix\u0027 to retrieve installed file name from module name. I could use \u0027prefix\u0027 there instead. But I thought that putting suffix for variants is more consistent, like \"libfoo\" and \"libfoo.vendor\".\n\nOn the other hand, files in apex can be seen as \"parts\" of the apex, which makes prefixed names(\"apexname.module\") reasonable.\n\nBoth ways are fine with me. What do you think? If you prefer prefixed one, I\u0027d upload new patchset.",
+      "parentUuid": "654323e2_a2c1c91e",
+      "revId": "e4a42a2d5c552dad1f78daa29520c815c7e15d54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4555912b_2e941c53",
         "filename": "apex/apex.go",
         "patchSetId": 4
@@ -70,6 +88,24 @@
       "writtenOn": "2019-10-14T01:58:41Z",
       "side": 1,
       "message": "could you tell me the reason?",
+      "revId": "e4a42a2d5c552dad1f78daa29520c815c7e15d54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bea9725b_8cbafecd",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-14T04:23:31Z",
+      "side": 1,
+      "message": "This prevents vndk libraries (not vndk ext) from being installed to /system/lib/vndk-*.",
+      "parentUuid": "1089c7fa_ac24bbfd",
       "revId": "e4a42a2d5c552dad1f78daa29520c815c7e15d54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
