@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21264e51_d3774811",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-14T01:58:41Z",
+      "side": 1,
+      "message": "This is repeating. Can this be part of the vndkVersion function?",
+      "range": {
+        "startLine": 824,
+        "startChar": 0,
+        "endLine": 827,
+        "endChar": 3
+      },
+      "revId": "e4a42a2d5c552dad1f78daa29520c815c7e15d54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "654323e2_a2c1c91e",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1246,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-14T01:58:41Z",
+      "side": 1,
+      "message": "why?",
+      "revId": "e4a42a2d5c552dad1f78daa29520c815c7e15d54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4555912b_2e941c53",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1572,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-14T01:58:41Z",
+      "side": 1,
+      "message": "again.. why?",
+      "revId": "e4a42a2d5c552dad1f78daa29520c815c7e15d54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1089c7fa_ac24bbfd",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-14T01:58:41Z",
+      "side": 1,
+      "message": "could you tell me the reason?",
+      "revId": "e4a42a2d5c552dad1f78daa29520c815c7e15d54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
