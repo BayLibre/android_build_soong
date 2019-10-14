@@ -127,6 +127,24 @@
       "revId": "e4a42a2d5c552dad1f78daa29520c815c7e15d54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26261b08_db1ac976",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-14T04:36:46Z",
+      "side": 1,
+      "message": "Yes. Every vndk libraries (which are meant to be installed /system/lib/vndk-*) is replaced with ones in VNDK APEXes, including older versions of VNDK. I don\u0027t think we need to check vndk version here.",
+      "parentUuid": "07bfe5e1_4b776b50",
+      "revId": "e4a42a2d5c552dad1f78daa29520c815c7e15d54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
