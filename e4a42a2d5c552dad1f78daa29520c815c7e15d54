@@ -109,6 +109,24 @@
       "revId": "e4a42a2d5c552dad1f78daa29520c815c7e15d54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07bfe5e1_4b776b50",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-10-14T04:27:22Z",
+      "side": 1,
+      "message": "Is it because the VNDKs are installed in APEXes instead of system/lib/vndk?\nIf so, don\u0027t we need to check if the libs are really in APEX for the vndk version?",
+      "parentUuid": "1089c7fa_ac24bbfd",
+      "revId": "e4a42a2d5c552dad1f78daa29520c815c7e15d54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
