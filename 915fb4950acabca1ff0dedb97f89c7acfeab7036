@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8935b710_f4d40756",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-14T21:39:15Z",
+      "side": 1,
+      "message": "This isn\u0027t used",
+      "revId": "915fb4950acabca1ff0dedb97f89c7acfeab7036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "494a8755_c015f9e6",
+        "filename": "cc/vndk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-14T21:39:15Z",
+      "side": 1,
+      "message": "prebuilt_ is an implementation detail of prebuilts, use BaseModuleName() to get the name without prefix_",
+      "revId": "915fb4950acabca1ff0dedb97f89c7acfeab7036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7fc6a7c_5b97d917",
+        "filename": "cc/vndk_prebuilt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-14T21:39:15Z",
+      "side": 1,
+      "message": "Unrelated to this patch, but I noticed when doing some other work that this is defining modules for all architectures, including exporting them to Make, but most of them do nothing.  It would be better to disable the modules that don\u0027t need to exist by setting enabled: false at the top level and then enabled: true in the relevant arch and binder32bit clauses.",
+      "revId": "915fb4950acabca1ff0dedb97f89c7acfeab7036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
