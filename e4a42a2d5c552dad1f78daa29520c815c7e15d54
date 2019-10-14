@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "654260c6_a61f8cdd",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-14T05:20:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21264e51_d3774811",
+      "range": {
+        "startLine": 824,
+        "startChar": 0,
+        "endLine": 827,
+        "endChar": 3
+      },
+      "revId": "e4a42a2d5c552dad1f78daa29520c815c7e15d54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "654323e2_a2c1c91e",
         "filename": "apex/apex.go",
         "patchSetId": 4
@@ -163,6 +187,24 @@
       "revId": "e4a42a2d5c552dad1f78daa29520c815c7e15d54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05662106_36789a2f",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-14T05:20:17Z",
+      "side": 1,
+      "message": "Quite a strong word \"guranteed\". ;-)\nI\u0027d say, vndk libs are packaged in a vndk-versioned apex properly.\n\nAnd, I put some comment why vndk libs are set \"uninstallable\".",
+      "parentUuid": "b54455cf_49e18aec",
+      "revId": "e4a42a2d5c552dad1f78daa29520c815c7e15d54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
