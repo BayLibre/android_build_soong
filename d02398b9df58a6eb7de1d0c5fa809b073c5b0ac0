@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b8f5c736_7dc2bc51",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1462756
+      },
+      "writtenOn": "2019-10-14T23:38:43Z",
+      "side": 1,
+      "message": "I was going off Dan\u0027s suggestion of using the pluginFor property.  I was trying to avoid having to separate androidmks or a fork of the androidmk to maintain.  But if I understand correctly, your preferred approach would be for me to convert much of androidmk to a library and use that library in the [partner]_androidmk binary.\n\nOr could I just add a separate module partner_androidmk with the same source as androidmk and use the pluginFor property to install the extension in partner_androidmk?",
+      "parentUuid": "2abb89b3_b57bbcfe",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "d02398b9df58a6eb7de1d0c5fa809b073c5b0ac0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f7f5efb3_a7dc9220",
         "filename": "androidmk/cmd/androidmk/androidmk_test.go",
         "patchSetId": 2
