@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fd41b778_5ac2b9c4",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-14T22:37:06Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "8935b710_f4d40756",
+      "revId": "915fb4950acabca1ff0dedb97f89c7acfeab7036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "494a8755_c015f9e6",
         "filename": "cc/vndk.go",
         "patchSetId": 5
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "c01565e2_cc5c6f99",
+        "filename": "cc/vndk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-14T22:37:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "494a8755_c015f9e6",
+      "revId": "915fb4950acabca1ff0dedb97f89c7acfeab7036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c7fc6a7c_5b97d917",
         "filename": "cc/vndk_prebuilt.go",
         "patchSetId": 5
@@ -47,6 +83,24 @@
       "writtenOn": "2019-10-14T21:39:15Z",
       "side": 1,
       "message": "Unrelated to this patch, but I noticed when doing some other work that this is defining modules for all architectures, including exporting them to Make, but most of them do nothing.  It would be better to disable the modules that don\u0027t need to exist by setting enabled: false at the top level and then enabled: true in the relevant arch and binder32bit clauses.",
+      "revId": "915fb4950acabca1ff0dedb97f89c7acfeab7036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1677b61c_bbfc9cf9",
+        "filename": "cc/vndk_prebuilt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-14T22:37:06Z",
+      "side": 1,
+      "message": "I factored out the method to be used from cc/vndk.go. But I agree with you, while I worked on this, I also thought it is weird to make srcs empty to disable. I filed b/142675459 for a separate work to re-configure them to use enabled: as you suggested.",
+      "parentUuid": "c7fc6a7c_5b97d917",
       "revId": "915fb4950acabca1ff0dedb97f89c7acfeab7036",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
