@@ -1,0 +1,9 @@
+Verified+1: Jiyong Park <jiyong@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Dario Freni <dariofreni@google.com>
+Autosubmit+1: Jiyong Park <jiyong@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Mon, 14 Oct 2019 00:22:31 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1139943
+Project: platform/build/soong
+Branch: refs/heads/master
