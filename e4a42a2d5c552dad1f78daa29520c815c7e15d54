@@ -145,6 +145,24 @@
       "revId": "e4a42a2d5c552dad1f78daa29520c815c7e15d54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b54455cf_49e18aec",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-10-14T04:46:13Z",
+      "side": 1,
+      "message": "Got it, so is it guaranteed in somewhere else?",
+      "parentUuid": "26261b08_db1ac976",
+      "revId": "e4a42a2d5c552dad1f78daa29520c815c7e15d54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
