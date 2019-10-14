@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "ebd29852_e59332db",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1246,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-14T09:56:02Z",
+      "side": 1,
+      "message": "I just wondered why. I don\u0027t have a specific preference. It would have been nicer if such change was uploaded as a separate CL.",
+      "parentUuid": "1798e39e_b393eae2",
+      "revId": "e4a42a2d5c552dad1f78daa29520c815c7e15d54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4555912b_2e941c53",
         "filename": "apex/apex.go",
         "patchSetId": 4
@@ -98,6 +116,24 @@
       "revId": "e4a42a2d5c552dad1f78daa29520c815c7e15d54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5300e9f8_48ec44a8",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1572,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-14T09:56:02Z",
+      "side": 1,
+      "message": "answered",
+      "parentUuid": "4555912b_2e941c53",
+      "revId": "e4a42a2d5c552dad1f78daa29520c815c7e15d54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
