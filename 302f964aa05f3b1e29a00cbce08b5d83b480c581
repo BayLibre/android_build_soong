@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d84d4508_b93cf76e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2019-10-15T16:09:39Z",
+      "side": 1,
+      "message": "for the specific case of netd_client, that should probably be using a static libc++ rather than a dynamic one. but i suspect netd_client is only your first of many problems because it\u0027s pretty hard _not_ to pull in libc++ one way or another. (even liblog will drag it in.)",
+      "range": {
+        "startLine": 10,
+        "startChar": 38,
+        "endLine": 11,
+        "endChar": 36
+      },
+      "revId": "302f964aa05f3b1e29a00cbce08b5d83b480c581",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
