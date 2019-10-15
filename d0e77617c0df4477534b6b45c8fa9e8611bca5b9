@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "beb83dfb_97fc24d0",
+        "filename": "android/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-15T06:30:07Z",
+      "side": 1,
+      "message": "No. As you suggested, this doesn\u0027t need to be exported. Done.",
+      "parentUuid": "944224ea_ca0442e2",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 2
+      },
+      "revId": "d0e77617c0df4477534b6b45c8fa9e8611bca5b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05b5a84c_b2d998b1",
         "filename": "cc/cc.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "d0e77617c0df4477534b6b45c8fa9e8611bca5b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5c868d9_99a41db3",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2157,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-15T06:30:07Z",
+      "side": 1,
+      "message": "You are right. Thanks. Done.",
+      "parentUuid": "05b5a84c_b2d998b1",
+      "range": {
+        "startLine": 2157,
+        "startChar": 11,
+        "endLine": 2157,
+        "endChar": 31
+      },
+      "revId": "d0e77617c0df4477534b6b45c8fa9e8611bca5b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
