@@ -104,6 +104,24 @@
       "revId": "915fb4950acabca1ff0dedb97f89c7acfeab7036",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c488cca3_445c825c",
+        "filename": "cc/vndk_prebuilt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-15T01:22:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1677b61c_bbfc9cf9",
+      "revId": "915fb4950acabca1ff0dedb97f89c7acfeab7036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
