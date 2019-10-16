@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bd441b04_a485366d",
+        "filename": "androidmk/partner_androidmk/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1462756
+      },
+      "writtenOn": "2019-10-16T22:00:44Z",
+      "side": 1,
+      "message": "Are you okay with partner_bpfix_extensions since I added a partner_bpfix binary as well",
+      "parentUuid": "4dbfdc32_8482d23e",
+      "range": {
+        "startLine": 33,
+        "startChar": 19,
+        "endLine": 33,
+        "endChar": 24
+      },
+      "revId": "37df8c1b07b545ab64815f5e38fb5f2f6dd0c3ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "16adad44_9db876df",
         "filename": "androidmk/partner_androidmk/fixes/headers.go",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "37df8c1b07b545ab64815f5e38fb5f2f6dd0c3ff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "09409a91_3367711d",
+        "filename": "androidmk/partner_androidmk/fixes/headers.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1462756
+      },
+      "writtenOn": "2019-10-16T22:00:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16adad44_9db876df",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 1
+      },
+      "revId": "37df8c1b07b545ab64815f5e38fb5f2f6dd0c3ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
