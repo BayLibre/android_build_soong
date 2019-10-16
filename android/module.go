@@ -72,6 +72,7 @@ type BaseModuleContext interface {
 	OtherModuleDependencyTag(m blueprint.Module) blueprint.DependencyTag
 	OtherModuleExists(name string) bool
 	OtherModuleType(m blueprint.Module) string
+	OtherModuleSubDir(m blueprint.Module) string
 
 	GetDirectDepsWithTag(tag blueprint.DependencyTag) []Module
 	GetDirectDepWithTag(name string, tag blueprint.DependencyTag) blueprint.Module
