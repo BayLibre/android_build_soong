@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2de99a75_d432a953",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1309,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-16T21:10:36Z",
+      "side": 1,
+      "message": "metadata\n\nstore this in the module so you don\u0027t have to reconstruct it later in GenerateAndroidBuildActions",
+      "range": {
+        "startLine": 1309,
+        "startChar": 2,
+        "endLine": 1309,
+        "endChar": 9
+      },
+      "revId": "90e1349bc0825d4effdaecc720b4a901fa844279",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78b7fe64_c9516ffc",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1813,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-16T21:10:36Z",
+      "side": 1,
+      "message": "metadataDir :\u003d",
+      "range": {
+        "startLine": 1813,
+        "startChar": 2,
+        "endLine": 1813,
+        "endChar": 19
+      },
+      "revId": "90e1349bc0825d4effdaecc720b4a901fa844279",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb7e2e4b_21114665",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1817,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-16T21:10:36Z",
+      "side": 1,
+      "message": "You need rule.Restat() if you use -write_if_changed",
+      "revId": "90e1349bc0825d4effdaecc720b4a901fa844279",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
