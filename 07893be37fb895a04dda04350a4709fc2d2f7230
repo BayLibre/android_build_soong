@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "85d5496a_37afa453",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1928,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-16T15:08:06Z",
+      "side": 1,
+      "message": "Call ctx.AddMissingDependencies([]string{depName}) in the ctx.Config().AllowMissingDependencies() case so the module doesn\u0027t try to build without one of its dependencies.",
+      "revId": "07893be37fb895a04dda04350a4709fc2d2f7230",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
