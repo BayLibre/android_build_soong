@@ -1,0 +1,9 @@
+Code-Review+2: Colin Cross <ccross@android.com>
+Code-Review+2: Stephen Hines <srhines@google.com>
+Autosubmit+1: Pirama Arumuga Nainar <pirama@google.com>
+Presubmit-Ready+1: Yabin Cui <yabinc@google.com>
+Submitted-by: Pirama Arumuga Nainar <pirama@google.com>
+Submitted-at: Wed, 16 Oct 2019 03:06:29 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1143604
+Project: platform/build/soong
+Branch: refs/heads/master
