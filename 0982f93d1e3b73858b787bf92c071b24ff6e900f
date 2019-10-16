@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f9a997d_02a10b4a",
+        "filename": "androidmk/partner_androidmk/Android.bp",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-16T22:38:01Z",
+      "side": 1,
+      "message": "pluginFor doesn\u0027t seem necessary here, just make partner_androidmk and partner_bpfix depend on partner_bpfix_extensions and import _ \"partner/android/bpfix/extensions\" in each.",
+      "revId": "0982f93d1e3b73858b787bf92c071b24ff6e900f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ba56bb7_adafb608",
+        "filename": "androidmk/partner_androidmk/partner_bpfix/bpfix.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-16T22:38:01Z",
+      "side": 1,
+      "message": "Can you make this file any smaller by moving parts of it into the bpfix package?",
+      "revId": "0982f93d1e3b73858b787bf92c071b24ff6e900f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
