@@ -33,6 +33,24 @@
       "revId": "0982f93d1e3b73858b787bf92c071b24ff6e900f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ad897fe_aa7c7c7c",
+        "filename": "androidmk/partner_androidmk/partner_bpfix/bpfix.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1462756
+      },
+      "writtenOn": "2019-10-16T23:36:15Z",
+      "side": 1,
+      "message": "I could, but it seems like bpfix-lib and bpfix cmd have a clean separation where the bpfix-lib only works with the tree and bpfix handles I/O.  Would you prefer all that functionality in the bpfix-lib package? Another option would be a separate package that contains all of this functionality with the main package only being a wrapper that calls Run()",
+      "parentUuid": "8ba56bb7_adafb608",
+      "revId": "0982f93d1e3b73858b787bf92c071b24ff6e900f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
