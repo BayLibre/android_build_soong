@@ -163,6 +163,30 @@
       "revId": "f331aa74a9e84e1fe4e8c1cb5313582ee3762e58",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37cb12e6_e2ab018f",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-16T20:46:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37102e47_bd956b6d",
+      "range": {
+        "startLine": 55,
+        "startChar": 13,
+        "endLine": 55,
+        "endChar": 14
+      },
+      "revId": "f331aa74a9e84e1fe4e8c1cb5313582ee3762e58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

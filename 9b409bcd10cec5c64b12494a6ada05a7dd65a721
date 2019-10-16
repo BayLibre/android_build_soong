@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ccc07bae_bf0b8e38",
+        "filename": "android/sdk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-16T20:46:46Z",
+      "side": 1,
+      "message": "I\u0027m surprised there is no strings function to split on a rune :(  Feel free to go back to \"@\" for this, since  you have to cast it to string everywhere you use it anyways.",
+      "revId": "9b409bcd10cec5c64b12494a6ada05a7dd65a721",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
