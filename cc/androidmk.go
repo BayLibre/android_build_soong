@@ -308,20 +308,16 @@ func (fuzz *fuzzBinary) AndroidMk(ctx AndroidMkContext, ret *android.AndroidMkDa
 
 	var fuzzFiles []string
 	for _, d := range fuzz.corpus {
-		rel := d.Rel()
-		path := d.String()
-		path = strings.TrimSuffix(path, rel)
-		fuzzFiles = append(fuzzFiles, path+":corpus/"+d.Base())
+		fuzzFiles = append(fuzzFiles, d.String()+":corpus/"+d.Base())
 	}
 
 	if fuzz.dictionary != nil {
-		path := strings.TrimSuffix(fuzz.dictionary.String(), fuzz.dictionary.Rel())
-		fuzzFiles = append(fuzzFiles, path+":"+fuzz.dictionary.Base())
+		fuzzFiles = append(fuzzFiles, fuzz.dictionary.String()+":"+fuzz.dictionary.Base())
 	}
 
 	if len(fuzzFiles) > 0 {
 		ret.Extra = append(ret.Extra, func(w io.Writer, outputFile android.Path) {
-			fmt.Fprintln(w, "LOCAL_TEST_DATA := "+strings.Join(fuzzFiles, " "))
+			fmt.Fprintln(w, "LOCAL_FUZZ_DATA := "+strings.Join(fuzzFiles, " "))
 		})
 	}
 
