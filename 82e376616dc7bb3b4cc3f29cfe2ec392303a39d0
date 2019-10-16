@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "abd086a8_fa5a591a",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-10-16T21:34:35Z",
+      "side": 1,
+      "message": "Can this be BuildOsTarget? BuildTarget is a bit ambiguous to read",
+      "range": {
+        "startLine": 379,
+        "startChar": 8,
+        "endLine": 379,
+        "endChar": 19
+      },
+      "revId": "82e376616dc7bb3b4cc3f29cfe2ec392303a39d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
