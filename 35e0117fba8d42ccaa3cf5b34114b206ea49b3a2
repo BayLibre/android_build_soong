@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "842e1f12_20a92fd1",
+        "filename": "android/arch_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-10-16T21:38:05Z",
+      "side": 1,
+      "message": "Isn\u0027t this going to break on Mac? TestArchConfig uses BuildOs",
+      "range": {
+        "startLine": 296,
+        "startChar": 26,
+        "endLine": 296,
+        "endChar": 44
+      },
+      "revId": "35e0117fba8d42ccaa3cf5b34114b206ea49b3a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
