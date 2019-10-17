@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ac0133f9_eabf0059",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-10-17T22:38:05Z",
+      "side": 1,
+      "message": "This would require corpora names to be globally unique across all modules, and all variants of a module (which isn\u0027t true), hence the ModuleSubDir() as a foreach-variant and ModuleName() as a foreach-module.",
+      "parentUuid": "a2c85895_df90b9ee",
+      "range": {
+        "startLine": 108,
+        "startChar": 20,
+        "endLine": 109,
+        "endChar": 62
+      },
+      "revId": "f9d470f1dcff05b8e0d2b530ba6170c57ed86f88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "56ea8b71_620d0c25",
         "filename": "cc/fuzz.go",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "789836f6_c0263ac8",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-10-17T22:38:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56ea8b71_620d0c25",
+      "revId": "f9d470f1dcff05b8e0d2b530ba6170c57ed86f88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d4e44f8_bddc0a8b",
         "filename": "cc/fuzz.go",
         "patchSetId": 1
@@ -56,6 +98,24 @@
       "revId": "f9d470f1dcff05b8e0d2b530ba6170c57ed86f88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b46d3b7_f4013a1b",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-10-17T22:38:05Z",
+      "side": 1,
+      "message": "Pulled them out from a mass copy to a single copy per corpus entry. Done.",
+      "parentUuid": "7d4e44f8_bddc0a8b",
+      "revId": "f9d470f1dcff05b8e0d2b530ba6170c57ed86f88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -79,6 +139,30 @@
       "revId": "f9d470f1dcff05b8e0d2b530ba6170c57ed86f88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41970dec_ff514ddd",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-10-17T22:38:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6f568c3_bb71ac79",
+      "range": {
+        "startLine": 116,
+        "startChar": 26,
+        "endLine": 116,
+        "endChar": 50
+      },
+      "revId": "f9d470f1dcff05b8e0d2b530ba6170c57ed86f88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -149,6 +233,30 @@
       "revId": "f9d470f1dcff05b8e0d2b530ba6170c57ed86f88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd67c32a_ee2d8f5d",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-10-17T22:38:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8b67c5d_3b25c8c6",
+      "range": {
+        "startLine": 118,
+        "startChar": 30,
+        "endLine": 118,
+        "endChar": 31
+      },
+      "revId": "f9d470f1dcff05b8e0d2b530ba6170c57ed86f88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
