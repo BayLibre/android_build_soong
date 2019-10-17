@@ -16,6 +16,24 @@
       "revId": "9b409bcd10cec5c64b12494a6ada05a7dd65a721",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed0b647e_8642ad88",
+        "filename": "android/sdk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-17T01:02:06Z",
+      "side": 1,
+      "message": "I feel fine with casting.",
+      "parentUuid": "ccc07bae_bf0b8e38",
+      "revId": "9b409bcd10cec5c64b12494a6ada05a7dd65a721",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
