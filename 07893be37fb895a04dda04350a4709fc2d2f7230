@@ -34,6 +34,24 @@
       "revId": "07893be37fb895a04dda04350a4709fc2d2f7230",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1db2efcb_d775a2f6",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1928,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-17T19:19:40Z",
+      "side": 1,
+      "message": "The AddMissingDependencies call is required, otherwise nothing marks this module as failed, and Soong will silently drop the missing file and emit a rule to build the module.  With the call, the module is marked as having missing dependencies and the rule is replaced with a command to print the missing dependency message and exit with an error.",
+      "parentUuid": "4cfd5314_cdf4487c",
+      "revId": "07893be37fb895a04dda04350a4709fc2d2f7230",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
