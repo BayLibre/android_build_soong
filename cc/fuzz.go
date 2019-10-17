@@ -53,9 +53,10 @@ type fuzzBinary struct {
 	*binaryDecorator
 	*baseCompiler
 
-	Properties FuzzProperties
-	corpus     android.Paths
-	dictionary android.Path
+	Properties            FuzzProperties
+	dictionary            android.Path
+	corpus                android.Paths
+	corpusIntermediateDir android.Path
 }
 
 func (fuzz *fuzzBinary) linkerProps() []interface{} {
@@ -103,6 +104,18 @@ func (fuzz *fuzzBinary) install(ctx ModuleContext, file android.Path) {
 	fuzz.binaryDecorator.baseInstaller.install(ctx, file)
 
 	fuzz.corpus = android.PathsForModuleSrc(ctx, fuzz.Properties.Corpus)
+	builder := android.NewRuleBuilder()
+	intermediateDir := android.PathForIntermediates(
+		ctx, "fuzz", ctx.ModuleSubDir(), ctx.ModuleName(), "corpus")
+	builder.Command().Text("mkdir -p").Output(intermediateDir)
+	cmd := builder.Command().Text("cp")
+	for _, entry := range fuzz.corpus {
+		cmd.Input(entry).ImplicitOutput(intermediateDir.Join(ctx, entry.Base()))
+	}
+	cmd.Output(intermediateDir)
+	builder.Build(pctx, ctx, intermediateDir.String(), "copy corpus")
+	fuzz.corpusIntermediateDir = &intermediateDir
+
 	if fuzz.Properties.Dictionary != nil {
 		fuzz.dictionary = android.PathForModuleSrc(ctx, *fuzz.Properties.Dictionary)
 		if fuzz.dictionary.Ext() != ".dict" {
