@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75ebd040_4f554532",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1312,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-17T21:05:40Z",
+      "side": 1,
+      "message": "A directory cannot be an output, directories have strange timestamp behaviors.  I\u0027d suggest putting the soong_zip command into this rule.",
+      "revId": "13995d7ad6a202096f2c78c247efbffa6631ab53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0b325ed_5baf097d",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1824,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-17T21:05:40Z",
+      "side": 1,
+      "message": "A directory cannot be an input, directories have strange timestamp behaviors.",
+      "revId": "13995d7ad6a202096f2c78c247efbffa6631ab53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
