@@ -76,7 +76,7 @@ func TestClasspath(t *testing.T) {
 			name:          "current",
 			properties:    `sdk_version: "current",`,
 			bootclasspath: []string{"android_stubs_current", "core-lambda-stubs"},
-			system:        "bootclasspath", // special value to tell 1.9 test to expect bootclasspath
+			system:        "android_stubs_current_system_modules",
 			aidl:          "-p" + buildDir + "/framework.aidl",
 		},
 		{
@@ -84,7 +84,7 @@ func TestClasspath(t *testing.T) {
 			name:          "system_current",
 			properties:    `sdk_version: "system_current",`,
 			bootclasspath: []string{"android_system_stubs_current", "core-lambda-stubs"},
-			system:        "bootclasspath", // special value to tell 1.9 test to expect bootclasspath
+			system:        "android_system_stubs_current_system_modules",
 			aidl:          "-p" + buildDir + "/framework.aidl",
 		},
 		{
@@ -101,7 +101,7 @@ func TestClasspath(t *testing.T) {
 			name:          "test_current",
 			properties:    `sdk_version: "test_current",`,
 			bootclasspath: []string{"android_test_stubs_current", "core-lambda-stubs"},
-			system:        "bootclasspath", // special value to tell 1.9 test to expect bootclasspath
+			system:        "android_test_stubs_current_system_modules",
 			aidl:          "-p" + buildDir + "/framework.aidl",
 		},
 		{
@@ -109,7 +109,7 @@ func TestClasspath(t *testing.T) {
 			name:          "core_current",
 			properties:    `sdk_version: "core_current",`,
 			bootclasspath: []string{"core.current.stubs", "core-lambda-stubs"},
-			system:        "bootclasspath", // special value to tell 1.9 test to expect bootclasspath
+			system:        "core-current-stubs-system-modules",
 		},
 		{
 
@@ -166,7 +166,7 @@ func TestClasspath(t *testing.T) {
 			unbundled:     true,
 			properties:    `sdk_version: "current",`,
 			bootclasspath: []string{`""`},
-			system:        "bootclasspath", // special value to tell 1.9 test to expect bootclasspath
+			system:        "none",
 			classpath:     []string{"prebuilts/sdk/current/public/android.jar", "prebuilts/sdk/tools/core-lambda-stubs.jar"},
 			aidl:          "-pprebuilts/sdk/current/public/framework.aidl",
 		},
