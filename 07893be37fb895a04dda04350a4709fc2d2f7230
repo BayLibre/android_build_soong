@@ -16,6 +16,24 @@
       "revId": "07893be37fb895a04dda04350a4709fc2d2f7230",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cfd5314_cdf4487c",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1928,
+      "author": {
+        "id": 1139803
+      },
+      "writtenOn": "2019-10-17T03:06:14Z",
+      "side": 1,
+      "message": "Done in PS2.\nQuestion: is this really necessary, or it\u0027s used as an optimization so other modules that depend on depName can be skipped w/o needing to check again?",
+      "parentUuid": "85d5496a_37afa453",
+      "revId": "07893be37fb895a04dda04350a4709fc2d2f7230",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
