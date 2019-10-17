@@ -53,9 +53,10 @@ type fuzzBinary struct {
 	*binaryDecorator
 	*baseCompiler
 
-	Properties FuzzProperties
-	corpus     android.Paths
-	dictionary android.Path
+	Properties            FuzzProperties
+	dictionary            android.Path
+	corpus                android.Paths
+	corpusIntermediateDir android.Path
 }
 
 func (fuzz *fuzzBinary) linkerProps() []interface{} {
@@ -103,6 +104,17 @@ func (fuzz *fuzzBinary) install(ctx ModuleContext, file android.Path) {
 	fuzz.binaryDecorator.baseInstaller.install(ctx, file)
 
 	fuzz.corpus = android.PathsForModuleSrc(ctx, fuzz.Properties.Corpus)
+	builder := android.NewRuleBuilder()
+	intermediateDir := android.PathForIntermediates(
+		ctx, "corpus", ctx.ModuleName(), ctx.ModuleSubDir())
+	for _, entry := range fuzz.corpus {
+		builder.Command().Text("cp").
+			Input(entry).
+			Output(intermediateDir.Join(ctx, entry.Base()))
+	}
+	builder.Build(pctx, ctx, "copy_corpus", "copy corpus")
+	fuzz.corpusIntermediateDir = intermediateDir
+
 	if fuzz.Properties.Dictionary != nil {
 		fuzz.dictionary = android.PathForModuleSrc(ctx, *fuzz.Properties.Dictionary)
 		if fuzz.dictionary.Ext() != ".dict" {
@@ -148,14 +160,10 @@ func NewFuzz(hod android.HostOrDeviceSupported) *Module {
 	// include the STL.
 	android.AddLoadHook(module, func(ctx android.LoadHookContext) {
 		staticStlLinkage := struct {
-			Target struct {
-				Linux_glibc struct {
-					Stl *string
-				}
-			}
+			Stl *string
 		}{}
 
-		staticStlLinkage.Target.Linux_glibc.Stl = proptools.StringPtr("libc++_static")
+		staticStlLinkage.Stl = proptools.StringPtr("libc++_static")
 		ctx.AppendProperties(&staticStlLinkage)
 	})
 
@@ -215,7 +223,7 @@ func (s *fuzzPackager) GenerateBuildActions(ctx android.SingletonContext) {
 		// The corpora.
 		for _, corpusEntry := range fuzzModule.corpus {
 			archDirs[archDir] = append(archDirs[archDir],
-				fileToZip{corpusEntry, ccModule.Name() + "/corpus"})
+				fileToZip{corpusEntry, ccModule.Name() + "/corpus/" + corpusEntry.Base()})
 		}
 
 		// The dictionary.
