@@ -99,6 +99,7 @@ var Configuration = map[string]PathConfig{
 	"rsync":    Allowed,
 	"sh":       Allowed,
 	"tr":       Allowed,
+	"truncate": Allowed,
 	"unzip":    Allowed,
 	"zip":      Allowed,
 	"zipinfo":  Allowed,
