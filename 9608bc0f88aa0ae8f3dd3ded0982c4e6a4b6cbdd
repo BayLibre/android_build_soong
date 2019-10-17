@@ -16,6 +16,24 @@
       "revId": "9608bc0f88aa0ae8f3dd3ded0982c4e6a4b6cbdd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a49203f3_60859d3a",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-10-17T23:11:48Z",
+      "side": 1,
+      "message": "Thanks for the catch. Looks like a sync+rebase in my local checkout got stuck.",
+      "parentUuid": "c6f8797e_1224e44c",
+      "revId": "9608bc0f88aa0ae8f3dd3ded0982c4e6a4b6cbdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
