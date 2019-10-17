@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "aef01f4f_f558e349",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-10-17T16:46:27Z",
+      "side": 1,
+      "message": "Martin:\n\nI think the reason for singleton is not querying product variables (dexpreoptGlobalConfig can also be called with any context that provides the same context.Config(), and in my CL I pass a module context).\n\nI think the real reason is make variables generation that for a singleton is instance-specific (MakeVars method), but for a module is not (so the generation function cannot access the list of filenames in a particular module).\n\nFor now I think it is better to keep a singleton than to modify Soong to allow module-specific Make varaible generation (the modification is not difficult, but the new method would add confusion).\n\n\nColin:\n\nI tried ctx.Config().Once() locally, but the code became even more confusing:\n- First, there is no context available in a module constructor (factory), so I had to put it into GenerateAndroidBuildActions, which is rather late (I could use other visitors as well).\n- Second, when searching for unique module it is still necessary to handle \"improbable\" cases, because the check is in different file and has no apparent connection to the search (and the check does not ensure that the module exists at all).\n- Finally, in future we will likely need multiple dex_bootjars modules (for boot image extensions), so the check will go away in any case.",
+      "parentUuid": "50442c62_5a5f211d",
+      "range": {
+        "startLine": 13,
+        "startChar": 61,
+        "endLine": 14,
+        "endChar": 25
+      },
+      "revId": "ab06fcaff184eb3a3c73d53cb4949dfa1fba221d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c4719ac_36d6afdf",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -92,6 +116,30 @@
       "revId": "ab06fcaff184eb3a3c73d53cb4949dfa1fba221d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4197bfce_562bb142",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-10-17T16:46:27Z",
+      "side": 1,
+      "message": "All true, thanks. I got rid of prebuilt_boot altogether.",
+      "parentUuid": "8d1be077_a7d4baaf",
+      "range": {
+        "startLine": 39,
+        "startChar": 11,
+        "endLine": 39,
+        "endChar": 24
+      },
+      "revId": "ab06fcaff184eb3a3c73d53cb4949dfa1fba221d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -142,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "ad3f1d57_a913a3b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-10-17T16:46:27Z",
+      "side": 1,
+      "message": "Right, thanks. Obsolete after prebuilt_boot removal.",
+      "parentUuid": "8591bcbb_4c7e1c5d",
+      "range": {
+        "startLine": 43,
+        "startChar": 16,
+        "endLine": 43,
+        "endChar": 24
+      },
+      "revId": "ab06fcaff184eb3a3c73d53cb4949dfa1fba221d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58e763b8_ccd22bc2",
         "filename": "apex/apex.go",
         "patchSetId": 2
@@ -165,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "a37cee20_100b6ba5",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-10-17T16:46:27Z",
+      "side": 1,
+      "message": "I added the BOOT_IMAGE class in related makefiles (see other parts of CL). Technically I can put boot images under \"ETC\", but this seems not clean.",
+      "parentUuid": "58e763b8_ccd22bc2",
+      "range": {
+        "startLine": 443,
+        "startChar": 10,
+        "endLine": 443,
+        "endChar": 20
+      },
+      "revId": "ab06fcaff184eb3a3c73d53cb4949dfa1fba221d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2900a46_6f2a7594",
         "filename": "apex/apex.go",
         "patchSetId": 2
@@ -185,6 +281,30 @@
       "revId": "ab06fcaff184eb3a3c73d53cb4949dfa1fba221d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be2699df_2ea2c831",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 966,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-10-17T16:46:27Z",
+      "side": 1,
+      "message": "Yes! Thanks for clarification. I did as you suggested.",
+      "parentUuid": "b2900a46_6f2a7594",
+      "range": {
+        "startLine": 966,
+        "startChar": 28,
+        "endLine": 966,
+        "endChar": 40
+      },
+      "revId": "ab06fcaff184eb3a3c73d53cb4949dfa1fba221d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -274,6 +394,30 @@
     },
     {
       "key": {
+        "uuid": "8253fbfa_6f1f13c9",
+        "filename": "apex/prebuilt_boot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-10-17T16:46:27Z",
+      "side": 1,
+      "message": "Obsolete after removal of prebuilt_boot.\n\nIt\u0027s not good to write code that does not handle special cases because it relies on high-level assumptions; there should be Soong support for such cases (a method that encapsulates all \"impossible\" error checking).",
+      "parentUuid": "30c16eeb_d8c5eaf3",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 32
+      },
+      "revId": "ab06fcaff184eb3a3c73d53cb4949dfa1fba221d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9e946bd_626b59f8",
         "filename": "apex/prebuilt_boot.go",
         "patchSetId": 2
@@ -297,6 +441,30 @@
     },
     {
       "key": {
+        "uuid": "f8961cf9_3a4bf732",
+        "filename": "apex/prebuilt_boot.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-10-17T16:46:27Z",
+      "side": 1,
+      "message": "Good point, I added a function and got rid of prebuilt_boot.",
+      "parentUuid": "b9e946bd_626b59f8",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 90
+      },
+      "revId": "ab06fcaff184eb3a3c73d53cb4949dfa1fba221d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eeaec0ca_5315da72",
         "filename": "java/Android.bp",
         "patchSetId": 2
@@ -311,6 +479,24 @@
       "revId": "ab06fcaff184eb3a3c73d53cb4949dfa1fba221d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5adc15de_ec945b01",
+        "filename": "java/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-10-17T16:46:27Z",
+      "side": 1,
+      "message": "Obsolete after removing the file, thanks for pointing out!",
+      "parentUuid": "eeaec0ca_5315da72",
+      "revId": "ab06fcaff184eb3a3c73d53cb4949dfa1fba221d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -337,6 +523,30 @@
     },
     {
       "key": {
+        "uuid": "b3530b0f_ca09d8d0",
+        "filename": "java/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-10-17T16:46:27Z",
+      "side": 1,
+      "message": "True, moved it there.",
+      "parentUuid": "3cd86231_8630039e",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 1
+      },
+      "revId": "ab06fcaff184eb3a3c73d53cb4949dfa1fba221d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "011ffe0d_d8e35e1c",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 2
@@ -357,6 +567,30 @@
       "revId": "ab06fcaff184eb3a3c73d53cb4949dfa1fba221d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf62ed61_d4e24eed",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-10-17T16:46:27Z",
+      "side": 1,
+      "message": "Good point, removed the comment.",
+      "parentUuid": "011ffe0d_d8e35e1c",
+      "range": {
+        "startLine": 192,
+        "startChar": 4,
+        "endLine": 192,
+        "endChar": 14
+      },
+      "revId": "ab06fcaff184eb3a3c73d53cb4949dfa1fba221d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {

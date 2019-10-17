@@ -16,6 +16,24 @@
       "revId": "1282f42ed66f0f47debac76861b3c6ec6fc7a910",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06ac7021_db6cb825",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-10-17T16:46:27Z",
+      "side": 0,
+      "message": "There is no instance-specific MakeVars method for modules, only for singletons. As far as I understand, modules can only register a freestanding function common to all modules of the given type.",
+      "parentUuid": "8c233791_bb497859",
+      "revId": "1282f42ed66f0f47debac76861b3c6ec6fc7a910",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
