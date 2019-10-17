@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6f8797e_1224e44c",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-17T23:05:14Z",
+      "side": 1,
+      "message": "Did you mean to undo this change?",
+      "revId": "9608bc0f88aa0ae8f3dd3ded0982c4e6a4b6cbdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
