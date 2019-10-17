@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "dbee8839_d5334aef",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-17T22:49:20Z",
+      "side": 1,
+      "message": "PathForModuleOut returns a path that is local to the module variant\u0027s intermediates directory.",
+      "parentUuid": "ac0133f9_eabf0059",
+      "range": {
+        "startLine": 108,
+        "startChar": 20,
+        "endLine": 109,
+        "endChar": 62
+      },
+      "revId": "f9d470f1dcff05b8e0d2b530ba6170c57ed86f88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "56ea8b71_620d0c25",
         "filename": "cc/fuzz.go",
         "patchSetId": 1
