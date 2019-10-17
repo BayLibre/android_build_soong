@@ -2,6 +2,86 @@
   "comments": [
     {
       "key": {
+        "uuid": "a2c85895_df90b9ee",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-17T22:20:02Z",
+      "side": 1,
+      "message": "android.PathForModuleOut(ctx, \"corpus\")",
+      "range": {
+        "startLine": 108,
+        "startChar": 20,
+        "endLine": 109,
+        "endChar": 62
+      },
+      "revId": "f9d470f1dcff05b8e0d2b530ba6170c57ed86f88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56ea8b71_620d0c25",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-17T22:20:02Z",
+      "side": 1,
+      "message": "This is unnecessary, ninja ensures the directory for each output is created.",
+      "revId": "f9d470f1dcff05b8e0d2b530ba6170c57ed86f88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d4e44f8_bddc0a8b",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-17T22:20:02Z",
+      "side": 1,
+      "message": "Directories should not be used as inputs or outputs of rules",
+      "revId": "f9d470f1dcff05b8e0d2b530ba6170c57ed86f88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6f568c3_bb71ac79",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-17T22:20:02Z",
+      "side": 1,
+      "message": "This can just be a string like \"copy_corpus\", it only has to be unique to the module.",
+      "range": {
+        "startLine": 116,
+        "startChar": 26,
+        "endLine": 116,
+        "endChar": 50
+      },
+      "revId": "f9d470f1dcff05b8e0d2b530ba6170c57ed86f88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f039f4c0_423b38ad",
         "filename": "cc/fuzz.go",
         "patchSetId": 1
@@ -46,6 +126,29 @@
       "revId": "f9d470f1dcff05b8e0d2b530ba6170c57ed86f88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8b67c5d_3b25c8c6",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-17T22:20:02Z",
+      "side": 1,
+      "message": "The \u0026 is unnecessary",
+      "range": {
+        "startLine": 118,
+        "startChar": 30,
+        "endLine": 118,
+        "endChar": 31
+      },
+      "revId": "f9d470f1dcff05b8e0d2b530ba6170c57ed86f88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
