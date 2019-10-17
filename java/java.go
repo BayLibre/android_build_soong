@@ -887,11 +887,11 @@ func getJavaVersion(ctx android.ModuleContext, javaVersion string, sdkContext sd
 	} else if ctx.Device() && sdk <= 29 || !ctx.Config().TargetOpenJDK9() {
 		ret = "1.8"
 	} else if ctx.Device() &&
-		sdkContext.sdkVersion() != "" &&
-		sdkContext.sdkVersion() != "none" &&
-		sdkContext.sdkVersion() != "core_platform" &&
+		(sdkContext.sdkVersion() == "current" ||
+			sdkContext.sdkVersion() == "system_current" ||
+			sdkContext.sdkVersion() == "test_current") &&
 		sdk == android.FutureApiLevel {
-		// TODO(ccross): once we generate stubs we should be able to use 1.9 for sdk_version: "current"
+		// TODO(b/143209928): Remove this special case once a plan for building this code at 1.9 is in place:
 		ret = "1.8"
 	} else {
 		ret = "1.9"

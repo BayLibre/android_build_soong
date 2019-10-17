@@ -109,7 +109,7 @@ func TestClasspath(t *testing.T) {
 			name:          "core_current",
 			properties:    `sdk_version: "core_current",`,
 			bootclasspath: []string{"core.current.stubs", "core-lambda-stubs"},
-			system:        "bootclasspath", // special value to tell 1.9 test to expect bootclasspath
+			system:        "core-current-stubs-system-modules",
 		},
 		{
 
