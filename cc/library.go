@@ -1263,6 +1263,23 @@ func LinkageMutator(mctx android.BottomUpMutatorContext) {
 				modules[0].(*Module).linker.(libraryInterface).setShared()
 			}
 		}
+	} else if library, ok := mctx.Module().(ccutil.LinkableInterface); ok {
+		if library.IsCcLinkable() && library.BuildStaticVariant() && library.BuildSharedVariant() {
+			modules := mctx.CreateLocalVariations("static", "shared", "")
+			static := modules[0].(ccutil.LinkableInterface)
+			shared := modules[1].(ccutil.LinkableInterface)
+
+			static.SetStatic()
+			shared.SetShared()
+		} else if library.IsCcLinkable() && library.BuildStaticVariant() {
+			modules := mctx.CreateLocalVariations("static")
+			modules[0].(ccutil.LinkableInterface).SetStatic()
+		} else if library.IsCcLinkable() && library.BuildSharedVariant() {
+			modules := mctx.CreateLocalVariations("shared")
+			modules[0].(ccutil.LinkableInterface).SetShared()
+		} else {
+			mctx.CreateLocalVariations("")
+		}
 	}
 }
 
@@ -1289,11 +1306,10 @@ func latestStubsVersionFor(config android.Config, name string) string {
 // Version mutator splits a module into the mandatory non-stubs variant
 // (which is unnamed) and zero or more stubs variants.
 func VersionMutator(mctx android.BottomUpMutatorContext) {
-	if m, ok := mctx.Module().(*Module); ok && !m.inRecovery() && m.linker != nil {
-		if library, ok := m.linker.(*libraryDecorator); ok && library.buildShared() &&
-			len(library.Properties.Stubs.Versions) > 0 {
+	if library, ok := mctx.Module().(ccutil.LinkableInterface); ok && !library.InRecovery() {
+		if library.IsCcLinkable() && library.BuildSharedVariant() && len(library.StubsVersions()) > 0 {
 			versions := []string{}
-			for _, v := range library.Properties.Stubs.Versions {
+			for _, v := range library.StubsVersions() {
 				if _, err := strconv.Atoi(v); err != nil {
 					mctx.PropertyErrorf("versions", "%q is not a number", v)
 				}
@@ -1317,14 +1333,9 @@ func VersionMutator(mctx android.BottomUpMutatorContext) {
 
 			modules := mctx.CreateVariations(versions...)
 			for i, m := range modules {
-				l := m.(*Module).linker.(*libraryDecorator)
 				if versions[i] != "" {
-					l.MutatedProperties.BuildStubs = true
-					l.MutatedProperties.StubsVersion = versions[i]
-					m.(*Module).Properties.HideFromMake = true
-					m.(*Module).sanitize = nil
-					m.(*Module).stl = nil
-					m.(*Module).Properties.PreventInstall = true
+					m.(ccutil.LinkableInterface).SetBuildStubs()
+					m.(ccutil.LinkableInterface).SetStubsVersions(versions[i])
 				}
 			}
 		} else {
