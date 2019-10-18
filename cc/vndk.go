@@ -24,6 +24,7 @@ import (
 
 	"android/soong/android"
 	"android/soong/cc/config"
+	"android/soong/cc/util"
 )
 
 type VndkProperties struct {
@@ -98,7 +99,7 @@ func (vndk *vndkdep) typeName() string {
 	return "native:vendor:vndkspext"
 }
 
-func (vndk *vndkdep) vndkCheckLinkType(ctx android.ModuleContext, to *Module, tag dependencyTag) {
+func (vndk *vndkdep) vndkCheckLinkType(ctx android.ModuleContext, to *Module, tag util.CcDependencyTag) {
 	if to.linker == nil {
 		return
 	}
