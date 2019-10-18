@@ -22,7 +22,6 @@ import (
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
-	"android/soong/cc"
 	"android/soong/cc/ccutil"
 	"android/soong/rust/config"
 )
@@ -163,9 +162,8 @@ func (mod *Module) IsCcLinkable() bool {
 
 func (mod *Module) IncludeDirs() []string {
 	if mod.compiler != nil {
-		if _, ok := mod.compiler.(*libraryDecorator); ok {
-			//TODO add Include_dirs to libraryDecorator for C libraries.
-			return []string{}
+		if library, ok := mod.compiler.(*libraryDecorator); ok {
+			return library.Properties.Include_dirs
 		}
 	}
 	panic(fmt.Errorf("IncludeDirs called on non-library module: %q", mod.BaseModuleName()))
@@ -173,8 +171,8 @@ func (mod *Module) IncludeDirs() []string {
 
 func (mod *Module) SetStatic() {
 	if mod.compiler != nil {
-		if _, ok := mod.compiler.(*libraryDecorator); ok {
-			//TODO add support for static variants.
+		if library, ok := mod.compiler.(*libraryDecorator); ok {
+			library.setStatic()
 			return
 		}
 	}
@@ -183,8 +181,8 @@ func (mod *Module) SetStatic() {
 
 func (mod *Module) SetShared() {
 	if mod.compiler != nil {
-		if _, ok := mod.compiler.(*libraryDecorator); ok {
-			//TODO add support for shared variants.
+		if library, ok := mod.compiler.(*libraryDecorator); ok {
+			library.setShared()
 			return
 		}
 	}
@@ -201,9 +199,8 @@ func (mod *Module) SetStubsVersions(string) {
 
 func (mod *Module) BuildStaticVariant() bool {
 	if mod.compiler != nil {
-		if _, ok := mod.compiler.(*libraryDecorator); ok {
-			//TODO add support for static variants.
-			return false
+		if library, ok := mod.compiler.(*libraryDecorator); ok {
+			return library.buildStatic()
 		}
 	}
 	panic(fmt.Errorf("BuildStaticVariant called on non-library module: %q", mod.BaseModuleName()))
@@ -211,9 +208,8 @@ func (mod *Module) BuildStaticVariant() bool {
 
 func (mod *Module) BuildSharedVariant() bool {
 	if mod.compiler != nil {
-		if _, ok := mod.compiler.(*libraryDecorator); ok {
-			//TODO add support for shared variants.
-			return false
+		if library, ok := mod.compiler.(*libraryDecorator); ok {
+			return library.buildShared()
 		}
 	}
 	panic(fmt.Errorf("BuildSharedVariant called on non-library module: %q", mod.BaseModuleName()))
@@ -426,13 +422,12 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 	directRlibDeps := []*Module{}
 	directDylibDeps := []*Module{}
 	directProcMacroDeps := []*Module{}
-	directSharedLibDeps := []*(cc.Module){}
-	directStaticLibDeps := []*(cc.Module){}
+	directSharedLibDeps := [](ccutil.LinkableInterface){}
+	directStaticLibDeps := [](ccutil.LinkableInterface){}
 
 	ctx.VisitDirectDeps(func(dep android.Module) {
 		depName := ctx.OtherModuleName(dep)
 		depTag := ctx.OtherModuleDependencyTag(dep)
-
 		if rustDep, ok := dep.(*Module); ok {
 			//Handle Rust Modules
 
@@ -480,16 +475,19 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 				}
 			}
 
-		} else if ccDep, ok := dep.(*cc.Module); ok {
-			//Handle C dependencies
+		}
 
-			if ccDep.Target().Os != ctx.Os() {
-				ctx.ModuleErrorf("OS mismatch between %q and %q", ctx.ModuleName(), depName)
-				return
-			}
-			if ccDep.Target().Arch.ArchType != ctx.Arch().ArchType {
-				ctx.ModuleErrorf("Arch mismatch between %q and %q", ctx.ModuleName(), depName)
-				return
+		if ccDep, ok := dep.(ccutil.LinkableInterface); ok {
+			//Handle C dependencies
+			if _, ok := ccDep.(*Module); !ok {
+				if ccDep.Module().Target().Os != ctx.Os() {
+					ctx.ModuleErrorf("OS mismatch between %q and %q", ctx.ModuleName(), depName)
+					return
+				}
+				if ccDep.Module().Target().Arch.ArchType != ctx.Arch().ArchType {
+					ctx.ModuleErrorf("Arch mismatch between %q and %q", ctx.ModuleName(), depName)
+					return
+				}
 			}
 
 			linkFile := ccDep.OutputFile()
@@ -520,7 +518,7 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			}
 
 			// Make sure these dependencies are propagated
-			if lib, ok := mod.compiler.(*libraryDecorator); ok && (exportDep || lib.rlib()) {
+			if lib, ok := mod.compiler.(*libraryDecorator); ok && exportDep {
 				lib.linkDirs = append(lib.linkDirs, linkPath)
 				lib.depFlags = append(lib.depFlags, "-l"+libName)
 			} else if procMacro, ok := mod.compiler.(*procMacroDecorator); ok && exportDep {
@@ -572,8 +570,8 @@ func linkPathFromFilePath(filepath android.Path) string {
 }
 func libNameFromFilePath(filepath android.Path) string {
 	libName := strings.Split(filepath.Base(), filepath.Ext())[0]
-	if strings.Contains(libName, "lib") {
-		libName = strings.Split(libName, "lib")[1]
+	if strings.HasPrefix(libName, "lib") {
+		libName = libName[3:]
 	}
 	return libName
 }
@@ -587,23 +585,23 @@ func (mod *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 	ctx.ctx = ctx
 
 	deps := mod.deps(ctx)
-
-	actx.AddVariationDependencies([]blueprint.Variation{{Mutator: "rust_libraries", Variation: "rlib"}}, rlibDepTag, deps.Rlibs...)
-	actx.AddVariationDependencies([]blueprint.Variation{{Mutator: "rust_libraries", Variation: "dylib"}}, dylibDepTag, deps.Dylibs...)
-
-	ccDepVariations := []blueprint.Variation{}
-	ccDepVariations = append(ccDepVariations, blueprint.Variation{Mutator: "version", Variation: ""})
+	commonDepVariations := []blueprint.Variation{}
+	commonDepVariations = append(commonDepVariations, blueprint.Variation{Mutator: "version", Variation: ""})
 	if !mod.Host() {
-		ccDepVariations = append(ccDepVariations, blueprint.Variation{Mutator: "image", Variation: "core"})
+		commonDepVariations = append(commonDepVariations, blueprint.Variation{Mutator: "image", Variation: "core"})
 	}
-	actx.AddVariationDependencies(append(ccDepVariations, blueprint.Variation{Mutator: "link", Variation: "shared"}), ccutil.SharedDepTag, deps.SharedLibs...)
-	actx.AddVariationDependencies(append(ccDepVariations, blueprint.Variation{Mutator: "link", Variation: "static"}), ccutil.StaticDepTag, deps.StaticLibs...)
+
+	actx.AddVariationDependencies(append(commonDepVariations, []blueprint.Variation{{Mutator: "rust_libraries", Variation: "rlib"}, {Mutator: "link", Variation: ""}}...), rlibDepTag, deps.Rlibs...)
+	actx.AddVariationDependencies(append(commonDepVariations, []blueprint.Variation{{Mutator: "rust_libraries", Variation: "dylib"}, {Mutator: "link", Variation: ""}}...), dylibDepTag, deps.Dylibs...)
+
+	actx.AddVariationDependencies(append(commonDepVariations, blueprint.Variation{Mutator: "link", Variation: "shared"}), ccutil.SharedDepTag, deps.SharedLibs...)
+	actx.AddVariationDependencies(append(commonDepVariations, blueprint.Variation{Mutator: "link", Variation: "static"}), ccutil.StaticDepTag, deps.StaticLibs...)
 
 	if deps.CrtBegin != "" {
-		actx.AddVariationDependencies(ccDepVariations, ccutil.CrtBeginDepTag, deps.CrtBegin)
+		actx.AddVariationDependencies(commonDepVariations, ccutil.CrtBeginDepTag, deps.CrtBegin)
 	}
 	if deps.CrtEnd != "" {
-		actx.AddVariationDependencies(ccDepVariations, ccutil.CrtEndDepTag, deps.CrtEnd)
+		actx.AddVariationDependencies(commonDepVariations, ccutil.CrtEndDepTag, deps.CrtEnd)
 	}
 
 	// proc_macros are compiler plugins, and so we need the host arch variant as a dependendcy.
