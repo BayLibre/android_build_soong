@@ -19,6 +19,7 @@ import (
 	"sync"
 
 	"android/soong/android"
+	"android/soong/cc/ccutil"
 	"android/soong/cc/config"
 )
 
@@ -83,7 +84,7 @@ func sabiDepsMutator(mctx android.TopDownMutatorContext) {
 		mctx.VisitDirectDeps(func(m android.Module) {
 			tag := mctx.OtherModuleDependencyTag(m)
 			switch tag {
-			case staticDepTag, staticExportDepTag, lateStaticDepTag, wholeStaticDepTag:
+			case ccutil.StaticDepTag, staticExportDepTag, lateStaticDepTag, wholeStaticDepTag:
 
 				cc, _ := m.(*Module)
 				if cc == nil {

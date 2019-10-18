@@ -139,6 +139,17 @@ bootstrap_go_package {
 }
 
 bootstrap_go_package {
+    name: "soong-cc-linkable",
+    deps: [
+        "soong-android",
+    ],
+    pkgPath: "android/soong/cc/ccutil",
+    srcs: [
+      "cc/ccutil/linkable.go"
+      ],
+}
+
+bootstrap_go_package {
     name: "soong-cc",
     pkgPath: "android/soong/cc",
     deps: [
@@ -147,6 +158,7 @@ bootstrap_go_package {
         "soong",
         "soong-android",
         "soong-cc-config",
+        "soong-cc-linkable",
         "soong-genrule",
         "soong-tradefed",
     ],
@@ -352,6 +364,7 @@ bootstrap_go_package {
         "soong",
         "soong-android",
         "soong-cc",
+        "soong-cc-linkable",
         "soong-rust-config",
     ],
     srcs: [

@@ -23,6 +23,7 @@ import (
 	"sync"
 
 	"android/soong/android"
+	"android/soong/cc/ccutil"
 	"android/soong/cc/config"
 )
 
@@ -98,7 +99,7 @@ func (vndk *vndkdep) typeName() string {
 	return "native:vendor:vndkspext"
 }
 
-func (vndk *vndkdep) vndkCheckLinkType(ctx android.ModuleContext, to *Module, tag dependencyTag) {
+func (vndk *vndkdep) vndkCheckLinkType(ctx android.ModuleContext, to *Module, tag ccutil.DependencyTag) {
 	if to.linker == nil {
 		return
 	}
