@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6dd1f121_22c43b7a",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2019-10-18T22:03:58Z",
+      "side": 1,
+      "message": "Transform",
+      "range": {
+        "startLine": 880,
+        "startChar": 5,
+        "endLine": 880,
+        "endChar": 14
+      },
+      "revId": "2fce0f5d89554e5338740a1e0c2a02470b7ee8c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ff278d5_f93de6f8",
+        "filename": "scripts/archive_repack.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2019-10-18T22:03:58Z",
+      "side": 1,
+      "message": "I think you may have forgotten to use this.",
+      "revId": "2fce0f5d89554e5338740a1e0c2a02470b7ee8c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "037c3215_a35197a2",
+        "filename": "scripts/archive_repack.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2019-10-18T22:03:58Z",
+      "side": 1,
+      "message": "This seems to be bad if the same name appears twice in a build (even if their directory paths are different). Can we do something better here?",
+      "revId": "2fce0f5d89554e5338740a1e0c2a02470b7ee8c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
