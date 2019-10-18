@@ -107,11 +107,21 @@ type SystemModules struct {
 	headerJars android.Paths
 	outputDir  android.Path
 	outputDeps android.Paths
+
+	exportedApiSignaturePaths android.Paths
 }
 
 type SystemModulesProperties struct {
 	// List of java library modules that should be included in the system modules
 	Libs []string
+
+	// List of signature files describing the API that is provided by this system
+	// module.
+	Export_api_signatures []string
+}
+
+func (system *SystemModules) ExportedApiSignaturePaths() android.Paths {
+	return system.exportedApiSignaturePaths
 }
 
 func (system *SystemModules) GenerateAndroidBuildActions(ctx android.ModuleContext) {
@@ -124,11 +134,21 @@ func (system *SystemModules) GenerateAndroidBuildActions(ctx android.ModuleConte
 
 	system.headerJars = jars
 
+	var exportedApiSignaturePaths android.Paths
+	ctx.VisitDirectDepsWithTag(exportedSignaturesTag, func(module android.Module) {
+		exporter, _ := module.(ExportedApiSignaturePaths)
+		exportedApiSignaturePaths = append(exportedApiSignaturePaths, exporter.ExportedApiSignaturePaths()...)
+	})
+
+	system.exportedApiSignaturePaths = exportedApiSignaturePaths
+
 	system.outputDir, system.outputDeps = TransformJarsToSystemModules(ctx, jars)
 }
 
 func (system *SystemModules) DepsMutator(ctx android.BottomUpMutatorContext) {
 	ctx.AddVariationDependencies(nil, libTag, system.properties.Libs...)
+
+	ctx.AddVariationDependencies(nil, exportedSignaturesTag, system.properties.Export_api_signatures...)
 }
 
 func (system *SystemModules) AndroidMk() android.AndroidMkData {

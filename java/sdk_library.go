@@ -100,6 +100,12 @@ type sdkLibraryProperties struct {
 	//  $(location <label>): the path to the droiddoc_option_files with name <label>
 	Droiddoc_options []string
 
+	// See droidstubs property of the same name.
+	Export_api_signatures []string
+
+	// See droidstubs property of the same name.
+	Import_api_signatures []string
+
 	// a list of top-level directories containing files to merge qualifier annotations
 	// (i.e. those intended to be included in the stubs written) from.
 	Merge_annotations_dirs []string
@@ -440,6 +446,8 @@ func (module *SdkLibrary) createDocs(mctx android.LoadHookContext, apiScope apiS
 		Api_filename                     *string
 		Removed_api_filename             *string
 		Java_version                     *string
+		Export_api_signatures            []string
+		Import_api_signatures            []string
 		Merge_annotations_dirs           []string
 		Merge_inclusion_annotations_dirs []string
 		Check_api                        struct {
@@ -521,6 +529,9 @@ func (module *SdkLibrary) createDocs(mctx android.LoadHookContext, apiScope apiS
 	props.Check_api.Last_released.Removed_api_file = proptools.StringPtr(
 		module.latestRemovedApiFilegroupName(apiScope))
 	props.Check_api.Ignore_missing_latest_api = proptools.BoolPtr(true)
+
+	props.Export_api_signatures = module.sdkLibraryProperties.Export_api_signatures
+	props.Import_api_signatures = module.sdkLibraryProperties.Import_api_signatures
 
 	mctx.CreateModule(DroidstubsFactory, &props)
 }
