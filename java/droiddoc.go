@@ -17,6 +17,7 @@ package java
 import (
 	"fmt"
 	"path/filepath"
+	"sort"
 	"strings"
 
 	"github.com/google/blueprint/proptools"
@@ -208,8 +209,27 @@ type DroidstubsProperties struct {
 	// the tag name used to distinguish if the API files belong to public/system/test.
 	Api_tag_name *string
 
-	// the generated public API filename by Metalava.
+	// if this is set to a non empty string then it triggers the creation of the
+	// API signature .txt file but the value is otherwise ignored, i.e. contrary
+	// to previous documentation it does not affect the name of the generated
+	// file.
 	Api_filename *string
+
+	// if set to true then metalava will create the API signature .txt file for
+	// importing by other build rules. Not necessary if the signature .txt file is
+	// generated in some other way, e.g. by checkapi.
+	Generate_api_signature *bool
+
+	// the list of droidstubs targets whose exported API signatures, and their
+	// transitively exported signatures must be imported. The generated stubs
+	// will only contain references to classes that are in the generated stubs or
+	// that are referenced from there.
+	Import_api_signatures []string
+
+	// the list of api signatures to be exported. Imported signatures are added to
+	// this list automatically as is the generated api signature file if
+	// available.
+	Export_api_signatures []string
 
 	// the generated public Dex API filename by Metalava.
 	Dex_api_filename *string
@@ -221,6 +241,9 @@ type DroidstubsProperties struct {
 	Private_dex_api_filename *string
 
 	// the generated removed API filename by Metalava.
+	// if this is set to a non empty string that it triggers the creation of the
+	// API signature .txt file but the value is otherwise ignored, i.e. contrary
+	// to the documentation it does not affect the name of the generated file.
 	Removed_api_filename *string
 
 	// the generated removed Dex API filename by Metalava.
@@ -350,6 +373,13 @@ type ApiFilePath interface {
 	ApiFilePath() android.Path
 }
 
+// The interface that must be implemented by any module that needs to be
+// usable in the Export/Import_api_signature properties.
+type ExportedApiSignaturePaths interface {
+	// Get the paths to the API signature files.
+	ExportedApiSignaturePaths() android.Paths
+}
+
 //
 // Javadoc
 //
@@ -441,6 +471,9 @@ func (j *Javadoc) addDeps(ctx android.BottomUpMutatorContext) {
 			// Add the system modules to both the system modules and bootclasspath.
 			ctx.AddVariationDependencies(nil, systemModulesTag, sdkDep.systemModules)
 			ctx.AddVariationDependencies(nil, bootClasspathTag, sdkDep.systemModules)
+
+			// Also add it to the list of imported api signatures
+			ctx.AddVariationDependencies(nil, importedSignaturesTag, sdkDep.systemModules)
 		}
 	}
 
@@ -1189,7 +1222,8 @@ type Droidstubs struct {
 	annotationsZip android.WritablePath
 	apiVersionsXml android.WritablePath
 
-	apiFilePath android.Path
+	exportedApiFilePaths android.Paths
+	apiFilePath          android.Path
 
 	jdiffDocZip      android.WritablePath
 	jdiffStubsSrcJar android.WritablePath
@@ -1226,6 +1260,10 @@ func (d *Droidstubs) ApiFilePath() android.Path {
 	return d.apiFilePath
 }
 
+func (d *Droidstubs) ExportedApiSignaturePaths() android.Paths {
+	return d.exportedApiFilePaths
+}
+
 func (d *Droidstubs) DepsMutator(ctx android.BottomUpMutatorContext) {
 	d.Javadoc.addDeps(ctx)
 
@@ -1250,11 +1288,16 @@ func (d *Droidstubs) DepsMutator(ctx android.BottomUpMutatorContext) {
 			ctx.AddDependency(ctx.Module(), metalavaAPILevelsAnnotationsDirTag, apiLevelsAnnotationsDir)
 		}
 	}
+
+	ctx.AddDependency(ctx.Module(), importedSignaturesTag, d.properties.Import_api_signatures...)
+
+	ctx.AddDependency(ctx.Module(), exportedSignaturesTag, d.properties.Export_api_signatures...)
 }
 
 func (d *Droidstubs) stubsFlags(ctx android.ModuleContext, cmd *android.RuleBuilderCommand, stubsDir android.WritablePath) {
 	if apiCheckEnabled(ctx, d.properties.Check_api.Current, "current") ||
 		apiCheckEnabled(ctx, d.properties.Check_api.Last_released, "last_released") ||
+		Bool(d.properties.Generate_api_signature) ||
 		String(d.properties.Api_filename) != "" {
 		d.apiFile = android.PathForModuleOut(ctx, ctx.ModuleName()+"_api.txt")
 		cmd.FlagWithOutput("--api ", d.apiFile)
@@ -1311,6 +1354,66 @@ func (d *Droidstubs) stubsFlags(ctx android.ModuleContext, cmd *android.RuleBuil
 		cmd.FlagWithArg("--doc-stubs ", stubsDir.String())
 	} else {
 		cmd.FlagWithArg("--stubs ", stubsDir.String())
+	}
+
+	// Initialize the transitive closure of all the API signatures exported by
+	// this. Store as keys in a map to eliminated duplicates.
+	var exportedApiSignaturePaths = make(map[android.Path]struct{})
+
+	var importedApiSignaturePaths = make(map[android.Path]struct{})
+
+	ctx.VisitDirectDeps(func(m android.Module) {
+		tag := ctx.OtherModuleDependencyTag(m)
+		var property string
+		switch tag {
+		case importedSignaturesTag:
+			property = "import_api_signatures"
+		case exportedSignaturesTag:
+			property = "export_api_signatures"
+		default:
+			return
+		}
+
+		if t, ok := m.(ExportedApiSignaturePaths); ok {
+			paths := t.ExportedApiSignaturePaths()
+			for _, p := range paths {
+				exportedApiSignaturePaths[p] = struct{}{}
+				if tag == importedSignaturesTag {
+					importedApiSignaturePaths[p] = struct{}{}
+				}
+			}
+		} else {
+			ctx.PropertyErrorf(property,
+				"module %q does not export any api signatures", ctx.OtherModuleName(m))
+		}
+	})
+
+	// Add in the signature generated by this if available.
+	if d.apiFilePath != nil {
+		exportedApiSignaturePaths[d.apiFilePath] = struct{}{}
+	}
+
+	// Flatten and sort the exported map to ensure consistent build arguments.
+	d.exportedApiFilePaths = android.Paths{}
+	for key := range exportedApiSignaturePaths {
+		d.exportedApiFilePaths = append(d.exportedApiFilePaths, key)
+	}
+	sort.Slice(d.exportedApiFilePaths, func(i, j int) bool {
+		return d.exportedApiFilePaths[i].String() < d.exportedApiFilePaths[j].String()
+	})
+
+	// Flatten and sort the imported map to ensure consistent build arguments.
+	pathsToImport := android.Paths{}
+	for key := range importedApiSignaturePaths {
+		pathsToImport = append(pathsToImport, key)
+	}
+	sort.Slice(pathsToImport, func(i, j int) bool {
+		return pathsToImport[i].String() < pathsToImport[j].String()
+	})
+
+	// Add the paths to the metalava command
+	for _, p := range pathsToImport {
+		cmd.FlagWithInput("--import-api-signature ", p)
 	}
 }
 
@@ -1814,6 +1917,8 @@ var droiddocTemplateTag = dependencyTag{name: "droiddoc-template"}
 var metalavaMergeAnnotationsDirTag = dependencyTag{name: "metalava-merge-annotations-dir"}
 var metalavaMergeInclusionAnnotationsDirTag = dependencyTag{name: "metalava-merge-inclusion-annotations-dir"}
 var metalavaAPILevelsAnnotationsDirTag = dependencyTag{name: "metalava-api-levels-annotations-dir"}
+var importedSignaturesTag = dependencyTag{name: "metalava-imported-signatures"}
+var exportedSignaturesTag = dependencyTag{name: "metalava-exported-signatures"}
 
 type ExportedDroiddocDirProperties struct {
 	// path to the directory containing Droiddoc related files.
