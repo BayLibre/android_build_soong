@@ -1801,6 +1801,28 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 
 		ccDep, _ := dep.(*Module)
 		if ccDep == nil {
+			// Handle modules which are CcLinkableInterfaces
+			if linkableDep, ok := dep.(util.CcLinkableInterface); ok {
+				if c.useVndk() || String(c.Properties.Sdk_version) != "" {
+					ctx.ModuleErrorf("non-cc deps cannot be VNDK/NDK dependencies; %q", depName)
+				}
+				switch depTag {
+				case util.StaticDepTag:
+					directStaticDeps = append(directStaticDeps, linkableDep)
+					c.Properties.AndroidMkStaticLibs = append(
+						c.Properties.AndroidMkStaticLibs, depName)
+				case util.SharedDepTag:
+					directSharedDeps = append(directSharedDeps, linkableDep)
+					if linkableDep.OutputFile().Valid() {
+						depPaths.SharedLibs = append(depPaths.SharedLibs, linkableDep.OutputFile().Path())
+						depPaths.SharedLibsDeps = append(depPaths.SharedLibsDeps, linkableDep.OutputFile().Path())
+					}
+					depPaths.IncludeDirs = append(depPaths.IncludeDirs, linkableDep.IncludeDirs()...)
+					c.Properties.AndroidMkSharedLibs = append(
+						c.Properties.AndroidMkSharedLibs, depName)
+				}
+			}
+
 			// handling for a few module types that aren't cc Module but that are also supported
 			switch depTag {
 			case genSourceDepTag:
@@ -2434,8 +2456,16 @@ func ImageMutator(mctx android.BottomUpMutatorContext) {
 		}
 	}
 
+	//TODO When CcLibraryInterface supports VNDK, this should be mctx.Module().(util.CcLinkableInterface)
 	m, ok := mctx.Module().(*Module)
 	if !ok {
+		if linkable, ok := mctx.Module().(util.CcLinkableInterface); ok {
+			variations := []string{coreMode}
+			if linkable.InRecovery() {
+				variations = append(variations, recoveryMode)
+			}
+			mctx.CreateVariations(variations...)
+		}
 		return
 	}
 
