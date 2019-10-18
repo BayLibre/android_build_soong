@@ -56,6 +56,24 @@
       "revId": "2fce0f5d89554e5338740a1e0c2a02470b7ee8c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e720c15a_7221ea74",
+        "filename": "scripts/archive_repack.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2019-10-18T22:27:44Z",
+      "side": 1,
+      "message": "Whoops, I misread the previous lines as getting just the basename, when OUTFILE_NAME is also unused.",
+      "parentUuid": "037c3215_a35197a2",
+      "revId": "2fce0f5d89554e5338740a1e0c2a02470b7ee8c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
