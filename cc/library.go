@@ -28,6 +28,7 @@ import (
 
 	"android/soong/android"
 	"android/soong/cc/config"
+	"android/soong/cc/util"
 	"android/soong/genrule"
 )
 
@@ -1349,7 +1350,7 @@ func maybeInjectBoringSSLHash(ctx android.ModuleContext, outputFile android.Modu
 	injectBoringSSLHash := Bool(inject)
 	ctx.VisitDirectDeps(func(dep android.Module) {
 		tag := ctx.OtherModuleDependencyTag(dep)
-		if tag == staticDepTag || tag == staticExportDepTag || tag == wholeStaticDepTag || tag == lateStaticDepTag {
+		if tag == util.StaticDepTag || tag == staticExportDepTag || tag == wholeStaticDepTag || tag == lateStaticDepTag {
 			if cc, ok := dep.(*Module); ok {
 				if library, ok := cc.linker.(*libraryDecorator); ok {
 					if Bool(library.Properties.Inject_bssl_hash) {

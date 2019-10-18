@@ -29,6 +29,7 @@ import (
 
 	"android/soong/android"
 	"android/soong/cc/config"
+	"android/soong/cc/util"
 	"android/soong/genrule"
 )
 
@@ -334,79 +335,48 @@ type installer interface {
 	relativeInstallPath() string
 }
 
-type dependencyTag struct {
-	blueprint.BaseDependencyTag
-	name    string
-	library bool
-	shared  bool
-
-	reexportFlags bool
-
-	explicitlyVersioned bool
-}
-
 type xref interface {
 	XrefCcFiles() android.Paths
 }
 
 var (
-	sharedDepTag          = dependencyTag{name: "shared", library: true, shared: true}
-	sharedExportDepTag    = dependencyTag{name: "shared", library: true, shared: true, reexportFlags: true}
-	earlySharedDepTag     = dependencyTag{name: "early_shared", library: true, shared: true}
-	lateSharedDepTag      = dependencyTag{name: "late shared", library: true, shared: true}
-	staticDepTag          = dependencyTag{name: "static", library: true}
-	staticExportDepTag    = dependencyTag{name: "static", library: true, reexportFlags: true}
-	lateStaticDepTag      = dependencyTag{name: "late static", library: true}
-	wholeStaticDepTag     = dependencyTag{name: "whole static", library: true, reexportFlags: true}
-	headerDepTag          = dependencyTag{name: "header", library: true}
-	headerExportDepTag    = dependencyTag{name: "header", library: true, reexportFlags: true}
-	genSourceDepTag       = dependencyTag{name: "gen source"}
-	genHeaderDepTag       = dependencyTag{name: "gen header"}
-	genHeaderExportDepTag = dependencyTag{name: "gen header", reexportFlags: true}
-	objDepTag             = dependencyTag{name: "obj"}
-	crtBeginDepTag        = dependencyTag{name: "crtbegin"}
-	crtEndDepTag          = dependencyTag{name: "crtend"}
-	linkerFlagsDepTag     = dependencyTag{name: "linker flags file"}
-	dynamicLinkerDepTag   = dependencyTag{name: "dynamic linker"}
-	reuseObjTag           = dependencyTag{name: "reuse objects"}
-	staticVariantTag      = dependencyTag{name: "static variant"}
-	ndkStubDepTag         = dependencyTag{name: "ndk stub", library: true}
-	ndkLateStubDepTag     = dependencyTag{name: "ndk late stub", library: true}
-	vndkExtDepTag         = dependencyTag{name: "vndk extends", library: true}
-	runtimeDepTag         = dependencyTag{name: "runtime lib"}
-	coverageDepTag        = dependencyTag{name: "coverage"}
-	testPerSrcDepTag      = dependencyTag{name: "test_per_src"}
+	sharedExportDepTag    = util.CcDependencyTag{Name: "shared", Library: true, Shared: true, ReexportFlags: true}
+	earlySharedDepTag     = util.CcDependencyTag{Name: "early_shared", Library: true, Shared: true}
+	lateSharedDepTag      = util.CcDependencyTag{Name: "late shared", Library: true, Shared: true}
+	staticExportDepTag    = util.CcDependencyTag{Name: "static", Library: true, ReexportFlags: true}
+	lateStaticDepTag      = util.CcDependencyTag{Name: "late static", Library: true}
+	wholeStaticDepTag     = util.CcDependencyTag{Name: "whole static", Library: true, ReexportFlags: true}
+	headerDepTag          = util.CcDependencyTag{Name: "header", Library: true}
+	headerExportDepTag    = util.CcDependencyTag{Name: "header", Library: true, ReexportFlags: true}
+	genSourceDepTag       = util.CcDependencyTag{Name: "gen source"}
+	genHeaderDepTag       = util.CcDependencyTag{Name: "gen header"}
+	genHeaderExportDepTag = util.CcDependencyTag{Name: "gen header", ReexportFlags: true}
+	objDepTag             = util.CcDependencyTag{Name: "obj"}
+	linkerFlagsDepTag     = util.CcDependencyTag{Name: "linker flags file"}
+	dynamicLinkerDepTag   = util.CcDependencyTag{Name: "dynamic linker"}
+	reuseObjTag           = util.CcDependencyTag{Name: "reuse objects"}
+	staticVariantTag      = util.CcDependencyTag{Name: "static variant"}
+	ndkStubDepTag         = util.CcDependencyTag{Name: "ndk stub", Library: true}
+	ndkLateStubDepTag     = util.CcDependencyTag{Name: "ndk late stub", Library: true}
+	vndkExtDepTag         = util.CcDependencyTag{Name: "vndk extends", Library: true}
+	runtimeDepTag         = util.CcDependencyTag{Name: "runtime lib"}
+	coverageDepTag        = util.CcDependencyTag{Name: "coverage"}
+	testPerSrcDepTag      = util.CcDependencyTag{Name: "test_per_src"}
 )
 
 func IsSharedDepTag(depTag blueprint.DependencyTag) bool {
-	ccDepTag, ok := depTag.(dependencyTag)
-	return ok && ccDepTag.shared
+	ccDepTag, ok := depTag.(util.CcDependencyTag)
+	return ok && ccDepTag.Shared
 }
 
 func IsRuntimeDepTag(depTag blueprint.DependencyTag) bool {
-	ccDepTag, ok := depTag.(dependencyTag)
+	ccDepTag, ok := depTag.(util.CcDependencyTag)
 	return ok && ccDepTag == runtimeDepTag
 }
 
 func IsTestPerSrcDepTag(depTag blueprint.DependencyTag) bool {
-	ccDepTag, ok := depTag.(dependencyTag)
+	ccDepTag, ok := depTag.(util.CcDependencyTag)
 	return ok && ccDepTag == testPerSrcDepTag
-}
-
-func SharedDepTag() dependencyTag {
-	return sharedDepTag
-}
-
-func StaticDepTag() dependencyTag {
-	return staticDepTag
-}
-
-func CrtBeginDepTag() dependencyTag {
-	return crtBeginDepTag
-}
-
-func CrtEndDepTag() dependencyTag {
-	return crtEndDepTag
 }
 
 // Module contains the properties and members used by all C/C++ module types, and implements
@@ -463,9 +433,123 @@ type Module struct {
 	kytheFiles android.Paths
 }
 
+func (c *Module) IncludeDirs() []string {
+	if c.linker != nil {
+		if library, ok := c.linker.(exportedFlagsProducer); ok {
+			return library.exportedDirs()
+		}
+	}
+	panic(fmt.Errorf("IncludeDirs called on non-exportedFlagsProducer module: %q", c.BaseModuleName()))
+}
+
+func (c *Module) HasStaticVariant() bool {
+	if c.staticVariant != nil {
+		return true
+	}
+	return false
+}
+
+func (c *Module) GetStaticVariant() util.CcLinkableInterface {
+	return c.staticVariant
+}
+
+func (c *Module) SetDepsInLinkOrder(depsInLinkOrder []android.Path) {
+	c.depsInLinkOrder = depsInLinkOrder
+}
+
+func (c *Module) GetDepsInLinkOrder() []android.Path {
+	return c.depsInLinkOrder
+}
+
+func (c *Module) StubsVersions() []string {
+	if c.linker != nil {
+		if library, ok := c.linker.(*libraryDecorator); ok {
+			return library.Properties.Stubs.Versions
+		}
+	}
+	panic(fmt.Errorf("StubsVersions called on non-library module: %q", c.BaseModuleName()))
+}
+
+func (c *Module) IsCcLinkable() bool {
+	if c.linker != nil {
+		if _, ok := c.linker.(*libraryDecorator); ok {
+			return true
+		}
+	}
+	return false
+}
+
+func (c *Module) SetBuildStubs() {
+	if c.linker != nil {
+		if library, ok := c.linker.(*libraryDecorator); ok {
+			library.MutatedProperties.BuildStubs = true
+			return
+		}
+	}
+	panic(fmt.Errorf("SetBuildStubs called on non-library module: %q", c.BaseModuleName()))
+}
+
+func (c *Module) SetStubsVersions(version string) {
+	if c.linker != nil {
+		if library, ok := c.linker.(*libraryDecorator); ok {
+			library.MutatedProperties.StubsVersion = version
+			return
+		}
+	}
+	panic(fmt.Errorf("SetStubsVersions called on non-library module: %q", c.BaseModuleName()))
+}
+
+func (c *Module) SetStatic() {
+	if c.linker != nil {
+		if library, ok := c.linker.(*libraryDecorator); ok {
+			library.setStatic()
+			return
+		}
+	}
+	panic(fmt.Errorf("SetStatic called on non-library module: %q", c.BaseModuleName()))
+}
+
+func (c *Module) SetShared() {
+	if c.linker != nil {
+		if library, ok := c.linker.(*libraryDecorator); ok {
+			library.setShared()
+			return
+		}
+	}
+	panic(fmt.Errorf("SetShared called on non-library module: %q", c.BaseModuleName()))
+}
+
+func (c *Module) BuildStaticVariant() bool {
+	if c.linker != nil {
+		if library, ok := c.linker.(*libraryDecorator); ok {
+			return library.buildStatic()
+		}
+	}
+	panic(fmt.Errorf("BuildStaticVariant called on non-library module: %q", c.BaseModuleName()))
+}
+
+func (c *Module) BuildSharedVariant() bool {
+	if c.linker != nil {
+		if library, ok := c.linker.(*libraryDecorator); ok {
+			return library.buildShared()
+		}
+	}
+	panic(fmt.Errorf("BuildSharedVariant called on non-library module: %q", c.BaseModuleName()))
+}
+
+func (c *Module) Module() android.Module {
+	return c
+}
+
+func (c *Module) InRecovery() bool {
+	return c.inRecovery()
+}
+
 func (c *Module) OutputFile() android.OptionalPath {
 	return c.outputFile
 }
+
+var _ util.CcLinkableInterface = (*Module)(nil)
 
 func (c *Module) UnstrippedOutputFile() android.Path {
 	if c.linker != nil {
@@ -976,25 +1060,27 @@ func orderDeps(directStaticDeps []android.Path, directSharedDeps []android.Path,
 	return orderedAllDeps, orderedDeclaredDeps
 }
 
-func orderStaticModuleDeps(module *Module, staticDeps []*Module, sharedDeps []*Module) (results []android.Path) {
+func orderStaticModuleDeps(module util.CcLinkableInterface, staticDeps []util.CcLinkableInterface, sharedDeps []util.CcLinkableInterface) (results []android.Path) {
 	// convert Module to Path
+	var depsInLinkOrder []android.Path
 	allTransitiveDeps := make(map[android.Path][]android.Path, len(staticDeps))
 	staticDepFiles := []android.Path{}
 	for _, dep := range staticDeps {
-		allTransitiveDeps[dep.outputFile.Path()] = dep.depsInLinkOrder
-		staticDepFiles = append(staticDepFiles, dep.outputFile.Path())
+		allTransitiveDeps[dep.OutputFile().Path()] = dep.GetDepsInLinkOrder()
+		staticDepFiles = append(staticDepFiles, dep.OutputFile().Path())
 	}
 	sharedDepFiles := []android.Path{}
 	for _, sharedDep := range sharedDeps {
-		staticAnalogue := sharedDep.staticVariant
-		if staticAnalogue != nil {
-			allTransitiveDeps[staticAnalogue.outputFile.Path()] = staticAnalogue.depsInLinkOrder
-			sharedDepFiles = append(sharedDepFiles, staticAnalogue.outputFile.Path())
+		if sharedDep.HasStaticVariant() {
+			staticAnalogue := sharedDep.GetStaticVariant()
+			allTransitiveDeps[staticAnalogue.OutputFile().Path()] = staticAnalogue.GetDepsInLinkOrder()
+			sharedDepFiles = append(sharedDepFiles, staticAnalogue.OutputFile().Path())
 		}
 	}
 
 	// reorder the dependencies based on transitive dependencies
-	module.depsInLinkOrder, results = orderDeps(staticDepFiles, sharedDepFiles, allTransitiveDeps)
+	depsInLinkOrder, results = orderDeps(staticDepFiles, sharedDepFiles, allTransitiveDeps)
+	module.SetDepsInLinkOrder(depsInLinkOrder)
 
 	return results
 }
@@ -1416,7 +1502,7 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 	}
 
 	for _, lib := range deps.StaticLibs {
-		depTag := staticDepTag
+		depTag := util.StaticDepTag
 		if inList(lib, deps.ReexportStaticLibHeaders) {
 			depTag = staticExportDepTag
 		}
@@ -1434,14 +1520,14 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 		{Mutator: "link", Variation: "static"},
 	}, lateStaticDepTag, deps.LateStaticLibs...)
 
-	addSharedLibDependencies := func(depTag dependencyTag, name string, version string) {
+	addSharedLibDependencies := func(depTag util.CcDependencyTag, name string, version string) {
 		var variations []blueprint.Variation
 		variations = append(variations, blueprint.Variation{Mutator: "link", Variation: "shared"})
 		versionVariantAvail := !ctx.useVndk() && !c.inRecovery()
 		if version != "" && versionVariantAvail {
 			// Version is explicitly specified. i.e. libFoo#30
 			variations = append(variations, blueprint.Variation{Mutator: "version", Variation: version})
-			depTag.explicitlyVersioned = true
+			depTag.ExplicitlyVersioned = true
 		}
 		actx.AddVariationDependencies(variations, depTag, name)
 
@@ -1454,7 +1540,7 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 				{Mutator: "link", Variation: "shared"},
 				{Mutator: "version", Variation: latestVersion},
 			}, depTag, name)
-			// Note that depTag.explicitlyVersioned is false in this case.
+			// Note that depTag.ExplicitlyVersioned is false in this case.
 		}
 	}
 
@@ -1462,7 +1548,7 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 	var sharedLibNames []string
 
 	for _, lib := range deps.SharedLibs {
-		depTag := sharedDepTag
+		depTag := util.SharedDepTag
 		if inList(lib, deps.ReexportSharedLibHeaders) {
 			depTag = sharedExportDepTag
 		}
@@ -1504,10 +1590,10 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 	actx.AddVariationDependencies(nil, objDepTag, deps.ObjFiles...)
 
 	if deps.CrtBegin != "" {
-		actx.AddVariationDependencies(nil, crtBeginDepTag, deps.CrtBegin)
+		actx.AddVariationDependencies(nil, util.CrtBeginDepTag, deps.CrtBegin)
 	}
 	if deps.CrtEnd != "" {
-		actx.AddVariationDependencies(nil, crtEndDepTag, deps.CrtEnd)
+		actx.AddVariationDependencies(nil, util.CrtEndDepTag, deps.CrtEnd)
 	}
 	if deps.LinkerFlagsFile != "" {
 		actx.AddDependency(c, linkerFlagsDepTag, deps.LinkerFlagsFile)
@@ -1550,7 +1636,7 @@ func BeginMutator(ctx android.BottomUpMutatorContext) {
 
 // Whether a module can link to another module, taking into
 // account NDK linking.
-func checkLinkType(ctx android.ModuleContext, from *Module, to *Module, tag dependencyTag) {
+func checkLinkType(ctx android.ModuleContext, from *Module, to *Module, tag util.CcDependencyTag) {
 	if from.Target().Os != android.Android {
 		// Host code is not restricted
 		return
@@ -1696,8 +1782,8 @@ func checkDoubleLoadableLibraries(ctx android.TopDownMutatorContext) {
 func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 	var depPaths PathDeps
 
-	directStaticDeps := []*Module{}
-	directSharedDeps := []*Module{}
+	directStaticDeps := []util.CcLinkableInterface{}
+	directSharedDeps := []util.CcLinkableInterface{}
 
 	llndkLibraries := llndkLibraries(ctx.Config())
 	vendorPublicLibraries := vendorPublicLibraries(ctx.Config())
@@ -1788,20 +1874,20 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			}
 		}
 
-		// Extract explicitlyVersioned field from the depTag and reset it inside the struct.
-		// Otherwise, sharedDepTag and lateSharedDepTag with explicitlyVersioned set to true
-		// won't be matched to sharedDepTag and lateSharedDepTag.
+		// Extract ExplicitlyVersioned field from the depTag and reset it inside the struct.
+		// Otherwise, SharedDepTag and lateSharedDepTag with ExplicitlyVersioned set to true
+		// won't be matched to SharedDepTag and lateSharedDepTag.
 		explicitlyVersioned := false
-		if t, ok := depTag.(dependencyTag); ok {
-			explicitlyVersioned = t.explicitlyVersioned
-			t.explicitlyVersioned = false
+		if t, ok := depTag.(util.CcDependencyTag); ok {
+			explicitlyVersioned = t.ExplicitlyVersioned
+			t.ExplicitlyVersioned = false
 			depTag = t
 		}
 
-		if t, ok := depTag.(dependencyTag); ok && t.library {
+		if t, ok := depTag.(util.CcDependencyTag); ok && t.Library {
 			depIsStatic := false
 			switch depTag {
-			case staticDepTag, staticExportDepTag, lateStaticDepTag, wholeStaticDepTag:
+			case util.StaticDepTag, staticExportDepTag, lateStaticDepTag, wholeStaticDepTag:
 				depIsStatic = true
 			}
 			if dependentLibrary, ok := ccDep.linker.(*libraryDecorator); ok && !depIsStatic {
@@ -1844,7 +1930,7 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 				depPaths.GeneratedHeaders = append(depPaths.GeneratedHeaders, i.exportedDeps()...)
 				depPaths.Flags = append(depPaths.Flags, i.exportedFlags()...)
 
-				if t.reexportFlags {
+				if t.ReexportFlags {
 					reexportExporter(i)
 					// Add these re-exported flags to help header-abi-dumper to infer the abi exported by a library.
 					// Re-exported shared library headers must be included as well since they can help us with type information
@@ -1866,11 +1952,12 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 		depFile := android.OptionalPath{}
 
 		switch depTag {
-		case ndkStubDepTag, sharedDepTag, sharedExportDepTag:
+		case ndkStubDepTag, util.SharedDepTag, sharedExportDepTag:
 			ptr = &depPaths.SharedLibs
 			depPtr = &depPaths.SharedLibsDeps
 			depFile = ccDep.linker.(libraryInterface).toc()
 			directSharedDeps = append(directSharedDeps, ccDep)
+
 		case earlySharedDepTag:
 			ptr = &depPaths.EarlySharedLibs
 			depPtr = &depPaths.EarlySharedLibsDeps
@@ -1880,7 +1967,7 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			ptr = &depPaths.LateSharedLibs
 			depPtr = &depPaths.LateSharedLibsDeps
 			depFile = ccDep.linker.(libraryInterface).toc()
-		case staticDepTag, staticExportDepTag:
+		case util.StaticDepTag, staticExportDepTag:
 			ptr = nil
 			directStaticDeps = append(directStaticDeps, ccDep)
 		case lateStaticDepTag:
@@ -1905,16 +1992,16 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			// Nothing
 		case objDepTag:
 			depPaths.Objs.objFiles = append(depPaths.Objs.objFiles, linkFile.Path())
-		case crtBeginDepTag:
+		case util.CrtBeginDepTag:
 			depPaths.CrtBegin = linkFile
-		case crtEndDepTag:
+		case util.CrtEndDepTag:
 			depPaths.CrtEnd = linkFile
 		case dynamicLinkerDepTag:
 			depPaths.DynamicLinker = linkFile
 		}
 
 		switch depTag {
-		case staticDepTag, staticExportDepTag, lateStaticDepTag:
+		case util.StaticDepTag, staticExportDepTag, lateStaticDepTag:
 			staticLib, ok := ccDep.linker.(libraryInterface)
 			if !ok || !staticLib.static() {
 				ctx.ModuleErrorf("module %q not a static library", depName)
@@ -1988,7 +2075,7 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 
 		// Export the shared libs to Make.
 		switch depTag {
-		case sharedDepTag, sharedExportDepTag, lateSharedDepTag, earlySharedDepTag:
+		case util.SharedDepTag, sharedExportDepTag, lateSharedDepTag, earlySharedDepTag:
 			if dependentLibrary, ok := ccDep.linker.(*libraryDecorator); ok {
 				if dependentLibrary.buildStubs() && android.InAnyApex(depName) {
 					// Add the dependency to the APEX(es) providing the library so that
@@ -2009,7 +2096,7 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			c.Properties.AndroidMkSharedLibs = append(
 				c.Properties.AndroidMkSharedLibs,
 				depName+"."+ndkStub.properties.ApiLevel)
-		case staticDepTag, staticExportDepTag, lateStaticDepTag:
+		case util.StaticDepTag, staticExportDepTag, lateStaticDepTag:
 			c.Properties.AndroidMkStaticLibs = append(
 				c.Properties.AndroidMkStaticLibs, makeLibName(depName))
 		case runtimeDepTag:
@@ -2195,8 +2282,8 @@ func (c *Module) AndroidMkWriteAdditionalDependenciesForSourceAbiDiff(w io.Write
 }
 
 func (c *Module) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Module) bool {
-	if depTag, ok := ctx.OtherModuleDependencyTag(dep).(dependencyTag); ok {
-		if cc, ok := dep.(*Module); ok && cc.IsStubs() && depTag.shared {
+	if depTag, ok := ctx.OtherModuleDependencyTag(dep).(util.CcDependencyTag); ok {
+		if cc, ok := dep.(*Module); ok && cc.IsStubs() && depTag.Shared {
 			// dynamic dep to a stubs lib crosses APEX boundary
 			return false
 		}
