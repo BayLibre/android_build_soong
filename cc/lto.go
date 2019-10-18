@@ -16,6 +16,7 @@ package cc
 
 import (
 	"android/soong/android"
+	"android/soong/cc/util"
 )
 
 // LTO (link-time optimization) allows the compiler to optimize and generate
@@ -148,7 +149,7 @@ func ltoDepsMutator(mctx android.TopDownMutatorContext) {
 		mctx.WalkDeps(func(dep android.Module, parent android.Module) bool {
 			tag := mctx.OtherModuleDependencyTag(dep)
 			switch tag {
-			case staticDepTag, staticExportDepTag, lateStaticDepTag, wholeStaticDepTag, objDepTag, reuseObjTag:
+			case util.StaticDepTag, staticExportDepTag, lateStaticDepTag, wholeStaticDepTag, objDepTag, reuseObjTag:
 				if dep, ok := dep.(*Module); ok && dep.lto != nil &&
 					!dep.lto.Disabled() {
 					if full && !Bool(dep.lto.Properties.Lto.Full) {

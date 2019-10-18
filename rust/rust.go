@@ -15,6 +15,7 @@
 package rust
 
 import (
+	"fmt"
 	"strings"
 
 	"github.com/google/blueprint"
@@ -22,6 +23,7 @@ import (
 
 	"android/soong/android"
 	"android/soong/cc"
+	"android/soong/cc/util"
 	"android/soong/rust/config"
 )
 
@@ -149,6 +151,115 @@ func (mod *Module) CrateName() string {
 	// Default crate names replace '-' in the name to '_'
 	return strings.Replace(mod.BaseModuleName(), "-", "_", -1)
 }
+
+func (mod *Module) IsCcLinkable() bool {
+	if mod.compiler != nil {
+		if _, ok := mod.compiler.(*libraryDecorator); ok {
+			return true
+		}
+	}
+	return false
+}
+
+func (mod *Module) IncludeDirs() []string {
+	if mod.compiler != nil {
+		if _, ok := mod.compiler.(*libraryDecorator); ok {
+			//TODO add Include_dirs to libraryDecorator for C libraries.
+			return []string{}
+		}
+	}
+	panic(fmt.Errorf("IncludeDirs called on non-library module: %q", mod.BaseModuleName()))
+}
+
+func (mod *Module) SetStatic() {
+	if mod.compiler != nil {
+		if _, ok := mod.compiler.(*libraryDecorator); ok {
+			//TODO add support for static variants.
+			return
+		}
+	}
+	panic(fmt.Errorf("SetStatic called on non-library module: %q", mod.BaseModuleName()))
+}
+
+func (mod *Module) SetShared() {
+	if mod.compiler != nil {
+		if _, ok := mod.compiler.(*libraryDecorator); ok {
+			//TODO add support for shared variants.
+			return
+		}
+	}
+	panic(fmt.Errorf("SetShared called on non-library module: %q", mod.BaseModuleName()))
+}
+
+func (mod *Module) SetBuildStubs() {
+	panic("SetBuildStubs not yet implemented for rust modules")
+}
+
+func (mod *Module) SetStubsVersions(string) {
+	panic("SetStubsVersions not yet implemented for rust modules")
+}
+
+func (mod *Module) BuildStaticVariant() bool {
+	if mod.compiler != nil {
+		if _, ok := mod.compiler.(*libraryDecorator); ok {
+			//TODO add support for static variants.
+			return false
+		}
+	}
+	panic(fmt.Errorf("BuildStaticVariant called on non-library module: %q", mod.BaseModuleName()))
+}
+
+func (mod *Module) BuildSharedVariant() bool {
+	if mod.compiler != nil {
+		if _, ok := mod.compiler.(*libraryDecorator); ok {
+			//TODO add support for shared variants.
+			return false
+		}
+	}
+	panic(fmt.Errorf("BuildSharedVariant called on non-library module: %q", mod.BaseModuleName()))
+}
+
+// Rust module deps don't have a link order (?)
+func (mod *Module) SetDepsInLinkOrder([]android.Path) {}
+
+func (mod *Module) GetDepsInLinkOrder() []android.Path {
+	return []android.Path{}
+}
+
+func (mod *Module) GetStaticVariant() util.CcLinkableInterface {
+	return nil
+}
+
+func (mod *Module) Module() android.Module {
+	return mod
+}
+
+func (mod *Module) StubsVersions() []string {
+	// For now, Rust has no stubs versions.
+	if mod.compiler != nil {
+		if _, ok := mod.compiler.(*libraryDecorator); ok {
+			return []string{}
+		}
+	}
+	panic(fmt.Errorf("StubsVersions called on non-library module: %q", mod.BaseModuleName()))
+}
+
+func (mod *Module) OutputFile() android.OptionalPath {
+	return mod.outputFile
+}
+
+func (mod *Module) InRecovery() bool {
+	// For now, Rust has no notion of the recovery image
+	return false
+}
+func (mod *Module) HasStaticVariant() bool {
+	if mod.GetStaticVariant() != nil {
+		return true
+	}
+	return false
+}
+
+var _ util.CcLinkableInterface = (*Module)(nil)
 
 func (mod *Module) Init() android.Module {
 	mod.AddProperties(&mod.Properties)
@@ -391,20 +502,20 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			exportDep := false
 
 			switch depTag {
-			case cc.StaticDepTag():
+			case util.StaticDepTag:
 				depPaths.linkDirs = append(depPaths.linkDirs, linkPath)
 				depPaths.depFlags = append(depPaths.depFlags, "-l"+libName)
 				directStaticLibDeps = append(directStaticLibDeps, ccDep)
 				mod.Properties.AndroidMkStaticLibs = append(mod.Properties.AndroidMkStaticLibs, depName)
-			case cc.SharedDepTag():
+			case util.SharedDepTag:
 				depPaths.linkDirs = append(depPaths.linkDirs, linkPath)
 				depPaths.depFlags = append(depPaths.depFlags, "-l"+libName)
 				directSharedLibDeps = append(directSharedLibDeps, ccDep)
 				mod.Properties.AndroidMkSharedLibs = append(mod.Properties.AndroidMkSharedLibs, depName)
 				exportDep = true
-			case cc.CrtBeginDepTag():
+			case util.CrtBeginDepTag:
 				depPaths.CrtBegin = linkFile
-			case cc.CrtEndDepTag():
+			case util.CrtEndDepTag:
 				depPaths.CrtEnd = linkFile
 			}
 
@@ -485,14 +596,14 @@ func (mod *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 	if !mod.Host() {
 		ccDepVariations = append(ccDepVariations, blueprint.Variation{Mutator: "image", Variation: "core"})
 	}
-	actx.AddVariationDependencies(append(ccDepVariations, blueprint.Variation{Mutator: "link", Variation: "shared"}), cc.SharedDepTag(), deps.SharedLibs...)
-	actx.AddVariationDependencies(append(ccDepVariations, blueprint.Variation{Mutator: "link", Variation: "static"}), cc.StaticDepTag(), deps.StaticLibs...)
+	actx.AddVariationDependencies(append(ccDepVariations, blueprint.Variation{Mutator: "link", Variation: "shared"}), util.SharedDepTag, deps.SharedLibs...)
+	actx.AddVariationDependencies(append(ccDepVariations, blueprint.Variation{Mutator: "link", Variation: "static"}), util.StaticDepTag, deps.StaticLibs...)
 
 	if deps.CrtBegin != "" {
-		actx.AddVariationDependencies(ccDepVariations, cc.CrtBeginDepTag(), deps.CrtBegin)
+		actx.AddVariationDependencies(ccDepVariations, util.CrtBeginDepTag, deps.CrtBegin)
 	}
 	if deps.CrtEnd != "" {
-		actx.AddVariationDependencies(ccDepVariations, cc.CrtEndDepTag(), deps.CrtEnd)
+		actx.AddVariationDependencies(ccDepVariations, util.CrtEndDepTag, deps.CrtEnd)
 	}
 
 	// proc_macros are compiler plugins, and so we need the host arch variant as a dependendcy.

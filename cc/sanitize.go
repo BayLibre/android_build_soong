@@ -24,6 +24,7 @@ import (
 
 	"android/soong/android"
 	"android/soong/cc/config"
+	"android/soong/cc/util"
 )
 
 var (
@@ -678,8 +679,8 @@ func (sanitize *sanitize) isSanitizerEnabled(t sanitizerType) bool {
 }
 
 func isSanitizableDependencyTag(tag blueprint.DependencyTag) bool {
-	t, ok := tag.(dependencyTag)
-	return ok && t.library || t == reuseObjTag || t == objDepTag
+	t, ok := tag.(util.CcDependencyTag)
+	return ok && t.Library || t == reuseObjTag || t == objDepTag
 }
 
 // Propagate sanitizer requirements down from binaries
@@ -887,7 +888,7 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 				mctx.AddFarVariationDependencies(append(mctx.Target().Variations(), []blueprint.Variation{
 					{Mutator: "link", Variation: "static"},
 					{Mutator: "image", Variation: c.imageVariation()},
-				}...), staticDepTag, runtimeLibrary)
+				}...), util.StaticDepTag, runtimeLibrary)
 			} else if !c.static() && !c.header() {
 				// dynamic executable and shared libs get shared runtime libs
 				mctx.AddFarVariationDependencies(append(mctx.Target().Variations(), []blueprint.Variation{
