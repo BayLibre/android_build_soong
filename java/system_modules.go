@@ -107,11 +107,23 @@ type SystemModules struct {
 	headerJars android.Paths
 	outputDir  android.Path
 	outputDeps android.Paths
+
+	exportedApiSignaturePaths android.Paths
 }
 
 type SystemModulesProperties struct {
 	// List of java library modules that should be included in the system modules
 	Libs []string
+
+	// the list of droidstubs modules whose exported API signatures are provided
+	// by this set of system modules. They are automatically added to the list of
+	// API signatures to import into a droidstubs module that specifies this
+	// module in its system_modules property.
+	Export_api_signatures []string
+}
+
+func (system *SystemModules) ExportedApiSignaturePaths() android.Paths {
+	return system.exportedApiSignaturePaths
 }
 
 func (system *SystemModules) GenerateAndroidBuildActions(ctx android.ModuleContext) {
@@ -124,11 +136,21 @@ func (system *SystemModules) GenerateAndroidBuildActions(ctx android.ModuleConte
 
 	system.headerJars = jars
 
+	var exportedApiSignaturePaths android.Paths
+	ctx.VisitDirectDepsWithTag(exportedSignaturesTag, func(module android.Module) {
+		exporter, _ := module.(ExportedApiSignaturePaths)
+		exportedApiSignaturePaths = append(exportedApiSignaturePaths, exporter.ExportedApiSignaturePaths()...)
+	})
+
+	system.exportedApiSignaturePaths = exportedApiSignaturePaths
+
 	system.outputDir, system.outputDeps = TransformJarsToSystemModules(ctx, jars)
 }
 
 func (system *SystemModules) DepsMutator(ctx android.BottomUpMutatorContext) {
 	ctx.AddVariationDependencies(nil, libTag, system.properties.Libs...)
+
+	ctx.AddVariationDependencies(nil, exportedSignaturesTag, system.properties.Export_api_signatures...)
 }
 
 func (system *SystemModules) AndroidMk() android.AndroidMkData {
