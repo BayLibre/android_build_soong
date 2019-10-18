@@ -125,7 +125,7 @@ func (vndk *vndkdep) vndkCheckLinkType(ctx android.ModuleContext, to *Module, ta
 		// Other (static and LL-NDK) libraries are allowed to link.
 		return
 	}
-	if !to.useVndk() {
+	if !to.UseVndk() {
 		ctx.ModuleErrorf("(%s) should not link to %q which is not a vendor-available library",
 			vndk.typeName(), to.Name())
 		return
@@ -484,7 +484,7 @@ func (c *vndkSnapshotSingleton) GenerateBuildActions(ctx android.SingletonContex
 		if m.Target().NativeBridge == android.NativeBridgeEnabled {
 			return nil, "", false
 		}
-		if !m.useVndk() || !m.IsForPlatform() || !m.installable() {
+		if !m.UseVndk() || !m.IsForPlatform() || !m.installable() {
 			return nil, "", false
 		}
 		l, ok := m.linker.(vndkSnapshotLibraryInterface)

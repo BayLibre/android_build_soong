@@ -11,7 +11,6 @@ type LinkableInterface interface {
 	CcLibrary() bool
 	CcLibraryInterface() bool
 
-	InRecovery() bool
 	OutputFile() android.OptionalPath
 
 	IncludeDirs() []string
@@ -22,13 +21,34 @@ type LinkableInterface interface {
 	GetStaticVariant() LinkableInterface
 
 	StubsVersions() []string
+	BuildStubs() bool
 	SetBuildStubs()
 	SetStubsVersions(string)
+	HasStubsVariants() bool
+	SelectedStl() string
+	ApiLevel() string
 
 	BuildStaticVariant() bool
 	BuildSharedVariant() bool
 	SetStatic()
 	SetShared()
+	Static() bool
+	Shared() bool
+	Toc() android.OptionalPath
+
+	InRecovery() bool
+	OnlyInRecovery() bool
+
+	UseVndk() bool
+	MustUseVendorVariant() bool
+	IsVndk() bool
+	HasVendorVariant() bool
+
+	SdkVersion() string
+
+	ToolchainLibrary() bool
+	NdkPrebuiltStl() bool
+	StubDecorator() bool
 }
 
 type DependencyTag struct {
