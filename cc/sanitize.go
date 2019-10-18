@@ -922,11 +922,11 @@ func sanitizerMutator(t sanitizerType) func(android.BottomUpMutatorContext) {
 					// are incompatible with cfi
 					c.sanitize.SetSanitizer(cfi, false)
 				}
-				if c.static() || c.header() || t == asan || t == fuzzer {
+				if c.static() || c.header() || t == asan {
 					// Static and header libs are split into non-sanitized and sanitized variants.
-					// Shared libs are not split. However, for asan and fuzzer, we split even for shared
-					// libs because a library sanitized for asan/fuzzer can't be linked from a library
-					// that isn't sanitized for asan/fuzzer.
+					// Shared libs are not split. However, for asan, we split even for shared
+					// libs because a library sanitized for asan can't be linked from a library
+					// that isn't sanitized for asan.
 					//
 					// Note for defaultVariation: since we don't split for shared libs but for static/header
 					// libs, it is possible for the sanitized variant of a static/header lib to depend
