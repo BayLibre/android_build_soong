@@ -16,6 +16,24 @@
       "revId": "b4b1b9912a34fe056937e6247490fdfe6d13587f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15df2ead_0c69a5be",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-18T01:26:19Z",
+      "side": 1,
+      "message": "That\u0027s good to know!",
+      "parentUuid": "6917f17a_4d05e95d",
+      "revId": "b4b1b9912a34fe056937e6247490fdfe6d13587f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
