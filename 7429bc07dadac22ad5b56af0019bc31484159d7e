@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a45ffed0_a07141ba",
+        "filename": "cc/util/linkable.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2019-10-21T22:23:49Z",
+      "side": 1,
+      "message": "That was the initial hope, although at least for now rust/testing.go still requires it for cc_* modules. I can move this back into cc/ until then if that makes more sense.",
+      "parentUuid": "8025ebfb_0b2aaa73",
+      "revId": "7429bc07dadac22ad5b56af0019bc31484159d7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "64d74bb9_dfd62ac6",
         "filename": "cc/util/linkable.go",
         "patchSetId": 3
