@@ -16,6 +16,24 @@
       "revId": "61b5a239d13516f601b1c7a49a274e04bca29baf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6fe3716_3537bd30",
+        "filename": "bpfix/cmd/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1462756
+      },
+      "writtenOn": "2019-10-21T23:32:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44dd15b0_b192618b",
+      "revId": "61b5a239d13516f601b1c7a49a274e04bca29baf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
