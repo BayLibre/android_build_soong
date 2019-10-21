@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc3ef18e_7a8d8951",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-21T23:18:53Z",
+      "side": 1,
+      "message": "This seems like a bug, and encoding the buggy behavior into the documentation doesn\u0027t seem useful.  We should either fix the bug or make this a bool.",
+      "range": {
+        "startLine": 213,
+        "startChar": 28,
+        "endLine": 215,
+        "endChar": 9
+      },
+      "revId": "ad4101a443c7cc5c234dadcbf55c9912fc054871",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0694945_2f32831c",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-21T23:18:53Z",
+      "side": 1,
+      "message": "Are these modules?",
+      "range": {
+        "startLine": 229,
+        "startChar": 16,
+        "endLine": 229,
+        "endChar": 30
+      },
+      "revId": "ad4101a443c7cc5c234dadcbf55c9912fc054871",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd33b801_84ca9923",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1396,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-21T23:18:53Z",
+      "side": 1,
+      "message": "The other option is to put everything into a list, and then use android.FirstUniquePaths to dedupe it.  This will also maintain the order from the Android.bp file, which can be beneficial.",
+      "revId": "ad4101a443c7cc5c234dadcbf55c9912fc054871",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "badf48e7_79a69e49",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1403,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-21T23:18:53Z",
+      "side": 1,
+      "message": "android.PathsToDirectorySortedPaths will do this for you",
+      "range": {
+        "startLine": 1401,
+        "startChar": 1,
+        "endLine": 1403,
+        "endChar": 3
+      },
+      "revId": "ad4101a443c7cc5c234dadcbf55c9912fc054871",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
