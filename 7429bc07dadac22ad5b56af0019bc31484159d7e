@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8025ebfb_0b2aaa73",
+        "filename": "cc/util/linkable.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-21T22:13:25Z",
+      "side": 1,
+      "message": "Why put this outside cc?  Are you expecting to break the rust - \u003e cc dependency?",
+      "revId": "7429bc07dadac22ad5b56af0019bc31484159d7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64d74bb9_dfd62ac6",
+        "filename": "cc/util/linkable.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-21T22:13:25Z",
+      "side": 1,
+      "message": "util is a little generic, it may cause conflicts if there are multiple package paths that end with util.  Maybe ccutil, and then rename the interface to LinkableInterface so it is referenced as ccutil.LinkableInterface",
+      "range": {
+        "startLine": 1,
+        "startChar": 8,
+        "endLine": 1,
+        "endChar": 12
+      },
+      "revId": "7429bc07dadac22ad5b56af0019bc31484159d7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
