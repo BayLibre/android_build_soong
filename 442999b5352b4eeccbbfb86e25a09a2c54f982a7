@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ede4238e_a7a77593",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1114,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-10-21T15:29:06Z",
+      "side": 1,
+      "message": "Iiuc this means the architecture is encoded both in the directory and the file name. Why is that?\n\n(Also, not for this CL, but I hope at some point there\u0027ll be a README or similar in a suitable location that explains the boot/ directory and gives an overview on how the boot images are wired up.)",
+      "range": {
+        "startLine": 1113,
+        "startChar": 6,
+        "endLine": 1114,
+        "endChar": 43
+      },
+      "revId": "442999b5352b4eeccbbfb86e25a09a2c54f982a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "231253e7_7cfa8e8c",
+        "filename": "java/dexpreopt_bootjars_singleton.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-10-21T15:29:06Z",
+      "side": 1,
+      "message": "Suggest using the user visible name dex_bootjars instead. Same in the other error below.",
+      "range": {
+        "startLine": 46,
+        "startChar": 25,
+        "endLine": 46,
+        "endChar": 42
+      },
+      "revId": "442999b5352b4eeccbbfb86e25a09a2c54f982a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b21b187a_4ad0b242",
+        "filename": "java/dexpreopt_bootjars_singleton.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-10-21T15:29:06Z",
+      "side": 1,
+      "message": "Is this \"Singleton\" abbreviated? I suggest writing it out, because it is easy to miss this single letter and confuse it with the module type.",
+      "range": {
+        "startLine": 61,
+        "startChar": 22,
+        "endLine": 61,
+        "endChar": 23
+      },
+      "revId": "442999b5352b4eeccbbfb86e25a09a2c54f982a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9087a413_f96200b2",
+        "filename": "java/dexpreopt_bootjars_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-10-21T15:29:06Z",
+      "side": 1,
+      "message": "Could consider testing both duplicate and missing dex_bootjars. But if the singleton is expected to be short lived, and we\u0027ll start supporting any number of dex_bootjars, then it\u0027s perhaps not worth the extra effort.",
+      "revId": "442999b5352b4eeccbbfb86e25a09a2c54f982a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
