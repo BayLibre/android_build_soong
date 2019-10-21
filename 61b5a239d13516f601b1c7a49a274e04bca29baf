@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44dd15b0_b192618b",
+        "filename": "bpfix/cmd/main.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-21T23:08:34Z",
+      "side": 1,
+      "message": "This is going to make IDEs unhappy, they don\u0027t like to see multiple packages in the same directory.  Can you move this or the library to a separate directory?",
+      "revId": "61b5a239d13516f601b1c7a49a274e04bca29baf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
