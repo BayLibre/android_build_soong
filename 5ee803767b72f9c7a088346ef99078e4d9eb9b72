@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a2f9dde_389134a4",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1804,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-21T22:21:37Z",
+      "side": 1,
+      "message": "Can we handle cc.Module modules through this interface too?",
+      "revId": "5ee803767b72f9c7a088346ef99078e4d9eb9b72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5ce3cdc_5048286b",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2459,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-21T22:21:37Z",
+      "side": 1,
+      "message": "How hard would it be to handle this case now?",
+      "revId": "5ee803767b72f9c7a088346ef99078e4d9eb9b72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95a4e1ed_0d266706",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1266,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-21T22:21:37Z",
+      "side": 1,
+      "message": "Can the libraryInterface case go through CcLinkableInterface?",
+      "revId": "5ee803767b72f9c7a088346ef99078e4d9eb9b72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6003421_5ab1dda7",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1341,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-21T22:21:37Z",
+      "side": 1,
+      "message": "Why assert to the CcLinkableInterface, then back out to android.Module, then to *cc.Module?  Couldn\u0027t this just be m.(*Module)?",
+      "range": {
+        "startLine": 1341,
+        "startChar": 23,
+        "endLine": 1341,
+        "endChar": 58
+      },
+      "revId": "5ee803767b72f9c7a088346ef99078e4d9eb9b72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "316aff25_7aea65fa",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1345,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-21T22:21:37Z",
+      "side": 1,
+      "message": "Couldn\u0027t all this go into cc.Module.SetBuildStubs?",
+      "range": {
+        "startLine": 1342,
+        "startChar": 6,
+        "endLine": 1345,
+        "endChar": 44
+      },
+      "revId": "5ee803767b72f9c7a088346ef99078e4d9eb9b72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "393b7f17_e1b1b614",
+        "filename": "rust/rust.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-21T22:21:37Z",
+      "side": 1,
+      "message": "Some of these lines are pretty long, Go style is to wrap at a soft limit of 100 characters.",
+      "revId": "5ee803767b72f9c7a088346ef99078e4d9eb9b72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
