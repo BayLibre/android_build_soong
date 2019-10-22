@@ -1464,6 +1464,10 @@ func metalavaCmd(ctx android.ModuleContext, rule *android.RuleBuilder, javaVersi
 		Flag("--quiet").
 		Flag("--format=v2")
 
+	// Disable UnresolvedReference check in platform builds as most of droidstubs configurations
+	// are providing metalava with an incomplete classpath.
+	cmd.FlagWithArg("--hide ", "UnresolvedReference")
+
 	return cmd
 }
 
