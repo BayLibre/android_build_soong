@@ -317,6 +317,11 @@ func (fuzz *fuzzBinary) AndroidMk(ctx AndroidMkContext, ret *android.AndroidMkDa
 			filepath.Dir(fuzz.dictionary.String())+":"+fuzz.dictionary.Base())
 	}
 
+	if fuzz.options != nil {
+		fuzzFiles = append(fuzzFiles,
+			filepath.Dir(fuzz.options.String())+":options")
+	}
+
 	if len(fuzzFiles) > 0 {
 		ret.Extra = append(ret.Extra, func(w io.Writer, outputFile android.Path) {
 			fmt.Fprintln(w, "LOCAL_TEST_DATA := "+strings.Join(fuzzFiles, " "))
