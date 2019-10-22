@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5e9f0887_8badb9c1",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1114,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-10-22T09:26:44Z",
+      "side": 1,
+      "message": "The \u0027name\u0027 variable here is used to generate out/soong/Android-\u003ctarget\u003e_\u003cproduct\u003e.mk entries:\n\n  LOCAL_MODULE :\u003d com.android.art.debug.dex_bootjars_global_arm\n  LOCAL_MODULE :\u003d com.android.art.debug.dex_bootjars_global_arm64\n\nMaybe I should rename it to \u0027localModule\u0027. The filename is just \u0027boot.art\u0027, so the patha in apex are following the layout in the system image:\n\n  /boot/arm/boot.art\n  /boot/arm64/boot.art\n\nIf we decide on a different layout in future, it\u0027s easy to change on the Soong side (before the ART apex is released and someone may depend on this).",
+      "parentUuid": "ede4238e_a7a77593",
+      "range": {
+        "startLine": 1113,
+        "startChar": 6,
+        "endLine": 1114,
+        "endChar": 43
+      },
+      "revId": "442999b5352b4eeccbbfb86e25a09a2c54f982a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "231253e7_7cfa8e8c",
         "filename": "java/dexpreopt_bootjars_singleton.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "442999b5352b4eeccbbfb86e25a09a2c54f982a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "256291a1_f9b6132c",
+        "filename": "java/dexpreopt_bootjars_singleton.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-10-22T09:26:44Z",
+      "side": 1,
+      "message": "Good idea, thanks. Changed.",
+      "parentUuid": "231253e7_7cfa8e8c",
+      "range": {
+        "startLine": 46,
+        "startChar": 25,
+        "endLine": 46,
+        "endChar": 42
+      },
+      "revId": "442999b5352b4eeccbbfb86e25a09a2c54f982a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d8c10ac9_e84a264c",
+        "filename": "java/dexpreopt_bootjars_singleton.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-10-22T09:26:44Z",
+      "side": 1,
+      "message": "Oh, good catch. I forgot to rename it to something that makes sense.",
+      "parentUuid": "b21b187a_4ad0b242",
+      "range": {
+        "startLine": 61,
+        "startChar": 22,
+        "endLine": 61,
+        "endChar": 23
+      },
+      "revId": "442999b5352b4eeccbbfb86e25a09a2c54f982a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9087a413_f96200b2",
         "filename": "java/dexpreopt_bootjars_test.go",
         "patchSetId": 4
@@ -85,6 +157,24 @@
       "revId": "442999b5352b4eeccbbfb86e25a09a2c54f982a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8572dd0f_b1e5ca12",
+        "filename": "java/dexpreopt_bootjars_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-10-22T09:26:44Z",
+      "side": 1,
+      "message": "This code is is likely to change soon, after adding support for boot image extensions.\n\nFor truly unique modules I think it is better to have Soong support (FindUniqueModule(\"name\") or some such) then to duplicate the checks in every use case.",
+      "parentUuid": "9087a413_f96200b2",
+      "revId": "442999b5352b4eeccbbfb86e25a09a2c54f982a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
