@@ -1985,12 +1985,18 @@ type IDECustomizedModuleName interface {
 }
 
 type IdeInfo struct {
-	Deps              []string `json:"dependencies,omitempty"`
-	Srcs              []string `json:"srcs,omitempty"`
-	Aidl_include_dirs []string `json:"aidl_include_dirs,omitempty"`
-	Jarjar_rules      []string `json:"jarjar_rules,omitempty"`
-	Jars              []string `json:"jars,omitempty"`
-	Classes           []string `json:"class,omitempty"`
-	Installed_paths   []string `json:"installed,omitempty"`
-	SrcJars           []string `json:"srcjars,omitempty"`
+	Deps                   []string `json:"dependencies,omitempty"`
+	Srcs                   []string `json:"srcs,omitempty"`
+	Aidl_include_dirs      []string `json:"aidl_include_dirs,omitempty"`
+	Jarjar_rules           []string `json:"jarjar_rules,omitempty"`
+	Jars                   []string `json:"jars,omitempty"`
+	Classes                []string `json:"class,omitempty"`
+	Installed_paths        []string `json:"installed,omitempty"`
+	SrcJars                []string `json:"srcjars,omitempty"`
+	CCSrcs                 []string `json:"cc_srcs,omitempty"`
+	CC_global_flags        []string `json:"cc_global_flags,omitempty"`
+	CC_cflags              []string `json:"cc_cflags,omitempty"`
+	CC_conlyflags          []string `json:"cc_conlyflags,omitempty"`
+	CC_cppflags            []string `json:"cc_cppflags,omitempty"`
+	CC_system_includeflags []string `json:"cc_system_includeflags,omitempty"`
 }

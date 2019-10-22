@@ -73,6 +73,17 @@ func (j *jdepsGeneratorSingleton) GenerateBuildActions(ctx android.SingletonCont
 		dpInfo.Jarjar_rules = android.FirstUniqueStrings(dpInfo.Jarjar_rules)
 		dpInfo.Jars = android.FirstUniqueStrings(dpInfo.Jars)
 		dpInfo.SrcJars = android.FirstUniqueStrings(dpInfo.SrcJars)
+		dpInfo.CCSrcs = android.FirstUniqueStrings(dpInfo.CCSrcs)
+		dpInfo.CC_global_flags = android.FirstUniqueStrings(dpInfo.CC_global_flags)
+		_, dpInfo.CC_global_flags = android.RemoveFromList("", dpInfo.CC_global_flags)
+		dpInfo.CC_cflags = android.FirstUniqueStrings(dpInfo.CC_cflags)
+		_, dpInfo.CC_cflags = android.RemoveFromList("", dpInfo.CC_cflags)
+		dpInfo.CC_conlyflags = android.FirstUniqueStrings(dpInfo.CC_conlyflags)
+		_, dpInfo.CC_conlyflags = android.RemoveFromList("", dpInfo.CC_conlyflags)
+		dpInfo.CC_cppflags = android.FirstUniqueStrings(dpInfo.CC_cppflags)
+		_, dpInfo.CC_cppflags = android.RemoveFromList("", dpInfo.CC_cppflags)
+		dpInfo.CC_system_includeflags = android.FirstUniqueStrings(dpInfo.CC_system_includeflags)
+		_, dpInfo.CC_system_includeflags = android.RemoveFromList("", dpInfo.CC_system_includeflags)
 		moduleInfos[name] = dpInfo
 
 		mkProvider, ok := module.(android.AndroidMkDataProvider)
