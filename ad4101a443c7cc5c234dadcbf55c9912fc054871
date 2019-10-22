@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "21ba9608_d3cf6a54",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-10-22T22:19:28Z",
+      "side": 1,
+      "message": "Have created a bug to track the work and added a TODO in the code.",
+      "parentUuid": "dc3ef18e_7a8d8951",
+      "range": {
+        "startLine": 213,
+        "startChar": 28,
+        "endLine": 215,
+        "endChar": 9
+      },
+      "revId": "ad4101a443c7cc5c234dadcbf55c9912fc054871",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a0694945_2f32831c",
         "filename": "java/droiddoc.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3f615bdc_7e3bd7a2",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-10-22T22:19:28Z",
+      "side": 1,
+      "message": "They are modules. Have updated the comments to reflect that.",
+      "parentUuid": "a0694945_2f32831c",
+      "range": {
+        "startLine": 229,
+        "startChar": 16,
+        "endLine": 229,
+        "endChar": 30
+      },
+      "revId": "ad4101a443c7cc5c234dadcbf55c9912fc054871",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd33b801_84ca9923",
         "filename": "java/droiddoc.go",
         "patchSetId": 2
@@ -62,6 +110,24 @@
       "revId": "ad4101a443c7cc5c234dadcbf55c9912fc054871",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff6dfd5a_4a7b6d28",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1396,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-10-22T22:19:28Z",
+      "side": 1,
+      "message": "Ok. I wasn\u0027t sure that the order of visiting was deterministic. I think leaving it as a map and sorting it is the best approach as the order does not matter and sorting will prevent build changes that affect only the order from causing a rebuild.",
+      "parentUuid": "fd33b801_84ca9923",
+      "revId": "ad4101a443c7cc5c234dadcbf55c9912fc054871",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -85,6 +151,30 @@
       "revId": "ad4101a443c7cc5c234dadcbf55c9912fc054871",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7afd62e9_766ae3ab",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1403,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-10-22T22:19:28Z",
+      "side": 1,
+      "message": "Thanks. I extracted a method to map from the \u0027set\u0027 of paths to the sorted list and used that method instead of rolling my own.",
+      "parentUuid": "badf48e7_79a69e49",
+      "range": {
+        "startLine": 1401,
+        "startChar": 1,
+        "endLine": 1403,
+        "endChar": 3
+      },
+      "revId": "ad4101a443c7cc5c234dadcbf55c9912fc054871",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
