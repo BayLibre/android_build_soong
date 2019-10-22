@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fb70746_88806218",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-22T21:11:25Z",
+      "side": 1,
+      "message": "I wonder if it would be better to put these in a config file rather than in the Android.bp file?\n\nIf they stay here, I\u0027d suggest putting them inside an embedded struct, maybe Fuzz_config?",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 17
+      },
+      "revId": "ea2b57288e56c3aea23e66e8f485b916d3812ea7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "530fdac4_f54a2f87",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-22T21:11:25Z",
+      "side": 1,
+      "message": "Soong should not be writing files directly, that would cause them to get re-written every time Soong runs.  Use an android.WriteFile rule to write to a file.",
+      "revId": "ea2b57288e56c3aea23e66e8f485b916d3812ea7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d58af6e2_b3b9471d",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-22T21:11:25Z",
+      "side": 1,
+      "message": "We don\u0027t use log in Soong",
+      "revId": "ea2b57288e56c3aea23e66e8f485b916d3812ea7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
