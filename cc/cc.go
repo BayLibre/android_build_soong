@@ -2385,12 +2385,13 @@ func (c *Module) installable() bool {
 	return c.installer != nil && !c.Properties.PreventInstall && c.IsForPlatform() && c.outputFile.Valid()
 }
 
-func (c *Module) IDEInfo(dpInfo *android.IdeInfo) {
-	outputFiles, err := c.OutputFiles("")
-	if err != nil {
-		panic(err)
+func (c *Module) imageVariation() string {
+	if c.UseVndk() {
+		return vendorMode + "." + c.Properties.VndkVersion
+	} else if c.InRecovery() {
+		return recoveryMode
 	}
-	dpInfo.Srcs = append(dpInfo.Srcs, outputFiles.Strings()...)
+	return coreMode
 }
 
 func (c *Module) AndroidMkWriteAdditionalDependenciesForSourceAbiDiff(w io.Writer) {
