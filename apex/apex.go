@@ -1286,14 +1286,16 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	if a.apexTypes.zip() {
 		a.buildUnflattenedApex(ctx, zipApex)
-	}
-	if a.apexTypes.image() {
+	} else if a.apexTypes.image() {
 		// Build rule for unflattened APEX is created even when ctx.Config().FlattenApex()
 		// is true. This is to support referencing APEX via ":<module_name>" syntax
 		// in other modules. It is in AndroidMk where the selection of flattened
 		// or unflattened APEX is made.
-		a.buildUnflattenedApex(ctx, imageApex)
-		a.buildFlattenedApex(ctx)
+		if a.properties.Flattened {
+			a.buildFlattenedApex(ctx, imageApex)
+		} else {
+			a.buildUnflattenedApex(ctx, imageApex)
+		}
 	}
 }
 
@@ -1320,16 +1322,7 @@ func (a *apexBundle) buildNoticeFile(ctx android.ModuleContext, apexFileName str
 }
 
 func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext, apexType apexPackaging) {
-	cert := String(a.properties.Certificate)
-	if cert != "" && android.SrcIsModule(cert) == "" {
-		defaultDir := ctx.Config().DefaultAppCertificateDir(ctx)
-		a.container_certificate_file = defaultDir.Join(ctx, cert+".x509.pem")
-		a.container_private_key_file = defaultDir.Join(ctx, cert+".pk8")
-	} else if cert == "" {
-		pem, key := ctx.Config().DefaultAppCertificate(ctx)
-		a.container_certificate_file = pem
-		a.container_private_key_file = key
-	}
+	a.setCertificateAndPrivateKey(ctx)
 
 	var abis []string
 	for _, target := range ctx.MultiTargets() {
@@ -1561,13 +1554,33 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext, apexType ap
 	})
 
 	// Install to $OUT/soong/{target,host}/.../apex
-	if a.installable() && (!ctx.Config().FlattenApex() || apexType.zip()) && !a.isFlattenedVariant() {
+	if a.installable() && !a.isFlattenedVariant() {
 		ctx.InstallFile(a.installDir, ctx.ModuleName()+suffix, a.outputFiles[apexType])
+	}
+	a.buildManifestAndPubkey(ctx)
+}
+
+func (a *apexBundle) buildFlattenedApex(ctx android.ModuleContext, apexType apexPackaging) {
+	a.setCertificateAndPrivateKey(ctx)
+	a.outputFiles[apexType] = android.PathForModuleOut(ctx, ctx.ModuleName()+apexType.suffix())
+	a.buildManifestAndPubkey(ctx)
+}
+
+func (a *apexBundle) setCertificateAndPrivateKey(ctx android.ModuleContext) {
+	cert := String(a.properties.Certificate)
+	if cert != "" && android.SrcIsModule(cert) == "" {
+		defaultDir := ctx.Config().DefaultAppCertificateDir(ctx)
+		a.container_certificate_file = defaultDir.Join(ctx, cert+".x509.pem")
+		a.container_private_key_file = defaultDir.Join(ctx, cert+".pk8")
+	} else if cert == "" {
+		pem, key := ctx.Config().DefaultAppCertificate(ctx)
+		a.container_certificate_file = pem
+		a.container_private_key_file = key
 	}
 }
 
-func (a *apexBundle) buildFlattenedApex(ctx android.ModuleContext) {
-	if a.installable() {
+func (a *apexBundle) buildManifestAndPubkey(ctx android.ModuleContext) {
+	if a.installable() && !a.apexTypes.zip() {
 		// For flattened APEX, do nothing but make sure that apex_manifest.json and apex_pubkey are also copied along
 		// with other ordinary files.
 		a.filesInfo = append(a.filesInfo, apexFile{a.manifestOut, ctx.ModuleName() + ".apex_manifest.json", ".", etc, nil, nil})
