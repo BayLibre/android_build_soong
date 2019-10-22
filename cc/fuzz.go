@@ -15,6 +15,7 @@
 package cc
 
 import (
+	"fmt"
 	"path/filepath"
 	"strings"
 
@@ -24,12 +25,46 @@ import (
 	"android/soong/cc/config"
 )
 
+type FuzzOptions struct {
+	// Optional owner/contact person for fuzz target.
+	Owners []string
+	// Optional field specifying whether to disable the fuzzer.
+	Disable *bool
+	// Optional fields to specify how and where bugs should be filed.
+	Component *int64
+	Hotlists  []string
+}
+
+func (f *FuzzOptions) String() string {
+	var lines []string
+
+	if len(f.Owners) != 0 {
+		lines = append(lines, fmt.Sprintf("owners=%s", strings.Join(f.Owners, ",")))
+	}
+
+	if f.Disable != nil {
+		lines = append(lines, fmt.Sprintf("disable=%t", *f.Disable))
+	}
+
+	if f.Component != nil {
+		lines = append(lines, fmt.Sprintf("component=%d", *f.Component))
+	}
+
+	if len(f.Hotlists) != 0 {
+		lines = append(lines, fmt.Sprintf("hotlists=%d", strings.Join(f.Hotlists, ",")))
+	}
+
+	return strings.Join(lines, "\\n")
+}
+
 type FuzzProperties struct {
 	// Optional list of seed files to be installed to the fuzz target's output
 	// directory.
 	Corpus []string `android:"path"`
 	// Optional dictionary to be installed to the fuzz target's output directory.
 	Dictionary *string `android:"path"`
+	// Options for running the fuzzer.
+	Options *FuzzOptions
 }
 
 func init() {
@@ -57,6 +92,7 @@ type fuzzBinary struct {
 	dictionary            android.Path
 	corpus                android.Paths
 	corpusIntermediateDir android.Path
+	options               android.Path
 }
 
 func (fuzz *fuzzBinary) linkerProps() []interface{} {
@@ -121,6 +157,20 @@ func (fuzz *fuzzBinary) install(ctx ModuleContext, file android.Path) {
 				"Fuzzer dictionary %q does not have '.dict' extension",
 				fuzz.dictionary.String())
 		}
+	}
+
+	if fuzz.Properties.Options != nil {
+		optionsPath := android.PathForModuleOut(ctx, "options").Join(ctx, "options")
+		ctx.Build(pctx, android.BuildParams{
+			Rule:        android.WriteFile,
+			Description: "fuzzer options",
+			Output:      optionsPath,
+			Args: map[string]string{
+				"content": fuzz.Properties.Options.String(),
+				//"content": "foo\nbar\nbaz\n",
+			},
+		})
+		fuzz.options = optionsPath
 	}
 }
 
@@ -233,6 +283,12 @@ func (s *fuzzPackager) GenerateBuildActions(ctx android.SingletonContext) {
 		if fuzzModule.dictionary != nil {
 			archDirs[archDir] = append(archDirs[archDir],
 				fileToZip{fuzzModule.dictionary, ccModule.Name()})
+		}
+
+		// Additional fuzz options.
+		if fuzzModule.options != nil {
+			archDirs[archDir] = append(archDirs[archDir],
+				fileToZip{fuzzModule.options, ccModule.Name()})
 		}
 	})
 
