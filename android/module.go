@@ -1976,6 +1976,12 @@ type IDEInfo interface {
 	BaseModuleName() string
 }
 
+// Collect information for opening IDE project files in cc/cmakelists.go.
+type CCIDEInfo interface {
+	CCIDEInfo(ideInfo *CCIdeInfo)
+	BaseModuleName() string
+}
+
 // Extract the base module name from the Import name.
 // Often the Import name has a prefix "prebuilt_".
 // Remove the prefix explicitly if needed
@@ -1994,3 +2000,17 @@ type IdeInfo struct {
 	Installed_paths   []string `json:"installed,omitempty"`
 	SrcJars           []string `json:"srcjars,omitempty"`
 }
+
+type CCIdeInfo struct {
+	CCSrcs                 []string `json:"cc_srcs,omitempty"`
+	CC_global_flags        []string `json:"cc_global_flags,omitempty"`
+	CC_cflags              []string `json:"cc_cflags,omitempty"`
+	CC_conlyflags          []string `json:"cc_conlyflags,omitempty"`
+	CC_cppflags            []string `json:"cc_cppflags,omitempty"`
+	CC_system_includeflags []string `json:"cc_system_includeflags,omitempty"`
+}
+
+const (
+	// The environment variable used to turn on the dependency info collection.
+	EnvVariableCollectJavaDeps = "SOONG_COLLECT_JAVA_DEPS"
+)

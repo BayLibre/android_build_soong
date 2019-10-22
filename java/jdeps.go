@@ -39,7 +39,7 @@ type jdepsGeneratorSingleton struct {
 
 const (
 	// Environment variables used to modify behavior of this singleton.
-	envVariableCollectJavaDeps = "SOONG_COLLECT_JAVA_DEPS"
+	envVariableCollectJavaDeps = android.EnvVariableCollectJavaDeps
 	jdepsJsonFileName          = "module_bp_java_deps.json"
 )
 

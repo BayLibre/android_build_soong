@@ -2178,12 +2178,15 @@ func (c *Module) imageVariation() string {
 	return coreMode
 }
 
-func (c *Module) IDEInfo(dpInfo *android.IdeInfo) {
-	outputFiles, err := c.OutputFiles("")
-	if err != nil {
-		panic(err)
+func (c *Module) CCIDEInfo(dpInfo *android.CCIdeInfo) {
+	if compiledModule, ok := c.compiler.(CompiledInterface); ok {
+		dpInfo.CCSrcs = append(dpInfo.CCSrcs, compiledModule.Srcs().Strings()...)
+		dpInfo.CC_global_flags = append(dpInfo.CC_global_flags, c.flags.GlobalFlags...)
+		dpInfo.CC_cflags = append(dpInfo.CC_cflags, c.flags.CFlags...)
+		dpInfo.CC_conlyflags = append(dpInfo.CC_conlyflags, c.flags.ConlyFlags...)
+		dpInfo.CC_cppflags = append(dpInfo.CC_cppflags, c.flags.CppFlags...)
+		dpInfo.CC_system_includeflags = append(dpInfo.CC_system_includeflags, c.flags.SystemIncludeFlags...)
 	}
-	dpInfo.Srcs = append(dpInfo.Srcs, outputFiles.Strings()...)
 }
 
 func (c *Module) AndroidMkWriteAdditionalDependenciesForSourceAbiDiff(w io.Writer) {
