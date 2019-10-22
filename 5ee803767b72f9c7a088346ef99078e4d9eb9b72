@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "80398b92_cdc561db",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1804,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2019-10-22T21:46:46Z",
+      "side": 1,
+      "message": "See the other VNDK comment, but I think we\u0027d want to be able to handle VNDKs first since checkLinkType() (which is along the execution path below) has references to vndkdep, which I think is what caused me to initially to instead add this here. I can take a closer look though.",
+      "parentUuid": "4a2f9dde_389134a4",
+      "revId": "5ee803767b72f9c7a088346ef99078e4d9eb9b72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b5ce3cdc_5048286b",
         "filename": "cc/cc.go",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "e22dadb8_1a15c7f2",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2459,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2019-10-22T21:46:46Z",
+      "side": 1,
+      "message": "We\u0027d have to add several additional functions to LinkableInterface to handle the logic that follows, and I think vndkdep would need to be moved to the new ccutil package and/or be refactored.\n\nI figured it might be better to punt that to a future CL to try to keep this CL from ballooning in complexity.",
+      "parentUuid": "b5ce3cdc_5048286b",
+      "revId": "5ee803767b72f9c7a088346ef99078e4d9eb9b72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95a4e1ed_0d266706",
         "filename": "cc/library.go",
         "patchSetId": 3
@@ -47,6 +83,24 @@
       "writtenOn": "2019-10-21T22:21:37Z",
       "side": 1,
       "message": "Can the libraryInterface case go through CcLinkableInterface?",
+      "revId": "5ee803767b72f9c7a088346ef99078e4d9eb9b72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51471f12_99e6c5dc",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1266,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2019-10-22T21:46:46Z",
+      "side": 1,
+      "message": "I think to do this we\u0027d need another LinkableInterface method alongside IsCcLinkable() to distinguish between the primary libraryDecorator structs and other related structs which implement libraryInterfaces.\n\nI initially felt it was clumsy to do that since this is the only place in this CL where it has an impact. However, this may become necessary when we make the changes to accommodate the VNDK so I\u0027ll look into doing this.",
+      "parentUuid": "95a4e1ed_0d266706",
       "revId": "5ee803767b72f9c7a088346ef99078e4d9eb9b72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "951973cc_13a5ad11",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1341,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2019-10-22T21:46:46Z",
+      "side": 1,
+      "message": "Yup, that\u0027s way nicer, not sure why I didn\u0027t think I could do that. With moving the below into SetBuildStubs we don\u0027t need this anymore, but thanks!",
+      "parentUuid": "c6003421_5ab1dda7",
+      "range": {
+        "startLine": 1341,
+        "startChar": 23,
+        "endLine": 1341,
+        "endChar": 58
+      },
+      "revId": "5ee803767b72f9c7a088346ef99078e4d9eb9b72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "316aff25_7aea65fa",
         "filename": "cc/library.go",
         "patchSetId": 3
@@ -99,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "6ddefba4_fea84e9f",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1345,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2019-10-22T21:46:46Z",
+      "side": 1,
+      "message": "It wasn\u0027t clear to me that these would always be set when setting build stubs, but yea moving this into SetBuildStubs would make this much cleaner.",
+      "parentUuid": "316aff25_7aea65fa",
+      "range": {
+        "startLine": 1342,
+        "startChar": 6,
+        "endLine": 1345,
+        "endChar": 44
+      },
+      "revId": "5ee803767b72f9c7a088346ef99078e4d9eb9b72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "393b7f17_e1b1b614",
         "filename": "rust/rust.go",
         "patchSetId": 3
@@ -113,6 +215,24 @@
       "revId": "5ee803767b72f9c7a088346ef99078e4d9eb9b72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afa7a532_d5fe7c37",
+        "filename": "rust/rust.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2019-10-22T21:46:46Z",
+      "side": 1,
+      "message": "Ah alright, I\u0027ll shorten these. I\u0027ll probably go through in another CL after these are in cleaning up a few other long lines throughout the rust-handling code.",
+      "parentUuid": "393b7f17_e1b1b614",
+      "revId": "5ee803767b72f9c7a088346ef99078e4d9eb9b72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
