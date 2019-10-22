@@ -394,6 +394,7 @@ func (c *vndkPrebuiltLibraryDecorator) AndroidMk(ctx AndroidMkContext, ret *andr
 
 		path, file := filepath.Split(c.path.ToMakePath().String())
 		stem, suffix, ext := android.SplitFileExt(file)
+
 		fmt.Fprintln(w, "LOCAL_BUILT_MODULE_STEM := $(LOCAL_MODULE)"+ext)
 		fmt.Fprintln(w, "LOCAL_MODULE_SUFFIX := "+suffix)
 		fmt.Fprintln(w, "LOCAL_MODULE_PATH := "+path)

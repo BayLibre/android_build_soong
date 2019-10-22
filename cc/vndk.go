@@ -17,6 +17,7 @@ package cc
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 	"path/filepath"
 	"sort"
 	"strings"
@@ -200,7 +201,7 @@ var (
 	vndkPrivateLibrariesKey          = android.NewOnceKey("vndkPrivateLibrarires")
 	vndkUsingCoreVariantLibrariesKey = android.NewOnceKey("vndkUsingCoreVariantLibrarires")
 	modulePathsKey                   = android.NewOnceKey("modulePaths")
-	vndkSnapshotOutputsKey           = android.NewOnceKey("vndkSnapshotOutputs")
+	vndkSnapshotZipKey               = android.NewOnceKey("vndkSnapshotZip")
 	vndkLibrariesLock                sync.Mutex
 
 	headerExts = []string{".h", ".hh", ".hpp", ".hxx", ".h++", ".inl", ".inc", ".ipp", ".h.generic"}
@@ -242,10 +243,10 @@ func modulePaths(config android.Config) map[string]string {
 	}).(map[string]string)
 }
 
-func vndkSnapshotOutputs(config android.Config) *android.RuleBuilderInstalls {
-	return config.Once(vndkSnapshotOutputsKey, func() interface{} {
-		return &android.RuleBuilderInstalls{}
-	}).(*android.RuleBuilderInstalls)
+func vndkSnapshotZip(config android.Config) *android.OutputPath {
+	return config.Once(vndkSnapshotZipKey, func() interface{} {
+		return &android.OutputPath{}
+	}).(*android.OutputPath)
 }
 
 func processLlndkLibrary(mctx android.BottomUpMutatorContext, m *Module) {
@@ -340,8 +341,7 @@ func VndkMutator(mctx android.BottomUpMutatorContext) {
 func init() {
 	android.RegisterSingletonType("vndk-snapshot", VndkSnapshotSingleton)
 	android.RegisterMakeVarsProvider(pctx, func(ctx android.MakeVarsContext) {
-		outputs := vndkSnapshotOutputs(ctx.Config())
-		ctx.Strict("SOONG_VNDK_SNAPSHOT_FILES", outputs.String())
+		ctx.Strict("SOONG_VNDK_SNAPSHOT_ZIP", vndkSnapshotZip(ctx.Config()).String())
 	})
 }
 
@@ -350,6 +350,54 @@ func VndkSnapshotSingleton() android.Singleton {
 }
 
 type vndkSnapshotSingleton struct{}
+
+func writePathsToFile(ctx android.SingletonContext, paths android.Paths, file android.OutputPath) {
+	var intermediates android.Paths
+	rule := android.NewRuleBuilder()
+	rule.Command().
+		Text("rm").
+		Flag("-rf").
+		Text(file.String())
+	rule.Command().
+		Text("mkdir").
+		Flag("-p").
+		Text(filepath.Dir(file.String()))
+	if len(paths) == 0 {
+		rule.Command().
+			Text("touch").
+			Output(file)
+		rule.Build(pctx, ctx, file.String(), "writing paths "+file.String())
+		return
+	}
+	tmp_no := 0
+	idx := 0
+	for idx < len(paths) {
+		tmpFile := android.PathForOutput(ctx, fmt.Sprintf("%s.%d", file.Rel(), tmp_no))
+		tmp_no++
+		r := idx
+		totalLength := 0
+		for r < len(paths) && totalLength+len(paths[r].String())+1 < 100000 {
+			totalLength += len(paths[r].String()) + 1
+			r++
+		}
+		ctx.Build(pctx, android.BuildParams{
+			Rule:        android.WriteFile,
+			Output:      tmpFile,
+			Implicits:   paths[idx:r],
+			Description: "writing paths " + tmpFile.String(),
+			Args: map[string]string{
+				"content": android.JoinWithSuffix(paths[idx:r].Strings(), "\\n", ""),
+			},
+		})
+		intermediates = append(intermediates, tmpFile)
+		idx = r
+	}
+	rule.Command().
+		Text("cat ").
+		Inputs(intermediates).
+		FlagWithOutput("> ", file)
+	rule.Build(pctx, ctx, file.String(), "writing paths "+file.String())
+}
 
 func (c *vndkSnapshotSingleton) GenerateBuildActions(ctx android.SingletonContext) {
 	// BOARD_VNDK_VERSION must be set to 'current' in order to generate a VNDK snapshot.
@@ -365,10 +413,7 @@ func (c *vndkSnapshotSingleton) GenerateBuildActions(ctx android.SingletonContex
 		return
 	}
 
-	outputs := vndkSnapshotOutputs(ctx.Config())
-
 	snapshotDir := "vndk-snapshot"
-
 	vndkLibDir := make(map[android.ArchType]string)
 
 	snapshotVariantDir := ctx.DeviceConfig().DeviceArch()
@@ -388,49 +433,32 @@ func (c *vndkSnapshotSingleton) GenerateBuildActions(ctx android.SingletonContex
 	noticeDir := filepath.Join(snapshotVariantDir, "NOTICE_FILES")
 	includeDir := filepath.Join(snapshotVariantDir, "include")
 	noticeBuilt := make(map[string]bool)
+	var outputs android.Paths
 
 	installSnapshotFileFromPath := func(path android.Path, out string) {
+		outPath := android.PathForOutput(ctx, snapshotDir, out)
 		ctx.Build(pctx, android.BuildParams{
 			Rule:        android.Cp,
 			Input:       path,
-			Output:      android.PathForOutput(ctx, snapshotDir, out),
+			Output:      outPath,
 			Description: "vndk snapshot " + out,
 			Args: map[string]string{
 				"cpFlags": "-f -L",
 			},
 		})
-		*outputs = append(*outputs, android.RuleBuilderInstall{
-			From: android.PathForOutput(ctx, snapshotDir, out),
-			To:   out,
-		})
+		outputs = append(outputs, outPath)
 	}
 	installSnapshotFileFromContent := func(content, out string) {
+		outPath := android.PathForOutput(ctx, snapshotDir, out)
 		ctx.Build(pctx, android.BuildParams{
 			Rule:        android.WriteFile,
-			Output:      android.PathForOutput(ctx, snapshotDir, out),
+			Output:      outPath,
 			Description: "vndk snapshot " + out,
 			Args: map[string]string{
 				"content": content,
 			},
 		})
-		*outputs = append(*outputs, android.RuleBuilderInstall{
-			From: android.PathForOutput(ctx, snapshotDir, out),
-			To:   out,
-		})
-	}
-
-	tryBuildNotice := func(m *Module) {
-		name := ctx.ModuleName(m) + ".so.txt"
-
-		if _, ok := noticeBuilt[name]; ok {
-			return
-		}
-
-		noticeBuilt[name] = true
-
-		if m.NoticeFile().Valid() {
-			installSnapshotFileFromPath(m.NoticeFile().Path(), filepath.Join(noticeDir, name))
-		}
+		outputs = append(outputs, outPath)
 	}
 
 	vndkCoreLibraries := vndkCoreLibraries(ctx.Config())
@@ -448,35 +476,51 @@ func (c *vndkSnapshotSingleton) GenerateBuildActions(ctx android.SingletonContex
 	var _ vndkSnapshotLibraryInterface = (*prebuiltLibraryLinker)(nil)
 	var _ vndkSnapshotLibraryInterface = (*libraryDecorator)(nil)
 
+	stems := make(map[string]string)
+
 	installVndkSnapshotLib := func(m *Module, l vndkSnapshotLibraryInterface, dir string) bool {
 		name := ctx.ModuleName(m)
-		libOut := filepath.Join(dir, name+".so")
+		libPath := m.outputFile.Path()
+		libName := libPath.Base()
+		libOut := filepath.Join(dir, libName)
+		installSnapshotFileFromPath(libPath, libOut)
 
-		installSnapshotFileFromPath(m.outputFile.Path(), libOut)
-		tryBuildNotice(m)
+		if s, ok := stems[name]; ok && s != libName {
+			ctx.Errorf("stems of module %q are different among arch", name)
+			return false
+		}
+		stems[name] = libName
+
+		if m.NoticeFile().Valid() {
+			noticeName := libName + ".txt"
+			if _, ok := noticeBuilt[noticeName]; !ok {
+				noticeBuilt[noticeName] = true
+				installSnapshotFileFromPath(m.NoticeFile().Path(), filepath.Join(noticeDir, noticeName))
+			}
+		}
+
+		prop := struct {
+			ExportedDirs        []string `json:",omitempty"`
+			ExportedSystemDirs  []string `json:",omitempty"`
+			ExportedFlags       []string `json:",omitempty"`
+			RelativeInstallPath string   `json:",omitempty"`
+		}{}
+		prop.RelativeInstallPath = m.RelativeInstallPath()
 
 		if ctx.Config().VndkSnapshotBuildArtifacts() {
-			prop := struct {
-				ExportedDirs        []string `json:",omitempty"`
-				ExportedSystemDirs  []string `json:",omitempty"`
-				ExportedFlags       []string `json:",omitempty"`
-				RelativeInstallPath string   `json:",omitempty"`
-			}{}
 			prop.ExportedFlags = l.exportedFlags()
 			prop.ExportedDirs = l.exportedDirs()
 			prop.ExportedSystemDirs = l.exportedSystemDirs()
-			prop.RelativeInstallPath = m.RelativeInstallPath()
-
-			propOut := libOut + ".json"
-
-			j, err := json.Marshal(prop)
-			if err != nil {
-				ctx.Errorf("json marshal to %q failed: %#v", propOut, err)
-				return false
-			}
-
-			installSnapshotFileFromContent(string(j), propOut)
 		}
+
+		propOut := libOut + ".json"
+
+		j, err := json.Marshal(prop)
+		if err != nil {
+			ctx.Errorf("json marshal to %q failed: %#v", propOut, err)
+			return false
+		}
+		installSnapshotFileFromContent(string(j), propOut)
 		return true
 	}
 
@@ -580,27 +624,76 @@ func (c *vndkSnapshotSingleton) GenerateBuildActions(ctx android.SingletonContex
 		}
 	}
 
-	installSnapshotFileFromContent(android.JoinWithSuffix(*vndkCoreLibraries, ".so", "\\n"),
+	moduleToStem := func(module string) string {
+		stem, ok := stems[module]
+		if !ok {
+			stem = module + ".so"
+		}
+		return stem
+	}
+
+	modulesToStems := func(modules []string) []string {
+		ret := make([]string, 0, len(modules))
+		for _, module := range modules {
+			ret = append(ret, moduleToStem(module))
+		}
+		return ret
+	}
+
+	installSnapshotFileFromContent(strings.Join(modulesToStems(*vndkCoreLibraries), "\\n"),
 		filepath.Join(configsDir, "vndkcore.libraries.txt"))
-	installSnapshotFileFromContent(android.JoinWithSuffix(*vndkPrivateLibraries, ".so", "\\n"),
+	installSnapshotFileFromContent(strings.Join(modulesToStems(*vndkPrivateLibraries), "\\n"),
 		filepath.Join(configsDir, "vndkprivate.libraries.txt"))
+	installSnapshotFileFromContent(strings.Join(modulesToStems(*vndkSpLibraries), "\\n"),
+		filepath.Join(configsDir, "vndksp.libraries.txt"))
+
+	// llndk_library has neither stem nor suffix
+	installSnapshotFileFromContent(android.JoinWithSuffix(*llndkLibraries(ctx.Config()), ".so", "\\n"),
+		filepath.Join(configsDir, "llndk.libraries.txt"))
 
 	var modulePathTxtBuilder strings.Builder
 
 	modulePaths := modulePaths(ctx.Config())
 
-	first := true
-	for _, lib := range android.SortedStringKeys(modulePaths) {
-		if first {
-			first = false
-		} else {
+	for idx, lib := range android.SortedStringKeys(modulePaths) {
+		if idx > 0 {
 			modulePathTxtBuilder.WriteString("\\n")
 		}
-		modulePathTxtBuilder.WriteString(lib)
-		modulePathTxtBuilder.WriteString(".so ")
+		modulePathTxtBuilder.WriteString(moduleToStem(lib))
+		modulePathTxtBuilder.WriteString(" ")
 		modulePathTxtBuilder.WriteString(modulePaths[lib])
 	}
 
 	installSnapshotFileFromContent(modulePathTxtBuilder.String(),
 		filepath.Join(configsDir, "module_paths.txt"))
+
+	var moduleNamesTxtBuilder strings.Builder
+	for idx, lib := range android.SortedStringKeys(stems) {
+		if idx > 0 {
+			moduleNamesTxtBuilder.WriteString("\\n")
+		}
+		moduleNamesTxtBuilder.WriteString(stems[lib])
+		moduleNamesTxtBuilder.WriteString(" ")
+		moduleNamesTxtBuilder.WriteString(lib)
+	}
+
+	installSnapshotFileFromContent(moduleNamesTxtBuilder.String(),
+		filepath.Join(configsDir, "module_names.txt"))
+
+	sort.Slice(outputs, func(i, j int) bool {
+		return outputs[i].String() < outputs[j].String()
+	})
+
+	outputList := android.PathForOutput(ctx, snapshotDir, "android-vndk-"+ctx.Config().Getenv("TARGET_PRODUCT")+"_list")
+	writePathsToFile(ctx, outputs, outputList)
+
+	zipPath := android.PathForOutput(ctx, snapshotDir, "android-vndk-"+ctx.Config().Getenv("TARGET_PRODUCT")+".zip")
+	zipRule := android.NewRuleBuilder()
+	zipRule.Command().
+		BuiltTool(ctx, "soong_zip").
+		FlagWithOutput("-o ", zipPath).
+		FlagWithArg("-C ", android.PathForOutput(ctx, "vndk-snapshot").String()).
+		FlagWithInput("-l ", outputList)
+	zipRule.Build(pctx, ctx, zipPath.String(), "vndk snapshot "+zipPath.String())
+	*vndkSnapshotZip(ctx.Config()) = zipPath
 }
