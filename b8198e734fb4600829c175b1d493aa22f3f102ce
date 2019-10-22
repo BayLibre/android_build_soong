@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "924c06a0_92d815a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308042
+      },
+      "writtenOn": "2019-10-22T06:19:31Z",
+      "side": 1,
+      "message": "in CLion IDE",
+      "range": {
+        "startLine": 12,
+        "startChar": 56,
+        "endLine": 12,
+        "endChar": 65
+      },
+      "revId": "b8198e734fb4600829c175b1d493aa22f3f102ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
