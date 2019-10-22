@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1422438_53d213a4",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1996,
+      "author": {
+        "id": 1329611
+      },
+      "writtenOn": "2019-10-22T07:53:12Z",
+      "side": 1,
+      "message": "How is the performance impact? e.g. how much module_info size will increase, how many build time will include?",
+      "range": {
+        "startLine": 1996,
+        "startChar": 1,
+        "endLine": 1996,
+        "endChar": 7
+      },
+      "revId": "12b058c790ac4efdfb7a727cf36c5ecb36119072",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
