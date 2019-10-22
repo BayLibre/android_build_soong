@@ -15,6 +15,9 @@
 package cc
 
 import (
+	"fmt"
+	"log"
+	"os"
 	"path/filepath"
 	"strings"
 
@@ -30,6 +33,13 @@ type FuzzProperties struct {
 	Corpus []string `android:"path"`
 	// Optional dictionary to be installed to the fuzz target's output directory.
 	Dictionary *string `android:"path"`
+	// Optional owner/contact person for fuzz target.
+	Owner *string
+	// Optional field specifying whether to disable the fuzzer.
+	Disable *bool
+	// Optional fields to specify how and where bugs should be filed.
+	Component *int64
+	Hotlist   *int64
 }
 
 func init() {
@@ -57,6 +67,7 @@ type fuzzBinary struct {
 	dictionary            android.Path
 	corpus                android.Paths
 	corpusIntermediateDir android.Path
+	config                android.Path
 }
 
 func (fuzz *fuzzBinary) linkerProps() []interface{} {
@@ -96,6 +107,39 @@ func (fuzz *fuzzBinary) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 	return flags
 }
 
+func (fuzz *fuzzBinary) generateConfig(ctx ModuleContext) android.Path {
+	intermedDir := android.PathForModuleOut(ctx, "config")
+	if err := os.MkdirAll(intermedDir.String(), 0777); err != nil {
+		panic(err)
+	}
+
+	configPath := intermedDir.Join(ctx, "config")
+	configFile, err := os.Create(configPath.String())
+	if err != nil {
+		log.Printf("create config dir: %v", err)
+		return nil
+	}
+	defer configFile.Close()
+
+	if fuzz.Properties.Owner != nil {
+		configFile.WriteString(fmt.Sprintf("owner=%s\n", *fuzz.Properties.Owner))
+	}
+
+	if fuzz.Properties.Disable != nil {
+		configFile.WriteString(fmt.Sprintf("disable=%t\n", *fuzz.Properties.Disable))
+	}
+
+	if fuzz.Properties.Component != nil {
+		configFile.WriteString(fmt.Sprintf("component=%d\n", *fuzz.Properties.Component))
+	}
+
+	if fuzz.Properties.Hotlist != nil {
+		configFile.WriteString(fmt.Sprintf("hotlist=%d\n", *fuzz.Properties.Hotlist))
+	}
+
+	return configPath
+}
+
 func (fuzz *fuzzBinary) install(ctx ModuleContext, file android.Path) {
 	fuzz.binaryDecorator.baseInstaller.dir = filepath.Join(
 		"fuzz", ctx.Target().Arch.ArchType.String(), ctx.ModuleName())
@@ -122,6 +166,8 @@ func (fuzz *fuzzBinary) install(ctx ModuleContext, file android.Path) {
 				fuzz.dictionary.String())
 		}
 	}
+
+	fuzz.config = fuzz.generateConfig(ctx)
 }
 
 func NewFuzz(hod android.HostOrDeviceSupported) *Module {
@@ -233,6 +279,12 @@ func (s *fuzzPackager) GenerateBuildActions(ctx android.SingletonContext) {
 		if fuzzModule.dictionary != nil {
 			archDirs[archDir] = append(archDirs[archDir],
 				fileToZip{fuzzModule.dictionary, ccModule.Name()})
+		}
+
+		// The config.
+		if fuzzModule.config != nil {
+			archDirs[archDir] = append(archDirs[archDir],
+				fileToZip{fuzzModule.config, ccModule.Name()})
 		}
 	})
 
