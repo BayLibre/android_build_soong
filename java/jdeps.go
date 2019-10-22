@@ -18,6 +18,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"path"
+	"strconv"
 
 	"android/soong/android"
 )
@@ -73,6 +75,16 @@ func (j *jdepsGeneratorSingleton) GenerateBuildActions(ctx android.SingletonCont
 		dpInfo.Jarjar_rules = android.FirstUniqueStrings(dpInfo.Jarjar_rules)
 		dpInfo.Jars = android.FirstUniqueStrings(dpInfo.Jars)
 		dpInfo.SrcJars = android.FirstUniqueStrings(dpInfo.SrcJars)
+		dpInfo.IsNative = android.FirstUniqueStrings(dpInfo.IsNative)
+		if len(dpInfo.IsNative) > 0 {
+			native, err := strconv.ParseBool(dpInfo.IsNative[0])
+			if err == nil {
+				if native {
+					dpInfo.Path = append(dpInfo.Path, path.Dir(ctx.BlueprintFile(module)))
+				}
+			}
+		}
+		dpInfo.Path = android.FirstUniqueStrings(dpInfo.Path)
 		moduleInfos[name] = dpInfo
 
 		mkProvider, ok := module.(android.AndroidMkDataProvider)
