@@ -2381,11 +2381,9 @@ func (c *Module) imageVariation() string {
 }
 
 func (c *Module) IDEInfo(dpInfo *android.IdeInfo) {
-	outputFiles, err := c.OutputFiles("")
-	if err != nil {
-		panic(err)
+	if _, ok := c.compiler.(CompiledInterface); ok {
+		dpInfo.IsNative = append(dpInfo.IsNative, "true")
 	}
-	dpInfo.Srcs = append(dpInfo.Srcs, outputFiles.Strings()...)
 }
 
 func (c *Module) AndroidMkWriteAdditionalDependenciesForSourceAbiDiff(w io.Writer) {
