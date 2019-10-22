@@ -1994,3 +1994,8 @@ type IdeInfo struct {
 	Installed_paths   []string `json:"installed,omitempty"`
 	SrcJars           []string `json:"srcjars,omitempty"`
 }
+
+const (
+	// The environment variable used to turn on the dependency info collection.
+	EnvVariableCollectJavaDeps = "SOONG_COLLECT_JAVA_DEPS"
+)
