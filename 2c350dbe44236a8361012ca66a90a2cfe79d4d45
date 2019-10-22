@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d518037b_458e8982",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1289,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-22T11:41:15Z",
+      "side": 1,
+      "message": "apexTypes \"both\" should generate both of zip/image.",
+      "range": {
+        "startLine": 1289,
+        "startChar": 0,
+        "endLine": 1289,
+        "endChar": 32
+      },
+      "revId": "2c350dbe44236a8361012ca66a90a2cfe79d4d45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a43caac_a61e386d",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1582,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-22T11:41:15Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem right. This function does copy not only manifest \u0026 pubkey but also all files from \u0027a.filesInfo\u0027",
+      "range": {
+        "startLine": 1582,
+        "startChar": 21,
+        "endLine": 1582,
+        "endChar": 43
+      },
+      "revId": "2c350dbe44236a8361012ca66a90a2cfe79d4d45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
