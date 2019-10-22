@@ -2184,6 +2184,9 @@ func (c *Module) IDEInfo(dpInfo *android.IdeInfo) {
 		panic(err)
 	}
 	dpInfo.Srcs = append(dpInfo.Srcs, outputFiles.Strings()...)
+	if compiledModule, ok := c.compiler.(CompiledInterface); ok {
+		dpInfo.CCSrcs = append(dpInfo.CCSrcs, compiledModule.Srcs().Strings()...)
+	}
 }
 
 func (c *Module) AndroidMkWriteAdditionalDependenciesForSourceAbiDiff(w io.Writer) {

@@ -1993,4 +1993,5 @@ type IdeInfo struct {
 	Classes           []string `json:"class,omitempty"`
 	Installed_paths   []string `json:"installed,omitempty"`
 	SrcJars           []string `json:"srcjars,omitempty"`
+	CCSrcs            []string `json:"cc_srcs,omitempty"`
 }
