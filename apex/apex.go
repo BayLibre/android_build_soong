@@ -502,6 +502,7 @@ const (
 	imageApex apexPackaging = iota
 	zipApex
 	both
+	flattened
 )
 
 func (a apexPackaging) image() bool {
@@ -1003,7 +1004,11 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	filesInfo := []apexFile{}
 
 	if a.properties.Payload_type == nil || *a.properties.Payload_type == "image" {
-		a.apexTypes = imageApex
+		if a.properties.Flattened {
+			a.apexTypes = flattened
+		} else {
+			a.apexTypes = imageApex
+		}
 	} else if *a.properties.Payload_type == "zip" {
 		a.apexTypes = zipApex
 	} else if *a.properties.Payload_type == "both" {
@@ -1297,11 +1302,16 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		a.buildUnflattenedApex(ctx, zipApex)
 	}
 	if a.apexTypes.image() {
+		a.buildUnflattenedApex(ctx, imageApex)
+	}
+	if a.apexTypes == flattened {
 		// Build rule for unflattened APEX is created even when ctx.Config().FlattenApex()
 		// is true. This is to support referencing APEX via ":<module_name>" syntax
 		// in other modules. It is in AndroidMk where the selection of flattened
 		// or unflattened APEX is made.
-		a.buildUnflattenedApex(ctx, imageApex)
+		if !a.isFlattenedVariant() {
+			a.buildUnflattenedApex(ctx, imageApex)
+		}
 		a.buildFlattenedApex(ctx)
 	}
 
@@ -1331,16 +1341,7 @@ func (a *apexBundle) buildNoticeFile(ctx android.ModuleContext, apexFileName str
 }
 
 func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext, apexType apexPackaging) {
-	cert := String(a.properties.Certificate)
-	if cert != "" && android.SrcIsModule(cert) == "" {
-		defaultDir := ctx.Config().DefaultAppCertificateDir(ctx)
-		a.container_certificate_file = defaultDir.Join(ctx, cert+".x509.pem")
-		a.container_private_key_file = defaultDir.Join(ctx, cert+".pk8")
-	} else if cert == "" {
-		pem, key := ctx.Config().DefaultAppCertificate(ctx)
-		a.container_certificate_file = pem
-		a.container_private_key_file = key
-	}
+	a.setCertificateAndPrivateKey(ctx)
 
 	var abis []string
 	for _, target := range ctx.MultiTargets() {
@@ -1572,13 +1573,35 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext, apexType ap
 	})
 
 	// Install to $OUT/soong/{target,host}/.../apex
-	if a.installable() && (!ctx.Config().FlattenApex() || apexType.zip()) && !a.isFlattenedVariant() {
+	if a.installable() && !a.isFlattenedVariant() {
 		ctx.InstallFile(a.installDir, ctx.ModuleName()+suffix, a.outputFiles[apexType])
 	}
+	a.buildFilesInfo(ctx)
 }
 
 func (a *apexBundle) buildFlattenedApex(ctx android.ModuleContext) {
-	if a.installable() {
+	a.setCertificateAndPrivateKey(ctx)
+	a.outputFiles[imageApex] = android.PathForModuleOut(ctx, ctx.ModuleName()+".apex")
+	if a.isFlattenedVariant() {
+		a.buildFilesInfo(ctx)
+	}
+}
+
+func (a *apexBundle) setCertificateAndPrivateKey(ctx android.ModuleContext) {
+	cert := String(a.properties.Certificate)
+	if cert != "" && android.SrcIsModule(cert) == "" {
+		defaultDir := ctx.Config().DefaultAppCertificateDir(ctx)
+		a.container_certificate_file = defaultDir.Join(ctx, cert+".x509.pem")
+		a.container_private_key_file = defaultDir.Join(ctx, cert+".pk8")
+	} else if cert == "" {
+		pem, key := ctx.Config().DefaultAppCertificate(ctx)
+		a.container_certificate_file = pem
+		a.container_private_key_file = key
+	}
+}
+
+func (a *apexBundle) buildFilesInfo(ctx android.ModuleContext) {
+	if a.installable() && !a.apexTypes.zip() {
 		// For flattened APEX, do nothing but make sure that apex_manifest.json and apex_pubkey are also copied along
 		// with other ordinary files.
 		a.filesInfo = append(a.filesInfo, apexFile{a.manifestOut, "apex_manifest.json." + ctx.ModuleName(), ".", etc, nil, nil})
@@ -1618,6 +1641,9 @@ func (a *apexBundle) AndroidMk() android.AndroidMkData {
 	if a.apexTypes.zip() {
 		writers = append(writers, a.androidMkForType(zipApex))
 	}
+	if a.apexTypes == flattened {
+		writers = append(writers, a.androidMkForType(flattened))
+	}
 	return android.AndroidMkData{
 		Custom: func(w io.Writer, name, prefix, moduleDir string, data android.AndroidMkData) {
 			for _, data := range writers {
@@ -1633,7 +1659,7 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, apexName, moduleDir string, 
 		if cc, ok := fi.module.(*cc.Module); ok && cc.Properties.HideFromMake {
 			continue
 		}
-		if a.properties.Flattened && !apexType.image() {
+		if a.isFlattenedVariant() && !apexType.image() {
 			continue
 		}
 
@@ -1651,7 +1677,7 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, apexName, moduleDir string, 
 		fmt.Fprintln(w, "LOCAL_MODULE :=", fi.moduleName+suffix)
 		// /apex/<apex_name>/{lib|framework|...}
 		pathWhenActivated := filepath.Join("$(PRODUCT_OUT)", "apex", apexName, fi.installDir)
-		if a.properties.Flattened && apexType.image() {
+		if apexType == flattened {
 			// /system/apex/<name>/{lib|framework|...}
 			fmt.Fprintln(w, "LOCAL_MODULE_PATH :=", filepath.Join(a.installDir.ToMakePath().String(),
 				apexName, fi.installDir))
@@ -1746,7 +1772,7 @@ func (a *apexBundle) androidMkForType(apexType apexPackaging) android.AndroidMkD
 				name = name + ".flattened"
 			}
 
-			if a.properties.Flattened && apexType.image() {
+			if apexType == flattened {
 				// Only image APEXes can be flattened.
 				fmt.Fprintln(w, "\ninclude $(CLEAR_VARS)")
 				fmt.Fprintln(w, "LOCAL_PATH :=", moduleDir)
