@@ -34,6 +34,24 @@
       "revId": "644ca30a85d2c54a45efc1d1c9e0085afe8b98fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1e2d956_050bc996",
+        "filename": "ui/build/paths/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1293738
+      },
+      "writtenOn": "2019-10-22T22:52:36Z",
+      "side": 1,
+      "message": "I think we can use truncate",
+      "parentUuid": "4c4e0e4c_66786158",
+      "revId": "644ca30a85d2c54a45efc1d1c9e0085afe8b98fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
