@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "510b3ac9_ba0ec250",
+        "filename": "java/gen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-22T00:32:13Z",
+      "side": 1,
+      "message": "We don\u0027t need this in Q, because we didn\u0027t rely on the \u0027path\u0027 property to automatically construct include paths for AIDL files. All AIDL include paths are manually specified in Q.",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 1
+      },
+      "revId": "0beb95b96dd97d94d76293f821f6bc9085ca51b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
