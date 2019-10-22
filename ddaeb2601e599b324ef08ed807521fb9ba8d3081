@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a0145f8_6623afff",
+        "filename": "scripts/archive_repack.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-22T06:08:45Z",
+      "side": 1,
+      "message": "This will fail if outfile is absolute, which will happen if $OUT_DIR is absolute",
+      "revId": "ddaeb2601e599b324ef08ed807521fb9ba8d3081",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
