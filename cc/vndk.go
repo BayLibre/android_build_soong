@@ -365,6 +365,8 @@ func (c *vndkSnapshotSingleton) GenerateBuildActions(ctx android.SingletonContex
 		return
 	}
 
+	c.buildVndkLibrariesTxtFiles(ctx)
+
 	outputs := vndkSnapshotOutputs(ctx.Config())
 
 	snapshotDir := "vndk-snapshot"
@@ -603,4 +605,81 @@ func (c *vndkSnapshotSingleton) GenerateBuildActions(ctx android.SingletonContex
 
 	installSnapshotFileFromContent(modulePathTxtBuilder.String(),
 		filepath.Join(configsDir, "module_paths.txt"))
+}
+
+func installListFile(ctx android.SingletonContext, list []string, pathComponents ...string) android.OutputPath {
+	out := android.PathForOutput(ctx, pathComponents...)
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        android.WriteFile,
+		Output:      out,
+		Description: "Writing " + out.String(),
+		Args: map[string]string{
+			"content": strings.Join(list, "\\n"),
+		},
+	})
+	return out
+}
+
+func (c *vndkSnapshotSingleton) buildVndkLibrariesTxtFiles(ctx android.SingletonContext) {
+	var (
+		llndk, vndkcore, vndksp, vndkprivate, vndkcorevariant, merged []string
+	)
+	vndkVersion := ctx.DeviceConfig().PlatformVndkVersion()
+	config := ctx.Config()
+	ctx.VisitAllModules(func(m android.Module) {
+		if !m.Enabled() {
+			return
+		}
+		c, ok := m.(*Module)
+		if !ok || c.Os().Class != android.Device {
+			return
+		}
+		lib, ok := c.linker.(interface{ shared() bool })
+		if !ok || !lib.shared() {
+			return
+		}
+
+		if !c.OutputFile().Valid() {
+			return
+		}
+
+		filename := c.OutputFile().Path().Base()
+		if c.isLlndk(config) {
+			llndk = append(llndk, filename)
+			if c.isVndkPrivate(config) {
+				vndkprivate = append(vndkprivate, filename)
+			}
+		} else if c.vndkVersion() == vndkVersion && c.isVndk() && !c.isVndkExt() {
+			if c.isVndkSp() {
+				vndksp = append(vndksp, filename)
+			} else {
+				vndkcore = append(vndkcore, filename)
+			}
+			if c.isVndkPrivate(config) {
+				vndkprivate = append(vndkprivate, filename)
+			}
+			if ctx.DeviceConfig().VndkUseCoreVariant() && !c.mustUseVendorVariant() {
+				vndkcorevariant = append(vndkcorevariant, filename)
+			}
+		}
+	})
+	llndk = android.SortedUniqueStrings(llndk)
+	vndkcore = android.SortedUniqueStrings(vndkcore)
+	vndksp = android.SortedUniqueStrings(vndksp)
+	vndkprivate = android.SortedUniqueStrings(vndkprivate)
+	vndkcorevariant = android.SortedUniqueStrings(vndkcorevariant)
+
+	installListFile(ctx, llndk, "vndk", "llndk.libraries.txt")
+	installListFile(ctx, vndkcore, "vndk", "vndkcore.libraries.txt")
+	installListFile(ctx, vndksp, "vndk", "vndksp.libraries.txt")
+	installListFile(ctx, vndkprivate, "vndk", "vndkprivate.libraries.txt")
+	installListFile(ctx, vndkcorevariant, "vndk", "vndkcorevariant.libraries.txt")
+
+	// merged & tagged & filtered-out(libclang_rt)
+	merged = append(merged, addPrefix(filterOut(llndk, prefixed("libclang_rt.")), "LLNDK: ")...)
+	merged = append(merged, addPrefix(vndksp, "VNDK-SP: ")...)
+	merged = append(merged, addPrefix(filterOut(vndkcore, prefixed("libclang_rt.")), "VNDK-core: ")...)
+	merged = append(merged, addPrefix(vndkprivate, "VNDK-private: ")...)
+
+	installListFile(ctx, merged, "vndk", "vndk.libraries.txt")
 }

@@ -586,7 +586,7 @@ func (c *Module) isNdk() bool {
 
 func (c *Module) isLlndk(config android.Config) bool {
 	// Returns true for both LLNDK (public) and LLNDK-private libs.
-	return inList(c.Name(), *llndkLibraries(config))
+	return inList(c.BaseModuleName(), *llndkLibraries(config))
 }
 
 func (c *Module) isLlndkPublic(config android.Config) bool {
@@ -596,7 +596,7 @@ func (c *Module) isLlndkPublic(config android.Config) bool {
 
 func (c *Module) isVndkPrivate(config android.Config) bool {
 	// Returns true for LLNDK-private, VNDK-SP-private, and VNDK-core-private.
-	return inList(c.Name(), *vndkPrivateLibraries(config))
+	return inList(c.BaseModuleName(), *vndkPrivateLibraries(config))
 }
 
 func (c *Module) isVndk() bool {

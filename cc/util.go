@@ -90,6 +90,23 @@ func flagsToBuilderFlags(in Flags) builderFlags {
 	}
 }
 
+func prefixed(prefix string) func(string) bool {
+	return func(s string) bool {
+		return strings.HasPrefix(s, prefix)
+	}
+}
+
+// filterOut removes element from []string.
+func filterOut(list []string, f func(string) bool) []string {
+	var result []string
+	for _, s := range list {
+		if !f(s) {
+			result = append(result, s)
+		}
+	}
+	return result
+}
+
 func addPrefix(list []string, prefix string) []string {
 	for i := range list {
 		list[i] = prefix + list[i]
