@@ -89,6 +89,7 @@ func (j *jdepsGeneratorSingleton) GenerateBuildActions(ctx android.SingletonCont
 		}
 		dpInfo.Classes = android.FirstUniqueStrings(dpInfo.Classes)
 		dpInfo.Installed_paths = android.FirstUniqueStrings(dpInfo.Installed_paths)
+		dpInfo.CCSrcs = android.FirstUniqueStrings(dpInfo.CCSrcs)
 		moduleInfos[name] = dpInfo
 	})
 
