@@ -15,6 +15,7 @@
 package cc
 
 import (
+	"fmt"
 	"path/filepath"
 	"strings"
 
@@ -24,12 +25,48 @@ import (
 	"android/soong/cc/config"
 )
 
+type FuzzConfig struct {
+	// email address for authors or owners of this fuzz target.
+	Owners []string
+	// boolean specifying whether to disable the fuzz target from running
+	// automatically in continuous fuzzing infrastructure.
+	Disable *bool
+	// component in Google's bug tracking system that bugs should be filed to.
+	Componentid *int64
+	// hotlists in Google's bug tracking system that bugs should be marked with.
+	Hotlists []string
+}
+
+func (f *FuzzConfig) String() string {
+	var sb strings.Builder
+
+	if len(f.Owners) != 0 {
+		fmt.Fprintf(&sb, "owners=%s\\n", strings.Join(f.Owners, ","))
+	}
+
+	if f.Disable != nil {
+		fmt.Fprintf(&sb, "disable=%t\\n", *f.Disable)
+	}
+
+	if f.Componentid != nil {
+		fmt.Fprintf(&sb, "component_id=%d\\n", *f.Componentid)
+	}
+
+	if len(f.Hotlists) != 0 {
+		fmt.Fprintf(&sb, "hotlists=%s\\n", strings.Join(f.Hotlists, ","))
+	}
+
+	return sb.String()
+}
+
 type FuzzProperties struct {
 	// Optional list of seed files to be installed to the fuzz target's output
 	// directory.
 	Corpus []string `android:"path"`
 	// Optional dictionary to be installed to the fuzz target's output directory.
 	Dictionary *string `android:"path"`
+	// Config for running the target on fuzzing infrastructure.
+	Fuzz_config *FuzzConfig
 }
 
 func init() {
@@ -57,6 +94,7 @@ type fuzzBinary struct {
 	dictionary            android.Path
 	corpus                android.Paths
 	corpusIntermediateDir android.Path
+	config                android.Path
 }
 
 func (fuzz *fuzzBinary) linkerProps() []interface{} {
@@ -121,6 +159,19 @@ func (fuzz *fuzzBinary) install(ctx ModuleContext, file android.Path) {
 				"Fuzzer dictionary %q does not have '.dict' extension",
 				fuzz.dictionary.String())
 		}
+	}
+
+	if fuzz.Properties.Fuzz_config != nil {
+		configPath := android.PathForModuleOut(ctx, "config").Join(ctx, "config.txt")
+		ctx.Build(pctx, android.BuildParams{
+			Rule:        android.WriteFile,
+			Description: "fuzzer infrastructure configuration",
+			Output:      configPath,
+			Args: map[string]string{
+				"content": fuzz.Properties.Fuzz_config.String(),
+			},
+		})
+		fuzz.config = configPath
 	}
 }
 
@@ -233,6 +284,12 @@ func (s *fuzzPackager) GenerateBuildActions(ctx android.SingletonContext) {
 		if fuzzModule.dictionary != nil {
 			archDirs[archDir] = append(archDirs[archDir],
 				fileToZip{fuzzModule.dictionary, ccModule.Name()})
+		}
+
+		// Additional fuzz config.
+		if fuzzModule.config != nil {
+			archDirs[archDir] = append(archDirs[archDir],
+				fileToZip{fuzzModule.config, ccModule.Name()})
 		}
 	})
 
