@@ -376,6 +376,7 @@ var (
 	runtimeDepTag         = dependencyTag{name: "runtime lib"}
 	coverageDepTag        = dependencyTag{name: "coverage"}
 	testPerSrcDepTag      = dependencyTag{name: "test_per_src"}
+	latestVersionDepTag   = dependencyTag{name: "latest_stub"}
 )
 
 func IsSharedDepTag(depTag blueprint.DependencyTag) bool {
@@ -407,6 +408,10 @@ func CrtBeginDepTag() dependencyTag {
 
 func CrtEndDepTag() dependencyTag {
 	return crtEndDepTag
+}
+
+func LatestVersionDepTag() dependencyTag {
+	return latestVersionDepTag
 }
 
 // Module contains the properties and members used by all C/C++ module types, and implements
@@ -692,6 +697,27 @@ func (c *Module) nativeCoverage() bool {
 		return false
 	}
 	return c.linker != nil && c.linker.nativeCoverage()
+}
+
+func (c *Module) ExportedIncludeDirs() android.Paths {
+	if flagsProducer, ok := c.linker.(exportedFlagsProducer); ok {
+		return flagsProducer.exportedDirs()
+	}
+	return []android.Path{}
+}
+
+func (c *Module) ExportedSystemIncludeDirs() android.Paths {
+	if flagsProducer, ok := c.linker.(exportedFlagsProducer); ok {
+		return flagsProducer.exportedSystemDirs()
+	}
+	return []android.Path{}
+}
+
+func (c *Module) ExportedFlags() []string {
+	if flagsProducer, ok := c.linker.(exportedFlagsProducer); ok {
+		return flagsProducer.exportedFlags()
+	}
+	return []string{}
 }
 
 func isBionic(name string) bool {
@@ -2148,7 +2174,9 @@ func (c *Module) IsInstallableToApex() bool {
 	if shared, ok := c.linker.(interface {
 		shared() bool
 	}); ok {
-		return shared.shared()
+		// Stub libs and prebuilt libs in a versioned SDK are not
+		// installable to APEX even though they are shared libs.
+		return shared.shared() && !c.IsStubs() && c.ContainingSdk().Unversioned()
 	} else if _, ok := c.linker.(testPerSrc); ok {
 		return true
 	}

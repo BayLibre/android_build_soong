@@ -158,6 +158,10 @@ type FlagExporterProperties struct {
 	// listed in local_include_dirs.
 	Export_include_dirs []string `android:"arch_variant"`
 
+	// list of directories that will be added to the system include path
+	// using -isystem for this module and any module that links against this module.
+	Export_system_include_dirs []string `android:"arch_variant"`
+
 	Target struct {
 		Vendor struct {
 			// list of exported include directories, like
@@ -245,10 +249,13 @@ func (f *flagExporter) exportedIncludes(ctx ModuleContext) android.Paths {
 
 func (f *flagExporter) exportIncludes(ctx ModuleContext) {
 	f.dirs = append(f.dirs, f.exportedIncludes(ctx)...)
+	f.systemDirs = append(f.systemDirs, android.PathsForModuleSrc(ctx, f.Properties.Export_system_include_dirs)...)
 }
 
 func (f *flagExporter) exportIncludesAsSystem(ctx ModuleContext) {
+	// all dirs are force exported as system
 	f.systemDirs = append(f.systemDirs, f.exportedIncludes(ctx)...)
+	f.systemDirs = append(f.systemDirs, android.PathsForModuleSrc(ctx, f.Properties.Export_system_include_dirs)...)
 }
 
 func (f *flagExporter) reexportDirs(dirs ...android.Path) {
@@ -1285,9 +1292,13 @@ func latestStubsVersionFor(config android.Config, name string) string {
 	return ""
 }
 
+const PlatformVersion = ""
+
 // Version mutator splits a module into the mandatory non-stubs variant
 // (which is unnamed) and zero or more stubs variants.
 func VersionMutator(mctx android.BottomUpMutatorContext) {
+	v := PlatformVersion
+	mctx.SetDefaultDependencyVariation(&v)
 	if m, ok := mctx.Module().(*Module); ok && !m.inRecovery() && m.linker != nil {
 		if library, ok := m.linker.(*libraryDecorator); ok && library.buildShared() &&
 			len(library.Properties.Stubs.Versions) > 0 {
@@ -1311,13 +1322,15 @@ func VersionMutator(mctx android.BottomUpMutatorContext) {
 			defer stubsVersionsLock.Unlock()
 			stubsVersionsFor(mctx.Config())[mctx.ModuleName()] = copiedVersions
 
-			// "" is for the non-stubs variant
-			versions = append([]string{""}, versions...)
+			// platformVer is added the last in order to have a dependency from it to
+			// the latest version. Note: we don't allow inter-variant dependency from
+			// a later variation to an earlier variation.
+			versions = append(versions, PlatformVersion)
 
 			modules := mctx.CreateVariations(versions...)
 			for i, m := range modules {
 				l := m.(*Module).linker.(*libraryDecorator)
-				if versions[i] != "" {
+				if versions[i] != PlatformVersion {
 					l.MutatedProperties.BuildStubs = true
 					l.MutatedProperties.StubsVersion = versions[i]
 					m.(*Module).Properties.HideFromMake = true
@@ -1326,14 +1339,18 @@ func VersionMutator(mctx android.BottomUpMutatorContext) {
 					m.(*Module).Properties.PreventInstall = true
 				}
 			}
+			// Add a dependency to the platform variant to the latest stub
+			platformModule := modules[len(modules)-1]
+			latestStub := modules[len(modules)-2]
+			mctx.AddInterVariantDependency(latestVersionDepTag, platformModule, latestStub)
 		} else {
-			mctx.CreateVariations("")
+			mctx.CreateVariations(PlatformVersion)
 		}
 		return
 	}
 	if genrule, ok := mctx.Module().(*genrule.Module); ok {
 		if props, ok := genrule.Extra.(*GenruleExtraProperties); ok && !props.InRecovery {
-			mctx.CreateVariations("")
+			mctx.CreateVariations(PlatformVersion)
 			return
 		}
 	}
