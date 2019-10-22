@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "471d6183_7267ca07",
+        "filename": "cc/util/linkable.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2019-10-22T16:31:16Z",
+      "side": 1,
+      "message": "Gonna leave this as is unless you feel strongly one way or another. I like the idea of this package allowing interop with soong-cc without having to include it as a dependency.",
+      "parentUuid": "a45ffed0_a07141ba",
+      "revId": "7429bc07dadac22ad5b56af0019bc31484159d7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64d74bb9_dfd62ac6",
         "filename": "cc/util/linkable.go",
         "patchSetId": 3
@@ -57,6 +75,30 @@
       "revId": "7429bc07dadac22ad5b56af0019bc31484159d7e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb885c77_c3d12519",
+        "filename": "cc/util/linkable.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2019-10-22T16:31:16Z",
+      "side": 1,
+      "message": "Sounds good, done!",
+      "parentUuid": "64d74bb9_dfd62ac6",
+      "range": {
+        "startLine": 1,
+        "startChar": 8,
+        "endLine": 1,
+        "endChar": 12
+      },
+      "revId": "7429bc07dadac22ad5b56af0019bc31484159d7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
