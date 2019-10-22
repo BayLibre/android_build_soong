@@ -70,6 +70,24 @@
       "revId": "644ca30a85d2c54a45efc1d1c9e0085afe8b98fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b1adf94_1642e4d6",
+        "filename": "ui/build/paths/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1368904
+      },
+      "writtenOn": "2019-10-22T23:10:47Z",
+      "side": 1,
+      "message": "Yeah, we can truncate instead - I can modify the changes for f2fs on cuttlefish to use truncate instead, if that\u0027s a better/more convenient idea than using fallocate (?)",
+      "parentUuid": "37eb480d_4b42db6b",
+      "revId": "644ca30a85d2c54a45efc1d1c9e0085afe8b98fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
