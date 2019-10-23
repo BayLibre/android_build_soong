@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "dfa293c7_a490d2a8",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1559553
+      },
+      "writtenOn": "2019-10-23T19:54:57Z",
+      "side": 1,
+      "message": "I\u0027ve moved them to a new struct called FuzzOptions.\n\nWe want the keep things in the build file (instead of a config file) for two reasons:\n* this brings us to parity with other fuzzing infrastructure at Google which use build files for this data\n* to ensure the options are correct at submission, instead of failing at runtime (if an author checked in an invalid config file)",
+      "parentUuid": "1fb70746_88806218",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 17
+      },
+      "revId": "ea2b57288e56c3aea23e66e8f485b916d3812ea7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "530fdac4_f54a2f87",
         "filename": "cc/fuzz.go",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "f621e5b2_16fdf378",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1559553
+      },
+      "writtenOn": "2019-10-23T19:54:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "530fdac4_f54a2f87",
+      "revId": "ea2b57288e56c3aea23e66e8f485b916d3812ea7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d58af6e2_b3b9471d",
         "filename": "cc/fuzz.go",
         "patchSetId": 1
@@ -56,6 +98,24 @@
       "revId": "ea2b57288e56c3aea23e66e8f485b916d3812ea7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "814923b4_9dad8176",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1559553
+      },
+      "writtenOn": "2019-10-23T19:54:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d58af6e2_b3b9471d",
+      "revId": "ea2b57288e56c3aea23e66e8f485b916d3812ea7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
