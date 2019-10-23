@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f97e585c_ff4d64ec",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2094,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-23T17:08:22Z",
+      "side": 1,
+      "message": "I don\u0027t understand the purpose of all of this indirection.  You\u0027re running one function from one caller, why not call it directly?",
+      "revId": "8d5859fd13089f1270c13add0d2eb31594bbbf1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
