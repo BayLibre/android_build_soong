@@ -22,6 +22,30 @@
       "revId": "12b058c790ac4efdfb7a727cf36c5ecb36119072",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2ff8bc3_8bb2ae5b",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1996,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2019-10-23T00:49:57Z",
+      "side": 1,
+      "message": "It won\u0027t impact the performance, because we have collected .so lib files from cc modules already. The module_bp_java_deps.json reduce its size from 11.7 MB to 10.8 MB because we get rid of collecting .so lib files for cc modules. The build is almost the same.",
+      "parentUuid": "a1422438_53d213a4",
+      "range": {
+        "startLine": 1996,
+        "startChar": 1,
+        "endLine": 1996,
+        "endChar": 7
+      },
+      "revId": "12b058c790ac4efdfb7a727cf36c5ecb36119072",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
