@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b5a608a0_8ac3db8d",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-23T08:29:00Z",
+      "side": 1,
+      "message": "This looks overly complicated. Instead of splitting up the content, you could write them to rspFile and copy it to your output.",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 400,
+        "endChar": 1
+      },
+      "revId": "e947d4abfcd426156b82fb6eec9b43751f87b04e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d18215c_9a069381",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-23T08:29:00Z",
+      "side": 1,
+      "message": "Why is this not guarded by VndkSnapshotBuildArtifacts any more?",
+      "revId": "e947d4abfcd426156b82fb6eec9b43751f87b04e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f05938c2_d70ef34a",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-23T08:29:00Z",
+      "side": 1,
+      "message": "why do you create custom format and a new file instead of putting these to the json file?",
+      "range": {
+        "startLine": 675,
+        "startChar": 0,
+        "endLine": 677,
+        "endChar": 40
+      },
+      "revId": "e947d4abfcd426156b82fb6eec9b43751f87b04e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd69e63e_78987656",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-23T08:29:00Z",
+      "side": 1,
+      "message": "ctx.Config().DeviceName()?",
+      "range": {
+        "startLine": 687,
+        "startChar": 71,
+        "endLine": 687,
+        "endChar": 108
+      },
+      "revId": "e947d4abfcd426156b82fb6eec9b43751f87b04e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1043894e_a3c9b1e4",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-23T08:29:00Z",
+      "side": 1,
+      "message": "when is this file used? Only for soong_zip?",
+      "range": {
+        "startLine": 687,
+        "startChar": 1,
+        "endLine": 687,
+        "endChar": 11
+      },
+      "revId": "e947d4abfcd426156b82fb6eec9b43751f87b04e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
