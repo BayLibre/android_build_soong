@@ -612,6 +612,12 @@ type apexBundle struct {
 
 	// intermediate path for apex_manifest.json
 	manifestOut android.WritablePath
+
+	// list of commands to create symlinks for backward compatibility
+	// these commands will be attached as LOCAL_POST_INSTALL_CMD to
+	// apex package itself(for unflattened build) or apex_manifest.json(for flattened build)
+	// so that compat symlinks are always installed regardless of TARGET_FLATTEN_APEX setting.
+	compatSymlinks []string
 }
 
 func addDependenciesForNativeModules(ctx android.BottomUpMutatorContext,
@@ -1294,6 +1300,8 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		a.buildUnflattenedApex(ctx, imageApex)
 		a.buildFlattenedApex(ctx)
 	}
+
+	a.compatSymlinks = runCompatSymlinkHooks(apexName, ctx)
 }
 
 func (a *apexBundle) buildNoticeFile(ctx android.ModuleContext, apexFileName string) android.OptionalPath {
@@ -1711,6 +1719,10 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, apexName, moduleDir string, 
 			fmt.Fprintln(w, "include $(BUILD_SYSTEM)/soong_cc_prebuilt.mk")
 		} else {
 			fmt.Fprintln(w, "LOCAL_MODULE_STEM :=", fi.builtFile.Base())
+			// For flattened apexes, compat symlinks are attached to apex_manifest.json which is guaranteed for every apex
+			if fi.builtFile.Base() == "apex_manifest.json" && len(a.compatSymlinks) > 0 {
+				fmt.Fprintln(w, "LOCAL_POST_INSTALL_CMD :=", strings.Join(a.compatSymlinks, " && "))
+			}
 			fmt.Fprintln(w, "include $(BUILD_PREBUILT)")
 		}
 	}
@@ -1761,9 +1773,15 @@ func (a *apexBundle) androidMkForType(apexType apexPackaging) android.AndroidMkD
 				if len(a.externalDeps) > 0 {
 					fmt.Fprintln(w, "LOCAL_REQUIRED_MODULES +=", strings.Join(a.externalDeps, " "))
 				}
+				var postInstallCommands []string
 				if a.prebuiltFileToDelete != "" {
-					fmt.Fprintln(w, "LOCAL_POST_INSTALL_CMD :=", "rm -rf "+
+					postInstallCommands = append(postInstallCommands, "rm -rf "+
 						filepath.Join(a.installDir.ToMakePath().String(), a.prebuiltFileToDelete))
+				}
+				// For unflattened apexes, compat symlinks are attached to apex package itself as LOCAL_POST_INSTALL_CMD
+				postInstallCommands = append(postInstallCommands, a.compatSymlinks...)
+				if len(postInstallCommands) > 0 {
+					fmt.Fprintln(w, "LOCAL_POST_INSTALL_CMD :=", strings.Join(postInstallCommands, " && "))
 				}
 				fmt.Fprintln(w, "include $(BUILD_PREBUILT)")
 
@@ -1995,6 +2013,8 @@ func (p *Prebuilt) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	if p.installable() {
 		ctx.InstallFile(p.installDir, p.installFilename, p.inputApex)
 	}
+
+	// TODO(b/143192278): Add compat symlinks for prebuilt_apex
 }
 
 func (p *Prebuilt) Prebuilt() *android.Prebuilt {
@@ -2028,4 +2048,65 @@ func PrebuiltFactory() android.Module {
 	android.InitSingleSourcePrebuiltModule(module, &module.properties, "Source")
 	android.InitAndroidMultiTargetsArchModule(module, android.DeviceSupported, android.MultilibCommon)
 	return module
+}
+
+type CompatSymlinkHook func(apexName string, ctx CompatSymlinkHookContext)
+
+var compatSymlinkHooks []CompatSymlinkHook
+
+func AddCompatSymlinkHook(hook CompatSymlinkHook) {
+	compatSymlinkHooks = append(compatSymlinkHooks, hook)
+}
+
+type CompatSymlinkHookContext interface {
+	android.ModuleContext
+
+	// AddSymlink adds a symlink $(PRODUCT_OUT)/dir/linkName -> target
+	// equivalent to "ln -sf targetName $(PRODUCT_OUT)/dir/linkName"
+	AddSymlink(target, dir, linkName string)
+}
+
+type compatSymlinkHookContext struct {
+	android.ModuleContext
+	symlinks []string
+}
+
+func runCompatSymlinkHooks(apexName string, ctx android.ModuleContext) []string {
+	hookCtx := &compatSymlinkHookContext{ctx, nil}
+	for _, hook := range compatSymlinkHooks {
+		hook(apexName, hookCtx)
+	}
+	return hookCtx.symlinks
+}
+
+func (ctx *compatSymlinkHookContext) AddSymlink(target, dir, linkName string) {
+	outDir := filepath.Join("$(PRODUCT_OUT)", dir)
+	link := filepath.Join(outDir, linkName)
+	cmds := []string{
+		"mkdir -p " + outDir,
+		"rm -rf " + link,
+		"ln -sf " + target + " " + link,
+	}
+	ctx.symlinks = append(ctx.symlinks, strings.Join(cmds, " && "))
+}
+
+func init() {
+	AddCompatSymlinkHook(func(apexName string, ctx CompatSymlinkHookContext) {
+		// TODO(b/142911355): [VNDK APEX] Fix hard-coded references to /system/lib/vndk
+		// When all hard-coded references are fixed, remove symbolic links
+		// Note that  we should keep following symlinks for older VNDKs (<=29)
+		// Since prebuilt vndk libs still depend on system/lib/vndk path
+		if !strings.HasPrefix(apexName, "com.android.vndk.v") {
+			return
+		}
+		vndkVersion := strings.TrimPrefix(apexName, "com.android.vndk.v")
+		if ctx.Config().Android64() {
+			ctx.AddSymlink("/apex/"+apexName+"/lib64", "/system/lib64", "vndk-sp-"+vndkVersion)
+			ctx.AddSymlink("/apex/"+apexName+"/lib64", "/system/lib64", "vndk-"+vndkVersion)
+		}
+		if !ctx.Config().Android64() || ctx.DeviceConfig().DeviceSecondaryArch() != "" {
+			ctx.AddSymlink("/apex/"+apexName+"/lib", "/system/lib", "vndk-sp-"+vndkVersion)
+			ctx.AddSymlink("/apex/"+apexName+"/lib", "/system/lib", "vndk-"+vndkVersion)
+		}
+	})
 }
