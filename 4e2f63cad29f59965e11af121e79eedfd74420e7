@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e4849559_f3065ff8",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-10-23T16:22:24Z",
+      "side": 1,
+      "message": "Yes! Thanks for spotting.",
+      "parentUuid": "4479ec37_aef0f336",
+      "range": {
+        "startLine": 132,
+        "startChar": 24,
+        "endLine": 132,
+        "endChar": 28
+      },
+      "revId": "4e2f63cad29f59965e11af121e79eedfd74420e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e904f3e1_cf62187f",
         "filename": "java/dexpreopt_config.go",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "4e2f63cad29f59965e11af121e79eedfd74420e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c390190_f93bcd9c",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-10-23T16:22:24Z",
+      "side": 1,
+      "message": "Hmm, it gets merged with other zips into out/target/product/$PRODUCT/boot.zip, and the apex zip created after my change is unused.\n\nI guess I better return the old behaviour and generate zip only in case of default config.",
+      "parentUuid": "e904f3e1_cf62187f",
+      "range": {
+        "startLine": 146,
+        "startChar": 3,
+        "endLine": 146,
+        "endChar": 6
+      },
+      "revId": "4e2f63cad29f59965e11af121e79eedfd74420e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
