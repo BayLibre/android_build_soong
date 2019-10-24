@@ -16,6 +16,24 @@
       "revId": "fc1cc914a32258e21e218da195ad465e8cfd6f96",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cf04c8a_5071e25e",
+        "filename": "scripts/archive_repack.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2019-10-24T23:29:19Z",
+      "side": 1,
+      "message": "Sorry, I meant to suggest: \"${LLVM_AR}\" --format\u003dgnu qc \"${outfile}\" \"$@\"",
+      "parentUuid": "4f7c43b7_9061ca5e",
+      "revId": "fc1cc914a32258e21e218da195ad465e8cfd6f96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
