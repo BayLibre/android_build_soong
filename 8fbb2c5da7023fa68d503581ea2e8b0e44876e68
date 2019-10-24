@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a5ee32b_7c27e6ce",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-24T22:12:57Z",
+      "side": 1,
+      "message": "You shouldn\u0027t be modifying global state in a test.  I\u0027d suggest having the code read mock data if it is present and fall back to the config data if not.  See https://android.git.corp.google.com/platform/build/soong/+/1f09b0a09e304cb15e3c54196f76a385c3d9e36e/java/dexpreopt_config.go#61 for an example.\n\nOr copy the global config into the config object when creating it in NewConfig and TestConfig, and add a pointer in TestConfig to modify it.",
+      "revId": "8fbb2c5da7023fa68d503581ea2e8b0e44876e68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1004a86f_c80dd271",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 679,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-24T22:12:57Z",
+      "side": 1,
+      "message": "This is pretty tricky, and only used for a single case, how about adding a filterOutLibClang helper here instead?",
+      "range": {
+        "startLine": 679,
+        "startChar": 35,
+        "endLine": 679,
+        "endChar": 77
+      },
+      "revId": "8fbb2c5da7023fa68d503581ea2e8b0e44876e68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
