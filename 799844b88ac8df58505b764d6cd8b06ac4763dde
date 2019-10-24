@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5949e70e_43d46fa0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-10-24T22:52:57Z",
+      "side": 1,
+      "message": "Owners",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 7
+      },
+      "revId": "799844b88ac8df58505b764d6cd8b06ac4763dde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "999226cd_9db554c4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-10-24T22:52:57Z",
+      "side": 1,
+      "message": "When you say \u0027Haiku\u0027 in this context - is this Haiku\u0027s device cluster, or ClusterFuzz, or both?",
+      "range": {
+        "startLine": 11,
+        "startChar": 11,
+        "endLine": 11,
+        "endChar": 44
+      },
+      "revId": "799844b88ac8df58505b764d6cd8b06ac4763dde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f48d4f2_99bff6d7",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-10-24T22:52:57Z",
+      "side": 1,
+      "message": "Is this email address or LDAP? (assumedly the former, as we need to support non-Googlers, but be careful when Haiku pipeline assigning bugs in Buganizer to external users for severe bugs...)",
+      "range": {
+        "startLine": 29,
+        "startChar": 4,
+        "endLine": 29,
+        "endChar": 46
+      },
+      "revId": "799844b88ac8df58505b764d6cd8b06ac4763dde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edc8c31d_512f09c1",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-10-24T22:52:57Z",
+      "side": 1,
+      "message": "\u0027disable the fuzzer\u0027 reads to me as if it\u0027s being disabled in the build system, not from being run in the continuous fuzzing infrastructure",
+      "range": {
+        "startLine": 31,
+        "startChar": 41,
+        "endLine": 31,
+        "endChar": 59
+      },
+      "revId": "799844b88ac8df58505b764d6cd8b06ac4763dde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d94c9d5_77f9580d",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-10-24T22:52:57Z",
+      "side": 1,
+      "message": "Description of this field might need to be expanded here, it doesn\u0027t make sense to people outside of Google.",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 10
+      },
+      "revId": "799844b88ac8df58505b764d6cd8b06ac4763dde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e3ddc31_9cae3d06",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-10-24T22:52:57Z",
+      "side": 1,
+      "message": "Same as above",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 9
+      },
+      "revId": "799844b88ac8df58505b764d6cd8b06ac4763dde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "147510dd_df857495",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-10-24T22:52:57Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 35
+      },
+      "revId": "799844b88ac8df58505b764d6cd8b06ac4763dde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
