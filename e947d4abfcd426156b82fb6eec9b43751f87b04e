@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "786ca25c_6fecf3bf",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-10-24T05:11:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5a608a0_8ac3db8d",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 400,
+        "endChar": 1
+      },
+      "revId": "e947d4abfcd426156b82fb6eec9b43751f87b04e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d18215c_9a069381",
         "filename": "cc/vndk.go",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "d4f7d558_7d22991d",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-10-24T05:11:41Z",
+      "side": 1,
+      "message": "Was a mistake. guarded",
+      "parentUuid": "8d18215c_9a069381",
+      "revId": "e947d4abfcd426156b82fb6eec9b43751f87b04e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f05938c2_d70ef34a",
         "filename": "cc/vndk.go",
         "patchSetId": 1
@@ -53,6 +95,30 @@
       "writtenOn": "2019-10-23T08:29:00Z",
       "side": 1,
       "message": "why do you create custom format and a new file instead of putting these to the json file?",
+      "range": {
+        "startLine": 675,
+        "startChar": 0,
+        "endLine": 677,
+        "endChar": 40
+      },
+      "revId": "e947d4abfcd426156b82fb6eec9b43751f87b04e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfe746b3_737c316b",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-10-24T05:11:41Z",
+      "side": 1,
+      "message": "Because that json is arch-dependent, whereas module names are not. And this makes python script clearer.",
+      "parentUuid": "f05938c2_d70ef34a",
       "range": {
         "startLine": 675,
         "startChar": 0,
@@ -108,6 +174,54 @@
       "revId": "e947d4abfcd426156b82fb6eec9b43751f87b04e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4f4119a_42ebd10b",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-10-24T05:11:41Z",
+      "side": 1,
+      "message": "DeviceName() returns TARGET_DEVICE, not TARGET_PRODUCT.",
+      "parentUuid": "dd69e63e_78987656",
+      "range": {
+        "startLine": 687,
+        "startChar": 71,
+        "endLine": 687,
+        "endChar": 108
+      },
+      "revId": "e947d4abfcd426156b82fb6eec9b43751f87b04e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5dffdac0_7809aab1",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-10-24T05:11:41Z",
+      "side": 1,
+      "message": "Yes, to avoid E2BIG",
+      "parentUuid": "1043894e_a3c9b1e4",
+      "range": {
+        "startLine": 687,
+        "startChar": 1,
+        "endLine": 687,
+        "endChar": 11
+      },
+      "revId": "e947d4abfcd426156b82fb6eec9b43751f87b04e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
