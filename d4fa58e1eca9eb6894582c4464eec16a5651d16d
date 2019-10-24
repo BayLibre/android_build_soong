@@ -25,6 +25,98 @@
     },
     {
       "key": {
+        "uuid": "b58bf848_d23ff45b",
+        "filename": "cc/vndk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-24T15:05:13Z",
+      "side": 1,
+      "message": "What\u0027s added to the list is BaseModuleName(), which differs from ModuleName() for prebuilts.",
+      "range": {
+        "startLine": 379,
+        "startChar": 1,
+        "endLine": 379,
+        "endChar": 26
+      },
+      "revId": "d4fa58e1eca9eb6894582c4464eec16a5651d16d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7a5efa5_2f0e1c40",
+        "filename": "cc/vndk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-24T15:05:13Z",
+      "side": 1,
+      "message": "Why not using Module\u0027s accessor such as isVnkdSp()? It would be simpler.",
+      "range": {
+        "startLine": 380,
+        "startChar": 18,
+        "endLine": 380,
+        "endChar": 35
+      },
+      "revId": "d4fa58e1eca9eb6894582c4464eec16a5651d16d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bc5edd2_4c75041f",
+        "filename": "cc/vndk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-24T15:05:13Z",
+      "side": 1,
+      "message": "add all? x \u003d append(x, y...)",
+      "range": {
+        "startLine": 590,
+        "startChar": 2,
+        "endLine": 592,
+        "endChar": 3
+      },
+      "revId": "d4fa58e1eca9eb6894582c4464eec16a5651d16d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b4ac40a_3fdbc22d",
+        "filename": "cc/vndk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-24T15:05:13Z",
+      "side": 1,
+      "message": "I uploaded the change in which soong generates these files, let\u0027s reuse the same files.\nBy the way, according to build/make/target/product/gsi/Android.mk, libclang_rt.* are removed from the list.",
+      "range": {
+        "startLine": 642,
+        "startChar": 0,
+        "endLine": 655,
+        "endChar": 0
+      },
+      "revId": "d4fa58e1eca9eb6894582c4464eec16a5651d16d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "abd05514_9e95c35c",
         "filename": "cc/vndk.go",
         "patchSetId": 3
