@@ -46,6 +46,30 @@
       "revId": "12b058c790ac4efdfb7a727cf36c5ecb36119072",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bede9bd6_7aeccc38",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1996,
+      "author": {
+        "id": 1329611
+      },
+      "writtenOn": "2019-10-24T09:01:08Z",
+      "side": 1,
+      "message": "I think you can add this result in the commit message.",
+      "parentUuid": "e2ff8bc3_8bb2ae5b",
+      "range": {
+        "startLine": 1996,
+        "startChar": 1,
+        "endLine": 1996,
+        "endChar": 7
+      },
+      "revId": "12b058c790ac4efdfb7a727cf36c5ecb36119072",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
