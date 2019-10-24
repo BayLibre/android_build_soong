@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a39f587_c10f08cc",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-24T17:39:24Z",
+      "side": 1,
+      "message": "If this is the case, then you may want prevent other APEXes from turning this on, or remove the property and let it automatically turned on by recognizing the APEX name inside this file.",
+      "range": {
+        "startLine": 412,
+        "startChar": 61,
+        "endLine": 412,
+        "endChar": 83
+      },
+      "revId": "9b1654058b28cba5635312b5b370d8bd47724b45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "385c2d21_905d7849",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-24T17:39:24Z",
+      "side": 1,
+      "message": "camelCase please",
+      "range": {
+        "startLine": 829,
+        "startChar": 21,
+        "endLine": 829,
+        "endChar": 38
+      },
+      "revId": "9b1654058b28cba5635312b5b370d8bd47724b45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd1e30cd_f6bae7e8",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-24T17:39:24Z",
+      "side": 1,
+      "message": "proptools.Bool(a.properties.Dexpreopt_libcore) is enough. Bool(nil) returns false.",
+      "range": {
+        "startLine": 830,
+        "startChar": 8,
+        "endLine": 830,
+        "endChar": 95
+      },
+      "revId": "9b1654058b28cba5635312b5b370d8bd47724b45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
