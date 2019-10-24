@@ -1325,7 +1325,8 @@ func VersionMutator(mctx android.BottomUpMutatorContext) {
 			// platformVer is added the last in order to have a dependency from it to
 			// the latest version. Note: we don't allow inter-variant dependency from
 			// a later variation to an earlier variation.
-			versions = append(versions, PlatformVersion)
+			//			versions = append(versions, PlatformVersion)
+			versions = append([]string{PlatformVersion}, versions...)
 
 			modules := mctx.CreateVariations(versions...)
 			for i, m := range modules {
@@ -1340,9 +1341,9 @@ func VersionMutator(mctx android.BottomUpMutatorContext) {
 				}
 			}
 			// Add a dependency to the platform variant to the latest stub
-			platformModule := modules[len(modules)-1]
-			latestStub := modules[len(modules)-2]
-			mctx.AddInterVariantDependency(latestVersionDepTag, platformModule, latestStub)
+			//			platformModule := modules[len(modules)-1]
+			//			latestStub := modules[len(modules)-2]
+			//			mctx.AddInterVariantDependency(latestVersionDepTag, platformModule, latestStub)
 		} else {
 			mctx.CreateVariations(PlatformVersion)
 		}
