@@ -34,6 +34,24 @@
       "revId": "fc1cc914a32258e21e218da195ad465e8cfd6f96",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06149767_09d5054a",
+        "filename": "scripts/archive_repack.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2019-10-24T23:32:07Z",
+      "side": 1,
+      "message": "Good point, I didn\u0027t realise that ar accepts multiple files in one go.\n\nYou\u0027re correct that \u0027s\u0027 is on by default:\nhttps://github.com/llvm/llvm-project/blob/master/llvm/tools/llvm-ar/llvm-ar.cpp#L199",
+      "parentUuid": "4f7c43b7_9061ca5e",
+      "revId": "fc1cc914a32258e21e218da195ad465e8cfd6f96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
