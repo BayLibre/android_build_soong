@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "955292d0_be6d630f",
+        "filename": "cc/vndk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-24T13:59:05Z",
+      "side": 1,
+      "message": "Why did you factor these out from GenerateBuildActions? It made it extremely difficult for me to highlight the new changes. :( It should been nicer if such change was done in a separate CL",
+      "range": {
+        "startLine": 353,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 143
+      },
+      "revId": "d4fa58e1eca9eb6894582c4464eec16a5651d16d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abd05514_9e95c35c",
+        "filename": "cc/vndk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-24T13:59:05Z",
+      "side": 1,
+      "message": "Why can\u0027t we use FlagWithRspFileInputList(\"-l \", snapshotOutputs)? If soong_zip expects that the paths in it are newline separated, can we fix it to also accept space separated paths? This might be a follow-up CL though.",
+      "range": {
+        "startLine": 704,
+        "startChar": 0,
+        "endLine": 704,
+        "endChar": 42
+      },
+      "revId": "d4fa58e1eca9eb6894582c4464eec16a5651d16d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

@@ -222,6 +222,30 @@
       "revId": "e947d4abfcd426156b82fb6eec9b43751f87b04e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6588d7bb_f282f211",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-24T13:59:05Z",
+      "side": 1,
+      "message": "Ok,  but then why should this be for TARGET_PRODUCT, not for TARGET_DEVICE? I wonder why you even encode product or device name here.",
+      "parentUuid": "c4f4119a_42ebd10b",
+      "range": {
+        "startLine": 687,
+        "startChar": 71,
+        "endLine": 687,
+        "endChar": 108
+      },
+      "revId": "e947d4abfcd426156b82fb6eec9b43751f87b04e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
