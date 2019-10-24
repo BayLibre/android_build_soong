@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "284e0f86_0d2e0f5c",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2019-10-24T21:51:54Z",
+      "side": 1,
+      "message": "Can this be a list?\nSame comment for hotlist.",
+      "range": {
+        "startLine": 41,
+        "startChar": 4,
+        "endLine": 41,
+        "endChar": 11
+      },
+      "revId": "c2bc65c3768872158d196a2fab7653cefab440b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
