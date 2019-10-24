@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f7c43b7_9061ca5e",
+        "filename": "scripts/archive_repack.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2019-10-24T23:25:22Z",
+      "side": 1,
+      "message": "I wondered if we needed an \"s\" option to create a symbol map, but it looks like that\u0027s implied by --format\u003dgnu. Even GNU \"ar\" seems to add a symbol map unless I use \"S\" to turn it off.\n\nI think we could add all the files in one go:\n\n\"${LLVM_AR}\" --format\u003dgnu rcs \"${outfile}\" \"$@\"\n\nIt looks like llvm-ar and GNU ar are happy with a \"[llvm-]ar rcs $output\" command creating an empty archive.",
+      "revId": "fc1cc914a32258e21e218da195ad465e8cfd6f96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
