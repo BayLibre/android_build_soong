@@ -70,6 +70,29 @@
       "revId": "12b058c790ac4efdfb7a727cf36c5ecb36119072",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7012b20_252a6694",
+        "filename": "java/jdeps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1348646
+      },
+      "writtenOn": "2019-10-24T10:39:49Z",
+      "side": 1,
+      "message": "The line code #78 ~ #81 shows to filter the MK case, so I\u0027ll suggest to move the line #92 to behind the line #75 to make the code with better readability.",
+      "range": {
+        "startLine": 92,
+        "startChar": 2,
+        "endLine": 92,
+        "endChar": 59
+      },
+      "revId": "12b058c790ac4efdfb7a727cf36c5ecb36119072",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
