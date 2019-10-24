@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d327d39e_9e8541bf",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1854,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-24T21:36:32Z",
+      "side": 1,
+      "message": "Should this be a Paths too?",
+      "revId": "062c75bd42f0479485695662b41a25aaad3abe52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f229f6ba_14d0a193",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 957,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-24T21:36:32Z",
+      "side": 1,
+      "message": "why is this necessary?",
+      "range": {
+        "startLine": 957,
+        "startChar": 47,
+        "endLine": 957,
+        "endChar": 72
+      },
+      "revId": "062c75bd42f0479485695662b41a25aaad3abe52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03db10c1_d6340bc0",
+        "filename": "cc/llndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-24T21:36:32Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 149,
+        "startChar": 42,
+        "endLine": 149,
+        "endChar": 67
+      },
+      "revId": "062c75bd42f0479485695662b41a25aaad3abe52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6901c8fd_b2388e2e",
+        "filename": "cc/llndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-24T21:36:32Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 151,
+        "startChar": 36,
+        "endLine": 151,
+        "endChar": 61
+      },
+      "revId": "062c75bd42f0479485695662b41a25aaad3abe52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
