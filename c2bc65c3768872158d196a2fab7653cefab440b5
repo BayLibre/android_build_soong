@@ -22,6 +22,30 @@
       "revId": "c2bc65c3768872158d196a2fab7653cefab440b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d8d988e_16bff295",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1559553
+      },
+      "writtenOn": "2019-10-24T22:37:03Z",
+      "side": 1,
+      "message": "Yes. I\u0027ve updated them to be lists.\n\nBecause of limitations deep in the blueprint parsing code, we can only use lists of strings, not of int64s. This means the hotlists will have to appear in quotes in the files.\n\nhotlists: [\"1234\", \"5678\"],",
+      "parentUuid": "284e0f86_0d2e0f5c",
+      "range": {
+        "startLine": 41,
+        "startChar": 4,
+        "endLine": 41,
+        "endChar": 11
+      },
+      "revId": "c2bc65c3768872158d196a2fab7653cefab440b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
