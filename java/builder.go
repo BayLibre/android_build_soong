@@ -167,7 +167,12 @@ var (
 	zipalign = pctx.AndroidStaticRule("zipalign",
 		blueprint.RuleParams{
 			Command: "if ! ${config.ZipAlign} -c -p 4 $in > /dev/null; then " +
+                                "unzip -qz $in 2>/dev/null > $in.zipcomment; " +
 				"${config.ZipAlign} -f -p 4 $in $out; " +
+                                "if [ -s $in.zipcomment ] ; then " +
+                                "zip -qz $out < $in.zipcomment; " +
+                                "fi; " +
+                                "rm -f $in.zipcomment; " +
 				"else " +
 				"cp -f $in $out; " +
 				"fi",
