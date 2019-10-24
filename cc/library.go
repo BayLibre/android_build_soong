@@ -88,6 +88,9 @@ type LibraryProperties struct {
 	// from PRODUCT_PACKAGES.
 	Overrides []string
 
+	// Names of modules to be replaced by this module in dependency tree.
+	ReplaceDeps []string
+
 	// Properties for ABI compatibility checker
 	Header_abi_checker struct {
 		// Enable ABI checks (even if this is not an LLNDK/VNDK lib)
@@ -1189,6 +1192,16 @@ func NewLibrary(hod android.HostOrDeviceSupported) (*Module, *libraryDecorator) 
 	module.installer = library
 
 	return module, library
+}
+
+func replaceDepsMutator(ctx android.BottomUpMutatorContext) {
+	if m, ok := ctx.Module().(*Module); ok {
+		if l, ok := m.compiler.(*libraryDecorator); ok {
+			for _, replaced := range l.Properties.ReplaceDeps {
+				ctx.ReplaceDependencies(replaced)
+			}
+		}
+	}
 }
 
 // connects a shared library to a static library in order to reuse its .o files to avoid

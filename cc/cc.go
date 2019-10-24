@@ -47,6 +47,7 @@ func init() {
 	})
 
 	android.PostDepsMutators(func(ctx android.RegisterMutatorsContext) {
+		ctx.BottomUp("replace_deps", replaceDepsMutator).Parallel()
 		ctx.TopDown("asan_deps", sanitizerDepsMutator(asan))
 		ctx.BottomUp("asan", sanitizerMutator(asan)).Parallel()
 
