@@ -30,6 +30,9 @@ type BinaryCompilerProperties struct {
 
 	// passes -C prefer-dynamic to rustc, which tells it to dynamically link the stdlib (assuming it has no dylib dependencies already)
 	Prefer_dynamic *bool
+
+	// used by multi testcase modules to store the per testcase module SubName
+	Stem *string
 }
 
 type binaryDecorator struct {
@@ -38,31 +41,31 @@ type binaryDecorator struct {
 	Properties           BinaryCompilerProperties
 	distFile             android.OptionalPath
 	unstrippedOutputFile android.Path
+	isTest               bool
 }
 
 var _ compiler = (*binaryDecorator)(nil)
 
 // rust_binary produces a binary that is runnable on a device.
 func RustBinaryFactory() android.Module {
-	module, _ := NewRustBinary(android.HostAndDeviceSupported)
+	module := NewRustBinary(android.HostAndDeviceSupported)
 	return module.Init()
 }
 
 func RustBinaryHostFactory() android.Module {
-	module, _ := NewRustBinary(android.HostSupported)
+	module := NewRustBinary(android.HostSupported)
 	return module.Init()
 }
 
-func NewRustBinary(hod android.HostOrDeviceSupported) (*Module, *binaryDecorator) {
+func NewRustBinary(hod android.HostOrDeviceSupported) *Module {
 	module := newModule(hod, android.MultilibFirst)
 
-	binary := &binaryDecorator{
+	module.compiler = &binaryDecorator{
 		baseCompiler: NewBaseCompiler("bin", ""),
+		isTest:       false,
 	}
 
-	module.compiler = binary
-
-	return module, binary
+	return module
 }
 
 func (binary *binaryDecorator) preferDynamic() bool {
@@ -71,6 +74,11 @@ func (binary *binaryDecorator) preferDynamic() bool {
 
 func (binary *binaryDecorator) compilerFlags(ctx ModuleContext, flags Flags) Flags {
 	flags = binary.baseCompiler.compilerFlags(ctx, flags)
+
+	if binary.isTest {
+		// Compile a Rust test file like a binary with --test.
+		flags.RustFlags = append(flags.RustFlags, "--test")
+	}
 
 	if ctx.toolchain().Bionic() {
 		// no-undefined-version breaks dylib compilation since __rust_*alloc* functions aren't defined, but we can apply this to binaries.

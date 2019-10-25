@@ -72,11 +72,17 @@ func (mod *Module) AndroidMk() android.AndroidMkData {
 
 	mod.subAndroidMk(&ret, mod.compiler)
 
+	ret.SubName += mod.Properties.SubName
+
 	return ret
 }
 
 func (binary *binaryDecorator) AndroidMk(ctx AndroidMkContext, ret *android.AndroidMkData) {
 	ctx.subAndroidMk(ret, binary.baseCompiler)
+
+	if binary.isTest {
+		ret.SubName = "_" + String(binary.Properties.Stem)
+	}
 
 	ret.Class = "EXECUTABLES"
 	ret.DistFile = binary.distFile
