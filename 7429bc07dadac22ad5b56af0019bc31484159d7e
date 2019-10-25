@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "aa3a5c1f_babafb83",
+        "filename": "cc/util/linkable.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-25T17:45:32Z",
+      "side": 1,
+      "message": "I\u0027m not seeing the value in this split.  Can we leave it in cc for now, and consider splitting it out if the rust package needs to lose the rest of its dependencies on the cc package?",
+      "parentUuid": "471d6183_7267ca07",
+      "revId": "7429bc07dadac22ad5b56af0019bc31484159d7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64d74bb9_dfd62ac6",
         "filename": "cc/util/linkable.go",
         "patchSetId": 3
