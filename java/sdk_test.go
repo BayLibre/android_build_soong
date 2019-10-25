@@ -52,7 +52,7 @@ func TestClasspath(t *testing.T) {
 			bootclasspath:  config.DefaultBootclasspathLibraries,
 			system:         config.DefaultSystemModules,
 			java8classpath: config.DefaultLibraries,
-			java9classpath: config.DefaultLibraries,
+			java9classpath: append(android.CopyOf(config.DefaultBootclasspathLibraries), config.DefaultLibraries...),
 			aidl:           "-Iframework/aidl",
 		},
 		{
@@ -61,6 +61,7 @@ func TestClasspath(t *testing.T) {
 			bootclasspath:  config.DefaultBootclasspathLibraries,
 			system:         config.DefaultSystemModules,
 			java8classpath: []string{},
+			java9classpath: config.DefaultBootclasspathLibraries,
 			aidl:           "",
 		},
 		{
@@ -69,7 +70,7 @@ func TestClasspath(t *testing.T) {
 			bootclasspath:  config.DefaultBootclasspathLibraries,
 			system:         config.DefaultSystemModules,
 			java8classpath: config.DefaultLibraries,
-			java9classpath: config.DefaultLibraries,
+			java9classpath: append(android.CopyOf(config.DefaultBootclasspathLibraries), config.DefaultLibraries...),
 			aidl:           "-Iframework/aidl",
 		},
 		{
@@ -136,6 +137,7 @@ func TestClasspath(t *testing.T) {
 			system:         "core-platform-api-stubs-system-modules",
 			bootclasspath:  []string{"core-platform-api-stubs-system-modules-lib"},
 			java8classpath: []string{},
+			java9classpath: []string{"core-platform-api-stubs-system-modules-lib"},
 		},
 		{
 

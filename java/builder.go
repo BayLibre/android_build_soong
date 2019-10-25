@@ -238,11 +238,17 @@ func emitXrefRule(ctx android.ModuleContext, xrefFile android.WritablePath, idx 
 
 	deps = append(deps, srcJars...)
 
+	classpath := flags.classpath
+
 	var bootClasspath string
 	if flags.javaVersion == "1.9" {
 		var systemModuleDeps android.Paths
 		bootClasspath, systemModuleDeps = flags.systemModules.FormJavaSystemModulesPath(ctx.Device())
 		deps = append(deps, systemModuleDeps...)
+		// Prepend the bootclasspath version of the system modules to the classpath instead.  This will allow
+		// packages that are in the bootclasspath jars but not in the system modules to still be found by
+		// the classes being compiled.
+		classpath = append(flags.bootClasspath, classpath...)
 	} else {
 		deps = append(deps, flags.bootClasspath...)
 		if len(flags.bootClasspath) == 0 && ctx.Device() {
@@ -254,7 +260,7 @@ func emitXrefRule(ctx android.ModuleContext, xrefFile android.WritablePath, idx 
 		}
 	}
 
-	deps = append(deps, flags.classpath...)
+	deps = append(deps, classpath...)
 	deps = append(deps, flags.processorPath...)
 
 	processor := "-proc:none"
@@ -277,7 +283,7 @@ func emitXrefRule(ctx android.ModuleContext, xrefFile android.WritablePath, idx 
 			Args: map[string]string{
 				"annoDir":       android.PathForModuleOut(ctx, intermediatesDir, "anno").String(),
 				"bootClasspath": bootClasspath,
-				"classpath":     flags.classpath.FormJavaClassPath("-classpath"),
+				"classpath":     classpath.FormJavaClassPath("-classpath"),
 				"javacFlags":    flags.javacFlags,
 				"javaVersion":   flags.javaVersion,
 				"outDir":        android.PathForModuleOut(ctx, "javac", "classes.xref").String(),
@@ -339,11 +345,17 @@ func transformJavaToClasses(ctx android.ModuleContext, outputFile android.Writab
 
 	deps = append(deps, srcJars...)
 
+	classpath := flags.classpath
+
 	var bootClasspath string
 	if flags.javaVersion == "1.9" {
 		var systemModuleDeps android.Paths
 		bootClasspath, systemModuleDeps = flags.systemModules.FormJavaSystemModulesPath(ctx.Device())
 		deps = append(deps, systemModuleDeps...)
+		// Prepend the bootclasspath version of the system modules to the classpath instead.  This will allow
+		// packages that are in the bootclasspath jars but not in the system modules to still be found by
+		// the classes being compiled.
+		classpath = append(flags.bootClasspath, classpath...)
 	} else {
 		deps = append(deps, flags.bootClasspath...)
 		if len(flags.bootClasspath) == 0 && ctx.Device() {
@@ -355,7 +367,7 @@ func transformJavaToClasses(ctx android.ModuleContext, outputFile android.Writab
 		}
 	}
 
-	deps = append(deps, flags.classpath...)
+	deps = append(deps, classpath...)
 	deps = append(deps, flags.processorPath...)
 
 	processor := "-proc:none"
@@ -381,7 +393,7 @@ func transformJavaToClasses(ctx android.ModuleContext, outputFile android.Writab
 		Args: map[string]string{
 			"javacFlags":    flags.javacFlags,
 			"bootClasspath": bootClasspath,
-			"classpath":     flags.classpath.FormJavaClassPath("-classpath"),
+			"classpath":     classpath.FormJavaClassPath("-classpath"),
 			"processorpath": flags.processorPath.FormJavaClassPath("-processorpath"),
 			"processor":     processor,
 			"srcJars":       strings.Join(srcJars.Strings(), " "),
