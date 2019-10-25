@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9017c905_1f323964",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-10-25T12:25:20Z",
+      "side": 1,
+      "message": "I was hesitating to do a name-based check for ART apex since it seems fragile and sensitive to renaming in other (seemingly unrelated) projects. But in PS4 I at least added a test in art.",
+      "parentUuid": "1a39f587_c10f08cc",
+      "range": {
+        "startLine": 412,
+        "startChar": 61,
+        "endLine": 412,
+        "endChar": 83
+      },
+      "revId": "9b1654058b28cba5635312b5b370d8bd47724b45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "385c2d21_905d7849",
         "filename": "apex/apex.go",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3dcf77bf_4a8b4272",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-10-25T12:25:20Z",
+      "side": 1,
+      "message": "Sure, sorry for that.",
+      "parentUuid": "385c2d21_905d7849",
+      "range": {
+        "startLine": 829,
+        "startChar": 21,
+        "endLine": 829,
+        "endChar": 38
+      },
+      "revId": "9b1654058b28cba5635312b5b370d8bd47724b45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fd1e30cd_f6bae7e8",
         "filename": "apex/apex.go",
         "patchSetId": 3
@@ -68,6 +116,30 @@
       "revId": "9b1654058b28cba5635312b5b370d8bd47724b45",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40044ccc_1e310225",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 830,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-10-25T12:25:20Z",
+      "side": 1,
+      "message": "Good to know, thanks. Obsolete after removing the property in PS4.",
+      "parentUuid": "fd1e30cd_f6bae7e8",
+      "range": {
+        "startLine": 830,
+        "startChar": 8,
+        "endLine": 830,
+        "endChar": 95
+      },
+      "revId": "9b1654058b28cba5635312b5b370d8bd47724b45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
