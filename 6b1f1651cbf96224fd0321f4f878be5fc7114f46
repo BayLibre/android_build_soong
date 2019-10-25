@@ -22,6 +22,30 @@
       "revId": "6b1f1651cbf96224fd0321f4f878be5fc7114f46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d00d8c58_ded57579",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-10-25T14:41:45Z",
+      "side": 1,
+      "message": "Hah! This was my original version! Renamed and negated.",
+      "parentUuid": "a21ee5ef_466a9d19",
+      "range": {
+        "startLine": 103,
+        "startChar": 15,
+        "endLine": 103,
+        "endChar": 33
+      },
+      "revId": "6b1f1651cbf96224fd0321f4f878be5fc7114f46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
