@@ -182,7 +182,8 @@ func testContext(bp string, fs map[string][]byte) *android.TestContext {
 		"AndroidManifest.xml":                        nil,
 		"build/make/target/product/security/testkey": nil,
 
-		"build/soong/scripts/jar-wrapper.sh": nil,
+		"build/soong/scripts/jar-wrapper.sh":              nil,
+		"build/soong/scripts/jars-to-module-info-java.sh": nil,
 
 		"build/make/core/verify_uses_libraries.sh": nil,
 

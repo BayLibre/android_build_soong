@@ -108,7 +108,8 @@ func testContext(config android.Config, bp string,
 		"AndroidManifest.xml":                        nil,
 		"build/make/target/product/security/testkey": nil,
 
-		"build/soong/scripts/jar-wrapper.sh": nil,
+		"build/soong/scripts/jar-wrapper.sh":              nil,
+		"build/soong/scripts/jars-to-module-info-java.sh": nil,
 
 		"build/make/core/proguard.flags":             nil,
 		"build/make/core/proguard_basic_keeps.flags": nil,

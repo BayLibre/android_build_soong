@@ -16,9 +16,10 @@ package java
 import (
 	"fmt"
 	"io"
+	"path/filepath"
 	"strings"
 
-	"github.com/google/blueprint"
+	"android/soong/java/config"
 
 	"android/soong/android"
 )
@@ -29,63 +30,95 @@ import (
 
 func init() {
 	android.RegisterModuleType("java_system_modules", SystemModulesFactory)
-
-	pctx.SourcePathVariable("moduleInfoJavaPath", "build/soong/scripts/jars-to-module-info-java.sh")
 }
-
-var (
-	jarsTosystemModules = pctx.AndroidStaticRule("jarsTosystemModules", blueprint.RuleParams{
-		Command: `rm -rf ${outDir} ${workDir} && mkdir -p ${workDir}/jmod && ` +
-			`${moduleInfoJavaPath} java.base $in > ${workDir}/module-info.java && ` +
-			`${config.JavacCmd} --system=none --patch-module=java.base=${classpath} ${workDir}/module-info.java && ` +
-			`${config.SoongZipCmd} -jar -o ${workDir}/classes.jar -C ${workDir} -f ${workDir}/module-info.class && ` +
-			`${config.MergeZipsCmd} -j ${workDir}/module.jar ${workDir}/classes.jar $in && ` +
-			// Note: The version of the java.base module created must match the version
-			// of the jlink tool which consumes it.
-			`${config.JmodCmd} create --module-version ${config.JlinkVersion} --target-platform android ` +
-			`  --class-path ${workDir}/module.jar ${workDir}/jmod/java.base.jmod && ` +
-			`${config.JlinkCmd} --module-path ${workDir}/jmod --add-modules java.base --output ${outDir} ` +
-			// Note: The system-modules jlink plugin is disabled because (a) it is not
-			// useful on Android, and (b) it causes errors with later versions of jlink
-			// when the jdk.internal.module is absent from java.base (as it is here).
-			`  --disable-plugin system-modules && ` +
-			`cp ${config.JrtFsJar} ${outDir}/lib/`,
-		CommandDeps: []string{
-			"${moduleInfoJavaPath}",
-			"${config.JavacCmd}",
-			"${config.SoongZipCmd}",
-			"${config.MergeZipsCmd}",
-			"${config.JmodCmd}",
-			"${config.JlinkCmd}",
-			"${config.JrtFsJar}",
-		},
-	},
-		"classpath", "outDir", "workDir")
-)
 
 func TransformJarsToSystemModules(ctx android.ModuleContext, jars android.Paths) (android.Path, android.Paths) {
 	outDir := android.PathForModuleOut(ctx, "system")
 	workDir := android.PathForModuleOut(ctx, "modules")
 	outputFile := android.PathForModuleOut(ctx, "system/lib/modules")
-	outputs := android.WritablePaths{
-		outputFile,
-		android.PathForModuleOut(ctx, "system/lib/jrt-fs.jar"),
-		android.PathForModuleOut(ctx, "system/release"),
+	jrtFsJar := android.PathForModuleOut(ctx, "system/lib/jrt-fs.jar")
+	releaseFile := android.PathForModuleOut(ctx, "system/release")
+
+	rule := android.NewRuleBuilder()
+
+	rule.Command().Text("rm -rf").Text(outDir.String()).Text(workDir.String())
+
+	rule.Command().Text("mkdir -p").Text(filepath.Join(workDir.String(), "jmod"))
+
+	// Generate module-info.java into workDir
+	moduleInfoJava := workDir.Join(ctx, "module-info.java")
+	rule.Command().Tool(android.PathForSource(ctx, "build/soong/scripts/jars-to-module-info-java.sh")).
+		Text("java.base").
+		Inputs(jars).
+		Text(">").
+		Output(moduleInfoJava)
+	rule.Temporary(moduleInfoJava)
+
+	// Compile module-info.java into module-info.class
+	moduleInfoClass := moduleInfoJava.ReplaceExtension(ctx, "class")
+	rule.Command().Tool(config.JavacCmd(ctx)).
+		FlagWithArg("--system=", "none").
+		FlagWithInputList("--patch-module=java.base=", jars, ":").
+		Input(moduleInfoJava).
+		ImplicitOutput(moduleInfoClass)
+	rule.Temporary(moduleInfoClass)
+
+	// Jar module-info.class into classes.jar
+	classesJar := workDir.Join(ctx, "classes.jar")
+	rule.Command().BuiltTool(ctx, "soong_zip").
+		Flag("-jar").
+		FlagWithOutput("-o ", classesJar).
+		FlagWithArg("-C ", workDir.String()).
+		FlagWithInput("-f ", moduleInfoClass)
+	rule.Temporary(classesJar)
+
+	// Combine classes.jar and input jars into module.jar
+	moduleJar := workDir.Join(ctx, "module.jar")
+	rule.Command().BuiltTool(ctx, "merge_zips").
+		Flag("-j").
+		Output(moduleJar).
+		Input(classesJar).
+		Inputs(jars)
+	rule.Temporary(moduleJar)
+
+	moduleVersion := "9"
+	if ctx.Config().IsEnvTrue("EXPERIMENTAL_USE_OPENJDK11_TOOLCHAIN") {
+		moduleVersion = "11"
 	}
 
-	ctx.Build(pctx, android.BuildParams{
-		Rule:        jarsTosystemModules,
-		Description: "system modules",
-		Outputs:     outputs,
-		Inputs:      jars,
-		Args: map[string]string{
-			"classpath": strings.Join(jars.Strings(), ":"),
-			"workDir":   workDir.String(),
-			"outDir":    outDir.String(),
-		},
-	})
+	// Create java.base.jmod from module.jar
+	// Note: The version of the java.base module created must match the version
+	// of the jlink tool which consumes it.
+	javaBaseJmod := workDir.Join(ctx, "jmod/java.base.jmod")
+	rule.Command().Tool(config.JmodCmd(ctx)).
+		Text("create").
+		FlagWithArg("--module-version ", moduleVersion).
+		FlagWithArg("--target-platform ", "android").
+		FlagWithInput("--class-path ", moduleJar).
+		Output(javaBaseJmod)
+	rule.Temporary(javaBaseJmod)
 
-	return outDir, outputs.Paths()
+	rule.Command().Tool(config.JlinkCmd(ctx)).
+		FlagWithArg("--module-path ", workDir.Join(ctx, "jmod").String()).Implicit(javaBaseJmod).
+		FlagWithArg("--add-modules ", "java.base").
+		FlagWithArg("--output ", outDir.String()).
+		ImplicitOutput(outputFile).
+		ImplicitOutput(releaseFile).
+		// Note: The system-modules jlink plugin is disabled because (a) it is not
+		// useful on Android, and (b) it causes errors with later versions of jlink
+		// when the jdk.internal.module is absent from java.base (as it is here).
+		FlagWithArg("--disable-plugin ", "system-modules")
+
+	// Copy jrt-fs.jar into the system modules directory
+	rule.Command().Text("cp").Input(config.JrtFsJar(ctx)).Output(jrtFsJar)
+
+	rule.Build(pctx, ctx, "system_modules", "system modules")
+
+	return outDir, android.Paths{
+		outputFile,
+		jrtFsJar,
+		releaseFile,
+	}
 }
 
 func SystemModulesFactory() android.Module {
