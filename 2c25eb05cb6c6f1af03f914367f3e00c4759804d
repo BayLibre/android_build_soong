@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "b3d3a7e3_034afd71",
+        "filename": "cc/vndk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-25T17:13:29Z",
+      "side": 1,
+      "message": "This is panicking for mini_arm64-eng because vndkSnapshotZip is returning a zero OutputPath, which has a nil config field.\n\nFAILED: out/multiproduct/mini_arm64/soong/build.ninja\nout/multiproduct/mini_arm64/soong/.bootstrap/bin/soong_build -t -l out/multiproduct/mini_arm64/.module_paths/Android.bp.list --empty-ninja-file -b out/multiproduct/mini_arm64/soong -n out/multiproduct/mini_arm64 -d out/multiproduct/mini_arm64/soong/build.ninja.d -globFile out/multiproduct/mini_arm64/soong/.bootstrap/build-globs.ninja -o out/multiproduct/mini_arm64/soong/build.ninja Android.bp\ninternal error: panic in GenerateBuildActions for singleton makevars\nruntime error: invalid memory address or nil pointer dereference\ngoroutine 1 [running]:\ngithub.com/google/blueprint.newPanicErrorf(0xa09b20, 0x1033da0, 0xc0d328e7b0, 0x2b, 0x0, 0x0, 0x0, 0xc134aab4d8, 0xc0be801801)\n\t/buildbot/src/android/master/build/blueprint/context.go:3590 +0x7b\ngithub.com/google/blueprint.(*Context).generateSingletonBuildActions.func1.1(0xc0005077c0, 0xc1268fcfd0)\n\t/buildbot/src/android/master/build/blueprint/context.go:2398 +0x3a8\npanic(0xa09b20, 0x1033da0)\n\tprebuilts/go/linux-x86/src/runtime/panic.go:679 +0x1b2\nandroid/soong/android.OutputPath.String(...)\n\t/buildbot/src/android/master/build/soong/android/paths.go:836\nandroid/soong/cc.init.7.func1(0xc084e0, 0xc06da4ad00)\n\t/buildbot/src/android/master/build/soong/cc/vndk.go:343 +0x6f\nandroid/soong/android.(*makeVarsSingleton).GenerateBuildActions(0x1060668, 0xc16b00, 0xc11af102a0)\n\t/buildbot/src/android/master/build/soong/android/makevars.go:161 +0x352\nandroid/soong/android.(*singletonAdaptor).GenerateBuildActions(0xc000266930, 0xc16c00, 0xc1268fcfd0)\n\t/buildbot/src/android/master/build/soong/android/singleton.go:96 +0xb6\ngithub.com/google/blueprint.(*Context).generateSingletonBuildActions.func1(0xc0005077c0, 0xc1268fcfd0)\n\t/buildbot/src/android/master/build/blueprint/context.go:2402 +0x8b\ngithub.com/google/blueprint.(*Context).generateSingletonBuildActions(0xc000121040, 0xac5000, 0xc000268000, 0xc000138700, 0x17, 0x20, 0xc00b5032c0, 0x0, 0x0, 0x0, ...)\n\t/buildbot/src/android/master/build/blueprint/context.go:2403 +0x299\ngithub.com/google/blueprint.(*Context).PrepareBuildActions.func1(0xbf74c0, 0xc08b484ff0)\n\t/buildbot/src/android/master/build/blueprint/context.go:1926 +0x158\nruntime/pprof.Do(0xbf74c0, 0xc08b484ff0, 0xc04197edc0, 0x1, 0x1, 0xc01d6eba38)\n\tprebuilts/go/linux-x86/src/runtime/pprof/runtime.go:37 +0xf8\ngithub.com/google/blueprint.(*Context).PrepareBuildActions(0xc000121040, 0xac5000, 0xc000268000, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0)\n\t/buildbot/src/android/master/build/blueprint/context.go:1907 +0x12e\ngithub.com/google/blueprint/bootstrap.Main(0xc000121040, 0xac5000, 0xc000268000, 0xc0004ebe80, 0x3, 0x4)\n\t/buildbot/src/android/master/build/blueprint/bootstrap/command.go:171 +0x90d\nmain.main()\n\t/buildbot/src/android/master/build/soong/cmd/soong_build/main.go:126 +0x627",
+      "revId": "2c25eb05cb6c6f1af03f914367f3e00c4759804d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "84808fb7_049366ea",
         "filename": "cc/vndk.go",
         "patchSetId": 5
