@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2008c86c_382c95ce",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2095,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-10-25T15:38:14Z",
+      "side": 1,
+      "message": "Isn\u0027t it better to control this from attributes in the apex{} build rules instead?",
+      "range": {
+        "startLine": 2081,
+        "startChar": 0,
+        "endLine": 2095,
+        "endChar": 2
+      },
+      "revId": "26f9c6443e49f4ae026dccd4ecba374f4711ea77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
