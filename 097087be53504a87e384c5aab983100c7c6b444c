@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5fbc857_9adfabc0",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2019-10-25T23:11:14Z",
+      "side": 1,
+      "message": "We use Module.Name() (minus suffix/prefix) to generate vndk.*Libraries(config). If we\u0027re checking the list with Module.BaseModuleName(), then maybe we should change vndk.go:processVndkLibrary() to use Module.BaseModuleName() to generate the list. For consistency.",
+      "range": {
+        "startLine": 603,
+        "startChar": 8,
+        "endLine": 603,
+        "endChar": 65
+      },
+      "revId": "097087be53504a87e384c5aab983100c7c6b444c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
