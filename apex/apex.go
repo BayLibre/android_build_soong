@@ -2007,7 +2007,7 @@ func (p *Prebuilt) Name() string {
 	return p.prebuilt.Name(p.ModuleBase.Name())
 }
 
-func (p *Prebuilt) AndroidMkEntries() android.AndroidMkEntries {
+func (p *Prebuilt) AndroidMkEntries(config android.Config) android.AndroidMkEntries {
 	return android.AndroidMkEntries{
 		Class:      "ETC",
 		OutputFile: android.OptionalPathForPath(p.inputApex),

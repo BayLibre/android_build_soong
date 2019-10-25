@@ -403,20 +403,20 @@ func JavadocHostFactory() android.Module {
 
 var _ android.OutputFileProducer = (*Javadoc)(nil)
 
-func (j *Javadoc) sdkVersion() string {
-	return proptools.StringDefault(j.properties.Sdk_version, defaultSdkVersion(j))
+func (j *Javadoc) sdkVersion(config android.Config) string {
+	return proptools.StringDefault(j.properties.Sdk_version, defaultSdkVersion(j, config))
 }
 
 func (j *Javadoc) systemModules() string {
 	return proptools.String(j.properties.System_modules)
 }
 
-func (j *Javadoc) minSdkVersion() string {
-	return j.sdkVersion()
+func (j *Javadoc) minSdkVersion(config android.Config) string {
+	return j.sdkVersion(config)
 }
 
-func (j *Javadoc) targetSdkVersion() string {
-	return j.sdkVersion()
+func (j *Javadoc) targetSdkVersion(config android.Config) string {
+	return j.sdkVersion(config)
 }
 
 func (j *Javadoc) addDeps(ctx android.BottomUpMutatorContext) {
@@ -538,7 +538,7 @@ func (j *Javadoc) collectDeps(ctx android.ModuleContext) deps {
 		case libTag:
 			switch dep := module.(type) {
 			case SdkLibraryDependency:
-				deps.classpath = append(deps.classpath, dep.SdkImplementationJars(ctx, j.sdkVersion())...)
+				deps.classpath = append(deps.classpath, dep.SdkImplementationJars(ctx, j.sdkVersion(ctx.Config()))...)
 			case Dependency:
 				deps.classpath = append(deps.classpath, dep.HeaderJars()...)
 				deps.aidlIncludeDirs = append(deps.aidlIncludeDirs, dep.AidlIncludeDirs()...)

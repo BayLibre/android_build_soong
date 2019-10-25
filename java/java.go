@@ -57,7 +57,7 @@ func init() {
 func (j *Module) checkPlatformAPI(ctx android.ModuleContext) {
 	if sc, ok := ctx.Module().(sdkContext); ok {
 		usePlatformAPI := proptools.Bool(j.deviceProperties.Platform_apis)
-		if usePlatformAPI != (sc.sdkVersion() == "") {
+		if usePlatformAPI != (sc.sdkVersion(ctx.Config()) == "") {
 			if usePlatformAPI {
 				ctx.PropertyErrorf("platform_apis", "platform_apis must be false when sdk_version is not empty.")
 			} else {
@@ -443,8 +443,8 @@ var (
 	usesLibTag            = dependencyTag{name: "uses-library"}
 )
 
-func defaultSdkVersion(ctx checkVendorModuleContext) string {
-	if ctx.SocSpecific() || ctx.DeviceSpecific() {
+func defaultSdkVersion(ctx checkVendorModuleContext, config android.Config) string {
+	if ctx.SocSpecific() || ctx.DeviceSpecific() || (config.EnforceProductPartition() && ctx.ProductSpecific()) {
 		return "system_current"
 	}
 	return ""
@@ -453,6 +453,7 @@ func defaultSdkVersion(ctx checkVendorModuleContext) string {
 type checkVendorModuleContext interface {
 	SocSpecific() bool
 	DeviceSpecific() bool
+	ProductSpecific() bool
 }
 
 type sdkDep struct {
@@ -496,26 +497,26 @@ func (j *Module) shouldInstrumentStatic(ctx android.BaseModuleContext) bool {
 			ctx.Config().UnbundledBuild())
 }
 
-func (j *Module) sdkVersion() string {
-	return proptools.StringDefault(j.deviceProperties.Sdk_version, defaultSdkVersion(j))
+func (j *Module) sdkVersion(config android.Config) string {
+	return proptools.StringDefault(j.deviceProperties.Sdk_version, defaultSdkVersion(j, config))
 }
 
 func (j *Module) systemModules() string {
 	return proptools.String(j.deviceProperties.System_modules)
 }
 
-func (j *Module) minSdkVersion() string {
+func (j *Module) minSdkVersion(config android.Config) string {
 	if j.deviceProperties.Min_sdk_version != nil {
 		return *j.deviceProperties.Min_sdk_version
 	}
-	return j.sdkVersion()
+	return j.sdkVersion(config)
 }
 
-func (j *Module) targetSdkVersion() string {
+func (j *Module) targetSdkVersion(config android.Config) string {
 	if j.deviceProperties.Target_sdk_version != nil {
 		return *j.deviceProperties.Target_sdk_version
 	}
-	return j.sdkVersion()
+	return j.sdkVersion(config)
 }
 
 func (j *Module) deps(ctx android.BottomUpMutatorContext) {
@@ -667,8 +668,8 @@ const (
 	javaPlatform
 )
 
-func getLinkType(m *Module, name string) (ret linkType, stubs bool) {
-	ver := m.sdkVersion()
+func getLinkType(m *Module, name string, config android.Config) (ret linkType, stubs bool) {
+	ver := m.sdkVersion(config)
 	switch {
 	case name == "core.current.stubs" || name == "core.platform.api.stubs" ||
 		name == "stub-annotations" || name == "private-stub-annotations-jar" ||
@@ -703,11 +704,11 @@ func checkLinkType(ctx android.ModuleContext, from *Module, to *Library, tag dep
 		return
 	}
 
-	myLinkType, stubs := getLinkType(from, ctx.ModuleName())
+	myLinkType, stubs := getLinkType(from, ctx.ModuleName(), ctx.Config())
 	if stubs {
 		return
 	}
-	otherLinkType, _ := getLinkType(&to.Module, ctx.OtherModuleName(to))
+	otherLinkType, _ := getLinkType(&to.Module, ctx.OtherModuleName(to), ctx.Config())
 	commonMessage := "Adjust sdk_version: property of the source or target module so that target module is built with the same or smaller API set than the source."
 
 	switch myLinkType {
@@ -774,7 +775,7 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 		case SdkLibraryDependency:
 			switch tag {
 			case libTag:
-				deps.classpath = append(deps.classpath, dep.SdkHeaderJars(ctx, j.sdkVersion())...)
+				deps.classpath = append(deps.classpath, dep.SdkHeaderJars(ctx, j.sdkVersion(ctx.Config()))...)
 				// names of sdk libs that are directly depended are exported
 				j.exportedSdkLibs = append(j.exportedSdkLibs, otherName)
 			case staticLibTag:
@@ -864,7 +865,7 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 
 func getJavaVersion(ctx android.ModuleContext, javaVersion string, sdkContext sdkContext) string {
 	var ret string
-	v := sdkContext.sdkVersion()
+	v := sdkContext.sdkVersion(ctx.Config())
 	// For PDK builds, use the latest SDK version instead of "current"
 	if ctx.Config().IsPdkBuild() &&
 		(v == "" || v == "none" || v == "core_platform" || v == "current") {
@@ -887,9 +888,9 @@ func getJavaVersion(ctx android.ModuleContext, javaVersion string, sdkContext sd
 	} else if ctx.Device() && sdk <= 29 || !ctx.Config().TargetOpenJDK9() {
 		ret = "1.8"
 	} else if ctx.Device() &&
-		sdkContext.sdkVersion() != "" &&
-		sdkContext.sdkVersion() != "none" &&
-		sdkContext.sdkVersion() != "core_platform" &&
+		sdkContext.sdkVersion(ctx.Config()) != "" &&
+		sdkContext.sdkVersion(ctx.Config()) != "none" &&
+		sdkContext.sdkVersion(ctx.Config()) != "core_platform" &&
 		sdk == android.FutureApiLevel {
 		// TODO(ccross): once we generate stubs we should be able to use 1.9 for sdk_version: "current"
 		ret = "1.8"
@@ -1939,12 +1940,12 @@ type Import struct {
 	exportedSdkLibs       []string
 }
 
-func (j *Import) sdkVersion() string {
-	return proptools.StringDefault(j.properties.Sdk_version, defaultSdkVersion(j))
+func (j *Import) sdkVersion(config android.Config) string {
+	return proptools.StringDefault(j.properties.Sdk_version, defaultSdkVersion(j, config))
 }
 
-func (j *Import) minSdkVersion() string {
-	return j.sdkVersion()
+func (j *Import) minSdkVersion(config android.Config) string {
+	return j.sdkVersion(config)
 }
 
 func (j *Import) Prebuilt() *android.Prebuilt {

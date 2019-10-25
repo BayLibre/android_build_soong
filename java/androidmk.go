@@ -56,7 +56,7 @@ func (library *Library) AndroidMkHostDex(w io.Writer, name string, entries *andr
 	}
 }
 
-func (library *Library) AndroidMkEntries() android.AndroidMkEntries {
+func (library *Library) AndroidMkEntries(config android.Config) android.AndroidMkEntries {
 	if !library.IsForPlatform() {
 		return android.AndroidMkEntries{
 			Disabled: true,
@@ -85,7 +85,7 @@ func (library *Library) AndroidMkEntries() android.AndroidMkEntries {
 				if len(library.dexpreopter.builtInstalled) > 0 {
 					entries.SetString("LOCAL_SOONG_BUILT_INSTALLED", library.dexpreopter.builtInstalled)
 				}
-				entries.SetString("LOCAL_SDK_VERSION", library.sdkVersion())
+				entries.SetString("LOCAL_SDK_VERSION", library.sdkVersion(config))
 				entries.SetPath("LOCAL_SOONG_CLASSES_JAR", library.implementationAndResourcesJar)
 				entries.SetPath("LOCAL_SOONG_HEADER_JAR", library.headerJarFile)
 
@@ -122,8 +122,8 @@ func testSuiteComponent(entries *android.AndroidMkEntries, test_suites []string)
 	}
 }
 
-func (j *Test) AndroidMkEntries() android.AndroidMkEntries {
-	entries := j.Library.AndroidMkEntries()
+func (j *Test) AndroidMkEntries(config android.Config) android.AndroidMkEntries {
+	entries := j.Library.AndroidMkEntries(config)
 	entries.ExtraEntries = append(entries.ExtraEntries, func(entries *android.AndroidMkEntries) {
 		testSuiteComponent(entries, j.testProperties.Test_suites)
 		if j.testConfig != nil {
@@ -135,8 +135,8 @@ func (j *Test) AndroidMkEntries() android.AndroidMkEntries {
 	return entries
 }
 
-func (j *TestHelperLibrary) AndroidMkEntries() android.AndroidMkEntries {
-	entries := j.Library.AndroidMkEntries()
+func (j *TestHelperLibrary) AndroidMkEntries(config android.Config) android.AndroidMkEntries {
+	entries := j.Library.AndroidMkEntries(config)
 	entries.ExtraEntries = append(entries.ExtraEntries, func(entries *android.AndroidMkEntries) {
 		testSuiteComponent(entries, j.testHelperLibraryProperties.Test_suites)
 	})
@@ -144,7 +144,7 @@ func (j *TestHelperLibrary) AndroidMkEntries() android.AndroidMkEntries {
 	return entries
 }
 
-func (prebuilt *Import) AndroidMkEntries() android.AndroidMkEntries {
+func (prebuilt *Import) AndroidMkEntries(config android.Config) android.AndroidMkEntries {
 	if !prebuilt.IsForPlatform() || !prebuilt.ContainingSdk().Unversioned() {
 		return android.AndroidMkEntries{
 			Disabled: true,
@@ -159,13 +159,13 @@ func (prebuilt *Import) AndroidMkEntries() android.AndroidMkEntries {
 				entries.SetBool("LOCAL_UNINSTALLABLE_MODULE", !Bool(prebuilt.properties.Installable))
 				entries.SetPath("LOCAL_SOONG_HEADER_JAR", prebuilt.combinedClasspathFile)
 				entries.SetPath("LOCAL_SOONG_CLASSES_JAR", prebuilt.combinedClasspathFile)
-				entries.SetString("LOCAL_SDK_VERSION", prebuilt.sdkVersion())
+				entries.SetString("LOCAL_SDK_VERSION", prebuilt.sdkVersion(config))
 			},
 		},
 	}
 }
 
-func (prebuilt *DexImport) AndroidMkEntries() android.AndroidMkEntries {
+func (prebuilt *DexImport) AndroidMkEntries(config android.Config) android.AndroidMkEntries {
 	if !prebuilt.IsForPlatform() {
 		return android.AndroidMkEntries{
 			Disabled: true,
@@ -192,7 +192,7 @@ func (prebuilt *DexImport) AndroidMkEntries() android.AndroidMkEntries {
 	}
 }
 
-func (prebuilt *AARImport) AndroidMkEntries() android.AndroidMkEntries {
+func (prebuilt *AARImport) AndroidMkEntries(config android.Config) android.AndroidMkEntries {
 	return android.AndroidMkEntries{
 		Class:      "JAVA_LIBRARIES",
 		OutputFile: android.OptionalPathForPath(prebuilt.classpathFile),
@@ -206,13 +206,13 @@ func (prebuilt *AARImport) AndroidMkEntries() android.AndroidMkEntries {
 				entries.SetPath("LOCAL_SOONG_EXPORT_PROGUARD_FLAGS", prebuilt.proguardFlags)
 				entries.SetPath("LOCAL_SOONG_STATIC_LIBRARY_EXTRA_PACKAGES", prebuilt.extraAaptPackagesFile)
 				entries.SetPath("LOCAL_FULL_MANIFEST_FILE", prebuilt.manifest)
-				entries.SetString("LOCAL_SDK_VERSION", prebuilt.sdkVersion())
+				entries.SetString("LOCAL_SDK_VERSION", prebuilt.sdkVersion(config))
 			},
 		},
 	}
 }
 
-func (binary *Binary) AndroidMkEntries() android.AndroidMkEntries {
+func (binary *Binary) AndroidMkEntries(config android.Config) android.AndroidMkEntries {
 
 	if !binary.isWrapperVariant {
 		return android.AndroidMkEntries{
@@ -257,7 +257,7 @@ func (binary *Binary) AndroidMkEntries() android.AndroidMkEntries {
 	}
 }
 
-func (app *AndroidApp) AndroidMkEntries() android.AndroidMkEntries {
+func (app *AndroidApp) AndroidMkEntries(config android.Config) android.AndroidMkEntries {
 	return android.AndroidMkEntries{
 		Class:      "APPS",
 		OutputFile: android.OptionalPathForPath(app.outputFile),
@@ -365,8 +365,8 @@ func (a *AndroidApp) getOverriddenPackages() []string {
 	return overridden
 }
 
-func (a *AndroidTest) AndroidMkEntries() android.AndroidMkEntries {
-	entries := a.AndroidApp.AndroidMkEntries()
+func (a *AndroidTest) AndroidMkEntries(config android.Config) android.AndroidMkEntries {
+	entries := a.AndroidApp.AndroidMkEntries(config)
 	entries.ExtraEntries = append(entries.ExtraEntries, func(entries *android.AndroidMkEntries) {
 		testSuiteComponent(entries, a.testProperties.Test_suites)
 		if a.testConfig != nil {
@@ -378,8 +378,8 @@ func (a *AndroidTest) AndroidMkEntries() android.AndroidMkEntries {
 	return entries
 }
 
-func (a *AndroidTestHelperApp) AndroidMkEntries() android.AndroidMkEntries {
-	entries := a.AndroidApp.AndroidMkEntries()
+func (a *AndroidTestHelperApp) AndroidMkEntries(config android.Config) android.AndroidMkEntries {
+	entries := a.AndroidApp.AndroidMkEntries(config)
 	entries.ExtraEntries = append(entries.ExtraEntries, func(entries *android.AndroidMkEntries) {
 		testSuiteComponent(entries, a.appTestHelperAppProperties.Test_suites)
 	})
@@ -387,8 +387,8 @@ func (a *AndroidTestHelperApp) AndroidMkEntries() android.AndroidMkEntries {
 	return entries
 }
 
-func (a *AndroidLibrary) AndroidMkEntries() android.AndroidMkEntries {
-	entries := a.Library.AndroidMkEntries()
+func (a *AndroidLibrary) AndroidMkEntries(config android.Config) android.AndroidMkEntries {
+	entries := a.Library.AndroidMkEntries(config)
 
 	entries.ExtraEntries = append(entries.ExtraEntries, func(entries *android.AndroidMkEntries) {
 		if a.aarFile != nil {
@@ -412,7 +412,7 @@ func (a *AndroidLibrary) AndroidMkEntries() android.AndroidMkEntries {
 	return entries
 }
 
-func (jd *Javadoc) AndroidMkEntries() android.AndroidMkEntries {
+func (jd *Javadoc) AndroidMkEntries(config android.Config) android.AndroidMkEntries {
 	return android.AndroidMkEntries{
 		Class:      "JAVA_LIBRARIES",
 		OutputFile: android.OptionalPathForPath(jd.stubsSrcJar),
@@ -430,7 +430,7 @@ func (jd *Javadoc) AndroidMkEntries() android.AndroidMkEntries {
 	}
 }
 
-func (ddoc *Droiddoc) AndroidMkEntries() android.AndroidMkEntries {
+func (ddoc *Droiddoc) AndroidMkEntries(config android.Config) android.AndroidMkEntries {
 	return android.AndroidMkEntries{
 		Class:      "JAVA_LIBRARIES",
 		OutputFile: android.OptionalPathForPath(ddoc.stubsSrcJar),
@@ -515,7 +515,7 @@ func (ddoc *Droiddoc) AndroidMkEntries() android.AndroidMkEntries {
 	}
 }
 
-func (dstubs *Droidstubs) AndroidMkEntries() android.AndroidMkEntries {
+func (dstubs *Droidstubs) AndroidMkEntries(config android.Config) android.AndroidMkEntries {
 	return android.AndroidMkEntries{
 		Class:      "JAVA_LIBRARIES",
 		OutputFile: android.OptionalPathForPath(dstubs.stubsSrcJar),
@@ -626,7 +626,7 @@ func (dstubs *Droidstubs) AndroidMkEntries() android.AndroidMkEntries {
 	}
 }
 
-func (a *AndroidAppImport) AndroidMkEntries() android.AndroidMkEntries {
+func (a *AndroidAppImport) AndroidMkEntries(config android.Config) android.AndroidMkEntries {
 	return android.AndroidMkEntries{
 		Class:      "APPS",
 		OutputFile: android.OptionalPathForPath(a.outputFile),
@@ -649,8 +649,8 @@ func (a *AndroidAppImport) AndroidMkEntries() android.AndroidMkEntries {
 	}
 }
 
-func (a *AndroidTestImport) AndroidMkEntries() android.AndroidMkEntries {
-	entries := a.AndroidAppImport.AndroidMkEntries()
+func (a *AndroidTestImport) AndroidMkEntries(config android.Config) android.AndroidMkEntries {
+	entries := a.AndroidAppImport.AndroidMkEntries(config)
 	entries.ExtraEntries = append(entries.ExtraEntries, func(entries *android.AndroidMkEntries) {
 		testSuiteComponent(entries, a.testProperties.Test_suites)
 		androidMkWriteTestData(a.data, entries)

@@ -401,7 +401,7 @@ func AndroidMkEntriesForTest(t *testing.T, config Config, bpPath string, mod blu
 	if p, ok = mod.(AndroidMkEntriesProvider); !ok {
 		t.Errorf("module does not implement AndroidMkEntriesProvider: " + mod.Name())
 	}
-	entries := p.AndroidMkEntries()
+	entries := p.AndroidMkEntries(config)
 	entries.fillInEntries(config, bpPath, mod)
 	return entries
 }

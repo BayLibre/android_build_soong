@@ -169,7 +169,7 @@ func (a *aapt) aapt2Flags(ctx android.ModuleContext, sdkContext sdkContext,
 	linkDeps = append(linkDeps, assetFiles...)
 
 	// SDK version flags
-	minSdkVersion := sdkVersionOrDefault(ctx, sdkContext.minSdkVersion())
+	minSdkVersion := sdkVersionOrDefault(ctx, sdkContext.minSdkVersion(ctx.Config()))
 
 	linkFlags = append(linkFlags, "--min-sdk-version "+minSdkVersion)
 	linkFlags = append(linkFlags, "--target-sdk-version "+minSdkVersion)
@@ -516,23 +516,23 @@ type AARImport struct {
 	exportedStaticPackages android.Paths
 }
 
-func (a *AARImport) sdkVersion() string {
-	return proptools.StringDefault(a.properties.Sdk_version, defaultSdkVersion(a))
+func (a *AARImport) sdkVersion(config android.Config) string {
+	return proptools.StringDefault(a.properties.Sdk_version, defaultSdkVersion(a, config))
 }
 
 func (a *AARImport) systemModules() string {
 	return ""
 }
 
-func (a *AARImport) minSdkVersion() string {
+func (a *AARImport) minSdkVersion(config android.Config) string {
 	if a.properties.Min_sdk_version != nil {
 		return *a.properties.Min_sdk_version
 	}
-	return a.sdkVersion()
+	return a.sdkVersion(config)
 }
 
-func (a *AARImport) targetSdkVersion() string {
-	return a.sdkVersion()
+func (a *AARImport) targetSdkVersion(config android.Config) string {
+	return a.sdkVersion(config)
 }
 
 var _ AndroidLibraryDependency = (*AARImport)(nil)

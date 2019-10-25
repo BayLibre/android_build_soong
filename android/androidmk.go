@@ -61,7 +61,7 @@ type AndroidMkExtraFunc func(w io.Writer, outputFile Path)
 
 // Allows modules to customize their Android*.mk output.
 type AndroidMkEntriesProvider interface {
-	AndroidMkEntries() AndroidMkEntries
+	AndroidMkEntries(config Config) AndroidMkEntries
 	BaseModuleName() string
 }
 
@@ -513,7 +513,7 @@ func translateAndroidMkEntriesModule(ctx SingletonContext, w io.Writer, mod blue
 		return nil
 	}
 
-	entries := provider.AndroidMkEntries()
+	entries := provider.AndroidMkEntries(ctx.Config())
 	entries.fillInEntries(ctx.Config(), ctx.BlueprintFile(mod), mod)
 
 	entries.write(w)

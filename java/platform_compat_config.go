@@ -71,7 +71,7 @@ func (p *platformCompatConfig) GenerateAndroidBuildActions(ctx android.ModuleCon
 
 }
 
-func (p *platformCompatConfig) AndroidMkEntries() android.AndroidMkEntries {
+func (p *platformCompatConfig) AndroidMkEntries(config android.Config) android.AndroidMkEntries {
 	return android.AndroidMkEntries{
 		Class:      "ETC",
 		OutputFile: android.OptionalPathForPath(p.configFile),

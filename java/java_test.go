@@ -316,7 +316,7 @@ func TestSimple(t *testing.T) {
 }
 
 func TestSdkVersion(t *testing.T) {
-	ctx, _ := testJava(t, `
+	ctx, config := testJava(t, `
 		java_library {
 			name: "foo",
 			srcs: ["a.java"],
@@ -332,11 +332,11 @@ func TestSdkVersion(t *testing.T) {
 	foo := ctx.ModuleForTests("foo", "android_common").Module().(*Library)
 	bar := ctx.ModuleForTests("bar", "android_common").Module().(*Library)
 
-	if foo.sdkVersion() != "system_current" {
+	if foo.sdkVersion(config) != "system_current" {
 		t.Errorf("If sdk version of vendor module is empty, it must change to system_current.")
 	}
 
-	if bar.sdkVersion() != "" {
+	if bar.sdkVersion(config) != "" {
 		t.Errorf("If sdk version of non-vendor module is empty, it keeps empty.")
 	}
 }

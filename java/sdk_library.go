@@ -197,8 +197,8 @@ func (module *SdkLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext)
 	})
 }
 
-func (module *SdkLibrary) AndroidMkEntries() android.AndroidMkEntries {
-	entries := module.Library.AndroidMkEntries()
+func (module *SdkLibrary) AndroidMkEntries(config android.Config) android.AndroidMkEntries {
+	entries := module.Library.AndroidMkEntries(config)
 	entries.Required = append(entries.Required, module.xmlFileName())
 
 	entries.ExtraFooters = []android.AndroidMkExtraFootersFunc{

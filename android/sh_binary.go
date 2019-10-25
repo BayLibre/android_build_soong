@@ -135,7 +135,7 @@ func (s *ShBinary) GenerateAndroidBuildActions(ctx ModuleContext) {
 	})
 }
 
-func (s *ShBinary) AndroidMkEntries() AndroidMkEntries {
+func (s *ShBinary) AndroidMkEntries(config Config) AndroidMkEntries {
 	return AndroidMkEntries{
 		Class:      "EXECUTABLES",
 		OutputFile: OptionalPathForPath(s.outputFilePath),
@@ -163,7 +163,7 @@ func (s *ShTest) GenerateAndroidBuildActions(ctx ModuleContext) {
 	s.data = PathsForModuleSrc(ctx, s.testProperties.Data)
 }
 
-func (s *ShTest) AndroidMkEntries() AndroidMkEntries {
+func (s *ShTest) AndroidMkEntries(config Config) AndroidMkEntries {
 	return AndroidMkEntries{
 		Class:      "NATIVE_TESTS",
 		OutputFile: OptionalPathForPath(s.outputFilePath),

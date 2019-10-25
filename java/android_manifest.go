@@ -59,7 +59,7 @@ func manifestFixer(ctx android.ModuleContext, manifest android.Path, sdkContext 
 	if isLibrary {
 		args = append(args, "--library")
 	} else {
-		minSdkVersion, err := sdkVersionToNumber(ctx, sdkContext.minSdkVersion())
+		minSdkVersion, err := sdkVersionToNumber(ctx, sdkContext.minSdkVersion(ctx.Config()))
 		if err != nil {
 			ctx.ModuleErrorf("invalid minSdkVersion: %s", err)
 		}
@@ -92,7 +92,7 @@ func manifestFixer(ctx android.ModuleContext, manifest android.Path, sdkContext 
 	}
 
 	var deps android.Paths
-	targetSdkVersion := sdkVersionOrDefault(ctx, sdkContext.targetSdkVersion())
+	targetSdkVersion := sdkVersionOrDefault(ctx, sdkContext.targetSdkVersion(ctx.Config()))
 	if targetSdkVersion == ctx.Config().PlatformSdkCodename() &&
 		ctx.Config().UnbundledBuild() &&
 		!ctx.Config().UnbundledBuildUsePrebuiltSdks() &&
@@ -110,7 +110,7 @@ func manifestFixer(ctx android.ModuleContext, manifest android.Path, sdkContext 
 		Implicits:   deps,
 		Output:      fixedManifest,
 		Args: map[string]string{
-			"minSdkVersion":    sdkVersionOrDefault(ctx, sdkContext.minSdkVersion()),
+			"minSdkVersion":    sdkVersionOrDefault(ctx, sdkContext.minSdkVersion(ctx.Config())),
 			"targetSdkVersion": targetSdkVersion,
 			"args":             strings.Join(args, " "),
 		},

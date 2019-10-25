@@ -156,7 +156,7 @@ type Certificate struct {
 func (a *AndroidApp) DepsMutator(ctx android.BottomUpMutatorContext) {
 	a.Module.deps(ctx)
 
-	if String(a.appProperties.Stl) == "c++_shared" && a.sdkVersion() == "" {
+	if String(a.appProperties.Stl) == "c++_shared" && a.sdkVersion(ctx.Config()) == "" {
 		ctx.PropertyErrorf("stl", "sdk_version must be set in order to use c++_shared")
 	}
 
@@ -212,9 +212,9 @@ func (a *AndroidApp) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 // Returns true if the native libraries should be stored in the APK uncompressed and the
 // extractNativeLibs application flag should be set to false in the manifest.
 func (a *AndroidApp) useEmbeddedNativeLibs(ctx android.ModuleContext) bool {
-	minSdkVersion, err := sdkVersionToNumber(ctx, a.minSdkVersion())
+	minSdkVersion, err := sdkVersionToNumber(ctx, a.minSdkVersion(ctx.Config()))
 	if err != nil {
-		ctx.PropertyErrorf("min_sdk_version", "invalid value %q: %s", a.minSdkVersion(), err)
+		ctx.PropertyErrorf("min_sdk_version", "invalid value %q: %s", a.minSdkVersion(ctx.Config()), err)
 	}
 
 	return minSdkVersion >= 23 && Bool(a.appProperties.Use_embedded_native_libs)

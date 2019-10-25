@@ -38,13 +38,13 @@ var apiFingerprintPathKey = android.NewOnceKey("apiFingerprintPathKey")
 
 type sdkContext interface {
 	// sdkVersion returns the sdk_version property of the current module, or an empty string if it is not set.
-	sdkVersion() string
+	sdkVersion(config android.Config) string
 	// systemModules returns the system_modules property of the current module, or an empty string if it is not set.
 	systemModules() string
-	// minSdkVersion returns the min_sdk_version property of the current module, or sdkVersion() if it is not set.
-	minSdkVersion() string
-	// targetSdkVersion returns the target_sdk_version property of the current module, or sdkVersion() if it is not set.
-	targetSdkVersion() string
+	// minSdkVersion returns the min_sdk_version property of the current module, or sdkVersion if it is not set.
+	minSdkVersion(config android.Config) string
+	// targetSdkVersion returns the target_sdk_version property of the current module, or sdkVersion if it is not set.
+	targetSdkVersion(config android.Config) string
 }
 
 func sdkVersionOrDefault(ctx android.BaseModuleContext, v string) string {
@@ -81,7 +81,7 @@ func sdkVersionToNumberAsString(ctx android.BaseModuleContext, v string) (string
 }
 
 func decodeSdkDep(ctx android.BaseModuleContext, sdkContext sdkContext) sdkDep {
-	v := sdkContext.sdkVersion()
+	v := sdkContext.sdkVersion(ctx.Config())
 
 	// For PDK builds, use the latest SDK version instead of "current"
 	if ctx.Config().IsPdkBuild() && (v == "" || v == "current") {

@@ -98,7 +98,7 @@ func (s *sdk) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	s.buildSnapshotGenerationScripts(ctx)
 }
 
-func (s *sdk) AndroidMkEntries() android.AndroidMkEntries {
+func (s *sdk) AndroidMkEntries(config android.Config) android.AndroidMkEntries {
 	return s.androidMkEntriesForScript()
 }
 

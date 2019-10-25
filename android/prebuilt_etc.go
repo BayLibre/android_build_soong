@@ -146,7 +146,7 @@ func (p *PrebuiltEtc) GenerateAndroidBuildActions(ctx ModuleContext) {
 	})
 }
 
-func (p *PrebuiltEtc) AndroidMkEntries() AndroidMkEntries {
+func (p *PrebuiltEtc) AndroidMkEntries(config Config) AndroidMkEntries {
 	nameSuffix := ""
 	if p.inRecovery() && !p.onlyInRecovery() {
 		nameSuffix = ".recovery"
