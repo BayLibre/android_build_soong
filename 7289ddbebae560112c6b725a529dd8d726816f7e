@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0ab4c82_76df872b",
+        "filename": "rust/binary.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2019-10-25T22:28:47Z",
+      "side": 0,
+      "message": "Could we leave this return value for consistency with our other functions? (NewRustLibrary, NewProcMacro, etc...). It makes it more readable if  this value needs to be modified.",
+      "range": {
+        "startLine": 47,
+        "startChar": 7,
+        "endLine": 47,
+        "endChar": 11
+      },
+      "revId": "7289ddbebae560112c6b725a529dd8d726816f7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

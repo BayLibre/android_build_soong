@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ebccc73e_8fe228ae",
+        "filename": "rust/binary.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2019-10-25T22:28:47Z",
+      "side": 1,
+      "message": "The test-specific logic can be pulled out of here with a testBinaryDecorator compilerFlags method that modifies the return value from the embedded binaryDecorator and appends any additional flags we need. This gets rid of the need to track isTest as well.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 53
+      },
+      "revId": "a7db803ce94fbd22ac639fbf72a7da2cdc9a8a28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "609ff744_d93d1b1f",
+        "filename": "rust/test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2019-10-25T22:28:47Z",
+      "side": 1,
+      "message": "You could remove NewRustTest by instead calling NewRustBinary here, then modifying the returned binary.baseCompiler.dir value.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 54
+      },
+      "revId": "a7db803ce94fbd22ac639fbf72a7da2cdc9a8a28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8515ef0e_641b0e79",
+        "filename": "rust/test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2019-10-25T22:28:47Z",
+      "side": 1,
+      "message": "Lets chat a bit more offline about this so I can better understand the use case for regular binaries.\n\nFor this CL though the function relates to tests, so I think this and other functions in here relating to tests should be testBinaryDecorator functions.",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 74
+      },
+      "revId": "a7db803ce94fbd22ac639fbf72a7da2cdc9a8a28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bbc5993_f4615ddb",
+        "filename": "rust/test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2019-10-25T22:28:47Z",
+      "side": 1,
+      "message": "Yup, I think we can just use the one Stem in baseCompiler rather than adding one to our decorators that embed it.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 34
+      },
+      "revId": "a7db803ce94fbd22ac639fbf72a7da2cdc9a8a28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d45a3646_ac292942",
+        "filename": "rust/test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2019-10-25T22:28:47Z",
+      "side": 1,
+      "message": "Same comment as above.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 37
+      },
+      "revId": "a7db803ce94fbd22ac639fbf72a7da2cdc9a8a28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
