@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a21ee5ef_466a9d19",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-10-25T14:23:37Z",
+      "side": 1,
+      "message": "Could we negate and rename this to artApexJarsOnly ?",
+      "range": {
+        "startLine": 103,
+        "startChar": 15,
+        "endLine": 103,
+        "endChar": 33
+      },
+      "revId": "6b1f1651cbf96224fd0321f4f878be5fc7114f46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
