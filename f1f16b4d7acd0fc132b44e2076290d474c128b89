@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f24548b8_89d3cf18",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-25T21:20:29Z",
+      "side": 1,
+      "message": "This may result in bad config.txt files be generated and not noticed for a while.  Would it be better to propagate it to ctx.ModuleErrorf to make it fail the build? Or panic if it is impossible to trigger from an Android.bp file.",
+      "revId": "f1f16b4d7acd0fc132b44e2076290d474c128b89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
