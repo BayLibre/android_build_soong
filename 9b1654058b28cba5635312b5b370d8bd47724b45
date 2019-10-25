@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "ec723ec5_8ecda9d6",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-10-25T16:05:22Z",
+      "side": 1,
+      "message": "I found better way to test for the ART apex by creating a thin wrapper module type \u0027apex_art\u0027, similar to \u0027apex_test\u0027. Now the ART-ness is recorded in blueprint definitions (see the related change in art).",
+      "parentUuid": "0b24e626_9dec9c82",
+      "range": {
+        "startLine": 412,
+        "startChar": 61,
+        "endLine": 412,
+        "endChar": 83
+      },
+      "revId": "9b1654058b28cba5635312b5b370d8bd47724b45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "385c2d21_905d7849",
         "filename": "apex/apex.go",
         "patchSetId": 3
