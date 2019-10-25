@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5e5a3d3_17ba071c",
+        "filename": "sdk/update.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-10-25T06:18:53Z",
+      "side": 1,
+      "message": "system?",
+      "range": {
+        "startLine": 187,
+        "startChar": 1,
+        "endLine": 187,
+        "endChar": 7
+      },
+      "revId": "0bd0f3d5f5d17b510d27ac891188a3a9e130562e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3187d5d7_c60aea8f",
+        "filename": "sdk/update.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-10-25T06:18:53Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 192,
+        "startChar": 5,
+        "endLine": 192,
+        "endChar": 11
+      },
+      "revId": "0bd0f3d5f5d17b510d27ac891188a3a9e130562e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8634d673_3a0c9a20",
+        "filename": "sdk/update.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-10-25T06:18:53Z",
+      "side": 1,
+      "message": "%q for parameters used as shell command?",
+      "range": {
+        "startLine": 352,
+        "startChar": 23,
+        "endLine": 352,
+        "endChar": 25
+      },
+      "revId": "0bd0f3d5f5d17b510d27ac891188a3a9e130562e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
