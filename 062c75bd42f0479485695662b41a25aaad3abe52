@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2ef33e16_61223ed8",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1854,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-25T00:54:32Z",
+      "side": 1,
+      "message": "not necessary. They are directly consumed as -I\u003cstring\u003e. No one is expecting paths for this property (e.g. add a dep to the path, etc.)",
+      "parentUuid": "d327d39e_9e8541bf",
+      "revId": "062c75bd42f0479485695662b41a25aaad3abe52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f229f6ba_14d0a193",
         "filename": "cc/library.go",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "062c75bd42f0479485695662b41a25aaad3abe52",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aefbee62_e08eb7d2",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 957,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-25T00:54:32Z",
+      "side": 1,
+      "message": "I forgot why I made this change. Removed.",
+      "parentUuid": "f229f6ba_14d0a193",
+      "range": {
+        "startLine": 957,
+        "startChar": 47,
+        "endLine": 957,
+        "endChar": 72
+      },
+      "revId": "062c75bd42f0479485695662b41a25aaad3abe52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "c9f8c4c0_87f1ae0c",
+        "filename": "cc/llndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-25T00:54:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03db10c1_d6340bc0",
+      "range": {
+        "startLine": 149,
+        "startChar": 42,
+        "endLine": 149,
+        "endChar": 67
+      },
+      "revId": "062c75bd42f0479485695662b41a25aaad3abe52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6901c8fd_b2388e2e",
         "filename": "cc/llndk_library.go",
         "patchSetId": 1
@@ -85,6 +151,30 @@
       "revId": "062c75bd42f0479485695662b41a25aaad3abe52",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "096d1252_b0fc5eb6",
+        "filename": "cc/llndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-25T00:54:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6901c8fd_b2388e2e",
+      "range": {
+        "startLine": 151,
+        "startChar": 36,
+        "endLine": 151,
+        "endChar": 61
+      },
+      "revId": "062c75bd42f0479485695662b41a25aaad3abe52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
