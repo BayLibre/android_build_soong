@@ -16,6 +16,24 @@
       "revId": "f1f16b4d7acd0fc132b44e2076290d474c128b89",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31c5331b_b315e61b",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1559553
+      },
+      "writtenOn": "2019-10-25T21:24:34Z",
+      "side": 1,
+      "message": "Done.\n\nI went with the panic() approach, since we shouldn\u0027t ever see an error here unless there\u0027s a bug in Go\u0027s json package.",
+      "parentUuid": "f24548b8_89d3cf18",
+      "revId": "f1f16b4d7acd0fc132b44e2076290d474c128b89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
