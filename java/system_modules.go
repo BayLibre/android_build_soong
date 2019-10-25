@@ -32,7 +32,7 @@ func init() {
 	android.RegisterModuleType("java_system_modules", SystemModulesFactory)
 }
 
-func TransformJarsToSystemModules(ctx android.ModuleContext, jars android.Paths) (android.Path, android.Paths) {
+func TransformJarsToSystemModules(ctx android.ModuleContext, jars android.Paths, classes []string) (android.Path, android.Paths) {
 	outDir := android.PathForModuleOut(ctx, "system")
 	workDir := android.PathForModuleOut(ctx, "modules")
 	outputFile := android.PathForModuleOut(ctx, "system/lib/modules")
@@ -44,6 +44,24 @@ func TransformJarsToSystemModules(ctx android.ModuleContext, jars android.Paths)
 	rule.Command().Text("rm -rf").Text(outDir.String()).Text(workDir.String())
 
 	rule.Command().Text("mkdir -p").Text(filepath.Join(workDir.String(), "jmod"))
+
+	if classes != nil {
+		mergedJar := workDir.Join(ctx, "merged.jar")
+		rule.Command().BuiltTool(ctx, "merge_zips").
+			Flag("-j").
+			Output(mergedJar).
+			Inputs(jars)
+		rule.Temporary(mergedJar)
+
+		filteredJar := workDir.Join(ctx, "filtered.jar")
+		rule.Command().BuiltTool(ctx, "zip2zip").
+			FlagWithInput("-i ", mergedJar).
+			FlagWithOutput("-o ", filteredJar).
+			Flags(classesToZipFlags(ctx, classes))
+		rule.Temporary(filteredJar)
+
+		jars = android.Paths{filteredJar}
+	}
 
 	// Generate module-info.java into workDir
 	moduleInfoJava := workDir.Join(ctx, "module-info.java")
@@ -121,6 +139,17 @@ func TransformJarsToSystemModules(ctx android.ModuleContext, jars android.Paths)
 	}
 }
 
+func classesToZipFlags(ctx android.ModuleContext, classes []string) (zipFlags []string) {
+	for _, c := range classes {
+		spec, err := jacocoFilterToSpec(c)
+		if err != nil {
+			ctx.PropertyErrorf("classes", "%s", err.Error())
+		}
+		zipFlags = append(zipFlags, spec)
+	}
+	return
+}
+
 func SystemModulesFactory() android.Module {
 	module := &SystemModules{}
 	module.AddProperties(&module.properties)
@@ -145,6 +174,10 @@ type SystemModules struct {
 type SystemModulesProperties struct {
 	// List of java library modules that should be included in the system modules
 	Libs []string
+
+	// if set, a list of classes that should appear in the system modules.  Supports trailing ".*" to include all
+	// classes in a package and its subpackages.
+	Classes []string
 }
 
 func (system *SystemModules) GenerateAndroidBuildActions(ctx android.ModuleContext) {
@@ -157,7 +190,7 @@ func (system *SystemModules) GenerateAndroidBuildActions(ctx android.ModuleConte
 
 	system.headerJars = jars
 
-	system.outputDir, system.outputDeps = TransformJarsToSystemModules(ctx, jars)
+	system.outputDir, system.outputDeps = TransformJarsToSystemModules(ctx, jars, system.properties.Classes)
 }
 
 func (system *SystemModules) DepsMutator(ctx android.BottomUpMutatorContext) {
