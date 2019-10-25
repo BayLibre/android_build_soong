@@ -86,14 +86,6 @@ func init() {
 		// This is set up and guaranteed by soong_ui
 		return ctx.Config().Getenv("ANDROID_JAVA_HOME")
 	})
-	pctx.VariableFunc("JlinkVersion", func(ctx android.PackageVarContext) string {
-		switch ctx.Config().Getenv("EXPERIMENTAL_USE_OPENJDK11_TOOLCHAIN") {
-		case "true":
-			return "11"
-		default:
-			return "9"
-		}
-	})
 
 	pctx.SourcePathVariable("JavaToolchain", "${JavaHome}/bin")
 	pctx.SourcePathVariableWithEnvOverride("JavacCmd",
@@ -101,9 +93,6 @@ func init() {
 	pctx.SourcePathVariable("JavaCmd", "${JavaToolchain}/java")
 	pctx.SourcePathVariable("JarCmd", "${JavaToolchain}/jar")
 	pctx.SourcePathVariable("JavadocCmd", "${JavaToolchain}/javadoc")
-	pctx.SourcePathVariable("JlinkCmd", "${JavaToolchain}/jlink")
-	pctx.SourcePathVariable("JmodCmd", "${JavaToolchain}/jmod")
-	pctx.SourcePathVariable("JrtFsJar", "${JavaHome}/lib/jrt-fs.jar")
 	pctx.SourcePathVariable("JavaKytheExtractorJar", "prebuilts/build-tools/common/framework/javac_extractor.jar")
 	pctx.SourcePathVariable("Ziptime", "prebuilts/build-tools/${hostPrebuiltTag}/bin/ziptime")
 
@@ -216,9 +205,33 @@ func JavaCmd(ctx android.PathContext) android.SourcePath {
 	return javaTool(ctx, "java")
 }
 
+// JavacCmd returns a SourcePath object with the path to the javac command.
+func JavacCmd(ctx android.PathContext) android.SourcePath {
+	return javaTool(ctx, "javac")
+}
+
 // JavadocCmd returns a SourcePath object with the path to the java command.
 func JavadocCmd(ctx android.PathContext) android.SourcePath {
 	return javaTool(ctx, "javadoc")
+}
+
+// JmodCmd returns a SourcePath object with the path to the jmod command.
+func JmodCmd(ctx android.PathContext) android.SourcePath {
+	return javaTool(ctx, "jmod")
+}
+
+// JlinkCmd returns a SourcePath object with the path to the jlink command.
+func JlinkCmd(ctx android.PathContext) android.SourcePath {
+	return javaTool(ctx, "jlink")
+}
+
+var jrtFsJarKey = android.NewOnceKey("jrtFsJarKey")
+
+// JrtFsJar returns a SourcePath object with the path to the jrt-fs.jar file.
+func JrtFsJar(ctx android.PathContext) android.SourcePath {
+	return ctx.Config().OnceSourcePath(jrtFsJarKey, func() android.SourcePath {
+		return javaHome(ctx).Join(ctx, "lib/jrt-fs.jar")
+	})
 }
 
 func javaTool(ctx android.PathContext, tool string) android.SourcePath {
