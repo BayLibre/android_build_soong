@@ -246,6 +246,30 @@
       "revId": "e947d4abfcd426156b82fb6eec9b43751f87b04e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "117b71d8_273bdf88",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-10-25T05:53:43Z",
+      "side": 1,
+      "message": "This is ported from the old code which has been using TARGET_PRODUCT for the output file: https://cs.corp.google.com/android/build/make/core/tasks/vndk.mk?q\u003dvndk.mk\u0026sq\u003dpackage:%5Eandroid$\u0026dr\u0026l\u003d55\n\nBut as we now don\u0027t support 32-bit binder (aosp_arm64_ab, etc.), TARGET_PRODUCT doesn\u0027t need anymore, so I\u0027m reverting this back to DeviceArch().",
+      "parentUuid": "6588d7bb_f282f211",
+      "range": {
+        "startLine": 687,
+        "startChar": 71,
+        "endLine": 687,
+        "endChar": 108
+      },
+      "revId": "e947d4abfcd426156b82fb6eec9b43751f87b04e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
