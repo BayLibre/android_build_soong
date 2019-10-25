@@ -147,13 +147,13 @@ func TestHostForDevice(t *testing.T) {
 	resCombined := deviceModule.Output("res-combined/device_module.jar")
 
 	// check classpath of device module with dependency on host_for_device_module
-	expectedClasspath := "-classpath " + strings.Join(android.Paths{
+	expectedClasspath := strings.Join(android.Paths{
 		hostJavac.Output,
 		hostImportCombined.Output,
 	}.Strings(), ":")
 
-	if deviceJavac.Args["classpath"] != expectedClasspath {
-		t.Errorf("expected device_module javac classpath:\n%s\ngot:\n%s",
+	if !strings.HasSuffix(deviceJavac.Args["classpath"], expectedClasspath) {
+		t.Errorf("expected device_module javac classpath to end with:\n%s\ngot:\n%s",
 			expectedClasspath, deviceJavac.Args["classpath"])
 	}
 
