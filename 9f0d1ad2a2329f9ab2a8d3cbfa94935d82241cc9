@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67223b8e_96b86c44",
+        "filename": "apex/apex.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1228,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-10-25T18:20:25Z",
+      "side": 1,
+      "message": "I was hoping all this could be in art/build/art.go, but even if not it\u0027s still a lot better, thanks Ulya!",
+      "range": {
+        "startLine": 1220,
+        "startChar": 0,
+        "endLine": 1228,
+        "endChar": 2
+      },
+      "revId": "9f0d1ad2a2329f9ab2a8d3cbfa94935d82241cc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
