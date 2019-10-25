@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df0d7b8b_6cef7edc",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-25T05:14:51Z",
+      "side": 1,
+      "message": "var extraStaticDeps []string to avoid allocating the empty slice",
+      "range": {
+        "startLine": 851,
+        "startChar": 2,
+        "endLine": 851,
+        "endChar": 31
+      },
+      "revId": "c722b37c0599854c605945ae2892463dbee4d321",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
