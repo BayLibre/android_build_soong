@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "0b24e626_9dec9c82",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-10-25T15:42:16Z",
+      "side": 1,
+      "message": "Martin: I will see if it is that difficult to add a thin wrapper module \u0027art_apex\u0027 in art. May be wort the effort if we need to customize other things in future.",
+      "parentUuid": "aedd8a1a_b7067d0e",
+      "range": {
+        "startLine": 412,
+        "startChar": 61,
+        "endLine": 412,
+        "endChar": 83
+      },
+      "revId": "9b1654058b28cba5635312b5b370d8bd47724b45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "385c2d21_905d7849",
         "filename": "apex/apex.go",
         "patchSetId": 3
