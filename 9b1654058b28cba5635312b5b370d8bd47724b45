@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "aedd8a1a_b7067d0e",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-10-25T14:59:30Z",
+      "side": 1,
+      "message": "Imo it\u0027s a bad pattern to base the logic on name checks; it introduces hidden changes in behaviour and makes it impossible to understand how things work from the blueprints and docs like go/Android.bp. These rules should be generic and completely driven by arguments, and then it\u0027s up to the blueprints to use the arguments correctly.\n\nThe other clean option would be to specialise the module type for ART, but I suspect that would be tedious to put together on the Go level.\n\nI think the attribute in PS3 was a decidedly better approach than this, but I\u0027m not looking to hold up Ulya\u0027s CL with a readability debate between reviewers, so I\u0027ll just -1 and won\u0027t pursue.",
+      "parentUuid": "9017c905_1f323964",
+      "range": {
+        "startLine": 412,
+        "startChar": 61,
+        "endLine": 412,
+        "endChar": 83
+      },
+      "revId": "9b1654058b28cba5635312b5b370d8bd47724b45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "385c2d21_905d7849",
         "filename": "apex/apex.go",
         "patchSetId": 3
