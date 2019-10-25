@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99c70159_01af80fa",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-10-25T14:47:54Z",
+      "side": 1,
+      "message": "\"art\" could be better.",
+      "range": {
+        "startLine": 197,
+        "startChar": 56,
+        "endLine": 197,
+        "endChar": 68
+      },
+      "revId": "5af16c6e806b74bad739937ec2047ec4a86f2687",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57031c9a_21ee3511",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-10-25T14:47:54Z",
+      "side": 1,
+      "message": "ArtApexJars ?",
+      "range": {
+        "startLine": 201,
+        "startChar": 16,
+        "endLine": 201,
+        "endChar": 23
+      },
+      "revId": "5af16c6e806b74bad739937ec2047ec4a86f2687",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
