@@ -22,6 +22,30 @@
       "revId": "26f9c6443e49f4ae026dccd4ecba374f4711ea77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f147ec9b_6ae44ef9",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2095,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-25T23:15:29Z",
+      "side": 1,
+      "message": "I also thought that way first.\n\nBut to do that, i had to put some template string as the prop value. like following.\n\n  symlinks: [\n    \"/apex/com.android.art/bin/dalvikvm:$(TARGET_OUT)/bin/dalvikvm\",\n    \"/apex/com.android.art/bin/dex2oat:$(TARGET_OUT)/bin/dex2oat\",\n  ],\n\nIs this good?\nFurthermore, for vndk apex, apex_name and lib32/64 should be considered.\n\nWell, on second thought, apex{} could support normal cases like art/i18n like above. Soong handles apex_vndk as specialcasing.\n\nwhat do you think?",
+      "parentUuid": "2008c86c_382c95ce",
+      "range": {
+        "startLine": 2081,
+        "startChar": 0,
+        "endLine": 2095,
+        "endChar": 2
+      },
+      "revId": "26f9c6443e49f4ae026dccd4ecba374f4711ea77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
