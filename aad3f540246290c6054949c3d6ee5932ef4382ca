@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c44c6cc8_4d5d03a9",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-10-26T01:04:13Z",
+      "side": 1,
+      "message": ".json?",
+      "range": {
+        "startLine": 322,
+        "startChar": 47,
+        "endLine": 322,
+        "endChar": 50
+      },
+      "revId": "aad3f540246290c6054949c3d6ee5932ef4382ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eaa233b4_54d952f6",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-10-26T01:04:13Z",
+      "side": 1,
+      "message": "Nit: Capitals at start of comment (and below).",
+      "range": {
+        "startLine": 29,
+        "startChar": 4,
+        "endLine": 29,
+        "endChar": 9
+      },
+      "revId": "aad3f540246290c6054949c3d6ee5932ef4382ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dac46eb4_ac9506cc",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-10-26T01:04:13Z",
+      "side": 1,
+      "message": "Could we use RuleBuilder from above here? Something like:\n  builder.Command().\n    Text(\"echo\").\n    Flag(\"-e\").\n    Flag(`\"` + fuzz.Properties.Fuzz_config.String() + `\"`).\n    FlagWithOutput(\"\u003e \", configPath)\n \n... and change the text of the builder.Build() below from copy_corpus to something else sane.",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 11
+      },
+      "revId": "aad3f540246290c6054949c3d6ee5932ef4382ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
