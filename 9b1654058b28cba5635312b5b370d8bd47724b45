@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "9d3adbb3_5a6c28b6",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-26T05:43:23Z",
+      "side": 1,
+      "message": "I think hardcoding is better than exposing ART-specific properties to others. apex_art module type seems to be a good idea.",
+      "parentUuid": "e6338a92_6bef4892",
+      "range": {
+        "startLine": 412,
+        "startChar": 61,
+        "endLine": 412,
+        "endChar": 83
+      },
+      "revId": "9b1654058b28cba5635312b5b370d8bd47724b45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "385c2d21_905d7849",
         "filename": "apex/apex.go",
         "patchSetId": 3
