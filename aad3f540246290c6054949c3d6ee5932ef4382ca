@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "db65c2a4_ee14b773",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-10-26T01:31:27Z",
+      "side": 1,
+      "message": "JSON serialisation of this struct (https://play.golang.org/p/Iz-GIiIKzHT) might need:\n\n1. Explicit renaming, otherwise you have `\"Cc\": [\"foo\"]` instead of `\"cc\": [\"foo\"]` (use json field tags)\n2. (maybe) Values to be omitted when not present, otherwise they are output as `\"key\": null,` (use omitempty json field tag)",
+      "range": {
+        "startLine": 28,
+        "startChar": 5,
+        "endLine": 28,
+        "endChar": 15
+      },
+      "revId": "aad3f540246290c6054949c3d6ee5932ef4382ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eaa233b4_54d952f6",
         "filename": "cc/fuzz.go",
         "patchSetId": 10
