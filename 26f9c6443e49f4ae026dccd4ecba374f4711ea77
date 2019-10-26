@@ -46,6 +46,30 @@
       "revId": "26f9c6443e49f4ae026dccd4ecba374f4711ea77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bfe1514_d09d9818",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2095,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-26T05:19:33Z",
+      "side": 1,
+      "message": "I am +1 for doing this in soong, not in Android.bp because these still are special cases.",
+      "parentUuid": "f147ec9b_6ae44ef9",
+      "range": {
+        "startLine": 2081,
+        "startChar": 0,
+        "endLine": 2095,
+        "endChar": 2
+      },
+      "revId": "26f9c6443e49f4ae026dccd4ecba374f4711ea77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
