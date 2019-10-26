@@ -68,6 +68,30 @@
       "revId": "aad3f540246290c6054949c3d6ee5932ef4382ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59777c45_4091faf2",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-10-26T01:08:15Z",
+      "side": 1,
+      "message": "/s/\u003clast sentence\u003e/builder.Build() above here would need to be moved below this command and changed from copy_corpus to something else sane",
+      "parentUuid": "dac46eb4_ac9506cc",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 11
+      },
+      "revId": "aad3f540246290c6054949c3d6ee5932ef4382ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
