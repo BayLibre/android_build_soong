@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "6c835e56_fea8e542",
+        "filename": "rust/test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2019-10-28T22:50:20Z",
+      "side": 1,
+      "message": "Sorry, my initial comment doesn\u0027t make sense now that I look at it again; what you\u0027ve got in the latest patchset LGTM :)",
+      "parentUuid": "abaa2569_fa90d61b",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 54
+      },
+      "revId": "a7db803ce94fbd22ac639fbf72a7da2cdc9a8a28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8515ef0e_641b0e79",
         "filename": "rust/test.go",
         "patchSetId": 7
