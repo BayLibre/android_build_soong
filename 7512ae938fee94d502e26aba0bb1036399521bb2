@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68e90816_656768d5",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 890,
+      "author": {
+        "id": 1203210
+      },
+      "writtenOn": "2019-10-28T12:07:04Z",
+      "side": 1,
+      "message": "It\u0027s up to you, but do you think this would be better as a TODO(b/XXX)?",
+      "revId": "7512ae938fee94d502e26aba0bb1036399521bb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "adad014e_7ded818b",
+        "filename": "java/sdk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1203210
+      },
+      "writtenOn": "2019-10-28T12:07:04Z",
+      "side": 1,
+      "message": "Are we ready to do this TODO yet? No is an acceptable answer :-).",
+      "revId": "7512ae938fee94d502e26aba0bb1036399521bb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
