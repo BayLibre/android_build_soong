@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79e8e07c_65933983",
+        "filename": "java/system_modules.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1203210
+      },
+      "writtenOn": "2019-10-28T12:00:02Z",
+      "side": 1,
+      "message": "Just for clarity, can this say what happens if it\u0027s *not* set, i.e. whether everything or nothing is in the system modules?",
+      "revId": "fe477a2fd23cc82bb902ecdc5260fb96a1e24b64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
