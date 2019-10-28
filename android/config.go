@@ -1098,6 +1098,10 @@ func (c *config) EnforceSystemCertificateWhitelist() []string {
 	return c.productVariables.EnforceSystemCertificateWhitelist
 }
 
+func (c *config) EnforceProductPartition() bool {
+	return Bool(c.productVariables.EnforceProductPartition)
+}
+
 func (c *config) ProductHiddenAPIStubs() []string {
 	return c.productVariables.ProductHiddenAPIStubs
 }
