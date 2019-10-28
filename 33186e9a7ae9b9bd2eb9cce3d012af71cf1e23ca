@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55a170d1_c794bd5c",
+        "filename": "java/system_modules.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-10-28T17:59:10Z",
+      "side": 1,
+      "message": "\u0027classes\u0027 is very generic name, please rename it.",
+      "range": {
+        "startLine": 35,
+        "startChar": 81,
+        "endLine": 35,
+        "endChar": 88
+      },
+      "revId": "33186e9a7ae9b9bd2eb9cce3d012af71cf1e23ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3539159b_0273ee2f",
+        "filename": "java/system_modules.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-10-28T17:59:10Z",
+      "side": 1,
+      "message": "This function returns the list of the filespecs, IMHO its name should reflect that rather than the fact that it\u0027s used as zip (actually zip2zip) command line flags.",
+      "range": {
+        "startLine": 142,
+        "startChar": 5,
+        "endLine": 142,
+        "endChar": 22
+      },
+      "revId": "33186e9a7ae9b9bd2eb9cce3d012af71cf1e23ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fb242b7_9f95993e",
+        "filename": "java/system_modules.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-10-28T17:59:10Z",
+      "side": 1,
+      "message": "If this function is useful outside jacoco.go, why not move it to utils and rename it. Moreover, jacocoFilterToSpecs first does that same as the loop here and then feeds it to escaper, so it can be rearranged, too.",
+      "range": {
+        "startLine": 144,
+        "startChar": 15,
+        "endLine": 144,
+        "endChar": 33
+      },
+      "revId": "33186e9a7ae9b9bd2eb9cce3d012af71cf1e23ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
