@@ -22,6 +22,30 @@
       "revId": "753a28e3546a8d3a928a4a803717bb1cf30d108a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd978c54_988718a6",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1169,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2019-10-28T23:59:44Z",
+      "side": 1,
+      "message": "I don\u0027t have an opinion on which approach should be used.  But I can confirm that my Go device also boots when we have a clean build and use \"!a.vndkApex\" here.\n\nSo with either choice, I\u0027m able to verify it works.  I\u0027ll leave it to those who know this code to decide which option to use.",
+      "parentUuid": "f25ee704_68a2ca45",
+      "range": {
+        "startLine": 1169,
+        "startChar": 12,
+        "endLine": 1169,
+        "endChar": 41
+      },
+      "revId": "753a28e3546a8d3a928a4a803717bb1cf30d108a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
