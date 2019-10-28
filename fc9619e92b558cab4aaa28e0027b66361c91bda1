@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8b4b8c1_9b10211b",
+        "filename": "sdk/update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-28T23:23:12Z",
+      "side": 1,
+      "message": "This is a dangerous pattern, hanging on to pointers into other modules for too long can result in stale data.  It\u0027s fine here as this is in GenerateAndroidBuildActions which is after all mutators, but would cause hard to debug problems if this got moved to a mutator.  Would it be possible to collect the signatures, nativeStubFilePathFor, etc. for each module from inside VisitDirectDeps?",
+      "range": {
+        "startLine": 88,
+        "startChar": 11,
+        "endLine": 88,
+        "endChar": 21
+      },
+      "revId": "fc9619e92b558cab4aaa28e0027b66361c91bda1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c5a5453_a8f901ed",
+        "filename": "sdk/update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-28T23:23:12Z",
+      "side": 1,
+      "message": "infoMap[depName] \u003d nativeLibInfo{name: depName}\n\nAvoid initializing slices to []type{}, that creates an empty slice, a nil slice is always cheaper.",
+      "range": {
+        "startLine": 107,
+        "startChar": 3,
+        "endLine": 111,
+        "endChar": 27
+      },
+      "revId": "fc9619e92b558cab4aaa28e0027b66361c91bda1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27d2984f_32a0f1e2",
+        "filename": "sdk/update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-28T23:23:12Z",
+      "side": 1,
+      "message": "var list []*nativeLibInfo",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 27
+      },
+      "revId": "fc9619e92b558cab4aaa28e0027b66361c91bda1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa692413_1014ba1a",
+        "filename": "sdk/update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-28T23:23:12Z",
+      "side": 1,
+      "message": "var result []string",
+      "range": {
+        "startLine": 188,
+        "startChar": 1,
+        "endLine": 188,
+        "endChar": 21
+      },
+      "revId": "fc9619e92b558cab4aaa28e0027b66361c91bda1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7785adb1_dec42edd",
+        "filename": "sdk/update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-28T23:23:12Z",
+      "side": 1,
+      "message": "var includeDirs []android.Path",
+      "range": {
+        "startLine": 191,
+        "startChar": 1,
+        "endLine": 191,
+        "endChar": 32
+      },
+      "revId": "fc9619e92b558cab4aaa28e0027b66361c91bda1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0067a799_02d8b0fa",
+        "filename": "sdk/update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-28T23:23:12Z",
+      "side": 1,
+      "message": "HasPrefix?",
+      "range": {
+        "startLine": 199,
+        "startChar": 20,
+        "endLine": 199,
+        "endChar": 29
+      },
+      "revId": "fc9619e92b558cab4aaa28e0027b66361c91bda1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c942844_906db188",
+        "filename": "sdk/update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-28T23:23:12Z",
+      "side": 1,
+      "message": "I\u0027m worried about properties like this.  If I understand this correctly, Soong from one branch is going to generate an Android.bp file that will be checked in to another branch, but we make no guarantee that the syntax or semantics of properties will be identical across branches.  Would it be better to write out some sort of descriptor as JSON or protobuf, and then have an importer in the receiving branch that can convert it into whatever the local branches Android.bp format is?  That way you can regenerate all of these from their descriptors if the properties need to change, or you can regenerate an old descriptor with a fix and import it into a new branch.",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 40
+      },
+      "revId": "fc9619e92b558cab4aaa28e0027b66361c91bda1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c55ed8e_d0b1939a",
+        "filename": "sdk/update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-28T23:23:12Z",
+      "side": 1,
+      "message": "HasPrefix?",
+      "range": {
+        "startLine": 396,
+        "startChar": 19,
+        "endLine": 396,
+        "endChar": 28
+      },
+      "revId": "fc9619e92b558cab4aaa28e0027b66361c91bda1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
