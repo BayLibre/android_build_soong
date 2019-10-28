@@ -1,0 +1,9 @@
+Code-Review+2: Colin Cross <ccross@android.com>
+Code-Review+1: Mitch Phillips <mitchp@google.com>
+Code-Review+2: Hamzeh Zawawy <hamzeh@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Kris Alder <kalder@google.com>
+Submitted-at: Mon, 28 Oct 2019 23:24:32 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1148249
+Project: platform/build/soong
+Branch: refs/heads/master
