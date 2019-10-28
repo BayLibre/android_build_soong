@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08245a04_e70f4f0d",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-28T23:27:12Z",
+      "side": 1,
+      "message": "This seems dangerous, what if something has already read j.deviceProperties.Sdk_version?",
+      "revId": "9a986abb65f138482b64c81b95ee6aaab9004613",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da4f2dea_0a72957d",
+        "filename": "java/java_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-28T23:27:12Z",
+      "side": 1,
+      "message": "blueprint imports go above android/soong imports",
+      "revId": "9a986abb65f138482b64c81b95ee6aaab9004613",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
