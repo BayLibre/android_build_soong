@@ -451,6 +451,9 @@ type apexBundleProperties struct {
 	// is implied. This value affects all modules included in this APEX. In other words, they are
 	// also built with the SDKs specified here.
 	Uses_sdks []string
+
+	// if true, apex bundle packages only declared dependencies.
+	DoNotFollowDeps bool `blueprint:"mutated"`
 }
 
 type apexTargetBundleProperties struct {
@@ -1163,7 +1166,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 					ctx.PropertyErrorf("apps", "%q is not an android_app module", depName)
 				}
 			}
-		} else {
+		} else if !a.properties.DoNotFollowDeps {
 			// indirect dependencies
 			if am, ok := child.(android.ApexModule); ok {
 				// We cannot use a switch statement on `depTag` here as the checked
@@ -1833,6 +1836,7 @@ func BundleFactory() android.Module {
 func vndkApexBundleFactory() android.Module {
 	bundle := newApexBundle()
 	bundle.vndkApex = true
+	bundle.properties.DoNotFollowDeps = true
 	bundle.AddProperties(&bundle.vndkProperties)
 	android.AddLoadHook(bundle, func(ctx android.LoadHookContext) {
 		ctx.AppendProperties(&struct {
