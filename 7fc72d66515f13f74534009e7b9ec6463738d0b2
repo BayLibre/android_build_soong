@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44d4de4c_9d084ef6",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2001,
+      "author": {
+        "id": 1329611
+      },
+      "writtenOn": "2019-10-28T07:41:11Z",
+      "side": 1,
+      "message": "We can separate these info to another jason, to prevent module_bp_java too large.",
+      "revId": "7fc72d66515f13f74534009e7b9ec6463738d0b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
