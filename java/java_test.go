@@ -27,6 +27,8 @@ import (
 	"android/soong/cc"
 	"android/soong/dexpreopt"
 	"android/soong/genrule"
+
+	"github.com/google/blueprint/proptools"
 )
 
 var buildDir string
@@ -96,6 +98,9 @@ func testContext(bp string, fs map[string][]byte) *android.TestContext {
 	ctx.PreArchMutators(android.RegisterDefaultsPreArchMutators)
 	ctx.PreArchMutators(func(ctx android.RegisterMutatorsContext) {
 		ctx.TopDown("prebuilt_apis", PrebuiltApisMutator).Parallel()
+	})
+	ctx.PreDepsMutators(func(ctx android.RegisterMutatorsContext) {
+		ctx.TopDown("sdk_version_mutator", sdkVersionMutator).Parallel()
 	})
 	ctx.PostDepsMutators(android.RegisterOverridePostDepsMutators)
 	ctx.RegisterPreSingletonType("overlay", android.SingletonFactoryAdaptor(OverlaySingletonFactory))
@@ -260,6 +265,14 @@ func testJava(t *testing.T, bp string) (*android.TestContext, android.Config) {
 	return ctx, config
 }
 
+func testJavaWithConfig(t *testing.T, bp string, config android.Config) (*android.TestContext, android.Config) {
+	t.Helper()
+	ctx := testContext(bp, nil)
+	run(t, ctx, config)
+
+	return ctx, config
+}
+
 func moduleToPath(name string) string {
 	switch {
 	case name == `""`:
@@ -341,6 +354,29 @@ func TestSdkVersion(t *testing.T) {
 	}
 }
 
+func TestSdkVersionInProduct(t *testing.T) {
+	for _, enforce := range []bool{true, false} {
+
+		config := testConfig(nil)
+		config.TestProductVariables.EnforceProductPartitionInterface = proptools.BoolPtr(enforce)
+		ctx, _ := testJavaWithConfig(t, `
+			java_library {
+				name: "foo",
+				srcs: ["a.java"],
+				product_specific: true,
+			}
+		`, config)
+
+		foo := ctx.ModuleForTests("foo", "android_common").Module().(*Library)
+
+		if enforce && foo.sdkVersion() != "system_current" {
+			t.Errorf("When sdk version of product module is empty, it must change to system_current only if EnforceProductPartitionInterface is true.")
+		}
+		if !enforce && foo.sdkVersion() == "system_current" {
+			t.Errorf("If EnforceProductPartitionInterface isn't set, sdk version of product must not change its own value.")
+		}
+	}
+}
 func TestArchSpecific(t *testing.T) {
 	ctx, _ := testJava(t, `
 		java_library {
