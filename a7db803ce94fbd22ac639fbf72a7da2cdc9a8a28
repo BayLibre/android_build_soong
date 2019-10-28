@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "50dc96c4_cf9da92d",
+        "filename": "rust/binary.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2019-10-28T21:16:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebccc73e_8fe228ae",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 53
+      },
+      "revId": "a7db803ce94fbd22ac639fbf72a7da2cdc9a8a28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "609ff744_d93d1b1f",
         "filename": "rust/test.go",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2019-10-25T22:28:47Z",
       "side": 1,
       "message": "You could remove NewRustTest by instead calling NewRustBinary here, then modifying the returned binary.baseCompiler.dir value.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 54
+      },
+      "revId": "a7db803ce94fbd22ac639fbf72a7da2cdc9a8a28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abaa2569_fa90d61b",
+        "filename": "rust/test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2019-10-28T21:16:34Z",
+      "side": 1,
+      "message": "Do you mean replacing the binaryDecorator created by NewRustBinary with a newly created testBinaryDecorator? Then, there is not much reuse, right? I think following other suggestions, we should make NewRustTest also return 2 values, although the 2nd one is ignored too. There are more duplicated code now, but if similarity to old code is more important.",
+      "parentUuid": "609ff744_d93d1b1f",
       "range": {
         "startLine": 52,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7494055f_350dc60a",
+        "filename": "rust/test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2019-10-28T21:16:34Z",
+      "side": 1,
+      "message": "I don\u0027t have a design for multiple binary source yet.\nJust leave a place holder here for now.",
+      "parentUuid": "8515ef0e_641b0e79",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 74
+      },
+      "revId": "a7db803ce94fbd22ac639fbf72a7da2cdc9a8a28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8bbc5993_f4615ddb",
         "filename": "rust/test.go",
         "patchSetId": 7
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "d5780932_5db5e238",
+        "filename": "rust/test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2019-10-28T21:16:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bbc5993_f4615ddb",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 34
+      },
+      "revId": "a7db803ce94fbd22ac639fbf72a7da2cdc9a8a28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d45a3646_ac292942",
         "filename": "rust/test.go",
         "patchSetId": 7
@@ -114,6 +210,30 @@
       "revId": "a7db803ce94fbd22ac639fbf72a7da2cdc9a8a28",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13f38249_76c2d643",
+        "filename": "rust/test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2019-10-28T21:16:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d45a3646_ac292942",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 37
+      },
+      "revId": "a7db803ce94fbd22ac639fbf72a7da2cdc9a8a28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
