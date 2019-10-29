@@ -70,6 +70,30 @@
       "revId": "753a28e3546a8d3a928a4a803717bb1cf30d108a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87e8148c_b6385e47",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1169,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-29T02:02:39Z",
+      "side": 1,
+      "message": "Thanks Greg,\n\nJiyong, Done.\n\nI\u0027d like to share my intention :-). I usually limit the usage of special casing flags. Otherwise, flags would get overloaded more and more even though each usage might have a different specific need. By distilling its usage with \"seemingly generic\" variables, code becomes easier to read.",
+      "parentUuid": "584b16b0_348e1f6c",
+      "range": {
+        "startLine": 1169,
+        "startChar": 12,
+        "endLine": 1169,
+        "endChar": 41
+      },
+      "revId": "753a28e3546a8d3a928a4a803717bb1cf30d108a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
