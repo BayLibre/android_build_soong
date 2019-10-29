@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e416e9e4_824ac8dc",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-29T23:01:17Z",
+      "side": 1,
+      "message": "Can you copy the documentation here so it is more easily readable in go/Android.bp?",
+      "revId": "4edeea7418906f5b16be2db624785e2fe9dcfe34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
