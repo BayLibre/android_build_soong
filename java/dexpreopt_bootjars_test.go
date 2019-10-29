@@ -54,6 +54,9 @@ func TestDexpreoptBootJars(t *testing.T) {
 	ctx := testContext(bp, nil)
 
 	ctx.RegisterSingletonType("dex_bootjars", android.SingletonFactoryAdaptor(dexpreoptBootJarsFactory))
+	ctx.PreDepsMutators(func(ctx android.RegisterMutatorsContext) {
+		ctx.BottomUp("collect_java_stem", StemCollectorMutator).Parallel()
+	})
 
 	run(t, ctx, config)
 
