@@ -70,10 +70,11 @@ func (image bootImageConfig) moduleFiles(ctx android.PathContext, dir android.Ou
 	// exists), and the rest are converted to 'name'-<jar>.art.
 	// In addition, each .art file has an associated .oat and .vdex file, and an
 	// unstripped .oat file
+	stemOf := stemMap()
 	for i, m := range image.modules {
 		name := image.name
 		if i != 0 {
-			name += "-" + m
+			name += "-" + stemOf[m]
 		}
 
 		for _, ext := range exts {

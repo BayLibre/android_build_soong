@@ -17,10 +17,17 @@ package java
 import (
 	"path/filepath"
 	"strings"
+	"sync"
 
 	"android/soong/android"
 	"android/soong/dexpreopt"
 )
+
+func init() {
+	android.PreDepsMutators(func(ctx android.RegisterMutatorsContext) {
+		ctx.BottomUp("collect_java_stem", StemCollectorMutator).Parallel()
+	})
+}
 
 // dexpreoptGlobalConfig returns the global dexpreopt.config.  It is loaded once the first time it is called for any
 // ctx.Config(), and returns the same data for all future calls with the same ctx.Config().  A value can be inserted
@@ -96,6 +103,26 @@ func dexpreoptTargets(ctx android.PathContext) []android.Target {
 	return targets
 }
 
+var (
+	stemMapOnce  android.OncePer
+	stemMapMutex sync.Mutex
+	stemMapKey   = android.NewOnceKey("stemmap")
+)
+
+func stemMap() map[string]string {
+	return stemMapOnce.Once(stemMapKey, func() interface{} {
+		return make(map[string]string)
+	}).(map[string]string)
+}
+
+func StemCollectorMutator(mctx android.BottomUpMutatorContext) {
+	if j, ok := mctx.Module().(interface{ Stem() string }); ok {
+		stemMapMutex.Lock()
+		stemMap()[mctx.ModuleName()] = j.Stem()
+		defer stemMapMutex.Unlock()
+	}
+}
+
 func getBootImageConfig(ctx android.PathContext, key android.OnceKey, name string,
 	needZip bool) bootImageConfig {
 	return ctx.Config().Once(key, func() interface{} {
@@ -105,17 +132,18 @@ func getBootImageConfig(ctx android.PathContext, key android.OnceKey, name strin
 		nonFrameworkModules := concat(artModules, global.ProductUpdatableBootModules)
 		frameworkModules := android.RemoveListFromList(global.BootJars, nonFrameworkModules)
 		imageModules := concat(artModules, frameworkModules)
+		stemOf := stemMap()
 
 		var bootLocations []string
 
 		for _, m := range artModules {
 			bootLocations = append(bootLocations,
-				filepath.Join("/apex/com.android.art/javalib", m+".jar"))
+				filepath.Join("/apex/com.android.art/javalib", stemOf[m]+".jar"))
 		}
 
 		for _, m := range frameworkModules {
 			bootLocations = append(bootLocations,
-				filepath.Join("/system/framework", m+".jar"))
+				filepath.Join("/system/framework", stemOf[m]+".jar"))
 		}
 
 		// The path to bootclasspath dex files needs to be known at module GenerateAndroidBuildAction time, before
@@ -125,7 +153,7 @@ func getBootImageConfig(ctx android.PathContext, key android.OnceKey, name strin
 		var bootDexPaths android.WritablePaths
 		for _, m := range imageModules {
 			bootDexPaths = append(bootDexPaths,
-				android.PathForOutput(ctx, ctx.Config().DeviceName(), "dex_"+name+"jars_input", m+".jar"))
+				android.PathForOutput(ctx, ctx.Config().DeviceName(), "dex_"+name+"jars_input", stemOf[m]+".jar"))
 		}
 
 		dir := android.PathForOutput(ctx, ctx.Config().DeviceName(), "dex_"+name+"jars")
