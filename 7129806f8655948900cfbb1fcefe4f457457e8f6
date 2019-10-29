@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f374997_32178fb5",
+        "filename": "rust/test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-29T20:22:55Z",
+      "side": 1,
+      "message": "Does rust not support tests in a single binary?  test_per_src is pretty hacky, and doesn\u0027t integrate well with the rest of the test infrastructure.",
+      "revId": "7129806f8655948900cfbb1fcefe4f457457e8f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
