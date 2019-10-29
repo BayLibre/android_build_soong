@@ -666,6 +666,46 @@ func TestJNIABI(t *testing.T) {
 	}
 }
 
+func TestSdkVersion(t *testing.T) {
+	testJavaError(t, "platform_apis must be empty when the module is located at vendor or product", `
+		android_app {
+			name: "foo",
+			srcs: ["a.java"],
+			vendor: true,
+			platform_apis: true,
+		}
+	`)
+
+	testJava(t, `
+		android_app {
+			name: "bar",
+			srcs: ["b.java"],
+			platform_apis: true,
+		}
+	`)
+}
+
+func TestSdkVersionInProduct(t *testing.T) {
+	for _, enforce := range []bool{true, false} {
+
+		config := testConfig(nil)
+		config.TestProductVariables.EnforceProductPartitionInterface = proptools.BoolPtr(enforce)
+		bp := `
+			android_app {
+				name: "foo",
+				srcs: ["a.java"],
+				product_specific: true,
+				platform_apis: true,
+			}
+		`
+		if enforce {
+			testJavaErrorWithConfig(t, "platform_apis must be empty when the module is located at vendor or product", bp, config)
+		} else {
+			testJavaWithConfig(t, bp, config)
+		}
+	}
+}
+
 func TestJNIPackaging(t *testing.T) {
 	ctx, _ := testJava(t, cc.GatherRequiredDepsForTest(android.Android)+`
 		cc_library {
