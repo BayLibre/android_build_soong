@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "301101ba_f33e8c4e",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1203210
+      },
+      "writtenOn": "2019-10-29T11:20:12Z",
+      "side": 1,
+      "message": "According to the docs for javac, we should actually be using -source 9 -target 9 rather than -source 1.9 -target 1.9. Clearly the latter works, though. I made a brief effort to fix this and gave up because of all the places that did conditions like javaVersion \u003d\u003d \"1.9\". It should be much easier now that it\u0027s an enum.\n\nPro: We\u0027re not relying on an undocumented behaviour of javac.\nCon: It\u0027s an unnecessary change and possibly risky.\n\nWhat do you think?\n\nMaybe we should not do it in this change, since it\u0027s a behavioural change rather than a refactoring. We could consider it as a self-contained follow-up.",
+      "revId": "1e7438524b7e28c5f58c6ab380a53777c221dc70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
