@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c926328_16ff5f76",
+        "filename": "java/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1203210
+      },
+      "writtenOn": "2019-10-29T11:24:17Z",
+      "side": 1,
+      "message": "Nit: This isn\u0027t quite accurate, it returns a two values of which this is the first.",
+      "revId": "6c5c0238dad07673df0b6511127dfce77bf767d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
