@@ -124,6 +124,24 @@
       "revId": "7129806f8655948900cfbb1fcefe4f457457e8f6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1a1476d_388fd1ca",
+        "filename": "rust/test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2019-10-29T21:24:20Z",
+      "side": 1,
+      "message": "See example in c/1133123 or go/aog/1133123.\n3 tests under tests directory can share common module properties,\nand 1 embedded in src/lib.rs needs to be built with different rlibs.\nYes, Rust cargo builds one binary for each test source file.\nSingle source file under tests is less common for well tested packages.\nSo I prefer consistent mapping to the install path even for a single test file.",
+      "parentUuid": "89c62dfa_21ba0a78",
+      "revId": "7129806f8655948900cfbb1fcefe4f457457e8f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
