@@ -46,6 +46,30 @@
       "revId": "753a28e3546a8d3a928a4a803717bb1cf30d108a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "584b16b0_348e1f6c",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1169,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-29T01:19:14Z",
+      "side": 1,
+      "message": "Thanks for the confirmation.\n\nJooyung, vndkApex is already the switch to special case VNDK APEX. Having another seemingly generic (but actually only for the VNDK APEX) switch doesn\u0027t look good.",
+      "parentUuid": "bd978c54_988718a6",
+      "range": {
+        "startLine": 1169,
+        "startChar": 12,
+        "endLine": 1169,
+        "endChar": 41
+      },
+      "revId": "753a28e3546a8d3a928a4a803717bb1cf30d108a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
