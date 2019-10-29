@@ -70,6 +70,24 @@
       "revId": "7129806f8655948900cfbb1fcefe4f457457e8f6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89c62dfa_21ba0a78",
+        "filename": "rust/test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-29T20:40:20Z",
+      "side": 1,
+      "message": "That would work better for the testing infrastructure as long as TestPerSrcMutator didn\u0027t mutate the one src file, but it could also be a pain to maintain for projects with lots of tests.",
+      "parentUuid": "78368ef5_c4c5a407",
+      "revId": "7129806f8655948900cfbb1fcefe4f457457e8f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
