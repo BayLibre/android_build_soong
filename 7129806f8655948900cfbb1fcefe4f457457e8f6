@@ -16,6 +16,24 @@
       "revId": "7129806f8655948900cfbb1fcefe4f457457e8f6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b11e488_f33d921b",
+        "filename": "rust/test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2019-10-29T20:28:24Z",
+      "side": 1,
+      "message": "Some rust packages have single source file in the tests directory, but most well tested packages will have multiple files. It\u0027s not like C++ or Java unit tests that combine multiple source files into one binary. If in the future we have some way to combine multiple sources into one, here is the place to change.",
+      "parentUuid": "1f374997_32178fb5",
+      "revId": "7129806f8655948900cfbb1fcefe4f457457e8f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
