@@ -34,6 +34,24 @@
       "revId": "7129806f8655948900cfbb1fcefe4f457457e8f6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a55c734_5baeeef3",
+        "filename": "rust/test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-29T20:32:31Z",
+      "side": 1,
+      "message": "That\u0027s unfortunate, and is going to prevent using rust tests in TEST_MAPPING files, atest, etc.  Maybe this should be \"return len(test.srcs()) \u003e 1\"?",
+      "parentUuid": "8b11e488_f33d921b",
+      "revId": "7129806f8655948900cfbb1fcefe4f457457e8f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
