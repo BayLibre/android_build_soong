@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "83d82a6e_80152d13",
+        "filename": "sdk/update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-29T03:28:07Z",
+      "side": 1,
+      "message": "Thanks for pointing that out. Done.",
+      "parentUuid": "a8b4b8c1_9b10211b",
+      "range": {
+        "startLine": 88,
+        "startChar": 11,
+        "endLine": 88,
+        "endChar": 21
+      },
+      "revId": "fc9619e92b558cab4aaa28e0027b66361c91bda1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c5a5453_a8f901ed",
         "filename": "sdk/update.go",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "fc9619e92b558cab4aaa28e0027b66361c91bda1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37bcf068_2ff3eba6",
+        "filename": "sdk/update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-29T03:28:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c5a5453_a8f901ed",
+      "range": {
+        "startLine": 107,
+        "startChar": 3,
+        "endLine": 111,
+        "endChar": 27
+      },
+      "revId": "fc9619e92b558cab4aaa28e0027b66361c91bda1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "094da905_d2fef73d",
+        "filename": "sdk/update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-29T03:28:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27d2984f_32a0f1e2",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 27
+      },
+      "revId": "fc9619e92b558cab4aaa28e0027b66361c91bda1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fa692413_1014ba1a",
         "filename": "sdk/update.go",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "fc9619e92b558cab4aaa28e0027b66361c91bda1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5bb4ef1_6ba2fc88",
+        "filename": "sdk/update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-29T03:28:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa692413_1014ba1a",
+      "range": {
+        "startLine": 188,
+        "startChar": 1,
+        "endLine": 188,
+        "endChar": 21
+      },
+      "revId": "fc9619e92b558cab4aaa28e0027b66361c91bda1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "27fe19e9_5288599b",
+        "filename": "sdk/update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-29T03:28:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7785adb1_dec42edd",
+      "range": {
+        "startLine": 191,
+        "startChar": 1,
+        "endLine": 191,
+        "endChar": 32
+      },
+      "revId": "fc9619e92b558cab4aaa28e0027b66361c91bda1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0067a799_02d8b0fa",
         "filename": "sdk/update.go",
         "patchSetId": 4
@@ -137,6 +257,30 @@
       "revId": "fc9619e92b558cab4aaa28e0027b66361c91bda1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0f31507_44c1ea51",
+        "filename": "sdk/update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-29T03:28:07Z",
+      "side": 1,
+      "message": "You are right. Thanks.",
+      "parentUuid": "0067a799_02d8b0fa",
+      "range": {
+        "startLine": 199,
+        "startChar": 20,
+        "endLine": 199,
+        "endChar": 29
+      },
+      "revId": "fc9619e92b558cab4aaa28e0027b66361c91bda1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "9a462ef2_37853967",
+        "filename": "sdk/update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-29T03:28:07Z",
+      "side": 1,
+      "message": "I in general agree with you, but I want to introduce the intermediate format after we really introduce such a breaking change. Making the importer, maintaining it, running it every time we update an SDK all will be a quite burden to me and others, especially given that everything is one the same branch (at least in R).",
+      "parentUuid": "2c942844_906db188",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 40
+      },
+      "revId": "fc9619e92b558cab4aaa28e0027b66361c91bda1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c55ed8e_d0b1939a",
         "filename": "sdk/update.go",
         "patchSetId": 4
@@ -183,6 +351,30 @@
       "revId": "fc9619e92b558cab4aaa28e0027b66361c91bda1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cccfb9f_00262523",
+        "filename": "sdk/update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-29T03:28:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c55ed8e_d0b1939a",
+      "range": {
+        "startLine": 396,
+        "startChar": 19,
+        "endLine": 396,
+        "endChar": 28
+      },
+      "revId": "fc9619e92b558cab4aaa28e0027b66361c91bda1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
