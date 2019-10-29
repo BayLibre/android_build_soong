@@ -19,6 +19,8 @@ import (
 	"io"
 	"strings"
 
+	"github.com/google/blueprint/proptools"
+
 	"android/soong/android"
 )
 
@@ -51,6 +53,9 @@ func (library *Library) AndroidMkHostDex(w io.Writer, name string, entries *andr
 		}
 		if r := library.deviceProperties.Target.Hostdex.Required; len(r) > 0 {
 			fmt.Fprintln(w, "LOCAL_REQUIRED_MODULES +=", strings.Join(r, " "))
+		}
+		if library.deviceProperties.Stem != nil {
+			fmt.Fprintln(w, "LOCAL_MODULE_STEM +=", proptools.String(library.deviceProperties.Stem))
 		}
 		fmt.Fprintln(w, "include $(BUILD_SYSTEM)/soong_java_prebuilt.mk")
 	}
@@ -101,6 +106,9 @@ func (library *Library) AndroidMkEntries() android.AndroidMkEntries {
 
 				if library.proguardDictionary != nil {
 					entries.SetPath("LOCAL_SOONG_PROGUARD_DICT", library.proguardDictionary)
+				}
+				if library.deviceProperties.Stem != nil {
+					entries.SetString("LOCAL_MODULE_STEM", proptools.String(library.deviceProperties.Stem))
 				}
 			},
 		},
@@ -160,6 +168,9 @@ func (prebuilt *Import) AndroidMkEntries() android.AndroidMkEntries {
 				entries.SetPath("LOCAL_SOONG_HEADER_JAR", prebuilt.combinedClasspathFile)
 				entries.SetPath("LOCAL_SOONG_CLASSES_JAR", prebuilt.combinedClasspathFile)
 				entries.SetString("LOCAL_SDK_VERSION", prebuilt.sdkVersion())
+				if prebuilt.properties.Stem != nil {
+					entries.SetString("LOCAL_MODULE_STEM", proptools.String(prebuilt.properties.Stem))
+				}
 			},
 		},
 	}
@@ -186,6 +197,9 @@ func (prebuilt *DexImport) AndroidMkEntries() android.AndroidMkEntries {
 				}
 				if len(prebuilt.dexpreopter.builtInstalled) > 0 {
 					entries.SetString("LOCAL_SOONG_BUILT_INSTALLED", prebuilt.dexpreopter.builtInstalled)
+				}
+				if prebuilt.properties.Stem != nil {
+					entries.SetString("LOCAL_MODULE_STEM", proptools.String(prebuilt.properties.Stem))
 				}
 			},
 		},
