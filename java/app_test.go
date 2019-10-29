@@ -666,6 +666,63 @@ func TestJNIABI(t *testing.T) {
 	}
 }
 
+func assertBoolean(t *testing.T, got, expected bool) {
+	if got != expected {
+		t.Errorf("expected %q got %q", expected, got)
+	}
+}
+
+func assertTrue(t *testing.T, got bool) {
+	t.Helper()
+	assertBoolean(t, got, true)
+}
+
+func assertFalse(t *testing.T, got bool) {
+	t.Helper()
+	assertBoolean(t, got, false)
+}
+
+func TestSdkVersion(t *testing.T) {
+	ctx, config := testJava(t, `
+		android_app {
+			name: "foo",
+			srcs: ["a.java"],
+			vendor: true,
+			platform_apis: true,
+		}
+		android_app {
+			name: "bar",
+			srcs: ["b.java"],
+			platform_apis: true,
+		}
+	`)
+
+	foo := ctx.ModuleForTests("foo", "android_common").Module().(*AndroidApp)
+	bar := ctx.ModuleForTests("bar", "android_common").Module().(*AndroidApp)
+
+	assertFalse(t, foo.checkSdkVersion(config))
+	assertTrue(t, bar.checkSdkVersion(config))
+}
+
+func TestSdkVersionInProduct(t *testing.T) {
+	for _, enforce := range []bool{true, false} {
+
+		config := testConfig(nil)
+		config.TestProductVariables.EnforceProductPartitionInterface = proptools.BoolPtr(enforce)
+		bp := `
+			android_app {
+				name: "foo",
+				srcs: ["a.java"],
+				product_specific: true,
+				platform_apis: true,
+			}
+		`
+		ctx, _ := testJavaWithConfig(t, bp, config)
+		foo := ctx.ModuleForTests("foo", "android_common").Module().(*AndroidApp)
+		assertBoolean(t, foo.checkSdkVersion(config), !enforce)
+	}
+}
+
 func TestJNIPackaging(t *testing.T) {
 	ctx, _ := testJava(t, cc.GatherRequiredDepsForTest(android.Android)+`
 		cc_library {

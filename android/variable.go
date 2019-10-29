@@ -303,6 +303,8 @@ type productVariables struct {
 	TargetFSConfigGen []string `json:",omitempty"`
 
 	MissingUsesLibraries []string `json:",omitempty"`
+
+	EnforceProductPartitionInterface *bool `json:",omitempty"`
 }
 
 func boolPtr(v bool) *bool {

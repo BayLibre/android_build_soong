@@ -201,12 +201,12 @@ func (a *AndroidApp) OverridablePropertiesDepsMutator(ctx android.BottomUpMutato
 }
 
 func (a *AndroidTestHelperApp) GenerateAndroidBuildActions(ctx android.ModuleContext) {
-	a.generateAndroidBuildActions(ctx)
+	a.generateAndroidBuildActions(ctx, false /* needToCheckSdkVersion */)
 }
 
 func (a *AndroidApp) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	a.checkPlatformAPI(ctx)
-	a.generateAndroidBuildActions(ctx)
+	a.generateAndroidBuildActions(ctx, true /* needToCheckSdkVersion */)
 }
 
 // Returns true if the native libraries should be stored in the APK uncompressed and the
@@ -430,7 +430,7 @@ func processMainCert(m android.ModuleBase, certPropValue string, certificates []
 	return certificates
 }
 
-func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
+func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext, needToCheckSdkVersion bool) {
 	var apkDeps android.Paths
 
 	a.aapt.useEmbeddedNativeLibs = a.useEmbeddedNativeLibs(ctx)
@@ -477,6 +477,23 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 
 	certificates := processMainCert(a.ModuleBase, a.getCertString(ctx), certificateDeps, ctx)
 	a.certificate = certificates[0]
+
+	// TODO(b/132780927): When every app in product partition and every target doesn't use hidden APIs,
+	// use logic in https://android-review.googlesource.com/q/topic:%22b%252F132780927%22+(status:open%20OR%20status:merged)
+	// For now, it raises error in ninja, but at that time, it should be error in kati.
+	if !a.checkSdkVersion(ctx.Config()) {
+		errorOutput := android.PathForModuleOut(ctx, ctx.ModuleName()+"-sdk-version-check")
+		ctx.Build(pctx, android.BuildParams{
+			Rule:        android.ErrorRule,
+			Output:      errorOutput,
+			Description: "check sdk version",
+			Args: map[string]string{
+				"error": "platform_apis of " + ctx.ModuleName() + " must be empty when the module is located at product.",
+			},
+		})
+
+		apkDeps = append(apkDeps, errorOutput)
+	}
 
 	// Build a final signed app package.
 	// TODO(jungjw): Consider changing this to installApkName.
@@ -617,7 +634,7 @@ func (a *AndroidTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			a.additionalAaptFlags = append(a.additionalAaptFlags, "--rename-instrumentation-target-package "+manifestPackageName)
 		}
 	}
-	a.generateAndroidBuildActions(ctx)
+	a.generateAndroidBuildActions(ctx, false /* needToCheckSdkVersion */)
 
 	a.testConfig = tradefed.AutoGenInstrumentationTestConfig(ctx, a.testProperties.Test_config,
 		a.testProperties.Test_config_template, a.manifestPath, a.testProperties.Test_suites, a.testProperties.Auto_gen_config)

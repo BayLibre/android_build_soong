@@ -54,6 +54,13 @@ func init() {
 	android.RegisterSingletonType("kythe_java_extract", kytheExtractJavaFactory)
 }
 
+func (j *Module) checkSdkVersion(config android.Config) bool {
+	isEnforceTarget := j.SocSpecific() || j.DeviceSpecific() ||
+		(j.ProductSpecific() && config.EnforceProductPartitionInterface())
+	usePlatformApis := proptools.Bool(j.deviceProperties.Platform_apis)
+	return !(isEnforceTarget && usePlatformApis)
+}
+
 func (j *Module) checkPlatformAPI(ctx android.ModuleContext) {
 	if sc, ok := ctx.Module().(sdkContext); ok {
 		usePlatformAPI := proptools.Bool(j.deviceProperties.Platform_apis)
@@ -446,18 +453,6 @@ var (
 	usesLibTag            = dependencyTag{name: "uses-library"}
 )
 
-func defaultSdkVersion(ctx checkVendorModuleContext) string {
-	if ctx.SocSpecific() || ctx.DeviceSpecific() {
-		return "system_current"
-	}
-	return ""
-}
-
-type checkVendorModuleContext interface {
-	SocSpecific() bool
-	DeviceSpecific() bool
-}
-
 type sdkDep struct {
 	useModule, useFiles, useDefaultLibs, invalidVersion bool
 
@@ -500,7 +495,7 @@ func (j *Module) shouldInstrumentStatic(ctx android.BaseModuleContext) bool {
 }
 
 func (j *Module) sdkVersion() string {
-	return proptools.StringDefault(j.deviceProperties.Sdk_version, defaultSdkVersion(j))
+	return String(j.deviceProperties.Sdk_version)
 }
 
 func (j *Module) systemModules() string {
@@ -1947,7 +1942,7 @@ type Import struct {
 }
 
 func (j *Import) sdkVersion() string {
-	return proptools.StringDefault(j.properties.Sdk_version, defaultSdkVersion(j))
+	return String(j.properties.Sdk_version)
 }
 
 func (j *Import) minSdkVersion() string {
