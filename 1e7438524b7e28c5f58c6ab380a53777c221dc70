@@ -16,6 +16,24 @@
       "revId": "1e7438524b7e28c5f58c6ab380a53777c221dc70",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b1923cf_4f7e48cc",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-10-29T15:21:04Z",
+      "side": 1,
+      "message": "Seems like a good idea but +1 to doing it as a follow up.",
+      "parentUuid": "301101ba_f33e8c4e",
+      "revId": "1e7438524b7e28c5f58c6ab380a53777c221dc70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
