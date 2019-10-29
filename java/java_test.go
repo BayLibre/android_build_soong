@@ -228,9 +228,13 @@ func run(t *testing.T, ctx *android.TestContext, config android.Config) {
 	android.FailIfErrored(t, errs)
 }
 
-func testJavaError(t *testing.T, pattern string, bp string) {
+func testJavaError(t *testing.T, pattern string, bp string) (*android.TestContext, android.Config) {
 	t.Helper()
-	config := testConfig(nil)
+	return testJavaErrorWithConfig(t, pattern, bp, testConfig(nil))
+}
+
+func testJavaErrorWithConfig(t *testing.T, pattern string, bp string, config android.Config) (*android.TestContext, android.Config) {
+	t.Helper()
 	ctx := testContext(bp, nil)
 
 	pathCtx := android.PathContextForTesting(config, nil)
@@ -240,20 +244,26 @@ func testJavaError(t *testing.T, pattern string, bp string) {
 	_, errs := ctx.ParseBlueprintsFiles("Android.bp")
 	if len(errs) > 0 {
 		android.FailIfNoMatchingErrors(t, pattern, errs)
-		return
+		return ctx, config
 	}
 	_, errs = ctx.PrepareBuildActions(config)
 	if len(errs) > 0 {
 		android.FailIfNoMatchingErrors(t, pattern, errs)
-		return
+		return ctx, config
 	}
 
 	t.Fatalf("missing expected error %q (0 errors are returned)", pattern)
+
+	return ctx, config
 }
 
 func testJava(t *testing.T, bp string) (*android.TestContext, android.Config) {
 	t.Helper()
-	config := testConfig(nil)
+	return testJavaWithConfig(t, bp, testConfig(nil))
+}
+
+func testJavaWithConfig(t *testing.T, bp string, config android.Config) (*android.TestContext, android.Config) {
+	t.Helper()
 	ctx := testContext(bp, nil)
 	run(t, ctx, config)
 
@@ -312,32 +322,6 @@ func TestSimple(t *testing.T) {
 
 	if len(combineJar.Inputs) != 2 || combineJar.Inputs[1].String() != baz {
 		t.Errorf("foo combineJar inputs %v does not contain %q", combineJar.Inputs, baz)
-	}
-}
-
-func TestSdkVersion(t *testing.T) {
-	ctx, _ := testJava(t, `
-		java_library {
-			name: "foo",
-			srcs: ["a.java"],
-			vendor: true,
-		}
-
-		java_library {
-			name: "bar",
-			srcs: ["b.java"],
-		}
-	`)
-
-	foo := ctx.ModuleForTests("foo", "android_common").Module().(*Library)
-	bar := ctx.ModuleForTests("bar", "android_common").Module().(*Library)
-
-	if foo.sdkVersion() != "system_current" {
-		t.Errorf("If sdk version of vendor module is empty, it must change to system_current.")
-	}
-
-	if bar.sdkVersion() != "" {
-		t.Errorf("If sdk version of non-vendor module is empty, it keeps empty.")
 	}
 }
 
