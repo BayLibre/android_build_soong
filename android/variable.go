@@ -228,6 +228,8 @@ type productVariables struct {
 	EnableXOM       *bool    `json:",omitempty"`
 	XOMExcludePaths []string `json:",omitempty"`
 
+	EnableExperimentalMTESupport *bool `json:",omitempty"`
+
 	VendorPath    *string `json:",omitempty"`
 	OdmPath       *string `json:",omitempty"`
 	ProductPath   *string `json:",omitempty"`

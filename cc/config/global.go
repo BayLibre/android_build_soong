@@ -169,10 +169,15 @@ func init() {
 	})
 
 	pctx.VariableFunc("DeviceClangGlobalCflags", func(ctx android.PackageVarContext) string {
+		flags := ClangFilterUnknownCflags(deviceGlobalCflags)
+		if ctx.Config().EnableExperimentalMTESupport() {
+			flags = append(flags, "-DANDROID_EXPERIMENTAL_MTE")
+		}
+
 		if ctx.Config().Fuchsia() {
-			return strings.Join(ClangFilterUnknownCflags(deviceGlobalCflags), " ")
+			return strings.Join(flags, " ")
 		} else {
-			return strings.Join(append(ClangFilterUnknownCflags(deviceGlobalCflags), "${ClangExtraTargetCflags}"), " ")
+			return strings.Join(append(flags, "${ClangExtraTargetCflags}"), " ")
 		}
 	})
 	pctx.StaticVariable("HostClangGlobalCflags",
