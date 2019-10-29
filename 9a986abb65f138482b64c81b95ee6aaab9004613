@@ -60,6 +60,48 @@
     },
     {
       "key": {
+        "uuid": "f9b13329_6458254f",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2019-10-29T04:32:04Z",
+      "side": 1,
+      "message": "Initially, I tried to change sdk_version()\u0027s behavior instead of manipulating sdk_version variable directly, but because it needs Config to get the flag, the code was messed up in PS1\n(https://android-review.googlesource.com/c/platform/build/soong/+/1151781/1)\nSo I think I should change sdk_version variable, and PreDepsMutator might be early enough.\n\nBut I agree that it can be dangerous, and also as my reply on Justin\u0027s comment, there is no need to overwrite the value directly, instead of it, I\u0027ll check it in GenerateAndroidBuildActions phase or somewhat. (if the condition meets, check if sdkVersion() is narrow enough or not and then raise build error)",
+      "parentUuid": "08245a04_e70f4f0d",
+      "revId": "9a986abb65f138482b64c81b95ee6aaab9004613",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "533de350_78efcc45",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2019-10-29T04:32:04Z",
+      "side": 1,
+      "message": "It is same as behavior for modules in vendor, but the reason why sdk_version variable is overridden is there are a lot of modules that doesn\u0027t have neither sdk_version nor platform_apis flag.\nBut every product module contains either sdk_version or platform_apis after previous CL, so there is no need to manipulate sdk_version directly.\nSo I need to check it GenerateAndroidBuildActions.",
+      "parentUuid": "2b4db9f0_3d1f332b",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 36
+      },
+      "revId": "9a986abb65f138482b64c81b95ee6aaab9004613",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "da4f2dea_0a72957d",
         "filename": "java/java_test.go",
         "patchSetId": 4
