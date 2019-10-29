@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6126e7c_eaa662cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-29T22:55:15Z",
+      "side": 1,
+      "message": "This will break `m checkbuild`.",
+      "range": {
+        "startLine": 11,
+        "startChar": 3,
+        "endLine": 13,
+        "endChar": 22
+      },
+      "revId": "cf87501ad02e3ae0f15f75123c5520226714154d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
