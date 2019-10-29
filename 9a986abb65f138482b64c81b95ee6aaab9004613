@@ -42,6 +42,24 @@
     },
     {
       "key": {
+        "uuid": "c94f8567_a8c04e9f",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-29T04:27:59Z",
+      "side": 1,
+      "message": "+1. And this will overwrite the value specified in the bp file, which also doesn\u0027t sound right.\n\nI think what you really want to do is to ensure that, when EnforceProductPartitionInterface is true, all product-specific Java modules have sdkVersion() that is equal to or narrower than system_current.",
+      "parentUuid": "08245a04_e70f4f0d",
+      "revId": "9a986abb65f138482b64c81b95ee6aaab9004613",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "da4f2dea_0a72957d",
         "filename": "java/java_test.go",
         "patchSetId": 4
