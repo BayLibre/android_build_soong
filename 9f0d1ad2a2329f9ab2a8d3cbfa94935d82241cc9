@@ -22,6 +22,30 @@
       "revId": "9f0d1ad2a2329f9ab2a8d3cbfa94935d82241cc9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2294aca_428dd029",
+        "filename": "apex/apex.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1228,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-10-29T10:18:13Z",
+      "side": 1,
+      "message": "Moving this to art/build/art.go requires some kind of hook in GenerateAndroidBuildActions in build/soong/apex/apex.go that would pass context to the ART module. This may be a good idea if we add more ART-specific logic.",
+      "parentUuid": "67223b8e_96b86c44",
+      "range": {
+        "startLine": 1220,
+        "startChar": 0,
+        "endLine": 1228,
+        "endChar": 2
+      },
+      "revId": "9f0d1ad2a2329f9ab2a8d3cbfa94935d82241cc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
