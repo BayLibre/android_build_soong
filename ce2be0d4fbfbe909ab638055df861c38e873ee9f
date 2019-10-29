@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d275545_27732a67",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1660,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-29T07:33:46Z",
+      "side": 0,
+      "message": "Why is this block omitted? When this \u0027flattened\u0027 variant is the primary one, then we need to set \"LOCAL_SOONG_SYMBOL_PATH\"",
+      "range": {
+        "startLine": 1658,
+        "startChar": 0,
+        "endLine": 1660,
+        "endChar": 4
+      },
+      "revId": "ce2be0d4fbfbe909ab638055df861c38e873ee9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

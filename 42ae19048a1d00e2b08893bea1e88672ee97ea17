@@ -1,0 +1,343 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4860da2f_3d3a4331",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-29T07:33:46Z",
+      "side": 1,
+      "message": "buildFlattenedAsDefault?",
+      "range": {
+        "startLine": 321,
+        "startChar": 2,
+        "endLine": 321,
+        "endChar": 22
+      },
+      "revId": "42ae19048a1d00e2b08893bea1e88672ee97ea17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d8ee274_5e86f238",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-29T07:33:46Z",
+      "side": 1,
+      "message": "Did we decided to drop supporting \"both\"? If so, it would be nice! But, otherwise, we should handle \"both\" here.",
+      "range": {
+        "startLine": 322,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 82
+      },
+      "revId": "42ae19048a1d00e2b08893bea1e88672ee97ea17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a683c8c_8f710736",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-29T07:33:46Z",
+      "side": 1,
+      "message": "Variant?\n\nCan we assume that the \"default\" installable variant have \"\" variant? If yes, we could rely on this and remove \"FlattenedConfigValue\" and isFlattenedVariant().",
+      "range": {
+        "startLine": 351,
+        "startChar": 39,
+        "endLine": 351,
+        "endChar": 56
+      },
+      "revId": "42ae19048a1d00e2b08893bea1e88672ee97ea17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9a79582_6a625625",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-29T07:33:46Z",
+      "side": 1,
+      "message": "Given we set \"ApexType\"(apexPackaging), I don\u0027t think \"flattened\" field is not necessary anymore.",
+      "range": {
+        "startLine": 353,
+        "startChar": 0,
+        "endLine": 357,
+        "endChar": 4
+      },
+      "revId": "42ae19048a1d00e2b08893bea1e88672ee97ea17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44eb592d_7ce2ff00",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-29T07:33:46Z",
+      "side": 1,
+      "message": "As commented above, these two can be replaced with following two since following two have richer information.\n- ApexType(apexPackaging): how to build bundle? image/zip/flattend\n- InstallFileSuffix(or, Variant): tells if this variant is default one or not.",
+      "range": {
+        "startLine": 473,
+        "startChar": 0,
+        "endLine": 479,
+        "endChar": 48
+      },
+      "revId": "42ae19048a1d00e2b08893bea1e88672ee97ea17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9df119f_0837d148",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-29T07:33:46Z",
+      "side": 1,
+      "message": "delete?",
+      "range": {
+        "startLine": 544,
+        "startChar": 0,
+        "endLine": 544,
+        "endChar": 5
+      },
+      "revId": "42ae19048a1d00e2b08893bea1e88672ee97ea17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a37b7f0c_8be07911",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-29T07:33:46Z",
+      "side": 1,
+      "message": "If we don\u0027t support \"both\", then we can delete this two methods.",
+      "range": {
+        "startLine": 548,
+        "startChar": 0,
+        "endLine": 563,
+        "endChar": 0
+      },
+      "revId": "42ae19048a1d00e2b08893bea1e88672ee97ea17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e508634a_f5898be6",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1284,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-29T07:33:46Z",
+      "side": 1,
+      "message": "You can append \"variant\" here.",
+      "range": {
+        "startLine": 1284,
+        "startChar": 0,
+        "endLine": 1284,
+        "endChar": 76
+      },
+      "revId": "42ae19048a1d00e2b08893bea1e88672ee97ea17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a81409a8_53c0aa97",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1356,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-29T07:33:46Z",
+      "side": 1,
+      "message": "How about moving this to GenerateAndroidBuildActions()?",
+      "revId": "42ae19048a1d00e2b08893bea1e88672ee97ea17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7ba35ef_6db3b6fe",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1596,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-29T07:33:46Z",
+      "side": 1,
+      "message": "This looks surprising. How about sharing the same instance of \u0027map\u0027, say, the one from primary variant? https://cs.corp.google.com/aosp-master/build/blueprint/module_ctx.go?rcl\u003d247a72401f5115b16e4165205cac25edafd757cb\u0026l\u003d289",
+      "range": {
+        "startLine": 1596,
+        "startChar": 0,
+        "endLine": 1596,
+        "endChar": 83
+      },
+      "revId": "42ae19048a1d00e2b08893bea1e88672ee97ea17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fed0950_bcccf27f",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1628,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-29T07:33:46Z",
+      "side": 1,
+      "message": "I hope that this condition will be handled in follow-up changes.",
+      "range": {
+        "startLine": 1628,
+        "startChar": 0,
+        "endLine": 1628,
+        "endChar": 33
+      },
+      "revId": "42ae19048a1d00e2b08893bea1e88672ee97ea17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ca3cff6_c6516bb3",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1652,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-29T07:33:46Z",
+      "side": 1,
+      "message": "This is `ModuleName()`. We can pass (name + variant) as modified module name to `Custom` handlers.",
+      "range": {
+        "startLine": 1652,
+        "startChar": 19,
+        "endLine": 1652,
+        "endChar": 23
+      },
+      "revId": "42ae19048a1d00e2b08893bea1e88672ee97ea17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf51d259_6ebbcbec",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1666,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-29T07:33:46Z",
+      "side": 1,
+      "message": "If we append Variant to filesInfo in GenerateAndroidBuildActions(), then we can use just fi.moduleName().\n(fyi, \u0027if condition\u0027 and the value which is appended to list do not match.)",
+      "range": {
+        "startLine": 1666,
+        "startChar": 37,
+        "endLine": 1666,
+        "endChar": 81
+      },
+      "revId": "42ae19048a1d00e2b08893bea1e88672ee97ea17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e88d7b12_8dd3b651",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1671,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-29T07:33:46Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 1671,
+        "startChar": 37,
+        "endLine": 1671,
+        "endChar": 82
+      },
+      "revId": "42ae19048a1d00e2b08893bea1e88672ee97ea17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9327ec35_b5f58382",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1773,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-29T07:33:46Z",
+      "side": 1,
+      "message": "Do we still need this?",
+      "range": {
+        "startLine": 1773,
+        "startChar": 10,
+        "endLine": 1773,
+        "endChar": 36
+      },
+      "revId": "42ae19048a1d00e2b08893bea1e88672ee97ea17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
