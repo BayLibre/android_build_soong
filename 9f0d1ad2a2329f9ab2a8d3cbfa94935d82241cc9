@@ -46,6 +46,30 @@
       "revId": "9f0d1ad2a2329f9ab2a8d3cbfa94935d82241cc9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbd85acb_62ddb220",
+        "filename": "apex/apex.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1228,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-10-29T10:43:24Z",
+      "side": 1,
+      "message": "A hook is a bit of hassle by itself. Another variant is defining a new type in art.go that extends apexBundle and wraps GenerateAndroidBuildActions, but then the handling of filesInfo becomes a problem (and possibly other things elsewhere too).\n\nOverall I suspect this is the simplest approach for now. If more ART logic is added in the future it might need to change, but let\u0027s cross that bridge when we get there.",
+      "parentUuid": "e2294aca_428dd029",
+      "range": {
+        "startLine": 1220,
+        "startChar": 0,
+        "endLine": 1228,
+        "endChar": 2
+      },
+      "revId": "9f0d1ad2a2329f9ab2a8d3cbfa94935d82241cc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
