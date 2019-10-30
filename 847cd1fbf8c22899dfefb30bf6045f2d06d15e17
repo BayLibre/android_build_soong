@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a99aff29_e1702690",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-30T10:36:00Z",
+      "side": 1,
+      "message": "then can\u0027t we fix linkerconfig to allow vndksp libraries to vndk_in_system namespace? I think that is more correct than putting vndk-sp libs (which we always use both variants) to vndkcorevariant.txt.",
+      "range": {
+        "startLine": 16,
+        "startChar": 16,
+        "endLine": 17,
+        "endChar": 28
+      },
+      "revId": "847cd1fbf8c22899dfefb30bf6045f2d06d15e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1589619_ab95c02c",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-30T10:36:00Z",
+      "side": 1,
+      "message": "shouldn\u0027t we add `|| m.isVndkSp()` here?",
+      "range": {
+        "startLine": 301,
+        "startChar": 4,
+        "endLine": 301,
+        "endChar": 60
+      },
+      "revId": "847cd1fbf8c22899dfefb30bf6045f2d06d15e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8ea373d_b8426b17",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-30T10:36:00Z",
+      "side": 1,
+      "message": "not included in cc.config.VndkMustUseVendorVariantList",
+      "range": {
+        "startLine": 717,
+        "startChar": 33,
+        "endLine": 717,
+        "endChar": 72
+      },
+      "revId": "847cd1fbf8c22899dfefb30bf6045f2d06d15e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27eb75dc_ab1b28ac",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-30T10:36:00Z",
+      "side": 1,
+      "message": "This is very tricky. This condition and the following function seem to be very contradictory.\n\nfunc (c *Module) MustUseVendorVariant() bool {\n\treturn c.isVndkSp() || c.Properties.MustUseVendorVariant\n}",
+      "range": {
+        "startLine": 720,
+        "startChar": 7,
+        "endLine": 720,
+        "endChar": 22
+      },
+      "revId": "847cd1fbf8c22899dfefb30bf6045f2d06d15e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
