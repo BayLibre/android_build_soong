@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "952300b5_d137f99a",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-30T09:22:18Z",
+      "side": 1,
+      "message": "Variant and ApexType may overlap. But they have different purpose.\n- Variant determines variant name and, more importantly, tells if this variant is \"default or primary\" one. Variant \u003d\u003d \"\" means that this is a primary variant.\n- ApexType means packaging type: apex, zip, flattened\n\nVariant \"\" can be packaged in zip or apex or even flattened.\n\nYeah, we could call this as suffix or whatever.",
+      "parentUuid": "c2d15afb_caa17a33",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 23
+      },
+      "revId": "1c3e3d1a7f1070f873dacbc19effa50566f2ff29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e11d9747_a8d4bfcd",
         "filename": "apex/apex.go",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2019-10-30T08:57:48Z",
       "side": 1,
       "message": "switch proptools.String(ab.properties.Payload_type) {\ncase \"\": fallthrough\ncase \"image\":\n    ...\ncase \"both\":\n    ...\n}",
+      "range": {
+        "startLine": 322,
+        "startChar": 2,
+        "endLine": 322,
+        "endChar": 82
+      },
+      "revId": "1c3e3d1a7f1070f873dacbc19effa50566f2ff29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53dd8ba8_fb06e5ee",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-30T09:22:18Z",
+      "side": 1,
+      "message": "Or, \n\n  switch proptools.StringDefault(ab.properties.Payload_type, \"image\") {\n  case \"image\":\n  case \"zip\":\n  ..\n  }",
+      "parentUuid": "e11d9747_a8d4bfcd",
       "range": {
         "startLine": 322,
         "startChar": 2,
