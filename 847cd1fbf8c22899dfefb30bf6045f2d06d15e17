@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7607d015_3165bf6a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-10-30T23:03:31Z",
+      "side": 1,
+      "message": "+1. Originally, vndk_in_system namespace could use any libs in vndk namespace that includes vndk-sp.",
+      "parentUuid": "a99aff29_e1702690",
+      "range": {
+        "startLine": 16,
+        "startChar": 16,
+        "endLine": 17,
+        "endChar": 28
+      },
+      "revId": "847cd1fbf8c22899dfefb30bf6045f2d06d15e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e1589619_ab95c02c",
         "filename": "cc/vndk.go",
         "patchSetId": 1
