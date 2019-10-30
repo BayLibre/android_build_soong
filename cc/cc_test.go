@@ -364,6 +364,19 @@ func TestVndk(t *testing.T) {
 		"VNDK-private: libvndk_private.so",
 		"VNDK-private: libvndk_sp_private.so",
 	})
+	checkVndkOutput(t, ctx, "vndk/llndk.libraries.txt", []string{
+		"libc.so", "libdl.so", "libft2.so", "libm.so",
+	})
+	checkVndkOutput(t, ctx, "vndk/vndkcore.libraries.txt", []string{
+		"libvndk.so", "libvndk_private.so",
+	})
+	checkVndkOutput(t, ctx, "vndk/vndksp.libraries.txt", []string{
+		"libc++.so", "libvndk_sp.so", "libvndk_sp_private.so",
+	})
+	checkVndkOutput(t, ctx, "vndk/vndkprivate.libraries.txt", []string{
+		"libft2.so", "libvndk_private.so", "libvndk_sp_private.so",
+	})
+	checkVndkOutput(t, ctx, "vndk/vndkcorevariant.libraries.txt", []string{})
 }
 
 func TestVndkUsingCoreVariant(t *testing.T) {
@@ -405,7 +418,9 @@ func TestVndkUsingCoreVariant(t *testing.T) {
 	`, config)
 
 	checkVndkOutput(t, ctx, "vndk/vndkcore.libraries.txt", []string{"libvndk.so", "libvndk2.so"})
-	checkVndkOutput(t, ctx, "vndk/vndkcorevariant.libraries.txt", []string{"libvndk2.so"})
+	checkVndkOutput(t, ctx, "vndk/vndkcorevariant.libraries.txt", []string{
+		"libc++.so", "libvndk2.so", "libvndk_sp.so",
+	})
 }
 
 func TestVndkDepError(t *testing.T) {
