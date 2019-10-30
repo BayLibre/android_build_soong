@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9df07870_6d6cd135",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-30T10:13:33Z",
+      "side": 1,
+      "message": "what are default and primary, and they are they different?\n\nalso, why should we know which variant is primary?",
+      "parentUuid": "952300b5_d137f99a",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 23
+      },
+      "revId": "1c3e3d1a7f1070f873dacbc19effa50566f2ff29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e11d9747_a8d4bfcd",
         "filename": "apex/apex.go",
         "patchSetId": 6
@@ -336,6 +360,69 @@
         "startChar": 76,
         "endLine": 1251,
         "endChar": 99
+      },
+      "revId": "1c3e3d1a7f1070f873dacbc19effa50566f2ff29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74fdae5c_d7b15384",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1532,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-30T10:13:33Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem right. I think we need to ensure that the package type of the first variant is always \u0027image\u0027 (even when non-flattened APEXes are not required)\n\nThen we also don\u0027t need to have outputFiles as a map. It could be just android.Path.",
+      "range": {
+        "startLine": 1532,
+        "startChar": 0,
+        "endLine": 1532,
+        "endChar": 82
+      },
+      "revId": "1c3e3d1a7f1070f873dacbc19effa50566f2ff29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "989643b8_1d3b148b",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1565,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-30T10:13:33Z",
+      "side": 1,
+      "message": "Same here",
+      "revId": "1c3e3d1a7f1070f873dacbc19effa50566f2ff29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8297eff0_81653247",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1632,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-30T10:13:33Z",
+      "side": 1,
+      "message": "this deserves a comment for why",
+      "range": {
+        "startLine": 1630,
+        "startChar": 0,
+        "endLine": 1632,
+        "endChar": 2
       },
       "revId": "1c3e3d1a7f1070f873dacbc19effa50566f2ff29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
