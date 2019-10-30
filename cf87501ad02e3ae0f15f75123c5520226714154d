@@ -22,6 +22,30 @@
       "revId": "cf87501ad02e3ae0f15f75123c5520226714154d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2d1df2f_f54fff40",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2019-10-30T02:19:44Z",
+      "side": 1,
+      "message": "is checkbuild running for every target in ab?\nif so, i should be back to https://android-review.googlesource.com/q/topic:%22b%252F132780927%22+(status:open%20OR%20status:merged)\n\nif not, it doesn\u0027t break only if the target of which flag is set isn\u0027t in checkbuild target.",
+      "parentUuid": "f6126e7c_eaa662cc",
+      "range": {
+        "startLine": 11,
+        "startChar": 3,
+        "endLine": 13,
+        "endChar": 22
+      },
+      "revId": "cf87501ad02e3ae0f15f75123c5520226714154d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
