@@ -46,6 +46,30 @@
       "revId": "cf87501ad02e3ae0f15f75123c5520226714154d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29716fe0_b6586205",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-30T20:00:29Z",
+      "side": 1,
+      "message": "checkbuild is only enabled on ab/ for a few targets, but it is expected to pass for all targets.",
+      "parentUuid": "a2d1df2f_f54fff40",
+      "range": {
+        "startLine": 11,
+        "startChar": 3,
+        "endLine": 13,
+        "endChar": 22
+      },
+      "revId": "cf87501ad02e3ae0f15f75123c5520226714154d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
