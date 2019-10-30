@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c5b163f_de46daf3",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-30T00:38:46Z",
+      "side": 1,
+      "message": "Typically we pass to CreateLocalVariations with variation names like [\"\",\"foo\",\"bar\",..].\nI mean..\n* if there is an empty string in a slice, then it is the first item\n* names are not prefixed with \".\" or something.\n\nBut in this case, \"\" empty string can be the last and each variation name is prefixed with \u0027.\u0027.\n\nI don\u0027t know it is okay or not. Is it okay?",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 52
+      },
+      "revId": "80e323361d4d0cc3f5d3d08fd521ed914344399e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16cc278e_1b320e21",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-30T00:38:46Z",
+      "side": 1,
+      "message": "Since we aggregates all variants\u0027 outputFiles into a primary one.\nDid you verify if this works? with test or something.",
+      "range": {
+        "startLine": 843,
+        "startChar": 19,
+        "endLine": 843,
+        "endChar": 30
+      },
+      "revId": "80e323361d4d0cc3f5d3d08fd521ed914344399e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf26ac90_ae7afa63",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-30T00:38:46Z",
+      "side": 1,
+      "message": "Didn\u0027t we agree on removing this tag?",
+      "range": {
+        "startLine": 848,
+        "startChar": 0,
+        "endLine": 855,
+        "endChar": 9
+      },
+      "revId": "80e323361d4d0cc3f5d3d08fd521ed914344399e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db4f4993_2f8bd66d",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1399,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-30T00:38:46Z",
+      "side": 1,
+      "message": "this can be changed to \u003d\u003d comparison since we always pass the concrete value to this function. The, we can remove image() and zip() functions as well.",
+      "range": {
+        "startLine": 1399,
+        "startChar": 0,
+        "endLine": 1399,
+        "endChar": 22
+      },
+      "revId": "80e323361d4d0cc3f5d3d08fd521ed914344399e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "969da94c_0462e5f1",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1546,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-30T00:38:46Z",
+      "side": 1,
+      "message": "Putting one line of comment would help.\nlike..\n// To support outputFiles(), all variants are aggregated in a primary module",
+      "range": {
+        "startLine": 1546,
+        "startChar": 0,
+        "endLine": 1546,
+        "endChar": 82
+      },
+      "revId": "80e323361d4d0cc3f5d3d08fd521ed914344399e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e25b7cb_d4da853f",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1621,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-30T00:38:46Z",
+      "side": 1,
+      "message": "We don\u0027t have to pass this anymore.",
+      "range": {
+        "startLine": 1621,
+        "startChar": 46,
+        "endLine": 1621,
+        "endChar": 67
+      },
+      "revId": "80e323361d4d0cc3f5d3d08fd521ed914344399e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7d4a085_322ca00b",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1637,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-30T00:38:46Z",
+      "side": 1,
+      "message": "what does this condition check? The intention is not clear.\nThis function works only for \"\" (default variant) or flattened.\n\nMove this out of \"for\" statement, or even to the caller site?",
+      "revId": "80e323361d4d0cc3f5d3d08fd521ed914344399e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4110e9a7_5a0b214e",
+        "filename": "apex/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1664,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-30T00:38:46Z",
+      "side": 1,
+      "message": "Is it redundant?",
+      "range": {
+        "startLine": 1664,
+        "startChar": 9,
+        "endLine": 1664,
+        "endChar": 39
+      },
+      "revId": "80e323361d4d0cc3f5d3d08fd521ed914344399e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
