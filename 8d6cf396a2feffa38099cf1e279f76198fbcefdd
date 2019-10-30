@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e054c4c_a08459fa",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-30T21:03:02Z",
+      "side": 1,
+      "message": "I don\u0027t like this, it seems likely to cause ordering issues if something calls getBootImageConfig too early.  If we can\u0027t find a better solution, I\u0027d suggest just hard-coding the frameworks-minus-apex -\u003e framework stem here if necessary.",
+      "revId": "8d6cf396a2feffa38099cf1e279f76198fbcefdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0e8bf5f_2723c173",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-30T21:03:02Z",
+      "side": 1,
+      "message": "Hardcode framework-minus-apex -\u003e framework here?",
+      "revId": "8d6cf396a2feffa38099cf1e279f76198fbcefdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d3a5427_0939edf5",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-30T21:03:02Z",
+      "side": 1,
+      "message": "Fixing this TODO would fix the issue, but I don\u0027t know how big of a change that would be.  Make each dexpreopted module depend on the boot jars, which would allow the first module to get dexpreopted to visit the boot jars and request their intermediates and installed locations.",
+      "revId": "8d6cf396a2feffa38099cf1e279f76198fbcefdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e0ea08a_450807e5",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-30T21:03:02Z",
+      "side": 1,
+      "message": "I don\u0027t think the stem is needed here, this is just an intermediate file.",
+      "range": {
+        "startLine": 165,
+        "startChar": 84,
+        "endLine": 165,
+        "endChar": 93
+      },
+      "revId": "8d6cf396a2feffa38099cf1e279f76198fbcefdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
