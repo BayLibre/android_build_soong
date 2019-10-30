@@ -745,7 +745,7 @@ func (c *Module) isNdk() bool {
 
 func (c *Module) isLlndk(config android.Config) bool {
 	// Returns true for both LLNDK (public) and LLNDK-private libs.
-	return inList(c.BaseModuleName(), *llndkLibraries(config))
+	return inMap(c.BaseModuleName(), llndkLibraries(config))
 }
 
 func (c *Module) isLlndkPublic(config android.Config) bool {
@@ -755,7 +755,7 @@ func (c *Module) isLlndkPublic(config android.Config) bool {
 
 func (c *Module) isVndkPrivate(config android.Config) bool {
 	// Returns true for LLNDK-private, VNDK-SP-private, and VNDK-core-private.
-	return inList(c.BaseModuleName(), *vndkPrivateLibraries(config))
+	return inMap(c.BaseModuleName(), vndkPrivateLibraries(config))
 }
 
 func (c *Module) IsVndk() bool {
@@ -1510,7 +1510,7 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 					} else {
 						variantLibs = append(variantLibs, name+ndkLibrarySuffix)
 					}
-				} else if ctx.useVndk() && inList(name, *llndkLibraries) {
+				} else if ctx.useVndk() && inMap(name, llndkLibraries) {
 					nonvariantLibs = append(nonvariantLibs, name+llndkLibrarySuffix)
 				} else if (ctx.Platform() || ctx.ProductSpecific()) && inList(name, *vendorPublicLibraries) {
 					vendorPublicLib := name + vendorPublicLibrarySuffix
@@ -1837,7 +1837,7 @@ func checkDoubleLoadableLibraries(ctx android.TopDownMutatorContext) {
 			return true
 		}
 
-		if to.isVndkSp() || inList(child.Name(), *llndkLibraries) || Bool(to.VendorProperties.Double_loadable) {
+		if to.isVndkSp() || inMap(to.BaseModuleName(), llndkLibraries) || Bool(to.VendorProperties.Double_loadable) {
 			return false
 		}
 
@@ -1852,7 +1852,7 @@ func checkDoubleLoadableLibraries(ctx android.TopDownMutatorContext) {
 	}
 	if module, ok := ctx.Module().(*Module); ok {
 		if lib, ok := module.linker.(*libraryDecorator); ok && lib.shared() {
-			if inList(ctx.ModuleName(), *llndkLibraries) || Bool(module.VendorProperties.Double_loadable) {
+			if inMap(module.BaseModuleName(), llndkLibraries) || Bool(module.VendorProperties.Double_loadable) {
 				ctx.WalkDeps(check)
 			}
 		}
@@ -2138,7 +2138,7 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			libName := strings.TrimSuffix(depName, llndkLibrarySuffix)
 			libName = strings.TrimSuffix(libName, vendorPublicLibrarySuffix)
 			libName = strings.TrimPrefix(libName, "prebuilt_")
-			isLLndk := inList(libName, *llndkLibraries)
+			isLLndk := inMap(libName, llndkLibraries)
 			isVendorPublicLib := inList(libName, *vendorPublicLibraries)
 			bothVendorAndCoreVariantsExist := ccDep.HasVendorVariant() || isLLndk
 

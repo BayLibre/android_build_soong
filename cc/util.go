@@ -37,6 +37,11 @@ func libNamesToFlags(names []string) string {
 	return android.JoinWithPrefix(names, "-l")
 }
 
+func inMap(s string, m map[string]string) bool {
+	_, ok := m[s]
+	return ok
+}
+
 var indexList = android.IndexList
 var inList = android.InList
 var filterList = android.FilterList
