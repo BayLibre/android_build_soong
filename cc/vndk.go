@@ -194,6 +194,7 @@ func vndkIsVndkDepAllowed(from *vndkdep, to *vndkdep) error {
 }
 
 var (
+	makeVarsKey                         = android.NewOnceKey("makeVars")
 	vndkCoreLibrariesKey                = android.NewOnceKey("vndkCoreLibrarires")
 	vndkSpLibrariesKey                  = android.NewOnceKey("vndkSpLibrarires")
 	llndkLibrariesKey                   = android.NewOnceKey("llndkLibrarires")
@@ -207,6 +208,12 @@ var (
 
 	headerExts = []string{".h", ".hh", ".hpp", ".hxx", ".h++", ".inl", ".inc", ".ipp", ".h.generic"}
 )
+
+func makeVars(config android.Config) map[string]string {
+	return config.Once(makeVarsKey, func() interface{} {
+		return make(map[string]string)
+	}).(map[string]string)
+}
 
 func vndkCoreLibraries(config android.Config) *[]string {
 	return config.Once(vndkCoreLibrariesKey, func() interface{} {
@@ -393,6 +400,9 @@ func VndkMutator(mctx android.BottomUpMutatorContext) {
 func init() {
 	android.RegisterSingletonType("vndk-snapshot", VndkSnapshotSingleton)
 	android.RegisterMakeVarsProvider(pctx, func(ctx android.MakeVarsContext) {
+		for k, v := range makeVars(ctx.Config()) {
+			ctx.Strict(k, v)
+		}
 		outputs := vndkSnapshotOutputs(ctx.Config())
 		ctx.Strict("SOONG_VNDK_SNAPSHOT_FILES", outputs.String())
 	})
@@ -660,23 +670,9 @@ func (c *vndkSnapshotSingleton) GenerateBuildActions(ctx android.SingletonContex
 		filepath.Join(configsDir, "module_paths.txt"))
 }
 
-func installListFile(ctx android.SingletonContext, list []string, pathComponents ...string) android.OutputPath {
-	out := android.PathForOutput(ctx, pathComponents...)
-	ctx.Build(pctx, android.BuildParams{
-		Rule:        android.WriteFile,
-		Output:      out,
-		Description: "Writing " + out.String(),
-		Args: map[string]string{
-			"content": strings.Join(list, "\\n"),
-		},
-	})
-	return out
-}
-
 func (c *vndkSnapshotSingleton) buildVndkLibrariesTxtFiles(ctx android.SingletonContext) {
-	var (
-		llndk, vndkcore, vndksp, vndkprivate, vndkcorevariant, merged []string
-	)
+	var llndk, vndkcore, vndksp, vndkprivate, vndkcorevariant []string
+
 	vndkVersion := ctx.DeviceConfig().PlatformVndkVersion()
 	config := ctx.Config()
 	ctx.VisitAllModules(func(m android.Module) {
@@ -711,24 +707,44 @@ func (c *vndkSnapshotSingleton) buildVndkLibrariesTxtFiles(ctx android.Singleton
 			if c.isVndkPrivate(config) {
 				vndkprivate = append(vndkprivate, filename)
 			}
-			if ctx.DeviceConfig().VndkUseCoreVariant() && !c.MustUseVendorVariant() {
+
+			// when VNDK_USE_CORE_VARIANT is set
+			// vndkcorevariant.libraries.txt will contain the list of
+			// vndk libs which are not not included in cc.config.VndkMustUseVendorVariantList
+			if ctx.DeviceConfig().VndkUseCoreVariant() && !c.Properties.MustUseVendorVariant {
 				vndkcorevariant = append(vndkcorevariant, filename)
 			}
 		}
 	})
+
+	installListFile := func(list []string, varName, fileName string) {
+		out := android.PathForOutput(ctx, "vndk", fileName)
+		ctx.Build(pctx, android.BuildParams{
+			Rule:        android.WriteFile,
+			Output:      out,
+			Description: "Writing " + out.String(),
+			Args: map[string]string{
+				"content": strings.Join(list, "\\n"),
+			},
+		})
+		makeVars(ctx.Config())[varName] = out.String()
+	}
+
 	llndk = android.SortedUniqueStrings(llndk)
 	vndkcore = android.SortedUniqueStrings(vndkcore)
 	vndksp = android.SortedUniqueStrings(vndksp)
 	vndkprivate = android.SortedUniqueStrings(vndkprivate)
 	vndkcorevariant = android.SortedUniqueStrings(vndkcorevariant)
-
-	installListFile(ctx, llndk, "vndk", "llndk.libraries.txt")
-	installListFile(ctx, vndkcore, "vndk", "vndkcore.libraries.txt")
-	installListFile(ctx, vndksp, "vndk", "vndksp.libraries.txt")
-	installListFile(ctx, vndkprivate, "vndk", "vndkprivate.libraries.txt")
-	installListFile(ctx, vndkcorevariant, "vndk", "vndkcorevariant.libraries.txt")
+	installListFile(llndk, "SOONG_LLNDK_LIBRARIES_FILE", "llndk.libraries.txt")
+	installListFile(vndkcore, "SOONG_VNDKCORE_LIBRARIES_FILE", "vndkcore.libraries.txt")
+	installListFile(vndksp, "SOONG_VNDKSP_LIBRARIES_FILE", "vndksp.libraries.txt")
+	installListFile(vndkprivate, "SOONG_VNDKPRIVATE_LIBRARIES_FILE", "vndkprivate.libraries.txt")
+	installListFile(vndkcorevariant, "SOONG_VNDKCOREVARIANT_LIBRARIES_FILE", "vndkcorevariant.libraries.txt")
 
 	// merged & tagged & filtered-out(libclang_rt)
+	// Since each target have different set of libclang_rt.* files,
+	// keep the common set of files in vndk.libraries.txt
+	var merged []string
 	filterOutLibClangRt := func(libList []string) (filtered []string) {
 		for _, lib := range libList {
 			if !strings.HasPrefix(lib, "libclang_rt.") {
@@ -741,6 +757,5 @@ func (c *vndkSnapshotSingleton) buildVndkLibrariesTxtFiles(ctx android.Singleton
 	merged = append(merged, addPrefix(vndksp, "VNDK-SP: ")...)
 	merged = append(merged, addPrefix(filterOutLibClangRt(vndkcore), "VNDK-core: ")...)
 	merged = append(merged, addPrefix(vndkprivate, "VNDK-private: ")...)
-
-	installListFile(ctx, merged, "vndk", "vndk.libraries.txt")
+	installListFile(merged, "SOONG_VNDK_LIBRARIES_FILE", "vndk.libraries.txt")
 }
