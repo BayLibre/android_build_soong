@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1d27954e_105aa3ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2019-10-30T23:30:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50ce7a3e_42ceddd6",
+      "range": {
+        "startLine": 19,
+        "startChar": 42,
+        "endLine": 19,
+        "endChar": 49
+      },
+      "revId": "ecdc1c1c1e96bd2970fb12c4e70f74cb54668bb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3caa9048_0aed53eb",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "ecdc1c1c1e96bd2970fb12c4e70f74cb54668bb8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c891c6cb_37b7a931",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2019-10-30T23:30:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3caa9048_0aed53eb",
+      "range": {
+        "startLine": 21,
+        "startChar": 25,
+        "endLine": 21,
+        "endChar": 27
+      },
+      "revId": "ecdc1c1c1e96bd2970fb12c4e70f74cb54668bb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "471ac7ee_2d3c829b",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2000,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2019-10-30T23:30:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a065311c_77c51666",
+      "range": {
+        "startLine": 2000,
+        "startChar": 1,
+        "endLine": 2000,
+        "endChar": 27
+      },
+      "revId": "ecdc1c1c1e96bd2970fb12c4e70f74cb54668bb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a12ed211_2acf155b",
         "filename": "cc/ccdeps.go",
         "patchSetId": 5
@@ -82,6 +154,30 @@
       "writtenOn": "2019-10-30T07:27:35Z",
       "side": 1,
       "message": "I\u0027m also wondering why use \u0027SOONG_COLLECT_JAVA_DEPS\u0027 for cc, do you have any idea?",
+      "range": {
+        "startLine": 44,
+        "startChar": 36,
+        "endLine": 44,
+        "endChar": 62
+      },
+      "revId": "ecdc1c1c1e96bd2970fb12c4e70f74cb54668bb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31d49bb8_83865836",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2019-10-30T23:30:26Z",
+      "side": 1,
+      "message": "Because we use the same flag to trigger both Java and CC at the same time to generate module_bp_cc_deps.json and check if there are native projects inside users\u0027 projects. We have changed the name to \u0027EnvVariableCollectSoongDeps\u0027 to avoid the confussion.",
+      "parentUuid": "a12ed211_2acf155b",
       "range": {
         "startLine": 44,
         "startChar": 36,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "69e5e8f6_e4422beb",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2019-10-30T23:30:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed12a258_72a2f5c4",
+      "range": {
+        "startLine": 50,
+        "startChar": 40,
+        "endLine": 50,
+        "endChar": 43
+      },
+      "revId": "ecdc1c1c1e96bd2970fb12c4e70f74cb54668bb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20224338_0b7cf7f3",
         "filename": "cc/ccdeps.go",
         "patchSetId": 5
@@ -137,6 +257,30 @@
       "revId": "ecdc1c1c1e96bd2970fb12c4e70f74cb54668bb8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1b6287e_95b0000d",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2019-10-30T23:30:26Z",
+      "side": 1,
+      "message": "Done,\nRemoved.",
+      "parentUuid": "20224338_0b7cf7f3",
+      "range": {
+        "startLine": 108,
+        "startChar": 53,
+        "endLine": 108,
+        "endChar": 69
+      },
+      "revId": "ecdc1c1c1e96bd2970fb12c4e70f74cb54668bb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
