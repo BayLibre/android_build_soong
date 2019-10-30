@@ -711,8 +711,15 @@ func (c *vndkSnapshotSingleton) buildVndkLibrariesTxtFiles(ctx android.Singleton
 			if c.isVndkPrivate(config) {
 				vndkprivate = append(vndkprivate, filename)
 			}
-			if ctx.DeviceConfig().VndkUseCoreVariant() && !c.MustUseVendorVariant() {
-				vndkcorevariant = append(vndkcorevariant, filename)
+
+			// when VNDK_USE_CORE_VARIANT is set
+			// vndkcorevariant.libraries.txt will contain the list of
+			// - vndk core libs which are not marked as "must-use-vendor-variant"
+			// - vndk sp libs (because vndk core libs above rely on vndk sp libs)
+			if ctx.DeviceConfig().VndkUseCoreVariant() {
+				if c.isVndkSp() || !c.MustUseVendorVariant() {
+					vndkcorevariant = append(vndkcorevariant, filename)
+				}
 			}
 		}
 	})
