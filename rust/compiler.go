@@ -31,6 +31,10 @@ func getDenyWarnings(compiler *baseCompiler) bool {
 	return BoolDefault(compiler.Properties.Deny_warnings, config.DefaultDenyWarnings)
 }
 
+func getSysroot(compiler *baseCompiler) bool {
+        return BoolDefault(compiler.Properties.Sysroot, false)
+}
+
 func NewBaseCompiler(dir, dir64 string) *baseCompiler {
 	return &baseCompiler{
 		Properties: BaseCompilerProperties{},
@@ -81,6 +85,11 @@ type BaseCompilerProperties struct {
 
 	// install to a subdirectory of the default install path for the module
 	Relative_install_path *string `android:"arch_variant"`
+
+        // whether this crate is a part of the global sysroot
+        // when true, this disables inclusion of default rust crates
+        // defaults to false
+        Sysroot *bool
 }
 
 type baseCompiler struct {
@@ -160,6 +169,23 @@ func (compiler *baseCompiler) compilerDeps(ctx DepsContext, deps Deps) Deps {
 	deps.StaticLibs = append(deps.StaticLibs, compiler.Properties.Static_libs...)
 	deps.SharedLibs = append(deps.SharedLibs, compiler.Properties.Shared_libs...)
 
+        if !getSysroot(compiler) {
+            for _, stdlib := range config.Stdlibs {
+                // If we're building for host, use the compiler's stdlibs
+                if ctx.Host() {
+                    stdlib = stdlib + "_" + ctx.toolchain().RustTriple()
+                }
+
+                // This check is technically insufficient - on the host, where
+                // static linking is the default, if one of our static
+                // dependencies uses a dynamic library, we need to dynamically
+                // link the stdlib as well.
+                if (len(deps.Dylibs) > 0) || (!ctx.Host()) {
+                    // Dynamically linked stdlib
+                    deps.Dylibs = append(deps.Dylibs, stdlib)
+                }
+            }
+        }
 	return deps
 }
 
@@ -209,6 +235,11 @@ func (compiler *baseCompiler) getStemWithoutSuffix(ctx BaseModuleContext) string
 }
 func (compiler *baseCompiler) relativeInstallPath() string {
 	return String(compiler.Properties.Relative_install_path)
+}
+
+func (compiler *baseCompiler) setSysroot() {
+        dummyTrue := true
+        compiler.Properties.Sysroot = &dummyTrue
 }
 
 func srcPathFromModuleSrcs(ctx ModuleContext, srcs []string) android.Path {

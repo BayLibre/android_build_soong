@@ -5,6 +5,7 @@ var (
 		"external/rust/crates",
 		"external/crosvm",
 		"external/adhd",
+		"toolchain/android_rust/sysroot",
 	}
 
 	RustModuleTypes = []string{
