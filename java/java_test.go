@@ -754,8 +754,8 @@ func TestTurbine(t *testing.T) {
 	if len(barTurbineCombined.Inputs) != 2 || barTurbineCombined.Inputs[1].String() != fooHeaderJar {
 		t.Errorf("bar turbine combineJar inputs %v does not contain %q", barTurbineCombined.Inputs, fooHeaderJar)
 	}
-	if !strings.Contains(bazJavac.Args["classpath"], "prebuilts/sdk/14/public/android.jar") {
-		t.Errorf("baz javac classpath %v does not contain %q", bazJavac.Args["classpath"],
+	if !strings.Contains(bazJavac.Args["bootClasspath"], "prebuilts/sdk/14/public/android.jar") {
+		t.Errorf("baz javac bootClasspath %v does not contain %q", bazJavac.Args["bootClasspath"],
 			"prebuilts/sdk/14/public/android.jar")
 	}
 }

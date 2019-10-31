@@ -750,7 +750,7 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 			ctx.AddMissingDependencies(sdkDep.java9Classpath)
 		} else if sdkDep.useFiles {
 			// sdkDep.jar is actually equivalent to turbine header.jar.
-			deps.classpath = append(deps.classpath, sdkDep.jars...)
+			deps.bootClasspath = append(deps.bootClasspath, sdkDep.jars...)
 			deps.aidlPreprocess = sdkDep.aidl
 		} else {
 			deps.aidlPreprocess = sdkDep.aidl
