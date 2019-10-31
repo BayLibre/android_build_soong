@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "93ac2574_cac87f1d",
+        "filename": "apex/apex.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-31T16:40:13Z",
+      "side": 1,
+      "message": "may happen nil-dereference",
+      "range": {
+        "startLine": 330,
+        "startChar": 73,
+        "endLine": 330,
+        "endChar": 100
+      },
+      "revId": "abb6443895bb4ee1a0457637826080a41563cdd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "72df9c4c_c306db76",
         "filename": "apex/apex.go",
         "patchSetId": 9
@@ -22,6 +45,30 @@
       "revId": "abb6443895bb4ee1a0457637826080a41563cdd7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "204bee4b_84b0adaa",
+        "filename": "apex/apex.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 991,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-31T16:40:13Z",
+      "side": 1,
+      "message": "the order of the variants doesn\u0027t affect to this.\n\nHow about extracting \u0027primary\u0027 thing as method isPrimary(ctx)?\nthen,..\n\n    a.suffix \u003d a.properties.ApexType.suffix()\n    if a.isPrimary(ctx) {\n      a.suffix \u003d \"\"\n    }",
+      "parentUuid": "72df9c4c_c306db76",
+      "range": {
+        "startLine": 991,
+        "startChar": 3,
+        "endLine": 991,
+        "endChar": 27
+      },
+      "revId": "abb6443895bb4ee1a0457637826080a41563cdd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
