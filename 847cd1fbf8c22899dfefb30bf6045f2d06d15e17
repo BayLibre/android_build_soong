@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "ea4970c0_cd61ee97",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-31T17:02:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b0996a7c_6bde5a84",
+      "range": {
+        "startLine": 16,
+        "startChar": 16,
+        "endLine": 17,
+        "endChar": 28
+      },
+      "revId": "847cd1fbf8c22899dfefb30bf6045f2d06d15e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1589619_ab95c02c",
         "filename": "cc/vndk.go",
         "patchSetId": 1
@@ -117,6 +141,30 @@
       "revId": "847cd1fbf8c22899dfefb30bf6045f2d06d15e17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "943913b8_477554ae",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-31T17:02:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "eb8ef7df_11d0ea63",
+      "range": {
+        "startLine": 301,
+        "startChar": 4,
+        "endLine": 301,
+        "endChar": 60
+      },
+      "revId": "847cd1fbf8c22899dfefb30bf6045f2d06d15e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -167,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "0a0f22ed_42c233d7",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-31T17:02:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "230d2a32_a565b232",
+      "range": {
+        "startLine": 717,
+        "startChar": 33,
+        "endLine": 717,
+        "endChar": 72
+      },
+      "revId": "847cd1fbf8c22899dfefb30bf6045f2d06d15e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27eb75dc_ab1b28ac",
         "filename": "cc/vndk.go",
         "patchSetId": 1
@@ -202,6 +274,30 @@
       "side": 1,
       "message": "Done. I restored the original condition which determined VNDK_USING_CORE_VARIANT_LIBRARIES list.",
       "parentUuid": "27eb75dc_ab1b28ac",
+      "range": {
+        "startLine": 720,
+        "startChar": 7,
+        "endLine": 720,
+        "endChar": 22
+      },
+      "revId": "847cd1fbf8c22899dfefb30bf6045f2d06d15e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc3af258_1436192f",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-31T17:02:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c180b71e_2a0a0bab",
       "range": {
         "startLine": 720,
         "startChar": 7,
