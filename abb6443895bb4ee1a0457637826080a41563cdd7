@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72df9c4c_c306db76",
+        "filename": "apex/apex.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 991,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-31T13:27:02Z",
+      "side": 1,
+      "message": "This is still indirect and is very fragile. What if the order of the variants change? But I am fine with this for now.",
+      "range": {
+        "startLine": 991,
+        "startChar": 3,
+        "endLine": 991,
+        "endChar": 27
+      },
+      "revId": "abb6443895bb4ee1a0457637826080a41563cdd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
