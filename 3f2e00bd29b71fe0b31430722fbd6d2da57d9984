@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fef97638_35238c89",
+        "filename": "apex/apex.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2019-10-31T12:14:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13377801_41340768",
+      "range": {
+        "startLine": 486,
+        "startChar": 0,
+        "endLine": 486,
+        "endChar": 36
+      },
+      "revId": "3f2e00bd29b71fe0b31430722fbd6d2da57d9984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5adac809_d1e67e62",
         "filename": "apex/apex.go",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "3f2e00bd29b71fe0b31430722fbd6d2da57d9984",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0583841_4ebe0f69",
+        "filename": "apex/apex.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1648,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2019-10-31T12:14:06Z",
+      "side": 1,
+      "message": "The apexType !\u003d flattened \u0026\u0026 apexType !\u003d image is previous condition.\nThis was a condition for prevention duplicate work by creating two variants with apexType of zipApex when apexType is zipApex.\n\nAfter this CL, we don\u0027t create the variants of the same ApexType, but we can create more variants. So we need to change the condition.",
+      "parentUuid": "5adac809_d1e67e62",
+      "range": {
+        "startLine": 1647,
+        "startChar": 45,
+        "endLine": 1648,
+        "endChar": 82
+      },
+      "revId": "3f2e00bd29b71fe0b31430722fbd6d2da57d9984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

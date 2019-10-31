@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "7dfc55e1_1e8e7636",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2019-10-31T12:14:06Z",
+      "side": 1,
+      "message": "I change the variant name is apexType.\nAnd suffix will be set in GenerateAndroidBuildActions function.",
+      "parentUuid": "96c27021_5f072428",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 23
+      },
+      "revId": "1c3e3d1a7f1070f873dacbc19effa50566f2ff29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e11d9747_a8d4bfcd",
         "filename": "apex/apex.go",
         "patchSetId": 6
@@ -533,6 +557,30 @@
     },
     {
       "key": {
+        "uuid": "1a3d5fe7_23140c99",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2019-10-31T12:14:06Z",
+      "side": 1,
+      "message": "It will be set in GenerateAndroidBuildActions function.",
+      "parentUuid": "dfc96381_8a8d9835",
+      "range": {
+        "startLine": 357,
+        "startChar": 39,
+        "endLine": 357,
+        "endChar": 46
+      },
+      "revId": "1c3e3d1a7f1070f873dacbc19effa50566f2ff29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4e58c87_4332b4c3",
         "filename": "apex/apex.go",
         "patchSetId": 6
@@ -601,6 +649,30 @@
       "revId": "1c3e3d1a7f1070f873dacbc19effa50566f2ff29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5e21a0b_a3c54a63",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2019-10-31T12:14:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e74bae71_4bdcfe9c",
+      "range": {
+        "startLine": 474,
+        "startChar": 0,
+        "endLine": 474,
+        "endChar": 44
+      },
+      "revId": "1c3e3d1a7f1070f873dacbc19effa50566f2ff29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -813,6 +885,30 @@
       "revId": "1c3e3d1a7f1070f873dacbc19effa50566f2ff29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4921e40_5f0917ce",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1532,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2019-10-31T12:14:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3be95eb3_35bdbafe",
+      "range": {
+        "startLine": 1532,
+        "startChar": 0,
+        "endLine": 1532,
+        "endChar": 82
+      },
+      "revId": "1c3e3d1a7f1070f873dacbc19effa50566f2ff29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
