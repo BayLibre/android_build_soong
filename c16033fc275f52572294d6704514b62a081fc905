@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e963933_4f3dab56",
+        "filename": "android/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-31T18:09:41Z",
+      "side": 1,
+      "message": "This sounds like it is sorting a []string, maybe SortedStringMapValues?",
+      "revId": "c16033fc275f52572294d6704514b62a081fc905",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79da7f8f_76861c92",
+        "filename": "cc/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-31T18:09:41Z",
+      "side": 1,
+      "message": "This seems a little trivial for a helper (although definitely helps in some complicated conditionals), and also of limited utility since it can only handle map[string]string due to Go\u0027s lack of generics support.  Maybe it would be better to add isLlndkLibrary(), etc. instead?",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 10
+      },
+      "revId": "c16033fc275f52572294d6704514b62a081fc905",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f74024b_9418995f",
+        "filename": "cc/vndk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-31T18:09:41Z",
+      "side": 1,
+      "message": "If you\u0027re using maps here consider sync.Map, which would let you avoid vndkLibrariesLock, but at the expense of type safety.  A StringToStringSyncMap that wrapped sync.Map and replaced the methods with ones that took and returned strings might give the best of both worlds.",
+      "revId": "c16033fc275f52572294d6704514b62a081fc905",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "450f4da5_e35926c4",
+        "filename": "cc/vndk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-10-31T18:09:41Z",
+      "side": 1,
+      "message": "It would be simpler to attach this to vndkSnapshotSingleton instead of going through a generic map in ctx.Config().  In this function:\n\n    c.installedLLndkLibraries \u003d android.SortedStringKeys(installedLlndkLibraries)\n\nThen add:\n\nfunc (c *vndkSnapshotSingleton) MakeVars(ctx android.MakeVarsContext) {\n    ctx.Strict(\"LLNDK_LIBRARIES\", strings.Join(c.installedLLndkLibraries, \" \"))\n}",
+      "revId": "c16033fc275f52572294d6704514b62a081fc905",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
