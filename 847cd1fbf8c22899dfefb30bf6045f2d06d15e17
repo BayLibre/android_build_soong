@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b0996a7c_6bde5a84",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-31T03:01:33Z",
+      "side": 1,
+      "message": "I\u0027d like to focus on \"converting to soong from make\" for these files without changing their contents.\nI filed b/143662017 to changing vndkcorevariant.libraries.txt (and linker configuration as well)",
+      "parentUuid": "7607d015_3165bf6a",
+      "range": {
+        "startLine": 16,
+        "startChar": 16,
+        "endLine": 17,
+        "endChar": 28
+      },
+      "revId": "847cd1fbf8c22899dfefb30bf6045f2d06d15e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e1589619_ab95c02c",
         "filename": "cc/vndk.go",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "writtenOn": "2019-10-30T10:36:00Z",
       "side": 1,
       "message": "shouldn\u0027t we add `|| m.isVndkSp()` here?",
+      "range": {
+        "startLine": 301,
+        "startChar": 4,
+        "endLine": 301,
+        "endChar": 60
+      },
+      "revId": "847cd1fbf8c22899dfefb30bf6045f2d06d15e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb8ef7df_11d0ea63",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-31T03:01:33Z",
+      "side": 1,
+      "message": "No, my intention here is that caching the inList(name, VndkMustUseVendorVariantList) to the prop, m.Properties.MustUseVendorVariant, to avoid searching over and over. By the way, I\u0027d like to clean up this as well with b/143662017.",
+      "parentUuid": "e1589619_ab95c02c",
       "range": {
         "startLine": 301,
         "startChar": 4,
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "230d2a32_a565b232",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-31T03:01:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8ea373d_b8426b17",
+      "range": {
+        "startLine": 717,
+        "startChar": 33,
+        "endLine": 717,
+        "endChar": 72
+      },
+      "revId": "847cd1fbf8c22899dfefb30bf6045f2d06d15e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "27eb75dc_ab1b28ac",
         "filename": "cc/vndk.go",
         "patchSetId": 1
@@ -115,6 +187,30 @@
       "revId": "847cd1fbf8c22899dfefb30bf6045f2d06d15e17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c180b71e_2a0a0bab",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-31T03:01:33Z",
+      "side": 1,
+      "message": "Done. I restored the original condition which determined VNDK_USING_CORE_VARIANT_LIBRARIES list.",
+      "parentUuid": "27eb75dc_ab1b28ac",
+      "range": {
+        "startLine": 720,
+        "startChar": 7,
+        "endLine": 720,
+        "endChar": 22
+      },
+      "revId": "847cd1fbf8c22899dfefb30bf6045f2d06d15e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
