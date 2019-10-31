@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5a48a645_8e9dd976",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-31T13:15:31Z",
+      "side": 1,
+      "message": "I thought about making this a preArch mutator, but that might not be enough. So yeah, I am hardcoding.",
+      "parentUuid": "9e054c4c_a08459fa",
+      "revId": "8d6cf396a2feffa38099cf1e279f76198fbcefdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c0e8bf5f_2723c173",
         "filename": "java/dexpreopt_config.go",
         "patchSetId": 7
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "cf66dc16_80841c0a",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-31T13:15:31Z",
+      "side": 1,
+      "message": "Done, but I\u0027ve did it in stemOf function because we need the stem name in dexpreopt_bootjars.go as well.",
+      "parentUuid": "c0e8bf5f_2723c173",
+      "revId": "8d6cf396a2feffa38099cf1e279f76198fbcefdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d3a5427_0939edf5",
         "filename": "java/dexpreopt_config.go",
         "patchSetId": 7
@@ -50,6 +86,24 @@
       "revId": "8d6cf396a2feffa38099cf1e279f76198fbcefdd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49d1c418_610ddc2a",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-31T13:15:31Z",
+      "side": 1,
+      "message": "yes, that would work. but that\u0027s out of scope of this change. I will try when I have more time :) Filed a bug. b/143682396",
+      "parentUuid": "7d3a5427_0939edf5",
+      "revId": "8d6cf396a2feffa38099cf1e279f76198fbcefdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -73,6 +127,30 @@
       "revId": "8d6cf396a2feffa38099cf1e279f76198fbcefdd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0aad82b3_0fe24b8f",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-31T13:15:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e0ea08a_450807e5",
+      "range": {
+        "startLine": 165,
+        "startChar": 84,
+        "endLine": 165,
+        "endChar": 93
+      },
+      "revId": "8d6cf396a2feffa38099cf1e279f76198fbcefdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
