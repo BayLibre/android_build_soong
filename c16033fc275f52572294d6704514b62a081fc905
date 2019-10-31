@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c865f5c4_abf90bdf",
+        "filename": "android/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-31T19:39:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e963933_4f3dab56",
+      "revId": "c16033fc275f52572294d6704514b62a081fc905",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79da7f8f_76861c92",
         "filename": "cc/util.go",
         "patchSetId": 5
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "6059bac4_fa90f66c",
+        "filename": "cc/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-31T19:39:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79da7f8f_76861c92",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 10
+      },
+      "revId": "c16033fc275f52572294d6704514b62a081fc905",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f74024b_9418995f",
         "filename": "cc/vndk.go",
         "patchSetId": 5
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "7aae7e1b_a4691fa2",
+        "filename": "cc/vndk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-31T19:39:39Z",
+      "side": 1,
+      "message": "By making vndkSnapshotSingleton a MakeVarsProvider (as you suggested down below), makeVars() is not necessary. Btw, I\u0027ll try sync.Map with wrapper type to clean up other map[string]string cases. Thanks.",
+      "parentUuid": "0f74024b_9418995f",
+      "revId": "c16033fc275f52572294d6704514b62a081fc905",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "450f4da5_e35926c4",
         "filename": "cc/vndk.go",
         "patchSetId": 5
@@ -73,6 +133,24 @@
       "revId": "c16033fc275f52572294d6704514b62a081fc905",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83622386_0b8440de",
+        "filename": "cc/vndk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-10-31T19:39:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "450f4da5_e35926c4",
+      "revId": "c16033fc275f52572294d6704514b62a081fc905",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
