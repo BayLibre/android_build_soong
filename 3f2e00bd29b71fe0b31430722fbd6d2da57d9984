@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13377801_41340768",
+        "filename": "apex/apex.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-31T08:34:06Z",
+      "side": 1,
+      "message": "If this is set in AndroidMk(), this can be moved to the struct ApexBundle.",
+      "range": {
+        "startLine": 486,
+        "startChar": 0,
+        "endLine": 486,
+        "endChar": 36
+      },
+      "revId": "3f2e00bd29b71fe0b31430722fbd6d2da57d9984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5adac809_d1e67e62",
+        "filename": "apex/apex.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1648,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-31T08:34:06Z",
+      "side": 1,
+      "message": "Could you elaborate? This doesn\u0027t explain much. \n\nFurthermore, shoulnd\u0027t the condition be \n\napexType !\u003d flattened \u0026\u0026 apexType !\u003d image ?",
+      "range": {
+        "startLine": 1647,
+        "startChar": 45,
+        "endLine": 1648,
+        "endChar": 82
+      },
+      "revId": "3f2e00bd29b71fe0b31430722fbd6d2da57d9984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

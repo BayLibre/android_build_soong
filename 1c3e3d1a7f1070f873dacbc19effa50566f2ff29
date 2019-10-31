@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "96c27021_5f072428",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-31T08:34:06Z",
+      "side": 1,
+      "message": "Still, I don\u0027t think setting suffix here isn\u0027t a good idea. The code is very difficult to understand.\n\nWhy don\u0027t you create variants each of which is for a specific packaging method (flattened, non-flattened, zip). Then depending on FlattenAPex(), etc., you could put different variant to the first (primary) one.",
+      "parentUuid": "c4b0419d_16236066",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 319,
+        "endChar": 23
+      },
+      "revId": "1c3e3d1a7f1070f873dacbc19effa50566f2ff29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e11d9747_a8d4bfcd",
         "filename": "apex/apex.go",
         "patchSetId": 6
@@ -485,6 +509,30 @@
     },
     {
       "key": {
+        "uuid": "dfc96381_8a8d9835",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-31T08:34:06Z",
+      "side": 1,
+      "message": "This should/could be set in the AndroidMk() function.",
+      "parentUuid": "f91d25a2_cae8e7b1",
+      "range": {
+        "startLine": 357,
+        "startChar": 39,
+        "endLine": 357,
+        "endChar": 46
+      },
+      "revId": "1c3e3d1a7f1070f873dacbc19effa50566f2ff29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b4e58c87_4332b4c3",
         "filename": "apex/apex.go",
         "patchSetId": 6
@@ -529,6 +577,30 @@
       "revId": "1c3e3d1a7f1070f873dacbc19effa50566f2ff29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e74bae71_4bdcfe9c",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-31T08:34:06Z",
+      "side": 1,
+      "message": "That\u0027s also self explanation. \"package format of this apex variant; could be non-flattened, flattened, or zip.\"",
+      "parentUuid": "28ac48fe_f3b520f9",
+      "range": {
+        "startLine": 474,
+        "startChar": 0,
+        "endLine": 474,
+        "endChar": 44
+      },
+      "revId": "1c3e3d1a7f1070f873dacbc19effa50566f2ff29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
@@ -717,6 +789,30 @@
       "revId": "1c3e3d1a7f1070f873dacbc19effa50566f2ff29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3be95eb3_35bdbafe",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1532,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-10-31T08:34:06Z",
+      "side": 1,
+      "message": "Why should OutputFiles() for a zip apex return nil? Even if so, you can just not set outputFiles for the variant. We really don\u0027t need a map here.",
+      "parentUuid": "a834d779_cb985eac",
+      "range": {
+        "startLine": 1532,
+        "startChar": 0,
+        "endLine": 1532,
+        "endChar": 82
+      },
+      "revId": "1c3e3d1a7f1070f873dacbc19effa50566f2ff29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
