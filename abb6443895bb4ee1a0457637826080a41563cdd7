@@ -93,6 +93,30 @@
       "revId": "abb6443895bb4ee1a0457637826080a41563cdd7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db5d322d_35b6f5bb",
+        "filename": "apex/apex.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 991,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2019-11-01T02:13:33Z",
+      "side": 1,
+      "message": "If the order of the variants change, I think we need to compare variant name.\nBut it doesn\u0027t seem necessary now.",
+      "parentUuid": "204bee4b_84b0adaa",
+      "range": {
+        "startLine": 991,
+        "startChar": 3,
+        "endLine": 991,
+        "endChar": 27
+      },
+      "revId": "abb6443895bb4ee1a0457637826080a41563cdd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
