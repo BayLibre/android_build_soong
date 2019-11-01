@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4619de06_5454f1e6",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-11-01T22:42:47Z",
+      "side": 1,
+      "message": "any thoughts on whether I should filter on mod.Type?\nany way to easily get subfields? (e.g. target.*.static_libs)",
+      "range": {
+        "startLine": 675,
+        "startChar": 43,
+        "endLine": 675,
+        "endChar": 46
+      },
+      "revId": "2cb4b50c2c268ba006f4b957c4164e49adbbfbf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b2fd53e_73f975aa",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1142,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-11-01T22:42:47Z",
+      "side": 1,
+      "message": "CMIIR, but there is no utility library with this available here?",
+      "range": {
+        "startLine": 1135,
+        "startChar": 0,
+        "endLine": 1142,
+        "endChar": 1
+      },
+      "revId": "2cb4b50c2c268ba006f4b957c4164e49adbbfbf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a34ae473_cc533ccb",
+        "filename": "bpfix/bpfix/bpfix_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-11-01T22:42:47Z",
+      "side": 1,
+      "message": "any way to get rid of these nasty extra newlines? I didn\u0027t see anything super obvious.",
+      "revId": "2cb4b50c2c268ba006f4b957c4164e49adbbfbf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
