@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "c397aca4_6c158907",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2019-11-01T01:33:22Z",
+      "side": 1,
+      "message": "Considering that we don\u0027t have to generate module_bp_cc_deps.json all the time, I add a \"is_native\" field into module_bp_java_deps.json. We only have to generate module_bp_cc_deps.json when there is any native project. Therefore I changed the flag to \"SOONG_COLLECT_CC_DEPS\" which will be turned on after checking if really needed to create module_bp_cc_deps.json.",
+      "parentUuid": "31d49bb8_83865836",
+      "range": {
+        "startLine": 44,
+        "startChar": 36,
+        "endLine": 44,
+        "endChar": 62
+      },
+      "revId": "ecdc1c1c1e96bd2970fb12c4e70f74cb54668bb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed12a258_72a2f5c4",
         "filename": "cc/ccdeps.go",
         "patchSetId": 5
