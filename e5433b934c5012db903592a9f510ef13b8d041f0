@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "7100b426_e3fcdf78",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308042
+      },
+      "writtenOn": "2019-11-01T04:05:15Z",
+      "side": 1,
+      "message": "There are still duplicate data:\n\"JniInvocation_test\": {\n    \"path\": [\n        \"libnativehelper/tests\",\n        \"libnativehelper/tests\",\n        \"libnativehelper/tests\",\n        \"libnativehelper/tests\"\n    ],\n    \"srcs\": [\n        \"libnativehelper/tests/JniInvocation_test.cpp\",\n        \"libnativehelper/tests/JniInvocation_test.cpp\",\n        \"libnativehelper/tests/JniInvocation_test.cpp\",\n        \"libnativehelper/tests/JniInvocation_test.cpp\"\n    ],\n...\n}",
+      "range": {
+        "startLine": 20,
+        "startChar": 25,
+        "endLine": 20,
+        "endChar": 47
+      },
+      "revId": "e5433b934c5012db903592a9f510ef13b8d041f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "96f46002_e28e6b78",
         "filename": "cc/ccdeps.go",
         "patchSetId": 8
