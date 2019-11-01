@@ -599,9 +599,9 @@ func (dstubs *Droidstubs) AndroidMkEntries() android.AndroidMkEntries {
 					}
 				}
 				if dstubs.apiLintTimestamp != nil {
-					fmt.Fprintln(w, ".PHONY:", dstubs.Name()+"-api-lint")
-					fmt.Fprintln(w, dstubs.Name()+"-api-lint:",
-						dstubs.apiLintTimestamp.String())
+					name := dstubs.Name() + "-api-lint"
+					fmt.Fprintln(w, ".PHONY:", name)
+					fmt.Fprintln(w, name+":", dstubs.apiLintTimestamp.String())
 
 					fmt.Fprintln(w, ".PHONY: checkapi")
 					fmt.Fprintln(w, "checkapi:",
@@ -609,6 +609,11 @@ func (dstubs *Droidstubs) AndroidMkEntries() android.AndroidMkEntries {
 
 					fmt.Fprintln(w, ".PHONY: droidcore")
 					fmt.Fprintln(w, "droidcore: checkapi")
+
+					if dstubs.apiLintReport != nil {
+						fmt.Fprintf(w, "$(call dist-for-goals,%s,%s:%s)\n", name,
+							dstubs.apiLintReport.String(), "apilint/"+name+"-lint-report.txt")
+					}
 				}
 				if dstubs.checkNullabilityWarningsTimestamp != nil {
 					fmt.Fprintln(w, ".PHONY:", dstubs.Name()+"-check-nullability-warnings")
