@@ -116,6 +116,10 @@ var fixSteps = []FixStep{
 		Name: "rewriteAndroidAppImport",
 		Fix:  rewriteAndroidAppImport,
 	},
+	{
+		Name: "removeEmptyLibDependencies",
+		Fix:  removeEmptyLibDependencies,
+	},
 }
 
 func NewFixRequest() FixRequest {
@@ -328,7 +332,6 @@ func rewriteCtsModuleTypes(f *Fixer) error {
 		}
 		mod.Properties = append(mod.Properties, defaults)
 	}
-
 	return nil
 }
 
@@ -644,6 +647,50 @@ func rewriteAndroidAppImport(f *Fixer) error {
 					}
 					mod.Properties = append(mod.Properties, prop)
 				}
+			}
+		}
+	}
+	return nil
+}
+
+// Removes library dependencies which are empty (and restricted from usage in Soong)
+func removeEmptyLibDependencies(f *Fixer) error {
+	emptyLibraries := []string{
+		"libhidltransport",
+		"libhwbinder",
+	}
+	relevantFields := []string{
+		"export_shared_lib_headers",
+		"export_static_lib_headers",
+		"static_libs",
+		"whole_static_libs",
+		"shared_libs",
+	}
+	for _, def := range f.tree.Defs {
+		mod, ok := def.(*parser.Module)
+		if !ok {
+			continue
+		}
+		for _, field := range relevantFields {
+			listValue, ok := getLiteralListProperty(mod, field)
+			if !ok {
+				continue
+			}
+			newValues := []parser.Expression{}
+			for _, v := range listValue.Values {
+				stringValue, ok := v.(*parser.String)
+				if !ok {
+					return fmt.Errorf("Expecting string for %s.%s fields", mod.Type, field)
+				}
+				if inList(stringValue.Value, emptyLibraries) {
+					continue
+				}
+				newValues = append(newValues, stringValue)
+			}
+			if len(newValues) == 0 && len(listValue.Values) != 0 {
+				removeProperty(mod, field)
+			} else {
+				listValue.Values = newValues
 			}
 		}
 	}
@@ -1083,4 +1130,13 @@ func removeProperty(mod *parser.Module, propertyName string) {
 		}
 	}
 	mod.Properties = newList
+}
+
+func inList(s string, list []string) bool {
+	for _, v := range list {
+		if s == v {
+			return true
+		}
+	}
+	return false
 }
