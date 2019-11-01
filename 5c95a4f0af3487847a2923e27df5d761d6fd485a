@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6fa5532a_e9ba1994",
+        "filename": "rust/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-01T21:26:55Z",
+      "side": 1,
+      "message": "If you move this to a global it wont have to recompile the regexp every time",
+      "range": {
+        "startLine": 373,
+        "startChar": 4,
+        "endLine": 373,
+        "endChar": 40
+      },
+      "revId": "5c95a4f0af3487847a2923e27df5d761d6fd485a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9c35aaf_208a4b28",
+        "filename": "rust/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-01T21:26:55Z",
+      "side": 1,
+      "message": "PropertyErrorf?",
+      "range": {
+        "startLine": 374,
+        "startChar": 6,
+        "endLine": 374,
+        "endChar": 18
+      },
+      "revId": "5c95a4f0af3487847a2923e27df5d761d6fd485a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d62d7af_6d1d14e6",
+        "filename": "rust/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-01T21:26:55Z",
+      "side": 1,
+      "message": "PropertyErrorf?",
+      "range": {
+        "startLine": 379,
+        "startChar": 6,
+        "endLine": 379,
+        "endChar": 18
+      },
+      "revId": "5c95a4f0af3487847a2923e27df5d761d6fd485a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
