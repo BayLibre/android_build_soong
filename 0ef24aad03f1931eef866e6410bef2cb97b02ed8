@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59467596_cfdf36d4",
+        "filename": "rust/compiler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-01T21:09:20Z",
+      "side": 1,
+      "message": "Bool(compiler.properties.No_stdlibs)",
+      "range": {
+        "startLine": 35,
+        "startChar": 8,
+        "endLine": 35,
+        "endChar": 58
+      },
+      "revId": "0ef24aad03f1931eef866e6410bef2cb97b02ed8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21e7820c_feaa2384",
+        "filename": "rust/compiler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-01T21:09:20Z",
+      "side": 1,
+      "message": "proptools.BoolPtr(true)",
+      "range": {
+        "startLine": 40,
+        "startChar": 34,
+        "endLine": 40,
+        "endChar": 44
+      },
+      "revId": "0ef24aad03f1931eef866e6410bef2cb97b02ed8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5c87522_a4214351",
+        "filename": "rust/compiler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-01T21:09:20Z",
+      "side": 1,
+      "message": "This is only used once, I\u0027d suggest Bool(compiler.Properties.No_stdlibs) here.",
+      "range": {
+        "startLine": 175,
+        "startChar": 5,
+        "endLine": 175,
+        "endChar": 17
+      },
+      "revId": "0ef24aad03f1931eef866e6410bef2cb97b02ed8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad6ee49e_06eecc06",
+        "filename": "rust/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-01T21:09:20Z",
+      "side": 1,
+      "message": "For C code we\u0027ve started tracking the dynamic dependencies of prebuilts.  Would it make sense to leave the dependencies, since the prebuilts likely depend on the standard libs?",
+      "revId": "0ef24aad03f1931eef866e6410bef2cb97b02ed8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbc91507_23aef7f1",
+        "filename": "rust/rust_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-01T21:09:20Z",
+      "side": 1,
+      "message": "mixing tabs and spaces",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 16
+      },
+      "revId": "0ef24aad03f1931eef866e6410bef2cb97b02ed8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
