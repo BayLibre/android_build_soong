@@ -101,9 +101,20 @@ func TestPerSrcMutator(mctx android.BottomUpMutatorContext) {
 					mctx.PropertyErrorf("srcs", "found a duplicate entry %q", duplicate)
 					return
 				}
+				// Rust compiler always compiles one source file at a time and
+				// uses the crate name as output file name.
+				// Cargo uses the test source file name as default crate name,
+				// but that can be redefined.
+				// So when there are multiple source files, the source file names will
+				// be the output file names, but when there is only one test file,
+				// use the crate name.
 				testNames := make([]string, numTests)
 				for i, src := range test.srcs() {
 					testNames[i] = strings.TrimSuffix(filepath.Base(src), filepath.Ext(src))
+				}
+				crateName := m.compiler.crateName()
+				if numTests == 1 && crateName != "" {
+					testNames[0] = crateName
 				}
 				// TODO(chh): Add an "all tests" variation like cc/test.go?
 				tests := mctx.CreateLocalVariations(testNames...)
