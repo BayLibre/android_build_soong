@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b782a83b_2e0361c6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2019-11-01T05:38:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7100b426_e3fcdf78",
+      "range": {
+        "startLine": 20,
+        "startChar": 25,
+        "endLine": 20,
+        "endChar": 47
+      },
+      "revId": "e5433b934c5012db903592a9f510ef13b8d041f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96f46002_e28e6b78",
         "filename": "cc/ccdeps.go",
         "patchSetId": 8
