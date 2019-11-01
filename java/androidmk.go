@@ -609,6 +609,11 @@ func (dstubs *Droidstubs) AndroidMkEntries() android.AndroidMkEntries {
 
 					fmt.Fprintln(w, ".PHONY: droidcore")
 					fmt.Fprintln(w, "droidcore: checkapi")
+
+					if dstubs.apiLintReport != nil {
+						fmt.Fprintf(w, "$(call dist-for-goals,%s,%s:%s)\n", dstubs.apiLintReport.String(),
+							dstubs.apiLintReport.String(), "apilint/"+dstubs.Name()+"-report.txt")
+					}
 				}
 				if dstubs.checkNullabilityWarningsTimestamp != nil {
 					fmt.Fprintln(w, ".PHONY:", dstubs.Name()+"-check-nullability-warnings")
