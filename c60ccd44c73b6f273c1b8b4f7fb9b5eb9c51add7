@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "786da89c_97b6d5e5",
+        "filename": "java/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-11-04T16:13:36Z",
+      "side": 1,
+      "message": "There are two cases of ClassPath and two cases of Classpath :-)",
+      "range": {
+        "startLine": 524,
+        "startChar": 20,
+        "endLine": 524,
+        "endChar": 39
+      },
+      "revId": "c60ccd44c73b6f273c1b8b4f7fb9b5eb9c51add7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
