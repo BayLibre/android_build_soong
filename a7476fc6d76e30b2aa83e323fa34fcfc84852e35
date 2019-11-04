@@ -46,6 +46,30 @@
       "revId": "a7476fc6d76e30b2aa83e323fa34fcfc84852e35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04ee6da4_7a9eb69e",
+        "filename": "java/app_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-04T09:49:03Z",
+      "side": 1,
+      "message": "yes, they could have java shared libraries in /product/framework/",
+      "parentUuid": "2ab22bed_21185c3d",
+      "range": {
+        "startLine": 671,
+        "startChar": 2,
+        "endLine": 671,
+        "endChar": 13
+      },
+      "revId": "a7476fc6d76e30b2aa83e323fa34fcfc84852e35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
