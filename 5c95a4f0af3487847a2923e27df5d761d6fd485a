@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "92d1c1f6_315ce8fd",
+        "filename": "rust/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2019-11-04T17:21:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fa5532a_e9ba1994",
+      "range": {
+        "startLine": 373,
+        "startChar": 4,
+        "endLine": 373,
+        "endChar": 40
+      },
+      "revId": "5c95a4f0af3487847a2923e27df5d761d6fd485a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9c35aaf_208a4b28",
         "filename": "rust/library.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "9c801d72_6561c246",
+        "filename": "rust/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2019-11-04T17:21:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9c35aaf_208a4b28",
+      "range": {
+        "startLine": 374,
+        "startChar": 6,
+        "endLine": 374,
+        "endChar": 18
+      },
+      "revId": "5c95a4f0af3487847a2923e27df5d761d6fd485a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d62d7af_6d1d14e6",
         "filename": "rust/library.go",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "5c95a4f0af3487847a2923e27df5d761d6fd485a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e873de74_aac16fbc",
+        "filename": "rust/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2019-11-04T17:21:22Z",
+      "side": 1,
+      "message": "This is supposed to check the final calculated output filename, so I think leaving it as module error makes sense. I\u0027ll change the variable name though so it\u0027s more obvious what\u0027s being checked.",
+      "parentUuid": "9d62d7af_6d1d14e6",
+      "range": {
+        "startLine": 379,
+        "startChar": 6,
+        "endLine": 379,
+        "endChar": 18
+      },
+      "revId": "5c95a4f0af3487847a2923e27df5d761d6fd485a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
