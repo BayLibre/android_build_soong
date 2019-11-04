@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73415f9b_ec53279a",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1026,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-04T18:59:48Z",
+      "side": 1,
+      "message": "I\u0027d rather not hardcode this here.  I tried to see if we can avoid listing the classpath here, but it fails in a few cases:\nFAILED: //libcore:platform_compat-test-rules javac [common]\nFAILED: //libcore:core-ojtests javac [common]\nFAILED: //external/icu/android_icu4j:android-icu4j-tests javac [common]\n\nFixing these properly is probably non-trivial, I think the problem is that we are compiling java.* classes for java.base at the same time as code that should be outside java.base.  We would probably have to split each of those modules into multiple compile steps, some with patch_module: \"java.base\" and some without.\n\nWhat about adding patch_module_libs, and only adding libraries to the patch-module path that are listed?  That would cause some duplication with the libs/static_libs properties.  If that is too much, we could add patch_module_exclude_libs to list libraries to leave out.",
+      "revId": "5f33734210f84c05aa15108e54e578676d68bb37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
