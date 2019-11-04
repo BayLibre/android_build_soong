@@ -875,6 +875,13 @@ func (c *Module) ExportedFlags() []string {
 	return []string{}
 }
 
+func (c *Module) ExportedDeps() android.Paths {
+	if flagsProducer, ok := c.linker.(exportedFlagsProducer); ok {
+		return flagsProducer.exportedDeps()
+	}
+	return []android.Path{}
+}
+
 func isBionic(name string) bool {
 	switch name {
 	case "libc", "libm", "libdl", "linker":

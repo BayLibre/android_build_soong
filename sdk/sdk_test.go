@@ -17,6 +17,7 @@ package sdk
 import (
 	"io/ioutil"
 	"os"
+	"path/filepath"
 	"strings"
 	"testing"
 
@@ -100,6 +101,8 @@ func testSdkContext(t *testing.T, bp string) (*android.TestContext, android.Conf
 		"myapex.pk8":                                 nil,
 		"Test.java":                                  nil,
 		"Test.cpp":                                   nil,
+		"include/Test.h":                             nil,
+		"aidl/foo/bar/Test.aidl":                     nil,
 		"libfoo.so":                                  nil,
 	})
 
@@ -375,6 +378,69 @@ func TestDepNotInRequiredSdks(t *testing.T) {
 			certificate: ":myapex.cert",
 		}
 	`)
+}
+
+func TestSnapshot(t *testing.T) {
+	ctx, config := testSdk(t, `
+		sdk {
+			name: "mysdk",
+			java_libs: ["myjavalib"],
+			native_shared_libs: ["mynativelib"],
+		}
+
+		java_library {
+			name: "myjavalib",
+			srcs: ["Test.java"],
+			aidl: {
+				export_include_dirs: ["aidl"],
+			},
+			system_modules: "none",
+			sdk_version: "none",
+			compile_dex: true,
+			host_supported: true,
+		}
+
+		cc_library_shared {
+			name: "mynativelib",
+			srcs: [
+				"Test.cpp",
+				"aidl/foo/bar/Test.aidl",
+			],
+			export_include_dirs: ["include"],
+			aidl: {
+				export_aidl_headers: true,
+			},
+			system_shared_libs: [],
+			stl: "none",
+		}
+	`)
+
+	var copySrcs []string
+	var copyDests []string
+	buildParams := ctx.ModuleForTests("mysdk", "android_common").Module().BuildParamsForTests()
+	for _, bp := range buildParams {
+		if bp.Rule.String() == "android/soong/sdk.copy" {
+			copySrcs = append(copySrcs, bp.Input.String())
+			copyDests = append(copyDests, bp.Output.Rel()) // rooted at the snapshot root
+		}
+	}
+
+	buildDir := config.BuildDir()
+	ensureListContains(t, copySrcs, "aidl/foo/bar/Test.aidl")
+	ensureListContains(t, copySrcs, "include/Test.h")
+	ensureListContains(t, copySrcs, filepath.Join(buildDir, ".intermediates/mynativelib/android_arm64_armv8-a_core_shared/gen/aidl/aidl/foo/bar/BnTest.h"))
+	ensureListContains(t, copySrcs, filepath.Join(buildDir, ".intermediates/mynativelib/android_arm64_armv8-a_core_shared/gen/aidl/aidl/foo/bar/BpTest.h"))
+	ensureListContains(t, copySrcs, filepath.Join(buildDir, ".intermediates/mynativelib/android_arm64_armv8-a_core_shared/gen/aidl/aidl/foo/bar/Test.h"))
+	ensureListContains(t, copySrcs, filepath.Join(buildDir, ".intermediates/myjavalib/android_common/turbine-combined/myjavalib.jar"))
+	ensureListContains(t, copySrcs, filepath.Join(buildDir, ".intermediates/mynativelib/android_arm64_armv8-a_core_shared/mynativelib.so"))
+
+	ensureListContains(t, copyDests, "aidl/aidl/foo/bar/Test.aidl")
+	ensureListContains(t, copyDests, "include/include/Test.h")
+	ensureListContains(t, copyDests, "include_gen/mynativelib/aidl/foo/bar/BnTest.h")
+	ensureListContains(t, copyDests, "include_gen/mynativelib/aidl/foo/bar/BpTest.h")
+	ensureListContains(t, copyDests, "include_gen/mynativelib/aidl/foo/bar/Test.h")
+	ensureListContains(t, copyDests, "java/myjavalib.jar")
+	ensureListContains(t, copyDests, "arm64/lib/mynativelib.so")
 }
 
 var buildDir string
