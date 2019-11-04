@@ -1023,6 +1023,9 @@ func (j *Module) collectBuilderFlags(ctx android.ModuleContext, deps deps) javaB
 		// just adding a symlink under the root doesn't help.)
 		patchPaths := ".:" + ctx.Config().BuildDir()
 		classPath := flags.classpath.FormJavaClassPath("")
+		if j.Name() == "core-all-annotation" {
+			flags.classpath = classpath{}
+		}
 		if classPath != "" {
 			patchPaths += ":" + classPath
 		}
