@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4d10102_6dbf0825",
+        "filename": "cc/compiler.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1114194
+      },
+      "writtenOn": "2019-11-04T20:41:38Z",
+      "side": 1,
+      "message": "may we add hardware/ as well?\n\nhardware/interfaces/ is mostly GOOG vendored, but many other dirs directly under hardware/ are not.\n\nWith the current compiler upgrade, I\u0027m hitting warnings as errors in many of those subdirs.",
+      "revId": "9895661e94fadf5f7b4cb00f6b76bb28ab96fd05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
