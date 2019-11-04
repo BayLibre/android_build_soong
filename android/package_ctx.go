@@ -115,9 +115,9 @@ func (p PackageContext) RuleFunc(name string,
 		if len(ctx.errors) > 0 {
 			return params, ctx.errors[0]
 		}
-		if ctx.Config().UseGoma() && params.Pool == nil {
-			// When USE_GOMA=true is set and the rule is not supported by goma, restrict jobs to the
-			// local parallelism value
+		if (ctx.Config().UseGoma() || ctx.Config().UseRBE()) && params.Pool == nil {
+			// When USE_GOMA=true or USE_RBE=true are set and the rule is not supported by
+			// goma/RBE, restrict jobs to the local parallelism value
 			params.Pool = localPool
 		}
 		return params, nil
