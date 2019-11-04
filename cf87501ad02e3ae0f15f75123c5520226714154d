@@ -70,6 +70,30 @@
       "revId": "cf87501ad02e3ae0f15f75123c5520226714154d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71f03a7c_1bc8da47",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2019-11-04T09:46:21Z",
+      "side": 1,
+      "message": "If so, I should go back to aosp/q/topic:b/132780927, and use this change for only local test.",
+      "parentUuid": "29716fe0_b6586205",
+      "range": {
+        "startLine": 11,
+        "startChar": 3,
+        "endLine": 13,
+        "endChar": 22
+      },
+      "revId": "cf87501ad02e3ae0f15f75123c5520226714154d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
