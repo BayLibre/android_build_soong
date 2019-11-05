@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7bf57208_864f875e",
+        "filename": "cc/config/clang.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2019-11-05T16:23:57Z",
+      "side": 1,
+      "message": "This comment needs to be updated to include hardware/ now too. Perhaps just make it generic to refer to \"external third-party sources\" so the naming of the actual variable is more understandable? I don\u0027t think we want to change that.",
+      "revId": "65bf8dcfeada252e613b22dfb76818a131e9f246",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
