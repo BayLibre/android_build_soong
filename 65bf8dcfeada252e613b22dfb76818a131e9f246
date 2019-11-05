@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "0391b456_f5a89fce",
+        "filename": "cc/compiler.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-05T19:01:38Z",
+      "side": 1,
+      "message": "This is too narrow now, it needs to apply to vendor/*google*.",
+      "range": {
+        "startLine": 587,
+        "startChar": 10,
+        "endLine": 587,
+        "endChar": 16
+      },
+      "revId": "65bf8dcfeada252e613b22dfb76818a131e9f246",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6362d1e3_b58a491b",
         "filename": "cc/compiler.go",
         "patchSetId": 6
