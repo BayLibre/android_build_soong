@@ -16,6 +16,52 @@
       "revId": "8219e3ac7f0620083e8ab6062d6dfc72a1f25cf3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbb70c45_8cc29d3e",
+        "filename": "cc/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1465028
+      },
+      "writtenOn": "2019-11-05T22:44:58Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be supports both?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 63
+      },
+      "revId": "8219e3ac7f0620083e8ab6062d6dfc72a1f25cf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "796f6424_1a4552c8",
+        "filename": "java/kotlin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1465028
+      },
+      "writtenOn": "2019-11-05T22:44:58Z",
+      "side": 1,
+      "message": "We don\u0027t support Kotlin yet :)",
+      "range": {
+        "startLine": 29,
+        "startChar": 62,
+        "endLine": 29,
+        "endChar": 75
+      },
+      "revId": "8219e3ac7f0620083e8ab6062d6dfc72a1f25cf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
