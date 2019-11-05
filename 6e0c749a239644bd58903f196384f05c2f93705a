@@ -63,6 +63,30 @@
       "revId": "6e0c749a239644bd58903f196384f05c2f93705a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dbe32e97_49bca47b",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-11-05T17:55:31Z",
+      "side": 1,
+      "message": "filed b/143951586.\napexer will work as expected if we don\u0027t pass apex_manifest.json (stripped one). So, with b/143951586, we\u0027ll pass apex_manifest.json conditionally, and apex_manifest_full.json always.",
+      "parentUuid": "2e935e23_825d346b",
+      "range": {
+        "startLine": 537,
+        "startChar": 0,
+        "endLine": 537,
+        "endChar": 41
+      },
+      "revId": "6e0c749a239644bd58903f196384f05c2f93705a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
