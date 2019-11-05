@@ -22,6 +22,30 @@
       "revId": "6e0c749a239644bd58903f196384f05c2f93705a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e935e23_825d346b",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-05T17:09:30Z",
+      "side": 1,
+      "message": "yep, could be a follow-up bug. We could hard code the APEX names somewhere in the build system or have a special property (e.g. support_android10).",
+      "parentUuid": "0ffa6275_a5a7596c",
+      "range": {
+        "startLine": 537,
+        "startChar": 0,
+        "endLine": 537,
+        "endChar": 41
+      },
+      "revId": "6e0c749a239644bd58903f196384f05c2f93705a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
