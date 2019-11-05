@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "0eb0d90e_a5aa8d70",
+        "filename": "cc/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-05T22:58:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbb70c45_8cc29d3e",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 63
+      },
+      "revId": "8219e3ac7f0620083e8ab6062d6dfc72a1f25cf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "796f6424_1a4552c8",
         "filename": "java/kotlin.go",
         "patchSetId": 4
@@ -62,6 +86,30 @@
       "revId": "8219e3ac7f0620083e8ab6062d6dfc72a1f25cf3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e145500_8fe2af5f",
+        "filename": "java/kotlin.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-05T22:58:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "796f6424_1a4552c8",
+      "range": {
+        "startLine": 29,
+        "startChar": 62,
+        "endLine": 29,
+        "endChar": 75
+      },
+      "revId": "8219e3ac7f0620083e8ab6062d6dfc72a1f25cf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
