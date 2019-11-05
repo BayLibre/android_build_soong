@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "1c48eea9_1ea0da15",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-05T17:11:03Z",
+      "side": 1,
+      "message": "Colin, are you okay having this tool outside of build/soong?",
+      "revId": "6e0c749a239644bd58903f196384f05c2f93705a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0ffa6275_a5a7596c",
         "filename": "apex/apex_test.go",
         "patchSetId": 1
