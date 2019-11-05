@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ffa6275_a5a7596c",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1305591
+      },
+      "writtenOn": "2019-11-05T17:06:53Z",
+      "side": 1,
+      "message": "OK to do it in a different CL, but can we have the stripping to be conditional? I\u0027d like to mark only the Q-launched APEX to have the stripping done. If you agree, feel free to track this in a follow-up bug.",
+      "range": {
+        "startLine": 537,
+        "startChar": 0,
+        "endLine": 537,
+        "endChar": 41
+      },
+      "revId": "6e0c749a239644bd58903f196384f05c2f93705a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
