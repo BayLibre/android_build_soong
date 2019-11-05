@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be899fce_d5998d3b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-05T22:16:35Z",
+      "side": 1,
+      "message": "It builds for me, but I haven\u0027t run it with RBE.",
+      "revId": "8219e3ac7f0620083e8ab6062d6dfc72a1f25cf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
