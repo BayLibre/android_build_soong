@@ -131,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "fd39059f_7a567e61",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-11-05T03:48:40Z",
+      "side": 1,
+      "message": "mark as resolved",
+      "parentUuid": "bfe746b3_737c316b",
+      "range": {
+        "startLine": 675,
+        "startChar": 0,
+        "endLine": 677,
+        "endChar": 40
+      },
+      "revId": "e947d4abfcd426156b82fb6eec9b43751f87b04e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dd69e63e_78987656",
         "filename": "cc/vndk.go",
         "patchSetId": 1
