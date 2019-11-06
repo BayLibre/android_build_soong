@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76b58cec_773bfbe4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-11-06T19:12:42Z",
+      "side": 1,
+      "message": "Please move these down to the end.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 14
+      },
+      "revId": "b0be5efca18d0116810610e1d5e2498af7232d93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d98042da_afed7dec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-11-06T19:12:42Z",
+      "side": 1,
+      "message": "Thanks for including the commit message from the original change. Saves a bit of work when digging into the history.",
+      "revId": "b0be5efca18d0116810610e1d5e2498af7232d93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
