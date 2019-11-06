@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fbf423c1_6f1b622f",
+        "filename": "cc/compiler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 588,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-06T16:07:05Z",
+      "side": 1,
+      "message": "Put ^ before each regexp, that way it can fail fast if the prefix doesn\u0027t match.",
+      "revId": "68e2395da720d13de7baeb859362bc8f27990b66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ea83cfb_db32db0b",
+        "filename": "cc/compiler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-06T16:07:05Z",
+      "side": 1,
+      "message": "This could be expensive to compile every time.  Can you move the list to a global []regexp.Regexp that uses regexp.MustCompile to initialize each one?",
+      "revId": "68e2395da720d13de7baeb859362bc8f27990b66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "505429e7_5f4f5787",
+        "filename": "cc/compiler.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-06T16:07:05Z",
+      "side": 1,
+      "message": "If you use ^ on the regexp you can use FindString here.",
+      "revId": "68e2395da720d13de7baeb859362bc8f27990b66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
