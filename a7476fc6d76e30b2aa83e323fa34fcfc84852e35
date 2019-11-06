@@ -70,6 +70,30 @@
       "revId": "a7476fc6d76e30b2aa83e323fa34fcfc84852e35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2af987f_511838e4",
+        "filename": "java/app_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2019-11-06T11:36:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04ee6da4_7a9eb69e",
+      "range": {
+        "startLine": 671,
+        "startChar": 2,
+        "endLine": 671,
+        "endChar": 13
+      },
+      "revId": "a7476fc6d76e30b2aa83e323fa34fcfc84852e35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
