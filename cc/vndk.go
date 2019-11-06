@@ -369,6 +369,8 @@ type vndkLibrariesTxt struct {
 	outputFile android.OutputPath
 }
 
+var _ android.PrebuiltEtcModule = &vndkLibrariesTxt{}
+
 // vndk_libraries_txt is a special kind of module type in that it name is one of
 // - llndk.libraries.txt
 // - vndkcore.libraries.txt
@@ -439,6 +441,14 @@ func (txt *vndkLibrariesTxt) AndroidMkEntries() android.AndroidMkEntries {
 			},
 		},
 	}
+}
+
+func (txt *vndkLibrariesTxt) OutputFile() android.OutputPath {
+	return txt.outputFile
+}
+
+func (txt *vndkLibrariesTxt) SubDir() string {
+	return ""
 }
 
 func VndkSnapshotSingleton() android.Singleton {
