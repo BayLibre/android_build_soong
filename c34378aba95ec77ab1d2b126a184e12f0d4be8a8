@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9364b8a0_40e1318b",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-11-06T08:43:18Z",
+      "side": 1,
+      "message": "Can\u0027t we reuse vndkLibrariesTxt modules\u0027 output here?",
+      "range": {
+        "startLine": 844,
+        "startChar": 0,
+        "endLine": 852,
+        "endChar": 87
+      },
+      "revId": "c34378aba95ec77ab1d2b126a184e12f0d4be8a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
