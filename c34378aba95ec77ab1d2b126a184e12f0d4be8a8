@@ -46,6 +46,30 @@
       "revId": "c34378aba95ec77ab1d2b126a184e12f0d4be8a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "942e7867_cd3c5dcf",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-06T09:31:45Z",
+      "side": 1,
+      "message": "You can use ctx.VisitAllModules() to gather the txt modules.",
+      "parentUuid": "43093f73_1404b0e8",
+      "range": {
+        "startLine": 844,
+        "startChar": 0,
+        "endLine": 852,
+        "endChar": 87
+      },
+      "revId": "c34378aba95ec77ab1d2b126a184e12f0d4be8a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
