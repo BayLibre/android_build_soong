@@ -208,6 +208,24 @@
     },
     {
       "key": {
+        "uuid": "7656bff7_5b1d59d9",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-06T23:45:10Z",
+      "side": 1,
+      "message": "Ack, can you file a bug at go/soong-bug (\"android.SingletonContext needs ModuleDependencyTag\"), reference it in the commit message, and add a // TODO(b/#####) here?",
+      "parentUuid": "937bf49b_a5cf25f9",
+      "revId": "7327f2723138b97ad5fe2bd43ea95239a80b55b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e8f041cb_3692b295",
         "filename": "cc/fuzz.go",
         "patchSetId": 2
