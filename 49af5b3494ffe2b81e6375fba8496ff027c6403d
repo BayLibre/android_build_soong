@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f23d8d7_da79b7bf",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-06T09:35:34Z",
+      "side": 1,
+      "message": "These names are duplicated in many places. Can you dedup?",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 260,
+        "endChar": 36
+      },
+      "revId": "49af5b3494ffe2b81e6375fba8496ff027c6403d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
