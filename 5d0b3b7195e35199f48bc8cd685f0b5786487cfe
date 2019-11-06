@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42603081_f9f176fb",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-06T19:21:37Z",
+      "side": 0,
+      "message": "Unnecessary whitespace change",
+      "revId": "5d0b3b7195e35199f48bc8cd685f0b5786487cfe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
