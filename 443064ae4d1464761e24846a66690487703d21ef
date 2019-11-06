@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "619f3df8_7e14505a",
+        "filename": "android/module.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1996,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-06T18:10:51Z",
+      "side": 1,
+      "message": "bool?",
+      "range": {
+        "startLine": 1996,
+        "startChar": 19,
+        "endLine": 1996,
+        "endChar": 27
+      },
+      "revId": "443064ae4d1464761e24846a66690487703d21ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "397ca8c8_23801503",
+        "filename": "cc/cc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 2177,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-06T18:10:51Z",
+      "side": 1,
+      "message": "If you\u0027re going to handle native code in a separate singleton then there is no reason to do this.  Either delte the IDEInfo implementation here, so the java singleton won\u0027t see it at all, or use the java singleton for both by moving it into the android package, renaming the output file to module_bp_deps.json, and making this function collect all the module data into an android.IdeInfo.",
+      "revId": "443064ae4d1464761e24846a66690487703d21ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bb82b5e_eadb040a",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-06T18:10:51Z",
+      "side": 1,
+      "message": "Use a consistent initialization style",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 34
+      },
+      "revId": "443064ae4d1464761e24846a66690487703d21ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cda52b42_a3f111b4",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-06T18:10:51Z",
+      "side": 1,
+      "message": "This is always going to return empty",
+      "revId": "443064ae4d1464761e24846a66690487703d21ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32e7ff9a_8b1c3fea",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-06T18:10:51Z",
+      "side": 1,
+      "message": "Can you add a comment on why you are creating a module called \"clang\" here?  What happens if a module in the tree is called \"clang\" too?",
+      "revId": "443064ae4d1464761e24846a66690487703d21ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b4d4127_55f652eb",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-06T18:10:51Z",
+      "side": 1,
+      "message": "clionProjectLocation",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 22
+      },
+      "revId": "443064ae4d1464761e24846a66690487703d21ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0fedad80_31af0aa4",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-06T18:10:51Z",
+      "side": 1,
+      "message": "This is going to hide some variants of the module from module_bp_cc_deps.json, and you\u0027re not using the same paths as getCMakeListsForModule.  I think it would be better to put all variants in module_bp_cc_deps.json and then filter to just the ones you want in aidegen.",
+      "revId": "443064ae4d1464761e24846a66690487703d21ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b714b55c_b04041f8",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-06T18:10:51Z",
+      "side": 1,
+      "message": "You should put these in a sorted list before creating the json file so that they are in a consistent order.",
+      "revId": "443064ae4d1464761e24846a66690487703d21ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
