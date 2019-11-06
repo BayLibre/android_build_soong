@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "b2138d28_f2a9e5f3",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-06T23:27:51Z",
+      "side": 1,
+      "message": "If you\u0027re only appending to the end it\u0027s pretty easy, just use a C-style loop.  len(list) will be re-evaluated at the end of each pass, so it will continue past the original end of the loop.\n\nfor i :\u003d 0; i \u003c len(list); i++ {\n   m :\u003d list[i]\n   ...\n   list \u003d append(list, ...)\n}",
+      "parentUuid": "13ef7fec_6f0e7c79",
+      "revId": "7327f2723138b97ad5fe2bd43ea95239a80b55b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "52acfb93_a7da496a",
         "filename": "cc/fuzz.go",
         "patchSetId": 2
@@ -148,6 +166,24 @@
       "side": 1,
       "message": "How would one go about ascertaining the dependency tag from a SingletonContext? I can\u0027t seem to find a path.",
       "parentUuid": "9e875f66_107e6008",
+      "revId": "7327f2723138b97ad5fe2bd43ea95239a80b55b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2b9ffe2_9ac092d9",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-06T23:27:51Z",
+      "side": 1,
+      "message": "That seems to be a missing feature in blueprint",
+      "parentUuid": "0531e89a_8b6edcb0",
       "revId": "7327f2723138b97ad5fe2bd43ea95239a80b55b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
