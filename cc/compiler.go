@@ -320,8 +320,9 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 	}
 
 	if ctx.apexName() != "" {
-		flags.Global.CommonFlags = append(flags.Global.CommonFlags, "-D__ANDROID_APEX__")
-		flags.Global.CommonFlags = append(flags.Global.CommonFlags, "-D__ANDROID_APEX_"+makeDefineString(ctx.apexName())+"__")
+		flags.Global.CommonFlags = append(flags.Global.CommonFlags,
+			"-D__ANDROID_APEX__",
+			"-D__ANDROID_APEX_"+makeDefineString(ctx.apexName())+"__")
 	}
 
 	instructionSet := String(compiler.Properties.Instruction_set)

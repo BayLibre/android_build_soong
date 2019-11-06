@@ -167,11 +167,11 @@ func generateCLionProject(compiledModule CompiledInterface, ctx android.Singleto
 	translateToCMake(globalAllParameters, f, true, true)
 
 	f.WriteString("\n# LOCAL ALL FLAGS:\n")
-	localAllParameters := parseCompilerParameters(ccModule.flags.Global.CommonFlags, ctx, f)
+	localAllParameters := parseCompilerParameters(ccModule.flags.Local.CommonFlags, ctx, f)
 	translateToCMake(localAllParameters, f, true, true)
 
 	f.WriteString("\n# GLOBAL CFLAGS:\n")
-	globalCParameters := parseCompilerParameters(ccModule.flags.Local.CFlags, ctx, f)
+	globalCParameters := parseCompilerParameters(ccModule.flags.Global.CFlags, ctx, f)
 	translateToCMake(globalCParameters, f, true, true)
 
 	f.WriteString("\n# LOCAL CFLAGS:\n")
@@ -179,7 +179,7 @@ func generateCLionProject(compiledModule CompiledInterface, ctx android.Singleto
 	translateToCMake(localCParameters, f, true, true)
 
 	f.WriteString("\n# GLOBAL C ONLY FLAGS:\n")
-	globalConlyParameters := parseCompilerParameters(ccModule.flags.Local.ConlyFlags, ctx, f)
+	globalConlyParameters := parseCompilerParameters(ccModule.flags.Global.ConlyFlags, ctx, f)
 	translateToCMake(globalConlyParameters, f, true, false)
 
 	f.WriteString("\n# LOCAL C ONLY FLAGS:\n")
@@ -187,7 +187,7 @@ func generateCLionProject(compiledModule CompiledInterface, ctx android.Singleto
 	translateToCMake(localConlyParameters, f, true, false)
 
 	f.WriteString("\n# GLOBAL CPP FLAGS:\n")
-	globalCppParameters := parseCompilerParameters(ccModule.flags.Local.CppFlags, ctx, f)
+	globalCppParameters := parseCompilerParameters(ccModule.flags.Global.CppFlags, ctx, f)
 	translateToCMake(globalCppParameters, f, false, true)
 
 	f.WriteString("\n# LOCAL CPP FLAGS:\n")

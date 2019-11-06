@@ -426,8 +426,9 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 	minimalRuntimePath := "${config.ClangAsanLibDir}/" + minimalRuntimeLib
 
 	if ctx.Device() && sanitize.Properties.MinimalRuntimeDep {
-		flags.Local.LdFlags = append(flags.Local.LdFlags, minimalRuntimePath)
-		flags.Local.LdFlags = append(flags.Local.LdFlags, "-Wl,--exclude-libs,"+minimalRuntimeLib)
+		flags.Local.LdFlags = append(flags.Local.LdFlags,
+			minimalRuntimePath,
+			"-Wl,--exclude-libs,"+minimalRuntimeLib)
 	}
 	if !sanitize.Properties.SanitizerEnabled && !sanitize.Properties.UbsanRuntimeDep {
 		return flags

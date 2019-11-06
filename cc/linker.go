@@ -338,8 +338,9 @@ func (linker *baseLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 			// The SHT_RELR relocations is only supported by API level >= 28.
 			// Do not turn this on if older version NDK is used.
 			if !ctx.useSdk() || CheckSdkVersionAtLeast(ctx, 28) {
-				flags.Global.LdFlags = append(flags.Global.LdFlags, "-Wl,--pack-dyn-relocs=android+relr")
-				flags.Global.LdFlags = append(flags.Global.LdFlags, "-Wl,--use-android-relr-tags")
+				flags.Global.LdFlags = append(flags.Global.LdFlags,
+					"-Wl,--pack-dyn-relocs=android+relr",
+					"-Wl,--use-android-relr-tags")
 			}
 		}
 	} else {
