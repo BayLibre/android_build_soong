@@ -190,6 +190,24 @@
     },
     {
       "key": {
+        "uuid": "937bf49b_a5cf25f9",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-11-06T23:36:34Z",
+      "side": 1,
+      "message": "Is it possible to rely on the current parsing (with other comments addressed) in order to get this landed without waiting for changes to blueprint?",
+      "parentUuid": "f2b9ffe2_9ac092d9",
+      "revId": "7327f2723138b97ad5fe2bd43ea95239a80b55b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e8f041cb_3692b295",
         "filename": "cc/fuzz.go",
         "patchSetId": 2
