@@ -70,6 +70,30 @@
       "revId": "c34378aba95ec77ab1d2b126a184e12f0d4be8a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e8c6440_176c05f4",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-11-07T07:50:34Z",
+      "side": 1,
+      "message": "Did that in a new patchset of other change.",
+      "parentUuid": "942e7867_cd3c5dcf",
+      "range": {
+        "startLine": 844,
+        "startChar": 0,
+        "endLine": 852,
+        "endChar": 87
+      },
+      "revId": "c34378aba95ec77ab1d2b126a184e12f0d4be8a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
