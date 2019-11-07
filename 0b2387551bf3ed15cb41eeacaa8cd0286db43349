@@ -22,6 +22,30 @@
       "revId": "0b2387551bf3ed15cb41eeacaa8cd0286db43349",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb958f01_d6a441cd",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-07T22:27:18Z",
+      "side": 1,
+      "message": "That was based on my comment on PS7.  Using m instead of stemOf(m) here may work better if we move determining the stem to a module dependency, as this snippet may stay in the global config that needs to run before module dependencies have been set up.",
+      "parentUuid": "bb0be92c_5f2b66c1",
+      "range": {
+        "startLine": 138,
+        "startChar": 84,
+        "endLine": 138,
+        "endChar": 85
+      },
+      "revId": "0b2387551bf3ed15cb41eeacaa8cd0286db43349",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
