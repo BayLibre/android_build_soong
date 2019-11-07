@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "71366be7_eadd3cf1",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-07T03:27:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0e827a1_19d15544",
+      "range": {
+        "startLine": 882,
+        "startChar": 8,
+        "endLine": 882,
+        "endChar": 24
+      },
+      "revId": "93f25b1fd1dc1cc8fc371b8db5d591105fa163ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc1dde62_a133c478",
         "filename": "sdk/update.go",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "93f25b1fd1dc1cc8fc371b8db5d591105fa163ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6c4e608_6056b8cd",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-07T03:27:25Z",
+      "side": 1,
+      "message": "Ah, that\u0027s good to know. Thanks. Now I am using the rule in defs.go.",
+      "parentUuid": "cc1dde62_a133c478",
+      "revId": "93f25b1fd1dc1cc8fc371b8db5d591105fa163ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
