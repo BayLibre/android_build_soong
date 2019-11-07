@@ -1,0 +1,215 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd41cda8_a370287d",
+        "filename": "cc/cmakelists.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1114194
+      },
+      "writtenOn": "2019-11-07T23:13:28Z",
+      "side": 1,
+      "message": "Local?",
+      "range": {
+        "startLine": 170,
+        "startChar": 62,
+        "endLine": 170,
+        "endChar": 68
+      },
+      "revId": "1848fa047d6a463e5942dc58f5965fe376b083d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7a90106_fbfd2739",
+        "filename": "cc/cmakelists.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1114194
+      },
+      "writtenOn": "2019-11-07T23:13:28Z",
+      "side": 1,
+      "message": "Global?",
+      "range": {
+        "startLine": 174,
+        "startChar": 61,
+        "endLine": 174,
+        "endChar": 66
+      },
+      "revId": "1848fa047d6a463e5942dc58f5965fe376b083d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "132a8817_e57e68ae",
+        "filename": "cc/cmakelists.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1114194
+      },
+      "writtenOn": "2019-11-07T23:13:28Z",
+      "side": 1,
+      "message": "Global?",
+      "range": {
+        "startLine": 182,
+        "startChar": 65,
+        "endLine": 182,
+        "endChar": 70
+      },
+      "revId": "1848fa047d6a463e5942dc58f5965fe376b083d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a99f379d_3ffc424b",
+        "filename": "cc/cmakelists.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1114194
+      },
+      "writtenOn": "2019-11-07T23:13:28Z",
+      "side": 1,
+      "message": "Global?",
+      "range": {
+        "startLine": 190,
+        "startChar": 63,
+        "endLine": 190,
+        "endChar": 68
+      },
+      "revId": "1848fa047d6a463e5942dc58f5965fe376b083d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e4d1993_e7121344",
+        "filename": "cc/compdb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1114194
+      },
+      "writtenOn": "2019-11-07T23:13:28Z",
+      "side": 1,
+      "message": "I think this whole hunk could be three appends?",
+      "revId": "1848fa047d6a463e5942dc58f5965fe376b083d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b90f3c16_d1a95b35",
+        "filename": "cc/compiler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1114194
+      },
+      "writtenOn": "2019-11-07T23:13:28Z",
+      "side": 1,
+      "message": "append once?",
+      "revId": "1848fa047d6a463e5942dc58f5965fe376b083d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70159c33_d0bfed79",
+        "filename": "cc/linker.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1114194
+      },
+      "writtenOn": "2019-11-07T23:13:28Z",
+      "side": 1,
+      "message": "is it possible to append a list with these 2 strings, rather than call `append` twice? (Looks like yes, append is variadic).",
+      "revId": "1848fa047d6a463e5942dc58f5965fe376b083d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ac9ad8a_6af11946",
+        "filename": "cc/lto.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1114194
+      },
+      "writtenOn": "2019-11-07T23:13:28Z",
+      "side": 1,
+      "message": "call append once?",
+      "revId": "1848fa047d6a463e5942dc58f5965fe376b083d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4e691e1_363ff219",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1114194
+      },
+      "writtenOn": "2019-11-07T23:13:28Z",
+      "side": 1,
+      "message": "append once?",
+      "revId": "1848fa047d6a463e5942dc58f5965fe376b083d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d8afafe_65d8f300",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1114194
+      },
+      "writtenOn": "2019-11-07T23:13:28Z",
+      "side": 1,
+      "message": "append once, move comment between elements on new line:\n\nfoo \u003d append(running_list,\n  \"bar\",\n  // why baz\n  \"baz\",\n)",
+      "revId": "1848fa047d6a463e5942dc58f5965fe376b083d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "085e78a0_0b00b8c4",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1114194
+      },
+      "writtenOn": "2019-11-07T23:13:28Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "1848fa047d6a463e5942dc58f5965fe376b083d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
