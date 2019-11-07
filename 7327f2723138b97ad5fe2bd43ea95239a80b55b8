@@ -102,6 +102,24 @@
     },
     {
       "key": {
+        "uuid": "efdb25d7_2f537923",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-11-07T16:48:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2138d28_f2a9e5f3",
+      "revId": "7327f2723138b97ad5fe2bd43ea95239a80b55b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52acfb93_a7da496a",
         "filename": "cc/fuzz.go",
         "patchSetId": 2
@@ -226,6 +244,24 @@
     },
     {
       "key": {
+        "uuid": "349143ee_747124bb",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-11-07T16:48:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7656bff7_5b1d59d9",
+      "revId": "7327f2723138b97ad5fe2bd43ea95239a80b55b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e8f041cb_3692b295",
         "filename": "cc/fuzz.go",
         "patchSetId": 2
@@ -249,6 +285,30 @@
     },
     {
       "key": {
+        "uuid": "e086fcfc_4e9e3cfb",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-11-07T16:48:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8f041cb_3692b295",
+      "range": {
+        "startLine": 153,
+        "startChar": 29,
+        "endLine": 153,
+        "endChar": 36
+      },
+      "revId": "7327f2723138b97ad5fe2bd43ea95239a80b55b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12cb55dc_9d8b8cb9",
         "filename": "cc/fuzz.go",
         "patchSetId": 2
@@ -269,6 +329,30 @@
       "revId": "7327f2723138b97ad5fe2bd43ea95239a80b55b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9eeeaa8e_22f22900",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-11-07T16:48:16Z",
+      "side": 1,
+      "message": "Removed as LinkableInterface::BuildStubs() is what we need, and LinkableInterface::Shared() provides the !header() check.",
+      "parentUuid": "12cb55dc_9d8b8cb9",
+      "range": {
+        "startLine": 159,
+        "startChar": 36,
+        "endLine": 159,
+        "endChar": 53
+      },
+      "revId": "7327f2723138b97ad5fe2bd43ea95239a80b55b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
