@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6868f3e5_0f0a2da6",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1114194
+      },
+      "writtenOn": "2019-11-07T18:50:47Z",
+      "side": 1,
+      "message": "Is there a better name for this type? Sounds like a contradiction. `LocalOrGlobalFlags`?\n\nI find it slightly confusing that `Flags` contains `LocalGlobalFlags`, and the different members between them.  So locally or globally, I can set `CFlags`, but I cannot set `rsFlags` in Android.bp?  What\u0027s the distinction?\n\nMaybe a comment to clarify why certain members are members of `LocalGlobalFlags` vs `Flags` would help readers?",
+      "range": {
+        "startLine": 143,
+        "startChar": 5,
+        "endLine": 143,
+        "endChar": 21
+      },
+      "revId": "b3075e2c9a37501e647d17254f5f9716183db188",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cec53b6d_c099965b",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1114194
+      },
+      "writtenOn": "2019-11-07T18:50:47Z",
+      "side": 1,
+      "message": "If we inject flags like this via soong, isn\u0027t that more of a `Global` flag than a `Local` flag?\n\nI would have expected *only* what was specified in a project\u0027s Android.bp to be a `Local` flag, nothing more, nothing less.  Local flags should be immutable and filtering should occur when composing the final list of flags.  Or am I misunderstanding the distinction between `Global` and `Local`?",
+      "revId": "b3075e2c9a37501e647d17254f5f9716183db188",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

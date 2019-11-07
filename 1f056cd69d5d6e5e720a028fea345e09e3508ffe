@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "931bc2eb_a9b1b53f",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1114194
+      },
+      "writtenOn": "2019-11-07T18:50:47Z",
+      "side": 0,
+      "message": "Were arFlags unused?",
+      "revId": "1f056cd69d5d6e5e720a028fea345e09e3508ffe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11eb8f55_603cdfb6",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1114194
+      },
+      "writtenOn": "2019-11-07T18:50:47Z",
+      "side": 0,
+      "message": "What if locally I put `-fexperimental-new-pass-manager`? We will no longer strip it out. Isn\u0027t it better to remove it than to append another flag disabling it?",
+      "revId": "1f056cd69d5d6e5e720a028fea345e09e3508ffe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d05e278_ce204c49",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1114194
+      },
+      "writtenOn": "2019-11-07T18:50:47Z",
+      "side": 0,
+      "message": "We no longer remove these?",
+      "revId": "1f056cd69d5d6e5e720a028fea345e09e3508ffe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
