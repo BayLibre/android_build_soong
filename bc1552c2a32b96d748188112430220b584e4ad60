@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72db3459_6cb03b93",
+        "filename": "cc/compiler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1114194
+      },
+      "writtenOn": "2019-11-07T22:24:36Z",
+      "side": 1,
+      "message": "Was this addition between patchset 1 vs patchset 2 intentional? I don\u0027t see its use anywhere.",
+      "revId": "bc1552c2a32b96d748188112430220b584e4ad60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
