@@ -182,6 +182,24 @@
     },
     {
       "key": {
+        "uuid": "eb303892_c04d7037",
+        "filename": "rust/prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-07T21:29:12Z",
+      "side": 1,
+      "message": "I slightly prefer it in the .bp files, but up to you.",
+      "parentUuid": "2544d7f0_4fe33e9b",
+      "revId": "0ef24aad03f1931eef866e6410bef2cb97b02ed8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fbc91507_23aef7f1",
         "filename": "rust/rust_test.go",
         "patchSetId": 2
