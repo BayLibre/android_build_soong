@@ -22,6 +22,30 @@
       "revId": "49af5b3494ffe2b81e6375fba8496ff027c6403d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b4d122d_6212fcc3",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-11-07T07:52:52Z",
+      "side": 1,
+      "message": "Defined constants for these literals.",
+      "parentUuid": "8f23d8d7_da79b7bf",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 260,
+        "endChar": 36
+      },
+      "revId": "49af5b3494ffe2b81e6375fba8496ff027c6403d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
