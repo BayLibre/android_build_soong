@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "34b3c27a_827a14e5",
+        "filename": "android/variable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2019-11-07T21:26:02Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "3d8b006f_76a56628",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 3
+      },
+      "revId": "c72210fc2d4cd397b1f9c7fa0b0eea6e7d27a7e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a843c2c8_b78697e5",
         "filename": "apex/apex.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "c72210fc2d4cd397b1f9c7fa0b0eea6e7d27a7e4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e771988_6c26b00e",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2019-11-07T21:26:02Z",
+      "side": 1,
+      "message": "When I tried it, flattened apex is not installed system_ext partition.\nSo I moved to here.",
+      "parentUuid": "a843c2c8_b78697e5",
+      "range": {
+        "startLine": 344,
+        "startChar": 0,
+        "endLine": 347,
+        "endChar": 5
+      },
+      "revId": "c72210fc2d4cd397b1f9c7fa0b0eea6e7d27a7e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
