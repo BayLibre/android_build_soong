@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d7ae479c_da4cc108",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-11-07T10:39:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76b58cec_773bfbe4",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 14
+      },
+      "revId": "b0be5efca18d0116810610e1d5e2498af7232d93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d98042da_afed7dec",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -36,6 +60,24 @@
       "writtenOn": "2019-11-06T19:12:42Z",
       "side": 1,
       "message": "Thanks for including the commit message from the original change. Saves a bit of work when digging into the history.",
+      "revId": "b0be5efca18d0116810610e1d5e2498af7232d93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36307222_007d8c27",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-11-07T10:39:43Z",
+      "side": 1,
+      "message": "Actually I updated it a bit (this is not the original message verbatim). Not sure if I should have left the original message.",
+      "parentUuid": "d98042da_afed7dec",
       "revId": "b0be5efca18d0116810610e1d5e2498af7232d93",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
