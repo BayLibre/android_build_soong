@@ -16,6 +16,24 @@
       "revId": "bfeea8c3d86139173acd325b1b2b2b508e30c48c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e913846f_1d461482",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-07T21:22:42Z",
+      "side": 1,
+      "message": "They end up in flags.localCommonFlags",
+      "parentUuid": "b285a20f_a15becef",
+      "revId": "bfeea8c3d86139173acd325b1b2b2b508e30c48c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
