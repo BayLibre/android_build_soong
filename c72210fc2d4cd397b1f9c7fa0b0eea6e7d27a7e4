@@ -22,6 +22,29 @@
       "revId": "c72210fc2d4cd397b1f9c7fa0b0eea6e7d27a7e4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a843c2c8_b78697e5",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-11-07T08:14:47Z",
+      "side": 1,
+      "message": "This conditional (!mctx.Config().FlattenApex() || mctx.Config().UnbundledBuild())) appears in GenerateAndroidBuildActions(). How about set MakeAsSystemExt() there instead of here.",
+      "range": {
+        "startLine": 344,
+        "startChar": 0,
+        "endLine": 347,
+        "endChar": 5
+      },
+      "revId": "c72210fc2d4cd397b1f9c7fa0b0eea6e7d27a7e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
