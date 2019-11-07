@@ -1,0 +1,9 @@
+Verified+1: Orion Hodson <oth@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Autosubmit+1: Orion Hodson <oth@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Thu, 07 Nov 2019 10:15:29 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1158825
+Project: platform/build/soong
+Branch: refs/heads/master
