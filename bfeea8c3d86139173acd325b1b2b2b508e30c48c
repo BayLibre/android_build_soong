@@ -34,6 +34,41 @@
       "revId": "bfeea8c3d86139173acd325b1b2b2b508e30c48c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6019f78a_84ece303",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1114194
+      },
+      "writtenOn": "2019-11-07T22:32:42Z",
+      "side": 1,
+      "message": "The commit message isn\u0027t precise then, FWIW (`local include dirs` occurs before `local conlyflags`). ;)",
+      "parentUuid": "e913846f_1d461482",
+      "revId": "bfeea8c3d86139173acd325b1b2b2b508e30c48c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "898baa90_8cd09618",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1114194
+      },
+      "writtenOn": "2019-11-07T22:32:42Z",
+      "side": 1,
+      "message": "Does this mean that `flags.globalCommonFlags` and `flags.localCFlags` get added twice? Once for `cflags`, again for `cppflags`?",
+      "revId": "bfeea8c3d86139173acd325b1b2b2b508e30c48c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
