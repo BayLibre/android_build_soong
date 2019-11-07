@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b285a20f_a15becef",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1114194
+      },
+      "writtenOn": "2019-11-07T18:54:48Z",
+      "side": 1,
+      "message": "How do local includes get added before system includes?",
+      "revId": "bfeea8c3d86139173acd325b1b2b2b508e30c48c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
