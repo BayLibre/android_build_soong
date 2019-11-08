@@ -14,14 +14,14 @@
 
 // This file provides a command-line interface to bpfix
 
-package main
+package bpfix
 
 import (
-	"android/soong/bpfix/bpfix/cmd"
+	"android/soong/bpfix/cmd_lib"
 
-	_ "partner/android/bpfix/extensions"
+	_ "android/soong/partner/bpfix/extensions"
 )
 
 func main() {
-	cmd.Run()
+	cmd_lib.Run()
 }
