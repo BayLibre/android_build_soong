@@ -22,6 +22,30 @@
       "revId": "8be103b04c72663e34823640eb5cef919755f527",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a94eecd8_f244bd8b",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2488,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-08T17:48:45Z",
+      "side": 1,
+      "message": "JNI libraries for preinstalled apps are not currently packaged in the APK.  I would like to change them to be packaged in the APK, but it will require a lot of cleanup because many JNI libraries are also unnecessarily listed in PRODUCT_PACKAGES, and putting them in the app would cause duplication.",
+      "parentUuid": "ffba350e_fe8e40d4",
+      "range": {
+        "startLine": 2488,
+        "startChar": 0,
+        "endLine": 2488,
+        "endChar": 58
+      },
+      "revId": "8be103b04c72663e34823640eb5cef919755f527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
