@@ -46,6 +46,30 @@
       "revId": "0b2387551bf3ed15cb41eeacaa8cd0286db43349",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1548255_6da43546",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-08T01:15:31Z",
+      "side": 1,
+      "message": "Right. This file is an intermediate one thus making it stemof(m) wasn\u0027t necessary.",
+      "parentUuid": "bb958f01_d6a441cd",
+      "range": {
+        "startLine": 138,
+        "startChar": 84,
+        "endLine": 138,
+        "endChar": 85
+      },
+      "revId": "0b2387551bf3ed15cb41eeacaa8cd0286db43349",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
