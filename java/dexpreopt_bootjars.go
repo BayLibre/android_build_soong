@@ -59,8 +59,13 @@ type bootImageConfig struct {
 	symbolsDir   android.OutputPath
 	targets      []android.Target
 	images       map[android.ArchType]android.OutputPath
+	imagesLocs   map[android.ArchType]android.OutputPath
 	imagesDeps   map[android.ArchType]android.Paths
 	zip          android.WritablePath
+
+	// boot image extensions depend on other images
+	bootClassPath          android.Paths
+	bootClassPathLocations []string
 }
 
 func (image bootImageConfig) moduleFiles(ctx android.PathContext, dir android.OutputPath, exts ...string) []android.OutputPath {
@@ -312,6 +317,12 @@ func buildBootImageRuleForArch(ctx android.SingletonContext, image *bootImage,
 		cmd.FlagWithInput("--dirty-image-objects=", global.DirtyImageObjects.Path())
 	}
 
+	if len(image.bootClassPath) > 0 {
+		cmd.
+			Flag("--runtime-arg").FlagWithInputList("-Xbootclasspath:", image.bootClassPath, ":").
+			Flag("--runtime-arg").FlagWithList("-Xbootclasspath-locations:", image.bootClassPathLocations, ":")
+	}
+
 	cmd.
 		FlagForEachInput("--dex-file=", image.dexPaths.Paths()).
 		FlagForEachArg("--dex-location=", image.dexLocations).
@@ -322,8 +333,17 @@ func buildBootImageRuleForArch(ctx android.SingletonContext, image *bootImage,
 		Flag("--strip").
 		FlagWithOutput("--oat-file=", outputPath.ReplaceExtension(ctx, "oat")).
 		FlagWithArg("--oat-location=", oatLocation).
-		FlagWithOutput("--image=", outputPath).
-		FlagWithArg("--base=", ctx.Config().LibartImgDeviceBaseAddress()).
+		FlagWithOutput("--image=", outputPath)
+
+	if len(image.bootClassPath) == 0 {
+		cmd.FlagWithArg("--base=", ctx.Config().LibartImgDeviceBaseAddress())
+	} else {
+		cmd.FlagWithArg("--boot-image=", artBootImageConfig(ctx).imagesLocs[arch].String())
+//		cmd.FlagWithInput("--boot-image=", artBootImageConfig(ctx).imagesLocs[arch])
+//		cmd.FlagWithArg("--boot-image=", "out/soong/walleye/dex_artjars/system/framework/boot.art")
+	}
+
+	cmd.
 		FlagWithArg("--instruction-set=", arch.String()).
 		FlagWithArg("--instruction-set-variant=", global.CpuVariant[arch]).
 		FlagWithArg("--instruction-set-features=", global.InstructionSetFeatures[arch]).
