@@ -16,6 +16,24 @@
       "revId": "8d0ddb2f671b8b6a6174d235945a0b234b9777a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fc366a5_fa743c51",
+        "filename": "cc/compiler.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-08T22:35:19Z",
+      "side": 1,
+      "message": "Maybe in a separate patch, it seems better to be as strict as possible unless it causes problems.",
+      "parentUuid": "ddd3f510_275b4570",
+      "revId": "8d0ddb2f671b8b6a6174d235945a0b234b9777a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
