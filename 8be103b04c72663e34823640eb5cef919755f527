@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ffba350e_fe8e40d4",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2488,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-11-08T17:44:21Z",
+      "side": 1,
+      "message": "Should we follow jni_libs and package them within apex? I thought they are already packaged in .apk file.",
+      "range": {
+        "startLine": 2488,
+        "startChar": 0,
+        "endLine": 2488,
+        "endChar": 58
+      },
+      "revId": "8be103b04c72663e34823640eb5cef919755f527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
