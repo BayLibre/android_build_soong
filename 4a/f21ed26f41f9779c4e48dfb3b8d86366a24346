@@ -1,0 +1,6 @@
+Code-Review+2: Nick Desaulniers <ndesaulniers@google.com>
+Submitted-by: Colin Cross <ccross@android.com>
+Submitted-at: Fri, 08 Nov 2019 05:07:32 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1160966
+Project: platform/build/soong
+Branch: refs/heads/master
