@@ -94,6 +94,30 @@
       "revId": "c34378aba95ec77ab1d2b126a184e12f0d4be8a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dd96f7c7_53165afa",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-08T04:04:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3e8c6440_176c05f4",
+      "range": {
+        "startLine": 844,
+        "startChar": 0,
+        "endLine": 852,
+        "endChar": 87
+      },
+      "revId": "c34378aba95ec77ab1d2b126a184e12f0d4be8a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
