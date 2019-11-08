@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ddd3f510_275b4570",
+        "filename": "cc/compiler.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1114194
+      },
+      "writtenOn": "2019-11-08T21:33:04Z",
+      "side": 1,
+      "message": "should this be a call to `isThirdParty` as well?",
+      "revId": "8d0ddb2f671b8b6a6174d235945a0b234b9777a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
