@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "523ae02c_b39a2bf0",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-11-08T22:47:25Z",
+      "side": 1,
+      "message": "s/now/is now/",
+      "range": {
+        "startLine": 223,
+        "startChar": 41,
+        "endLine": 223,
+        "endChar": 77
+      },
+      "revId": "c0ecbbaf73355142759d161b2340d1fe36075641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
