@@ -89,7 +89,7 @@ func GenerateDexpreoptRule(ctx android.PathContext,
 			for i, arch := range module.Archs {
 				image := module.DexPreoptImages[i]
 				imageDeps := module.DexPreoptImagesDeps[i]
-				dexpreoptCommand(ctx, global, module, rule, arch, profile, image, imageDeps, appImage, generateDM)
+				dexpreoptCommand(ctx, global, module, rule, arch, profile, image, module.DexPreoptImageLocations, imageDeps, appImage, generateDM)
 			}
 		}
 	}
@@ -186,7 +186,7 @@ func bootProfileCommand(ctx android.PathContext, global GlobalConfig, module Mod
 }
 
 func dexpreoptCommand(ctx android.PathContext, global GlobalConfig, module ModuleConfig, rule *android.RuleBuilder,
-	arch android.ArchType, profile, bootImage android.Path, bootImageDeps android.Paths, appImage, generateDM bool) {
+	arch android.ArchType, profile, bootImage android.Path, bootImageLocations string, bootImageDeps android.Paths, appImage, generateDM bool) {
 
 	// HACK: make soname in Soong-generated .odex files match Make.
 	base := filepath.Base(module.DexLocation)
@@ -214,13 +214,6 @@ func dexpreoptCommand(ctx android.PathContext, global GlobalConfig, module Modul
 	vdexInstallPath := pathtools.ReplaceExtension(odexInstallPath, "vdex")
 
 	invocationPath := odexPath.ReplaceExtension(ctx, "invocation")
-
-	// bootImage is .../dex_bootjars/system/framework/arm64/boot.art, but dex2oat wants
-	// .../dex_bootjars/system/framework/boot.art on the command line
-	var bootImageLocation string
-	if bootImage != nil {
-		bootImageLocation = PathToLocation(bootImage, arch)
-	}
 
 	// The class loader context using paths in the build
 	var classLoaderContextHost android.Paths
@@ -349,7 +342,7 @@ func dexpreoptCommand(ctx android.PathContext, global GlobalConfig, module Modul
 		Flag("--runtime-arg").FlagWithList("-Xbootclasspath-locations:", module.PreoptBootClassPathDexLocations, ":").
 		Flag("${class_loader_context_arg}").
 		Flag("${stored_class_loader_context_arg}").
-		FlagWithArg("--boot-image=", bootImageLocation).Implicits(bootImageDeps).
+		FlagWithArg("--boot-image=", bootImageLocations).Implicits(bootImageDeps).
 		FlagWithInput("--dex-file=", module.DexPath).
 		FlagWithArg("--dex-location=", dexLocationArg).
 		FlagWithOutput("--oat-file=", odexPath).ImplicitOutput(vdexPath).

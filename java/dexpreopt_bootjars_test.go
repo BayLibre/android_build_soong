@@ -48,7 +48,7 @@ func TestDexpreoptBootJars(t *testing.T) {
 
 	pathCtx := android.PathContextForTesting(config, nil)
 	dexpreoptConfig := dexpreopt.GlobalConfigForTests(pathCtx)
-	dexpreoptConfig.ArtApexJars = []string{"foo", "bar", "baz"}
+	dexpreoptConfig.BootJars = []string{"foo", "bar", "baz"}
 	setDexpreoptTestGlobalConfig(config, dexpreoptConfig)
 
 	ctx := testContext(bp, nil)
@@ -62,6 +62,7 @@ func TestDexpreoptBootJars(t *testing.T) {
 	bootArt := dexpreoptBootJars.Output("boot.art")
 
 	expectedInputs := []string{
+		"dex_artjars/system/framework/arm64/boot.art",
 		"dex_bootjars_input/foo.jar",
 		"dex_bootjars_input/bar.jar",
 		"dex_bootjars_input/baz.jar",
