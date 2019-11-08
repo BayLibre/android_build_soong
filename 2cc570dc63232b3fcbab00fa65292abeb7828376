@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c85cade_16bedf74",
+        "filename": "java/java_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-08T18:05:19Z",
+      "side": 1,
+      "message": "blueprint imports should go above soong imports.",
+      "revId": "2cc570dc63232b3fcbab00fa65292abeb7828376",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
