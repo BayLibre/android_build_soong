@@ -46,6 +46,30 @@
       "revId": "8be103b04c72663e34823640eb5cef919755f527",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3647083_af0f5ee4",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2488,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-08T17:51:59Z",
+      "side": 1,
+      "message": "hmm, AFAIK it depends on whether the apk is build as unbundled or not. If unbundled, the lib becomes part of the apk, but if bundled, \nit\u0027s not. \n\nhttps://cs.corp.google.com/android/build/soong/java/app.go?rcl\u003de5ed6d1b09cf185aac4007b5d9d4b7419e9cab28\u0026l\u003d345",
+      "parentUuid": "ffba350e_fe8e40d4",
+      "range": {
+        "startLine": 2488,
+        "startChar": 0,
+        "endLine": 2488,
+        "endChar": 58
+      },
+      "revId": "8be103b04c72663e34823640eb5cef919755f527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
