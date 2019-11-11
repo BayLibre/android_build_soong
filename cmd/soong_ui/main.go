@@ -142,12 +142,6 @@ func main() {
 	stat.AddOutput(output)
 	stat.AddOutput(trace.StatusTracer())
 
-	build.SetupSignals(log, cancel, func() {
-		trace.Close()
-		log.Cleanup()
-		stat.Finish()
-	})
-
 	buildCtx := build.Context{ContextImpl: &build.ContextImpl{
 		Context: ctx,
 		Logger:  log,
@@ -160,6 +154,14 @@ func main() {
 	config := c.config(buildCtx, args...)
 
 	build.SetupOutDir(buildCtx, config)
+	defer build.Cleanup(buildCtx, config)
+
+	build.SetupSignals(log, cancel, func() {
+		trace.Close()
+		log.Cleanup()
+		build.Cleanup(buildCtx, config)
+		stat.Finish()
+	})
 
 	logsDir := config.OutDir()
 	if config.Dist() {

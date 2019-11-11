@@ -50,3 +50,20 @@ func startRBE(ctx Context, config Config) {
 		ctx.Fatalf("rbe bootstrap failed with: %v\n%s\n", err, output)
 	}
 }
+
+func stopRBE(ctx Context, config Config) {
+	var rbeBootstrap string
+	if rbeDir, ok := config.Environment().Get("RBE_DIR"); ok {
+		rbeBootstrap = filepath.Join(rbeDir, bootstrapCmd)
+	} else if home, ok := config.Environment().Get("HOME"); ok {
+		rbeBootstrap = filepath.Join(home, "rbe", bootstrapCmd)
+	} else {
+		ctx.Fatalln("rbe bootstrap not found")
+	}
+
+	cmd := Command(ctx, config, "boostrap shutdown", rbeBootstrap, "--shutdown")
+
+	if output, err := cmd.CombinedOutput(); err != nil {
+		ctx.Fatalf("rbe bootstrap failed with: %v\n%s\n", err, output)
+	}
+}

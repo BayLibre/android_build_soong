@@ -123,6 +123,13 @@ func help(ctx Context, config Config, what int) {
 	cmd.RunAndPrintOrFatal()
 }
 
+// Cleanup cleans up processes started for the build.
+func Cleanup(ctx Context, config Config) {
+	if config.UseRBE() {
+		stopRBE(ctx, config)
+	}
+}
+
 // Build the tree. The 'what' argument can be used to chose which components of
 // the build to run.
 func Build(ctx Context, config Config, what int) {
