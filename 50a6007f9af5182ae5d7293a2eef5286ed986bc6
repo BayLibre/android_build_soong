@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3e64957_33b772a1",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-11T15:41:02Z",
+      "side": 1,
+      "message": "This shouldn\u0027t need sorting, its based on the output of PathsForModuleSrc which should already be sorted, plus a few deterministic appends.",
+      "revId": "50a6007f9af5182ae5d7293a2eef5286ed986bc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d992be8_b24c77e8",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-11T15:41:02Z",
+      "side": 1,
+      "message": "Can you either sort this where it is created, or create it in a deterministic order?",
+      "revId": "50a6007f9af5182ae5d7293a2eef5286ed986bc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9fa899a7_7db9fb07",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-11T15:41:02Z",
+      "side": 1,
+      "message": "This walk will be in a deterministic order, you can use a map[string]bool to track if you\u0027ve seen an output file before, and use a slice to store them in a deterministic order.",
+      "revId": "50a6007f9af5182ae5d7293a2eef5286ed986bc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3b37193_1a0f94c8",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-11T15:41:02Z",
+      "side": 1,
+      "message": "Or sort here after converting the map to a slice.",
+      "revId": "50a6007f9af5182ae5d7293a2eef5286ed986bc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
