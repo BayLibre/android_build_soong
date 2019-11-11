@@ -18,6 +18,7 @@ import (
 	"fmt"
 	"io"
 	"path/filepath"
+	"sort"
 	"strings"
 
 	"android/soong/android"
@@ -330,9 +331,11 @@ func (fuzz *fuzzBinary) AndroidMk(ctx AndroidMkContext, ret *android.AndroidMkDa
 	ret.Extra = append(ret.Extra, func(w io.Writer, outputFile android.Path) {
 		fmt.Fprintln(w, "LOCAL_IS_FUZZ_TARGET := true")
 		if len(fuzzFiles) > 0 {
+			sort.Strings(fuzzFiles)
 			fmt.Fprintln(w, "LOCAL_TEST_DATA := "+strings.Join(fuzzFiles, " "))
 		}
 		if fuzz.installedSharedDeps != nil {
+			sort.Strings(fuzz.installedSharedDeps)
 			fmt.Fprintln(w, "LOCAL_FUZZ_INSTALLED_SHARED_DEPS :="+
 				strings.Join(fuzz.installedSharedDeps, " "))
 		}
