@@ -16,6 +16,24 @@
       "revId": "5f33734210f84c05aa15108e54e578676d68bb37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f74f2e9_476531d9",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1026,
+      "author": {
+        "id": 1463094
+      },
+      "writtenOn": "2019-11-11T13:01:22Z",
+      "side": 1,
+      "message": "Myself and Paul found a workaround - just adding the annotation source instead of lib to the core-all rule as a source. Reverting this change, thanks for the help!",
+      "parentUuid": "73415f9b_ec53279a",
+      "revId": "5f33734210f84c05aa15108e54e578676d68bb37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
