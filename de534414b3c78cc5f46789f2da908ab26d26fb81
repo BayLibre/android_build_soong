@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6cfad1fc_244192ef",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-11-11T15:29:24Z",
+      "side": 1,
+      "message": "Thanks Roland, I\u0027ll fix this in the next CL.",
+      "parentUuid": "baa6595a_a327d64f",
+      "range": {
+        "startLine": 195,
+        "startChar": 1,
+        "endLine": 195,
+        "endChar": 87
+      },
+      "revId": "de534414b3c78cc5f46789f2da908ab26d26fb81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eafe231c_3427192f",
         "filename": "java/dexpreopt_config.go",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "94cf9b14_cf35a11c",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-11-11T15:29:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "eafe231c_3427192f",
+      "range": {
+        "startLine": 202,
+        "startChar": 1,
+        "endLine": 202,
+        "endChar": 85
+      },
+      "revId": "de534414b3c78cc5f46789f2da908ab26d26fb81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "871f2d8f_0abac898",
         "filename": "java/dexpreopt_config.go",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2019-11-11T15:08:52Z",
       "side": 1,
       "message": "Nit (likewise):\n\n  return getBootImageConfig(ctx, artBootImageConfigKey, \"art\" /*name*/, \"boot\" /*stem*/,\n                            false /*needZip*/, true /*artApexJarsOnly*/)",
+      "range": {
+        "startLine": 209,
+        "startChar": 1,
+        "endLine": 209,
+        "endChar": 82
+      },
+      "revId": "de534414b3c78cc5f46789f2da908ab26d26fb81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "014f5e93_53a2548b",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-11-11T15:29:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "871f2d8f_0abac898",
       "range": {
         "startLine": 209,
         "startChar": 1,
