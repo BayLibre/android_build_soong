@@ -339,6 +339,10 @@ type apexBundleProperties struct {
 	// binaries would be installed by default (in PRODUCT_PACKAGES) the other binary will be removed
 	// from PRODUCT_PACKAGES.
 	Overrides []string
+
+	// Whether this APEX should support Android10. Default is false. If this is set true, then apex_manifest.json is bundled as well
+	// because Android10 requires legacy apex_manifest.json instead of apex_manifest.pb
+	Legacy_android10_support *bool
 }
 
 type apexTargetBundleProperties struct {
@@ -486,10 +490,8 @@ type apexBundle struct {
 	artApex         bool
 	primaryApexType bool
 
-	// intermediate path for apex_manifest.json
-	manifestJsonOut     android.WritablePath
-	manifestJsonFullOut android.WritablePath
-	manifestPbOut       android.WritablePath
+	manifestJsonOut android.WritablePath
+	manifestPbOut   android.WritablePath
 
 	// list of commands to create symlinks for backward compatibility
 	// these commands will be attached as LOCAL_POST_INSTALL_CMD to
