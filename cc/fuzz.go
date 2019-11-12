@@ -155,7 +155,9 @@ func isValidSharedDependency(
 	if linkable, ok := dependency.(LinkableInterface); !ok || // Discard non-linkables.
 		!linkable.CcLibraryInterface() || !linkable.Shared() || // Discard static libs.
 		linkable.UseVndk() || // Discard vendor linked libraries.
-		!linkable.CcLibrary() || linkable.BuildStubs() { // Discard stubs libs (only CCLibrary variants).
+		// Discard stubs libs (only CCLibrary variants). Prebuilt libraries should not
+		// be excluded on the basis of they're not CCLibrary()'s.
+		(linkable.CcLibrary() && linkable.BuildStubs()) {
 		return false
 	}
 
