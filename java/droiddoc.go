@@ -1913,3 +1913,33 @@ func zipSyncCmd(ctx android.ModuleContext, rule *android.RuleBuilder,
 func zipSyncCleanupCmd(rule *android.RuleBuilder, srcJarDir android.ModuleOutPath) {
 	rule.Command().Text("rm -rf").Text(srcJarDir.String())
 }
+
+func (d *Droidstubs) BuildSnapshot(builder android.SnapshotBuilder) {
+	stubsSrcJar := d.stubsSrcJar
+
+	snapshotRelativeSrcJar := filepath.Join("java", d.Name()+".srcjar")
+	builder.CopyToSnapshot(stubsSrcJar, snapshotRelativeSrcJar)
+
+	name := d.Name()
+	bp := builder.AndroidBpFile()
+	bp.Printfln("prebuilt_stubs_source {")
+	bp.Indent()
+	bp.Printfln("name: %q,", builder.VersionedSdkMemberName(name))
+	bp.Printfln("sdk_member_name: %q,", name)
+	bp.Printfln("srcjar: %q,", snapshotRelativeSrcJar)
+	bp.Dedent()
+	bp.Printfln("}")
+	bp.Printfln("")
+
+	// This module is for the case when the source tree for the unversioned module
+	// doesn't exist (i.e. building in an unbundled tree). "prefer:" is set to false
+	// so that this module does not eclipse the unversioned module if it exists.
+	bp.Printfln("prebuilt_stubs_source {")
+	bp.Indent()
+	bp.Printfln("name: %q,", name)
+	bp.Printfln("srcjar: %q,", snapshotRelativeSrcJar)
+	bp.Printfln("prefer: false,")
+	bp.Dedent()
+	bp.Printfln("}")
+	bp.Printfln("")
+}

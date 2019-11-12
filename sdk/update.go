@@ -80,6 +80,16 @@ func (s *sdk) javaLibs(ctx android.ModuleContext) []*java.Library {
 	return result
 }
 
+func (s *sdk) stubsSources(ctx android.ModuleContext) []*java.Droidstubs {
+	result := []*java.Droidstubs{}
+	ctx.VisitDirectDeps(func(m android.Module) {
+		if j, ok := m.(*java.Droidstubs); ok {
+			result = append(result, j)
+		}
+	})
+	return result
+}
+
 // archSpecificNativeLibInfo represents an arch-specific variant of a native lib
 type archSpecificNativeLibInfo struct {
 	name                      string
@@ -246,6 +256,12 @@ func (s *sdk) buildSnapshot(ctx android.ModuleContext) android.OutputPath {
 		m.BuildSnapshot(ctx, builder)
 	}
 
+	// copy stubs sources
+	stubsSources := s.stubsSources(ctx)
+	for _, m := range stubsSources {
+		m.BuildSnapshot(builder)
+	}
+
 	// copy exported header files and stub *.so files
 	nativeLibInfos := s.nativeMemberInfos(ctx)
 	for _, info := range nativeLibInfos {
@@ -265,6 +281,15 @@ func (s *sdk) buildSnapshot(ctx android.ModuleContext) android.OutputPath {
 		}
 		bp.Dedent()
 		bp.Printfln("],") // java_libs
+	}
+	if len(stubsSources) > 0 {
+		bp.Printfln("stubs_sources: [")
+		bp.Indent()
+		for _, m := range stubsSources {
+			bp.Printfln("%q,", builder.VersionedSdkMemberName(m.Name()))
+		}
+		bp.Dedent()
+		bp.Printfln("],") // stubs_sources
 	}
 	if len(nativeLibInfos) > 0 {
 		bp.Printfln("native_shared_libs: [")

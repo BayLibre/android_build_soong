@@ -50,6 +50,8 @@ type sdkProperties struct {
 	Java_libs []string
 	// The list of native libraries in this SDK
 	Native_shared_libs []string
+	// The list of stub sources in this SDK
+	Stubs_sources []string
 
 	Snapshot bool `blueprint:"mutated"`
 }
@@ -167,6 +169,7 @@ type sdkMemberVesionedDepTag struct {
 func memberMutator(mctx android.BottomUpMutatorContext) {
 	if m, ok := mctx.Module().(*sdk); ok {
 		mctx.AddVariationDependencies(nil, sdkMemberDepTag, m.properties.Java_libs...)
+		mctx.AddVariationDependencies(nil, sdkMemberDepTag, m.properties.Stubs_sources...)
 
 		targets := mctx.MultiTargets()
 		for _, target := range targets {
