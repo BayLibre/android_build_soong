@@ -303,12 +303,16 @@ written to a [ninja](http://ninja-build.org) build file.
 
 ### How do I write conditionals?
 
-Soong deliberately does not support conditionals in Android.bp files.
-Instead, complexity in build rules that would require conditionals are handled
-in Go, where high level language features can be used and implicit dependencies
-introduced by conditionals can be tracked.  Most conditionals are converted
-to a map property, where one of the values in the map will be selected and
-appended to the top level properties.
+Soong deliberately does not support conditionals in Android.bp files.  We suggest
+removing most conditionals from the build.  See [Best Practices](docs/best_practices.md#removing-conditionals)
+for some examples on how to remove conditionals.
+
+In cases that cannot be removed, complexity in build rules that would require
+conditionals are handled in Go through Soong plugins.  This allows high level
+language features to be used and implicit dependencies introduced by
+conditionals can be tracked.  Most conditionals supported by Soong plugins are
+converted to a map property, where one of the values in the map will be
+selected and appended to the top level properties.
 
 For example, to support architecture specific files:
 ```
@@ -325,10 +329,6 @@ cc_library {
     },
 }
 ```
-
-See [art/build/art.go](https://android.googlesource.com/platform/art/+/master/build/art.go)
-or [external/llvm/soong/llvm.go](https://android.googlesource.com/platform/external/llvm/+/master/soong/llvm.go)
-for examples of more complex conditionals on product variables or environment variables.
 
 ## Developing for Soong
 

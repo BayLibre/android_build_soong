@@ -146,3 +146,106 @@ they're used dynamically via `dlopen`. If they're only used via
 `LOCAL_SHARED_LIBRARIES` / `shared_libs`, then those dependencies will trigger
 them to be installed when necessary. Adding unnecessary libraries into
 `PRODUCT_PACKAGES` will force them to always be installed, wasting space.
+
+## Removing conditionals
+
+### Condtionally compiled module
+
+Condtionally compiling a module can generally be replaced with conditional
+installation:
+
+```
+ifeq (some condition)
+# guts of the Android.mk file
+LOCAL_MODULE:= bt_logger
+include $(BUILD_EXECUTABLE)
+endif
+```
+
+Becomes
+
+```
+cc_binary {
+    name: "bt_logger",
+    // guts of the module
+}
+```
+
+And in a product Makefile somewhere (something included with
+`$(call inherit-product, ...)`:
+
+```
+ifeq (some condition) # Or no condition
+PRODUCT_PACKAGES += bt_logger
+endif
+```
+
+If the condition was on a type of board or product it can often be dropped
+completely by putting the `PRODUCT_PACKAGES` entry in a product makefile that
+is only included by the correct products or boards.
+
+### Condtionally compiled module with multiple implementations
+
+If there are multiple implementations of the same module with one selected
+for compilation via a conditional the implementations can sometimes be renamed
+to unique values:
+
+In `:
+```
+# In hardware/acme/soc_a/gralloc/Android.mk:
+ifeq ($(TARGET_BOARD_PLATFORM),soc_a)
+LOCAL_MODULE := gralloc.acme
+...
+include $(BUILD_SHARED_LIBRARY)
+
+# In hardware/acme/soc_b/gralloc/Android.mk:
+
+ifeq ($(TARGET_BOARD_PLATFORM),soc_a)
+LOCAL_MODULE := gralloc.acme
+...
+include $(BUILD_SHARED_LIBRARY)
+```
+
+Becomes:
+```
+# In hardware/acme/soc_a/gralloc/Android.bp:
+cc_library {
+    name: "gralloc.soc_a",
+    ...
+}
+
+# In hardware/acme/soc_b/gralloc/Android.bp:
+cc_library {
+    name: "gralloc.soc_b",
+    ...
+}
+```
+
+Then to select the correct gralloc implementation, a product makefile can
+use:
+
+```
+PRODUCT_PACKAGES := gralloc.soc_a
+PRODUCT_PROPERTY_OVERRIDES += ro.hardware.gralloc=soc_a
+```
+
+In cases where the names cannot be made unique a `soong_namespace` can be
+used to partition a set of modules so that they are only built when the
+namespace is listed in `PRODUCT_SOONG_NAMESPACES`.  See [README.md](../README.md#name-resolution)
+for more on namespaces.
+
+### Conditionally used source files, libraries or flags
+
+The preferred solution is to convert the conditional to runtime, either by
+autodetecting the correct value, or loading the value from a system property
+or a configuration file.
+
+As a last resort, if the conditional cannot be removed, a Soong plugin can
+be written in Go that can implement additional features for specific module
+types.  Soong plugins are inherently tightly coupled to the build system,
+and will require ongoing maintenance as the build system is changed, so
+should be used only when absolutely required.
+
+See [art/build/art.go](https://android.googlesource.com/platform/art/+/master/build/art.go)
+or [external/llvm/soong/llvm.go](https://android.googlesource.com/platform/external/llvm/+/master/soong/llvm.go)
+for examples of more complex conditionals on product variables or environment variables.
