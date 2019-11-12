@@ -148,3 +148,23 @@ func InitSdkAwareModule(m SdkAware) {
 	base := m.sdkBase()
 	m.AddProperties(&base.properties)
 }
+
+// Provide support for generating the build rules which will build the snapshot.
+type SnapshotBuilder interface {
+	// Copy src to the dest (which is a snapshot relative path) and add the dest
+	// to the zip
+	CopyToSnapshot(src Path, dest string)
+
+	// Get the AndroidBpFile for the snapshot.
+	AndroidBpFile() GeneratedSnapshotFile
+
+	// Get a versioned name appropriate for the SDK snapshot version being taken.
+	VersionedSdkMemberName(unversionedName string) interface{}
+}
+
+// Provides support for generating a file, e.g. the Android.bp file.
+type GeneratedSnapshotFile interface {
+	Printfln(format string, args ...interface{})
+	Indent()
+	Dedent()
+}
