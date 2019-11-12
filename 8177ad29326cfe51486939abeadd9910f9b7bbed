@@ -22,6 +22,30 @@
       "revId": "8177ad29326cfe51486939abeadd9910f9b7bbed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "150c1dfc_2b62ce04",
+        "filename": "android/makevars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-12T23:14:15Z",
+      "side": 1,
+      "message": "They are not returned, they end up written to the build.ninja.d file so that we re-run Soong to regenerate build.ninja if they change.",
+      "parentUuid": "59967ba9_dfe3a96d",
+      "range": {
+        "startLine": 85,
+        "startChar": 33,
+        "endLine": 85,
+        "endChar": 78
+      },
+      "revId": "8177ad29326cfe51486939abeadd9910f9b7bbed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
