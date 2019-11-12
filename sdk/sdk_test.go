@@ -45,6 +45,8 @@ func testSdkContext(t *testing.T, bp string) (*android.TestContext, android.Conf
 	ctx.RegisterModuleType("android_app_certificate", android.ModuleFactoryAdaptor(java.AndroidAppCertificateFactory))
 	ctx.RegisterModuleType("java_library", android.ModuleFactoryAdaptor(java.LibraryFactory))
 	ctx.RegisterModuleType("java_import", android.ModuleFactoryAdaptor(java.ImportFactory))
+	ctx.RegisterModuleType("droidstubs", android.ModuleFactoryAdaptor(java.DroidstubsFactory))
+	ctx.RegisterModuleType("prebuilt_stubs_sources", android.ModuleFactoryAdaptor(java.PrebuiltStubsSourcesFactory))
 
 	// from cc package
 	ctx.RegisterModuleType("cc_library", android.ModuleFactoryAdaptor(cc.LibraryFactory))
@@ -417,6 +419,7 @@ func TestSnapshot(t *testing.T) {
 			name: "mysdk",
 			java_libs: ["myjavalib"],
 			native_shared_libs: ["mynativelib"],
+			stubs_sources: ["myjavaapistubs"],
 		}
 
 		java_library {
@@ -444,6 +447,12 @@ func TestSnapshot(t *testing.T) {
 			system_shared_libs: [],
 			stl: "none",
 		}
+
+    droidstubs {
+      name: "myjavaapistubs",
+			system_modules: "none",
+			sdk_version: "none",
+    }
 	`)
 
 	var copySrcs []string
@@ -472,6 +481,10 @@ func TestSnapshot(t *testing.T) {
 	ensureListContains(t, copyDests, "arm64/include_gen/mynativelib/aidl/foo/bar/Test.h")
 	ensureListContains(t, copyDests, "java/myjavalib.jar")
 	ensureListContains(t, copyDests, "arm64/lib/mynativelib.so")
+
+	// Ensure droidstubs copies a .srcjar from the build location to the sdk snapshot.
+	ensureListContains(t, copySrcs, filepath.Join(buildDir, ".intermediates/myjavaapistubs/android_common/myjavaapistubs-stubs.srcjar"))
+	ensureListContains(t, copyDests, "java/myjavaapistubs.srcjar")
 }
 
 var buildDir string

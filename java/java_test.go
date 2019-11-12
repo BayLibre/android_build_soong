@@ -89,6 +89,7 @@ func testContext(bp string, fs map[string][]byte) *android.TestContext {
 	ctx.RegisterModuleType("droiddoc", android.ModuleFactoryAdaptor(DroiddocFactory))
 	ctx.RegisterModuleType("droiddoc_host", android.ModuleFactoryAdaptor(DroiddocHostFactory))
 	ctx.RegisterModuleType("droiddoc_template", android.ModuleFactoryAdaptor(ExportedDroiddocDirFactory))
+	ctx.RegisterModuleType("prebuilt_stubs_sources", android.ModuleFactoryAdaptor(PrebuiltStubsSourcesFactory))
 	ctx.RegisterModuleType("java_sdk_library", android.ModuleFactoryAdaptor(SdkLibraryFactory))
 	ctx.RegisterModuleType("java_sdk_library_import", android.ModuleFactoryAdaptor(sdkLibraryImportFactory))
 	ctx.RegisterModuleType("override_android_app", android.ModuleFactoryAdaptor(OverrideAndroidAppModuleFactory))
@@ -206,6 +207,8 @@ func testContext(bp string, fs map[string][]byte) *android.TestContext {
 		"cert/new_cert.pk8":      nil,
 
 		"testdata/data": nil,
+
+		"stubs.srcjar": nil,
 	}
 
 	for k, v := range fs {
@@ -438,6 +441,11 @@ func TestPrebuilts(t *testing.T) {
 			name: "sdklib",
 			jars: ["b.jar"],
 		}
+
+		prebuilt_stubs_sources {
+			name: "stubs-source",
+			srcjar: "stubs.srcjar",
+		}
 		`)
 
 	javac := ctx.ModuleForTests("foo", "android_common").Rule("javac")
@@ -445,6 +453,8 @@ func TestPrebuilts(t *testing.T) {
 	barJar := ctx.ModuleForTests("bar", "android_common").Rule("combineJar").Output
 	bazJar := ctx.ModuleForTests("baz", "android_common").Rule("combineJar").Output
 	sdklibStubsJar := ctx.ModuleForTests("sdklib.stubs", "android_common").Rule("combineJar").Output
+
+	ctx.ModuleForTests("stubs-source", "android_common").Rule("Cp")
 
 	if !strings.Contains(javac.Args["classpath"], barJar.String()) {
 		t.Errorf("foo classpath %v does not contain %q", javac.Args["classpath"], barJar.String())
