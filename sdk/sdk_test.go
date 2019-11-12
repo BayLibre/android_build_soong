@@ -45,6 +45,8 @@ func testSdkContext(t *testing.T, bp string) (*android.TestContext, android.Conf
 	ctx.RegisterModuleType("android_app_certificate", android.ModuleFactoryAdaptor(java.AndroidAppCertificateFactory))
 	ctx.RegisterModuleType("java_library", android.ModuleFactoryAdaptor(java.LibraryFactory))
 	ctx.RegisterModuleType("java_import", android.ModuleFactoryAdaptor(java.ImportFactory))
+	ctx.RegisterModuleType("droidstubs", android.ModuleFactoryAdaptor(java.DroidstubsFactory))
+	ctx.RegisterModuleType("prebuilt_stubs_sources", android.ModuleFactoryAdaptor(java.PrebuiltStubsSourcesFactory))
 
 	// from cc package
 	ctx.RegisterModuleType("cc_library", android.ModuleFactoryAdaptor(cc.LibraryFactory))
@@ -104,6 +106,8 @@ func testSdkContext(t *testing.T, bp string) (*android.TestContext, android.Conf
 		"include/Test.h":                             nil,
 		"aidl/foo/bar/Test.aidl":                     nil,
 		"libfoo.so":                                  nil,
+		"stubs-sources/foo/bar/Foo.java":             nil,
+		"foo/bar/Foo.java":                           nil,
 	})
 
 	return ctx, config
@@ -323,6 +327,47 @@ func TestBasicSdkWithCc(t *testing.T) {
 	ensureListContains(t, pathsToStrings(cpplibForMyApex2.Rule("ld").Implicits), sdkMemberV2.String())
 }
 
+func TestBasicSdkWithDroidstubs(t *testing.T) {
+	ctx, _ := testSdk(t, `
+		sdk {
+		    name: "mysdk",
+		    stubs_sources: ["mystub"],
+		}
+		sdk_snapshot {
+		    name: "mysdk@10",
+		    stubs_sources: ["mystub_mysdk@10"],
+		}
+		prebuilt_stubs_sources {
+		    name: "mystub_mysdk@10",
+				sdk_member_name: "mystub",
+		    srcs: ["stubs-sources/foo/bar/Foo.java"],
+		}
+		droidstubs {
+		    name: "mystub",
+		    srcs: ["foo/bar/Foo.java"],
+				sdk_version: "none",
+				system_modules: "none",
+		}
+		apex {
+		    name: "myapex",
+		    java_libs: ["myjavalib"],
+		    uses_sdks: ["mysdk@10"],
+				key: "myapex.key",
+				certificate: ":myapex.cert",
+		}
+		java_library {
+		    name: "myjavalib",
+		    srcs: [":mystub"],
+				sdk_version: "none",
+				system_modules: "none",
+		}
+	`)
+
+	if false {
+		ctx.ModuleForTests("myjavalib", "android_common").Rule("javac")
+	}
+}
+
 func TestDepNotInRequiredSdks(t *testing.T) {
 	testSdkError(t, `module "myjavalib".*depends on "otherlib".*that isn't part of the required SDKs:.*`, `
 		sdk {
@@ -417,6 +462,7 @@ func TestSnapshot(t *testing.T) {
 			name: "mysdk",
 			java_libs: ["myjavalib"],
 			native_shared_libs: ["mynativelib"],
+			stubs_sources: ["myjavaapistubs"],
 		}
 
 		java_library {
@@ -444,15 +490,26 @@ func TestSnapshot(t *testing.T) {
 			system_shared_libs: [],
 			stl: "none",
 		}
+
+    droidstubs {
+      name: "myjavaapistubs",
+	    srcs: ["foo/bar/Foo.java"],
+			system_modules: "none",
+			sdk_version: "none",
+    }
 	`)
 
 	var copySrcs []string
 	var copyDests []string
 	buildParams := ctx.ModuleForTests("mysdk", "android_common").Module().BuildParamsForTests()
+	var zipBp android.BuildParams
 	for _, bp := range buildParams {
-		if bp.Rule.String() == "android/soong/android.Cp" {
+		ruleString := bp.Rule.String()
+		if ruleString == "android/soong/android.Cp" {
 			copySrcs = append(copySrcs, bp.Input.String())
 			copyDests = append(copyDests, bp.Output.Rel()) // rooted at the snapshot root
+		} else if ruleString == "<local rule>:m.mysdk_android_common.snapshot" {
+			zipBp = bp
 		}
 	}
 
@@ -472,6 +529,10 @@ func TestSnapshot(t *testing.T) {
 	ensureListContains(t, copyDests, "arm64/include_gen/mynativelib/aidl/foo/bar/Test.h")
 	ensureListContains(t, copyDests, "java/myjavalib.jar")
 	ensureListContains(t, copyDests, "arm64/lib/mynativelib.so")
+
+	// Ensure droidstubs added an implicit dependency on the .srcjar. The
+	// unzipping is done as part of the same rule as zipping.
+	ensureListContains(t, zipBp.Implicits.Strings(), filepath.Join(buildDir, ".intermediates/myjavaapistubs/android_common/myjavaapistubs-stubs.srcjar"))
 }
 
 var buildDir string

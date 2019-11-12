@@ -37,6 +37,8 @@ func init() {
 
 	android.RegisterModuleType("droidstubs", DroidstubsFactory)
 	android.RegisterModuleType("droidstubs_host", DroidstubsHostFactory)
+
+	android.RegisterModuleType("prebuilt_stubs_sources", PrebuiltStubsSourcesFactory)
 }
 
 var (
@@ -1163,6 +1165,7 @@ func (d *Droiddoc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 //
 type Droidstubs struct {
 	Javadoc
+	android.SdkBase
 
 	properties              DroidstubsProperties
 	apiFile                 android.WritablePath
@@ -1208,6 +1211,7 @@ func DroidstubsFactory() android.Module {
 		&module.Javadoc.properties)
 
 	InitDroiddocModule(module, android.HostAndDeviceSupported)
+	android.InitSdkAwareModule(module)
 	return module
 }
 
@@ -1912,4 +1916,94 @@ func zipSyncCmd(ctx android.ModuleContext, rule *android.RuleBuilder,
 
 func zipSyncCleanupCmd(rule *android.RuleBuilder, srcJarDir android.ModuleOutPath) {
 	rule.Command().Text("rm -rf").Text(srcJarDir.String())
+}
+
+var _ android.PrebuiltInterface = (*PrebuiltStubsSources)(nil)
+
+type PrebuiltStubsSourcesProperties struct {
+	Srcs []string `android:"path"`
+}
+
+type PrebuiltStubsSources struct {
+	android.ModuleBase
+	android.DefaultableModuleBase
+	prebuilt android.Prebuilt
+	android.SdkBase
+
+	properties PrebuiltStubsSourcesProperties
+
+	srcs        android.Paths
+	stubsSrcJar android.ModuleOutPath
+}
+
+func (p *PrebuiltStubsSources) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	p.srcs = android.PathsForModuleSrc(ctx, p.properties.Srcs)
+	//p.stubsSrcJar = android.PathForModuleOut(ctx, ctx.ModuleName()+"-"+"stubs.srcjar")
+	//ctx.Build(pctx, android.BuildParams{
+	//	Rule:   android.Cp,
+	//	Input:  p.prebuilt.SingleSourcePath(ctx),
+	//	Output: p.stubsSrcJar,
+	//})
+}
+
+func (p *PrebuiltStubsSources) Prebuilt() *android.Prebuilt {
+	return &p.prebuilt
+}
+
+func (p *PrebuiltStubsSources) Name() string {
+	return p.prebuilt.Name(p.ModuleBase.Name())
+}
+
+func (p *PrebuiltStubsSources) Srcs() android.Paths {
+	return append(android.Paths{}, p.srcs...)
+}
+
+//func (p *PrebuiltStubsSources) OutputFiles(tag string) (android.Paths, error) {
+//	switch tag {
+//	case "":
+//		return android.Paths{p.stubsSrcJar}, nil
+//	default:
+//		return nil, fmt.Errorf("unsupported module reference tag %q", tag)
+//	}
+//}
+
+func PrebuiltStubsSourcesFactory() android.Module {
+	module := &PrebuiltStubsSources{}
+
+	module.AddProperties(&module.properties)
+
+	android.InitPrebuiltModule(module, &module.properties.Srcs)
+	android.InitSdkAwareModule(module)
+	InitJavaModule(module, android.HostAndDeviceSupported)
+	return module
+}
+
+func (d *Droidstubs) BuildSnapshot(sdkModuleContext android.ModuleContext, builder android.SnapshotBuilder) {
+	stubsSrcJar := d.stubsSrcJar
+
+	snapshotRelativeDir := filepath.Join("java", d.Name()+"_stubs_sources")
+	builder.UnzipToSnapshot(stubsSrcJar, snapshotRelativeDir)
+
+	name := d.Name()
+	bp := builder.AndroidBpFile()
+	bp.Printfln("prebuilt_stubs_sources {")
+	bp.Indent()
+	bp.Printfln("name: %q,", builder.VersionedSdkMemberName(name))
+	bp.Printfln("sdk_member_name: %q,", name)
+	bp.Printfln("srcs: [%q],", snapshotRelativeDir)
+	bp.Dedent()
+	bp.Printfln("}")
+	bp.Printfln("")
+
+	// This module is for the case when the source tree for the unversioned module
+	// doesn't exist (i.e. building in an unbundled tree). "prefer:" is set to false
+	// so that this module does not eclipse the unversioned module if it exists.
+	bp.Printfln("prebuilt_stubs_sources {")
+	bp.Indent()
+	bp.Printfln("name: %q,", name)
+	bp.Printfln("srcs: [%q],", snapshotRelativeDir)
+	bp.Printfln("prefer: false,")
+	bp.Dedent()
+	bp.Printfln("}")
+	bp.Printfln("")
 }
