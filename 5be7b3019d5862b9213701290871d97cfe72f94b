@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91bc55fc_93986c9c",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-11-12T23:02:14Z",
+      "side": 1,
+      "message": "I thought the message we tried to deliver with this was how variants can be used instead of conditionals. I\u0027m now confused why you decided to insert \"supported by Soong plugins\" there.",
+      "range": {
+        "startLine": 313,
+        "startChar": 30,
+        "endLine": 315,
+        "endChar": 50
+      },
+      "revId": "5be7b3019d5862b9213701290871d97cfe72f94b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25d5498d_db20cd3d",
+        "filename": "docs/best_practices.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-11-12T23:02:14Z",
+      "side": 1,
+      "message": "Did you mean soc_b?",
+      "range": {
+        "startLine": 203,
+        "startChar": 31,
+        "endLine": 203,
+        "endChar": 36
+      },
+      "revId": "5be7b3019d5862b9213701290871d97cfe72f94b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
