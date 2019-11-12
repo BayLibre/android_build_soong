@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b3996cc4_cb440cba",
+        "filename": "android/module.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1996,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2019-11-12T05:59:56Z",
+      "side": 1,
+      "message": "It\u0027s easy to write to json file and we can deal with it in Python.",
+      "parentUuid": "619f3df8_7e14505a",
+      "range": {
+        "startLine": 1996,
+        "startChar": 19,
+        "endLine": 1996,
+        "endChar": 27
+      },
+      "revId": "443064ae4d1464761e24846a66690487703d21ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "397ca8c8_23801503",
         "filename": "cc/cc.go",
         "patchSetId": 10
@@ -36,6 +60,24 @@
       "writtenOn": "2019-11-06T18:10:51Z",
       "side": 1,
       "message": "If you\u0027re going to handle native code in a separate singleton then there is no reason to do this.  Either delte the IDEInfo implementation here, so the java singleton won\u0027t see it at all, or use the java singleton for both by moving it into the android package, renaming the output file to module_bp_deps.json, and making this function collect all the module data into an android.IdeInfo.",
+      "revId": "443064ae4d1464761e24846a66690487703d21ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2d84534_982bca99",
+        "filename": "cc/cc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 2177,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2019-11-12T05:59:56Z",
+      "side": 1,
+      "message": "Because we arn\u0027t sure if there contains any native project in the user\u0027s target project, we write this info to module_bp_java_deps.json first. If we check and find there are native projects inside the user\u0027s target project we use \"export SOONG_COLLECT_CC_DEPS\u003dtrue\" command to generate module_bp_cc_deps.json to get the native\u0027s info and create CMakeLists.txt project files. Otherwise we don\u0027t have to generate module_bp_cc_deps.json file.",
+      "parentUuid": "397ca8c8_23801503",
       "revId": "443064ae4d1464761e24846a66690487703d21ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "c7c0f479_5c3b5968",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2019-11-12T05:59:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bb82b5e_eadb040a",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 34
+      },
+      "revId": "443064ae4d1464761e24846a66690487703d21ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cda52b42_a3f111b4",
         "filename": "cc/ccdeps.go",
         "patchSetId": 10
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "c6d71952_25318ab5",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2019-11-12T05:59:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cda52b42_a3f111b4",
+      "revId": "443064ae4d1464761e24846a66690487703d21ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "32e7ff9a_8b1c3fea",
         "filename": "cc/ccdeps.go",
         "patchSetId": 10
@@ -96,6 +180,24 @@
       "revId": "443064ae4d1464761e24846a66690487703d21ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e702874e_7d0640a3",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2019-11-12T05:59:56Z",
+      "side": 1,
+      "message": "Done,\nI changed design to write these messages to config file: ~/.config/asuite/aidegen/aidegen.config.\n\nThank you.",
+      "parentUuid": "32e7ff9a_8b1c3fea",
+      "revId": "443064ae4d1464761e24846a66690487703d21ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -122,6 +224,30 @@
     },
     {
       "key": {
+        "uuid": "fac2937a_99f2cd55",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2019-11-12T05:59:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b4d4127_55f652eb",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 22
+      },
+      "revId": "443064ae4d1464761e24846a66690487703d21ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0fedad80_31af0aa4",
         "filename": "cc/ccdeps.go",
         "patchSetId": 10
@@ -133,6 +259,24 @@
       "writtenOn": "2019-11-06T18:10:51Z",
       "side": 1,
       "message": "This is going to hide some variants of the module from module_bp_cc_deps.json, and you\u0027re not using the same paths as getCMakeListsForModule.  I think it would be better to put all variants in module_bp_cc_deps.json and then filter to just the ones you want in aidegen.",
+      "revId": "443064ae4d1464761e24846a66690487703d21ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85a638d8_9d54fc99",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2019-11-12T05:59:56Z",
+      "side": 1,
+      "message": "I think we keep the same behavior as cmakelists.go to generate the same format of CMakeLists.txt project file.",
+      "parentUuid": "0fedad80_31af0aa4",
       "revId": "443064ae4d1464761e24846a66690487703d21ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -153,6 +297,24 @@
       "revId": "443064ae4d1464761e24846a66690487703d21ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "724fd65b_721699c8",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2019-11-12T05:59:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b714b55c_b04041f8",
+      "revId": "443064ae4d1464761e24846a66690487703d21ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
