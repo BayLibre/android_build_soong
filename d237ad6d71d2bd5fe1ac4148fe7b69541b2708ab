@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96a60a72_c2626e3e",
+        "filename": "java/app.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-11-12T00:06:38Z",
+      "side": 1,
+      "message": "I\u0027m confusing that this should be called before InitDefaultableModule() or not. The only property added in InitApexModule() is \"Apex_available\" and it looks like Okay not to be default-able for now.",
+      "range": {
+        "startLine": 589,
+        "startChar": 0,
+        "endLine": 589,
+        "endChar": 31
+      },
+      "revId": "d237ad6d71d2bd5fe1ac4148fe7b69541b2708ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
