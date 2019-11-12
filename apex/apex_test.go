@@ -138,9 +138,9 @@ func testApexContext(t *testing.T, bp string, handlers ...testCustomizer) (*andr
 		ctx.BottomUp("prebuilts", android.PrebuiltMutator).Parallel()
 	})
 	ctx.PreDepsMutators(func(ctx android.RegisterMutatorsContext) {
+		ctx.BottomUp("vndk", cc.VndkMutator).Parallel()
 		ctx.BottomUp("image", cc.ImageMutator).Parallel()
 		ctx.BottomUp("link", cc.LinkageMutator).Parallel()
-		ctx.BottomUp("vndk", cc.VndkMutator).Parallel()
 		ctx.BottomUp("test_per_src", cc.TestPerSrcMutator).Parallel()
 		ctx.BottomUp("version", cc.VersionMutator).Parallel()
 		ctx.BottomUp("begin", cc.BeginMutator).Parallel()
@@ -538,9 +538,10 @@ func TestApexManifest(t *testing.T) {
 	`)
 
 	module := ctx.ModuleForTests("myapex", "android_common_myapex_image")
-	module.Output("apex_manifest.pb")
-	module.Output("apex_manifest.json")
-	module.Output("apex_manifest_full.json")
+	args := module.Rule("apexRule").Args
+	if manifest := args["manifest"]; manifest != module.Output("apex_manifest.pb").Output.String() {
+		t.Error("manifest should be apex_manifest.pb, but " + manifest)
+	}
 }
 
 func TestBasicZipApex(t *testing.T) {
@@ -2326,7 +2327,7 @@ func TestApexWithTests(t *testing.T) {
 	ensureContains(t, androidMk, "LOCAL_MODULE := mytest1.myapex\n")
 	ensureContains(t, androidMk, "LOCAL_MODULE := mytest2.myapex\n")
 	ensureContains(t, androidMk, "LOCAL_MODULE := mytest3.myapex\n")
-	ensureContains(t, androidMk, "LOCAL_MODULE := apex_manifest.json.myapex\n")
+	ensureContains(t, androidMk, "LOCAL_MODULE := apex_manifest.pb.myapex\n")
 	ensureContains(t, androidMk, "LOCAL_MODULE := apex_pubkey.myapex\n")
 	ensureContains(t, androidMk, "LOCAL_MODULE := myapex\n")
 }
@@ -2803,6 +2804,26 @@ func TestApexAvailable(t *testing.T) {
 	// but the static variant is available to both myapex and the platform
 	ensureListContains(t, ctx.ModuleVariantsForTests("libfoo"), "android_arm64_armv8-a_core_static_myapex")
 	ensureListContains(t, ctx.ModuleVariantsForTests("libfoo"), "android_arm64_armv8-a_core_static")
+}
+
+func TestLegacyAndroid10Support(t *testing.T) {
+	ctx, _ := testApex(t, `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			legacy_android10_support: true,
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+	`)
+
+	module := ctx.ModuleForTests("myapex", "android_common_myapex_image")
+	args := module.Rule("apexRule").Args
+	ensureContains(t, args["opt_flags"], "--manifest_json "+module.Output("apex_manifest.json").Output.String())
 }
 
 func TestMain(m *testing.M) {
