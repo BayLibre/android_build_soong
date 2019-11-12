@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8adc2f71_f64bde34",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-12T23:01:28Z",
+      "side": 1,
+      "message": "CLang -\u003e Clang",
+      "range": {
+        "startLine": 92,
+        "startChar": 10,
+        "endLine": 92,
+        "endChar": 15
+      },
+      "revId": "32dec2d6f324a1f890cba147e2bea1e82f726f45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "598b65f2_385c0d25",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-12T23:01:28Z",
+      "side": 1,
+      "message": "The build must not write outside of the $OUT_DIR directory.  This won\u0027t work if someone is using aidegen in multiple branches, or if multiple users share an account.",
+      "revId": "32dec2d6f324a1f890cba147e2bea1e82f726f45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

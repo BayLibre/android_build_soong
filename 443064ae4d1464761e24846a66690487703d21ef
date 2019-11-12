@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "91d85ccf_b5640f3a",
+        "filename": "android/module.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1996,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-12T23:01:28Z",
+      "side": 1,
+      "message": "I\u0027d still suggest a bool, other tools will also want to process these files, and we shouldn\u0027t have to implement the same logic in all of them.",
+      "parentUuid": "b3996cc4_cb440cba",
+      "range": {
+        "startLine": 1996,
+        "startChar": 19,
+        "endLine": 1996,
+        "endChar": 27
+      },
+      "revId": "443064ae4d1464761e24846a66690487703d21ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "397ca8c8_23801503",
         "filename": "cc/cc.go",
         "patchSetId": 10
@@ -78,6 +102,24 @@
       "side": 1,
       "message": "Because we arn\u0027t sure if there contains any native project in the user\u0027s target project, we write this info to module_bp_java_deps.json first. If we check and find there are native projects inside the user\u0027s target project we use \"export SOONG_COLLECT_CC_DEPS\u003dtrue\" command to generate module_bp_cc_deps.json to get the native\u0027s info and create CMakeLists.txt project files. Otherwise we don\u0027t have to generate module_bp_cc_deps.json file.",
       "parentUuid": "397ca8c8_23801503",
+      "revId": "443064ae4d1464761e24846a66690487703d21ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dedccb1_5caf9e66",
+        "filename": "cc/cc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 2177,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-12T23:01:28Z",
+      "side": 1,
+      "message": "The additional time to collect cc deps is not going to be significant compared to the time you are spending rereading all Android.bp files to collect the java deps, you should do them both at the same time.",
+      "parentUuid": "d2d84534_982bca99",
       "revId": "443064ae4d1464761e24846a66690487703d21ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -277,6 +319,24 @@
       "side": 1,
       "message": "I think we keep the same behavior as cmakelists.go to generate the same format of CMakeLists.txt project file.",
       "parentUuid": "0fedad80_31af0aa4",
+      "revId": "443064ae4d1464761e24846a66690487703d21ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b6cf988_a6fb8697",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-12T23:01:28Z",
+      "side": 1,
+      "message": "cmakelists.go is not heavily used, you should learn what you can from cmakelists.go, but don\u0027t feel the need to keep the implementation close to it.",
+      "parentUuid": "85a638d8_9d54fc99",
       "revId": "443064ae4d1464761e24846a66690487703d21ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
