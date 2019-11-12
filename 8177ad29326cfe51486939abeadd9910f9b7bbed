@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59967ba9_dfe3a96d",
+        "filename": "android/makevars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-11-12T06:18:29Z",
+      "side": 1,
+      "message": "Where does it add the dependencies? Is it to the return list?",
+      "range": {
+        "startLine": 85,
+        "startChar": 33,
+        "endLine": 85,
+        "endChar": 78
+      },
+      "revId": "8177ad29326cfe51486939abeadd9910f9b7bbed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
