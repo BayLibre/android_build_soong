@@ -80,6 +80,16 @@ func (s *sdk) javaLibs(ctx android.ModuleContext) []android.SdkAware {
 	return result
 }
 
+func (s *sdk) stubsSources(ctx android.ModuleContext) []android.SdkAware {
+	result := []android.SdkAware{}
+	ctx.VisitDirectDeps(func(m android.Module) {
+		if j, ok := m.(*java.Droidstubs); ok {
+			result = append(result, j)
+		}
+	})
+	return result
+}
+
 // archSpecificNativeLibInfo represents an arch-specific variant of a native lib
 type archSpecificNativeLibInfo struct {
 	name                      string
@@ -236,13 +246,20 @@ func (s *sdk) buildSnapshot(ctx android.ModuleContext) android.OutputPath {
 		ctx:           ctx,
 		version:       "current",
 		snapshotDir:   snapshotDir.OutputPath,
-		androidBpFile: bp,
 		filesToZip:    []android.Path{bp.path},
+		ruleBuilder:   android.NewRuleBuilder(),
+		androidBpFile: bp,
 	}
 
 	// copy exported AIDL files and stub jar files
 	javaLibs := s.javaLibs(ctx)
 	for _, m := range javaLibs {
+		m.BuildSnapshot(ctx, builder)
+	}
+
+	// copy stubs sources
+	stubsSources := s.stubsSources(ctx)
+	for _, m := range stubsSources {
 		m.BuildSnapshot(ctx, builder)
 	}
 
@@ -266,6 +283,15 @@ func (s *sdk) buildSnapshot(ctx android.ModuleContext) android.OutputPath {
 		bp.Dedent()
 		bp.Printfln("],") // java_libs
 	}
+	if len(stubsSources) > 0 {
+		bp.Printfln("stubs_sources: [")
+		bp.Indent()
+		for _, m := range stubsSources {
+			bp.Printfln("%q,", builder.VersionedSdkMemberName(m.Name()))
+		}
+		bp.Dedent()
+		bp.Printfln("],") // stubs_sources
+	}
 	if len(nativeLibInfos) > 0 {
 		bp.Printfln("native_shared_libs: [")
 		bp.Indent()
@@ -285,11 +311,15 @@ func (s *sdk) buildSnapshot(ctx android.ModuleContext) android.OutputPath {
 
 	// zip them all
 	zipFile := android.PathForModuleOut(ctx, ctx.ModuleName()+"-current.zip").OutputPath
-	rb := android.NewRuleBuilder()
+	rb := builder.ruleBuilder
 	rb.Command().
+		// Make sure that all the files that are part of the zip are created first.
+		Implicits(filesToZip).
 		BuiltTool(ctx, "soong_zip").
 		FlagWithArg("-C ", builder.snapshotDir.String()).
-		FlagWithRspFileInputList("-l ", filesToZip).
+		// Include everything in the directory.
+		FlagWithArg("-D ", builder.snapshotDir.String()).
+		//FlagWithRspFileInputList("-l ", filesToZip).
 		FlagWithOutput("-o ", zipFile)
 	rb.Build(pctx, ctx, "snapshot", "Building snapshot for "+ctx.ModuleName())
 
@@ -405,6 +435,7 @@ type snapshotBuilder struct {
 	version       string
 	snapshotDir   android.OutputPath
 	filesToZip    android.Paths
+	ruleBuilder   *android.RuleBuilder
 	androidBpFile *generatedFile
 }
 
@@ -416,6 +447,22 @@ func (s *snapshotBuilder) CopyToSnapshot(src android.Path, dest string) {
 		Output: path,
 	})
 	s.filesToZip = append(s.filesToZip, path)
+}
+
+func (s *snapshotBuilder) UnzipToSnapshot(zipPath android.Path, destDir string) {
+	unzippedDir := s.snapshotDir.Join(s.ctx, destDir)
+
+	rule := s.ruleBuilder
+	rule.Command().Text("rm -rf").Text(unzippedDir.String())
+	rule.Command().Text("mkdir -p").Text(unzippedDir.String())
+
+	rule.Temporary(unzippedDir)
+	rule.Command().BuiltTool(s.ctx, "zipsync").
+		FlagWithArg("-d ", unzippedDir.String()).
+		FlagWithArg("-f ", `"*.java"`).
+		Inputs(android.Paths{zipPath})
+
+	//s.filesToZip = append(s.filesToZip, unzippedDir)
 }
 
 func (s *snapshotBuilder) AndroidBpFile() android.GeneratedSnapshotFile {
