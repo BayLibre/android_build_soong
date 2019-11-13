@@ -94,6 +94,29 @@
     },
     {
       "key": {
+        "uuid": "21a5b669_54f9431c",
+        "filename": "docs/best_practices.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1022179
+      },
+      "writtenOn": "2019-11-13T23:05:18Z",
+      "side": 1,
+      "message": "Same comment: Conditionally",
+      "range": {
+        "startLine": 152,
+        "startChar": 4,
+        "endLine": 152,
+        "endChar": 16
+      },
+      "revId": "d04dfd655a9a216977c09ce3f06c6d07b777c389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1928787d_6e5d39ce",
         "filename": "docs/best_practices.md",
         "patchSetId": 3
@@ -139,6 +162,121 @@
       "revId": "d04dfd655a9a216977c09ce3f06c6d07b777c389",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9c7afab_dc0602f7",
+        "filename": "docs/best_practices.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1022179
+      },
+      "writtenOn": "2019-11-13T23:05:18Z",
+      "side": 1,
+      "message": "Consider replacing with \"body\" as easier to translate/understand in other languages.",
+      "range": {
+        "startLine": 159,
+        "startChar": 2,
+        "endLine": 159,
+        "endChar": 6
+      },
+      "revId": "d04dfd655a9a216977c09ce3f06c6d07b777c389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71483eb0_54bec9e9",
+        "filename": "docs/best_practices.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1022179
+      },
+      "writtenOn": "2019-11-13T23:05:18Z",
+      "side": 1,
+      "message": "Add colon after",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 7
+      },
+      "revId": "d04dfd655a9a216977c09ce3f06c6d07b777c389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f167f240_d0c6a30e",
+        "filename": "docs/best_practices.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1022179
+      },
+      "writtenOn": "2019-11-13T23:05:18Z",
+      "side": 1,
+      "message": "Ditto: \"body\"",
+      "range": {
+        "startLine": 170,
+        "startChar": 7,
+        "endLine": 170,
+        "endChar": 11
+      },
+      "revId": "d04dfd655a9a216977c09ce3f06c6d07b777c389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbd6a9af_f8f8c94b",
+        "filename": "docs/best_practices.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1022179
+      },
+      "writtenOn": "2019-11-13T23:05:18Z",
+      "side": 1,
+      "message": "Add comma after",
+      "range": {
+        "startLine": 183,
+        "startChar": 43,
+        "endLine": 183,
+        "endChar": 50
+      },
+      "revId": "d04dfd655a9a216977c09ce3f06c6d07b777c389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04213a25_39ea579e",
+        "filename": "docs/best_practices.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1022179
+      },
+      "writtenOn": "2019-11-13T23:05:18Z",
+      "side": 1,
+      "message": "invert as \"included only\"",
+      "range": {
+        "startLine": 185,
+        "startChar": 3,
+        "endLine": 185,
+        "endChar": 16
+      },
+      "revId": "d04dfd655a9a216977c09ce3f06c6d07b777c389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
@@ -190,6 +328,52 @@
     },
     {
       "key": {
+        "uuid": "306e7c7f_13436da9",
+        "filename": "docs/best_practices.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1022179
+      },
+      "writtenOn": "2019-11-13T23:05:18Z",
+      "side": 1,
+      "message": "Should we explain when they can and cannot?",
+      "range": {
+        "startLine": 190,
+        "startChar": 58,
+        "endLine": 190,
+        "endChar": 67
+      },
+      "revId": "d04dfd655a9a216977c09ce3f06c6d07b777c389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2157feec_e14e4248",
+        "filename": "docs/best_practices.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1022179
+      },
+      "writtenOn": "2019-11-13T23:05:18Z",
+      "side": 1,
+      "message": "Add comma after",
+      "range": {
+        "startLine": 190,
+        "startChar": 22,
+        "endLine": 190,
+        "endChar": 33
+      },
+      "revId": "d04dfd655a9a216977c09ce3f06c6d07b777c389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b9ac8ecc_98a23631",
         "filename": "docs/best_practices.md",
         "patchSetId": 3
@@ -223,6 +407,24 @@
       "revId": "d04dfd655a9a216977c09ce3f06c6d07b777c389",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd700bc0_83e2f6cd",
+        "filename": "docs/best_practices.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1022179
+      },
+      "writtenOn": "2019-11-13T23:05:18Z",
+      "side": 1,
+      "message": "Agree with removing",
+      "parentUuid": "b9ac8ecc_98a23631",
+      "revId": "d04dfd655a9a216977c09ce3f06c6d07b777c389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
@@ -412,6 +614,145 @@
         "endChar": 73
       },
       "tag": "autogenerated:gerrit:newPatchSet",
+      "revId": "d04dfd655a9a216977c09ce3f06c6d07b777c389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "186c7b21_a6bccdae",
+        "filename": "docs/best_practices.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1022179
+      },
+      "writtenOn": "2019-11-13T23:05:18Z",
+      "side": 1,
+      "message": "Agree we should state this. I ask earlier above the same question when we say \"sometimes\"...\n\nAlso, can we say \"should be used\" here instead of \"can\" to make this a hard recommendation? If not, we should explain the tradeoffs of each solution so they may decide.",
+      "parentUuid": "474f49cb_1ff752d3",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 73
+      },
+      "revId": "d04dfd655a9a216977c09ce3f06c6d07b777c389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1ed99b8_a49b9bf6",
+        "filename": "docs/best_practices.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1022179
+      },
+      "writtenOn": "2019-11-13T23:05:18Z",
+      "side": 1,
+      "message": "Similar comment: \"built only\"",
+      "range": {
+        "startLine": 233,
+        "startChar": 52,
+        "endLine": 233,
+        "endChar": 62
+      },
+      "revId": "d04dfd655a9a216977c09ce3f06c6d07b777c389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e777b4cc_3d66762d",
+        "filename": "docs/best_practices.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1022179
+      },
+      "writtenOn": "2019-11-13T23:05:18Z",
+      "side": 1,
+      "message": "See the [Name resolution](../README.md#name-resolution) section of the Soong README...",
+      "range": {
+        "startLine": 234,
+        "startChar": 56,
+        "endLine": 234,
+        "endChar": 97
+      },
+      "revId": "d04dfd655a9a216977c09ce3f06c6d07b777c389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3aa6ef3_bfb5df2c",
+        "filename": "docs/best_practices.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1022179
+      },
+      "writtenOn": "2019-11-13T23:05:18Z",
+      "side": 1,
+      "message": "Remove this comma",
+      "range": {
+        "startLine": 240,
+        "startChar": 31,
+        "endLine": 240,
+        "endChar": 32
+      },
+      "revId": "d04dfd655a9a216977c09ce3f06c6d07b777c389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db00bdbc_43d75b6b",
+        "filename": "docs/best_practices.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1022179
+      },
+      "writtenOn": "2019-11-13T23:05:18Z",
+      "side": 1,
+      "message": "Remove this comma",
+      "range": {
+        "startLine": 245,
+        "startChar": 72,
+        "endLine": 245,
+        "endChar": 73
+      },
+      "revId": "d04dfd655a9a216977c09ce3f06c6d07b777c389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe854944_b9418161",
+        "filename": "docs/best_practices.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1022179
+      },
+      "writtenOn": "2019-11-13T23:05:18Z",
+      "side": 1,
+      "message": "; so plugins...",
+      "range": {
+        "startLine": 246,
+        "startChar": 67,
+        "endLine": 246,
+        "endChar": 71
+      },
       "revId": "d04dfd655a9a216977c09ce3f06c6d07b777c389",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
