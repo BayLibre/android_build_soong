@@ -132,6 +132,10 @@ func init() {
 		// Disable -Winconsistent-missing-override until we can clean up the existing
 		// codebase for it.
 		"-Wno-inconsistent-missing-override",
+
+		// Warnings from clang-10
+		// Nested and array designated initialization is nice to have.
+		"-Wno-c99-designator",
 	}, " "))
 
 	pctx.StaticVariable("ClangExtraCppflags", strings.Join([]string{
@@ -161,6 +165,8 @@ func init() {
 		// new warnings are fixed.
 		"-Wno-tautological-constant-compare",
 		"-Wno-tautological-type-limit-compare",
+		"-Wno-reorder-init-list",
+		"-Wno-implicit-int-float-conversion",
 	}, " "))
 
 	// Extra cflags for external third-party projects to disable warnings that
@@ -176,6 +182,10 @@ func init() {
 		// Bug: http://b/29823425 Disable -Wnull-dereference until the
 		// new instances detected by this warning are fixed.
 		"-Wno-null-dereference",
+
+		"-Wno-pointer-compare",
+		"-Wno-xor-used-as-pow",
+		"-Wno-final-dtor-non-final-class",
 	}, " "))
 }
 
