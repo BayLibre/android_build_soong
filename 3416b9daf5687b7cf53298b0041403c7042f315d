@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11015963_f81671ec",
+        "filename": "rust/rust_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-13T22:14:19Z",
+      "side": 1,
+      "message": "Use tabs",
+      "revId": "3416b9daf5687b7cf53298b0041403c7042f315d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
