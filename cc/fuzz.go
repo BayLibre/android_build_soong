@@ -337,9 +337,23 @@ func (s *fuzzPackager) GenerateBuildActions(ctx android.SingletonContext) {
 		sharedLibraries := make(map[string]android.Path)
 		collectAllSharedDependencies(module, sharedLibraries, ctx)
 
+		var files []fileToZip
+		builder := android.NewRuleBuilder()
+
+		// Package the corpora into a zipfile.
+		if fuzzModule.corpus != nil {
+			corpusZip := archDir.Join(ctx, module.Name()+"_seed_corpus.zip")
+			command := builder.Command().BuiltTool(ctx, "soong_zip").
+				Flag("-j").
+				FlagWithOutput("-o ", corpusZip)
+			command.FlagWithRspFileInputList("-l ", fuzzModule.corpus)
+			files = append(files, fileToZip{corpusZip, ""})
+		}
+
+		// Find and mark all the transiently-dependent shared libraries for
+		// packaging.
 		for _, library := range sharedLibraries {
-			archDirs[archDir] = append(archDirs[archDir],
-				fileToZip{library, ccModule.Name() + "/lib"})
+			files = append(files, fileToZip{library, "lib"})
 
 			if _, exists := archSharedLibraryDeps[archAndLibraryKey{archDir, library}]; exists {
 				continue
@@ -360,26 +374,34 @@ func (s *fuzzPackager) GenerateBuildActions(ctx android.SingletonContext) {
 		}
 
 		// The executable.
-		archDirs[archDir] = append(archDirs[archDir],
-			fileToZip{ccModule.UnstrippedOutputFile(), ccModule.Name()})
-
-		// The corpora.
-		for _, corpusEntry := range fuzzModule.corpus {
-			archDirs[archDir] = append(archDirs[archDir],
-				fileToZip{corpusEntry, ccModule.Name() + "/corpus"})
-		}
+		files = append(files, fileToZip{ccModule.UnstrippedOutputFile(), ""})
 
 		// The dictionary.
 		if fuzzModule.dictionary != nil {
-			archDirs[archDir] = append(archDirs[archDir],
-				fileToZip{fuzzModule.dictionary, ccModule.Name()})
+			files = append(files, fileToZip{fuzzModule.dictionary, ""})
 		}
 
 		// Additional fuzz config.
 		if fuzzModule.config != nil {
-			archDirs[archDir] = append(archDirs[archDir],
-				fileToZip{fuzzModule.config, ccModule.Name()})
+			files = append(files, fileToZip{fuzzModule.config, ""})
 		}
+
+		fuzzZip := archDir.Join(ctx, module.Name()+".zip")
+		command := builder.Command().BuiltTool(ctx, "soong_zip").
+			FlagWithOutput("-o ", fuzzZip)
+		for _, file := range files {
+			if len(file.DestinationPathPrefix) > 0 {
+				command.FlagWithArg("-P ", file.DestinationPathPrefix)
+			} else {
+				command.Flag("-P ''")
+			}
+			command.FlagWithInput("-f ", file.SourceFilePath)
+		}
+
+		builder.Build(pctx, ctx, "create-"+fuzzZip.String(),
+			"Package "+module.Name()+" for "+archString+"-"+hostOrTargetString)
+
+		archDirs[archDir] = append(archDirs[archDir], fileToZip{fuzzZip, ""})
 	})
 
 	for archDir, filesToZip := range archDirs {
@@ -390,12 +412,16 @@ func (s *fuzzPackager) GenerateBuildActions(ctx android.SingletonContext) {
 		s.packages = append(s.packages, outputFile)
 
 		command := builder.Command().BuiltTool(ctx, "soong_zip").
-			Flag("-j").
-			FlagWithOutput("-o ", outputFile)
+			FlagWithOutput("-o ", outputFile).
+			Flag("-L 0") // No need to try and re-compress the zipfiles.
 
 		for _, fileToZip := range filesToZip {
-			command.FlagWithArg("-P ", fileToZip.DestinationPathPrefix).
-				FlagWithInput("-f ", fileToZip.SourceFilePath)
+			if len(fileToZip.DestinationPathPrefix) > 0 {
+				command.FlagWithArg("-P ", fileToZip.DestinationPathPrefix)
+			} else {
+				command.Flag("-P ''")
+			}
+			command.FlagWithInput("-f ", fileToZip.SourceFilePath)
 		}
 
 		builder.Build(pctx, ctx, "create-fuzz-package-"+arch+"-"+hostOrTarget,
