@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cab884e2_6c7fb37d",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-13T21:16:18Z",
+      "side": 1,
+      "message": "suggest file.DestinationPathPrefix !\u003d \"\"",
+      "range": {
+        "startLine": 393,
+        "startChar": 6,
+        "endLine": 393,
+        "endChar": 37
+      },
+      "revId": "e056212b0c8ec76938ac2dab954752d424b5ea43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
