@@ -262,6 +262,30 @@
     },
     {
       "key": {
+        "uuid": "d86f80ab_b4b6207c",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-13T21:16:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d46e541c_b85062fa",
+      "range": {
+        "startLine": 398,
+        "startChar": 3,
+        "endLine": 398,
+        "endChar": 14
+      },
+      "revId": "9830c9ea5c73eb0bbb4f61fa8ac4a6d5a690d79f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef160e26_f6075128",
         "filename": "cc/fuzz.go",
         "patchSetId": 1
