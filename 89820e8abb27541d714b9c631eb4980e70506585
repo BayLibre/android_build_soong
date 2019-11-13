@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e42c829d_cd40bed7",
+        "filename": "rust/test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-13T22:04:06Z",
+      "side": 1,
+      "message": "These each need a comment, which will be shown as user-facing documentation at go/Android.bp.",
+      "revId": "89820e8abb27541d714b9c631eb4980e70506585",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f974da86_f1d06a72",
+        "filename": "rust/test_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-13T22:04:06Z",
+      "side": 1,
+      "message": "SingleFile",
+      "range": {
+        "startLine": 47,
+        "startChar": 17,
+        "endLine": 47,
+        "endChar": 18
+      },
+      "revId": "89820e8abb27541d714b9c631eb4980e70506585",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
