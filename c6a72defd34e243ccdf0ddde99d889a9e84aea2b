@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d37f210_fa25c42d",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2019-11-13T17:34:13Z",
+      "side": 1,
+      "message": "remove the empty line.",
+      "revId": "c6a72defd34e243ccdf0ddde99d889a9e84aea2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
