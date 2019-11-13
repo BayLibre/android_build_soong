@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93e2e80d_5fcd4d71",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-13T02:12:54Z",
+      "side": 1,
+      "message": "You will have to make droidstub to implement SdkAware interface.\n\nEmbed android.SdkBase into the struct and calll InitSdkAwareModule when initializing the struct.",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 84
+      },
+      "revId": "c1ff97e2c6e3e8bf84235bfe4ded0692e9a23c93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
