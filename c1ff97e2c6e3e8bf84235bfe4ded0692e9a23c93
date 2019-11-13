@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3ee04fcc_7e8c5d9f",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1921,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-13T16:57:56Z",
+      "side": 1,
+      "message": "I suggest you to have a rule to unzip the srcjar into \u003csnapshot-root\u003e/stub-srcs/\u003cdroiddoc_module_name\u003e (directory structure is just an example). The rule of course should clear the directory before unzipping. \n\nIn the Android.bp side, you can have a filegroup like this\n\nfilegroup {\n    name: \"mydroidstub_\u003csdkname\u003e@\u003cver\u003e\",\n    srcs: [\"stub-srcs/mydroidstub/**/*.java\"],\n}\n\nsdk_snapshot {\n    name: ...,\n    droidstub_srcs: [\"mydroidstub_\u003csdkname\u003e@ver\", ...],\n}\n\n\nand then the entire \u003csnapshot-root\u003e is zipped.",
+      "parentUuid": "58cfb485_6814b327",
+      "revId": "c1ff97e2c6e3e8bf84235bfe4ded0692e9a23c93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "93e2e80d_5fcd4d71",
         "filename": "sdk/sdk.go",
         "patchSetId": 1
@@ -54,6 +72,30 @@
       "side": 1,
       "message": "What function requires that as generating the prebuilts does not? How can I test it?",
       "parentUuid": "93e2e80d_5fcd4d71",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 84
+      },
+      "revId": "c1ff97e2c6e3e8bf84235bfe4ded0692e9a23c93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37c4ef09_bdbafedd",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-13T16:57:56Z",
+      "side": 1,
+      "message": "If droidstub doesn\u0027t implement SdkAware interface, the sdk module will just ignore it. As a consequence, it won\u0027t intercept the dependency to the original droidstub and redirect it to the filegroup in the sdk_snapshot.\n\nFor the test, you can have a test Android.bp like below:\n\nsdk_snapshot {\n    name: \"mysdk@10\",\n    stubs_sources: [\"mystub_mysdk@10\"],\n}\n\nfilegroup {\n    name: \"mystub_mysdk@10\",\n    srcs: [\"foo/bar/FooStub.java\"],\n}\n\ndroidstub {\n    name: \"mystub\",\n    srcs: [\"foo/bar/Foo.java\"],\n}\n\napex {\n    name: \"myapex\",\n    java_libraries: [\"myjavalib\"],\n    usds_sdks: [\"mysdk@10\"],\n}\n\njava_library {\n    name: \"myjavalib\",\n    srcs: [\":mystub\"],\n}\n\nAnd check that android_common_myapex variant of myjavalib uses foo/bar/FooStub.java as its sources, instead of foo/bar/Foo.java.",
+      "parentUuid": "cd5f3407_6d69b7d2",
       "range": {
         "startLine": 172,
         "startChar": 0,
