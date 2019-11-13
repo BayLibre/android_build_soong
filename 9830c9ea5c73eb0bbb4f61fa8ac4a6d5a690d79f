@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "9175a779_f54c3380",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-11-13T21:13:13Z",
+      "side": 1,
+      "message": "Looks like this is necessary, otherwise we get: \n$ unzip /usr/local/google/home/mitchp/Android/aosp-master/out/soong/fuzz-target-arm64.zip\n  Archive:  /usr/local/google/home/mitchp/Android/aosp-master/out/soong/fuzz-target-arm64.zip\n   extracting: out/soong/.intermediates/fuzz/target/arm64/ac3framescanner_fuzzer.zip  \n   extracting: out/soong/.intermediates/fuzz/target/arm64/aidl_parser_fuzzer.zip  \n   extracting: out/soong/.intermediates/fuzz/target/arm64/av1_dec_fuzzer.zip  \n   extracting: out/soong/.intermediates/fuzz/target/arm64/avc_dec_fuzzer.zip  \n   \u003c...snip...\u003e",
+      "parentUuid": "b1328493_d3381df4",
+      "range": {
+        "startLine": 398,
+        "startChar": 3,
+        "endLine": 398,
+        "endChar": 14
+      },
+      "revId": "9830c9ea5c73eb0bbb4f61fa8ac4a6d5a690d79f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef160e26_f6075128",
         "filename": "cc/fuzz.go",
         "patchSetId": 1
