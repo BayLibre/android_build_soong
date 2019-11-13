@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "58cfb485_6814b327",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1921,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-11-13T16:43:36Z",
+      "side": 1,
+      "message": "I wanted to unzip the srcjar (using zipsync I think) so that the stubs source would be stored as text files in the prebuilt git repository. That will make it easier to review the changes and detect issues. However, I could not work out how to manage what amounts to a dynamic list of files that can only be determined when the srcjar is unzipped. Both to ensure that they are added to the snapshot and also to make sure that the correct dependencies are created so that the srcjar is unzipped if the unzipped files are out of date.",
+      "revId": "c1ff97e2c6e3e8bf84235bfe4ded0692e9a23c93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "93e2e80d_5fcd4d71",
         "filename": "sdk/sdk.go",
         "patchSetId": 1
