@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4eda97ae_26b5a6ad",
+        "filename": "android/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-13T02:19:32Z",
+      "side": 1,
+      "message": "Add BuildSnapshot(sdkModuleContext android.ModuleContext, builder android.SnapshotBuilder) here",
+      "revId": "18abce5dad8a37d513891e63aaf2426ebbff13fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43c74210_cc1df6d1",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-13T02:19:32Z",
+      "side": 1,
+      "message": "this will be moved to the cc package, right?",
+      "revId": "18abce5dad8a37d513891e63aaf2426ebbff13fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
