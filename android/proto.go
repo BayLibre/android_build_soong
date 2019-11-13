@@ -37,6 +37,7 @@ type ProtoFlags struct {
 	OutTypeFlag           string
 	OutParams             []string
 	Deps                  Paths
+	RunWithKythePlugin    bool
 }
 
 type protoDependencyTag struct {
@@ -133,8 +134,13 @@ func ProtoRule(ctx ModuleContext, rule *RuleBuilder, protoFile Path, flags Proto
 		protoBase = strings.TrimSuffix(protoFile.String(), rel)
 	}
 
-	rule.Command().
-		BuiltTool(ctx, "aprotoc").
+	protocCmd := rule.Command().BuiltTool(ctx, "aprotoc")
+	if flags.RunWithKythePlugin {
+		pluginPath := ctx.Config().PrebuiltClangTool(ctx, "proto_metadata_plugin")
+		protocCmd.FlagWithArg("--plugin=", pluginPath.String())
+		protocCmd.Implicit(pluginPath)
+	}
+	protocCmd.
 		FlagWithArg(flags.OutTypeFlag+"=", strings.Join(flags.OutParams, ",")+":"+outDir.String()).
 		FlagWithDepFile("--dependency_out=", depFile).
 		FlagWithArg("-I ", protoBase).

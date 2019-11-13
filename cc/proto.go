@@ -15,6 +15,8 @@
 package cc
 
 import (
+	"strings"
+
 	"github.com/google/blueprint/pathtools"
 
 	"android/soong/android"
@@ -57,6 +59,22 @@ func genProto(ctx android.ModuleContext, protoFile android.Path, flags builderFl
 	rule.Build(pctx, ctx, "protoc_"+protoFile.Rel(), "protoc "+protoFile.Rel())
 
 	return ccFile, headerFile
+}
+
+// genKytheForProto emits a rule to generate extraction file (input file for indexing)
+// and returns extraction file's path
+func genKytheForProto(ctx android.ModuleContext, protoFile android.Path, flags builderFlags) android.Path {
+	kytheFile := android.GenPathWithExt(ctx, "proto", protoFile, "kzip")
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        kytheProtoExtract,
+		Description: "Xref protobuffer extractor " + protoFile.Rel(),
+		Output:      kytheFile,
+		Input:       protoFile,
+		Args: map[string]string{
+			"protoFlags": strings.Join(flags.proto.Flags, " "),
+		},
+	})
+	return kytheFile
 }
 
 func protoDeps(ctx DepsContext, deps Deps, p *android.ProtoProperties, static bool) Deps {
@@ -150,6 +168,20 @@ func protoFlags(ctx ModuleContext, flags Flags, p *android.ProtoProperties) Flag
 			path := ctx.Config().HostToolPath(ctx, plugin)
 			flags.proto.Deps = append(flags.proto.Deps, path)
 			flags.proto.Flags = append(flags.proto.Flags, "--plugin="+path.String())
+		} else if ctx.Config().EmitXrefRules() {
+			// When cross-referencing, remember to run protoc with the plugin that makes the
+			// protobuffer descriptor available to the extractor that runs on the generated file.
+			// NOTE that as compiler allows only a single plugin, the cross-referencing plugin
+			// will be suppressed if the module has a plugin it needs to build. In such case the
+			// cross-reference will be incomplete.
+			flags.proto.RunWithKythePlugin = true
+
+			// Tell this plugin to insert the following into the generated xxx.pb.h file:
+			//  #ifdef KYTHE_IS_RUNNING
+			//  #pragma kythe_metadata <proto descriptor>
+			//  #endif  // KYTHE_IS_RUNNING
+			flags.proto.OutParams = append(flags.proto.OutParams, "annotate_headers=1",
+				"annotation_pragma_name=kythe_metadata", "annotation_guard_name=KYTHE_IS_RUNNING")
 		}
 	}
 

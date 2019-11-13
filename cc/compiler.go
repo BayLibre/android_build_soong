@@ -549,6 +549,21 @@ func ndkPathDeps(ctx ModuleContext) android.Paths {
 	return nil
 }
 
+func genKytheFilesForSources(ctx ModuleContext, srcs android.Paths, flags builderFlags) android.Paths {
+	kytheFiles := make(android.Paths, 0)
+	if ctx.Config().EmitXrefRules() {
+		// Only .protofiles need to be prepared for indexing
+		for _, src := range srcs {
+			switch src.Ext() {
+			case ".proto":
+				kytheFiles = append(kytheFiles, genKytheForProto(ctx, src, flags))
+			}
+		}
+	}
+
+	return kytheFiles
+}
+
 func (compiler *baseCompiler) compile(ctx ModuleContext, flags Flags, deps PathDeps) Objects {
 	pathDeps := deps.GeneratedHeaders
 	pathDeps = append(pathDeps, ndkPathDeps(ctx)...)
@@ -557,6 +572,7 @@ func (compiler *baseCompiler) compile(ctx ModuleContext, flags Flags, deps PathD
 
 	srcs := append(android.Paths(nil), compiler.srcsBeforeGen...)
 
+	kytheFilesForSrcs := genKytheFilesForSources(ctx, srcs, buildFlags)
 	srcs, genDeps := genSources(ctx, srcs, buildFlags)
 	pathDeps = append(pathDeps, genDeps...)
 
@@ -573,6 +589,7 @@ func (compiler *baseCompiler) compile(ctx ModuleContext, flags Flags, deps PathD
 		return Objects{}
 	}
 
+	objs.kytheFiles = append(objs.kytheFiles, kytheFilesForSrcs...)
 	return objs
 }
 
