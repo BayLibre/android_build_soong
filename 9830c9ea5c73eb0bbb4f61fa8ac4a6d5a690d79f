@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd28af38_9e608d50",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-13T20:47:47Z",
+      "side": 1,
+      "message": "Don\u0027t make each setter shell escape, handle this when creating the -P argument, or translate \"\" to -j instead of -P.",
+      "range": {
+        "startLine": 291,
+        "startChar": 4,
+        "endLine": 291,
+        "endChar": 8
+      },
+      "revId": "9830c9ea5c73eb0bbb4f61fa8ac4a6d5a690d79f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55584ef8_c6d7d316",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-13T20:47:47Z",
+      "side": 1,
+      "message": "command.FlagForEachInput(\"-f \", fuzzModule.corpus)\n\nor to avoid argument length limits:\n\n command.FlagWithRspFileInputList(\"-l \", fuzzModule.corpus)",
+      "range": {
+        "startLine": 355,
+        "startChar": 3,
+        "endLine": 357,
+        "endChar": 4
+      },
+      "revId": "9830c9ea5c73eb0bbb4f61fa8ac4a6d5a690d79f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55ae26d0_b2821c7a",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-13T20:47:47Z",
+      "side": 1,
+      "message": "Can you make this a helper in android.MakefileEscape and use strings.NewReplacer to reuse the same replacer each time?",
+      "range": {
+        "startLine": 378,
+        "startChar": 24,
+        "endLine": 378,
+        "endChar": 73
+      },
+      "revId": "9830c9ea5c73eb0bbb4f61fa8ac4a6d5a690d79f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96a23d4b_b8b4030b",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-13T20:47:47Z",
+      "side": 1,
+      "message": "This is unnecessary, it is being replaced by the first -P argument.",
+      "range": {
+        "startLine": 398,
+        "startChar": 3,
+        "endLine": 398,
+        "endChar": 14
+      },
+      "revId": "9830c9ea5c73eb0bbb4f61fa8ac4a6d5a690d79f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef160e26_f6075128",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-13T20:47:47Z",
+      "side": 1,
+      "message": "Do you want to zip the zip files here, or use merge_zips to combine them into a single zip file?",
+      "revId": "9830c9ea5c73eb0bbb4f61fa8ac4a6d5a690d79f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
