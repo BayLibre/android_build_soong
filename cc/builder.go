@@ -244,6 +244,14 @@ var (
 			CommandDeps: []string{"$cxxExtractor", "$kytheVnames"},
 		},
 		"cFlags")
+
+	_                 = pctx.SourcePathVariable("protoExtractor", "prebuilts/clang-tools/${config.HostPrebuiltTag}/bin/protoc_extractor")
+	kytheProtoExtract = pctx.StaticRule("kytheProto",
+		blueprint.RuleParams{
+			Command:     "rm -f $out && KYTHE_CORPUS=${kytheCorpus} KYTHE_OUTPUT_FILE=$out KYTHE_VNAMES=$kytheVnames $protoExtractor $in -- $protoFlags",
+			CommandDeps: []string{"$protoExtractor", "$kytheVnames"},
+		},
+		"protoFlags")
 )
 
 func init() {

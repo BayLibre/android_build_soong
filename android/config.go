@@ -453,6 +453,10 @@ func (c *config) PrebuiltBuildTool(ctx PathContext, tool string) Path {
 	return PathForSource(ctx, "prebuilts/build-tools", c.PrebuiltOS(), "bin", tool)
 }
 
+func (c *config) PrebuiltClangTool(ctx PathContext, tool string) Path {
+	return PathForSource(ctx, "prebuilts/clang-tools", c.PrebuiltOS(), "bin", tool)
+}
+
 func (c *config) CpPreserveSymlinksFlags() string {
 	switch runtime.GOOS {
 	case "darwin":
