@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "558b1f19_31d450f2",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-13T23:54:05Z",
+      "side": 1,
+      "message": "Can these be made to return true for BuildStubs() above?",
+      "revId": "48c0fcb649e07b9051fdfe2738b7eee1f7cba9a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
