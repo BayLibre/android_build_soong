@@ -1,0 +1,251 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9db6c6a_d33c7dfa",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-11-13T01:39:03Z",
+      "side": 1,
+      "message": "Split this line into two?",
+      "range": {
+        "startLine": 307,
+        "startChar": 96,
+        "endLine": 307,
+        "endChar": 97
+      },
+      "revId": "d04dfd655a9a216977c09ce3f06c6d07b777c389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "611e557d_d8a07697",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-11-13T01:39:03Z",
+      "side": 1,
+      "message": "What \"that\"?",
+      "range": {
+        "startLine": 310,
+        "startChar": 0,
+        "endLine": 310,
+        "endChar": 77
+      },
+      "revId": "d04dfd655a9a216977c09ce3f06c6d07b777c389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2277b1c0_9892a249",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-11-13T01:39:03Z",
+      "side": 1,
+      "message": "\"high level features\" of which language?",
+      "range": {
+        "startLine": 311,
+        "startChar": 72,
+        "endLine": 311,
+        "endChar": 77
+      },
+      "revId": "d04dfd655a9a216977c09ce3f06c6d07b777c389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ea20d14_824701b2",
+        "filename": "README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-11-13T01:39:03Z",
+      "side": 1,
+      "message": "This last statement is quite cryptic and its relation to the previous one isn\u0027t clear.",
+      "range": {
+        "startLine": 315,
+        "startChar": 0,
+        "endLine": 315,
+        "endChar": 50
+      },
+      "revId": "d04dfd655a9a216977c09ce3f06c6d07b777c389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1928787d_6e5d39ce",
+        "filename": "docs/best_practices.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-11-13T01:39:03Z",
+      "side": 1,
+      "message": "s/Condtionally/Conditionally/",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 12
+      },
+      "revId": "d04dfd655a9a216977c09ce3f06c6d07b777c389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32f9c1f2_7410ebeb",
+        "filename": "docs/best_practices.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-11-13T01:39:03Z",
+      "side": 1,
+      "message": "ditt",
+      "range": {
+        "startLine": 187,
+        "startChar": 4,
+        "endLine": 187,
+        "endChar": 16
+      },
+      "revId": "d04dfd655a9a216977c09ce3f06c6d07b777c389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9ac8ecc_98a23631",
+        "filename": "docs/best_practices.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-11-13T01:39:03Z",
+      "side": 1,
+      "message": "Is this \"`\" necessary?",
+      "revId": "d04dfd655a9a216977c09ce3f06c6d07b777c389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75e88475_55863ce7",
+        "filename": "docs/best_practices.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-11-13T01:39:03Z",
+      "side": 1,
+      "message": "Please add \nendif\n```",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 31
+      },
+      "revId": "d04dfd655a9a216977c09ce3f06c6d07b777c389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f4ebdd8_1ddf4e85",
+        "filename": "docs/best_practices.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-11-13T01:39:03Z",
+      "side": 1,
+      "message": "Is this for specifying \u0027soc_a\u0027 platform?",
+      "range": {
+        "startLine": 224,
+        "startChar": 60,
+        "endLine": 224,
+        "endChar": 61
+      },
+      "revId": "d04dfd655a9a216977c09ce3f06c6d07b777c389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93567533_675886ad",
+        "filename": "docs/best_practices.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-11-13T01:39:03Z",
+      "side": 1,
+      "message": "What is \u0027ro.hardware.gralloc\u0027? A predefined property?",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 55
+      },
+      "revId": "d04dfd655a9a216977c09ce3f06c6d07b777c389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "474f49cb_1ff752d3",
+        "filename": "docs/best_practices.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-11-13T01:39:03Z",
+      "side": 1,
+      "message": "What are the cases when module names cannot be unique?",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 73
+      },
+      "revId": "d04dfd655a9a216977c09ce3f06c6d07b777c389",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
