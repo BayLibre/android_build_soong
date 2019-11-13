@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5098757c_d1bd8f4a",
+        "filename": "android/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-11-13T16:34:53Z",
+      "side": 1,
+      "message": "I can\u0027t do that just yet as there are places that implement SdkAware (by including SdkBase) but do not support this method, e.g. cc and apex packages.",
+      "parentUuid": "4eda97ae_26b5a6ad",
+      "revId": "18abce5dad8a37d513891e63aaf2426ebbff13fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43c74210_cc1df6d1",
         "filename": "sdk/update.go",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "18abce5dad8a37d513891e63aaf2426ebbff13fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6c50cff_51d970e7",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-11-13T16:34:53Z",
+      "side": 1,
+      "message": "Eventually. It is complicated by the multiple variants. I would like to do that in a follow up change as it will be easier to review.",
+      "parentUuid": "43c74210_cc1df6d1",
+      "revId": "18abce5dad8a37d513891e63aaf2426ebbff13fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
