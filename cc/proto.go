@@ -15,9 +15,22 @@
 package cc
 
 import (
-	"github.com/google/blueprint/pathtools"
-
 	"android/soong/android"
+	"fmt"
+	"github.com/google/blueprint"
+	"github.com/google/blueprint/pathtools"
+	"os"
+	"strings"
+)
+
+var (
+	_                 = pctx.SourcePathVariable("protoExtractor", "prebuilts/clang-tools/${config.HostPrebuiltTag}/bin/protoc_extractor")
+	kytheProtoExtract = pctx.StaticRule("kytheProto",
+		blueprint.RuleParams{
+			Command:     "rm -f $out && KYTHE_CORPUS=${kytheCorpus} KYTHE_OUTPUT_FILE=$out KYTHE_VNAMES=$kytheVnames $protoExtractor $in -- $protoFlags",
+			CommandDeps: []string{"$protoExtractor", "$kytheVnames"},
+		},
+		"protoFlags")
 )
 
 // genProto creates a rule to convert a .proto file to generated .pb.cc and .pb.h files and returns
@@ -55,8 +68,27 @@ func genProto(ctx android.ModuleContext, protoFile android.Path, flags builderFl
 	android.ProtoRule(ctx, rule, protoFile, flags.proto, protoDeps, outDir, depFile, outputs)
 
 	rule.Build(pctx, ctx, "protoc_"+protoFile.Rel(), "protoc "+protoFile.Rel())
-
 	return ccFile, headerFile
+}
+
+// genKytheForProto emits a rule to generate extraction file (input file for indexing)
+// and returns extraction file's path
+func genKytheForProto(ctx android.ModuleContext, protoFile android.Path, flags builderFlags) android.Path {
+	kytheFile := android.GenPathWithExt(ctx, "proto", protoFile, "kzip")
+	if ctx.Config().EmitXrefRules() {
+		fmt.Fprintf(os.Stderr, "Kythe: %s with protoflags: %s, deps: %s\n",
+			kytheFile, flags.proto.Flags, flags.proto.Deps)
+	}
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        kytheProtoExtract,
+		Description: "Xref protobuffer extractor " + protoFile.Rel(),
+		Output:      kytheFile,
+		Input:       protoFile,
+		Args: map[string]string{
+			"protoFlags": strings.Join(flags.proto.Flags, " "),
+		},
+	})
+	return kytheFile
 }
 
 func protoDeps(ctx DepsContext, deps Deps, p *android.ProtoProperties, static bool) Deps {
