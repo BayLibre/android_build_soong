@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "ec2450e6_d5663daa",
+        "filename": "android/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-11-13T18:51:39Z",
+      "side": 1,
+      "message": "I am not sure that the SdkAware interface is the right place to add the BuildSnapshot method. As I understand it SdkAware is implemented by module types that are referenced in sdk and sdk_snapshot, i.e. the source and prebuilt version of the module type. e.g. both java_library and java_import. I am not sure that the prebuilt version needs to implement BuildSnapshot which it would be forced to do if it was part of SdkAware.",
+      "parentUuid": "5098757c_d1bd8f4a",
+      "revId": "18abce5dad8a37d513891e63aaf2426ebbff13fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43c74210_cc1df6d1",
         "filename": "sdk/update.go",
         "patchSetId": 1
