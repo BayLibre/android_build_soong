@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c90f7c74_d29a93cf",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-11-13T10:14:58Z",
+      "side": 1,
+      "message": "nit: this condition looks redundant because IsForPlatform() returns false when this is a variant for a certain apex.",
+      "range": {
+        "startLine": 501,
+        "startChar": 23,
+        "endLine": 501,
+        "endChar": 59
+      },
+      "revId": "b536d185ad6e7278eea6bb0f7f253476565e55eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
