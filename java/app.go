@@ -498,9 +498,12 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 	a.bundleFile = bundleFile
 
 	// Install the app package.
-	ctx.InstallFile(a.installDir, a.outputFile.Base(), a.outputFile)
-	for _, extra := range a.extraOutputFiles {
-		ctx.InstallFile(a.installDir, extra.Base(), extra)
+	exclusivelyForApex := android.InAnyApex(ctx.ModuleName()) && !a.IsForPlatform()
+	if (Bool(a.Module.properties.Installable) || ctx.Host()) && !exclusivelyForApex {
+		ctx.InstallFile(a.installDir, a.outputFile.Base(), a.outputFile)
+		for _, extra := range a.extraOutputFiles {
+			ctx.InstallFile(a.installDir, extra.Base(), extra)
+		}
 	}
 }
 
