@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ff9a143f_8f68eaf2",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-11-13T21:10:31Z",
+      "side": 1,
+      "message": "`-j` seems to be a global option, and each `-f file` is prefixed with the last `-P` argument, so we need to reset `-P` between each file.\n\nFor example:\n\n#1 - clearly without a second `-P`, \u0027b\u0027 will respect the `-P` from before, and be under `1/b`:\n$ soong_zip -o out.zip -j   -P 1 -f a   -f b\n$ unzip -l out.zip\nArchive:  out.zip\n  Length      Date    Time    Name\n---------  ---------- -----   ----\n        0  2008-01-01 00:00   1/a\n        0  2008-01-01 00:00   1/b\n---------                     -------\n        0                     2 files\n\n#2 - even if we `-j` a second time, it respects the `-P` from before\n$ soong_zip -o out.zip -j   -P 1 -f a    -j -f b\nr$ unzip -l out.zip\nArchive:  out.zip\n  Length      Date    Time    Name\n---------  ---------- -----   ----\n        0  2008-01-01 00:00   1/a\n        0  2008-01-01 00:00   1/b\n---------                     -------\n        0                     2 files\n\n#3 - the only way to fix is provide something to `-P` that evaluates to empty string...\n$ soong_zip -o out.zip -j    -P 1 -f a    -P \u0027\u0027 -f b\n$ unzip -l out.zip\nArchive:  out.zip\n  Length      Date    Time    Name\n---------  ---------- -----   ----\n        0  2008-01-01 00:00   1/a\n        0  2008-01-01 00:00   b\n---------                     -------\n        0                     2 files\n\n#4 - and a blank -P argument isn\u0027t sufficient :(\n$ soong_zip -o out.zip -j    -P 1 -f a    -P -f b\n    unexpected arguments b\n\n... so we need to reset `-P` to something blank between each file. I\u0027ve done this via checking strlen() so users don\u0027t have to do the `\"\u0027\u0027\"` nonsense, we just handle it gracefully later. LGTY?",
+      "parentUuid": "fd28af38_9e608d50",
+      "range": {
+        "startLine": 291,
+        "startChar": 4,
+        "endLine": 291,
+        "endChar": 8
+      },
+      "revId": "9830c9ea5c73eb0bbb4f61fa8ac4a6d5a690d79f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "55584ef8_c6d7d316",
         "filename": "cc/fuzz.go",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "9830c9ea5c73eb0bbb4f61fa8ac4a6d5a690d79f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "325a0412_aff89e75",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-11-13T21:10:31Z",
+      "side": 1,
+      "message": "Thanks for the tip, didn\u0027t see this option (or was aware of the Rsp creation here :)).\n\nWe should probably also update the soong_zip --help:\n$ soong_zip --help |\u0026 fgrep -A 1 -- -l\n  -l value\n    \tfile containing list of .class files",
+      "parentUuid": "55584ef8_c6d7d316",
+      "range": {
+        "startLine": 355,
+        "startChar": 3,
+        "endLine": 357,
+        "endChar": 4
+      },
+      "revId": "9830c9ea5c73eb0bbb4f61fa8ac4a6d5a690d79f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "26fd6ed4_f83a2de9",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-11-13T21:10:31Z",
+      "side": 1,
+      "message": "Looks like this snuck in with a different golang auto-formatter (and I\u0027ve removed it from the patchset). Can we file a bug and track this later?",
+      "parentUuid": "55ae26d0_b2821c7a",
+      "range": {
+        "startLine": 378,
+        "startChar": 24,
+        "endLine": 378,
+        "endChar": 73
+      },
+      "revId": "9830c9ea5c73eb0bbb4f61fa8ac4a6d5a690d79f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96a23d4b_b8b4030b",
         "filename": "cc/fuzz.go",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "9830c9ea5c73eb0bbb4f61fa8ac4a6d5a690d79f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1328493_d3381df4",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-11-13T21:10:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96a23d4b_b8b4030b",
+      "range": {
+        "startLine": 398,
+        "startChar": 3,
+        "endLine": 398,
+        "endChar": 14
+      },
+      "revId": "9830c9ea5c73eb0bbb4f61fa8ac4a6d5a690d79f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -126,6 +222,24 @@
       "revId": "9830c9ea5c73eb0bbb4f61fa8ac4a6d5a690d79f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b42c1f9_82d74deb",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-11-13T21:10:31Z",
+      "side": 1,
+      "message": "Intentionally zip the zips, thanks for the tip.",
+      "parentUuid": "4b6885d0_0650fdf3",
+      "revId": "9830c9ea5c73eb0bbb4f61fa8ac4a6d5a690d79f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
