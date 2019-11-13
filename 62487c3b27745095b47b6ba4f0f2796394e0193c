@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "570182be_87780fab",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2030,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-13T22:15:29Z",
+      "side": 1,
+      "message": "No need for the conditional, append of an empty or nil slice is a no-op.",
+      "revId": "62487c3b27745095b47b6ba4f0f2796394e0193c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
