@@ -70,6 +70,30 @@
       "revId": "834cf3d3032e0a8bb7a934a6b8766c305a7558ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f740ecf_cca58696",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2019-11-14T07:04:44Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "2100e6fa_46d304f0",
+      "range": {
+        "startLine": 362,
+        "startChar": 36,
+        "endLine": 362,
+        "endChar": 69
+      },
+      "revId": "834cf3d3032e0a8bb7a934a6b8766c305a7558ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
