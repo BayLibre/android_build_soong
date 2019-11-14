@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "96787fc8_5a1b4fd8",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2019-11-14T02:58:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8adc2f71_f64bde34",
+      "range": {
+        "startLine": 92,
+        "startChar": 10,
+        "endLine": 92,
+        "endChar": 15
+      },
+      "revId": "32dec2d6f324a1f890cba147e2bea1e82f726f45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "598b65f2_385c0d25",
         "filename": "cc/ccdeps.go",
         "patchSetId": 12
@@ -39,6 +63,24 @@
       "revId": "32dec2d6f324a1f890cba147e2bea1e82f726f45",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "381a8d30_0f0d0bb8",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2019-11-14T02:58:12Z",
+      "side": 1,
+      "message": "Done,\nSave it in out/soong/native_donfig.json file.",
+      "parentUuid": "598b65f2_385c0d25",
+      "revId": "32dec2d6f324a1f890cba147e2bea1e82f726f45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

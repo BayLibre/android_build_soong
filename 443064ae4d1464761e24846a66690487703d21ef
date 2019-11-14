@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "51706b1a_76bef4dd",
+        "filename": "android/module.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1996,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2019-11-14T02:58:12Z",
+      "side": 1,
+      "message": "Done,\nRemove it since we collect cc and java deps at the same time now.",
+      "parentUuid": "91d85ccf_b5640f3a",
+      "range": {
+        "startLine": 1996,
+        "startChar": 19,
+        "endLine": 1996,
+        "endChar": 27
+      },
+      "revId": "443064ae4d1464761e24846a66690487703d21ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "397ca8c8_23801503",
         "filename": "cc/cc.go",
         "patchSetId": 10
@@ -123,6 +147,24 @@
       "revId": "443064ae4d1464761e24846a66690487703d21ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "373189b5_1992b4d0",
+        "filename": "cc/cc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 2177,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2019-11-14T02:58:12Z",
+      "side": 1,
+      "message": "Done,\nThank you.",
+      "parentUuid": "0dedccb1_5caf9e66",
+      "revId": "443064ae4d1464761e24846a66690487703d21ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -337,6 +379,24 @@
       "side": 1,
       "message": "cmakelists.go is not heavily used, you should learn what you can from cmakelists.go, but don\u0027t feel the need to keep the implementation close to it.",
       "parentUuid": "85a638d8_9d54fc99",
+      "revId": "443064ae4d1464761e24846a66690487703d21ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d85f6ba1_646e863c",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2019-11-14T02:58:12Z",
+      "side": 1,
+      "message": "If we try to collect only the variant the user makes lunch command, for example,\n\"lunch aosp_aosp_x86_64-eng\" in this console. How do we filter out other variants?\nThank you.",
+      "parentUuid": "0b6cf988_a6fb8697",
       "revId": "443064ae4d1464761e24846a66690487703d21ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
