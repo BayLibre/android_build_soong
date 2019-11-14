@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7424d505_6559eefb",
+        "filename": "rust/test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2019-11-14T23:18:10Z",
+      "side": 1,
+      "message": "Done, copied from cc/test.go.",
+      "parentUuid": "e42c829d_cd40bed7",
+      "revId": "89820e8abb27541d714b9c631eb4980e70506585",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f974da86_f1d06a72",
         "filename": "rust/test_test.go",
         "patchSetId": 6
@@ -39,6 +57,30 @@
       "revId": "89820e8abb27541d714b9c631eb4980e70506585",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7256fb85_6b20f99a",
+        "filename": "rust/test_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2019-11-14T23:18:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f974da86_f1d06a72",
+      "range": {
+        "startLine": 47,
+        "startChar": 17,
+        "endLine": 47,
+        "endChar": 18
+      },
+      "revId": "89820e8abb27541d714b9c631eb4980e70506585",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
