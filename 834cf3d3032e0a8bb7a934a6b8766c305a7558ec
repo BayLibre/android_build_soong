@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f078cca_41e06ee5",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-14T06:30:15Z",
+      "side": 1,
+      "message": "why is this condition needed?",
+      "range": {
+        "startLine": 362,
+        "startChar": 36,
+        "endLine": 362,
+        "endChar": 69
+      },
+      "revId": "834cf3d3032e0a8bb7a934a6b8766c305a7558ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
