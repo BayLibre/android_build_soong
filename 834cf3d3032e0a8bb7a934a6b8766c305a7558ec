@@ -22,6 +22,30 @@
       "revId": "834cf3d3032e0a8bb7a934a6b8766c305a7558ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad2bf0cb_9113d9ed",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2019-11-14T06:37:08Z",
+      "side": 1,
+      "message": "It\u0027s means that buildFlattenedAsDefault in https://android.googlesource.com/platform/build/soong/+/refs/heads/master/apex/apex.go#1037 is false (or suffix is \".flattened\").\n\nSo I added it same condition.",
+      "parentUuid": "7f078cca_41e06ee5",
+      "range": {
+        "startLine": 362,
+        "startChar": 36,
+        "endLine": 362,
+        "endChar": 69
+      },
+      "revId": "834cf3d3032e0a8bb7a934a6b8766c305a7558ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
