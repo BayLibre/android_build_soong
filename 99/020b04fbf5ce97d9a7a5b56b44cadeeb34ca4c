@@ -1,0 +1,7 @@
+Code-Review+2: Colin Cross <ccross@android.com>
+Presubmit-Ready+1: Matthew Maurer <mmaurer@google.com>
+Submitted-by: Jeffrey Vander Stoep <jeffv@google.com>
+Submitted-at: Thu, 14 Nov 2019 18:28:11 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1156465
+Project: platform/build/soong
+Branch: refs/heads/master

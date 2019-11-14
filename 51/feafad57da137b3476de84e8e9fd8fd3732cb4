@@ -1,0 +1,9 @@
+Code-Review+2: Jeffrey Vander Stoep <jeffv@google.com>
+Code-Review+2: Ivan Lozano <ivanlozano@google.com>
+Verified+1: Jeffrey Vander Stoep <jeffv@google.com>
+Autosubmit+1: Jeffrey Vander Stoep <jeffv@google.com>
+Submitted-by: Jeffrey Vander Stoep <jeffv@google.com>
+Submitted-at: Thu, 14 Nov 2019 18:28:11 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1156466
+Project: platform/build/soong
+Branch: refs/heads/master
