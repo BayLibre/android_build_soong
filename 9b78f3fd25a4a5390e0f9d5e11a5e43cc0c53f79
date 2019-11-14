@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6124eed2_0426bc43",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2019-11-14T23:07:02Z",
+      "side": 1,
+      "message": "nit: this can just be `\\$$ORIGIN/lib`",
+      "revId": "9b78f3fd25a4a5390e0f9d5e11a5e43cc0c53f79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
