@@ -46,6 +46,30 @@
       "revId": "834cf3d3032e0a8bb7a934a6b8766c305a7558ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2100e6fa_46d304f0",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-14T06:58:07Z",
+      "side": 1,
+      "message": "I still don\u0027t get it. We never build flattened APEX on unbundled build (because it just doesn\u0027t make sense).",
+      "parentUuid": "ad2bf0cb_9113d9ed",
+      "range": {
+        "startLine": 362,
+        "startChar": 36,
+        "endLine": 362,
+        "endChar": 69
+      },
+      "revId": "834cf3d3032e0a8bb7a934a6b8766c305a7558ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
