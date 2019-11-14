@@ -16,6 +16,24 @@
       "revId": "48c0fcb649e07b9051fdfe2738b7eee1f7cba9a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8d8c6f2_55f46ab0",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-11-14T00:11:41Z",
+      "side": 1,
+      "message": "I thought about doing this first, but there is quite a few instances of \"function that should only be called on a library\", where \"module \u003d\u003d library\" is determined by checking that the module\u0027s linker is of type `libraryDecorator`. You can see quite a few of them by grepping for \"called on non-library module\".\n\nTo do this properly, all of those references should be updated to check against libraryInterface instead, but all of the NDK library module factories will have to be updated to have their decorators conform to libraryInterface :(. Starts to become a *lot* of work, which is why I implemented the above in order to fix this bug ASAP.",
+      "parentUuid": "558b1f19_31d450f2",
+      "revId": "48c0fcb649e07b9051fdfe2738b7eee1f7cba9a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
