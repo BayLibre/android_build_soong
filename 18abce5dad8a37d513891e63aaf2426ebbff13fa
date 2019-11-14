@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "c0eb6199_cfdd4d1e",
+        "filename": "android/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-14T07:17:37Z",
+      "side": 1,
+      "message": "If a module type is not supposed to contribute to the snapshot, we could implement it to trigger an error for the module type (e.g. java_import). Then\n\nsdk {\n    java_libs: [\"name_of_a_java_import\"],\n}\n\ncould break with an error like `java_import \"name_of_a_java_library\" cannot be part of sdk`.",
+      "parentUuid": "ec2450e6_d5663daa",
+      "revId": "18abce5dad8a37d513891e63aaf2426ebbff13fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43c74210_cc1df6d1",
         "filename": "sdk/update.go",
         "patchSetId": 1
