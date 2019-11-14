@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "0279b484_61101910",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-14T23:57:47Z",
+      "side": 1,
+      "message": "[]string, and then convert to the colon-separated format when passing to a tool that expects that format?",
+      "range": {
+        "startLine": 66,
+        "startChar": 18,
+        "endLine": 66,
+        "endChar": 24
+      },
+      "revId": "d7f0f31fe209facd4b1fd00041a6da85a49b6dbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a8ba579d_3f934d04",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 7
