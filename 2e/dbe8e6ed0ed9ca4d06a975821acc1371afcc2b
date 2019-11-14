@@ -1,0 +1,9 @@
+Autosubmit+1: Mitch Phillips <mitchp@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Code-Review+2: Kris Alder <kalder@google.com>
+Presubmit-Ready+1: Mitch Phillips <mitchp@google.com>
+Submitted-by: Mitch Phillips <mitchp@google.com>
+Submitted-at: Thu, 14 Nov 2019 18:37:45 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1164422
+Project: platform/build/soong
+Branch: refs/heads/master
