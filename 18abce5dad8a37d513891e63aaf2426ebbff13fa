@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "8d92af25_bb95d031",
+        "filename": "android/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-11-14T18:07:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0eb6199_cfdd4d1e",
+      "revId": "18abce5dad8a37d513891e63aaf2426ebbff13fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43c74210_cc1df6d1",
         "filename": "sdk/update.go",
         "patchSetId": 1
