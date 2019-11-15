@@ -70,6 +70,10 @@ func (o *OverrideModuleBase) getOverrideModuleProperties() *OverrideModuleProper
 	return &o.moduleProperties
 }
 
+func (o *OverrideModuleBase) GetOverriddenModuleName() string {
+	return proptools.String(o.moduleProperties.Base)
+}
+
 func InitOverrideModule(m OverrideModule) {
 	m.setOverridingProperties(m.GetProperties())
 
@@ -147,7 +151,7 @@ func (b *OverridableModuleBase) override(ctx BaseModuleContext, o OverrideModule
 	for _, p := range b.overridableProperties {
 		for _, op := range o.getOverridingProperties() {
 			if proptools.TypeEqual(p, op) {
-				err := proptools.AppendProperties(p, op, nil)
+				err := proptools.ExtendProperties(p, op, nil, proptools.OrderReplace)
 				if err != nil {
 					if propertyErr, ok := err.(*proptools.ExtendPropertyError); ok {
 						ctx.PropertyErrorf(propertyErr.Property, "%s", propertyErr.Err.Error())
@@ -175,6 +179,7 @@ func RegisterOverridePostDepsMutators(ctx RegisterMutatorsContext) {
 	ctx.TopDown("register_override", registerOverrideMutator).Parallel()
 	ctx.BottomUp("perform_override", performOverrideMutator).Parallel()
 	ctx.BottomUp("overridable_deps", overridableModuleDepsMutator).Parallel()
+	ctx.BottomUp("replace_overridable", replaceOverridableMutator).Parallel()
 }
 
 type overrideBaseDependencyTag struct {
@@ -231,12 +236,17 @@ func performOverrideMutator(ctx BottomUpMutatorContext) {
 
 func overridableModuleDepsMutator(ctx BottomUpMutatorContext) {
 	if b, ok := ctx.Module().(OverridableModule); ok {
+		b.OverridablePropertiesDepsMutator(ctx)
+	}
+}
+
+func replaceOverridableMutator(ctx BottomUpMutatorContext) {
+	if b, ok := ctx.Module().(OverridableModule); ok {
 		if o := b.getOverriddenBy(); o != "" {
 			// Redirect dependencies on the overriding module to this overridden module. Overriding
 			// modules are basically pseudo modules, and all build actions are associated to overridden
 			// modules. Therefore, dependencies on overriding modules need to be forwarded there as well.
 			ctx.ReplaceDependencies(o)
 		}
-		b.OverridablePropertiesDepsMutator(ctx)
 	}
 }
