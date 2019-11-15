@@ -93,7 +93,6 @@ var Configuration = map[string]PathConfig{
 	"rsync":   Allowed,
 	"sh":      Allowed,
 	"tr":      Allowed,
-	"unzip":   Allowed,
 	"zip":     Allowed,
 
 	// Host toolchain is removed. In-tree toolchain should be used instead.
