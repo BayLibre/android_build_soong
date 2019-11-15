@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e23e8479_0d30ae0b",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-11-15T22:15:49Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be localPool if we\u0027ve disabled highmem support?",
+      "range": {
+        "startLine": 429,
+        "startChar": 9,
+        "endLine": 429,
+        "endChar": 20
+      },
+      "revId": "ca39fff8b1679d60964408140fb149523fb7878c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "df819a5c_7e345b40",
         "filename": "ui/build/config.go",
         "patchSetId": 3
@@ -18,6 +41,29 @@
         "startChar": 16,
         "endLine": 102,
         "endChar": 30
+      },
+      "revId": "ca39fff8b1679d60964408140fb149523fb7878c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "833e4da5_4411db02",
+        "filename": "ui/build/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-11-15T22:15:49Z",
+      "side": 1,
+      "message": "You could wrap each job in both the local and highmem pools in a wrapper program that managed concurrently with sem_open/sem_wait/sem_post, right?",
+      "range": {
+        "startLine": 737,
+        "startChar": 5,
+        "endLine": 737,
+        "endChar": 39
       },
       "revId": "ca39fff8b1679d60964408140fb149523fb7878c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
