@@ -211,6 +211,8 @@ type Module interface {
 	InstallBypassMake() bool
 	SkipInstall()
 	ExportedToMake() bool
+	HasInitRc() bool
+	HasVintfFragments() bool
 	NoticeFile() OptionalPath
 
 	AddProperties(props ...interface{})
@@ -911,6 +913,14 @@ func (m *ModuleBase) HostRequiredModuleNames() []string {
 
 func (m *ModuleBase) TargetRequiredModuleNames() []string {
 	return m.base().commonProperties.Target_required
+}
+
+func (m *ModuleBase) HasInitRc() bool {
+	return len(m.base().commonProperties.Init_rc) > 0
+}
+
+func (m *ModuleBase) HasVintfFragments() bool {
+	return len(m.base().commonProperties.Vintf_fragments) > 0
 }
 
 func (m *ModuleBase) generateModuleTarget(ctx ModuleContext) {
