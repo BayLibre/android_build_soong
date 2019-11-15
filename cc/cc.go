@@ -95,6 +95,7 @@ type Deps struct {
 
 	GeneratedSources []string
 	GeneratedHeaders []string
+	GeneratedDeps    []string
 
 	ReexportGeneratedHeaders []string
 
@@ -121,14 +122,16 @@ type PathDeps struct {
 	// Paths to generated source files
 	GeneratedSources android.Paths
 	GeneratedHeaders android.Paths
+	GeneratedDeps    android.Paths
 
-	Flags                []string
-	IncludeDirs          android.Paths
-	SystemIncludeDirs    android.Paths
-	ReexportedDirs       android.Paths
-	ReexportedSystemDirs android.Paths
-	ReexportedFlags      []string
-	ReexportedDeps       android.Paths
+	Flags                      []string
+	IncludeDirs                android.Paths
+	SystemIncludeDirs          android.Paths
+	ReexportedDirs             android.Paths
+	ReexportedSystemDirs       android.Paths
+	ReexportedFlags            []string
+	ReexportedGeneratedHeaders android.Paths
+	ReexportedDeps             android.Paths
 
 	// Paths to crt*.o files
 	CrtBegin, CrtEnd android.OptionalPath
@@ -865,6 +868,11 @@ func (c *Module) nativeCoverage() bool {
 		return false
 	}
 	return c.linker != nil && c.linker.nativeCoverage()
+}
+
+func (c *Module) isSnapshotPrebuilt() bool {
+	_, ok := c.linker.(*vndkPrebuiltLibraryDecorator)
+	return ok
 }
 
 func (c *Module) ExportedIncludeDirs() android.Paths {
@@ -1906,6 +1914,7 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 		depPaths.ReexportedSystemDirs = append(depPaths.ReexportedSystemDirs, exporter.exportedSystemDirs()...)
 		depPaths.ReexportedFlags = append(depPaths.ReexportedFlags, exporter.exportedFlags()...)
 		depPaths.ReexportedDeps = append(depPaths.ReexportedDeps, exporter.exportedDeps()...)
+		depPaths.ReexportedGeneratedHeaders = append(depPaths.ReexportedGeneratedHeaders, exporter.exportedGeneratedHeaders()...)
 	}
 
 	ctx.VisitDirectDeps(func(dep android.Module) {
@@ -1929,11 +1938,15 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			case genHeaderDepTag, genHeaderExportDepTag:
 				if genRule, ok := dep.(genrule.SourceFileGenerator); ok {
 					depPaths.GeneratedHeaders = append(depPaths.GeneratedHeaders,
+						genRule.GeneratedSourceFiles()...)
+					depPaths.GeneratedDeps = append(depPaths.GeneratedDeps,
 						genRule.GeneratedDeps()...)
 					dirs := genRule.GeneratedHeaderDirs()
 					depPaths.IncludeDirs = append(depPaths.IncludeDirs, dirs...)
 					if depTag == genHeaderExportDepTag {
 						depPaths.ReexportedDirs = append(depPaths.ReexportedDirs, dirs...)
+						depPaths.ReexportedGeneratedHeaders = append(depPaths.ReexportedGeneratedHeaders,
+							genRule.GeneratedSourceFiles()...)
 						depPaths.ReexportedDeps = append(depPaths.ReexportedDeps, genRule.GeneratedDeps()...)
 						// Add these re-exported flags to help header-abi-dumper to infer the abi exported by a library.
 						c.sabi.Properties.ReexportedIncludes = append(c.sabi.Properties.ReexportedIncludes, dirs.Strings()...)
@@ -2046,7 +2059,8 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			if _, ok := ccDep.(*Module); ok {
 				if i, ok := ccDep.(*Module).linker.(exportedFlagsProducer); ok {
 					depPaths.SystemIncludeDirs = append(depPaths.SystemIncludeDirs, i.exportedSystemDirs()...)
-					depPaths.GeneratedHeaders = append(depPaths.GeneratedHeaders, i.exportedDeps()...)
+					depPaths.GeneratedHeaders = append(depPaths.GeneratedHeaders, i.exportedGeneratedHeaders()...)
+					depPaths.GeneratedDeps = append(depPaths.GeneratedDeps, i.exportedDeps()...)
 					depPaths.Flags = append(depPaths.Flags, i.exportedFlags()...)
 
 					if t.ReexportFlags {
@@ -2244,10 +2258,12 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 	depPaths.IncludeDirs = android.FirstUniquePaths(depPaths.IncludeDirs)
 	depPaths.SystemIncludeDirs = android.FirstUniquePaths(depPaths.SystemIncludeDirs)
 	depPaths.GeneratedHeaders = android.FirstUniquePaths(depPaths.GeneratedHeaders)
+	depPaths.GeneratedDeps = android.FirstUniquePaths(depPaths.GeneratedDeps)
 	depPaths.ReexportedDirs = android.FirstUniquePaths(depPaths.ReexportedDirs)
 	depPaths.ReexportedSystemDirs = android.FirstUniquePaths(depPaths.ReexportedSystemDirs)
 	depPaths.ReexportedFlags = android.FirstUniqueStrings(depPaths.ReexportedFlags)
 	depPaths.ReexportedDeps = android.FirstUniquePaths(depPaths.ReexportedDeps)
+	depPaths.ReexportedGeneratedHeaders = android.FirstUniquePaths(depPaths.ReexportedGeneratedHeaders)
 
 	if c.sabi != nil {
 		c.sabi.Properties.ReexportedIncludes = android.FirstUniqueStrings(c.sabi.Properties.ReexportedIncludes)
