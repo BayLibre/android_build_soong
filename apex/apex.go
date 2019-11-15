@@ -202,6 +202,7 @@ func init() {
 	android.RegisterModuleType("apex_vndk", vndkApexBundleFactory)
 	android.RegisterModuleType("apex_defaults", defaultsFactory)
 	android.RegisterModuleType("prebuilt_apex", PrebuiltFactory)
+	android.RegisterModuleType("override_apex", overrideApexFactory)
 
 	android.PreDepsMutators(RegisterPreDepsMutators)
 	android.PostDepsMutators(RegisterPostDepsMutators)
@@ -310,7 +311,15 @@ func apexMutator(mctx android.BottomUpMutatorContext) {
 		if mctx.Device() && a.installable() {
 			addApexFileContextsInfos(mctx, a)
 		}
+	} else if o, ok := mctx.Module().(*OverrideApex); ok {
+		apexBundleName := o.GetOverriddenModuleName()
+		if apexBundleName == "" {
+			mctx.ModuleErrorf("base property is not set")
+			return
+		}
+		mctx.CreateVariations(apexBundleName)
 	}
+
 }
 
 var (
@@ -361,6 +370,8 @@ func apexFlattenedMutator(mctx android.BottomUpMutatorContext) {
 				modules[i].(*apexBundle).properties.ApexType = flattenedApex
 			}
 		}
+	} else if _, ok := mctx.Module().(*OverrideApex); ok {
+		mctx.CreateVariations(imageApexType, flattenedApexType)
 	}
 }
 
@@ -500,9 +511,6 @@ type apexBundleProperties struct {
 	// A txt file containing list of files that are whitelisted to be included in this APEX.
 	Whitelisted_files *string
 
-	// List of APKs to package inside APEX
-	Apps []string
-
 	// package format of this apex variant; could be non-flattened, flattened, or zip.
 	// imageApex, zipApex or flattened
 	ApexType apexPackaging `blueprint:"mutated"`
@@ -541,6 +549,11 @@ type apexTargetBundleProperties struct {
 type apexVndkProperties struct {
 	// Indicates VNDK version of which this VNDK APEX bundles VNDK libs. Default is Platform VNDK Version.
 	Vndk_version *string
+}
+
+type overridableProperties struct {
+	// List of APKs to package inside APEX
+	Apps []string
 }
 
 type apexFileClass int
@@ -626,11 +639,13 @@ type apexFile struct {
 type apexBundle struct {
 	android.ModuleBase
 	android.DefaultableModuleBase
+	android.OverridableModuleBase
 	android.SdkBase
 
-	properties       apexBundleProperties
-	targetProperties apexTargetBundleProperties
-	vndkProperties   apexVndkProperties
+	properties            apexBundleProperties
+	targetProperties      apexTargetBundleProperties
+	vndkProperties        apexVndkProperties
+	overridableProperties overridableProperties
 
 	bundleModuleFile android.WritablePath
 	outputFile       android.WritablePath
@@ -705,6 +720,11 @@ func (a *apexBundle) combineProperties(ctx android.BottomUpMutatorContext) {
 			proptools.AppendProperties(&a.properties.Multilib, &a.targetProperties.Target.Linux_glibc.Multilib, nil)
 		}
 	}
+}
+
+func (a *apexBundle) OverridablePropertiesDepsMutator(ctx android.BottomUpMutatorContext) {
+	ctx.AddFarVariationDependencies(ctx.Config().AndroidCommonTarget.Variations(),
+		androidAppTag, a.overridableProperties.Apps...)
 }
 
 func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
@@ -817,9 +837,6 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 
 	ctx.AddFarVariationDependencies(ctx.Config().AndroidCommonTarget.Variations(),
 		javaLibTag, a.properties.Java_libs...)
-
-	ctx.AddFarVariationDependencies(ctx.Config().AndroidCommonTarget.Variations(),
-		androidAppTag, a.properties.Apps...)
 
 	if String(a.properties.Key) == "" {
 		ctx.ModuleErrorf("key is missing")
@@ -1882,12 +1899,14 @@ func newApexBundle() *apexBundle {
 	module := &apexBundle{}
 	module.AddProperties(&module.properties)
 	module.AddProperties(&module.targetProperties)
+	module.AddProperties(&module.overridableProperties)
 	module.Prefer32(func(ctx android.BaseModuleContext, base *android.ModuleBase, class android.OsClass) bool {
 		return class == android.Device && ctx.Config().DevicePrefer32BitExecutables()
 	})
 	android.InitAndroidMultiTargetsArchModule(module, android.HostAndDeviceSupported, android.MultilibCommon)
 	android.InitDefaultableModule(module)
 	android.InitSdkAwareModule(module)
+	android.InitOverridableModule(module, nil)
 	return module
 }
 
@@ -2135,6 +2154,26 @@ func PrebuiltFactory() android.Module {
 	return module
 }
 
+//--------------------------------------------------------------------
+type OverrideApex struct {
+	android.ModuleBase
+	android.OverrideModuleBase
+}
+
+func (o *OverrideApex) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	// All the overrides happen in the base module.
+}
+
+func overrideApexFactory() android.Module {
+	m := &OverrideApex{}
+	m.AddProperties(&overridableProperties{})
+
+	android.InitAndroidMultiTargetsArchModule(m, android.DeviceSupported, android.MultilibCommon)
+	android.InitOverrideModule(m)
+	return m
+}
+
+//--------------------------------------------------------------------
 func makeCompatSymlinks(apexName string, ctx android.ModuleContext) (symlinks []string) {
 	// small helper to add symlink commands
 	addSymlink := func(target, dir, linkName string) {
