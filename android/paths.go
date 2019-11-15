@@ -458,6 +458,21 @@ func LastUniquePaths(list Paths) Paths {
 	return list[totalSkip:]
 }
 
+// FirstUniqueStringPaths acts like FirstUniquePaths, but it only compares string
+// and is more efficient.
+func FirstUniqueStringPaths(list Paths) Paths {
+	visit := make(map[string]bool)
+	k := 0
+	for i := 0; i < len(list); i++ {
+		if _, ok := visit[list[i].String()]; !ok {
+			visit[list[i].String()] = true
+			list[k] = list[i]
+			k++
+		}
+	}
+	return list[:k]
+}
+
 // ReversePaths returns a copy of a Paths in reverse order.
 func ReversePaths(list Paths) Paths {
 	if list == nil {

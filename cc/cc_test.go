@@ -248,8 +248,8 @@ func checkVndkModule(t *testing.T, ctx *android.TestContext, name, subDir string
 	}
 }
 
-func checkVndkSnapshot(t *testing.T, ctx *android.TestContext, moduleName, snapshotFilename, subDir, variant string) {
-	vndkSnapshot := ctx.SingletonForTests("vndk-snapshot")
+func checkSnapshot(t *testing.T, ctx *android.TestContext, singletonName, moduleName, snapshotFilename, subDir, variant string) {
+	snapshotSingleton := ctx.SingletonForTests(singletonName)
 
 	mod, ok := ctx.ModuleForTests(moduleName, variant).Module().(android.OutputFileProducer)
 	if !ok {
@@ -263,9 +263,9 @@ func checkVndkSnapshot(t *testing.T, ctx *android.TestContext, moduleName, snaps
 	}
 	snapshotPath := filepath.Join(subDir, snapshotFilename)
 
-	out := vndkSnapshot.Output(snapshotPath)
+	out := snapshotSingleton.Output(snapshotPath)
 	if out.Input.String() != outputFiles[0].String() {
-		t.Errorf("The input of VNDK snapshot must be %q, but %q", out.Input.String(), outputFiles[0])
+		t.Errorf("The input of snapshot %q must be %q, but %q", moduleName, out.Input.String(), outputFiles[0])
 	}
 }
 
@@ -379,16 +379,16 @@ func TestVndk(t *testing.T) {
 	variant := "android_arm64_armv8-a_vendor.VER_shared"
 	variant2nd := "android_arm_armv7-a-neon_vendor.VER_shared"
 
-	checkVndkSnapshot(t, ctx, "libvndk", "libvndk.so", vndkCoreLibPath, variant)
-	checkVndkSnapshot(t, ctx, "libvndk", "libvndk.so", vndkCoreLib2ndPath, variant2nd)
-	checkVndkSnapshot(t, ctx, "libvndk_sp", "libvndk_sp-x.so", vndkSpLibPath, variant)
-	checkVndkSnapshot(t, ctx, "libvndk_sp", "libvndk_sp-x.so", vndkSpLib2ndPath, variant2nd)
+	checkSnapshot(t, ctx, "vndk-snapshot", "libvndk", "libvndk.so", vndkCoreLibPath, variant)
+	checkSnapshot(t, ctx, "vndk-snapshot", "libvndk", "libvndk.so", vndkCoreLib2ndPath, variant2nd)
+	checkSnapshot(t, ctx, "vndk-snapshot", "libvndk_sp", "libvndk_sp-x.so", vndkSpLibPath, variant)
+	checkSnapshot(t, ctx, "vndk-snapshot", "libvndk_sp", "libvndk_sp-x.so", vndkSpLib2ndPath, variant2nd)
 
 	snapshotConfigsPath := filepath.Join(snapshotVariantPath, "configs")
-	checkVndkSnapshot(t, ctx, "llndk.libraries.txt", "llndk.libraries.txt", snapshotConfigsPath, "")
-	checkVndkSnapshot(t, ctx, "vndkcore.libraries.txt", "vndkcore.libraries.txt", snapshotConfigsPath, "")
-	checkVndkSnapshot(t, ctx, "vndksp.libraries.txt", "vndksp.libraries.txt", snapshotConfigsPath, "")
-	checkVndkSnapshot(t, ctx, "vndkprivate.libraries.txt", "vndkprivate.libraries.txt", snapshotConfigsPath, "")
+	checkSnapshot(t, ctx, "vndk-snapshot", "llndk.libraries.txt", "llndk.libraries.txt", snapshotConfigsPath, "")
+	checkSnapshot(t, ctx, "vndk-snapshot", "vndkcore.libraries.txt", "vndkcore.libraries.txt", snapshotConfigsPath, "")
+	checkSnapshot(t, ctx, "vndk-snapshot", "vndksp.libraries.txt", "vndksp.libraries.txt", snapshotConfigsPath, "")
+	checkSnapshot(t, ctx, "vndk-snapshot", "vndkprivate.libraries.txt", "vndkprivate.libraries.txt", snapshotConfigsPath, "")
 
 	checkVndkOutput(t, ctx, "vndk/vndk.libraries.txt", []string{
 		"LLNDK: libc.so",
@@ -775,6 +775,88 @@ func TestDoubleLoadbleDep(t *testing.T) {
 			double_loadable: true,
 		}
 	`)
+}
+
+func TestVendorSnapshot(t *testing.T) {
+	config := android.TestArchConfig(buildDir, nil)
+	config.TestProductVariables.DeviceVndkVersion = StringPtr("current")
+	config.TestProductVariables.Platform_vndk_version = StringPtr("VER")
+
+	ctx := testCcWithConfig(t, `
+		cc_library {
+			name: "libvndk",
+			vendor_available: true,
+			vndk: {
+				enabled: true,
+			},
+			nocrt: true,
+		}
+
+		cc_library {
+			name: "libvendor",
+			vendor: true,
+			nocrt: true,
+		}
+
+		cc_library {
+			name: "libvendor_available",
+			vendor_available: true,
+			nocrt: true,
+		}
+
+		cc_library_headers {
+			name: "libvendor_headers",
+			vendor_available: true,
+			nocrt: true,
+		}
+
+		cc_binary {
+			name: "vendor_bin",
+			vendor: true,
+			nocrt: true,
+		}
+
+		cc_binary {
+			name: "vendor_available_bin",
+			vendor_available: true,
+			nocrt: true,
+		}
+	`, config)
+
+	// Check Vendor snapshot output.
+
+	snapshotDir := "vendor-snapshot"
+	snapshotVariantPath := filepath.Join(buildDir, snapshotDir, "arm64")
+
+	for _, arch := range [][]string{
+		[]string{"arm64", "armv8-a"},
+		[]string{"arm", "armv7-a-neon"},
+	} {
+		archType := arch[0]
+		archVariant := arch[1]
+		archDir := fmt.Sprintf("arch-%s-%s", archType, archVariant)
+
+		// For shared libraries, only non-VNDK vendor_available modules are captured
+		sharedVariant := fmt.Sprintf("android_%s_%s_vendor.VER_shared", archType, archVariant)
+		sharedDir := filepath.Join(snapshotVariantPath, archDir, "shared")
+		checkSnapshot(t, ctx, "vendor-snapshot", "libvendor", "libvendor.so", sharedDir, sharedVariant)
+		checkSnapshot(t, ctx, "vendor-snapshot", "libvendor_available", "libvendor_available.so", sharedDir, sharedVariant)
+
+		// For static libraries, all vendor:true and vendor_available modules (including VNDK) are captured.
+		staticVariant := fmt.Sprintf("android_%s_%s_vendor.VER_static", archType, archVariant)
+		staticDir := filepath.Join(snapshotVariantPath, archDir, "static")
+		checkSnapshot(t, ctx, "vendor-snapshot", "libvndk", "libvndk.a", staticDir, staticVariant)
+		checkSnapshot(t, ctx, "vendor-snapshot", "libvendor", "libvendor.a", staticDir, staticVariant)
+		checkSnapshot(t, ctx, "vendor-snapshot", "libvendor_available", "libvendor_available.a", staticDir, staticVariant)
+
+		// For binary libraries, all vendor:true and vendor_available modules are captured.
+		if archType == "arm64" {
+			binaryVariant := fmt.Sprintf("android_%s_%s_vendor.VER", archType, archVariant)
+			binaryDir := filepath.Join(snapshotVariantPath, archDir, "binary")
+			checkSnapshot(t, ctx, "vendor-snapshot", "vendor_bin", "vendor_bin", binaryDir, binaryVariant)
+			checkSnapshot(t, ctx, "vendor-snapshot", "vendor_available_bin", "vendor_available_bin", binaryDir, binaryVariant)
+		}
+	}
 }
 
 func TestDoubleLoadableDepError(t *testing.T) {
