@@ -355,6 +355,8 @@ func NewConfig(srcDir, buildDir string) (Config, error) {
 		archConfig = getMegaDeviceConfig()
 	} else if config.NdkAbis() {
 		archConfig = getNdkAbisConfig()
+	} else if config.PrebuiltApexAbis() {
+		archConfig = getPrebuiltApexAbisConfig()
 	}
 
 	if archConfig != nil {
@@ -1069,6 +1071,10 @@ func (c vendorConfig) IsSet(name string) bool {
 
 func (c *config) NdkAbis() bool {
 	return Bool(c.productVariables.Ndk_abis)
+}
+
+func (c *config) PrebuiltApexAbis() bool {
+	return Bool(c.productVariables.Prebuilt_apex_abis)
 }
 
 func (c *config) ExcludeDraftNdkApis() bool {
