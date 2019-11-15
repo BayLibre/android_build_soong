@@ -907,6 +907,11 @@ func (c *Module) nativeCoverage() bool {
 	return c.linker != nil && c.linker.nativeCoverage()
 }
 
+func (c *Module) isSnapshotPrebuilt() bool {
+	_, ok := c.linker.(*vndkPrebuiltLibraryDecorator)
+	return ok
+}
+
 func (c *Module) ExportedIncludeDirs() android.Paths {
 	if flagsProducer, ok := c.linker.(exportedFlagsProducer); ok {
 		return flagsProducer.exportedDirs()
