@@ -107,6 +107,7 @@ func testApexContext(t *testing.T, bp string, handlers ...testCustomizer) (*andr
 	ctx.RegisterModuleType("apex_key", android.ModuleFactoryAdaptor(ApexKeyFactory))
 	ctx.RegisterModuleType("apex_defaults", android.ModuleFactoryAdaptor(defaultsFactory))
 	ctx.RegisterModuleType("prebuilt_apex", android.ModuleFactoryAdaptor(PrebuiltFactory))
+	ctx.RegisterModuleType("override_apex", android.ModuleFactoryAdaptor(overrideApexFactory))
 
 	ctx.RegisterModuleType("cc_library", android.ModuleFactoryAdaptor(cc.LibraryFactory))
 	ctx.RegisterModuleType("cc_library_shared", android.ModuleFactoryAdaptor(cc.LibrarySharedFactory))
@@ -143,6 +144,7 @@ func testApexContext(t *testing.T, bp string, handlers ...testCustomizer) (*andr
 		ctx.BottomUp("begin", cc.BeginMutator).Parallel()
 	})
 	ctx.PreDepsMutators(RegisterPreDepsMutators)
+	ctx.PostDepsMutators(android.RegisterOverridePostDepsMutators)
 	ctx.PostDepsMutators(RegisterPostDepsMutators)
 	ctx.PostDepsMutators(func(ctx android.RegisterMutatorsContext) {
 		ctx.TopDown("prebuilt_select", android.PrebuiltSelectModuleMutator).Parallel()
@@ -2766,6 +2768,54 @@ func TestApexAvailable(t *testing.T) {
 	// but the static variant is available to both myapex and the platform
 	ensureListContains(t, ctx.ModuleVariantsForTests("libfoo"), "android_arm64_armv8-a_core_static_myapex")
 	ensureListContains(t, ctx.ModuleVariantsForTests("libfoo"), "android_arm64_armv8-a_core_static")
+}
+
+func TestOverrideApex(t *testing.T) {
+	ctx, _ := testApex(t, `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			apps: ["AppFooPrebuilt"],
+		}
+
+		override_apex {
+			name: "myapex_override",
+			base: "myapex",
+			apps: ["AppFooPrivPrebuilt"],
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
+		android_app_import {
+			name: "AppFooPrebuilt",
+			apk: "PrebuiltAppFoo.apk",
+			presigned: true,
+			dex_preopt: {
+				enabled: false,
+			},
+		}
+
+		android_app_import {
+			name: "AppFooPrivPrebuilt",
+			apk: "PrebuiltAppFooPriv.apk",
+			privileged: true,
+			presigned: true,
+			dex_preopt: {
+				enabled: false,
+			},
+		}
+	`)
+
+	module := ctx.ModuleForTests("myapex", "android_common_myapex_override_myapex_image")
+	apexRule := module.Rule("apexRule")
+	copyCmds := apexRule.Args["copy_commands"]
+
+	ensureNotContains(t, copyCmds, "image.apex/app/AppFooPrebuilt/AppFooPrebuilt.apk")
+	ensureContains(t, copyCmds, "image.apex/priv-app/AppFooPrivPrebuilt/AppFooPrivPrebuilt.apk")
 }
 
 func TestMain(m *testing.M) {
