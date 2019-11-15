@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cccb1b27_8f409249",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1365,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-11-15T02:38:16Z",
+      "side": 1,
+      "message": "Thanks.",
+      "parentUuid": "6c9213d3_f5053756",
+      "range": {
+        "startLine": 1365,
+        "startChar": 13,
+        "endLine": 1365,
+        "endChar": 25
+      },
+      "revId": "bbd49cfe1d71309165c00f91b04951bd742276d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "141f42fa_a26cd725",
         "filename": "apex/apex.go",
         "patchSetId": 2
@@ -36,6 +60,24 @@
       "writtenOn": "2019-11-15T00:19:49Z",
       "side": 1,
       "message": "Not necessary as part of this change, but this code would likely benefit from using android.RuleBuilder instead of pctx.StaticRule.",
+      "revId": "bbd49cfe1d71309165c00f91b04951bd742276d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb445503_de4443a7",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1434,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-11-15T02:38:16Z",
+      "side": 1,
+      "message": "Thanks for suggestion. Can I refactor this in a follow-up CL? I\u0027d like to use \u0027deapexer\u0027 to retrieve the actual contents from the built apex package and compare it with whitelisted_file. And It makes more sense in that when there\u0027s diff, whitelisted_file would be updated with the output of deapexer.\n\nOne question in advance, Colin. In the current implementation, the result of diffing is used as implicit inputs of .apex output. That\u0027s how whitelisted_file is checked. How can I do the similar check with .apex output? I mean, how can I make \"foo-diff-phony-output\" triggered?\n\nCurrent:\n\n  build foo.apex: apexRule ... | foo-diff-phony-output\n    ..\n  build foo-diff-phony-output: diffApexContentRule\n    command \u003d diff foo-whitelist foo-content.txt  \n    ..\n  build foo-content.txt: emitApexContentsRule ..\n    command \u003d echo \u003e\u003e ...\n\nTo-be:\n\n  build foo.apex: apexRule ...  \n    ..\n  build foo-diff-phony-output: diffApexContentRule\n    command \u003d diff foo-whitelist foo-content.txt  \n    ..\n  build foo-content.txt: emitApexContentsRule foo.apex\n    command \u003d deapexer list foo.apex \u003e $out",
+      "parentUuid": "141f42fa_a26cd725",
       "revId": "bbd49cfe1d71309165c00f91b04951bd742276d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
