@@ -22,6 +22,30 @@
       "revId": "c7593788d13aeb7a39a3b7ecf5185fca46dc0f6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51ef50b7_ba268f2d",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-11-15T05:08:57Z",
+      "side": 1,
+      "message": "Also, should this be in commonProperties for all modules instead of C++ specific. It should be able to work for anything, right?",
+      "parentUuid": "77fde0d9_84d96b14",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 92,
+        "endChar": 12
+      },
+      "revId": "c7593788d13aeb7a39a3b7ecf5185fca46dc0f6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
