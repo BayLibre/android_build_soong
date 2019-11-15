@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9db9a769_4ce07893",
+        "filename": "ui/build/config_linux.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-15T21:46:42Z",
+      "side": 1,
+      "message": "I\u0027d like to get this into soong.log, but the logger output file hasn\u0027t been set up when NewConfig calls this because config.Dist() is used to select the location of the logger output file.  Any thoughts Dan?  Could the logger buffer output until the output file is configured?",
+      "revId": "a97ad32ef29be741141de86a2be52fa4beb37146",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
