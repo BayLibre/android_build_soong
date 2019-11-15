@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c9213d3_f5053756",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1365,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-15T00:19:49Z",
+      "side": 1,
+      "message": "stripped-down",
+      "range": {
+        "startLine": 1365,
+        "startChar": 13,
+        "endLine": 1365,
+        "endChar": 25
+      },
+      "revId": "bbd49cfe1d71309165c00f91b04951bd742276d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "141f42fa_a26cd725",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1434,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-15T00:19:49Z",
+      "side": 1,
+      "message": "Not necessary as part of this change, but this code would likely benefit from using android.RuleBuilder instead of pctx.StaticRule.",
+      "revId": "bbd49cfe1d71309165c00f91b04951bd742276d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
