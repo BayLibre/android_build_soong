@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2dc8fcc1_def06109",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-15T22:27:00Z",
+      "side": 1,
+      "message": "Highmem support is never disabled, the fallback case is no local pool and highmem pool size set to the same as ninja parallelism, which should have the same behavior as no highmem pool.",
+      "parentUuid": "e23e8479_0d30ae0b",
+      "range": {
+        "startLine": 429,
+        "startChar": 9,
+        "endLine": 429,
+        "endChar": 20
+      },
+      "revId": "ca39fff8b1679d60964408140fb149523fb7878c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "df819a5c_7e345b40",
         "filename": "ui/build/config.go",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "90121256_21b6f1ab",
+        "filename": "ui/build/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-15T22:27:00Z",
+      "side": 1,
+      "message": "You can override the number of highmem processes directly.  Autodetecting the number of highmem processes is a pretty hand-wavy heuristic, it seems strange to fiddle with its inputs instead of just setting the output to what you want.",
+      "parentUuid": "df819a5c_7e345b40",
+      "range": {
+        "startLine": 102,
+        "startChar": 16,
+        "endLine": 102,
+        "endChar": 30
+      },
+      "revId": "ca39fff8b1679d60964408140fb149523fb7878c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "833e4da5_4411db02",
         "filename": "ui/build/config.go",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2019-11-15T22:15:49Z",
       "side": 1,
       "message": "You could wrap each job in both the local and highmem pools in a wrapper program that managed concurrently with sem_open/sem_wait/sem_post, right?",
+      "range": {
+        "startLine": 737,
+        "startChar": 5,
+        "endLine": 737,
+        "endChar": 39
+      },
+      "revId": "ca39fff8b1679d60964408140fb149523fb7878c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55420183_2cac7bb8",
+        "filename": "ui/build/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-15T22:27:00Z",
+      "side": 1,
+      "message": "We are more likely to just change ninja to do what we want, probably by allowing a remote pool that is larger than the default parallelism.",
+      "parentUuid": "833e4da5_4411db02",
       "range": {
         "startLine": 737,
         "startChar": 5,
