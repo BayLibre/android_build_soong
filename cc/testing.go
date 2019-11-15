@@ -282,6 +282,7 @@ func CreateTestContext(bp string, fs map[string][]byte,
 	})
 	ctx.PreArchMutators(android.RegisterDefaultsPreArchMutators)
 	ctx.RegisterSingletonType("vndk-snapshot", VndkSnapshotSingleton)
+	ctx.RegisterSingletonType("vendor-snapshot", VendorSnapshotSingleton)
 
 	// add some modules that are required by the compiler and/or linker
 	bp = bp + GatherRequiredDepsForTest(os)
