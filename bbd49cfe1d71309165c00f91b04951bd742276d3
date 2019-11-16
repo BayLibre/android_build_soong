@@ -81,6 +81,24 @@
       "revId": "bbd49cfe1d71309165c00f91b04951bd742276d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9f5e4cf_a8b1201c",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1434,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-16T00:12:59Z",
+      "side": 1,
+      "message": "Can you just add the diffing commands to the rule that creates the .apex output?",
+      "parentUuid": "bb445503_de4443a7",
+      "revId": "bbd49cfe1d71309165c00f91b04951bd742276d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
