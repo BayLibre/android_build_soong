@@ -140,7 +140,7 @@ var (
 	apexBundleRule = pctx.StaticRule("apexBundleRule", blueprint.RuleParams{
 		Command: `${zip2zip} -i $in -o $out ` +
 			`apex_payload.img:apex/${abi}.img ` +
-			`apex_manifest.json:root/apex_manifest.json ` +
+			`apex_manifest.*:root ` +
 			`AndroidManifest.xml:manifest/AndroidManifest.xml ` +
 			`assets/NOTICE.html.gz:assets/NOTICE.html.gz`,
 		CommandDeps: []string{"${zip2zip}"},
