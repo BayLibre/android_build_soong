@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcec46f6_4c2d5b2a",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-11-17T21:38:02Z",
+      "side": 1,
+      "message": "Extra blank line",
+      "range": {
+        "startLine": 322,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 0
+      },
+      "revId": "28c6e1a22b779d55a87d7de7c8f887b78b9d6285",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86a05af7_bae7b388",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1909,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-11-17T21:38:02Z",
+      "side": 1,
+      "message": "Doesn\u0027t lack of an overrides property mean both an overriding and the overridden apexes will be installed if they both are listed in PRODUCT_PACKAGES?",
+      "revId": "28c6e1a22b779d55a87d7de7c8f887b78b9d6285",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
