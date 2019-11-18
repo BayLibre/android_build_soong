@@ -81,10 +81,30 @@ func RegisterPreDepsMutators(ctx android.RegisterMutatorsContext) {
 }
 
 func RegisterPostDepsMutators(ctx android.RegisterMutatorsContext) {
+	ctx.TopDown("apex_available", apexAvailableMutator).Parallel()
 	ctx.BottomUp("apex_deps", apexDepsMutator)
 	ctx.BottomUp("apex", apexMutator).Parallel()
 	ctx.BottomUp("apex_flattened", apexFlattenedMutator).Parallel()
 	ctx.BottomUp("apex_uses", apexUsesMutator).Parallel()
+}
+
+func apexAvailableMutator(mctx android.TopDownMutatorContext) {
+	if current, ok := mctx.Module().(android.ApexModule); ok && current.CanHaveApexVariants() {
+		current.CheckApexAvailableProperty(mctx)
+		// push down apex dependencies to children
+		mctx.VisitDirectDeps(func(d android.Module) {
+			if child, ok := d.(android.ApexModule); ok && child.CanHaveApexVariants() {
+				current.PropagateApexDepToChild(mctx, child)
+			}
+		})
+	} else if ab, ok := mctx.Module().(*apexBundle); ok && !ab.testApex {
+		apexBundleName := mctx.ModuleName()
+		mctx.VisitDirectDepsBlueprint(func(d blueprint.Module) {
+			if child, ok := d.(android.ApexModule); ok && child.CanHaveApexVariants() {
+				child.AddApexDep(mctx.Module(), apexBundleName)
+			}
+		})
+	}
 }
 
 // Mark the direct and transitive dependencies of apex bundles so that they
@@ -1116,18 +1136,6 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	sort.Slice(filesInfo, func(i, j int) bool {
 		return filesInfo[i].builtFile.String() < filesInfo[j].builtFile.String()
 	})
-
-	// check apex_available requirements
-	if !ctx.Host() {
-		for _, fi := range filesInfo {
-			if am, ok := fi.module.(android.ApexModule); ok {
-				if !am.AvailableFor(ctx.ModuleName()) {
-					ctx.ModuleErrorf("requires %q that is not available for the APEX", fi.module.Name())
-					return
-				}
-			}
-		}
-	}
 
 	// prepend the name of this APEX to the module names. These names will be the names of
 	// modules that will be defined if the APEX is flattened.
