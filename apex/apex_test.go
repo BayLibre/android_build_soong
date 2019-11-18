@@ -111,6 +111,7 @@ func testApexContext(t *testing.T, bp string, handlers ...testCustomizer) (*andr
 
 	ctx.RegisterModuleType("cc_library", android.ModuleFactoryAdaptor(cc.LibraryFactory))
 	ctx.RegisterModuleType("cc_library_shared", android.ModuleFactoryAdaptor(cc.LibrarySharedFactory))
+	ctx.RegisterModuleType("cc_library_static", android.ModuleFactoryAdaptor(cc.LibraryStaticFactory))
 	ctx.RegisterModuleType("cc_library_headers", android.ModuleFactoryAdaptor(cc.LibraryHeaderFactory))
 	ctx.RegisterModuleType("cc_prebuilt_library_shared", android.ModuleFactoryAdaptor(cc.PrebuiltSharedLibraryFactory))
 	ctx.RegisterModuleType("cc_prebuilt_library_static", android.ModuleFactoryAdaptor(cc.PrebuiltStaticLibraryFactory))
@@ -2671,7 +2672,7 @@ func TestApexAvailable(t *testing.T) {
 	}`)
 
 	// libbar is an indirect dep
-	testApexError(t, "requires \"libbar\" that is not available for the APEX", `
+	testApexError(t, "\"libfoo\" .*: requires \"libbar\" that is not available for the APEX \"myapex\"", `
 	apex {
 		name: "myapex",
 		key: "myapex.key",
@@ -2763,8 +2764,27 @@ func TestApexAvailable(t *testing.T) {
 	ensureListNotContains(t, ctx.ModuleVariantsForTests("libfoo"), "android_arm64_armv8-a_core_shared")
 	ensureListContains(t, ctx.ModuleVariantsForTests("libbar"), "android_arm64_armv8-a_core_shared_myapex")
 	ensureListNotContains(t, ctx.ModuleVariantsForTests("libbar"), "android_arm64_armv8-a_core_shared")
+}
 
-	ctx, _ = testApex(t, `
+func TestApexAvailableOnlyToApex(t *testing.T) {
+	testApexError(t, `"libfoo" .*: requires "libbar" that is not available for the APEX "//apex_available:platform"`, `
+	cc_library {
+		name: "libfoo",
+		stl: "none",
+		system_shared_libs: [],
+		shared_libs: ["libbar"],
+	}
+
+	cc_library {
+		name: "libbar",
+		stl: "none",
+		system_shared_libs: [],
+		apex_available: ["//apex_available:anyapex"],
+	}`)
+}
+
+func TestApexAvailableOnlyToPlatform(t *testing.T) {
+	ctx, _ := testApex(t, `
 	apex {
 		name: "myapex",
 		key: "myapex.key",
@@ -2786,6 +2806,26 @@ func TestApexAvailable(t *testing.T) {
 	// check that libfoo is created only for the platform
 	ensureListNotContains(t, ctx.ModuleVariantsForTests("libfoo"), "android_arm64_armv8-a_core_shared_myapex")
 	ensureListContains(t, ctx.ModuleVariantsForTests("libfoo"), "android_arm64_armv8-a_core_shared")
+
+	testApexError(t, `"myapex" .*: requires "libfoo" that is not available for the APEX "myapex"`, `
+	apex {
+		name: "myapex",
+		key: "myapex.key",
+		native_shared_libs: ["libfoo"],
+	}
+
+	apex_key {
+		name: "myapex.key",
+		public_key: "testkey.avbpubkey",
+		private_key: "testkey.pem",
+	}
+
+	cc_library {
+		name: "libfoo",
+		stl: "none",
+		system_shared_libs: [],
+		apex_available: ["//apex_available:platform"],
+	}`)
 
 	ctx, _ = testApex(t, `
 	apex {
@@ -2859,6 +2899,183 @@ func TestOverrideApex(t *testing.T) {
 
 	ensureNotContains(t, copyCmds, "image.apex/app/app/app.apk")
 	ensureContains(t, copyCmds, "image.apex/app/app/override_app.apk")
+}
+
+func TestApexAvailableToTestingApex(t *testing.T) {
+	testApex(t, `
+	apex {
+		name: "myapex",
+		key: "myapex.key",
+		native_shared_libs: ["libfoo"],
+	}
+
+	apex_test {
+		name: "otherapex",
+		key: "myapex.key",
+		native_shared_libs: ["libfoo"],
+	}
+
+	apex_key {
+		name: "myapex.key",
+		public_key: "testkey.avbpubkey",
+		private_key: "testkey.pem",
+	}
+
+	cc_library {
+		name: "libfoo",
+		stl: "none",
+		system_shared_libs: [],
+		apex_available: ["myapex"],
+	}`)
+
+}
+
+func TestApexAvailableStaticLink(t *testing.T) {
+
+	// not allowed to be statically linked
+	// myapex ----> libfoo.so ---(static)--> libbar.a
+
+	testApexError(t, `module "libfoo" .*: requires "libbar" that is not available for the APEX "myapex"`, `
+	apex {
+		name: "myapex",
+		key: "myapex.key",
+		native_shared_libs: ["libfoo"],
+	}
+
+	apex_key {
+		name: "myapex.key",
+		public_key: "testkey.avbpubkey",
+		private_key: "testkey.pem",
+	}
+
+	cc_library {
+		name: "libfoo",
+		stl: "none",
+		system_shared_libs: [],
+		static_libs: ["libbar"],
+	}
+
+	cc_library {
+		name: "libbar",
+		stl: "none",
+		system_shared_libs: [],
+		apex_available: ["//apex_available:platform"],
+	}
+	`)
+
+	// It is okay to be indirectly linked as static
+	// myapex ----> libfoo ---(static)--> libbar --(shared)--> libbaz
+
+	testApex(t, `
+	apex {
+		name: "myapex",
+		key: "myapex.key",
+		native_shared_libs: ["libfoo"],
+	}
+
+	apex_key {
+		name: "myapex.key",
+		public_key: "testkey.avbpubkey",
+		private_key: "testkey.pem",
+	}
+
+	cc_library {
+		name: "libfoo",
+		stl: "none",
+		system_shared_libs: [],
+		static_libs: ["libbar"],
+	}
+
+	cc_library {
+		name: "libbar",
+		stl: "none",
+		system_shared_libs: [],
+		shared_libs: ["libbaz"],
+	}
+
+	cc_library {
+		name: "libbaz",
+		stl: "none",
+		system_shared_libs: [],
+		apex_available: ["//apex_available:platform"],
+	}
+	`)
+
+	// And, okay to be indirectly static/static
+	// myapex ----> libfoo ---(static)--> libbar --(static)--> libbaz
+
+	testApex(t, `
+	apex {
+		name: "myapex",
+		key: "myapex.key",
+		native_shared_libs: ["libfoo"],
+	}
+
+	apex_key {
+		name: "myapex.key",
+		public_key: "testkey.avbpubkey",
+		private_key: "testkey.pem",
+	}
+
+	cc_library {
+		name: "libfoo",
+		stl: "none",
+		system_shared_libs: [],
+		static_libs: ["libbar"],
+	}
+
+	cc_library {
+		name: "libbar",
+		stl: "none",
+		system_shared_libs: [],
+		static_libs: ["libbaz"],
+	}
+
+	cc_library {
+		name: "libbaz",
+		stl: "none",
+		system_shared_libs: [],
+		apex_available: ["//apex_available:platform"],
+	}
+	`)
+
+	// But, not okay to be indirectly linked as whole_static
+	// myapex ----> libfoo ---(static)--> libbar --(whole_static)--> libbaz
+
+	testApexError(t, `"libbar" .*: requires "libbaz"`, `
+	apex {
+		name: "myapex",
+		key: "myapex.key",
+		native_shared_libs: ["libfoo"],
+	}
+
+	apex_key {
+		name: "myapex.key",
+		public_key: "testkey.avbpubkey",
+		private_key: "testkey.pem",
+	}
+
+	cc_library {
+		name: "libfoo",
+		stl: "none",
+		system_shared_libs: [],
+		static_libs: ["libbar"],
+	}
+
+	cc_library {
+		name: "libbar",
+		stl: "none",
+		system_shared_libs: [],
+		whole_static_libs: ["libbaz"],
+	}
+
+	cc_library {
+		name: "libbaz",
+		stl: "none",
+		system_shared_libs: [],
+		apex_available: ["//apex_available:platform"],
+	}
+	`)
 }
 
 func TestMain(m *testing.M) {

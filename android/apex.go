@@ -21,6 +21,19 @@ import (
 	"github.com/google/blueprint"
 )
 
+// ApexDep represents the dependency to an apex bundle
+type ApexDep struct {
+	Name           string
+	Installable    bool
+	Test           bool
+	CheckAvailable bool
+}
+
+// this is for pseudo apex "//apex_available:platform"
+func pseudoPlatformApex(checkAvailable bool) ApexDep {
+	return ApexDep{availableToPlatform, false, false, checkAvailable}
+}
+
 // ApexModule is the interface that a module type is expected to implement if
 // the module has to be built differently depending on whether the module
 // is destined for an apex or not (installed to one of the regular partitions).
@@ -39,10 +52,6 @@ import (
 type ApexModule interface {
 	Module
 	apexModuleBase() *ApexModuleBase
-
-	// Marks that this module should be built for the APEX of the specified name.
-	// Call this before apex.apexMutator is run.
-	BuildForApex(apexName string)
 
 	// Returns the name of APEX that this module will be built for. Empty string
 	// is returned when 'IsForPlatform() == true'. Note that a module can be
@@ -68,7 +77,7 @@ type ApexModule interface {
 	IsInstallableToApex() bool
 
 	// Mutate this module into one or more variants each of which is built
-	// for an APEX marked via BuildForApex().
+	// for an APEX marked via AddApexDep().
 	CreateApexVariations(mctx BottomUpMutatorContext) []blueprint.Module
 
 	// Sets the name of the apex variant of this module. Called inside
@@ -81,6 +90,20 @@ type ApexModule interface {
 	// DepIsInSameApex tests if the other module 'dep' is installed to the same
 	// APEX as this module
 	DepIsInSameApex(ctx BaseModuleContext, dep Module) bool
+
+	// Ensure apex_available is well-formed
+	checkApexAvailableProperty(mctx BaseModuleContext)
+
+	// Mark this module as it is used by given apex
+	addApex(apex ApexDep)
+
+	// Propagates apex deps to its children
+	PushDownApexDeps(mctx TopDownMutatorContext)
+
+	// Returns true if the depedency to `child` requires a check against "apex_available".
+	// Override this if "available" means different than simple dependency.
+	// For example, "available" in `cc_*` modules means "able to include symbols".
+	NeedToCheckApexAvailableForChild(mctx BaseModuleContext, child ApexModule) bool
 }
 
 type ApexProperties struct {
@@ -89,6 +112,7 @@ type ApexProperties struct {
 	// "//apex_available:platform" refers to non-APEX partitions like "system.img".
 	// Default is ["//apex_available:platform", "//apex_available:anyapex"].
 	// TODO(b/128708192) change the default to ["//apex_available:platform"]
+	// For cc_* modules, including a module means including symbols.
 	Apex_available []string
 
 	// Name of the apex variant that this module is mutated into
@@ -102,20 +126,73 @@ type ApexModuleBase struct {
 
 	canHaveApexVariants bool
 
-	apexVariationsLock sync.Mutex // protects apexVariations during parallel apexDepsMutator
-	apexVariations     []string
+	// key: apex which depends on this module.
+	apexDeps     map[string]*ApexDep
+	apexDepsLock sync.Mutex // protects apexDeps during parallel apexDepsMutator
 }
 
 func (m *ApexModuleBase) apexModuleBase() *ApexModuleBase {
 	return m
 }
 
-func (m *ApexModuleBase) BuildForApex(apexName string) {
-	m.apexVariationsLock.Lock()
-	defer m.apexVariationsLock.Unlock()
-	if !InList(apexName, m.apexVariations) {
-		m.apexVariations = append(m.apexVariations, apexName)
+func (m *ApexModuleBase) addApex(apex ApexDep) {
+	m.apexDepsLock.Lock()
+	defer m.apexDepsLock.Unlock()
+	if old, ok := m.apexDeps[apex.Name]; ok {
+		// installable if one of its variants is installable,
+		old.Installable = old.Installable || apex.Installable
+		// check apex_available for this apex
+		old.CheckAvailable = old.CheckAvailable || apex.CheckAvailable
+	} else {
+		m.apexDeps[apex.Name] = &apex
 	}
+}
+
+// AddApexDep adds direct/indirect depedency from `apex` to `m`.
+// Before adding, "apex_available" is checked against
+func AddApexDep(mctx TopDownMutatorContext, m Module, apex ApexDep) {
+	if apex.Installable && !apex.Test {
+		// TODO(b/123892969): Workaround for not having any way to annotate test-apexs
+		// non-installable apex's cannot be installed and so should not prevent libraries from being
+		// installed to the system.
+		UpdateApexDependency(apex.Name, mctx.OtherModuleName(m), apex.Name == mctx.ModuleName())
+	}
+
+	if am, ok := m.(ApexModule); ok && am.CanHaveApexVariants() {
+		am.checkApexAvailableProperty(mctx)
+		if !apex.Test && apex.CheckAvailable {
+			if !am.AvailableFor(apex.Name) {
+				mctx.ModuleErrorf("requires %q that is not available for the APEX %q",
+					mctx.OtherModuleName(m), apex.Name)
+			}
+		}
+		am.addApex(apex)
+	}
+}
+
+// PushDownApexDeps propagates apex deps to its children
+func (m *ApexModuleBase) PushDownApexDeps(mctx TopDownMutatorContext) {
+	parent := mctx.Module().(ApexModule)
+	mctx.VisitDirectDeps(func(child Module) {
+		if am, ok := child.(ApexModule); ok && am.CanHaveApexVariants() {
+			checkChild := parent.NeedToCheckApexAvailableForChild(mctx, am)
+			if parent.AvailableFor(availableToPlatform) {
+				AddApexDep(mctx, child, pseudoPlatformApex(checkChild))
+			}
+			for _, apexDep := range m.apexDeps {
+				newApexDep := *apexDep
+				newApexDep.CheckAvailable = newApexDep.CheckAvailable && checkChild
+				AddApexDep(mctx, child, newApexDep)
+			}
+		}
+	})
+}
+
+// NeedToCheckApexAvailableForChild returns true if the depedency to `child` requires a check against "apex_available".
+// Override this if "available" means different than simple dependency.
+// For example, "available" in `cc_*` modules means "able to include symbols".
+func (m *ApexModuleBase) NeedToCheckApexAvailableForChild(mctx BaseModuleContext, child ApexModule) bool {
+	return true
 }
 
 func (m *ApexModuleBase) ApexName() string {
@@ -177,21 +254,21 @@ func (m *ApexModuleBase) checkApexAvailableProperty(mctx BaseModuleContext) {
 }
 
 func (m *ApexModuleBase) CreateApexVariations(mctx BottomUpMutatorContext) []blueprint.Module {
-	if len(m.apexVariations) > 0 {
-		m.checkApexAvailableProperty(mctx)
-		sort.Strings(m.apexVariations)
-		variations := []string{}
+	variations := []string{}
+	for apexName := range m.apexDeps {
+		if apexName != availableToPlatform {
+			variations = append(variations, apexName)
+		}
+	}
+	if len(variations) > 0 {
 		availableForPlatform := mctx.Module().(ApexModule).AvailableFor(availableToPlatform)
 		if availableForPlatform {
 			variations = append(variations, "") // Original variation for platform
 		}
-		variations = append(variations, m.apexVariations...)
+		sort.Strings(variations)
 
 		modules := mctx.CreateVariations(variations...)
 		for i, m := range modules {
-			if availableForPlatform && i == 0 {
-				continue
-			}
 			m.(ApexModule).setApexName(variations[i])
 		}
 		return modules
@@ -287,6 +364,6 @@ func GetApexesForModule(moduleName string) []string {
 func InitApexModule(m ApexModule) {
 	base := m.apexModuleBase()
 	base.canHaveApexVariants = true
-
+	base.apexDeps = make(map[string]*ApexDep)
 	m.AddProperties(&base.ApexProperties)
 }
