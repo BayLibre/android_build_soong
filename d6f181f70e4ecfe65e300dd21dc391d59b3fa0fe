@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97bb8349_d633408c",
+        "filename": "android/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-18T13:02:05Z",
+      "side": 1,
+      "message": "nit: so is the child",
+      "range": {
+        "startLine": 181,
+        "startChar": 64,
+        "endLine": 181,
+        "endChar": 82
+      },
+      "revId": "d6f181f70e4ecfe65e300dd21dc391d59b3fa0fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcf8f9d9_136a7cc6",
+        "filename": "android/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-18T13:02:05Z",
+      "side": 1,
+      "message": "Why not just VisitDirectDeps?",
+      "range": {
+        "startLine": 185,
+        "startChar": 6,
+        "endLine": 185,
+        "endChar": 30
+      },
+      "revId": "d6f181f70e4ecfe65e300dd21dc391d59b3fa0fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8cbdd171_23f9a26f",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1270,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-18T13:02:05Z",
+      "side": 1,
+      "message": "why not just WalkDeps?",
+      "range": {
+        "startLine": 1270,
+        "startChar": 5,
+        "endLine": 1270,
+        "endChar": 22
+      },
+      "revId": "d6f181f70e4ecfe65e300dd21dc391d59b3fa0fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
