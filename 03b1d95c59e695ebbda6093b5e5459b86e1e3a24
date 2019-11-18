@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f36f318_b121e918",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-11-18T08:10:38Z",
+      "side": 1,
+      "message": "Can we have this as a separate constant so that we can find them in one place?",
+      "range": {
+        "startLine": 55,
+        "startChar": 28,
+        "endLine": 55,
+        "endChar": 89
+      },
+      "revId": "03b1d95c59e695ebbda6093b5e5459b86e1e3a24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3407ac5e_e50441c1",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-11-18T08:10:38Z",
+      "side": 1,
+      "message": "This as well.",
+      "range": {
+        "startLine": 62,
+        "startChar": 29,
+        "endLine": 62,
+        "endChar": 85
+      },
+      "revId": "03b1d95c59e695ebbda6093b5e5459b86e1e3a24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
