@@ -505,8 +505,8 @@ func (a *apexBundle) buildFilesInfo(ctx android.ModuleContext) {
 	if a.installable() {
 		// For flattened APEX, do nothing but make sure that apex_manifest.json and apex_pubkey are also copied along
 		// with other ordinary files.
-		a.filesInfo = append(a.filesInfo, apexFile{a.manifestJsonOut, "apex_manifest.json." + ctx.ModuleName() + a.suffix, ".", etc, nil, nil})
-		a.filesInfo = append(a.filesInfo, apexFile{a.manifestPbOut, "apex_manifest.pb." + ctx.ModuleName() + a.suffix, ".", etc, nil, nil})
+		a.filesInfo = append(a.filesInfo, newApexFile(a.manifestJsonOut, "apex_manifest.json."+ctx.ModuleName()+a.suffix, ".", etc, nil))
+		a.filesInfo = append(a.filesInfo, newApexFile(a.manifestPbOut, "apex_manifest.pb."+ctx.ModuleName()+a.suffix, ".", etc, nil))
 
 		// rename to apex_pubkey
 		copiedPubkey := android.PathForModuleOut(ctx, "apex_pubkey")
@@ -515,7 +515,7 @@ func (a *apexBundle) buildFilesInfo(ctx android.ModuleContext) {
 			Input:  a.public_key_file,
 			Output: copiedPubkey,
 		})
-		a.filesInfo = append(a.filesInfo, apexFile{copiedPubkey, "apex_pubkey." + ctx.ModuleName() + a.suffix, ".", etc, nil, nil})
+		a.filesInfo = append(a.filesInfo, newApexFile(copiedPubkey, "apex_pubkey."+ctx.ModuleName()+a.suffix, ".", etc, nil))
 
 		if a.properties.ApexType == flattenedApex {
 			apexName := proptools.StringDefault(a.properties.Apex_name, ctx.ModuleName())
