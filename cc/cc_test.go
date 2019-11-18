@@ -87,11 +87,8 @@ func testCcNoVndk(t *testing.T, bp string) *android.TestContext {
 	return testCcWithConfig(t, bp, config)
 }
 
-func testCcError(t *testing.T, pattern string, bp string) {
+func testCcErrorWithConfig(t *testing.T, pattern string, bp string, config android.Config) {
 	t.Helper()
-	config := android.TestArchConfig(buildDir, nil)
-	config.TestProductVariables.DeviceVndkVersion = StringPtr("current")
-	config.TestProductVariables.Platform_vndk_version = StringPtr("VER")
 
 	ctx := CreateTestContext(bp, nil, android.Android)
 	ctx.Register()
@@ -111,9 +108,18 @@ func testCcError(t *testing.T, pattern string, bp string) {
 	t.Fatalf("missing expected error %q (0 errors are returned)", pattern)
 }
 
+func testCcError(t *testing.T, pattern string, bp string) {
+	config := android.TestArchConfig(buildDir, nil)
+	config.TestProductVariables.DeviceVndkVersion = StringPtr("current")
+	config.TestProductVariables.Platform_vndk_version = StringPtr("VER")
+	testCcErrorWithConfig(t, pattern, bp, config)
+	return
+}
+
 const (
 	coreVariant     = "android_arm64_armv8-a_core_shared"
 	vendorVariant   = "android_arm64_armv8-a_vendor.VER_shared"
+	productVariant  = "android_arm64_armv8-a_product.VER_shared"
 	recoveryVariant = "android_arm64_armv8-a_recovery_shared"
 )
 
@@ -1443,6 +1449,163 @@ func TestVndkUseVndkExtError(t *testing.T) {
 			nocrt: true,
 		}
 	`)
+}
+
+func TestEnforceProductVndkVersion(t *testing.T) {
+	config := android.TestArchConfig(buildDir, nil)
+	config.TestProductVariables.DeviceVndkVersion = StringPtr("current")
+	config.TestProductVariables.Platform_vndk_version = StringPtr("VER")
+	config.TestProductVariables.ProductVndkVersion = StringPtr("current")
+
+	ctx := testCcWithConfig(t, `
+		cc_library {
+			name: "libllndk",
+		}
+		llndk_library {
+			name: "libllndk",
+			symbol_file: "",
+		}
+		cc_library {
+			name: "libvndk",
+			vendor_available: true,
+			vndk: {
+				enabled: true,
+			},
+			nocrt: true,
+		}
+		cc_library {
+			name: "libvndk_sp",
+			vendor_available: true,
+			vndk: {
+				enabled: true,
+				support_system_process: true,
+			},
+			nocrt: true,
+		}
+		cc_library {
+			name: "libva",
+			vendor_available: true,
+			nocrt: true,
+		}
+		cc_library {
+			name: "libproduct_va",
+			product_specific: true,
+			vendor_available: true,
+			nocrt: true,
+		}
+		cc_library {
+			name: "libprod",
+			product_specific: true,
+			shared_libs: [
+				"libllndk",
+				"libvndk",
+				"libvndk_sp",
+				"libva",
+				"libproduct_va",
+			],
+			nocrt: true,
+		}
+		cc_library {
+			name: "libvendor",
+			vendor: true,
+			shared_libs: [
+				"libllndk",
+				"libvndk",
+				"libvndk_sp",
+				"libva",
+				"libproduct_va",
+			],
+			nocrt: true,
+		}
+	`, config)
+
+	checkVndkModule(t, ctx, "libvndk", "vndk-VER", false, "")
+	checkVndkModule(t, ctx, "libvndk_sp", "vndk-sp-VER", true, "")
+}
+
+func TestEnforceProductVndkVersionErrors(t *testing.T) {
+	config := android.TestArchConfig(buildDir, nil)
+	config.TestProductVariables.DeviceVndkVersion = StringPtr("current")
+	config.TestProductVariables.Platform_vndk_version = StringPtr("VER")
+	config.TestProductVariables.ProductVndkVersion = StringPtr("current")
+
+	testCcErrorWithConfig(t, "dependency \".*\" of \".*\" missing variant:\n.*image:product.VER", `
+		cc_library {
+			name: "libprod",
+			product_specific: true,
+			shared_libs: [
+				"libvendor",
+			],
+			nocrt: true,
+		}
+		cc_library {
+			name: "libvendor",
+			vendor: true,
+			nocrt: true,
+		}
+	`, config)
+	testCcErrorWithConfig(t, "dependency \".*\" of \".*\" missing variant:\n.*image:product.VER", `
+		cc_library {
+			name: "libprod",
+			product_specific: true,
+			shared_libs: [
+				"libsystem",
+			],
+			nocrt: true,
+		}
+		cc_library {
+			name: "libsystem",
+			nocrt: true,
+		}
+	`, config)
+	testCcErrorWithConfig(t, "Vendor module that is not VNDK should not link to \".*\" which is marked as `vendor_available: false`", `
+			cc_library {
+				name: "libprod",
+				product_specific: true,
+				shared_libs: [
+					"libvndk_private",
+				],
+				nocrt: true,
+			}
+			cc_library {
+				name: "libvndk_private",
+				vendor_available: false,
+				vndk: {
+					enabled: true,
+				},
+				nocrt: true,
+			}
+		`, config)
+	testCcErrorWithConfig(t, "dependency \".*\" of \".*\" missing variant:\n.*image:product.VER", `
+		cc_library {
+			name: "libprod",
+			product_specific: true,
+			shared_libs: [
+				"libsystem_ext",
+			],
+			nocrt: true,
+		}
+		cc_library {
+			name: "libsystem_ext",
+			system_ext_specific: true,
+			nocrt: true,
+		}
+	`, config)
+	testCcErrorWithConfig(t, "dependency \".*\" of \".*\" missing variant:\n.*image:core", `
+		cc_library {
+			name: "libsystem",
+			shared_libs: [
+				"libproduct_va",
+			],
+			nocrt: true,
+		}
+		cc_library {
+			name: "libproduct_va",
+			product_specific: true,
+			vendor_available: true,
+			nocrt: true,
+		}
+	`, config)
 }
 
 func TestMakeLinkType(t *testing.T) {
