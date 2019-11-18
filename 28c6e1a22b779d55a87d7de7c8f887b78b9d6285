@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9b3cbfa1_fd9d84ca",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-18T00:54:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcec46f6_4c2d5b2a",
+      "range": {
+        "startLine": 322,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 0
+      },
+      "revId": "28c6e1a22b779d55a87d7de7c8f887b78b9d6285",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86a05af7_bae7b388",
         "filename": "apex/apex.go",
         "patchSetId": 3
@@ -39,6 +63,24 @@
       "revId": "28c6e1a22b779d55a87d7de7c8f887b78b9d6285",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "505bbdbf_ba10c414",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1909,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-18T00:54:00Z",
+      "side": 1,
+      "message": "Good catch. Added the property.",
+      "parentUuid": "86a05af7_bae7b388",
+      "revId": "28c6e1a22b779d55a87d7de7c8f887b78b9d6285",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
