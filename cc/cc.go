@@ -2381,6 +2381,26 @@ func (c *Module) AvailableFor(what string) bool {
 	}
 }
 
+func (c *Module) PropagateApexDepToChild(mctx android.BaseModuleContext, child android.ApexModule) {
+	depTag := mctx.OtherModuleDependencyTag(child)
+
+	if IsSharedDepTag(depTag) || IsRuntimeDepTag(depTag) {
+		// do not propagate beyond the stubs for shared libs
+		if cc, ok := child.(*Module); ok && (cc.IsStubs() || cc.HasStubsVariants()) {
+			return
+		}
+	}
+
+	if c.CcLibrary() && c.Static() {
+		// we only propagate the whole_static_lib children from static libraries
+		if depTag != wholeStaticDepTag {
+			return
+		}
+	}
+
+	c.ApexModuleBase.PropagateApexDepToChild(mctx, child)
+}
+
 func (c *Module) installable() bool {
 	return c.installer != nil && !c.Properties.PreventInstall && c.IsForPlatform() && c.outputFile.Valid()
 }

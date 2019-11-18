@@ -81,6 +81,15 @@ type ApexModule interface {
 	// DepIsInSameApex tests if the other module 'dep' is installed to the same
 	// APEX as this module
 	DepIsInSameApex(ctx BaseModuleContext, dep Module) bool
+
+	// Ensure apex_available is well-formed and check the availability
+	CheckApexAvailableProperty(mctx BaseModuleContext)
+
+	// Mark this module as it is used by given apex via parent Module
+	AddApexDep(parent Module, apexBundleName string)
+
+	// Mark the child module as it is also used by all apexes which this module is used by
+	PropagateApexDepToChild(mctx BaseModuleContext, child ApexModule)
 }
 
 type ApexProperties struct {
@@ -89,10 +98,44 @@ type ApexProperties struct {
 	// "//apex_available:platform" refers to non-APEX partitions like "system.img".
 	// Default is ["//apex_available:platform", "//apex_available:anyapex"].
 	// TODO(b/128708192) change the default to ["//apex_available:platform"]
+	// For cc_* modules, including a module means including symbols.
 	Apex_available []string
 
 	// Name of the apex variant that this module is mutated into
 	ApexName string `blueprint:"mutated"`
+}
+
+// equivalent to map[android.Module]bool
+type moduleSet struct {
+	sync.Map
+}
+
+func (s *moduleSet) forEach(consumer func(Module)) {
+	s.Range(func(key, value interface{}) bool {
+		consumer(key.(Module))
+		return true
+	})
+}
+
+func (s *moduleSet) add(module Module) {
+	s.Store(module, true)
+}
+
+// equivalent to map[string]*moduleSet
+type stringToModulesMap struct {
+	sync.Map
+}
+
+func (m *stringToModulesMap) forEach(consumer func(string, *moduleSet)) {
+	m.Range(func(key, value interface{}) bool {
+		consumer(key.(string), value.(*moduleSet))
+		return true
+	})
+}
+
+func (m *stringToModulesMap) get(key string) *moduleSet {
+	set, _ := m.LoadOrStore(key, new(moduleSet))
+	return set.(*moduleSet)
 }
 
 // Provides default implementation for the ApexModule interface. APEX-aware
@@ -104,6 +147,8 @@ type ApexModuleBase struct {
 
 	apexVariationsLock sync.Mutex // protects apexVariations during parallel apexDepsMutator
 	apexVariations     []string
+
+	apexDeps stringToModulesMap
 }
 
 func (m *ApexModuleBase) apexModuleBase() *ApexModuleBase {
@@ -165,7 +210,7 @@ func (m *ApexModuleBase) DepIsInSameApex(ctx BaseModuleContext, dep Module) bool
 	return true
 }
 
-func (m *ApexModuleBase) checkApexAvailableProperty(mctx BaseModuleContext) {
+func (m *ApexModuleBase) CheckApexAvailableProperty(mctx BaseModuleContext) {
 	for _, n := range m.ApexProperties.Apex_available {
 		if n == availableToPlatform || n == availableToAnyApex {
 			continue
@@ -174,11 +219,37 @@ func (m *ApexModuleBase) checkApexAvailableProperty(mctx BaseModuleContext) {
 			mctx.PropertyErrorf("apex_available", "%q is not a valid module name", n)
 		}
 	}
+
+	current := mctx.Module().(ApexModule)
+
+	// check current module is available to apexes
+	m.apexDeps.forEach(func(apexBundleName string, parents *moduleSet) {
+		if !current.AvailableFor(apexBundleName) {
+			parents.forEach(func(parent Module) {
+				mctx.OtherModuleErrorf(parent, "requires %q that is not available for the APEX %q",
+					mctx.ModuleName(), apexBundleName)
+			})
+		}
+	})
+}
+
+func (m *ApexModuleBase) PropagateApexDepToChild(mctx BaseModuleContext, child ApexModule) {
+	current := mctx.Module().(ApexModule)
+	if current.AvailableFor(availableToPlatform) {
+		child.AddApexDep(current, availableToPlatform)
+	}
+
+	m.apexDeps.forEach(func(apexBundleName string, parents *moduleSet) {
+		child.AddApexDep(current, apexBundleName)
+	})
+}
+
+func (m *ApexModuleBase) AddApexDep(parent Module, apexBundleName string) {
+	m.apexDeps.get(apexBundleName).add(parent)
 }
 
 func (m *ApexModuleBase) CreateApexVariations(mctx BottomUpMutatorContext) []blueprint.Module {
 	if len(m.apexVariations) > 0 {
-		m.checkApexAvailableProperty(mctx)
 		sort.Strings(m.apexVariations)
 		variations := []string{}
 		availableForPlatform := mctx.Module().(ApexModule).AvailableFor(availableToPlatform)
