@@ -25,6 +25,7 @@ import (
 
 var (
 	nativeBridgeSuffix = ".native_bridge"
+	productSuffix      = ".product"
 	vendorSuffix       = ".vendor"
 	recoverySuffix     = ".recovery"
 )
@@ -37,7 +38,7 @@ type AndroidMkContext interface {
 	Os() android.OsType
 	Host() bool
 	UseVndk() bool
-	vndkVersion() string
+	VndkVersion() string
 	static() bool
 	InRecovery() bool
 }
@@ -92,11 +93,14 @@ func (c *Module) AndroidMk() android.AndroidMkData {
 				if c.UseVndk() {
 					fmt.Fprintln(w, "LOCAL_USE_VNDK := true")
 					if c.IsVndk() && !c.static() {
-						fmt.Fprintln(w, "LOCAL_SOONG_VNDK_VERSION := "+c.vndkVersion())
+						fmt.Fprintln(w, "LOCAL_SOONG_VNDK_VERSION := "+c.VndkVersion())
 						// VNDK libraries available to vendor are not installed because
 						// they are packaged in VNDK APEX and installed by APEX packages (apex/apex.go)
 						if !c.isVndkExt() {
 							fmt.Fprintln(w, "LOCAL_UNINSTALLABLE_MODULE := true")
+							if library, ok := c.linker.(*libraryDecorator); ok {
+								library.baseInstaller.setUninstallable()
+							}
 						}
 					}
 				}
@@ -215,6 +219,7 @@ func (library *libraryDecorator) AndroidMk(ctx AndroidMkContext, ret *android.An
 			fmt.Fprintln(w, "LOCAL_UNINSTALLABLE_MODULE := true")
 			fmt.Fprintln(w, "LOCAL_NO_NOTICE_FILE := true")
 			fmt.Fprintln(w, "LOCAL_VNDK_DEPEND_ON_CORE_VARIANT := true")
+			library.baseInstaller.setUninstallable()
 		}
 	})
 
@@ -223,6 +228,7 @@ func (library *libraryDecorator) AndroidMk(ctx AndroidMkContext, ret *android.An
 	} else {
 		ret.Extra = append(ret.Extra, func(w io.Writer, outputFile android.Path) {
 			fmt.Fprintln(w, "LOCAL_UNINSTALLABLE_MODULE := true")
+			library.baseInstaller.setUninstallable()
 			if library.buildStubs() {
 				fmt.Fprintln(w, "LOCAL_NO_NOTICE_FILE := true")
 			}
@@ -363,6 +369,10 @@ func (installer *baseInstaller) AndroidMk(ctx AndroidMkContext, ret *android.And
 		ret.OutputFile = android.OptionalPathForPath(installer.path)
 	}
 
+	if installer.uninstallable {
+		// No need to define path and stem for uninstallable modules.
+		return
+	}
 	ret.Extra = append(ret.Extra, func(w io.Writer, outputFile android.Path) {
 		path, file := filepath.Split(installer.path.ToMakePath().String())
 		stem, suffix, _ := android.SplitFileExt(file)
@@ -407,13 +417,8 @@ func (c *vndkPrebuiltLibraryDecorator) AndroidMk(ctx AndroidMkContext, ret *andr
 
 	ret.Extra = append(ret.Extra, func(w io.Writer, outputFile android.Path) {
 		c.libraryDecorator.androidMkWriteExportedFlags(w)
-
-		path, file := filepath.Split(c.path.ToMakePath().String())
-		stem, suffix, ext := android.SplitFileExt(file)
-		fmt.Fprintln(w, "LOCAL_BUILT_MODULE_STEM := $(LOCAL_MODULE)"+ext)
-		fmt.Fprintln(w, "LOCAL_MODULE_SUFFIX := "+suffix)
-		fmt.Fprintln(w, "LOCAL_MODULE_PATH := "+path)
-		fmt.Fprintln(w, "LOCAL_MODULE_STEM := "+stem)
+		// skip defining install path and stem for vndk snapshots because VNDK
+		// snapshots are installed in com.android.vndk.v{ver} apex.
 	})
 }
 
