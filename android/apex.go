@@ -81,6 +81,9 @@ type ApexModule interface {
 	// DepIsInSameApex tests if the other module 'dep' is installed to the same
 	// APEX as this module
 	DepIsInSameApex(ctx BaseModuleContext, dep Module) bool
+
+	// Ensure apex_available is well-formed.
+	CheckApexAvailableProperty(mctx BottomUpMutatorContext)
 }
 
 type ApexProperties struct {
@@ -165,7 +168,7 @@ func (m *ApexModuleBase) DepIsInSameApex(ctx BaseModuleContext, dep Module) bool
 	return true
 }
 
-func (m *ApexModuleBase) checkApexAvailableProperty(mctx BaseModuleContext) {
+func (m *ApexModuleBase) CheckApexAvailableProperty(mctx BottomUpMutatorContext) {
 	for _, n := range m.ApexProperties.Apex_available {
 		if n == availableToPlatform || n == availableToAnyApex {
 			continue
@@ -174,11 +177,22 @@ func (m *ApexModuleBase) checkApexAvailableProperty(mctx BaseModuleContext) {
 			mctx.PropertyErrorf("apex_available", "%q is not a valid module name", n)
 		}
 	}
+
+	// Ensure that if parent module is available to platform, then child should be so.
+	// Note that the availability for apexes is checked from apex module by WalkDeps().
+	parent := mctx.Module().(ApexModule)
+	parentAvailableToPlatform := parent.AvailableFor(availableToPlatform)
+	mctx.VisitDirectDepsBlueprint(func(d blueprint.Module) {
+		if child, ok := d.(ApexModule); ok && child.CanHaveApexVariants() {
+			if parentAvailableToPlatform && !child.AvailableFor(availableToPlatform) {
+				mctx.ModuleErrorf("requires %q that is not available for the APEX %q", mctx.OtherModuleName(child), availableToPlatform)
+			}
+		}
+	})
 }
 
 func (m *ApexModuleBase) CreateApexVariations(mctx BottomUpMutatorContext) []blueprint.Module {
 	if len(m.apexVariations) > 0 {
-		m.checkApexAvailableProperty(mctx)
 		sort.Strings(m.apexVariations)
 		variations := []string{}
 		availableForPlatform := mctx.Module().(ApexModule).AvailableFor(availableToPlatform)
