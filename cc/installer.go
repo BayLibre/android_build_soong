@@ -37,9 +37,10 @@ const (
 
 func NewBaseInstaller(dir, dir64 string, location installLocation) *baseInstaller {
 	return &baseInstaller{
-		dir:      dir,
-		dir64:    dir64,
-		location: location,
+		dir:           dir,
+		dir64:         dir64,
+		location:      location,
+		uninstallable: false,
 	}
 }
 
@@ -53,6 +54,8 @@ type baseInstaller struct {
 	location installLocation
 
 	path android.InstallPath
+
+	uninstallable bool
 }
 
 var _ installer = (*baseInstaller)(nil)
@@ -72,7 +75,11 @@ func (installer *baseInstaller) installDir(ctx ModuleContext) android.InstallPat
 		dir = filepath.Join(dir, ctx.Arch().ArchType.String())
 	}
 	if installer.location == InstallInData && ctx.useVndk() {
-		dir = filepath.Join(dir, "vendor")
+		if ctx.inProduct() {
+			dir = filepath.Join(dir, "product")
+		} else {
+			dir = filepath.Join(dir, "vendor")
+		}
 	}
 	return android.PathForModuleInstall(ctx, dir, installer.subDir,
 		installer.relativeInstallPath(), installer.relative)
@@ -96,4 +103,8 @@ func (installer *baseInstaller) hostToolPath() android.OptionalPath {
 
 func (installer *baseInstaller) relativeInstallPath() string {
 	return String(installer.Properties.Relative_install_path)
+}
+
+func (installer *baseInstaller) setUninstallable() {
+	installer.uninstallable = true
 }
