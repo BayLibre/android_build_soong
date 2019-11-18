@@ -25,6 +25,7 @@ import (
 
 var (
 	nativeBridgeSuffix = ".native_bridge"
+	productSuffix      = ".product"
 	vendorSuffix       = ".vendor"
 	recoverySuffix     = ".recovery"
 )
@@ -37,7 +38,7 @@ type AndroidMkContext interface {
 	Os() android.OsType
 	Host() bool
 	UseVndk() bool
-	vndkVersion() string
+	VndkVersion() string
 	static() bool
 	InRecovery() bool
 }
@@ -92,11 +93,12 @@ func (c *Module) AndroidMk() android.AndroidMkData {
 				if c.UseVndk() {
 					fmt.Fprintln(w, "LOCAL_USE_VNDK := true")
 					if c.IsVndk() && !c.static() {
-						fmt.Fprintln(w, "LOCAL_SOONG_VNDK_VERSION := "+c.vndkVersion())
+						fmt.Fprintln(w, "LOCAL_SOONG_VNDK_VERSION := "+c.VndkVersion())
 						// VNDK libraries available to vendor are not installed because
 						// they are packaged in VNDK APEX and installed by APEX packages (apex/apex.go)
 						if !c.isVndkExt() {
 							fmt.Fprintln(w, "LOCAL_UNINSTALLABLE_MODULE := true")
+							c.Properties.PreventInstall = true
 						}
 					}
 				}
@@ -113,7 +115,9 @@ func (c *Module) AndroidMk() android.AndroidMkData {
 	if c.sanitize != nil {
 		c.subAndroidMk(&ret, c.sanitize)
 	}
-	c.subAndroidMk(&ret, c.installer)
+	if c.installable() {
+		c.subAndroidMk(&ret, c.installer)
+	}
 
 	ret.SubName += c.Properties.SubName
 
@@ -407,13 +411,8 @@ func (c *vndkPrebuiltLibraryDecorator) AndroidMk(ctx AndroidMkContext, ret *andr
 
 	ret.Extra = append(ret.Extra, func(w io.Writer, outputFile android.Path) {
 		c.libraryDecorator.androidMkWriteExportedFlags(w)
-
-		path, file := filepath.Split(c.path.ToMakePath().String())
-		stem, suffix, ext := android.SplitFileExt(file)
-		fmt.Fprintln(w, "LOCAL_BUILT_MODULE_STEM := $(LOCAL_MODULE)"+ext)
-		fmt.Fprintln(w, "LOCAL_MODULE_SUFFIX := "+suffix)
-		fmt.Fprintln(w, "LOCAL_MODULE_PATH := "+path)
-		fmt.Fprintln(w, "LOCAL_MODULE_STEM := "+stem)
+		// skip defining install path and stem for vndk snapshots because VNDK
+		// snapshots are installed in com.android.vndk.v{ver} apex.
 	})
 }
 
