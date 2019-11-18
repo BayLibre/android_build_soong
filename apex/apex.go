@@ -82,7 +82,7 @@ func RegisterPreDepsMutators(ctx android.RegisterMutatorsContext) {
 }
 
 func RegisterPostDepsMutators(ctx android.RegisterMutatorsContext) {
-	ctx.BottomUp("apex_deps", apexDepsMutator)
+	ctx.TopDown("apex_deps", apexDepsMutator).Parallel()
 	ctx.BottomUp("apex", apexMutator).Parallel()
 	ctx.BottomUp("apex_flattened", apexFlattenedMutator).Parallel()
 	ctx.BottomUp("apex_uses", apexUsesMutator).Parallel()
@@ -90,25 +90,15 @@ func RegisterPostDepsMutators(ctx android.RegisterMutatorsContext) {
 
 // Mark the direct and transitive dependencies of apex bundles so that they
 // can be built for the apex bundles.
-func apexDepsMutator(mctx android.BottomUpMutatorContext) {
-	if a, ok := mctx.Module().(*apexBundle); ok {
-		apexBundleName := mctx.ModuleName()
-		mctx.WalkDeps(func(child, parent android.Module) bool {
-			depName := mctx.OtherModuleName(child)
-			// If the parent is apexBundle, this child is directly depended.
-			_, directDep := parent.(*apexBundle)
-			if a.installable() && !a.testApex {
-				// TODO(b/123892969): Workaround for not having any way to annotate test-apexs
-				// non-installable apex's cannot be installed and so should not prevent libraries from being
-				// installed to the system.
-				android.UpdateApexDependency(apexBundleName, depName, directDep)
-			}
-
-			if am, ok := child.(android.ApexModule); ok && am.CanHaveApexVariants() {
-				am.BuildForApex(apexBundleName)
-				return true
-			} else {
-				return false
+// While travesing down the dependency graph, it also checks "apex_available"
+func apexDepsMutator(mctx android.TopDownMutatorContext) {
+	if parent, ok := mctx.Module().(android.ApexModule); ok && parent.CanHaveApexVariants() {
+		parent.PushDownApexDeps(mctx)
+	} else if a, ok := mctx.Module().(*apexBundle); ok {
+		apex := android.ApexRef{Name: mctx.ModuleName(), Installable: a.installable(), Test: a.testApex}
+		mctx.VisitDirectDepsBlueprint(func(d blueprint.Module) {
+			if child, ok := d.(android.Module); ok {
+				android.AddApexDep(mctx, child, apex, true)
 			}
 		})
 	}
@@ -1140,18 +1130,6 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	sort.Slice(filesInfo, func(i, j int) bool {
 		return filesInfo[i].builtFile.String() < filesInfo[j].builtFile.String()
 	})
-
-	// check apex_available requirements
-	if !ctx.Host() {
-		for _, fi := range filesInfo {
-			if am, ok := fi.module.(android.ApexModule); ok {
-				if !am.AvailableFor(ctx.ModuleName()) {
-					ctx.ModuleErrorf("requires %q that is not available for the APEX", fi.module.Name())
-					return
-				}
-			}
-		}
-	}
 
 	// prepend the name of this APEX to the module names. These names will be the names of
 	// modules that will be defined if the APEX is flattened.
