@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61738244_116234de",
+        "filename": "cc/config/clang.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2019-11-19T09:00:59Z",
+      "side": 1,
+      "message": "Do you want to note that this block is via clang-10 similar to Cflags above?",
+      "revId": "a48b9781b78b221d63ba0f14fde698d156018611",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
