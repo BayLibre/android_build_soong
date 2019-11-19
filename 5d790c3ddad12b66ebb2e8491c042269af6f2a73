@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2b6667a_4ef7cfc1",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2861,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2019-11-19T12:26:50Z",
+      "side": 1,
+      "message": "should this be override_app ? might not matter in practice, but at least normal override_android_app behaves that way.",
+      "range": {
+        "startLine": 2861,
+        "startChar": 45,
+        "endLine": 2861,
+        "endChar": 48
+      },
+      "revId": "5d790c3ddad12b66ebb2e8491c042269af6f2a73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
