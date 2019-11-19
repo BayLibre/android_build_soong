@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "242d5b57_fd48816f",
+        "filename": "android/image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-19T04:34:23Z",
+      "side": 0,
+      "message": "empty file?",
+      "revId": "874da8072908c2027b18c5d4bd28eb109fc857a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
