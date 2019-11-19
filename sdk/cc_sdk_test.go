@@ -1979,6 +1979,86 @@ myinclude/Test.h -> include/myinclude/Test.h
 	)
 }
 
+func TestSnapshotWithCcHeadersLibraryAndNativeBridgeSupport(t *testing.T) {
+	result := android.GroupFixturePreparers(
+		cc.PrepareForTestWithCcDefaultModules,
+		PrepareForTestWithSdkBuildComponents,
+		ccTestFs.AddToFixture(),
+		prepareForTestWithNativeBridgeTarget,
+	).RunTestWithBp(t, `
+		sdk {
+			name: "mysdk",
+			native_header_libs: ["mynativeheaders"],
+			traits: {
+				native_bridge_support: ["mynativeheaders"],
+			},
+		}
+
+		cc_library_headers {
+			name: "mynativeheaders",
+			export_include_dirs: ["myinclude"],
+			stl: "none",
+			system_shared_libs: [],
+			native_bridge_supported: true,
+		}
+	`)
+
+	CheckSnapshot(t, result, "mysdk", "",
+		checkUnversionedAndroidBpContents(`
+// This is auto-generated. DO NOT EDIT.
+
+cc_prebuilt_library_headers {
+    name: "mynativeheaders",
+    prefer: false,
+    visibility: ["//visibility:public"],
+    apex_available: ["//apex_available:platform"],
+    native_bridge_supported: true,
+    stl: "none",
+    compile_multilib: "both",
+    system_shared_libs: [],
+    export_include_dirs: ["include/myinclude"],
+}
+`),
+		checkAllCopyRules(`
+myinclude/Test.h -> include/myinclude/Test.h
+`),
+	)
+}
+
+// TestSnapshotWithCcHeadersLibrary_DetectsNativeBridgeSpecificProperties verifies that when a
+// module that has different output files for a native bridge target requests the native bridge
+// variants are copied into the sdk snapshot that it reports an error.
+func TestSnapshotWithCcHeadersLibrary_DetectsNativeBridgeSpecificProperties(t *testing.T) {
+	android.GroupFixturePreparers(
+		cc.PrepareForTestWithCcDefaultModules,
+		PrepareForTestWithSdkBuildComponents,
+		ccTestFs.AddToFixture(),
+		prepareForTestWithNativeBridgeTarget,
+	).ExtendWithErrorHandler(android.FixtureExpectsAtLeastOneErrorMatchingPattern(`Architecture variant "arm64_native_bridge" of sdk member "mynativeheaders" has properties distinct from other variants`)).
+		RunTestWithBp(t, `
+		sdk {
+			name: "mysdk",
+			native_header_libs: ["mynativeheaders"],
+			traits: {
+				native_bridge_support: ["mynativeheaders"],
+			},
+		}
+
+		cc_library_headers {
+			name: "mynativeheaders",
+			export_include_dirs: ["myinclude"],
+			stl: "none",
+			system_shared_libs: [],
+			native_bridge_supported: true,
+			target: {
+				native_bridge: {
+					export_include_dirs: ["myinclude_nativebridge"],
+				},
+			},
+		}
+	`)
+}
+
 func TestHostSnapshotWithCcHeadersLibrary(t *testing.T) {
 	result := testSdkWithCc(t, `
 		sdk {
