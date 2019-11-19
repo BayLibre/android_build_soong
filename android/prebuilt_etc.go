@@ -186,6 +186,9 @@ func InitPrebuiltEtcModule(p *PrebuiltEtc, dirBase string) {
 // <partition>/etc/<sub_dir> directory.
 func PrebuiltEtcFactory() Module {
 	module := &PrebuiltEtc{}
+	module.Prefer32(func(ctx BaseModuleContext, base *ModuleBase, class OsClass) bool {
+		return class == Device && ctx.Config().DevicePrefer32BitExecutables()
+	})
 	InitPrebuiltEtcModule(module, "etc")
 	// This module is device-only
 	InitAndroidArchModule(module, DeviceSupported, MultilibFirst)
