@@ -22,6 +22,30 @@
       "revId": "5d790c3ddad12b66ebb2e8491c042269af6f2a73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b8e1a43_a38cef48",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2861,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-19T12:37:44Z",
+      "side": 1,
+      "message": "In that case, the installation is done by Make, where a module named X is installed to \u003cpartition\u003e/app/X. But in this case, the installation is done entirely in Soong. And it currently installs into ./app/\u003cmodule_name\u003e directory. Since the \u0027override_app\u0027 was replaced by an overridden copy of \u0027app\u0027, module_name is \u0027app\u0027.\n\nIf this is expected to become a problem, I will fix in a follow-up CL.",
+      "parentUuid": "b2b6667a_4ef7cfc1",
+      "range": {
+        "startLine": 2861,
+        "startChar": 45,
+        "endLine": 2861,
+        "endChar": 48
+      },
+      "revId": "5d790c3ddad12b66ebb2e8491c042269af6f2a73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
