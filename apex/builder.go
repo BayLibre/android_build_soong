@@ -340,8 +340,18 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 			},
 		})
 
-		fcName := proptools.StringDefault(a.properties.File_contexts, ctx.ModuleName())
-		fileContextsPath := "system/sepolicy/apex/" + fcName + "-file_contexts"
+		var fileContextsPath string
+		if a.Platform() {
+			fcName := proptools.StringDefault(a.properties.File_contexts, ctx.ModuleName())
+			fileContextsPath = "system/sepolicy/apex/" + fcName + "-file_contexts"
+		} else {
+			if a.properties.File_contexts == nil {
+				ctx.PropertyErrorf("file_contexts", "should be specified for non-platform APEX")
+				return
+			}
+			fileContextsPath = *a.properties.File_contexts
+		}
+
 		fileContextsOptionalPath := android.ExistentPathForSource(ctx, fileContextsPath)
 		if !fileContextsOptionalPath.Valid() {
 			ctx.ModuleErrorf("Cannot find file_contexts file: %q", fileContextsPath)

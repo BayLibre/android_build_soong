@@ -261,9 +261,9 @@ type apexBundleProperties struct {
 	Apex_name *string
 
 	// Determines the file contexts file for setting security context to each file in this APEX bundle.
-	// Specifically, when this is set to <value>, /system/sepolicy/apex/<value>_file_contexts file is
-	// used.
-	// Default: <name_of_this_module>
+	// For platform APEXes, when this is set to <value>, /system/sepolicy/apex/<value>_file_contexts file is
+	// used. Default: <name_of_this_module>.
+	// For non-platform APEXes, this should be set as a <file path> rooted from SrcDir.
 	File_contexts *string
 
 	// List of native shared libs that are embedded inside this APEX bundle

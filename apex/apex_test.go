@@ -2142,6 +2142,7 @@ func TestApexInProductPartition(t *testing.T) {
 			key: "myapex.key",
 			native_shared_libs: ["mylib"],
 			product_specific: true,
+			file_contexts: "myapex_file_contexts",
 		}
 
 		apex_key {
@@ -2157,7 +2158,9 @@ func TestApexInProductPartition(t *testing.T) {
 			system_shared_libs: [],
 			stl: "none",
 		}
-	`)
+	`, withFiles(map[string][]byte{
+		"myapex_file_contexts": nil,
+	}))
 
 	apex := ctx.ModuleForTests("myapex", "android_common_myapex_image").Module().(*apexBundle)
 	expected := buildDir + "/target/product/test_device/product/apex"
@@ -2165,6 +2168,89 @@ func TestApexInProductPartition(t *testing.T) {
 	if actual != expected {
 		t.Errorf("wrong install path. expected %q. actual %q", expected, actual)
 	}
+}
+
+func TestFileContexts(t *testing.T) {
+	ctx, _ := testApex(t, `
+	apex {
+		name: "myapex",
+		key: "myapex.key",
+	}
+
+	apex_key {
+		name: "myapex.key",
+		public_key: "testkey.avbpubkey",
+		private_key: "testkey.pem",
+	}
+	`)
+	module := ctx.ModuleForTests("myapex", "android_common_myapex_image")
+	apexRule := module.Rule("apexRule")
+	actual := apexRule.Args["file_contexts"]
+	expected := "system/sepolicy/apex/myapex-file_contexts"
+	if actual != expected {
+		t.Errorf("wrong file_contexts. expected %q. actual %q", expected, actual)
+	}
+
+	testApex(t, `
+	apex {
+		name: "myapex",
+		key: "myapex.key",
+		file_contexts: "foo",
+	}
+
+	apex_key {
+		name: "myapex.key",
+		public_key: "testkey.avbpubkey",
+		private_key: "testkey.pem",
+	}
+	`, withFiles(map[string][]byte{
+		"system/sepolicy/apex/foo-file_contexts": nil,
+	}))
+
+	testApexError(t, `"myapex" .*: Cannot find file_contexts`, `
+	apex {
+		name: "myapex",
+		key: "myapex.key",
+		file_contexts: "foo",
+	}
+
+	apex_key {
+		name: "myapex.key",
+		public_key: "testkey.avbpubkey",
+		private_key: "testkey.pem",
+	}
+	`)
+
+	testApexError(t, `"myapex" .*: file_contexts: should be specified`, `
+	apex {
+		name: "myapex",
+		key: "myapex.key",
+		product_specific: true,
+	}
+
+	apex_key {
+		name: "myapex.key",
+		public_key: "testkey.avbpubkey",
+		private_key: "testkey.pem",
+	}
+	`)
+
+	testApex(t, `
+	apex {
+		name: "myapex",
+		key: "myapex.key",
+		product_specific: true,
+		file_contexts: "product_specific_file_contexts",
+	}
+
+	apex_key {
+		name: "myapex.key",
+		public_key: "testkey.avbpubkey",
+		private_key: "testkey.pem",
+	}
+	`, withFiles(map[string][]byte{
+		"product_specific_file_contexts": nil,
+	}))
 }
 
 func TestApexKeyFromOtherModule(t *testing.T) {
