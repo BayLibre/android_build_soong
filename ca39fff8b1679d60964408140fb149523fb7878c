@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "00df93b1_76a630b6",
+        "filename": "android/rule_builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1130394
+      },
+      "writtenOn": "2019-11-19T00:13:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2dc8fcc1_def06109",
+      "range": {
+        "startLine": 429,
+        "startChar": 9,
+        "endLine": 429,
+        "endChar": 20
+      },
+      "revId": "ca39fff8b1679d60964408140fb149523fb7878c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df819a5c_7e345b40",
         "filename": "ui/build/config.go",
         "patchSetId": 3
