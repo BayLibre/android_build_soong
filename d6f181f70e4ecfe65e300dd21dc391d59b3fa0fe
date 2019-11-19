@@ -68,6 +68,30 @@
       "revId": "d6f181f70e4ecfe65e300dd21dc391d59b3fa0fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f5a306f_55dfea19",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1270,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-11-19T01:42:11Z",
+      "side": 1,
+      "message": "You\u0027re right. I was confused with Visit*() which panics with non-android.Module. Thanks.",
+      "parentUuid": "8cbdd171_23f9a26f",
+      "range": {
+        "startLine": 1270,
+        "startChar": 5,
+        "endLine": 1270,
+        "endChar": 22
+      },
+      "revId": "d6f181f70e4ecfe65e300dd21dc391d59b3fa0fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
