@@ -16,6 +16,24 @@
       "revId": "0957dac179a7d9eaf12aa61da06016e3068388e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11341b15_b5b8f519",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1248,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-19T07:50:13Z",
+      "side": 1,
+      "message": "Done. I shamelessly copied your description for override_android_app.",
+      "parentUuid": "38a8bbf6_536e54c7",
+      "revId": "0957dac179a7d9eaf12aa61da06016e3068388e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
