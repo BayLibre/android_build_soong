@@ -37,7 +37,9 @@ type GenruleExtraProperties struct {
 func genRuleFactory() android.Module {
 	module := genrule.NewGenRule()
 
-	module.Extra = &GenruleExtraProperties{}
+	extra := &GenruleExtraProperties{}
+	module.Extra = extra
+	module.ImageInterface = extra
 	module.AddProperties(module.Extra)
 
 	android.InitAndroidArchModule(module, android.HostAndDeviceSupported, android.MultilibBoth)
@@ -45,4 +47,47 @@ func genRuleFactory() android.Module {
 	android.InitApexModule(module)
 
 	return module
+}
+
+func (g *GenruleExtraProperties) ImageMutatorBegin(ctx android.BaseModuleContext) {}
+
+func (g *GenruleExtraProperties) CoreVariantNeeded(ctx android.BaseModuleContext) bool {
+	if ctx.DeviceConfig().VndkVersion() == "" {
+		return true
+	}
+
+	return Bool(g.Vendor_available) || !(ctx.SocSpecific() || ctx.DeviceSpecific())
+}
+
+func (g *GenruleExtraProperties) RecoveryVariantNeeded(ctx android.BaseModuleContext) bool {
+	if Bool(g.Recovery_available) {
+		primaryArch := ctx.Config().DevicePrimaryArchType()
+		moduleArch := ctx.Target().Arch.ArchType
+		return moduleArch == primaryArch
+	}
+	return false
+}
+
+func (g *GenruleExtraProperties) ExtraImageVariants(ctx android.BaseModuleContext) []string {
+	if ctx.DeviceConfig().VndkVersion() == "" {
+		return nil
+	}
+
+	if Bool(g.Vendor_available) || ctx.SocSpecific() || ctx.DeviceSpecific() {
+		var variants []string
+		variants = append(variants, vendorMode+"."+ctx.DeviceConfig().PlatformVndkVersion())
+		if vndkVersion := ctx.DeviceConfig().VndkVersion(); vndkVersion != "current" {
+			variants = append(variants, vendorMode+"."+vndkVersion)
+		}
+		return variants
+	}
+
+	return nil
+}
+
+func (g *GenruleExtraProperties) SetRecoveryVariant(ctx android.BaseModuleContext, module android.Module) {
+	module.(*genrule.Module).Extra.(*GenruleExtraProperties).InRecovery = true
+}
+
+func (g *GenruleExtraProperties) SetExtraImageVariants(android.BaseModuleContext, []string, []android.Module) {
 }
