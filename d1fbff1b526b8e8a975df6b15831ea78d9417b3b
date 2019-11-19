@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0deefbe0_fbfad94e",
+        "filename": "sdk/sdk_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-19T20:46:13Z",
+      "side": 1,
+      "message": "Mixing tabs and spaces",
+      "revId": "d1fbff1b526b8e8a975df6b15831ea78d9417b3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
