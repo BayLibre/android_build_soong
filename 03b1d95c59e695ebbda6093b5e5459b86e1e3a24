@@ -2,6 +2,86 @@
   "comments": [
     {
       "key": {
+        "uuid": "56c857fe_9df0b912",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-19T04:32:08Z",
+      "side": 1,
+      "message": "This looks slightly dangerous. The handling of two paths having the same String() but different Rel()s is non-deterministic here.",
+      "revId": "03b1d95c59e695ebbda6093b5e5459b86e1e3a24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "129e5a4c_4cfdd582",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-19T04:32:08Z",
+      "side": 1,
+      "message": "nit: just \u0027return ok\u0027?",
+      "range": {
+        "startLine": 867,
+        "startChar": 2,
+        "endLine": 867,
+        "endChar": 13
+      },
+      "revId": "03b1d95c59e695ebbda6093b5e5459b86e1e3a24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "969f08a7_f5e01244",
+        "filename": "cc/snapshot_utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-19T04:32:08Z",
+      "side": 1,
+      "message": "add header",
+      "revId": "03b1d95c59e695ebbda6093b5e5459b86e1e3a24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92001cb7_e391aefc",
+        "filename": "cc/snapshot_utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-19T04:32:08Z",
+      "side": 1,
+      "message": "why? and when the generated headers are added?",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 41
+      },
+      "revId": "03b1d95c59e695ebbda6093b5e5459b86e1e3a24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4f36f318_b121e918",
         "filename": "cc/vendor_snapshot.go",
         "patchSetId": 1
@@ -18,6 +98,29 @@
         "startChar": 28,
         "endLine": 55,
         "endChar": 89
+      },
+      "revId": "03b1d95c59e695ebbda6093b5e5459b86e1e3a24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6ff599f_dd9d1ef6",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-19T04:32:08Z",
+      "side": 1,
+      "message": "Hmm, this list looks pretty ugly and not maintainable. Colin or others, do you have any idea to make this better?",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 91
       },
       "revId": "03b1d95c59e695ebbda6093b5e5459b86e1e3a24",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
