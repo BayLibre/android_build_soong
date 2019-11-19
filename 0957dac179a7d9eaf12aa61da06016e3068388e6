@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38a8bbf6_536e54c7",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1248,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-11-19T05:07:44Z",
+      "side": 1,
+      "message": "Please add a comment that briefly explains what this module type is for. All factory function comments are automatically extracted and put on the internal \u0026 public Soong references.",
+      "revId": "0957dac179a7d9eaf12aa61da06016e3068388e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
