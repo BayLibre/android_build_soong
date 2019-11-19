@@ -25,10 +25,6 @@ func init() {
 	RegisterModuleType("prebuilt_usr_share_host", PrebuiltUserShareHostFactory)
 	RegisterModuleType("prebuilt_font", PrebuiltFontFactory)
 	RegisterModuleType("prebuilt_firmware", PrebuiltFirmwareFactory)
-
-	PreDepsMutators(func(ctx RegisterMutatorsContext) {
-		ctx.BottomUp("prebuilt_etc", prebuiltEtcMutator).Parallel()
-	})
 }
 
 type prebuiltEtcProperties struct {
@@ -86,6 +82,27 @@ func (p *PrebuiltEtc) onlyInRecovery() bool {
 func (p *PrebuiltEtc) InstallInRecovery() bool {
 	return p.inRecovery()
 }
+
+func (p *PrebuiltEtc) ImageMutatorBegin(ctx BaseModuleContext) {}
+
+func (p *PrebuiltEtc) CoreVariantNeeded(ctx BaseModuleContext) bool {
+	return !p.ModuleBase.InstallInRecovery()
+}
+
+func (p *PrebuiltEtc) RecoveryVariantNeeded(ctx BaseModuleContext) bool {
+	return Bool(p.properties.Recovery_available) || p.ModuleBase.InstallInRecovery()
+}
+
+func (p *PrebuiltEtc) ExtraImageVariants(ctx BaseModuleContext) []string {
+	return nil
+}
+
+func (p *PrebuiltEtc) SetRecoveryVariant(ctx BaseModuleContext, module Module) {
+	m := module.(*PrebuiltEtc)
+	m.properties.InRecovery = true
+}
+
+func (p *PrebuiltEtc) SetExtraImageVariants(BaseModuleContext, []string, []Module) {}
 
 func (p *PrebuiltEtc) DepsMutator(ctx BottomUpMutatorContext) {
 	if p.properties.Src == nil {
@@ -220,49 +237,6 @@ func PrebuiltUserShareHostFactory() Module {
 	// This module is host-only
 	InitAndroidArchModule(module, HostSupported, MultilibCommon)
 	return module
-}
-
-const (
-	// coreMode is the variant for modules to be installed to system.
-	coreMode = "core"
-
-	// recoveryMode means a module to be installed to recovery image.
-	recoveryMode = "recovery"
-)
-
-// prebuiltEtcMutator creates the needed variants to install the module to
-// system or recovery.
-func prebuiltEtcMutator(mctx BottomUpMutatorContext) {
-	m, ok := mctx.Module().(*PrebuiltEtc)
-	if !ok || m.Host() {
-		return
-	}
-
-	var coreVariantNeeded bool = true
-	var recoveryVariantNeeded bool = false
-	if Bool(m.properties.Recovery_available) {
-		recoveryVariantNeeded = true
-	}
-
-	if m.ModuleBase.InstallInRecovery() {
-		recoveryVariantNeeded = true
-		coreVariantNeeded = false
-	}
-
-	var variants []string
-	if coreVariantNeeded {
-		variants = append(variants, coreMode)
-	}
-	if recoveryVariantNeeded {
-		variants = append(variants, recoveryMode)
-	}
-	mod := mctx.CreateVariations(variants...)
-	for i, v := range variants {
-		if v == recoveryMode {
-			m := mod[i].(*PrebuiltEtc)
-			m.properties.InRecovery = true
-		}
-	}
 }
 
 // prebuilt_font installs a font in <partition>/fonts directory.
