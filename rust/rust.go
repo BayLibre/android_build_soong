@@ -77,6 +77,24 @@ type Module struct {
 	outputFile       android.OptionalPath
 }
 
+func (mod *Module) ImageMutatorBegin(ctx android.BaseModuleContext) {}
+
+func (mod *Module) CoreVariantNeeded(ctx android.BaseModuleContext) bool {
+	return true
+}
+
+func (mod *Module) RecoveryVariantNeeded(android.BaseModuleContext) bool {
+	return mod.InRecovery()
+}
+
+func (mod *Module) ExtraImageVariants(android.BaseModuleContext) []string {
+	return nil
+}
+
+func (mod *Module) SetRecoveryVariant(android.BaseModuleContext, android.Module) {}
+
+func (mod *Module) SetExtraImageVariants(android.BaseModuleContext, []string, []android.Module) {}
+
 func (mod *Module) BuildStubs() bool {
 	return false
 }
