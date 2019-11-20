@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f8d88326_fb1a5b5b",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-20T01:49:08Z",
+      "side": 1,
+      "message": "filegroup should be supported here.",
+      "range": {
+        "startLine": 266,
+        "startChar": 53,
+        "endLine": 266,
+        "endChar": 83
+      },
+      "revId": "8eaf394844ad7adecb07314747cb3d8c3f42b1f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
