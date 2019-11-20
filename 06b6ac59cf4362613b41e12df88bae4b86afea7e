@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3ad7121d_4c04c151",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-11-20T07:03:29Z",
+      "side": 1,
+      "message": "As replied in the other comment, there is a slight difference between them.",
+      "parentUuid": "8ac6c554_08442a82",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 49
+      },
+      "revId": "06b6ac59cf4362613b41e12df88bae4b86afea7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0ed96957_663f4a93",
         "filename": "apex/apex.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "dfcd4dce_ef86ae21",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-11-20T07:03:29Z",
+      "side": 1,
+      "message": "Unfortunately not. I tried it, but they are slightly different in behavior. \n\nBoth mutators try to scan dependencies in TopDown direction from apexBundle. But, apex_available checker doesn\u0027t go beyond some boundary(for example, \"stubs\") while apexDepsMutator go way further that this. And, TopDownMutator does search in BFS and WalkDeps does in DFS, which matters when we need to stop at some boundary. I also noticed the similarity between them and tried to fuse them but couldn\u0027t find a way.\n\nAs a more concrete example, when libfoo uses libbar as static_libs, there are three dependency edges:\n\n* libfoo.so -\u003e libfoo.a\n* libfoo.a -\u003e libbar.a\n* libfoo.so -\u003e libbar.a\n\nFor the edge(libfoo.a -\u003e libbar.a), we don\u0027t have to look further beyond libbar.a. But for the edge(libfoo.so -\u003e libbar.a), we still need to look further since libbar.a might have \"whole_static_libs\" dependency to other static libs.\n\nWhen we follow this graph using WalkDeps(), we usually see the former edge earlier than the latter, and if we stop there, we can\u0027t look further even if we visit libbar.a from libfoo.so later.",
+      "parentUuid": "0ed96957_663f4a93",
+      "range": {
+        "startLine": 84,
+        "startChar": 31,
+        "endLine": 84,
+        "endChar": 51
+      },
+      "revId": "06b6ac59cf4362613b41e12df88bae4b86afea7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e69ff021_a859892c",
         "filename": "apex/apex.go",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2019-11-20T06:26:09Z",
       "side": 1,
       "message": "remove?",
+      "range": {
+        "startLine": 102,
+        "startChar": 22,
+        "endLine": 102,
+        "endChar": 31
+      },
+      "revId": "06b6ac59cf4362613b41e12df88bae4b86afea7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da551b9a_67f87610",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-11-20T07:03:29Z",
+      "side": 1,
+      "message": "VisitDirectDeps always checks if its dependencies are \u0027android.Module\" and if not it will fail. And \"apex\" can have non-android.Modules. That\u0027s why I used *Blueprint().",
+      "parentUuid": "e69ff021_a859892c",
       "range": {
         "startLine": 102,
         "startChar": 22,
