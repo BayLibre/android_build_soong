@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76740897_6b6d96df",
+        "filename": "android/proto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-11-20T15:28:58Z",
+      "side": 1,
+      "message": "If somebody set RunWithKythePlugin to true and also adds a --plugin flag to Flags, wouldn\u0027t this be overridden by the --plugin flag or at least result in a random behavior?",
+      "revId": "0dc8be166469e1f29de8260d751076933512d4b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93483763_096c72af",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-11-20T15:28:58Z",
+      "side": 1,
+      "message": "Please consider add a blank line below to avoid this weird-looking wide indentation. Bunch of rule definitions above do that.",
+      "revId": "0dc8be166469e1f29de8260d751076933512d4b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "641ad7ec_b27ebbda",
+        "filename": "cc/proto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-11-20T15:28:58Z",
+      "side": 1,
+      "message": "Please reorder the import statements.",
+      "revId": "0dc8be166469e1f29de8260d751076933512d4b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
