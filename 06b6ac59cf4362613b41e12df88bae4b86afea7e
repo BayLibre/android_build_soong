@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "478a22e9_f640ed20",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-20T12:00:48Z",
+      "side": 1,
+      "message": "apexDepsMutator also doesn\u0027t need to go beyond stubs. I am suggesting to make apexDepsMutator a top down mutator.",
+      "parentUuid": "dfcd4dce_ef86ae21",
+      "range": {
+        "startLine": 84,
+        "startChar": 31,
+        "endLine": 84,
+        "endChar": 51
+      },
+      "revId": "06b6ac59cf4362613b41e12df88bae4b86afea7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e69ff021_a859892c",
         "filename": "apex/apex.go",
         "patchSetId": 2
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "VisitDirectDeps always checks if its dependencies are \u0027android.Module\" and if not it will fail. And \"apex\" can have non-android.Modules. That\u0027s why I used *Blueprint().",
       "parentUuid": "e69ff021_a859892c",
+      "range": {
+        "startLine": 102,
+        "startChar": 22,
+        "endLine": 102,
+        "endChar": 31
+      },
+      "revId": "06b6ac59cf4362613b41e12df88bae4b86afea7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e24ac7f9_9cf291a0",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-20T12:00:48Z",
+      "side": 1,
+      "message": "\u003e And \"apex\" can have non-android.Modules\n\nHuh? What are they?",
+      "parentUuid": "da551b9a_67f87610",
       "range": {
         "startLine": 102,
         "startChar": 22,
