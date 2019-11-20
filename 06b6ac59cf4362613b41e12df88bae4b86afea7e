@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ac6c554_08442a82",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-20T06:26:09Z",
+      "side": 1,
+      "message": "Why can\u0027t we use BuildForApex?",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 49
+      },
+      "revId": "06b6ac59cf4362613b41e12df88bae4b86afea7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ed96957_663f4a93",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-20T06:26:09Z",
+      "side": 1,
+      "message": "can we do this in apexDepsMutator? To me they look almost the same.",
+      "range": {
+        "startLine": 84,
+        "startChar": 31,
+        "endLine": 84,
+        "endChar": 51
+      },
+      "revId": "06b6ac59cf4362613b41e12df88bae4b86afea7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e69ff021_a859892c",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-20T06:26:09Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 102,
+        "startChar": 22,
+        "endLine": 102,
+        "endChar": 31
+      },
+      "revId": "06b6ac59cf4362613b41e12df88bae4b86afea7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
