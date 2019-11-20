@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "fadb55ba_d3911178",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-11-20T14:04:46Z",
+      "side": 1,
+      "message": "I also thought that way too. Okay, I\u0027ll give it another try.",
+      "parentUuid": "478a22e9_f640ed20",
+      "range": {
+        "startLine": 84,
+        "startChar": 31,
+        "endLine": 84,
+        "endChar": 51
+      },
+      "revId": "06b6ac59cf4362613b41e12df88bae4b86afea7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e69ff021_a859892c",
         "filename": "apex/apex.go",
         "patchSetId": 2
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "\u003e And \"apex\" can have non-android.Modules\n\nHuh? What are they?",
       "parentUuid": "da551b9a_67f87610",
+      "range": {
+        "startLine": 102,
+        "startChar": 22,
+        "endLine": 102,
+        "endChar": 31
+      },
+      "revId": "06b6ac59cf4362613b41e12df88bae4b86afea7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf3c168a_1a835a08",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-11-20T14:04:46Z",
+      "side": 1,
+      "message": "\"com.android.support.apexer\" depends on \"go\" binaries.\n\nhttps://cs.corp.google.com/aosp-master/build/soong/apex/apex.go?rcl\u003d5d790c3ddad12b66ebb2e8491c042269af6f2a73\u0026l\u003d964\n\nI don\u0027t think we need \"com.android.support.apexer\" as \"zip\" apex. It looks like that it just piggy-backs on apex. Anyway, it is supported here and there like following\n \nhttps://cs.corp.google.com/aosp-master/system/apex/apexer/Android.bp?rcl\u003d80f6a25b99a44a12df5f1890922963d767d2221a\u0026l\u003d87\n\nBy the way, we can just call VisitDirectDeps() here because we decided to ignore \"testApex\" and it is the only one which depends on non-android.Module. But since we support \"go\" binaries, we\u0027d better stick to *Blueprint().",
+      "parentUuid": "e24ac7f9_9cf291a0",
       "range": {
         "startLine": 102,
         "startChar": 22,
