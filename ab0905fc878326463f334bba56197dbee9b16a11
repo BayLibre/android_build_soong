@@ -1,0 +1,221 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69ede105_5a4bdc0d",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-20T00:37:26Z",
+      "side": 1,
+      "message": "This is an odd capitalization of clang not used anywhere else.  I\u0027d suggest cClang and cppClang.",
+      "range": {
+        "startLine": 49,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 6
+      },
+      "revId": "ab0905fc878326463f334bba56197dbee9b16a11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eea80cf0_5ed98da8",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-20T00:37:26Z",
+      "side": 1,
+      "message": "Why store the expansion for each variable here?  Why not expand them all into ccIdeInfo.Global_flags?\nAlso, why a map of a map?  Shouldn\u0027t a map of variable name to ccParameters be enough?",
+      "revId": "ab0905fc878326463f334bba56197dbee9b16a11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cfaf558_e72126c1",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-20T00:37:26Z",
+      "side": 1,
+      "message": "Can you put this into module_bp_cc_deps.json by making a top level struct:\n\nstruct {\n    C_clang string\n    Cpp_clang string\n    Modules []ccIdeInfo\n}",
+      "revId": "ab0905fc878326463f334bba56197dbee9b16a11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c96c058_7371c2ee",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-20T00:37:26Z",
+      "side": 1,
+      "message": "We usually pass ctx first",
+      "range": {
+        "startLine": 134,
+        "startChar": 46,
+        "endLine": 134,
+        "endChar": 74
+      },
+      "revId": "ab0905fc878326463f334bba56197dbee9b16a11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0128d47_e64fef8c",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-20T00:37:26Z",
+      "side": 1,
+      "message": "var variableParameters []string to avoid allocating an empty slice when params is empty.",
+      "revId": "ab0905fc878326463f334bba56197dbee9b16a11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab675496_6b68bddc",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-20T00:37:26Z",
+      "side": 1,
+      "message": "for _, param :\u003d range params {",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 20
+      },
+      "revId": "ab0905fc878326463f334bba56197dbee9b16a11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d66d8b4_512d780b",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-20T00:37:26Z",
+      "side": 1,
+      "message": "for param :\u003d range params.relativeFilePathFlags {",
+      "range": {
+        "startLine": 152,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 42
+      },
+      "revId": "ab0905fc878326463f334bba56197dbee9b16a11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4cc6fdcc_4f4cc8d5",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-20T00:37:26Z",
+      "side": 1,
+      "message": "Why return a map[string]ccParameters if the map will only ever have one entry?",
+      "revId": "ab0905fc878326463f334bba56197dbee9b16a11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e8a5576_43c3a2b3",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-20T00:37:26Z",
+      "side": 1,
+      "message": "This is doing something tricky, but I\u0027m not sure what it is.  Can you add a comment to this function explaining what it is doing and why?",
+      "revId": "ab0905fc878326463f334bba56197dbee9b16a11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "638c8a7e_654423a0",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-20T00:37:26Z",
+      "side": 1,
+      "message": "varCompilerParameters",
+      "range": {
+        "startLine": 171,
+        "startChar": 13,
+        "endLine": 171,
+        "endChar": 33
+      },
+      "revId": "ab0905fc878326463f334bba56197dbee9b16a11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a745297_3c0e1e82",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-20T00:37:26Z",
+      "side": 1,
+      "message": "This needs rebasing, the variables in ccModule.flags have moved.  Variables are now split into Global.* and Local.* variables, and GlobalFlags has been renamed to AllFlags.  If you want to keep the ordering the same as the command line you\u0027ll need to track Global separately from Local, and then put all the Global.* variables before the Local.* variables in CMakeLists.txt.",
+      "revId": "ab0905fc878326463f334bba56197dbee9b16a11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
