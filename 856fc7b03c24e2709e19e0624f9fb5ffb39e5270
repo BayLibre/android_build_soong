@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4cf45ef_9e9d325c",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-11-20T16:56:03Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 640,
+        "startChar": 0,
+        "endLine": 640,
+        "endChar": 43
+      },
+      "revId": "856fc7b03c24e2709e19e0624f9fb5ffb39e5270",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
