@@ -475,6 +475,20 @@ func (af *apexFile) Ok() bool {
 	return af.builtFile != nil || af.builtFile.String() == ""
 }
 
+// Path() returns path of this apex file relative to the APEX root
+func (af *apexFile) Path() string {
+	return filepath.Join(af.installDir, af.builtFile.Base())
+}
+
+// SymlinkPaths() returns paths of the symlinks (if any) relative to the APEX root
+func (af *apexFile) SymlinkPaths() []string {
+	var ret []string
+	for _, symlink := range af.symlinks {
+		ret = append(ret, filepath.Join(af.installDir, symlink))
+	}
+	return ret
+}
+
 type apexBundle struct {
 	android.ModuleBase
 	android.DefaultableModuleBase
@@ -523,6 +537,10 @@ type apexBundle struct {
 	// Suffix of module name in Android.mk
 	// ".flattened", ".apex", ".zipapex", or ""
 	suffix string
+
+	// Whether to create symlink to the system file instead of having a file
+	// inside the apex or not
+	linkToSystemLib bool
 }
 
 func addDependenciesForNativeModules(ctx android.BottomUpMutatorContext,
@@ -1096,7 +1114,8 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 						// of the original test module (`depName`, shared by all `test_per_src`
 						// variations of that module).
 						af.moduleName = filepath.Base(af.builtFile.String())
-						af.transitiveDep = true
+						// these are not considered transitive dep
+						af.transitiveDep = false
 						filesInfo = append(filesInfo, af)
 						return true // track transitive dependencies
 					}
@@ -1162,14 +1181,17 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		}
 	}
 
-	// prepend the name of this APEX to the module names. These names will be the names of
-	// modules that will be defined if the APEX is flattened.
-	for i := range filesInfo {
-		filesInfo[i].moduleName = filesInfo[i].moduleName + "." + ctx.ModuleName() + a.suffix
-	}
-
 	a.installDir = android.PathForModuleInstall(ctx, "apex")
 	a.filesInfo = filesInfo
+
+	// Optimization. If we are building bundled APEX, for the files that are gathered due to the
+	// transitive dependencies, don't place them inside the APEX, but place a symlink pointing
+	// the same library in the system partition, thus effectively sharing the same libraries
+	// across the APEX boundary. For unbundled APEX, all the gathered files are actually placed
+	// in the APEX.
+	a.linkToSystemLib = !ctx.Config().UnbundledBuild() &&
+		a.installable() &&
+		!proptools.Bool(a.properties.Use_vendor)
 
 	// prepare apex_manifest.json
 	a.buildManifest(ctx, provideNativeLibs, requireNativeLibs)
