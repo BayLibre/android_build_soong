@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b39acd5e_93c3a155",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2313,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-21T20:53:40Z",
+      "side": 1,
+      "message": "Jiyong, there\u0027s a change in behavior here.  Previously a module marked recovery and 32-bit only would not be compiled when the primary architecture is 64-bit, now it is coerced to 64-bit.  Any idea if that will be a problem?",
+      "revId": "4b6ea00fac194cb22387ff8fff15c1c4284d1a6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
