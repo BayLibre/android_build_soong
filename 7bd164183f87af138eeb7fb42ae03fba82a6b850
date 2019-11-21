@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "859638fb_804b7c8e",
+        "filename": "sdk/update.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-21T23:07:35Z",
+      "side": 1,
+      "message": "The comment below would let you go back to FlagWithRspFileInputList, otherwise remove this line",
+      "revId": "7bd164183f87af138eeb7fb42ae03fba82a6b850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "142a5ff0_6b070df4",
+        "filename": "sdk/update.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-21T23:07:35Z",
+      "side": 1,
+      "message": "Can you instead use:\nzip2zip -i stubs-src-in1.zip -o stubs-src-tmp1.zip **/*:$destDir\nand then after creating the snapshot zip to a temporary location $tmpZipFile:\nmerge_zips $zipFile $tmpZipFile stubs-src-tmp1.zip ...",
+      "revId": "7bd164183f87af138eeb7fb42ae03fba82a6b850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5e36f98_0ee67a5e",
+        "filename": "sdk/update.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-21T23:07:35Z",
+      "side": 1,
+      "message": "Remove",
+      "revId": "7bd164183f87af138eeb7fb42ae03fba82a6b850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
