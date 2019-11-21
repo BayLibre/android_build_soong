@@ -822,7 +822,7 @@ func archMutator(mctx BottomUpMutatorContext) {
 
 	os := base.commonProperties.CompileOS
 	osTargets := mctx.Config().Targets[os]
-
+	image := base.commonProperties.ImageVariation
 	// Filter NativeBridge targets unless they are explicitly supported
 	if os == Android && !Bool(base.commonProperties.Native_bridge_supported) {
 		var targets []Target
@@ -845,7 +845,7 @@ func archMutator(mctx BottomUpMutatorContext) {
 		prefer32 = base.prefer32(mctx, base, os.Class)
 	}
 
-	multilib, extraMultilib := decodeMultilib(base, os.Class)
+	multilib, extraMultilib := decodeMultilib(base, os.Class, image)
 	targets, err := decodeMultilibTargets(multilib, osTargets, prefer32)
 	if err != nil {
 		mctx.ModuleErrorf("%s", err.Error())
@@ -881,7 +881,7 @@ func archMutator(mctx BottomUpMutatorContext) {
 	}
 }
 
-func decodeMultilib(base *ModuleBase, class OsClass) (multilib, extraMultilib string) {
+func decodeMultilib(base *ModuleBase, class OsClass, image string) (multilib, extraMultilib string) {
 	switch class {
 	case Device:
 		multilib = String(base.commonProperties.Target.Android.Compile_multilib)
@@ -893,6 +893,11 @@ func decodeMultilib(base *ModuleBase, class OsClass) (multilib, extraMultilib st
 	}
 	if multilib == "" {
 		multilib = base.commonProperties.Default_multilib
+	}
+
+	if class == Device && image == RecoveryVariation {
+		// modules built for the recovery image are always built for the primary architecture.
+		multilib = "first"
 	}
 
 	if base.commonProperties.UseTargetVariants {
