@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c5aa96f_adf0d2c0",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-11-21T17:16:29Z",
+      "side": 1,
+      "message": "May also be worth checking if seen[module] here, to avoid unnecessary expansions of the fringe for modules that are going to be immediately discarded at the start of the loop body.",
+      "revId": "386190f1f9586ed38c3d825ea0c81d5a36cc3fcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
