@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d4823d1_ba16bd5a",
+        "filename": "rust/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2019-11-21T22:44:41Z",
+      "side": 1,
+      "message": "Add comment with reference to the bug we\u0027re avoiding (so we know if/when we can remove this in the future)",
+      "revId": "ac2766abfa2df7982bdc2952e309301c381dcab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
