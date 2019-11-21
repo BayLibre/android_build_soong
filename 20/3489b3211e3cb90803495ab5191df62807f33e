@@ -1,0 +1,8 @@
+Verified+1: Martin Stjernholm <mast@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Colin Cross <ccross@android.com>
+Submitted-by: Martin Stjernholm <mast@google.com>
+Submitted-at: Thu, 21 Nov 2019 16:17:37 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1163601
+Project: platform/build/soong
+Branch: refs/heads/master
