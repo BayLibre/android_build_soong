@@ -1549,21 +1549,30 @@ func ensureExactContents(t *testing.T, ctx *android.TestContext, moduleName stri
 			continue
 		}
 		terms := strings.Split(cmd, " ")
+		var dst string
 		switch terms[0] {
 		case "mkdir":
 		case "cp":
 			if len(terms) != 3 {
 				t.Fatal("copyCmds contains invalid cp command", cmd)
 			}
-			dst := terms[2]
+			dst = terms[2]
+		case "ln":
+			if len(terms) != 3 && len(terms) != 4 {
+				// ln LINK TARGET or ln -s LINK TARGET
+				t.Fatal("copyCmds contains invalid ln command", cmd)
+			}
+			dst = terms[len(terms)-1]
+		default:
+			t.Fatalf("copyCmds should contain mkdir/cp commands only: %q", cmd)
+		}
+		if dst != "" {
 			index := strings.Index(dst, imageApexDir)
 			if index == -1 {
 				t.Fatal("copyCmds should copy a file to image.apex/", cmd)
 			}
 			dstFile := dst[index+len(imageApexDir):]
 			addContent(dstFile)
-		default:
-			t.Fatalf("copyCmds should contain mkdir/cp commands only: %q", cmd)
 		}
 	}
 
