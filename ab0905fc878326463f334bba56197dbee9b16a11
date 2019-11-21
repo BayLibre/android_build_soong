@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "f94cc7de_eb07acc2",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-21T23:22:30Z",
+      "side": 1,
+      "message": "This is still leaving the variables unexpanded in ccIdeInfo.Global_flags.  I\u0027m suggesting completely removing ccVariable.",
+      "parentUuid": "01e48612_8691e9b2",
+      "revId": "ab0905fc878326463f334bba56197dbee9b16a11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7cfaf558_e72126c1",
         "filename": "cc/ccdeps.go",
         "patchSetId": 14
