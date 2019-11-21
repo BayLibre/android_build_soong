@@ -315,11 +315,11 @@ func TestBasicSdkWithCc(t *testing.T) {
 		}
 	`)
 
-	sdkMemberV1 := ctx.ModuleForTests("sdkmember_mysdk_1", "android_arm64_armv8-a_core_shared_myapex").Rule("toc").Output
-	sdkMemberV2 := ctx.ModuleForTests("sdkmember_mysdk_2", "android_arm64_armv8-a_core_shared_myapex2").Rule("toc").Output
+	sdkMemberV1 := ctx.ModuleForTests("sdkmember_mysdk_1", "android_arm64_armv8-a_shared_myapex").Rule("toc").Output
+	sdkMemberV2 := ctx.ModuleForTests("sdkmember_mysdk_2", "android_arm64_armv8-a_shared_myapex2").Rule("toc").Output
 
-	cpplibForMyApex := ctx.ModuleForTests("mycpplib", "android_arm64_armv8-a_core_shared_myapex")
-	cpplibForMyApex2 := ctx.ModuleForTests("mycpplib", "android_arm64_armv8-a_core_shared_myapex2")
+	cpplibForMyApex := ctx.ModuleForTests("mycpplib", "android_arm64_armv8-a_shared_myapex")
+	cpplibForMyApex2 := ctx.ModuleForTests("mycpplib", "android_arm64_armv8-a_shared_myapex2")
 
 	// Depending on the uses_sdks value, different libs are linked
 	ensureListContains(t, pathsToStrings(cpplibForMyApex.Rule("ld").Implicits), sdkMemberV1.String())
@@ -431,8 +431,8 @@ func TestSdkIsCompileMultilibBoth(t *testing.T) {
 		}
 	`)
 
-	armOutput := ctx.ModuleForTests("sdkmember", "android_arm_armv7-a-neon_core_shared").Module().(*cc.Module).OutputFile()
-	arm64Output := ctx.ModuleForTests("sdkmember", "android_arm64_armv8-a_core_shared").Module().(*cc.Module).OutputFile()
+	armOutput := ctx.ModuleForTests("sdkmember", "android_arm_armv7-a-neon_shared").Module().(*cc.Module).OutputFile()
+	arm64Output := ctx.ModuleForTests("sdkmember", "android_arm64_armv8-a_shared").Module().(*cc.Module).OutputFile()
 
 	var inputs []string
 	buildParams := ctx.ModuleForTests("mysdk", "android_common").Module().BuildParamsForTests()
@@ -507,11 +507,11 @@ func TestSnapshot(t *testing.T) {
 	buildDir := config.BuildDir()
 	ensureListContains(t, copySrcs, "aidl/foo/bar/Test.aidl")
 	ensureListContains(t, copySrcs, "include/Test.h")
-	ensureListContains(t, copySrcs, filepath.Join(buildDir, ".intermediates/mynativelib/android_arm64_armv8-a_core_shared/gen/aidl/aidl/foo/bar/BnTest.h"))
-	ensureListContains(t, copySrcs, filepath.Join(buildDir, ".intermediates/mynativelib/android_arm64_armv8-a_core_shared/gen/aidl/aidl/foo/bar/BpTest.h"))
-	ensureListContains(t, copySrcs, filepath.Join(buildDir, ".intermediates/mynativelib/android_arm64_armv8-a_core_shared/gen/aidl/aidl/foo/bar/Test.h"))
+	ensureListContains(t, copySrcs, filepath.Join(buildDir, ".intermediates/mynativelib/android_arm64_armv8-a_shared/gen/aidl/aidl/foo/bar/BnTest.h"))
+	ensureListContains(t, copySrcs, filepath.Join(buildDir, ".intermediates/mynativelib/android_arm64_armv8-a_shared/gen/aidl/aidl/foo/bar/BpTest.h"))
+	ensureListContains(t, copySrcs, filepath.Join(buildDir, ".intermediates/mynativelib/android_arm64_armv8-a_shared/gen/aidl/aidl/foo/bar/Test.h"))
 	ensureListContains(t, copySrcs, filepath.Join(buildDir, ".intermediates/myjavalib/android_common/turbine-combined/myjavalib.jar"))
-	ensureListContains(t, copySrcs, filepath.Join(buildDir, ".intermediates/mynativelib/android_arm64_armv8-a_core_shared/mynativelib.so"))
+	ensureListContains(t, copySrcs, filepath.Join(buildDir, ".intermediates/mynativelib/android_arm64_armv8-a_shared/mynativelib.so"))
 
 	ensureListContains(t, copyDests, "aidl/aidl/foo/bar/Test.aidl")
 	ensureListContains(t, copyDests, "arm64/include/include/Test.h")
