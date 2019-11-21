@@ -244,32 +244,38 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 
 	apexType := a.properties.ApexType
 	suffix := apexType.suffix()
+
+	var implicitInputs []android.Path
 	unsignedOutputFile := android.PathForModuleOut(ctx, ctx.ModuleName()+suffix+".unsigned")
 
-	filesToCopy := []android.Path{}
-	for _, f := range a.filesInfo {
-		filesToCopy = append(filesToCopy, f.builtFile)
-	}
-
-	copyCommands := []string{}
-	emitCommands := []string{}
-	imageContentFile := android.PathForModuleOut(ctx, ctx.ModuleName()+"-content.txt")
-	emitCommands = append(emitCommands, "echo ./apex_manifest.json >> "+imageContentFile.String())
-	for i, src := range filesToCopy {
-		dest := filepath.Join(a.filesInfo[i].installDir, src.Base())
-		emitCommands = append(emitCommands, "echo './"+dest+"' >> "+imageContentFile.String())
-		dest_path := filepath.Join(android.PathForModuleOut(ctx, "image"+suffix).String(), dest)
-		copyCommands = append(copyCommands, "mkdir -p "+filepath.Dir(dest_path))
-		copyCommands = append(copyCommands, "cp "+src.String()+" "+dest_path)
-		for _, sym := range a.filesInfo[i].symlinks {
-			symlinkDest := filepath.Join(filepath.Dir(dest_path), sym)
-			copyCommands = append(copyCommands, "ln -s "+filepath.Base(dest)+" "+symlinkDest)
+	// TODO(jiyong): construct the copy rules using RuleBuilder
+	var copyCommands []string
+	for _, fi := range a.filesInfo {
+		destPath := android.PathForModuleOut(ctx, "image"+suffix, fi.Path()).String()
+		copyCommands = append(copyCommands, "mkdir -p "+filepath.Dir(destPath))
+		if a.linkToSystemLib && fi.transitiveDep {
+			// TODO(jiyong): pathOnDevice should come from fi.module, not being calculated here
+			pathOnDevice := filepath.Join("/system", fi.Path())
+			copyCommands = append(copyCommands, "ln -s "+pathOnDevice+" "+destPath)
+		} else {
+			copyCommands = append(copyCommands, "cp "+fi.builtFile.String()+" "+destPath)
+			implicitInputs = append(implicitInputs, fi.builtFile)
+		}
+		// create additional symlinks pointing the file inside the APEX
+		for _, symlinkPath := range fi.SymlinkPaths() {
+			symlinkDest := android.PathForModuleOut(ctx, "image"+suffix, symlinkPath).String()
+			copyCommands = append(copyCommands, "ln -s "+filepath.Base(destPath)+" "+symlinkDest)
 		}
 	}
-	emitCommands = append(emitCommands, "sort -o "+imageContentFile.String()+" "+imageContentFile.String())
 
-	implicitInputs := append(android.Paths(nil), filesToCopy...)
-	implicitInputs = append(implicitInputs, a.manifestPbOut, a.manifestJsonFullOut, a.manifestJsonOut)
+	// TODO(jiyong): use RuleBuilder
+	var emitCommands []string
+	imageContentFile := android.PathForModuleOut(ctx, "content.txt")
+	emitCommands = append(emitCommands, "echo ./apex_manifest.json >> "+imageContentFile.String())
+	for _, fi := range a.filesInfo {
+		emitCommands = append(emitCommands, "echo './"+fi.Path()+"' >> "+imageContentFile.String())
+	}
+	emitCommands = append(emitCommands, "sort -o "+imageContentFile.String()+" "+imageContentFile.String())
 
 	if a.properties.Whitelisted_files != nil {
 		ctx.Build(pctx, android.BuildParams{
@@ -397,6 +403,7 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 			optFlags = append(optFlags, "--do_not_check_keyname")
 		}
 
+		implicitInputs = append(implicitInputs, a.manifestPbOut, a.manifestJsonFullOut, a.manifestJsonOut)
 		ctx.Build(pctx, android.BuildParams{
 			Rule:        apexRule,
 			Implicits:   implicitInputs,
