@@ -16,6 +16,24 @@
       "revId": "386190f1f9586ed38c3d825ea0c81d5a36cc3fcc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cebb4e4_b8c04028",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-21T20:20:17Z",
+      "side": 1,
+      "message": "It would probably also help if I ever set anything in the seen map.",
+      "parentUuid": "7c5aa96f_adf0d2c0",
+      "revId": "386190f1f9586ed38c3d825ea0c81d5a36cc3fcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
