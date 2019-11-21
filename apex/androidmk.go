@@ -58,8 +58,22 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, apexName, moduleDir string) 
 			continue
 		}
 
+		linkToSystemLib := a.linkToSystemLib && fi.transitiveDep
+
+		var moduleName string
+		if linkToSystemLib {
+			moduleName = fi.moduleName
+		} else {
+			moduleName = moduleName + "." + apexName + a.suffix
+		}
+
 		if !android.InList(fi.moduleName, moduleNames) {
 			moduleNames = append(moduleNames, fi.moduleName)
+		}
+
+		if linkToSystemLib {
+			// No need to copy the file since it's linked to the system file
+			continue
 		}
 
 		fmt.Fprintln(w, "\ninclude $(CLEAR_VARS)")
