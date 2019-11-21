@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c58b8e1a_1e5eb8dd",
+        "filename": "android/proto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-11-21T17:43:37Z",
+      "side": 1,
+      "message": "RunWithKythePlugin is set only in cc/proto.go, it is not exposed as module property in blueprint files. What can happen is that if proto has \u0027plugin:\u0027 property, aprotoc will run without Kythe plugin and the cross-reference will be incomplete.",
+      "parentUuid": "76740897_6b6d96df",
+      "revId": "0dc8be166469e1f29de8260d751076933512d4b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93483763_096c72af",
         "filename": "cc/builder.go",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "a8520b78_ded1543c",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-11-21T17:43:37Z",
+      "side": 1,
+      "message": "Ahh, that\u0027s how you game \u0027gofmt\u0027! Thanks",
+      "parentUuid": "93483763_096c72af",
+      "revId": "0dc8be166469e1f29de8260d751076933512d4b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "641ad7ec_b27ebbda",
         "filename": "cc/proto.go",
         "patchSetId": 2
@@ -50,6 +86,24 @@
       "revId": "0dc8be166469e1f29de8260d751076933512d4b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76a36c0e_1dc7a14b",
+        "filename": "cc/proto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-11-21T17:43:37Z",
+      "side": 1,
+      "message": "This is what gofmt does, is it wrong?",
+      "parentUuid": "641ad7ec_b27ebbda",
+      "revId": "0dc8be166469e1f29de8260d751076933512d4b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
