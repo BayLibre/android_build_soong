@@ -58,13 +58,27 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, apexName, moduleDir string) 
 			continue
 		}
 
-		if !android.InList(fi.moduleName, moduleNames) {
-			moduleNames = append(moduleNames, fi.moduleName)
+		linkToSystemLib := a.linkToSystemLib && fi.transitiveDep
+
+		var moduleName string
+		if linkToSystemLib {
+			moduleName = fi.moduleName
+		} else {
+			moduleName = fi.moduleName + "." + apexName + a.suffix
+		}
+
+		if !android.InList(moduleName, moduleNames) {
+			moduleNames = append(moduleNames, moduleName)
+		}
+
+		if linkToSystemLib {
+			// No need to copy the file since it's linked to the system file
+			continue
 		}
 
 		fmt.Fprintln(w, "\ninclude $(CLEAR_VARS)")
 		fmt.Fprintln(w, "LOCAL_PATH :=", moduleDir)
-		fmt.Fprintln(w, "LOCAL_MODULE :=", fi.moduleName)
+		fmt.Fprintln(w, "LOCAL_MODULE :=", moduleName)
 		// /apex/<apex_name>/{lib|framework|...}
 		pathWhenActivated := filepath.Join("$(PRODUCT_OUT)", "apex", apexName, fi.installDir)
 		if apexType == flattenedApex {
@@ -166,6 +180,19 @@ func (a *apexBundle) androidMkForType() android.AndroidMkData {
 				fmt.Fprintln(w, "LOCAL_MODULE :=", name+a.suffix)
 				if len(moduleNames) > 0 {
 					fmt.Fprintln(w, "LOCAL_REQUIRED_MODULES :=", strings.Join(moduleNames, " "))
+				}
+				var postInstallCommands []string
+				for _, fi := range a.filesInfo {
+					if a.linkToSystemLib && fi.transitiveDep {
+						// TODO(jiyong): pathOnDevice should come from fi.module, not being calculated here
+						linkTarget := filepath.Join("/system", fi.Path())
+						linkPath := filepath.Join(a.installDir.ToMakePath().String(), fi.Path())
+						cmd := "ln -s " + linkTarget + " " + linkPath
+						postInstallCommands = append(postInstallCommands, cmd)
+					}
+				}
+				if len(postInstallCommands) > 0 {
+					fmt.Fprintln(w, "LOCAL_POST_INSTALL_CMD :=", strings.Join(postInstallCommands, " && "))
 				}
 				fmt.Fprintln(w, "include $(BUILD_PHONY_PACKAGE)")
 				fmt.Fprintln(w, "$(LOCAL_INSTALLED_MODULE): .KATI_IMPLICIT_OUTPUTS :=", a.outputFile.String())
