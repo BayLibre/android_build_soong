@@ -168,37 +168,102 @@ package {
 }
 ```
 
-### Name resolution
+### Referencing Modules
 
-Soong provides the ability for modules in different directories to specify
-the same name, as long as each module is declared within a separate namespace.
-A namespace can be declared like this:
+A module reference has to identify it uniquely. If there is only one module
+named `libfoo` in the source tree, referencing it in a rule by name is
+sufficient:
 
 ```
-soong_namespace {
-    imports: ["path/to/otherNamespace1", "path/to/otherNamespace2"],
+cc_binary {
+    name: "app",
+    shared_libs["libfoo"],
 }
 ```
 
-Each Soong module is assigned a namespace based on its location in the tree.
-Each Soong module is considered to be in the namespace defined by the
-soong_namespace found in an Android.bp in the current directory or closest
-ancestor directory, unless no such soong_namespace module is found, in which
-case the module is considered to be in the implicit root namespace.
+However, for larger trees guaranteeing module name uniqueness may become
+problematic. Use Soong namespaces to solve this problem.
 
-When Soong attempts to resolve dependency D declared my module M in namespace
-N which imports namespaces I1, I2, I3..., then if D is a fully-qualified name
-of the form "//namespace:module", only the specified namespace will be searched
-for the specified module name. Otherwise, Soong will first look for a module
-named D declared in namespace N. If that module does not exist, Soong will look
-for a module named D in namespaces I1, I2, I3... Lastly, Soong will look in the
-root namespace.
+#### Namespaces
 
-Until we have fully converted from Make to Soong, it will be necessary for the
+A presense of the `soong_namespace {..}` in a blueprint file defines a
+**namespace**. For instance, having
+
+```
+soong_namespace {
+    ...
+}
+...
+```
+
+in `device/google/bonito/Android.bp` informs Soong that within the
+`device/google/bonito` package the module names are unique, that is, all the
+modules defined in the blueprint files in the `device/google/bonito/` tree have
+unique names. However, there may be modules with the same names outside
+`device/google/bonito` tree. Indeed, there is a module `"pixelstats-vendor"`
+both in `device/google/bonito/pixelstats` and in
+`device/google/coral/pixelstats`.
+
+The name of a namespace is the path of its directory. The name of the namespace
+in the example above is thus `device/google/bonito`.
+
+An implicit **global namespace** corresponds to the source tree as a whole. It
+has empty name.
+
+A module name's **scope** is the smallest namespace containing it. For example,
+the source tree has `hardware/qcom/osprey` and `hardware/qcom/osprey/display`
+namespaces, so the scope of the `libqdutils` module is the latter because this
+module is defined in `hardware/qcom/ospey/display/libqdutils/Android.bp`.
+
+The name uniqueness thus means that module's name is unique within its scope. In
+other words, "_scope_:_name_" is globally unique module reference, e.g,
+`"device/google/bonito:pixelstats-vendor"`. _Note_ that the name of the
+namespace for a module may be different from module's package name: `libqdutils`
+belongs to \
+`hardware/qcom/osprey/display` namespace but is contained in
+`hardware/qcom/ospey/display/libqdutils` package.
+
+#### Name Resolution
+
+Soong uses two different strategies to locate a module.
+
+For a **global reference** of the "_scope_:_name_" form, Soong verifies there is
+a namespace called "_scope_", then verifies it contains a "_name_" module and
+uses it. Soong verifies there is only one "_name_" in "_scope_" at the beginning
+when it ingests blueprint files.
+
+A **local reference** has "_name_" form, and resolving it involves looking for a
+module "_name_" in one or more namespaces. By default only the global namespace
+is searched for "_name_" (in other words, only the modules not belonging to an
+explicitly defined scope are considered). The `imports` attribute of the
+`soong_namespaces` allows to specify where to look for modules . For instance,
+with `device/google/bonito/Android.bp` containing
+
+```
+soong_namespace {
+    imports: [
+        "hardware/google/interfaces",
+        "hardware/google/pixel",
+        "hardware/qcom/bootctrl",
+    ],
+}
+```
+
+a reference to `"libpixelstats"` will resolve to the module defined in
+`hardware/google/pixel/pixelstats/Android.bp` because this module is in
+`hardware/google/pixel` namespace.
+
+**TODO**: Conventionally, languages with similar concepts provide separate
+constructs for namespace definition and name resolution (`namespace` and `using`
+in C++, for instance). Should Soong do that, too?
+
+**TODO**: Is the following paragraph still true and important to retain here:
+
+_Until we have fully converted from Make to Soong, it will be necessary for the
 Make product config to specify a value of PRODUCT_SOONG_NAMESPACES. Its value
-should be a space-separated list of namespaces that Soong export to Make to be
+should be a space-separated list of namespaces that Soong exports to Make to be
 built by the `m` command. After we have fully converted from Make to Soong, the
-details of enabling namespaces could potentially change.
+details of enabling namespaces could potentially change._
 
 ### Visibility
 
