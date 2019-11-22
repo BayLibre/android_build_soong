@@ -35,6 +35,24 @@
       "revId": "4b6ea00fac194cb22387ff8fff15c1c4284d1a6d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79328ff3_2458f0a6",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2313,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-22T18:53:19Z",
+      "side": 1,
+      "message": "Sorry. I missed your comment. Yeah, that shouldn\u0027t be a problem because the 32-bit-only module wouldn\u0027t be used in 64-bit device.\n\nSo, the NDK build error is hard to understand. I wonder why there is 32-bit variant of libminijail_generated. \n\nBut you\u0027ve anyway went back to the old behavior, I feel fine.",
+      "parentUuid": "ba817011_abbaca42",
+      "revId": "4b6ea00fac194cb22387ff8fff15c1c4284d1a6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
