@@ -2,6 +2,86 @@
   "comments": [
     {
       "key": {
+        "uuid": "8afe7e6c_44da4f3c",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1955,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-22T09:07:18Z",
+      "side": 1,
+      "message": "nit: add a description for prebuilt_stubs_sources module type as a comment. (it will be automatically documented)",
+      "revId": "7bd164183f87af138eeb7fb42ae03fba82a6b850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ceae1eb3_dcc6d810",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1962,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-22T09:07:18Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be arch module, I think.",
+      "range": {
+        "startLine": 1962,
+        "startChar": 24,
+        "endLine": 1962,
+        "endChar": 54
+      },
+      "revId": "7bd164183f87af138eeb7fb42ae03fba82a6b850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "923bfd9b_4c141441",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1962,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-22T09:07:18Z",
+      "side": 1,
+      "message": "why Java module? \n\nJust directly call android.InitAndroidModule (and android.InitDefaultablModule)?",
+      "range": {
+        "startLine": 1962,
+        "startChar": 1,
+        "endLine": 1962,
+        "endChar": 15
+      },
+      "revId": "7bd164183f87af138eeb7fb42ae03fba82a6b850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97b21cba_394b3dc7",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-22T09:07:18Z",
+      "side": 1,
+      "message": "+1",
+      "revId": "7bd164183f87af138eeb7fb42ae03fba82a6b850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "859638fb_804b7c8e",
         "filename": "sdk/update.go",
         "patchSetId": 6
