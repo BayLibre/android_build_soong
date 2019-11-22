@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ef23a3e3_bcddcdbd",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-11-22T05:14:32Z",
+      "side": 1,
+      "message": "Correct. It returns if the module is in vendor variants.",
+      "parentUuid": "671b2711_8c57628f",
+      "range": {
+        "startLine": 845,
+        "startChar": 0,
+        "endLine": 847,
+        "endChar": 1
+      },
+      "revId": "5cc4d65b7d645471a58801f2f3def0bae9597c44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6af3ab5f_b6e8b793",
         "filename": "cc/cc.go",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2019-11-22T04:54:44Z",
       "side": 1,
       "message": "Requires explanation.",
+      "range": {
+        "startLine": 986,
+        "startChar": 0,
+        "endLine": 990,
+        "endChar": 17
+      },
+      "revId": "5cc4d65b7d645471a58801f2f3def0bae9597c44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d5f9b44_d9a5965b",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 990,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-11-22T05:14:32Z",
+      "side": 1,
+      "message": "The function sdkVersion() is used for VNDK to get the VNDK version of current module. It must return \"current\" if the version is in PLATFORM_VERSION_ALL_CODENAMES or PLATFORM_VERSION_FUTURE_CODENAMES.\nThe old code uses device VNDK version for all modules, but now we know the correct VNDK version for each module. So it must be fixed with this.",
+      "parentUuid": "6af3ab5f_b6e8b793",
       "range": {
         "startLine": 986,
         "startChar": 0,
