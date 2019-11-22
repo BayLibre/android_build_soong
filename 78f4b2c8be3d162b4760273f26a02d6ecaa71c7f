@@ -46,6 +46,30 @@
       "revId": "78f4b2c8be3d162b4760273f26a02d6ecaa71c7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02ffb126_3242e064",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1074459
+      },
+      "writtenOn": "2019-11-22T20:49:42Z",
+      "side": 1,
+      "message": "I didn use UpdatableSystemServerJars because this util method might be used for other UPDATABLE_BOOT_JARS as well.",
+      "parentUuid": "b57e1d35_e446b6e8",
+      "range": {
+        "startLine": 73,
+        "startChar": 30,
+        "endLine": 73,
+        "endChar": 50
+      },
+      "revId": "78f4b2c8be3d162b4760273f26a02d6ecaa71c7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
