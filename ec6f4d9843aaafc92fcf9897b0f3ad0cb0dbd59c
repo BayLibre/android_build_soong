@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e58a372_7d53a288",
+        "filename": "android/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-22T06:32:41Z",
+      "side": 1,
+      "message": "There actually is no dependency from ApexModule to apexBundle. This name \u0027ApexDep\u0027 seems to be misleading.",
+      "range": {
+        "startLine": 24,
+        "startChar": 3,
+        "endLine": 24,
+        "endChar": 54
+      },
+      "revId": "ec6f4d9843aaafc92fcf9897b0f3ad0cb0dbd59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7137ed52_2a5fe1ff",
+        "filename": "android/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-22T06:32:41Z",
+      "side": 1,
+      "message": "Could you move this to somewhere below?",
+      "revId": "ec6f4d9843aaafc92fcf9897b0f3ad0cb0dbd59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c31f7839_86df19c5",
+        "filename": "android/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-22T06:32:41Z",
+      "side": 1,
+      "message": "Move these to the apex package. mctx here is for apexBundle.",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 1
+      },
+      "revId": "ec6f4d9843aaafc92fcf9897b0f3ad0cb0dbd59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3679f3a4_9af0f37b",
+        "filename": "android/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-22T06:32:41Z",
+      "side": 1,
+      "message": "This sort is due to maps. For readability, sort first and the prepend \"\".",
+      "range": {
+        "startLine": 265,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 26
+      },
+      "revId": "ec6f4d9843aaafc92fcf9897b0f3ad0cb0dbd59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06a5709d_c26be1b1",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2399,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-22T06:32:41Z",
+      "side": 1,
+      "message": "this doesn\u0027t explain why.",
+      "range": {
+        "startLine": 2399,
+        "startChar": 2,
+        "endLine": 2399,
+        "endChar": 74
+      },
+      "revId": "ec6f4d9843aaafc92fcf9897b0f3ad0cb0dbd59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
