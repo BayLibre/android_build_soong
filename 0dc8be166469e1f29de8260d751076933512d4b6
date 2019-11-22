@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "0be35f19_a0ef0771",
+        "filename": "android/proto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-11-22T18:22:13Z",
+      "side": 1,
+      "message": "Got it. Then, please add a note comment on the RunWithKythePlugin to warn about this behavior.",
+      "parentUuid": "c58b8e1a_1e5eb8dd",
+      "revId": "0dc8be166469e1f29de8260d751076933512d4b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "93483763_096c72af",
         "filename": "cc/builder.go",
         "patchSetId": 2
@@ -104,6 +122,24 @@
       "revId": "0dc8be166469e1f29de8260d751076933512d4b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ac2f555_569491b2",
+        "filename": "cc/proto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-11-22T18:22:13Z",
+      "side": 1,
+      "message": "gofmt only sorts within each import group. The Soong convention is putting imports in three groups, 1. regular go packages 2. Blueprint packages 3. Soong packages, in the listed order. So your imports should look like this:\n\nimport(\n  \"strings\"\n\n  \"github.com/google/blueprint/pathtools\"\n\n  \"android/soong/android\"\n)\n\nIf you put a space between two groups, gofmt won\u0027t merge them.",
+      "parentUuid": "76a36c0e_1dc7a14b",
+      "revId": "0dc8be166469e1f29de8260d751076933512d4b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
