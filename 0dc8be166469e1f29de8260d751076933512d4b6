@@ -140,6 +140,24 @@
       "revId": "0dc8be166469e1f29de8260d751076933512d4b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f4bcecc_933cfe19",
+        "filename": "cc/proto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-22T18:47:19Z",
+      "side": 1,
+      "message": "`goimports --local android/soong` does this almost correctly, but I haven\u0027t figured out how to get that into the upload hooks, we\u0027d have to get a goimports prebuilt somewhere.",
+      "parentUuid": "0ac2f555_569491b2",
+      "revId": "0dc8be166469e1f29de8260d751076933512d4b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
