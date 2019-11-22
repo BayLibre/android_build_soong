@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7711de86_da676087",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-11-22T04:33:55Z",
+      "side": 1,
+      "message": "bug number.\nnevermind, if you\u0027re already working on this.",
+      "range": {
+        "startLine": 775,
+        "startChar": 0,
+        "endLine": 775,
+        "endChar": 71
+      },
+      "revId": "9e97a4e8a7765e08374613b01932259b5d2c34bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "097e5139_bc2a9317",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-11-22T04:33:55Z",
+      "side": 1,
+      "message": "This deserves a named interface?",
+      "range": {
+        "startLine": 870,
+        "startChar": 32,
+        "endLine": 874,
+        "endChar": 1
+      },
+      "revId": "9e97a4e8a7765e08374613b01932259b5d2c34bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
