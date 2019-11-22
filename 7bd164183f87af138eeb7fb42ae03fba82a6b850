@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e10c80a0_d41b7700",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1955,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-11-22T21:12:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8afe7e6c_44da4f3c",
+      "revId": "7bd164183f87af138eeb7fb42ae03fba82a6b850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ceae1eb3_dcc6d810",
         "filename": "java/droiddoc.go",
         "patchSetId": 6
@@ -65,6 +83,54 @@
     },
     {
       "key": {
+        "uuid": "ebf058ae_69f59b03",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1962,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-11-22T21:12:44Z",
+      "side": 1,
+      "message": "Used InitDroiddocModule which is equivalent.",
+      "parentUuid": "923bfd9b_4c141441",
+      "range": {
+        "startLine": 1962,
+        "startChar": 1,
+        "endLine": 1962,
+        "endChar": 15
+      },
+      "revId": "7bd164183f87af138eeb7fb42ae03fba82a6b850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1301bdbf_140ed25e",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1962,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-11-22T21:12:44Z",
+      "side": 1,
+      "message": "droidstubs is so this needs to be too.",
+      "parentUuid": "ceae1eb3_dcc6d810",
+      "range": {
+        "startLine": 1962,
+        "startChar": 24,
+        "endLine": 1962,
+        "endChar": 54
+      },
+      "revId": "7bd164183f87af138eeb7fb42ae03fba82a6b850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97b21cba_394b3dc7",
         "filename": "sdk/sdk.go",
         "patchSetId": 6
@@ -76,6 +142,24 @@
       "writtenOn": "2019-11-22T09:07:18Z",
       "side": 1,
       "message": "+1",
+      "revId": "7bd164183f87af138eeb7fb42ae03fba82a6b850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "934c2f01_7abc0a9a",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-11-22T21:12:44Z",
+      "side": 1,
+      "message": "Will separate this out into its own change.",
+      "parentUuid": "97b21cba_394b3dc7",
       "revId": "7bd164183f87af138eeb7fb42ae03fba82a6b850",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -99,6 +183,24 @@
     },
     {
       "key": {
+        "uuid": "d9c2b778_cc3fc419",
+        "filename": "sdk/update.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-11-22T21:12:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "859638fb_804b7c8e",
+      "revId": "7bd164183f87af138eeb7fb42ae03fba82a6b850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "142a5ff0_6b070df4",
         "filename": "sdk/update.go",
         "patchSetId": 6
@@ -116,6 +218,24 @@
     },
     {
       "key": {
+        "uuid": "9c975762_a8583dfa",
+        "filename": "sdk/update.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-11-22T21:12:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "142a5ff0_6b070df4",
+      "revId": "7bd164183f87af138eeb7fb42ae03fba82a6b850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5e36f98_0ee67a5e",
         "filename": "sdk/update.go",
         "patchSetId": 6
@@ -130,6 +250,24 @@
       "revId": "7bd164183f87af138eeb7fb42ae03fba82a6b850",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fa37043_145f2b59",
+        "filename": "sdk/update.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-11-22T21:12:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5e36f98_0ee67a5e",
+      "revId": "7bd164183f87af138eeb7fb42ae03fba82a6b850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
