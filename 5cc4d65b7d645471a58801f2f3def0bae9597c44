@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "671b2711_8c57628f",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-11-22T04:54:44Z",
+      "side": 1,
+      "message": "Somewhat confusing. This returns true for vndk libs? even though they are not \"in\" vendor.",
+      "range": {
+        "startLine": 845,
+        "startChar": 0,
+        "endLine": 847,
+        "endChar": 1
+      },
+      "revId": "5cc4d65b7d645471a58801f2f3def0bae9597c44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6af3ab5f_b6e8b793",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 990,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-11-22T04:54:44Z",
+      "side": 1,
+      "message": "Requires explanation.",
+      "range": {
+        "startLine": 986,
+        "startChar": 0,
+        "endLine": 990,
+        "endChar": 17
+      },
+      "revId": "5cc4d65b7d645471a58801f2f3def0bae9597c44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
