@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "84f24be7_d998c23a",
+        "filename": "android/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-11-22T07:26:56Z",
+      "side": 1,
+      "message": "Yeah, the comment is wrong. The direction of dependency is from apexBundle to ApexMoodule. By the way, what could it be called? We already use the same idea in \"UpdateApexDependency(apex, module, direct)\". It is kind of in-bound dependency edge to ApexModule from apexBundle. hmm. UsageByApex?",
+      "parentUuid": "9e58a372_7d53a288",
+      "range": {
+        "startLine": 24,
+        "startChar": 3,
+        "endLine": 24,
+        "endChar": 54
+      },
+      "revId": "ec6f4d9843aaafc92fcf9897b0f3ad0cb0dbd59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c31f7839_86df19c5",
         "filename": "android/apex.go",
         "patchSetId": 5
@@ -53,6 +77,30 @@
       "writtenOn": "2019-11-22T06:32:41Z",
       "side": 1,
       "message": "Move these to the apex package. mctx here is for apexBundle.",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 1
+      },
+      "revId": "ec6f4d9843aaafc92fcf9897b0f3ad0cb0dbd59c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f8ca1ad_225453a1",
+        "filename": "android/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-11-22T07:26:56Z",
+      "side": 1,
+      "message": "Not necessarily. In fact, it is only when it is called from apex/apex.go (once per apexBundle). In most of calls to these two functions, mctx.Module() returns ApexModule.",
+      "parentUuid": "c31f7839_86df19c5",
       "range": {
         "startLine": 151,
         "startChar": 0,
