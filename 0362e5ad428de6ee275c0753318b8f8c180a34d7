@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfc894b7_8d16e314",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-22T18:51:11Z",
+      "side": 1,
+      "message": "panic(fmt.Errorf(\"malformed SystemServerApexJars value: %q, expected format: \u003capex\u003e:\u003cjar\u003e\", apexJarValue))\n\nI think that will result in Blueprint showing \"internal error: malformed SystemServerApexJars value:...\" instead of a stack trace.",
+      "revId": "0362e5ad428de6ee275c0753318b8f8c180a34d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
