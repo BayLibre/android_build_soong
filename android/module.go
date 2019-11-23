@@ -62,6 +62,7 @@ type EarlyModuleContext interface {
 	ModuleName() string
 	ModuleDir() string
 	ModuleType() string
+	BlueprintsFile() string
 
 	ContainsProperty(name string) bool
 	Errorf(pos scanner.Position, fmt string, args ...interface{})
