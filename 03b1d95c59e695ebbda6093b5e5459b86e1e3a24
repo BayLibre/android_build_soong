@@ -166,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "ddbaf808_ff09b6a2",
+        "filename": "cc/snapshot_utils.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-25T07:38:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "fde6c218_24a6dbb2",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 41
+      },
+      "revId": "03b1d95c59e695ebbda6093b5e5459b86e1e3a24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f36f318_b121e918",
         "filename": "cc/vendor_snapshot.go",
         "patchSetId": 1
@@ -233,6 +257,30 @@
       "revId": "03b1d95c59e695ebbda6093b5e5459b86e1e3a24",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "68f1101f_c10fc02e",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-25T07:38:31Z",
+      "side": 1,
+      "message": "Add todos for cleaning these up.\n\nAlso, add a bug number and comment the reason for why the specific dirs are excluded and included.",
+      "parentUuid": "a6ff599f_dd9d1ef6",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 55,
+        "endChar": 91
+      },
+      "revId": "03b1d95c59e695ebbda6093b5e5459b86e1e3a24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
