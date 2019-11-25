@@ -22,6 +22,30 @@
       "revId": "f596ed119bbb7f7859572a5f49d9b964dfcd15e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb41672d_39eb576b",
+        "filename": "README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-11-25T19:31:04Z",
+      "side": 1,
+      "message": "Thanks, rephrased another way.",
+      "parentUuid": "95fa0a68_f3bb2a6d",
+      "range": {
+        "startLine": 51,
+        "startChar": 77,
+        "endLine": 51,
+        "endChar": 80
+      },
+      "revId": "f596ed119bbb7f7859572a5f49d9b964dfcd15e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
