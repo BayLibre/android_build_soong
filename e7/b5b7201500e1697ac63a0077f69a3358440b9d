@@ -1,0 +1,8 @@
+Presubmit-Ready+1: Steven Moreland <smoreland@google.com>
+Code-Review+2: Yifan Hong <elsk@google.com>
+Build-Cop-Override+1: Stan Rokita <srok@google.com>
+Submitted-by: Steven Moreland <smoreland@google.com>
+Submitted-at: Mon, 25 Nov 2019 23:42:46 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1174726
+Project: platform/build/soong
+Branch: refs/heads/master
