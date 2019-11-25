@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd91675c_686902d9",
+        "filename": "cc/config/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-11-25T23:26:55Z",
+      "side": 1,
+      "message": "@Victor, this is also interesting because the lib that is installed to the device has a different name (vintf-vibrator-V1-ndk_platform.so) which is set w/ the stem property. So the error is slightly confusing here. WDYT?",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 31
+      },
+      "revId": "e7b5b7201500e1697ac63a0077f69a3358440b9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
