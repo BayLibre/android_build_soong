@@ -22,6 +22,30 @@
       "revId": "2628e1eaed768e85a6249dbc23c0acfda22250d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22c62c3f_c1048382",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-11-25T16:38:29Z",
+      "side": 1,
+      "message": "Fixed, thanks.",
+      "parentUuid": "52f5cd03_e4bb246b",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 54
+      },
+      "revId": "2628e1eaed768e85a6249dbc23c0acfda22250d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
