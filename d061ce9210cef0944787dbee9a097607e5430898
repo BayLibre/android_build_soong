@@ -46,6 +46,53 @@
       "revId": "d061ce9210cef0944787dbee9a097607e5430898",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb4ea984_5ac4beb5",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-11-25T15:54:18Z",
+      "side": 1,
+      "message": "Ok, thanks.",
+      "parentUuid": "79b65b35_697ebaa4",
+      "range": {
+        "startLine": 392,
+        "startChar": 2,
+        "endLine": 392,
+        "endChar": 72
+      },
+      "revId": "d061ce9210cef0944787dbee9a097607e5430898",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4218151d_4740a931",
+        "filename": "scripts/hiddenapi_policy.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-11-25T15:54:18Z",
+      "side": 1,
+      "message": "Please add a comment to explain what these numbers mean (0x0101058e, 0x12 and 0xffffffff).",
+      "range": {
+        "startLine": 70,
+        "startChar": 11,
+        "endLine": 70,
+        "endChar": 71
+      },
+      "revId": "d061ce9210cef0944787dbee9a097607e5430898",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
