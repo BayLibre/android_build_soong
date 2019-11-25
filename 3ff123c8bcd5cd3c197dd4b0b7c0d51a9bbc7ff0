@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb8e4b2d_9ee731ef",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1022179
+      },
+      "writtenOn": "2019-11-25T18:02:54Z",
+      "side": 1,
+      "message": "Follow with period",
+      "range": {
+        "startLine": 211,
+        "startChar": 5,
+        "endLine": 211,
+        "endChar": 7
+      },
+      "revId": "3ff123c8bcd5cd3c197dd4b0b7c0d51a9bbc7ff0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "365a42fd_0483f0a3",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1022179
+      },
+      "writtenOn": "2019-11-25T18:02:54Z",
+      "side": 1,
+      "message": "Remove parenthesis",
+      "range": {
+        "startLine": 211,
+        "startChar": 8,
+        "endLine": 211,
+        "endChar": 9
+      },
+      "revId": "3ff123c8bcd5cd3c197dd4b0b7c0d51a9bbc7ff0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f46f78c2_56697591",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1022179
+      },
+      "writtenOn": "2019-11-25T18:02:54Z",
+      "side": 1,
+      "message": "Remove parenthesis",
+      "range": {
+        "startLine": 212,
+        "startChar": 33,
+        "endLine": 212,
+        "endChar": 34
+      },
+      "revId": "3ff123c8bcd5cd3c197dd4b0b7c0d51a9bbc7ff0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01b784e1_b52f81c1",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1022179
+      },
+      "writtenOn": "2019-11-25T18:02:54Z",
+      "side": 1,
+      "message": "with the",
+      "range": {
+        "startLine": 218,
+        "startChar": 21,
+        "endLine": 218,
+        "endChar": 25
+      },
+      "revId": "3ff123c8bcd5cd3c197dd4b0b7c0d51a9bbc7ff0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf484b92_08a33107",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1022179
+      },
+      "writtenOn": "2019-11-25T18:02:54Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 218,
+        "startChar": 72,
+        "endLine": 219,
+        "endChar": 4
+      },
+      "revId": "3ff123c8bcd5cd3c197dd4b0b7c0d51a9bbc7ff0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "805ca638_cdd93574",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1022179
+      },
+      "writtenOn": "2019-11-25T18:02:54Z",
+      "side": 1,
+      "message": "a (since we haven\u0027t mentioned this reference yet)",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 3
+      },
+      "revId": "3ff123c8bcd5cd3c197dd4b0b7c0d51a9bbc7ff0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a8b311b_4c090159",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1022179
+      },
+      "writtenOn": "2019-11-25T18:02:54Z",
+      "side": 1,
+      "message": "Follow with comma",
+      "range": {
+        "startLine": 234,
+        "startChar": 10,
+        "endLine": 234,
+        "endChar": 24
+      },
+      "revId": "3ff123c8bcd5cd3c197dd4b0b7c0d51a9bbc7ff0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "518e8fbf_31fe9062",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1022179
+      },
+      "writtenOn": "2019-11-25T18:02:54Z",
+      "side": 1,
+      "message": "Suggest running both TODOs past Colin and Dan.",
+      "range": {
+        "startLine": 234,
+        "startChar": 2,
+        "endLine": 234,
+        "endChar": 6
+      },
+      "revId": "3ff123c8bcd5cd3c197dd4b0b7c0d51a9bbc7ff0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e1e3c7d_1a97a17e",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1022179
+      },
+      "writtenOn": "2019-11-25T18:02:54Z",
+      "side": 1,
+      "message": "If we keep this, consider replacing the italics(underscores) with a note:\n-----\nNote: (text)\n-----",
+      "range": {
+        "startLine": 240,
+        "startChar": 0,
+        "endLine": 240,
+        "endChar": 6
+      },
+      "revId": "3ff123c8bcd5cd3c197dd4b0b7c0d51a9bbc7ff0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f643f725_f7e7bec1",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1022179
+      },
+      "writtenOn": "2019-11-25T18:02:54Z",
+      "side": 1,
+      "message": "exports",
+      "range": {
+        "startLine": 242,
+        "startChar": 58,
+        "endLine": 242,
+        "endChar": 64
+      },
+      "revId": "3ff123c8bcd5cd3c197dd4b0b7c0d51a9bbc7ff0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
