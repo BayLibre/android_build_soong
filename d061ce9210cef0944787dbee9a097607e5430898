@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3833e254_d0c3cc74",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-11-25T14:00:07Z",
+      "side": 1,
+      "message": "I wonder if dexpreopt for boot class path jars should also do these hidden api checks. If yes, then it should be added in build/soong/java/dexpreopt_bootjars.go (and the common part factored out):\n\nhttps://cs.corp.google.com/aosp-master/build/soong/java/dexpreopt_bootjars.go?q\u003ddexpreopt_bootjars.go\u0026dr\u0026l\u003d331",
+      "range": {
+        "startLine": 392,
+        "startChar": 2,
+        "endLine": 392,
+        "endChar": 72
+      },
+      "revId": "d061ce9210cef0944787dbee9a097607e5430898",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
