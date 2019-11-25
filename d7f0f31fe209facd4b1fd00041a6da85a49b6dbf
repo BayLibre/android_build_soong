@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "eaa534fc_dc69b1b3",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-11-25T18:17:15Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "0279b484_61101910",
+      "range": {
+        "startLine": 66,
+        "startChar": 18,
+        "endLine": 66,
+        "endChar": 24
+      },
+      "revId": "d7f0f31fe209facd4b1fd00041a6da85a49b6dbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8ba579d_3f934d04",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "d7f0f31fe209facd4b1fd00041a6da85a49b6dbf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2ae0ebc_9192c660",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-11-25T18:17:15Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "a8ba579d_3f934d04",
+      "range": {
+        "startLine": 72,
+        "startChar": 22,
+        "endLine": 72,
+        "endChar": 24
+      },
+      "revId": "d7f0f31fe209facd4b1fd00041a6da85a49b6dbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
