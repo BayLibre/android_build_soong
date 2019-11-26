@@ -101,6 +101,7 @@ func testContext(bp string, fs map[string][]byte) *android.TestContext {
 	ctx.PreArchMutators(func(ctx android.RegisterMutatorsContext) {
 		ctx.TopDown("prebuilt_apis", PrebuiltApisMutator).Parallel()
 	})
+	ctx.PostDepsMutators(RegisterPostDepsMutators)
 	ctx.PostDepsMutators(android.RegisterOverridePostDepsMutators)
 	ctx.RegisterPreSingletonType("overlay", android.SingletonFactoryAdaptor(OverlaySingletonFactory))
 	ctx.RegisterPreSingletonType("sdk_versions", android.SingletonFactoryAdaptor(sdkPreSingletonFactory))
@@ -329,6 +330,89 @@ func TestSimple(t *testing.T) {
 
 	if len(combineJar.Inputs) != 2 || combineJar.Inputs[1].String() != baz {
 		t.Errorf("foo combineJar inputs %v does not contain %q", combineJar.Inputs, baz)
+	}
+}
+
+func TestExportedPlugins(t *testing.T) {
+	type Result struct {
+		library    string
+		processors string
+	}
+	var tests = []struct {
+		name    string
+		extra   string
+		results []Result
+	}{
+		{
+			name:    "Exported plugin is not a direct plugin",
+			extra:   `java_library { name: "exports", srcs: ["a.java"], exported_plugins: ["plugin"] }`,
+			results: []Result{{library: "exports", processors: "-proc:none"}},
+		},
+		{
+			name: "Exports plugin to dependee",
+			extra: `
+				java_library{name: "exports", exported_plugins: ["plugin"]}
+				java_library{name: "foo", srcs: ["a.java"], libs: ["exports"]}
+				java_library{name: "bar", srcs: ["a.java"], static_libs: ["exports"]}
+			`,
+			results: []Result{
+				{library: "foo", processors: "-processor com.android.TestPlugin"},
+				{library: "bar", processors: "-processor com.android.TestPlugin"},
+			},
+		},
+		{
+			name: "Exports plugin to android_library",
+			extra: `
+				java_library{name: "exports", exported_plugins: ["plugin"]}
+				android_library{name: "foo", srcs: ["a.java"],  libs: ["exports"]}
+				android_library{name: "bar", srcs: ["a.java"], static_libs: ["exports"]}
+			`,
+			results: []Result{
+				{library: "foo", processors: "-processor com.android.TestPlugin"},
+				{library: "bar", processors: "-processor com.android.TestPlugin"},
+			},
+		},
+		{
+			name: "Exports plugin is not propagated via transitive deps",
+			extra: `
+				java_library{name: "exports", exported_plugins: ["plugin"]}
+				java_library{name: "foo", srcs: ["a.java"], libs: ["exports"]}
+				java_library{name: "bar", srcs: ["a.java"], static_libs: ["foo"]}
+			`,
+			results: []Result{
+				{library: "foo", processors: "-processor com.android.TestPlugin"},
+				{library: "bar", processors: "-proc:none"},
+			},
+		},
+		{
+			name: "Exports plugin appends to plugins",
+			extra: `
+                java_plugin{name: "plugin2", processor_class: "com.android.TestPlugin2"}
+				java_library{name: "exports", exported_plugins: ["plugin"]}
+				java_library{name: "foo", srcs: ["a.java"], libs: ["exports"], plugins: ["plugin2"]}
+			`,
+			results: []Result{
+				{library: "foo", processors: "-processor com.android.TestPlugin2,com.android.TestPlugin"},
+			},
+		},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			ctx, _ := testJava(t, `
+				java_plugin {
+					name: "plugin",
+					processor_class: "com.android.TestPlugin",		
+				}
+			`+test.extra)
+
+			for _, want := range test.results {
+				javac := ctx.ModuleForTests(want.library, "android_common").Rule("javac")
+				if javac.Args["processor"] != want.processors {
+					t.Errorf("For library %v, expected %v, found %v", want.library, want.processors, javac.Args["processor"])
+				}
+			}
+		})
 	}
 }
 

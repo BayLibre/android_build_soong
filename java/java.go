@@ -52,6 +52,8 @@ func init() {
 
 	android.RegisterSingletonType("logtags", LogtagsSingleton)
 	android.RegisterSingletonType("kythe_java_extract", kytheExtractJavaFactory)
+
+	android.PostDepsMutators(RegisterPostDepsMutators)
 }
 
 func (j *Module) checkSdkVersion(ctx android.ModuleContext) {
@@ -144,6 +146,9 @@ type CompilerProperties struct {
 
 	// List of modules to use as annotation processors
 	Plugins []string
+
+	// List of modules to export to libraries that directly depend on this library.
+	Exported_plugins []string
 
 	// The number of Java source entries each Javac instance can process
 	Javac_shard_size *int64
@@ -360,10 +365,10 @@ type Module struct {
 	// manifest file to use instead of properties.Manifest
 	overrideManifest android.OptionalPath
 
-	// list of SDK lib names that this java moudule is exporting
+	// list of SDK lib names that this java module is exporting
 	exportedSdkLibs []string
 
-	// list of source files, collected from srcFiles with uniqie java and all kt files,
+	// list of source files, collected from srcFiles with unique java and all kt files,
 	// will be used by android.IDEInfo struct
 	expandIDEInfoCompiledSrcs []string
 
@@ -1662,6 +1667,20 @@ func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 func (j *Library) DepsMutator(ctx android.BottomUpMutatorContext) {
 	j.deps(ctx)
+}
+
+func RegisterPostDepsMutators(ctx android.RegisterMutatorsContext) {
+	ctx.BottomUp("PostDepsMutator", exportedPluginsMutator).Parallel()
+}
+
+func exportedPluginsMutator(mctx android.BottomUpMutatorContext) {
+	var exported_plugins []string
+	mctx.VisitDirectDeps(func(module android.Module) {
+		if library, ok := module.(*Library); ok {
+			exported_plugins = append(exported_plugins, library.properties.Exported_plugins...)
+		}
+	})
+	mctx.AddFarVariationDependencies(mctx.Config().BuildOSCommonTarget.Variations(), pluginTag, exported_plugins...)
 }
 
 const (
