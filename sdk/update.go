@@ -254,6 +254,7 @@ func (s *sdk) buildSnapshot(ctx android.ModuleContext) android.OutputPath {
 
 	builder := &snapshotBuilder{
 		ctx:             ctx,
+		sdk:             s,
 		version:         "current",
 		snapshotDir:     snapshotDir.OutputPath,
 		filesToZip:      []android.Path{bp.path},
@@ -297,6 +298,7 @@ func (s *sdk) buildSnapshot(ctx android.ModuleContext) android.OutputPath {
 	snapshotName := ctx.ModuleName() + string(android.SdkVersionSeparator) + builder.version
 	snapshotModule := bpFile.newModule("sdk_snapshot")
 	snapshotModule.AddProperty("name", snapshotName)
+	addHostDeviceSupportedProperties(&s.ModuleBase, snapshotModule)
 	if len(javaLibs) > 0 {
 		snapshotModule.AddProperty("java_libs", builder.versionedSdkMemberNames(javaLibs))
 	}
@@ -513,6 +515,7 @@ func (info *nativeLibInfo) generatePrebuiltLibrary(ctx android.ModuleContext, bu
 
 type snapshotBuilder struct {
 	ctx         android.ModuleContext
+	sdk         *sdk
 	version     string
 	snapshotDir android.OutputPath
 	bpFile      *bpFile
@@ -560,10 +563,20 @@ func (s *snapshotBuilder) AddPrebuiltModule(module android.Module, moduleType st
 
 	m := s.bpFile.newModule(moduleType)
 	m.AddProperty("name", name)
+	addHostDeviceSupportedProperties(&s.sdk.ModuleBase, m)
 
 	s.prebuiltModules[name] = m
 	s.prebuiltOrder = append(s.prebuiltOrder, m)
 	return m
+}
+
+func addHostDeviceSupportedProperties(module *android.ModuleBase, bpModule *bpModule) {
+	if !module.DeviceSupported() {
+		bpModule.AddProperty("device_supported", false)
+	}
+	if module.HostSupported() {
+		bpModule.AddProperty("host_supported", true)
+	}
 }
 
 // Get a versioned name appropriate for the SDK snapshot version being taken.
