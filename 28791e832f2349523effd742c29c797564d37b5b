@@ -22,6 +22,30 @@
       "revId": "28791e832f2349523effd742c29c797564d37b5b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "986b3e45_9bdd2c3b",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-26T18:43:45Z",
+      "side": 1,
+      "message": "Yes, although disabling turbine is a pretty severe build parallelism hit, so I\u0027d be worried about the exported_plugins unexpected disabling turbine in a wide swath of the build.  Would it be possible to forbid generates_api plugins used with exported_plugins?",
+      "parentUuid": "6ac356e4_ccd90c94",
+      "range": {
+        "startLine": 836,
+        "startChar": 5,
+        "endLine": 836,
+        "endChar": 93
+      },
+      "revId": "28791e832f2349523effd742c29c797564d37b5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
