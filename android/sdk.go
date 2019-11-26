@@ -172,6 +172,12 @@ type SnapshotBuilder interface {
 
 	// Get a versioned name appropriate for the SDK snapshot version being taken.
 	VersionedSdkMemberName(unversionedName string) interface{}
+
+	// Indicates whether the snapshot is targeted at the device.
+	DeviceSupported() bool
+
+	// Indicates whether the snapshot is targeted at the host.
+	HostSupported() bool
 }
 
 // Provides support for generating a file, e.g. the Android.bp file.

@@ -244,6 +244,7 @@ func (s *sdk) buildSnapshot(ctx android.ModuleContext) android.OutputPath {
 
 	builder := &snapshotBuilder{
 		ctx:           ctx,
+		sdk:           s,
 		version:       "current",
 		snapshotDir:   snapshotDir.OutputPath,
 		filesToZip:    []android.Path{bp.path},
@@ -274,6 +275,12 @@ func (s *sdk) buildSnapshot(ctx android.ModuleContext) android.OutputPath {
 	bp.Printfln("sdk_snapshot {")
 	bp.Indent()
 	bp.Printfln("name: %q,", ctx.ModuleName()+string(android.SdkVersionSeparator)+builder.version)
+	if !builder.DeviceSupported() {
+		bp.Printfln("device_supported: false,")
+	}
+	if builder.HostSupported() {
+		bp.Printfln("host_supported: true,")
+	}
 	if len(javaLibs) > 0 {
 		bp.Printfln("java_libs: [")
 		bp.Indent()
@@ -426,6 +433,12 @@ func (info *nativeLibInfo) generatePrebuiltLibrary(ctx android.ModuleContext, bu
 		bp.Printfln("name: %q,", name)
 		bp.Printfln("prefer: false,")
 	}
+	if !builder.DeviceSupported() {
+		bp.Printfln("device_supported: false,")
+	}
+	if builder.HostSupported() {
+		bp.Printfln("host_supported: true,")
+	}
 
 	// a function for emitting include dirs
 	printExportedDirsForNativeLibs := func(lib archSpecificNativeLibInfo, systemInclude bool) {
@@ -476,6 +489,7 @@ func (info *nativeLibInfo) generatePrebuiltLibrary(ctx android.ModuleContext, bu
 
 type snapshotBuilder struct {
 	ctx           android.ModuleContext
+	sdk           *sdk
 	version       string
 	snapshotDir   android.OutputPath
 	androidBpFile *generatedFile
@@ -518,4 +532,12 @@ func (s *snapshotBuilder) AndroidBpFile() android.GeneratedSnapshotFile {
 
 func (s *snapshotBuilder) VersionedSdkMemberName(unversionedName string) interface{} {
 	return versionedSdkMemberName(s.ctx, unversionedName, s.version)
+}
+
+func (s *snapshotBuilder) DeviceSupported() bool {
+	return s.sdk.DeviceSupported()
+}
+
+func (s *snapshotBuilder) HostSupported() bool {
+	return s.sdk.HostSupported()
 }
