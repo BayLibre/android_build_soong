@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ac356e4_ccd90c94",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2019-11-26T18:39:12Z",
+      "side": 1,
+      "message": "This looks like something that we should also respect with exported_plugins as well?",
+      "range": {
+        "startLine": 836,
+        "startChar": 5,
+        "endLine": 836,
+        "endChar": 93
+      },
+      "revId": "28791e832f2349523effd742c29c797564d37b5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

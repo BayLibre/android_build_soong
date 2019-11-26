@@ -16,6 +16,24 @@
       "revId": "e26ba31ba03fff94e0d40f0dc1f5a8725af0e621",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba9caad5_a9168042",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2019-11-26T18:39:12Z",
+      "side": 1,
+      "message": "Done. Explicitly track android.Paths and []string now. Let me know if that should be its own type struct.",
+      "parentUuid": "646f2730_85f397c5",
+      "revId": "e26ba31ba03fff94e0d40f0dc1f5a8725af0e621",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
