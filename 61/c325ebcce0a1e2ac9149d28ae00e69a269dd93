@@ -1,0 +1,7 @@
+Code-Review+2: Nicolas Geoffray <ngeoffray@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Ulyana Trafimovich <skvadrik@google.com>
+Submitted-at: Tue, 26 Nov 2019 10:18:00 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1174265
+Project: platform/build/soong
+Branch: refs/heads/master
