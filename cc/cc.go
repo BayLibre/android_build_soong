@@ -1044,10 +1044,6 @@ func (ctx *moduleContextImpl) shouldCreateSourceAbiDump() bool {
 		// Host modules do not need ABI dumps.
 		return false
 	}
-	if !ctx.mod.IsForPlatform() {
-		// APEX variants do not need ABI dumps.
-		return false
-	}
 	if ctx.isStubs() {
 		// Stubs do not need ABI dumps.
 		return false
