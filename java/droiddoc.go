@@ -1999,6 +1999,12 @@ func (d *Droidstubs) generatePrebuiltStubsSources(builder android.SnapshotBuilde
 		bp.Printfln("name: %q,", name)
 		bp.Printfln("prefer: false,")
 	}
+	if !builder.DeviceSupported() {
+		bp.Printfln("device_supported: false,")
+	}
+	if builder.HostSupported() {
+		bp.Printfln("host_supported: true,")
+	}
 	bp.Printfln("srcs: [%q],", snapshotRelativeDir)
 	bp.Dedent()
 	bp.Printfln("}")

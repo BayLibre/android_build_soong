@@ -1711,6 +1711,12 @@ func (j *Library) generateJavaImport(builder android.SnapshotBuilder, snapshotRe
 		bp.Printfln("name: %q,", name)
 		bp.Printfln("prefer: false,")
 	}
+	if !builder.DeviceSupported() {
+		bp.Printfln("device_supported: false,")
+	}
+	if builder.HostSupported() {
+		bp.Printfln("host_supported: true,")
+	}
 	bp.Printfln("jars: [%q],", snapshotRelativeJavaLibPath)
 	bp.Dedent()
 	bp.Printfln("}")
