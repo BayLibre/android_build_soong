@@ -46,6 +46,30 @@
       "revId": "28791e832f2349523effd742c29c797564d37b5b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a941ed1a_e569dcf9",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2019-11-26T19:07:13Z",
+      "side": 1,
+      "message": "I currently don\u0027t have a case for an exported_plugin with generate_apis \u003d true. Personally, okay with adding an error for now; and re-visiting later if needed.",
+      "parentUuid": "986b3e45_9bdd2c3b",
+      "range": {
+        "startLine": 836,
+        "startChar": 5,
+        "endLine": 836,
+        "endChar": 93
+      },
+      "revId": "28791e832f2349523effd742c29c797564d37b5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
