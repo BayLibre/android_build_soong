@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3508313_e06dfb7d",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-11-26T14:15:01Z",
+      "side": 1,
+      "message": "Good work adding a bit of docs here!",
+      "revId": "da9ad9e0878da64b17439f17f16246e20d3118b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b132d69e_f238d0d1",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-11-26T14:15:01Z",
+      "side": 1,
+      "message": "Go style is to avoid this type of line breaks. http://go/gocomments#line-length",
+      "range": {
+        "startLine": 115,
+        "startChar": 89,
+        "endLine": 116,
+        "endChar": 1
+      },
+      "revId": "da9ad9e0878da64b17439f17f16246e20d3118b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
