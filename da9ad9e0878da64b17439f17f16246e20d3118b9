@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "be3f5595_7479ac99",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-11-26T15:15:46Z",
+      "side": 1,
+      "message": "Thanks! That\u0027s the price one has to pay for adding a dozen more fields with same-looking names. ;)",
+      "parentUuid": "f3508313_e06dfb7d",
+      "revId": "da9ad9e0878da64b17439f17f16246e20d3118b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b132d69e_f238d0d1",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 16
