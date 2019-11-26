@@ -67,7 +67,7 @@ var dexpreoptGlobalConfigKey = android.NewOnceKey("DexpreoptGlobalConfig")
 var dexpreoptTestGlobalConfigKey = android.NewOnceKey("TestDexpreoptGlobalConfig")
 
 // Expected format for apexJarValue = <apex name>:<jar name>
-func splitApexJarPair(apexJarValue string) (string, string)  {
+func splitApexJarPair(apexJarValue string) (string, string) {
 	var apexJarPair []string = strings.SplitN(apexJarValue, ":", 2)
 	if apexJarPair == nil || len(apexJarPair) != 2 {
 		panic(fmt.Errorf("malformed apexJarValue: %q, expected format: <apex>:<jar>",
@@ -91,7 +91,7 @@ func systemServerClasspath(ctx android.PathContext) []string {
 		for _, m := range global.UpdatableSystemServerJars {
 			apex, jar := splitApexJarPair(m)
 			systemServerClasspathLocations = append(systemServerClasspathLocations,
-				filepath.Join("/apex", apex, "javalib", jar + ".jar"))
+				filepath.Join("/apex", apex, "javalib", jar+".jar"))
 		}
 		return systemServerClasspathLocations
 	})
