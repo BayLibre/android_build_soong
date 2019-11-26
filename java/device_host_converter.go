@@ -162,6 +162,10 @@ func (d *DeviceHostConverter) ExportedSdkLibs() []string {
 	return nil
 }
 
+func (d *DeviceHostConverter) ExportedPlugins() []Plugin {
+	return nil
+}
+
 func (d *DeviceHostConverter) SrcJarArgs() ([]string, android.Paths) {
 	return d.srcJarArgs, d.srcJarDeps
 }

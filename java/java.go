@@ -145,6 +145,9 @@ type CompilerProperties struct {
 	// List of modules to use as annotation processors
 	Plugins []string
 
+	// List of modules to export to libraries that directly depend on this library as annotation processors
+	Exported_plugins []string
+
 	// The number of Java source entries each Javac instance can process
 	Javac_shard_size *int64
 
@@ -360,10 +363,13 @@ type Module struct {
 	// manifest file to use instead of properties.Manifest
 	overrideManifest android.OptionalPath
 
-	// list of SDK lib names that this java moudule is exporting
+	// list of SDK lib names that this java module is exporting
 	exportedSdkLibs []string
 
-	// list of source files, collected from srcFiles with uniqie java and all kt files,
+	// list of Plugins that this java module is exporting
+	exportedPlugins []Plugin
+
+	// list of source files, collected from srcFiles with unique java and all kt files,
 	// will be used by android.IDEInfo struct
 	expandIDEInfoCompiledSrcs []string
 
@@ -410,6 +416,7 @@ type Dependency interface {
 	DexJar() android.Path
 	AidlIncludeDirs() android.Paths
 	ExportedSdkLibs() []string
+	ExportedPlugins() []Plugin
 	SrcJarArgs() ([]string, android.Paths)
 	BaseModuleName() string
 }
@@ -452,6 +459,7 @@ var (
 	libTag                = dependencyTag{name: "javalib"}
 	java9LibTag           = dependencyTag{name: "java9lib"}
 	pluginTag             = dependencyTag{name: "plugin"}
+	exportedPluginTag     = dependencyTag{name: "exported-plugin"}
 	bootClasspathTag      = dependencyTag{name: "bootclasspath"}
 	systemModulesTag      = dependencyTag{name: "system modules"}
 	frameworkResTag       = dependencyTag{name: "framework-res"}
@@ -561,6 +569,7 @@ func (j *Module) deps(ctx android.BottomUpMutatorContext) {
 	ctx.AddVariationDependencies(nil, staticLibTag, j.properties.Static_libs...)
 
 	ctx.AddFarVariationDependencies(ctx.Config().BuildOSCommonTarget.Variations(), pluginTag, j.properties.Plugins...)
+	ctx.AddFarVariationDependencies(ctx.Config().BuildOSCommonTarget.Variations(), exportedPluginTag, j.properties.Exported_plugins...)
 
 	android.ProtoDeps(ctx, &j.protoProperties)
 	if j.hasSrcExt(".proto") {
@@ -800,6 +809,7 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 				// sdk lib names from dependencies are re-exported
 				j.exportedSdkLibs = append(j.exportedSdkLibs, dep.ExportedSdkLibs()...)
 				deps.aidlIncludeDirs = append(deps.aidlIncludeDirs, dep.AidlIncludeDirs()...)
+				addPlugins(&deps, dep.ExportedPlugins()...)
 			case java9LibTag:
 				deps.java9Classpath = append(deps.java9Classpath, dep.HeaderJars()...)
 			case staticLibTag:
@@ -810,15 +820,19 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 				// sdk lib names from dependencies are re-exported
 				j.exportedSdkLibs = append(j.exportedSdkLibs, dep.ExportedSdkLibs()...)
 				deps.aidlIncludeDirs = append(deps.aidlIncludeDirs, dep.AidlIncludeDirs()...)
+				addPlugins(&deps, dep.ExportedPlugins()...)
 			case pluginTag:
 				if plugin, ok := dep.(*Plugin); ok {
-					deps.processorPath = append(deps.processorPath, dep.ImplementationAndResourcesJars()...)
-					if plugin.pluginProperties.Processor_class != nil {
-						deps.processorClasses = append(deps.processorClasses, *plugin.pluginProperties.Processor_class)
-					}
+					addPlugins(&deps, *plugin)
 					deps.disableTurbine = deps.disableTurbine || Bool(plugin.pluginProperties.Generates_api)
 				} else {
 					ctx.PropertyErrorf("plugins", "%q is not a java_plugin module", otherName)
+				}
+			case exportedPluginTag:
+				if plugin, ok := dep.(*Plugin); ok {
+					j.exportedPlugins = append(j.exportedPlugins, *plugin)
+				} else {
+					ctx.PropertyErrorf("exported_plugins", "%q is not a java_plugin module", otherName)
 				}
 			case frameworkApkTag:
 				if ctx.ModuleName() == "android_stubs_current" ||
@@ -873,6 +887,15 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 	j.exportedSdkLibs = android.FirstUniqueStrings(j.exportedSdkLibs)
 
 	return deps
+}
+
+func addPlugins(deps *deps, plugins ...Plugin) {
+	for _, plugin := range plugins {
+		deps.processorPath = append(deps.processorPath, plugin.ImplementationAndResourcesJars()...)
+		if plugin.pluginProperties.Processor_class != nil {
+			deps.processorClasses = append(deps.processorClasses, *plugin.pluginProperties.Processor_class)
+		}
+	}
 }
 
 func getJavaVersion(ctx android.ModuleContext, javaVersion string, sdkContext sdkContext) javaVersion {
@@ -1569,6 +1592,10 @@ func (j *Module) ExportedSdkLibs() []string {
 	return j.exportedSdkLibs
 }
 
+func (j *Module) ExportedPlugins() []Plugin {
+	return j.exportedPlugins
+}
+
 func (j *Module) SrcJarArgs() ([]string, android.Paths) {
 	return j.srcJarArgs, j.srcJarDeps
 }
@@ -2141,6 +2168,10 @@ func (j *Import) AidlIncludeDirs() android.Paths {
 
 func (j *Import) ExportedSdkLibs() []string {
 	return j.exportedSdkLibs
+}
+
+func (j *Import) ExportedPlugins() []Plugin {
+	return j.ExportedPlugins()
 }
 
 func (j *Import) SrcJarArgs() ([]string, android.Paths) {
