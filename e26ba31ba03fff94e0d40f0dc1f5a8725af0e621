@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "646f2730_85f397c5",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-11-26T18:13:45Z",
+      "side": 1,
+      "message": "Don\u0027t store a reference to the module here (and especially don\u0027t store a shallow copy using *plugin), that is a recipe for data races.  Just extract the information you need from it (the path to the jars and the class name) and store that.",
+      "revId": "e26ba31ba03fff94e0d40f0dc1f5a8725af0e621",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
