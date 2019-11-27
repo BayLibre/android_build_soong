@@ -137,13 +137,32 @@ func (m *Metrics) SetBuildDateTime(date_time string) {
 	}
 }
 
-func (m *Metrics) Serialize() (data []byte, err error) {
-	return proto.Marshal(&m.metrics)
-}
-
 // exports the output to the file at outputPath
 func (m *Metrics) Dump(outputPath string) (err error) {
-	data, err := m.Serialize()
+	return writeMessageToFile(&m.metrics, outputPath)
+}
+
+type CUJMetrics struct {
+	cujs soong_metrics_proto.CUJs
+}
+
+func NewCUJMetrics() *CUJMetrics {
+	return &CUJMetrics{}
+}
+
+func (c *CUJMetrics) Add(name string, metrics *Metrics) {
+	c.cujs.Cujs = append(c.cujs.Cujs, &soong_metrics_proto.CUJ{
+		Name:    proto.String(name),
+		Metrics: &metrics.metrics,
+	})
+}
+
+func (c *CUJMetrics) Dump(outputPath string) (err error) {
+	return writeMessageToFile(&c.cujs, outputPath)
+}
+
+func writeMessageToFile(pb proto.Message, outputPath string) (err error) {
+	data, err := proto.Marshal(pb)
 	if err != nil {
 		return err
 	}

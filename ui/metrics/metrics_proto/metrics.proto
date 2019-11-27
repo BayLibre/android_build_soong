@@ -125,3 +125,12 @@ message ModuleTypeInfo {
   // The number of logical modules.
   optional uint32 num_of_modules = 3;
 }
+
+message CUJ {
+  optional string name = 1;
+  optional soong_build_metrics.MetricsBase metrics = 2;
+}
+
+message CUJs {
+  repeated CUJ cujs = 1;
+}
