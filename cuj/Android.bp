@@ -1,0 +1,22 @@
+blueprint_go_binary {
+    name: "cuj_tests",
+    deps: [
+        "soong-ui-build",
+        "soong-ui-logger",
+        "soong-ui-terminal",
+        "soong-ui-tracer",
+    ],
+    srcs: [
+        "cuj.go",
+    ],
+}
+
+/*bootstrap_go_package {
+    name: "soong-cuj-metrics-proto",
+    pkgPath: "android/soong/cuj/cuj_proto",
+    deps: ["golang-protobuf-proto"],
+    srcs: [
+        "cuj_proto/cuj.pb.go",
+    ],
+}
+*/
