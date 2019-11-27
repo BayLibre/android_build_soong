@@ -44,8 +44,8 @@ import (
 	"github.com/google/blueprint/pathtools"
 )
 
-const SystemPartition = "/system/"
-const SystemOtherPartition = "/system_other/"
+const systemPartition = "/system/"
+const systemOtherPartition = "/system_other/"
 
 // GenerateDexpreoptRule generates a set of commands that will preopt a module based on a GlobalConfig and a
 // ModuleConfig.  The produced files and their install locations will be available through rule.Installs().
@@ -207,7 +207,7 @@ func dexpreoptCommand(ctx android.PathContext, global GlobalConfig, module Modul
 	odexPath := module.BuildPath.InSameDir(ctx, "oat", arch.String(), pathtools.ReplaceExtension(base, "odex"))
 	odexInstallPath := toOdexPath(module.DexLocation)
 	if odexOnSystemOther(module, global) {
-		odexInstallPath = filepath.Join(SystemOtherPartition, odexInstallPath)
+		odexInstallPath = filepath.Join(systemOtherPartition, odexInstallPath)
 	}
 
 	vdexPath := odexPath.ReplaceExtension(ctx, "vdex")
@@ -496,7 +496,7 @@ func OdexOnSystemOtherByName(name string, dexLocation string, global GlobalConfi
 
 	for _, f := range global.PatternsOnSystemOther {
 		// See comment of SYSTEM_OTHER_ODEX_FILTER for details on the matching.
-		if makefileMatch("/"+f, dexLocation) || makefileMatch(filepath.Join(SystemPartition, f), dexLocation) {
+		if makefileMatch("/"+f, dexLocation) || makefileMatch(filepath.Join(systemPartition, f), dexLocation) {
 			return true
 		}
 	}
