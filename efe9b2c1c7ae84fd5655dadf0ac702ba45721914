@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46c92715_53011b4b",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-11-28T14:30:34Z",
+      "side": 1,
+      "message": "Please preallocate the array since its size is known in advance. Something like:\n\n        modules :\u003d make([]string, len(apexJarPairs))\n\tfor i, p :\u003d range apexJarPairs {\n\t\t_, jar :\u003d dexpreopt.SplitApexJarPair(p)\n\t\tmodules[i] \u003d jar\n\t}",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 21
+      },
+      "revId": "efe9b2c1c7ae84fd5655dadf0ac702ba45721914",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f8cf5bb_813b4036",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-11-28T14:30:34Z",
+      "side": 1,
+      "message": "Here perhaps it is also better to preallocate an array of fixed length, populate it with locations, and then append to bootclasspath in one go.",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 3
+      },
+      "revId": "efe9b2c1c7ae84fd5655dadf0ac702ba45721914",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
