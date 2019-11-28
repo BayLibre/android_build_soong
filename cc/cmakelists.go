@@ -48,6 +48,10 @@ const (
 	envVariableGenerateCMakeLists = "SOONG_GEN_CMAKEFILES"
 	envVariableGenerateDebugInfo  = "SOONG_GEN_CMAKEFILES_DEBUG"
 	envVariableTrue               = "1"
+
+	// Environment variables used to modify behavior of this singleton by AIDEGen.
+	envVariableAidegenGenerateCMakeLists = "SOONG_AIDEGEN_GEN_CMAKEFILES"
+	envVariableAidegenModulePaths        = "SOONG_AIDEGEN_MODULE_PATHS"
 )
 
 // Instruct generator to trace how header include path and flags were generated.
@@ -55,8 +59,14 @@ const (
 var outputDebugInfo = false
 
 func (c *cmakelistsGeneratorSingleton) GenerateBuildActions(ctx android.SingletonContext) {
-	if getEnvVariable(envVariableGenerateCMakeLists, ctx) != envVariableTrue {
+	enableGenerateCMakeLists := (getEnvVariable(envVariableGenerateCMakeLists, ctx) == envVariableTrue)
+	enableAidegenGenerateCMakeLists := (getEnvVariable(envVariableAidegenGenerateCMakeLists, ctx) == envVariableTrue)
+	if !enableGenerateCMakeLists && !enableAidegenGenerateCMakeLists {
 		return
+	}
+	assignedModulePaths := []string{}
+	if enableAidegenGenerateCMakeLists {
+		assignedModulePaths = strings.Split(getEnvVariable(envVariableAidegenModulePaths, ctx), ";")
 	}
 
 	outputDebugInfo = (getEnvVariable(envVariableGenerateDebugInfo, ctx) == envVariableTrue)
@@ -68,7 +78,17 @@ func (c *cmakelistsGeneratorSingleton) GenerateBuildActions(ctx android.Singleto
 	ctx.VisitAllModules(func(module android.Module) {
 		if ccModule, ok := module.(*Module); ok {
 			if compiledModule, ok := ccModule.compiler.(CompiledInterface); ok {
-				generateCLionProject(compiledModule, ctx, ccModule, seenProjects)
+				if enableGenerateCMakeLists {
+					generateCLionProject(compiledModule, ctx, ccModule, seenProjects)
+				}
+				if enableAidegenGenerateCMakeLists {
+					modulePath := path.Dir(ctx.BlueprintFile(ccModule))
+					for _, assignedPath := range assignedModulePaths {
+						if strings.HasPrefix(modulePath, assignedPath) {
+							generateCLionProject(compiledModule, ctx, ccModule, seenProjects)
+						}
+					}
+				}
 			}
 		}
 	})
