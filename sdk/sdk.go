@@ -19,6 +19,7 @@ import (
 	"io"
 	"strconv"
 
+	"android/soong/java"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -35,6 +36,11 @@ func init() {
 	android.RegisterModuleType("sdk_snapshot", SnapshotModuleFactory)
 	android.PreDepsMutators(RegisterPreDepsMutators)
 	android.PostDepsMutators(RegisterPostDepsMutators)
+
+	// Populate th
+	for _, memberListProperty := range sdkMemberListProperties {
+		memberListProperty.dependencyTag = NewSdkMemberDependencyTag(memberListProperty)
+	}
 }
 
 type sdk struct {
@@ -58,6 +64,49 @@ type sdkProperties struct {
 	Stubs_sources []string
 
 	Snapshot bool `blueprint:"mutated"`
+}
+
+type sdkMemberDependencyTag struct {
+	blueprint.BaseDependencyTag
+	memberListProperty *sdkMemberListProperty
+}
+
+func NewSdkMemberDependencyTag(memberListProperty *sdkMemberListProperty) *sdkMemberDependencyTag {
+	return &sdkMemberDependencyTag{memberListProperty: memberListProperty}
+}
+
+// Contains information about the sdk properties that list sdk members, e.g.
+// Java_libs.
+type sdkMemberListProperty struct {
+	// the name of the property as used in a .bp file
+	name string
+
+	// getter for the list of member names
+	getter func(properties *sdkProperties) []string
+
+	// the type of member referenced in the list
+	memberType android.SdkMemberType
+
+	// the dependency tag used for items in this list.
+	dependencyTag *sdkMemberDependencyTag
+}
+
+var sdkMemberListProperties = []*sdkMemberListProperty{
+	{
+		name:       "java_libs",
+		getter:     func(properties *sdkProperties) []string { return properties.Java_libs },
+		memberType: java.LibrarySdkMemberType,
+	},
+	{
+		name:       "stubs_sources",
+		getter:     func(properties *sdkProperties) []string { return properties.Stubs_sources },
+		memberType: java.DroidStubsSdkMemberType,
+	},
+	{
+		name:       "native_shared_libs",
+		getter:     func(properties *sdkProperties) []string { return properties.Native_shared_libs },
+		memberType: cc.LibrarySdkMemberType,
+	},
 }
 
 // sdk defines an SDK which is a logical group of modules (e.g. native libs, headers, java libs, etc.)
@@ -158,22 +207,10 @@ type sdkMemberVesionedDepTag struct {
 // Step 1: create dependencies from an SDK module to its members.
 func memberMutator(mctx android.BottomUpMutatorContext) {
 	if m, ok := mctx.Module().(*sdk); ok {
-		mctx.AddVariationDependencies(nil, sdkMemberDepTag, m.properties.Java_libs...)
-		mctx.AddVariationDependencies(nil, sdkMemberDepTag, m.properties.Stubs_sources...)
-
-		targets := mctx.MultiTargets()
-		for _, target := range targets {
-			for _, lib := range m.properties.Native_shared_libs {
-				name, version := cc.StubsLibNameAndVersion(lib)
-				if version == "" {
-					version = cc.LatestStubsVersionFor(mctx.Config(), name)
-				}
-				mctx.AddFarVariationDependencies(append(target.Variations(), []blueprint.Variation{
-					{Mutator: "image", Variation: android.CoreVariation},
-					{Mutator: "link", Variation: "shared"},
-					{Mutator: "version", Variation: version},
-				}...), sdkMemberDepTag, name)
-			}
+		for _, memberListProperty := range sdkMemberListProperties {
+			names := memberListProperty.getter(&m.properties)
+			tag := memberListProperty.dependencyTag
+			memberListProperty.memberType.AddDependencies(mctx, tag, names)
 		}
 	}
 }
