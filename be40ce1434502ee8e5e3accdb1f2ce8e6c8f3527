@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "164c31c8_6b7579a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-11-29T02:25:58Z",
+      "side": 1,
+      "message": "I\u0027m not sure what the rules are around this, but at least it\u0027s customary to not have any empty lines between the metadata fields in the message footer.",
+      "revId": "be40ce1434502ee8e5e3accdb1f2ce8e6c8f3527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
