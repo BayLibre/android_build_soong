@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4fd749df_1c70cd9a",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-11-29T10:11:03Z",
+      "side": 1,
+      "message": "Where\u0027s the reset happening?",
+      "range": {
+        "startLine": 239,
+        "startChar": 46,
+        "endLine": 239,
+        "endChar": 55
+      },
+      "revId": "d3be3a81294e843e217be4065a3e1f729449dfcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
