@@ -97,13 +97,13 @@ func main() {
 	srcDir := filepath.Dir(flag.Arg(0))
 
 	ctx := android.NewContext()
-	ctx.Register()
 
 	configuration, err := android.NewConfig(srcDir, bootstrap.BuildDir)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "%s", err)
 		os.Exit(1)
 	}
+	ctx.Register()
 
 	if docFile != "" {
 		configuration.SetStopBefore(bootstrap.StopBeforePrepareBuildActions)

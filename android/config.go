@@ -57,6 +57,10 @@ func (c Config) BuildDir() string {
 	return c.buildDir
 }
 
+func (c Config) SrcDir() string {
+	return c.srcDir
+}
+
 // A DeviceConfig object represents the configuration for a particular device being built.  For
 // now there will only be one of these, but in the future there may be multiple devices being
 // built
@@ -112,6 +116,8 @@ type config struct {
 
 	captureBuild      bool // true for tests, saves build parameters for each module
 	ignoreEnvironment bool // true for tests, returns empty from all Getenv calls
+
+	pluginConfig map[string]interface{}
 
 	stopBefore bootstrap.StopBefore
 
@@ -384,7 +390,20 @@ func NewConfig(srcDir, buildDir string) (Config, error) {
 		return Config{}, err
 	}
 
-	return Config{config}, nil
+	// Initialize plugins with configuration, and store any
+	// configuration they return.
+	config.pluginConfig = make(map[string]interface{})
+	result := Config{config}
+
+	for _, p := range plugins {
+		c, err := p.InitPlugin(result)
+		if err != nil {
+			return Config{}, err
+		}
+		config.pluginConfig[p.Name()] = c
+	}
+
+	return result, nil
 }
 
 func (c *config) fromEnv() error {
@@ -1141,4 +1160,35 @@ func (c *deviceConfig) DeviceSecondaryArch() string {
 
 func (c *deviceConfig) DeviceSecondaryArchVariant() string {
 	return String(c.config.productVariables.DeviceSecondaryArchVariant)
+}
+
+type ConfigPlugin interface {
+	// Function that will initialize a plugin and return a structure
+	// containing the plugin configuration.
+	InitPlugin(Config) (interface{}, error)
+
+	// Identifier associated with the plugin. This identifier can be
+	// used to retrieve the config with GetPluginConfig()
+	Name() string
+}
+
+// Registered plugins
+var plugins []ConfigPlugin
+
+// RegisterPlugin is called by plugins to have Soong load
+// configuration information into Config, and then pass the
+// configuration to an initialization function.
+//
+// This is intended to be used by plugins whose modules' properties
+// depend on their configuration.
+//
+// This is expected to be called by Soong plugins during their init(),
+// if they need configuration.
+func RegisterPlugin(plugin ConfigPlugin) {
+	plugins = append(plugins, plugin)
+}
+
+// Retrieve a plugin's configuration
+func (c *config) GetPluginConfig(name string) interface{} {
+	return c.pluginConfig[name]
 }
