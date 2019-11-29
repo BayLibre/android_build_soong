@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "5fae23f3_3ae56c94",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-11-29T09:58:44Z",
+      "side": 1,
+      "message": "Hmm... I don\u0027t know what I meant by this. :) I\u0027ll reword it.",
+      "parentUuid": "c066a903_d1f9b8b4",
+      "range": {
+        "startLine": 55,
+        "startChar": 29,
+        "endLine": 55,
+        "endChar": 36
+      },
+      "revId": "be40ce1434502ee8e5e3accdb1f2ce8e6c8f3527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "70d6d181_ad5562de",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 18
@@ -62,6 +86,30 @@
       "revId": "be40ce1434502ee8e5e3accdb1f2ce8e6c8f3527",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c75bb241_bda48c14",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-11-29T09:58:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70d6d181_ad5562de",
+      "range": {
+        "startLine": 77,
+        "startChar": 30,
+        "endLine": 77,
+        "endChar": 32
+      },
+      "revId": "be40ce1434502ee8e5e3accdb1f2ce8e6c8f3527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "ffa06d45_7acd9600",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-11-29T09:58:44Z",
+      "side": 1,
+      "message": "It does include the image\u0027s locations (dexLocations). It is more convenient to store the transitive closure of all dependencies\u0027 locations together with this image\u0027s locations than to concatenate every time it where it is used.",
+      "parentUuid": "7424f6c8_09a18d4d",
+      "range": {
+        "startLine": 78,
+        "startChar": 30,
+        "endLine": 78,
+        "endChar": 72
+      },
+      "revId": "be40ce1434502ee8e5e3accdb1f2ce8e6c8f3527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f9d28e7b_1451d437",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 18
@@ -108,6 +180,30 @@
       "revId": "be40ce1434502ee8e5e3accdb1f2ce8e6c8f3527",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db359763_04cbfd5c",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-11-29T09:58:44Z",
+      "side": 1,
+      "message": "We need to copy these jars to the input directory (line 265).",
+      "parentUuid": "f9d28e7b_1451d437",
+      "range": {
+        "startLine": 80,
+        "startChar": 18,
+        "endLine": 80,
+        "endChar": 22
+      },
+      "revId": "be40ce1434502ee8e5e3accdb1f2ce8e6c8f3527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -134,6 +230,30 @@
     },
     {
       "key": {
+        "uuid": "26d6983b_6ab56131",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-11-29T09:58:44Z",
+      "side": 1,
+      "message": "It does include full list of locations, including this image (as this needs to be passed to dex2oat).",
+      "parentUuid": "e184fd1e_ee93be4b",
+      "range": {
+        "startLine": 84,
+        "startChar": 45,
+        "endLine": 84,
+        "endChar": 63
+      },
+      "revId": "be40ce1434502ee8e5e3accdb1f2ce8e6c8f3527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9c63eb7d_392dda49",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 18
@@ -157,6 +277,30 @@
     },
     {
       "key": {
+        "uuid": "bc798765_177a0a88",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-11-29T09:58:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c63eb7d_392dda49",
+      "range": {
+        "startLine": 238,
+        "startChar": 62,
+        "endLine": 238,
+        "endChar": 79
+      },
+      "revId": "be40ce1434502ee8e5e3accdb1f2ce8e6c8f3527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47a3188a_338ecf0e",
         "filename": "java/dexpreopt_config.go",
         "patchSetId": 18
@@ -168,6 +312,30 @@
       "writtenOn": "2019-11-29T09:29:12Z",
       "side": 1,
       "message": "Feel free to rename this jitzygote",
+      "range": {
+        "startLine": 118,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 5
+      },
+      "revId": "be40ce1434502ee8e5e3accdb1f2ce8e6c8f3527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b5b482b_8b5b2b2a",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-11-29T09:58:44Z",
+      "side": 1,
+      "message": "Ok (I\u0027ll better do it in a follow-up CL).",
+      "parentUuid": "47a3188a_338ecf0e",
       "range": {
         "startLine": 118,
         "startChar": 1,
@@ -203,6 +371,30 @@
     },
     {
       "key": {
+        "uuid": "a5e51f6d_c6bf10ae",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-11-29T09:58:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2f2e557_fca6d486",
+      "range": {
+        "startLine": 130,
+        "startChar": 5,
+        "endLine": 130,
+        "endChar": 7
+      },
+      "revId": "be40ce1434502ee8e5e3accdb1f2ce8e6c8f3527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "907a1f3b_b1b94c24",
         "filename": "java/dexpreopt_config.go",
         "patchSetId": 18
@@ -226,6 +418,30 @@
     },
     {
       "key": {
+        "uuid": "81466c60_c5872986",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-11-29T09:58:44Z",
+      "side": 1,
+      "message": "I think it\u0027s for debug info (--oat-symbols option to dex2oat).",
+      "parentUuid": "907a1f3b_b1b94c24",
+      "range": {
+        "startLine": 195,
+        "startChar": 53,
+        "endLine": 195,
+        "endChar": 68
+      },
+      "revId": "be40ce1434502ee8e5e3accdb1f2ce8e6c8f3527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "374519f8_54c94c75",
         "filename": "java/dexpreopt_config.go",
         "patchSetId": 18
@@ -237,6 +453,30 @@
       "writtenOn": "2019-11-29T09:29:12Z",
       "side": 1,
       "message": "Reads odd to have this as a list of dependencies. Can you add a comment?",
+      "range": {
+        "startLine": 248,
+        "startChar": 39,
+        "endLine": 248,
+        "endChar": 55
+      },
+      "revId": "be40ce1434502ee8e5e3accdb1f2ce8e6c8f3527",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d34d3c4_1b377745",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-11-29T09:58:44Z",
+      "side": 1,
+      "message": "There is a comment on the field declaration of dexLocationsDeps in the boot ImageConfig struct that explains that dexLocationsDeps includes locations for both this image and all its dependency images (if any). Suffix \"Deps\" is used consistently with other names in the struct.",
+      "parentUuid": "374519f8_54c94c75",
       "range": {
         "startLine": 248,
         "startChar": 39,
