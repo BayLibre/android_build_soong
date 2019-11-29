@@ -31,6 +31,8 @@ import (
 
 func init() {
 	pctx.Import("android/soong/android")
+	pctx.Import("android/soong/java/config")
+
 	android.RegisterModuleType("sdk", ModuleFactory)
 	android.RegisterModuleType("sdk_snapshot", SnapshotModuleFactory)
 	android.PreDepsMutators(RegisterPreDepsMutators)
@@ -109,8 +111,8 @@ func (s *sdk) AndroidMkEntries() android.AndroidMkEntries {
 		ExtraFooters: []android.AndroidMkExtraFootersFunc{
 			func(w io.Writer, name, prefix, moduleDir string, entries *android.AndroidMkEntries) {
 				// Allow the sdk to be built by simply passing its name on the command line.
-				fmt.Fprintln(w, ".PHONY:", s.Name())
-				fmt.Fprintln(w, s.Name()+":", s.snapshotFile.String())
+				_, _ = fmt.Fprintln(w, ".PHONY:", s.Name())
+				_, _ = fmt.Fprintln(w, s.Name()+":", s.snapshotFile.String())
 			},
 		},
 	}
