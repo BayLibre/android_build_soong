@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "b21753b0_d75fe1e9",
+        "filename": "android/paths.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-11-29T11:49:23Z",
+      "side": 1,
+      "message": "I\u0027m not sure this comment (or the same one above) is worth it. It just adds noise, AFAIK there are no guarantees that go will get generics and it is only one of a very large number of places that could take advantage of generics.",
+      "revId": "d3be3a81294e843e217be4065a3e1f729449dfcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4fd749df_1c70cd9a",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 19
