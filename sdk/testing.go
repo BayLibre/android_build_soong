@@ -102,13 +102,6 @@ func testSdkContext(bp string, fs map[string][]byte) (*android.TestContext, andr
 		"myapex.pem":                                 nil,
 		"myapex.x509.pem":                            nil,
 		"myapex.pk8":                                 nil,
-		"Test.java":                                  nil,
-		"Test.cpp":                                   nil,
-		"include/Test.h":                             nil,
-		"aidl/foo/bar/Test.aidl":                     nil,
-		"libfoo.so":                                  nil,
-		"stubs-sources/foo/bar/Foo.java":             nil,
-		"foo/bar/Foo.java":                           nil,
 	}
 
 	for k, v := range fs {
