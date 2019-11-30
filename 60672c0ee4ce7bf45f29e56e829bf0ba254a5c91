@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f9b5ff2_33bd9472",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-30T00:16:40Z",
+      "side": 1,
+      "message": "I am not sure what\u0027s the best practice in Soong about static build rules v.s. rulebuilder. I usually thought rulebuilder is preferred and easier as rules can be generated inlined. Over to Colin.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 52
+      },
+      "revId": "60672c0ee4ce7bf45f29e56e829bf0ba254a5c91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61fe51ad_e305faee",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-30T00:16:40Z",
+      "side": 1,
+      "message": "I don\u0027t think you need to fix these warnings. It doesn\u0027t look good to me. There are lots of fmt.Fprintln statements in Soong without the assignments.",
+      "range": {
+        "startLine": 114,
+        "startChar": 4,
+        "endLine": 114,
+        "endChar": 11
+      },
+      "revId": "60672c0ee4ce7bf45f29e56e829bf0ba254a5c91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a4cbfdf_208468a1",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-30T00:16:40Z",
+      "side": 1,
+      "message": "here again",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 8
+      },
+      "revId": "60672c0ee4ce7bf45f29e56e829bf0ba254a5c91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
