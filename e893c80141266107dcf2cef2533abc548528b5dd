@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b56c03e8_ab5d482d",
+        "filename": "sdk/update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-30T00:09:10Z",
+      "side": 1,
+      "message": "make these methods of the type generatedContents? And move the type (along with its methods) to bp.go?",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 407,
+        "endChar": 0
+      },
+      "revId": "e893c80141266107dcf2cef2533abc548528b5dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
