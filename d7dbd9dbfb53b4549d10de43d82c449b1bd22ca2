@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "003521f0_d4ea63b4",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1982,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-30T01:03:40Z",
+      "side": 1,
+      "message": "just var DroidStubsSdkMemberType \u003d \u0026droidStubsSdkMemberType()?",
+      "range": {
+        "startLine": 1976,
+        "startChar": 0,
+        "endLine": 1982,
+        "endChar": 0
+      },
+      "revId": "d7dbd9dbfb53b4549d10de43d82c449b1bd22ca2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6922530_391d5ee4",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-11-30T01:03:40Z",
+      "side": 1,
+      "message": "move to the section where android/* packages are imported",
+      "revId": "d7dbd9dbfb53b4549d10de43d82c449b1bd22ca2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
