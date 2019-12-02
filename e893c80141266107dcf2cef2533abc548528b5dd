@@ -22,6 +22,30 @@
       "revId": "e893c80141266107dcf2cef2533abc548528b5dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b477430_1e0b12bd",
+        "filename": "sdk/update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-12-02T12:38:25Z",
+      "side": 1,
+      "message": "generatedContents is a general type that could be used for generating something other than an Android.bp file so I think having those methods in there would be a mistake.",
+      "parentUuid": "b56c03e8_ab5d482d",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 407,
+        "endChar": 0
+      },
+      "revId": "e893c80141266107dcf2cef2533abc548528b5dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
