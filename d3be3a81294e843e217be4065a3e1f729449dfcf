@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d4b9de80_11e225b5",
+        "filename": "android/paths.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-12-02T12:47:33Z",
+      "side": 1,
+      "message": "Ok, removed the comment.",
+      "parentUuid": "b21753b0_d75fe1e9",
+      "revId": "d3be3a81294e843e217be4065a3e1f729449dfcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4fd749df_1c70cd9a",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 19
@@ -39,6 +57,30 @@
       "revId": "d3be3a81294e843e217be4065a3e1f729449dfcf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2773d8a_f4580cd0",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-12-02T12:47:33Z",
+      "side": 1,
+      "message": "In the body of the \"if\" condition: it may happen that we find one suitable module with the required name and DexJar interface, but the dex jar in this module is non-nil, and then find another suitable module but the dex jar in it is nil. I\u0027ve observed such cases when multiple modules are found during debugging and added the additional check to be \"fool proof\".\n\nIn any case, it\u0027s causing confusion, so I\u0027ve removed the non-nil check. If it happens to be the case, build will fail and we will notice anyway.",
+      "parentUuid": "4fd749df_1c70cd9a",
+      "range": {
+        "startLine": 239,
+        "startChar": 46,
+        "endLine": 239,
+        "endChar": 55
+      },
+      "revId": "d3be3a81294e843e217be4065a3e1f729449dfcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
