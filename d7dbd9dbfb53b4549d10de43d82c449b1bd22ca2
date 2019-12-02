@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "68d751d3_3fb5d2c2",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1982,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-12-02T14:03:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "003521f0_d4ea63b4",
+      "range": {
+        "startLine": 1976,
+        "startChar": 0,
+        "endLine": 1982,
+        "endChar": 0
+      },
+      "revId": "d7dbd9dbfb53b4549d10de43d82c449b1bd22ca2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6922530_391d5ee4",
         "filename": "sdk/sdk.go",
         "patchSetId": 4
@@ -39,6 +63,24 @@
       "revId": "d7dbd9dbfb53b4549d10de43d82c449b1bd22ca2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2f5fbe4_c0810627",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-12-02T14:03:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6922530_391d5ee4",
+      "revId": "d7dbd9dbfb53b4549d10de43d82c449b1bd22ca2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
