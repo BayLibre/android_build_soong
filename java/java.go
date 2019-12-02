@@ -1650,6 +1650,21 @@ func (j *Module) Stem() string {
 	return proptools.StringDefault(j.deviceProperties.Stem, j.Name())
 }
 
+func (j *Module) Installable() bool {
+	ret := Bool(j.properties.Installable)
+	// APEX variants are not installable because they are included in the containin APEX.
+	// Only the platform variants are installable.
+	ret = ret && j.IsForPlatform()
+	// If the module is '//apex_available:platform_noinstall', even the platform variant
+	// is not installable
+	ret = ret && !android.AvailableForPlatformNoInstall(j)
+	return ret
+}
+
+func (j *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	// do nothing. Just to satisfy ApexModule interface
+}
+
 //
 // Java libraries (.jar file)
 //
@@ -1687,8 +1702,7 @@ func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	j.deviceProperties.UncompressDex = j.dexpreopter.uncompressedDex
 	j.compile(ctx, nil)
 
-	exclusivelyForApex := android.InAnyApex(ctx.ModuleName()) && !j.IsForPlatform()
-	if (Bool(j.properties.Installable) || ctx.Host()) && !exclusivelyForApex {
+	if (j.Installable() || ctx.Host()) {
 		var extraInstallDeps android.Paths
 		if j.InstallMixin != nil {
 			extraInstallDeps = j.InstallMixin(ctx, j.outputFile)

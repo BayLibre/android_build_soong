@@ -157,7 +157,7 @@ func stubFlagsRule(ctx android.SingletonContext) {
 				// hiddenapi tool will complain about duplicated classes. Such multiple variants
 				// of the same library can happen when the library is included in one or more APEXes.
 				if a, ok := module.(android.ApexModule); ok && android.InAnyApex(module.Name()) {
-					if a.AvailableFor("//apex_available:platform") && !a.IsForPlatform() {
+					if android.AvailableForPlatform(a) && !a.IsForPlatform() {
 						// skip the apex variants if the jar is available for the platform
 						return
 					}

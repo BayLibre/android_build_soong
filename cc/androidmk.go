@@ -100,6 +100,9 @@ func (c *Module) AndroidMk() android.AndroidMkData {
 						}
 					}
 				}
+				if android.AvailableForPlatformNoInstall(c) && !c.Host() {
+					fmt.Fprintln(w, "LOCAL_UNINSTALLABLE_MODULE := true")
+				}
 			},
 		},
 	}
