@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ddff67b9_a8ee2ad6",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-12-02T22:55:02Z",
+      "side": 1,
+      "message": "I need help here. soong_zip complains if we try to zip outputs of a genrule, e.g.\n\n  data: [\":android.hardware.light@2.0-vts.spec\"],\n\nwill get an error\n\n  error: lstat \u0027out/soong/.intermediates/hardware/interfaces/light/2.0/android.hardware.light@2.0-vts.spec/gen/android/hardware/light/2.0/Light.vts\u0027: file does not exist\n\nSame thing if I use the corpus field.",
+      "range": {
+        "startLine": 382,
+        "startChar": 0,
+        "endLine": 391,
+        "endChar": 60
+      },
+      "revId": "dcebcafb24828341c230c4e5a29d7afa132c27b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
