@@ -105,6 +105,30 @@
       "revId": "d3be3a81294e843e217be4065a3e1f729449dfcf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6fb144af_ef03b18b",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-12-02T13:24:54Z",
+      "side": 1,
+      "message": "We do have a bug about reworking this code using modules instead of copying files to a predefined location: b/143682396 --- I think it\u0027s better to spend time on fixing the bug (the code in question will be removed altogether).",
+      "parentUuid": "2515eda5_9625f7fc",
+      "range": {
+        "startLine": 239,
+        "startChar": 46,
+        "endLine": 239,
+        "endChar": 55
+      },
+      "revId": "d3be3a81294e843e217be4065a3e1f729449dfcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
