@@ -22,6 +22,30 @@
       "revId": "dcebcafb24828341c230c4e5a29d7afa132c27b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01f7974b_affcffd7",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-12-02T23:16:05Z",
+      "side": 1,
+      "message": "Looking at PathsForModuleSrc:\n\n// PathsForModuleSrc returns Paths rooted from the module\u0027s local source directory.  It expands globs, references to\n// SourceFileProducer modules using the \":name\" syntax, and references to OutputFileProducer modules using the\n// \":name{.tag}\" syntax\n\nLooks like it should support genrules out of the box - I wonder whether if FlagWithRspFileInputList here doesn\u0027t add the implicit dependency. Looking at the code, I see that the rspFileInputs are added as inputs (https://cs.corp.google.com/android/build/soong/android/rule_builder.go?l\u003d412), but not implicit dependencies. Colin - could this be the issue here?",
+      "parentUuid": "ddff67b9_a8ee2ad6",
+      "range": {
+        "startLine": 382,
+        "startChar": 0,
+        "endLine": 391,
+        "endChar": 60
+      },
+      "revId": "dcebcafb24828341c230c4e5a29d7afa132c27b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
