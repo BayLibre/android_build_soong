@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "295ac69b_9dce857c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-12-02T13:52:09Z",
+      "side": 1,
+      "message": "That\u0027s probably just because the rule builder is a new one.",
+      "parentUuid": "389352ce_70ee2b59",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 52
+      },
+      "revId": "60672c0ee4ce7bf45f29e56e829bf0ba254a5c91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "61fe51ad_e305faee",
         "filename": "sdk/sdk.go",
         "patchSetId": 1
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "I disagree. Just because there are lots of the doesn\u0027t make it good practice. They are treated as warnings by the IDE because the returned value could be important as it could contain IO errors. In this case it is safe to ignore the returned values as they are being written to a string buffer so won\u0027t suffer IO errors. In other cases it may not be safe. By purposely discarding the errors it makes clear that these invocations are safe and differentiates them from the others which are not.\n\nOtherwise, you either disable the warning altogether, or learn to ignore warnings while editing, either of which can lead to real problems being ignored.\n\nI could use IDEA\u0027s support for disabling the inspection on that statement with a preceding comment instead.",
       "parentUuid": "61fe51ad_e305faee",
+      "range": {
+        "startLine": 114,
+        "startChar": 4,
+        "endLine": 114,
+        "endChar": 11
+      },
+      "revId": "60672c0ee4ce7bf45f29e56e829bf0ba254a5c91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c9254a2_586b8eff",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-12-02T13:52:09Z",
+      "side": 1,
+      "message": "I think consistency is more important. If you think this is not a good practice, and if Colin or other Soong owners agree with it, we should to fix all such cases in Soong, not just these ones.",
+      "parentUuid": "79177aa0_bd63a412",
       "range": {
         "startLine": 114,
         "startChar": 4,
