@@ -23,12 +23,14 @@ import (
 	"path/filepath"
 	"strconv"
 	"strings"
+	"sync"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/pathtools"
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
+	"android/soong/dexpreopt"
 	"android/soong/java/config"
 	"android/soong/tradefed"
 )
@@ -59,6 +61,34 @@ func init() {
 			PropertyName: "java_tests",
 		},
 	})
+
+	android.PostDepsMutators(RegisterPostDepsMutators)
+}
+
+func RegisterPostDepsMutators(ctx android.RegisterMutatorsContext) {
+	ctx.BottomUp("system_server_jars_order", systemServerJarsDepsMutator)
+}
+
+type OrderedSystemServerJars struct {
+	jars []string
+	lock sync.Mutex
+}
+
+var orderedSystemServerJars OrderedSystemServerJars
+
+func systemServerJarsDepsMutator(ctx android.BottomUpMutatorContext) {
+	// A system server jar should have other system server jars in its class loader context
+	// when dexpreopting (all system server jars that precede this one on the global list
+	// of system server jars). Add these jars as dependencies with a special tag.
+	nonUpdatableSystemServerJars := dexpreopt.NonUpdatableSystemServerJars(ctx, dexpreoptGlobalConfig(ctx))
+	if thisJarIdx := android.IndexList(ctx.ModuleName(), nonUpdatableSystemServerJars); thisJarIdx >= 0 {
+		orderedSystemServerJars.lock.Lock()
+		for _, otherJar := range orderedSystemServerJars.jars {
+			ctx.AddDependency(ctx.Module(), dexpreopt.SystemServerJarTag, otherJar)
+		}
+		orderedSystemServerJars.jars = append(orderedSystemServerJars.jars, ctx.ModuleName())
+		orderedSystemServerJars.lock.Unlock()
+	}
 }
 
 func RegisterJavaBuildComponents(ctx android.RegistrationContext) {
