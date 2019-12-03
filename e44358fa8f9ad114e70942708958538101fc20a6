@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0391c27c_28d496d1",
+        "filename": "sdk/sdk_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1014807
+      },
+      "writtenOn": "2019-12-03T15:16:52Z",
+      "side": 1,
+      "message": "This is breaking Darwin (Mac) build for ab/aosp-clang-tools.  It seems that on Darwin, the host variant will be \"darwin_common\".",
+      "range": {
+        "startLine": 649,
+        "startChar": 36,
+        "endLine": 649,
+        "endChar": 56
+      },
+      "revId": "e44358fa8f9ad114e70942708958538101fc20a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
