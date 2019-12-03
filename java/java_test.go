@@ -77,6 +77,7 @@ func testContext(bp string, fs map[string][]byte) *android.TestContext {
 	ctx.RegisterModuleType("java_library", LibraryFactory)
 	ctx.RegisterModuleType("java_library_host", LibraryHostFactory)
 	ctx.RegisterModuleType("java_test", TestFactory)
+	ctx.RegisterModuleType("prebuilt_java_test", PrebuiltTestFactory)
 	ctx.RegisterModuleType("java_import", ImportFactory)
 	ctx.RegisterModuleType("java_import_host", ImportFactoryHost)
 	ctx.RegisterModuleType("java_defaults", DefaultsFactory)
@@ -126,6 +127,7 @@ func testContext(bp string, fs map[string][]byte) *android.TestContext {
 		"b.kt":                   nil,
 		"a.jar":                  nil,
 		"b.jar":                  nil,
+		"AndroidTest.xml":        nil,
 		"APP_NOTICE":             nil,
 		"GENRULE_NOTICE":         nil,
 		"LIB_NOTICE":             nil,
@@ -618,6 +620,13 @@ func TestPrebuilts(t *testing.T) {
 		prebuilt_stubs_sources {
 			name: "stubs-source",
 			srcs: ["stubs/sources/**/*.java"],
+		}
+
+		prebuilt_java_test {
+			name: "test",
+			jars: ["a.jar"],
+			test_suites: ["cts"],
+			test_config: "AndroidTest.xml",
 		}
 		`)
 
