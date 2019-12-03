@@ -71,23 +71,22 @@ var dexpreoptTestGlobalConfigKey = android.NewOnceKey("TestDexpreoptGlobalConfig
 // once the first time it is called for any ctx.Config(), and returns the same slice for all future calls with the same
 // ctx.Config().
 func systemServerClasspath(ctx android.PathContext) []string {
-	return ctx.Config().OnceStringSlice(systemServerClasspathKey, func() []string {
-		global := dexpreoptGlobalConfig(ctx)
-
-		var systemServerClasspathLocations []string
-		for _, m := range global.SystemServerJars {
-			systemServerClasspathLocations = append(systemServerClasspathLocations,
-				filepath.Join("/system/framework", m+".jar"))
-		}
-		for _, m := range global.UpdatableSystemServerJars {
-			systemServerClasspathLocations = append(systemServerClasspathLocations,
-				dexpreopt.GetJarLocationFromApexJarPair(m))
-		}
-		return systemServerClasspathLocations
-	})
+	// return ctx.Config().OnceStringSlice(systemServerClasspathKey, func() []string {
+	global := dexpreoptGlobalConfig(ctx)
+	var systemServerClasspathLocations []string
+	for _, m := range orderedSystemServerJars.jars {
+		systemServerClasspathLocations = append(systemServerClasspathLocations,
+			filepath.Join("/system/framework", m+".jar"))
+	}
+	for _, m := range global.UpdatableSystemServerJars {
+		systemServerClasspathLocations = append(systemServerClasspathLocations,
+			dexpreopt.GetJarLocationFromApexJarPair(m))
+	}
+	return systemServerClasspathLocations
+	// })
 }
 
-var systemServerClasspathKey = android.NewOnceKey("systemServerClasspath")
+//var systemServerClasspathKey = android.NewOnceKey("systemServerClasspath")
 
 // dexpreoptTargets returns the list of targets that are relevant to dexpreopting, which excludes architectures
 // supported through native bridge.
@@ -112,15 +111,6 @@ func stemOf(moduleName string) string {
 	return moduleName
 }
 
-func getJarsFromApexJarPairs(apexJarPairs []string) []string {
-	modules := make([]string, len(apexJarPairs))
-	for i, p := range apexJarPairs {
-		_, jar := dexpreopt.SplitApexJarPair(p)
-		modules[i] = jar
-	}
-	return modules
-}
-
 var (
 	bootImageConfigKey       = android.NewOnceKey("bootImageConfig")
 	artBootImageName         = "art"
@@ -143,7 +133,7 @@ func genBootImageConfigs(ctx android.PathContext) map[string]*bootImageConfig {
 			artModules = append(artModules, "jacocoagent")
 		}
 		frameworkModules := android.RemoveListFromList(global.BootJars,
-			concat(artModules, getJarsFromApexJarPairs(global.UpdatableBootJars)))
+			concat(artModules, dexpreopt.GetJarsFromApexJarPairs(global.UpdatableBootJars)))
 
 		artSubdir := "apex/com.android.art/javalib"
 		frameworkSubdir := "system/framework"
