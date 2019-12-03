@@ -70,6 +70,30 @@
       "revId": "dcebcafb24828341c230c4e5a29d7afa132c27b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7f06669_e24e4d4b",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-12-03T22:10:23Z",
+      "side": 1,
+      "message": "Adding vts specs to \"required:\" doesn\u0027t trigger spec generation either. Opened b/145618220",
+      "parentUuid": "1a30adb2_34f80ab0",
+      "range": {
+        "startLine": 382,
+        "startChar": 0,
+        "endLine": 391,
+        "endChar": 60
+      },
+      "revId": "dcebcafb24828341c230c4e5a29d7afa132c27b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
