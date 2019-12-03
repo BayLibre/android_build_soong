@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3bc8933_1605606c",
+        "filename": "sdk/sdk_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-12-03T18:48:02Z",
+      "side": 1,
+      "message": "This disables it on linux_bionic as well",
+      "revId": "2367a291ad738559165211d9ace081e16b6f7cb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
