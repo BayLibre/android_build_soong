@@ -80,6 +80,9 @@ type sdkProperties struct {
 	// The list of java implementation libraries in this SDK
 	Java_libs []string
 
+	// The list of java test libraries in this SDK
+	Java_tests []string
+
 	// The list of stub sources in this SDK
 	Stubs_sources []string
 
@@ -134,6 +137,11 @@ var sdkMemberListProperties = []*sdkMemberListProperty{
 		name:       "java_libs",
 		getter:     func(properties *sdkProperties) []string { return properties.Java_libs },
 		memberType: java.ImplLibrarySdkMemberType,
+	},
+	{
+		name:       "java_tests",
+		getter:     func(properties *sdkProperties) []string { return properties.Java_tests },
+		memberType: java.TestSdkMemberType,
 	},
 	{
 		name:       "stubs_sources",
