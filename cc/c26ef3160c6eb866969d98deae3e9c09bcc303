@@ -1,0 +1,9 @@
+Presubmit-Ready+1: Roshan Pius <rpius@google.com>
+Code-Review+2: Ulyana Trafimovich <skvadrik@google.com>
+Code-Review+2: Nicolas Geoffray <ngeoffray@google.com>
+Autosubmit+1: Roshan Pius <rpius@google.com>
+Submitted-by: Roshan Pius <rpius@google.com>
+Submitted-at: Tue, 03 Dec 2019 00:43:14 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1177604
+Project: platform/build/soong
+Branch: refs/heads/master
