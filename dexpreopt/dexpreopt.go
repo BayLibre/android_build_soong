@@ -41,11 +41,20 @@ import (
 
 	"android/soong/android"
 
+	"github.com/google/blueprint"
 	"github.com/google/blueprint/pathtools"
 )
 
 const SystemPartition = "/system/"
 const SystemOtherPartition = "/system_other/"
+
+type dependencyTag struct {
+	blueprint.BaseDependencyTag
+	name string
+}
+
+var SystemServerJarTag = dependencyTag{name: "system-server-jar"}
+var SystemServerForcedDepTag = dependencyTag{name: "system-server-forced-dep"}
 
 // GenerateDexpreoptRule generates a set of commands that will preopt a module based on a GlobalConfig and a
 // ModuleConfig.  The produced files and their install locations will be available through rule.Installs().
@@ -236,7 +245,7 @@ func dexpreoptCommand(ctx android.PathContext, global GlobalConfig, module Modul
 	var conditionalClassLoaderContextHost29 android.Paths
 	var conditionalClassLoaderContextTarget29 []string
 
-	var classLoaderContextHostString string
+	var classLoaderContextHostString, classLoaderContextDeviceString string
 
 	if module.EnforceUsesLibraries {
 		usesLibs := append(copyOf(module.UsesLibraries), module.PresentOptionalUsesLibraries...)
@@ -282,19 +291,53 @@ func dexpreoptCommand(ctx android.PathContext, global GlobalConfig, module Modul
 			filepath.Join("/system/framework", hidlBase+".jar"))
 
 		classLoaderContextHostString = strings.Join(classLoaderContextHost.Strings(), ":")
+	} else if i := android.IndexList(module.Name, NonUpdatableSystemServerJars(ctx, global)); i >= 0 {
+		// This is one of the system server jars. Its class loader context (passed to dex2oat when
+		// dexpreopting) should include all other system server jars that precede this one on the
+		// global list of system server jars. Paths to such jars are stored in the corresponding
+		// Soong modules, which have been added as dependencies with a special tag.
+
+		// We expect that all system server jars are Soong modules.
+		mctx, isModule := ctx.(android.ModuleContext)
+		if !isModule {
+			fmt.Errorf("system server jar is not a soong module")
+		}
+
+		var jarsOnHost, jarsOnDevice []string
+		mctx.VisitDirectDepsWithTag(SystemServerJarTag, func(dep android.Module) {
+			depName := mctx.OtherModuleName(dep)
+			if jar, ok := dep.(interface{ DexJar() android.Path }); ok {
+				jarsOnHost = append(jarsOnHost, jar.DexJar().String())
+				jarsOnDevice = append(jarsOnDevice, "/system/framework/"+depName+".jar")
+			} else {
+				mctx.ModuleErrorf("module \"%s\" is not a jar", depName)
+			}
+		})
+
+		classLoaderContextHostString = strings.Join(jarsOnHost, ":")
+		classLoaderContextDeviceString = strings.Join(jarsOnDevice, ":")
 	} else {
 		// Pass special class loader context to skip the classpath and collision check.
 		// This will get removed once LOCAL_USES_LIBRARIES is enforced.
 		// Right now LOCAL_USES_LIBRARIES is opt in, for the case where it's not specified we still default
 		// to the &.
 		classLoaderContextHostString = `\&`
+		classLoaderContextDeviceString = `\&`
 	}
 
 	rule.Command().FlagWithArg("mkdir -p ", filepath.Dir(odexPath.String()))
 	rule.Command().FlagWithOutput("rm -f ", odexPath)
 	// Set values in the environment of the rule.  These may be modified by construct_context.sh.
-	rule.Command().FlagWithArg("class_loader_context_arg=--class-loader-context=", classLoaderContextHostString)
-	rule.Command().Text(`stored_class_loader_context_arg=""`)
+	if classLoaderContextHostString == `\&` {
+		rule.Command().Text("class_loader_context_arg=--class-loader-context=" + classLoaderContextHostString)
+	} else {
+		rule.Command().Text("class_loader_context_arg=--class-loader-context=PCL[" + classLoaderContextHostString + "]")
+	}
+	if classLoaderContextDeviceString == `\&` {
+		rule.Command().Text(`stored_class_loader_context_arg=""`)
+	} else {
+		rule.Command().Text("stored_class_loader_context_arg=--stored-class-loader-context=PCL[" + classLoaderContextDeviceString + "]")
+	}
 
 	if module.EnforceUsesLibraries {
 		if module.ManifestPath != nil {
@@ -550,6 +593,26 @@ func SplitApexJarPair(apexJarValue string) (string, string) {
 func GetJarLocationFromApexJarPair(apexJarValue string) string {
 	apex, jar := SplitApexJarPair(apexJarValue)
 	return filepath.Join("/apex", apex, "javalib", jar+".jar")
+}
+
+func GetJarsFromApexJarPairs(apexJarPairs []string) []string {
+	modules := make([]string, len(apexJarPairs))
+	for i, p := range apexJarPairs {
+		_, jar := SplitApexJarPair(p)
+		modules[i] = jar
+	}
+	return modules
+}
+
+var nonUpdatableSystemServerJarsKey = android.NewOnceKey("nonUpdatableSystemServerJars")
+
+// TODO: eliminate the superficial global config parameter by moving global config definition
+// from java subpackage to dexpreopt.
+func NonUpdatableSystemServerJars(ctx android.PathContext, global GlobalConfig) []string {
+	return ctx.Config().Once(nonUpdatableSystemServerJarsKey, func() interface{} {
+		return android.RemoveListFromList(global.SystemServerJars,
+			GetJarsFromApexJarPairs(global.UpdatableSystemServerJars))
+	}).([]string)
 }
 
 func contains(l []string, s string) bool {
