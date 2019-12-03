@@ -46,6 +46,30 @@
       "revId": "e893c80141266107dcf2cef2533abc548528b5dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ec00f164_b05f9ecb",
+        "filename": "sdk/update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-12-03T07:10:14Z",
+      "side": 1,
+      "message": "Hmm, then rename the file to something other than bp.go? I think I was confused by the file name.",
+      "parentUuid": "4b477430_1e0b12bd",
+      "range": {
+        "startLine": 357,
+        "startChar": 0,
+        "endLine": 407,
+        "endChar": 0
+      },
+      "revId": "e893c80141266107dcf2cef2533abc548528b5dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
