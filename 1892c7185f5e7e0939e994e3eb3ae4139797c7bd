@@ -22,6 +22,30 @@
       "revId": "1892c7185f5e7e0939e994e3eb3ae4139797c7bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f997ce9a_08311fa4",
+        "filename": "sdk/sdk_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-12-03T16:34:20Z",
+      "side": 1,
+      "message": "Doh! Yes it should.",
+      "parentUuid": "1cb3d31f_e5ace775",
+      "range": {
+        "startLine": 651,
+        "startChar": 16,
+        "endLine": 651,
+        "endChar": 20
+      },
+      "revId": "1892c7185f5e7e0939e994e3eb3ae4139797c7bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
