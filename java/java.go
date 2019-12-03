@@ -29,6 +29,7 @@ import (
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
+	"android/soong/dexpreopt"
 	"android/soong/java/config"
 	"android/soong/tradefed"
 )
@@ -591,6 +592,16 @@ func (j *Module) deps(ctx android.BottomUpMutatorContext) {
 
 	if j.shouldInstrumentStatic(ctx) {
 		ctx.AddVariationDependencies(nil, staticLibTag, "jacocoagent")
+	}
+
+	// A system server jar should have other system server jars in its class loader context
+	// when dexpreopting (all system server jars that precede this one on the global list
+	// of system server jars). Add these jars as dependencies with a special tag.
+	nonUpdatableSystemServerJars := dexpreopt.NonUpdatableSystemServerJars(ctx, dexpreoptGlobalConfig(ctx))
+	if i := android.IndexList(ctx.ModuleName(), nonUpdatableSystemServerJars); i > 0 {
+		for j := 0; j < i; j++ {
+			ctx.AddDependency(ctx.Module(), dexpreopt.SystemServerJarTag, nonUpdatableSystemServerJars[j])
+		}
 	}
 }
 
