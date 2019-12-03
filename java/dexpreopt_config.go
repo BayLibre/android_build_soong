@@ -112,15 +112,6 @@ func stemOf(moduleName string) string {
 	return moduleName
 }
 
-func getJarsFromApexJarPairs(apexJarPairs []string) []string {
-	modules := make([]string, len(apexJarPairs))
-	for i, p := range apexJarPairs {
-		_, jar := dexpreopt.SplitApexJarPair(p)
-		modules[i] = jar
-	}
-	return modules
-}
-
 var (
 	bootImageConfigKey       = android.NewOnceKey("bootImageConfig")
 	artBootImageName         = "art"
@@ -143,7 +134,7 @@ func genBootImageConfigs(ctx android.PathContext) map[string]*bootImageConfig {
 			artModules = append(artModules, "jacocoagent")
 		}
 		frameworkModules := android.RemoveListFromList(global.BootJars,
-			concat(artModules, getJarsFromApexJarPairs(global.UpdatableBootJars)))
+			concat(artModules, dexpreopt.GetJarsFromApexJarPairs(global.UpdatableBootJars)))
 
 		artSubdir := "apex/com.android.art/javalib"
 		frameworkSubdir := "system/framework"
