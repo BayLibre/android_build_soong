@@ -70,12 +70,24 @@ var dexpreoptTestGlobalConfigKey = android.NewOnceKey("TestDexpreoptGlobalConfig
 // systemServerClasspath returns the on-device locations of the modules in the system server classpath.  It is computed
 // once the first time it is called for any ctx.Config(), and returns the same slice for all future calls with the same
 // ctx.Config().
-func systemServerClasspath(ctx android.PathContext) []string {
+func systemServerClasspath(ctx android.MakeVarsContext) []string {
 	return ctx.Config().OnceStringSlice(systemServerClasspathKey, func() []string {
 		global := dexpreoptGlobalConfig(ctx)
 
+		// If this function is called before mutators are done, then the ordered list of
+		// system server jars is not available yet, and the best we can do is fail loudly.
+		nonUpdatableSystemServerJarsOrdered := orderedSystemServerJars.jars
+		nonUpdatableSystemServerJars := dexpreopt.NonUpdatableSystemServerJars(ctx, dexpreoptGlobalConfig(ctx))
+		ctx.VisitAllModules(func(module android.Module) {
+			on1 := android.IndexList(module.Name(), nonUpdatableSystemServerJarsOrdered) == -1
+			on2 := android.IndexList(module.Name(), nonUpdatableSystemServerJars) == -1
+			if on1 != on2 {
+				panic("The ordered list of system server is not constructed yet.")
+			}
+		})
+
 		var systemServerClasspathLocations []string
-		for _, m := range global.SystemServerJars {
+		for _, m := range nonUpdatableSystemServerJarsOrdered {
 			systemServerClasspathLocations = append(systemServerClasspathLocations,
 				filepath.Join("/system/framework", m+".jar"))
 		}
@@ -112,15 +124,6 @@ func stemOf(moduleName string) string {
 	return moduleName
 }
 
-func getJarsFromApexJarPairs(apexJarPairs []string) []string {
-	modules := make([]string, len(apexJarPairs))
-	for i, p := range apexJarPairs {
-		_, jar := dexpreopt.SplitApexJarPair(p)
-		modules[i] = jar
-	}
-	return modules
-}
-
 var (
 	bootImageConfigKey       = android.NewOnceKey("bootImageConfig")
 	artBootImageName         = "art"
@@ -143,7 +146,7 @@ func genBootImageConfigs(ctx android.PathContext) map[string]*bootImageConfig {
 			artModules = append(artModules, "jacocoagent")
 		}
 		frameworkModules := android.RemoveListFromList(global.BootJars,
-			concat(artModules, getJarsFromApexJarPairs(global.UpdatableBootJars)))
+			concat(artModules, dexpreopt.GetJarsFromApexJarPairs(global.UpdatableBootJars)))
 
 		artSubdir := "apex/com.android.art/javalib"
 		frameworkSubdir := "system/framework"
