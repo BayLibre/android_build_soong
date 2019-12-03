@@ -646,7 +646,8 @@ func TestHostSnapshot(t *testing.T) {
 		}
 	`)
 
-	sdk := ctx.ModuleForTests("mysdk", "linux_glibc_common").Module().(*sdk)
+	commonTarget := config.BuildOSCommonTarget.String()
+	sdk := ctx.ModuleForTests("mysdk", commonTarget).Module().(*sdk)
 
 	checkSnapshotAndroidBpContents(t, sdk, `// This is auto-generated. DO NOT EDIT.
 
@@ -752,7 +753,7 @@ sdk_snapshot {
 		if ruleString == "android/soong/android.Cp" {
 			copySrcs = append(copySrcs, bp.Input.String())
 			copyDests = append(copyDests, bp.Output.Rel()) // rooted at the snapshot root
-		} else if ruleString == "<local rule>:m.mysdk_linux_glibc_common.snapshot" {
+		} else if ruleString == "<local rule>:m.mysdk_"+commonTarget+".snapshot" {
 			zipBp = bp
 		}
 	}
@@ -763,7 +764,7 @@ sdk_snapshot {
 	ensureListContains(t, copySrcs, filepath.Join(buildDir, ".intermediates/mynativelib/linux_glibc_x86_64_shared/gen/aidl/aidl/foo/bar/BnTest.h"))
 	ensureListContains(t, copySrcs, filepath.Join(buildDir, ".intermediates/mynativelib/linux_glibc_x86_64_shared/gen/aidl/aidl/foo/bar/BpTest.h"))
 	ensureListContains(t, copySrcs, filepath.Join(buildDir, ".intermediates/mynativelib/linux_glibc_x86_64_shared/gen/aidl/aidl/foo/bar/Test.h"))
-	ensureListContains(t, copySrcs, filepath.Join(buildDir, ".intermediates/myjavalib/linux_glibc_common/javac/myjavalib.jar"))
+	ensureListContains(t, copySrcs, filepath.Join(buildDir, ".intermediates/myjavalib/"+commonTarget+"/javac/myjavalib.jar"))
 	ensureListContains(t, copySrcs, filepath.Join(buildDir, ".intermediates/mynativelib/linux_glibc_x86_64_shared/mynativelib.so"))
 
 	ensureListContains(t, copyDests, "aidl/aidl/foo/bar/Test.aidl")
@@ -778,11 +779,11 @@ sdk_snapshot {
 	// and then merged together with the intermediate snapshot zip.
 	snapshotCreationInputs := zipBp.Implicits.Strings()
 	ensureListContains(t, snapshotCreationInputs,
-		filepath.Join(buildDir, ".intermediates/mysdk/linux_glibc_common/tmp/java/myjavaapistubs_stubs_sources.zip"))
+		filepath.Join(buildDir, ".intermediates/mysdk/"+commonTarget+"/tmp/java/myjavaapistubs_stubs_sources.zip"))
 	ensureListContains(t, snapshotCreationInputs,
-		filepath.Join(buildDir, ".intermediates/mysdk/linux_glibc_common/mysdk-current.unmerged.zip"))
+		filepath.Join(buildDir, ".intermediates/mysdk/"+commonTarget+"/mysdk-current.unmerged.zip"))
 	actual := zipBp.Output.String()
-	expected := filepath.Join(buildDir, ".intermediates/mysdk/linux_glibc_common/mysdk-current.zip")
+	expected := filepath.Join(buildDir, ".intermediates/mysdk/"+commonTarget+"/mysdk-current.zip")
 	if actual != expected {
 		t.Errorf("Expected snapshot output to be %q but was %q", expected, actual)
 	}
