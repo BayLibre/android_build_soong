@@ -61,6 +61,13 @@ type sdk struct {
 }
 
 type sdkProperties struct {
+	// For module types from the cc package
+
+	// The list of native libraries in this SDK
+	Native_shared_libs []string
+
+	// For module types from the java package
+
 	// The list of java header libraries in this SDK
 	//
 	// This should be used for java libraries that are provided separately at runtime,
@@ -68,8 +75,10 @@ type sdkProperties struct {
 	Java_header_libs []string
 	// The list of java implementation libraries in this SDK
 	Java_libs []string
-	// The list of native libraries in this SDK
-	Native_shared_libs []string
+
+	// The list of java test libraries in this SDK
+	Java_tests []string
+
 	// The list of stub sources in this SDK
 	Stubs_sources []string
 
@@ -119,6 +128,11 @@ var sdkMemberListProperties = []*sdkMemberListProperty{
 		name:       "java_libs",
 		getter:     func(properties *sdkProperties) []string { return properties.Java_libs },
 		memberType: java.ImplLibrarySdkMemberType,
+	},
+	{
+		name:       "java_tests",
+		getter:     func(properties *sdkProperties) []string { return properties.Java_tests },
+		memberType: java.TestSdkMemberType,
 	},
 	{
 		name:       "stubs_sources",

@@ -321,6 +321,112 @@ aidl/foo/bar/Test.aidl -> aidl/aidl/foo/bar/Test.aidl
 	)
 }
 
+func TestSnapshotWithJavaTest(t *testing.T) {
+	result := testSdkWithJava(t, `
+		sdk {
+			name: "mysdk",
+			java_tests: ["myjavatests"],
+		}
+
+		java_test {
+			name: "myjavatests",
+			srcs: ["Test.java"],
+			system_modules: "none",
+			sdk_version: "none",
+			compile_dex: true,
+			host_supported: true,
+		}
+	`)
+
+	result.CheckSnapshot("mysdk", "android_common", "",
+		checkAndroidBpContents(`
+// This is auto-generated. DO NOT EDIT.
+
+prebuilt_java_test {
+    name: "mysdk_myjavatests@current",
+    sdk_member_name: "myjavatests",
+    jars: ["java/myjavatests.jar"],
+    test_config: "java/myjavatests-AndroidTest.xml",
+}
+
+prebuilt_java_test {
+    name: "myjavatests",
+    prefer: false,
+    jars: ["java/myjavatests.jar"],
+    test_config: "java/myjavatests-AndroidTest.xml",
+}
+
+sdk_snapshot {
+    name: "mysdk@current",
+    java_tests: ["mysdk_myjavatests@current"],
+}
+`),
+		checkAllCopyRules(`
+.intermediates/myjavatests/android_common/javac/myjavatests.jar -> java/myjavatests.jar
+.intermediates/myjavatests/android_common/myjavatests.config -> java/myjavatests-AndroidTest.xml
+`),
+	)
+}
+
+func TestHostSnapshotWithJavaTest(t *testing.T) {
+	// b/145598135 - Generating host snapshots for anything other than linux is not supported.
+	SkipIfNotLinux(t)
+
+	result := testSdkWithJava(t, `
+		sdk {
+			name: "mysdk",
+			device_supported: false,
+			host_supported: true,
+			java_tests: ["myjavatests"],
+		}
+
+		java_test {
+			name: "myjavatests",
+			device_supported: false,
+			host_supported: true,
+			srcs: ["Test.java"],
+			system_modules: "none",
+			sdk_version: "none",
+			compile_dex: true,
+		}
+	`)
+
+	result.CheckSnapshot("mysdk", "linux_glibc_common", "",
+		checkAndroidBpContents(`
+// This is auto-generated. DO NOT EDIT.
+
+prebuilt_java_test {
+    name: "mysdk_myjavatests@current",
+    sdk_member_name: "myjavatests",
+    device_supported: false,
+    host_supported: true,
+    jars: ["java/myjavatests.jar"],
+    test_config: "java/myjavatests-AndroidTest.xml",
+}
+
+prebuilt_java_test {
+    name: "myjavatests",
+    prefer: false,
+    device_supported: false,
+    host_supported: true,
+    jars: ["java/myjavatests.jar"],
+    test_config: "java/myjavatests-AndroidTest.xml",
+}
+
+sdk_snapshot {
+    name: "mysdk@current",
+    device_supported: false,
+    host_supported: true,
+    java_tests: ["mysdk_myjavatests@current"],
+}
+`),
+		checkAllCopyRules(`
+.intermediates/myjavatests/linux_glibc_common/javac/myjavatests.jar -> java/myjavatests.jar
+.intermediates/myjavatests/linux_glibc_common/myjavatests.config -> java/myjavatests-AndroidTest.xml
+`),
+	)
+}
+
 func testSdkWithDroidstubs(t *testing.T, bp string) *testSdkResult {
 	t.Helper()
 
