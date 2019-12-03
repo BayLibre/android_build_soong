@@ -55,6 +55,8 @@ func testSdkContext(bp string, fs map[string][]byte) (*android.TestContext, andr
 	ctx.RegisterModuleType("java_import", java.ImportFactory)
 	ctx.RegisterModuleType("droidstubs", java.DroidstubsFactory)
 	ctx.RegisterModuleType("prebuilt_stubs_sources", java.PrebuiltStubsSourcesFactory)
+	ctx.RegisterModuleType("java_test", java.TestFactory)
+	ctx.RegisterModuleType("java_test_import", java.JavaTestImportFactory)
 
 	// from cc package
 	ctx.RegisterModuleType("cc_library", cc.LibraryFactory)
