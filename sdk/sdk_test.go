@@ -646,6 +646,12 @@ func TestHostSnapshot(t *testing.T) {
 		}
 	`)
 
+	// Do not run the test on mac.
+	commonTarget := config.BuildOSCommonTarget.String()
+	if commonTarget == "linux_glibc_common" {
+		return
+	}
+
 	sdk := ctx.ModuleForTests("mysdk", "linux_glibc_common").Module().(*sdk)
 
 	checkSnapshotAndroidBpContents(t, sdk, `// This is auto-generated. DO NOT EDIT.
