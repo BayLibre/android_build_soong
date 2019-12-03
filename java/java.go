@@ -23,12 +23,14 @@ import (
 	"path/filepath"
 	"strconv"
 	"strings"
+	"sync"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/pathtools"
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
+	"android/soong/dexpreopt"
 	"android/soong/java/config"
 	"android/soong/tradefed"
 )
@@ -59,6 +61,8 @@ func init() {
 			PropertyName: "java_tests",
 		},
 	})
+
+	android.PostDepsMutators(RegisterPostDepsMutators)
 }
 
 func RegisterJavaBuildComponents(ctx android.RegistrationContext) {
@@ -82,6 +86,56 @@ func RegisterJavaBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterSingletonType("logtags", LogtagsSingleton)
 	ctx.RegisterSingletonType("kythe_java_extract", kytheExtractJavaFactory)
 }
+
+func RegisterPostDepsMutators(ctx android.RegisterMutatorsContext) {
+	ctx.BottomUp("ordered_system_server_jars", systemServerJarsDepsMutator)
+}
+
+// Warning: DO NOT USE this variable outside of systemServerJarsDepsMutator!
+// Use DexpreoptedSystemServerJars() function instead.
+var dexpreoptedSystemServerJarsUnsafe []string
+var dexpreoptedSystemServerJarsLock sync.Mutex
+
+// A PostDepsMutator pass that enforces total order on non-updatable system server jars. A total
+// order is neededed because such jars must be dexpreopted together (each jar on the list must have
+// all preceding jars in its class loader context). The total order must be compatible with the
+// partial order imposed by genuine dependencies between system server jars (which is not always
+// respected by the PRODUCT_SYSTEM_SERVER_JARS variable).
+//
+// An earlier mutator pass creates genuine dependencies, and this pass traverses the jars in that
+// order (which is partial and non-deterministic). This pass adds additional dependencies between
+// jars, making the order total and deterministic. It also constructs a global ordered list.
+func systemServerJarsDepsMutator(ctx android.BottomUpMutatorContext) {
+	jars := dexpreopt.NonUpdatableSystemServerJars(ctx, dexpreoptGlobalConfig(ctx))
+	name := ctx.ModuleName()
+	if android.InList(name, jars) {
+		dexpreoptedSystemServerJarsLock.Lock()
+		for _, dep := range dexpreoptedSystemServerJarsUnsafe {
+			ctx.AddDependency(ctx.Module(), dexpreopt.SystemServerDepTag, dep)
+		}
+		dexpreoptedSystemServerJarsUnsafe = append(dexpreoptedSystemServerJarsUnsafe, name)
+		dexpreoptedSystemServerJarsLock.Unlock()
+	}
+}
+
+func DexpreoptedSystemServerJars(ctx android.MakeVarsContext) []string {
+	return ctx.Config().OnceStringSlice(dexpreoptedSystemServerJarsKey, func() []string {
+		// This is MakeVarsContext, which means that all PostDepsMutator passes are done and the
+		// odered list of system server jars is constructed. The following check never fails, but
+		// it remains here to guard agains occasional copy-paste / change of context.
+		nonUpdatableSystemServerJars := dexpreopt.NonUpdatableSystemServerJars(ctx, dexpreoptGlobalConfig(ctx))
+		ctx.VisitAllModules(func(module android.Module) {
+			on1 := android.InList(module.Name(), dexpreoptedSystemServerJarsUnsafe)
+			on2 := android.InList(module.Name(), nonUpdatableSystemServerJars)
+			if on1 != on2 {
+				panic("The ordered list of system server is not constructed yet.")
+			}
+		})
+		return dexpreoptedSystemServerJarsUnsafe
+	})
+}
+
+var dexpreoptedSystemServerJarsKey = android.NewOnceKey("dexpreoptedSystemServerJars")
 
 func (j *Module) checkSdkVersion(ctx android.ModuleContext) {
 	if j.SocSpecific() || j.DeviceSpecific() ||
@@ -665,6 +719,11 @@ func (j *Module) deps(ctx android.BottomUpMutatorContext) {
 		}
 	} else if j.shouldInstrumentStatic(ctx) {
 		ctx.AddVariationDependencies(nil, staticLibTag, "jacocoagent")
+	}
+
+	// services depend on com.android.location.provider, but dependency in not registered in a Blueprint file
+	if ctx.ModuleName() == "services" {
+		ctx.AddDependency(ctx.Module(), dexpreopt.SystemServerForcedDepTag, "com.android.location.provider")
 	}
 }
 
