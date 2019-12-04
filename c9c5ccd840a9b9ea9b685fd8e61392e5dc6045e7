@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd92c1e1_c68dcb35",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-12-04T18:11:19Z",
+      "side": 1,
+      "message": "I worry this may allow for some funky behaviour. Say you have some layout:\n\n  foo/\n  foo/test/data/\n  foo/fuzz/\n\nand foo/fuzz/Android.bp has a cc_fuzz target with data: [ \u0027../test/data/*\u0027 ], won\u0027t Rel() here make the data get installed to /data/fuzz/arm64/test/data instead of /data/fuzz/arm64/my_fuzz_target/test/data?",
+      "range": {
+        "startLine": 224,
+        "startChar": 42,
+        "endLine": 224,
+        "endChar": 45
+      },
+      "revId": "c9c5ccd840a9b9ea9b685fd8e61392e5dc6045e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f91f301f_15c9a282",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-12-04T18:11:19Z",
+      "side": 1,
+      "message": "This doesn\u0027t add a build dependency, and should definitely be a FlagWithInput. Previously, we ran into cryptic line-length issues, which is why we use the rsp file above. If FlagWithInput here WAI, there\u0027s probably some bug in FlagWithRspFileInputList.",
+      "range": {
+        "startLine": 399,
+        "startChar": 4,
+        "endLine": 399,
+        "endChar": 71
+      },
+      "revId": "c9c5ccd840a9b9ea9b685fd8e61392e5dc6045e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
