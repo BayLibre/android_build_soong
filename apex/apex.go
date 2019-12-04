@@ -965,7 +965,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			switch depTag {
 			case sharedLibTag:
 				if cc, ok := child.(*cc.Module); ok {
-					if cc.HasStubsVariants() {
+					if cc.HasStubsVariants() || cc.IsLlndkPublic(ctx.Config()) {
 						provideNativeLibs = append(provideNativeLibs, cc.OutputFile().Path().Base())
 					}
 					filesInfo = append(filesInfo, apexFileForNativeLibrary(cc, ctx.Config(), handleSpecialLibs))

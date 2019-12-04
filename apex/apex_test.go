@@ -1915,6 +1915,39 @@ func TestDependenciesInApexManifest(t *testing.T) {
 	ensureListEmpty(t, requireNativeLibs)
 }
 
+func TestDependencies_provideNativeLibs_shouldIncludeLLNDK(t *testing.T) {
+	ctx, _ := testApex(t, `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			native_shared_libs: ["libfoo"],
+			compile_multilib: "both",
+			file_contexts: ":myapex-file_contexts",
+		}
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+		cc_library {
+			name: "libfoo",
+			srcs: ["mylib.cpp"],
+			system_shared_libs: [],
+			stl: "none",
+		}
+		llndk_library {
+			name: "libfoo",
+			symbol_file: "",
+		}
+	`)
+
+	apexManifestRule := ctx.ModuleForTests("myapex", "android_common_myapex_image").Rule("apexManifestRule")
+	provideNativeLibs := names(apexManifestRule.Args["provideNativeLibs"])
+	requireNativeLibs := names(apexManifestRule.Args["requireNativeLibs"])
+	ensureListContains(t, provideNativeLibs, "libfoo.so")
+	ensureListEmpty(t, requireNativeLibs)
+}
+
 func TestApexName(t *testing.T) {
 	ctx, _ := testApex(t, `
 		apex {

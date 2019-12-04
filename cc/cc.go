@@ -761,7 +761,7 @@ func (c *Module) isLlndk(config android.Config) bool {
 	return isLlndkLibrary(c.BaseModuleName(), config)
 }
 
-func (c *Module) isLlndkPublic(config android.Config) bool {
+func (c *Module) IsLlndkPublic(config android.Config) bool {
 	// Returns true only for LLNDK (public) libs.
 	name := c.BaseModuleName()
 	return isLlndkLibrary(name, config) && !isVndkPrivateLibrary(name, config)
@@ -993,7 +993,7 @@ func (ctx *moduleContextImpl) isLlndk(config android.Config) bool {
 }
 
 func (ctx *moduleContextImpl) isLlndkPublic(config android.Config) bool {
-	return ctx.mod.isLlndkPublic(config)
+	return ctx.mod.IsLlndkPublic(config)
 }
 
 func (ctx *moduleContextImpl) isVndkPrivate(config android.Config) bool {
