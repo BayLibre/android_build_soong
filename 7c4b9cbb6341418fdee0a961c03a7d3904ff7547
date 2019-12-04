@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "24e246d7_c49d1f10",
+        "filename": "rust/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2019-12-04T23:06:52Z",
+      "side": 1,
+      "message": "Spoke a bit offline, there\u0027s a bit of confusion here since rust_tests use stem to generate a subname, which is a different than it\u0027s normal use (to override the output filename).\n\nWe could create a new property (e.g. Subname) so stem\u0027s usage isn\u0027t overloaded and to reduce confusion. Since it seems this kind of stem/subname usage might also occur in cc/test.go according to chh@, we can discuss offline if this is worth cleaning up. Interested to hear ccross@\u0027s thoughts as well.",
+      "parentUuid": "2849d353_ad9664a4",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 25
+      },
+      "revId": "7c4b9cbb6341418fdee0a961c03a7d3904ff7547",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a6e3fa5_e28bdfbf",
         "filename": "rust/test.go",
         "patchSetId": 1
@@ -120,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "c254c01f_215efb5d",
+        "filename": "rust/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2019-12-04T23:06:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d6787150_8858599e",
+      "range": {
+        "startLine": 85,
+        "startChar": 4,
+        "endLine": 85,
+        "endChar": 17
+      },
+      "revId": "7c4b9cbb6341418fdee0a961c03a7d3904ff7547",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "315d5c1d_911d2488",
         "filename": "rust/test.go",
         "patchSetId": 1
@@ -155,6 +203,30 @@
       "side": 1,
       "message": "Stem can come from user given crate_name, different from mutated module name.",
       "parentUuid": "315d5c1d_911d2488",
+      "range": {
+        "startLine": 86,
+        "startChar": 2,
+        "endLine": 88,
+        "endChar": 14
+      },
+      "revId": "7c4b9cbb6341418fdee0a961c03a7d3904ff7547",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45ea3750_044948f7",
+        "filename": "rust/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2019-12-04T23:06:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "280f2ab1_1374c9c6",
       "range": {
         "startLine": 86,
         "startChar": 2,
