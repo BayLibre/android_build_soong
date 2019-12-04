@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec6726e5_69dbc473",
+        "filename": "cc/cmakelists.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2019-12-04T16:50:03Z",
+      "side": 1,
+      "message": "might as well keep `out` here.",
+      "range": {
+        "startLine": 523,
+        "startChar": 45,
+        "endLine": 523,
+        "endChar": 46
+      },
+      "revId": "cd987f62e0199f6dbe49804682e5f29418b04c38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
