@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a66fdb21_f8448f0c",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-04T17:07:38Z",
+      "side": 1,
+      "message": "bug?",
+      "range": {
+        "startLine": 517,
+        "startChar": 3,
+        "endLine": 517,
+        "endChar": 7
+      },
+      "revId": "f970d50358068720edcd3f894f714cb9f139644f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
