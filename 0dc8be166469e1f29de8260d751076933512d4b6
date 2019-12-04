@@ -194,6 +194,24 @@
       "revId": "0dc8be166469e1f29de8260d751076933512d4b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "98994adb_001d037a",
+        "filename": "cc/proto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-04T22:54:55Z",
+      "side": 1,
+      "message": "This should be:\n\nimport (\n\t\"strings\"\n\n\t\"github.com/google/blueprint/pathtools\"\n\n\t\"android/soong/android\"\n)",
+      "parentUuid": "7293ef44_c00fa573",
+      "revId": "0dc8be166469e1f29de8260d751076933512d4b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
