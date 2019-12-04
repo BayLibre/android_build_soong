@@ -70,6 +70,8 @@ var (
 		"-Werror=address",
 		"-Werror=sequence-point",
 		"-Werror=format-security",
+		"-Werror=pragma-pack",
+		"-Werror=pragma-pack-suspicious-include",
 	}
 
 	deviceGlobalCppflags = []string{
