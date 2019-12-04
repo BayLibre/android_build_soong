@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d241cd17_8b161016",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-12-04T22:12:42Z",
+      "side": 1,
+      "message": "I don\u0027t think it sounds like that for the target audience, especially in this introductory paragraph.",
+      "parentUuid": "d7fdb1f4_88b17e6e",
+      "range": {
+        "startLine": 173,
+        "startChar": 48,
+        "endLine": 175,
+        "endChar": 10
+      },
+      "revId": "67d290411bfc57334a9939b9cabaf39d4bad0bf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a586c003_347e11fc",
         "filename": "README.md",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "67d290411bfc57334a9939b9cabaf39d4bad0bf5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d97f64f8_1f2ed788",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-12-04T22:12:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a586c003_347e11fc",
+      "range": {
+        "startLine": 189,
+        "startChar": 46,
+        "endLine": 189,
+        "endChar": 55
+      },
+      "revId": "67d290411bfc57334a9939b9cabaf39d4bad0bf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c4e2c3f4_7d8a178a",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-12-04T22:12:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e031b8ea_bf218360",
+      "range": {
+        "startLine": 219,
+        "startChar": 13,
+        "endLine": 219,
+        "endChar": 29
+      },
+      "revId": "67d290411bfc57334a9939b9cabaf39d4bad0bf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fbc574d1_a88e3162",
         "filename": "README.md",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "3a5f0ffa_b17a3617",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-12-04T22:12:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbc574d1_a88e3162",
+      "range": {
+        "startLine": 233,
+        "startChar": 8,
+        "endLine": 233,
+        "endChar": 15
+      },
+      "revId": "67d290411bfc57334a9939b9cabaf39d4bad0bf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1a9d627_21def048",
         "filename": "README.md",
         "patchSetId": 2
@@ -105,6 +201,24 @@
       "writtenOn": "2019-12-04T19:20:40Z",
       "side": 1,
       "message": "Yes, anything outside of the root namespace will not be visible to Make, which means nothing defined in Make can depend on it and it can\u0027t be installed on the device.",
+      "revId": "67d290411bfc57334a9939b9cabaf39d4bad0bf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "611dd10f_de357ba1",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-12-04T22:12:42Z",
+      "side": 1,
+      "message": "I have rewritten it according to my understanding, which is still vague -- if I have a module FOO in Android.bp belonging to namespace NS, is it still referenced as FOO in a makefile (that is, after NS has been added to PRODUCT_SOONG_NAMESPACES)? How does Soong achieve that?",
+      "parentUuid": "d1a9d627_21def048",
       "revId": "67d290411bfc57334a9939b9cabaf39d4bad0bf5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
