@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "d6787150_8858599e",
+        "filename": "rust/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2019-12-04T21:06:16Z",
+      "side": 1,
+      "message": "Actually, the real/original reason to use Device() test is to match the test in tradefed/autogen.go. There, for both C/C++ and Rust tests, Device() is tested to select the config template. Here we need to use the same Device() test to compute the right \"name\" parameter.",
+      "parentUuid": "0ca01046_0ff93704",
+      "range": {
+        "startLine": 85,
+        "startChar": 4,
+        "endLine": 85,
+        "endChar": 17
+      },
+      "revId": "7c4b9cbb6341418fdee0a961c03a7d3904ff7547",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "315d5c1d_911d2488",
         "filename": "rust/test.go",
         "patchSetId": 1
