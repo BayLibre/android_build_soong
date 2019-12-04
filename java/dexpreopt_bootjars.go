@@ -598,7 +598,6 @@ func (d *dexpreoptBootJars) MakeVars(ctx android.MakeVarsContext) {
 		ctx.Strict("DEXPREOPT_BOOTCLASSPATH_DEX_FILES", strings.Join(image.dexPathsDeps.Strings(), " "))
 		ctx.Strict("DEXPREOPT_BOOTCLASSPATH_DEX_LOCATIONS", strings.Join(image.dexLocationsDeps, " "))
 		ctx.Strict("DEXPREOPT_IMAGE_LOCATIONS", strings.Join(image.imageLocations, ":"))
-		ctx.Strict("DEXPREOPT_IMAGE_ZIP_"+image.name, image.zip.String())
 
 		var imageNames []string
 		for _, current := range append(d.otherImages, image) {
@@ -619,6 +618,8 @@ func (d *dexpreoptBootJars) MakeVars(ctx android.MakeVarsContext) {
 				if current.zip != nil {
 				}
 			}
+
+			ctx.Strict("DEXPREOPT_IMAGE_ZIP_"+image.name, image.zip.String())
 		}
 		ctx.Strict("DEXPREOPT_IMAGE_NAMES", strings.Join(imageNames, " "))
 	}
