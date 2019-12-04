@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "630f9dd7_be4c4a2d",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-12-04T04:57:02Z",
+      "side": 1,
+      "message": "This definitely looks like a hack, but I couldn\u0027t find a better option. Could you?\n\nOtherwise, I will keep this as it is, until we have a better way of ensuring this.",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 6
+      },
+      "revId": "d03e7c7d01c49c3a17a56f9f05426398c404c059",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
