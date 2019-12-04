@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7fdb1f4_88b17e6e",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-04T19:20:40Z",
+      "side": 1,
+      "message": "This makes it sound like there is special handling for a module if it is uniquely named, but there is not.  Modules must be uniquely named within their namespace, and you can reference modules in the same namespace, imported namespaces, or the root namespace using short names.  Modules outside those can always be referenced with a fully qualified name.",
+      "range": {
+        "startLine": 173,
+        "startChar": 48,
+        "endLine": 175,
+        "endChar": 10
+      },
+      "revId": "67d290411bfc57334a9939b9cabaf39d4bad0bf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a586c003_347e11fc",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-04T19:20:40Z",
+      "side": 1,
+      "message": "Prefer to call these Android.bp files to avoid confusion with go/blueprint.",
+      "range": {
+        "startLine": 189,
+        "startChar": 46,
+        "endLine": 189,
+        "endChar": 55
+      },
+      "revId": "67d290411bfc57334a9939b9cabaf39d4bad0bf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e031b8ea_bf218360",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-04T19:20:40Z",
+      "side": 1,
+      "message": "\"//_scope_:_name_\", or define the scope to begin with //.",
+      "range": {
+        "startLine": 219,
+        "startChar": 13,
+        "endLine": 219,
+        "endChar": 29
+      },
+      "revId": "67d290411bfc57334a9939b9cabaf39d4bad0bf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbc574d1_a88e3162",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-04T19:20:40Z",
+      "side": 1,
+      "message": "We usually call this \"parses\"",
+      "range": {
+        "startLine": 233,
+        "startChar": 8,
+        "endLine": 233,
+        "endChar": 15
+      },
+      "revId": "67d290411bfc57334a9939b9cabaf39d4bad0bf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1a9d627_21def048",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-04T19:20:40Z",
+      "side": 1,
+      "message": "Yes, anything outside of the root namespace will not be visible to Make, which means nothing defined in Make can depend on it and it can\u0027t be installed on the device.",
+      "revId": "67d290411bfc57334a9939b9cabaf39d4bad0bf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
