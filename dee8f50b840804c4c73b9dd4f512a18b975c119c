@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eaf2213c_9245be9d",
+        "filename": "cuj/run_cuj_tests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-12-04T18:32:44Z",
+      "side": 1,
+      "message": "Put a simple message that it\u0027s unsupported os in case someone runs this script.",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 10
+      },
+      "revId": "dee8f50b840804c4c73b9dd4f512a18b975c119c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
