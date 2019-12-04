@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7b24f00_7dab90bc",
+        "filename": "rust/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2019-12-04T19:14:20Z",
+      "side": 1,
+      "message": "I think this should be \n name :\u003d test.baseCompiler.getStem()\n\nwhich will collect the name based on the module name or the defined stem, and incorporate the suffix as well. This removes the need to retrieve the stem below as well.",
+      "range": {
+        "startLine": 81,
+        "startChar": 1,
+        "endLine": 81,
+        "endChar": 25
+      },
+      "revId": "7c4b9cbb6341418fdee0a961c03a7d3904ff7547",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a6e3fa5_e28bdfbf",
+        "filename": "rust/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2019-12-04T19:14:20Z",
+      "side": 1,
+      "message": "ctx.Host() might be more clear.",
+      "range": {
+        "startLine": 85,
+        "startChar": 4,
+        "endLine": 85,
+        "endChar": 17
+      },
+      "revId": "7c4b9cbb6341418fdee0a961c03a7d3904ff7547",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "315d5c1d_911d2488",
+        "filename": "rust/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2019-12-04T19:14:20Z",
+      "side": 1,
+      "message": "See above",
+      "range": {
+        "startLine": 86,
+        "startChar": 2,
+        "endLine": 88,
+        "endChar": 14
+      },
+      "revId": "7c4b9cbb6341418fdee0a961c03a7d3904ff7547",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
