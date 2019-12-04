@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "2f31562b_85f0ae20",
+        "filename": "android/proto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-12-04T02:58:25Z",
+      "side": 1,
+      "message": "Added the comment where RunWithKythePlugin is set in cc/proto.cc",
+      "parentUuid": "0be35f19_a0ef0771",
+      "revId": "0dc8be166469e1f29de8260d751076933512d4b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93483763_096c72af",
         "filename": "cc/builder.go",
         "patchSetId": 2
@@ -158,6 +176,24 @@
       "revId": "0dc8be166469e1f29de8260d751076933512d4b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7293ef44_c00fa573",
+        "filename": "cc/proto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-12-04T02:58:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f4bcecc_933cfe19",
+      "revId": "0dc8be166469e1f29de8260d751076933512d4b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
