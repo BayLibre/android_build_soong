@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e198f6a9_7e8997b5",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1022179
+      },
+      "writtenOn": "2019-12-04T00:42:56Z",
+      "side": 1,
+      "message": "No worries! Sorry for being unclear. I was thinking it would be good to present the syntax, like so:\n-----\n The name of the namespace in the example above is thus `device/amlogic/yukawa` and would be set with:\n\n```\nsoong_namespace {device/amlogic/yukawa\n   ...\n}\n-----\n\nThis is optional though. Resolving the comment.",
+      "parentUuid": "caac8d9b_18040d99",
+      "range": {
+        "startLine": 189,
+        "startChar": 7,
+        "endLine": 189,
+        "endChar": 14
+      },
+      "revId": "3ff123c8bcd5cd3c197dd4b0b7c0d51a9bbc7ff0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb8e4b2d_9ee731ef",
         "filename": "README.md",
         "patchSetId": 1
