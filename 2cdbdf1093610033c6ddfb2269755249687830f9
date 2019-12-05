@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61c842e6_3d5a94ee",
+        "filename": "cc/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2019-12-05T03:02:55Z",
+      "side": 1,
+      "message": "-suspicious-include shouldn\u0027t be needed separately. The -Wpragma-pack should be enough. Is there any benefit to doing this as -Werror\u003d, since we have -Werror on globally these days?",
+      "revId": "2cdbdf1093610033c6ddfb2269755249687830f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
