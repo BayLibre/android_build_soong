@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7287174c_8e12f7dc",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-12-05T23:00:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa7b9839_a8a71a39",
+      "revId": "424b37f5c0414f611982c103def3f9fd57c530c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e1e991a_88e3dc36",
         "filename": "cc/fuzz.go",
         "patchSetId": 6
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "3fcf7f49_dfee7165",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-12-05T23:00:49Z",
+      "side": 1,
+      "message": "Correct",
+      "parentUuid": "0e1e991a_88e3dc36",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 399,
+        "endChar": 35
+      },
+      "revId": "424b37f5c0414f611982c103def3f9fd57c530c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "547394ee_0bafcf7c",
         "filename": "cc/fuzz.go",
         "patchSetId": 6
@@ -53,6 +95,30 @@
       "writtenOn": "2019-12-05T22:00:18Z",
       "side": 1,
       "message": "kalder@ - this will need to be plumbed in the repackager.\ntrong@ - can you please propose updates to go/clusterfuzz-package to add this zipfile",
+      "range": {
+        "startLine": 401,
+        "startChar": 3,
+        "endLine": 401,
+        "endChar": 45
+      },
+      "revId": "424b37f5c0414f611982c103def3f9fd57c530c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb29cb35_fa4c439a",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2019-12-05T23:00:49Z",
+      "side": 1,
+      "message": "\u003e trong@ - can you please propose updates to go/clusterfuzz-package to add this zipfile\n\nDone",
+      "parentUuid": "547394ee_0bafcf7c",
       "range": {
         "startLine": 401,
         "startChar": 3,
