@@ -16,6 +16,24 @@
       "revId": "2cdbdf1093610033c6ddfb2269755249687830f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f9ca6ac_72875480",
+        "filename": "cc/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-12-05T03:29:56Z",
+      "side": 1,
+      "message": "-Werror isn\u0027t on globally these days. device/... and vendor/... are still exempt",
+      "parentUuid": "61c842e6_3d5a94ee",
+      "revId": "2cdbdf1093610033c6ddfb2269755249687830f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
