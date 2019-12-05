@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58e76e48_dd2a012e",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-12-05T17:16:57Z",
+      "side": 1,
+      "message": "Moving it here means that we also create zip file for the \"apex\" config (the one used in JIT-zygote experiment). I believe it results in the generation of unused build instructions that create apex.zip.",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 0
+      },
+      "revId": "31bf00dac3ca1bf6703a3087fc61d6097cca557c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
