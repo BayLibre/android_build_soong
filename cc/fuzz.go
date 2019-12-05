@@ -345,6 +345,11 @@ func (s *fuzzPackager) GenerateBuildActions(ctx android.SingletonContext) {
 			return
 		}
 
+		// Discard modules that aren't for this namespace.
+		if !ccModule.ExportedToMake() {
+			return
+		}
+
 		s.fuzzTargets[module.Name()] = true
 
 		hostOrTargetString := "target"
