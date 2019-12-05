@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa7b9839_a8a71a39",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-12-05T22:00:18Z",
+      "side": 1,
+      "message": "Can you mention here that directories relative to the buildrule are preserved.",
+      "revId": "424b37f5c0414f611982c103def3f9fd57c530c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e1e991a_88e3dc36",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-12-05T22:00:18Z",
+      "side": 1,
+      "message": "Just confirming, this works, but FlagWithRspFileInputList doesn\u0027t?",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 399,
+        "endChar": 35
+      },
+      "revId": "424b37f5c0414f611982c103def3f9fd57c530c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "547394ee_0bafcf7c",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-12-05T22:00:18Z",
+      "side": 1,
+      "message": "kalder@ - this will need to be plumbed in the repackager.\ntrong@ - can you please propose updates to go/clusterfuzz-package to add this zipfile",
+      "range": {
+        "startLine": 401,
+        "startChar": 3,
+        "endLine": 401,
+        "endChar": 45
+      },
+      "revId": "424b37f5c0414f611982c103def3f9fd57c530c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
