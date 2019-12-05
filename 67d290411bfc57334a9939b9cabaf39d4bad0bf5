@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b15163fb_b29d100b",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-05T19:59:52Z",
+      "side": 1,
+      "message": "How about: \nIf there is only one module named `libfoo` in the source tree then no namespacing is necessary and\nreferencing it in a rule by name is sufficient:",
+      "parentUuid": "d241cd17_8b161016",
+      "range": {
+        "startLine": 173,
+        "startChar": 48,
+        "endLine": 175,
+        "endChar": 10
+      },
+      "revId": "67d290411bfc57334a9939b9cabaf39d4bad0bf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a586c003_347e11fc",
         "filename": "README.md",
         "patchSetId": 2
@@ -219,6 +243,24 @@
       "side": 1,
       "message": "I have rewritten it according to my understanding, which is still vague -- if I have a module FOO in Android.bp belonging to namespace NS, is it still referenced as FOO in a makefile (that is, after NS has been added to PRODUCT_SOONG_NAMESPACES)? How does Soong achieve that?",
       "parentUuid": "d1a9d627_21def048",
+      "revId": "67d290411bfc57334a9939b9cabaf39d4bad0bf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f0911b4_a52c564d",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-05T19:59:52Z",
+      "side": 1,
+      "message": "Anything in PRODUCT_SOONG_NAMESPACES or the root namespace is exported to Make through out/soong/Android-${TARGET_PRODUCT}.mk.  When building inside Make there is an additional requirement that all modules in the root namespace and any namespaces in PRODUCT_SOONG_NAMESPACES have unique names.",
+      "parentUuid": "611dd10f_de357ba1",
       "revId": "67d290411bfc57334a9939b9cabaf39d4bad0bf5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
