@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2cdc18ce_be1fbb83",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-05T23:38:53Z",
+      "side": 1,
+      "message": "It would be better to divide rounding up here, otherwise if you had 19 products and 10 shards your eachShardCount would be 1, and your first 9 shards would have 1 product and your last will have 9.",
+      "revId": "8ac3960146bfcb14c03e385cae3bea264fc891d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
