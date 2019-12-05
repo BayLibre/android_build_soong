@@ -39,6 +39,24 @@
       "revId": "41ce667f7c881876af14467a84c1ec5000af5090",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d951440_147508d3",
+        "filename": "android/arch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1587,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-12-05T21:01:49Z",
+      "side": 1,
+      "message": "\u003e What is this change being used for again?\n\nMainly prebuilt module SDKs. I\u0027ve got some thought about trying to build the APEXes this way too, but that\u0027s not a priority atm.\n\n\u003e There\u0027s a good chance that you\u0027d want a 32-bit armv8 and another similar x86 in this list too.\n\nYou mean two additional archConfigs? I should have the arches corresponding to the products in build_unbundled_mainline_module.sh, neither more nor less, shouldn\u0027t I?\n\n\u003e And how is it different from the internal vendor/google/build/build_unbundled_mainline_module.sh?\n\nThat one iterates over products doing one build for each, but here we want to combine all four architectures in one build, e.g. getting all four arches in conscrypt-module-sdk-current.zip. Also, we need this in AOSP.",
+      "parentUuid": "5d6332ec_a6f6b5d9",
+      "revId": "41ce667f7c881876af14467a84c1ec5000af5090",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
