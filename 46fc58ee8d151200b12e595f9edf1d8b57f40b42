@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ee726b2_08819157",
+        "filename": "sdk/sdk_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-05T19:29:40Z",
+      "side": 0,
+      "message": "Leave the t argument and add t.Helper()",
+      "revId": "46fc58ee8d151200b12e595f9edf1d8b57f40b42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
