@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03078768_bd148dd9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-12-05T17:20:56Z",
+      "side": 1,
+      "message": "Thoughts on this scoping? I reckon we need commonality on the release targets within Mainline, but I haven\u0027t seen any mention on which they\u0027d be.",
+      "range": {
+        "startLine": 7,
+        "startChar": 52,
+        "endLine": 7,
+        "endChar": 55
+      },
+      "revId": "41ce667f7c881876af14467a84c1ec5000af5090",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
