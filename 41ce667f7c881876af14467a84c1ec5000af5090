@@ -22,6 +22,23 @@
       "revId": "41ce667f7c881876af14467a84c1ec5000af5090",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d6332ec_a6f6b5d9",
+        "filename": "android/arch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1587,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-12-05T17:25:43Z",
+      "side": 1,
+      "message": "What is this change being used for again? There\u0027s a good chance that you\u0027d want a 32-bit armv8 and another similar x86 in this list too.\n\nAnd how is it different from the internal vendor/google/build/build_unbundled_mainline_module.sh?",
+      "revId": "41ce667f7c881876af14467a84c1ec5000af5090",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
