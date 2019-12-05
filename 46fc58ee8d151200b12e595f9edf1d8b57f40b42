@@ -16,6 +16,24 @@
       "revId": "46fc58ee8d151200b12e595f9edf1d8b57f40b42",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc7c8301_bc5d3ca8",
+        "filename": "sdk/sdk_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-12-05T20:27:16Z",
+      "side": 0,
+      "message": "What is the purpose of adding it here? This method should not fail, if it does then it is not a test specific issue. AIUI adding t.Helper() here will cause any errors to point to the calling line in the test and not this method which will make it harder to debug.",
+      "parentUuid": "0ee726b2_08819157",
+      "revId": "46fc58ee8d151200b12e595f9edf1d8b57f40b42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }

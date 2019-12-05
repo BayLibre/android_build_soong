@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c825849c_ca95a912",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-12-05T20:27:16Z",
+      "side": 1,
+      "message": "Ok. Will remove.",
+      "parentUuid": "6a0fb7df_063ff5ca",
+      "range": {
+        "startLine": 114,
+        "startChar": 4,
+        "endLine": 114,
+        "endChar": 11
+      },
+      "revId": "c56bd709d43549ccb849b24d162efef227367353",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97f62f4e_7680ad15",
         "filename": "sdk/sdk_test.go",
         "patchSetId": 5
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "0f6eaeb4_5b0108e1",
+        "filename": "sdk/sdk_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-12-05T20:27:16Z",
+      "side": 1,
+      "message": "It is necessary to loop through all the build params in order to find all the Cp commands so it seemed as though avoiding looping through it multiple times (presumably Rule(...) also loops over them) would be better. Obviously, performance is not such an issue here as it is only test code. Do you think the code will be easier to understand using that method?",
+      "parentUuid": "97f62f4e_7680ad15",
+      "revId": "c56bd709d43549ccb849b24d162efef227367353",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dca4ae4d_79322922",
         "filename": "sdk/update.go",
         "patchSetId": 5
@@ -53,6 +95,24 @@
       "writtenOn": "2019-12-05T19:29:40Z",
       "side": 1,
       "message": "The RuleBuilder style is much easier to keep correct because it tracks implicit dependencies simultaneously with the references to them.  If there are testability issues with it I\u0027d suggest investing in fixing them, not going back to static rules.",
+      "revId": "c56bd709d43549ccb849b24d162efef227367353",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1033f8c2_f424de80",
+        "filename": "sdk/update.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-12-05T20:27:16Z",
+      "side": 1,
+      "message": "Ok. It is not clear from the documentation of rule builder that it has advantages over other approaches, it simply states that it is an alternative approach. Some information about its advantages and disadvantages and when to use the different forms would be useful.\n\nIn this particular case are there any advantages to using rule builder instead of Rule that you can see.\n\nWhat do you mean by \u0027implicit dependencies\u0027? Do you have a concrete example?\n\nIn terms of improving RuleBuilder I did have a look but was not sure how best to approach it. Ideally, what I would like is to be able to extract information by name from the BuildParams. I need to be careful because given the size of the generated ninja file (1.8GB) adding extra information to BuildParams could significantly increase the memory footprint. So, extending it to add more information seems like it is not a viable approach. So, the information needs to be encoded in the existing structure, e.g. the Args field.\n\nAs I see it there are two approaches:\n1) Add copies of existing methods, e.g. Input(Path), Flag(string), that take an extra parameter that is the name of the option which gets stored in the BuildParams Args field, e.g. NamedInput(string, Path), NamedFlag(string, string).\n\n2) Add a modifier method that causes the following method to be treated as a named method. e.g. something like NamedArg(\u003cname\u003e).Input(Path) which causes the input path to be stored in the build params Args field.\n\nAIUI they would both have to generate $\u003cname\u003e in the command line leaving ninja to do the substitution.\n\nThe former would essentially double the number of methods (although I would not need to add them all up front). The latter would be complicated both in the implementation and use.\n\nBefore I invest a not insignificant amount of time on this I was wondering what you thought would be a good approach.",
+      "parentUuid": "dca4ae4d_79322922",
       "revId": "c56bd709d43549ccb849b24d162efef227367353",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
