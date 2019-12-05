@@ -1862,6 +1862,16 @@ type TestHelperLibrary struct {
 	testHelperLibraryProperties testHelperLibraryProperties
 }
 
+type PrebuiltJavaTest struct {
+	Import
+
+	testProperties testProperties
+
+	testConfig android.Path
+	data       android.Paths
+}
+
+
 func (j *Test) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	j.testConfig = tradefed.AutoGenJavaTestConfig(ctx, j.testProperties.Test_config, j.testProperties.Test_config_template,
 		j.testProperties.Test_suites, j.testProperties.Auto_gen_config)
