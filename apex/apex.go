@@ -905,6 +905,11 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		} else {
 			a.suffix = ""
 			a.primaryApexType = true
+
+			// GSI targets should install .flattened variant along with default variant
+			if ctx.Config().ProductIsGSI() {
+				a.externalDeps = append(a.externalDeps, a.Name()+flattenedSuffix)
+			}
 		}
 	case zipApex:
 		if proptools.String(a.properties.Payload_type) == "zip" {
