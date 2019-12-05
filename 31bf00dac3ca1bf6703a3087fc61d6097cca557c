@@ -22,6 +22,30 @@
       "revId": "31bf00dac3ca1bf6703a3087fc61d6097cca557c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8163044b_b965653a",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-05T20:06:55Z",
+      "side": 1,
+      "message": "Yes, that didn\u0027t seem like an issue worth extra complexity to avoid.",
+      "parentUuid": "58e76e48_dd2a012e",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 0
+      },
+      "revId": "31bf00dac3ca1bf6703a3087fc61d6097cca557c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
