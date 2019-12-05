@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49a692a2_9ceb9a76",
+        "filename": "cuj/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-12-05T00:27:01Z",
+      "side": 1,
+      "message": "Is this still needed?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 2
+      },
+      "revId": "691d76db4ab9d9dfdc3c4c496b0a5e59fdb773f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddb5e562_502d6051",
+        "filename": "cuj/cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-12-05T00:27:01Z",
+      "side": 1,
+      "message": "nit: Move it down after line 36.",
+      "range": {
+        "startLine": 33,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 61
+      },
+      "revId": "691d76db4ab9d9dfdc3c4c496b0a5e59fdb773f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87747d1b_d8df4c40",
+        "filename": "cuj/cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-12-05T00:27:01Z",
+      "side": 1,
+      "message": "0755?",
+      "range": {
+        "startLine": 93,
+        "startChar": 22,
+        "endLine": 93,
+        "endChar": 26
+      },
+      "revId": "691d76db4ab9d9dfdc3c4c496b0a5e59fdb773f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba67cede_8bcdf4c4",
+        "filename": "cuj/cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-12-05T00:27:01Z",
+      "side": 1,
+      "message": "I am not sure if you need this since you are capturing the metrics through CUJ.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 56
+      },
+      "revId": "691d76db4ab9d9dfdc3c4c496b0a5e59fdb773f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65b06821_6f7275f6",
+        "filename": "cuj/cuj.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-12-05T00:27:01Z",
+      "side": 1,
+      "message": "Is this going to be used in the near future?",
+      "range": {
+        "startLine": 196,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 1
+      },
+      "revId": "691d76db4ab9d9dfdc3c4c496b0a5e59fdb773f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65528e37_5836233e",
+        "filename": "cuj/run_cuj_tests.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-12-05T00:27:01Z",
+      "side": 1,
+      "message": "You should put this in double quotes in case there is a space in the directory.",
+      "range": {
+        "startLine": 17,
+        "startChar": 21,
+        "endLine": 17,
+        "endChar": 54
+      },
+      "revId": "691d76db4ab9d9dfdc3c4c496b0a5e59fdb773f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4543d94e_5568281f",
+        "filename": "cuj/run_cuj_tests.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-12-05T00:27:01Z",
+      "side": 1,
+      "message": "pushd ${ANDROID_TOP} \u0026\u003e /dev/null\n\nand then add\ntrap \"popd \u0026\u003e /dev/null\" EXIT\n\nto return back to the same directory.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 15
+      },
+      "revId": "691d76db4ab9d9dfdc3c4c496b0a5e59fdb773f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26fd6cdd_3e53d785",
+        "filename": "cuj/run_cuj_tests.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-12-05T00:27:01Z",
+      "side": 1,
+      "message": "double quotes",
+      "range": {
+        "startLine": 21,
+        "startChar": 19,
+        "endLine": 21,
+        "endChar": 35
+      },
+      "revId": "691d76db4ab9d9dfdc3c4c496b0a5e59fdb773f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4d906ce_21618911",
+        "filename": "ui/metrics/metrics.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-12-05T00:27:01Z",
+      "side": 1,
+      "message": "nit: Move after line 24.",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 61
+      },
+      "revId": "691d76db4ab9d9dfdc3c4c496b0a5e59fdb773f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f0f321e_a6683827",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-12-05T00:27:01Z",
+      "side": 1,
+      "message": "nit: add a period to the end of the text.",
+      "range": {
+        "startLine": 130,
+        "startChar": 41,
+        "endLine": 130,
+        "endChar": 45
+      },
+      "revId": "691d76db4ab9d9dfdc3c4c496b0a5e59fdb773f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
