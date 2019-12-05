@@ -64,6 +64,9 @@ var buildVariant = flag.String("variant", "eng", "build variant to use")
 var skipProducts = flag.String("skip-products", "", "comma-separated list of products to skip (known failures, etc)")
 var includeProducts = flag.String("products", "", "comma-separated list of products to build")
 
+var shardCount = flag.Int("shard-count", 1, "split the products into multiple shards (to spread the build onto multiple machines, etc)")
+var shard = flag.Int("shard", 1, "1-indexed shard to execute")
+
 const errorLeadingLines = 20
 const errorTrailingLines = 20
 
@@ -275,6 +278,21 @@ func main() {
 			finalProductsList = append(finalProductsList, product)
 		} else {
 			log.Verbose("Skipping: ", product)
+		}
+	}
+
+	if *shard < 1 {
+		log.Fatalf("--shard value must be >= 1, not %d\n", *shard)
+	} else if *shardCount < 1 {
+		log.Fatalf("--shard-count value must be >= 1, not %d\n", *shardCount)
+	} else if *shard > *shardCount {
+		log.Fatalf("--shard (%d) must not be greater than --shard-count (%d)\n", *shard,
+			*shardCount)
+	} else if *shardCount > 1 {
+		eachShardCount := len(finalProductsList) / *shardCount
+		finalProductsList = finalProductsList[(*shard-1)*eachShardCount:]
+		if *shard != *shardCount {
+			finalProductsList = finalProductsList[:eachShardCount]
 		}
 	}
 
