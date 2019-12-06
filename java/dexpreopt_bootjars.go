@@ -182,7 +182,8 @@ type dexpreoptBootJars struct {
 	defaultBootImage *bootImage
 	otherImages      []*bootImage
 
-	dexpreoptConfigForMake android.WritablePath
+	dexpreoptConfigForMake      android.WritablePath
+	dexpreoptSoongConfigForMake android.WritablePath
 }
 
 // Accessor function for the apex package. Returns nil if dexpreopt is disabled.
@@ -200,7 +201,8 @@ func (d *dexpreoptBootJars) GenerateBuildActions(ctx android.SingletonContext) {
 	}
 
 	d.dexpreoptConfigForMake = android.PathForOutput(ctx, ctx.Config().DeviceName(), "dexpreopt.config")
-	writeGlobalConfigForMake(ctx, d.dexpreoptConfigForMake)
+	d.dexpreoptSoongConfigForMake = android.PathForOutput(ctx, ctx.Config().DeviceName(), "dexpreopt_soong.config")
+	writeGlobalConfigForMake(ctx, d.dexpreoptConfigForMake, d.dexpreoptSoongConfigForMake)
 
 	global := dexpreoptGlobalConfig(ctx)
 
@@ -574,14 +576,22 @@ func dumpOatRules(ctx android.SingletonContext, image *bootImage) {
 
 }
 
-func writeGlobalConfigForMake(ctx android.SingletonContext, path android.WritablePath) {
-	data := dexpreoptGlobalConfigRaw(ctx).data
+func writeGlobalConfigForMake(ctx android.SingletonContext, dex_preopt_config_path, dex_preopt_soong_config_path android.WritablePath) {
+	c := dexpreoptGlobalConfigRaw(ctx)
 
 	ctx.Build(pctx, android.BuildParams{
 		Rule:   android.WriteFile,
-		Output: path,
+		Output: dex_preopt_config_path,
 		Args: map[string]string{
-			"content": string(data),
+			"content": string(c.product_data),
+		},
+	})
+
+	ctx.Build(pctx, android.BuildParams{
+		Rule:   android.WriteFile,
+		Output: dex_preopt_soong_config_path,
+		Args: map[string]string{
+			"content": string(c.soong_data),
 		},
 	})
 }
@@ -590,6 +600,9 @@ func writeGlobalConfigForMake(ctx android.SingletonContext, path android.Writabl
 func (d *dexpreoptBootJars) MakeVars(ctx android.MakeVarsContext) {
 	if d.dexpreoptConfigForMake != nil {
 		ctx.Strict("DEX_PREOPT_CONFIG_FOR_MAKE", d.dexpreoptConfigForMake.String())
+	}
+	if d.dexpreoptSoongConfigForMake != nil {
+		ctx.Strict("DEX_PREOPT_SOONG_CONFIG_FOR_MAKE", d.dexpreoptSoongConfigForMake.String())
 	}
 
 	image := d.defaultBootImage

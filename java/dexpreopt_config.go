@@ -30,19 +30,20 @@ func dexpreoptGlobalConfig(ctx android.PathContext) dexpreopt.GlobalConfig {
 }
 
 type globalConfigAndRaw struct {
-	global dexpreopt.GlobalConfig
-	data   []byte
+	global       dexpreopt.GlobalConfig
+	product_data []byte
+	soong_data   []byte
 }
 
 func dexpreoptGlobalConfigRaw(ctx android.PathContext) globalConfigAndRaw {
 	return ctx.Config().Once(dexpreoptGlobalConfigKey, func() interface{} {
 		if f := ctx.Config().DexpreoptGlobalConfig(); f != "" {
 			ctx.AddNinjaFileDeps(f)
-			globalConfig, data, err := dexpreopt.LoadGlobalConfig(ctx, f)
+			globalConfig, product_data, soong_data, err := dexpreopt.LoadGlobalConfig(ctx, f)
 			if err != nil {
 				panic(err)
 			}
-			return globalConfigAndRaw{globalConfig, data}
+			return globalConfigAndRaw{globalConfig, product_data, soong_data}
 		}
 
 		// No global config filename set, see if there is a test config set
@@ -51,7 +52,7 @@ func dexpreoptGlobalConfigRaw(ctx android.PathContext) globalConfigAndRaw {
 			return globalConfigAndRaw{dexpreopt.GlobalConfig{
 				DisablePreopt:          true,
 				DisableGenerateProfile: true,
-			}, nil}
+			}, nil, nil}
 		})
 	}).(globalConfigAndRaw)
 }
@@ -59,7 +60,7 @@ func dexpreoptGlobalConfigRaw(ctx android.PathContext) globalConfigAndRaw {
 // setDexpreoptTestGlobalConfig sets a GlobalConfig that future calls to dexpreoptGlobalConfig will return.  It must
 // be called before the first call to dexpreoptGlobalConfig for the config.
 func setDexpreoptTestGlobalConfig(config android.Config, globalConfig dexpreopt.GlobalConfig) {
-	config.Once(dexpreoptTestGlobalConfigKey, func() interface{} { return globalConfigAndRaw{globalConfig, nil} })
+	config.Once(dexpreoptTestGlobalConfigKey, func() interface{} { return globalConfigAndRaw{globalConfig, nil, nil} })
 }
 
 var dexpreoptGlobalConfigKey = android.NewOnceKey("DexpreoptGlobalConfig")

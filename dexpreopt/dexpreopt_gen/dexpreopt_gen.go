@@ -30,10 +30,11 @@ import (
 )
 
 var (
-	dexpreoptScriptPath = flag.String("dexpreopt_script", "", "path to output dexpreopt script")
-	globalConfigPath    = flag.String("global", "", "path to global configuration file")
-	moduleConfigPath    = flag.String("module", "", "path to module configuration file")
-	outDir              = flag.String("out_dir", "", "path to output directory")
+	dexpreoptScriptPath   = flag.String("dexpreopt_script", "", "path to output dexpreopt script")
+	globalConfigPath      = flag.String("global", "", "path to global configuration file")
+	globalSoongConfigPath = flag.String("global_soong", "", "path to global configuration file for settings originating from Soong")
+	moduleConfigPath      = flag.String("module", "", "path to module configuration file")
+	outDir                = flag.String("out_dir", "", "path to output directory")
 )
 
 type pathContext struct {
@@ -67,13 +68,23 @@ func main() {
 		usage("path to global configuration file is required")
 	}
 
+	if *globalSoongConfigPath == "" {
+		usage("--global_soong configuration file is required")
+	}
+
 	if *moduleConfigPath == "" {
 		usage("path to module configuration file is required")
 	}
 
 	ctx := &pathContext{android.TestConfig(*outDir, nil)}
 
-	globalConfig, _, err := dexpreopt.LoadGlobalConfig(ctx, *globalConfigPath)
+	globalConfig, _, _, err := dexpreopt.LoadGlobalConfig(ctx, *globalConfigPath)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "error loading global config %q: %s\n", *globalConfigPath, err)
+		os.Exit(2)
+	}
+
+	globalSoongConfig, _, err := dexpreopt.LoadGlobalSoongConfig(ctx, *globalSoongConfigPath)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "error loading global config %q: %s\n", *globalConfigPath, err)
 		os.Exit(2)
@@ -101,11 +112,10 @@ func main() {
 		}
 	}()
 
-	writeScripts(ctx, globalConfig, moduleConfig, *dexpreoptScriptPath)
+	writeScripts(ctx, globalConfig, globalSoongConfig, moduleConfig, *dexpreoptScriptPath)
 }
 
-func writeScripts(ctx android.PathContext, global dexpreopt.GlobalConfig, module dexpreopt.ModuleConfig,
-	dexpreoptScriptPath string) {
+func writeScripts(ctx android.PathContext, global dexpreopt.GlobalConfig, globalSoong dexpreopt.GlobalSoongConfig, module dexpreopt.ModuleConfig, dexpreoptScriptPath string) {
 	dexpreoptRule, err := dexpreopt.GenerateDexpreoptRule(ctx, global, module)
 	if err != nil {
 		panic(err)
@@ -121,7 +131,7 @@ func writeScripts(ctx android.PathContext, global dexpreopt.GlobalConfig, module
 		dexpreoptRule.Command().Text("mkdir -p").Flag(filepath.Dir(installPath.String()))
 		dexpreoptRule.Command().Text("cp -f").Input(install.From).Output(installPath)
 	}
-	dexpreoptRule.Command().Tool(global.Tools.SoongZip).
+	dexpreoptRule.Command().Tool(globalSoong.SoongZip).
 		FlagWithArg("-o ", "$2").
 		FlagWithArg("-C ", installDir.String()).
 		FlagWithArg("-D ", installDir.String())
