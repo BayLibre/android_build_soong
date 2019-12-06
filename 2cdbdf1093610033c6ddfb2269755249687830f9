@@ -52,6 +52,24 @@
       "revId": "2cdbdf1093610033c6ddfb2269755249687830f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81ee18ec_7fa30d0a",
+        "filename": "cc/config/global.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2019-12-06T20:37:27Z",
+      "side": 1,
+      "message": "It\u0027s fine, but there is no case in which this would get split out from the main warning. I hadn\u0027t realized that we never pushed for just suppressing the specific warnings/errors from vendor/ and external/. I\u0027ll probably look to support a project for doing exactly that, since I don\u0027t think having -Werror default to off in vendor/ and external/ is very healthy.",
+      "parentUuid": "22c800df_e10d322a",
+      "revId": "2cdbdf1093610033c6ddfb2269755249687830f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
