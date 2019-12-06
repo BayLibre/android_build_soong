@@ -16,6 +16,24 @@
       "revId": "8ac3960146bfcb14c03e385cae3bea264fc891d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "587c52aa_88b8b7f8",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-12-06T04:00:03Z",
+      "side": 1,
+      "message": "That\u0027ll end up with too few shards. I fixed it by keeping track of the overflow and adding an extra one to each shard until it runs out. And added a few tests.",
+      "parentUuid": "2cdc18ce_be1fbb83",
+      "revId": "8ac3960146bfcb14c03e385cae3bea264fc891d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
