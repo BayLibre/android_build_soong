@@ -1,0 +1,7 @@
+Code-Review+2: Jaewoong Jung <jungjw@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Jeff Sharkey <jsharkey@google.com>
+Submitted-at: Fri, 06 Dec 2019 23:01:58 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1180923
+Project: platform/build/soong
+Branch: refs/heads/master
