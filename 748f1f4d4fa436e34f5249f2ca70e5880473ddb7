@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f45c16c_4250e023",
+        "filename": "sdk/update.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-06T20:57:39Z",
+      "side": 1,
+      "message": "This is a bit of a code smell to type assert an interface to a type to get a value out of it, should it be an interface method instead?",
+      "revId": "748f1f4d4fa436e34f5249f2ca70e5880473ddb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
