@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "7ea78128_cac48ec6",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-12-06T06:50:37Z",
+      "side": 1,
+      "message": "We haven\u0027t introduced the notion of namespace yet.",
+      "parentUuid": "b15163fb_b29d100b",
+      "range": {
+        "startLine": 173,
+        "startChar": 48,
+        "endLine": 175,
+        "endChar": 10
+      },
+      "revId": "67d290411bfc57334a9939b9cabaf39d4bad0bf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a586c003_347e11fc",
         "filename": "README.md",
         "patchSetId": 2
@@ -261,6 +285,24 @@
       "side": 1,
       "message": "Anything in PRODUCT_SOONG_NAMESPACES or the root namespace is exported to Make through out/soong/Android-${TARGET_PRODUCT}.mk.  When building inside Make there is an additional requirement that all modules in the root namespace and any namespaces in PRODUCT_SOONG_NAMESPACES have unique names.",
       "parentUuid": "611dd10f_de357ba1",
+      "revId": "67d290411bfc57334a9939b9cabaf39d4bad0bf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55516992_eaf8a04c",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-12-06T06:50:37Z",
+      "side": 1,
+      "message": "Sorry, I want more clarity. \nDoes the first statement mean that aside from the modules belonging to the default scope, only the names of the modules belonging to the namespaces listed in PRODUCT_SOONG_NAMESPACES will be present in the generated ninja files?\nDoes the second statement mean that if there is a module libfoo in the global namespace, there cannot be another module libfoo in an explicit names space listed in PRODUCT_SOONG_NAMESPACES?",
+      "parentUuid": "4f0911b4_a52c564d",
       "revId": "67d290411bfc57334a9939b9cabaf39d4bad0bf5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
