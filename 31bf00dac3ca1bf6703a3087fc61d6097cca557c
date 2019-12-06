@@ -46,6 +46,30 @@
       "revId": "31bf00dac3ca1bf6703a3087fc61d6097cca557c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eefdabd9_71a76025",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-12-06T10:39:33Z",
+      "side": 1,
+      "message": "Ok. My concern was based on an earlier discussion with Nicolas where we decided not to add zip to the apex config: https://android-review.googlesource.com/c/platform/build/soong/+/1149397/2/java/dexpreopt_config.go#146",
+      "parentUuid": "8163044b_b965653a",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 0
+      },
+      "revId": "31bf00dac3ca1bf6703a3087fc61d6097cca557c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
