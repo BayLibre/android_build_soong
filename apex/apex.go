@@ -595,7 +595,24 @@ func (a *apexBundle) IsSanitizerEnabled(ctx android.BaseModuleContext, sanitizer
 	return android.InList(sanitizerName, globalSanitizerNames)
 }
 
+<<<<<<< HEAD   (646702 Merge branch android10-qpr2-release)
 func getCopyManifestForNativeLibrary(cc *cc.Module, handleSpecialLibs bool) (fileToCopy android.Path, dirInApex string) {
+=======
+func (a *apexBundle) IsNativeCoverageNeeded(ctx android.BaseModuleContext) bool {
+	return ctx.Device() && (ctx.DeviceConfig().NativeCoverageEnabled() || ctx.DeviceConfig().ClangCoverageEnabled())
+}
+
+func (a *apexBundle) PreventInstall() {
+	a.properties.PreventInstall = true
+}
+
+func (a *apexBundle) HideFromMake() {
+	a.properties.HideFromMake = true
+}
+
+// TODO(jiyong) move apexFileFor* close to the apexFile type definition
+func apexFileForNativeLibrary(ccMod *cc.Module, config android.Config, handleSpecialLibs bool) apexFile {
+>>>>>>> CHANGE (1382ab Add coverage flags for Clang coverage builds.)
 	// Decide the APEX-local directory by the multilib of the library
 	// In the future, we may query this to the module.
 	switch cc.Arch().ArchType.Multilib {

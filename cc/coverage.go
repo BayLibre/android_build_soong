@@ -41,6 +41,7 @@ func (cov *coverage) props() []interface{} {
 	return []interface{}{&cov.Properties}
 }
 
+<<<<<<< HEAD   (646702 Merge branch android10-qpr2-release)
 func (cov *coverage) deps(ctx BaseModuleContext, deps Deps) Deps {
 	if cov.Properties.NeedCoverageBuild {
 		// Link libprofile-extras/libprofile-extras_ndk when coverage
@@ -58,23 +59,75 @@ func (cov *coverage) deps(ctx BaseModuleContext, deps Deps) Deps {
 		} else {
 			deps.LateStaticLibs = append(deps.LateStaticLibs, "libprofile-extras_ndk")
 		}
+=======
+func getGcovProfileLibraryName(ctx ModuleContextIntf) string {
+	// This function should only ever be called for a cc.Module, so the
+	// following statement should always succeed.
+	if ctx.useSdk() {
+		return "libprofile-extras_ndk"
+	} else {
+		return "libprofile-extras"
+	}
+}
+
+func getClangProfileLibraryName(ctx ModuleContextIntf) string {
+	if ctx.useSdk() {
+		return "libprofile-clang-extras_ndk"
+	} else {
+		return "libprofile-clang-extras"
+	}
+}
+
+func (cov *coverage) deps(ctx DepsContext, deps Deps) Deps {
+	if cov.Properties.NeedCoverageVariant {
+		ctx.AddVariationDependencies([]blueprint.Variation{
+			{Mutator: "link", Variation: "static"},
+		}, coverageDepTag, getGcovProfileLibraryName(ctx))
+		ctx.AddVariationDependencies([]blueprint.Variation{
+			{Mutator: "link", Variation: "static"},
+		}, coverageDepTag, getClangProfileLibraryName(ctx))
+>>>>>>> CHANGE (1382ab Add coverage flags for Clang coverage builds.)
 	}
 	return deps
 }
 
+<<<<<<< HEAD   (646702 Merge branch android10-qpr2-release)
 func (cov *coverage) flags(ctx ModuleContext, flags Flags) Flags {
 	if !ctx.DeviceConfig().NativeCoverageEnabled() {
 		return flags
+=======
+func (cov *coverage) flags(ctx ModuleContext, flags Flags, deps PathDeps) (Flags, PathDeps) {
+	gcovCoverage := ctx.DeviceConfig().NativeCoverageEnabled()
+	clangCoverage := ctx.DeviceConfig().ClangCoverageEnabled()
+
+	if !gcovCoverage && !clangCoverage {
+		return flags, deps
+>>>>>>> CHANGE (1382ab Add coverage flags for Clang coverage builds.)
 	}
 
 	if cov.Properties.CoverageEnabled {
 		flags.Coverage = true
+<<<<<<< HEAD   (646702 Merge branch android10-qpr2-release)
 		flags.GlobalFlags = append(flags.GlobalFlags, "--coverage", "-O0")
+=======
+>>>>>>> CHANGE (1382ab Add coverage flags for Clang coverage builds.)
 		cov.linkCoverage = true
 
+<<<<<<< HEAD   (646702 Merge branch android10-qpr2-release)
 		// Override -Wframe-larger-than and non-default optimization
 		// flags that the module may use.
 		flags.CFlags = append(flags.CFlags, "-Wno-frame-larger-than=", "-O0")
+=======
+		if gcovCoverage {
+			flags.Local.CommonFlags = append(flags.Local.CommonFlags, "--coverage", "-O0")
+
+			// Override -Wframe-larger-than and non-default optimization
+			// flags that the module may use.
+			flags.Local.CFlags = append(flags.Local.CFlags, "-Wno-frame-larger-than=", "-O0")
+		} else if clangCoverage {
+			flags.Local.CommonFlags = append(flags.Local.CommonFlags, "-fprofile-instr-generate", "-fcoverage-mapping")
+		}
+>>>>>>> CHANGE (1382ab Add coverage flags for Clang coverage builds.)
 	}
 
 	// Even if we don't have coverage enabled, if any of our object files were compiled
@@ -112,10 +165,28 @@ func (cov *coverage) flags(ctx ModuleContext, flags Flags) Flags {
 	}
 
 	if cov.linkCoverage {
+<<<<<<< HEAD   (646702 Merge branch android10-qpr2-release)
 		flags.LdFlags = append(flags.LdFlags, "--coverage")
+=======
+		if gcovCoverage {
+			flags.Local.LdFlags = append(flags.Local.LdFlags, "--coverage")
+>>>>>>> CHANGE (1382ab Add coverage flags for Clang coverage builds.)
 
+<<<<<<< HEAD   (646702 Merge branch android10-qpr2-release)
 		// Force linking of constructor/setup code in libprofile-extras
 		flags.LdFlags = append(flags.LdFlags, "-uinit_profile_extras")
+=======
+			coverage := ctx.GetDirectDepWithTag(getGcovProfileLibraryName(ctx), coverageDepTag).(*Module)
+			deps.WholeStaticLibs = append(deps.WholeStaticLibs, coverage.OutputFile().Path())
+
+			flags.Local.LdFlags = append(flags.Local.LdFlags, "-Wl,--wrap,getenv")
+		} else if clangCoverage {
+			flags.Local.LdFlags = append(flags.Local.LdFlags, "-fprofile-instr-generate")
+
+			coverage := ctx.GetDirectDepWithTag(getClangProfileLibraryName(ctx), coverageDepTag).(*Module)
+			deps.WholeStaticLibs = append(deps.WholeStaticLibs, coverage.OutputFile().Path())
+		}
+>>>>>>> CHANGE (1382ab Add coverage flags for Clang coverage builds.)
 	}
 
 	return flags
@@ -123,7 +194,7 @@ func (cov *coverage) flags(ctx ModuleContext, flags Flags) Flags {
 
 func (cov *coverage) begin(ctx BaseModuleContext) {
 	// Coverage is disabled globally
-	if !ctx.DeviceConfig().NativeCoverageEnabled() {
+	if !ctx.DeviceConfig().NativeCoverageEnabled() && !ctx.DeviceConfig().ClangCoverageEnabled() {
 		return
 	}
 
