@@ -101,7 +101,7 @@ type archSpecificNativeLibInfo struct {
 	exportedIncludeDirs       android.Paths
 	exportedSystemIncludeDirs android.Paths
 	exportedFlags             []string
-	exportedDeps              android.Paths
+	exportedGeneratedHeaders  android.Paths
 	outputFile                android.Path
 }
 
@@ -145,7 +145,7 @@ func (s *sdk) nativeMemberInfos(ctx android.ModuleContext) []*nativeLibInfo {
 			exportedIncludeDirs:       ccModule.ExportedIncludeDirs(),
 			exportedSystemIncludeDirs: ccModule.ExportedSystemIncludeDirs(),
 			exportedFlags:             ccModule.ExportedFlags(),
-			exportedDeps:              ccModule.ExportedDeps(),
+			exportedGeneratedHeaders:  ccModule.ExportedGeneratedHeaders(),
 			outputFile:                ccModule.OutputFile().Path(),
 		})
 	})
@@ -423,7 +423,7 @@ func buildSharedNativeLibSnapshot(ctx android.ModuleContext, info *nativeLibInfo
 		}
 		for _, dir := range includeDirs {
 			if _, gen := dir.(android.WritablePath); gen {
-				// generated headers are copied via exportedDeps. See below.
+				// generated headers are copied via exportedGeneratedHeaders. See below.
 				continue
 			}
 			targetDir := nativeIncludeDir
@@ -440,7 +440,7 @@ func buildSharedNativeLibSnapshot(ctx android.ModuleContext, info *nativeLibInfo
 			}
 		}
 
-		genHeaders := lib.exportedDeps
+		genHeaders := lib.exportedGeneratedHeaders
 		for _, file := range genHeaders {
 			targetDir := nativeGeneratedIncludeDir
 			if info.hasArchSpecificFlags {
