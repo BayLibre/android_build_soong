@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "75e19067_db1d4c33",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-07T00:33:23Z",
+      "side": 1,
+      "message": "Maybe that\u0027s the problem, I don\u0027t think this distinction makes sense without mentioning namespaces.  How about:\n\n In the absence of [namespaces](#namespaces), every module name must be unique and referencing it in a property by name is sufficient:",
+      "parentUuid": "7ea78128_cac48ec6",
+      "range": {
+        "startLine": 173,
+        "startChar": 48,
+        "endLine": 175,
+        "endChar": 10
+      },
+      "revId": "67d290411bfc57334a9939b9cabaf39d4bad0bf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a586c003_347e11fc",
         "filename": "README.md",
         "patchSetId": 2
@@ -303,6 +327,24 @@
       "side": 1,
       "message": "Sorry, I want more clarity. \nDoes the first statement mean that aside from the modules belonging to the default scope, only the names of the modules belonging to the namespaces listed in PRODUCT_SOONG_NAMESPACES will be present in the generated ninja files?\nDoes the second statement mean that if there is a module libfoo in the global namespace, there cannot be another module libfoo in an explicit names space listed in PRODUCT_SOONG_NAMESPACES?",
       "parentUuid": "4f0911b4_a52c564d",
+      "revId": "67d290411bfc57334a9939b9cabaf39d4bad0bf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b5e2ee1_1960a938",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-07T00:33:23Z",
+      "side": 1,
+      "message": "All modules will be present in the generated ninja files, but only modules in the root namespace or in namespaces listed in PRODUCT_SOONG_NAMESPACES will have rules in the ninja files to install them to $OUT/system, or be visible for Make modules to depend on.\n\nMake has slightly different uniqueness requirements, only the tuple (LOCAL_MODULE_NAME, LOCAL_MODULE_CLASS, LOCAL_IS_HOST_MODULE, LOCAL_2ND_ARCH_VAR_PREFIX) has to be unique.  So two libfoo modules, one in the global namespace and one in a namespace listed in PRODUCT_SOONG_NAMESPACES, would probably work as long as they fit Make\u0027s uniqueness requirement.",
+      "parentUuid": "55516992_eaf8a04c",
       "revId": "67d290411bfc57334a9939b9cabaf39d4bad0bf5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
