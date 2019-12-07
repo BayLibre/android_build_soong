@@ -16,6 +16,24 @@
       "revId": "748f1f4d4fa436e34f5249f2ca70e5880473ddb7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d99e1716_2dc99b63",
+        "filename": "sdk/update.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-12-07T08:46:07Z",
+      "side": 1,
+      "message": "right. why don\u0027t you just `name :\u003d member.Name()`?",
+      "parentUuid": "7f45c16c_4250e023",
+      "revId": "748f1f4d4fa436e34f5249f2ca70e5880473ddb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
