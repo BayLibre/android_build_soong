@@ -375,7 +375,7 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 			optFlags = append(optFlags, "--assets_dir "+filepath.Dir(noticeFile.String()))
 		}
 
-		if !ctx.Config().UnbundledBuild() && a.installable() {
+		if (!ctx.Config().UnbundledBuild() && a.installable()) || a.testOnlyShouldSkipHashtreeGeneration() {
 			// Apexes which are supposed to be installed in builtin dirs(/system, etc)
 			// don't need hashtree for activation. Therefore, by removing hashtree from
 			// apex bundle (filesystem image in it, to be specific), we can save storage.
