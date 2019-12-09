@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32c5214c_618a22c6",
+        "filename": "apex/builder.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-09T21:48:17Z",
+      "side": 1,
+      "message": "Not part of this change, but consider moving this to RuleBuilder to avoid having to track the dependencies separately from the command line.",
+      "revId": "cbb822de27e089ef2ac7e53c582bdc9952d20f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
