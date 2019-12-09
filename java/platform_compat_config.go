@@ -19,7 +19,12 @@ import (
 )
 
 func init() {
+	android.RegisterSingletonType("platform_compat_config_singleton", platformCompatConfigSingletonFactory)
 	android.RegisterModuleType("platform_compat_config", platformCompatConfigFactory)
+}
+
+type platformCompatConfigSingleton struct {
+	flags, metadata android.Path
 }
 
 type platformCompatConfigProperties struct {
@@ -32,6 +37,45 @@ type platformCompatConfig struct {
 	properties     platformCompatConfigProperties
 	installDirPath android.InstallPath
 	configFile     android.OutputPath
+}
+
+func (p *platformCompatConfig) compatConfigFile() android.OutputPath {
+	return p.configFile
+}
+
+type platformCompatConfigIntf interface {
+	compatConfigFile() android.OutputPath
+}
+
+var _ platformCompatConfigIntf = (*platformCompatConfig)(nil)
+
+// compat singleton rules
+func (h *platformCompatConfigSingleton) GenerateBuildActions(ctx android.SingletonContext) {
+
+	var compatConfig android.Paths
+
+	ctx.VisitAllModules(func(module android.Module) {
+		if c, ok := module.(platformCompatConfigIntf); ok {
+			config := c.compatConfigFile()
+			compatConfig = append(compatConfig, config)
+		}
+	})
+
+	if compatConfig == nil {
+		// nothing to do.
+		return
+	}
+
+	rule := android.NewRuleBuilder()
+	outputPath := android.PathForOutput(ctx, "compat_config", "compatchanges.html")
+
+	rule.Command().
+		Textf("cat").
+		Inputs(compatConfig).
+		Textf(">").
+		Output(outputPath)
+
+	rule.Build(pctx, ctx, "compatConfigDocs", "Compat config documentation")
 }
 
 func (p *platformCompatConfig) GenerateAndroidBuildActions(ctx android.ModuleContext) {
@@ -83,6 +127,10 @@ func (p *platformCompatConfig) AndroidMkEntries() android.AndroidMkEntries {
 			},
 		},
 	}
+}
+
+func platformCompatConfigSingletonFactory() android.Singleton {
+	return &platformCompatConfigSingleton{}
 }
 
 func platformCompatConfigFactory() android.Module {
