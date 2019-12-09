@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6d6fd8dc_58c54b38",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-12-09T13:37:14Z",
+      "side": 1,
+      "message": "It must be in the above if-statement. Updated in the next patch set.\nWhen setUninstallable() is called, makefile does not have module path and stem to install the module. As we mark VNDKs uninstallable, they don\u0027t need to have the module path.",
+      "parentUuid": "18975916_cd13054a",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 47
+      },
+      "revId": "1554d7ea216c3b1612879d11eaf53fe329fb9834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "44fbbaf2_ee81d7b7",
         "filename": "cc/androidmk.go",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2019-12-09T03:45:09Z",
       "side": 1,
       "message": "Uninstallable doesn\u0027t mean the Make module does not exist. It just means that the module won\u0027t be installed to the device.",
+      "range": {
+        "startLine": 367,
+        "startChar": 0,
+        "endLine": 370,
+        "endChar": 2
+      },
+      "revId": "1554d7ea216c3b1612879d11eaf53fe329fb9834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99d5f524_59ef2e40",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-12-09T13:37:14Z",
+      "side": 1,
+      "message": "It does not skip creating Make module, but only skipping defining install paths that is not used for this module because it is uninstallable.",
+      "parentUuid": "44fbbaf2_ee81d7b7",
       "range": {
         "startLine": 367,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7288bc68_df954fb7",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-12-09T13:37:14Z",
+      "side": 1,
+      "message": "vndk modules including this prebuilt modules are vendor available, and have both product and vendor variants.\nWhen we keep this, product and vendor variants of a module shares a same module path and reported an error in ninja because multiple modules have the same install path.",
+      "parentUuid": "834fe972_2d27a598",
+      "range": {
+        "startLine": 415,
+        "startChar": 0,
+        "endLine": 416,
+        "endChar": 61
+      },
+      "revId": "1554d7ea216c3b1612879d11eaf53fe329fb9834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41608032_4fd515f9",
         "filename": "cc/cc.go",
         "patchSetId": 6
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "ffea2eb0_9ef35356",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-12-09T13:37:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41608032_4fd515f9",
+      "range": {
+        "startLine": 244,
+        "startChar": 27,
+        "endLine": 244,
+        "endChar": 34
+      },
+      "revId": "1554d7ea216c3b1612879d11eaf53fe329fb9834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e1ab15c_4531a78a",
         "filename": "cc/cc.go",
         "patchSetId": 6
@@ -105,6 +201,30 @@
       "writtenOn": "2019-12-09T03:45:09Z",
       "side": 1,
       "message": "Move this to android/module.go ?",
+      "range": {
+        "startLine": 843,
+        "startChar": 17,
+        "endLine": 843,
+        "endChar": 26
+      },
+      "revId": "1554d7ea216c3b1612879d11eaf53fe329fb9834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31dc2c90_99e84b5c",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-12-09T13:37:14Z",
+      "side": 1,
+      "message": "I am not sure if product and vendor variants are commonly required for all modules other than cc. They are added as extra variants in module.go.",
+      "parentUuid": "3e1ab15c_4531a78a",
       "range": {
         "startLine": 843,
         "startChar": 17,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "f8c2c920_a2695043",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 844,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-12-09T13:37:14Z",
+      "side": 1,
+      "message": "In case of product and vendor variants, they have version suffix in their image variation string, for examole, \"vendor.29\" or \"product.R\". So it is sufficient to check the prefix string from the imagevariation name.",
+      "parentUuid": "29927117_3f816405",
+      "range": {
+        "startLine": 844,
+        "startChar": 16,
+        "endLine": 844,
+        "endChar": 25
+      },
+      "revId": "1554d7ea216c3b1612879d11eaf53fe329fb9834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "629b5fe3_4c243a14",
         "filename": "cc/cc.go",
         "patchSetId": 6
@@ -151,6 +295,30 @@
       "writtenOn": "2019-12-09T03:45:09Z",
       "side": 1,
       "message": "Move this to android/module.go ?",
+      "range": {
+        "startLine": 847,
+        "startChar": 17,
+        "endLine": 847,
+        "endChar": 25
+      },
+      "revId": "1554d7ea216c3b1612879d11eaf53fe329fb9834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "520f345f_340c7fe4",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-12-09T13:37:14Z",
+      "side": 1,
+      "message": "Same as inProduct().",
+      "parentUuid": "629b5fe3_4c243a14",
       "range": {
         "startLine": 847,
         "startChar": 17,
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "98212d9f_ecfd9104",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1264,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-12-09T13:37:14Z",
+      "side": 1,
+      "message": "Used c.Properties.VndkVersion instead.",
+      "parentUuid": "245689be_f87ddc21",
+      "range": {
+        "startLine": 1264,
+        "startChar": 2,
+        "endLine": 1264,
+        "endChar": 38
+      },
+      "revId": "1554d7ea216c3b1612879d11eaf53fe329fb9834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "11a8dde0_06f5cc54",
         "filename": "cc/cc.go",
         "patchSetId": 6
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "93658c70_b0016a7c",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1265,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-12-09T13:37:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11a8dde0_06f5cc54",
+      "range": {
+        "startLine": 1265,
+        "startChar": 2,
+        "endLine": 1265,
+        "endChar": 26
+      },
+      "revId": "1554d7ea216c3b1612879d11eaf53fe329fb9834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dbfa1174_ed09f158",
         "filename": "cc/cc.go",
         "patchSetId": 6
@@ -220,6 +436,30 @@
       "writtenOn": "2019-12-09T03:45:09Z",
       "side": 1,
       "message": "if vndkVersion \u003d\u003d nil {",
+      "range": {
+        "startLine": 1273,
+        "startChar": 0,
+        "endLine": 1273,
+        "endChar": 31
+      },
+      "revId": "1554d7ea216c3b1612879d11eaf53fe329fb9834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae920570_be11bd01",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1273,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-12-09T13:37:14Z",
+      "side": 1,
+      "message": "I updated the if-statement above to have BOARD_VNDK_VERSION as default for vndkVersion. So, we will not have the case for \"vndkVersion \u003d\u003d nil\". Still it must compare with \"current\" that means the version is platform VNDK version.",
+      "parentUuid": "dbfa1174_ed09f158",
       "range": {
         "startLine": 1273,
         "startChar": 0,
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "27cd9f67_9b5ea499",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2227,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-12-09T13:37:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38ec0175_ea76229d",
+      "range": {
+        "startLine": 2227,
+        "startChar": 4,
+        "endLine": 2227,
+        "endChar": 28
+      },
+      "revId": "1554d7ea216c3b1612879d11eaf53fe329fb9834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "854a6bef_ba3338af",
         "filename": "cc/cc.go",
         "patchSetId": 6
@@ -278,6 +542,30 @@
     },
     {
       "key": {
+        "uuid": "8a012b65_af7585ab",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2240,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-12-09T13:37:14Z",
+      "side": 1,
+      "message": "Not required as explained above.",
+      "parentUuid": "854a6bef_ba3338af",
+      "range": {
+        "startLine": 2240,
+        "startChar": 4,
+        "endLine": 2240,
+        "endChar": 33
+      },
+      "revId": "1554d7ea216c3b1612879d11eaf53fe329fb9834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bfb92081_c27fc8fa",
         "filename": "cc/cc.go",
         "patchSetId": 6
@@ -298,6 +586,30 @@
       "revId": "1554d7ea216c3b1612879d11eaf53fe329fb9834",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a67a3f72_0b7eadbb",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2242,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-12-09T13:37:14Z",
+      "side": 1,
+      "message": "Done! Thank you for the suggestion.",
+      "parentUuid": "bfb92081_c27fc8fa",
+      "range": {
+        "startLine": 2227,
+        "startChar": 0,
+        "endLine": 2242,
+        "endChar": 5
+      },
+      "revId": "1554d7ea216c3b1612879d11eaf53fe329fb9834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
