@@ -70,6 +70,30 @@
       "revId": "d110f878a7e7ff065e66859da78cb082e92d0169",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7c032e1_0328ba51",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-12-09T23:15:39Z",
+      "side": 1,
+      "message": "(resolving)",
+      "parentUuid": "989894f4_4c17aa8e",
+      "range": {
+        "startLine": 287,
+        "startChar": 23,
+        "endLine": 287,
+        "endChar": 50
+      },
+      "revId": "d110f878a7e7ff065e66859da78cb082e92d0169",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
