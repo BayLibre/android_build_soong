@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7b75c17_c20bfb01",
+        "filename": "java/platform_compat_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1463094
+      },
+      "writtenOn": "2019-12-09T11:43:15Z",
+      "side": 1,
+      "message": "Are those needed?",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 29
+      },
+      "revId": "0c98f3cdfd788e8d17160a923ee2a4dfae5f0cb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
