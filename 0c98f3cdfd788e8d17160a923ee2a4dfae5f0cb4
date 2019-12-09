@@ -22,6 +22,30 @@
       "revId": "0c98f3cdfd788e8d17160a923ee2a4dfae5f0cb4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d279f734_e2d254f8",
+        "filename": "java/platform_compat_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2019-12-09T12:22:41Z",
+      "side": 1,
+      "message": "Hmm, not sure. I\u0027ll check.",
+      "parentUuid": "d7b75c17_c20bfb01",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 29
+      },
+      "revId": "0c98f3cdfd788e8d17160a923ee2a4dfae5f0cb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
