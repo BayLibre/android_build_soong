@@ -46,6 +46,30 @@
       "revId": "d110f878a7e7ff065e66859da78cb082e92d0169",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "989894f4_4c17aa8e",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-12-09T05:53:13Z",
+      "side": 1,
+      "message": "This is not \"exporting\" anything, and calling this does not affect any compilers or linkers. So I\u0027ve chosen not to use the prefix \"reexport*\" to avoid confusion. Does it make sense?",
+      "parentUuid": "10a2c8ae_46dc47ec",
+      "range": {
+        "startLine": 287,
+        "startChar": 23,
+        "endLine": 287,
+        "endChar": 50
+      },
+      "revId": "d110f878a7e7ff065e66859da78cb082e92d0169",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
