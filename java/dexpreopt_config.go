@@ -120,10 +120,11 @@ func getJarsFromApexJarPairs(apexJarPairs []string) []string {
 }
 
 var (
-	bootImageConfigKey     = android.NewOnceKey("bootImageConfig")
-	artBootImageName       = "art"
-	frameworkBootImageName = "boot"
-	apexBootImageName      = "apex"
+	bootImageConfigKey              = android.NewOnceKey("bootImageConfig")
+	artBootImageName                = "art"
+	frameworkBootImageName          = "boot"
+	artJitzygoteBootImageName       = "jitzygote-art"
+	frameworkJitzygoteBootImageName = "jitzygote-boot"
 )
 
 // Construct the global boot image configs.
@@ -177,22 +178,33 @@ func genBootImageConfigs(ctx android.PathContext) map[string]*bootImageConfig {
 			dexLocationsDeps: append(artLocations, frameworkLocations...),
 		}
 
-		// Apex config for the  boot image used in the JIT-zygote experiment.
-		// It includes both the Core libraries and framework.
-		apexCfg := bootImageConfig{
+		// ART config for JIT-zygote boot image.
+		artJitzygoteCfg := bootImageConfig{
 			extension:        false,
-			name:             apexBootImageName,
+			name:             artJitzygoteBootImageName,
+			stem:             "apex",
+			installSubdir:    artSubdir,
+			modules:          artModules,
+			dexLocations:     artLocations,
+			dexLocationsDeps: artLocations,
+		}
+
+		// Framework config for JIT-zygote boot image extension.
+		frameworkJitzygoteCfg := bootImageConfig{
+			extension:        true,
+			name:             frameworkJitzygoteBootImageName,
 			stem:             "apex",
 			installSubdir:    frameworkSubdir,
-			modules:          concat(artModules, frameworkModules),
-			dexLocations:     concat(artLocations, frameworkLocations),
-			dexLocationsDeps: concat(artLocations, frameworkLocations),
+			modules:          frameworkModules,
+			dexLocations:     frameworkLocations,
+			dexLocationsDeps: append(artLocations, frameworkLocations...),
 		}
 
 		configs := map[string]*bootImageConfig{
-			artBootImageName:       &artCfg,
-			frameworkBootImageName: &frameworkCfg,
-			apexBootImageName:      &apexCfg,
+			artBootImageName:                &artCfg,
+			frameworkBootImageName:          &frameworkCfg,
+			artJitzygoteBootImageName:       &artJitzygoteCfg,
+			frameworkJitzygoteBootImageName: &frameworkJitzygoteCfg,
 		}
 
 		// common to all configs
@@ -234,6 +246,10 @@ func genBootImageConfigs(ctx android.PathContext) map[string]*bootImageConfig {
 		frameworkCfg.dexPathsDeps = append(artCfg.dexPathsDeps, frameworkCfg.dexPathsDeps...)
 		frameworkCfg.imageLocations = append(artCfg.imageLocations, frameworkCfg.imageLocations...)
 
+		// specific to the framework-jitzygote config
+		frameworkJitzygoteCfg.dexPathsDeps = append(artJitzygoteCfg.dexPathsDeps, frameworkJitzygoteCfg.dexPathsDeps...)
+		frameworkJitzygoteCfg.imageLocations = append(artJitzygoteCfg.imageLocations, frameworkJitzygoteCfg.imageLocations...)
+
 		return configs
 	}).(map[string]*bootImageConfig)
 }
@@ -246,8 +262,12 @@ func defaultBootImageConfig(ctx android.PathContext) bootImageConfig {
 	return *genBootImageConfigs(ctx)[frameworkBootImageName]
 }
 
-func apexBootImageConfig(ctx android.PathContext) bootImageConfig {
-	return *genBootImageConfigs(ctx)[apexBootImageName]
+func artJitzygoteBootImageConfig(ctx android.PathContext) bootImageConfig {
+	return *genBootImageConfigs(ctx)[artJitzygoteBootImageName]
+}
+
+func frameworkJitzygoteBootImageConfig(ctx android.PathContext) bootImageConfig {
+	return *genBootImageConfigs(ctx)[frameworkJitzygoteBootImageName]
 }
 
 func defaultBootclasspath(ctx android.PathContext) []string {

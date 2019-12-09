@@ -103,7 +103,7 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.Mo
 	bootImage := defaultBootImageConfig(ctx)
 	defaultBootImage := bootImage
 	if global.UseApexImage {
-		bootImage = apexBootImageConfig(ctx)
+		bootImage = frameworkJitzygoteBootImageConfig(ctx)
 	}
 
 	var archs []android.ArchType
