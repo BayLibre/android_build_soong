@@ -22,6 +22,30 @@
       "revId": "53ae3341302a8a204761ceedd2d24887fb76c096",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6560903_f9947bb1",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-12-09T03:10:45Z",
+      "side": 1,
+      "message": "I have a bundletool change as well. cl/284355798",
+      "parentUuid": "b7dae3c8_a3c10f2c",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 46
+      },
+      "revId": "53ae3341302a8a204761ceedd2d24887fb76c096",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
