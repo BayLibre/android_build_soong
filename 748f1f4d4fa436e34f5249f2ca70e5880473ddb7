@@ -34,6 +34,24 @@
       "revId": "748f1f4d4fa436e34f5249f2ca70e5880473ddb7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f259735d_05185648",
+        "filename": "sdk/update.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-12-09T13:36:17Z",
+      "side": 1,
+      "message": "Doh! Missed that.",
+      "parentUuid": "d99e1716_2dc99b63",
+      "revId": "748f1f4d4fa436e34f5249f2ca70e5880473ddb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
