@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7dae3c8_a3c10f2c",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-12-09T02:06:16Z",
+      "side": 1,
+      "message": "Bundletool will complain about this (breaks mainline build target) since it only allows notice and apex_manifest. Should we have apex_pubkey? If yes, we could add apex_pubkey to the list below.\n\nhttps://source.corp.google.com/piper///depot/google3/third_party/java_src/android_appbundle/bundletool/java/com/android/tools/build/bundletool/validation/ApexBundleValidator.java;rcl\u003d284387603;l\u003d57?dr\u003dC\u0026g\u003d0\n\nI added .pb to the list already but the prebuilt is not released yet. Maybe we have time to modify? :-)",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 46
+      },
+      "revId": "53ae3341302a8a204761ceedd2d24887fb76c096",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
