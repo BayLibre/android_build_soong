@@ -17,15 +17,29 @@ package java
 import (
 	"fmt"
 	"io"
+	"strings"
 
 	"android/soong/android"
 )
 
 func (library *Library) AndroidMkEntriesHostDex() android.AndroidMkEntries {
 	hostDexNeeded := Bool(library.deviceProperties.Hostdex) && !library.Host()
-	if !library.IsForPlatform() {
+	if android.AvailableForPlatform(library) && !library.IsForPlatform() {
 		// If the platform variant is available, don't emit hostdex modules from the APEX variants
 		hostDexNeeded = false
+	} else {
+		// If the platform variant is not available, we need to choose only one APEX variant
+		// from which to emit the hostdex module
+		// TODO(b/146308764) remove this heuristic
+		apexName := library.ApexName()
+		if strings.Contains(apexName, "test") {
+			// skip test APEXes
+			hostDexNeeded = false
+		}
+		if strings.Contains(apexName, "com.android.art") && apexName != "com.android.art.debug" {
+			// skip the ART APEX variants other than com.android.art.debug
+			hostDexNeeded = false
+		}
 	}
 
 	if hostDexNeeded {
