@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18975916_cd13054a",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-12-09T03:45:09Z",
+      "side": 1,
+      "message": "Why do we need to hide this module from Make?",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 47
+      },
+      "revId": "1554d7ea216c3b1612879d11eaf53fe329fb9834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44fbbaf2_ee81d7b7",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-12-09T03:45:09Z",
+      "side": 1,
+      "message": "Uninstallable doesn\u0027t mean the Make module does not exist. It just means that the module won\u0027t be installed to the device.",
+      "range": {
+        "startLine": 367,
+        "startChar": 0,
+        "endLine": 370,
+        "endChar": 2
+      },
+      "revId": "1554d7ea216c3b1612879d11eaf53fe329fb9834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "834fe972_2d27a598",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-12-09T03:45:09Z",
+      "side": 1,
+      "message": "Is it necessary to have this change in this CL? If so, why? Although I agree with this change, I think this should be in another CL.",
+      "range": {
+        "startLine": 415,
+        "startChar": 0,
+        "endLine": 416,
+        "endChar": 61
+      },
+      "revId": "1554d7ea216c3b1612879d11eaf53fe329fb9834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41608032_4fd515f9",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-12-09T03:45:09Z",
+      "side": 1,
+      "message": "variants",
+      "range": {
+        "startLine": 244,
+        "startChar": 27,
+        "endLine": 244,
+        "endChar": 34
+      },
+      "revId": "1554d7ea216c3b1612879d11eaf53fe329fb9834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e1ab15c_4531a78a",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-12-09T03:45:09Z",
+      "side": 1,
+      "message": "Move this to android/module.go ?",
+      "range": {
+        "startLine": 843,
+        "startChar": 17,
+        "endLine": 843,
+        "endChar": 26
+      },
+      "revId": "1554d7ea216c3b1612879d11eaf53fe329fb9834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29927117_3f816405",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 844,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-12-09T03:45:09Z",
+      "side": 1,
+      "message": "Why only the prefix is matched? For example, InRecovery() is as follows:\n\nfunc (m *ModuleBase) InRecovery() bool {\n\u003e-------return m.base().commonProperties.ImageVariation \u003d\u003d RecoveryVariation\n}",
+      "range": {
+        "startLine": 844,
+        "startChar": 16,
+        "endLine": 844,
+        "endChar": 25
+      },
+      "revId": "1554d7ea216c3b1612879d11eaf53fe329fb9834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "629b5fe3_4c243a14",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-12-09T03:45:09Z",
+      "side": 1,
+      "message": "Move this to android/module.go ?",
+      "range": {
+        "startLine": 847,
+        "startChar": 17,
+        "endLine": 847,
+        "endChar": 25
+      },
+      "revId": "1554d7ea216c3b1612879d11eaf53fe329fb9834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "245689be_f87ddc21",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1264,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-12-09T03:45:09Z",
+      "side": 1,
+      "message": "move to 1276 just before it is first used",
+      "range": {
+        "startLine": 1264,
+        "startChar": 2,
+        "endLine": 1264,
+        "endChar": 38
+      },
+      "revId": "1554d7ea216c3b1612879d11eaf53fe329fb9834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11a8dde0_06f5cc54",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1265,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-12-09T03:45:09Z",
+      "side": 1,
+      "message": "var vndkVersion string",
+      "range": {
+        "startLine": 1265,
+        "startChar": 2,
+        "endLine": 1265,
+        "endChar": 26
+      },
+      "revId": "1554d7ea216c3b1612879d11eaf53fe329fb9834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dbfa1174_ed09f158",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1273,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-12-09T03:45:09Z",
+      "side": 1,
+      "message": "if vndkVersion \u003d\u003d nil {",
+      "range": {
+        "startLine": 1273,
+        "startChar": 0,
+        "endLine": 1273,
+        "endChar": 31
+      },
+      "revId": "1554d7ea216c3b1612879d11eaf53fe329fb9834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38ec0175_ea76229d",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2227,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-12-09T03:45:09Z",
+      "side": 1,
+      "message": "var vndkVersion string",
+      "range": {
+        "startLine": 2227,
+        "startChar": 4,
+        "endLine": 2227,
+        "endChar": 28
+      },
+      "revId": "1554d7ea216c3b1612879d11eaf53fe329fb9834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "854a6bef_ba3338af",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2240,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-12-09T03:45:09Z",
+      "side": 1,
+      "message": "if vndkVersion \u003d\u003d nil {",
+      "range": {
+        "startLine": 2240,
+        "startChar": 4,
+        "endLine": 2240,
+        "endChar": 33
+      },
+      "revId": "1554d7ea216c3b1612879d11eaf53fe329fb9834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfb92081_c27fc8fa",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2242,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-12-09T03:45:09Z",
+      "side": 1,
+      "message": "This code fragment is used twice. Perhaps you could define a method that returns vndkVersion and suffix?",
+      "range": {
+        "startLine": 2227,
+        "startChar": 0,
+        "endLine": 2242,
+        "endChar": 5
+      },
+      "revId": "1554d7ea216c3b1612879d11eaf53fe329fb9834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
