@@ -589,7 +589,7 @@ func TestBinary(t *testing.T) {
 }
 
 func TestPrebuilts(t *testing.T) {
-	ctx, _ := testJava(t, `
+	ctx, config := testJava(t, `
 		java_library {
 			name: "foo",
 			srcs: ["a.java", ":stubs-source"],
@@ -619,7 +619,7 @@ func TestPrebuilts(t *testing.T) {
 
 		prebuilt_stubs_sources {
 			name: "stubs-source",
-			srcs: ["stubs/sources/**/*.java"],
+			srcs: ["stubs/sources"],
 		}
 
 		prebuilt_java_test {
@@ -630,24 +630,20 @@ func TestPrebuilts(t *testing.T) {
 		}
 		`)
 
-	javac := ctx.ModuleForTests("foo", "android_common").Rule("javac")
+	fooModule := ctx.ModuleForTests("foo", "android_common")
+	javac := fooModule.Rule("javac")
 	combineJar := ctx.ModuleForTests("foo", "android_common").Description("for javac")
 	barJar := ctx.ModuleForTests("bar", "android_common").Rule("combineJar").Output
 	bazJar := ctx.ModuleForTests("baz", "android_common").Rule("combineJar").Output
 	sdklibStubsJar := ctx.ModuleForTests("sdklib.stubs", "android_common").Rule("combineJar").Output
 
-	inputs := []string{}
-	for _, p := range javac.BuildParams.Inputs {
-		inputs = append(inputs, p.String())
-	}
+	fooLibrary := fooModule.Module().(*Library)
+	assertDeepEquals(t, "foo java sources incorrect",
+		[]string{"a.java"}, fooLibrary.compiledJavaSrcs.Strings())
 
-	expected := []string{
-		"a.java",
-		"stubs/sources/foo/Foo.java",
-	}
-	if !reflect.DeepEqual(expected, inputs) {
-		t.Errorf("foo inputs incorrect: expected %q, found %q", expected, inputs)
-	}
+	assertDeepEquals(t, "foo java source jars incorrect",
+		[]string{".intermediates/stubs-source/android_common/stubs-source-stubs.srcjar"},
+		fooLibrary.compiledSrcJars.RelativeTo(config.BuildDir()))
 
 	if !strings.Contains(javac.Args["classpath"], barJar.String()) {
 		t.Errorf("foo classpath %v does not contain %q", javac.Args["classpath"], barJar.String())
@@ -662,6 +658,12 @@ func TestPrebuilts(t *testing.T) {
 	}
 
 	ctx.ModuleForTests("qux", "android_common").Rule("Cp")
+}
+
+func assertDeepEquals(t *testing.T, message string, expected interface{}, actual interface{}) {
+	if !reflect.DeepEqual(expected, actual) {
+		t.Errorf("%s: expected %q, found %q", message, expected, actual)
+	}
 }
 
 func TestDefaults(t *testing.T) {
