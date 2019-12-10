@@ -259,16 +259,11 @@ func (r *testSdkResult) ModuleForTests(name string, variant string) android.Test
 }
 
 func (r *testSdkResult) pathRelativeToBuildDir(path android.Path) string {
-	buildDir := filepath.Clean(r.config.BuildDir()) + "/"
-	return strings.TrimPrefix(filepath.Clean(path.String()), buildDir)
+	return path.RelativeTo(r.config.BuildDir())
 }
 
 func (r *testSdkResult) pathsRelativeToBuildDir(paths android.Paths) []string {
-	var result []string
-	for _, path := range paths {
-		result = append(result, r.pathRelativeToBuildDir(path))
-	}
-	return result
+	return paths.RelativeTo(r.config.BuildDir())
 }
 
 // Check the snapshot build rules.
