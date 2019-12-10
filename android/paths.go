@@ -109,6 +109,9 @@ type Path interface {
 type WritablePath interface {
 	Path
 
+	// return the path to the build directory.
+	buildDir() string
+
 	// the writablePath method doesn't directly do anything,
 	// but it allows a struct to distinguish between whether or not it implements the WritablePath interface
 	writablePath()
@@ -839,7 +842,12 @@ func (p OutputPath) WithoutRel() OutputPath {
 	return p
 }
 
+func (p OutputPath) buildDir() string {
+	return p.config.buildDir
+}
+
 var _ Path = OutputPath{}
+var _ WritablePath = OutputPath{}
 
 // PathForOutput joins the provided paths and returns an OutputPath that is
 // validated to not escape the build dir.
@@ -1142,6 +1150,13 @@ type InstallPath struct {
 	baseDir string // "../" for Make paths to convert "out/soong" to "out", "" for Soong paths
 }
 
+func (p InstallPath) buildDir() string {
+	return p.config.buildDir
+}
+
+var _ Path = InstallPath{}
+var _ WritablePath = InstallPath{}
+
 func (p InstallPath) writablePath() {}
 
 func (p InstallPath) String() string {
@@ -1292,6 +1307,10 @@ type PhonyPath struct {
 }
 
 func (p PhonyPath) writablePath() {}
+
+func (p PhonyPath) buildDir() string {
+	return p.config.buildDir
+}
 
 var _ Path = PhonyPath{}
 var _ WritablePath = PhonyPath{}
