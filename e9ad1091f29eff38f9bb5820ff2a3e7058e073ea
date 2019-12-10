@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34e25d63_fc121627",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-12-10T01:41:33Z",
+      "side": 1,
+      "message": "Can we enforce this?\n\nAre apex.apexd_test_no_hashtree[2] the only ones that are expected to use this option? Then how about triggering an error when this is turned on for modules not under system/apex/apexd/apexd_testdata? (I\u0027ve left a comment for the how)",
+      "range": {
+        "startLine": 344,
+        "startChar": 1,
+        "endLine": 344,
+        "endChar": 34
+      },
+      "revId": "e9ad1091f29eff38f9bb5820ff2a3e7058e073ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "492c3af9_5236f423",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-12-10T01:41:33Z",
+      "side": 1,
+      "message": "if ctx.ModuleDir() !\u003d \"system/apex/apexd/apexd_testdata\" \u0026\u0026 a.testOnlyShould...() {\n    ctx.PropertyErrorf(\"test_only_no_hashtree\", \"not available\")\n    return\n}",
+      "revId": "e9ad1091f29eff38f9bb5820ff2a3e7058e073ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
