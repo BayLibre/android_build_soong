@@ -103,6 +103,10 @@ type Path interface {
 	// example, Rel on a PathsForModuleSrc would return the path relative to the module source
 	// directory, and OutputPath.Join("foo").Rel() would return "foo".
 	Rel() string
+
+	// RelativeTo returns the relative path from the base to this path if it is relative to the
+	// base, or returns the path unchanged if it is not.
+	RelativeTo(base string) string
 }
 
 // WritablePath is a type of path that can be used as an output for build rules.
@@ -438,6 +442,15 @@ func PathsWithOptionalDefaultForModuleSrc(ctx ModuleContext, input []string, def
 	return ctx.Glob(path, nil)
 }
 
+func (p Paths) RelativeTo(base string) []string {
+	var result []string
+	for _, path := range p {
+		relative := path.RelativeTo(base)
+		result = append(result, relative)
+	}
+	return result
+}
+
 // Strings returns the Paths in string form
 func (p Paths) Strings() []string {
 	if p == nil {
@@ -638,6 +651,13 @@ func (p basePath) Rel() string {
 		return p.rel
 	}
 	return p.path
+}
+
+func (b basePath) RelativeTo(base string) string {
+	cleanedBase := filepath.Clean(base) + "/"
+	cleanedPath := filepath.Clean(b.String())
+	relative := strings.TrimPrefix(cleanedPath, cleanedBase)
+	return relative
 }
 
 func (p basePath) String() string {
