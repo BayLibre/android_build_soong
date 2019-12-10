@@ -746,7 +746,11 @@ func (library *libraryDecorator) linkStatic(ctx ModuleContext,
 
 	TransformObjToStaticLib(ctx, library.objects.objFiles, builderFlags, outputFile, objs.tidyFiles)
 
-	library.coverageOutputFile = TransformCoverageFilesToZip(ctx, library.objects, ctx.ModuleName())
+	if ctx.DeviceConfig().NativeCoverageEnabled() {
+		library.coverageOutputFile = TransformCoverageFilesToZip(ctx, library.objects, ctx.ModuleName())
+	} else if ctx.DeviceConfig().ClangCoverageEnabled() {
+		library.coverageOutputFile = ExtractCoverageMapping(ctx, library.unstrippedOutputFile, ctx.ModuleName())
+	}
 
 	library.wholeStaticMissingDeps = ctx.GetMissingDependencies()
 
@@ -876,7 +880,11 @@ func (library *libraryDecorator) linkShared(ctx ModuleContext,
 	objs.sAbiDumpFiles = append(objs.sAbiDumpFiles, deps.StaticLibObjs.sAbiDumpFiles...)
 	objs.sAbiDumpFiles = append(objs.sAbiDumpFiles, deps.WholeStaticLibObjs.sAbiDumpFiles...)
 
-	library.coverageOutputFile = TransformCoverageFilesToZip(ctx, objs, library.getLibName(ctx))
+	if ctx.DeviceConfig().NativeCoverageEnabled() {
+		library.coverageOutputFile = TransformCoverageFilesToZip(ctx, objs, library.getLibName(ctx))
+	} else if ctx.DeviceConfig().ClangCoverageEnabled() {
+		library.coverageOutputFile = ExtractCoverageMapping(ctx, library.unstrippedOutputFile, library.getLibName(ctx))
+	}
 	library.linkSAbiDumpFiles(ctx, objs, fileName, ret)
 
 	return ret

@@ -397,7 +397,12 @@ func (binary *binaryDecorator) link(ctx ModuleContext,
 
 	objs.coverageFiles = append(objs.coverageFiles, deps.StaticLibObjs.coverageFiles...)
 	objs.coverageFiles = append(objs.coverageFiles, deps.WholeStaticLibObjs.coverageFiles...)
-	binary.coverageOutputFile = TransformCoverageFilesToZip(ctx, objs, binary.getStem(ctx))
+
+	if ctx.DeviceConfig().NativeCoverageEnabled() {
+		binary.coverageOutputFile = TransformCoverageFilesToZip(ctx, objs, binary.getStem(ctx))
+	} else if ctx.DeviceConfig().ClangCoverageEnabled() {
+		binary.coverageOutputFile = ExtractCoverageMapping(ctx, binary.unstrippedOutputFile, binary.getStem(ctx))
+	}
 
 	// Need to determine symlinks early since some targets (ie APEX) need this
 	// information but will not call 'install'
