@@ -233,6 +233,11 @@ var (
 			RspfileContent: "$in",
 		})
 
+	llvm_covmap = pctx.AndroidStaticRule("llvm_covmap",
+		blueprint.RuleParams{
+			Command: "${config.ClangBin}/llvm-objcopy $in --dump-section=__llvm_covmap=$out",
+		})
+
 	_ = pctx.SourcePathVariable("cxxExtractor",
 		"prebuilts/clang-tools/${config.HostPrebuiltTag}/bin/cxx_extractor")
 	_ = pctx.SourcePathVariable("kytheVnames", "build/soong/vnames.json")
@@ -874,7 +879,6 @@ func TransformDarwinStrip(ctx android.ModuleContext, inputFile android.Path,
 
 func TransformCoverageFilesToZip(ctx android.ModuleContext,
 	inputs Objects, baseName string) android.OptionalPath {
-
 	if len(inputs.coverageFiles) > 0 {
 		outputFile := android.PathForModuleOut(ctx, baseName+".zip")
 
@@ -888,6 +892,22 @@ func TransformCoverageFilesToZip(ctx android.ModuleContext,
 		return android.OptionalPathForPath(outputFile)
 	}
 
+	return android.OptionalPath{}
+}
+
+func ExtractCoverageMapping(ctx android.ModuleContext, unstrippedFile android.Path, baseName string) android.OptionalPath {
+	if c, ok := ctx.Module().(*Module); ok && c.coverage.linkCoverage {
+		outputFile := android.PathForModuleOut(ctx, baseName+".covmap")
+
+		ctx.Build(pctx, android.BuildParams{
+			Rule:        llvm_covmap,
+			Description: "llvm_covmap " + outputFile.Base(),
+			Input:       unstrippedFile,
+			Output:      outputFile,
+		})
+
+		return android.OptionalPathForPath(outputFile)
+	}
 	return android.OptionalPath{}
 }
 
