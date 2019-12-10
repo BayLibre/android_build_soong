@@ -215,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "e06fee2b_1eaacb91",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-12-10T00:05:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4e2c3f4_7d8a178a",
+      "range": {
+        "startLine": 219,
+        "startChar": 13,
+        "endLine": 219,
+        "endChar": 29
+      },
+      "revId": "67d290411bfc57334a9939b9cabaf39d4bad0bf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fbc574d1_a88e3162",
         "filename": "README.md",
         "patchSetId": 2
@@ -348,6 +372,24 @@
       "revId": "67d290411bfc57334a9939b9cabaf39d4bad0bf5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "419d6609_8107e549",
+        "filename": "README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-12-10T00:05:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b5e2ee1_1960a938",
+      "revId": "67d290411bfc57334a9939b9cabaf39d4bad0bf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
