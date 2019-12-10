@@ -57,6 +57,24 @@ func (c Config) BuildDir() string {
 	return c.buildDir
 }
 
+func (c Config) PathRelativeToBuildDir(path Path) string {
+	p := path.String()
+	rel, err := filepath.Rel(c.buildDir, p)
+	if err != nil {
+		rel = p
+	}
+	return rel
+}
+
+func (c Config) PathsRelativeToBuildDir(paths Paths) []string {
+	var result []string
+	for _, path := range paths {
+		relative := c.PathRelativeToBuildDir(path)
+		result = append(result, relative)
+	}
+	return result
+}
+
 // A DeviceConfig object represents the configuration for a particular device being built.  For
 // now there will only be one of these, but in the future there may be multiple devices being
 // built
