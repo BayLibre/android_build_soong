@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4bdd2fac_4fad1367",
+        "filename": "rust/config/x86_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2019-12-11T23:46:30Z",
+      "side": 1,
+      "message": "Can this variant actually happen?",
+      "revId": "050477e6cbb1ca594b59af651ad663d5d118d333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
