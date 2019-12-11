@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "087cf1a7_a4678cd2",
+        "filename": "java/androidmk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-12-11T02:55:55Z",
+      "side": 1,
+      "message": "I still see not-insignificant logic changes in this func and the below one. I\u0027d either split this into two so that this is a pure AndroidMkEntries syntax change or update the commit message to describe the logic changes and rationales. They look more important than the AndroidMkEntries change to me.",
+      "revId": "8ee64968da3c85b4a1efa41a9bcd70504d54bc50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
