@@ -152,6 +152,13 @@ func GatherRequiredDepsForTest() string {
 			stl: "none",
 		}
 		cc_library {
+			name: "libunwind",
+			no_libcrt: true,
+			nocrt: true,
+			system_shared_libs: [],
+			stl: "none",
+		}
+		cc_library {
 			name: "libunwind_llvm",
 			no_libcrt: true,
 			nocrt: true,

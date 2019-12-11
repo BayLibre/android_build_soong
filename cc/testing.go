@@ -189,6 +189,19 @@ func GatherRequiredDepsForTest(os android.OsType) string {
 			recovery_available: true,
 		}
 		cc_library {
+			name: "libunwind",
+			no_libcrt: true,
+			nocrt: true,
+			system_shared_libs: [],
+			stl: "none",
+			vendor_available: true,
+			recovery_available: true,
+		}
+		llndk_library {
+			name: "libunwind",
+			symbol_file: "",
+		}
+		cc_library {
 			name: "libunwind_llvm",
 			no_libcrt: true,
 			nocrt: true,
