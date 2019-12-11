@@ -86,8 +86,10 @@ func GenerateDexpreoptRule(ctx android.PathContext,
 
 			generateDM := shouldGenerateDM(module, global)
 
-			for archIdx, _ := range module.Archs {
-				dexpreoptCommand(ctx, global, module, rule, archIdx, profile, appImage, generateDM)
+			for i, arch := range module.Archs {
+				image := module.DexPreoptImages[i]
+				imageDeps := module.DexPreoptImagesDeps[i]
+				dexpreoptCommand(ctx, global, module, rule, arch, profile, image, imageDeps, appImage, generateDM)
 			}
 		}
 	}
@@ -191,9 +193,7 @@ func bootProfileCommand(ctx android.PathContext, global GlobalConfig, module Mod
 }
 
 func dexpreoptCommand(ctx android.PathContext, global GlobalConfig, module ModuleConfig, rule *android.RuleBuilder,
-	archIdx int, profile android.WritablePath, appImage bool, generateDM bool) {
-
-	arch := module.Archs[archIdx]
+	arch android.ArchType, profile, bootImage android.Path, bootImageDeps android.Paths, appImage, generateDM bool) {
 
 	// HACK: make soname in Soong-generated .odex files match Make.
 	base := filepath.Base(module.DexLocation)
@@ -221,6 +221,13 @@ func dexpreoptCommand(ctx android.PathContext, global GlobalConfig, module Modul
 	vdexInstallPath := pathtools.ReplaceExtension(odexInstallPath, "vdex")
 
 	invocationPath := odexPath.ReplaceExtension(ctx, "invocation")
+
+	// bootImage is .../dex_bootjars/system/framework/arm64/boot.art, but dex2oat wants
+	// .../dex_bootjars/system/framework/boot.art on the command line
+	var bootImageLocation string
+	if bootImage != nil {
+		bootImageLocation = PathToLocation(bootImage, arch)
+	}
 
 	// The class loader context using paths in the build
 	var classLoaderContextHost android.Paths
@@ -349,7 +356,7 @@ func dexpreoptCommand(ctx android.PathContext, global GlobalConfig, module Modul
 		Flag("--runtime-arg").FlagWithList("-Xbootclasspath-locations:", module.PreoptBootClassPathDexLocations, ":").
 		Flag("${class_loader_context_arg}").
 		Flag("${stored_class_loader_context_arg}").
-		FlagWithArg("--boot-image=", strings.Join(module.DexPreoptImageLocations, ":")).Implicits(module.DexPreoptImagesDeps[archIdx].Paths()).
+		FlagWithArg("--boot-image=", bootImageLocation).Implicits(bootImageDeps).
 		FlagWithInput("--dex-file=", module.DexPath).
 		FlagWithArg("--dex-location=", dexLocationArg).
 		FlagWithOutput("--oat-file=", odexPath).ImplicitOutput(vdexPath).
@@ -548,9 +555,9 @@ func SplitApexJarPair(apexJarValue string) (string, string) {
 }
 
 // Expected format for apexJarValue = <apex name>:<jar name>
-func GetJarLocationFromApexJarPair(apexJarValue string) string {
+func GetJarLocationFromApexJarPair(apexJarValue string) (string) {
 	apex, jar := SplitApexJarPair(apexJarValue)
-	return filepath.Join("/apex", apex, "javalib", jar+".jar")
+	return filepath.Join("/apex", apex, "javalib", jar + ".jar")
 }
 
 func contains(l []string, s string) bool {
