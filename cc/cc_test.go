@@ -396,6 +396,7 @@ func TestVndk(t *testing.T) {
 		"LLNDK: libft2.so",
 		"LLNDK: libm.so",
 		"VNDK-SP: libc++.so",
+		"VNDK-SP: libunwind.so",
 		"VNDK-SP: libvndk_sp-x.so",
 		"VNDK-SP: libvndk_sp_private-x.so",
 		"VNDK-core: libvndk-private.so",
@@ -407,7 +408,7 @@ func TestVndk(t *testing.T) {
 	checkVndkLibrariesOutput(t, ctx, "llndk.libraries.txt", []string{"libc.so", "libdl.so", "libft2.so", "libm.so"})
 	checkVndkLibrariesOutput(t, ctx, "vndkcore.libraries.txt", []string{"libvndk-private.so", "libvndk.so"})
 	checkVndkLibrariesOutput(t, ctx, "vndkprivate.libraries.txt", []string{"libft2.so", "libvndk-private.so", "libvndk_sp_private-x.so"})
-	checkVndkLibrariesOutput(t, ctx, "vndksp.libraries.txt", []string{"libc++.so", "libvndk_sp-x.so", "libvndk_sp_private-x.so"})
+	checkVndkLibrariesOutput(t, ctx, "vndksp.libraries.txt", []string{"libc++.so", "libunwind.so", "libvndk_sp-x.so", "libvndk_sp_private-x.so"})
 	checkVndkLibrariesOutput(t, ctx, "vndkcorevariant.libraries.txt", nil)
 }
 
@@ -467,7 +468,7 @@ func TestVndkUsingCoreVariant(t *testing.T) {
 		}
 	`, config)
 
-	checkVndkLibrariesOutput(t, ctx, "vndkcorevariant.libraries.txt", []string{"libc++.so", "libvndk2.so", "libvndk_sp.so"})
+	checkVndkLibrariesOutput(t, ctx, "vndkcorevariant.libraries.txt", []string{"libc++.so", "libunwind.so", "libvndk2.so", "libvndk_sp.so"})
 }
 
 func TestVndkWhenVndkVersionIsNotSet(t *testing.T) {
@@ -488,6 +489,7 @@ func TestVndkWhenVndkVersionIsNotSet(t *testing.T) {
 		"LLNDK: libft2.so",
 		"LLNDK: libm.so",
 		"VNDK-SP: libc++.so",
+		"VNDK-SP: libunwind.so",
 		"VNDK-core: libvndk.so",
 		"VNDK-private: libft2.so",
 	})
@@ -1519,7 +1521,7 @@ func TestMakeLinkType(t *testing.T) {
 	assertMapKeys(t, vndkCoreLibraries(config),
 		[]string{"libvndk", "libvndkprivate"})
 	assertMapKeys(t, vndkSpLibraries(config),
-		[]string{"libc++", "libvndksp"})
+		[]string{"libc++", "libunwind", "libvndksp"})
 	assertMapKeys(t, llndkLibraries(config),
 		[]string{"libc", "libdl", "libft2", "libllndk", "libllndkprivate", "libm"})
 	assertMapKeys(t, vndkPrivateLibraries(config),
@@ -2125,13 +2127,13 @@ func TestStaticLibDepExport(t *testing.T) {
 	// Check the shared version of lib2.
 	variant := "android_arm64_armv8-a_core_shared"
 	module := ctx.ModuleForTests("lib2", variant).Module().(*Module)
-	checkStaticLibs(t, []string{"lib1", "libc++demangle", "libclang_rt.builtins-aarch64-android", "libatomic", "libgcc_stripped"}, module)
+	checkStaticLibs(t, []string{"lib1", "libc++demangle", "libclang_rt.builtins-aarch64-android", "libatomic"}, module)
 
 	// Check the static version of lib2.
 	variant = "android_arm64_armv8-a_core_static"
 	module = ctx.ModuleForTests("lib2", variant).Module().(*Module)
 	// libc++_static is linked additionally.
-	checkStaticLibs(t, []string{"lib1", "libc++_static", "libc++demangle", "libclang_rt.builtins-aarch64-android", "libatomic", "libgcc_stripped"}, module)
+	checkStaticLibs(t, []string{"lib1", "libc++_static", "libc++demangle", "libclang_rt.builtins-aarch64-android", "libatomic"}, module)
 }
 
 var compilerFlagsTestCases = []struct {
