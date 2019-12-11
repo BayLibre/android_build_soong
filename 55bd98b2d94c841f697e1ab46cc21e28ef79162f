@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93632bb7_c08955d7",
+        "filename": "java/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2019-12-11T15:54:14Z",
+      "side": 1,
+      "message": "Now that I see your other change (1183464), I see where the confusion came from and why you\u0027re doing this. I thought this was a behavioral change, but the condition change in the below AndroidMkEntries and this one eventually cancel each other out, correct? I would\u0027ve made this change real simple, only about the AndroidMkeEntries transition, but given you\u0027ll overwrite it in the other change anyway, it wouldn\u0027t probably matter.",
+      "revId": "55bd98b2d94c841f697e1ab46cc21e28ef79162f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
