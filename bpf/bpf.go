@@ -20,7 +20,6 @@ import (
 	"strings"
 
 	"android/soong/android"
-	_ "android/soong/cc/config"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
@@ -74,7 +73,8 @@ type BpfProperties struct {
 	Include_dirs []string
 	Sub_dir      string
 	// If set to true, generate BTF debug info for maps & programs
-	Btf          *bool
+	Btf    *bool
+	Vendor *bool
 }
 
 type bpf struct {
@@ -132,8 +132,8 @@ func (bpf *bpf) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		if proptools.Bool(bpf.properties.Btf) {
 			objStripped := android.ObjPathWithExt(ctx, "", src, "o")
 			ctx.Build(pctx, android.BuildParams{
-				Rule: stripRule,
-				Input: obj,
+				Rule:   stripRule,
+				Input:  obj,
 				Output: objStripped,
 				Args: map[string]string{
 					"stripCmd": "${config.ClangBin}/llvm-strip",
@@ -155,6 +155,9 @@ func (bpf *bpf) AndroidMk() android.AndroidMkData {
 			fmt.Fprintln(w, "LOCAL_PATH :=", moduleDir)
 			fmt.Fprintln(w)
 			localModulePath := "LOCAL_MODULE_PATH := $(TARGET_OUT_ETC)/bpf"
+			if proptools.Bool(bpf.properties.Vendor) {
+				localModulePath = "LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_ETC)/bpf"
+			}
 			if len(bpf.properties.Sub_dir) > 0 {
 				localModulePath += "/" + bpf.properties.Sub_dir
 			}
