@@ -16,6 +16,24 @@
       "revId": "050477e6cbb1ca594b59af651ad663d5d118d333",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4258f6f0_47c28319",
+        "filename": "rust/config/x86_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2019-12-12T00:31:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4bdd2fac_4fad1367",
+      "revId": "050477e6cbb1ca594b59af651ad663d5d118d333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
