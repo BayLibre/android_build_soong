@@ -66,7 +66,12 @@ func (c *envSingleton) GenerateBuildActions(ctx SingletonContext) {
 		return
 	}
 
-	err := env.WriteEnvFile(envFile.String(), envDeps)
+	data, err := env.EnvFileContents(envDeps)
+	if err != nil {
+		ctx.Errorf(err.Error())
+	}
+
+	err = WriteFileToOutputDir(envFile, data, 0666)
 	if err != nil {
 		ctx.Errorf(err.Error())
 	}

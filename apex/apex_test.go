@@ -92,6 +92,8 @@ func withBinder32bit(fs map[string][]byte, config android.Config) {
 }
 
 func testApexContext(t *testing.T, bp string, handlers ...testCustomizer) (*android.TestContext, android.Config) {
+	bp = bp + java.GatherRequiredDepsForTest()
+
 	bp = bp + `
 		toolchain_library {
 			name: "libcompiler_rt-extras",
@@ -207,8 +209,6 @@ func testApexContext(t *testing.T, bp string, handlers ...testCustomizer) (*andr
 		}
 	`
 
-	bp = bp + java.GatherRequiredDepsForTest()
-
 	fs := map[string][]byte{
 		"a.java":                                              nil,
 		"PrebuiltAppFoo.apk":                                  nil,
@@ -315,8 +315,8 @@ func testApexContext(t *testing.T, bp string, handlers ...testCustomizer) (*andr
 		ctx.BottomUp("prebuilts", android.PrebuiltMutator).Parallel()
 	})
 	ctx.PreDepsMutators(func(ctx android.RegisterMutatorsContext) {
-		ctx.BottomUp("vndk", cc.VndkMutator).Parallel()
 		ctx.BottomUp("link", cc.LinkageMutator).Parallel()
+		ctx.BottomUp("vndk", cc.VndkMutator).Parallel()
 		ctx.BottomUp("test_per_src", cc.TestPerSrcMutator).Parallel()
 		ctx.BottomUp("version", cc.VersionMutator).Parallel()
 		ctx.BottomUp("begin", cc.BeginMutator).Parallel()

@@ -16,7 +16,6 @@ package dexpreopt
 
 import (
 	"encoding/json"
-	"io/ioutil"
 	"strings"
 
 	"android/soong/android"
@@ -169,7 +168,7 @@ func constructWritablePath(ctx android.PathContext, path string) android.Writabl
 
 // LoadGlobalConfig reads the global dexpreopt.config file into a GlobalConfig struct.  It is used directly in Soong
 // and in dexpreopt_gen called from Make to read the $OUT/dexpreopt.config written by Make.
-func LoadGlobalConfig(ctx android.PathContext, path string) (GlobalConfig, []byte, error) {
+func LoadGlobalConfig(ctx android.PathContext, data []byte) (GlobalConfig, error) {
 	type GlobalJSONConfig struct {
 		GlobalConfig
 
@@ -191,9 +190,9 @@ func LoadGlobalConfig(ctx android.PathContext, path string) (GlobalConfig, []byt
 	}
 
 	config := GlobalJSONConfig{}
-	data, err := loadConfig(ctx, path, &config)
+	err := json.Unmarshal(data, &config)
 	if err != nil {
-		return config.GlobalConfig, nil, err
+		return config.GlobalConfig, err
 	}
 
 	// Construct paths that require a PathContext.
@@ -208,13 +207,13 @@ func LoadGlobalConfig(ctx android.PathContext, path string) (GlobalConfig, []byt
 	config.GlobalConfig.Tools.ManifestCheck = constructPath(ctx, config.Tools.ManifestCheck)
 	config.GlobalConfig.Tools.ConstructContext = constructPath(ctx, config.Tools.ConstructContext)
 
-	return config.GlobalConfig, data, nil
+	return config.GlobalConfig, nil
 }
 
 // LoadModuleConfig reads a per-module dexpreopt.config file into a ModuleConfig struct.  It is not used in Soong, which
 // receives a ModuleConfig struct directly from java/dexpreopt.go.  It is used in dexpreopt_gen called from oMake to
 // read the module dexpreopt.config written by Make.
-func LoadModuleConfig(ctx android.PathContext, path string) (ModuleConfig, error) {
+func LoadModuleConfig(ctx android.PathContext, data []byte) (ModuleConfig, error) {
 	type ModuleJSONConfig struct {
 		ModuleConfig
 
@@ -232,7 +231,7 @@ func LoadModuleConfig(ctx android.PathContext, path string) (ModuleConfig, error
 
 	config := ModuleJSONConfig{}
 
-	_, err := loadConfig(ctx, path, &config)
+	err := json.Unmarshal(data, &config)
 	if err != nil {
 		return config.ModuleConfig, err
 	}
@@ -251,26 +250,6 @@ func LoadModuleConfig(ctx android.PathContext, path string) (ModuleConfig, error
 	config.ModuleConfig.DexPreoptImagesDeps = make([]android.OutputPaths, len(config.ModuleConfig.DexPreoptImages))
 
 	return config.ModuleConfig, nil
-}
-
-func loadConfig(ctx android.PathContext, path string, config interface{}) ([]byte, error) {
-	r, err := ctx.Fs().Open(path)
-	if err != nil {
-		return nil, err
-	}
-	defer r.Close()
-
-	data, err := ioutil.ReadAll(r)
-	if err != nil {
-		return nil, err
-	}
-
-	err = json.Unmarshal(data, config)
-	if err != nil {
-		return nil, err
-	}
-
-	return data, nil
 }
 
 func GlobalConfigForTests(ctx android.PathContext) GlobalConfig {

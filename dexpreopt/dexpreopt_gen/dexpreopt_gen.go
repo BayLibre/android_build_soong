@@ -18,6 +18,7 @@ import (
 	"bytes"
 	"flag"
 	"fmt"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 	"runtime"
@@ -40,7 +41,6 @@ type pathContext struct {
 	config android.Config
 }
 
-func (x *pathContext) Fs() pathtools.FileSystem   { return pathtools.OsFs }
 func (x *pathContext) Config() android.Config     { return x.config }
 func (x *pathContext) AddNinjaFileDeps(...string) {}
 
@@ -73,13 +73,25 @@ func main() {
 
 	ctx := &pathContext{android.TestConfig(*outDir, nil, "", nil)}
 
-	globalConfig, _, err := dexpreopt.LoadGlobalConfig(ctx, *globalConfigPath)
+	globalConfigData, err := ioutil.ReadFile(*globalConfigPath)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "error loading global config %q: %s\n", *globalConfigPath, err)
+		fmt.Fprintf(os.Stderr, "error reading global config %q: %s\n", *globalConfigPath, err)
 		os.Exit(2)
 	}
 
-	moduleConfig, err := dexpreopt.LoadModuleConfig(ctx, *moduleConfigPath)
+	globalConfig, err := dexpreopt.LoadGlobalConfig(ctx, globalConfigData)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "error parse global config %q: %s\n", *globalConfigPath, err)
+		os.Exit(2)
+	}
+
+	moduleConfigData, err := ioutil.ReadFile(*moduleConfigPath)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "error reading module config %q: %s\n", *moduleConfigPath, err)
+		os.Exit(2)
+	}
+
+	moduleConfig, err := dexpreopt.LoadModuleConfig(ctx, moduleConfigData)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "error loading module config %q: %s\n", *moduleConfigPath, err)
 		os.Exit(2)

@@ -43,7 +43,7 @@ type compdbGeneratorSingleton struct{}
 
 const (
 	compdbFilename                = "compile_commands.json"
-	compdbOutputProjectsDirectory = "out/development/ide/compdb"
+	compdbOutputProjectsDirectory = "development/ide/compdb"
 
 	// Environment variables used to modify behavior of this singleton.
 	envVariableGenerateCompdb          = "SOONG_GEN_COMPDB"
@@ -78,12 +78,12 @@ func (c *compdbGeneratorSingleton) GenerateBuildActions(ctx android.SingletonCon
 	})
 
 	// Create the output file.
-	dir := filepath.Join(getCompdbAndroidSrcRootDirectory(ctx), compdbOutputProjectsDirectory)
-	os.MkdirAll(dir, 0777)
-	compDBFile := filepath.Join(dir, compdbFilename)
-	f, err := os.Create(compdbFilename)
+	dir := android.PathForOutput(ctx, compdbOutputProjectsDirectory)
+	os.MkdirAll(dir.String(), 0777)
+	compDBFile := dir.Join(ctx, compdbFilename)
+	f, err := os.Create(compDBFile.String())
 	if err != nil {
-		log.Fatalf("Could not create file %s: %s", filepath.Join(dir, compdbFilename), err)
+		log.Fatalf("Could not create file %s: %s", compDBFile.String(), err)
 	}
 	defer f.Close()
 
@@ -103,10 +103,10 @@ func (c *compdbGeneratorSingleton) GenerateBuildActions(ctx android.SingletonCon
 	}
 	f.Write(dat)
 
-	finalLinkPath := filepath.Join(ctx.Config().Getenv(envVariableCompdbLink), compdbFilename)
-	if finalLinkPath != "" {
+	if finalLinkDir := ctx.Config().Getenv(envVariableCompdbLink); finalLinkDir != "" {
+		finalLinkPath := filepath.Join(finalLinkDir, compdbFilename)
 		os.Remove(finalLinkPath)
-		if err := os.Symlink(compDBFile, finalLinkPath); err != nil {
+		if err := os.Symlink(compDBFile.String(), finalLinkPath); err != nil {
 			log.Fatalf("Unable to symlink %s to %s: %s", compDBFile, finalLinkPath, err)
 		}
 	}
@@ -202,6 +202,7 @@ func evalAndSplitVariable(ctx android.SingletonContext, str string) ([]string, e
 }
 
 func getCompdbAndroidSrcRootDirectory(ctx android.SingletonContext) string {
+	// TODO: this won't work any more
 	srcPath, _ := filepath.Abs(android.PathForSource(ctx).String())
 	return srcPath
 }

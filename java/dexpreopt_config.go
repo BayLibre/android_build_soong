@@ -36,9 +36,12 @@ type globalConfigAndRaw struct {
 
 func dexpreoptGlobalConfigRaw(ctx android.PathContext) globalConfigAndRaw {
 	return ctx.Config().Once(dexpreoptGlobalConfigKey, func() interface{} {
-		if f := ctx.Config().DexpreoptGlobalConfig(); f != "" {
-			ctx.AddNinjaFileDeps(f)
-			globalConfig, data, err := dexpreopt.LoadGlobalConfig(ctx, f)
+		data, err := ctx.Config().DexpreoptGlobalConfig(ctx)
+		if err != nil {
+			panic(err)
+		}
+		if data != nil {
+			globalConfig, err := dexpreopt.LoadGlobalConfig(ctx, data)
 			if err != nil {
 				panic(err)
 			}

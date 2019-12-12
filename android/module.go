@@ -16,13 +16,13 @@ package android
 
 import (
 	"fmt"
+	"os"
 	"path"
 	"path/filepath"
 	"strings"
 	"text/scanner"
 
 	"github.com/google/blueprint"
-	"github.com/google/blueprint/pathtools"
 	"github.com/google/blueprint/proptools"
 )
 
@@ -105,8 +105,9 @@ type BaseModuleContext interface {
 
 	Glob(globPattern string, excludes []string) Paths
 	GlobFiles(globPattern string, excludes []string) Paths
+	IsSymlink(path Path) bool
+	Readlink(path Path) string
 
-	Fs() pathtools.FileSystem
 	AddNinjaFileDeps(deps ...string)
 
 	AddMissingDependencies(missingDeps []string)
@@ -1857,6 +1858,22 @@ func (b *baseModuleContext) GlobFiles(globPattern string, excludes []string) Pat
 		b.ModuleErrorf("glob: %s", err.Error())
 	}
 	return pathsForModuleSrcFromFullPath(b, ret, false)
+}
+
+func (b *baseModuleContext) IsSymlink(path Path) bool {
+	fileInfo, err := b.config.fs.Lstat(path.String())
+	if err != nil {
+		b.ModuleErrorf("os.Lstat(%q) failed: %s", path.String(), err)
+	}
+	return fileInfo.Mode()&os.ModeSymlink == os.ModeSymlink
+}
+
+func (b *baseModuleContext) Readlink(path Path) string {
+	dest, err := b.config.fs.Readlink(path.String())
+	if err != nil {
+		b.ModuleErrorf("os.Readlink(%q) failed: %s", path.String(), err)
+	}
+	return dest
 }
 
 func init() {

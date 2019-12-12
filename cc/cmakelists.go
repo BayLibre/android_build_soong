@@ -137,6 +137,7 @@ func generateCLionProject(compiledModule CompiledInterface, ctx android.Singleto
 	os.MkdirAll(projectDir, os.ModePerm)
 
 	// Create cmakelists.txt
+	// TODO: this won't work any more.
 	f, _ := os.Create(filepath.Join(projectDir, cMakeListsFilename))
 	defer f.Close()
 
@@ -475,6 +476,7 @@ func getCMakeListsForModule(module *Module, ctx android.SingletonContext) string
 }
 
 func getAndroidSrcRootDirectory(ctx android.SingletonContext) string {
+	// TODO: this won't work any more.
 	srcPath, _ := filepath.Abs(android.PathForSource(ctx).String())
 	return srcPath
 }
