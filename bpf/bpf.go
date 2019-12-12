@@ -20,7 +20,6 @@ import (
 	"strings"
 
 	"android/soong/android"
-	_ "android/soong/cc/config"
 
 	"github.com/google/blueprint"
 )
@@ -47,6 +46,8 @@ type BpfProperties struct {
 	Srcs         []string `android:"path"`
 	Cflags       []string
 	Include_dirs []string
+
+	ImageVariation string `blueprint:"mutated"`
 }
 
 type bpf struct {
@@ -110,7 +111,11 @@ func (bpf *bpf) AndroidMk() android.AndroidMkData {
 				fmt.Fprintln(w, "LOCAL_PREBUILT_MODULE_FILE :=", obj.String())
 				fmt.Fprintln(w, "LOCAL_MODULE_STEM :=", obj.Base())
 				fmt.Fprintln(w, "LOCAL_MODULE_CLASS := ETC")
-				fmt.Fprintln(w, "LOCAL_MODULE_PATH := $(TARGET_OUT_ETC)/bpf")
+				if bpf.properties.ImageVariation == "vendor" {
+					fmt.Fprintln(w, "LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_ETC)/bpf")
+				} else {
+					fmt.Fprintln(w, "LOCAL_MODULE_PATH := $(TARGET_OUT_ETC)/bpf")
+				}
 				fmt.Fprintln(w, "include $(BUILD_PREBUILT)")
 				fmt.Fprintln(w)
 			}
@@ -133,7 +138,18 @@ func (bpf *bpf) OutputFiles(tag string) (android.Paths, error) {
 	}
 }
 
+func (bpf *bpf) ImageMutatorBegin(android.BaseModuleContext)          {}
+func (bpf *bpf) CoreVariantNeeded(android.BaseModuleContext) bool     { return true }
+func (bpf *bpf) RecoveryVariantNeeded(android.BaseModuleContext) bool { return false }
+func (bpf *bpf) ExtraImageVariations(ctx android.BaseModuleContext) []string {
+	return []string{"vendor"}
+}
+func (bpf *bpf) SetImageVariation(ctx android.BaseModuleContext, variation string, module android.Module) {
+	bpf.properties.ImageVariation = variation
+}
+
 var _ android.OutputFileProducer = (*bpf)(nil)
+var _ android.ImageInterface = (*bpf)(nil)
 
 func bpfFactory() android.Module {
 	module := &bpf{}
