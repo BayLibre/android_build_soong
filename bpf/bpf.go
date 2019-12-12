@@ -20,9 +20,9 @@ import (
 	"strings"
 
 	"android/soong/android"
-	_ "android/soong/cc/config"
 
 	"github.com/google/blueprint"
+	"github.com/google/blueprint/proptools"
 )
 
 func init() {
@@ -47,6 +47,7 @@ type BpfProperties struct {
 	Srcs         []string `android:"path"`
 	Cflags       []string
 	Include_dirs []string
+	Vendor       *bool
 }
 
 type bpf struct {
@@ -110,7 +111,11 @@ func (bpf *bpf) AndroidMk() android.AndroidMkData {
 				fmt.Fprintln(w, "LOCAL_PREBUILT_MODULE_FILE :=", obj.String())
 				fmt.Fprintln(w, "LOCAL_MODULE_STEM :=", obj.Base())
 				fmt.Fprintln(w, "LOCAL_MODULE_CLASS := ETC")
-				fmt.Fprintln(w, "LOCAL_MODULE_PATH := $(TARGET_OUT_ETC)/bpf")
+				if proptools.Bool(bpf.properties.Vendor) {
+					fmt.Fprintln(w, "LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_ETC)/bpf")
+				} else {
+					fmt.Fprintln(w, "LOCAL_MODULE_PATH := $(TARGET_OUT_ETC)/bpf")
+				}
 				fmt.Fprintln(w, "include $(BUILD_PREBUILT)")
 				fmt.Fprintln(w)
 			}
