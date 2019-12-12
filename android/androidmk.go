@@ -24,6 +24,8 @@ import (
 	"sort"
 	"strings"
 
+	"android/soong/ui/logger"
+
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/bootstrap"
 )
@@ -383,7 +385,17 @@ func translateAndroidMk(ctx SingletonContext, mkFile string, mods []blueprint.Mo
 		}
 	}
 
-	return ioutil.WriteFile(mkFile, buf.Bytes(), 0666)
+	// large file, so only keep one backup
+	mkFileObj, err := logger.CreateFileWithRotation(mkFile, 1)
+	if err != nil {
+		return err
+	}
+
+	if _, err := mkFileObj.Write(buf.Bytes()); err != nil {
+		return err
+	}
+
+	return nil
 }
 
 func translateAndroidMkModule(ctx SingletonContext, w io.Writer, mod blueprint.Module) error {
