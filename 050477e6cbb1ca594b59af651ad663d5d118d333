@@ -34,6 +34,24 @@
       "revId": "050477e6cbb1ca594b59af651ad663d5d118d333",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "899a085c_b3ddd504",
+        "filename": "rust/config/x86_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2019-12-12T17:48:28Z",
+      "side": 1,
+      "message": "I don\u0027t know. Just copied from cc\u0027s config in case it is used.",
+      "parentUuid": "4258f6f0_47c28319",
+      "revId": "050477e6cbb1ca594b59af651ad663d5d118d333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
