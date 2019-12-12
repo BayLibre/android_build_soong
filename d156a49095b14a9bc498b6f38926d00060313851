@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79b27f0d_ad659587",
+        "filename": "android/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-12T19:20:17Z",
+      "side": 1,
+      "message": "so, I see what you were saying on the bug. CreateFileWithRotation is used w/ gzip in other cases when all versions of the file are gzip\u0027d, but we need the ToT version not to be.\n\nIs the gzip time acceptable (not sure if host gzip differs significantly from soong time, but as a proxy):\n$ time gzip Android-aosp_walleye.mk \n\nreal\t0m0.726s\nuser\t0m0.697s\nsys\t0m0.029s\n\n$ time gzip Android-aosp_cf_x86_phone.mk \n\nreal\t0m0.493s\nuser\t0m0.476s\nsys\t0m0.017s\n\nIt seems we can either:\n- create something like \"CreateFileWithGzipRotation\"\n- live w/ extra size",
+      "range": {
+        "startLine": 389,
+        "startChar": 26,
+        "endLine": 389,
+        "endChar": 48
+      },
+      "revId": "d156a49095b14a9bc498b6f38926d00060313851",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "904684e3_45492663",
+        "filename": "android/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-12T19:20:17Z",
+      "side": 1,
+      "message": "can you suggest gofu here to allow mkFileObj to be used below but not pollute this scope\u0027s namespace w/ \u0027err\u0027?",
+      "range": {
+        "startLine": 389,
+        "startChar": 0,
+        "endLine": 392,
+        "endChar": 2
+      },
+      "revId": "d156a49095b14a9bc498b6f38926d00060313851",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
