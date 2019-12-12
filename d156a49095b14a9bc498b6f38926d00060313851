@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "47a7aebc_1548e8b3",
+        "filename": "android/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-12T21:50:37Z",
+      "side": 1,
+      "message": "soong_build shouldn\u0027t be depending on soong_ui.  Unfortunately we don\u0027t have anywhere to share code between them.",
+      "revId": "d156a49095b14a9bc498b6f38926d00060313851",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "79b27f0d_ad659587",
         "filename": "android/androidmk.go",
         "patchSetId": 1
@@ -13,6 +30,30 @@
       "writtenOn": "2019-12-12T19:20:17Z",
       "side": 1,
       "message": "so, I see what you were saying on the bug. CreateFileWithRotation is used w/ gzip in other cases when all versions of the file are gzip\u0027d, but we need the ToT version not to be.\n\nIs the gzip time acceptable (not sure if host gzip differs significantly from soong time, but as a proxy):\n$ time gzip Android-aosp_walleye.mk \n\nreal\t0m0.726s\nuser\t0m0.697s\nsys\t0m0.029s\n\n$ time gzip Android-aosp_cf_x86_phone.mk \n\nreal\t0m0.493s\nuser\t0m0.476s\nsys\t0m0.017s\n\nIt seems we can either:\n- create something like \"CreateFileWithGzipRotation\"\n- live w/ extra size",
+      "range": {
+        "startLine": 389,
+        "startChar": 26,
+        "endLine": 389,
+        "endChar": 48
+      },
+      "revId": "d156a49095b14a9bc498b6f38926d00060313851",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0b9fed5_8b8a86a5",
+        "filename": "android/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-12T21:50:37Z",
+      "side": 1,
+      "message": "That\u0027s not great, but neither is 1GB of extra storage per target you\u0027ve ever built.  We are already doing an in-memory comparison of the two files, maybe write out a diff (probably needs truncating for large diffs) or just a chunk of each file around the first difference location?",
+      "parentUuid": "79b27f0d_ad659587",
       "range": {
         "startLine": 389,
         "startChar": 26,
@@ -45,6 +86,30 @@
       "revId": "d156a49095b14a9bc498b6f38926d00060313851",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5913b9cf_bef4b60e",
+        "filename": "android/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-12T21:50:37Z",
+      "side": 1,
+      "message": "You need mkFileObj to be scoped but not err.  You can\u0027t define two variables with different scopes using :\u003d, and you need err to be declared when you call if, so you\u0027d have to introduce an extra scope between declaring mkFileObj and err:\n\n    var mkFileObj *os.File\n    {\n        var err error\n        mkFileObj, err \u003d logger.CreateFileWithRotation(mkFile, 1)\n        if err !\u003d nil {\n            return nil\n        }\n    }\n\nThat doesn\u0027t seem worth it.",
+      "parentUuid": "904684e3_45492663",
+      "range": {
+        "startLine": 389,
+        "startChar": 0,
+        "endLine": 392,
+        "endChar": 2
+      },
+      "revId": "d156a49095b14a9bc498b6f38926d00060313851",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
