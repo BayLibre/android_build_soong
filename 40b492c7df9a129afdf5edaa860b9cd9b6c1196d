@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0542182f_22a98230",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1489,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-12-12T08:09:42Z",
+      "side": 1,
+      "message": "does this need to be a method of librarySdkMemberType? How about accepting it as an argument? \n\nIt\u0027s not a big deal though. It just look a little bit odd to me, because this function doesn\u0027t seem to belong librarySdkMemberType.",
+      "range": {
+        "startLine": 1489,
+        "startChar": 5,
+        "endLine": 1489,
+        "endChar": 31
+      },
+      "revId": "40b492c7df9a129afdf5edaa860b9cd9b6c1196d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
