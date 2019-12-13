@@ -94,6 +94,30 @@
       "revId": "d03e7c7d01c49c3a17a56f9f05426398c404c059",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03043632_6d4ffebd",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-13T19:20:40Z",
+      "side": 1,
+      "message": "Can you put a TODO with a followup bug here?  This definitely can\u0027t stay for long.",
+      "parentUuid": "b35240bd_404840cc",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 6
+      },
+      "revId": "d03e7c7d01c49c3a17a56f9f05426398c404c059",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
