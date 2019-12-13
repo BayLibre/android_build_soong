@@ -226,10 +226,6 @@ func (d *dexpreoptBootJars) GenerateBuildActions(ctx android.SingletonContext) {
 		// Create boot image for the ART apex (build artifacts are accessed via the global boot image config).
 		d.otherImages = append(d.otherImages, buildBootImage(ctx, artBootImageConfig(ctx)))
 	}
-	if global.GenerateApexImage {
-		// Create boot images for the JIT-zygote experiment.
-		d.otherImages = append(d.otherImages, buildBootImage(ctx, apexBootImageConfig(ctx)))
-	}
 
 	dumpOatRules(ctx, d.defaultBootImage)
 }
