@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbd21ed3_d0030bd7",
+        "filename": "android/paths.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1394,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-13T21:50:12Z",
+      "side": 1,
+      "message": "This or MaybeRel already provide the functionality of RelativeTo.",
+      "revId": "c25c81dc9d800682bec131bb151e5e66c9d5eced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
