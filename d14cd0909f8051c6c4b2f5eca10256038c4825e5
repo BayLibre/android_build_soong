@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2685688b_5d23ff0c",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-13T21:22:15Z",
+      "side": 1,
+      "message": "java_test_import would match the other java_import modules better, but I think it would be better to not define a java_test_import at all, and instead make the generated Android.bp contain something like:\n\njava_import {\n    name: \"sdk_test_lib\",\n    jars: [\"sdk_test.jar\"],\n}\n\njava_test {\n    name: \"sdk_test\",\n    static_libs: [\"sdk_test_lib\"],\n    test_config: [\"sdk_test.xml\"],\n}",
+      "revId": "d14cd0909f8051c6c4b2f5eca10256038c4825e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
