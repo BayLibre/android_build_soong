@@ -412,6 +412,9 @@ type Module struct {
 	hod      android.HostOrDeviceSupported
 	multilib android.Multilib
 
+	// SdkMemberType of this module type.
+	sdkMemberType android.SdkMemberType
+
 	// delegates, initialize before calling Init
 	features  []feature
 	compiler  compiler

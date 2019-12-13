@@ -60,6 +60,8 @@ func testSdkContext(bp string, fs map[string][]byte) (*android.TestContext, andr
 	ctx.RegisterModuleType("cc_library", cc.LibraryFactory)
 	ctx.RegisterModuleType("cc_library_shared", cc.LibrarySharedFactory)
 	ctx.RegisterModuleType("cc_library_static", cc.LibraryStaticFactory)
+	ctx.RegisterModuleType("cc_library_shared_host", cc.LibraryHostSharedFactory)
+	ctx.RegisterModuleType("cc_library_static_host", cc.LibraryHostStaticFactory)
 	ctx.RegisterModuleType("cc_object", cc.ObjectFactory)
 	ctx.RegisterModuleType("cc_prebuilt_library_shared", cc.PrebuiltSharedLibraryFactory)
 	ctx.RegisterModuleType("cc_prebuilt_library_static", cc.PrebuiltStaticLibraryFactory)

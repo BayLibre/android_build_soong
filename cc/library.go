@@ -195,6 +195,7 @@ func LibraryFactory() android.Module {
 func LibraryStaticFactory() android.Module {
 	module, library := NewLibrary(android.HostAndDeviceSupported)
 	library.BuildOnlyStatic()
+	module.sdkMemberType = staticLibrarySdkMemberType
 	return module.Init()
 }
 
@@ -202,6 +203,7 @@ func LibraryStaticFactory() android.Module {
 func LibrarySharedFactory() android.Module {
 	module, library := NewLibrary(android.HostAndDeviceSupported)
 	library.BuildOnlyShared()
+	module.sdkMemberType = sharedLibrarySdkMemberType
 	return module.Init()
 }
 
@@ -210,6 +212,7 @@ func LibrarySharedFactory() android.Module {
 func LibraryHostStaticFactory() android.Module {
 	module, library := NewLibrary(android.HostSupported)
 	library.BuildOnlyStatic()
+	module.sdkMemberType = staticLibrarySdkMemberType
 	return module.Init()
 }
 
@@ -217,6 +220,7 @@ func LibraryHostStaticFactory() android.Module {
 func LibraryHostSharedFactory() android.Module {
 	module, library := NewLibrary(android.HostSupported)
 	library.BuildOnlyShared()
+	module.sdkMemberType = sharedLibrarySdkMemberType
 	return module.Init()
 }
 
