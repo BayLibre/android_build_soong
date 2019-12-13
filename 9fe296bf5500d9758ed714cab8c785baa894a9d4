@@ -22,6 +22,30 @@
       "revId": "9fe296bf5500d9758ed714cab8c785baa894a9d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "778f2200_b9b9aeaa",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-12-13T04:42:31Z",
+      "side": 1,
+      "message": "Thank you for catching. Done",
+      "parentUuid": "a23faa54_5fc77af3",
+      "range": {
+        "startLine": 416,
+        "startChar": 8,
+        "endLine": 416,
+        "endChar": 9
+      },
+      "revId": "9fe296bf5500d9758ed714cab8c785baa894a9d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
