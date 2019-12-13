@@ -57,6 +57,23 @@
       "revId": "41ce667f7c881876af14467a84c1ec5000af5090",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7d3418e_4efa93e4",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-13T21:01:19Z",
+      "side": 1,
+      "message": "How about instead using something like:\n\nPLATFORM_SDK_VERSION\u003d$(OUT_DIR\u003d${OUT_DIR}/get_build_var/ get_build_var PLATFORM_SDK_VERSION)\n\nThat way we can build into out/ instead of out-aml/ which can affect the binary contents, since paths to generated files can end up in at least the debug info.",
+      "revId": "41ce667f7c881876af14467a84c1ec5000af5090",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
