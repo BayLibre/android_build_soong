@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9af54d38_001151c6",
+        "filename": "java/androidmk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-13T19:24:15Z",
+      "side": 1,
+      "message": "This needs to be solved without hardcoding and heuristics or at least have a TODO bug for followup.",
+      "revId": "93c2bf0e5ec34054dc088cafd358c98d431ef348",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
