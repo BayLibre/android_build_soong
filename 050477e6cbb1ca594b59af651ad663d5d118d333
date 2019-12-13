@@ -70,6 +70,24 @@
       "revId": "050477e6cbb1ca594b59af651ad663d5d118d333",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a14792e_f8af533b",
+        "filename": "rust/config/x86_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2019-12-13T21:35:24Z",
+      "side": 1,
+      "message": "prescott is really just an ancient configuration choice for building the Android platform. http://b/17530542 has some more history, as well as the CLs for when we moved our minimum supported architecture to prescott (which being from 2004 was already 10 years old in 2014). I think it\u0027s fine to have this as a fallback.",
+      "parentUuid": "0c5e20f3_50700bb2",
+      "revId": "050477e6cbb1ca594b59af651ad663d5d118d333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
