@@ -46,6 +46,30 @@
       "revId": "40b492c7df9a129afdf5edaa860b9cd9b6c1196d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "23608f4c_5d6e62f4",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1489,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-12-13T01:41:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0afdab6b_4e14d341",
+      "range": {
+        "startLine": 1489,
+        "startChar": 5,
+        "endLine": 1489,
+        "endChar": 31
+      },
+      "revId": "40b492c7df9a129afdf5edaa860b9cd9b6c1196d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
