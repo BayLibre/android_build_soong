@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68d8d27b_ff1ea802",
+        "filename": "rust/test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-13T22:16:26Z",
+      "side": 1,
+      "message": "test.baseCompiler.relative \u003d ctx.ModuleName()",
+      "revId": "03b6f7000df61fd9f82c8bd8792127306d8df1de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
