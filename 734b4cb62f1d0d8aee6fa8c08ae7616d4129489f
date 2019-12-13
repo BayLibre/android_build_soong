@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "85f1a4f1_60f278b1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-12-13T17:16:32Z",
+      "side": 1,
+      "message": "while this exact case doesn\u0027t happen (ndk libraries are system libraries), this means that we don\u0027t ever expect to fuzz code in the vendor or product partitions? Or in APEXes?",
+      "range": {
+        "startLine": 22,
+        "startChar": 63,
+        "endLine": 23,
+        "endChar": 44
+      },
+      "revId": "734b4cb62f1d0d8aee6fa8c08ae7616d4129489f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
