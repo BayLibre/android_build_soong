@@ -22,6 +22,30 @@
       "revId": "4b28b05c3056d7574e652b1ffd9ed64595561c80",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7cefd11_f688b108",
+        "filename": "cc/xom.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1114194
+      },
+      "writtenOn": "2019-12-13T21:01:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "041c8e01_f601453a",
+      "range": {
+        "startLine": 73,
+        "startChar": 12,
+        "endLine": 73,
+        "endChar": 14
+      },
+      "revId": "4b28b05c3056d7574e652b1ffd9ed64595561c80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
