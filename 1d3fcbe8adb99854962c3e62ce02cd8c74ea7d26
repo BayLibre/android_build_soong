@@ -22,6 +22,30 @@
       "revId": "1d3fcbe8adb99854962c3e62ce02cd8c74ea7d26",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bdb32a8_568e427d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-12-13T15:50:34Z",
+      "side": 1,
+      "message": "Yes, with the current PS either \"boot\" or \"apex\" image is generated.\n\nIt\u0027s not difficult to generate the other image as well and not use it except for packaging in the boot.zip. But is the runtime switching used anywhere?\n\nWe can always re-enable generation of the other image it if the need arises -- the difficult part is to implement the switching.",
+      "parentUuid": "788bdc6c_25acac37",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 58
+      },
+      "revId": "1d3fcbe8adb99854962c3e62ce02cd8c74ea7d26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
