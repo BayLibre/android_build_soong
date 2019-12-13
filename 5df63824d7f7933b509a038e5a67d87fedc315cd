@@ -22,6 +22,30 @@
       "revId": "5df63824d7f7933b509a038e5a67d87fedc315cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db6decf9_19e9e2ae",
+        "filename": "bpf/bpf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-13T21:24:41Z",
+      "side": 1,
+      "message": "You can use the mutator now if you don\u0027t care about the ordering of the archMutator vs. the imageMutator.  Implement android.ImageInterface and return \"vendor\" from ExtraImageVariations.",
+      "parentUuid": "5605a871_279c103d",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 7
+      },
+      "revId": "5df63824d7f7933b509a038e5a67d87fedc315cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
