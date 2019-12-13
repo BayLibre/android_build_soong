@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7b55751_b28104e1",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-13T21:46:08Z",
+      "side": 1,
+      "message": "It would be better to use an interface that would also match prebuiltLibraryLinker, probably m.linker.(libraryInterface)",
+      "revId": "02466fbd2745bb50a719351782fdf10ab678ed83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
