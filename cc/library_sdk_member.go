@@ -72,8 +72,13 @@ func (mt *librarySdkMemberType) AddDependencies(mctx android.BottomUpMutatorCont
 }
 
 func (mt *librarySdkMemberType) IsInstance(module android.Module) bool {
-	_, ok := module.(*Module)
-	return ok
+	// cc library and binaries are all cc.Modules so check the linker to differentiate.
+	if m, ok := module.(*Module); ok {
+		_, ok := m.linker.(*libraryDecorator)
+		return ok
+	}
+
+	return false
 }
 
 // copy exported header files and stub *.so files

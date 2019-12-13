@@ -73,6 +73,10 @@ func TestBasicSdkWithCc(t *testing.T) {
 			native_shared_libs: ["sdkmember"],
 		}
 
+		cc_library_shared {
+			name: "sdkmember",
+		}
+
 		sdk_snapshot {
 			name: "mysdk@1",
 			native_shared_libs: ["sdkmember_mysdk_1"],
