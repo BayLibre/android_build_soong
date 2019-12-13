@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9155e250_db182445",
+        "filename": "cc/cc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-13T21:37:26Z",
+      "side": 1,
+      "message": "This was passed back to the Module in SetImageVariation(), there is no need to query it again.",
+      "revId": "c9f657b3bbb6ffe798fc70fc86aefa21b875b260",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d90ce23_65bc6d1f",
+        "filename": "cc/cc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-13T21:37:26Z",
+      "side": 1,
+      "message": "How is this different from UseVndk()?  Can you add godoc to the various functions to clarify what they are checking and/or when they should be used?",
+      "revId": "c9f657b3bbb6ffe798fc70fc86aefa21b875b260",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da4feb36_5f2b8605",
+        "filename": "cc/installer.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-13T21:37:26Z",
+      "side": 1,
+      "message": "We already have c.Properties.PreventInstall",
+      "revId": "c9f657b3bbb6ffe798fc70fc86aefa21b875b260",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
