@@ -235,11 +235,13 @@ func artBootImageConfig(ctx android.PathContext) bootImageConfig {
 }
 
 func defaultBootImageConfig(ctx android.PathContext) bootImageConfig {
-	return *genBootImageConfigs(ctx)[frameworkBootImageName]
-}
-
-func apexBootImageConfig(ctx android.PathContext) bootImageConfig {
-	return *genBootImageConfigs(ctx)[apexBootImageName]
+	var name string
+	if dexpreoptGlobalConfig(ctx).UseApexImage {
+		name = apexBootImageName
+	} else {
+		name = frameworkBootImageName
+	}
+	return *genBootImageConfigs(ctx)[name]
 }
 
 func defaultBootclasspath(ctx android.PathContext) []string {
