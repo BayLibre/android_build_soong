@@ -22,6 +22,30 @@
       "revId": "40b492c7df9a129afdf5edaa860b9cd9b6c1196d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0afdab6b_4e14d341",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1489,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-12-13T00:12:51Z",
+      "side": 1,
+      "message": "It could do either. I wasn\u0027t sure about which way to go and decided it didn\u0027t really matter as if this is the wrong way then it was easy to change.",
+      "parentUuid": "0542182f_22a98230",
+      "range": {
+        "startLine": 1489,
+        "startChar": 5,
+        "endLine": 1489,
+        "endChar": 31
+      },
+      "revId": "40b492c7df9a129afdf5edaa860b9cd9b6c1196d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
