@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a451e57_f73f0373",
+        "filename": "cc/snapshot_utils.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-13T20:34:36Z",
+      "side": 1,
+      "message": "stdlib first, then blank line, then android imports",
+      "revId": "fa7802fe11e572463f170aa4c7361fd9db193855",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb1c16df_0347c422",
+        "filename": "cc/snapshot_utils.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-13T20:34:36Z",
+      "side": 1,
+      "message": "It\u0027s possible to configure Soong to do builds with multiple targets that have the same ArchType but different ArchVariants.",
+      "revId": "fa7802fe11e572463f170aa4c7361fd9db193855",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8447994f_d271d53a",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-13T20:34:36Z",
+      "side": 1,
+      "message": "There are lots more directories than \"cts\" that are tests.  Are there vendor: true or vendor_available: true modules there?",
+      "revId": "fa7802fe11e572463f170aa4c7361fd9db193855",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7394f05_fd0ad26c",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-13T20:34:36Z",
+      "side": 1,
+      "message": "These seem odd to exclude, they are used for on-device renderscript.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 19
+      },
+      "revId": "fa7802fe11e572463f170aa4c7361fd9db193855",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c250e719_5209aa99",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-13T20:34:36Z",
+      "side": 1,
+      "message": "Maybe break all this out to a helper function?  Also, it\u0027s possible that initializing the lists when visiting every module could have a performance impact, initialize them as globals?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 2
+      },
+      "revId": "fa7802fe11e572463f170aa4c7361fd9db193855",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b7215b47_82c8dc95",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-13T20:34:36Z",
+      "side": 1,
+      "message": "I don\u0027t see the point of targetArchMap, can\u0027t you compute the value based entirely on m.Target().Arch?  Why precompute them?",
+      "revId": "fa7802fe11e572463f170aa4c7361fd9db193855",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a415f09e_a92e296c",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-13T20:34:36Z",
+      "side": 1,
+      "message": "What is the point of this?  Isn\u0027t it basically if !ctx.Device()?",
+      "revId": "fa7802fe11e572463f170aa4c7361fd9db193855",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
