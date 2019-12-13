@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "788bdc6c_25acac37",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-12-13T15:33:54Z",
+      "side": 1,
+      "message": "The reason we wanted to have two boot images (apex.art and boot.art) built was to be able to easily switch at runtime between the two. Are we generating only one now?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 58
+      },
+      "revId": "1d3fcbe8adb99854962c3e62ce02cd8c74ea7d26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
