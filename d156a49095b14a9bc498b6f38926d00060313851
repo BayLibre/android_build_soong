@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "55b11e86_eee02ded",
+        "filename": "android/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-14T00:16:57Z",
+      "side": 1,
+      "message": "Given the below comment I\u0027ll probably remove this anyway, thanks.",
+      "parentUuid": "47a7aebc_1548e8b3",
+      "revId": "d156a49095b14a9bc498b6f38926d00060313851",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79b27f0d_ad659587",
         "filename": "android/androidmk.go",
         "patchSetId": 1
@@ -66,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "6471d3e3_b9d5fa55",
+        "filename": "android/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-14T00:16:57Z",
+      "side": 1,
+      "message": "Good idea.",
+      "parentUuid": "d0b9fed5_8b8a86a5",
+      "range": {
+        "startLine": 389,
+        "startChar": 26,
+        "endLine": 389,
+        "endChar": 48
+      },
+      "revId": "d156a49095b14a9bc498b6f38926d00060313851",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "904684e3_45492663",
         "filename": "android/androidmk.go",
         "patchSetId": 1
@@ -101,6 +143,30 @@
       "side": 1,
       "message": "You need mkFileObj to be scoped but not err.  You can\u0027t define two variables with different scopes using :\u003d, and you need err to be declared when you call if, so you\u0027d have to introduce an extra scope between declaring mkFileObj and err:\n\n    var mkFileObj *os.File\n    {\n        var err error\n        mkFileObj, err \u003d logger.CreateFileWithRotation(mkFile, 1)\n        if err !\u003d nil {\n            return nil\n        }\n    }\n\nThat doesn\u0027t seem worth it.",
       "parentUuid": "904684e3_45492663",
+      "range": {
+        "startLine": 389,
+        "startChar": 0,
+        "endLine": 392,
+        "endChar": 2
+      },
+      "revId": "d156a49095b14a9bc498b6f38926d00060313851",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b37a7300_c9d552cd",
+        "filename": "android/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-14T00:16:57Z",
+      "side": 1,
+      "message": "ah, good to know, thanks!",
+      "parentUuid": "5913b9cf_bef4b60e",
       "range": {
         "startLine": 389,
         "startChar": 0,
