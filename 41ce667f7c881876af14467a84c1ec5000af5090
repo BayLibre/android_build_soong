@@ -74,6 +74,24 @@
       "revId": "41ce667f7c881876af14467a84c1ec5000af5090",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "900e1877_878e0973",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-12-16T22:32:09Z",
+      "side": 1,
+      "message": "If out/ already exists and contains a normal lunch target build then this script will still fail in \"m --skip-make\" below. For normal developer use it\u0027d be confusing and inconvenient to either have to delete their normal out/ first, or get the habit to always do \"env OUT_DIR\u003dout-aml/ build-aml-prebuilts.sh\".\n\nI think rather we should fix the build system to properly handle both normal and skip-make builds in the same tree. Maybe it\u0027s just a matter of using two different ninja files (e.g. out/soong/build.ninja and out/soong/build-skip-make.ninja), maybe more work is necessary. That\u0027s not something I\u0027ve looked into.\n\nBarring that, if bogus out-aml/ paths turns out to be a problem in prod builds we can instead wrap this script in \"env OUT_DIR\u003dout/get_build_var AML_PREBUILTS_OUT_DIR\u003dout ...\" there.",
+      "parentUuid": "a7d3418e_4efa93e4",
+      "revId": "41ce667f7c881876af14467a84c1ec5000af5090",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
