@@ -52,6 +52,24 @@
       "revId": "02466fbd2745bb50a719351782fdf10ab678ed83",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c990fff_3b62e7fb",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-16T18:57:51Z",
+      "side": 1,
+      "message": "Maybe you also want to forbid prebuilts, but using a the type instead of an interface prevents this matching any other module type that uses the decorator pattern to wrap a library.",
+      "parentUuid": "3394b64d_7c8abcaf",
+      "revId": "02466fbd2745bb50a719351782fdf10ab678ed83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
