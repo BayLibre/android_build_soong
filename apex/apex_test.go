@@ -530,6 +530,12 @@ func TestBasicApex(t *testing.T) {
 	}
 	ensureListContains(t, noticeInputs, "NOTICE")
 	ensureListContains(t, noticeInputs, "custom_notice")
+
+	depsInfo := strings.Split(ctx.ModuleForTests("myapex", "android_common_myapex_image").Output("dep-info.txt").Args["content"], "\\n")
+	ensureListContains(t, depsInfo, "internal myjar")
+	ensureListContains(t, depsInfo, "internal mylib")
+	ensureListContains(t, depsInfo, "internal mylib2")
+	ensureListContains(t, depsInfo, "internal myprebuiltjar")
 }
 
 func TestApexManifest(t *testing.T) {
@@ -750,6 +756,12 @@ func TestApexWithExplicitStubsDependency(t *testing.T) {
 
 	// Ensure that libfoo stubs is not linking to libbar (since it is a stubs)
 	ensureNotContains(t, libFooStubsLdFlags, "libbar.so")
+
+	depsInfo := strings.Split(ctx.ModuleForTests("myapex", "android_common_myapex_image").Output("dep-info.txt").Args["content"], "\\n")
+	ensureListContains(t, depsInfo, "internal mylib")
+	ensureListContains(t, depsInfo, "external libfoo")
+	ensureListNotContains(t, depsInfo, "internal libfoo")
+	ensureListNotContains(t, depsInfo, "external mylib")
 }
 
 func TestApexWithRuntimeLibsDependency(t *testing.T) {
@@ -3053,6 +3065,9 @@ func TestLegacyAndroid10Support(t *testing.T) {
 	module := ctx.ModuleForTests("myapex", "android_common_myapex_image")
 	args := module.Rule("apexRule").Args
 	ensureContains(t, args["opt_flags"], "--manifest_json "+module.Output("apex_manifest.json").Output.String())
+}
+
+func TestApexDepsInfo(t *testing.T) {
 }
 
 func TestMain(m *testing.M) {
