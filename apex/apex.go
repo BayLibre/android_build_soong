@@ -1233,6 +1233,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	apexName := proptools.StringDefault(a.properties.Apex_name, a.Name())
 	a.compatSymlinks = makeCompatSymlinks(apexName, ctx)
+	a.buildApexDependencyInfo(ctx)
 }
 
 func newApexBundle() *apexBundle {

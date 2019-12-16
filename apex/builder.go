@@ -22,6 +22,7 @@ import (
 	"strings"
 
 	"android/soong/android"
+	"android/soong/cc"
 	"android/soong/java"
 
 	"github.com/google/blueprint"
@@ -138,6 +139,7 @@ var (
 		Command: `${zip2zip} -i $in -o $out ` +
 			`apex_payload.img:apex/${abi}.img ` +
 			`apex_manifest.json:root/apex_manifest.json ` +
+			`apex_pubkey:root/apex_pubkey ` +
 			`apex_manifest.pb:root/apex_manifest.pb ` +
 			`AndroidManifest.xml:manifest/AndroidManifest.xml ` +
 			`assets/NOTICE.html.gz:assets/NOTICE.html.gz`,
@@ -552,4 +554,79 @@ func (a *apexBundle) getOverrideManifestPackageName(ctx android.ModuleContext) s
 		return manifestPackageName
 	}
 	return ""
+}
+
+func (a *apexBundle) buildApexDependencyInfo(ctx android.ModuleContext) {
+	if !a.primaryApexType {
+		return
+	}
+	// dependencies that are included in this apex
+	var internalDepNames []string
+	// dependencies that are from outside of this apex
+	var externalDepNames []string
+	ctx.WalkDepsBlueprint(func(child, parent blueprint.Module) bool {
+		depTag := ctx.OtherModuleDependencyTag(child)
+		depName := ctx.OtherModuleName(child)
+		if _, isDirectDep := parent.(*apexBundle); isDirectDep {
+			// All direct dependencies are gathered except for the keys/certificates
+			if depTag == keyTag || depTag == certificateTag {
+				return false
+			}
+			internalDepNames = append(internalDepNames, depName)
+			return true
+		} else if _, ok := child.(android.ApexModule); ok {
+			if cm, ok := child.(*cc.Module); ok {
+				// shared dep to stubs library is counted as external dep
+				// shared dep to non stubs library and static dep are internal dep
+				if cc.IsSharedDepTag(depTag) || cc.IsRuntimeDepTag(depTag) {
+					if cm.HasStubsVariants() && !android.DirectlyInApex(ctx.ModuleName(), depName) {
+						externalDepNames = append(externalDepNames, depName)
+						return false
+					}
+					internalDepNames = append(internalDepNames, depName)
+					return true
+				} else if cc.IsStaticDepTag(depTag) {
+					internalDepNames = append(internalDepNames, depName)
+					return true
+				}
+			} else if _, ok := child.(*java.Module); ok {
+				if java.IsLibDepTag(depTag) {
+					externalDepNames = append(externalDepNames, depName)
+					return false
+				} else if java.IsStaticLibDepTag(depTag) {
+					internalDepNames = append(internalDepNames)
+					return true
+				}
+			}
+		}
+		return false
+	})
+
+	internalDepNames = android.SortedUniqueStrings(internalDepNames)
+	externalDepNames = android.SortedUniqueStrings(externalDepNames)
+	externalDepNames = android.RemoveListFromList(externalDepNames, internalDepNames)
+
+	var content strings.Builder
+	for _, name := range internalDepNames {
+		fmt.Fprintf(&content, "internal %s\\n", name)
+	}
+	for _, name := range externalDepNames {
+		fmt.Fprintf(&content, "external %s\\n", name)
+	}
+
+	depsInfoFile := android.PathForOutput(ctx, a.Name()+"-deps-info.txt")
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        android.WriteFile,
+		Description: "Dependency Info",
+		Output:      depsInfoFile,
+		Args: map[string]string{
+			"content": content.String(),
+		},
+	})
+
+	ctx.Build(pctx, android.BuildParams{
+		Rule:   android.Phony,
+		Output: android.PathForPhony(ctx, a.Name()+"-deps-info"),
+		Inputs: []android.Path{depsInfoFile},
+	})
 }
