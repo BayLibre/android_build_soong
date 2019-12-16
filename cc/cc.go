@@ -386,6 +386,13 @@ func IsSharedDepTag(depTag blueprint.DependencyTag) bool {
 	return ok && ccDepTag.Shared
 }
 
+func IsStaticDepTag(depTag blueprint.DependencyTag) bool {
+	ccDepTag, ok := depTag.(DependencyTag)
+	return ok && (ccDepTag == staticExportDepTag ||
+		ccDepTag == lateStaticDepTag ||
+		ccDepTag == wholeStaticDepTag)
+}
+
 func IsRuntimeDepTag(depTag blueprint.DependencyTag) bool {
 	ccDepTag, ok := depTag.(DependencyTag)
 	return ok && ccDepTag == runtimeDepTag
