@@ -3011,6 +3011,27 @@ func TestOverrideApex(t *testing.T) {
 	ensureNotContains(t, androidMk, "LOCAL_MODULE_STEM := myapex.apex")
 }
 
+func TestRejectNonInstallableJavaLibrary(t *testing.T) {
+	testApexError(t, `"myjar" is not configured to be compiled into dex`, `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			java_libs: ["myjar"],
+		}
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+		java_library {
+			name: "myjar",
+			srcs: ["foo/bar/MyClass.java"],
+			sdk_version: "none",
+			system_modules: "none",
+		}
+	`)
+}
+
 func TestMain(m *testing.M) {
 	run := func() int {
 		setUp()
