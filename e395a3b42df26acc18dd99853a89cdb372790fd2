@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22954bc9_fb753ee1",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-16T19:10:28Z",
+      "side": 1,
+      "message": "Are these comments providing any value?  They are copied from cmakelists.go, but if they are not useful to you feel free to remove them.",
+      "revId": "e395a3b42df26acc18dd99853a89cdb372790fd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0958b310_d3993889",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-16T19:10:28Z",
+      "side": 1,
+      "message": "If you don\u0027t need to keep this comment you could just call evalVariable() on each parameter before calling categorizeParameter()",
+      "revId": "e395a3b42df26acc18dd99853a89cdb372790fd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "140cdfe6_fd06d3db",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-16T19:10:28Z",
+      "side": 1,
+      "message": "This reinitializes RelativeFilePathFlags every time, erasing anything that was already there.  You should either initialize compilerParams with:\n\ncompilerParams :\u003d ccParameters{\n    RelativeFilePathFlags: make(map[string]string),\n}\n\nor initialize it here only if it is nil:\n\nif compilerParams.RelativeFilePathFlags \u003d\u003d nil {\n    compilerParams.RelativeFilePathFlags \u003d map[string]string{}\n}",
+      "revId": "e395a3b42df26acc18dd99853a89cdb372790fd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
