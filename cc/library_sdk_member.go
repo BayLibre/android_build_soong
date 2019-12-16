@@ -27,6 +27,7 @@ import (
 var sharedLibrarySdkMemberType = &librarySdkMemberType{
 	SdkMemberTypeBase: android.SdkMemberTypeBase{
 		PropertyName: "native_shared_libs",
+		SupportsSdk:  true,
 	},
 	prebuiltModuleType: "cc_prebuilt_library_shared",
 	linkTypes:          []string{"shared"},
