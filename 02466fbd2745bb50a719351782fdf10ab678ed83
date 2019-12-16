@@ -88,6 +88,24 @@
       "revId": "02466fbd2745bb50a719351782fdf10ab678ed83",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a48b40ed_66828b93",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-16T20:33:40Z",
+      "side": 1,
+      "message": "If you only want to work with cc_library then the concrete type is fine, although maybe a comment would help.  Using the interface method is also fine if you want the generic behavior, although then a wrapper around libraryDecorator would inherit the interface method.",
+      "parentUuid": "836d1ff9_0c6be7bf",
+      "revId": "02466fbd2745bb50a719351782fdf10ab678ed83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
