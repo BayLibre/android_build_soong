@@ -70,6 +70,24 @@
       "revId": "02466fbd2745bb50a719351782fdf10ab678ed83",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "836d1ff9_0c6be7bf",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-12-16T19:50:25Z",
+      "side": 1,
+      "message": "What libraries (other than prebuilt ones) are excluded by using *libraryDecorator instead of libraryInterface? I chose a concrete type specifically to make sure that I only included the specific module type and did not inadvertently include any others or allow others to be accidentally included in future.\n\nHow about if I define a new interface, say something like this:\ntype sdkMemberTypeProvider interface {\n   forSdkMemberType(SdkMemberType) bool\n}\n\nAnd then each module type can indicate which member type(s) it works with.",
+      "parentUuid": "3c990fff_3b62e7fb",
+      "revId": "02466fbd2745bb50a719351782fdf10ab678ed83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
