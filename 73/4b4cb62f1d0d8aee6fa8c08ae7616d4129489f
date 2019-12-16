@@ -1,0 +1,8 @@
+Code-Review+2: Hamzeh Zawawy <hamzeh@google.com>
+Code-Review+1: Dan Willemsen <dwillemsen@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Mitch Phillips <mitchp@google.com>
+Submitted-at: Mon, 16 Dec 2019 21:17:03 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1185081
+Project: platform/build/soong
+Branch: refs/heads/master
