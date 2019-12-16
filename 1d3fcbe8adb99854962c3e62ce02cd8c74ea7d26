@@ -46,6 +46,30 @@
       "revId": "1d3fcbe8adb99854962c3e62ce02cd8c74ea7d26",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3963dc41_988a2453",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-12-16T08:11:10Z",
+      "side": 1,
+      "message": "Yes, the runtime switching is used for the dogfood image profile work.",
+      "parentUuid": "6bdb32a8_568e427d",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 58
+      },
+      "revId": "1d3fcbe8adb99854962c3e62ce02cd8c74ea7d26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
