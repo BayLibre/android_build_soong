@@ -282,6 +282,7 @@ func testApexContext(t *testing.T, bp string, handlers ...testCustomizer) (*andr
 		"apex_manifest.json":                                  nil,
 		"AndroidManifest.xml":                                 nil,
 		"system/sepolicy/apex/myapex-file_contexts":           nil,
+		"system/sepolicy/apex/myapex2-file_contexts":          nil,
 		"system/sepolicy/apex/otherapex-file_contexts":        nil,
 		"system/sepolicy/apex/commonapex-file_contexts":       nil,
 		"system/sepolicy/apex/com.android.vndk-file_contexts": nil,
@@ -531,6 +532,12 @@ func TestBasicApex(t *testing.T) {
 	}
 	ensureListContains(t, noticeInputs, "NOTICE")
 	ensureListContains(t, noticeInputs, "custom_notice")
+
+	depsInfo := strings.Split(ctx.ModuleForTests("myapex", "android_common_myapex_image").Output("dep-info.txt").Args["content"], "\\n")
+	ensureListContains(t, depsInfo, "internal myjar")
+	ensureListContains(t, depsInfo, "internal mylib")
+	ensureListContains(t, depsInfo, "internal mylib2")
+	ensureListContains(t, depsInfo, "internal myprebuiltjar")
 }
 
 func TestDefaults(t *testing.T) {
@@ -751,13 +758,13 @@ func TestApexWithStubs(t *testing.T) {
 func TestApexWithExplicitStubsDependency(t *testing.T) {
 	ctx, _ := testApex(t, `
 		apex {
-			name: "myapex",
-			key: "myapex.key",
+			name: "myapex2",
+			key: "myapex2.key",
 			native_shared_libs: ["mylib"],
 		}
 
 		apex_key {
-			name: "myapex.key",
+			name: "myapex2.key",
 			public_key: "testkey.avbpubkey",
 			private_key: "testkey.pem",
 		}
@@ -790,7 +797,7 @@ func TestApexWithExplicitStubsDependency(t *testing.T) {
 
 	`)
 
-	apexRule := ctx.ModuleForTests("myapex", "android_common_myapex_image").Rule("apexRule")
+	apexRule := ctx.ModuleForTests("myapex2", "android_common_myapex2_image").Rule("apexRule")
 	copyCmds := apexRule.Args["copy_commands"]
 
 	// Ensure that direct non-stubs dep is always included
@@ -802,17 +809,23 @@ func TestApexWithExplicitStubsDependency(t *testing.T) {
 	// Ensure that dependency of stubs is not included
 	ensureNotContains(t, copyCmds, "image.apex/lib64/libbar.so")
 
-	mylibLdFlags := ctx.ModuleForTests("mylib", "android_arm64_armv8-a_shared_myapex").Rule("ld").Args["libFlags"]
+	mylibLdFlags := ctx.ModuleForTests("mylib", "android_arm64_armv8-a_shared_myapex2").Rule("ld").Args["libFlags"]
 
 	// Ensure that mylib is linking with version 10 of libfoo
-	ensureContains(t, mylibLdFlags, "libfoo/android_arm64_armv8-a_shared_10_myapex/libfoo.so")
+	ensureContains(t, mylibLdFlags, "libfoo/android_arm64_armv8-a_shared_10_myapex2/libfoo.so")
 	// ... and not linking to the non-stub (impl) variant of libfoo
-	ensureNotContains(t, mylibLdFlags, "libfoo/android_arm64_armv8-a_shared_myapex/libfoo.so")
+	ensureNotContains(t, mylibLdFlags, "libfoo/android_arm64_armv8-a_shared_myapex2/libfoo.so")
 
-	libFooStubsLdFlags := ctx.ModuleForTests("libfoo", "android_arm64_armv8-a_shared_10_myapex").Rule("ld").Args["libFlags"]
+	libFooStubsLdFlags := ctx.ModuleForTests("libfoo", "android_arm64_armv8-a_shared_10_myapex2").Rule("ld").Args["libFlags"]
 
 	// Ensure that libfoo stubs is not linking to libbar (since it is a stubs)
 	ensureNotContains(t, libFooStubsLdFlags, "libbar.so")
+
+	depsInfo := strings.Split(ctx.ModuleForTests("myapex2", "android_common_myapex2_image").Output("dep-info.txt").Args["content"], "\\n")
+	ensureListContains(t, depsInfo, "internal mylib")
+	ensureListContains(t, depsInfo, "external libfoo")
+	ensureListNotContains(t, depsInfo, "internal libfoo")
+	ensureListNotContains(t, depsInfo, "external mylib")
 }
 
 func TestApexWithRuntimeLibsDependency(t *testing.T) {
