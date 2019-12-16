@@ -22,6 +22,30 @@
       "revId": "85cdbc293a8b0b5e286a5848da9de12e33aa40a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45aaf98d_1fae9ab7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2019-12-16T14:51:52Z",
+      "side": 1,
+      "message": "Maybe someone from the build team can comment? ccross@?",
+      "parentUuid": "8e0c376c_d8a23ba1",
+      "range": {
+        "startLine": 13,
+        "startChar": 56,
+        "endLine": 14,
+        "endChar": 27
+      },
+      "revId": "85cdbc293a8b0b5e286a5848da9de12e33aa40a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
