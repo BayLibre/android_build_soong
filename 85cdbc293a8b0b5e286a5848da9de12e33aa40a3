@@ -46,6 +46,30 @@
       "revId": "85cdbc293a8b0b5e286a5848da9de12e33aa40a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "058d7eff_01816635",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-16T19:00:51Z",
+      "side": 1,
+      "message": "Turbine always gets all the sources in a module, but it doesn\u0027t run the annotation processors.  The annotation processors are run by javac, which means for a sharded module javac will see a random selection of the sources, so two invocations of javac may have different sources from the same package with the rest of the classes in the package taken from the turbine header jar in the classpath.  There is also no guarantee that two modules don\u0027t have sources in the same package, although in practice it is mostly true.",
+      "parentUuid": "45aaf98d_1fae9ab7",
+      "range": {
+        "startLine": 13,
+        "startChar": 56,
+        "endLine": 14,
+        "endChar": 27
+      },
+      "revId": "85cdbc293a8b0b5e286a5848da9de12e33aa40a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
