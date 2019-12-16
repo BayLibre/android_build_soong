@@ -16,6 +16,24 @@
       "revId": "c25c81dc9d800682bec131bb151e5e66c9d5eced",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8a6148c_9ab40806",
+        "filename": "android/paths.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1394,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-12-16T16:39:35Z",
+      "side": 1,
+      "message": "It is not quite the same (e.g. does not work on paths, returns \"\" if they are not relative) and the requirement for a ctx makes it a little difficult to use. However, filepath.Rel() can be used. As the only use case is to resolve a path relative to the build dir I added methods to Config to do that. If you still aren\u0027t happy with that could you suggest where I should put the methods that would allow them to be used in java/ and sdk/ packages and what form they should take?",
+      "parentUuid": "bbd21ed3_d0030bd7",
+      "revId": "c25c81dc9d800682bec131bb151e5e66c9d5eced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
