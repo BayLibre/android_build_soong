@@ -58,6 +58,7 @@ func init() {
 		librarySdkMemberType{
 			android.SdkMemberTypeBase{
 				PropertyName: "java_header_libs",
+				SupportsSdk:  true,
 			},
 		},
 	})
