@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e0c376c_d8a23ba1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2019-12-16T14:20:59Z",
+      "side": 1,
+      "message": "as discussed offline, there is still potentially an issue here. Maybe there are java packages that are spread across libraries? Or perhaps when turbine shards the compilation steps, it shards the java packages as well?",
+      "range": {
+        "startLine": 13,
+        "startChar": 56,
+        "endLine": 14,
+        "endChar": 27
+      },
+      "revId": "85cdbc293a8b0b5e286a5848da9de12e33aa40a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
