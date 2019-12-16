@@ -34,6 +34,24 @@
       "revId": "c25c81dc9d800682bec131bb151e5e66c9d5eced",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3edac52_2b0b77f8",
+        "filename": "android/paths.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1394,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-16T19:17:01Z",
+      "side": 1,
+      "message": "The ctx is necessary if you are going to report any errors, and you should generally have a ctx available anywhere you are calling this from (and if not, maybe you should plumb the ctx through).\n\nFor Paths, there are plenty of helper functions in paths.go that work on Paths, e.g. ReversePaths or FirstUniquePaths.  If all you care about is Paths, I\u0027d suggest adding a PathsRelativeTo() in paths.go that uses filepath.Rel or MaybeRel.\n\nThe \"returns the path unchanged if it is not relative\" semantics are odd, that might be useful for tests but seems like its always an error for any real usage.  If you only care about tests, maybe add to android/testing.go and put ForTests in the name?",
+      "parentUuid": "c8a6148c_9ab40806",
+      "revId": "c25c81dc9d800682bec131bb151e5e66c9d5eced",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
