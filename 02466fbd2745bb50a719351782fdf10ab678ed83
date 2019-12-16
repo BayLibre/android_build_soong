@@ -34,6 +34,24 @@
       "revId": "02466fbd2745bb50a719351782fdf10ab678ed83",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3394b64d_7c8abcaf",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-12-16T12:46:07Z",
+      "side": 1,
+      "message": "Why? That would allow prebuilts to be used with the sdk and AFAIK that would not work. If a snapshot was created from a prebuilt you could end up with two prebuilts with the same name which would cause a conflict wouldn\u0027t it?",
+      "parentUuid": "201d9f08_cad64966",
+      "revId": "02466fbd2745bb50a719351782fdf10ab678ed83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
