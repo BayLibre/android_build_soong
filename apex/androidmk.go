@@ -205,5 +205,12 @@ func (a *apexBundle) androidMkForType() android.AndroidMkData {
 					fmt.Fprintln(w, "ALL_MODULES.$(LOCAL_MODULE).BUNDLE :=", a.bundleModuleFile.String())
 				}
 			}
+
+			if a.apexDependencyInfo != nil {
+				depsInfoTargetName := name + a.suffix + "-deps-info"
+				fmt.Fprintln(w, ".PHONY:", depsInfoTargetName)
+				fmt.Fprintln(w, depsInfoTargetName+":", a.apexDependencyInfo.String())
+				fmt.Fprintln(w, "	cat $<")
+			}
 		}}
 }
