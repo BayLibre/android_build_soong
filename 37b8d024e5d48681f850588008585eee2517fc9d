@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ca008b96_d723d6a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-12-17T05:14:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a1cc69b_7af021fa",
+      "range": {
+        "startLine": 9,
+        "startChar": 54,
+        "endLine": 9,
+        "endChar": 64
+      },
+      "revId": "37b8d024e5d48681f850588008585eee2517fc9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a393037_7ed1c2a7",
         "filename": "apex/androidmk.go",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "311f9fa0_242709d6",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-12-17T05:14:55Z",
+      "side": 1,
+      "message": "Done. apexDependencyInfo is not set for the non-default APEXes.",
+      "parentUuid": "8a393037_7ed1c2a7",
+      "range": {
+        "startLine": 209,
+        "startChar": 32,
+        "endLine": 209,
+        "endChar": 42
+      },
+      "revId": "37b8d024e5d48681f850588008585eee2517fc9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4a7446e_6f29ea41",
         "filename": "apex/builder.go",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "37b8d024e5d48681f850588008585eee2517fc9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fd7eb18_8bbd9671",
+        "filename": "apex/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-12-17T05:14:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4a7446e_6f29ea41",
+      "range": {
+        "startLine": 559,
+        "startChar": 0,
+        "endLine": 559,
+        "endChar": 31
+      },
+      "revId": "37b8d024e5d48681f850588008585eee2517fc9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
