@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "683826da_b5e5cd67",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-12-17T12:23:42Z",
+      "side": 1,
+      "message": "Added godoc for this.",
+      "parentUuid": "ef23a3e3_bcddcdbd",
+      "range": {
+        "startLine": 845,
+        "startChar": 0,
+        "endLine": 847,
+        "endChar": 1
+      },
+      "revId": "5cc4d65b7d645471a58801f2f3def0bae9597c44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6af3ab5f_b6e8b793",
         "filename": "cc/cc.go",
         "patchSetId": 2
@@ -93,6 +117,30 @@
       "revId": "5cc4d65b7d645471a58801f2f3def0bae9597c44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47d4e5d8_7f842e35",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 990,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-12-17T12:23:42Z",
+      "side": 1,
+      "message": "Resolving the comment.",
+      "parentUuid": "6d5f9b44_d9a5965b",
+      "range": {
+        "startLine": 986,
+        "startChar": 0,
+        "endLine": 990,
+        "endChar": 17
+      },
+      "revId": "5cc4d65b7d645471a58801f2f3def0bae9597c44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

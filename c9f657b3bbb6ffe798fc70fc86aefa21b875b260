@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2989df48_74037be3",
+        "filename": "cc/cc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-12-17T12:23:42Z",
+      "side": 1,
+      "message": "Added ImageVariationPrefix to Module Property to store the query from SetImageVariation().",
+      "parentUuid": "9155e250_db182445",
+      "revId": "c9f657b3bbb6ffe798fc70fc86aefa21b875b260",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9d90ce23_65bc6d1f",
         "filename": "cc/cc.go",
         "patchSetId": 10
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "0f04cfa1_3ac49294",
+        "filename": "cc/cc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-12-17T12:23:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d90ce23_65bc6d1f",
+      "revId": "c9f657b3bbb6ffe798fc70fc86aefa21b875b260",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da4feb36_5f2b8605",
         "filename": "cc/installer.go",
         "patchSetId": 10
@@ -50,6 +86,24 @@
       "revId": "c9f657b3bbb6ffe798fc70fc86aefa21b875b260",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e756d7a3_e4ab0fdd",
+        "filename": "cc/installer.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-12-17T12:23:42Z",
+      "side": 1,
+      "message": "Added SetPreventInstall() and GetPreventInstall() interfaces to use c.Properties.PreventInstall.",
+      "parentUuid": "da4feb36_5f2b8605",
+      "revId": "c9f657b3bbb6ffe798fc70fc86aefa21b875b260",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
