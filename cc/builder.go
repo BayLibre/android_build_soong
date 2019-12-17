@@ -292,6 +292,7 @@ type builderFlags struct {
 	coverage      bool
 	sAbiDump      bool
 	emitXrefs     bool
+	asNeeded      bool
 
 	assemblerWithCpp bool
 
@@ -638,6 +639,9 @@ func TransformObjToDynamicBinary(ctx android.ModuleContext,
 		libFlagsList = append(libFlagsList, "-Wl,--end-group")
 	}
 
+	if flags.asNeeded && !ctx.Darwin() && !ctx.Windows() {
+		libFlagsList = append(libFlagsList, "-Wl,--as-needed")
+	}
 	for _, lib := range sharedLibs {
 		libFile := lib.String()
 		if ctx.Windows() {

@@ -86,6 +86,7 @@ func flagsToBuilderFlags(in Flags) builderFlags {
 		tidy:          in.Tidy,
 		sAbiDump:      in.SAbiDump,
 		emitXrefs:     in.EmitXrefs,
+		asNeeded:      in.AsNeeded,
 
 		systemIncludeFlags: strings.Join(in.SystemIncludeFlags, " "),
 

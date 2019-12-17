@@ -177,6 +177,7 @@ type Flags struct {
 	Coverage  bool
 	SAbiDump  bool
 	EmitXrefs bool // If true, generate Ninja rules to generate emitXrefs input files for Kythe
+	AsNeeded  bool
 
 	RequiredInstructionSet string
 	DynamicLinker          string

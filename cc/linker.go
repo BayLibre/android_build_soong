@@ -151,6 +151,9 @@ type BaseLinkerProperties struct {
 
 	// local file name to pass to the linker as --version_script
 	Version_script *string `android:"path,arch_variant"`
+
+	// Whether to link with --as-needed, default true.
+	As_needed *bool `android:"arch_variant"`
 }
 
 func NewBaseLinker(sanitize *sanitize) *baseLinker {
@@ -448,6 +451,8 @@ func (linker *baseLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 			}
 		}
 	}
+
+	flags.AsNeeded = BoolDefault(linker.Properties.As_needed, true)
 
 	return flags
 }
