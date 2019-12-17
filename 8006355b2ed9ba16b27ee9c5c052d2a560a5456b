@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38ba0529_c4c4b0f7",
+        "filename": "sdk/exports.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-12-17T08:10:18Z",
+      "side": 1,
+      "message": "missing license header",
+      "revId": "8006355b2ed9ba16b27ee9c5c052d2a560a5456b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
