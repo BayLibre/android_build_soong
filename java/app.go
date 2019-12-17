@@ -649,6 +649,7 @@ func (a *AndroidTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			FlagWithArg("--manifest ", a.manifestPath.String()).
 			FlagWithArg("--package-name ", *a.overridableAppProperties.Package_name).
 			Input(a.testConfig).
+			Implicit(a.manifestPath).
 			Output(fixedConfig)
 		rule.Build(pctx, ctx, "fix_test_config", "fix test config")
 		a.testConfig = fixedConfig
