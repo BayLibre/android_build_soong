@@ -118,6 +118,30 @@
       "revId": "d03e7c7d01c49c3a17a56f9f05426398c404c059",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "383f05f6_253f8477",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-12-17T03:24:07Z",
+      "side": 1,
+      "message": "Yes. Done. b/146308764",
+      "parentUuid": "03043632_6d4ffebd",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 6
+      },
+      "revId": "d03e7c7d01c49c3a17a56f9f05426398c404c059",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
