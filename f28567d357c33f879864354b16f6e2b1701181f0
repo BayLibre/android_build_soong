@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e770763_e09f6583",
+        "filename": "cc/cmakelists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-17T19:13:20Z",
+      "side": 1,
+      "message": "Need to find a solution that doesn\u0027t involve writing to the source tree.",
+      "revId": "f28567d357c33f879864354b16f6e2b1701181f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1f8e538_93f35232",
+        "filename": "cc/cmakelists.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-17T19:13:20Z",
+      "side": 1,
+      "message": "Need to figure out a solution that doesn\u0027t involved exposing the absolute path of the source tree to packages outside of android/soong/android",
+      "revId": "f28567d357c33f879864354b16f6e2b1701181f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cec25d5e_8c3a53d0",
+        "filename": "cc/compdb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-17T19:13:20Z",
+      "side": 1,
+      "message": "Need to figure out a solution that doesn\u0027t involved exposing the absolute path of the source tree to packages outside of android/soong/android",
+      "revId": "f28567d357c33f879864354b16f6e2b1701181f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
