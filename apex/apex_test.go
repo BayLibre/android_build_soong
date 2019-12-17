@@ -683,6 +683,12 @@ func TestApexWithStubs(t *testing.T) {
 
 	// Ensure that genstub is invoked with --apex
 	ensureContains(t, "--apex", ctx.ModuleForTests("mylib2", "android_arm64_armv8-a_static_3_myapex").Rule("genStubSrc").Args["flags"])
+
+	ensureExactContents(t, ctx, "myapex", []string{
+		"lib64/mylib.so",
+		"lib64/mylib3.so",
+		"lib64/mylib4.so",
+	})
 }
 
 func TestApexWithExplicitStubsDependency(t *testing.T) {
