@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0b8ad00_1341f61e",
+        "filename": "apex/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-12-17T06:28:25Z",
+      "side": 1,
+      "message": "Since override_apex a.Name() and ctx.ModuleName() can be different, right? If so, this should be ctx.ModuleName() because the dependency map uses ctx.ModuleName() as keys. https://source.corp.google.com/android/build/soong/apex/apex.go;cl\u003dmaster;l\u003d96?q\u003dUpdateApexDependency",
+      "range": {
+        "startLine": 562,
+        "startChar": 57,
+        "endLine": 562,
+        "endChar": 66
+      },
+      "revId": "727bbf153a4dbf4f334373353ffe421132cd2992",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
