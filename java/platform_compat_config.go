@@ -43,11 +43,9 @@ func (p *platformCompatConfig) GenerateAndroidBuildActions(ctx android.ModuleCon
 
 	rule.Command().
 		BuiltTool(ctx, "process-compat-config").
-		Input(path).
-		Text(`>`).
-		Output(p.configFile)
-
-	p.installDirPath = android.PathForModuleInstall(ctx, "etc", "compatconfig")
+		FlagWithInput("--jar ", path).
+		FlagWithOutput("--device-config ", p.configFile).
+		p.installDirPath = android.PathForModuleInstall(ctx, "etc", "compatconfig")
 	rule.Build(pctx, ctx, configFileName, "Extract compat/compat_config.xml and install it")
 
 }
