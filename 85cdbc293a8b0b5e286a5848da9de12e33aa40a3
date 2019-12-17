@@ -70,6 +70,30 @@
       "revId": "85cdbc293a8b0b5e286a5848da9de12e33aa40a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd4e1a06_eafe8c7d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2019-12-17T08:16:50Z",
+      "side": 1,
+      "message": "Thanks. Is there a recommended way to extract metadata like this safely? Should I be writing it per-class rather than per-package? I don\u0027t want to be at the mercy of random race conditions in the build system...",
+      "parentUuid": "058d7eff_01816635",
+      "range": {
+        "startLine": 13,
+        "startChar": 56,
+        "endLine": 14,
+        "endChar": 27
+      },
+      "revId": "85cdbc293a8b0b5e286a5848da9de12e33aa40a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
