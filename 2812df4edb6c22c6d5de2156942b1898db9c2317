@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64971894_82763e05",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-12-17T09:28:01Z",
+      "side": 1,
+      "message": "Can you add an example?",
+      "range": {
+        "startLine": 162,
+        "startChar": 6,
+        "endLine": 162,
+        "endChar": 72
+      },
+      "revId": "2812df4edb6c22c6d5de2156942b1898db9c2317",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7330fb6b_9458f0ae",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-12-17T09:28:01Z",
+      "side": 1,
+      "message": "This could lead to problems if somehow an apex decides to have test in its name, and it\u0027s not a test apex.",
+      "range": {
+        "startLine": 166,
+        "startChar": 8,
+        "endLine": 166,
+        "endChar": 44
+      },
+      "revId": "2812df4edb6c22c6d5de2156942b1898db9c2317",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db305af4_8bd6404e",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2019-12-17T09:28:01Z",
+      "side": 1,
+      "message": "That with the other tests feel like we\u0027re fighting against the build system to get the right list of jars for boot classpath. This could be a consequence of how the hiddenapi tool has been written.\n\nCould we not rely on the hiddenapi tool for finding duplicates in boot classpath? This looks like a workaround that\u0027s likely to break, as hiddenapi is really only meant for app compat purposes.",
+      "range": {
+        "startLine": 171,
+        "startChar": 8,
+        "endLine": 171,
+        "endChar": 96
+      },
+      "revId": "2812df4edb6c22c6d5de2156942b1898db9c2317",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
