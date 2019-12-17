@@ -94,6 +94,30 @@
       "revId": "85cdbc293a8b0b5e286a5848da9de12e33aa40a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52ac5c6b_f89cccb9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2019-12-17T15:42:44Z",
+      "side": 1,
+      "message": "I went for per-class merging (see aosp/1190764) so this change should be good to go now.",
+      "parentUuid": "dd4e1a06_eafe8c7d",
+      "range": {
+        "startLine": 13,
+        "startChar": 56,
+        "endLine": 14,
+        "endChar": 27
+      },
+      "revId": "85cdbc293a8b0b5e286a5848da9de12e33aa40a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
