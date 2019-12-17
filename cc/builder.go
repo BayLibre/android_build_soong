@@ -638,6 +638,9 @@ func TransformObjToDynamicBinary(ctx android.ModuleContext,
 		libFlagsList = append(libFlagsList, "-Wl,--end-group")
 	}
 
+	if !ctx.Darwin() && !ctx.Windows() {
+		libFlagsList = append(libFlagsList, "-Wl,--as-needed")
+	}
 	for _, lib := range sharedLibs {
 		libFile := lib.String()
 		if ctx.Windows() {
