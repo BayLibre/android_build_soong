@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a1cc69b_7af021fa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-12-17T03:34:54Z",
+      "side": 1,
+      "message": "directly?",
+      "range": {
+        "startLine": 9,
+        "startChar": 54,
+        "endLine": 9,
+        "endChar": 64
+      },
+      "revId": "37b8d024e5d48681f850588008585eee2517fc9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a393037_7ed1c2a7",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-12-17T03:34:54Z",
+      "side": 1,
+      "message": "nit: How about generating deps-info only for suffix \u003d\u003d \"\"?",
+      "range": {
+        "startLine": 209,
+        "startChar": 32,
+        "endLine": 209,
+        "endChar": 42
+      },
+      "revId": "37b8d024e5d48681f850588008585eee2517fc9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4a7446e_6f29ea41",
+        "filename": "apex/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 559,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-12-17T03:34:54Z",
+      "side": 1,
+      "message": "Need to add \"!android.DirectlyInApex(..)\" since WalkDepsBlueprint visits nodes in DFS.",
+      "range": {
+        "startLine": 559,
+        "startChar": 0,
+        "endLine": 559,
+        "endChar": 31
+      },
+      "revId": "37b8d024e5d48681f850588008585eee2517fc9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
