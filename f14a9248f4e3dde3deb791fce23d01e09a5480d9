@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5c29f2b_f647f904",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-12-17T22:06:36Z",
+      "side": 1,
+      "message": "More canonically this would be something like:\n\n  Flag(\"--manifest\").Input(a.manifestPath)",
+      "range": {
+        "startLine": 649,
+        "startChar": 3,
+        "endLine": 649,
+        "endChar": 55
+      },
+      "revId": "f14a9248f4e3dde3deb791fce23d01e09a5480d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
