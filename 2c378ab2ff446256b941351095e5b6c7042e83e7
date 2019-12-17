@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b79a9c9_583e33b0",
+        "filename": "android/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-12-17T08:18:36Z",
+      "side": 1,
+      "message": "This sounds a little bit weird to me. Do you have a better name? e.g. OnlyInModuleExports()? (with the meaning negated)",
+      "range": {
+        "startLine": 241,
+        "startChar": 1,
+        "endLine": 241,
+        "endChar": 15
+      },
+      "revId": "2c378ab2ff446256b941351095e5b6c7042e83e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
