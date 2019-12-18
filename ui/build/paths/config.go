@@ -86,6 +86,28 @@ func GetConfig(name string) PathConfig {
 // This list specifies whether a particular binary from $PATH is allowed to be
 // run during the build. For more documentation, see path_interposer.go .
 var Configuration = map[string]PathConfig{
+<<<<<<< PATCH SET (1228c3 Switch to toybox dd.)
+	"bash":    Allowed,
+	"diff":    Allowed,
+	"dlv":     Allowed,
+	"expr":    Allowed,
+	"fuser":   Allowed,
+	"getopt":  Allowed,
+	"git":     Allowed,
+	"hexdump": Allowed,
+	"jar":     Allowed,
+	"java":    Allowed,
+	"javap":   Allowed,
+	"lsof":    Allowed,
+	"openssl": Allowed,
+	"pstree":  Allowed,
+	"rsync":   Allowed,
+	"sh":      Allowed,
+	"stubby":  Allowed,
+	"tr":      Allowed,
+	"unzip":   Allowed,
+	"zip":     Allowed,
+=======
 	"bash":           Allowed,
 	"dd":             Allowed,
 	"diff":           Allowed,
@@ -109,6 +131,7 @@ var Configuration = map[string]PathConfig{
 	"tr":             Allowed,
 	"unzip":          Allowed,
 	"zip":            Allowed,
+>>>>>>> BASE      (a207d4 Merge "Add test mode support for rust_aconfig_library" into )
 
 	// Host toolchain is removed. In-tree toolchain should be used instead.
 	// GCC also can't find cc1 with this implementation.
