@@ -32,20 +32,25 @@ type platformCompatConfig struct {
 	properties     platformCompatConfigProperties
 	installDirPath android.InstallPath
 	configFile     android.OutputPath
+	metadataFile   android.OutputPath
 }
 
 func (p *platformCompatConfig) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	rule := android.NewRuleBuilder()
 
 	configFileName := p.Name() + ".xml"
+	metadataFileName := p.Name() + "_meta.xml"
 	p.configFile = android.PathForModuleOut(ctx, configFileName).OutputPath
+	p.metadataFile = android.PathForModuleOut(ctx, metadataFileName).OutputPath
 	path := android.PathForModuleSrc(ctx, String(p.properties.Src))
 
 	rule.Command().
 		BuiltTool(ctx, "process-compat-config").
 		FlagWithInput("--jar ", path).
 		FlagWithOutput("--device-config ", p.configFile).
-		p.installDirPath = android.PathForModuleInstall(ctx, "etc", "compatconfig")
+		FlagWithOutput("--merged-config ", p.metadataFile)
+
+	p.installDirPath = android.PathForModuleInstall(ctx, "etc", "compatconfig")
 	rule.Build(pctx, ctx, configFileName, "Extract compat/compat_config.xml and install it")
 
 }
