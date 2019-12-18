@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb9cb858_45bf4448",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-12-18T20:29:42Z",
+      "side": 1,
+      "message": "\"Specify whether to enable continuous fuzzing on devices. Defaults to true.\"",
+      "range": {
+        "startLine": 30,
+        "startChar": 65,
+        "endLine": 31,
+        "endChar": 50
+      },
+      "revId": "8d6eea46e838488bfbc35840a756f725c19299bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
