@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c58d674_2a983349",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-18T23:38:53Z",
+      "side": 1,
+      "message": "java.Dependency?",
+      "revId": "ac78b672ba6849ede3bc10d6f72b58a3b5f09b50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba1b496f_433a20ae",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1026,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-18T23:38:53Z",
+      "side": 1,
+      "message": "java.SdkLibraryDependency?",
+      "range": {
+        "startLine": 1026,
+        "startChar": 35,
+        "endLine": 1026,
+        "endChar": 51
+      },
+      "revId": "ac78b672ba6849ede3bc10d6f72b58a3b5f09b50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
