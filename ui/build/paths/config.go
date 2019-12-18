@@ -97,7 +97,6 @@ var Configuration = map[string]PathConfig{
 	"realpath": Allowed,
 	"rsync":    Allowed,
 	"sh":       Allowed,
-	"tr":       Allowed,
 	"unzip":    Allowed,
 	"zip":      Allowed,
 
