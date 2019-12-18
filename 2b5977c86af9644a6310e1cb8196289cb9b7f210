@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db87ae3e_e3f3d5f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-12-18T17:40:48Z",
+      "side": 1,
+      "message": "In a reland like this I find it very useful to include the description from the original CL, because it is a bit awkward to follow these commit hashes two steps.",
+      "revId": "2b5977c86af9644a6310e1cb8196289cb9b7f210",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
