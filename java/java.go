@@ -34,24 +34,7 @@ import (
 )
 
 func init() {
-	android.RegisterModuleType("java_defaults", DefaultsFactory)
-
-	android.RegisterModuleType("java_library", LibraryFactory)
-	android.RegisterModuleType("java_library_static", LibraryStaticFactory)
-	android.RegisterModuleType("java_library_host", LibraryHostFactory)
-	android.RegisterModuleType("java_binary", BinaryFactory)
-	android.RegisterModuleType("java_binary_host", BinaryHostFactory)
-	android.RegisterModuleType("java_test", TestFactory)
-	android.RegisterModuleType("java_test_helper_library", TestHelperLibraryFactory)
-	android.RegisterModuleType("java_test_host", TestHostFactory)
-	android.RegisterModuleType("java_import", ImportFactory)
-	android.RegisterModuleType("java_import_host", ImportFactoryHost)
-	android.RegisterModuleType("java_device_for_host", DeviceForHostFactory)
-	android.RegisterModuleType("java_host_for_device", HostForDeviceFactory)
-	android.RegisterModuleType("dex_import", DexImportFactory)
-
-	android.RegisterSingletonType("logtags", LogtagsSingleton)
-	android.RegisterSingletonType("kythe_java_extract", kytheExtractJavaFactory)
+	RegisterJavaBuildComponents(android.InitRegistrationContext)
 
 	// Register sdk member types.
 	android.RegisterSdkMemberType(&headerLibrarySdkMemberType{
@@ -69,6 +52,34 @@ func init() {
 			},
 		},
 	})
+
+	android.RegisterSdkMemberType(&testSdkMemberType{
+		SdkMemberTypeBase: android.SdkMemberTypeBase{
+			PropertyName: "java_tests",
+		},
+	})
+}
+
+func RegisterJavaBuildComponents(ctx android.RegistrationContext) {
+	ctx.RegisterModuleType("java_defaults", DefaultsFactory)
+
+	ctx.RegisterModuleType("java_library", LibraryFactory)
+	ctx.RegisterModuleType("java_library_static", LibraryStaticFactory)
+	ctx.RegisterModuleType("java_library_host", LibraryHostFactory)
+	ctx.RegisterModuleType("java_binary", BinaryFactory)
+	ctx.RegisterModuleType("java_binary_host", BinaryHostFactory)
+	ctx.RegisterModuleType("java_test", TestFactory)
+	ctx.RegisterModuleType("java_test_helper_library", TestHelperLibraryFactory)
+	ctx.RegisterModuleType("java_test_host", TestHostFactory)
+	ctx.RegisterModuleType("java_test_import", JavaTestImportFactory)
+	ctx.RegisterModuleType("java_import", ImportFactory)
+	ctx.RegisterModuleType("java_import_host", ImportFactoryHost)
+	ctx.RegisterModuleType("java_device_for_host", DeviceForHostFactory)
+	ctx.RegisterModuleType("java_host_for_device", HostForDeviceFactory)
+	ctx.RegisterModuleType("dex_import", DexImportFactory)
+
+	ctx.RegisterSingletonType("logtags", LogtagsSingleton)
+	ctx.RegisterSingletonType("kythe_java_extract", kytheExtractJavaFactory)
 }
 
 func (j *Module) checkSdkVersion(ctx android.ModuleContext) {
@@ -1737,14 +1748,19 @@ func (j *Library) DepsMutator(ctx android.BottomUpMutatorContext) {
 }
 
 const (
-	aidlIncludeDir = "aidl"
-	javaDir        = "java"
-	jarFileSuffix  = ".jar"
+	aidlIncludeDir   = "aidl"
+	javaDir          = "java"
+	jarFileSuffix    = ".jar"
+	testConfigSuffix = "-AndroidTest.xml"
 )
 
 // path to the jar file of a java library. Relative to <sdk_root>/<api_dir>
-func (j *Library) sdkSnapshotFilePathForJar() string {
-	return filepath.Join(javaDir, j.Name()+jarFileSuffix)
+func sdkSnapshotFilePathForJar(member android.SdkMember) string {
+	return sdkSnapshotFilePathForMember(member, jarFileSuffix)
+}
+
+func sdkSnapshotFilePathForMember(member android.SdkMember, suffix string) string {
+	return filepath.Join(javaDir, member.Name()+suffix)
 }
 
 type librarySdkMemberType struct {
@@ -1777,7 +1793,7 @@ func (mt *librarySdkMemberType) buildSnapshot(
 	j := variant.(*Library)
 
 	exportedJar := jarToExportGetter(j)
-	snapshotRelativeJavaLibPath := j.sdkSnapshotFilePathForJar()
+	snapshotRelativeJavaLibPath := sdkSnapshotFilePathForJar(member)
 	builder.CopyToSnapshot(exportedJar, snapshotRelativeJavaLibPath)
 
 	for _, dir := range j.AidlIncludeDirs() {
@@ -1904,6 +1920,16 @@ type testHelperLibraryProperties struct {
 	Test_suites []string `android:"arch_variant"`
 }
 
+type prebuiltTestProperties struct {
+	// list of compatibility suites (for example "cts", "vts") that the module should be
+	// installed into.
+	Test_suites []string `android:"arch_variant"`
+
+	// the name of the test configuration (for example "AndroidTest.xml") that should be
+	// installed with the module.
+	Test_config *string `android:"path,arch_variant"`
+}
+
 type Test struct {
 	Library
 
@@ -1919,6 +1945,14 @@ type TestHelperLibrary struct {
 	testHelperLibraryProperties testHelperLibraryProperties
 }
 
+type JavaTestImport struct {
+	Import
+
+	prebuiltTestProperties prebuiltTestProperties
+
+	testConfig android.Path
+}
+
 func (j *Test) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	j.testConfig = tradefed.AutoGenJavaTestConfig(ctx, j.testProperties.Test_config, j.testProperties.Test_config_template,
 		j.testProperties.Test_suites, j.testProperties.Auto_gen_config)
@@ -1929,6 +1963,53 @@ func (j *Test) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 func (j *TestHelperLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	j.Library.GenerateAndroidBuildActions(ctx)
+}
+
+func (j *JavaTestImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	j.testConfig = tradefed.AutoGenJavaTestConfig(ctx, j.prebuiltTestProperties.Test_config, nil,
+		j.prebuiltTestProperties.Test_suites, nil)
+
+	j.Import.GenerateAndroidBuildActions(ctx)
+}
+
+type testSdkMemberType struct {
+	android.SdkMemberTypeBase
+}
+
+func (mt *testSdkMemberType) AddDependencies(mctx android.BottomUpMutatorContext, dependencyTag blueprint.DependencyTag, names []string) {
+	mctx.AddVariationDependencies(nil, dependencyTag, names...)
+}
+
+func (mt *testSdkMemberType) IsInstance(module android.Module) bool {
+	_, ok := module.(*Test)
+	return ok
+}
+
+func (mt *testSdkMemberType) BuildSnapshot(sdkModuleContext android.ModuleContext, builder android.SnapshotBuilder, member android.SdkMember) {
+	variants := member.Variants()
+	if len(variants) != 1 {
+		sdkModuleContext.ModuleErrorf("sdk contains %d variants of member %q but only one is allowed", len(variants), member.Name())
+		for _, variant := range variants {
+			sdkModuleContext.ModuleErrorf("    %q", variant)
+		}
+	}
+	variant := variants[0]
+	j := variant.(*Test)
+
+	implementationJars := j.ImplementationJars()
+	if len(implementationJars) != 1 {
+		panic(fmt.Errorf("there must be only one implementation jar from %q", j.Name()))
+	}
+
+	snapshotRelativeJavaLibPath := sdkSnapshotFilePathForJar(member)
+	builder.CopyToSnapshot(implementationJars[0], snapshotRelativeJavaLibPath)
+
+	snapshotRelativeTestConfigPath := sdkSnapshotFilePathForMember(member, testConfigSuffix)
+	builder.CopyToSnapshot(j.testConfig, snapshotRelativeTestConfigPath)
+
+	module := builder.AddPrebuiltModule(member, "java_test_import")
+	module.AddProperty("jars", []string{snapshotRelativeJavaLibPath})
+	module.AddProperty("test_config", snapshotRelativeTestConfigPath)
 }
 
 // java_test builds a and links sources into a `.jar` file for the device, and possibly for the host as well, and
@@ -1970,6 +2051,30 @@ func TestHelperLibraryFactory() android.Module {
 	module.Module.properties.Installable = proptools.BoolPtr(true)
 	module.Module.dexpreopter.isTest = true
 
+	InitJavaModule(module, android.HostAndDeviceSupported)
+	return module
+}
+
+// java_test_import imports one or more `.jar` files into the build graph as if they were built by a java_test module
+// and makes sure that it is added to the appropriate test suite.
+//
+// By default, a java_test_import has a single variant that expects a `.jar` file containing `.class` files that were
+// compiled against an Android classpath.
+//
+// Specifying `host_supported: true` will produce two variants, one for use as a dependency of device modules and one
+// for host modules.
+func JavaTestImportFactory() android.Module {
+	module := &JavaTestImport{}
+
+	module.AddProperties(
+		&module.Import.properties,
+		&module.prebuiltTestProperties)
+
+	module.Import.properties.Installable = proptools.BoolPtr(true)
+
+	android.InitPrebuiltModule(module, &module.properties.Jars)
+	android.InitApexModule(module)
+	android.InitSdkAwareModule(module)
 	InitJavaModule(module, android.HostAndDeviceSupported)
 	return module
 }
