@@ -70,6 +70,30 @@
       "revId": "1d3fcbe8adb99854962c3e62ce02cd8c74ea7d26",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ad5ce0d_2eede453",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-12-18T11:05:14Z",
+      "side": 1,
+      "message": "Ok, in PS4 I create both images, but use either \"boot\" or \"apex\" image for dexpreopting.",
+      "parentUuid": "3963dc41_988a2453",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 58
+      },
+      "revId": "1d3fcbe8adb99854962c3e62ce02cd8c74ea7d26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
