@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80de2aa4_24485c0b",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-18T23:30:07Z",
+      "side": 1,
+      "message": "android.CopyOf(libs)",
+      "range": {
+        "startLine": 594,
+        "startChar": 9,
+        "endLine": 594,
+        "endChar": 36
+      },
+      "revId": "9839e86dd446d1d2de642555cfa6a25b70028ef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
