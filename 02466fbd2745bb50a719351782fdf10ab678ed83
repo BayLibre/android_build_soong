@@ -106,6 +106,24 @@
       "revId": "02466fbd2745bb50a719351782fdf10ab678ed83",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ec73aa0_e8fe3697",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-12-18T16:13:33Z",
+      "side": 1,
+      "message": "I added an sdkMemberType field to cc.Module and tested that here instead.",
+      "parentUuid": "a48b40ed_66828b93",
+      "revId": "02466fbd2745bb50a719351782fdf10ab678ed83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
