@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2daaae2_d61bd4e3",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2019-12-18T02:26:51Z",
+      "side": 1,
+      "message": "We should probably have two bools instead here. I\u0027m also very much not died to the \"disable\" name of the attribute to be honest, I think we can be more self descriptive.\n\nWhat about:\n - fuzz_on_haiku_device\n - fuzz_on_haiku_host\n\n? Free haiku advertising, but does mean we\u0027ll need the external documentation to explain what Haiku is :)",
+      "revId": "eb0c6810a78add7c854eb490532934d99fdcd342",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
