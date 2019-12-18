@@ -86,6 +86,33 @@ func GetConfig(name string) PathConfig {
 // This list specifies whether a particular binary from $PATH is allowed to be
 // run during the build. For more documentation, see path_interposer.go .
 var Configuration = map[string]PathConfig{
+<<<<<<< PATCH SET (f551ba Switch to toybox dd.)
+	"bash":     Allowed,
+	"diff":     Allowed,
+	"dlv":      Allowed,
+	"expr":     Allowed,
+	"fuser":    Allowed,
+	"getopt":   Allowed,
+	"git":      Allowed,
+	"gzcat":    Allowed,
+	"gzip":     Allowed,
+	"hexdump":  Allowed,
+	"jar":      Allowed,
+	"java":     Allowed,
+	"javap":    Allowed,
+	"lsof":     Allowed,
+	"m4":       Log,
+	"openssl":  Allowed,
+	"patch":    Allowed,
+	"pstree":   Allowed,
+	"python3":  Allowed,
+	"realpath": Allowed,
+	"rsync":    Allowed,
+	"sh":       Allowed,
+	"tr":       Allowed,
+	"unzip":    Allowed,
+	"zip":      Allowed,
+=======
 	"bash":    Allowed,
 	"dd":      Allowed,
 	"diff":    Allowed,
@@ -107,6 +134,7 @@ var Configuration = map[string]PathConfig{
 	"tr":      Allowed,
 	"unzip":   Allowed,
 	"zip":     Allowed,
+>>>>>>> BASE      (c0d352 Merge "Reland "Update clang version to clang-r468909"")
 
 	// Host toolchain is removed. In-tree toolchain should be used instead.
 	// GCC also can't find cc1 with this implementation.
