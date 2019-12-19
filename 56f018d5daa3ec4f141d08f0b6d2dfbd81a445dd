@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68b35820_08326652",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-19T23:25:22Z",
+      "side": 1,
+      "message": "Maybe check c.installable() here before calling c.installer?  Then you won\u0027t need GetPreventInstall",
+      "revId": "56f018d5daa3ec4f141d08f0b6d2dfbd81a445dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "669f7af7_cf7a6b39",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-19T23:25:22Z",
+      "side": 1,
+      "message": "PreventInstall affects Soong and Make installation, but if you set it here Soong installation has already been handled.  Can you set PreventInstall somewhere in GenerateAndroidBuildActions instead?",
+      "revId": "56f018d5daa3ec4f141d08f0b6d2dfbd81a445dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
