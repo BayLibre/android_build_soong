@@ -81,9 +81,9 @@ func (c *compdbGeneratorSingleton) GenerateBuildActions(ctx android.SingletonCon
 	dir := filepath.Join(getCompdbAndroidSrcRootDirectory(ctx), compdbOutputProjectsDirectory)
 	os.MkdirAll(dir, 0777)
 	compDBFile := filepath.Join(dir, compdbFilename)
-	f, err := os.Create(compdbFilename)
+	f, err := os.Create(compDBFile)
 	if err != nil {
-		log.Fatalf("Could not create file %s: %s", filepath.Join(dir, compdbFilename), err)
+		log.Fatalf("Could not create file %s: %s", compDBFile, err)
 	}
 	defer f.Close()
 
