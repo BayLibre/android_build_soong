@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ccbcee3_06a69313",
+        "filename": "cc/compdb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-19T23:33:44Z",
+      "side": 1,
+      "message": "This is actually broken, but wasn\u0027t causing a problem because of the bug that was writing to the top of the source tree.  There is no guarantee that OUT_DIR is out/.",
+      "range": {
+        "startLine": 46,
+        "startChar": 34,
+        "endLine": 46,
+        "endChar": 38
+      },
+      "revId": "5ab04556e97d7eb3bff45c637d62ad5d5558d24b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1990f3e5_ccdc42fd",
+        "filename": "cc/compdb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-19T23:33:44Z",
+      "side": 1,
+      "message": "Can you replace this with:\n\n       dir :\u003d android.PathForOutput(ctx, compdbOutputProjectsDirectory)\n       os.MkdirAll(dir.String(), 0777)\n       compDBFile :\u003d dir.Join(ctx, compdbFilename)\n       f, err :\u003d os.Create(compDBFile.String())\n\nAnd remove the \"out/\" prefix from compdbOutputProjectsDirectory",
+      "revId": "5ab04556e97d7eb3bff45c637d62ad5d5558d24b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
