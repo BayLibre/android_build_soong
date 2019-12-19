@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8138162a_05fdfa59",
+        "filename": "android/testing.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-19T00:24:15Z",
+      "side": 1,
+      "message": "I\u0027d prefer not to add methods to the Config object here.  Take the config as an argument?  Or:\n\nfunc NormalizePathForTesting(path Path) string {\n    if w, ok :\u003d path.(WritablePath); ok {\n        rel, err :\u003d filepath.Rel(w.buildDir(), path.String())\n        if err !\u003d nil {\n            panic(err)\n        }\n        return rel\n    }\n    return path.String()\n}\n\nand add buildDir() to the WritablePath interface.\n\nThe whole need for this method appears to be due to the high complexity of the test assertion functions you\u0027ve written for the SDK tests.  I would have written:\n\n\tresult.CheckSnapshot(\"mysdk\", \"android_common\", \"\",\n\t\tcheckAllCopyRules(`\n.intermediates/myjavalib/android_common/turbine-combined/myjavalib.jar -\u003e java/myjavalib.jar\naidl/foo/bar/Test.aidl -\u003e aidl/aidl/foo/bar/Test.aidl\n`),\n\t)\n\nas something more like:\n\n    copyRules :\u003d sdkTestCopyRules(sdkModule)\n    wantCopyRules :\u003d []copyRule{\n        {from: buildDir+\"/.intermediates/myjavalib/android_common/turbine-combined/myjavalib.jar\", to: \"java/myjavalib.jar\"},\n        {from: \"aidl/foo/bar/Test.aidl\", to: \"aidl/aidl/foo/bar/Test.aidl\"},\n    }\n\n    if g, w :\u003d copyRules, wantCopyRules, !reflect.DeepEqual(g, w) {\n        t.Errorf(\"wanted copy rules %q, got %q\", w, g)\n    }\n\nThat way you haven\u0027t squashed all of the paths into a giant string and you can reference the buildDir global variable.",
+      "revId": "b8245685557a8073b6f2b61253607c8fc46cbc03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "480908fd_d40a0d9d",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1944,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-19T00:24:15Z",
+      "side": 1,
+      "message": "srcDirs?",
+      "range": {
+        "startLine": 1944,
+        "startChar": 1,
+        "endLine": 1944,
+        "endChar": 5
+      },
+      "revId": "b8245685557a8073b6f2b61253607c8fc46cbc03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
