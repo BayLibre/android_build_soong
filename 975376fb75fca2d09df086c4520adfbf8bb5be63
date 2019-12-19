@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63b08ca2_f3f95bea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-12-19T15:23:55Z",
+      "side": 1,
+      "message": "I think you better collect the tags into a single block at the end.",
+      "revId": "975376fb75fca2d09df086c4520adfbf8bb5be63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6df9476e_73d1eb60",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-12-19T15:23:55Z",
+      "side": 1,
+      "message": "Please also retain the ticket that the original CL addressed. It\u0027s useful for looking up context.",
+      "revId": "975376fb75fca2d09df086c4520adfbf8bb5be63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
