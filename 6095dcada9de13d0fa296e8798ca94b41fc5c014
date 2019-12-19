@@ -16,6 +16,24 @@
       "revId": "6095dcada9de13d0fa296e8798ca94b41fc5c014",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f580c1a_b2fc9a56",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2019-12-19T07:14:20Z",
+      "side": 1,
+      "message": "If I implement in this way, there will be something different. Take \"libui\" module as an example,\n\t\t\t\"global_c_flags\": {\n\t\t\t\t\"flag\": [\n\t\t\t\t\t...\n\t\t\t\t\t\"-B${config.X86_64GccRoot}/x86_64-linux-android/bin\",\n\t\t\t\t\t...\n\t\t\t\t]\n\t\t\t},\nwould become,\n\t\t\t\"global_c_flags\": {\n\t\t\t\t\"flag\": [\n\t\t\t\t\t...\n\t\t\t\t\t\"-Bprebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9/x86_64-linux-android/bin\",\n\t\t\t\t\t...\n\t\t\t\t]\n\t\t\t},\n\nand\n\n\t\t\t\"system_include_flags\": {\n\t\t\t\t\"header_search_path\": [\n\t\t\t\t\t\"system/core/include\",\n\t\t\t\t\t\"system/media/audio/include\",\n\t\t\t\t\t\"hardware/libhardware/include\",\n\t\t\t\t\t\"hardware/libhardware_legacy/include\",\n\t\t\t\t\t\"hardware/ril/include\",\n\t\t\t\t\t\"frameworks/native/include\",\n\t\t\t\t\t\"frameworks/native/opengl/include\",\n\t\t\t\t\t\"frameworks/av/include\",\n\t\t\t\t\t\"libnativehelper/include_jni\"\n\t\t\t\t],\n\t\t\t\t\"system_search_path\": [\n\t\t\t\t\t\"bionic/libc/include\",\n\t\t\t\t\t\"bionic/libc/kernel/uapi\",\n\t\t\t\t\t\"bionic/libc/kernel/uapi/asm-x86\",\n\t\t\t\t\t\"bionic/libc/kernel/android/scsi\",\n\t\t\t\t\t\"bionic/libc/kernel/android/uapi\"\n\t\t\t\t]\n\t\t\t},\nwould become,\n\t\t\t\"system_include_flags\": {\n\t\t\t\t\"header_search_path\": [\n\t\t\t\t\t\"system/core/include -Isystem/media/audio/include -Ihardware/libhardware/include -Ihardware/libhardware_legacy/include -Ihardware/ril/include -Iframeworks/native/include -Iframeworks/native/opengl/include -Iframeworks/av/include\"\n\t\t\t\t],\n\t\t\t\t\"system_search_path\": [\n\t\t\t\t\t\"${config.CommonNativehelperInclude}\"\n\t\t\t\t]\n\t\t\t},",
+      "parentUuid": "40eeede9_a4f6ac81",
+      "revId": "6095dcada9de13d0fa296e8798ca94b41fc5c014",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
