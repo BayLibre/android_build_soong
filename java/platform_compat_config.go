@@ -15,12 +15,32 @@
 package java
 
 import (
+	"fmt"
+
 	"android/soong/android"
 )
 
 func init() {
 	android.RegisterSingletonType("platform_compat_config_singleton", platformCompatConfigSingletonFactory)
 	android.RegisterModuleType("platform_compat_config", platformCompatConfigFactory)
+	android.RegisterModuleType("merged_compat_config", mergedCompatConfigFactory)
+}
+
+type platformCompatConfigSingletonPathsStruct struct {
+	merged android.OutputPath
+}
+
+var platformCompatConfigSingletonPathsStructKey = android.NewOnceKey("platformCompatConfigSingletonPathsStructKey")
+
+// platformCompatConfigSingletonPathsStruct creates all the paths for singleton files the first time it is called, which may be
+// from a ModuleContext that needs to reference a file that will be created by a singleton rule that hasn't
+// yet been created.
+func platformCompatConfigSingletonPaths(ctx android.PathContext) platformCompatConfigSingletonPathsStruct {
+	return ctx.Config().Once(platformCompatConfigSingletonPathsStructKey, func() interface{} {
+		return platformCompatConfigSingletonPathsStruct{
+			merged: android.PathForOutput(ctx, "compat_config", "merged_compat_config.xml"),
+		}
+	}).(platformCompatConfigSingletonPathsStruct)
 }
 
 type platformCompatConfigSingleton struct {
@@ -68,7 +88,7 @@ func (p *platformCompatConfigSingleton) GenerateBuildActions(ctx android.Singlet
 	}
 
 	rule := android.NewRuleBuilder()
-	outputPath := android.PathForOutput(ctx, "compat_config", "merged_compat_config.xml")
+	outputPath := platformCompatConfigSingletonPaths(ctx).merged
 
 	rule.Command().
 		BuiltTool(ctx, "process-compat-config").
@@ -126,5 +146,51 @@ func platformCompatConfigFactory() android.Module {
 	module := &platformCompatConfig{}
 	module.AddProperties(&module.properties)
 	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibFirst)
+	return module
+}
+
+//============== merged_compat_config =================
+type mergedCompatConfigProperties struct {
+	// name of the file into which the metadata will be copied.
+	Filename *string
+}
+
+type mergedCompatConfig struct {
+	android.ModuleBase
+
+	properties mergedCompatConfigProperties
+
+	outputFilePath android.OutputPath
+}
+
+func (c *mergedCompatConfig) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	filename := String(c.properties.Filename)
+
+	inputPath := platformCompatConfigSingletonPaths(ctx).merged
+	c.outputFilePath = android.PathForModuleOut(ctx, filename).OutputPath
+
+	// This ensures that outputFilePath has the correct name for others to
+	// use, as the source file may have a different name.
+	ctx.Build(pctx, android.BuildParams{
+		Rule:   android.Cp,
+		Output: c.outputFilePath,
+		Input:  inputPath,
+	})
+}
+
+func (h *mergedCompatConfig) OutputFiles(tag string) (android.Paths, error) {
+	switch tag {
+	case "":
+		return android.Paths{h.outputFilePath}, nil
+	default:
+		return nil, fmt.Errorf("unsupported module reference tag %q", tag)
+	}
+}
+
+// hiddenapi-flags provides access to the hiddenapi-flags.csv file generated during the build.
+func mergedCompatConfigFactory() android.Module {
+	module := &mergedCompatConfig{}
+	module.AddProperties(&module.properties)
+	android.InitAndroidArchModule(module, android.HostAndDeviceSupported, android.MultilibCommon)
 	return module
 }
