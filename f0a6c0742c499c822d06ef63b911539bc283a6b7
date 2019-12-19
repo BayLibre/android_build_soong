@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b891bf3_8be6e7b0",
+        "filename": "android/plugin.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1605452
+      },
+      "writtenOn": "2019-12-19T10:48:46Z",
+      "side": 1,
+      "message": "I retained the naming from my previous commit, but maybe it would be nicer to avoid mentioning plugins here and name:\n* the interface something like ConfigListener\n* the interface function NotifyNewConfig()\n* InitializePlugin \u003d\u003e BroadcastNewConfig()",
+      "revId": "f0a6c0742c499c822d06ef63b911539bc283a6b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
