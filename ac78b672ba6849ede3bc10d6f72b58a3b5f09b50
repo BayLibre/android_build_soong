@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8b3a99de_6888b574",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-12-19T05:32:47Z",
+      "side": 1,
+      "message": "Because `apexFileForJavaLibrary()` requires `android.Module \u0026 java.Dependency`, I can simply replace this interface with java.Dependency.",
+      "parentUuid": "9c58d674_2a983349",
+      "revId": "ac78b672ba6849ede3bc10d6f72b58a3b5f09b50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ba1b496f_433a20ae",
         "filename": "apex/apex.go",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2019-12-18T23:38:53Z",
       "side": 1,
       "message": "java.SdkLibraryDependency?",
+      "range": {
+        "startLine": 1026,
+        "startChar": 35,
+        "endLine": 1026,
+        "endChar": 51
+      },
+      "revId": "ac78b672ba6849ede3bc10d6f72b58a3b5f09b50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cc6fed1_91add3f5",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1026,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-12-19T05:32:47Z",
+      "side": 1,
+      "message": "For the same reason, I can\u0027t simple replace this with java.SdkLibraryDependency. Can I clean-up this with another CL? Because while revisiting those interfaces, I found that some bugs and need to fix them also.\n\n- java_import doesn\u0027t work for now. (adding \"classes\" jar into an APEX package simply doesn\u0027t make sense.) (b/139175488)\n- there is a switch/case with both java.Dependency \u0026 java.SdkLibraryDependency in a wrong order. Even though these two interfaces are exclusive, java.SdkLibraryDependency must come before java.Dependency becase java.SdkLibrary implements both of them.\n\nIt would be better to fix these in separate changes.",
+      "parentUuid": "ba1b496f_433a20ae",
       "range": {
         "startLine": 1026,
         "startChar": 35,
