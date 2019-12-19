@@ -69,6 +69,24 @@
       "revId": "627e58c8a57b514a078489049b233bc19ba6e50c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "20971ccb_f3bfb790",
+        "filename": "apex/builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-12-19T11:59:11Z",
+      "side": 1,
+      "message": "In PS9, I\u0027ve reverted back to this. In fact, https://android-review.googlesource.com/c/platform/build/soong/+/1190898/8/apex/apex.go#1136 was a regression and failed an ART test.\n\nThe problem is that, for the packaging, we shouldn\u0027t track static dependencies, while for the info, we need to track such dependencies (because the transitively statically linked libraries are also part of the APEX anyway).",
+      "parentUuid": "6b0b6ca6_c0829780",
+      "revId": "627e58c8a57b514a078489049b233bc19ba6e50c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
