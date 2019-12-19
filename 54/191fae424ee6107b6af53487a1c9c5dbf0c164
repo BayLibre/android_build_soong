@@ -1,0 +1,11 @@
+Build-Cop-Override+1: Noah Zimmt <noahz@google.com>
+Autosubmit+1: Lingfeng Yang <lfy@google.com>
+Presubmit-Ready+1: Lingfeng Yang <lfy@google.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Code-Review+2: Lingfeng Yang <lfy@google.com>
+Code-Review+2: Bo Hu <bohu@google.com>
+Submitted-by: Lingfeng Yang <lfy@google.com>
+Submitted-at: Thu, 19 Dec 2019 17:24:25 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1195534
+Project: platform/build/soong
+Branch: refs/heads/master
