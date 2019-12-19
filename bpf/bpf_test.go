@@ -55,7 +55,7 @@ func testContext(bp string) *android.TestContext {
 	}
 
 	ctx := cc.CreateTestContext(bp, mockFS, android.Android)
-	ctx.RegisterModuleType("bpf", bpfFactory)
+	ctx.RegisterModuleType("bpf", android.ModuleFactoryAdaptor(bpfFactory))
 	ctx.Register()
 
 	return ctx

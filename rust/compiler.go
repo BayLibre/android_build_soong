@@ -36,21 +36,13 @@ func (compiler *baseCompiler) setNoStdlibs() {
 	compiler.Properties.No_stdlibs = proptools.BoolPtr(true)
 }
 
-func NewBaseCompiler(dir, dir64 string, location installLocation) *baseCompiler {
+func NewBaseCompiler(dir, dir64 string) *baseCompiler {
 	return &baseCompiler{
 		Properties: BaseCompilerProperties{},
 		dir:        dir,
 		dir64:      dir64,
-		location:   location,
 	}
 }
-
-type installLocation int
-
-const (
-	InstallInSystem installLocation = 0
-	InstallInData                   = iota
-)
 
 type BaseCompilerProperties struct {
 	// whether to pass "-D warnings" to rustc. Defaults to true.
@@ -117,14 +109,9 @@ type baseCompiler struct {
 	subDir   string
 	relative string
 	path     android.InstallPath
-	location installLocation
 }
 
 var _ compiler = (*baseCompiler)(nil)
-
-func (compiler *baseCompiler) inData() bool {
-	return compiler.location == InstallInData
-}
 
 func (compiler *baseCompiler) compilerProps() []interface{} {
 	return []interface{}{&compiler.Properties}

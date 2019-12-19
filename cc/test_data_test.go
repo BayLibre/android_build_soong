@@ -126,8 +126,10 @@ func TestDataTests(t *testing.T) {
 				"dir/baz":        nil,
 				"dir/bar/baz":    nil,
 			})
-			ctx.RegisterModuleType("filegroup", android.FileGroupFactory)
-			ctx.RegisterModuleType("test", newTest)
+			ctx.RegisterModuleType("filegroup",
+				android.ModuleFactoryAdaptor(android.FileGroupFactory))
+			ctx.RegisterModuleType("test",
+				android.ModuleFactoryAdaptor(newTest))
 			ctx.Register()
 
 			_, errs := ctx.ParseBlueprintsFiles("Blueprints")

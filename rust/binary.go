@@ -57,7 +57,7 @@ func NewRustBinary(hod android.HostOrDeviceSupported) (*Module, *binaryDecorator
 	module := newModule(hod, android.MultilibFirst)
 
 	binary := &binaryDecorator{
-		baseCompiler: NewBaseCompiler("bin", "", InstallInSystem),
+		baseCompiler: NewBaseCompiler("bin", ""),
 	}
 
 	module.compiler = binary

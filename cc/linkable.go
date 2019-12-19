@@ -20,8 +20,6 @@ type LinkableInterface interface {
 	HasStaticVariant() bool
 	GetStaticVariant() LinkableInterface
 
-	NonCcVariants() bool
-
 	StubsVersions() []string
 	BuildStubs() bool
 	SetBuildStubs()

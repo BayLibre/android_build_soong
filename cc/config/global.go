@@ -48,8 +48,6 @@ var (
 		"-fno-strict-aliasing",
 
 		"-Werror=date-time",
-		"-Werror=pragma-pack",
-		"-Werror=pragma-pack-suspicious-include",
 	}
 
 	commonGlobalConlyflags = []string{}
@@ -126,8 +124,8 @@ var (
 
 	// prebuilts/clang default settings.
 	ClangDefaultBase         = "prebuilts/clang/host"
-	ClangDefaultVersion      = "clang-r370808"
-	ClangDefaultShortVersion = "10.0.1"
+	ClangDefaultVersion      = "clang-r365631b"
+	ClangDefaultShortVersion = "9.0.7"
 
 	// Directories with warnings from Android.bp files.
 	WarningAllowedProjects = []string{

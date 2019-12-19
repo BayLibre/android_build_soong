@@ -237,7 +237,6 @@ type flagExporter struct {
 	systemDirs android.Paths
 	flags      []string
 	deps       android.Paths
-	headers    android.Paths
 }
 
 func (f *flagExporter) exportedIncludes(ctx ModuleContext) android.Paths {
@@ -281,12 +280,6 @@ func (f *flagExporter) reexportDeps(deps ...android.Path) {
 	f.deps = append(f.deps, deps...)
 }
 
-// addExportedGeneratedHeaders does nothing but collects generated header files.
-// This can be differ to exportedDeps which may contain phony files to minimize ninja.
-func (f *flagExporter) addExportedGeneratedHeaders(headers ...android.Path) {
-	f.headers = append(f.headers, headers...)
-}
-
 func (f *flagExporter) exportedDirs() android.Paths {
 	return f.dirs
 }
@@ -303,16 +296,11 @@ func (f *flagExporter) exportedDeps() android.Paths {
 	return f.deps
 }
 
-func (f *flagExporter) exportedGeneratedHeaders() android.Paths {
-	return f.headers
-}
-
 type exportedFlagsProducer interface {
 	exportedDirs() android.Paths
 	exportedSystemDirs() android.Paths
 	exportedFlags() []string
 	exportedDeps() android.Paths
-	exportedGeneratedHeaders() android.Paths
 }
 
 var _ exportedFlagsProducer = (*flagExporter)(nil)
@@ -520,19 +508,6 @@ func (library *libraryDecorator) classifySourceAbiDump(ctx ModuleContext) string
 func (library *libraryDecorator) shouldCreateSourceAbiDump(ctx ModuleContext) bool {
 	if !ctx.shouldCreateSourceAbiDump() {
 		return false
-	}
-	if !ctx.isForPlatform() {
-		if !ctx.hasStubsVariants() {
-			// Skip ABI checks if this library is for APEX but isn't exported.
-			return false
-		}
-		if !Bool(library.Properties.Header_abi_checker.Enabled) {
-			// Skip ABI checks if this library is for APEX and did not explicitly enable
-			// ABI checks.
-			// TODO(b/145608479): ABI checks should be enabled by default. Remove this
-			// after evaluating the extra build time.
-			return false
-		}
 	}
 	return library.classifySourceAbiDump(ctx) != ""
 }
@@ -991,16 +966,12 @@ func (library *libraryDecorator) link(ctx ModuleContext,
 	library.reexportSystemDirs(deps.ReexportedSystemDirs...)
 	library.reexportFlags(deps.ReexportedFlags...)
 	library.reexportDeps(deps.ReexportedDeps...)
-	library.addExportedGeneratedHeaders(deps.ReexportedGeneratedHeaders...)
 
 	if Bool(library.Properties.Aidl.Export_aidl_headers) {
 		if library.baseCompiler.hasSrcExt(".aidl") {
 			dir := android.PathForModuleGen(ctx, "aidl")
 			library.reexportDirs(dir)
-
-			// TODO: restrict to aidl deps
-			library.reexportDeps(library.baseCompiler.pathDeps...)
-			library.addExportedGeneratedHeaders(library.baseCompiler.pathDeps...)
+			library.reexportDeps(library.baseCompiler.pathDeps...) // TODO: restrict to aidl deps
 		}
 	}
 
@@ -1012,10 +983,7 @@ func (library *libraryDecorator) link(ctx ModuleContext,
 			}
 			includes = append(includes, flags.proto.Dir)
 			library.reexportDirs(includes...)
-
-			// TODO: restrict to proto deps
-			library.reexportDeps(library.baseCompiler.pathDeps...)
-			library.addExportedGeneratedHeaders(library.baseCompiler.pathDeps...)
+			library.reexportDeps(library.baseCompiler.pathDeps...) // TODO: restrict to proto deps
 		}
 	}
 
@@ -1033,7 +1001,6 @@ func (library *libraryDecorator) link(ctx ModuleContext,
 
 		library.reexportDirs(dir)
 		library.reexportDeps(library.baseCompiler.pathDeps...)
-		library.addExportedGeneratedHeaders(library.baseCompiler.pathDeps...)
 	}
 
 	if library.buildStubs() {
@@ -1295,15 +1262,13 @@ func LinkageMutator(mctx android.BottomUpMutatorContext) {
 			shared.linker.(prebuiltLibraryInterface).disablePrebuilt()
 		}
 	} else if library, ok := mctx.Module().(LinkableInterface); ok && library.CcLibraryInterface() {
-
-		// Non-cc.Modules may need an empty variant for their mutators.
-		variations := []string{}
-		if library.NonCcVariants() {
-			variations = append(variations, "")
-		}
-
 		if library.BuildStaticVariant() && library.BuildSharedVariant() {
-			variations := append([]string{"static", "shared"}, variations...)
+			variations := []string{"static", "shared"}
+
+			// Non-cc.Modules need an empty variant for their mutators.
+			if _, ok := mctx.Module().(*Module); !ok {
+				variations = append(variations, "")
+			}
 
 			modules := mctx.CreateLocalVariations(variations...)
 			static := modules[0].(LinkableInterface)
@@ -1316,18 +1281,16 @@ func LinkageMutator(mctx android.BottomUpMutatorContext) {
 				reuseStaticLibrary(mctx, static.(*Module), shared.(*Module))
 			}
 		} else if library.BuildStaticVariant() {
-			variations := append([]string{"static"}, variations...)
-
-			modules := mctx.CreateLocalVariations(variations...)
+			modules := mctx.CreateLocalVariations("static")
 			modules[0].(LinkableInterface).SetStatic()
 		} else if library.BuildSharedVariant() {
-			variations := append([]string{"shared"}, variations...)
-
-			modules := mctx.CreateLocalVariations(variations...)
+			modules := mctx.CreateLocalVariations("shared")
 			modules[0].(LinkableInterface).SetShared()
-		} else if len(variations) > 0 {
-			mctx.CreateLocalVariations(variations...)
+		} else if _, ok := mctx.Module().(*Module); !ok {
+			// Non-cc.Modules need an empty variant for their mutators.
+			mctx.CreateLocalVariations("")
 		}
+
 	}
 }
 
@@ -1392,11 +1355,9 @@ func VersionMutator(mctx android.BottomUpMutatorContext) {
 		return
 	}
 	if genrule, ok := mctx.Module().(*genrule.Module); ok {
-		if _, ok := genrule.Extra.(*GenruleExtraProperties); ok {
-			if !genrule.InRecovery() {
-				mctx.CreateVariations("")
-				return
-			}
+		if props, ok := genrule.Extra.(*GenruleExtraProperties); ok && !props.InRecovery {
+			mctx.CreateVariations("")
+			return
 		}
 	}
 }

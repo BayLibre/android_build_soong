@@ -27,10 +27,6 @@ import (
 	"android/soong/cc/config"
 )
 
-var (
-	allowedManualInterfacePaths = []string{"vendor/", "hardware/"}
-)
-
 // This file contains the basic C/C++/assembly to .o compliation steps
 
 type BaseCompilerProperties struct {
@@ -513,12 +509,6 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 		flags.Local.CFlags = append(flags.Local.CFlags, "-fopenmp")
 	}
 
-	// Exclude directories from manual binder interface whitelisting.
-	//TODO(b/145621474): Move this check into IInterface.h when clang-tidy no longer uses absolute paths.
-	if android.PrefixInList(ctx.ModuleDir(), allowedManualInterfacePaths) {
-		flags.Local.CFlags = append(flags.Local.CFlags, "-DDO_NOT_CHECK_MANUAL_BINDER_INTERFACES")
-	}
-
 	return flags
 }
 
@@ -560,7 +550,7 @@ func ndkPathDeps(ctx ModuleContext) android.Paths {
 }
 
 func (compiler *baseCompiler) compile(ctx ModuleContext, flags Flags, deps PathDeps) Objects {
-	pathDeps := deps.GeneratedDeps
+	pathDeps := deps.GeneratedHeaders
 	pathDeps = append(pathDeps, ndkPathDeps(ctx)...)
 
 	buildFlags := flagsToBuilderFlags(flags)

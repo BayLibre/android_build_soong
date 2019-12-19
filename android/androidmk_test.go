@@ -47,8 +47,8 @@ func TestAndroidMkSingleton_PassesUpdatedAndroidMkDataToCustomCallback(t *testin
 	config.inMake = true // Enable androidmk Singleton
 
 	ctx := NewTestContext()
-	ctx.RegisterSingletonType("androidmk", AndroidMkSingleton)
-	ctx.RegisterModuleType("custom", customModuleFactory)
+	ctx.RegisterSingletonType("androidmk", SingletonFactoryAdaptor(AndroidMkSingleton))
+	ctx.RegisterModuleType("custom", ModuleFactoryAdaptor(customModuleFactory))
 	ctx.Register()
 
 	bp := `

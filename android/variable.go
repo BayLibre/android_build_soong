@@ -311,8 +311,6 @@ type productVariables struct {
 	MissingUsesLibraries []string `json:",omitempty"`
 
 	EnforceProductPartitionInterface *bool `json:",omitempty"`
-
-	InstallExtraFlattenedApexes *bool `json:",omitempty"`
 }
 
 func boolPtr(v bool) *bool {

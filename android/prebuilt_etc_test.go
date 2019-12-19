@@ -23,12 +23,15 @@ import (
 func testPrebuiltEtc(t *testing.T, bp string) (*TestContext, Config) {
 	config := TestArchConfig(buildDir, nil)
 	ctx := NewTestArchContext()
-	ctx.RegisterModuleType("prebuilt_etc", PrebuiltEtcFactory)
-	ctx.RegisterModuleType("prebuilt_etc_host", PrebuiltEtcHostFactory)
-	ctx.RegisterModuleType("prebuilt_usr_share", PrebuiltUserShareFactory)
-	ctx.RegisterModuleType("prebuilt_usr_share_host", PrebuiltUserShareHostFactory)
-	ctx.RegisterModuleType("prebuilt_font", PrebuiltFontFactory)
-	ctx.RegisterModuleType("prebuilt_firmware", PrebuiltFirmwareFactory)
+	ctx.RegisterModuleType("prebuilt_etc", ModuleFactoryAdaptor(PrebuiltEtcFactory))
+	ctx.RegisterModuleType("prebuilt_etc_host", ModuleFactoryAdaptor(PrebuiltEtcHostFactory))
+	ctx.RegisterModuleType("prebuilt_usr_share", ModuleFactoryAdaptor(PrebuiltUserShareFactory))
+	ctx.RegisterModuleType("prebuilt_usr_share_host", ModuleFactoryAdaptor(PrebuiltUserShareHostFactory))
+	ctx.RegisterModuleType("prebuilt_font", ModuleFactoryAdaptor(PrebuiltFontFactory))
+	ctx.RegisterModuleType("prebuilt_firmware", ModuleFactoryAdaptor(PrebuiltFirmwareFactory))
+	ctx.PreDepsMutators(func(ctx RegisterMutatorsContext) {
+		ctx.BottomUp("prebuilt_etc", prebuiltEtcMutator).Parallel()
+	})
 	ctx.Register()
 	mockFiles := map[string][]byte{
 		"Android.bp": []byte(bp),
@@ -88,7 +91,7 @@ func TestPrebuiltEtcOutputPath(t *testing.T) {
 		}
 	`)
 
-	p := ctx.ModuleForTests("foo.conf", "android_arm64_armv8-a").Module().(*PrebuiltEtc)
+	p := ctx.ModuleForTests("foo.conf", "android_arm64_armv8-a_core").Module().(*PrebuiltEtc)
 	if p.outputFilePath.Base() != "foo.installed.conf" {
 		t.Errorf("expected foo.installed.conf, got %q", p.outputFilePath.Base())
 	}
@@ -107,12 +110,12 @@ func TestPrebuiltEtcGlob(t *testing.T) {
 		}
 	`)
 
-	p := ctx.ModuleForTests("my_foo", "android_arm64_armv8-a").Module().(*PrebuiltEtc)
+	p := ctx.ModuleForTests("my_foo", "android_arm64_armv8-a_core").Module().(*PrebuiltEtc)
 	if p.outputFilePath.Base() != "my_foo" {
 		t.Errorf("expected my_foo, got %q", p.outputFilePath.Base())
 	}
 
-	p = ctx.ModuleForTests("my_bar", "android_arm64_armv8-a").Module().(*PrebuiltEtc)
+	p = ctx.ModuleForTests("my_bar", "android_arm64_armv8-a_core").Module().(*PrebuiltEtc)
 	if p.outputFilePath.Base() != "bar.conf" {
 		t.Errorf("expected bar.conf, got %q", p.outputFilePath.Base())
 	}
@@ -141,8 +144,8 @@ func TestPrebuiltEtcAndroidMk(t *testing.T) {
 		"LOCAL_TARGET_REQUIRED_MODULES": {"targetModA"},
 	}
 
-	mod := ctx.ModuleForTests("foo", "android_arm64_armv8-a").Module().(*PrebuiltEtc)
-	entries := AndroidMkEntriesForTest(t, config, "", mod)[0]
+	mod := ctx.ModuleForTests("foo", "android_arm64_armv8-a_core").Module().(*PrebuiltEtc)
+	entries := AndroidMkEntriesForTest(t, config, "", mod)
 	for k, expectedValue := range expected {
 		if value, ok := entries.EntryMap[k]; ok {
 			if !reflect.DeepEqual(value, expectedValue) {
@@ -178,7 +181,7 @@ func TestPrebuiltUserShareInstallDirPath(t *testing.T) {
 		}
 	`)
 
-	p := ctx.ModuleForTests("foo.conf", "android_arm64_armv8-a").Module().(*PrebuiltEtc)
+	p := ctx.ModuleForTests("foo.conf", "android_arm64_armv8-a_core").Module().(*PrebuiltEtc)
 	expected := buildDir + "/target/product/test_device/system/usr/share/bar"
 	if p.installDirPath.String() != expected {
 		t.Errorf("expected %q, got %q", expected, p.installDirPath.String())
@@ -210,7 +213,7 @@ func TestPrebuiltFontInstallDirPath(t *testing.T) {
 		}
 	`)
 
-	p := ctx.ModuleForTests("foo.conf", "android_arm64_armv8-a").Module().(*PrebuiltEtc)
+	p := ctx.ModuleForTests("foo.conf", "android_arm64_armv8-a_core").Module().(*PrebuiltEtc)
 	expected := buildDir + "/target/product/test_device/system/fonts"
 	if p.installDirPath.String() != expected {
 		t.Errorf("expected %q, got %q", expected, p.installDirPath.String())
@@ -245,7 +248,7 @@ func TestPrebuiltFirmwareDirPath(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.description, func(t *testing.T) {
 			ctx, _ := testPrebuiltEtc(t, tt.config)
-			p := ctx.ModuleForTests("foo.conf", "android_arm64_armv8-a").Module().(*PrebuiltEtc)
+			p := ctx.ModuleForTests("foo.conf", "android_arm64_armv8-a_core").Module().(*PrebuiltEtc)
 			if p.installDirPath.String() != tt.expectedPath {
 				t.Errorf("expected %q, got %q", tt.expectedPath, p.installDirPath)
 			}

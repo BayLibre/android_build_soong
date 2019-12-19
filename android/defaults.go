@@ -151,8 +151,7 @@ func InitDefaultsModule(module DefaultsModule) {
 	module.AddProperties(
 		&hostAndDeviceProperties{},
 		commonProperties,
-		&variableProperties{},
-		&ApexProperties{})
+		&variableProperties{})
 
 	InitArchModule(module)
 	InitDefaultableModule(module)

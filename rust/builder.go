@@ -44,8 +44,6 @@ func init() {
 
 func TransformSrcToBinary(ctx android.ModuleContext, mainSrc android.Path, deps PathDeps, flags Flags,
 	outputFile android.WritablePath, includeDirs []string) {
-	flags.RustFlags = append(flags.RustFlags, "-C lto")
-
 	transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, "bin", includeDirs)
 }
 
@@ -61,13 +59,11 @@ func TransformSrctoDylib(ctx android.ModuleContext, mainSrc android.Path, deps P
 
 func TransformSrctoStatic(ctx android.ModuleContext, mainSrc android.Path, deps PathDeps, flags Flags,
 	outputFile android.WritablePath, includeDirs []string) {
-	flags.RustFlags = append(flags.RustFlags, "-C lto")
 	transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, "staticlib", includeDirs)
 }
 
 func TransformSrctoShared(ctx android.ModuleContext, mainSrc android.Path, deps PathDeps, flags Flags,
 	outputFile android.WritablePath, includeDirs []string) {
-	flags.RustFlags = append(flags.RustFlags, "-C lto")
 	transformSrctoCrate(ctx, mainSrc, deps, flags, outputFile, "cdylib", includeDirs)
 }
 

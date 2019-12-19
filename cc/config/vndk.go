@@ -165,5 +165,4 @@ var VndkMustUseVendorVariantList = []string{
 	"libxml2",
 	"libyuv",
 	"libziparchive",
-	"vintf-vibrator-ndk_platform",
 }

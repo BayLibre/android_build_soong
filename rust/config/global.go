@@ -37,9 +37,6 @@ var (
 
 	GlobalRustFlags = []string{
 		"--remap-path-prefix $$(pwd)=",
-		"-C codegen-units=1",
-		"-C opt-level=3",
-		"-C relocation-model=pic",
 	}
 
 	deviceGlobalRustFlags = []string{}

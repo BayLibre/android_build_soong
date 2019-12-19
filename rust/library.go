@@ -19,7 +19,6 @@ import (
 	"strings"
 
 	"android/soong/android"
-	"android/soong/rust/config"
 )
 
 func init() {
@@ -290,7 +289,7 @@ func NewRustLibrary(hod android.HostOrDeviceSupported) (*Module, *libraryDecorat
 			BuildShared: true,
 			BuildStatic: true,
 		},
-		baseCompiler: NewBaseCompiler("lib", "lib64", InstallInSystem),
+		baseCompiler: NewBaseCompiler("lib", "lib64"),
 	}
 
 	module.compiler = library
@@ -305,15 +304,6 @@ func (library *libraryDecorator) compilerProps() []interface{} {
 }
 
 func (library *libraryDecorator) compilerDeps(ctx DepsContext, deps Deps) Deps {
-
-	// TODO(b/144861059) Remove if C libraries support dylib linkage in the future.
-	if !ctx.Host() && (library.static() || library.shared()) {
-		library.setNoStdlibs()
-		for _, stdlib := range config.Stdlibs {
-			deps.Rlibs = append(deps.Rlibs, stdlib+".static")
-		}
-	}
-
 	deps = library.baseCompiler.compilerDeps(ctx, deps)
 
 	if ctx.toolchain().Bionic() && (library.dylib() || library.shared()) {

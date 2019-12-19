@@ -147,7 +147,6 @@ func makeVarsProvider(ctx android.MakeVarsContext) {
 	ctx.Strict("WITH_TIDY_FLAGS", "${config.TidyWithTidyFlags}")
 
 	ctx.Strict("AIDL_CPP", "${aidlCmd}")
-	ctx.Strict("ALLOWED_MANUAL_INTERFACE_PATHS", strings.Join(allowedManualInterfacePaths, " "))
 
 	ctx.Strict("M4", "${m4Cmd}")
 
