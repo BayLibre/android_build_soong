@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "7614e4c1_c4598eb1",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-12-19T23:53:53Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "4cd95823_cda92a23",
+      "revId": "ac78b672ba6849ede3bc10d6f72b58a3b5f09b50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba1b496f_433a20ae",
         "filename": "apex/apex.go",
         "patchSetId": 1
@@ -99,6 +117,30 @@
       "revId": "ac78b672ba6849ede3bc10d6f72b58a3b5f09b50",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4e523e5_71e651c9",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1026,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-12-19T23:53:53Z",
+      "side": 1,
+      "message": "A http://b/146586360 covers this as well.",
+      "parentUuid": "7cc6fed1_91add3f5",
+      "range": {
+        "startLine": 1026,
+        "startChar": 35,
+        "endLine": 1026,
+        "endChar": 51
+      },
+      "revId": "ac78b672ba6849ede3bc10d6f72b58a3b5f09b50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
