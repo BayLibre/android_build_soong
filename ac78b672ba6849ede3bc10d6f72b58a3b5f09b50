@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "4cd95823_cda92a23",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-19T19:31:18Z",
+      "side": 1,
+      "message": "You can add android.Module to java.Dependency.  If you\u0027re not going to fix this now at least leave a TODO here.",
+      "parentUuid": "8b3a99de_6888b574",
+      "revId": "ac78b672ba6849ede3bc10d6f72b58a3b5f09b50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ba1b496f_433a20ae",
         "filename": "apex/apex.go",
         "patchSetId": 1
