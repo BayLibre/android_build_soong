@@ -24,7 +24,7 @@ func init() {
 }
 
 type platformCompatConfigSingleton struct {
-	flags, metadata android.Path
+	metadata android.Path
 }
 
 type platformCompatConfigProperties struct {
@@ -76,6 +76,12 @@ func (h *platformCompatConfigSingleton) GenerateBuildActions(ctx android.Singlet
 		FlagWithOutput("--merged-config ", outputPath)
 
 	rule.Build(pctx, ctx, "compat-config-merged", "Merge compat config")
+
+	h.metadata = outputPath
+}
+
+func (p *platformCompatConfigSingleton) MakeVars(ctx android.MakeVarsContext) {
+	ctx.Strict("INTERNAL_PLATFORM_MERGED_COMPAT_CONFIG", p.metadata.String())
 }
 
 func (p *platformCompatConfig) GenerateAndroidBuildActions(ctx android.ModuleContext) {
