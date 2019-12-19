@@ -92,6 +92,24 @@
       "revId": "41ce667f7c881876af14467a84c1ec5000af5090",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fbb395a7_54e08cf0",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-19T23:46:56Z",
+      "side": 1,
+      "message": "I\u0027d like to get rid of the out-aml eventually, but the right solution will be to make soong-only builds work after a Make build.  Maybe rm $OUT_DIR/.soong_in_make?  That can be a future change though.",
+      "parentUuid": "900e1877_878e0973",
+      "revId": "41ce667f7c881876af14467a84c1ec5000af5090",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
