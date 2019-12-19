@@ -185,8 +185,9 @@ func skipDexpreoptArtBootJars(ctx android.BuilderContext) bool {
 }
 
 type dexpreoptBootJars struct {
-	defaultBootImage *bootImage
-	otherImages      []*bootImage
+	frameworkBootImage *bootImage
+	defaultBootImage   *bootImage
+	otherImages        []*bootImage
 
 	dexpreoptConfigForMake android.WritablePath
 }
@@ -220,15 +221,20 @@ func (d *dexpreoptBootJars) GenerateBuildActions(ctx android.SingletonContext) {
 		return
 	}
 
-	// Always create the default boot image first, to get a unique profile rule for all images.
-	d.defaultBootImage = buildBootImage(ctx, defaultBootImageConfig(ctx))
-	if !skipDexpreoptArtBootJars(ctx) {
-		// Create boot image for the ART apex (build artifacts are accessed via the global boot image config).
-		d.otherImages = append(d.otherImages, buildBootImage(ctx, artBootImageConfig(ctx)))
-	}
+	// The framework boot image must be created first to get a unique profile rule for all images.
+	d.frameworkBootImage = buildBootImage(ctx, frameworkBootImageConfig(ctx))
+
+	// Default boot image is either the framework one, or the JIT-zygote one.
 	if global.GenerateApexImage {
-		// Create boot images for the JIT-zygote experiment.
-		d.otherImages = append(d.otherImages, buildBootImage(ctx, apexBootImageConfig(ctx)))
+		d.defaultBootImage = buildBootImage(ctx, apexBootImageConfig(ctx))
+		d.otherImages = append(d.otherImages, d.frameworkBootImage)
+	} else {
+		d.defaultBootImage = d.frameworkBootImage
+	}
+
+	// Create the ART boot image.
+	if !skipDexpreoptArtBootJars(ctx) {
+		d.otherImages = append(d.otherImages, buildBootImage(ctx, artBootImageConfig(ctx)))
 	}
 
 	dumpOatRules(ctx, d.defaultBootImage)
@@ -602,7 +608,7 @@ func (d *dexpreoptBootJars) MakeVars(ctx android.MakeVarsContext) {
 
 	image := d.defaultBootImage
 	if image != nil {
-		ctx.Strict("DEXPREOPT_IMAGE_PROFILE_BUILT_INSTALLED", image.profileInstalls.String())
+		ctx.Strict("DEXPREOPT_IMAGE_PROFILE_BUILT_INSTALLED", d.frameworkBootImage.profileInstalls.String())
 		ctx.Strict("DEXPREOPT_BOOTCLASSPATH_DEX_FILES", strings.Join(image.dexPathsDeps.Strings(), " "))
 		ctx.Strict("DEXPREOPT_BOOTCLASSPATH_DEX_LOCATIONS", strings.Join(image.dexLocationsDeps, " "))
 		ctx.Strict("DEXPREOPT_IMAGE_LOCATIONS", strings.Join(image.imageLocations, ":"))
