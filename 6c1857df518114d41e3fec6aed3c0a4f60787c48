@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7849809f_29dd7e46",
+        "filename": "android/testing.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-19T22:47:20Z",
+      "side": 1,
+      "message": "You\u0027re not using this any more",
+      "range": {
+        "startLine": 425,
+        "startChar": 29,
+        "endLine": 425,
+        "endChar": 39
+      },
+      "revId": "6c1857df518114d41e3fec6aed3c0a4f60787c48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
