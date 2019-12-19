@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "40eeede9_a4f6ac81",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-19T01:08:23Z",
+      "side": 1,
+      "message": "Now that you aren\u0027t doing anything special for variables there is no need to recurse, add param \u003d evalVariable(ctx, param) here and remove the variable case below.",
+      "revId": "6095dcada9de13d0fa296e8798ca94b41fc5c014",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
