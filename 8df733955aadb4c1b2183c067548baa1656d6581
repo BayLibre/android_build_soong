@@ -16,6 +16,24 @@
       "revId": "8df733955aadb4c1b2183c067548baa1656d6581",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7331e05e_44ec8e0f",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2066,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-12-19T10:14:06Z",
+      "side": 1,
+      "message": "Doh. I made this change on top of the java_test_import change because I was fed up of having duplicated code and having to change things in multiple places. I then created a separate branch, switched to that and cherry-picked. I forgot to resync in IDE and ended up with conflicts between memory version and file version and obviously didn\u0027t resolve the changes properly.",
+      "parentUuid": "528c4155_e6b43c2e",
+      "revId": "8df733955aadb4c1b2183c067548baa1656d6581",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
