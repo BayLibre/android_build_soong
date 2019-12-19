@@ -34,6 +34,24 @@
       "revId": "6095dcada9de13d0fa296e8798ca94b41fc5c014",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed43d521_41762393",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-19T15:59:09Z",
+      "side": 1,
+      "message": "Call evalVariable on each entry in params before calling normalizeParams",
+      "parentUuid": "9f580c1a_b2fc9a56",
+      "revId": "6095dcada9de13d0fa296e8798ca94b41fc5c014",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
