@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c978150e_dd4430ef",
+        "filename": "android/testing.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-12-19T21:30:40Z",
+      "side": 1,
+      "message": "Updated WritablePath as you suggested. I noticed that testWritablePath was not used (and the creation methods did not provide access to Config object) so I created a separate change to remove them.\n\nThe reason I switched to normalizing the paths and then creating a single string for the copy rules was:\n1) To avoid referencing the buildDir over and over again.\n2) To ensure that every copy rule was checked.\n3) To simplify updating the tests as the failure message included the correct value to insert.\n\nIt would also be simple to just check some of the rules.\n\nRather than expand the scope of this change if you really don\u0027t like the use of the strings then would you mind raising a bug and assigning it to me.",
+      "parentUuid": "8138162a_05fdfa59",
+      "revId": "b8245685557a8073b6f2b61253607c8fc46cbc03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "480908fd_d40a0d9d",
         "filename": "java/droiddoc.go",
         "patchSetId": 6
@@ -39,6 +57,30 @@
       "revId": "b8245685557a8073b6f2b61253607c8fc46cbc03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92478e98_ee70e114",
+        "filename": "java/droiddoc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1944,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-12-19T21:30:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "480908fd_d40a0d9d",
+      "range": {
+        "startLine": 1944,
+        "startChar": 1,
+        "endLine": 1944,
+        "endChar": 5
+      },
+      "revId": "b8245685557a8073b6f2b61253607c8fc46cbc03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
