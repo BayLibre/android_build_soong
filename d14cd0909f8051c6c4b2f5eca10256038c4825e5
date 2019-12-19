@@ -16,6 +16,24 @@
       "revId": "d14cd0909f8051c6c4b2f5eca10256038c4825e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb969c45_723b1802",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-19T23:28:43Z",
+      "side": 1,
+      "message": "The second half of this comment still applies, do we need java_test_import?  I\u0027d prefer to have all prebuilt jars come through java_import.",
+      "parentUuid": "2685688b_5d23ff0c",
+      "revId": "d14cd0909f8051c6c4b2f5eca10256038c4825e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
