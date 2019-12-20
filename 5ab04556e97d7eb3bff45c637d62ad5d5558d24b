@@ -39,6 +39,24 @@
       "revId": "5ab04556e97d7eb3bff45c637d62ad5d5558d24b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb51450c_beb8c98a",
+        "filename": "cc/compdb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1384660
+      },
+      "writtenOn": "2019-12-20T00:04:01Z",
+      "side": 1,
+      "message": "Thanks - this was what I really wanted to have. 😊  One quick question is that this change will create a target file as ${OUT_DIR}/soong/development/ide/compdb/compile_commands.json (extra \"soong\" in the path).  Is this okay?",
+      "parentUuid": "1990f3e5_ccdc42fd",
+      "revId": "5ab04556e97d7eb3bff45c637d62ad5d5558d24b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
