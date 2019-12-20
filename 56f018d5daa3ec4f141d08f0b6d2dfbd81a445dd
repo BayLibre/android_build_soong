@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "59136b36_822e9a3f",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-12-20T01:12:23Z",
+      "side": 1,
+      "message": "Removed Set/GetPreventInstall functions. Instead used c.installable() function before calling c.installer as guided.\nDone",
+      "parentUuid": "68b35820_08326652",
+      "revId": "56f018d5daa3ec4f141d08f0b6d2dfbd81a445dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "669f7af7_cf7a6b39",
         "filename": "cc/androidmk.go",
         "patchSetId": 16
@@ -33,6 +51,24 @@
       "revId": "56f018d5daa3ec4f141d08f0b6d2dfbd81a445dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c8f859f_4643f874",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-12-20T01:12:23Z",
+      "side": 1,
+      "message": "Thank you for the input.\nDone",
+      "parentUuid": "669f7af7_cf7a6b39",
+      "revId": "56f018d5daa3ec4f141d08f0b6d2dfbd81a445dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
