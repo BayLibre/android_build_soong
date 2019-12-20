@@ -96,6 +96,24 @@
     },
     {
       "key": {
+        "uuid": "5e41b4bf_86beaaba",
+        "filename": "android/arch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1587,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-12-20T00:52:14Z",
+      "side": 1,
+      "message": "Aha, thanks for the explanation.\n\nI don\u0027t see a similar special case for x86_64. \"TARGET_2ND_CPU_ABI :\u003d x86\" does the same there? https://cs.android.com/android/platform/superproject/+/master:build/make/target/board/mainline_x86_64/BoardConfig.mk;l\u003d23",
+      "parentUuid": "c311afa8_87d085d3",
+      "revId": "41ce667f7c881876af14467a84c1ec5000af5090",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7d3418e_4efa93e4",
         "filename": "scripts/build-aml-prebuilts.sh",
         "patchSetId": 3
