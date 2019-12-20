@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6881f8a4_aff1449e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-12-20T11:52:39Z",
+      "side": 1,
+      "message": "To make this a bit less confusing, maybe we could rename the \"apex\" boot image to something else, e.g.: \"jit\", \"jit-zygote\", \"updatability\", or even \"mainline\"?",
+      "range": {
+        "startLine": 10,
+        "startChar": 33,
+        "endLine": 10,
+        "endChar": 39
+      },
+      "revId": "48b3b3c71f76fa05de191b8460a186e9dbcc36bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
