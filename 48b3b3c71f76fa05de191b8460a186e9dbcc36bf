@@ -22,6 +22,30 @@
       "revId": "48b3b3c71f76fa05de191b8460a186e9dbcc36bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06cee070_1632af93",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-12-20T12:03:51Z",
+      "side": 1,
+      "message": "Yes, I plan to do this! Thanks for pointing out.",
+      "parentUuid": "6881f8a4_aff1449e",
+      "range": {
+        "startLine": 10,
+        "startChar": 33,
+        "endLine": 10,
+        "endChar": 39
+      },
+      "revId": "48b3b3c71f76fa05de191b8460a186e9dbcc36bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
