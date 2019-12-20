@@ -16,6 +16,24 @@
       "revId": "05971b13acc3e67ad5547eea0ab677e6148acee4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "790be6a1_1966e527",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2019-12-20T07:25:41Z",
+      "side": 1,
+      "message": "This will cause one difference in \"libui\" module,\n\t\t\t\"global_c_flags\": {\n\t\t\t\t\"flag\": [\n\t\t\t\t\t...\n\t\t\t\t\t\"-B${config.X86_64GccRoot}/x86_64-linux-android/bin\",\n\t\t\t\t\t...\n\t\t\t\t]\n\t\t\t},\nwould become,\n\t\t\t\"global_c_flags\": {\n\t\t\t\t\"flag\": [\n\t\t\t\t\t...\n\t\t\t\t\t\"-Bprebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9/x86_64-linux-android/bin\",\n\t\t\t\t\t...\n\t\t\t\t]\n\t\t\t},\nBut if I add,\n\t\tif categorizeParameter(param) \u003d\u003d variable {\n\t\t\tparam, _ \u003d evalVariable(ctx, param)\n\t\t}\nAll the data are the same.",
+      "parentUuid": "a2bc1d04_0cc0c6e5",
+      "revId": "05971b13acc3e67ad5547eea0ab677e6148acee4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
