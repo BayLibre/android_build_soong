@@ -158,12 +158,9 @@ func init() {
 		flags := ClangFilterUnknownCflags(commonGlobalCflags)
 		flags = append(flags, "${ClangExtraCflags}")
 
-		// http://b/131390872
-		// Automatically initialize any uninitialized stack variables.
-		// Prefer zero-init if both options are set.
 		if ctx.Config().IsEnvTrue("AUTO_ZERO_INITIALIZE") {
 			flags = append(flags, "-ftrivial-auto-var-init=zero -enable-trivial-auto-var-init-zero-knowing-it-will-be-removed-from-clang")
-		} else if ctx.Config().IsEnvTrue("AUTO_PATTERN_INITIALIZE") {
+		} else {
 			flags = append(flags, "-ftrivial-auto-var-init=pattern")
 		}
 
