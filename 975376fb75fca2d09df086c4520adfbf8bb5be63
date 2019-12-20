@@ -19,6 +19,46 @@
     },
     {
       "key": {
+        "uuid": "edfa1b87_16fcdbda",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-12-20T11:27:11Z",
+      "side": 1,
+      "message": "framework",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 17
+      },
+      "revId": "975376fb75fca2d09df086c4520adfbf8bb5be63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ee4bc7d_0d6437c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-12-20T11:27:11Z",
+      "side": 1,
+      "message": "Should you say something about Conscrypt here, which is in its own APEX module (but also part of the boot image)?",
+      "revId": "975376fb75fca2d09df086c4520adfbf8bb5be63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6df9476e_73d1eb60",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -30,6 +70,24 @@
       "writtenOn": "2019-12-19T15:23:55Z",
       "side": 1,
       "message": "Please also retain the ticket that the original CL addressed. It\u0027s useful for looking up context.",
+      "revId": "975376fb75fca2d09df086c4520adfbf8bb5be63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9fd626b_77ec2ad4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2019-12-20T11:27:11Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "6df9476e_73d1eb60",
       "revId": "975376fb75fca2d09df086c4520adfbf8bb5be63",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
