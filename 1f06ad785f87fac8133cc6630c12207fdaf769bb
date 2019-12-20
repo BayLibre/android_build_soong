@@ -16,6 +16,24 @@
       "revId": "1f06ad785f87fac8133cc6630c12207fdaf769bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f735759_7a034ec1",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-12-20T09:07:03Z",
+      "side": 1,
+      "message": "When I set PreventInstall to the modules in vndk mutator before AndroidMk, it affected many other mutators to bypass the mutations.\nAlso, I noticed that \"LOCAL_UNINSTALLABLE_MODULE :\u003d true\" is enough to describe uninstallable modules. I thought we had to remove the LOCAL_MODULE_PATH and LOCAL_MODULE_STEM for these modules. But I was wrong.\nLet me revert the changes for removing install paths from this CL.",
+      "parentUuid": "bf82dc94_e8fd4f96",
+      "revId": "1f06ad785f87fac8133cc6630c12207fdaf769bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
