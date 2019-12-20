@@ -52,6 +52,24 @@
       "revId": "6095dcada9de13d0fa296e8798ca94b41fc5c014",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "963e72ed_3ecbe064",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2019-12-20T01:12:07Z",
+      "side": 1,
+      "message": "Now only one difference,\n\t\t\t\"global_c_flags\": {\n\t\t\t\t\"flag\": [\n\t\t\t\t\t...\n\t\t\t\t\t\"-B${config.X86_64GccRoot}/x86_64-linux-android/bin\",\n\t\t\t\t\t...\n\t\t\t\t]\n\t\t\t},\nwould become,\n\t\t\t\"global_c_flags\": {\n\t\t\t\t\"flag\": [\n\t\t\t\t\t...\n\t\t\t\t\t\"-Bprebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9/x86_64-linux-android/bin\",\n\t\t\t\t\t...\n\t\t\t\t]\n\t\t\t},\n\n\"-B${config.X86_64GccRoot}\" will be translated to  \"-Bprebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.9\"",
+      "parentUuid": "ed43d521_41762393",
+      "revId": "6095dcada9de13d0fa296e8798ca94b41fc5c014",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
