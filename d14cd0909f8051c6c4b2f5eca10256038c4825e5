@@ -34,6 +34,24 @@
       "revId": "d14cd0909f8051c6c4b2f5eca10256038c4825e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ecb68791_f111f6e8",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-12-20T16:01:21Z",
+      "side": 1,
+      "message": "Defining java_test like that will not work when it is unbundled. It cannot be in the source repository because it will be needed when building against the prebuilts and the converse also applies. It would need to be in a third repository which is a bit yucky.\n\nI\u0027ve made it so it only works with module_exports/_snapshot does that address your issues? If not could you explain why you\u0027d \"prefer to have all prebuilt jars come through java_import.\"?\n\nIt seems to me that it would be useful to have a way to mark any module type as being \u0027effectively prebuilt\u0027, i.e. has the same behavior with regard to naming and prefer. That would allow us to do what you suggested.",
+      "parentUuid": "eb969c45_723b1802",
+      "revId": "d14cd0909f8051c6c4b2f5eca10256038c4825e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
