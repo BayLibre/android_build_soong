@@ -117,6 +117,30 @@
       "revId": "d061ce9210cef0944787dbee9a097607e5430898",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4df5c9b1_6f26f5fb",
+        "filename": "scripts/hiddenapi_policy.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2019-12-20T11:01:55Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "7e0837af_4a95b552",
+      "range": {
+        "startLine": 70,
+        "startChar": 11,
+        "endLine": 70,
+        "endChar": 71
+      },
+      "revId": "d061ce9210cef0944787dbee9a097607e5430898",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
