@@ -75,6 +75,24 @@
       "revId": "5ab04556e97d7eb3bff45c637d62ad5d5558d24b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c40ebf7_ecfe9f14",
+        "filename": "cc/compdb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-20T00:13:56Z",
+      "side": 1,
+      "message": "../ should be an error.  I think out/soong should be fine.",
+      "parentUuid": "af7aa1e1_38ee4218",
+      "revId": "5ab04556e97d7eb3bff45c637d62ad5d5558d24b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
