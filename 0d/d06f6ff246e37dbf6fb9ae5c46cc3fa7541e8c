@@ -1,0 +1,11 @@
+Code-Review+2: Paul Duffin <paulduffin@google.com>
+Code-Review+1: satayev <satayev@google.com>
+Verified+1: Mathew Inwood <mathewi@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Submitted-by: Mathew Inwood <mathewi@google.com>
+Submitted-at: Fri, 20 Dec 2019 09:33:39 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/build/soong/+/1192157
+Project: platform/build/soong
+Branch: refs/heads/master
