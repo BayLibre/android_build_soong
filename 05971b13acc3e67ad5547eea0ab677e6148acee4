@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2bc1d04_0cc0c6e5",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-20T02:21:56Z",
+      "side": 1,
+      "message": "Why not always call evalVariable?  categorizeParameter only looks at the first character, param could be \"-I ${var}\" and this wouldn\u0027t expand ${var}.",
+      "revId": "05971b13acc3e67ad5547eea0ab677e6148acee4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
