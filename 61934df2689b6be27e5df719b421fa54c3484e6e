@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "810dd2e8_7b87fdbb",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-12-20T19:07:41Z",
+      "side": 1,
+      "message": "TotalRAM() may fail to return 0. Should the message still be printed out since it will say 0 total RAM?",
+      "range": {
+        "startLine": 177,
+        "startChar": 1,
+        "endLine": 177,
+        "endChar": 93
+      },
+      "revId": "61934df2689b6be27e5df719b421fa54c3484e6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99c08df3_33a36a54",
+        "filename": "ui/build/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-12-20T19:07:41Z",
+      "side": 1,
+      "message": "Should a simple function be defined that accepts a NINJA environment variable and returns the value? It is pretty much the same code in line 820.",
+      "range": {
+        "startLine": 728,
+        "startChar": 1,
+        "endLine": 732,
+        "endChar": 2
+      },
+      "revId": "61934df2689b6be27e5df719b421fa54c3484e6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a6d1fe9_6743cc7c",
+        "filename": "ui/build/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-12-20T19:07:41Z",
+      "side": 1,
+      "message": "nit: spacing to be consistent with line of code 734.",
+      "range": {
+        "startLine": 745,
+        "startChar": 27,
+        "endLine": 745,
+        "endChar": 28
+      },
+      "revId": "61934df2689b6be27e5df719b421fa54c3484e6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cafb0b0a_0489903b",
+        "filename": "ui/build/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-12-20T19:07:41Z",
+      "side": 1,
+      "message": "return parallel?",
+      "range": {
+        "startLine": 751,
+        "startChar": 3,
+        "endLine": 754,
+        "endChar": 2
+      },
+      "revId": "61934df2689b6be27e5df719b421fa54c3484e6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3add26ec_3d040553",
+        "filename": "ui/build/config_darwin.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-12-20T19:07:41Z",
+      "side": 1,
+      "message": "%v\", err",
+      "range": {
+        "startLine": 25,
+        "startChar": 48,
+        "endLine": 25,
+        "endChar": 51
+      },
+      "revId": "61934df2689b6be27e5df719b421fa54c3484e6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9a92882_09e07820",
+        "filename": "ui/build/config_darwin.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-12-20T19:07:41Z",
+      "side": 1,
+      "message": "expecting 8",
+      "range": {
+        "startLine": 35,
+        "startChar": 67,
+        "endLine": 35,
+        "endChar": 68
+      },
+      "revId": "61934df2689b6be27e5df719b421fa54c3484e6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f59a9bd_d362f68c",
+        "filename": "ui/build/config_linux.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-12-20T19:07:41Z",
+      "side": 1,
+      "message": "We should print the error info to debug...\n\nctx.Printf(\"Failed to get system memory size: %v\", err)",
+      "range": {
+        "startLine": 23,
+        "startChar": 2,
+        "endLine": 23,
+        "endChar": 52
+      },
+      "revId": "61934df2689b6be27e5df719b421fa54c3484e6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1c8294c_ee0758c9",
+        "filename": "ui/build/config_linux.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-12-20T19:07:41Z",
+      "side": 1,
+      "message": "return uint64(info.Totalram) * uint64(info.Unit);",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 16
+      },
+      "revId": "61934df2689b6be27e5df719b421fa54c3484e6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
