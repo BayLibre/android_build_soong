@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bf82dc94_e8fd4f96",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-20T02:18:55Z",
+      "side": 1,
+      "message": "This is also pretty late to be setting PreventInstall",
+      "revId": "1f06ad785f87fac8133cc6630c12207fdaf769bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
