@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d328b880_47cd1606",
+        "filename": "cc/compdb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1384660
+      },
+      "writtenOn": "2019-12-20T02:52:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ccbcee3_06a69313",
+      "range": {
+        "startLine": 46,
+        "startChar": 34,
+        "endLine": 46,
+        "endChar": 38
+      },
+      "revId": "5ab04556e97d7eb3bff45c637d62ad5d5558d24b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1990f3e5_ccdc42fd",
         "filename": "cc/compdb.go",
         "patchSetId": 1
