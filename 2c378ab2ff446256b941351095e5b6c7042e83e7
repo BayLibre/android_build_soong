@@ -22,6 +22,30 @@
       "revId": "2c378ab2ff446256b941351095e5b6c7042e83e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b27e3e00_d7f25c7f",
+        "filename": "android/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2019-12-20T15:56:53Z",
+      "side": 1,
+      "message": "Agree it is confusing.\n\nOnlyInModuleExports() would require some double negatives. The method implementation would have to negate the field in order to ensure that the default is not to support the sdk. The caller would have to negate the value returned by the method. That would make it harder to reason about. Have renamed to UsableWithSdkAndSdkSnapshot in order to try and resolve the confusion.",
+      "parentUuid": "4b79a9c9_583e33b0",
+      "range": {
+        "startLine": 241,
+        "startChar": 1,
+        "endLine": 241,
+        "endChar": 15
+      },
+      "revId": "2c378ab2ff446256b941351095e5b6c7042e83e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
