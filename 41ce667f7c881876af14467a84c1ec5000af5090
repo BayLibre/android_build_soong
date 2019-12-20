@@ -60,6 +60,24 @@
     },
     {
       "key": {
+        "uuid": "a27230e2_8b4f7d6b",
+        "filename": "android/arch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1587,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-12-20T00:13:12Z",
+      "side": 1,
+      "message": "\u003e There\u0027s a good chance that you\u0027d want a 32-bit armv8 and another similar x86 in this list too.\n\nIf I\u0027m not mistaken build_unbundled_mainline_module.sh uses the aosp_\u003carch\u003e builds, so I lunched aosp_arm64 and looked at a lib built in out/target/product/generic_arm64/obj_arm, and it\u0027s still built for arm, not arm64:\n\n$ readelf -h out/target/product/generic_arm64/obj_arm/SHARED_LIBRARIES/libdexfile_external_intermediates/libdexfile_external.so\n  Class:                             ELF32\n  Machine:                           ARM\n\nThat\u0027s exactly what I get when lunching aosp_arm too. So afaics there\u0027s no difference between the 32-bit ISAs in arm and arm64. Same goes for x86(_64).",
+      "parentUuid": "2d951440_147508d3",
+      "revId": "41ce667f7c881876af14467a84c1ec5000af5090",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7d3418e_4efa93e4",
         "filename": "scripts/build-aml-prebuilts.sh",
         "patchSetId": 3
@@ -107,6 +125,24 @@
       "side": 1,
       "message": "I\u0027d like to get rid of the out-aml eventually, but the right solution will be to make soong-only builds work after a Make build.  Maybe rm $OUT_DIR/.soong_in_make?  That can be a future change though.",
       "parentUuid": "900e1877_878e0973",
+      "revId": "41ce667f7c881876af14467a84c1ec5000af5090",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b574d61c_75d242fd",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-12-20T00:13:12Z",
+      "side": 1,
+      "message": "\u003e Maybe rm $OUT_DIR/.soong_in_make?\n\n(I assume you mean $OUT_DIR/soong/.soong.in_make.) It\u0027d still mean that a user switching between normal lunch builds and build-aml-prebuilts.sh would have a worse incremental build experience than with different out dirs, wouldn\u0027t it?\n\n\u003e That can be a future change though.\n\nGood, thanks. I suppose we could live with the churn in the same out dir if it\u0027s restricted to rerunning Soong and Kati, but I\u0027d then document a \"pro-tip\" to set OUT_DIR to something else for interactive use.\n\nFWIW I changed the logic here a bit to only fall back to out-aml if OUT_DIR exists and has .soong.in_make, so in a prod build with its own target it\u0027d use out/.",
+      "parentUuid": "fbb395a7_54e08cf0",
       "revId": "41ce667f7c881876af14467a84c1ec5000af5090",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
