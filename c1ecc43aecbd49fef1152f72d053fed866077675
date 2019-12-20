@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f5f92a7_5e5bcae5",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-12-20T18:36:51Z",
+      "side": 1,
+      "message": "Could you write a high level description of what this script does?",
+      "revId": "c1ecc43aecbd49fef1152f72d053fed866077675",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "199e11d3_f8475fc1",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-12-20T18:36:51Z",
+      "side": 1,
+      "message": "You should put in double quotes in case OUT_DIR has a space in it.",
+      "range": {
+        "startLine": 3,
+        "startChar": 15,
+        "endLine": 3,
+        "endChar": 30
+      },
+      "revId": "c1ecc43aecbd49fef1152f72d053fed866077675",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2f1476b_fc035af8",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-12-20T18:36:51Z",
+      "side": 1,
+      "message": "Also put double quotes here.",
+      "range": {
+        "startLine": 5,
+        "startChar": 8,
+        "endLine": 5,
+        "endChar": 39
+      },
+      "revId": "c1ecc43aecbd49fef1152f72d053fed866077675",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdab8e55_f6ebf7ee",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-12-20T18:36:51Z",
+      "side": 1,
+      "message": "How do you check if you are at top directory of AOSP to run this script? Echo a message to the user to cd to the root directory if it fails to load?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 24
+      },
+      "revId": "c1ecc43aecbd49fef1152f72d053fed866077675",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b750218e_d8c75a6a",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-12-20T18:36:51Z",
+      "side": 1,
+      "message": "Put these in double quotes (and the next two)",
+      "range": {
+        "startLine": 25,
+        "startChar": 21,
+        "endLine": 25,
+        "endChar": 61
+      },
+      "revId": "c1ecc43aecbd49fef1152f72d053fed866077675",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dbc2e24_6628e614",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2019-12-20T18:36:51Z",
+      "side": 1,
+      "message": "readonly PLATFORM_VERSION...",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 16
+      },
+      "revId": "c1ecc43aecbd49fef1152f72d053fed866077675",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
