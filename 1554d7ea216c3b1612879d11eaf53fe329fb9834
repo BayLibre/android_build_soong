@@ -309,6 +309,30 @@
     },
     {
       "key": {
+        "uuid": "6307e94e_e859cd37",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-12-21T00:56:27Z",
+      "side": 1,
+      "message": "Marking it resolved",
+      "parentUuid": "31dc2c90_99e84b5c",
+      "range": {
+        "startLine": 843,
+        "startChar": 17,
+        "endLine": 843,
+        "endChar": 26
+      },
+      "revId": "1554d7ea216c3b1612879d11eaf53fe329fb9834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29927117_3f816405",
         "filename": "cc/cc.go",
         "patchSetId": 6
@@ -356,6 +380,30 @@
     },
     {
       "key": {
+        "uuid": "3b9e0c5d_afcaafb3",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 844,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-12-21T00:56:27Z",
+      "side": 1,
+      "message": "Modified to use the *VariationPrefix to check the image variation",
+      "parentUuid": "f8c2c920_a2695043",
+      "range": {
+        "startLine": 844,
+        "startChar": 16,
+        "endLine": 844,
+        "endChar": 25
+      },
+      "revId": "1554d7ea216c3b1612879d11eaf53fe329fb9834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "629b5fe3_4c243a14",
         "filename": "cc/cc.go",
         "patchSetId": 6
@@ -400,6 +448,30 @@
       "revId": "1554d7ea216c3b1612879d11eaf53fe329fb9834",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94e5c53c_ffc3ab31",
+        "filename": "cc/cc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-12-21T00:56:27Z",
+      "side": 1,
+      "message": "Marking it resolved",
+      "parentUuid": "520f345f_340c7fe4",
+      "range": {
+        "startLine": 847,
+        "startChar": 17,
+        "endLine": 847,
+        "endChar": 25
+      },
+      "revId": "1554d7ea216c3b1612879d11eaf53fe329fb9834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
