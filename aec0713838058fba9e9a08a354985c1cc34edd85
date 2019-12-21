@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef8067c1_f522fcdf",
+        "filename": "build_kzip.bash",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-21T01:57:42Z",
+      "side": 1,
+      "message": "Trailing whitespace",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 12
+      },
+      "revId": "aec0713838058fba9e9a08a354985c1cc34edd85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6277d366_45d2d844",
+        "filename": "build_kzip.bash",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-21T01:57:42Z",
+      "side": 1,
+      "message": "This is only going to index build/soong and not any of the plugins, but that\u0027s better than nothing.  I think it should be possible to generate a go.mod file from the build that could be used as a GOPATH that contains all the modules.",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 9
+      },
+      "revId": "aec0713838058fba9e9a08a354985c1cc34edd85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
