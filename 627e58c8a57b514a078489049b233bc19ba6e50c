@@ -105,6 +105,24 @@
       "revId": "627e58c8a57b514a078489049b233bc19ba6e50c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b42c1e53_6516c919",
+        "filename": "apex/builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-12-23T04:51:11Z",
+      "side": 1,
+      "message": "ok. followed the suggestion in PS10. (please compare PS8 and PS10)",
+      "parentUuid": "83ab5088_7bb54997",
+      "revId": "627e58c8a57b514a078489049b233bc19ba6e50c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
