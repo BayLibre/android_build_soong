@@ -300,7 +300,6 @@ func testApexContext(t *testing.T, bp string, handlers ...testCustomizer) (*andr
 	ctx.RegisterModuleType("java_sdk_library", java.SdkLibraryFactory)
 
 	ctx.PreArchMutators(android.RegisterDefaultsPreArchMutators)
-	ctx.PreDepsMutators(RegisterPreDepsMutators)
 	ctx.PostDepsMutators(android.RegisterOverridePostDepsMutators)
 	ctx.PostDepsMutators(RegisterPostDepsMutators)
 
@@ -1517,23 +1516,12 @@ func TestHeaderLibsDependency(t *testing.T) {
 	ensureContains(t, cFlags, "-Imy_include")
 }
 
-func ensureExactContents(t *testing.T, ctx *android.TestContext, moduleName string, files []string) {
+func parseCopyCommands(t *testing.T, ctx *android.TestContext, moduleName string) map[string]string {
 	t.Helper()
 	apexRule := ctx.ModuleForTests(moduleName, "android_common_"+moduleName+"_image").Rule("apexRule")
 	copyCmds := apexRule.Args["copy_commands"]
 	imageApexDir := "/image.apex/"
-	var failed bool
-	var surplus []string
-	filesMatched := make(map[string]bool)
-	addContent := func(content string) {
-		for _, expected := range files {
-			if matched, _ := path.Match(expected, content); matched {
-				filesMatched[expected] = true
-				return
-			}
-		}
-		surplus = append(surplus, content)
-	}
+	files := make(map[string]string)
 	for _, cmd := range strings.Split(copyCmds, "&&") {
 		cmd = strings.TrimSpace(cmd)
 		if cmd == "" {
@@ -1546,16 +1534,38 @@ func ensureExactContents(t *testing.T, ctx *android.TestContext, moduleName stri
 			if len(terms) != 3 {
 				t.Fatal("copyCmds contains invalid cp command", cmd)
 			}
+			src := terms[1]
 			dst := terms[2]
 			index := strings.Index(dst, imageApexDir)
 			if index == -1 {
 				t.Fatal("copyCmds should copy a file to image.apex/", cmd)
 			}
 			dstFile := dst[index+len(imageApexDir):]
-			addContent(dstFile)
+			files[dstFile] = src
 		default:
 			t.Fatalf("copyCmds should contain mkdir/cp commands only: %q", cmd)
 		}
+	}
+	return files
+}
+
+func ensureExactContents(t *testing.T, ctx *android.TestContext, moduleName string, files []string) {
+	t.Helper()
+
+	var failed bool
+	var surplus []string
+	filesMatched := make(map[string]bool)
+	addContent := func(content string) {
+		for _, expected := range files {
+			if matched, _ := path.Match(expected, content); matched {
+				filesMatched[expected] = true
+				return
+			}
+		}
+		surplus = append(surplus, content)
+	}
+	for file := range parseCopyCommands(t, ctx, moduleName) {
+		addContent(file)
 	}
 
 	if len(surplus) > 0 {
