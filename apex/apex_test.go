@@ -286,6 +286,9 @@ func testApexContext(t *testing.T, bp string, handlers ...testCustomizer) (*andr
 	ctx.RegisterModuleType("prebuilt_apex", PrebuiltFactory)
 	ctx.RegisterModuleType("override_apex", overrideApexFactory)
 
+	ctx.PreArchMutators(android.RegisterDefaultsPreArchMutators)
+	ctx.PostDepsMutators(android.RegisterOverridePostDepsMutators)
+
 	cc.RegisterRequiredBuildComponentsForTest(ctx)
 	ctx.RegisterModuleType("cc_binary", cc.BinaryFactory)
 	ctx.RegisterModuleType("cc_test", cc.TestFactory)
@@ -299,9 +302,7 @@ func testApexContext(t *testing.T, bp string, handlers ...testCustomizer) (*andr
 	java.RegisterAppBuildComponents(ctx)
 	ctx.RegisterModuleType("java_sdk_library", java.SdkLibraryFactory)
 
-	ctx.PreArchMutators(android.RegisterDefaultsPreArchMutators)
 	ctx.PreDepsMutators(RegisterPreDepsMutators)
-	ctx.PostDepsMutators(android.RegisterOverridePostDepsMutators)
 	ctx.PostDepsMutators(RegisterPostDepsMutators)
 
 	ctx.Register(config)
@@ -556,7 +557,7 @@ func TestDefaults(t *testing.T) {
 			system_modules: "none",
 		}
 	`)
-	ensureExactContents(t, ctx, "myapex", []string{
+	ensureExactContents(t, ctx, "myapex", "android_common_myapex_image", []string{
 		"etc/myetc",
 		"javalib/myjar.jar",
 		"lib64/mylib.so",
@@ -716,7 +717,7 @@ func TestApexWithStubs(t *testing.T) {
 	// Ensure that genstub is invoked with --apex
 	ensureContains(t, "--apex", ctx.ModuleForTests("mylib2", "android_arm64_armv8-a_static_3_myapex").Rule("genStubSrc").Args["flags"])
 
-	ensureExactContents(t, ctx, "myapex", []string{
+	ensureExactContents(t, ctx, "myapex", "android_common_myapex_image", []string{
 		"lib64/mylib.so",
 		"lib64/mylib3.so",
 		"lib64/mylib4.so",
@@ -1517,23 +1518,12 @@ func TestHeaderLibsDependency(t *testing.T) {
 	ensureContains(t, cFlags, "-Imy_include")
 }
 
-func ensureExactContents(t *testing.T, ctx *android.TestContext, moduleName string, files []string) {
+func parseCopyCommands(t *testing.T, ctx *android.TestContext, moduleName, variant string) map[string]string {
 	t.Helper()
-	apexRule := ctx.ModuleForTests(moduleName, "android_common_"+moduleName+"_image").Rule("apexRule")
+	apexRule := ctx.ModuleForTests(moduleName, variant).Rule("apexRule")
 	copyCmds := apexRule.Args["copy_commands"]
 	imageApexDir := "/image.apex/"
-	var failed bool
-	var surplus []string
-	filesMatched := make(map[string]bool)
-	addContent := func(content string) {
-		for _, expected := range files {
-			if matched, _ := path.Match(expected, content); matched {
-				filesMatched[expected] = true
-				return
-			}
-		}
-		surplus = append(surplus, content)
-	}
+	files := make(map[string]string)
 	for _, cmd := range strings.Split(copyCmds, "&&") {
 		cmd = strings.TrimSpace(cmd)
 		if cmd == "" {
@@ -1546,16 +1536,38 @@ func ensureExactContents(t *testing.T, ctx *android.TestContext, moduleName stri
 			if len(terms) != 3 {
 				t.Fatal("copyCmds contains invalid cp command", cmd)
 			}
+			src := terms[1]
 			dst := terms[2]
 			index := strings.Index(dst, imageApexDir)
 			if index == -1 {
 				t.Fatal("copyCmds should copy a file to image.apex/", cmd)
 			}
 			dstFile := dst[index+len(imageApexDir):]
-			addContent(dstFile)
+			files[dstFile] = src
 		default:
 			t.Fatalf("copyCmds should contain mkdir/cp commands only: %q", cmd)
 		}
+	}
+	return files
+}
+
+func ensureExactContents(t *testing.T, ctx *android.TestContext, moduleName, variant string, files []string) {
+	t.Helper()
+
+	var failed bool
+	var surplus []string
+	filesMatched := make(map[string]bool)
+	addContent := func(content string) {
+		for _, expected := range files {
+			if matched, _ := path.Match(expected, content); matched {
+				filesMatched[expected] = true
+				return
+			}
+		}
+		surplus = append(surplus, content)
+	}
+	for file := range parseCopyCommands(t, ctx, moduleName, variant) {
+		addContent(file)
 	}
 
 	if len(surplus) > 0 {
@@ -1617,7 +1629,7 @@ func TestVndkApexCurrent(t *testing.T) {
 		}
 	`+vndkLibrariesTxtFiles("current"))
 
-	ensureExactContents(t, ctx, "myapex", []string{
+	ensureExactContents(t, ctx, "myapex", "android_common_image", []string{
 		"lib/libvndk.so",
 		"lib/libvndksp.so",
 		"lib64/libvndk.so",
@@ -1676,7 +1688,7 @@ func TestVndkApexWithPrebuilt(t *testing.T) {
 			"libvndk.arm.so": nil,
 		}))
 
-	ensureExactContents(t, ctx, "myapex", []string{
+	ensureExactContents(t, ctx, "myapex", "android_common_image", []string{
 		"lib/libvndk.so",
 		"lib/libvndk.arm.so",
 		"lib64/libvndk.so",
@@ -1766,7 +1778,7 @@ func TestVndkApexVersion(t *testing.T) {
 			"libvndk27_x86_64.so": nil,
 		}))
 
-	ensureExactContents(t, ctx, "myapex_v27", []string{
+	ensureExactContents(t, ctx, "myapex_v27", "android_common_image", []string{
 		"lib/libvndk27_arm.so",
 		"lib64/libvndk27_arm64.so",
 		"etc/*",
@@ -1839,7 +1851,7 @@ func TestVndkApexNameRule(t *testing.T) {
 		}`+vndkLibrariesTxtFiles("28", "current"))
 
 	assertApexName := func(expected, moduleName string) {
-		bundle := ctx.ModuleForTests(moduleName, "android_common_"+moduleName+"_image").Module().(*apexBundle)
+		bundle := ctx.ModuleForTests(moduleName, "android_common_image").Module().(*apexBundle)
 		actual := proptools.String(bundle.properties.Apex_name)
 		if !reflect.DeepEqual(actual, expected) {
 			t.Errorf("Got '%v', expected '%v'", actual, expected)
@@ -1886,7 +1898,7 @@ func TestVndkApexSkipsNativeBridgeSupportedModules(t *testing.T) {
 			},
 		}))
 
-	ensureExactContents(t, ctx, "myapex", []string{
+	ensureExactContents(t, ctx, "myapex", "android_common_image", []string{
 		"lib/libvndk.so",
 		"lib64/libvndk.so",
 		"etc/*",
@@ -1981,7 +1993,7 @@ func TestVndkApexWithBinder32(t *testing.T) {
 		}),
 	)
 
-	ensureExactContents(t, ctx, "myapex_v27", []string{
+	ensureExactContents(t, ctx, "myapex_v27", "android_common_image", []string{
 		"lib/libvndk27binder32.so",
 		"etc/*",
 	})
@@ -3283,7 +3295,7 @@ func TestJavaSDKLibrary(t *testing.T) {
 	}))
 
 	// java_sdk_library installs both impl jar and permission XML
-	ensureExactContents(t, ctx, "myapex", []string{
+	ensureExactContents(t, ctx, "myapex", "android_common_myapex_image", []string{
 		"javalib/foo.jar",
 		"etc/permissions/foo.xml",
 	})
