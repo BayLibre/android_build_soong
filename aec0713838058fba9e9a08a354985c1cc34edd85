@@ -45,6 +45,54 @@
       "revId": "aec0713838058fba9e9a08a354985c1cc34edd85",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "419a0356_1c0d98f9",
+        "filename": "build_kzip.bash",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-12-23T20:22:31Z",
+      "side": 1,
+      "message": "I am planning to do that, but not now.",
+      "parentUuid": "6277d366_45d2d844",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 9
+      },
+      "revId": "aec0713838058fba9e9a08a354985c1cc34edd85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5730b7c7_daafc273",
+        "filename": "build_kzip.bash",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2019-12-23T20:22:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef8067c1_f522fcdf",
+      "range": {
+        "startLine": 28,
+        "startChar": 11,
+        "endLine": 28,
+        "endChar": 12
+      },
+      "revId": "aec0713838058fba9e9a08a354985c1cc34edd85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
