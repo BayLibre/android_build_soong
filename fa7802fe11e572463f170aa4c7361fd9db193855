@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "630abb2e_a4804bb3",
+        "filename": "cc/snapshot_utils.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-12-23T13:36:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a451e57_f73f0373",
+      "revId": "fa7802fe11e572463f170aa4c7361fd9db193855",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eb1c16df_0347c422",
         "filename": "cc/snapshot_utils.go",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2019-12-13T20:34:36Z",
       "side": 1,
       "message": "It\u0027s possible to configure Soong to do builds with multiple targets that have the same ArchType but different ArchVariants.",
+      "revId": "fa7802fe11e572463f170aa4c7361fd9db193855",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a457f599_72a2e431",
+        "filename": "cc/snapshot_utils.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-12-23T13:36:51Z",
+      "side": 1,
+      "message": "I see. Then I\u0027d like to forbid from building multiple vendor snapshots at the same time. How can I prevent it?",
+      "parentUuid": "eb1c16df_0347c422",
       "revId": "fa7802fe11e572463f170aa4c7361fd9db193855",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -50,6 +86,24 @@
       "revId": "fa7802fe11e572463f170aa4c7361fd9db193855",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2da32ea_8ebecf3d",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-12-23T13:36:51Z",
+      "side": 1,
+      "message": "I\u0027ve found out that there are very few. Removed cts/ and added skipping modules with gtest() like cc_test.",
+      "parentUuid": "8447994f_d271d53a",
+      "revId": "fa7802fe11e572463f170aa4c7361fd9db193855",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "498066e1_c8c41cf9",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-12-23T13:36:51Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "c7394f05_fd0ad26c",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 19
+      },
+      "revId": "fa7802fe11e572463f170aa4c7361fd9db193855",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c250e719_5209aa99",
         "filename": "cc/vendor_snapshot.go",
         "patchSetId": 6
@@ -99,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "7e74e6b5_48e358f5",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-12-23T13:36:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c250e719_5209aa99",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 2
+      },
+      "revId": "fa7802fe11e572463f170aa4c7361fd9db193855",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b7215b47_82c8dc95",
         "filename": "cc/vendor_snapshot.go",
         "patchSetId": 6
@@ -116,6 +218,24 @@
     },
     {
       "key": {
+        "uuid": "c0190a08_93659194",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-12-23T13:36:51Z",
+      "side": 1,
+      "message": "Yes I can. Removed targetArchMap",
+      "parentUuid": "b7215b47_82c8dc95",
+      "revId": "fa7802fe11e572463f170aa4c7361fd9db193855",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a415f09e_a92e296c",
         "filename": "cc/vendor_snapshot.go",
         "patchSetId": 6
@@ -130,6 +250,24 @@
       "revId": "fa7802fe11e572463f170aa4c7361fd9db193855",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6894cb42_692241ce",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2019-12-23T13:36:51Z",
+      "side": 1,
+      "message": "Yes. Fixed to m.Target().Os.Class !\u003d android.Device",
+      "parentUuid": "a415f09e_a92e296c",
+      "revId": "fa7802fe11e572463f170aa4c7361fd9db193855",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
