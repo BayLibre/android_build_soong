@@ -67,7 +67,6 @@ func init() {
 	android.RegisterModuleType("prebuilt_apex", PrebuiltFactory)
 	android.RegisterModuleType("override_apex", overrideApexFactory)
 
-	android.PreDepsMutators(RegisterPreDepsMutators)
 	android.PostDepsMutators(RegisterPostDepsMutators)
 
 	android.RegisterMakeVarsProvider(pctx, func(ctx android.MakeVarsContext) {
@@ -77,14 +76,15 @@ func init() {
 	})
 }
 
-func RegisterPreDepsMutators(ctx android.RegisterMutatorsContext) {
-	ctx.TopDown("apex_vndk", apexVndkMutator).Parallel()
-	ctx.BottomUp("apex_vndk_deps", apexVndkDepsMutator).Parallel()
-}
-
 func RegisterPostDepsMutators(ctx android.RegisterMutatorsContext) {
 	ctx.BottomUp("apex_deps", apexDepsMutator)
 	ctx.BottomUp("apex", apexMutator).Parallel()
+
+	// these two mutators run after "apex" mutator to avoid apex variants of vndk libraries.
+	// vndk apex is supposed to have vendor variants of vndk libraries.
+	ctx.TopDown("apex_vndk", apexVndkMutator).Parallel()
+	ctx.BottomUp("apex_vndk_deps", apexVndkDepsMutator).Parallel()
+
 	ctx.BottomUp("apex_flattened", apexFlattenedMutator).Parallel()
 	ctx.BottomUp("apex_uses", apexUsesMutator).Parallel()
 }
