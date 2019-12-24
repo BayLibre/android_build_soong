@@ -22,6 +22,30 @@
       "revId": "4791cb507b8d695be08f290f0cb9ba86731f168e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84189693_a156b44b",
+        "filename": "apex/vndk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2019-12-24T06:16:27Z",
+      "side": 1,
+      "message": "Yes. Symlinks are attached to all \"com.android.art.*\" apexes. E.g. \"com.android.art.debug\" or \"com.android.art.release\" ..\nWhen both \".debug\" and \".release\" are installed at the same time, then same symlink commands will be executed twice.\n\nIf we want symlinks as system-wide singleton, we\u0027d better attach these commands to something else, which is also a singleton.",
+      "parentUuid": "1f21f020_f75cf6f6",
+      "range": {
+        "startLine": 141,
+        "startChar": 48,
+        "endLine": 141,
+        "endChar": 49
+      },
+      "revId": "4791cb507b8d695be08f290f0cb9ba86731f168e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
