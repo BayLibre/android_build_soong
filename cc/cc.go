@@ -2104,9 +2104,10 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 					// If not building for APEX, use stubs only when it is from
 					// an APEX (and not from platform)
 					useThisDep = (depInPlatform != depIsStubs)
-					if c.InRecovery() || c.bootstrap() {
-						// However, for recovery or bootstrap modules,
-						// always link to non-stub variant
+					if c.InRecovery() || c.bootstrap() || c.UseVndk() {
+						// However, for recovery, bootstrap, or vendor  modules,
+						// always link to non-stub variant because the dependency
+						// to the stub variant doesn't exist for them
 						useThisDep = !depIsStubs
 					}
 				} else {
