@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f21f020_f75cf6f6",
+        "filename": "apex/vndk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2019-12-24T06:03:00Z",
+      "side": 1,
+      "message": "QQ. Does this mean there are more than one APEX which named with com.android.art.something? Will these symlinks be generated more than once then? (Multiple creation with same information would not be a matter though.)",
+      "range": {
+        "startLine": 141,
+        "startChar": 48,
+        "endLine": 141,
+        "endChar": 49
+      },
+      "revId": "4791cb507b8d695be08f290f0cb9ba86731f168e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
