@@ -46,6 +46,30 @@
       "revId": "4791cb507b8d695be08f290f0cb9ba86731f168e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08d1328f_4e0376eb",
+        "filename": "apex/vndk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2019-12-24T06:21:48Z",
+      "side": 1,
+      "message": "Thanks for your answer. I just wanted to be sure about this.\nAs I mentioned before, as this task is just creating symlink so I guess we don\u0027t need to spend more energy to make this as singleton for now. Let\u0027s revisit this once we find any issues on this.",
+      "parentUuid": "84189693_a156b44b",
+      "range": {
+        "startLine": 141,
+        "startChar": 48,
+        "endLine": 141,
+        "endChar": 49
+      },
+      "revId": "4791cb507b8d695be08f290f0cb9ba86731f168e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
