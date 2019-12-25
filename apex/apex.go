@@ -86,7 +86,8 @@ var (
 		Command: `${zip2zip} -i $in -o $out ` +
 			`apex_payload.img:apex/${abi}.img ` +
 			`apex_manifest.json:root/apex_manifest.json ` +
-			`AndroidManifest.xml:manifest/AndroidManifest.xml`,
+			`AndroidManifest.xml:manifest/AndroidManifest.xml ` +
+			`assets/NOTICE.html.gz:assets/NOTICE.html.gz`,
 		CommandDeps: []string{"${zip2zip}"},
 		Description: "app bundle",
 	}, "abi")
@@ -510,6 +511,17 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 					a.properties.Multilib.Prefer32.Native_shared_libs,
 					a.properties.Multilib.Prefer32.Binaries, target.String(),
 					a.getImageVariation(config))
+			}
+
+			if strings.HasPrefix(ctx.ModuleName(), "com.android.runtime") && target.Os.Class == android.Device {
+				for _, sanitizer := range ctx.Config().SanitizeDevice() {
+					if sanitizer == "hwaddress" {
+						addDependenciesForNativeModules(ctx,
+							[]string{"libclang_rt.hwasan-aarch64-android"},
+							nil, target.String(), a.getImageVariation(config))
+						break
+					}
+				}
 			}
 		}
 
@@ -1335,6 +1347,13 @@ func (p *Prebuilt) DepsMutator(ctx android.BottomUpMutatorContext) {
 	// to build the prebuilts themselves.
 	forceDisable = forceDisable || ctx.Config().UnbundledBuild()
 
+<<<<<<< HEAD   (8fa121 Merge cherrypicks of [8673593, 8673409, 8673796, 8673797, 86)
+=======
+	// Force disable the prebuilts when coverage is enabled.
+	forceDisable = forceDisable || ctx.DeviceConfig().NativeCoverageEnabled()
+	forceDisable = forceDisable || ctx.Config().IsEnvTrue("EMMA_INSTRUMENT")
+
+>>>>>>> BRANCH (bc0c62 Snap for 5860054 from 7520071f4098eb8ffa73b278779a7b0018dc5e)
 	// b/137216042 don't use prebuilts when address sanitizer is on
 	forceDisable = forceDisable || android.InList("address", ctx.Config().SanitizeDevice()) ||
 		android.InList("hwaddress", ctx.Config().SanitizeDevice())
