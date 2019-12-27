@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7951ec5a_762428f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 27
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1348646
+      },
+      "writtenOn": "2019-12-27T09:58:53Z",
+      "side": 1,
+      "message": "is generated. \n2). In",
+      "range": {
+        "startLine": 18,
+        "startChar": 44,
+        "endLine": 18,
+        "endChar": 46
+      },
+      "revId": "f8db70e37553f7c9bd459ff74ccbfbef64470b9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbd1b915_11a8fdcd",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1348646
+      },
+      "writtenOn": "2019-12-27T09:58:53Z",
+      "side": 1,
+      "message": "what\u0027s the usage of this method?",
+      "range": {
+        "startLine": 116,
+        "startChar": 5,
+        "endLine": 116,
+        "endChar": 24
+      },
+      "revId": "f8db70e37553f7c9bd459ff74ccbfbef64470b9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
