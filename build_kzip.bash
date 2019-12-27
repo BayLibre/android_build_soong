@@ -15,7 +15,7 @@
 
 # The extraction might fail for some source files, so run with -k and then check that
 # sufficiently many files were generated.
-declare -r out="${OUT_DIR:-out}"
+declare -r out=$(realpath "${OUT_DIR:-out}")
 # Build extraction files for C++ and Java. Build `merge_zips` which we use later.
 build/soong/soong_ui.bash --build-mode --all-modules --dir=$PWD -k merge_zips xref_cxx xref_java
 #Build extraction file for Go files in build/soong directory.
