@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "350871ea_d9cc55b5",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1027,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2019-12-27T19:00:46Z",
+      "side": 1,
+      "message": "android.OutputFileForModule will do the error checking for you.",
+      "revId": "624058e6a5ec2490ce531fefa6579ca809214bd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
