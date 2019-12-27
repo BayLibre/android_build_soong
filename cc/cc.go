@@ -49,6 +49,7 @@ func RegisterCCBuildComponents(ctx android.RegistrationContext) {
 		ctx.BottomUp("version", VersionMutator).Parallel()
 		ctx.BottomUp("begin", BeginMutator).Parallel()
 		ctx.BottomUp("sysprop_cc", SyspropMutator).Parallel()
+		ctx.BottomUp("vendor_snapshot", VendorSnapshotMutator).Parallel()
 	})
 
 	ctx.PostDepsMutators(func(ctx android.RegisterMutatorsContext) {
@@ -908,8 +909,16 @@ func (c *Module) nativeCoverage() bool {
 }
 
 func (c *Module) isSnapshotPrebuilt() bool {
-	_, ok := c.linker.(*vndkPrebuiltLibraryDecorator)
-	return ok
+	if _, ok := c.linker.(*vndkPrebuiltLibraryDecorator); ok {
+		return true
+	}
+	if _, ok := c.linker.(*vendorSnapshotLibraryDecorator); ok {
+		return true
+	}
+	if _, ok := c.linker.(*vendorSnapshotBinaryDecorator); ok {
+		return true
+	}
+	return false
 }
 
 func (c *Module) ExportedIncludeDirs() android.Paths {
@@ -1600,6 +1609,7 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 
 	variantNdkLibs := []string{}
 	variantLateNdkLibs := []string{}
+
 	if ctx.Os() == android.Android {
 		version := ctx.sdkVersion()
 
@@ -1619,6 +1629,30 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 		// nonvariantLibs
 
 		vendorPublicLibraries := vendorPublicLibraries(actx.Config())
+		vndkSnapshots := vndkSnapshots(actx.Config())
+		vendorSnapshotSharedLibs := vendorSnapshotSharedLibs(actx.Config())
+
+		rewriteVendorLibs := func(lib string) string {
+			if isLlndkLibrary(lib, ctx.Config()) {
+				return lib + llndkLibrarySuffix
+			}
+
+			// only modules with BOARD_VNDK_VERSION uses snapshot.
+			if c.VndkVersion() != actx.DeviceConfig().VndkVersion() {
+				return lib
+			}
+
+			if snapshot, ok := vndkSnapshots[lib]; ok {
+				return snapshot
+			}
+
+			if snapshot, ok := vendorSnapshotSharedLibs[lib]; ok {
+				return snapshot
+			}
+
+			return lib
+		}
+
 		rewriteNdkLibs := func(list []string) (nonvariantLibs []string, variantLibs []string) {
 			variantLibs = []string{}
 			nonvariantLibs = []string{}
@@ -1631,8 +1665,8 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 					} else {
 						variantLibs = append(variantLibs, name+ndkLibrarySuffix)
 					}
-				} else if ctx.useVndk() && isLlndkLibrary(name, ctx.Config()) {
-					nonvariantLibs = append(nonvariantLibs, name+llndkLibrarySuffix)
+				} else if ctx.useVndk() {
+					nonvariantLibs = append(nonvariantLibs, rewriteVendorLibs(entry))
 				} else if (ctx.Platform() || ctx.ProductSpecific()) && inList(name, *vendorPublicLibraries) {
 					vendorPublicLib := name + vendorPublicLibrarySuffix
 					if actx.OtherModuleExists(vendorPublicLib) {
@@ -1665,11 +1699,28 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 		}
 	}
 
+	rewriteSnapshotLibs := func(lib string, snapshotMap map[string]string) string {
+		// only modules with BOARD_VNDK_VERSION uses snapshot.
+		if c.VndkVersion() != actx.DeviceConfig().VndkVersion() {
+			return lib
+		}
+
+		if snapshot, ok := snapshotMap[lib]; ok {
+			return snapshot
+		}
+
+		return lib
+	}
+
+	vendorSnapshotHeaderLibs := vendorSnapshotHeaderLibs(actx.Config())
 	for _, lib := range deps.HeaderLibs {
 		depTag := headerDepTag
 		if inList(lib, deps.ReexportHeaderLibHeaders) {
 			depTag = headerExportDepTag
 		}
+
+		lib = rewriteSnapshotLibs(lib, vendorSnapshotHeaderLibs)
+
 		if buildStubs {
 			actx.AddFarVariationDependencies(append(ctx.Target().Variations(), c.ImageVariation()),
 				depTag, lib)
@@ -1685,12 +1736,16 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 	}
 
 	syspropImplLibraries := syspropImplLibraries(actx.Config())
+	vendorSnapshotStaticLibs := vendorSnapshotStaticLibs(actx.Config())
 
 	for _, lib := range deps.WholeStaticLibs {
 		depTag := wholeStaticDepTag
 		if impl, ok := syspropImplLibraries[lib]; ok {
 			lib = impl
 		}
+
+		lib = rewriteSnapshotLibs(lib, vendorSnapshotStaticLibs)
+
 		actx.AddVariationDependencies([]blueprint.Variation{
 			{Mutator: "link", Variation: "static"},
 		}, depTag, lib)
@@ -1706,14 +1761,18 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 			lib = impl
 		}
 
+		lib = rewriteSnapshotLibs(lib, vendorSnapshotStaticLibs)
+
 		actx.AddVariationDependencies([]blueprint.Variation{
 			{Mutator: "link", Variation: "static"},
 		}, depTag, lib)
 	}
 
-	actx.AddVariationDependencies([]blueprint.Variation{
-		{Mutator: "link", Variation: "static"},
-	}, lateStaticDepTag, deps.LateStaticLibs...)
+	for _, lib := range deps.LateStaticLibs {
+		actx.AddVariationDependencies([]blueprint.Variation{
+			{Mutator: "link", Variation: "static"},
+		}, lateStaticDepTag, rewriteSnapshotLibs(lib, vendorSnapshotStaticLibs))
+	}
 
 	addSharedLibDependencies := func(depTag DependencyTag, name string, version string) {
 		var variations []blueprint.Variation
@@ -2253,6 +2312,8 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			*depPtr = append(*depPtr, dep.Path())
 		}
 
+		vendorSuffixModules := vendorSuffixModules(ctx.Config())
+
 		makeLibName := func(depName string) string {
 			libName := strings.TrimSuffix(depName, llndkLibrarySuffix)
 			libName = strings.TrimSuffix(libName, vendorPublicLibrarySuffix)
@@ -2260,6 +2321,28 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 			isLLndk := isLlndkLibrary(libName, ctx.Config())
 			isVendorPublicLib := inList(libName, *vendorPublicLibraries)
 			bothVendorAndCoreVariantsExist := ccDep.HasVendorVariant() || isLLndk
+
+			if len(ctx.DeviceConfig().Arches()) > 0 {
+				// Trim prefix for vendor snapshots when exporting to Makefile.
+				deviceArch := ctx.DeviceConfig().Arches()[0].ArchType.String()
+				vendorSnapshotSuffix := ctx.DeviceConfig().VndkVersion() + "." + deviceArch
+
+				snapshotName := ""
+
+				for _, moduleSuffix := range []string{
+					vendorSnapshotHeaderSuffix,
+					vendorSnapshotSharedSuffix,
+					vendorSnapshotStaticSuffix,
+					vendorSnapshotBinarySuffix,
+				} {
+					if strings.HasSuffix(libName, moduleSuffix+vendorSnapshotSuffix) {
+						snapshotName = strings.TrimSuffix(libName, moduleSuffix+vendorSnapshotSuffix)
+						if vendorSuffixModules[snapshotName] {
+							return snapshotName + ".vendor"
+						}
+					}
+				}
+			}
 
 			if ctx.DeviceConfig().VndkUseCoreVariant() && ccDep.IsVndk() && !ccDep.MustUseVendorVariant() && !c.InRecovery() {
 				// The vendor module is a no-vendor-variant VNDK library.  Depend on the
@@ -2649,10 +2732,12 @@ func (m *Module) ImageMutatorBegin(mctx android.BaseModuleContext) {
 			platformVndkVersion,
 			productVndkVersion,
 		)
-	} else if lib, ok := m.linker.(*vndkPrebuiltLibraryDecorator); ok {
+	} else if m.isSnapshotPrebuilt() {
 		// Make vendor variants only for the versions in BOARD_VNDK_VERSION and
 		// PRODUCT_EXTRA_VNDK_VERSIONS.
-		vendorVariants = append(vendorVariants, lib.version())
+		vendorVariants = append(vendorVariants, m.linker.(interface {
+			version() string
+		}).version())
 	} else if m.HasVendorVariant() && !vendorSpecific {
 		// This will be available in /system, /vendor and /product
 		// or a /system directory that is available to vendor and product.
@@ -2733,6 +2818,12 @@ func (c *Module) SetImageVariation(ctx android.BaseModuleContext, variant string
 		m.Properties.ImageVariationPrefix = VendorVariationPrefix
 		m.Properties.VndkVersion = strings.TrimPrefix(variant, VendorVariationPrefix)
 		squashVendorSrcs(m)
+
+		vndkVersion := ctx.DeviceConfig().VndkVersion()
+		if vndkVersion != "current" && vndkVersion != "" && vndkVersion != m.Properties.VndkVersion {
+			m.Properties.HideFromMake = true
+			m.SkipInstall()
+		}
 	} else if strings.HasPrefix(variant, ProductVariationPrefix) {
 		m.Properties.ImageVariationPrefix = ProductVariationPrefix
 		m.Properties.VndkVersion = strings.TrimPrefix(variant, ProductVariationPrefix)
