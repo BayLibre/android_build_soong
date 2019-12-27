@@ -174,6 +174,19 @@ func generateCompdbProject(compiledModule CompiledInterface, ctx android.Singlet
 		return
 	}
 
+	// prefer target(Android) variant
+	if ccModule.Host() {
+		var hasAndroidVariant bool
+		ctx.VisitAllModuleVariants(ccModule, func(m android.Module) {
+			if m.(*Module).Os() == android.Android {
+				hasAndroidVariant = true
+			}
+		})
+		if hasAndroidVariant {
+			return
+		}
+	}
+
 	rootDir := getCompdbAndroidSrcRootDirectory(ctx)
 	pathToCC, err := ctx.Eval(pctx, rootDir+"/${config.ClangBin}/")
 	ccPath := "/bin/false"
