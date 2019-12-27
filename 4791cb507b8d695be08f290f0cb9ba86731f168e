@@ -94,6 +94,30 @@
       "revId": "4791cb507b8d695be08f290f0cb9ba86731f168e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76082413_f11f6fe8",
+        "filename": "apex/vndk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-12-27T00:06:40Z",
+      "side": 1,
+      "message": "Oh, it still points to the same place. I guess that isn\u0027t as bad. Once that support comes in we can worry about de-duping them.",
+      "parentUuid": "c8837a96_f1ea87fa",
+      "range": {
+        "startLine": 141,
+        "startChar": 48,
+        "endLine": 141,
+        "endChar": 49
+      },
+      "revId": "4791cb507b8d695be08f290f0cb9ba86731f168e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
