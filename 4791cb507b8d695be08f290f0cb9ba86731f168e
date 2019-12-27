@@ -70,6 +70,30 @@
       "revId": "4791cb507b8d695be08f290f0cb9ba86731f168e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8837a96_f1ea87fa",
+        "filename": "apex/vndk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-12-27T00:03:28Z",
+      "side": 1,
+      "message": "This means that it\u0027s undefined what $(TARGET_OUT)/bin/dex2oat points to -- when I finally get around to adding symlink support into the ninja graph, this would be an error.",
+      "parentUuid": "08d1328f_4e0376eb",
+      "range": {
+        "startLine": 141,
+        "startChar": 48,
+        "endLine": 141,
+        "endChar": 49
+      },
+      "revId": "4791cb507b8d695be08f290f0cb9ba86731f168e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
