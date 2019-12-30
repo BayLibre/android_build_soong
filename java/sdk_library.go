@@ -703,11 +703,6 @@ func (module *SdkLibrary) CreateInternalModules(mctx android.LoadHookContext) {
 		return
 	}
 
-	if len(module.sdkLibraryProperties.Api_packages) == 0 {
-		mctx.PropertyErrorf("api_packages", "java_sdk_library must specify api_packages")
-		return
-	}
-
 	missing_current_api := false
 
 	for _, scope := range []string{"", "system-", "test-"} {
