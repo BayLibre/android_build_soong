@@ -445,7 +445,13 @@ func (txt *vndkLibrariesTxt) GenerateAndroidBuildActions(ctx android.ModuleConte
 		return
 	}
 
-	filename := insertVndkVersion(txt.Name(), ctx.DeviceConfig().PlatformVndkVersion())
+	var filename string
+	if txt.Name() != vndkUsingCoreVariantLibrariesTxt {
+		filename = insertVndkVersion(txt.Name(), ctx.DeviceConfig().PlatformVndkVersion())
+	} else {
+		filename = txt.Name()
+	}
+
 	txt.outputFile = android.PathForModuleOut(ctx, filename).OutputPath
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        android.WriteFile,

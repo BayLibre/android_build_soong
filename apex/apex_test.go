@@ -1626,7 +1626,7 @@ func TestVndkApexCurrent(t *testing.T) {
 		"etc/vndkcore.libraries.VER.txt",
 		"etc/vndksp.libraries.VER.txt",
 		"etc/vndkprivate.libraries.VER.txt",
-		"etc/vndkcorevariant.libraries.VER.txt",
+		"etc/vndkcorevariant.libraries.txt",
 	})
 }
 
