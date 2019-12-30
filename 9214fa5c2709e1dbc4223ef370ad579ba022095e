@@ -22,6 +22,30 @@
       "revId": "9214fa5c2709e1dbc4223ef370ad579ba022095e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e564194c_09b7fa8c",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1629,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2019-12-30T05:43:34Z",
+      "side": 1,
+      "message": "I removed it from VNDK APEX list",
+      "parentUuid": "d20b6413_0e336439",
+      "range": {
+        "startLine": 1629,
+        "startChar": 0,
+        "endLine": 1629,
+        "endChar": 38
+      },
+      "revId": "9214fa5c2709e1dbc4223ef370ad579ba022095e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
