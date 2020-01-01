@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2760531e_213ced3a",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-01T07:43:58Z",
+      "side": 1,
+      "message": "this looks odd to me. system_modules and sdk_version aren\u0027t compatible, are they?",
+      "range": {
+        "startLine": 522,
+        "startChar": 1,
+        "endLine": 522,
+        "endChar": 71
+      },
+      "revId": "6fafc0e248e18fb2f7b35590c2a81e19352167b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
