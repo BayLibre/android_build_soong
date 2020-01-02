@@ -22,6 +22,30 @@
       "revId": "53461e98a65c27fb8ff9b0b5e910af1123f71934",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbda0006_40ed3ca7",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-01-02T15:22:54Z",
+      "side": 1,
+      "message": "getApiDir() is called from a couple of places so rather than duplicate the default value in each of those places I replaced the body of getApiDir() with the suggested code.",
+      "parentUuid": "7f3c52fa_42e96c3c",
+      "range": {
+        "startLine": 587,
+        "startChar": 11,
+        "endLine": 587,
+        "endChar": 29
+      },
+      "revId": "53461e98a65c27fb8ff9b0b5e910af1123f71934",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
