@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f60f2ea_3578d39f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-01-02T05:17:00Z",
+      "side": 1,
+      "message": "Why is this optimization limited to transitive dependencies?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "66ed3670780c78395874df7cf49c44a9f01043c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2c6b4d6_a863f91a",
+        "filename": "apex/builder.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-01-02T05:17:00Z",
+      "side": 1,
+      "message": "nit, but I think that sym-linked target modules should be listed as external deps also so that they can be tracked as required modules of the apex.",
+      "range": {
+        "startLine": 255,
+        "startChar": 29,
+        "endLine": 255,
+        "endChar": 42
+      },
+      "revId": "66ed3670780c78395874df7cf49c44a9f01043c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
