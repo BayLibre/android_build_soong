@@ -16,6 +16,24 @@
       "revId": "124d6310d118ccb2a25777dad6bf314d85b739a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a864571e_878a7399",
+        "filename": "cc/cc.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 2350,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-02T00:42:14Z",
+      "side": 1,
+      "message": "(I am not sure I understand this request right) depsInLinkOrder includes both static and shared deps, while allStaticDeps is for static deps only. Furthermore, depsInLinkOrder is a list of paths but allStaticDeps is a list of module names. We might be able to have a generic structure (by introducing a new struct having path, module name and link type) to merge depsInLinkOrder and allStaticDeps, but I am not sure that\u0027s worth; orderStaticModuleDeps will be quite complicated then.",
+      "parentUuid": "e69f55f1_cdc5b845",
+      "revId": "124d6310d118ccb2a25777dad6bf314d85b739a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
