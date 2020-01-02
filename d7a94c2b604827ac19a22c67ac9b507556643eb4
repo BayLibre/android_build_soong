@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60d9e4dc_61a243bc",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1656,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-02T04:11:49Z",
+      "side": 1,
+      "message": "this no longer rewrites NDK libs only. How about remaining?",
+      "range": {
+        "startLine": 1656,
+        "startChar": 2,
+        "endLine": 1656,
+        "endChar": 16
+      },
+      "revId": "d7a94c2b604827ac19a22c67ac9b507556643eb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef204971_3eabf31d",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2826,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-02T04:11:49Z",
+      "side": 1,
+      "message": "In this case, we don\u0027t need the vendor variation at all, right? Why did you just hide it here instead of touching c.Properties.ExtraVariants?",
+      "range": {
+        "startLine": 2821,
+        "startChar": 0,
+        "endLine": 2826,
+        "endChar": 3
+      },
+      "revId": "d7a94c2b604827ac19a22c67ac9b507556643eb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e3e45cb_63c689b6",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-02T04:11:49Z",
+      "side": 1,
+      "message": "why isn\u0027t this disabled?",
+      "range": {
+        "startLine": 740,
+        "startChar": 0,
+        "endLine": 742,
+        "endChar": 19
+      },
+      "revId": "d7a94c2b604827ac19a22c67ac9b507556643eb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
