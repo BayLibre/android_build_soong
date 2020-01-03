@@ -16,6 +16,24 @@
       "revId": "097bd17332928f40de1a121e722ff2f8d81c7319",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e6a984c_b55b0f8a",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-01-03T23:37:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8be7234_0ad211c2",
+      "revId": "097bd17332928f40de1a121e722ff2f8d81c7319",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
