@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33336f06_21151514",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-03T21:30:31Z",
+      "side": 1,
+      "message": "filesInfo shouldn\u0027t be storing the module pointer, collect module.TargetRequiredModuleNames(), etc. into filesInfo.",
+      "revId": "360cf2621d045d0c99871c8fa3b6d1cf56ef56e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
