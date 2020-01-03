@@ -87,9 +87,15 @@ func runNinja(ctx Context, config Config) {
 
 	// Filter the environment, as ninja does not rebuild files when environment variables change.
 	//
+	// Anything listed here must not change the output of rules/actions when the value changes,
+	// otherwise incremental builds may be unsafe. Vars explicitly set to stable values
+	// elsewhere in soong_ui are fine.
+	//
 	// For the majority of cases, either Soong or the makefiles should be replicating any
 	// necessary environment variables in the command line of each action that needs it.
-	if cmd.Environment.IsFalse("ALLOW_NINJA_ENV") {
+	if cmd.Environment.IsEnvTrue("ALLOW_NINJA_ENV") {
+		ctx.Println("Allowing all environment variables during ninja; incremental builds may be unsafe.")
+	} else {
 		cmd.Environment.Allow(append([]string{
 			"ASAN_SYMBOLIZER_PATH",
 			"HOME",
