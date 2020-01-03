@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46595846_7ea1058d",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1172,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-03T19:52:51Z",
+      "side": 1,
+      "message": "EMMA_INSTRUMENT?  EMMA_INSTRUMENT_FRAMEWORK is a sub-option that turns on instrumentation of the framework, but IIRC all apps will be instrumented with just EMMA_INSTRUMENT\u003dtrue.",
+      "range": {
+        "startLine": 1172,
+        "startChar": 21,
+        "endLine": 1172,
+        "endChar": 46
+      },
+      "revId": "b8095f555e034a500ddc384670e4d6d158f8a751",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9583c28_bec81937",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-03T19:52:51Z",
+      "side": 1,
+      "message": "I think this also needs to check !EMMA_INSTRUMENT_STATIC, if that is set then jacocoagent is statically linked into each jar or app that has instrumentation enabled.",
+      "revId": "b8095f555e034a500ddc384670e4d6d158f8a751",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
