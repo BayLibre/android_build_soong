@@ -57,7 +57,8 @@ func runNinja(ctx Context, config Config) {
 
 	args = append(args,
 		"-w", "dupbuild=err",
-		"-w", "missingdepfile=err")
+		"-w", "missingdepfile=err",
+		"-w", "outputdir=err")
 
 	cmd := Command(ctx, config, "ninja", executable, args...)
 	cmd.Sandbox = ninjaSandbox

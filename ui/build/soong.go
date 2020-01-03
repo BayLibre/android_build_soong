@@ -116,6 +116,8 @@ func runSoong(ctx Context, config Config) {
 			config.PrebuiltBuildTool("ninja"),
 			"-d", "keepdepfile",
 			"-w", "dupbuild=err",
+			"-w", "missingdepfile=err",
+			"-w", "outputdir=err",
 			"-j", strconv.Itoa(config.Parallel()),
 			"--frontend_file", fifo,
 			"-f", filepath.Join(config.SoongOutDir(), file))
