@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8be7234_0ad211c2",
+        "filename": "ui/build/ninja.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-03T22:40:42Z",
+      "side": 1,
+      "message": "Maybe comment that anything listed here should not change the results of any rules?",
+      "revId": "097bd17332928f40de1a121e722ff2f8d81c7319",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
