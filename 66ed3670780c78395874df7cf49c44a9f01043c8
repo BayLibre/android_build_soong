@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4a407480_84629cce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-03T01:00:07Z",
+      "side": 1,
+      "message": "In many cases, direct dependencies only exist in the APEX, not in the system partition. Moving them back to system and place symlinks inside the APEX gives no benefit to us.",
+      "parentUuid": "9f60f2ea_3578d39f",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "66ed3670780c78395874df7cf49c44a9f01043c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2c6b4d6_a863f91a",
         "filename": "apex/builder.go",
         "patchSetId": 14
@@ -36,6 +60,30 @@
       "writtenOn": "2020-01-02T05:17:00Z",
       "side": 1,
       "message": "nit, but I think that sym-linked target modules should be listed as external deps also so that they can be tracked as required modules of the apex.",
+      "range": {
+        "startLine": 255,
+        "startChar": 29,
+        "endLine": 255,
+        "endChar": 42
+      },
+      "revId": "66ed3670780c78395874df7cf49c44a9f01043c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3357f7b_b58633cb",
+        "filename": "apex/builder.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-03T01:00:07Z",
+      "side": 1,
+      "message": "I think that part is done in https://android-review.googlesource.com/c/platform/build/soong/+/1172005/14/apex/androidmk.go#77",
+      "parentUuid": "a2c6b4d6_a863f91a",
       "range": {
         "startLine": 255,
         "startChar": 29,
