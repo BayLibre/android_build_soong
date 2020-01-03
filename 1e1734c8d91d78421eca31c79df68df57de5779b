@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "beb46e78_22d30ea6",
+        "filename": "android/vendor_vars_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1156808
+      },
+      "writtenOn": "2020-01-03T09:23:09Z",
+      "side": 1,
+      "message": "Stray tab",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 1
+      },
+      "revId": "1e1734c8d91d78421eca31c79df68df57de5779b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
