@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18effb09_1b00eaab",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1174,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-01-03T22:25:43Z",
+      "side": 1,
+      "message": "These don\u0027t export proper dependencies to re-run soong when the outputs would change",
+      "range": {
+        "startLine": 1160,
+        "startChar": 0,
+        "endLine": 1174,
+        "endChar": 1
+      },
+      "revId": "530bcee8cbe61c6727253facf6e94b107005d12c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
