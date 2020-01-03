@@ -692,6 +692,12 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 	ctx.AddFarVariationDependencies(ctx.Config().AndroidCommonTarget.Variations(),
 		javaLibTag, a.properties.Java_libs...)
 
+	// In coverage builds ART boot image includes jacoco library.
+	if a.artApex && ctx.Config().IsCoverageBuild() {
+		ctx.AddFarVariationDependencies(ctx.Config().AndroidCommonTarget.Variations(),
+			javaLibTag, "jacocoagent")
+	}
+
 	if String(a.properties.Key) == "" {
 		ctx.ModuleErrorf("key is missing")
 		return

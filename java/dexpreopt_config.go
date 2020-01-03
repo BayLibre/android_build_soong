@@ -135,6 +135,9 @@ func genBootImageConfigs(ctx android.PathContext) map[string]*bootImageConfig {
 		deviceDir := android.PathForOutput(ctx, ctx.Config().DeviceName())
 
 		artModules := global.ArtApexJars
+		if ctx.Config().IsCoverageBuild() {
+			artModules = append(artModules, "jacocoagent")
+		}
 		frameworkModules := android.RemoveListFromList(global.BootJars,
 			concat(artModules, getJarsFromApexJarPairs(global.UpdatableBootJars)))
 

@@ -1168,6 +1168,10 @@ func (c *config) ProductHiddenAPIStubsTest() []string {
 	return c.productVariables.ProductHiddenAPIStubsTest
 }
 
+func (c *config) IsCoverageBuild() bool {
+	return c.IsEnvTrue("EMMA_INSTRUMENT_FRAMEWORK")
+}
+
 func (c *deviceConfig) TargetFSConfigGen() []string {
 	return c.config.productVariables.TargetFSConfigGen
 }
