@@ -81,6 +81,24 @@
       "revId": "b8095f555e034a500ddc384670e4d6d158f8a751",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "28283a18_6fcf89b7",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-06T18:22:17Z",
+      "side": 1,
+      "message": "EMMA_INSTRUMENT_STATIC\u003dtrue failing without this seems odd, with that flag jacocoagent should have been added as a static library to every jar that has instrumentation enabled, so it should be in the bootclasspath.  See https://cs.android.com/android/platform/superproject/+/master:build/soong/java/java.go;l\u003d654?q\u003dshouldinstrumentstatic",
+      "parentUuid": "5592e7b3_3534e3cf",
+      "revId": "b8095f555e034a500ddc384670e4d6d158f8a751",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
