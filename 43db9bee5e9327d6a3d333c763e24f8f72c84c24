@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0b2d09b_c6fc3dca",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-01-06T13:57:28Z",
+      "side": 1,
+      "message": "some more context here would be useful",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 47
+      },
+      "revId": "43db9bee5e9327d6a3d333c763e24f8f72c84c24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66ecde49_22e081e2",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-01-06T13:57:28Z",
+      "side": 1,
+      "message": "this documentation could be improved now that the scope of this rule is changing",
+      "range": {
+        "startLine": 811,
+        "startChar": 0,
+        "endLine": 816,
+        "endChar": 79
+      },
+      "revId": "43db9bee5e9327d6a3d333c763e24f8f72c84c24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
