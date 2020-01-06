@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "2a2a551b_5a597c38",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 14
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-01-06T02:07:10Z",
+      "side": 1,
+      "message": "\u003e In many cases, direct dependencies only exist in the APEX, \n\nThat\u0027s why I mentioned this. When reading code, ..\n\n    if a.linkToSystemLib \u0026\u0026 m.platformAvailable {\n      ... use m from system/lib\n    }\n\nis more natural to me than\n\n    if a.linkToSystemLib \u0026\u0026 m.transitiveDep \u0026\u0026 m.platformAvailable {\n      ... use m from system/lib\n    }\n\nAs you mentioned, in many cases, direct dependencies are filtered out with m.platformAvailable since they only exist in the APEX.\n\nHowever, applying symlinks to only transitive deps can be beneficial when someone wants to avoid symlinks (they can force not to use symlinks by listing deps as direct deps).",
+      "parentUuid": "4a407480_84629cce",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "66ed3670780c78395874df7cf49c44a9f01043c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a2c6b4d6_a863f91a",
         "filename": "apex/builder.go",
         "patchSetId": 14
@@ -93,6 +117,30 @@
       "revId": "66ed3670780c78395874df7cf49c44a9f01043c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5c26cd7_8bc66e94",
+        "filename": "apex/builder.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-01-06T02:07:10Z",
+      "side": 1,
+      "message": "Oh, right. I missed that.",
+      "parentUuid": "b3357f7b_b58633cb",
+      "range": {
+        "startLine": 255,
+        "startChar": 29,
+        "endLine": 255,
+        "endChar": 42
+      },
+      "revId": "66ed3670780c78395874df7cf49c44a9f01043c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
