@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "77be1cf4_5090e349",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2020-01-06T13:40:36Z",
+      "side": 1,
+      "message": "seems like this would work better like an enum that defaults to public,system,test",
+      "range": {
+        "startLine": 126,
+        "startChar": 36,
+        "endLine": 129,
+        "endChar": 52
+      },
+      "revId": "37e0b77e3b349c776b7a1970265e4c1f2dc00379",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
