@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b09103e0_d3b76bab",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1172,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-01-06T17:58:15Z",
+      "side": 1,
+      "message": "I think it should be EMMA_INSTRUMENT_FRAMEWORK, because this is what adds dependencies of the Core libraries on jacoco. With only EMMA_INSTRUMENT jacoco doesn\u0027t need to be included in the ART boot image (I actually tested this; see commit message).\n\nMy initial attempt to generalize to a helper function IsCoverageBuild() was misleading, I got rid of it (especially since other places in Soong test for EMMA_* environment variables directly).",
+      "parentUuid": "46595846_7ea1058d",
+      "range": {
+        "startLine": 1172,
+        "startChar": 21,
+        "endLine": 1172,
+        "endChar": 46
+      },
+      "revId": "b8095f555e034a500ddc384670e4d6d158f8a751",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9583c28_bec81937",
         "filename": "apex/apex.go",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "b8095f555e034a500ddc384670e4d6d158f8a751",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5592e7b3_3534e3cf",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-01-06T17:58:15Z",
+      "side": 1,
+      "message": "This dependency controls if jacocoagent.jar is added to the ART apex, and installed on device, which seems to be needed both with or without EMMA_INSTRUMENT_STATIC\u003dtrue.\n\nIf I omit this dependency in EMMA_INSTRUMENT_STATIC\u003dtrue builds, the phone fails to boot in the same way as in EMMA_INSTRUMENT_STATIC\u003dfalse builds: it fails to find DEX bytecode for jacoco methods when initializing bootclasspath classes (with or without EMMA_INSTRUMENT_STATIC\u003dtrue).\n\nI did test that EMMA_INSTRUMENT_STATIC\u003dtrue build boots with this CL (see commit message).",
+      "parentUuid": "a9583c28_bec81937",
+      "revId": "b8095f555e034a500ddc384670e4d6d158f8a751",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
