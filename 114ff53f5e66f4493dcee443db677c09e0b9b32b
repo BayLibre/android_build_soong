@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81dc1dce_b3d5af8f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-01-06T01:48:36Z",
+      "side": 1,
+      "message": "nit: It doesn\u0027t seem to work like this any more. (m \u003cname\u003e-deps-info generates .txt but not prints it.)",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 52
+      },
+      "revId": "114ff53f5e66f4493dcee443db677c09e0b9b32b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
