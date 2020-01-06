@@ -16,6 +16,24 @@
       "revId": "360cf2621d045d0c99871c8fa3b6d1cf56ef56e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab23cf8b_5a7053e6",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-06T01:42:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33336f06_21151514",
+      "revId": "360cf2621d045d0c99871c8fa3b6d1cf56ef56e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
