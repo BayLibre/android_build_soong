@@ -99,6 +99,24 @@
       "revId": "b8095f555e034a500ddc384670e4d6d158f8a751",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1da9fe8a_5702b8b7",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-01-07T14:15:14Z",
+      "side": 1,
+      "message": "I agree that this is strange. Taking a closer look at it:\n\n(1) EMMA_INSTRUMENT_FRAMEWORK is the environment variable that enables instrumentation of Core libraries (e.g. core-oj, which is the first to cause boot-time failures due to dependencies on jacoco): https://cs.android.com/android/platform/superproject/+/master:build/soong/java/java.go;l\u003d1459\n\n(2) However (1) happens too late, in compile(), after the addVariationDependencies() for jacoco that you pointed at in deps mutator: https://cs.android.com/android/platform/superproject/+/master:build/soong/java/java.go;l\u003d655?q\u003dshouldinstrumentstatic\n\nSo jacocoagent never gets added to the dependencies of libraries on the InstrumentFrameworkModules list. If I simply change that by moving (1) right before (2), jacocoagent gets added to multiple bootclasspath libraries, which causes multiple definitions of the same jacoco class \u0027Lcom/vladium/emma/rt/RT\u0027 in different DEX files:\n\n  FAILED: out/soong/hiddenapi/hiddenapi-stub-flags.txt\n  ...\n  Class duplication: Lcom/vladium/emma/rt/RT; in out/soong/.intermediates/external/icu/android_icu4j/core-icu4j/android_common/aligned/core-icu4j.jar and out/soong/.intermediates/external/conscrypt/conscrypt/android_common/aligned/conscrypt.jar\n\nI\u0027m not sure how this should be resolved: is this a sanity check that can be ignored in this particular case, or is this a fundamental problem and we should not attempt to add jacoco to multiple bootclasspath libraries?",
+      "parentUuid": "28283a18_6fcf89b7",
+      "revId": "b8095f555e034a500ddc384670e4d6d158f8a751",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
