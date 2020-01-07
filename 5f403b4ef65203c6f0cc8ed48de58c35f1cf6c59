@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "273dce39_4478a3a2",
+        "filename": "cc/stub_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-01-07T13:00:55Z",
+      "side": 1,
+      "message": "Unless this is used from other packages, we\u0027d better not expose this. (S -\u003e s)",
+      "range": {
+        "startLine": 36,
+        "startChar": 5,
+        "endLine": 36,
+        "endChar": 23
+      },
+      "revId": "5f403b4ef65203c6f0cc8ed48de58c35f1cf6c59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07bd9c10_0890d942",
+        "filename": "cc/stub_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-01-07T13:00:55Z",
+      "side": 1,
+      "message": "Because StubLibraryMutator runs before \"apex_deps/apex\" mutators, checking IsForPlatform doesn\u0027t make sense here.",
+      "range": {
+        "startLine": 45,
+        "startChar": 44,
+        "endLine": 45,
+        "endChar": 62
+      },
+      "revId": "5f403b4ef65203c6f0cc8ed48de58c35f1cf6c59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1a0a6ef2_a63b899b",
         "filename": "cc/stub_library.go",
         "patchSetId": 1
