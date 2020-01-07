@@ -22,6 +22,30 @@
       "revId": "37e0b77e3b349c776b7a1970265e4c1f2dc00379",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efab6218_c84797f6",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-01-07T12:10:38Z",
+      "side": 1,
+      "message": "This is a minor refactoring just to make the code a little more understandable. Longer term I want to make the api surfaces a little more explicit at which point this will vanish.",
+      "parentUuid": "77be1cf4_5090e349",
+      "range": {
+        "startLine": 126,
+        "startChar": 36,
+        "endLine": 129,
+        "endChar": 52
+      },
+      "revId": "37e0b77e3b349c776b7a1970265e4c1f2dc00379",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
