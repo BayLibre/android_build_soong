@@ -206,6 +206,8 @@ bootstrap_go_package {
         "cc/vendor_public_library.go",
 
         "cc/testing.go",
+
+        "cc/stub_library.go",
     ],
     testSrcs: [
         "cc/cc_test.go",

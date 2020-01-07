@@ -318,6 +318,7 @@ func CreateTestContext() *android.TestContext {
 	RegisterRequiredBuildComponentsForTest(ctx)
 	ctx.PreArchMutators(android.RegisterDefaultsPreArchMutators)
 	ctx.RegisterSingletonType("vndk-snapshot", VndkSnapshotSingleton)
+	ctx.RegisterSingletonType("stub_libraries_text", stubLibrariesTextSingleton)
 
 	return ctx
 }
