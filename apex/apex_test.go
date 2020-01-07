@@ -3328,6 +3328,98 @@ func TestRejectNonInstallableJavaLibrary(t *testing.T) {
 	`)
 }
 
+func TestApexModuleName(t *testing.T) {
+	expectEquals := func(expected, actual string) {
+		t.Helper()
+		if expected != actual {
+			t.Errorf("expected %s, but got %s", expected, actual)
+		}
+	}
+
+	t.Run("normally, a.Name() == a.BaseModuleName() == ctx.ModuleName()", func(t *testing.T) {
+		ctx, _ := testApex(t, `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+		}
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+		`)
+		a := ctx.ModuleForTests("myapex", "android_common_myapex_image").Module().(*apexBundle)
+		expectEquals("myapex", a.Name())
+		expectEquals("myapex", a.BaseModuleName())
+		expectEquals("myapex", ctx.ModuleName(a))
+	})
+
+	t.Run("with override_apex, a.Name() == a.BaseModuleName() != ctx.ModuleName()", func(t *testing.T) {
+		ctx, _ := testApex(t, `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+		}
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+		override_apex {
+			name: "override_myapex",
+			base: "myapex",
+		}
+		`)
+		a := ctx.ModuleForTests("myapex", "android_common_override_myapex_myapex_image").Module().(*apexBundle)
+		// it overrides "name" property as well
+		expectEquals("override_myapex", a.Name())
+		expectEquals("override_myapex", a.BaseModuleName())
+		// but, ctx answers original "name" property because other variants still use it
+		expectEquals("myapex", ctx.ModuleName(a))
+	})
+
+	t.Run("with prebuilt_apex, a.Name() == ctx.ModuleName() != a.BaseModuleName()", func(t *testing.T) {
+		ctx, _ := testApex(t, `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+		}
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+		prebuilt_apex {
+			name: "myapex",
+			src: "myapex.apex",
+		}
+		`, withFiles(map[string][]byte{
+			"myapex.apex": nil,
+		}))
+		p := ctx.ModuleForTests("prebuilt_myapex", "android_common").Module().(*Prebuilt)
+		expectEquals("prebuilt_myapex", p.Name())
+		expectEquals("myapex", p.BaseModuleName())
+		// Note that prebuilt_apex name is decorated when there is a source module
+		expectEquals("prebuilt_myapex", ctx.ModuleName(p))
+	})
+
+	t.Run("with prebuilt_apex, a.Name() != a.BaseModuleName() == ctx.ModuleName()", func(t *testing.T) {
+		ctx, _ := testApex(t, `
+		prebuilt_apex {
+			name: "myapex",
+			src: "myapex.apex",
+		}
+		`, withFiles(map[string][]byte{
+			"myapex.apex": nil,
+		}))
+		p := ctx.ModuleForTests("myapex", "android_common").Module().(*Prebuilt)
+		expectEquals("prebuilt_myapex", p.Name())
+		expectEquals("myapex", p.BaseModuleName())
+		// prebuilt_apex is renamed as undecorated name (= name prop) when there isn't a source module
+		expectEquals("myapex", ctx.ModuleName(p))
+	})
+}
+
 func TestMain(m *testing.M) {
 	run := func() int {
 		setUp()
