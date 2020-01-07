@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "222f1c35_af6c5669",
+        "filename": "cc/stub_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-07T15:55:16Z",
+      "side": 1,
+      "message": "Why do you need this global list?  Eventually we are going to want to do incremental analysis, and this global state that could be affected by any module is going to make it harder.",
+      "revId": "5f403b4ef65203c6f0cc8ed48de58c35f1cf6c59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "273dce39_4478a3a2",
         "filename": "cc/stub_library.go",
         "patchSetId": 1
