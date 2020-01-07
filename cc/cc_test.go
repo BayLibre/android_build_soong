@@ -2751,3 +2751,34 @@ func TestDefaults(t *testing.T) {
 		t.Errorf("libboth ar rule wanted %q, got %q", w, g)
 	}
 }
+
+func TestStubLibraries(t *testing.T) {
+	bp := `
+		cc_library {
+			name: "libfoo",
+			stubs: {
+				versions: ["10000"],
+			},
+		}
+
+		cc_library {
+			name: "libbar",
+		}
+
+		cc_library {
+			name: "libbaz",
+			stubs: {
+				versions: ["10000"],
+			},
+		}
+	`
+
+	t.Helper()
+
+	ctx := testCc(t, bp)
+	stubSingleton := ctx.SingletonForTests("stub_libraries_text")
+
+	output := stubSingleton.Output("stub.libraries.txt")
+
+	checkWriteFileOutput(t, output, []string{"libbaz.so", "libc.so", "libdl.so", "libfoo.so", "libft2.so", "libm.so"})
+}
