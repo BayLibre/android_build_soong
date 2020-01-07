@@ -117,6 +117,24 @@
       "revId": "b8095f555e034a500ddc384670e4d6d158f8a751",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b783f0c_a71f9bc0",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-01-07T14:34:14Z",
+      "side": 1,
+      "message": "After some discussion with Nicolas, it seems best to keep the existing behavior and the approach taken by this CL: regardless of static/non-static coverage, just add jacocoagent to the list of bootclasspath libraries (or to be precise, ART boot image libraries), and always make it a dependency of the ART apex.\n\nThe other alternative is to add jacocoagent as a staticLibTag dependency for each library on the InstrumentFrameworkModules list, which is bad because it created multiple DEX definitions of the same jacoco class.\n\nColin, do you think the ordering of (1) and (2) from my previous comment is ok, or this should be fixed and InstrumentFrameworkModules libraries explicitly excluded from static coverage?",
+      "parentUuid": "1da9fe8a_5702b8b7",
+      "revId": "b8095f555e034a500ddc384670e4d6d158f8a751",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
