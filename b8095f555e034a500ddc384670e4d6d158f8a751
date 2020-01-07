@@ -135,6 +135,24 @@
       "revId": "b8095f555e034a500ddc384670e4d6d158f8a751",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6e3c8a6_08f9d6cc",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-07T15:51:21Z",
+      "side": 1,
+      "message": "It seems lucky that it is currently working, probably worth making more rigorous but not in this CL.",
+      "parentUuid": "9b783f0c_a71f9bc0",
+      "revId": "b8095f555e034a500ddc384670e4d6d158f8a751",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
