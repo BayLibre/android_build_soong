@@ -2751,3 +2751,40 @@ func TestDefaults(t *testing.T) {
 		t.Errorf("libboth ar rule wanted %q, got %q", w, g)
 	}
 }
+
+func TestStubLibraries(t *testing.T) {
+	bp := `
+		cc_library {
+			name: "libfoo",
+			stubs: {
+				versions: ["10000"],
+			},
+		}
+
+		cc_library {
+			name: "libbar",
+		}
+
+		cc_library {
+			name: "libbaz",
+			stubs: {
+				versions: ["10000"],
+			},
+		}
+
+		stub_libraries_txt {
+			name: "stub.libraries.txt",
+		}
+	`
+
+	t.Helper()
+	config := TestConfig(buildDir, android.Android, nil, bp, nil)
+
+	ctx := testCcWithConfig(t, config)
+
+	stubLibraries := ctx.ModuleForTests("stub.libraries.txt", "")
+
+	output := "stub.libraries.txt"
+
+	checkWriteFileOutput(t, stubLibraries.Output(output), []string{"libbaz.so", "libc.so", "libdl.so", "libfoo.so", "libft2.so", "libm.so"})
+}
