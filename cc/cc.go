@@ -2460,7 +2460,24 @@ func (c *Module) AvailableFor(what string) bool {
 }
 
 func (c *Module) installable() bool {
-	return c.installer != nil && !c.Properties.PreventInstall && c.IsForPlatform() && c.outputFile.Valid()
+	ret := c.installer != nil && !c.Properties.PreventInstall && c.outputFile.Valid()
+
+	// The platform variant doesn't need further condition. Apex variants however might not
+	// be installable because it will likely to be included in the APEX and won't appear
+	// in the system partition.
+	if c.IsForPlatform() {
+		return ret
+	}
+
+	// Special case for tests. They are installable even for the APEX variants. The APEX variants
+	// are not to be included in the APEX. The variants exist just because the tests need to link
+	// against the APEX variants of the modules. The tests still need to be installed to /data/*.
+	// See b/146995717
+	if _, ok := c.installer.(*testBinary); ok { // check the installer to test if the module is a test module
+		return ret
+	}
+
+	return false
 }
 
 func (c *Module) AndroidMkWriteAdditionalDependenciesForSourceAbiDiff(w io.Writer) {
