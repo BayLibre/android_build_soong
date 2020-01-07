@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a0a6ef2_a63b899b",
+        "filename": "cc/stub_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-07T08:49:28Z",
+      "side": 1,
+      "message": "you need to get the stem of the module",
+      "range": {
+        "startLine": 50,
+        "startChar": 10,
+        "endLine": 50,
+        "endChar": 28
+      },
+      "revId": "5f403b4ef65203c6f0cc8ed48de58c35f1cf6c59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
