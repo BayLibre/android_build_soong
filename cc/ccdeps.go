@@ -113,14 +113,20 @@ func (c *ccdepsGeneratorSingleton) GenerateBuildActions(ctx android.SingletonCon
 	}
 }
 
+func concatenateCCParams(c1 *ccParameters, c2 ccParameters) {
+	c1.HeaderSearchPath = append(c1.HeaderSearchPath, c2.HeaderSearchPath...)
+	c1.SystemHeaderSearchPath = append(c1.SystemHeaderSearchPath, c2.SystemHeaderSearchPath...)
+	c1.FlagParameters = append(c1.FlagParameters, c2.FlagParameters...)
+	if c2.SysRoot != "" {
+		c1.SysRoot = c2.SysRoot
+	}
+	for k, v := range c2.RelativeFilePathFlags {
+		c1.RelativeFilePathFlags[k] = v
+	}
+}
+
 func parseCompilerCCParameters(ctx android.SingletonContext, params []string) ccParameters {
 	compilerParams := ccParameters{}
-
-	cparams := []string{}
-	for _, param := range params {
-		param, _ = evalVariable(ctx, param)
-		cparams = append(cparams, param)
-	}
 
 	// Soong does not guarantee that each flag will be in an individual string. e.g: The
 	// input received could be:
@@ -129,10 +135,10 @@ func parseCompilerCCParameters(ctx android.SingletonContext, params []string) cc
 	// params = {"-isystem path/to/system"}
 	// To normalize the input, we split all strings with the "space" character and consolidate
 	// all tokens into a flattened parameters list
-	cparams = normalizeParameters(cparams)
+	params = normalizeParameters(params)
 
-	for i := 0; i < len(cparams); i++ {
-		param := cparams[i]
+	for i := 0; i < len(params); i++ {
+		param := params[i]
 		if param == "" {
 			continue
 		}
@@ -141,17 +147,22 @@ func parseCompilerCCParameters(ctx android.SingletonContext, params []string) cc
 		case headerSearchPath:
 			compilerParams.HeaderSearchPath =
 				append(compilerParams.HeaderSearchPath, strings.TrimPrefix(param, "-I"))
+		case variable:
+			if evaluated, error := evalVariable(ctx, param); error == nil {
+				paramsFromVar := parseCompilerCCParameters(ctx, strings.Split(evaluated, " "))
+				concatenateCCParams(&compilerParams, paramsFromVar)
+			}
 		case systemHeaderSearchPath:
 			if i < len(params)-1 {
-				compilerParams.SystemHeaderSearchPath = append(compilerParams.SystemHeaderSearchPath, cparams[i+1])
+				compilerParams.SystemHeaderSearchPath = append(compilerParams.SystemHeaderSearchPath, params[i+1])
 			}
 			i = i + 1
 		case flag:
 			c := cleanupParameter(param)
 			compilerParams.FlagParameters = append(compilerParams.FlagParameters, c)
 		case systemRoot:
-			if i < len(cparams)-1 {
-				compilerParams.SysRoot = cparams[i+1]
+			if i < len(params)-1 {
+				compilerParams.SysRoot = params[i+1]
 			}
 			i = i + 1
 		case relativeFilePathFlag:
