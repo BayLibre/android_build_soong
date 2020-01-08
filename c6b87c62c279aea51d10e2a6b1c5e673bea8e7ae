@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4f9de06_11b86557",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2476,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-08T21:29:21Z",
+      "side": 1,
+      "message": "This will fail for any module type that wraps testBinary.  Maybe check InstallInData()?",
+      "range": {
+        "startLine": 2476,
+        "startChar": 27,
+        "endLine": 2476,
+        "endChar": 37
+      },
+      "revId": "c6b87c62c279aea51d10e2a6b1c5e673bea8e7ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
