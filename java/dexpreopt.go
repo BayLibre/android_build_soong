@@ -69,6 +69,13 @@ func (d *dexpreopter) dexpreoptDisabled(ctx android.ModuleContext) bool {
 		return true
 	}
 
+	//	// Don't preopt system server jars that are updatable.
+	//	for _, p := range global.UpdatableSystemServerJars {
+	//		if _, jar := SplitApexJarPair(p); jar == ctx.ModuleName() {
+	//			return true
+	//		}
+	//	}
+
 	if ctx.Config().UnbundledBuild() {
 		return true
 	}
