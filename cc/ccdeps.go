@@ -118,8 +118,8 @@ func parseCompilerCCParameters(ctx android.SingletonContext, params []string) cc
 
 	cparams := []string{}
 	for _, param := range params {
-		param, _ = evalVariable(ctx, param)
-		cparams = append(cparams, param)
+		aparam, _ := evalVariable(ctx, param)
+		cparams = append(cparams, aparam)
 	}
 
 	// Soong does not guarantee that each flag will be in an individual string. e.g: The
@@ -142,7 +142,7 @@ func parseCompilerCCParameters(ctx android.SingletonContext, params []string) cc
 			compilerParams.HeaderSearchPath =
 				append(compilerParams.HeaderSearchPath, strings.TrimPrefix(param, "-I"))
 		case systemHeaderSearchPath:
-			if i < len(params)-1 {
+			if i < len(cparams)-1 {
 				compilerParams.SystemHeaderSearchPath = append(compilerParams.SystemHeaderSearchPath, cparams[i+1])
 			}
 			i = i + 1
