@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07088fe3_b5a7fa92",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2020-01-08T18:31:10Z",
+      "side": 1,
+      "message": "The common style I believe is to list all tags without any blank lines in between, but I\u0027m not sure it\u0027s required. (Btw, the commit hook that adds Change-Id sometimes inserts a blank line before even when it shouldn\u0027t be there, and I usually clean that up too.)",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 52
+      },
+      "revId": "5a4ccd1816862551082b6f1747a5112ef1e8a168",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
