@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7767c99_dd454c9d",
+        "filename": "java/platform_compat_config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-08T21:26:07Z",
+      "side": 1,
+      "message": "The Once isn\u0027t necessary here, just return android.PathForOutput(ctx, \"compat_config\", \"merged_compat_config.xml\")",
+      "revId": "d8e58c295b055758a826d79be6c633cc207ead24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
