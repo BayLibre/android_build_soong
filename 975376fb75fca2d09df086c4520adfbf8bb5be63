@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "360e67d2_78821bc7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-01-08T17:17:33Z",
+      "side": 1,
+      "message": "Done, thanks.",
+      "parentUuid": "63b08ca2_f3f95bea",
+      "revId": "975376fb75fca2d09df086c4520adfbf8bb5be63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "edfa1b87_16fcdbda",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "500bbe73_03f5203b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-01-08T17:17:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edfa1b87_16fcdbda",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 17
+      },
+      "revId": "975376fb75fca2d09df086c4520adfbf8bb5be63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ee4bc7d_0d6437c0",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -53,6 +95,24 @@
       "writtenOn": "2019-12-20T11:27:11Z",
       "side": 1,
       "message": "Should you say something about Conscrypt here, which is in its own APEX module (but also part of the boot image)?",
+      "revId": "975376fb75fca2d09df086c4520adfbf8bb5be63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "009f8ab3_aac5c90c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-01-08T17:17:33Z",
+      "side": 1,
+      "message": "I\u0027m not sure what you mean. Do you mean that the comment should be \"...and contains framework libraries and conscrypt\"?",
+      "parentUuid": "6ee4bc7d_0d6437c0",
       "revId": "975376fb75fca2d09df086c4520adfbf8bb5be63",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -91,6 +151,24 @@
       "revId": "975376fb75fca2d09df086c4520adfbf8bb5be63",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5300f1ac_78e2faa0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-01-08T17:17:33Z",
+      "side": 1,
+      "message": "Good idea, thanks.",
+      "parentUuid": "a9fd626b_77ec2ad4",
+      "revId": "975376fb75fca2d09df086c4520adfbf8bb5be63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
