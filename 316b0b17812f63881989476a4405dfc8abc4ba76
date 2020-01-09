@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "924bc6e2_f325ef6b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-09T11:37:20Z",
+      "side": 1,
+      "message": "Did you run the test? Then this should be \u0027were\u0027?",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 10
+      },
+      "revId": "316b0b17812f63881989476a4405dfc8abc4ba76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16198561_6bb5fe71",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-09T11:37:20Z",
+      "side": 1,
+      "message": "\u0026\u0026 !am.IsForPlatform()",
+      "range": {
+        "startLine": 89,
+        "startChar": 51,
+        "endLine": 89,
+        "endChar": 52
+      },
+      "revId": "316b0b17812f63881989476a4405dfc8abc4ba76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
