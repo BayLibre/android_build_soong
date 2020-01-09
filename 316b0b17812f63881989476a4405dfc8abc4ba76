@@ -49,6 +49,29 @@
     },
     {
       "key": {
+        "uuid": "124dcad5_1938d7e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-01-09T11:43:30Z",
+      "side": 1,
+      "message": "This description is helpful, but could you also give specific build and diff commands below so that others can reproduce?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 27
+      },
+      "revId": "316b0b17812f63881989476a4405dfc8abc4ba76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "16198561_6bb5fe71",
         "filename": "java/dexpreopt.go",
         "patchSetId": 1
