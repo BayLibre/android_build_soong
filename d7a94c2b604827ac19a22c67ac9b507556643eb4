@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6da914db_4b0f834e",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1656,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-01-09T06:53:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60d9e4dc_61a243bc",
+      "range": {
+        "startLine": 1656,
+        "startChar": 2,
+        "endLine": 1656,
+        "endChar": 16
+      },
+      "revId": "d7a94c2b604827ac19a22c67ac9b507556643eb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ef204971_3eabf31d",
         "filename": "cc/cc.go",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "67427613_de0d0b21",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2826,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-01-09T06:53:15Z",
+      "side": 1,
+      "message": "These modules still might be needed on Soong, e.g. past VNDK snapshot modules, PLATFORM_VNDK_VERSION vendor modules included to apex, etc.",
+      "parentUuid": "ef204971_3eabf31d",
+      "range": {
+        "startLine": 2821,
+        "startChar": 0,
+        "endLine": 2826,
+        "endChar": 3
+      },
+      "revId": "d7a94c2b604827ac19a22c67ac9b507556643eb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e3e45cb_63c689b6",
         "filename": "cc/vendor_snapshot.go",
         "patchSetId": 1
@@ -68,6 +116,30 @@
       "revId": "d7a94c2b604827ac19a22c67ac9b507556643eb4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb8e6f0a_8049e85a",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2020-01-09T06:53:15Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "8e3e45cb_63c689b6",
+      "range": {
+        "startLine": 740,
+        "startChar": 0,
+        "endLine": 742,
+        "endChar": 19
+      },
+      "revId": "d7a94c2b604827ac19a22c67ac9b507556643eb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
