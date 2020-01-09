@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6fb609ec_3a062c65",
+        "filename": "android/sandbox.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-09T22:20:28Z",
+      "side": 1,
+      "message": "env.go is last in Android.bp, but added a helper function that works regardless of the order.",
+      "parentUuid": "982b1c86_0cd3a6d7",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 13
+      },
+      "revId": "b26571496c2585345804aae5743b96dafdad9ee4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd60eb38_bc8d186c",
         "filename": "cc/compdb.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "b26571496c2585345804aae5743b96dafdad9ee4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6ea529a_81a84086",
+        "filename": "cc/compdb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-09T22:20:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd60eb38_bc8d186c",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 34
+      },
+      "revId": "b26571496c2585345804aae5743b96dafdad9ee4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
