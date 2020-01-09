@@ -57,8 +57,8 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, apexName, moduleDir string) 
 			continue
 		}
 
-		if !android.InList(fi.moduleName, moduleNames) {
-			moduleNames = append(moduleNames, fi.moduleName)
+		if !android.InList(fi.ModuleNameFor(a), moduleNames) {
+			moduleNames = append(moduleNames, fi.ModuleNameFor(a))
 		}
 
 		fmt.Fprintln(w, "\ninclude $(CLEAR_VARS)")
@@ -67,7 +67,7 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, apexName, moduleDir string) 
 		} else {
 			fmt.Fprintln(w, "LOCAL_PATH :=", moduleDir)
 		}
-		fmt.Fprintln(w, "LOCAL_MODULE :=", fi.moduleName)
+		fmt.Fprintln(w, "LOCAL_MODULE :=", fi.ModuleNameFor(a))
 		// /apex/<apex_name>/{lib|framework|...}
 		pathWhenActivated := filepath.Join("$(PRODUCT_OUT)", "apex", apexName, fi.installDir)
 		if apexType == flattenedApex {
@@ -89,6 +89,14 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, apexName, moduleDir string) 
 		}
 		fmt.Fprintln(w, "LOCAL_PREBUILT_MODULE_FILE :=", fi.builtFile.String())
 		fmt.Fprintln(w, "LOCAL_MODULE_CLASS :=", fi.class.NameInMake())
+		if fi.class.SupportsOverrideInMake() {
+			// This module overrides the same module in the overridden APEXes
+			var overrides []string
+			for _, otherApex := range a.overridableProperties.Overrides {
+				overrides = append(overrides, fi.moduleName+"."+otherApex+a.suffix)
+			}
+			fmt.Fprintln(w, "LOCAL_OVERRIDES_MODULES :=", strings.Join(overrides, " "))
+		}
 		if fi.module != nil {
 			archStr := fi.module.Target().Arch.ArchType.String()
 			host := false

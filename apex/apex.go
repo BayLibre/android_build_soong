@@ -450,6 +450,15 @@ func (class apexFileClass) NameInMake() string {
 	}
 }
 
+func (class apexFileClass) SupportsOverrideInMake() bool {
+	className := class.NameInMake()
+	if className == "ETC" || className == "SHARED_LIBRARIES" || className == "ETC" {
+		// This should be in sync with build/make/core/base_rules.mk
+		return true
+	}
+	return false
+}
+
 // apexFile represents a file in an APEX bundle
 type apexFile struct {
 	builtFile  android.Path
@@ -488,6 +497,12 @@ func newApexFile(ctx android.BaseModuleContext, builtFile android.Path, moduleNa
 
 func (af *apexFile) Ok() bool {
 	return af.builtFile != nil && af.builtFile.String() != ""
+}
+
+func (af *apexFile) ModuleNameFor(a *apexBundle) string {
+	// prepend the name of this APEX to the module names. These names will be the names of
+	// modules that will be defined if the APEX is flattened.
+	return af.moduleName + "." + a.Name() + a.suffix
 }
 
 type apexBundle struct {
@@ -1218,12 +1233,6 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 				}
 			}
 		}
-	}
-
-	// prepend the name of this APEX to the module names. These names will be the names of
-	// modules that will be defined if the APEX is flattened.
-	for i := range filesInfo {
-		filesInfo[i].moduleName = filesInfo[i].moduleName + "." + a.Name() + a.suffix
 	}
 
 	a.installDir = android.PathForModuleInstall(ctx, "apex")
