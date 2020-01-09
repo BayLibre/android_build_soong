@@ -22,6 +22,30 @@
       "revId": "c6b87c62c279aea51d10e2a6b1c5e673bea8e7ae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb6df903_a8e293f2",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2476,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-09T04:20:56Z",
+      "side": 1,
+      "message": "Ah, that\u0027s a good idea. Thanks. Done.",
+      "parentUuid": "a4f9de06_11b86557",
+      "range": {
+        "startLine": 2476,
+        "startChar": 27,
+        "endLine": 2476,
+        "endChar": 37
+      },
+      "revId": "c6b87c62c279aea51d10e2a6b1c5e673bea8e7ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
