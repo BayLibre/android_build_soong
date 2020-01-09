@@ -46,6 +46,30 @@
       "revId": "6457bb922b7ca9e5657ac8ebec24dac222a6aa47",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6ae37a9_d62469f2",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1308042
+      },
+      "writtenOn": "2020-01-09T06:57:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "66fdf2ca_4961cc16",
+      "range": {
+        "startLine": 150,
+        "startChar": 7,
+        "endLine": 150,
+        "endChar": 15
+      },
+      "revId": "6457bb922b7ca9e5657ac8ebec24dac222a6aa47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
