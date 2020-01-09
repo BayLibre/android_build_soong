@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca7fb17f_2170bc42",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-01-09T13:19:12Z",
+      "side": 1,
+      "message": "I don\u0027t think this holds in general. How about putting LOCAL_OVERRIDES_MODULES to apex_manifest with pattern? \n\nIf com.android.foo overrides com.android.bar, then the module \"apex_manifest.pb.com.android.foo.flattened\" would override all entries of com.android.bar by setting \"LOCAL_OVERRIDES_MODULES :\u003d %.com.android.bar.flattened\".\n\nI haven\u0027t tested it and it seems quite hacky. wdyt?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 56
+      },
+      "revId": "e381e84656eeadbd3d6a82f81b3a2061c44d7386",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
