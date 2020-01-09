@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "982b1c86_0cd3a6d7",
+        "filename": "android/sandbox.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-01-09T21:18:43Z",
+      "side": 1,
+      "message": "This call isn\u0027t supposed to work, since we\u0027ve called os.Clearenv() in the init() function of env.go (which should have been given to the compiler first given the order in the Android.bp).",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 13
+      },
+      "revId": "b26571496c2585345804aae5743b96dafdad9ee4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd60eb38_bc8d186c",
+        "filename": "cc/compdb.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-01-09T21:18:43Z",
+      "side": 1,
+      "message": "stale comment?",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 34
+      },
+      "revId": "b26571496c2585345804aae5743b96dafdad9ee4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
