@@ -16,6 +16,24 @@
       "revId": "d8e58c295b055758a826d79be6c633cc207ead24",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cea4294_b56c8286",
+        "filename": "java/platform_compat_config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2020-01-09T11:14:22Z",
+      "side": 1,
+      "message": "Thanks, I was copying this from elsewhere and wasn\u0027t really sure if it was needed.",
+      "parentUuid": "f7767c99_dd454c9d",
+      "revId": "d8e58c295b055758a826d79be6c633cc207ead24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
