@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4078973b_ab48e126",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-01-09T11:42:51Z",
+      "side": 1,
+      "message": "I tested locally, after this patch\n- com.android.appsearch/javalib/service-appsearch.jar\n- com.android.cronet/javalib/org.chromium.net.cronet.jar\n- com.android.os.statsd/javalib/service-statsd.jar\n- com.android.telephony/app/StkLib/StkLib.apk\n\nthese four files are not uncompressed\nBecause (don\u0027t dexpreopt) implies (don\u0027t uncompress dex)",
+      "parentUuid": "924bc6e2_f325ef6b",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 10
+      },
+      "revId": "316b0b17812f63881989476a4405dfc8abc4ba76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "16198561_6bb5fe71",
         "filename": "java/dexpreopt.go",
         "patchSetId": 1
