@@ -22,6 +22,30 @@
       "revId": "5a4ccd1816862551082b6f1747a5112ef1e8a168",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a1b4b2c_a1796c08",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-01-09T11:22:23Z",
+      "side": 1,
+      "message": "Martin, I often have to put long multiline entries for \u0027Test\u0027, as the build/test commands are non-standard. Admittedly not in this case, but I have the habit of surrounding \u0027Test\u0027 tags with spaces. I\u0027m sorry if it looks clumsy, but at least it is more reproducible.",
+      "parentUuid": "07088fe3_b5a7fa92",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 52
+      },
+      "revId": "5a4ccd1816862551082b6f1747a5112ef1e8a168",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
