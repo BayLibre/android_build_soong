@@ -137,6 +137,24 @@
     },
     {
       "key": {
+        "uuid": "b481c664_2a27927c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-01-09T13:13:52Z",
+      "side": 1,
+      "message": "Conscrypt is not affected by this CL.\n\nIt is in PRODUCT_UPDATABLE_BOOT_JARS (https://source.corp.google.com/aosp-master/build/make/target/product/base_system.mk;l\u003d332?q\u003d%22com.android.conscrypt:conscrypt%22), which are not dexpreopted and excluded from the boot image: https://source.corp.google.com/aosp-master/build/soong/java/dexpreopt_config.go;cl\u003dmaster;l\u003d144",
+      "parentUuid": "e6e406b0_aa30beb4",
+      "revId": "975376fb75fca2d09df086c4520adfbf8bb5be63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6df9476e_73d1eb60",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
