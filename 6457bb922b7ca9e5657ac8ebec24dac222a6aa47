@@ -22,6 +22,30 @@
       "revId": "6457bb922b7ca9e5657ac8ebec24dac222a6aa47",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66fdf2ca_4961cc16",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2020-01-09T02:22:21Z",
+      "side": 1,
+      "message": "No, if param belongs to \"variable\" group we deal with here and add it to compilerParams.",
+      "parentUuid": "2d3241e7_2482ce01",
+      "range": {
+        "startLine": 150,
+        "startChar": 7,
+        "endLine": 150,
+        "endChar": 15
+      },
+      "revId": "6457bb922b7ca9e5657ac8ebec24dac222a6aa47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
