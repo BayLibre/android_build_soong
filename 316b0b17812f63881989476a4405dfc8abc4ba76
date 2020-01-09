@@ -72,6 +72,54 @@
     },
     {
       "key": {
+        "uuid": "1f67a0c5_91154b98",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-01-09T12:04:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4078973b_ab48e126",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 10
+      },
+      "revId": "316b0b17812f63881989476a4405dfc8abc4ba76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e26b167b_555fc5e9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-01-09T12:04:28Z",
+      "side": 1,
+      "message": "I used a external tool \"Beyond Compare\", it\u0027s basically a fancy diff tool that recognizes special file formats such as \".img\" and \".zip\".\n\nI\u0027ll update a more descriptive messsage.",
+      "parentUuid": "124dcad5_1938d7e4",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 27
+      },
+      "revId": "316b0b17812f63881989476a4405dfc8abc4ba76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "16198561_6bb5fe71",
         "filename": "java/dexpreopt.go",
         "patchSetId": 1
@@ -92,6 +140,30 @@
       "revId": "316b0b17812f63881989476a4405dfc8abc4ba76",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f3c599e_05372f5e",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2020-01-09T12:04:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16198561_6bb5fe71",
+      "range": {
+        "startLine": 89,
+        "startChar": 51,
+        "endLine": 89,
+        "endChar": 52
+      },
+      "revId": "316b0b17812f63881989476a4405dfc8abc4ba76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
