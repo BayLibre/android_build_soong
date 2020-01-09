@@ -119,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "e6e406b0_aa30beb4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2020-01-09T13:03:10Z",
+      "side": 1,
+      "message": "As I understand it, Conscrypt is part of the boot class path, but it\u0027s not clear to me whether it has a boot image (Art, Vdex and Odex files) and how this CL affects this (or not).",
+      "parentUuid": "009f8ab3_aac5c90c",
+      "revId": "975376fb75fca2d09df086c4520adfbf8bb5be63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6df9476e_73d1eb60",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
