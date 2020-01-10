@@ -822,6 +822,14 @@ func (c *config) XrefCorpusName() string {
 	return c.Getenv("XREF_CORPUS")
 }
 
+// Returns Compilation Unit encoding to use. Can be 'json' (default), 'proto' or 'all'.
+func (c *config) XrefCuEncoding() string {
+	if enc := c.Getenv("KYTHE_KZIP_ENCODING"); enc != "" {
+		return enc
+	}
+	return "JSON"
+}
+
 func (c *config) EmitXrefRules() bool {
 	return c.XrefCorpusName() != ""
 }
