@@ -506,6 +506,10 @@ func (library *libraryDecorator) classifySourceAbiDump(ctx ModuleContext) string
 	if ctx.isNdk() {
 		return "NDK"
 	}
+	// Skip if the library is both NDK stub and LLNDK.
+	if ctx.isNDKStubLibrary() {
+		return ""
+	}
 	if ctx.isLlndkPublic(ctx.Config()) {
 		return "LLNDK"
 	}
