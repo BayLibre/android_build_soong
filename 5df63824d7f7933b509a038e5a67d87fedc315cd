@@ -46,6 +46,30 @@
       "revId": "5df63824d7f7933b509a038e5a67d87fedc315cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab67c81f_088fe1df",
+        "filename": "bpf/bpf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-01-10T23:12:04Z",
+      "side": 1,
+      "message": "In this case, do you know how to get the proper \u0027etc\u0027 path?",
+      "parentUuid": "db6decf9_19e9e2ae",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 7
+      },
+      "revId": "5df63824d7f7933b509a038e5a67d87fedc315cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
