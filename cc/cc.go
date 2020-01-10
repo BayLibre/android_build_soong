@@ -567,6 +567,15 @@ func (c *Module) StubsVersions() []string {
 	panic(fmt.Errorf("StubsVersions called on non-library module: %q", c.BaseModuleName()))
 }
 
+func (c *Module) StubsVersion() string {
+	if c.linker != nil {
+		if library, ok := c.linker.(*libraryDecorator); ok {
+			return library.StubsVersion()
+		}
+	}
+	panic(fmt.Errorf("StubsVersions called on non-library module: %q", c.BaseModuleName()))
+}
+
 func (c *Module) CcLibrary() bool {
 	if c.linker != nil {
 		if _, ok := c.linker.(*libraryDecorator); ok {

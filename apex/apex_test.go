@@ -201,6 +201,36 @@ func testApexContext(t *testing.T, bp string, handlers ...testCustomizer) (*andr
 			native_bridge_supported: true,
 		}
 
+		cc_library {
+			name: "libc",
+			stubs: {
+				versions: ["10000"],
+				symbol_file: "",
+			},
+			system_shared_libs: [],
+			stl: "none",
+		}
+
+		cc_library {
+			name: "libm",
+			stubs: {
+				versions: ["10000"],
+				symbol_file: "",
+			},
+			system_shared_libs: [],
+			stl: "none",
+		}
+
+		cc_library {
+			name: "libdl",
+			stubs: {
+				versions: ["10000", "10001"],
+				symbol_file: "",
+			},
+			system_shared_libs: [],
+			stl: "none",
+		}
+
 		filegroup {
 			name: "myapex-file_contexts",
 			srcs: [
@@ -941,48 +971,15 @@ func TestApexWithSystemLibsStubs(t *testing.T) {
 		cc_library {
 			name: "mylib",
 			srcs: ["mylib.cpp"],
-			shared_libs: ["libdl#27"],
+			shared_libs: ["libdl#10000"],
 			stl: "none",
 		}
 
 		cc_library_shared {
 			name: "mylib_shared",
 			srcs: ["mylib.cpp"],
-			shared_libs: ["libdl#27"],
+			shared_libs: ["libdl#10000"],
 			stl: "none",
-		}
-
-		cc_library {
-			name: "libc",
-			no_libcrt: true,
-			nocrt: true,
-			system_shared_libs: [],
-			stl: "none",
-			stubs: {
-				versions: ["27", "28", "29"],
-			},
-		}
-
-		cc_library {
-			name: "libm",
-			no_libcrt: true,
-			nocrt: true,
-			system_shared_libs: [],
-			stl: "none",
-			stubs: {
-				versions: ["27", "28", "29"],
-			},
-		}
-
-		cc_library {
-			name: "libdl",
-			no_libcrt: true,
-			nocrt: true,
-			system_shared_libs: [],
-			stl: "none",
-			stubs: {
-				versions: ["27", "28", "29"],
-			},
 		}
 
 		cc_library {
@@ -1010,33 +1007,32 @@ func TestApexWithSystemLibsStubs(t *testing.T) {
 
 	// For dependency to libc
 	// Ensure that mylib is linking with the latest version of stubs
-	ensureContains(t, mylibLdFlags, "libc/android_arm64_armv8-a_shared_29/libc.so")
+	ensureContains(t, mylibLdFlags, "libc/android_arm64_armv8-a_shared_10000/libc.so")
 	// ... and not linking to the non-stub (impl) variant
 	ensureNotContains(t, mylibLdFlags, "libc/android_arm64_armv8-a_shared/libc.so")
 	// ... Cflags from stub is correctly exported to mylib
-	ensureContains(t, mylibCFlags, "__LIBC_API__=29")
-	ensureContains(t, mylibSharedCFlags, "__LIBC_API__=29")
+	ensureContains(t, mylibCFlags, "__LIBC_API__=10000")
+	ensureContains(t, mylibSharedCFlags, "__LIBC_API__=10000")
 
 	// For dependency to libm
 	// Ensure that mylib is linking with the non-stub (impl) variant
 	ensureContains(t, mylibLdFlags, "libm/android_arm64_armv8-a_shared_myapex/libm.so")
 	// ... and not linking to the stub variant
-	ensureNotContains(t, mylibLdFlags, "libm/android_arm64_armv8-a_shared_29/libm.so")
+	ensureNotContains(t, mylibLdFlags, "libm/android_arm64_armv8-a_shared_10000/libm.so")
 	// ... and is not compiling with the stub
-	ensureNotContains(t, mylibCFlags, "__LIBM_API__=29")
-	ensureNotContains(t, mylibSharedCFlags, "__LIBM_API__=29")
+	ensureNotContains(t, mylibCFlags, "__LIBM_API__=10000")
+	ensureNotContains(t, mylibSharedCFlags, "__LIBM_API__=10000")
 
 	// For dependency to libdl
 	// Ensure that mylib is linking with the specified version of stubs
-	ensureContains(t, mylibLdFlags, "libdl/android_arm64_armv8-a_shared_27/libdl.so")
+	ensureContains(t, mylibLdFlags, "libdl/android_arm64_armv8-a_shared_10000/libdl.so")
 	// ... and not linking to the other versions of stubs
-	ensureNotContains(t, mylibLdFlags, "libdl/android_arm64_armv8-a_shared_28/libdl.so")
-	ensureNotContains(t, mylibLdFlags, "libdl/android_arm64_armv8-a_shared_29/libdl.so")
+	ensureNotContains(t, mylibLdFlags, "libdl/android_arm64_armv8-a_shared_10001/libdl.so")
 	// ... and not linking to the non-stub (impl) variant
 	ensureNotContains(t, mylibLdFlags, "libdl/android_arm64_armv8-a_shared_myapex/libdl.so")
 	// ... Cflags from stub is correctly exported to mylib
-	ensureContains(t, mylibCFlags, "__LIBDL_API__=27")
-	ensureContains(t, mylibSharedCFlags, "__LIBDL_API__=27")
+	ensureContains(t, mylibCFlags, "__LIBDL_API__=10000")
+	ensureContains(t, mylibSharedCFlags, "__LIBDL_API__=10000")
 
 	// Ensure that libBootstrap is depending on the platform variant of bionic libs
 	libFlags := ctx.ModuleForTests("libBootstrap", "android_arm64_armv8-a_shared").Rule("ld").Args["libFlags"]
@@ -3303,6 +3299,116 @@ func TestJavaSDKLibrary(t *testing.T) {
 	// Permission XML should point to the activated path of impl jar of java_sdk_library
 	xml := ctx.ModuleForTests("foo", "android_common_myapex").Output("foo.xml")
 	ensureContains(t, xml.Args["content"], `<library name="foo" file="/apex/myapex/javalib/foo.jar"`)
+}
+
+func TestNativeDepends(t *testing.T) {
+	testApexError(t, `reference to "libstub" should be versioned as <= 29`, `
+		cc_library {
+			name: "libstub",
+			stubs: {
+				symbol_file: "libstub.map.txt",
+				versions: ["29", "30"],
+			},
+			system_shared_libs: [],
+			stl: "none",
+		}
+
+		cc_library {
+			name: "mycpplib",
+			shared_libs: ["libstub"],
+			stl: "none",
+		}
+
+		apex {
+			name: "myapex",
+			native_shared_libs: ["mycpplib"],
+			key: "myapex.key",
+			depends: ["libstub#29"],
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
+	`, withFiles(map[string][]byte{
+		"libstub.map.txt": nil,
+	}))
+	testApexError(t, `reference to "libstub" should be versioned as <= 29`, `
+		cc_library {
+			name: "libstub",
+			stubs: {
+				symbol_file: "libstub.map.txt",
+				versions: ["29", "30"],
+			},
+			system_shared_libs: [],
+			stl: "none",
+		}
+
+		cc_library {
+			name: "mycpplib",
+			shared_libs: ["libstub#30"],
+			stl: "none",
+		}
+
+		apex {
+			name: "myapex",
+			native_shared_libs: ["mycpplib"],
+			key: "myapex.key",
+			depends: ["libstub#29"],
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
+	`, withFiles(map[string][]byte{
+		"libstub.map.txt": nil,
+	}))
+	testApex(t, `
+		cc_library {
+			name: "libstub",
+			stubs: {
+				symbol_file: "libstub.map.txt",
+				versions: ["29", "30"],
+			},
+			system_shared_libs: [],
+			stl: "none",
+		}
+
+		cc_library {
+			name: "mycpplib",
+			shared_libs: ["libstub#29"],
+			stl: "none",
+		}
+
+		apex {
+			name: "myapex",
+			native_shared_libs: ["mycpplib"],
+			key: "myapex.key",
+			depends: ["libstub#29"],
+		}
+
+		apex {
+			name: "myapex2",
+			native_shared_libs: ["mycpplib"],
+			key: "myapex.key",
+			depends: ["libstub#30"],
+			file_contexts: ":myapex-file_contexts",
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
+	`, withFiles(map[string][]byte{
+		"libstub.map.txt": nil,
+	}))
 }
 
 func TestRejectNonInstallableJavaLibrary(t *testing.T) {

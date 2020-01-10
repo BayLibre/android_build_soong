@@ -1050,7 +1050,7 @@ func (library *libraryDecorator) link(ctx ModuleContext,
 	}
 
 	if library.buildStubs() {
-		library.reexportFlags("-D" + versioningMacroName(ctx.ModuleName()) + "=" + library.stubsVersion())
+		library.reexportFlags("-D" + versioningMacroName(ctx.ModuleName()) + "=" + library.StubsVersion())
 	}
 
 	return out
@@ -1195,7 +1195,7 @@ func (library *libraryDecorator) symbolFileForAbiCheck(ctx ModuleContext) *strin
 	return nil
 }
 
-func (library *libraryDecorator) stubsVersion() string {
+func (library *libraryDecorator) StubsVersion() string {
 	return library.MutatedProperties.StubsVersion
 }
 

@@ -19,6 +19,7 @@ import (
 	"path"
 	"path/filepath"
 	"sort"
+	"strconv"
 	"strings"
 	"sync"
 
@@ -341,6 +342,9 @@ type apexBundleProperties struct {
 	// Whether this APEX should support Android10. Default is false. If this is set true, then apex_manifest.json is bundled as well
 	// because Android10 requires legacy apex_manifest.json instead of apex_manifest.pb
 	Legacy_android10_support *bool
+
+	// Which enables checks for versions of native library stubs
+	Depends []string
 }
 
 type apexTargetBundleProperties struct {
@@ -1120,13 +1124,13 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 				// We cannot use a switch statement on `depTag` here as the checked
 				// tags used below are private (e.g. `cc.sharedDepTag`).
 				if cc.IsSharedDepTag(depTag) || cc.IsRuntimeDepTag(depTag) {
-					if cc, ok := child.(*cc.Module); ok {
-						if android.InList(cc.Name(), providedNativeSharedLibs) {
+					if cm, ok := child.(*cc.Module); ok {
+						if android.InList(cm.Name(), providedNativeSharedLibs) {
 							// If we're using a shared library which is provided from other APEX,
 							// don't include it in this APEX
 							return false
 						}
-						if !a.Host() && !android.DirectlyInApex(ctx.ModuleName(), ctx.OtherModuleName(cc)) && (cc.IsStubs() || cc.HasStubsVariants()) {
+						if !a.Host() && !android.DirectlyInApex(ctx.ModuleName(), ctx.OtherModuleName(cm)) && (cm.IsStubs() || cm.HasStubsVariants()) {
 							// If the dependency is a stubs lib, don't include it in this APEX,
 							// but make sure that the lib is installed on the device.
 							// In case no APEX is having the lib, the lib is installed to the system
@@ -1134,21 +1138,22 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 							//
 							// Always include if we are a host-apex however since those won't have any
 							// system libraries.
-							if !android.DirectlyInAnyApex(ctx, cc.Name()) && !android.InList(cc.Name(), a.externalDeps) {
-								a.externalDeps = append(a.externalDeps, cc.Name())
+							if !android.DirectlyInAnyApex(ctx, cm.Name()) && !android.InList(cm.Name(), a.externalDeps) {
+								a.externalDeps = append(a.externalDeps, cm.Name())
 							}
-							requireNativeLibs = append(requireNativeLibs, cc.OutputFile().Path().Base())
+							a.checkDepends(ctx, parent, cm, depTag.(cc.DependencyTag))
+							requireNativeLibs = append(requireNativeLibs, cm.OutputFile().Path().Base())
 							// Don't track further
 							return false
 						}
-						af := apexFileForNativeLibrary(ctx, cc, handleSpecialLibs)
+						af := apexFileForNativeLibrary(ctx, cm, handleSpecialLibs)
 						af.transitiveDep = true
 						filesInfo = append(filesInfo, af)
 						return true // track transitive dependencies
 					}
 				} else if cc.IsTestPerSrcDepTag(depTag) {
-					if cc, ok := child.(*cc.Module); ok {
-						af := apexFileForExecutable(ctx, cc)
+					if cm, ok := child.(*cc.Module); ok {
+						af := apexFileForExecutable(ctx, cm)
 						// Handle modules created as `test_per_src` variations of a single test module:
 						// use the name of the generated test binary (`fileToCopy`) instead of the name
 						// of the original test module (`depName`, shared by all `test_per_src`
@@ -1258,6 +1263,28 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	apexName := proptools.StringDefault(a.properties.Apex_name, a.Name())
 	a.compatSymlinks = makeCompatSymlinks(apexName, ctx)
+}
+
+func (a *apexBundle) checkDepends(ctx android.ModuleContext, parent blueprint.Module, cm *cc.Module, dep cc.DependencyTag) {
+	for _, ref := range a.properties.Depends {
+		name, version := cc.StubsLibNameAndVersion(ref)
+		if name != ctx.OtherModuleName(cm) {
+			continue
+		}
+		maxVersion, err := strconv.Atoi(version)
+		if err != nil {
+			ctx.PropertyErrorf("depends", "should be name#ver format", err)
+			return
+		}
+		if !dep.ExplicitlyVersioned {
+			ctx.OtherModuleErrorf(parent, "reference to %q should be versioned as <= %v, but it is not versioned.", cm.Name(), maxVersion)
+		} else if cm.IsStubs() {
+			usedVersion, _ := strconv.Atoi(cm.StubsVersion())
+			if usedVersion > maxVersion {
+				ctx.OtherModuleErrorf(parent, "reference to %q should be versioned as <= %v, but it is %v.", cm.Name(), maxVersion, usedVersion)
+			}
+		}
+	}
 }
 
 func newApexBundle() *apexBundle {
