@@ -265,6 +265,13 @@ func CreateGlobalSoongConfig(ctx android.PathContext) GlobalSoongConfig {
 	} else {
 		dex2oatBinary = "dex2oatd"
 	}
+	// dex2oat(d) is a symlink to dex2oat(d){32, 64}
+	// Avoid creating dependency on a symlink by using one of the arch variants.
+	if ctx.Config().Android64() {
+		dex2oatBinary += "64"
+	} else {
+		dex2oatBinary += "32"
+	}
 
 	return GlobalSoongConfig{
 		Profman:          ctx.Config().HostToolPath(ctx, "profman"),
