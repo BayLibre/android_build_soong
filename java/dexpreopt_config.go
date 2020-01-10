@@ -39,8 +39,7 @@ func dexpreoptGlobalConfigRaw(ctx android.PathContext) globalConfigAndRaw {
 		if data, err := ctx.Config().DexpreoptGlobalConfig(ctx); err != nil {
 			panic(err)
 		} else if data != nil {
-			soongConfig := dexpreopt.CreateGlobalSoongConfig(ctx)
-			globalConfig, err := dexpreopt.LoadGlobalConfig(ctx, data, soongConfig)
+			globalConfig, err := dexpreopt.LoadGlobalConfig(ctx, data)
 			if err != nil {
 				panic(err)
 			}
@@ -122,9 +121,9 @@ func getJarsFromApexJarPairs(apexJarPairs []string) []string {
 }
 
 var (
-	bootImageConfigKey       = android.NewOnceKey("bootImageConfig")
-	artBootImageName         = "art"
-	frameworkBootImageName   = "boot"
+	bootImageConfigKey     = android.NewOnceKey("bootImageConfig")
+	artBootImageName       = "art"
+	frameworkBootImageName = "boot"
 )
 
 // Construct the global boot image configs.
@@ -179,8 +178,8 @@ func genBootImageConfigs(ctx android.PathContext) map[string]*bootImageConfig {
 		}
 
 		configs := map[string]*bootImageConfig{
-			artBootImageName:         &artCfg,
-			frameworkBootImageName:   &frameworkCfg,
+			artBootImageName:       &artCfg,
+			frameworkBootImageName: &frameworkCfg,
 		}
 
 		// common to all configs
