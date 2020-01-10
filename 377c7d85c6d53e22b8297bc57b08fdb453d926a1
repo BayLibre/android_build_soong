@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "94040c08_b7d513a2",
+        "filename": "cc/stub_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2020-01-10T02:29:30Z",
+      "side": 1,
+      "message": "I added some variables with comments",
+      "parentUuid": "8c959689_cd3817b4",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 143
+      },
+      "revId": "377c7d85c6d53e22b8297bc57b08fdb453d926a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "55650681_aa1617b7",
         "filename": "cc/stub_library.go",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "377c7d85c6d53e22b8297bc57b08fdb453d926a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "801369d4_2154da43",
+        "filename": "cc/stub_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2020-01-10T02:29:30Z",
+      "side": 1,
+      "message": "That was because I just copy-pasted code from vndk.go. Thanks for the catch. Updated.",
+      "parentUuid": "55650681_aa1617b7",
+      "range": {
+        "startLine": 39,
+        "startChar": 54,
+        "endLine": 39,
+        "endChar": 58
+      },
+      "revId": "377c7d85c6d53e22b8297bc57b08fdb453d926a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "391eee2b_c0b60c86",
+        "filename": "cc/stub_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2020-01-10T02:29:30Z",
+      "side": 1,
+      "message": "Same here. Updated.",
+      "parentUuid": "98959c87_582543f5",
+      "range": {
+        "startLine": 42,
+        "startChar": 72,
+        "endLine": 42,
+        "endChar": 76
+      },
+      "revId": "377c7d85c6d53e22b8297bc57b08fdb453d926a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d8b0b18_5a794e37",
         "filename": "cc/stub_library.go",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "377c7d85c6d53e22b8297bc57b08fdb453d926a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1205cf6c_9065a701",
+        "filename": "cc/stub_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2020-01-10T02:29:30Z",
+      "side": 1,
+      "message": "I updated to use ninja. Thanks.",
+      "parentUuid": "6d8b0b18_5a794e37",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "377c7d85c6d53e22b8297bc57b08fdb453d926a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
