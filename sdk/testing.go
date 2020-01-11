@@ -25,6 +25,7 @@ import (
 	"android/soong/android"
 	"android/soong/apex"
 	"android/soong/cc"
+	"android/soong/dexpreopt"
 	"android/soong/java"
 )
 
@@ -40,7 +41,7 @@ func testSdkContext(bp string, fs map[string][]byte) (*android.TestContext, andr
 			name: "myapex.cert",
 			certificate: "myapex",
 		}
-	` + cc.GatherRequiredDepsForTest(android.Android)
+	` + cc.GatherRequiredDepsForTest(android.Android) + dexpreopt.BpToolModulesForTest()
 
 	mockFS := map[string][]byte{
 		"build/make/target/product/security":         nil,
@@ -58,6 +59,10 @@ func testSdkContext(bp string, fs map[string][]byte) (*android.TestContext, andr
 	}
 
 	config := android.TestArchConfig(buildDir, nil, bp, mockFS)
+
+	// Set up the global Once cache used for dexpreopt.GlobalSoongConfig, so that
+	// it doesn't create a real one, which would fail.
+	_ = dexpreopt.GlobalSoongConfigForTests(config)
 
 	ctx := android.NewTestArchContext()
 
@@ -77,6 +82,9 @@ func testSdkContext(bp string, fs map[string][]byte) (*android.TestContext, andr
 
 	// from cc package
 	cc.RegisterRequiredBuildComponentsForTest(ctx)
+
+	// from dexpreopt package
+	dexpreopt.RegisterToolModulesForTest(ctx)
 
 	// from apex package
 	ctx.RegisterModuleType("apex", apex.BundleFactory)
