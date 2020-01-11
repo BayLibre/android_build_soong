@@ -20,6 +20,7 @@ package config
 var VndkMustUseVendorVariantList = []string{
 	"android.frameworks.sensorservice@1.0",
 	"android.hardware.atrace@1.0",
+	"android.hardware.audio.common@2.0",
 	"android.hardware.audio.common@5.0",
 	"android.hardware.audio.effect@2.0",
 	"android.hardware.audio.effect@4.0",
@@ -131,6 +132,7 @@ var VndkMustUseVendorVariantList = []string{
 	"libsqlite",
 	"libssl",
 	"libstagefright_amrnb_common",
+	"libstagefright_bufferpool@2.0",
 	"libstagefright_bufferqueue_helper",
 	"libstagefright_enc_common",
 	"libstagefright_flacdec",
