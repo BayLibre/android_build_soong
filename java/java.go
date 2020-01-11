@@ -29,6 +29,7 @@ import (
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
+	"android/soong/dexpreopt"
 	"android/soong/java/config"
 	"android/soong/tradefed"
 )
@@ -78,6 +79,8 @@ func RegisterJavaBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("java_device_for_host", DeviceForHostFactory)
 	ctx.RegisterModuleType("java_host_for_device", HostForDeviceFactory)
 	ctx.RegisterModuleType("dex_import", DexImportFactory)
+
+	ctx.FinalDepsMutators(dexpreopt.RegisterToolDepsMutator)
 
 	ctx.RegisterSingletonType("logtags", LogtagsSingleton)
 	ctx.RegisterSingletonType("kythe_java_extract", kytheExtractJavaFactory)
@@ -335,6 +338,7 @@ type Module struct {
 	android.DefaultableModuleBase
 	android.ApexModuleBase
 	android.SdkBase
+	dexpreopt.DexPreoptModule
 
 	properties       CompilerProperties
 	protoProperties  android.ProtoProperties
@@ -2275,6 +2279,7 @@ type Import struct {
 	android.ApexModuleBase
 	prebuilt android.Prebuilt
 	android.SdkBase
+	dexpreopt.DexPreoptModule
 
 	properties ImportProperties
 
@@ -2477,6 +2482,7 @@ type DexImport struct {
 	android.DefaultableModuleBase
 	android.ApexModuleBase
 	prebuilt android.Prebuilt
+	dexpreopt.DexPreoptModule
 
 	properties DexImportProperties
 
