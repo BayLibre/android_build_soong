@@ -70,6 +70,30 @@
       "revId": "5df63824d7f7933b509a038e5a67d87fedc315cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "645306d6_bb1f5a3d",
+        "filename": "bpf/bpf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2020-01-11T04:52:33Z",
+      "side": 1,
+      "message": "The imageMutator will call SetImageVariation on the newly created vendor variation, use that to store a `blueprint:\"mutated\"` property and use it later to determine the install path.",
+      "parentUuid": "ab67c81f_088fe1df",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 7
+      },
+      "revId": "5df63824d7f7933b509a038e5a67d87fedc315cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
