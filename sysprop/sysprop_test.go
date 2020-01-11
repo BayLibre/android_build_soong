@@ -17,6 +17,7 @@ package sysprop
 import (
 	"android/soong/android"
 	"android/soong/cc"
+	"android/soong/dexpreopt"
 	"android/soong/java"
 
 	"io/ioutil"
@@ -66,6 +67,7 @@ func testContext(config android.Config) *android.TestContext {
 	})
 
 	cc.RegisterRequiredBuildComponentsForTest(ctx)
+	dexpreopt.RegisterToolModulesForTest(ctx)
 	ctx.PreDepsMutators(func(ctx android.RegisterMutatorsContext) {
 		ctx.BottomUp("sysprop_java", java.SyspropMutator).Parallel()
 	})
@@ -86,7 +88,7 @@ func run(t *testing.T, ctx *android.TestContext, config android.Config) {
 }
 
 func testConfig(env map[string]string, bp string, fs map[string][]byte) android.Config {
-	bp += cc.GatherRequiredDepsForTest(android.Android)
+	bp += cc.GatherRequiredDepsForTest(android.Android) + dexpreopt.BpToolModulesForTest()
 
 	mockFS := map[string][]byte{
 		"a.java":                           nil,
@@ -139,6 +141,10 @@ func testConfig(env map[string]string, bp string, fs map[string][]byte) android.
 	config.TestProductVariables.DeviceSystemSdkVersions = []string{"28"}
 	config.TestProductVariables.DeviceVndkVersion = proptools.StringPtr("current")
 	config.TestProductVariables.Platform_vndk_version = proptools.StringPtr("VER")
+
+	// Set up the global Once cache used for dexpreopt.GlobalSoongConfig, so that
+	// it doesn't create a real one, which would fail.
+	_ = dexpreopt.GlobalSoongConfigForTests(config)
 
 	return config
 

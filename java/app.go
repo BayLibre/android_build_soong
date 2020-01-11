@@ -27,6 +27,7 @@ import (
 
 	"android/soong/android"
 	"android/soong/cc"
+	"android/soong/dexpreopt"
 	"android/soong/tradefed"
 )
 
@@ -921,6 +922,8 @@ func (a *AndroidAppImport) DepsMutator(ctx android.BottomUpMutatorContext) {
 	}
 
 	a.usesLibrary.deps(ctx, true)
+
+	dexpreopt.AddToolDeps(ctx)
 }
 
 func (a *AndroidAppImport) uncompressEmbeddedJniLibs(

@@ -27,6 +27,7 @@ import (
 
 	"android/soong/android"
 	"android/soong/cc"
+	"android/soong/dexpreopt"
 	"android/soong/java"
 )
 
@@ -209,7 +210,7 @@ func testApexContext(t *testing.T, bp string, handlers ...testCustomizer) (*andr
 		}
 	`
 
-	bp = bp + java.GatherRequiredDepsForTest()
+	bp = bp + java.GatherRequiredDepsForTest() + dexpreopt.BpToolModulesForTest()
 
 	fs := map[string][]byte{
 		"a.java":                                              nil,
@@ -269,6 +270,10 @@ func testApexContext(t *testing.T, bp string, handlers ...testCustomizer) (*andr
 	config.TestProductVariables.Platform_sdk_final = proptools.BoolPtr(false)
 	config.TestProductVariables.Platform_vndk_version = proptools.StringPtr("VER")
 
+	// Set up the global Once cache used for dexpreopt.GlobalSoongConfig, so that
+	// it doesn't create a real one, which would fail.
+	_ = dexpreopt.GlobalSoongConfigForTests(config)
+
 	for _, handler := range handlers {
 		// The fs now needs to be populated before creating the config, call handlers twice
 		// for now, earlier to get any fs changes, and now after the config was created to
@@ -287,6 +292,7 @@ func testApexContext(t *testing.T, bp string, handlers ...testCustomizer) (*andr
 	ctx.RegisterModuleType("override_apex", overrideApexFactory)
 
 	cc.RegisterRequiredBuildComponentsForTest(ctx)
+	dexpreopt.RegisterToolModulesForTest(ctx)
 	ctx.RegisterModuleType("cc_binary", cc.BinaryFactory)
 	ctx.RegisterModuleType("cc_test", cc.TestFactory)
 	ctx.RegisterModuleType("vndk_prebuilt_shared", cc.VndkPrebuiltSharedFactory)
