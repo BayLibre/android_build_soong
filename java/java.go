@@ -29,6 +29,7 @@ import (
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
+	"android/soong/dexpreopt"
 	"android/soong/java/config"
 	"android/soong/tradefed"
 )
@@ -662,6 +663,15 @@ func (j *Module) deps(ctx android.BottomUpMutatorContext) {
 	} else if j.shouldInstrumentStatic(ctx) {
 		ctx.AddVariationDependencies(nil, staticLibTag, "jacocoagent")
 	}
+
+	// Always add the dexpreopt tool dependencies, regardless whether we'll do any
+	// dexpreopting or not. One reason is to ensure we'll get the tool paths and
+	// create a cached GlobalSoongConfig for use in the dexpreopt singletons,
+	// which will run regardless. Another is to not require a partially populated
+	// j.dexpreopter at the DepsMutator stage, which would be required for
+	// dexpreoptDisabled to work correctly.
+	// TODO(b/FIXME): Revisit this when the first reason above no longer applies.
+	dexpreopt.AddToolDeps(ctx)
 }
 
 func hasSrcExt(srcs []string, ext string) bool {
@@ -1520,6 +1530,13 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 		}
 	} else {
 		outputFile = implementationAndResourcesJar
+
+		// Ensure this is called at least once even if nothing is dexpreopted, to
+		// ensure there's a cached GlobalSoongConfig for the dexpreopt singletons,
+		// which will run regardless.
+		// TODO(b/FIXME): Remove when the singletons no longer relies on the cached
+		// GlobalSoongConfig.
+		_ = dexpreopt.GetGlobalSoongConfig(ctx)
 	}
 
 	ctx.CheckbuildFile(outputFile)
