@@ -24,6 +24,7 @@ import (
 
 	"android/soong/android"
 	"android/soong/cc"
+	"android/soong/dexpreopt"
 	"android/soong/java"
 	"android/soong/python"
 
@@ -106,7 +107,7 @@ func apexDepsMutator(mctx android.BottomUpMutatorContext) {
 			}
 
 			if am, ok := child.(android.ApexModule); ok && am.CanHaveApexVariants() &&
-				(directDep || am.DepIsInSameApex(mctx, child)) {
+				(directDep || am.DepIsInSameApex(mctx, child) && !dexpreopt.IsToolDep(mctx, am)) {
 				am.BuildForApex(apexBundleName)
 				return true
 			} else {
