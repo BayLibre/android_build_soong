@@ -22,6 +22,30 @@
       "revId": "e381e84656eeadbd3d6a82f81b3a2061c44d7386",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70473d02_16dcf51f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2020-01-12T14:32:35Z",
+      "side": 1,
+      "message": "That\u0027s a brilliant idea. Thanks. Done.",
+      "parentUuid": "ca7fb17f_2170bc42",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 56
+      },
+      "revId": "e381e84656eeadbd3d6a82f81b3a2061c44d7386",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
