@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eaa1c4af_b6ac4642",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2020-01-13T18:38:54Z",
+      "side": 0,
+      "message": "Can you remove the concept of WindresFlags? Though do we still need to tell it we\u0027re targeting 32 vs 64 bit?",
+      "range": {
+        "startLine": 441,
+        "startChar": 19,
+        "endLine": 441,
+        "endChar": 49
+      },
+      "revId": "e35e961aa925e6ab75daf455d36875b3d6511081",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
