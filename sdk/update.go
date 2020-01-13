@@ -298,6 +298,12 @@ type unversionedToVersionedTransformation struct {
 
 var _ bpTransformer = (*unversionedToVersionedTransformation)(nil)
 
+type propertyTag struct {
+	name string
+}
+
+var sdkMemberReferencePropertyTag = propertyTag{"sdkMemberReferencePropertyTag"}
+
 func (m unversionedToVersionedTransformation) transformModule(module *bpModule) *bpModule {
 	// Use a versioned name for the module but remember the original name for the
 	// snapshot.
@@ -305,6 +311,14 @@ func (m unversionedToVersionedTransformation) transformModule(module *bpModule) 
 	module.setProperty("name", m.builder.versionedSdkMemberName(name))
 	module.insertAfter("name", "sdk_member_name", name)
 	return module
+}
+
+func (m versioningTransformation) transformProperty(name string, value interface{}, tag android.BpPropertyTag) (interface{}, android.BpPropertyTag) {
+	if tag == sdkMemberReferencePropertyTag {
+		return m.builder.versionedSdkMemberNames(value.([]string)), tag
+	} else {
+		return value, tag
+	}
 }
 
 func generateBpContents(contents *generatedContents, bpFile *bpFile) {
@@ -451,6 +465,10 @@ func addHostDeviceSupportedProperties(module *android.ModuleBase, bpModule *bpMo
 	if module.HostSupported() {
 		bpModule.AddProperty("host_supported", true)
 	}
+}
+
+func (s *snapshotBuilder) SdkMemberReferencePropertyTag() android.BpPropertyTag {
+	return sdkMemberReferencePropertyTag
 }
 
 // Get a versioned name appropriate for the SDK snapshot version being taken.
